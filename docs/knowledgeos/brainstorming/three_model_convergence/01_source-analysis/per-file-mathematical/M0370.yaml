@@ -1,0 +1,29 @@
+sequence: M0370
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132115_review-adequacy-replaces-entailment-r-t-terminology-and-factorial-defect.md
+title: "Review: contract-relative Adequacy replaces semantic entailment (K_t |= Q corrected), gap taxonomy kept open"
+date: "2026-09-07"
+bytes: 26317
+model:
+  primary: b
+  secondary: "KR-SIM"
+source_role: PRIMARY
+canonical_source: M0370
+importance: high
+confidence: high
+about: >
+  Corrects a claim that KnowledgeOS uses semantic entailment (K_t |= Q) for adequacy, substituting contract-relative adequacy Adeq(K_t,Q,C,EC,S,R) -- avoiding a category error and aligning with previously-established primitives. Replaces a coarse four-gap list with an open, empirical classification mapping ClassifyGap: Delta_Q -> G.
+introduces: []
+defines: []
+refines: []
+contradicts:
+  - "A prior semantic-entailment (K_t |= Q) formulation of adequacy: corrected to contract-relative Adeq(K_t,Q,C,EC,S,R)"
+repeats: []
+bridge_candidates: []
+mathematical_content: "Replaces semantic entailment with a contract-relative adequacy predicate Adeq(K_t,Q,C,EC,S,R), and an open (not fixed) gap-classification mapping ClassifyGap."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  A genuine category-error correction (entailment is not the right relation for adequacy) directly parallel to this corpus's established discipline elsewhere (e.g. Determination != truth), applied here to the newly-introduced Epistemic Agency apparatus.

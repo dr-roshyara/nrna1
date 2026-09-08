@@ -1,0 +1,84 @@
+sequence: M0267
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-110000_theory-00-index-and-reading-order.md
+title: "Theory 00 — Index and Reading Order: the master index for the consolidated theory series, resolving the '13 vs 15' document-count ambiguity (the true reading order runs 00,01,02,03,03a,04-13,14 = 16 files across 15 numbered slots), revealing THREE previously-unseen documents in this pass (03 Zero-definition-and-algebra explicitly confirming the algebra FAILED, 03a the-concept-of-Zero with 'four notions it is mistaken for', and 14 Focus/Inquiry/Information-Boundary with a new FR-004 and a Zoom-in/Zoom-out standing position), and delivering a rich mechanically-counted 'honest ledger' of all epistemic-status tag occurrences across the whole series (129 [EXP] vs 118 [NEG] — 'nearly one refutation for every empirical result') plus the final minimal checklist for what would actually make this Theory v1.3"
+date: "20260904-110000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0267
+importance: critical
+confidence: high
+about: >
+  Document 00 of the consolidated theory series — the master index, read chronologically first
+  among the series (timestamp 11:00:00, before Document 01's 11:05:00) but processed here after
+  Documents 01-13 in this reconstruction's sequential pass. Fixes the central result and
+  architecture diagram, gives the full reading order (revealing three documents not yet seen in
+  this pass: 03, 03a, and 14), resolves the document-count inconsistency flagged at M0266, and
+  delivers a rich mechanically-counted tag-occurrence ledger across the whole set plus the explicit
+  minimal checklist for eventual Theory v1.3 promotion.
+introduces:
+  - "The series' self-declared overall status: 'RESEARCH SYNTHESIS. Not Theory v1.3. Not a ratification. Theory v1.2 remains FROZEN · the kernel remains NOT SELECTED · nothing here is adjudicated' — sitting explicitly at the end of the AUDIT stage of the governance order EXPERIMENT→AUDIT→ADJUDICATION→THEORY v1.3"
+  - "Confirmation that the epistemic-status vocabulary is governed by a real, dated, ADOPTED governance artifact: docs/knowledgeos/governance/EPISTEMIC-STATUS-VOCABULARY.md (ADOPTED 2026-09-04), with 10 tags ([DEF][THM][COR][PRP][EXP][CONJ][NEG][OPEN][REC][DEFECT]) and an explicit note that [PROP] is RETIRED as ambiguous — 'an untagged mathematical statement in this set is a defect'"
+  - "The single most important sentence of the entire series, restated at the top of the index: 'we have experimentally separated three things that the theory previously mixed: information elimination, preservation of a business inquiry, and successful realization by a decoder' — Eliminability≠Preservation≠Realization — explicitly NOT 'we discovered a new algebra': 'the algebra experiments were largely negative, and that is reported as such'"
+  - "The final central architecture diagram: D --T--> R, with Q:D→Y and Π:R→O, and three downstream predicates (Zero=Π(T(D))=Π(T(E_S(D))); Adequacy=Ĥ(Q|T(D))=0; Realization=O(T(D))=Q(D)) branching from R, each paired with its intuitive question (can I remove it? is the meaning still there? can the consumer actually recover it?)"
+  - "THE FULL READING ORDER, revealing the TRUE document set — 16 files across a nominal '15' numbered slots: 00 (index), 01 (primitives/signatures), 02 (three-question separation), 03 (Zero: definition, and the algebra that FAILED — a previously unseen document explicitly confirming the entire Zero-algebra effort's negative outcome), 03a (previously unseen — 'what Zero IS — and the four notions it is mistaken for'), 04 (adequacy/DPI), 05 (realization/decoder), 06 (representation-reduction boundary), 07 (bridge programme), 08 (contradiction/composition/factivity), 09 (frozen/refuted register), 10 (methodology), 11 (statistical standards), 12 (DDD architecture), 13 (open questions/forward programme), 14 (previously unseen — 'Restriction ≠ Inquiry — the corrected research model, P1-P3, FR-004, and the standing position on Zoom-in/Zoom-out §8a')"
+  - "RESOLUTION of the document-count inconsistency flagged at M0266: this index confirms the series is genuinely 16 files (00 through 14, with an extra 03a), even though both Document 00 and Document 01 header themselves 'of 15' and Document 13 self-described as 'this thirteen-document set' — none of these self-counts is fully accurate; the true count, given explicitly in §5's ledger header, is 'across all 16 documents'"
+  - "The canonical scope-bound illustration restated once more, inherited by the whole set: r=(value,source,tag,timestamp), |D|∈{4,5,6}, with the explicit forbidden/permitted claim pair about '3 significant digits'"
+  - "THE HONEST LEDGER (§5): a rich, mechanically-counted tag-occurrence table across all 16 documents, explicitly caveated as 'TAG OCCURRENCES, counted mechanically — not distinct statements. A statement cited in three documents contributes three': [EXP]=129 (every one scope-bound); [NEG]=118 (refuted or withdrawn); [REC]=40 (no truth claim); [OPEN]=34; [DEF]=24 (stipulated); [CONJ]=13 (each with a stated refutation condition); [DEFECT]=11 (recorded, contained); [THM]=8 (explicitly flagged: 'ONE distinct theorem — the data-processing inequality, cited, not ours — referenced 8 times'); [COR]=6; [PRP]=3; [CORPUS]/[DESIGN]=1/1"
+  - "A genuinely valuable methodological interpretive point drawn from the ledger: '[NEG] column is 118 occurrences against 129 [EXP]. Nearly one refutation for every empirical result... a set where [EXP] outran [NEG] by an order of magnitude would be a set that had stopped testing its own hypotheses' — 'the ratio is the point, not the totals'"
+  - "THE FINAL EXPLICIT MINIMAL CHECKLIST for what would actually promote this set to Theory v1.3 — not more experiments, but ADJUDICATION plus at minimum: (1) a carrier decision (currently [OPEN], no carrier declared); (2) a resolution of DECISION-02; (3) a second independent adopter for FR-003 per ES-006.1; (4) an explicit statement of which [EXP] results the theory is willing to depend on given their scope bounds — 'a governance act, not a research act'"
+defines: []
+refines:
+  - "M0266's flagged '13 vs 15 document' inconsistency: resolved here as neither figure being fully accurate — the true count is 16 files, explicitly stated in the ledger's own header"
+  - "The corpus's already-recorded confirmation that the algebra experiments were negative (M0266): given its most explicit single-sentence form here, as part of the series' single most important summary statement"
+contradicts:
+  - "Both Document 00's and Document 01's own 'of 15' header count, and Document 13's 'thirteen-document set' self-description: none exactly matches the true 16-document count given in this document's own §5 ledger header"
+repeats:
+  - "The already-established central architecture (Zero/Adequacy/Realization), the scope-bound discipline, and the governance-order (EXPERIMENT→AUDIT→ADJUDICATION→v1.3), all restated here as the master index's own framing content"
+bridge_candidates:
+  - "Whether Documents 03, 03a, and 14 (all named here for the first time, previously unseen in this pass) exist elsewhere in the corpus and will be processed at a later sequence position in this pass"
+  - "What FR-004 (named in Document 14's description) and the Zoom-in/Zoom-out standing position (§8a) actually contain"
+mathematical_content: >
+  The final central architecture diagram (D→R, Zero/Adequacy/Realization as three branching
+  predicates); a mechanically-counted tag-occurrence ledger quantifying the entire series' epistemic
+  distribution; an explicit minimal four-item checklist for Theory v1.3 promotion.
+gita_content: null
+kernel_content: >
+  Reaffirms "Theory v1.2 remains FROZEN, the kernel remains NOT SELECTED, nothing here is
+  adjudicated" as the series' governing self-description, situating the entire 16-document set as
+  audit-stage material awaiting a formal adjudication act.
+registry_updates:
+  - "Resolved document-count: the series is genuinely 16 files (00-14 plus 03a), not 13 or 15 as variously self-described elsewhere in the series"
+  - "Confirmed existence of three previously-unseen documents: 03 (Zero definition + failed algebra), 03a (what Zero IS, four mistaken notions), 14 (Restriction≠Inquiry, FR-004, Zoom-in/Zoom-out standing position)"
+  - "Mechanically-counted honest ledger: 129 [EXP], 118 [NEG], 40 [REC], 34 [OPEN], 24 [DEF], 13 [CONJ], 11 [DEFECT], 8 [THM] (one distinct theorem, the DPI), 6 [COR], 3 [PRP], 1/1 [CORPUS]/[DESIGN]"
+  - "Final minimal four-item checklist for Theory v1.3 promotion: carrier decision, DECISION-02 resolution, FR-003 second adopter, explicit scope-bound dependency statement"
+anchor_test:
+  anchor: true
+  supports_dimension: "Master index with resolved document-count ambiguity; three previously-unseen documents named; mechanically-counted honest ledger with a genuine EXP-vs-NEG-ratio methodological insight; final minimal Theory-v1.3 promotion checklist"
+  refines_or_contradicts: "refines (resolves the document-count question left open at M0266); contradicts (none of the series' own self-counts — 13, 15 — exactly match the true 16-document total given here)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"It is not 'we discovered a new algebra' — the algebra experiments were largely negative, and that is reported as such.\""
+  - "\"Recounted 2026-09-06 across all 16 documents.\""
+  - "\"The [NEG] column is 118 occurrences against 129 [EXP]. Nearly one refutation for every empirical result.\""
+  - "\"A set where [EXP] outran [NEG] by an order of magnitude would be a set that had stopped testing its own hypotheses.\""
+undefined_concepts: []
+open_questions:
+  - "Do Documents 03, 03a, and 14 exist elsewhere in the corpus, to be processed at a later sequence position?"
+  - "What does FR-004 and the Zoom-in/Zoom-out standing position (Document 14 §8a) actually contain?"
+tier2_triggered: true
+tier2_reason: >
+  The master index for the entire consolidated theory series: resolves a document-count ambiguity
+  flagged in the previous record, reveals three previously-unseen documents (03, 03a, 14) whose
+  content is not yet known in this pass, and delivers a rich mechanically-counted honest ledger of
+  the whole series' epistemic-status distribution plus the final explicit minimal checklist for
+  eventual Theory v1.3 promotion — essential orienting material for the eventual global-
+  reclassification pass.

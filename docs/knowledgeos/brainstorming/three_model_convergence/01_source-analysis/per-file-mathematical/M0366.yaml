@@ -1,0 +1,29 @@
+sequence: M0366
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-131807_algebraic-zero-not-equivalent-to-eliminability-research-architecture.md
+title: "Algebraic zero is NOT equivalent to eliminability: rejecting M0365's integration as a category error, restoring the Three Distinctions"
+date: "2026-09-07"
+bytes: 13734
+model:
+  primary: b
+  secondary: "KR-SIM"
+source_role: PRIMARY
+canonical_source: M0366
+importance: critical
+confidence: high
+about: >
+  Rejects M0365's proposal to integrate an algebraic zero element as equivalent to eliminability: 'this correction is decisive... would re-introduce the very category error that the Zero Algebra experiments explicitly cautioned against: imposing an algebraic structure on a domain rather than discovering whether the domain's behavior supports it.' Restores 'The Three Distinctions' (three notions of Zero/omission) as the governing framework.
+introduces: []
+defines: []
+refines: []
+contradicts:
+  - "M0365's proposed algebraic zero element 0_i / active zero-projection P_S^0: explicitly rejected here as a category error (imposing algebra rather than discovering it)"
+repeats: []
+bridge_candidates: []
+mathematical_content: "A rejection of algebraic-zero-as-eliminability, restoring a three-way Zero/omission distinction and reasserting the corpus's established discipline against imposing unearned algebraic structure."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  A decisive, immediate self-correction (rejecting the immediately preceding document's central proposal, M0365) that reasserts and sharpens the corpus's core anti-premature-algebra discipline -- exactly the kind of live propose/reject pair this reconciliation should preserve, not silently resolve in favor of one side.

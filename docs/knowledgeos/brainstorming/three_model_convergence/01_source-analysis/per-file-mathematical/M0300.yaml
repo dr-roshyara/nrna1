@@ -1,0 +1,31 @@
+sequence: M0300
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-155536_sunya-must-be-read-against-kashmir-shaivite-consciousness.md
+title: "Sunya must be read against Kashmir Shaivite Consciousness: a third emptiness type, Field Sunya"
+date: "2026-09-04"
+bytes: 9296
+model:
+  primary: KR-SIM
+  secondary: Kashmir Shaivism / Trika (source book, explicitly used as philosophical contrast, not adopted doctrine)
+source_role: PRIMARY
+canonical_source: M0300
+importance: high
+confidence: high
+about: >
+  Mines a Kashmir Shaivism source book for a contrast with Madhyamaka Sunyata: proposes that emptiness of content/form does not imply emptiness of the underlying 'field' (Consciousness in the source tradition), giving a candidate third Sunya type -- Field Sunya -- alongside the already-distinguished Content Sunya (R(x)=empty) and Determination Sunya (no justified determination, the corpus's established 'Knowledge Sunya'). Proposes a comparative research program (Madhyamaka Sunyata <-> Kashmir Shaivism <-> KnowledgeOS) before defining Knowledge Sunya formally, and explicitly declines to adopt Consciousness/Omega as a KnowledgeOS primitive ('not proposing Omega as a primitive yet -- that would be premature').
+introduces:
+  - "Field Sunya: the layer distinguishing 'what appears/disappears' (content/determination) from 'the field in which it appears' (Omega(K)), explicitly NOT adopted as a KnowledgeOS primitive"
+  - "A three-layer decomposition F(K) [form/content] / R(K,Q,C,E) [relations/determination] / Omega(K) [field/awareness]"
+defines: []
+refines:
+  - "The corpus's established Content Sunya / Determination Sunya (Knowledge Sunya) distinction: proposes a third category, Field Sunya, without yet formalizing it"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A three-layer content/determination/field decomposition of knowledge states, motivated by an external philosophical tradition but explicitly withheld from primitive status pending further research."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Proposes a genuinely new third emptiness category (Field Sunya) not previously distinguished in the corpus's established two-way Content/Determination Sunya split, while explicitly and correctly declining to promote it to primitive status -- a clean instance of the corpus's own no-silent-promotion discipline.

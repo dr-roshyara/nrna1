@@ -90,7 +90,7 @@ Template: `01_source-analysis/per-file-template.md`.
 | Per-file record | `01_source-analysis/per-file/NNNN.md` | immediately after reading file NNNN |
 | Cumulative ledger | `01_source-analysis/research-ledger.md` | appended as concepts first appear / change |
 | Classification matrix | `01_source-analysis/file-classification.md` | appended per file |
-| Corpus map | `01_source-analysis/corpus-map.md` | after the full pass |
+| Corpus map | `01_source-analysis/corpus-map.md` | after the full pass — **produced 2026-09-07 (MD-021 Phase 0)** |
 | Progress state | `00_control/progress.tsv` | updated per file — **the resume point** |
 | Classification register | `00_control/classification-register.tsv` | initial in pass 1; final in global reclassification |
 | Revision log | `01_source-analysis/revisions.md` | append-only; whenever a later file revises an earlier reading |

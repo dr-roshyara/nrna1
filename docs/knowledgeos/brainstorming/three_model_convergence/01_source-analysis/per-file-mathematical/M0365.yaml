@@ -1,0 +1,30 @@
+sequence: M0365
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-131729_algebraic-zero-element-vs-epistemic-omission-integration.md
+title: "Integrating an algebraic zero element vs epistemic omission: resolves a conflation, proposes a Three-Zero Spectrum"
+date: "2026-09-07"
+bytes: 13859
+model:
+  primary: b
+  secondary: "KR-SIM"
+source_role: PRIMARY
+canonical_source: M0365
+importance: high
+confidence: high
+about: >
+  Proposes resolving a persistent ambiguity (conflation of topological/epistemic omission with algebraic nullity) by defining an explicit algebraic zero element 0_i in D_i, shifting from passive dimension-hiding to active, testable zero projections P_S^0. Proposes a 'Three-Zero Spectrum' distinguishing algebraic/topological/epistemic zero notions as a candidate specification for KR-ZOOM-01. NOTE: this proposal is explicitly REJECTED by the very next file, M0366, as reintroducing a category error -- read together, not independently.
+introduces:
+  - "A proposed algebraic zero element 0_i in D_i and active zero-projection operator P_S^0, later rejected by M0366"
+defines: []
+refines: []
+contradicts:
+  - "M0366 (read immediately after in this batch) rejects this document's central proposal as a category error"
+repeats: []
+bridge_candidates: []
+mathematical_content: "A proposed (and subsequently rejected, per M0366) algebraic-zero-element formalization intended to replace passive dimension-hiding with active zero projections."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Proposes a specific formal integration that the very next document in this batch (M0366) explicitly and rigorously rejects -- must be read as a live propose/reject pair, not as an accepted result on its own; recorded for provenance even though its central proposal does not survive.

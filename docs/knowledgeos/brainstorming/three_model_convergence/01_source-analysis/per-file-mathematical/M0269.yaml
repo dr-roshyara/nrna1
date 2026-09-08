@@ -1,0 +1,65 @@
+sequence: M0269
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-111500_theory-03-zero-definition-and-algebra.md
+title: "Theory 03 — Zero: Definition, and the Algebra That Failed: the source document that 03a (M0268) explains conceptually and Theory 09 (M0262) tabulates — substantially overlapping content, but with genuinely new EXACT closure-property counts (downward 347/40, upward 101/286 the dominant failure, union 237/150, intersection 385/2) revealing that intersection-closure is 'the closest any standard regime comes' and fits EXACTLY once the cancelling contract is excluded — the single closest approach to an actual algebraic regularity Zero satisfies anywhere in the corpus"
+date: "20260904-111500"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0269
+importance: high
+confidence: high
+about: >
+  Document 03 of the consolidated theory series, the source document explained conceptually by
+  Document 03a (M0268) and tabulated in Document 09 (M0262). "This document is mostly negative, and
+  that is its value. The programme set out to find an algebra of eliminability. It found that the
+  obvious algebraic structures do not hold." Substantially restates the H1-H11 refutation table, the
+  Remainder identity, and the interaction-order finding already covered at M0268, but adds exact
+  set-closure-property counts revealing the single closest approach to an actual algebraic
+  regularity anywhere in the Zero research: intersection-closure holds exactly once the cancelling
+  contract is excluded.
+introduces:
+  - "The full exact set-closure-property table for 𝒵 (the family of Zero subsets), not given with this precision at M0268: downward-closed (347 holds, 40 fails); upward-closed (101 holds, 286 fails — 'the dominant failure'); union-closed (237 holds, 150 fails); intersection-closed (385 holds, 2 fails)"
+  - "A genuinely important nuance not previously stated this precisely: 'two refutations at 0.5% and one at 74% are both refuted and are not the same finding. Intersection-closure is the closest any standard regime comes, and it fits EXACTLY once the cancelling contract is removed. Reporting them at equal weight would misrepresent the structure' — meaning 𝒵 IS exactly intersection-closed under non-cancelling contracts, the single closest approach to an actual algebraic law anywhere in this entire research thread"
+  - "Confirmation that the matroid refutation (a single decisive counterexample) also lies under the cancelling contract — reinforcing that the cancelling ([+c,-c]/emergent-eliminability) contract is the specific, isolable source of nearly all of Zero's remaining algebraic irregularity"
+  - "A final 17-row consolidated register summarizing every claim in the document with its exact status"
+defines: []
+refines:
+  - "M0268's (Document 03a) conceptual treatment of the same underlying findings: given exact closure-property holds/fails counts here, plus the crucial 'closest to a law' nuance for intersection-closure under non-cancelling contracts"
+contradicts: []
+repeats:
+  - "The H1-H11 refutation table, the Remainder A≡C exact identity, and the interaction-order/higher-order-eliminability findings, all already fully recorded at M0268 (Document 03a) and M0262 (Document 09)"
+bridge_candidates:
+  - "Whether the cancelling-contract-excluded intersection-closure regularity was ever formally elevated to a proposed algebraic law (e.g. a candidate FR item), given it is the closest approach to a genuine regularity found in the entire Zero research"
+mathematical_content: >
+  Exact set-closure-property counts for the family of Zero subsets, isolating intersection-closure
+  (under non-cancelling contracts) as the single closest approach to a genuine algebraic regularity
+  found across the entire Zero-algebra research programme.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "Exact set-closure counts: downward 347/40, upward 101/286 (dominant failure), union 237/150, intersection 385/2"
+  - "Intersection-closure identified as holding EXACTLY once the cancelling contract is excluded — the closest approach to an actual algebraic law in the entire Zero-algebra research"
+anchor_test:
+  anchor: false
+  supports_dimension: "Exact set-closure-property counts; intersection-closure-under-non-cancelling-contracts as the closest approach to an algebraic law"
+  refines_or_contradicts: "refines (M0268's conceptual treatment of the same findings, given exact closure counts and the crucial cancelling-contract nuance)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Intersection-closure is the closest any standard regime comes, and it fits exactly once the cancelling contract is removed.\""
+undefined_concepts: []
+open_questions:
+  - "Was the cancelling-contract-excluded intersection-closure regularity ever formally elevated to a candidate algebraic law?"
+tier2_triggered: false
+tier2_reason: >
+  Substantially restates findings already fully captured at M0268 (Document 03a); the genuinely new
+  content (exact closure-property counts, the intersection-closure-is-the-closest-approach-to-a-law
+  nuance) is a valuable precision addition but not independently critical relative to M0268's
+  already-established tier2 escalation for this same underlying research.

@@ -1,0 +1,31 @@
+sequence: M0397
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-140438_gita-chapter-03-understanding-determines-the-relation-to-action.md
+title: "Bhagavad Gita Chapter 3 (Karma Yoga): understanding determines the relation to action -- a Fact-Finding-to-Action architecture"
+date: "2026-09-07"
+bytes: 11506
+model:
+  primary: g
+  secondary: "KR-SIM (feeds directly into the Fact-Finding/Action-Grounding architecture developed elsewhere in this same batch, e.g. M0393)"
+source_role: PRIMARY
+canonical_source: M0397
+importance: critical
+confidence: high
+about: >
+  A genuine, substantive Gita-content document: a direct textual analysis of Bhagavad Gita Chapter 3 (Karma Yoga, 43 verses), explicitly distinguishing itself from mere metaphor-borrowing ('not Karma Yoga = KnowledgeOS action'). Extracts Arjuna's opening fact-finding problem (an apparent Knowledge->Action inconsistency), the discipline that action cannot be deferred until perfect knowledge is reached, the yajna-rain-food causal cycle read as a structural/systemic (not merely religious) explanation exercise for tracing dependencies behind an observation, and the 'doer' problem (3.27-28) read as a provenance/action-attribution question (ActionOccurrence != ActionAttribution). Concludes with a proposed KR-FACTFINDING-ACTION-2026-09 research artifact distinguishing Determination != Action Readiness != Decision != Authorization != Action, explicitly declining to modify the currently-frozen KR-ZOOM-FACTFINDING-01 experiment.
+introduces:
+  - "Determination != Action Readiness != Decision != Authorization != Action -- a five-way separation motivated directly by Gita Chapter 3's structure, proposed as KR-FACTFINDING-ACTION-2026-09"
+  - "ActionOccurrence != ActionAttribution, derived from the Chapter 3 'doer' problem (guna-attributed action vs Self-as-doer), read as a provenance question rather than a metaphysical claim"
+  - "A causal/dependency-tracing reading of the Chapter 3 yajna-rain-food cycle, directly extending the Nexus egress-investigation worked example (observation -> process -> dependency -> cause -> action)"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A five-way formal separation (Determination/Action-Readiness/Decision/Authorization/Action) and a causal-dependency-tracing pattern, both explicitly motivated by, but not claimed to be proven by, the Gita source."
+gita_content: "Direct textual analysis of Bhagavad Gita Chapter 3 (Karma Yoga), explicitly separating structural/architectural lessons from religious/metaphysical content at each step (e.g. 'we should not import the religious norm as a KnowledgeOS rule')."
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Genuine primary Gita-lineage content (not KR-SIM borrowing a metaphor) introducing a new five-way action-pipeline separation and an ActionOccurrence != ActionAttribution provenance distinction, both feeding directly into this same batch's Fact-Finding-to-Action architecture work (M0393) -- correctly classified as `g`, not defaulted to KR-SIM despite the containing directory's usual math-lane content.

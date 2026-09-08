@@ -1,4 +1,1088 @@
-**Updated:** 2026-09-04 (mathematical_ideas_that_can_be_implemented/ pass, 40/282 done — measure-theoretic Knowledge Space apparatus now formally crystallized; kernel-minimality shown representation-dependent; two persistent unresolved cross-references, "Freedman" ×6 and "Brown-Hwang" ×3) *(additive — this block is the newest; every block below stands as history.)*
+**Updated:** 2026-09-08 (latest) — **MD-032 COMPLETE — HUMAN ADMISSIBILITY DECISION GATE:
+`06-COMPOSITION-RULES.MD`.** Not a research phase — a narrowly-scoped governance gate, following
+MD-031's own named next action. Despite the user stating a preference in prose within the same
+authorizing message, the decision was put to them formally via a direct question (four options,
+matching the authorization's own text), per the "do not infer the decision" instruction and the
+MD-028-DQ-1 precedent that admission is a formal, separately-recorded governance act. **Decision:
+SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A, ADMIT (narrow scope).**
+`docs/knowledgeos/research/kernel-reduction/06-composition-rules.md` is admitted **solely for
+specification-sufficiency and subsequent controlled research concerning the Model-B `Validate`
+derivation/composition rule** — explicitly NOT canonical, ratified, mathematically proven,
+implementation-approved, Model-B globally authoritative, sufficient for composition, sufficient to
+resolve `V6`, or sufficient to open Stage 07. **Provenance unchanged** — `06` stays at the same
+`RECONSTRUCTED PROVENANCE` ceiling as `03`/`04` (same 2026-09-06 commit); the relationship to the
+executable lane's own identical rule remains `CONVERGENCE WITH COMMON-CAUSE PROVENANCE`, explicitly
+not upgraded to independent confirmation. **`classification-register.tsv` not touched** — exactly
+MD-028-DQ-1's own precedent; the admitted file stays outside the corpus root, admissibility recorded
+only in the governance log and this decision's own artifacts. **Executable lane
+(`kr/carriers.py`/`nrna1/research/kernel-reduction/`) explicitly unaffected — remains not admitted.
+`V6` remains unresolved — this decision does not adjudicate it.** No classification changed; no
+frozen artifact (MD-024–031) modified; no composition test; no code executed; no model selected; no
+Stage 07; no canonicalization; `theory-extraction/`/`knowledgeos-sim/`/`verification/` untouched.
+Verified: both consistency scripts `CONSISTENT`; MD-024–031, `06-composition-rules.md`, and the
+executable lane confirmed unmodified; only the new
+`14_decision-log/MD-032-human-admissibility-decision-06-composition-rules/` directory (8 files)
+written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-032 execution record.
+**MD-032 COMPLETE.** Awaiting separate authorization for any further step — including any
+composition test, any `V6` adjudication, or any executable-lane admission. This session's work is
+being committed now, per explicit instruction.
+
+**Superseded-update-marker-53 (2026-09-08, earlier) — MD-031 COMPLETE — VALIDATE RULE
+NARRATIVE–EXECUTABLE CONVERGENCE AUDIT.** Adapted before execution: the user's prompt carried a firewall against
+inspecting `three_model_convergence/` (this session's own home directory — incoherent as an
+instruction to this session) and a §21 checklist naming "P-07–P-40"/"K1–K11 cardinality" (the
+Lane-T/theory-extraction/P-series track's own vocabulary, never this session's). Flagged before any
+file was touched; user confirmed proceeding with the substance, dropping the incoherent parts.
+`docs/knowledgeos/theory-extraction/` stayed untouched throughout, per the session's own standing
+rule, independent of the mismatched prompt wording. **Central finding**:
+`docs/knowledgeos/research/kernel-reduction/06-composition-rules.md` — cited by section number
+("§06") in the already-admitted `04-operator-contracts.md`, never read by this reconstruction before
+this study — states, in prose, the identical derivation rule MD-030 found only in the executable
+lane: `Claim,Evidence | Hypothesis,Evidence → (warrant-assessment) → Verdict`, with matching
+explanatory text on the `Qualify`/`Evidence` dependency. `06` never names `Validate` (deliberately,
+same anti-circularity design as the code); the connection is established only by chaining two
+source-stated facts — `04`'s atom assignment + `06`'s derivation rule — built entirely from
+narrative-lane text, no code consulted. **The B `Validate` input-carrier field moves from `NOT
+SPECIFIED BY SOURCE` to `CLOSED BY SOURCE`.** **Provenance**: `06` carries the *same* Git history as
+the two already-admitted files (identical 2026-09-06 commit) — not weaker. `04`/`06` mtimes are 5
+milliseconds apart (vs. tens-of-seconds gaps elsewhere in the series); no cross-citation exists
+between `06` and the executable code either direction — classified `CONVERGENCE WITH COMMON-CAUSE
+PROVENANCE`, not independent confirmation. **What remains open**: `06` is silent on the executable
+lane's own tested `V6` alternative rule; preconditions/postconditions/failure semantics stay `NOT
+CLOSED` by either source. **Final verdict: E — PARTIAL CONVERGENCE** (not A — too strong given `V6`
+is unresolved; not G — the provenance block applies to the executable lane, not to `06` itself).
+**MD-030 claim audit**: four of five central claims confirmed unchanged; one ("potentially
+necessary") narrowed — the executable lane is no longer the sole/best-provenanced candidate for the
+input-carrier field specifically (`06` now is), though still relevant for the computed
+C0-reachability result and `V6`'s own existence. No classification changed; no frozen artifact
+(MD-024–030) modified; `classification-register.tsv` untouched; no file admitted; no composition
+test; no code executed; `theory-extraction/`/`knowledgeos-sim/`/`verification/` untouched; no model
+selected; no Stage 07; GA-038/K-1/K-2 untouched. Verified: both consistency scripts `CONSISTENT`;
+MD-024–030 confirmed unmodified; only the new
+`14_decision-log/MD-031-validate-rule-narrative-executable-audit/` directory (16 files) written.
+Full record: `14_decision-log/model-boundary-decisions.md` → MD-031 execution record. **MD-031
+COMPLETE.** Smallest scientifically justified next action: **a human admissibility decision for
+`06-composition-rules.md`** — not made here. This session stops here, awaiting separate
+authorization.
+
+**Superseded-update-marker-52 (2026-09-08, earlier) — MD-030 COMPLETE — EXECUTABLE KERNEL-REDUCTION
+EVIDENCE CHARACTERIZATION.** Characterization/admissibility-preparation study only — no admission, no
+composition test, no continuation of MD-029. **Trigger**: while preparing a proposed "evidence-
+complete MD-029 retest," a path-verification check found `nrna1/research/kernel-reduction/` (27
+files, an executable Python research instrument) — distinct from, but README-linked to, the
+already-partially-admitted narrative write-up `docs/knowledgeos/research/kernel-reduction/`. The
+user scoped this study narrowly to that one directory, explicitly excluding
+`nrna1/research/knowledgeos-sim/` and `nrna1/verification/` (incl. `zero-algebra/`). **Central
+finding**: `kr/carriers.py`'s `DERIVATION_RULES` table contains a machine-encoded rule
+(`{Claim,Evidence}`/`{Hypothesis,Evidence}` → `Verdict`, via `A_WARRANT`) — a concrete candidate
+answer to exactly the B `Validate` input-carrier gap MD-029 left `NOT SPECIFIED BY SOURCE`, closely
+matching (non-independently) MD-029's own prior constructed inference. No contradiction found vs.
+the two MD-028-admitted narrative files anywhere checked (`capabilities.py`/`variants.py` explicitly
+name those files as what the code tracks). **Provenance finding**: `nrna1/research/` is completely
+**untracked in git** (zero commits, any branch, ever) — weaker than the narrative lane's own dated
+2026-09-06 commit; the two path aliases used this session were confirmed to be the same repository
+(same inode), not separate checkouts. **Admissibility finding**: relevant and potentially necessary,
+but **NOT currently admissible** — three independent qualifications (no git history; self-declared
+`[EXP]`/"not KnowledgeOS architecture... nothing here is canonical"; internally contested by the same
+lane's own `variants.py` V6, an alternative 3-input rule for the identical step). **Completion-gate
+outcome: D — ADMISSIBILITY/PROVENANCE BLOCK.** No MD-024–029 finding depends on this directory
+(discovered only after MD-029 closed). No classification changed; no frozen artifact modified;
+`classification-register.tsv` untouched; `06-composition-rules.md` not read (out of scope); no code
+executed; `knowledgeos-sim/`/`verification/` untouched; no file admitted; no model selected; no Stage
+07; GA-038/K-1/K-2 untouched. Verified: both consistency scripts `CONSISTENT`; all frozen directories
+confirmed unmodified; only the new
+`14_decision-log/MD-030-executable-kernel-reduction-characterization/` directory (12 files) written.
+Full record: `14_decision-log/model-boundary-decisions.md` → MD-030 execution record. **MD-030
+COMPLETE.** No admission proposed.
+
+**Superseded-update-marker-51 (2026-09-08, earlier) — MD-029 COMPLETE — CONTROLLED SPECIFICATION-
+SUFFICIENCY AND COMPOSITION RETEST, PAIR 1 ONLY (B `Validate` ↔ C1 P-3).** Not Pair 2/3/4; not Stage
+07. Used exactly the two files MD-028-DQ-1 admitted. **Pre-execution finding**: `04`'s own I/O
+convention isn't self-contained — the concrete derivation rules live in `06-composition-rules.md`,
+**not admitted**; `03`'s capability table (admitted) does supply `Validate`'s own **output** carrier
+directly (`Verdict`, C10) — genuinely new. Input carriers remain `NOT SPECIFIED BY SOURCE`.
+**Independently-discovered correction**: direct re-read of seq 0157 (P-3's own source) found this
+reconstruction's own prior description — "tested via a many-to-many evidence-sharing stress test"
+(MD-023/024, Phase 4) — **does not match the source**; the actual method is a pairwise transactional-
+atomicity argument. The falsification conclusion itself stands; only the method-description is
+corrected (not edited into frozen text). **Result**: `Validate`'s stated responsibility and P-3's own
+`Confidence` property (an ASSESSMENT "derived from evidence and justification," seq 0157 §12) show a
+genuine functional correspondence at the role-description level — classified **`FUNCTIONAL ANALOGY`
+(level 3 of 6)**, explicitly labeled a "mapping constructed for analysis," not native. 5 of 7
+semantic-preservation properties untestable given admitted scope; no invariant preservation claimed.
+No classification changed; no frozen artifact modified; no additional file admitted; provenance held
+at `RECONSTRUCTED PROVENANCE`; no model selected; no common Kernel established; GA-038/K-1/K-2
+untouched. Verified: both consistency scripts `CONSISTENT`; all frozen directories confirmed
+unmodified; only the new `14_decision-log/MD-029-pair1-validate-p3-retest/` directory (12 files)
+written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-029 execution record.
+**MD-029 COMPLETE.** Pair 2/3/4 not tested. Stage 07 NOT opened.
+
+**Superseded-update-marker-50 (2026-09-08, earlier) — MD-028-DQ-1 DECISION RECORDED — SESSION-LEVEL HUMAN
+RESEARCH-GOVERNANCE DECISION: ADMIT (operator contracts only).** The user, as this session's directing
+principal, decided **ADMIT** only `docs/knowledgeos/research/kernel-reduction/04-operator-contracts.md`
+and its cited dependency `03-capability-model.md`, for specification-sufficiency purposes only (MD-024/
+025). **Explicitly typed as a `SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION`** — not corpus-internal
+organizational ratification; MD-028 `07`'s own `LEGITIMATE AUTHORITY NOT ESTABLISHED IN CORPUS` finding
+is explicitly preserved, not resolved, by this record (conditions 11–12 of the decision say so
+outright). Provenance stays `RECONSTRUCTED PROVENANCE`, unchanged. No other `kernel-reduction/` file
+admitted; `theory-v1.1-simulation/` not part of this decision. Both admitted files verified present,
+unmodified, at their original paths before recording (git-tracked 2026-09-06, mtime 2026-09-01,
+consistent with MD-025/026/027). No file copied/moved/rewritten. `classification-register.tsv` not
+touched — admitted files remain outside the `brainstorming/` corpus root; admissibility recorded only
+in the governance log and `MD-028/13_recorded-decision.md`. No classification changed; no composition
+performed; no model selected; Stage 07 not opened; K-1/OQ-2 and GK-5K-1–5 untouched. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-028-DQ-1 entry. **The next scientific step (a
+controlled specification-sufficiency/composition retest using the two admitted files) remains a
+separate, not-yet-granted authorization** — this session stops here.
+
+**Superseded-update-marker-49 (2026-09-08, earlier) — MD-028 COMPLETE — HUMAN CORPUS-BOUNDARY DECISION PACKAGE.** Not a
+research phase; not a decision by this reconstruction. Prepares evidence for a legitimate human
+authority to decide, narrowly: *"May `docs/knowledgeos/research/kernel-reduction/` be admitted as
+admissible Model-B-adjacent evidence, for the specific purpose of resolving the MD-024/025
+specification gap — without implying historical membership, authorship, or validation?"* Four
+non-prejudicial options presented (do not admit / admit operator-contracts only / admit the whole lane
+/ defer), none selected; provenance held at `RECONSTRUCTED PROVENANCE` throughout; a blank decision
+form prepared. **`LEGITIMATE AUTHORITY NOT ESTABLISHED IN CORPUS`** — the same gap already found for
+the unrelated K-1/K-2 GK-5K track (MD-022), now found a second time independently. Adversarial review
+of the package itself (10 falsifiers) found no hidden reclassification, no evidence-level inflation,
+no assumed authority. No classification changed; no frozen artifact modified; no directory admitted;
+no composition performed; no model selected; K-1/OQ-2 and GK-5K-1–5 untouched. Verified: both
+consistency scripts `CONSISTENT`; all frozen input directories confirmed unmodified; only the new
+`14_decision-log/MD-028-human-corpus-boundary-decision/` directory (13 files) written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-028 execution record. **MD-028 COMPLETE —
+GOVERNANCE-READY: YES. DECISION PENDING HUMAN GOVERNANCE.** This reconstruction has reached the limit
+of what it may decide on its own authority — this session stops here.
+
+**Superseded-update-marker-48 (2026-09-08, earlier) — MD-027 COMPLETE — ADVERSARIAL AUDIT OF MD-026.** A quality gate,
+not a research phase; MD-026's own frozen text not edited, corrections recorded here only. **Two
+corrections accepted from the authorizing critique**: "did not exist to omit" conflated Git-tracking
+date (2026-09-06) with filesystem-existence date — corrected to "was not Git-tracked; prior existence
+cannot be established." "Two independent, decisive pieces of evidence" overstated — both trace to one
+connected repository-history chain — corrected to "convergent but evidentially-dependent." **One
+further correction found this audit**: a direct falsification test on the check-in commit's own
+message found **no governance vocabulary present** — it is archival language, not a governance act —
+so MD-026's "separate, self-governing research context" is corrected to "a separately organized
+research lane; DDD bounded-context authority not established." 8 of 12 audited claims required no
+correction — MD-026's own section-level hedging was already correctly scoped; the corrections
+concentrate on places where its summary prose ran ahead of its own detailed findings.
+**Governance-readiness verdict: YES, with the corrections applied** — the corrected package does not
+mislead a decision-maker about what is fact, reconstructed provenance, interpretation, or unknown. No
+classification changed; no frozen artifact modified; no directory admitted; no composition performed;
+no model selected; K-1/OQ-2 and GK-5K-1–5 untouched. Verified: both consistency scripts `CONSISTENT`;
+MD-026 and all frozen directories confirmed unmodified; only the new `14_decision-log/MD-027-md026-
+adversarial-audit/` directory (8 files) written. Full record: `14_decision-log/model-boundary-
+decisions.md` → MD-027 execution record. **MD-027 COMPLETE.** The next authorized action is a formal,
+human corpus-boundary decision, presenting the corrected evidence package — not a further research
+task. Stage 07 NOT opened — this session stops here.
+
+**Superseded-update-marker-47 (2026-09-08, earlier) — MD-026 COMPLETE — CORPUS BOUNDARY, PROVENANCE, AND ADMISSIBILITY
+ADJUDICATION.** Not Stage 07; not Phase 5O; P-series not consulted. **Central finding**: MD-010/MD-011
+(2026-09-01) defined the corpus boundary by directory location. `docs/knowledgeos/research/` was first
+tracked in this repo's git history on **2026-09-06 — five days later, in the same commit that checked
+in the entire `docs/knowledgeos/brainstorming/` corpus.** That commit's own message linguistically
+distinguishes "the brainstorming corpus" from "research lanes," naming `research/kernel-reduction/`
+and `research/theory-v1.1-simulation/` separately from the enumerated `brainstorming/` subdirectories.
+`kernel-reduction/04-operator-contracts.md` (MD-025's central discovery) is self-dated 2026-09-01, same
+day as M0030, which directly cites this exact directory as its own output path — but only as an
+*intended* location; no document confirms actual execution wrote there (the weakest link in an
+otherwise well-evidenced chain). `theory-v1.1-simulation/C-type-system.md` has materially weaker
+provenance — no admissible citation link found. **A newly-searched directory (`reviews/kernel/`)
+contains what looks like a genuine `ConflictRecord` elaboration — but that lane's own internal
+self-audit explicitly disqualifies it as a "provenance loop"** (its own earlier reasoning, saved as a
+document, mistaken for independent corpus support) — MD-025's negative finding is thereby
+strengthened, not weakened. No `Θ` elaboration found anywhere in 6 newly-searched sibling directories.
+**Verdict**: predominantly Outcome C (separate research context) for `kernel-reduction/`, with one
+material qualification keeping Outcome A open, not refuted; Outcome D (unresolved) for
+`theory-v1.1-simulation/`. No admission mechanism exists in the governing protocol. **Next authorized
+action: a formal corpus-boundary decision (human governance act, analogous to MD-010/MD-011), not a
+research task.** No classification changed; no frozen artifact modified; no directory admitted; no
+composition performed; no model selected; K-1/K-2 governance untouched (one incidental "HPA" mention
+noted, not pursued). Verified: both consistency scripts `CONSISTENT`; all frozen directories and all 7
+external `docs/knowledgeos/` sibling directories confirmed read-only; only the new
+`14_decision-log/MD-026-corpus-boundary-provenance/` directory (14 files) written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-026 execution record. **MD-026 COMPLETE.** Stage 07
+NOT opened — this session stops here.
+
+**Superseded-update-marker-46 (2026-09-08, earlier) — MD-025 COMPLETE — SPECIFICATION SUFFICIENCY AND MISSING-STRUCTURE
+CENSUS.** Not Stage 07; not Phase 5O; P-series not consulted (standing instruction: `theory-extraction/`
+is a separate, independently-run verification track). Two wording corrections to MD-024 carried
+forward (not editing MD-024's text). **Central finding**: an exhaustive, corpus-wide search of the
+161-file admissible Model B population, following a citation in one B-admissible historical-summary
+document, led to `docs/knowledgeos/research/kernel-reduction/04-operator-contracts.md` — a rigorous,
+fully-specified operator-contract apparatus (14-atom vocabulary, explicit I/O conventions) for all 13
+of C0's operators plus `Qualify`, exactly what MD-024 found absent. **This directory has never been
+classified by this reconstruction (0 register rows reference it) but is directly cited, by exact path,
+as its own output location by M0030 — an admissible `b`-tagged file.** A parallel finding: `S^epi`'s
+missing `Context` argument is formally typed in a second, similarly unclassified directory
+(`theory-v1.1-simulation/`). Both recorded under a new study-local classification, `E1-OUT-OF-SCOPE`
+— directly evidenced, but outside the corpus root (MD-010/MD-011) this reconstruction has used since
+Phase 0. **Negative findings** (disclosed limited search scope): no external elaboration found for C1's
+`ConflictRecord` or C2's `Θ`. **A's own `Context` re-confirmed 4-way internally unresolved** (CT-1) —
+cannot supply `S^epi`'s missing argument regardless of scope. **Central conclusion**: GA-001/
+composition is not resolved — it depends entirely on a prior, separate, not-yet-made **corpus-boundary
+decision** (whether to admit `docs/knowledgeos/research/`), which this study does not make. No
+classification changed; no frozen artifact modified; no corpus-boundary expansion performed; no model
+selected; no composition performed; K-1/OQ-2 and GK-5K-1–5 untouched. Verified: both consistency
+scripts `CONSISTENT`; all frozen input directories confirmed unmodified; only the new
+`14_decision-log/MD-025-specification-sufficiency-census/` directory (14 files) written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-025 execution record. **MD-025 COMPLETE.** Stage 07
+NOT opened — this session stops here.
+
+**Superseded-update-marker-45 (2026-09-08, earlier) — MD-024 COMPLETE — GA-001 COMPOSITION AND COMPLEMENTARITY STUDY.**
+Not Stage 07; not Phase 5O. Applied 2 wording corrections to MD-023 (recorded here, MD-023's own text
+not edited): GA-038's "cannot be resolved" softened to "no criterion within the tested set was found";
+GA-001's non-convergence held "within the tested diagnostic sample." **Pre-execution raw-source
+finding**: Model B's own C0 operators lack a stated input/output type anywhere in B's legitimate
+151-file evidence base (M0030 requests the contract; M0035, the confirmed execution record, doesn't
+supply it) — a more rigorous operator-contract apparatus exists (M0185/M0184) but is `KR-SIM`-tagged,
+outside B's own scope, not imported. **4 pre-registered diagnostic pairs tested** (selection criteria
+documented before testing): `Validate`↔C1's P-3; B's `S^epi(E,C,Q)→A`↔A's 8-field Kernel Candidate;
+B's operators↔C2's `Θ`; B's tested contradiction line↔C1's `ConflictRecord` (adversarial). 3 of 4
+landed `NOT FORMALLY SPECIFIED ENOUGH TO TEST`/`PARTIALLY TESTABLE`, confirming the pre-execution
+finding. **Two genuine, narrow, non-reconstructed positive findings**: A's tuple field names
+(`Evidence`/`Question`/`Assessment`) align with B's `S^epi`'s own argument names (`E`/`Q`/`A`), missing
+only `Context`; B's own tested result (flat conflict-representations provably lose required
+distinctions) directly constrains what C1's `ConflictRecord` would need to become — functional
+correspondence, not a demonstrated map. **The core complementarity hypothesis is neither confirmed nor
+refuted — predominantly `H4` (untestable given current specification).** No classification changed; no
+frozen artifact modified; no model selected; no composition, canonical Kernel, or `K_t` created; GA-038
+not reopened; K-1/OQ-2 and GK-5K-1–5 untouched. Verified: both consistency scripts `CONSISTENT`; all
+frozen input directories confirmed unmodified; only the new `14_decision-log/MD-024-ga001-composition-
+complementarity/` directory (12 files) written. Full record: `14_decision-log/model-boundary-
+decisions.md` → MD-024 execution record. **MD-024 COMPLETE.** Stage 07 NOT opened — this session
+stops here.
+
+**Superseded-update-marker-44 (2026-09-08, earlier) — MD-023 COMPLETE — BLOCKING-GAP RESOLUTION STUDY (GA-001, GA-038,
+GA-002/003).** Not Stage 07; not Phase 5O. Investigated whether GA-001 (Kernel identity) and GA-038
+(no canonical `K_t`) are resolvable, per 3 pre-negotiated clarifications: recurrence language corrected
+throughout (never "confirmed"); a pre-registered 4-pair diagnostic sample instead of exhaustive
+pairwise sweep; a four-state obstruction taxonomy (`NOT FORMALLY SPECIFIED ENOUGH TO TEST` /
+`PARTIALLY TESTABLE` / `TESTED — NO MAP FOUND` / `UNRESOLVED`), no under-specified candidate
+reconstructed to enable a test. **GA-001**: 4 pairs tested (B's C0↔C1's P-3; B's C0↔C1's P-5 "K-1";
+A's Kernel Candidate↔C1's P-5; C2's Kernel def↔C1's P-5) — none reached beyond `NOT FORMALLY SPECIFIED
+ENOUGH TO TEST`/`PARTIALLY TESTABLE — no map found`. The aggregate-vs-operator divide corroborated by a
+failure-mode asymmetry (missing-operation vs. invalid-invariant) and **reframed as a testable DDD
+complementarity hypothesis** (two layers of one model, not rivals) — untested by actual composition.
+Even within the aggregate category, no candidate corresponds to another — persistent non-convergence,
+reported as legitimate. New finding: `ConflictRecord` present in C1's/B's own work, absent from A's/
+C2's. **GA-038**: 10 canonicalization criteria tested — `NO CORPUS-JUSTIFIED CANONICALIZATION CRITERION
+FOUND`, with one exception: preservation-via-explicit-ratification, evidenced and successfully applied
+once, to `Δ_t` only (M0132's own "freeze-as-constraint, not conclusion") — meaning the corpus's one
+successful closure precedent is a **governance act, not a mathematical selection**; GA-038 cannot be
+resolved by further scientific analysis alone. **GA-002/003**: remain hypothesis-level, not upgraded;
+best explanation for the naming match is reconstruction-process reuse, independently supported for the
+`Δ_t` non-symmetry correction specifically. **No classification changed; no frozen artifact modified;
+no model selected; no canonical Kernel/`K_t` created; no composition attempted; K-1/OQ-2 and
+GK-5K-1–5 untouched.** Verified: both consistency scripts `CONSISTENT`; all frozen input directories
+confirmed unmodified; only the new `14_decision-log/MD-023-blocking-gap-resolution/` directory (10
+files) written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-023 execution record.
+**MD-023 COMPLETE — PERSISTENT NON-CONVERGENCE REPORTED AS A LEGITIMATE RESULT FOR BOTH GA-001 AND
+GA-038.** Stage 07 NOT opened — this session stops here.
+
+**Superseded-update-marker-43 (2026-09-08, earlier) — MD-021 STAGE 06 COMPLETE — GAP ANALYSIS.** Following a required
+protocol check (`00_control/protocol.md` defines `06_gap-analysis` only as a stage-gate node, no
+dedicated methodology), executed as a synthesis stage over Phases 1/2/3/4/6 — no new corpus research.
+**Not Phase 5O** — the K-1/K-2 governance-frozen track (5A–5N, handover, MD-022) treated as an external
+frozen boundary. 53 gaps registered (`GA-001`–`053`) across cross-model, per-model, and formal/
+empirical categories, each epistemically classified and evidence-traced. **Central finding**: exactly
+2 gaps are BLOCKING, and only for a *unified* formalization — `GA-001` (no two of the four
+independently-produced Kernel families are structure-preserving-equivalent; the aggregate-vs-operator-
+set categorical split confirmed a 4th and 5th time) and `GA-038` (Model B's own explicit statement:
+no corpus-internal way to select one canonical `K_t` from its own 9+-variant family — the same
+cross-model question, sourced directly from the corpus's own words). Neither blocks model-specific
+formalization. **3 governance-blocked items surfaced, none opened**: `GA-006` (a corpus-wide "K-1"
+naming collision — C1's DDD aggregate vs. the frozen Phase-5 8-primitive tuple — deliberately left
+unresolved); `GA-044` (`ADR-KOS-KERNEL-001` never formally accepted); `GA-050` (the C1/C2
+classification boundary may not track a clean content split). No new contradiction manufactured — 2
+Model-B items confirmed already resolved by the corpus's own audit discipline, correctly excluded.
+**No classification changed; no frozen artifact modified; no model selected; no unified theory or
+universal Kernel created; no numerical scores used anywhere; K-1/OQ-2 and GK-5K-1–5 untouched.**
+Verified: both consistency scripts `CONSISTENT`; all five frozen input directories confirmed
+unmodified; only the new `06_gap-analysis/` directory (7 files) written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Stage 06 execution record. **STAGE 06
+COMPLETE — 53 GAPS REGISTERED, 2 BLOCKING FOR UNIFIED FORMALIZATION ONLY.** Stage 07 (formalization)
+NOT opened — this session stops here.
+
+**Superseded-update-marker-42 (2026-09-08, earlier) — MD-021 PHASE 6 COMPLETE — CROSS-MODEL ADJUDICATION EXTENDED TO
+MODEL C1/C2.** Extends Phase 3's own cross-model adjudication (`05_cross-model/`) to Model C1/C2, which
+did not exist when Phase 3 ran. Explicitly **not Phase 5O** — does not touch or reference the K-1/K-2
+sub-sequence (5A–5N), the handover, or MD-022. New correspondence rows only (C1↔A, C1↔B, C2↔A, C2↔B);
+Phase 3's own A↔B rows cited by pointer. **Central findings**: (1) a promising-looking naming match
+does NOT hold under raw-source check — A's seq 0219 does not actually cite C1's "K-1" (seq 0165/0167),
+despite the reconstruction's own per-file synthesis suggesting it did; (2) an independent,
+citation-free convergence on shared notation — C1's own `phase_measure_theory/` `K_t`/`Δ_t`
+proliferation (seq 0446–0492) uses identical variable names to Model B's own math-lane thread
+(M0001–M0132) with zero citation link either direction, verified directly — a stronger PROPOSED
+CROSS-MODEL HYPOTHESIS than Phase 3's own original state-proliferation finding; (3) the `kernel/`
+directory confirmed as a genuine classification-boundary region (seq 0165/0219 carry both `gita` and
+`c1` tags); (4) Kernel rows settle at PARTIAL CORRESPONDENCE (categorical) / UNRESOLVED (specific),
+mirroring Phase 3's own A↔B Kernel finding — no row anywhere reached STRUCTURAL CORRESPONDENCE or
+above; (5) a corpus-wide "K-1" naming collision surfaced (C1's DDD aggregate vs. the Phase-5A–5N
+8-primitive tuple) — recorded as an open question, explicitly NOT adjudicated, not touching the frozen
+K-1/K-2 track. No new INCOMPATIBLE row found (contrast Phase 3's 3). **No classification changed; no
+frozen artifact modified; no model selected; no convergence forced; no governance decision made;
+GK-5K-1–5 and K-1/OQ-2 untouched.** Verified: both consistency scripts `CONSISTENT`; all frozen
+directories (Phase 1–4, 5A–5N, handover, MD-022) confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-6-cross-model-c1c2-extension/` directory (6 files) written; 22
+raw-source spot-checks (requirement ≥20). Full record: `14_decision-log/model-boundary-decisions.md` →
+MD-021 Phase 6 execution record. **PHASE 6 COMPLETE.** Phase 7, gap-analysis, formalization, and any
+downstream stage-06+ work remain unauthorized and untouched — this session stops here.
+
+**Superseded-update-marker-41 (2026-09-08, earlier) — MD-022 — GOVERNANCE AUTHORITY EVIDENCE-REQUIREMENTS PREPARED, K-2
+TRACK ONLY (NOT a phase, NOT a fourth authority search).**
+`14_decision-log/MD-022-governance-authority-evidence-requirements.md` builds the evidence requirements
+and verification tooling a real organizational process needs to supply authority evidence outside the
+corpus — it does not re-test `GOVERNANCE AUTHORITY NOT EVIDENCED` (established in 5K `03`, independently
+re-confirmed in 5L `08` corpus-wide and 5N `07`). Contents: a 9-level evidence-status taxonomy (this
+programme barred from promoting anything to "governance decision" or "ratified/canonical"); a required-
+evidence checklist built on seq 0927's own `LegitimateAuthority(a,scope,source,validity)` predicate
+(charter/mandate/delegation/RACI categories only — no candidate named, HPA neither implied nor
+excluded); a reusable 9-step authority-chain verification test (not applied to anyone here); a K-2
+decision-readiness matrix (all 5 `GK-5K` rows: research complete YES, authority established NO, decision
+possible NO, ratification possible NO); the three-stage sequencing (authority establishment → decision →
+ratification) restated non-collapsible; the exact organizational ask. **Scope: K-2 track only
+(`GK-5K-1`–`5`) — K-1/OQ-2 explicitly untouched, per MD-021 §9.** No frozen artifact modified; no
+authority named/inferred; no Option selected; no Π/Qualify/State resolved; no Schema v3; no DDD context
+map. Full record: `14_decision-log/model-boundary-decisions.md` → MD-022 entry. **GK-5K-1 through
+GK-5K-5 remain OPEN. Phase 5O NOT opened.** Awaiting the real organizational response — supply of
+authority evidence, or an explicit statement that none exists.
+
+**Superseded-update-marker-40 (2026-09-08, earlier) — THREE-MODEL PROGRAMME (MD-021) — RESEARCH COMPLETE TO GOVERNANCE
+BOUNDARY — HANDOVER ONLY.** A standalone synthesis artifact (NOT Phase 5O)
+`14_decision-log/MD-021-research-to-governance-handover.md` compiles the already-completed Phase
+5K/5L/5M/5N artifacts into a research-to-governance handover — no new corpus research, no source
+artifact modified. **Two tracks, kept explicit and separate**: **K-1** (5N: N2, PARTIALLY RATIFIED —
+`K_t` naming ratified by D-FA-6, object-level membership left open under OQ-2) and **K-2/Assertion**
+(5K/5L: NOT RATIFIED — `GOVERNANCE AUTHORITY NOT EVIDENCED`, 5 open decisions GK-5K-1 through GK-5K-5).
+5L's 5 corrections to 5K are carried forward as an explicit overlay, not merged into 5K's own frozen
+text: "3 independent sources" → "three uncited restatements within one continuous research programme";
+Option E's "lowest governance complexity" → ratification-time only; Option C's "strongest candidate" →
+equal status with Option D's synthesis; Option E's variant count 2 → 3 (D5 restored); the
+`claim-registry` finding → "located, content does not match D285-1's own citation." **Central finding,
+one applying to both tracks**: `GOVERNANCE AUTHORITY NOT EVIDENCED` — established in 5K, re-confirmed
+corpus-wide in 5L, re-tested against D-FA-6/D-FA-4 in 5N; "HPA" recurs as a ruling actor but no document
+establishes its own mandate. Three actions kept apart: authority establishment (not done) → governance
+decision (blocked) → ratification/canonicalization (blocked). **Recommended next action — exactly one,
+organizational not research**: establish, within the real organization, which body is legitimately
+empowered to decide GK-5K-1 through GK-5K-5 and K-1's own OQ-2 — further corpus research cannot
+manufacture this fact (three independent efforts already looked and found nothing). **No classification
+changed; no frozen artifact modified; no Option selected; no Assertion ratified; no K-1 object-level
+ratification declared; no DDD context map adopted; no Schema v3; no four-model convergence.** Full
+record: `14_decision-log/model-boundary-decisions.md` → MD-021 Research-to-Governance Handover entry.
+**Phase 5O is NOT opened and is not authorized.** Research/ratification resume only under a new,
+separately authorized research question, or after the organizational step above and a subsequent,
+explicit governance decision — this session stops here.
+
+**Superseded-update-marker-39 (2026-09-08, earlier) — PHASE 5N COMPLETE — K-1 RATIFICATION STATUS
+DIRECTLY ADJUDICATED.** Executed under the user's explicit authorization of Phase 5N only, the first phase in
+this sub-sequence authorized to adjudicate K-1's own governance status directly, following Phase 5M's
+own explicit refusal to do so. **Central finding: N2 — PARTIALLY RATIFIED.** K-1's naming (`K_t`) is
+genuinely ratified by D-FA-6 (seq 0764, "HPA RULING — GN-31"), which states directly "**No formal
+object changes; this is a terminology policy**." K-1's own 8-primitive object is **not** ratified —
+the one ruling addressing it (D-FA-4) classifies the 8-primitive candidate ("M₄₉") as an "**L2
+candidate**" and states "**Membership at the object level remains open (OQ-2)**." A second
+missing-ratified-deliverable finding parallels Phase 5M's own `claim-registry.md` finding:
+`FA-4-concept-terminology-reconciliation.md` is cited/quoted by 6+ downstream documents as "RATIFIED,
+GN-31" but does not exist anywhere in the checked-in corpus; "FA-4" and "D-FA-4" are confirmed to be
+two separate, non-overlapping artifacts. Adversarial falsification of five hypotheses (H1 fully-
+ratified, H5 not-ratified-at-all both failed against direct quotes; H4 governance-unresolved only
+partially applies; **H3 partial ratification is the only hypothesis surviving fully**). Impact
+analysis across Phase 5E–5M: each UNAFFECTED, BACKGROUND-INTERPRETATION-NARROWED, or (5J)
+PROVENANCE-CLAIM-AFFECTED — **no phase is reopened or rewritten.** **No classification changed
+anywhere; no frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A through 5M, D285-1/D285-6/D285-7, seq
+0630/0757/0764/0740/0865/0927, or the corpus's own executable scripts) modified; no Phase-5K Option
+selected; no implementation, canonicalization, or four-model convergence performed.** Verified: both
+consistency scripts `CONSISTENT`; register unchanged; all 183 prior-phase files confirmed unmodified;
+only the new `14_decision-log/MD-021-phase-5n-k1-ratification-adjudication/` directory (20 files) plus
+the decision-log entry written; 32 raw-source spot-checks performed (requirement ≥30), 23 directly
+concerning K-1 ratification/governance evidence (requirement ≥20). Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5N execution record. **PHASE 5N COMPLETE
+— K-1 RATIFICATION STATUS DIRECTLY ADJUDICATED — NO IMPLEMENTATION, CANONICALIZATION, OPTION
+SELECTION, OR FOUR-MODEL CONVERGENCE AUTHORIZED.** Phase 5O and any downstream phase remain
+unauthorized and untouched — this session stops here.
+
+**Superseded-update-marker-38 (2026-09-08, earlier) — PHASE 5M COMPLETE — C-022 / CLAIM-REGISTRY EVIDENTIARY
+INVESTIGATION ONLY, K-1 GOVERNANCE STATUS NOT ADJUDICATED.** Executed under the user's explicit
+authorization of Phase 5M only, a narrowly-bounded evidentiary investigation following Phase 5L's own
+discovery that D285-1's foundational citation for K-1's ratification ("`C-022` in `claim-registry`")
+could not be verified. **Central question**: can the corpus substantiate this citation? Explicitly not
+an adjudication of K-1's own status. **Central finding: M-B — CITATION PARTIALLY SUBSTANTIATED.**
+D285-1's citation bundles genuine, locatable evidence spread across three separate documents, none of
+which is "C-022 in claim-registry": seq 0630 (the true 8-primitive origin); seq 0757 (a "Phase 1
+Status Report" substantiating "50 attack classes, no counterexample" — but dropping an important
+hedge, "explicitly NOT a proof," and self-reporting a `claim-registry.md` deliverable that cannot be
+found anywhere in the corpus despite repeated adversarial search); seq 0764 ("HPA RULING — GN-31,"
+substantiating "D-FA-6 'qualified naming'" near-verbatim as a genuine ratification act — of naming
+only, not the combined claim — and, newly found, explicitly expanding **"HPA" to "Highest Project
+Authority"** for the first time in this reconstruction's own reading, still without independently
+verified organizational legitimacy). The identifier "C-022" and the phrase "claim-registry," wherever
+they actually appear in the corpus, both denote **confirmed unrelated subjects**. **Six-question
+adjudication kept explicitly separate**: does the citation exist (no, not for this subject) · content
+match (no) · ratification (partial, elsewhere, naming only) · authority identified (yes, HPA) ·
+authority legitimate (no) · citation accurate (no). **Impact, strictly bounded**: the K-1/K-2 "real
+ratification vs. none" contrast used since Phase 5F remains directionally accurate but less clean than
+its prior framing implied; no prior phase's own central K-2 findings depend on this citation's own
+accuracy; **Phase 5E through 5L are NOT reopened or rewritten.** **No classification changed anywhere;
+no frozen artifact (including D285-1/D285-6/D285-7, Step 272A/272B, step-152, Step 239, seq 0757, seq
+0764, seq 0630, seq 0927, or the corpus's own executable scripts) modified; K-1's own governance
+status NOT adjudicated; no four-model or cross-model convergence performed; no implementation
+performed.** Verified: both consistency scripts `CONSISTENT`; register unchanged; all 167 prior-phase
+files confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-5m-c022-claim-registry-investigation/` directory (16 files) plus the
+decision-log entry written; 27 raw-source spot-checks performed (requirement ≥25), 19 directly
+concerning C-022/claim-registry/K-1 provenance (requirement ≥15). Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5M execution record. **PHASE 5M
+COMPLETE — C-022 / CLAIM-REGISTRY EVIDENTIARY INVESTIGATION ONLY — K-1 GOVERNANCE STATUS NOT
+ADJUDICATED.** Phase 5N, K-1 ratification adjudication, reopening Phase 5E–5J, altering Phase 5K/5L,
+Option selection, implementation, and four-model convergence remain unauthorized and untouched — this
+session stops here.
+
+**Superseded-update-marker-37 (2026-09-08, earlier) — PHASE 5L COMPLETE — INDEPENDENT ADVERSARIAL
+AUDIT ONLY, NO GOVERNANCE DECISION MADE: Independent Adversarial Audit of Phase 5K Governance
+Proposal.** Executed under the user's explicit authorization of Phase 5L only, an independent
+adversarial audit of Phase 5K, testing whether its Option-E recommendation is evidence-justified, whether Options A–E are
+sufficiently complete, and whether `GOVERNANCE AUTHORITY NOT EVIDENCED` is itself adequately
+established. **Three headline findings**: (1) "3 independent sources" for the Observation→Qualify→
+Evidence relationship overstated the evidentiary framing — no citation chain exists among seq 0630/
+seq 0795/Step 272A, but all three sit within one continuously-numbered research programme; corrected
+to "three separate, uncited restatements within one continuous research programme"; (2) Option E's
+own "lowest governance complexity" claim conflated ratification-time complexity (true) with overall
+system complexity (not shown) — Option E defers rather than eliminates complexity to the point of
+first consumption; (3) **a consequential new finding outside this phase's own direct scope**: D285-1's
+own foundational citation for K-1's ratification — "`C-022` in `claim-registry`" — cannot be verified
+anywhere in the corpus (a file named "claim-registry" exists but doesn't contain it; the only "C-022"
+found elsewhere concerns an unrelated topic) — this does not reopen K-2's own governance-unresolved
+status but weakens the implicit K-1-vs-K-2 contrast this reconstruction has repeatedly drawn; flagged
+for a future phase, not adjudicated here. **Five specific corrections recorded, none modifying Phase
+5K's own frozen artifacts.** One minor option-completeness gap named (Observation/Evidence as separate
+knowledge objects, not Assertion fields) but not added to the option set.
+`GOVERNANCE AUTHORITY NOT EVIDENCED` re-confirmed with a corpus-wide search scope. **Overall verdict:
+5L-B — PHASE 5K CONFIRMED WITH QUALIFICATIONS** — the Option-E recommendation survives independent
+adversarial audit. **No classification changed anywhere; no frozen artifact (Model A/B/Phase-3/
+Phase-4/Phase-5A through 5K, or the corpus's own D285-1/D285-6/D285-7/Step-272A/272B/152/239/seq-0927/
+executable scripts) modified; no DDD pattern adopted; no Assertion schema ratified; no governance
+decision recorded as effective; no four-model or cross-model convergence performed.** Verified: both
+consistency scripts `CONSISTENT`; register unchanged; all 151 prior-phase files confirmed unmodified;
+only the new `14_decision-log/MD-021-phase-5l-adversarial-audit/` directory (16 files) plus the
+decision-log entry written; 28 raw-source spot-checks performed (requirement ≥25), 11 specifically
+targeting recommendation-supporting claims (requirement ≥10). Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5L execution record. **PHASE 5L
+COMPLETE — INDEPENDENT ADVERSARIAL AUDIT ONLY — NO GOVERNANCE DECISION MADE.** Phase 5M, governance
+ratification, implementation, canonicalization, DDD adoption, Assertion schema selection, Option E
+adoption, Option C reconciliation, Kernel unification, and four-model convergence remain unauthorized
+and untouched — this session stops here.
+
+**Superseded-update-marker-36 (2026-09-08, earlier) — PHASE 5K COMPLETE — GOVERNANCE PROPOSAL
+PREPARED, NOT RATIFIED: Governance Proposal for Assertion Reconciliation.** Executed under the user's
+explicit authorization of Phase 5K only, following Phase 5J's completed governance-unresolved
+finding. **A remarkable corpus
+find, load-bearing for this phase's own structure**: seq 0927
+(`step_283_missing-part-governance-decision-protocol-authority-provenance-and-closure-criteria.md`,
+read in full) already defines a formal `Prepare→Decide→Ratify→Record` governance-act sequence and a
+Governance Decision Register table format, adopted directly as this phase's own structure. The same
+document explicitly uses *"HPA is the ratification authority"* as a **negative example** of an
+overclaim a verifier must not make without independent corpus establishment — this phase found no
+such establishment anywhere, despite HPA's own recurring functional role as a reviewing/ruling actor
+elsewhere in the corpus. **Decision authority: `GOVERNANCE AUTHORITY NOT EVIDENCED`.** **Five
+reconciliation options formulated and evaluated** (mathematical/statistical/DDD-architectural/
+knowledge-engineering grounds): A (preserve D1/D3), B (preserve D2/D4), C (an explicit two-layer
+Observation→Qualify→Evidence model, motivated by the strongest single-relationship evidence in this
+whole investigation — 3 independent sources — but explicitly new structurally), D (a new
+governance-synthesized union schema, labeled `PROPOSED GOVERNANCE SYNTHESIS`), E (preserve both
+variants, postpone canonicalization). **Recommendation (NON-BINDING, HUMAN DECISION REQUIRED)**:
+Option E as an interim position — zero information loss, lowest governance complexity, consistent
+with the corpus's own `GC=NOT CLAIMED does not block further work` principle and this
+reconstruction's own standing evidentiary discipline; Option C named as the standing content-level
+candidate for any future reconciliation attempt. **A formal Governance Decision Record was produced**
+(5 open entries), decision status `PROPOSED — NOT RATIFIED`. **No classification changed anywhere; no
+frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A through 5J, or the corpus's own D285-1/D285-6/
+D285-7/Step-272A/272B/seq-0927/executable scripts) modified; no DDD context mapping declared; no
+four-model or cross-model convergence performed; no unified/canonical Kernel constructed; no
+Assertion schema ratified, adopted, canonicalized, or implemented.** Verified: both consistency
+scripts `CONSISTENT`; register unchanged; all 134 prior-phase files confirmed unmodified; only the
+new `14_decision-log/MD-021-phase-5k-assertion-governance-proposal/` directory (17 files) plus the
+decision-log entry written; 22 raw-source spot-checks performed (requirement ≥20). Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5K execution record. **PHASE 5K
+COMPLETE — GOVERNANCE PROPOSAL PREPARED, NOT RATIFIED — AWAITING EXPLICIT GOVERNANCE DECISION / NEXT
+AUTHORIZATION.** Phase 5L, ratification, adoption, canonicalization, repair, implementation, DDD
+context-map adoption, and four-model convergence remain unauthorized and untouched — this session
+stops here.
+
+**Superseded-update-marker-35 (2026-09-08, earlier) — PHASE 5J COMPLETE: K-2 Authority, Version,
+Provenance and Supersession Adjudication.** Executed under the user's explicit authorization of Phase
+5J only, following Phase 5I's completed integrity audit. **Central question**: can the corpus establish a
+legitimate authority/version/provenance/supersession relationship among the competing K-2 Assertion
+definitions? **Method**: read Step 272A and Step 272B in full (3,556 lines, previously only confirmed
+to exist) — the corpus's own cited source for K-2's operation set and epistemic-status structure; ran
+a repository-history audit via `git log --follow`; performed a 4-concept authority audit. **Central
+findings**: (1) repository history cannot establish creation/modification order between any D285/exec
+artifact — all six files were added in a single bulk-import commit (2026-09-06), reflecting when the
+corpus was checked into git, not when the research was written; (2) Step 272A/272B — genuinely
+substantive on K-2's own operation set and epistemic-status structure — **do not define `Assertion`'s
+own field structure at all**, remaining silent on the exact conflict tracked since Phase 5G; (3) a
+**third `Qualify` arity found** (`Qualify(o,c,π)→e`, 3 arguments, Step 272A) — now 4 mutually
+incompatible arities total, none unified by any stated version relationship, though Step 272A does
+supply `Qualify`'s clearest corpus-native status label ("REQUIRED/POLICY-DEPENDENT"); (4) new evidence
+on the `Π`/`π` denotation weighs toward "Policy" (2 of 3 sources) without resolving it against the
+one executable, worked-example source favoring "Provenance"; (5) the `id`-field-vs-derived-hash
+question is **resolved as compatible** — the phase's one genuinely settled sub-question; (6) **no
+authority marker of any kind exists for `Assertion`, `Qualify`, or K-2 as a whole**, in any of 4
+tested authority senses, in explicit contrast to K-1's own full ratification chain; (7) mathematical
+compatibility testing found no bijection/injection/surjection/embedding/quotient/lossless-encoding
+connecting the two competing Assertion characterizations across 8 tested relation types. **Overall
+completion classification: E — GOVERNANCE-UNRESOLVED**, with the contradiction dimension (inherited
+from Phase 5I) and the source-research dimension (confirmed absent across the 2 newly-read documents)
+both stated explicitly, not hidden inside the governance finding. **No classification changed
+anywhere; no frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A through 5I, or the corpus's own
+D285-1/D285-6/D285-7/Step-272A/272B/executable scripts) modified; no DDD context mapping declared; no
+four-model or cross-model convergence performed; no unified/canonical Kernel constructed; no
+implementation performed; no corpus governance record proposing reconciliation authored (the
+authorization's own scope forbids silent reconciliation, and no authority marker was found to base one
+on).** Verified: both consistency scripts `CONSISTENT`; register unchanged; all 117 prior-phase files
+confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-5j-k2-authority-version-provenance/` directory (17 files) plus the
+decision-log entry written; 24 raw-source spot-checks performed (requirement ≥20), including Step
+272A/272B and repository history. Full record: `14_decision-log/model-boundary-decisions.md` →
+MD-021 Phase 5J execution record. **PHASE 5J COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.**
+Phase 5K, global reclassification, four-model convergence, unified/canonical Kernel construction, DDD
+context-map adoption, repair of any frozen artifact, and implementation remain unauthorized and
+untouched — this session stops here.
+
+**Superseded-update-marker-34 (2026-09-08, earlier) — PHASE 5I COMPLETE: K-2 Definition Integrity and
+Executable-Semantics Adjudication.** Executed under the user's explicit authorization of Phase 5I
+only, following Phase 5H's completed mathematical-closure phase. **Central question**: is K-2 a
+single mathematically identifiable object with multiple representations, or does the corpus contain
+multiple competing K-2 definitions? **Method**: a 7-entry Assertion Definition Register (`01`), a
+line-by-line executable-semantics audit of all three of the corpus's own scripts
+(`t285_reconcile.py`, `t285_equality.py`, `e_equality.py`) with the scripts' own core computations
+re-executed (not merely read), and 5 required equivalence relations tested between them. **Central
+findings**: (1) `t285_reconcile.py`'s own re-executed output computes `{Observation, State}` as
+"simply ABSENT," reproducing exactly the pre-revision framing D285-1's own prose explicitly retracted
+via its Sañjaya-layer correction — the code was never updated to reflect the prose's own later
+revision; (2) this same script is **internally inconsistent with itself** (its own T-A and T-C
+sections disagree about `Observation`'s status); (3) `t285_equality.py`'s "semantic equality" test is
+a genuine, computed subset check, but its "observational equality" test is a hardcoded boolean
+dictionary, not a derived result — a distinction not previously drawn in this reconstruction; (4) two
+further discrepancies found: `Π`/`Pi` is glossed as "Policy" in prose but populated with
+provenance-shaped data in executable code, and `id` is a peer field in prose but a *derived* hash in
+code; (5) K-2's own top-level structure `(𝒜,ℛ)` remains stable and undisputed — the instability is
+localized entirely to its `Assertion` constituent. **K-2 classified: 5. COMPETING OBJECT
+DEFINITIONS**, with an additional, narrower finding of internal inconsistency localized to
+`t285_reconcile.py`'s own two sections. **The K-1 → K-2 projection is revised into two competing
+projections** ($\pi_1$ via D285-1/`t285_reconcile.py`'s field set, $\pi_2$ via D285-6/
+`t285_equality.py`'s field set), not shown equivalent — Phase 5H's own "partial correspondence"
+finding is narrowed (not reversed) to apply specifically to $\pi_2$, which is all it was ever actually
+testing. **Overall completion classification: D — INTERNALLY INCONSISTENT**, spanning conceptual
+ontology, executable semantics, and provenance layers, precisely named. **No classification changed
+anywhere; no frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A through 5H, or the corpus's own
+D285-1/D285-6/D285-7/executable scripts) modified; no DDD context mapping declared; no four-model or
+cross-model convergence performed; no unified/canonical Kernel constructed; no implementation
+performed.** Verified: both consistency scripts `CONSISTENT`; register unchanged; all 101 prior-phase
+files confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-5i-k2-definition-integrity/` directory (16 files) plus the decision-log
+entry written; 25 raw-source spot-checks performed (requirement ≥20), covering all three executable
+scripts. Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5I execution
+record. **PHASE 5I COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5J, global
+reclassification, four-model convergence, unified/canonical Kernel construction, DDD context-map
+adoption, repair of any frozen artifact, and implementation remain unauthorized and untouched — this
+session stops here.
+
+**Superseded-update-marker-33 (2026-09-08, earlier) — PHASE 5H COMPLETE: Mathematical Closure and
+Source-Gap Resolution for the K-1 → K-2 Projection.** Executed under the user's explicit authorization
+of Phase 5H only, a targeted mathematical/knowledge-engineering phase following Phase 5G's completed
+adversarial audit.
+**Central question**: can the K-1 → K-2 projection be mathematically completed from evidence already
+in the corpus, or are the remaining gaps genuine source-research gaps (in the corpus's own research,
+not this reconstruction's search effort)? **Central finding — a genuinely new primary-source
+discovery**: the corpus's own executable Python scripts (`exec/t285_reconcile.py`,
+`exec/t285_equality.py`, `exec/e_equality.py`, none previously read) supply machine-verifiable
+confirmation of the projection's "definable, not computable" status, and — most consequentially —
+reveal that the Assertion-unpacking conflict Phase 5G found in prose (D285-1 vs. D285-6) **recurs, in
+the identical pattern, inside the executable code itself** (`t285_reconcile.py` matches D285-1;
+`t285_equality.py` matches D285-6; a third script supplies a fourth, structurally different variant) —
+elevating this from a prose-level curiosity to a machine-observable contradiction in the corpus's own
+research artifacts. **Per-target closure**: K-1 operators — **PARTIALLY CLOSED** (9 named, typed
+transformations reconstructed; independently re-confirmed D285-7's own finding that operators were
+never enumerated against the 8 primitives — exactly 1 occurrence of "operator" in seq 0630's full
+2,232 lines); `Qualify` — **PARTIALLY CLOSED** (type signature `Observation → Evidence` now
+triangulated across 2 independent documents, a strengthening over Phase 5F/5G's single-source
+citation; computable algorithm confirmed a **SOURCE-RESEARCH GAP**; a further arity inconsistency
+found, 1-argument vs. 2-argument across two documents); `State` — **SOURCE-RESEARCH GAP** (a
+corpus-wide search for "carrier," D285-6's own unexpanded projection target, found ten occurrences,
+none matching — "the carrier" has no independent definition anywhere in the corpus). **Overall
+closure classification: B — Projection partially closable; explicit source gaps remain** (not forced
+to A, not understated to C). **No classification changed anywhere; no frozen artifact (Model A/B/
+Phase-3/Phase-4/Phase-5A through 5G, or the corpus's own D285-1/D285-6/D285-7/executable scripts)
+modified; no DDD context mapping declared or revisited; no four-model or cross-model convergence
+performed; no unified/canonical Kernel constructed; no implementation performed.** Verified: both
+consistency scripts `CONSISTENT`; register unchanged; all 87 prior-phase files confirmed unmodified;
+only the new `14_decision-log/MD-021-phase-5h-k1-k2-mathematical-closure/` directory (14 files) plus
+the decision-log entry written; 26 raw-source spot-checks performed (requirement ≥20), covering K-1,
+K-2, `Qualify`, `State`, and all four Assertion-unpacking variants. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5H execution record. **PHASE 5H
+COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5I, global reclassification, four-model
+convergence, unified/canonical Kernel construction, DDD context-map adoption, repair of any frozen
+artifact, and implementation remain unauthorized and untouched — this session stops here.
+
+**Superseded-update-marker-32 (2026-09-07, earlier) — PHASE 5G COMPLETE: Independent Adversarial Audit
+of K-1/K-2 Equivalence, Projection, and Context Mapping.** Executed under the user's explicit
+authorization of Phase 5G only, an independent adversarial audit of Phase 5F, issued after the user's
+own senior-level
+review identified four specific points needing scrutiny: whether "formal equivalence" understated
+K-1↔K-1-B (if no two distinct objects exist, there is nothing to be equivalent to); whether "semantic
+equality" was mathematically well-defined; whether the DDD "context mapping" framing had independent
+DDD-pattern evidence beyond the math; and whether the Observation finding was being over-generalized.
+**Three genuine changes resulted, not a rubber-stamp**: (1) **K-1↔Phase-5C's-K-1-B STRENGTHENED** from
+"formal equivalence" to **DEMONSTRATED IDENTITY (qualified: within-package, textual-reuse basis)** —
+applying the user's own sharper logic that formal equivalence presumes two distinct representations,
+and none is ever claimed between the two mentions; a genuine new finding surfaced in the process
+(D285-7 explicitly cites D285-6 by name, though no document cites "D285-1" by name); (2) **K-1↔K-2
+"semantic equality" DOWNGRADED** to **PARTIAL CORRESPONDENCE over a declared, unverified subset** —
+tested against 5 independently-defined equivalence types (representation/state/observational/
+semantic-preservation/information), 3 fail outright, 1 is an unverified authorial declaration, 1 fails
+for want of any inverse map; (3) **the DDD "context mapping" claim DOWNGRADED** — no bounded-context
+declaration, governance rule, or specified/implemented anti-corruption-layer artifact was found;
+corrected to "a mathematical projection is evidenced, a DDD architectural context mapping is NOT
+independently established." **Confirmed unchanged**: observational equivalence FALSE;
+Observation-as-layering-gap (re-tested against the required H1–H4 hypothesis set); `State` remains
+genuinely UNRESOLVED; Entity/Proposition/Relation correspondences; all seven K-1 through K-7
+dispositions. **One internal D285-package source tension (differing `Assertion`-unpacking lists)
+re-confirmed and shown to directly undermine the "semantic equality" claim.** **No classification
+changed anywhere; no frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A/Phase-5B/Phase-5C/Phase-5D/
+Phase-5E/Phase-5F, or the corpus's own D285-1/D285-6/D285-7) modified; no four-model or cross-model
+convergence performed; no unified/canonical Kernel constructed; no implementation performed.**
+Verified: both consistency scripts `CONSISTENT`; register unchanged; all 72 prior-phase files
+confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-5g-k1-k2-adversarial-audit/` directory (15 files) plus the decision-log
+entry written; 24 raw-source spot-checks performed (requirement ≥20), covering both K-1 and K-2
+primary sources. Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5G
+execution record. **PHASE 5G COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5H, global
+reclassification, four-model convergence, unified/canonical Kernel construction, cross-model
+synthesis, repair of any frozen artifact, and implementation remain unauthorized and untouched — this
+session stops here.
+
+**Superseded-update-marker-31 (2026-09-07, earlier) — PHASE 5F COMPLETE: K-1 Ontology Semantic
+Equivalence, Context Mapping, and Provenance Adjudication.** Executed under the user's explicit
+authorization of Phase 5F only, following review of Phase 5E's completion (which found D285-1/seq-1006
+changes the K-1 problem
+into a directly-testable provenance-and-semantics question). **A terminology collision was disclosed
+up front**: the authorization's own description of "K-1-B" ("two-component formulation... Assertion
+expansion") matches what this reconstruction has consistently called **K-2**, not Phase 5C's own
+"K-1-B" (from seq 1008, the ratified 8-primitive `K_t` itself) — both readings were carried through
+the full phase rather than one being silently discarded. **K-1 was reconstructed from its true
+primary source**, seq 0630 (`step-049-formal-model-reduction-...md`, located outside Phase 5E's own P2
+census), whose §49.29/§49.30 supply the exact 8-primitive tuple `𝒦=(E,S,T,O,P,R,Π,A)` with explicit
+derived-structure definitions. **Central findings**: (1) K-1 (seq 1006) and Phase-5C's own K-1-B (seq
+1008) are the same object, cited identically within one authored, same-day package — promoted from
+Phase 5E's "structural correspondence" to **FORMAL EQUIVALENCE**; (2) K-1 and K-2 (the
+verification-lane ontology) stand in a precise, already-executed corpus-native "**lossy semantic
+projection**" relationship (seq 1007, D285-6, raw-source read in full): structural equality FALSE,
+semantic equality TRUE only after unpacking `Assertion` (modulo a declared drop of `Event/Policy/
+Action`), observational equality FALSE, with the projection map `π_K` definable but not computable
+(blocked on an unimplemented `Qualify` function); (3) `Observation`'s absence from K-2 traces to a
+documented "Sañjaya layer" recovery construction (seq 0979, six-value observation-status vocabulary) —
+a genuine layering gap, not an omission; `State` has no analogous recovery construction, genuinely
+`UNRESOLVED`; (4) Entity/Proposition/Relation, audited independently, each resolve to partial or
+structural correspondence, none to formal equivalence; (5) one internal tension found in the D285
+package itself (differing `Assertion`-unpacking lists between D285-1 and D285-6), disclosed, not
+repaired; (6) K-1 through K-7 each dispositioned with the required vocabulary, closing Phase 5D's own
+flagged "unregistered siblings" question. **No classification changed anywhere; no frozen artifact
+(Model A/B/Phase-3/Phase-4/Phase-5A/Phase-5B/Phase-5C/Phase-5D/Phase-5E) modified; no four-model or
+cross-model convergence performed (a Sañjaya/Arjuna↔Model-A lineage lead was named, not adjudicated);
+no unified/canonical Kernel constructed; no implementation performed.** Verified: both consistency
+scripts `CONSISTENT`; register unchanged; all 59 prior-phase files confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-5f-k1-ontology-semantic-adjudication/` directory (13 files) plus the
+decision-log entry written; 22 raw-source spot-checks performed (requirement ≥20). Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5F execution record. **PHASE 5F
+COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5G, global reclassification, four-model
+convergence, unified/canonical Kernel construction, cross-model synthesis, repair of any frozen
+artifact, and implementation remain unauthorized and untouched — this session stops here.
+
+**Superseded-update-marker-30 (2026-09-07, earlier) — PHASE 5E COMPLETE: Exhaustive Kernel Population
+Closure and Provenance Reconciliation.** Executed under the user's explicit authorization of Phase 5E
+only, following review of Phase 5D's completion (which found P2/`phase_measure_theory/knowledgeos_kernel/`,
+237 files, and P3/`kernel/`, 172 files, were sampled, not censused). **Both populations were now fully
+censused (0 gaps/orphans in both), all 409 documents dispositioned, 23 raw-source spot-checks
+performed (requirement ≥20).** **Central finding**: seq 1006 (`D285-1-STATE-ONTOLOGY-MATRIX.md`)
+supplies a raw-source-confirmed, authoritative K-1-through-K-7 comparison table — K-1 (`K_t`, 8
+primitives) **RATIFIED and computationally tested**; K-2 through K-7 explicitly **NOT RATIFIED /
+REJECTED / research-only, considered and not adopted**. This resolves, at the provenance level, Phase
+5D's own flagged "unregistered siblings" question; K-1 (seq 1006) ↔ K-1-B (Phase 5C's KERNEL-OBJ-02,
+seq 1008) now reaches **structural correspondence** — the strongest equivalence verdict reached
+anywhere in this reconstruction's Kernel-object work, still short of formal equivalence/identity. 11
+new object-register entries produced; 0 reach formal equivalence with any existing object. A
+KERNEL-OBJ-04 reconciliation record was produced (raw-source confirms seq 0156, not seq 0150, is the
+true origin of the falsified six-part aggregate) — **Phase 5C's own register was NOT modified**, per
+the authorization. **Closure verdict: PARTIAL CLOSURE — SPECIFIC POPULATIONS REMAIN OPEN**
+(population/document closure supported for P2/P3; object/full-provenance/full-equivalence closure not
+supported). **No classification changed anywhere; no frozen artifact (Model A/B/Phase-3/Phase-4/
+Phase-5A/Phase-5B/Phase-5C/Phase-5D) modified; no four-model or cross-model convergence performed; no
+unified/canonical Kernel constructed; no implementation performed.** Verified: both consistency
+scripts `CONSISTENT`; register unchanged; all 47 prior-phase files confirmed unmodified; only the new
+`14_decision-log/MD-021-phase-5e-kernel-population-reconciliation/` directory (12 files) plus the
+decision-log entry written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase
+5E execution record. **PHASE 5E COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5F,
+global reclassification, four-model convergence, unified/canonical Kernel construction, cross-model
+synthesis, repair of any frozen Phase-5C/5D artifact, and implementation remain unauthorized and
+untouched — this session stops here.
+
+**Superseded-update-marker-29 (2026-09-07, earlier) — PHASE 5D COMPLETE: Kernel Population
+Completeness and Object-Closure Audit.** Executed under the user's explicit authorization of Phase 5D
+only, following
+the user's own review of Phase 5C which identified that its 13-object register was mapped from only
+14 of the 116-document Kernel-marker population (102 unmapped) and must be read as "13 objects
+reconstructed from the investigated subset," not "the corpus contains exactly 13 objects." **Central
+finding: Additional objects discovered — not closure-supported.** A complete census (not a sample) of
+all 116 P1 documents found **6 further distinct, evidenced Kernel-object candidates** beyond Phase
+5C's register: K1-K8 (seq 0144, already named in Phase 4's concept register but never carried into
+Phase 5C); DeepSeek's four competing Kernel hypotheses (seq 0150); a second genuinely distinct
+8-primitive kernel `K_OS=(A,T,P,E,I,S,X,R)` (seq 0654, raw-source confirmed); a formal governance
+ratification event "GN-31" (seq 0764); the "Reduced Candidate Kernel"/"Minimal Architectural Kernel"
+`K=(K,C,T,E,A)` (seq 0856, raw-source confirmed); and a self-diagnosed "heterogeneous" 5-tuple
+`𝔎_5=(G,σ,θ,λ,π)` (seq 0867, raw-source confirmed). None of the 6 reaches structural correspondence
+or above against any existing object or each other; 0 reach a formally tested minimality claim. **One
+confirmed (raw-source, evidence-level-1) audit finding against Phase 5C's own register**:
+KERNEL-OBJ-04's cited origin (seq 0150) does not match its own content — direct inspection of seq
+0150/0156/0157 shows seq 0156 (not 0150) states the eight-field "KnowledgeAggregate" whose six-part
+subset seq 0157 then falsifies; **per the authorization, Phase 5C's own register is NOT modified —
+recorded as a Phase-5D audit finding only.** K-1 homonym finding re-confirmed and extended (seq
+1008's own K-2/K-3/K-6/K-7 siblings named as an open, unresolved coverage gap). P2
+(`phase_measure_theory/knowledgeos_kernel/`, 237 files) and P3 (`kernel/`) were sampled, not censused,
+this phase — neither certified closed. **No classification changed anywhere; no frozen artifact
+(Model A/B/Phase-3/Phase-4/Phase-5A/Phase-5B/Phase-5C) modified; no four-model or cross-model
+convergence performed; no unified/canonical Kernel constructed; no implementation performed.**
+Verified: both consistency scripts `CONSISTENT`; register unchanged; all 38 prior-phase files
+confirmed unmodified; only the new `14_decision-log/MD-021-phase-5d-kernel-population-closure/`
+directory (9 files) plus the decision-log entry written; 15 raw-source spot-checks performed
+(requirement ≥15, distributed across all 15 named categories), including 9 newly-performed raw-file
+reads this phase; one self-caught arithmetic correction disclosed (P1 tally corrected 117→116 in
+place). Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5D execution
+record. **PHASE 5D COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5E, global
+reclassification, four-model convergence, unified/canonical Kernel construction, cross-model
+synthesis, repair of Phase 5C's KERNEL-OBJ-04 entry, and implementation remain unauthorized and
+untouched — this session stops here.
+
+**Superseded-update-marker-28 (2026-09-07, earlier) — PHASE 5C COMPLETE: Kernel Object Reconstruction
+and Equivalence Adjudication.** Executed under the user's explicit authorization of Phase 5C only,
+independent of Phases 1–5B's own acceptance. Central methodological correction carried forward from Phase 5B: "a
+keyword match is not evidence of a conceptual occurrence." Built a 13-object Kernel research-object
+register (extending Phase 5B's 12 with the earliest population document, seq 0080, a 10-candidate
+Kernel-worthiness evaluation matrix), mapped from 14 of the 116-document Kernel-marker population (a
+disclosed, non-exhaustive subset), using a 19-attribute taxonomy with `NOT EVIDENCED` wherever
+warranted. **Key findings**: **zero of six pairwise equivalence adjudications reach structural
+correspondence, formal equivalence, or demonstrated identity** (the highest, KERNEL-OBJ-05↔06, reaches
+only functional correspondence); **zero of the thirteen objects make a formally tested minimality
+claim** — the word "minimal" appears in all 116 marker-population documents but is predominantly
+loose design-philosophy language, not formal propositions (a generalization of Phase 5B's own
+keyword-vs-occurrence lesson); **no cross-family derivation evidenced** between the `kernel/`- and
+`phase_measure_theory/`-directory objects across all 13 relationship types searched; the **"K-1"
+homonym question remains formally `UNRESOLVED`** (confirmed via fresh raw-source comparison — two
+structurally dissimilar objects, no connecting document). **No classification changed anywhere; no
+frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A/Phase-5B) modified; no four-model or cross-model
+convergence performed; no unified/canonical Kernel constructed; no implementation performed.**
+Verified: both consistency scripts `CONSISTENT`; register unchanged; all 31 prior-phase files
+re-hashed, unchanged; only the new `14_decision-log/MD-021-phase-5c-kernel-object-reconstruction/`
+directory (7 files) plus the decision-log entry written; 11 raw-source spot-checks performed
+(requirement ≥10), 0 new corrections required. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5C execution record. **PHASE 5C
+COMPLETE — AWAITING SEPARATE EXPLICIT AUTHORIZATION.** Phase 5D, global reclassification, four-model
+convergence, unified/canonical Kernel construction, cross-model synthesis, and implementation remain
+unauthorized and untouched — this session stops here.
+
+**Superseded-update-marker-27 (2026-09-07, earlier) — PHASE 5B COMPLETE: Independent Lineage
+Reconstruction and Provenance Analysis.** Executed under the user's explicit authorization of Phase 5B
+only, following
+Phase 5A's completion. Never assumed `C1→C2`/`C1∥C2`/`C1→limitation→C2` as a starting point;
+reconstructed documentary lineage first. **Key findings**: a 12-object Kernel-candidate provenance
+graph (5 subdirectories, 4 object categories) shows **no `REFINES`/`DERIVES_FROM`/`SUPERSEDES`
+relationship crossing between the `kernel/`-directory family and the `phase_measure_theory/`-
+directory family** — the single most consequential lineage finding; the C1 lineage scaffold holds as
+explicitly-evidenced for 2 of 5 arrows, chronological-only for 1 (EKS→PKS), and **explicitly does not
+hold** for the Kernel-discovery-cycle→Knowledge-state-arc transition; the "K-1" label's content traces
+to seq 0167 while its full three-part gloss and label first appear together at seq 0196 (with one
+component found only in the governed synthesis, not raw prose); a second "K-1" at seq 1008 is a likely
+homonym (`UNRESOLVED`); **documentary evidence for C1→C2: `NO DEMONSTRATED TRANSITION`** — no document
+states or implies it, and MD-007's own literal framing phrase does not appear anywhere in the corpus.
+**A major self-caught correction**: an initial "all five earliest C2-vocabulary occurrences sit
+outside C2" finding was substantially wrong — 4 of 5 were keyword-census false positives (forward-
+looking "bridge candidate" notes / an explicit absence statement); corrected in place to the 2
+genuinely verified occurrences (`admissibility` seq 0143, `Knowledge Space` seq 0266). **No
+classification changed anywhere; no frozen artifact (Model A/B/Phase-3/Phase-4/Phase-5A) modified; no
+C1↔C2 model-level relationship adjudicated; no Kernel equivalence established; no cross-model work
+performed.** Verified: both consistency scripts `CONSISTENT`; register unchanged; all 24 prior-phase
+files re-hashed, unchanged; only the new `14_decision-log/MD-021-phase-5b-lineage-reconstruction/`
+directory (7 files) plus the decision-log entry written; 13 raw-source spot-checks performed
+(requirement ≥10), 3 corrections applied and disclosed. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 5B execution record. **Phase 5C, global
+reclassification, four-model convergence, and Kernel adjudication remain unauthorized and untouched —
+this session stops here awaiting a separate, explicit authorization.**
+
+**Superseded-update-marker-26 (2026-09-07, earlier) — PHASE 5A COMPLETE: C1/C2 Classification-
+Boundary Audit.** Executed under the user's explicit authorization of Phase 5A only, following the
+separate Phase-5
+planning-analysis document. Census (not sample) used for all machine-observable/complete-population
+facts (1,585 rows: 1,185 main-corpus `PRIMARY`-tier + 401 math-lane); sampling used only for two
+content-level investigations, each with frame/strata/unit/selection procedure fixed before
+inspection. **Key findings**: 306 `meta_research`-tagged rows carry `kernel_content: true` (nearly
+half Model C1's own 719-row population, unexamined by any prior phase); post-MD-006 classification
+activity favored `meta_research` over either C1 or C2's own tags; Phase 4's "eight" C1 Kernel
+candidates are **not corpus-wide complete** — a previously-uncounted 237-file subdirectory
+(`phase_measure_theory/knowledgeos_kernel/`) contains substantial additional Kernel-formalization
+material outside every model's evidence population; the label "K-1" recurs across two independent
+sub-threads (unresolved homonym-vs-reference question); a boundary observation (not acted on) that
+Gita-content-bearing files exist classified `meta_research`, outside Model A's own evidence
+population — Model A remains frozen and untouched. **No classification was changed anywhere; no
+frozen artifact (Model A/B/Phase-3/Phase-4) was modified; no C1↔C2 relationship was adjudicated; no
+Kernel equivalence established; no cross-model work performed.** Verified: both consistency scripts
+`CONSISTENT`; register unchanged; all 20 prior-phase files re-hashed, unchanged; only the new
+`14_decision-log/MD-021-phase-5a-classification-boundary-audit/` directory (4 files) plus the
+decision-log entry written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-021
+Phase 5A execution record. **Phase 5B, 5C, and any four-model work remain unauthorized and untouched
+— this session stops here awaiting a separate, explicit authorization.**
+
+**Superseded-update-marker-25 (2026-09-07, earlier) — PHASE 4 COMPLETE AND FORMALLY ACCEPTED: Model
+C1/C2 Independent Reconstruction.** After the verification-completion pass (10 raw-source spot-checks, 1
+evidence-preserving correction to the seq 0216/K-1 attribution — see below), the user formally
+accepted Phase 4, citing the independent C1/C2 reconstruction, the treatment of C2's near-total
+scarcity (1 file) as a finding rather than manufactured symmetry, preserved original classifications,
+absence of cross-model contamination, and preserved unresolved questions/contradictions/negative
+findings. **Explicit governance boundary accompanying acceptance: "This acceptance authorizes nothing
+beyond Phase 4."** Remaining explicitly unresolved unless separately authorized: the C1/C2
+classification boundary; the C1↔C2 relationship; the eight C1 Kernel-definition candidates and their
+unresolved equivalences; the adjacent C2 candidates; the `kernel/`-vs-`phase_measure_theory/`
+chronology; all other open questions/non-convergences Phase 4 recorded. Explicitly forbidden absent
+separate authorization: Phase 5; global reclassification; modifying the classification register or
+Model A/B/Phase-3 artifacts; further cross-model adjudication; a unified theory; canonicalizing
+competing Kernel definitions; promoting unresolved hypotheses to established theory; implementation.
+Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 4 formal acceptance. **Phase
+5 remains unauthorized, unscoped, and untouched — this session stops here.**
+
+**Superseded-update-marker-24 (2026-09-07, earlier) — PHASE 4 COMPLETE, VERIFICATION REQUIREMENT
+SATISFIED, AWAITING FORMAL ACCEPTANCE.** The user withheld acceptance of the completion report below because it showed
+only 2 raw-source spot-checks against the authorized plan's required 5–10. Ten spot-checks were then
+performed across every required category (the sole C2 file; a C2-adjacent boundary row; a C1
+Kernel-definition claim; a contradiction; an unresolved-equivalence/open-question claim; the C1↔C2
+relationship finding; two math-lane claims; two major-C1-arc claims) — **9 confirmed faithful, 1
+corrected** (seq 0216 had been credited with originating the "K-1" Kernel candidate; raw source shows
+0216 instead *reviews and rejects* K-1, whose actual origin is seq 0165/0167 — `02_concept-
+register.md` §L/§N corrected in place, evidence-preserving, no other claim touched). Both consistency
+scripts re-run `CONSISTENT`; Model A/B/Phase-3 artifacts re-hashed, unchanged. Full spot-check table
+and the correction: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 4 verification-
+completion record. **Formal acceptance of Phase 4 is still pending the user's own decision — this
+verification pass does not itself constitute acceptance.**
+
+**Superseded-update-marker-23 (2026-09-07, earlier) — PHASE 4 COMPLETE: Model C1/C2 Independent
+Reconstruction.** Executed under the user's own explicit, separately-scoped 24-point/14-constraint authorization
+(quoted in full in `.claude/plans/purring-tinkering-graham.md`), issued only after Phase 3's formal
+acceptance, with an explicit statement that acceptance did not itself authorize this phase, plus a
+binding guardrail: the C2 population investigation may name adjacent material but must never expand
+C2 membership by resemblance alone — original classification preserved throughout, no reclassification
+performed. **Central finding, stated up front**: Model C2's evidence population is **exactly one
+file** (seq 2330) across both corpora, zero secondary-tagged candidates anywhere; Model C1's
+population is 732 primary-tier candidates (719 main-corpus + 13 math-lane) + 39 boundary rows. The
+three historical `kernel_ddd` rows (seq 0001/0005/0009 — MD-006's own evidentiary origin for the
+C1/C2 split) are confirmed `OUT_OF_SCOPE_ROOT` per a prior governance correction (MD-011), cited only
+as provenance. Produced five artifacts in `04_model-c_kernel-ddd/`: `01_evidence-base.md` (732 C1
+candidates in 8 evidentiary clusters — EKS/PKS baseline; a ten-round multi-AI Kernel-Boundary-
+Discovery cycle; external-literature epistemology mining; causal-inference/statistical Kernel-
+candidate proliferation; the massive, repeatedly self-correcting `phase_measure_theory/` Knowledge-
+State/Discrepancy/Ideal-State arc; the late `kernel/`-subdirectory lineage containing the sole C2
+file; a Reiter/situation-calculus formal-methods series; 13 math-lane C1 candidates — plus the sole
+C2 candidate read in full from raw source); `02_concept-register.md` (12 C1 concepts, the C2 concept
+in full, a 12-row kernel-candidate table showing an eight-member, largely-untested Kernel-definition
+proliferation — the largest unresolved kernel family found anywhere in this reconstruction so far);
+`03_contradictions-and-open-questions.md` (4 contradictions, 3 unresolved equivalences, 8 open
+questions, plus the required C1↔C2 relationship section — MD-007's own 2026-09-01 promoted
+watch-status finding, "'Knowledge' undefined in all early C1 files," tested against the fuller
+population and found **falsified**; verdict UNRESOLVED for the specific reason that the empirical
+C1/C2 classification boundary does not cleanly track an engineering-vs-epistemic content split, not
+for lack of evidence); `04_boundary-observations.md` (39 secondary-tagged rows, 3 historical
+`kernel_ddd` rows, a bounded C2-population investigation naming 8 adjacent `meta_research`/
+`cross_model`-tagged rows with classification preserved, 3 rows with no per-file record, and **one
+transparent self-correction**: this reconstruction's own earlier claim of a register-vs-per-file
+inconsistency at seq 2330 was itself a false positive from a prior script's field-path bug, corrected
+in place). **No Model-A/B/Phase-3 conclusion was imported; no reclassification was performed
+anywhere.** **Verified**: both `resume.py`/`resume_mathematical.py` still `CONSISTENT`;
+`classification-register.tsv` untouched (0 non-pending rows); `02_model-a_gita/`,
+`03_model-b_mathematical/`, `05_cross-model/` confirmed unmodified (md5-hashed, matching values on
+record since Phase 3); only `04_model-c_kernel-ddd/` (new) plus the decision-log entry written. Full
+record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 4 execution record. **Phase 5+
+remain unauthorized and untouched — this session stops here per the authorization's explicit
+instruction.**
+
+**Superseded-update-marker-22 (2026-09-07, earlier) — PHASE 3 COMPLETE AND FORMALLY ACCEPTED:
+Cross-Model Adjudication and Controlled Convergence (Model A vs. Model B).** After the completion report below, the user
+requested an independent integrity audit before accepting the result — specifically re-verifying
+whether the M0133–M0282 math-lane range (which the executing session had itself flagged mid-task as
+needing verification) was included in Model B's 151-record evidence base. **Audit result: M0133–
+M0282 (150 files) confirmed to carry zero `model.primary: "b"` records — all 150 are `KR-SIM`-tagged,
+a pre-existing boundary classification, not an accidental gap.** Model B's actual kernel/minimality
+conclusions rest entirely on M0030/M0035/M0037 (confirmed inside the 151), so no Phase-3 artifact was
+built from, or requires revision against, the excluded range. **One genuine, separate defect was
+found and corrected during the same audit**: `05_cross-model/02_correspondence-matrix.md`'s summary
+tally table had mistakenly double-listed Row 9 (Observation) under both FUNCTIONAL ANALOGY and
+UNRESOLVED, when the row's own adjudication text states only UNRESOLVED — corrected in place
+(bookkeeping only, no adjudication changed); `04_non-convergences-and-open-questions.md` was already
+stating it correctly. Both fixes and the audit itself are recorded in `14_decision-log/model-
+boundary-decisions.md` as their own MD-021 entries (integrity audit + formal acceptance), following
+the same pattern Phase 1's own audit established. **The user then formally accepted Phase 3**: "🟢
+PHASE 3 ACCEPTED... Model A and Model B do not currently demonstrate a structural or formal
+convergence... The kernel remains unresolved, and the report explicitly preserves the
+non-convergences" — with an explicit binding instruction: **"Do not authorize Phase 4 merely because
+Phase 3 is accepted"** — Phase 4 (Model C1/C2 reconstruction) needs its own separate, independent
+authorization regardless of Phase 3's acceptance. **Phase 4 remains unauthorized, unscoped, and
+untouched — no work toward it begins without that separate authorization.**
+
+**Superseded-update-marker-21 (2026-09-07, earlier) — PHASE 3 COMPLETE: Cross-Model Adjudication and Controlled
+Convergence (Model A vs. Model B), pre-audit.** Executed under the user's own explicit, separately-scoped
+19-section authorization (quoted in full in `.claude/plans/purring-tinkering-graham.md`), issued only
+after Model A (Phase 1) and Model B (Phase 2) were each independently completed, audited, and frozen,
+plus a mid-execution instruction that the correspondence-candidate list must never become a hidden
+completeness assumption. **Directory-numbering clarification**: MD-021's Phase 3 writes to
+`05_cross-model/` (protocol.md's own stage-gate numbering), not `04_model-c_kernel-ddd/` (reserved
+for the still-unauthorized Model C1/C2 reconstruction). **Governing principle: SIMILARITY ≠
+IDENTITY** — every proposed correspondence leveled across six evidentiary strengths (lexical →
+conceptual → functional → structural → formal equivalence → demonstrated identity); default status
+UNRESOLVED until equivalence is demonstrated. Produced five artifacts in `05_cross-model/`:
+`01_cross-model-evidence.md` (both frozen registers organized against 16 investigation targets, 8
+explicit "no demonstrated counterpart" findings); `02_correspondence-matrix.md` (10 adjudicated rows
+— **0 reached STRUCTURAL CORRESPONDENCE or above**: 5 UNRESOLVED, 3 INCOMPATIBLE, 2 PARTIAL
+CORRESPONDENCE at a restricted meta-level only, 3 FUNCTIONAL ANALOGY at low confidence);
+`03_adjudications-and-contradictions.md` (the strict kernel adjudication — reconstructing what
+"kernel" means inside each model separately, verdict UNRESOLVED since Model A's candidates are typed
+schemas and Model B's are operator sets with no map between them; the representation-dependence hard
+constraint recorded inapplicable-by-vacuity, no row reached its threshold; **0 genuine cross-model
+contradictions found** — 2 apparent conflicts examined and resolved as term-collisions, not
+disagreements); `04_non-convergences-and-open-questions.md` (8 no-counterpart structures, 6
+rejected/low-confidence proposals, 2 methodological parallels explicitly distinguished from domain
+correspondences, 1 PROPOSED CROSS-MODEL HYPOTHESIS — "under-constrained epistemic-state
+formalization tends to proliferate non-convergent tuple variants independent of content domain" —
+explicitly not asserted as a finding of either model). **Raw-source spot-check performed**: the nine
+Sārathi Role Functions verified against raw source before their comparison against Model B's kernel
+operators was adjudicated. **Verified**: both `resume.py`/`resume_mathematical.py` still
+`CONSISTENT`; `classification-register.tsv` untouched (0 non-pending rows); `02_model-a_gita/` and
+`03_model-b_mathematical/` confirmed unmodified (md5-hashed); only `05_cross-model/` (new) plus the
+decision-log entry written. Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase
+3 execution record. **Phases 4–6+ remain unauthorized and untouched — this session stops here per the
+authorization's explicit instruction.**
+
+**Superseded-update-marker-20 (2026-09-07, earlier) — PHASE 2 COMPLETE: Model B (Mathematics/Statistics) Independent
+Reconstruction.** Executed under the user's own explicit, separately-scoped 11-section authorization
+(quoted in full in `.claude/plans/purring-tinkering-graham.md`), issued only after Phase 1's audit
+passed, plus a mid-execution guardrail reinforcing raw-source verification and the four-state
+kernel-candidate discipline. **Directory-name discrepancy recorded, not silently resolved**: the
+authorization named `03_model-b_mathematics/`; wrote to the pre-existing `03_model-b_mathematical/`
+instead, documented in `00_index.md`. Evidence base: 162 `model.primary == "b"` rows in the 401-file
+reconciled math lane = 151 independent records + 10 duplicates + 1 control-self-reference; the
+remaining 239 rows (199 KR-SIM / 16 x / 13 c1 / 6 g / 5 c) treated as boundary material only.
+Produced five artifacts in `03_model-b_mathematical/`: `01_evidence-base.md` (151 rows, 9 evidentiary
+clusters, 122/151 Tier-2-triggered); `02_concept-register.md` (15 named concepts/formalisms plus a
+15-row kernel-candidate table in the four required states — 6 TESTED→REJECTED, 2 ESTABLISHED, 2
+PROPOSED→UNTESTED, 1 UNRESOLVED, 2 in a named fifth "tested, survives, not yet established" state);
+`03_contradictions-and-open-questions.md` (5 contradictions, 3 unresolved equivalences, 10 open
+questions); `04_boundary-observations.md` (239 boundary rows accounted for; one data-quality anomaly
+found — M0093, tagged `c`, is explicitly Gītā content — flagged, not corrected). **Principal finding:**
+the kernel-reduction experiment (M0030→M0035→M0037) proves kernel minimality is
+representation-dependent (four distinct 8-operator minimal kernels, not one 13-operator kernel),
+formally reconciled by the Structure-First framework (M0098–M0099); a frozen negative result (FR-001,
+M0101/M0103/M0104) proves a proposed effective-complexity quotient construction is not transitive via
+an explicit 12-link counterexample; Hilbert-space representation was tested and rejected as a
+foundation (adopted only as vocabulary); flat contradiction-evaluation representations were tested
+and rejected in favor of a structured representation shown necessary but explicitly kept outside the
+kernel. **No Model-A conclusion was imported or referenced anywhere; no Model A↔B comparison was
+performed.** **Verified:** `resume_mathematical.py` still `CONSISTENT` (401 files); `resume.py` still
+`CONSISTENT` (unchanged); `classification-register.tsv` confirmed 0 non-pending `final_primary` rows;
+filesystem scope confirmed only `03_model-b_mathematical/` plus the decision-log entry were written;
+six mathematically consequential claims spot-checked verbatim against raw source `.md` titles — all
+confirmed faithful. Full record: `14_decision-log/model-boundary-decisions.md` → MD-021 Phase 2
+execution record (appended, not a rewrite). **Phases 3–6+ remain unauthorized and untouched — this
+session stops here per the authorization's explicit instruction.**
+
+**Superseded-update-marker-19 (2026-09-07, earlier) — PHASE 1 COMPLETE: Model A (Gītā) Independent Reconstruction.**
+Executed under the user's own explicit, separately-scoped 8-boundary authorization (quoted in full
+in `.claude/plans/purring-tinkering-graham.md`), only after the math-lane reconciliation below was
+verified complete. Evidence base: the 84 `initial_primary == gita` register rows, processed in
+sequence order from their existing per-file records (no raw-source re-reads needed). Produced five
+artifacts in `02_model-a_gita/` (`00_index.md` through `04_boundary-observations.md`): 84 evidence
+rows across 7 clusters, 14 registered concepts, 3 contradictions + 5 unresolved equivalences + 6
+open questions, and the 511 secondary-tagged-elsewhere files accounted for as boundary material
+(not consumed as Model-A evidence). **Principal finding:** a mature Sañjaya/Arjuna/Krishna
+architectural synthesis (seq 0427–0451) sits alongside the corpus's own capstone self-correction
+(seq 0808: retracts three earlier over-literal Gītā-derived formulas — "invariants and questions
+about transitions, not components") and a six-cycle KR-SIM companion series (seq 2329–2376)
+independently and repeatedly concluding the Gītā supplies **zero kernel candidates** — this
+reconstruction's most repeatedly-corroborated result. Two threads remain genuinely unresolved, not
+settled here: a four-way Kernel-structure-candidate family and a nine-plus-variant Knowledge-Vector
+family, both `unresolved_equivalence` (MD-017) pending cross-model comparison. **Verified:**
+`classification-register.tsv` byte-for-byte unchanged (2377 lines, 0 non-pending `final_primary`
+rows, 84 `gita`-primary rows, file mtime predates this phase); `resume.py` re-run, still
+`CONSISTENT`; only `02_model-a_gita/`'s five files were written, no per-file YAML touched; 4
+concept-register claims spot-checked verbatim against source. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-021 Phase 1 execution record (appended, not a
+rewrite). **Phase 2 (Model B) and Phases 3–6+ remain unauthorized and untouched — this session
+stops here per the authorization's explicit instruction.**
+
+**Superseded-update-marker-18 (2026-09-07 earlier) — MATH-LANE MANIFEST RECONCILED: "282/282 COMPLETE" WAS STALE, TRUE COUNT IS 401/401.** Before authorizing Phase 1, the user supplied `mathemtaical-part-file-list.log` (a live `ls -la` of `mathematical_ideas_that_can_be_implemented/`, 401 files) and required reconciliation against the governed math-lane artifacts first. Found: `00_control/mathematical-manifest.tsv` had stopped at 282 while the source directory had grown to 401 — **119 files existed with no manifest row and no per-file record at all.** Reconciled: extended the manifest/progress (mtime-ordered, confirmed a clean chronological tail after M0282, no interleaving); md5-verified 10 exact duplicates (matching the original pass's own `tier: DUPLICATE` convention, corrected in place after `resume_mathematical.py` first caught a status-field mistake); individually read and classified the remaining 109 (not by filename) using this lane's own established vocabulary. Found genuine Gītā-content files inside the "mathematical" tail (M0375/M0376, direct Gita Ch.2–3 readings, classified `g`) and a genuine theory-to-architecture bridge series (M0335–M0344, Theory Parts XIV–XXI-A, Parts XVIII–XXI classified `x`) — confirming the user's caution that directory membership does not imply Model-B membership. `resume_mathematical.py` now reports `CONSISTENT`, `DONE=401`, `MATHEMATICAL-PART SEQUENTIAL PASS COMPLETE`. Main-corpus `resume.py` re-confirmed untouched. Full addendum: `14_decision-log/model-boundary-decisions.md` (appended after MD-021, not a rewrite of it). **Phase 1 (Model A/Gītā reconstruction) remains authorized-but-not-started** — this reconciliation was a blocking prerequisite the user imposed, not Phase 1 itself; `02_model-a_gita/` was not touched.
+
+**Follow-up closure (same day, after the parallel forks above reported):** one fork batch (M0325–M0333) had honestly disclosed classifying 9 files by title/series-position only, under time pressure — not a fabrication, but a real gap against "do not classify by filename." All 9 were independently read and re-classified with content-verified records, plus the series' own final part M0334 (previously title-only). Genuine finding from that closure read: the 13-part "KnowledgeOS Verified Theory" rewrite (M0322–M0334) does **not** self-declare closure — Part XIII explicitly points to an unwritten "Part XIV," confirmed absent from all 401 files, so this series is an unfinished draft, not a closed reconstruction; recorded as such rather than assumed complete. Also verified: `classification-register.tsv` (main corpus) untouched, `resume.py` and `resume_mathematical.py` both re-run and `CONSISTENT`, all 401 YAML records parse valid. Full detail: `14_decision-log/model-boundary-decisions.md` → MD-021 Addendum (2026-09-07).
+
+**Superseded (2026-09-07, earlier today):** MD-004 SCOPED; PHASE 0 (aggregate-artifact consolidation) EXECUTED. Plan approved by the user (`.claude/plans/purring-tinkering-graham.md`); recorded as **MD-021** in `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/model-boundary-decisions.md` (readiness finding + phased execution plan; only Phase 0 authorized, Phases 1–6+ named but explicitly NOT authorized). *(additive — this block is now history; its own math-lane "282/282 complete" reference is corrected by the block above, not rewritten here.)*
+
+**Phase 0 completed, verified:**
+- `00_control/classification-register.tsv` back-filled: 1,177 rows' `initial_primary`/`initial_secondary` transcribed from per-file YAML (2 malformed-YAML files, seq 0002/0009, hand-verified via targeted grep and cross-checked against the register's pre-existing correct values); 1 anomaly (seq 0056, `not_applicable_product_content`, confirmed off-topic product content) passed through verbatim, not force-mapped. Column-level diff confirms **only** `initial_primary`/`initial_secondary` changed on the 1,177 back-filled rows.
+- **Discovered gap, closed as part of the same consolidation act:** the register stopped at seq 2,320 while `progress.tsv`/`reading-manifest.tsv` already extended to seq 2,376 — 56 rows (38 DONE, 18 EXCLUDED) had never been appended at all. Appended using the exact same column conventions as every existing row (`final_*` still `PENDING_GLOBAL_RECLASS`/`PENDING`). `resume.py` re-run after: still `CONSISTENT`, `last_handled_sequence=2376`.
+- `01_source-analysis/file-classification.md`: position marker updated to 2,376/2,376; the illustrative 0001–0010 table kept unchanged (never rewritten); a new full-corpus running-summary section added as a mechanical aggregate, with two schema-drift/vocabulary gaps reported honestly rather than force-normalized (12+ free-text `importance` values vs. protocol.md's 4-value scale; new-schema files have no `maturity` field at all).
+- `01_source-analysis/corpus-map.md`: written for the first time (did not exist before). Also records, without resolving, a second discrepancy between `reading-manifest.tsv`'s a-priori counts and `progress.tsv`'s actual per-file outcome.
+- `00_control/protocol.md`'s artifact-contract row for `corpus-map.md` annotated as produced.
+
+**Not touched:** no file's `final_primary`/`final_secondary` (still `PENDING_GLOBAL_RECLASS`/`PENDING` everywhere); no stage directory beyond `01_source-analysis/` was written to; Phases 1–6+ (model A/B/C1/C2 reconstruction, final classification, cross-model bridges, gap-analysis, formalization, kernel, dynamics, computational theory, validation, canonical theory) remain unauthorized.
+
+**Next action:** none scoped or authorized yet. Phase 1 (Model A/Gītā reconstruction) would need its own separate authorization per MD-021's own terms — not implied by this session's approval.
+
+**Superseded-update-marker-17 (2026-09-06) — MATHEMATICAL-PART SEQUENTIAL PASS COMPLETE: 282/282 done.** `resume_mathematical.py` confirms CONSISTENT, next_sequence=M0283 (past the 282-file corpus), "MATHEMATICAL-PART SEQUENTIAL PASS COMPLETE." This closed the parallel M-prefixed control plane for `mathematical_ideas_that_can_be_implemented/` that ran alongside the main corpus pass. *(additive — this block is now history; superseded by the Phase 0 block above.)*
+
+Key developments in the final stretch (M0248-M0282), continuing past the 247/282 checkpoint above:
+
+- **M0248-M0249**: second- and third-pass Vedic-Math mining. M0248 delivered a Z0-Z5 graduated Zero hierarchy and a concrete quotient/congruence experimental protocol (KR-ALGEBRA-01). M0249 was the rigorous mathematical capstone: proved every mined Vedic pattern is a KNOWN standard algebraic construct (Cauchy convolution, ring distributive law, b's-complement involution, cyclic-group DFA orbits) — genuinely NEW finding: a complexity-theoretic table DEBUNKING the popular Vedic-Math asymptotic-speedup claim (all tested methods remain Θ(n²), strictly inferior to Karatsuba/Schönhage-Strassen). Froze KR-ALGEBRA-DISCOVERY-2026-09 with an explicit exclusion mandate.
+- **M0250-M0254**: opened a SIXTH (Atharva Veda) and SEVENTH (Madhyamaka/Nagarjuna's catuṣkoṭi) and EIGHTH (Shiva/Nīlakaṇṭha) external structural-prior tradition. Delivered a Contribution operator, a three-way Zero classification (Algebraic/Structural/Observational, with an honest admission "we have NOT discovered Algebraic Zero for KnowledgeOS"), a semantic-ownership no-redefinition principle independently paralleling the Kernel-minimality thread's own ρ, and — via a dialectical Argument/Challenge/Balance model — the cleanest three-way Zero taxonomy (Absence/Elimination/Balance) plus a careful non-reification of Śūnya/Nirvāṇa/Mokṣa reusing the corpus's established Gita/Vedanta discipline.
+- **M0255-M0267**: a NEW, structurally distinct 15(→confirmed 16)-document consolidated "Theory 01-14 (+03a)" series opened (dated AFTER the Theory v1.2 freeze, "kernel NOT SELECTED"), delivering the corpus's most rigorously epistemic-status-tagged formal reference: the final Zero/Adequacy/Realization apparatus with an index-set non-identity proof; the DPI as the theory's sole borrowed theorem ("the only [THM] in the theory, and it is not ours"); a FOURTH previously-unrecorded bridge experiment (KR-BRIDGE-03, 13× BRIDGE-02's power); the full Bridge-programme consolidation revealing WHY flattening a redundancy distribution cannot raise statistical power and that adequacy SATURATES (67 permanently dead cells); a complete DDD architecture with a striking self-drawn cross-reference to "the anonymity invariant in the sibling platform" (very likely this repository's own real PublicDigit platform); a master "Frozen and Refuted Register" whose closing governing rule is VERBATIM IDENTICAL to this actual project's own real CLAUDE.md engineering-discipline rule (confirmed twice, M0262+M0263); and a master index (Theory 00) resolving a "13 vs 15 document" self-count inconsistency (true count: 16) while revealing three previously-unseen documents (03, 03a, 14).
+- **M0268-M0269**: Theory 03a delivered the deepest conceptual characterization of Zero in the entire corpus — formal graphoid-irrelevance testing with exact violation counts, two permanently-named canonical counterexamples (redundancy, emergent eliminability), and a genuinely new POSITIVE Remainder identity (A≡C exactly, 1182/1182) that had been omitted from the original Document 03 draft.
+- **M0270-M0282**: a dense, tightly self-correcting exploratory arc (part of the KR-ALGEBRA/Contribution research direction that Document 13, M0266, LATER EXPLICITLY DECLARED NEGATIVE — "the algebra results were negative; there is nothing to build on yet" — recorded here for completeness per the standing sequential-read discipline, not as an endorsed result): introduced Knowledge Śūnya (a fourth emptiness concept tied to determination, formalized as H-SUNYA-01), Containment Zero (completing a three-way Zero taxonomy, with a genuine engineering rationale against unsafe deletion), a culminating multidimensional-state synthesis (every Zero variant reframed as a projection Zero_i=Z_i(Π_i(K_t)), with an explicit five-stage discipline against premature escalation to probability/infinite-dimensionality), a formal epistemic-probability-space formalization with a new "epistemacy" guardrail concept, a disciplined statistical correction reusing the established Bridge-programme methodology (Mantel-Haenszel/RD) for a new KR-STATE-01 experiment, a genuinely new recursive/temporal dimension (K_{t+1} as the substrate for the next reasoning cycle, with a formally distinguished "Future Epistemic Necessity" predicate and an explicit safeguard protecting the established Elimination-Zero finding from corruption), and finally (M0282, the LAST file) a Focus-vs-Surface dimensional-observation formalism connecting cross-dimensional interaction directly back to the corpus's much earlier higher-order-eliminability finding, closing with a third disciplined self-correction pass and the arc's final reformulated research question. **Document 13's own verdict on this entire M0245-M0282 exploratory direction stands as the corpus's own final word: negative, not built upon.**
+- Document 14 (Focus/Inquiry/Information-Boundary, FR-004, Zoom-in/Zoom-out §8a — named at M0267 but never itself encountered as a distinct M-sequence in this pass) remains a genuine open bridge_candidate, as does confirmation of whether "the sibling platform" is indeed PublicDigit.
+
+**Next action, per the standing instruction now unblocked by this completion:** scope the global-reclassification pass (MD-004) across the full corpus (main pass + this 282-file mathematical-ideas pass), per EP-01 (Plan Mode) discipline — not yet started.
+
+**Superseded-update-marker-16 (2026-09-06, 247/282 done — 88% of the 282-file pass, continued past 234. THE KERNEL-MINIMALITY QUESTION REACHED AN ACTUAL PROVED THEOREM this stretch (M0235-M0244), directly completing M0234's cross-thread diagnosis. Through a documented chain of self-correcting review passes, the apparatus matured from an initial Obs-based equivalence placeholder (M0235) to a rigorous TRACE EQUIVALENCE definition (Tr_K(h) over admissible histories) and a genuinely universal irreducibility definition with concrete witness-history families, yielding a formally proved "Relative Semantic Kernel Minimality" theorem (5 assumptions, proof by contradiction). The single most important resolution: the corpus's long-tracked 13-vs-8-operator kernel-cardinality instability is DEFINITIVELY EXPLAINED via a PACKAGING THEOREM — two implementations of differing size/packaging can be the same Kernel (K_A≡_sem K_B) — "two implementations ≠ two Kernels." M0236 delivered the reconstruction's FIRST EXECUTABLE Python kernel-minimality verification testbed, alongside a live SELF-CAUGHT GOVERNANCE-FABRICATION event (a draft "RATIFIED... KnowledgeOS Core Epistemic Framework Committee" register block was caught by senior review as manufactured authority — "exactly the kind of provenance error KnowledgeOS is supposed to prevent" — corrected to UNRATIFIED/proposal status). M0239 delivered the single most comprehensive "what remains open" register in this entire reconstruction: 20 explicitly status-tagged TODO items spanning kernel minimality AND the corpus's other still-open theory threads (contradiction/non-classical logic, epistemic ordering, revision/lifecycle semantics — referencing a named prior failure "CE-3" — determination semantics, adequacy/Sat), organized into a 4-gate structure with an explicit critical path. M0240 then delivered the deepest formal apparatus yet across four concatenated review passes: diagnosing capability IDENTITY and GRANULARITY (not operator counting) as the actual root cause of the historical 13-vs-12-vs-8 instability, introducing COUNTERFACTUAL capability removal K^{-c} (defeating "operator removal≠capability removal" gaming), a Capability Separation Lemma closing a genuine proof gap, and a formal Capability Conservation theorem against cross-bounded-context "capability laundering." M0237/M0241/M0242/M0243/M0244 gave progressively more concentrated restatements/refinements of this same apparatus (given reduced-depth treatment where substantively redundant). THEN (M0245-M0247) the research PIVOTED to an external literature-anchoring exercise: M0245 connects the entire Zero/Kernel programme to real established mathematical traditions (Information Algebra/Kohlas-Shenoy, Plotkin's algebraic knowledge-base informational equivalence, Cīrulis's belief algebra, epistemic algebra), proposing a genuinely new hypothesis — Zero as a QUOTIENT-INDUCED ELIMINABILITY PREDICATE rather than an algebraic primitive — opening a new research lane KR-ALGEBRA, in explicit (flagged) tension with M0239's own earlier empirically-grounded Zero-algebra closure instruction ("do not invent a Zero algebra now"). M0247 then performed the largest-scale disciplined external-source mining exercise yet — a full 16-sūtra structural read of Kenneth Williams' Vedic Math Genius — extracting a candidate 7-tuple Knowledge Algebra structure and sharpening the Zero hypothesis into FIVE explicitly-distinguished "zero-like" mechanisms (cancellation/residual-disappearance/proportional-explanation/completion/complement), while triple-explicitly REJECTING Vedic Mathematics as the Kernel or as a "Vedic Knowledge Algebra" and quarantining the book's historical claims as non-evidence.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-15 (2026-09-06, 234/282 done — 83% of the 282-file pass, continued past 231. M0234 delivers THE MOST SIGNIFICANT CROSS-THREAD SYNTHESIS in this entire reconstruction: it connects the just-completed Zero-algebra/representation-reduction research programme (M0189-M0233) directly back to this reconstruction's much EARLIER, separately-tracked kernel-minimality question (the 13-vs-8-operator instability and the Qualify-irreducibility discovery, from very early in this reconstruction's main-corpus pass). It correctly DIAGNOSES why that earlier kernel-cardinality reduction stalled: comparing "Kernel A has 12 operators, Kernel B has 13, therefore A is smaller" was never mathematically legitimate without a formal semantic kernel-equivalence relation (≡_sem) — a definition that never existed. It then reformulates the kernel-selection problem precisely, directly modeled on the new theory's own reduction-optimization formalism: K_min=argmin Complexity(K) subject to {semantic adequacy, transition completeness, invariant preservation, capability preservation, observable behavioral equivalence}. Five explicit "Kernel≠X" exclusions are derived, each from a specific established finding (Kernel≠information-algebra, ≠compression-engine, ≠Zero-engine, ≠decoder, ≠representation). A formal 32-item three-category "FOUNDATIONAL RESEARCH CLOSURE" is declared (Frozen/Empirically-constrained/Not-adopted) — the single most comprehensive consolidation of this reconstruction's entire epistemic-discipline output to date. Two new final-artifact proposals are made (a "Kernel Equivalence & Minimality Register" and "KR-KERNEL-CLOSURE-2026-09"), and the research boundary is precisely drawn: "Research Space Discovery: CLOSED" but "Kernel Minimality Proof: OPEN." Immediately preceding this: M0232 delivered the most mathematically rigorous document in the whole Zero-algebra thread — THREE FORMALLY PROVEN THEOREMS (including a genuinely new fiber-separation characterization of adequacy: H(Q|T(D))=0 ⟺ ∃g:Q=g∘T ⟺ every representation fiber is Q-homogeneous), plus a concrete numerical counterexample for an audit-caught error and a maximally compressed three-equation restatement of the entire theory. M0233 reported that a follow-up bridge experiment, KR-BRIDGE-02 (varying Π and Q per the prior recommendation), was executed and caught TWO of its own methodological design flaws before adjudicating (an unsound read-disjointness gate; a confound-rediscovering adjudication criterion, corrected via Mantel-Haenszel stratified analysis) — plus the richest documented Gita-companion-study instance yet (third overall), concluding "the refusals are the most reliable output this strand produces." M0231 had already delivered the Zero-algebra thread's own 50-section grand-synthesis capstone, confirming that a previously-commissioned audit was executed and found a specific prior claim (rank-encoding invertibility) false due to tie-handling.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-14 (2026-09-06, 231/282 done — 82% of the 282-file pass, continued past 229. M0231 delivers the DEFINITIVE 50-SECTION GRAND-SYNTHESIS CAPSTONE for the entire Zero-algebra/representation-reduction research programme — "KNOWLEDGEOS-INFORMATION-TRANSFORMATION-THEORY-CONSOLIDATED-DRAFT-2026-09" — explicitly NOT a Theory v1.3 ratification, integrating KR-ZERO, KR-REP-REDUCTION, KR-BRIDGE-01, and the Vedic-Mathematics-derived candidates into one coherent, disciplined theory draft. It CONFIRMS that the long-open question of whether KR-REP-REDUCTION-AUDIT-2026-09 (commissioned at M0222/M0224) was ever executed is YES — and reveals a genuine new finding: the audit found the rank-ascending/descending "invertible recoding" claim underlying part of the earlier adequacy≠realization demonstration (M0219/M0222) to be FALSE (a tie-handling defect), though the BROADER adequacy≠realization conclusion survives independently (via exact violation counts and train/test agreement) — a concrete instance of the thread's own newly-elevated meta-principle "an attractive interpretation must yield to an audit finding" operating on its own prior work. M0231 also introduces: a three-mechanism descriptive Zero taxonomy (Redundancy/Contextual/Cancellation Zero, explicitly not yet established); a candidate five-tuple meta-structure 𝒦=(ℛ,𝒯,𝒪,𝒫,ℰ) with an explicit algebra-promotion checklist; a proposed five-way adjudication-matrix governance vocabulary ([ESTABLISHED]/[EMPIRICAL-SCOPE]/[PROP]/[WITHDRAWN]/[OPEN]) for a future claim-by-claim review; and a concrete six-experiment forward roadmap (vary Π; vary Q; vary the carrier; test reference-relative representation; test structure-preservation via measured homomorphism defect; test locality). The maximally compressed final proposition: "Meaning-preserving transformation must be defined relative to purpose," with ONLY Zero_{T,Π}(S;D)⟺Π(T(D))=Π(T(E_S(D))) and Adequacy⟺H(Q(D)|T(D))=0 named as established formal constructs — everything else (including any "Knowledge Algebra") remains candidate structure awaiting evidence. This capstone supersedes the earlier narrower capstones at M0187 (ratification-tension arc), M0207/M0216/M0224 (representation-reduction/Zero sub-threads specifically). Immediately preceding this: M0225 RESOLVED the long-tracked 1475/1496 KR-ZERO-ORDER denominator discrepancy (two robustness variants, not confusion) and opened X3 (a proposal to use THIS REPOSITORY'S OWN PublicDigit voting-platform schema as a research carrier, surfacing a domain-specific finding tied to the platform's constitutional anonymity invariant); M0226 specified, and M0229 confirmed was ACTUALLY EXECUTED, the definitive bridge experiment KR-BRIDGE-01 — a massive four-way contingency table POSITIVELY REJECTING both Zero⟹Adequate and Adequate⟹Zero, with the apparent correlation fully explained by a redundancy confound (stratified RD: -0.363→-0.291→0.000), upgrading KR-ZERO⊥KR-REP-REDUCTION from a designed assumption to an evidence-supported conclusion. M0227 (+duplicate M0228) added rigorous formal-verification machinery (a homomorphism condition, four-level Nikhilam staging, a sub-sutra correctness condition) to the Vedic-Mathematics candidate-operator thread while reasserting Zero/Śūnya is NOT an algebraic cancellation element. M0230 caught and corrected a genuine provenance/attribution error (a KR-BRIDGE-01 finding had been misattributed to a separate KR-REP-REDUCTION document) before it could produce an overstated combined business claim.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-13 (2026-09-06, 229/282 done — 82% of the 282-file pass, continued past 223. TWO MAJOR RESOLUTIONS/EXECUTIONS this stretch. (1) M0225 RESOLVES the long-tracked 1475/1496 KR-ZERO-ORDER denominator discrepancy (flagged unreconciled since M0198/M0200/M0212): both are deliberate robustness variants of the SAME experiment (all-contracts N=1475 vs. excluding-a-cancelling-contract N=1496), with the higher-order/irreducible phenomenon surviving and slightly strengthening — not an unexplained inconsistency. M0225 also opens X3, a striking new proposal to use THIS REPOSITORY'S OWN PublicDigit production voting-platform schema (votes/results/candidacies) as an independently-motivated research carrier, surfacing a genuine domain-specific finding tied to this project's own constitutional anonymity invariant (candidacies.user_id is legitimate — candidate identity — the correct invariant is "no path from vote to voter identity," not "no user_id anywhere"), gated behind three new verification requirements (VG-8 strengthened/VG-9 pre-existing-axis-integrity/VG-10 explicit-carrier-definition) not yet cleared. (2) M0226 then specified, and M0229 confirms was ACTUALLY EXECUTED, the definitive bridge experiment KR-BRIDGE-01-ZERO-PRESERVATION-2026-09 — the second major empirical dataset in this entire research programme (after KR-REP-REDUCTION, M0219). Its four-way contingency table (real counts: Zero+Adequate=12,046; Zero+Inadequate=164,158; Non-Zero+Adequate=679,604; Non-Zero+Inadequate=894,192) POSITIVELY REJECTS both Zero⟹Adequate and Adequate⟹Zero as necessity/sufficiency claims — not merely "no relationship found." A precise stratified statistical analysis (risk difference: pooled -0.363 → transformation-stratified -0.291 → transformation+redundancy-stratified 0.000) shows the apparent pooled correlation is FULLY EXPLAINED by redundancy as a confounding common cause — discovered via a genuine mid-experiment self-correction (an initial "exact factorization" explanation was tested and WITHDRAWN when it failed at one redundancy stratum, "a genuine demonstration that the governance discipline is functioning"). KR-ZERO⊥KR-REP-REDUCTION is thereby upgraded from a designed governance assumption (M0224) to an EVIDENCE-SUPPORTED research conclusion. A companion Gita interpretive study is praised as a SECOND documented instance (after M0213's verse-2.50 rejection) of the anti-reification discipline operating correctly on live research output — explicitly refusing to claim "the Gita contains confounding analysis," maintaining a strict lens-vs-machinery separation. Next step clearly identified: vary Π and Q (both deliberately held fixed in this experiment) to test whether a CONDITIONAL bridge still exists. SEPARATELY, M0227 (and its verbatim-duplicate M0228) delivered rigorous new formal-verification machinery for the Vedic-Mathematics-derived candidate-operator thread (M0193): a homomorphism condition required before any operator may be "lifted" across representations, a four-level Representation/Transformation/Closure/Laws staging before a Nikhilam-derived candidate may be called an algebra, and — critically — a REASSERTED rejection of treating Zero/Śūnya as an algebraic cancellation/identity element, extending M0221's discipline to yet another fresh proposal.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-12 (2026-09-06, 223/282 done — 79% of the 282-file pass, continued past 217. KR-REP-REDUCTION-2026-09 was ACTUALLY EXECUTED (M0219) — the first genuine empirical dataset in the entire Zero-algebra/representation-reduction thread: the FIRST EMPIRICALLY LOCATED PRESERVATION BOUNDARY in this reconstruction (R5→R4, caused by T4/rounding-to-3-sig-figs, explicitly scoped to the tested carrier/Q/Π/chain — NOT generalized to "3 digits is the limit"); a STRUCTURAL (not merely empirical) proof via the data-processing inequality that non-monotone adequacy is IMPOSSIBLE for any deterministic sequential representation chain (H(Q|R_{n-1})≥H(Q|R_n) always) — reclassifying the original hypothesis from "refuted" to "structurally inapplicable," a genuine a-priori-impossibility-vs-empirical-falsification distinction; a new permanent theory split between SEQUENTIAL (DPI-constrained, monotone) and PARALLEL (can be non-monotone) representation families; and a striking empirical demonstration that adequacy≠realization — reversing a rank-direction encoding convention swings fixed-decoder performance by 54.37 percentage points while recoverability (Ĥ(Q|R)) is essentially unchanged. Crucially, H-RR2 delivered a valuable NEGATIVE result directly answering this thread's own long-open question: Zero rates at each transition show NO correlation with the observed preservation boundary — empirically corroborating (not just conceptually arguing, M0212/M0214) that Zero must be demoted from causal preservation-mechanism to one observable/mechanism among several. Multiple subsequent re-adjudication passes (M0221-M0223) added further genuine precision: a Dimension-A(context-dependence)-vs-Dimension-B(determination-order) split for the higher-order-Zero phenomenon (not previously separated); rejection of "Zero is an equivalence relation" as unproven; narrowing "the carrier cannot be a set" to the defensible "set+independent-element-wise-eliminability cannot be the complete representation"; a NEW target-leakage guard (Q∉Inputs(T,O,C) except the evaluator) and a bijection-verification requirement before the rank-direction result can be linked to Q-equivalence; and a "first-observed-failure≠global-optimum" caution. A named forensic follow-up, KR-REP-REDUCTION-AUDIT-2026-09 (11-item checklist: leakage, bijection, entropy-estimator choice, N_viol/entropy correspondence, rank ties, C's construction, reproducibility, train/test separation, exact boundary counts), was commissioned but not yet located as executed. SEPARATELY, M0220 opened a FIFTH source tradition under the established anti-reification discipline (after Gita, Vedic/Upanishadic epistemology, Plato, Vedic Mathematics): a 178-page Vedic Palmistry text (Mason), mined — properly quarantined as "Historical Structural Reasoning Sources," never as evidence — for candidate KnowledgeOS concepts including Interpretation Precedence (priority-ordered resolution of competing claims, with a concrete document-conflict worked example), a Support/Qualifier/Conflict/Precedence/Provenance/Temporal-state ontology extension, Branch-as-claim-structure, multi-view representation, and mixed-type/composite state — several of which directly and usefully reinforce (via independent historical analogy) the corpus's own established non-element-wise-Zero and contract-relative-timestamp-elimination findings.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-11 (2026-09-06, 217/282 done — 77% of the 282-file pass, continued past 200. The corpus-audit sub-thread (M0198-M0213) delivered a genuinely rigorous engineering discipline: a 12-phase Production Corpus Audit specification (M0201) with a completeness-gated n* rule (NULL is an explicitly VALID scientific result, never manufactured), a Q-independence circularity guard, and a None-vs-0.0 entropy discipline — then the audit was ACTUALLY EXECUTED (M0213, reviewing a real CORPUS-THEORY-AUDIT.md): it independently re-confirmed the 1,395/{1252,25,3,115} statistics AND discovered a genuine KR-ZERO GENERATOR DEFECT (103/256 "R1" contexts wrongly contain metadata — three generator code paths bypass the class constructor), while confirming the new R5→R2 representation-reduction theory has ZERO existing implementation in the repository. A concrete, dated instance of the Gita-material anti-reification discipline was caught operating live: the audit explicitly rejected Gita verse 2.50's "skill in action" reading for entailing exactly the "do more with less" overclaim the theory itself forbids. Meanwhile the DENOMINATOR DISCREPANCY escalated (M0200→M0212): now FIVE unreconciled total-count figures (1395/1496/1475/1500) and TWO unreconciled percentage pairs (89.7%/8.24% vs. 90.04%/7.89%) for the same underlying KR-ZERO-ORDER experiment. M0212 also reframed the higher-order-Zero finding as a MECHANISM-DISCOVERY question (introducing a new formal "interaction order" ord_{T,Π}(S;D) and a "counterfactual structural decomposition" methodology for irreducible witnesses) and resequenced the whole programme to ORDER→MECHANISM→CARRIER→REPRESENTATION-REDUCTION. M0214 then delivered a genuine CONCEPTUAL REORGANIZATION of the entire research programme's centre of gravity: introduced a new central open object, the "interaction structure" ℐ_{T,Π}(D,S), explicitly DEMOTING Zero from a causal mechanism ("Zero⟹Adequacy") to merely one observable arising from that deeper structure, and elevating "what is the carrier?" to first-class research-question status. M0210 (a parallel pass on the earlier information-theoretic Zero-formalization track, M0196) caught THREE further genuine mathematical/type errors beyond M0196: a Level-4 bijection-vs-factorization conflation, a T-dependent equivalence-relation domain error, and a source-vs-target-space fiber type mismatch — all with concrete fixes. M0216 then consolidated everything (M0210+M0214) into the cleanest single-document epistemic-status ledger in the entire Zero-algebra thread: an explicit [CORPUS]/[EXP]/[PROP]/[OPEN] tagging of every result, formally demoting the "Zero predicts the reduction boundary" bridge to a testable [PROP] hypothesis, and crisply stating the thread's own governing rule: "KR-ZERO informs KR-REP-REDUCTION; it does not define it." M0207 separately delivered the representation-reduction sub-thread's own theoretical capstone (a frozen 5-part Representation Reduction Contract with a new monotonicity guard, a unified overlapping-diagnosis tuple ℬ(R), and a bidirectional Q-equivalence definition) — structurally parallel to, but never cross-referenced with, M0187's own capstone for the separate ratification-tension arc. Several further M-sequences (M0202/M0203/M0209) delivered smaller but genuine implementation-level corrections (a closed-form N_viol combinatorial identity; an |N|-vs-N_n denominator-consistency fix; a capacity-vs-entropy monotone-decrease correction plus the first worked illustrative status table). M0179/M0185/M0197/M0205/M0206/M0211/M0215/M0217 confirmed manifest duplicates (minimal treatment); M0190/M0192/M0204/M0208 are non-manifest-flagged but substantively-redundant content subsets/near-duplicates of earlier sequences (also given reduced-depth treatment).) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-10 (2026-09-06, 200/282 done — 71% of the 282-file pass, continued past 193. The Zero-algebra thread (M0189-on) reached genuine EXECUTED-EXPERIMENT status: KR-ZERO-ALGEBRA-2026-09 was actually run (M0194/M0195), CONFIRMING the exact adversarial "major result" prediction M0189 flagged — two concrete witnesses prove Zero is NOT element-wise (duplicate case: individual-Zero⇏group-Zero; cancellation case: group-Zero⇏individual-Zero, "emergent eliminability") — with 9 of 11 candidate algebraic hypotheses REFUTED, a quantified heuristic-vs-formal-Zero divergence (55.75% agreement, 1559-vs-301 asymmetric over-elimination), and L empirically characterized as a terminating-but-non-confluent rewriting system (not a projection). M0196 then reviewed a PARALLEL, independent information-theoretic (Shannon-entropy/mutual-information) formalization of the same Zero concept, catching two genuine mathematical errors with concrete counterexamples and fixes (a conditional-zero-loss non-implication; a non-reflexive equivalence relation), plus a corrected entropy bound and a Shannon-vs-Kolmogorov separation — establishing a FOURTH parallel formal track for Zero (alongside the counterfactual-preservation, subset-level/combinatorial, and Vedic-derived-9-operation-algebra tracks). Then M0198 (MASTER RESEARCH HANDOFF) delivered the thread's most methodologically mature single document: precise, previously-unreported statistics from ANOTHER executed experiment, KR-ZERO-ORDER-2026-09 (1,395 cases: 89.7% singleton-determined Zero, 8.24% irreducible/higher-order), a MAJOR CORPUS-INTEGRITY FINDING (the old KR-ZERO property-results.json is aggregate-only — original case rows never persisted, reconstructible only via a deterministic generator+seed), an explicit guard against a dangerous naming collision (old R1-R4 representation CLASSES vs. a proposed new R5→R2 reduction HIERARCHY — grep-verified to have zero evidentiary basis), a rigorous three-theorem formal theory (Adequacy/Factorization-Fiber-Preservation/Information-Lower-Bound), and a 10-rule Research Discipline checklist. M0200 then surfaced a FRESH unreconciled corpus-count discrepancy (1,496 and 1,475 figures from separate O2/O4/O6 analyses, alongside the established 1,395 total) — joining this reconstruction's other long-tracked count discrepancies. This entire Zero-algebra/representation-reduction thread continues to show NO cross-reference to the concurrently-processed (and now apparently-capstoned, at M0187) ratification-tension arc. M0193 additionally mined the underlying Vedic-Mathematics source book into a nine-operation "Candidate Transformation Algebra" (Observe/Base/Diff/Cross/Transform/Eliminate/Retain/Verify/Compose) — an EIGHTH unreconciled candidate O_core operator-set variant for the corpus's long-tracked kernel-operator question.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-9 (2026-09-06, 193/282 done — continued past 185. The ratification-tension arc reached ITS OWN APPARENT CAPSTONE at M0187: THEORY-CLOSURE-GATE-2026-v1.0 delivered in full (six frozen constitutional axioms, a completed A-E criticality matrix, ABK-1 uniqueness formally and permanently abandoned in favor of "validated candidate for the target problem class"), and — for the FIRST TIME in 25+ documents — a second review genuinely ACCEPTS it ("YES, we can now close... at declared constitutional scope") rather than escalating or rejecting; one residual overclaim survives even this careful acceptance (asymptotic complexity still labeled "VERIFIED" from a mere runtime benchmark). SELF-CORRECTION at M0188 (a mechanical directory-listing file): cross-checking it against the manifest revealed that TWO items this window had characterized as newly-discovered/unlocated were in fact already located and flagged critical in an EARLIER window — the "Steps 285-290 third thread" is M0050, and the "unlocated YONI-ZERO LENS proposal" is M0088 (which itself already shows "Sarathi Lens" as pre-existing, older than M0085-M0088's own work); both M0157/M0158's and M0182's records were corrected in place with revision-history entries rather than left standing as overclaims. THEN a substantial NEW, separate research thread opened (M0189-M0193): KR-ZERO-ALGEBRA, maturing the corpus's long-tracked Zero-Lens concept into "Transformation-relative Zero" Zero_{T,Π}(x)⟺Π(T(D))=Π(T(D\x)) — a counterfactual eliminability judgment relative to a parameterized preservation contract Π_{Q,C,R,S} — with a first-class auditable Zero Witness (Eliminate≠Delete safety distinction), a genuine falsification mechanism ("Representation-Induced Zero" / EXP-0, explicitly tied to the corpus's own frozen FR-001 result), a disciplined six-experiment research-lane proposal that explicitly declines to touch Theory v1.2 or kernel selection (a notably more disciplined scope boundary than the concurrent ratification-tension arc), and — mining the underlying Vedic-Mathematics source book far more deeply than before (M0193) — a nine-operation "Candidate Transformation Algebra" 𝒦=(B,Δ,I,R,Γ): Observe/Base/Diff/Cross/Transform/Eliminate/Retain/Verify/Compose, each derived from a distinct named sutra, constituting an EIGHTH unreconciled candidate O_core operator-set variant, with a genuinely new untested hypothesis (Zero-compositionality under operation composition). This entire Zero-algebra thread shows NO cross-reference to the concurrently-processed ratification-tension arc — yet another instance of the corpus's recurring cross-thread desynchronization pattern. M0179/M0185 confirmed manifest duplicates (minimal treatment); M0190/M0192 are non-manifest-flagged but substantively-redundant content subsets of M0189/M0191 respectively (also given minimal treatment).) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-8 (2026-09-06, 185/282 done — continued past 169. The ratification-tension arc (M0165-on) reached its most mathematically decisive stretch: M0177 delivers four genuinely new corrections (statistical sample-vs-universal-adequacy distinction; an EVal type inconsistency; a FALSE non-monotonicity law refuted by explicit counterexample; a Contr_scope math-vs-code mismatch) and independently names Determination "the critical-path item." M0178 (CLOSURE-SYNTHESIS-v1.2 + CLOSURE-1..5) then DELIVERS the first genuinely worked Det/Package-C1 formalism in the arc — closing that specific gap — but self-declares "Theory v1.3 Fully Ratified, Closed, and Complete" with no independent adjudication, reintroducing a scalar-threshold collapse inside Det's own reference code. M0180 (and its near-duplicate-in-substance M0183) delivers the most systematic counter-adjudication yet, with TWO GENUINELY NEW discovery classes: a representation-selection circularity in Kernel Selection (ABK-1 is structurally pre-equipped with exactly the properties the EA tests check for) and a DDD boundary violation (Actionability, a governance concept, leaking into the supposedly-pure-epistemic Determination). M0184 then delivers the most disciplined response in the arc — accepting the critique "in full," scoped explicitly to C1/C2 only — genuinely implementing DeterminationBound, an Existential Non-Collapse Axiom, Actionability decoupled into a separate GovernancePolicyEngine, and a concrete REVISE→SUPERSEDED-versioning mechanism — while introducing a fresh spec-vs-implementation mismatch (an elaborate ScaleType measurement formalism, never actually dispatched in the code) and still reintroducing a hardcoded scalar threshold in Determination. SEPARATELY, M0182 delivered the FIRST LOCATED CROSS-THREAD BRIDGE in this entire reconstruction: an unlocated "YONI-ZERO LENS" proposal names its decision layer "Sārathi" — a direct Bhagavad Gita reference (Krishna's role as Arjuna's charioteer) — mapped by this audit onto the kernel's Determination Bridge (Det); the original proposal itself remains unlocated, structurally like Steps 285-290 and the 47-distinction ℛ_req document. M0181 is the arc's most extreme completeness claim ("Nothing. The formal closure is complete."), timestamped BEFORE M0180's counter-critique despite being read after it — reconfirming pro-ratification and counter-adjudication documents are produced concurrently without engaging each other. Also confirmed: M0179/M0185 are manifest-flagged duplicates (of M0176/M0184), given minimal treatment per the user's "ignore duplicate files" instruction.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-7 (2026-09-06, 169/282 done. Entered an entirely new sub-thread: a KR-integration external-literature programme (Brachman&Levesque, DL Handbook, Reiter/Situation-Calculus, Williamson, Gödel, Levesque&Lakemeyer/Only-Knowing, Handbook of Knowledge Representation), each source running the now-stable extraction→adjudication→formal-HPA-artifact triad (confirmed 4x: M0136-8-9, M0141-2-3, M0151/3/4, M0156/161/164). MAJOR DISCOVERY (M0157/M0158): a previously-unseen THIRD parallel research thread — a numbered "Step 285-291" sequence with its own unresolved terminology (Qualify, O/T, G1) — not located anywhere else in this corpus; Step 285-290 remain unfound. RECURRING CROSS-THREAD DESYNCHRONIZATION (5 instances, M0139/M0140/M0143/M0146/M0147): this KR-integration sub-thread repeatedly treats the already-completed KR-CONTR/Composition research (M0109-M0137) as not-yet-started, most severely at M0146 which proposes "KR-CONTR-2026-09" as a future experiment despite M0127's definitive completion. FIRST COMPLETE ℛ_req FORMAL SPECIFICATION (M0159, expanded M0163/M0165) — the corpus's longest-tracked DECISION-REQUIRED item — followed by a MAJOR RATIFICATION-TENSION ARC: M0165/M0167/M0168 progressively escalate toward declaring ℛ_req v1.0 + a concrete code-complete kernel candidate (ABK-1, full TypeScript+Jest) "READY FOR RATIFICATION" and Kernel Selection "has a compliant candidate," while M0166 and — decisively — M0169 reject this as premature, with M0169 giving the most complete master-status register in this reconstruction (~25 items) explicitly marking Kernel Selection/Governance-Ratification/Contr all still 🔴 OPEN/BLOCKED. Also: M0160 flagged (and M0165/M0166 partially confirmed real) a fuller "8 categories/47-distinctions" ℛ_req document still not located as a standalone file. New named concept O_core (M0169): candidate core operations, "major blocker" for equality/kernel-minimality. Also notable: M0151 (Only-Knowing) is the strongest external Zero candidate yet found; M0156's Handbook-of-KR review introduces a genuinely new Revision≠Contraction≠Update epistemic-change triad not yet reconciled with the corpus's own Add/Remove/Persist δ decomposition.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-6 (2026-09-05, 132/282 done — PAST THE HALFWAY POINT. M0128/M0130 delivered two MORE independent cross-domain literature corroborations (Rice's legal logic validates Reject(H1)⇏Accept(H2) and the just-completed structured-evaluation result; Shapiro's logic theory independently validates the M3/M4 "observationally indistinguishable, not isomorphic" correction and supplies Conflict(K)⇏Collapse(K) as the sharpest candidate for the confirmed-next Composition experiment). M0129 revealed a further executed experiment, KR-COMP-SEP-2026-09, with genuine narrowing results (excludes 3 of 4 candidate composition rules) and reframes the ENTIRE remaining research programme around one question: "what is a frame, semantically?" Then TWO MAJOR GENESIS-LEVEL FINDINGS: M0131 is the actual origin document for Theory v1.2's constitutional structure (the four-layer separation and 11-value status vocabulary this reconstruction has treated as established background since M0098) — it PARTIALLY resolves the M0125/M0126 K_t-structure discrepancy by confirming K_t=(A_t,...,M_t) is genuine v1.1 legacy content, downgraded to "candidate" in v1.2 (the 20 action/duty/authority invariants from that same discrepancy remain unexplained). M0132 (Gap Theory v1.0 ratification) surfaces a genuine CHRONOLOGY PUZZLE: a document labeled "v1.0" and treated as an early input to M0131's reconciliation explicitly cites "From Contr work," "From Zero work," "From FDE work" as its own sources — research this reconstruction processed at LATER sequence positions (M0114-M0130) — flagged, not resolved, for the eventual reclassification pass.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-5 (2026-09-05, 127/282 done — MAJOR MILESTONE: the confirmed priority-1 Contr/Zero research line (running since M0109) reached its DEFINITIVE COMPLETION at M0127 (KR-CONTR-FDE-2026-09 full execution writeup). Verdict: Status C — STRUCTURED EVALUATION REQUIRED; Kernel Verdict K2 — new semantic representation required, OUTSIDE the kernel. Structured (S+,S-,Reason,Provenance,Context,Condition) preserves 12/14 test scenarios vs. Classical 2/14, K3 6/14, FDE 8/14 (both remaining collapses judged acceptable, distinguished by Reason/Provenance). DECISIVELY REFUTES the "fourth-value magic" hypothesis: "the problem is not the number of values — it is the type of representation." Five worked countermodels; a new, deliberately strong six-component semantic-equivalence criterion ("ensures no silent collapse"). FDE explicitly NOT adopted as KnowledgeOS logic (reference model only). Recommends proceeding next to TODO C (the progress-ordering ⪰ problem). M0126 confirmed a near-duplicate of M0125's already-flagged alternative-Theory-v1.2 discrepancy, plus one fresh isolated numerical mis-citation (H_22 vs the established H_12 sorites-witness figure).) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-4 (2026-09-05, 125/282 done — continued past M0115. M0116: KR-CONTR-2026-09 GENUINELY EXECUTED (confirmed via concrete artifacts) — "there are not three contradiction models, there are two" (M3/M4 observationally indistinguishable); self-identified SIXTH instance of the projection-destroys-structure diagnosis, located for the first time in the observability/masking layer; named "Evaluation Masking" phenomenon; powerful cross-cutting synthesis unifying N_eff/Hilbert/≡_sem/Contr under one principle. M0118 RESOLVED the long-tracked unattributed "Freedman"/"Brown-Hwang" citations (named as legitimate prior reading). M0119: Priest's non-classical logic externally validates two of the corpus's own major findings (FR-001's transitivity requirement; the Hilbert-space "elegance≠validity" rejection) from an independent authoritative source. M0120: a second executed Contr experiment fundamentally reframes the whole question (flat candidates fail on the unknown-family, not contradiction; only structured evaluation achieves full coverage) and exposes a genuine invariant-suite coverage gap. M0117 revealed a not-yet-processed consolidation document to watch for. Three MORE instances of a recurring file-timestamp-vs-logical-order anomaly confirmed in this stretch (M0112 vs M0106; M0117's superseded-notice). M0125: a "COMPLETE — READY FOR TRANSFER" session-handoff document is MOSTLY accurate but contains a SIGNIFICANT internal discrepancy — its own "Complete Theory" section presents an entirely different, unreconciled K_t structure and twenty action/duty/authority-flavored invariants (Role≠Duty, Authority≠Source, CanAct≠ShouldAct) that do not match the K_t=Γ(E_t,Q,C,EC)/A_t attribution model tracked throughout this entire stretch — flagged, not resolved, for the eventual reclassification pass.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-3 (2026-09-04, 115/282 done — continued past M0108. M0109 is the authoritative ten-group (A-J) TODO register/roadmap, explicitly reprioritizing the queue from "Factivity→Contr→⪰" to "Contr(1)→Factivity(2)→⪰(3)". M0110/M0111/M0112 report the Factivity decision RESOLVED as R1 (K_t renamed to A_t/AttributedState, Knows→Truth kept externally factive, Verification separate) via a disciplined governance act explicitly kept separate from the underlying R1/R2 experimental-behavioral-equivalence finding ("evidence≠decision"). M0111 ("The Development of the Model") is the single most comprehensive document in this pass — the full 11-phase trajectory of the entire adjacent docs/knowledgeos/research/ codebase — and made a MAJOR finding: it sources the corpus's own already-tracked count discrepancy to THIS reconstruction's own three_model_convergence/ directory, and discloses a foreign-file cross-contamination between the two research lanes (confirming they're causally entangled, likely one conversation split across directories — flagged as a bridge_candidate for a future unified reconstruction). A THIRD instance of a recurring file-timestamp-vs-logical-order anomaly was found (M0112 vs M0106, the corpus's own two "Frozen Model" snapshot documents — following M0105 and M0110's earlier instances). M0113 caught a genuine internal diagram/text inconsistency within M0109 itself. M0114 is the full KR-CONTR-2026-09 protocol for the confirmed priority-1 next experiment (Contradiction/Zero). M0115 closed the Hilbert-space sub-thread (REFUTED as foundation; ADOPTED only as vocabulary) but itself contains a self-contradiction — correctly withholding a freeze on "the answer lies between them" in one section while restating that exact already-withdrawn claim as its own "most valuable finding" in another.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker-2 (2026-09-04, 108/282 done — continued past the M0098 capstone: M0099 canonized the projection/invariant-custody framework but its own Law L2 regressed to the exact "kernel of the projection" language M0098 had just corrected (flagged, unresolved); M0100 caught this near-real-time, also rejecting M0099's fresh Zero=closure(B_π) definition. A new candidate-multiplicity/effective-complexity sub-thread (M0101-M0105) ran KR-NEFF (executed: N_eff≈9/51/202/941 for |H|=1000 under varying dependence) then KR-DIST (executed: proved ~_Λ non-transitive via explicit 12-link counterexample, refuting N_eff=|H/~_Λ|; δ-packing fails ~222× under strong correlation) — frozen as FR-001. M0105 then proposed the exact already-refuted quotient construction with no apparent awareness of M0103/M0104 despite a later file timestamp — a flagged log-ordering anomaly. M0106 ("The Frozen Model") is a master reference resolving two of three previously-unverified quantified claims from M0099 and revealing a MAJOR SCOPE FINDING: a substantial, actually-executed, reproducible codebase exists under docs/knowledgeos/research/ (kernel-reduction/, theory-v1.1/v1.2-simulation/, 58 files, 35 Python modules, 61 JSON results) entirely OUTSIDE this reconstruction's current mathematical_ideas_that_can_be_implemented/ scope — confirming KR-M2O/KR-NEFF/KR-DIST/Zero-Lens were genuinely executed as code, not just discussed. M0107 is a new rigorous 32-section protocol (KR-HILBERT-2026-09) testing whether KnowledgeOS can be Hilbert-space-represented, explicitly gated against overriding FR-001. M0108 contains two concatenated opposed documents: a naive self-accepting Hilbert proposal (incl. an uncorrected "Yoni=H" identity claim) immediately followed by its own disciplined refutation extending FR-001 to rule out standard spectral functionals too (ρ=.5: 1000>200.6>4.0), proposing KR-EXTREME-2026-09 to test the extreme-value tail directly. M0102 made the pass's most consequential strategic recommendation: halt further philosophical-model expansion (Plato/Gita/Davidson/Dretske/etc.), Theory v1.2 = Research Baseline not Final Theory.) *(additive — this block is the newest; every block below stands as history.)*
+
+**Superseded-update-marker (2026-09-04, 98/282 done — MAJOR CAPSTONE at M0098: the corpus's long-tracked "projection destroys structure" diagnosis (M0043-M0077) is now formalized into a rigorous induced-equivalence framework (x1~π x2 iff π(x1)=π(x2)), replacing the dangerous "kernel of the projection" language; new Invariant Custody criterion and Representation Adequacy Principle [PROP]; resolves the 13-vs-8 kernel-operator tension ("cardinality is representation-dependent"); names KR-PROJ-2026-09-02 as the decisive next research gate, reordering the whole programme ahead of further Zero/Eval/Kernel work. M0081-M0097 traced a full Linga-Yoni/Gita sub-thread (sexual-metaphor documents alternating low-rigor emotion-assignment toys with genuinely rigorous rescues): M0085/M0086/M0087 built a disciplined "Yoni Lens" research construct (Y_t, six falsifiable YL hypotheses); M0090-M0092 sharpened this into a three-competing-models decisive experiment, with M0092 surfacing an unresolved internal contradiction against the corpus's own established closure-as-event finding; M0093 gave the first Gita bridge (Kṣetra/Kṣetrajña); M0094 delivered the sub-thread's most rigorous document (a proven theorem candidate: infinite distinct states does not imply monotonic progress, with concrete counterexamples); M0095/M0097 delivered a genuinely new statistical finding — selection bias/winner's-curse, requiring "Selection must be separated from Validation" — via a fully executable 35-section protocol (KR-M2O-2026-09-02). Freedman/Dretske citations reconfirmed unresolved (M0095, third sighting).) *(additive — this block is the newest; every block below stands as history.)*
 
 **Updated:** 2026-09-04 *(additive — the **Pass-1 performer lane ESTABLISHED (Option 1, acts 1–3 recorded separately) · performer now ATTRIBUTABLE but NOT permitted · V-3 untouched · Pass 1 still NOT started** block is the newest; every block below stands as history)*
 
@@ -5483,3 +6567,43 @@ Key confirmed/quantified results:
 - An ordered four-experiment forward plan (N-1: decide factivity as an architectural decision, not an experiment; N-2: define Contr and the fourth value together; N-3: define the epistemic-status ordering ⪰; N-4: test the 37 unsupported typed distinctions or drop them).
 
 Next: continue the sequential pass from M0078 (`kr-closure-2026-09-02-epistemic-closure-event-experiment.md`) onward.
+
+---
+
+## Update (2026-09-04/05): `KOS-CONTRACT-NEUTRALITY-001` — Pass 1 executed, V-3 vocabulary adopted
+
+**Fresh performer onboarded through canonical governance** (REGISTER → GRANT amendment →
+HANDOFF → human START), lane `S5-architecture-pass1-evidence-reconciliation`, resolver
+confirmed `RESOLVED · attribution MATCH · authorized_to_act TRUE`. One live `EKS-07`
+collision with a concurrent peer process occurred and was disclosed/self-corrected via
+`CANCEL` (repo precedent, seq 26–28) rather than hidden.
+
+**Pass 1 evidence determination delivered:** `NOT YET DETERMINABLE` (not forced) — static
+"intra-class call" semantics settled; dynamic member access (`V-3`) unresolved; Stage-2
+Python independently verified `FAIL` and superseded by a standing 2026-08-18 scope decision
+(Python out of current implementation scope; neutrality framed architecturally).
+
+**PO/ARB then acted twice** on the Pass-1 handoff: (1) authorized **targeted V-3
+continuation limited to `D-1`/`D-4`/`D-5`** (no implementation/contract/fixture/runtime
+authority); (2) **retired Deliverable E** — current work proceeds under the
+architectural-neutrality framing, Python out of current conformance obligation.
+
+**`D-1`/`D-4`/`D-5` proposed and then ADOPTED** (architecture vocabulary/determination
+only — no implementation, no contract/fixture/runtime change, no closure of V-3): new L3
+fact kind `IndeterminateBehaviourReference` (`D-1`), the determination's evidence-scoped
+`call_user_func`/`call_user_func_array` enumerated list (`D-4`), new `QualifierKind::ExplicitCallableDispatch`
+(`D-5`). `D-2`/`D-3` untouched (dynamic property access remains out of current scope).
+
+**Next action:** none authorized yet beyond this. `D-1`/`D-4`/`D-5` are adopted vocabulary,
+**not yet incorporated into the authoritative specification** (`expected.json`) and **not
+implemented**. V-3 remains OPEN until incorporation + implementation + independent
+verification + acceptance are separately authorized and satisfied. **No implementation
+authority exists — do not implement the proposal merely because it was drafted and
+adopted.**
+
+**Records (chronological):** `docs/publicdigit/reviews/2026-09-04-KOS-CONTRACT-NEUTRALITY-001-PASS-1-fresh-performer-registration-attempt-STOP.md`
+· `...-PASS-1-S5-register-grant-handoff.md` · `...-PASS-1-S5-START.md` ·
+`...-PASS-1-evidence-determination.md` · `...-PASS-1-PO-ARB-escalation.md` ·
+`...-V3-targeted-continuation-AUTHORIZATION.md` · `...-deliverable-E-retirement-decision-registration.md`
+· `...-V3-D1-D4-D5-proposal.md` · `...-V3-D1-D4-D5-ADOPTED.md`. Session log:
+`.claude/sessions/2026-09-04.md`.

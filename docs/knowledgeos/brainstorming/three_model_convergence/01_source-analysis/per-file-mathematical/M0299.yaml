@@ -1,0 +1,30 @@
+sequence: M0299
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-155507_shiva-poison-metaphor-neutralization-that-leaves-a-trace-variant.md
+title: "Shiva/poison metaphor: neutralization that leaves a trace, introducing Containment Zero as a third Zero type"
+date: "2026-09-04"
+bytes: 5564
+model:
+  primary: KR-SIM
+  secondary: Shaivite mythology (Samudra Manthan / Nilakantha), explicitly used as philosophical model not literal theory
+source_role: PRIMARY
+canonical_source: M0299
+importance: high
+confidence: high
+about: >
+  Uses the Shiva/Nilakantha poison-containment myth (explicitly flagged as a philosophical model, not a literal mathematical theory) to derive a third Zero type: Containment Zero, where a harmful effect is neutralized (Effect(P)=0) while its source/trace persists (P != empty, Trace(P) != 0) -- distinct from Elimination Zero (already established) and a newly-named Balance Zero (+C+(-C)->0 while underlying contributions may still exist). Proposes Contain_Q(c,K_t) -> (K_{t+1}, Trace) as a research candidate, and a five-way resolution vocabulary: Elimination/Cancellation/Qualification/Containment/Revision.
+introduces:
+  - "Containment Zero: Effect(P)=0 while P != empty and Trace(P) != 0 -- a third Zero type distinct from Elimination and Balance Zero"
+  - "Contain_Q(c,K_t) -> (K_{t+1},Trace), subject to Harm_Q(c,K_{t+1})=0 while Trace(c,K_{t+1}) != empty"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A three-way Zero taxonomy (Elimination/Balance/Containment) with a formal Containment operator preserving a persistent trace after neutralizing harmful effect."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new third Zero category (Containment Zero) with a formal Contain operator, extending the corpus's established Elimination/Balance Zero pair -- consistent with, and continuing, this same three-way taxonomy already recorded elsewhere in the corpus (M0270-M0282 range), so also flagged as needing cross-reference to confirm whether this is the originating document or a parallel restatement.

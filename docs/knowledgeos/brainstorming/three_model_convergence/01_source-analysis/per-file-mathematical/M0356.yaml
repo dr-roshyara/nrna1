@@ -1,0 +1,29 @@
+sequence: M0356
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-074900_animal-communication-as-discovery-lens-signal-is-not-knowledge.md
+title: "Animal communication as a discovery lens: signal is not knowledge"
+date: "2026-09-07"
+bytes: 26160
+model:
+  primary: KR-SIM
+  secondary: Animal communication / ethology research, explicit [EXT][METAPHOR/RESEARCH LENS], not evidence
+source_role: PRIMARY
+canonical_source: M0356
+importance: high
+confidence: high
+about: >
+  Explicitly disclaimed as [EXT][METAPHOR/RESEARCH LENS] (treated identically to Veda/cybernetics/Bayesianism sources: not evidence that KnowledgeOS works the same way animals do). Mines animal-communication research for the Observation->Signal->Information->Assessment->Action transition, using the distinction between a signal itself and what a receiver can infer from it (e.g. alarm calls reliably associated with situations, but interpretation is a separate step) as a discovery lens for this same transition in KnowledgeOS.
+introduces:
+  - "A signal-is-not-knowledge distinction (Observation->Signal->Information->Assessment->Action), sourced from animal-communication research and explicitly labeled a metaphor/lens, not adopted as biological evidence for KnowledgeOS"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A five-stage Observation-to-Action transition pipeline, motivated by (not derived from) animal-communication research findings."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely useful five-stage discovery-lens pipeline for the Observation-to-Action transition, explicitly and correctly disclaimed as metaphor rather than evidence -- continued and deepened by the immediately following M0357.

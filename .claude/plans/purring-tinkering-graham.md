@@ -1,0 +1,1833 @@
+# Plan: Scope the Global Reclassification Pass (MD-004)
+
+**Status: APPROVED and EXECUTED, 2026-09-07 (Phase 0).** MD-021 recorded; Phase 0 completed and
+verified (register back-filled + 56-row gap closed, `file-classification.md` extended,
+`corpus-map.md` written, `protocol.md` annotated). See `.claude/sessions/2026-09-07.md` and MD-021's
+own execution record in `14_decision-log/model-boundary-decisions.md` for full detail.
+
+---
+
+# Plan: Phase 1 — Independent Model A (Gītā) Reconstruction
+
+**Status: APPROVED, EXECUTED, and AUDITED, 2026-09-07.** All five artifacts written to
+`02_model-a_gita/`, verified, and independently re-audited before Phase 2 authorization (one
+evidence-preserving scope correction applied — see MD-021's Phase 1 audit record in
+`14_decision-log/model-boundary-decisions.md`). Phase 2 is now separately authorized below.
+Phases 3–6+ remain unauthorized and untouched.
+
+The user's own prompt for Phase 1 (quoted in full below under "Authorization received") was itself
+extremely detailed and closely matched this plan's own design — eight explicit governance
+boundaries, matching the plan's Design Decisions 1–5 nearly one-to-one.
+
+---
+
+# Plan: Phase 2 — Independent Model B (Mathematics/Statistics) Reconstruction
+
+**Status: APPROVED and EXECUTED, 2026-09-07.** All five artifacts written to
+`03_model-b_mathematical/`, verified (both consistency scripts `CONSISTENT`, filesystem scope
+confirmed, six mathematically consequential claims spot-checked against raw source). See MD-021's
+Phase 2 execution record in `14_decision-log/model-boundary-decisions.md` and the Phase-2 completion
+report (session log, 2026-09-07) for full detail. Phase 3 is now separately authorized below.
+Phases 4–6+ remain unauthorized and untouched.
+
+## Authorization received (verbatim, 2026-09-07)
+
+The user's Phase-2 authorization is long (11 numbered sections); its binding constraints,
+summarized without paraphrasing away their force:
+1. **Independence**: reconstruct Model B from its own evidence only — do not use Model-A
+   conclusions/concepts/contradictions/unresolved-equivalences/boundary-observations as evidence,
+   do not make Model B converge with Model A, do not test Model B against Model A, do not resolve
+   any Model-A open question.
+2. **Evidence base**: the reconciled 401-file mathematical lane is the authoritative inventory, but
+   "do not assume all 401 files constitute Model-B evidence... membership determined by content, not
+   directory membership" — preserve `g`/`x`/`c`/`c1`/other non-B classifications as boundary
+   material.
+3. **Methodology**: sequence order, existing per-file YAML/MD as primary evidence layer, preserve
+   terminology/evidence-status/maturity/provenance/relationship-vocabulary/duplicate-conventions; no
+   silent normalization of competing mathematical formulations — compare, and default to
+   `unresolved_equivalence` absent corpus-established equivalence.
+4. **Five artifacts**, same structure as Model A, in the Model-B directory.
+5. **Evidence accounting**: independently derive total/primary/duplicate/independent/non-B/boundary
+   counts from governed records — "do not simply copy these numbers from a previous report"; if the
+   population differs from an earlier assumption, document the difference.
+6. **Concept register**: full provenance per concept; no manufactured unified model.
+7. **Kernel claims**: do NOT import Model-A's CT-4 finding or "zero kernel" discussion. Ask
+   independently what Model B itself proposes/tests, and keep four states distinct:
+   established / tested→rejected / proposed→untested / unresolved. Never convert "not tested" into
+   "rejected."
+8. **Boundary observations**: record non-B material as boundary, never reclassify to inflate
+   coverage; no cross-model relationships established.
+9. **Verification**: `resume_mathematical.py` CONSISTENT, 401-file inventory intact, main register
+   and Model-A/C1/C2/cross-model artifacts unmodified, all YAML parseable, 5–10 spot-checks, index
+   counts verified.
+10. **Governance record**: decision-log/session-log entries; never rewrite Phase-1/MD-021 history.
+11. **Completion report**: a specific 12-point structure (evidence population, independent/duplicate/
+    concept/contradiction/open-question/unresolved-equivalence/boundary counts, kernel-candidate
+    four-way breakdown, notable structures, verification results, governance questions).
+
+**Absolute boundary**: Phase 2 only — no Model A↔B comparison, no convergence analysis, no Phase 3,
+no inference about the eventual three-model result. Stop after the completion report.
+
+## What I verified before planning
+
+- **Directory-name discrepancy**: the authorization names
+  `docs/knowledgeos/brainstorming/three_model_convergence/03_model-b_mathematics/`, but the
+  directory that actually exists (created when this stage-gate scaffold was first set up, confirmed
+  via `ls`) is `03_model-b_mathematical/`. I will write to the **existing** directory and record
+  this discrepancy explicitly in `00_index.md` and the governance record, rather than silently
+  "correcting" the authorization's wording or creating a second, empty, wrongly-named directory —
+  consistent with the authorization's own instruction (§5) to document rather than silently resolve
+  discrepancies against an earlier assumption.
+- **Precise, independently-derived evidence accounting** (not copied from the Phase-0/reconciliation
+  session's own summary numbers — recomputed fresh from the 401 `01_source-analysis/
+  per-file-mathematical/*.yaml` records directly):
+  - `model.primary` distribution across all 401: **`b` 162 · `KR-SIM` 199 · `x` 16 · `c1` 13 · `g` 6
+    · `c` 5** (sums to 401).
+  - Within the 162 `b`-tagged files, `source_role` breaks down as: **57 `PRIMARY` · 63
+    `PRIMARY_RESEARCH` · 28 `ADJUDICATION` · 3 `SYNTHESIS` · 10 `DUPLICATE` · 1
+    `CONTROL_SELF_REFERENCE`**. The 10 `DUPLICATE`-role files (a *pre-existing* marking from the
+    original 282-file pass, distinct from the 10 `DUPLICATE_REPRODUCTION` pointer-records the
+    Phase-0 reconciliation itself added for the 119-file gap) each carry a `canonical_source` that
+    is *also* `b`-tagged (verified: M0010/M0038/M0058/M0006/M0067/M0070/M0057×2/M0055/M0052, all
+    `primary: b`) — genuinely self-consistent internal duplicates, not a tagging error. The single
+    `CONTROL_SELF_REFERENCE` file (M0003) is a KR-SIM-lane process/audit instruction, not
+    mathematical content itself (directly analogous to the main corpus's own excluded
+    `files_to_read_one_by_one.log` self-reference).
+  - **Therefore: Model-B primary evidence = 162 rows = 151 independent records + 10 duplicates + 1
+    control-self-reference row**, not simply "162 independent files." This is the kind of precision
+    the authorization's §5 explicitly demands ("do not simply copy... derive them").
+  - **Boundary material, none reclassified**: 199 `KR-SIM` (this lane's own native category for
+    general exploratory/dialogue-style research, distinct from `b` since the *original* 282-file
+    pass — not a category I invented during reconciliation) + 16 `x` (cross_model) + 13 `c1`
+    (engineering_knowledgeos) + 6 `g` (gita — already Model-A's own evidence, per Phase 1) + 5 `c`
+    (an ambiguous, protocol.md-non-canonical shorthand; sampled 5/5 — 4 are genuinely
+    logic/mathematics-adjacent external-literature extractions (Priest, Shapiro, Rice), 1 (M0093) is
+    explicitly Gītā content mistagged — flagged as a data-quality anomaly in
+    `04_boundary-observations.md`, not silently folded into either Model A or B).
+- **Kernel-candidate discipline (authorization §7)**: math-lane per-file records use the *same*
+  `anchor_test.alternative_minimal_kernel` / `supplies_operator_or_transition` fields Phase 1's audit
+  used to catch its own overstatement. I will tabulate these directly for the 151 independent
+  `b`-tagged records, keeping `established` / `tested→rejected` / `proposed→untested` / `unresolved`
+  strictly distinct, and will **not** cite or reuse Model A's CT-4 finding or its "zero kernel
+  candidates" language anywhere in the Model-B artifacts (per §1 and §7's explicit prohibition).
+
+## Design decisions
+
+1. **Evidence base = the 151 independent `b`-tagged records** (162 minus 10 internal duplicates
+   minus 1 control-self-reference). The 10 duplicates get the same minimal pointer treatment Model
+   A used (named, excluded from independent concept-counting, not deleted from the evidence-base
+   table). The control-self-reference file is noted, not analyzed as content.
+2. **Method = digest-based synthesis**, exactly Phase 1's proven approach: a compact per-file
+   extraction script (title/classification/tier2/introduces/defines/refines/contradicts/
+   open-questions, long fields bounded) run once over all 151 files, read in sequential chunks, used
+   to build a running cluster/concept map before drafting — not independent parallel forks (Model
+   B's own cross-file coherence requirements are the same reason Phase 1 avoided forks for its
+   synthesis step, even though forks were appropriate for the earlier, purely-mechanical
+   reconciliation pass).
+3. **Vocabulary reused, not invented**: protocol.md §3's evidence-status tags, the Maturity scale,
+   and MD-017's six-way relationship taxonomy — identical to Model A's own discipline, per the
+   authorization's §3 and §6.
+4. **Five artifacts**, same shape as Model A, written to the **existing** `03_model-b_mathematical/`
+   directory:
+   - `00_index.md` — purpose, scope, the directory-name discrepancy noted explicitly, evidence
+     population (162/151/10/1 breakdown), methodology, artifact map, exclusions, phase status.
+   - `01_evidence-base.md` — the 151 independent records organized into evidentiary clusters
+     (expected, subject to what the digest actually shows: this lane's own established threads
+     include KR-ZERO/Zero-algebra, KR-STATE/state-transitions, representation-reduction, the
+     external-literature-corroboration series (Priest/Shapiro/Rice/Kallenberg/Cover-Thomas/etc.),
+     and the Vedic-Mathematics-derived candidate-operator thread) with a full traceability table.
+   - `02_concept-register.md` — named mathematical concepts/formalisms, each with source seq(s),
+     terminology, evidence status, maturity, MD-017-typed relationships.
+   - `03_contradictions-and-open-questions.md` — genuine contradictions, unresolved equivalences
+     (multiple competing formalizations of the same mathematical idea are expected in this lane,
+     given what Phase 0's own reconciliation already surfaced — e.g. the Knowledge-Vector-style
+     proliferation pattern may recur here in a mathematical register), open questions.
+   - `04_boundary-observations.md` — the 239 non-`b` rows (199 KR-SIM / 16 x / 13 c1 / 6 g / 5 c)
+     accounted for by category, the `c`-tag ambiguity flagged, outward-pointing `bridge_candidates`
+     recorded as bounded only.
+5. **Kernel-candidate table** (authorization §7, §11.9): a dedicated table in the concept register
+   and completion report, tabulating every `alternative_minimal_kernel`/`supplies_operator_or_
+   transition`-flagged record among the 151 into the four required states, sourced only from Model
+   B's own evidence and this lane's own experiment records (e.g. KR-ZERO-ALGEBRA-2026-09,
+   KR-STATE-01, KR-REP-REDUCTION) — never by reference to Model A's Chapter-4/KR-SIM-companion
+   material.
+
+## Execution steps
+
+1. Extract the 151-record evidence list (script, read-only) plus the 10-duplicate and 1-control-ref
+   lists, and the 239-row boundary breakdown — mechanical, mirrors Phase 1's `gita84.tsv` step.
+2. Build the compact digest (mirrors Phase 1's `extract_gita84.py` pattern) and read it in full,
+   sequentially, before drafting anything.
+3. Draft the five artifacts directly (not via automated search-and-replace — interpretive synthesis
+   work).
+4. Run the verification suite from authorization §9 (all nine checks).
+5. Append the Phase 2 execution record to `14_decision-log/model-boundary-decisions.md` (MD-021),
+   update `.claude/CONTEXT.md` (new top block, prior block preserved as history) and today's session
+   log — never rewriting the Phase-1 or Phase-0 entries already there.
+6. Produce the completion report in the exact 12-point structure the authorization specifies.
+
+## What this plan explicitly does NOT do
+
+- Does not compare, converge, or test Model B against Model A in any way.
+- Does not import or reference Model A's CT-4 finding, its "zero kernel candidates" framing, or any
+  other Model-A conclusion.
+- Does not reclassify any of the 239 boundary rows to inflate Model-B's evidence count.
+- Does not touch `02_model-a_gita/`, `04_model-c_kernel-ddd/`, `05_cross-model/`, or any later stage.
+- Does not begin Phase 3 or scope it in any way.
+
+## Verification
+
+Exactly the authorization's own §9 checklist: `resume_mathematical.py` → `CONSISTENT`; 401-file
+inventory intact (`mathematical-manifest.tsv`/`mathematical-progress.tsv` unchanged); main
+`classification-register.tsv` unchanged; no Model-A/C1/C2/cross-model artifact touched; all 151
+records' YAML still parseable (they are read-only inputs, never modified); 5–10 concept-register
+claims spot-checked verbatim against source; `00_index.md`'s counts verified against the actual
+artifact contents (learning directly from Phase 1's own audit finding — verify before publishing the
+count, not after).
+
+## Authorization received (verbatim scope + boundaries, 2026-09-07)
+
+> Yes. I authorize Phase 1 of MD-021 only: Independent Model A (Gītā) reconstruction.
+> 1. Scope: execute only Phase 1, in `02_model-a_gita/`, using Phase-0 artifacts + provisional
+>    classification as the evidence base, preserving sequential/log-order discipline.
+> 2. Independence: reconstruct Model A independently; do not import Model B/C1/C2/math-lane/
+>    cross-model/external conclusions as established corpus findings; do not let later model
+>    boundaries decide what Model A becomes.
+> 3. Classification discipline: do NOT perform final global reclassification; do NOT touch
+>    `final_primary`/`final_secondary`/`classification_change`/`reason_for_change`; provisional
+>    tags may be used to select scope but never silently promoted to final.
+> 4. Model-boundary discipline: do not assume relationships to C1/C2/B/cross-model; record any
+>    suggestive connection as a bounded observation/hypothesis, never a bridge.
+> 5. Evidence discipline: distinguish direct evidence / inference / unresolved ambiguity /
+>    contradiction-refutation / methodological hypothesis; never silently repair/normalize/
+>    reinterpret source evidence; preserve provenance to source files/sequences.
+> 6. Schema/data-quality discipline: carry forward Phase-0's schema-drift findings; do not invent
+>    `maturity` values or collapse the `importance` vocabulary without separate authorization.
+> 7. Output: artifacts only in `02_model-a_gita/`; follow existing protocol/directory/decision-log
+>    conventions and `.claude/CLAUDE.md`; record methodology/evidence/uncertainty/boundaries/open
+>    questions well enough for later phases to consume without contamination.
+> 8. Verification/stopping condition: verify no downstream stage touched (`03_model-b_mathematical/`
+>    through `12_canonical-theory/` and beyond untouched except required control/log updates); do
+>    not begin Phase 2; end with a completion report (what was reconstructed, evidence coverage,
+>    findings, unresolved ambiguities, new data-quality/protocol issues, exact files changed,
+>    verification results, explicit "Phase 1 complete, Phase 2 unauthorized" statement).
+>
+> This authorization supersedes neither MD-004 nor MD-021; it is a separate authorization for
+> Phase 1 only.
+
+## What I verified before planning (two parallel Explore passes)
+
+- **Evidence-set size.** `classification-register.tsv`: **84 rows** with `initial_primary == gita`
+  (spread seq 0092–0808, plus a final cluster 2329–2376 — a "Gītā companion" closure series ending
+  exactly at the corpus's last file). Separately, **511 rows** carry `gita`/`g`/`g1` only in
+  `initial_secondary` while their primary is something else (498 of those `engineering_knowledgeos`,
+  i.e. `c1`). These 511 are **not** treated as Model-A's own evidence (see Design decision 1 below).
+- **Per-file records are already synthesized, not raw extracts.** Each `01_source-analysis/per-file/
+  NNNN.yaml` for a gita-primary file already names concepts introduced/defined, cross-references
+  other sequence numbers (`refines`/`repeats`/`contradicts`/`bridge_candidates`), carries a running
+  "kernel candidate" verdict, and (for the late 2329–2376 series) argued conclusions like "the Gītā
+  supplies NO kernel candidate — sixth consecutive time." **A Model-A reconstruction can be built
+  largely by synthesizing these 84 records**, not re-reading all 84 raw source files — except: the
+  handful of old-schema files if any fall in this range (thinner schema, no `tier2_reason`/
+  `anchor_test`), and files with a `bytes: 0` placeholder in their YAML (several late files, e.g.
+  0752, 0800, 2329, 2370–2376) — these should be spot-checked against the actual source `path:` for
+  fidelity, since the byte count looks like a recording defect even though the summary text is rich.
+- **`02_model-a_gita/` is completely empty** — confirmed recursively, and by MD-021's own text
+  ("Stage directories are genuinely empty... `02_model-a_gita/` through `11_experimental-
+  validation/`... No model reconstruction has been attempted anywhere").
+- **`01_source-analysis/research-ledger.md`** (the artifact-contract's "cumulative ledger") is
+  **stalled at file 0202** (~9% of the corpus) — not usable as a current Gita tracker.
+- **`01_source-analysis/dimension-registry.md`** (14,213 lines, DID stay current through seq 2376)
+  carries a `possible_correspondence` field per dimension explicitly hypothesizing Gita-concept
+  correspondences, and 214 case-insensitive "gita" mentions — a useful cross-reference, though it's
+  a whole-corpus tracker, not Gita-exclusive.
+- **An evidence-status vocabulary already exists and is native to this lane** (`00_control/
+  protocol.md` §3, reused in `01_source-analysis/per-file-template.md`): the closed tag set
+  `[SR]`(source-derived) `[DR]`(derived) `[DF]`(formal definition) `[HP]`(hypothesis)
+  `[CG]`(conjecture) `[PR]`(proposition) `[TH]`(theorem) `[EX]`(experimental) `[AN]`(analogical)
+  `[UN]`(undefined) `[OP]`(open problem) `[RF]`(refuted) `[CT]`(contradictory) — plus a Maturity
+  scale (`ESTABLISHED/DEVELOPING/HYPOTHETICAL/SPECULATIVE/UNDEFINED/CONTRADICTORY`) and MD-017's
+  relationship taxonomy (`new_concept/new_representation/new_decomposition/refinement/
+  contradiction/unresolved_equivalence` — default `unresolved_equivalence`, never merge-on-
+  resemblance). **This is exactly the vocabulary Boundary 5 of the authorization asks for — Phase 1
+  will reuse it, not invent a parallel one.**
+- **The math lane's own capstone documents** (`mathematical_ideas_that_can_be_implemented/`) show a
+  usable *structural* template — a numbered document set with a dedicated "Frozen and Refuted
+  Register" separating withdrawn-by-author / refuted-by-evidence / frozen-result, and a consolidated
+  draft with explicit closing sections partitioning established/hypothesis/rejected. **The
+  structure is reusable; the math lane's own ad hoc tags (`[NEG]`/`[FROZEN]`/`[WITHDRAWN]`/
+  `[CANDIDATE]`) are NOT** — those aren't native to `three_model_convergence`'s protocol, and MD-020
+  already forbids importing that lane's conclusions; importing its tag vocabulary here would be the
+  same kind of cross-lane contamination in miniature. Model A's own documents will use only
+  protocol.md's native `[SR]/[HP]/…` tags.
+
+## Design decisions
+
+1. **Model-A's evidence base = the 84 `initial_primary == gita` sequences, not the 511
+   secondary-tagged ones.** This is a clean, provenance-traceable selection directly grounded in
+   Phase 0's own consolidated register — no new interpretation needed to draw the boundary. Folding
+   the 511 `c1`-primary-with-`g`-secondary files into Model A's own body of evidence would be exactly
+   the kind of cross-model assumption Boundary 4 forbids (their primary lineage places current
+   ownership elsewhere; a secondary tag is a provisional multi-lineage flag, not proof of Model-A
+   membership). Those 511 are instead surfaced as an explicit **"Boundary observations" appendix** —
+   named, counted, a few examples given, flagged as relevant to a *later*, separately-authorized
+   phase (C1 reconstruction or final classification) — satisfying Boundary 4's "record it as a
+   bounded observation/hypothesis rather than establishing a bridge" instruction directly.
+2. **Method = synthesis of the 84 per-file records, sequence-ordered, with targeted source
+   spot-checks** (the `bytes:0` files, and any old-schema file in range) — not a full re-read of 84
+   raw documents from scratch, and not a re-statement of each per-file record either. Every claim in
+   the output carries its source `seq` reference(s) so provenance is traceable, per Boundary 5.
+3. **Reuse, don't invent, the tagging vocabulary**: every claim in Model A's register gets one of
+   protocol.md's native `[SR]/[DR]/[DF]/[HP]/[CG]/[PR]/[TH]/[EX]/[AN]/[UN]/[OP]/[RF]/[CT]` tags plus
+   a Maturity value; cross-references between two Gītā-lineage concepts use MD-017's relationship
+   taxonomy explicitly (defaulting to `unresolved_equivalence` rather than merging on resemblance).
+4. **Document set, proportionate to 84 source files** (not a 15-part series like the math lane's
+   282-file pass): five files in `02_model-a_gita/`, mirroring the reusable *structural* pattern
+   found in the math lane's capstones (index → evidence base → concept register → contradictions/
+   open-questions → a dedicated boundary/refusals register) while using only this lane's native
+   vocabulary:
+   - `00_index.md` — scope, authorization reference (this plan + MD-021 execution record),
+     methodology, evidence-base definition (the 84-sequence list, by pointer to the register plus
+     inline), how to read the rest, explicit non-scope statement (no final classification, no
+     cross-model bridges established).
+   - `01_evidence-base.md` — the 84 sequences enumerated (seq, path, title, tier2/importance as
+     recorded), sequence-ordered, with brief per-file evidence notes; flags the `bytes:0` and any
+     old-schema anomalies found and how they were handled (spot-checked against source, or noted as
+     an open gap if not).
+   - `02_concept-register.md` — the concepts/claims Model A introduces or defines across the 84
+     files, each with its `[tag]`, Maturity, source seq(s), and — where a later file
+     refines/repeats/contradicts an earlier one — the MD-017 relationship explicitly stated.
+   - `03_contradictions-and-open-questions.md` — every `[CT]`/`[RF]`/`[OP]` item found across the 84
+     files, plus any new tension surfaced only by reading them together (e.g. the repeated "no
+     kernel candidate" verdict across the late Gītā-companion series vs. any earlier file that
+     proposed one) — each still evidence-traced, not asserted.
+   - `04_boundary-observations.md` — the 511 secondary-tagged-elsewhere files (Design decision 1),
+     any `bridge_candidates`/`connects_pramana_vedanta_gita_to_c1c2` fields found inside the 84
+     records pointing outward, and the schema-drift carryforward note (Boundary 6: verbatim
+     `importance` vocabulary, no `maturity` field in the new schema, restated here so this document
+     doesn't silently smooth them over).
+5. **Sequence-ordered read**, honoring `protocol.md`'s log-order discipline (Boundary 1) — the 84
+   files will be processed in ascending `seq` order when building the concept register and
+   contradiction log, so later-file relationships to earlier ones are recorded in the same direction
+   the corpus itself was read.
+
+## Execution steps
+
+1. Extract the exact 84-row evidence list from `classification-register.tsv` (script, read-only —
+   same discipline as Phase 0's scripts) and the 511-row secondary-tagged list for the appendix.
+2. Read all 84 per-file `.yaml` + `.md` records in sequence order; spot-check the `bytes:0` files
+   (and any pre-seq-53 file in range) against their raw source.
+3. Draft the five documents above, directly — not via automated search-and-replace (this is
+   interpretive synthesis work, squarely outside the "mechanical" carve-out Phase 0 used).
+4. Append a Phase-1 execution record to MD-021 in `14_decision-log/model-boundary-decisions.md`,
+   matching the style of the existing Phase 0 record.
+5. Update `.claude/CONTEXT.md` (new top block, old top block preserved as a superseded marker per
+   this file's own convention) and today's session log.
+6. Produce the completion report the authorization's Boundary 8 requires.
+
+## What this plan explicitly does NOT do
+
+- Does not touch `03_model-b_mathematical/`, `04_model-c_kernel-ddd/`, `05_cross-model/` onward, or
+  `12_canonical-theory/`.
+- Does not assign `final_primary`/`final_secondary`/`classification_change`/`reason_for_change` for
+  any row — these remain `PENDING_GLOBAL_RECLASS`/`PENDING` everywhere.
+- Does not treat the 511 secondary-tagged files as Model-A evidence, and does not establish any
+  cross-model bridge as fact.
+- Does not begin Phase 2 (Model B) or any later phase.
+
+## Verification
+
+- After drafting: grep the five new documents for any accidental reference to Model B/C1/C2 content
+  presented as established (should find none — only explicitly bounded observations in
+  `04_boundary-observations.md`).
+- Confirm `classification-register.tsv` is byte-identical to its Phase-0-end state (no columns
+  touched).
+- Confirm no file outside `02_model-a_gita/` (plus the decision-log/CONTEXT/session-log updates
+  named above) was written.
+- Spot-check 5–10 concept-register entries against their cited source `seq` per-file record for
+  faithful, non-inflated transcription.
+- Produce the Boundary-8 completion report.
+
+## Context
+
+This is the KnowledgeOS "three-model convergence" reconstruction
+(`docs/knowledgeos/brainstorming/three_model_convergence/`), a governed, multi-week research
+programme (not a code project) that reads a large brainstorming corpus in strict log order to
+independently reconstruct three theoretical lineages — Gītā/philosophical (A), mathematics/
+statistics (B), and Engineering-vs-Epistemic KnowledgeOS (C1/C2) — before any comparison is
+attempted (`00_control/protocol.md`, MD-004).
+
+**Both prerequisite sequential passes are now genuinely complete**, confirmed this session:
+
+- Main corpus: `python3 00_control/resume.py` → `CONSISTENT`, `last_handled_sequence=2376`,
+  `SEQUENTIAL PASS COMPLETE — global reclassification may now open (MD-004)`.
+- Parallel math lane (`mathematical_ideas_that_can_be_implemented/`, MD-020's own separately-
+  governed "KR-SIM" track): `python3 00_control/resume_mathematical.py` → `CONSISTENT`, all 282
+  files recorded, `MATHEMATICAL-PART SEQUENTIAL PASS COMPLETE`. Per MD-020, this lane's conclusions
+  are **not imported** into the main reconstruction — they remain independently-unverified
+  material, exactly like any other external source.
+
+The user's own standing instruction from an earlier window was: only *scope* MD-004 once both
+passes report complete — not execute it. This plan is that scoping act, ending with the concrete,
+minimal next step for approval, not with global reclassification itself (which is a multi-week
+downstream programme, and is explicitly gated stage-by-stage in `00_control/protocol.md`).
+
+## What I verified before scoping
+
+- **Per-file records exist and are complete**: `01_source-analysis/per-file/*.yaml` = 1224 files
+  (1185 primary + 39 adjacent/out-of-scope), `per-file-mathematical/*.yaml` = 282 files.
+- **The summary/aggregate artifacts protocol.md promises have NOT been kept in sync** and are the
+  actual blocker before any interpretive reclassification work can begin:
+  - `00_control/classification-register.tsv` (2321 rows, one per main-corpus manifest entry):
+    `final_primary`/`final_secondary`/`classification_change`/`reason_for_change` are
+    `PENDING_GLOBAL_RECLASS`/`PENDING` for **every single row** — correct, since MD-004 forbids
+    final classification during pass 1. But `initial_primary`/`initial_secondary` are also blank
+    (`-`) for a large tail of later rows (confirmed at rows 2318–2320) even though the
+    corresponding per-file YAML records already carry a provisional classification — this column
+    was never mechanically back-filled from the per-file records as the pass proceeded.
+  - `01_source-analysis/file-classification.md` (the human-readable classification matrix +
+    running-summary table protocol.md specifies): stalled at **"Position: 10 of 2,320 processed"**
+    — it was written once, early, and never updated again despite 1224 per-file records now
+    existing.
+  - `01_source-analysis/corpus-map.md`: **does not exist**. Protocol.md's own artifact contract
+    lists it as due "after the full pass" — i.e. now.
+- **Stage directories are genuinely empty**: `02_model-a_gita/`, `03_model-b_mathematical/`,
+  `04_model-c_kernel-ddd/`, `05_cross-model/`, `06_gap-analysis/` through `11_experimental-
+  validation/`, and `13_research-frontier/` all contain nothing. `12_canonical-theory/` contains
+  only its own `STATUS.md` guard ("NOT YET AUTHORIZED FOR CANONICAL CONTENT") and an empty
+  `proofs/` folder — exactly as protocol.md's stage-gate requires (12 is unauthorized until every
+  prior gate opens).
+- **No model reconstruction, bridge, or gap-analysis work has been attempted anywhere in the
+  corpus.** Global reclassification is genuinely a green-field undertaking on top of ~1500 already-
+  read files (1224 main + 282 math, math kept separate per MD-020).
+
+## Recommended scope: record a phased execution plan as a new decision-log entry, then do only its first (mechanical) phase now
+
+I recommend **not** attempting any of the interpretive stages (model reconstruction, bridges, gap
+analysis) in this session. Instead:
+
+### 1. Add `MD-021` to `14_decision-log/model-boundary-decisions.md`
+
+Following this project's own established pattern for exactly these pass-boundary scoping
+decisions (MD-016, MD-019, MD-020), record `MD-021 — Global Reclassification (MD-004): Readiness
+Finding and Phased Execution Plan`, containing:
+
+- The readiness finding above (both passes complete; aggregate artifacts stale; stages empty).
+- The phased plan, each phase gated behind **separate, explicit human authorization** — mirroring
+  this project's own repeated practice (e.g. MD-016's "resuming requires a fresh, separate
+  authorization"), and consistent with this repository's own standing EP-01 rule that a plan's
+  approval covers only what was actually proposed, never more:
+  - **Phase 0 — Aggregate-artifact consolidation** (mechanical, low-risk, reversible; proposed to
+    run immediately after this plan's approval): back-fill `classification-register.tsv`'s
+    `initial_primary`/`initial_secondary` columns from the existing per-file YAML records (a
+    script reading 1224 files and updating one TSV — no new interpretation, purely transcription);
+    extend `file-classification.md`'s matrix and running-summary table from position 10 to the
+    full corpus; write `corpus-map.md` per protocol.md's artifact contract (a structural map of
+    what exists — sequence ranges, exclusion categories, per-lineage counts — not a classification
+    decision).
+  - **Phase 1 — Independent Model A (Gītā) reconstruction** in `02_model-a_gita/`, from files
+    provisionally tagged `gita`/`ambiguous`-with-gita-lineage in the now-consolidated register.
+  - **Phase 2 — Independent Model B (mathematics/statistics) reconstruction** in
+    `03_model-b_mathematical/`.
+  - **Phase 3 — Independent Model C1 (Engineering KnowledgeOS) and Phase 4 — Model C2 (Epistemic
+    KnowledgeOS) reconstruction**, kept separate per the protocol's Term-Collision Rule
+    (`Kernel_engineering ≠ Kernel_epistemic` unless corpus evidence later establishes a
+    relationship), in `04_model-c_kernel-ddd/`.
+  - **Phase 5 — Final classification pass**: only after Phases 1–4 establish real model
+    boundaries from evidence (per MD-004's own explicit rule — boundaries are not decided before
+    reconstruction), assign `final_primary`/`final_secondary`/`classification_change`/
+    `reason_for_change` for every register row.
+  - **Phases 6+** (cross-model bridges → gap analysis → formalization → kernel → dynamics →
+    computational theory → validation → canonical theory, per protocol.md's stage gate): named as
+    the pipeline's future stages, explicitly **not** scoped in detail here — each remains its own
+    future authorization when its turn comes.
+- An explicit statement that this MD-021 entry is *itself* the "scoping" act the user asked for,
+  and that Phases 1 onward are future, separately-authorized undertakings, not implied approval to
+  proceed past Phase 0.
+
+### 2. Execute Phase 0 only, immediately after approval
+
+- Write a small one-off Python script (ad hoc, not committed as project tooling unless it proves
+  reusable) that reads every `01_source-analysis/per-file/*.yaml` and
+  `01_source-analysis/per-file-mathematical/*.yaml`, and back-fills
+  `classification-register.tsv`'s `initial_primary`/`initial_secondary` columns by `seq`/`path`
+  match, leaving every other column untouched (`final_*` stay `PENDING_GLOBAL_RECLASS`/`PENDING`
+  — Phase 0 does no reclassification).
+- Extend `file-classification.md`'s matrix and running-summary table to cover the full corpus
+  (mechanical aggregation of already-recorded per-file fields — primary/lineage/secondary/tier-2/
+  maturity/importance — not new interpretation).
+- Write `corpus-map.md`: sequence ranges, exclusion-category counts, per-lineage provisional
+  counts, and a pointer to the math lane's separate registries — a structural snapshot, not a
+  classification act.
+- Update `00_control/protocol.md`'s artifact-contract row for `corpus-map.md` (mark it produced)
+  and append a completion note; update `.claude/CONTEXT.md` and today's session log per this
+  project's own standing end-of-session discipline.
+
+## What this plan explicitly does NOT do
+
+- It does not reconstruct Model A/B/C1/C2 (Phases 1–4) — those are large, genuinely interpretive
+  undertakings this plan only names and defers.
+- It does not assign any file's final classification — MD-004 forbids that before the four models
+  exist as independent reconstructions.
+- It does not touch `12_canonical-theory/`, `05_cross-model/` onward, or any downstream stage.
+- It does not import or rely on the math lane's conclusions (per MD-020) beyond confirming its
+  pass is complete.
+
+## Verification
+
+- After Phase 0: re-run `python3 00_control/resume.py` and confirm it still reports `CONSISTENT`
+  (Phase 0 only adds columns/files, never touches `progress.tsv`'s resume state).
+- Diff `classification-register.tsv` before/after to confirm only `initial_primary`/
+  `initial_secondary` changed, and only for rows where a matching per-file YAML exists.
+- Spot-check 5–10 back-filled rows against their source `01_source-analysis/per-file/NNNN.yaml`
+  to confirm exact transcription (no re-interpretation).
+- Confirm `file-classification.md`'s new running-summary totals sum correctly against the
+  `classification-register.tsv` counts.
+
+---
+
+# Plan: Phase 3 — Cross-Model Adjudication and Controlled Convergence
+
+**Status: EXECUTED, AUDITED, and FORMALLY ACCEPTED, 2026-09-07.** All five artifacts written to
+`05_cross-model/`. An independent integrity audit (requested before acceptance) confirmed the
+M0133–M0282 math-lane range contains zero Model-B evidence (all 150 files there are `KR-SIM`-tagged,
+a pre-existing boundary classification) and found/corrected one separate bookkeeping defect in
+`02_correspondence-matrix.md`'s summary tally (Row 9 double-listed; corrected, no adjudication
+changed). See MD-021's Phase 3 execution/audit/acceptance records in
+`14_decision-log/model-boundary-decisions.md` and the session log for full detail. **User's explicit
+instruction: Phase 4 is NOT implied by Phase 3's acceptance and requires its own separate,
+independent authorization.** Phase 4 remains unauthorized, unscoped, and untouched.
+
+## Authorization received (verbatim, 2026-09-07)
+
+The user's Phase-3 authorization is very long (19 numbered sections); its binding constraints,
+summarized without paraphrasing away their force:
+
+1. **Authoritative inputs**: only the completed Phase-1/Phase-2 artifacts (`02_model-a_gita/`,
+   `03_model-b_mathematical/`) as organized model-level inputs, plus their underlying governed
+   source records when adjudication requires verification. Summaries alone are never sufficient
+   evidence for a consequential equivalence claim. The math lane remains the 401-file inventory.
+2. **Central purpose**: determine which structures/concepts/relations/candidate mechanisms are
+   genuinely comparable, potentially corresponding, merely analogous, incompatible, or unresolved —
+   **adjudication, not theory-merging.** Default status for an apparent correspondence:
+   **UNRESOLVED until equivalence is demonstrated.**
+3. **Non-negotiable principle — SIMILARITY ≠ IDENTITY.** Never infer identity from shared
+   terminology/diagrams/form/functional role/philosophical description. Every proposed
+   correspondence must be leveled across six distinct evidentiary strengths: lexical similarity →
+   conceptual similarity → functional similarity → structural correspondence → formal equivalence →
+   demonstrated identity.
+4. **Preserve model independence**: never rewrite Model A to fit Model B or vice versa; never alter
+   either model's terminology/concepts/contradictions/open-questions/kernel-candidates/evidence
+   classifications retrospectively. Both are **frozen independent witnesses**. Preserve disagreement;
+   never invent a counterpart for a concept only one model contains; mark any needed reinterpretation
+   explicitly as inference/hypothesis, never as source evidence.
+5. **A dedicated correspondence/adjudication matrix artifact**, each row: Model-A
+   concept/structure · Model-B concept/structure · source references · proposed relationship type ·
+   evidence for · evidence against · preserved differences · required assumptions · adjudication
+   status · confidence · unresolved questions. Explicit relationship-state vocabulary: IDENTITY
+   ESTABLISHED / FORMAL EQUIVALENCE ESTABLISHED / STRUCTURAL CORRESPONDENCE / FUNCTIONAL ANALOGY /
+   PARTIAL CORRESPONDENCE / INCOMPATIBLE / UNRESOLVED. Do not force every pair into a relationship.
+6. **Sixteen investigation targets** (not presumed equivalences): kernel, minimality, representation,
+   structure, state, transition, operator, invariant, equivalence, reduction, closure,
+   history/audit, composition, event, observation, knowledge/epistemic status. For each: what is the
+   object in each model, what operations apply, what is invariant, what transformations preserve it,
+   what does each model explicitly say it is NOT, does the proposed correspondence preserve those
+   distinctions.
+7. **Kernel adjudication especially strict**: reconstruct what "kernel" means *inside* each model
+   first, preserving all Model-A kernel-related variants/contradictions/UEs/OQs and all Model-B
+   kernel states (representation-dependent minimality, the four 8-operator kernels, Structure-First,
+   rejected constructions, proposed-untested, unresolved, surviving-not-established composition
+   rules) without collapsing them into one "kernel." If same-object/different-representation/
+   structurally-corresponding/merely-analogous cannot be established: **UNRESOLVED**.
+8. **Representation-dependence is a hard constraint**: Model B establishes kernel minimality is
+   representation-dependent — operator count/apparent simplicity/diagrammatic similarity are never
+   sufficient evidence for cross-model identity. Explicitly test and record whether any claimed
+   correspondence depends on choice of representation/operators/equivalence relation/invariants/
+   reduction procedure/composition rule.
+9. **Contradictions must not be smoothed away**: a dedicated section for cross-model disagreement
+   (Model A asserts X, Model B implies not-X; same term, different meaning; conflicting minimality/
+   representation/transition/closure requirements; incompatible assumptions), classified
+   reconcilable / conditionally reconcilable / irreconcilable-under-current-definitions / unresolved
+   — never resolved by silently choosing the more convenient formulation.
+10. **No importing Model-B negative results into Model A or vice versa** — cross-model evidence may
+    establish a relationship *between* the models; it never retroactively changes either model's own
+    internal evidence.
+11. **Source verification rule**: for any consequential/ambiguous/disputed/potentially-foundational
+    cross-model claim, identify and inspect the underlying Model-A and Model-B source records, quote/
+    paraphrase only what they actually establish, record exact sequence provenance. Never adjudicate
+    important equivalences from titles alone.
+12. **Mandatory "what does not converge" section**: concepts that look similar but are not
+    equivalent, model-specific structures, contradictions, incompatible assumptions, unresolved
+    mappings, insufficient evidence, rejected correspondence proposals. Success is not measured by
+    how much unifies.
+13. **Three output levels, never promoted upward without evidence**: (A) ESTABLISHED CROSS-MODEL
+    RESULT — supported directly by evidence from both models; (B) ADJUDICATED HYPOTHESIS — plausible,
+    evidenced, needs further testing; (C) UNRESOLVED — insufficient evidence.
+14. **No new theory without an explicit label**: any suggested new abstraction/framework/common
+    structure/possible universal kernel must be labeled **PROPOSED CROSS-MODEL HYPOTHESIS** — not
+    renamed as an established kernel/theory/law/principle, and not treated as part of either original
+    model unless independently supported there.
+15. **Five artifacts minimum** in a dedicated Phase-3 directory, existing naming convention:
+    `00_index.md`, `01_cross-model-evidence.md`, `02_correspondence-matrix.md`,
+    `03_adjudications-and-contradictions.md`, `04_non-convergences-and-open-questions.md`. Any
+    additional artifact needs an explicit justification first. Do not modify Phase-1/Phase-2
+    artifacts.
+16. **File safety**: do NOT modify `classification-register.tsv`, Model-A artifacts, Model-B
+    artifacts, C1/C2 artifacts, any future-phase artifact outside the authorized directory, source
+    corpus records, mathematical manifests, or production/application code. Research artifacts only.
+    Preserve provenance. Do not silently rename directories — document any naming discrepancy rather
+    than repair it implicitly.
+17. **Verification**: Model-A/Model-B artifacts unchanged, classification register unchanged,
+    401-file math inventory unchanged, source corpus unchanged, only authorized Phase-3 files +
+    governance/session records changed, every major correspondence has source provenance, every
+    adjudication has evidence for both sides, unresolved items remain unresolved, rejected
+    correspondences recorded, no Model-A/Model-B internal conclusion silently rewritten, raw-source
+    spot checks for the most consequential cross-model claims.
+18. **15-point completion report**: Model-A evidence population used · Model-B evidence population
+    used · correspondence candidates examined · established cross-model correspondences · structural
+    correspondences · functional analogies · partial correspondences · incompatible relationships ·
+    unresolved relationships · contradictions discovered · non-convergences discovered · new
+    cross-model hypotheses (clearly marked) · verification results · files changed · governance
+    questions requiring later decision. Never report "convergence" merely because terminology
+    overlaps.
+
+**Absolute stop condition**: end after the adjudication artifacts and verification/completion report.
+Do NOT begin Phase 4, construct a final unified model, perform global reclassification, modify Model
+A/B/C1/C2, implement anything, convert hypotheses into canonical theory, or resolve remaining open
+questions without evidence. Stop and await separate authorization.
+
+## What I verified before planning
+
+- **Both evidence bases confirmed frozen and consistent**: `resume.py` → `CONSISTENT`
+  (`last_handled_sequence=2376`, unchanged since Phase 1); `resume_mathematical.py` → `CONSISTENT`
+  (`DONE=401`, unchanged since Phase 2). `02_model-a_gita/` and `03_model-b_mathematical/` each
+  contain exactly their five artifacts, nothing more; `04_model-c_kernel-ddd/` confirmed still empty.
+- **Re-read both concept registers in full** (`02_model-a_gita/02_concept-register.md`'s 14 entries
+  §A–§N; `03_model-b_mathematical/02_concept-register.md`'s 15 entries §A–§O plus the §P
+  kernel-candidate table) to identify the actual correspondence-candidate set the matrix should open
+  with — not assumed from the two models' section letters looking parallel, but read directly.
+- **Identified an initial, non-exhaustive correspondence-candidate list** (Design Decision 2 below)
+  by mapping the authorization's 16 investigation targets against what each model's evidence base
+  actually contains. Notable asymmetries already visible before any adjudication work begins (named
+  here so Phase 3 does not have to rediscover them): Model B has a named, tested "representation"
+  formalism (Structure-First, Hilbert-space rejection) with no equally-formal Model-A counterpart;
+  Model A has a named, tested DDD Entity/Role distinction (Krishna≠Sārathi) with no Model-B
+  counterpart; Model B has a named "composition rule" research line with no Model-A counterpart; both
+  models independently produce an *unreconciled, proliferating tuple family* for "state" (Model A's
+  nine-plus-variant Knowledge Vector family, §G; Model B's nine-plus-variant K_t family, §G) — a
+  striking structural parallel that is exactly the kind of surface similarity the authorization's
+  Non-Negotiable Principle (§3) forbids treating as identity without further work; both models
+  independently carry an *unresolved four-way kernel-structure family* (Model A §F: four independently
+  proposed Kernel schemas, UNRESOLVED_EQUIVALENCE) and a tested *representation-dependent* multiplicity
+  of minimal kernels (Model B §P: four cardinality-8 minimal kernels) — structurally suggestive but
+  requiring the full six-level evidentiary ladder (§3) before any relationship stronger than
+  UNRESOLVED can be recorded; both models independently reuse MD-017's own six-way relationship
+  taxonomy and an `unresolved_equivalence`-defaults-first discipline — itself a shared *methodological*
+  convention (both reconstructions were built under the same protocol.md), not evidence of a shared
+  *domain* structure, and must not be mistaken for one.
+- **Confirmed the five-artifact naming convention matches the existing pattern** used by
+  `02_model-a_gita/` and `03_model-b_mathematical/` (numbered `00_index.md` →
+  `04_boundary-observations.md`-equivalent), so Phase 3's five files
+  (`00_index.md`/`01_cross-model-evidence.md`/`02_correspondence-matrix.md`/
+  `03_adjudications-and-contradictions.md`/`04_non-convergences-and-open-questions.md`) sit naturally
+  in the pre-existing, empty `05_cross-model/` directory — confirmed empty, and confirmed to be the
+  correct stage-gate directory per `00_control/protocol.md`'s own stage sequence (`02` Model A → `03`
+  Model B → `04` Model C1/C2 → `05` cross-model), **not** `04_model-c_kernel-ddd/` (that is reserved
+  for the still-unauthorized Model C1/C2 reconstruction, per MD-021's own phase numbering — Phase 3 of
+  MD-021 is this session's "cross-model adjudication," which protocol.md's own directory scheme
+  places at `05_cross-model/`, not `04_...`). **This is a directory-naming clarification worth
+  recording explicitly**: MD-021's phase numbers (Phase 1/2/3/4/5/6+) do not map 1:1 to
+  `three_model_convergence/`'s own `NN_*` directory numbers (`02`/`03`/`04`/`05`/…) — Phase 3
+  (cross-model adjudication) writes to `05_cross-model/`, and the still-unauthorized Model C1/C2
+  reconstruction (a *later* MD-021 phase, not yet reached) will eventually write to
+  `04_model-c_kernel-ddd/`. Documented here rather than silently resolved, per the authorization's own
+  §16 instruction to document naming discrepancies rather than repair them implicitly.
+
+## Design decisions
+
+1. **Evidence base = the two frozen artifact sets exactly as they stand** — `02_model-a_gita/`'s five
+   files (84 evidence rows, 14 concepts, 4 contradictions, 5 unresolved equivalences, 6 open
+   questions) and `03_model-b_mathematical/`'s five files (151 independent evidence rows, 15
+   concepts, 15-row kernel-candidate table, 5 contradictions, 3 unresolved equivalences, 10 open
+   questions) — read as governed, not re-derived. Underlying raw source (`01_source-analysis/
+   per-file/*.{yaml,md}` for Model A; `01_source-analysis/per-file-mathematical/*.{yaml,md}` for
+   Model B) consulted per the authorization's §11 source-verification rule wherever a cross-model
+   claim is consequential, ambiguous, disputed, or foundational — not for every row.
+2. **Opening correspondence-candidate set for `02_correspondence-matrix.md`** (a starting point,
+   not exhaustive — the matrix may grow during adjudication as evidence dictates, and may also
+   decline to open a row where the two models simply share no comparable object):
+   - **Kernel** (the authorization's own explicitly-required strict case, §7): Model A §F (four-way
+     Kernel-structure family, UNRESOLVED_EQUIVALENCE) + §I–§L (Sañjaya/Arjuna architecture,
+     ten `alternative_minimal_kernel`-flagged files) + §N (KR-SIM six-cycle "zero kernel candidate"
+     finding, scope-corrected) vs. Model B §B/§P (13→8-operator kernel-reduction experiment,
+     representation-dependent minimality) + §L (four-way Kernel/Knowledge-Space/Epistemic-State/
+     History conflation diagnosis).
+   - **State**: Model A §G (nine-plus-variant Knowledge Vector family, UNRESOLVED) + §I (Sañjaya
+     Layer, "state knowledge") vs. Model B §A (K_t/Δ_t triad) + §G (nine-plus-variant K_t family,
+     UNRESOLVED) — two independently-unreconciled tuple families; the correspondence question is
+     whether they are the same *kind* of unresolved proliferation or merely share the word "state."
+   - **Transition / Event / Closure**: Model A §L (Second-Order Observation, O^(2)) + §M (capstone:
+     "invariants and questions about transitions, not components") vs. Model B §K (Epistemic Closure
+     Event as transition, not state) + §E (Zero Lens vs. Zero Closure) + §F (M0100's seven
+     non-equivalent candidate meanings of "closure" — a Model-B-internal disambiguation problem that
+     must be resolved, or at least named, before any Model-A "closure"/"transition" comparison can
+     even be attempted).
+   - **Observation**: Model A §L (`O^(2)`, `Observe(KnowerState)`) vs. Model B §B (the kernel's
+     `Observe` operator, one of the 13/8 candidates) — a specific, narrow, testable lexical overlap.
+   - **Determine / Decision**: Model A §K (Decision Readiness/Sufficiency) vs. Model B §B (`Determine`
+     as one of the C0 kernel operators, and `DetectGap`/`Select`) — another specific, narrow,
+     testable lexical overlap, not to be conflated with the much larger "kernel" question.
+   - **Invariant**: Model A §J (the governance invariant `KnowledgeOS =/=> Decision/Action`) vs.
+     Model B §F (invariant custody, Structure-First's governing principle).
+   - **Representation / Equivalence / Reduction / Minimality**: Model B §F/§H/§I/§P (representation
+     adequacy, induced equivalence, FR-001's non-transitivity proof, Hilbert-space rejection,
+     representation-dependent minimality) — flagged as a likely **model-specific, no-Model-A-
+     counterpart** cluster (Model A's 26-lens system, §D, is methodologically adjacent but not a
+     formal representation-theoretic construct), a candidate for the "what does not converge" section
+     rather than the matrix, pending actual adjudication.
+   - **Composition**: Model B §N (composition-rule exclusion/survival results) — flagged as a likely
+     **model-specific, no-Model-A-counterpart** item, same treatment as above.
+   - **Entity/Role**: Model A §J (Krishna≠Sārathi, DDD Entity/Role distinction) — flagged as a likely
+     **model-specific, no-Model-B-counterpart** item (candidate for "what does not converge").
+   - **Knowledge/epistemic status vocabulary**: Model A §A/§B (catuṣkoṭi four-valued logic,
+     meta-principle classification) vs. Model B §O (the eleven-value epistemic-status vocabulary) +
+     §C (Epistemic Standards/Assessment layer) — a candidate **methodological-parallel, not
+     domain-object** correspondence (both reconstructions independently converged on needing a graded
+     epistemic-status vocabulary; that is weaker evidence than a shared domain concept, and must be
+     recorded as such per the six-level evidentiary ladder).
+   - **History/Audit**: Model B §K (OQ-3: is ClosureEvent irreversibility kernel or History/Audit?)
+     + §D (M0045's same-day self-audit) — no clearly named Model-A counterpart identified yet;
+     Model A's 0808 capstone retraction (§M) is a self-audit *event* but not a named "History/Audit"
+     formalism — flagged for investigation, not presumed either way.
+   This list is a starting point for `02_correspondence-matrix.md`'s rows, built from re-reading both
+   registers directly (not guessed from section-letter parallelism) — the actual adjudication (import
+   evidence for/against, assign a relationship state, apply the six-level ladder) is Phase-3
+   *execution*, not something this plan pre-decides.
+3. **Method = source-grounded row-by-row adjudication**, not a bulk digest pass. Because both
+   Phase-1 and Phase-2 registers are already dense, provenance-carrying syntheses (not raw corpus
+   text), the correspondence matrix will be built by reading each candidate pair's Model-A and
+   Model-B register entries side by side, then following the authorization's §11 rule out to raw
+   source only where a specific claim is consequential/ambiguous/disputed/foundational (e.g. the
+   kernel and state-family rows, almost certainly; a narrow lexical-overlap row like Observe/Determine,
+   probably not, unless adjudication surfaces a reason to).
+4. **Five artifacts**, exactly the authorization's required set, written to `05_cross-model/`
+   (confirmed empty, correct stage-gate directory per protocol.md's own numbering — see "What I
+   verified" above):
+   - `00_index.md` — purpose, scope, the `05_cross-model/`-vs-`04_model-c_kernel-ddd/`
+     directory-numbering clarification, authoritative inputs, methodology, the six-level evidentiary
+     ladder restated for reader reference, artifact map, explicit non-scope statement.
+   - `01_cross-model-evidence.md` — the raw material the adjudication draws on: pointers back into
+     both frozen registers (not a re-statement of either), organized by the sixteen investigation
+     targets, noting for each target what object (if any) each model actually contains — including
+     explicit "Model X has no counterpart for this target" findings, which are themselves evidence.
+   - `02_correspondence-matrix.md` — the required per-row fields (Model-A concept/structure ·
+     Model-B concept/structure · source references · proposed relationship type · evidence for ·
+     evidence against · preserved differences · required assumptions · adjudication status ·
+     confidence · unresolved questions), using the seven required relationship-state values, built
+     from Design Decision 2's opening candidate list plus whatever else the evidence itself surfaces
+     — never force-filling every possible pair.
+   - `03_adjudications-and-contradictions.md` — the dedicated cross-model contradiction/disagreement
+     register (reconcilable / conditionally reconcilable / irreconcilable-under-current-definitions /
+     unresolved), the kernel-adjudication section required by §7 (treated with extra rigor, per the
+     authorization's own emphasis), and the representation-dependence hard-constraint check (§8) for
+     every candidate that reaches at least STRUCTURAL CORRESPONDENCE.
+   - `04_non-convergences-and-open-questions.md` — the mandatory "what does not converge" section
+     (§12): model-specific structures with no counterpart, rejected correspondence proposals,
+     insufficient-evidence items, plus any genuinely new cross-model observation, each explicitly
+     labeled **PROPOSED CROSS-MODEL HYPOTHESIS** if it suggests a new abstraction (§14) — never
+     silently upgraded to an established result.
+5. **No sixth artifact** unless adjudication work itself surfaces a specific, nameable need — per the
+   authorization's §15 instruction to justify any additional artifact before creating it. None is
+   anticipated at planning time.
+
+## Execution steps
+
+1. Re-confirm both evidence bases frozen (already done for this plan — repeat immediately before
+   drafting, since the authorization's §17 requires this at verification time too).
+2. Build `01_cross-model-evidence.md` first — organize both registers' content against the sixteen
+   investigation targets, without yet assigning any relationship state; this is the evidentiary base
+   the matrix adjudicates from.
+3. Build `02_correspondence-matrix.md` — for each candidate row, gather evidence for/against, apply
+   the six-level evidentiary ladder, consult raw source per §11 where warranted, assign one of the
+   seven relationship states (never IDENTITY/FORMAL EQUIVALENCE without demonstrated proof — expect
+   most rows to land at UNRESOLVED, FUNCTIONAL ANALOGY, or PARTIAL CORRESPONDENCE given the strength
+   of evidence realistically available).
+4. Build `03_adjudications-and-contradictions.md` — the kernel case treated with the authorization's
+   required extra strictness (§7), the representation-dependence check (§8) applied to any row at or
+   above STRUCTURAL CORRESPONDENCE, cross-model disagreements classified per §9.
+5. Build `04_non-convergences-and-open-questions.md` — the mandatory non-convergence section (§12),
+   any PROPOSED CROSS-MODEL HYPOTHESIS explicitly labeled (§14).
+6. Build `00_index.md` last (so its summary counts are verified against the finished artifacts, per
+   this project's own lesson from the Phase-1 audit — verify before publishing, not after).
+7. Run the full verification suite (authorization §17, detailed below).
+8. Append the Phase 3 execution record to `14_decision-log/model-boundary-decisions.md` (MD-021),
+   update `.claude/CONTEXT.md` (new top block, prior block preserved as history) and today's session
+   log — never rewriting the Phase-0/1/2 entries already there.
+9. Produce the completion report in the exact 15-point structure the authorization specifies (§18).
+
+## What this plan explicitly does NOT do
+
+- Does not begin Phase 4 (Model C1/C2 reconstruction), construct a unified/final model, or perform
+  global reclassification.
+- Does not modify `02_model-a_gita/`, `03_model-b_mathematical/`, `04_model-c_kernel-ddd/`,
+  `classification-register.tsv`, any per-file YAML/MD source record, or the mathematical manifests.
+- Does not promote any correspondence past what its own evidence supports — most rows are expected
+  to land at UNRESOLVED or a lower-confidence state, and that is treated as a correct, not a failed,
+  outcome (per the authorization's own §2/§12: success is not measured by how much converges).
+- Does not treat shared MD-017/protocol.md methodological vocabulary (already reused identically by
+  both Phase 1 and Phase 2 under the same governing protocol) as evidence of a shared domain
+  structure between the models.
+- Does not resolve any Model-A-internal or Model-B-internal open question, contradiction, or
+  unresolved equivalence — those remain exactly as Phase 1/Phase 2 left them; Phase 3 may reference
+  them but never closes them.
+
+## Verification
+
+Exactly the authorization's own §17 checklist: `02_model-a_gita/` and `03_model-b_mathematical/`
+confirmed byte-identical to their Phase-1/Phase-2-end state (file count, and spot-checked content,
+unchanged); `classification-register.tsv` unchanged (0 non-`PENDING_GLOBAL_RECLASS`/`PENDING` rows,
+same row count); `resume.py` and `resume_mathematical.py` both re-run, still `CONSISTENT`; filesystem
+scope check confirms only `05_cross-model/` (new) plus the governed decision-log/CONTEXT/session-log
+updates were written — no other stage directory touched; every matrix row carries source provenance
+into both models; every adjudication section shows evidence considered on both sides, not just the
+side favoring correspondence; a sample of the most consequential correspondence claims (expected:
+the kernel row, the state-family row) spot-checked against raw `.md` source per §11, not just the
+governed per-file YAML/register text.
+
+## Context
+
+This is Phase 3 of MD-021's phased plan (`14_decision-log/model-boundary-decisions.md`), the first
+genuinely cross-model step in the KnowledgeOS three-model-convergence reconstruction. It follows two
+independently completed, audited, and frozen reconstructions — Model A (Gītā, Phase 1) and Model B
+(Mathematics/Statistics, Phase 2) — and is explicitly scoped by the user as **adjudication, not
+merger**: determining what genuinely corresponds across the two models, what only looks similar, what
+conflicts, and what remains unknown, under a strict SIMILARITY ≠ IDENTITY discipline. The user's own
+prompt is, like Phase 1 and Phase 2 before it, extremely detailed (19 numbered sections) and this plan
+follows its structure directly rather than reinterpreting it.
+
+---
+
+# Plan: Phase 4 — Model C1/C2 Independent Reconstruction
+
+**Status: EXECUTED, VERIFIED, and FORMALLY ACCEPTED, 2026-09-07.** All five artifacts written to
+`04_model-c_kernel-ddd/`. Central finding: Model C2's evidence population is exactly one file (seq
+2330) across both corpora; Model C1's is 732 primary-tier candidates. The guardrail below was honored
+throughout — no reclassification was performed. A verification-completion pass (10 raw-source
+spot-checks, 1 evidence-preserving correction to the seq 0216/K-1 attribution) satisfied the plan's
+own 5–10 spot-check requirement before acceptance. See MD-021's Phase 4 execution, verification-
+completion, and formal-acceptance records in `14_decision-log/model-boundary-decisions.md` and the
+session log for full detail. **Phase 5 remains unauthorized — this acceptance authorizes nothing
+beyond Phase 4.**
+
+**Status (superseded text below, retained for history): APPROVED FOR EXECUTION, 2026-09-07**, with one additional binding guardrail supplied by the
+user at authorization time (verbatim): *"The C2 population investigation may identify candidate or
+epistemic-adjacent material outside the currently classified C2 population, but resemblance to the
+protocol's C2 definition must NEVER by itself expand Model-C2 evidence membership. Preserve every
+original classification. Report newly identified material first as bounded boundary/adjacent
+observations, with exact provenance and the reason it appears relevant. Do not reclassify, promote, or
+silently treat such material as C2 evidence. Any actual membership change remains outside Phase 4 and
+requires a separately authorized classification/reclassification step."* All other constraints (A–N),
+the 24-point structure, and the stop condition below are accepted exactly as written. Executing now.
+
+**Status (superseded text below, retained for history): PLANNING ONLY — NOT AUTHORIZED FOR EXECUTION.** The user explicitly requested Plan Mode
+for Phase 4 scoping, following Phase 3's formal acceptance and the explicit instruction that
+acceptance of Phase 3 does not authorize Phase 4. This plan document is the deliverable; **no
+Phase-4 artifact, directory, or classification change has been created or will be created by this
+plan's approval alone** — a separate, explicit authorization is required before execution, exactly as
+for Phases 1–3.
+
+## Context for this phase
+
+Phase 4 is the third independent-model reconstruction in MD-021's sequence, targeting the
+"Engineering-vs-Epistemic KnowledgeOS" lineage — protocol.md's **MODEL-C1** (`engineering_knowledgeos`)
+and **MODEL-C2** (`epistemic_knowledgeos`). Unlike Phases 1 and 2, this phase inherits a **rich prior
+governance history already establishing the C1/C2 split and its own open questions** (MD-006/MD-007,
+2026-09-01, predating MD-021 by days) — this plan does not invent the C1/C2 framework, it inherits and
+respects it.
+
+## What I verified before planning (direct, read-only queries — no file written)
+
+**1. Canonical C1/C2 definitions already exist in `00_control/protocol.md` (lines 44–60):**
+`MODEL-C1 = engineering_knowledgeos` (EKS · PKS · product binding · portability · engineering
+governance · "engineering kernel"); `MODEL-C2 = epistemic_knowledgeos` (Knowledge Space · Knowledge
+Element · `K_t` · dimensions/values · "epistemic Kernel" · Buddhi · operators · purification ·
+Moksha). **The Term-Collision Rule**: *"`Kernel_engineering ≠ Kernel_epistemic` unless later corpus
+evidence establishes a relationship... C1 documents are never retrospectively reinterpreted as if they
+had originally defined C2."* `kernel_ddd` is explicitly **retired** as a forward classification value.
+
+**2. The decision log already carries five directly-relevant prior entries, none superseded, none to
+be restated or rewritten by this plan — only cited:**
+- **MD-006** (2026-09-01): the C1/C2 split itself, corroborated independently by the corpus at three
+  early sequences (0001, 0005, 0008) before the split was instructed — genuine evidence, not an
+  imposed taxonomy. Provides a **candidate C1→C2 bridge table** (Evidence/Provenance/Validation/
+  Governance/Kernel/State/Change/Evidence-harvesting/Product-binding, each `[HP]` **untested**) —
+  these are hypotheses to check against evidence, never assumed true. Establishes the migration rule
+  for records 0001/0005/0009 (kept as `kernel_ddd` historically, never retrospectively reclassified).
+- **MD-007** (2026-09-01): **"C1→C2 is a HYPOTHESIS, not a frame."** Three possible C1/C2 relations
+  held open simultaneously: **(i)** `C1 → C2` (C2 evolved from C1) · **(ii)** `C1 ∥ C2` (independent
+  lines sharing vocabulary) · **(iii)** `C1 → limitations/questions → C2` (a C1 gap motivates the
+  epistemic question) — explicitly flagged **(iii) as "the most interesting and the most dangerous to
+  assume."** A promoted watch-status finding: *"'Knowledge' is undefined in all ten C1 files [as of
+  seq 10] while load-bearing in every one"* — falsifier: *"any C1 document that defines knowledge."*
+- **MD-009**: `source_role` is a second, independent classification dimension from `model_classification`
+  (`PRIMARY_RESEARCH | FOUNDATIONAL | INDEPENDENT_RESEARCH | BRIDGE | CRITICAL_REVIEW |
+  VERIFICATION_RECONSTRUCTION | SESSION_LOG | DUPLICATE_REPRODUCTION | IMPLEMENTATION | META`),
+  applied from seq 0024 onward (files 0001–0023 lack it — a historical gap, not an error).
+  `DUPLICATE_REPRODUCTION`/`VERIFICATION_RECONSTRUCTION` carry a `canonical_source` pointer so
+  "ten documents restating one discovery" are counted as one idea, not ten corroborations.
+- **MD-010/MD-011**: the corpus root is **`docs/knowledgeos/brainstorming/` only**, minus five
+  excluded derived-artifact subdirectories (`verification/`, `synthesis/`, `falsification/`,
+  `corpus/`, `classification/` — 454 entries). **Critically, files sitting directly under
+  `docs/knowledgeos/` (not inside `brainstorming/`) are `OUT_OF_SCOPE_ROOT` — not primary corpus at
+  all** (711 entries). Files 0001–0039 (already read before this correction) are `OUT_OF_SCOPE_ROOT`
+  and are **explicitly not counted toward `N_primary`** — retained only as "a completed adjacent
+  analysis... a secondary, out-of-primary-scope reference set."
+
+**3. Independently re-derived evidence-population counts** (joining `classification-register.tsv`'s
+`initial_primary`/`initial_secondary` against `reading-manifest.tsv`'s `corpus_tier` on `seq` — **not
+copied from any earlier report, and not taken from `initial_primary` alone**, since `initial_primary`
+alone silently includes `OUT_OF_SCOPE_ROOT` rows):
+
+| | Main corpus (2376 seq, `corpus_tier` cross-joined) | Math lane (401 files, flat, no tier concept) |
+|---|---:|---:|
+| `engineering_knowledgeos`/`c1`-primary, **`PRIMARY` tier only** | **719** (23 more sit in `OUT_OF_SCOPE_ROOT`, correctly excluded) | **13** |
+| `engineering_knowledgeos`/`c1`-secondary (different primary), **`PRIMARY` tier only** | **2** | **37** |
+| `epistemic_knowledgeos`/`c2`-primary, **`PRIMARY` tier only** | **1** (seq 2330 only) | **0** |
+| `epistemic_knowledgeos`/`c2`-secondary (different primary), **`PRIMARY` tier only** | **0** | **0** |
+| `kernel_ddd` (retired historical value) | **3**, all `OUT_OF_SCOPE_ROOT` (seq 0001, 0005, 0009) | n/a |
+
+**This is the single most important finding of this planning pass**: **Model C2's candidate evidence
+population, under current classification and across BOTH corpora, is exactly ONE file** (seq 2330,
+`docs/knowledgeos/brainstorming/kernel/20260902-185000_review-yes12345.md`, title: *"Review:
+Relational Structure as the Mathematical Core, Mathematics as Regimes... and a Further DDD Kernel
+Definition"*) — **with zero secondary-tagged candidates anywhere to supplement it.** This is far more
+extreme than Model A/B's own asymmetries and must reshape how Phase 4 is scoped (see Design Decision
+1 below) rather than being treated as a normal "boundary material" footnote.
+
+**4. A genuine register-vs-per-file inconsistency found at the one C2 candidate itself**: seq 2330's
+register row shows `initial_secondary = "b"` (a math-lane-internal shorthand, not a valid main-corpus
+secondary value), but its own per-file YAML record (`01_source-analysis/per-file/2330.yaml`) shows
+`secondary: None`. **Not resolved here** — flagged as a data-quality anomaly for Phase 4 itself to
+investigate and document (never silently reconciled by this planning pass).
+
+**5. `docs/knowledgeos/brainstorming/kernel/` (172 on-disk `.md` files) is already fully inside the
+completed primary sequential pass** — 181 register rows reference paths under it (8 reference files
+no longer present on disk, a minor pre-existing anomaly, not a completeness gap; 0 on-disk files are
+missing from the register). **No Phase-0-style reconciliation is needed for this subdirectory** —
+unlike the mathematical lane before Phase 0, `kernel/` was never an unintegrated gap.
+
+**6. `04_model-c_kernel-ddd/` is completely empty — no files, no guard, no charter** (unlike
+`12_canonical-theory/`, which has its own `STATUS.md`). Its name is a direct legacy echo of the
+now-retired `kernel_ddd` classification value (MD-006), **not** an indicator of any existing C1/C2
+material — there is nothing there to consume, and nothing there to avoid.
+
+**7. Directory-vs-phase-numbering is again not 1:1**: per protocol.md's stage-gate sequence (`02`
+Model A → `03` Model B → `04` Model C1/C2 → `05` cross-model), Phase 4 (MD-021's numbering) correctly
+targets `04_model-c_kernel-ddd/` — this is the one case in this programme where the MD-021 phase
+number and the directory number *do* align (Phase 3 → `05_cross-model/` was the misalignment); stated
+explicitly so it is not assumed to generalize.
+
+**8. A separate, sibling KnowledgeOS initiative exists** (`docs/knowledgeos/theory-extraction/`,
+confirmed during the prior read-only status check) with its own charter and an explicit
+`01-BOUNDARY-WITH-THREE-MODEL-CONVERGENCE.md` stating *"3MC asks what the corpus SAYS; Extraction asks
+what THEORY is present in what it says... Extraction consumes 3MC as evidence. 3MC never consumes
+Extraction."* **This confirms, from an independent source, the same one-way-dependency discipline
+already governing MD-021**: Phase 4 will read 3MC's own governed artifacts and the corpus; it will not
+read or depend on Theory Extraction's output, and Theory Extraction's own boundary document already
+agrees it should not.
+
+## Design decisions
+
+1. **Evidence population is derived by explicit `corpus_tier == PRIMARY` filtering, joined with
+   `model.primary`/`initial_primary` content — never by `initial_primary` alone and never by
+   directory membership.** This is a sharper requirement than Phase 1/2 needed to state explicitly
+   (their own populations happened to sit entirely within `PRIMARY` tier already), but is load-bearing
+   here since 23 of the raw 742 `engineering_knowledgeos` rows are `OUT_OF_SCOPE_ROOT` and would
+   silently inflate C1's population if not filtered.
+2. **C2's near-empty population (1 file) is treated as Phase 4's own central open question, not
+   silently worked around.** Phase 4 does **not** assume C2 is unreconstructable, and does **not**
+   assume the single candidate is sufficient, and does **not** relax the Term-Collision Rule to
+   manufacture a larger population. Instead, Phase 4's own evidence-base document must include a
+   **dedicated C2-population investigation**, analogous to Model A's boundary-observations discipline
+   and Model B's `c`-tag sampling: examine the `meta_research`/`cross_model`/blank-tagged PRIMARY-tier
+   rows' own per-file fields (`introduces`/`defines`/`undefined_concepts`/`bridge_candidates`) for
+   epistemic-Kernel-adjacent content that the Term-Collision Rule's own conservatism may have pushed
+   into a neighboring category rather than `epistemic_knowledgeos` — **recorded as a bounded
+   observation with named candidates and reasons, never as a reclassification** (reclassification
+   remains explicitly out of scope for every phase before global synthesis, per MD-004/MD-021).
+   **If this investigation still yields (effectively) one file, that is itself the finding** — Phase
+   4 must report it as such rather than manufacture a symmetric-looking C1/C2 reconstruction.
+3. **C1's evidence population = 719 (main, PRIMARY tier) + 13 (math lane) = 732 primary-tier
+   candidates, plus 2 (main) + 37 (math lane) = 39 secondary-tagged boundary candidates.** Both
+   corpora are in scope for C1 specifically because protocol.md's classification vocabulary is shared
+   across both `resume.py` and `resume_mathematical.py`, and Model B's own boundary-observations
+   document already named its 13 `c1`-tagged rows as out-of-Model-B-scope without ever consuming them
+   — Phase 4 is the first phase authorized to actually open them.
+4. **The three kernel_ddd rows (0001/0005/0009) and any other `OUT_OF_SCOPE_ROOT` material are cited
+   as historical/methodological provenance only, never as evidence population** — they are the
+   literal origin of the C1/C2 split (MD-006 quotes their Tier-2 findings directly) and remain
+   valuable to read for context, but MD-011's own correction already excluded them from `N_primary`
+   and this plan does not reopen that correction.
+5. **C1↔C2 relationship discipline reuses MD-007's own three-way framework verbatim** — (i) evolution,
+   (ii) independence, (iii) gap-motivated transition — rather than inventing a new one. MD-007's own
+   promoted watch-status finding ("Knowledge" undefined in all ten early C1 files) is carried forward
+   as an active thing to re-check against the fuller 719-file C1 population, not re-derived from
+   scratch.
+6. **Duplicate/near-duplicate handling uses whatever the per-file records actually provide for the
+   specific rows in scope** — `source_role`/`canonical_source` (MD-009, applied from seq 0024 onward)
+   for later files; `repeats`/`supersedes`/`renames` fields (present since the earliest schema) for
+   any pre-0024 rows that fall in scope. This is confirmed schema-available, not assumed; exact
+   per-row handling is an execution-time task, not a planning-time one.
+7. **Five artifacts**, mirroring the established pattern, written to the existing (confirmed empty)
+   `04_model-c_kernel-ddd/` directory:
+   - `00_index.md` — purpose, scope, the C2-population finding stated up front (not buried), MD-006/
+     MD-007's inherited framework, methodology, artifact map.
+   - `01_evidence-base.md` — C1's ~732 primary-tier candidates organized into evidentiary clusters
+     (clustering scheme to be determined from the actual digest, per the Phase 1/2 precedent — not
+     pre-guessed here); C2's investigation and its result (however large or small); duplicates named,
+     not double-counted.
+   - `02_concept-register.md` — named C1 concepts/formalisms (engineering kernel, portability
+     criterion, EKS/PKS lineage, etc.) and, separately, whatever C2 concepts the population
+     investigation actually yields — kept in clearly separate sections, never merged into one
+     register that implies a shared status.
+   - `03_contradictions-and-open-questions.md` — C1-internal and (if population permits) C2-internal
+     contradictions/UEs/OQs, **plus a dedicated C1↔C2 relationship section** applying MD-007's
+     three-way framework to the fuller evidence — this is *within-Phase-4* relationship work
+     (explicitly permitted, since C1 and C2 are one phase's two halves), **not** cross-model
+     adjudication against Model A/B (explicitly forbidden, per constraint K below).
+   - `04_boundary-observations.md` — non-C1/C2 material accounted for by category (`meta_research`,
+     `cross_model`, blank rows, `kernel_ddd`/`OUT_OF_SCOPE_ROOT` historical material), the seq-2330
+     register-vs-per-file inconsistency flagged, the 8 register-references-to-deleted-files anomaly
+     flagged.
+8. **No sixth artifact** unless the C2-population investigation itself surfaces a specific, nameable
+   need (e.g., if C2 turns out to require its own dedicated short investigation report distinct from
+   the main evidence base) — decided at execution time with justification, not pre-authorized here.
+
+## The 24-point plan structure, addressed
+
+1. **Purpose** — independently reconstruct Model C1 (Engineering KnowledgeOS) and investigate Model
+   C2 (Epistemic KnowledgeOS)'s actual reconstructable population, before any three/four-model
+   synthesis is attempted, per MD-004/MD-021's own sequencing.
+2. **Research questions** — what does the C1 evidence actually establish about an "engineering
+   kernel"? What, if anything, does the corpus's `epistemic_knowledgeos` population establish about
+   an "epistemic Kernel," and is that population even large enough to reconstruct a model from? What
+   do MD-007's three candidate C1↔C2 relations look like against the fuller C1 population specifically
+   (not the seq-10 sample MD-007 itself was limited to)?
+3. **C1 definition** — protocol.md's own: `engineering_knowledgeos` — EKS · PKS · product binding ·
+   portability · engineering governance · "engineering kernel" (the portability kernel, domain-free ∧
+   binding-free ∧ evidence-free reusable core). Reused verbatim, not redefined.
+4. **C2 definition** — protocol.md's own: `epistemic_knowledgeos` — Knowledge Space · Knowledge
+   Element · `K_t` · dimensions/values · "epistemic Kernel" (minimal state, operators, admissibility,
+   invariants) · Buddhi · operators · purification · Moksha. Reused verbatim, not redefined — **and
+   its near-total absence from the classified corpus is Phase 4's own first-class finding, not a
+   defect in this definition.**
+5. **Authoritative evidence population** — 719 main-corpus + 13 math-lane `PRIMARY`-tier C1 rows (732
+   total); 1 main-corpus C2 row (0 math-lane); re-derived directly per Design Decision 1, never copied
+   from this plan's own numbers without re-verification at execution time (per the standing "do not
+   simply copy these numbers from a previous report" discipline).
+6. **Primary vs. boundary material** — C1 primary = 732 (`PRIMARY`-tier, `c1`/`engineering_knowledgeos`
+   as `initial_primary`); C1 boundary = 39 secondary-tagged-elsewhere (2 main + 37 math-lane); C2
+   primary = 1 (pending the population investigation's outcome); the 3 `kernel_ddd`/`OUT_OF_SCOPE_ROOT`
+   rows and the 711-row `OUT_OF_SCOPE_ROOT`/1152-row `EXCLUDED_*` populations generally = historical/
+   excluded, not boundary observations in the Model-A/B sense (they are outside the primary corpus
+   entirely, not merely a different lineage within it).
+7. **Corpus completeness method** — already satisfied: both `resume.py` (main corpus) and
+   `resume_mathematical.py` (math lane) report `CONSISTENT`/pass-complete; `kernel/`'s own 172-file
+   subdirectory independently reconciled against the register during this planning pass (Finding 5
+   above) — **no Phase-0-style reconciliation step is needed before Phase 4 can begin**, unlike Model
+   B's math-lane gap.
+8. **Duplicate/near-duplicate handling** — per Design Decision 6: `source_role`/`canonical_source`
+   (seq ≥ 0024) or `repeats`/`supersedes`/`renames` (seq < 0024), applied per-row at execution time;
+   no duplicate count is pre-stated here since it has not yet been measured.
+9. **Evidence extraction method** — the established digest-then-sequential-read pattern (Phase 1/2's
+   own proven approach): a compact per-file extraction script over the ~732 C1 candidates, read in
+   full sequential order before drafting; the single C2 candidate (plus whatever the population
+   investigation surfaces) read directly and completely, not digested (its population is far too
+   small to need compression).
+10. **Concept/formalism register** — same structure as Model A/B's own (source seq, terminology,
+    evidence-status tag, maturity, MD-017-typed relationships) — C1 and C2 sections kept visibly
+    separate throughout, per Design Decision 7.
+11. **Contradiction register** — C1-internal contradictions recorded per protocol.md's native tag
+    vocabulary (reused, not invented), exactly as Model A/B did.
+12. **Unresolved-equivalence register** — MD-017's `unresolved_equivalence` remains the default for
+    any plausible-but-unproven correspondence, inside C1, inside C2 (if population permits), and for
+    any candidate C1↔C2 correspondence — never promoted to `new_representation`/formal equivalence
+    without demonstrated proof, mirroring Phase 3's own six-level-ladder discipline applied *within*
+    a single phase this time rather than across two frozen ones.
+13. **Open-question register** — MD-007's own promoted watch-status finding ("is 'Knowledge' still
+    undefined across the fuller C1 population?") is the first item on this register, re-tested against
+    real evidence rather than assumed still true or false.
+14. **Kernel-candidate handling** — reuses the exact four-state discipline Model B's authorization
+    established (ESTABLISHED / TESTED→REJECTED / PROPOSED→UNTESTED / UNRESOLVED, plus the
+    "tested-survives-not-established" fifth state Phase 3's own matrix found useful) — applied to
+    whatever C1 (and, if reconstructable, C2) actually proposes as an "engineering kernel"/"epistemic
+    Kernel" candidate. **Per constraint D/E below: no assumption of a unique kernel, or of any kernel
+    existing at all, going in.**
+15. **Representation/minimality discipline** — if C1 or C2 evidence produces a minimality claim
+    (echoing 0001/0005/0008's own early "portability kernel" vs. "epistemic necessity" distinction,
+    already on record in MD-006), it is tested and recorded exactly as found — never assumed
+    representation-independent, and never compared against Model B's own already-established
+    representation-dependent-minimality result (that comparison is cross-model adjudication, reserved
+    for a later, separately-authorized phase, per constraint K).
+16. **C1 ↔ C2 relationship discipline** — MD-007's three-way framework (evolution / independence /
+    gap-motivated transition) applied to the actual evidence found, decided **"from documents that
+    state the transition, not from the plausibility of a story that fits"** (MD-007's own words) — if
+    no such document exists, that itself is recorded as a finding favoring independence, not treated
+    as an unresolved gap to be argued around.
+17. **Independence/anti-contamination rules** — no Model-A concept, Model-B concept, Phase-3
+    correspondence, Phase-3 hypothesis, or Phase-3 non-convergence is used as evidence for C1/C2
+    reconstruction, per the user's explicit constraint B. Model A/B's own artifacts and Phase 3's own
+    artifacts are read-access-only reference points for *this plan's own provenance-checking*, never
+    cited inside the Phase-4 artifacts themselves as evidentiary support.
+18. **Source-provenance requirements** — every claim in every Phase-4 artifact carries its source
+    `seq`, exactly as Model A/B's own registers do.
+19. **Raw-source verification requirements** — the same standard Phase 2's mid-execution guardrail
+    established: any claim entering the concept register, a kernel-candidate table, or the
+    contradiction register that is mathematically/architecturally consequential, ambiguous, or
+    disputed gets checked against the underlying raw `.md` source, not merely the governed per-file
+    YAML — with priority given to the seq-2330 C2 candidate (given its register-vs-per-file
+    inconsistency already found) and to any file the population investigation surfaces as a candidate
+    C2 rescue.
+20. **Artifacts to be produced** — the five files named in Design Decision 7, written to
+    `04_model-c_kernel-ddd/` only.
+21. **Filesystem scope** — `04_model-c_kernel-ddd/` (new content) plus the governed decision-log/
+    CONTEXT/session-log updates this project's own standing discipline requires at phase closure;
+    nothing else.
+22. **Verification suite** — both `resume.py`/`resume_mathematical.py` re-run and confirmed
+    `CONSISTENT`; `classification-register.tsv` confirmed unchanged (0 non-`PENDING_GLOBAL_RECLASS`/
+    `PENDING` rows, same row count); `02_model-a_gita/`, `03_model-b_mathematical/`, and
+    `05_cross-model/` confirmed unmodified (md5-hashed, matching the values already on record from
+    Phase 3's own acceptance); `04_model-c_kernel-ddd/` confirmed to contain only the five intended
+    files; 5–10 raw-source spot-checks performed, prioritizing the C2 candidate(s).
+23. **Completion report** — mirroring Phase 1/2/3's own 12–15-point structure, adapted for a
+    two-sub-model phase: C1 evidence population · C1 independent/duplicate/boundary counts · C2
+    evidence population (however small) and the population-investigation's own result · C1 concept
+    count · C2 concept count (if any) · C1/C2-internal contradiction/UE/OQ counts · kernel-candidate
+    four(+one)-state breakdown for whatever candidates are found · the C1↔C2 relationship finding
+    (one of MD-007's three, or "undetermined") · verification results · files changed · governance
+    questions requiring later decision.
+24. **Stop condition** — end after the completion report; do not begin any cross-model work (Phase
+    3's own kind, now potentially extended to a three/four-model version), do not perform global
+    reclassification, do not modify Model A/B/Phase-3 artifacts, do not begin Phase 5+.
+
+## Critical methodological constraints (A–N, restated as binding, not merely acknowledged)
+
+All fourteen constraints from the user's authorization are accepted as binding exactly as stated:
+independent reconstruction (A); no importing Model-A/B/Phase-3 material as C1/C2 evidence (B); no
+assumption that C1 and C2 are two parts of one model — their relationship is established from their
+own evidence via MD-007's three-way framework (C); no assumption a kernel exists (D); no assumption of
+a unique kernel — competing minimal candidates preserved where evidenced (E); no silent terminology
+normalization (F); no promotion of an implementation artifact into theory merely because it exists in
+the repository (G); no directory membership treated as model-membership evidence — evidence population
+is derived by `corpus_tier`/`model.primary` content, never by path (H); no modification of the global
+classification register (I); no modification of Model A/B/Phase-3 artifacts (J); no cross-model
+adjudication in Phase 4 (K) — the C1↔C2 relationship work in Design Decision 7/point 16 is
+*within*-Phase-4 (both halves of the same authorized phase), not adjudication against A/B/Phase-3; no
+unified theory (L); no canonicalization (M); no implementation work — default is none, unless a future
+authorization explicitly permits it (N).
+
+## Required completeness safeguard — reported here, to be re-verified (not re-copied) at execution time
+
+- **Total candidate files**: 732 C1 primary-tier (719 main + 13 math-lane) + 39 C1 boundary (2 main +
+  37 math-lane) + 1 C2 primary-tier (main only) + 0 C2 boundary = **772 rows touching C1/C2
+  classification across both corpora**, plus 3 historical `kernel_ddd`/`OUT_OF_SCOPE_ROOT` rows cited
+  for provenance only.
+- **Primary evidence files**: 732 (C1) + 1 (C2), pending the population investigation's outcome for C2.
+- **Boundary files**: 39 (C1 secondary-tagged elsewhere).
+- **Duplicates**: not yet measured — an execution-time task (Design Decision 6/point 8).
+- **Excluded files**: 1152 main-corpus `EXCLUDED_*` rows + the math lane's 199 `KR-SIM`/16 `x`/6 `g`/
+  5 `c` rows are irrelevant to C1/C2 scope and not touched.
+- **Unexplained gaps**: none found in the C1/C2-relevant population itself; the 8 register-rows
+  referencing since-deleted `kernel/` files are a minor, pre-existing, unrelated anomaly (not a C1/C2
+  gap) — flagged for `04_boundary-observations.md`, not chased down further at planning time.
+- **Anomalies**: (a) seq 2330's register-vs-per-file secondary-field inconsistency (Finding 4 above);
+  (b) the C2 population's own extreme scarcity (Finding 3), which this plan treats as the phase's own
+  central question rather than an anomaly to explain away.
+- **Exact sequence/range coverage**: C1 main-corpus rows span the full 0047–2376 primary-tier range
+  (no single contiguous cluster — to be organized into evidentiary clusters at execution time, per
+  the Phase 1/2 precedent); C1 math-lane rows are the 13 already-named-but-unopened rows from Model
+  B's own `04_boundary-observations.md`; the sole C2 row is seq 2330.
+- **If an apparently important historical sequence is excluded**: the three `kernel_ddd` rows
+  (0001/0005/0009) are the one such case, and the reason is stated precisely (Finding 2/MD-011,
+  Design Decision 4) — `OUT_OF_SCOPE_ROOT`, excluded from `N_primary` by an explicit, prior,
+  independently-adopted governance correction (MD-011), not by this plan's own choice.
+
+## What this plan explicitly does NOT do
+
+- Does not create `04_model-c_kernel-ddd/`'s five artifacts, or write anything into that directory.
+- Does not modify `classification-register.tsv`, `02_model-a_gita/`, `03_model-b_mathematical/`,
+  `05_cross-model/`, any per-file YAML/MD source record, or the mathematical manifests.
+- Does not resolve the C2-population question — it names the question precisely and proposes how
+  Phase 4 itself should investigate it, but does not investigate it now (that is execution, not
+  planning).
+- Does not perform any cross-model adjudication extending Phase 3 to include C1/C2 — that is a later,
+  separately-authorized phase.
+- Does not assume any of MD-007's three C1↔C2 relations is correct.
+
+## Verification (of this plan itself, before requesting approval)
+
+- All population counts above independently re-derived this session via direct `csv`/`yaml` queries
+  joining `classification-register.tsv`, `reading-manifest.tsv` (`corpus_tier`), and the math lane's
+  per-file-mathematical records — none copied from an earlier report.
+- `04_model-c_kernel-ddd/` confirmed empty (no files created or modified during this planning pass).
+- `02_model-a_gita/`, `03_model-b_mathematical/`, `05_cross-model/`, and `classification-register.tsv`
+  confirmed untouched throughout this planning pass (read-only queries only).
+- MD-006/MD-007/MD-009/MD-010/MD-011 read directly from `14_decision-log/model-boundary-decisions.md`
+  rather than assumed from this session's own prior summaries.
+
+## Stop condition
+
+**PHASE 4 PLAN READY FOR USER REVIEW. NO PHASE-4 EXECUTION AUTHORIZED.** No file will be created, no
+directory populated, and no classification changed unless and until a separate, explicit authorization
+is given, exactly as for Phases 1, 2, and 3.
+
+---
+
+# Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
+
+**Status update, 2026-09-08 (latest): MD-032 — Human Admissibility Decision Gate: `06-composition-
+rules.md` — EXECUTED.** Not a research phase — a governance gate, following MD-031's own named next
+action. Presented formally via a direct question despite the user having also stated a preference in
+prose, per the "do not infer the decision" discipline and the MD-028-DQ-1 precedent. **Decision:
+SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A, ADMIT (narrow scope)**:
+`06-composition-rules.md` admitted solely for specification-sufficiency/composition research
+concerning `Validate` — not canonical, not ratified, not proven, not sufficient for composition, not
+resolving `V6`, not opening Stage 07. Provenance unchanged (same tier as `03`/`04`); the relationship
+to the executable rule stays `CONVERGENCE WITH COMMON-CAUSE PROVENANCE`, not upgraded.
+`classification-register.tsv` not touched, per the MD-028-DQ-1 precedent. Executable lane and `V6`
+explicitly unaffected. No composition test, no code executed, no model selected, no Stage 07.
+
+**Status update, 2026-09-08 (earlier): MD-031 — Validate Rule Narrative–Executable Convergence Audit
+— EXECUTED.** Adapted before execution: the user's own prompt carried a firewall against inspecting
+`three_model_convergence/` (this session's own home directory) and a P-series/"K1–K11 cardinality"
+verification checklist — both belonging to the Lane-T track, not this session; flagged and dropped
+before any file was touched, with the user's confirmation. **Central finding**: the narrative
+`docs/knowledgeos/research/kernel-reduction/06-composition-rules.md` — cited by section number in
+the already-admitted `04-operator-contracts.md`, never itself read before this study — states the
+identical `Validate`-relevant derivation rule found in the executable lane, in prose, with matching
+explanatory text. Chained through `04`'s own atom assignment, this closes the B `Validate`
+input-carrier field MD-029 left open, using narrative-lane text only. **Provenance**: `06` shares the
+*same* Git history as the two already-admitted files — not weaker, unlike the executable lane.
+mtime evidence (5ms gap between `04` and `06`) and the absence of any cross-citation either direction
+point to common-cause authorship, not independent confirmation. **Verdict: E — PARTIAL
+CONVERGENCE** — `06` is silent on the executable lane's own `V6` alternative rule, and preconditions/
+postconditions/failure semantics remain unresolved by both sources. **Smallest next action: a human
+admissibility decision for `06-composition-rules.md`** — not made here. No admission, no composition
+test, no Stage 07. `theory-extraction/`, `knowledgeos-sim/`, `verification/` remain untouched.
+
+**Status update, 2026-09-08 (earlier): MD-030 — Executable Kernel-Reduction Evidence Characterization
+— EXECUTED.** Triggered by a path-verification finding: `nrna1/research/kernel-reduction/` (an
+executable Python research instrument, 27 files) is distinct from, but README-linked to, the
+already-partially-admitted `docs/knowledgeos/research/kernel-reduction/` narrative write-up.
+**Central finding**: `kr/carriers.py` contains a machine-encoded derivation rule
+(`{Claim,Evidence}|{Hypothesis,Evidence} -> Verdict`) supplying a concrete candidate for exactly the
+B `Validate` input-carrier gap MD-029 left open — closely matching MD-029's own prior constructed
+inference (non-independent corroboration). **Provenance**: this directory has zero git history
+(weaker than the narrative lane's own dated commit); self-declared `[EXP]`, non-canonical; and its
+own `variants.py` (V6) tests an alternative derivation rule for the same step, so even internally
+it is not presented as settled. **Outcome: D — ADMISSIBILITY/PROVENANCE BLOCK** — relevant, not
+currently admissible. No contradiction found vs. the two admitted narrative files. No MD-024–029
+finding depends on this directory (discovered only after MD-029 closed). No admission, no
+composition test, no Stage 07. `knowledgeos-sim/` and `verification/` remain untouched, per the
+user's explicit scope instruction.
+
+**Status update, 2026-09-08 (earlier): MD-029 — Pair 1 Retest (B `Validate` ↔ C1 P-3) — EXECUTED.**
+Used exactly the two MD-028-admitted files. `Validate`'s output (`Verdict`) is now source-stated (from
+`03`'s capability table); input remains `NOT SPECIFIED BY SOURCE` (needs `06-composition-rules.md`,
+not admitted). **Independently found**: this reconstruction's own prior description of P-3's
+falsification method ("evidence-sharing stress test") does not match seq 0157's actual text (a
+pairwise atomicity argument) — corrected, not edited into frozen text. **Result: `FUNCTIONAL ANALOGY`
+(level 3/6)** between `Validate`'s stated responsibility and P-3's own `Confidence` property — a
+disclosed constructed mapping, not native. No model selected, no common Kernel, GA-038/K-1/K-2
+untouched. Pairs 2/3/4 not tested. Stage 07 NOT opened.
+
+**Status update, 2026-09-08 (earlier): MD-028-DQ-1 decision recorded — ADMIT (operator contracts
+only).** Asked directly via MD-028's own four options; the user, as this session's directing
+principal, decided ADMIT only `docs/knowledgeos/research/kernel-reduction/04-operator-contracts.md`
+and `03-capability-model.md`, for specification-sufficiency purposes only. Recorded explicitly as a
+**`SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION`** — not corpus-internal organizational
+ratification; `LEGITIMATE AUTHORITY NOT ESTABLISHED IN CORPUS` explicitly preserved, not resolved (12
+conditions attached verbatim). Provenance stays `RECONSTRUCTED PROVENANCE`. Both files verified
+present, unmodified, before recording; neither copied/moved/rewritten;
+`classification-register.tsv` not touched. No composition, no model selection, no Stage 07, K-1/K-2
+untouched. **The next scientific step (a controlled composition retest) remains a separate,
+not-yet-granted authorization.**
+
+**Status update, 2026-09-08 (earlier): MD-028 — Human Corpus-Boundary Decision Package — EXECUTED.**
+Not a research phase; not a decision by this reconstruction. Prepared a narrow decision question
+("may `kernel-reduction/` be admitted as Model-B-adjacent evidence for the MD-024/025 specification
+gap, without implying membership/authorship/validation"), 4 non-prejudicial options, provenance held at
+`RECONSTRUCTED PROVENANCE`, and a blank decision form. `LEGITIMATE AUTHORITY NOT ESTABLISHED IN
+CORPUS` — the same gap already found for the K-1/K-2 GK-5K track (MD-022), now found a second time.
+**`DECISION PENDING HUMAN GOVERNANCE.`** No directory admitted, no composition, no model selected.
+Stage 07 NOT opened.
+
+**Status update, 2026-09-08 (earlier): MD-027 — Adversarial Audit of MD-026 — EXECUTED.** A quality
+gate, not a research phase; MD-026's own text not edited. Accepted 2 corrections (Git-tracking date ≠
+filesystem existence; "independent" evidence that is actually one dependent chain) plus 1 newly-found
+correction (a falsification test on the check-in commit found no governance vocabulary — MD-026's
+"self-governing research context" downgraded to "separately organized research lane, DDD authority not
+established"). 8 of 12 audited claims required no correction. **Governance-readiness verdict: YES, with
+corrections applied.** Next authorized action: a formal, human corpus-boundary decision — not a further
+research task. No directory admitted, no composition, no model selected. Stage 07 NOT opened.
+
+**Status update, 2026-09-08 (earlier): MD-026 — Corpus Boundary, Provenance, and Admissibility
+Adjudication — EXECUTED.** Determined `docs/knowledgeos/research/` (MD-025's central discovery) was
+first tracked in this repo's git history on 2026-09-06 — five days after MD-010/MD-011's own
+2026-09-01 corpus-boundary decision — in the same commit that checked in the entire `brainstorming/`
+corpus, whose own message linguistically distinguishes "the brainstorming corpus" from "research
+lanes." `kernel-reduction/04-operator-contracts.md` is content-dated the same day as the M0030 file
+that cites it, but only as an intended output location, not documented execution. A `ConflictRecord`
+lead found in `reviews/kernel/` was self-disqualified as a "provenance loop" by that same lane's own
+internal audit — MD-025's negative finding strengthened, not weakened. No admission mechanism exists
+in the governing protocol. **Next authorized action: a formal, human corpus-boundary decision — not a
+research task.** No directory admitted, no composition performed, no model selected. Not Stage 07; not
+Phase 5O; P-series not consulted.
+
+**Status update, 2026-09-08 (earlier): MD-025 — Specification Sufficiency and Missing-Structure Census
+— EXECUTED.** An exhaustive census of all 161 admissible Model B files, following one citation, led to
+`docs/knowledgeos/research/kernel-reduction/04-operator-contracts.md` — a rigorous, fully-specified
+operator-contract apparatus for all of C0's 13 operators plus `Qualify`, directly cited by admissible
+evidence (M0030) as its own output location, but never classified by this reconstruction and sitting
+outside the corpus root (MD-010/MD-011). Same for `S^epi`'s missing `Context` typing
+(`theory-v1.1-simulation/`). No external elaboration found for `ConflictRecord`/`Θ`. A's own `Context`
+re-confirmed 4-way internally unresolved. **GA-001/composition now depends on a prior, separate
+corpus-boundary decision (whether to admit `docs/knowledgeos/research/`) that this study explicitly
+did not make.** Not Stage 07; not Phase 5O; P-series not consulted.
+
+**Status update, 2026-09-08 (earlier): MD-024 — GA-001 Composition and Complementarity Study —
+EXECUTED.** Tested MD-023's own untested complementarity hypothesis (Model B's operators vs. A/C1/C2's
+aggregates as compatible DDD layers). A pre-execution raw-source check confirmed Model B's own C0
+operators lack a stated input/output type in B's legitimate evidence base (a more rigorous
+`ASSERT`/`LINK`/etc. apparatus exists but is `KR-SIM`-tagged, not imported). 4 pre-registered
+diagnostic pairs tested; 3 of 4 landed `NOT FORMALLY SPECIFIED ENOUGH TO TEST`/`PARTIALLY TESTABLE`,
+confirming the pre-execution finding. Two genuine, non-reconstructed positive findings: A's tuple field
+names align with B's `S^epi` argument names (missing only `Context`); B's own tested result constrains
+what C1's `ConflictRecord` would need to become. **The complementarity hypothesis remains neither
+confirmed nor refuted.** Not Stage 07; not Phase 5O; K-1/K-2 governance track untouched.
+
+**Status update, 2026-09-08 (earlier): MD-023 — Blocking-Gap Resolution Study — EXECUTED.** Investigated
+whether Stage 06's two BLOCKING gaps (GA-001 Kernel identity, GA-038 no canonical `K_t`) are resolvable,
+under 3 pre-negotiated clarifications (precise recurrence language, a pre-registered 4-pair diagnostic
+subset, a 4-state obstruction taxonomy). **GA-001**: no pair tested reaches beyond partial testability
+with no map found; the aggregate-vs-operator divide reframed as an untested DDD-complementarity
+hypothesis (two layers of one model, not rivals) rather than resolved; persistent non-convergence
+reported even within the aggregate category. **GA-038**: `NO CORPUS-JUSTIFIED CANONICALIZATION
+CRITERION FOUND` — the corpus's own one successful closure precedent (`Δ_t`'s freeze) was a governance
+act, not a mathematical selection, meaning GA-038 cannot be resolved by further science alone. Not
+Stage 07; not Phase 5O; K-1/K-2 governance-frozen track untouched.
+
+**Status update, 2026-09-08 (earlier): MD-021 Stage 06 — Gap Analysis — EXECUTED.** A required protocol
+check confirmed `00_control/protocol.md` defines `06_gap-analysis` only as a stage-gate node with no
+dedicated methodology; executed as a synthesis stage over Phases 1/2/3/4/6's own frozen evidence, no
+new corpus research. 53 gaps registered (`GA-001`–`053`). **Central finding**: only 2 gaps are
+BLOCKING, and only for a unified formalization — `GA-001` (Kernel identity, no two of four families
+structure-preserving-equivalent) and `GA-038` (Model B's own explicit statement: no way to select a
+canonical `K_t`) — the same question from two directions. Neither blocks model-specific formalization.
+3 governance-blocked items surfaced (`GA-006` K-1 naming collision, `GA-044` ADR never accepted,
+`GA-050` C1/C2 boundary reliability), none opened. K-1/K-2 governance-frozen track untouched. Stage 07
+NOT opened.
+
+**Status update, 2026-09-08 (earlier): MD-021 Phase 6 — Cross-Model Adjudication Extension: Model
+C1/C2 — EXECUTED.** Extends Phase 3's own `05_cross-model/` A↔B adjudication to Model C1/C2 (Phase 4,
+which ran after Phase 3 closed). Not Phase 5O; does not touch the K-1/K-2 governance-frozen track.
+**Central findings**: a promising A/C1 "K-1" naming match does NOT hold under raw-source check (A's
+seq 0219 doesn't actually cite C1's seq 0165/0167); an independent, citation-free convergence on
+shared `K_t`/`Δ_t` notation between C1's own `phase_measure_theory/` arc and Model B's own math-lane
+thread, verified with no citation link either direction — a stronger PROPOSED CROSS-MODEL HYPOTHESIS
+than Phase 3's own original state-proliferation finding; the `kernel/` directory confirmed as a
+genuine classification-boundary region; Kernel rows settle at PARTIAL CORRESPONDENCE (categorical) /
+UNRESOLVED (specific), mirroring Phase 3's own A↔B finding; a corpus-wide "K-1" naming collision
+surfaced (C1's DDD aggregate vs. the Phase-5A–5N 8-primitive tuple) and left explicitly unadjudicated.
+No row reached STRUCTURAL CORRESPONDENCE or above; no new INCOMPATIBLE row found. `05_cross-model/`,
+`02_model-a_gita/`, `03_model-b_mathematical/`, `04_model-c_kernel-ddd/`, Phase 5A–5N, the handover,
+and MD-022 all confirmed unmodified. Phase 7 NOT opened.
+
+**Status update, 2026-09-08 (earlier): after the Research-to-Governance Handover, a follow-on
+evidence-requirements artifact (NOT Phase 5O, NOT a fourth authority search) was produced —
+`14_decision-log/MD-022-governance-authority-evidence-requirements.md` — a 9-level evidence-status
+taxonomy, a required-authority-evidence checklist (seq 0927's own `LegitimateAuthority` predicate,
+categories only, no candidate named), a reusable 9-step authority-chain verification test, and a K-2
+decision-readiness matrix (all 5 `GK-5K` rows: authority established NO). **Scope: K-2 track only** —
+K-1/OQ-2 untouched, per MD-021 §9. `GOVERNANCE AUTHORITY NOT EVIDENCED` was not re-tested; it was
+established once (5K `03`) and independently re-confirmed twice (5L `08`, 5N `07`) — this artifact
+prepares tooling for the real organization to supply that missing fact, it does not search for it
+again. `GK-5K-1` through `GK-5K-5` remain OPEN. Phase 5O NOT opened.
+
+**Status update, 2026-09-08 (earlier): after Phase 5N, a standalone Research-to-Governance Handover
+document (NOT Phase 5O) was produced —
+`14_decision-log/MD-021-research-to-governance-handover.md` — compiling 5K/5L/5M/5N into a
+governance-facing handover. **Three-Model programme is now frozen at the governance boundary**: K-1
+track (N2, PARTIALLY RATIFIED, OQ-2 open) and K-2/Assertion track (NOT RATIFIED, `GOVERNANCE AUTHORITY
+NOT EVIDENCED`, 5 open decisions GK-5K-1–5) kept explicit and separate; the one recommended next action
+is organizational (establish legitimate decision authority), not further corpus research. Phase 5O is
+NOT opened and is not authorized.
+
+**Status update: Phases 5A through 5N subsequently authorized and EXECUTED (each separately),
+2026-09-07 through 2026-09-08.** See `14_decision-log/MD-021-phase-5a-classification-boundary-audit/`,
+`14_decision-log/MD-021-phase-5b-lineage-reconstruction/`,
+`14_decision-log/MD-021-phase-5c-kernel-object-reconstruction/`,
+`14_decision-log/MD-021-phase-5d-kernel-population-closure/`,
+`14_decision-log/MD-021-phase-5e-kernel-population-reconciliation/`,
+`14_decision-log/MD-021-phase-5f-k1-ontology-semantic-adjudication/`,
+`14_decision-log/MD-021-phase-5g-k1-k2-adversarial-audit/`,
+`14_decision-log/MD-021-phase-5h-k1-k2-mathematical-closure/`,
+`14_decision-log/MD-021-phase-5i-k2-definition-integrity/`,
+`14_decision-log/MD-021-phase-5j-k2-authority-version-provenance/`,
+`14_decision-log/MD-021-phase-5k-assertion-governance-proposal/`,
+`14_decision-log/MD-021-phase-5l-adversarial-audit/`,
+`14_decision-log/MD-021-phase-5m-c022-claim-registry-investigation/`, and
+`14_decision-log/MD-021-phase-5n-k1-ratification-adjudication/` for the completed work, and
+MD-021's own execution records in `14_decision-log/model-boundary-decisions.md`. **Phase 5N directly
+adjudicated K-1's own ratification status: verdict N2, PARTIALLY RATIFIED. K-1's naming (`K_t`) is
+genuinely ratified by D-FA-6 (seq 0764, "HPA RULING — GN-31"), which states directly "No formal object
+changes; this is a terminology policy"; K-1's own 8-primitive object is NOT ratified — the one ruling
+addressing it (D-FA-4) classifies the 8-primitive candidate ("M₄₉") as an "L2 candidate" and states
+"Membership at the object level remains open (OQ-2)." A second missing-ratified-deliverable finding
+parallels Phase 5M's own `claim-registry.md` finding: `FA-4-concept-terminology-reconciliation.md`,
+cited/quoted by 6+ downstream documents as "RATIFIED, GN-31," does not exist anywhere in the checked-in
+corpus; "FA-4" and "D-FA-4" are confirmed two separate, non-overlapping artifacts. Adversarial
+falsification of five hypotheses found only partial-ratification (H3) survives fully. Phase 5E–5M were
+NOT reopened or rewritten — each received only a bounded impact classification.** **Phase 5I found K-2
+is internally inconsistent as currently evidenced: its own executable code (`t285_reconcile.py`) was
+never updated to reflect the corpus's own later prose revision, and disagrees with itself across its
+own two sections; its sibling script (`t285_equality.py`) encodes a different, unreconciled Assertion
+field set. K-2 classified COMPETING OBJECT DEFINITIONS; the K-1→K-2 projection is now represented as
+two competing, non-equivalent projections. Overall completion classification: D — INTERNALLY
+INCONSISTENT.** **Phase 5J found no authority, version, or supersession relationship resolves the
+competing K-2 definitions: repository history is structurally uninformative (a single bulk-import
+commit); two newly-read, genuinely substantive documents (Step 272A/272B) turn out not to define
+`Assertion`'s own field structure at all; a third `Qualify` arity was found, deepening rather than
+resolving that conflict; no authority marker of any kind exists for `Assertion`, `Qualify`, or K-2 as
+a whole. Overall completion classification: E — GOVERNANCE-UNRESOLVED.** **Phase 5K prepared (NOT
+RATIFIED) a governance proposal: 5 reconciliation options (A–E) evaluated on mathematical/statistical/
+DDD/knowledge-engineering grounds, using a governance-decision protocol found within the corpus itself
+(seq 0927) as the phase's own structural template. Decision authority recorded as `GOVERNANCE
+AUTHORITY NOT EVIDENCED`. Non-binding recommendation: Option E (preserve competing variants) as an
+interim position, with Option C (an explicit two-layer model) named as the standing content-level
+candidate for any future reconciliation. A formal Governance Decision Record with 5 open entries was
+produced, all status `Pending`.** **Phase 5L independently adversarially audited Phase 5K: verdict
+5L-B, PHASE 5K CONFIRMED WITH QUALIFICATIONS. The Option-E recommendation survives; two supporting
+claims were narrowed ("3 independent sources" → "three uncited restatements within one continuous
+research programme"; "lowest governance complexity" → "lowest ratification-time complexity only"); a
+consequential new finding outside Phase 5L's own scope was uncovered (D285-1's own K-1 ratification
+citation, "C-022 in claim-registry," cannot be verified anywhere in the corpus) and flagged for a
+future phase without being adjudicated. No frozen artifact, including Phase 5K itself, was modified.**
+**Phase 5M investigated that citation directly: verdict M-B, CITATION PARTIALLY SUBSTANTIATED. The
+underlying K-1 evidence (8-primitive derivation, attack-class testing, naming ratification) is
+genuinely real, spread across 3 documents — but the specific identifier "C-022" and the phrase
+"claim-registry" both denote confirmed unrelated subjects wherever they appear in the corpus, and a
+self-reported "claim-registry.md" deliverable cannot be found anywhere despite repeated adversarial
+search. A new finding: "HPA" expands to "Highest Project Authority," still without independently
+verified organizational legitimacy. K-1's own governance status was NOT adjudicated; Phase 5E–5L were
+NOT reopened or rewritten.** **Phase 5G (an
+independent adversarial audit of Phase 5F) produced three genuine changes: K-1↔Phase-5C's-K-1-B was
+STRENGTHENED from "formal equivalence" to DEMONSTRATED IDENTITY (qualified); the K-1↔K-2 "semantic
+equality" claim was DOWNGRADED to PARTIAL CORRESPONDENCE over a declared, unverified subset (tested
+against 5 named equivalence types); and the DDD "context mapping" claim was DOWNGRADED to "a
+mathematical projection is evidenced, a DDD architectural context mapping is NOT independently
+established." Observational equivalence, the Observation-layering-gap finding, State's own
+unresolved status, and the Entity/Proposition/Relation correspondences were all independently
+re-verified and confirmed unchanged.** **Phase 5H (a targeted mathematical closure phase) discovered
+the corpus's own executable Python scripts and found the Assertion-unpacking conflict Phase 5G
+identified in prose recurs, in the identical pattern, inside the executable code itself — elevating it
+to a machine-observable contradiction. Overall closure classification: B — Projection partially
+closable; explicit source gaps remain (K-1's own operator register, `Qualify`'s computable algorithm,
+and `State`'s own projection target are all confirmed genuine source-research gaps, not reconstruction
+failures).** **Phase 5D's central
+finding: Phase 5C's 13-object register is not closure-complete — 6 further distinct Kernel-object
+candidates were found in the previously-unmapped population, plus one confirmed (not repaired)
+attribution finding against KERNEL-OBJ-04.** **Phase 5E's central finding: both remaining populations
+(P2, 237 files; P3, 172 files) were fully censused (0 sampling), yielding a raw-source-confirmed
+authoritative K-1-through-K-7 comparison table (seq 1006) that resolves Phase 5D's own "unregistered
+siblings" question at the provenance level and reaches this reconstruction's first-ever structural-
+correspondence verdict (K-1 ↔ K-1-B) — closure verdict: PARTIAL CLOSURE, population/document closure
+supported, object/full-equivalence closure not supported.** **Phase 5F's central finding: K-1 (seq
+1006) and Phase-5C's own K-1-B (seq 1008) are the same object, promoted to FORMAL EQUIVALENCE; K-1 and
+the verification-lane ontology (K-2) stand in a precise, already-executed corpus-native "lossy
+semantic projection" relationship (PARTIAL CORRESPONDENCE), with the projection map definable but not
+computable (blocked on an unimplemented `Qualify` function); `Observation`'s absence from K-2 traces
+to a documented "Sañjaya layer" recovery construction, while `State` has no analogous recovery and
+remains UNRESOLVED.** Phase 5G and any four-model work remain exactly as unauthorized as this plan
+originally described them — nothing below is superseded except each named sub-phase's own "not yet
+authorized" status.
+
+**Status (original text below, retained for history): PLANNING ONLY. NOT AUTHORIZED. NOT EXECUTED.**
+Produced under the user's own explicit
+"plan Phase 5 only" instruction (2026-09-07), issued after Phase 4's formal acceptance, with the
+express governance boundary that acceptance of Phase 4 authorizes nothing beyond it. **No file has
+been created, no directory populated, no classification changed, and no sub-phase begun in producing
+this document.** This document is itself the requested planning-analysis deliverable — a decision
+brief for the user's own separate authorization act, not a proposal awaiting rubber-stamping.
+
+## 1. Starting point — frozen inputs, not reinterpreted
+
+Phase 1 (`02_model-a_gita/`), Phase 2 (`03_model-b_mathematical/`), Phase 3 (`05_cross-model/`), and
+Phase 4 (`04_model-c_kernel-ddd/`) are treated exactly as their own completion/acceptance records
+state them — read for this analysis, not reopened, reinterpreted, or extended. The eleven accepted
+Phase-4 findings the user listed are taken as given evidence constraints, not as problems to resolve
+here.
+
+## 2. Multidisciplinary analysis (the substantive work of this planning task)
+
+### 2a. Statistical analysis
+
+- **Is the C1/C2 population well-defined for comparative inference? No, not yet, and this is
+  itself the central finding driving this whole planning exercise.** The 732-vs-1 split is not an
+  independently-sampled population count — it is the *output of a discretionary classification act*
+  performed once, during the original sequential read, applying the Term-Collision Rule under
+  reader/session-dependent judgment. Phase 4 already demonstrated (§ its own C1↔C2 relationship
+  section) that this classification does not cleanly track the content distinction protocol.md's own
+  definitions presume. **Treating "732" and "1" as comparable population sizes for any inferential
+  claim would be comparing a measurement to an artifact of the measurement process** — the textbook
+  shape of an ascertainment-bias problem.
+- **Is C2's n=1 sufficient for any substantive model-level claim? No — unambiguously and without
+  qualification.** A single document can describe *itself*; it cannot characterize a "model," a
+  "typical" epistemic-KnowledgeOS document, a distribution of positions, or a boundary of the
+  category. Any Phase-5 work must be explicitly forbidden from writing sentences of the shape "Model
+  C2 holds that..." — the only defensible sentence is "the one file currently classified C2 states
+  that...".
+- **Which conclusions are identifiable from available evidence?** Only descriptive, corpus-internal
+  claims about classification *pattern* (how many files with content-feature X carry label Y) — never
+  claims about an underlying "C1" or "C2" model's properties, since the population defining those
+  labels is itself in question.
+- **Selection/ascertainment/survivorship/circularity risks, named concretely:**
+  - *Ascertainment bias*: the Term-Collision Rule's own conservatism (never classify C2 merely for
+    containing "Kernel"/"KnowledgeOS") plausibly suppresses C2 counts structurally, independent of
+    true content distribution — Phase 4's own bounded finding (extensive Knowledge-State/epistemic
+    formalization sitting under `engineering_knowledgeos`/`meta_research` tags) is *consistent with*
+    this suppression but does not, on its own bounded scope, prove its extent.
+  - *Circular classification*: using the current C1/C2 labels as ground truth to ask "what is the
+    C1↔C2 relationship" risks answering a question about the classification process while believing
+    one is answering a question about the underlying research programme.
+  - *Survivorship*: the 8 C2-adjacent rows Phase 4 named came from a *citation-driven, bounded*
+    search (seq 2330's own cited lineage) — files with C2-adjacent content that are **not** cited by
+    seq 2330, or that sit far from it in sequence, would not have survived into that count at all.
+    **Absence from the 8-row list is not evidence of absence of further C2-adjacent material
+    elsewhere in the 732-row C1 population, or in `meta_research`/`cross_model`/blank-tagged rows
+    outside the investigated cluster.**
+- **Unit of analysis — the single most consequential unresolved methodological question for any
+  future quantitative Phase-5 work.** Every count Phase 1–4 have produced (84, 151, 719+13, 1) is a
+  **file** count. Files vary enormously in content density (Phase 4's own digest read showed single
+  files introducing 10–20 distinct named concepts, alongside one-line duplicates). A "732 vs. 1"
+  file-count ratio is not the same claim as a "732 vs. 1" *concept*, *claim*, or *formalism* ratio,
+  and no phase to date has established which unit any future comparison should use. **This must be
+  decided, explicitly and in advance, before any phase attempts a quantitative claim** — not
+  discovered as an afterthought once counting has begun.
+- **Missing denominators, named:** the total corpus-wide count of files exhibiting Kernel-content or
+  epistemic-state-formalization features, *independent of their current classification* (needed to
+  assess how much C2-adjacent material might exist outside the 8-row bounded finding); the total
+  count of distinct named "knowledge" definitions across the *entire* corpus (needed to properly scope
+  the C1↔C2 falsification finding beyond the specific examples already found); a corpus-wide,
+  not-directory-bounded count of Kernel-definition proposals (needed to know whether the "eight"
+  C1 candidates are the true extent, or an artifact of Cluster-level sampling in Phase 4's own
+  digest-based method).
+
+### 2b. Mathematical analysis
+
+- **Are the eight C1 Kernel-definition candidates the same *type* of object? No — they are
+  heterogeneous**, spanning at minimum four distinct object categories: (a) enumerated capacity/
+  capability lists (K1-K8, Six Pillars — closer to a checklist than a formal structure); (b) a formal
+  governance artifact (`ADR-KOS-KERNEL-001`, a one-sentence prose definition awaiting ratification);
+  (c) DDD aggregate/bounded-context designs (K-1's decomposition at seq 0216, the seven-component
+  `K(X)`, `S_Kernel=(D,E,S,T,U)` — architectural proposals with some tuple-like notation); (d) a
+  conceptual/identity notion (Knowledge Ātma Kernel — closer to a philosophical persistence claim than
+  a mathematical structure). **No equivalence relation can be meaningfully posed across candidates of
+  different object-types until each candidate is first typed** — asking "is a DDD aggregate design
+  equivalent to a 5-tuple" is a category error prior to establishing a shared representation, exactly
+  the same lesson Phase 3's own Kernel row (Model A's typed schemas vs. Model B's operator sets)
+  already taught this reconstruction once.
+- **Minimality remains representation-dependent** (Model B's own established, accepted result, not
+  re-litigated here) — even where two C1 candidates are eventually shown comparable, "minimal" carries
+  no claim to uniqueness without a stated representation.
+- **Closure under stated operations**: not tested for any of the eight candidates — a prerequisite
+  question, unaddressed, before any formal-equivalence work could even begin.
+- **Tested vs. proposed, precisely** (already established by Phase 4's own kernel-candidate table,
+  restated here for planning purposes, not re-derived): of the eight, only two rest on any executed
+  test (P-3's falsification; P-7's demotion via adjudication); one rests on an explicit architectural
+  rejection without an executed test (P-5, corrected during Phase-4 verification); the remaining five
+  are untested proposals, several already superseded within their own research arc before ever facing
+  an external test.
+
+### 2c. DDD / bounded-context analysis
+
+- **Is C1 genuinely one bounded context? The evidence argues against it.** A bounded context requires
+  a consistent ubiquitous language and stable model semantics within its boundary. Phase 4's own
+  evidence base shows at least eight non-equivalent Kernel definitions, multiple non-reconciled
+  Knowledge-State formulations (six within the `phase_measure_theory/` arc alone), and two
+  independently-developed research directories (`kernel/`, `phase_measure_theory/`) covering
+  overlapping ground with, per the corpus's own admission (seq 0513), no established relationship
+  between them. **This looks less like one coherent bounded context and more like a classification
+  label spanning several not-yet-integrated candidate contexts, or a single context still mid-
+  formation** — the evidence does not yet distinguish these two readings, and Phase 5 planning must
+  not assume either.
+- **Is C2 genuinely a bounded context? Not determinable from n=1.** A single document cannot
+  establish consistent usage across a body of work — the defining test of a bounded context.
+- **Overloaded terms / homonyms, the clearest DDD-actionable finding**: "Kernel" itself already
+  functions as a homonym across the C1 population (portability-kernel / DDD-aggregate-kernel /
+  epistemic-necessity-kernel / Ātma-identity-kernel), not a single overloaded-but-coherent term. "Knowledge,"
+  "State," "Evidence," and "Claim" show similar, though less extensively documented, multiplicity.
+- **Historical refactoring vs. domain distinction — the open question this whole plan turns on.**
+  The evidence is consistent with either reading: C1's own internal proliferation of Kernel/Knowledge-
+  State definitions could reflect one context maturing through successive refactors (same domain,
+  evolving model), or could reflect several genuinely distinct sub-contexts never disentangled. MD-007's
+  own three-way framework (evolution / independence / gap-motivated transition) was designed for the
+  C1-vs-C2 question specifically and, per Phase 4's own finding, does not resolve cleanly against the
+  actual classification boundary — a DDD-flavored restatement of the same open question.
+
+### 2d. Knowledge-engineering / provenance analysis
+
+- **Classification is part of the evidence-generating process, not an independent observation of it.**
+  Every count this reconstruction has produced (per-lineage populations, boundary rows, kernel-
+  candidate proliferation counts) is downstream of a classifier's discretionary judgment applied
+  during the original sequential read — a fact this reconstruction has itself demonstrated concretely
+  (Phase 0's schema-drift findings; Phase 4's own C1/C2-boundary-does-not-track-content finding; the
+  Phase-4 verification pass's own seq-0216 correction, which originated in a synthesis-layer error, not
+  a raw-source error).
+- **Provenance chain, and where drift enters**: raw source → per-file record (a reader's synthesis,
+  already an interpretive act) → this reconstruction's own cluster/concept-register description
+  (a further synthesis) → any future cross-reference or comparison (a third layer of synthesis).
+  **Each layer is a site where an attribution can drift from what the raw source actually supports** —
+  concretely demonstrated this session by the seq-0216/K-1 correction, found only because a spot-check
+  went back to the first layer.
+- **Required discipline for Phase 5, regardless of which candidate is chosen**: every claim must
+  retain source seq, source path, and an explicit evidence-level tag (see §9 below) — the same
+  discipline already governing Phases 1–4, restated here as non-negotiable for whatever comes next.
+
+## 3. Candidate evaluation (A–E)
+
+- **Candidate D (four-model cross-model adjudication): NOT READY.** Compounding an already-identified
+  measurement/classification instability (C1/C2's own boundary) with a second layer of cross-model
+  uncertainty (against Model A/B, whose own Phase-3 adjudication already found no correspondence above
+  UNRESOLVED/INCOMPATIBLE) would build conclusions on two unstable foundations at once. **The
+  existence of four labels is not evidence of four ontologically settled models** — the planning
+  hypothesis stated in §4 exists precisely to prevent this inference from being assumed.
+- **Candidate C (Kernel-family formal/architectural adjudication inside C1), full form: PREMATURE.**
+  Formal equivalence work cannot proceed while the eight candidates remain untyped by object-category
+  (§2b) — asking "are K-1 and `S_Kernel` equivalent" before knowing whether both are even the same
+  *kind* of mathematical/architectural object is not yet a well-formed question. A **narrow,
+  preparatory version** (object-typing only, no equivalence claims) is a legitimate, low-risk
+  component of an earlier phase, not a phase of its own.
+- **Candidate B (C1/C2 lineage and relationship reconstruction): PREMATURE, for a specific reason.**
+  MD-007's three-way framework (evolution/independence/gap-motivated transition) presumes the C1/C2
+  boundary itself is a meaningful proxy for "engineering work" vs. "epistemic work." Phase 4 already
+  found this presumption does not hold cleanly. Attempting lineage reconstruction on top of a boundary
+  already shown unreliable would risk manufacturing a lineage narrative that actually describes
+  classifier behavior, not research history.
+- **Candidate A (C1/C2 classification-boundary audit): the evidence points here as the logical
+  prerequisite.** This is a narrower, more tractable question than B, C, or D: not "what is the
+  relationship between C1 and C2" (a substantive/theoretical question this reconstruction is not yet
+  positioned to answer) but "how reliable, and how consistently applied, is the classification
+  boundary itself" (a measurement-validity question, answerable from evidence already in the corpus,
+  without reclassifying anything). **This is the working planning hypothesis in the user's own §4,
+  and this analysis independently arrives at the same conclusion from the statistical/DDD/knowledge-
+  engineering angles above, rather than assuming it.**
+- **Candidate E (staged combination with strict sub-phases): the correct shape, once Candidate A's
+  priority is established.** The dependency graph is: **A must precede B** (lineage reconstruction
+  needs a validated or at least characterized boundary to reconstruct a lineage *of*); **B must
+  precede C's full form** (formal Kernel-candidate adjudication benefits from knowing whether the
+  candidates it's adjudicating sit inside one context, several, or an unresolved mix); **C's full form
+  and any D-shaped work both remain explicitly out of scope for what this planning task recommends
+  next.** A narrow, non-adjudicating object-typing pass (part of §2b) can run alongside A without
+  waiting for it, since it does not depend on resolving the classification boundary.
+
+## 4. The planning hypothesis, held as a hypothesis only
+
+**"Before comparing C1 and C2 substantively, determine whether the observed C1/C2 distinction is an
+actual model/context distinction or primarily a historical/classification distinction."** Sections
+2a–2d above independently support treating this as the organizing question for the next phase — it is
+not converted into a finding here, and Phase 5A's own design (§6 below) is built to actually test it,
+not presume an answer.
+
+## 5. Special treatment of C2 (n=1) — binding for any future phase
+
+No future phase may: promote the 8 adjacent rows into C2; expand C2 membership by semantic resemblance;
+treat directory membership as model membership; retrospectively change any classification; aggregate
+C1 material into C2 because it discusses epistemology; or treat the sole C2 file as representative of
+"the epistemic model" as a whole. **If more C2 evidence is needed, the controlled procedure is:
+widen the bounded investigation Phase 4 already began (currently scoped to seq 2330's own cited
+lineage) to a corpus-wide, still-non-reclassifying descriptive survey — report candidates, preserve
+original classification, and treat any actual membership change as its own, separately governed
+decision, never a byproduct of a descriptive phase.**
+
+## 6. Recommended next phase — Phase 5A: C1/C2 Classification-Boundary Audit (candidate scope, not yet authorized)
+
+**Purpose**: determine, descriptively and without reclassifying anything, how reliably and how
+consistently the `engineering_knowledgeos`/`epistemic_knowledgeos` boundary was applied across the
+corpus — testing (not assuming) the §4 hypothesis.
+
+**Preconditions**: Phase 4 formally accepted (satisfied). No other precondition outstanding.
+
+**Frozen inputs**: `02_model-a_gita/`, `03_model-b_mathematical/`, `05_cross-model/`,
+`04_model-c_kernel-ddd/` — read for context only, never modified or reinterpreted. Raw corpus source
+consulted only to investigate a specific unresolved classification question, per this reconstruction's
+own standing raw-source-verification discipline.
+
+**Research questions** (descriptive, not theoretical): (1) Across a properly-designed sample of the
+full corpus (not only the seq-2296–2354 cluster Phase 4's own bounded investigation covered), how
+often does content matching protocol.md's own C2 definitional criteria (Knowledge Space, `K_t`,
+epistemic Kernel, operators, purification) appear under a classification *other than*
+`epistemic_knowledgeos`? (2) Is there a detectable temporal/session pattern in classification behavior
+(e.g., did classification practice shift after MD-006 formally introduced the C1/C2 split on
+2026-09-01)? (3) What object-type (enumerated-capacity list / governance artifact / DDD architecture
+proposal / mathematical tuple / conceptual-identity notion) does each of the eight C1 Kernel-
+definition candidates belong to, as a precondition for any later equivalence work? (4) What is the
+actual, corpus-wide (not directory-bounded) count of Kernel-definition proposals, to check whether
+"eight" is the true extent or an artifact of Phase 4's own cluster-level sampling?
+
+**Explicit non-goals**: does not determine the C1↔C2 relationship (Candidate B); does not adjudicate
+any Kernel candidate's formal equivalence to another (Candidate C's full form); does not perform any
+cross-model work against A/B (Candidate D); does not reclassify any file; does not expand C2
+membership under any circumstance.
+
+**Candidate population(s)**: to be finalized only at actual authorization, but the design space is: a
+stratified sample of the 732 C1 rows + the `meta_research`/`cross_model`/blank-tagged rows in the same
+sequence neighborhoods as known Kernel/Knowledge-State content (not limited to the seq-2296–2354
+cluster already examined) — stratified by sequence-range/date, not by convenience.
+
+**Unit of analysis**: **must be fixed explicitly before any sampling begins** — the recommendation is
+**file**, for continuity with every prior phase's own counting convention, with an explicit, disclosed
+caveat in every deliverable that file-level counts do not equal concept/claim-level counts, and a
+secondary, clearly-labeled concept-level tally wherever a sampled file's own per-file record makes one
+countable without further interpretation.
+
+**Classification/boundary methodology**: read-only. For each sampled file, record its *existing*
+classification, and a separate, non-binding descriptive judgment of whether its content matches
+protocol.md's own stated C1/C2 criteria — recorded as an *observation*, never as a proposed
+reclassification, with the judgment's own reasoning shown so a reader can independently disagree.
+
+**Statistical safeguards** (per the user's own §6, restated as binding design requirements, not yet
+executed): population = to be defined at authorization (candidate: all 732 C1 rows + a defined
+`meta_research`/`cross_model`/blank stratum); sampling frame = the corpus's own governed register,
+not a convenience sample; unit of analysis = file, with concept-level counts disclosed as secondary
+and non-substitutable; inclusion/exclusion = to be stated explicitly per stratum; denominator = the
+full stratum size, not merely the number of files actually opened; missingness = files with no
+per-file record (as already found for three sequences in Phase 4) reported as missing, never imputed;
+duplicates = excluded from independent counts via existing `source_role`/`repeats` fields, exactly as
+Phases 1–4 already do; dependence = files within the same research arc are not independent
+observations and must not be treated as such in any count; selection effects = explicitly named per
+§2a above; **no p-values, effect sizes, confidence intervals, or "convergence scores" are produced by
+this phase under any circumstance** — only descriptive counts and named, qualitative findings.
+
+**Mathematical safeguards**: the six-level evidentiary ladder (lexical → conceptual → functional →
+structural → formal equivalence → demonstrated identity) applies to any candidate-typing or
+comparison work in this phase exactly as it applied in Phase 3; default state UNRESOLVED; no
+candidate pair is called "the same," "equivalent," or "unified" without satisfying the level claimed,
+with mappings/preserved-structure/operations/invariants/assumptions/counterexamples/representation-
+dependence/failure-conditions specified for any claim that reaches structural correspondence or above
+— none is expected to, at this phase's own descriptive scope.
+
+**DDD safeguards**: explicit treatment of bounded-context candidacy (is C1 one context, several, or
+unresolved — a question this phase investigates, not assumes), ubiquitous-language terms and their
+divergence, homonym identification ("Kernel" already confirmed as one), and historical-refactoring-
+vs-domain-distinction framing for every finding — never assuming DDD vocabulary in the corpus reflects
+a settled underlying model merely because DDD terms are used.
+
+**Knowledge-engineering/provenance safeguards**: every claim in this phase's own deliverables carries
+source seq, source path, evidence type, and one of the seven explicit levels in §9 below; competing
+interpretations recorded side by side, never silently resolved; unresolved status preserved wherever
+warranted.
+
+**Treatment of C2 n=1**: as specified in §5 — no expansion, no promotion, no aggregation; any newly
+found C2-adjacent candidate reported exactly as Phase 4 reported its own 8, with original
+classification preserved.
+
+**Treatment of the 8 C2-adjacent candidates**: re-examined only to check whether the *pattern* Phase 4
+found in its bounded cluster recurs elsewhere in the corpus — not reclassified, not treated as
+confirmed C2 evidence.
+
+**Treatment of the 8 C1 Kernel candidates**: object-typed (research question 3 above) as a
+non-adjudicating preparatory step; no equivalence claim attempted.
+
+**Treatment of `kernel/` vs. `phase_measure_theory/`**: investigated only as a *data* question (file
+timestamps, directory-creation order, cross-reference density — mirroring seq 0311's own
+already-executed dependency-map method) — not as a content-adjudication question, which remains
+Candidate C/B territory.
+
+**Required evidence hierarchy** (per the user's own §9, adopted verbatim as this phase's own
+vocabulary): DIRECT EVIDENCE / INFERENCE / HYPOTHESIS / ARCHITECTURAL INTERPRETATION / MATHEMATICAL
+CLAIM / METHODOLOGICAL OBSERVATION / UNRESOLVED — no silent promotion between levels, checked
+explicitly at this phase's own verification step.
+
+**Proposed artifacts** (naming only, not created): a new stage directory would be needed —
+`three_model_convergence/`'s own numbering scheme has no pre-existing slot for a "classification audit"
+stage (unlike Phases 1–4, which mapped onto protocol.md's own `02`–`05` sequence); this itself is a
+question for the authorizing act to resolve (e.g. a subdirectory under `05_cross-model/` vs. a new
+top-level stage vs. a `14_decision-log/`-adjacent audit report) — **not decided here**, since deciding
+it would itself be a small act of execution this planning task is not authorized to take.
+
+**Verification protocol**: the same suite every phase has used — both `resume.py`/
+`resume_mathematical.py` re-run `CONSISTENT`; `classification-register.tsv` confirmed byte-for-byte
+unchanged; Model A/B/Phase-3/Phase-4 artifacts confirmed unmodified (hashed); raw-source spot-checks
+(5–10 minimum, per the standard this reconstruction has now established twice) for any consequential
+descriptive claim.
+
+**Filesystem scope**: to be fixed at authorization; whatever directory is chosen, nothing else is
+touched.
+
+**Contamination controls**: no Model-A/B/Phase-3 conclusion imported; no C1/C2 file modified or
+reclassified; no cross-model adjudication attempted; findings about classification *pattern* kept
+explicitly separate from any claim about the underlying research content's truth or quality.
+
+**Completion criteria**: a descriptive answer to research questions 1–4 above, each carrying its own
+evidence level, with an explicit statement of what the findings do and do not establish about the §4
+hypothesis.
+
+**Stop condition**: end after the descriptive findings and verification are complete; do not proceed
+to Candidate B, C, or D without a separate authorization; do not reclassify any file under any
+circumstance, regardless of what the audit finds.
+
+## 7. Dependency graph (this analysis's own conclusion, not assumed from §11 of the authorization)
+
+```
+Phase 4 (ACCEPTED)
+      │
+      ▼
+Phase 5A — Classification-Boundary Audit  (RECOMMENDED NEXT — candidate scope above)
+      │  (tests, does not assume, the §4 hypothesis; object-types the 8 Kernel candidates)
+      ▼
+Phase 5B — C1/C2 Lineage Reconstruction   (depends on 5A's outcome; MD-007's 3-way framework
+      │     re-applied only once the boundary's own reliability is characterized)
+      ▼
+Phase 5C — C1/C2-internal Kernel-candidate formal/architectural adjudication
+      │     (depends on 5A's object-typing AND 5B's lineage picture; still explicitly
+      │      NOT cross-model adjudication against A/B)
+      ▼
+[Unnamed, later, separately-authorized phase(s)] — any eventual four-model work,
+      only after 5A-5C (or their supersession) resolve enough for it to be well-posed
+```
+
+**Each arrow requires its own separate, explicit authorization — none is implied by this diagram or
+by Phase 4's acceptance.**
+
+## 8. Governance matrix
+
+| Candidate next phase | Prerequisite? | Evidence sufficient? | Risks | Recommendation |
+|---|---|---|---|---|
+| A — C1/C2 Classification-Boundary Audit | Yes — logically prior to B, C, D | Yes — answerable from corpus already read, no new source material required | Low: purely descriptive, no reclassification, bounded scope | **Recommend as next phase (as 5A)** |
+| B — C1/C2 Lineage Reconstruction | Depends on A's outcome | Not yet — MD-007's framework presumes a boundary A has not yet characterized | Medium: risk of narrating a classifier-artifact as a research lineage | Defer until 5A completes |
+| C — Kernel-family formal/architectural adjudication (full form) | Depends on A (typing) and B (lineage context) | Not yet — candidates are untyped by object-category | Medium-high: category-error risk (comparing incompatible object types) without typing first | Defer full form; a narrow object-typing step may run inside 5A |
+| D — Four-model cross-model adjudication | No — depends on A, B, and C first | No — would compound two layers of unresolved uncertainty (C1/C2 boundary + A/B-vs-C1/C2) | High: risk of manufacturing apparent four-model convergence/divergence that is actually a classification artifact | **Not ready; explicitly not recommended now** |
+| E — Staged combination (5A→5B→5C) | N/A (this is the recommended shape) | Matches evidence exactly | Low, provided each sub-phase is separately authorized and none is assumed from the last | **Recommended structure; execute as three separately-authorized sub-phases, not one commission** |
+
+### RECOMMENDED NEXT PHASE
+
+**Phase 5A — C1/C2 Classification-Boundary Audit**, exactly as scoped in §6 above: a descriptive,
+non-reclassifying investigation of how reliably the C1/C2 boundary was applied, plus a non-adjudicating
+object-typing pass over the eight C1 Kernel candidates — testing the §4 hypothesis rather than
+assuming it, producing no quantitative "convergence" claims, and reclassifying nothing.
+
+### NOT YET AUTHORIZED
+
+Phase 5A itself (this document is planning only); Phase 5B (C1/C2 Lineage Reconstruction); Phase 5C
+(C1/C2-internal Kernel-candidate formal/architectural adjudication); any four-model cross-model
+adjudication (Candidate D); any global reclassification; any modification of Model A, Model B,
+Phase-3, or Phase-4 artifacts; any expansion of C2's evidence population; any unified KnowledgeOS
+theory; any canonical Kernel definition; any promotion of an unresolved hypothesis to established
+theory; any implementation work of any kind.
+
+## Stop condition (this document)
+
+**PHASE 5 PLANNING ANALYSIS COMPLETE. NO PHASE 5, 5A, 5B, OR 5C EXECUTION AUTHORIZED.** No file was
+created, no directory populated, and no classification changed in producing this document. Awaiting a
+separate, explicit authorization for Phase 5A specifically before any execution begins.

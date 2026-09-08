@@ -1,0 +1,30 @@
+sequence: M0380
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132737_ledger-governance-corrections-theory-hierarchy-and-omitted-equations.md
+title: "Ledger governance corrections: enforcing the Theory v1.2 > Active Experiment > Downstream Proposals hierarchy, omitted equations restored"
+date: "2026-09-07"
+bytes: 43788
+model:
+  primary: KR-SIM
+  secondary: "meta_research (governance/status consolidation, adjudicated)"
+source_role: PRIMARY
+canonical_source: M0380
+importance: critical
+confidence: high
+about: >
+  Corrects M0379's ledger: enforces an explicit governance hierarchy (Theory v1.2 > Active Experiment > Downstream Proposals), establishes explicit prerequisite dependencies, and prevents downstream structures from 'masquerading as upstream necessities.' Delivers the updated, Adjudicated KnowledgeOS Research Ledger and Artifact Status Matrix (the largest file in this batch, 44KB) -- the authoritative status snapshot superseding M0379.
+introduces: []
+defines: []
+refines:
+  - "M0379: the corrected, governance-adjudicated successor to the same ledger, restoring equations the earlier pass had omitted"
+contradicts:
+  - "M0379's unadjudicated ledger snapshot: superseded here by the corrected, hierarchy-enforced, adjudicated version"
+repeats: []
+bridge_candidates: []
+mathematical_content: "An adjudicated governance hierarchy (Theory > Active Experiment > Downstream Proposals) with explicit prerequisite-dependency enforcement, plus previously-omitted equations restored into the research ledger."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  The authoritative, governance-adjudicated status snapshot for this entire research programme as of the reconciliation date -- explicitly corrects and supersedes M0379, and is the single most load-bearing meta-document in this final batch for understanding what is FROZEN vs open vs proposed across the whole Sep-7 research burst.

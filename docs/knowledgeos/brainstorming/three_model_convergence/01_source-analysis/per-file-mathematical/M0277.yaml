@@ -1,0 +1,62 @@
+sequence: M0277
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-035641_zeros-as-projections-of-a-multidimensional-epistemic-state.md
+title: "Clean consolidation of M0275/M0276's projection theory into a named governing rule, THE QUESTION-PROJECTIONS AXIOM ('never ask What is the Zero of this knowledge state? Always ask: under projection Π_i, relative to question Q and transformation T, does the state component evaluate to neutral element 0_{O_i}?'), plus the cleanest single 4-row comparative table of the whole Zero cluster (Elimination/Balance/Containment/Determination projections side by side)"
+date: "20260904-035641"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0277
+importance: high
+confidence: high
+about: >
+  A compact, largely consolidating restatement of M0275/M0276's projection theory of Zero, giving
+  it clean final formal notation, a concrete illustrative independence example, and — its main new
+  contribution — an explicitly named governing methodological rule ("The Question-Projections
+  Axiom") plus the cleanest single 4-row comparative summary table of the entire Elimination/
+  Balance/Containment/Determination Zero cluster.
+introduces:
+  - "A clean unified restatement of the projection theory: K_t∈𝒦 observed through a family Π={Π_1,...,Π_n}, each Π_i:𝒦→O_i, with Zero_i(K_t)⟺Π_i(K_t)=0_{O_i} — 'instead of postulating multiple disjoint Zeros as primitive operators, we define a unified multidimensional state observed through a family of projection operators'"
+  - "A concrete illustrative example of projection independence: a system state K_t can be Elimination Zero under Π_elim (a claim is redundant to query Q) while being explicitly Non-Zero under Π_cont (the historical trace and boundary remain active in memory)"
+  - "THE QUESTION-PROJECTIONS AXIOM, an explicitly named governing methodological rule for all future KnowledgeOS specifications, elevating M0275's culminating reframing into formal axiom status: 'never ask \"What is the Zero of this knowledge state?\" Always ask: \"Under projection Π_i, relative to question Q and transformation T, does the state component evaluate to neutral element 0_{O_i}?\"'"
+  - "The cleanest single 4-row comparative structural summary table produced for the entire Zero cluster, mapping each of the four established Zero projections (Elimination/Dialectic Contribution/Containment-Harm/Epistemic Determination) to its observable domain, exact zero-condition formula, and epistemic meaning, side by side for the first time"
+defines:
+  - "The Question-Projections Axiom — the named governing rule replacing 'what is the Zero of X?' with a projection-relative question"
+refines:
+  - "M0275/M0276's projection-theory synthesis and KR-STATE-01/02/03 hypotheses: given clean final notation and one consolidated comparative table, with no new experimental content"
+contradicts: []
+repeats:
+  - "M0275's K_t=(C_t,E_t,Ch_t,D_t,R_t,B_t,Z_t,U_t,H_t) 9-tuple and Zero_i(K_t)⇏Zero_j(K_t) non-implication, and M0276's P_t(K) probabilistic transition system — restated verbatim in clean form"
+bridge_candidates:
+  - "Whether the Question-Projections Axiom was ever formally adopted as a governing rule in any later KnowledgeOS specification document"
+mathematical_content: >
+  A clean, consolidated restatement of the projection theory of Zero with one comparative summary
+  table; no new mathematical content beyond M0275/M0276.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "Named governing rule: The Question-Projections Axiom"
+  - "Cleanest single 4-row comparative table of the Elimination/Balance/Containment/Determination Zero cluster"
+anchor_test:
+  anchor: false
+  supports_dimension: "Named Question-Projections Axiom; clean 4-row comparative Zero-cluster summary table"
+  refines_or_contradicts: "refines (M0275/M0276's projection theory, given clean consolidated notation and naming)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: false
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Never ask 'What is the Zero of this knowledge state?' Always ask: 'Under projection Π_i, relative to question Q and transformation T, does the state component evaluate to neutral element 0_{O_i}?'\""
+undefined_concepts: []
+open_questions:
+  - "Was the Question-Projections Axiom ever formally adopted in a later specification document?"
+tier2_triggered: false
+tier2_reason: >
+  Substantially consolidates already-recorded content from M0275/M0276 with clean notation and one
+  useful comparative table; the main new contribution (naming the governing axiom) is valuable but
+  not independently critical relative to the tier2 escalations already made for the underlying
+  synthesis.

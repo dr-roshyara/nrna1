@@ -1,0 +1,29 @@
+sequence: M0399
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-142825_gof-implementation-extraction-and-architectural-analysis.md
+title: "GoF implementation extraction: 'program to an interface, not an implementation' as the central mechanism"
+date: "2026-09-07"
+bytes: 45795
+model:
+  primary: KR-SIM
+  secondary: "Gamma/Helm/Johnson/Vlissides, Design Patterns: Elements of Reusable Object-Oriented Software (GoF) -- external comparative pattern-vs-primitive methodology, not adopted as KnowledgeOS architecture"
+source_role: PRIMARY
+canonical_source: M0399
+importance: medium
+confidence: high
+about: >
+  A deep implementation-level (not merely conceptual) extraction pass over the actual GoF book, the second-largest file in this batch (45KB): the 23-pattern catalog (5 creational/7 structural/11 behavioral) and the central implementation principle 'program to an interface, not an implementation,' extracting responsibilities, collaboration mechanisms, variation points, and implementation trade-offs for potential application to KnowledgeOS operation semantics.
+introduces: []
+defines: []
+refines:
+  - "M0394/M0398's GoF-comparative-methodology thread: a deeper, implementation-level extraction pass over the same source"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A detailed implementation-mechanism extraction (interface/implementation separation, 23-pattern catalog structure) from the GoF source, continuing rather than structurally extending the already-recorded comparative methodology."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  A deeper implementation-level pass over the same GoF source already mined for methodology in M0394/M0398 in this same batch; given reduced-depth treatment (only its opening ~60 lines read in full) as a continuation rather than independently verified as introducing new formal machinery, though its size suggests real additional content a future full read should revisit.

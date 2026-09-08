@@ -1,0 +1,88 @@
+sequence: M0281
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-041510_kr-state-01-baseline-the-object-of-study-is-the-trajectory.md
+title: "KR-STATE-01 design baseline, the capstone of the recursive/temporal Zero-Śūnya research thread: reframes the object of study from 'neutral information' to the TRAJECTORY of an epistemic element across successive knowledge bases; sharpens latent activation into three causally distinct types (state/query/transformation-induced); replaces 'latent utility' with the stronger, formally testable FUTURE EPISTEMIC NECESSITY (retention changes future contract-observable behavior); adds a critical safeguard preserving Elimination Zero's established relational (non-intrinsic) character; adds a counterfactual retain/delete transition branch; and closes with a clean, minimal, explicitly frozen five-hypothesis set (H1-H5) for the experiment to test"
+date: "20260904-041510"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0281
+importance: critical
+confidence: high
+about: >
+  The design-baseline capstone of the recursive/temporal Zero-Śūnya research thread opened at
+  M0280, refining "the object of study is no longer neutral information. It is the behavior of an
+  epistemic element across successive knowledge bases" into a fully specified, causally
+  disambiguated, counterfactually-grounded experimental design, closing with a minimal, explicitly
+  frozen five-hypothesis set for KR-STATE-01 to test.
+introduces:
+  - "The central reframing of the object of study: not a fixed property Z(x), but the full TRAJECTORY 𝐙(x)=⟨Z_0(x),Z_1(x),...,Z_n(x)⟩, with each Z_t(x)=Z(x|K_t,Q_t,T_t,Π_t,𝔠_t) evaluated against the actual state at that time — giving the crisp distinction Property(x)≠Property(x,K_t) (intrinsic-property assumption vs. relational/state-dependent observation)"
+  - "A correction sharpening latent activation into a properly caused event, not merely 'becomes determinative': LA_k(x)⟺Z_t(x)=0 ∧ Z_{t+k}(x)=1 ∧ ΔK_{t:t+k} contains an admissible activating relation — then formally separated into THREE causally distinct, never-to-be-conflated activation types: State-induced activation (K_t→K_{t+k} causes x to become useful); Query-induced activation (Q_t→Q_{t+k} changes the question and makes x useful); Transformation-induced activation (T_t→T_{t+k} changes representation/observation)"
+  - "A strengthened deletion-control comparison: rather than comparing only Determine(Q,K^R) against Determine(Q,K^D), compare the FULL contract-observable behavior Obs(Q,K_{t+k}^R)≟Obs(Q,K_{t+k}^D) — explicitly connected to the corpus's established semantic-equivalence work — 'if the retained and deleted systems produce different contract-observable behavior, then the supposedly neutral x was not safely discardable with respect to that future scenario'"
+  - "A NEW, stronger concept explicitly replacing 'latent utility': FUTURE EPISTEMIC NECESSITY — FEN_k(x|K_t)⟺Obs(K_{t+k}^R)≠Obs(K_{t+k}^D) under identical admissible future inputs — 'much stronger than simply saying x might be useful someday' — with the particularly important finding case Z_t(x)=0 ∧ FEN_k(x|K_t): 'x is currently neutral under the tested observation, but its retention changes future epistemic behavior'"
+  - "A reformulation of the garbage-collection safety claim as a genuinely testable hypothesis rather than an assumed conclusion: H_RET: Z_t(x)=0 ⇏ Obs(K_{t+k}^retain)=Obs(K_{t+k}^delete) — if repeatedly supported, gives empirical evidence that 'current observational neutrality is insufficient as a deletion criterion for recursively evolving knowledge systems'"
+  - "A CRITICAL CONSISTENCY-PRESERVING SAFEGUARD: Elimination Zero must remain explicitly RELATIONAL (Z_elim(x|K_t,D,T,Π)), never collapsed into an intrinsic flag on x alone — 'otherwise KR-STATE-01 could accidentally undo one of the strongest findings of KR-ZERO' — protecting the corpus's much earlier established non-element-wise/non-intrinsic Zero finding from being silently corrupted by this new temporal framing"
+  - "THREE rigorously separated 'empty' predicates, formally distinguished with an explicit non-equivalence unless experimentally established: Observational Zero (Z_elim — nothing changes under a specified observation); Determination Śūnya (Z_det — no justified determination under a specified epistemic frame); Future Śūnya question (FEN_k(x)=0 — retention does not alter future observable behavior over the tested horizon) — Z_elim≠Z_det≠FEN — 'this is exactly where the Śūnya investigation becomes useful without forcing a metaphysical interpretation onto Knowledge Algebra'"
+  - "The transition record TR_t elevated to 'the basic experimental unit,' with a genuinely new addition: a COUNTERFACTUAL BRANCH — TR_t^R (retain) vs. TR_t^D (delete) exposed to the same future inputs, explicitly justified as 'essential for causal interpretation' — distinguishing what actually happened from what would have happened had x been removed"
+  - "A new candidate 9-tuple Knowledge Algebra structure, extending M0280's 8-tuple with a contract-observable space 𝒪: 𝔎𝔄=(𝒦,ℐ,ℛ,𝒯,𝒬,𝒞,𝒵,ℋ,𝒪) — with the central recursive property made explicit: 'K_t is both an epistemic state and a GENERATOR of the next epistemic state'"
+  - "A new, explicitly hedged research hypothesis (not yet a Kernel law): H-INTELLIGENCE-REBASING — 'an epistemic system exhibits recursive intelligence to the extent that the states it generates can become effective substrates for subsequent interpretation, determination, revision and generation of new epistemic states'"
+  - "The precise final synthesis of the Śūnya/recursive-knowledge connection: 'the system must be able to say \"nothing is determined from this element now\" without incorrectly concluding \"therefore this element contains nothing of future epistemic value\"' — formally Śūnya_t(x)⇏¬FutureContribution(x) and Śūnya_t(x)⇏Śūnya_{t+1}(x)"
+  - "THE FINAL, CLEAN, MINIMAL FROZEN FIVE-HYPOTHESIS SET closing the entire recursive/temporal thread, explicitly kept as hypotheses for the experiment to adjudicate rather than assumed conclusions: H1 (Knowledge is recursively re-based); H2 (Neutrality is temporally state-relative); H3 (Current neutrality does not guarantee future dispensability); H4 (Some currently neutral elements exhibit future epistemic necessity); H5 (Retention can preserve future observable behavior that deletion destroys) — 'let the experiment determine whether these survive... philosophy as the source of questions, DDD as the separation of semantic responsibilities, and the experiment as the authority for what Knowledge Algebra is actually allowed to claim'"
+defines:
+  - "𝐙(x)=⟨Z_0(x),...,Z_n(x)⟩ — the trajectory object of study, replacing a fixed Z(x) property"
+  - "LA_k(x) — properly caused latent activation, distinguishing state/query/transformation-induced causes"
+  - "FEN_k(x|K_t) — Future Epistemic Necessity, the strengthened successor to 'latent utility'"
+  - "TR_t^R / TR_t^D — the counterfactual retain/delete transition-record branch pair"
+refines:
+  - "M0280's L_k(x|K_t) latent-value concept: sharpened into causally-typed LA_k(x) and the stronger, more rigorously testable FEN_k(x|K_t)"
+  - "M0280's transition record TR_t: extended with an explicit counterfactual retain/delete branch"
+  - "M0280's candidate 8-tuple Knowledge Algebra: extended to 9 components with an explicit contract-observable space 𝒪"
+contradicts:
+  - "Any framing that would collapse Elimination Zero into an intrinsic property of x alone: explicitly guarded against as a risk of undoing the corpus's established KR-ZERO findings"
+repeats:
+  - "M0280's temporal Śūnya non-implication (Śūnya_t(x)⇏Śūnya_{t+1}(x)), restated here as the culminating synthesis point connecting Śūnya to recursive knowledge dynamics"
+bridge_candidates:
+  - "Whether the finalized H1-H5 hypothesis set and the counterfactual retain/delete experimental design were ever actually executed as KR-STATE-01"
+mathematical_content: >
+  A trajectory-based reformulation of temporal Zero; causally-typed latent-activation definitions;
+  the stronger Future Epistemic Necessity predicate grounded in full contract-observable comparison;
+  a counterfactual retain/delete transition-record branch; a nine-component candidate Knowledge
+  Algebra; a clean, minimal, explicitly frozen five-hypothesis experimental closure.
+gita_content: null
+kernel_content: >
+  Explicitly safeguards the corpus's established Elimination Zero finding (its relational, non-
+  intrinsic character) against being silently corrupted by the new temporal/recursive experimental
+  framing — a genuine act of cross-thread consistency preservation.
+registry_updates:
+  - "Trajectory 𝐙(x) as the primary object of study, replacing a fixed Z(x) property"
+  - "Causally-typed latent activation (state/query/transformation-induced), replacing an undifferentiated 'becomes determinative'"
+  - "Future Epistemic Necessity FEN_k(x|K_t), a strengthened, contract-observable-grounded successor to 'latent utility'"
+  - "Critical safeguard preserving Elimination Zero's relational (non-intrinsic) character against this new experiment"
+  - "Counterfactual retain/delete transition-record branch (TR_t^R vs TR_t^D)"
+  - "Final minimal frozen five-hypothesis set (H1-H5) closing the recursive/temporal Zero-Śūnya research thread"
+anchor_test:
+  anchor: true
+  supports_dimension: "Trajectory-based reframing; causally-typed latent activation; Future Epistemic Necessity; Elimination-Zero-preservation safeguard; counterfactual retain/delete branch; final minimal frozen five-hypothesis set"
+  refines_or_contradicts: "refines (M0280's latent-value concept and transition record, both sharpened here); contradicts (any framing risking collapse of Elimination Zero into an intrinsic property, explicitly guarded against)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"The object of study is no longer 'neutral information.' It is the behavior of an epistemic element across successive knowledge bases.\""
+  - "\"Otherwise KR-STATE-01 could accidentally undo one of the strongest findings of KR-ZERO.\""
+  - "\"Let the experiment determine whether these survive... the experiment [is] the authority for what Knowledge Algebra is actually allowed to claim.\""
+undefined_concepts: []
+open_questions:
+  - "Was the finalized H1-H5 hypothesis set and counterfactual retain/delete design ever actually executed as KR-STATE-01?"
+tier2_triggered: true
+tier2_reason: >
+  The disciplined capstone of the recursive/temporal Zero-Śūnya research thread, delivering
+  genuinely new formal distinctions (causally-typed latent activation, the strengthened Future
+  Epistemic Necessity predicate, a counterfactual retain/delete transition branch), a critical
+  safeguard protecting an established corpus finding from corruption, and a clean, minimal, honestly
+  frozen five-hypothesis experimental closure.

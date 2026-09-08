@@ -1,0 +1,30 @@
+sequence: M0327
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-003947_theory-part-06-evidence-evaluation-determination-calculus.md
+title: "Verified Theory Part VI: Evidence, Evaluation, and Determination Calculus"
+date: "2026-09-06"
+bytes: 39274
+model:
+  primary: b
+  secondary: "KR-SIM (KnowledgeOS Verified Theory series, Part VI)"
+source_role: PRIMARY
+canonical_source: M0327
+importance: high
+confidence: high
+about: >
+  Now independently read and content-verified. Develops the formal chain Evidence -> Evaluation -> Satisfaction -> Determination, with an explicit non-collapse discipline: Evidence != Evaluation != Determination != Decision. States that a requirement cannot be marked satisfied merely because a record/observation/assertion exists, a source is authoritative, or an inference appears plausible -- satisfaction requires the full formal chain.
+introduces:
+  - "A four-stage non-collapsing Evidence -> Evaluation -> Satisfaction -> Determination calculus, with Decision explicitly held outside the chain"
+defines: []
+refines:
+  - "Part V's Req/Sat/Delta/Zero chain: fills in the formal mechanics of what 'Sat' (satisfaction) actually requires"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A four-stage evidence-to-determination calculus with an explicit anti-collapse discipline separating evidence, evaluation, determination, and decision."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Content-verified: matches its title precisely. A real formal contribution but principally an elaboration filling in Part V's 'Sat' step, continuous with rather than structurally beyond the series' own established direction.

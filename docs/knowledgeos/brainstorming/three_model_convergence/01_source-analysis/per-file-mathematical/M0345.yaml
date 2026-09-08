@@ -1,0 +1,30 @@
+sequence: M0345
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-070900_interpretation-kr-zoom-experiment-negative-result-and-design-limitation.md
+title: "Interpretation of a KR-ZOOM experiment: a real negative result plus a serious experimental-design limitation"
+date: "2026-09-07"
+bytes: 16437
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0345
+importance: high
+confidence: high
+about: >
+  Interprets an executed KR-ZOOM traversal-order experiment: 'traversal order never produced the same final state -- 0 of 518 admissible pairs' at the internal-state level, but about 30% produced the same contract observable, establishing same-observable does not imply same-internal-state (directly relevant to this batch's own M0283 traversal-commutativity taxonomy). Frames this as a genuine negative result plus an exposed design limitation, explicitly not a refutation of the Kernel theory.
+introduces:
+  - "An executed-experiment confirmation that observational equivalence and internal-state equivalence are genuinely distinct (0/518 state-identical pairs vs ~30% observable-identical pairs)"
+defines: []
+refines:
+  - "This same batch's M0283 (Axis E traversal-order taxonomy): supplies an actual executed-experiment data point for the state-vs-observable distinction proposed there"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "An executed traversal-order experiment's quantitative result (0/518 state-identical, ~30% observable-identical), directly evidencing the state-vs-observable non-equivalence hypothesized elsewhere in this batch."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Reports an actually-executed experiment's quantitative result (not merely a proposed design), directly confirming a state-vs-observable distinction this same reconciliation batch's M0283 proposed only hypothetically.

@@ -1,0 +1,31 @@
+sequence: M0315
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-225000_zoom-as-attention-narrowing-without-premature-deletion.md
+title: "KR-ZOOM-02: Zoom as attention narrowing, not deletion -- corrects a focus/destruction conflation, the canonical Nexus egress example"
+date: "2026-09-04"
+bytes: 9626
+model:
+  primary: b
+  secondary: KR-ZOOM experimental series
+source_role: PRIMARY
+canonical_source: M0315
+importance: critical
+confidence: high
+about: >
+  Corrects a conceptual conflation from an earlier zoom experiment (focus was mistakenly conflated with structural destruction/reduction of the knowledge state): formalizes Zoom(K_t,O_i)=(K_t,Focus=O_i) with two invariants -- Focus preserves K_t intact, and Investigate can traverse dimensions outside the initial focus mask. Introduces the canonical worked example used throughout this cluster: a Nexus repository showing 70 GB/day egress, investigated by zooming in without deleting the rest of the system state (backup logs, CPU telemetry, ACLs). Specifies KR-ZOOM-02 with a JSON experiment-ledger schema.
+introduces:
+  - "Two zoom invariants: Focus(K_t,O_i) preserves K_t intact; Investigate(Q_i,K_t) can traverse dimensions outside the initial focus mask"
+  - "The canonical Nexus '70 GB/day egress' worked example, used as the motivating scenario for the rest of the KR-ZOOM series"
+defines: []
+refines: []
+contradicts:
+  - "An earlier (unspecified, prior) zoom formulation that conflated Focus/attention-narrowing with Restriction/structural deletion of the knowledge state"
+repeats: []
+bridge_candidates: []
+mathematical_content: "A corrected formal Zoom operator with two preservation invariants, plus a concrete worked example (Nexus egress) grounding the whole KR-ZOOM series, and a JSON experiment-ledger schema for KR-ZOOM-02."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Repairs a genuine conceptual error (Focus conflated with Restriction/deletion) with two concrete formal invariants, and introduces the canonical worked example (Nexus egress) that recurs and anchors the rest of this file cluster.

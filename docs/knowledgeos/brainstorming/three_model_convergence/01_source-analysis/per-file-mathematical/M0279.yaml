@@ -1,0 +1,82 @@
+sequence: M0279
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-040222_kr-state-01-working-spec-with-one-statistical-correction.md
+title: "KR-STATE-01 working spec finalized, with a genuine statistical correction reusing the corpus's established BRIDGE methodology: 0<M_ij<1 does NOT establish correlation/dependence (worked counterexample), corrected via a proper marginal-vs-conditional comparison and an imported risk-difference statistic RD_ij; three logical/statistical relationships (implication/association/independence) formally separated and never to be conflated; mandatory stratified (not just pooled) analysis reusing the BRIDGE-01/02 confounding lesson; and the crucial framing that some 'Zero' variants may turn out to be DERIVED functions of others rather than independent state dimensions"
+date: "20260904-040222"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0279
+importance: high
+confidence: high
+about: >
+  The finalized working specification for KR-STATE-01 (Zero Projection Independence, redirected at
+  M0278), accepted with one important statistical correction: a genuine error in the proposed
+  independence-classification criterion is caught and fixed by importing the corpus's established
+  Bridge-programme statistical methodology (Mantel-Haenszel-style stratification, risk-difference
+  RD), and the three genuinely distinct relationships (logical implication, statistical
+  association, independence) are formally separated to prevent conflation.
+introduces:
+  - "A genuine statistical correction with a worked counterexample: the classification rule '0<M_ij<1 → correlated/conditionally dependent' is WRONG — a conditional probability strictly between 0 and 1 does not establish dependence, illustrated by P(Z_i=1)=0.3 and P(Z_i=1|Z_j=1)=0.3 (independent despite 0<M_ij<1) — the correct test compares the conditional to the MARGINAL: M_ij≟P_i, equivalently P_ij≟P_iP_j"
+  - "An imported risk-difference association measure RD_ij=P(Z_i=1|Z_j=1)-P(Z_i=1|Z_j=0), explicitly noted as 'especially compatible with the way we already analyzed KR-BRIDGE' — directly reusing the corpus's established Bridge-programme statistical apparatus (M0260/M0264) for this new Zero-projection research"
+  - "THREE FORMALLY SEPARATED RELATIONSHIPS, explicitly never to be conflated: (A) Logical implication Z_j⟹Z_i, tested empirically via P(Z_i=0,Z_j=1)=0 within the tested corpus — explicitly qualified as 'evidence of empirical implication, not universal logical proof'; (B) Statistical association P(Z_i,Z_j)≠P(Z_i)P(Z_j); (C) Independence P(Z_i,Z_j)=P(Z_i)P(Z_j) — 'these must not be conflated'"
+  - "A revised pairwise output tuple ℳ_ij=(P_i,P_j,P_ij,M_ij,RD_ij,I_ij), replacing the earlier single-statistic M_ij matrix, with I_ij as a further association/dependence statistic if needed"
+  - "A six-row empirical classification table for pairwise Zero relationships: Empirically entailed (P(Z_i=0,Z_j=1)=0); Empirically incompatible (P(Z_i=1,Z_j=1)=0); Associated (P_ij≠P_iP_j); Approximately independent (P_ij≈P_iP_j); Non-entailing (counterexamples in both directions); Undetermined (insufficient informative observations)"
+  - "A mandatory stratification requirement, explicitly reusing the corpus's already-learned KR-BRIDGE-01/02 confounding lesson: pooled association across different Zero variants can be completely misleading if each variant is generated primarily by a different mechanism (e.g. Z_elim by transformation T while Z_cont by a different mechanism) — requiring P(Z_i|Z_j,T,Q,𝔠) with stratification over T, Q, 𝔠, and knowledge-state class — 'pooled analysis + stratified analysis,' not pooled alone"
+  - "A renaming of the experiment: 'cross-correlation study' is corrected to 'Zero-Projection Dependency and Separability Study,' since 'cross-correlation' implies a specific statistical technique that does not cover the logical-entailment question — objective: 'determine whether candidate Zero projections are empirically separable, entailed, incompatible, associated, or conditionally independent'"
+  - "A crucial framing of the experiment's most important possible outcome: distinguishing genuine multidimensionality (Z_elim⇏Z_det, Z_det⇏Z_elim, Z_cont⇏Z_elim, and Z_i⊥̸Z_j for some pairs even after controlling for T,Q,𝔠 — evidence of multiple NON-REDUCIBLE observable structures) from a DERIVED-PHENOMENON outcome (Z_cont=f(Z_det,T,Q,𝔠) — 'then Containment may not be an independent state dimension at all; it could be a derived phenomenon. That is precisely what KR-STATE-01 should discover')"
+  - "A clean final architecture diagram consolidating the whole pipeline: K_t → State/History → {Π_elim,Π_bal,Π_cont,Π_det} → {Z_elim,Z_bal,Z_cont,Z_det} → dependency analysis → 'Is K_t genuinely multidimensional?' (YES/NO/?) → KR-STATE-02 (Probability?) → KR-STATE-03 (Cardinality?)"
+  - "A final seven-point amendment list finalizing KR-STATE-01's working specification: (1) replace 'independent' with 'distinct/non-equivalent/non-mutually-entailing'; (2) do not equate 0<M_ij<1 with dependence; (3) test implication/incompatibility/association/independence separately; (4) add risk-difference/conditional comparison; (5) perform stratified analysis over T, Q, 𝔠 to avoid confounding; (6) keep probability and infinite-state claims downstream of the result, not assumed; (7) treat the K_t=(C,E,Ch,...) vector as a candidate representation, not established ontology"
+  - "The final precise reformulated research question for Knowledge Algebra: 'are the different Zero phenomena independent semantic dimensions, derived observables, or context-dependent manifestations of a smaller state structure?'"
+defines:
+  - "ℳ_ij=(P_i,P_j,P_ij,M_ij,RD_ij,I_ij) — the finalized pairwise Zero-relationship output tuple for KR-STATE-01"
+refines:
+  - "M0278's proposed Zero-Projection-Independence experiment: corrected with a genuine statistical fix (marginal-vs-conditional comparison, imported RD statistic), the three-relationship separation, mandatory stratification, and a renamed, precisely-scoped objective"
+contradicts:
+  - "M0278's implicit classification rule '0<M_ij<1 → correlated/conditionally dependent' — explicitly shown wrong via a worked counterexample"
+repeats:
+  - "The corpus's established Bridge-programme statistical apparatus (Mantel-Haenszel stratification discipline, risk-difference RD, M0260/M0264): reused here for a new research question rather than independently re-derived"
+bridge_candidates:
+  - "Whether this finalized KR-STATE-01 specification was ever actually executed"
+  - "Whether the crucial derived-vs-independent outcome distinction (e.g. testing Z_cont=f(Z_det,T,Q,𝔠)) was ever resolved for any specific pair of Zero variants"
+mathematical_content: >
+  A corrected statistical independence test (marginal-vs-conditional comparison, not merely
+  0<M_ij<1); an imported risk-difference association measure; three formally separated logical/
+  statistical relationships (implication/association/independence); a six-row empirical
+  classification scheme; a mandatory stratified-analysis design reusing the corpus's established
+  Bridge-programme methodology.
+gita_content: null
+kernel_content: null
+registry_updates:
+  - "Corrected statistical independence test for Zero-projection pairs (marginal-vs-conditional, not 0<M_ij<1)"
+  - "Imported risk-difference statistic RD_ij, reusing the Bridge-programme methodology"
+  - "Three formally separated relationships: logical implication / statistical association / independence"
+  - "Mandatory stratified analysis over T, Q, 𝔠 to avoid confounding, reusing the BRIDGE-01/02 lesson"
+  - "Renamed experiment: Zero-Projection Dependency and Separability Study"
+  - "Crucial derived-vs-independent outcome framing: some Zero variants may be derived functions of others, not independent dimensions"
+anchor_test:
+  anchor: false
+  supports_dimension: "Corrected independence test with worked counterexample; imported RD statistic reusing Bridge methodology; three separated logical/statistical relationships; mandatory stratified analysis; derived-vs-independent outcome framing"
+  refines_or_contradicts: "refines (M0278's Zero-Projection-Independence proposal, statistically corrected and finalized); contradicts (M0278's implicit 0<M_ij<1-implies-dependence classification rule)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"A conditional probability being between 0 and 1 does not establish correlation or dependence.\""
+  - "\"Especially compatible with the way we already analyzed KR-BRIDGE.\""
+  - "\"Then Containment may not be an independent state dimension at all; it could be a derived phenomenon. That is precisely what KR-STATE-01 should discover.\""
+undefined_concepts: []
+open_questions:
+  - "Was this finalized KR-STATE-01 specification ever actually executed?"
+  - "Was the derived-vs-independent outcome ever resolved for any specific Zero-variant pair?"
+tier2_triggered: false
+tier2_reason: >
+  A valuable statistical correction (catching a genuine conditional-vs-marginal-probability error
+  and importing the corpus's established Bridge-programme methodology) that finalizes the KR-STATE-01
+  working specification, but substantially builds on and corrects the immediately preceding
+  document (M0278) rather than introducing an independently critical new finding.

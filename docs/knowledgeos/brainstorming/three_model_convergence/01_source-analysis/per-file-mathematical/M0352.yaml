@@ -1,0 +1,30 @@
+sequence: M0352
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-074400_knowledge-graph-as-representation-knowledgeos-as-epistemic-computation.md
+title: "Knowledge Graph = Representation; KnowledgeOS Theory = Epistemic Computation (architectural formulation)"
+date: "2026-09-07"
+bytes: 15223
+model:
+  primary: c1
+  secondary: b (architectural distinction over the K_t formalism)
+source_role: PRIMARY
+canonical_source: M0352
+importance: high
+confidence: high
+about: >
+  States a clean architectural distinction: the Knowledge Graph provides a representation/substrate, while KnowledgeOS theory provides the epistemic computation that operates on it -- diagrammed as Inquiry/Evidence/Standards feeding Zoom-in/Assessment/Determination. Connects directly to this batch's Theory Part XVIII-XXI architecture-derivation series and to the Zoom-in/Zoom-out experimental thread (M0346, M0351).
+introduces:
+  - "An explicit Knowledge-Graph-as-representation vs KnowledgeOS-as-epistemic-computation architectural separation"
+defines: []
+refines:
+  - "Theory Part XVIII's theory-to-architecture bridge (M0339): applies it specifically to the Knowledge-Graph-vs-computation question"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "An architectural separation of representation (Knowledge Graph) from computation (KnowledgeOS theory), connecting the Zoom-in/Assessment/Determination pipeline to this structure."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  A useful, clean architectural clarification, but consolidates rather than structurally extends the theory-to-architecture bridge (M0339) and Zoom-in/Zoom-out results (M0346/M0351) already established earlier in this same batch.

@@ -1,0 +1,29 @@
+sequence: M0381
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132808_epistemic-value-second-pass-value-of-state-vs-value-of-process.md
+title: "Epistemic Value anthology, second pass: seven candidate research primitives (EV-1..EV-7)"
+date: "2026-09-07"
+bytes: 21152
+model:
+  primary: KR-SIM
+  secondary: "Epistemic Value, ed. Haddock/Millar/Pritchard -- external Western analytic epistemology anthology, mined for structural distinctions, not adopted as KnowledgeOS theory"
+source_role: PRIMARY
+canonical_source: M0381
+importance: high
+confidence: high
+about: >
+  A systematic second-pass mining of an external Western-analytic-epistemology anthology (reliabilism, testimony, understanding, anti-luck, value pluralism), extracting seven candidate KnowledgeOS research primitives explicitly NOT promoted to theory: EV-1 Epistemic Outcome, EV-2 Epistemic Process, EV-3 Epistemic Achievement, EV-4 Understanding Structure, EV-5 Epistemic Norm, EV-6 Value Relation, EV-7 Social/Collective Epistemic Value. Recommends against modifying Theory v1.2 or the Minimal Kernel; proposes building an external extraction matrix first.
+introduces:
+  - "EV-1..EV-7: seven candidate epistemic-value research primitives (outcome/process/achievement/understanding/norm/value-relation/collective), explicitly held at [PROP] status, not theory"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A seven-way taxonomy of epistemic-value research primitives, motivated by external epistemology literature, explicitly withheld from kernel/primitive status."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new seven-primitive research taxonomy not previously present in the corpus, while explicitly and correctly declining to promote it to architecture -- consistent with this corpus's no-silent-promotion discipline.

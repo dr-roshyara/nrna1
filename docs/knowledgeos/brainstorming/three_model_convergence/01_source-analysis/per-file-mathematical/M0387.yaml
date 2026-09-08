@@ -1,0 +1,30 @@
+sequence: M0387
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-133340_consolidation-not-freezable-book-gives-distinctions-not-definitions.md
+title: "Consolidation is not freezable: the epistemic-value book gives distinctions, not definitions (EV-1..EV-7 status separation)"
+date: "2026-09-07"
+bytes: 19515
+model:
+  primary: KR-SIM
+  secondary: "Epistemic Value, ed. Haddock/Millar/Pritchard -- external Western analytic epistemology anthology, mined for structural distinctions, not adopted as KnowledgeOS theory"
+source_role: PRIMARY
+canonical_source: M0387
+importance: medium
+confidence: high
+about: >
+  Adjudicates the EV-1..EV-7 primitives from M0381 as [EXT][PROP] status only (external, proposal, not architecture), correcting a proposed consolidation that had drifted beyond what the external source establishes. NOTE: this file's opening paragraph is near-verbatim identical to M0392's opening ('This is a strong consolidation, but I would not freeze it exactly as written... The seven primitives are useful, but their status should be separated') -- not byte-identical (so not caught by exact-hash duplicate detection) but substantially overlapping in content and structure; recorded honestly as a partial/near-duplicate, not silently written up as independent new content.
+introduces: []
+defines: []
+refines:
+  - "M0381's EV-1..EV-7 primitives: adjudicates their status as [EXT][PROP], not theory"
+  - "M0392: near-duplicate opening and core content (both adjudicate the same seven primitives' status) -- flagged, not resolved, which of the two is the 'original' given neither is a strict superset of the other from the excerpts read"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "Status adjudication of the EV-1..EV-7 taxonomy ([EXT][PROP], not kernel/primitive), substantially overlapping M0392's near-identical adjudication."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Substantially overlaps M0392 (near-identical opening and core adjudication content, not byte-identical); given reduced-depth treatment as a probable near-duplicate pair rather than two independent contributions.

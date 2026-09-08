@@ -1,0 +1,32 @@
+sequence: M0292
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-155011_kt1-becomes-the-substrate-of-future-reasoning-not-just-its-result.md
+title: "K_{t+1} becomes the substrate of future reasoning, not merely its result: a transition-record formalism and a delayed-activation hypothesis"
+date: "2026-09-04"
+bytes: 8484
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0292
+importance: high
+confidence: high
+about: >
+  Elevates the temporal/recursive character of knowledge-state transitions: K_{t+1} is not just the output of reasoning on K_t, it becomes the substrate from which the NEXT reasoning cycle starts. Proposes retaining an explicit transition record TR_t=(K_t,I_t,K~_t,R_t,K_{t+1},Delta_t,Gamma_t) (ingestion event, reasoning/reinterpretation, state difference/residue, justification/provenance) rather than only the before/after states, since two systems can reach the same K_{t+1} via different histories. Downgrades five proposed 'fundamental' trajectory classes to 'candidate trajectory classes for experimental analysis.' Proposes an empirical delayed-activation hypothesis: exists k>0 such that Z_t(x)=0 and Z_{t+k}(x)=1 after a legitimate transition, and a comparative retain-vs-delete experiment design (K^retain_{t+k} vs K^delete_{t+k}) to test whether retaining currently-neutral information changes future determination.
+introduces:
+  - "TR_t=(K_t,I_t,K~_t,R_t,K_{t+1},Delta_t,Gamma_t) -- an explicit transition record retaining ingestion, reasoning, residue, and provenance, not just before/after states"
+  - "A delayed-activation hypothesis: exists k>0, Z_t(x)=0 and Z_{t+k}(x)=1 -- distinguishing 'irrelevant now' from 'incapable of ever contributing'"
+  - "A comparative retain-vs-delete experiment design (K^retain_{t+k} vs K^delete_{t+k}) to test whether retained-but-currently-neutral information changes future determination"
+defines: []
+refines:
+  - "An unnamed prior five-trajectory-class proposal, downgraded from 'fundamental' to 'candidate, for experimental analysis'"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A transition-record formalism for state-to-state reasoning (TR_t) with explicit provenance fields, plus a falsifiable delayed-activation hypothesis and a concrete comparative experiment design distinguishing currently-neutral-but-latently-useful information from truly eliminable information."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new transition-record formalism (provenance-carrying, not just state pairs) and a concrete, falsifiable delayed-activation hypothesis directly extending the corpus's established Zero/elimination discipline into a temporal dimension not previously formalized this precisely.

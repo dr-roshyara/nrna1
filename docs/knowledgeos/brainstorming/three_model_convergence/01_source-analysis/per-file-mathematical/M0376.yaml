@@ -1,0 +1,30 @@
+sequence: M0376
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132503_gita-chapter-03-from-fact-finding-to-a-justified-reason-for-action.md
+title: "Bhagavad Gita Chapter 3: from fact-finding to a justified reason for action -- Arjuna's 'why act?' challenge"
+date: "2026-09-07"
+bytes: 12849
+model:
+  primary: g
+  secondary: "KR-SIM (feeds the Epistemic Agency/Action-Fact-Finding architecture developed elsewhere in this batch)"
+source_role: PRIMARY
+canonical_source: M0376
+importance: critical
+confidence: high
+about: >
+  A genuine Gita-content document: reads Bhagavad Gita Chapter 3 directly (Arjuna asks why he is being engaged in action if intelligence is superior, then demands a decisive answer on which course brings the desired benefit), extracting an Action-proposed -> Why? -> What-alternatives-exist? -> Which-is-appropriate? structure directly mapped onto the batch's Epistemic Agency problem (Observation -> Inquiry -> Fact-Finding -> Why-this-action?).
+introduces:
+  - "An Action-challenge structure (Action proposed -> Why? -> Alternatives? -> Appropriateness?) derived from a direct reading of Gita Chapter 3's opening dialogue"
+defines: []
+refines:
+  - "M0375's Chapter 2 Question-Reframing pipeline: extends the same textual-analysis discipline to a companion chapter, now targeting action justification rather than fact-finding"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "An action-justification challenge structure directly motivated by a textual reading of Bhagavad Gita Chapter 3, feeding the Epistemic Agency formalism developed elsewhere in this batch."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  A second genuine, substantive Gita-content analysis (companion to M0375) yielding the action-justification counterpart to Chapter 2's question-reframing structure -- both directly consumed by M0377's formal synthesis.

@@ -1,0 +1,30 @@
+sequence: M0309
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-160223_kr-contribution-01-must-not-assume-the-algebra-it-should-discover.md
+title: "KR-CONTRIBUTION-01 must not assume the algebra it is designed to discover: a preregistration correction"
+date: "2026-09-04"
+bytes: 7380
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0309
+importance: high
+confidence: high
+about: >
+  A methodological correction to a proposed KR-CONTRIBUTION-01 experiment: the candidate hypothesis C_Q^+(D)+C_Q^-(D)=0 already assumes a positive/negative decomposition, an addition operation, an identity element, and composability -- exactly the structure the experiment is meant to discover. Replaces this with a neutral preregistration: C_Q(x|D) in a contribution space, a candidate polarity map P_Q to {+,-,0,?}, and an unknown composition relation Gamma_Q (a relation, not assumed to be a function/operation) to be characterized empirically.
+introduces:
+  - "A neutral KR-CONTRIBUTION-01 preregistration: C_Q(x|D) with polarity map P_Q and unknown composition relation Gamma_Q, replacing a premature additive-identity hypothesis"
+defines: []
+refines: []
+contradicts:
+  - "This document's own prior candidate hypothesis C_Q^+(D)+C_Q^-(D)=0, withdrawn as assuming exactly the algebraic structure the experiment should discover"
+repeats: []
+bridge_candidates: []
+mathematical_content: "A corrected, structure-neutral preregistration for a contribution-polarity experiment, replacing a premature additive-algebra assumption with an open composition relation."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Catches a genuine circularity risk (assuming the algebraic structure an experiment is meant to discover) and repairs it with a concrete, weaker, testable preregistration -- a clean instance of this corpus's established anti-premature-formalization discipline applied to a not-yet-run experiment.

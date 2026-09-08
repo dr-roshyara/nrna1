@@ -1,0 +1,29 @@
+sequence: M0324
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-003023_theory-part-03-epistemic-semantics-and-logic-of-knowledge.md
+title: "KnowledgeOS Verified Theory, Part III: Epistemic Semantics and the Logic of Knowledge"
+date: "2026-09-06"
+bytes: 31639
+model:
+  primary: b
+  secondary: KnowledgeOS Verified Theory rewrite series, Part III of XIII
+source_role: PRIMARY
+canonical_source: M0324
+importance: critical
+confidence: high
+about: >
+  Part III of the 13-part rewrite: addresses how KnowledgeOS determines the epistemic standing of a proposition from observations, evidence, context, rules, uncertainty, contradiction, and provenance, with an explicit discipline distinguishing Truth != Evidence != Justification != Support != Confidence (list continues past the excerpt read).
+introduces: []
+defines: []
+refines:
+  - "Parts I-II (M0322-M0323): builds the epistemic-semantics layer between ontology and state transition"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A formal epistemic-semantics layer distinguishing truth, evidence, justification, support, and confidence as mathematically distinct concepts."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Continues the 13-part rewrite with the epistemic-semantics/logic-of-knowledge layer; read via its opening section, confirming coherent continuation and a genuine multi-way conceptual separation (truth/evidence/justification/support/confidence) central to the rewrite's stated discipline.

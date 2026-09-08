@@ -1,0 +1,22 @@
+# Resolution Status (required master matrix)
+
+| Gap | Current status (Stage 06) | Investigation | Result | Residual uncertainty | Blocks unified formalization? | Next action |
+|---|---|---|---|---|---|---|
+| **GA-001** | UNRESOLVED | 4 pre-registered pairwise correspondence tests across A/B/C1/C2 (`02`); DDD boundary analysis (`06`) | **PERSISTENT NON-CONVERGENCE at the object level, REFRAMED at the categorical level.** No pair tested reaches beyond `NOT FORMALLY SPECIFIED ENOUGH TO TEST` or `PARTIALLY TESTABLE — no map found`. The aggregate-vs-operator divide is corroborated (failure-mode asymmetry, Pair 1) but reframed as a possible DDD complementarity (two layers of one model) rather than a rivalry — **hypothesis-level only, untested by composition**. Even within the aggregate category, no candidate corresponds to another (Pairs 3/4). | Whether the complementarity hypothesis holds requires an actual composition attempt (architecture work, out of scope); whether a wider pairwise sweep beyond the 4 selected pairs would find anything the diagnostic sample missed | **Yes, for a unified object-level target. No, if formalization proceeds model-by-model, or if a future, separately-authorized study tests the complementarity hypothesis by composition rather than by seeking identity.** | A dedicated, separately-authorized composition-design study — explicitly NOT authorized by this one |
+| **GA-038** | UNRESOLVED | 10 canonicalization criteria tested against the full six-question admissibility test (`04`) | **NO CORPUS-JUSTIFIED CANONICALIZATION CRITERION FOUND**, with one precise exception: preservation-via-explicit-ratification is evidenced and was successfully applied — but only to `Δ_t`, never to the full `K_t` tuple. | Whether an 11th, untested criterion exists that this study did not consider | **Yes, for a scientifically-derived canonical `K_t`. The `Δ_t` precedent shows the only available path to closure is a governance/ratification act, not further mathematical analysis.** | Not a research task — would require the same kind of explicit ratification act the K-1/K-2 track's own governance boundary already names as the missing organizational step (not reopened or referenced further here) |
+| **GA-002** | UNDER-SPECIFIED | Six candidate explanations tested (`05`) | Best-supported: reconstruction-process notational reuse (explanation 6) for the naming match itself; a genuine shared mathematical fact (non-symmetry of the gap quantity, explanation 5) independently supported for `Δ_t` specifically | No component-level structural map attempted (would require reconstructing missing specification, explicitly declined) | No — remains RESEARCH OPPORTUNITY, not blocking | A dedicated formalization pass enumerating both `K_t` families in full and attempting a structure-preserving map |
+| **GA-003** | HYPOTHESIS | Not independently re-tested this study (see GA-002); Pairs 3/4 in `02` provide a *third* data point (A vs. C1 aggregate non-correspondence) consistent with, not contradicting, the proliferation pattern | **Remains PROPOSED CROSS-MODEL HYPOTHESIS** — correctly not upgraded; two data points plus one shared mathematical correction does not constitute a tested claim | Whether a sufficiently-constrained, early-committed representation would avoid the pattern (Model B's own kernel work already shows this is possible for minimality specifically, P-2) — untested for state | No | Remains a standing research question for any future, separately-scoped study |
+
+## Overall answer to the primary research question
+
+**Neither GA-001 nor GA-038 is resolved.** Both are, however, **more precisely characterized than before
+this study**: GA-001 decomposes into a testable hypothesis (complementarity) plus a confirmed negative
+(no aggregate-candidate correspondence); GA-038 has an identified, evidence-grounded reason it cannot be
+resolved by further mathematical work alone (the `Δ_t` governance-ratification precedent). **Persistent
+non-convergence at the object level is the honest result for both, and is recorded as a legitimate
+scientific outcome, not a shortfall of this study.**
+
+**Recommendation implication (not a decision this study makes)**: the evidence is consistent with Stage
+07, if ever authorized, proceeding **model-by-model or representation-by-representation** rather than
+targeting a unified Kernel or canonical `K_t` — this is what the evidence supports, not a
+recommendation this study is authorized to issue as a governance act.

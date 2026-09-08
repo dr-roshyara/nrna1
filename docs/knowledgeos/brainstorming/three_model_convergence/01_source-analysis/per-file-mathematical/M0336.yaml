@@ -1,0 +1,29 @@
+sequence: M0336
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-010215_theory-part-15-models-simulation-prediction-scenario-spaces.md
+title: "Theory Part XV: Models, Simulation, Prediction, Scenario Spaces, and the Possible/Plausible/Probable/Determined Boundary"
+date: "2026-09-06"
+bytes: 35150
+model:
+  primary: b
+  secondary: KR-SIM (systematic Theory-Part series)
+source_role: PRIMARY
+canonical_source: M0336
+importance: high
+confidence: high
+about: >
+  Continues the Theory-Part series: formalizes Model as an epistemic object (with first-class assumptions), distinguishes model output from observation, covers simulation verification/validation, deterministic vs stochastic models, and scenario spaces, establishing a boundary among possible/plausible/probable/determined epistemic states. Read via structure/headers and Purpose section given document size (35KB).
+introduces: []
+defines: []
+refines:
+  - "Theory Part XIV's causal/counterfactual apparatus, extended to models, simulation, and scenario reasoning"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A formal typology of epistemic states (observed/inferred/simulated/predicted/projected/hypothetical/counterfactual) and model-as-epistemic-object semantics distinguishing model output from direct observation."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Extends the theory series with a genuinely new formal typology (possible/plausible/probable/determined) and model/simulation semantics not previously this systematically established.

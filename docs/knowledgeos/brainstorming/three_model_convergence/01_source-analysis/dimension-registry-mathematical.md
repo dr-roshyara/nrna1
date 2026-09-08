@@ -2274,3 +2274,197 @@ Cross-references to the main registry use the sequence numbers already establish
 - **Two genuinely new contained defects**: (a) "KR-ZERO-ORDER O2 was not paired — replaced by a fully paired re-analysis; conclusion held"; (b) "the contract factor has 7 levels, not 9 — and this STRENGTHENS H8" (a rare correction that strengthens rather than weakens a finding). Also new: "C10 was vacuous... rewritten with a token-sensitive witness."
 - Closes with the corpus's final governing rule — "the strongest statement made must never exceed the strength of the available evidence" / "keep facts, architectural conclusions, governance decisions, engineering actions and operational observations rigorously separate" — **VERBATIM IDENTICAL to this actual project's own real CLAUDE.md engineering-discipline rule** — flagged as a striking resemblance for the eventual global-reclassification pass.
 - **Open**: is the verbatim rule-match intentional or coincidental; was FR-003 ever promoted.
+
+## M0263 — Theory 10 (of 15): Experimental Methodology and Falsification Engineering
+- **Source**: `20260904-115000_theory-10-experimental-methodology-and-falsification.md` · critical · confidence high.
+- "Every rule below exists because a specific failure produced it." NEW Amendment A2: "do not tune the generator to balance cells. Natural imbalance is evidence." 10-control checklist (A-I+A1).
+- NEW rule 3.3: "replication must constrain magnitude, not only sign" — origin: a sign-only rule would have certified 14 cells with |RD|≈0.001 (explains BRIDGE-02's substantive-0 finding).
+- **Provenance check confirmed as a genuine two-directional instrument**: the SAME check both DISSOLVED a previously unrecorded "KR-ZERO-GROUP case J" finding (revealed as a property of cancelling contracts, not Zero) AND STRENGTHENED the interaction-order finding (came out HIGHER without the cancelling contract) — "that contrast is the evidence that the check is a real instrument rather than a way of disbelieving inconvenient results."
+- **NEW dated protocol freeze (2026-09-05)**: Hypothesis→Estimand→**O-F***→Population→Calibration→Control→Freeze→Execution→Adjudication — introduces the new **O-F* (Estimand Non-Degeneracy Preflight)** gate: every declared-variable quantity needs a pre-execution variation witness — "class reachability ⇏ estimand variability."
+- Two safeguards: "Observed diagnostic ⇏ new primary estimand"; "Observed convergence ⇏ theory promotion" — explicitly research-governance safeguards, not theory claims.
+- **TWO PREVIOUSLY UNRECORDED EXPERIMENTS**, both rejected on principle despite crossing significance floors: **KR-ZOOM-03** (directed diagnostic +0.123/+0.134 appeared only AFTER the undirected estimand returned BORDERLINE); **KR-ZOOM-OUT-01** (conditional population E5=0.182/0.185 appeared only after the unconditional result; calibration-gate failure 0.294 vs 0.30 invisible until all outcomes seen; hidden null-stratum, 63% no-determination, silently became the apparent "winner" M1).
+- Final governance order: "Engineering supplies evidence and never accepts its own work" — **SECOND instance** (after M0262's first) of wording verbatim-matching this actual project's own real CLAUDE.md engineering-discipline rule.
+- **Open**: do full protocols for KR-ZOOM-03/KR-ZOOM-OUT-01/case-J exist elsewhere; are the two verbatim CLAUDE.md matches intentional or coincidental.
+
+## M0264 — Theory 11 (of 15): Statistical Inference Standards
+- **Source**: `20260904-115500_theory-11-statistical-inference-standards.md` · high · confidence high.
+- Estimand-naming principle (marginal vs within-stratum). Exact Mantel-Haenszel OR_MH/RD_MH formulas given in full for the first time, with declared minimum stratum size n_k≥200. Formal informative-stratum criterion (four positivity conditions).
+- **New**: "choose the stratification variable for RESOLUTION, not convenience" — multiplicity PARTITION finer than redundancy count (r=2 is 2+2 or 3+1) — "finer strata gave 13× the informative strata" (precise mechanism behind BRIDGE-03's power gains).
+- Exact per-stratum SE(RD_k) formula (the diagnostic exposing the sign-only-replication failure). New rule: "MH assumes homogeneity, and the assumption must be shown, not invoked" (report per-stratum RDs, not just pooled). Named sparse-table tools: Haldane +0.5 correction, Woolf CI on log OR.
+- Crisp reformulation: "power is a property of the informative region, not of n" — consolidated 4-lever table: population size(none)/flattening(none)/record count(73→233)/finer stratification(~30→388).
+
+## M0265 — Theory 12 (of 15): The DDD Architecture the Experiments Imply
+- **Source**: `20260904-120000_theory-12-ddd-architecture-of-the-kernel.md` · critical · confidence high.
+- Explicitly [DESIGN], kernel NOT SELECTED, "this document models; it decides nothing." 9-row ubiquitous-language table with "does NOT mean" disambiguations. Quantified: "one elimination in six is blocked by boundary information alone."
+- Candidate bounded-context diagram: shared CONSTITUTIONAL KERNEL (no context owns, every context preserves: three predicates, type discipline, read-disjointness) + 6 child contexts — Evidence & Contradiction explicitly unresolved, blocked on DECISION-02.
+- **THE OWNERSHIP RULE**: read-disjointness is constitutional because it relates Π/Q/T simultaneously; no single context knows all three.
+- **STRIKING self-drawn analogy**: "this is exactly the shape of the anonymity invariant in the sibling platform: a constitutional invariant that a context preserves rather than owns... mild evidence the shape is real" — very likely this repository's own real PublicDigit voting platform (per the established X3 precedent, M0225).
+- **Concrete NEW numbers**: Zero contract-relative **495/4049** flips; reference-relative **541/4260** flips; minimal-element generation failure **286/826**.
+- 7-row domain-events table names ProvenanceVerificationFailed/RealizationFailed as "the two events the programme learned it needed... invisible in the first designs." Port design explains exactly why BRIDGE-02's leak evaded pairwise gates: "the leak came through T, not through the ports."
+- 8-item earned anti-pattern list. Explicit scope: does NOT select kernel, does NOT declare carrier, does NOT resolve DECISION-02, does NOT promote FR-003 — "the correct next strategic act is a carrier decision, not more tactical modelling."
+- **Open**: is "the sibling platform" confirmed elsewhere to be PublicDigit; was a carrier decision ever made.
+
+## M0266 — Theory 13 (of series): Open Questions and the Forward Programme — two definitive closures
+- **Source**: `20260904-120500_theory-13-open-questions-and-forward-programme.md` · critical · confidence high.
+- Seven-item dependency-ordered open-questions roadmap (OQ-1..OQ-7). NEW **OQ-6**: "does the eliminability ladder reach k>3?" — k=3 demonstrated only for n≤6, explicitly acknowledged as a DESIGN BOUND, not a mathematical property.
+- **Definitively CLOSES the entire KR-ALGEBRA/Vedic-Contribution thread** (M0245-M0254): "do not move to a new algebra or a Vedic-derived operator — the algebra results were negative; there is nothing to build on yet."
+- **FINAL, DEFINITIVE FIVE-CYCLE VERDICT on the Gita interpretive strand**: "in NONE did it produce a kernel primitive... it has never once been the source of a result, and after five cycles that is evidence, not an accident" — recommendation: keep external, "naming is enough."
+- Recommended 7-step forward order distinguishing governance acts (carrier decision; DECISION-02 adjudication — "the programme's constraint is no longer experimental capacity; it is that two decisions have not been made") from experiments (OQ-4 highest-value: exhibit Adequacy≠Realization; OQ-3 largest scientific risk: the transfer problem).
+- Final honest standing position: "Theory v1.2 remains FROZEN. The kernel remains NOT SELECTED. No algebra is declared. No carrier is declared."
+- **Flagged inconsistency**: self-describes as "this thirteen-document set" — conflicts numerically with Document 01's "Document 01 of 15" header.
+- **Open**: is the 13-vs-15 discrepancy a real scope change or an inconsistency; was OQ-6 ever tested with n>6; was the recommended forward order ever followed.
+
+## M0267 — Theory 00: Index and Reading Order — resolves document-count ambiguity, reveals 3 new documents
+- **Source**: `20260904-110000_theory-00-index-and-reading-order.md` · critical · confidence high.
+- "RESEARCH SYNTHESIS. Not Theory v1.3. Not a ratification." Epistemic-status vocabulary confirmed governed by a real ADOPTED artifact (EPISTEMIC-STATUS-VOCABULARY.md, 2026-09-04), 10 tags, [PROP] retired.
+- Single most important sentence: Eliminability≠Preservation≠Realization — explicitly "not 'we discovered a new algebra' — the algebra experiments were largely negative."
+- **Reveals THREE previously-unseen documents in this pass**: **03** (Zero definition + "the algebra that FAILED"), **03a** ("what Zero IS — and the four notions it is mistaken for"), **14** ("Restriction≠Inquiry — corrected research model, P1-P3, FR-004, Zoom-in/Zoom-out standing position §8a").
+- **Resolves the "13 vs 15" inconsistency** flagged at M0266: true count is **16 documents** per this index's own ledger header — none of the series' self-counts (13, 15) is fully accurate.
+- **Honest ledger** (mechanically counted, all 16 docs): [EXP]=129, [NEG]=118 ("nearly one refutation for every empirical result... a set where [EXP] outran [NEG] by an order of magnitude would be a set that had stopped testing its own hypotheses"), [REC]=40, [OPEN]=34, [DEF]=24, [CONJ]=13, [DEFECT]=11, [THM]=8 (ONE distinct theorem, the DPI, referenced 8×), [COR]=6, [PRP]=3.
+- Final minimal 4-item Theory-v1.3 checklist: carrier decision; DECISION-02 resolution; FR-003 second adopter; explicit scope-bound dependency statement.
+- **Open**: do Documents 03/03a/14 exist elsewhere in the corpus for later processing; what does FR-004/Zoom-in-Zoom-out actually contain.
+
+## M0268 — Theory 03a: The Concept of Zero — deepest conceptual characterization + new positive Remainder finding
+- **Source**: `20260904-122000_theory-03a-the-concept-of-zero.md` · critical · confidence high.
+- Word-by-word deconstruction of Zero's defining sentence. §2.1 not sufficiency (retains vs loses). §2.2 not invariance: exact 1,865 invariant-not-Zero / 858 Zero-not-invariant.
+- §2.3 **sharpest characterization yet**: Zero is NOT a graphoid irrelevance relation — composition fails (131 violations), decomposition fails (63 violations) — "no reasoning calculus built on those axioms applies to it." Two canonical counterexamples PERMANENTLY NAMED: **[x,x]=REDUNDANCY**, **[+c,-c]=EMERGENT ELIMINABILITY** (conditional on a named cancelling contract, "the condition is named, not suppressed").
+- §2.4 not an independence system: "Zero has NO BASIS... eliminability must be asked, per subset, per frame — it cannot be indexed." Zero reframed as an irreducible QUADRUPLE relation (S;D|T,Π,contract,reference).
+- **NEW POSITIVE RESULT** (explicitly restored, "omitted from document 03's first draft"): THE REMAINDER — A(not-eliminated)≡C(contract-unresolved) EXACTLY in **1182/1182**, while B(transformation residual) differs on 31% of cases (816/1182) — "'not eliminated' IS exactly 'contract-relevant unresolved material.' A genuine and non-obvious identity — and it holds without exception."
+- Clean final L-operator table: idempotence failure operator-variant-specific (0 for sequential/rule, 4 for simultaneous, NEW breakdown). Confirms L is a "terminating, non-confluent rewriting process," not a projection.
+- Final honest characterization: "Zero is a safety question about a specific removal under a specific frame. It is not a preservation guarantee, and treating it as one is the single most likely way to misuse this theory."
+- Deepest open question: a replacement group/set formulation for Zero was never supplied (H5+H6 refute the element-wise formulation without replacing it).
+- **Open**: was a replacement formulation ever proposed; was the graphoid test extended to weak union/contraction.
+
+## M0269 — Theory 03: Zero: Definition, and the Algebra That Failed
+- **Source**: `20260904-111500_theory-03-zero-definition-and-algebra.md` · high · confidence high.
+- Substantially overlaps M0268 (Document 03a); source document for its conceptual treatment.
+- New: exact set-closure counts for 𝒵 — downward 347/40; upward 101/286 (dominant failure); union 237/150; **intersection 385/2**. Crucial nuance: "intersection-closure is the closest any standard regime comes, and it fits EXACTLY once the cancelling contract is removed" — the single closest approach to an actual algebraic law found anywhere in the Zero-algebra research.
+- **Open**: was this near-regularity ever formally elevated to a candidate algebraic law.
+
+## M0270 — SEVENTH structural-prior source (Madhyamaka catuṣkoṭi) + temporal Zero formalization
+- **Source**: `20260904-032834_madhyamaka-time-indexed-kt-losing-a-determination-not-emptiness.md` · high · confidence high.
+- Opens SEVENTH external structural-prior tradition: Madhyamaka/Nagarjuna's catuṣkoṭi (Asti/Nasti/Ubhaya/Nobhayam), mined with careful non-reification: "Śūnya is not simply the fourth object 'nothing.'"
+- **Three formally distinguished "emptinesses"**: (A) Representational (R(x)=∅); (B) Epistemic (Determine(x,K_t)=∅ — "not that x does not exist"); (C) Relational — explicitly identified AS the established Zero_{T,Π}(x;D), with explicit non-identities to x=∅ and x=false.
+- **Time-relativized Zero**: Zero_t(x)≠Zero_{t+1}(x). Connects to M0254's Purification concept (worked example: scope↓ while validity↑).
+- New distinctions: Knowledge Difference≠Knowledge Loss; Knowledge Reduction≠Epistemic Degradation.
+- New candidate 6-tuple **Knowledge Transition Algebra** 𝔎𝔄_T=(K,𝒯,Δ,Γ,≡,Π), untested composition/identity/idempotent-purification properties (P²=P).
+- Final careful non-identification: "I would not currently write Śūnyatā = Zero. That would collapse very different concepts" — introduces Empty_{Q,C}(K_t), explicitly Empty_Q(K_t)⇏K_t=∅.
+- New proposed experiment **KR-STATE-TRANSITION-01** (Status Discrimination/Purification Stability/Differential Tracking).
+- **Note**: chronologically part of the exploratory KR-ALGEBRA/Contribution phase that the later consolidated Theory series (Document 13/M0266) explicitly declared negative — "nothing to build on yet."
+- **Open**: was KR-STATE-TRANSITION-01 ever executed; was the Knowledge Transition Algebra ever formally tested.
+
+## M0271 — KR-STATE-TRANSITION-01 refined: transition as epistemic object
+- **Source**: `20260904-033025_kr-state-transition-01-the-transition-as-an-epistemic-object.md` · high · confidence high.
+- "The transition itself becomes an epistemic object." Corrects naive Δ_t into a **tripartite residue** Δ_t=(Δ_t^-,Δ_t^○,Δ_t^+).
+- **New Residue Necessity principle**: two transitions can reach the SAME endpoint with different histories — "K_{t+1} alone does not fully characterize the epistemic state transition" (formalized as H3).
+- Three-level emptiness hierarchy kept separate; new "unresolved" concept (Unexamined vs Unresolved); status made NON-EXCLUSIVE (typed tags, adds "Qualified"); Purification redefined (not simple removal). Idempotency split into Operational vs weaker Observational.
+- **Properly defines reversibility** Rev(τ,K_t), replacing an unjustified assumed-inverse hypothesis. Open question: transitions as a category (typed domains/codomains) vs a monoid.
+- Six formal hypotheses H1-H6. Clean final six-row "Taxonomy of Non-Being" table — "must not collapse into the same state."
+- First concrete **JSON implementation schema** for transition-record logging with a fully worked example.
+- **Open**: were H1-H6 ever executed; was the category-vs-monoid question ever resolved.
+
+## M0272 — Knowledge Śūnya as a fourth distinct emptiness concept + DDD-boundary reframing
+- **Source**: `20260904-033633_where-sunya-appears-after-ddd-separation-of-concerns.md` · high · confidence high. NOTE: file content repeats verbatim twice internally.
+- Six-context DDD architecture (Question/Claim/Evidence/Challenge/Determination/Revision). Central shift: Status(C)=f(C,Q,Context,E,Standards,t) — "Śūnya may occur not in the object, but in the missing relation."
+- Formal predicate KnowledgeSunya(C|Q,X,E,S,t) — explicitly not C=false, not C=nonexistent. **Knowledge Śūnya triangle**: Object emptiness / Determination emptiness / Relational emptiness — "Object Śūnya ≠ Knowledge Śūnya ≠ Contribution Zero."
+- Śūnya **reframed as a boundary concept between DDD bounded contexts** (each context's verb — supports/asserts/justified/accepted/authorized — irreducibly different), not a property of any object. Careful non-reification: "we should not say DDD proves Nagarjuna. It does not."
+- New candidate **K_t=(C_t,E_t,Ch_t,D_t,Q_t,R_t,H_t)** 7-tuple structure, adding to the corpus's unreconciled K_t-structure-variant thread.
+- Connects to Purification: Universal(C)→Śūnya→Conditional(C), Śūnya as "a transitional epistemic space." Formal hypothesis **H-SUNYA-01**: Empty_{Q,C,E,S}(x,K_t), explicit non-implications to falsity/non-existence.
+- Refuses to conflate with established Zero: 4-row table (Elimination Zero:representation/Balance Zero:contribution/Knowledge Śūnya:determination/Purification:transition) — "should be discovered, not assumed."
+- Final hypothesis: "Śūnya becomes observable at the boundary where an apparently meaningful claim loses its assumed inherent determination when its supporting relations are separated and made explicit."
+- **Open**: was H-SUNYA-01 ever tested; was this K_t 7-tuple ever reconciled with the corpus's other K_t variants.
+
+## M0273 — EIGHTH structural-prior source (Shiva/Nīlakaṇṭha) + Containment Zero completes the taxonomy
+- **Source**: `20260904-034706_shiva-poison-metaphor-neutralization-that-leaves-a-trace.md` · high · confidence high.
+- Opens EIGHTH external structural-prior tradition: Shiva/Nīlakaṇṭha halāhala-poison myth, mined as philosophical model only ("not a literal mathematical theory").
+- **Completes a three-way Zero taxonomy**: (1) Elimination Zero (established); (2) Balance Zero (BalanceZero⇏InformationZero); (3) **NEW — CONTAINMENT ZERO**: Effect(P)=0 while P≠∅ and Trace(P)≠0 — "Resolution ≠ Erasure."
+- Applied to challenges: Resolve(A,Ch)→A'(survives)+Boundary(scope limit)+Trace(why qualified). New companion principle: "neutralized effect ≠ erased history."
+- New **Containment operator** Contain_Q(c,K_t)→(K_{t+1},Trace), explicitly distinct from Eliminate/Cancel/Reject. Expanded 5-path resolution vocabulary (adds Containment to Elimination/Cancellation/Qualification/Revision).
+- Formal three-property **Containment Resolution Operator**: (1) Effect Neutralization Harm_Q(c,K_{t+1})=0; (2) Persistent Trace Retention Trace(c,K_{t+1})∈Δ_t^○; (3) Boundary Generation Scope(K_{t+1})=Scope(K_t)\InvalidDomain(c).
+- **Concrete engineering rationale** (most practically-motivated in this whole cluster): "when an invalid claim is simply deleted, the system forgets why it was invalidated... vulnerable to re-ingesting the exact same invalid premise later."
+- Updated 4-component Knowledge State Evolution: K_{t+1}=A'(Purified Core)+Boundary(c)+Trace(c)+Γ_t(Justification).
+- Two new hypotheses added to KR-STATE-TRANSITION-01: **H7** (Containment vs. Deletion — prevents duplicate ingestion loops?) and **H8** (Boundary Extraction correctness).
+- **Open**: were H7/H8 ever tested; was Containment ever reconciled with the earlier general transformation vocabulary.
+
+## M0274 — Self-correcting review of Containment Zero: demoted to candidate, not fact
+- **Source**: `20260904-034828_nilakantha-metaphor-useful-direction-not-yet-an-algebraic-fact.md` · high · confidence high.
+- "Discover the structure first; name it as algebra only after the required laws are demonstrated." Decisive correction: Containment Zero NOT yet shown to be the same kind of Zero as Zero_{T,Π}(S;D) — "Zero is not a universal primitive." Parallel demotion of Balance Zero (6 unproven assumed structures listed) — "candidate structure, not yet an algebraic law."
+- Deeper insight: "Effect Zero ≠ Object Zero" and "Neutralized ≠ Erased." Corrects dangerous additive "+" notation in the 4-component state equation — replaced with non-additive tuple K_{t+1}=(Core,Boundary,Trace,Justification).
+- Weakens boundary-generation from universal subtraction to candidate Scope(A')⊆Scope(A) (qualification, not always subtraction). Sharpens H7 into a precise measurable comparison E[L_containment]<E[L_deletion]. Weakens H8 from universal non-empty-boundary to a conditional correctness claim.
+- Redesigned taxonomy: three candidate mechanisms (Elimination/Cancellation/Containment), each flagged with its OWN open epistemic-status question. **NEW: RESIDUALITY** — "Neutralization+Residual may be more fundamental than Containment Zero itself."
+- Five explicit non-implications formalizing non-interchangeability of resolution mechanisms.
+- **Explicit RETITLING**: "Three Operational Modes of Zero" → "Three Candidate Resolution Structures for Zero" — "preserves the extraordinary insight without prematurely freezing the algebra." Ordering principle: "only after [the engineering test] should we ask the algebraic question: is Containment Zero actually a Zero structure?"
+- **Open**: were H-CONTAIN-01/02 or sharpened H7/H8 ever tested; was Residuality ever developed further.
+
+## M0275 — CULMINATING SYNTHESIS: multiple non-equivalent Zeros imply K_t is not scalar
+- **Source**: `20260904-035255_multiple-non-equivalent-zeros-imply-kt-is-not-scalar.md` · critical · confidence high.
+- Enumerates six structurally distinct Zero notions from the whole cluster (elim/balance/contain/determination/representation/contribution). "A single scalar K_t∈ℝ would be completely inadequate."
+- New candidate 9-component K_t vector, explicitly unfrozen (adds to the corpus's unreconciled K_t-structure thread).
+- **CENTRAL REFRAMING**: every Zero variant is an observable PROJECTION — Zero_i(K_t)⟺Π_i(K_t)=0_i, formally Zero_i(K_t)⇏Zero_j(K_t).
+- Careful Śūnya connection without conflation: K_t≠∅ while Π_i(K_t)=0_i — "epistemic emptiness is relative to a dimension/frame, not necessarily absolute absence."
+- Introduces probability: state space 𝒦 vs belief P(K_t|E_{1:t}); four hedged sources of potential infinite state space — "we have NOT demonstrated that KnowledgeOS requires an infinite state space." Probabilistic transition P(K_{t+1}|K_t,E_t,Q_t,C_t,τ_t).
+- **CRITICAL EXPLICIT DISCIPLINE**: "we should NOT jump from multiple Zeros → therefore probability → therefore infinite-dimensional probability space. Those are three separate claims" — five-stage discovery sequence.
+- Three formally staged hypotheses **KR-STATE-01/02/03** (03 "should remain explicitly open"). Traces the full arc: representation→transformation→state→uncertain state transition.
+- **CULMINATING REFRAMING** (the cluster's single most quotable line): "we should stop asking 'What is the Zero of Knowledge?' and start asking 'Along which dimension, under which transformation, relative to which question and observable, does this knowledge state become Zero?'"
+- **Open**: were KR-STATE-01/02/03 ever tested; was the 9-component K_t vector ever reconciled with the corpus's other K_t variants.
+
+## M0276 — Knowledge as an epistemic probability space
+- **Source**: `20260904-035450_knowledge-as-an-epistemic-probability-space.md` · critical · confidence high.
+- "Knowledge is an epistemic probability space." K_t=P_t(Ω_E), a distribution over complete epistemic configurations. Precise Śūnya non-conflation with explicit values: "Knowledge Śūnya does not mean probability zero" — P(x)=0 ≠ Determine(x)=∅ ≠ x=∅.
+- Reconnects Nīlakaṇṭha: P(effect)→0 while P(trace)>0. Purification as reweighting/restructuring, not subtraction.
+- **New "Epistemacy" concept** — the system's capacity for Observe→Represent→Relate→Challenge→Determine→Revise — "prevents probability from becoming the whole KnowledgeOS kernel."
+- **Resolves** the multidimensionality-vs-probability tension left open at M0275: "dimensions describe the state space; probability describes uncertainty over that space" — K_t=(Ω_E,𝓕,P_t,𝓗_t). New candidate 11-tuple Knowledge Algebra signature, kept explicitly provisional.
+- Final reformulated research question: "does every important KnowledgeOS epistemic transition require uncertainty over alternative states, and if so, what is the minimum mathematical structure needed?"
+- **Open**: was this question ever tested; was the 11-tuple algebra ever formally investigated.
+
+## M0277 — Clean consolidation: The Question-Projections Axiom
+- **Source**: `20260904-035641_zeros-as-projections-of-a-multidimensional-epistemic-state.md` · high · confidence high.
+- Consolidating restatement of M0275/M0276's projection theory. New named governing rule: **"The Question-Projections Axiom"** — "never ask 'What is the Zero of this knowledge state?' Always ask: 'Under projection Π_i, relative to question Q and transformation T, does the state component evaluate to neutral element 0_{O_i}?'"
+- Cleanest single 4-row comparative table of the whole Zero cluster (Elimination/Dialectic Contribution/Containment-Harm/Epistemic Determination side by side). No new experimental content beyond M0275/M0276.
+
+## M0278 — Four corrections to the projection theory: independence, typing, naming, redirected experiment
+- **Source**: `20260904-035733_four-corrections-independent-is-too-strong-for-the-zeros.md` · high · confidence high.
+- Correction 1: "independent" too strong for non-implying Zeros — corrected to "distinct/non-equivalent/not mutually entailing."
+- Correction 2: uniform projection equation forced Elimination Zero's genuinely relational predicate into the wrong shape — corrected to typed-per-variant Zero_i(K_t|Q,T,Π_i,𝔠).
+- Correction 3: Balance Zero re-demoted to candidate. Correction 4: Containment renamed "Containment Neutrality" pending an explicit test against "Containment Zero."
+- "Question-Projections Axiom" downgraded to "Question-Relative Zero Principle — Research Principle." New: "State component ≠ State dimension until demonstrated" (parallels Kernel-minimality discipline).
+- **Redirects KR-STATE-01**: NOT yet a probability experiment — first test Zero Projection Independence via a concrete empirical relation matrix M_ij=P(Z_i=1|Z_j=1) — "only after that should we ask whether the resulting multidimensional state requires a probabilistic state-space representation."
+- **Open**: was the redirected KR-STATE-01 (relation matrix test) ever actually executed.
+
+## M0279 — KR-STATE-01 finalized: statistical correction + reused Bridge methodology
+- **Source**: `20260904-040222_kr-state-01-working-spec-with-one-statistical-correction.md` · high · confidence high.
+- Genuine statistical correction with worked counterexample: "0<M_ij<1 → correlated" is WRONG — must compare conditional to marginal. Imports risk-difference RD_ij, "especially compatible with the way we already analyzed KR-BRIDGE."
+- Three formally separated relationships (logical implication/statistical association/independence). Six-row empirical classification table. Mandatory stratified analysis reusing the BRIDGE-01/02 confounding lesson.
+- Renamed: "Zero-Projection Dependency and Separability Study." Crucial framing: some Zero variants may be DERIVED (e.g. Z_cont=f(Z_det,T,Q,𝔠)) rather than independent dimensions — "that is precisely what KR-STATE-01 should discover."
+- **Open**: was this finalized spec ever executed; was the derived-vs-independent question ever resolved for any pair.
+
+## M0280 — Recursive Epistemic Base: K_{t+1} as substrate for the next cycle + disciplined self-correction
+- **Source**: `20260904-041134_recursive-epistemic-base-kt1-as-the-next-reasoning-start.md` · critical · confidence high.
+- Central insight: K_{t+1} becomes the SUBSTRATE for the next reasoning cycle — "knowledge is recursively self-rebasing." NEW temporal dimension: Neutrality(x,K_t)⇏Neutrality(x,K_{t+1}).
+- NEW distinct concept: **Latent Usefulness**/future latent value L_k(x|K_t) — "irrelevant now" vs "incapable of ever contributing under the admissible future," radically different concepts. Time-indexed Zero trajectory Z_0,Z_1,... (stable/temporary/oscillation/delayed-activation).
+- Śūnya_t(x)⇏Śūnya_{t+1}(x) — "epistemic emptiness can itself be a state, not a final ontological judgment." Three named Epistemic Safeguards including a formal **Latent Utility Inequality**.
+- **Disciplined self-correction**: trajectory classes demoted from "fundamental" to "initial candidates"; "non-monotonicity axiom" downgraded to hypothesis; JSON schema corrected — "otherwise the schema is encoding a conclusion into the observation record" — trajectory class now computed post-hoc.
+- Formally separates Elimination Zero/Determination Śūnya/Future Latent Value: Z_elim,t(x)⇏L_k(x)=0 — "exactly why garbage collection based on current Zero can be epistemically unsafe." Concrete retention-vs-deletion experimental design.
+- Finalized dual-axis KR-STATE-01 (structural + recursive re-basing). New candidate 8-tuple Knowledge Algebra as a state-transition system, not a static algebra.
+- Final non-reification covers both Buddhist Śūnyatā and Kashmir Shaivism jointly.
+- **Open**: was the dual-axis KR-STATE-01 (retention-vs-deletion control) ever executed; was L_k ever formally tested against Z_elim/Z_det.
+
+## M0281 — KR-STATE-01 design baseline: capstone of the recursive/temporal Zero-Śūnya thread
+- **Source**: `20260904-041510_kr-state-01-baseline-the-object-of-study-is-the-trajectory.md` · critical · confidence high.
+- Reframes the object of study: "no longer 'neutral information.' It is the behavior of an epistemic element across successive knowledge bases" — trajectory 𝐙(x)=⟨Z_0,...,Z_n⟩ replaces a fixed Z(x).
+- Sharpens latent activation into three causally distinct types (state/query/transformation-induced) — "must not be conflated." Strengthens deletion-control comparison to full contract-observable behavior.
+- New stronger concept replacing "latent utility": **Future Epistemic Necessity** FEN_k(x|K_t) — "much stronger than simply saying x might be useful someday." Reformulates garbage-collection safety as testable hypothesis H_RET, not an assumed conclusion.
+- **CRITICAL SAFEGUARD**: Elimination Zero must stay relational, never an intrinsic flag — "otherwise KR-STATE-01 could accidentally undo one of the strongest findings of KR-ZERO." Three rigorously separated "empty" predicates (Z_elim≠Z_det≠FEN).
+- Transition record TR_t elevated to "the basic experimental unit," extended with a genuinely new COUNTERFACTUAL BRANCH (TR_t^R vs TR_t^D) — "essential for causal interpretation." New 9-tuple Knowledge Algebra adding contract-observable space 𝒪. New hedged hypothesis H-INTELLIGENCE-REBASING.
+- Final synthesis: "the system must be able to say 'nothing is determined from this element now' without incorrectly concluding 'therefore this element contains nothing of future epistemic value.'"
+- **CLOSES with a clean, minimal, explicitly frozen FIVE-HYPOTHESIS SET (H1-H5)** — "philosophy as the source of questions, DDD as the separation of semantic responsibilities, and the experiment as the authority for what Knowledge Algebra is actually allowed to claim."
+- **Open**: was H1-H5 and the counterfactual retain/delete design ever actually executed as KR-STATE-01.
+
+## M0282 — FINAL FILE (282/282): Knowledge Zero as zeroing selected dimensions — Focus vs Surface
+- **Source**: `20260904-042545_knowledge-zero-as-zeroing-selected-dimensions-focus-vs-surface.md` · critical · confidence high. **Last file of the 282-file sequential pass.**
+- K=(d_1,...,d_n) multidimensional; P_S(K) zeros selected dimensions. New concepts **FOCUS** (Focus_S(K), deliberate restriction) vs **SURFACE** (Surface(K), joint observation of all dimensions — "does not necessarily mean shallow"). "Many Zeros" reframed as a genuine vector Z=(Z_1,...,Z_n).
+- Two Zero operations distinguished (elimination vs dimensional-restriction), not to be automatically identified. Cross-dimensional interaction explicitly connected to the much earlier higher-order eliminability finding (KR-ZERO-ALGEBRA). New "zoom" operation (Surface→Focus→deeper Focus→re-expand) likely connects to the previously-unlocated KR-ZOOM-03/KR-ZOOM-OUT-01 references (M0263).
+- New Axis C added to KR-STATE-01: Dimensional Zeroing and Observational Focus.
+- **THIRD AND FINAL disciplined self-correction** of this whole research arc: (1) 0_{𝒟_i} NOT an algebraic identity — "Projection ≠ Algebraic Zero until proven otherwise"; (2) determination differential wrongly assumed additive composition — "otherwise the equation itself may manufacture synergy mathematically"; (3) THE DEEPEST — does reasoning operate on projected or full state? R(P_S(K))≠P_S(R(K)) generally — "the choice of what to make epistemically zero can change what knowledge the system generates." Corrected non-scalar determination_observation schema.
+- **FINAL CULMINATING REFORMULATION** closing the entire 282-file pass: "what happens to knowledge when selected dimensions are made epistemically silent?" — "more information ⇏ better epistemic determination... zero is not necessarily loss. Sometimes zeroing is precisely what makes the structure visible."
+- **Open**: was the finalized triple-axis KR-STATE-01 ever executed; was the R∘P_S vs P_S∘R non-commutativity test ever investigated; does this connect to KR-ZOOM-03/KR-ZOOM-OUT-01.

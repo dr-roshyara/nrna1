@@ -1,0 +1,29 @@
+sequence: M0364
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-131637_ext-biocomm-2026-09-final-frozen-research-lens-specification.md
+title: "EXT-BIOCOMM-2026-09: Final Frozen Research-Lens Specification"
+date: "2026-09-07"
+bytes: 16491
+model:
+  primary: KR-SIM
+  secondary: "Biological communication research lens [EXT] FROZEN, Theory v1.2 unchanged, no axioms added"
+source_role: PRIMARY
+canonical_source: M0364
+importance: critical
+confidence: high
+about: >
+  The final, explicitly frozen version of the Biological Reciprocal Communication Lens (status [EXT][RESEARCH LENS] -- FROZEN), deliberately removing claims the lens had not yet established and keeping research questions as open witness searches. Explicitly confirms Theory v1.2 FROZEN/UNCHANGED, Minimal Kernel UNTOUCHED, no Knowledge Algebra axioms added.
+introduces: []
+defines: []
+refines:
+  - "M0358 through M0363: the culmination of this batch's entire BIOCOMM lens-development sub-thread, frozen as a final specification"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "The frozen final specification of the Biological Reciprocal Communication research lens, with explicit non-contamination guarantees (Theory v1.2 unchanged, no axioms added)."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  The explicit freeze point for an entire multi-document research-lens development sub-thread (M0358-M0363), with an important governance discipline made explicit (removing unestablished claims before freezing, keeping open questions open rather than resolving them by fiat).

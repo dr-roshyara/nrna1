@@ -1,0 +1,83 @@
+sequence: M0278
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-035733_four-corrections-independent-is-too-strong-for-the-zeros.md
+title: "Four corrections to M0277's clean consolidation: 'independent' is too strong for non-implying Zero projections (non-implication≠independence); the uniform projection equation Zero_i⟺Π_i(K_t)=0 forced Elimination Zero's genuinely relational predicate into the wrong shape; Balance Zero and Containment Zero both re-demoted to candidate status ('Containment Neutrality' pending a test against 'Containment Zero'); the 'Question-Projections Axiom' downgraded to a 'Research Principle'; and — most concretely — KR-STATE-01 REDIRECTED from a premature probability experiment to a prior Zero-Projection-Independence test with a concrete empirical relation matrix M_ij=P(Z_i=1|Z_j=1)"
+date: "20260904-035733"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0278
+importance: high
+confidence: high
+about: >
+  A disciplined self-correcting review of M0277's clean consolidation, catching four distinct
+  overclaims before they could be treated as a KnowledgeOS specification, and redirecting the
+  planned next experiment (KR-STATE-01) from a premature jump to probability toward a prior,
+  concretely designed test of whether the various Zero projections are actually statistically/
+  logically distinct.
+introduces:
+  - "CORRECTION 1: 'independent' is too strong a word for Zero_i(K_t)⇏Zero_j(K_t) — non-implication does NOT establish statistical or logical independence — corrected terminology: 'distinct / non-equivalent / not mutually entailing' — with three concrete relations proposed for actual experimental testing: Zero_i⟹Zero_j?, Zero_j⟹Zero_i?, Zero_i⟺Zero_j?"
+  - "CORRECTION 2: the uniform projection equation Zero_i(K_t)⟺Π_i(K_t)=0_{O_i} forced every Zero variant into the same mathematical shape prematurely — Elimination Zero is genuinely a RELATIONAL predicate (Π(T(D))=Π(T(E_S(D)))), not naturally a projection-of-K_t-to-a-zero-element — the corrected, safer abstraction: Zero_i(K_t|Q,T,Π_i,𝔠), each Zero_i carrying its OWN typed semantics, with the question of whether a common representation Zero_i=Z_i∘Π_i exists explicitly demoted to 'a research question, not an axiom'"
+  - "CORRECTION 3 (restated): Balance Zero must remain conditional — retain the neutral Γ_Q(C_1,C_2) and ask experimentally whether Γ_Q(C^+,C^-)=0_C exists — 'the table should label Balance Zero candidate, not established algebra'"
+  - "CORRECTION 4, 'the most important conceptual safeguard': Containment is NOT YET necessarily Zero — Harm_Q(c,K_{t+1})=0 ∧ Trace(c,K_{t+1})≠∅ establishes only a candidate neutralized-effect state, not membership in the same mathematical family as Elimination Zero — proposes renaming to 'Containment Neutrality' and explicitly testing 'Containment Neutrality ≟ Containment Zero'"
+  - "A strengthened, more precise version of the core principle explaining WHY multiple Zeros exist (rather than merely asserting they do): 'Knowledge does not possess a single context-free Zero. Neutrality or emptiness is determined relative to an observable, question, transformation, contract and epistemic frame' — formally Zero_i(K_t|Q,T,Π_i,𝔠)"
+  - "A correction against prematurely freezing the K_t coordinate vector: keep K_t∈𝒦 with projections Π_i:𝒦→O_i as a 'candidate coordinate system,' explicitly discovering whether the coordinates are independent/dependent/derivable/redundant/necessary/or merely convenient representations — with an explicit parallel drawn to the corpus's Kernel-minimality discipline: 'implementation components must not automatically be mistaken for semantic capabilities' — giving the new general principle 'State component ≠ State dimension until demonstrated'"
+  - "A reclassification of M0277's uniform four-row 'dimension' table: instead framed as four distinct QUESTIONS (Elimination: can this information disappear without changing an observation? Balance: can opposing contributions become neutral under composition? Containment: can harmful propagation become neutral while history remains? Determination: can the current epistemic frame justify a determination?) — 'we may discover that some are dimensions, some are relations, and some are derived observables'"
+  - "A downgrade of M0277's 'Question-Projections Axiom' from axiom status to 'Question-Relative Zero Principle — Research Principle': 'never ask \"What is the Zero of this knowledge state?\" in isolation. Ask which transformation, observable, question, contract and epistemic frame define the relevant neutrality condition' — formally Zero_i=Zero_i(K_t|Q,T,Π_i,𝔠)"
+  - "A REDIRECTION of the next planned experiment: KR-STATE-01 should NOT yet be a probability experiment — it should FIRST test 'Zero Projection Independence,' with a concrete empirical design: for a common set of knowledge states K_t, measure Z_elim, Z_bal, Z_cont, Z_det, and construct an empirical relation matrix M_ij=P(Z_i=1|Z_j=1), alongside marginal P(Z_i=1) and joint P(Z_i=1,Z_j=1) — determining whether the Zero projections are mutually exclusive/nested/correlated/conditionally-dependent/or genuinely distinct — 'only after that should we ask whether the resulting multidimensional state requires a probabilistic state-space representation'"
+  - "A final six-stage research ladder replacing the earlier three-stage sequence: Multiple Zero phenomena → Zero projection structure → state dimensionality → probabilistic epistemic state → state-space cardinality → Knowledge Algebra — explicitly qualified as 'a significant conceptual refinement of the Knowledge Algebra program, but still a research hypothesis rather than a ratified theory'"
+defines:
+  - "M_ij=P(Z_i=1|Z_j=1) — the empirical Zero-projection relation matrix for the redirected KR-STATE-01"
+  - "Zero_i(K_t|Q,T,Π_i,𝔠) — the corrected, typed-per-variant Zero abstraction"
+refines:
+  - "M0277's uniform projection equation, 'independent' terminology, 'Question-Projections Axiom' naming, and unstated K_t coordinate freezing — all four corrected here"
+  - "M0273/M0274's Containment Zero naming: reaffirmed as still-unestablished, now via the renamed candidate 'Containment Neutrality'"
+contradicts:
+  - "M0277's claim that the Zero projections are 'independent' — corrected to 'distinct/non-equivalent/not mutually entailing'"
+  - "M0277's uniform Zero_i(K_t)⟺Π_i(K_t)=0_{O_i} projection equation — corrected to a typed-per-variant form"
+  - "M0277's 'Question-Projections Axiom' naming — downgraded to a 'Research Principle'"
+repeats:
+  - "M0274's already-established demotion of Balance Zero and Containment Zero from asserted facts to candidate structures, reapplied here to M0277's cleaned-up restatement"
+bridge_candidates:
+  - "Whether the redirected KR-STATE-01 (Zero Projection Independence, with the M_ij relation matrix) was ever actually executed before any probability experiment was attempted"
+mathematical_content: >
+  A corrected, typed-per-variant Zero abstraction Zero_i(K_t|Q,T,Π_i,𝔠); a concrete empirical
+  relation-matrix design (M_ij=P(Z_i=1|Z_j=1)) for testing Zero-projection distinctness before any
+  probabilistic-state experiment is attempted; a final six-stage research ladder.
+gita_content: null
+kernel_content: >
+  Draws an explicit parallel to the corpus's Kernel-minimality discipline ("implementation
+  components must not automatically be mistaken for semantic capabilities"), generalizing it to
+  "State component ≠ State dimension until demonstrated" for the knowledge-state research.
+registry_updates:
+  - "Corrected terminology: 'distinct/non-equivalent/not mutually entailing,' not 'independent'"
+  - "Typed-per-variant Zero_i(K_t|Q,T,Π_i,𝔠) abstraction, replacing the uniform projection equation"
+  - "Containment Zero renamed 'Containment Neutrality' pending an explicit equivalence test"
+  - "'Question-Projections Axiom' downgraded to 'Question-Relative Zero Principle — Research Principle'"
+  - "KR-STATE-01 redirected to Zero Projection Independence testing via an empirical relation matrix M_ij, ahead of any probability experiment"
+  - "New general principle: 'State component ≠ State dimension until demonstrated'"
+anchor_test:
+  anchor: false
+  supports_dimension: "Corrected non-independence terminology; typed-per-variant Zero abstraction; Containment Neutrality renaming; downgraded Research Principle; redirected KR-STATE-01 with concrete relation-matrix design; State-component≠State-dimension principle"
+  refines_or_contradicts: "refines (M0277's clean consolidation, corrected on four distinct points); contradicts (M0277's 'independent' claim, uniform projection equation, and 'axiom' naming)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: true
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Non-implication does not establish statistical or logical independence.\""
+  - "\"State component ≠ State dimension until demonstrated.\""
+  - "\"KR-STATE-01 should not yet be a probability experiment. It should first test Zero Projection Independence.\""
+undefined_concepts: []
+open_questions:
+  - "Was the redirected KR-STATE-01 (Zero Projection Independence, M_ij relation matrix) ever actually executed?"
+tier2_triggered: false
+tier2_reason: >
+  A valuable disciplined self-correction catching four genuine overclaims in the immediately
+  preceding consolidation and redirecting the next planned experiment toward a more foundational
+  test, but substantially building on and correcting already-recorded content (M0274/M0275/M0276/
+  M0277) rather than introducing an independently critical new finding.

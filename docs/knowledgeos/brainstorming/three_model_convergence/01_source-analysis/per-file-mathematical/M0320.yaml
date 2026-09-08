@@ -1,0 +1,29 @@
+sequence: M0320
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-000929_ext-biocomm-lens-frozen-research-specification.md
+title: "EXT-BIOCOMM-2026-09: Biological Reciprocal Communication Lens, final frozen research-lens specification"
+date: "2026-09-06"
+bytes: 15334
+model:
+  primary: KR-SIM
+  secondary: "External research lens: biological/animal reciprocal-communication studies, explicitly non-adopted (Theory v1.2 unchanged, no axioms added)"
+source_role: PRIMARY
+canonical_source: M0320
+importance: high
+confidence: high
+about: >
+  Freezes the Biological Reciprocal Communication Lens (EXT-BIOCOMM-2026-09) as a candidate-discovery research lens for KnowledgeOS: investigates observable reciprocal interaction sequences in biological systems (signal/response/subsequent-behaviour chains, path-dependent terminal conditions, interpretation-dependent responses) as an external source of structural hypotheses, explicitly NOT treating biological systems as a KnowledgeOS implementation. States an epistemic boundary: observation alone does not establish intention, desire, or attraction. Explicitly frozen with Theory v1.2 unchanged and no Knowledge Algebra axioms added.
+introduces:
+  - "EXT-BIOCOMM-2026-09: a frozen research-lens specification for mining biological reciprocal-communication structure, with an explicit epistemic boundary against over-interpreting observed behaviour"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: null
+gita_content: null
+kernel_content: "An external structural-prior lens (biology/animal communication) explicitly frozen as non-adopted, non-axiom-generating research material for KnowledgeOS candidate discovery."
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Formally freezes a new external research lens (biological communication) with an explicit epistemic boundary and non-adoption discipline, extending the corpus's established pattern of mining external structural-prior traditions (Gita, Vedic Math, Shaivism, Atharva Veda) into a new, non-religious/non-philosophical domain (biology).

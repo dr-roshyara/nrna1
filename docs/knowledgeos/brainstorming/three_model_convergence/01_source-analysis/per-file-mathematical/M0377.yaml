@@ -1,0 +1,31 @@
+sequence: M0377
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132531_gita-chapter-03-mapped-to-action-fact-finding-dual-distinction.md
+title: "Formal synthesis: Gita Chapters 2 and 3 mapped to a Dual Fact-Finding Architecture (State vs Action)"
+date: "2026-09-07"
+bytes: 16863
+model:
+  primary: c1
+  secondary: "Formalizes M0375/M0376's Gita-derived insight into a KnowledgeOS architecture"
+source_role: PRIMARY
+canonical_source: M0377
+importance: critical
+confidence: high
+about: >
+  Formally synthesizes M0375 (Chapter 2, question reframing) and M0376 (Chapter 3, action justification) into a Dual Fact-Finding Architecture: State Fact-Finding (what is the case, output Determination F_t, over hypothesis space H_Q) versus Action Fact-Finding (why act/which action, output Action Rationale R_t, over candidate action space A_Q), each with distinct failure modes, plus a complete lifecycle diagram from raw Observation through Zoom-In/Dimension-Discovery/Determination to Action-Challenge/Candidate-Action-Space/Authorized-change.
+introduces:
+  - "A formal Dual Fact-Finding taxonomy (Type A State Fact-Finding vs Type B Action Fact-Finding) with distinct inquiry/output/space/failure-mode columns"
+  - "Explicit inaction as a first-class candidate state within the action-evaluation space, not merely absence of a decision"
+defines: []
+refines:
+  - "M0375 and M0376: formalizes both Gita-chapter analyses into one unified, non-narrative KnowledgeOS architecture"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A formal Dual Fact-Finding taxonomy (State vs Action) with an explicit non-equivalence structure and a complete two-phase lifecycle diagram, synthesizing the batch's Gita-derived and Epistemic-Agency threads into one architecture."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  The formal synthesis point unifying this batch's two separate threads (Gita-chapter textual analysis and the independently-developed Epistemic-Agency/typed-gap apparatus) into one coherent Dual Fact-Finding architecture -- a genuine cross-thread integration, not a restatement of either source.

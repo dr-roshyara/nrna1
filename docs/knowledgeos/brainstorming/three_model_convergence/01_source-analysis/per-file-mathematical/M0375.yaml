@@ -1,0 +1,29 @@
+sequence: M0375
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132442_gita-chapter-02-fact-finding-may-not-begin-with-the-correct-question.md
+title: "Bhagavad Gita Chapter 2: fact-finding may not begin with the correct question -- Question Reframing"
+date: "2026-09-07"
+bytes: 10359
+model:
+  primary: g
+  secondary: "KR-SIM (feeds the Fact-Finding architecture developed elsewhere in this batch)"
+source_role: PRIMARY
+canonical_source: M0375
+importance: critical
+confidence: high
+about: >
+  A genuine, substantive Gita-content document: reads Bhagavad Gita Chapter 2 directly, extracting the structure of how an initially confused situation is progressively investigated, reframed, and differentiated (Krishna does not merely add facts; the dialogue changes the category of the original question). Proposes a formal Observation -> Initial Question -> Question Diagnosis -> Question Reframing -> New Inquiry pipeline, worked through a concrete Nexus egress-anomaly example, concluding that Fact-Finding can discover the original inquiry itself was underspecified or misclassified.
+introduces:
+  - "A formal Question-Reframing pipeline (Observation -> Initial Question -> Question Diagnosis -> Question Reframing -> New Inquiry), derived from a direct reading of Gita Chapter 2's dialogue structure"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A formal question-reframing pipeline directly motivated by a textual reading of Bhagavad Gita Chapter 2, worked through a concrete engineering (Nexus egress) example."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Genuine, substantive Gita-content analysis (not mere metaphor-borrowing) yielding a new formal pipeline stage (Question Diagnosis/Reframing) not previously present in this batch's Fact-Finding architecture -- directly consumed by M0377's later synthesis.

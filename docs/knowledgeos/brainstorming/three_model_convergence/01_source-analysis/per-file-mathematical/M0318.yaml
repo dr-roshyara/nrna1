@@ -1,0 +1,30 @@
+sequence: M0318
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-234024_theory-not-yet-closed-honest-position-on-proof-obligations.md
+title: "Theory v1.2 not yet closed: an honest critical-path ledger of unproven obligations, plus KR-ZOOM-OUT-01/02"
+date: "2026-09-04"
+bytes: 6146
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0318
+importance: critical
+confidence: high
+about: >
+  States an explicit, disciplined non-closure position for Theory v1.2: a critical-path ledger of eight unresolved proof obligations (Contradiction Semantics, Epistemic Ordering, Lifecycle/Transition Semantics, Semantic Equivalence & Capability Bridge, Composition & Invariant Preservation, Knowledge Attribution Boundary, Representation/Reduction Closure, Minimal Kernel Proof: Existence->Irreducibility->Minimality->Uniqueness), plus four guarded invariants (Reachability!=Knowledge, Conflict!=Unknown, Adequacy!=Realization!=Minimality!=Q-Equivalence, Focus!=Deletion). Also names KR-ZOOM-OUT-01 (an active experimental run to let conclude cleanly) and instructs a follow-up KR-ZOOM-OUT-02-POPULATION-CAUSAL-AUDIT, with a caution against presupposing 'Determine is a collider' without first establishing the causal graph.
+introduces:
+  - "An explicit eight-item critical-path proof-obligation ledger for Theory v1.2, stated as NOT closed rather than prematurely declared complete"
+  - "KR-ZOOM-OUT-02-POPULATION-CAUSAL-AUDIT, with a caution against presupposing collider bias in Determine without establishing the causal graph first"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A structured, ordered ledger of eight unproven theoretical obligations for Theory v1.2 (contradiction semantics through minimal kernel proof), plus a causal-graph-first methodological caution for a named follow-up audit."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Gives the clearest single-document statement in this batch of exactly which proof obligations remain open for Theory v1.2, in dependency order -- directly useful as a cross-reference for later reconstruction phases, and explicitly disciplined against premature closure.

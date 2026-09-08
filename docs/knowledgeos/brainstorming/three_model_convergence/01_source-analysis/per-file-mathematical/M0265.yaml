@@ -1,0 +1,94 @@
+sequence: M0265
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-120000_theory-12-ddd-architecture-of-the-kernel.md
+title: "Theory 12 — The DDD Architecture the Experiments Imply: the corpus's strategic DDD model (explicitly [DESIGN], kernel NOT SELECTED, decides nothing), fixing candidate bounded contexts around a shared 'Constitutional Kernel' that no context owns but every context preserves — with a striking self-drawn analogy to 'the anonymity invariant in the sibling platform' (very likely this repository's own PublicDigit voting platform, per the established X3 precedent), concrete new quantified Zero-relativity numbers (495/4049 contract-relative flips, 541/4260 reference-relative flips, 286/826 minimal-element failures), and a port design that enforces read-disjointness by construction while explaining exactly why BRIDGE-02's leak still got through"
+date: "20260904-120000"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0265
+importance: critical
+confidence: high
+about: >
+  Document 12 of the 15-document consolidated theory series, written in the DDD-architect role and
+  explicitly self-limited: "[DESIGN] — a strategic model, NOT an adopted architecture. Kernel NOT
+  SELECTED... this document models; it decides nothing." Fixes the ubiquitous language, proposes
+  candidate bounded contexts organized around a shared constitutional-invariant kernel that no
+  single context owns, derives an ownership rule for read-disjointness explicitly paralleling the
+  anonymity invariant of "the sibling platform," gives concrete new quantified numbers for Zero's
+  contract/reference relativity and minimal-element generation failure, defines aggregates/value
+  objects/domain events/ports, and closes with an explicit list of what the model deliberately does
+  not resolve.
+introduces:
+  - "A 9-row ubiquitous-language table fixing Inquiry/Frame/Transformation/Representation/Observable/Eliminability/Adequacy/Realization/Boundary-information, each paired with an explicit 'does NOT mean' disambiguation (e.g. Frame does not mean 'a filter'; Transformation does not mean 'a cleanup step'; Boundary information does not mean 'metadata')"
+  - "A quantified justification for treating boundary information (provenance/uncertainty/scope/contradiction state) as non-metadata: 'one elimination in six is blocked by boundary information alone. Calling it metadata would model it as removable, and the data say it is not'"
+  - "A candidate bounded-context diagram organized around a shared CONSTITUTIONAL KERNEL (the three predicates, the type discipline, read-disjointness) that 'NO context owns... EVERY context preserves,' with five child contexts (Inquiry, Transformation, Eliminability, Preservation Assessment, Evidence & Contradiction) plus Realization hanging off Preservation"
+  - "A five-strategic-questions table (Owns/Affects/Published-Language?/Ownership-changes?) applied per context, with Evidence & Contradiction explicitly marked unresolved on both Published-Language and Ownership-changes, blocked on DECISION-02 — 'the model must not proceed to tactical work there. A frame belongs to Inquiry; a partition belongs to Evidence. The answer decides which context owns φ, and no experiment can decide it'"
+  - "THE OWNERSHIP RULE the experiments force: read-disjointness is a CONSTITUTIONAL invariant that no single context can own, because it relates Π (Eliminability), Q (Inquiry) and T (Transformation) simultaneously — Inquiry doesn't know Π; Eliminability doesn't know Q; Transformation knows neither but its provenance map is what makes the invariant checkable"
+  - "A STRIKING self-drawn analogy: 'this is exactly the shape of the anonymity invariant in the sibling platform: a constitutional invariant that a context preserves rather than owns. The experiments reached the same structure independently, which is mild evidence the shape is real' — an explicit cross-reference to what is very likely this repository's own real PublicDigit voting platform (per the established X3 precedent at M0225, and this repository's own CLAUDE.md/ADR-T11 anonymity-invariant discipline), a notable instance of this simulated research corpus drawing directly on its own authoring repository's real architectural findings"
+  - "A tactical consequence of FR-003: 'Transformation must publish its provenance map as part of its Published Language, and that map must be empirically verified, not declared'"
+  - "An 8-row aggregates/entities/value-objects table: InquiryFrame (aggregate root, Q/C/O change together, O immutable once issued); TransformationSpec (aggregate root, T+provenance+family-kind as one unit); EliminationAssessment (aggregate root, a Zero verdict inseparable from its (S,T,Π,contract,reference)); Representation (entity, identity=transformation-applied+source-case); ProvenanceMap/MultiplicityProfile/AdequacyVerdict/EpistemicStatus (value objects)"
+  - "CONCRETE NEW QUANTIFIED NUMBERS not previously recorded in this pass, forcing the EliminationAssessment aggregate boundary: 'Zero is contract-relative (495/4049 verdicts flip) and reference-relative (541/4260) — an assessment stored without them is not a fact about the data and will be wrong when reused'"
+  - "A further concrete new number confirming the already-established 'no EliminableCore aggregate' negative: 𝒵 is not generated by its minimal elements, evidenced by 286/826 failures — 'any design that caches minimal eliminable sets and closes upward is refuted by the data'"
+  - "A 7-row domain-events table (FrameIssued/TransformationRegistered/ProvenanceVerificationFailed/EliminationAssessed/AdequacyEvaluated/RealizationFailed/StatusPromoted), with an explicit named identification of the two events the programme learned it needed: 'ProvenanceVerificationFailed and RealizationFailed... both name failures that were invisible in the first designs' — plus a rule for StatusPromoted: 'never [EXP]→[THM] without a proof artifact'"
+  - "A 5-row port table (ZeroObservablePort/InquiryPort/DecoderPort+ConstraintPort/ProvenancePort/EpistemicStatusPort), with an explicit architectural finding about the limits of port-based enforcement: 'the port structure enforces read-disjointness by construction... but only if ProvenancePort is consulted, because the leak came through T, not through the ports' — directly explaining why BRIDGE-02's rank/tag leak evaded a naive pairwise gate"
+  - "An 8-item earned anti-pattern list, each tied to a specific finding: treating 'eliminate everything eliminable' as well-defined (L is non-confluent); caching minimal eliminable sets and closing upward (𝒵 not generated by minimal elements); storing a Zero verdict without contract/reference; a single 'reduction size' scalar; re-fitting the decoder after seeing R; declaring rather than verifying a field read-set; modelling boundary/provenance as removable metadata; letting a ticket accrete into architecture ('architecture produces tickets; tickets do not become architecture')"
+  - "An explicit closing scope statement: the model does NOT select a kernel [OPEN]; does NOT declare a carrier [OPEN] ('without a carrier the tactical model cannot be completed'); does NOT resolve DECISION-02 (leaving Evidence & Contradiction deliberately unowned); does NOT promote FR-003 (needs a second adopter, ES-006.1) — 'the correct next strategic act is a carrier decision, not more tactical modelling'"
+defines:
+  - "The candidate bounded-context map: Constitutional Kernel + Inquiry/Transformation/Eliminability/Preservation-Assessment/Evidence-Contradiction/Realization"
+  - "InquiryFrame, TransformationSpec, EliminationAssessment as aggregate roots; Representation as an entity; ProvenanceMap/MultiplicityProfile/AdequacyVerdict/EpistemicStatus as value objects"
+refines:
+  - "M0256/M0261's cross-references to 'Document 12 places the gates in the DDD model': confirmed and fully specified here as the candidate bounded-context architecture with explicit ownership resolution for the three predicates"
+  - "The corpus's established Zero contract/reference-relativity findings: given concrete new quantified numbers (495/4049 contract flips; 541/4260 reference flips; 286/826 minimal-element failures)"
+contradicts:
+  - "Any implicit design that would cache minimal eliminable sets and close upward, or store a Zero verdict without its contract and reference: both explicitly refuted by the quantified data"
+repeats:
+  - "The already-established DECISION-02-is-open-and-blocking finding (M0261) and the FR-003 provenance-triple requirement (M0255/M0260), both consolidated here into concrete DDD ownership/port design consequences"
+bridge_candidates:
+  - "Whether 'the sibling platform' referenced for the anonymity-invariant analogy is confirmed elsewhere in the corpus to be this repository's own PublicDigit voting platform (consistent with the X3 precedent at M0225)"
+  - "Whether a carrier decision (explicitly named 'the correct next strategic act') was ever made, unblocking this DDD model's remaining open items"
+mathematical_content: >
+  Concrete quantified Zero-relativity numbers (495/4049 contract-relative flips; 541/4260
+  reference-relative flips; 286/826 minimal-element generation failures) forcing specific DDD
+  aggregate-boundary and anti-pattern conclusions.
+gita_content: null
+kernel_content: >
+  The corpus's most complete DDD architectural consolidation: a candidate bounded-context map
+  organized around a shared constitutional-invariant kernel that no context owns, an explicit
+  ownership rule for read-disjointness, and an explicit refusal to select a kernel or declare a
+  carrier — naming a carrier decision as the correct next strategic act.
+registry_updates:
+  - "Candidate bounded-context DDD architecture: Constitutional Kernel + 6 child contexts, with Evidence & Contradiction's ownership explicitly left unresolved pending DECISION-02"
+  - "Striking self-drawn analogy to 'the sibling platform's' anonymity invariant — likely this repository's own PublicDigit platform"
+  - "Concrete new quantified numbers: 495/4049 contract-relative Zero flips; 541/4260 reference-relative Zero flips; 286/826 minimal-element generation failures"
+  - "Port design explaining exactly why BRIDGE-02's leak evaded pairwise gates (came through T's provenance, not through the ports)"
+  - "Explicit next-strategic-act recommendation: a carrier decision, not more tactical modelling"
+anchor_test:
+  anchor: true
+  supports_dimension: "Candidate bounded-context architecture with unresolved Evidence&Contradiction ownership; striking sibling-platform anonymity-invariant analogy; concrete quantified Zero-relativity numbers; port design explaining the BRIDGE-02 leak; explicit carrier-decision recommendation"
+  refines_or_contradicts: "refines (M0256/M0261's DDD cross-references, now fully specified; the corpus's Zero contract/reference-relativity findings, given concrete numbers)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: true
+  connects_pramana_vedanta_gita_to_c1c2: false
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"This is exactly the shape of the anonymity invariant in the sibling platform: a constitutional invariant that a context preserves rather than owns. The experiments reached the same structure independently, which is mild evidence the shape is real.\""
+  - "\"Zero is contract-relative (495/4049 verdicts flip) and reference-relative (541/4260).\""
+  - "\"The port structure enforces read-disjointness by construction... but only if ProvenancePort is consulted, because the leak came through T, not through the ports.\""
+  - "\"The correct next strategic act is a carrier decision, not more tactical modelling.\""
+undefined_concepts: []
+open_questions:
+  - "Is 'the sibling platform' confirmed elsewhere to be this repository's own PublicDigit voting platform?"
+  - "Was a carrier decision ever made?"
+tier2_triggered: true
+tier2_reason: >
+  The corpus's most complete DDD architectural consolidation, delivering a striking self-drawn
+  cross-reference to what is very likely this repository's own real PublicDigit platform, concrete
+  new quantified Zero-relativity numbers not previously recorded, a port design that precisely
+  explains why the BRIDGE-02 leak evaded pairwise gates, and an explicit recommendation naming the
+  correct next strategic act — core architectural reference material for the consolidated theory
+  series.

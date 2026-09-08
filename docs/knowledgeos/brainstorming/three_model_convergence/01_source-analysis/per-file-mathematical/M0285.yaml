@@ -1,0 +1,32 @@
+sequence: M0285
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-154442_five-corrections-fractal-topology-is-currently-too-strong.md
+title: "Five corrections to a 'fractal topology' proposal: withdrawing fractality, separating Zero from Focus"
+date: "2026-09-04"
+bytes: 9118
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0285
+importance: high
+confidence: high
+about: >
+  Corrects an over-strong 'fractal, resolution-dependent topology' claim about knowledge representation, replacing it with the weaker, evidence-supported 'resolution-dependent, recursively refinable knowledge structure' (a point may expand to a structured subspace x -> K_x, without implying self-similarity or true fractality). Separately, identifies and repairs a conflation between Zero (Z_S(K), about influence) and Focus (Focus_{S,Q}(K), about what is made observable/operative), previously defined identically as proj_S(K); establishes 'Projection != Zero' but 'Projection may instantiate a Zero assumption.' Also clarifies that P_{1}(K)=(d_1,0,0) is a stated modeling assumption about operative influence for the current inquiry, not a claim that d_2,d_3 literally vanish from the underlying knowledge state.
+introduces: []
+defines:
+  - "Zero as concerning Influence_i(K|Q,contract)=0"
+  - "Focus as concerning which dimensions are made operative/observable, Focus_{S,Q}(K)"
+refines: []
+contradicts:
+  - "This document's own prior identification of Zero and Focus as the same operation (Z_S(K)=P_S(K)=F_{S,Q}(K))"
+  - "An unproven 'fractal topology' characterization of knowledge representation, withdrawn here for lack of evidence"
+repeats: []
+bridge_candidates: []
+mathematical_content: "Separates two previously-conflated formal operations (Zero and Focus/projection) and downgrades an unproven topological/fractal characterization to a weaker, resolution-dependent recursive-refinement claim."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Corrects a genuine conceptual conflation (Zero vs Focus, two operations that had been silently identified) and withdraws a specific overclaim ('fractal topology') that appears nowhere else established in the corpus -- a concrete instance of the no-silent-promotion discipline operating on the corpus's own draft material.

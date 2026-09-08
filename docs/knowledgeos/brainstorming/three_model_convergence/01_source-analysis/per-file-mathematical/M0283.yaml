@@ -1,0 +1,32 @@
+sequence: M0283
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-154129_axis-e-five-adjustments-do-not-yet-claim-non-commutativity.md
+title: "Axis E (traversal-order path-dependence): five methodological corrections before freezing the experiment"
+date: "2026-09-04"
+bytes: 7564
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0283
+importance: high
+confidence: high
+about: >
+  Five corrections to a proposed Axis E (traversal-order commutativity) experiment for the evolving Knowledge Algebra: (1) weakens the target claim from universal non-commutativity to observed non-equivalence under a tested contract; (2) separates state-changing traversal (K->K') from view-only traversal (K->View(K)), yielding a decisive four-way comparison design; (3) redefines the junction J(x) as located via K^S rather than produced directly by projection P_S; (4) replaces an ambiguous K\d_i removal with an explicit intervention operator E_d_i^- and a corresponding Zero_i definition tied to the observation contract; (5) proposes classifying every non-equivalent traversal pair into a 7-row taxonomy (commutative / representational-only / path-dependent-but-observationally-equivalent / latent path dependence / epistemically consequential / traversal-dependent determination / traversal-generated structure). Restates the research question as an existential hypothesis H_E and reformulates the running Knowledge Algebra signature to include a typed traversal-relation set R_trav.
+introduces:
+  - "A 7-row taxonomy classifying traversal-order differences (Delta_ij) from purely representational to traversal-generated structure"
+  - "Existential hypothesis H_E: exists K,Q,contract,i,j such that Obs_Q(T_iT_j(K)) != Obs_Q(T_jT_i(K))"
+  - "Explicit intervention/elimination operator E_d_i^-(K) replacing an ambiguous K\\d_i notation"
+defines: []
+refines:
+  - "An earlier four-orthogonal-axis formulation, replaced with typed traversal relations R_trav={down,up,left,right} without assuming inverse relationships"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A formal non-commutativity experiment design over composed traversal operators, with a differentiated observational/state-level equivalence relation and an explicit taxonomy of path-dependence types."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Introduces a genuinely new, fine-grained taxonomy distinguishing seven kinds of traversal-order path-dependence (most prior Zero/commutativity work in this corpus used a binary commute/non-commute framing), and formally separates state-transition commutativity from observational commutativity for the first time in this thread.

@@ -1,0 +1,29 @@
+sequence: M0357
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-075200_animal-courtship-communication-multi-round-signal-response-feedback.md
+title: "Animal courtship communication: multi-round signal-response-feedback as a richer biocomm lens"
+date: "2026-09-07"
+bytes: 40821
+model:
+  primary: KR-SIM
+  secondary: Animal communication / ethology research (courtship/mating), explicit lens not evidence
+source_role: PRIMARY
+canonical_source: M0357
+importance: high
+confidence: high
+about: >
+  Extends M0356's animal-communication lens to courtship/mating communication specifically because it involves multi-round signal->interpretation->response->feedback->adaptation (vs. a single alarm-call signal), explicitly cautioned against anthropomorphizing the interaction. Read via opening and structure given document size (41KB); contains embedded images not analyzed here.
+introduces: []
+defines: []
+refines:
+  - "M0356's single-round signal-is-not-knowledge lens: extends it to a multi-round signal/response/feedback/adaptation cycle, richer for modeling KnowledgeOS's own iterative K_t->K_{t+1} dynamics"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A multi-round signal-interpretation-response-feedback-adaptation cycle, motivated by (not derived from) animal courtship-communication research, as a richer discovery lens than the single-round alarm-call case."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Genuinely extends M0356's single-round lens to a multi-round interaction cycle relevant to KnowledgeOS's own iterative state-transition dynamics, rather than repeating the same single-round point.

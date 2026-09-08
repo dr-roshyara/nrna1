@@ -1,0 +1,30 @@
+sequence: M0374
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132425_corrected-baseline-move-to-a-controlled-empirical-test.md
+title: "Corrected baseline: move to a controlled empirical test -- KR-ZOOM-FACTFINDING-01-2026-09 experimental protocol"
+date: "2026-09-07"
+bytes: 18314
+model:
+  primary: b
+  secondary: "KR-SIM"
+source_role: PRIMARY
+canonical_source: M0374
+importance: critical
+confidence: high
+about: >
+  Adopts the preceding formulation as the corrected research baseline and proposes moving from conceptual rewriting to a controlled empirical test: KR-ZOOM-FACTFINDING-01-2026-09, keeping Theory v1.2 FROZEN and Minimal Kernel UNTOUCHED, testing ZF2+ZF3+ZF5 with ZF1 as a preservation control, explicitly avoiding new kernel operators or unproven claims (Zoom-In as projection, Zoom-Out as Zoom-In's inverse).
+introduces:
+  - "KR-ZOOM-FACTFINDING-01-2026-09: a controlled empirical test protocol (ZF2+ZF3+ZF5 with ZF1 as preservation control), explicitly avoiding premature kernel/operator claims"
+defines: []
+refines:
+  - "This batch's Zoom-In/Zoom-Out architectural work (M0372, M0373): converts it into a concrete, controlled experimental protocol"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A controlled experimental protocol design (KR-ZOOM-FACTFINDING-01-2026-09) with an explicit preservation-control condition (ZF1) and explicit non-claims to prevent premature kernel/operator commitments."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Converts this batch's accumulated Zoom-in/Zoom-out/Fact-Finding conceptual work into a concrete, disciplined experimental protocol with an explicit preservation control -- the natural next-step artifact this whole sub-thread has been building toward.

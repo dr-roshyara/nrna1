@@ -1,0 +1,29 @@
+sequence: M0333
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-005257_theory-part-12-time-temporal-semantics-events-intervals-versioning.md
+title: "Verified Theory Part XII: Time, Temporal Semantics, Events, Intervals, Versioning, and Temporal Knowledge"
+date: "2026-09-06"
+bytes: 37062
+model:
+  primary: b
+  secondary: "KR-SIM (KnowledgeOS Verified Theory series, Part XII)"
+source_role: PRIMARY
+canonical_source: M0333
+importance: high
+confidence: high
+about: >
+  Now independently read and content-verified. Establishes Event Time != Observation Time != Knowledge Time != Transaction Time != Decision Time as five non-collapsible temporal dimensions (worked example: a contract terminated on 1 June but learned of on 15 June -- replacing the first date with the second changes the meaning of the knowledge, not just its metadata). Treats time as semantic information requiring a typed, potentially multi-dimensional temporal domain tau, not a single timestamp field.
+introduces:
+  - "A five-way non-collapsible temporal-dimension taxonomy: Event/Observation/Knowledge/Transaction/Decision Time, replacing a single-timestamp model"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A typed, multi-dimensional temporal semantics distinguishing five kinds of 'when' that a knowledge system must track separately."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Content-verified: matches its title precisely. A real and useful formal distinction (five temporal dimensions) but structurally analogous in kind (typed decomposition preventing collapse) to the series' other parts (identity in Part VIII, quantity in Part XI) rather than introducing a qualitatively new mechanism.

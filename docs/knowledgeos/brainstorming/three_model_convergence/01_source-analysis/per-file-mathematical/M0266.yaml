@@ -1,0 +1,90 @@
+sequence: M0266
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-120500_theory-13-open-questions-and-forward-programme.md
+title: "Theory 13 — Open Questions and the Forward Programme: seven prioritized open questions (OQ-1..OQ-7, including a new eliminability-ladder-depth item), an explicit 'what NOT to do next' table that DEFINITIVELY CLOSES the entire KR-ALGEBRA/Vedic-Contribution research thread as negative ('nothing to build on yet'), and the FINAL DEFINITIVE VERDICT on the Gita interpretive strand after five full cycles ('never once been the source of a result, and after five cycles that is evidence, not an accident') — plus a '13-document set' self-description that conflicts with Document 01's 'Document 01 of 15' header"
+date: "20260904-120500"
+bytes: null
+model:
+  primary: KR-SIM
+  secondary: null
+  secondary_note: null
+source_role: PRIMARY
+canonical_source: M0266
+importance: critical
+confidence: high
+about: >
+  Document 13 of the consolidated theory series (self-described here as "this thirteen-document
+  set," in apparent tension with Document 01's "Document 01 of 15" header). Consolidates every
+  remaining open question into a dependency-ordered roadmap, gives an explicit "what NOT to do
+  next" table, and delivers two major definitive closing verdicts: the entire KR-ALGEBRA/Vedic-
+  Contribution research thread (M0245-M0254) is declared negative and not worth pursuing further,
+  and the Gita interpretive strand's five-cycle track record is given its final, conclusive
+  assessment.
+introduces:
+  - "Seven open questions in explicit dependency/priority order: OQ-1 The carrier [OPEN], blocks everything tactical, no experiment can decide it, governance decision required, informed by not derived from the experiments; OQ-2 DECISION-02 [OPEN], blocks the composition rule and δ transition, also decides which bounded context owns φ; OQ-3 The transfer problem [OPEN] — 'the largest scientific risk in the programme: every result could be an artifact of small numeric multisets,' one non-synthetic-carrier reproduction experiment would close it, not attempted; OQ-4 Adequacy vs Realization actually exhibited [OPEN], 'the highest-value experiment available'; OQ-5 the 67 dead cells [OPEN], requires a (T,Q) design change (transformations that partially preserve Q), not a sampling change; OQ-6 (NEW): 'does the eliminability ladder reach k>3?' [OPEN] — k=3 demonstrated only for n≤6, an explicitly acknowledged design bound, not a property of eliminability itself; OQ-7 a valid interval for Ĥ [OPEN], requires fiber-structure-level resampling, not attempted"
+  - "A restatement of the two standing conjectures (no-bridge for read-disjoint (Π,Q); Realization⟹Adequacy) with their refutation conditions, explicitly: 'neither may be cited as established'"
+  - "An explicit 'what NOT to do next' table with seven prohibitions, each with a stated reason — most significantly a DEFINITIVE CLOSING VERDICT on the entire KR-ALGEBRA/Vedic-Contribution thread (M0245-M0254): 'do not move to a new algebra or a Vedic-derived operator — the algebra results were negative; there is nothing to build on yet' — the first explicit, unambiguous closure statement for that entire research direction in this corpus"
+  - "The remaining six 'what NOT to do' items: do not tune the generator further (the one working lever, record count, is exhausted at n_rec=6, two others do nothing); do not widen the Π×Q grid (two-thirds of cells uninformative for reasons sampling cannot touch); do not declare a 'no-bridge law' (three experiments, one carrier family, 31/112 cells searchable); do not promote any [EXP] to [THM] ('a theorem needs a proof, not more evidence — this is the specific failure the status rule exists to prevent'); do not test the Gītā strand for kernel candidacy (the candidacy question is answered, §6); do not open Theory v1.3 (adjudication has not happened per the governance order)"
+  - "A recommended 7-step forward order: (1) OQ-1 carrier decision — governance, not research; (2) OQ-2 DECISION-02 adjudication — governance, not research; (3) OQ-4 exhibit Adequacy≠Realization — the highest-value experiment; (4) OQ-3 one transfer experiment — the largest scientific risk; (5) OQ-5 partially-preserving (T,Q) designs — unblocks the dead cells; (6) FR-003 second adopter (ES-006.1); (7) ADJUDICATION→Theory v1.3 — with the explicit summary: 'the programme's constraint is no longer experimental capacity; it is that two decisions have not been made'"
+  - "THE FINAL, DEFINITIVE VERDICT on the entire Gita interpretive strand tracked throughout the corpus, given after five full cycles (contradiction, elimination, reduction, audit, bridge): 'in NONE did it produce a kernel primitive, and in each it produced a question already answerable by experiment... the lens has been consistently useful for framing and consistently empty of machinery. It has never once been the source of a result, and after five cycles that is evidence, not an accident' — with the recommendation: 'keep the strand, keep it external, and stop testing it for kernel candidacy. Its role is naming what an experiment already earned, and naming is enough'"
+  - "The final honest standing-position statement closing the document: 'Theory v1.2 remains FROZEN. The kernel remains NOT SELECTED. No algebra is declared. No carrier is declared. Nothing in this thirteen-document set is adjudicated. The set exists so that adjudication is now possible — every claim, its status, its scope and its refutation condition are in one place'"
+  - "A self-description of the series as 'this thirteen-document set,' which conflicts numerically with Document 01's header ('Document 01 of 15') — an internal inconsistency in the series' own self-count, worth flagging for the eventual global-reclassification pass"
+defines: []
+refines:
+  - "The corpus's much earlier k=1/2/3/irreducible KR-ZERO-ORDER higher-order statistics: reframed here as an explicit open question (OQ-6) about whether the eliminability ladder reaches beyond k=3, with an explicit acknowledgment that the n≤6 tested bound is a design artifact, not a mathematical property"
+  - "M0247-M0254's entire KR-ALGEBRA/Vedic-Contribution research direction: given its first explicit, unambiguous closure verdict ('the algebra results were negative; there is nothing to build on yet')"
+  - "The corpus's Gita-companion-study discipline (M0213/M0229/M0233 and earlier): given its final, five-cycle definitive conclusion that the lens never produces a kernel primitive"
+contradicts:
+  - "Document 01's 'Document 01 of 15' header: this document's self-description as 'this thirteen-document set' is numerically inconsistent"
+  - "Any further pursuit of the KR-ALGEBRA/Vedic-Contribution thread or continued kernel-candidacy testing of the Gita strand: both explicitly closed here"
+repeats:
+  - "The already-established DECISION-02, adequacy-saturation, bootstrap-CI-defect, and no-bridge-conjecture findings, consolidated here into the final open-questions roadmap"
+bridge_candidates:
+  - "Whether the '13 vs 15 document' count discrepancy reflects a real change in the series' scope, or is simply an internal inconsistency"
+  - "Whether OQ-6 (eliminability ladder depth beyond k=3) was ever tested with n>6"
+  - "Whether the recommended 7-step forward order was ever actually followed (carrier decision, DECISION-02 adjudication, etc.)"
+mathematical_content: >
+  A dependency-ordered consolidation of seven remaining open questions, including a newly-named
+  eliminability-ladder-depth question (OQ-6); explicit refutation-conditioned restatement of the
+  two standing conjectures; a recommended forward-research ordering distinguishing governance acts
+  from experiments.
+gita_content: >
+  Delivers the corpus's final, definitive five-cycle verdict on the Gita interpretive strand: it
+  has never produced a kernel primitive and is recommended to remain external, valued only for
+  "naming what an experiment already earned" — the clearest closing statement of the anti-
+  reification discipline applied to this specific source throughout the reconstruction.
+kernel_content: >
+  Reaffirms "kernel remains NOT SELECTED, no carrier declared" as the honest final standing
+  position, with the carrier decision and DECISION-02 adjudication identified as the two governance
+  acts gating all further tactical work.
+registry_updates:
+  - "OQ-6 (NEW): does the eliminability ladder reach k>3? — n≤6 tested bound explicitly acknowledged as a design artifact, not a mathematical property"
+  - "Definitive closure of the KR-ALGEBRA/Vedic-Contribution thread: 'the algebra results were negative; there is nothing to build on yet'"
+  - "Final five-cycle definitive verdict on the Gita interpretive strand: never a source of a result, kept external, valued for naming only"
+  - "Recommended 7-step forward order distinguishing governance acts (carrier, DECISION-02) from experiments"
+  - "Internal inconsistency flagged: '13-document set' vs Document 01's '15' header"
+anchor_test:
+  anchor: true
+  supports_dimension: "Seven-item open-questions roadmap with new OQ-6; definitive KR-ALGEBRA/Vedic-Contribution closure; final five-cycle Gita-strand verdict; recommended governance-vs-experiment forward ordering; 13-vs-15-document self-count inconsistency"
+  refines_or_contradicts: "refines (consolidates the corpus's remaining open items into a final roadmap); contradicts (closes the KR-ALGEBRA/Vedic-Contribution thread and Gita kernel-candidacy testing; conflicts numerically with Document 01's document-count header)"
+  alternative_minimal_kernel: false
+  supplies_math_semantics: false
+  supplies_operator_or_transition: false
+  connects_pramana_vedanta_gita_to_c1c2: true
+  claim_absence_tension: true
+  invariant_id_scheme_reconciled: false
+key_evidence:
+  - "\"Do not move to a new algebra or a Vedic-derived operator — the algebra results were negative; there is nothing to build on yet.\""
+  - "\"It has never once been the source of a result, and after five cycles that is evidence, not an accident.\""
+  - "\"The programme's constraint is no longer experimental capacity; it is that two decisions have not been made.\""
+  - "\"Nothing in this thirteen-document set is adjudicated.\""
+undefined_concepts: []
+open_questions:
+  - "Does the '13 vs 15 document' discrepancy reflect a real scope change or an internal inconsistency?"
+  - "Was OQ-6 (eliminability ladder depth) ever tested with n>6?"
+  - "Was the recommended 7-step forward order ever followed?"
+tier2_triggered: true
+tier2_reason: >
+  Delivers two major definitive closing verdicts (the KR-ALGEBRA/Vedic-Contribution thread declared
+  negative and abandoned; the Gita interpretive strand's final five-cycle kernel-candidacy verdict),
+  introduces a new open question (OQ-6, eliminability-ladder depth), and surfaces an internal
+  document-count inconsistency worth flagging for the eventual global-reclassification pass.

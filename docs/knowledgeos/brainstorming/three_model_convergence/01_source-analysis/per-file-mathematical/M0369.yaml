@@ -1,0 +1,30 @@
+sequence: M0369
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132034_metro-encounter-operational-loop-and-the-k-entails-q-correction.md
+title: "The metro-encounter operational loop: Epistemic Agency as the missing bridge, with a K-entails-Q correction"
+date: "2026-09-07"
+bytes: 30430
+model:
+  primary: b
+  secondary: "c1 (typed gap classification, operational architecture)"
+source_role: PRIMARY
+canonical_source: M0369
+importance: high
+confidence: high
+about: >
+  Uses a 'metro encounter' human-interaction example to argue KnowledgeOS cannot be merely a passive evaluator of static knowledge states -- it must govern the operational loop managing the PROCESS of becoming able to answer, isolating Epistemic Agency as the missing bridge between state evaluation and real-world execution. Introduces a typed gap classification Delta_{Q,K} and a NextEpistemicAct selection function given a typed gap.
+introduces:
+  - "A typed epistemic-gap classification Delta_{Q,K} (categorizing the exact nature of a gap before selecting an investigative action)"
+  - "NextEpistemicAct(Delta_t, ...): a next-action selection function operating over typed gaps"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A typed gap-classification and next-action-selection formalism (Delta_{Q,K}, NextEpistemicAct), explicitly bridging static knowledge-state evaluation to operational Epistemic Agency."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Introduces the load-bearing Epistemic Agency bridge concept (typed gap classification + next-action selection) that the rest of this batch's agency/utility formalism (M0370, M0371) directly builds on.

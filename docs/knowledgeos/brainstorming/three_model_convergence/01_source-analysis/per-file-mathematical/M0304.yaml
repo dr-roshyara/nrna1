@@ -1,0 +1,29 @@
+sequence: M0304
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-155840_madhyamaka-time-indexed-kt-losing-a-determination-variant.md
+title: "Madhyamaka's four alternatives (catuskoti) applied to time-indexed K_t losing a determination"
+date: "2026-09-04"
+bytes: 11122
+model:
+  primary: KR-SIM
+  secondary: "Madhyamaka / Nagarjuna's catuskoti (four alternatives: Asti/Nasti/...), explicit philosophical source"
+source_role: PRIMARY
+canonical_source: M0304
+importance: high
+confidence: high
+about: >
+  Applies Nagarjuna's catuskoti (four-valued logic: exists/does-not-exist/both/neither) to the question of what happens to removed material in a state transition K_t=Pres(K_t)+Rev(K_t)+New(K_t)-Rejected(K_t): is Rejected(K_t) simply zero, or does it retain a status closer to one of the four catuskoti alternatives rather than plain non-existence? Continues the corpus's established discipline of treating Sunyata as a structural analogy, not an adopted formal system.
+introduces: []
+defines: []
+refines:
+  - "The corpus's existing K_t -> K_{t+1} transition decomposition (Pres/Rev/New/Rejected), applying catuskoti to sharpen what 'Rejected' status means"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A four-valued (catuskoti-inspired) candidate status scheme for rejected/removed knowledge-state material, as an alternative to plain binary zero/non-zero."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  A real conceptual proposal (catuskoti-valued rejection status) but read only in its opening ~60 lines here; substantively continues, rather than structurally departs from, the corpus's already-established Sunyata-as-structural-analogy discipline and existing Pres/Rev/New/Rejected decomposition.

@@ -1,0 +1,29 @@
+sequence: M0341
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-071027_theory-part-20-query-retrieval-search-graph-traversal-rag-boundary.md
+title: "Theory Part XX: Query Semantics, Retrieval, Search, Knowledge Graph Traversal, RAG, and the Retrieval/Inference Boundary"
+date: "2026-09-06"
+bytes: 91078
+model:
+  primary: x
+  secondary: c1 (query/retrieval architecture; RAG boundary)
+source_role: PRIMARY
+canonical_source: M0341
+importance: critical
+confidence: high
+about: >
+  Continues the architecture-derivation series (the largest single document in this batch, 91KB): distinguishes Query from Question, formalizes a retrieval function and ranking, precision/recall, retrieval ground truth, and explicitly draws the boundary between retrieval and inference (directly relevant to RAG-boundary questions elsewhere in the corpus). Read via structure/headers and Purpose section given document size; not read exhaustively.
+introduces: []
+defines: []
+refines:
+  - "Theory Part XIX's persistence work, extended to the query/retrieval/search layer"
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A formal retrieval-function/ranking/relevance apparatus with an explicit retrieval-is-not-inference boundary, directly relevant to the corpus's RAG-boundary questions."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Establishes a formal retrieval/inference boundary (relevance is not truth) directly relevant to this corpus's RAG-adjacent open questions elsewhere; genuinely new formal layer, though only partially read given its 91KB size -- flagged for a fuller read if this becomes load-bearing for a future phase.

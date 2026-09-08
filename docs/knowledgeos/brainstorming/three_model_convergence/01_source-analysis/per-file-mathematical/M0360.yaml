@@ -1,0 +1,30 @@
+sequence: M0360
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-075700_kr-biocomm-zero-01-pre-registration-and-witness-generator-review.md
+title: "KR-BIOCOMM-ZERO-01: pre-registration specification and witness-generator architecture, frozen baseline"
+date: "2026-09-07"
+bytes: 13493
+model:
+  primary: b
+  secondary: "KR-SIM"
+source_role: PRIMARY
+canonical_source: M0360
+importance: critical
+confidence: high
+about: >
+  A formal pre-registration specification for KR-BIOCOMM-ZERO-01: formal witness generators for Non-Elementarity, Order Sensitivity, Contract Relativity, Action Stability, and History Divergence, status '[DESIGN] FROZEN -- BASELINE PRE-REGISTRATION READY.' Introduces an ordered interaction-trace carrier C^{t:n} tracking state transformations, epistemic hypothesis bounds, and historical provenance without collapsing distinct states.
+introduces:
+  - "An ordered interaction-trace carrier C^{t:n} for tracking state transformations, hypothesis bounds, and provenance without state collapse"
+  - "A five-witness-generator specification (Non-Elementarity, Order Sensitivity, Contract Relativity, Action Stability, History Divergence)"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A frozen pre-registration specification with five formal witness-generator types for the BIOCOMM-Zero experiment, built on an ordered interaction-trace carrier."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  A rigorous, explicitly frozen pre-registration baseline (five distinct witness-generator types) directly consuming M0358/M0359's methodological corrections -- the formal experiment design this sub-thread was building toward.

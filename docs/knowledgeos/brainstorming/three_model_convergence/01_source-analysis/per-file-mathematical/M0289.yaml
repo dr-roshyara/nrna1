@@ -1,0 +1,31 @@
+sequence: M0289
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-154743_zero-sub-di-is-not-necessarily-an-identity-three-corrections.md
+title: "Three corrections before freezing dimensional-projection definitions: zero is not an algebraic identity, the determination differential assumes addition"
+date: "2026-09-04"
+bytes: 9983
+model:
+  primary: b
+  secondary: KR-SIM
+source_role: PRIMARY
+canonical_source: M0289
+importance: high
+confidence: high
+about: >
+  Blocks premature freezing of formal definitions for the evolving dimensional-projection apparatus. (1) Corrects P_S(K)_i = 0_{D_i} for i not in S: since no dimension has been shown to have an algebraic identity, redefines P_S as an observational restriction operator P_S(K)=restrict(K,S) (omitted dimensions 'not observed,' not replaced by an algebraic zero) -- 'Projection != Algebraic Zero until proven otherwise.' (2) Flags that a proposed determination differential Delta_Det = Det(Q,P_{S union j}K) - [Det(Q,P_SK)+Det(Q,P_jK)] silently assumes Determine is additive/numeric, which is unestablished; replaces it with a non-numeric comparison relation Int(Q;S,j|K) classified into a small table (no detected interaction / candidate synergy / candidate interference). (3) [third correction continues past the excerpt read].
+introduces:
+  - "Int(Q;S,j|K) -- a non-additive comparison-relation replacement for a premature numeric determination-differential formula"
+defines: []
+refines: []
+contradicts:
+  - "This document's own prior treatment of 0_{D_i} as an algebraic identity element for projection"
+  - "This document's own prior additive determination-differential formula Delta_Det, assumed without establishing that Determine is numeric/composable"
+repeats: []
+bridge_candidates: []
+mathematical_content: "Two corrected formal definitions: a non-algebraic (purely observational) restriction operator P_S, and a non-additive, categorical interaction-comparison relation Int(Q;S,j|K) replacing an unjustified additive differential."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: true
+tier2_reason: >
+  Catches and repairs two genuine unjustified mathematical assumptions (algebraic identity for projected-out dimensions; additivity of Determine) before they could be frozen into the formal apparatus -- the corpus's established self-correction discipline operating on its own most recent draft.

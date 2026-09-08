@@ -1,0 +1,28 @@
+sequence: M0291
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260904-154857_kr-state-01-baseline-the-object-of-study-is-the-trajectory-duplicate.md
+title: "Duplicate of M0281: byte-identical content, confirmed via md5"
+date: "2026-09-04"
+bytes: 8791
+model:
+  primary: KR-SIM
+  secondary: null
+source_role: DUPLICATE_REPRODUCTION
+canonical_source: M0281
+importance: low
+confidence: high
+about: >
+  Byte-identical duplicate of M0281 ('20260904-041510_kr-state-01-baseline-the-object-of-study-is-the-trajectory.md'), confirmed via md5 content hash (not filename inference). Discovered during the mathemtaical-part-file-list.log reconciliation pass (119 files present on disk but absent from mathematical-manifest.tsv as of 2026-09-07).
+introduces: []
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: null
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Byte-identical duplicate; no independent analytical content beyond its canonical source.

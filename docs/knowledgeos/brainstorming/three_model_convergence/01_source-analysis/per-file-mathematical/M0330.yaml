@@ -1,0 +1,29 @@
+sequence: M0330
+path: docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260906-004613_theory-part-09-relations-dependencies-graph-semantics-causality.md
+title: "Verified Theory Part IX: Relations, Dependencies, Graph Semantics, Causality, and Knowledge Structure"
+date: "2026-09-06"
+bytes: 28267
+model:
+  primary: b
+  secondary: "KR-SIM (KnowledgeOS Verified Theory series, Part IX)"
+source_role: PRIMARY
+canonical_source: M0330
+importance: high
+confidence: high
+about: >
+  Now independently read and content-verified. Establishes that knowledge structures (support, description, contradiction, dependency, causation, transformation, derivation) are naturally graph-representable, but explicitly separates Relation from Inference, Correlation from Causation, and Graph connectivity from semantic dependency -- 'a graph is not itself a theory of knowledge; it is a representation of typed semantic relations.'
+introduces:
+  - "A typed-relation discipline for knowledge graphs, with three explicit non-collapse guards: Relation!=Inference, Correlation!=Causation, Graph-connectivity!=semantic-dependency"
+defines: []
+refines: []
+contradicts: []
+repeats: []
+bridge_candidates: []
+mathematical_content: "A typed relational/graph formalism for knowledge structure with explicit guards against conflating graph connectivity, correlation, and semantic/causal dependency."
+gita_content: null
+kernel_content: null
+undefined_concepts: []
+open_questions: []
+tier2_triggered: false
+tier2_reason: >
+  Content-verified: matches its title precisely. A real and disciplined formalization but principally establishes representational hygiene (typed relations, non-collapse guards) rather than introducing a structurally new mechanism beyond the series' established direction.
