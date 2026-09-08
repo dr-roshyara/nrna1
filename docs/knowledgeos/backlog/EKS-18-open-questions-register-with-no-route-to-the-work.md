@@ -102,3 +102,46 @@ the situation persisting unnoticed compounds with every additional week of analy
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed and no work is commissioned.**
+
+---
+
+## Second instance, recorded 2026-09-09 — a different register, the same failure
+
+⭐⭐ **The problem recorded above is not a one-off, and the second instance is larger than the first.**
+
+On **2026-09-04** the estate produced a **second** register of open work: twenty numbered items on the
+mathematics of the knowledge theory, five of them marked as foundational blockers, each stating in
+formal terms exactly what would resolve it. One of them is named, in the document's own words, *"a
+foundational blocker"*, with the note that **nothing downstream becomes mathematically executable until
+it is settled**.
+
+⭐⭐⭐ **The work stream that has spent thirty consecutive reviews on precisely those questions did not
+know the register existed** — and its own reviews independently rediscovered several of the same
+conclusions, in weaker form, over the following five days.
+
+### Why this instance is worth recording separately from the first
+
+**a. It is a different register, in a different folder, produced by a different work stream.** ⭐ The
+first instance could be read as bad luck about one document. Two instances in two different places
+make it a **property of how the estate works**, not an accident.
+
+**b. The rediscovered material was rediscovered *worse*.** ⚠️ The later reviews reached similar
+conclusions but stated them less precisely than the register already had — in one case describing a
+concept as *"undefined"* when the register had defined it and identified the single remaining gap by
+name. **Duplicated effort is the smaller cost; the larger cost is that the duplicate was lower quality
+and briefly became the working understanding.**
+
+**c. It confirms the direction of the original item.** ⭐ Both registers are good artifacts. Neither
+failure is a documentation failure. **In both cases the question was written down clearly and simply
+never reached the people answering it.**
+
+### What this does *not* change
+
+⛔ **No new problem is claimed, and no separate backlog item is opened.** Under the estate's
+never-a-copy rule, a second occurrence of a recorded problem belongs **on that record**, not on a new
+one. ⛔ **No remedy is proposed here either** — this entry raises the evidence base for the item above,
+and nothing more.
+
+**Evidence:** `docs/knowledgeos/theory-extraction/76-P58-…` §0 · the three 2026-09-04 artifacts in
+`brainstorming/mathematical_ideas_that_can_be_implemented/` (`…substantial-agreement-with-corrections-minimality-and-ratification`,
+`…close-to-freeze-quality-four-final-corrections-to-sem-equivalence`, `…remaining-todos-after-v12-freeze-formal-semantic-equivalence`).
