@@ -1,5 +1,40 @@
-**Updated:** 2026-09-08 (latest) — **MD-035 COMPLETE — HUMAN ADMISSIBILITY DECISION:
-`12-RANDOMIZED-RESULTS.MD`.** Formal governance gate, mirroring MD-032's own precedent, following
+**Updated:** 2026-09-08 (latest) — **MD-036 COMPLETE — CONTROLLED V0/V6 SEMANTIC AND FORMAL
+ADJUDICATION.** Reused already-completed cold reads of all four admitted files; excluded the
+executable lane entirely. **Central finding**: `V6` is `V0`'s own stated derivation rule plus exactly
+one additional required carrier (`Defeater`) — a precise, source-grounded structural transformation,
+not a notational variant. The reachability consequence (`12`'s own table: `V0` reaches `Verdict`
+without `Challenge`; `V6` does not) is a **directly source-stated logical implication**, not
+requiring re-derivation. **Classified `STRUCTURAL CORRESPONDENCE`** on the seven-level ladder — not
+identity/formal equivalence (domains genuinely differ), not mere functional analogy (the
+transformation is exact), not incompatible (V6 is an alternative design choice). **The
+`fit ⇒ validation` claim splits in two**: the reachability fact is source-stated and established;
+the interpretive framing (that this is a genuine epistemic safeguard) is **illustrated by an
+unrelated synthetic OLS-confounding example, not formally derived** from `Validate`'s own
+definitions — "surviving a defeater" is never formally defined by any admitted source. A genuine
+ambiguity in the admissible text itself (exact-set vs. superset input-matching) leaves the general
+V0/V6 domain relationship `NOT FORMALLY TESTABLE FROM ADMISSIBLE EVIDENCE`, though the specific
+reachability fact stands regardless. **Final verdict: C — V6 adds a source-grounded constraint, but
+the semantic consequence remains partially unresolved** (not B, which would overclaim the epistemic-
+safeguard question as settled). **Baseline `Validate` specification gaps: UNCHANGED.** **DDD
+finding**: the V0→V6 difference is type-system-level only — no aggregate/invariant/command semantics
+created. MD-033's own superseded finding and MD-034's "potentially different semantics" hedge are
+both correctly accounted for: not contradicted, sharpened. **Housekeeping**: a second same-day
+backlog collision (`EKS-13`, Lane-T's own unrelated ticket) fixed by renumbering to `EKS-14`; a
+business-language corroboration note added to `EKS-07` — no new ticket filed; the already-committed
+MD-034/035 records referencing the superseded `EKS-13` are left as written, per this session's
+frozen-record discipline. No classification changed; no frozen artifact (MD-024–035) modified; no
+source file modified; no executable artifact admitted/inspected/executed;
+`classification-register.tsv` untouched; no composition test; no model selected; no Stage 07; no
+canonicalization; K-1/K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–035 and
+all four admitted files confirmed unmodified; only the new
+`14_decision-log/MD-036-v0-v6-semantic-formal-adjudication/` directory (13 files) written. Full
+record: `14_decision-log/model-boundary-decisions.md` → MD-036 execution record. **MD-036
+COMPLETE — HARD STOP.** V6 not selected, not rejected. Awaiting separate authorization for any
+further step. This session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-57 (2026-09-08, earlier) — MD-035 COMPLETE — HUMAN ADMISSIBILITY
+DECISION: `12-RANDOMIZED-RESULTS.MD`.** Formal governance gate, mirroring MD-032's own precedent,
+following
 MD-034's own recommendation. Put to the user formally via a direct question despite a stated
 preference in prose in the same message, per that authorization's own "do not infer" instruction.
 **Decision: SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A, ADMIT (narrow scope).**

@@ -1185,7 +1185,21 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-035 — Human Admissibility Decision:
+**Status update, 2026-09-08 (latest): MD-036 — Controlled V0/V6 Semantic and Formal Adjudication —
+EXECUTED.** Reused already-completed cold reads of all four admitted files; excluded the executable
+lane entirely. **Central finding**: `V6` = `V0`'s own rule + one additional required carrier
+(`Defeater`) — a precise structural transformation, classified `STRUCTURAL CORRESPONDENCE` on the
+seven-level ladder. The reachability consequence (`V0` reaches `Verdict` without `Challenge`; `V6`
+does not) is directly source-stated. The `fit ⇒ validation` claim splits in two: the reachability
+fact is a logical implication (established); the interpretive framing (a genuine epistemic
+safeguard) is illustrated by an unrelated OLS analogy, not formally derived — "surviving a defeater"
+is never defined by any admitted source. **Verdict: C — V6 adds a source-grounded constraint, but
+the semantic consequence remains partially unresolved.** Baseline `Validate` gaps: UNCHANGED. No V6
+selection, no composition test, no executable-lane admission. **Housekeeping**: fixed a second
+same-day backlog collision (`EKS-13` → `EKS-14`); added a business-language corroboration note to
+`EKS-07`, no new ticket.
+
+**Status update, 2026-09-08 (earlier): MD-035 — Human Admissibility Decision:
 `12-randomized-results.md` — EXECUTED.** Mirrors MD-032's own precedent exactly. Presented formally
 via a direct question despite the user's own stated preference in prose, per that prompt's own "do
 not infer" instruction. **Decision: SESSION-LEVEL HUMAN RESEARCH-GOVERNANCE DECISION — Option A,

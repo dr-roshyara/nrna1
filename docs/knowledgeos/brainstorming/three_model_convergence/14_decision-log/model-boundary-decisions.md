@@ -3457,3 +3457,67 @@ written.
 **MD-035 status: COMPLETE — HARD STOP. `12-randomized-results.md` ADMITTED, NARROW SCOPE. Awaiting
 separate authorization for any further step — including any V6 adjudication, any composition test,
 or any executable-lane admission.**
+
+---
+
+## Housekeeping — backlog `EKS-13` renumbered to `EKS-14` (2026-09-08)
+
+A second, independent same-day collision: the Lane-T session filed its own, unrelated `EKS-13`
+(`EKS-13-cross-lane-dependency-without-change-notification.md`) while this session's own MD-034
+ticket still held that number. Renumbered to `EKS-14` (content unchanged); added a brief,
+business-language corroboration note to `EKS-07` (multi-process coordination), which this — the
+second such collision in one session — directly confirms. No new ticket filed. The already-committed
+MD-034/MD-035 entries above, which reference the now-superseded `EKS-13`, are left exactly as
+written, per this session's standing discipline against retroactively editing frozen phase records.
+
+---
+
+## MD-036 — Controlled V0/V6 Semantic and Formal Adjudication (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit, no blocking disagreement. Reused the already-completed cold
+reads of all four admitted files (`03`/`04`: MD-033; `06`: MD-031; `12`: MD-034) rather than
+re-reading; excluded the executable lane entirely, per the authorization's own instruction.
+
+**Central finding**: `V6` is `V0`'s own stated derivation rule with exactly one additional required
+carrier (`Defeater`) — a precise, source-grounded structural transformation, not a mere notational
+variant. The reachability consequence (`12`'s own table: `V0` reaches `Verdict` without `Challenge`;
+`V6` does not) is **directly source-stated** — a logical implication of the two rules' own
+definitions, not something requiring re-derivation. **Classified `STRUCTURAL CORRESPONDENCE`** on
+the seven-level ladder — not identity, not formal equivalence (domains genuinely differ), not merely
+functional analogy (the transformation is exact and nameable), not incompatible (V6 is an
+alternative design choice, not a contradicting claim).
+
+**The `fit ⇒ validation` claim, adversarially separated into two parts**: the reachability fact
+(Claim 1) is a directly source-stated logical implication. The interpretive framing (Claim 2 — that
+this constitutes a genuine epistemic safeguard, analogized to statistical confounding) is a
+**methodological/interpretive claim illustrated by an unrelated synthetic OLS example, not a formal
+theorem derived from `Validate`'s own definitions.** "Surviving a defeater" is never formally
+defined by any admitted source.
+
+**Mathematical comparison**: domain differs (by construction); codomain identical (`Verdict`); the
+general matching rule (superset vs. exact-set semantics) is genuinely ambiguous in the admissible
+narrative text itself — classified `NOT FORMALLY TESTABLE FROM ADMISSIBLE EVIDENCE` for that general
+question, while the specific reachability fact remains source-closed regardless.
+
+**Final verdict: C — V6 adds a source-grounded constraint, but the semantic consequence remains
+partially unresolved** (not B, which would overclaim the deeper epistemic-safeguard question as
+established; not A/D/E). **Baseline `Validate` specification gaps: UNCHANGED** — not closed by
+anything in `12`. **DDD finding**: the V0→V6 difference is a type-system-level change only — no
+aggregate, invariant, or command semantics created or altered.
+
+**MD-033's own superseded finding and MD-034's own "potentially different semantics" hedge are both
+correctly accounted for**: not contradicted, sharpened — MD-033's finding was accurate for its own
+population and is superseded exactly as MD-035 anticipated; MD-034's hedge is sharpened into
+`STRUCTURAL CORRESPONDENCE` with a demonstrated (not merely potential) reachability difference.
+
+**No classification changed. No frozen artifact (MD-024–035) modified. No source file modified. No
+executable artifact admitted, inspected, or executed. `classification-register.tsv` untouched. No
+composition test. No model selected. No Stage 07. No canonicalization. K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–035
+and all four admitted files confirmed unmodified; only the new
+`14_decision-log/MD-036-v0-v6-semantic-formal-adjudication/` directory (13 files) written.
+
+**MD-036 status: COMPLETE — HARD STOP. V6 not selected, not rejected. Smallest next step (if any):
+a targeted search of the document series for a formal definition of "surviving a defeater" —
+named, not authorized. Awaiting separate authorization for any further step.**

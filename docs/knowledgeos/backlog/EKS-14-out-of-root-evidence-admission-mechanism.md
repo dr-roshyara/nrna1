@@ -1,9 +1,14 @@
-# `EKS-13` — No formal mechanism exists for admitting out-of-corpus-root evidence into a research programme
+# `EKS-14` — No formal mechanism exists for admitting out-of-corpus-root evidence into a research programme
 
-> **Renumbered from `EKS-12` to `EKS-13` on 2026-09-08, same day, before any external reference was
-> made to it.** A concurrent session independently filed its own, unrelated `EKS-12`
-> (`EKS-12-theory-governance-scope-gap.md`, already closed) using the same next-available-number
-> convention at the same time. Content unchanged; only the identifier and this note were added.
+> **Renumbered twice on 2026-09-08, same day, before any external reference was made to either
+> number** — first `EKS-12` → `EKS-13` (a concurrent session independently filed its own, unrelated
+> `EKS-12`, `EKS-12-theory-governance-scope-gap.md`, already closed), then `EKS-13` → `EKS-14` (the
+> same concurrent session's programme then independently filed its own, unrelated `EKS-13`,
+> `EKS-13-cross-lane-dependency-without-change-notification.md`) — both collisions arose from two
+> sessions applying the same next-available-number convention to the same shared index at the same
+> time. Content unchanged; only the identifier and this note were added. **This is now the second
+> independent collision of this exact shape in one session, and is recorded as first-hand
+> corroborating evidence for `EKS-07`** (see that ticket's own note below), not as a new ticket.
 
 **Status:** BACKLOG · **Class:** operating-model problem · **Raised:** 2026-09-08
 **Owner for disposition:** Governance / ARB
