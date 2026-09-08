@@ -1,10 +1,57 @@
 # EKS-12 — No governance authority has evidenced scope over **KnowledgeOS theory**
 
-**Status:** **BACKLOG · GOVERNANCE SCOPE QUESTION** — registered from the Lane T theory-extraction audit series (`P-42`–`P-45`, `docs/knowledgeos/theory-extraction/60`–`63`). ⛔ **Not commissioned; activation requires a Human/PO/ARB authorization act.** ⛔ **No authority is proposed, designed, or implied by this registration.**
+**Status:** ⛔ **CLOSED · WORKING AS DESIGNED** *(disposition 2026-09-08 — see §0)* · originally **BACKLOG · GOVERNANCE SCOPE QUESTION** — registered from the Lane T theory-extraction audit series (`P-42`–`P-45`, `docs/knowledgeos/theory-extraction/60`–`63`). ⛔ **Not commissioned; activation requires a Human/PO/ARB authorization act.** ⛔ **No authority is proposed, designed, or implied by this registration.**
 **Class:** governance-scope problem — KnowledgeOS.
 **Registered by:** Lane T (theory extraction), 2026-09-08, **under the operating model's own rule §37**: *"When a deeper requirement is discovered: **record it as a follow-up and STOP**."*
 
 > ### ⛔ **This item records a problem and a candidate requirement. It commissions nothing, adopts nothing, and creates no authority.** ⭐ **It may legitimately be closed as *working as designed* — see §5.**
+
+---
+
+# 0 · ⛔ DISPOSITION — **CLOSED · WORKING AS DESIGNED** *(2026-09-08)*
+
+> ### **The decision (verbatim)**
+> **"It is a deliberate boundary — close EKS-12 as working as designed"**
+> — **human research owner**, in-session, 2026-09-08
+
+**Recorded by:** Lane T (theory extraction), the registering lane. ⚠️ **Recording is not deciding** — this section records the human's act; it does not create, extend, or infer anything beyond the words above. ⭐ **A formal record in `docs/knowledgeos/governance/` would be a separate act by Governance, and is not made here.**
+
+**What is disposed:** the **absence of a governance authority with scope over KnowledgeOS theory** is a **DELIBERATE BOUNDARY**, not a defect. ⇒ **`EKS-12` is closed. No authority is to be created; the candidate requirement in §4 is withdrawn from consideration.**
+
+**Precedent this now joins:** `ES-006` excludes Project Knowledge *"to prevent `ES-006` from slowly absorbing project concepts"* — a deliberate exclusion with a stated rationale. ⭐ **KnowledgeOS theory is now a second such exclusion, on the human's act.**
+
+### ⭐ The consequence, recorded because it is load-bearing
+
+$$\boxed{\textbf{KnowledgeOS theory is } \mathbf{PERMANENT\ RESEARCH\ BY\ DESIGN.} \textbf{ It has no adoption path because it is not meant to have one.}}$$
+
+| | consequence | status |
+|---|---|---|
+| ⭐⭐ `\|K\| = 11` | ⭐ **stays `[REC]` permanently — by design, not by omission.** ⛔ It will never become *"KnowledgeOS law"*, and that is now the intended state | `[EMP]` from the act above |
+| ⭐ the audit series | ⭐⭐ **remains epistemically valid and governance-free** — `P-43` §16's separation is now the settled reading, not a provisional one | `[DERIVED]` |
+| ⭐⭐⭐ the roadmap | ⭐⭐ **the governed/ungoverned boundary sits at the SPECIFICATION/ASSET line, not at the theory line.** Theory stays research; a formal specification, architecture, or Schema-v3 asset *would* fall under PO/ARB asset scope | ⭐ `[DERIVED]` — ⛔ **commissions nothing** |
+
+⚠️ **This closure disposes of the governance question only.** ⛔ **It makes no statement about the kernel's mathematical correctness, changes no cell, and authorizes no next step.** ⭐ **`\|K\| = 11` remains the Lane T research result with all `P-35`–`P-44` qualifications, carrying `P-08`'s own hedge.**
+
+**Original registration text below is unchanged and was not rewritten** *(`ES-004.3`, additive)*.
+
+### ⚠️ 0a · RATIONALE CORRECTION *(additive, `ES-004.3` — 2026-09-08, from `P-46`)*
+
+⭐⭐ **The closure STANDS on the owner's act. Its stated *precedent* does not, and is corrected here rather than rewritten above.**
+
+`P-46` audited what corpus evidence permits this closure and found **none**:
+
+| §0 wrote | the primary actually says |
+|---|---|
+| *"joins `ES-006`'s deliberate exclusion of Project Knowledge"* | ⛔ `ES-006` excludes **Project Knowledge**, a **different category**. `P-46` §4's table shows the analogy **does not transfer** |
+| *(implied permanence)* | ⭐⭐ `ES-006.3` reads *"never architecture **UNTIL PROMOTED THROUGH `ES-006.1`**"* — a **"not yet"**, ⛔ not a **"never"**. Both populated rows express **deferral** |
+
+**Measured:** `not intended to be (adopted\|governed)` = **0** · `permanent research` = 2, ⛔ **both about other objects** · `deliberately excluded` = 5, ⛔ **none about theory**.
+
+$$\boxed{\textbf{corpus: } \mathbf{H_3} \textbf{ undetermined} \qquad \textbf{authority: } \mathbf{H_1} \textbf{ deliberate, by the owner's act}}$$
+
+⭐ **This is a legitimate and sufficient basis** — the corpus does not govern the owner's decisions. ⚠️ **It is recorded so the closure is never later cited as a corpus finding.** ⛔ **The closure does not establish that theory can never be governed: `ES-001`'s governance-creation scope is untouched.**
+
+*Source: `docs/knowledgeos/theory-extraction/64-P46-THEORY-BOUNDARY-INTENTIONAL-DESIGN-OR-GOVERNANCE-GAP-AUDIT.md`.*
 
 ---
 
