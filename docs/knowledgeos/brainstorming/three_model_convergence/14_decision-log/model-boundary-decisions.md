@@ -3761,3 +3761,53 @@ the new `14_decision-log/MD-040-warrant-semantic-evidence-census/` directory (13
 threads; no computable definition found in either. Smallest next step, if pursued: search for a
 governance-layer specification of the warrant threshold, separate from the kernel's own operator
 specification — named, not authorized. Awaiting separate authorization for any further step.**
+
+---
+
+## MD-041 — Governance-Layer Warrant-Threshold Search (EXECUTED, 2026-09-08)
+
+**Authorization**: direct, terse user instruction, matching MD-040's own named next step exactly.
+Executed with the same artifact rigor and governance-closeout discipline as MD-030–040, for
+consistency.
+
+**Central finding**: a **third corpus thread** — `docs/knowledgeos/brainstorming/
+phase_measure_theory/` (Model C1's own already-established evidence, seq 0581–0583, no new admission
+needed) — contains an extensive **"Formal Epistemic Contract Algebra"** (seq 0583, "Step 25E," ~500
+lines, Git-confirmed 2026-08-28, genuinely predating both other threads by 4–5 days) that supplies
+`EC=(R,Γ,A,V)` with an explicit **five-type requirement taxonomy keeping `Validation` (`Validated(r)`)
+and `Governance` (`Authorized(r)`) as separate, coordinate categories** — directly at odds with
+kernel-reduction's own claim (`13`/`FINAL`, MD-040) that "the [warrant] standard is governance," and
+independently corroborating (within a shared corpus lineage, not independent statistical
+confirmation) the math-lane Titelbaum thread's own insistence (`M0032`, MD-040) on the same
+separation. **This is now a documented three-way corpus tension**, not resolved by this study.
+
+**What the finding does and does not supply**: a genuinely rich, DDD-adjacent formal *container*
+(`Closed(EC)`, `EvalContract`, a proposed Ubiquitous Language, `CandidateRequirement ≠
+ContractRequirement`) — the richest structural content found anywhere in this MD-036–041 sequence —
+but **no computable satisfaction rule for any `Validated(r)` case**; the document's own examples are
+drawn from organizational/production-migration assurance (rollback verification, architecture
+approval), not epistemic claim-assessment, and its own closing section names the remaining gap
+(conflict/authority resolution among disagreeing governing sources) as its own next, unexecuted
+research step.
+
+**Classification: B — governance-layer container/structure found; threshold content missing.**
+
+**Net effect on "surviving a defeater"**: unchanged — still no computation rule anywhere — but the
+search space is now more precisely mapped (any future specification would plausibly live inside a
+`Validated(r)`-typed requirement's own `Γ` component within an `EC`).
+
+**No backlog ticket filed** — a scientific finding, fully recorded here.
+
+**No classification changed. No frozen artifact (MD-024–040) modified. No source file modified
+(kernel-reduction, math lane, or `phase_measure_theory/`). `classification-register.tsv` untouched.
+No executable artifact inspected or executed. No composition test. No model selected. No Stage 07.
+No canonicalization. K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–040,
+all kernel-reduction files, `M0032`/`M0033`/`M0036`, and seq 0583 confirmed unmodified; only the new
+`14_decision-log/MD-041-governance-layer-warrant-threshold-search/` directory (12 files) written.
+
+**MD-041 status: COMPLETE. Governance-layer container found; threshold content still missing.
+Smallest next step, if pursued: search for a "Governance Conflict Algebra" or later corpus material
+resolving the Validation-vs-Governance question — named, not authorized. Awaiting separate
+authorization for any further step.**

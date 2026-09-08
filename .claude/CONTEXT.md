@@ -1,5 +1,43 @@
-**Updated:** 2026-09-08 (latest) — **MD-040 COMPLETE — WARRANT SEMANTIC EVIDENCE CENSUS AND
-FORMALIZATION-READINESS AUDIT.** Interpreted "other characterized material" narrowly — checked this
+**Updated:** 2026-09-08 (latest) — **MD-041 COMPLETE — GOVERNANCE-LAYER WARRANT-THRESHOLD SEARCH.**
+Direct user instruction, matching MD-040's own named next step exactly; executed with the same
+rigor and governance-closeout discipline as MD-030–040 for consistency. **Central finding**: a
+**third corpus thread** — `docs/knowledgeos/brainstorming/phase_measure_theory/` (Model C1's own
+already-established evidence, seq 0581–0583, no new admission needed) — contains a "Formal
+Epistemic Contract Algebra" (seq 0583, "Step 25E," Git-confirmed 2026-08-28, genuinely predating
+both other threads by 4–5 days with stronger provenance than either) supplying `EC=(R,Γ,A,V)` with
+an explicit five-type requirement taxonomy keeping **`Validation` (`Validated(r)`) and `Governance`
+(`Authorized(r)`) as separate, coordinate categories** — directly at odds with kernel-reduction's own
+claim (`13`/`FINAL`, MD-040) that "the [warrant] standard is governance," and independently
+corroborating (within a shared corpus lineage, not independent statistical confirmation) the
+math-lane Titelbaum thread's own insistence (`M0032`, MD-040) on the same separation. **This is now
+a documented three-way corpus tension**, not resolved by this study. **What the finding supplies**:
+a genuinely rich, DDD-adjacent formal container (`Closed(EC)`, `EvalContract`, a proposed Ubiquitous
+Language, `CandidateRequirement ≠ ContractRequirement`) — the richest structural content found
+anywhere in this MD-036–041 sequence. **What it does not supply**: any computable satisfaction rule
+for a `Validated(r)` case — the document's own examples are organizational/production-migration
+assurance (rollback verification, architecture approval), not epistemic claim-assessment, and its
+own closing section names the remaining gap (a "Governance Conflict Algebra" for resolving
+disagreeing sources) as its own next, unexecuted research step. **Classification: B — governance-
+layer container/structure found; threshold content missing.** Net effect on "surviving a defeater":
+unchanged — still no computation rule anywhere — but the search space is now more precisely mapped.
+**No backlog ticket filed** — a scientific finding, not a process gap; this study's own search
+process (checking the dimension-registry before assuming absence) is itself a positive instance of
+the discipline a newly-filed sibling ticket (`EKS-16`, filed by the parallel session, unrelated) 
+describes. No classification changed; no frozen artifact (MD-024–040) modified; no source file
+modified (any of the three lanes); `classification-register.tsv` untouched; no executable artifact
+inspected/executed; no composition test; no model selected; no Stage 07; no canonicalization; K-1/
+K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–040 and all relevant source
+files across three corpus lanes confirmed unmodified; only the new
+`14_decision-log/MD-041-governance-layer-warrant-threshold-search/` directory (12 files) written.
+Full record: `14_decision-log/model-boundary-decisions.md` → MD-041 execution record. **MD-041
+COMPLETE.** Smallest next step, if pursued: search for a "Governance Conflict Algebra" or later
+corpus material resolving the Validation-vs-Governance question — named, not authorized. Awaiting
+separate authorization for any further step. This session's work is being committed now, per the
+session's own established pattern.
+
+**Superseded-update-marker-62 (2026-09-08, earlier) — MD-040 COMPLETE — WARRANT SEMANTIC EVIDENCE
+CENSUS AND FORMALIZATION-READINESS AUDIT.** Interpreted "other characterized material" narrowly —
+checked this
 reconstruction's own already-completed Phase-2 Model-B concept register first (frozen prior work, no
 new admission needed). **Unanticipated discovery**: that check surfaced a **second, connected
 research thread within already-legitimate Model-B evidence** — `03_model-b_mathematical/02_concept-

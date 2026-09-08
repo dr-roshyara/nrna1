@@ -1185,7 +1185,22 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-040 — Warrant Semantic Evidence Census and Formalization-
+**Status update, 2026-09-08 (latest): MD-041 — Governance-Layer Warrant-Threshold Search —
+EXECUTED.** Direct user instruction, matching MD-040's own named next step exactly. **Central
+finding**: a third corpus thread (`phase_measure_theory/`, seq 0581–0583, Model C1's own already-
+established evidence, Git-confirmed 2026-08-28, genuinely predating both other threads by 4–5 days)
+supplies a rich "Formal Epistemic Contract Algebra" (`EC=(R,Γ,A,V)`) with an explicit five-type
+requirement taxonomy keeping **`Validation` (`Validated(r)`) and `Governance` (`Authorized(r)`) as
+separate, coordinate categories** — directly at odds with kernel-reduction's own "the standard is
+governance" claim, and corroborating (within a shared corpus lineage, not independent confirmation)
+the math-lane's own same insistence. **Now a documented three-way corpus tension.** The container is
+rich (`Closed(EC)`, `EvalContract`, a proposed Ubiquitous Language) but supplies no computable
+satisfaction rule for any case — the document's own closing section names exactly this gap
+("Governance Conflict Algebra") as its own unexecuted next step. **Classification: B — container
+found, threshold content missing.** No backlog ticket — a scientific finding. No V0/V6 selection, no
+new admission, no composition test.
+
+**Status update, 2026-09-08 (earlier): MD-040 — Warrant Semantic Evidence Census and Formalization-
 Readiness Audit — EXECUTED.** A scope check into this reconstruction's own already-completed Phase-2
 Model-B concept register (no new admission required) surfaced a **second, independent-but-connected
 research thread** (M0032/33/36, a Titelbaum-epistemology-derived cluster) that also proposes `Warrant`
