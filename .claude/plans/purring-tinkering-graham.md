@@ -1185,7 +1185,21 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-032 — Human Admissibility Decision Gate: `06-composition-
+**Status update, 2026-09-08 (latest): MD-033 — Controlled Validate Specification-Sufficiency and V6
+Adjudication — EXECUTED.** Read `03-capability-model.md`/`04-operator-contracts.md` cold and in full
+for the first time (previously known only via citation); reused `06`'s own MD-031 cold read.
+**Central finding**: `Validate`'s happy-path contract (atom, input, output, responsibility, no state
+effect) is fully closed by admissible evidence. `V6` confirmed absent from all three admitted files
+(exhaustive grep) — though the lane does discuss `V1`/`V4`/`V5` by name, both pointing to the
+unadmitted `12-randomized-results.md`. Preconditions/postconditions/failure semantics remain `NOT
+SPECIFIED BY SOURCE` (exhaustive census). **Verdict: B — partially sufficient, material gaps
+remain** (not A: real gaps exist; not C: MD-029 already succeeded with less; not D: V6's absence
+isn't a live blocker for evidence-scoped work). **Smallest next action: a targeted characterization
+of `12-randomized-results.md`** — not a composition test, not an executable-lane admission. No
+classification changed, no frozen artifact modified, no code executed, no model selected, no Stage
+07.
+
+**Status update, 2026-09-08 (earlier): MD-032 — Human Admissibility Decision Gate: `06-composition-
 rules.md` — EXECUTED.** Not a research phase — a governance gate, following MD-031's own named next
 action. Presented formally via a direct question despite the user having also stated a preference in
 prose, per the "do not infer the decision" discipline and the MD-028-DQ-1 precedent. **Decision:

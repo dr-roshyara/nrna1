@@ -1,5 +1,33 @@
-**Updated:** 2026-09-08 (latest) — **MD-032 COMPLETE — HUMAN ADMISSIBILITY DECISION GATE:
-`06-COMPOSITION-RULES.MD`.** Not a research phase — a narrowly-scoped governance gate, following
+**Updated:** 2026-09-08 (latest) — **MD-033 COMPLETE — CONTROLLED VALIDATE SPECIFICATION-SUFFICIENCY
+AND V6 ADJUDICATION.** Read `03-capability-model.md`/`04-operator-contracts.md` cold, in full, for
+the first time in this reconstruction (previously known only via other studies' citations); reused
+`06`'s own already-completed MD-031 cold read. **Central finding**: `Validate`'s happy-path contract
+is fully closed by admissible evidence — atom `warrant-assessment`, input
+`{Claim,Evidence}`/`{Hypothesis,Evidence}`, output `Verdict`, stated responsibility, and — newly
+established — **no state effect** (`04`: "State effects = none, except `Revise`"). **`V6` confirmed
+absent from all three admitted files** (exhaustive grep, not a sample) — the lane does name `V1`
+(`03`), `V4` (`04`), `V5` (`03`), each pointing to the unadmitted `12-randomized-results.md` for
+detail, but never `V6`. Classified `V6 NOT ACTUALLY ESTABLISHED BY ADMISSIBLE EVIDENCE` — distinct
+from a live unresolved contradiction, since V6 simply has no presence in the admissible population.
+**Preconditions/postconditions/failure/error semantics remain `NOT SPECIFIED BY SOURCE`** — an
+exhaustive census (zero hits for the full required search-term list) confirms this. **Final verdict:
+B — SPECIFICATION PARTIALLY SUFFICIENT; ONE OR MORE MATERIAL GAPS REMAIN.** Not A (real gaps exist);
+not C (MD-029 already reached a defensible `FUNCTIONAL ANALOGY` result with *less* information than
+is now closed); not D (V6's absence from admissible evidence means it isn't a live blocker — the
+more fundamental gaps are precondition/postcondition/failure semantics, independent of V6).
+**Smallest next action: a targeted characterization study of `12-randomized-results.md`** — not a
+composition test, not an executable-lane admission. No classification changed; no frozen artifact
+(MD-024–032) modified; `classification-register.tsv` untouched; no executable artifact admitted; no
+code executed; `theory-extraction/`/`knowledgeos-sim/`/`verification/` untouched; no model selected;
+no Stage 07; no canonicalization; K-1/K-2 untouched. Verified: both consistency scripts
+`CONSISTENT`; MD-024–032 and the three admitted files confirmed unmodified; only the new
+`14_decision-log/MD-033-validate-specification-v6-adjudication/` directory (11 files) written. Full
+record: `14_decision-log/model-boundary-decisions.md` → MD-033 execution record. **MD-033
+COMPLETE — HARD STOP.** Awaiting separate authorization for any further step. This session's work
+is being committed now, per explicit instruction.
+
+**Superseded-update-marker-54 (2026-09-08, earlier) — MD-032 COMPLETE — HUMAN ADMISSIBILITY DECISION
+GATE: `06-COMPOSITION-RULES.MD`.** Not a research phase — a narrowly-scoped governance gate, following
 MD-031's own named next action. Despite the user stating a preference in prose within the same
 authorizing message, the decision was put to them formally via a direct question (four options,
 matching the authorization's own text), per the "do not infer the decision" instruction and the

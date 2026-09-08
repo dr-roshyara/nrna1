@@ -3295,3 +3295,48 @@ written.
 **MD-032 status: COMPLETE — 06-COMPOSITION-RULES.MD ADMITTED, NARROW SCOPE. Awaiting separate
 authorization for any further step — including any composition test, any V6 adjudication, or any
 executable-lane admission.**
+
+---
+
+## MD-033 — Controlled Validate Specification-Sufficiency and V6 Adjudication (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit, no blocking disagreement. Read all three admissible files
+(`03-capability-model.md`, `04-operator-contracts.md`, `06-composition-rules.md`) cold — `03` and
+`04` in full for the first time in this reconstruction (previously known only through other studies'
+citations); `06` reused from MD-031's own already-completed cold read.
+
+**Central finding**: `Validate`'s happy-path contract is fully closed by admissible evidence — atom
+`warrant-assessment`, input `{Claim,Evidence}`/`{Hypothesis,Evidence}`, output `Verdict`, stated
+non-reducible responsibility ("assign warrant given evidence + assumptions"), and — newly
+established here — **no state effect** (`04`'s "Common to all" contract: "State effects = none,
+except `Revise`"). **`V6` is confirmed absent from all three admitted files** (an exhaustive grep,
+not a sample) — not contradicted, not a live unresolved disagreement inside the admissible evidence,
+simply never named. The admissible lane does discuss robustness variants generally: `03` names `V1`
+(merging C2/C3, rejected) and `V5` (merging C12/C13); `04` names `V4` (attacking the
+`DetectGap`-exclusivity assumption) — both citing "§12" (`12-randomized-results.md`, not admitted,
+not read as evidence) for elaboration. **Preconditions, postconditions, and failure/error semantics
+remain `NOT SPECIFIED BY SOURCE`** — an exhaustive census (zero hits for the entire required search-
+term list, across all three files) confirms this, not a sample.
+
+**Final verdict: B — SPECIFICATION PARTIALLY SUFFICIENT; ONE OR MORE MATERIAL GAPS REMAIN.** Not A
+(the happy path is closed, but real gaps remain); not C (MD-029 already reached a defensible
+`FUNCTIONAL ANALOGY` result using *less* information than is now closed); not D (`V6`'s absence from
+admissible evidence means it is not a live blocker for evidence-scoped work — the genuine, more
+fundamental gaps are precondition/postcondition/failure semantics, independent of V6).
+
+**Smallest next action**: a targeted characterization study of `12-randomized-results.md` — the file
+both admitted narrative sources themselves cite for variant detail — mirroring this programme's own
+established characterize-before-admit discipline. Not a composition test; not an executable-lane
+admission; not a V6 resolution attempt in isolation.
+
+**No classification changed. No frozen artifact (MD-024–032) modified. `classification-register.tsv`
+untouched. No executable artifact admitted. No code executed. `theory-extraction/`,
+`knowledgeos-sim/`, `verification/` untouched. No model selected. No Stage 07. No canonicalization.
+K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–032,
+`03`/`04`/`06` confirmed unmodified; only the new
+`14_decision-log/MD-033-validate-specification-v6-adjudication/` directory (11 files) written.
+
+**MD-033 status: COMPLETE — VERDICT B. HARD STOP. Awaiting separate authorization for any further
+step.**
