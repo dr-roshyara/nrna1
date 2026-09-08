@@ -3639,3 +3639,61 @@ and the entire kernel-reduction directory confirmed unmodified; only the new
 **MD-038 status: COMPLETE — HARD STOP. Four files admitted, narrow scope; thirteen remain outside.
 No formal definition exists to admit. No downstream scientific work authorized by this decision.
 Awaiting separate authorization for any further step.**
+
+---
+
+## MD-039 — Semantic Kernel Equivalence Feasibility Audit (EXECUTED, 2026-09-08)
+
+**Authorization**: separate, explicit. One language correction accepted, applied forward, not
+retroactive: MD-038's own backlog-housekeeping text called three same-cause collisions "independent"
+— corrected to "repeated symptoms of one mechanism," since all three share one root cause. Re-read
+`19-directive-adoption-and-research-restructure.md` §7 directly, cold, per the authorization's own
+instruction not to rely only on MD-038's own reconstruction of it.
+
+**Central finding**: the admitted "Semantic Kernel Equivalence" framework (`19` §7) is **not
+sufficient to formalize "surviving a defeater"** — its own behavioural-equivalence tuple `B` (six
+components) and epistemic-preservation vector `P` (ten components, including `Warrant`, the one
+dimension closest to the missing predicate) name slots without defining any computation rule for any
+of them. The framework's own text states it should not even be run before two prerequisite research
+levels (state type; semantic equivalence) are answered — both explicitly marked `OPEN` in the same
+document's own restructure table. **Classification: the framework contains enough structure to serve
+as a test apparatus, but requires an externally-supplied semantic definition it cannot itself
+generate** — a more specific and consequential finding than MD-037's own "no definition found," since
+it shows even the corpus's own proposed next instrument presupposes the definition as an input.
+
+**A labeled hypothetical diagnostic only** (never a proposed result, per the authorization's own
+binding prohibition) shows the minimum information deficit is the entire predicate body, not a single
+field: of six plausible argument slots for a `Survives(d,…)` shape, only `d : Defeater` itself is
+fully source-grounded.
+
+**V0/V6 re-examined via the three required levels**: Level 1 (representation) closed, independent of
+the new framework (already established via `06`'s own machinery). Level 2 (behaviour) only partially
+closed — the narrow reachability question is already answered (MD-036, via pre-existing machinery,
+not the new framework), the full `B`-tuple is not computable. Level 3 (epistemic semantics) remains
+open, not inferred from Levels 1/2. **The framework cannot establish anything beyond MD-036's own
+`STRUCTURAL CORRESPONDENCE`, and cannot even independently re-derive it** — that finding rests on
+pre-existing, already-admitted machinery, not on the new framework.
+
+**Statistical discipline re-confirmed**: no formal implication for `Validate` has been established
+from the OLS/confounding analogy — statistical motivation exists, nothing more.
+
+**Final verdict: B — framework is a test apparatus, requires an external semantic definition.** Not A
+(no derivation capability); not C (the apparatus's own comparison logic is well-formed, only its
+inputs are undefined); not D (too final — the framework has a designated place, `Warrant`, to
+eventually receive a definition); not E (evidence was comprehensive and conclusive).
+
+**No backlog ticket filed** — nothing new and process-shaped surfaced; this study is purely internal
+science.
+
+**No classification changed. No frozen artifact (MD-024–038) modified. No source file modified. No
+code inspected or executed. No composition test. No model selected. No Stage 07. No canonicalization.
+K-1/K-2 untouched.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; MD-024–038 and
+the entire kernel-reduction directory confirmed unmodified; only the new
+`14_decision-log/MD-039-semantic-kernel-feasibility/` directory (12 files) written.
+
+**MD-039 status: COMPLETE — HARD STOP. Framework characterized as an inoperable-without-external-
+input test apparatus. Smallest next step, if pursued: a study of whether any admissible or
+characterized source supplies a computable account of `Warrant` — named, not authorized. Awaiting
+separate authorization for any further step.**

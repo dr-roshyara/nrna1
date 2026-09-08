@@ -1185,7 +1185,20 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-08 (latest): MD-038 — Defeater-Semantics Evidence Admission Preparation —
+**Status update, 2026-09-08 (latest): MD-039 — Semantic Kernel Equivalence Feasibility Audit —
+EXECUTED.** Re-read `19` §7 fresh, cold. **Central finding**: the admitted framework (behavioural
+tuple `B`, epistemic-preservation vector `P`) names 16 component slots with no computation rule for
+any of them — including `Warrant`, the dimension closest to "surviving a defeater" — and its own text
+says it should not be run before two prerequisite research levels are answered, both marked `OPEN` in
+the same document. **Classification: a test apparatus requiring an externally-supplied definition it
+cannot generate** — sharper than MD-037's own "no definition found," since even the corpus's own
+proposed instrument presupposes the definition as input. A labeled hypothetical diagnostic (never a
+proposed result) shows the deficit is the entire predicate body, not one field. **The framework
+cannot establish anything beyond MD-036's own `STRUCTURAL CORRESPONDENCE`** — that finding rests on
+pre-existing machinery, not the new framework. **Verdict: B.** No backlog ticket — purely internal
+science this time. No V6 selection, no composition test, no code inspected.
+
+**Status update, 2026-09-08 (earlier): MD-038 — Defeater-Semantics Evidence Admission Preparation —
 EXECUTED.** Applied a correction to MD-037's own "independent corroboration" language throughout
 (recorded forward, not retroactively edited): same-author-layer documents are corroboration within a
 common provenance lineage, never independent replication. Built a per-file admission matrix for all

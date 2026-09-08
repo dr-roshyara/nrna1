@@ -1,5 +1,41 @@
-**Updated:** 2026-09-08 (latest) — **MD-038 COMPLETE — DEFEATER-SEMANTICS EVIDENCE ADMISSION
-PREPARATION.** Applied a methodological correction to MD-037's own "independent corroboration"
+**Updated:** 2026-09-08 (latest) — **MD-039 COMPLETE — SEMANTIC KERNEL EQUIVALENCE FEASIBILITY
+AUDIT.** Re-read `19` §7 directly and cold (not reused from MD-038's own reconstruction), per the
+authorization's explicit instruction. Applied a language correction to MD-038's own backlog text
+(three same-cause collisions called "independent" — corrected to "repeated symptoms of one
+mechanism"). **Central finding**: the admitted "Semantic Kernel Equivalence" framework is **not
+sufficient to formalize "surviving a defeater"** — its behavioural tuple `B` (six components) and
+epistemic-preservation vector `P` (ten components, including `Warrant`, the dimension closest to the
+missing predicate) name slots with no computation rule for any of them; the framework's own text says
+it should not be run before two prerequisite research levels are answered, both marked `OPEN` in the
+same document's own table. **Classified precisely**: a genuine test apparatus (well-formed comparison
+logic, reusing already-established machinery for two sub-components) that **requires an externally-
+supplied semantic definition it cannot itself generate** — sharper than "no definition found," since
+even the corpus's own proposed instrument presupposes the definition as input. A labeled hypothetical
+diagnostic (never presented as a result) shows the deficit is the entire predicate body — of six
+plausible argument slots for a survival predicate, only `d : Defeater` itself is fully source-
+grounded. **V0/V6 re-examined through the three required levels** (representation/behaviour/
+epistemic semantics, never inferring one from another): **the framework cannot establish anything
+beyond MD-036's own `STRUCTURAL CORRESPONDENCE`, and cannot even independently re-derive it** — that
+finding rests entirely on pre-existing, already-admitted machinery (`06`'s own derivation apparatus),
+not on the new framework. Statistical discipline re-confirmed: the OLS/confounding analogy
+establishes no formal implication for `Validate`. **Final verdict: B — framework is a test apparatus,
+requires an external semantic definition.** Not A (no derivation capability); not C (the apparatus's
+own logic is well-formed, only its inputs are undefined); not D (too final — `Warrant` is a
+designated place to eventually receive a definition); not E (evidence comprehensive and conclusive).
+**No backlog ticket filed** — purely internal science this time, nothing new surfaced. No
+classification changed; no frozen artifact (MD-024–038) modified; no source file modified; no code
+inspected/executed; no composition test; no model selected; no Stage 07; no canonicalization; K-1/
+K-2 untouched. Verified: both consistency scripts `CONSISTENT`; MD-024–038 and the entire kernel-
+reduction directory confirmed unmodified; only the new
+`14_decision-log/MD-039-semantic-kernel-feasibility/` directory (12 files) written. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-039 execution record. **MD-039 COMPLETE — HARD
+STOP.** Smallest next step, if pursued: a study of whether any source supplies a computable account
+of `Warrant` — named, not authorized. Awaiting separate authorization for any further step. This
+session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-60 (2026-09-08, earlier) — MD-038 COMPLETE — DEFEATER-SEMANTICS EVIDENCE
+ADMISSION PREPARATION.** Applied a methodological correction to MD-037's own "independent
+corroboration"
 language throughout (recorded forward, not retroactively edited): documents sharing an author-layer
 are corroboration within a common provenance lineage, never independent replication. **Built a
 per-file admission matrix for all 17 MD-037-characterized files**, no directory-level
