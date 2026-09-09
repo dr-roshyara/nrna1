@@ -192,3 +192,43 @@ outside the folders the reading lane is routinely pointed at**, which is part of
 never met.
 
 ⛔ **No position is taken on the ARB routing, and no act is proposed.**
+
+---
+
+## Appended 2026-09-09 — a **fifth** type is needed, and §5's own warning has come true
+
+**From `P-90`** (`docs/knowledgeos/theory-extraction/111-P90-…`).
+
+§5 asked that an open item carry an agreed type — *derivation, decision, experiment or definition* —
+and warned:
+
+> ⭐ *"A vocabulary that forces a single label will produce exactly this conflict again on the next item
+> that genuinely has both parts."*
+
+⭐⭐⭐ **It has, on the same item, and the missing label is a fifth one.**
+
+A third register — separate from both already recorded here — classifies the operation family as
+**`CLOSED / PARAMETRIC`**, and glosses the term explicitly:
+
+> ⭐⭐ ***"`CLOSED/PARAMETRIC` is not a euphemism for open. It means the node is fully determined once a
+> deployment declares its parameter, and the corpus deliberately declines to declare it."***
+
+$$\boxed{\begin{array}{c}\textbf{So one lane types the item a } \mathbf{DECISION\ for\ ARB}\textbf{; another types it a}\\ \mathbf{PARAMETER\ for\ a\ DEPLOYMENT.} \textbf{ ⛔ Neither is *derivation* or *decision* as §5 offered them.}\end{array}}$$
+
+### Why the fifth type matters more than the count
+
+⭐⭐ **A deployment parameter and a governance decision go to different people, at different times, with
+different force.** A governance decision is taken **once, for the programme**; a deployment parameter is
+declared **per installation, by whoever installs it** — ⛔ **and a rule that binds the programme cannot
+be delegated to an installer without someone noticing.**
+
+⚠️ **Today nobody notices**, because the two classifications live in registers that do not cite each
+other, and **both are internally coherent.**
+
+### What this adds
+
+⭐ **The candidate requirement stands, with the vocabulary widened:** *derivation · decision ·
+experiment · definition ·* ⭐⭐ **deployment parameter** — ⛔ **and "partly one, partly another" must
+remain expressible, which was §5's second property and is now demonstrated rather than anticipated.**
+
+⛔ **No position is taken on which classification is correct for this item.**
