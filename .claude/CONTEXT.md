@@ -1,5 +1,42 @@
-**Updated:** 2026-09-09 (latest) — **MD-066 COMPLETE — CHRONOLOGICAL DEFINITION RECONSTRUCTION,
-FINAL DETERMINATION B, HARD STOP.** User, concerned MD-063/064's "no boundary found" findings may
+**Updated:** 2026-09-09 (latest) — **MD-067 COMPLETE — F4 THEORY EVOLUTION GRAPH (full 876-file
+chronological queue-driven re-audit of MD-066), FINAL DETERMINATION B strengthened toward A, HARD
+STOP.** User, having reviewed MD-066, supplied an authoritative chronological reading queue and
+required a full, unfiltered, queue-order traversal ("the queue controls chronology; the content
+determines relevance"), explicitly stating MD-066 does not satisfy this requirement. Two rounds of
+scope clarification (via AskUserQuestion): declined a full 5,968-file traversal from generic `K_t`'s
+Aug-22 birth as "corpus-wide archaeology"; anchored instead to the specific F4 lineage's own birth
+point, resolved to the math lane only (M0001, Sep 1) after verifying it does not cite
+`phase_measure_theory/`'s Aug-26/27 precursor thread. **Executed**: 876 files (M0001 → end of queue,
+Sep 1–Sep 9), read in full, strict order, no keyword pre-filtering, via 15 parallel batch-reading
+subagents, building a full Theory Evolution Graph (typed edges: DEFINES/REFINES/EXTENDS/SPECIALIZES/
+USES/DEPENDS_ON/BRIDGES_TO/CONTRADICTS/REJECTS/SUPERSEDES/RETIRES/VARIANT_OF/SAME_LINEAGE_AS/
+UNRELATED_HOMONYM) plus per-object evolution histories for all 15 tracked terms. **Central finding**:
+a 21-part "KnowledgeOS Verified Theory" rewrite (Sep 6, one continuous session, entirely outside
+MD-066's own evidence base) **defines** the missing interpretation/evaluation step —
+`Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)` — with two proved theorems, a full worked example through to
+Decision/Authorization/Action/Outcome, and eight further proved domain instantiations. **Critical,
+disclosed qualification (the graph's most load-bearing finding)**: unlike 11 other major closure
+claims traced through the same corpus (each contradicted/refuted within the same or next session —
+FOL-entailment Sat, ASK≠Sat/TELL≠Req, Hilbert-space refutation, `ℛ_req` ratify-then-dispute cycles,
+KR-BRIDGE-01's definitive negative result), **this specific `Sat` definition received no adversarial
+review anywhere in the remaining ~114 traversed positions** — a same-lineage Gita cross-check reports
+only 4/14 kernel overlap with an independent closure computation. **Correction to MD-066 (text
+unedited, weight not scope)**: MD-066's own named "smallest next action" is answered yes, by a
+different lineage than the one it was tracking; MD-062's `Sat*`-omits-`EC_t` finding stands unaffected
+(a different, earlier construction); MD-063/064 unaffected in substance. Two genuine terminology
+collisions recorded: `Δ_t` denotes both the tracked Sat-gap object and an unrelated "transition-
+residue" object (never reconciled); `App` (Applicability) was introduced once and never reintroduced
+by the decisive `Sat` pipeline — abandoned, not resolved. **Final Determination: B — FOUND BUT
+INCOMPLETE, materially strengthened toward A, with full A explicitly withheld** for the disclosed
+no-adversarial-review reason. No backlog ticket newly required (`EKS-41` already covers the `ℛ_req`
+collision class). Verified both consistency scripts `CONSISTENT`; no frozen artifact touched;
+firewalls held throughout (confirmed: no `theory-extraction/` path was read). **MD-067 status:
+COMPLETE. HARD STOP** per the user's own explicit instruction. Smallest next research input, named,
+not authorized: an independent adversarial review of the Theory-00-21 rewrite's Part VI `Sat`
+definition.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-066 COMPLETE — CHRONOLOGICAL
+DEFINITION RECONSTRUCTION, FINAL DETERMINATION B, HARD STOP.** User, concerned MD-063/064's "no boundary found" findings may
 have been premature, commissioned a chronological (not keyword-search) re-read of the corpus from
 2026-08-31 onward around `EC_t→Req(EC_t)→r→???→Sat(K_t,r)`. **Disclosed method deviation** (stated
 up front, not contradicted before completion): a literal blind full-corpus read would duplicate this

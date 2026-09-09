@@ -1185,7 +1185,41 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-066 — Chronological Definition Reconstruction —
+**Status update, 2026-09-09 (latest): MD-067 — F4 Theory Evolution Graph (876-file chronological
+queue-driven re-audit of MD-066) — EXECUTED, FINAL DETERMINATION B strengthened toward A, HARD STOP.**
+User, reviewing MD-066, supplied an authoritative chronological reading queue and required a full,
+unfiltered, queue-order traversal, stating MD-066's diagnostic-triage method did not satisfy this. Two
+scope-clarification rounds (both via AskUserQuestion, both narrowing my own initial "full traversal"
+framing): declined 5,968 files from generic `K_t`'s Aug-22 birth as "corpus-wide archaeology";
+anchored to the F4 lineage's own birth point (M0001, math lane only, Sep 1), after verifying it does
+not cite `phase_measure_theory/`'s own Aug-26/27 precursor thread. **Executed**: 876 files read in
+full, strict queue order, no keyword pre-filtering, via 15 parallel batch-reading subagents, building
+a Theory Evolution Graph (typed edges: DEFINES/REFINES/EXTENDS/SPECIALIZES/USES/DEPENDS_ON/
+BRIDGES_TO/CONTRADICTS/REJECTS/SUPERSEDES/RETIRES/VARIANT_OF/SAME_LINEAGE_AS/UNRELATED_HOMONYM) plus
+per-object evolution histories for all 15 tracked terms. **Central finding**: a 21-part "KnowledgeOS
+Verified Theory" rewrite (Sep 6, one continuous session, entirely outside MD-066's own evidence base)
+**defines** the missing interpretation/evaluation step — `Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)` —
+with two proved theorems, a full worked example through to Decision/Authorization/Action/Outcome, and
+eight further proved domain instantiations. **Disclosed qualification, the graph's most load-bearing
+finding**: unlike 11 other major closure claims traced through the same corpus (each contradicted or
+refuted within the same or next research session), this specific definition received no adversarial
+review anywhere in the remaining ~114 traversed positions — a same-lineage sibling (a Gita cross-check)
+reports only 4/14 kernel overlap against an independent closure computation. **Correction to MD-066
+(text unedited, weight not scope)**: MD-066's own named "smallest next action" is answered yes, by a
+different lineage than the one it was tracking; MD-062's `Sat*`-omits-`EC_t` finding stands unaffected
+(a different, earlier construction); MD-063/064 unaffected in substance. Two genuine terminology
+collisions recorded: `Δ_t` (Sat-gap vs. an unrelated "transition-residue" sense, never reconciled) and
+`App` (Applicability, introduced once, never reintroduced by the decisive `Sat` pipeline — abandoned,
+not resolved). **Final Determination: B — FOUND BUT INCOMPLETE, materially strengthened toward A,
+with full A explicitly withheld** for the disclosed no-adversarial-review reason. No new backlog
+ticket (`EKS-41` already covers the collision class). Verified both consistency scripts `CONSISTENT`;
+no frozen artifact (MD-024–066) modified; no `theory-extraction/` path read — firewalls held
+throughout. **MD-067 status: COMPLETE. HARD STOP** per the user's own explicit instruction — no
+MD-068 opened. Smallest next research input, named, not authorized: an independent adversarial review
+of the Theory-00-21 rewrite's Part VI `Sat` definition, mirroring the discipline every other major
+claim in this corpus received before being treated as settled.
+
+**Status update, 2026-09-09 (earlier): MD-066 — Chronological Definition Reconstruction —
 EXECUTED, FINAL DETERMINATION B, HARD STOP.** User, concerned MD-063/064's own "no boundary found"
 findings may have been premature, commissioned a chronological (not keyword-search) re-read of the
 corpus from 2026-08-31 onward around `EC_t→Req(EC_t)→r→???→Sat(K_t,r)`. Disclosed method deviation

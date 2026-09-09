@@ -5574,3 +5574,92 @@ diagnostic-matched math-lane files and the `phase_measure_theory/` Step-023→09
 this phase's own B determination survives a fuller read; (b) investigate whether M0140's typed
 pipeline was itself later extended to consume `EC_t`, in files dated after 2026-09-02 18:00 not yet
 examined.
+
+---
+
+## MD-067 — F4 Theory Evolution Graph (Layer 3: full chronological queue-driven re-audit of MD-066)
+
+**Authorization**: user reviewed MD-066, provided an authoritative chronological reading queue
+(`docs/knowledgeos/brainstorming/20260909-185001_files-to-read-one-by-one.log.md`) and instructed a
+full, unfiltered, queue-order traversal from the topic's genuine birth point, with an explicit
+non-negotiable rule ("the queue controls chronology; the content determines relevance") and an
+explicit statement that MD-066 does not satisfy the chronological-reading requirement.
+
+**Scope resolution (two rounds of user clarification, both resolved via AskUserQuestion)**: (1) a full
+5,968-file traversal from generic `K_t`'s first appearance (Aug 22) was explicitly declined by the
+user as "corpus-wide archaeology," in favor of anchoring to the specific F4 requirement-satisfaction
+lineage's own birth point; (2) verification found the math lane's own precursor material (M0001
+onward, Sep 1) does not cite `phase_measure_theory/`'s Aug 26-27 Gap/Ideal-State thread — a genuinely
+material ambiguity between two candidate birth points — resolved by the user in favor of the math lane
+only (M0001, queue line 5123), since that is what this reconstruction has consistently meant by "F4."
+
+**Execution**: **876 files** (M0001 through the end of the queue, Sep 1 15:00 → Sep 9), read in full,
+strict queue order, no keyword pre-filtering, via 15 parallel batch-reading subagents (each a ~60-file
+chunk), each producing a structured per-file record (D/R/O/B/C/V/U/N classification, with source
+quotes). All 876 records verified present and consumed to build a Theory Evolution Graph per the
+user's own detailed edge-type specification (DEFINES/REFINES/EXTENDS/SPECIALIZES/USES/DEPENDS_ON/
+BRIDGES_TO/CONTRADICTS/REJECTS/SUPERSEDES/RETIRES/VARIANT_OF/SAME_LINEAGE_AS/UNRELATED_HOMONYM).
+
+**Central finding, decisive and materially correcting MD-066's own evidence base**: a 21-part
+"KnowledgeOS Verified Theory and Mathematical Foundation" rewrite (2026-09-06, 00:16–10:00, one
+continuous ~10-hour session, entirely outside MD-066's own 10-file evidence base) **defines the exact
+missing interpretation/evaluation step**: `Sat(K,r,Γ) = Det_r(EvalReq(K,r,EC,Γ), EC)` (Part VI, Def
+6.18), with `Eval:K×E×P×EC×Γ→𝒱` fully typed, two independently PROVED theorems (Determination-Gap
+Equivalence; Requirement-Complete Determination), a fully worked concrete example tracing
+`EC_t→Req→Sat→Δ→Zero→Det→Decision→Authorization→Action→Outcome` end to end, and eight further proved
+domain instantiations (temporal/uncertainty/causal/model-forecast/risk-decision/architecture/
+persistence/retrieval-RAG/reasoning-engine — several with their own proved theorems, e.g. the
+Decision-Theoretic Separation Theorem: Determination ⇏ unique Decision). **Critical, disclosed
+qualification, itself the graph's most load-bearing finding**: unlike every other major closure claim
+traced through this same 876-file corpus (11 distinct contradiction/refutation events catalogued, each
+within the same or next research session — FOL-entailment Sat rejected same-day, ASK≠Sat/TELL≠Req
+rejected same-day, Hilbert-space semantic-equivalence refuted by concrete witness, `ℛ_req`
+ratify-then-dispute cycles, KR-BRIDGE-01's definitive negative causal result, etc.), **this specific
+`Sat` definition received no adversarial review, audit, or ratification event anywhere in the
+remaining ~114 traversed positions** — the corpus simply stops engaging with it and pivots to unrelated
+threads (Zoom/Biocomm/Epistemic-Value/GoF-patterns, then the entire K-1/K-2 Assertion-governance
+track). A same-lineage sibling document (`[05-59]`, a Gita cross-check) reports only 4/14 overlap
+between this theory's own proposed kernel and an independently-computed closure — a corroboration-
+failure signal for the broader rewrite, though not a direct test of `Sat` itself.
+
+**Correction to MD-066 (its own text unedited, weight not scope)**: MD-066's B determination is
+materially strengthened — the specific gap it named as its own smallest next action ("does a later
+file extend the pipeline to consume `EC_t`?") is answered **yes**, by a different lineage than the one
+MD-066 was tracking. MD-062's `Sat*`-omits-`EC_t` finding stands unaffected for the specific
+construction it examined (a different, earlier, non-`EC_t`-consuming `Sat*`) — both findings are
+recorded side by side, not merged. MD-063/064 (M0125-vs-M0043 `Sat` identity) are unaffected in
+substance — a narrower question this graph does not newly bear on.
+
+**Object evolution histories built for all 15 tracked objects** (`K_t`, `EC_t`, `Req/r`, `standard`,
+`App`, `Sat`, `Eval_c`, `Evidence`, `Reason`, `Provenance`, `Context`, `Condition`, `Determination`,
+`Decision`, `Δ_t`) — two notable genuine terminology collisions found and recorded: `Δ_t` denotes both
+the tracked Sat-gap object AND an unrelated "transition-residue" object (`[04-27]`/`[04-28]`, never
+reconciled); `App` (Applicability, introduced `[00-55]`) was never reintroduced by the decisive `Sat`
+pipeline and is effectively abandoned, not resolved.
+
+**Final Determination: B — FOUND BUT INCOMPLETE, materially strengthened toward A, with full A
+explicitly withheld** for the one precise, disclosed reason above (no adversarial review of the
+decisive definition, against a corpus that reviews everything else of this significance).
+
+**No backlog ticket newly required** — `EKS-41` (the `ℛ_req` homonym) already covers the one
+genuine, previously-undocumented naming collision surfaced again in this pass; the `Δ_t`
+transition-residue/Sat-gap homonym is recorded in this phase's own artifacts as a further instance of
+the same class of finding, not filed as a separate ticket (same underlying operating-model problem
+`EKS-27`/`EKS-41` already track).
+
+**No classification changed. No frozen artifact (MD-024–066) modified. No `Sat_new` constructed. No
+`K_t` selected. No `≡_sem` resolved. No F3↔F4 work performed. No canonical theory decided.** K-1/K2
+untouched. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled
+throughout — confirmed: the traversal's scope was `mathematical_ideas_that_can_be_implemented/` plus
+already-committed `three_model_convergence/14_decision-log/` artifacts predating the queue snapshot;
+no `theory-extraction/` path was read.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-067-f4-theory-evolution-
+graph/` directory (4 files) plus this entry written; 15 batch-reading subagent transcripts and their
+876-record ledgers retained in the session scratchpad (not part of the governed corpus).
+
+**MD-067 status: COMPLETE. HARD STOP** per the user's own explicit instruction — no further phase
+automatically opened. Smallest next research input, named, not authorized: an independent adversarial
+review of the Theory-00-21 rewrite's Part VI `Sat` definition, mirroring the discipline every other
+major claim in this corpus received before being treated as settled.
