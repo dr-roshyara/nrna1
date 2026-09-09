@@ -1,5 +1,42 @@
-**Updated:** 2026-09-09 (latest) — **MD-059 COMPLETE — CONTROLLED SEMANTIC INSTANTIATION OF F4 (MODEL
-B `K_t`/`Δ_t`), HARD STOP.** First attempt to add a second real semantic instantiation to F1–F6/K0
+**Updated:** 2026-09-09 (latest) — **MD-060 COMPLETE — CONTROLLED F4 `K_t` VARIANT RECONSTRUCTION AND
+SEMANTIC ADJUDICATION, GATE B, HARD STOP.** User validated MD-059, recommended reconciling F4's own
+`K_t` variant family before the F3↔F4 bridge, and authorized a bounded census-and-adjudication study
+("reconcile" ≠ "choose one and declare canonical"). **Executed a genuine primary-source census** (8
+files opened directly: M0001/M0006/M0009/M0043/M0048/M0076/M0125/M0126, plus M0287) — **found 12
+distinct `K_t` formulations** against Model B's own register-level "9+" count (a disclosed
+refinement, internal-document variants counted individually per this reconstruction's own standing
+discipline). Structural clusters: probabilistic (V1/V3), flat-tuple (arity 4–11, six members),
+deliberately abstract (`K_t∈𝕂` by design, M0043), relational/graph (`K=(D,R)`, M0287), and one
+meta-level claim that `K_t` is a projection of a richer object rather than primary (unaddressed by
+every other variant). **Pairwise adjudication**: 1 **FORMALLY EQUIVALENT, CONDITIONAL** pair (both
+probabilistic, equal only under two disclosed unverified assumptions); 2 same-document **STRUCTURAL
+CORRESPONDENCE/REFINEMENT, ASSERTED not proven** pairs (a third recurrence of the step-261 notation-
+drift pattern already found in MD-057/059, now in a different candidate family); 1 **FUNCTIONAL
+ANALOGY**; 1 **demonstrated INCOMPATIBLE finding** — probabilistic credences and categorical
+provenance/status fields cannot be inter-derived without an invented conversion. **All remaining
+pairs UNRESOLVED.** **Semantic-core hypothesis**: attempted falsification — the strong form (full
+mutual inter-translatability) is **FALSIFIED** by the same concrete counterexample; a weak,
+non-formal residue survives (universal time-indexing, a shared informal "epistemic state at t"
+framing). **The most consequential finding, correcting MD-059's own framing (MD-059's own text NOT
+edited)**: `Sat(K_t,r)`'s own signature is stated over the deliberately abstract `K_t∈𝕂`, not any
+specific tuple, and a second, independent source (M0048) proposes its own `Sat` signature over its
+own different tuple — **neither cites the other, and neither supplies a body.** This generalizes
+MD-059's own diagnosis: reconciling the `K_t` family is real, necessary work (it resolves four other
+named gaps) but is **necessary, not sufficient**, for making `Sat` computable — the actual blocker is
+independent of which variant, or how many, get reconciled. **Representation-independence attack**:
+since no `Sat` body exists to test, applied instead to the census's own adjudication method (disclosed
+substitute) — admissibility of `K_t` representation-change is **not corpus-defined** as a general
+rule; two of six required transformations have single, variant-specific precedents, neither a general
+rule. The census's own pairwise findings do not depend on this and stand regardless. No candidate
+chosen, no variant declared canonical, no component semantics invented, no F3↔F4 bridge attempted. No
+backlog ticket (scientific findings, fully recorded in the phase's own artifacts). Verified both
+consistency scripts `CONSISTENT`; no frozen artifact touched; firewalls held. **MD-060 status:
+COMPLETE. GATE B — `Sat(K_t,r)` cannot yet be instantiated. HARD STOP.** Smallest remaining research
+input, named, not authorized: a research act constructing a concrete `Sat(K_t,r)` body for at least
+one `K_t` variant — reconciling the family first is not a precondition.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-059 COMPLETE — CONTROLLED
+SEMANTIC INSTANTIATION OF F4 (MODEL B `K_t`/`Δ_t`), HARD STOP.** First attempt to add a second real semantic instantiation to F1–F6/K0
 beyond F3. User validated MD-058, corrected its "only candidate mathematically satisfying the
 requirements" phrasing to "only primitive presently constructible without an additional modelling
 choice given current corpus" (MD-058's own text not edited), and authorized F4 as the target — the

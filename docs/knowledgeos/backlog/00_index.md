@@ -161,3 +161,12 @@ conclusion — this is a file that should not read as a corpus file at all), `EK
 internally-produced work — this is missing provenance on externally-produced work), and `EKS-19`
 (session-authorization overlap — unrelated to a single file's own misleading signal); distinct on all
 three.
+
+**EKS-31 extended 2026-09-09** from the three-model-convergence reconstruction's own MD-060 —
+**occurrence 2, same day.** A second file of the identical shape,
+`mathematical_ideas_that_can_be_implemented/# F4 Handover Audit — post-MD-059.md` (15:32, 39 120
+bytes), was found sitting beside the first, its own content duplicated verbatim twice within itself.
+Same profile throughout: no dated-filename convention, content built explicitly on this
+reconstruction's own MD-058/059 output, saved directly into the primary corpus directory. **Not
+refiled** — recorded as a second occurrence of the same structural gap, strengthening rather than
+changing the candidate requirement in `EKS-31` §4.

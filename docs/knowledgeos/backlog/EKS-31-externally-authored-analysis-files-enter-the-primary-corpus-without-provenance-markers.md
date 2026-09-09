@@ -105,6 +105,19 @@ primary corpus directory without a marking convention.
 * `14_decision-log/MD-059-f4-semantic-instantiation/00_index.md` and `07_final-judgment.md` — this
   finding's own full characterization and provenance labeling of the file as a cross-check input.
 
+## 8 · Second occurrence, 2026-09-09 (same day, later)
+
+A second file of the identical shape was found:
+`mathematical_ideas_that_can_be_implemented/# F4 Handover Audit — post-MD-059.md` (created 15:32,
+39 120 bytes, its own content duplicated verbatim twice within itself — a further, distinct data-
+hygiene defect on top of the provenance one this ticket tracks). Same profile as the first instance:
+no dated-filename convention, content explicitly built on this reconstruction's own MD-058/059
+output, saved directly into the primary corpus directory. **Recorded here as occurrence 2**, per this
+reconstruction's own "record recurrence, don't refile" discipline (`EKS-16`'s own precedent) — full
+characterization in `14_decision-log/MD-060-f4-kt-variant-reconstruction-and-adjudication/
+00_index.md` §6. The candidate requirement (§4) is unchanged by this recurrence; it is simply
+stronger evidence that the gap is structural and will keep recurring absent a marking convention.
+
 ---
 
 ⛔ **Registered under the operating model's own standing rule: when a deeper requirement is discovered,

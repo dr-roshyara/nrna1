@@ -5078,3 +5078,74 @@ decomposition-independent `Sat` body — the corpus's own named blocker (M0132),
 reconstruction's invention; (b) a research act building the missing atoms↔requirements bridge between
 F3 and F4, the precisely-named smallest input that would make the F3↔F4 comparison well-posed for the
 first time in this reconstruction.**
+
+---
+
+## MD-060 — Controlled F4 `K_t` Variant Reconstruction and Semantic Adjudication
+
+**2026-09-09.** User validated MD-059, recommended reconciling F4's own `K_t` variant family before
+attempting the F3↔F4 bridge (the first of MD-059's own two named next actions), and authorized a
+narrowly bounded variant-census-and-adjudication study, with the explicit rule that "reconcile" must
+never mean "choose one and declare canonical."
+
+**Executed a genuine primary-source variant census** (not register-level synthesis alone) — opened
+M0001/M0006/M0009/M0043/M0048/M0076/M0125/M0126 directly, plus M0287 (one of the register's own
+flagged "further variants" in the M0283–M0338 tail). **Found 12 distinct primary formulations**
+(counting same-document internal variants individually, per this reconstruction's own standing
+discipline) — a disclosed refinement of the register's own "9+" count. Structural clusters:
+probabilistic (V1/V3), flat-tuple (V2a/b, V4b, V5, V6a/b, V7, arity 4–11), deliberately abstract
+(V4a, `K_t∈𝕂` by design), relational/graph (V8, `K=(D,R)`), and one meta-level claim that `K_t` is a
+projection of a richer object rather than primary (V6-meta, unaddressed by every other variant).
+
+**Pairwise adjudication**: one **FORMALLY EQUIVALENT, CONDITIONAL** pair (V1↔V3, both probabilistic —
+equal only under two disclosed, unverified assumptions about domain coverage and evidence-
+conditioning); two same-document **STRUCTURAL CORRESPONDENCE/REFINEMENT-PROJECTION, ASSERTED not
+proven** pairs (V2a↔V2b, V6a↔V6b — the same notation-drift pattern already found for step-261 in
+MD-057/059, now a third recurrence in a different candidate family); one **FUNCTIONAL ANALOGY** (V8's
+own relational-upgrade move, generic across Cluster T, applied to no specific named variant); and one
+**demonstrated INCOMPATIBLE finding** — V1/V3's probabilistic credences and V7's `Σ_t=(A,S,R,V,C)`
+categorical fields cannot be inter-derived without an invented conversion (a concrete counterexample,
+not an inferred impossibility). **All remaining pairs: UNRESOLVED — no variant across structural
+clusters claims, let alone demonstrates, equivalence with any other.**
+
+**Semantic-core hypothesis, tested by attempted falsification**: the strong form (full mutual
+information-preserving inter-translatability across all 12 variants) is **FALSIFIED**, via the
+V1/V3↔V7 counterexample above. A weak, non-formal residue survives (universal time-indexing;
+universal informal framing as "a participant's epistemic state at t") — genuine, but not a
+mathematical equivalence.
+
+**The most consequential finding, correcting MD-059's own framing (MD-059's own text NOT edited)**:
+`Sat(K_t,r)`'s own SIGNATURE is stated relative to the deliberately abstract `K_t∈𝕂` (M0043,
+`[DEF-19]`–`[DEF-21]`), not tied to any specific tuple — and a *second*, independent source (M0048)
+proposes its own `Sat(K,r)` over its own, different 5-component tuple, with **neither source citing
+the other, and neither supplying a body.** **This generalizes MD-059's own diagnosis**: the blocker
+is not "reconcile the `K_t` family and `Sat` becomes computable" — it is that **no variant, of any
+arity or structural type, anywhere in this evidence base, has ever been given a computable `Sat`
+body.** Reconciling the family is real, valuable work (it resolves four other named gaps, `G-K1/K2/
+K4/K5`) but is **necessary, not sufficient**, for making `Sat` computable.
+
+**Representation-independence attack**: since no `Sat` body exists to test, the six required
+transformations were applied to the census's own adjudication method instead (disclosed as a
+narrower substitute) — admissibility of `K_t` representation-change is itself **not corpus-defined**
+as a general rule; two of the six transformations have single, variant-specific precedents (V6-meta's
+projection stance; V8's own "zero = neutralize, not delete" move) but neither is stated as a rule the
+whole family must obey. The census's own pairwise findings do not depend on any invented
+transformation and stand independently of this negative result.
+
+**No backlog ticket filed** — the phase's own findings (the richer variant count, the twice-
+independent, never-filled `Sat` signature) are scientific results, fully recorded in this phase's own
+artifacts, not business-coordination failures of the EKS backlog's own kind.
+
+**No classification changed. No frozen artifact (MD-024–059) modified. No variant chosen as
+canonical. No component semantics invented. No F3↔F4 bridge attempted. K-1/K2 untouched. No Stage 07.
+MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-060-f4-kt-variant-
+reconstruction-and-adjudication/` directory (8 files) plus this entry written.
+
+**MD-060 status: COMPLETE. GATE B — `Sat(K_t,r)` cannot yet be instantiated. HARD STOP — no MD-061
+opened by this completion.** Smallest remaining research input, named, not authorized: a research
+act constructing a concrete `Sat(K_t,r)` body for at least one `K_t` variant (any one — reconciling
+the family first is not a precondition, per `G-K3`) — the corpus's own most literal, twice-
+independently-proposed but never-filled gap.**

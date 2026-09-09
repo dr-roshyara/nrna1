@@ -1185,7 +1185,29 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-059 — Controlled Semantic Instantiation of F4 (Model B
+**Status update, 2026-09-09 (latest): MD-060 — Controlled F4 `K_t` Variant Reconstruction and
+Semantic Adjudication — EXECUTED, GATE B, HARD STOP.** User recommended reconciling F4's own `K_t`
+variant family before the F3↔F4 bridge; authorized a bounded census-and-adjudication study
+("reconcile" ≠ "choose canonical"). **Genuine primary-source census**: 8 files opened directly
+(M0001/M0006/M0009/M0043/M0048/M0076/M0125/M0126) plus M0287 — found **12 distinct `K_t`
+formulations** against the register's own "9+" (disclosed refinement). Structural clusters:
+probabilistic, flat-tuple (arity 4–11), deliberately abstract (`K_t∈𝕂`), relational/graph
+(`K=(D,R)`), plus one meta-claim that `K_t` is a projection, not primary. **Pairwise adjudication**:
+1 conditional formal equivalence (both probabilistic); 2 same-document structural correspondences
+(a third recurrence of the step-261 notation-drift pattern); 1 functional analogy; **1 demonstrated
+INCOMPATIBLE finding** (probabilistic credences vs. categorical provenance fields, no invented
+conversion). All other pairs UNRESOLVED. **Semantic-core hypothesis**: strong form FALSIFIED by a
+concrete counterexample; a weak, non-formal residue survives. **Central finding, correcting MD-059's
+own framing (MD-059's own text unedited)**: `Sat(K_t,r)`'s signature is stated over the abstract
+`K_t∈𝕂`, not any tuple; a second independent source (M0048) proposes its own `Sat` too — neither has
+a body, for ANY variant. **Reconciling the family is necessary, not sufficient, for making `Sat`
+computable.** GA-001/GA-038: both UNCHANGED. No candidate chosen, no CLOSURE-4/`≡_sem` adoption.
+**A second same-day, MD-059-consuming external file was found** (`EKS-31` extended, occurrence 2, not
+refiled). No new ticket beyond that. Verified both consistency scripts `CONSISTENT`; firewalls held.
+**Gate B — `Sat(K_t,r)` cannot yet be instantiated.** Smallest remaining research input, named, not
+authorized: a concrete `Sat` body for at least one `K_t` variant (any one, not full reconciliation).
+
+**Status update, 2026-09-09 (earlier): MD-059 — Controlled Semantic Instantiation of F4 (Model B
 `K_t`/`Δ_t`) — EXECUTED, HARD STOP.** First attempt at a second real semantic instantiation beyond F3.
 User corrected MD-058's "only candidate satisfying requirements" phrasing (→ "only primitive
 presently constructible without a modelling choice, given current corpus"), authorized F4 as target.
