@@ -154,3 +154,41 @@ the same *derivation-or-decision* problem now applies to `𝒯`, which has no ow
 ⭐⭐ **What changes is the remedy's target.** §5's candidate requirement asked for an agreed type on the
 item. ⭐ **It should be read as applying to `𝒯` first** — because typing `ℛ_req` while `𝒯` is untyped
 merely relocates the same ambiguity.
+
+---
+
+## Appended 2026-09-09 — the question is now **answerable**, and the item is *closer to actionable*
+
+**From `P-88`** (`docs/knowledgeos/theory-extraction/109-P88-…`).
+
+⭐⭐⭐ **At the layer where the choice actually sits, the corpus has already answered this item's
+question.**
+
+A dedicated audit of the operation family states, in its own boxed conclusion:
+
+> ⭐ **"The SCHEMA is derivable (and largely derived). MANDATORY MEMBERSHIP is not. No route derives
+> membership from already-ratified material."**
+
+and records that **eight derivation routes were tried**, that the only route with no unmet precondition
+is *"declare mandatory membership"*, classified **NORMATIVE**, and that the resulting act has a named
+owner: **ARB**.
+
+$$\boxed{\begin{array}{c}\textbf{So the answer for this layer is } \mathbf{DECISION}\textbf{, the owner is } \mathbf{named}\textbf{,}\\ \textbf{and } \mathbf{eight\ attempts\ to\ avoid\ needing\ it\ are\ already\ on\ the\ record.}\end{array}}$$
+
+⭐ **A further correction it supplies:** *"not enumerated" ≠ "not closed"*. **The classification is
+closed; the membership is not.** ⚠️ **So the work owed is not more enumeration — it is a rule saying
+which members are mandatory.** ⛔ **Enumerating harder cannot close it, and no research act can.**
+
+### Why the item still stands
+
+⛔ **Nothing connects that answer to the statements that raised this conflict.** The documents that
+type the item as *"a derivation"* and as *"the DECISION that sets everything"* are in a different lane
+from the audit that settled the layer beneath them, and **none of the three cites another**. ⭐ **A
+reader arriving at any one of them still routes the work to a different owner.**
+
+⭐⭐ **What changes:** this item is no longer an open research question. **It is a reconciliation that
+someone can perform today**, from three documents that already exist — ⚠️ **and one of them lives
+outside the folders the reading lane is routinely pointed at**, which is part of why the three have
+never met.
+
+⛔ **No position is taken on the ARB routing, and no act is proposed.**
