@@ -5848,3 +5848,58 @@ review/` directory (3 files) plus this entry written.
 opened. Smallest next research input, named, not authorized: a concrete instantiation of
 `Det_r(EvalReq(K,r,EC,Γ),EC)` for at least one real requirement, computed end-to-end without
 stipulating the output.
+
+---
+
+## MD-071 — KnowledgeOS Theory Evolution Reconstruction: 9-Artifact Synthesis Pass
+
+**Authorization**: user's mission to continue the F4 theory-evolution reconstruction via a hybrid
+subagent/adjudicator architecture, producing nine specific deliverables (Theory Object Registry,
+Chronological `TheoryState` Timeline, Theory Evolution Graph, Co-Evolution Matrix, Transformation
+Ledger, Negative-History Register, Cross-Lane Transfer Register, Turning-Point Timeline, Current
+Corpus-Supported Theory State). Resolved via `AskUserQuestion`: given the fork between "assemble the
+final artifacts from existing evidence" and "extend `TheoryState` tracking to unread corpus
+territory," the user chose **synthesize first, then let gaps decide whether to extend.**
+
+**Executed as a pure synthesis pass — no new source file read**, except two bounded, targeted greps
+against already-existing `05_cross-model/` (Phase 3) and `MD-021-phase-6-cross-model-c1c2-extension/`
+(Phase 6) artifacts, needed for the one genuinely new deliverable (Cross-Lane Transfer Register).
+Five of the nine required artifacts are **reused, unmodified**, pointing to MD-067/068/069 (Object
+Registry → MD-068 §02; `TheoryState` Timeline → MD-069 §01; Evolution Graph → MD-067 §02/§03;
+Turning-Point Timeline → MD-069 §03; Current Theory State → MD-069 §04), each read through MD-070's
+own already-committed correction. Four are **newly consolidated/synthesized** in
+`14_decision-log/MD-071-theory-evolution-synthesis/`: `01_co-evolution-matrix.md` (every T0–T23
+object pair classified EXPLICITLY CONNECTED/RECONSTRUCTED CONNECTION/TEMPORALLY CO-OCCURRING ONLY —
+finds that new objects are consistently born adjacent to the F4 chain before being formally wired
+into it, never at the moment of their own birth); `02_transformation-ledger.md` (a single
+chronological ledger of every transformation MD-067/069 already established, plus MD-070's own
+downgrade recorded as this reconstruction's own adjudicative act, distinguished from corpus-native
+events); `03_negative-history-register.md` (explicit retirements vs. `NO_LATER_EVIDENCE` kept
+strictly distinct, per the mission's own §12 discipline); `04_cross-lane-transfer-register.md` (the
+one genuinely new investigation).
+
+**Central new finding (Cross-Lane Transfer Register)**: none of the F4 chain's own named objects
+(`EC_t`/`Req(EC_t)`/`Sat(K,r)`/`Δ_t`-as-formula/`Zero(K,EC)`/`Det_r`/`EvalReq`) appear as a
+correspondence-matrix row anywhere in Phase 3 or Phase 6's own already-adjudicated cross-model work —
+**no witnessed cross-lane transfer exists for the tracked F4 chain**, in any direction, in any lane.
+The one genuine cross-lane signal found is adjacent, not identical: Phase 6's own Row 4 (already
+adjudicated, PARTIAL CORRESPONDENCE at the notation level, UNRESOLVED structurally) shows bare `K_t`/
+`Δ_t` notation recurring, with zero cross-citation, in a THIRD independent thread — C1's own
+`phase_measure_theory/` lane (main corpus) — alongside Model B's math-lane thread this reconstruction
+draws on. Investigating this surfaced a further, previously-unnoticed question: Model B's own concept
+register (§A) cites `M0132` freezing `Δ_t={r∈R_t:Sat(K_t,r)=0}`, citing the *same* `M0043`/`M0047`
+source this reconstruction's own T5 cites as `[00-47]`'s `[DEF-21]`, `Δ_t={r∈Req(EC_t):¬Sat(K_t,r)}`
+— two independently-built reconstructions, same cited source, two visibly different-looking formulas,
+never directly compared. Filed as `EKS-45`.
+
+**No frozen artifact (MD-024–070) modified.** No classification changed. No canonical theory
+declared. No object merged (`Sat`/`Sat_c`/`Sat*` kept distinct throughout; `M0132`'s freeze not merged
+with T5's, per `EKS-45`). K-1/K2 untouched. `theory-extraction/` untouched throughout.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-071-theory-evolution-
+synthesis/` directory (5 files) plus this entry and `EKS-45` written.
+
+**MD-071 status: EXECUTED. HARD STOP** per the mission's own §24. No further phase automatically
+opened. Remaining chronological scope named, not opened: ~5100 queue positions (main corpus + earlier
+math-lane material) not yet tracked by this object-level `TheoryState` method.

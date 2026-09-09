@@ -338,3 +338,9 @@ flagship worked example (§21A.17) stipulates `Sat(K,r_i)=Satisfied` by fiat rat
 `Det_r`/`EvalReq`, the same shortcut every earlier, already-retired `Sat` attempt took. Separately,
 `Zero(K,EC)⟺Δ(K,EC)=∅` is filed simultaneously as Definition 23.1, Theorem 24.1, and Axiom A7 — three
 epistemic categories for one identical claim. See `EKS-44`.
+
+**EKS-45 filed, 2026-09-09** (MD-071, Cross-Lane Transfer Register): Phase 2's own Model B concept
+register cites `M0132` freezing `Δ_t={r∈R_t:Sat(K_t,r)=0}`, ratifying `M0043`/`M0047`; MD-069's own
+T5 cites `[00-47]`'s `[DEF-21]`, `Δ_t={r∈Req(EC_t):¬Sat(K_t,r)}` — the same underlying source, two
+independently-built reconstructions, two visibly different-looking formulas, never directly compared.
+Could be the same freeze paraphrased, or two distinct objects. See `EKS-45`.

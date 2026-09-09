@@ -1,5 +1,34 @@
-**Updated:** 2026-09-09 (latest) — **MD-070 EXECUTED — INDEPENDENT ADVERSARIAL REVIEW OF GAP-004 (the
-Theory-00-21 `Sat` definition), GAP-004 CLOSED WITH QUALIFICATION, HARD STOP.** User's direct
+**Updated:** 2026-09-09 (latest) — **MD-071 EXECUTED — KNOWLEDGEOS THEORY EVOLUTION RECONSTRUCTION:
+9-ARTIFACT SYNTHESIS PASS, HARD STOP.** User's mission: continue the F4 reconstruction via a hybrid
+subagent/adjudicator architecture, producing 9 deliverables. Scoping fork resolved via
+`AskUserQuestion`: **synthesize first, then let gaps decide whether to extend** (not: extend
+`TheoryState` tracking to unread corpus territory). **Executed as pure synthesis — no new source file
+read**, except two bounded greps against already-existing `05_cross-model/` (Phase 3) and Phase 6
+(C1/C2 extension) artifacts, needed for the one genuinely new deliverable. 5 of 9 artifacts REUSED
+unmodified (Object Registry→MD-068, `TheoryState` Timeline→MD-069, Evolution Graph→MD-067,
+Turning-Point Timeline→MD-069, Current Theory State→MD-069, each read through MD-070's own already-
+committed correction). 4 newly consolidated in `14_decision-log/MD-071-theory-evolution-synthesis/`:
+Co-Evolution Matrix (every T0–T23 object pair classified; finds new objects are consistently born
+adjacent to the F4 chain before being wired into it, never at birth); Transformation Ledger (single
+chronological ledger, MD-070's downgrade recorded as this reconstruction's own adjudicative act,
+distinguished from corpus-native events); Negative-History Register (explicit RETIRED vs.
+`NO_LATER_EVIDENCE` kept strictly distinct); Cross-Lane Transfer Register (genuinely new). **Central
+new finding**: none of the F4 chain's own named objects (`EC_t`/`Req(EC_t)`/`Sat(K,r)`/`Δ_t`-as-
+formula/`Zero(K,EC)`/`Det_r`/`EvalReq`) appear as a correspondence-matrix row anywhere in Phase 3 or
+Phase 6's own cross-model work — **no witnessed cross-lane transfer exists for the tracked F4 chain,
+in any lane.** One adjacent signal: bare `K_t`/`Δ_t` notation recurs, zero cross-citation, in a THIRD
+independent thread (C1's `phase_measure_theory/`, per Phase 6's own already-adjudicated Row 4).
+Investigating this surfaced a new question: Model B's own `M0132` freeze (`Δ_t={r∈R_t:Sat(K_t,r)=0}`)
+and this reconstruction's own T5 freeze (`[00-47]`, `Δ_t={r∈Req(EC_t):¬Sat(K_t,r)}`) cite the same
+`M0043`/`M0047` source, two independently-built reconstructions, never directly compared — filed as
+`EKS-45`. No frozen artifact (MD-024–070) modified; no classification changed; no object merged;
+K-1/K2 untouched; `theory-extraction/` untouched. Verified both consistency scripts `CONSISTENT`.
+**MD-071 status: EXECUTED. HARD STOP.** Remaining chronological scope named, not opened: ~5100 queue
+positions not yet tracked by this object-level `TheoryState` method.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-070 EXECUTED — INDEPENDENT
+ADVERSARIAL REVIEW OF GAP-004 (the Theory-00-21 `Sat` definition), GAP-004 CLOSED WITH QUALIFICATION,
+HARD STOP.** User's direct
 instruction: "Investigate GAP-004 next" — MD-068's sole named remaining blocker, requiring genuine
 investigative work, not further reading. **Method**: reopened and read directly Theory-00-21 Part I
 (2242 lines, full), Part V/VI (targeted), and the worked example (1859 lines, full) — every "PROVED"
