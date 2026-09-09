@@ -1185,7 +1185,24 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-061 — Controlled Construction of `Sat(K_t,r)` for One F4
+**Status update, 2026-09-09 (latest): MD-062 — Controlled Validation of the F4 `Sat*` Semantic
+Slice — EXECUTED, FINAL DETERMINATION C, HARD STOP.** User redirected MD-061's own suggested next
+step: validate `Sat*`'s semantic legitimacy before extending it. Mid-turn, confirmed a specific file
+(M0127, `KR-CONTR-FDE-2026-09`) had not been read; opened it, found it directly decisive. **Central
+finding**: `Sat*` never takes `EC_t` as an argument — purpose-relativity is structurally absent, not
+simplified; DDD mapping confirms `EpistemicContract`/`AcceptanceCondition` are unconnected bounded
+contexts. **Falsification**: 4 genuine counterexamples, 3 directly echoed by M0127's own countermodels
+(a same-day sibling experiment that already found and fixed the identical collapse patterns via a
+Reason/Provenance/Context/Condition channel). No wrong answers found, only missing distinctions.
+`Δ_t^Σ`: computable but semantic fidelity to corpus "gap" not established — a formal surrogate.
+**Final Determination: C — FORMALLY COMPUTABLE SURROGATE.** **Corrects MD-061's own suggested next
+step** (text unedited): do not extend `Σ_t`'s typing yet; incorporate `EC_t`/boundary metadata first.
+**`EKS-36` filed**: the `K_t`/`Δ_t` lineage and M0127 are same-day, same-directory, sibling-question
+research that never cross-cite — MD-061 built `Sat*` from the first alone. Verified both consistency
+scripts `CONSISTENT`. **Smallest next action, named, not authorized**: incorporate `EC_t`/boundary
+metadata into the requirement/`Sat` construction.
+
+**Status update, 2026-09-09 (earlier): MD-061 — Controlled Construction of `Sat(K_t,r)` for One F4
 Variant — EXECUTED, GATE C, HARD STOP.** Authorized MD-060's own named next act. Found M0048's `Sat`
 proposal is a same-day review of M0043, not independent (corrects MD-059/060, text unedited).
 **Selected V7's typed `Σ_t`** over V4b (untyped, despite closer textual proximity to `Sat`) —

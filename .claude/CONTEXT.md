@@ -1,5 +1,44 @@
-**Updated:** 2026-09-09 (latest) — **MD-061 COMPLETE — CONTROLLED CONSTRUCTION OF `Sat(K_t,r)` FOR ONE
-F4 VARIANT, GATE C, HARD STOP.** User authorized the exact next action MD-060 named: construct a
+**Updated:** 2026-09-09 (latest) — **MD-062 COMPLETE — CONTROLLED VALIDATION OF THE F4 `Sat*`
+SEMANTIC SLICE, FINAL DETERMINATION C, HARD STOP.** User read MD-061 in full, agreed it was a genuine
+advance, and redirected the recommended next step: validate `Sat*`'s own semantic legitimacy before
+extending it to V7's other ten components. Mid-turn, the user asked directly whether a specific file
+(`20260902-175306_kr-contr-fde-2026-09-external-writeup.md`, M0127, `KR-CONTR-FDE-2026-09`) had been
+read — it had not; opened and reported, surfacing two findings folded into this phase: a second typed
+V7 component candidate (`C_t`, explicitly labeled a candidate not an architectural decision) and a
+third, structurally-distinct `≡_sem` definition (total structural identity across six components, a
+degenerate case, never reconciled with the other two already on record). **Executed**: reconstructed
+every MD-061 modelling choice (not modified). **Decisive finding**: `Sat*`'s requirement shape never
+takes `EC_t` as an argument at all — `EC_t`, the very object M0043's `[DEF-19]` declares makes
+satisfaction purpose-relative, is **structurally absent**, not merely simplified. Ten-question
+semantic-adequacy test and a DDD bounded-context map both confirm this precisely — `EpistemicContract`
+and `AcceptanceCondition` are unconnected bounded contexts, the single most consequential result of
+the phase. **Falsification (E1–E8)**: four genuine counterexamples (E1 context sensitivity, E2
+requirement semantics, E3 missing-state information, E5 partial information) — three of them
+**directly echoed by M0127's own countermodels**, a same-day, sibling-question experiment that
+already found and fixed the identical collapse patterns by adding a Reason/Provenance/Context/
+Condition boundary channel. No counterexample shows a wrong answer, only missing distinctions —
+decisive for Gate C over Gate D. `Δ_t^Σ`: mathematically well-defined and computable; semantic
+fidelity to corpus "gap" **not established** — a formal surrogate, not a faithful reconstruction.
+Representation independence: field-reordering within `Σ_t` remains proven invariant; alternate
+encodings and the `Σ_t`-as-adequate-projection question both `UNTESTABLE FROM CURRENT CORPUS`.
+M0127 classified precisely (same-day, separately-authored, sibling-question corroboration — never
+independent replication, never direct evidence about `Sat*` itself). **Final Determination: C —
+FORMALLY COMPUTABLE SURROGATE** — not A (structurally omits `EC_t`), not B (the shape itself
+under-preserves distinctions, corroborated three ways), not D (no incorrect answer demonstrated).
+**Consequence, correcting MD-061's own suggested next step (its text not edited)**: do NOT extend
+`Σ_t`'s typing to the other ten components yet — that would enlarge an already-inadequate surrogate.
+Sharper next input: incorporate `EC_t` or a Reason/Provenance/Context-style boundary channel into the
+construction first. **Backlog: `EKS-36` filed** — the `K_t`/`Δ_t` lineage and `KR-CONTR-FDE-2026-09`
+are two same-day, same-directory research threads on sibling evaluation-adequacy questions, never
+cross-citing; this reconstruction's own MD-061 built `Sat*` from the first alone and only learned of
+the second when the user pointed to it directly. Checked against `EKS-28`/`EKS-23`/`EKS-13` first,
+distinct. Verified both consistency scripts `CONSISTENT`; no frozen artifact touched; firewalls held.
+**MD-062 status: COMPLETE. HARD STOP — no component extension, no F3↔F4 bridge entered.** Smallest
+next action, named, not authorized: incorporate `EC_t`/boundary metadata into the requirement/`Sat`
+construction before further component typing.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-061 COMPLETE — CONTROLLED
+CONSTRUCTION OF `Sat(K_t,r)` FOR ONE F4 VARIANT, GATE C, HARD STOP.** User authorized the exact next action MD-060 named: construct a
 concrete `Sat` candidate for one `K_t` variant, chosen by explicit criteria. **While scoring
 candidates, found M0048's own `Sat(K,r)` proposal is a same-day review/extension of M0043** (repeated
 "the document already defines..." phrasing, never itself defining `EC_t`) — **corrects MD-059/060's

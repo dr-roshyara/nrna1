@@ -37,6 +37,7 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-33](EKS-33-a-binding-ruling-governs-a-register-that-cannot-carry-it.md) | A binding ruling governs a field on a register that cannot reliably carry it | BACKLOG · GOVERNANCE ENFORCEABILITY | operating-model problem (can the governed thing bear the rule?) |
 | [EKS-34](EKS-34-a-naming-collision-split-across-an-information-barrier.md) | The same short names mean two different things on opposite sides of an information barrier, and neither side can see the clash | BACKLOG · CROSS-LANE CORRECTNESS | operating-model problem (naming across a deliberate research boundary) |
 | [EKS-35](EKS-35-file-timestamps-do-not-encode-argument-order.md) | File timestamps do not encode argument order, so the prescribed way of reading the record can reconstruct a discussion backwards | BACKLOG · RESEARCH-METHOD CORRECTNESS | operating-model problem (how the research record must be read) |
+| [EKS-36](EKS-36-two-same-day-research-threads-on-sibling-evaluation-questions-never-cross-reference.md) | Two same-day research documents in the same folder both build a "structured evaluation of a claim against evidence" apparatus and never cite each other | BACKLOG · RESEARCH-COORDINATION EXPOSURE | operating-model problem (research-lane coordination within one corpus directory) |
 | [EKS-23](EKS-23-two-independent-capability-vocabularies-never-reconciled.md) | Two independent research efforts each invented their own list of Kernel capabilities, and neither knows the other's list exists | **BACKLOG · OPERATING-MODEL EXPOSURE** | operating-model problem (research-output reconciliation / semantic duplication detection) |
 
 Created 2026-08-16 on the PO/ARB act *"record this as problem and write EKS- tickets"*, from the placement-drift and knowledge-distribution incidents (`../reviews/2026-08-16-knowledge-placement-requirement-registration.md`).
@@ -180,3 +181,19 @@ Same profile throughout: no dated-filename convention, content built explicitly 
 reconstruction's own MD-058/059 output, saved directly into the primary corpus directory. **Not
 refiled** — recorded as a second occurrence of the same structural gap, strengthening rather than
 changing the candidate requirement in `EKS-31` §4.
+
+**EKS-36 added 2026-09-09** from the three-model-convergence reconstruction's own MD-062. Two
+research documents saved the **same day** (2026-09-02) into the **same directory** both build an
+apparatus for the same kind of question — how to decide whether a claim/state satisfies a requirement
+and preserve the reasons that decision depends on. One (the `K_t`/`Δ_t` lineage this reconstruction
+has worked from since `MD-057`) leaves its own `Sat` predicate's body open. The other
+(`KR-CONTR-FDE-2026-09`, a real, executed 14-scenario experiment) tests exactly the sibling question
+and finds bare-value representations inadequate — a `Reason`/`Provenance`/`Context`/`Condition`
+boundary channel is required, or required distinctions collapse (measured: Classical loses 12/14, K3
+8/14, FDE 6/14, structured reaches 2/14). **Neither cites the other.** This reconstruction built and
+froze a `Sat*` construction (`MD-061`) from the `K_t`/`Δ_t` lineage alone — using precisely the
+bare-value shape the sibling experiment, the same day, already found inadequate — and discovered the
+gap only because the user separately pointed to the second document afterward. Same shape as `EKS-28`
+(two governance commissions on sibling kernel questions never cross-referencing), one layer down,
+between two research documents a few keystrokes apart in one folder rather than two governed tracks.
+Checked against `EKS-28`, `EKS-23`, `EKS-13` first — distinct on all three; see `EKS-36` §5.

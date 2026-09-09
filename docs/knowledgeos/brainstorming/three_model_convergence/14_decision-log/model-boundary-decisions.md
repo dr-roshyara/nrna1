@@ -5217,3 +5217,80 @@ single-variant/` directory (6 files) plus this entry written.
 **MD-061 status: COMPLETE. HARD STOP — no MD-062 opened, no F3↔F4 comparison entered by this
 completion.** Smallest next action, named, not authorized: extend `Σ_t`'s own typing approach to
 V7's other ten components, enlarging `Req_Σ`'s own coverage of `Req(EC_t)`.**
+
+---
+
+## MD-062 — Controlled Validation of the F4 `Sat*` Semantic Slice
+
+**2026-09-09.** User read MD-061 in full, agreed it was a genuine advance, and redirected the
+recommended next step: validate `Sat*`'s own semantic legitimacy before extending it to V7's other
+ten components. Between MD-061 and this authorization, the user asked directly whether a specific
+file (`20260902-175306_kr-contr-fde-2026-09-external-writeup.md`, M0127, `KR-CONTR-FDE-2026-09`) had
+been read — it had not; opened and reported, surfacing two findings folded into this phase: a second
+typed V7 component candidate (`C_t`, M0127 §14.2, explicitly labeled a candidate not an architectural
+decision) and a third, structurally-distinct `≡_sem` definition (§12.7, total structural identity
+across all six Standing components — a degenerate case, never reconciled with CLOSURE-4 or M0043's
+`[DEF-15]`).
+
+**Executed.** Reconstructed every modelling choice in MD-061's own `Sat*` construction (not modified)
+and scored each against necessity/convenience/meaning-change/alternative-existence. **The decisive
+finding**: the requirement shape `r=(component_r,Accept_r)` never takes `EC_t` as an argument at
+all — `EC_t`, the very object M0043's `[DEF-19]` declares makes satisfaction purpose-relative, is not
+merely simplified in `Sat*`, it is **structurally absent**. Ten-question semantic-adequacy test
+confirmed this precisely (question 4: "Does `EC_t` actually determine the acceptance condition in
+`Sat*`?" — **NO**). DDD bounded-context mapping formalized the same finding: `EpistemicContract` and
+`AcceptanceCondition` are different bounded contexts with **no stated connection at all** — the
+single most consequential result of the whole phase.
+
+**Falsification (E1–E8)**: four genuine counterexamples. **E1** (context sensitivity) — `Sat*` cannot
+express that the same `K_t` might be judged differently under two different `EC_t`, since `EC_t`
+plays no role. **E2** (requirement semantics) — no Reason channel distinguishes requirements sharing
+an `Accept` set. **E3** (missing-state information) — `H_t`/`T_t` differences invisible to `Sat*`,
+**directly echoed by M0127's own Countermodel 5** (superseded vs. current evidence). **E5** (partial
+information) — `Sat*` cannot distinguish "no evidence" from "not yet assessed," **the identical
+collapse M0127's own Collapse C1 already names and fixes with a Reason channel**. Two non-defects
+(E4, E6) and two neutral findings (E7/E8). **No counterexample shows a wrong answer — every one shows
+a missing distinction, decisive for keeping this at Gate C rather than D.**
+
+**`Δ_t^Σ`**: three claims kept separate — mathematically well-defined (yes), computationally
+executable (yes), semantically faithful to corpus "gap" (**not established**) — best described as a
+mathematically-defined, computationally-executable **surrogate**, not a semantically faithful
+reconstruction. **Representation independence**: field-reordering within `Σ_t` remains proven
+invariant (reused from MD-061); alternate encodings and the `Σ_t`-as-adequate-projection question
+both `UNTESTABLE FROM CURRENT CORPUS` — no equivalence relation manufactured.
+
+**M0127 classified precisely** (Phase H discipline): same-day, separately-authored, sibling-question
+corroboration — never independent replication, never direct evidence about `Sat*` itself (M0127
+never mentions `Sat`/`Σ_t`/`Δ_t^Σ`) — used throughout only as structural analogy.
+
+**Final Determination: C — FORMALLY COMPUTABLE SURROGATE.** Not A (structurally omits `EC_t`, not
+merely under-specifies it); not B (the shape itself, not merely open parameters, under-preserves
+distinctions, corroborated three separate ways by M0127's own countermodels); not D (no incorrect
+answer demonstrated, only missing distinctions).
+
+**Consequence for the next step, correcting MD-061's own suggestion (MD-061's own text NOT
+edited)**: extending `Σ_t`'s typing to the other ten components is **not** recommended next — it
+would enlarge a surrogate already shown to under-preserve required distinctions. The sharper next
+input: incorporate `EC_t`, or a Reason/Provenance/Context-style boundary channel following M0127's
+own adequacy-tested pattern, into the requirement/`Sat` construction before further component-typing
+work.
+
+**Backlog**: `EKS-36` filed — the `K_t`/`Δ_t` lineage and `KR-CONTR-FDE-2026-09` are two same-day
+research documents, same directory, addressing sibling evaluation-adequacy questions, never
+cross-citing; this reconstruction's own `MD-061` built `Sat*` from the first alone and only learned
+of the second when the user pointed to it directly. Checked against `EKS-28`/`EKS-23`/`EKS-13` first,
+distinct on all three.
+
+**No classification changed. No frozen artifact (MD-024–061) modified. `Sat*` not called the true F4
+`Sat`. No component extension performed. No F3↔F4 bridge. No GA-001/GA-038 resolution. No `≡_sem`
+adoption. No kernel selected. No Stage 07. No external literature. No code. K-1/K2 untouched. MD-050
+not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-062-sat-star-semantic-
+validation/` directory (8 files) plus this entry written.
+
+**MD-062 status: COMPLETE. HARD STOP — no MD-063 opened, no component extension, no F3↔F4 bridge
+entered by this completion.** Smallest next action, named, not authorized: incorporate `EC_t` (or a
+Reason/Provenance/Context-style boundary channel) into the requirement/`Sat` construction, before any
+further `Σ_t`-style component typing.**
