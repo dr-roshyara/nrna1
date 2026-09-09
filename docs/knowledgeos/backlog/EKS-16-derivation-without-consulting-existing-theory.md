@@ -80,3 +80,46 @@ This mirrors a discipline the estate already applies elsewhere: the engineering 
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed, no work is commissioned, and the lane continues under its existing authorization.**
+
+---
+
+## Appended 2026-09-09 — occurrence 6, and it is a **category escalation**
+
+**Registered from `P-81`** (`docs/knowledgeos/theory-extraction/99-P81-…`).
+
+⭐⭐⭐ **A sixth occurrence, and it changes what this item is about.**
+
+Occurrences 1–5 all had the same shape: *the estate already held material the lane did not search for.*
+The remedy implied by §5 — search the estate first — would have caught every one of them.
+
+**Occurrence 6 has a different shape, and §5's remedy would NOT have caught it.**
+
+| | |
+|---|---|
+| **the question commissioned** | *"is there a third individuation axis, and would the open part of the transition universe supply it?"* |
+| ⭐⭐⭐ **where the answer already was** | **the lane's own artifact number 33**, named `…-P16-THIRD-AXIS-AND-TRANSITION-CLOSURE-AUDIT.md`, written by this lane **one day earlier** |
+| **how far away** | ⭐ **the same directory**, five files after a document the lane had just read completely |
+| **the two candidates the question named** | ⭐⭐ **the titles of artifacts 31 and 32** — *Semantic Reinterpretation* and *Model Replacement* — both of which had **closed their candidate** |
+| **how it surfaced** | ⭐ a directory listing, run at the start of the next review |
+
+### Why the escalation matters in business terms
+
+⭐⭐ **The first five occurrences say a lane does not read its inputs carefully enough. The sixth says a
+lane does not know what it has already produced.** Those are different failures with different costs:
+
+- **Duplicate payment.** Two full reviews — the one that asked the question and the one that discovered
+  the answer — were spent on a question that had been closed. ⭐ **The work was bought twice.**
+- ⚠️ **A wrong conclusion was published in the interval.** The review that re-opened the question also
+  *endorsed* a structural claim which the lane's own artifact 34 had already dismantled. That
+  endorsement stood in the record until the next review withdrew it.
+- ⭐ **The remedy in §5 does not reach it.** Searching *the estate* would not have helped; the material
+  was in *the lane's own output*, which no one thinks of as something to be searched.
+
+### Consequence for this item
+
+⛔ **No change to §5's candidate requirement — it remains correct for occurrences 1–5.**
+⭐⭐ **The distinct output-side problem is filed separately as `EKS-30`**, because the cause, the owner
+and the remedy all differ. This appendix records only that the two are related and were checked against
+each other (`ES-005.4`).
+
+**Occurrence count: 6. Detection by luck: 4 of 6.**
