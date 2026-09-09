@@ -1,5 +1,38 @@
-**Updated:** 2026-09-09 (latest) — **MD-060 COMPLETE — CONTROLLED F4 `K_t` VARIANT RECONSTRUCTION AND
-SEMANTIC ADJUDICATION, GATE B, HARD STOP.** User validated MD-059, recommended reconciling F4's own
+**Updated:** 2026-09-09 (latest) — **MD-061 COMPLETE — CONTROLLED CONSTRUCTION OF `Sat(K_t,r)` FOR ONE
+F4 VARIANT, GATE C, HARD STOP.** User authorized the exact next action MD-060 named: construct a
+concrete `Sat` candidate for one `K_t` variant, chosen by explicit criteria. **While scoring
+candidates, found M0048's own `Sat(K,r)` proposal is a same-day review/extension of M0043** (repeated
+"the document already defines..." phrasing, never itself defining `EC_t`) — **corrects MD-059/060's
+own "two independent sources" framing** (their text not edited). **Selected V7's typed `Σ_t`
+sub-structure** over V4b (M0043's 10-component decomposition, textually closer to `Sat`'s own
+definition but entirely untyped) — typing completeness was decisive: `Σ_t` is the only place in the
+whole 12-variant census where a component has a corpus-stated enumerated value domain. **Constructed
+`Sat*(K_t,r):=1` iff `π_{component_r}(Σ_t(K_t))∈Accept_r`** — set-membership over `Σ_t`'s own
+enumerated fields, deliberately avoiding an invented ordinal structure the source never states.
+Three disclosed design choices: `K_t` restricted to V7-shaped instances; `Req(EC_t)` restricted to
+its `Σ_t`-shaped subtype; enumerated domains treated as flat sets. **Falsification (T1–T8)**: T1/T2/
+T3/T7 **PASS** (well-typed; genuinely sensitive to both `r` and `K_t`, concretely demonstrated;
+`Δ_t^Σ` well-typed); T5 flagged inherent-not-defective; T6 no contradiction found, transition-
+interaction untestable given scope; T8 no counterexample found anywhere in the corpus (not proof);
+T4 invariant to field reordering within V7, but undefined/undefinable across the other 11 variants —
+a hard representation-dependence, not a soft one. **Gate: C — CONDITIONAL CANDIDATE** — not A
+(required construction), not B (three substantive modelling choices needed), not D (a genuinely
+coherent candidate was built and survives every runnable test); reported as locating the epistemic
+boundary precisely, not as a failure. **`Δ_t^Σ` (the narrowed slice) is genuinely computable — the
+first concretely computable `Δ_t` result anywhere in this reconstruction's own F4 work.** Full `Δ_t`
+remains not computable; smallest next input named: typed semantics for V7's other ten components.
+**Answered Lane T's cross-lane `EKS-34` question directly** (a naming collision: this reconstruction's
+own `F1`–`F8` candidate labels vs. a corpus-native `F1`–`F20` ablation-failure-class vocabulary from
+the very same kernel-reduction prompt document F3 itself derives from) — grepped every MD-052–061
+artifact for the failure-class's own defining phrases, **zero hits, no contamination found** in this
+lane's own work; reported back via the shared session log, Lane T's own evidence not inspected. No
+backlog ticket (the M0043/M0048 correction is a scientific finding, fully recorded in-phase). Verified
+both consistency scripts `CONSISTENT`; no frozen artifact touched; firewalls held. **MD-061 status:
+COMPLETE. HARD STOP — no MD-062 opened, no F3↔F4 comparison entered.** Smallest next action, named,
+not authorized: extend `Σ_t`'s own typing approach to V7's other ten components.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-060 COMPLETE — CONTROLLED F4
+`K_t` VARIANT RECONSTRUCTION AND SEMANTIC ADJUDICATION, GATE B, HARD STOP.** User validated MD-059, recommended reconciling F4's own
 `K_t` variant family before the F3↔F4 bridge, and authorized a bounded census-and-adjudication study
 ("reconcile" ≠ "choose one and declare canonical"). **Executed a genuine primary-source census** (8
 files opened directly: M0001/M0006/M0009/M0043/M0048/M0076/M0125/M0126, plus M0287) — **found 12

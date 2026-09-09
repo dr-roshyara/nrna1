@@ -1185,7 +1185,23 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-060 — Controlled F4 `K_t` Variant Reconstruction and
+**Status update, 2026-09-09 (latest): MD-061 — Controlled Construction of `Sat(K_t,r)` for One F4
+Variant — EXECUTED, GATE C, HARD STOP.** Authorized MD-060's own named next act. Found M0048's `Sat`
+proposal is a same-day review of M0043, not independent (corrects MD-059/060, text unedited).
+**Selected V7's typed `Σ_t`** over V4b (untyped, despite closer textual proximity to `Sat`) —
+typing completeness decisive. **Constructed `Sat*`**: set-membership over `Σ_t`'s enumerated fields,
+three disclosed design choices, no invented ordinal structure. **Falsification**: T1/T2/T3/T7 PASS,
+T5 inherent-not-defective, T6 no contradiction (partially untestable), T8 no counterexample found
+(not proof), T4 within-variant invariant but hard cross-variant representation-dependence. **Gate
+C — CONDITIONAL CANDIDATE**, locating the epistemic boundary, not a failure. **`Δ_t^Σ` genuinely
+computable — first concrete `Δ_t` result in this reconstruction's F4 work.** Full `Δ_t` still not
+computable. **Answered Lane T's cross-lane `EKS-34` naming-collision question** (this reconstruction's
+own `F1`–`F8` vs. a corpus-native `F1`–`F20` ablation-failure vocabulary from the same kernel-
+reduction prompt) — zero hits, no contamination found, reported via the shared session log. No
+backlog ticket. Verified both consistency scripts `CONSISTENT`. **Smallest next action, named, not
+authorized**: extend `Σ_t`'s own typing to V7's other ten components.
+
+**Status update, 2026-09-09 (earlier): MD-060 — Controlled F4 `K_t` Variant Reconstruction and
 Semantic Adjudication — EXECUTED, GATE B, HARD STOP.** User recommended reconciling F4's own `K_t`
 variant family before the F3↔F4 bridge; authorized a bounded census-and-adjudication study
 ("reconcile" ≠ "choose canonical"). **Genuine primary-source census**: 8 files opened directly

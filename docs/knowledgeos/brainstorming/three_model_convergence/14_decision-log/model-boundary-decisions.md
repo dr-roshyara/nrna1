@@ -5149,3 +5149,71 @@ opened by this completion.** Smallest remaining research input, named, not autho
 act constructing a concrete `Sat(K_t,r)` body for at least one `K_t` variant (any one — reconciling
 the family first is not a precondition, per `G-K3`) — the corpus's own most literal, twice-
 independently-proposed but never-filled gap.**
+
+---
+
+## MD-061 — Controlled Construction of `Sat(K_t,r)` for One F4 Variant
+
+**2026-09-09.** User authorized the exact next action MD-060 named: construct a concrete `Sat(K_t,r)`
+candidate for one `K_t` variant, selected by explicit criteria, not aesthetic preference.
+
+**Executed.** While scoring candidates against the prompt's own six selection criteria, found that
+M0048's own `Sat(K,r)` proposal repeatedly says *"the document already defines..."* a typed core,
+`Δ_t`, Zero, transitions — never itself defining `EC_t` — strong internal evidence M0048 is a
+**same-day review/extension of M0043**, not an independent second proposal. **Corrects MD-059's own
+§01a and MD-060's "two independent sources, neither citing the other" characterization** (their own
+text not edited) — the correct classification is same-provenance-lineage, same-day continuation.
+
+**Variant selection**: scored V4b (M0043's 10-component decomposition, textually closest to `Sat`'s
+own definition — same document, same continuous derivation) against V7 (`Σ_t`'s typed sub-structure,
+M0125/M0126). **Selected V7's `Σ_t`** — the decisive criterion is typing completeness: `Σ_t` is the
+only place in the entire 12-variant census where a component has an actual, corpus-stated enumerated
+value domain. V4b, despite its stronger textual proximity to `Sat`, has zero typed components — every
+predicate built on it would require inventing a value domain from nothing.
+
+**Constructed `Sat*(K_t,r):=1` iff `π_{component_r}(Σ_t(K_t))∈Accept_r`**, for
+`r=(component_r,Accept_r)`, `component_r∈\{Acquisition,Support,Resolution,Validity,Conflict\}` — set-
+membership over `Σ_t`'s own enumerated domains, deliberately avoiding an invented ordinal structure
+(the domain names read as ordered but no source states an order relation). Three explicit,
+disclosed design choices: (1) `K_t` restricted to V7-shaped instances; (2) `Req(EC_t)` restricted to
+its `Σ_t`-shaped subtype; (3) enumerated domains treated as flat sets, not scales.
+
+**Falsification (T1–T8)**: T1/T2/T3/T7 **PASS** (well-typed; genuinely sensitive to both `r` and
+`K_t`, concretely demonstrated; `Δ_t^Σ` well-typed); T5 (vacuity) flagged as an inherent, not
+defective, property of any requirement framework; T6 (contradiction) — none found against the frozen
+`Δ_t`/`Sat` shape, though interaction with a state transition is untestable (no `δ`/`Orgasm_t`
+constructed for V7 in this phase); T8 (counterexample search) — searched M0125/M0126/M0132/M0043/
+M0048 directly, **no worked example of `Sat` against `Σ_t` exists anywhere in the corpus** — absence
+recorded as absence, not as proof; T4 (representation-dependence) — `Sat*` is invariant to field
+reordering *within* V7, but cannot even be evaluated on 11 of the 12 census variants (none has a
+`Σ_t` component) — a hard, disclosed dependency, not a soft one.
+
+**Gate: C — CONDITIONAL CANDIDATE.** Not A (required this phase's own construction); not B (three
+substantive, disclosed modelling choices were needed); not D (a genuinely coherent, corpus-grounded
+candidate was built and survives every test that could be run). Per the authorizing prompt's own
+framing, **C is reported as locating the epistemic boundary precisely, not as a failure**: the corpus
+supplies just enough typed structure — in exactly one component, of exactly one of twelve variants —
+to build a real, working, narrow `Sat`, and no more.
+
+**`Δ_t` consequence**: `Δ_t^Σ` (restricted to `Σ_t`-shaped requirements) is **genuinely computable**,
+given the three disclosed assumptions — **the first concretely computable slice of `Δ_t` produced
+anywhere in this reconstruction's own F4 work** (MD-059/060 both found `Sat`'s body missing
+entirely). Full `Δ_t` remains not computable; the smallest missing input is typed semantics for V7's
+other ten components, named precisely, not invented.
+
+**No backlog ticket** — the M0043/M0048 provenance correction is a scientific finding, fully recorded
+here.
+
+**No classification changed. No frozen artifact (MD-024–060) modified. No variant reconciled. No
+canonical `K_t` selected. No F3↔F4 bridge attempted. No `Beh`/`Trace` constructed. No GA-001/GA-038
+resolution. No `≡_sem` adoption. No kernel selected. No Stage 07. No external literature used. No
+code. K-1/K2 untouched. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept
+firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-061-sat-construction-
+single-variant/` directory (6 files) plus this entry written.
+
+**MD-061 status: COMPLETE. HARD STOP — no MD-062 opened, no F3↔F4 comparison entered by this
+completion.** Smallest next action, named, not authorized: extend `Σ_t`'s own typing approach to
+V7's other ten components, enlarging `Req_Σ`'s own coverage of `Req(EC_t)`.**
