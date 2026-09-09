@@ -1,5 +1,45 @@
-**Updated:** 2026-09-09 (latest) — **MD-065 COMPLETE — CONTROLLED F3↔F4 COMPARABILITY FEASIBILITY
-AUDIT, FINAL DETERMINATION C, HARD STOP.** User agreed with MD-064's `C` determination, explicitly
+**Updated:** 2026-09-09 (latest) — **MD-066 COMPLETE — CHRONOLOGICAL DEFINITION RECONSTRUCTION,
+FINAL DETERMINATION B, HARD STOP.** User, concerned MD-063/064's "no boundary found" findings may
+have been premature, commissioned a chronological (not keyword-search) re-read of the corpus from
+2026-08-31 onward around `EC_t→Req(EC_t)→r→???→Sat(K_t,r)`. **Disclosed method deviation** (stated
+up front, not contradicted before completion): a literal blind full-corpus read would duplicate this
+reconstruction's own completed Phase-2 sequential pass; executed instead a diagnostic technical-
+notation grep (not broad keyword search) → per-file metadata triage → full chronological reads of 10
+prioritized files (M0049/M0051/M0053/M0054/M0068[negative]/M0136/M0138/M0140/M0165/M0187); ~60
+further matched files and the `phase_measure_theory/` Step-023→09-01 gap remain unread — this
+phase's own determination is explicitly bounded by that. **Central finding, decisive**: on
+2026-09-02, in chronological order, THREE distinct resolutions of `Sat` were found. (1) 09:35 —
+M0051's class-indexed three-valued `Sat_c` apparatus with an `App(r,Q_t,C_t,S_t,EC_t)` applicability
+layer — the only apparatus anywhere in this reconstruction's F4 work that actually consumes `EC_t`
+by name; real executed experiment, 3/8 classes executable, never frozen. (2) 17:53–18:00 — M0136
+proposes `Sat(K_t,r)⟺K_t⊨Content(r)` (FOL entailment); M0138's review explicitly **rejects** it for
+the same defect MD-062 already found in `Sat*` (no capacity for evidence/provenance/boundary/
+context/temporal/governance/contradiction) — an independent, corpus-native corroboration of MD-062
+from a wholly separate source; M0140, an HPA Supervisory Advisory, formally **removes**
+`Sat(K_t,r)≡K_t⊨Content(r)` from canonical theory, replacing single-function `Sat` with a typed
+pipeline whose own `Eval_c` stage never consumes `EC_t` either. (3) 18:20 — M0165/M0187 close a
+THIRD, structurally unrelated apparatus (`Adequate(K,Q,Γ)⟺ℛ_req(Q,Γ)⊆Distinctions(K)`, genuine
+Category-A axiomatic closure) reusing the bare symbol `ℛ_req` for an entirely different object than
+M0043's `Req(EC_t)` — a genuine, previously-undocumented terminology collision, never cross-cited
+with `EC_t`/`Sat(K_t,r)`. **Correction to MD-063/064/062 (their text unedited)**: MD-063's B
+determination corroborated, not weakened; MD-064's C determination reframed (the `Sat` object its
+question presupposed was independently retired the same day by a different thread); MD-062's central
+finding gains a second, independent, corpus-native corroboration. **Final Determination: B — FOUND
+BUT INCOMPLETE** (not A: no frozen `EC_t`-consuming `Sat` body exists anywhere read; not C:
+substantial connecting material was found), with a D-flavored sub-finding (the `ℛ_req` collision and
+non-cross-citing sibling closure are evidence of parallel, uncoordinated threads inside F4 itself —
+the same "genuinely separate bounded contexts" shape MD-065 found between F3 and F4, now found one
+level down). **`EKS-41` filed** (initially attempted as `EKS-37`, renumbered same day after a
+Lane-T collision — the recurring `EKS-07` pattern) — the `ℛ_req` symbol denotes two unrelated formal
+objects, never cross-referenced. Verified both consistency scripts `CONSISTENT`; no frozen artifact
+touched; firewalls held. **MD-066 status: COMPLETE. HARD STOP** per the mission's own explicit
+instruction. Two named, unauthorized options: (a) read the ~60 remaining matched files and the
+`phase_measure_theory/` gap to test whether this phase's own B determination survives a fuller read;
+(b) check whether M0140's typed pipeline was later extended to consume `EC_t` in files dated after
+2026-09-02 18:00.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-065 COMPLETE — CONTROLLED
+F3↔F4 COMPARABILITY FEASIBILITY AUDIT, FINAL DETERMINATION C, HARD STOP.** User agreed with MD-064's `C` determination, explicitly
 declined a further "find the missing `Sat` identity" search (to avoid an open-ended search off a
 finite negative finding), and redirected to the independent-research alternative MD-064 itself named:
 does the corpus support a bridge between F3 (atoms/reachable observations) and F4 (requirements/

@@ -5493,3 +5493,84 @@ feasibility/` directory (7 files) plus this entry written.
 named, not authorized: either (a) begin the Step-013/023 lineage reconstruction as its own,
 separately-authorized phase, or (b) attempt a genuinely new F3↔F4 interpretation function as an
 explicitly-labeled `CONSTRUCTED REQUIREMENT`, not a reconstruction.**
+
+---
+
+## MD-066 — Chronological Definition Reconstruction (F4 `EC_t → Req → Sat` Boundary Re-audit)
+
+**Authorization**: user's "Next Research Mission — Chronological Definition Reconstruction" prompt,
+issued after reading MD-065. Concern: MD-063/064's own "no connecting boundary found" findings may
+have been premature — built on a targeted/register-level view rather than a genuine chronological
+read of the corpus from 2026-08-31 onward. Instruction: read chronologically, not by keyword search,
+before declaring the boundary genuinely absent.
+
+**Disclosed method deviation, stated up front, not contradicted before completion**: a literal blind
+sequential read of the full post-08-31 corpus (main + math-lane + `phase_measure_theory/`) would
+substantially duplicate this reconstruction's own completed Phase-2 sequential read. Executed instead:
+a diagnostic (not broad-keyword) technical-notation grep restricted to files dated ≥2026-08-31 and not
+already read in MD-057–065 (69 math-lane hits, 36 in `phase_measure_theory/`, the latter concentrated
+in an unrelated `K_t=` thread) → per-file metadata triage to prioritize → full, cover-to-cover reads,
+strict chronological order, of 10 prioritized files (M0049, M0051, M0053, M0054, M0068 [negative],
+M0136, M0138, M0140, M0165, M0187). ~60 further diagnostic-matched files and the entire
+`phase_measure_theory/` Step-023→09-01 gap remain unread — this phase's own determination is
+explicitly bounded by that incompleteness, not presented as exhaustive.
+
+**Central finding, decisive**: on 2026-09-02, in strict chronological order, THREE distinct
+resolutions of `Sat` were found. (1) 09:35 — M0051 supplies a genuine, richer-than-previously-known
+class-indexed three-valued `Sat_c` apparatus with an explicit `App(r,Q_t,C_t,S_t,EC_t)` applicability
+layer (the only apparatus found anywhere in this reconstruction's F4 work that actually consumes
+`EC_t` by name) — real executed experiment (KR-SIM-2026-09-02-B), 3/8 requirement classes executable
+per a same-day follow-up (M0054), never frozen. (2) 17:53–18:00 — M0136 proposes a concrete `Sat(K_t,
+r)⟺K_t⊨Content(r)` (FOL entailment, from Brachman & Levesque); M0138's own review explicitly REJECTS
+it (§17 table) for exactly the same defect MD-062 already found in `Sat*` (no capacity for evidence/
+provenance/boundary/context/temporal/governance/contradiction dimensions) — an independent,
+corpus-native corroboration of MD-062's finding from a wholly separate source; M0140, an HPA
+Supervisory Advisory, formally REMOVES `Sat(K_t,r)≡K_t⊨Content(r)` from canonical theory and replaces
+single-function `Sat` with a typed pipeline (`K_t^E→_{Cn_S}K_t^{I,S}→_{Eval_c}EVal_t→Determination→
+Decision→δ`) whose own `Eval_c` stage is explicitly left unspecified and never consumes `EC_t` either.
+(3) 18:20 — M0165/M0187 close a THIRD, structurally unrelated apparatus (`Adequate(K,Q,Γ)⟺ℛ_req(Q,Γ)
+⊆Distinctions(K)`, genuine Category-A axiomatic closure, six frozen axioms) that reuses the bare
+symbol `ℛ_req` for an entirely different object (a distinction-preservation set, not M0043's
+`Req(EC_t)`) — a genuine, previously-undocumented terminology collision, never cross-cited with
+`EC_t`/`Sat(K_t,r)`/M0043 anywhere.
+
+**Correction to MD-063/MD-064/MD-062 (their own text unedited, weight not scope)**: MD-063's B
+determination is corroborated, not weakened — richer connecting machinery exists than MD-063 knew of,
+and it still does not close the `EC_t`-consuming, frozen-`Sat` gap. MD-064's C determination (identity
+between M0125's and M0043's `Sat`) is reframed, not reversed — the object MD-064's question
+presupposes was independently retired the same day by a different thread, a context MD-064 could not
+have had. MD-062's central finding (purpose-relativity/`EC_t` structurally absent from `Sat*`) now has
+a second, independent corroboration native to the corpus itself.
+
+**Final Determination: B — FOUND BUT INCOMPLETE.** Not A (no frozen, `EC_t`-consuming `Sat(K_t,r)`
+body exists anywhere read). Not C (substantial, chronologically-later connecting material was found —
+"not evidenced" would understate it). A `D`-flavored sub-finding recorded alongside B: the discovered
+`ℛ_req` terminology collision and the non-cross-citing sibling closure (M0165/M0187) are evidence of
+parallel, uncoordinated research threads inside F4 itself — the same "genuinely separate bounded
+contexts" shape MD-065 found between F3 and F4, now found one level down, inside F4 — not a competing
+definition of the same object.
+
+**Backlog**: `EKS-41` filed (initially attempted as `EKS-37`, renumbered same day after finding a
+concurrent Lane-T ticket already occupying that number — the same recurring same-day collision
+pattern `EKS-07` already tracks) — the `ℛ_req` symbol denotes two unrelated formal objects in the
+same research programme (M0043/M0047's `Req(EC_t)` vs. M0165/M0187's "Required Distinction
+Universe"), never flagged or cross-referenced anywhere in the corpus; checked against `EKS-23`/
+`EKS-28`/`EKS-34`/`EKS-36` first (naming-collision precedents), confirmed a new, distinct instance.
+
+**No classification changed. No frozen artifact (MD-024–065) modified. No `Sat_new`. No `Accept_r`
+invented. No `K_t` variant selected. No canonicalization. No external literature used as evidence
+(Brachman & Levesque appears only as corpus-internal EXTRACTION material already present in the
+corpus, read as such, not newly consulted). No code. No F3↔F4 work. No final theory declared. K-1/K2
+untouched. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled
+throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-066-chronological-
+definition-reconstruction/` directory (4 files) plus this entry written.
+
+**MD-066 status: COMPLETE. HARD STOP — no MD-067 opened by this completion**, per the mission's own
+explicit instruction. Smallest next research input, named, not authorized: (a) read the ~60 remaining
+diagnostic-matched math-lane files and the `phase_measure_theory/` Step-023→09-01 gap, to test whether
+this phase's own B determination survives a fuller read; (b) investigate whether M0140's typed
+pipeline was itself later extended to consume `EC_t`, in files dated after 2026-09-02 18:00 not yet
+examined.

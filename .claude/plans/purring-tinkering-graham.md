@@ -1185,7 +1185,43 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-065 — Controlled F3↔F4 Comparability Feasibility Audit —
+**Status update, 2026-09-09 (latest): MD-066 — Chronological Definition Reconstruction —
+EXECUTED, FINAL DETERMINATION B, HARD STOP.** User, concerned MD-063/064's own "no boundary found"
+findings may have been premature, commissioned a chronological (not keyword-search) re-read of the
+corpus from 2026-08-31 onward around `EC_t→Req(EC_t)→r→???→Sat(K_t,r)`. Disclosed method deviation
+(diagnostic-grep-then-chronological-read hybrid, not a literal blind full-corpus read; ~60 further
+matched files and the `phase_measure_theory/` Step-023→09-01 gap remain unread). **Central finding**:
+on 2026-09-02, chronologically, three distinct resolutions of `Sat` found — M0051 (09:35, class-
+indexed three-valued `Sat_c`/`App(r,Q_t,C_t,S_t,EC_t)`, the only apparatus in this reconstruction's
+F4 work that consumes `EC_t` by name, real executed experiment, 3/8 classes executable, never
+frozen); M0136→M0138→M0140 (17:53–18:00, `Sat=Entailment` proposed then explicitly REJECTED and
+formally REMOVED from canonical theory by an HPA Supervisory Advisory, replaced by a typed pipeline
+that still never consumes `EC_t`); M0165/M0187 (18:20, a third, structurally unrelated apparatus
+reaching genuine Category-A axiomatic closure, reusing the bare symbol `ℛ_req` for an entirely
+different object than M0043's `Req(EC_t)` — a genuine, previously undocumented terminology
+collision, never cross-cited with `EC_t`/`Sat`). **Correction to MD-063/064/062 (their own text
+unedited)**: MD-063's B determination corroborated, not weakened; MD-064's C determination reframed
+(the `Sat` object its question presupposed was independently retired the same day, by a different
+thread, before MD-064 ever asked the question); MD-062's central finding (purpose-relativity/`EC_t`
+structurally absent) gains an independent, corpus-native corroboration (M0138's own native
+self-critique of `Sat=Entailment`, same defect class). **Final Determination: B — FOUND BUT
+INCOMPLETE** (not A: no frozen, `EC_t`-consuming `Sat` body exists anywhere read; not C: substantial
+connecting material was found), with a D-flavored sub-finding (the `ℛ_req` collision and a
+non-cross-citing sibling closure are evidence of parallel, uncoordinated threads *inside* F4 itself —
+the same "genuinely separate bounded contexts" shape MD-065 found between F3 and F4, now found one
+level down). `EKS-41` filed (renumbered from an attempted `EKS-37` — a same-day collision with a
+Lane-T ticket, the recurring `EKS-07` pattern). **Cross-lane observation, not investigated**: Lane
+T's own same-day `P-93` entry independently reads the identical `ℛ_req`/ABK-1 document cluster from
+`theory-extraction/`'s own side and reaches a closely related finding — recorded as an observed
+convergence only, no `theory-extraction/` content read to produce this phase's own conclusions.
+Verified both consistency scripts `CONSISTENT`; no frozen artifact (MD-024–065) modified; firewalls
+held. **MD-066 status: COMPLETE. HARD STOP** per the mission's own explicit instruction — no MD-067
+opened. Two named, unauthorized options: (a) read the ~60 remaining matched files plus the
+`phase_measure_theory/` gap, to test whether this phase's own B determination survives a fuller
+read; (b) check whether M0140's typed pipeline was later extended to consume `EC_t` in files dated
+after 2026-09-02 18:00.
+
+**Status update, 2026-09-09 (earlier): MD-065 — Controlled F3↔F4 Comparability Feasibility Audit —
 EXECUTED, FINAL DETERMINATION C, HARD STOP.** User declined further `Sat`-identity search, redirected
 to F3↔F4 feasibility. Verified a genuinely new, earlier (2026-08-27) `Step-013`/`Step-023`
 requirement/`EC` lineage from a same-day external file's claim — real, recorded in F4's type ledger,
