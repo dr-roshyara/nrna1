@@ -4268,3 +4268,65 @@ merged. No candidate promoted. K-1/K2 untouched. GA-001/GA-038 untouched. No Sta
 decision-log entry and the `EKS-21` corroboration note written.
 
 **MD-047 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-048 opened.**
+
+---
+
+## MD-048 — Breakthrough Reconstruction Audit (EXECUTED, 2026-09-09)
+
+**Authorization**: user asserted a prior "breakthrough" session had reported the relevant concepts
+already defined, and that MD-046 may have searched for the wrong kind of evidence (an explicit
+equivalence relation, rather than identity established through definitions/invariants/derivations).
+Authorized locating and reconstructing that material directly, ending with an explicit instruction:
+"search for breakthrough words."
+
+**Disagreement/clarification recorded, then resolved by direct search**: no material claiming
+capability identity was established through an alternative mechanism had been found anywhere in
+MD-044–047. Executed the final instruction as a literal, neutral term search rather than assuming the
+breakthrough existed or succeeded.
+
+**Search result**: `grep -rli "breakthrough"`, verified against a positive control, across
+`brainstorming/kernel/`, `reviews/kernel/`, and the math lane: zero hits in the first two; 29 in the
+math lane, concentrated in a 2026-09-01/02 cluster, with two files carrying "breakthrough" in their
+own filename. Both read cold, in full.
+
+**Central finding, decisive**: both breakthrough documents explicitly, repeatedly, and in their own
+final status tables mark **semantic equivalence, satisfaction (`Sat`), and kernel minimality as
+OPEN/UNRESOLVED**. Document 2's own words: *"the current definition [of `≡_sem`] essentially says
+they have the same semantic meaning/behavior... mathematically circular unless the semantic
+interpretation function is independently defined... This is exactly why the 8-vs-13 kernel result
+remains unresolved."* Document 2's own final classification: *"BREAKTHROUGH: YES. THEORY COHERENT:
+YES. CONCEPTUAL FOUNDATION MATURE: YES. **EVERYTHING CLEARED: NO.**"* Document 1's own closing
+words: *"the work we've done so far has put us in a position where those [open] questions are now
+well-defined. **That is the breakthrough.**"*
+
+**Definition-to-concept correspondence table built**: every C1–C13/G-C1–G-C9 "closure" in both
+documents is a **negative/exclusionary** category-boundary claim (what a concept is NOT), never a
+positive identity claim between two differently-named or differently-represented descriptions of the
+same thing. The one place an equivalence relation is discussed is explicitly, by the source's own
+text, diagnosed as circular and unresolved.
+
+**Reconciliation with MD-044–047**: MD-046's Classification C and MD-047's Classification B both
+stand — the breakthrough does not supply MinKer's missing semantic basis (`𝔎_adm`, `𝔠_KOS`/`⊨`,
+capability identity, `⪯_sem` are each either unaddressed or explicitly diagnosed as unresolved).
+Neither breakthrough document mentions GA-001 or GA-038. **This is one continuous, unresolved thread
+across the corpus's own timeline** (2026-09-02 breakthrough → 2026-09-04 MinKer chain → 2026-09-09
+MD-045–048), not three separate findings that happen to agree — within-corpus corroboration, never
+independent confirmation.
+
+**Final answer, explicit**: the breakthrough establishes architectural/conceptual maturity and
+negative category-boundary results; it does NOT establish capability or semantic identity — that gap
+is explicitly, self-consciously named as unresolved by the breakthrough's own author, in the same
+document that calls itself a breakthrough.
+
+**No backlog ticket** — a hypothesis was checked against source and found not supported; the research
+process functioning correctly, not an operating-model gap.
+
+**No classification changed. No frozen artifact (MD-024–047) modified. No source file modified
+anywhere. `classification-register.tsv` untouched. No capability-identity relation defined. No
+vocabularies merged. No candidate promoted. K-1/K2 untouched. GA-001/GA-038 untouched. No Stage 07.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-048-breakthrough-reconstruction-audit/` directory (4 files) plus this decision-log
+entry written.
+
+**MD-048 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-049 opened.**

@@ -1,5 +1,38 @@
-**Updated:** 2026-09-09 (latest) — **MD-047 COMPLETE — CAPABILITY IDENTITY EVIDENCE COMPLETENESS /
-BOUNDARY ADJUDICATION. HARD STOP per explicit user instruction — no MD-048 opened.** Bounded
+**Updated:** 2026-09-09 (latest) — **MD-048 COMPLETE — BREAKTHROUGH RECONSTRUCTION AUDIT. HARD STOP
+per explicit user instruction — no MD-049 opened.** User asserted a prior "breakthrough" session had
+reported the relevant concepts already defined, and that MD-046 may have searched for the wrong kind
+of evidence. Clarified upfront: no such material had been found in MD-044–047; executed the final
+instruction ("search for breakthrough words") as a literal, neutral search rather than assuming
+success. **Search result**: zero hits in `brainstorming/kernel/`/`reviews/kernel/` (verified against
+a positive control); 29 hits in the math lane, two files carrying "breakthrough" in their own
+filename (2026-09-02, two days before the MinKer chain). Both read cold, in full. **Central finding,
+decisive**: both documents explicitly, repeatedly mark semantic equivalence, satisfaction (`Sat`),
+and kernel minimality as OPEN/UNRESOLVED in their own final status tables. One document's own words:
+*"[≡_sem] is mathematically circular unless the semantic interpretation function is independently
+defined... This is exactly why the 8-vs-13 kernel result remains unresolved."* The other's own final
+verdict: *"BREAKTHROUGH: YES... EVERYTHING CLEARED: NO."* Its own closing line: *"the work we've done
+so far has put us in a position where those questions are now well-defined. That is the
+breakthrough."* **Every C1–C13/G-C1–G-C9 "closure" in both documents is negative/exclusionary** (what
+a concept is NOT), never a positive identity claim — checked directly, none present. **Reconciliation
+with MD-044–047**: both classifications stand — the breakthrough does not supply MinKer's missing
+semantic basis; neither document mentions GA-001/GA-038. This is one continuous, unresolved thread
+across the corpus's own timeline (2026-09-02 → 2026-09-04 MinKer chain → 2026-09-09 MD-045–048), not
+three separate findings that happen to agree — within-corpus corroboration, never independent
+confirmation. **Final answer**: the breakthrough establishes architectural/conceptual maturity and
+negative category-boundary results, not capability/semantic identity — that gap is explicitly
+self-named as unresolved by the breakthrough's own author. **No backlog ticket** — a hypothesis was
+checked and found not supported; the research process working correctly. No classification changed;
+no frozen artifact modified; no source file modified anywhere; `classification-register.tsv`
+untouched; no capability-identity relation defined; no vocabularies merged; no candidate promoted;
+K-1/K2/GA-001/GA-038 untouched; no Stage 07. Verified both consistency scripts `CONSISTENT`. Full
+record: `14_decision-log/model-boundary-decisions.md` → MD-048 execution record; `14_decision-log/
+MD-048-breakthrough-reconstruction-audit/` (4 files). **Smallest next action, unchanged from
+MD-047**: whether to authorize a new foundational research programme to construct (not extract) a
+capability-identity theory, a narrow admissibility decision over an excluded landscape, or neither.
+This session's work is being committed now, per explicit instruction, then HARD STOP.
+
+**Superseded-update-marker-69 (2026-09-09, earlier) — MD-047 COMPLETE — CAPABILITY IDENTITY EVIDENCE
+COMPLETENESS / BOUNDARY ADJUDICATION. HARD STOP per explicit user instruction — no MD-048 opened.** Bounded
 completeness/admissibility audit of MD-046's own negative finding, per direct authorization — not a
 new search, not a new construction. **Verification performed first**: per `EKS-21`'s own documented
 pattern, independently re-ran MD-046's central "zero hits" claim with an unfiltered positive control.

@@ -1185,7 +1185,35 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-047 — Capability Identity Evidence Completeness / Boundary
+**Status update, 2026-09-09 (latest): MD-048 — Breakthrough Reconstruction Audit — EXECUTED. HARD
+STOP per explicit user instruction — no MD-049 opened.** User asserted a prior "breakthrough" session
+had reported the relevant concepts already defined, possibly via a different mechanism than the
+explicit equivalence relation MD-046 searched for. Clarified first: no such material had been found
+in MD-044–047. Executed the final instruction ("search for breakthrough words") as a literal, neutral
+search with a positive control. **Found zero hits in `brainstorming/kernel/`/`reviews/kernel/`; 29 in
+the math lane, two files carrying "breakthrough" in their own filename (2026-09-02, predating the
+MinKer chain by two days).** Both read cold, in full. **Central finding, decisive**: both documents
+explicitly, repeatedly mark semantic equivalence, `Sat`, and kernel minimality OPEN/UNRESOLVED in
+their own final status tables; one explicitly diagnoses the candidate equivalence relation as
+circular ("mathematically circular unless the semantic interpretation function is independently
+defined... exactly why the 8-vs-13 kernel result remains unresolved"); the other's own boxed verdict:
+"BREAKTHROUGH: YES... EVERYTHING CLEARED: NO," closing with "we can state precisely what must be
+solved next... That is the breakthrough." **Every C1–C13/G-C1–G-C9 "closure" in both documents is
+negative/exclusionary** (what a concept is NOT), never a positive identity claim. **Reconciliation
+with MD-044–047**: both classifications stand — the breakthrough does not supply MinKer's missing
+semantic basis; neither document mentions GA-001/GA-038. One continuous, unresolved thread across the
+corpus's own timeline (2026-09-02 → 2026-09-04 MinKer chain → 2026-09-09 MD-045–048), not three
+separate findings that happen to agree. **Final answer**: the breakthrough establishes architectural
+maturity and negative category-boundary results, not capability/semantic identity. **No backlog
+ticket** — a checked hypothesis found not supported, the process working correctly. No classification
+changed; no frozen artifact modified; no source file modified anywhere; `classification-register.tsv`
+untouched; no capability-identity relation defined; no vocabularies merged; no candidate promoted;
+K-1/K2/GA-001/GA-038 untouched; no Stage 07. Verified both consistency scripts `CONSISTENT`.
+**Smallest next action, unchanged from MD-047**: whether to authorize a new foundational research
+programme to construct (not extract) a capability-identity theory, a narrow admissibility decision
+over an excluded landscape, or neither.
+
+**Status update, 2026-09-09 (earlier): MD-047 — Capability Identity Evidence Completeness / Boundary
 Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-048 opened.** Bounded
 completeness/admissibility audit of MD-046's own negative finding, not a new search or construction.
 **Verification performed first**: re-ran MD-046's central "zero hits" claim with an unfiltered
