@@ -788,3 +788,83 @@ Multiple sessions share one working tree and one index. **Never assume the index
 > **Do not create boundaries because a concept exists. Create boundaries because ownership, language, invariants, and change reasons require them.**
 
 The four-question test applied throughout the KOS track (language · invariants · ownership · change reason) is the operational form. Corollary recorded with it: **a role is not automatically a bounded context** — role-model decisions (ADR-AIP-04 territory) and context-map decisions (ADR-AIP-03 territory) are different taxonomies, decided separately.
+
+## KnowledgeOS verification — MANDATORY CORPUS RULE (user, 2026-09-06)
+
+`docs/knowledgeos/brainstorming/` **is the complete corpus and the search universe.** Before writing
+*undefined · missing · absent · not specified · not derived · impossible · unavailable · a blocker*
+about any KnowledgeOS concept, the **entire** tree must be searched conceptually and mathematically —
+synonyms, abbreviations, alternative terminology, **LaTeX** notation, derivations, experiments,
+simulations, specs, decision records, TODOs, rejected alternatives, competing models. Never restrict
+to ratified artifacts, `governance/`, `reviews/`, the latest synthesis, known filenames, one lane, or
+literal glyphs.
+
+**Multiplicity is expected: multiple definitions ≠ missing definition.** Distinguish three states on
+every finding — **A NOT FOUND** (a search result only) · **B DEFINED MULTIPLE WAYS** (a corpus
+finding) · **C CANONICALLY RESOLVED** (only here may one be treated as canonical).
+
+**Never silently choose between competing definitions.** Produce a conflict record (concept · A · its
+sources · B · its sources · other alternatives · exact difference · equivalent/complementary/
+conflicting · existing precedence evidence · what is undecided · implementation consequence) and
+**ask**. The correct outcome is **DECISION REQUIRED**, never *"blocked because undefined"*.
+
+Full rule: `docs/knowledgeos/brainstorming/verification/gap-discovery/CORPUS-SEARCH-RULE.md`.
+
+## Phase-gating discipline — a REUSABLE GOVERNANCE PRINCIPLE, established by the three-model-convergence reconstruction (MD-021, 2026-09-07 across Phases 0–3; not a Phase-3 historical note — this generalizes to any future phased research/reconstruction programme)
+
+**Governed home:** `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/model-boundary-decisions.md` (MD-021's own phased plan + every phase's execution/audit/acceptance record, additive-only, never rewritten). This MEMORY entry is the durable PRINCIPLE the programme's own repeated practice established — the phase-specific findings themselves stay in the decision log, `.claude/CONTEXT.md`, and the session logs.
+
+**The twelve-point discipline, in canonical form:**
+
+1. **Reconstruction proceeds through explicitly authorized, separately scoped phases** — never as one open-ended commission.
+2. **Completion or acceptance of one phase NEVER implicitly authorizes the next phase.** Stated explicitly by the user immediately after Phase 3's acceptance: **"Do not authorize Phase 4 merely because Phase 3 is accepted."** "Phase accepted" means exactly that phase is accepted — it constitutes no authorization for any downstream work, however natural the next step looks.
+3. **Each phase must have its own written scope, inputs, outputs, verification criteria, and explicit authorization** before execution — realized in this programme as an EP-01 Plan-Mode pass per phase, even when the user's own authorization is already long and detailed (8/11/19 numbered sections across Phases 1/2/3 respectively). A detailed authorization is never a substitute for independently re-verifying repository state and re-deriving evidence-population counts directly from the governed records — **"do not simply copy these numbers from a previous report,"** the authorization's own words (Phase 2 §5).
+4. **A completed phase is independently audited before acceptance where the governing protocol (or the Authority) requires it** — not automatically after every phase, but on demand, and always available. Phase 1 was audited before Phase 2's authorization; Phase 3 was audited before its own acceptance; Phase 2 moved to Phase 3 without a separate formal audit step, on the Authority's own judgment that one was not required — the discipline is "audited when required," not "audited by rote."
+5. **Audit findings are recorded as evidence-preserving corrections — never a silent rewrite of history or of prior evidence.** Two audits, two genuinely different defect classes (Phase 1: an *overstated principal finding*, its claimed scope exceeding what its own cited evidence showed; Phase 3: a *bookkeeping error*, a summary tally table contradicting its own row's stated adjudication text) — each corrected narrowly, in place, with an explicit correction note left for future readers (a "SCOPE CORRECTION" paragraph; a "Correction applied 2026-09-07" note), never deleted or smoothed over.
+6. **Frozen phase outputs remain immutable witnesses for every subsequent phase.** Model A (`02_model-a_gita/`) and Model B (`03_model-b_mathematical/`) are read, cited, and pointed into — never re-derived, never edited — by Phase 3, and this was independently verified (md5-hashed) as part of Phase 3's own acceptance.
+7. **Later phases may consume frozen outputs but must never modify them.** Consumption means: cite by source reference, quote, adjudicate against — modification of any kind (even an "obviously needed" correction) belongs to a separately authorized phase revisiting that specific model, never to the phase consuming it.
+8. **No global reclassification, canonicalization, implementation, or theoretical promotion occurs merely because an earlier phase succeeded.** `classification-register.tsv`'s `final_primary`/`final_secondary`/`classification_change`/`reason_for_change` remain `PENDING_GLOBAL_RECLASS`/`PENDING` for every row across all of Phases 0–3, checked and reconfirmed at the close of each phase — success at one phase is evidence for a future authorization decision, never itself an authorization.
+9. **Unresolved questions, contradictions, non-convergences, and competing models remain explicitly unresolved until a separately authorized phase establishes otherwise** — Model A's own UE-1..5/OQ-1..6, Model B's own UE-1..3/OQ-1..10, and Phase 3's own 5 UNRESOLVED correspondence rows all stand exactly as their own phase left them; no later phase (including Phase 3 itself, relative to Phases 1/2) resolves a prior phase's open item as a side effect of its own work.
+10. **The default state of every later phase is UNAUTHORIZED / UNTOUCHED until separately authorized** — stated and re-confirmed at the close of every phase in this programme (Phase 0 closed naming Phases 1–6+ unauthorized; Phase 1 closed naming Phase 2+ unauthorized; Phase 2 closed naming Phase 3+ unauthorized; Phase 3 closed naming Phase 4+ unauthorized), never left merely implicit.
+11. **For any cross-lineage/cross-model adjudication phase specifically, the governing principle is SIMILARITY ≠ IDENTITY** — a six-level evidentiary ladder (lexical → conceptual → functional → structural → formal equivalence → demonstrated identity), **UNRESOLVED as the default status until equivalence is demonstrated**, and an explicit requirement to record **"no demonstrated counterpart"** rather than force a weak relationship. A candidate-correspondence list is a starting point, never a hidden completeness assumption. **Zero correspondences reaching the top of the ladder is a correct, evidence-bound outcome, not a shortfall** — "how much converged" is explicitly rejected as a success metric.
+12. **The executing session stops at every phase boundary and awaits further direction** — it does not narrate what the next phase "should" contain as if inviting continuation, and does not begin any work toward a later phase while awaiting acceptance of the current one.
+
+**Supporting verification pattern, run at the close of every phase** (the mechanism that makes points 6–8 checkable, not merely asserted): both lane-consistency scripts (`00_control/resume.py`, `00_control/resume_mathematical.py`) re-run and confirmed `CONSISTENT`; the main classification register confirmed to have 0 rows with a non-`PENDING_GLOBAL_RECLASS`/`PENDING` `final_primary`/`classification_change`; every prior phase's artifact directory confirmed unmodified (md5-hashed where a later phase's own integrity is in question); a filesystem scope check confirming only the current phase's own new directory plus the governed decision-log/CONTEXT/session-log entries were written. **A green consistency script is never sufficient on its own — pair it with an explicit content-level check**, since a script can stay green while an out-of-scope file is quietly touched.
+
+**Directory-numbering and phase-numbering are NOT the same axis, and must never be assumed to align** — MD-021's own phase numbers (0/1/2/3/4/5/6+) do not map 1:1 onto `three_model_convergence/`'s directory numbers (`02_model-a_gita/`/`03_model-b_mathematical/`/`04_model-c_kernel-ddd/`/`05_cross-model/`/…): MD-021 Phase 3 (cross-model adjudication) writes to `05_cross-model/`, not `04_model-c_kernel-ddd/` (reserved for the still-unauthorized Model C1/C2 reconstruction, itself a *later*, separate MD-021 phase). Any such discrepancy against an authorization's own wording is **documented, never silently repaired** — the same discipline this repo's ES-004.3 already states for artifact history generally.
+
+## Corpus research method — TIMESTAMP-THREAD READING (ADOPTED 2026-09-09, human research owner)
+
+**Filenames in the KnowledgeOS brainstorming corpus are save-time stamps, so chronological filename
+order is evidence about how a research thread developed.** On finding any clue — concept, definition,
+theorem, candidate, terminology — **read the files saved immediately after it, in order, until the
+substantive topic changes.** Record `thread_start`, `thread_end`, `files_read`, `chronological_order`,
+`topic_transition`, `key_claims`, `final_status`, `provenance`, `admissibility_status`.
+
+**A first keyword hit is never the complete development.** Later files may carry refinement, correction,
+counterexample, proof, rejection, replacement, qualification, final formulation, or the decision.
+Conversely, **stop when the topic changes** — adjacency alone is not a reason to continue.
+
+**CRITICAL DISTINCTION — never upgrade one into another because files are adjacent:**
+`CHRONOLOGICALLY ADJACENT` · `LIKELY SAME RESEARCH THREAD` · `CONTINUATION CONFIRMED BY CONTENT` ·
+`SAME CONCEPT` · `SAME ARTIFACT` · `SAME PROVENANCE LINEAGE` · `INDEPENDENT RESEARCH` ·
+`INDEPENDENT REPLICATION`.
+
+**Evidence-state ladder, never collapsed:** `FOUND` · `READ` · `CHARACTERIZED` · `ADMISSIBLE` ·
+`EVIDENTIARY` · `DERIVED` · `VERIFIED` · `RATIFIED` · `CANONICAL`.
+
+**Method domain (measured `P-73`):** applies to ~1 312 of ~2 647 files — `brainstorming/kernel/` 95% ·
+`mathematical_ideas_that_can_be_implemented/` 99% · `phase_measure_theory/` 86%. **Not** timestamped:
+`brainstorming/verification/` 9% · `reviews/` 4% · `reviews/kernel/` 0% (sequence-named) · `synthesis/` ·
+top-level `verification/` and `research/`. **For those, the analogue is the folder's own index plus its
+last/closing report** — used successfully in `P-72`.
+
+**Two traps, both witnessed:** `-duplicate` files sit at distinct timestamps with identical content
+(*chronologically adjacent + same artifact*), and the archaeology census already classified ~19
+md5-identical groups — a walk that counts them as development invents refinements. And a keyword such as
+*"breakthrough"* or *"final"* is a **discovery signal, not evidence of resolution** (`P-64`: 51 files, 12
+claiming *"the real breakthrough"*, six referents, none a proved result).
+
+**Anti-bias:** a thread may contain a genuine resolution, a failed one, a correction, a retraction, or an
+unresolved question — all are relevant. **Do not treat a later file as superseding an earlier one unless
+it claims correction or replacement.**
