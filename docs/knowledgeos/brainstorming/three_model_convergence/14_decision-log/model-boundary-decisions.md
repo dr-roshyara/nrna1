@@ -4729,3 +4729,94 @@ two executed scripts) plus this entry written; both scripts re-run successfully,
 one-claim independent-verification discipline to the next most consequential unresolved claim MD-054
 recorded — the `Σ`-cannot-see-`ℛ` finding (a fully-supported inconsistency being representable).
 Awaiting separate authorization for any further step.**
+
+---
+
+## MD-056 — The Ratified Layer: "Three Kernels" and the Operation-Registry Commission
+
+**Trigger**: user reissued the full 8-directory sweep (`brainstorming/kernel/`, `brainstorming/
+synthesis/`, `mathematical_ideas_that_can_be_implemented/`, `reviews/kernel/`, other `reviews/`
+subfolders, nrna1-top-level `verification/` and `research/`), plus the formal "Chronological Thread
+Discovery Protocol." Disagreement stated first: `brainstorming/verification/` is already fully
+covered (MD-052 `spec/`, MD-054 top-level, 80 files) — not re-swept. A directory-wide keyword/
+filename discovery sweep across the remaining directories surfaced two extraordinary finds inside
+`docs/knowledgeos/reviews/synthesis/` — the **ratified** Stratum-2 canonical-architecture layer
+(distinct in kind from raw brainstorming, tracked in its own deliberate git commit `10bda5d7a`, not
+the generic bulk import).
+
+**Find 1 — `book/part-3-architecture/03-09-three-kernels/`** (a ratified book chapter, 4 files, read
+in full): the architecture deliberately layers three senses of "kernel" (constitutional / formal
+candidate — *"the tradition the corpus called M₄₉"* / historical) rather than crowning one, citing
+ruling `D-FA-4` (`GN-31`), and names the open item **`OQ-2`** — *"kernel membership at the object
+level... never decided by any act."* **Confirmed by direct grep**: this is the exact same `OQ-2`,
+same `D-FA-4` citation, same `M₄₉` label already in this reconstruction's own frozen Phase 5N record
+(K-1 ratification adjudication, N2/"L2 candidate"/OQ-2-open) — a second, independent-source
+confirmation of the same finding, not a new fact about F1.
+
+**Find 2 — `commission-operation-registry/`** (a real, dated, HPA-authorized governance commission —
+`GN-79/80` derivation, `GN-83/86` independent falsification, `GN-85` decision procedure, 2026-08-31;
+16 files read in mtime order to the thread's own terminal document): a rigorous, **executed**
+minimality test (5 Python scripts, 20,790 constraint checks, byte-identically re-run by an
+independent falsification pass) over the *operation* registry (sibling to the state-kernel question).
+**Central results**: 57 candidate operation names across 17 sources, no two enumerations agree, the
+four best-corroborated names are necessary for nothing; 15 mandatory capabilities independently
+derived from the ratified surface (after proving the corpus's own stated necessity criterion is a
+tautology by construction); **six minimal sufficient registries enumerated exactly**, none fit for
+ratification, first verdict **D** ("depends on an unresolved prior canonical decision," naming ten
+prior decisions). **The independent falsification pass then corrects the ground while confirming the
+verdict** — finds the "inconsistency" claim (all six registries contain a rule-violating operation)
+is itself false (`Reject` has no specification to violate at all — the true obstruction is
+*underdetermination*), finds a fake `Replay` operation (sets a flag, reads the same flag — the
+identical tautology-witness defect the derivation itself used to discredit an earlier finding
+elsewhere in the corpus), finds a materially decisive Constitutional article (Art. 8.3) never
+consulted, and adds an eleventh, prior-to-all-others decision (`P-11`: what closes the operation
+universe at all). **Terminal document** (`step-285/06-STEP-285-VERDICT.md`, the thread's own end):
+five separately-graded completeness dimensions (Derivation substantial-but-uneven, Definition
+weakest, Architecture constraints-only, Governance "exactly one construct has a real act: Policy,"
+Implementation-readiness *"nothing that changes that state... `commit` executes as the identity
+function"*) and a formal **`§17 HARD STOP`** (5 of 6 stop conditions met). **Independently, and
+without either side knowing of the other, this precisely mirrors the VERIFY SESSION thread's own
+`K=(𝒜,ℛ)` finding (MD-054) that its own central governed transition collapses to the identity
+function** — two separate research/governance efforts, different formalisms, identical structural
+result.
+
+**Relation to inventory**: F1 — **IDENTITY ESTABLISHED** (object correspondence via the shared
+`D-FA-4`/`M₄₉` citation; OQ-2's own open status unchanged). F3 — **PARTIAL CORRESPONDENCE** (6 of
+14 operator names shared with the commission's own 57-name universe: `Observe`, `Relate`, `Infer`,
+`Qualify`, `Validate`, `Revise` — vocabulary echo only, no formal link). F4/F5/F6/K0 — **UNRESOLVED**.
+VERIFY SESSION `K=(𝒜,ℛ)` — **PARTIAL CORRESPONDENCE** (structural/methodological, not object-level).
+**GA-001: UNCHANGED. GA-038: UNCHANGED, and this is now the FOURTH independent line of evidence
+reinforcing it** (after this reconstruction's own gap analysis, K0, and the VERIFY SESSION thread).
+**No candidate label assigned.**
+
+**Backlog**: `EKS-28` filed — the OQ-2 track and the operation-registry commission's own P-1…P-11
+track never cite each other despite governing the same ratified surface and reaching strikingly
+similar terminal shapes days apart. Checked against `EKS-22`/`EKS-23`/`EKS-25` first (distinct on
+all three — `EKS-25`, filed by the parallel Lane T session, covers the *separate* finding that the
+VERIFY SESSION/K0 thread itself stopped awaiting a supervision that never came — not this
+cross-commission gap).
+
+**MD-056-DQ-1 — admissibility, presented via `AskUserQuestion`** (3 options). **Decision: ADMIT
+narrow-scope (the 20 files read), continue the sweep.** Same discipline as MD-052/054 — admission ≠
+adoption, not merged into F1–F8, no composition test, no GA-001/GA-038 resolution.
+`OPERATION-REGISTRY-INDEPENDENT-REVIEW.md` and the remaining ~265 files of `reviews/synthesis/`
+remain not admitted.
+
+**Scope disclosed, not silently dropped**: the remaining ~265 files of `reviews/synthesis/`, all of
+`brainstorming/kernel/` (172), `reviews/kernel/` (106, partially spot-checked), `brainstorming/
+synthesis/` (4), the math lane (402, substantially covered already by Model B/MinKer work), nrna1-top
+`verification/` (50, only `zero-algebra/` touched) and `research/` (4, only `kernel-reduction/`
+touched) remain unswept beyond the initial filename/keyword discovery pass — named as the sweep's own
+next targets, not chased in this phase.
+
+**No classification changed. No frozen artifact (MD-024–055) modified. No executable file read or
+executed. `classification-register.tsv` untouched. K-1/K2 untouched. No Stage 07. MD-050 kept
+firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-056-ratified-layer-three-kernels-and-minimality-result/` directory (5 files)
+plus this entry written.
+
+**MD-056 status: COMPLETE. Smallest next action, named, not authorized**: continue the forward-read/
+discovery-signal sweep into the remaining directories named above. Awaiting separate authorization
+for any further step.**

@@ -1,4 +1,69 @@
-**Updated:** 2026-09-09 (latest) — **MD-055 COMPLETE — INDEPENDENT ADVERSARIAL VERIFICATION OF THE
+**Updated:** 2026-09-09 (latest) — **MD-056 COMPLETE — RATIFIED LAYER: "THREE KERNELS" + OPERATION-
+REGISTRY COMMISSION, ADMITTED NARROW-SCOPE, SWEEP CONTINUING.** User reissued the full 8-directory
+sweep with a formal Chronological Thread Discovery Protocol. Disagreement stated first:
+`brainstorming/verification/` is already fully covered (MD-052 `spec/` + MD-054 top-level, 80
+files) — not re-swept. A keyword/filename discovery sweep across the remaining directories surfaced
+two major finds inside `docs/knowledgeos/reviews/synthesis/` — the **ratified** Stratum-2 canonical-
+architecture layer (its own deliberate git commit `10bda5d7a`, not the generic bulk import used for
+brainstorming/ material). **Find 1 — `book/part-3-architecture/03-09-three-kernels/`** (ratified book
+chapter, 4 files): the architecture deliberately layers three senses of "kernel" — constitutional /
+formal candidate (*"the tradition the corpus called M₄₉"*) / historical — rather than crowning one,
+citing ruling `D-FA-4` (`GN-31`), and names the open item **`OQ-2`** — *"kernel membership at the
+object level... never decided by any act."* **Confirmed by direct grep**: this is the exact same
+`OQ-2`, `D-FA-4` citation, and `M₄₉` label already in this reconstruction's own frozen Phase 5N record
+— an independent, ratified-layer confirmation of a finding this reconstruction already reached
+through primary-source archaeology, not a new fact about F1. **Find 2 —
+`commission-operation-registry/`** (a real, dated, HPA-authorized governance commission — `GN-79/80`
+derivation, `GN-83/86` independent falsification, `GN-85` decision procedure, 2026-08-31; 16 files
+read in mtime order to the thread's own terminal document): a rigorous, **executed** minimality test
+(5 Python scripts, 20,790 constraint checks, byte-identically re-run by an independent falsification
+pass) over the *operation* registry — sibling to the state-kernel question. 57 candidate operation
+names across 17 sources, no two enumerations agree; 15 mandatory capabilities independently derived
+from the ratified surface (after proving the corpus's own stated necessity criterion is a tautology
+by construction); **six minimal sufficient registries enumerated exactly**, none fit for
+ratification, first verdict **D** — *"depends on an unresolved prior canonical decision,"* naming ten
+prior decisions. **The independent falsification pass then corrects the ground while confirming the
+verdict**: the "inconsistency" claim is itself falsified (`Reject` has no specification to violate at
+all — the true obstruction is *underdetermination*), a fake `Replay` operation is found (sets a flag,
+reads the same flag — the identical tautology-witness defect the derivation itself used to discredit
+an earlier finding elsewhere in the corpus), a materially decisive Constitutional article (Art. 8.3)
+is found never consulted, and an eleventh, prior-to-all-others decision (`P-11`) is added. **Terminal
+document** (`step-285/06-STEP-285-VERDICT.md`): five separately-graded completeness dimensions
+(Derivation substantial-but-uneven, Definition weakest, Architecture constraints-only, Governance
+*"exactly one construct has a real act: Policy,"* Implementation-readiness *"nothing that changes
+that state... `commit` executes as the identity function"*) and a formal **`§17 HARD STOP`** (5 of 6
+stop conditions met). **Independently, without either side knowing of the other, this precisely
+mirrors the VERIFY SESSION thread's own `K=(𝒜,ℛ)` finding (MD-054)** that its own central governed
+transition collapses to the identity function — two separate research/governance efforts, different
+formalisms, identical structural result. **Relation to inventory**: F1 — **IDENTITY ESTABLISHED**
+(object correspondence via the shared `D-FA-4`/`M₄₉` citation; OQ-2's own open status unchanged). F3
+— **PARTIAL CORRESPONDENCE** (6 of 14 operator names shared with the commission's own 57-name
+universe — vocabulary echo only, no formal link). F4/F5/F6/K0 — **UNRESOLVED**. VERIFY SESSION
+`K=(𝒜,ℛ)` — **PARTIAL CORRESPONDENCE** (structural/methodological). **GA-001: UNCHANGED. GA-038:
+UNCHANGED, and this is now the FOURTH independent line of evidence reinforcing it** (after this
+reconstruction's own gap analysis, K0, and the VERIFY SESSION thread). **No candidate label
+assigned.** **Backlog: `EKS-28` filed** — the OQ-2 track and the operation-registry commission's own
+P-1…P-11 track never cite each other despite governing the same ratified surface and reaching
+strikingly similar terminal shapes days apart; checked against `EKS-22`/`EKS-23`/`EKS-25` first,
+distinct on all three. **MD-056-DQ-1, presented via `AskUserQuestion`** (3 options): **user chose
+Option A — ADMIT narrow-scope (the 20 files read), continue the sweep.** Same discipline as
+MD-052/054 — admission ≠ adoption, not merged into F1–F8, no composition test, no GA-001/GA-038
+resolution. `OPERATION-REGISTRY-INDEPENDENT-REVIEW.md` and the remaining ~265 files of `reviews/
+synthesis/` remain not admitted. **Scope disclosed, not silently dropped**: the remaining ~265 files
+of `reviews/synthesis/`, all of `brainstorming/kernel/` (172), `reviews/kernel/` (106, partially
+spot-checked), `brainstorming/synthesis/` (4), the math lane (402, substantially covered already),
+nrna1-top `verification/` (50, only `zero-algebra/` touched) and `research/` (4, only `kernel-
+reduction/` touched) remain unswept beyond the initial filename/keyword discovery pass — the sweep's
+own next targets. No classification changed; no frozen artifact (MD-024–055) modified; no executable
+file read or executed; `classification-register.tsv` untouched; K-1/K2 untouched; no Stage 07; MD-050
+kept firewalled throughout. Verified both consistency scripts `CONSISTENT`. Full record:
+`14_decision-log/model-boundary-decisions.md` → MD-056 execution record; `14_decision-log/
+MD-056-ratified-layer-three-kernels-and-minimality-result/` (5 files). **Smallest next action, named,
+not authorized**: continue the forward-read/discovery-signal sweep into the remaining directories
+named above. This session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-76 (2026-09-09, earlier) — MD-055 COMPLETE — INDEPENDENT ADVERSARIAL
+VERIFICATION OF THE
 `id`/MUTABLE-`e.state` CONTRADICTION.** User reviewed MD-054, agreed with its central result, and
 made one correction (recorded here, MD-054's own text not modified): the "ChatGPT" comparison stream's
 characterization as *"a genuine, contamination-checked second independent research stream"* is

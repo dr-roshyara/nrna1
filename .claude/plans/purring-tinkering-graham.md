@@ -1185,7 +1185,38 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-055 — Independent Adversarial Verification of the
+**Status update, 2026-09-09 (latest): MD-056 — Ratified Layer: "Three Kernels" + Operation-Registry
+Commission — EXECUTED, admitted narrow-scope, sweep continuing.** User reissued the full 8-directory
+sweep with the formal Chronological Thread Discovery Protocol; disagreement stated first
+(`brainstorming/verification/` already fully covered, MD-052+054, not re-swept). A keyword/filename
+discovery sweep across the remaining directories found two major hits in `reviews/synthesis/` — the
+**ratified** Stratum-2 layer (own deliberate git commit, not the generic bulk import). **Find 1**:
+`03-09-three-kernels/` (ratified book chapter) — layers 3 kernel senses, names open item **OQ-2**,
+confirmed by direct grep to be the SAME OQ-2/D-FA-4/M₄₉ already in this reconstruction's own frozen
+Phase 5N record (independent confirmation, not a new fact about F1). **Find 2**:
+`commission-operation-registry/` (real HPA-authorized commission, GN-79/80/83/85/86, 2026-08-31, 16
+files read to its own terminal document) — an executed minimality test over the *operation* registry:
+57 candidate names, no two enumerations agree, 15 mandatory capabilities derived (after proving the
+corpus's own necessity criterion is a tautology by construction), 6 minimal registries enumerated,
+first verdict D. **An independent falsification pass then corrects the ground while confirming the
+verdict** — the "inconsistency" claim is itself false (no spec exists to violate), a fake `Replay`
+found (sets a flag, reads the same flag), a decisive Constitutional article never consulted, an 11th
+prior decision added. Terminal document (`step-285/06-STEP-285-VERDICT.md`): 5 completeness
+dimensions graded separately, formal **§17 HARD STOP**. **Independently mirrors the VERIFY SESSION
+thread's own finding (MD-054) that its central governed transition collapses to the identity
+function** — two separate efforts, same structural result, neither aware of the other. **F1: IDENTITY
+ESTABLISHED (object correspondence, status unchanged). F3: PARTIAL CORRESPONDENCE (6/14 operator
+names shared). GA-001: UNCHANGED. GA-038: UNCHANGED, fourth independent line of evidence
+reinforcing it.** No candidate label assigned. **EKS-28 filed** — the two governance commissions
+never cross-reference each other despite governing the same ratified surface (checked against
+EKS-22/23/25 first, distinct). **MD-056-DQ-1**: user chose admit narrow-scope + continue the sweep.
+Scope disclosed: ~265 files of reviews/synthesis/, all of brainstorming/kernel/, reviews/kernel/,
+brainstorming/synthesis/, math lane, nrna1-top verification/research/ remain unswept beyond initial
+discovery. No classification changed; MD-050 kept firewalled throughout. Verified both consistency
+scripts `CONSISTENT`. **Smallest next action, named, not authorized**: continue the sweep into the
+remaining directories.
+
+**Status update, 2026-09-09 (earlier): MD-055 — Independent Adversarial Verification of the
 `id`/Mutable-`e.state` Contradiction — EXECUTED.** User reviewed MD-054, agreed with its central
 result, corrected one phrase (the "ChatGPT" comparison stream downgraded from "independent research
 stream" to "a separately attributed comparison whose independence requires its own provenance audit"
