@@ -39,6 +39,7 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-35](EKS-35-file-timestamps-do-not-encode-argument-order.md) | File timestamps do not encode argument order, so the prescribed way of reading the record can reconstruct a discussion backwards | BACKLOG · RESEARCH-METHOD CORRECTNESS | operating-model problem (how the research record must be read) |
 | [EKS-36](EKS-36-two-same-day-research-threads-on-sibling-evaluation-questions-never-cross-reference.md) | Two same-day research documents in the same folder both build a "structured evaluation of a claim against evidence" apparatus and never cite each other | BACKLOG · RESEARCH-COORDINATION EXPOSURE | operating-model problem (research-lane coordination within one corpus directory) |
 | [EKS-41](EKS-41-req-req-symbol-denotes-two-unrelated-formal-objects.md) | The symbol `ℛ_req` denotes two unrelated formal objects (a requirement set vs. a distinction-preservation universe) in two same-day math-lane threads that never cross-reference | BACKLOG · NOTATION COLLISION | operating-model problem (shared notation across work streams within one corpus) |
+| [EKS-42](EKS-42-two-documents-share-one-section-numbering-space.md) | Two different documents number their sections identically (`272A.1`…`272A.29`, same range end to end), so a citation of the form "see 272A.17" identifies two places with different content | BACKLOG · CITATION INTEGRITY | operating-model problem (whether a reference reaches a unique location) |
 | [EKS-37](EKS-37-the-highest-leverage-item-is-typed-as-both-a-derivation-and-a-decision.md) | The programme's highest-leverage open item is described as a *derivation* by one authority and a *decision* by another, so nobody can be asked to do it | BACKLOG · WORK-ROUTING | operating-model problem (who owns a piece of work) |
 | [EKS-38](EKS-38-two-decision-registers-share-one-id-space.md) | Two separate registers of pending decisions use the same identifiers for different decisions, so an instruction to "enact N-4" has two possible meanings | BACKLOG · GOVERNANCE CORRECTNESS | operating-model problem (identification of pending decisions) |
 | [EKS-39](EKS-39-a-research-object-silently-changed-from-a-test-into-a-list.md) | A central research object silently changed from a *test* into a *list*, and the programme's current blocker is the direct consequence | BACKLOG · SEMANTIC DRIFT | operating-model problem (how a concept's type is allowed to change) |
@@ -243,3 +244,47 @@ later citation of "`document4.md` as read on 2026-09-09" cannot say which succes
 A filename/header marker alone would not resolve this for files under active, repeated overwrite; it
 would need pairing with a non-overwriting save convention or a content-version marker. Not designed
 here, per this ticket's own standing rule. Full detail: `EKS-31` §10.
+
+**EKS-42 added 2026-09-09** from `P-96`'s queue-driven chronological read. A citation is supposed to
+name a place. ⭐ **These ones name two.** Two documents written **eight minutes apart** both number
+their sections `272A.1` through `272A.29` — not overlapping at the edges but **the same range, end
+to end** — while covering entirely different subject matter (one derives the operation universe, the
+other the minimum epistemic-state structure). ⭐⭐ **The collision lands hardest exactly where it
+hurts most:** the two sections cited most often downstream, `272A.17` and `272A.25`, are precisely
+the two where **both** documents hold a load-bearing, quotable result — a 19-row requirements table
+and a 19-operation set in one, a lifecycle separation and the four-state minimality conclusion in
+the other. ⚠️ **Why it matters:** ⛔ **a missing citation announces itself; a citation that resolves
+to the wrong place does not** — it returns a confident, well-formed, entirely unrelated answer; it
+**defeats the programme's own standing reading method** ("search hit → identify timestamp → follow
+the thread"), which assumes a hit identifies a document; and it is **invisible from inside either
+document**, since neither says another shares its numbering and there is no cross-reference in
+either direction. ⭐ **It has already produced an under-specified citation in this programme's own
+output** — `P-95` cites `272A.17` and `272A.25` naming no file; the content quoted is from the 22:42
+document and is correct, but **the citation as written cannot be checked by anyone else**, and work
+that cannot be checked cannot be relied on. ⛔ **Nothing here is careless**: the second document
+opens by declaring itself *"the missing part of Step 272A"* and *"the formal completion of Step
+272A, not a replacement"*, so numbering its sections `272A.n` **expressed a real and reasonable
+intent** — only the addressing consequence went unconsidered. Candidate direction: guarantee that a
+section reference identifies exactly one location — **cite by file plus section, declare bare
+`272A.n` invalid, and require any document that continues another to say so in its opening line** —
+in preference to renumbering, which would rewrite accepted documents. Checked against `EKS-35`
+(**ordering**, where this is **addressing** — fixing one fixes neither), and `EKS-38` / `EKS-41`
+(same *family* — one identifier, several referents — but at the **register** and **symbol** levels,
+each needing a different remedy: namespacing, a glyph register, and here a citation convention);
+distinct from all three, and no existing item covers section-level addressing. See `EKS-42`.
+
+**EKS-41 extended 2026-09-09** by `P-96` with **a third meaning of the symbol, and it is the oldest
+of the three.** Three days before either strand in the original ticket, `ℛ` was already load-bearing
+as **the family of representation functions** (serialisation: Save, Load, Serialize, Deserialize) in
+the 2026-08-30 21:59 operation-typing split. ⚠️ **The oldest meaning is the one furthest from the
+other two** — it ranges over *functions on representations*, where `ℛ_req` ranges over *distinctions
+a representation must preserve* — so a reader who meets `ℛ` first will read `ℛ_req` as "the required
+representation functions": **a reading that is wrong, plausible, and undetectable from the symbol.**
+⭐ This shows the collision is **not a two-strand accident on one day**; the base glyph was already
+carrying a third sense before either strand chose it. ⛔ **One mitigating fact, recorded for
+fairness:** the representation-function use was **repaired two minutes later** — `step_277` re-glyphs
+the same classes and moves representation functions to `𝒪_R` — **but the repair was never recorded
+as a repair**, so the colliding text stands unmarked and is what a glyph search still returns. The
+disambiguation ruling the ticket asks for must therefore cover **three** meanings, state that bare
+`ℛ` and `ℛ_req` are unrelated, and record the `𝒪_R` re-glyph as the disposition of the first. See
+`EKS-41` Appendix A.
