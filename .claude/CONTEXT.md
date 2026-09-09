@@ -1,5 +1,30 @@
-**Updated:** 2026-09-09 (latest) — **MD-069 COMPLETE — CHRONOLOGICAL MULTI-OBJECT THEORY
-RECONSTRUCTION (TheoryState time series over 24 derived turning points T0–T23), HARD STOP.** User's
+**Updated:** 2026-09-09 (latest) — **MD-070 EXECUTED — INDEPENDENT ADVERSARIAL REVIEW OF GAP-004 (the
+Theory-00-21 `Sat` definition), GAP-004 CLOSED WITH QUALIFICATION, HARD STOP.** User's direct
+instruction: "Investigate GAP-004 next" — MD-068's sole named remaining blocker, requiring genuine
+investigative work, not further reading. **Method**: reopened and read directly Theory-00-21 Part I
+(2242 lines, full), Part V/VI (targeted), and the worked example (1859 lines, full) — every "PROVED"
+theorem checked against its own stated proof. **Decisive finding**: the theory's own flagship worked
+example never invokes `Det_r`/`EvalReq`/`Eval` — at §21A.17 it stipulates `Sat(K,r_i)=Satisfied`
+directly, the same fiat move every earlier retired `Sat` attempt made. **No file anywhere in the
+876-file traversal computes `Sat(K,r,Γ)` end-to-end via its own decisive formula for any concrete
+case.** Four further findings: Theorems 24.1/25.1/16.1/5.1/5.2 proved over `Sat` as an uninterpreted
+predicate (Part I's own §21 admits this); `Zero⟺Δ=∅` appears simultaneously as Definition+Theorem+
+Axiom, a category conflation; self-disclosure of tautological character is inconsistent across
+theorems; `Determination` has an unaddressed vacuity risk (zero hits for "vacuous" in Parts V/VI).
+**Verdict: DOWNGRADED, not REFUTED** — `[05-41]`'s definition is a genuine structural/type-level
+advance (name + type signature) but supplies no computed body; `Det_r` remains as unspecified as
+`standard` (GAP-001) always was. **GAP-004: CLOSED WITH QUALIFICATION**, joining GAP-001/003/005.
+Corrections recorded forward, MD-067/068/069's own text unedited: MD-067's B-strengthened-toward-A
+confirmed for a sharper reason; MD-069's "externally supplied parameter" language corroborated and
+sharpened. No frozen artifact (MD-024–069) modified; no classification changed; K-1/K2 untouched;
+`theory-extraction/` untouched. Verified both consistency scripts `CONSISTENT`. **MD-070 status:
+EXECUTED. HARD STOP.** Smallest next research input, named, not authorized: a concrete instantiation
+of `Det_r(EvalReq(K,r,EC,Γ),EC)` for at least one real requirement, computed end-to-end without
+stipulating the output.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-069 COMPLETE — CHRONOLOGICAL
+MULTI-OBJECT THEORY RECONSTRUCTION (TheoryState time series over 24 derived turning points T0–T23),
+HARD STOP.** User's
 new mission: reconstruct the theory as a co-evolving system (a shared `TheoryState(t)` time series
 where each document updates multiple objects together, typed transitions, cross-object provenance
 `YES`/`RECONSTRUCTED`/`UNWITNESSED`, dependency graph allowed to change shape over time), explicitly

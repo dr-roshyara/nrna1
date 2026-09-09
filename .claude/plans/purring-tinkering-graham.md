@@ -1185,7 +1185,37 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-069 — Chronological Multi-Object Theory Reconstruction
+**Status update, 2026-09-09 (latest): MD-070 — Independent Adversarial Review of GAP-004 (the
+Theory-00-21 `Sat` definition) — EXECUTED, GAP-004 CLOSED WITH QUALIFICATION, HARD STOP.** User's
+direct instruction: "Investigate GAP-004 next" — MD-068's sole named remaining blocker, requiring an
+actual adversarial review, not further reading. **Method**: reopened and read directly (not via ledger
+summary) Theory-00-21 Part I (2242 lines, full), Part V/VI (targeted sections), and the worked example
+(1859 lines, full); every "PROVED" theorem in the core chain checked against its own stated proof.
+**Decisive finding**: the theory's own flagship worked example never once invokes
+`Det_r`/`EvalReq`/`Eval` — at §21A.17 it stipulates `Sat(K,r_i)=Satisfied` directly, the same fiat
+move every earlier, explicitly-retired `Sat` attempt in this corpus made. **No file anywhere in the
+876-file traversal, including Theory-00-21's own worked example, computes `Sat(K,r,Γ)` end-to-end via
+its own decisive formula for any concrete case.** Four further findings: Theorems 24.1/25.1/16.1/5.1/
+5.2/6.1/6.2 proved over `Sat` as an uninterpreted predicate symbol (Part I's own §21 admits this
+directly); `Zero(K,EC)⟺Δ(K,EC)=∅` appears simultaneously as Definition+Theorem+Axiom, a category
+conflation; self-disclosure of the tautological character is inconsistent across theorems (Theorem
+6.1 discloses it, 6.2 gets a weaker disclosure, Part I's theorems get none); `Det(K,p,EC,Γ)` carries
+an unaddressed vacuity risk (zero hits for "vacuous" in Parts V/VI). **Verdict: DOWNGRADED, not
+REFUTED** — `[05-41]`'s definition is a genuine structural/type-level advance (a name and type
+signature for the missing computation, the first in the whole traversal) but supplies no computed
+body; `Det_r` remains as unspecified as `standard` (GAP-001) always was. **GAP-004: CLOSED WITH
+QUALIFICATION**, joining GAP-001/003/005 (GAP-002 remains independently unresolved, non-blocking).
+Corrections recorded forward, MD-067/068/069's own text unedited: MD-067's "B, strengthened toward A,
+full A withheld" confirmed for a sharper reason; MD-069's "externally supplied parameter, not a corpus
+gap" language corroborated and sharpened — no instance of `Det_r` being supplied, even provisionally,
+exists anywhere in the corpus, including the one place with every reason to supply one. No frozen
+artifact (MD-024–069) modified; no classification changed; K-1/K2 untouched; `theory-extraction/`
+untouched throughout. Verified both consistency scripts `CONSISTENT`. **MD-070 status: EXECUTED. HARD
+STOP.** Smallest next research input, named, not authorized: a concrete instantiation of
+`Det_r(EvalReq(K,r,EC,Γ),EC)` for at least one real requirement, computed end-to-end without
+stipulating the output.
+
+**Status update, 2026-09-09 (earlier): MD-069 — Chronological Multi-Object Theory Reconstruction
 (TheoryState time series) — EXECUTED, 24 derived turning points (T0–T23), HARD STOP.** User's new
 mission reframes the reconstruction around a shared `TheoryState(t)` time series — each document
 updates multiple co-evolving objects together, not independent per-object histories — with a large

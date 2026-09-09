@@ -331,3 +331,10 @@ That is a far more dangerous resemblance than the representation-function sense,
 plausible: a reader may reasonably conclude `ℛ_req(Q,Γ)` simply *is* `ℛ(P)` renamed, **and no
 document establishes that it is.** The disambiguation ruling must therefore cover four meanings and
 must state explicitly that the `ℛ(P) → ℛ_req(Q,Γ)` descent is **unwitnessed**, not assumed.
+
+**EKS-44 filed, 2026-09-09** (MD-070, Independent Adversarial Review of GAP-004): the Sep-6 `Sat`
+definition (`Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)`) is typed but never computed — the theory's own
+flagship worked example (§21A.17) stipulates `Sat(K,r_i)=Satisfied` by fiat rather than invoking
+`Det_r`/`EvalReq`, the same shortcut every earlier, already-retired `Sat` attempt took. Separately,
+`Zero(K,EC)⟺Δ(K,EC)=∅` is filed simultaneously as Definition 23.1, Theorem 24.1, and Axiom A7 — three
+epistemic categories for one identical claim. See `EKS-44`.

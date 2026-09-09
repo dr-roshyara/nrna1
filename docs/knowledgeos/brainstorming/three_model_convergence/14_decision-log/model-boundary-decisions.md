@@ -5785,3 +5785,66 @@ series/` directory (5 files) plus this entry written.
 genuine load-bearing blocker for the whole reconstruction, now further contextualized as the reason
 Phase V ("Silence," T23) is the terminal state of the tracked chain rather than a governance-ratified
 Phase VI.
+
+---
+
+## MD-070 — Independent Adversarial Review of GAP-004 (the Theory-00-21 `Sat` Definition)
+
+**Authorization**: user's direct instruction, "Investigate GAP-004 next" — the sole remaining
+load-bearing blocker MD-068's Gap Register named, requiring genuine independent investigative work
+(mirroring the discipline this corpus's own reviewers applied to 11+ other major claims across
+MD-057–069), not further reading of already-traversed summaries.
+
+**Method**: primary source files reopened and read directly and in full — Theory-00-21 Part I
+(`20260906-002301_...md`, 2242 lines), Part V (`20260906-003645_...md`, targeted sections), Part VI
+(`20260906-003947_...md`, targeted sections), and the worked example (`20260906-075153_...
+rev2-worked-example-to-final-decision-outcome.md`, 1859 lines, read in full) — not summarized from
+MD-067's ledgers. Every "PROVED" theorem in the core `Sat`/`Δ_t`/`Zero`/`Determination` chain was
+checked directly against its own stated proof.
+
+**Central finding (decisive)**: the theory's own flagship worked example never once invokes
+`Det_r`/`EvalReq`/`Eval` — the exact apparatus `[05-41]`'s `Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)`
+supplies. At §21A.17 it instead states directly, "All are satisfied: `Sat(K,r_i)=Satisfied` for
+`i=1,...,4`" — stipulating the outcome by fiat, the same move every earlier, explicitly-retired `Sat`
+attempt in this corpus made (T12's FOL-entailment `Sat`, T9's `Sat_c`). **No file anywhere in the
+876-file traversal, including Theory-00-21's own worked example, computes `Sat(K,r,Γ)` end-to-end via
+its own decisive formula for any concrete case.**
+
+**Four further findings**: (1) Theorems 24.1/25.1/16.1 (Part I) and 5.1/5.2 (Part V) are proved over
+`Sat` as an uninterpreted predicate symbol — Part I §21 states outright "`Sat` must be defined before
+we use it" — valid for any predicate later called `Sat`, establishing shape, not content; (2)
+`Zero(K,EC)⟺Δ(K,EC)=∅` appears simultaneously as Definition 23.1, Theorem 24.1 (proved from that
+definition), and Axiom A7 (§39) — three epistemic categories applied to one identical claim; (3)
+self-disclosure of the definitional-tautology character is inconsistent — Theorem 6.1 (`[05-41]` line
+1050) discloses it directly ("the theorem is fundamentally definitional"), Theorem 6.2 gets a
+different, weaker disclosure, Part I's own theorems get none; (4) `Det(K,p,EC,Γ)` is vacuously true
+when `Req_p(EC,Γ)=∅` — confirmed via direct grep, zero hits for "vacuous" anywhere in Parts V/VI —
+unaddressed, in contrast to the corpus's own earlier (Sep-2, `[00-55]`) vigilance about exactly this
+failure class.
+
+**Verdict: GAP-004 disposition DOWNGRADED, not REFUTED.** `[05-41]`'s definition is a genuine
+structural/type-level advance (a name and type signature for the missing computation step) but
+supplies no computed body — `Det_r` remains as unspecified as `standard` (GAP-001) always was. GAP-004
+itself is now **CLOSED WITH QUALIFICATION**: the review MD-068 called for has been performed, and its
+answer is that the Sep-6 definition survives scrutiny as a type-level contribution while failing to
+survive scrutiny as a computed closure of the F4 chain.
+
+**Corrections recorded forward (MD-067/068/069's own text unedited)**: MD-067's "B, strengthened
+toward A, full A withheld" — confirmed, for a sharper reason than MD-067 itself gave (withholding was
+correct regardless of when a review occurred, since the definition's own worked example never
+exercises it). MD-068's GAP-004 entry — closed with qualification, joining GAP-001/003/005. MD-069's
+T23/"Silence" and its own "externally supplied parameter, not a corpus gap" language — corroborated
+and sharpened, not contradicted: no instance of `Det_r` being supplied, even provisionally, exists
+anywhere in the corpus, including the one place with every reason to supply one.
+
+**No frozen artifact (MD-024–069) modified. No classification changed.** No canonical theory declared.
+K-1/K2 untouched. `theory-extraction/` untouched throughout.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-070-gap-004-adversarial-
+review/` directory (3 files) plus this entry written.
+
+**MD-070 status: EXECUTED. HARD STOP** per the standing discipline — no further phase automatically
+opened. Smallest next research input, named, not authorized: a concrete instantiation of
+`Det_r(EvalReq(K,r,EC,Γ),EC)` for at least one real requirement, computed end-to-end without
+stipulating the output.
