@@ -156,6 +156,34 @@ corpus" from the filename alone.**
 requirement (§4) is unchanged, but eleven same-day instances in one directory is no longer a rare
 edge case for this reconstruction's own working method.
 
+## 10 · A sharper defect than §9 itself found: filenames in this cluster do not identify stable
+content — they are live, mutable scratch buffers
+
+`document4.md` and `Untitled-17.md` were read three separate times over roughly two hours of one
+session. Each read returned **genuinely different content** at the same path:
+
+| Read | Time (approx.) | Size | md5 | Content |
+|---|---|---:|---|---|
+| 1st (`Untitled-17.md`) | ~16:47 | 19 337 B | `e8aa7153...` | a numbered 12-question F4/`Sat*` audit |
+| 2nd (`document4.md`, same content) | ~16:47 | 19 337 B | `e8aa7153...` | byte-identical to the 1st — recorded as duplication in `§9` |
+| 3rd (`document4.md`, re-read on request) | 16:49 | 16 260 B | `56cf6e7c...` | a **different** 13-question audit, reorganized into an explicit L0/L1/L2 corpus-native/derived/constructed layering |
+
+**This is a materially sharper version of the risk `§1`–`§9` already describe.** The earlier framing
+assumed the defect was *"a file's name and location don't announce that its content is external."*
+This shows the defect goes one level deeper: **in this specific cluster, even a fixed filename,
+re-opened minutes apart, does not guarantee the same content twice.** A future reader (or this
+reconstruction itself, in a later phase) citing `document4.md` "as read on 2026-09-09" would have no
+way to know *which* of at least three distinct versions is meant, since the file carries no version
+marker, no timestamp-of-content, and no diff trail — only the filesystem's own single, overwritten
+`mtime`.
+
+**Consequence for the candidate requirement (`§4`)**: a filename/header marker alone (the original
+proposal) is not sufficient for files in active, repeated-overwrite use — the marker would need to
+either (a) be paired with a stable, non-overwriting save convention (new filename per version, as the
+rest of the corpus already does by timestamp), or (b) itself carry a content version/hash, not just an
+"external" flag. **Not designed here** — recorded as a sharper instance of the same underlying gap,
+per this ticket's own standing rule not to propose remedies.
+
 ---
 
 ⛔ **Registered under the operating model's own standing rule: when a deeper requirement is discovered,
