@@ -32,6 +32,7 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-27](EKS-27-the-same-mathematical-symbol-means-two-different-things.md) | The same mathematical symbol denotes two different things in two work streams, and a formula cannot be disambiguated | BACKLOG · NOTATION COLLISION | operating-model problem (shared notation across work streams) |
 | [EKS-29](EKS-29-a-construct-is-credited-to-the-wrong-document.md) | An eleven-part construct is credited throughout to a document that contains five parts and none of the other eight | BACKLOG · ATTRIBUTION | operating-model problem (provenance within one work stream) |
 | [EKS-30](EKS-30-no-register-of-a-lanes-own-settled-questions.md) | A research programme has no register of which of its own questions are settled, so the same question is commissioned and paid for twice | BACKLOG · DUPLICATE SPEND | operating-model problem (research output management) |
+| [EKS-31](EKS-31-externally-authored-analysis-files-enter-the-primary-corpus-without-provenance-markers.md) | A file authored using this reconstruction's own findings was saved into the primary research corpus with no filename/header marking it as external or derivative | BACKLOG · DATA-HYGIENE / PROVENANCE-INTEGRITY EXPOSURE | operating-model problem (corpus provenance integrity) |
 | [EKS-23](EKS-23-two-independent-capability-vocabularies-never-reconciled.md) | Two independent research efforts each invented their own list of Kernel capabilities, and neither knows the other's list exists | **BACKLOG · OPERATING-MODEL EXPOSURE** | operating-model problem (research-output reconciliation / semantic duplication detection) |
 
 Created 2026-08-16 on the PO/ARB act *"record this as problem and write EKS- tickets"*, from the placement-drift and knowledge-distribution incidents (`../reviews/2026-08-16-knowledge-placement-requirement-registration.md`).
@@ -136,3 +137,19 @@ either record to a future commission touching the same ground. Checked against `
 **EKS-16 extended 2026-09-09** from `P-81` — **occurrence 6, a category escalation.** Occurrences 1–5 were *the estate held material the lane did not search for*; ⭐⭐⭐ occurrence 6 is *the lane's own numbered artifact, in the same directory, with the question in its filename.* §5's remedy (search the estate first) **would not have caught it**, which is why the output-side problem is filed as `EKS-30` rather than folded in. **Occurrence count 6; detection by luck 4 of 6.**
 
 ⚠️ **Seventh numbering race, 2026-09-09:** `EKS-29` was written as `EKS-28` and renumbered when the concurrent session filed its own `EKS-28` mid-write. Further evidence on `EKS-07`.
+
+**EKS-31 added 2026-09-09** from the three-model-convergence reconstruction's own MD-059. During a
+primary-source archaeology prompt, the user supplied a file to read at
+`mathematical_ideas_that_can_be_implemented/I conducted the targeted evidence-extrac` — a name that is
+a truncated sentence, not this directory's own `YYYYMMDD-HHMMSS_topic.md` convention, sitting inside
+the exact directory this programme's own sequential-pass tooling treats as primary evidence. Its
+content explicitly analyzes this reconstruction's own MD-058 output; its filesystem timestamp is
+today. **The file cannot be prior, independent corpus material — it is a same-day response to this
+reconstruction's own work, saved with no marker distinguishing it from the 401 genuine primary files
+around it.** MD-059 used it correctly, as a labeled cross-check, not a source — but the next pass to
+apply this programme's own repeated timestamp-thread discovery method to this directory has no way to
+tell the two apart from the file itself. Checked against `EKS-24` (a genuine corpus file's buried
+conclusion — this is a file that should not read as a corpus file at all), `EKS-22` (missing status on
+internally-produced work — this is missing provenance on externally-produced work), and `EKS-19`
+(session-authorization overlap — unrelated to a single file's own misleading signal); distinct on all
+three.

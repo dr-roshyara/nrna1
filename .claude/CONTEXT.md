@@ -1,5 +1,43 @@
-**Updated:** 2026-09-09 (latest) — **MD-058 COMPLETE — CONTROLLED MATHEMATICAL DERIVATION OF
-REPRESENTATION-INDEPENDENT KERNEL EQUIVALENCE, HARD STOP.** First genuine theory-construction phase
+**Updated:** 2026-09-09 (latest) — **MD-059 COMPLETE — CONTROLLED SEMANTIC INSTANTIATION OF F4 (MODEL
+B `K_t`/`Δ_t`), HARD STOP.** First attempt to add a second real semantic instantiation to F1–F6/K0
+beyond F3. User validated MD-058, corrected its "only candidate mathematically satisfying the
+requirements" phrasing to "only primitive presently constructible without an additional modelling
+choice given current corpus" (MD-058's own text not edited), and authorized F4 as the target — the
+mathematically richest remaining candidate. **Included a mid-phase primary-source prerequisite check
+the user requested before finalizing** (against M0043/M0132/M0125 directly, not just Model B's own
+Phase-2 register) plus a cross-check against a same-day, externally-authored analysis the user
+supplied. **Central result**: `Δ_t={r∈Req(EC_t):¬Sat(K_t,r)}`/`Sat`'s own shape are corpus-native and
+frozen (M0132, ratifying M0043/M0047) — but the corpus's own primary text states directly, twice,
+that `Sat(K_t,r)`'s computation requires `K_t`'s own component semantics, and only one of eleven named
+components (`Σ_t=(A,S,R,V,C)`, M0125) has ever been given a concrete typed definition, within only one
+of 9+ mutually unreconciled `K_t` variants (Model B's own UE-1/UE-2). **`Obs_F4`/`Sat_F4`:
+constructible in FORM, NOT COMPUTABLE — blocked on a decomposition-independent `Sat` body**, sharper
+than an initial register-level pass's "R_t closure" framing (corrected mid-phase, disclosed).
+`Beh_F4`/`Trace_F4`: **UNAVAILABLE** — blocked by an unresolved choice among composition-rule
+candidates (`P-12`/`P-13`). **A genuinely new finding**: `[DEF-15]` (M0043, primary, 2026-09-02) is a
+named, primary corpus definition of exactly the shape MD-058's own `Obs_{Q,𝒪}`-equality independently
+derived — recorded as a correction to MD-058's own provenance framing (MD-058's own text not edited);
+the mathematics (P1/C1/R1a) remain genuine regardless. **F3 ↔ F4 comparison: UNRESOLVED** — F3's `Obs`
+outputs reached atoms, F4's outputs satisfied requirements, no corpus bridge exists between the two
+types. Representation-independence test: 4/8 tests pass only under a disclosed, corrected assumption
+(`Sat` treated as opaque — M0132 shows this isn't corpus-established); 3/8 `UNDECIDABLE FROM CURRENT
+CORPUS` (no two agreed `K_t` encodings exist to test). Ten adversarial hypotheses tested; H9 (F4
+uninstantiable) PARTIALLY REFUTED — a real, disclosed gain; H10 (governance must intervene)
+PARTIALLY CONFIRMED, corrected mid-phase — one blocker is research-shaped, not governance-shaped.
+**GA-001: UNCHANGED, sharper** (a named type mismatch, not mere unavailability). **GA-038: UNCHANGED**
+(a second, independent instance of the same shape of blocker as `𝒪_K`/R10, in a different candidate
+family). No candidate selected, no CLOSURE-4/`≡_sem` adoption, no F1–F8 merge. **Backlog: `EKS-31`
+filed** — a same-day, MD-058-consuming file (dropped into the primary corpus directory today,
+truncated-sentence filename, no provenance marker) is indistinguishable from genuine primary material
+to any future timestamp-thread sweep — a real corpus-hygiene risk, checked against `EKS-19/22/24`
+first, distinct. Verified both consistency scripts `CONSISTENT`; no frozen artifact touched; firewalls
+held. **MD-059 status: COMPLETE. HARD STOP per its own §14/§16.** Smallest next actions, named, not
+authorized: (a) a research act reconciling `K_t`'s own 9+ unresolved variants enough to supply a
+decomposition-independent `Sat` body; (b) a research act building the missing atoms↔requirements
+bridge between F3 and F4.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-058 COMPLETE — CONTROLLED
+MATHEMATICAL DERIVATION OF REPRESENTATION-INDEPENDENT KERNEL EQUIVALENCE, HARD STOP.** First genuine theory-construction phase
 in this reconstruction (vs. corpus archaeology). User redirected from more searching to derivation,
 mandating a strict epistemic-status vocabulary (CORPUS FACT / CORPUS-DERIVED / MATHEMATICALLY DERIVED
 / NECESSARY CONSEQUENCE / MINIMAL CANDIDATE / HYPOTHESIS / DESIGN CHOICE / COUNTEREXAMPLE / OPEN).

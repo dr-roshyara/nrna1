@@ -4997,3 +4997,84 @@ named, not authorized: (a) a governance act closing `𝒪`/`𝒪_K` with a repre
 mandatory-membership (N-4) rule; (b) a research act constructing an `Obs`/`Beh` instantiation for one
 further candidate (F1, F4, or F5) — the precise missing input named in `06`'s own §18.4 — without
 which GA-001 has nothing to compare F3 against.**
+
+---
+
+## MD-059 — Controlled Semantic Instantiation of F4 (Model B `K_t`/`Δ_t`)
+
+**2026-09-09.** User validated MD-058, corrected its "only candidate mathematically satisfying the
+requirements" phrasing to "only primitive presently constructible without an additional modelling
+choice, given current corpus" (adopted here, MD-058's own text not edited), and authorized the first
+attempt to instantiate a further F4/F1/F5 candidate — choosing F4 (Model B `K_t`/`Δ_t`) as the
+mathematically richest option.
+
+**Executed, with a mid-phase primary-source prerequisite check the user requested before finalizing.**
+Built an F4 Semantic Evidence Ledger from Model B's own Phase-2 register (§A/§G/§K/§N,
+`03_model-b_mathematical/`), then a targeted extraction directly against M0043/M0132/M0125 (primary
+sources), plus a cross-check against an externally-authored, same-day analysis the user supplied
+(dropped into the corpus directory today, explicitly citing MD-058 as its own input — classified
+**same-day, MD-058-consuming re-analysis, not prior/independent corpus evidence**, per this
+reconstruction's own provenance discipline; `EKS-31` filed on the resulting corpus-hygiene finding).
+
+**Central result**: `Δ_t={r∈Req(EC_t):¬Sat(K_t,r)}` and `Sat`'s own shape are corpus-native and frozen
+(M0132, ratifying M0043/M0047) — but the corpus's own primary text states directly (M0132, quoted
+twice) that `Sat(K_t,r)`'s computation requires `K_t`'s own component semantics, and only one of
+eleven named components (`Σ_t=(A,S,R,V,C)`, M0125) has ever been given a concrete typed definition,
+within only one of 9+ mutually unreconciled `K_t` variants (Model B's own UE-1/UE-2) never shown
+consistent with each other. **`Obs_F4`/`Sat_F4` are therefore constructible in FORM (MATHEMATICALLY
+DERIVED/CORPUS-DERIVED) but NOT COMPUTABLE — blocked on a decomposition-independent `Sat` body, a
+corpus-stated dependency, sharper than an initial register-level pass's "R_t closure" framing.**
+`Beh_F4`/`Trace_F4` (via `K_{t+1}=δ(K_t,e_t)`, M0125, or the composition-rule family, register §N)
+are **UNAVAILABLE** — blocked by an unresolved choice among candidate composition/transition rules
+(`P-12`/`P-13`, "survive testing, not established"), not by missing material.
+
+**A genuinely new, distinct finding**: `[DEF-15]` (M0043, primary, 2026-09-02) is a **named, primary
+corpus definition** of exactly the shape MD-058's own `Obs_{Q,𝒪}`-equality independently derived
+(`r₁≡_sem r₂ ⟺ B_{r₁}=B_{r₂}`) — a correction, recorded here, to MD-058's own provenance framing
+(MD-058's own text not edited): the relation's *shape* had a primary corpus precedent this
+reconstruction had not yet cross-referenced, though the mathematics (P1/C1/R1a) remain genuine,
+independently-checkable derivations regardless.
+
+**F3 ↔ F4 comparison: UNRESOLVED**, for a precisely named reason distinct from mere unavailability —
+F3's `Obs` outputs *reached atoms* (MD-050's own `Reach` construction); F4's `Obs_F4` outputs
+*satisfied requirements*; no corpus document bridges these two output types, so no shared `Q,𝒪` can
+be posed without inventing one. **A representation-independence test against `Obs_F4`/`Sat_F4` found
+4 of 8 required tests pass only under a disclosed, non-corpus-sourced assumption (`Sat` evaluated as
+a black box — corrected mid-phase, since M0132's own text shows `Sat` is intended to eventually read
+`K_t`'s components, not treat it as opaque); 3 of 8 are `UNDECIDABLE FROM CURRENT CORPUS` (no two
+agreed `K_t` encodings exist to test against — only 9+ mutually competing proposals).**
+
+**Ten adversarial hypotheses tested**, none forced: **H9** (F4 cannot be instantiated) —
+**PARTIALLY REFUTED**, `Obs_F4`/`Sat_F4` genuinely are instantiable in form, the first real gain
+beyond F3 in this population. **H8** (F3/F4 equivalence needs an ungrounded choice) — **CONFIRMED**.
+**H10** (governance must intervene) — **PARTIALLY CONFIRMED**, corrected mid-phase: the composition-
+rule reconciliation is genuinely governance-shaped, but `Sat`'s missing body is a **research**
+obstruction (reconciling `K_t`'s own 9+ variants), not something a governance act alone could close.
+
+**GA-001/GA-038: both UNCHANGED.** GA-001: still no comparable pair — now blocked by a precisely-named
+type mismatch, sharper than MD-058's own "5/6 unavailable." GA-038: still no canonicalization
+criterion; `Sat`'s missing decomposition-independent body is a second, independently-found instance
+of the same shape of blocker as `𝒪_K`/R10, in a different candidate family. **No candidate selected.
+No CLOSURE-4/`≡_sem` adoption. No F1–F8 merge.**
+
+**Backlog**: `EKS-31` filed (a same-day, MD-058-consuming file was saved into the primary corpus
+directory with no filename/header marking it external — a corpus-provenance-integrity risk for any
+future timestamp-thread sweep of this directory). Checked against `EKS-19`/`EKS-22`/`EKS-24` first,
+distinct on all three.
+
+**No classification changed. No frozen artifact (MD-024–058) modified. No executable file read or
+executed. K-1/K2 untouched. No Stage 07. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/
+`T-K1`/`T-K2` kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-059-f4-semantic-
+instantiation/` directory (8 files) plus this entry written; `docs/knowledgeos/backlog/EKS-31-*.md`
+and its `00_index.md` entry also written.
+
+**MD-059 status: COMPLETE. HARD STOP per its own §14/§16 — no canonicalization, no adoption, no
+Stage 07, no MD-060 opened by this completion.** Smallest next actions, named, not authorized: (a) a
+research act reconciling `K_t`'s own 9+ mutually unresolved variants enough to supply a
+decomposition-independent `Sat` body — the corpus's own named blocker (M0132), not this
+reconstruction's invention; (b) a research act building the missing atoms↔requirements bridge between
+F3 and F4, the precisely-named smallest input that would make the F3↔F4 comparison well-posed for the
+first time in this reconstruction.**

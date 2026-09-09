@@ -1185,7 +1185,30 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-058 — Controlled Mathematical Derivation of Representation-
+**Status update, 2026-09-09 (latest): MD-059 — Controlled Semantic Instantiation of F4 (Model B
+`K_t`/`Δ_t`) — EXECUTED, HARD STOP.** First attempt at a second real semantic instantiation beyond F3.
+User corrected MD-058's "only candidate satisfying requirements" phrasing (→ "only primitive
+presently constructible without a modelling choice, given current corpus"), authorized F4 as target.
+**Mid-phase prerequisite**: user required a primary-source check (M0043/M0132/M0125 directly) before
+finalizing, plus a cross-check against a same-day externally-authored analysis. **Central result**:
+`Δ_t`/`Sat`'s shape frozen (M0132) but `Sat`'s own body corpus-admitted open, blocked on `K_t`'s
+unresolved 9+-variant component semantics (UE-1/UE-2) — sharper than an initial "R_t closure" framing
+(corrected mid-phase). `Obs_F4`/`Sat_F4`: constructible in form, not computable. `Beh_F4`/`Trace_F4`:
+UNAVAILABLE (composition-rule choice unresolved). **New finding**: `[DEF-15]` (M0043, primary) is a
+corpus-native precedent for MD-058's own derived relation shape — corrects MD-058's provenance
+framing (MD-058's own text unedited). F3↔F4 comparison: UNRESOLVED (atom-space vs. requirement-space
+type mismatch, no bridge). Representation-independence test: 4/8 pass only under a corrected,
+disclosed assumption; 3/8 UNDECIDABLE FROM CURRENT CORPUS. Ten adversarial hypotheses tested; H9
+partially refuted (real gain), H10 corrected mid-phase (one blocker research-, not governance-shaped).
+**GA-001: UNCHANGED, sharper. GA-038: UNCHANGED**, a second independent instance of the same blocker
+shape as `𝒪_K`/R10. No candidate selected, no CLOSURE-4/`≡_sem` adoption. **`EKS-31` filed**: a
+same-day, MD-058-consuming file was found saved into the primary corpus directory with no provenance
+marker — a corpus-hygiene risk for future timestamp-thread sweeps; checked against `EKS-19/22/24`,
+distinct. Verified both consistency scripts `CONSISTENT`; firewalls held. **Smallest next actions,
+named, not authorized**: (a) reconcile `K_t`'s own 9+ variants enough to supply a decomposition-
+independent `Sat` body; (b) build the missing atoms↔requirements bridge between F3 and F4.
+
+**Status update, 2026-09-09 (earlier): MD-058 — Controlled Mathematical Derivation of Representation-
 Independent Kernel Equivalence — EXECUTED, HARD STOP.** First genuine theory-construction phase (vs.
 corpus archaeology). User redirected from more searching to derivation, mandating a strict epistemic-
 status vocabulary. Method-note disagreement accepted: requirement ledger built from already-
