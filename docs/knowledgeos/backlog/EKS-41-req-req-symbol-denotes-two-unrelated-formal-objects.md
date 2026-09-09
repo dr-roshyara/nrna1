@@ -105,3 +105,60 @@ within two minutes.
 - `phase_measure_theory/20260830-220134_step_277_transformation-inventory-and-o-core-closure.md`
   §277.5 — the unmarked repair.
 - Read record: `docs/knowledgeos/theory-extraction/117-P96-QUEUE-DRIVEN-CHRONOLOGICAL-READ.md` §3.3, §5.1.
+
+---
+
+## Appendix B — a FOURTH meaning, older than all three, and the most easily confused (added by P-97, 2026-09-09)
+
+Appendix A added `ℛ` = representation functions (2026-08-30 21:59) as the then-oldest meaning. The
+chronological reconstruction has now found one **three days older still**, and it is the one that
+most resembles the newest.
+
+**`ℛ(P)` = "the relevant information requirements for purpose `P`."**
+`phase_measure_theory/20260827-162545_step-023-epistemic-sufficiency-readiness-completeness-and-the-knowledge-boundary.md`,
+§5, **2026-08-27 16:25**, defined inside:
+
+```
+Coverage(K,P) = |SatisfiedRequirements| / |ℛ(P)|
+```
+
+### The four meanings, in order
+
+| when | form | what it denotes |
+|---|---|---|
+| **2026-08-27 16:25** | **`ℛ(P)`** | **requirements relevant to a PURPOSE `P`** |
+| 2026-08-30 21:59 | `ℛ` | representation functions (Serialize, Deserialize, Save, Load) — re-glyphed to `𝒪_R` two minutes later, unrecorded |
+| 2026-09-02 ~00:46 | `Req(EC_t)` | requirements under an epistemic contract |
+| 2026-09-02 ~18:20 | `ℛ_req(Q,Γ)` | the Required Distinction Universe — distinctions a representation must preserve |
+
+### Why this one is the dangerous one
+
+The representation-function sense is obviously different once seen — nobody confuses `Serialize`
+with a requirement. **`ℛ(P)` and `ℛ_req(Q,Γ)` are the opposite case: they are genuinely similar.**
+Both are **parameterized sets written with a calligraphic `ℛ`**, both sit at the centre of an
+adequacy/coverage argument, and both are counted (`|ℛ(P)|` in a coverage ratio; `ℛ_req ⊆ 𝒟` in an
+adequacy condition). They differ in two respects that a reader must notice unaided:
+
+- **what parameterizes them** — a *purpose* `P`, versus a *question* `Q` and a *context* `Γ`;
+- **what their elements are** — *requirements* (things that must be known), versus *distinctions*
+  (equivalence relations a representation must not collapse).
+
+A reader meeting both will reasonably conclude that `ℛ_req(Q,Γ)` is `ℛ(P)` renamed and
+re-parameterized. **No document in the corpus establishes that.** The descent is plausible,
+undocumented, and would change the meaning of the newer object if wrongly assumed.
+
+### Consequence for the ruling this ticket asks for
+
+The disambiguation must now cover **four** meanings, and it must do one thing more than list them:
+it must state explicitly that
+
+$$\mathcal{R}(P) \longrightarrow \mathcal{R}_{req}(Q,\Gamma) \quad \textbf{is UNWITNESSED} $$
+
+so that the resemblance is recorded as an open question rather than silently resolved in either
+direction. Listing the meanings without that line would leave the most likely wrong inference
+untouched.
+
+### Evidence
+
+- `phase_measure_theory/20260827-162545_step-023-…-knowledge-boundary.md` §5 — the `ℛ(P)` definition.
+- `docs/knowledgeos/theory-extraction/118-P97-TRUE-BIRTH-OF-SAT-AND-REQUIREMENTS.md` §2.1.

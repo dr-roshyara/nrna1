@@ -40,6 +40,7 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-36](EKS-36-two-same-day-research-threads-on-sibling-evaluation-questions-never-cross-reference.md) | Two same-day research documents in the same folder both build a "structured evaluation of a claim against evidence" apparatus and never cite each other | BACKLOG · RESEARCH-COORDINATION EXPOSURE | operating-model problem (research-lane coordination within one corpus directory) |
 | [EKS-41](EKS-41-req-req-symbol-denotes-two-unrelated-formal-objects.md) | The symbol `ℛ_req` denotes two unrelated formal objects (a requirement set vs. a distinction-preservation universe) in two same-day math-lane threads that never cross-reference | BACKLOG · NOTATION COLLISION | operating-model problem (shared notation across work streams within one corpus) |
 | [EKS-42](EKS-42-two-documents-share-one-section-numbering-space.md) | Two different documents number their sections identically (`272A.1`…`272A.29`, same range end to end), so a citation of the form "see 272A.17" identifies two places with different content | BACKLOG · CITATION INTEGRITY | operating-model problem (whether a reference reaches a unique location) |
+| [EKS-43](EKS-43-a-sanskrit-word-and-a-core-formal-operator-share-one-name.md) | The three letters `Sat` name both the central satisfaction operator `Sat(K,r)` and the Sanskrit metaphysical term (`Sat`/`Asat`/`Mithya`), in two live lanes that never cross-reference | BACKLOG · NOTATION COLLISION | operating-model problem (a search for an operator returns two unrelated bodies of work) |
 | [EKS-37](EKS-37-the-highest-leverage-item-is-typed-as-both-a-derivation-and-a-decision.md) | The programme's highest-leverage open item is described as a *derivation* by one authority and a *decision* by another, so nobody can be asked to do it | BACKLOG · WORK-ROUTING | operating-model problem (who owns a piece of work) |
 | [EKS-38](EKS-38-two-decision-registers-share-one-id-space.md) | Two separate registers of pending decisions use the same identifiers for different decisions, so an instruction to "enact N-4" has two possible meanings | BACKLOG · GOVERNANCE CORRECTNESS | operating-model problem (identification of pending decisions) |
 | [EKS-39](EKS-39-a-research-object-silently-changed-from-a-test-into-a-list.md) | A central research object silently changed from a *test* into a *list*, and the programme's current blocker is the direct consequence | BACKLOG · SEMANTIC DRIFT | operating-model problem (how a concept's type is allowed to change) |
@@ -288,3 +289,45 @@ as a repair**, so the colliding text stands unmarked and is what a glyph search 
 disambiguation ruling the ticket asks for must therefore cover **three** meanings, state that bare
 `ℛ` and `ℛ_req` are unrelated, and record the `𝒪_R` re-glyph as the disposition of the first. See
 `EKS-41` Appendix A.
+
+**EKS-43 added 2026-09-09** from `P-97`. ⭐⭐ **This is the collision that has already produced a
+wrong result.** The three letters `Sat` name two entirely unrelated things, and **both uses are
+live**: the central formal operator `Sat(K,r)` — *"the degree or status to which knowledge `K`
+satisfies requirement `r`"*, introduced 2026-08-27 and still under development on 2026-09-06 — and
+the **Sanskrit metaphysical term** `Sat` (*being*, *ultimate reality*) in the Vedānta triad
+`Sat`/`Asat`/`Mithya`, introduced 2026-08-26. One is a satisfaction predicate over a requirement
+set; the other is a category of existence in classical Indian philosophy. ⛔ **An automated
+corpus-wide scan reported the earliest `Sat` as 2026-08-26 — a full day before the real formal
+definition** — and acting on it would have sent the entire reconstruction to a philosophical
+document as the origin of the requirements theory; **it was caught only because every mechanical
+result in this programme is verified against source before use**, and a reader without that
+discipline would not catch it. ⚠️ **Three things make it worse than the other collisions in this
+family:** the philosophical strand is **the largest single step cluster in the corpus** (one step
+number spans nearly a hundred documents), so a search returns two substantial bodies of work mixed
+together, not a few stray hits; **it is invisible from either side**, since neither lane flags the
+other and neither cites it; and ⭐ **the lanes are deliberately kept apart**, which is exactly the
+situation where a shared name makes a reader assume a bridge that does not exist. ⛔ **It is a
+homograph across languages, so domain expertise does not protect you** — a reviewer fluent in the
+requirements theory reads `Sat = ultimately real` as a strange claim about satisfaction rather than
+as a different word. ⛔ **Neither use is wrong**: the two arose independently, a day apart, in
+different lanes, each entirely reasonable in its own context, and the philosophical work is not
+being questioned. Candidate direction: **a writing convention rather than a register entry** —
+reserve upright `Sat(` for the operator and write the Sanskrit term distinctly (*`Sat`* or `sat`),
+plus record both meanings so everything already written stays safe. Checked against `EKS-41`
+(**closest** — but every meaning it tracks is a formal object *within the mathematics*, where this
+is a formal object versus **a natural-language term from another language**, so no type analysis
+can separate them, only reading the sentence), `EKS-42` (same family, section level) and `EKS-34`
+(collision across a *firewall*, where this barrier is **linguistic**); distinct from all three.
+See `EKS-43`.
+
+**EKS-41 extended a second time, 2026-09-09** by `P-97`: a **fourth** meaning of `ℛ`, and it is now
+the oldest. `step_023` (2026-08-27 16:25) §5 defines **`ℛ(P)` = "the relevant information
+requirements for purpose `P`"** inside `Coverage(K,P) = |SatisfiedRequirements| / |ℛ(P)|`. The full
+set is now: **`ℛ(P)` requirements-for-purpose (08-27)** · `ℛ` representation-functions (08-30
+21:59) · `Req(EC_t)` (09-02) · `ℛ_req(Q,Γ)` (09-02). ⚠️ **The oldest meaning is the one most easily
+mistaken for the newest** — both are parameterized requirement sets written with a calligraphic
+`ℛ`, differing only in what parameterizes them (**a purpose** versus **a question and a context**).
+That is a far more dangerous resemblance than the representation-function sense, because it is
+plausible: a reader may reasonably conclude `ℛ_req(Q,Γ)` simply *is* `ℛ(P)` renamed, **and no
+document establishes that it is.** The disambiguation ruling must therefore cover four meanings and
+must state explicitly that the `ℛ(P) → ℛ_req(Q,Γ)` descent is **unwitnessed**, not assumed.
