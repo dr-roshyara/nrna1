@@ -118,6 +118,44 @@ characterization in `14_decision-log/MD-060-f4-kt-variant-reconstruction-and-adj
 00_index.md` §6. The candidate requirement (§4) is unchanged by this recurrence; it is simply
 stronger evidence that the gap is structural and will keep recurring absent a marking convention.
 
+## 9 · Full inventory, 2026-09-09 — the scale is much larger than occurrences 1–2 showed
+
+A direct filesystem check (`ls -la` + `md5sum`, this reconstruction's own MD-062 follow-up) found
+**eleven** same-day, non-standard-named files in this one directory, spanning the entire session
+(13:54–16:47), none present in the git-tracked 401-file `mathematical-manifest.tsv`:
+
+| Time | Size | File |
+|---|---:|---|
+| 13:54 | 29 222 B | `I conducted the targeted evidence-extrac` (occurrence 1, §1) |
+| 14:19 | 27 030 B | `# Historical Evidence-Recovery Report.md` |
+| 14:20 | 31 751 B | `I treated the uploaded file as the gover` |
+| 15:32 | 39 120 B | `# F4 Handover Audit — post-MD-059.md` (occurrence 2, §8) |
+| 15:37 | 19 832 B | `handover_verdict` |
+| 15:44 | 26 485 B | `historical_source.md` |
+| 15:46 | 20 916 B | `document1.md` |
+| 15:46 | 19 955 B | `document2.md` |
+| 15:47 | 22 466 B | `document3.md` |
+| 16:47 | 19 337 B | `Untitled-17.md` |
+| 16:47 | 19 337 B | `document4.md` — **byte-identical to `Untitled-17.md`** (same md5) |
+
+**This is no longer a two-occurrence pattern — it is a whole cluster**, roughly one new file every
+10–20 minutes across the session, two of them exact duplicates of each other under different names.
+One (`historical_source.md`) explicitly self-describes as *"a historical-source audit"* while itself
+being same-day, non-corpus material — the same masking risk §2(a) already named, now demonstrated
+directly: a document *about* historical material can itself be mistaken for historical material.
+
+**One substantive claim from this cluster was independently verified** (this reconstruction's own
+MD-062 follow-up, not this ticket's own job to re-litigate): a cited requirement structure,
+`r=(id,type,scope,content,standard,priority,validity)`, genuinely exists in a real, git-tracked
+primary source (`M0047`, `20260902-082333_...formal-theory-of-epistemic-gaps.md`) — confirming that
+at least some of this cluster's own claims are checkable and correct, which is exactly why the
+provenance-marking gap matters: **good analysis and bad analysis are equally invisible as "not
+corpus" from the filename alone.**
+
+**Urgency raised from "low for this specific file" (§6) to moderate-and-growing** — the candidate
+requirement (§4) is unchanged, but eleven same-day instances in one directory is no longer a rare
+edge case for this reconstruction's own working method.
+
 ---
 
 ⛔ **Registered under the operating model's own standing rule: when a deeper requirement is discovered,
