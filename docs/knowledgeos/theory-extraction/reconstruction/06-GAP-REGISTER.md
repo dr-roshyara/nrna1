@@ -269,3 +269,30 @@ persists and three rival senses were added beside it. `Γ_v1`–`Γ_v4` retained
 | **G-15** | B's Foundational Traceability Matrix answers *"first appearance"* with `Q1/Q7/Q16/Q18/Q19/Q24` and `FA-1`/`FA-9` — **all cited, none defined in-cluster.** `FA-9`×18. `Q1…Q24` now located (08-26); **`FA-*` resolves only in `verification/V0-theory-corpus-map.md`** | **PARTIALLY RESOLVED** |
 | **G-16** | C attributes `K_t` to **"v0.2"** and baselines against a **"v1.1"** that C does not itself construct. Where are v0.2 and v1.1? | **UNRESOLVED** |
 | **G-17** | C begins **mid-pipeline** at *"checkpoint 0080–0094"* with `resume.py` and a `dimension-registry.md`. That pipeline predates C and is **`FIREWALL-LIMITED`** — its `00_`/`01_source-analysis/` shape matches the forbidden lane. | **`FIREWALL-LIMITED`, not ABSENT** |
+
+---
+
+# ⚠️ PROVISIONALITY ANNOTATION — applied 2026-09-09, per operating-model §15
+
+**`G-12` now has priority over `G-08`.** The following dispositions were reached **across an unread
+chronological interval of 514 documents / 243 step numbers**, and are therefore stamped:
+
+$$\boxed{\textbf{CURRENT ASSESSMENT — PENDING G-12}}$$
+
+| finding | stamp | what could overturn it |
+|---|---|---|
+| **A → B `INDEPENDENT_CONVERGENCE`** | ⚠️ PENDING G-12 | the missing interval may carry the connecting lineage. **Absence of a *direct* citation across 243 steps is not evidence of disjointness** — this is precisely the inference that failed twice already this session |
+| **B → C `COMMON_PROVENANCE_ANCESTOR`** | ⚠️ PENDING G-12 (weakly) | the citation itself is explicit and quoted, so the *link* stands; what could change is whether B is the **origin** of the tabled objects or merely their **relay** from the middle interval |
+| **A → C `SHARED_CONCEPTUAL_ANCESTOR` / `UNWITNESSED`** | ⚠️ PENDING G-12 | a middle-interval document may supply the missing provenance and convert this to `EXPLICIT_ANCESTRY` |
+| **Q-series as candidate ancestor** | ⚠️ PENDING G-12 | **candidate only.** 31 files, 08-26; cited 38× by B, once by A, never by C. Whether A, B and C all trace to the same Q-level *concept* is untested |
+| `G-03` = `EXPLICIT_TRANSITION` (sub-family at `step_251`) | ⚠️ PENDING G-12 | `step_251` is *inside* the unread interval; its own antecedents are unexamined |
+| `G-02` = `SEMANTIC_OVERLOAD` | stands | rests on quoted definitions in A and C, not on interval reasoning |
+
+**None of these is erased.** They are the current best reading of the evidence in hand.
+
+## The rule this annotation enforces
+
+$$\boxed{\textbf{No lineage conclusion may leap across an unread chronological interval.}}$$
+
+Recorded because the session has already produced this exact error twice:
+`local citation absence → false global disjointness`.
