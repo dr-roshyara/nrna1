@@ -1,5 +1,49 @@
-**Updated:** 2026-09-09 (latest) — **MD-057 COMPLETE — SEMANTIC IDENTITY/EQUIVALENCE EVIDENCE CENSUS
-(PHASE A ONLY), HARD STOP.** User validated MD-056, corrected its "fourth independent line of
+**Updated:** 2026-09-09 (latest) — **MD-058 COMPLETE — CONTROLLED MATHEMATICAL DERIVATION OF
+REPRESENTATION-INDEPENDENT KERNEL EQUIVALENCE, HARD STOP.** First genuine theory-construction phase
+in this reconstruction (vs. corpus archaeology). User redirected from more searching to derivation,
+mandating a strict epistemic-status vocabulary (CORPUS FACT / CORPUS-DERIVED / MATHEMATICALLY DERIVED
+/ NECESSARY CONSEQUENCE / MINIMAL CANDIDATE / HYPOTHESIS / DESIGN CHOICE / COUNTEREXAMPLE / OPEN).
+Method-note disagreement stated and accepted: built the requirement ledger from this reconstruction's
+own already-established findings (MD-023–057) rather than re-sweeping eight directories from zero.
+**Built a 10-item requirement ledger** (R1 representation-independence of minimality, R2 no
+decomposition-dependence, R3 congruence, R4 equivalence-relation well-formedness, R5 `≡` stronger
+than `≈` by design, R6 no ratified `≡` content, R7 no capability laundering, R8 satisfaction relation
+unspecified, R9 `{≡}` the unique minimal dependency cut, R10 operation/observation registry closure
+required). **Derived, as a NECESSARY CONSEQUENCE (not adopted)**: `Obs_{Q,𝒪}`-equality — the only
+primitive among {capability-set, Beh, Obs, Trace, Sat} satisfying R1/R2/R4 simultaneously; proved an
+actual equivalence relation. **Representation-independence test** against F3's own already-
+established `Reach(Ops(K))` (MD-050, the only candidate with real semantics): Proposition P1 (proved,
+conditional — atom-closure invariant under net-preserving operator merges) and Counterexample C1 (an
+exposed intermediate atom breaks representation-independence unless `𝒪` is itself representation-
+neutral) — **surfacing a genuinely new sub-requirement, `R1a`**, produced by the derivation itself,
+not previously stated anywhere in the corpus. **Instantiation matrix**: only F3 instantiable;
+F1/F4/F5/K0 UNAVAILABLE (would require inventing modelling choices, declined); F6 UNAVAILABLE for a
+distinct reason (n=1 population). **All 15 pairs among {F1,F3,F4,F5,F6,K0}: UNRESOLVED** — no
+candidate compared, none selected. **`MinKer` revisited**: proved it must quotient by the derived
+relation before minimality is well-posed (else minimality itself would violate R1) — but 5/6
+candidates lack semantics, so the quotiented formula is currently ill-posed for the real population,
+not because it's wrong but because its inputs are missing; uniqueness of a minimal element
+UNDETERMINED; a possible set-valued `MinKer` flagged as HYPOTHESIS, structurally (not
+evidentially) analogous to the operation-registry commission's own six-registries finding. **Ten
+adversarial hypotheses tested, none forced** — H7 (different relations satisfy the same requirements)
+confirmed and is itself the central result: the requirement set bounds a family from below, it does
+not select one; a further design/governance choice is mathematically unavoidable. **DDD**:
+`Obs_{Q,𝒪}`/`≈_{Q,𝒪}` classified a Specification; `𝒪`/`𝒯`/`𝒪_K` candidate Policy objects; five
+identity concepts (implementation/domain-object/capability/semantic/governance) kept explicitly
+separate. **Success condition: honest conjunction B ∧ C ∧ D**, not forced to one letter. **GA-001:
+UNCHANGED (still no comparable pair). GA-038: UNCHANGED, sharper** (minimality now proven to depend
+on exactly the missing representation-neutral `𝒪`/registry-closure governance act). **No candidate
+selected. CLOSURE-4/`≡_sem` NOT adopted. No F1–F8 merge. No backlog ticket** (the phase's own open
+items are scientific, not business-coordination, gaps). Verified both consistency scripts
+`CONSISTENT`; no frozen artifact touched; firewalls held; MD-050 not reopened. **MD-058 status:
+COMPLETE. HARD STOP per its own §17/§18 — no canonicalization, no governance ratification, no
+implementation.** Smallest next actions, named, not authorized: (a) a governance act closing
+`𝒪`/`𝒪_K` with a representation-neutral, mandatory-membership rule; (b) a research act constructing
+an `Obs`/`Beh` instantiation for one further candidate (F1, F4, or F5) — the precisely-named missing
+input for GA-001.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-057 COMPLETE — SEMANTIC
+IDENTITY/EQUIVALENCE EVIDENCE CENSUS (PHASE A ONLY), HARD STOP.** User validated MD-056, corrected its "fourth independent line of
 evidence" phrasing (replaced going forward by precise provenance classification: same thread /
 common-provenance lineage / separately-authored / independently conducted / independently
 replicated / provenance unresolved — MD-056's own text NOT edited), and redirected the sweep's

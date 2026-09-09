@@ -1185,7 +1185,31 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-057 — Semantic Identity/Equivalence Evidence Census (Phase
+**Status update, 2026-09-09 (latest): MD-058 — Controlled Mathematical Derivation of Representation-
+Independent Kernel Equivalence — EXECUTED, HARD STOP.** First genuine theory-construction phase (vs.
+corpus archaeology). User redirected from more searching to derivation, mandating a strict epistemic-
+status vocabulary. Method-note disagreement accepted: requirement ledger built from already-
+established findings (MD-023–057), not a full re-sweep. **Built a 10-item requirement ledger R1–R10**
+(representation-independence, no decomposition-dependence, congruence, equivalence well-formedness,
+`≡` stronger than `≈` by design, no ratified `≡` content, no capability laundering, unspecified
+satisfaction relation, `{≡}` unique minimal cut, registry-closure required). **Derived (NECESSARY
+CONSEQUENCE, not adopted)**: `Obs_{Q,𝒪}`-equality — proved an actual equivalence relation.
+**Representation-independence test** against F3's own `Reach(Ops(K))` (MD-050, the only candidate
+with real semantics): Proposition P1 (proved, conditional) + Counterexample C1, surfacing a genuinely
+new sub-requirement **`R1a`**. **Instantiation matrix**: only F3 instantiable; F1/F4/F5/K0
+UNAVAILABLE (would require inventing semantics, declined); F6 UNAVAILABLE (n=1). **15/15 pairs
+UNRESOLVED** — no candidate compared or selected. **MinKer revisited**: must quotient by the derived
+relation before minimality is well-posed, but 5/6 candidates lack semantics so the quotient is
+currently ill-posed; uniqueness UNDETERMINED. **Ten adversarial hypotheses tested, none forced** —
+H7 (different relations satisfy the same requirements) confirmed as the central result: a further
+design/governance choice is mathematically unavoidable. **Success condition: honest conjunction
+B ∧ C ∧ D.** **GA-001: UNCHANGED. GA-038: UNCHANGED, sharper.** No candidate selected, no CLOSURE-4/
+`≡_sem` adoption, no F1–F8 merge, no backlog ticket. Verified both consistency scripts `CONSISTENT`;
+firewalls held. **Smallest next actions, named, not authorized**: (a) a governance act closing
+`𝒪`/`𝒪_K` representation-neutrally; (b) an `Obs`/`Beh` instantiation for F1, F4, or F5 — the
+precisely-named missing input for GA-001.
+
+**Status update, 2026-09-09 (earlier): MD-057 — Semantic Identity/Equivalence Evidence Census (Phase
 A only) — EXECUTED, HARD STOP.** User validated MD-056, corrected its "fourth independent line of
 evidence" phrasing (replaced by precise provenance classification going forward; MD-056's own text
 not edited), and redirected the sweep toward finding an existing corpus criterion connecting the

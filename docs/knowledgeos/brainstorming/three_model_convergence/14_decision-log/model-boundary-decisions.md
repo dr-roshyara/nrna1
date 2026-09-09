@@ -4900,3 +4900,100 @@ named, not authorized: either (a) a governance-facing act handing the `N-4`/`N-3
 chain to a PO/ARB (possibly the same conversation as the VERIFY SESSION thread's own open `(W,Ω)`/
 `D_t`/`U(H)` question, MD-054 — related, not silently merged), or (b) continue the sweep, starting
 with `step-291/11_VNEXT-CLOSURE-AUDIT.md`.**
+
+---
+
+## MD-058 — Controlled Mathematical Derivation of Representation-Independent Kernel Equivalence
+
+**2026-09-09.** User validated MD-057 and redirected: rather than more searching, authorized the
+first genuine theory-construction phase — derive the smallest mathematically coherent semantic-
+equivalence framework following from already-established requirements, and test whether it connects
+F1/F3/F4/F5/F6 without depending on arbitrary representation. Not "choose ≡," not "adopt CLOSURE-4."
+A strict epistemic-separation vocabulary was mandated throughout (CORPUS FACT / CORPUS-DERIVED /
+MATHEMATICALLY DERIVED / NECESSARY CONSEQUENCE / MINIMAL CANDIDATE / HYPOTHESIS / DESIGN CHOICE /
+COUNTEREXAMPLE / OPEN).
+
+**Disagreement stated first, accepted as a method note**: rather than re-sweeping the eight named
+directories from zero, the requirement ledger was built from this reconstruction's own already-
+established findings (MD-023–057), each with its own original provenance — not a re-derivation from
+nothing.
+
+**Executed.** Built a ten-item requirement ledger `R` (R1 representation-independence of minimality,
+R2 no decomposition-dependence, R3 congruence, R4 equivalence-relation well-formedness, R5 `≡`
+stronger than `≈` by design, R6 no ratified `≡` content exists, R7 no capability laundering, R8
+satisfaction relation unspecified, R9 `{≡}` the unique minimal dependency cut, R10 operation/
+observation registry closure required) — each carrying full provenance to its own source MD.
+**Derived, as a NECESSARY CONSEQUENCE of R1/R2/R4** (not adopted, not chosen by preference): the
+capability-set primitive is disqualified (violates R2); of the remaining primitives (`Beh`, `Obs`,
+`Trace`, `Sat`), `Obs_{Q,𝒪}`-equality is the only one both formally interpretable and satisfying every
+stated requirement — `≈_{Q,𝒪}`, an actual equivalence relation by construction.
+
+**Representation-independence test (the central test)**: constructed against F3's own already-
+established `Reach(Ops(K))` semantics (MD-050) — the only candidate with real instantiated behaviour.
+**Proposition P1** (proved, conditional): atom-closure is invariant under net-preserving operator
+merges — a genuine, non-circular representation-independence result. **Counterexample C1**: an
+intermediate atom exposed under one representation but not another breaks `Obs`-equivalence's own
+representation-independence unless the observation set `𝒪` is itself chosen representation-
+neutrally — surfacing a new, previously-unstated sub-requirement, **`R1a`**, a genuine mathematical
+finding produced by the adversarial test itself, not previously present in the corpus.
+
+**Instantiation matrix**: only F3 has real semantics (MD-050); **F1/F4/F5/K0 are UNAVAILABLE
+(require inventing modelling choices this phase declines to make); F6 is UNAVAILABLE for a distinct
+reason (population of one file — data scarcity)**. All 15 pairs among {F1,F3,F4,F5,F6,K0}:
+**UNRESOLVED**, per default. No candidate compared, no candidate selected.
+
+**MinKer revisited**: `≈_{Q,𝒪}` is proven an actual equivalence relation (R4); **`MinKer` must
+quotient `𝔎_adm` by it BEFORE minimality is well-posed at all** (a derived refinement — computing
+minimality over raw candidates directly would itself violate R1) — but 5 of 6 candidates have no
+semantic representative, so the quotiented `MinKer` is currently ill-posed for the real population,
+not because the formula is wrong but because its inputs are missing. Uniqueness of a minimal element:
+**UNDETERMINED** (insufficient instantiated population); if non-unique, `MinKer` would plausibly need
+to return a *set* — flagged **HYPOTHESIS**, structurally analogous (not corroborating — a different
+object) to the operation-registry commission's own six-minimal-registries finding (MD-056).
+
+**Ten adversarial hypotheses tested**, none forced: H1 (secretly representation-dependent) —
+partially confirmed (form is independent, instantiation is not, pending `R1a`/R10). H3 (`≈` too weak
+for identity) — confirmed, matches MD-057's own `N-1A`. H6 (satisfaction-equivalence collapses into
+the unresolved requirement definition) — confirmed. **H7 (different relations satisfy the same
+requirements) — confirmed, and is itself the central derived result**: the requirement set bounds a
+*family* of relations from below, it does not select one — a further design/governance choice is
+mathematically unavoidable. H9 (no F1–F6 candidate instantiable) — confirmed for 5 of 6. H10 (an
+ungrounded governance/design choice remains) — confirmed, at minimum three distinct points.
+
+**DDD classification**: `Obs_{Q,𝒪}`/`≈_{Q,𝒪}` is a **Specification**, not a Domain Service/Policy/
+Value Object; `𝒪`/`𝒯`/`𝒪_K` are candidate **Policy** objects (their membership rule is exactly the
+still-open governance act); implementation identity, domain-object identity, capability identity,
+semantic equivalence, and governance identity are kept explicitly separate throughout.
+
+**Success condition**: a mixed **B ∧ C ∧ D**, reported as the honest conjunction rather than forced
+to one letter — a minimal candidate relation IS derived with explicit open assumptions (B), the
+requirements demonstrably admit multiple non-equivalent relations (C), and cross-candidate comparison
+fails for the precisely-identified reason that `Obs`/`Beh` primitives are missing for 5/6 candidates
+(D).
+
+**GA-001/GA-038**: **both UNCHANGED.** GA-001: still no comparable candidate pair (only 1 of 6
+instantiable). GA-038: still no canonicalization criterion — and now sharper, since minimality is
+shown to require quotienting by a relation whose own closed, representation-neutral parameterization
+(`Q,𝒪`/R1a/R10) is exactly the missing governance act. **No candidate label assigned. No candidate
+selected. CLOSURE-4/`≡_sem` NOT adopted. No F1–F8 merge.**
+
+**Backlog**: checked — no new ticket filed. The phase's own open items (R1a, the MinKer-quotienting
+refinement, the possible set-valued MinKer question) are genuine scientific/mathematical open
+questions, fully recorded in this phase's own artifacts, not business-facing coordination failures of
+the kind the EKS backlog tracks.
+
+**No classification changed. No frozen artifact (MD-024–057) modified. No executable file read or
+executed — F3's own already-cited MD-050 construction was reused, not re-run. K-1/K2 untouched. No
+Stage 07. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled
+throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-058-representation-
+independent-kernel-equivalence-derivation/` directory (7 files) plus this entry written.
+
+**MD-058 status: COMPLETE. HARD STOP per its own §17/§18 — no canonicalization, no governance
+ratification, no implementation, no MD-059 opened by this completion.** Smallest next actions,
+named, not authorized: (a) a governance act closing `𝒪`/`𝒪_K` with a representation-neutral (R1a),
+mandatory-membership (N-4) rule; (b) a research act constructing an `Obs`/`Beh` instantiation for one
+further candidate (F1, F4, or F5) — the precise missing input named in `06`'s own §18.4 — without
+which GA-001 has nothing to compare F3 against.**
