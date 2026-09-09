@@ -115,3 +115,48 @@ identified at all.
 
 **Evidence:** `docs/knowledgeos/theory-extraction/86-P68-…` §7 · the disambiguation register in
 `docs/knowledgeos/brainstorming/verification/spec/` (2026-08-29), §1 of that document.
+
+---
+
+## Third instance, recorded 2026-09-09 — a second overloaded term, and this one has no register at all
+
+⭐⭐ **The second instance above showed that a disambiguation register for one heavily reused word
+already existed, and a new sense was added without it. A follow-up review found the same problem in a
+sharper form on a different word.**
+
+⭐⭐⭐ **The word *"contract"* now carries four distinct technical senses in the estate — and unlike the
+first word, there is no register for it at all.** Three of the four are the same kind of thing: a set of
+requirements that some evaluation is measured against, supplied from outside as an input. The fourth is
+something else entirely: **a list of the fields each concept has** — a type declaration, not a
+requirement set.
+
+$$\boxed{\textbf{Three of one kind, one of another. } \mathbf{The\ overload\ crosses\ a\ TYPE\ boundary,\ not\ just\ a\ naming\ one.}}$$
+
+### Why this is worse than an ordinary naming collision
+
+**a. The two kinds cannot be substituted, and the word does not warn you.** ⭐⭐ A reader who takes a
+field list where a requirement set was meant has not misread a label — **they have supplied the wrong
+kind of object**, and nothing in the sentence flags it.
+
+**b. It nearly produced a wrong answer during the very review that found it.** ⚠️ A search suggested one
+document referenced the requirement-set sense three times. ⭐ Checked, the three hits were the letters of
+that abbreviation **inside the ordinary words *"decision"* and *"execution"*.** The true count was
+**zero** — and had it stood, the review would have concluded the document was about the requirement-set
+sense when it is about the type-declaration sense. **The opposite verdict.**
+
+**c. The estate has demonstrated it knows how to fix this.** ⭐⭐⭐ The register that exists for the first
+word is short, clear, and says for each sense what it is and what it is not. **The remedy for the second
+word is the same artifact, and it does not exist.**
+
+**d. And the asymmetry is instructive.** ⭐ For the first word a register exists and was not kept
+current; for the second there is nothing to keep current. **The two failures need different responses**,
+and recording them on one item keeps that visible.
+
+### What this does *not* change
+
+⛔ **No rename is proposed, for either word.** ⛔ **No new item is opened** — under the never-a-copy rule
+a third instance belongs on this record. ⛔ **And no document is criticised**: all four senses are
+internally coherent where they are used. **The exposure is entirely in the crossing.**
+
+**Evidence:** `docs/knowledgeos/theory-extraction/92-P74-…` §2, §4, §8 — the four senses typed and kept
+apart, the false-positive check, and the register asymmetry.
