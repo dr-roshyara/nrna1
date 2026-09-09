@@ -106,3 +106,40 @@ remedy is the cheapest on this list — **a few extra files per citation** — a
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed and no work is commissioned.**
+
+---
+
+## Corroboration from the estate's own verification, 2026-09-09
+
+⭐⭐⭐ **The independent verification programme recorded this exact failure as one of its findings, in a
+single sentence that is better evidence for this item than anything written above:**
+
+> **"A genuine mathematical error at [one step], correctly repaired eight steps later without anyone
+> noticing."**
+
+⭐⭐ **Read what that says.** A real error was made. It was **fixed** — correctly — **eight documents
+later.** And **nobody knew**, in either direction: the reader of the error did not see the repair, and
+the record does not connect them.
+
+$$\boxed{\textbf{The error and its repair are } \mathbf{eight\ files\ apart,\ and\ nothing\ links\ them.}}$$
+
+### Why this matters for this item specifically
+
+**a. It is the failure mode, witnessed by an independent party.** ⭐ This item argues that a thread's
+later content is structurally hard to find. **Here the estate's own verification found a case where the
+resolution sat eight files downstream and had gone unnoticed** — including by whoever wrote it.
+
+**b. It shows the cost runs both ways.** ⭐⭐ Stopping early leaves you with **an error you think is
+current**; it also leaves you unable to credit **a repair that was actually made.** The second is the
+more damaging for a research record, because it makes careful work look careless.
+
+**c. A review filing this item stopped one file past the error and seven short of the repair.** ⚠️ That
+is not offered as an excuse but as a measurement: **the distance was eight, and stopping at one was not
+obviously insufficient at the time.**
+
+⛔ **No remedy is added here.** The direction in §5 above already covers it — read forward until the
+subject changes — and this entry simply raises its evidence from *one reviewer's experience* to *a
+finding recorded independently by the estate's verification programme.*
+
+**Evidence:** `docs/knowledgeos/theory-extraction/93-P75-…` §4.2 · the finding's own title in the
+verification lane's findings register.

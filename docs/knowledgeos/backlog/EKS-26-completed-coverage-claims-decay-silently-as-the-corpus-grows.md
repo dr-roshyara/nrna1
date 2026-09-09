@@ -104,3 +104,45 @@ be cited without re-checking.
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed and no work is commissioned.**
+
+---
+
+## Fourth instance, 2026-09-09 — and this one is inside the estate's most disciplined artifact
+
+⭐⭐ **The instances above concerned document counts. This one concerns a findings register, and the gap
+is larger.**
+
+The independent verification programme keeps an artifact index describing what it produced. That index
+records its findings as running **from the first to the nineteenth**. ⭐⭐⭐ **The findings themselves run
+to the eighty-eighth — eighty-eight distinct identifiers.**
+
+$$\boxed{\textbf{The index accounts for } \mathbf{19}\textbf{. The programme produced } \mathbf{88}\textbf{. } \mathbf{Sixty\text{-}nine\ findings\ are\ not\ mentioned\ where\ a\ reader\ would\ look.}}$$
+
+### Why this instance is the most consequential of the four
+
+**a. It is not a count of documents but a count of results.** ⭐⭐ A stale file count costs a reader some
+coverage confidence. **A stale findings register hides conclusions** — and among the unlisted ones are a
+genuine mathematical error, a genuine falsification of five of eight stated laws, six internal
+contradictions inside a single document, and an identifier-range collision between two parts of the work.
+
+**b. The index is the only map.** ⚠️ That programme's material is not timestamp-ordered, so **the index
+is how anyone navigates it.** When the index under-reports by three-quarters, the navigation
+under-reports by three-quarters.
+
+**c. It compounds with the programme being stopped.** ⭐⭐⭐ The same programme is recorded elsewhere in
+this backlog as **halted pending a supervisory review that has not happened**. So the situation is: a
+completed body of work, waiting for a reader, **whose own index tells that reader it is a quarter of its
+actual size.**
+
+**d. And it was found only by counting.** ⭐ Nothing declared the gap. It surfaced because a review
+extracted every finding identifier and compared the range against the index — **a check that takes
+seconds and that nothing asks for.**
+
+### What this does *not* change
+
+⛔ **The programme is not criticised** — it produced far more than it advertised, which is the opposite
+of overclaiming. ⛔ **The index is not accused of error**; it was almost certainly accurate when written,
+which is precisely this item's subject. ⛔ **No re-index is requested.**
+
+**Evidence:** `docs/knowledgeos/theory-extraction/93-P75-…` §3, §8 — the eighty-eight identifiers, the
+index's nineteen, and the four named findings among the unlisted range.

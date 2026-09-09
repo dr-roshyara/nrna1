@@ -833,38 +833,83 @@ Full rule: `docs/knowledgeos/brainstorming/verification/gap-discovery/CORPUS-SEA
 
 **Directory-numbering and phase-numbering are NOT the same axis, and must never be assumed to align** — MD-021's own phase numbers (0/1/2/3/4/5/6+) do not map 1:1 onto `three_model_convergence/`'s directory numbers (`02_model-a_gita/`/`03_model-b_mathematical/`/`04_model-c_kernel-ddd/`/`05_cross-model/`/…): MD-021 Phase 3 (cross-model adjudication) writes to `05_cross-model/`, not `04_model-c_kernel-ddd/` (reserved for the still-unauthorized Model C1/C2 reconstruction, itself a *later*, separate MD-021 phase). Any such discrepancy against an authorization's own wording is **documented, never silently repaired** — the same discipline this repo's ES-004.3 already states for artifact history generally.
 
-## Corpus research method — TIMESTAMP-THREAD READING (ADOPTED 2026-09-09, human research owner)
+## Corpus research method — CHRONOLOGICAL THREAD DISCOVERY PROTOCOL (ADOPTED 2026-09-09, human research owner; superseding the shorter 2026-09-09 entry)
 
-**Filenames in the KnowledgeOS brainstorming corpus are save-time stamps, so chronological filename
-order is evidence about how a research thread developed.** On finding any clue — concept, definition,
-theorem, candidate, terminology — **read the files saved immediately after it, in order, until the
-substantive topic changes.** Record `thread_start`, `thread_end`, `files_read`, `chronological_order`,
-`topic_transition`, `key_claims`, `final_status`, `provenance`, `admissibility_status`.
+**Sequence — census FIRST, reconstruct second.** The single most important rule: a clever keyword hit
+must not be allowed to bias the reconstruction.
 
-**A first keyword hit is never the complete development.** Later files may carry refinement, correction,
-counterexample, proof, rejection, replacement, qualification, final formulation, or the decision.
-Conversely, **stop when the topic changes** — adjacency alone is not a reason to continue.
+```
+CORPUS POPULATION → TIMESTAMP INDEX → DISCOVERY SIGNAL → CHRONOLOGICAL NEIGHBOURHOOD
+→ THREAD RECONSTRUCTION → ORIGIN → DEVELOPMENT → CORRECTION → DERIVATION → DISPOSITION
+→ PROVENANCE / INFORMATION-FLOW TEST → EPISTEMIC ADJUDICATION
+```
+⛔ **Never** `KEYWORD HIT → CONCLUSION`.
 
-**CRITICAL DISTINCTION — never upgrade one into another because files are adjacent:**
-`CHRONOLOGICALLY ADJACENT` · `LIKELY SAME RESEARCH THREAD` · `CONTINUATION CONFIRMED BY CONTENT` ·
-`SAME CONCEPT` · `SAME ARTIFACT` · `SAME PROVENANCE LINEAGE` · `INDEPENDENT RESEARCH` ·
-`INDEPENDENT REPLICATION`.
+**§1 Establish the population first:** corpus roots · file enumeration · which filenames carry usable
+timestamps · a chronological index · files whose timestamps cannot be reconstructed · **record the
+coverage limitation.** ⛔ Never treat an incomplete timestamp population as a complete history.
 
-**Evidence-state ladder, never collapsed:** `FOUND` · `READ` · `CHARACTERIZED` · `ADMISSIBLE` ·
-`EVIDENTIARY` · `DERIVED` · `VERIFIED` · `RATIFIED` · `CANONICAL`.
+**§2–§5 Thread reconstruction:** record path, timestamp and the exact discovery signal; read enough to
+learn what the signal *means*; inspect chronological neighbours; **read forward while the substantive
+thread continues, and backward when a mature result needs its origin** — to recover *origin → proposal →
+development → challenge → correction → derivation → disposition*, and to detect whether an apparent
+breakthrough is a **restatement**.
 
-**Method domain (measured `P-73`):** applies to ~1 312 of ~2 647 files — `brainstorming/kernel/` 95% ·
+**§4 Stop conditions:** `A` confirmed continuation · `B` refinement · `C` correction · `D` rejection ·
+`E` replacement *(never inferred from later wording alone)* · `F` **topic transition — stop** ·
+`G` uncertain — stop and mark `[UNDETERMINED]`. ⛔ **Never manufacture continuity.**
+
+**§3 Adjacency ≠ identity — mandatory.** Distinguish, never upgrading without evidence:
+`CHRONOLOGICALLY ADJACENT` · `LIKELY SAME THREAD` · `CONTINUATION CONFIRMED BY CONTENT` · `SAME CONCEPT`
+· `SAME PROPOSITION` · `SAME ARTIFACT` · `SAME LINEAGE` · `DEPENDENT` · `INDEPENDENT RESEARCH` ·
+`REPLICATION` · `UNDETERMINED`.
+
+**§6–§7 Keywords are discovery mechanisms, never evidence of resolution.** *"BREAKTHROUGH"* does not
+establish `[THM]`; *"FINAL"* does not establish `[CANONICAL]`. Search also by notation, candidate names,
+definitions, transition/invariant names, artifact identifiers, section titles, and timestamp
+neighbourhoods — **follow the object and the proposition, not the word.**
+
+**§8 False threads — test explicitly for:** `BYTE-IDENTICAL` · `NEAR-DUPLICATE` · `COPIED CONTENT` ·
+`REVISION` · `RESPONSE` · `PROMPT/RESPONSE PAIR` · `NEW INVESTIGATION` · `PARALLEL THREAD` ·
+`UNRELATED`. ⛔ **Multiple files are not multiple observations merely because their timestamps differ.**
+
+**§11 Provenance record:** `thread_id · thread_start · thread_end · files_examined · files_not_examined ·
+timestamp_coverage · chronological_order · discovery_signal · topic_identity · provenance_relationship ·
+information_flow · key_claims · derivation_location · corrections · refutations · final_disposition ·
+admissibility · epistemic_status`. ⛔ If completeness or provenance cannot be established, write
+`[UNRECORDABLE]` — **never silently assume independence.**
+
+**§12 Information-flow ladder:** `DIRECTLY CITED` · `EXPLICITLY DEPENDENT` · `COPIED/ADAPTED` ·
+`SAME LINEAGE` · `CHRONOLOGICALLY ADJACENT ONLY` · `STRUCTURALLY SIMILAR` ·
+`INDEPENDENT RESEARCH — PLAUSIBLE` · `INDEPENDENCE UNRECORDABLE` · `UNDETERMINED`.
+⛔ Not *"independent"* because they sit in different files; ⛔ not *"replications"* because they agree.
+
+**§13 Threads cross directories.** `directory ≠ thread`, and `different directory ≠ different thread`.
+Record the transition, establish timestamps and the substantive relationship.
+
+**§14 Firewalls override chronology.** On reaching firewalled/inadmissible/separately-governed material,
+**stop at the boundary** and record `CHRONOLOGICAL CONTINUATION FOUND BUT ADMISSIBILITY / FIREWALL
+BOUNDARY REACHED`. ⛔ **Never** inspect `three_model_convergence/` from this lane.
+
+**§15 Development ≠ adjudication.** Archaeology answers *how the idea developed*, never *is it true*.
+Afterwards separate: proposed · evidenced · derived · stipulated · refuted · open · formally adopted.
+
+**§10 Status ladder, never promoted without evidence:** `FOUND` · `READ` · `CHARACTERIZED` · `[EMP]` ·
+`[DERIVED]` · `[CORROBORATION]` · `[STIPULATED]` · `[OPEN]` · `[REFUTED]` · `[QUALIFIED]` ·
+`[UNWITNESSED]` · `[UNRECORDABLE]`. ⛔ Forbidden promotions: `FOUND→PROVEN` · `CHARACTERIZED→ADOPTED` ·
+`FINAL→CANONICAL` · `BREAKTHROUGH→THEOREM` · `REPEATED→REPLICATED` · `ADJACENT→SAME`.
+
+**§16 Stop when** the topic changes, the evidence boundary is reached, or the relationship cannot be
+established without speculation. ⛔ Not because files remain adjacent; ⛔ not because something promising
+was found. **The objective is the thread's actual disposition.**
+
+**Measured domain (`P-73`):** applies to ~1 312 of ~2 647 files — `brainstorming/kernel/` 95% ·
 `mathematical_ideas_that_can_be_implemented/` 99% · `phase_measure_theory/` 86%. **Not** timestamped:
-`brainstorming/verification/` 9% · `reviews/` 4% · `reviews/kernel/` 0% (sequence-named) · `synthesis/` ·
-top-level `verification/` and `research/`. **For those, the analogue is the folder's own index plus its
-last/closing report** — used successfully in `P-72`.
+`brainstorming/verification/` 9% · `reviews/` 4% · `reviews/kernel/` 0% *(sequence-named)* · `synthesis/`
+· top-level `verification/` and `research/` — **for those the analogue is the folder's own index plus its
+closing report** (`P-72`).
 
-**Two traps, both witnessed:** `-duplicate` files sit at distinct timestamps with identical content
-(*chronologically adjacent + same artifact*), and the archaeology census already classified ~19
-md5-identical groups — a walk that counts them as development invents refinements. And a keyword such as
-*"breakthrough"* or *"final"* is a **discovery signal, not evidence of resolution** (`P-64`: 51 files, 12
-claiming *"the real breakthrough"*, six referents, none a proved result).
-
-**Anti-bias:** a thread may contain a genuine resolution, a failed one, a correction, a retraction, or an
-unresolved question — all are relevant. **Do not treat a later file as superseding an earlier one unless
-it claims correction or replacement.**
+**Witnessed traps:** `-duplicate` files at distinct timestamps *(adjacent + same artifact)*; ~19
+md5-identical groups already classified by the archaeology census; and substring false positives — `OWA`
+matched inside `OWASP`/`TOWARD` *(`P-67`)*, `EC` inside `DECISION`/`EXECUTION` *(`P-74`)*, each of which
+would have inverted a verdict.
