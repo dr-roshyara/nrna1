@@ -38,3 +38,17 @@ K 11-component@025k	K_t 11-component@276-final	SAME-CARDINALITY	[OPEN]	2026-08-3
 𝓔 6-valued@025k	EpistemicState 4-dim@025k	DISTINCT	[EMP]	2026-08-28T09:39	025k §25K.20 vs §25K.21	same section refuses the lattice reading and proposes dimensions instead
 Zero(K,EC)@025d	Zero=InsufficientBasis@025z	REFINE	[EMP]	2026-08-28T10:13	025z	definition sharpened to "for the next permitted action"
 KnowledgeState⊃StatisticalState@025k	—	DERIVE	[DERIVED]	2026-08-28T09:39	025k §25K.44-45	explicitly not equality; P(H)=0.8 does not give H=True
+K_t=Derive(H,Ω,EC,M)@025k	K_merge=Derive(H_A∪H_B,Ω,EC,M)@025l	GENERALIZE	[EMP]	2026-08-28T09:40	025l §25L.7	merge the histories, never the opaque states
+H1⊔H2=H1∪H2@025l	σ1⊔σ2=(s1∨s2,r1∨r2)@272b	DISTINCT	[EMP]	2026-08-30T22:50	025l §25L.20 vs 272b §272A.21	⊔ collision: history union vs epistemic join - NOT merged
+convergence-candidate@025l	—	PROPOSE	[PROPOSED]	2026-08-28T09:40	025l §25L.14,§25L.43	stated as a candidate design invariant, explicitly not proved
+Convergence≠Consensus@025l	—	DERIVE	[DERIVED]	2026-08-28T09:40	025l §25L.17-18	convergence is agreement on epistemic state, not on truth
+Independence-from-provenance@025l	Independence-acquisition-mechanism@025n	CORROBORATION	[EMP]	2026-08-28T09:42	025l §25L.32 vs 025n §25N.13	both refuse organizational ownership as evidence of independence
+KAID@025l	record identity	DISTINCT	[EMP]	2026-08-28T09:40	025l §25L.4-5	knowledge meaning identity separate from record identity; birth doc 025i/025s NOT YET READ
+RevisionType 6-valued@025m	—	INTRODUCE	[EMP]	2026-08-28T09:41	025m §25M.1	Evolution/Correction/Retraction/Refutation/Reinterpretation/ModelRevision
+Retraction@025m	Refutation@025m	DISTINCT	[EMP]	2026-08-28T09:41	025m §25M.4	losing support is not proving false
+Revision=EventAddition+ReDerivation@025m	—	DERIVE	[DERIVED]	2026-08-28T09:41	025m §25M.9,§25M.22	H_{t+1}=H_t ∪ {RevisionEvent}; never destructive
+Zero(K,EC)@025d	Zero is dynamic@025m	REFINE	[EMP]	2026-08-28T09:41	025m §25M.17	a satisfied requirement can become unsatisfied on evidence invalidation
+E 10-component@025n	—	INTRODUCE	[EMP]	2026-08-28T09:42	025n §25N.1	against the scalar-confidence anti-pattern
+six-concepts-separate@025n	TG-02 "six-component vector"	CORRECTION-CANDIDATE	[OPEN]	2026-08-28T09:42	025n §25N.2 vs forward plan	six concepts held APART, not a six-component vector; Independence is one field of a 10-tuple
+Independence=Unknown@025n	Dempster ⊕ blocked	EXPLAINS	[EMP]	2026-08-28T09:42	025n §25N.44	conservative evidence principle forbids LR1*LR2*LR3 when independence is unknown - the blocker has a stated reason
+EvidenceCount≠InformationCount@025n	—	DERIVE	[DERIVED]	2026-08-28T09:42	025n §25N.10-12	evidence clusters; InformationUnits(C)≈1 for one informational origin

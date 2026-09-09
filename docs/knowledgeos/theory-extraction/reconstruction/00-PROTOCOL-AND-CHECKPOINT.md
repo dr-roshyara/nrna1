@@ -428,3 +428,78 @@ next_reason: |
 backfill_debt: [025, 025a-1..a-5, 025b, 025c, 025c-1..c-3]   # 11 docs, ~13,500 lines, chronologically earlier
 resumption: from disk; 04-THEORY-CHRONICLE.md + 04-LINEAGE-EDGES.tsv carry all state
 ```
+
+---
+
+# CHECKPOINT 004 — 2026-09-09
+
+## Read completely
+
+| when | doc | lines |
+|---|---|---|
+| 08-28 09:40 | `step-025l` distributed-knowledge-merge-convergence-and-consistency | 1 599 |
+| 08-28 09:41 | `step-025m` epistemic-error-refutation-retraction-correction-and-revision | 958 |
+
+`READ-PARTIAL`: `step-025n` evidence-aggregation-algebra (§25N.1–15, §26–28, §44–46 of 1 732 lines).
+
+## Findings recorded — CHRONICLE-014, 015, 016
+
+**`025l`** — merge is over **histories**, not states; `Convergence ≠ Consensus` `[DERIVED]`;
+the convergence property is stated as a **candidate**, explicitly not proved; `H` is CRDT-like but
+`Derive(H)` is not; independence must come from **provenance, not organizational ownership**;
+`Map : Ω_A → Ω_B` is itself an epistemic object.
+
+**`025m`** — `RevisionType` = six kinds of "wrong"; `Retraction ≠ Refutation`;
+`Probability revision ≠ Logical refutation`; `Revision = EventAddition + StateReDerivation`;
+`Revision propagation = Support recomputation, NOT cascading deletion`; **`Zero is dynamic`**;
+decisions become `DecisionAffected`, never auto-reversed.
+
+**`025n`** — `E` is a **ten-component** object; six concepts held apart
+(`Support ≠ Reliability ≠ Authority ≠ Probability ≠ Confidence ≠ Independence`);
+`EvidenceCount ≠ InformationCount`; evidence clusters; `ConditionalIndependence(E₁,E₂|H,C)`.
+
+## ⭐ Two findings that touch the forward programme plan
+
+**1. The Dempster blocker has a stated reason, and it is deliberate.**
+`025n` §25N.44 — *"if independence is unknown, we should not calculate `LR_combined = LR₁LR₂LR₃`"* —
+a **conservative evidence principle**, given with its justification on **2026-08-28 09:42**. The
+plan records `TG-02` as open *"which is why Dempster's `⊕` stays blocked."* The blocker is not a
+gap; it is an invariant. `[EMP]`
+
+**2. `TG-02`'s "six-component vector" looks like a misreading.** `025n` §25N.2 holds **six concepts
+apart**; `Independence` is **one field of a ten-component evidence object**, not a six-component
+vector. Recorded as `CORRECTION-CANDIDATE`, **`[OPEN]`** — I have not read the plan's own source and
+will not assert it against the plan without doing so.
+
+## New collisions
+
+`⊔` — **history union** (`025l` §25L.20) vs **epistemic join** (`272b` §272A.21). Not merged.
+
+## New tracked object
+
+`KAID` (Knowledge Meaning Identity), distinct from record identity — **its birth document
+(`025i`/`025s`) is not yet read.** Added to the debt.
+
+## Graph
+
+**53 edges** — 34 `[EMP]` · 6 `[DERIVED]` · 4 `[UNWITNESSED]` · 4 `[OPEN]` · 3 `[REFUTED]` · 2 `[PROPOSED]`.
+
+## Resumption
+
+```yaml
+checkpoint: 004
+read_complete_total: 28
+read_partial: [025 (653-738), 009 (§8-10), 025n (§1-15,26-28,44-46)]
+next_document: 20260828-094256_step-025o-truth-validity-belief-knowledge-and-epistemic-status.md
+next_reason: |
+  Chronologically next (08-28 09:42) and the highest-value unread document for the single
+  most fragmented object in the reconstruction: ten distinct Sigma-formulations are now
+  recorded and none is reconciled. Its title is precisely that reconciliation, and its
+  extracted results already show a SIXTH tuple form
+  EpistemicStatus = (Support, Conflict, Validity, Freshness, Authority, Uncertainty).
+backfill_debt:
+  - 025, 025a-1..a-5, 025b, 025c, 025c-1..c-3   # 11 docs, chronologically BEFORE 025d
+  - 025i, 025s                                   # KAID birth documents
+  - 025n remainder
+resumption: from disk; 04-THEORY-CHRONICLE.md + 04-LINEAGE-EDGES.tsv carry all state
+```

@@ -273,3 +273,82 @@ same section. No document reconciles the ten.
 §25K.45: `P(H)=0.8 ⇏ H=True`, and `H=True` in a rule system `⇏ P(H)=1`.
 §25K.46: `𝒦 = {Fact, Hypothesis, Observation, Assertion, Rule, Constraint, Prediction, Decision, …}`
 — *"this typing prevents category errors."* `[EMP]`
+
+---
+# BATCH 004 — `025l` (08-28 09:40) and `025m` (09:41) read completely; `025n` (09:42) read partially
+
+## CHRONICLE-014 · distributed knowledge, merge and convergence — `025l`
+
+| § | result | class |
+|---|---|---|
+| 25L.7 | `H_merge = H_A ∪ H_B`; `K_merge = Derive(H_merge, Ω, EC, M)` — merge the **histories**, never the opaque states | `[EMP]` |
+| 25L.6 | ⭐ **`Semantic deduplication must not mean provenance deduplication`** | `[EMP]` |
+| 25L.9 | `Independent(E₁,E₂) = False` when `E₂` is a replica — *"replication is not new evidence"* | `[EMP]` |
+| 25L.11 | `E₁ ≺ E₂` causal order, **stronger than** `Timestamp(E₁) < Timestamp(E₂)` | `[EMP]` |
+| **25L.14** | ⭐ **convergence candidate:** `H_A=H_B ∧ Ω_A=Ω_B ∧ EC_A=EC_B ∧ M_A=M_B ⟹ Derive(…) ≡ Derive(…)` | `[PROPOSED]` — stated as a *candidate property*, not proved |
+| 25L.17–18 | ⭐ **`Convergence ≠ Consensus`** — convergence is `AgreementOnEpistemicState`, **not** `AgreementOnTruth`; two nodes correctly converge on *"these conflict and no resolution exists"* | `[DERIVED]` |
+| 25L.20–21 | `H₁ ⊔ H₂ = H₁ ∪ H₂` is commutative, associative, idempotent — **CRDT-like**; but `K = Derive(H)` is **not** a CRDT | `[EMP]` |
+| 25L.25 | `LocalConsistency ≠ GlobalCompleteness` | `[EMP]` |
+| 25L.29 | **no universal ontology** — `Ω_Infrastructure`, `Ω_Security`, `Ω_Architecture`, with explicit cross-context maps | `[EMP]` |
+| 25L.30–31 | `Map : Ω_A → Ω_B` is **itself an epistemic object** needing provenance → *"Knowledge about Knowledge"* | `[EMP]` |
+| 25L.32 | ⭐ independence must be derived **from provenance, not organizational ownership** — two bounded contexts can consume one source | `[EMP]` |
+| 25L.44 | conditional: `Same inputs + same semantics ⟹ same derived state` — explicitly **not** *"all nodes → same knowledge"* | `[QUALIFIED]` |
+
+⛔ **`⊔` collision:** here `⊔` is **history union** (`25L.20`); in `272b` §272A.21 it is the
+**epistemic join** `σ₁ ⊔ σ₂ = (s₁∨s₂, r₁∨r₂)`. Two meanings, three days apart. Recorded, not merged.
+
+⚠️ `KAID` — **Knowledge Meaning Identity**, distinct from record identity (`25L.4–5`), so that
+independent corroboration unifies *meaning* while preserving *two records*. New tracked object;
+its own birth is earlier in the series (`025i`/`025s`) and is **not yet read**.
+
+## CHRONICLE-015 · revision, error and non-monotonicity — `025m`
+
+$$\boxed{RevisionType = \{Evolution,\ Correction,\ Retraction,\ Refutation,\ Reinterpretation,\ ModelRevision\}}$$
+
+Six kinds of "wrong", each with a worked case and a distinct required response. `[EMP]`
+
+| § | distinction | class |
+|---|---|---|
+| 25M.2 | `Evolution ≠ Correction` — the old assertion **was true when made** | `[EMP]` |
+| 25M.4 | ⭐ `Retraction ≠ Refutation` — *"losing support for a hypothesis is not proving it false"* | `[EMP]` |
+| 25M.6 | `ObservationValid ∧ AssertionInvalid` — the command ran against the wrong host | `[EMP]` |
+| 25M.7–8 | `Ω₁ → Ω₂` changes `K` with `H` unchanged ⟹ **`Interpretation is versioned`** | `[EMP]` |
+| 25M.9 | **`Revision = EventAddition + StateReDerivation`**, never destructive update | `[EMP]` |
+| 25M.11 | `Assertion ≠ Assessment` — method unreliability weakens support without refuting | `[EMP]` |
+| 25M.12 | ⭐ **`Probability revision ≠ Logical refutation`** — `P(H\|E₁)=0.95 → P(H\|E₁,E₂)=0.40` refutes nothing; *"the system must not invent priors"* | `[EMP]` |
+| 25M.14 | **`Revision propagation = Support recomputation, NOT cascading deletion`** | `[EMP]` |
+| 25M.15 | `RF(E)` — the **revision frontier**, giving incremental recomputation | `[EMP]` |
+| 25M.17 | ⭐ **`Zero is dynamic`** — a satisfied requirement can become unsatisfied when evidence is invalidated | `[EMP]` |
+| 25M.18–19 | a decision becomes `DecisionAffected`, **never auto-reversed**; `DecisionStatus = {Valid, Superseded, Questioned, Invalidated, Executed, Reversed}` | `[EMP]` |
+| 25M.23 | four dimensions: **World change · Knowledge change · Assessment change · Model change** | `[EMP]` |
+
+## CHRONICLE-016 · evidence aggregation — `025n` `READ-PARTIAL` (§1–15, §26–28, §44–46)
+
+$$E = (Content, Source, Provenance, Method, Time, Context, Reliability, Independence, Authority, Uncertainty)$$
+
+A **ten-component** evidence object (`25N.1`), introduced against the explicit anti-pattern
+*"`confidence = 0.87`, then add them up — that has no generally valid statistical interpretation."*
+
+⭐ **§25N.2 — six concepts that must remain separate:**
+
+$$\boxed{Support \;\neq\; Reliability \;\neq\; Authority \;\neq\; Probability \;\neq\; Confidence \;\neq\; Independence}$$
+
+⚠️ **This is very likely what the forward programme plan records as `TG-02`: "independence defined
+as a six-component vector."** It is not a six-component vector — it is **six concepts held apart**,
+with `Independence` one *field* of a ten-component evidence object. Recorded as a correction
+candidate for the plan; **`[OPEN]`** pending a read of the plan's own source.
+
+| § | result |
+|---|---|
+| 25N.10 | ⭐ **`EvidenceCount ≠ InformationCount`** — one vendor document read by a human and an LLM is **not** three sources |
+| 25N.11–12 | evidence lineage graph `G_E`; **evidence clusters** with `InformationUnits(C₁) ≈ 1` |
+| 25N.13 | independence rests on the **acquisition mechanism**, not on *"they came from different people"* |
+| 25N.14 | `ConditionalIndependence(E₁, E₂ \| H, C)` — binary independence is refused as too weak |
+| **25N.44** | ⭐⭐ **the conservative evidence principle** — if `Independence = Unknown`, then `LR_combined = LR₁·LR₂·LR₃` **must not be computed** |
+| 25N.45 | aggregation **need not produce a number**; `unresolved` + `NeedIndependentEvidence` feeds back into `Zero` and `Lord` |
+
+$$\boxed{\textbf{§25N.44 is the origin of the blocker on Dempster's } \oplus\textbf{, dated 2026-08-28 09:42.}}$$
+
+The forward plan records `TG-02` as open *"which is why Dempster's `⊕` stays blocked."* **The reason
+is not missing — it is a deliberate safety invariant, stated with its justification, five days
+before the plan's window.** `[EMP]`
