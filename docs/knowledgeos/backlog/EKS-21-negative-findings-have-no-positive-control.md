@@ -224,3 +224,50 @@ for that** — it is noted here so the two records read consistently.
 **Evidence:** `docs/knowledgeos/theory-extraction/88-P70-…` §6 · the settled-findings list in
 `docs/knowledgeos/theory-extraction/18-P08-…` §21, item 10, dated 2026-09-07 · the four subsequent
 recurrences recorded in `82-P64-…`, `83-P65-…`, `85-P67-…` and this correction's own audit.
+
+---
+
+## Third direction, 2026-09-09 — a search that reported a finding which does not exist at all
+
+⭐⭐ **The two directions above are a wrongly-empty result and a wrongly-large one. A third instance is
+worse than both: a search reported a specific sentence that is not in the corpus.**
+
+A review extracting short excerpts around a matched term received back what read as a decisive citation —
+**one work stream referring to another's body of work by name and by document range.** Had it stood, it
+would have overturned a standing finding that the work stream in question is cited nowhere.
+
+⭐⭐⭐ **Checked, and the sentence does not exist as written.** Searching for its distinctive fragments
+returned **nothing**. The excerpt had been **assembled across a line boundary** by the extraction itself:
+the words appear in the corpus, but not in that order and not as that statement.
+
+$$\boxed{\textbf{The search did not mislead about } \mathbf{how\ many}\textbf{. It produced } \mathbf{a\ sentence\ that\ was\ never\ written.}}$$
+
+### Why this direction is the most serious of the three
+
+**a. It fabricates evidence rather than miscounting it.** ⭐⭐ A wrong zero hides something; a wrong
+large number overstates something. **This produced a quotable claim with no source** — and quotable
+claims are what later work builds on.
+
+**b. Excerpt extraction is the routine tool.** ⚠️ Pulling short context windows around a match is the
+normal way to read a large corpus quickly. **The failure is therefore in everyday use, not in an exotic
+query.**
+
+**c. It was caught only by a follow-up search that happened to fail.** ⭐ The reviewer went looking for
+the sentence's neighbourhood and found nothing — **and only then realised the sentence was assembled, not
+found.** Nothing prompted that second search.
+
+**d. And the same probe carried a second confusion.** ⭐⭐ The identifier being searched for is **also
+used by a different work stream for its own numbered propositions**, so most of the matches were
+unrelated to the intended subject. *(That identifier collision is recorded separately.)*
+
+### What this changes about the candidate requirement
+
+⭐⭐ The direction in §5 above should cover a third case:
+
+> **A quoted excerpt should be verified as a contiguous match in the source before it is used as
+> evidence** — and a claim that rests on a quotation should cite where the quotation can be re-found.
+
+⛔ **No tool is proposed.** The check is: search for the quotation itself before relying on it.
+
+**Evidence:** `docs/knowledgeos/theory-extraction/95-P77-…` §12 — the assembled excerpt, the two
+follow-up searches that returned nothing, and the standing finding that consequently survives.
