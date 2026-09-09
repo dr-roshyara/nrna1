@@ -56,12 +56,15 @@ Truth(A,W)@025o	Accepted(A,K)@025o	NON-IMPLICATION	[DERIVED]	2026-08-28T09:42	02
 Knowledge@025o	GovernedAcceptance@025o	DEFINITION	[EMP]	2026-08-28T09:42	025o §25O.5	knowledge defined operationally and governance-relative, not as world truth
 Σ_v7@025k	Σ_v8@025o	SIGNATURE_CHANGE	[EMP]	2026-08-28T09:42	025k §25K.21 vs 025o §25O.33	4-tuple -> 6-tuple; +Freshness +Authority +Uncertainty; relation UNRESOLVED
 Knowledge=GovernedAcceptance@025o	EC/Ω arguments	DEPENDS_ON	[EMP]	2026-08-28T09:42	025o §25O.5,§25O.20	acceptance consumes governance criteria and a model - upstream of G-01/G-03 losses
-T:(K,E,Ω,EC)→K'@025k	δ(K_t,e_t)@276-final	DISJOINT	[EMP]	2026-08-30	citation sweep: 272a/272b/273/274/275/276/277 cite the 025 series 0 times; Ω 0; EC 0	REPLACES the [UNWITNESSED] RETYPE edge recorded in batch 003 - not a loss, two lineages
+T:(K,E,Ω,EC)→K'@025k	T-general/δ@step_251	CLASSIFIED-AS-SUB-FAMILY	[EXPLICIT]	2026-08-30T18:36	step_251 tables L52,L455: "025-series | Update(K_t,E_t,Ω,EC) | sub-family"; "025k | possible restricted transition | possible sub-family"; prose "narrower and more operational"	SUPERSEDES the DISJOINT edge asserted in batch 006 - WITHDRAWN as too-narrow a test
 274	273	INHERITS	[EXPLICIT]	2026-08-30T21:43	274 §274.1 "Use the result of Step 273 as the only authoritative candidate"	states its own inheritance; does not inherit from 025k
-LineageA(025)	LineageB(272a-277)	DISJOINT	[EMP]	2026-08-30	0 citations either direction	parallel development, no cross-reference
+LineageA(025)	LineageB(272a-277)	CITES	[EXPLICIT]	2026-08-30T18:36	step_251 cites the 025-series by name in two reconciliation tables	WITHDRAWS the DISJOINT claim; the chain is transitive through 243 intervening steps
 LineageA(025)	LineageC(math-lane 09-02)	DISJOINT	[EMP]	2026-09-02	09-02 docs cite 025 series 0 times and step_2xx 0 times	parallel development, no cross-reference
 LineageB(272a-277)	LineageC(math-lane 09-02)	DISJOINT	[EMP]	2026-09-02	09-02 docs cite step_2xx 0 times	parallel development, no cross-reference
 VectorAssessment>SingleConfidenceScore@025y	Zero-not-a-scalar@025d	CORROBORATION	[EMP]	2026-08-28T10:12	025y vs 025d §25D.17,§25D.32	third witness in Lineage A against collapsing assessment to one number
 ExpectedLoss=ΣP(s|E)L(a,s)@025r	Zero-not-a-scalar@025d	TENSION	[EMP]	2026-08-28T10:06	025r vs 025d	same lineage permits scalar loss over ACTIONS while refusing scalar collapse of an ASSESSMENT - recorded, not resolved
 TemporalKnowledge tri-temporal@025w	—	INTRODUCE	[EMP]	2026-08-28T10:11	025w	(ValidTime, RecordedTime, EpistemicStateTime)
 EpistemicConvergence@025x	Convergence≠Consensus@025l	REFINEMENT	[EMP]	2026-08-28T10:11	025x vs 025l §25L.17-18	EquivalentKnowledgeUnderEquivalentInputs; StorageConvergence ≠ EpistemicConvergence
+Ω=ontology@025k	Ω:W→O@step_251	COLLISION	[EMP]	2026-08-30T18:36	step_251 L616 Ω:W→O world-to-observation vs 025k Ω=domain ontology/rules	same lineage, same glyph, two meanings - G-10
+Ω,EC absent 252-270	Ω,EC present @step_282	RE-ENTRY?	[OPEN]	2026-08-31T00:19	mechanical sweep: step 282 Ω=2 EC=5	after 30 steps of absence - G-11
+steps 026-268	continuous numbered sequence	STRUCTURAL	[EMP]	2026-08-28/30	514 docs, 504447 lines between 025z and step_269	Lineages A and B are 243 steps apart, not adjacent

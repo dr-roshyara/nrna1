@@ -86,3 +86,79 @@ distinct versions.** The corrected finding is recorded in `04-THEORY-CHRONICLE.m
 three "transitions" are also non-transitions, and the correct records are `DISJOINT`, not
 `UNWITNESSED`. It is bounded — the test is a citation sweep, already demonstrated twice — and it is
 the precondition for every remaining lineage claim.
+
+
+---
+
+# ⛔⛔ G-03 — DISPOSITION **WITHDRAWN AND REPLACED** (2026-09-09, same session)
+
+My first disposition — `UNRELATED_REFORMULATION` — was **wrong**, and was reached by a test that was
+too narrow. It is withdrawn. The commission's instruction *"Do not prematurely close G-03"* was
+correct and I did not honour it the first time.
+
+## What went wrong
+
+I tested *"do `272a`–`277` cite the **025 series**?"*, found zero, and concluded the lineages were
+unrelated. **The test was too narrow in two ways:**
+
+1. **The chain is transitive.** `272a`–`277` cite `273`, which cites earlier steps. The corpus is a
+   *continuous numbered sequence* `001 → 281`; **514 documents / 504 447 lines sit between `025z`
+   and `step_269`**, and I had not surveyed them. Two documents 243 steps apart do not cite each
+   other directly — that is normal, not evidence of disjointness.
+2. **A direct citation does exist, one step outside my search window.**
+
+## The evidence that settles it
+
+A mechanical sweep of steps `026`–`268` for `Ω` and `EC` gives a clean boundary:
+
+```
+last document carrying BOTH:   step 251   (2026-08-30 18:36)   Ω=5  EC=3
+steps 252 … 270:                                               Ω=0  EC=0
+step 282:                                                      Ω=2  EC=5   (they REAPPEAR)
+```
+
+`step_251` — *"Full Historical Genealogy and Reconciliation of the Transition Model"* — **cites the
+025-series by name, twice, in two reconciliation tables**:
+
+```
+| 025-series | Update(K_t,E_t,Ω,EC) | epistemic/update | sub-family |
+| 025k       | Update(K,E,Ω,EC)     | epistemic/update | possible restricted transition | **possible sub-family** |
+```
+
+and in prose: *"The 025-series introduces forms such as `Update(K_t,E_t,Ω,EC)` … **which are narrower
+and more operational**."*
+
+The same tables list `δ : 𝒦 × ℰ ⇀ 𝒦` as a *"candidate refinement of `T`"* / *"compatible candidate"*,
+and the document's own mandate says competing signatures **must not be merged merely because they
+appear conceptually similar.**
+
+## Replacement disposition
+
+$$\boxed{\textbf{G-03} = \texttt{EXPLICIT\_TRANSITION} \;/\; \textbf{explicit classification as a restricted sub-family}}$$
+
+`Ω` and `EC` were neither *lost* nor *never inherited*. They are **parameters of a narrower,
+more operational transition form**, which `step_251` explicitly evaluated, named, and classified at
+a **different abstraction level** from the general `T`/`δ`. The corpus **declined to merge them, on
+purpose, and said so.**
+
+| candidate outcome | verdict |
+|---|---|
+| `LOSS_OF_ARGUMENT` | ✗ rejected — nothing was silently let go |
+| `UNRELATED_REFORMULATION` | ✗ **withdrawn — my own earlier, wrong answer** |
+| `UNWITNESSED` | ✗ rejected — the link is explicit and quotable |
+| **`EXPLICIT_TRANSITION` (sub-family classification)** | ⭐ **SELECTED** |
+
+**Evidence class: `EXPLICIT`** — quoted from source, not reconstructed.
+
+## Knock-on: batch 006's "three parallel lineages" is also withdrawn for A↔B
+
+Batch 006 recorded Lineages A, B, C as pairwise `DISJOINT` on citation grounds. **A↔B is now
+refuted**: `step_251` cites the 025-series explicitly. The `DISJOINT` edge is replaced by
+`CITES / CLASSIFIES-AS-SUB-FAMILY`. **A↔C and B↔C remain open** pending the four evidence workers.
+
+## New gap
+
+| ID | question | status |
+|---|---|---|
+| **G-10** | ⛔ `Ω` has **two meanings**: domain ontology/rules (`025k`) and `Ω : W → O`, a world→observation function (`step_251` line 616). Same lineage, same glyph. | **OPEN** — new collision, register it |
+| **G-11** | `Ω` and `EC` **reappear at step 282** (Ω=2, EC=5) after 30 steps of absence. Re-entry, or a third meaning? | **OPEN** |

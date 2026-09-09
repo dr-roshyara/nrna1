@@ -659,3 +659,84 @@ open_gaps: [G-01, G-02, G-04(deferred by method), G-05, G-06, G-07, G-08, G-09, 
 closed_gaps: [G-03 = UNRELATED_REFORMULATION]
 resumption: from disk; artifacts 04/05/06/07 carry all state
 ```
+
+---
+
+# CHECKPOINT 007 — 2026-09-09 · subagent architecture adopted; **two of my own claims withdrawn**
+
+## Architecture
+
+Controlled subagent model adopted. Main process retains sole authority over `TheoryState`, the
+Definition Registry, the Lineage Graph and the Gap Register. Four bounded evidence workers launched
+for `G-08` (Lineage A / Lineage B / Lineage C / cross-lineage links), each carrying the 3MC firewall
+explicitly and each instructed to return evidence packets and **not** to adjudicate. **Results not
+yet returned.** Chronology continued in parallel, in a window the workers are not touching.
+
+## ⛔ STRUCTURAL FACT I DID NOT HAVE
+
+Between `025z` (08-28 10:13) and `step_269` (08-30 20:28) there are **514 documents / 504 447
+lines**, forming a **continuous numbered step sequence `026 … 268`**. Lineage A and Lineage B are
+**243 steps apart, not adjacent.** This corpus region was unsurveyed by every prior artifact in
+this programme.
+
+## ⛔⛔ WITHDRAWAL 1 — `G-03`'s disposition
+
+Checkpoint 006 disposed `G-03` as `UNRELATED_REFORMULATION` on the grounds that `272a`–`277` cite
+the 025 series zero times. **That test was too narrow.** The chain is transitive across 243 steps,
+and a direct citation exists one step outside my search window.
+
+A mechanical `Ω`/`EC` sweep over steps `026`–`268` gives a clean boundary — last carrier
+**`step_251`** (08-30 18:36, `Ω=5 EC=3`), zero through `252`–`270`, **reappearing at `step_282`**.
+`step_251` is *"Full Historical Genealogy and Reconciliation of the Transition Model"*, and it
+**cites the 025-series by name in two reconciliation tables**, classifying `Update(K_t,E_t,Ω,EC)`
+as a *"sub-family"* / *"possible restricted transition"*, *"narrower and more operational"* than the
+general `T`.
+
+**Replacement disposition: `EXPLICIT_TRANSITION` — explicit classification as a restricted
+sub-family.** `Ω` and `EC` are parameters of a narrower operational form that the corpus evaluated,
+named, and **deliberately declined to merge** with the general `T`/`δ`. Evidence class `EXPLICIT`.
+
+## ⛔⛔ WITHDRAWAL 2 — batch 006's "three parallel lineages", for A↔B
+
+The `DISJOINT` edge between Lineage A and Lineage B is **refuted by the same evidence** and replaced
+by `CITES / CLASSIFIED-AS-SUB-FAMILY`. **A↔C and B↔C remain open** pending the workers.
+
+## Standing record of my error rate on this question
+
+| claim | fate |
+|---|---|
+| batch 003: *"the semantics-bearing argument always disappears"* | **withdrawn** (checkpoint 006) |
+| checkpoint 006: `G-03 = UNRELATED_REFORMULATION` | **withdrawn** (this checkpoint) |
+| checkpoint 006: Lineages A/B/C pairwise `DISJOINT` | **withdrawn for A↔B**; A↔C, B↔C open |
+| the three signature differences themselves | **stand** — registered as distinct versions throughout |
+
+The underlying facts have been stable at every step; **the causal story I put on them has been wrong
+twice.** The corrective in both cases was a broader mechanical sweep, not more reading of the same
+documents. Recorded here so the pattern is visible rather than buried.
+
+## New gaps
+
+| ID | question |
+|---|---|
+| **G-10** | `Ω` has two meanings in one lineage — domain ontology (`025k`) vs `Ω : W → O` world→observation (`step_251` L616) |
+| **G-11** | `Ω` and `EC` reappear at `step_282` after 30 steps of absence — re-entry or a third meaning? |
+| **G-12** | ⛔ **514 documents (steps `026`–`268`) are entirely unread.** Every lineage claim spanning 08-28 → 08-30 rests on a corpus region no artifact in this programme has examined. |
+
+**`G-12` is now the largest structural risk in the reconstruction** and supersedes `G-08` in
+priority: `G-08` asks whether three lineages share an ancestor, but 243 unread steps sit inside the
+interval the question ranges over.
+
+## Read-state
+
+`READ-COMPLETE` 29 · `READ-SUBSTANTIAL` 1 · `READ-PARTIAL` 2 · `READ-STRUCTURAL` 20 ·
+`READ-TARGETED` 3 (`274`, `275`, `step_251`) · **`NOT-READ` 514 in the newly-surveyed window.**
+
+## Resumption
+
+```yaml
+checkpoint: 007
+pending: four G-08 evidence workers (results not yet returned)
+primary_gap: G-12   # 514 unread documents inside the interval every lineage claim spans
+next_chronological: step-026 (2026-08-28 10:14) — the head of the unread window
+resumption: from disk; artifacts 04/05/06/07 carry all state
+```
