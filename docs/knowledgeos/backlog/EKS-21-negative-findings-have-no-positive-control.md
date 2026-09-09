@@ -135,3 +135,54 @@ stream, that a discipline requiring someone to remember to add a control is not 
 capability-identity-completeness-adjudication/01_md046-search-completeness-audit.md` (the check and
 its finding) · `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/MD-046-
 capability-identity-granularity-adjudication/01_evidence-census.md` (the original claim, not modified).
+
+---
+
+## Extension, 2026-09-09 — the same fault also runs the other way, and that direction is worse
+
+⭐⭐ **The item above describes a search that wrongly reports *nothing*. A second live instance shows the
+identical fault producing the opposite error: a search that wrongly reports *a great deal*.**
+
+A review searching for how much of the estate discusses a particular technical assumption got back
+**522 documents**. That number was implausible on its face, so it was checked. The search pattern had
+been written loosely, and it was matching the letters of an abbreviation **inside unrelated ordinary
+words**. The real matches, once extracted:
+
+| what the search reported | what was actually there |
+|---|---|
+| ⭐⭐⭐ **522 documents** | a security acronym (7), the word *"toward"* (4), and two forms of *"knowable"* (2) |
+
+$$\boxed{\textbf{The finding } \mathbf{"522\ documents\ discuss\ this\ assumption"} \textbf{ was about to be published. } \mathbf{The\ true\ figure\ is\ effectively\ zero.}}$$
+
+### ⭐⭐⭐ Why this direction is worse than the first
+
+**a. A false negative hides a finding. A false positive *manufactures* one.** With a wrong zero, work
+gets redone. **With a wrong large number, a conclusion is asserted that the evidence does not support at
+all** — and it will be cited.
+
+**b. Large numbers are persuasive.** ⭐ A reader challenges *"we found nothing"* far more readily than
+*"we found 522 documents"*. **The error that survives scrutiny is the one that looks like strong
+evidence.**
+
+**c. The remedy in §5 above does not catch it.** ⚠️ A positive control confirms the search *can* find
+things — and a false positive already finds things. ⭐⭐ **Catching this direction needs the opposite
+check: when a count is surprisingly high, look at what actually matched.** Both checks are cheap; **the
+item above only asked for one of them.**
+
+**d. It was caught by luck again.** The number simply looked wrong to the person reading it. ⭐ **Nothing
+in the process would have flagged it**, and a slightly less implausible figure — 40 rather than 522 —
+would have passed unexamined.
+
+### What this changes about the candidate requirement
+
+⭐⭐ The direction in §5 should be read as covering **both** failures, not only absence:
+
+> **A published count — zero or large — should carry evidence that the search measured what it claims
+> to measure: for a zero, that the search could have found the thing; for a large number, what the
+> matches actually are.**
+
+⛔ **No tool or format is proposed, and no past count is called into question except the one recorded
+here.**
+
+**Evidence:** `docs/knowledgeos/theory-extraction/85-P67-…` §3 — the 522, the four real matches, and the
+corrected counts published in its place.
