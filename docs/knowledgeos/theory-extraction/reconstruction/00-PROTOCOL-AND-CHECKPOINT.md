@@ -1,0 +1,252 @@
+# KnowledgeOS Chronological Theory Reconstruction — PROTOCOL v1 + CHECKPOINT 001
+
+**Commission:** reconstruct the evolution of KnowledgeOS as a theory over time; derive
+topic lineages and current state only afterward.
+**Discipline:** `READ → EXTRACT → CLASSIFY → CONNECT → SNAPSHOT → SYNTHESIZE`.
+**Never:** `CURRENT THEORY → SEARCH BACKWARD FOR SUPPORT`.
+
+`|K| = 11 · [REC] · UNFROZEN`. This artifact selects, ratifies, repairs and merges nothing.
+
+---
+
+## 0. Disagreements recorded before execution (settled by measurement, not opinion)
+
+### 0.1 ⛔ The queue cannot deliver corpus-wide coverage — 64.8% of it is firewalled
+
+| | count | share |
+|---|---:|---:|
+| queue entries | **5 998** | 100% |
+| `three_model_convergence/` — **FIREWALLED, never opened** | **3 887** | **64.8%** |
+| readable entries | 2 111 | 35.2% |
+| …of which exist on disk | **2 099** | |
+| …missing | 12 | |
+
+**"Corpus-wide" in this programme means 2 111 entries, not 5 998.** The 3 887 receive the
+disposition `FIREWALLED` and can never become evidence. §22's completion criterion is
+achievable only over the readable universe, and must say so.
+
+### 0.2 ⛔ Reading everything completely does not fit one session
+
+38 MB · 1 698 145 lines · **~9.5M tokens** of readable source, against a ~15M budget — before
+extraction, events, graph and snapshots, which cost more than the reading. Exact deduplication
+saves ~5% (106 groups, 239 files); strict prefix-duplication saves ~0.2% (3 pairs). **There is no
+compression trick available.** This is a multi-session programme; completion is not claimed, and
+resumption is from disk, never from memory.
+
+### 0.3 ⛔ §12 (strict top-to-bottom) contradicts §2 (ordering hierarchy)
+
+`P-96` proved the case: `272a`/`272b` were **written** after `273`–`281` but belong **before**
+`273`, and `step_280 §50` says so itself. Measured at corpus scale:
+
+$$\boxed{\textbf{1 509 of 9 829 symbols (15.4\%) have a DIFFERENT birth document under argument order than under mtime order.}}$$
+
+**Resolution adopted, consistent with §2:** separate the two orders explicitly.
+
+| | key | governs |
+|---|---|---|
+| **ingestion order** | queue position | what is read next |
+| **argument order** | `order_key` (§2 hierarchy) | the graph, birth points, and §12 Step E's "preceding theory state" |
+
+§12 Step E compares against the **argument-order** predecessor. Comparing against the queue
+predecessor would manufacture false Theory Events.
+
+**Also measured:** only **524 of 2 099 files (25%)** carry a step number, so §2's top-ranked key is
+unavailable for three-quarters of the corpus. Realised distribution of ordering evidence:
+
+```
+1-step                 511      2-internal-timestamp   170
+3-filename-datestamp   933      4-queue-position       485
+```
+
+Every record states which key it used (`order_evidence`). **mtime is never silently promoted to
+theory chronology.**
+
+### 0.4 §4's `theory_bearing` gate cannot be set without reading
+
+Replaced by an **auditable mechanical triage** that errs toward reading and excludes nothing
+silently: `YES` 1 720 · `LIKELY` 265 · `REVIEW` 98 · `NO-EMPTY` 16. Only genuinely empty files are
+excluded. The seven triage signals and each file's score are stored, so any decision is reversible.
+
+### 0.5 §11's lane separation must not block the commission↔execution PAIRING
+
+`P-96` established that `phase_measure_theory/` holds **commissions** and
+`verification/step-NNN/` holds **executions** — and I misread a step as unexecuted before catching
+it. The bridge is explicit (step number + the commission/execution relation), so it is declared as
+a **pairing, not a merge**: lanes stay distinct, but **no step is ever assessed from its commission
+alone.**
+
+---
+
+## 1. ⛔ THE ENGINE'S OWN LIMITATION — read this before using any output
+
+The mechanical index records **TOKEN birth, not OBJECT birth.**
+
+Worked example, caught this session. The index reports:
+
+```
+Adequacy   birth step=259  2026-08-30T19:20     (P-96 recorded 276-final §276.7, 21:59)
+Standing   birth step=162  2026-08-29T01:15     (P-96 recorded 272b §272A.12, 08-30 22:50)
+```
+
+Both looked like refutations of `P-96`. **Both are false positives**, confirmed against source:
+
+```
+step_259 line 64:   \text{Adequacy of }K        prose inside a math block, not an object
+step_162 line 796:  Authority/Standing          authority-standing, a different sense entirely
+```
+
+**`P-96`'s birth points stand.** `Contr` shows the same effect inversely: the index dates the
+**symbol** `Contr` to 2026-09-02, while `P-96` dated the **object** to `272b` (08-30), which writes
+it `Conflict` — and `Conflict` the token is born at step 001. Symbol and object are different
+things, exactly as §8 warns.
+
+$$\boxed{\text{Every mechanical birth point is a CANDIDATE requiring source verification. It is evidence to read, never a verdict.}}$$
+
+Known recall limits, stated so they are not mistaken for absence:
+- only `$$…$$` display math is scanned; inline `$…$` and prose definitions are not;
+- subscripts longer than 12 characters are dropped (`R_mandatory` is under-counted — 1 doc, though
+  `P-96` read it in `277.30`);
+- **a zero in this index measures the extractor's scope, never the corpus.**
+
+---
+
+## 2. What is built (durable, on disk, re-runnable)
+
+| layer | artifact | content |
+|---|---|---|
+| **1** | `census.py` → `01-CORPUS-CENSUS.tsv`, `01-CENSUS-SUMMARY.json` | 5 998 records: id, path, lane, firewall flag, hash, bytes, lines, mtime, filename datestamp, step, **step series**, `order_key` + `order_evidence`, duplicate group, triage score, read status |
+| **2** | `extract.py` → `02-DOC-RECORDS.jsonl` (8.6 MB), `02-SYMBOL-INDEX.jsonl` (43 MB) | 2 083 documents: headings, definitions, display math, status tokens, supersession lines, step/section citations, discovered symbols. **14 586 symbols, discovered not supplied** |
+| **3** | `timeline.py` → `03-BIRTH-POINTS.tsv`, `03-THEORY-TIMELINE.tsv`, `03-FORM-CHANGES.jsonl` | 9 829 birth points · 2 083 documents in argument order with what each first introduces · **819 symbols carrying ≥2 distinct shapes** |
+
+**None of this required reading the corpus into context.** It is Layer 2's mechanical half,
+executed over the whole readable universe, and it is what makes the semantic pass affordable.
+
+### 2.1 Mechanical type-change detection (§8), operationalised
+
+`03-FORM-CHANGES.jsonl` normalises each symbol's usage into shapes —
+`SIG:<dom>-><cod>` · `APP/<n>` · `TUPLE/<n>` · `SET` · `ELEM:<container>` · `SUBSET:` · `CONG:` ·
+`EQ` — and emits the ordered sequence. **819 symbols change shape at least once.** That is the
+reading queue for §8, ranked by evidence rather than by guess.
+
+### 2.2 Defects found in my own engine and fixed before any output was used
+
+1. **Body step-numbers overrode filename step-numbers** — `step_286_…` was recorded as step 1,
+   collapsing the ordering key so that nearly every symbol's "first" document was the same file.
+   Filename is now authoritative; a body step is accepted only as the document's first heading.
+2. **Separate step SERIES were being ordered against each other** — `evidence-algebra-step-01` is
+   not `step_001`. Series are now captured and only the main series may use the step key. Five
+   non-main series found: `REFINED` (9), `evidence-algebra`, `10-GOVERNANCE-HANDOFF`, `12-FINAL`,
+   `05-ADDENDUM`.
+3. **LaTeX control words were counted as symbols** (`boxed` in 1 144 documents, `neq` in 958).
+   Stripped; 15 395 → 14 586 symbols.
+4. **Over-escaped regex** meant fix 3 silently did nothing on first application. Caught by
+   re-inspecting output rather than trusting the patch.
+
+---
+
+## 3. First result from the timeline — the corpus does not begin where I assumed
+
+Argument-order sequence 1–21, mechanically derived:
+
+| seq | step | mtime | document | first introduces |
+|---|---|---|---|---|
+| 1 | 001 | 08-27 14:06 | operational-independence | `Independence`, `Dependent`, `Independent`, `Unknown`, `Source`, `Confirmed` |
+| 3 | 002 | 08-27 14:09 | two-evidence-items-the-same | `Equivalence`, `CommonSource`, `CommonCause`, `Hash`, `G_E` |
+| 4 | 003 | 08-27 14:11 | evidence-assessment-algebra | `Agg`, `Aggregation`, `Relevance`, `Support`, `Truth`, `Ctx` |
+| 6 | 005 | 08-27 14:23 | the-mathematical-object-being-aggregated | `Bel`, `Pl`, `Pr`, `Acceptance`, `Polarity`, `Proposition` |
+| 7 | **006** | 08-27 14:25 | information-gain-and-value-of-evidence | **`K_t`**, `I_t`, `Q_t`, `S_t`, `VOE`, `EDR` |
+| 8 | **007** | 08-27 14:27 | how-does-new-evidence-change-the-knowledge-state | **`K`**, `K_0`, `H_t`, `Qualify`, `Retract`, `Superseded` |
+| 9 | 008 | 08-27 15:19 | epistemic-acceptance-and-commitment | `Supported`, `Committed`, `Accept`, `SupportStatus`, `ContestStatus` |
+| 10 | 009 | 08-27 15:20 | contradiction-paraconsistency-and-belief-revision | **`Four`, `valued`, `status`**, `Revise`, `P_old`, `P_new` |
+| 14 | **023** | 08-27 16:25 | epistemic-sufficiency-readiness-completeness | **`Sat`**, **`Requirements`** (via seq-14 sibling step-013 `Satisfies`, `Sufficiency`, `Ready`) |
+
+Four things follow immediately, each `[EMP]` and each contradicting an assumption I was carrying:
+
+1. **The corpus begins with evidence independence, not with knowledge.** Step 001 is
+   `operational-independence`; `K` does not exist for another five steps.
+2. ⭐ **`K_t` (step 006) is born BEFORE `K` (step 007).** The time-indexed state precedes the state.
+3. ⭐ **A four-valued status appears at step 009, 2026-08-27** — *three days* before `272b` derives
+   `Σ₀ ≅ {0,1}²` on 08-30. `P-96` treated `272b` as the origin of the four-state structure. **It is
+   not the origin; it is a re-derivation.** Whether `272b` knew of step 009 is `[OPEN]` and is now
+   a specific, answerable question.
+4. ⭐ **`Sat` is born at step 023, 2026-08-27 16:25, in `phase_measure_theory/`** — not in the
+   09-02 `mathematical_ideas` lane where every prior audit met it. Its birth document is
+   `epistemic-sufficiency-readiness-completeness-and-the-knowledge-boundary`, and it is born
+   **together with `Requirements`** in the same document. Six days earlier than assumed, in a
+   different lane.
+
+**Duplicate detection works in the timeline:** seq 15 and 19 are `-duplicate` files, introducing
+zero symbols — visible without being read.
+
+---
+
+## 4. CHECKPOINT 001 (§21)
+
+```yaml
+checkpoint: 001
+date: 2026-09-09
+layers_built: [1, 2-mechanical, 3-spine]
+layers_not_built: [2-semantic, theory-events, snapshots, current-state]
+
+corpus:
+  queue_entries: 5998
+  firewalled_3mc: 3887          # dispositioned FIREWALLED, never opened
+  readable_existing: 2099
+  readable_missing: 12
+  bytes: 39946455
+  lines: 1698145
+  est_tokens: ~9.5M
+
+read_status_counts:
+  READ-COMPLETE: 20             # from P-95/P-96, queue lines 852-872
+  MECHANICAL-ONLY: 2083
+  FIREWALLED: 3887
+  MISSING: 12
+  NOT-READ-SEMANTIC: 2063
+
+derived:
+  symbols_discovered: 14586
+  symbols_with_birth_point: 9829
+  birth_differs_by_ordering_key: 1509      # 15.4%
+  symbols_with_2plus_shapes: 819           # the §8 reading queue
+  duplicate_groups: 106
+  files_in_duplicate_groups: 239
+
+next_queue_entry_semantic: Q00495   # step-001-operational-independence (argument order seq 1)
+resumption: from disk only; no memory dependency
+```
+
+### 4.1 Artifact policy
+
+`02-DOC-RECORDS.jsonl` (8.6 MB) and `02-SYMBOL-INDEX.jsonl` (43 MB) are **derived and
+regenerable** — `python3 census.py && python3 extract.py && python3 timeline.py` reproduces every
+output deterministically from the corpus. They are therefore **not committed**; the scripts and the
+small derived tables are. Anyone can rebuild them in about a minute.
+
+### 4.2 Hard stops observed
+
+Nothing was defined, repaired, chosen, ratified, selected, merged or collapsed. No branch was
+resolved. 3MC was counted and never opened. No derivation was inferred from chronology. No object
+identity was inferred from notation — §1 exists precisely to prevent that.
+
+---
+
+## 5. Next research action (one only, per §23.J)
+
+$$\boxed{\textbf{Read }\texttt{step-023}\textbf{ (2026-08-27 16:25) completely — the joint birth document of } Sat \textbf{ and } Requirements.}$$
+
+`docs/knowledgeos/brainstorming/phase_measure_theory/20260827-162545_step-023-epistemic-sufficiency-readiness-completeness-and-the-knowledge-boundary.md`
+
+**Why this one, ahead of resuming at argument-order sequence 1.** Every prior audit in this
+programme — `P-87` through `P-96` — met `Sat` and the requirement basis in the 2026-09-02
+`mathematical_ideas` lane and reconstructed their lineage from there. The mechanical index now
+places the birth of **both** six days earlier, in a different lane, **in a single document**. If
+that holds on reading, the `ℛ_req` lineage `P-96` traced from `270.22` forward has an earlier root
+than any artifact in this programme has examined, and `Requirements(K)` at `276-final` §276.1 is a
+**re-entry, not an origin**.
+
+It is one document, it is decisive for the programme's most-worked question, and it is a
+verification of a mechanical candidate — exactly the discipline §1 requires.
+
+Then resume the semantic pass at argument-order sequence 1 (`Q00495`, `step-001`), carrying the
+`FORM-CHANGES` queue as the priority list within each batch.

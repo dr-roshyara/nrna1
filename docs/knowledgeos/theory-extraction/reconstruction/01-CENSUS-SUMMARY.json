@@ -1,0 +1,35 @@
+{
+  "distinct_hashes": 1966,
+  "duplicate_groups": 106,
+  "files_in_duplicate_groups": 239,
+  "firewalled_3mc": 3887,
+  "lanes": {
+    "(root)": 113,
+    "_misc": 7,
+    "classification": 2,
+    "corpus": 2,
+    "falsification": 4,
+    "kernel": 181,
+    "mathematical_ideas_that_can_be_implemented": 411,
+    "phase_measure_theory": 891,
+    "synthesis": 8,
+    "verification": 480
+  },
+  "order_evidence": {
+    "1-step": 511,
+    "2-internal-timestamp": 170,
+    "3-filename-datestamp": 933,
+    "4-queue-position": 485
+  },
+  "queue_entries": 5998,
+  "readable_existing": 2099,
+  "readable_missing": 12,
+  "theory_bearing": {
+    "LIKELY": 265,
+    "NO-EMPTY": 16,
+    "REVIEW": 98,
+    "YES": 1720
+  },
+  "total_bytes": 39946455,
+  "total_lines": 1698145
+}

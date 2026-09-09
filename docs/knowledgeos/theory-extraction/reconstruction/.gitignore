@@ -1,0 +1,4 @@
+# Derived, regenerable, large. Rebuild with:
+#   python3 census.py && python3 extract.py && python3 timeline.py
+02-DOC-RECORDS.jsonl
+02-SYMBOL-INDEX.jsonl
