@@ -92,3 +92,51 @@ a false equivalence there would propagate into any subsequent claim built on it.
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed and no work is commissioned.**
+
+---
+
+## ⚠️ Provenance correction, same day — this was already recorded, and more broadly
+
+⭐⭐⭐ **This item was filed as a new discovery. It is not one.** A complete reading of the verification
+lane's state-and-transition register — performed within an hour of filing, under a strengthened rule
+requiring forward documents to be read **in full** rather than searched — found the problem already
+recorded there, in a numbered list of contradictions, dated **2026-08-29**:
+
+> **"Systematic glyph collisions"** — with the offending symbols enumerated, including **the transition
+> symbol used for both a state transition and a decision function**, a provenance symbol also used for a
+> process, and a witness symbol also used for a world state.
+
+⭐⭐ **So the estate had not only noticed the class of problem; it had catalogued the specific symbols,
+one of which is the very symbol this item was filed about.**
+
+### Why the item still stands, and what changes
+
+⛔ **The item is not withdrawn.** Its substance was never *"this can happen"* — it is that **a symbol
+inside a formula cannot be disambiguated the way a word can**, and that a cross-stream comparison is
+where the collapse occurs. ⭐⭐⭐ **The estate's record makes that case stronger, not weaker:** the
+collisions were catalogued eleven days ago, **and nothing has been done about them**, which is exactly
+what an item on this list is for.
+
+⚠️ **What does change:**
+
+**a. The count is larger than filed.** ⭐ This item described **one** symbol shared by two streams. The
+register lists **nine** collision families, several with three or more meanings each.
+
+**b. The framing was too narrow.** ⭐⭐ Filed as *"two work streams share one symbol."* The record shows
+**collisions internal to single documents** as well — a symbol carrying two meanings in the same file.
+
+**c. And the register carries the remedy this item asked for.** ⭐⭐⭐ Its closing note observes that
+because the source documents have a three-layer structure — **definition, then rebuttal, then revision**
+— any consolidated record must carry **per-claim layer provenance**, because *"a claim's status depends
+on which layer asserts it."* **That is a sharper statement of the requirement in §4 above than §4
+manages.**
+
+### The filing error itself
+
+⭐ Filed as novel while the evidence sat in a 136-line register the filer had already searched twice —
+⛔ **but had never read completely.** ⚠️ **That is the failure the strengthened reading rule exists to
+prevent, and it happened once more before the rule was applied.** Recorded here rather than on a
+separate item.
+
+**Evidence:** `docs/knowledgeos/theory-extraction/96-P78-…` · the state-and-transition register's
+contradiction list, item on glyph collisions, and its closing note on layer provenance.

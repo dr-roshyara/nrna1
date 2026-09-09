@@ -873,6 +873,16 @@ neighbourhoods — **follow the object and the proposition, not the word.**
 `REVISION` · `RESPONSE` · `PROMPT/RESPONSE PAIR` · `NEW INVESTIGATION` · `PARALLEL THREAD` ·
 `UNRELATED`. ⛔ **Multiple files are not multiple observations merely because their timestamps differ.**
 
+**§11a LAYER PROVENANCE — a required field (adopted 2026-09-09 from the estate's own `A3W` register).**
+Source documents in this corpus are frequently **three-layer**: *original definition → reviewer critique
+rejecting parts of it → (sometimes) a revised definition*. ⛔ **Some have no revised layer, so their
+critiques stand unresolved against their own bodies — and downstream files have cited the unrevised body
+as authoritative.** ⭐⭐⭐ **A claim's status therefore depends on WHICH LAYER asserts it**, and every
+provenance record must carry `layer_provenance` per claim. ⚠️ **`P-74` committed this error**: it quoted
+a document's definition layer as a clean *"signature layer"* while that document's rebuttal layer
+recorded six internal contradictions. ⛔ **Never quote a definition without checking whether a later
+layer of the same document rejects it.**
+
 **§11 Provenance record:** `thread_id · thread_start · thread_end · files_examined · files_not_examined ·
 timestamp_coverage · chronological_order · discovery_signal · topic_identity · provenance_relationship ·
 information_flow · key_claims · derivation_location · corrections · refutations · final_disposition ·
@@ -908,6 +918,35 @@ was found. **The objective is the thread's actual disposition.**
 `brainstorming/verification/` 9% · `reviews/` 4% · `reviews/kernel/` 0% *(sequence-named)* · `synthesis/`
 · top-level `verification/` and `research/` — **for those the analogue is the folder's own index plus its
 closing report** (`P-72`).
+
+**§2a COMPLETE READING OF THE FORWARD THREAD — MANDATORY (strengthened 2026-09-09, human research
+owner; this supersedes any weaker reading of §2).** A search hit is **only a discovery point**, and this
+applies to **every** discovery — a word, definition, concept, argument, question or number — ⛔ **not only
+to signals like *breakthrough*, *final* or *proof*.**
+
+```
+search hit → identify timestamp → follow subsequent documents chronologically
+→ READ THE CONTINUING THREAD COMPLETELY → stop only when the topic clearly changes
+```
+
+⭐⭐⭐ **MINIMUM REQUIREMENT: the following timestamped documents must be read COMPLETELY**, not grepped,
+skimmed, heading-extracted or range-sampled, **until the substantive thread ends or a clear topic
+transition occurs.** ⛔ **Never assume the first document containing a definition holds its final or best
+formulation.**
+
+**Watch for, specifically:** multiple arguments for the same definition · discussions and
+counterarguments · refinements and corrections · **rejected or replaced** definitions · later conclusions
+or decisions · **alternative formulations of the same idea.**
+
+**Record for every thread:** `start → continuation → arguments/corrections → conclusion or unresolved
+state`. ⭐ **The purpose is to reconstruct the actual development of the idea, never merely to find the
+first document that mentions it.**
+
+⚠️ **Honest standing caveat (self-assessed 2026-09-09):** Lane T's forward-reads through `P-77` were
+**partial** — grep, heading extraction and `sed` ranges, not complete reads. **`P-75`'s `VK-3` miss is
+the proof of the cost:** `161.3` and `161.55` were both read *in range* and their mutual contradiction
+was invisible, because ⛔ **a range read cannot see a conflict between two ranges.** ⭐ **Complete reading
+is the remedy, and partial reading must be declared as such whenever used.**
 
 **§1a CENSUS SUCCESS ≠ READING COMPLETENESS (added 2026-09-09, human research owner).** A correct census
 proves the *population and order* were established; it proves **nothing** about whether the documents
