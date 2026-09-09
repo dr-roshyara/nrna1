@@ -41,6 +41,7 @@ Backlog items for the EKS / KnowledgeOS platform. **A backlog item records a pro
 | [EKS-41](EKS-41-req-req-symbol-denotes-two-unrelated-formal-objects.md) | The symbol `ℛ_req` denotes two unrelated formal objects (a requirement set vs. a distinction-preservation universe) in two same-day math-lane threads that never cross-reference | BACKLOG · NOTATION COLLISION | operating-model problem (shared notation across work streams within one corpus) |
 | [EKS-42](EKS-42-two-documents-share-one-section-numbering-space.md) | Two different documents number their sections identically (`272A.1`…`272A.29`, same range end to end), so a citation of the form "see 272A.17" identifies two places with different content | BACKLOG · CITATION INTEGRITY | operating-model problem (whether a reference reaches a unique location) |
 | [EKS-43](EKS-43-a-sanskrit-word-and-a-core-formal-operator-share-one-name.md) | The three letters `Sat` name both the central satisfaction operator `Sat(K,r)` and the Sanskrit metaphysical term (`Sat`/`Asat`/`Mithya`), in two live lanes that never cross-reference | BACKLOG · NOTATION COLLISION | operating-model problem (a search for an operator returns two unrelated bodies of work) |
+| [EKS-46](EKS-46-a-qualified-result-becomes-an-unqualified-one-three-minutes-later.md) | A minimality result stated as holding *relative to a transformation set* is restated three minutes later as flatly "PROVEN", with an instruction not to reopen it; the qualification never returns | BACKLOG · CLAIM INTEGRITY | operating-model problem (scope conditions do not survive transmission between artifacts) |
 | [EKS-37](EKS-37-the-highest-leverage-item-is-typed-as-both-a-derivation-and-a-decision.md) | The programme's highest-leverage open item is described as a *derivation* by one authority and a *decision* by another, so nobody can be asked to do it | BACKLOG · WORK-ROUTING | operating-model problem (who owns a piece of work) |
 | [EKS-38](EKS-38-two-decision-registers-share-one-id-space.md) | Two separate registers of pending decisions use the same identifiers for different decisions, so an instruction to "enact N-4" has two possible meanings | BACKLOG · GOVERNANCE CORRECTNESS | operating-model problem (identification of pending decisions) |
 | [EKS-39](EKS-39-a-research-object-silently-changed-from-a-test-into-a-list.md) | A central research object silently changed from a *test* into a *list*, and the programme's current blocker is the direct consequence | BACKLOG · SEMANTIC DRIFT | operating-model problem (how a concept's type is allowed to change) |
@@ -344,3 +345,37 @@ register cites `M0132` freezing `Δ_t={r∈R_t:Sat(K_t,r)=0}`, ratifying `M0043`
 T5 cites `[00-47]`'s `[DEF-21]`, `Δ_t={r∈Req(EC_t):¬Sat(K_t,r)}` — the same underlying source, two
 independently-built reconstructions, two visibly different-looking formulas, never directly compared.
 Could be the same freeze paraphrased, or two distinct objects. See `EKS-45`.
+
+**EKS-46 added 2026-09-09** from the `G-18` provenance investigation. ⭐⭐ **A carefully qualified
+result becomes an unqualified one three minutes later, and the qualification never comes back.** At
+**19:24** an execution artifact reports the knowledge-state minimality result and states its scope
+exactly: *"The phrase MINIMAL KERNEL is therefore **earned** — but only in the sense step 254 names:
+`Minimality(K | 𝒯)`, **relative to the transformation set**."* At **19:27** — three minutes later —
+a second document restates it as *"the minimality claim … is **reported as PROVEN** by the executed
+programme"* and adds *"should **not reopen** the already-closed `K` problem."* ⛔ **The `| 𝒯`
+relativisation is gone**, and the instruction not to reopen closes the natural repair path.
+⚠️ **The condition was not a footnote — it was the part that made the claim true**: minimality
+*with respect to a declared operation set* is a real, checkable finding; unconditional minimality is
+a much larger assertion the underlying test does not support, so the second version is **not a
+simplification of the first but a different and stronger claim**, and everything downstream inherits
+it. ⛔ **Neither document is careless** — the 19:24 artifact states its scope precisely and the 19:27
+document is summarising upstream in good faith; **the defect lives entirely in the hand-off**, which
+is why no review of either document alone would catch it, and why search does not help (both
+documents return, nothing signals that one lost a condition). ⭐ Candidate direction: **carry the
+qualifier inside the notation** — write `Minimality(K | 𝒯)`, never "minimal", so the condition
+cannot be dropped without visibly changing the formula — and **require any "do not reopen"
+instruction to cite the artifact that closed the question**, so a reader can check what that artifact
+actually claimed. Checked against `EKS-40` (**closest, and genuinely different** — there two
+documents say **opposite** things and both are quotable; here they say the **same** thing at
+**different strengths**, so a contradiction-detector would not fire at all), the
+identifier-collision family `EKS-38`/`41`/`42`/`43` (this is not a collision: one claim, one
+meaning, one lost condition), and `EKS-35` (ordering, unrelated — both documents here are in the
+right order). **No existing item covers silent loss of a scope condition during transmission.**
+See `EKS-46`.
+
+**EKS-47 filed, 2026-09-09** (MD-073, Single-Case End-to-End Computation Attempt for `Sat(K,r,Γ)`): a
+narrow follow-on to `EKS-44` attempted to actually compute `Sat` for one real, well-evidenced
+requirement (`PaymentConfirmed(S)`) and found the block is corpus-wide, not local to one example:
+`Γ` has no definition anywhere (not even a schema); `EC` has a schema (Definition 2.20) but no
+instance for any real requirement; and corpus-wide greps confirm `EvalReq(`/`Det_r(` each occur in
+exactly one place — their own definitions — never invoked anywhere. See `EKS-47`.
