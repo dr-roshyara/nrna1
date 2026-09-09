@@ -5725,3 +5725,63 @@ reconciliation-and-gap-closure/` directory (5 files) plus this entry written.
 next research input, named, not authorized: an actual independent adversarial review of the
 Theory-00-21 `Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)` definition (GAP-004) — the one genuinely open
 blocker this whole reconstruction (MD-057–068) now converges on.
+
+---
+
+## MD-069 — Chronological Multi-Object Theory Reconstruction (TheoryState time series)
+
+**Authorization**: user's explicit mission to reconstruct the theory as a **co-evolving system**
+rather than independent per-object histories — the primary artifact is `TheoryState(t)`, a
+chronological time series in which each significant document updates multiple theory objects
+simultaneously, with typed transitions (`BIRTH`/`DEFINITION`/`REFINEMENT`/.../`GOVERNANCE_ADOPTION`),
+explicit cross-object provenance (`YES`/`RECONSTRUCTED`/`UNWITNESSED`), preserved branches, preserved
+negative evolution, and a dependency graph allowed to change shape over time — plus an explicit
+instruction to **reuse, not redo**, MD-057–068's own already-established facts.
+
+**Executed entirely from already-established evidence** — no source file re-read. Restructured
+MD-067's 876-record ledgers and Theory Evolution Graph, and MD-068's Definition Evolution Registry,
+Theory Object Registry, and Gap Register, into **24 derived turning points (T0–T23)**, each a
+`TheoryState` snapshot showing every object that changed together at that point.
+
+**Central structural finding**: two turning points dominate the whole 5-day arc. **T5** (2026-09-02,
+00:46, the canonical source, `[00-47]`) co-births `EC_t→Req(EC_t)→r→Sat(K_t,r)→Δ_t→Zero` as one
+connected structure in a single document — complete except for `Sat`'s own computed body. **T21**
+(2026-09-06, ~00:40, Theory-00-21 Part VI, `[05-41]`) — four days later, in a wholly separate
+re-derivation with no direct citation of `[00-47]` found — finally supplies that body:
+`Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)`. Between them lies a documented, honest five-day record of
+repeated attempts to fill exactly that gap, each self-falsified, demoted, or explicitly rejected and
+retired (T9's `Sat_c` CE-1 obstruction; T12's FOL-entailment `Sat`, born and retired within one
+research-session micro-cycle) — recorded as **Phase II** of a **5-phase derived narrative** (Conceptual
+Formation → Canonical Formalization and First Repair Attempts → Branching and Divergence →
+Re-derivation and Closure → Silence), explicitly replacing the mission's own unassumed 9-phase example
+list since the evidence does not support that many distinct phases for the tracked chain specifically.
+
+**Dependency graph shown to change shape three times** (not once): a fragmentary pre-canonical shape
+(T2/T3), the canonical `EC_t→Req→r→Sat→Δ_t→Zero` shape (T5, stable through T13), and a materially
+different Theory-00-21 shape (T18–T21) that inserts a new `Eval`/`EvalReq` stage between `r` and `Sat`,
+relocates `r`'s own acceptance-criterion field into `EC.Rules`, and — new — proves `Decision` is NOT
+directly determined by `Determination` alone (`[THM 16.38]`), a dependency Graph state 2 never tested.
+
+**Four branches confirmed to remain permanently distinct, none merged**: the canonical/Theory-00-21
+lineage; the ZeroLens branch (T11); the `ℛ_req`/ABK-1 branch (T14, the corpus's *only* governance-
+ratified apparatus in this entire graph, structurally unrelated to the tracked chain); the Zero-Algebra
+branch (T15/T17, one major hypothesis definitively falsified within its own scope).
+
+**Governance status answered directly and honestly** (per the mission's own required question): the
+canonical/Theory-00-21 chain — the object this whole reconstruction (MD-057–069) has tracked since its
+first phase — has received **no governance-adoption event of any kind**, anywhere in the 876-file
+traversal. Only the unrelated `ℛ_req`/ABK-1 branch was ever ratified.
+
+**No classification changed. No frozen artifact (MD-024–068) modified.** MD-057–068 preserved
+unchanged throughout — every finding above is a restructuring/re-derivation of already-cited evidence,
+never a new claim requiring new source reading. No canonical theory declared. No `Sat` declared solved.
+K-1/K2 untouched. MD-050 not reopened. `theory-extraction/` untouched.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-069-theory-state-time-
+series/` directory (5 files) plus this entry written.
+
+**MD-069 status: COMPLETE. HARD STOP** per the standing discipline. GAP-004 (MD-068) remains the sole
+genuine load-bearing blocker for the whole reconstruction, now further contextualized as the reason
+Phase V ("Silence," T23) is the terminal state of the tracked chain rather than a governance-ratified
+Phase VI.

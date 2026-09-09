@@ -1185,7 +1185,40 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-068 — Chronological Reconciliation and Gap-Closure Pass over
+**Status update, 2026-09-09 (latest): MD-069 — Chronological Multi-Object Theory Reconstruction
+(TheoryState time series) — EXECUTED, 24 derived turning points (T0–T23), HARD STOP.** User's new
+mission reframes the reconstruction around a shared `TheoryState(t)` time series — each document
+updates multiple co-evolving objects together, not independent per-object histories — with a large
+typed-transformation vocabulary, explicit cross-object provenance (`YES`/`RECONSTRUCTED`/
+`UNWITNESSED`), preserved branches and negative evolution, a dependency graph allowed to change shape
+over time, and an explicit instruction to reuse (not redo) MD-057–068. **Executed entirely from
+already-established evidence, no source file re-read**: restructured MD-067's 876-record ledgers/graph
+and MD-068's three registries into 24 turning points. **Central finding**: two turning points
+dominate — **T5** (Sep 2, 00:46, the canonical source) co-births the whole `EC_t→Req→r→Sat→Δ_t→Zero`
+chain in one document, complete except for `Sat`'s own computed body; **T21** (Sep 6, ~00:40,
+Theory-00-21 Part VI, no direct citation of T5's own source found) finally supplies it four days
+later, in a wholly separate re-derivation: `Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)`. Between them, a
+documented 5-day arc of repeated, honest, self-falsified or explicitly-retired attempts at exactly
+that gap (T9's CE-1 obstruction; T12's FOL-entailment `Sat`, born and retired within one session).
+**Derived a 5-phase narrative** (Conceptual Formation → Canonical Formalization and First Repair
+Attempts → Branching and Divergence → Re-derivation and Closure → Silence), explicitly not assuming
+the mission's own 9-phase example list — evidence supports only 5 distinct phases for this specific
+chain. **Dependency graph shown changing shape three times** (fragmentary pre-canonical → the
+canonical T5 shape, stable through T13 → Theory-00-21's materially different T18–T21 shape: new
+`Eval`/`EvalReq` stage inserted, `r`'s acceptance-criterion field relocated into `EC.Rules`, and
+`[THM 16.38]` proving `Decision` is NOT directly determined by `Determination` alone). **4 branches
+confirmed permanently distinct**: canonical/Theory-00-21; ZeroLens; `ℛ_req`/ABK-1 (the corpus's *only*
+governance-ratified apparatus in the whole graph, structurally unrelated to the tracked chain);
+Zero-Algebra (one hypothesis falsified within its own scope). **Governance status for the tracked
+chain itself answered directly**: no adoption event of any kind exists anywhere in the traversal — only
+the unrelated `ℛ_req`/ABK-1 branch was ever ratified. No frozen artifact modified — MD-057–068
+preserved unchanged throughout (restructuring, never new claims requiring new reading); no canonical
+theory declared; no `Sat` declared solved. Verified both consistency scripts `CONSISTENT`; firewalls
+held. **MD-069 status: COMPLETE. HARD STOP.** GAP-004 (MD-068) remains the sole genuine load-bearing
+blocker for the whole reconstruction, now further contextualized as the reason the tracked chain's own
+terminal state (Phase V, "Silence," T23) is silence rather than governance-ratified closure.
+
+**Status update, 2026-09-09 (earlier): MD-068 — Chronological Reconciliation and Gap-Closure Pass over
 MD-067's own 876-record evidence — EXECUTED, 4/5 gaps closed/characterized, GAP-004 named as the sole
 remaining blocker, HARD STOP.** User changed the operating model: MD-067's traversal is valuable
 evidence, not the end of the reconstruction — commissioned a pass building a versioned Definition
