@@ -1185,7 +1185,31 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-046 — Capability Identity / Granularity Evidence
+**Status update, 2026-09-09 (latest): MD-047 — Capability Identity Evidence Completeness / Boundary
+Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-048 opened.** Bounded
+completeness/admissibility audit of MD-046's own negative finding, not a new search or construction.
+**Verification performed first**: re-ran MD-046's central "zero hits" claim with an unfiltered
+positive control (per `EKS-21`'s own documented pattern) — confirmed search paths/tooling live,
+surfaced one genuine, material correction ("Challenge" appears in `brainstorming/kernel/` alongside
+`reviews/kernel/`'s own aggregate-member vocabulary, but confirmed a noun/domain-event homonym, never
+a verb/capability — strengthening rather than overturning MD-046). **Evidence-landscape boundary
+matrix** (12 rows): every admissible landscape SEARCHED or SEARCHED/NO RELEVANT EVIDENCE; every
+excluded landscape already governed by an explicit prior decision — no "admissible but omitted"
+landscape found. **Five-question further-search test applied to every excluded landscape: none
+passed.** **Final classification: B — admissible-corpus absence established, wider corpus
+unresolved.** Six required answers given; smallest next question named as a governance question
+(reconsider admission of an excluded landscape, or treat the absence as final pending a separately-
+authorized foundational programme) — not a search question. **No backlog ticket** — the positive-
+control gap recorded as a third corroborating instance on the existing `EKS-21`. No classification
+changed; no frozen artifact modified; no source file modified anywhere; `classification-register.tsv`
+untouched; no capability criterion invented; no vocabulary merged; no candidate promoted; K-1/K2/
+GA-001/GA-038 untouched; no Stage 07. Verified both consistency scripts `CONSISTENT`. **Statement, per
+the governing prompt's own final rule**: the corpus does not currently supply the semantic foundation
+required to make MinKer operational without introducing a new research-level modelling decision —
+awaiting human direction on whether to authorize a new foundational research programme, a narrow
+admissibility decision, or neither.
+
+**Status update, 2026-09-09 (earlier): MD-046 — Capability Identity / Granularity Evidence
 Adjudication — EXECUTED. HARD STOP per explicit user instruction — no MD-047 opened.** Evidence
 census continuing from MD-045's own hard stop — determined whether the corpus already contains a
 capability-identity criterion, explicitly prohibited from defining one. Searched `reviews/kernel/`

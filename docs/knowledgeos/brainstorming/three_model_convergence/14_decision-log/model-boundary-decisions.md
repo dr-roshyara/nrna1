@@ -4205,3 +4205,66 @@ candidate promoted to canonical status. No K-1/K2 change. No Stage 07.**
 decision-log entry and the `EKS-23` backlog files written.
 
 **MD-046 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-047 opened.**
+
+---
+
+## MD-047 — Capability Identity Evidence Completeness / Boundary Adjudication (EXECUTED, 2026-09-09)
+
+**Authorization**: user agreed with MD-046's Classification C and hard stop, but flagged that its own
+proposed next question ("does any evidence exist... including material not yet searched") was too
+open-ended and risked an unbounded MD-047/048/049 search sequence. Authorized a bounded completeness/
+admissibility audit instead — not a new search, not a new construction.
+
+**Verification performed first**: per `EKS-21`'s own already-documented pattern (a negative finding
+with no positive control), MD-046's central "zero hits for the 13 MinKer capability names in kernel-
+capability context" claim was independently re-run, directly, with an unfiltered positive control.
+Confirmed the search paths and tooling were genuinely live (117 files matched a known-present control
+term in the same locations). Manual inspection of the four highest unfiltered counts (`Determine`,
+`Validate`, `Select`, `Challenge`) confirmed MD-046's scoped claim for three of the four, and surfaced
+**one genuine, material correction**: the word "Challenge" (one of MinKer's 13 names) does appear in
+`brainstorming/kernel/`, listed directly alongside the exact same item set as `reviews/kernel/`'s own
+aggregate-member vocabulary (`Identity, Evidence, Justification, EpistemicState, Confidence,
+History`) — but there, "Challenge" is discussed only as a candidate domain object/event (a noun),
+never as a verb/capability (the role it plays in the MinKer chain). **Confirmed a homonym, not an
+established identity** — MD-046's "zero name-level overlap" phrasing is corrected here to "one shared
+surface word, confirmed to occupy different grammatical/ontological roles," strengthening rather than
+weakening MD-046's underlying conclusion. MD-046's own text is not modified.
+
+**Evidence-landscape boundary matrix built** (12 rows): every admissible landscape confirmed
+SEARCHED or SEARCHED/NO RELEVANT EVIDENCE; every excluded landscape (`reviews/synthesis/`,
+`brainstorming/verification/`, `brainstorming/synthesis/`'s 3 files, `reviews/exec/`,
+`research/knowledgeos-sim/`, `theory-extraction/`) already governed by an explicit, prior decision —
+no landscape found to be "admissible but omitted."
+
+**Phase C's five-question test applied to every excluded landscape**: none passes — each is either
+already the subject of an explicit decline (`reviews/exec/` via `MD-043-DQ-2`), provenance-uncertain
+before any admissibility question could even be posed (`research/knowledgeos-sim/`), or lacking any
+documented reason to expect this *specific* missing object (capability identity, distinct from the
+K_t/GN-77 material these directories are already known to discuss) rather than what they're already
+known to contain.
+
+**Final classification: B — admissible-corpus absence established, wider corpus unresolved.** Not A
+(several landscapes remain genuinely unknown, not established as irrelevant); not C (the admissible
+corpus was genuinely, now-verifiably, searched to completion); not D (the "Challenge" finding is a
+homonym correction, not a criterion).
+
+**Six required answers**: MD-046's finding is complete for the admissible corpus, not the wider
+corpus; the landscapes capable of changing it are the five already-excluded ones; none is currently
+admissible; no further search is scientifically justified right now; the strongest defensible
+statement is exactly the Classification-B wording above; the smallest next question is a governance
+question (whether to reconsider admission of any excluded landscape specifically for capability-
+identity purposes, or to treat the admissible-corpus absence as final pending a separately-authorized
+foundational research programme) — not a search question.
+
+**No backlog ticket** — the missing-positive-control gap this phase found and remedied is recorded as
+a third corroborating instance on the existing `EKS-21`, per `ES-005.4`.
+
+**No classification changed. No frozen artifact (MD-024–046) modified. No source file modified
+anywhere. `classification-register.tsv` untouched. No capability criterion invented. No vocabulary
+merged. No candidate promoted. K-1/K2 untouched. GA-001/GA-038 untouched. No Stage 07.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-047-capability-identity-completeness-adjudication/` directory (6 files) plus this
+decision-log entry and the `EKS-21` corroboration note written.
+
+**MD-047 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-048 opened.**

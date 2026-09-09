@@ -1,5 +1,38 @@
-**Updated:** 2026-09-09 (latest) — **MD-046 COMPLETE — CAPABILITY IDENTITY / GRANULARITY EVIDENCE
-ADJUDICATION. HARD STOP per explicit user instruction — no MD-047 opened.** Evidence census
+**Updated:** 2026-09-09 (latest) — **MD-047 COMPLETE — CAPABILITY IDENTITY EVIDENCE COMPLETENESS /
+BOUNDARY ADJUDICATION. HARD STOP per explicit user instruction — no MD-048 opened.** Bounded
+completeness/admissibility audit of MD-046's own negative finding, per direct authorization — not a
+new search, not a new construction. **Verification performed first**: per `EKS-21`'s own documented
+pattern, independently re-ran MD-046's central "zero hits" claim with an unfiltered positive control.
+Confirmed search paths/tooling were live (117 files matched a known-present control term). Manual
+inspection of the four highest unfiltered counts confirmed MD-046's claim for three, and surfaced
+**one genuine, material correction**: "Challenge" (one of MinKer's 13 names) does appear in
+`brainstorming/kernel/`, listed alongside the exact same item set as `reviews/kernel/`'s own
+aggregate-member vocabulary — but only as a noun/domain-event, never as a verb/capability. **Confirmed
+a homonym, not an established identity** — strengthens rather than weakens MD-046's conclusion;
+MD-046's own text not modified. **Evidence-landscape boundary matrix** (12 rows): every admissible
+landscape SEARCHED or SEARCHED/NO RELEVANT EVIDENCE; every excluded landscape already governed by an
+explicit prior decision — no "admissible but omitted" landscape found. **Phase C's five-question test
+applied to every excluded landscape: none passes** — each already declined, provenance-uncertain, or
+lacking documented reason to expect this specific missing object. **Final classification: B —
+admissible-corpus absence established, wider corpus unresolved.** Six required answers all given:
+MD-046's finding is complete for the admissible corpus only; the five excluded landscapes remain the
+only things capable of changing it; none is currently admissible; no further search is scientifically
+justified right now; smallest next question is a governance question (reconsider admission of an
+excluded landscape, or treat the absence as final pending a separately-authorized foundational
+programme) — not a search question. **No backlog ticket** — the positive-control gap is recorded as a
+third corroborating instance on the existing `EKS-21`. No classification changed; no frozen artifact
+modified; no source file modified anywhere; `classification-register.tsv` untouched; no capability
+criterion invented; no vocabulary merged; no candidate promoted; K-1/K2/GA-001/GA-038 untouched; no
+Stage 07. Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/model-
+boundary-decisions.md` → MD-047 execution record; `14_decision-log/MD-047-capability-identity-
+completeness-adjudication/` (6 files). **Statement, per the governing prompt's own final rule**: the
+corpus does not currently supply the semantic foundation required to make MinKer operational without
+introducing a new research-level modelling decision — awaiting human direction on whether to
+authorize a new foundational research programme, a narrow admissibility decision, or neither. This
+session's work is being committed now, per explicit instruction, then HARD STOP.
+
+**Superseded-update-marker-68 (2026-09-09, earlier) — MD-046 COMPLETE — CAPABILITY IDENTITY /
+GRANULARITY EVIDENCE ADJUDICATION. HARD STOP per explicit user instruction — no MD-047 opened.** Evidence census
 continuing from MD-045's hard stop — determined whether the corpus already contains a capability-
 identity criterion, explicitly prohibited from defining one. Searched `reviews/kernel/` for the first
 time (admitted narrow scope via `MD-043-DQ-1`). **Central finding, larger than a simple absence**: no

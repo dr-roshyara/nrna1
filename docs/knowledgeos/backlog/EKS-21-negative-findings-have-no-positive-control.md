@@ -113,3 +113,25 @@ it.
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed and no work is commissioned.**
+
+## 9 · Third corroborating instance, 2026-09-09 — from the `three_model_convergence` programme's own MD-047
+
+**A different work stream than the one that filed this ticket hit the identical pattern.** A prior
+study (MD-046) reported "zero hits, for all 13 [capability] names, searched in kernel-capability
+context" across two directories, with no positive control run alongside that specific claim. A
+follow-up study (MD-047) re-ran the same search directly and unfiltered, as its own first act, before
+reconstructing anything else — precisely because this ticket already exists and names the risk. ⭐ **The
+positive control found the underlying tooling and paths were genuinely live** (confirmed by 117 files
+matching an unrelated, known-present term in the same locations) — so this was not a repeat of the
+`P-60` false-zero failure mode itself. ⚠️ But the check **did** catch a real, if smaller, overstatement
+the original claim's own scoping had missed: one of the thirteen names turned out to share a surface
+word with material in a second, separately-searched vocabulary — present in 26 files, filtered out as
+"generic usage" without the specific instance that mattered being individually inspected until this
+follow-up did so. The underlying conclusion held once inspected, but it held **because someone checked**,
+not because the original claim was self-evidently safe. **A fourth data point, from a second work
+stream, that a discipline requiring someone to remember to add a control is not yet a control.**
+
+**Traceability:** `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/MD-047-
+capability-identity-completeness-adjudication/01_md046-search-completeness-audit.md` (the check and
+its finding) · `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/MD-046-
+capability-identity-granularity-adjudication/01_evidence-census.md` (the original claim, not modified).
