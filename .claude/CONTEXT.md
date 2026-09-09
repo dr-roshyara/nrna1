@@ -1,5 +1,37 @@
-**Updated:** 2026-09-09 (latest) — **MD-045 COMPLETE — REAL 13-CAPABILITY KERNEL EQUIVALENCE /
-MINIMALITY CONSTRUCTION. HARD STOP per explicit user instruction — no MD-046 opened.** Continued
+**Updated:** 2026-09-09 (latest) — **MD-046 COMPLETE — CAPABILITY IDENTITY / GRANULARITY EVIDENCE
+ADJUDICATION. HARD STOP per explicit user instruction — no MD-047 opened.** Evidence census
+continuing from MD-045's hard stop — determined whether the corpus already contains a capability-
+identity criterion, explicitly prohibited from defining one. Searched `reviews/kernel/` for the first
+time (admitted narrow scope via `MD-043-DQ-1`). **Central finding, larger than a simple absence**: no
+criterion exists for the MinKer chain's 13-capability universe; more significantly, this
+reconstruction's own separately-developed kernel/capability research track (`reviews/kernel/`,
+`brainstorming/kernel/`, 2026-08-19–08-28, independent of and earlier than the 2026-09-04 MinKer
+chain) has produced a **second, entirely non-overlapping capability vocabulary** (a 9-item "existing
+law" map; a separate Identity/Evidence/Justification/EpistemicState/Confidence/History aggregate-
+member list) — zero name overlap with MinKer's 13 names, zero cross-reference anywhere. This second
+vocabulary is itself internally contested (a documented vocabulary-collision registry; an
+unreconciled "Kernel too large" vs. "minimal map too small" tension). **Closest candidate criteria
+tested and found insufficient**: an atomicity-falsification methodology (answers a different
+question — grouping, not identity) and three modelling prohibitions (guardrails, not a positive
+test). **13-capability boundary audit**: no MinKer name has boundary/atomicity evidence outside the
+chain's own self-contained discussion. **Ten hypotheses**: H1/H7/H8 SUPPORTED; H2/H3/H5/H9/H10 NOT
+SUPPORTED; H4/H6 partially supported as design intentions only. **Explicit answer: can MinKer safely
+proceed beyond the MD-045 hard stop? No.** **Final classification: C — no corpus-grounded criterion
+found.** **GA-001: UNCHANGED. GA-038: UNCHANGED.** **Backlog**: `EKS-23` filed (two independent
+research efforts each invented their own Kernel-capability vocabulary, neither aware of the other) —
+checked against `EKS-17`/`EKS-18`/`EKS-14`/`EKS-16` first, confirmed distinct. No classification
+changed; no frozen artifact modified; no source file modified anywhere;
+`classification-register.tsv` untouched; no capability definition silently introduced; no candidate
+promoted to canonical status; no K-1/K2 change; no Stage 07. Verified both consistency scripts
+`CONSISTENT`. Full record: `14_decision-log/model-boundary-decisions.md` → MD-046 execution record;
+`14_decision-log/MD-046-capability-identity-granularity-adjudication/` (6 files). **Smallest next
+action, named, not answered**: does any evidence exist establishing a decomposition-independent
+capability-identity criterion, given the corpus's own two vocabularies share no names and have never
+been cross-checked. This session's work is being committed now, per explicit instruction, then HARD
+STOP.
+
+**Superseded-update-marker-67 (2026-09-09, earlier) — MD-045 COMPLETE — REAL 13-CAPABILITY KERNEL
+EQUIVALENCE / MINIMALITY CONSTRUCTION. HARD STOP per explicit user instruction — no MD-046 opened.** Continued
 directly from MD-044 toward the corpus's own named next deliverable. **Disagreement resolved before
 execution**: the prompt's "propose/test a research construction" clause vs. its "stop and report
 rather than invent" clause — resolved in favor of deriving only what is logically forced, stopping

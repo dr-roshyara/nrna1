@@ -4143,3 +4143,65 @@ MinKer-chain source files confirmed unmodified; only the new `14_decision-log/MD
 equivalence-capability-construction/` directory (6 files) plus this decision-log entry written.
 
 **MD-045 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-046 opened.**
+
+---
+
+## MD-046 — Capability Identity / Granularity Evidence Adjudication (EXECUTED, 2026-09-09)
+
+**Authorization**: user authorized an evidence-census phase continuing from MD-045, explicitly
+prohibiting defining a capability-identity criterion — the purpose is to determine whether the
+corpus already contains one, not to construct it.
+
+**Scope clarification**: `docs/knowledgeos/reviews/kernel/` was searched for the first time — its
+own derived findings were admitted (narrow scope, kernel-candidate research) via `MD-043-DQ-1`,
+directly applicable here. All other previously-firewalled directories remained excluded.
+
+**Central finding, larger than a simple absence**: no capability-identity/equivalence criterion
+exists anywhere in the searched corpus for the MinKer chain's own 13-capability universe. More
+significantly, this reconstruction's own separately-developed kernel/capability research track
+(`reviews/kernel/`, `brainstorming/kernel/`, 2026-08-19 through 2026-08-28 — independent of, and
+earlier than, the 2026-09-04 MinKer chain) has produced a **second, entirely non-overlapping
+capability/aggregate-member vocabulary** (a 9-item "existing law" map, `S1-F008`; a separate
+Identity/Evidence/Justification/EpistemicState/Confidence/History aggregate-member list, `S1-F016`)
+— **zero name-level overlap with the MinKer chain's 13 names, and no cross-reference between the two
+vocabularies found anywhere.** This second vocabulary is itself internally contested: a documented
+vocabulary-collision registry (`S1-F037`: "Kernel" carries 4 senses, "boundary" a 7th collision) and
+a direct, unreconciled tension between `S1-F007`'s "Kernel as god object, too large" finding and
+`S1-F008`'s implied "minimal 9-item map, possibly too small" finding.
+
+**Closest candidate criteria tested and found insufficient**: `S1-F016`'s atomicity-falsification
+methodology (strong relatedness / weak atomicity, independently tested on 5 pairs) answers a
+*different* question — aggregate grouping among already-named items — not capability identity across
+differently-named descriptions. `S1-F037`'s three modelling prohibitions are guardrails (what not to
+do), not a positive identity test.
+
+**13-capability boundary audit**: not one of the 13 MinKer names has boundary or atomicity evidence
+from outside the chain's own self-contained discussion; the two names the chain uses as its own
+illustrative risk examples (`Interpret`, `Determine`) are the least independently grounded.
+
+**Ten hypotheses**: H1/H7/H8 SUPPORTED (identity currently defined by name; the 13-decomposition is
+assumed, not evidenced; `DetectGap`/`Qualify` conclusions are decomposition-dependent); H2/H3/H5/H9/
+H10 NOT SUPPORTED; H4/H6 PARTIALLY SUPPORTED as design intentions, not completed practice.
+
+**Explicit answer: can MinKer safely proceed beyond the MD-045 hard stop? No.**
+
+**Final classification: C — no corpus-grounded criterion found.** Smallest next research question,
+named, not answered: does any evidence exist establishing a decomposition-independent capability-
+identity criterion, given the corpus's own two vocabularies share no names and have never been
+cross-checked.
+
+**GA-001: UNCHANGED. GA-038: UNCHANGED.**
+
+**Backlog**: `EKS-23` filed — two independent research efforts each invented their own Kernel-
+capability vocabulary, neither aware of the other; checked against `EKS-17`/`EKS-18`/`EKS-14`/
+`EKS-16` first, confirmed distinct.
+
+**No classification changed. No frozen artifact (MD-024–045) modified. No source file modified
+anywhere. `classification-register.tsv` untouched. No capability definition silently introduced. No
+candidate promoted to canonical status. No K-1/K2 change. No Stage 07.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-046-capability-identity-granularity-adjudication/` directory (6 files) plus this
+decision-log entry and the `EKS-23` backlog files written.
+
+**MD-046 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-047 opened.**
