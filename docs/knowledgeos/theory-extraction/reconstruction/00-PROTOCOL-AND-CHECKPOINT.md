@@ -960,3 +960,65 @@ lead: recovery doc 20260829-003330 K_t=(𝒜,ℛ,ℰ,ℋ,𝒵,ℒ) — CANDIDATE
 open: [G-01, G-04, G-05, G-06, G-07, G-09, G-10, G-11, G-14+G-18+G-20, G-15, G-16, G-17, G-21, G-22, G-23, G-24, G-25, G-26, C-1]
 resumption: from disk; artifacts 04/05/06/07/08 carry all state
 ```
+
+---
+
+# CHECKPOINT 011 — 2026-09-09 · G-18 closed; both G-14 workers STOPPED BY USER
+
+## Status
+
+| | |
+|---|---|
+| **`G-18`** | ⭐ **CLOSED** — referent identified as the `verification/` mandate batch `20260830_1918`, artifacts A–J (19:22–19:28); artifact D (19:24) is the specific source. Closed by Main against primary source, **not** dependent on either worker. |
+| **`G-14`** | **OPEN.** Worker stopped by user mid-investigation. |
+| supplementary breadth for `G-18` | **NOT DONE.** Worker stopped by user. |
+
+## ⚠️ What the stopped workers leave unverified — recorded so it is not mistaken for settled
+
+**Worker "G-18 trace" (stopped).** Its assignment was the *breadth* around a disposition Main had
+already reached independently. Therefore **unverified**:
+- the full citation table for *"latest executed reconstruction"* and its ~10 variants across the
+  readable corpus;
+- **whether the `Minimality(K | 𝒯)` qualification survives anywhere downstream** — into `263`, `265`
+  or `267`. **The qualification-drop is confirmed at the two endpoints only (artifact D 19:24 vs
+  `step_262` 19:27), NOT corpus-wide.** `EKS-46` is written to that narrower scope and should not
+  be read more broadly.
+- whether a **competing mandate batch** could also fit `step_262`'s phrase. `20260830_1918` is the
+  best-fitting candidate on timing and content; **it was not tested against rival batches.**
+
+**Worker "G-14 Step 272" (stopped).** Its last line before termination:
+
+> *"The rename record is decisive. Let me confirm the original filenames from git history."*
+
+⭐ **This is a dangling lead, not a finding.** It suggests the worker located a **file-rename
+record** bearing on the identity of "Step 272" — plausibly that a file was renamed out of, or into,
+the `step_272` slot. **Main has not verified this and is not acting on it.** Recorded verbatim so it
+survives; anyone resuming `G-14` should start by checking `git log --follow` / `--diff-filter=R`
+around `phase_measure_theory/` on 2026-08-30.
+
+## Disposition discipline
+
+`G-18` is `CLOSED` on Main's own primary-source verification. **No part of that disposition rests on
+worker output**, so the stop does not weaken it. What the stop costs is corroborating breadth, and
+that cost is stated above rather than absorbed silently.
+
+## Artifact-set compliance — one gap, acknowledged not yet fixed
+
+The operating strategy §14 authorises **four** records: TheoryState Chronicle · Definition Evolution
+Registry · Lineage Graph · Gap Register. This reconstruction is running **five** —
+`04-THEORY-CHRONICLE.md` has become a second theory record (~700 lines carrying most narrative
+findings). That is the "alternative theory record" §14 forbids. **Owed: fold it into the four.**
+Not done mid-commit; recorded as debt.
+
+## Resumption
+
+```yaml
+checkpoint: 011
+closed_this_session: [G-02, G-03, G-08 (per-pair), G-12 (extraction), G-18]
+primary_gap: G-14  # identity of "Step 272"; lead = a rename record in git history, UNVERIFIED
+open: [G-01, G-04, G-05, G-06, G-07, G-09, G-10, G-11, G-14, G-15, G-16, G-17, G-19, G-20(Σ/E_L half),
+       G-21, G-22, G-23, G-24, G-25, G-26, C-1]
+owed: [fold 04-THEORY-CHRONICLE into the four §14 artifacts,
+       G-18 breadth (citation table, downstream qualification test, rival batches)]
+subagents: none running; not to be relaunched without instruction
+```
