@@ -145,3 +145,45 @@ and nothing more.
 **Evidence:** `docs/knowledgeos/theory-extraction/76-P58-…` §0 · the three 2026-09-04 artifacts in
 `brainstorming/mathematical_ideas_that_can_be_implemented/` (`…substantial-agreement-with-corrections-minimality-and-ratification`,
 `…close-to-freeze-quality-four-final-corrections-to-sem-equivalence`, `…remaining-todos-after-v12-freeze-formal-semantic-equivalence`).
+
+---
+
+## Third instance, recorded 2026-09-09 — this time it is a completed verification, not a question list
+
+⭐⭐ **The pattern has now appeared three times, and the third instance is the most costly.**
+
+The estate contains a **completed executable verification of its own theory** — a folder of thirty-two
+documents covering experiments A through Z, an experiment register, two adjudication briefs and a final
+verdict, with a sibling run against the previous theory version. ⭐ **It is good work, clearly presented,
+and it says plainly what passed and what failed.**
+
+⭐⭐⭐ **Its "what failed" section reports a gap that a separate work stream has spent thirty-eight
+reviews building an answer to — and neither side knows the other exists.** The verification records the
+failure as **reproduced across two successive theory versions**, which makes it a standing, twice-
+witnessed result rather than a one-off.
+
+### Why this instance is worse than the first two
+
+**a. It is an answer, not a question.** ⭐ The first two instances were registers of open questions that
+never reached the people answering them. **This is a completed test result that never reached the people
+whose work it directly evaluates.** The information was not merely unrouted — it was *finished*.
+
+**b. It is the strongest available external check, and it has never been run against the work.** ⚠️ The
+work stream has been arguing its case internally for thirty-eight reviews while an independent,
+executable test of the same territory sat unopened. **Every one of those reviews would have been
+sharper had it been consulted.**
+
+**c. Two versions means it will recur.** ⭐⭐ Because the failure reproduced from one theory version to
+the next, it is not a transient defect — **it is a standing property of the theory that any future
+version will inherit until someone addresses it.** The longer it goes unconnected, the more downstream
+work rests on the unexamined side.
+
+### What this does *not* change
+
+⛔ **Neither the verification nor the work stream is criticised.** Both did careful work. ⛔ **No new
+item is opened** — under the never-a-copy rule, a third occurrence belongs on this record. ⛔ **And no
+remedy is proposed here**; this entry raises the evidence base and nothing more.
+
+**Evidence:** `docs/knowledgeos/theory-extraction/84-P66-…` §3 · `docs/knowledgeos/research/theory-v1.2-simulation/`
+(32 documents incl. `FINAL-VERDICT.md`) · `docs/knowledgeos/research/theory-v1.1-simulation/` (the prior
+run in which the same failure was first recorded).
