@@ -1185,7 +1185,27 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-054 — VERIFY SESSION Kernel-Reconstruction Thread (71 files,
+**Status update, 2026-09-09 (latest): MD-055 — Independent Adversarial Verification of the
+`id`/Mutable-`e.state` Contradiction — EXECUTED.** User reviewed MD-054, agreed with its central
+result, corrected one phrase (the "ChatGPT" comparison stream downgraded from "independent research
+stream" to "a separately attributed comparison whose independence requires its own provenance audit"
+— MD-054's own text not modified), and narrowed MD-054's own broad "verify against live code"
+suggestion to one tightly bounded claim. **Executed**: two independent, clean-room Python scripts
+(saved, deterministic SHA-256, no corpus code read or executed) re-derive `id=H(P,e,c,t,Π)` with
+`Evidence.state` mutable from only the stated definitions. **Part 1: CONFIRMED** — withdrawing one
+evidence item changes an assertion's own identity and dangles a previously-valid relation edge;
+`StructuralValid(K)` fails, reproduced independently, not merely inherited from the source's own
+self-report. **Part 2: the source's own proposed repair (TG-06 — project mutable `state` out of the
+hash) CONFIRMED SOUND** for the tested failure mode, while explicitly not touching a separate,
+still-open defect (merge/dedup) MD-054 already distinguished. Found no live implementation of this
+specific theory exists to test against (`docs/knowledge/` implements none of `e`/`t`/`Π`) — so
+verification meant independently computing the stated formulas for the first time, not running any
+pre-existing system. No classification changed; no frozen artifact (MD-024–054) modified; no new
+admission; no candidate label assigned; K-1/K2 untouched; MD-050 kept firewalled throughout. Verified
+both consistency scripts `CONSISTENT`. **Smallest next action, named, not authorized**: the same
+narrow discipline applied to the `Σ`-cannot-see-`ℛ` finding.
+
+**Status update, 2026-09-09 (earlier): MD-054 — VERIFY SESSION Kernel-Reconstruction Thread (71 files,
 the rest of MD-052's own `verification/` cluster) — EXECUTED, admitted narrow-scope, no label.**
 Applied the standing forward-read methodology fully to `brainstorming/verification/`'s top-level
 directory — found it interleaves with `spec/` (K0's own home) as one continuous ~30-hour, 71-file

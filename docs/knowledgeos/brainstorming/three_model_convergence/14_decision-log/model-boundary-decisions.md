@@ -4680,3 +4680,52 @@ entry written.
 to independently verify the single most consequential unresolved claim this thread itself flags as
 blocking — the `id`/mutable-`e.state` contradiction — by direct execution against this repository's own
 live `docs/knowledge/` tooling. Awaiting separate authorization for any further step.**
+
+---
+
+## MD-055 — Independent Adversarial Verification of the `id`/Mutable-`e.state` Contradiction
+
+**Correction carried forward from MD-054** (MD-054's own text not modified): the user downgraded
+MD-054's characterization of the "ChatGPT" comparison stream (`CLAUDE-CHATGPT-RECONCILIATION.md`) from
+*"a genuine, contamination-checked second independent research stream"* to **"a separately attributed
+comparison/research stream whose independence requires its own provenance audit"** — fingerprint-
+checking rules out this programme having produced it, but does not by itself establish independence in
+this reconstruction's own stronger sense. Not chased further this phase; recorded so the label is not
+reused uncorrected.
+
+**Authorization**: narrowed from MD-054's own broad "verify against live code" suggestion to a single,
+tightly bounded claim, per the user's own explicit reasoning (precisely stated · mathematically
+derivable from the stated definitions alone · claimed already executed by the source · directly
+testable · potentially devastating to the candidate's identity model · independent of the unresolved
+K0/capability-identity question).
+
+**Executed**: an independent, clean-room computational re-derivation (two Python scripts, saved,
+deterministic SHA-256 hashing, no corpus code read or executed) of exactly the claim MD-054 recorded
+from the source material's own second pass: `id=H(P,e,c,t,Π)` with `Evidence.state` mutable. **Part 1
+(unrepaired formula): CONFIRMED** — withdrawing one evidence item changes an assertion's own identity
+hash and leaves a previously-valid relation edge dangling; `StructuralValid(K)` fails immediately
+afterward, reproduced independently, not merely inherited from the source's self-report. **Part 2
+(the source material's own proposed repair, TG-06 — project mutable `state` out of the hash, keep only
+the evidence reference set): CONFIRMED SOUND** for the specific failure mode tested — stable under
+state-only mutation, still correctly changes identity when the evidence reference set itself changes.
+**Explicitly not tested**: a separate, still-open defect MD-054 already distinguished (merge/
+deduplication, since `Π` remains inside the hash even under the TG-06 repair) — this phase's probe
+does not touch it and does not resolve it.
+
+**No live implementation of this specific theory exists to test against** — `docs/knowledge/`'s own
+real schema was already confirmed in MD-054 to implement none of `e`/`t`/`Π` at all; "verification
+against live code" therefore meant independently computing the *stated formulas themselves* for the
+first time, not running any pre-existing repository system.
+
+**No classification changed. No frozen artifact (MD-024–054) modified. No new admission (the claim was
+already narrow-scope admitted in MD-054). No candidate label assigned or changed. K-1/K2 untouched. No
+Stage 07. MD-050 kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-055-identity-mutability-adversarial-verification/` directory (5 files, incl. the
+two executed scripts) plus this entry written; both scripts re-run successfully, output reproducible.
+
+**MD-055 status: COMPLETE. Smallest next action, named, not authorized**: extend the same narrow,
+one-claim independent-verification discipline to the next most consequential unresolved claim MD-054
+recorded — the `Σ`-cannot-see-`ℛ` finding (a fully-supported inconsistency being representable).
+Awaiting separate authorization for any further step.**

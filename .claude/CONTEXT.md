@@ -1,4 +1,46 @@
-**Updated:** 2026-09-09 (latest) — **MD-054 COMPLETE — VERIFY SESSION KERNEL-RECONSTRUCTION THREAD (71
+**Updated:** 2026-09-09 (latest) — **MD-055 COMPLETE — INDEPENDENT ADVERSARIAL VERIFICATION OF THE
+`id`/MUTABLE-`e.state` CONTRADICTION.** User reviewed MD-054, agreed with its central result, and
+made one correction (recorded here, MD-054's own text not modified): the "ChatGPT" comparison stream's
+characterization as *"a genuine, contamination-checked second independent research stream"* is
+downgraded to **"a separately attributed comparison/research stream whose independence requires its
+own provenance audit"** — fingerprint-checking rules out this programme having produced it, but does
+not by itself establish independence in this reconstruction's own stronger sense. Not chased further
+this phase. The user then narrowed MD-054's own broad "verify against live code" suggestion to one
+single, tightly bounded claim, with explicit reasoning (precisely stated · derivable from the stated
+definitions alone · claimed already executed by the source · directly testable · potentially
+devastating to the candidate's identity model · independent of the unresolved K0/capability-identity
+question). **Executed**: two independent, clean-room Python scripts (saved under the MD-055 directory,
+deterministic SHA-256 hashing over canonical JSON, no corpus code read or executed) re-derive
+`id=H(P,e,c,t,Π)` with `Evidence.state` mutable, from only the definitions as stated in the already-
+admitted MD-054 material — not from any verifier scratchpad script (none was available to read).
+**Part 1 (unrepaired formula): CONFIRMED.** Withdrawing one evidence item changes an assertion's own
+content-addressed identity and leaves a previously-valid relation edge referencing the old identity
+dangling; `StructuralValid(K)` — itself one of the theory's own stated invariants — fails immediately
+afterward. Reproduced independently by direct computation, not merely inherited from the source
+programme's own self-report. **Part 2 (the source material's own proposed repair, TG-06 — project the
+mutable `state` field out of the identity hash, keep only the evidence reference set): CONFIRMED
+SOUND** for the specific failure mode tested — stable under a state-only mutation (withdrawal no
+longer changes identity), while still correctly producing a different identity when the evidence
+reference *set* itself changes (a genuine content change). **Explicitly not tested**: a separate,
+still-open defect MD-054 already distinguished (merge/deduplication — the same fact observed twice
+under different provenance still produces two distinct assertions, since `Π` remains inside the hash
+even under the TG-06 repair) — this phase's probe does not touch it and does not resolve it.
+**No live implementation of this specific theory exists to test against** — `docs/knowledge/`'s own
+real schema was already confirmed in MD-054 to implement none of `e`/`t`/`Π` at all; "verification
+against live code" therefore meant independently computing the stated formulas themselves for the
+first time, not running any pre-existing repository system. **No classification changed. No frozen
+artifact (MD-024–054) modified. No new admission (the claim was already narrow-scope admitted in
+MD-054). No candidate label assigned or changed. K-1/K2 untouched. No Stage 07. MD-050 kept
+firewalled throughout.** Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/
+model-boundary-decisions.md` → MD-055 execution record; `14_decision-log/MD-055-identity-mutability-
+adversarial-verification/` (5 files, including the two executed, reproducible scripts). **Smallest
+next action, named, not authorized**: extend the same narrow, one-claim independent-verification
+discipline to the next most consequential unresolved claim MD-054 recorded — the `Σ`-cannot-see-`ℛ`
+finding (a fully-supported inconsistency being representable). This session's work is being committed
+now, per explicit instruction.
+
+**Superseded-update-marker-75 (2026-09-09, earlier) — MD-054 COMPLETE — VERIFY SESSION
+KERNEL-RECONSTRUCTION THREAD (71
 FILES), ADMITTED NARROW-SCOPE, NO LABEL.** Applying the standing forward-read methodology to
 `brainstorming/verification/`'s top-level directory found it is one continuous ~30-hour, 71-file
 thread interleaved with `spec/` (K0's own home, MD-052) — MD-052 only characterized the first ~9
