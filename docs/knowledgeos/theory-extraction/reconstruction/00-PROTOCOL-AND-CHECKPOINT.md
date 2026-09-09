@@ -581,3 +581,81 @@ next_reason: chronologically next (08-28 09:44); continue the traversal, do not 
 primary_gap: G-03
 resumption: from disk; artifacts 04/05/06/07 carry all state
 ```
+
+---
+
+# CHECKPOINT 006 — 2026-09-09 · both streams
+
+## TheoryState snapshot
+
+`TheoryState(t₆)` added (`025p`–`025z`, `READ-STRUCTURAL`). Lineage A closes its arc: in ~20 hours
+it produces requirements/contract/gap, state algebra, distributed merge, revision, evidence
+aggregation, and decision/action contracts — a complete epistemic control loop.
+
+## Definition versions added / changed
+
+No change to `Sat`, `EC`, `Γ`, `Requirements`, `Σ` this batch. `Zero_v6` already registered.
+New objects registered as first versions in the chronicle (not yet in `05-…REGISTRY.tsv`, which
+currently tracks the six load-bearing objects only): `M`, `Prediction`, `Derivation`, `Rule`,
+`Trust`, `SameEntity`, `TemporalKnowledge`, `ActionContract`.
+
+## Cross-object effects
+
+`025y`'s `VectorAssessment > SingleConfidenceScore` becomes a **third** Lineage-A witness against
+scalar assessment (with `025d` §25D.17 and §25D.32) — strengthening `C-1`'s non-scalar side.
+Counter-evidence recorded in the same breath: `025r`'s `ExpectedLoss = Σ_s P(s|E)L(a,s)` is a
+genuine scalar loss, so Lineage A is **not uniformly anti-scalar** → new gap `G-09`.
+
+## New branches
+
+`Σ` unchanged at 11 versions. **No reconciliation attempted.**
+
+## ⭐ Gap disposition — `G-03` CLOSED as `UNRELATED_REFORMULATION`
+
+Investigated in its bounded interval. **The premise was false.** Citation sweep:
+
+```
+272a·272b·273·274·275·276-final·277  →  0 citations of the 025 series, 0 Ω, 0 EC
+math lane 09-02 (4 docs)             →  0 citations of 025, 0 citations of step_2xx
+274 §274.1: "Use the result of Step 273 as the only authoritative candidate"
+```
+
+`Ω` and `EC` were **never dropped — never inherited.** Disposition chosen against the commission's
+own vocabulary, with the six rejected outcomes recorded alongside the selected one.
+
+## ⛔ Self-correction — batch 003's headline claim is WITHDRAWN
+
+Checkpoint 003 headlined *"the semantics-bearing argument is ALWAYS the one that disappears"* and
+called it *"the strongest structural finding of the reconstruction so far."* **The citation
+evidence refutes the causal reading.** The three signature differences are real and remain in the
+registry as distinct versions; what is withdrawn is the claim that one is a degradation of another.
+
+**The corrected finding is larger:** the corpus contains **at least three parallel lineages** —
+A (`025`, 08-27/28), B (`272a`–`277`, 08-30), C (math lane, 09-01/02) — that develop overlapping
+objects and **never cite one another.** The commission's instruction not to promote the pattern to
+a general theory was correct, and the evidence removed the common cause rather than supplying it.
+
+## Current smallest load-bearing blocker
+
+**`G-08`** — do the three lineages share any common ancestor, or are they three independent starts?
+It **subsumes `G-01`, `G-02`, `G-05`**: if the lineages are independent, those "transitions" are
+non-transitions and must be recorded `DISJOINT`, not `UNWITNESSED`. Bounded (a citation sweep,
+already demonstrated twice) and a precondition for every remaining lineage claim.
+
+## Read-state discipline
+
+`READ-COMPLETE` 29 · `READ-SUBSTANTIAL` 1 (`025o`) · `READ-PARTIAL` 2 (`025`, `025n`) ·
+`READ-STRUCTURAL` 20 (`025g`–`025z` less `025k`/`025l`/`025m`). **`274` and `275` were opened for a
+targeted citation/signature test only — recorded as `READ-TARGETED`, not `READ-COMPLETE`.**
+
+## Resumption
+
+```yaml
+checkpoint: 006
+next_document: 20260828-101325_step-025z (promote to READ-COMPLETE) then the next chronological
+               document after 2026-08-28 10:13
+primary_gap: G-08   # subsumes G-01, G-02, G-05
+open_gaps: [G-01, G-02, G-04(deferred by method), G-05, G-06, G-07, G-08, G-09, C-1]
+closed_gaps: [G-03 = UNRELATED_REFORMULATION]
+resumption: from disk; artifacts 04/05/06/07 carry all state
+```

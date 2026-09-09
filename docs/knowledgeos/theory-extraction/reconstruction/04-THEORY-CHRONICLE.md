@@ -400,3 +400,85 @@ Recorded; **no bridge asserted.**
 | **B. Definition Evolution Registry** | `05-DEFINITION-EVOLUTION-REGISTRY.tsv` — **44 versions** across `Σ`(11) `Requirements`(10) `Sat`(7) `EC`(7) `Zero`(6) `Γ`(3) |
 | **C. Lineage / Evolution Graph** | `04-LINEAGE-EDGES.tsv` |
 | **D. Gap Register** | `06-GAP-REGISTER.md` — 7 gaps + 1 contradiction |
+
+---
+# BATCH 006 — `025p`–`025z` structural; **`G-03` investigated and DISPOSED**
+
+## ⛔⛔ THE BATCH-003 "PATTERN OBSERVATION" IS REFUTED AS STATED
+
+Batch 003 recorded, and checkpoint 003 headlined:
+
+> *"the semantics-bearing argument is ALWAYS the one that disappears"* — three instances,
+> *"the strongest structural finding of the reconstruction so far."*
+
+The `G-03` investigation tested the middle instance and then the other two. **The citation evidence
+refutes the framing.**
+
+```
+citation test, phase_measure_theory/ 272a · 272b · 273 · 274 · 275 · 276-final · 277
+    references to the 025 series ......... 0   (all seven documents)
+    occurrences of Ω ..................... 0   (except one in 275)
+    occurrences of EC .................... 0
+    occurrences of K=(A,R,Σ,E_L) ......... 1,8,6,1,1,0  — the shared inheritance
+
+citation test, math lane 2026-09-02 (004631 · 082333 · 093546 · 085420)
+    references to the 025 series ......... 0
+    references to phase_measure_theory / step_2xx ... 0
+```
+
+`274` §274.1 states its inheritance in terms: *"Use the result of **Step 273** as the only
+authoritative candidate… do not silently alter that definition."*
+
+$$\boxed{\Omega \text{ and } EC \text{ were never DROPPED. They were never INHERITED.}}$$
+
+### The corrected finding — larger, and of a different kind
+
+There are **at least three parallel lineages that independently develop overlapping objects and
+never cite one another**:
+
+| lineage | window | `K` | transition | requirement basis |
+|---|---|---|---|---|
+| **A** — `025` series | 08-27 → 08-28 | 11-component tuple | `T:(K,E,Ω,EC)→K'` · `Derive(H,Ω,EC,M)` | `R(P)`/`R_G`, `EC`, `Γ`, `Sat` |
+| **B** — `272a`–`277` | 08-30 | `K=(A,R,Σ,E_L)` | `δ(K_t,e_t)` | `D_mandatory`, `𝒪_core` |
+| **C** — math lane | 09-01 → 09-02 | — | — | `ℛ_req(Q,Γ)`, `Sat(K_t,r)` |
+
+`[EMP]` for the disjointness; the citation counts are reproducible.
+
+⚠️ **This is not "drift within one evolving theory." It is re-derivation across lanes.** The
+signature differences are not losses; they are **independent choices made without knowledge of the
+other lineage.** The commission's instruction — *"Do NOT yet claim that the three have a common
+cause"* — was correct, and the evidence has now removed the common cause rather than supplying it.
+
+**Retained as history:** the three signature differences are real and remain in the registry as
+distinct versions. **Withdrawn:** the causal reading that one is a degradation of the other.
+
+## CHRONICLE-018 · `TheoryState` transition 08-28 09:44 → 10:13 (`025p`–`025z`) — `READ-STRUCTURAL`
+
+New objects, all `[EMP]` from extracted boxed results, **none read completely**:
+
+| doc | new objects / rulings |
+|---|---|
+| `025p` causality | `TemporalPrecedence ⇏ Causation` · `RootCause ≠ EarliestPrecedingEvent` · `CausalGraph ≠ ObservedWorld` · `CausalNarrative ≠ CausalKnowledge` · `ObservedFact ≠ Counterfactual` |
+| `025q` models | `M = (Variables, Relations, Assumptions, Parameters, Scope, Predictions, Version)` **7-tuple** · `Prediction = (Model, Input, Time, ExpectedOutcome, Uncertainty, Assumptions)` **6-tuple** · `PredictionError ≠ ModelFalse` · `Assertion ≠ Model` · `ModelScore ≠ Truth` |
+| `025r` decision | `EU(a\|E) = Σ_s P(s\|E)U(a,s)` · `a* = argmax_a EU(a\|E)` · **`ExpectedLoss = Σ_s P(s\|E)L(a,s)`** · `DecisionContract` · `Recommendation ≠ Decision ≠ Authorization` |
+| `025s` identity | `SameEntity(r₁,r₂ \| C,E,M)` **arity 4** · `Reference ≠ Entity` · `¬SameAs(x,y) ≠ DistinctFrom(x,y)` · `EntityIdentity = ContextualTuple` |
+| `025t` inference | `Derivation = (Premises, Rules, Substitutions, Assumptions, Conclusion)` · `Rule = (PremisePattern, Condition, Transformation, ConclusionPattern)` · `Proof ≠ EvidenceSupport` · `ProofCarryingAssertion` |
+| `025u` multi-agent | `Trust(a,d,c,t)` **arity 4** · `Agent ≠ Evidence` · `Expertise ≠ Authority` · `Trust ≠ Authority` · **`AgentIndependence ≠ InformationIndependence`** · `TrustScore ≠ TruthSelector` |
+| `025v` semantics | `Syntax ≠ Identity ≠ Semantics` · `SameText ≠ SameMeaning` · `Meaning belongs to a BoundedContext` · `Ontology ≠ DomainModel` |
+| `025w` temporal | ⭐ **`TemporalKnowledge = (ValidTime, RecordedTime, EpistemicStateTime)`** — tri-temporal · `Timestamp ≠ TemporalSemantics` · **`Conclusion = f(Knowledge, Context, Semantics, Rules, Models, Policies)`** — 6 arguments |
+| `025x` distributed | **`EpistemicConvergence = EquivalentKnowledgeUnderEquivalentInputs`** · `StorageConvergence ≠ EpistemicConvergence` · `Representation ≠ Reality` |
+| `025y` integrity | `Integrity ≠ Authenticity ≠ Authority ≠ Truth` · `ArtifactIdentity ≠ SemanticIdentity` · `MerkleIntegrity ≠ Truth` · ⭐ **`VectorAssessment > SingleConfidenceScore`** |
+| `025z` action | `Knowledge ≠ Decision ≠ Action` · **`P(Y\|X) ≠ P(Y\|do(X))`** · `ActionContract` **8-tuple** · `ActionAuthorization = ProofOfRequiredPreconditions` |
+
+### Cross-object effect on `C-1` (scalarisation) — **strengthened, still unadjudicated**
+
+`025y`'s **`VectorAssessment > SingleConfidenceScore`** is a *third* independent statement in
+Lineage A against collapsing an assessment to one number, after `025d` §25D.17 (`Zero` is not a
+scalar) and §25D.32 (not a metric). `C-1` therefore now records **three witnesses on the
+non-scalar side, in one lineage** — and the scalar `Loss_{ℛ_req}` sits in **Lineage C**, which
+§Batch-006 has just shown does not cite Lineage A. **`[OPEN]`. Not adjudicated.**
+
+⚠️ Counter-evidence in the same lineage, recorded for fairness: `025r` gives
+`ExpectedLoss = Σ_s P(s\|E)L(a,s)` — a genuine scalar loss. So Lineage A is **not uniformly
+anti-scalar**; it separates *decision-theoretic loss over actions* (permitted) from
+*gap/assessment collapse* (refused). That distinction is itself `[EMP]` and material to `C-1`.

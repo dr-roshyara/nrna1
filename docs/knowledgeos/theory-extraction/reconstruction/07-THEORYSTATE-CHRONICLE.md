@@ -87,3 +87,44 @@ Four aspects are held apart throughout: **Conceptual · Formal · Operational ·
 `⊔` — history union vs epistemic join, **no merge**
 `Sat` codomain — 5 / Boolean / 9 / 10 / 3, **no selection**
 `EC` — 7 / 2 / 4 / 9 / 8, **no selection**
+
+---
+
+## `TheoryState(t₆)` — 2026-08-28 09:44 → 10:13 (`025p`–`025z`) · `READ-STRUCTURAL`
+
+**active objects added** `Causation` · `Model M` · `Prediction` · `EU`/`ExpectedLoss` · `DecisionContract` · `SameEntity` · `Derivation` · `Rule` · `Trust` · `Semantics`/`BoundedContext meaning` · `TemporalKnowledge` (tri-temporal) · `EpistemicConvergence` · `Integrity`/`Authenticity` · `ActionContract` · `do(X)`
+**mutations** none to `Sat`, `EC`, `Γ`, `Requirements`; `Zero_v6` (`025z`)
+**new signatures** `M` 7-tuple · `Prediction` 6-tuple · `Derivation` 5-tuple · `Rule` 4-tuple · `Trust(a,d,c,t)` · `SameEntity(r₁,r₂|C,E,M)` · `ActionContract` 8-tuple · `Conclusion = f(K,Context,Semantics,Rules,Models,Policies)`
+**dependencies** `Knowledge → Prediction → Consequences → Utility/Risk → Decision`; `Knowledge ≠ Decision ≠ Action`
+**contradictions** ⚠️ within-lineage tension: `025r` permits a scalar `ExpectedLoss` over *actions*; `025d`/`025y` refuse scalar collapse of an *assessment* → **`G-09`**
+**status** Conceptual ✓ · Formal ✓ · Operational ✗ · Governance ✗
+**aspect note** every entry here is `READ-STRUCTURAL`. **Not promotable to evidence for a definition, lineage edge or contradiction without a complete read.**
+
+> ⭐ **Turning point:** Lineage A closes its arc. Between `025d` and `025z` it has produced a
+> requirements/contract/gap layer, a state algebra, a distributed layer, a revision layer, an
+> evidence-aggregation layer, and finally decision and action contracts — **a complete epistemic
+> control loop**, all within roughly 20 hours.
+
+---
+
+## ⛔ RETROACTIVE ANNOTATION (not a rewrite) — applies to `TheoryState(t₅)` and BATCH 003
+
+Per operating-model §10, earlier states are **annotated, never rewritten.**
+
+`TheoryState(t₅)` recorded `T:(K,E,Ω,EC)→K'` and noted that `276-final` (08-30) has `δ(K_t,e_t)`,
+implying the arguments were *lost*. The `G-03` investigation establishes that **no such transition
+exists**: the `272a`–`277` lineage cites the `025` series zero times and never contains `Ω` or `EC`.
+
+```
+Historical TheoryState(t₅)   as recorded, unchanged
+            ↓
+later evidence               citation sweep, 2026-09-09
+            ↓
+Correction                   the two signatures belong to DISJOINT lineages
+            ↓
+Current understanding        the corpus contains at least three parallel lineages
+                             (A: 025 series · B: 272a-277 · C: math lane 09-02)
+                             that develop overlapping objects and never cross-reference
+```
+
+`TheoryState(t₅)`'s text stands as history. This annotation is the correction.
