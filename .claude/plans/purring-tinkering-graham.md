@@ -1185,7 +1185,42 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-052 — K0/V1 Programme Characterization + Hostile Audit —
+**Status update, 2026-09-09 (latest): MD-054 — VERIFY SESSION Kernel-Reconstruction Thread (71 files,
+the rest of MD-052's own `verification/` cluster) — EXECUTED, admitted narrow-scope, no label.**
+Applied the standing forward-read methodology fully to `brainstorming/verification/`'s top-level
+directory — found it interleaves with `spec/` (K0's own home) as one continuous ~30-hour, 71-file
+thread MD-052 only sampled the start of. Read the whole remainder to its own terminal document,
+`THEORY-STATUS-VERDICT.md`, which self-issues "STOP. No theory-extension phase follows this pass."
+**Six waves**: corpus reconnaissance (K0) → 200-step adversarial deep-verification of
+`phase_measure_theory/` (finds 9 fabricated result artifacts, ~1900 unfalsifiable experiments, 1 live
+10× arithmetic error, zero empirical acts; verdict "Steps 1-236 a completed theory? NO") → a from-
+scratch kernel reconstruction, `K=(𝒜,ℛ)`/`Assertion=(id,P,e,c,t,Π)`, built by adversarially attacking
+a rival corpus candidate then discovering it rediscovers a forgotten Day-2 file (Q7) → deep
+formalization cross-validated against **this repo's own live `docs/knowledge/` code** (37 real docs,
+`knowledge-lint`/`knowledge-graph` actually executed) with the verifier's own errors disclosed and
+fixed in place → a closure claim ("24/24 criteria met") → **a second, independent-in-method
+adversarial pass explicitly told to attack the first pass "as a claim, not a record"** — overturns 4
+of 6 claimed closures, finds a genuine NEW internal contradiction (`id` hashes a field the theory also
+declares mutable), and finds three "inexpressible" capabilities (uncertainty, non-identifiability,
+missingness) are actually already formally defined pre-dating the whole programme, just never adopted
+into the ratified architecture — a governance gap, not a mathematical one. **Terminal verdict (8
+separate senses, none collapsed): "THE THEORY IS NOT CLOSED, AND IT IS CLOSER THAN THE PRIOR VERDICT
+ALLOWED."** One clean surviving result (Provenance's 4-way split); one unanswered governance question
+put to a PO/ARB. **K0 relation**: complementary not competing (K0 treats K as opaque; this decomposes
+it) — and K0 itself is never cited by this later wave, a fresh instance of the corpus's own most-
+repeated pathology, now found inside its own prior work. A genuine, fingerprint-verified independent
+second research stream ("ChatGPT") corroborates 11/17 concepts. **F1/F3/F5/F6: UNRESOLVED. F4: PARTIAL
+CORRESPONDENCE (same root corpus, no document-level link). GA-001: UNCHANGED. GA-038: UNCHANGED,
+strongly reinforced** — even this level of rigor still fails to close it. **No F9/F10 assigned** — the
+confirmed internal contradiction makes this a weaker registration case than K0's own. **MD-054-DQ-1**:
+user chose to admit all 71 files narrow-scope (same discipline as MD-052) — combined with `spec/`, the
+entire `verification/` directory (80 files) is now admitted narrow-scope; `findings/`/`reports/` still
+not admitted. No code independently executed this phase (disclosed limit). No backlog ticket. No
+classification changed; MD-050 kept firewalled throughout. Verified both consistency scripts
+`CONSISTENT`. **Smallest next action, named, not authorized**: independently verify the `id`/mutable-
+`e.state` contradiction by direct execution against `docs/knowledge/`'s own live tooling.
+
+**Status update, 2026-09-09 (earlier): MD-052 — K0/V1 Programme Characterization + Hostile Audit —
 EXECUTED, admitted narrow-scope, no candidate label.** User authorized reading `K0-mathematical-
 kernel-candidate.md` (`brainstorming/verification/spec/`), gave a standing forward-read methodology
 (follow a save-order cluster from a clue until the topic changes — now adopted for the rest of the

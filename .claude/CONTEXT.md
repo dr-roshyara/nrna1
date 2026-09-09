@@ -1,4 +1,95 @@
-**Updated:** 2026-09-09 (latest) — **MD-052 COMPLETE — K0/V1 PROGRAMME CHARACTERIZATION + HOSTILE
+**Updated:** 2026-09-09 (latest) — **MD-054 COMPLETE — VERIFY SESSION KERNEL-RECONSTRUCTION THREAD (71
+FILES), ADMITTED NARROW-SCOPE, NO LABEL.** Applying the standing forward-read methodology to
+`brainstorming/verification/`'s top-level directory found it is one continuous ~30-hour, 71-file
+thread interleaved with `spec/` (K0's own home, MD-052) — MD-052 only characterized the first ~9
+files. Read the entire remainder to its own terminal document, `THEORY-STATUS-VERDICT.md`, which
+self-issues **"STOP. No theory-extension phase follows this pass."** **Six waves**: (1) corpus
+reconnaissance (K0); (2) a 200-step adversarial deep-verification of `phase_measure_theory/`'s 218+
+steps — finds nine fabricated result artifacts, ~1900 experiments with no possible failure mode, one
+live 10× arithmetic error, zero empirical acts across ~500 files, and nine already-competing,
+none-minimal, none-closed kernel candidates already in the raw corpus; explicit verdict "Can we
+legitimately call Steps 1–236 a completed KnowledgeOS theory? **NO**"; (3) a from-scratch kernel
+reconstruction — **`K=(𝒜,ℛ)`, `Assertion=(id,P,e,c,t,Π)`** — built by adversarially attacking a rival
+corpus candidate (Step 245) with executed counterexamples, then discovering the result is a
+rediscovery of a forgotten Day-2 non-step file (`question-7-what-is-knowledge-itself.md`); (4) deep
+formalization waves cross-validating every component against **this repository's own live
+`docs/knowledge/` code** (37 real governed documents, `knowledge-lint.php`/`knowledge-graph.php`,
+actually executed per the source programme's own transcripts), with the verifier's own errors
+disclosed and corrected in place rather than hidden (e.g. two false "policy-dependence confirmed"
+claims, corrected against its own data); (5) consolidation into `CANONICAL-KNOWLEDGEOS-THEORY.md`
+(30 sections, "19/24 boxes closed") followed immediately by `THEORY-CLOSURE-AUDIT.md` claiming
+"24/24 criteria met"; (6) **a second, independent-in-method adversarial re-verification pass,
+explicitly instructed to treat the prior closure "as a claim to be attacked, not as a record"** —
+re-reads primary corpus sources directly, re-executes the cited Python witness scripts, and
+**overturns four of six claimed closures**, finds a genuine NEW internal contradiction in `K=(𝒜,ℛ)`
+itself (assertion identity hashes a field the same theory declares mutable — withdrawing one evidence
+item re-keys the assertion and dangles every relation edge pointing at it), and finds the three
+capabilities the prior pass called "inexpressible" (uncertainty, non-identifiability, missingness) are
+in fact already formally defined in the corpus, dated before this entire programme began, but never
+adopted into the ratified architecture — **a governance gap, not a mathematical one.**
+
+**Terminal verdict** (`THEORY-STATUS-VERDICT.md`, the actual final document — the intermediate "24/24"
+claim is explicitly NOT treated as authoritative): eight separate closure senses, none collapsed —
+mathematically closed NO · semantically closed NO (11 of 25 terms overloaded; `Ω` alone carries ≥4
+incompatible senses) · computationally closed PARTIAL · empirically validated NO (the strongest cited
+witness for `Σ ⊥ Γ` is a tautology — a dead, never-read parameter, confirmed by direct code
+inspection) · implementation-conformant PARTIAL · governance-closed PARTIAL (closed twice, by two
+unreconciled mechanisms) · practically implementable PARTIAL · theoretically complete NO (21
+registered gaps, 3 blocking). Boxed final statement: **"THE THEORY IS NOT CLOSED, AND IT IS CLOSER
+THAN THE PRIOR VERDICT ALLOWED."** One clean result survives everything unchanged (Provenance's
+four-way split: `Π` / `EvidenceProvenance` / `History(T)` / `MessageProvenance`). One explicit
+normative question is put to a PO/ARB, unanswered by the programme itself: whether to adopt an
+already-drafted `(W,Ω)` observation layer, a six-state "Zero" dimension-taxonomy (`D_t`), and a typed
+uncertainty object `U(H)` into the architecture.
+
+**Relation to K0 (MD-052)**: **complementary, not competing** — K0 explicitly treats the knowledge-
+state sort as opaque, never decomposed (its own §0 headline); `K=(𝒜,ℛ)` is exactly the internal
+decomposition K0 declined to attempt. Neither document states this relationship; it is this phase's
+own finding. **K0 is never cited by the later kernel-reconstruction wave** — a fresh instance of this
+same programme's own most-repeated self-diagnosed pathology (the Q7/Q14/EKP "the answer was already
+there and got lost" pattern), now found inside its own earlier work too. A genuine, contamination-
+checked second independent research stream (attributed to "ChatGPT," fingerprint-verified) corroborates
+11 of 17 compared concepts, with 3 genuinely unresolved differences and one shared overstatement found
+unsupported by both streams on inspection.
+
+**Relation to F1–F8/GA-001/GA-038**: F1/F3/F5/F6 — **UNRESOLVED**, no connection found anywhere. F4
+(Model B's own `K_t`/`Δ_t` family) — **PARTIAL CORRESPONDENCE**: this thread's own reconstruction draws
+on the *same root* `phase_measure_theory/` corpus F4 is built from (V0's own census: ~25 already-
+competing right-hand sides for `K_{t+1}`), but lives in a separate directory and was never cross-
+checked against Model B's own specific evidence population — no document-level correspondence
+established. **GA-001: UNCHANGED.** **GA-038: UNCHANGED, and strongly reinforced** — a ~30-hour,
+adversarially self-attacking, live-code-cross-validated attempt at exactly this question still
+terminates NOT CLOSED, with its own central object found internally contradictory by its own second
+pass — the strongest evidence yet that GA-038 is not an artifact of insufficient effort. **No F9/F10
+or any label assigned** — the confirmed internal contradiction makes this a *weaker* registration case
+than K0's own (merely unverified, not contradicted), a decision left to the user rather than defaulted.
+
+**MD-054-DQ-1 — admissibility, presented via `AskUserQuestion`** (3 options: admit all 71 files
+narrow-scope / admit only terminal-load-bearing documents / do not admit — shelve). **Decision: Option
+A — ADMIT ALL 71 top-level files** in `brainstorming/verification/`, narrow scope, same discipline as
+MD-052's own `spec/` admission: usable for further characterization/comparison research only — not
+merged into the F1–F8 inventory, no composition test, no GA-001/GA-038 resolution, admission ≠
+adoption. **Combined with MD-052's own 9-file `spec/` admission, the entire `brainstorming/
+verification/` directory (80 files) is now admitted narrow-scope.** `findings/`, `reports/`, and any
+other subdirectory remain **not admitted**.
+
+**Method disclosed as a limit**: no code was independently executed by this phase itself — every
+"executed" claim in the record above is the source programme's own self-report of its own execution,
+not independently re-run here (a separate option to do so this turn was considered and not selected).
+
+**No backlog ticket** (the K0-never-cited pattern corroborates existing `EKS-21`/MD-051/MD-052
+discipline, not a new gap). No classification changed; no frozen artifact (MD-024–053) modified; no
+executable file read or executed; `classification-register.tsv` untouched; K-1/K2 untouched; no Stage
+07; MD-050 kept firewalled from this material throughout, in both directions. Verified both
+consistency scripts `CONSISTENT`. Full record: `14_decision-log/model-boundary-decisions.md` → MD-054
+execution record; `14_decision-log/MD-054-verify-session-kernel-reconstruction-thread/` (5 files).
+**Smallest next action, named, not authorized**: a separately-authorized phase to independently verify
+the single most consequential unresolved claim this thread itself flags as blocking — the
+`id`/mutable-`e.state` contradiction — by direct execution against this repository's own live
+`docs/knowledge/` tooling. This session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-74 (2026-09-09, earlier) — MD-052 COMPLETE — K0/V1 PROGRAMME
+CHARACTERIZATION + HOSTILE
 AUDIT, ADMITTED NARROW-SCOPE, NO CANDIDATE LABEL.** User authorized reading `K0-mathematical-kernel-
 candidate.md` (`brainstorming/verification/spec/`) and gave a **standing methodology, now adopted for
 the rest of this session**: when a save-order file cluster yields a relevant clue, read forward
