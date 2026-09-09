@@ -379,3 +379,18 @@ requirement (`PaymentConfirmed(S)`) and found the block is corpus-wide, not loca
 `Γ` has no definition anywhere (not even a schema); `EC` has a schema (Definition 2.20) but no
 instance for any real requirement; and corpus-wide greps confirm `EvalReq(`/`Det_r(` each occur in
 exactly one place — their own definitions — never invoked anywhere. See `EKS-47`.
+
+**EKS-48 filed, 2026-09-09** (MD-074, independent verification of MD-073): the `Sat(K,r,Γ)`
+operational gap can only be closed by **constructing** new theory, and **no authorized construction
+route exists**. Two independent runs (`MD-073`, `MD-074`) now agree the missing semantics cannot be
+*found* in more documents — `Γ`'s definition, an `EC`-construction rule, a general single-evidence
+`EvalReq` procedure (which has no type signature at all), a `Det_r` body, and a `Δ`/`Zero` step
+over the 3-argument `Sat` all have to be written for the first time — and this corpus's own rules
+make that a governed act (the tracked chain has never received a governance-adoption event; AI
+knowledge enters as `authority: generated`, never authoritative without human review). The ticket
+does not make the decision; it records that the decision is the real blocker and proposes a scoped
+construction phase, `SAT-OPERATIONAL-CLOSURE-v1`, with disclosure rules (new-theory provenance
+markers, no silent merge, no reopened GAP-004), acceptance criteria (re-run the closure test to a
+COMPUTED/PARTIALLY COMPUTED verdict on `r_1` and one more requirement), and the three-way choice
+for the decision-maker (authorize / decline / re-scope). Distinct from `EKS-47` (diagnosis) — this
+is the prescription awaiting a signature. See `EKS-48`.
