@@ -72,3 +72,46 @@ $$\boxed{\textbf{⭐⭐ The exposure is not weakened — it is } \mathbf{SHARPER
 `P-50` `docs/knowledgeos/theory-extraction/68-P50-PERSISTENCE-KERNEL-OBJECT-TYPE-AND-ADEQUACY-AUDIT.md` §3, §14
 Status context: `P-43` (`[REC]`, no adoption), `P-44` (no adoption pathway), `P-45` (no authority scope), `EKS-12` (closed — deliberate boundary).
 ⚠️ Distinct from `EKS-13` (cross-lane dependency) per `ES-005.4`.
+
+---
+
+## Second instance, recorded 2026-09-09 — a disambiguation register already existed, and was not used
+
+⭐⭐ **The item above records that a research construct carries a name reading like a product component.
+A follow-up review found something that makes the exposure both worse and cheaper to fix.**
+
+⭐⭐⭐ **The estate already maintains a register that disambiguates this exact word.** Dated **2026-08-29
+— nine days before the construct in question was named** — it lists **five distinct senses** in which
+the term is used across the programme, says for each what it is, and states plainly which ones are
+**not** mathematics and which **do not claim** to be complete. It is a good, short, purpose-built table.
+
+⚠️ **Two of its five entries already use the same short label** the new construct then adopted. **A
+sixth sense was minted without consulting it.**
+
+### Why this changes the assessment
+
+**a. The confusion is documented, not latent.** ⭐ The item above treated the naming risk as something a
+future reader might stumble into. **In fact the programme had already stumbled into it enough times to
+write a register about it** — so the risk is demonstrated, not hypothetical.
+
+**b. The fix is smaller than first thought.** ⭐⭐ No rename is needed to remove most of the exposure:
+**adding the new sense as a sixth row to a table that already exists** would tell any reader
+immediately which kernel is meant. **That is a one-line act against an existing artifact.**
+
+**c. But the cost of leaving it grows differently now.** ⚠️ A reader who *does* find the register will
+reasonably conclude it is complete — **and will therefore not expect a sixth sense to exist.** An
+incomplete disambiguation register is more misleading than none at all, because it invites trust.
+
+**d. It also explains several near-misses.** ⭐⭐ The register distinguishes senses that a separate work
+stream repeatedly had to disentangle by hand — including one case where two unrelated things both
+carried the count **eleven** and had to be explicitly held apart to avoid a false equivalence.
+
+### What this does *not* change
+
+⛔ **No rename is proposed, and none is needed for the cheap fix.** ⛔ **No new item is opened** — under
+the never-a-copy rule a second instance belongs on this record. ⛔ **The register itself is not
+criticised**; it is the best available artifact on the problem and is the reason this instance could be
+identified at all.
+
+**Evidence:** `docs/knowledgeos/theory-extraction/86-P68-…` §7 · the disambiguation register in
+`docs/knowledgeos/brainstorming/verification/spec/` (2026-08-29), §1 of that document.
