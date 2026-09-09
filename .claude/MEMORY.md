@@ -909,6 +909,21 @@ was found. **The objective is the thread's actual disposition.**
 · top-level `verification/` and `research/` — **for those the analogue is the folder's own index plus its
 closing report** (`P-72`).
 
+**§1a CENSUS SUCCESS ≠ READING COMPLETENESS (added 2026-09-09, human research owner).** A correct census
+proves the *population and order* were established; it proves **nothing** about whether the documents
+were read adequately. `P-75` is the proof: its census caught an interleaved duplicate and extended a
+thread from `161→168` to `161→175`+, and in the same audit a **six-way internal contradiction inside a
+single already-read file** went unnoticed — caught only by the estate's own verification register.
+⇒ **Report census coverage and reading depth as two separate figures, and never let a clean census stand
+in for having understood a document.** ⛔ Search failures and reading failures are different defects with
+different remedies; the census fixes only the first.
+
+**§12a BEARING TEST — for cross-checking findings against a construct (added 2026-09-09).** ⛔ Never ask
+whether a finding *mentions* something resembling a cell. ⭐ Ask whether its **evidenced proposition can
+logically bear on** that cell's **obligation · witness · necessity · sufficiency · failure condition**.
+Resemblance, shared vocabulary and adjacent identifiers are ⛔ **not** bearing. ⛔ **No construct element
+is promoted, removed, merged or declared verified because a finding looks related.**
+
 **Witnessed traps:** `-duplicate` files at distinct timestamps *(adjacent + same artifact)*; ~19
 md5-identical groups already classified by the archaeology census; and substring false positives — `OWA`
 matched inside `OWASP`/`TOWARD` *(`P-67`)*, `EC` inside `DECISION`/`EXECUTION` *(`P-74`)*, each of which
