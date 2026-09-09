@@ -1,5 +1,31 @@
-**Updated:** 2026-09-09 (latest) — **MD-049 COMPLETE — CONTROLLED SEMANTIC-EQUIVALENCE CONSTRUCTION
-TEST. HARD STOP per explicit user instruction — no MD-050 opened.** User accepted MD-048 as the
+**Updated:** 2026-09-09 (latest) — **MD-050 COMPLETE — F3 OBS/BEH_𝔠 CONSTRUCTION.** Direct, terse
+authorization ("Construct the Obs/Beh_c instantiation for F3") — the exact smallest next action
+MD-049 itself named. **Central discovery made while re-grounding in F3's own source, reported
+first**: 12 of MinKer's 13 capability names are exact matches to F3's own C0 operator names
+(`Observe, Interpret, Represent, Relate, Discriminate, Hypothesize, DetectGap, Challenge, Validate,
+Revise, Determine, Select`); the 13th (`Qualify`) is also a named F3 operator, held back from base C0
+specifically because it's recorded as an irreducible gap. **Upgrades MD-044/045/049's own repeated
+"structural correspondence candidate" classification to "strongly indicated"** — still short of
+confirmed identity (no cross-citation anywhere; F3's own `Infer` has no MinKer counterpart).
+**Construction**: `Beh_𝔠(K):=Reach(Ops(K))`, using F3's own already-existing atom/carrier/derivation-
+rule machinery, explicitly labeled a RESEARCH CONSTRUCTION (disclosed modelling choice, not corpus-
+established fact), hand-traced (no code executed), cross-checked via a second, more robust argument.
+**Computed results**: `Beh_𝔠(C0)=21/23 kinds` (missing `EVIDENCE`,`VERDICT`, sole blocker
+`A_QUALIFICATION`); `Beh_𝔠(C0_PLUS)=23/23 (complete)`. **Three proofs**: `C0≺_cap C0_PLUS` (strict,
+computed); `Qualify` provably irreducible (unique atom holder); `DetectGap` provably redundant given
+`{Determine,Discriminate}` (`Beh_𝔠(C0_PLUS\{DetectGap})=Beh_𝔠(C0_PLUS)`, computed `≡_cap`) — a
+concrete instance of the "13→12/13-irreducible, equal-cardinality minimal kernels" pattern MD-048's
+breakthrough documents narrate but never demonstrate. **Scope, precisely bounded**: within-F3 only —
+does not compare against F1/F5 (still unrepresented); GA-001/GA-038 both UNCHANGED. No backlog
+ticket. No classification changed; no frozen artifact modified; no source file modified or executed;
+`classification-register.tsv` untouched; no canonical Kernel selected; K-1/K2 untouched; no Stage 07.
+Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/model-boundary-
+decisions.md` → MD-050 execution record; `14_decision-log/MD-050-f3-obs-beh-construction/` (6 files).
+**Smallest next action, named, not authorized**: attempt the same construction for F1 or F5. This
+session's work is being committed now, per explicit instruction.
+
+**Superseded-update-marker-71 (2026-09-09, earlier) — MD-049 COMPLETE — CONTROLLED SEMANTIC-
+EQUIVALENCE CONSTRUCTION TEST. HARD STOP per explicit user instruction — no MD-050 opened.** User accepted MD-048 as the
 evidence boundary, declined another search loop and declined inventing a capability-identity theory,
 and authorized a narrow construction test: can existing trace/behavior machinery test whether
 pre-registered candidates are semantically equivalent, without requiring shared names/decomposition?

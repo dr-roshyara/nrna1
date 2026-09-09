@@ -4388,3 +4388,53 @@ Stage 07. No implementation.**
 decision-log entry written.
 
 **MD-049 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-050 opened.**
+
+---
+
+## MD-050 — F3 Obs/Beh_𝔠 Construction (EXECUTED, 2026-09-09)
+
+**Authorization**: direct, terse instruction — "Construct the Obs/Beh_c instantiation for F3" — the
+exact smallest next action MD-049 itself named. Executed with the same rigor and governance-closeout
+discipline as prior MDs, for consistency (matching the MD-041 precedent for terse authorizations).
+
+**Central discovery made while re-grounding in F3's own source, reported before the construction
+itself**: reading `kr/operators.py` directly found **12 of MinKer's 13 capability names are exact
+matches to F3's own C0 operator names** (`Observe, Interpret, Represent, Relate, Discriminate,
+Hypothesize, DetectGap, Challenge, Validate, Revise, Determine, Select`), and the 13th (`Qualify`) is
+also a named F3 operator — held back from base C0, placed only in `C0_PLUS`, exactly because the
+corpus records it as an irreducible gap. **This upgrades MD-044/045/049's own repeated "STRUCTURAL
+CORRESPONDENCE CANDIDATE, not confirmed" classification to "STRUCTURAL CORRESPONDENCE, STRONGLY
+INDICATED"** — still short of confirmed identity, since no document anywhere cites the other by name,
+and F3's own `Infer` operator has no MinKer counterpart. MD-044/045/049's own text not modified.
+
+**The construction**: `Beh_𝔠(K) := Reach(Ops(K))`, using F3's own already-existing atom/carrier/
+derivation-rule machinery (`kr/atoms.py`, `kr/carriers.py`, `kr/reach.py`), explicitly labeled a
+**RESEARCH CONSTRUCTION** — a disclosed modelling choice, not corpus-established fact. Traced by hand
+(no code executed, per the standing rule), cross-checked via a second, more robust atom-pool argument.
+
+**Computed results**: `Beh_𝔠(C0) = 21 of 23 carrier kinds` (missing `EVIDENCE`, `VERDICT` — the sole
+blocker being `A_QUALIFICATION`, held only by `Qualify`, absent from C0's entire atom pool).
+`Beh_𝔠(C0_PLUS) = all 23 kinds (complete)`. **Proof 1**: `C0 ≺_cap C0_PLUS`, strict, computed. **Proof
+2**: `Qualify` is provably irreducible (unique holder of `A_QUALIFICATION`; its removal always shrinks
+`Beh_𝔠`). **Proof 3**: `DetectGap` is provably redundant given `{Determine, Discriminate}` present
+(`DetectGap`'s atoms `⊆ atoms(Determine)∪atoms(Discriminate)`; `Beh_𝔠(C0_PLUS\{DetectGap}) =
+Beh_𝔠(C0_PLUS)`, a computed `≡_cap`). This gives a concrete, computed instance of exactly the "13→
+12/13-irreducible, two minimal kernels of equal cardinality" pattern MD-048's breakthrough documents
+narrate but never demonstrate.
+
+**Scope, precisely bounded**: within-F3 only — does not compare F3 against F1 or F5 (neither has any
+comparable representation, MD-049's own finding unchanged). Does not bear on GA-001 or GA-038, both
+UNCHANGED.
+
+**No backlog ticket** — purely mathematical/scientific findings.
+
+**No classification changed. No frozen artifact (MD-024–049) modified. No source file modified or
+executed. `classification-register.tsv` untouched. No canonical Kernel selected. K-1/K2 untouched. No
+Stage 07.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-050-f3-obs-beh-construction/` directory (6 files) plus this decision-log entry
+written.
+
+**MD-050 status: COMPLETE. Smallest next action, named, not authorized: attempt the same construction
+for F1 or F5. Awaiting separate authorization for any further step.**

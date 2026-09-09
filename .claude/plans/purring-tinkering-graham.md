@@ -1185,7 +1185,28 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-049 — Controlled Semantic-Equivalence Construction Test —
+**Status update, 2026-09-09 (latest): MD-050 — F3 Obs/Beh_𝔠 Construction — EXECUTED.** Direct, terse
+authorization ("Construct the Obs/Beh_c instantiation for F3") — the exact smallest next action
+MD-049 itself named. **Central discovery, reported first**: 12 of MinKer's 13 capability names are
+exact matches to F3's own C0 operator names; the 13th (`Qualify`) is also a named F3 operator, held
+back from base C0 specifically because it's recorded as an irreducible gap — **upgrades MD-044/045/
+049's own "structural correspondence candidate" classification to "strongly indicated"** (still short
+of confirmed identity — no cross-citation anywhere; F3's own `Infer` has no MinKer counterpart).
+**Construction**: `Beh_𝔠(K):=Reach(Ops(K))`, from F3's own already-existing atom/carrier/derivation-
+rule machinery, explicitly labeled a RESEARCH CONSTRUCTION, hand-traced (no code executed),
+cross-checked via a second, more robust argument. **Computed**: `Beh_𝔠(C0)=21/23 kinds` (missing
+`EVIDENCE`,`VERDICT`); `Beh_𝔠(C0_PLUS)=23/23 (complete)`. **Three proofs**: `C0≺_cap C0_PLUS` (strict,
+computed); `Qualify` provably irreducible (unique atom holder); `DetectGap` provably redundant given
+`{Determine,Discriminate}` (computed `≡_cap`) — a concrete instance of the "13→12/13-irreducible,
+equal-cardinality minimal kernels" pattern MD-048's breakthrough documents narrate but never
+demonstrate. **Scope, precisely bounded**: within-F3 only — does not compare against F1/F5 (still
+unrepresented); GA-001/GA-038 both UNCHANGED. No backlog ticket. No classification changed; no frozen
+artifact modified; no source file modified or executed; `classification-register.tsv` untouched; no
+canonical Kernel selected; K-1/K2 untouched; no Stage 07. Verified both consistency scripts
+`CONSISTENT`. **Smallest next action, named, not authorized**: attempt the same construction for F1
+or F5.
+
+**Status update, 2026-09-09 (earlier): MD-049 — Controlled Semantic-Equivalence Construction Test —
 EXECUTED. HARD STOP per explicit user instruction — no MD-050 opened.** User accepted MD-048 as the
 evidence boundary, declined another search loop and declined inventing a capability-identity theory,
 authorized a narrow construction test instead. **Pre-registered pairs**: (F1 frozen K-1, 8-primitive
