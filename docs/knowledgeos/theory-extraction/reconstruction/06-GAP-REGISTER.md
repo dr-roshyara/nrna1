@@ -331,3 +331,85 @@ unextracted. **`G-12` is not resolved.**
 sits upstream of `G-19`, `G-20` and the whole `G-08` question. If the "executed reconstruction" is
 locatable in the readable corpus, the middle interval's central claim gains a source; if it resolves
 into the firewalled lane, that is itself the answer and must be recorded as `FIREWALL-LIMITED`.
+
+
+---
+
+# ⭐⭐ G-18 — DISPOSITION: **CLOSED**. The referent is identified, readable, and in the corpus.
+
+**Question:** what is the unnamed *"latest executed reconstruction"* cited by steps 262–267?
+
+## Disagreement with the commission's search plan, stated first
+
+The commission's §7 priority list named `step_251`, `262`, `263–267`, `273`, the 08-29 recovery
+document, `230` and `183-pre` — **all in `phase_measure_theory/`. It omitted `verification/`
+entirely.**
+
+That omission is material, and my own `P-96` finding predicted it:
+**`phase_measure_theory/` holds commissions; `verification/` holds executions.** The phrase under
+investigation is *"the latest **executed** reconstruction"*. **The answer was never going to be in
+the commission lane.** Searching only the named list would have returned another `UNRESOLVED`.
+
+## The answer
+
+$$\boxed{\textbf{A mandate-driven batch in } \texttt{verification/}\textbf{: artifacts A–J, front matter } \texttt{mandate: 20260830\_1918}\textbf{, timestamped 19:22 → 19:28.}}$$
+
+| letter | artifact | time |
+|---|---|---|
+| A | `CANONICAL-THEORY-TRIANGULATION` | 19:22 |
+| B | `ASSURANCE-RECONSTRUCTION-MATRIX` | 19:23 |
+| C | `PROPOSITION-RECONSTRUCTION-AUDIT` | 19:23 |
+| **D** | **`KNOWLEDGE-STATE-CANONICAL-MODEL`** | **19:24** |
+| E | `TRANSFORMATION-CANONICAL-MODEL` | 19:25 |
+| F | `STATE-HISTORY-SUFFICIENCY-RESULT` | 19:25 |
+| G | `THEORY-TO-EKP-CONFORMANCE-MATRIX` | 19:26 |
+| **H** | **`END-TO-END-KNOWLEDGE-STATE-EXECUTION`** — status *"**EXECUTED** — all ten required elements, real inputs, real outputs"* | **19:26** |
+| I | `FINAL-THEORY-GAP-REGISTER` | 19:27 |
+| J | `CANONICAL-UBIQUITOUS-LANGUAGE` | 19:28 |
+
+**`step_262` is stamped 19:27:07 — between artifacts I and J. It was written *during* the batch.**
+That is why it can say *"the latest executed reconstruction has **already** closed much of Step 261."*
+
+**Artifact D is the specific source.** §1 opens: *"**What KIND of thing is `K = (𝒜, ℛ)`?**"*, parses
+the running EKP into `(𝒜, ℛ)` with `|𝒜| = 37, |ℛ| = 51`, and compares *"the theory's:
+`(id, P, e, c, t, Π)`"* — **exactly `step_262`'s two objects, three minutes earlier.**
+
+**Disposition: `CLOSED`.** The referent is a corpus file, readable, dated, and content-matched.
+`G-18` is **not** `UNRECORDABLE` and **not** `UNRESOLVED`.
+
+## ⛔ But the transmission dropped the qualification
+
+Artifact D §3 — *"minimality, tested only now that the model executes"* — states the result's scope:
+
+> *"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore
+> **earned** — but **only in the sense step 254 names: `Minimality(K | 𝒯)`, relative to the
+> transformation set**."*
+
+`step_262`, three minutes later:
+
+> *"The resulting minimality claim … is **reported as PROVEN** by the executed programme. …
+> Therefore Step 262 should **not reopen the already-closed `K` problem**."*
+
+$$\boxed{Minimality(K \mid \mathcal{T}) \;\longrightarrow\; \textbf{"PROVEN"} \;+\; \textbf{"do not reopen"}}$$
+
+The relativisation is gone, and the instruction closes the repair path. **Backlog `EKS-46` raised.**
+
+⚠️ **This changes the standing of the `272a`–`277` cluster's central claim.** The cluster inherits
+"minimality PROVEN". The source says "earned, relative to `𝒯`". Those are different claims, and
+`𝒯` — the transformation set — is itself one of the corpus's least settled objects.
+
+## What this does NOT settle
+
+`G-14` — the identity of **"Step 272"**, source of `K=(A,R,Σ,E_L)` at `step_273` — is **separate and
+still open.** Artifact D concerns `K=(𝒜,ℛ)`, the *2-tuple*. The 4-tuple's provenance is a different
+question, under investigation.
+
+`G-20` is therefore **split**: the `(𝒜,ℛ)` half is closed with `G-18`; the `Σ`/`E_L` half rides with
+`G-14`.
+
+## Consequence for the two-lane rule — now load-bearing, not descriptive
+
+`P-96` recorded the commission/execution lane split as an observation. It has now **resolved a
+primary gap that the single-lane search plan could not have resolved.** Promoted to a standing
+search rule: **any question about what was *executed*, *proven*, *closed* or *demonstrated* is
+searched in `verification/` first.**

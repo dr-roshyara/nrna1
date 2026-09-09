@@ -158,3 +158,50 @@ Not a `TheoryState(t)` — a **structural finding about the corpus** that condit
 
 **Three lanes, three different relations.** No common provenance ancestor of all three exists in
 the readable corpus. The only *explicit* descent is **B → C, and it starts on C's second day.**
+
+---
+
+## ⭐ K-LINEAGE — five versions preserved as branches, none merged
+
+Per the operating strategy §4 and §7: **no synthetic `K`.** Each version stands with its own
+provenance and status.
+
+```
+K_v1  031        (E_t,A_t,M_t,C_t,F_t,V_t,R_t)      7   post-refounding formulation      [EMP]
+K_v2  recovery   (𝒜_t,ℛ_t,ℰ_t,ℋ_t,𝒵_t,ℒ_t)          6   RETROSPECTIVE CITATION of
+                                                        "the earlier model"              [EMP]
+K_v3  artifact D (𝒜,ℛ) · Assertion=(id,P,e,c,t,Π)   2   EXECUTED, EKP-parsed
+                                                        |𝒜|=37 |ℛ|=51
+                                                        minimality QUALIFIED: (K|𝒯)      [EMP]
+K_v4  step_262   (𝒜,ℛ)                              2   RESTATEMENT of K_v3,
+                                                        qualification DROPPED → "PROVEN" [EMP]
+K_v5  step_273   (A,R,Σ,E_L)                        4   attributed to "Step 272",
+                                                        which has no artifact            UNWITNESSED
+```
+
+**Transitions, classified conservatively:**
+
+| edge | classification | basis |
+|---|---|---|
+| `K_v3 → K_v4` | **`RESTATEMENT`** — *not* refinement | same tuple, three minutes apart, `262` names the source |
+| `K_v4 → K_v5` | **`UNWITNESSED`** | `273` attributes to "Step 272", not to `262`; no document performs the 2→4 extension |
+| `K_v2 → K_v3` | **`CANDIDATE` `[PROPOSED]`** | `𝒜`, `ℛ` share glyph *and* meaning; but `v3` cites the EKP, not `v2` |
+| `K_v1 → anything later` | **`UNWITNESSED`** | no citation found |
+
+⚠️ **`K_v2` is not a definition — it is a quotation.** The recovery document says *"the **earlier
+model** also had"*, and sources itself to *"prior conversation context and uploaded/library
+records"*. Recorded as `RETROSPECTIVE CITATION`, and its own referent is **`UNRECORDABLE` from the
+readable corpus**.
+
+## ⭐ Re-foundings — five now identified, each preserved
+
+| # | where | what changed | classification |
+|---|---|---|---|
+| 1 | `031` | drops the 025 apparatus, declares *"the first deliberate attempt to turn [the conceptual architecture] into…"* | `INDEPENDENT_REFOUNDING` |
+| 2 | `183-pre` | **rejects four equations by name**, demotes six constructs | `EXPLICIT_REPLACEMENT` (pruning) |
+| 3 | `230` | names no predecessor but *"Steps 1–182"*; compresses 8 principles → 6-term equation | `UNWITNESSED` |
+| 4 | `262` | imports `K` from the executed batch, **forbids reopening** | `EXPLICIT_REPLACEMENT` |
+| 5 | `273` | replaces the 2-tuple with a 4-tuple on the authority of a missing step | `UNWITNESSED` |
+
+**Preserved as an observation, not generalised** (§12 of the prior commission): *the middle interval
+contains repeated re-foundings rather than a demonstrably continuous formal evolution.*
