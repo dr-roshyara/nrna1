@@ -5663,3 +5663,65 @@ graph/` directory (4 files) plus this entry written; 15 batch-reading subagent t
 automatically opened. Smallest next research input, named, not authorized: an independent adversarial
 review of the Theory-00-21 rewrite's Part VI `Sat` definition, mirroring the discipline every other
 major claim in this corpus received before being treated as settled.
+
+---
+
+## MD-068 — Chronological Reconciliation and Gap-Closure Pass
+
+**Authorization**: user changed the operating model — MD-067's 876-file traversal preserved as
+historical evidence, but not the end of the reconstruction; commissioned a **Chronological
+Reconciliation and Gap-Closure Pass** turning that evidence into an evolving, typed, provenance-
+preserving theory reconstruction (Definition Evolution Registry, Theory Object Registry, Gap
+Register), gaps investigated one at a time via an explicit Phase A–G protocol.
+
+**Scope resolved via AskUserQuestion before execution**: "continue from the next unread queue
+position" could not mean new file reading (MD-067 already read 100% of the given queue, no unread
+position exists). User confirmed: reprocess the existing 876-record evidence; do not restart the
+traversal; do not expand backward into queue lines 1–5122.
+
+**Executed**: consumed the 15 MD-067 batch ledgers (no blind re-read) to build (1) a Definition
+Evolution Registry — every version of `K_t`/`EC_t`/`Req`/`r`/`standard`/`App`/`Sat`/`Sat_c`/`Sat*`/
+`Eval`/`Eval_c`/`EvalReq`/`Δ_t`/`Zero`/`Determination`/`Decision` recorded, none overwritten; (2) a
+Theory Object Registry disambiguating same-spelled distinct objects (`Sat` vs `Sat_c` vs `Sat*`;
+`Zero` vs `ZeroLens` vs `Zero_{T,Π}`; `Req(EC_t)` vs `ℛ_req` vs bare `ℛ`; `Δ_t`'s two senses); (3) a
+Gap Register of exactly 5 load-bearing gaps (not dozens, per the user's own instruction against
+speculative gaps), each investigated Phase A–G, reopening exactly 2 primary source files
+(`theory-part-02`, `theory-part-06`) directly where the ledger's own summary was insufficient.
+
+**Central findings**: **GAP-001** (`standard`, the acceptance-criterion field of `r`) — source-verified:
+Theory-00-21 relocates the concept from `r`'s own fields to `EC`'s `Rules` field, consulted via an
+abstract `Det_r:𝒱×EC→𝕊_sat`, with the source itself stating explicitly ("§6.44 Thresholds") "the
+meaning of `S` and `τ` must be defined... a threshold without semantics is not a mathematical
+epistemic rule... the exact policy belongs to the epistemic contract" — **CLOSED WITH QUALIFICATION**:
+the architectural question is answered, the computational body is a *disclosed, deliberate* open
+design parameter, not a corpus gap. **GAP-003** (`App` vs `EvalReq`) — source-verified: Theory-00-21's
+own `Req(EC_t,Γ_t)` is defined ("Definition 5.1") to return only already-applicable requirements by
+construction, functionally absorbing `App`'s Sep-2 filtering role — **CLOSED WITH QUALIFICATION**: the
+functional subsumption holds, the explicit bridge itself is `UNWITNESSED` (never asserted by any
+document). **GAP-002** (competing 4-field vs. 6-field `EC_t` structures) — genuinely **UNRESOLVED**,
+no reconciling document exists, but explicitly non-blocking since each lineage is internally
+self-sufficient with its own `EC`. **GAP-004** (adversarial validity of the Theory-00-21 `Sat`
+definition) — reaffirms MD-067's own central finding; **UNRESOLVED, UNRECORDABLE** from the corpus as
+traversed — the one genuine remaining blocker, requiring new investigative work (an actual review),
+not further reading. **GAP-005** (`Δ_t`'s two unreconciled senses) — **CLOSED WITH QUALIFICATION** as
+a permanent, harmless homonym, same disposition class as `EKS-41`.
+
+**Completion condition** (the user's own six-point criteria) verified met: full queue traversed
+(unchanged from MD-067); every major object has a Definition Registry history; every important term
+change classified; every branch preserved distinct; every load-bearing lineage edge classified
+including explicit `UNWITNESSED` marks; every remaining blocker has an explicit Gap ID and status.
+
+**No classification changed. No frozen artifact (MD-024–067) modified.** MD-066 and MD-067 preserved
+unchanged throughout — this phase corrects weight, never text, exactly as MD-067 did for MD-066. No
+canonical theory declared. No `Sat_new` constructed. No new bridge silently asserted. K-1/K2 untouched.
+MD-050 not reopened. `theory-extraction/`/Lane-T material kept firewalled — no such path touched (only
+2 already-known `mathematical_ideas_that_can_be_implemented/` files reopened for direct verification).
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-068-chronological-
+reconciliation-and-gap-closure/` directory (5 files) plus this entry written.
+
+**MD-068 status: COMPLETE. HARD STOP** per the user's own six-point completion condition. Smallest
+next research input, named, not authorized: an actual independent adversarial review of the
+Theory-00-21 `Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)` definition (GAP-004) — the one genuinely open
+blocker this whole reconstruction (MD-057–068) now converges on.

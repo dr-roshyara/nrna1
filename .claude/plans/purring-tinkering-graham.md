@@ -1185,7 +1185,42 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-067 — F4 Theory Evolution Graph (876-file chronological
+**Status update, 2026-09-09 (latest): MD-068 — Chronological Reconciliation and Gap-Closure Pass over
+MD-067's own 876-record evidence — EXECUTED, 4/5 gaps closed/characterized, GAP-004 named as the sole
+remaining blocker, HARD STOP.** User changed the operating model: MD-067's traversal is valuable
+evidence, not the end of the reconstruction — commissioned a pass building a versioned Definition
+Registry, a Theory Object Registry, and a Gap Register from that already-gathered evidence, gaps
+investigated one at a time. **Scope resolved via AskUserQuestion first**: "continue from the next
+unread queue position" could not mean new reading (MD-067 already read 100% of the given queue); user
+confirmed — reprocess the existing evidence, don't restart, don't expand backward into queue lines
+1–5122. **Executed**: built the Definition Evolution Registry (15+ objects, every historical version
+kept, none overwritten — e.g. `K_t` alone has 7 distinct versions never merged), a Theory Object
+Registry explicitly separating same-spelled distinct objects (`Sat`/`Sat_c`/`Sat*`; `Zero`/`ZeroLens`/
+`Zero_{T,Π}`; `Req(EC_t)`/`ℛ_req`/bare `ℛ`), and a 5-gap register, each investigated via the required
+Phase A–G protocol, reopening exactly 2 primary source files directly where the ledger's own summary
+was insufficient. **GAP-001** (`standard`) — source-verified: relocated from `r`'s own fields to
+`EC.Rules`, consulted via an abstract `Det_r`; the source itself states "a threshold without semantics
+is not a mathematical epistemic rule... the exact policy belongs to the epistemic contract" —
+**CLOSED WITH QUALIFICATION**, a disclosed deliberate open design parameter, not a corpus gap.
+**GAP-003** (`App` vs `EvalReq`) — source-verified: `Req(EC_t,Γ_t)`'s own Definition 5.1 returns only
+already-applicable requirements by construction, functionally absorbing `App`'s role — **CLOSED WITH
+QUALIFICATION**, the explicit bridge itself `UNWITNESSED`. **GAP-002** (competing 4-field vs. 6-field
+`EC_t`) — genuinely **UNRESOLVED**, no reconciling document exists, explicitly non-blocking (each
+lineage self-sufficient). **GAP-004** (adversarial validity of the Theory-00-21 `Sat` definition) —
+reaffirms MD-067's own central finding, **UNRESOLVED/UNRECORDABLE** from the corpus as traversed — the
+one genuine remaining blocker, requiring an actual review, not further reading. **GAP-005** (`Δ_t`'s
+two senses) — **CLOSED WITH QUALIFICATION** as a permanent harmless homonym. The user's own six-point
+completion condition (full traversal, every object has a registry history, every term change
+classified, every branch preserved, every edge classified, every remaining blocker has an explicit Gap
+ID) verified met. No frozen artifact modified — MD-066/MD-067 preserved unchanged throughout, weight
+corrected, text untouched. No canonical theory declared. No bridge silently asserted. Verified both
+consistency scripts `CONSISTENT`; firewalls held (only 2 already-known math-lane files reopened for
+direct verification, no `theory-extraction/` path touched). **MD-068 status: COMPLETE. HARD STOP** per
+the user's own six-point completion condition. Smallest next research input, named, not authorized: an
+actual independent adversarial review of `Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)` (GAP-004) — the one
+genuinely open blocker this whole reconstruction (MD-057–068) now converges on.
+
+**Status update, 2026-09-09 (earlier): MD-067 — F4 Theory Evolution Graph (876-file chronological
 queue-driven re-audit of MD-066) — EXECUTED, FINAL DETERMINATION B strengthened toward A, HARD STOP.**
 User, reviewing MD-066, supplied an authoritative chronological reading queue and required a full,
 unfiltered, queue-order traversal, stating MD-066's diagnostic-triage method did not satisfy this. Two

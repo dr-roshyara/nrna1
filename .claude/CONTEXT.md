@@ -1,6 +1,41 @@
-**Updated:** 2026-09-09 (latest) — **MD-067 COMPLETE — F4 THEORY EVOLUTION GRAPH (full 876-file
-chronological queue-driven re-audit of MD-066), FINAL DETERMINATION B strengthened toward A, HARD
-STOP.** User, having reviewed MD-066, supplied an authoritative chronological reading queue and
+**Updated:** 2026-09-09 (latest) — **MD-068 COMPLETE — CHRONOLOGICAL RECONCILIATION AND GAP-CLOSURE
+PASS over MD-067's own 876-record evidence, 4 OF 5 GAPS CLOSED/CHARACTERIZED, ONE GENUINE BLOCKER
+NAMED (GAP-004), HARD STOP.** User changed the operating model: MD-067's traversal preserved as
+historical evidence, not the end of the reconstruction — commissioned a pass turning that evidence
+into an evolving, typed theory reconstruction (Definition Evolution Registry, Theory Object Registry,
+Gap Register), gaps investigated one at a time. **Scope resolved via AskUserQuestion first**:
+"continue from the next unread queue position" could not mean new reading (MD-067 already read 100%
+of the given queue); user confirmed — reprocess the existing 876-record evidence, do not restart, do
+not expand backward into queue lines 1–5122. **Executed**: consumed the 15 MD-067 ledgers (no blind
+re-read) to build a full versioned Definition Registry (every version of `K_t`/`EC_t`/`Req`/`r`/
+`standard`/`App`/`Sat`/`Sat_c`/`Sat*`/`Eval`/`EvalReq`/`Δ_t`/`Zero`/`Determination`/`Decision`, none
+overwritten), a Theory Object Registry (disambiguating `Sat` vs `Sat_c` vs `Sat*`; `Zero` vs
+`ZeroLens` vs `Zero_{T,Π}`; `Req(EC_t)` vs `ℛ_req` vs bare `ℛ`; `Δ_t`'s two senses), and a 5-gap
+register, each investigated Phase A–G, reopening exactly 2 primary source files directly where the
+ledger's own summary was insufficient. **GAP-001** (`standard`) — source-verified: relocated from
+`r`'s own fields to `EC.Rules`, consulted via an abstract `Det_r`; the source itself states "a
+threshold without semantics is not a mathematical epistemic rule... the exact policy belongs to the
+epistemic contract" — **CLOSED WITH QUALIFICATION**, a disclosed deliberate open design parameter, not
+a corpus gap. **GAP-003** (`App` vs `EvalReq`) — source-verified: `Req(EC_t,Γ_t)`'s own Definition 5.1
+returns only already-applicable requirements by construction, functionally absorbing `App`'s role —
+**CLOSED WITH QUALIFICATION**, the explicit bridge itself `UNWITNESSED`. **GAP-002** (competing 4-field
+vs. 6-field `EC_t`) — genuinely **UNRESOLVED**, no reconciling document exists, explicitly
+non-blocking (each lineage self-sufficient). **GAP-004** (adversarial validity of the Theory-00-21
+`Sat` definition) — reaffirms MD-067's central finding, **UNRESOLVED/UNRECORDABLE** from the corpus as
+traversed — the one genuine remaining blocker, requiring an actual review, not further reading.
+**GAP-005** (`Δ_t`'s two senses) — **CLOSED WITH QUALIFICATION** as a permanent harmless homonym. The
+user's own six-point completion condition verified met. No classification changed; MD-066/MD-067
+preserved unchanged throughout (weight corrected, never text); no canonical theory declared; no
+bridge silently asserted. Verified both consistency scripts `CONSISTENT`; firewalls held (only 2
+already-known math-lane files reopened for direct verification, no `theory-extraction/` path touched).
+**MD-068 status: COMPLETE. HARD STOP** per the user's own six-point completion condition. Smallest
+next research input, named, not authorized: an actual independent adversarial review of
+`Sat(K,r,Γ)=Det_r(EvalReq(K,r,EC,Γ),EC)` (GAP-004) — the one genuinely open blocker this whole
+reconstruction (MD-057–068) now converges on.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-067 COMPLETE — F4 THEORY
+EVOLUTION GRAPH (full 876-file chronological queue-driven re-audit of MD-066), FINAL DETERMINATION B
+strengthened toward A, HARD STOP.** User, having reviewed MD-066, supplied an authoritative chronological reading queue and
 required a full, unfiltered, queue-order traversal ("the queue controls chronology; the content
 determines relevance"), explicitly stating MD-066 does not satisfy this requirement. Two rounds of
 scope clarification (via AskUserQuestion): declined a full 5,968-file traversal from generic `K_t`'s
