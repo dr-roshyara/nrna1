@@ -157,10 +157,16 @@ requirement (§4) is unchanged, but eleven same-day instances in one directory i
 edge case for this reconstruction's own working method.
 
 ## 10 · A sharper defect than §9 itself found: filenames in this cluster do not identify stable
-content — they are live, mutable scratch buffers
+content — they are re-used save targets for successive outputs of an external research session
+
+**Mechanism, confirmed directly by the user**: the user runs a separate research session (an external
+tool/conversation) and saves its output into this directory as it produces successive answers,
+reusing the same filename each time rather than saving each answer under a new one. This explains,
+precisely, what was otherwise only observed as an unexplained content change.
 
 `document4.md` and `Untitled-17.md` were read three separate times over roughly two hours of one
-session. Each read returned **genuinely different content** at the same path:
+session. Each read returned **genuinely different content** at the same path — each one, per the
+mechanism above, a different successive output of the same external research session:
 
 | Read | Time (approx.) | Size | md5 | Content |
 |---|---|---:|---|---|

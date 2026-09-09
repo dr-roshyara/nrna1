@@ -213,11 +213,15 @@ precisely because good and bad analysis in this cluster are equally invisible as
 the filename alone. Urgency raised from "low for this file" to moderate-and-growing. Full inventory:
 `EKS-31` §9.
 
-**EKS-31 sharpened further, same day** — `document4.md`/`Untitled-17.md` were each read three times
-over roughly two hours and returned **three genuinely different contents at the same path**, one pair
-byte-identical, the third distinct in both size and md5. **The defect goes one level deeper than
-§1–§9 describe**: in this cluster, even a fixed filename, reopened minutes apart, does not guarantee
-the same content twice — no version marker, no content-timestamp, only a single, overwritten
-filesystem `mtime`. A filename/header marker alone would not resolve this for files under active,
-repeated overwrite; it would need pairing with a non-overwriting save convention or a content-version
-marker. Not designed here, per this ticket's own standing rule. Full detail: `EKS-31` §10.
+**EKS-31 sharpened further, same day, mechanism confirmed by the user** — `document4.md`/
+`Untitled-17.md` were each read three times over roughly two hours and returned **three genuinely
+different contents at the same path**, one pair byte-identical, the third distinct in both size and
+md5. **Confirmed mechanism**: the user runs a separate external research session and saves its
+successive outputs into this directory, reusing the same filename each time rather than saving each
+answer under a new one. **The defect this exposes goes one level deeper than §1–§9 describe**: in
+this cluster, even a fixed filename, reopened minutes apart, does not guarantee the same content
+twice — no version marker, no content-timestamp, only a single, overwritten filesystem `mtime`, so a
+later citation of "`document4.md` as read on 2026-09-09" cannot say which successive answer is meant.
+A filename/header marker alone would not resolve this for files under active, repeated overwrite; it
+would need pairing with a non-overwriting save convention or a content-version marker. Not designed
+here, per this ticket's own standing rule. Full detail: `EKS-31` §10.
