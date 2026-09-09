@@ -5364,3 +5364,62 @@ boundary-reconstruction/` directory (7 files) plus this entry written.
 **MD-063 status: COMPLETE. HARD STOP — no MD-064 opened, no construction phase entered by this
 completion.** Smallest next action, named, not authorized: resolve whether M0125's own `Sat` and
 M0043's own `Sat(K_t,r)` are the same predicate.**
+
+---
+
+## MD-064 — Controlled Identity Adjudication: M0125 `Sat` vs. M0043 `Sat(K_t,r)`
+
+**2026-09-09.** User agreed MD-063 stopped at the right place and authorized exactly the narrow next
+question it named: is M0125's informal `Sat` the same predicate as M0043's formal `Sat(K_t,r)`? — a
+bounded identity/provenance/semantic-reference adjudication, explicitly not a construction phase.
+
+**Executed.** Full re-examination of M0125's own §3.1 table (all six rows, not only the "Sat
+collapse" row previously quoted) found the table is a **theory-wide catalogue** mixing a clearly
+`K_t`-native row (`"K insufficiency \| E_t→K_t \| Distinctions needed for factivity"`, using M0043's
+own `E_t`/`K_t` symbols directly) with rows (`Zero`, `Gap`, `Balanced`, `U`) matching M0125's own
+Contr/Zero/Boundary evaluation family (Parts 1/8). **`Sat` is never once written as an applied
+function anywhere in M0125** (confirmed: exactly two occurrences in the whole file, both informal —
+a table-cell label and the phrase *"outside `Sat`"*, §8.5's own verdict-option E) — no arguments, no
+domain, no codomain, no co-occurrence with `EC_t`/`Req`/`Δ_t`/`Adequate` anywhere. M0126 (the
+near-duplicate) diffed byte-identical in this region — no additional gloss.
+
+**Chronological chain reconstructed** (M0043 00:46 → M0048 08:54, a confirmed same-day review reusing
+`Sat(K,r)` with M0043's own signature, MD-061's own finding → M0125 17:53:04 → M0127 17:53:06):
+consistent with inherited terminology, **but timestamps establish sequence only, not authorial intent
+to inherit** — the chain makes continuation *plausible*, not established.
+
+**Falsification (Q6)**: actively searched for evidence the two `Sat`s are distinct constructs
+(different signature, evaluated object, domain, purpose, explicit redefinition, conflicting
+semantics, separate lifecycle role, independent second definition) — **none found**. Per the
+authorizing prompt's own explicit instruction, this absence of contradiction is **not** treated as
+evidence of identity — it is exactly as inconclusive as the positive search.
+
+**Final Determination: C — IDENTITY UNRESOLVED.** Not A (no explicit/demonstrable identity
+statement); not B (the positive evidence is genuinely split between two readings, not leaning
+strongly); not D (no distinctness established); not E (no contradiction between two specified texts,
+only two readings of one underspecified text).
+
+**Consequence, per the authorizing prompt's own "If C" rule**: the `Reason`/`Provenance`/`Context`/
+`Condition` boundary machinery **remains structural analogy only** for F4 `Sat(K_t,r)` — not
+transferred, not adopted. **No new F4 `Sat` constructed.** Smallest remaining evidence, named
+precisely: a document either (a) writing `Sat` as an applied function over `K_t`/`r`/`EC_t` *and* the
+`Reason`/`Provenance`/`Context` structure together (→ toward A), or (b) explicitly stating a second,
+independent definition of `Sat` distinct from `[DEF-19]`–`[DEF-21]` (→ toward D) — **neither exists
+in any source checked across MD-057–064.**
+
+**No backlog ticket** — a bounded, fully-recorded scientific finding.
+
+**No classification changed. No frozen artifact (MD-024–063) modified. No `Sat_new`. No `Sat*`
+modification. No V7 extension. No `Δ_t` construction. No F3↔F4 bridge. No `≡_sem` reconciliation. No
+GA-001/GA-038 work. No kernel selected. No external literature. No code. K-1/K2 untouched. MD-050 not
+reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-064-sat-identity-
+adjudication/` directory (7 files) plus this entry written.
+
+**MD-064 status: COMPLETE. HARD STOP — no MD-065 opened by this completion.** Smallest next action,
+named, not authorized: locate (not invent) either of the two evidence types named above, or accept
+`C` as the standing boundary and redirect toward a different, independent research input (e.g. typed
+semantics for one of V7's other components, or the atoms↔requirements F3↔F4 bridge) on its own
+separately-evaluated merits.**

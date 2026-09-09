@@ -1185,7 +1185,22 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-063 — Controlled Reconstruction of the F4 Satisfaction
+**Status update, 2026-09-09 (latest): MD-064 — Controlled Identity Adjudication: M0125 `Sat` vs.
+M0043 `Sat(K_t,r)` — EXECUTED, FINAL DETERMINATION C, HARD STOP.** Authorized MD-063's own named next
+question. Full re-examination of M0125's §3.1 table (all six rows) found a theory-wide catalogue,
+genuinely ambiguous context; `Sat` never once written as an applied function anywhere in M0125 (two
+informal occurrences only); M0126 byte-identical in this region, no added gloss. Chronological chain
+(M0043→M0048→M0125→M0127) consistent with inheritance but not proof of it. Falsification found no
+distinctness either — inconclusive both ways. **Final Determination: C — IDENTITY UNRESOLVED.**
+**Consequence**: boundary machinery (Reason/Provenance/Context/Condition) remains structural analogy
+only for F4 `Sat(K_t,r)`; no new `Sat` constructed. Smallest missing evidence named precisely (an
+applied `Sat` formula combining `K_t`/`r`/`EC_t` with the boundary structure, or an independent second
+`Sat` definition) — neither exists in any source checked across MD-057–064. No backlog ticket.
+Verified both consistency scripts `CONSISTENT`. **No single next action forced** — two named options:
+locate the missing evidence type, or redirect to an independent research input (another V7
+component's typing, or the F3↔F4 bridge) on its own merits.
+
+**Status update, 2026-09-09 (earlier): MD-063 — Controlled Reconstruction of the F4 Satisfaction
 Boundary — EXECUTED, FINAL DETERMINATION B, HARD STOP.** User declined "incorporate `EC_t`" as
 construction, authorized pure reconstruction instead. **Major correction to MD-062's own provenance
 classification (text unedited)**: M0125 (source of V7's `K_t`/`Σ_t`) explicitly commissions M0127

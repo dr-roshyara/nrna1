@@ -1,5 +1,37 @@
-**Updated:** 2026-09-09 (latest) — **MD-063 COMPLETE — CONTROLLED RECONSTRUCTION OF THE F4
-SATISFACTION BOUNDARY, FINAL DETERMINATION B, HARD STOP.** User declined to authorize "incorporate
+**Updated:** 2026-09-09 (latest) — **MD-064 COMPLETE — CONTROLLED IDENTITY ADJUDICATION: M0125 `Sat`
+VS. M0043 `Sat(K_t,r)`, FINAL DETERMINATION C, HARD STOP.** User agreed MD-063 stopped at the right
+place and authorized exactly the narrow question it named: is M0125's informal `Sat` the same
+predicate as M0043's formal `Sat(K_t,r)`? — bounded identity/provenance adjudication, explicitly not
+construction. **Executed**: full re-examination of M0125's own §3.1 table (all six rows, not only the
+"Sat collapse" row) found it is a **theory-wide catalogue** mixing a clearly `K_t`-native row
+(`"K insufficiency \| E_t→K_t"`, M0043's own symbols) with rows (`Zero`/`Gap`/`Balanced`/`U`) matching
+M0125's own Contr/Zero/Boundary family — genuinely ambiguous context. **`Sat` is never once written
+as an applied function anywhere in the whole M0125 file** (exactly two occurrences total, both
+informal — a table-cell label and *"outside `Sat`"*, §8.5's own verdict option E) — no arguments, no
+domain, no codomain, no co-occurrence with `EC_t`/`Req`/`Δ_t`/`Adequate` anywhere. M0126 (near-
+duplicate) diffed byte-identical in this region — no additional gloss. **Chronological chain**
+(M0043→M0048, a confirmed same-day review reusing `Sat(K,r)` with M0043's own signature→M0125→M0127,
+2 seconds before M0127): consistent with inherited terminology, **but timestamps establish sequence
+only, not authorial intent** — plausible, not established. **Falsification (Q6)**: actively searched
+for evidence of distinctness (different signature/object/domain/purpose, explicit redefinition,
+conflicting semantics, separate lifecycle role, independent second definition) — **none found** —
+and per the authorizing prompt's own instruction, that absence is **not** treated as evidence of
+identity either; exactly as inconclusive as the positive search. **Final Determination: C — IDENTITY
+UNRESOLVED.** Not A (no explicit/demonstrable identity statement); not B (positive evidence genuinely
+split, not leaning strongly); not D (no distinctness established); not E (no contradiction, only two
+readings of one underspecified text). **Consequence**: `Reason`/`Provenance`/`Context`/`Condition`
+boundary machinery **remains structural analogy only** for F4 `Sat(K_t,r)` — not transferred, not
+adopted. **No new F4 `Sat` constructed.** Smallest remaining evidence, named precisely: a document
+either (a) writing `Sat` as an applied function over `K_t`/`r`/`EC_t` *and* the boundary structure
+together, or (b) stating a second, independent `Sat` definition distinct from `[DEF-19]`–`[DEF-21]`
+— **neither exists in any source checked across MD-057–064.** No backlog ticket (bounded, fully-
+recorded scientific finding). Verified both consistency scripts `CONSISTENT`; no frozen artifact
+touched; firewalls held. **MD-064 status: COMPLETE. HARD STOP.** No single next action forced — two
+named options: locate the specific missing evidence type, or redirect toward an independent research
+input (another V7 component's typed semantics, or the F3↔F4 bridge) on its own merits.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-063 COMPLETE — CONTROLLED
+RECONSTRUCTION OF THE F4 SATISFACTION BOUNDARY, FINAL DETERMINATION B, HARD STOP.** User declined to authorize "incorporate
 `EC_t`" as a construction step, correctly noting MD-062 established `Sat*` is a surrogate but not
 what the replacement boundary channel must actually be — authorized a pure reconstruction phase
 instead (no new `Sat` construction), with M0127 kept explicitly as structural corroboration only.
