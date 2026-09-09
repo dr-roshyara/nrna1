@@ -4330,3 +4330,61 @@ vocabularies merged. No candidate promoted. K-1/K2 untouched. GA-001/GA-038 unto
 entry written.
 
 **MD-048 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-049 opened.**
+
+---
+
+## MD-049 — Controlled Semantic-Equivalence Construction Test (EXECUTED, 2026-09-09)
+
+**Authorization**: user accepted MD-048 as the current evidence boundary and explicitly declined
+another search/admissibility loop and declined inventing a capability-identity theory. Authorized a
+narrow construction test instead: can the corpus's own already-defined trace/behavior/simulation
+machinery test whether pre-registered, differently-represented candidates are semantically
+equivalent, without requiring shared names or decomposition?
+
+**Pre-registered pairs** (before any comparison): (F1 frozen K-1, 8-primitive tuple), (F3 kernel-
+reduction C0/C0_plus), (F5 C1 DDD-aggregate "K-1"). Three pairs: (F1,F3), (F1,F5), (F3,F5).
+
+**Phase 1 — existing semantics reconstructed**: every MinKer formula (`Tr_K`, `Obs`, `Beh_𝔠`,
+`⪯_cap`, `≡_sem`, `MinKer`, `MinKer_/≡sem`) is SOURCE-DEFINED or DERIVABLE as a *formula* — but its
+own inputs (`𝔠_KOS`, `𝔎_adm`, capability identity) remain HYPOTHETICAL, unchanged from MD-044/045.
+
+**Phase 4 — the eight-question test, verified directly against each candidate's own source (not
+assumed)**: zero hits, anywhere in the corpus, for `Trace(K`/`Obs_𝔠`/`⊑_𝔠`/`Beh_𝔠` against F1's own
+frozen record, F3's own admitted material, or F5's own source file. **None of the three candidates
+has ever been described in the vocabulary the comparison would need.** A second confirmed homonym
+found in the process (alongside `Challenge`, MD-047): the MinKer chain's own generic `K_t` notation
+(`K_t→K_{t+1}`) is never connected to F1's own specific, governance-ratified `K_t` object — checked
+directly. **All three pre-registered pairs: INSUFFICIENTLY SPECIFIED.**
+
+**Phase 5 — can `MinKer` operate over semantic equivalence classes rather than syntactic identity?**
+**Yes, by the framework's own design** — `MinKer_/≡sem` is already explicitly typed as a set of
+distinct classes (MD-045's own uniqueness-correction finding). **The obstruction is not in `MinKer`'s
+design; it is entirely in the missing `Obs`/`Beh_𝔠` instantiation for any real candidate.**
+
+**Phase 6 — DDD analysis with `Challenge` as the required negative control**: every apparent point of
+contact found across MD-044–049 resolves to either a confirmed homonym (`Challenge`, `K_t`) or an
+insufficiently-specified pair — none survives as a genuine identity, structural correspondence, or
+even a testable functional analogy.
+
+**Required final answer, explicit**: **NO** — the existing framework does not currently provide
+enough structure to test candidate equivalence without circularity. **Exact smallest missing object**:
+a concrete instantiation of `Obs`/`Beh_𝔠` for at least one real candidate — the formula exists, no one
+has ever filled it in.
+
+**What this adds beyond MD-046/047/048**: converts "capability identity is missing" into a narrower,
+better-bounded gap — the machinery is sound and ready; it has simply never been fed real input.
+
+**No backlog ticket** — the homonym pattern is a scientific finding within this study, not a new
+operating-model gap distinct from `EKS-23`/this arc's own established discipline.
+
+**No classification changed. No frozen artifact (MD-024–048) modified. No source file modified
+anywhere. No code executed (including F3's own executable material). `classification-register.tsv`
+untouched. No capability taxonomy invented. No identity definition invented and used to prove
+identity. No vocabularies merged. No canonical Kernel selected. K-1/K2 untouched, not reopened. No
+Stage 07. No implementation.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-049-semantic-equivalence-construction-test/` directory (6 files) plus this
+decision-log entry written.
+
+**MD-049 status: COMPLETE — HARD STOP, per explicit user instruction. No MD-050 opened.**

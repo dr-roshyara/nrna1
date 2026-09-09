@@ -1,5 +1,37 @@
-**Updated:** 2026-09-09 (latest) — **MD-048 COMPLETE — BREAKTHROUGH RECONSTRUCTION AUDIT. HARD STOP
-per explicit user instruction — no MD-049 opened.** User asserted a prior "breakthrough" session had
+**Updated:** 2026-09-09 (latest) — **MD-049 COMPLETE — CONTROLLED SEMANTIC-EQUIVALENCE CONSTRUCTION
+TEST. HARD STOP per explicit user instruction — no MD-050 opened.** User accepted MD-048 as the
+evidence boundary, declined another search loop and declined inventing a capability-identity theory,
+and authorized a narrow construction test: can existing trace/behavior machinery test whether
+pre-registered candidates are semantically equivalent, without requiring shared names/decomposition?
+**Pre-registered pairs**: (F1 frozen K-1, 8-primitive tuple), (F3 kernel-reduction C0/C0_plus), (F5
+C1 DDD-aggregate "K-1") — three pairs, (F1,F3)/(F1,F5)/(F3,F5). **Phase 1**: every MinKer formula
+(`Tr_K`, `Obs`, `Beh_𝔠`, `⪯_cap`, `≡_sem`, `MinKer`) is SOURCE-DEFINED/DERIVABLE as a formula; its
+inputs (`𝔠_KOS`, `𝔎_adm`, capability identity) remain HYPOTHETICAL. **Phase 4, verified directly
+against each candidate's own source**: zero hits, anywhere, for `Trace(K`/`Obs_𝔠`/`⊑_𝔠`/`Beh_𝔠`
+against F1/F3/F5 — none has ever been described in the required vocabulary. A second confirmed
+homonym found (alongside `Challenge`, MD-047): the MinKer chain's own generic `K_t` notation is never
+connected to F1's own governance-ratified `K_t` object. **All three pairs: INSUFFICIENTLY
+SPECIFIED.** **Phase 5**: `MinKer` CAN operate over semantic equivalence classes by its own design
+(`MinKer_/≡sem` already typed as a set of distinct classes) — **the obstruction is entirely the
+missing `Obs`/`Beh_𝔠` instantiation, not the framework's own design.** **Phase 6**: every apparent
+contact across MD-044–049 resolves to a confirmed homonym or an insufficiently-specified pair — none
+survives as genuine identity or correspondence. **Required final answer: NO** — exact smallest
+missing object: a concrete `Obs`/`Beh_𝔠` instantiation for at least one real candidate; the formula
+exists, never filled in. **This narrows "capability identity is missing" into a smaller, better-
+bounded gap**: the machinery is sound and ready, never fed real input. **No backlog ticket** — the
+homonym pattern is a scientific finding, not a new operating-model gap. No classification changed; no
+frozen artifact modified; no source file modified anywhere; no code executed; `classification-
+register.tsv` untouched; no capability taxonomy invented; no identity definition invented-then-used;
+no vocabularies merged; no canonical Kernel selected; K-1/K2 untouched; no Stage 07; no
+implementation. Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/model-
+boundary-decisions.md` → MD-049 execution record; `14_decision-log/MD-049-semantic-equivalence-
+construction-test/` (6 files). **Smallest next action, named, not authorized**: construct a concrete
+`Obs`/`Beh_𝔠` instantiation for F3 specifically (the only candidate with an executable form that could
+ground one without inventing new semantics), pending separate authorization. This session's work is
+being committed now, per explicit instruction, then HARD STOP.
+
+**Superseded-update-marker-70 (2026-09-09, earlier) — MD-048 COMPLETE — BREAKTHROUGH RECONSTRUCTION
+AUDIT. HARD STOP per explicit user instruction — no MD-049 opened.** User asserted a prior "breakthrough" session had
 reported the relevant concepts already defined, and that MD-046 may have searched for the wrong kind
 of evidence. Clarified upfront: no such material had been found in MD-044–047; executed the final
 instruction ("search for breakthrough words") as a literal, neutral search rather than assuming
