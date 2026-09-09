@@ -250,3 +250,92 @@ verification of a mechanical candidate — exactly the discipline §1 requires.
 
 Then resume the semantic pass at argument-order sequence 1 (`Q00495`, `step-001`), carrying the
 `FORM-CHANGES` queue as the priority list within each batch.
+
+---
+
+# CHECKPOINT 002 — 2026-09-09
+
+## Documents completely read this batch
+
+| when | doc | lines | why |
+|---|---|---|---|
+| 08-27 18:33 | `step-025e` formal-epistemic-contract-algebra | 1 497 | checkpoint-001's named next action |
+| 08-27 18:31 | `step-025d` formal-zero-algebra | 1 662 | `025e`'s explicit predecessor (`"we already discovered this in 25D"`); densest tracked-object node |
+
+Plus targeted verification in `step-025` (16:26) at lines 653–738 — **`READ-PARTIAL`, recorded as
+such**, not treated as read.
+
+## ⭐ Structural discovery: `step-025` is a 34-part formal-algebra series
+
+`025`, `025a-1 … 025a-5`, `025b`, `025c`/`c-1..c-3`, `025d … 025z` — **~55 000 lines across
+2026-08-27/28**. This is the systematic formalisation phase of the corpus and it was invisible to
+every prior audit in this programme. Applying Part IX's filter (full-text, not display-math only)
+gives **17 of 34 carrying tracked objects**; the densest are `025d` (`Sat`×3 `Req`×15 `EC`×23),
+`025e` (`Req`×30 `EC`×17), `025f` (`EC`×6 `Γ`×2), `025k` (`EC`×9).
+
+## Theory objects added / mutated
+
+`Sat` — codomain history now **5 → Boolean → 9 → 10 → 3**, arity **2 → 3 → 2**. Born
+under-determined; `Sat(K_t, r_i)` (the time-indexed form) dates to **08-27 18:31**, not 09-02.
+`EC` — **four arities in two hours** (7, 2, 4, 9), two of them inside `025e` alone; `EC_t` born
+08-27 18:31. `Zero` — introduced, proved **not a metric**, ruled **not a scalar**.
+`Requirements` — parameter now traced through *regime → ideal-layer → purpose → goal*.
+
+## Lineage edges added
+
+25 edges in `04-LINEAGE-EDGES.tsv` — **17 `[EMP]` · 3 `[UNWITNESSED]` · 3 `[REFUTED]`
+(false positives, retained as rejections) · 1 `[OPEN]` · 1 `[DERIVED]`.**
+
+## ⛔ New finding — the `Γ` glyph swapped meaning
+
+```
+08-27 18:31  025d §25D.3   EC_G = (R_G, Γ_G)      Γ = rules determining SUFFICIENCY
+08-27 18:33  025e §25E.5   EC   = (R, Γ, A, V)    Γ = SATISFACTION RULES
+09-02 18:20  182019        ℛ_req(Q, Γ)            Γ = CONTEXT
+```
+
+At 08-27, context is written `C` or `Ctx` — never `Γ`. **`[UNWITNESSED]`.** Dangerous because `Γ`
+sits beside a requirements set in *both* eras, so the later pair reads naturally through the
+earlier one and is wrong. → `CHRONICLE-004`.
+
+## ⛔ Candidate contradiction `C-1` — scalarisation, retained unadjudicated
+
+`025d` §25D.17/§25D.32 rules that the gap **must not be a scalar** and that all four metric axioms
+fail; §25D.18 demotes weighted coverage scores to *"projections of Zero, not Zero"* — which demotes
+`023` §59's own `Coverage = Σ wᵢ Satᵢ / Σ wᵢ`, **two hours after `023` introduced it**. The 09-02
+lane's `Loss_{ℛ_req}(π) = Σ wᵢ·𝟙(Collapse(dᵢ,π))` **is** a scalar. Different objects
+(requirements vs distinctions), neither lane citing the other. **`[OPEN]`, not asserted.**
+
+## False positives rejected this batch
+
+None new. Three carried forward as permanent rejections in the edge file (`Sat`-Vedānta,
+`Adequacy`-prose, `Authority/Standing`).
+
+## Provisional theory state — 2026-08-27 18:33
+
+**Established `[EMP]`:** a complete requirements/satisfaction/gap apparatus exists on 2026-08-27 —
+`R(P)`/`R_G`, `Sat`, `EC`, `Zero`, `Ready`, `Coverage`, `Gap`, `Criticality`, requirement
+dependency graphs, five requirement kinds, `CandidateRequirement ≠ ContractRequirement`, and 16
+invariants `S1–S16`.
+**Derived `[DERIVED]`:** `Zero` is not a metric; `Zero` is not a scalar.
+**Proposed `[PROPOSED]`:** `Sat`, `EpistemicContract`, `ℛ(P)`.
+**Unresolved:** `Sat`'s codomain (open at birth, never closed by argument); contract derivation
+under conflicting sources (`025d` §25D.39, `025e` §25E.36 — both explicitly defer to a Governance
+Algebra); `EC ∈ KnowledgeState` reflexivity vs `EC` as external parameter.
+**Unwitnessed transitions:** 3 (see edge file).
+
+## Resumption
+
+```yaml
+checkpoint: 002
+last_complete: step-025d (2026-08-27 18:31) and step-025e (2026-08-27 18:33)
+read_complete_total: 24        # 20 from P-95/P-96 + 023 + 009(§8-10) + 025d + 025e
+read_partial: [step-025 (lines 653-738), step-009 (§8-10 verified)]
+next_document: 20260827-183529_step-025f-governance-conflict-algebra.md   # 08-27 18:35
+next_reason: |
+  Both 025d §25D.39/43 and 025e §25E.36/41 explicitly commission it, and both name the SAME
+  unresolved barrier — contract derivation when governing sources disagree. It is the only
+  document the corpus itself nominates at this point, and it is chronologically next.
+then: [step-025 complete (16:26), step-025g (18:37), step-025k (EC x9)]
+resumption: from disk; 04-THEORY-CHRONICLE.md + 04-LINEAGE-EDGES.tsv carry all state
+```

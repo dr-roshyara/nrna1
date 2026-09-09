@@ -1,0 +1,26 @@
+from	to	relation	evidence_class	when	witness	note
+Requirements(R)@08-25	Requirements(I^K)@08-26	REFINE	[EMP]	2026-08-26T18:02	question-11-what-is-the-ideal-state §I^D/I^K	same function form, parameter changes regime->ideal-layer
+Requirements(I^K)@08-26	R(P)/ℛ(P)@023	RETYPE	[UNWITNESSED]	2026-08-27T16:25	023 §5,§8	parameter becomes PURPOSE; no document performs the conversion
+013 vocabulary	023 Sat	INTRODUCE	[EMP]	2026-08-27T16:25	023 §10	Satisfies/Sufficiency/Ready precede Sat by 48 minutes
+ℛ(P)@023	Coverage(K,P)	COMPONENT-OF	[EMP]	2026-08-27T16:25	023 §5	Coverage = |SatisfiedRequirements| / |ℛ(P)|
+R(P)@023	Sat(K,r_i)@023	OPERATES-ON	[EMP]	2026-08-27T16:25	023 §11,§59	Sat is the per-requirement predicate over R(P); Ready, Gap, Coverage all quantify over it
+Sat(K,r_i)@023	Sat(K_0,R_i)@025	TEST	[EMP]	2026-08-27T16:26	025 lines 656,738	used as Boolean in executable simulation
+Sat(K_0,R_i)@025	Sat != Boolean@025d	REFUTE	[EMP]	2026-08-27T18:31	025d §25D.5	six distinct readings of Sat=False enumerated; boxed ruling
+Sat(K,r_i)@023	Sat(K_t,r_i)@025d	REFINE+RETYPE	[EMP]	2026-08-27T18:31	025d §25D.4	time-index appears; codomain becomes 9-valued S
+Sat(K_t,r_i)@025d	Satisfied(K,r,EC)@025d	RETYPE	[EMP]	2026-08-27T18:31	025d §25D.12	arity 2 -> 3; Satisfied = ContractSpecific
+Satisfied(K,r,EC)@025d	Sat(K_t,r)@09-02	RETYPE	[UNWITNESSED]	2026-09-02	math_ideas batch	arity 3 -> 2, EC argument LOST; codomain 9/10 -> 3
+EC@023(7-tuple)	EC_G=(R_G,Γ_G)@025d	RETYPE	[EMP]	2026-08-27T18:31	025d §25D.3	arity 7 -> 2
+EC_G=(R_G,Γ_G)@025d	EC=(R,Γ,A,V)@025e	REFINE	[EMP]	2026-08-27T18:33	025e §25E.5	arity 2 -> 4
+EC=(R,Γ,A,V)@025e	EC 9-tuple@025e	REFINE	[EMP]	2026-08-27T18:33	025e §25E.37	arity 4 -> 9 IN THE SAME DOCUMENT
+Γ=sufficiency-rules@025d	Γ=satisfaction-rules@025e	CORROBORATION	[EMP]	2026-08-27T18:33	025d §25D.3 vs 025e §25E.5	same role, wording differs
+Γ=satisfaction-rules@025e	Γ=context@09-02	RETYPE	[UNWITNESSED]	2026-09-02	182019 ℛ_req(Q,Γ)	glyph swaps meaning; at 08-27 context is C/Ctx, never Γ
+Zero(K,EC)@025d	Zero NOT a metric	DERIVE	[DERIVED]	2026-08-27T18:31	025d §25D.32	all four metric axioms tested and rejected
+Zero structured@025d	Loss_ℛreq scalar@09-02	CONTRADICT?	[OPEN]	2026-09-02	025d §25D.17 vs Loss_ℛreq	same architectural question answered oppositely; different objects; neither lane cites the other
+Coverage=Σw_iSat_i@023	projection-of-Zero@025d	RECLASSIFICATION	[EMP]	2026-08-27T18:31	025d §25D.18	023's own functional demoted to a projection two hours later
+𝔹={00,10,01,11}@009	Σ_0≅{0,1}^2@272b	RE-DERIVATION	[EMP]	2026-08-30T22:50	009 §8 vs 272b §272A.12	identical construction, encoding, row order and caveat; 272b does not cite 009
+𝔹@009	Σ_A=(Acq,Sup,Unc,Val)@009	DISTINCT	[EMP]	2026-08-27T15:20	009 §8 vs §10	same document, same cardinality, DIFFERENT TYPE - must not merge
+Zero(K,EC)@025d	EC derivation problem	COMMISSION	[EMP]	2026-08-27T18:31	025d §25D.39,§25D.43	025d explicitly commissions 025E
+025e	Governance Conflict Algebra	COMMISSION	[EMP]	2026-08-27T18:33	025e §25E.36,§25E.41	025e explicitly commissions 025F
+Sat-Vedanta@08-26	Sat(K,r)@08-27	FALSE-POSITIVE	[REFUTED]	2026-08-26T11:10	metaphor-change-for-the-model L376,721	cross-language homograph; NOT a lineage edge
+Adequacy-prose@259	Adequacy(K,𝒯)@276-final	FALSE-POSITIVE	[REFUTED]	2026-08-30T19:20	step_259 L64 \text{Adequacy of }K	prose inside math; NOT an object occurrence
+Authority/Standing@162	Standing=(S,R)@272b	FALSE-POSITIVE	[REFUTED]	2026-08-29T01:15	step_162 L796	different sense of the word
