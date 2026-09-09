@@ -107,3 +107,52 @@ additional citation converts an unrecorded status into an assumed one.**
 ---
 
 ⛔ **Registered under the operating model's §37 — *"when a deeper requirement is discovered: record it as a follow-up and STOP."* No remedy is designed and no work is commissioned.**
+
+---
+
+## Resolving evidence, 2026-09-09 — the lineage is now known; the status still is not
+
+⭐⭐ **A follow-up review reconstructed where this material came from.** Two of the five unknowns listed
+in §1 are now answered from the record, and three are confirmed as genuinely absent.
+
+### What is now established
+
+**It was commissioned, deliberately, as a replacement.** Seven minutes before the first document was
+written, a planning note states the intent in plain terms — *"a proper theory rewrite, not another
+incremental patch"* — and sets out a structure that the twenty-three documents then follow. ⭐ **This is
+not stray material. Someone decided to write it, said why, and carried the plan through.**
+
+**It has a named predecessor, and that predecessor is not the frozen baseline.** ⭐⭐⭐ The planning note
+says it is replacing an earlier *"theory closed"* declaration — one that **had already been withdrawn**
+by a later falsification before the rewrite began. It explicitly declines to carry that closure forward.
+
+$$\boxed{\textbf{This explains the missing version number: } \mathbf{there\ was\ no\ valid\ version\ to\ inherit.}}$$
+
+**It was not abandoned.** ⭐⭐ It was finished — twenty-one parts plus two revisions of the worked
+example — and afterwards it was renamed to convention, catalogued, and one of its sections was
+independently cross-checked by the other work stream. **People read it and used it after it was done.**
+
+### What is still missing, and is now the whole of the exposure
+
+⛔ **No status, no owner, no adoption.** There is still nothing saying whether it may be relied on, who
+owns it, or whether anyone accepted it.
+
+⚠️⭐⭐ **And a new fact sharpens the concern:** one day after it was finished, the programme's own status
+board still names the **older frozen version** as the baseline and does not mention the rewrite at all.
+**Whatever the rewrite was intended to be, nothing in the record shows it was taken up.**
+
+$$\boxed{\textbf{So the position is: } \mathbf{a\ completed,\ deliberate\ replacement\ for\ something\ that\ had\ already\ been\ withdrawn,\ which\ nothing\ has\ since\ adopted.}}$$
+
+### Why this makes the item easier to act on, not harder
+
+⭐ Whoever picks this up no longer has to reconstruct the history — **the intent, the predecessor and the
+completion are all documented above and traceable.** ⭐⭐ **The remaining decision is narrow:** is this
+material the current theory, a superseded attempt, or a resource to be drawn on? **That is a short act
+by someone with the standing to take it**, and it would close this item.
+
+⛔ **Still no status is proposed here, and still nothing about the content is questioned.**
+
+**Evidence:** `docs/knowledgeos/theory-extraction/80-P62-…` §5, §6, §7 · the planning note of 2026-09-06
+00:16 · the 2026-09-02 18:20 closure cluster it replaces · the 2026-09-07 status board, which names the
+older baseline and does not cite the rewrite (six controlled probes, all zero, against a positive
+control of 21).
