@@ -128,3 +128,33 @@ Current understanding        the corpus contains at least three parallel lineage
 ```
 
 `TheoryState(t₅)`'s text stands as history. This annotation is the correction.
+
+---
+
+## ⭐ CROSS-LINEAGE STATE — established by four evidence workers, adjudicated by Main (2026-09-09)
+
+Not a `TheoryState(t)` — a **structural finding about the corpus** that conditions every `TheoryState`.
+
+```
+        Q-series (24 undefined questions) ── 2026-08-26 ── 31 files
+                 │  38 citations                │ 1 citation        │ 0
+                 ▼                              ▼                   ▼
+           LINEAGE B                       LINEAGE A            LINEAGE C
+        272a–277, 08-30                  025 series, 08-27/28   math lane, 09-01/02
+        K=(A,R,Σ,E_L), δ(K_t,e_t)        K 11-tuple, T:(K,E,Ω,EC)  Sat, ℛ_req, Γ×4
+                 │                              ▲                   ▲
+                 │  ⭐ EXPLICIT provenance       │  Γ, EC_t, Sat(K   │
+                 │     table (yoni-lens, 09-02)  │  assumed-known    │
+                 └──────────────────────────────→│  UNWITNESSED ─────┘
+                                                  │
+                        A→B: INDEPENDENT_CONVERGENCE, and the corpus says so:
+                        "Step 288 was written without consulting the 025i–025z seam"
+                                        (2026-08-31)
+
+        C's day-one declared sources: Titelbaum · Dretske · Kallenberg · Shum · Audi ·
+        Davidson · Cover & Thomas  — EXTERNAL BOOKS, plus a pre-existing numbered
+        pipeline at "checkpoint 0080–0094" (FIREWALL-LIMITED)
+```
+
+**Three lanes, three different relations.** No common provenance ancestor of all three exists in
+the readable corpus. The only *explicit* descent is **B → C, and it starts on C's second day.**

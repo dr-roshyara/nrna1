@@ -482,3 +482,183 @@ non-scalar side, in one lineage** — and the scalar `Loss_{ℛ_req}` sits in **
 `ExpectedLoss = Σ_s P(s\|E)L(a,s)` — a genuine scalar loss. So Lineage A is **not uniformly
 anti-scalar**; it separates *decision-theoretic loss over actions* (permitted) from
 *gap/assessment collapse* (refused). That distinction is itself `[EMP]` and material to `C-1`.
+
+---
+# EVIDENCE PACKET INTEGRATION — WORKER A (Lineage A provenance) · verified by Main
+
+**Merge protocol applied:** three load-bearing claims re-verified against source before integration.
+Worker A did not adjudicate; the classifications below are Main's.
+
+## Verified `[EMP]`
+
+| claim | verification |
+|---|---|
+| 35 files in the series | matches Main's independent count |
+| **Earliest external citation = Step 16, cited exactly twice, both for temporal validity** | verified: `023`:831 *"This connects Step 23 directly to Step 16"*; `025v`:1786 *"We already touched temporal knowledge in Step 16"*. `step-016` is `temporal-knowledge-events-state-evolution-and-knowledge-versioning` — title matches the attributed content |
+| **Zero citations of `step_27x` / `272a` / `272b`** | corroborates Main's own sweep |
+| **Zero citations of the math lane or any 2026-09-\*** | — |
+| Lineage A is a **single linear chain** `023 → 025 → 25A.1 → … → 25Z → announces Step 26` | — |
+| **No YAML front matter and no `Predecessor:`/`Source:` field in any of the 35 files** | every antecedent claim in this lineage is conversational prose |
+
+## ⭐ Third instance of the chronology-inversion pattern
+
+```
+step-024   20260827-16:23:31   Formal Composition, Consistency, Invariants and Closure
+step-023   20260827-16:25:45   Epistemic Sufficiency … and the Knowledge Boundary
+```
+
+`step-023` closes (line 2104) by announcing *"The next step should therefore be: **Step 24 —
+Formal Composition…**"* — **a step whose file already existed 2 m 14 s earlier.** Verified.
+
+Instances now recorded:
+
+| # | argument order | writing order |
+|---|---|---|
+| 1 | `272a`/`272b` before `273` | written 22:42/22:50, after `273` at 21:44 |
+| 2 | `023` before `024` | `024` written 16:23, before `023` at 16:25 |
+| 3 | `276-final` Doc B commissions `277` | Doc A's rival commission became `278` |
+
+$$\boxed{\textbf{Step number = argument order; timestamp = writing order. Three independent instances. The rule adopted in batch 002 holds.}}$$
+
+Fourth evidence body for **`EKS-35`**.
+
+## ⛔ New gap from Worker A — `G-13`
+
+> **~1/3 of Lineage A's 37 backward references are ANONYMOUS** — *"our earlier decision"*,
+> *"your earlier distinction"*, *"we previously defined"*, *"our earlier Atman-inspired
+> conceptual discussion"*. The inherited **content** is stated; the **source document never is.**
+
+`[EMP]`, Worker A, corroborated by Main on the two instances checked (`023`:773, `025d`:1135).
+
+**These antecedents are unresolvable from within Lineage A.** They are not absences — they are
+**unnamed presences**, which is a different and worse condition: a reader cannot tell whether the
+referent is inside the corpus, in an earlier conversation turn that was never filed, or in the
+user's own prior instruction. Recorded as `UNWITNESSED`, never as `ABSENT`.
+
+## Held open
+
+`G-08` is **not** dispositioned on Worker A alone. Workers B, C and D have not reported. Worker A
+establishes only that **Lineage A cites neither B nor C** — which is exactly what chronology
+predicts, since A precedes both, and is therefore **not evidence of disjointness in either
+direction.** The load-bearing direction is **B→A and C→A**, which Workers B and C hold.
+
+---
+# EVIDENCE PACKET INTEGRATION — WORKERS B and D · verified by Main
+
+## ⭐ ADOPTED AS A STANDING RULE — Worker D's scoping control
+
+Worker D excluded `docs/knowledgeos/theory-extraction/` from all positive findings, on the grounds
+that `git log --diff-filter=A` dates it **2026-09-07/08/09 — after all three lineages**, making it
+**this commission's own output and therefore not independent evidence.**
+
+It then found that the phrase *"three lineages"* occurs **3 times in the readable corpus, all three
+inside my own artifacts**, posing `G-08` itself.
+
+$$\boxed{\textbf{Main's own output is NOT corpus evidence. Adopted as a standing rule of the reconstruction.}}$$
+
+I should have imposed this myself and did not. Recorded.
+
+## WORKER B — verified `[EMP]`
+
+| claim | verification |
+|---|---|
+| 16 files, 20:28 → 23:11, one evening | ✓ |
+| Chain `279 → 278 → 277 → 276 → 275 → 274 → 273 → "272" → 272A → 271 → 270`, every link a literal `Predecessor:` field or *"Step N established"* | ✓ |
+| **`270` has NO numbered antecedent** — self-grounds on *"the corpus"*, *"the latest programme mandate"*, *"Computational Closure 4"* | ✓ |
+| **Zero citations of the 025 series** — 14/14 bare-`25` hits read, all section numerals | ✓ corroborates Main's own sweep |
+| Zero citations of the math lane / any 2026-09-* | ✓ |
+| Cluster cites **only "Steps 248"** in the whole 240–269 range | ✓ verified — **so it does NOT inherit from `step_251`** |
+| `274` (21:43) written **before** `273` (21:44); `272A`/`272B` (22:42/22:50) written after `273`–`278` | ✓ |
+
+### ⛔ `G-14` — the most-cited antecedent has no artifact
+
+**"Step 272" is cited 50 times** and called *"the accepted Step 272 framework"* (`273` L10).
+**No `step_272` narrative file exists in `phase_measure_theory/`** — verified, only `272a`/`272b`,
+both written *after* the files citing it. Three candidate referents (a lost file, the
+`verification/gap-discovery/step-272/` folder, or the *"attached HPA response"*). **UNRESOLVED.**
+
+### ⛔ `G-15` — the cluster's provenance points at an undefined vocabulary
+
+`276-final`'s **Foundational Traceability Matrix** answers *"where did each object first appear?"*
+with **Q-numbers**: `𝒪_core`→Step 272 · `K`→Q1 · `Identity`→Q7 · `Σ`→Q16 · `Policy`→Q24, and
+*"Latest Evidence"* = `FA-9` for all 18 rows.
+
+Verified counts: `FA-9`×18 · `Q7`×12 · `Q16`×11 · `Q24`×4 · `Q18`×4 · `Q1`×4 · `FA-1`×3.
+**Definitions of any of them inside the cluster: zero.**
+
+## ⭐⭐ MAIN'S OWN FINDING — the Q-series EXISTS, and it predates both lineages
+
+Worker B could not resolve `Q1…Q24` from inside its bounded corpus. Main located them:
+
+```
+phase_measure_theory/  31 files matching  ^YYYYMMDD-HHMMSS_question-N...
+   all dated 2026-08-26   —  a day BEFORE Lineage A (08-27), four days before Lineage B (08-30)
+   20260826-115757_research-synthesis-24-undefined-questions-path-forward.md
+       "# Research Synthesis: The 24 Undefined Questions — The Path Forward"
+       introduces R_t (actual reality) · S*_t (ideal characterization) · and the system's representation
+```
+
+$$\boxed{Q_1 \ldots Q_{24} \;=\; \text{the } \textbf{2026-08-26 question series}, \text{ upstream of every lineage tracked so far.}}$$
+
+⚠️ **But it is NOT thereby a common ancestor.** Lineage A cites the Q-series **once** (a single `Q2`).
+Lineage B cites it 38 times as its declared First Appearance. **The two lineages relate to the same
+upstream body very differently**, and that asymmetry is itself the finding. `[EMP]`
+
+## WORKER D — verified `[EMP]`
+
+### The cross-lineage links exist — but every one is an OBSERVER, never a parent
+
+**A↔B** — `knowledgeos_kernel/research/14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md`, **2026-08-31**,
+verified verbatim:
+
+> *"**Step 288 was written without consulting the `025i–025z` seam.**"*
+> *"⚠️ **This is not a failure of the corpus. It is a failure of my search.** I searched for
+> *behavioural equivalence* and found Step 260; I did not search for *refinement*, *merge*,
+> *entity resolution*, or *same-as*, and so missed the seam where the equality algebra was first
+> built. **Third instance of my recurring error: searching for a phrase instead of a concept.**"*
+
+**B↔C** — `verification/gap-discovery/gap-update-2026-09-02/04-CONVERGENCES.md`, verified verbatim:
+
+> *"**Two lanes that did not read each other reaching the same object.**"*
+> *"…within 32 hours and **without citing each other**."*
+> *"⚠️ **Convergence is evidence, never proof.**"*
+
+**A↔C** — `mathematical_ideas/documents7.md` carries a `Step-013/023 → M0043 → M0047` lineage table,
+but is written ~**2026-09-09** and its `MD-0xx` basis resolves into the firewalled lane.
+`RECONSTRUCTED`, **not** contemporaneous. **`FIREWALL-LIMITED`** upstream.
+
+### Verified zeros — the vocabulary of descent does not exist
+
+`same as the earlier` 0 · `previously derived in step` 0 · `cf. Step` 0 · `earlier thread` 0 ·
+`descends from Step` 0 · `derived from Step 025` 0 · `unifies the N lanes` 0 · `reconciles the N lanes` 0.
+`as in Step` and `both lineages` — 1 hit each, **both false positives on reading.**
+
+> **The links that exist are expressed as *convergence*, *collision*, or *failure-to-consult* —
+> never as descent.** `[EMP]`
+
+### Symbol-level distribution — mechanically verified by Worker D
+
+| symbol | Lineage A | Lineage B | Lineage C |
+|---|---|---|---|
+| `ℛ_req` · `Req(EC` | — | — | 23 / 21 files |
+| **`Sat(K`** | `023`, `025`, `025d` | **—** | 61 files |
+| **`EC_t`** | `025d`, `025e` | **—** | 37 files |
+
+⭐ **`Sat(K` and `EC_t` are shared A↔C vocabulary and entirely absent from B.** Occurrence is
+`[EMP]`; **inheritance is `[UNWITNESSED]`** — no document claims it.
+
+### No relational index exists
+
+Seven index candidates checked. `00A-CORPUS-FILE-INDEX` spans A+B but has **zero** math-lane rows.
+`01-THEORY-EVOLUTION-MAP` cites `step-023`/`step-025x` **zero times — it skips Lineage A entirely.**
+The two `files-to-read` logs span all three but are bare `ls` dumps asserting nothing.
+
+$$\boxed{\textbf{No document in the readable corpus indexes all three lineages relationally.}}$$
+
+## ⚠️ A parallel I am obliged to record about my own conduct
+
+The 08-31 document's self-diagnosis — *"a failure of my search… searching for a phrase instead of a
+concept… **third instance of my recurring error**"* — is **the same failure mode I committed twice
+in this session**: `G-03` closed on a too-narrow citation test, and the A↔B `DISJOINT` claim built
+on it. A previous lane recorded this exact error class in this exact corpus, and I reproduced it.
+Recorded, not glossed.

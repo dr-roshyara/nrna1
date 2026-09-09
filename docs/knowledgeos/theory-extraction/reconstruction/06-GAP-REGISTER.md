@@ -162,3 +162,110 @@ refuted**: `step_251` cites the 025-series explicitly. The `DISJOINT` edge is re
 |---|---|---|
 | **G-10** | ⛔ `Ω` has **two meanings**: domain ontology/rules (`025k`) and `Ω : W → O`, a world→observation function (`step_251` line 616). Same lineage, same glyph. | **OPEN** — new collision, register it |
 | **G-11** | `Ω` and `EC` **reappear at step 282** (Ω=2, EC=5) after 30 steps of absence. Re-entry, or a third meaning? | **OPEN** |
+
+---
+
+# ⭐ G-08 — DISPOSITION (all four evidence workers returned; Main adjudicates)
+
+**Question:** do Lineage A (`025` series), Lineage B (`272a`–`277`) and Lineage C (math lane) have a
+common theory ancestor?
+
+**Answer: the question has no single answer. Each pair is different, and two of the three
+relations are now settled by explicit source text.** Disposing per-pair, as the evidence requires.
+
+`PROVENANCE ANCESTRY` (X cites Y as its source) and `CONCEPTUAL ANCESTRY` (X uses Y's objects) are
+kept strictly apart, per the commission.
+
+| pair | provenance | conceptual | disposition |
+|---|---|---|---|
+| **A → B** | **NONE.** Verified twice independently (Worker B read 14/14 bare-`25` hits, all section numerals; Main's own sweep agrees). | shared equality/merge objects | ⭐ **`INDEPENDENT_CONVERGENCE`** — and **explicitly acknowledged as such by the corpus itself** |
+| **B → C** | ⭐⭐ **YES — EXPLICIT, a provenance table** | — | ⭐ **`COMMON_PROVENANCE_ANCESTOR`** (C descends from B for the tabled objects) |
+| **A → C** | **NONE cited.** | ⭐ strong: `Γ`, `EC_t`, `Sat(K` all arrive **assumed-known** | ⭐ **`SHARED_CONCEPTUAL_ANCESTOR`**, provenance **`UNWITNESSED`** |
+
+## A → B — `INDEPENDENT_CONVERGENCE`, stated by the corpus
+
+`knowledgeos_kernel/research/14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md`, **2026-08-31**, verified
+verbatim:
+
+> *"**Step 288 was written without consulting the `025i–025z` seam.**"*
+> *"**This is not a failure of the corpus. It is a failure of my search.**"*
+
+The corpus does not merely *fail* to link A and B — **a later document diagnoses the non-linkage
+and names its cause.** `[EXPLICIT]`
+
+## B → C — `COMMON_PROVENANCE_ANCESTOR`, by an explicit table
+
+`mathematical_ideas/20260902-130042_yoni-lens-theory-specification-and-integration.md` §2.1,
+verified verbatim — a **Source column**:
+
+```
+| K_t | Current knowledge state   | v0.2      |
+| Q_t | Inquiry/Question state    | Step 272A |
+| E_t | Evidence                  | Step 272A |
+| A_t | Arguments                 | Step 273  |
+| C_t | Context                   | Step 272A |
+| S_t | Epistemic standards       | Step 278  |
+```
+plus a second table sourcing Evidence Assessment←274, Reconciliation←275, Closure Event←276,
+`K_t→K_{t+1}`←277, Zero Lens←278, Recursive inquiry←280.
+
+⚠️ **Direction and date matter:** this is **09-02**, and **zero** `20260901-*` file cites any step
+number. So C's dependence on B **begins on the second day**, not at C's origin. `[EXPLICIT]`
+
+## A → C — `SHARED_CONCEPTUAL_ANCESTOR`, provenance unwitnessed
+
+Three objects arrive in C **assumed-known**, in exactly A's form, with **no citation**:
+
+| object | C's first use | A's form |
+|---|---|---|
+| **`Γ` = sufficiency rules** | `20260901-210200` L485: *"subject to the **existing** KnowledgeOS sufficiency rules `Γ`"* — unglossed, flagged **existing** | `025d` §25D.3 `Γ_G` = *"rules determining sufficiency"* |
+| **`EC_t`** | `20260901-225047` L1653: *"**We already have the candidate:** `EC`"* | `025d` §25D.34 `Z_t = Zero(K_t, EC_t)` |
+| **`Sat(K`, `EC_t`** | present in 61 / 37 C-files | present in `023`, `025`, `025d`, `025e` — and **absent from B entirely** (Worker D, mechanically verified) |
+
+$$\boxed{\texttt{Sat(K} \text{ and } \texttt{EC\_t} \text{ are shared A↔C vocabulary that Lineage B never uses. Occurrence } [\textbf{EMP}]; \text{ inheritance } [\textbf{UNWITNESSED}].}$$
+
+## What lies upstream of all three
+
+- **The Q-series** — 31 `question-N` files, **2026-08-26**, incl. *"The 24 Undefined Questions"*.
+  Cited by **B** 38× as its declared First Appearance; by **A** once; by **C** never.
+- **C's own declared antecedents are EXTERNAL BOOKS** — Titelbaum ×2, Dretske, Kallenberg, Shum,
+  Audi, Davidson, Cover & Thomas — plus a pre-existing numbered pipeline (*"checkpoint 0080–0094"*,
+  `resume.py`, *"continue from 0098"*) and *"the corpus"* = `docs/knowledgeos/brainstorming/`.
+
+$$\boxed{\textbf{No common provenance ancestor of all three exists in the readable corpus. B and C are linked by citation; A stands apart, connected only by shared vocabulary and by later observers.}}$$
+
+## Standing rule adopted from Worker D
+
+**`docs/knowledgeos/theory-extraction/` is this commission's own output and is NOT corpus evidence.**
+The phrase *"three lineages"* occurs 3× in the readable corpus — **all three inside my own
+artifacts.** Excluded from all findings.
+
+---
+
+# ⭐ G-02 — DISPOSITION: **not a swap. An overload inside Lineage C.**
+
+`Γ` = *sufficiency rules* **survives into Lineage C** and is treated as **already existing** on
+**2026-09-01 21:02** — matching `Γ_v1`/`Γ_v2` exactly. The *context* sense is **one of three further
+senses introduced within Lineage C itself** (Worker C, each with a quote):
+
+| sense | where | status |
+|---|---|---|
+| sufficiency rules | `20260901-210200` L485 | **ASSUMED-KNOWN** — continuous with `Γ_v1`/`Γ_v2` |
+| adequacy rules in `Q=(T,P,C,R,Γ)` | `20260901-211600` L54 | INTRODUCED, self-labelled `[PROP]` |
+| representation map `Γ : 𝒦 → 𝒜` | `20260902-002701` L386 | INTRODUCED |
+| attribution `K = Γ(E,Q,C,EC)` | `20260902-005904` L721 | INTRODUCED — becomes load-bearing |
+
+**Disposition: `SEMANTIC_OVERLOAD WITHIN ONE LANE`, not `SEMANTIC_REINTERPRETATION ACROSS ERAS`.**
+`CHRONICLE-004`'s framing is **corrected**: `Γ_v1 → Γ_v3` is not a meaning-swap; `Γ_v1`'s sense
+persists and three rival senses were added beside it. `Γ_v1`–`Γ_v4` retained as versions.
+
+---
+
+# New gaps
+
+| ID | question | status |
+|---|---|---|
+| **G-14** | *"Step 272"* is cited **50×** and called *"the accepted Step 272 framework"*, but **no `step_272` narrative file exists.** Three candidate referents. | **UNRESOLVED** |
+| **G-15** | B's Foundational Traceability Matrix answers *"first appearance"* with `Q1/Q7/Q16/Q18/Q19/Q24` and `FA-1`/`FA-9` — **all cited, none defined in-cluster.** `FA-9`×18. `Q1…Q24` now located (08-26); **`FA-*` resolves only in `verification/V0-theory-corpus-map.md`** | **PARTIALLY RESOLVED** |
+| **G-16** | C attributes `K_t` to **"v0.2"** and baselines against a **"v1.1"** that C does not itself construct. Where are v0.2 and v1.1? | **UNRESOLVED** |
+| **G-17** | C begins **mid-pipeline** at *"checkpoint 0080–0094"* with `resume.py` and a `dimension-registry.md`. That pipeline predates C and is **`FIREWALL-LIMITED`** — its `00_`/`01_source-analysis/` shape matches the forbidden lane. | **`FIREWALL-LIMITED`, not ABSENT** |

@@ -740,3 +740,73 @@ primary_gap: G-12   # 514 unread documents inside the interval every lineage cla
 next_chronological: step-026 (2026-08-28 10:14) — the head of the unread window
 resumption: from disk; artifacts 04/05/06/07 carry all state
 ```
+
+---
+
+# CHECKPOINT 008 — 2026-09-09 · G-08 and G-02 disposed; four workers integrated
+
+## Subagent architecture — first full cycle
+
+Four bounded workers launched, all four returned, **all load-bearing claims re-verified by Main
+against source before integration** (Worker A: Step-24 inversion + Step 16; Worker B: missing
+`step_272` + undefined Q/FA series; Worker C: yoni-lens provenance table + the `Γ` quote; Worker D:
+both decisive cross-lineage documents). No worker wrote to an authoritative artifact. One
+authoritative commit per coherent update, as required.
+
+## ⭐ `G-08` DISPOSED — per-pair, because the evidence does not support a single answer
+
+| pair | disposition | basis |
+|---|---|---|
+| **A → B** | **`INDEPENDENT_CONVERGENCE`** | the corpus *diagnoses its own non-linkage*: *"Step 288 was written without consulting the `025i–025z` seam… a failure of my search"* (2026-08-31) |
+| **B → C** | **`COMMON_PROVENANCE_ANCESTOR`** | an explicit **Source column**: `Q_t/E_t/C_t`←272A, `A_t`←273, `S_t`←278, Closure Event←276, `K_t→K_{t+1}`←277 (yoni-lens, 09-02) |
+| **A → C** | **`SHARED_CONCEPTUAL_ANCESTOR`**, provenance **`UNWITNESSED`** | `Γ`, `EC_t`, `Sat(K` all arrive **assumed-known**; `Sat(K`/`EC_t` are shared A↔C and **absent from B** |
+
+**No common provenance ancestor of all three exists in the readable corpus.** The only explicit
+descent is B→C, and it begins on C's **second** day — **zero** `20260901-*` files cite any step.
+
+Upstream: the **Q-series** (31 files, 08-26, *"The 24 Undefined Questions"*) — cited 38× by B,
+**once** by A, **never** by C. And C's day-one declared sources are **external books**.
+
+## ⭐ `G-02` DISPOSED — the `Γ` "meaning swap" was my framing error
+
+`Γ` = *sufficiency rules* **persists** into Lineage C and is flagged **existing** on 09-01 21:02.
+The *context* sense is one of **three further senses introduced inside Lineage C itself.**
+**`SEMANTIC_OVERLOAD WITHIN ONE LANE`, not reinterpretation across eras.** `CHRONICLE-004`'s framing
+is corrected; `Γ_v1`–`Γ_v4` retained as versions.
+
+## Standing rule adopted (from Worker D, not from me)
+
+**`docs/knowledgeos/theory-extraction/` is this commission's own output and is NOT corpus evidence.**
+`git log --diff-filter=A` dates it after all three lineages, and *"three lineages"* occurs 3× in the
+readable corpus — **all three inside my own artifacts.** I should have imposed this myself.
+
+## ⚠️ A parallel about my own conduct, recorded not glossed
+
+The 08-31 document's self-diagnosis — *"a failure of my search… searching for a phrase instead of a
+concept… **third instance of my recurring error**"* — **is the failure mode I committed twice this
+session** (`G-03` closed on a too-narrow citation test; the A↔B `DISJOINT` claim built on it).
+A previous lane recorded this exact error class, in this exact corpus, and I reproduced it.
+
+## New gaps
+
+`G-14` *"Step 272"* cited **50×**, called *"accepted"*, **no such file exists** · `G-15` B's
+first-appearance register uses `Q*`/`FA-*`, cited never defined (`Q1…Q24` now located; `FA-*`
+resolves only in `verification/V0-theory-corpus-map.md`) · `G-16` C attributes `K_t` to **"v0.2"**
+and baselines against a **"v1.1"** it never constructs · `G-17` C begins mid-pipeline at
+*"checkpoint 0080–0094"* — **`FIREWALL-LIMITED`, not ABSENT**.
+
+## Graph
+
+**81 edges** — 47 `[EMP]` · 12 `[EXPLICIT]` · 7 `[DERIVED]` · 5 `[UNWITNESSED]` · 5 `[OPEN]` ·
+3 `[REFUTED]` · 2 `[PROPOSED]`.
+
+## Resumption
+
+```yaml
+checkpoint: 008
+gaps_closed: [G-02 overload-not-swap, G-03 explicit-sub-family, G-08 per-pair]
+primary_gap: G-12   # 514 unread documents (steps 026-268) — unchanged, still the largest risk
+open: [G-01, G-04(deferred), G-05, G-06, G-07, G-09, G-10, G-11, G-12, G-14, G-15, G-16, G-17, C-1]
+next_chronological: step-026 (2026-08-28 10:14) — head of the 514-document unread window
+resumption: from disk; artifacts 04/05/06/07 carry all state
+```
