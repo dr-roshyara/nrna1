@@ -1,5 +1,39 @@
-**Updated:** 2026-09-09 (latest) — **MD-062 COMPLETE — CONTROLLED VALIDATION OF THE F4 `Sat*`
-SEMANTIC SLICE, FINAL DETERMINATION C, HARD STOP.** User read MD-061 in full, agreed it was a genuine
+**Updated:** 2026-09-09 (latest) — **MD-063 COMPLETE — CONTROLLED RECONSTRUCTION OF THE F4
+SATISFACTION BOUNDARY, FINAL DETERMINATION B, HARD STOP.** User declined to authorize "incorporate
+`EC_t`" as a construction step, correctly noting MD-062 established `Sat*` is a surrogate but not
+what the replacement boundary channel must actually be — authorized a pure reconstruction phase
+instead (no new `Sat` construction), with M0127 kept explicitly as structural corroboration only.
+**Major correction to MD-062's own provenance classification found and verified (MD-062's own text
+NOT edited)**: **M0125** — the same primary document that defines V7's own `K_t`/`Σ_t` tuple —
+**explicitly commissions M0127** (`KR-CONTR-FDE-2026-09`) as its own stated "immediate next action"
+(§1.2, §8.2–8.5), specifying M0127's exact protocol, exact 17-section report structure, and exact
+six-way verdict vocabulary — all of which M0127's own actual report follows precisely; file
+timestamps two seconds apart. **This is common-authorship, commissioned execution, not "same-day,
+separately-authored, sibling-question corroboration"** as MD-062 characterized it — a correction in
+*weight*, not scope: M0127 still evaluates `Standing(p)` for a proposition, not `Sat(K_t,r)` for a
+requirement, so it doesn't become direct F4 evidence by this alone. **Independently, M0125 itself
+(§3.1) natively diagnoses**, without reference to M0127, *"`Sat` collapse `\| value∘Eval_c \|` Reason
+for U (9→1)"* — the primary V7-defining source already names the same defect MD-062 found in `Sat*`
+by structural analogy, independent of M0127's execution. **Genuine unresolved question surfaced**:
+whether M0125's own informal "`Sat`" is the same predicate as M0043's formal `Sat(K_t,r)` — an open
+homonym-or-identity question, not resolved here. **Further findings**: M0047 `[DEF]` §5 gives a
+concrete, typed requirement structure (`r=(id,type,scope,content,standard,priority,validity)`, with
+`standard` explicitly "acceptance criterion"), sharpening `Accept_r` from "invented" to "a
+placeholder for `standard`'s own unspecified rule"; M0043's own `[AX-5]` axiomatizes Provenance as a
+semantic invariant, but for **transitions**, not `Sat`; a suggestive, unconfirmed adjacency between
+`EC_t`'s own `Context` argument and `Boundary`'s own `Context` field was found and explicitly left
+open. **Falsification closure**: all four of MD-062's own failure modes (E1/E2/E3/E5) now have a
+named, corpus-evidenced candidate fix — every one evidenced for `Standing(p)`, none demonstrated for
+`Sat(K_t,r)` itself. **Final Determination: B — Boundary partially reconstructed; specific semantic
+gaps remain** — not A (no connecting rule exists), not C (substantial material was found, not
+absence), not D (no contradicting formulations found). **A next construction phase is NOT justified**
+on this phase's own evidence. No backlog ticket (scientific findings, fully recorded in-phase).
+Verified both consistency scripts `CONSISTENT`; no frozen artifact touched; firewalls held. **MD-063
+status: COMPLETE. HARD STOP — no construction phase entered.** Smallest next action, named, not
+authorized: resolve whether M0125's own `Sat` and M0043's own `Sat(K_t,r)` are the same predicate.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-062 COMPLETE — CONTROLLED
+VALIDATION OF THE F4 `Sat*` SEMANTIC SLICE, FINAL DETERMINATION C, HARD STOP.** User read MD-061 in full, agreed it was a genuine
 advance, and redirected the recommended next step: validate `Sat*`'s own semantic legitimacy before
 extending it to V7's other ten components. Mid-turn, the user asked directly whether a specific file
 (`20260902-175306_kr-contr-fde-2026-09-external-writeup.md`, M0127, `KR-CONTR-FDE-2026-09`) had been

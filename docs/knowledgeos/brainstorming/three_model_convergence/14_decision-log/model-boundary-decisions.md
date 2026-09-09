@@ -5294,3 +5294,73 @@ validation/` directory (8 files) plus this entry written.
 entered by this completion.** Smallest next action, named, not authorized: incorporate `EC_t` (or a
 Reason/Provenance/Context-style boundary channel) into the requirement/`Sat` construction, before any
 further `Σ_t`-style component typing.**
+
+---
+
+## MD-063 — Controlled Reconstruction of the F4 Satisfaction Boundary
+
+**2026-09-09.** User declined to authorize "incorporate `EC_t`" as a construction step, correctly
+noting MD-062 established that `Sat*` is a surrogate but not what the replacement boundary channel
+must actually be — authorized a pure reconstruction phase instead: determine, from the corpus, what
+semantic boundary is actually required around `Sat(K_t,r)`, with M0127 kept explicitly as structural
+corroboration only, no new `Sat` constructed.
+
+**Executed, with a major, load-bearing correction to MD-062's own provenance classification (MD-062's
+own text NOT edited)**: a targeted search found that **M0125** — the same primary document that
+defines V7's own `K_t`/`Σ_t` tuple — **explicitly commissions M0127** (`KR-CONTR-FDE-2026-09`) as its
+own stated "immediate next action" (§1.2, §8.2–8.5), specifying M0127's exact protocol, exact
+17-section report structure, and exact six-way verdict vocabulary — all of which M0127's own actual
+report follows precisely. File timestamps: two seconds apart. **This is common-authorship,
+commissioned execution, not "same-day, separately-authored, sibling-question corroboration"** as
+MD-062 characterized it — a correction in *weight*, not in *scope*: M0127 still evaluates
+`Standing(p)` for a proposition, not `Sat(K_t,r)` for a requirement, so it does not become direct F4
+evidence by this correction alone.
+
+**Independently, native evidence within M0125 itself**: §3.1 ("Part 3: The Projection Framework")
+states, without reference to M0127, *"`Sat` collapse `\| value∘Eval_c \|` Reason for U (9→1)"* — the
+corpus's own primary V7-defining source already diagnoses the same defect MD-062 found in `Sat*` by
+structural analogy, independent of M0127's own later execution. **A genuine, disclosed unresolved
+question this raises**: M0125's own informal "`Sat`" here is never formally shown identical to
+M0043's own `Sat(K_t,r)` — an open homonym-or-identity question, not resolved by this phase.
+
+**Further primary findings**: M0047 `[DEF]` §5 gives a concrete, typed requirement structure
+(`r=(id,type,scope,content,standard,priority,validity)`, with `standard` explicitly "acceptance
+criterion"), used immediately after (§6) to derive the Ideal State `I_t=𝓡_t` — sharpening MD-061's
+own `Accept_r` from "invented from nothing" to "a placeholder for `standard`'s own unspecified
+evaluation rule." M0043's own `[AX-5]` ("Provenance preservation," `ValidTransition⇒
+ProvenancePreserved`) independently axiomatizes Provenance as a semantic invariant — for
+**transitions**, not `Sat`. A suggestive, unconfirmed terminological adjacency was also found and
+explicitly left unresolved: `EC_t`'s own `C_t` (Context) argument vs. `Boundary`'s own `Context`
+field — no formula connects them.
+
+**Falsification closure (Q5, re-testing MD-062's own four failure modes)**: every one of E1/E2/E3/E5
+now has a real, named, corpus-evidenced candidate fix (E2/E5 matched almost exactly by M0127's own
+Collapse C1/C2; E3 matched by M0127's own Countermodel 5) — **but every fix is evidenced for
+`Standing(p)`, never demonstrated by any formula for `Sat(K_t,r)` itself.** This is the single most
+precise statement the phase can make.
+
+**Final Determination: B — Boundary partially reconstructed; specific semantic gaps remain.** Not A
+(no connecting rule between `EC_t`/`standard`/`Boundary` and `Sat` exists); not C (substantial,
+precisely-named material was found, not absence); not D (no contradicting F4 formulations found — the
+gap is absence-of-connection, not conflicting connections).
+
+**A next construction phase is NOT justified on this phase's own evidence.** The smallest missing
+research input, named precisely: resolve whether M0125's own informal "`Sat`" and M0043's own formal
+`Sat(K_t,r)` denote the same predicate — a bounded, targeted identity/provenance question, still
+reconstruction, not construction.
+
+**No backlog ticket** — the M0125→M0127 provenance correction and the boundary findings are
+scientific results, fully recorded in this phase's own artifacts.
+
+**No classification changed. No frozen artifact (MD-024–062) modified. No `Sat_new` constructed. No
+V7 extension. No `Δ_t` construction. No F3↔F4 bridge. No GA-001/GA-038 work. No kernel selected. No
+external literature. No code. K-1/K2 untouched. MD-050 not reopened. `theory-extraction/`/Lane-T
+`K3`/`Ω`/`T-K1`/`T-K2` kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-063-f4-satisfaction-
+boundary-reconstruction/` directory (7 files) plus this entry written.
+
+**MD-063 status: COMPLETE. HARD STOP — no MD-064 opened, no construction phase entered by this
+completion.** Smallest next action, named, not authorized: resolve whether M0125's own `Sat` and
+M0043's own `Sat(K_t,r)` are the same predicate.**

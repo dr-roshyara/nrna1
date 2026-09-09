@@ -1185,7 +1185,26 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-062 — Controlled Validation of the F4 `Sat*` Semantic
+**Status update, 2026-09-09 (latest): MD-063 — Controlled Reconstruction of the F4 Satisfaction
+Boundary — EXECUTED, FINAL DETERMINATION B, HARD STOP.** User declined "incorporate `EC_t`" as
+construction, authorized pure reconstruction instead. **Major correction to MD-062's own provenance
+classification (text unedited)**: M0125 (source of V7's `K_t`/`Σ_t`) explicitly commissions M0127
+(`KR-CONTR-FDE-2026-09`) as its own stated next action — exact protocol, report structure, verdict
+vocabulary all match; timestamps 2 seconds apart. Common-authorship, commissioned execution, not
+"separately-authored sibling" — a correction in weight, not scope (M0127 still evaluates
+`Standing(p)`, not `Sat(K_t,r)`). **M0125 itself natively diagnoses** a `Sat`-collapse defect (§3.1),
+independent of M0127 — but whether M0125's own "`Sat`" is M0043's formal `Sat(K_t,r)` remains an
+open, unresolved question. **Further findings**: M0047 gives a typed requirement structure
+(`standard` = acceptance criterion), sharpening `Accept_r`; M0043's `[AX-5]` axiomatizes Provenance
+for transitions, not `Sat`; an unconfirmed `EC_t`-Context/`Boundary`-Context adjacency noted, left
+open. **Falsification closure**: all four MD-062 failure modes now have a named candidate fix,
+evidenced for `Standing(p)`, none for `Sat(K_t,r)`. **Final Determination: B — boundary partially
+reconstructed.** Not A (no connecting rule), not C (substantial material found), not D (no
+contradiction). **A construction phase is NOT justified yet.** No backlog ticket. Verified both
+consistency scripts `CONSISTENT`. **Smallest next action, named, not authorized**: resolve whether
+M0125's `Sat` and M0043's `Sat(K_t,r)` are the same predicate.
+
+**Status update, 2026-09-09 (earlier): MD-062 — Controlled Validation of the F4 `Sat*` Semantic
 Slice — EXECUTED, FINAL DETERMINATION C, HARD STOP.** User redirected MD-061's own suggested next
 step: validate `Sat*`'s semantic legitimacy before extending it. Mid-turn, confirmed a specific file
 (M0127, `KR-CONTR-FDE-2026-09`) had not been read; opened it, found it directly decisive. **Central
