@@ -882,3 +882,81 @@ umbrella: G-12 (2 of 6 blocks integrated)
 pending: Blocks 1, 2, 4, 5 resumed and running
 resumption: from disk; artifacts 04/05/06/07/08 carry all state
 ```
+
+---
+
+# CHECKPOINT 010 — 2026-09-09 · ⭐ G-12 EXTRACTION COMPLETE (6 of 6 blocks)
+
+## Completed
+
+All six chronological workers returned. Four were resumed after a rate limit, each re-briefed with
+sibling findings. **265 files across steps 026–268 extracted.** Every load-bearing claim verified by
+Main against source before integration.
+
+## ⭐ The shape of the middle interval
+
+| block | steps | tracked apparatus | 025 refs | Q-series |
+|---|---|---|---|---|
+| 1 | 026–066 | `Ω:W→O` · `δ:K×Event→K` · `K_t` 7-tuple · `Zero` (all at 031/026) | ⭐ **026–029 only** | 0 |
+| 2 | 067–109 | **none** — only `K_t`, `Evidence` | 0 | 0 |
+| 3 | 110–150 | **none** | 0 | 0 |
+| 4 | 151–185 | **none** of `EC/Ω/Σ/Sat/𝒪_core` | 0 | **1** (Question 17) |
+| 5 | 186–230 | `𝒦` ×5 redefinitions · `τ:S×C→S` · `E_t→G_t→O_t→E_{t+1}` | 0 | 0 |
+| 6 | 231–267 | `K=(𝒜,ℛ)` **imported** · `δ` cited to Q15 · `Ω` ×6 senses | 0 | Q13/14/15/20, all citations |
+
+$$\boxed{\textbf{The 025-series is cited in FOUR documents of the 243-step interval: } 026,\ 027,\ 028,\ 029. \textbf{ Never again after } 029.}$$
+
+**The corpus does not drift — it RE-FOUNDS.** Four witnessed re-foundings: `031`, `183-pre`
+(rejecting four equations outright), `230`, `262` (importing `K` and forbidding reopening).
+
+## ⭐⭐ The central hole — three gaps are one
+
+```
+K = (𝒜, ℛ)          step_262, 08-30 19:27   <-  "the latest executed reconstruction"   NEVER NAMED
+K = (A,R,Σ,E_L)      step_273, 08-30 21:44   <-  "Step 272 proposed these components"   NO FILE EXISTS
+```
+
+**Both kernel definitions in Lineage B are attributed to sources absent from the readable corpus.**
+`G-14` (missing step 272, cited 50×), `G-18` (unnamed executed reconstruction, cited ~16×) and
+`G-20` (origin of `Σ`, `E_L`) are **one hole, not three.**
+
+**Named lead, not asserted:** a recovery document (08-29 00:33) quotes *"the earlier model"* as
+having `K_t = (𝒜_t, ℛ_t, ℰ_t, ℋ_t, 𝒵_t, ℒ_t)` — *assertions, relationships*, evidence, history,
+Zero findings, Lord candidates. `262`'s kernel is its first two components. But `262` cites a
+different source, and the recovery document is itself a citation to *"prior conversation context and
+uploaded/library records"*. **`CANDIDATE_ANCESTOR [PROPOSED]`.**
+
+## Effect on `G-08` — the pairwise dispositions can now be re-examined
+
+**A→B `INDEPENDENT_CONVERGENCE` — REFINED, not overturned.** There **is** a chain: A → 026–029 →
+(re-founding at 031) → … → B. But it is a chain that **stops carrying the apparatus after 029** and
+**re-founds three more times before reaching B**. So A and B are connected by *continuity of
+document sequence* and disconnected by *continuity of content*. Both were true; the earlier
+framing was too coarse.
+
+**The Q-series is now a WEAK ancestor candidate.** Scored **zero** in blocks 1, 2, 3, 5; one citation
+in block 4; four in block 6 (all citations, never definitions).
+⭐ **`step-016` is the stronger candidate** — cited by Lineage A twice (its only external citation)
+and by `step-028` once, from a different lineage.
+
+## New gaps
+
+`G-24` `step_183-pre` rejects four equations and demotes six constructs — **is this pruning event
+ever cited downstream?** · `G-25` two disjoint invariant schemes (`I-01…I-20` vs `I_1…I_19`) with no
+crosswalk · `G-26` `step_168`'s "verification lattice" named but never constructed.
+
+## Read-state after G-12
+
+`READ-COMPLETE` ~45 · `READ-STRUCTURAL` ~220 (the six ledgers) · `NOT-READ` ~1 790 of 2 099.
+**Semantic coverage ≈ 2%.** The six ledgers are evidence packets, **not** promotions to READ-COMPLETE.
+
+## Resumption
+
+```yaml
+checkpoint: 010
+G-12: EXTRACTION COMPLETE (6/6 blocks) — not the same as "all 265 files read completely"
+primary_gap: G-18 (now merged with G-14 and G-20 as one hole)
+lead: recovery doc 20260829-003330 K_t=(𝒜,ℛ,ℰ,ℋ,𝒵,ℒ) — CANDIDATE only
+open: [G-01, G-04, G-05, G-06, G-07, G-09, G-10, G-11, G-14+G-18+G-20, G-15, G-16, G-17, G-21, G-22, G-23, G-24, G-25, G-26, C-1]
+resumption: from disk; artifacts 04/05/06/07/08 carry all state
+```

@@ -766,3 +766,348 @@ addressed, not resolved. Two partial signals survive in their termination messag
 as **unverified leads, not findings**: Block 5 noted *"files carry spillover sections for the next
 step"*; Block 4 noted low-numbered hits in `156`/`166` were *"internal workflow enumerations, not
 citations"*. **Neither is integrated.**
+
+---
+# BLOCK 5 (steps 186–230) integrated · verified by Main · **it corrects my own work twice**
+
+## ⭐⭐⭐ THE SPILLOVER FINDING — a corpus-wide structural fact
+
+**43 of 45 files in Block 5 carry the NEXT step's opening section as a trailing heading.**
+The file→step mapping is **not 1:1**.
+
+$$\boxed{\textbf{Steps 217 and 229 have NO FILE OF THEIR OWN — they live inside the } 216 \textbf{ and } 228 \textbf{ files, with their own verdicts.}}$$
+
+`step_216` L1024 `# Step 217 — The Actual Reconstruction Protocol` … L1200 `# Step 217 verdict`
+`step_228` L1053 `# Step 229 — Derive the Core Architectural Invariants`
+
+**Consequence for every block, including mine:** a reconstruction that enumerates by filename scores
+217 and 229 as **absent** when they are **present, filed under the previous number**. And a step's
+content can predate its own file's timestamp, because it was written as the tail of the prior
+session. **Argument position and writing timestamp are decoupled by construction, not by accident.**
+
+## ⚠️ SELF-CORRECTION 1 — my `step_268` finding, refined (it survives, but I stated it imprecisely)
+
+Checkpoint 009 said *"`step_268` does not exist"* on the basis of `ls`. The spillover finding
+demanded I re-check. Result:
+
+`step_267` **does** carry `# STEP 268 — INDEPENDENT FALSIFICATION` at **L1327** — a spillover
+section exactly as the pattern predicts. It runs 48 lines and the file ends at L1375 with:
+
+> *"That is where the next step should begin."*
+
+**Commission only. No verdict, no execution, no counterexample attempted.** Contrast step 217, whose
+spillover carries an actual `# Step 217 verdict`.
+
+**Corrected statement:** step 268 exists **as a commission in `step_267`'s tail and nowhere as
+executed content.** The substantive finding — *the falsification of `K=(𝒜,ℛ)` was ordered and never
+performed* — **stands and is now better grounded.** The phrasing "does not exist" is withdrawn as
+imprecise. `[EMP]`
+
+## ⚠️ SELF-CORRECTION 2 — `step_251`'s genealogy table has verified errors
+
+`G-03`'s disposition rests on a row in `step_251`'s reconciliation table. Block 5 checked two **other**
+rows of that same table against their cited sources. Both are wrong, verified by Main:
+
+| `step_251` claims | reality |
+|---|---|
+| `E_t → G_t → O_t` attributed to **"Step 189/203"** | **189: confirmed** — but the actual form is the 4-term **closed loop** `E_t→G_t→O_t→E_{t+1}` (L544, boxed); dropping `→E_{t+1}` drops the feedback closure the source calls *"the cleanest mathematical expression yet of the KnowledgeOS lifecycle"*. **203: `G_t` occurs ZERO times.** 203 has a different six-line pipeline in which **`O` means *Observation*, not *Operational***, running `O→E`, the inverse direction. |
+| `τ : S × C → S` attributed to **"Step 204/205"** | **204: confirmed verbatim** (L20; 56 `τ` hits). **205: `τ` occurs ZERO times.** Step 205 is *Aggregate Derivation* and introduces no transition symbol at all. |
+
+$$\boxed{\text{Two of } \texttt{step\_251}\text{'s genealogy attributions are demonstrably wrong. The table is NOT uniformly reliable.}}$$
+
+**Does this overturn `G-03`?** No — the `025k` row was quoted **verbatim** and I verified it directly
+against `025k` itself, not through the table. But `G-03`'s evidence class is now qualified: the
+source document is one whose other attributions fail on check. Recorded as a **qualification**, not
+a withdrawal.
+
+## Other Block 5 results, `[EMP]`
+
+- **Q-series: ZERO occurrences in steps 186–230.** 17 candidate hits all read and rejected as LaTeX
+  arithmetic (`\neq0`, `\geq0`) or auto-generated code-fence IDs. **So Q15 — which `step_251` cites
+  as `δ`'s source — does not originate in 186–230.** `NO_CONNECTION_FOUND_IN_BLOCK`.
+- ⛔ **`𝒦` is redefined five times inside this block with no cross-citation:** `(S,𝒯,I)` (197.4) →
+  `(𝒮,𝒯,ℐ,ℒ)` (197.35) → **12-tuple** `(I,S,O,E,P,A,M,U,R,D,X,L)` (201-b) → `(K,C,T,A,E,L)` (230
+  open) → `(K,C,T,E,A)` (230.31). **No step states that it is redefining `𝒦`.**
+- ⛔ **`Δ` carries ~9 unrelated meanings** in this block alone — a Dirac weight, a change indicator, a
+  reality↔knowledge divergence, a **symmetric difference of transition sets**, and a **five-field
+  tuple** `ΔA=(Trigger,Evidence,Decision,Rationale,Impact)` which is not a difference at all. `δ` ×3,
+  `Ω` ×2, `Σ` ×2 (a genuine σ-algebra at 186-pre vs a Boolean classifier at 191).
+- **`K=(𝒜,ℛ)`: ABSENT from 186–230** — consistent with Block 6's finding that it is imported at 262.
+- **`EC`, `Sat`, `ℛ_req`, `𝒪_core`: ABSENT.** "Evidence Context" exists as a DDD *context name* in
+  four files — a near-miss recorded as `NO_CONNECTION_FOUND_IN_BLOCK`, **not** as evidence for `EC`.
+- **Step 230 names no predecessor** except *"Steps 1–182"*, yet compresses step 228's eight
+  principles into a six-term dependency equation. `NO_EXPLICIT_ANCESTRY_FOUND`, and the count drifts
+  **8 → 7 → 6** with no statement of what was dropped (`HA`, then `KT`).
+- One further timestamp inversion: `step_209` written 60 s **before** `step_208`, though 209 opens
+  *"We continue from Step 208."* **Eight instances of argument-order ≠ writing-order now recorded.**
+
+---
+# BLOCK 1 (steps 026–066) integrated · verified by Main · ⭐ the forward chain out of Lineage A
+
+## ⭐⭐⭐ Lineage A DOES hand forward — and then the chain RE-FOUNDS
+
+**`step-026` inherits from `025z` explicitly.** Four verified quotes (`20260828-101406`, 41 seconds
+after `025z` closed):
+
+```
+L3     "We continue from 25Z."
+L391   "This reinforces the result from 25Z."
+L436   "This is analogous to the ActionContract from 25Z."     <- load-bearing
+L1222  "This connects directly to 25Z's Value of Information."
+```
+
+`026` defines `ModelContract = (Inputs, Outputs, Assumptions, Scope, Validity, Limitations, Version)`
+**modelled on `025z`'s `ActionContract`**, then generalises it into a **seven-contract family**
+(Observation · Evidence · Semantic · Inference · Model · Decision · Action) — the last carried
+forward from `025z` unchanged. `EXPLICIT_ANCESTRY`. `[EMP]`
+
+**Then it stops.** Verified by Main with an exhaustive per-file sweep:
+
+$$\boxed{\text{The 025 tie is confined to steps } \mathbf{026\text{–}029}. \text{ Steps } \mathbf{030\text{–}066} \text{ contain } \mathbf{ZERO} \text{ references to the 025 series — 37 consecutive documents.}}$$
+
+The last is `029` L1437. From `031` the chain **re-founds itself**: *"Steps 1–30 developed the
+conceptual mathematical architecture. Step 31 is the first deliberate attempt to turn…"* and
+thereafter cites only its immediate predecessor by number.
+
+⭐ **This is the shape of the corpus: not disjoint lineages, but a chain that periodically
+RE-FOUNDS and stops citing what came before.** It is the same behaviour Block 6 found at `262`
+(importing `K=(𝒜,ℛ)` and forbidding re-opening) and Block 5 found at `230` (naming no predecessor
+but *"Steps 1–182"*). **Three re-foundings, in three different blocks.**
+
+## ⭐ `Ω : W → O` is born at step 031 — and survives to `step_251`
+
+`step-031` L596–600, **boxed**: `Ω : W → O`, *"as the observation mechanism"*.
+`step_251` (08-30 18:36) L306 carries the identical form. **A genuine two-day thread inside the
+continuous sequence.** `[EMP]`
+
+Note this is **not** the sense `step_238` traces to *"the kernel era, 2026-08-24"* — that one is
+measure-theoretic. `G-21` and `G-22` both sharpen: `Ω`'s observation-map sense has a witnessed
+origin at 031; its measure-theoretic sense is claimed to be older and lives elsewhere.
+
+## ⭐ Step 16 is cited by a SECOND independent lineage
+
+`step-028` L155: *"This follows directly from **Steps 16**, 25W, 25X and 26."*
+Worker A found Step 16 is Lineage A's **only** external citation (twice, both for temporal
+validity). It is now cited from outside Lineage A as well.
+
+**`step-016` (`temporal-knowledge-events-state-evolution-and-knowledge-versioning`) is the strongest
+common-ancestor candidate found so far** — stronger than the Q-series, which Block 5 showed has
+**zero** occurrences in 186–230 and Block 1 shows has zero in 026–066. **`G-23` opened.**
+
+## `K` is defined four incompatible ways in this block alone
+
+| step | form |
+|---|---|
+| **031** L486 | **`K_t = (E_t, A_t, M_t, C_t, F_t, V_t, R_t)`** — evidence · assertions · models · constraints · conflicts · validation · provenance. *"One of the most important formalizations so far."* Plus `K_t = Fold(e₁,…,e_t)` and boxed `KnowledgeState = Projection(EventHistory)` |
+| 049 L846 | `K = (V, E, R, Metadata)` |
+| 052 L219 / 060 | `K_t = {C₁,…,Cₙ}` — a set of claims |
+| 029 L70 | `K = {a₁,…,aₙ}` — a set of assertions |
+
+`031` also states: *"We do not have `K`. We have `K_t`."* **None is the `(𝒜,ℛ)` of step 262 or the
+`(A,R,Σ,E_L)` of the cluster.** No reconciling passage exists in the block.
+
+## Four more homonym traps — the discipline keeps paying
+
+| token | non-tracked senses found |
+|---|---|
+| **`Sat`** | **ABSENT as an operator.** All 14 hits are substrings: `AssumptionsSatisfied`, `Satisfiability`, `Constraint Satisfaction`, `Satisficing`, `PreconditionsSatisfied`, `InvariantSatisfied(d,K,t)` … |
+| **`𝒪`** | **three** senses: the **observability matrix** of linear control theory with `rank(𝒪)=n` (026) · the **set** of Observations (031, 032) · an observation **function** `𝒪 : X → O` (066). **None is `𝒪_core`, which is absent entirely.** |
+| **`Σ`** | automaton **event alphabet** (051, 055, 056) · **covariance matrix** `Var(Y) ≈ JΣJᵀ` (033, 044). Never a knowledge-state component. |
+| **`δ`** | genuine transition `δ : K × Event → K` (031, 032) · **drift threshold** `D > δ` (045) |
+| **`Δ`** | always ordinary *"change in"* — `ΔH` entropy, `ΔY` causal effect. **Not** Block 3's conformance discrepancy. |
+
+## Anomalies
+
+**Two `step-026` files with incompatible numbering regimes.** `026-A` (0827-162919) is a **roadmap
+whose numbering was abandoned wholesale** — its "Step 26 / 31 / 46" bear no relation to the actual
+ones. `026-B` (0828-101406) is the true successor. A reconstruction keying on filename alone would
+read the abandoned roadmap as the theory step.
+
+**`step-046` is a 14-line stub** in both copies — the chain crosses a near-empty node, picked up by
+`047`. **Ninth timestamp inversion:** `066` (11:50:02) says *"Up to Step 65…"* but `065` is stamped
+11:50:54, 52 s later.
+
+---
+# BLOCK 2 (steps 067–109) integrated — **ALL SIX BLOCKS NOW RETURNED** · `G-12` extraction complete
+
+## ⭐⭐⭐ THE CONVERGENCE — both kernels trace to sources that do not exist
+
+Block 2 located the earliest occurrence of the cluster's 4-tuple. Main verified it:
+
+`step_273` L14–22, verbatim:
+
+> *"Do **not** simply restate:* $$K=(A,R,\Sigma,E_L)$$ *because **Step 272 proposed these components**."*
+
+with `Σ = Epistemic State`, `E_L = Evidence Links`, and *"It also classified History, Lineage,
+Policy and Authority as external to `K`, relative to `𝒪_core`."*
+
+Set this beside Block 6's finding and Worker B's:
+
+| kernel | first appears | attributed to | does the source exist? |
+|---|---|---|---|
+| `K = (𝒜, ℛ)` | `step_262`, 08-30 19:27 | *"the **latest executed reconstruction**"* | **never named with a path** — `G-18` |
+| `K = (A,R,Σ,E_L)` | `step_273`, 08-30 21:44 | *"**Step 272** proposed these components"* | ⛔ **no `step_272` file exists** — cited **50×**, called *"the accepted Step 272 framework"* — `G-14` |
+
+$$\boxed{\textbf{Both kernel definitions in Lineage B are attributed to sources absent from the readable corpus. } G\text{-}14,\ G\text{-}18 \text{ and } G\text{-}20 \text{ are one hole, not three.}}$$
+
+`G-20` is therefore **answered and reframed**: `Σ` and `E_L` do not enter from the middle interval
+at all — they arrive at `step_273` already attributed to the missing "Step 272". `[EMP]`
+
+## Block 2's own range: the apparatus is simply gone
+
+Steps 067–109 — 45 files, 43 distinct (two byte-identical re-saves), **written in a 30 m 19 s
+window at ~41 s/file**. Verified by Main: **zero** `EC`, `Ω`, `Sat` across the whole range.
+
+Absent throughout: `EC` · `Ω` · `Σ`(glyph) · `Sat` · `ℛ_req` · `δ` · `Δ`(as tracked) · `Zero` ·
+`𝒪_core` · `Determination`. **Only `K_t` and `Evidence` survive.** Every look-alike was read and
+rejected: `E_C` = causal-graph edges (074) · `Σ*` = Kleene star (069) · `Zero-trust` (094) ·
+*"zero uncertainty"* = `H(X)=0` (088) · *"the **delta method**"* = the statistical one (082) ·
+`Missing → Zero` = a **type error** example (067).
+
+⛔ **Six more incompatible `K`-tuples**, and the letters collide across them:
+`K_OS=(A,T,P,E,I,S,X,R)` 8 · `K_L=(A,T,P,E,I,X,R)` 7 · `𝒦=(S,A,T,I,O)` 5 · `𝒦_t=(S_t,A_t,T_t,I_t,V_t,P_t,E_t)` 7 ·
+**`K=(S,D,I,V,R,G)` 6 — a *capability's conformance tuple*, not a knowledge state at all** ·
+`K_actual = Artifacts+Code+Configuration+Workflows+RuntimeBehavior`.
+`A` is *Artifact* in 070 and *actions* in 092; `T` is *Epistemic Type* in 070 and *transition* in
+092; `S` is *State*, *states*, and *specification*. **No document reconciles any two.**
+
+## ⭐ The one thread crossing 109→110 carries a HOMONYM
+
+Block 3's single reference below step 110 was `step_115` → *"Step 107's drift model"*. Block 2 read
+`step_107` **completely**. Its `Δ` is:
+
+```
+step_107 L313-316:   ExpectedState … ObservedState …   Delta = Observed − Expected.
+                     L339:  Replicas 4 expected vs 3 observed  ->  Delta = −1.
+```
+
+Plain-text `Delta`, an architecture-conformance discrepancy over replica counts and config values —
+**exactly the homonym Block 3 flagged.** So the sole witnessed thread across that boundary
+**does not carry the tracked `Δ`.** `NO_CONNECTION_FOUND_IN_BLOCK`.
+
+`step_107` is nonetheless substantive: it **refuses** `A_I ≠ A_R ⇒ ArchitectureWrong`, replacing it
+with `Difference → Classification → Decision`, a six-way taxonomy `D1–D6` (including **`D6 unknown`
+— "this sixth state is essential"**), and `Drift` as a **9-tuple**.
+
+## Corpus-wide distribution — Block 2's most useful contribution
+
+Over all 564 `phase_measure_theory/` files: `EC` in 33 · `Ω` in 38 · `Σ` in 40 · `Sat` in 8 ·
+`ℛ` in 10 · `δ` in 7 · `𝒪` in 5 · `E_L` in 8 — and **not one of those files is in 067–109**.
+
+$$\text{They cluster in } \mathbf{pre\text{-}067} \text{ (022, 023, 025, 025d, the 08-25/26 lens documents) and in the } \mathbf{200s/280s}.$$
+
+**A distribution, not a verdict** — Block 2 explicitly declined to interpret it, correctly.
+
+---
+
+# ⭐ G-12 — ALL SIX BLOCKS RETURNED. The middle interval, mapped.
+
+| block | steps | tracked apparatus | 025 refs | Q-series |
+|---|---|---|---|---|
+| 1 | 026–066 | `Ω:W→O`(031) · `δ:K×Event→K`(031) · `K_t` 7-tuple(031) · `Zero`(026) | ⭐ **026–029 only**, then **zero for 37 docs** | 0 |
+| 2 | 067–109 | **none** — only `K_t`, `Evidence` | **0** | 0 |
+| 3 | 110–150 | **none** | 0 | 0 |
+| 4 | 151–185 | *pending* | — | — |
+| 5 | 186–230 | `𝒦` ×5 redefinitions · `τ:S×C→S`(204) · `E_t→G_t→O_t→E_{t+1}`(189) | 0 | **0** |
+| 6 | 231–267 | `K=(𝒜,ℛ)` **imported**(262) · `δ` cited to Q15(251) · `Ω` ×6 senses | 0 | Q13/14/15/20 only, all citations |
+
+$$\boxed{\textbf{The 025-series is cited in exactly FOUR documents of the 243-step interval: } 026,\ 027,\ 028,\ 029. \textbf{ After } 029 \textbf{, never again.}}$$
+
+**The corpus does not drift — it RE-FOUNDS.** Three witnessed re-foundings: `031` (*"the first
+deliberate attempt to turn [the conceptual architecture] into…"*), `230` (names no predecessor but
+*"Steps 1–182"*), `262` (imports `K` and **forbids reopening it**). Each starts fresh and stops
+citing what came before.
+
+⭐ **`step-016` is now cited by three separate places** — twice from Lineage A (its only external
+citation) and once from `step-028` (*"Steps 16, 25W, 25X and 26"*). It remains the strongest
+common-ancestor candidate; the **Q-series scored zero in blocks 1, 2, 3 and 5.**
+
+---
+# BLOCK 4 (steps 151–185) integrated — **G-12 EXTRACTION COMPLETE, ALL SIX BLOCKS**
+
+## ⭐⭐⭐ The strongest lead yet on `G-18` — recorded as CANDIDATE, not asserted
+
+`20260829-003330_step_155-156_recovery-…-sarathi-formulation.md` (68 lines, read complete by
+Block 4), L29–36, verified verbatim by Main:
+
+> *"The **earlier model** also had a fairly rich `K_t`:*
+> $$K_t = (\mathcal A_t, \mathcal R_t, \mathcal E_t, \mathcal H_t, \mathcal Z_t, \mathcal L_t)$$
+> *with **assertions, relationships**, evidence, history, Zero findings and Lord candidates
+> explicitly separated."*
+
+Against `step_262` (43 hours later): `K = (𝒜, ℛ)` with `𝒜 = Set(Assertion)`.
+
+$$\boxed{\textbf{Same two glyphs, same two meanings. } \texttt{262}\textbf{'s kernel is the first two components of this 6-tuple, with the other four dropped.}}$$
+
+⚠️ **Not asserted as ancestry, for three reasons:**
+1. `262` attributes its kernel to *"the latest executed reconstruction"* — **not** to this document.
+2. The recovery document is itself a **citation**, not a derivation: *"I can recover the earlier
+   Step-series material from **the prior conversation context and uploaded/library records**"* (L3),
+   and L44: *"Rather than reconstructing Step 156 from memory, I should retrieve the exact Step 155
+   and Step 156 artifacts."*
+3. Same glyphs + same meanings is exactly the inference that produced the `Adequacy` and `Standing`
+   false positives. `Σ₀` survived that test because the *internal construction* matched; here the
+   component semantics match but **no document connects them.**
+
+**Recorded `CANDIDATE_ANCESTOR [PROPOSED]`.** `G-18` remains **UNRESOLVED**, now with a named lead.
+
+## ⭐⭐ `step_183-pre` — the only document in the corpus that REMOVES formalism
+
+Block 4's most important structural find. `20260829-015928_step_183-pre_…-review-of-steps-1-182.md`
+**rejects four equations by name**:
+
+```
+K_t^decayed = K_0 e^(−λt)                  -> "I do NOT recommend keeping this as a KnowledgeOS
+                                              architectural equation"
+𝓘(t) = 1 if Δ(K_t,I_t) > θ                 -> "Validated software architecture? No."
+R(K) = { R_max if true ; R_min otherwise }  -> "I would now reject this from the architecture"
+Gītā metaphors treated as software objects  -> 🔴 Reject
+```
+
+and **demotes six constructs to "research hypothesis / not justified architecture"**:
+`KnowledgeDecayFunction` · `EpistemicRewardFunction` · `DharmaThreshold` ·
+`UniversalAcceptanceFunction` · `NumericalTrustScore` · `NumericalWisdomScore`.
+
+Its hard rule, boxed and symmetric:
+
+> *"**No Gītā-derived equation becomes an architectural rule** unless independent software/domain
+> evidence supports it"* — and — *"**No software structure becomes 'validated by Gītā'** merely
+> because a metaphor can be constructed."*
+
+⭐ **Everything downstream of it in the block (183, 184, 185) is prose-and-invariant work with no
+new quantitative apparatus.** This is a witnessed pruning event, and it explains part of why the
+mathematical vocabulary thins across the middle interval.
+
+## `Standing` — my P-96/P-97 rejection independently confirmed
+
+`step_162` L796: `Source → Authority/Standing`, qualified *"where applicable"*. **One occurrence in
+the entire block, no definition, no type, no second use.** All 14 other `[Ss]tanding` hits are the
+substring in *"under**standing**"*. **The false positive I flagged in `P-97` §0 is confirmed by an
+independent complete read.** `[EMP]`
+
+## More multiplicity
+
+- ⛔ **`Δ` carries FIVE senses in Block 4**: Decision (155a, 157) · architecture gap
+  `Δ_A = A_TARGET − A_CURRENT` (159 — **matching Block 3's sense, independently**) · freshness time
+  threshold (168) · refinement increment `X → X+Δ` (185) · a divergence measure with an undefined
+  threshold θ (183-pre — **explicitly rejected**). `δ` carries two: a **disposition function**
+  `δ(E,R,Auth,C) → {ACT, REFRAIN, DEFER, ESCALATE}` (161, *"we must not assume δ is deterministic"*)
+  and `Decision_t = δ(K_t, Policy_t, Authority_t)` (175).
+- ⛔ **Four incompatible `K` tuples — two of them contradicting inside ONE document**: `step_177`
+  L249 gives an **8**-tuple with `Confidence`; L525, 276 lines later, gives a **7**-tuple that drops
+  `Confidence` and rebinds `T` and `V`. No reconciliation.
+- ⛔ **Two disjoint invariant numbering schemes**: `step_162`'s `I-01…I-20` and `step_183-pre`'s
+  `I_1…I_14` continued by `step_185`'s `I_15…I_19`. **Different content, no crosswalk, and neither
+  states whether it supersedes the other.**
+- `step_168`'s **"verification lattice" is named but never constructed** — no carrier set, no order
+  relation, no join or meet anywhere in the file.
+- `step_178` uses `K_{t+1} > K_t` **without ever defining `>` on knowledge states.**
+
+## Block 4's boundary threads — both weak
+
+Only two references cross below step 150, and neither carries the tracked apparatus:
+the **Question 17** citation in the recovery document (the block's *only* Q-series citation), and
+*"The old Step 8 assessment remains highly relevant"* (183-pre L960) — **unanchored: Step 8 is never
+quoted and its content never restated.**
+
+`EC` · `Ω` · `Σ` · `Sat` · `ℛ_req` · `Req` · `𝒪_core`: **all absent from steps 151–185.**
