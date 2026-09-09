@@ -281,3 +281,38 @@ must be countable as one* — ⭐⭐ **and countability fails hardest when the c
 neither the filename, the length, nor a keyword search reveals it. **Only a content hash does.**
 
 ⛔ **No remedy is proposed, and no claim is made about either document's correctness.**
+
+### The consequence this item warned of has now been realised
+
+**Registered from `P-87`** (`docs/knowledgeos/theory-extraction/108-P87-…`).
+
+The two earlier appendices concerned *counting*: unmarked repeat runs, and a copy filed under another
+title. ⭐⭐⭐ **This instance is the outcome those were warning about — unmarked external content
+reaching a ratification package.**
+
+| | |
+|---|---|
+| **the file** | self-titled ***"PERPLEXITY RESEARCH RESPONSE"*** — an **external AI research service** |
+| **what it supplied** | a list of distinctions drawn from the academic literature — Quine, Kant/Kripke, Kripke, Tarski, Gödel, Fagin et al., Enderton, Church/Turing, Hintikka, Levesque |
+| ⭐⭐ **where they ended up** | **at least four of the eleven distinctions in a package recommended for ratification**, three of them arriving through that response |
+| ⛔ **how they are marked there** | ⭐⭐⭐ **they are not.** The assessment presents the inventory as one list, with no indication which entries came from outside |
+| **and one copy of the file** | is byte-identical to another but named *"…-variant"* — **the renamed-copy pattern again, on this very document** |
+
+### Why this is the serious form
+
+⛔ **The distinctions themselves are standard and defensible** — this is not a quality complaint.
+⭐⭐ **The point is what they are *not*: neither derived from the programme's own theory nor selected by
+an authority.** They are **imported**.
+
+$$\boxed{\begin{array}{c}\textbf{A reader of the ratification package sees one inventory and reasonably assumes}\\ \textbf{a single provenance. There are } \mathbf{three}\textbf{: derived, chosen, and imported —}\\ \textbf{and only a } \mathbf{different\ file} \textbf{ reveals the third.}\end{array}}$$
+
+⭐ **And the exposure compounds:** the package is the object a downstream computation is run over, so an
+unmarked import becomes an unmarked input to a numerical result.
+
+### What this adds to §5
+
+⭐ **The marker must survive aggregation.** Marking the *file* is not enough if its *contents* are then
+lifted into a second document that carries no marker. ⭐⭐ **Provenance has to travel with the item, not
+just with the file it arrived in.**
+
+⛔ **No remedy is proposed, and no claim is made that any imported distinction is wrong.**

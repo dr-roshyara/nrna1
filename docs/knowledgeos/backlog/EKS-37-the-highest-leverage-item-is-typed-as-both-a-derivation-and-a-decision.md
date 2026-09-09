@@ -122,3 +122,35 @@ missing is the question being asked of the right person.
 | the four readable analyses of the set | `…/mathematical_ideas_that_can_be_implemented/20260902-181000`, `-182001`, `-182013`, `-182016` |
 
 ⛔ **No position is taken on which characterisation is correct, and no owner is proposed.**
+
+---
+
+## Appended 2026-09-09 — the conflict is now **diagnosed**, and the item stands
+
+**From `P-87`** (`docs/knowledgeos/theory-extraction/108-P87-…`), filed hours after this item.
+
+⭐⭐⭐ **The two descriptions refer to one object at two layers, and the choice sits one level higher
+than either states.**
+
+The programme's own completeness theorem reads:
+
+> *"Let `𝒯` be the set of minimal operational tasks required of KnowledgeOS. `ℛ_req` is structurally
+> complete **iff** every minimal information requirement for all `τ ∈ 𝒯` is mapped to a non-collapsing
+> partition in `ℛ_req`."*
+
+$$\boxed{\begin{array}{c}\textbf{So } \mathcal R_{req} \textbf{ } \mathbf{IS} \textbf{ derivable — } \mathbf{given}\ \mathcal T. \textbf{ And } \mathcal T \textbf{ is the decision.}\\[4pt] \textbf{⭐⭐ The forward plan is right that the } \mathbf{enumeration} \textbf{ is a derivation.}\\ \textbf{⭐⭐ The experiment report is right that a } \mathbf{decision} \textbf{ sets everything.}\\ \textbf{⛔ Neither names } \mathcal T\textbf{, so both appear to be talking about the same layer.}\end{array}}$$
+
+⭐ **And `𝒯` is *exemplified, not enumerated*** — the corpus gives *"**including** contradiction
+isolation, Zero-state invariant checking, epistemic query resolution, and temporal garbage
+collection"*: **four exemplars behind an open list.**
+
+### Why the item is not withdrawn
+
+⛔ **The diagnosis does not remove the exposure.** ⭐ **Nothing in the estate records that these two
+statements are about different layers** — a reader still meets one description or the other and still
+routes the work to a different owner. ⚠️ **And the diagnosis moves the question rather than closing it:
+the same *derivation-or-decision* problem now applies to `𝒯`, which has no owner either.**
+
+⭐⭐ **What changes is the remedy's target.** §5's candidate requirement asked for an agreed type on the
+item. ⭐ **It should be read as applying to `𝒯` first** — because typing `ℛ_req` while `𝒯` is untyped
+merely relocates the same ambiguity.
