@@ -296,3 +296,38 @@ $$\boxed{\textbf{No lineage conclusion may leap across an unread chronological i
 
 Recorded because the session has already produced this exact error twice:
 `local citation absence → false global disjointness`.
+
+
+---
+
+# G-12 — PARTIAL (Blocks 3 and 6 of 6). New gaps, ranked.
+
+**Blocks 1, 2, 4, 5 terminated on a rate limit and have been RESUMED.** ~180 of 265 files remain
+unextracted. **`G-12` is not resolved.**
+
+| ID | question | why load-bearing | status |
+|---|---|---|---|
+| **G-18** | ⭐⭐ **What is the "latest executed reconstruction" / "closure artifact" / "completion register"?** Cited ~16× across steps 262, 263, 265, 267; **never named with a path.** | It carries the load for the three strongest claims in the middle interval: `K` closed, **minimality PROVEN**, "14 of 16" computability questions proven. The `K` the entire `272a`–`277` cluster inherits is **cited to it, not derived.** | **UNRESOLVED** — possibly `FIREWALL-LIMITED` |
+| **G-19** | ⭐⭐ **Step 268 was commissioned and never written.** `step_267` orders an independent falsification of `K=(𝒜,ℛ)` and its minimality claim; no such file exists; the corpus jumps `267`(19:59) → `269`(20:09). | **The one document commissioned to attack the cluster's central claim is missing, and the unfalsified claim proceeded straight into `272a`–`277`.** | **UNRESOLVED** |
+| **G-20** | Where do `Σ` and `E_L` enter `K = (A,R,Σ,E_L)`? The middle interval has only the **2-tuple** `K=(𝒜,ℛ)`; `E_L` never occurs as a `K`-component; `step_263` L779 **excludes** `Σ` from Proposition. | The cluster treats the 4-tuple as inherited. Two of its four components have no witnessed origin. | **UNRESOLVED** |
+| **G-21** | `Ω`'s provenance is claimed as **"the kernel era, 2026-08-24"** (`step_238` L83) — earlier than Lineage A, B or C, and earlier than the Q-series (08-26). | A new and older common-ancestor candidate. `kernel/` is 181 unread files. | **UNRESOLVED** |
+| **G-22** | `Ω` carries **six mutually incompatible senses** in steps 231–267 alone. | Any claim about `Ω` crossing this interval is ambiguous by default. | **OPEN** |
+
+## Effect on earlier dispositions
+
+- **`G-03`** (`Ω`/`EC` as a restricted sub-family at `step_251`) — **strengthened.** Block 6 confirms
+  `step_251` is the last carrier, that nothing rejects `Ω`/`EC`, and that they simply stop being
+  used. Still `PENDING G-12` for the four unread blocks.
+- **`G-08` A→B** — **materially complicated.** The cluster's `K` is imported from an unnamed
+  artifact, so "does B descend from A" may be the wrong question: **both may descend from something
+  neither names.**
+- **Homonym discipline vindicated.** Block 3 found `EC`, `Δ` and `K` all used in non-tracked senses,
+  one of them (`EC` at step 117) **explicitly disclaimed in its own text**. Any token-level ancestry
+  claim across steps 110–150 would have been wrong.
+
+## Next smallest load-bearing gap
+
+**`G-18`.** It is smaller than `G-12`'s remainder, it is bounded (identify one artifact), and it
+sits upstream of `G-19`, `G-20` and the whole `G-08` question. If the "executed reconstruction" is
+locatable in the readable corpus, the middle interval's central claim gains a source; if it resolves
+into the firewalled lane, that is itself the answer and must be recorded as `FIREWALL-LIMITED`.

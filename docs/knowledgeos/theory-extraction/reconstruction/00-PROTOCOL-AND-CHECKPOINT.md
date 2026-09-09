@@ -810,3 +810,75 @@ open: [G-01, G-04(deferred), G-05, G-06, G-07, G-09, G-10, G-11, G-12, G-14, G-1
 next_chronological: step-026 (2026-08-28 10:14) — head of the 514-document unread window
 resumption: from disk; artifacts 04/05/06/07 carry all state
 ```
+
+---
+
+# CHECKPOINT 009 — 2026-09-09 · G-12 partial (2 of 6 blocks); 4 workers resumed
+
+## Completed / remaining
+
+```
+completed:                Block 3 (steps 110-150, 41 docs) · Block 6 (steps 231-267, 40 docs)
+remaining:                Block 1 (026-066) · Block 2 (067-109) · Block 4 (151-185) · Block 5 (186-230)
+                          ~180 of 265 files unextracted
+worker status:            all four RESUMED after the rate limit reset, each re-briefed with
+                          sibling findings (homonym traps; step 107's drift model; Steps 189/203/204
+                          verification; the spillover-sections lead)
+promoted to READ-COMPLETE: step_248 · step_251 · step_265 · step_266 · step_267 (by Block 6)
+still READ-STRUCTURAL:     the bulk of blocks 3 and 6
+```
+
+## ⭐⭐⭐ The decisive finding
+
+`step_262` (19:27:07) opens by **importing** the kernel:
+
+> *"The **latest executed reconstruction** has already closed much of Step 261: `K=(𝒜,ℛ)` …
+> The resulting minimality claim … is **reported as PROVEN by the executed programme**. …
+> Therefore Step 262 should **not reopen the already-closed `K` problem**."*
+
+Two minutes forty-two seconds earlier, `step_261` had recorded
+`FINAL KERNEL SELECTION REMAINS BLOCKED`, *Assertion type defined* 🔴, **Minimality proven 🔴**.
+
+$$\boxed{\textbf{The } K \textbf{ that the whole } 272a\text{–}277 \textbf{ cluster inherits is CITED, not derived, and its source is never named.}}$$
+
+And `step_267` — the last document before the gap — commissions
+**"STEP 268 — INDEPENDENT FALSIFICATION"** of exactly that claim. **`step_268` does not exist.**
+The corpus jumps `267` (19:59) → `269` (20:09).
+
+## New definition versions
+
+`K` — the middle interval's `K` is a **2-tuple** `(𝒜,ℛ)` with `Assertion=(id,P,e,c,t,Π)`, **not** the
+4-tuple `(A,R,Σ,E_L)`. `E_L` never occurs as a `K`-component; `Σ` is **excluded** from Proposition
+(`263` L779). Registered as a distinct version; **not merged** with the cluster's 4-tuple.
+`δ` ×3 (`S×Event→S`; `δ_K(K_t,o_t,ρ_t,Ω_t)` 4-arg; `δ:𝒦×ℰ⇀𝒦` cited to **Q15**).
+`Ω` ×6 incompatible senses. Q14's type system `P=(E,D,V)` reproduced at `263` L15–50.
+
+## New lineage edges — 12 added, 93 total
+
+## New gaps
+
+`G-18` the unnamed "executed reconstruction" (⭐ **new primary**) · `G-19` step 268 commissioned and
+missing · `G-20` origin of `Σ` and `E_L` in the 4-tuple · `G-21` `Ω` provenance claimed as
+**"kernel era, 2026-08-24"** — older than every lineage tracked · `G-22` `Ω`'s six senses.
+
+## Current primary blocker
+
+**`G-18`** — smaller than `G-12`'s remainder, bounded, and upstream of `G-19`, `G-20` and the whole
+`G-08` question. `G-12` remains the umbrella task.
+
+## ⚠️ What Block 3 prevented
+
+Steps 110–150 contain **zero** tracked apparatus and three homonyms — `EC` = *engineering-change
+object* (**explicitly disclaimed in its own text**), `Δ` = conformance discrepancy, `K` = the plain
+noun *Knowledge*. **Any token-level ancestry claim across that range would have been wrong.** This
+is the homonym discipline paying for itself.
+
+## Resumption
+
+```yaml
+checkpoint: 009
+primary_gap: G-18
+umbrella: G-12 (2 of 6 blocks integrated)
+pending: Blocks 1, 2, 4, 5 resumed and running
+resumption: from disk; artifacts 04/05/06/07/08 carry all state
+```

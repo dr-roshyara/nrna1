@@ -662,3 +662,107 @@ concept… **third instance of my recurring error**"* — is **the same failure 
 in this session**: `G-03` closed on a too-narrow citation test, and the A↔B `DISJOINT` claim built
 on it. A previous lane recorded this exact error class in this exact corpus, and I reproduced it.
 Recorded, not glossed.
+
+---
+# G-12 PARTIAL — BLOCKS 3 and 6 integrated · Blocks 1, 2, 4, 5 FAILED (rate limit), must be relaunched
+
+## ⭐⭐⭐ BLOCK 6 (steps 231–267) — the decisive result of the entire reconstruction so far
+
+### 1. `K = (A,R,Σ,E_L)` does not exist in the middle interval. `K = (𝒜,ℛ)` does — and it is IMPORTED.
+
+`step_262` (2026-08-30 **19:27:07**), verified verbatim, opening lines:
+
+> *"We can now continue, but there is an important correction to the previous Step 261 conclusion.*
+> ***The latest executed reconstruction has already closed much of Step 261:***
+> $$K=(\mathcal A,\mathcal R)$$
+> *with `𝒜 = Set(Assertion)` and `Assertion = (id,P,e,c,t,Π)`.*
+> *The six assertion fields each survived an executed removal test… The resulting minimality claim
+> is therefore no longer merely hypothetical: it is **reported as PROVEN by the executed
+> programme**.*
+> *Therefore Step 262 should **not reopen the already-closed `K` problem**."*
+
+$$\boxed{\text{The } K \text{ the later cluster inherits is a } \mathbf{2}\textbf{-tuple, CITED not derived, from an unnamed "executed reconstruction", and reopening it is forbidden.}}$$
+
+`E_L` occurs **zero** times as a `K`-component anywhere in steps 231–267. `Σ` is never a component
+of any `K`-tuple there — `step_263` L779 explicitly **excludes** it: `P ∌ Σ, e, τ, Π`. `[EMP]`
+
+### 2. ⛔ The reversal — 2 minutes 42 seconds
+
+| | time | verdict |
+|---|---|---|
+| `step_261` | **19:24:25** | `FINAL KERNEL SELECTION REMAINS BLOCKED` · *Assertion type defined* 🔴 · **Minimality proven 🔴** |
+| `step_262` | **19:27:07** | the same items **closed and PROVEN**, on external authority, with re-opening forbidden |
+
+Verified at both ends (`261` L1258/1273/1278; `262` L3–31). **No argument in the readable corpus
+bridges them.** `[EMP]`
+
+### 3. ⭐⭐ The falsification that was commissioned and never written
+
+`step_267` (19:59), the **last document before the gap**, verified verbatim:
+
+> *"The first attack should be on the most consequential claim:* $$K=(\mathcal A,\mathcal R)$$
+> *with the minimality claim:* ***"No component can be removed without losing a mandatory
+> capability."*** *… It must ask: **Can we construct one valid counterexample that forces the
+> current model to fail?***"
+
+$$\boxed{\textbf{STEP 268 DOES NOT EXIST.}}$$
+
+Verified: `ls | grep step[-_]268` → **0**. The corpus jumps `267` (19:59) → `269` (20:09), ten
+minutes later. **The one document commissioned to attack `K=(𝒜,ℛ)` was never written, and the
+unfalsified claim proceeded directly into the `272a`–`277` cluster.** `[EMP]`
+
+### 4. `δ` is cited to **Q15**, not defined
+
+`step_251` L50, in the genealogy table: `| Q15 | δ : 𝒦 × ℰ ⇀ 𝒦 | event/state | explicit candidate |`.
+Three distinct `δ`s exist in the block — `δ : S × Event → S` (`231`), `δ_K(K_t,o_t,ρ_t,Ω_t)`
+**4-argument, carrying `Ω_t`** (`240`, with `241` L470 stating *"the exact signature of `δ_K` is
+unresolved"*), and `δ : 𝒦 × ℰ ⇀ 𝒦` (`251`, cited to Q15). **`δ(K_t,e_t)` in that literal form
+appears nowhere.** Its nearest relative is `δ_X(X_t,e_t)` — applied to `X`, not `K`. `[EMP]`
+
+### 5. ⛔ `Ω` has **six mutually incompatible meanings** inside this one block
+
+measure-theoretic space (`238`, regime R1, *abandoned*) · `Ω_t` as `δ_K`'s 4th argument (`240`/`241`)
+· `Ω = {all possible knowledge states}` (`246`) · `(Ω,ℱ,μ)` with `Ω=𝕂` (`247`) · **`Ω : W → O`**
+observation map (`251`) · generic `f : Ω → ℝ` and `(Ω,ℱ,P)` (`264`/`266`).
+`step_238` L83 states its provenance: *"`Ω` first appears in the kernel era, 2026-08-24"* — **before
+every lineage tracked so far.** `[EMP]`
+
+### 6. `Ω` and `EC` go dark after `step_251` — and nothing rejects them
+
+Per-file zeros verified for 252–267 (two `Ω` hits are the generic-mathematics senses).
+**No document says "we drop `Ω`/`EC`."** Classified `NO_CONNECTION_FOUND_IN_BLOCK`, **not**
+`PROVEN_NO_CONNECTION`. `[EMP]`
+
+### 7. Four more argument/writing-order inversions
+
+`248` written **before** `247` · `250` **before** `249` · `260` **before** `259` — and `249` names a
+"Step 250" that was never written under that title. **The batch-002 rule now has seven instances.**
+
+## BLOCK 3 (steps 110–150) — a clean, important negative
+
+**41 documents written in ~70 minutes contain essentially NONE of the tracked apparatus.**
+Exhaustive negative greps (Unicode + LaTeX + ASCII): `Ω` 0 · `Σ` 0 · `K_t` 0 · `Sat` 0 · `ℛ` 0 ·
+`δ` 0 · `Zero` 0 · `Determination` 0 · `𝒪_core` 0 · `\mathcal` 0 · no `K = (...)` tuple at all.
+
+Despite the directory name `phase_measure_theory`, this block is a continuous **DDD /
+bounded-context / architecture-reconstruction** argument.
+
+⛔ **Three homonym traps identified, each locally defined and non-measure-theoretic:**
+
+| token | Block-3 meaning | source |
+|---|---|---|
+| **`EC`** | **engineering-change object**, `EC = (Intent, Decision, Authority, Change, Verification, Runtime, Evidence, Knowledge)` — and explicitly disclaimed: *"This is **not** a proposal for a new domain entity"* | `117` L49, L63 |
+| **`Δ`** | conformance discrepancy `Δ = S_observed − S_expected` | `118` L104 |
+| **`K`** | the **noun *Knowledge*** in a legend — no internal structure | `126` L37 |
+
+**Exactly one reference reaches below step 110** — `115` L472, to *"Step 107's drift model"*.
+Everything else is a strictly linear N−1 → N → N+1 chain.
+
+## ⚠️ Worker failures — recorded, not hidden
+
+**Blocks 1 (026–066), 2 (067–109), 4 (151–185) and 5 (186–230) terminated on an API rate limit**
+before producing ledgers. **~180 of the 265 files remain unextracted.** `G-12` is **partially**
+addressed, not resolved. Two partial signals survive in their termination messages and are recorded
+as **unverified leads, not findings**: Block 5 noted *"files carry spillover sections for the next
+step"*; Block 4 noted low-numbered hits in `156`/`166` were *"internal workflow enumerations, not
+citations"*. **Neither is integrated.**
