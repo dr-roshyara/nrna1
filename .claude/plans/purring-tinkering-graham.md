@@ -1185,7 +1185,33 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-056 — Ratified Layer: "Three Kernels" + Operation-Registry
+**Status update, 2026-09-09 (latest): MD-057 — Semantic Identity/Equivalence Evidence Census (Phase
+A only) — EXECUTED, HARD STOP.** User validated MD-056, corrected its "fourth independent line of
+evidence" phrasing (replaced by precise provenance classification going forward; MD-056's own text
+not edited), and redirected the sweep toward finding an existing corpus criterion connecting the
+kernel families rather than more absence-diagnosis. Proposed and this reconstruction adopted a
+Phase A (evidence census, no invention) / Phase B (controlled, explicitly-labeled derivation, only on
+genuine absence) discipline. **Executed Phase A**: a two-pass keyword census located three
+previously-unread clusters (15 files) — `brainstorming/verification/gap-discovery/
+gap-update-2026-09-02/` (12 files), `brainstorming/phase_measure_theory/knowledgeos_kernel/
+research/` step-290/291 D-series (2 files), one ratified-layer status matrix. **Central finding**:
+the corpus contains an execution-tested CANDIDATE `≡_sem^{Q,Γ,𝒪}`/CLOSURE-4 definition and a
+corpus-native `≡_sem` vs `≈_obs` typed-slot distinction, but every `≡_sem` candidate is
+self-labeled unratified, the one tested candidate is actually `≈_obs` (weaker), and semantic
+distinguishability between `≡`/`≈` is ruled **"UNDECIDABLE FROM CURRENT CORPUS"** by an executed
+test the source itself built. Ten adversarial hypotheses tested; H1 (ratified criterion exists) and
+H2 (search problem) both REFUTED — two separately-authored analyses of a common primary source
+(reclassified precisely, not counted as independent replication) diagnose a **decision/governance
+problem**, already named with its own decision register (`N-4`/`N-3`/`N-1′`), not a derivation gap.
+**F1/F3/F4/F5/F6/K0: UNRESOLVED. GA-001: UNCHANGED. GA-038: UNCHANGED, corroborated with unusually
+high precision.** No candidate label assigned. **Phase B NOT TRIGGERED** — this is itself the
+required Phase-A answer, not a deferral. No backlog ticket (checked against
+EKS-19/21/22/23/25/28). 15 files recommended for narrow-scope admission. Verified both consistency
+scripts `CONSISTENT`; no frozen artifact touched; firewalls held. **Smallest next action, named, not
+authorized**: (a) a governance-facing act on the `N-4`/`N-3`/`N-1′` chain; (b) continue the sweep,
+starting with `step-291/11_VNEXT-CLOSURE-AUDIT.md` (located, self-marked NOT FROZEN, unread).
+
+**Status update, 2026-09-09 (earlier): MD-056 — Ratified Layer: "Three Kernels" + Operation-Registry
 Commission — EXECUTED, admitted narrow-scope, sweep continuing.** User reissued the full 8-directory
 sweep with the formal Chronological Thread Discovery Protocol; disagreement stated first
 (`brainstorming/verification/` already fully covered, MD-052+054, not re-swept). A keyword/filename

@@ -4820,3 +4820,83 @@ plus this entry written.
 **MD-056 status: COMPLETE. Smallest next action, named, not authorized**: continue the forward-read/
 discovery-signal sweep into the remaining directories named above. Awaiting separate authorization
 for any further step.**
+
+---
+
+## MD-057 — Semantic Identity/Equivalence Evidence Census (Phase A only)
+
+**2026-09-09.** User validated MD-056, corrected its "fourth independent line of evidence" phrasing
+(replaced going forward with precise provenance classification: same thread / common-provenance
+lineage / separately-authored / independently conducted / independently replicated / provenance
+unresolved — MD-056's own text NOT edited, correction recorded in this new phase), and redirected the
+sweep's purpose: determine whether the remaining corpus already contains an admissible semantic
+identity/equivalence criterion connecting the kernel families — not more diagnosis of its absence.
+Proposed a two-stage discipline (Phase A: evidence census, no invention; Phase B: only on genuine
+absence, a controlled, explicitly-labeled mathematical derivation) — accepted as compatible with this
+reconstruction's own hard-stop discipline (a stop on adjudication, not on proposing a labeled
+candidate for later separately-authorized testing).
+
+**Executed Phase A.** A two-pass keyword census (broad, then MinKer-specific high-precision) across
+the remaining unswept directories, followed by a citation chase from the one genuinely new hit,
+located and fully read three clusters (15 files): **(1)** `brainstorming/verification/gap-discovery/
+gap-update-2026-09-02/` (12 files, previously unread — a self-corrected multiplicity/conflict-record
+audit); **(2)** `brainstorming/phase_measure_theory/knowledgeos_kernel/research/` step-290/291
+D-series (2 files, `REFINED-STEP-290.md`/`REFINED-STEP-291.md` — previously unread; a rigorously
+self-auditing internal research programme); **(3)** `reviews/synthesis/analysis/sync-intake/
+02_TEN_BLOCKER_STATUS_MATRIX.md` (1 file, corroborates MD-056 only).
+
+**Central finding**: the corpus contains a formally-stated, execution-tested CANDIDATE definition for
+a semantic-equivalence-shaped relation (`≡_sem^{Q,Γ,𝒪}`/CLOSURE-4) and a corpus-native, source-
+established distinction between two typed relation slots (`≡_sem` vs `≈_obs`, a 7-tuple `𝔎=(K,=_str,
+≡_sem,≈_obs,SameId,≡_H,≡_P)`) — but every candidate `≡_sem` formula is self-labeled by its own
+authors as unratified, the one execution-tested candidate is re-typed as `≈_obs` (a weaker,
+contextual-observational relation) rather than `≡_sem` proper, and the deeper semantic-
+distinguishability question between `≡` and `≈` is ruled, by an executed test the source itself
+built and ran, **"UNDECIDABLE FROM CURRENT CORPUS."** Ten adversarial hypotheses tested (H1–H10);
+none forced to a winner; H1 (a ratified criterion already exists) and H2 (this is a search problem)
+both REFUTED — the corpus's own authors, independently, in two separately-authored analyses of a
+common primary source (not two independent replications — reclassified precisely, not counted),
+diagnose the gap as a **decision/governance problem**, already named with its own decision register
+(`N-4` mandatory-membership rule, `N-3` `𝒪_K` extension, `N-1′` ratification), not a derivation gap.
+
+**Relation to inventory**: the candidate apparatus (`𝒪`/`𝒯`/`𝒪_K`/`≡_K`/`≈`) belongs to a different
+candidate family (the `phase_measure_theory` `K_t`/`𝔎`-tuple lineage) than any of F1–F8/K0 as
+registered — no document connects it to F1/F3/F4/F5/F6 by name. **F1/F3/F4/F5/F6/K0: UNRESOLVED.**
+VERIFY SESSION `K=(𝒜,ℛ)` — **PARTIAL CORRESPONDENCE (methodological only** — both threads
+independently self-audit via direct execution and each catches a genuine internal defect this way).
+**GA-001: UNCHANGED. GA-038: UNCHANGED, corroborated with unusually high precision** (the source
+names the exact missing canonicalization piece itself) — classified as common-provenance-lineage
+corroboration, per the corrected discipline, not an added independent count. **No candidate label
+assigned. No new candidate family proposed for the F1–F8 inventory.**
+
+**Phase B: NOT TRIGGERED.** Phase A does not establish genuine absence — it establishes a precisely-
+diagnosed, corpus-internal, already-registered decision problem, with a named blocking chain and a
+named required authority (ARB) that neither the corpus nor this reconstruction holds. Inventing a
+labeled `HYPOTHESIS`/`DESIGN CHOICE` here would duplicate work the corpus's own authors already did
+more precisely. This is itself the phase's required answer to "is Phase B triggered," not a
+deferral.
+
+**Backlog**: no new ticket filed — checked against `EKS-19/21/22/23/25/28`; this finding is a
+higher-resolution corroboration of the already-tracked GA-038, not a new business-facing problem.
+
+**Admissibility**: 15 files (the three clusters) recommended for admission, narrow-scope, same
+discipline as every prior admission — not merged into F1–F8, no composition test, no GA-001/GA-038
+resolution, admission ≠ adoption. `step-291/11_VNEXT-CLOSURE-AUDIT.md` (located, self-marked NOT
+FROZEN, not read in full — disclosed) and the remaining unswept material (~269 files of
+`brainstorming/verification/`, ~264 of `reviews/synthesis/`, ~35 of `phase_measure_theory/
+knowledgeos_kernel/research/`) remain **not admitted**.
+
+**No classification changed. No frozen artifact (MD-024–056) modified. No executable file read or
+executed — the two clusters' own cited Python scripts are cited from source text only. K-1/K2
+untouched. No Stage 07. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept
+firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-057-semantic-identity-
+equivalence-evidence-census/` directory (4 files) plus this entry written.
+
+**MD-057 status: COMPLETE. HARD STOP — no MD-058 opened by this completion.** Smallest next action,
+named, not authorized: either (a) a governance-facing act handing the `N-4`/`N-3`/`N-1′` decision
+chain to a PO/ARB (possibly the same conversation as the VERIFY SESSION thread's own open `(W,Ω)`/
+`D_t`/`U(H)` question, MD-054 — related, not silently merged), or (b) continue the sweep, starting
+with `step-291/11_VNEXT-CLOSURE-AUDIT.md`.**

@@ -1,5 +1,47 @@
-**Updated:** 2026-09-09 (latest) — **MD-056 COMPLETE — RATIFIED LAYER: "THREE KERNELS" + OPERATION-
-REGISTRY COMMISSION, ADMITTED NARROW-SCOPE, SWEEP CONTINUING.** User reissued the full 8-directory
+**Updated:** 2026-09-09 (latest) — **MD-057 COMPLETE — SEMANTIC IDENTITY/EQUIVALENCE EVIDENCE CENSUS
+(PHASE A ONLY), HARD STOP.** User validated MD-056, corrected its "fourth independent line of
+evidence" phrasing (replaced going forward by precise provenance classification: same thread /
+common-provenance lineage / separately-authored / independently conducted / independently
+replicated / provenance unresolved — MD-056's own text NOT edited), and redirected the sweep's
+purpose: find an existing corpus criterion connecting the kernel families, not more diagnosis of its
+absence. Proposed a two-stage Phase A (evidence census)/Phase B (controlled, explicitly-labeled
+mathematical derivation, only on genuine absence) discipline — accepted as compatible with this
+reconstruction's own hard-stop convention. **Executed Phase A**: a two-pass keyword census located
+and fully read 15 previously-unread files across three clusters — `brainstorming/verification/
+gap-discovery/gap-update-2026-09-02/` (12 files, a self-corrected multiplicity/conflict-record
+audit), `brainstorming/phase_measure_theory/knowledgeos_kernel/research/` step-290/291 D-series (2
+files, a rigorously self-auditing internal research programme), and one ratified-layer status
+matrix. **Central finding**: the corpus contains a formally-stated, execution-tested CANDIDATE
+definition for a semantic-equivalence-shaped relation (`≡_sem^{Q,Γ,𝒪}`/CLOSURE-4) and a corpus-
+native distinction between two typed relation slots (`≡_sem` vs `≈_obs`, a 7-tuple
+`𝔎=(K,=_str,≡_sem,≈_obs,SameId,≡_H,≡_P)`) — but every candidate `≡_sem` formula is self-labeled
+unratified by its own authors, the one execution-tested candidate is re-typed as `≈_obs` (weaker)
+rather than `≡_sem` proper, and semantic distinguishability between `≡` and `≈` is ruled, by an
+executed test the source itself built, **"UNDECIDABLE FROM CURRENT CORPUS."** Ten adversarial
+hypotheses tested; H1 (ratified criterion exists) and H2 (this is a search problem) both REFUTED —
+two separately-authored analyses of a common primary source (reclassified precisely, not counted as
+independent replication) diagnose the gap as a **decision/governance problem**, already named with
+its own decision register (`N-4`/`N-3`/`N-1′`), not a derivation gap. **Relation to inventory**:
+the candidate apparatus belongs to a different candidate family than F1–F8/K0 — no document connects
+it by name. F1/F3/F4/F5/F6/K0: **UNRESOLVED**. VERIFY SESSION `K=(𝒜,ℛ)`: **PARTIAL CORRESPONDENCE
+(methodological only** — both threads independently self-audit via direct execution and each catch a
+genuine internal defect this way). **GA-001: UNCHANGED. GA-038: UNCHANGED, corroborated with
+unusually high precision** (the source names the exact missing canonicalization piece itself). **No
+candidate label assigned. Phase B NOT TRIGGERED** — Phase A found a precisely-diagnosed decision
+problem, not genuine absence; inventing a labeled hypothesis here would duplicate work the corpus's
+own authors already did more precisely. No backlog ticket (checked against
+EKS-19/21/22/23/25/28 — higher-resolution corroboration of the already-tracked GA-038, not a new
+business problem). 15 files recommended for narrow-scope admission (admission ≠ adoption).
+Verified both consistency scripts `CONSISTENT`; no frozen artifact touched; `theory-extraction/` and
+Lane-T `K3`/`Ω`/`T-K1`/`T-K2` kept firewalled throughout; MD-050 not reopened. **MD-057 status:
+COMPLETE. HARD STOP — no MD-058 opened.** Smallest next action, named, not authorized: (a) a
+governance-facing act handing the `N-4`/`N-3`/`N-1′` decision chain to a PO/ARB (possibly related to
+the VERIFY SESSION thread's own open governance question, MD-054 — not silently merged); (b)
+continue the sweep, starting with `step-291/11_VNEXT-CLOSURE-AUDIT.md` (located, self-marked NOT
+FROZEN, not yet read).
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-056 COMPLETE — RATIFIED
+LAYER: "THREE KERNELS" + OPERATION-REGISTRY COMMISSION, ADMITTED NARROW-SCOPE, SWEEP CONTINUING.** User reissued the full 8-directory
 sweep with a formal Chronological Thread Discovery Protocol. Disagreement stated first:
 `brainstorming/verification/` is already fully covered (MD-052 `spec/` + MD-054 top-level, 80
 files) — not re-swept. A keyword/filename discovery sweep across the remaining directories surfaced
