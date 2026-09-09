@@ -52,3 +52,7 @@ E 10-component@025n	—	INTRODUCE	[EMP]	2026-08-28T09:42	025n §25N.1	against th
 six-concepts-separate@025n	TG-02 "six-component vector"	CORRECTION-CANDIDATE	[OPEN]	2026-08-28T09:42	025n §25N.2 vs forward plan	six concepts held APART, not a six-component vector; Independence is one field of a 10-tuple
 Independence=Unknown@025n	Dempster ⊕ blocked	EXPLAINS	[EMP]	2026-08-28T09:42	025n §25N.44	conservative evidence principle forbids LR1*LR2*LR3 when independence is unknown - the blocker has a stated reason
 EvidenceCount≠InformationCount@025n	—	DERIVE	[DERIVED]	2026-08-28T09:42	025n §25N.10-12	evidence clusters; InformationUnits(C)≈1 for one informational origin
+Truth(A,W)@025o	Accepted(A,K)@025o	NON-IMPLICATION	[DERIVED]	2026-08-28T09:42	025o §25O.21-22	two-way: Accepted does not give Truth and Truth does not give Accepted
+Knowledge@025o	GovernedAcceptance@025o	DEFINITION	[EMP]	2026-08-28T09:42	025o §25O.5	knowledge defined operationally and governance-relative, not as world truth
+Σ_v7@025k	Σ_v8@025o	SIGNATURE_CHANGE	[EMP]	2026-08-28T09:42	025k §25K.21 vs 025o §25O.33	4-tuple -> 6-tuple; +Freshness +Authority +Uncertainty; relation UNRESOLVED
+Knowledge=GovernedAcceptance@025o	EC/Ω arguments	DEPENDS_ON	[EMP]	2026-08-28T09:42	025o §25O.5,§25O.20	acceptance consumes governance criteria and a model - upstream of G-01/G-03 losses

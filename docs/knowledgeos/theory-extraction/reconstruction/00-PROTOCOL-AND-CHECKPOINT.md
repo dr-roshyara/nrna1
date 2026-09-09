@@ -503,3 +503,81 @@ backfill_debt:
   - 025n remainder
 resumption: from disk; 04-THEORY-CHRONICLE.md + 04-LINEAGE-EDGES.tsv carry all state
 ```
+
+---
+
+# CHECKPOINT 005 — 2026-09-09 · operating model changed
+
+## Method adopted, evidence source declined
+
+The **Chronological Multi-Object Reconstruction** model is adopted in full: `TheoryState(t)` as the
+primary unit, simultaneous multi-object tracking, the conservative transformation vocabulary, four
+independent aspects (Conceptual/Formal/Operational/Governance), one-gap-at-a-time, four living
+artifacts, and the `Σ` **version-don't-reconcile** correction.
+
+⛔ **`MD-067` declined as the evidence base, on two independent grounds.**
+
+1. **Firewall.** `MD-067`/`MD-068` are at
+   `docs/knowledgeos/brainstorming/three_model_convergence/14_decision-log/…`. The standing rule is
+   *"never consume it as evidence for this reconstruction; do not import its semantic conclusions
+   into this lane."* MD-067's own completion note records *"No `theory-extraction/` path read —
+   firewalls held throughout."* It was built to be separate from this lane; importing it now would
+   merge them in the one direction the firewall exists to prevent.
+2. **Coverage.** Per the session record MD-067 is anchored to *M0001, Sep 1, math lane only*, having
+   declined the wider corpus. Every origin this reconstruction has **source-verified** falls outside
+   that window: `Requirements` 08-25 · four-valued `Σ` 08-27 15:20 · `Sat`/`ℛ(P)`/`EC` 08-27 16:25 ·
+   `Γ`/`Zero`/`Sat(K_t,r_i)` 08-27 18:31 · `⪰`×3 and `T:(K,E,Ω,EC)→K'` 08-27/28. Building
+   `TheoryState(t₀)` from MD-067 would place the earliest state at **Sep 1 — five days after the
+   verified origin.**
+
+Recorded, not silently worked around.
+
+## Read this batch
+
+`step-025o` (08-28 09:42) — **`READ-SUBSTANTIAL`**: §25O.1–8, §20–26, §33, §40+.
+§9–19, §27–32, §34–39 **not read**. Added to the debt.
+
+## Four living artifacts now exist
+
+| | artifact | state |
+|---|---|---|
+| **A** | `07-THEORYSTATE-CHRONICLE.md` | `TheoryState(t₀ … t₅)`, never overwritten; 2 turning points identified from the chronology |
+| **B** | `05-DEFINITION-EVOLUTION-REGISTRY.tsv` | **44 versions** — `Σ`×11 · `Requirements`×10 · `Sat`×7 · `EC`×7 · `Zero`×6 · `Γ`×3, each with notation, type, arity, domain, codomain, semantic role, conservative relation label, aspect, status |
+| **C** | `04-LINEAGE-EDGES.tsv` | **57 typed edges** |
+| **D** | `06-GAP-REGISTER.md` | 7 gaps + 1 preserved contradiction |
+
+Plus `04-THEORY-CHRONICLE.md` (17 chronicles) as the narrative record.
+
+## Selected primary gap — `G-03`
+
+> Where were `Ω` (ontology) and `EC` (contract) dropped from the transition function?
+> `T:(K,E,Ω,EC)→K'` (`025k` §25K.38, 08-28 09:39) → `δ(K_t,e_t)` (`276-final` §276.20, 08-30 21:59).
+
+**Why this one, by the selection rule** — smallest (two named arguments on one function),
+source-verified at both endpoints, and the most load-bearing: `025k` §25K.35 makes reproducibility
+*depend* on `Ω_v` and `EC_v`, so their loss removes the stated basis for `Replay` **and** for
+`025l`'s convergence candidate. **Bounded:** the interval contains exactly two unread documents,
+`274` and `275`, both already in the plan.
+
+`G-01`, `G-02`, `G-05` resolve against the *same* unread 09-01/09-02 documents — **one
+investigation, not three** — and are downstream of the current position, so they stay closed.
+
+## Backfill debt (a structural survey is NOT a read)
+
+| | |
+|---|---|
+| chronologically **before** `025d` | `025` (partial), `025a-1…a-5`, `025b`, `025c`, `025c-1…c-3` — 11 docs |
+| `READ-STRUCTURAL` only | `025g · 025h · 025i · 025j · 025l†· 025n†· 025p · 025q · 025r · 025s · 025t · 025u · 025v · 025w · 025x · 025y · 025z` († `025l` complete, `025n` partial) |
+| `KAID` birth documents | `025i`, `025s` |
+| inside the 08-30 interval | `274`, `275` |
+
+## Resumption
+
+```yaml
+checkpoint: 005
+read_complete_total: 29
+next_document: 20260828-094407_step-025p-causality-counterfactuals-interventions-and-root-cause-knowledge.md
+next_reason: chronologically next (08-28 09:44); continue the traversal, do not open G-03 early
+primary_gap: G-03
+resumption: from disk; artifacts 04/05/06/07 carry all state
+```

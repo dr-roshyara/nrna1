@@ -352,3 +352,51 @@ $$\boxed{\textbf{§25N.44 is the origin of the blocker on Dempster's } \oplus\te
 The forward plan records `TG-02` as open *"which is why Dempster's `⊕` stays blocked."* **The reason
 is not missing — it is a deliberate safety invariant, stated with its justification, five days
 before the plan's window.** `[EMP]`
+
+---
+# BATCH 005 — `025o` (08-28 09:42) `READ-SUBSTANTIAL`; operating model changed
+
+## Method change adopted
+
+The commission replaces topic-solving with `TheoryState(t)` reconstruction. Adopted in full.
+**Σ correction accepted:** the ten/eleven `Σ` forms are now **versioned, not reconciled** —
+`05-DEFINITION-EVOLUTION-REGISTRY.tsv` carries `Σ_v1 … Σ_v11` with conservative relation labels
+(`VARIANT`, `EXTENSION`, `RE-DERIVATION`, `UNRESOLVED`, `UNRELATED_HOMONYM?`). Checkpoint 004's
+phrasing — that `025o` would be *"precisely that reconciliation"* — overreached and is **withdrawn**.
+
+⛔ **Declined: the MD-067 evidence base.** `MD-067`/`MD-068` are at
+`brainstorming/three_model_convergence/14_decision-log/…` — **inside the firewalled lane**, which the
+standing rule says must never be consumed as evidence here, and which MD-067's own completion note
+confirms was kept apart from `theory-extraction/`. Independently, MD-067 is anchored at *M0001,
+Sep 1, math lane only*, so its 876 records **cannot contain** `Requirements` (08-25), `Sat`/`ℛ(P)`/`EC`
+(08-27), `Γ`/`Zero` (08-27), the four-valued `Σ` (08-27) or `⪰` (08-27/28) — every origin this
+reconstruction has source-verified. Method adopted; evidence source declined; reason recorded.
+
+## CHRONICLE-017 · truth, acceptance and epistemic status — `025o`
+
+| § | result | class |
+|---|---|---|
+| 25O.1 | `Truth ≠ Evidence ≠ Knowledge` | `[EMP]` |
+| 25O.2 | four distinct questions: `Truth(A,W_t)` · `Support(A,K_t)` · `Accepted(A,K_t)` · `Sufficient(A,D,C)` | `[EMP]` |
+| **25O.5** | ⭐ **`Knowledge = GovernedAcceptance`**, defined operationally — *"an assertion that has passed the applicable evidence, semantic, temporal and governance criteria for acceptance within a specified context and model"* — explicitly **not** `Knowledge = TrueWorldTruth` | `[EMP]` definition |
+| 25O.4 | **strongly supported knowledge can still be false** — *"not a defect in the model… an unavoidable property of finite, fallible observation"* | `[EMP]` |
+| 25O.7 | some truths **are** computable (arithmetic, regex, `ValidFrom ≤ t < ValidUntil`); world truth in general is not | `[EMP]` |
+| 25O.20 | `Accept(A,E,C,M) = EvidenceSufficient ∧ ContextCorrect ∧ TemporalValidity ∧ NoBlockingConflict ∧ GovernanceSatisfied` | `[EMP]` |
+| **25O.21–22** | ⭐⭐ **two-way non-implication:** `Accepted(A) ⇏ Truth(A,W)` **and** `Truth(A,W) ⇏ Accepted(A)` | `[DERIVED]` |
+| 25O.23 | the 2×2 truth × acceptance table; the *false-but-accepted* cell is *"unavoidable in any empirical knowledge system"* | `[EMP]` |
+| 25O.25 | `WorldStatus(A)` **separated from** `EpistemicStatus(A,K)` — *"KnowledgeOS computes epistemic status, not omniscient world truth"* | `[EMP]` |
+| 25O.33 | `Σ_v8` — `EpistemicStatus = (Support, Conflict, Validity, Freshness, Authority, Uncertainty)` | `[EMP]` recommended |
+
+⭐ **`25O.5` is a definition of *knowledge itself*, and it is governance-relative.** It makes
+`Knowledge` depend on `EC` and on governance criteria — which places it upstream of the very
+arguments (`EC`, `Ω`) that `G-01` and `G-03` record as later disappearing from `Sat` and `T`.
+Recorded; **no bridge asserted.**
+
+## Four living artifacts now exist
+
+| artifact | file |
+|---|---|
+| **A. Theory State Chronicle** | `07-THEORYSTATE-CHRONICLE.md` — `TheoryState(t₀…t₅)` |
+| **B. Definition Evolution Registry** | `05-DEFINITION-EVOLUTION-REGISTRY.tsv` — **44 versions** across `Σ`(11) `Requirements`(10) `Sat`(7) `EC`(7) `Zero`(6) `Γ`(3) |
+| **C. Lineage / Evolution Graph** | `04-LINEAGE-EDGES.tsv` |
+| **D. Gap Register** | `06-GAP-REGISTER.md` — 7 gaps + 1 contradiction |
