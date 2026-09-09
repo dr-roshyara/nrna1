@@ -188,3 +188,24 @@ identifies the author but not the commission still lets four replicates read as 
 
 ⛔ **No claim is made about the correctness of any of these documents.** ⭐ **Their content is not in
 question; only the absence of a marker distinguishing repetition from replication.**
+
+### Further instance, same day — a copy filed under a *different* title
+
+**Registered from `105`** (`docs/knowledgeos/theory-extraction/105-READ-RECORD-2026-09-02-…`).
+
+A byte-level check of one earlier day's 159 files in the same directory found **13 exact-duplicate
+pairs — 15 446 lines, about a tenth of that day's material.** ⭐ **Eleven are honest repeats**, one of
+them even named *"second copy"*. ⛔ **Two are not.**
+
+$$\boxed{\begin{array}{c}\textbf{A file named for a } \mathbf{boundary\ separation\ EXPERIMENT} \textbf{ contains, byte for byte,}\\ \textbf{a different document about a lens/predicate distinction.}\end{array}}$$
+
+⭐⭐⭐ **This is worse than an unmarked repeat.** An unmarked repeat inflates a count. **A copy filed
+under a different title creates a work that does not exist:** someone auditing what experiments were
+run will list that experiment, find a document where it should be, and have no way to notice the
+document is about something else. ⚠️ A second pair does the same to a review.
+
+⭐ **It strengthens the requirement already stated above rather than adding a new one:** *repeated runs
+must be countable as one* — ⭐⭐ **and countability fails hardest when the copy is renamed**, because
+neither the filename, the length, nor a keyword search reveals it. **Only a content hash does.**
+
+⛔ **No remedy is proposed, and no claim is made about either document's correctness.**
