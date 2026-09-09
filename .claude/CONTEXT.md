@@ -1,5 +1,40 @@
-**Updated:** 2026-09-09 (latest) — **MD-064 COMPLETE — CONTROLLED IDENTITY ADJUDICATION: M0125 `Sat`
-VS. M0043 `Sat(K_t,r)`, FINAL DETERMINATION C, HARD STOP.** User agreed MD-063 stopped at the right
+**Updated:** 2026-09-09 (latest) — **MD-065 COMPLETE — CONTROLLED F3↔F4 COMPARABILITY FEASIBILITY
+AUDIT, FINAL DETERMINATION C, HARD STOP.** User agreed with MD-064's `C` determination, explicitly
+declined a further "find the missing `Sat` identity" search (to avoid an open-ended search off a
+finite negative finding), and redirected to the independent-research alternative MD-064 itself named:
+does the corpus support a bridge between F3 (atoms/reachable observations) and F4 (requirements/
+satisfaction/gaps) at all? **Mid-turn, verified a same-day external file's claim of a genuinely new,
+earlier (2026-08-27, ~5 days before M0043) `Step-013`/`Step-023` requirement/`EC` lineage**
+(`q=(Target,Condition,MinimumEpistemicState,Context,Criticality)`, `Satisfies(K,q)`,
+`RequirementCondition_ρ(K_t,q)`; `EC=(Purpose,Requirements,EvidenceRules,UncertaintyLimits,
+ConflictRules,TemporalRules,AuthorityRules)`, delivering "the EpistemicContract domain object") —
+confirmed genuinely primary by direct grep, one minor date correction (claimed 08-29, actual 08-27) —
+**recorded in F4's own type ledger, explicitly not chased further**, per the user's own redirect
+toward F3↔F4 specifically. **Executed**: reconstructed F3's own type ledger (atom, observation,
+`Beh_𝔠:=Reach(Ops(K))`, reachable state, operation — `EVIDENCED`/`DERIVED`, MD-050's own established
+work) and F4's own (requirement/`K_t`/`EC_t`/`Sat`/`Δ_t` — shapes `EVIDENCED`, bodies `OPEN`/
+`UNWITNESSED`, MD-057–064). **Fresh, targeted searches from both source bases** (F3's own narrative
+`kernel-reduction/*.md` outward for F4 vocabulary; F4's own math-lane sources outward for F3
+vocabulary, including the new Step-013/023 material) — **zero genuine primary-source hits either
+direction**; only same-day external files (already tracked under `EKS-31`) matched the combined-
+vocabulary search, itself a confirmatory result. **All six target relations tested — none found.**
+Directionality: not applicable. **Falsification**: every testable pattern lands `COMPATIBLE` only
+trivially (no contradiction, only absence — never escalated to `INCOMPATIBLE`). **DDD**: F3's and
+F4's own concepts are genuinely separate bounded contexts, sharing at most a methodological analogy
+(an opaque object evaluated against an external standard), not a domain object. **Final
+Determination: C — NO BRIDGE EVIDENCED.** Not A (no mapping found); not B (no partial correspondence
+either); not D (nothing contradicts a future bridge, only its present absence). **Smallest next
+input, two independent parts**: (1) a corpus-grounded interpretation function between F3's and F4's
+vocabularies — would be a `CONSTRUCTED REQUIREMENT` if attempted, not found; (2) independently, F4's
+own internal semantics remain incomplete regardless of any bridge. No backlog ticket (a suspected new
+`EKS-31` instance in `kernel-reduction/` was checked against git history and found to be part of the
+original bulk-import commit, not a same-day stray file — correctly not added). Verified both
+consistency scripts `CONSISTENT`; no frozen artifact touched; firewalls held. **MD-065 status:
+COMPLETE. HARD STOP.** Two named, unauthorized options: (a) begin the Step-013/023 lineage as its own
+phase; (b) attempt a genuinely new, explicitly-labeled `CONSTRUCTED` F3↔F4 interpretation function.
+
+**Previous block (2026-09-09, superseded above — stands as history): MD-064 COMPLETE — CONTROLLED
+IDENTITY ADJUDICATION: M0125 `Sat` VS. M0043 `Sat(K_t,r)`, FINAL DETERMINATION C, HARD STOP.** User agreed MD-063 stopped at the right
 place and authorized exactly the narrow question it named: is M0125's informal `Sat` the same
 predicate as M0043's formal `Sat(K_t,r)`? — bounded identity/provenance adjudication, explicitly not
 construction. **Executed**: full re-examination of M0125's own §3.1 table (all six rows, not only the

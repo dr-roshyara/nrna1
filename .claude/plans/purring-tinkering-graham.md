@@ -1185,7 +1185,22 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-064 — Controlled Identity Adjudication: M0125 `Sat` vs.
+**Status update, 2026-09-09 (latest): MD-065 — Controlled F3↔F4 Comparability Feasibility Audit —
+EXECUTED, FINAL DETERMINATION C, HARD STOP.** User declined further `Sat`-identity search, redirected
+to F3↔F4 feasibility. Verified a genuinely new, earlier (2026-08-27) `Step-013`/`Step-023`
+requirement/`EC` lineage from a same-day external file's claim — real, recorded in F4's type ledger,
+not chased further. **Reconstructed F3's and F4's own type ledgers**; fresh, targeted searches from
+both source bases for F3↔F4 vocabulary co-occurrence — zero genuine primary-source hits either
+direction. All six target relations tested — none found. Falsification: every pattern trivially
+compatible (no contradiction, only absence). DDD: genuinely separate bounded contexts, methodological
+analogy only. **Final Determination: C — NO BRIDGE EVIDENCED.** Smallest next input, two independent
+parts: a `CONSTRUCTED` F3↔F4 interpretation function (not found), and F4's own still-incomplete
+internal semantics regardless. No backlog ticket (a suspected `EKS-31` instance checked against git
+history, found to be original bulk-import material, correctly not added). Verified both consistency
+scripts `CONSISTENT`. **Smallest next action, named, not authorized**: (a) Step-013/023 lineage
+reconstruction as its own phase; (b) an explicitly-labeled `CONSTRUCTED` F3↔F4 interpretation attempt.
+
+**Status update, 2026-09-09 (earlier): MD-064 — Controlled Identity Adjudication: M0125 `Sat` vs.
 M0043 `Sat(K_t,r)` — EXECUTED, FINAL DETERMINATION C, HARD STOP.** Authorized MD-063's own named next
 question. Full re-examination of M0125's §3.1 table (all six rows) found a theory-wide catalogue,
 genuinely ambiguous context; `Sat` never once written as an applied function anywhere in M0125 (two

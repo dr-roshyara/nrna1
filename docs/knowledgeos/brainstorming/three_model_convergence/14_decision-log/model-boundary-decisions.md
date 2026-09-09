@@ -5423,3 +5423,73 @@ named, not authorized: locate (not invent) either of the two evidence types name
 `C` as the standing boundary and redirect toward a different, independent research input (e.g. typed
 semantics for one of V7's other components, or the atoms↔requirements F3↔F4 bridge) on its own
 separately-evaluated merits.**
+
+---
+
+## MD-065 — Controlled F3↔F4 Comparability Feasibility Audit
+
+**2026-09-09.** User agreed with MD-064's `C` determination, explicitly declined to authorize a
+further "find the missing `Sat` identity" search (to avoid turning a finite negative finding into an
+open-ended one), and redirected to the second option MD-064 itself named: an independent F3↔F4
+comparability feasibility audit — attacking the larger objective (can the candidate families become
+comparable at all) rather than continuing to work only inside F4.
+
+**Mid-turn, a same-day external file (`documents7.md`) was verified to correctly point to a genuinely
+new, previously-unexplored earlier lineage**: `Step-013`/`Step-023` (2026-08-27, ~5 days before
+M0043) — `q=(Target,Condition,MinimumEpistemicState,Context,Criticality)`, `Satisfies(K,q)`,
+`RequirementCondition_ρ(K_t,q)`, and `EC=(Purpose,Requirements,EvidenceRules,UncertaintyLimits,
+ConflictRules,TemporalRules,AuthorityRules)` (Step-023, delivering "the EpistemicContract domain
+object") — confirmed genuinely primary by direct grep against the actual files, with one minor,
+disclosed correction (the file claimed 2026-08-29; the actual date is 2026-08-27). **Named and
+recorded in F4's own type ledger, explicitly not chased into a new phase**, per the user's own
+redirect toward F3↔F4 specifically.
+
+**Executed.** Reconstructed F3's own semantic types (atom, observation, `Beh_𝔠:=Reach(Ops(K))`,
+reachable state, operation — all `EVIDENCED`/`DERIVED` per MD-050's own already-established work) and
+F4's own (requirement, `K_t`, `EC_t`, `Sat`, `Δ_t` — shapes `EVIDENCED`, bodies `OPEN`/`UNWITNESSED`
+per MD-057–064). **Fresh, targeted searches from both source bases** (F3's own narrative
+`kernel-reduction/*.md` files searched outward for F4 vocabulary; F4's own math-lane sources searched
+outward for F3 vocabulary, including the newly-verified Step-013/023 material) — **zero genuine
+primary-source hits either direction**. The only combined-vocabulary hits anywhere in the corpus are
+the same-day external files already tracked under `EKS-31` — itself a confirmatory result (the search
+apparatus correctly surfaces real hits when they exist; it found none in the primary corpus).
+
+**All six target relations tested** (`Atom↔Requirement`, `Observation↔Requirement`,
+`ReachableState↔Satisfaction`, `Operation↔Requirement`, `Behavior↔Gap`, `Reach(Ops(K))↔Sat(K_t,r)`):
+**none found.** Directionality: not applicable, no base relation to classify. **Falsification (Q5)**:
+every testable pattern lands `COMPATIBLE` only in the trivial, vacuous sense that two unconnected
+apparatuses cannot conflict — never escalated to `INCOMPATIBLE`, since nothing contradicts a *future*
+bridge, only its present absence. **DDD context analysis**: `Atom`/`Observation` (F3) and
+`Requirement`/`EpistemicContract`/`KnowledgeState`-as-F4-uses-it (F4) are genuinely separate bounded
+contexts, sharing at most a methodological analogy (an opaque object evaluated against an external
+standard), not a domain object — the same shape of finding MD-060 already reached for a structurally
+similar case.
+
+**Final Determination: C — NO BRIDGE EVIDENCED.** Not A (no mapping found from either side); not B
+(no partial correspondence found either — every one of six target relations returned nothing, not a
+partial hit); not D (nothing contradicts a future bridge, only its present absence). **Smallest next
+research input, named in two independent parts**: (1) a corpus-grounded interpretation function
+between F3's and F4's own vocabularies — not found, would be a `CONSTRUCTED REQUIREMENT` if attempted,
+not a reconstruction; (2) independently, F4's own internal semantics remain incomplete regardless of
+any bridge (MD-062–064) — resolving one blocker would not resolve the other.
+
+**No backlog ticket** — the Step-013/023 lead and the "no bridge" finding are scientific results,
+fully recorded in this phase's own artifacts. (A suspected new `EKS-31` instance found mid-search, in
+`docs/knowledgeos/research/kernel-reduction/`, was checked against git history and found to be part
+of the original bulk-import commit `70fee73c8` — a pre-existing, oddly-named corpus file, not a
+same-day stray file from this session; correctly not added to `EKS-31`.)
+
+**No classification changed. No frozen artifact (MD-024–064) modified. No `Sat_new`. No `Sat*`
+modification. No M0125/M0043 resolution. No V7 extension. No full `Δ_t`. No `≡_sem` definition. No
+GA-001/GA-038 resolution. No kernel selected. No external literature. No code. F3 and F4 not declared
+equivalent. K-1/K2 untouched. MD-050 not reopened. `theory-extraction/`/Lane-T `K3`/`Ω`/`T-K1`/`T-K2`
+kept firewalled throughout.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-065-f3-f4-comparability-
+feasibility/` directory (7 files) plus this entry written.
+
+**MD-065 status: COMPLETE. HARD STOP — no MD-066 opened by this completion.** Smallest next action,
+named, not authorized: either (a) begin the Step-013/023 lineage reconstruction as its own,
+separately-authorized phase, or (b) attempt a genuinely new F3↔F4 interpretation function as an
+explicitly-labeled `CONSTRUCTED REQUIREMENT`, not a reconstruction.**
