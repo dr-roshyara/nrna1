@@ -142,3 +142,134 @@ Established in `P-97`. `272b`'s deletion-test proof is new; **the object is thre
 | `R` | ① requirement set `R(P)`/`R_G` ② a Regime ③ refutation bit in `(S,R)` | ② 08-25 |
 | `Σ` | ① 4-valued lattice `𝔹` ② `Σ_A` 4-tuple ③ `(A,S,R,V,C)` 5-tuple ④ `Σ₀ ≅ {0,1}²` ⑤ `Direction × Strength` as executed | ① 08-27 |
 | `Π` / `π` | provenance · Policy · policy-as-set | 08-30 |
+
+---
+# BATCH 003 — `025f` (08-27 18:35) and `025k` (08-28 09:39) read completely; `025g–025z` surveyed mechanically
+
+## CHRONICLE-003 continued · `EC` gains a FIFTH arity
+
+| # | when | doc § | form | arity |
+|---|---|---|---|---|
+| 8 | 08-27 18:35 | `025f` head | **`EC = (R, Γ, A, S, T, D, X, V)`** — requirements, rules, authority, scope, time, dependencies, exceptions, version | **8** |
+
+⛔ `025e` §25E.37 gave **9** components *two minutes earlier*; `025f` gives **8**. **`Provenance` is
+dropped, silently.** `EC` arity history: **7 → 2 → 4 → 9 → 8**, all within 2 h 10 min, and the
+document that drops a component does not mention doing so. `[EMP]`
+
+## CHRONICLE-008 · `⪰` — ⭐ three types, all born in this series (the historical root of `CR-2`)
+
+| when | doc § | form | ranges over |
+|---|---|---|---|
+| 08-27 18:35 | `025f` §25F.14 | **`s₁ ⪰_C s₂`** | **authority sources**, *"context-dependent"*, explicitly a **partial order**, explicitly *not* a linear hierarchy |
+| 08-28 09:23 | `025h` | `d₂ ⪰ d₁` | **decisions** |
+| 08-28 09:38 | `025j` | `A₂ ⪰ A₁` | **assertions** |
+
+`[EMP]` The open conflict record `CR-2` states that `⪰` has *"three readings of different types"* and
+that *"two independent paths must stay independent."* **All three readings are now located, dated,
+and shown to be born within 19 hours of each other.** `CR-2` is a live consequence of this series;
+it is not a later confusion. **No merge performed** — recorded as three objects.
+
+## CHRONICLE-009 · the conflict predicate — an early arity-4 witness
+
+| when | doc § | form |
+|---|---|---|
+| 08-27 18:35 | `025f` §25F.6 | **`Conflict(s₁, s₂, C, t)`** — over **sources**, gated by `Applicable(s,C,t)` on both |
+| 08-27 18:35 | `025f` §25F.2 | **`Conflict ≠ Error`** — seven legitimate causes enumerated |
+| 08-27 18:35 | `025f` §25F.8 | `HistoricalConflict ≠ CurrentConflict` |
+| 08-28 09:39 | `025k` §25K.10–11 | `UnresolvedConflict → UnresolvedConflict`; **`NoImplicitConflictResolution`** |
+| 08-28 10:09 | `025u` | `Conflict = FirstClassKnowledgeState`; `Resolution = (Conflict, Method, Evidence, Decision, Authority, ResidualUncertainty)` |
+
+`[EMP]` `CR-1` lists **seven** signatures for `Contr`. This is an eighth shape and the earliest —
+and it ranges over **governance sources**, not propositions. Recorded, **not merged** with `Contr`.
+
+## CHRONICLE-010 · `Zero` continued · governance resolution
+
+`025f` §25F.16: `GovernanceResolve(C, S, t) → GR = (EffectiveRules, Conflicts, Exceptions, Supersessions, UnresolvedItems)`.
+§25F.20: three outcomes `{Resolved, Unresolved, Invalid}`.
+§25F.18–19 ⭐ **`UnresolvedGovernanceConflict → HumanGovernance`**, and the principle:
+
+> *"Knowing that something cannot be determined is itself a valid computed result."*
+
+`025z` (08-28 10:13): `Zero = Insufficient epistemic basis for the next permitted action`.
+`025v` (10:10): `Zero_semantic = MeaningInsufficientlyDetermined`.
+
+## CHRONICLE-011 · ⭐ `Semantic unresolved` vs `Computational unresolved`
+
+`025f` §25F.36–37 classifies every open issue as one or the other, and concludes the programme's
+problems are **overwhelmingly semantic**: *"`Satisfied(K,r)` is trivial once its predicate is
+defined. The difficult part is defining the predicate correctly."* `[EMP]`
+
+**This is the ancestor of the 08-30 closure vocabulary** (`Defined ≠ Derived ≠ Demonstrated ≠
+Closed`; the `⟨FC,CC,EC,GC⟩` vector). Three days earlier, two categories instead of four.
+Link `[PROPOSED]` — no citation.
+
+⚠️ Note `025f` §25F.36 writes **`Satisfied(K, r)` — arity 2**, four minutes after `025d` §25D.12
+wrote `Satisfied(K, r, EC)` — arity 3. Inconsistent inside one afternoon. `[EMP]`
+
+## CHRONICLE-012 · `K` and the transition function — ⛔ two arguments lost by 08-30
+
+| when | doc § | form |
+|---|---|---|
+| 08-28 09:39 | `025k` §25K.1 | **`K_{t+1} = Update(K_t, E_t, Ω, EC)`** — `Ω` = domain ontology/rules, `EC` = applicable contract |
+| 08-28 09:39 | `025k` §25K.38 | **`T : (K, E, Ω, EC) → K'`** with six invariants |
+| 08-28 09:39 | `025k` §25K.35 | **`K_t = Derive(H_{≤t}, Ω_v, EC_v, M_v)`** — the reproducibility equation, four *versioned* parameters |
+| 08-30 21:59 | `276-final` §276.20 | `K_{t+1} = δ(K_t, e_t)` — **`Ω` and `EC` GONE** |
+
+$$\boxed{T:(K,E,\Omega,EC)\to K' \;\;\longrightarrow\;\; \delta(K_t,e_t) \qquad [\textbf{UNWITNESSED}]}$$
+
+`[EMP]` for both endpoints. **The ontology and the contract — the two things that make the
+derivation reproducible and auditable — are dropped from the signature, with no document recording
+the removal.** This is structurally the same failure as `Sat`'s lost `EC` argument
+(`CHRONICLE-001` entry 8) and the operation index lost from `272A.17` (`P-96` §9.3): **the
+parameter that supplies the semantics is the parameter that disappears.**
+
+### Invariants established `025k` §25K.48
+
+`✅` state transition · provenance · history · duplicate handling · conflict preservation ·
+retraction · correction · expiration · model versioning · replay · deterministic derived state
+`❌` **universal monotonicity · universal commutativity · universal associativity** — and §25K.49
+argues the three ❌ are a *success*: `History monotonic; CurrentState non-monotonic`.
+
+### ⚠️ An 11-component coincidence — flagged, NOT claimed
+
+```
+025k §25K.2   (08-28)  K   = (Assertions, Evidence, Provenance, Relations, Assessments,
+                              Validity, TemporalState, Conflicts, Versions, Contracts, Policies)   11
+276-final §276.6 (08-30) K_t = (A, R, E, Σ, H, Z, L, T, G, C, M)                                   11
+persistence kernel        |K| = 11  [REC]  UNFROZEN
+```
+
+**Three unrelated-looking objects with cardinality 11.** The component *names* do not align
+(`025k` has Contracts/Policies/Versions; `276-final` has H/L/Z/M), no document cites another, and
+the persistence kernel is a different construct entirely.
+
+$$\boxed{\text{Recorded as an OBSERVATION requiring verification. } [\textbf{OPEN}] \text{ — NOT a correspondence, NOT a merge.}}$$
+
+Same-cardinality reasoning is precisely what `P-97` §4 had to be careful about for `Σ₀`, where the
+match *was* real; here the internal structure does **not** match, so the burden is unmet.
+
+## CHRONICLE-006 continued · Σ-like formulations now number EIGHT
+
+| when | doc | form | shape |
+|---|---|---|---|
+| 08-27 15:20 | `009` §8 | `𝔹 = {00,10,01,11}` | 4-valued lattice |
+| 08-27 15:20 | `009` §10 | `Σ_A = (Acquisition, Support, Uncertainty, Validity)` | 4-tuple |
+| 08-27 16:25 | `023` §9 | `Status(r_i) ∈ {Satisfied, Unsatisfied, Unknown, Conflicted, NotApplicable}` | 5-valued |
+| 08-27 18:31 | `025d` §25D.4 | `𝒮` (+`Missing` §25D.7) | 9→10-valued |
+| 08-28 09:39 | `025k` §25K.20 | `𝓔 = {Unknown, Supported, Refuted, Conflicted, Expired, Retracted}` | 6-valued |
+| 08-28 09:39 | `025k` §25K.21 | `EpistemicState = (SupportStatus, ValidityStatus, ConflictStatus, TemporalStatus)` | 4-dim tuple |
+| 08-28 09:42 | `025o` | `EpistemicStatus = (Support, Conflict, Validity, Freshness, Authority, Uncertainty)` | 6-tuple |
+| 08-30 21:59 | `276-final` | `Σ = (A,S,R,V,C)` | 5-tuple |
+| 08-30 22:50 | `272b` | `Σ₀ ≅ {0,1}²` | 4-valued |
+| 08-30 23:24 | `step-280/exec` | `Direction × Strength` | 4×5, executed |
+
+⛔ **Ten distinct Σ-formulations.** `025k` §25K.20 itself refuses to call `𝓔` a lattice —
+*"Some states are orthogonal dimensions"* — and proposes the 4-dimensional form instead, in the
+same section. No document reconciles the ten.
+
+## CHRONICLE-013 · typed epistemic objects, and the statistical boundary
+
+`025k` §25K.44: **`KnowledgeState ⊃ StatisticalState`**, explicitly *not* `=`.
+§25K.45: `P(H)=0.8 ⇏ H=True`, and `H=True` in a rule system `⇏ P(H)=1`.
+§25K.46: `𝒦 = {Fact, Hypothesis, Observation, Assertion, Rule, Constraint, Prediction, Decision, …}`
+— *"this typing prevents category errors."* `[EMP]`

@@ -24,3 +24,17 @@ Zero(K,EC)@025d	EC derivation problem	COMMISSION	[EMP]	2026-08-27T18:31	025d §2
 Sat-Vedanta@08-26	Sat(K,r)@08-27	FALSE-POSITIVE	[REFUTED]	2026-08-26T11:10	metaphor-change-for-the-model L376,721	cross-language homograph; NOT a lineage edge
 Adequacy-prose@259	Adequacy(K,𝒯)@276-final	FALSE-POSITIVE	[REFUTED]	2026-08-30T19:20	step_259 L64 \text{Adequacy of }K	prose inside math; NOT an object occurrence
 Authority/Standing@162	Standing=(S,R)@272b	FALSE-POSITIVE	[REFUTED]	2026-08-29T01:15	step_162 L796	different sense of the word
+EC 9-tuple@025e	EC=(R,Γ,A,S,T,D,X,V)@025f	RETYPE	[EMP]	2026-08-27T18:35	025f head	arity 9 -> 8; Provenance dropped silently, two minutes later
+s1⪰_C s2@025f	d2⪰d1@025h	DISTINCT	[EMP]	2026-08-28T09:23	025f §25F.14 vs 025h	same glyph, ranges over decisions not authority sources - NOT merged
+s1⪰_C s2@025f	A2⪰A1@025j	DISTINCT	[EMP]	2026-08-28T09:38	025f §25F.14 vs 025j	third type; ranges over assertions - NOT merged
+⪰ three types@025f-j	CR-2 conflict record	EXPLAINS	[EMP]	2026-09	CR-2 "three readings of different types"	historical root of the open conflict record located
+Conflict(s1,s2,C,t)@025f	Contr signatures@CR-1	CANDIDATE-ANCESTOR	[OPEN]	2026-08-27T18:35	025f §25F.6	ranges over SOURCES not propositions; eighth shape, earliest; NOT merged
+Satisfied(K,r,EC)@025d	Satisfied(K,r)@025f	RETYPE	[EMP]	2026-08-27T18:35	025d §25D.12 vs 025f §25F.36	arity 3 -> 2 within four minutes, unremarked
+Semantic-vs-Computational@025f	Defined≠Derived≠Demonstrated≠Closed@08-30	CANDIDATE-ANCESTOR	[PROPOSED]	2026-08-30	025f §25F.37 vs 276-final	two categories become four; no citation
+Update(K_t,E_t,Ω,EC)@025k	T:(K,E,Ω,EC)→K'@025k	CORROBORATION	[EMP]	2026-08-28T09:39	025k §25K.1 vs §25K.38	same signature, transition and transformation
+T:(K,E,Ω,EC)→K'@025k	δ(K_t,e_t)@276-final	RETYPE	[UNWITNESSED]	2026-08-30T21:59	025k §25K.38 vs 276-final §276.20	Ω and EC arguments LOST; no document records the removal
+K_t=Derive(H,Ω_v,EC_v,M_v)@025k	reproducibility	DERIVE	[DERIVED]	2026-08-28T09:39	025k §25K.35	four versioned parameters make K_t reproducible
+K 11-component@025k	K_t 11-component@276-final	SAME-CARDINALITY	[OPEN]	2026-08-30T21:59	025k §25K.2 vs 276-final §276.6	component names do NOT align; no citation; NOT a correspondence
+𝓔 6-valued@025k	EpistemicState 4-dim@025k	DISTINCT	[EMP]	2026-08-28T09:39	025k §25K.20 vs §25K.21	same section refuses the lattice reading and proposes dimensions instead
+Zero(K,EC)@025d	Zero=InsufficientBasis@025z	REFINE	[EMP]	2026-08-28T10:13	025z	definition sharpened to "for the next permitted action"
+KnowledgeState⊃StatisticalState@025k	—	DERIVE	[DERIVED]	2026-08-28T09:39	025k §25K.44-45	explicitly not equality; P(H)=0.8 does not give H=True

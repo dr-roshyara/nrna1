@@ -339,3 +339,92 @@ next_reason: |
 then: [step-025 complete (16:26), step-025g (18:37), step-025k (EC x9)]
 resumption: from disk; 04-THEORY-CHRONICLE.md + 04-LINEAGE-EDGES.tsv carry all state
 ```
+
+---
+
+# CHECKPOINT 003 — 2026-09-09
+
+## Read completely this batch
+
+| when | doc | lines |
+|---|---|---|
+| 08-27 18:35 | `step-025f` governance-conflict-algebra | 1 591 |
+| 08-28 09:39 | `step-025k` knowledge-state-algebra-and-closure | 1 755 |
+
+## Surveyed mechanically — `READ-STRUCTURAL`, explicitly NOT `READ-COMPLETE`
+
+`025g · 025h · 025i · 025j · 025l · 025m · 025n · 025o · 025p · 025q · 025r · 025s · 025t · 025u ·
+025v · 025w · 025x · 025y · 025z` — 20 documents, ~33 000 lines. Method: the engine's own
+`02-DOC-RECORDS.jsonl`, filtering `\boxed{}` results against the tracked-object set. **11 of 20
+carry tracked results; 9 carry none.** Every extracted result is quoted in the chronicle with its
+document and timestamp, so any of them can be promoted to a full read without re-surveying.
+
+**This is a deliberate, recorded compromise**, not a claim of coverage: 34 documents × ~1 600 lines
+is ~1.4M tokens, and reading all of them would consume the budget that the remaining ~2 000
+documents need. The survey is stated as `READ-STRUCTURAL` everywhere it is used.
+
+## ⛔ Backfill debt — recorded so it is not lost
+
+Chronologically **before** `025d`, and still unread: `025` (16:26, `READ-PARTIAL` only),
+`025a-1 … 025a-5` (18:13–18:22), `025b` (18:24), `025c`, `025c-1`, `025c-2`, `025c-3` (18:25–18:29).
+**11 documents, ~13 500 lines.** Reading `025d`/`025e` first was the commission's instruction; the
+gap is real and is owed. `025a-1` (*minimal formal state and type system*) and `025c`
+(*evidence aggregation algebra*) are the highest-value of them.
+
+## Theory objects added / mutated
+
+`EC` → **fifth arity** (8), `Provenance` dropped silently two minutes after being added.
+`⪰` → **three distinct types located and dated** — the historical root of open conflict record `CR-2`.
+`Conflict(s₁,s₂,C,t)` → an eighth, earliest shape, ranging over **sources**.
+`K` → 11-component tuple; `Update(K_t,E_t,Ω,EC)`; `T:(K,E,Ω,EC)→K'`; `K_t=Derive(H_{≤t},Ω_v,EC_v,M_v)`.
+`Σ`-like formulations → now **ten**.
+`Zero` → `GovernanceResolve`; `{Resolved, Unresolved, Invalid}`; `Zero = insufficient epistemic basis`.
+
+## ⛔ Principal new finding — the semantics-bearing argument is the one that disappears
+
+Three independent instances, now all dated:
+
+```
+Satisfied(K, r, EC)      08-27 18:31  ->  Sat(K_t, r)      09-02     EC lost
+T : (K, E, Ω, EC) -> K'  08-28 09:39  ->  δ(K_t, e_t)      08-30     Ω and EC lost
+⟨distinction, operation⟩ 08-30 22:42  ->  d ∈ ℛ_req        09-02     operation index lost  (P-96 §9.3)
+```
+
+$$\boxed{\textbf{In every case the dropped parameter is the one that supplies the semantics — the contract, the ontology, the operation. None of the three removals is recorded anywhere.}}$$
+
+This is no longer an observation about `ℛ_req`. It is a **pattern across three unrelated objects
+and three separate weeks**, and it is the strongest structural finding of the reconstruction so far.
+
+## ⚠️ Flagged, not claimed — an 11-component coincidence
+
+`025k`'s `K` and `276-final`'s `K_t` both have **11 components**; the persistence kernel is `|K| = 11`.
+Component names do **not** align and no document cites another. **`[OPEN]`.** Recorded because
+same-cardinality reasoning was decisive for `Σ₀` in `P-97` §4 — where the internal structure *did*
+match. Here it does not, so the burden is unmet and no correspondence is asserted.
+
+## Lineage graph
+
+**39 edges** — 25 `[EMP]` · 4 `[UNWITNESSED]` · 3 `[REFUTED]` · 3 `[OPEN]` · 3 `[DERIVED]` · 1 `[PROPOSED]`.
+
+## Contradictions / open items carried forward
+
+`C-1` scalarisation (`025d` vs 09-02 `Loss`) — `[OPEN]`, unadjudicated.
+`Sat` codomain — open at birth, never closed by argument.
+Contract derivation under conflicting sources — `025d` §25D.39 and `025e` §25E.36 both defer to a
+Governance Algebra; `025f` delivers it and terminates in **`Unresolved → HumanGovernance`**, which
+is an answer, not a closure.
+`EC ∈ KnowledgeState` reflexivity vs `EC` as external parameter — still unreconciled.
+
+## Resumption
+
+```yaml
+checkpoint: 003
+read_complete_total: 26
+next_document: 20260828-094013_step-025l-distributed-knowledge-merge-convergence-and-consistency.md
+next_reason: |
+  025k §25K.53 explicitly commissions it and poses the question it must answer —
+  whether Merge(K_A, K_B) converges deterministically. It is chronologically next
+  (08-28 09:40) and is the corpus's own nomination.
+backfill_debt: [025, 025a-1..a-5, 025b, 025c, 025c-1..c-3]   # 11 docs, ~13,500 lines, chronologically earlier
+resumption: from disk; 04-THEORY-CHRONICLE.md + 04-LINEAGE-EDGES.tsv carry all state
+```
