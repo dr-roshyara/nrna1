@@ -4511,3 +4511,84 @@ phase.
 MD-050 disposition decision; (b) the same narrative-only-first construction for F1 or F5; (c) a
 characterization-only pass over `K0-mathematical-kernel-candidate.md`. Awaiting separate authorization
 for any further step.**
+
+---
+
+## MD-052 — K0/V1 Programme: Provenance, Characterization, and Hostile Audit (No F9 Label)
+
+**Trigger**: user authorized reading `K0-mathematical-kernel-candidate.md`, gave a standing forward-
+read methodology (a save-order cluster, once it yields a relevant clue, is read forward until the
+topic changes), then — after an initial too-fast pass provisionally used the label "F9" — issued a
+detailed four-phase corrective authorization: **Phase A** provenance/boundary (keeping five distinct
+notions un-conflated: previously-unseen-by-this-reconstruction / separate-programme / separate-
+provenance-lineage / independent-research / independent-replication); **Phase B** cold characterization
+of every K0 claim, tagged `SOURCE-STATED`/`FORMALLY-DERIVED`/`CONDITIONAL`/`RECONSTRUCTED`/
+`HYPOTHETICAL`/`UNRESOLVED`; **Phase C** hostile audit of 7 named claims; **Phase D** comparison
+against F1/F3/F4/F5/F6/GA-001/GA-038/MD-044–050 via the existing 7-level ladder, **no new candidate
+label unless characterization demonstrates one is warranted**. Critical firewall: kept entirely
+separate from the MD-050 admissibility question in both directions.
+
+**Applied the forward-read methodology**: read `K0` (15:06) through `00-INDEX` (15:55) in save order
+— `K0`, `A4`, `A5`, `A7`, `A8`, `A9`, `A10`, `AM`, `00-INDEX` — stopping at `STEP-TRACE-B7-late-
+steps.md` (16:29) where the genre changes from consolidated registers to raw step traces.
+
+**Phase A — central provenance finding**: `K0`'s own "049 8-primitive set" is, by direct quotation,
+`docs/knowledgeos/brainstorming/phase_measure_theory/20260828-104146_step-049-…md`'s own §49.75
+"candidate mathematical kernel" `𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,
+Action}` — dated **one day before K0**, in the *same* `phase_measure_theory/` step-track this
+reconstruction's own F1 is built from. This reconstruction's own Phase 5N text already ties "M₄₉" to
+this exact object (D-FA-4: "L2 candidate," "membership at the object level remains open, OQ-2") —
+`RC` (this phase's own inference from matching numbering/content, not source-stated as an equation
+anywhere). **Consequence**: K0's negative finding about the 049-tuple is not independent corroboration
+of Phase 5N's own N2/OQ-2-open finding — both trace to a shared upstream artifact, one day apart, not
+two unrelated efforts. The five distinctions were kept explicit and un-conflated throughout — see
+`01_phase-a-provenance-and-boundary.md`'s own table.
+
+**Phase B**: P1–P7/KA1–KA7 `SOURCE-STATED`. T-K1–T-K10 `FORMALLY-DERIVED` (genuine proofs present and
+structured, traced to frames/assumptions, six unconditional/four conditional per `A4`'s own table) —
+**not independently re-derived line-by-line**. The single most consequential claim — `K_t`-
+representation-independence — is `HYPOTHETICAL` **by K0's own explicit self-labeling**
+("⚑VERIFIER INFERENCE, to be adversarially checked at Level 1"), and the programme's own checkpoint
+trail shows the session **stopped before that check ran**. η's "REFUTED" verdict (`A5` R-01) rests on
+an unopened `TV-F-011` — tagged `UNRESOLVED`, not adopted.
+
+**Phase C**: all 7 named claims tested. Claim 4 (irredundancy tests necessity only, not sufficiency)
+CONFIRMED, K0 says so itself. Claim 2 (`K_t`-independence) NOT ESTABLISHED, self-admitted. Claim 6
+(the three missing mechanisms are universal prerequisites) NOT CONFIRMED — F3 (MD-050/051) needs no
+comparable identity-calculus/η gap, suggesting the gaps are at least partly artifacts of K0's own
+formalization choice. Claim 7 (impossibility results genuinely apply to KnowledgeOS) SPLIT — the
+mathematics (T-K1/T-K2) is general/portable; its grounding in KnowledgeOS's own corpus concepts was
+not chased down. No claim refuted merely for being unfamiliar; nothing found either confirms or
+refutes K0 outright.
+
+**Phase D**: 7-level ladder applied. F1: **PARTIAL CORRESPONDENCE** (same object, compatible negative
+conclusions, non-independent origin). F3/F4/F5/F6/MD-044–050: **UNRESOLVED**. GA-001/GA-038:
+**UNCHANGED**. Characterization found K0's formal apparatus (typed frames/functions/predicates)
+structurally distinct in kind from F1/F3/F4/F5/F6 — but this phase **assigned no label**, reserving
+that for the admissibility act.
+
+**MD-052-DQ-1 — admissibility decision, presented via `AskUserQuestion`** (4 options: admit narrow-
+scope no label / defer pending the K_t-independence check / admit and register F9 / do not admit —
+provenance too weak). **Decision: Option A — ADMIT (narrow scope), no candidate label assigned.** The
+9 files read (`K0`, `A4`, `A5`, `A7`, `A8`, `A9`, `A10`, `AM`, `00-INDEX`) admitted for further
+characterization/comparison research only — not merged into F1–F8, no composition test, no GA-001/
+GA-038 resolution, admission ≠ adoption (same discipline as MD-028-DQ-1/MD-032/MD-035).
+`A1/A2/A3/A3W/A3X/A6`, `AC-contradiction-register.md`, `findings/TV-F-001…019`, `reports/` remain
+**not admitted**. `LEGITIMATE AUTHORITY NOT ESTABLISHED IN CORPUS` for the "VERIFY SESSION" programme
+itself — preserved, not resolved.
+
+**No backlog ticket** — the "previously unseen ≠ independent research" lesson corroborates `EKS-21`/
+MD-051's own §01 discipline, not a new gap.
+
+**No classification changed. No frozen artifact (MD-024–051) modified. No executable file read or
+executed. `classification-register.tsv` untouched. No F9 or any new label created. K-1/K2 untouched.
+No Stage 07.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-052-k0-kernel-candidate-characterization/` directory (5 files) plus this entry
+written; MD-050/K0 kept firewalled from each other in both directions throughout.
+
+**MD-052 status: COMPLETE. K0/V1 admitted narrow-scope, unlabeled. Smallest next action, named, not
+authorized**: a separately-authorized phase to perform the `K_t`-representation-independence
+adversarial check K0 itself calls for — the one step that, if it survives, would be the first genuine
+bridge to GA-038. Awaiting separate authorization for any further step.**

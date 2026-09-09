@@ -1,4 +1,54 @@
-**Updated:** 2026-09-09 (latest) — **MD-051 COMPLETE — F3 NARRATIVE-ONLY OBS/BEH_𝔠 RECONSTRUCTION
+**Updated:** 2026-09-09 (latest) — **MD-052 COMPLETE — K0/V1 PROGRAMME CHARACTERIZATION + HOSTILE
+AUDIT, ADMITTED NARROW-SCOPE, NO CANDIDATE LABEL.** User authorized reading `K0-mathematical-kernel-
+candidate.md` (`brainstorming/verification/spec/`) and gave a **standing methodology, now adopted for
+the rest of this session**: when a save-order file cluster yields a relevant clue, read forward
+through subsequently-saved files until the topic changes. After an initial too-fast pass provisionally
+labeled the finding "F9," the user issued a corrective four-phase authorization (A provenance/
+boundary — keeping "previously unseen by this reconstruction," "separate programme," "separate
+provenance lineage," "independent research," and "independent replication" strictly un-conflated; B
+cold characterization with 6-way evidence tags; C hostile audit of 7 named claims; D comparison via
+the existing 7-level ladder, no new label unless earned). **Applied the forward-read rule**: `K0`
+(15:06) → `A4` → `A5` → `A7` → `A8` → `A9` → `A10` → `AM` → `00-INDEX` (15:55), stopped at
+`STEP-TRACE-B7-late-steps.md` (16:29) where the genre changes from consolidated registers to raw step
+traces. **Central Phase-A finding**: K0's own "049 8-primitive set" is, by direct quotation,
+`phase_measure_theory/`'s own `step-049-…md` §49.75 "candidate mathematical kernel"
+`𝒫={Entity,State,Event,Observation,Proposition,Relation,Policy,Action}` — dated **one day before K0**,
+same step-track this reconstruction's own **F1** is built from; this reconstruction's own Phase 5N
+text already ties "M₄₉" to the same object (D-FA-4: "L2 candidate," "membership at the object level
+remains open, OQ-2"). **Consequence**: K0's negative finding about the 049-tuple is NOT independent
+corroboration of Phase 5N's own finding — both trace to a shared upstream source, one day apart, not
+two unrelated efforts reaching the same conclusion. **Phase B**: P1–P7/KA1–KA7 source-stated;
+T-K1–T-K10 formally-derived (genuine proofs present and structured, 6 unconditional/4 conditional per
+`A4`'s own table — **not independently re-derived line-by-line**); the single most consequential claim
+(`K_t`-representation-independence) is `HYPOTHETICAL` **by K0's own explicit self-labeling**
+("⚑VERIFIER INFERENCE, to be adversarially checked at Level 1" — the programme's own checkpoint trail
+shows the session stopped *before* that check ran). **Phase C**: all 7 named claims hostilely audited
+— none refuted merely for being unfamiliar or inconvenient; Claim 4 (irredundancy tests necessity
+only) CONFIRMED, K0 says so itself; Claim 6 (the 3 missing mechanisms are universal prerequisites) NOT
+CONFIRMED — this reconstruction's own F3 (MD-050/051) needs no comparable identity-calculus/η gap,
+suggesting K0's gaps are at least partly artifacts of its own formalization choice. **Phase D**: F1 =
+**PARTIAL CORRESPONDENCE** (same object, compatible negative conclusions, non-independent origin);
+F3/F4/F5/F6/MD-044–050 = **UNRESOLVED**; GA-001/GA-038 **UNCHANGED**. K0's formal apparatus (typed
+frames/functions/predicates) found structurally distinct in kind from F1/F3/F4/F5/F6 — but **no label
+assigned**, reserved for the admissibility act. **MD-052-DQ-1, presented via `AskUserQuestion`** (4
+options): **user chose Option A — ADMIT narrow-scope, no candidate label** — the 9 files read
+admitted for further characterization/comparison research only, not merged into F1–F8, no composition
+test, no GA-001/GA-038 resolution, admission ≠ adoption (same discipline as MD-028-DQ-1/MD-032/
+MD-035). `A1/A2/A3/A3W/A3X/A6`, `AC-contradiction-register.md`, `findings/TV-F-001…019`, `reports/`
+remain **not admitted**. **Critical firewall honored throughout**: MD-050's own executable-
+admissibility question and K0's own admissibility question were kept completely separate — no
+executable file read, MD-050's conclusions not used as a premise, K0 not used to retroactively
+validate MD-050. **No backlog ticket** (corroborates existing `EKS-21` discipline, not a new gap). No
+classification changed; no frozen artifact (MD-024–051) modified; K-1/K2 untouched; GA-001/GA-038
+UNCHANGED; no Stage 07. Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/
+model-boundary-decisions.md` → MD-052 execution record; `14_decision-log/MD-052-k0-kernel-candidate-
+characterization/` (5 files). **Smallest next action, named, not authorized**: a separately-authorized
+phase to actually perform K0's own called-for `K_t`-representation-independence adversarial check —
+the one step that, if it survives, would be the first genuine bridge to GA-038. This session's work
+is being committed now, per explicit instruction.
+
+**Superseded-update-marker-73 (2026-09-09, earlier) — MD-051 COMPLETE — F3 NARRATIVE-ONLY OBS/BEH_𝔠
+RECONSTRUCTION
 (ADMISSIBILITY-CORRECTED REPEAT OF MD-050).** While re-verifying MD-050 against the frozen decision
 log, discovered MD-050 built its `Beh_𝔠`/proof construction by reading F3's **executable** source
 (`nrna1/research/kernel-reduction/kr/*.py`) directly — a directory **MD-030** (2026-09-08) had
