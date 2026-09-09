@@ -1,4 +1,44 @@
-**Updated:** 2026-09-09 (latest) — **MD-050 COMPLETE — F3 OBS/BEH_𝔠 CONSTRUCTION.** Direct, terse
+**Updated:** 2026-09-09 (latest) — **MD-051 COMPLETE — F3 NARRATIVE-ONLY OBS/BEH_𝔠 RECONSTRUCTION
+(ADMISSIBILITY-CORRECTED REPEAT OF MD-050).** While re-verifying MD-050 against the frozen decision
+log, discovered MD-050 built its `Beh_𝔠`/proof construction by reading F3's **executable** source
+(`nrna1/research/kernel-reduction/kr/*.py`) directly — a directory **MD-030** (2026-09-08) had
+already ruled **"D — ADMISSIBILITY/PROVENANCE BLOCK … No file admitted,"** never subsequently
+lifted. Only 4 sibling **narrative** files under a differently-named path were ever admitted
+(`03-capability-model.md`/`04-operator-contracts.md` via MD-028-DQ-1, `06-composition-rules.md` via
+MD-032, `12-randomized-results.md` via MD-035). **MD-050's own frozen text NOT modified.** Disclosed
+to the user with three disposition options (retroactively admit / treat as unauthorized / defer);
+**user chose Defer**, adding a binding constraint: the corrective reconstruction must be **blind** —
+no use of MD-050's own executable-derived numbers as premise/comparison-target/hint during
+construction, compared only afterward. **Executed as MD-051**: hand-traced `Reach(S)` — verbatim
+**source-defined** in `06` (`Reach(S)=μA.AMBIENT∪{k|∃o∈S:k∈derive(A,o.atoms)}`, plus the achievement
+criterion), not invented by either phase — over `04`'s atom table and `06`'s derivation table.
+**Result: exactly reproduced every MD-050 number** (`Beh_𝔠(C0)=21/23` missing `Evidence`,`Verdict`;
+`Beh_𝔠(C0_plus)=23/23` complete; `C0≺C0_plus` strict; `Qualify` irreducible; `DetectGap` redundant
+given `{Determine,Discriminate}`) — plus found independent empirical corroboration in `12`'s own
+robustness table (8/8 variants each for both), a file admitted since MD-035 but never consulted by
+MD-050. **Correction to MD-050's own self-labeling**: the `Reach(S)`/achievement formula is
+verbatim source-defined in the admitted narrative lane — MD-050 called it "a research construction"
+only because it never opened the file that states it. **Required final result: A — fully
+instantiable**, no executable needed. DDD classification given (operator set = configuration, not
+aggregate root; atoms/carrier-kinds = value objects; `Reach(S)` = pure domain service;
+`EpistemicState(K_t)` = the one entity with lifecycle). 12/13 MinKer-name correspondence
+independently re-confirmed from narrative evidence alone. **Does NOT decide MD-050's own
+disposition** — remains the user's separate call, now informed by an exact-match finding. No
+backlog ticket (single disclosed, self-corrected instance — see MD-051's own `01_admissibility-
+disclosure.md`). No classification changed; no frozen artifact (MD-024–050) modified; no executable
+file read or executed; `classification-register.tsv` untouched; K-1/K2 untouched; no Stage 07.
+Verified both consistency scripts `CONSISTENT`. Full record: `14_decision-log/model-boundary-
+decisions.md` → MD-051 execution record; `14_decision-log/MD-051-f3-narrative-only-reconstruction/`
+(5 files). **Mid-phase**: user asked whether `docs/knowledgeos/brainstorming/verification/spec/
+K0-mathematical-kernel-candidate.md` had been read — it had not; that path sits inside MD-043's own
+unresolved ~445-file `brainstorming/verification/` zone; user chose to defer it until after MD-051.
+**Smallest next action, named, not authorized**: (a) the user's own MD-050 disposition decision;
+(b) the same narrative-only construction for F1 or F5; (c) a characterization-only pass over
+`K0-mathematical-kernel-candidate.md`. This session's work is being committed now, per explicit
+instruction.
+
+**Superseded-update-marker-72 (2026-09-09, earlier) — MD-050 COMPLETE — F3 OBS/BEH_𝔠 CONSTRUCTION
+(LATER FOUND TO REST ON UN-ADMITTED EXECUTABLE EVIDENCE — SEE MD-051 ABOVE).** Direct, terse
 authorization ("Construct the Obs/Beh_c instantiation for F3") — the exact smallest next action
 MD-049 itself named. **Central discovery made while re-grounding in F3's own source, reported
 first**: 12 of MinKer's 13 capability names are exact matches to F3's own C0 operator names

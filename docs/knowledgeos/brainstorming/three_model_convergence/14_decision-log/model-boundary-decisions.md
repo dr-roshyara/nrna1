@@ -4438,3 +4438,76 @@ written.
 
 **MD-050 status: COMPLETE. Smallest next action, named, not authorized: attempt the same construction
 for F1 or F5. Awaiting separate authorization for any further step.**
+
+---
+
+## MD-051 — F3 Narrative-Only `Obs`/`Beh_𝔠` Reconstruction (Admissibility-Corrected Repeat of MD-050)
+
+**Trigger**: while re-verifying MD-050 against the frozen admissibility record, discovered MD-050's
+own `Beh_𝔠`/proof construction was built by reading F3's **executable** source
+(`nrna1/research/kernel-reduction/kr/{atoms,carriers,reach,operators}.py`) directly — a directory
+**MD-030** (2026-09-08) had already ruled **"D — ADMISSIBILITY/PROVENANCE BLOCK … No file admitted,"**
+never subsequently lifted. Only four sibling **narrative** files under the differently-named path
+`docs/knowledgeos/research/kernel-reduction/` were ever admitted (`03-capability-model.md`/
+`04-operator-contracts.md` via MD-028-DQ-1; `06-composition-rules.md` via MD-032;
+`12-randomized-results.md` via MD-035), each narrow-scope, none covering the executable. **MD-050's
+own frozen text was not modified.** Disclosed to the user; presented three disposition options via
+`AskUserQuestion` (retroactively admit / treat as unauthorized / defer) — **user selected Defer**,
+with a binding added constraint: this corrective phase's own construction must not use MD-050's
+executable-derived results as premise, comparison target, hint, or aid — a **blind** reconstruction,
+compared only after its own numbers were fixed.
+
+**Executed**: read the four admitted narrative files cold, in full. Independently re-derived, by
+hand, from `06`'s own verbatim-stated `Reach(S) = μA. AMBIENT ∪ {k | ∃o∈S: k∈derive(A,o.atoms)}` and
+achievement criterion (`c.kinds⊆Reach(S) ∧ c.atoms⊆atom_pool(S)`) — both **source-defined**, not
+invented by this or the prior phase: `Beh_𝔠(C0)=21/23` (missing `Evidence`,`Verdict`);
+`Beh_𝔠(C0_plus)=23/23` (complete); `C0≺_cap C0_plus` strict; `Qualify` irreducible (unique atom
+holder); `DetectGap` redundant given `{Determine,Discriminate}` (atom-subset argument). **Every
+number exactly reproduces MD-050's own**, and this phase additionally found independent empirical
+corroboration for the `Qualify`/`DetectGap` results in `12-randomized-results.md`'s own robustness
+table (8/8 variants each) — a file admitted since MD-035 but never consulted by MD-050.
+
+**Significant correction to MD-050's own self-labeling**: MD-050 called its `Beh_𝔠` construction "a
+research construction... rather than corpus-established fact." That was more conservative than the
+evidence actually warranted — `06`'s own narrative text states the `Reach(S)`/achievement formula
+verbatim; MD-050 simply never opened the narrative file that shows this. Corrected here, not in
+MD-050's own frozen text.
+
+**DDD classification of F3** (source-only): operator set `K` = configuration, not an aggregate root;
+atoms/carrier-kinds = value objects; `Reach(S)` = a pure domain service; `EpistemicState(K_t)` = the
+one entity with lifecycle (mutated via `Revise`, history-preserving); `06`'s own explicit "`K_t` and
+`Kernel 𝒦` are never conflated" is a source-stated invariant, not an inference. 12 of MinKer's 13
+capability names independently re-confirmed as exact matches to `04`'s own operator table, from
+narrative evidence alone (the same finding MD-050 reported, now on clean provenance).
+
+**Required final result: A — fully instantiable.** `Obs`/`Beh_𝔠(F3)` is completely and formally
+determinable from F3's own already-admitted written specification, with no new modelling decision
+and no executable source required.
+
+**What this does NOT decide**: MD-050's own disposition (usable evidence / frozen historical artifact
+/ candidate for narrow prospective admission of the executable) remains the user's separate decision
+— this phase supplies evidence (exact reproduction ⇒ low risk of substantive distortion) without
+making that call.
+
+**No backlog ticket** — a single disclosed, self-corrected instance; see MD-051's own `01` for the
+reasoning against filing one now.
+
+**No classification changed. No frozen artifact (MD-024–050) modified. No executable file read or
+executed. `classification-register.tsv` untouched. No canonical Kernel selected. K-1/K2 untouched.
+No Stage 07.**
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged; only the new
+`14_decision-log/MD-051-f3-narrative-only-reconstruction/` directory (5 files) plus this decision-log
+entry written; `git status --porcelain` confirms no other tracked file touched.
+
+**Mid-phase note**: the user asked whether `docs/knowledgeos/brainstorming/verification/spec/
+K0-mathematical-kernel-candidate.md` had been read. It had not — that path sits inside the ~445-file
+`brainstorming/verification/` zone MD-043 left explicitly PLAUSIBLE/UNRESOLVED (only the
+step-272/280/281/282/handoff/witnesses cluster was resolved there). Presented three handling options;
+**user chose to defer it — finish MD-051 first.** Not read, not admitted, not characterized in this
+phase.
+
+**MD-051 status: COMPLETE. Smallest next action, named, not authorized: (a) the user's own pending
+MD-050 disposition decision; (b) the same narrative-only-first construction for F1 or F5; (c) a
+characterization-only pass over `K0-mathematical-kernel-candidate.md`. Awaiting separate authorization
+for any further step.**

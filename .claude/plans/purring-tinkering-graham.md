@@ -1185,7 +1185,36 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-050 — F3 Obs/Beh_𝔠 Construction — EXECUTED.** Direct, terse
+**Status update, 2026-09-09 (latest): MD-051 — F3 Narrative-Only Obs/Beh_𝔠 Reconstruction —
+EXECUTED (admissibility-corrected repeat of MD-050).** Discovered, while re-verifying MD-050 against
+the frozen record, that MD-050 built its `Beh_𝔠`/proof construction from F3's **executable** source
+(`nrna1/research/kernel-reduction/kr/*.py`) — a directory MD-030 had already ruled **"D —
+ADMISSIBILITY/PROVENANCE BLOCK … No file admitted,"** never lifted. Only 4 sibling **narrative**
+files (`03-capability-model.md`/`04-operator-contracts.md` via MD-028-DQ-1, `06-composition-rules.md`
+via MD-032, `12-randomized-results.md` via MD-035) were ever admitted. MD-050's own text NOT
+modified. Disclosed; user chose **Defer disposition** (not retroactive admission, not discard),
+adding a binding constraint: MD-051 must be a **blind** reconstruction, not using MD-050's numbers
+as premise/hint, compared only after its own results were fixed. **Executed blind**: hand-traced
+`Reach(S)` (verbatim source-defined in `06`, not invented) over `04`'s atom table and `06`'s
+derivation table — **exactly reproduced every MD-050 number** (`Beh_𝔠(C0)=21/23`,
+`Beh_𝔠(C0_plus)=23/23` complete, `Qualify` irreducible, `DetectGap` redundant, `C0≺C0_plus` strict) —
+plus found independent empirical corroboration in `12`'s own robustness table (8/8 variants each),
+never cited by MD-050. **Correction to MD-050's own self-labeling**: the `Reach(S)`/achievement
+formula is verbatim SOURCE-DEFINED in `06`, not "a research construction" as MD-050 called it — MD-050
+simply never opened that file. **Required final result: A — fully instantiable**, no executable
+needed. DDD classification given (operator set = configuration, not aggregate; atoms/carriers = value
+objects; `Reach(S)` = domain service; `EpistemicState(K_t)` = the one entity with lifecycle). 12/13
+MinKer-name correspondence independently re-confirmed from narrative evidence alone. **Does NOT
+decide MD-050's own disposition** — that remains the user's separate call, now informed by an
+exact-match finding. No backlog ticket (single disclosed, self-corrected instance). Verified both
+consistency scripts `CONSISTENT`; `classification-register.tsv`/MD-024–050 unchanged; no executable
+read or executed. **Mid-phase**: user asked about `K0-mathematical-kernel-candidate.md`
+(`brainstorming/verification/spec/`) — unread, inside MD-043's own unresolved ~445-file zone; user
+chose to defer it. **Smallest next action, named, not authorized**: (a) user's own MD-050 disposition
+decision; (b) same construction for F1/F5; (c) characterize (not admit) K0-mathematical-kernel-
+candidate.md.
+
+**Status update, 2026-09-09 (earlier): MD-050 — F3 Obs/Beh_𝔠 Construction — EXECUTED.** Direct, terse
 authorization ("Construct the Obs/Beh_c instantiation for F3") — the exact smallest next action
 MD-049 itself named. **Central discovery, reported first**: 12 of MinKer's 13 capability names are
 exact matches to F3's own C0 operator names; the 13th (`Qualify`) is also a named F3 operator, held
