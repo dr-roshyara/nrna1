@@ -186,3 +186,41 @@ here.**
 
 **Evidence:** `docs/knowledgeos/theory-extraction/85-P67-…` §3 — the 522, the four real matches, and the
 corrected counts published in its place.
+
+---
+
+## ⚠️ Provenance correction, 2026-09-09 — this was not a new discovery
+
+⭐⭐⭐ **This item was filed as though the failure mode had just been found. It had not.** A later review
+reading a primary document from **two days earlier** — written by the same work stream that filed this
+ticket — found the failure already recorded there, in its list of settled findings:
+
+> **"a glyph-literal pattern over a LaTeX corpus produced a false zero"**
+
+⭐⭐ **The same document also names the underlying mechanism as an established lesson**: mathematical
+notation in the source can hide the very words a plain-text search is looking for. **So the work stream
+knew the mechanism, wrote it down, and then repeated the failure four more times** — in the reviews that
+followed, including the one that filed this ticket.
+
+### Why the correction matters, and why the item still stands
+
+⛔ **The item is not withdrawn, and its substance is unaffected.** Its point was never *"this can
+happen"* — it was that **nothing in the process catches it when it does**. ⭐⭐⭐ **That claim is now much
+better evidenced than when it was filed:** the failure was recorded, understood, named as a lesson, and
+still recurred **four times** afterwards.
+
+$$\boxed{\textbf{A failure that is documented and keeps happening is stronger evidence for this item than a failure newly found.}}$$
+
+⚠️ **But two things do change.**
+
+**a. The urgency assessment in §7 above understated the case.** It described a risk. ⭐ **The record
+shows a repeat offence with a written prior.**
+
+**b. And the filing itself is an instance of a different recorded problem.** ⭐⭐ Filing this as novel,
+while the evidence sat in the filer's own earlier document, is precisely the *"work proceeds without
+consulting what already exists"* pattern recorded elsewhere in this backlog. ⛔ **No new item is opened
+for that** — it is noted here so the two records read consistently.
+
+**Evidence:** `docs/knowledgeos/theory-extraction/88-P70-…` §6 · the settled-findings list in
+`docs/knowledgeos/theory-extraction/18-P08-…` §21, item 10, dated 2026-09-07 · the four subsequent
+recurrences recorded in `82-P64-…`, `83-P65-…`, `85-P67-…` and this correction's own audit.
