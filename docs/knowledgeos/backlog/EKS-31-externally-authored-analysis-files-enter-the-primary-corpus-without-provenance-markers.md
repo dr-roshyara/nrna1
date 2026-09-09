@@ -122,3 +122,69 @@ stronger evidence that the gap is structural and will keep recurring absent a ma
 
 ⛔ **Registered under the operating model's own standing rule: when a deeper requirement is discovered,
 record it as a follow-up and STOP. No remedy is designed and no work is commissioned.**
+
+---
+
+## Appended 2026-09-09 by Lane T — a second, sharper face of the same cause
+
+**Registered from `104`** (`docs/knowledgeos/theory-extraction/104-READ-RECORD-NINE-F4-FILES-…`).
+⛔ **This appendix adds evidence to an existing item. It opens no new item and proposes no marker
+format.**
+
+### What was observed
+
+**Nine analysis files were saved into the primary corpus directory in a single afternoon.** ⭐⭐⭐ **Four
+of them — saved at 15:44, 15:46, 15:46 and 15:47 — are four separate runs of the same commission.**
+Three share a near-identical title. **All four reach the same verdict.** ⛔ **None cites any of the
+others, and none is marked as a repeat run.**
+
+### Why this is the same problem, seen from a new side
+
+This item was registered because externally produced analysis entered the corpus with nothing recorded
+about **where it came from**. ⭐⭐ **Today shows the same gap producing a different and arguably worse
+effect: nothing records that four documents are *the same work done four times*.**
+
+$$\boxed{\textbf{A reader six months from now will find } \mathbf{four\ agreeing\ documents} \textbf{ and reasonably count } \mathbf{four\ confirmations.}}$$
+
+⭐ **There is one.**
+
+### Why it matters in business terms
+
+**a. It inflates confidence in a conclusion nobody re-tested.** Four documents agreeing is normally
+strong evidence. ⛔ **Here it is expected by construction** — same question, same corpus, same
+afternoon — **and therefore carries almost no additional weight.**
+
+**b. The estate already knows this and applies the test elsewhere.** ⭐⭐ One of these very files rules
+another same-day document *"external, same-day, consuming the earlier work, **non-independent**"* and
+excludes it from corroboration. ⭐⭐⭐ **That is exactly the right discipline — and the four repeat runs
+are not held to it.**
+
+**c. The disagreements are the part that gets lost.** ⚠️ The four runs **agree on the verdict but order
+their three blockers differently** — one of them demotes the blocker the others call decisive.
+⭐⭐ **That ordering is what selects the next piece of work**, so the divergence matters more than the
+agreement — and with no marker saying these are parallel runs, ⛔ **a reader has no reason to compare
+them at all.**
+
+**d. It compounds with the storage problem already recorded here.** ⭐ Names like `document1.md`,
+`document2.md`, `document3.md` carry no timestamp, no author, no commission reference and no run
+number. **On a directory listing they look like three unrelated papers.**
+
+### Candidate requirement — an extension of §5, not a replacement
+
+> ⭐ **A marker should record not only where an analysis came from, but whether it is a repeat run of a
+> question already answered — and if so, which run, of which commission.**
+
+⭐⭐ **The decisive property: repeated runs must be countable as one.** A provenance marker that
+identifies the author but not the commission still lets four replicates read as four confirmations.
+
+### Evidence
+
+| | |
+|---|---|
+| the four runs | `historical_source.md` (15:44) · `document1.md` (15:46) · `document2.md` (15:46) · `document3.md` (15:47) |
+| all four reach the same verdict; blocker ordering differs | `104-…` §1 |
+| the estate's own non-independence test, applied to other material | the 15:37 handover file, §4.4 |
+| the earlier three files of the same afternoon | 13:54 · 14:19 · 14:20 |
+
+⛔ **No claim is made about the correctness of any of these documents.** ⭐ **Their content is not in
+question; only the absence of a marker distinguishing repetition from replication.**
