@@ -5956,3 +5956,69 @@ directory (10 files) plus this entry, `EKS-50`, and the `00_index.md` backlog up
 **MD-072 status: EXECUTED. HARD STOP** per the mission's own §24. No further phase automatically
 opened. Next authorized step, named, not opened: close `GAP-006`/`007`/`008` via the small, bounded
 reading pass §09 specifies — not a further large-batch census.
+
+---
+
+## MD-075 — Controlled Closure of GAP-008, GAP-006, and GAP-007
+
+**Authorization**: user's mission, a bounded evidence-resolution phase (explicitly not a new census,
+not canonicalization) closing the three gaps MD-072 named, in strict priority order —`GAP-008` first
+(the classification pipeline's own evidentiary boundary), then `GAP-006` (`phase_measure_theory`
+`K_t`/`Δ_t` vs. F4), then `GAP-007` (`Req(r)⊆Witness(r)` vs. F4 `Req(EC_t)`/`r`). Governing rule,
+accepted without disagreement after review: absence from `kernel/` is not absence from the corpus —
+`mathematical_ideas_that_can_be_implemented/` must be checked before any concept is called undefined.
+
+**Executed**: one bounded evidence-worker subagent performed a full-depth read of `kernel/`'s terminal
+classification artifacts (per the mission's own Worker-A role); `GAP-006`/`007` were adjudicated
+directly by the main process from MD-072's own existing evidence plus one additional full direct read
+(`step_186`) and this session's own already-detailed knowledge of F4's canonical definitions — no
+further subagents needed.
+
+**`GAP-008` — CLOSED WITH QUALIFICATION.** A location correction to MD-072's own text (recorded
+forward, MD-072 itself unedited): the `KCON-001..025` register and the `K-1..K-11` Knowledge-definition
+census actually live one directory above `kernel/` (`brainstorming/synthesis/` + `brainstorming/
+00_INDEX.md`), covering a combined 256-document population, not a `kernel/`-only one. **Decisive
+finding**: zero occurrences of any F4-tracked symbol (`EC_t`, `Req(`, `Sat(`, `Δ_t`, `Det_r`,
+`EvalReq`) anywhere in the pipeline's own terminal artifacts; its "Zero" is a research-methodology
+heuristic ("Zero Lens"), unrelated in kind to F4's `Zero(K,EC)` — a fourth instance of the corpus's
+own recurring "Zero" name-collision pattern, alongside canonical `Zero`, `ZeroLens`/T14, and
+`Zero_{T,Π}`/Zero-Algebra, never merged. No formal/structural bridge to F4 found anywhere — vocabulary
+overlap only, and thin even at that. Every governing artifact in the pipeline self-labels "RESEARCH ·
+NON-AUTHORITATIVE · decides nothing"; the only real governance decisions found (two HPA rulings) concern
+documentation/filesystem placement, not KnowledgeOS theory content.
+
+**`GAP-006` — sharpened to `HOMONYM`.** Not merely "no citation found" (MD-072's own framing) but
+**structurally ill-posed**: F4's own `K_t` is deliberately abstract (`K_t∈𝕂`, T5, a considered
+`GENERALIZATION` away from earlier concrete forms), while `phase_measure_theory`'s `K_t` (fullest form,
+`step-155A`'s `K_{t+1}=F(K_t,I_t,C_t,E_t,D_t,Δ_t,A_t,O_t,V_t,G_t)`) commits to increasingly elaborate
+internal structure — there is no F4-side structure to compare against. `Δ_t` shows the same pattern
+even more sharply: F4's is a *computed output* of `K_t`/`EC_t`; `phase_measure_theory`'s is an *input
+stream* feeding `K_{t+1}` — not interchangeable without an unstated conversion.
+
+**`GAP-007` — downgraded from candidate to `HOMONYM`, evidence-grounded.** Direct full reading of
+`step_186` (2026-08-29, `phase_measure_theory/`) shows `r`/`Req(r)` occupy structurally different
+grammatical roles across the two lanes: `step_186`'s `r` denotes a **transition being validated**
+(`Req(r)` = required witness-types for that transition, tested against `Witness(r)`, deciding
+transition admissibility); F4's `r` denotes a **requirement being satisfied** (`r∈Req(EC_t)`, tested
+via `Sat(K,r)`, feeding `Δ_t`). Closer inspection weakens, not strengthens, the apparent match found
+by MD-072's own Level-1 census.
+
+**Backlog assessed, none filed**: two candidate findings (a fourth "Zero" homonym instance; a
+`kernel/`↔`phase_measure_theory/` Authority-split echo, both independently deriving a Capability/
+Permission/Authority/Responsibility four-way split, no citation) were weighed and found to be either
+an instance of an already-tracked pattern or fully self-contained with no decision to route — neither
+meets the mission's own "genuinely new, load-bearing" bar.
+
+**No frozen artifact (MD-024–072) modified.** No classification changed. No object merged — every
+apparent correspondence resolved to `HOMONYM`/`UNRELATED`/`N/A`, none promoted. K-1/K2 untouched.
+`theory-extraction/` untouched.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-075-gap008-gap006-gap007-
+closure/` directory (8 files) plus this entry written.
+
+**MD-075 status: EXECUTED. HARD STOP.** No canonicalization performed; no `Sat_new` constructed; no
+F3↔F4 bridge attempted; K-1/K2 governance not reopened; no further large corpus census performed. This
+phase closes out the targeted-extension work MD-072's own Extension Decision B called for. Next
+action, named, not authorized: the `Det_r`/`EvalReq` computed-body question MD-070 first named remains
+this reconstruction's own smallest genuinely open research input.

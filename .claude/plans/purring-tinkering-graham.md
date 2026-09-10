@@ -1185,7 +1185,28 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-10 (latest): MD-072 — Controlled Extension of the KnowledgeOS Theory Evolution
+**Status update, 2026-09-10 (latest): MD-075 — Controlled Closure of GAP-008, GAP-006, and GAP-007 —
+EXECUTED, HARD STOP.** User's mission: a bounded evidence-resolution phase (not a new census, not
+canonicalization) closing the three gaps MD-072 named, strictly sequenced (`GAP-008` first, then
+`GAP-006`, then `GAP-007`), governed by an accepted rule: absence from `kernel/` is not absence from
+the corpus — `mathematical_ideas_that_can_be_implemented/` checked first. **`GAP-008` — CLOSED WITH
+QUALIFICATION**: location correction to MD-072 (the `KCON-001..025`/`K-1..K-11` register actually
+lives in `brainstorming/synthesis/`+`00_INDEX.md`, a combined 256-document population, not `kernel/`-
+confined); zero occurrences of any F4-tracked symbol anywhere in the pipeline's own terminal artifacts;
+its "Zero" a research heuristic unrelated in kind to F4's `Zero(K,EC)` (a fourth homonym instance,
+never merged); no formal bridge, vocabulary overlap only. **`GAP-006` — sharpened to `HOMONYM`**:
+structurally ill-posed, not merely uncited — F4's own `K_t` is deliberately abstract (`K_t∈𝕂`, T5),
+`phase_measure_theory`'s commits to elaborate internal structure, no F4-side structure to compare
+against; `Δ_t` even more sharply (computed output vs. input stream). **`GAP-007` — downgraded from
+candidate to `HOMONYM`, evidence-grounded**: full reading of `step_186` shows `r`/`Req(r)` occupy
+structurally different roles (transition-subject vs. requirement-argument) — closer inspection weakens
+the apparent match. Backlog assessed, none filed. No frozen artifact modified; no object merged; K-1/K2
+untouched; `theory-extraction/` untouched. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-075-gap008-gap006-gap007-closure/` (8 files). Next action, named, not authorized:
+the `Det_r`/`EvalReq` computed-body question (MD-070) remains this reconstruction's own smallest
+genuinely open research input.
+
+**Status update, 2026-09-10 (earlier): MD-072 — Controlled Extension of the KnowledgeOS Theory Evolution
 Reconstruction — EXECUTED, HARD STOP.** *(Coordination note: a concurrent session ran MD-073/074 —
 Sat single-case computation attempts, both BLOCKED — while this phase was mid-flight, interrupted by a
 session rate limit. Checked via `git log`: no actual collision; MD-072's own work is unique and

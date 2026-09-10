@@ -1,4 +1,29 @@
-**Updated:** 2026-09-10 (latest) — **MD-072 EXECUTED — CONTROLLED EXTENSION OF THE KNOWLEDGEOS THEORY
+**Updated:** 2026-09-10 (latest) — **MD-075 EXECUTED — CONTROLLED CLOSURE OF GAP-008, GAP-006, AND
+GAP-007, HARD STOP.** User's mission: a bounded evidence-resolution phase (not a new census, not
+canonicalization) closing the three gaps MD-072 named, strictly sequenced (`GAP-008` first, then
+`GAP-006`, then `GAP-007`), governed by an accepted rule: absence from `kernel/` is not absence from
+the corpus — `mathematical_ideas_that_can_be_implemented/` must be checked first. **`GAP-008` — CLOSED
+WITH QUALIFICATION**: a location correction to MD-072 (the `KCON-001..025`/`K-1..K-11` register
+actually lives in `brainstorming/synthesis/`+`00_INDEX.md`, a combined 256-document population, not
+`kernel/`-confined); decisive finding — zero occurrences of any F4-tracked symbol anywhere in the
+pipeline's own terminal artifacts, its "Zero" a research-methodology heuristic unrelated in kind to
+F4's `Zero(K,EC)` (a fourth homonym instance, never merged); no formal bridge to F4, vocabulary
+overlap only; every governing artifact self-labels "RESEARCH · NON-AUTHORITATIVE." **`GAP-006` —
+sharpened to `HOMONYM`**: not merely uncited but structurally ill-posed — F4's own `K_t` is
+deliberately abstract (`K_t∈𝕂`, T5), while `phase_measure_theory`'s commits to elaborate internal
+tuple structure; no F4-side structure exists to compare against; `Δ_t` shows the same pattern even
+more sharply (computed output vs. input stream). **`GAP-007` — downgraded from candidate to `HOMONYM`,
+evidence-grounded**: direct full reading of `step_186` shows `r`/`Req(r)` occupy structurally
+different roles across the two lanes (transition-subject vs. requirement-argument) — closer inspection
+weakens the apparent match. Backlog assessed, none filed (two candidates weighed, neither met the
+"genuinely new, load-bearing" bar). No frozen artifact (MD-024–072) modified; no object merged; K-1/K2
+untouched; `theory-extraction/` untouched. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-075-gap008-gap006-gap007-closure/` (8 files). Next action, named, not authorized:
+the `Det_r`/`EvalReq` computed-body question (MD-070) remains this reconstruction's own smallest
+genuinely open research input.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-072 EXECUTED — CONTROLLED
+EXTENSION OF THE KNOWLEDGEOS THEORY
 EVOLUTION RECONSTRUCTION, HARD STOP.** *(Coordination note, corrects a factual error in MD-074's own
 block below without editing it: MD-074's text states "MD-072/073 were committed without a session-log/
 CONTEXT record" — this is incorrect for MD-072 specifically. MD-072 was never committed before this
