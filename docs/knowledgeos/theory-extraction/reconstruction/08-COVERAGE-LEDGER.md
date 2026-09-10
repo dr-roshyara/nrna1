@@ -81,3 +81,28 @@ have already been reclassified from it (`CIRC-5`, `δ`).
 **Read so far: 2 of 246.** The rest is open coverage debt, and it is now the highest-priority
 debt in the ledger because every unread mandate can change the classification of an item already
 recorded elsewhere.
+
+## ⭐ Sixth under-enumerated lane — `brainstorming/verification/` (496 files, 14 subdirectories)
+
+| subdir | files | | subdir | files |
+|---|---|---|---|---|
+| `gap-discovery` | 163 | | `consolidation` | 14 |
+| `spec` | 45 | | `plan` | 12 |
+| **`prompts`** | **40** | | **`canonical-construction`** | **11** |
+| `step-282` | 32 | | `reports` | 7 |
+| `step-281` | 30 | | `handoff` | 6 |
+| `step-280` | 26 | | `witnesses` | 4 |
+| `independent` | 18 | | **top-level `.md`** | **71** |
+| `findings` | 17 | | | |
+
+This ledger previously carried **one line** for the whole lane. Appearing **zero** times in it:
+`canonical-construction/` · `CANONICAL-KNOWLEDGEOS-THEORY.md` · `CANONICAL-THEORY-BASELINE.md`
+· `CANONICAL-THEORY-TRIANGULATION.md` · **`DEFINITION-VERIFICATION-REGISTER.md`** ·
+`BLOCKER-ANALYSIS-AND-EXECUTABLE-KERNEL.md` · `DECISION-SIGMA-EPISTEMIC-STATUS.md` ·
+`step-280/281/282` · `independent/` · `witnesses/`.
+
+⭐ **`DEFINITION-VERIFICATION-REGISTER.md` is another lane's definition register**, directly
+parallel to `05-DEFINITION-EVOLUTION-REGISTRY.tsv` and **never compared with it.**
+
+**Prompt corpus read so far: 4 of 169** (`20260829_1453`, `20260830_1953`,
+`20260902-085654`, `20260901-025251`).

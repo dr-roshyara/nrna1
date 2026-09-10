@@ -1144,3 +1144,61 @@ and never read as evidence** — recorded as the next coverage debt.
 
 ⚠️ **Nothing is closed by this.** `≡_sem` still has three rival definitions; `TG-1` still holds.
 Only the **evidence class of the silence** changes.
+
+---
+
+# `CommissionState(t)` — a second history, running four days ahead of the theory
+
+Register: `reconstruction/commission/00-COMMISSION-REGISTER.md`. This section records **what was
+asked for**. It proves **no proposition**: $TheoryState(t) \neq CommissionState(t)$.
+
+## The commission timeline precedes the theory timeline
+
+| | |
+|---|---|
+| **2026-08-29T14:53** | the verification lane is commissioned: **INDEPENDENT THEORY RECONSTRUCTION** |
+| 08-29 → 08-30 | VERIFICATION → RECONCILIATION GATE → GAP DISCOVERY → *"the missing theory"* |
+| **2026-08-30T19:53** | ⭐ **CANONICAL THEORY CONSTRUCTION** commissioned, with a **24-box completion gate** and a **named 30-section deliverable** |
+| **2026-08-30** | **`CANONICAL-KNOWLEDGEOS-THEORY.md`** delivered — **`THEORY NOT YET COMPLETE`, 19/24** |
+| 08-31 → 09-01 | the **kernel** lane runs (117 prompts, Steps 285–291) |
+| **2026-09-02T00:46:31** | **Theory v1.0** — `DEF-1…33`, and **no commissioning prompt located** |
+
+$$\boxed{\text{The theory I had been reconstructing as the origin is the SECOND canonical theory, and the first one is three days older and commissioned.}}$$
+
+## ⭐⭐⭐ Two canonical theories, zero mutual citation
+
+They use different numbering (none vs `DEF-1…33`), different evidence vocabularies (**11** tags
+vs **7**), reach different verdicts (**`NOT YET COMPLETE 19/24`** vs *"freeze as the theoretical
+baseline"*), and carry **open lists that barely intersect**. They **contradict each other** on
+minimality (✓ proven relative to `𝒯` vs `OPEN-6` not established) and on the transformation
+algebra (✓ fully typed vs `[PROP]`, no body for `δ`).
+
+**Not reconciled.** The rule that governs this corpus is the 08-29 §4 rule itself: *supersession
+is not established, therefore preserve the alternatives.*
+
+## The method in this chronicle was commissioned on 2026-08-29
+
+My seven evidence classes descend from **§3's four** (`SOURCE CLAIM · MATHEMATICAL FACT ·
+VERIFIER INFERENCE · OPEN/UNVERIFIED`); my multiplicity procedure **is §4's seven steps**; this
+mission's §9 (*do not assume numbered objects are canonical*) **is §1, twelve days earlier**;
+v1.1's `G1…G9` descend from **§21's fourteen** gap classes.
+
+⭐⭐⭐ **And §4 lists *"multiple invariant registries"* as an already-known competing formulation
+on 2026-08-29** — `G-37` was in the commissioning prompt three days before the enumeration it
+concerns and eight days before the script that denied it.
+
+## Three `TheoryState` facts recovered — recorded, not adopted
+
+* **`δ` was EXECUTED** on 08-30: `K₁ = δ(K₀,e₀)` computed end-to-end, 28/30 symbols resolved,
+  *computationally closed for a fixed policy, not an arbitrary one.*
+* **`Σ` is DERIVED**, *"derivation exhibited, not merely asserted"*. **Recorded, not
+  reconciled** — the prohibition is on reconciling `Σ`, not on recording another lane's
+  derivation.
+* **A third carrier** for `OPEN-1`: `K = (id,P,e,c,t,Π,ℛ)`, minimality proven relative to `𝒯`.
+
+## What the commission history changes about "blocked"
+
+The `G-rerun-with-evaluators` self-retraction is **`NON-GOAL-PROTECTED`**: twelve verification
+prompts forbid inventing evaluators, so *"`Eval_Gov` is invented governance"* is **compliance,
+not insight.** Together with `δ` (`OPEN BY COMMISSION`) and `CIRC-5`, that is **three** items
+whose openness is now known to be mandated rather than accidental.

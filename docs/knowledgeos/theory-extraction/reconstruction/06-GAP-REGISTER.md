@@ -2416,3 +2416,122 @@ reclassified as corpus gaps.**
 The author's own summary governs how every `[THM]` in that document is read:
 > *"v1.0 closes the semantic architecture and derives a coherent formal framework; **it does not
 > yet prove uniqueness of the semantic state space or the minimal computational kernel.**"*
+
+---
+
+# ⭐⭐⭐ G-41 — TWO canonical theories, three days apart, zero mutual citation
+
+Record: `reconstruction/commission/00-COMMISSION-REGISTER.md`.
+**Mission mode: `CommissionState(t)` reconstruction. `TheoryState(t) ≠ CommissionState(t)`.**
+
+## §1 · A complete `Commission → Execution → Result` chain
+
+`verification/prompts/20260830_1953_prompts.md` **§16** names the deliverable exactly —
+`verification/CANONICAL-KNOWLEDGEOS-THEORY.md`, **30 named sections**, *"every major statement
+must carry its epistemic classification"* — and **§15** supplies a **24-box completion gate**
+with mandated verdict language.
+
+The artifact exists and **names its own mandate in its header**: `mandate: 20260830 §16`.
+
+$$\boxed{Commission(\text{08-30 19:53}) \to Execution \to Result(\texttt{THEORY NOT YET COMPLETE},\ 19/24)}$$
+
+**This is the `G-19` pattern with every link present** — and it is the first chain in this
+reconstruction where the *artifact itself* states its commission.
+
+## §2 · But it is a second canonical theory
+
+| | `CANONICAL-KNOWLEDGEOS-THEORY.md` | Theory v1.0 `20260902-004631` |
+|---|---|---|
+| date | **2026-08-30** | **2026-09-02T00:46:31** |
+| provenance | **commissioned**, mandate cited | **no commissioning prompt located** |
+| numbering | none — 30 prose sections | `DEF-1…33` `AX-1…7` `THM-1…11` `I1…I9` |
+| evidence tags | **11** | **7** |
+| verdict | **NOT YET COMPLETE — 19/24** | *"freeze as the theoretical baseline"* |
+| opens | authority→gate binding · 2 blocked symbols · 3 overloaded terms · policy-change authorisation | `OPEN-1…6` |
+
+`[EMP]` **Citation zero, both directions, every probe** — the 08-30 artifact has `DEF-` 0,
+`AX-` 0, `THM-` 0, `OPEN-` 0, `I1` 0, `I9` 0; Theory v1.0 has `CANONICAL-KNOWLEDGEOS` 0,
+`completion box` 0, `NOT YET COMPLETE` 0, `triangulat` 0. *(The reverse zero is a control — the
+08-30 artifact predates v1.0.)*
+
+### They contradict each other on the completion status of the same objects
+
+| object | 08-30 | 09-02 |
+|---|---|---|
+| **minimality** | ✓ **PROVEN relative to `𝒯`** | **`OPEN-6` — not established** |
+| **transformation algebra** | ✓ **fully typed** | kernel is `[PROP]`; `δ` has no body |
+| **`≡_sem`** | not an open box | **`OPEN-3`** |
+| **carrier** | `K = (id,P,e,c,t,Π,ℛ)`, 7 necessary | **`OPEN-1`** |
+
+**The open lists barely intersect.** ⚠️ **NOT reconciled** — per the rule governing this very
+corpus (`20260829_1453` §4): *supersession is not established, therefore preserve the
+alternatives.* Neither verdict adopted.
+
+## §3 · Disposition
+
+**`C — COMPETING / DEPENDENCY-INCOMPLETE`**, and specifically a **`COMMISSION GAP`**: the 08-30
+theory has a commission and Theory v1.0 has none that I could locate. **`NOT YET LOCATED`, never
+`GENUINE CORPUS GAP`.**
+
+---
+
+# G-42 — the method I have been using was commissioned on 2026-08-29, and it anticipated `G-37`
+
+`verification/prompts/20260829_1453_prompt` (1283 lines) is the origin of this reconstruction's
+own discipline:
+
+* **§3** four evidence classes `A SOURCE CLAIM · B MATHEMATICAL FACT · C VERIFIER INFERENCE ·
+  D OPEN/UNVERIFIED` — *"Never silently transform A into B. Never transform C into A. Never
+  transform 'not disproven' into 'proven'."* **→ ancestor of my seven.**
+* **§4** the seven-step multiplicity procedure — *preserve alternatives if supersession is not
+  established*. **→ the procedure I execute.**
+* **§1** *"Do NOT assume a statement is true because it is labelled axiom, invariant, theorem …
+  ratified, frozen, PASS, VERIFIED"* — **identical to this mission's §9, twelve days earlier.**
+* **§21** fourteen gap classes → **ancestor of v1.1's `G1…G9`** (6 survive; `Identifiability`
+  and `Measurement` dropped; `epistemological` and `DDD` added).
+
+⭐⭐⭐ **§4 lists *"multiple invariant registries"* among the already-discovered competing
+formulations — on 2026-08-29.** `G-37` is anticipated **verbatim by the commissioning prompt**,
+three days before Theory v1.0 §75 and eight days before the script that hard-coded
+`InvariantReg = "NOT ENUMERATED"`. **Classification: `COMMISSION-CONSTRAINED`.**
+
+---
+
+# G-43 — `TheoryState` facts recovered from the 08-30 artifact (recorded, not adopted)
+
+* ⭐ **`δ` WAS EXECUTED.** §21: *"28 of 30 symbols resolved; `K₁ = δ(K₀,e₀)` **computed
+  end-to-end with zero author consultation** `[EX]`"* — **computationally closed for a fixed
+  policy, not for an arbitrary one.** Blocked: the qualification predicate; the authority→gate
+  binding. Consistent with my plan's `D3` note *"executed: `K₁ is K₀`"*.
+* ⭐⭐⭐ **`Σ` is DERIVED** — §22, *"derivation exhibited, not merely asserted"*. This materially
+  changes what `Σ`'s register status should be understood to be. **Recorded; not reconciled; not
+  adopted** — the standing prohibition is on *reconciling* `Σ`, not on recording that another
+  lane derived it.
+* ⭐⭐ **A third carrier for `OPEN-1`**: `K = (id,P,e,c,t,Π,ℛ)`. The `V1` options paper now has
+  three — this, `K_t=(E_t,ρ_t,α_t,π_t,τ_t)` (09-02 08:54), and `KS=(𝒳,𝒜)`.
+* **Missingness gets a reason**, not just a status: *"never-asserted vs never-asked
+  indistinguishable"* (my plan's `A6`/`G-60`). Also *non-identifiability is "a property of the
+  **evidence lattice**, not of `𝒜` or `ℛ`"*; *semantic policy equality is **undecidable***.
+* *"**`Knowledge` is not defined** — only bounded: `Information ⊇ Knowledge`"*; *"no probability
+  space exists in **1468 files**"*; `Policy → T → Policy` is *"the only genuine loop in the
+  entire theory"*.
+
+---
+
+# G-44 — commission-corpus integrity findings
+
+* **169 prompts, 162 dated, 7 `CHRONOLOGY UNRECORDABLE`.** ⚠️ My first census said **54**
+  undated — the verification and synthesis lanes use `20260829_1453_prompt`, my regex was fitted
+  to the kernel lane's `20260831-184644_`. **Corrected to 7. The both-spellings rule applies to
+  filenames.** One file carries a malformed six-digit year (`202060831_1518_prompts.md`); one a
+  three-digit time; one prompt is **0 bytes**.
+* ⭐ **14 duplicate groups, 15 redundant files (9 %).** Thirteen are labelled `-duplicate`;
+  **two are not** — `verification/20260830_0952_prompt.md` **≡** `20260830_1005_prompts.md`,
+  byte-identical, 13 minutes apart, unmarked. **Apparent commission frequency overstates
+  distinct commissions by ~9 %**, which matters for any independence argument (§15).
+* **Different prohibition regimes per lane:** verification is *do not repair* (21/40) and *do
+  not invent an evaluator* (12/40); kernel is *do not promote* (20/117). **Verification forbids
+  canonicalization zero times** — and was in fact commissioned to canonicalize.
+* ⭐ The `G-rerun-with-evaluators` self-retraction is **`NON-GOAL-PROTECTED`** — twelve
+  verification prompts forbid inventing evaluators, so *"`Eval_Gov` is invented governance,
+  which A3 forbids"* is **commission compliance, not spontaneous insight.**
