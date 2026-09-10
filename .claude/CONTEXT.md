@@ -1,4 +1,37 @@
-**Updated:** 2026-09-10 (latest) — **MD-083 EXECUTED — EXTERNAL RESEARCH-SESSION CROSS-CHECK AND
+**Updated:** 2026-09-10 (latest) — **MD-084 EXECUTED — ACCEPTANCE/SUFFICIENCY RESPONSIBILITY:
+CHRONOLOGICAL INVESTIGATION AND TERMINAL CLASSIFICATION, HARD STOP.** User accepted MD-082 as a
+correction, not terminal closure, and redirected to the central question: where, when, and how does
+the theory define what makes a requirement/evidence state sufficiently justified — tracking the
+*responsibility*, not merely the symbol `Sat`, under any name. Explicit instruction to audit MD-082's
+own "five independent rediscoveries" claim rather than accept it. **New findings**:
+`Adequate(K_t,EC_t)⟺Sat(K_t,EC_t)` (`[DEF-20]`, `T5`'s own canonical birth source) is a pure
+definitional alias for `Sat` — `SAME OBJECT`, zero new content — though it enumerates six sub-concerns
+("sufficiency, completeness... evidence requirements...") without closing any, the same "named and
+located, content never supplied" pattern found repeatedly elsewhere. A further arity drift
+(contract-level `Sat(K,EC_t)` vs. per-requirement `Sat(K,r)`, three consecutive definitions, one file)
+confirmed present at the theory's own founding document, not only the later T21 rewrite.
+`Justification`/`Quality` confirmed to remain bare field-names, never independently defined. No new
+formal object discharging the responsibility found across the broader concept sweep. **Independence
+audit, correcting MD-082**: `Admissible`/`NG-1` (2026-09-02) and the qualification-rule/`EG-2`
+(2026-08-30) confirmed not the same document/session, but two observations within one continuing
+verification-lane programme, not independent lineages. Corrected count: three-to-four genuinely
+distinct lineages, not "five independent" — recorded forward, MD-082's own text not edited; the
+underlying finding (every lineage lands in the same cell: `defined`, not `computable`, not
+`empirically validated`) is not weakened. **Terminal verdict: `TERMINAL D`** — the responsibility
+cannot be reconstructed beyond what is already known, and the corpus provides *positive* evidence the
+remaining openness is intentional/design-level, grounded in two direct textual disclosures:
+`Policy_Det`'s own "this prevents KnowledgeOS from encoding one universal philosophy of evidence," and
+`Threshold`'s own "a threshold without semantics is not a mathematical epistemic rule... meaningful
+only through a declared calibration or decision framework." Full three-dimensional classification
+(object identity / semantic responsibility / computational completeness, never collapsed) recorded.
+No new backlog ticket. No construction; no mapping invented; no adoption; no frozen artifact modified;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-084-acceptance-responsibility-chronological-investigation/` (4 files). **MD-084
+status: EXECUTED. HARD STOP.** Next action, named, not authorized: `EKS-48`'s own three-way decision,
+now resting on a historical-reconstruction finding (`TERMINAL D`, with explicit textual grounds)
+rather than an absence-based inference.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-083 EXECUTED — EXTERNAL RESEARCH-SESSION CROSS-CHECK AND
 CANDIDATE CONSTRUCTION PROPOSAL, HARD STOP.** User directed attention to three 2026-09-10-dated files
 in the math lane — outputs from a separate research session the user consulted directly, matching the
 `EKS-31` corpus-hygiene pattern (self-referential, quoting this reconstruction's own MD-070/078/080/

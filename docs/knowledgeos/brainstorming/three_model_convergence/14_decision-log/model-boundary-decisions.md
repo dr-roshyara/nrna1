@@ -6498,3 +6498,59 @@ trace: `14_decision-log/MD-083-external-session-cross-check-and-candidate-constr
 **MD-083 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
 named, not authorized: unchanged in kind — a human governance decision among the named options, now
 additionally informed by an evaluated (not adopted) external construction candidate.
+
+---
+
+## MD-084 — Acceptance/Sufficiency Responsibility: Chronological Investigation and Terminal Classification
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-082 as a correction, not terminal closure, and
+redirected to the central question: where, when, and how does the theory define what makes a
+requirement/evidence state sufficiently justified — tracking the *responsibility*, not merely the
+symbol `Sat`, across the full chronology, under any name. Explicit instruction to audit MD-082's own
+"five independent rediscoveries" claim rather than accept it.
+
+**New findings**: `Adequate(K_t,EC_t)⟺Sat(K_t,EC_t)` (`[DEF-20]`, `T5`'s own canonical birth source,
+same file as `[DEF-19]`/`[DEF-21]`) is a pure definitional alias for `Sat` itself — `SAME OBJECT`,
+zero new content — though it does enumerate six sub-concerns ("sufficiency, completeness... evidence
+requirements...") without closing any of them, the same "named and located, content never supplied"
+pattern found repeatedly elsewhere. A further arity drift (contract-level `Sat(K,EC_t)` in `[DEF-19]`/
+`[DEF-20]` vs. per-requirement `Sat(K,r)` in `[DEF-21]`, three consecutive definitions, one file) is
+confirmed present at the theory's own founding document, not only in the later T21 rewrite.
+`Justification`/`Quality` confirmed to remain bare field-names, never independently defined, anywhere.
+No new formal object discharging the acceptance/sufficiency responsibility was found across the
+broader concept sweep (proof obligation, reliability, confidence, uncertainty, contradiction,
+completeness, authorization) — each either adds no content, is already-known-and-blocked, or belongs
+to a demonstrably different bounded context.
+
+**Independence audit, correcting MD-082**: `Admissible`/`NG-1` (`gap-update-2026-09-02/
+05-NEW-GAPS.md`, 2026-09-02 22:40) and the qualification-rule/`EG-2` (`gap-discovery/
+08-EVIDENCE-GAP.md`, 2026-08-30 20:58) are confirmed **not the same document or session** — three days
+apart, no cross-citation either direction — but **are** two dated observations within one continuing
+verification-lane governed programme, not two independent lineages. Corrected count: **three-to-four
+genuinely distinct lineages** (`Warrant`; `Assessment`, possibly sharing a Titelbaum root with
+`Warrant`, per this reconstruction's own much earlier MD-040 finding, not re-verified to full
+certainty this phase; the verification lane's own gap-discovery programme, containing both
+`Admissible` and the qualification rule; T21's own `Policy_Det`) — not "five independent." Recorded
+forward; MD-082's own text not edited. The underlying finding is not weakened: every genuinely distinct
+lineage still independently lands in the same cell (`defined`, not `computable`, not `empirically
+validated`).
+
+**Terminal verdict: `TERMINAL D`** — the responsibility cannot be reconstructed beyond what is already
+known, and the corpus provides *positive* evidence the remaining openness is intentional/design-level,
+not chosen merely because searches failed. Grounded in two direct, first-person textual disclosures:
+`Policy_Det`'s own "The exact policy belongs to the epistemic contract. This prevents KnowledgeOS from
+encoding one universal philosophy of evidence," and `Threshold`'s own "A threshold without semantics
+is not a mathematical epistemic rule... it becomes meaningful only through a declared calibration or
+decision framework." Full three-dimensional classification (object identity / semantic responsibility
+/ computational completeness, never collapsed) and the extended Responsibility Evolution Ledger are
+recorded in full in this phase's own artifacts.
+
+No new backlog ticket — findings sharpen `EKS-48`'s own evidentiary basis or correct this
+reconstruction's own prior overclaim, rather than naming a new problem. No construction performed; no
+mapping invented; no adoption; no frozen artifact (MD-024–083) modified; `theory-extraction/` never
+accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-084-acceptance-responsibility-chronological-investigation/` (4 files).
+
+**MD-084 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
+named, not authorized: `EKS-48`'s own three-way decision, now resting on a historical-reconstruction
+finding (`TERMINAL D`, with explicit textual grounds) rather than an absence-based inference.
