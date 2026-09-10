@@ -3644,3 +3644,34 @@ MD-101-phase-measure-theory-duplicate-map-and-content-segment/` (4 files). **MD-
 CHECKPOINT.** Next chronological frontier, named, not begun: continue from position 18
 (`20260825-231022_probability-becomes-more-fundamental.md`) onward, verifying each file's actual
 content directly before logging it as evidence.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-102 — `phase_measure_theory/` Root, Positions 18-24: `K_t^*`
+Gets an Actual Definition, `Φ` Evolves and Is Challenged, and "The Fact Problem" Is Named — EXECUTED,
+CHECKPOINT.** Continued MD-101's own discipline (net-new accounting; verify every file's actual
+content directly; keep external theory external; no identity assumed for new candidate objects). Read
+seven files, positions 18-24 (2026-08-25 23:10-23:39), none in MD-101's own duplicate register.
+**Central mathematical development**: the lane's first genuinely DEFINED-level object —
+`K_t^* = Closure(S_t,F_{≤t},R_t) = Cn_{R_t}(S_t∪F_{≤t})`, an "ideal Knowledge state" via an explicit
+logical-closure operator; NAMED/TYPED/DEFINED, not yet COMPUTABLE/EXECUTED/VALIDATED; explicitly
+distinct from MD-101's `κ(K_t)` — no identity assumed, tracked as its own trajectory. **`Φ` (born
+MD-101) evolves within this same segment**: reintroduced via an in-programme AI synthesis
+("Perplexity," classified as reconstruction-adjacent commentary, not external theory) as a binary
+`K̂_t→{Knowledge,Not-Knowledge}` function labelled "Strong Mathematical Evidence" — then explicitly
+challenged and downgraded within the same file to "candidate... requiring investigation," with a
+richer `Status(k,t,C)` proposed instead; three genuine evidence events, none overwriting the others.
+**"The Fact Problem" is named**: `Fact` as "the missing bridge" between Observation/Evidence and
+Knowledge, explicitly more fundamental at this point than the Kernel question itself; ten candidate
+qualifying criteria, all marked UNRESOLVED. **A further content-recombination instance found**:
+position 20's own large cumulative file contains, as an internal tail section, a passage byte-identical
+to the whole of position 21's separate file — the first confirmed within-file (not merely cross-file)
+instance of this pattern. **A named methodological rule**: a ~20-lens, four-family methodology (DDD,
+epistemic-philosophical, mathematical, assurance) governed by "no lens is allowed to define the object
+it is examining." F4 formal family confirmed absent across all seven files. No frozen artifact
+modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and
+`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-102-phase-measure-theory-fact-problem-and-lens-matrix/` (4 files). **MD-102
+status: EXECUTED. CHECKPOINT.** Next chronological frontier, named, not begun: continue from position
+25 (`20260825-234405_extraction-retrieves-material-determination-establishes-warrant.md`) onward,
+watching how "The Fact Problem" develops next.

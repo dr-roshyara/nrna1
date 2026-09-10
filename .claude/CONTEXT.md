@@ -1,4 +1,28 @@
-**Updated:** 2026-09-11 (latest) — **MD-101 EXECUTED — FULL EXACT-DUPLICATE MAP FOR
+**Updated:** 2026-09-11 (latest) — **MD-102 EXECUTED — `K_t^*` GETS AN ACTUAL DEFINITION, `Φ` EVOLVES
+AND IS CHALLENGED, AND "THE FACT PROBLEM" IS NAMED (positions 18-24), CHECKPOINT.** Continued MD-101's
+own discipline (net-new accounting; verify every file's actual content; keep external theory external;
+no identity assumed for new objects). Read seven files, positions 18-24 (2026-08-25 23:10-23:39), none
+in MD-101's duplicate register. **Central mathematical development**: the lane's first genuinely
+DEFINED-level object — `K_t^* = Closure(S_t,F_{≤t},R_t) = Cn_{R_t}(S_t∪F_{≤t})`, an "ideal Knowledge
+state" via explicit logical closure; NAMED/TYPED/DEFINED, not yet COMPUTABLE/EXECUTED/VALIDATED;
+explicitly distinct from MD-101's `κ(K_t)`. **`Φ` (born MD-101) evolves**: reintroduced via an
+in-programme AI synthesis ("Perplexity," classified as commentary, not external theory) as a binary
+function labelled "Strong Mathematical Evidence" — then challenged and downgraded within the same file
+to "candidate... requiring investigation," with a richer `Status(k,t,C)` proposed. **"The Fact
+Problem" named**: `Fact` as "the missing bridge" between Observation/Evidence and Knowledge, explicitly
+more fundamental at this point than the Kernel question; ten candidate qualifying criteria, all
+UNRESOLVED. **A further content-recombination instance found**: a within-file (not merely cross-file)
+duplication — position 20's own cumulative file contains a tail section byte-identical to position 21's
+separate file. **A named methodological rule**: a ~20-lens, four-family methodology governed by "no
+lens is allowed to define the object it is examining." F4 formal family confirmed absent across all
+seven files. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-102-phase-measure-theory-fact-problem-and-lens-matrix/`
+(4 files). **MD-102 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: continue from
+position 25 (`20260825-234405_extraction-retrieves-material-determination-establishes-warrant.md`)
+onward, watching how "The Fact Problem" develops next.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-101 EXECUTED — FULL EXACT-DUPLICATE MAP FOR
 `phase_measure_theory/`'s ROOT POPULATION + A CONTENT-RECOMBINATION FINDING + CONTINUED READING
 (positions 9-17), CHECKPOINT.** Per the user's explicit instruction to resolve the MD-100 duplication
 finding before treating further apparent recurrence as evidence: repaired a one-file reading-order gap
