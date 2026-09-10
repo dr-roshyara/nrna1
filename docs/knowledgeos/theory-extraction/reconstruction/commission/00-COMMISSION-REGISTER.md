@@ -333,3 +333,65 @@ corrections" → "do not freeze" → refined*. Two prompts are titled **"do not 
 ⭐⭐⭐ **82 of 117 kernel prompts are `step_286`**, and `step_286` is the **Gītā** strand. The
 programme **spine is 33 prompts** (steps 284, 285, 287–291). **70 % of the kernel commission
 corpus went to a strand my forward plan records as closed with *"five cycles, 0 primitives"*.**
+
+---
+
+## H. §18 — the commission dependency graph, and its dominant asymmetry
+
+$$Prompt \to Artifact \to Object \to Finding \to Adjudication$$
+
+### ⭐⭐⭐ The corpus records ANSWERS; the QUESTIONS were mostly not kept
+
+`[EMP]` Files whose first line opens as a dialogue reply (`Yes` / `No` / `Correct` / `Agreed` /
+`Confirmed`):
+
+| population | files | answer-openers | prompt files |
+|---|---|---|---|
+| `mathematical_ideas_that_can_be_implemented/` | **416** | **229 (55 %)** | **9** |
+| `brainstorming/` (depth ≤ 2, firewall excluded) | **1349** | **512 (38 %)** | — |
+| **whole estate, designated prompt dirs** | — | — | **169** |
+
+**Theory v1.0 itself opens *"Yes. At this point I would stop treating KnowledgeOS as a
+collection of philosophical insights…"*.** So does its 8-minute predecessor, and so does the
+`≡_sem` document, and so does the v1.1 simulation prompt.
+
+$$\boxed{\text{At least } 512 \text{ artifacts are dialogue turns whose commissioning question was never written to disk.}}$$
+
+**This is §18's first category — *findings with no visible commissioning* — and it is not an
+anecdote but the corpus's dominant shape.** The `prompts/` directories are the **exception**,
+not the norm: 169 captured commissions against 512+ uncaptured ones.
+
+⚠️ **Methodological consequence, binding.** The rule adopted earlier —
+*"before classifying an audit lane's `OPEN` item as a corpus gap, read its commissioning
+prompt"* — **cannot be satisfied for the majority of the estate.** For those artifacts the
+correct value is **`COMMISSION NOT RECORDED`**, and it must not be read as either
+*uncommissioned* or *unconstrained*. Absence of a prompt file is **evidence about the archive**,
+not about the work.
+
+### Theory v1.0's commission: `NOT LOCATED`, with a predecessor 8 minutes earlier
+
+`20260902-003827_knowledgeos-theory-integrated-formal-theory-v1-0.md` — **00:38:27**, **8 min
+04 s** before the numbered register, same folder, also an answer-opener:
+
+> *"Yes. **I think we can now consolidate the whole KnowledgeOS theory into one coherent
+> theory.** But… We cannot honestly claim that every mathematical component — especially
+> **semantic equivalence, the exact state type, and kernel minimality** — has already been
+> proved."*
+
+⭐⭐⭐ **Those three are `OPEN-3`, `OPEN-2` and `OPEN-6`**, named **eight minutes before §86
+formalised them.** And the sentence following cites *"the earlier research"* for **five**
+remaining formal questions: `K_t`, semantic equivalence, adequacy, transition semantics, kernel
+minimality.
+
+**Status of Theory v1.0's commission: `NOT YET LOCATED`** — never `GENUINE CORPUS GAP`.
+Its immediate conversational antecedent **is** located, and it is not a mandate.
+
+### The graph's five categories, populated
+
+| §18 category | population found |
+|---|---|
+| **findings with no visible commissioning** | ⭐ **512+ measured** — the corpus's dominant shape; Theory v1.0 among them |
+| **commissions with no execution** | none yet found — the two chains traced (`20260830 §16`, `20260902-085654`) both executed |
+| **executions with no commission** | Theory v1.0 (`NOT YET LOCATED`); the `≡_sem` repair at 08:54 |
+| **results with no adjudication** | ⭐ **`CANONICAL-KNOWLEDGEOS-THEORY` `THEORY NOT YET COMPLETE 19/24`** — no adjudication located, and Theory v1.0 three days later neither cites nor contradicts it explicitly |
+| **adjudications whose scope exceeds the commission** | ⭐ **candidate:** the 08-30 artifact reports **minimality box 16 ✓ "PROVEN relative to `𝒯`"** while `step_287`/`D288` (next day) record *the ratified 8 primitives have **not** been demonstrated minimal against the operation space `𝒪`*. **Recorded as a candidate only** — the two use different reference sets (`𝒯` vs `𝒪`), so this may be a scope difference rather than an overreach. **Not adjudicated by me.** |
