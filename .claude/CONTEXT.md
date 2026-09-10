@@ -1,33 +1,43 @@
-**Updated:** 2026-09-10 (latest) — **MD-095 EXECUTED — KERNEL DOMAIN-DISCOVERY BURST 3 (52 files),
-CHECKPOINT.** Continued `kernel/`'s own chronology from MD-094's own recommended frontier
-(2026-08-24 09:44–17:12, files 60–111, bounded by a genuine 17.1-hour break). Seven parallel
-extraction agents read all 52 files in full, applying an explicit four-lens discipline (Senior
-Statistician / Mathematician / DDD Architect / Principal Knowledge Engineer). **Central K-1
-finding**: the pre-registered `KnowledgeAggregate`-correction file was extracted and adjudicated
-against MD-094's own "K-1 structure" (File 44) — the token `KnowledgeAggregate` recurs (its only
-other corpus occurrence), but the correction splits an oversized "God Aggregate" into
-`KnowledgeClaim`/`Evidence`/`Determination`/`Authority`, with no `ConflictRecord` and no
-Verification-Port-style gate; `ConflictRecord` confirmed absent from all 52 files. Classification
-held at `IDENTITY UNRESOLVED`, unchanged from MD-094 — no standalone K-1 adjudication opened, per
-explicit instruction. **Kernel Identity Ledger extended to thirty-three entries**, all mutually
-unresolved; one contradiction candidate flagged (a "no Semantic Kernel" rejection vs. an "implied
-meaning must be stored in the Kernel" requirement, same day, never textually connected); one
-`EPISTEMIC KERNEL` boundary document (Shieber) stands out as the most rigorous Kernel-boundary
-artifact found in `kernel/` to date. **New central finding**: a fourteen-form Knowledge-State
-tuple-proliferation family — mutually distinct, non-reconciled tuple/vector/function definitions for
-"the current state of knowledge," recurring across nearly every file, none reaching beyond
-`NAMED`/`well-TYPED`. The tracked F4 formal family (`Sat`/`Det_r`/`EvalReq`/`EC`/`EC_t`/`Γ`/`Δ_t`/
-`≡_sem`/`⪯_cap`/`MinKer`/`v1.3`) confirmed absent across all 52 files — extends the continuous
-absence boundary across the first 111 files of `kernel/`. Two duplicate file pairs confirmed
-byte-identical via direct `diff`; two further pairs presumed duplicate by filename convention only,
-not independently diff-verified this phase. One uncorrected label collision (`EKI-08`) recorded
-verbatim. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched;
-`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
-scripts `CONSISTENT`. Full trace: `14_decision-log/MD-095-kernel-domain-discovery-burst-3/` (4
-files). **MD-095 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own
-continuation past the 17.1-hour break at 2026-08-25 10:18.
+**Updated:** 2026-09-10 (latest) — **MD-096 EXECUTED — KERNEL DOMAIN-DISCOVERY BURST 4 (50 files),
+CHECKPOINT.** Continued `kernel/`'s own chronology from MD-095's own recommended frontier
+(2026-08-25 10:18–19:41, files 112–169, a full day's continuous burst). Seven parallel extraction
+agents read all 50 primary-content files in full (8 further control/classification artifacts
+identified, not yet read), applying the document-first unit of investigation (DOCUMENT → ALL OBJECTS
+→ CHRONOLOGICAL THEORY STATES → RELATIONSHIPS → RECONCILIATION) and the four-lens discipline.
+**Central K-1 finding**: `KnowledgeAggregate` and `ConflictRecord` co-occur together for the first
+time since MD-094's File 44 birth — sibling nodes in a "Kernel as the Boundary" diagram — the
+strongest lexical match found anywhere in the corpus for the K-1 structure's own origin, but no
+Verification-Port gate and no structural match; classification held at `IDENTITY UNRESOLVED`, per
+explicit instruction not to adjudicate merely because labels recur, now named as the priority target
+for a future K-1 adjudication phase. **New homonym finding**: an embedded, corpus-native "What is
+Knowledge?" survey (99+151 documents) produces its own `K-1`–`K-11` Knowledge-definition registry — a
+third independent `K-`-prefixed labeling system, alongside a fourth (`K-M0`/`K-M1`/`C-K1`), neither
+merged with this reconstruction's own tracked K-1 senses. **Two full propose→challenge→correct arcs
+traced**: the Fagin/Halpern possible-worlds Kernel-candidacy cluster (proposed, critiqued in nine
+points, explicitly retracted — "Kernel preserves; regimes reason"); and the "Knowledge Measure
+Theory" cluster (v0.1→v0.2→an unqualified overclaim episode→systematic rejection with a concrete
+Brownian-motion counterexample). `C-15` corroborated three further times, still `IDENTITY UNRESOLVED`
+against `C-14`–`C-18`. The Knowledge-State/Knowledge-Space tuple family extended by at least fourteen
+further mutually-unreconciled forms (now 28+ across MD-095–096). The tracked F4 formal family
+confirmed absent across all 50 files — extends continuous absence across the first 161 files of
+`kernel/`. Two duplicate file pairs confirmed byte-identical via `diff`/`md5sum`; two internal
+self-duplications and two documentary gaps found and reported verbatim. No frozen artifact modified;
+no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and
+`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-096-kernel-domain-discovery-burst-4/` (4 files). **MD-096 status:
+EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own final two clusters
+(2026-08-27, 2 files; 2026-09-02, 1 file), which would close out `kernel/` entirely.
 
-**Previous block (2026-09-10, superseded above — stands as history): MD-094 EXECUTED — KERNEL
+**Previous block (2026-09-10, superseded above — stands as history): MD-095 EXECUTED — KERNEL
+DOMAIN-DISCOVERY BURST 3 (52 files), CHECKPOINT.** Continued `kernel/`'s own chronology from MD-094's
+own recommended frontier (2026-08-24 09:44–17:12, files 60–111). **Central K-1 finding**: the
+pre-registered `KnowledgeAggregate`-correction file was adjudicated against MD-094's own "K-1
+structure" (File 44) — token recurs, no `ConflictRecord`, classification held `IDENTITY UNRESOLVED`.
+Kernel Identity Ledger extended to thirty-three entries. A fourteen-form Knowledge-State
+tuple-proliferation family found. Full trace: `14_decision-log/MD-095-kernel-domain-discovery-burst-3/`
+(4 files).
+
+**Earlier block (2026-09-10, superseded above — stands as history): MD-094 EXECUTED — KERNEL
 DOMAIN-DISCOVERY BURST 2 (20 files), CHECKPOINT.** Continued `kernel/`'s own chronology from MD-093's
 own recommended frontier (2026-08-24 01:08–03:36). **Central finding**: File 44 introduces a
 **"K-1 structure"** (`KnowledgeAggregate`+`ConflictRecord`, Verification Port as sole gate) — the

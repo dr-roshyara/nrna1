@@ -7101,3 +7101,53 @@ never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
 
 **MD-095 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
 frontier, named, not begun: `kernel/`'s own continuation past the 17.1-hour break at 2026-08-25 10:18.
+
+---
+
+## MD-096 — Kernel Domain-Discovery Burst 4 (50 files, `kernel/`, 2026-08-25 10:18–19:41) — EXECUTED, CHECKPOINT
+
+Continued the MASTER MISSION's continuous chronological multi-object reconstruction into `kernel/`'s
+next day-long segment: files 112–169 (50 primary-content files; 8 further control/classification
+artifacts identified but not read this phase). Seven parallel extraction agents (batches A–G)
+applied the document-first unit of investigation (DOCUMENT → ALL OBJECTS → CHRONOLOGICAL THEORY
+STATES → RELATIONSHIPS → RECONCILIATION) and the four-lens discipline throughout.
+
+**Central K-1 finding**: `KnowledgeAggregate` and `ConflictRecord` co-occur together for the first
+time since MD-094's File 44 birth (Batch B, "information-theory-extracting-the-knowledge-space-
+architecture," as sibling nodes in a "Kernel as the Boundary" diagram) — the single strongest
+lexical match found anywhere in the corpus for the K-1 structure's own origin. No "Verification Port"
+gate concept, no structural match to File 44's minimal two-part pairing. Per explicit instruction not
+to adjudicate merely because labels recur, classification held at `IDENTITY UNRESOLVED`, now named
+as the priority target for any future, separately-authorized K-1 adjudication phase.
+
+**New homonym finding**: an embedded, corpus-native "What is Knowledge?" survey artifact (99+151
+documents) produces its own `K-1`–`K-11` registry of competing Knowledge definitions — a third,
+independent `K-`-prefixed labeling system, alongside a fourth (`K-M0`/`K-M1`/`C-K1`), neither merged
+with this reconstruction's own tracked K-1 senses.
+
+**Two full propose→challenge→correct arcs traced in detail**: the Fagin/Halpern possible-worlds
+Kernel-candidacy cluster (proposed, critiqued in nine points, explicitly retracted — "Kernel
+preserves; regimes reason" — then re-verified against the full primary source); and the "Knowledge
+Measure Theory" cluster (v0.1 → challenged → v0.2 → an unqualified overclaim episode → systematically
+rejected with a concrete Brownian-motion counterexample).
+
+**`C-15`** corroborated three further times (always as a pre-existing adjudication-item label,
+consistently undefined, zero bridge to `C-14`–`C-18`) — held `IDENTITY UNRESOLVED`. The
+Knowledge-State/Knowledge-Space tuple-proliferation family (MD-095) extended by at least fourteen
+further mutually-unreconciled forms. The `Zero(K)` split (MD-095) unchanged; a new six-part
+falsifiability battery (Batch B) classified as refinement of the general Zero-Lens device, not
+identity with the prior formal split.
+
+The tracked F4 formal family confirmed absent across all 50 files — extends the continuous absence
+boundary across the first 161 files of `kernel/`. Two duplicate file pairs confirmed byte-identical
+via direct `diff`/`md5sum`; two internal self-duplications and two documentary gaps (references to an
+unseen "uploaded synthesis") found and reported verbatim, not repaired.
+
+No frozen artifact (MD-024–095) modified; no object merged; no bridge invented; K-1/K2 untouched per
+this reconstruction's own standing freeze; `theory-extraction/` and `verification/zero-algebra/`
+never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-096-kernel-domain-discovery-burst-4/` (4 files).
+
+**MD-096 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun: `kernel/`'s own final two clusters (2026-08-27, 2 files; 2026-09-02, 1
+file), which would close out `kernel/` entirely.
