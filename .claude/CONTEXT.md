@@ -1,4 +1,46 @@
-**Updated:** 2026-09-09 (23:35, latest) — **MD-074 EXECUTED — SAT-END-TO-END-CLOSURE-TEST-v1
+**Updated:** 2026-09-10 (latest) — **MD-072 EXECUTED — CONTROLLED EXTENSION OF THE KNOWLEDGEOS THEORY
+EVOLUTION RECONSTRUCTION, HARD STOP.** *(Coordination note, corrects a factual error in MD-074's own
+block below without editing it: MD-074's text states "MD-072/073 were committed without a session-log/
+CONTEXT record" — this is incorrect for MD-072 specifically. MD-072 was never committed before this
+entry; it was in progress in a separate, concurrent session, interrupted by a rate-limit pause, and is
+committed together with this governance-record closure. No actual git collision occurred — MD-072's
+own directory/decision-log entry is unique; MD-073/074, filed by the other concurrent session, are
+read here and left untouched.)* User's mission: determine, via a controlled (not blind) traversal,
+whether the ~5,100 queue positions not yet processed by the F4 `TheoryState` method (main corpus +
+earlier math-lane material) contain evidence capable of changing the current reconstruction — not a
+theory-construction/formalization/canonicalization phase. Scoped before any file was read:
+`three_model_convergence/` (3,440 files, this reconstruction's own scaffolding) and `verification/`
+(482 files, the standing K-1/K2 boundary) excluded and disclosed, not silently respected; net scope
+**1,200 files** (`kernel/`, `phase_measure_theory/`, ~125 pre-2026-09-01 root files) — every one
+individually classified T0–T3 by nine parallel Level-1-census subagents (one retried after a session
+rate-limit interruption), structured evidence packets produced for all ~966 T2/T3 files, adjudicated
+centrally. **Central findings**: no evidence directly contradicts, extends, or completes the F4
+chain's own tracked objects — every apparent contact resolves to `UNRELATED_HOMONYM`, a narrow
+non-theory-content citation, or a lane-local event. Two large, independently-governed sibling research
+efforts (`kernel/`, `phase_measure_theory/`) ran alongside the F4 chain for five weeks using the same
+object vocabulary (`K_t`, `Δ_t`, `Zero`, `Req`, `r`, `Decision`, `Determination`), almost entirely
+without citation. **One confirmed citation bridge** (`phase_measure_theory/knowledgeos_kernel/
+research/38` + the `step-292/` Reiter-audit package, Sep 1–2, citing `mathematical_ideas_that_can_be_
+implemented/` directly) — transferring the math lane's own external-literature sources, not its theory
+content; refines rather than overturns MD-071's own Cross-Lane Finding 1. `EKS-45`'s `K_t`/`Δ_t`
+bare-notation-collision pattern extended to a **third** tracked-object pair: `step_186` (Aug 29)
+independently derives `Req(r)⊆Witness(r)`, zero citation. Two independent governance-ratification
+events now confirmed (`GN-31`, Aug 28, alongside `ABK-1`/T14, Sep 2) — neither touches the F4 chain;
+its own zero-governance-adoption finding is now doubly corroborated by contrast. **A previously-
+unknown, third classification/governance pipeline was discovered**: `kernel/`'s own `classification/`+
+`corpus/`+`synthesis/`+`falsification/` apparatus (`KCON-001..025` register, an 11-model Knowledge-
+definition census `K-1..K-11`) — self-contained, never cross-cited by this reconstruction or by
+`phase_measure_theory/`'s own governance chain. Filed as `EKS-46`; named `GAP-008` in the phase's own
+Gap Register (only Level-1-censused, not read to full depth — the census's own residual risk).
+**Extension Decision: B — HISTORICAL RECONSTRUCTION REQUIRES TARGETED EXTENSION** (not A: `GAP-008`
+unclosed; not C: nothing found contradicts the current state; not D: nothing blocks continuation) — a
+small, bounded follow-up (`GAP-006`/`007`/`008`), not a further large-batch census. No frozen artifact
+(MD-024–071) modified; no object merged; K-1/K2 untouched; `theory-extraction/` untouched. Verified
+both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/MD-072-controlled-extension/`
+(10 files).
+
+**Previous block (2026-09-09 23:35, superseded above — stands as history, produced by a concurrent
+session, read not edited): MD-074 EXECUTED — SAT-END-TO-END-CLOSURE-TEST-v1
 INDEPENDENT VERIFICATION RUN, HARD STOP.** User's direct instruction: follow the prompts embedded in
 `docs/knowledgeos/brainstorming/what_is_knowlegeos_theory/20260909-2305_sat-evolution-and-end-to-end-closure-test.md`
 (mission `SAT-END-TO-END-CLOSURE-TEST-v1`). Because **MD-073** (this branch, 22:55) had already run

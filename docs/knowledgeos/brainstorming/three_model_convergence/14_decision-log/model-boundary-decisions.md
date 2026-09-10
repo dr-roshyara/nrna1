@@ -5903,3 +5903,55 @@ synthesis/` directory (5 files) plus this entry and `EKS-45` written.
 **MD-071 status: EXECUTED. HARD STOP** per the mission's own §24. No further phase automatically
 opened. Remaining chronological scope named, not opened: ~5100 queue positions (main corpus + earlier
 math-lane material) not yet tracked by this object-level `TheoryState` method.
+
+---
+
+## MD-072 — Controlled Extension of the KnowledgeOS Theory Evolution Reconstruction
+
+**Authorization**: user's mission to determine, via a controlled (not blind) traversal, whether the
+~5,100 queue positions not yet processed by the F4 `TheoryState` method contain evidence capable of
+changing the current reconstruction. Scoped before any file was read: `three_model_convergence/`
+(3,440 files, this reconstruction's own scaffolding) and `verification/` (482 files, the standing
+K-1/K2 boundary) excluded and disclosed, not silently respected; net scope **1,200 files**
+(`kernel/`, `phase_measure_theory/`, ~125 pre-2026-09-01 root files) — every one individually
+classified T0–T3 by nine parallel Level-1-census subagents, structured evidence packets produced for
+all ~966 T2/T3 files, adjudicated centrally (never delegated to a subagent).
+
+**Central findings**: no evidence directly contradicts, extends, or completes the F4 chain's own
+tracked objects — every apparent contact resolves to `UNRELATED_HOMONYM`, a narrow non-theory-content
+citation, or a lane-local event. Two large, independently-governed sibling research efforts (`kernel/`,
+`phase_measure_theory/`) ran alongside the F4 chain for five weeks using the same object vocabulary
+(`K_t`, `Δ_t`, `Zero`, `Req`, `r`, `Decision`, `Determination`), almost entirely without citation.
+**One confirmed citation bridge** (`phase_measure_theory/knowledgeos_kernel/research/38` and the
+`step-292/` Reiter-audit package, both dated Sep 1–2, citing `mathematical_ideas_that_can_be_
+implemented/` directly by path) — transferring the math lane's own external-literature sources, not its
+theory content; this refines rather than overturns MD-071's own Cross-Lane Finding 1, which covered a
+different, earlier evidence slice. `EKS-45`'s `K_t`/`Δ_t` bare-notation-collision pattern is extended
+to a **third** tracked-object pair: `step_186` (Aug 29) independently derives `Req(r)⊆Witness(r)`, a
+direct symbol match to F4's own `Req`/`r`, zero citation. Two independent governance-ratification
+events now confirmed in the corpus — `GN-31` (Aug 28, HPA ruling accepting a `Zero`/`K_t`
+naming-register policy for `phase_measure_theory/`'s own lane) alongside `ABK-1`/T14 (Sep 2) — neither
+touches the F4 chain; the F4 chain's own zero-governance-adoption finding is now doubly corroborated by
+contrast. **A previously-unknown, third classification/governance pipeline was discovered**:
+`kernel/`'s own `classification/`+`corpus/`+`synthesis/`+`falsification/` apparatus (`KCON-001..025`
+register, `00_INDEX.md`, an 11-model Knowledge-definition census `K-1..K-11`) — self-contained, never
+cross-cited by this reconstruction's own work or by `phase_measure_theory/`'s own governance chain.
+Filed as `EKS-46`; named as `GAP-008` in the phase's own Gap Register, the census's own residual risk
+(only Level-1-censused, not read to full depth).
+
+**Extension Decision: B — HISTORICAL RECONSTRUCTION REQUIRES TARGETED EXTENSION** (not A: `GAP-008`
+unclosed; not C: nothing found contradicts the current state; not D: nothing blocks continuation) — a
+small, bounded follow-up (`GAP-006`/`007`/`008`, a handful of named files), not a further large-batch
+census.
+
+**No frozen artifact (MD-024–071) modified.** No classification changed. No object merged — every
+apparent cross-lane identity recorded as candidate/unresolved throughout. K-1/K2 untouched.
+`theory-extraction/` untouched.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-072-controlled-extension/`
+directory (10 files) plus this entry, `EKS-46`, and the `00_index.md` backlog update written.
+
+**MD-072 status: EXECUTED. HARD STOP** per the mission's own §24. No further phase automatically
+opened. Next authorized step, named, not opened: close `GAP-006`/`007`/`008` via the small, bounded
+reading pass §09 specifies — not a further large-batch census.

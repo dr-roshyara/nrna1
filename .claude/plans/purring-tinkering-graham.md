@@ -1185,7 +1185,32 @@ is given, exactly as for Phases 1, 2, and 3.
 
 # Plan: Phase 5 (candidate scope) — PLANNING ONLY, UNAUTHORIZED, DRAFT
 
-**Status update, 2026-09-09 (latest): MD-071 — KnowledgeOS Theory Evolution Reconstruction: 9-Artifact
+**Status update, 2026-09-10 (latest): MD-072 — Controlled Extension of the KnowledgeOS Theory Evolution
+Reconstruction — EXECUTED, HARD STOP.** *(Coordination note: a concurrent session ran MD-073/074 —
+Sat single-case computation attempts, both BLOCKED — while this phase was mid-flight, interrupted by a
+session rate limit. Checked via `git log`: no actual collision; MD-072's own work is unique and
+committed here for the first time; MD-073/074 are read, not touched.)* User's mission: determine, via a
+controlled (not blind) traversal, whether the ~5,100 queue positions not yet processed by the F4
+`TheoryState` method contain evidence capable of changing the current reconstruction. Scoped before any
+file was read: `three_model_convergence/` (3,440 files, own scaffolding) and `verification/` (482
+files, standing K-1/K2 boundary) excluded and disclosed; net scope **1,200 files** (`kernel/`,
+`phase_measure_theory/`, ~125 pre-2026-09-01 root files) — nine parallel Level-1-census subagents,
+every file classified T0–T3, structured packets for ~966 T2/T3 files, adjudicated centrally. **Central
+findings**: no evidence directly contradicts/extends/completes the F4 chain's own tracked objects —
+every apparent contact resolves to `UNRELATED_HOMONYM`, a narrow non-theory-content citation, or a
+lane-local event. One confirmed citation bridge (`research/38` + `step-292/`, Sep 1–2, citing
+`mathematical_ideas_that_can_be_implemented/` directly — transferring external-literature sources, not
+theory content); `EKS-45`'s `K_t`/`Δ_t` bare-notation-collision pattern extended to a third pair
+(`Req`/`r`, `step_186`, Aug 29, zero citation); a second confirmed governance-ratification event
+(`GN-31`, Aug 28) alongside `ABK-1`/T14 — neither touches the F4 chain; a previously-unknown third
+classification/governance pipeline discovered (`kernel/`'s own apparatus, `KCON-001..025`,
+`K-1..K-11`) — filed `EKS-46`, named `GAP-008`. **Extension Decision: B — REQUIRES TARGETED
+EXTENSION** (not A: `GAP-008` unclosed; not C: nothing contradicts; not D: nothing blocks) — a small,
+bounded follow-up (`GAP-006`/`007`/`008`), not a further census. No frozen artifact modified; no
+object merged; K-1/K2 untouched; `theory-extraction/` untouched. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-072-controlled-extension/` (10 files).
+
+**Status update, 2026-09-09 (earlier): MD-071 — KnowledgeOS Theory Evolution Reconstruction: 9-Artifact
 Synthesis Pass — EXECUTED, HARD STOP.** User's mission: continue the F4 reconstruction via a hybrid
 subagent/adjudicator architecture (subagents extract evidence in parallel, the main process alone
 adjudicates `TheoryState`), producing 9 deliverables (Theory Object Registry, Chronological
