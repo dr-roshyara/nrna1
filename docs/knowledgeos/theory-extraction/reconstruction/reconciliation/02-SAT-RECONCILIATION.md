@@ -25,7 +25,7 @@ Bei `Zero` habe ich Provenance über Pfadmuster geschätzt. Das trägt hier nich
 | **MEIN OUTPUT** | **24** | ⛔ keine Evidenz |
 | **UNRECORDABLE** (untracked) | **12** | fremde Audits, Provenance nicht wiederherstellbar |
 
-⚠️ **Fünfzehnter Messfehler.** Mein erster Provenance-Lauf nutzte `git log --diff-filter=A`
+⚠️ **Sechzehnter Messfehler.** Mein erster Provenance-Lauf nutzte `git log --diff-filter=A`
 **ohne Rename-Verfolgung** und hätte **10 Korpusdateien als meinen eigenen Output**
 ausgewiesen — sie kamen durch einen reinen Umbenennungs-Commit herein. Mit `--follow` korrigiert.
 
@@ -72,6 +72,13 @@ zurückgewiesen**:
 **Aritäten gemessen:** 1-stellig **13** · 2-stellig **536** · 3-stellig **57** — drei Aritäten.
 **Subskriptfamilien: 16+** — `Sat_c` 476 · `Sat_content` 48 · `Sat_consistency` 34 ·
 `Sat_new` 22 · `Sat_op` 18 · **`Sat_F4` 18** *(F4-Spur — ⛔ kein Brückenschlag)*.
+
+> ⚠️ **Fünfzehnter Messfehler — und er hätte mich fast eine Anschuldigung gegen mich selbst
+> aussprechen lassen.** Mein satz-skopierter Codomain-Detektor meldete, `𝕊_sat` und `𝒮_sat`
+> kämen **ausschließlich in meinen eigenen Artefakten** vor. Ursache: beide stehen im Korpus
+> als **zeilengebrochene LaTeX-Mengenliterale** (`\{`↵`Satisfied,`↵`Partial,` …), die kein
+> satzweiser Abgleich fassen kann. Beide sind korpusbelegt (part-03 §3.14, part-05).
+> Gleiche Klasse wie Fehler 9 (`$\text{ABK-1}$`-Wrapper).
 
 ## 4 · ⭐⭐⭐ Der Widerspruch **innerhalb desselben Rewrites, am selben Tag**
 
