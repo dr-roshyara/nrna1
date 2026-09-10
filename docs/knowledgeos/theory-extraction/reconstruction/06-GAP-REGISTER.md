@@ -3331,3 +3331,77 @@ framing: grading *"would actually make KnowledgeOS **stronger**, not weaker."*
 * §1 accepts as genuinely **CLOSED**: **`ℛ_req(Q,Γ) ⊆ 𝒟`** — *required distinctions derive from
   the **question/task and context, not from the kernel**; "that removes the circularity"* —
   plus non-explosion and `Truth ≠ Evaluation ≠ Determination ≠ Decision`.
+
+---
+
+# ⭐⭐⭐ G-58 — the v1.3 question CLOSES: exactly one document ever claimed ratification, and its authority does not exist
+
+Source: `20260902-182014_ratification-assessment-final-closure-packages.md` (246 lines),
+**`[FINAL ADVISORY]` · HPA Supervisory · `[READY FOR THEORY v1.3]`**. Record: commission
+register §T.
+
+⭐ Its §4 *"What Remains"* answers in two words: ***"Only ratification."***
+
+## §1 · Claim A decomposed
+
+`[EMP]` Across the four documents the multiplicity register groups as **Claim A**:
+
+| doc | status | *"Fully Ratified"* | *"READY FOR RATIFICATION"* | authority |
+|---|---|---|---|---|
+| **`182003`** | — | **1** | 0 | ❌ **fabricated Board** |
+| `182005` | `[FINAL ADVISORY]` | 0 | 4 | ✅ HPA |
+| `182014` | `[FINAL ADVISORY]` | 0 | 2 | ✅ **HPA Supervisory** |
+| `182015` | `[FINAL ADVISORY]` | 0 | 2 | ✅ — **byte-identical copy of `182014`** |
+
+`182005` and `182014` are genuinely distinct (their closing boxes differ by md5).
+⇒ **1 ratification claim + 2 advisories + 1 exact copy.**
+
+$$\boxed{\text{The corpus never contained a genuine ratification of } v1.3. \text{ It contained three recommendations to ratify, and one unauthorised assertion that it had been.}}$$
+
+⭐ **This explains the shape of the refusal.** `step-292`, the governance freeze and the 46
+standing footers are **not overturning a ratification — they record that one never happened**,
+exactly as the advisories themselves said.
+
+## §2 · ⚠️ Both sides of the register's central conflict are inflated by one
+
+| | register | measured |
+|---|---|---|
+| **Claim A** | 4 | **3 distinct**, of which **1** claims ratification (`182015` ≡ `182014`) |
+| **Claim B** | 4 | **3 distinct** (`182010` ≡ `182009`, one adjudication in two framings) |
+
+**Symmetric.** Neither side's conclusion changes; both counts do. ⚠️ **Register not amended by
+me** — it belongs to another lane.
+
+## §3 · ⭐⭐⭐ My own duplicate census was under-scoped
+
+Commission register §A ran md5 dedup over **prompt directories only** — 14 groups / 15 files.
+Over `mathematical_ideas_that_can_be_implemented/` (416 `.md`):
+
+$$\boxed{\textbf{30 duplicate groups · 33 redundant files · 7.9 \%}}$$
+
+⭐ **Four pairs are byte-identical under completely different titles** — invisible to any
+filename check. The worst:
+
+> `20260902-184000_review-of-kr-zero-algebra-**commissioning**-kr-zero-group`
+> ≡ `20260907-143706_kr-zero-algebra-**results**-zero-is-not-an-element-property`
+
+**Five days apart; the same bytes labelled once as a *commissioning* document and once as a
+*results* document.** Both carry the boxed
+$Zero_{T,\Pi}(x)\ \text{is not an element property}$.
+
+⚠️ **Correction to my own record.** I have cited that refutation as **2026-09-07**:
+
+$$\text{date} = \texttt{CHRONOLOGY UNRECORDABLE}, \quad \text{earlier bound } \mathbf{2026\text{-}09\text{-}02}$$
+
+*(The `Zero` registry row is unaffected — it records `Zero_v1-DEF22` from Theory v1.0 §31.)*
+
+⭐ **Rule earned:** a duplicate census must be **content-addressed** and run over **every
+lane** — `-duplicate`/`-variant` suffixes are unreliable **in both directions**: `182015`
+carries `-variant` and is an exact copy, while four exact copies carry unrelated titles.
+
+## §4 · Final disposition of `v1.3` — unchanged, now fully evidenced
+
+$$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT CREATED}\ \big]$$
+
+**`PROPOSED VERSION / CANDIDATE REGISTER`** · adoption **refused for want of authority** ·
+**`TheoryState` impact: none.**

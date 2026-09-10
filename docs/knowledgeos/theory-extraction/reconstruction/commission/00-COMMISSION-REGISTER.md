@@ -1350,3 +1350,86 @@ four into a single `✅ CLOSED` column (`G-54` §3). ⭐ It also *"would actuall
 * §1 accepts as genuinely **CLOSED**: `ℛ_req(Q,Γ) ⊆ 𝒟` (*"removes the circularity"* — required
   distinctions derive from **question/task and context, not from the kernel**), non-explosion,
   and `Truth ≠ Evaluation ≠ Determination ≠ Decision`.
+
+---
+
+## T. `182014` — and the definitive decomposition of "Claim A"
+
+Source: `20260902-182014_ratification-assessment-final-closure-packages.md` (246 lines)
+*(user-supplied)*. **`[FINAL ADVISORY]` · Authority: HPA Supervisory · `[READY FOR THEORY
+v1.3]`**, closing *"Action: **PROCEED TO THEORY v1.3 CONSOLIDATION AND RATIFICATION**"*.
+
+⭐ Its §4 *"What Remains"* answers in two words: ***"Only ratification."*** — i.e. **the most
+closure-friendly document in the group states that ratification has not occurred.**
+
+### ⭐⭐⭐ Claim A decomposed — exactly ONE document claims ratification
+
+`[EMP]` Measured across the four documents `09-MULTIPLICITY-REGISTER` groups as **Claim A**:
+
+| doc | status | *"Fully Ratified, Closed, and Complete"* | *"READY FOR RATIFICATION"* | authority |
+|---|---|---|---|---|
+| **`182003`** | — | **1** | **0** | ❌ **fabricated Board** (3 occurrences, all in-file) |
+| `182005` | `[FINAL ADVISORY]` | **0** | **4** | ✅ HPA (role-named) |
+| `182014` | `[FINAL ADVISORY]` | **0** | **2** | ✅ **HPA Supervisory** |
+| `182015` | `[FINAL ADVISORY]` | **0** | **2** | ✅ — **byte-identical copy of `182014`** |
+
+$$\boxed{\text{Three advisories say READY FOR. One document says RATIFIED — under an authority that exists nowhere else. One of the four is a copy.}}$$
+
+⭐ `182005` and `182014` are **genuinely distinct** advisories (their closing ratification boxes
+have different md5s) — so this is **1 claim + 2 advisories + 1 duplicate**, not four sources.
+
+**Conclusion, and it closes the v1.3 question completely:**
+
+> **The corpus never contained a genuine ratification of `v1.3`. It contained three
+> recommendations to ratify and one unauthorised assertion that it had been.**
+
+This is why the refusal took the form it did: `step-292`, the governance freeze and the 46
+standing footers are not overturning a ratification — **they are recording that one never
+happened**, exactly as the advisories themselves said.
+
+### ⚠️ Both sides of the register's central conflict are inflated by one
+
+| | register's count | measured |
+|---|---|---|
+| **Claim A** | 4 sources | **3 distinct** (`182015` ≡ `182014`), of which **1** claims ratification |
+| **Claim B** | 4 sources | **3 distinct** (`182010` ≡ `182009` as one adjudication) |
+
+**A symmetric inflation.** Neither side's conclusion changes; both counts do. ⚠️ **The register
+is another lane's and is NOT amended by me.**
+
+---
+
+### ⭐⭐⭐ §15 — my own duplicate census was under-scoped, and the correction is large
+
+My earlier census (commission register §A) ran md5 dedup over the **prompt directories only**:
+14 groups / 15 redundant files. Run over
+`mathematical_ideas_that_can_be_implemented/` (416 `.md`):
+
+$$\boxed{\textbf{30 duplicate groups · 33 redundant files · 7.9\% of the folder}}$$
+
+⭐ **Four pairs are byte-identical under COMPLETELY DIFFERENT TITLES** — invisible to any
+filename-based check:
+
+| | |
+|---|---|
+| `…104619_zero-lens-vs-zero-closure-predicate…` | ≡ `…110900_kr-zero-2026-09-02-h-boundary-separation-experiment` |
+| `…180011_review-yes1` | ≡ `…180017_review-description-logic-handbook` |
+| `…195200_reconstruction-from-available-material` | ≡ `…201200_whole-knowledge-theory-as-research-level-theory-duplicate` |
+| ⭐⭐⭐ `20260902-184000_review-of-kr-zero-algebra-**commissioning**-kr-zero-group` | ≡ `20260907-143706_kr-zero-algebra-**results**-zero-is-not-an-element-property` |
+
+**The last pair spans five days and labels the same bytes as a *commissioning* document and as
+a *results* document.** Both contain the boxed
+$Zero_{T,\Pi}(x)\ \text{is not an element property}$.
+
+⚠️ **Correction to my own record.** I have cited that refutation as **2026-09-07**. On this
+evidence the content exists identically on **2026-09-02**, so:
+
+$$\text{date of the } Zero \text{ element-property refutation} = \texttt{CHRONOLOGY UNRECORDABLE},\ \text{earlier bound } \mathbf{2026\text{-}09\text{-}02}$$
+
+*(My registry row for `Zero` is unaffected — it records `Zero_v1-DEF22` from Theory v1.0 §31,
+not this file.)*
+
+⭐ **Methodological rule earned:** a duplicate census must run over **every lane**, and must be
+**content-addressed**, because **`-duplicate`/`-variant` suffixes are unreliable in both
+directions** — `182015` is suffixed `-variant` and is an exact copy, while four exact copies
+carry unrelated titles.
