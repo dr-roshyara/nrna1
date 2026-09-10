@@ -1504,3 +1504,87 @@ bearing directly on the v1.3 objects.
 ⭐ And it supplies the **five `𝒪_core` primitives by name** — `ASSERT · LINK · REVISE · RETRACT
 · ISOLATE` — which the v1.3 package cited as *"reduced to exactly 5 primitives"* without my
 having their identities. Note the **`⊇`**: a *candidate basis*, **not** a closed set.
+
+---
+
+## V. `182024` — the retraction that keeps the verdict: **CLOSURE BY RECATEGORISATION**
+
+Source: `20260902-182024_review-magisterial-definitive-structural.md` (647 lines)
+*(user-supplied)*. ⭐ **This is the adjudication I recorded as "not located": the ratification
+claimant accepting the reviews and reverting — in the same batch.**
+
+> *"Your verdict is **accepted in full**. The premature ratification claims in the C3/C4
+> documentation are **reverted**"* → $\boxed{\textbf{THEORY-CLOSURE-GATE-2026-v1.0}}$
+> *Status: Constitutional Core CLOSED | Domain Semantics PARAMETERIZED | Global Minimality
+> **OPEN (BY DESIGN)***
+
+### ✅ The reviews' LOCAL corrections were genuinely adopted
+
+| review finding | adopted as |
+|---|---|
+| `182009` §4 — the non-collapsing axiom asserts **injectivity**; only **sensitivity** is warranted | ⭐ **Axiom 5 (Existential Query Sensitivity)** — `∀K ∃Q₁,Q₂ …`, exactly the corrected form |
+| `182009` §5 / `182010` §4 — *"`Actionability` is leaking into Determination"* | ⭐ **Axiom 6** — `Actionability ∉ Determination`; `Determination = ⟨Status, DeterminationBound, RiskProfile⟩` |
+| the arithmetic fallacy — `max(0, S⁺−S⁻−μ)` presupposes subtraction is valid on the scale | **Category B (Theory-Parameterized)**; `⊖_Γ, ⊕_Γ` delegated to `𝕄_ord, 𝕄_int, 𝕄_rat` |
+| execution timers / `issubset` are not proofs | *"We **explicitly reject** the claim that test harness execution constitutes a mathematical proof."* — **`EXECUTED ≠ VALIDATED`, institutionalised** as Categories C/D |
+| *"unique minimal"* | *"**officially withdrawn** as unproven and unnecessary"* |
+
+⭐ The arithmetic item is **the third instance** of the `DV-05` defect (an order presupposed on
+a scale the same document refuses to fix) — after step-003 and `C_t`'s `S⁺=1 ∧ S⁻=1`.
+
+### ⭐⭐⭐ But the GLOBAL verdict is re-asserted, by redefinition
+
+```
+KnowledgeOS Kernel Theory v1.3 :  THEORETICALLY CLOSED (Zero Category A Gaps)
+Selected Core Architecture     :  ABK-1 (Validated Implementation Candidate)
+```
+$$\textbf{Theory Closure Verdict} \longrightarrow \mathbf{CLOSED}, \quad \textbf{Condition} \longrightarrow \text{No Unresolved Category A Items Remain}$$
+
+**Closure is redefined as the emptiness of Category A — and every item the reviews found open
+is moved into Categories B, C, D or E.** Category A is emptied **by construction**, then its
+emptiness is reported as closure.
+
+$$\boxed{\textbf{CLOSURE BY RECATEGORISATION} - \text{open items are not resolved; they are reclassified out of the category whose emptiness defines closure.}}$$
+
+⭐ **A third defect class in this episode, distinct from the other two:** fabricated authority
+(`G-54`) · self-validating tests (`G-55`) · **closure by recategorisation** (here). The reviews'
+*local* fixes landed; the reviews' *global* verdict did not.
+
+⭐ Note the internal tension the document does not resolve: the header says *"Global Minimality
+**OPEN (BY DESIGN)**"* while the footer says *"Theory Closure Verdict → **CLOSED**"*.
+
+### The replacement never propagated
+
+`[EMP]` **`THEORY-CLOSURE-GATE-2026-v1.0` occurs in exactly 2 files**, both inside the same
+18:20 batch (`182021`, `182024`). **Zero occurrences elsewhere in the estate.** *The replacement
+artifact is as unadopted as the ratification it replaced.*
+
+### ⭐⭐⭐ `ABK-1` has THREE expansions — two in one file, 68 lines apart
+
+`[EMP]` LaTeX-aware sweep (`$\text{ABK-1}$` wrappers defeat plain-text patterns — a sixth
+measurement lesson):
+
+| where | expansion |
+|---|---|
+| `182003:892` | **Attributed Bipartite Knowledge Representation** |
+| `182003:960` | **Attributed Bipartite Graph** |
+| `182024:177` | **Attributed Bounded Kernel v1** |
+
+**The same document expands its own "officially selected" kernel two different ways, 68 lines
+apart; the retraction supplies a third.** ⭐ *A kernel whose name denotes three different things
+across two documents cannot be the object of a selection act.* Same defect class as the `G-67`
+and `OPEN-1` homonyms — now at the level of an **acronym for the selected artifact itself**.
+
+### ⭐ A FIFTH axiom / invariant enumeration
+
+**Axioms 1–6:** Pipeline Separation · Non-Explosion under Contradiction · Representation
+Adequacy · History-Preserving State Evolution · Existential Query Sensitivity · Governance
+Boundary Decoupling.
+
+Register now: Step-048's 10-field schema (0 rows) · Step-120 `K1…K7` · Theory v1.0 §75 `I1…I9`
+· `R-INV-01…06` · **Axioms 1–6**. ⚠️ **Five enumerations. `RELATED — IDENTITY UNWITNESSED`
+throughout. Not merged.**
+
+⭐ Axiom 4 is notable as **the formal statement of `Retract ≠ deletion`**:
+$K_{t+1} = \delta(K_t,o,\Gamma) \implies V(K_t) \subseteq V(K_{t+1}) \land H(K_t) \subseteq H(K_{t+1})$
+— *"structurally append-only… Epistemic standing changes; historical existence persists."*
+**This is a δ constraint, and it is the most concrete δ semantics located so far.**

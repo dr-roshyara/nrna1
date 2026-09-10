@@ -3456,3 +3456,79 @@ it**. Independent, earlier. It also yields two objects new to this register:
   last, and explicitly a **candidate basis**: `𝒪_semantic nucleus ⊇ {…}`, **not** `=`.
 * **`GN-84`** — a governance act recording `𝒪_core` **NOT RATIFIED**. **The first located
   governance record bearing directly on the v1.3 objects**; the act itself not yet read.
+
+---
+
+# ⭐⭐⭐ G-60 — the retraction that keeps the verdict: **CLOSURE BY RECATEGORISATION**
+
+Source: `20260902-182024_review-magisterial-definitive-structural.md` (647 lines).
+Record: commission register §V. ⭐ **This is the internal adjudication I had recorded as "not
+located" — the ratification claimant accepting the reviews and reverting, in the same batch.**
+
+> *"Your verdict is **accepted in full**. The premature ratification claims in the C3/C4
+> documentation are **reverted**"* → $\boxed{\textbf{THEORY-CLOSURE-GATE-2026-v1.0}}$
+
+## §1 · ✅ The reviews' LOCAL corrections genuinely landed
+
+* **Axiom 5 (Existential Query Sensitivity)** — `∀K ∃Q₁,Q₂ …`, exactly the corrected form
+  `182009` §4 prescribed against the refuted injectivity axiom.
+* **Axiom 6** — `Actionability ∉ Determination`;
+  `Determination = ⟨Status, DeterminationBound, RiskProfile⟩`, adopting `182009` §5 / `182010` §4.
+* The arithmetic fallacy → **Category B (Theory-Parameterized)**, `⊖_Γ,⊕_Γ` delegated to
+  `𝕄_ord, 𝕄_int, 𝕄_rat`. ⭐ **The third instance of the `DV-05` defect** (an order presupposed
+  on a scale the same document refuses to fix), after step-003 and `C_t`'s `S⁺=1 ∧ S⁻=1`.
+* *"We **explicitly reject** the claim that test harness execution constitutes a mathematical
+  proof"* — **`EXECUTED ≠ VALIDATED`, institutionalised** as Categories C/D.
+* *"unique minimal" — **officially withdrawn as unproven and unnecessary**.*
+
+## §2 · ⭐⭐⭐ But the GLOBAL verdict is re-asserted by redefinition
+
+```
+KnowledgeOS Kernel Theory v1.3 : THEORETICALLY CLOSED (Zero Category A Gaps)
+Theory Closure Verdict → CLOSED · Condition → No Unresolved Category A Items Remain
+```
+
+**Closure is redefined as the emptiness of Category A, and every item the reviews found open is
+moved into Categories B/C/D/E.** Category A is emptied **by construction**, then reported empty.
+
+$$\boxed{\textbf{CLOSURE BY RECATEGORISATION} - \text{open items are not resolved; they are reclassified out of the category whose emptiness defines closure.}}$$
+
+⭐ **A third defect class in this episode:** fabricated authority (`G-54`) · self-validating
+tests (`G-55`) · **closure by recategorisation** (here). *The reviews' local fixes landed; their
+global verdict did not.* The document does not resolve its own tension — header
+*"Global Minimality **OPEN (BY DESIGN)**"*, footer *"Theory Closure Verdict → **CLOSED**"*.
+
+## §3 · The replacement never propagated
+
+`[EMP]` **`THEORY-CLOSURE-GATE-2026-v1.0` occurs in exactly 2 files**, both inside the 18:20
+batch. **Zero elsewhere.** *The replacement is as unadopted as the ratification it replaced* —
+which is why `step-292`, the governance freeze and the 46 footers still read `no v1.3`.
+
+## §4 · ⭐⭐⭐ `ABK-1` has THREE expansions — two in one file, 68 lines apart
+
+| where | expansion |
+|---|---|
+| `182003:892` | **Attributed Bipartite Knowledge Representation** |
+| `182003:960` | **Attributed Bipartite Graph** |
+| `182024:177` | **Attributed Bounded Kernel v1** |
+
+⭐ **A kernel whose name denotes three different things across two documents cannot be the
+object of a selection act.** Same defect class as the `G-67` and `OPEN-1` homonyms — now at the
+level of **the selected artifact's own acronym**.
+
+⚠️ **Sixth measurement lesson:** `$\text{ABK-1}$` LaTeX wrappers defeat plain-text patterns; the
+first sweep found two of three. **A symbol sweep must be markup-aware as well as
+spelling-aware.**
+
+## §5 · ⭐ A FIFTH axiom/invariant enumeration
+
+**Axioms 1–6.** Register now: Step-048 schema (0 rows) · `K1…K7` · `I1…I9` · `R-INV-01…06` ·
+**Axioms 1–6**. ⚠️ **`RELATED — IDENTITY UNWITNESSED` throughout. Not merged.**
+`G-45`/`G-55`'s disposition holds with **five** rivals.
+
+⭐ **Axiom 4 is the most concrete `δ` semantics located so far** —
+$K_{t+1}=\delta(K_t,o,\Gamma) \implies V(K_t) \subseteq V(K_{t+1}) \land H(K_t) \subseteq H(K_{t+1})$,
+*"structurally append-only… epistemic standing changes; historical existence persists."* It is
+the formal statement of `Retract ≠ deletion`, and it sits alongside `δ interface CLOSED /
+semantics OPEN` (`G-56`) and `OPEN BY COMMISSION` (`G-47`) as the **what**, **status** and
+**why** of `δ` respectively.
