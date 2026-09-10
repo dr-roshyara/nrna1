@@ -46,7 +46,8 @@ the readable corpus read semantically, plus a mechanical extraction over 2 083 d
 
 | lane | files | status |
 |---|---|---|
-| `verification/` | 480 | **NOT-READ** except `step-280/281/282` execution artifacts (5 read) |
+| ⭐⭐ **`theory-extraction/` — THIS RECONSTRUCTION'S OWN PARENT LANE** | **121 top-level `.md`, of which 101 are `P`-numbered audits, + 8 `elements/` files** | ⛔ **NOT-READ — and, until 2026-09-10, NOT EVEN LISTED HERE.** `G-00` found `G-06`, `G-07`, `G-16` and half of `G-01` already answered in it, and `02-ELEMENT-INDEX.md` already carrying the homonym rule `G-22` re-derived. **The ledger's failure to enumerate this lane is the structural cause of the duplication.** |
+| `verification/` | 480 | **NOT-READ** except `step-280/281/282` execution artifacts (5 read) — ⚠️ `G-22`/`G-00`: `TG-15`, `C-06`, `GN-09`, `D-R27` and `16-MASTER-GAP-REGISTER` all live here |
 | `mathematical_ideas_…` | 411 | **NOT-READ** by Main; surveyed by Worker C |
 | `kernel/` | 181 | **NOT-READ** |
 | root + misc | 132 | **NOT-READ** |

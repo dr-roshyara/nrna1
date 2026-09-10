@@ -786,3 +786,81 @@ of 92** I found: *"Ω first appears 2026-08-24 in kernel lens docs (`20260824-12
 `20260824-122855`) as the ambient space of typed/Bayesian models … **The measure-theory crisis
 inherited Ω; it did not coin it.**"* Two independent passes, same result. **The gate stays open
 under the per-sense constraint.**
+
+---
+
+# ⭐⭐⭐ G-00 — DISPOSITION: the register was **SCOPED WRONG**, not merely duplicative
+
+**Full record:** `brainstorming/verification/gap-discovery/g-00-register-reconciliation/01-G-00-RECONCILIATION.md`
+
+## First correction — the count
+
+**12 open + 1 deferred, not ~18.** My estimate was inflated because **this register's table rows
+are historical and its dispositions are appended below them**, so a disposed gap still reads `OPEN`
+in its row (`G-08`, `G-19`, `G-22` all do). ⚠️ **Recorded as a defect in this authority's layout.**
+
+## ⭐⭐ The finding — the duplication is not where `G-22` said it was
+
+`G-22` adopted *"search `verification/` before registering a gap as new."* **Correct and
+insufficient.** The larger duplication is **one directory up, in this reconstruction's own parent
+lane**:
+
+```
+theory-extraction/            121 top-level .md — 101 P-numbered audits — + 8 elements/
+   ├── 02-ELEMENT-INDEX.md    ⭐ already carries the HOMONYM RULE G-22 re-derived
+   └── reconstruction/        5 .md — this reconstruction
+```
+
+**Structural root cause:** `08-COVERAGE-LEDGER.md` enumerated `verification/` (480),
+`mathematical_ideas_…` (411), `kernel/` (181), *"root + misc"* (132) — **and had no row for
+`theory-extraction/` itself.** The ledger did not enumerate the lane the reconstruction lives in.
+**Row added 2026-09-10.**
+
+> `02-ELEMENT-INDEX.md`: *"**if `X`'s definition contains `Y`, then `X ≠ Y`** … **Applying the
+> homonym rule cut `K` from 10 definitions to 4.**"*
+
+And the corpus had already diagnosed this failure mode about itself — quoted in the `G-08`
+disposition above: *"**This is not a failure of the corpus. It is a failure of my search.**"*
+
+$$\boxed{\textbf{Three lanes have independently diagnosed the same defect — and the third is mine.}}$$
+
+## Reconciliation outcome
+
+| action | gaps | basis |
+|---|---|---|
+| ⭐ **CLOSE** | **`G-07`** | *"six-component vector"* was **asserted** (`19-P09` L286) and **withdrawn as warranted** (`30-P13` L195), in my own parent lane; `45-P27` is a dedicated `TG-02` audit |
+| ⭐ **CLOSE** | **`G-09`** | verified at **both** endpoints: `025d` §25D.17 refuses a scalar **for `Zero`**, on **incomparability of requirement kinds**; `025r` §25R.4's `ExpectedLoss = Σ_s P(s\|E)L(a,s)` is a loss **over actions and states**. Different index sets — ⭐ **the two never conflicted** |
+| ⭐ **CLOSE** | **`G-15`** | `FA-1…FA-9` are **nine real files** in `reviews/synthesis/final-architecture/`, ratified `GN-31`, mapped at `verification/V0-theory-corpus-map.md` T-005. *"Not defined in-cluster"* ≠ *"undefined"* |
+| ⭐ **CLOSE (half) + SPLIT** | **`G-16`** | `reviews/synthesis/model/canonical-architecture-v0.2.md` and `research/theory-v1.1-simulation/` **both exist**. ⛔ **And `v1.1` is a homonym** — `theory-extraction/76-P58` carries `RA v1.1` (*Repository Architecture*), a different artifact. **Locatability closes; the homonym splits out as a new gap** |
+| **RE-SCOPE** | **`G-01`** | ⛔ **premise too strong.** `Γ(E,Q,C,EC)` in the 09-02 Sat thread **still carries `EC`** — it was **relocated**, not lost. And the codomain half is answered as **mis-posed**: *"`U` is overloaded three ways … DISCOVER the codomain rather than presuppose it."* ⚠️ the relocation is **`[PROPOSED]`** — see the adversarial note |
+| **RE-SCOPE** | **`G-05`** | `ℛ_req = {d_1…d_k}` with a **preservation** condition; **zero citations** of `ℛ(P)`/`023`/`025d`. **DISTINCT by type**; conceptual descent **UNWITNESSED**. Splits into (a) answered, (b) open |
+| **RE-SCOPE** | **`G-06`** | `§25S.20` *"`KAID_A → KAID_{Canonical}` … the mapping is preserved"*; `§25S.19` `LabelChange ≠ IdentityChange`; classified **identifier, `[STIPULATED]` stable**. *What it is* ✅; **relation to `≡_sem` ❌** — that half remains |
+| ⭐ **RE-SCOPE** | **`C-1`** | ⛔⛔ **the 09-02 lane holds TWO renderings of one object**: `Loss_req = ℛ_req ∩ Collapsed(π)`, a **SET**, adequacy `= ∅`; and `Σ w_i·𝕀(Collapse)`, a **weighted scalar**, adequacy `== 0` for P1. **C-1's premise holds for only one of them.** And the scalar rendering supplies **priority weights** — precisely the comparability whose absence was `025d`'s **stated reason** for refusing a scalar. ⇒ the contradiction is **internal to the 09-02 lane**, and the real question is **may a priority weighting be stipulated?** **Not adjudicated. Both branches preserved.** |
+| **RE-SCOPE, KEEP OPEN** | **`G-21`** | referent identified **for Ω-4/Ω-5 only**; Ω-1/Ω-2/Ω-3 origins unlocated. Corroborated independently by `AF-003` |
+| **remove from the open count** | **`G-17`** | already `FIREWALL-LIMITED` — a **disposition**, not an open gap |
+| **KEEP OPEN** | **`G-11`** (re-scoped) · **`G-12`** · **`G-04`** (deferred by method) | |
+
+**Net: 12 open → CLOSE 4 · RE-SCOPE 5 · SPLIT 1 new · reclassify 1 · KEEP OPEN 3.**
+
+## New gap from the split
+
+| ID | question | status |
+|---|---|---|
+| **G-23** | ⛔ **`v1.1` is a homonym.** `research/theory-v1.1-simulation/` (**Theory** v1.1) and `RA v1.1` (**Repository Architecture** v1.1, `theory-extraction/76-P58` `D-FA-1`/`D-FA-2`) are different artifacts sharing a version string. Which does Lineage C baseline against? | **OPEN** — split from `G-16` |
+
+## Adversarial check — one closure refused
+
+`G-01`'s re-scope rests on `Γ(E,Q,C,EC)` carrying **the same `EC`** as `025d`. The corpus has now
+been shown **twice** (`Ω`, `𝒦`) to reuse a glyph across a re-founding for a different object.
+⛔ **Not verified. Recorded `[PROPOSED]`, and made the re-scoped gap's first obligation.**
+
+⚠️ **And an ordering hazard, recorded not used:** `C-1`'s two renderings carry filename stamps
+`182008`/`182016` but mtimes **19:25:41 / 19:23:50** — the two orderings **disagree**. No precedence
+was inferred from either.
+
+## What remains genuinely load-bearing
+
+**`G-12`** (~180 files unread — every lineage claim crossing 026–268 is provisional) · **`G-11`**
+(64 files, ≥3 senses, two of them `C-06`-contradictory, all live after 285) · **`G-05`(b)** ·
+**`G-06`(`≡_sem`)** · **`G-21`** (per sense) · **`C-1`** (now precise) · **`G-04`** (deferred) ·
+**`G-23`** (new).

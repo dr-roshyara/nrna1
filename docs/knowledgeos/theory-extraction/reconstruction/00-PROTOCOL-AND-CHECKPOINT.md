@@ -1236,3 +1236,95 @@ which the corpus has ruled contradictory. It now blocks **both** `G-21` and the 
 
 Not abandoned. `G-22` has additionally **mapped** the 268–292 interval for one symbol (171 files
 enumerated, 64 positive), which is chronological groundwork the global stream will reuse.
+
+---
+
+# CHECKPOINT 015 — `G-00`. **The register was scoped wrong, and the blind spot was structural.**
+
+**Record:** `brainstorming/verification/gap-discovery/g-00-register-reconciliation/01-G-00-RECONCILIATION.md`
+
+## Result
+
+**12 open gaps + 1 deferred, not ~18.** Of the 12: **4 CLOSE · 5 RE-SCOPE · 1 SPLIT (new `G-23`) ·
+1 was already disposed (`G-17`) · 3 genuinely open.**
+
+$$\boxed{\textbf{Three quarters of the open list was either answered elsewhere or framed on a corrected premise.}}$$
+
+## ⭐⭐ The structural finding
+
+`G-22` adopted *"search `verification/` before registering a gap as new."* **Correct and
+insufficient.** The larger duplication was **one directory up**:
+
+| lane | files | in the coverage ledger? |
+|---|---|---|
+| `verification/` | 480 | ✅ listed, NOT-READ |
+| `mathematical_ideas_…` | 411 | ✅ |
+| `kernel/` | 181 | ✅ |
+| *root + misc* | 132 | ✅ |
+| ⭐ **`theory-extraction/` — the reconstruction's own parent** | **121 + 8 elements, 101 P-audits** | ⛔ **absent** |
+
+**What is not enumerated is not searched, and an unlisted lane raises no flag.** Row added.
+`G-06`, `G-07`, `G-16` and half of `G-01` were already answered there, and `02-ELEMENT-INDEX.md`
+already carried the **homonym rule `G-22` spent a whole investigation re-deriving**.
+
+## The mechanism, now promoted
+
+Four independent diagnoses, three lanes, two authors — including one **the corpus made about
+itself** on 2026-08-31: *"This is not a failure of the corpus. It is a failure of my search."*
+**Promoted from observation to corpus property**, narrowly: *in this estate, work is duplicated
+because lanes do not enumerate each other.* **No claim about the theory is promoted.**
+
+## Method rules adopted
+
+1. **Every coverage ledger enumerates every lane, including its own.**
+2. **Re-read a gap's premise before working it.** ⭐ **5 of 12 were mis-framed, not unanswered** —
+   and re-reading two source documents was cheaper than the investigation would have been.
+3. **Read a register's dispositions, not its table rows** — this register's rows are historical, so
+   `G-08`/`G-19`/`G-22` all still read `OPEN` in their rows.
+
+## Verification performed
+
+| check | result |
+|---|---|
+| `G-09` — do `025d` and `025r` conflict? | ⛔ **no.** `025d` §25D.17 refuses a scalar **for `Zero`**, on incomparability of requirement kinds; `025r` §25R.4 sums over **states given evidence, indexed by action**. Both read in full |
+| `C-1` — is the 09-02 `Loss` a scalar? | ⭐ **two renderings**: a **set** (`∩ Collapsed(π)`, adequacy `= ∅`) and a **weighted scalar** (adequacy `== 0` for P1). C-1's premise holds for one |
+| `G-07` — is the claim live? | **asserted `19-P09` L286, withdrawn `30-P13` L195**; `45-P27` is a dedicated `TG-02` audit |
+| `G-15` — do `FA-*` exist? | **nine files**, ratified `GN-31`, mapped at `V0-theory-corpus-map` T-005 |
+| `G-16` — do v0.2 / v1.1 exist? | **both**; ⛔ **and `v1.1` is a homonym** (Theory v1.1 vs `RA v1.1`) → `G-23` |
+| `G-01` — was `EC` lost? | `Γ(E,Q,C,EC)` **retains it**. ⚠️ **`[PROPOSED]`, not `[EMP]`** — the `EC` identity is unverified, and this corpus has twice re-used a glyph across a re-founding |
+
+## One closure refused on the adversarial check
+
+`G-01` was **not** closed. Its re-scope assumes `Γ`'s `EC` is `025d`'s `EC` — exactly the assumption
+`G-22` proved unsafe for `Ω`. Recorded `[PROPOSED]` and made the re-scoped gap's first obligation.
+
+⚠️ **An ordering hazard recorded, not used:** `C-1`'s two renderings have filename stamps
+`182008`/`182016` and mtimes `19:25:41`/`19:23:50` — **the two orderings disagree.** No precedence
+inferred.
+
+## Artifact changes
+
+| authority | change |
+|---|---|
+| `06-GAP-REGISTER.md` | `G-00` disposition; 4 closes, 5 re-scopes, `G-23` created, `G-17` reclassified |
+| `07-THEORYSTATE-CHRONICLE.md` | `TheoryState(t)` ①–④ table; `C-1` relocated; the mechanism promoted |
+| `05-DEFINITION-EVOLUTION-REGISTRY.tsv` | **81 → 86 rows, 15 → 18 objects**: `Loss_req` ×2 (set / scalar), `ExpectedLoss`, `Zero` refusal, `KAID` |
+| `04-LINEAGE-EDGES.tsv` | **153 → 169 edges** (+16) |
+| supporting | `08-COVERAGE-LEDGER.md` — the missing `theory-extraction/` row |
+| new | the G-00 record; `EKS-52` |
+
+## Next investigation — selected by load × dependency × historical risk, not by ID
+
+⭐ **`G-12`.** ~180 of 265 files in steps 026–268 remain unread. It scores highest on all three:
+**load** — every lineage claim crossing that interval is provisional; **dependency** — `G-05`,
+`G-06`, `G-21` and `C-1` all have evidence intervals inside or adjacent to it; **historical risk** —
+it is the only open item where the missing thing is *primary source*, not a cross-reference. Every
+other open gap is now either a bounded lookup or a normative question.
+
+**`G-11`** (64 files, ≥3 Ω senses, two `C-06`-contradictory) is second, and is chronologically
+*after* `G-12`'s window — so `G-12` first also respects the no-leaping rule.
+
+## Chronology
+
+**Resumes now.** `G-00` was the last meta-investigation; four consecutive bounded gaps have run.
+The global chronological stream restarts at `G-12` blocks 1, 2, 4, 5.

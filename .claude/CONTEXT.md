@@ -8217,10 +8217,25 @@ spellings** (`Ω` and `\Omega` — a glyph-only sweep found 7 % of occurrences) 
 (`Ω_a` and `Ω-a`); and **before registering a gap as new, search the `verification/` lane for it**
 — `TG-15` had registered the Ω overload eleven days before `G-10` called it new.
 
-**Next:** `G-00` — reconcile the ~18 open gaps against the `verification/` lane's own registers
-(`TG-nn`, `C-nn`, `16-MASTER-GAP-REGISTER`); cheap, bounded, upstream of everything. Then `G-11`
-as re-scoped (Ω across 64 of 171 files, steps 269–291), which blocks both `G-21` and the 268–292
-chronology. Then resume the global stream at `G-12` blocks 1, 2, 4, 5 (~180 files unread).
+**Also closed 2026-09-10:** `G-00` → **the register was SCOPED WRONG.** 12 open + 1 deferred (not
+~18): **4 CLOSE (`G-07` `G-09` `G-15` `G-16`-half) · 5 RE-SCOPE (`G-01` `G-05` `G-06` `C-1` `G-21`)
+· 1 SPLIT (new `G-23`: `v1.1` is a homonym) · 3 genuinely open.** `C-1` relocated *inside* the 09-02
+lane (two renderings of one object, set and scalar) — **not adjudicated, both branches preserved.**
+Record: `docs/knowledgeos/brainstorming/verification/gap-discovery/g-00-register-reconciliation/`.
+
+⭐⭐ **Structural cause found:** `08-COVERAGE-LEDGER.md` enumerated every lane **except
+`theory-extraction/` — the reconstruction's own parent**, 121 files / 101 prior audits, holding the
+answers to `G-06`, `G-07`, `G-16` and half of `G-01`. Row added. **Mechanism promoted to a corpus
+property** (four diagnoses, three lanes): *lanes do not enumerate each other, so work is repeated.*
+
+**Method rules now standing:** both spellings (`Ω` / `\Omega`) **and** both forms (`Ω_a` / `Ω-a`) ·
+**search every other lane, including your own parent, before calling a gap new** · **every coverage
+ledger enumerates every lane including its own** · **re-read a gap's premise before working it**
+(5 of 12 were mis-framed, not unanswered) · **read a register's dispositions, not its table rows.**
+
+**Next:** ⭐ **`G-12`** — the global chronological stream resumes. ~180 of 265 files in steps
+026–268 unread; the only open item whose missing thing is *primary source*, and `G-05`, `G-06`,
+`G-21`, `C-1` all have evidence intervals inside or adjacent to it. Then `G-11` (re-scoped).
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·

@@ -412,3 +412,72 @@ other term and the ancestor of `Ω-a`.
 (Ω-2 revived) · `Ω = epistemic horizon`, `K_t ⊊ Ω` (Ω-7 revived) · `Ω_K = legitimate kernel
 operations` · `Kṛṣṇa = Ω` **explicitly rejected**. ⭐ **Both terms the corpus called a TRUE
 CONTRADICTION are live again, in one lane, unreconciled.**
+
+---
+
+# STATE CHANGE — `G-00`, 2026-09-10. Four gaps were never gaps; one contradiction moves lanes.
+
+`G-00` asked whether this reconstruction accurately represents the theory's evolution once the other
+lanes' findings are accounted for. **It does not — and the error is scope, not duplication.**
+
+## What changed in `TheoryState(t)` — and what did not
+
+**No earlier `TheoryState(t)` is altered.** Every row below separates ① the historical state at `t`
+from ② later discovery, ③ later adjudication and ④ present reconstruction status.
+
+| gap | ① state at `t` | ④ present status |
+|---|---|---|
+| **`G-09`** | 08-27/08-28: `025d` refuses a scalar **for `Zero`** (incomparability of requirement kinds); `025r` gives a loss **over actions and states** | ⭐ **the two never conflicted. The gap was never a gap** |
+| **`G-07`** | 08-28: a *"six-component vector"* reading of `TG-02` asserted | ⭐ **asserted, then withdrawn as warranted — in my own parent lane** |
+| **`G-15`** | the citations were **sound at `t`**, merely out of cluster | **all referents located** |
+| **`G-16`** | — | **both artifacts exist** — and **`v1.1` is a homonym** (Theory v1.1 ≠ RA v1.1) |
+| **`G-01`** | 08-27 18:31: `Sat` is **contract-relative** — unchanged | ⛔ **premise too strong: `EC` was RELOCATED to `Γ(E,Q,C,EC)`, not lost** `[PROPOSED]` |
+| **`C-1`** | 08-27: `025d`'s refusal is about **`Zero`** | ⭐ contradiction **relocated into the 09-02 lane** — see below |
+
+## ⭐⭐ `C-1` — one object, two renderings, one lane
+
+| rendering | source | type | adequacy condition |
+|---|---|---|---|
+| **SET** | `20260902-182008` RREQ-6 | `Loss_req(π,Q,Γ) = ℛ_req(Q,Γ) ∩ Collapsed(π)` | `Loss_req = ∅` |
+| **SCALAR** | `20260902-182016` L217 | `Σ_{d_i} w_i · 𝕀(Collapse(d_i,π))`, `w_i` a **priority weight** | `== 0` for all P1 |
+
+**`C-1`'s premise — "the 09-02 `Loss` IS a scalar sum" — holds for only ONE of the two.** And the
+scalar rendering supplies **priority weights**: precisely the comparability whose *absence* was
+`025d`'s stated reason for refusing a scalar (*"one missing governance approval could be more
+blocking than five low-priority informational gaps"*).
+
+⇒ The contradiction is **not** `025d` vs 09-02. It is **internal to the 09-02 lane**, and the real
+question is **may a priority weighting be stipulated?** — a normative question.
+**Not adjudicated. Both branches preserved.**
+
+## ⭐⭐ The structural finding — a third lane, and it is my own
+
+```
+theory-extraction/          121 top-level .md · 101 P-numbered audits · 8 elements/
+   ├── 02-ELEMENT-INDEX.md  ⭐ already carries the homonym rule G-22 spent an investigation deriving
+   └── reconstruction/      5 .md — THIS reconstruction
+```
+
+`G-22` adopted *"search `verification/` first."* **The larger duplication was one directory up.**
+Root cause: **`08-COVERAGE-LEDGER.md` enumerated every lane except the one the reconstruction lives
+in.** Row added.
+
+Four open gaps (`G-06`, `G-07`, `G-16`, half of `G-01`) were **already answered there**.
+
+## The pattern, now at its limit
+
+| | who failed to search whom | who diagnosed it |
+|---|---|---|
+| `G-19` | `phase_measure_theory/` did not read `verification/` | me |
+| `G-22` | I did not read `verification/` | a worker |
+| **`G-00`** | ⭐ **I did not read my own parent lane** | me |
+| — | *"Step 288 was written without consulting the `025i–025z` seam"* | ⭐ **the corpus, about itself, 2026-08-31** |
+
+> *"**This is not a failure of the corpus. It is a failure of my search.**"*
+> — `knowledgeos_kernel/research/14-GAP-UPDATE-FROM-THE-025-ALGEBRA-SEAM.md`
+
+$$\boxed{\textbf{Four independent diagnoses of one mechanism. It is now a corpus property, not an observation.}}$$
+
+**Promoted** — on four instances across three lanes and two authors, including one the corpus made
+about itself before this reconstruction began. **The claim promoted is narrow:** *in this estate,
+work is duplicated because lanes do not enumerate each other* — **not** any claim about the theory.
