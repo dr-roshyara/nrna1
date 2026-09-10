@@ -2167,3 +2167,159 @@ gloss, and one incidental prose use. **Declared, glossed, and never operated on.
 | **`G-36`** | ⭐ **DISPOSED — `RELATED, IDENTITY UNWITNESSED`** |
 | **the other lane's `G1`** | ⚠️ **flagged as a probable category error**, on evidence symmetric with `G-34`. Not reclassified by me |
 | **`Ideal State`** | ⭐ new: the same document derives **`I_t = ℛ_t`** — *"Instead of treating the Ideal State as a mysterious perfect object"*. The Ideal State **is** the requirement set. Recorded for the `Zero`/`Δ` line |
+
+---
+
+# ⭐⭐⭐ G-37 — `G-67` is a HOMONYM, and its live reading rests on a premise the corpus refutes
+
+**Opened and disposed in one pass.** Source: `20260902-004631_knowledgeos-theory-v1-0-definitions-axioms-theorems-corollaries.md` (3302 lines, 87 §§, **2026-09-02 00:46:31**).
+Full record: `verification/gap-discovery/theory-v1-0-def-register/00-FINDINGS.md`.
+
+## §0 · The framing defect is mine
+
+The corpus carries a **numbered statement register** — `DEF-1…DEF-33` and `AX-1…AX-7`, both
+contiguous, plus eleven theorems. **My four authoritative artifacts cited zero of these numbers**
+before this pass (`DEF-1`, `DEF-21`, `DEF-22`, `DEF-32`, `CIRC-5`, `THM-9`, `S^epi`, `Adequate`
+→ all `0`). Recorded as a coverage defect of this reconstruction, not of the corpus.
+
+Register census: `[DEF]` 33 · `[AX]` 7 · `[THM]` 11 (tags absent for 7, 8, 10 — the theorems
+exist as §55, §62, §73; a **tagging defect, not a missing theorem**) · **`[COR]` 0** — the
+document is titled *"…Theorems, **Corollaries**…"*, declares `[COR]` as a statement class, and
+contains none.
+
+## §1 · Two gaps, one identifier
+
+| lane | `G-67` denotes | status |
+|---|---|---|
+| `knowledgeos_kernel/` steps 288–291 | `≡`/`≈` share one definition while listed as distinct | **WITHDRAWN by Step 290** — *"severity was mis-scored CRITICAL on the false claim"* |
+| `readiness/07` · Gītā `20260906-094419` · `docs/plans/20260907-1520` | `InvariantReg (ℐ)` — the mandatory invariant register, **never enumerated** | live; my own plan calls it **"the single most evidenced blocker in the estate"** |
+
+**`SAME SPELLING ≠ SAME OBJECT`, now at the level of gap identifiers rather than mathematical
+symbols.**
+
+## §2 · The live reading's premise does not survive
+
+`ℐ` is enumerated **three times, by three lanes, with citation zero in every direction**:
+
+1. **Step 048 §48.60** — `InvariantRegistry`, a **10-field schema with 0 rows** (2026-08-28)
+2. **Step 120** — **`K1…K7`**, seven named invariants, each with an experiment `Kn.1` and a
+   verdict, plus **§120.27–120.32, a systematic absorption/necessity argument** (2026-08-28T12:45:10)
+3. **Theory v1.0 §75** — **`I1…I9`**, nine boxed invariants, titled *"Kernel invariants"*,
+   closing *"These are now the beginning of the KnowledgeOS Constitution"* (2026-09-02T00:46:31)
+
+Enumeration 3 populates the exact object `readiness/07` marks unenumerated, and does so **inside
+the same document that defines it** — the section run §70 Kernel → §71 Kernel shape
+(`ℐ` = protected invariants) → §74 `custody(I,K)` → §75 Kernel invariants is unbroken. **No
+inference of mine bridges them.**
+
+**Chronology:** all three carriers of *"never enumerated"* (`readiness/07` 09-06, Gītā doc 09-06,
+plan 09-07) **postdate** enumeration 3 by four to five days.
+
+**And `66/66` is not evidence of absence.** `exec/extend_k9_worlds.py:15` hard-codes
+`G_str["InvariantReg"] = (["K"], "NOT ENUMERATED", "D")`. The string is an **input**. `66/66`
+measures the robustness of the closure computation to world choice; it cannot measure the
+enumeration status of `ℐ`. **The computation is sound; the premise is the claim it is offered to
+support.**
+
+## §3 · Consequence for my own forward plan
+
+`D1` is filed there as *"enumerate `ℐ` / `ℛ_req` — **a derivation, not a decision**"*. On this
+evidence it is the reverse: three enumerations exist and **no precedence rule chooses among
+them** — the plan's own **state-B** category (*"16 of 17 items my package registered as
+undefined/blocked are defined multiple ways, with no precedence rule"*). **`D1` is an instance of
+the pattern its own plan names, filed in the other column.**
+
+The slash in *"`ℐ` / `ℛ_req`"* also runs straight across a collision **v1.1 had already
+registered**: `I` = IdealState `I_t` · Invariants `I1..I9` · Information. `ℐ` (protected
+invariants) ≠ `ℛ` (admissible composition/typing) ≠ `I_t`/`ℛ_t` (ideal state = requirement set).
+
+`[OPEN]` Whether `K1…K7` and `I1…I9` are one register under two readings or two registers is
+**not settled here**. `I9`/`K1` (Provenance) overlap; `I3` (`Representation ≠ Identity`) has no
+`K`-counterpart. Recorded `RELATED — IDENTITY UNWITNESSED`. **Not merged.**
+
+## §4 · Disposition
+
+**`C — COMPETING / DEPENDENCY-INCOMPLETE`** for the `InvariantReg` reading — **not**
+`D — GENUINE CORPUS GAP`. The `≡`/`≈` reading remains withdrawn where its own lane withdrew it.
+**The identifier `G-67` should not be used unqualified.**
+
+---
+
+# ⭐⭐⭐ G-38 — the `Sat_c` executability boundary is an INHERITANCE boundary
+
+**Feeds `G-33`; does not reopen it.** `G-33`'s disposition (all eight classes defined and
+formalised, five dependency-blocked) **stands**. This supplies the historical cause of the split.
+
+`satc_spec.py`: `EXECUTABLE_NOW = ['content','evidence','provenance']` ·
+`BLOCKED = ['status','consistency','governance','temporal','operational']`.
+
+Theory v1.0 carries two requirement/gap taxonomies — §28 (`DEF-20`) *sufficiency · completeness ·
+**evidence** · uncertainty · model · **provenance*** and §30
+`Δ_t = (Δ^content, Δ^uncertainty, Δ^model, Δ^observability, Δ^requirement)`.
+
+`[EMP]` Occurrence **in a requirement/gap/`Sat`/`Req(` context**, whole 3302-line document:
+
+| inherited | hits | | added | hits |
+|---|---|---|---|---|
+| `content` | 1 (§30) | | **`status`** | **0** |
+| `evidence` | 2 (§28) | | **`consistency`** | **0** |
+| `provenance` | 1 (§28) | | **`governance`** | **0** |
+| *(uncertainty)* | 2 — inherited, **dropped** | | **`temporal`** | **0** |
+| *(model)* | 2 — inherited, **dropped** | | **`operational`** | **0** |
+
+**Positive control passes** (the identical pattern matches all five inherited terms). Bare-word
+counts confirm the five blocked terms *do* occur in the document (4/4/1/3/1) — **none as a
+requirement or gap dimension.**
+
+$$\boxed{\text{The three executable } Sat_c \text{ classes are exactly the three with an ancestor in Theory v1.0; the five blocked are exactly the five added afterwards with no ancestor.}}$$
+
+⭐⭐ **Executability tracks provenance, not difficulty.** Each blocker note in `satc_spec.py` says
+*the theory does not define X*; this says **why** — those five were never in the theory to inherit
+from. **`BLOCKED` here means `UN-INHERITED`, a fourth thing beside `UNDEFINED`, `UNFORMALIZED`
+and `UNIMPLEMENTED`.**
+
+Not a bijection: `uncertainty` and `model` were inherited **and dropped**. Recorded, not repaired.
+
+---
+
+# G-39 — objects Theory v1.0 fixes that this reconstruction had reached by other routes
+
+| object | v1.0 statement | effect on the register |
+|---|---|---|
+| `Δ_t` | `DEF-21` **a SET** — *"the canonical v1.0 definition"*; §29 rejects `K_t*−K_t` | ⭐ the **missing middle term**: subtraction → set → partition, **each step declared** |
+| `Sat` | `¬Sat(K_t,r)` — **2-valued at birth**, and **two arities in one document** (`Sat(K,r)` §29, `Sat(K,EC)` §28) | the third value `U` is born at the v1.0 → v1.2 step, not before |
+| `Zero` | `DEF-22` `Zero ⟺ Δ_t=∅ ⟺ K_t ⊨ EC_t`; `Zero_epistemic ≠ Zero_probabilistic` | consistent with the 2026-09-07 refutation of `Zero` as an *element* property |
+| `Adequate` | `DEF-20` `⟺ Sat(K_t,EC_t)`; with §29 this makes it **extensionally identical to `Zero`** | ⭐ the collapse v1.1 files as `TG-3`/`CIRC-3` **is in the theory text itself** |
+| `I_t` | three versions: `I(G,C,S,t)` (cited ancestor) → `𝕀(EC_t)={K:Sat(K,EC_t)}` (`DEF-19`, a **region of states**) → `I_t = ℛ_t` (a **requirement set**) | ⚠️ **my `I_t_v1` row was mislabelled** — `DEF-19` precedes it by 7 h 37 m with a **different codomain**. Corrected: this is a **RE-TYPING**, not a refinement |
+| `𝒦` | `𝒦 = (𝒫,ℛ,δ,ℐ)`, *"and potentially"* `𝕶 = (𝒫,ℛ,δ,ℐ,𝒰)` — **two glyphs** | v1.1 `TG-13` cites the **conditional 5-tuple as the proposal**, collapsing the distinction |
+| `δ` | born §71 as *"transition/commit semantics"* — **a kernel slot** | named and sited at birth; **never given a body** (still open at Step 290) |
+| `K_min` | `DEF-33` — explicitly **not** `min|operators|`; five side conditions | with §74 `custody(I,K)`: $Smaller\ Kernel \not\Rightarrow Better\ Kernel$ |
+| backbone | §47 `O_t→K_t→I_t→Δ_t→K_{t+1}`, refined to `O_t→ℱ_t→K_t→EC_t→Δ_t→T_t→K_{t+1}` | ⭐ the refinement **substitutes `EC_t` for `I_t`** — a derived object replaced by the object it derives from. **`ℱ_t` and `T_t` are new to this register** |
+
+## `theory-v1.1-simulation` is identified, not inferred
+
+14 files, **no internal timestamp in any of them**; git order gives no chronology. Recovered from
+content: experiment ID **`KR-SIM-2026-09-02`**, seed `20260902`, and **two § references that
+resolve exactly** — *"§47 of the theory"* (it reproduces the 7-state form only) and *"Preservation
+vector `𝒫` (§66)"*. ⇒ **it simulates `20260902-004631` and postdates 00:46:31.** The document's
+own timestamp remains **`UNRECORDABLE`**, not `ABSENT`.
+
+It contributes `EC = EpistemicContract(standard, requirements, attribution_policy)` and
+`K = Γ(E,Q,C,EC)`, and it is the **birthplace of `CE-1`**, which `satc_spec.py` cites verbatim.
+
+⭐ **`TG-2` is the one inversion.** *"`Revise` exists, `Supersede/Retract/Expire` do not"* — while
+`B-formal-model` records `History` as *"append-only; **supersession stores the prior record**"*.
+**Supersession is realised in the state and undefined as a relation.** Every other instance of the
+four-way distinction in this reconstruction runs `Specified → not Implemented`; **this one runs
+the other way, and it is the only such case so far recorded.**
+
+## Two collision registers, disjoint alphabets
+
+v1.1 `C-type-system` registers **10 Latin** collisions (`P` 3-way, `K`, `E`, `H`, `I`, `S`, `C`,
+`R`, `M`, `Q`); my `H1` act registers **16 Greek** (`Π`, `Φ`, `Θ`, `Σ`, …). **Neither cites the
+other.** The true inventory is larger than either lane knows. New collision found here and in
+**neither** list: **`r.standard` (acceptance criterion) vs `EC.standard` (an `EpistemicStandard`
+record)** — one field name, two carriers, different types.
+
+`Σ` is given three axes — **Support · Conflict · Resolution**. Recorded only; **no reconciliation
+of `Σ` attempted.**

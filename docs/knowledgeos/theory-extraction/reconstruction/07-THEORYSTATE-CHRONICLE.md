@@ -1033,3 +1033,58 @@ genuinely evaluable.** `G-34`.
 `theory-v1.2-simulation`, `kernel-reduction`) — and it holds the self-retracted experiment on three
 of the five blockers. **Fourth after `theory-extraction/`, `gap-update-2026-09-02/`,
 `verification/zero-algebra/`.**
+
+---
+
+# `TheoryState(2026-09-02T00:46:31)` — the numbered register, read at last
+
+The fourth unenumerated lane above turned out to hold a **numbered statement register**, and it
+is the earliest substantial document of the 09-02 cluster:
+`20260902-004631_knowledgeos-theory-v1-0-definitions-axioms-theorems-corollaries.md` —
+**3302 lines, 87 sections, `DEF-1…DEF-33`, `AX-1…AX-7`, eleven theorems.**
+
+**Before this pass my four artifacts cited zero of those numbers.** Everything I had reconstructed
+for `Gap`, `Zero`, `Sat`, `I_t`, `δ` and the kernel, I had reconstructed from *downstream*
+documents while the numbered upstream sat unread.
+
+## What the state actually was at 00:46:31
+
+$$O_t \to \mathcal F_t \to K_t \to EC_t \to \Delta_t \to T_t \to K_{t+1} \qquad (\S47)$$
+
+* `Δ_t = \{r ∈ Req(EC_t) : ¬Sat(K_t,r)\}` — **a SET** (`DEF-21`, *"canonical v1.0"*), with the
+  older `K_t^*−K_t` subtraction **explicitly rejected**
+* `Sat` — **two-valued**, and already carrying **two arities** (`Sat(K,r)`, `Sat(K,EC)`)
+* `Zero(K_t,EC_t) ⟺ Δ_t=∅ ⟺ K_t ⊨ EC_t` (`DEF-22`) and `Adequate ⟺ Sat(K_t,EC_t)` (`DEF-20`)
+  — **extensionally identical, and the theory says so itself**
+* `𝕀(EC_t) = \{K ∈ 𝕂 : Sat(K,EC_t)\}` (`DEF-19`) — the ideal state is **a region of states**
+* `𝒦 = (𝒫,ℛ,δ,ℐ)` (`DEF-32`/§71), *"and potentially"* `𝕶 = (𝒫,ℛ,δ,ℐ,𝒰)` — **`[PROP]`**
+* `ℐ` = protected invariants, **populated four sections later** as `I1…I9` (§75)
+
+## The three things this changes
+
+**1. Every "the theory does not define X" claim now has an upstream to be checked against.**
+Two were checked in this pass and both moved: `ℐ` (enumerated three times — `G-37`) and the five
+blocked `Sat_c` classes (**never inherited** rather than undefined — `G-38`).
+
+**2. `BLOCKED` splits again.** The four-way `Specified ≠ Implemented ≠ Executed ≠ Validated` gains
+a fifth neighbour: **`UN-INHERITED`.** The three executable `Sat_c` classes are exactly the three
+with an ancestor in Theory v1.0; the five blocked are exactly the five added later with none.
+**Executability tracks provenance, not difficulty.**
+
+**3. The four-way distinction runs backwards once.** `TG-2` declares
+`Supersede/Retract/Expire` undefined while `B-formal-model` records supersession as *implemented*
+in `History`. **Implemented-but-not-specified** — the only such case in this reconstruction.
+
+## Corrections to my own register
+
+| what | correction |
+|---|---|
+| `Ideal State / I_t_v1 / 08:23:33` | **mislabelled.** `DEF-19` precedes it by **7 h 37 m** with a **different codomain** (`𝒫(𝕂)` → `ℛ`). Three versions now recorded; the transition is a **RE-TYPING**, not a refinement |
+| coverage | the numbered register was **never enumerated by this reconstruction** — a defect of my ledger, not of the corpus |
+
+## A dating method, recorded because it worked
+
+`theory-v1.1-simulation` carries **no internal timestamp in any of its 14 files**, and git commit
+order is meaningless here (v1.1 committed one minute *after* v1.2). It was dated from **content
+alone**: experiment ID `KR-SIM-2026-09-02`, seed `20260902`, and **two `§` cross-references that
+resolve exactly** into `20260902-004631`. **`UNRECORDABLE` timestamp, recovered chronology.**
