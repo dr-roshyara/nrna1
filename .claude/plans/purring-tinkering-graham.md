@@ -1204,7 +1204,8 @@ theory content); `EKS-45`'s `K_t`/`Δ_t` bare-notation-collision pattern extende
 (`Req`/`r`, `step_186`, Aug 29, zero citation); a second confirmed governance-ratification event
 (`GN-31`, Aug 28) alongside `ABK-1`/T14 — neither touches the F4 chain; a previously-unknown third
 classification/governance pipeline discovered (`kernel/`'s own apparatus, `KCON-001..025`,
-`K-1..K-11`) — filed `EKS-46`, named `GAP-008`. **Extension Decision: B — REQUIRES TARGETED
+`K-1..K-11`) — filed `EKS-50` (renumbered from `EKS-46`, already taken by a concurrent session's
+MD-073 commit), named `GAP-008`. **Extension Decision: B — REQUIRES TARGETED
 EXTENSION** (not A: `GAP-008` unclosed; not C: nothing contradicts; not D: nothing blocks) — a small,
 bounded follow-up (`GAP-006`/`007`/`008`), not a further census. No frozen artifact modified; no
 object merged; K-1/K2 untouched; `theory-extraction/` untouched. Verified both consistency scripts

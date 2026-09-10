@@ -30,7 +30,8 @@ its own zero-governance-adoption finding is now doubly corroborated by contrast.
 unknown, third classification/governance pipeline was discovered**: `kernel/`'s own `classification/`+
 `corpus/`+`synthesis/`+`falsification/` apparatus (`KCON-001..025` register, an 11-model Knowledge-
 definition census `K-1..K-11`) — self-contained, never cross-cited by this reconstruction or by
-`phase_measure_theory/`'s own governance chain. Filed as `EKS-46`; named `GAP-008` in the phase's own
+`phase_measure_theory/`'s own governance chain. Filed as `EKS-50` (renumbered from `EKS-46`, which a
+concurrent session's MD-073 commit had already taken); named `GAP-008` in the phase's own
 Gap Register (only Level-1-censused, not read to full depth — the census's own residual risk).
 **Extension Decision: B — HISTORICAL RECONSTRUCTION REQUIRES TARGETED EXTENSION** (not A: `GAP-008`
 unclosed; not C: nothing found contradicts the current state; not D: nothing blocks continuation) — a

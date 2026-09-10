@@ -1,5 +1,10 @@
-# EKS-46 — A third independent classification/governance pipeline exists in the corpus, previously
+# EKS-50 — A third independent classification/governance pipeline exists in the corpus, previously
 unknown to this reconstruction, and remains unread at full depth
+
+*(Renumbered from EKS-46, 2026-09-10: that ID was already taken by an unrelated ticket filed by a
+concurrent session — `EKS-46-a-qualified-result-becomes-an-unqualified-one-three-minutes-later.md`,
+committed in MD-073, before this ticket's own commit. Recorded here per this project's own standing
+collision-resolution precedent — the later commit renumbers, content unchanged otherwise.)*
 
 ## Problem, in business language
 

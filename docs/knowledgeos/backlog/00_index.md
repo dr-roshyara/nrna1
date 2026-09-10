@@ -395,10 +395,11 @@ COMPUTED/PARTIALLY COMPUTED verdict on `r_1` and one more requirement), and the 
 for the decision-maker (authorize / decline / re-scope). Distinct from `EKS-47` (diagnosis) — this
 is the prescription awaiting a signature. See `EKS-48`.
 
-**EKS-46 filed, 2026-09-10** (MD-072, Controlled Extension Level-1 census): a third independent
-classification/governance pipeline was discovered inside the corpus — `kernel/`'s own
-`classification/`+`corpus/`+`synthesis/`+`falsification/` apparatus (`KCON-001..025` register,
-`00_INDEX.md`, an 11-model Knowledge-definition census `K-1..K-11`) plus `phase_measure_theory/`'s own
-`how_to_combine/` `GN-nn` governance chain — neither aware of this reconstruction's own
+**EKS-50 filed, 2026-09-10** (MD-072, Controlled Extension Level-1 census; renumbered from EKS-46,
+which a concurrent session's MD-073 commit had already taken for an unrelated ticket — see EKS-50's
+own text): a third independent classification/governance pipeline was discovered inside the corpus —
+`kernel/`'s own `classification/`+`corpus/`+`synthesis/`+`falsification/` apparatus (`KCON-001..025`
+register, `00_INDEX.md`, an 11-model Knowledge-definition census `K-1..K-11`) plus `phase_measure_
+theory/`'s own `how_to_combine/` `GN-nn` governance chain — neither aware of this reconstruction's own
 `three_model_convergence/` methodology or of each other. Only Level-1-censused so far, not read to
-full depth. See `EKS-46`, and MD-072's own `07_gap-register.md` (`GAP-008`).
+full depth. See `EKS-50`, and MD-072's own `07_gap-register.md` (`GAP-008`).

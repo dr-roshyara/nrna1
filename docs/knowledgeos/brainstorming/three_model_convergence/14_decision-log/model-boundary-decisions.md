@@ -5936,8 +5936,9 @@ contrast. **A previously-unknown, third classification/governance pipeline was d
 `kernel/`'s own `classification/`+`corpus/`+`synthesis/`+`falsification/` apparatus (`KCON-001..025`
 register, `00_INDEX.md`, an 11-model Knowledge-definition census `K-1..K-11`) — self-contained, never
 cross-cited by this reconstruction's own work or by `phase_measure_theory/`'s own governance chain.
-Filed as `EKS-46`; named as `GAP-008` in the phase's own Gap Register, the census's own residual risk
-(only Level-1-censused, not read to full depth).
+Filed as `EKS-50` (renumbered from `EKS-46`, which a concurrent session's MD-073 commit had already
+taken for an unrelated ticket — see EKS-50's own text); named as `GAP-008` in the phase's own Gap
+Register, the census's own residual risk (only Level-1-censused, not read to full depth).
 
 **Extension Decision: B — HISTORICAL RECONSTRUCTION REQUIRES TARGETED EXTENSION** (not A: `GAP-008`
 unclosed; not C: nothing found contradicts the current state; not D: nothing blocks continuation) — a
@@ -5950,7 +5951,7 @@ apparent cross-lane identity recorded as candidate/unresolved throughout. K-1/K2
 
 **Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
 `classification-register.tsv` unchanged; only the new `14_decision-log/MD-072-controlled-extension/`
-directory (10 files) plus this entry, `EKS-46`, and the `00_index.md` backlog update written.
+directory (10 files) plus this entry, `EKS-50`, and the `00_index.md` backlog update written.
 
 **MD-072 status: EXECUTED. HARD STOP** per the mission's own §24. No further phase automatically
 opened. Next authorized step, named, not opened: close `GAP-006`/`007`/`008` via the small, bounded
