@@ -1218,7 +1218,7 @@ own rows (`TV-F-022-024`'s Ω-3 typing) **rejected** after that check.
 | `05-DEFINITION-EVOLUTION-REGISTRY.tsv` | **78 → 81 rows**; Ω **restructured by SENSE** (7 site-rows → 8 sense-rows: Ω-1…Ω-7 + the a/b/c decomposition) |
 | `04-LINEAGE-EDGES.tsv` | **126 → 153 edges** (+27) |
 | new | the G-22 record, 395 lines |
-| backlog | `EKS-50` |
+| backlog | `EKS-51` |
 
 ## Next act (§"recompute, do not advance numerically")
 

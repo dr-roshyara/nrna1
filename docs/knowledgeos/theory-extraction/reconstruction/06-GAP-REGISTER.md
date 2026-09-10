@@ -733,7 +733,7 @@ safe before.** The constraint that must be carried in:
 | **`G-03`** | **scoped to Ω-1**, not overturned |
 | **`G-10`** | ⭐ **SUBSUMED and upgraded.** It recorded *"Ω has two meanings"* as a collision to register; `G-22` now supplies the definitional evidence, the 43-minute interval and the re-founding boundary. **Close `G-10` into `G-22`** |
 | **`G-11`** | **still OPEN** — Ω/EC reappear at `step_282`; must now be tested **per sense** |
-| **New backlog** | `EKS-50` |
+| **New backlog** | `EKS-51` |
 
 ## ⚠️ G-22 — CORRECTIONS AFTER THE BOUNDED EVIDENCE SWEEP
 

@@ -86,10 +86,15 @@ step did something else entirely.
 | `EKS-46` | a qualified result becomes unqualified three minutes later — a **dropped** qualification | **distinct.** `G-19` finds a **substituted** qualification (`Minimality(K\|𝒯)` → *"representation-minimality"*), which is a different failure mode |
 | `G-18`, `G-14` | citation and source out of step by 3 min and −58 min | **same family, opposite direction.** `G-19` is +74 min. Three instances, one day, two lanes — recorded as a scope, **not promoted** to a corpus law |
 
-## ⚠️ Filing defect noticed while writing this ticket
+## ⚠️ Filing defect noticed while writing this ticket — since RESOLVED, and it recurred
 
-**Two different tickets both occupy the ID `EKS-46`**:
-`EKS-46-a-qualified-result-becomes-an-unqualified-one-three-minutes-later.md` and
-`EKS-46-a-third-independent-classification-governance-pipeline-was-found-unintegrated.md`.
-An ID that identifies two things identifies neither. Recorded here rather than renumbered, because
-renumbering someone else's ticket is not this commission's call.
+**Two different tickets both occupied the ID `EKS-46`.** ✅ **Fixed independently** by a concurrent
+session (commit `51fbd1bd`, *"renumber EKS-46 to EKS-50 — collision with a concurrent session's
+MD-073 ticket"*).
+
+⚠️ **And it happened again the same day.** This commission then created its own `EKS-50` — colliding
+with the very renumbering that had just fixed the first collision. Renumbered here to **`EKS-51`**.
+
+**Two ID collisions in one day is not a filing slip; it is a missing allocator.** Backlog IDs are
+being chosen by reading the directory listing, which is a race whenever two sessions are open. The
+fix is a single reserved-ID mechanism, not more care.

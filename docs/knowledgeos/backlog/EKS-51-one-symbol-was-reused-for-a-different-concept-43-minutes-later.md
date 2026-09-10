@@ -1,4 +1,4 @@
-# EKS-50 — One symbol was re-used for a completely different concept 43 minutes later, and nothing in the process noticed
+# EKS-51 — One symbol was re-used for a completely different concept 43 minutes later, and nothing in the process noticed
 
 **Raised:** 2026-09-10 · **Source:** `G-22` disposition
 **Evidence:** `docs/knowledgeos/brainstorming/verification/gap-discovery/g-22-omega-sense-inventory/01-OMEGA-SENSE-INVENTORY-231-267.md`
