@@ -1120,3 +1120,68 @@ structurally.
 **CLOSED for structure** — births, silences, returns, deaths and object identity are mapped for
 9 objects over 265 files. ⚠️ **NOT closed for semantics**: ~180 files remain unread line-by-line,
 and this reconstruction is mechanical + targeted, not exhaustive. Re-scoped accordingly.
+
+---
+
+# ⭐⭐⭐ G-11 — DISPOSITION: **E — OBJECT IDENTITY UNRESOLVED.** A gap was opened for an object defined three days earlier.
+
+**Record:** `…/gap-discovery/g-11-omega-269-291/01-G-11-OMEGA-THROUGH-269-291.md`
+
+## Population and its statistical weight
+
+**168 step-269–291 files · 55 carry Ω · 293 occurrences.** ⭐ **44 of the 55 are `step_286`** —
+one lane, one thread, 08-31 18:15 → 09-01 11:52 ⇒ **ONE evidential lineage, not 44 confirmations.**
+
+## ⭐⭐ The windows overlap by 44 hours
+
+Last Ω in 231–267: `s266`, **08-30 19:54:50**. First Ω in 269–291: `s286`, **08-28 23:52:31**.
+**Not sequential — parallel lanes.**
+
+## ⭐⭐⭐ Continuity with apparatus loss — the Ω instance
+
+`031` **defines** `Ω : W → O` on **08-28 10:22**, boxed. On **08-31 19:03** a gap is **opened** —
+*"Gap 1: `(W, Ω)` referent layer"* — and on 19:52 **closed by "corpus recovery"**; *"the earlier
+claim that the verification lane lacked an entire observation/referent layer is **no longer
+valid**."*
+
+$$\boxed{\textbf{The apparatus never left the corpus — only the working set — and its re-discovery was recorded as a gap closure.}}$$
+
+**Preserved:** signature + both glosses, byte-identical. **Lost:** the non-identifiability result,
+`Identifiable(g,Ω)`, the chain `W→O→K`, and the attribution (Ω-A cites **`D285-6`, not `031`**).
+
+## Identity results
+
+| **Ω-A × Ω-2** | ⭐ **SAME OBJECT — STRONG CONTINUITY** (byte-identical signature and glosses) |
+| **Ω-B × Ω-4/Ω-7** | ⭐⭐ **DISTINCT — EXPLICIT**: *"Not `Ω=God` and not **`Ω=𝒦`**. Those would be unjustified architectural identities."* |
+| **Ω-A × Ω-B** | **IDENTITY UNWITNESSED** — ⭐ measured: each document mentions the other's term **0 times** |
+| **Ω-C × Ω-5 / `𝒪_core`** | **RELATED — IDENTITY UNWITNESSED** |
+| **Ω-D internal** | ⛔ **type error in one file** — `K` a function on Ω *and* an element of Ω |
+
+## `C-06` re-read: LOCAL, not global
+
+It adjudicates **Ω-7 (Knowledge Space) × Ω-2 (`W→O`)**, and its verb is **conditional** —
+*"**Combining them would** make the non-identifiability result trivially false."*
+⇒ **a ruling against COMBINING two homonyms, not a verdict that Ω is contradictory.**
+Corroborated independently by Ω-B's rejection of `Ω=𝒦`, five days later, another lane, no citation.
+
+## Terminal classification
+
+**E — OBJECT IDENTITY UNRESOLVED** overall. Per sense: **Ω-A = B** · **Ω-B = D** (genuine gap,
+**bounded to its type only**) · **Ω-C = E** · **Ω-D = E**. **A not forced.**
+
+## Gap changes
+
+| | |
+|---|---|
+| **`G-11`** | ⭐ **DISPOSED — `E`.** Re-scoped once more: not *"Ω and EC reappear at 282"*, not *"64 files, 3 senses"*, but **4 live senses across 168 files, one lineage, windows overlapping by 44 h** |
+| **`C-06`** | ⚠️ **RE-READ as LOCAL** — against combining, not against Ω. No change to the registry's contradiction status; a scope correction |
+| **NEW `G-26`** | ⛔ **`Ω-B` (epistemic horizon) is never typed** — no domain, no codomain, anywhere in the non-firewalled corpus. **`GENUINE CORPUS GAP`, bounded to Ω-B's type.** The only genuine Ω gap the reconstruction has found |
+| **`G-21`** | unchanged — still per-sense; Ω-A's true origin is `031`, **not** the 08-31 "recovery" |
+
+## Next, by load × dependency × historical risk
+
+**`G-26`** is small but **not** the highest risk — it is bounded to one untyped object in a lens
+lane. ⭐ **The highest remaining risk is the semantic half of `G-12`**: ~180 files of 026–268 still
+unread line-by-line, and every object history now rests on a mechanical skeleton plus targeted
+reads. **Semantic coverage of the readable corpus remains ≈1.5 %**, and that figure — not the
+structural completeness — is what bounds every claim in this register.

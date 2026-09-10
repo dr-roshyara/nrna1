@@ -8349,8 +8349,18 @@ minutes later; **`EC` is three homonyms**; `Γ` gains a fourth sense; `Zero` and
 defined in the interval. Record:
 `docs/knowledgeos/brainstorming/verification/gap-discovery/g-12-interval-reconstruction/`.
 
-**Next:** ⭐ **`G-11`** — Ω across 64 of 171 files in steps 269–291, ≥3 senses, two ruled
-contradictory by `C-06`. Load-bearing, bounded, and chronologically after `G-12`'s window.
+**`G-11` closed → `E — OBJECT IDENTITY UNRESOLVED`.** ⭐⭐⭐ A gap was opened on 08-31 for
+`Ω : W → O`, which `031` had **defined and boxed on 08-28**, then closed by *"corpus recovery"*.
+The apparatus never left the corpus — only the working set. ⭐⭐ The windows **overlap by 44 h**
+(first Ω in 269–291 is 08-28 23:52; last in 231–267 is 08-30 19:54) — parallel lanes, not sequence.
+⭐ **44 of 55 Ω files are `step_286`** ⇒ one lineage, not 44 confirmations. **`C-06` is LOCAL** —
+against *combining* two homonyms, not a verdict on Ω. `G-26` opened: **Ω-B (epistemic horizon) is
+never typed** — the only genuine Ω gap. Record:
+`docs/knowledgeos/brainstorming/verification/gap-discovery/g-11-omega-269-291/`.
+
+**Next:** the **semantic half of `G-12`** — ~180 files of 026–268 unread line-by-line.
+⚠️ **Semantic coverage of the readable corpus remains ≈1.5 %** (32 of 2,099). That figure, not
+structural completeness, bounds every claim in the register.
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·

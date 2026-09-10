@@ -738,3 +738,61 @@ as a **function-name index** — same structure, **zero citation**, `IDENTITY UN
 `224` reported missing — a **greedy** `.*step[-_](\d{3})` captured `182` from
 `…step_224_…at-step-**182**.md`. And a second `step-026` exists (08-27 16:29), a work-programme
 document: **one step number, two unrelated documents, a day apart.**
+
+---
+
+# STATE CHANGE — `G-11`: Ω through 269–291, 2026-09-10
+
+**Record:** `…/gap-discovery/g-11-omega-269-291/01-G-11-OMEGA-THROUGH-269-291.md`
+
+## ⭐⭐⭐ The finding: a gap was opened for an object defined three days earlier
+
+| 2026-08-28 10:22 | `031` §31.18 **defines** `Ω : W → O`, boxed, with `W`/`O` glossed |
+| 2026-08-30 18:36 | `step_251` restates it — *"the corpus also has"* |
+| **2026-08-31 19:03** | ⭐ a gap is **opened**: *"Gap 1: `(W, Ω)` referent layer"* |
+| 2026-08-31 19:52 | *"**Close 3 gaps** via corpus **recovery** (Sañjaya layer recovered)"* · `G3 → G5` |
+| 2026-08-31 19:40 | *"**the earlier claim that the verification lane lacked an entire observation/referent layer is no longer valid**"* |
+| 2026-08-31 20:11 | Ω-A: *"The **recovered** observation layer… resolves a **structural omission**"* |
+
+$$\boxed{\textbf{The apparatus never left the corpus — only the working set. Its re-discovery was recorded as a gap closure.}}$$
+
+**This is the Ω form of the `026` phenomenon, and it is sharper.** `026` declared continuity and did
+not carry the apparatus. Here the apparatus was **carried, forgotten, declared missing, and
+re-found** — with `Ω-A` citing **`D285-6`, not `031`**. What was lost is the **non-identifiability
+result**, `Identifiable(g,Ω)` and the chain `W→O→K`; what was preserved is the signature and both
+glosses, **byte-identical**.
+
+⭐ The corpus draws the right distinction itself: *"`Observation` being recovered closes the
+**discovery gap**, but the **executable semantics of `Ω` and `Qualify` are not thereby solved**."*
+
+**Two instances, two mechanisms, one family. Recorded as evidence, not promoted to law.**
+
+## ⭐⭐ The windows overlap by 44 hours
+
+| last Ω in 231–267 | `s266` — 2026-08-30 **19:54:50** |
+| first Ω in 269–291 | `s286` — 2026-08-28 **23:52:31** |
+
+**Step numbers imply sequence; the chronology shows parallel lanes.** Any claim of the form
+*"X survives into the later interval"* had to be re-checked against this.
+
+## Four live Ω senses, and only one Level-3 identity
+
+| **Ω-A** Sañjaya, `Ω : W → O` | ⭐ **SAME OBJECT — STRONG CONTINUITY** with Ω-2, provenance mis-attributed |
+| **Ω-B** epistemic horizon | ⭐⭐ **DISTINCT — EXPLICIT.** The source itself rejects `Ω=𝒦` and `Ω=God` as *"unjustified architectural identities"*. ⛔ **Never typed — a genuine, bounded corpus gap** |
+| **Ω-C** `Ω_K` = *"the set of legitimate kernel operations"* | **RELATED** to Ω-5 and to `𝒪_core` — both `IDENTITY UNWITNESSED` |
+| **Ω-D** `∫_Ω K_t·w(ω)dω` **and** `∀K ∈ Ω` | ⛔ **type error inside one file** — `K` cannot be a function on Ω *and* an element of Ω |
+
+⭐ **Measured, not inferred:** the horizon document mentions `Sañjaya` **0 times**; the Sañjaya
+document mentions `horizon` **0 times**.
+
+## `C-06` is a LOCAL ruling
+
+*"**Combining them would** make the non-identifiability result trivially false."* The verb is
+**conditional**. C-06 rules that **two homonyms must not be combined** — it does **not** rule that
+Ω is contradictory. And the corpus reaches the same cut independently five days later, in another
+lane, via Ω-B's rejection of `Ω = 𝒦`.
+
+## §9 discipline applied before counting
+
+**44 of 55 Ω-carrying files are `step_286`**, one lane, one thread, 08-31 18:15 → 09-01 11:52.
+⇒ **one evidential lineage, not 44 confirmations.**
