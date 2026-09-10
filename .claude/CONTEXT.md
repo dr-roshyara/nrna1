@@ -1,28 +1,43 @@
-**Updated:** 2026-09-10 (latest) — **MD-094 EXECUTED — KERNEL DOMAIN-DISCOVERY BURST 2 (20 files),
-CHECKPOINT.** Continued `kernel/`'s own chronology from MD-093's own recommended frontier
-(2026-08-24 01:08–03:36). **Central finding**: File 44 introduces a **"K-1 structure"**
-(`KnowledgeAggregate`+`ConflictRecord`, Verification Port as sole gate) — the exact token this
-reconstruction has treated as an already-frozen governance track since MD-067, without ever having
-read its own origin. No identity statement connects the two — recorded `IDENTITY UNRESOLVED`, the
-highest-priority candidate yet found for that track's origin. The same file is confirmed **not
-actually an adjudication despite its own title** — a live status note deferring its own ruling, part
-of a wholly separate governance track (`C-14`–`C-18`, `F-CM-1a/1b`) with zero cross-reference to the
-surrounding material. Four further unreconciled Kernel senses found (running ledger now twenty
-candidates). Confirmed a genuine fork: one sub-thread (6 files) contains **zero** occurrences of
-"Kernel" as a KnowledgeOS concept, developing an independent statistical/causal-inference/evidence-
-acquisition line instead. "EKS" resolved as "Engineering Knowledge System," distinct from the
-backlog-ticket prefix. A third independent site for the RAG-boundary claim family found, predating
-both prior sites by ~two weeks. The corpus's own explicit pivot toward formalization found ("Technical
-first, with a formal/mathematical layer underneath it") — though no formal notation appears anywhere
-in this window. Two clean self-corrections documented plus one partially-propagated terminology
-correction. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched per
-this reconstruction's own standing freeze; `theory-extraction/` and `verification/zero-algebra/` (the
-concurrent session's own active lane) never accessed. Verified both consistency scripts `CONSISTENT`.
-Full trace: `14_decision-log/MD-094-kernel-domain-discovery-burst-2/` (4 files). **MD-094 status:
-EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own continuation from
-2026-08-24 09:44 onward, or a bounded adjudication-only phase testing the K-1 structure candidate.
+**Updated:** 2026-09-10 (latest) — **MD-095 EXECUTED — KERNEL DOMAIN-DISCOVERY BURST 3 (52 files),
+CHECKPOINT.** Continued `kernel/`'s own chronology from MD-094's own recommended frontier
+(2026-08-24 09:44–17:12, files 60–111, bounded by a genuine 17.1-hour break). Seven parallel
+extraction agents read all 52 files in full, applying an explicit four-lens discipline (Senior
+Statistician / Mathematician / DDD Architect / Principal Knowledge Engineer). **Central K-1
+finding**: the pre-registered `KnowledgeAggregate`-correction file was extracted and adjudicated
+against MD-094's own "K-1 structure" (File 44) — the token `KnowledgeAggregate` recurs (its only
+other corpus occurrence), but the correction splits an oversized "God Aggregate" into
+`KnowledgeClaim`/`Evidence`/`Determination`/`Authority`, with no `ConflictRecord` and no
+Verification-Port-style gate; `ConflictRecord` confirmed absent from all 52 files. Classification
+held at `IDENTITY UNRESOLVED`, unchanged from MD-094 — no standalone K-1 adjudication opened, per
+explicit instruction. **Kernel Identity Ledger extended to thirty-three entries**, all mutually
+unresolved; one contradiction candidate flagged (a "no Semantic Kernel" rejection vs. an "implied
+meaning must be stored in the Kernel" requirement, same day, never textually connected); one
+`EPISTEMIC KERNEL` boundary document (Shieber) stands out as the most rigorous Kernel-boundary
+artifact found in `kernel/` to date. **New central finding**: a fourteen-form Knowledge-State
+tuple-proliferation family — mutually distinct, non-reconciled tuple/vector/function definitions for
+"the current state of knowledge," recurring across nearly every file, none reaching beyond
+`NAMED`/`well-TYPED`. The tracked F4 formal family (`Sat`/`Det_r`/`EvalReq`/`EC`/`EC_t`/`Γ`/`Δ_t`/
+`≡_sem`/`⪯_cap`/`MinKer`/`v1.3`) confirmed absent across all 52 files — extends the continuous
+absence boundary across the first 111 files of `kernel/`. Two duplicate file pairs confirmed
+byte-identical via direct `diff`; two further pairs presumed duplicate by filename convention only,
+not independently diff-verified this phase. One uncorrected label collision (`EKI-08`) recorded
+verbatim. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/MD-095-kernel-domain-discovery-burst-3/` (4
+files). **MD-095 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own
+continuation past the 17.1-hour break at 2026-08-25 10:18.
 
-**Previous block (2026-09-10, superseded above — stands as history): MD-093 EXECUTED — KERNEL
+**Previous block (2026-09-10, superseded above — stands as history): MD-094 EXECUTED — KERNEL
+DOMAIN-DISCOVERY BURST 2 (20 files), CHECKPOINT.** Continued `kernel/`'s own chronology from MD-093's
+own recommended frontier (2026-08-24 01:08–03:36). **Central finding**: File 44 introduces a
+**"K-1 structure"** (`KnowledgeAggregate`+`ConflictRecord`, Verification Port as sole gate) — the
+exact token this reconstruction has treated as an already-frozen governance track since MD-067,
+without ever having read its own origin. No identity statement connects the two — recorded
+`IDENTITY UNRESOLVED`, the highest-priority candidate yet found for that track's origin. Four
+further unreconciled Kernel senses found (running ledger now twenty candidates). Full trace:
+`14_decision-log/MD-094-kernel-domain-discovery-burst-2/` (4 files).
+
+**Earlier block (2026-09-10, superseded above — stands as history): MD-093 EXECUTED — KERNEL
 DOMAIN-DISCOVERY BURST 1 (39 files), CHECKPOINT.** Determined the global chronological frontier across all designated lanes (`kernel/`,
 `phase_measure_theory/`, `synthesis/`, `verification/`, `reviews/`, `research/`) per the master
 mission's own six-question framework — `kernel/`'s own earliest file (2026-08-22 16:19) is the

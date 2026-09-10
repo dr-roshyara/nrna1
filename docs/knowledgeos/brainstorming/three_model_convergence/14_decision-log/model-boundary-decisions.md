@@ -7050,3 +7050,54 @@ MD-094-kernel-domain-discovery-burst-2/` (4 files). **MD-094 status: EXECUTED. C
 frontier, named, not begun: `kernel/`'s own continuation from 2026-08-24 09:44 onward, or a bounded
 adjudication-only phase testing the "K-1 structure" candidate against this reconstruction's own
 governance-frozen K-1/K2 references.
+
+---
+
+## MD-095 — Kernel Domain-Discovery Burst 3 (52 files, `kernel/`, 2026-08-24 09:44–17:12) — EXECUTED, CHECKPOINT
+
+Continued the MASTER MISSION's continuous chronological multi-object reconstruction into `kernel/`'s
+own next segment: files 60–111 (52 files), the remainder of 2026-08-24's own continuous research
+day, bounded by a genuine 17.1-hour break before the next file (2026-08-25 10:18). Seven parallel
+extraction agents (batches A–G, ~7–8 files each) read all 52 files in full, applying the four-lens
+discipline (Senior Statistician / Mathematician / DDD Architect / Principal Knowledge Engineer)
+throughout.
+
+**Central K-1 structure finding**: the pre-registered flag (a `KnowledgeAggregate`-correction file,
+11:17) was extracted with care and adjudicated against MD-094's own "K-1 structure" (File 44, 02:06 —
+`KnowledgeAggregate`+`ConflictRecord`, Verification Port as sole gate). The token `KnowledgeAggregate`
+recurs (its only other occurrence in the corpus besides File 44), but the correction splits an
+oversized "God Aggregate" into `KnowledgeClaim`/`Evidence`/`Determination`/`Authority` — no
+`ConflictRecord`, no Verification-Port-style gate. `ConflictRecord` itself confirmed absent from all
+52 files. Per the master mission's own explicit discipline, this is **not** upgraded to a bridge —
+classification held at `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE`, unchanged from MD-094, now with
+52 further files of negative evidence. No standalone K-1 adjudication was opened, per explicit
+instruction.
+
+**Kernel Identity Ledger extended** to thirty-three entries (sixteen MD-093 + four MD-094 + thirteen
+this phase), all mutually unresolved; one genuine contradiction candidate flagged (a "no Semantic
+Kernel" rejection vs. an "implied meaning must be stored in the Kernel" requirement, same day,
+different source-book clusters, never textually connected). One `EPISTEMIC KERNEL` boundary document
+(Shieber, Batch B) stands out as the most rigorous Kernel-boundary artifact found anywhere in
+`kernel/` to date.
+
+**New central finding**: a fourteen-form Knowledge-State tuple-proliferation family — mutually
+distinct, non-reconciled formal tuple/vector/function definitions for "the current state of
+knowledge," recurring across nearly every file in this burst (several within a single document),
+none reaching beyond `NAMED`/`well-TYPED` per the mathematical-closure discipline. Recorded as a
+standing structural pattern, not opened as individually tracked trajectories.
+
+The tracked F4 formal family (`Sat`, `Det_r`, `EvalReq`, `EC`/`EC_t`, `Γ`, `Δ_t`, `≡_sem`, `⪯_cap`,
+`MinKer`, `v1.3`) confirmed absent across all 52 files — extends the continuous absence boundary
+across the first 111 files of `kernel/` (MD-093's 39 + MD-094's 20 + this phase's 52). Two duplicate
+file pairs confirmed byte-identical via direct `diff`; two further pairs presumed duplicate by
+filename convention only, not independently diff-verified this phase (a named, low-priority gap). One
+uncorrected label collision (`EKI-08`, two substantively different invariants, ~30 minutes apart, no
+cross-reference) recorded verbatim.
+
+No frozen artifact (MD-024–094) modified; no object merged; no bridge invented; K-1/K2 untouched per
+this reconstruction's own standing freeze; `theory-extraction/` and `verification/zero-algebra/`
+never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-095-kernel-domain-discovery-burst-3/` (4 files).
+
+**MD-095 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun: `kernel/`'s own continuation past the 17.1-hour break at 2026-08-25 10:18.
