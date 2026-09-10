@@ -6612,3 +6612,67 @@ scoped governance decision on the acceptance-policy component alone, with explic
 `EC`/`r`/`Γ`/`Sat` formulation choice it depends on, or (b) a further, separately-authorized
 reconciliation phase targeting `EC`/`r`/`Γ`/`Sat`'s own object-identity questions before any
 construction is attempted at all — this phase does not choose between them.
+
+---
+
+## MD-086 — Chronological Reconciliation Investigation: `EC`, `r`, `Γ`, `Sat`
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-085 and narrowed the next mission precisely:
+**can the competing corpus-native formulations of `EC`, `r`, `Γ`, and `Sat` be reconciled historically
+into identity/refinement relationships using only corpus evidence, without inventing mappings or
+choosing a canonical formulation?** — testing pairwise correspondence (structural/semantic/dependency/
+context/historical/mathematical) rather than another broad missing-search, with explicit warning
+against inferring a projection/refinement relationship from field-overlap alone.
+
+**Two targeted verifications performed before drafting, both requiring correction of this
+reconstruction's own prior framing**: (1) `T5`'s own canonical source never states any relationship
+between `Sat(K,EC_t)` (contract-level) and `Sat(K_t,r)` (requirement-level) — both are independent,
+unrelated primitives, closing the mission's own hypothesized `Sat(K,EC)⟺∀r:Sat(K,r)` question directly.
+(2) Part VIII's own 4-field `Γ=(Domain,Time,Purpose,Vocabulary,…)` carries **zero cross-reference** to
+Part II's own 7-tuple `Γ` — MD-081's own "`SUBDIVIDED`" responsibility claim overstated what the source
+actually supports; corrected to `ALTERNATIVE FORMULATION, no stated correspondence`. Recorded forward;
+MD-081's own text not edited.
+
+**Central new finding**: a field-by-field correspondence analysis of `EC` surfaced a materially
+stronger, previously-uncredited structural link between the theory's own birth `EC` (`step-023`,
+7-field) and T21's own final `EC` (6-field `⟨Req,Rules,Scope,ER,TR,AR⟩`) — four of six T21 fields
+(`Req`,`ER`,`TR`,`AR`) match `step-023`'s own field names (`Requirements`,`EvidenceRules`,
+`TemporalRules`,`AuthorityRules`) closely. Not proof of identity (no citation exists either direction),
+but the single strongest field-level correspondence found anywhere in the `EC` family — classified
+`RELATED OBJECT`, not `SAME OBJECT`, since the historical and mathematical tests both fail.
+
+**Pairwise reconciliation results, per family**: `EC` — two genuine `SAME OBJECT` pairs (`EC₆`↔`EC₇`,
+internal T21 refinement; `EC₀`↔`EC₈`, verbatim quotation), one governed `SAME OBJECT, REFINED`
+lineage (the `step-025` drift series, reused from the verification lane's own prior audit), plus the
+new `EC₀`↔`EC₆`/`EC₇` correspondence. `r` — one genuine `SAME OBJECT, REFINED` pair (`r_B`↔`r_H`,
+explicit same-document extension); two plausible-not-proven `RELATED OBJECT` links (`r_A`, `r_I`), with
+`r_I`'s own specific point of breakdown against `r_B` now precisely located (`causal` has no
+counterpart in `r_B`'s own 11-topic list). `Γ` — no pair reaches `SAME OBJECT` or a source-stated
+refinement anywhere; the differently-named `Γ_I`/`Γ_R` symbols are themselves read as a disclosed
+signal of intended distinctness, not evidence of subdivision. `Sat` — one source-claimed (Part
+III→Part V, "we now formalize it") but structurally-drifting refinement; the contract-level/
+requirement-level split confirmed genuinely unrelated by any statement; the 3-arg→2-arg reversions
+(T22, Part 21 Def 21.4) confirmed `UNRESOLVED NOTATIONAL DRIFT` — checked directly, no textual
+justification exists for any of the four candidate explanations (deliberate abstraction/regression/
+context shift/simplification) over the others.
+
+**Terminal outcome: `R-B`** — some load-bearing competing formulations can be reconciled by corpus
+evidence (`EC` twice, `r` once, `Sat` once with a caveat); most cross-lineage relationships remain
+genuinely unresolved. Not `R-A` (no family fully reconciles); not `R-C` (real identity/refinement
+relations were established, just not for the majority of pairs); not `R-D` (the corpus does not
+explicitly frame these as deliberate alternatives the way it frames the acceptance policy — silence and
+undisclosed drift dominate, with one partial exception, the `Γ_I`/`Γ_R` naming choice). `Γ` alone sits
+closer to `R-C` on its own — no pair in that family reaches `SAME OBJECT` or a source-stated
+refinement.
+
+No new backlog ticket — this phase's corrections sharpen already-tracked evidentiary questions rather
+than naming a new problem. No mapping, projection, or equivalence invented anywhere; no
+canonicalization; no construction; no adoption; no governance decision; no frozen artifact (MD-024–085)
+modified; `theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-086-chronological-reconciliation-investigation/` (5 files).
+
+**MD-086 status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind from
+MD-085 — either (a) a narrowly-scoped governance decision on the acceptance-policy component alone, now
+further informed by exactly which `EC`/`r`/`Γ`/`Sat` sub-lineages are genuinely closed versus merely
+plausible versus genuinely unresolved, or (b) a further, separately-authorized phase specifically
+targeting the pairs this phase found genuinely `UNRESOLVED`.

@@ -1,4 +1,34 @@
-**Updated:** 2026-09-10 (latest) — **MD-085 EXECUTED — FINAL CHRONOLOGICAL MISSING INVESTIGATION AND
+**Updated:** 2026-09-10 (latest) — **MD-086 EXECUTED — CHRONOLOGICAL RECONCILIATION INVESTIGATION:
+`EC`, `r`, `Γ`, `Sat`, HARD STOP.** User accepted MD-085 and narrowed the mission precisely: can the
+competing corpus-native formulations of `EC`/`r`/`Γ`/`Sat` be reconciled historically into identity/
+refinement relationships using only corpus evidence, without inventing mappings — pairwise testing
+(structural/semantic/dependency/context/historical/mathematical), explicit warning against inferring
+projection from field-overlap alone. **Two verifications, both requiring correction of prior
+framing**: `T5`'s own source never relates `Sat(K,EC_t)` to `Sat(K_t,r)` — closes the mission's own
+hypothesized universal-quantification question directly. Part VIII's own 4-field `Γ` carries zero
+cross-reference to Part II's 7-tuple — MD-081's own "`SUBDIVIDED`" claim overstated the evidence,
+corrected to `ALTERNATIVE FORMULATION, no stated correspondence`; MD-081 text not edited. **Central new
+finding**: a field-by-field `EC` analysis surfaced a materially stronger, previously-uncredited
+correspondence between the theory's birth `EC` (`step-023`, 7-field) and T21's final `EC` (6-field) —
+four of six T21 fields match `step-023`'s own field names closely; not proof of identity (no citation),
+but the strongest field-level correspondence found in the `EC` family, classified `RELATED OBJECT`.
+**Pairwise results**: `EC` — two genuine `SAME OBJECT` pairs, one governed refinement lineage, plus the
+new correspondence. `r` — one genuine `SAME OBJECT, REFINED` pair (`r_B`↔`r_H`); two plausible-not-
+proven links, with `r_I`'s own breakdown point against `r_B` now precisely located (`causal` has no
+counterpart). `Γ` — no pair reaches `SAME OBJECT` or a source-stated refinement; the differently-named
+`Γ_I`/`Γ_R` symbols read as a disclosed signal of intended distinctness. `Sat` — one source-claimed but
+structurally-drifting refinement (Part III→Part V); the 3-arg→2-arg reversions (T22, Part 21) confirmed
+`UNRESOLVED NOTATIONAL DRIFT` — checked directly, no textual justification exists for any candidate
+explanation. **Terminal outcome: `R-B`** — some formulations reconcile, most cross-lineage
+relationships remain genuinely unresolved; `Γ` alone sits closer to `R-C` on its own. No new backlog
+ticket. No mapping invented; no canonicalization; no construction; no adoption; no governance decision;
+no frozen artifact modified; `theory-extraction/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-086-chronological-reconciliation-investigation/`
+(5 files). **MD-086 status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in
+kind from MD-085 — either (a) a narrowly-scoped governance decision on the acceptance-policy component
+alone, or (b) a further, separately-authorized phase targeting the pairs found genuinely `UNRESOLVED`.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-085 EXECUTED — FINAL CHRONOLOGICAL MISSING INVESTIGATION AND
 MATHEMATICAL CLOSURE MATRIX, HARD STOP.** User accepted MD-084 as strong but declined to generalize
 `TERMINAL D` for the acceptance policy into "the whole theory is mathematically complete," redirecting
 to a consolidated closure investigation across `EC`/`EC_t`, `r`, `Γ`, `Eval`/`Eval_c`/`EvalReq`/
