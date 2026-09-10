@@ -1,4 +1,31 @@
-**Updated:** 2026-09-10 (latest) — **MD-076 EXECUTED — `Det_r`/`EvalReq` BIRTH-AND-EVOLUTION AND
+**Updated:** 2026-09-10 (latest) — **MD-077 EXECUTED — POST-T22 CHRONOLOGICAL CONTINUATION OF THE
+`Det_r`/`EvalReq`/`Sat(K,r,Γ)` BRANCH, HARD STOP.** User's mission: given MD-076's own Terminal
+Classification C, determine whether the corpus strictly *after* MD-069's own T22 turning point contains
+any later attempt, correction, abandonment, transformation, competing formulation, or
+operationalization of the `Det_r`/`EvalReq` chain — "what did the theory itself do next," not "can we
+invent a way to compute `Det_r`." Explicit prohibition: do not construct `SAT-OPERATIONAL-CLOSURE-v1`.
+**Central corpus-hygiene finding, disclosed first**: 14 of the 56 post-T22
+(`mathematical_ideas_that_can_be_implemented/`, mtime `>= 2026-09-06 10:00`) files are not primary
+corpus documents — first-person AI meta-commentary about this same reconstruction's own earlier
+MD-058–063 phases, filesystem-timestamped inside that phase's own execution window, several explicitly
+naming MD-058–063 by number. **Not a new problem** — the same `EKS-31` phenomenon already filed at
+MD-059/060, now found at bulk scale (14 files); no new ticket, `EKS-31`'s scope extended. Verified no
+contamination of `MD-067`/`068`/`069`'s own frozen text. **The remaining 42 genuine post-T22 files
+scanned full-text: zero occurrences of `EvalReq`/`Det_r`/`Sat(K,r,Γ)`/bare `Γ` anywhere** — corroborates
+and extends MD-069's own T23 finding at full coverage. Two files reuse bare `EC_t` in unrelated
+`Warrant`/`ActionSelector` formalisms, classified `UNRELATED_HOMONYM` (same pattern as `EKS-45`).
+`TheoryState(T24)`: a non-event — T23 remains the most recent, now most fully corroborated state.
+**Decision Gate: GATE 4** — later material changes nothing; genuine historical terminal point reached;
+does NOT automatically authorize construction. Required phrasing recorded: "No later corpus-native
+resolution of the operational gap was evidenced in the inspected chronological corpus." MD-076's own
+Terminal Classification C preserved unmodified. No backlog ticket (gap fully tracked via
+`EKS-44`/`47`/`48`; hygiene finding extends `EKS-31`). No frozen artifact modified; K-1/K2 untouched;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-077-post-t22-chronological-continuation/` (4 files). **MD-077 status: EXECUTED.
+HARD STOP.** Next action, named, not authorized: unchanged from MD-076 — `EKS-48`'s own three-way
+decision (authorize/decline/re-scope a `SAT-OPERATIONAL-CLOSURE-v1` construction phase).
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-076 EXECUTED — `Det_r`/`EvalReq` BIRTH-AND-EVOLUTION AND
 COMPUTABILITY SYNTHESIS, HARD STOP.** User's mission: chronologically reconstruct the birth/evolution
 of `Det_r`/`EvalReq`/`Eval`/`Eval_c`/`Req`/`r`/`standard`/`Acceptance`/`Sat`/`Sat_c`/`EC_t` and
 determine whether the corpus supplies enough to compute `Det_r`/`EvalReq`, without inventing the

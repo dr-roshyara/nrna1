@@ -2794,3 +2794,32 @@ theory; any implementation work of any kind.
 **PHASE 5 PLANNING ANALYSIS COMPLETE. NO PHASE 5, 5A, 5B, OR 5C EXECUTION AUTHORIZED.** No file was
 created, no directory populated, and no classification changed in producing this document. Awaiting a
 separate, explicit authorization for Phase 5A specifically before any execution begins.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-077 — Post-T22 Chronological Continuation of the
+`Det_r`/`EvalReq`/`Sat(K,r,Γ)` Branch — EXECUTED, HARD STOP.** User's mission: given MD-076's own
+Terminal Classification C, determine whether the corpus strictly *after* MD-069's own T22 turning point
+contains any later attempt, correction, abandonment, transformation, competing formulation, or
+operationalization of the `Det_r`/`EvalReq` chain — "what did the theory itself do next," explicitly not
+an invitation to construct the missing semantics; explicit prohibition on constructing
+`SAT-OPERATIONAL-CLOSURE-v1`. **Central corpus-hygiene finding, disclosed first**: 14 of the 56 files in
+the post-T22 (`mathematical_ideas_that_can_be_implemented/`, mtime `>= 2026-09-06 10:00`) population are
+not primary corpus documents — first-person AI meta-commentary about this same reconstruction's own
+earlier MD-058–063 phases, filesystem-timestamped inside that phase's own 2026-09-09 13:28–17:12
+execution window, several explicitly naming MD-058–063 by number. **Not a new problem** — the identical
+`EKS-31` phenomenon already filed at MD-059/060, now found at bulk scale; no new ticket, `EKS-31`'s scope
+extended. Verified zero contamination of `MD-067`/`068`/`069`'s own frozen text. **The remaining 42
+genuine post-T22 files scanned full-text: zero occurrences of `EvalReq`/`Det_r`/`Sat(K,r,Γ)`/bare `Γ`
+anywhere** — corroborates and extends MD-069's own T23 finding at full-text coverage. Two files reuse
+bare `EC_t` in unrelated `Warrant`/`ActionSelector` formalisms, classified `UNRELATED_HOMONYM` (same
+pattern as `EKS-45`). `TheoryState(T24)`: a non-event — T23 remains the most recent, now most fully
+corroborated, state. **Decision Gate: GATE 4** — later material changes nothing; genuine historical
+terminal point reached; does NOT automatically authorize construction. Required phrasing recorded: "No
+later corpus-native resolution of the operational gap was evidenced in the inspected chronological
+corpus." MD-076's own Terminal Classification C preserved unmodified. No backlog ticket (gap fully
+tracked via `EKS-44`/`47`/`48`; hygiene finding extends `EKS-31`). No frozen artifact modified; K-1/K2
+untouched; `theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-077-post-t22-chronological-continuation/` (4 files). **MD-077 status:
+EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged from MD-076 — `EKS-48`'s own
+three-way decision (authorize/decline/re-scope a `SAT-OPERATIONAL-CLOSURE-v1` construction phase).
