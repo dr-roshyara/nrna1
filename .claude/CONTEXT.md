@@ -1,4 +1,39 @@
-**Updated:** 2026-09-10 (latest) — **MD-087 EXECUTED — DEEP CHRONOLOGICAL RECONCILIATION
+**Updated:** 2026-09-10 (latest) — **MD-088 EXECUTED — EVIDENCE-CLASS CLOSURE ADJUDICATION, HARD
+STOP.** User accepted MD-087 but identified a genuine methodological overstatement: "no bridge found
+by the bridging-language test" was conflated with "the corpus is exhausted," and ten correlated
+negative searches were treated as independent confirmations when most repeated one evidence class
+across nested populations. This phase's own narrow purpose: determine whether all materially different
+evidence classes capable of establishing identity/refinement/equivalence have been exhausted — an
+audit, not another reading pass. MD-087's own sweeps reused as frozen evidence. **Method**: defined a
+19-class evidence inventory; built a per-pair coverage matrix honestly distinguishing tested/not-found,
+tested/not-applicable, and genuinely untested; closed several previously-open classes with new,
+targeted checks. **New findings**: T22's own worked example uses both `EC` and `Γ` only as bare,
+uninstantiated symbols — confirmed directly, closing the worked-example class as not-applicable for
+both; `r` *is* concretely instantiated there (`r_1=PaymentConfirmed(S)`) but only as a bare label,
+never matching `r_A`'s own 7-tuple shape. Part III §3.58's own candidate "Determination Context" was
+verified to explicitly group `Requirement`/`Contract`/`Satisfaction`/`Determination` — i.e. `r`/`EC`/
+`Sat`/`Determination` — into one bounded context; `Γ` appears in neither of the corpus's own two
+candidate context-maps at all, and both maps are T21-native, structurally unable to bridge to any
+pre-T21 formulation. A type-preserving-instantiation test for `EC` found no clean mapping either
+direction; for `r` it's not-applicable (`r_B`'s own total abstraction supplies nothing to test); for
+`Γ` it remains genuinely ambiguous (`Γ_C`'s own ellipsis) — a limit of the source text itself, not of
+the investigation. **Statistical correction**: of MD-087's own ten sweeps, only three are genuinely
+distinct evidence-class/population combinations, not ten independent confirmations. **Terminal
+verdict, per family, not forced to one letter**: `EC` — `E-A`; `r` — `E-A`; `Γ` — `E-A, with one
+disclosed ambiguity`; `Sat` — `E-A`. The mandatory distinguishing statement recorded exactly: the
+corpus search is closed with respect to the evidence classes investigated — this does not prove no
+conceivable relationship exists, only that no corpus-attested one was found across every materially
+distinct evidence class this investigation could identify and test. MD-087's own overstated language
+corrected forward, its text not edited. No new backlog ticket. No bridge, mapping, or equivalence
+invented; no canonical formulation selected; no frozen artifact modified; `theory-extraction/` never
+accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-088-evidence-class-closure-adjudication/` (5 files). **MD-088 status: EXECUTED. HARD STOP.** Next
+action, named, not authorized: unchanged in kind — a narrowly-scoped governance decision on the
+acceptance-policy component alone, or an explicit, separately-authorized decision to construct a
+disclosed, labeled research bridge for `EC`/`r`/`Γ`/`Sat`, now on the most thoroughly evidenced footing
+possible without inventing one.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-087 EXECUTED — DEEP CHRONOLOGICAL RECONCILIATION
 INVESTIGATION: `EC`, `r`, `Γ`, `Sat`, HARD STOP.** User accepted MD-086's own `R-B` outcome and
 commissioned a deeper investigation: for ten precisely-defined unresolved pairs (population recorded
 in full with birth times, lanes, unresolved question, and evidence-still-capable-of-changing-the-

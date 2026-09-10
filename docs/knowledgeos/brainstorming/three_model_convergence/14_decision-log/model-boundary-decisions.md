@@ -6741,3 +6741,63 @@ no construction; no canonicalization; no adoption; no frozen artifact (MD-024–
 narrowly-scoped governance decision on the acceptance-policy component alone, or a separately-
 authorized construction phase (not a further reconciliation search) if `EC`/`r`/`Γ`/`Sat`'s own
 identity questions are to be closed at all.
+
+---
+
+## MD-088 — Evidence-Class Closure Adjudication
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-087 as valid but identified a genuine
+methodological overstatement: "further corpus-reading is unlikely to change any of these ten verdicts"
+conflated *no bridge found by the bridging-language test* with *the corpus is exhausted*, and treated
+ten correlated negative searches as though independently confirming, when most repeated one evidence
+class (textual bridging) across nested/overlapping populations. This phase's own narrow purpose:
+determine whether all materially different classes of corpus evidence capable of establishing
+identity/refinement/equivalence have been exhausted — an evidence-class closure audit, not another
+reading pass. MD-087's own sweeps reused as frozen evidence, not repeated.
+
+**Method**: defined a 19-class evidence inventory; built a per-pair coverage matrix across
+MD-078–087's own accumulated evidence, honestly distinguishing `TESTED/NOT FOUND`, `TESTED/NOT
+APPLICABLE`, and genuinely `UNTESTED`; closed several previously-open classes with new, targeted
+checks. **New findings**: T22's own worked example uses both `EC` and `Γ` only as bare, uninstantiated
+symbols — confirmed directly, closing the worked-example evidence class as `NOT APPLICABLE` for both.
+`r`, by contrast, *is* concretely instantiated there (`r_1=PaymentConfirmed(S)`) but only as a bare
+proposition label, never with field values matching `r_A`'s own 7-tuple shape — `NOT FOUND,
+STRUCTURALLY UNCHECKABLE`. Part III §3.58's own candidate "Determination Context" was verified to
+explicitly group `Requirement`/`Contract`/`Satisfaction`/`Determination` — i.e. `r`/`EC`/`Sat`/
+`Determination` — into one bounded context (a genuine, if only candidate-level, DDD correspondence);
+`Γ` appears in neither of the corpus's own two candidate context-maps at all. Both maps are T21-native
+and structurally cannot bridge to any pre-T21 formulation (`EC₀`, `r_A`, `Sat`'s own birth forms) —
+named as a structural limitation, not a search failure. A type-preserving-instantiation test for `EC`
+found no clean mapping in either direction (unmatched fields on both sides); the same test for `r` is
+`NOT APPLICABLE` (`r_B`'s own total abstraction supplies no structure to test against); for `Γ` it
+remains genuinely `AMBIGUOUS` — `Γ_C`'s own ellipsis ("…") leaves unresolved whether it is a partial
+view of `Γ_B` or introduces unstated new fields, a limit of the source text itself, not of this
+investigation.
+
+**Statistical correction**: of MD-087's own ten sweeps, only three are genuinely distinct evidence-
+class/population combinations — textual bridging-language search (one method, applied to nested/
+overlapping corpus windows for `EC`/`r`/`Γ`/the `Sat` reversion, not four independent confirmations);
+`r_I`'s own executable-source origin check; the `research/knowledgeos-sim/` citation check. The
+ordinal conclusion (zero hits) is unaffected; the evidentiary *weight* MD-087 implicitly assigned it is
+corrected.
+
+**Terminal verdict, per family, not forced to one letter**: `EC` — **`E-A`**; `r` — **`E-A`**; `Γ` —
+**`E-A`, with one disclosed ambiguity** (the `Γ_C` ellipsis); `Sat` — **`E-A`**. The mandatory
+distinguishing statement, per the mission's own §9, recorded exactly: *"The corpus search is closed
+with respect to the evidence classes investigated. This does not prove that no conceivable relationship
+exists... it establishes that no corpus-attested relationship has been found across every materially
+distinct evidence class this investigation was able to identify and test, and that no further such
+class was surfaced by the corpus itself."* MD-087's own overstated closing language is corrected
+forward to this precise framing; MD-087's own text not edited.
+
+No new backlog ticket — this phase's own corrections sharpen `EKS-48`'s own already-tracked evidentiary
+basis. No bridge, mapping, transformation, or equivalence invented anywhere; no canonical formulation
+selected; no F3↔F4 reconciliation; no implementation; no frozen artifact (MD-024–087) modified;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-088-evidence-class-closure-adjudication/` (5 files).
+
+**MD-088 status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind — a
+narrowly-scoped governance decision on the acceptance-policy component alone, or, if `EC`/`r`/`Γ`/`Sat`
+reconciliation remains a priority, an explicit, separately-authorized decision to construct a
+disclosed, labeled research bridge — now on the most thoroughly evidenced footing this reconstruction
+can produce without inventing one itself.
