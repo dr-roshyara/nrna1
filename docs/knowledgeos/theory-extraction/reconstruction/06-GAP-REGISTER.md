@@ -4094,3 +4094,77 @@ $$\boxed{\text{Governance-lane exhaustion} \neq \text{theory exhaustion}}$$
 
 Die Lane trennt beides selbst: *"**The research progressed; the constitutional gate remains
 closed.**"*
+
+---
+
+# ⭐⭐⭐ G-68 — Birth-Point-Analyse: alle vier Objekte werden unter einem Namen geboren, der ihre spätere Bedeutung NICHT ist
+
+Schritt A–C der Kommission. Register: `reconstruction/lineage/00-BIRTH-POINT-ANALYSIS.md`.
+Fahrplan: `20260909-185001_files-to-read-one-by-one.log.md` — **7.162 Einträge**,
+`2026-08-05` → `2026-09-10`; nach Firewall-Ausschluss **2.888 lesbare `.md`**.
+
+## §1 · ⚠️ Elfter Messfehler, vor Übernahme gefunden
+
+Der erste Durchlauf datierte alle vier Geburten auf **08-05 bis 08-21**. **Alle fünf geprüften
+Rohbefunde sind Falsch-Positive:** *"**Zero** translation"* (Zahlwort) · *"domain-state
+**transition**, not filesystem housekeeping"* (Software-Migration) · *"valid receipt for the
+**applicable context** version"* (Session-Governance) · zwei Mehrzeilen-Artefakte.
+
+**Ursache:** der Fahrplan beginnt mit dem **PublicDigit-Plattformkorpus**. ⇒ Muster
+**mathematisch verankert** statt lexikalisch. Alte Messung bleibt nach §16 stehen.
+
+## §2 · Verifizierte Birth Points
+
+| Objekt | lexikalische Geburt | **Bedeutung dort** | formal-object birth |
+|---|---|---|---|
+| **`δ`** | 08-22 ⚠️ FP | Koeffizient in `α+β+γ+δ=1` | ⭐ **08-26 18:31** — $\boxed{K_{t+1}=\delta(K_t,e_t)}$, *"`e_t` is a **state-changing event**"* |
+| **`Γ`** | ⭐ **08-24 12:28** | **`(Γ) — Constraints`** | dieselbe Stelle |
+| **`Sat`** | ⭐ **08-26 11:10** | ⚠️ **Sanskrit** $Sat = ultimately\ real$ | ⭐ **08-27 16:25** — $\boxed{Sat(K,r_i)}$ |
+| **`Zero`** | ⭐ **08-22 10:36** | **vedische Lens**, *"Zero provides the reference frame"* | später (`Δ=∅`) |
+
+$$\boxed{\text{Alle vier haben eine Geburt, die NICHT ihre spätere Bedeutung ist.}}$$
+
+## §3 · ⭐⭐⭐ `Γ` — nicht zwei, sondern **mindestens fünf** Kandidatenobjekte
+
+Die Kommission schreibt `Γ₁ ≠ Γ₂` vor; die Chronologie zeigt **fünf**:
+
+| | Datum | Bedeutung |
+|---|---|---|
+| **`Γ₀`** | 08-24 | **Constraints** (Governance/constitutional/domain/applicability) |
+| **`Γ_H`** | 08-25 | **preserved histories / provenance** |
+| **`Γ_P`** | 08-26 | **Propositionskomponente** `P=(S,ρ,O,Γ)` |
+| **`Γ₁`** | 09-02 | **Attribution function** `K=Γ(E,Q,C,EC)` |
+| **`Γ₂`** | 09-02 ff. | **Context frame** (567 Vorkommen) |
+
+**Drei Bedeutungen in 48 Stunden**, zwei weitere neun Tage später. **Keine Quelle setzt sie
+gleich oder grenzt sie ab.** ⇒ **`IDENTITY UNWITNESSED` zwischen allen fünf. NOT SAME OBJECT.**
+
+## §4 · ⭐⭐ `Sat` hat ein Sanskrit-Homonym, das älter ist als das Theorieobjekt
+
+$Sat = ultimately\ real$ gegen *Mithya*, **29 Stunden vor** `Sat(K,r_i)`. ⇒ **`HOMONYM`, keine
+Lineage-Kante.** Das erklärt zugleich, warum eine rein lexikalische `Sat`-Suche im
+`phase_measure_theory`-Zweig irreführt.
+
+## §5 · ⭐⭐ Zwei ungeklärte Typwechsel (§7: Chronologie ≠ Lineage)
+
+* **`δ`**: Geburt nimmt ein **EVENT** `e_t`; die Rewrite-Form nimmt eine **OPERATION** `o` und
+  einen Kontext. **Event → Operation ist ein Typwechsel, keine Erweiterung.**
+* **`Zero`**: Geburt ist ein **Referenzrahmen für Relationen**; die spätere Form ist eine
+  **Leerheitsbedingung über Requirements**.
+
+**Für beide: keine Quelle verbindet die Formen. `LINEAGE UNWITNESSED`.**
+
+## §6 · §19 · Lesefahrplan-Status
+
+| Objekt | Birth-Index | verarbeitet | **verbleibend** |
+|---|---|---|---|
+| `Zero` | #250 | #250 | **2.638** |
+| `Γ` | #466 | #466 | **2.422** |
+| `δ` | #771 | #771 | **2.117** |
+| `Sat` | #857 | #857 | **2.031** |
+
+**Alle vier: `BIRTH LOCATED · CHRONOLOGY NOT YET TRAVERSED`.** Von den zehn §22-Bedingungen
+sind **1 und 3** erfüllt. **Keines ist `READY FOR CLOSURE AUDIT`.**
+
+⚠️ **Damit ist auch klar, wie weit der bisherige Pass wirklich trug:** der 23-Part-Rewrite ist
+**eine Episode am Ende** des Fahrplans, nicht die Theoriegeschichte (§20).
