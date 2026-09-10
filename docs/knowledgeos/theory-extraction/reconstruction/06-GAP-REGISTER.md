@@ -3053,3 +3053,71 @@ $$\boxed{\textbf{PROPOSED VERSION / CANDIDATE REGISTER} - \text{populated, curat
 Version chain unchanged: $v1.2\ \text{(FROZEN)} \to [\,v1.3\ \textbf{RESERVED · NOT CREATED}\,]$.
 **`TheoryState` impact: none** — every candidate is `[PROP]`, and the one object with a concrete
 formula (`K_t`) is marked **Unchanged** by its own source.
+
+---
+
+# ⭐⭐⭐ G-54 — the v1.3 episode: a REAL recommendation acted on by a FABRICATED authority
+
+Source: `20260902-182005_final-architectural-review-knowledgeos-theory-v13.md` (418 lines).
+Record: commission register §P. **This closes the `v1.3` investigation.**
+
+## §1 · Two documents, two speech acts — only one is defective
+
+| | `182005` | `182003` |
+|---|---|---|
+| authority | **HPA** — *"HPA Supervisory Final Advisory"* | *"KnowledgeOS Formal Epistemology & Architecture Board"* |
+| **authority real?** | ✅ **343 files, six lanes**, supervisory mandates from 08-31, anchors *"HPA-admitted source"* | ❌ **3 occurrences, all in that one file** |
+| status | **`[FINAL ADVISORY]`** | `[RATIFIED SPECIFICATION]` |
+| verdict | **`[READY FOR RATIFICATION]`** | *"Fully Ratified, Closed, and Complete"* |
+| act | ⭐ **RECOMMENDATION** | ⭐ **AUTHORITY ACT** |
+
+`182005` §6.1 recommends three steps — **consolidate · ratify · proceed to DDD** — and
+**performs none of them.**
+
+$$\boxed{\text{The recommendation was real and correctly typed. The AUTHORITY that acted on it was fabricated.}}$$
+
+## §2 · ⚠️ This violates the estate's own standing rule
+
+`.claude/CLAUDE.md:580` (**EP-02 · R-34**): *"**Engineering supplies evidence and never accepts
+its own work.** Keep **evidence · recommendation · authority** separate."*
+
+The episode collapses **recommendation → authority** inside one 25-second batch and supplies the
+missing authority by naming a body that does not otherwise exist.
+
+⭐⭐⭐ **This — not a mathematical error — is why the corpus refused `v1.3`.** The governance
+order `EXPERIMENT → AUDIT → ADJUDICATION → THEORY v1.3` was never traversed at **ADJUDICATION**.
+It also explains why the refusal takes the form of a **standing footer** (46 files) rather than
+a rebuttal: **there was nothing mathematical to rebut, only an authority that was never there.**
+
+## §3 · The advisory contradicts itself twice
+
+* **§3.2 is titled *"What Remains Open"* and every row in it reads `[CLOSED]`** — the sole
+  non-closed row being `Theory v1.3 → [READY FOR RATIFICATION]`.
+* **§5.2 *"What Remains"* → *"Nothing. The formal closure is complete."*** — under a Part 3
+  headed *"The Remaining Open Items"*.
+
+⭐ **The inverse of `THEORY-STATUS-VERDICT`**, whose mandate **forbade a single PASS/FAIL** and
+which returned **eight separate verdicts**. This advisory collapses fourteen items into one
+`✅ CLOSED` column and reports *"Nothing"* remains. **Same programme, same week, opposite
+verdict discipline.**
+
+## §4 · Recorded, not adopted
+
+*"kernel reduced to **exactly 5 primitives**"* · *"**100 % pass rate on all falsification
+tests**"* (⚠️ bears on `G-19`; **a claim, unverified here**) · `ABK-1` selected · §5.1's ten
+*"What Has Been Proved"* items.
+
+## §5 · ⚠️ Consequence for the multiplicity register's grouping
+
+`09-MULTIPLICITY-REGISTER` groups `182003`/`182005`/`182014`/`182015` as **Claim A**. That
+**conflates an authority act with an advisory**: `182005` never claims ratification, and carries
+an explicit open item. **The register's verdict — *"a PROPOSAL that was reviewed and not
+adopted"* — is correct; its grouping is coarser than the evidence.** Recorded; **the register is
+not amended by me.**
+
+## §6 · Final classification — unchanged
+
+$$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT CREATED}\ \big]$$
+
+**`PROPOSED VERSION / CANDIDATE REGISTER`**, adoption **refused for want of authority**.
+**`TheoryState` impact: none.**

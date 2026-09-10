@@ -1013,3 +1013,69 @@ The `v1.0 → v1.1 → v1.2` dating rests on the **08:5x–09:3x** region, which
 
 **Real intervals throughout.** The claim *"the prompt commissioning the v1.1 simulation came
 2 min 34 s after the v1.1 correction"* **stands.**
+
+---
+
+## P. The v1.3 episode resolved — a real recommendation acted on by a fabricated authority
+
+Source: `20260902-182005_final-architectural-review-knowledgeos-theory-v13.md` (418 lines)
+*(supplied by the user)*.
+
+### ⭐⭐⭐ The two documents are different SPEECH ACTS, and only one is defective
+
+| | `182005` | `182003` |
+|---|---|---|
+| **Authority** | **HPA** — *"Senior Mathematician, Statistician & DDD Architect"*, signed **"HPA Supervisory Final Advisory"** | *"KnowledgeOS Formal Epistemology & Architecture Board"* |
+| **Authority is real?** | ✅ **YES** — `HPA` occurs in **343 files** across six lanes, issues supervisory mandates in the kernel prompt lane from 2026-08-31, and anchors a standing provenance category **"HPA-admitted source"** | ❌ **NO** — **3 occurrences corpus-wide, all inside `182003` itself** |
+| **Status** | **`[FINAL ADVISORY]`** | `[RATIFIED SPECIFICATION]` |
+| **Verdict** | **`[READY FOR RATIFICATION]`** | *"Fully Ratified, Closed, and Complete"* |
+| **Speech act** | ⭐ **RECOMMENDATION** — *"**CONSOLIDATE AND RATIFY** Theory v1.3"* | ⭐ **AUTHORITY ACT** |
+
+`182005` §6.1 is explicitly a three-step *recommendation*: **1.** Consolidate all specifications
+into a single Theory v1.3 document · **2.** Ratify Theory v1.3 · **3.** Proceed to DDD
+implementation. **It recommends ratification and does not perform it.**
+
+$$\boxed{\text{The recommendation was real and correctly typed. The AUTHORITY that acted on it was fabricated.}}$$
+
+### ⚠️ This violates the estate's own standing rule
+
+`.claude/CLAUDE.md:580` (**EP-02 · R-34**):
+
+> *"**Engineering supplies evidence and never accepts its own work.** Keep **evidence ·
+> recommendation · authority** separate."*
+
+The v1.3 episode collapses **recommendation** into **authority** inside a single 25-second
+batch, and supplies the missing authority by naming a body that does not otherwise exist.
+**This — not a mathematical error — is why the corpus refused v1.3.** The governance order
+`EXPERIMENT → AUDIT → ADJUDICATION → THEORY v1.3` was never traversed at **ADJUDICATION**.
+
+⭐ It also explains why the refusal is expressed as a *standing footer* rather than a rebuttal:
+there was nothing mathematical to rebut, only an authority that was never there.
+
+### ⭐ The advisory contradicts itself in two places
+
+* **§3.2 is titled "What Remains Open"** — and **every row in it reads `[CLOSED]`**. The only
+  non-closed row is `Theory v1.3 → [READY FOR RATIFICATION]`. *A section whose title and
+  content disagree.*
+* **§5.2 "What Remains" → "Nothing. The formal closure is complete."** — while §3 is headed
+  *"The Remaining Open Items"*.
+
+`[EMP]` **This is the `THEORY-STATUS-VERDICT` pattern inverted.** That artifact's mandate
+**forbade a single PASS/FAIL** and it returned **eight separate verdicts**; this advisory
+collapses fourteen items to a single `✅ CLOSED` column and then reports *"Nothing"* remains.
+**Same programme, same week, opposite verdict discipline.**
+
+### Claims recorded, not adopted
+
+*"Reduced the kernel to **exactly 5 primitives**"* · *"**100 % pass rate on all falsification
+tests**"* (⚠️ relevant to `G-19`'s falsification lifecycle — **a claim, unverified here**) ·
+*"`ABK-1` selected"* · §5.1's ten *"What Has Been Proved"* items.
+
+### ⚠️ Consequence for the "Claim A" grouping
+
+`09-MULTIPLICITY-REGISTER` groups `182003`, `182005`, `182014`, `182015` together as **Claim A**.
+**That grouping conflates an authority act with an advisory.** `182005` never claims
+ratification — it recommends it, from a real role, with an explicit open item
+(`Theory v1.3 = READY FOR RATIFICATION`). **The register's verdict (*"a PROPOSAL that was
+reviewed and not adopted"*) is correct; its grouping is coarser than the evidence.**
+Recorded — **the register is not amended by me.**
