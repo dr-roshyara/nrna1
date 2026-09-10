@@ -1402,3 +1402,80 @@ and is the best-posed next task available:
 
 ⚠️ `20260910_1338_document.md` and `20260910_1343_document.md` are **byte-identical** — a duplicate
 pair five minutes apart, of the kind `G-12` counted 21 of inside 026–268.
+
+---
+
+# ⭐⭐⭐ DOES THE CORPUS SUPPLY THE ACCEPTANCE RELATION? — **YES for propositions. NO for requirements. And the corpus has already named the missing bridge.**
+
+## 1. It exists, and it has a birth point
+
+**`step-008` — "Epistemic Acceptance and Commitment", 2026-08-27 15:19:20** *(001–022 band —
+backfill debt, never read until now)*:
+
+| §1 | *"There is a **missing concept**: `AcceptancePolicy`. The evidence tells us what the evidence supports. **The acceptance policy determines what the KnowledgeOS is allowed to admit as accepted knowledge.**"* |
+| §11 | ⭐ **`EA ⊨ Policy` ⟹ `Accept(P)`** — an entailment between an Evidence Assessment and a policy. *(The same `⊨` as `Sat_c`'s `K_t,Γ_t ⊨ P_c(r)`.)* |
+| §12 | ⭐ **`ρ_A = AcceptancePolicy`**, with conditions: `N_independent ≥ 2` · `Authority(Source) ≥ A_min` · `Age(e) ≤ T_max` · `ActiveConflict(P) = False` · `HumanApproval = True` · `Pr(P∣E) ≥ 0.95` |
+| §13 | the layering: **Mathematics** defines what an assessment *means* · **Policy** defines *when it is sufficient* · **Governance** defines *who may commit* |
+| §14 | a whole bounded context — `Assertion` · `EvidenceAssessment` · **`AcceptancePolicy` ("the rule determining admissibility")** · `AcceptanceDecision` · `Commitment` · `Authority` |
+| §15 | domain event **`AssertionAccepted`** |
+
+## 2. Its content is policy **by design** — §12's own closing line
+
+> *"But these are **examples of policy, not universal laws**."*
+
+$$\boxed{\textbf{The corpus supplies the acceptance relation's PLACE, TYPE and EVENT — and declares its CONTENT to be policy, deliberately not mathematics.}}$$
+
+⭐ **Third instance of one architectural move**, stated in three lanes across ten days:
+Ω-B *"not a part of the system but a philosophical anchor"* · `Det_r` *"contract-specific"* ·
+`ρ_A` *"examples of policy, not universal laws"*. **A declared boundary, not an omission.**
+
+## 3. `ρ_A` survives — and the verification lane graded it
+
+Propagates into `reviews/synthesis/` (book II, ch. "states-and-admission") **and**
+`verification/` (`A2-assumption-register`, `V2-dependency-graph`, `TV-F-018-019`,
+`plan/02-definition-verification-register`).
+
+| `V2-dependency-graph` L40 | *"`Supported → Accepted` — **`EA ⊨ ρ_A`** … **all explicitly policy examples, not laws**; emits `AssertionAccepted`"* |
+| `plan/02-definition-verification-register` L12 | *"`AcceptancePolicy ρ_A` — **role yes; content language no** — assumed — **uniqueness NOT established (MV-F-7)** — policy-relative — **examples only** — **PARTIALLY DEFINED**"* |
+
+## 4. ⭐⭐⭐ But it judges PROPOSITIONS — and requirements are a different type
+
+`reviews/synthesis/analysis/mathematical-verification-report.md`, **`MV-F-9`** (confirming
+**`AF-F-13`**):
+
+> *"the interlock and **any `Γ↔ρ_A` identification** are well-defined **only relative to an
+> undefined map `φ: R→P`** (or `R→2^P`)"*
+> *"**`Γ` judges requirements, `ρ_A` judges propositions**; the identification needs the undefined
+> `r↔P` map"*
+
+And the same report's table: *"`r ↔ P` map | `R → P` (or `2^P`) | **ABSENT**"*.
+
+$$\boxed{\varphi : R \to P \textbf{ — the requirement→proposition map — is the missing bridge, and the corpus named it itself.}}$$
+
+## 5. ⭐⭐ Two independent arrivals at the same boundary
+
+| my reconstruction, yesterday, via the **evaluation** family | *"`Eval(P,K)` was typed and Kleene-verified; `EvalRequirement(K,r,C)` never was. `P` is a proposition, `r` is a requirement, **no document identifies them**."* |
+| the verification lane, 2026-08-29, via the **acceptance** family | *"`Γ` judges requirements, `ρ_A` judges propositions; the identification needs the undefined `r↔P` map."* |
+
+**Different lanes, different families, different months — the same type boundary, and neither cites
+the other.** ⇒ `CORROBORATIVE`, **two independent lineages** (§ senior-statistician discipline).
+
+## 6. Disposition
+
+| question | answer |
+|---|---|
+| does the corpus supply the acceptance relation? | ⭐ **YES** — `EA ⊨ ρ_A ⟹ Accept(P)`, born `step-008`, 2026-08-27 15:19:20 |
+| is it complete? | **PARTIALLY DEFINED** — role yes, **content language no**, examples only, uniqueness unestablished (`MV-F-7`) |
+| is that a gap? | ⛔ **No — a declared boundary.** *"examples of policy, not universal laws"* |
+| does it answer *"sufficient for a **requirement**"*? | ⛔ **NO.** It answers it for **propositions** |
+| what is actually missing? | ⭐⭐⭐ **`φ : R → P`** — already named `MV-F-9` / `AF-F-13`, status **ABSENT** |
+
+## 7. Effect on the register
+
+| | |
+|---|---|
+| **the other lane's `G1`** (*"`standard` / sufficient-support semantics"*) | ⚠️ **RE-SCOPED.** The sufficiency criterion is **supplied and declared policy-relative**. What is missing is one type down: **`φ : R → P`** |
+| **`G-27`** | ⛔ **SUPERSEDED.** Not *"requirement-evaluation never got a result space"* — it never got a **bridge to the type that has one** |
+| **`Det_r` (`G-14`/`G-25`)** | **RE-SCOPED** — its *"contract-specific"* body is the **same declared boundary** as `ρ_A`'s, not a separate hole |
+| **backfill debt** | ⭐ **`step-008` was load-bearing and unread** — as `step-018` was. **The 001–022 band has now produced two decisive objects; it should be read before any further gap is opened** |
+| **NEW `G-28`** | **`φ : R → P` is ABSENT** — the single bridge on which `Γ↔ρ_A`, `r↔P` and the requirement/proposition interlock all depend. Corpus-named (`MV-F-9`, `AF-F-13`), corroborated independently by my evaluation-family reconstruction |

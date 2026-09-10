@@ -8449,7 +8449,16 @@ Record: `…/gap-discovery/req-evaluation-through-time/`.
 ⭐ **Fourth withdrawal of my own gap claim, same cause.** `EvalReq` codomain · `V_Sat` consumers ·
 Ω-B type · `EvalReq` D. **A measured property of my procedure, not of the corpus.**
 
-**Next:** ⭐ **step-018** — birth of the best-evidenced object in the evaluation family, **never
+**Acceptance relation: FOUND.** ⭐⭐⭐ `EA ⊨ ρ_A ⟹ Accept(P)`, born **`step-008`, 2026-08-27
+15:19:20** (`ρ_A = AcceptancePolicy`, six conditions incl. `N_independent ≥ 2`, `Pr(P|E) ≥ 0.95`).
+Content **declared policy by design** — *"examples of policy, not universal laws"*. Verification
+lane grades it **PARTIALLY DEFINED** (*"role yes; content language no"*). ⛔ **Not a gap — a
+declared boundary**, the third instance after Ω-B and `Det_r`.
+⭐⭐⭐ **The real missing object is `φ : R → P`** — `MV-F-9`/`AF-F-13`: *"`Γ` judges requirements,
+`ρ_A` judges propositions"*, the `r↔P` map is **ABSENT**. **`G-28` opened.** `G-27` superseded.
+⭐⭐ Independently corroborated by my own evaluation-family finding, from the other side.
+
+**Next:** ⭐ **read the 001–022 band** — birth of the best-evidenced object in the evaluation family, **never
 read**, directly load-bearing on `G-01`, `G-25`, `G-27`. ⛔ ~180 files of 026–268 still unread;
 semantic coverage ≈1.5 % (32 of 2,099).
 
