@@ -1202,3 +1202,78 @@ The `G-rerun-with-evaluators` self-retraction is **`NON-GOAL-PROTECTED`**: twelv
 prompts forbid inventing evaluators, so *"`Eval_Gov` is invented governance"* is **compliance,
 not insight.** Together with `δ` (`OPEN BY COMMISSION`) and `CIRC-5`, that is **three** items
 whose openness is now known to be mandated rather than accidental.
+
+---
+
+# `TheoryState(2026-09-06)` — the 23-part rewrite as a multi-object transition
+
+**§2 corpus, verified.** 23 files · **61,368 lines** · parts **01–21 contiguous, none missing** ·
+**ZERO byte-identical duplicates** · **not a synthetic batch** (no 1-second gaps; min 39 s).
+Two `21a` files are a genuine revision (1778 → 1859 lines, 39 s apart), **not** copies.
+
+⭐ **A 5 h 40 m hiatus splits it into two sessions:** **A** = parts 01–15 (00:23:01→01:02:15) ·
+**B** = parts 16–21a (06:42:51→07:51:53).
+
+⚠️ This corpus is **structurally unlike** the 18:20 v1.3 batch (15 % duplicated, synthetic
+1-second stamps). **Zero duplication, real intervals, contiguous numbering.**
+
+**§3 birth event.** `20260906-001616_proper-theory-rewrite-and-the-rescinded-closure-record.md`
+(525 lines, **6 m 45 s before part-01**) — a **plan with Parts A–S**. It names the operation:
+*"a **proper theory rewrite**, not another incremental patch"*, *"a **new coherent master
+theory**, rather than preserving the historical sequence of experiments."*
+
+⭐⭐⭐ **It adjudicates the v1.3 fork** — *"the corpus contains both a premature 'theory closed'
+declaration and a later falsification that **rescinded that closure** … So I will **not simply
+copy the latest 'v1.3 closed' document into the book**."* **It selects the `OPEN /
+CLOSURE-BLOCKED` branch (`182025`) and refuses `182024`.** This **refines `G-61`**: neither
+branch propagated *as an artifact*, but the OPEN branch was **adopted as the rewrite's
+premise**.
+
+## §18 · Multi-object state transitions
+
+| Object | Previous state | New state (rewrite) | Evidence | Transition |
+|---|---|---|---|---|
+| **`δ`** | kernel slot, no body (v1.0 §71); *interface CLOSED / semantics OPEN* | $\delta:\mathbb K\times\mathcal O\times\mathbf{Ctx}\to\mathbb K\cup\{\bot\}$, **deterministic, PARTIAL** | part-04 **Def 4.7** | **REFINEMENT** — fully typed; ⊥ = *"invalid under the applicable semantics"* |
+| **`Sat`** | 2-valued (`DEF-21`) → 3-valued `{⊤,⊥,U}` (v1.2) | **`Sat(K,r,Γ)` → 𝕊_sat, FIVE values** `{Satisfied, Partial, Unsatisfied, Unknown, Conflicted}` | part-05 §5.6 | **EXTENSION** — `Unknown ≠ Unsatisfied`, `Conflicted ≠ Unsatisfied`; *not necessarily a total ordering* |
+| **`Sat` (boolean)** | the native reading in v1.0 | **recovered as a projection** `χ_EC : 𝕊_sat → {0,1}` | part-05 §5.7 | ⭐ **DERIVED, not superseded** — contract-indexed |
+| **`Zero`** | `Zero(K_t,EC_t) ⟺ Δ=∅` (`DEF-22`) | `Zero(K_t,EC_t,Γ_t) ⟺ Δ(K_t,EC_t,Γ_t)=∅` | part-05 **Def 5.6** | **REFINEMENT** — Γ added as a third index; *"`Zero(K)` is generally insufficient"* |
+| **`Adequate`/`Complete`** | `Adequate ≡ Zero` = a **defect** (`TG-3`/`CIRC-3`) | **Theorem 5.1** `Zero ⟺ Complete`, *"**definitional in character**"* | part-05 §5.35 | ⭐ **RESTATED AND OWNED** — same collapse, honestly classified |
+| **`K`** | 11-tuple · 7-tuple `(id,P,e,c,t,Π,ℛ)` · 5-tuple · `(𝒜,ℛ)` | **`K = ⟨N,R,H,S,C,P,G⟩`** | part-04 **Def 4.1** | ⭐ a **FIFTH** formulation, a **second distinct 7-tuple**; *"a conceptual decomposition… not yet an implementation schema"* |
+| **`Γ`** | **attribution function** `K = Γ(E,Q,C,EC)` (v1.0/v1.1) | **context frame**, `Γ = relevant context`, a tuple `⟨…⟩` | 567 occurrences; `Det(…,Γ)` 72, `EVal(…,Γ)` 20 | ⭐⭐⭐ **HOMONYM** — `K = Γ(` occurs **ZERO** times |
+| **`𝒪_core`** | 5 names; then 5 contracts (`182025`) | **5 numbered definitions 4.2–4.6, each with a non-collapse clause** | part-04 | **REFINEMENT** — collective symbol 3×, operations **143×** |
+| **`RejectedEvent`** | — | `RejectedEvent(o, reason, t)` | part-04 §4.21 | **NEW OBJECT** |
+| **`ZeroClaim`** | — | `ZeroClaim(K,EC,Γ)`, enabling *False Zero* | part-05 §5.41 | **NEW OBJECT** — separates the **claim** from the **state** |
+| **`P_c`** | class-indexed satisfaction predicate | **absent by concept** (6 synonyms, 0 hits) | 23-part sweep | **NOT CARRIED** |
+
+## §13 · Completeness claims — and §4 · backward references
+
+`[EMP]` **Zero version references across 61,368 lines**: `v1.0` **0** · `v1.1` **0** ·
+`v1.2` **0** · `v1.3` **0** · `Theory v1` **0**. It cross-references **itself** (`Part I` 7,
+`Part III` 11) and gestures generically (`previously` 30). **It re-derives without citing.**
+
+`Theorem` **143** · `Proof` **215** across 20 files — heavily theorem-structured — yet
+`we have proven` **0**, `this proves` **0**, `QED` **0**, `is final` **0**, `is canonical` **1**,
+`is minimal` **1**, `is closed` **1**.
+
+⚠️ **A near-claim I withdrew before publishing.** I first measured `remains open`/`not
+complete`/`open question` at **0** and nearly reported *"no open-items vocabulary at all."* The
+widened §5 sweep refutes that: `assumption` **316** (21 files), `cannot be` **45**,
+`unresolved` **28**, `not yet` **18**, `limitation` **10**. The accurate finding:
+
+$$\boxed{\text{The rewrite records CONSTRAINTS but issues no AGENDA.}}$$
+
+Absent throughout: `further work` · `future work` · `left open` · `out of scope` ·
+`beyond the scope` · `TBD` · `caveat`. Normalised against a positive control, `open` runs at
+**3.0 / 1000 lines in Theory v1.0** against **0.13 / 1000** here — a **23× lower density**.
+
+⭐ **`assumption` (316 hits, 21 of 23 parts) is the rewrite's dominant hedging device** — the
+*declared-assumption* discipline of the oracle convention (`G-49`), applied at scale.
+
+## §12 · Four states kept apart
+
+`CommissionState` — the plan's **19 topics (A–S)**, ending at *theory → architecture →
+governance*. `ExecutionState` — **23 documents** extending into causality, counterfactuals,
+simulation, decision theory, learning/drift, persistence, query/RAG, reasoning engines and two
+worked examples. **The execution exceeds its commission.**
+`AdjudicationState` — **none located**: no governance act, no review of the rewrite, no
+adoption record.

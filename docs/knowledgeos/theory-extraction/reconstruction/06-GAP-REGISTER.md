@@ -3671,3 +3671,94 @@ same label** — the scope of the claim is now stated precisely.
 ⭐ **This is the rule under which the Gītā/Vedic material is admitted — as a *prior*, never as
 evidence.** Directly relevant to `G-45`'s finding that **82 of 117 kernel prompts were Gītā**
 against a strand recorded closed with *"0 primitives"*.
+
+---
+
+# ⭐⭐⭐ G-63 — the 23-part rewrite: §7 classification per object, and a `Γ` homonym at 567 occurrences
+
+Corpus verified per §2: **23 files · 61,368 lines · parts 01–21 contiguous · ZERO duplicates ·
+real authoring intervals**, split by a **5 h 40 m hiatus** into Session A (01–15) and Session B
+(16–21a). Full timeline: `07-THEORYSTATE-CHRONICLE.md`.
+
+## §3 · Birth event, and it refines `G-61`
+
+`20260906-001616` (525 lines, **6 m 45 s before part-01**) is a **plan with Parts A–S** that
+names the operation — *"a **proper theory rewrite**, not another incremental patch"* — and
+**adjudicates the v1.3 fork**:
+
+> *"the corpus contains both a premature 'theory closed' declaration and a later falsification
+> that **rescinded that closure** … So I will **not simply copy the latest 'v1.3 closed'
+> document into the book**."*
+
+⚠️ **Refines `G-61`.** I concluded *"neither branch was adopted."* Correct **as to artifacts** —
+neither successor propagated. **But the `OPEN / CLOSURE-BLOCKED` branch (`182025`) was adopted
+as the rewrite's premise**, four days later. Earlier record left standing per §7.
+
+## §7 · Transition classification, per object
+
+| object | classification | basis |
+|---|---|---|
+| `δ` | **REFINEMENT** | `Def 4.7` types it fully: $\mathbb K\times\mathcal O\times\mathbf{Ctx}\to\mathbb K\cup\{\bot\}$, deterministic, **partial** |
+| `Sat` | **EXTENSION** | codomain 2 → 3 → **5**; `Conflicted` enters |
+| `Sat` (boolean) | ⭐ **DERIVED, NOT SUPERSEDED** | `χ_EC : 𝕊_sat → {0,1}` — a contract-indexed projection |
+| `Zero` | **REFINEMENT** | `Γ` added as a third index; semantic core `Δ=∅` unchanged |
+| `Adequate`→`Complete` | ⭐ **RESTATED AND OWNED** | `Theorem 5.1`, declared *"definitional in character"* |
+| `K` | ⭐ **COMPETING OBJECT** | `⟨N,R,H,S,C,P,G⟩` is a **fifth** formulation and a **second distinct 7-tuple**; §11's warning holds — these are **not** versions of one object |
+| **`Γ`** | ⭐⭐⭐ **HOMONYM** | context frame, **not** the attribution function; `K = Γ(` occurs **ZERO** times |
+| `𝒪_core` | **REFINEMENT** | 5 numbered definitions, each with a non-collapse clause |
+| `P_c` | **NOT CARRIED** | absent by **concept** — 6 synonyms, 0 hits |
+| `RejectedEvent`, `ZeroClaim` | **NEW OBJECTS** | `Def` part-04 §4.21, part-05 §5.41 |
+
+## §8 · `δ` — the answer to `CR-3`, both branches
+
+$$\delta:\mathbb K\times\mathcal O\times\mathbf{Ctx}\rightarrow\mathbb K\cup\{\bot\}$$
+
+① **operation vs event**: distinguished (§4.7), and rejection yields `RejectedEvent(o,reason,t)`
+— *"a rejected transition should not be confused with 'nothing happened'."*
+② **total or partial**: **PARTIAL**, with `⊥`. ⭐ **Consistent with Step 290's Non-goal #9**
+(*"declare δ total"*) — the non-goal was respected, not violated. **`CR-3` belongs to another
+lane and is not closed by me.**
+
+Each operation carries a non-collapse clause: `ASSERT ≠ ACCEPT` · `LINK ⇏ semantic validity` ·
+`REVISE ≠ overwrite` · `RETRACT ≠ deletion` · `ISOLATE ≠ rejection`.
+
+## §9 · Zero — the non-merge holds
+
+Part-05 contains **zero** occurrences of `BalanceZero`, `Zero_{T,Π}`, `Zero_epistemic`,
+`Zero_probabilistic`, `Z1`–`Z4`. Its `Zero` is the **requirement-satisfaction** Zero only —
+`Def 5.6` refining `DEF-22`. **Balance Zero and Elimination Zero are untouched by it. Not
+merged.**
+
+## §13/§4 · Completeness and citation
+
+`[EMP]` **Zero version references in 61,368 lines** — `v1.0`/`v1.1`/`v1.2`/`v1.3`/`Theory v1`
+all **0**. It cross-references itself (`Part I` 7, `Part III` 11). **It re-derives without
+citing.**
+
+⚠️ **Near-claim withdrawn before publication.** `remains open`/`not complete`/`open question`
+measured **0**, and I nearly reported *"no open-items vocabulary."* The widened §5 sweep
+refutes it: `assumption` **316**, `cannot be` **45**, `unresolved` **28**, `not yet` **18**,
+`limitation` **10**. Accurate finding:
+
+$$\boxed{\text{The rewrite records CONSTRAINTS but issues no AGENDA}}$$
+
+— `further work`, `future work`, `left open`, `out of scope`, `TBD`, `caveat` are all **0**.
+Positive control: `open` at **3.0/1000 lines** in Theory v1.0 vs **0.13/1000** here, a **23×
+lower density**.
+
+## §12 · `AdjudicationState` — **none located**
+
+No governance act, no review of the rewrite, no adoption record. **`ExecutionState` exceeds
+`CommissionState`** (19 planned topics → 23 documents reaching into causality, decision theory,
+learning, retrieval, reasoning engines and worked examples).
+
+## §15 · Statistical discipline
+
+The 23 parts are **one rewrite lineage**, not 23 independent confirmations. A statement
+appearing in many parts is **one authorship event**. ⚠️ Recorded so that no later pass counts
+part-frequency as corroboration.
+
+**Disposition: the rewrite is `PROPOSED / UNADJUDICATED`.** It is neither a version, nor a
+re-founding, nor merely documentation — it is an **uncited self-contained re-derivation** whose
+relation to the numbered lineage is **content inheritance without apparatus** (`G-50`), and
+whose own status was never assessed by any lane.
