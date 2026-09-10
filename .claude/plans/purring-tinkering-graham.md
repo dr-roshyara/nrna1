@@ -2887,3 +2887,38 @@ construction; no frozen artifact modified; no backlog ticket. Verified both cons
 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action, named,
 not authorized: a human governance decision between accepting `Sat` as stipulated or authorizing
 construction for the two named failure points — not a further research phase.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-080 — Responsibility-Transfer Chronological Reconstruction —
+EXECUTED, HARD STOP.** User accepted MD-079 as valid but rejected its conditional necessity verdict as
+terminal, restating "reconstruct → reconcile → canonicalize" and redirecting to: what did the theory
+actually become over time, and where did this family's own semantic/computational responsibilities end
+up — completed elsewhere, moved, split, absorbed, replaced, deliberately externalized, duplicated, or
+genuinely never completed? New discipline: object identity and semantic-responsibility identity
+tracked separately throughout — a different object may discharge the same responsibility a
+gap-classified object was meant to carry. **Central finding**: `Det_r`'s own intended responsibility
+(per-instance evaluation → verdict) has a genuine, empirically-validated predecessor —
+`Standing(p)=(S⁺,S⁻,R,P,Ctx,Cond)`, born `M0127` (2026-09-02), four days before T21, tested to preserve
+12/14 adversarial scenarios vs. 2/14 (Boolean)/8/14 (FDE) — stronger evidence than `Eval`/`EvalReq`/
+`Det_r` ever received. Confirmed zero occurrences of `Standing(` anywhere in the 21-part T21 rewrite:
+discharged once, tested, then independently re-attempted four days later without citation, and the
+re-attempt was itself abandoned within hours (T22's fiat reversion). `EC.Rules`/`standard`'s own
+responsibility, by contrast, has no demonstrated successor anywhere — `Warrant` (MD-037–041, reused)
+already found no formal definition; `Assessment(...)` verified this phase to be external-literature-
+extraction vocabulary, not native; `Verdict(` has zero occurrences as a formal function anywhere. One
+further concurrent-census birth-date claim corrected (`Zero`'s claimed 2026-08-24 birth is a different
+"Zero lens" construct, already tracked by MD-069). **Terminal classification, object-level/
+responsibility-level kept separate**: A unchanged for `Req`/aggregation/separation; C unchanged for
+`EC`; D at both levels for `EC.Rules`/`standard`/`AcceptanceCondition` (now the most exhaustively
+confirmed absence in the investigation); E unchanged for `r`/`Γ`; and the phase's own central
+correction — D at the object level but **B, complete through multiple sources, never carried forward**,
+at the responsibility level for `Det_r`/`EvalReq`. One new backlog ticket, `EKS-55` (a tested, superior
+evaluator existed before `Det_r` and was never consulted). No construction performed; no mapping
+invented; `Standing(p)` not canonicalized; no frozen artifact modified; `theory-extraction/` never
+accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-080-responsibility-transfer-chronological-reconstruction/` (5 files). **MD-080 status: EXECUTED.
+HARD STOP.** Next action, named, not authorized: a human governance decision with three concrete
+options — accept `Sat` as permanently stipulated; authorize construction starting from
+`Standing(p)`/the executable alternatives per `EKS-55`; or authorize construction of an entirely new
+object.

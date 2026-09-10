@@ -6255,3 +6255,67 @@ problem). Verified both consistency scripts `CONSISTENT`. Full trace:
 **MD-079 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
 named, not authorized: a human governance decision between accepting `Sat` as a stipulated input or
 authorizing construction for the two precisely-named failure points — not a further research phase.
+
+---
+
+## MD-080 — Responsibility-Transfer Chronological Reconstruction
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-079 as a valid bounded finding but rejected its
+conditional necessity verdict as terminal, restating the governing rule (reconstruct → reconcile →
+canonicalize) and redirecting to the broader question: **"what did the theory actually become over
+time, and where did the semantic/computational responsibilities of this object family eventually end
+up — completed elsewhere, moved, refined, split, absorbed, replaced, deliberately externalized,
+duplicated, or genuinely never completed?"** New explicit discipline: object identity and
+semantic-responsibility identity tracked separately throughout — a different object may discharge the
+same responsibility a gap-classified object was meant to carry.
+
+**Method**: no frozen artifact reopened; MD-067–079 reused as the frozen baseline. New work: direct
+verification of two leads already flagged, but never fully chased, in this same reconstruction's own
+much earlier phases (pre-MD-067) — `M0127`'s own `Standing(p)` construction (flagged in MD-063) and the
+already-exhaustive `Warrant` investigation (MD-037–041, reused not redone); targeted searches for
+`Assessment`, `Verdict`, `criterion`, `validation rule` across the math lane and `kernel/`/
+`verification/`; birth-point classification (TERM/CONCEPT/FORMAL OBJECT/RECONSTRUCTION-ONLY/UNKNOWN)
+for all 16 tracked objects, cross-checking the concurrent session's own birth-census claims rather than
+accepting them uncritically (one further correction found: its claimed 2026-08-24 `Zero` birth is a
+different, single-argument "Zero lens" construct, already tracked separately by this reconstruction's
+own MD-069 as a permanently distinct branch).
+
+**Central finding**: `Det_r`'s own intended responsibility — per-instance evaluation producing a
+verdict — has a genuine, rich, formally-typed, *empirically validated* predecessor: `Standing(p) =
+(S⁺(p),S⁻(p),R(p),P(p),Ctx(p),Cond(p))`, born `M0127` (2026-09-02), four days before T21, tested and
+found to preserve 12/14 adversarial scenarios versus 2/14 (Boolean) and 8/14 (FDE) — materially
+stronger corpus-native evidence than `Eval`/`EvalReq`/`Det_r` ever received (zero invocations). Direct
+grep confirms **zero occurrences of `Standing(` anywhere in the 21-part T21 rewrite** — the
+responsibility was discharged once, tested, then independently re-attempted four days later without
+citation, and the re-attempt (`Det_r`/`EvalReq`) was itself abandoned within hours (T22's own fiat
+reversion). `EC.Rules`'/`standard`'s own responsibility, by contrast, has **no demonstrated successor
+anywhere** — `Warrant` (MD-037–041, reused) already found no formal definition; `Assessment(...)`,
+verified this phase, is external-literature-extraction vocabulary (Titelbaum/I.J. Good/Rice
+paper-summaries), not a native KnowledgeOS object; `Verdict(` has zero occurrences as a formal function
+anywhere.
+
+**Terminal classification, per component, object-level and responsibility-level kept separate**: `A`
+unchanged for `Req`'s shape, the aggregation layer, and the `Determination⇏Decision` separation
+(now further corroborated); `C` unchanged for `EC`/`EC_t`; `D` for `EC.Rules`/`standard`/
+`AcceptanceCondition` at *both* levels — the one component where object and responsibility
+classification coincide, now the most exhaustively confirmed absence in the whole investigation; `E`
+unchanged for `r`/`Γ`; and, the phase's own central correction, `D` at the object level but **`B —
+complete through multiple sources, never carried forward`** at the responsibility level for
+`Det_r`/`EvalReq` — the job is demonstrably dischargeable (`Standing(p)`, `kos/inquiry.py`'s `Sat`,
+`Sat_c`/`Eval_c`), just never by an object T21 itself connects to.
+
+**Backlog**: one new ticket, `EKS-55` — a tested, superior evaluator existed before `Det_r`/`EvalReq`
+and was never consulted; load-bearing because any future construction phase should check it before
+re-deriving less-successful work from scratch. No other new ticket — the negative findings corroborate
+already-established results (MD-037–041, GAP-001) rather than surfacing new problems.
+
+No construction performed; no mapping invented; `Standing(p)` not canonicalized or declared T21's own
+intended completion; no frozen artifact (MD-024–079) modified; `theory-extraction/` never accessed.
+Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-080-responsibility-transfer-chronological-reconstruction/` (5 files).
+
+**MD-080 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
+named, not authorized: a human governance decision with three concrete options — accept `Sat` as
+permanently stipulated; authorize construction starting from `Standing(p)`/the executable alternatives
+per `EKS-55`'s own recommendation; or authorize construction of an entirely new object accepting no
+existing material maps without invention.

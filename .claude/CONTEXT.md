@@ -1,4 +1,36 @@
-**Updated:** 2026-09-10 (latest) — **MD-079 EXECUTED — CONTROLLED COMPOSITION AUDIT, HARD STOP.** User
+**Updated:** 2026-09-10 (latest) — **MD-080 EXECUTED — RESPONSIBILITY-TRANSFER CHRONOLOGICAL
+RECONSTRUCTION, HARD STOP.** User accepted MD-079 as valid but rejected its conditional necessity
+verdict as terminal, restating "reconstruct → reconcile → canonicalize" and redirecting to: what did
+the theory actually become over time, and where did this family's own semantic/computational
+responsibilities end up — completed elsewhere, moved, split, absorbed, replaced, deliberately
+externalized, duplicated, or genuinely never completed? New discipline: object identity and
+semantic-responsibility identity tracked separately throughout. **Central finding**: `Det_r`'s own
+intended responsibility (per-instance evaluation → verdict) has a genuine, empirically-validated
+predecessor — `Standing(p)=(S⁺,S⁻,R,P,Ctx,Cond)`, born `M0127` (2026-09-02), four days before T21,
+tested to preserve 12/14 adversarial scenarios vs. 2/14 (Boolean)/8/14 (FDE) — stronger evidence than
+`Eval`/`EvalReq`/`Det_r` ever received. Confirmed zero occurrences of `Standing(` anywhere in the
+21-part T21 rewrite: the responsibility was discharged once, tested, then independently re-attempted
+four days later without citation, and the re-attempt was itself abandoned within hours (T22's fiat
+reversion). `EC.Rules`/`standard`'s own responsibility, by contrast, has no demonstrated successor
+anywhere — `Warrant` (MD-037–041, reused) already found no formal definition; `Assessment(...)`
+verified this phase to be external-literature-extraction vocabulary, not native; `Verdict(` has zero
+occurrences as a formal function anywhere. One further concurrent-census birth-date claim corrected
+(`Zero`'s claimed 2026-08-24 birth is a different "Zero lens" construct, already tracked separately by
+MD-069). **Terminal classification, object-level/responsibility-level kept separate**: A unchanged for
+`Req`/aggregation/separation; C unchanged for `EC`; D at both levels for `EC.Rules`/`standard`/
+`AcceptanceCondition` (now the most exhaustively confirmed absence in the investigation); E unchanged
+for `r`/`Γ`; and the phase's own central correction — D at the object level but **B, complete through
+multiple sources, never carried forward**, at the responsibility level for `Det_r`/`EvalReq`. One new
+backlog ticket, `EKS-55` (a tested, superior evaluator existed before `Det_r` and was never consulted).
+No construction performed; no mapping invented; `Standing(p)` not canonicalized; no frozen artifact
+modified; `theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-080-responsibility-transfer-chronological-reconstruction/` (5 files).
+**MD-080 status: EXECUTED. HARD STOP.** Next action, named, not authorized: a human governance
+decision with three concrete options — accept `Sat` as permanently stipulated; authorize construction
+starting from `Standing(p)`/the executable alternatives per `EKS-55`; or authorize construction of an
+entirely new object.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-079 EXECUTED — CONTROLLED COMPOSITION AUDIT, HARD STOP.** User
 reviewed MD-078, accepted its corrections, declined to authorize `SAT-OPERATIONAL-CLOSURE-v1`, and
 redirected to: can the existing corpus-native definitions be composed into T21's own intended
 computation without inventing a mapping? Ten-step method supplied and followed: strongest-candidate
@@ -8305,9 +8337,20 @@ times** while re-deriving its conclusions. **`Sat` now has FOUR unreconciled cod
 (`𝒮` 9→11 · `V_Sat` 3 · `𝒮_sat` 4 · `𝕊_sat`). `G-24` (`V_Sat` has zero consumers) and `G-25`
 (the re-founding) opened; `EKS-53` filed.
 
-**Next:** ⭐ **`G-25`** — by dependency impact. The 09-06 re-founding is upstream of `G-01`, `G-05`,
-`C-1` and the `Det_r` question; all four have an endpoint inside it. Then **`G-12`** (~180 of 265
-files in steps 026–268 unread) — the larger chronological debt, but not upstream of this family.
+**`G-25` closed** → **NOT a re-founding**: `theory-part-01` declares continuity (*"a strong starting
+point"*) and inherits twice. Three of my claims withdrawn (incl. *"`V_Sat` has zero consumers"* —
+⭐ `Sat_c` has **17 executable hits**; `Det_r` has 0).
+
+**`G-12` closed for structure** → ⭐⭐⭐ **every re-founding candidate declares CONTINUITY.**
+`step-026`, **41 s** after `025z`: *"We continue from 25Z"* — and `Sat`/`EvalReq`/`R_G`/`Γ_G`/`EC_G`/
+`ContractSpecific` score **0** across 265 files. **Declaration ≠ transmission.** The five-re-founding
+table is **withdrawn**. Also: `K_t` is a **9-tuple at s028**, silently reduced to 7 at s031 seven
+minutes later; **`EC` is three homonyms**; `Γ` gains a fourth sense; `Zero` and `Δ_t` are never
+defined in the interval. Record:
+`docs/knowledgeos/brainstorming/verification/gap-discovery/g-12-interval-reconstruction/`.
+
+**Next:** ⭐ **`G-11`** — Ω across 64 of 171 files in steps 269–291, ≥3 senses, two ruled
+contradictory by `C-06`. Load-bearing, bounded, and chronologically after `G-12`'s window.
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·
