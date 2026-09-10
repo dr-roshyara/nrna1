@@ -835,3 +835,44 @@ not adopted.
 | **`EvalReq`** | ⭐ the **one** object where both notation **and** concept stop — and the one still untyped at the terminal state |
 
 **Three instances, three distinguishable mechanisms. Not generalised to a law.**
+
+---
+
+# STATE CHANGE — requirement evaluation, birth to terminal, 2026-09-10
+
+**Record:** `…/gap-discovery/req-evaluation-through-time/`
+
+## ⛔ Fourth withdrawal of my own gap claim, same cause
+
+`EvalReq` **D** rested on **one phrase search**. Widened to 11 variants: **15 files** with
+requirement-satisfaction, **9** with `Eval(`. **Notation absent, concept present.** → **E**.
+
+## ⭐⭐ The family is born at step-018, before everything
+
+`DV-23`: *"`Eval(P,K) ∈ {T,F,U}` with the §25 connective tables (**step-018**)"* — earlier than the
+026–268 interval and earlier than the 025-series. ⚠️ **step-018 is unread.**
+
+## ⭐⭐⭐ Two families, and only one was ever typed
+
+| | proposition-evaluation | requirement-evaluation |
+|---|---|---|
+| codomain | ⭐ `{T,F,U}`, continuous from step-018 | ⛔ `⊕` · `Status` **undefined** · none · `V_Sat` |
+| algebra | ⭐ **Kleene, comm./assoc./monotone, verified**, `HIGH CONFIDENCE` (s240) | ⛔ none |
+| crosses the interval | ⭐ unbroken | ⛔ absent |
+
+$$\boxed{\textbf{Ten days, four namings of requirement-evaluation, zero result spaces — while its sibling was typed at birth and algebraically verified.}}$$
+
+## ⭐⭐ `V_Sat` is not invented at 09-02
+
+**step-018 → 08-29 register → 08-30 STEP-VERIFY ×2 → 08-30 09:40 EXECUTED-TEST-222 → s240 (Kleene)
+→ 09-02 `V_Sat = {⊤,⊥,U}`** — an unbroken chain, ⚠️ **with no citation between the endpoints**.
+Continuity **measured, not declared** — the same evidential shape as `026`'s and Ω's.
+
+⇒ `G-25`: **three** unreconciled `Sat` codomains, not four.
+
+## The pattern in my own work, now at four instances
+
+`EvalReq`'s codomain · `V_Sat`'s consumers · Ω-B's type · `EvalReq`'s D-classification.
+**Every one was a gap opened from a bounded search and refuted by the birth-point method.**
+This is no longer an observation about the corpus. **It is a measured property of my own procedure**,
+and the standing rule now has four confirmations behind it.

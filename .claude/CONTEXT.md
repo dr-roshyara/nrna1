@@ -8436,10 +8436,22 @@ Record: `…/gap-discovery/g-12-semantic/`.
 `V_Sat` consumers · Ω-B type). **Measured pattern: I open gaps from bounded searches.** Standing
 rule reinforced: apply birth-point → chronology → distributed completeness **before** any gap claim.
 
-**Next:** ⭐ **`EvalReq`** — the only 025-era object whose **concept and notation both** vanish for
-265 files (*"requirement evaluation"* = 0/265), still untyped at the terminal state, on the
-evaluation→determination chain, and whose nearest successor `Det_r` is **97 % FIREWALL-LIMITED**.
-⛔ **~180 files of 026–268 remain unread line-by-line**; semantic coverage ≈1.5 % (32 of 2,099).
+**Requirement evaluation reconstructed.** ⛔ My `EvalReq` **D** is **WITHDRAWN → E** — it rested on
+**one phrase search**; widened to 11 variants it returns 15 + 9 files. ⭐⭐ **True birth: step-018**
+(`DV-23`: *"`Eval(P,K) ∈ {T,F,U}` with the §25 connective tables"*) — before the interval and before
+the 025-series. ⭐⭐⭐ **TWO FAMILIES:** proposition-evaluation is typed `{T,F,U}`, **Kleene-verified
+(comm./assoc./monotone), HIGH CONFIDENCE** at s240, unbroken; requirement-evaluation is **named four
+times in ten days and typed zero times**. No document identifies them. ⭐⭐ **`V_Sat` is not invented
+at 09-02** — unbroken chain step-018 → s240 → 09-02, **no citation between endpoints** ⇒ `G-25`
+re-scoped to **three** unreconciled codomains, `G-01` re-scoped. `G-27` opened on the asymmetry.
+Record: `…/gap-discovery/req-evaluation-through-time/`.
+
+⭐ **Fourth withdrawal of my own gap claim, same cause.** `EvalReq` codomain · `V_Sat` consumers ·
+Ω-B type · `EvalReq` D. **A measured property of my procedure, not of the corpus.**
+
+**Next:** ⭐ **step-018** — birth of the best-evidenced object in the evaluation family, **never
+read**, directly load-bearing on `G-01`, `G-25`, `G-27`. ⛔ ~180 files of 026–268 still unread;
+semantic coverage ≈1.5 % (32 of 2,099).
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·

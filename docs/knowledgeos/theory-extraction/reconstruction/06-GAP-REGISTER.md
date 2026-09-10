@@ -1259,3 +1259,77 @@ depend on; and **97 % of `Det_r`'s evidence — its nearest successor — is `FI
 It is the one place where a genuine hole and an unreadable lane coincide.
 
 **Standing qualifier: semantic coverage of the readable corpus is ≈1.5 % (32 of 2,099).**
+
+---
+
+# ⭐⭐⭐ REQUIREMENT EVALUATION — my `EvalReq` **D** is WITHDRAWN. Two families, not one object.
+
+**Record:** `…/gap-discovery/req-evaluation-through-time/01-REQUIREMENT-EVALUATION-BIRTH-TO-TERMINAL.md`
+
+## ⛔ The withdrawal, and how it was caught
+
+I classified `EvalReq` **D — GENUINE CORPUS GAP** on **one phrase search**
+(*"requirement evaluation"* = 0/265). Widened to **11 variants**:
+
+| 8 variants | **0** — `EvalReq` · *"requirement evaluation"* · evaluate-a-requirement · requirement+evaluat\* · requirement status · requirement check\* · requirement met/fulfil\* · contract-specific evaluation |
+| ⭐ **requirement + satisf\*** | **15 files** |
+| ⭐⭐ **`Eval(` / `Evaluate(`** | **9 files** |
+
+**Fourth time this pass that a bounded search of mine has produced a false gap.**
+
+## ⭐⭐ The genuine birth is neither `EvalReq` nor `EvalRequirement`
+
+`DEFINITION-VERIFICATION-REGISTER` **DV-23**: *"`Eval(P,K) ∈ {T,F,U}` with the §25 connective
+tables (**step-018**)"*
+
+$$\boxed{\textbf{The evaluation family is born at STEP-018 — before the interval AND before the 025-series.}}$$
+
+*(step-018 is `NOT YET READ` — backfill debt. Content taken from the verification register that cites it.)*
+
+## ⭐⭐⭐ Two families, and only one was ever typed
+
+| | **proposition-evaluation** | **requirement-evaluation** |
+|---|---|---|
+| members | `Eval(P,K)` · `Eval(P,E,K,C,π,…)` | `Evaluate(K_t,r,EC_G)` · `EvalRequirement(K,r,C)` · `EvalReq(K,r,EC,Γ)` · `Sat_c` |
+| **codomain** | ⭐ **`{T,F,U}` from step-018, continuous** | ⛔ `⊕`-structured · `Status` **undefined** · **none** · `V_Sat` |
+| **algebraic laws** | ⭐ **verified** — *"strong Kleene logic, with commutativity, associativity and monotonicity verified"*, `HIGH CONFIDENCE` (s240 §240.12) | ⛔ **none, ever** |
+| crosses 026–268 | ⭐ **unbroken** | ⛔ **absent** |
+
+$$\boxed{\textbf{The corpus typed, verified and carried PROPOSITION-evaluation for ten days — and never once gave REQUIREMENT-evaluation a result space.}}$$
+
+## ⭐⭐ `V_Sat` has an ancestry — `G-25` re-scoped
+
+Unbroken chain: **step-018** → `DEFINITION-VERIFICATION-REGISTER` (08-29) →
+`STEP-VERIFY-041-055` / `-186-205` → `EXECUTED-TEST-222-repairs` (08-30 09:40) → **s240** (10:25,
+Kleene-verified) → **`V_Sat = {⊤,⊥,U}`** (09-02).
+
+**`V_Sat` is not invented at 09-02.** ⚠️ **No citation between the endpoints** — the continuity is
+**measured, not declared**.
+
+⇒ **`G-25`: three unreconciled `Sat` codomains, not four.** `𝒮_sat` (4-valued) and `𝒮` (9→11)
+remain incomparable with the 3-valued space; that result stands.
+⇒ **`G-01` re-scoped:** the 3-valued space is not a late narrowing — it is the **oldest** member.
+
+## Identity results
+
+| `Evaluate(K_t,r,EC_G)` × `EvalRequirement(K,r,C)` | ⭐ **SAME CONCEPT — REFINED** (2 minutes apart) |
+| `EvalRequirement` × `EvalReq` | **IDENTITY UNWITNESSED** (10 days, zero citation) |
+| **`Eval(P,K)` × the requirement family** | ⭐⭐ **RELATED — DIFFERENT SUBJECT.** A proposition is not a requirement. **No document identifies them** |
+| `{T,F,U}` × `V_Sat` | ⭐ **SAME OBJECT — STRONG CONTINUITY** |
+
+## The `Req → EvalReq → Sat → Determination` chain is NOT established
+
+`Req → Evaluate` **DIRECT** · `Evaluate → EvalRequirement` **DIRECT** ·
+`EvalRequirement → EvalReq` ⛔ **UNWITNESSED** · `EvalReq → Sat` **DIRECT** ·
+`Sat → Determination` ⚠️ **POSSIBLE** (`Det_r` sits *inside* `Sat`, not downstream) ·
+`Eval → Sat_c` ⚠️ **POSSIBLE**. **Two of six edges unwitnessed. The corpus never draws it as one pipeline.**
+
+## Gap changes
+
+| **`EvalReq` D** | ⛔ **WITHDRAWN → E — OBJECT IDENTITY UNRESOLVED.** The concept is present and named four times; what is missing is **a codomain it never had** |
+| **`G-25`** | **RE-SCOPED** — three codomains unreconciled, not four |
+| **`G-01`** | **RE-SCOPED** — the 3-valued space is the oldest, not a narrowing |
+| ⭐ **NEW `G-27`** | **Requirement-evaluation was named four times in ten days and given a result space zero times**, while its sibling proposition-evaluation was typed at birth and algebraically verified. **The asymmetry is the finding** |
+| **backfill debt** | ⚠️ **step-018 is now load-bearing and unread** |
+
+**Standing qualifier: semantic coverage ≈1.5 % (32 of 2,099).**
