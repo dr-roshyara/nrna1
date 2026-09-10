@@ -4247,3 +4247,104 @@ Rewrite-Form. **`δ` ist NICHT `READY FOR CLOSURE AUDIT`.**
 
 **Fahrplanstatus `δ`:** Birth #771 → verarbeitet bis `20260902-182017`; **45 weitere
 `δ`-tragende Dateien** nach dem Schnitt verbleiben.
+
+---
+
+# ⭐⭐⭐ G-70 — `Z-KOS-001`: eine ECHTE positive Ratifikation von `Zero` — die genau das ausschließt, was `Zero` später wird
+
+**Phase 1, Block #250–#369** (120 Dateien, **alle geprüft**): T1 = 16 · T2 = 32 ·
+T3 = 72 (`NOT OBSERVED IN THIS DOCUMENT`).
+
+## §1 · Geburtskontext — `Zero` ist eine von zehn parallelen Lenses
+
+Der Block zeigt eine **Lens-Extraktionskampagne am 2026-08-22**: Vedic **Zero** · Quranic
+Epistemology · Negative Epistemology · Biblical Explanation · Moksha · Ganesha · **Gödel**
+(5 Dateien) · Escher · **Sanskrit Grammar** (4) · Math-Music.
+
+⇒ **`Zero` wird nicht als mathematisches Objekt geboren, sondern als *Lens Nr. 8*** in einem
+systematischen Extraktionsprogramm. Das erklärt die spätere Formenvielfalt.
+
+## §2 · ⭐⭐⭐ Die Ratifikation
+
+`20260822-1115-KOS-EP01-Zero-Z-KOS-001-Ratification.md` §0:
+
+> **✅ Accepted as a foundational meta-principle.** *Not a dimension · not a knowledge object ·
+> not a lifecycle state · not an algorithm · not a database construct · not a reasoning
+> engine.* But: **the neutral epistemic reference condition that allows the constitutional
+> dimensions to remain separated and coherent.**
+>
+> *"Zero **is correctly placed outside the kernel** — inside, it would create exactly the kind
+> of collapse KnowledgeOS is designed to prevent (a meta-principle admitted as **a twelfth
+> law** would re-open the kernel)."*
+
+⭐ **Die erste und bislang einzige lokalisierte *positive* Ratifikation eines theorienahen
+Objekts.** Sie liegt **vor** der GN-Serie (08-28) und in einer anderen Lane — mein Befund
+*„null positive Ratifikationen"* (`G-67b`) galt für die **GN-Serie**; er bleibt für diese
+Population gültig und wird hier **ergänzt, nicht widerlegt**.
+
+⭐ *"a **twelfth** law"* setzt **elf** bestehende Artikel voraus — unabhängige Stütze für die
+`|K| = 11`-Struktur.
+
+## §3 · ⭐⭐⭐ Die Kollaps-Tabelle ist die Urform der Non-Collapse-Invarianten
+
+| Kollaps | Resultat |
+|---|---|
+| **Representation → Identity** | Document becomes knowledge |
+| Authority → Truth | Person/source becomes truth |
+| **Probability → Truth** | LLM output becomes fact |
+| Similarity → Identity | Retrieval becomes understanding |
+| **Observation → Inference** | Guess becomes evidence |
+| Transformation → Replacement | History disappears |
+| **Contradiction → Error** | Uncertainty is destroyed |
+| Agent → Reality | Opinion becomes truth |
+
+$$\text{Zero ist der Mechanismus: } \quad A \neq B \ \text{ even when } A \text{ influences } B$$
+
+⭐ `Representation → Identity` ≡ **`I3`**; `Probability → Truth` ≈ **`I6`**; dazu
+`Observation → Inference` und `Contradiction → Error`. **`AX-1 Category non-collapse` und
+`I1…I9` (Theory v1.0, 09-02) haben hier ihren Ursprung — elf Tage früher.** Das ist eine
+**belegbare Lineage-Kante**, keine bloße Chronologie: dieselbe Idee, und Zero wird ausdrücklich
+als *ihr Mechanismus* ratifiziert.
+
+## §4 · ⭐⭐⭐ Der Widerspruch
+
+`20260822-1130` §5, *„The important constraint"*:
+
+> **"do not make Zero a kernel article."** … *"Zero would become the very thing it prevents"* …
+> ```
+> ZERO (meta-principle) → Constitutional Articles → Kernel Services
+> ```
+> **"Zero guides the constitution; it is not part of the constitution."** …
+> *"**Naming a property is not creating a component.**"*
+
+Dagegen die spätere Form:
+$$Zero(K_t,EC_t,\Gamma_t) \iff \Delta(K_t,EC_t,\Gamma_t)=\varnothing$$
+— ein **Prädikat über Zustand und Kontrakt**, also genau ein *lifecycle-state-/algorithm*-artiges
+Objekt.
+
+$$\boxed{\text{Die ratifizierte Form schließt die spätere Form ausdrücklich aus.}}$$
+
+**Zwei Lesarten, beide offen:** (a) ein **Widerspruch** zwischen ratifizierter
+Governance-Entscheidung und späterer Theorieform, oder (b) **zwei Objekte unter einem Namen**
+— `Zero_A` (Meta-Prinzip, ratifiziert) und `Zero_B` (Prädikat, nie ratifiziert).
+
+⚠️ **Keine spätere Quelle hebt die Einschränkung auf oder nimmt auf sie Bezug.**
+`IDENTITY UNWITNESSED` zwischen `Zero_A` und `Zero_B`. **Nicht zusammengeführt.**
+
+## §5 · Bekannter Falsch-Positiv im Block
+
+`#316 snf-measurement-framework` trägt `δ:M` — das ist der **Koeffizient** `α+β+γ+δ=1`.
+Als `FALSE POSITIVE — NON-KOS CONTEXT` markiert; das Muster fängt ihn weiterhin und das ist
+dokumentiert, nicht stillschweigend gefiltert.
+
+## §6 · Fahrplanstatus
+
+| Objekt | Birth | verarbeitet bis | verbleibend |
+|---|---|---|---|
+| `Zero` | #250 | **#369** | **2.519** |
+| `Γ` | #466 | — | 2.422 |
+| `δ` | #771 | (#182017 vorgezogen) | 2.117 |
+| `Sat` | #857 | — | 2.031 |
+
+**`Zero`: `BIRTH LOCATED · CHRONOLOGY IN PROGRESS`** — 120 von 2.638 Dateien geprüft.
+Weiterhin **nicht** `READY FOR CLOSURE AUDIT`.
