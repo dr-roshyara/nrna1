@@ -1,4 +1,39 @@
-**Updated:** 2026-09-10 (latest) — **MD-084 EXECUTED — ACCEPTANCE/SUFFICIENCY RESPONSIBILITY:
+**Updated:** 2026-09-10 (latest) — **MD-085 EXECUTED — FINAL CHRONOLOGICAL MISSING INVESTIGATION AND
+MATHEMATICAL CLOSURE MATRIX, HARD STOP.** User accepted MD-084 as strong but declined to generalize
+`TERMINAL D` for the acceptance policy into "the whole theory is mathematically complete," redirecting
+to a consolidated closure investigation across `EC`/`EC_t`, `r`, `Γ`, `Eval`/`Eval_c`/`EvalReq`/
+`Det_r`, `Sat`'s own arity family, and `Determination`/`Decision`. **Scoping**: every object had
+already been chronologically traced across MD-078–082; this phase consolidates that evidence into a
+Mathematical Closure Matrix and a three-way classification, not new primary-source reading. **Central
+results**: `EC`/`EC_t` — seven competing formulations, never reconciled, `C`, unchanged. `r` — six
+incompatible senses at the raw-symbol level (`E`), narrowing to a coherent lineage once homonyms are
+excluded. `Γ` — four competing structured forms (`E` object-identity), but `SUBDIVIDED` at the
+responsibility level (MD-081, reaffirmed) — the one object where responsibility-classification is more
+resolved than object-identity. `Det_r` confirmed `UNRELATED_HOMONYM` to `Det(K,p,EC,Γ)`; a *third*
+internal `Eval` signature inconsistency found within Part VI itself. **`Sat`'s own full arity/scope
+family reconstructed in one table** (11 distinct forms): `SAME CONCEPT, REPEATEDLY REFINED, NEVER
+RECONCILED` — at least three incompatible arities/scopes used non-monotonically (T22 and Part 21's own
+Def 21.4 both *revert* to 2-arg *after* the 3-arg form existed), never reconciled anywhere.
+`Determination`/`Decision` — the most fully closed object in the family, `A` across all three
+dimensions. **Global classification, explicitly not forced to one letter**: aggregation/separation
+layer `GLOBAL-A`; acceptance policy `GLOBAL-B` (a *disclosed* design stance, MD-084); `EC`/`r`/`Γ`/
+`Sat`'s own object-identity questions `GLOBAL-D` — genuinely unresolved, **never disclosed as
+intentional**, a materially different kind of openness. If forced to one letter, `GLOBAL-D` is closest,
+recorded as a forced collapse losing this distinction. **The mission's own §13 hard-stop question
+answered directly**: the acceptance policy is **not** the only remaining openness — per the mission's
+own explicit instruction, **construction authorization for a unified `SAT-OPERATIONAL-CLOSURE-v1`
+should not yet be requested.** What is separately ready: a narrowly-scoped governance decision on the
+acceptance-policy component alone (`EKS-48`), provided any resulting construction explicitly discloses
+which competing `EC`/`r`/`Γ`/`Sat` formulation it depends on. No new backlog ticket. No construction;
+no mapping invented; no adoption; no frozen artifact modified; `theory-extraction/` never accessed.
+Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-085-final-chronological-missing-investigation-and-closure-matrix/` (3 files). **MD-085 status:
+EXECUTED. HARD STOP.** Next action, named, not authorized: either (a) a narrowly-scoped governance
+decision on the acceptance-policy component alone, or (b) a further, separately-authorized
+reconciliation phase targeting `EC`/`r`/`Γ`/`Sat`'s own object-identity questions first — this phase
+does not choose between them.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-084 EXECUTED — ACCEPTANCE/SUFFICIENCY RESPONSIBILITY:
 CHRONOLOGICAL INVESTIGATION AND TERMINAL CLASSIFICATION, HARD STOP.** User accepted MD-082 as a
 correction, not terminal closure, and redirected to the central question: where, when, and how does
 the theory define what makes a requirement/evidence state sufficiently justified — tracking the

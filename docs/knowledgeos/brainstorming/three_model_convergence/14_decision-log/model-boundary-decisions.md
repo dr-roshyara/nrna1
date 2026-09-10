@@ -6554,3 +6554,61 @@ MD-084-acceptance-responsibility-chronological-investigation/` (4 files).
 **MD-084 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
 named, not authorized: `EKS-48`'s own three-way decision, now resting on a historical-reconstruction
 finding (`TERMINAL D`, with explicit textual grounds) rather than an absence-based inference.
+
+---
+
+## MD-085 — Final Chronological Missing Investigation and Mathematical Closure Matrix
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-084 as a strong result but explicitly declined
+to generalize `TERMINAL D` for the acceptance-policy responsibility into "the whole theory is
+mathematically complete," redirecting to a consolidated closure investigation across `EC`/`EC_t`, `r`,
+`Γ`, `Eval`/`Eval_c`/`EvalReq`/`Det_r`, `Sat`'s own arity family, and `Determination`/`Decision`.
+
+**Scoping disclosed before execution**: every one of these objects had already been chronologically
+traced with direct primary-source verification across MD-078–082; this phase consolidates that
+evidence into a Mathematical Closure Matrix and a three-way (object identity / semantic responsibility
+/ computational completeness) classification per object, rather than re-reading primary sources.
+
+**Central results**: `EC`/`EC_t` — seven competing, individually-complete formulations, never
+reconciled, `C`, unchanged. `r` — six structurally incompatible senses at the raw-symbol level
+(`E`), narrowing to a coherent `SAME CONCEPT, REFINED` lineage once confirmed homonyms are excluded.
+`Γ` — four competing structured forms (`E`, object-identity), but `SUBDIVIDED` at the responsibility
+level (MD-081, reaffirmed) — the one object where responsibility-classification is materially more
+resolved than object-identity. `Eval`/`EvalReq`/`Det_r` — `Det_r` confirmed `UNRELATED_HOMONYM` to the
+much more stable `Det(K,p,EC,Γ)` family (MD-082); a *third* internal `Eval` signature inconsistency
+found within Part VI itself (`Eval(p)`, §6.42, distinct from both §6.15's and Part 17's own `Eval`).
+**`Sat`'s own full arity/scope family reconstructed in one table** (11 distinct forms, birth through
+the two executable alternatives): not one clean evolving object and not simply "multiple objects" —
+`SAME CONCEPT, REPEATEDLY REFINED, NEVER RECONCILED`, with at least three genuinely incompatible
+arities/scopes used non-monotonically (T22 and Part 21's own Definition 21.4 both *revert* to the 2-arg
+form *after* the 3-arg form was introduced) and never reconciled by any source.
+`Determination`/`Decision` — the most fully closed object in the family, `A` across all three
+dimensions.
+
+**Global classification, explicitly not forced to one letter**: the aggregation/separation layer is
+`GLOBAL-A`; the acceptance policy is `GLOBAL-B` (MD-084's own `TERMINAL D`, a *disclosed* design
+stance); `EC`/`r`/`Γ`/`Sat`'s own object-identity questions are `GLOBAL-D` — genuinely unresolved,
+**never disclosed by the corpus as intentional**, a materially different kind of openness than the
+acceptance policy's own. If one letter must be chosen under duress, `GLOBAL-D` is the closest fit,
+recorded explicitly as a forced collapse that loses this distinction, not as this phase's own preferred
+answer.
+
+**The mission's own §13 hard-stop question answered directly**: the acceptance policy is **not** the
+only remaining openness — `EC`, `r`, `Γ`, and `Sat`'s own object-identity questions remain genuinely
+unresolved, independent of MD-084's own closed finding. Per the mission's own explicit instruction,
+**construction authorization for a unified `SAT-OPERATIONAL-CLOSURE-v1` should not yet be requested.**
+What is separately ready: a narrowly-scoped governance decision on the acceptance-policy component
+alone (`EKS-48`, fully evidenced), provided any resulting construction explicitly discloses which
+competing `EC`/`r`/`Γ`/`Sat` formulation it chooses among several, rather than treating any one as "the"
+reconstructed definition.
+
+No new backlog ticket — this phase consolidates and cross-references already-tracked findings. No
+construction performed; no mapping invented; no adoption; no frozen artifact (MD-024–084) modified;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-085-final-chronological-missing-investigation-and-closure-matrix/` (3 files).
+
+**MD-085 status: EXECUTED. HARD STOP.** Next action, named, not authorized: either (a) a narrowly-
+scoped governance decision on the acceptance-policy component alone, with explicit disclosure of any
+`EC`/`r`/`Γ`/`Sat` formulation choice it depends on, or (b) a further, separately-authorized
+reconciliation phase targeting `EC`/`r`/`Γ`/`Sat`'s own object-identity questions before any
+construction is attempted at all — this phase does not choose between them.
