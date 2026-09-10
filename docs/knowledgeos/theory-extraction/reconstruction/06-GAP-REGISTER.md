@@ -2013,3 +2013,157 @@ rule` **(all three absent; A3 forbids inventing them)** · `temporal → 3-way t
 
 **Next: `G-34`** — it is the only item that can *reduce* the executable set, and it is a one-hour
 check. Then **`G-32`**.
+
+---
+
+# ⭐⭐⭐ G-34 — DISPOSITION: **B — COMPLETE THROUGH MULTIPLE SOURCES.** The minima are not global thresholds; they are **fields of the requirement**. My gap is dissolved.
+
+## ⛔ Seventh over-claim — and this one I opened last turn
+
+I wrote *"neither `E_min` nor `π_min` is shown to be defined… only `content` may be genuinely
+evaluable."* **Wrong, and wrong in the same direction.** The specification characterises both, in
+fields I had not read.
+
+## §1–2 · Birth — and it is not `satc_spec.py`
+
+| earliest | ⭐ **`docs/knowledgeos/research/theory-v1.2-simulation/B-model-and-experiments.md`, 2026-09-02 09:26:47** — **16 minutes before** `satc_spec.py` (09:42:13) |
+| population | **5 non-mine files** carry `E_min`/`π_min`; 2 of them are in `zero-algebra/` — **enumerated, not read** (§21) |
+
+## §3–4 · What they actually are
+
+`satc_spec.py`, verbatim:
+
+| | `E_min` | `π_min` |
+|---|---|---|
+| **`requirement_type`** | ⭐⭐⭐ **`r = (Evidence, p, E_min)`** | ⭐⭐⭐ **`r = (Provenance, p, π_min)`** |
+| `input_type` | *"`Evidence(K_t,p)` plus **an admissibility condition `E_min`**"* | *"`Π(p)`, the provenance record of `p`"* |
+| `authority_dependency` | *"the admission **POLICY** is governance-supplied"* | *"**`π_min` is a governance artifact**"* |
+| `conflict_behaviour` | *"conflicting evidence yields `U`, **never an average**"* | *"two sources of differing authority ⇒ `U` **unless `π_min` ranks them**"* |
+| `factivity_requirement` | ⛔ *"**NONE** — and this is where **CE-1** originates: `E_min` **can be met by a false report**"* | *"NONE"* |
+
+$$\boxed{E_{min} \textbf{ and } \pi_{min} \textbf{ are NOT global thresholds. They are FIELDS CARRIED BY EACH REQUIREMENT INSTANCE, supplied by governance.}}$$
+
+⇒ They need no global definition. **A requirement of the evidence class *is* the triple
+`(Evidence, p, E_min)`** — the criterion arrives **with** the requirement.
+⇒ **`EXECUTABLE_NOW` is CORRECT for evidence and provenance.** `G-34` **withdrawn as a gap.**
+
+## §3 · Type — and the name is misleading
+
+Both appear only as the right side of `⊨`, and `⊥` is `⊨ ¬E_min`. ⭐ **Negatable ⇒ a formula /
+condition**, not a numeric threshold.
+
+⚠️ **Contrast inside one table** (`B-model-and-experiments`):
+
+| evidence | `Evidence(K,p) ⊨ E_min` | **entailment** — no order needed |
+| provenance | `Π(p) ⊨ π_min` | **entailment** — no order needed |
+| status | `ES(p) ⪰ s_min` | ⛔ **order comparison** — needs `⪰`, *"itself undefined in the theory"* |
+
+⇒ **Three objects named `…_min`, two different kinds.** `E_min`/`π_min` are **conditions**;
+`s_min` is a **threshold in an order**. The shared suffix conceals the difference — and it is
+exactly why `status` is blocked while `evidence`/`provenance` are not.
+
+**Typing:** `E_min`, `π_min` = **TYPE-CONSTRAINED** as formulas (by `⊨` and `¬`), **PROVEN** as
+requirement fields (`requirement_type`). No ordering is involved and none is invented.
+
+## ⭐⭐ §13 · Identity — the minima are the `standard` field
+
+The `mathematical_ideas` lane records `r = (id, type, scope, content, **standard**, priority,
+validity)` and calls `standard`'s missing body *"the smallest genuine semantic gap"*.
+Here: `r = (Evidence, p, **E_min**)` and `r = (Provenance, p, **π_min**)`.
+
+**Same role — the per-requirement criterion — in two lanes, with different arity and no
+cross-citation.** ⇒ **`RELATED OBJECT — IDENTITY UNWITNESSED`**, and a strong candidate that
+`E_min`/`π_min` are `standard` **instantiated per class**.
+
+⚠️ **If that identification holds, the other lane's `G1` is not a gap either** — `standard` has no
+*global* body because it is **a governance-supplied field**, exactly like `ρ_A`'s content.
+⛔ **Recorded as a candidate. Not adopted** — the identification is unwitnessed.
+
+## §14 · Dependency paths — first unresolved node
+
+| `P_E → Evidence(K_t,p) → E_min → governance-supplied` | ⭐ **CLOSED** — the field arrives with `r` |
+| `P_P → Π(p) → π_min → governance artifact` | ⭐ **CLOSED** — same |
+| ⚠️ but `P_E → factivity` | ⛔ **`CE-1`: `E_min` can be met by a false report.** *Not* a dependency gap — a **soundness** finding, already registered |
+| ⚠️ and `P_E → temporal_dependency` | ⛔ *"evidence may expire — **`CE-3`: no retirement relation exists**"* |
+
+## §7 · The five-way separation for `P_E` / `P_P`
+
+**conceptually complete** ✅ · **mathematically complete** ✅ · **dependency-closed** ✅ ·
+**operationally evaluable** ✅ *(given a requirement)* · **validated** ⛔ — still 0/8 (`G-31`).
+
+## §17 · Effect on `G-33`
+
+**Unchanged and confirmed.** 8/8 defined · 8/8 formalised · **3/8 dependency-closed — and the 3
+are now verified, not assumed** · 3/8 evaluable · **0/8 validated**.
+⭐ And the reason the split is 3/5 is now understood: **the three executable classes take their
+criterion as a requirement field; the five blocked ones need a global object** (`⪰`, `Contr`,
+`Eval_Gov`, time semantics, `δ`).
+
+$$\boxed{\textbf{The line between evaluable and blocked is exactly the line between a criterion CARRIED BY THE REQUIREMENT and one that must be SUPPLIED BY THE THEORY.}}$$
+
+## §18 · Disposition
+
+**B — COMPLETE THROUGH MULTIPLE SOURCES.** ⛔ Not C, not E. Birth in `B-model-and-experiments`
+(09:26), characterised in `satc_spec.py` (09:42) — **16 minutes and two documents**.
+
+## Register impact
+
+| **`G-34`** | ⛔ **WITHDRAWN as a gap** — disposition `B` |
+| **`G-33`** | ⭐ **strengthened** — the 3/5 split now has a *reason*, not just a label |
+| **NEW `G-36`** | ⭐ **Are `E_min`/`π_min` the `standard` field?** If yes, the `mathematical_ideas` lane's `G1` — *"the smallest genuine semantic gap"* — is **also not a gap**. `IDENTITY UNWITNESSED`, two lanes, no cross-citation |
+| **`CE-1` / `CE-3`** | recorded as **soundness** findings on `P_E`, not dependency gaps: *"`E_min` can be met by a false report"* · *"no retirement relation exists"* |
+
+**Next: `G-36`** — one identification, two lanes, and it would dissolve another lane's headline
+gap. Smallest and highest leverage. Then `G-32` / `G-35`.
+
+---
+
+# ⭐⭐ G-36 — `RELATED OBJECT — IDENTITY UNWITNESSED`. And the other lane's `G1` is the same category error I made.
+
+## The correspondence
+
+| `r = (id, type, scope, content, **standard**, priority, validity)` — `mathematical_ideas`, **2026-09-02 08:23:33** | `standard` = ⭐ **"acceptance criterion"** |
+| `r = (Evidence, p, **E_min**)` · `r = (Provenance, p, **π_min**)` — `satc_spec.py`, **09:42:13** | `E_min` = *"an admissibility condition"* · `π_min` = *"a governance artifact"* |
+
+| 7-tuple field | triple slot |
+|---|---|
+| `type` (requirement type) | the **class tag** (`Evidence` / `Provenance`) |
+| `content` (*"what must be established"*) | `p` |
+| ⭐ **`standard`** (*"acceptance criterion"*) | ⭐ **`E_min` / `π_min`** |
+
+$$\boxed{\textbf{The triple is the 7-tuple's } (type,\ content,\ standard) \textbf{, class-instantiated.}}$$
+
+## §9 · Identity — independence verified in both directions
+
+| does the `standard` document mention `E_min` / `π_min` / `Sat_c` / class-indexing? | **0** |
+| does `satc_spec.py` mention `standard` or the 7-tuple? | **0** |
+| does `B-model-and-experiments` mention `standard`? | **0** |
+
+⇒ **`RELATED OBJECT — IDENTITY UNWITNESSED`.** ⛔ **Not merged** — structural correspondence is
+strong, citation is nil, arity differs (7 vs 3), and `standard` is generic where `E_min`/`π_min`
+are class-instantiated.
+
+## ⭐⭐⭐ But the consequence holds regardless of identity
+
+That lane wrote: *"`standard` is genuinely still missing… **its mathematical body is never
+supplied**"* and called it **"the smallest genuine semantic gap"**.
+
+**Both objects are per-requirement acceptance criteria carried as FIELDS.**
+A field does not have a body — it has a **value, supplied per requirement, by governance**.
+
+$$\boxed{\text{That lane's } G1 \text{ is the same category error as my } G\text{-}34 \text{: expecting a GLOBAL BODY for a PER-REQUIREMENT FIELD.}}$$
+
+⚠️ **Recorded, not adopted on their behalf** — that lane's gap is theirs to reclassify. But the
+evidence is symmetric with `G-34`, and `G-34` withdrew.
+
+## ⭐ An observation about the birth document
+
+`standard` occurs **three times in its own 2,762-line birth document**: the tuple, the one-line
+gloss, and one incidental prose use. **Declared, glossed, and never operated on.** Its
+`ROLE` is `PROVEN`; its **use** is `UNWITNESSED` in the document that introduced it.
+
+## Register impact
+
+| **`G-36`** | ⭐ **DISPOSED — `RELATED, IDENTITY UNWITNESSED`** |
+| **the other lane's `G1`** | ⚠️ **flagged as a probable category error**, on evidence symmetric with `G-34`. Not reclassified by me |
+| **`Ideal State`** | ⭐ new: the same document derives **`I_t = ℛ_t`** — *"Instead of treating the Ideal State as a mysterious perfect object"*. The Ideal State **is** the requirement set. Recorded for the `Zero`/`Δ` line |
