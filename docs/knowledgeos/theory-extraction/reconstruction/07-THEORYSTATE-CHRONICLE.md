@@ -979,3 +979,57 @@ declares **Level 1** (value ∈ `{⊤,⊥,U}`) and **Level 2** `Just_c` over **n
 not an absence**"*; *"`U`: neither `p` nor `¬p` present. **absence ≠ negation**"*.
 ⇒ `𝒮_sat`'s single `U` collapses exactly this. **My `V_Sat` × `𝒮_sat` `INCOMPARABLE` verdict is
 confirmed at source, on the ground I said still stood.**
+
+---
+
+# STATE CHANGE — `G-33`: the eight requirement classes, 2026-09-10
+
+## ⛔ Sixth over-claim, same direction
+
+I wrote *"only 3 of 8 requirement classes are evaluable"* and opened `G-33` as though
+**blocked ⇒ gap**. Applying the five-state separation:
+
+| conceptually defined | ⭐ **8/8** | mathematically formalised | ⭐ **8/8** |
+| dependency-closed | 3/8 | evaluable | 3/8 | **validated** | ⛔ **0/8** |
+
+$$\boxed{\textbf{BLOCKED} \ne \textbf{UNDEFINED. Not one of the eight is undefined.}}$$
+
+## ⭐⭐⭐ The corpus tried to unblock three classes — and retracted two as invented
+
+`docs/knowledgeos/research/theory-v1.2-simulation/G-rerun-with-evaluators.md` supplied the
+governance, temporal and operational evaluators, declaring them *"**EXPERIMENTER-SUPPLIED
+CANDIDATES, not theory-derived. The theory defines none of them.**"* — then withdrew two:
+
+> 🔴 `Eval_Gov` — *"the corpus defines **no governance artifact, no evidence of authority and no
+> conflict rule**. An authority table is **invented governance**, which A3 forbids."*
+> 🔴 `Eval_Time` — *"A4 requires distinguishing **valid/world, observation and transaction/record**
+> time… This evaluator **equated interval coverage with validity**."*
+
+And it turned the retraction on its own result: *"the `Zero_reasoned` 8/80 vs `Zero_weak` 36/80
+separation is an **ARTIFACT of these invented evaluators**. Once retracted, **every remaining `U`
+is theory-blocked**."*
+
+⭐ **That is the corpus's own verdict, and it is exactly `C — DEPENDENCY-INCOMPLETE`.**
+
+## The five blockers, characterised — none is "missing"
+
+| `⪰` | ⭐ **DECLARED BOUNDARY.** 199-file control finds no definition and three declarations that it must be supplied — *"policy-defined"*, *"the domain must define"*. **Fourth declared boundary** after `ρ_A`, `Det_r`, Ω-B. Plus a **3-carrier homonym** already in my registry |
+| `Contr` | ⛔ **OVER-DEFINED** — seven signatures, `CR-1` decision-required. *"Not defined"* is true of a single agreed definition, false of the corpus |
+| `Eval_Gov` | **attempted, RETRACTED as invented** |
+| temporal | **attempted, RETRACTED** — and it names what is required: a **three-way time split** |
+| `δ` | **located and open at Step 290** — `TG-09`, `NG-2` and the spec agree. **Three lanes** |
+
+⭐ **Only one of the five is a research question. The others are decisions or reading debt.**
+
+## And the three "executable" classes are a claim too
+
+`P_E ≡ Evidence(K_t,p) ⊨ E_min` and `P_P ≡ Π(p) ⊨ π_min` both test **against a minimum**, and
+⛔ **neither `E_min` nor `π_min` is shown to be defined.** If they are not, **only `content` is
+genuinely evaluable.** `G-34`.
+
+## A fourth unenumerated lane
+
+**`docs/knowledgeos/research/` — 69 files, three sub-lanes** (`theory-v1.1-simulation`,
+`theory-v1.2-simulation`, `kernel-reduction`) — and it holds the self-retracted experiment on three
+of the five blockers. **Fourth after `theory-extraction/`, `gap-update-2026-09-02/`,
+`verification/zero-algebra/`.**

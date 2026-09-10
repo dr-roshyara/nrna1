@@ -1876,3 +1876,140 @@ verdict is **confirmed at source**, on the ground I said still stood.
 **Next, by load × dependency × historical risk: `G-33`** — it is the only item that is *both*
 machine-declared *and* enumerates its own blockers, and four of the five name objects already open
 in this register. **`G-32`** (174 files of executed evidence) remains second.
+
+---
+
+# ⭐⭐⭐ G-33 — DISPOSITION: **C — MATHEMATICALLY DEFINED BUT DEPENDENCY-INCOMPLETE.** Not one of the eight classes is undefined.
+
+## ⛔ First, my own framing was wrong
+
+I wrote *"only 3 of 8 requirement classes are evaluable"* and opened `G-33` as though
+**blocked ⇒ gap**. **Sixth over-claim in the same direction.** Applying §4's five-state separation:
+
+| state | result across the eight classes |
+|---|---|
+| **A · conceptually defined** | ⭐ **8 / 8** |
+| **B · mathematically formalised** | ⭐ **8 / 8** — every class has a `semantic_predicate` |
+| **C · dependency closure** | **3 / 8** |
+| **D · operationally evaluable** | **3 / 8** |
+| **E · validated execution** | ⛔ **0 / 8** — `G-31`: specification, not implementation |
+
+$$\boxed{\textbf{BLOCKED} \ne \textbf{UNDEFINED. All eight are formalised; five lack a dependency.}}$$
+
+## §5/§6 · The eight classes and the spec's own named blockers — verified at source
+
+| class | `P_c(r) ≡ …` | blocker, **verbatim from the spec** |
+|---|---|---|
+| **content** | `p ∈ Content(K_t)` | ⭐ `EXECUTABLE_NOW` |
+| **evidence** | `Evidence(K_t,p) ⊨ E_min` | ⭐ `EXECUTABLE_NOW` |
+| **provenance** | `Π(p) ⊨ π_min` | ⭐ `EXECUTABLE_NOW` |
+| **status** | `ES(p,K_t) ⪰ s_min` | *"**`⪰` IS NOT DEFINED BY THE THEORY.** Any implementation invents it."* |
+| **consistency** | `¬Contr(K_t,p)` | *"`Contr` is not defined; and whether contradiction needs a 4th value is **OPEN**"* |
+| **governance** | `Eval_Gov(K_t,g) = ⊤` | *"**no evaluator exists**; this is why every governance requirement read `U` in E1"* |
+| **temporal** | `p established over I` | *"**no temporal semantics defined**; the second source of `U` in E1"* |
+| **operational** | `Sat_κ(δ(K_t,o))` | *"**`δ` is Step 290 and is open**; the third source of `U` in E1"* |
+
+⭐ **Three blockers are labelled as "the first / second / third source of `U` in E1"** — the blocking
+was **measured in an experiment**, not assumed.
+
+## §7/§8 · Tracing each blocker — and **none is simply missing**
+
+### ⭐⭐⭐ Governance and temporal: an attempt was made and **RETRACTED as invented**
+
+`docs/knowledgeos/research/theory-v1.2-simulation/G-rerun-with-evaluators.md` — a **fourth
+unenumerated lane** (`docs/knowledgeos/research/`, 69 files, 3 sub-lanes). It **supplied** the three
+missing evaluators and re-ran Phases B and C, declaring up front:
+
+> *"These evaluators are **EXPERIMENTER-SUPPLIED CANDIDATES, not theory-derived. The theory defines
+> none of them.**"*
+
+and then **retracted two of the three**:
+
+> 🔴 *"**`Eval_Gov`** — the corpus defines **no governance artifact, no evidence of authority and no
+> conflict rule**. An authority table is **invented governance**, which A3 forbids."*
+> 🔴 *"**`Eval_Time`** — A4 requires distinguishing **valid/world, observation and
+> transaction/record** time and forbids equating timestamps with temporal validity. This evaluator
+> **equated interval coverage with validity**."*
+
+⭐⭐ And it reported the consequence against its own result:
+
+> *"the `Zero_reasoned` 8/80 vs `Zero_weak` 36/80 separation is an **ARTIFACT of these invented
+> evaluators**. Once retracted, **every remaining `U` is theory-blocked** and the two readings
+> **agree on every honest case**."* · *"**Only `Sat_op`/`δ` survives**, and it too returns
+> `U (DELTA_UNDEFINED)` **honestly**."*
+
+$$\boxed{\textbf{The corpus tried to unblock three classes and withdrew two attempts as INVENTED. "Every remaining } U \textbf{ is theory-blocked" is its own verdict.}}$$
+
+### `⪰` — not missing, **declared to be supplied**
+
+The false-gap control over **199 files** finds no definition — but finds three documents that all
+say it must be **supplied**: *"a **defined ordering**"* (Q19) · *"needs a **policy-defined**
+ordering"* · *"the **domain must define** ordering semantics"*.
+⭐ And my own registry already holds **three `⪰` versions over three different carriers**
+(`s₁ ⪰_C s₂` states · `d₂ ⪰ d₁` distances · `A₂ ⪰ A₁` assertions).
+
+⇒ **`⪰` is a DECLARED BOUNDARY plus a HOMONYM** — the fourth declared boundary after `ρ_A`,
+`Det_r` and Ω-B. *Not* an omission.
+
+### `Contr` — not missing, **over-defined**
+
+My registry already holds `Conf_v3`: **`Contr(p)` etc — seven signatures, per `CR-1`**, a conflict
+record marked *decision required*. The spec's *"`Contr` is not defined"* is true **of a single
+agreed definition** and false of the corpus, which has **seven**.
+
+⇒ **`Contr` is `COMPETING DEFINITIONS`, not absent.**
+
+### `δ` — open, and located
+
+*"`δ` is **Step 290** and is open"* — steps 283–292 are backfill debt `G-12` never reached.
+Corroborated independently: `TG-09` *"`δ` has no body for the commit case"* · `NG-2` *"`δ` has no
+commit case — **executed**"*. **Three lanes, same finding.**
+
+## §14 · The eight-class matrix
+
+| class | conceptual | formalised | dependency-closed | evaluable | validated | **status** |
+|---|:--:|:--:|:--:|:--:|:--:|---|
+| content | ✅ | ✅ | ✅ | ✅ | ⛔ | **specified, unvalidated** |
+| evidence | ✅ | ✅ | ✅ | ✅ | ⛔ | **specified, unvalidated** |
+| provenance | ✅ | ✅ | ✅ | ✅ | ⛔ | **specified, unvalidated** |
+| status | ✅ | ✅ | ⛔ `⪰` | ⛔ | ⛔ | **DEPENDENCY-BLOCKED — declared boundary** |
+| consistency | ✅ | ✅ | ⛔ `Contr` | ⛔ | ⛔ | **DEPENDENCY-BLOCKED — competing definitions (7)** |
+| governance | ✅ | ✅ | ⛔ `Eval_Gov` | ⛔ | ⛔ | **DEPENDENCY-BLOCKED — attempt RETRACTED as invented** |
+| temporal | ✅ | ✅ | ⛔ time semantics | ⛔ | ⛔ | **DEPENDENCY-BLOCKED — attempt RETRACTED; needs a 3-way time split** |
+| operational | ✅ | ✅ | ⛔ `δ` | ⛔ | ⛔ | **DEPENDENCY-BLOCKED — `δ` is Step 290, open, 3 lanes agree** |
+
+## §13 · The three "executable" classes are a claim too
+
+⚠️ They are **`EXECUTABLE_NOW` in the specification's own judgement**, and **none has been
+validated** (`G-31`: no implementation, four pre-existing cases, *"no new randomized trials"*).
+`P_E` and `P_P` both rest on **`⊨` against a minimum** (`E_min`, `π_min`) — ⛔ **and neither
+`E_min` nor `π_min` is shown to be defined.** Recorded: **`EXECUTABLE_NOW` is unverified** for
+evidence and provenance.
+
+## §16 · Disposition
+
+$$\boxed{\textbf{C — MATHEMATICALLY DEFINED BUT DEPENDENCY-INCOMPLETE}}$$
+
+⛔ **Not E.** No class is a genuine corpus gap. Two blockers are **declared boundaries**, one is
+**over-defined**, two were **attempted and honestly retracted**, and one (`δ`) is **located and open
+in three lanes**.
+
+## §15 · First unresolved node on each path
+
+`status → ⪰` **(policy-supplied by declaration)** · `consistency → Contr` **(7 signatures, `CR-1`
+decision required)** · `governance → Eval_Gov → governance artifact + authority evidence + conflict
+rule` **(all three absent; A3 forbids inventing them)** · `temporal → 3-way time distinction
+(valid/world · observation · transaction)` · `operational → δ → Step 290`.
+
+⭐ **Only ONE of the five is a research question. The other four are decisions or reading debt.**
+
+## Register impact
+
+| **`G-33`** | ⭐ **DISPOSED — `C`.** My "5 undefined" framing withdrawn |
+| **NEW `G-34`** | **`E_min` and `π_min`** — the minima the two `EXECUTABLE_NOW` predicates test against are **not shown to be defined**. If they are not, only **content** is genuinely evaluable |
+| **NEW `G-35`** | ⛔ **`docs/knowledgeos/research/` — 69 files, 3 sub-lanes — a FOURTH unenumerated lane**, and it holds a **self-retracted experiment** directly on three of the five blockers |
+| **`G-12` debt** | ⭐ **step 290 is now load-bearing** — `δ`'s commit case, named by three lanes |
+| **declared boundaries** | now **four**: `ρ_A` · `Det_r` · Ω-B · **`⪰`** |
+
+**Next: `G-34`** — it is the only item that can *reduce* the executable set, and it is a one-hour
+check. Then **`G-32`**.
