@@ -1164,3 +1164,75 @@ is its natural successor and opens the 181-file `kernel/` lane; it should not be
 Not abandoned. Three bounded investigations have now run consecutively. **The global chronological
 stream resumes at the head of the unread window (`G-12` blocks 1, 2, 4, 5 — ~180 files) after
 `G-22`**, per §8/§10.
+
+---
+
+# CHECKPOINT 014 — `G-22` disposed. **`HOMONYM` + `IDENTITY-UNWITNESSED`. Five senses, not six.**
+
+**Record:** `brainstorming/verification/gap-discovery/g-22-omega-sense-inventory/01-OMEGA-SENSE-INVENTORY-231-267.md`
+
+## What I got wrong — four withdrawals
+
+| claim | why it was wrong |
+|---|---|
+| *"six mutually incompatible senses"* | over-split Ω-4 across three sites; **missed Ω-1 inside the window** and Ω-5 entirely |
+| *"`Ω_a/Ω_b/Ω_c` never defined"* | searched subscripts; **the corpus's form is hyphenated `Ω-a`**. Defined 08-28 15:01 |
+| *"no governance act touches Ω"* | **`GN-09`** rules Ω historical-only; **`D-R27`** records it |
+| *"no statement identifies two Ω uses"* | I searched for **identity** and never for a **contradiction ruling**. **`C-06`** is one |
+
+⭐ **And the largest:** `TG-15` had registered the Ω overload on 2026-08-30 as *"the most dangerous
+naming collision found."* **I re-derived it eleven days later and called it new.** `G-19`'s
+mechanism, with the reconstruction inside it.
+
+## Method rules adopted (all three from measured misses)
+
+1. **Every symbol sweep covers every spelling** — `Ω` *and* `\Omega`. A glyph-only sweep here
+   returned **2 of 28 occurrences, 1 of 11 files (7 %)**.
+2. **And every form** — subscript `Ω_a` *and* hyphen `Ω-a`.
+3. ⭐ **Before registering a gap as new, search the `verification/` lane for it.**
+
+## Verification performed
+
+| check | result |
+|---|---|
+| occurrence inventory | 28 occurrences / 11 of 40 window files, **every one read in context** |
+| `Ω : W → O` origin | `031` §31.18, **boxed, definitional**; `W`/`O` typed at §31.17 |
+| does `031` cite `025`? | **zero** mentions of `025`, *"domain ontology"* or `Update(K,E,Ω,EC)` |
+| `Ω-3` oldest? | `step-016` L1993, 08-27 16:00 — **one Ω, no gloss, `ρ_t` also undefined** |
+| `𝒯`-style enumeration of the split | `combine-prompt-4` defines all three; **`238` alters Ω_c's fate without derivation** |
+| 2026-08-24 origin | **2 of 92** files; **independently matches `AF-003`** file-for-file |
+| a tempting identification | ⛔ **refused.** `TV-F-022-024` types Ω-3 as *"ontology"* citing `F(K₀,H,ρ,Ω)` — **the formula does not exist** (two adjacent boxed formulas conflated) — and *"step-017 Ω"* — **step-017 has zero Ω**. `Ω-1 × Ω-3` stays `UNDECIDABLE` |
+
+## Subagent discipline
+
+One bounded `Explore` worker, evidence-packet only, firewall inherited and unbreached. **It refuted
+three of my claims** — every one re-verified by me at primary source before adoption, and one of its
+own rows (`TV-F-022-024`'s Ω-3 typing) **rejected** after that check.
+
+## Artifact changes
+
+| authority | change |
+|---|---|
+| `06-GAP-REGISTER.md` | `G-22` disposed + a corrections section; `G-10` **subsumed**; `G-11` **re-scoped**; `G-03` **scoped to Ω-1** |
+| `07-THEORYSTATE-CHRONICLE.md` | the re-founding-#1 symbol re-use; four histories; the self-implicating correction |
+| `05-DEFINITION-EVOLUTION-REGISTRY.tsv` | **78 → 81 rows**; Ω **restructured by SENSE** (7 site-rows → 8 sense-rows: Ω-1…Ω-7 + the a/b/c decomposition) |
+| `04-LINEAGE-EDGES.tsv` | **126 → 153 edges** (+27) |
+| new | the G-22 record, 395 lines |
+| backlog | `EKS-50` |
+
+## Next act (§"recompute, do not advance numerically")
+
+⭐ **`G-00` — reconcile the gap register against the `verification/` lane, before any further gap
+work.** `G-22` proved the register can carry as *new* what that lane settled eleven days earlier.
+Cross-checking the ~18 open gaps against `THEORY-GAP-REGISTER` (`TG-nn`),
+`independent/11-CONTRADICTION-REGISTRY` (`C-nn`) and `gap-discovery/16-MASTER-GAP-REGISTER` is
+cheap, bounded, and may close several at once. **It is smaller than every remaining gap and
+upstream of all of them.**
+
+**Then `G-11`** as re-scoped — Ω across **64 of 171** files in steps 269–291, in ≥3 senses, two of
+which the corpus has ruled contradictory. It now blocks **both** `G-21` and the 268–292 chronology.
+
+## Chronology
+
+Not abandoned. `G-22` has additionally **mapped** the 268–292 interval for one symbol (171 files
+enumerated, 64 positive), which is chronological groundwork the global stream will reuse.

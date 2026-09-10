@@ -8180,8 +8180,20 @@ refutations). Record:
 
 **Closed so far:** `G-02` · `G-03` · `G-08` · `G-12` (partial) · `G-14` · `G-18` · `G-19`.
 
-**Next:** `G-22` (`Ω`'s six senses, steps 231–267) → `G-21` (opens the 181-file `kernel/` lane) →
-resume the global chronological stream at `G-12` blocks 1, 2, 4, 5 (~180 files unread).
+**Also closed 2026-09-10:** `G-22` → **`HOMONYM` + `IDENTITY-UNWITNESSED`, FIVE senses not six.**
+`Ω` crossed re-founding #1 and was re-used for a different object 43 minutes later; `step_251`
+carries both, unremarked. `G-10` subsumed · `G-11` re-scoped · `G-03` scoped to Ω-1.
+Record: `docs/knowledgeos/brainstorming/verification/gap-discovery/g-22-omega-sense-inventory/`.
+
+⭐ **Standing method rules adopted (all from measured misses):** every symbol sweep covers **both
+spellings** (`Ω` and `\Omega` — a glyph-only sweep found 7 % of occurrences) **and both forms**
+(`Ω_a` and `Ω-a`); and **before registering a gap as new, search the `verification/` lane for it**
+— `TG-15` had registered the Ω overload eleven days before `G-10` called it new.
+
+**Next:** `G-00` — reconcile the ~18 open gaps against the `verification/` lane's own registers
+(`TG-nn`, `C-nn`, `16-MASTER-GAP-REGISTER`); cheap, bounded, upstream of everything. Then `G-11`
+as re-scoped (Ω across 64 of 171 files, steps 269–291), which blocks both `G-21` and the 268–292
+chronology. Then resume the global stream at `G-12` blocks 1, 2, 4, 5 (~180 files unread).
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·

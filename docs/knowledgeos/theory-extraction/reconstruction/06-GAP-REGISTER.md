@@ -311,7 +311,7 @@ unextracted. **`G-12` is not resolved.**
 | **G-19** | ⭐⭐ **Step 268 was commissioned and never written.** `step_267` orders an independent falsification of `K=(𝒜,ℛ)` and its minimality claim; no such file exists; the corpus jumps `267`(19:59) → `269`(20:09). | ~~**The one document commissioned to attack the cluster's central claim is missing, and the unfalsified claim proceeded straight into `272a`–`277`.**~~ ⛔ **second clause WITHDRAWN — see the G-19 disposition below: the claim was attacked 3× within 74 min, in the `verification/` lane.** | **`EXECUTED_AND_REFUTING`** — see disposition |
 | **G-20** | Where do `Σ` and `E_L` enter `K = (A,R,Σ,E_L)`? The middle interval has only the **2-tuple** `K=(𝒜,ℛ)`; `E_L` never occurs as a `K`-component; `step_263` L779 **excludes** `Σ` from Proposition. | The cluster treats the 4-tuple as inherited. Two of its four components have no witnessed origin. | **UNRESOLVED** |
 | **G-21** | `Ω`'s provenance is claimed as **"the kernel era, 2026-08-24"** (`step_238` L83) — earlier than Lineage A, B or C, and earlier than the Q-series (08-26). | A new and older common-ancestor candidate. `kernel/` is 181 unread files. | **UNRESOLVED** |
-| **G-22** | `Ω` carries **six mutually incompatible senses** in steps 231–267 alone. | Any claim about `Ω` crossing this interval is ambiguous by default. | **OPEN** |
+| **G-22** | ~~`Ω` carries **six mutually incompatible senses** in steps 231–267 alone.~~ ⛔ **six CORRECTED to FIVE** — see disposition below. | Any claim about `Ω` crossing this interval is ambiguous by default. | ⭐ **DISPOSED: `HOMONYM` + `IDENTITY-UNWITNESSED`** |
 
 ## Effect on earlier dispositions
 
@@ -603,3 +603,186 @@ late** — `step_277` recording *"not tested"* over two standing executed refuta
 execution graph, in both directions.** Recorded as an **observation across three instances**.
 It is **not** promoted to a corpus property — three instances, all on 2026-08-30, all in the same
 two lanes, is a scope, not a law.
+
+---
+
+# ⭐⭐ G-22 — DISPOSITION: **`HOMONYM` (1 pair, explicit) · `IDENTITY-UNWITNESSED` (the rest). FIVE senses, not six.**
+
+**Full record:** `brainstorming/verification/gap-discovery/g-22-omega-sense-inventory/01-OMEGA-SENSE-INVENTORY-231-267.md`
+
+**Question:** are the Ω occurrences in steps 231–267 one object, several objects, a re-use, a
+homonym collision, or a combination?
+
+## Method defect found first — it changes every prior Ω count
+
+The corpus writes **both** `Ω` and `\Omega`. In steps 231–267:
+
+```
+Unicode Ω .....  2 occurrences /  1 file
+\Omega .......  26 occurrences / 11 files
+                ──────────────────────────
+TOTAL ........  28 occurrences / 11 of 40 files
+```
+
+**A glyph-only sweep returns 7 % of the evidence.** Adopted as a standing rule: **every symbol sweep
+covers both spellings, or its zero is meaningless.**
+
+## The answer: **(5) a combination** — and the load-bearing part is (4), a homonym collision
+
+| | sense | type | definitional source |
+|---|---|---|---|
+| **Ω-1** | domain ontology / rules | set of rules | ⭐ `025k` L53 — **2026-08-28 09:39** |
+| **Ω-2** | the observation mechanism `Ω : W → O` | **function `W → O`** | ⭐ `031` §31.18 — **2026-08-28 10:22** |
+| **Ω-3** | `δ_K`'s 4th argument `Ω_t` | ⛔ **UNTYPED** | `step-016` L1993 — **2026-08-27 16:00**, the oldest |
+| **Ω-4** | `(Ω,ℱ,μ)` with `Ω = 𝕂` | measure-space carrier | `238`/`246`/`247`, quoted as *"earlier material proposed"* |
+| **Ω-5** | `(A,Ω,ℒ)` · `f:Ω→ℝ` · `(Ω,ℱ,P)` | imported notation | `236`/`264`/`266` — **not a KnowledgeOS object** |
+| *(Ω-6)* | uncertainty space, 7th of `M_K` | tuple component | `kernel/…122855` — **2026-08-24**, out of window; see the `G-21` gate |
+
+## ⭐ The finding
+
+$$\boxed{\Omega \textbf{ crossed re-founding \#1 and was re-used for a different object. Silently, 43 minutes later.}}$$
+
+`025k` (09:39) defines `Ω = domain ontology/rules` — part of the **025 apparatus**. `031` (10:22) is
+the document the Chronicle already records as **re-founding #1, *"drops the 025 apparatus"*** — and
+it defines `Ω : W → O`. **`031` mentions `025`, "domain ontology" and `Update(K,E,Ω,EC)` zero
+times.** Two definitional acts, 43 minutes apart, neither aware of the other.
+
+**And `step_251` carries both** — L52/338/455 vs L616, **300 lines apart, unremarked.**
+
+## Identity matrix — ten pairs, **zero SAME OBJECT**
+
+| pair | relation | basis |
+|---|---|---|
+| **Ω-1 × Ω-2** | ⭐ **HOMONYM** | two incompatible **explicit definitions**, 43 min apart |
+| **Ω-2 × Ω-3** | ⭐ **DISTINCT — explicit differentiation** | in `step-016`, the observation function is separately named **`Obs`** (`o_t=Obs(X_t,S_t)`) while `Ω_t` is a **different 4th argument in the same boxed formula** |
+| Ω-1 × Ω-4 · Ω-1 × Ω-5 · Ω-2 × Ω-4 · Ω-2 × Ω-5 | **DISTINCT — type** | rule-set / function / set / operation-set are mutually incompatible |
+| Ω-1 × Ω-3 · Ω-3 × Ω-4 · Ω-3 × Ω-5 | **UNDECIDABLE** | Ω-3 is untyped **and its own sources say so** (`240` L114, `241` L470) |
+| Ω-4 × Ω-5 | **POSSIBLE SAME — identity unwitnessed** | same measure-theoretic convention; Ω-4 commits (`Ω=𝕂`), Ω-5 is a placeholder |
+
+## Adversarial check, both directions
+
+**For continuity:** searched (both spellings, whole universe) for an identity statement, a
+rename/supersession record, a type bridge, and a definition of `Ω_a/Ω_b/Ω_c`. **All four absent.**
+⇒ `IDENTITY-UNWITNESSED` — **absence NOT converted into proof of distinctness.**
+
+**For distinction:** found **two incompatible explicit definitions**, and **one document that names
+the observation function `Obs` while using `Ω` for something else**. ⇒ two pairs proven distinct.
+
+## Corrections to my own record
+
+| | |
+|---|---|
+| ⛔ *"six mutually incompatible meanings"* (`09-EVIDENCE-LOG` §5) | **over-split** Ω-4 across 3 sites · **missed** Ω-1 inside the window · **missed** Ω-5 entirely |
+| ⛔ `Ω:W→O` attributed to `251` | source is **`031` §31.18**, two days earlier. `251` says only *"the corpus also has"* |
+| ⚠️ **`G-03` scoped, not overturned** | `G-03` rests on `251`'s genealogy **table row**, unambiguously **Ω-1**. It is now a finding about **Ω-1 only**, with **no implication for Ω-2** |
+
+## `Ω_a / Ω_b / Ω_c` — asserted, never defined
+
+`238` §238.2 states *"its three roles diverged"* → `IdealState/contract`, `dropped`, `complement
+principle` (→ invariant **I-7**, `X_t ≠ Observed(X_t)`). **No document anywhere defines the three
+terms.** The **role** carried by `Ω_c` survives as an invariant; **`238` does not say the SYMBOL
+continued to denote it.** `UNRESOLVED`.
+
+## Disappearance ≠ retirement
+
+Ω is absent from **29 of 40** window files. Its last substantive use (`251`, 18:36) precedes the
+`K=(𝒜,ℛ)` re-founding (`262`, 19:27) by **51 min**, and nothing connects them. **No document
+rejects, retires or supersedes Ω.** `NO_CONNECTION_FOUND`, never `PROVEN_NO_CONNECTION`.
+
+## The self-referential finding
+
+`step_238` L204 states $\boxed{Same\ word\neq Same\ concept}$ as a *"DDD lesson"*, applies it to
+`Zero` (three senses) and `Lord` (two referents) — **and uses `Ω` in three senses in the same
+document without applying it to `Ω`.**
+
+## ⭐ G-21 GATE — **OPEN, under one carried-forward constraint**
+
+`G-21` asks where `Ω` comes from, on the strength of `238` L83: *"`Ω` first appears in the kernel
+era, 2026-08-24."*
+
+**Two of the 89 files dated 2026-08-24 in `kernel/` contain Ω** (either spelling), and both match
+`238`'s description — *"Bayesian/typed mathematical work"* — verbatim:
+
+| file | what Ω is there |
+|---|---|
+| `…-rescorla-bayesian-models-of-the-mind-…` 12:18 | `Ω = outcome space`, `X : Ω → ℝ`, `Ω = possible system states`. ⚠️ the source itself says these *"should probably live in the **Inference bounded context, not the Kernel**"* |
+| `…-typed-mathematical-epistemic-model` 12:28 | **`(Ω) — Uncertainty space`**: *"Probability distributions, intervals, sets, fuzzy membership, etc."* — the 7th component of `M_K = (O,S,X,Θ,F,C,Ω,Γ,Y,𝒜)` |
+
+**The provenance claim is CORROBORATED as to date and description — and it does not mean what the
+register assumed.** The 2026-08-24 Ω is an **uncertainty/probability space**. It is a plausible
+ancestor of **Ω-4** and **Ω-5**. It is **not** an ancestor of **Ω-2** (`Ω : W → O`), and nothing
+connects it to **Ω-1** or **Ω-3**.
+
+$$\boxed{\textbf{"R1 transformed } \Omega \textbf{; R1 did not create } \Omega \textbf{" is true of } \Omega\text{-4 alone.}}$$
+
+**Gate verdict: entry into the 181-file `kernel/` lane is now methodologically SAFE, and was NOT
+safe before.** The constraint that must be carried in:
+
+> ⛔ **`G-21` may not be posed as *"where does Ω come from?"* — that question conflates five senses
+> and would import the collision into the kernel lane on arrival. It must be posed PER SENSE, and
+> the 2026-08-24 referent is already identified as Ω-6 (uncertainty space), which closes the
+> `238` L83 claim and leaves Ω-1, Ω-2 and Ω-3 with unlocated origins.**
+
+## Disposition summary
+
+| | |
+|---|---|
+| **Disposition** | **`HOMONYM`** for Ω-1 × Ω-2 (explicit) · **`DISTINCT`** for Ω-2 × Ω-3 (explicit) · **`DISTINCT — type`** ×4 · **`UNDECIDABLE`** ×3 · **`IDENTITY-UNWITNESSED`** ×1 |
+| **Senses** | **5** in window (+1 out-of-window referent) — **not 6** |
+| **Blocks `G-21`?** | **No longer.** The gate is open *with* the per-sense constraint above |
+| **`G-03`** | **scoped to Ω-1**, not overturned |
+| **`G-10`** | ⭐ **SUBSUMED and upgraded.** It recorded *"Ω has two meanings"* as a collision to register; `G-22` now supplies the definitional evidence, the 43-minute interval and the re-founding boundary. **Close `G-10` into `G-22`** |
+| **`G-11`** | **still OPEN** — Ω/EC reappear at `step_282`; must now be tested **per sense** |
+| **New backlog** | `EKS-50` |
+
+## ⚠️ G-22 — CORRECTIONS AFTER THE BOUNDED EVIDENCE SWEEP
+
+A whole-universe sweep (3,108 files; 493 contain Ω) **refuted three claims in the disposition
+above.** All re-verified by me at primary source. **Full detail: §12 of the G-22 record.**
+
+| my claim | verdict | correction |
+|---|---|---|
+| *"`Ω_a/Ω_b/Ω_c` … never defined"* | ⛔ **WITHDRAWN** | **defined 2026-08-28 15:01** in `how_to_combine/…combine-prompt-4`, **2 days before `238` cites them**. My search used subscripts; the corpus's form is **hyphenated `Ω-a`**. ⭐ And `238` reports Ω_c as *"complement principle"* where its source says **"unresolved"** — no derivation shown |
+| *"no governance act touches Ω"* | ⛔ **WITHDRAWN** | **`GN-09`**: *"Ω belongs to theory/history, not the final ubiquitous language"*; **`D-R27`** records it. ⚠️ But the ruling covers **only the a/b/c decomposition** — **Ω-1, Ω-2 and Ω-3 are outside the scope of the only ruling that exists** |
+| *"no statement identifies two Ω uses"* | ⛔ **WITHDRAWN** | I searched for *identity* and never for a *contradiction ruling*. **`C-06`** (08-30 21:16): *"`Ω` = Knowledge Space **vs** `Ω : W → O` … 🔴 **TRUE CONTRADICTION**"* |
+
+### ⭐ The G-19 pattern again — and this time I am inside it
+
+**`TG-15`** (`THEORY-GAP-REGISTER`, 2026-08-30 **20:51**): *"**`Ω` carries ≥4 global senses** …
+🔴 **the most dangerous naming collision found**."* My `G-10` recorded the same overload on
+**2026-09-10** as *"new collision, register it."* **The verification lane had registered it eleven
+days earlier and I re-derived it.**
+
+**What survives as genuinely new:** `TG-15`'s four senses are ① sample space ② Knowledge Space
+③ observation function ④ residual possibilities. ⭐ **`Ω-1` — `Ω = domain ontology/rules` — is in
+none of them.** The **Ω-1 × Ω-2 homonym, its 43-minute interval, and its coincidence with
+re-founding #1 are recorded nowhere in the corpus.** That finding stands.
+
+### A sixth sense, out of window — `C-06`'s other term
+
+**Ω-7 · Knowledge Space** — `Zero(K_t) = Ω \ Represented(K_t)` (2026-08-26, four Zero-lens files).
+Absent from 231–267, so not an in-window sense; but it is the sense the corpus judged **most
+dangerous**, and the ancestor of `Ω-a` *"ideal reference"*.
+
+### A non-reproducible attribution, and why it matters
+
+`verification/findings/TV-F-022-024` L60 types Ω-3 as *"ontology"*, citing *"step-016 §54 Ω
+(ontology in `F(K₀,H,ρ,Ω)`)"* and *"step-017 Ω (semantic model)"*. Checked: §54 exists, **the
+formula does not** (it is two adjacent boxed formulas conflated); step-016 has **one Ω and no
+gloss**; **step-017 has ZERO Ω**. ⇒ **`Ω-1 × Ω-3` stays `UNDECIDABLE`.** Adopting that attribution
+would have made the pair read `SAME OBJECT` on nothing at all.
+
+### `G-11` must be re-scoped
+
+Not *"Ω and EC reappear at step 282."* **Ω re-enters across 64 of 171 files in steps 269–291
+(290 occurrences)** in at least three senses — `Ω = Sañjaya` (Ω-2 revived), `Ω = epistemic horizon`
+with `K_t ⊊ Ω` (Ω-7 revived), and `Ω_K = the legitimate kernel operations`; `Kṛṣṇa = Ω` is
+**explicitly rejected**. ⭐ **Both terms of `C-06` are live again in one lane, unreconciled.**
+
+### `G-21` gate — unchanged, now double-sourced
+
+`AF-003` (`phase-archaeology-findings`, 2026-08-28 17:35) independently names **the same two files
+of 92** I found: *"Ω first appears 2026-08-24 in kernel lens docs (`20260824-121835`,
+`20260824-122855`) as the ambient space of typed/Bayesian models … **The measure-theory crisis
+inherited Ω; it did not coin it.**"* Two independent passes, same result. **The gate stays open
+under the per-sense constraint.**

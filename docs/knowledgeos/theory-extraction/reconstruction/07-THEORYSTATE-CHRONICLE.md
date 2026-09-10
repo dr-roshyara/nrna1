@@ -307,3 +307,108 @@ rather than an observation behind it:
 | **`G-19`** | **74 min** | ⭐ result **earlier** — recorded as untested after it was tested |
 
 **Not promoted.** Three instances, one day, two lanes — a scope, not a corpus law.
+
+---
+
+# STATE CHANGE — `G-22`, 2026-09-10. Ω is not one object, and one collision was invisible.
+
+`G-22` asked how many historically meaningful senses `Ω` carries in steps 231–267. **Five, not six** —
+and the correction matters more than the number.
+
+## The finding
+
+$$\boxed{\textbf{The symbol } \Omega \textbf{ crossed re-founding \#1 and was re-used for a different object. Silently, 43 minutes later.}}$$
+
+| | |
+|---|---|
+| `025k` L53 · **2026-08-28 09:39** | *"`Ω` = **domain ontology/rules**"* — part of the **025 apparatus** |
+| `031` §31.18 · **2026-08-28 10:22** | *"**Define** `Ω : W → O` … **as the observation mechanism**"* — in the document the Chronicle already records as **re-founding #1, *"drops the 025 apparatus"*** |
+
+`031` mentions `025`, *"domain ontology"* and `Update(K,E,Ω,EC)` **zero times**. Two definitional
+acts, 43 minutes apart, same day, neither aware of the other. **`HOMONYM`, on explicit evidence.**
+
+## And both of them live in `step_251`
+
+`step_251` carries `Update(K_t,E_t,Ω,EC)` at L52/338/455 **and** `Ω : W → O` at L616 — **300 lines
+apart, in one document, unremarked.** `step_251` is the document on which `G-03` and the whole
+`Ω`/`EC` sub-family classification rest.
+
+⚠️ **This does not overturn `G-03`.** `G-03`'s disposition rests on `251`'s genealogy **table row**,
+which is unambiguously the 025-series sense (**Ω-1**). It is now **scoped**: `G-03` is a finding
+about **Ω-1 only**, and carries no implication for **Ω-2**.
+
+## Ω's five senses
+
+| | sense | type | definitional source |
+|---|---|---|---|
+| **Ω-1** | domain ontology / rules | set of rules | `025k` L53, 08-28 09:39 |
+| **Ω-2** | the observation mechanism | **function `W → O`** | `031` §31.18, 08-28 10:22 |
+| **Ω-3** | `δ_K`'s 4th argument | ⛔ **UNTYPED** | `step-016` L1993, **08-27 16:00** — the oldest |
+| **Ω-4** | measure space with `Ω = 𝕂` | set | `238`/`246`/`247` — quoted as *"earlier material proposed"* |
+| **Ω-5** | generic placeholder | imported notation | `236`/`264`/`266` — not a KnowledgeOS object |
+
+**Identity matrix, ten pairs: 0 SAME OBJECT.** 1 `HOMONYM` (explicit) · 1 `DISTINCT` by explicit
+differentiation · 4 `DISTINCT` by type · 3 `UNDECIDABLE` · 1 `POSSIBLE-SAME-UNWITNESSED`.
+
+## Corrections to my own record
+
+| | |
+|---|---|
+| ⛔ **"six mutually incompatible meanings"** (`09-EVIDENCE-LOG` §5) | **over-split** Ω-4 across three sites; **missed** Ω-1 inside the window; **missed** Ω-5 entirely |
+| ⛔ **`Ω : W → O` attributed to `251`** | its definitional source is **`031` §31.18**, two days earlier. `251` says only *"the corpus also has"* — no step cited |
+| ⛔ **method** | a **glyph-only** search returns **2 of 28 occurrences and 1 of 11 files** — a **93 % miss**. The corpus writes both `Ω` and `\Omega`. Adopted: **every symbol sweep must cover both spellings** |
+
+## Four histories, held apart
+
+**Conceptual:** four different kinds of thing, no thread between them. **Mathematical:** only Ω-2 has
+a signature stated in a definitional act. **Operational:** Ω-1 and Ω-3 are consumed by operations;
+**Ω-2 is consumed by none** — it appears only in an explanatory chain. **Governance:** ⛔ **no
+governance act touches Ω** — no rename, no supersession, no retirement, no collision record.
+
+> **A later redefinition did not overwrite an earlier conceptual record, because there was never a
+> redefinition. There were independent definitions that never met.**
+
+## The self-referential finding
+
+`step_238` L204 states $\boxed{Same\ word\neq Same\ concept}$ as a *"DDD lesson"*, applies it to
+`Zero` (three senses) and `Lord` (two referents) — **and uses `Ω` in three senses in the same
+document without applying it to `Ω`.** The corpus owned the instrument and did not turn it on itself.
+
+## Disappearance ≠ retirement
+
+Ω is absent from **29 of the 40** window files, and from **252–263, 265, 267** entirely. Its last
+substantive use (`251`, 18:36) precedes the `K=(𝒜,ℛ)` re-founding (`262`, 19:27) by **51 minutes**,
+and nothing connects them. **No document rejects, retires or supersedes Ω.** Classified
+`NO_CONNECTION_FOUND`, never `PROVEN_NO_CONNECTION`.
+
+## ⚠️ G-22 corrections — and a pattern that now includes me
+
+A whole-universe sweep refuted three of my own G-22 claims (`Ω_a/b/c` **are** defined, 08-28 15:01,
+two days before `238` cites them and with **Ω_c's fate altered**; `GN-09` **is** a governance ruling
+on Ω; `C-06` **is** an explicit contradiction ruling on an Ω pair). All re-verified at source.
+
+⭐ **And the largest correction is self-implicating.** `TG-15` (`THEORY-GAP-REGISTER`, 2026-08-30
+20:51) had already registered *"`Ω` carries ≥4 global senses … **the most dangerous naming collision
+found**."* My `G-10` recorded the same overload eleven days later as *"new collision, register it."*
+
+**This is `G-19`'s mechanism, applied to me:** the `verification/` lane holds the finding; the lane
+asking the question did not read it. **`G-19` diagnosed the corpus; `G-22` finds the reconstruction
+doing the same thing.** Adopted as a standing check: **before registering a gap as new, search the
+`verification/` lane for it.**
+
+**What survives as new:** `TG-15`'s four senses do **not** include `Ω = domain ontology/rules`.
+**The Ω-1 × Ω-2 homonym, its 43-minute interval, and its coincidence with re-founding #1 appear
+nowhere in the corpus.**
+
+**Governance, corrected:** Ω is ruled **historical-only, excluded from the final ubiquitous
+language** (`GN-09`, `D-R27`) — ⚠️ **but that ruling covers only the `Ω-a/b/c` decomposition.
+Ω-1, Ω-2 and Ω-3 lie outside the scope of the only ruling that exists.**
+
+**Two further senses recorded, both out of window:** `Ω-6` uncertainty space (08-24, the `G-21`
+referent) and **`Ω-7` Knowledge Space** — `Zero(K_t) = Ω \ Represented(K_t)` — which is `C-06`'s
+other term and the ancestor of `Ω-a`.
+
+**And Ω does not stay dark:** **64 of 171 files in steps 269–291, 290 occurrences.** `Ω = Sañjaya`
+(Ω-2 revived) · `Ω = epistemic horizon`, `K_t ⊊ Ω` (Ω-7 revived) · `Ω_K = legitimate kernel
+operations` · `Kṛṣṇa = Ω` **explicitly rejected**. ⭐ **Both terms the corpus called a TRUE
+CONTRADICTION are live again, in one lane, unreconciled.**
