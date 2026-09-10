@@ -3272,3 +3272,26 @@ K-1/K2 untouched; `theory-extraction/` never accessed. Verified both consistency
 `CONSISTENT`. Full trace: `14_decision-log/MD-090-theory-00-21-multi-object-extraction/` (4 files).
 **MD-090 status: EXECUTED. CHECKPOINT** — immediately followed (same session) by MD-091, a bounded
 adjudication-only cross-check of the one flagged open question.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-091 — T21 `Decision`/`Act`/`ADR` vs. Post-T22
+`ActionRationale`/`AR_t`/`Warrant` Adjudication — EXECUTED, CHECKPOINT.** Resolved MD-090's own
+flagged `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE` question using only already-gathered evidence
+from MD-089/MD-090 — no new file read, no new agent dispatched. Full ten-item evidence-ladder test
+found no explicit identity/predecessor/refinement/DDD-mapping statement either direction, and a
+genuine architectural divergence (T21 collapses rationale-construction and warrant-evaluation into
+one `Decision` step; post-T22 splits the same territory into two separately-tracked objects,
+`AR_t`/`W_t`). One genuine positive finding: both independently arrive at the same expected-utility-
+maximization (`EU`/`argmax`) sub-formula shape, though post-T22 explicitly disclaims it as "one
+possible regime," a caution T21 never carries. **Verdict: `RELATED OBJECT, INDEPENDENTLY CONSTRUCTED
+— PARTIAL STRUCTURAL ECHO AT THE EU/ARGMAX SUB-COMPONENT ONLY`** — neither `SAME OBJECT` nor
+`UNRELATED_HOMONYM`. No merge, no bridge, no frozen artifact modified; K-1/K2 untouched;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-091-decision-act-vs-actionrationale-adjudication/` (1 file). **MD-091 status:
+EXECUTED. CHECKPOINT** — informational, not terminal. Given the scale of continuous work this turn
+(MD-089/090/091: eleven parallel extraction agents, 64 source files fully read, three governed phases
+closed), this turn's response ends here per MD-089's own recorded scope-setting statement; the
+mission remains active. Next frontier, named, not begun: the un-swept remainder of
+`mathematical_ideas_that_can_be_implemented/` (~15 pre-2026-09-06 files never multi-object extracted),
+or extending multi-object tracking into `kernel/`/`phase_measure_theory/`.

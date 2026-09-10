@@ -6891,3 +6891,38 @@ scripts `CONSISTENT`. Full trace: `14_decision-log/MD-090-theory-00-21-multi-obj
 (4 files). **MD-090 status: EXECUTED. CHECKPOINT** — per the master mission's continuous-execution
 instruction, immediately followed (same session) by MD-091, a bounded adjudication-only cross-check of
 the one flagged open question, reusing already-gathered evidence rather than reading new files.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-091 — T21 `Decision`/`Act`/`ADR` vs. Post-T22
+`ActionRationale`/`AR_t`/`Warrant` Adjudication — EXECUTED, CHECKPOINT.** Resolved the one open
+question MD-090 §02 flagged `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE`, using only evidence already
+gathered by MD-089 (post-T22 Thread 2/3) and MD-090 (T21 Batch F, Parts 16/18) — no new file read, no
+new agent dispatched, per the reuse-before-redo discipline this reconstruction has applied since
+MD-069/078/085. **Method**: full ten-item evidence-ladder test (explicit identity through DDD context
+mapping) applied to the two apparatuses side by side. **Central finding**: no explicit textual
+identity, predecessor/successor, refinement, or DDD-mapping statement exists either direction across
+either extraction pass; T21's own `D`/`Act`/`ADR` collapse rationale-construction and warrant-
+evaluation into one `Decision` step, while post-T22 splits the same territory into two separately-
+tracked intermediate objects (`AR_t`, `W_t`) between Determination and Decision — a genuine
+architectural difference, not merely a naming one. **One genuine positive finding**: T21's
+`EU(a)=Σ_sP(s∣K)U(s,a)`, `a^*=argmax EU(a)` and post-T22's `EU(a∣K_t,Q_t,C_t,S_t,R_t)`,
+`Select_U=argmax_aEU_U(a)` share the same expected-utility-maximization mathematical shape — though
+post-T22 explicitly disclaims `EU`/`argmax` as "one possible implementation/regime for selection," a
+caution T21's own unqualified `EU(a)` never carries. **Verdict**: `RELATED OBJECT, INDEPENDENTLY
+CONSTRUCTED — PARTIAL STRUCTURAL ECHO AT THE EU/ARGMAX SUB-COMPONENT ONLY` — neither `SAME OBJECT`
+(the evidence positively supports architectural divergence) nor `UNRELATED_HOMONYM` (the EU/argmax
+echo is a genuine positive correspondence, not bare absence), per the master mission's own explicit
+instruction not to default to `UNRELATED_HOMONYM` merely because no relationship was found. T21's own
+`Risk`/`Δ_R` stage noted as the closest *positional* analogue to `AR_t`/`W_t` but built from
+unrelated field content — recorded as a further `IDENTITY UNRESOLVED` note, not elevated further. No
+merge performed; no bridge constructed; no frozen artifact modified; no new file read; K-1/K2
+untouched; `theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-091-decision-act-vs-actionrationale-adjudication/` (1 file). **MD-091
+status: EXECUTED. CHECKPOINT** — informational, not a terminal claim. Given the scale of continuous
+work completed this turn (MD-089/090/091: eleven parallel extraction agents, 64 source files fully
+read, three governed phases closed), this turn's own response ends at this checkpoint per MD-089's own
+recorded scope-setting statement; the mission remains active. Next chronological frontier, named, not
+begun: the un-swept remainder of `mathematical_ideas_that_can_be_implemented/` (the ~15 pre-2026-09-06
+files never multi-object extracted), or extending multi-object tracking into `kernel/`/
+`phase_measure_theory/`.
