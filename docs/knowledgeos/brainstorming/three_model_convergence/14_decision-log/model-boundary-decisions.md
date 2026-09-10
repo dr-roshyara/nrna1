@@ -6676,3 +6676,68 @@ MD-085 — either (a) a narrowly-scoped governance decision on the acceptance-po
 further informed by exactly which `EC`/`r`/`Γ`/`Sat` sub-lineages are genuinely closed versus merely
 plausible versus genuinely unresolved, or (b) a further, separately-authorized phase specifically
 targeting the pairs this phase found genuinely `UNRESOLVED`.
+
+---
+
+## MD-087 — Deep Chronological Reconciliation Investigation: `EC`, `r`, `Γ`, `Sat`
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-086's own `R-B` outcome and commissioned a
+deeper investigation, distinguished specifically from MD-086's own citation-and-structure checks: for
+each of ten precisely-defined unresolved pairs (population recorded in full, with birth times, lanes,
+and the exact unresolved question and evidence-still-capable-of-changing-the-verdict for each),
+chronologically sweep the interval between the two formulations' own birth points for explicit bridging
+language ("extends," "refines," "formalizes," "instance of," "projection," etc.), treating any keyword
+hit as a candidate only. Default state `UNRESOLVED` unless the corpus supplies sufficient evidence; no
+mapping/projection/equivalence invention anywhere.
+
+**Method, disclosed**: reused MD-067's own already-completed 876-file traversal (which already
+established, via citation-checking, that the math lane and `phase_measure_theory/` do not cite each
+other at their respective birth points) rather than repeating it; performed a **different, more
+specific test** — six targeted bridging-language sweeps across the exact relevant chronological/textual
+windows for each pair, none previously run.
+
+**Central result: every sweep returned zero genuine hits**, across all ten pairs: a 425-file window
+between `EC`'s own birth (`step-023`) and T21's own `EC`; the same window for `r`; all 21 T21 parts for
+`Γ`; T22's own worked-example files and Part 21 for the `Sat` reversion question; `kos/inquiry.py`'s own
+full source for `r_I`'s own `causal`-kind origin; the complete `research/knowledgeos-sim/` tree for any
+citation of T21's own `theory-part`/`Det_r`/`EvalReq` material. One apparent lead (Part 21's own
+"oversimplification," near the `Sat` reversion question) was verified directly and found to concern an
+unrelated object (`ρ`, the inference-rule tuple), not `Sat` — excluded.
+
+**Sharpened classifications, using the mission's own exact required vocabulary where earned**: `EC₀`↔
+T21 `EC` — `RELATED OBJECT — FIELD ECHO ONLY` (the mission's own precise phrasing for a name
+correspondence with no demonstrated mapping). `r_I`'s own `causal` component — `UNRESOLVED/NOT FOUND`,
+confirmed by direct inspection of the executable source's own comments, not merely a narrative-text
+search. Part III↔Part V `Sat` — `SOURCE-CLAIMED CONTINUITY + STRUCTURAL DRIFT + UNRESOLVED SEMANTIC
+MAPPING`, the mission's own exact required phrasing, now directly earned. The 3-arg→2-arg reversion —
+`UNRESOLVED NOTATIONAL DRIFT`, the five candidate explanations left explicitly unranked per the
+mission's own instruction. T21's `Sat` ↔ `Sat_c`/executable `Sat` — `RELATED CONSTRUCTION/IDENTITY
+UNPROVEN`, confirmed by direct source-code inspection (zero citations either direction).
+
+**Family-level terminal verdicts, not forced to one global letter**: `EC` — `R-B` (unchanged; the
+specific pair investigated this phase sharpened to `FIELD ECHO ONLY`, but `EC₆`↔`EC₇` and `EC₀`↔`EC₈`
+remain genuine `SAME OBJECT` pairs elsewhere in the ledger). `r` — `R-B` (unchanged; `r_B`↔`r_H`
+remains genuine `SAME OBJECT, REFINED`). `Γ` — `R-C` (sharpened, not changed — zero pairs reach
+identity or refinement anywhere in the family, now confirmed by the most exhaustive sweep performed in
+this entire investigation, full 21-part T21 coverage). `Sat` — `R-B` (unchanged). **The consistent
+pattern across all ten increasingly targeted tests — every one confirming rather than overturning
+MD-086's own classifications — is itself reported as informative**: it indicates the prior
+classifications reflect genuine corpus content, not insufficient search depth.
+
+**Recommendation**: further corpus-reading is unlikely to change any of these ten verdicts. The two
+options MD-085/086 already named remain the only live paths — a narrowly-scoped governance decision on
+the acceptance-policy component alone, or (if `EC`/`r`/`Γ`/`Sat` reconciliation remains a priority)
+moving from *searching for an existing bridge* (now exhausted across every angle applicable without
+inventing one) to *explicitly authorizing construction of a disclosed, labeled bridge* — outside this
+reconstruction's own current authorization, named but not recommended by this phase.
+
+No new backlog ticket — every finding confirms and sharpens `EKS-48`'s own already-tracked evidentiary
+basis. No mapping invented; no preferred formulation selected; no mathematical inconsistency repaired;
+no construction; no canonicalization; no adoption; no frozen artifact (MD-024–086) modified;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-087-deep-chronological-reconciliation-investigation/` (5 files).
+
+**MD-087 status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind — a
+narrowly-scoped governance decision on the acceptance-policy component alone, or a separately-
+authorized construction phase (not a further reconciliation search) if `EC`/`r`/`Γ`/`Sat`'s own
+identity questions are to be closed at all.

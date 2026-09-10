@@ -3141,3 +3141,38 @@ MD-086-chronological-reconciliation-investigation/` (5 files). **MD-086 status: 
 Next action, named, not authorized: unchanged in kind from MD-085 — either (a) a narrowly-scoped
 governance decision on the acceptance-policy component alone, or (b) a further, separately-authorized
 phase targeting the pairs found genuinely `UNRESOLVED`.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-087 — Deep Chronological Reconciliation Investigation: `EC`,
+`r`, `Γ`, `Sat` — EXECUTED, HARD STOP.** User accepted MD-086's own `R-B` outcome and commissioned a
+deeper investigation: for ten precisely-defined unresolved pairs (population recorded in full with
+birth times, lanes, unresolved question, and evidence-still-capable-of-changing-the-verdict),
+chronologically sweep the interval between each pair's own birth points for explicit bridging language
+("extends," "refines," "formalizes," "instance of," "projection," etc.) — a different, more specific
+test than MD-086's own citation-and-structure checks, not a repeat of MD-067's own 876-file traversal.
+**Central result: every sweep returned zero genuine hits** across all ten pairs — a 425-file window for
+`EC`'s own birth to T21; the same window for `r`; all 21 T21 parts for `Γ`; T22/Part 21 for the `Sat`
+reversion; `kos/inquiry.py`'s own full source for `r_I`'s own `causal`-kind origin; the complete
+`research/knowledgeos-sim/` tree for any citation of T21's own `Det_r`/`EvalReq` material. One apparent
+lead (Part 21's own "oversimplification") verified and excluded — concerns an unrelated object (`ρ`),
+not `Sat`. **Sharpened classifications using the mission's own exact required vocabulary**: `EC₀`↔T21
+`EC` — `RELATED OBJECT — FIELD ECHO ONLY`; `r_I`'s own `causal` — `UNRESOLVED/NOT FOUND`, confirmed by
+direct inspection of the executable source's own comments; Part III↔Part V `Sat` — `SOURCE-CLAIMED
+CONTINUITY + STRUCTURAL DRIFT + UNRESOLVED SEMANTIC MAPPING`; the 3-arg→2-arg reversion — `UNRESOLVED
+NOTATIONAL DRIFT`, five candidate explanations left explicitly unranked; T21 `Sat`↔`Sat_c`/executable
+`Sat` — `RELATED CONSTRUCTION/IDENTITY UNPROVEN`. **Family-level terminal verdicts, not forced to one
+global letter**: `EC` — `R-B` (unchanged); `r` — `R-B` (unchanged); `Γ` — `R-C` (sharpened — zero pairs
+reach identity or refinement anywhere, confirmed by the most exhaustive sweep in this investigation);
+`Sat` — `R-B` (unchanged). The consistent pattern across all ten increasingly targeted tests — every
+one confirming rather than overturning MD-086's own classifications — is reported as informative: prior
+classifications reflect genuine corpus content, not insufficient search depth. **Recommendation**:
+further corpus-reading is unlikely to change any of these verdicts; the two options MD-085/086 already
+named remain the only live paths. No new backlog ticket. No mapping invented; no preferred formulation
+selected; no construction; no canonicalization; no adoption; no frozen artifact modified;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-087-deep-chronological-reconciliation-investigation/` (5 files). **MD-087 status:
+EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind — a narrowly-scoped
+governance decision on the acceptance-policy component alone, or a separately-authorized construction
+phase (not a further reconciliation search) if `EC`/`r`/`Γ`/`Sat`'s own identity questions are to be
+closed at all.
