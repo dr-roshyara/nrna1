@@ -3617,3 +3617,30 @@ MD-100-phase-measure-theory-frontier-opening/` (4 files). **MD-100 status: EXECU
 honest, early-stage checkpoint (8 of 566 root files; 894 files in the directory as a whole). Next
 chronological frontier, named, not begun: continue `phase_measure_theory/`'s root population from file
 9 (`20260825-221301_next-research-direction-after-measure-theory.md`) onward.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-101 — Full Exact-Duplicate Map for `phase_measure_theory/`'s
+Root Population + a Content-Recombination Finding + Continued Reading (positions 9-17) — EXECUTED,
+CHECKPOINT.** Per the user's explicit instruction to resolve the MD-100 duplication finding before
+treating further apparent recurrence as new evidence: repaired a one-file reading-order gap (position
+6, verified an exact duplicate); ran a complete `md5sum` scan across all 566 root-level files, finding
+**33 exact-duplicate groups (35 extra copies, 6.2% of the population)** — a definitive population-level
+figure superseding MD-100's own provisional sample estimate. **A harder finding surfaced while
+verifying content**: three files read this phase did not contain the content their filenames
+suggested — direct verification (not filename/call-order assumption) was required, revealing **content
+recombination** (neither exact duplication nor simple cumulative growth) — recorded as a named,
+only-partially-tractable corpus-hygiene problem requiring every file's content to be verified directly
+going forward, never assumed from filename or sequence position. Net-new content logged: the Knowledge
+Space Theory (Doignon & Falmagne) apparatus (reported external content, not adopted); the Pritchard
+*What Is This Thing Called Knowledge?* extraction (the "intersection method" for Kernel candidacy;
+further regime-derived reclassifications of Safety/Ability/Luck/Internalism/Externalism/
+Contextualism); `κ(K_t)`/`Φ` (an unresolved minimal-representation function and recognition
+predicate); `Knowledge Trajectory` replacing `Knowledge Lifecycle`. F4 formal family confirmed absent
+across all genuinely new content this phase. No frozen artifact modified; no object merged; no bridge
+invented; K-1/K2 untouched; `theory-extraction/` and `verification/zero-algebra/` never accessed.
+Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-101-phase-measure-theory-duplicate-map-and-content-segment/` (4 files). **MD-101 status: EXECUTED.
+CHECKPOINT.** Next chronological frontier, named, not begun: continue from position 18
+(`20260825-231022_probability-becomes-more-fundamental.md`) onward, verifying each file's actual
+content directly before logging it as evidence.

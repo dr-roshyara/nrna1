@@ -1,4 +1,27 @@
-**Updated:** 2026-09-11 (latest) — **MD-100 EXECUTED — OPENING THE `phase_measure_theory/` FRONTIER
+**Updated:** 2026-09-11 (latest) — **MD-101 EXECUTED — FULL EXACT-DUPLICATE MAP FOR
+`phase_measure_theory/`'s ROOT POPULATION + A CONTENT-RECOMBINATION FINDING + CONTINUED READING
+(positions 9-17), CHECKPOINT.** Per the user's explicit instruction to resolve the MD-100 duplication
+finding before treating further apparent recurrence as evidence: repaired a one-file reading-order gap
+(position 6, verified an exact duplicate); ran a complete `md5sum` scan across all 566 root-level
+files, finding **33 exact-duplicate groups (35 extra copies, 6.2% of the population)** — a definitive,
+population-level figure superseding MD-100's own provisional sample estimate. **A harder finding**:
+three files read this phase did not contain the content their filenames suggested — direct
+verification (not filename/call-order assumption) was required to establish their true content, which
+turned out to be **content recombination** (neither exact duplication nor simple cumulative growth) —
+recorded as a named, only-partially-tractable corpus-hygiene problem requiring every file's content to
+be verified directly going forward. Net-new content logged: the Knowledge Space Theory (Doignon &
+Falmagne) apparatus (reported external content, not adopted); the Pritchard *What Is This Thing Called
+Knowledge?* extraction (the "intersection method" for Kernel candidacy; further regime-derived
+reclassifications); `κ(K_t)`/`Φ` (an unresolved minimal-representation function); `Knowledge
+Trajectory` replacing `Knowledge Lifecycle`. F4 formal family confirmed absent across all new content.
+No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-
+extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-101-phase-measure-theory-duplicate-map-and-content-
+segment/` (4 files). **MD-101 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun:
+continue from position 18 (`20260825-231022_probability-becomes-more-fundamental.md`) onward,
+verifying each file's actual content directly before logging it as evidence.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-100 EXECUTED — OPENING THE `phase_measure_theory/` FRONTIER
 (8 files), CHECKPOINT.** User's methodological correction accepted without disagreement (tightened
 "third independent analytical layer" to "third methodological/cross-validation layer over
 substantially overlapping primary corpus"). Determined the true global chronological frontier across

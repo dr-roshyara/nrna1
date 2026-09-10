@@ -7329,3 +7329,43 @@ No frozen artifact (MD-024–099) modified; no object merged; no bridge invented
 files in the directory as a whole) — not a terminal claim. Next chronological frontier, named, not
 begun: continue `phase_measure_theory/`'s root population from file 9
 (`20260825-221301_next-research-direction-after-measure-theory.md`) onward.
+
+## MD-101 — Resolving the MD-100 Duplication Finding: a Full Exact-Duplicate Map + a Harder
+Content-Recombination Finding + Continued Reading (positions 9-17)
+
+Per the user's explicit instruction to resolve the MD-100 duplication finding before treating further
+apparent recurrence as new evidence: repaired a one-file reading-order gap (position 6, `215434`,
+verified an exact duplicate of position 5); then ran a complete `md5sum` scan across all 566 root-level
+files. Result: **33 exact-duplicate groups (35 "extra" copies), a definitive population-level figure
+(6.2%)**, superseding MD-100's own provisional 8-file-sample estimate. One anomalous pair carries no
+`-duplicate` filename marker on either side.
+
+**A harder finding surfaced while verifying content**: three files read this phase (`221301`, `222327`,
+`222915`) did not contain the content their filenames suggested. Direct verification (not filename or
+call-order assumption) showed `222327`'s actual content is an eight-book reading-list recommendation;
+`221301`'s actual content duplicates a passage already logged from `220941` (MD-100's own file 8),
+without being an exact file-level duplicate; `222915`'s actual content is a Session-1-continuity
+process note plus a full Pritchard research extraction. This is **content recombination** — neither
+exact duplication nor simple monotonic cumulative growth — and is recorded as a named, only-partially-
+tractable corpus-hygiene problem for this lane, requiring every file's actual content to be verified
+directly before being logged as evidence, never assumed from its filename or sequence position.
+
+Net-new content read and logged this phase: the Knowledge Space Theory (Doignon & Falmagne) deep-dive
+(`(Q,𝒦,p)`, surmise systems, Galois connections — reported external content, not adopted); the
+Pritchard *What Is This Thing Called Knowledge?* extraction (the "intersection method" for Kernel
+candidacy, further regime-derived reclassifications of Safety/Ability/Luck/Internalism/Externalism/
+Contextualism); `κ(K_t)`/`Φ` (an unresolved minimal-representation function and recognition predicate);
+`Knowledge Trajectory` replacing `Knowledge Lifecycle`; a twelve-item consolidating synthesis with five
+open research questions for the next segment. The F4 formal family confirmed absent across all
+genuinely new content this phase.
+
+No frozen artifact (MD-024–100) modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/
+MD-101-phase-measure-theory-duplicate-map-and-content-segment/` (4 files).
+
+**MD-101 status: EXECUTED. CHECKPOINT** — the exact-duplicate map is a complete, durable deliverable
+for the whole root population; content-reading remains at an early stage of a very large lane. Next
+chronological frontier, named, not begun: continue from position 18
+(`20260825-231022_probability-becomes-more-fundamental.md`) onward, verifying each file's actual
+content directly before logging it as evidence.
