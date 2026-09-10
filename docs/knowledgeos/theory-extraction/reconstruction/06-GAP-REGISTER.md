@@ -3121,3 +3121,73 @@ $$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT
 
 **`PROPOSED VERSION / CANDIDATE REGISTER`**, adoption **refused for want of authority**.
 **`TheoryState` impact: none.**
+
+---
+
+# ⭐⭐⭐ G-55 — the closure strategy, and a self-validation loop at the centre of the v1.3 claim
+
+Source: `20260902-182007_gap-closure-strategy-knowledgeos-formal-completion.md` (1372 lines),
+**`[ADVISORY]` — Strategic Roadmap · Authority: HPA Supervisory.** Record: commission
+register §Q.
+
+## §1 · The v1.3 `CommissionState` chain is now complete
+
+$$\underbrace{182007}_{\text{STRATEGY (HPA)}} \to \underbrace{\text{CLOSURE-1..5}}_{\text{EXECUTION}} \to \underbrace{182005}_{\text{ADVISORY: READY (HPA)}} \to \underbrace{182003}_{\text{RATIFIED (fabricated Board)}}$$
+
+`182007` opens: *"the missing theoretical layer has been discovered and structurally
+reconstructed, **but it has not been formally closed**"*, and lays out **Phases 1–4** —
+formalize `EVal`/`Det`/`Contr` → close `≡sem`/`𝒪_core`/`δ` → compose and reduce →
+⭐ **Phase 4 = Ratification, §7.1 "Theory v1.3"**.
+
+All four are in the same 25-second batch ⇒ timestamp order **`CHRONOLOGY UNRECORDABLE`**; the
+chain above is established **by content**.
+
+## §2 · ⭐⭐⭐ The self-validation loop
+
+Three artifacts are authored **inside this one document**: `SPEC-R-REQ-2026-v1.0` (defining
+`R-INV-01…06`, with a *"Ratification Sign-off"*), `SPEC-TEST-ABK1-2026-v1.0` (**six test
+suites, one per `R-INV`**), and `SPEC-EVAL-2026-v1.0`. Its own step 1 reads: *"Ratify
+`SPEC-R-REQ-2026-v1.0` — **lock down required distinctions so all subsequent specs have a
+target invariant.**"*
+
+$$\boxed{\text{The invariants, } ABK\text{-}1\text{, and the suite testing } ABK\text{-}1 \text{ against them are all authored in the same document.}}$$
+
+⭐ **The *"100 % test pass"* that `182005` cites as an achievement is therefore
+SELF-CONSISTENCY, not validation** — the tests can only fail if the document contradicts
+itself. `Specified ≠ Implemented ≠ Executed ≠ Validated`; *independent execution ≠ independent
+theoretical evidence.*
+
+**Together with `G-54` this gives the full shape of the v1.3 defect:** a real recommendation
+(HPA) → self-authored evidence → a fabricated ratifying authority. **Not one error, but a
+collapse of all three of `evidence · recommendation · authority` into one batch.**
+
+## §3 · Two further defects
+
+* ⭐ **The roadmap marks its own deliverables `OPEN`** — lines 428/430 list
+  `SPEC-EVAL-2026-v1.0 | OPEN`, while line 1016 of the same file contains it in full.
+* ⭐ **Internal near-duplicate** — `SPEC-EVAL-2026-v1.0` appears twice (1016–1194, 1195–1372),
+  **3 differing lines of 179**. Exactly what `INDEPENDENT-CLOSURE-REVERIFICATION` warns of:
+  ***"repetition inside one file is not corroboration."***
+
+## §4 · ⭐⭐⭐ A FOURTH invariant enumeration — `R-INV-01…06`
+
+*"six essential categories of distinctions that MUST be preserved"*, each with a **Collapse
+Violation** column: `S⁺≠S⁻` · `Explicit≠Derived` · **`Contr≠Underdetermined`** · `P_i≠P_j` ·
+`K_{t₁}(ctx₁)≠K_{t₂}(ctx₂)` · `S(depth)≠S(default)`.
+
+**The invariant register now holds FOUR enumerations:** Step-048's 10-field schema (0 rows) ·
+Step-120's `K1…K7` · Theory v1.0 §75's `I1…I9` · **`R-INV-01…06`**.
+
+⭐ `R-INV-01…06` and `I1…I9` are **the same kind of object** — non-collapse invariants — with
+**memberships that barely overlap**; only `R-INV-04` touches `I9`, and differently (`I9` =
+provenance survives *transition*; `R-INV-04` = source isolation in *merges*).
+⚠️ **`RELATED — IDENTITY UNWITNESSED`. Not merged.**
+
+⭐⭐ This is **the only one of the four with a preservation/collapse operator, a compliance
+standard and a test suite** — and per §2 that suite is not independent.
+
+**`R-INV-03` (`Contr ≠ Underdetermined`) states the `Contr`/`CR-1` boundary and the `U`-value
+question directly.** Feeds `CR-1`; **not reconciled.**
+
+⇒ **`G-45`'s disposition is reinforced, not changed**: the invariant register is
+`NON-GOAL-PROTECTED` + `ADJUDICATION-REQUIRED`, and now with **four** rival enumerations.

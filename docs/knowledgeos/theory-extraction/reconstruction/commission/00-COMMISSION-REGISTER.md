@@ -1079,3 +1079,90 @@ ratification — it recommends it, from a real role, with an explicit open item
 (`Theory v1.3 = READY FOR RATIFICATION`). **The register's verdict (*"a PROPOSAL that was
 reviewed and not adopted"*) is correct; its grouping is coarser than the evidence.**
 Recorded — **the register is not amended by me.**
+
+---
+
+## Q. `182007` — the STRATEGY that commissioned the closures, and a self-validation loop
+
+Source: `20260902-182007_gap-closure-strategy-knowledgeos-formal-completion.md` (1372 lines)
+*(supplied by the user)*. **Status `[ADVISORY]` — Strategic Roadmap · Authority: HPA
+Supervisory** — the real authority again.
+
+> *"the missing theoretical layer has been discovered and structurally reconstructed, **but it
+> has not been formally closed.** The remaining work is no longer about discovery — it is about
+> **formalization, testing, reconciliation, and ratification.**"*
+
+### ⭐⭐⭐ The v1.3 `CommissionState` chain is now complete
+
+$$\underbrace{182007}_{\text{STRATEGY, HPA}} \to \underbrace{\text{CLOSURE-1..5 specs}}_{\text{EXECUTION}} \to \underbrace{182005}_{\text{ADVISORY: READY, HPA}} \to \underbrace{182003}_{\text{RATIFIED, fabricated Board}}$$
+
+`182007` lays out **Phases 1–4**: formalize `EVal`/`Det`/`Contr` → close `≡sem`/`𝒪_core`/`δ` →
+compose and reduce → ⭐ **Phase 4 = Ratification, §7.1 "Theory v1.3"** — plus §8 *"The One Thing
+to Do Next"*, seven numbered steps.
+
+**All four documents sit in the same 25-second batch**, so timestamp order is
+**`CHRONOLOGY UNRECORDABLE`**; the order above is established **by content** (a plan naming
+phases, the artifacts those phases produce, an advisory that phase 4 is ready, an act).
+
+### ⭐⭐⭐ Defect 1 — a self-validation loop
+
+Three artifacts are authored **inside this one document**:
+
+| line | artifact |
+|---|---|
+| 528 | **`SPEC-R-REQ-2026-v1.0`** — defines `R-INV-01…06`, with §6 *"Ratification Sign-off"* |
+| 627 | **`SPEC-TEST-ABK1-2026-v1.0`** — *"ABK-1 `ℛ_req` Invariant Compliance Test Suite"*, six suites, **one per `R-INV`** |
+| 1016 | **`SPEC-EVAL-2026-v1.0`** |
+
+Step 1 of its own action plan (line 522): *"**Ratify `SPEC-R-REQ-2026-v1.0`** — **lock down
+required distinctions so all subsequent specs have a target invariant.**"*
+
+$$\boxed{\text{The invariants, the representation } ABK\text{-}1\text{, and the suite testing } ABK\text{-}1 \text{ against those invariants are all authored in the same document.}}$$
+
+⭐ **So the *"100 % test pass"* that `182005` cites as an achievement is SELF-CONSISTENCY, not
+validation.** `Specified ≠ Implemented ≠ Executed ≠ Validated` (§17), and *independent
+execution ≠ independent theoretical evidence* (§15). **The tests can only fail if the document
+contradicts itself.**
+
+### ⭐ Defect 2 — the roadmap marks its own deliverables `OPEN`
+
+Lines 428/430 list `SPEC-EVAL-2026-v1.0 | OPEN` and `SPEC-CONTR-2026-v1.0 | OPEN` in the gap
+table — **while the same file contains `SPEC-EVAL-2026-v1.0` in full at line 1016.** The plan
+and its deliverables coexist, and the plan was not updated.
+
+### ⭐ Defect 3 — an internal near-duplicate
+
+`[EMP]` `SPEC-EVAL-2026-v1.0` appears **twice**: lines **1016–1194** and **1195–1372**. Diff:
+**3 differing lines out of 179** — a heading level (`##` vs `#`) and one trailing rule.
+**178/179 identical.**
+
+This is the pattern `INDEPENDENT-CLOSURE-REVERIFICATION` names explicitly:
+***"repetition inside one file is not corroboration."***
+
+### ⭐⭐⭐ A FOURTH invariant enumeration — `R-INV-01…06`
+
+*"The KnowledgeOS kernel ratifies **six essential categories of distinctions** that MUST be
+preserved at all times"* — each with a **Collapse Violation (Prohibited)** column:
+
+| id | preserved distinction | prohibited collapse |
+|---|---|---|
+| `R-INV-01` **Standing** | `S⁺ ≠ S⁻` | mapping contradictory evidence to a net value or neutral zero |
+| `R-INV-02` **Boundary** | `Explicit ≠ Derived` | treating inferred knowledge as asserted source data |
+| `R-INV-03` **State** | **`Contr ≠ Underdetermined`** | treating conflicting evidence as missing evidence |
+| `R-INV-04` **Provenance** | `P_i ≠ P_j` | merging facts without preserving source identity |
+| `R-INV-05` **Temporal/Context** | `K_{t₁}(ctx₁) ≠ K_{t₂}(ctx₂)` | evaluating a claim outside its valid scope |
+| `R-INV-06` **Reasoning Parameter** | `S(depth) ≠ S(default)` | conflating shallow lookup with deep derivation |
+
+**The invariant register now has FOUR enumerations** — Step-048's 10-field schema (0 rows) ·
+Step-120's `K1…K7` · Theory v1.0 §75's `I1…I9` · **`R-INV-01…06`**.
+
+⭐ **`R-INV-01…06` and `I1…I9` are the same *kind* of object** — non-collapse / distinction-
+preservation invariants — **and their memberships barely overlap.** Only `R-INV-04` touches
+`I9`, and differently (`I9` = provenance survives *transition*; `R-INV-04` = source isolation in
+*merges*). ⚠️ **`RELATED — IDENTITY UNWITNESSED`. Not merged.**
+
+⭐⭐ This fourth enumeration is **the only one with a formal preservation/collapse operator, a
+compliance standard, and a test suite** — and per Defect 1, that suite is not independent.
+
+**`R-INV-03` (`Contr ≠ Underdetermined`) is a direct statement of the `Contr`/`CR-1` boundary**
+and of the `U`-value question. Recorded; feeds `CR-1`; **not reconciled.**
