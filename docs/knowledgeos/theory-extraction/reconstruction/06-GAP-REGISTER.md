@@ -3607,3 +3607,67 @@ $$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT
 Three defect classes are now named — **fabricated authority** (`G-54`), **self-validating
 tests** (`G-55`), **closure by recategorisation** (`G-60`) — and a fourth structural fact:
 **the retraction forked** (`G-61`). **`TheoryState` impact: none.**
+
+---
+
+# ⭐⭐⭐ G-62 — the circularity defect caught PROSPECTIVELY, and `Zero` splits in two
+
+Source: `20260904-160223_kr-contribution-01-must-not-assume-the-algebra-it-should-discover.md`
+(384 lines, **2026-09-04**, md5 unique). Record: commission register §X.
+
+## §1 · *"Prevent the experiment from assuming the algebra it is supposed to discover"*
+
+The proposed $C_Q^+(D)+C_Q^-(D)=0_{\mathcal C_Q}$ already assumes a ±decomposition, an
+operation `+`, an identity `0_{𝒞_Q}`, and composability — ***"precisely things the experiment
+is supposed to discover."*** Replaced by the neutral
+$C_Q(x\mid D)\in\mathcal C_Q$ with $P_Q:\mathcal C_Q\to\{+,-,0,?\}$.
+
+⭐ **The estate's fourth encounter with one defect class — and the first caught *before*
+execution:** `G-55` (structural, retrospective) · `G-56` §15 (semantic, retrospective) ·
+`G-60` (post-claim) · **here, in a pre-registration.** Dated **two days after the v1.3 fork**;
+⚠️ **no citation links them — sequence recorded, causation not claimed.**
+
+## §2 · ⭐ The conditional six-step freeze
+
+Contribution → Polarity → Composition → Balance ***"if such a neutral state exists"*** →
+Balance Zero ***"Only then define"*** → Elimination Zero ***"Remain independent."***
+
+**Each step is gated on the previous being established** — anti-assumption made structural.
+`P_Q → {+,−,0,?}` is **four-valued**, its `?` being *"remain undetermined"* — the same shape as
+`{T,F,U}`, `Ind_ρ`'s `{I,D,U}`, and `Contr ≠ Underdetermined`.
+
+## §3 · ⭐⭐⭐ `Zero` splits — and my register carries one row for the whole family
+
+| | definition | spread |
+|---|---|---|
+| **Balance Zero** | `BalanceZero_Q(C₁,C₂)`, **only if** `P_Q(Γ_Q(C₁,C₂))=0` | **25 files** |
+| **Elimination Zero** | $Zero_{T,\Pi}(x;D)\iff\Pi(T(D))=\Pi(T(E_x(D)))$ | **32 files** |
+| the `Zero_{T,Π}` form | | ⭐ **72 files** |
+
+**Declared to "remain independent" — a DECLARED NON-MERGE. Recorded, not merged.**
+
+⚠️ **Coverage gap in my own register.** I carry a single `Zero` row (`Zero_v1-DEF22`, Theory
+v1.0 §31). The family is at minimum: `Zero_epistemic` (`DEF-22`) · **Balance Zero** ·
+**Elimination Zero `Zero_{T,Π}`** · `Zero_probabilistic` (excluded by `DEF-22`) · `Z1–Z4`.
+⭐ `Zero_{T,Π}` **is** the object of *"Zero is not an element property"* (`G-58` §3).
+
+## §4 · ⭐⭐ `v1.3` is polysemous across at least four objects
+
+`theory v1.3` **394** · `kernel theory v1.3` 31 · `theory-v1.3` 15 · **`kr-algebra v1.3` 6** ·
+**`kernel v1.3` 6** · `algebra or theory v1.3` 5 · **`specification v1.3` 3**
+
+$$\boxed{v1.3 \text{ labels at least FOUR objects: Theory · Kernel · KR-Algebra · Specification.}}$$
+
+⚠️ **Refines `G-52`/`G-53`.** The disposition (`RESERVED · NOT CREATED`) **stands for *Theory*
+v1.3**, verified directly. But part of the ~150-file spread is **other objects carrying the
+same label** — the scope of the claim is now stated precisely.
+
+## §5 · The licence for the philosophical sources
+
+> *"`KR-ALGEBRA v1.3 — Draft / Discovery Extension`… **not yet theory, not Kernel, and not yet
+> algebra.** The philosophical sources provide the **structural prior**; the experiment
+> determines whether the structure actually exists."*
+
+⭐ **This is the rule under which the Gītā/Vedic material is admitted — as a *prior*, never as
+evidence.** Directly relevant to `G-45`'s finding that **82 of 117 kernel prompts were Gītā**
+against a strand recorded closed with *"0 primitives"*.

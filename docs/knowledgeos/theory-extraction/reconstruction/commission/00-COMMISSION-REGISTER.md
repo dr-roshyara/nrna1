@@ -1669,3 +1669,95 @@ Recorded `[PROP]`; `GN-84` still records `𝒪_core` **NOT RATIFIED**.
 exact file copies, is not a reliable basis for a ratification act* — and
 `INDEPENDENT-CLOSURE-REVERIFICATION`'s rule applies directly: ***"repetition inside one file is
 not corroboration."***
+
+---
+
+## X. `KR-CONTRIBUTION-01` — the same circularity defect, caught **PROSPECTIVELY**
+
+Source: `20260904-160223_kr-contribution-01-must-not-assume-the-algebra-it-should-discover.md`
+(384 lines, **2026-09-04**, md5 unique) *(user-supplied)*.
+
+> *"The architecture is right; we should prevent the experiment from **assuming the algebra it
+> is supposed to discover**."*
+
+The proposed hypothesis $C_Q^+(D)+C_Q^-(D)=0_{\mathcal C_Q}$ *"is excellent as a **candidate
+hypothesis**, but it already assumes"* — (1) a ±decomposition, (2) an operation `+`, (3) an
+identity `0_{𝒞_Q}`, (4) composability — ***"precisely things the experiment is supposed to
+discover."*** Neutral pre-registration instead:
+$$C_Q(x\mid D)\in\mathcal C_Q, \qquad P_Q:\mathcal C_Q\rightarrow\{+,-,0,\mathbf{?}\}$$
+
+### ⭐⭐⭐ The estate's third encounter with one defect — and the first caught before execution
+
+| | defect | when caught |
+|---|---|---|
+| `G-55` | `ABK-1 → EA definition → ABK-1 passes` | **retrospectively**, by me, structurally |
+| `G-56` §15 | the same, semantically | **retrospectively**, by the reviewer |
+| `G-60` | closure by recategorisation | **after** the claim |
+| ⭐ **here** | *"assuming the algebra it should discover"* | **BEFORE execution, in the pre-registration** |
+
+**2026-09-04 — two days after the v1.3 fork.** ⚠️ **No citation links them**; the sequence is
+recorded, **causation is not claimed.**
+
+### ⭐ The conditional six-step freeze — anti-assumption made structural
+
+**1.** Contribution `C_Q(x|D)` → **2.** Polarity `P_Q(C) ∈ {+,−,0,?}` → **3.** Composition
+`Γ_Q(C₁,C₂)` → **4.** Balance `P_Q(Γ_Q(C₁,C₂))=0` ***"if such a neutral state exists"*** →
+**5.** Balance Zero ***"Only then define"*** → **6.** Elimination Zero ***"Remain
+independent."***
+
+**Each step is gated on the previous being established.** You may not define Balance Zero until
+Balance is *observed*; you may not define Balance until Polarity and Composition *exist*.
+
+⭐ `P_Q → {+,−,0,?}` is a **four-valued** codomain whose `?` is *"remain undetermined"* — the
+same shape as `{T,F,U}`, `Ind_ρ`'s `{I,D,U}`, and `Contr ≠ Underdetermined`. Occurs in 2 files.
+
+### ⭐⭐⭐ `Zero` SPLITS IN TWO — and my register has one row for the whole family
+
+| | definition | corpus spread |
+|---|---|---|
+| **Balance Zero** | `BalanceZero_Q(C₁,C₂)`, defined **only if** `P_Q(Γ_Q(C₁,C₂))=0` | **25 files** |
+| **Elimination Zero** | $Zero_{T,\Pi}(x;D) \iff \Pi(T(D))=\Pi(T(E_x(D)))$ | **32 files** |
+| `Zero_{T,Π}` form itself | | ⭐ **72 files** |
+
+**They are declared to "remain independent."** ⚠️ **A declared non-merge — recorded, not
+merged.**
+
+⭐ `Zero_{T,Π}` **is** the object of the *"Zero is not an element property"* result (the
+duplicate-pair finding, `G-58` §3). **My registry carries a single `Zero` row
+(`Zero_v1-DEF22`, Theory v1.0 §31); the family is materially larger** — at minimum
+`Zero_epistemic` (`DEF-22`) · **Balance Zero** · **Elimination Zero `Zero_{T,Π}`** ·
+`Zero_probabilistic` (excluded by `DEF-22`) · `Z1–Z4` gap boundaries. **Recorded as a coverage
+gap in my own register.**
+
+### ⭐⭐ `v1.3` is polysemous across at least four objects
+
+`[EMP]` Corpus-wide label counts:
+
+| label | occurrences |
+|---|---|
+| `theory v1.3` | **394** |
+| `kernel theory v1.3` | 31 |
+| `theory-v1.3` | 15 |
+| **`kr-algebra v1.3`** | **6** |
+| **`kernel v1.3`** | **6** |
+| `algebra or theory v1.3` | 5 |
+| **`specification v1.3`** | **3** |
+
+$$\boxed{v1.3 \text{ labels at least FOUR distinct objects: Theory · Kernel · KR-Algebra · Specification.}}$$
+
+⚠️ **Refines `G-52`/`G-53`.** My classification (`PROPOSED VERSION / CANDIDATE REGISTER`,
+`RESERVED · NOT CREATED`) is correct **for *Theory* v1.3**, which I verified directly. But the
+*label* is **polysemous across objects**, and part of the ~150-file spread is other objects
+carrying it. **The disposition stands; its scope is now stated precisely.**
+
+### Status vocabulary
+
+> `KR-ALGEBRA v1.3 — Draft / Discovery Extension` · `KR-CONTRIBUTION-01 — Preregistered
+> candidate experiment` — ***"not yet theory, not Kernel, and not yet algebra."***
+>
+> ⭐ *"The philosophical sources provide the **structural prior**; the experiment determines
+> whether the structure actually exists."*
+
+⭐ That last line is **the licence under which the Gītā/Vedic material is admitted** — as a
+**prior**, never as evidence. Directly relevant to the finding that **82 of 117 kernel prompts
+were Gītā** (`G-45`) against a strand recorded as closed with *"0 primitives"*.
