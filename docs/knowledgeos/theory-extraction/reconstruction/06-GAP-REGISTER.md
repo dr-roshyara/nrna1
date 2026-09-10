@@ -308,7 +308,7 @@ unextracted. **`G-12` is not resolved.**
 | ID | question | why load-bearing | status |
 |---|---|---|---|
 | **G-18** | ⭐⭐ **What is the "latest executed reconstruction" / "closure artifact" / "completion register"?** Cited ~16× across steps 262, 263, 265, 267; **never named with a path.** | It carries the load for the three strongest claims in the middle interval: `K` closed, **minimality PROVEN**, "14 of 16" computability questions proven. The `K` the entire `272a`–`277` cluster inherits is **cited to it, not derived.** | **UNRESOLVED** — possibly `FIREWALL-LIMITED` |
-| **G-19** | ⭐⭐ **Step 268 was commissioned and never written.** `step_267` orders an independent falsification of `K=(𝒜,ℛ)` and its minimality claim; no such file exists; the corpus jumps `267`(19:59) → `269`(20:09). | **The one document commissioned to attack the cluster's central claim is missing, and the unfalsified claim proceeded straight into `272a`–`277`.** | **UNRESOLVED** |
+| **G-19** | ⭐⭐ **Step 268 was commissioned and never written.** `step_267` orders an independent falsification of `K=(𝒜,ℛ)` and its minimality claim; no such file exists; the corpus jumps `267`(19:59) → `269`(20:09). | ~~**The one document commissioned to attack the cluster's central claim is missing, and the unfalsified claim proceeded straight into `272a`–`277`.**~~ ⛔ **second clause WITHDRAWN — see the G-19 disposition below: the claim was attacked 3× within 74 min, in the `verification/` lane.** | **`EXECUTED_AND_REFUTING`** — see disposition |
 | **G-20** | Where do `Σ` and `E_L` enter `K = (A,R,Σ,E_L)`? The middle interval has only the **2-tuple** `K=(𝒜,ℛ)`; `E_L` never occurs as a `K`-component; `step_263` L779 **excludes** `Σ` from Proposition. | The cluster treats the 4-tuple as inherited. Two of its four components have no witnessed origin. | **UNRESOLVED** |
 | **G-21** | `Ω`'s provenance is claimed as **"the kernel era, 2026-08-24"** (`step_238` L83) — earlier than Lineage A, B or C, and earlier than the Q-series (08-26). | A new and older common-ancestor candidate. `kernel/` is 181 unread files. | **UNRESOLVED** |
 | **G-22** | `Ω` carries **six mutually incompatible senses** in steps 231–267 alone. | Any claim about `Ω` crossing this interval is ambiguous by default. | **OPEN** |
@@ -501,3 +501,105 @@ standing than *"Step 272 established it"* implies. **Not merged with `K_v4`.**
 **In both cases a downstream document treats an upstream item as settled at a moment when it either
 carried a qualification that was dropped, or did not yet exist.** Recorded as an **observation
 across two instances**, deliberately **not** generalised to a corpus property.
+
+---
+
+# ⭐⭐ G-19 — DISPOSITION: **`EXECUTED_AND_REFUTING`**. The falsification happened; the commission never learned.
+
+**Full investigation:** `brainstorming/verification/gap-discovery/g-19-falsification-lifecycle/01-G-19-FALSIFICATION-LIFECYCLE.md`
+
+**Question:** what exactly did `step_267` commission to falsify `K=(𝒜,ℛ)`, and was it executed?
+
+## ⛔ WITHDRAWN — my own standing `G-19` row
+
+> *"The one document commissioned to attack the cluster's central claim is missing, **and the
+> unfalsified claim proceeded straight into `272a`–`277`**."*
+
+**The second clause is REFUTED.** The claim did not proceed unfalsified. It was attacked three times
+by executed machinery within 74 minutes of the commission. The first clause stands: no step-268
+artifact exists (`find -iname "*268*"` → **0 matches / 3,105 files**, firewall excluded; the absence
+is independently recorded four times in the corpus as *"217, 229, 268 absent"*).
+
+**Root cause of my error:** I inferred non-execution from the absence of a *filename*, in exactly
+the way the commission's own §5 warned against — and in exactly the way the two-lane rule predicts.
+**Commissions live in `phase_measure_theory/`; executions live in `verification/`.** I searched the
+commission lane.
+
+## What was commissioned (`step_267` L1327, 19:59:00)
+
+| | |
+|---|---|
+| target | `K = (𝒜,ℛ)` — the **2-tuple** |
+| claim | *"No component can be removed without losing a mandatory capability"* — a **necessity** claim |
+| criterion | *"Can we construct **one** valid counterexample that forces the current model to fail?"* |
+| asymmetry | *"we still do not call the theory proven merely because the tests passed"* |
+| `𝒯` | ⛔ **never named.** Quantifies over *capabilities* (`𝒪`), not over `𝒯` |
+
+## What was executed — three times, in the other lane
+
+| time | artifact | result | standing today |
+|---|---|---|---|
+| 19:24:42 | artifact D §3 — 13-component removal table | **necessity SURVIVED**; 8 NECESSARY, `Σ` DERIVED, 3 EXTERNAL, 2 REDUNDANT | **stands**, qualified `Minimality(K\|𝒯)` |
+| **20:47:18** | `KNOWLEDGE-STATE-FINAL-AUDIT.md` | *"`K=(𝒜,ℛ)` **UNDER-SPECIFIED AND INTERNALLY CONTRADICTORY** — 3 executed refutations"* | ⭐ **STANDS** |
+| **21:05:24** | `14-FALSIFICATION-RESULTS.md` row 1, via `exp_congruence` EXP-3 | *"**REFUTED (conditionally)** — the claim is conditional on an unstated `𝒪`"* | ⛔ **WITHDRAWN 21:41** by the same lane's errata: *"the arithmetic was right; the inference was not"* |
+| **21:13:24** | `independent/05-K-ATTACK.md` §2, via `attack.py` §A | *"`ℛ`-as-bare-triple **REFUTED as adequate** — by construction, not by scoring"* | ⭐ **STANDS** |
+
+**None of the four cites Step 268.** All arrived under independent mandates. This is **convergence,
+not compliance**.
+
+## The commissioning lane never learned
+
+| time | `phase_measure_theory/` says | while `verification/` holds |
+|---|---|---|
+| 20:09 | *"already been performed"* → cancel; `🟢 representation-minimality proven` | (the constructive A–J batch only) |
+| 21:44 | `step_273` **re-commissions** 12 K deliverables | two standing refutations |
+| 22:01 | `step_277`: `K-minimality \| Not yet tested \| **OPEN**` | two standing refutations |
+| 22:14 | `step_278` does Policy–Authority instead | — |
+
+**0 of 13** re-commissioned deliverables exist (`K-DELETION-TESTS.md`, `K-COUNTEREXAMPLE-CATALOGUE.md`,
+`K-COUNTEREXAMPLE-RESULTS.md` among them).
+
+## The claim that was tested is not the claim that was stated
+
+⭐ **The commission states a NECESSITY claim. All three executed attacks landed on SUFFICIENCY.**
+The corpus names the distinction itself — `IDENTITY-ROUNDTRIP-AUDIT` L220: *"Is minimality proven?
+**NO** — necessity shown for 8 components; **sufficiency not shown**."*
+
+## Disposition summary
+
+| | |
+|---|---|
+| **Disposition** | **`EXECUTED_AND_REFUTING`** |
+| **Qualification 1** | executed **by convergence**, never in response to the commission |
+| **Qualification 2** | the refutations hit **sufficiency (E)**; the commissioned claim was **necessity (C)**, which **survived** |
+| **Qualification 3** | one of three refutations **self-withdrawn** 36 min later |
+| **Qualification 4** | **no governance adjudication** exists; three incompatible statuses coexist and the **latest** (22:01) is *"not tested"* |
+| **Effect on `C` (`Minimality(K\|𝒯)`)** | **unchanged** — still supported, still type A only, still relative to an enumerated `𝒯` over an **unenumerated** `𝒪` |
+| **Effect on `E` (sufficiency)** | **downgraded to CONTESTED** — two standing executed refutations |
+| **`EKS-46` interaction** | **distinct.** `EKS-46` = a qualifier **dropped**. `G-19` finds `step_269` **substituting** a different qualifier. Not folded |
+| **New backlog** | `EKS-49` |
+
+## `𝒯` — reconstructed, not redefined
+
+`𝒯 = { assert, relate, retract, merge, noop }` — fully enumerated, `TRANSFORMATION-CANONICAL-MODEL.md`
+§2 (artifact E, 19:25:19), closed for the test and declared open in principle (*"A richer `𝒯` could
+force more"*). **The test was executable, and was executed.** ⚠️ The unresolved set is `𝒪`, the
+**mandatory operation set** — a different object, and the one the commission's own quantifier ranges
+over. **Neither is solved here.**
+
+## ⭐ The pattern, now at three instances — and the third inverts the first two
+
+`G-18` and `G-14` found a downstream document treating an upstream item as settled *too early*.
+**`G-19` finds the mirror image: a downstream document treating an upstream item as unsettled too
+late** — `step_277` recording *"not tested"* over two standing executed refutations.
+
+| gap | direction | interval |
+|---|---|---|
+| `G-18` | cited **3 min after** a qualified source, qualification dropped | 3 min |
+| `G-14` | cited **58 min before** its source existed | −58 min |
+| **`G-19`** | ⭐ **recorded as untested 74 min AFTER its refutation** | +74 min |
+
+**The common mechanism is now nameable: the corpus's citation graph is not synchronised with its
+execution graph, in both directions.** Recorded as an **observation across three instances**.
+It is **not** promoted to a corpus property — three instances, all on 2026-08-30, all in the same
+two lanes, is a scope, not a law.

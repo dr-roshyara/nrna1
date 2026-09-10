@@ -1097,3 +1097,70 @@ do not block the `K` line.
 
 Not abandoned. The global stream resumes at the head of the unread window after this bounded
 investigation, per §8/§10.
+
+---
+
+# CHECKPOINT 013 — `G-19` disposed. **`EXECUTED_AND_REFUTING`.**
+
+**Record:** `brainstorming/verification/gap-discovery/g-19-falsification-lifecycle/01-G-19-FALSIFICATION-LIFECYCLE.md`
+
+## What I got wrong, and why
+
+My standing `G-19` row said the commissioned falsification *"is missing, and the unfalsified claim
+proceeded straight into `272a`–`277`."* **The second clause is withdrawn.** I inferred
+non-execution from the absence of a *filename* — the precise error the commission's own §4 names,
+and the precise error the **two-lane rule** predicts. I searched the commission lane for an
+execution. Executions live in `verification/`.
+
+**Method correction, adopted:** for any question of the form *"was X ever done?"*, the search must
+be **capability-shaped, not name-shaped** — what would the artifact *contain*, not what would it be
+*called*. A subagent sweep found `14-FALSIFICATION-RESULTS.md`, `KNOWLEDGE-STATE-FINAL-AUDIT.md`
+and `independent/05-K-ATTACK.md` in one pass on that basis.
+
+## Verification performed
+
+| check | result |
+|---|---|
+| commission captured verbatim before paraphrase | ✅ `step_267` L1327–1375, all 48 lines |
+| filename search for step 268 | **0 matches / 3,105 files** (firewall excluded); absence corroborated 4× in-corpus |
+| 13 re-commissioned deliverables (273 §§1–12, 274 §11) | **0 of 13 exist** |
+| A–J batch identity | all 10 matched; explicit `artifact: <letter>` keys, mandate `20260830_1918`, 19:22:47–19:28:26 |
+| A–J self-description | **10 of 10 CONSTRUCTIVE.** None is adversarial — so `step_269`'s discharge grounds do not hold |
+| `𝒯` enumeration | ✅ 5 operations, artifact E §2 |
+| **independent re-execution** | `exp_congruence.py` re-run 2026-09-10 → **byte-identical** to committed `OUT-congruence.txt`, EXP-3 block L39–62 |
+| standing of each refutation | 2 stand, 1 self-withdrawn (`second-order/00-ERRATA` L21) — checked at primary source, not inferred |
+| `05-K-ATTACK` supersession flag | the step-291 flag hits **L78 (the semilattice row)**, **not** the §2 `ℛ` refutation. Checked line by line |
+
+## Subagent discipline
+
+One bounded `Explore` worker, evidence-packet output only, no adjudication, firewall inherited and
+confirmed unbreached. Every claim it returned that I used was **re-verified at the primary source
+before integration** — including two it reported that I then narrowed (the `05-K-ATTACK`
+supersession scope, and the `KERNEL-AUDIT-230-232` removal test, which enumerates `𝒦=(K,C,T,E,A)`,
+**a different tuple**, and is therefore not evidence about `K=(𝒜,ℛ)`).
+
+## Artifact changes
+
+| authority | change |
+|---|---|
+| `06-GAP-REGISTER.md` | `G-19` disposed `EXECUTED_AND_REFUTING`; the old row's second clause struck through and marked withdrawn |
+| `07-THEORYSTATE-CHRONICLE.md` | validation dimension separated from mathematical; `Minimality` oscillation recorded; pattern register at 3 instances |
+| `05-DEFINITION-EVOLUTION-REGISTRY.tsv` | **71 → 78 rows, 13 → 15 objects**: `Minimality`×6, `𝒯`×1; `K_v3`/`K_v5` status rewritten. ⚠️ **5 pre-existing malformed rows repaired** (4 rows missing a field, 1 with an extra) — all 78 rows now carry exactly 13 fields |
+| `04-LINEAGE-EDGES.tsv` | **111 → 126 edges** (+15) |
+| new | the G-19 lifecycle record, 358 lines |
+| backlog | `EKS-49` |
+
+## Selection reasoning for the next gap (§11)
+
+**`G-22`** — `Ω` carries six mutually incompatible senses in steps 231–267 alone. It is bounded
+(one object, one interval already read), it is the last unclassified object in the middle interval,
+and it is the only remaining gap that can silently corrupt *every* claim crossing 231–267 — which
+is the interval `G-18`, `G-14` and `G-19` all just relied on. `G-21` (`Ω`'s "kernel era" origin)
+is its natural successor and opens the 181-file `kernel/` lane; it should not be entered before
+`G-22` fixes the sense inventory, or the read will conflate senses on arrival.
+
+## Chronology
+
+Not abandoned. Three bounded investigations have now run consecutively. **The global chronological
+stream resumes at the head of the unread window (`G-12` blocks 1, 2, 4, 5 — ~180 files) after
+`G-22`**, per §8/§10.

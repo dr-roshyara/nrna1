@@ -8109,3 +8109,29 @@ adopted.**
 `...-V3-targeted-continuation-AUTHORIZATION.md` · `...-deliverable-E-retirement-decision-registration.md`
 · `...-V3-D1-D4-D5-proposal.md` · `...-V3-D1-D4-D5-ADOPTED.md`. Session log:
 `.claude/sessions/2026-09-04.md`.
+
+---
+
+## 2026-09-10 — KnowledgeOS chronological reconstruction: `G-19` closed
+
+**Active work:** theory reconstruction under the Lean Operating Strategy. Four authorities only:
+`07-THEORYSTATE-CHRONICLE.md` · `05-DEFINITION-EVOLUTION-REGISTRY.tsv` (78 rows / 15 objects) ·
+`04-LINEAGE-EDGES.tsv` (126 edges) · `06-GAP-REGISTER.md`. All under
+`docs/knowledgeos/theory-extraction/reconstruction/`.
+
+**Just closed:** `G-19` → **`EXECUTED_AND_REFUTING`**. The falsification `step_267` commissioned
+against `K=(𝒜,ℛ)` **was executed** — three times in 74 minutes, in `verification/`, by parties who
+never received the commission. Necessity **survived**; sufficiency is **contested** (2 standing
+refutations). Record:
+`docs/knowledgeos/brainstorming/verification/gap-discovery/g-19-falsification-lifecycle/`.
+
+**Closed so far:** `G-02` · `G-03` · `G-08` · `G-12` (partial) · `G-14` · `G-18` · `G-19`.
+
+**Next:** `G-22` (`Ω`'s six senses, steps 231–267) → `G-21` (opens the 181-file `kernel/` lane) →
+resume the global chronological stream at `G-12` blocks 1, 2, 4, 5 (~180 files unread).
+
+**Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
+do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·
+do not reconcile `Σ` · `|K| = 11` unchanged · `UNRECORDABLE`, never `ABSENT`.
+
+**Open backlog from this line:** `EKS-41`…`EKS-49`. ⚠️ `EKS-46` is used by **two** tickets.

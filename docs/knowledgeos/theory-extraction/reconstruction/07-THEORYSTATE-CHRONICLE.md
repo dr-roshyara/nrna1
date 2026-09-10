@@ -251,3 +251,59 @@ its header: where it and an authority disagree, the authority wins.**
 
 Its proper remaining role — read records, worker evidence packets, batch narratives — is content
 that has no home among the four and correctly belongs in a supporting log.
+
+---
+
+# STATE CHANGE — `G-19`, 2026-09-10. The validation dimension separates from the mathematical one.
+
+`G-19` asked whether the falsification `step_267` commissioned against `K=(𝒜,ℛ)` was ever executed.
+**It was — three times, within 74 minutes, in the lane the commission never read.**
+
+## What changed in `TheoryState`
+
+The four dimensions of the `K=(𝒜,ℛ)` state now hold **different** values, and the point of this
+entry is that they must be kept apart:
+
+|  | before `G-19` | after `G-19` |
+|---|---|---|
+| **Conceptual** | STABLE | **STABLE** — unchanged. `K` as (assertions, relations) is uncontested in every lane |
+| **Mathematical** | DEFINED | **DEFINED** — unchanged. `𝒜`, `ℛ`, `Assertion=(id,P,e,c,t,Π)` typed; `𝒯` **newly recorded as fully enumerated**: `{assert, relate, retract, merge, noop}` |
+| **Validation** | *"commissioned, never executed"* | ⭐ **EXECUTED AND CONTESTED.** Necessity: executed, **SURVIVED**. Sufficiency: executed, **2 standing refutations + 1 self-withdrawn** |
+| **Governance** | unexamined | **UNRESOLVED** — three incompatible statuses coexist; no governance act adjudicates; the **latest** of the three says *"not tested"* |
+
+## The two halves of minimality, which the corpus never tested with one instrument
+
+| half | claim | instrument | result |
+|---|---|---|---|
+| **necessity** | *"no component can be removed without losing a mandatory capability"* — ⭐ **the claim the commission actually stated** | artifact D §3 removal table, 19:24 | **SURVIVED** — 8 NECESSARY, `Σ` DERIVED, 3 EXTERNAL, 2 REDUNDANT |
+| **sufficiency** | *"`K=(𝒜,ℛ)` captures everything required"* — ⭐ **what every executed attack actually hit** | `FINAL-AUDIT` 20:47 · `14-FALSIFICATION-RESULTS` 21:05 · `05-K-ATTACK` 21:13 | **CONTESTED** — 2 standing |
+
+`IDENTITY-ROUNDTRIP-AUDIT` L220 names the split itself: *"necessity shown for 8 components;
+**sufficiency not shown**."*
+
+## The minimality object now has six versions
+
+`Minimality` enters the Definition Registry as a tracked object with **6 versions in 3 h 29 min**
+(`Min_v1` 18:32 → `Min_v6` 22:01), the fastest-moving object in the reconstruction. Its trajectory
+is not refinement — it is **oscillation**: `PROVEN` → `type A only` → `Minimality(K|𝒯)` →
+`representation-minimality` → `conditional minimality (𝒪_core)` → **`Not yet tested`**.
+
+$$\boxed{\textbf{The last of the six states is the weakest, and it is the latest.}}$$
+
+## Re-foundings unchanged; a lane property sharpened
+
+No re-founding is added. What `G-19` sharpens is the **two-lane rule**, which now has a mechanism
+rather than an observation behind it:
+
+> **`phase_measure_theory/` commissioned the K falsification three times and executed it zero times.
+> `verification/` executed it three times and was commissioned to do so zero times.**
+
+## Pattern register — third instance, and it inverts the first two
+
+| gap | a claim's citation and its source are out of step by | direction |
+|---|---|---|
+| `G-18` | 3 min | source **earlier**, qualification dropped |
+| `G-14` | 58 min | source **later** — cited before it existed |
+| **`G-19`** | **74 min** | ⭐ result **earlier** — recorded as untested after it was tested |
+
+**Not promoted.** Three instances, one day, two lanes — a scope, not a corpus law.
