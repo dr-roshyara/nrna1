@@ -818,3 +818,198 @@ that carried the ratification claim is already recorded in my register as **`G-4
 ⭐ **`CLOSURE-4`'s "too strong" review — which I recorded in `G-40` — is part of the evidence
 that defeated the v1.3 ratification claim.** The two findings are the same event seen from two
 directions.
+
+---
+
+## N. ⚠️ Refinement of §M — `v1.3` is a **CANDIDATE REGISTER**, not merely a reserved label
+
+Sources: `20260902-175306_kr-contr-fde-2026-09-external-writeup.md` §14–15 ·
+`20260902-180009_kr-krr-2026-09-knowledge-representation-reasoning.md` §2.2, §8.1, §8.2
+*(both supplied by the user).*
+
+**My §M reading was correct for the population I measured and incomplete for the corpus.** I
+measured the 46 files carrying `no v1.3` and concluded the label was *"a reserved future slot
+whose occurrences are denial boilerplate."* That is one of **two** usages. The second is
+substantive, and it is the one that matters.
+
+### Usage 1 — the non-adoption footer (46 files)
+
+`| Theory v1.3 | not created |` · `"Baseline v1.2 unchanged. No v1.3."` — compliance lines.
+
+### ⭐⭐⭐ Usage 2 — `v1.3` as a **named candidate queue**, with ADD and DO-NOT-ADD lists
+
+`180009` **§8.1 "Add to Theory v1.3 (Candidate)"** — six elements, **every one `[PROP]`**:
+
+| element | status |
+|---|---|
+| `K^exp ≠ K^imp` | `[PROP]` |
+| `K^imp = Cn_𝒮(K^exp)` | `[PROP]` |
+| Reasoning is semantics-dependent | `[PROP]` |
+| `TELL`/`ASK` operations | `[PROP]` |
+| `Explanation ≠ Determination` | `[PROP]` |
+| Expressiveness/Tractability tradeoff | `[PROP]` |
+
+⭐ **§8.2 "Do NOT Add to Theory v1.3"** — a **negative candidate list, with reasons**:
+
+| element | reason |
+|---|---|
+| `Sat = Entailment` | **Too strong** |
+| `Zero = CWA` | **Contradicts Zero research** |
+| `Boundary = FrameAxiom` | Not established |
+| `δ = SituationCalculus` | **Candidate only** |
+| **`YES/NO/UNKNOWN` evaluation** | ⭐⭐⭐ **Contradiction research refutes** |
+
+$$\boxed{v1.3 \text{ is a CANDIDATE REGISTER — populated, curated in both directions, and never ratified.}}$$
+
+**This is a stronger form of non-adoption than a reserved label**: the slot is actively managed,
+proposals are typed `[PROP]`, and some are explicitly *refused entry*. **Curation without
+promotion.**
+
+### `[EMP]` Three `TheoryState` facts from the negative list
+
+* ⭐⭐⭐ **`YES/NO/UNKNOWN` evaluation is explicitly excluded from `v1.3` because *"contradiction
+  research refutes"* it.** This bears directly on the `𝕋₃` / `{T,F,U}` / `Sat → {⊤,⊥,U}` thread
+  in my register: the three-valued *evaluation* has a **recorded refusal**, dated 2026-09-02,
+  on contradiction-research grounds. **Recorded; the `U`-value entries are not altered** — this
+  is a statement about admission to `v1.3`, not about `Sat`'s v1.2 semantics.
+* **`Sat = Entailment` refused as "too strong"** — a boundary on `Sat`'s reading.
+* **`δ = SituationCalculus` is "candidate only"**, and §2.3 proposes replacing *"`δ(K_t,e_t) →
+  K_{t+1}` **as an undefined transition**"* with successor-state semantics
+  `K_{t+1} = Succ_𝒮(K_t, e_t)`. ⭐ A **fourth** δ status — conceptual/mathematical/operational/
+  commission now joined by **candidate-register**.
+* ⭐ `ASK(K, r, Γ) → Eval_c` — a **3-argument evaluation carrying `Γ`**, matching the
+  `Sat(K,r,Γ)` thread (`MD-082`). Recorded, not merged.
+
+### ⭐⭐⭐ `|K| = 11` — the standing prohibition finally has a source, and `v1.3` does **not** touch it
+
+`175306` §14.2 offers, as its v1.3 candidate:
+
+$$K_t = (A_t, R_t, E_t, \Sigma_t, H_t, Z_t, L_t, T_t, G_t, C_t, M_t) \qquad \textbf{11 components}$$
+
+with `C_t = { (p, S⁺(p), S⁻(p), R(p), P(p), Ctx(p), Cond(p)) | S⁺(p)=1 ∧ S⁻(p)=1 }`.
+
+**But §15.2 settles what is actually proposed:**
+
+| component | status |
+|---|---|
+| **`K_t`** | ⭐ **Unchanged** |
+| `C_t` | *may be populated by* structured standing |
+| `Z_t` | remains a **lens**, not a kernel component |
+| `Contr` · `FDE` | **not in kernel** — semantic layer |
+
+**Kernel verdict `K2` — *"New semantic representation required (outside kernel)"*.** And §14.2
+closes: ***"But this is a candidate — not an architectural decision."***
+
+$$\boxed{\text{The } v1.3 \text{ candidate is a POPULATION RULE for the existing } C_t \text{ component — NOT a new } K.\; |K|=11 \text{ is untouched.}}$$
+
+`[EMP]` **Provenance of `|K| = 11`:** the 11-tuple traces to **2026-08-26** —
+`phase_measure_theory/20260826-174215_knowledgeos-the-complete-mathematical-model.md` and the
+**Q-series** (`question-8`, `-9`, `-15`, `-17`, `-18`, `-19`, `-20`) — **a week before `v1.3`
+was first mentioned (09-02T12:26)**. It is restated, not invented, by the v1.3 candidate. The
+standing prohibition *"do not change `|K| = 11`"* now has a located origin.
+
+⭐ `C_t`'s membership condition is a **third form of the conflict predicate**: `S⁺>0 ∧ S⁻>0`
+(step-003, **ILL-TYPED**) → `E⁺≠∅ ∧ E⁻≠∅` (step-004, in-corpus repair) → **`S⁺(p)=1 ∧ S⁻(p)=1`**
+(09-02). Feeds `CR-1`; **not reconciled**.
+
+### §4 classification — revised
+
+$$\boxed{\textbf{PROPOSED VERSION} \;/\; \textbf{CANDIDATE REGISTER} - \text{populated, curated in both directions, never ratified}}$$
+
+Adoption status and version chain are **unchanged** from §M:
+`v1.2 (FROZEN) → [ v1.3 RESERVED · NOT CREATED ]`. **`TheoryState` impact remains none** — every
+candidate is `[PROP]`, and the one object with a concrete formula (`K_t`) is marked
+**Unchanged** by its own source.
+
+---
+
+## O. Claim A read directly — and a timestamp defect that forces one correction of my own
+
+Source: `20260902-182003_consolidated-architectural-audit-and-ratification-adjustment.md`
+(1094 lines) *(supplied by the user)*.
+
+### It is not a loose assertion — it is a three-specification package
+
+| | |
+|---|---|
+| `[RATIFIED SPECIFICATION — CLOSURE VECTOR 1 & 2]` | `EVal` + `Det` |
+| `[RATIFIED SPECIFICATION — CLOSURE VECTORS 3 & 4]` | `𝒪_core + δ` + `≡_sem + ∘` |
+| `[RATIFIED SPECIFICATION — CLOSURE VECTOR 5 & FINAL KERNEL REDUCTION]` | `EA` → **kernel selection** |
+
+Document IDs (`SPEC-EXEC-KERNEL-2026-v1.0`), a target (`CLOSURE-SYNTHESIS-2026-v1.2`), and a
+declared **Authority**. It closes:
+$$\boxed{\text{KnowledgeOS Kernel Theory v1.3 is Fully Ratified, Closed, and Complete.}}$$
+
+### ⭐⭐⭐ The ratifying authority exists in exactly one file — the one that invokes it
+
+`[EMP]` **"KnowledgeOS Formal Epistemology & Architecture Board"** — corpus-wide occurrences:
+**3, all inside `182003` itself.** Zero elsewhere. *(Five other files match the bare words
+"formal epistemology"; none names the Board.)*
+
+**This is the same defect that retired `Eval_Gov`** — *"an authority table is **invented
+governance**, which `A3` forbids."* The v1.3 ratification rests on a body the corpus does not
+otherwise contain. ⚠️ Recorded as a **provenance finding about the claim**, not a judgement on
+its mathematics.
+
+`SPEC-EXEC-KERNEL` / `CLOSURE-SYNTHESIS-2026-v1.2` likewise **never escape the 18:20 cluster**
+(7 files, all in it). `ABK-1` is cited in ~30 files, but **downstream it appears only as an
+object of audit** (`theory-extraction/80,81,108,109,113,114`, `EKS-41`, the multiplicity
+register, the rescinded-closure record, `theory-part-01`) — **never as an adopted kernel.**
+
+### Substantive content recorded (all `[PROP]`, none adopted)
+
+* **`EVal : K × 𝒫 × Γ ⇀ ⟨S(p),B(p),R(p),C(p),P(p),EvalStatus⟩`** — a **partial** function
+  (`⇀`), **3 arguments including `Γ`**, six-component codomain. ⭐ A **third** independent
+  3-argument-with-`Γ` evaluation form, beside `Sat(K,r,Γ)` (`MD-082`) and `ASK(K,r,Γ)`.
+* **`Det(EVal, Q, Γ) → Determination`** — the *"Determination Bridge Layer"*. Feeds the `Det_r`
+  birth census.
+* $$Truth \neq Evaluation \neq Determination \neq Decision$$
+* **`ℳ = ⟨K, 𝒪_core, δ, EVal, Det⟩`** — a **fifth kernel shape**, beside `𝒦=(𝒫,ℛ,δ,ℐ)`,
+  `𝕶=(𝒫,ℛ,δ,ℐ,𝒰)`, `K=(id,P,e,c,t,Π,ℛ)` and the 11-tuple.
+* **`EA(ℳ,Q,Γ) ⟺ Ψ_Sound ∧ Ψ_Isolation ∧ Ψ_Termination ∧ Ψ_Determinism`**; `𝒪_core` = **five**
+  primitive operations; **`ABK-1` "officially selected"** — ⚠️ a **kernel selection**, which my
+  standing prohibition forbids me to make or adopt. **Recorded only.**
+* `≡_sem^{Q,Γ,𝒪}` here is exactly `G-40`'s **definition B** (CLOSURE-4), the one carrying the
+  *"too strong"* review.
+
+⚠️ **`Kernel v1.3` (2 occurrences) vs `Theory v1.3` (124).** The document slips between them and
+its closing box writes *"Kernel **Theory** v1.3"*. **A local slippage inside one document, not a
+systematic homonym** — recorded, not promoted to a distinction.
+
+---
+
+### ⭐⭐⭐ A timestamp defect: three batch exports carry synthetic sequential stamps
+
+`[EMP]` The `18:20:01 → 18:20:27` window holds **27 files and 21,877 lines** at **exactly
+one-second spacing**. 810 lines/second is not authoring. Measuring all 159 files dated
+2026-09-02:
+
+| inter-file gap | count |
+|---|---|
+| **1 s** | **68** |
+| 3–60 s | 13 |
+| **> 60 s** | **77** |
+
+**Batch runs of ≥5 files at 1-second spacing: three — of 11, 19 and 27 files.**
+
+$$\boxed{\text{Inside a batch run, filename timestamps are SYNTHETIC:} \;\; \texttt{CHRONOLOGY UNRECORDABLE}. \text{ Outside, they are usable.}}$$
+
+### ⚠️ Correction to my own §M record
+
+I wrote that the ratification claim was *"contradicted 52 minutes later"*. Splitting that:
+
+* ✅ **stands** — `step-292/00_INDEX` at **19:12** is a genuine **52 minutes** after the batch,
+  outside it.
+* ❌ **withdrawn** — the *reviews* (`182009`, `182010`, `182021`–`182026`) are **inside the same
+  batch as the claim (`182003`)**. Their order relative to it is **`CHRONOLOGY UNRECORDABLE`**.
+  They remain *"four later or contemporaneous sources, none of which accept it"* — which is how
+  the multiplicity register already phrased it, **and its phrasing was more careful than mine.**
+
+### ✅ Integrity check on my own earlier chronology — it passes
+
+The `v1.0 → v1.1 → v1.2` dating rests on the **08:5x–09:3x** region, which is **not** a batch:
+
+`08:54:20` → `08:56:54` (**154 s**) → `09:12:43` (**949 s**) → `09:28:21` → `09:35:46`.
+
+**Real intervals throughout.** The claim *"the prompt commissioning the v1.1 simulation came
+2 min 34 s after the v1.1 correction"* **stands.**
