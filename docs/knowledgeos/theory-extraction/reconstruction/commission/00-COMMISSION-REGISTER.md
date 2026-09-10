@@ -1166,3 +1166,108 @@ compliance standard, and a test suite** — and per Defect 1, that suite is not 
 
 **`R-INV-03` (`Contr ≠ Underdetermined`) is a direct statement of the `Contr`/`CR-1` boundary**
 and of the `U`-value question. Recorded; feeds `CR-1`; **not reconciled.**
+
+---
+
+## R. `182009` — the senior-mathematician adjudication, and the strongest review in the estate
+
+Source: `20260902-182009_review-as-senior-mathematician.md` (1131 lines) *(user-supplied)*.
+**Verdict: *"No — I would not close KnowledgeOS Theory v1.3 yet."***
+
+### ⭐⭐⭐ §1 — the four-level ladder, and the named illegal move
+
+> There is a fundamental difference between **1.** *a specification being written*, **2.** *an
+> implementation satisfying that specification **on one test case***, **3.** *a theory being
+> mathematically closed*, and **4.** *a kernel architecture being uniquely selected*.
+> **"The document repeatedly moves from `1 → 2 → 4` without establishing the necessary
+> bridges."**
+
+**This is my `Specified ≠ Implemented ≠ Executed ≠ Validated`, stated independently on
+2026-09-02 — and sharper**, because it names the *specific skip*: **level 3 is bypassed**, and
+"passes one test" is promoted directly to "uniquely selected". Recorded as an
+**independent, earlier derivation of my own four-way distinction.**
+
+### ⭐⭐⭐ §15 — the same self-validation defect I recorded in `G-55`, reached by a different route
+
+> *"`ABK-1` contains nodes, edges, provenance, firewalls. Then the EA tests look specifically
+> for nodes, provenance, firewalls. That makes the adequacy test partially
+> **representation-shaped**."*
+> $$ABK1 \rightarrow EA\ definition \rightarrow ABK1\ passes$$
+> *"A valid kernel selection framework must be **candidate-independent**:*
+> $$Requirements \to Independent\ Criteria \to Tests \to Candidate\ Architectures \to Results \to Selection$$"
+
+`[EMP]` **Genuine independent convergence, and I can state its independence precisely:** I
+derived the loop in `G-55` **structurally** (invariants, `ABK-1` and its test suite all authored
+in `182007`) **before reading this file**; this review derives it **semantically** (the EA
+criteria are shaped like the candidate). **Two routes, one defect.** Per §15 discipline this
+*is* independent corroboration — unusually, of a finding of mine.
+
+### ⭐⭐ §4 — a formal logical error, correctly diagnosed
+
+The document's Determination axiom
+$$Q_1 \neq Q_2 \implies Det(EVal,Q_1,\Gamma) \neq Det(EVal,Q_2,\Gamma)$$
+**is false** — different questions can legitimately yield the same determination (*"Is the
+system operational?"* / *"Can the system be used?"* → both `DeterminedPositive`). What is
+warranted is **query sensitivity**, not **injectivity**:
+$$\exists Q_1,Q_2 : Det(E,Q_1,\Gamma) \neq Det(E,Q_2,\Gamma)$$
+
+> *"query dependence = demonstrated · the proposed non-collapsing axiom = **false**. This alone
+> prevents a mathematical closure claim."*
+
+⭐ **`injectivity ≠ sensitivity`** — a clean refutation, and a distinction worth carrying.
+
+### ⭐⭐⭐ §17 — a 24-row graded status table, and a systematic INTERFACE / SEMANTICS split
+
+Verdict vocabulary is **graded**: `🟢 CLOSED` · `🟢 VALIDATED CANDIDATE` · `🟡 CLOSED AS A
+CONCEPT` · `🟡 CANDIDATE` · `🟡 OPEN` · `🔴 OPEN`. **`🟡` and `🔴` are degrees of openness.**
+
+| object | interface | semantics |
+|---|---|---|
+| **`EVal`** | 🟢 **CLOSED** (structure) | 🔴 **OPEN** (aggregation) |
+| **`Det`** | 🟢 **CLOSED** (interface) | 🔴 **OPEN** (semantics) |
+| **`δ`** | 🟢 **CLOSED** (interface) | 🟡 **OPEN** (complete semantics) |
+
+$$\boxed{\text{A systematic INTERFACE-CLOSED / SEMANTICS-OPEN split across three objects.}}$$
+
+⭐ **This is the most precise statement of `δ`'s status found so far.** `OPEN BY COMMISSION`
+says *why* δ is open; **`δ interface CLOSED · δ complete semantics OPEN`** says *what* is open.
+The two are complementary, not competing.
+
+⭐ Also: **`Contr ≠ False/Unknown` is 🟢 CLOSED** while **"Exact `Contr` semantics" is 🟡 OPEN** —
+i.e. **the boundary is closed, the semantics are open.** A precise refinement for `CR-1` and for
+the `U`-value thread, matching `R-INV-03`.
+
+`🔴 OPEN`: EVal aggregation · Determination semantics · Confidence-interval semantics ·
+Composition algebra · General semantic equivalence · EA implementation · **Kernel minimality** ·
+**`ABK-1` unique selection**.
+
+### ⭐⭐⭐ §16 — the positive residue: seven constitutional principles it *would* freeze
+
+1. **Epistemic separation** — `Representation → Reasoning → Evaluation → Determination →
+   Decision`, with `Truth ≠ Evaluation ≠ Determination ≠ Decision`
+2. **Non-explosion** — `Contr(p) ⇏ ∀q, q`
+3. **Required distinctions** — `R_req(Q,Γ) ⊆ 𝒟`
+4. **Representation adequacy** — relative to the distinctions the question/context requires
+5. **Provenance preservation** — provenance must not vanish because standing changed
+6. **Historical state preservation** — `Retract ≠ physical deletion`
+7. **Kernel / non-kernel responsibility separation**
+
+**This is the v1.3 episode's positive residue** — *"~80–85 % of the constitutional theory is
+mature enough to freeze; the remaining 15–20 % is concentrated in a small number of
+mathematically decisive coupling problems."*
+
+### Final verdict
+
+> *"its final CLOSURE-5 section **reintroduces exactly the kind of overclaim that the beginning
+> of the document successfully removed**."*
+> $$\boxed{ABK\text{-}1 \text{ is not yet mathematically proven to be the unique minimal kernel.}}$$
+> $$\boxed{\text{KnowledgeOS Theory v1.3 should remain OPEN / CLOSURE-BLOCKED.}}$$
+> Proposed instead: **`CLOSURE-SYNTHESIS-2026-v1.3 — Final Falsification Gate`**, status
+> *"Discovery CLOSED → Constitutional Core CLOSED → **Kernel Theory NOT YET CLOSED** → Final
+> Internal Closure Required."*
+
+⭐ **`G-52`/`G-54` confirmed and deepened**: the refusal was not only for want of authority
+(`G-54`) — it also carried a **substantive mathematical adjudication** with a named logical
+error, a named circularity, and a graded open list. **My earlier statement that "there was
+nothing mathematical to rebut" is too strong and is corrected here: there was, and this
+document is it.**

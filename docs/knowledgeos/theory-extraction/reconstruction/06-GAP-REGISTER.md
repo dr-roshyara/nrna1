@@ -3191,3 +3191,72 @@ question directly.** Feeds `CR-1`; **not reconciled.**
 
 ⇒ **`G-45`'s disposition is reinforced, not changed**: the invariant register is
 `NON-GOAL-PROTECTED` + `ADJUDICATION-REQUIRED`, and now with **four** rival enumerations.
+
+---
+
+# ⭐⭐⭐ G-56 — the senior-mathematician adjudication: an independent, earlier derivation of my own four-way distinction, and independent corroboration of `G-55`
+
+Source: `20260902-182009_review-as-senior-mathematician.md` (1131 lines).
+Record: commission register §R. **Verdict: *"No — I would not close Theory v1.3 yet."***
+
+## §1 · The four-level ladder, and the named illegal move
+
+> **1.** a specification being written · **2.** an implementation satisfying it **on one test
+> case** · **3.** a theory being mathematically closed · **4.** a kernel uniquely selected.
+> ***"The document repeatedly moves from `1 → 2 → 4` without establishing the necessary
+> bridges."***
+
+**My `Specified ≠ Implemented ≠ Executed ≠ Validated`, derived independently and earlier —
+and sharper**, because it names the skip: **level 3 is bypassed.**
+
+## §2 · ⭐⭐⭐ Independent corroboration of `G-55`
+
+> *"`ABK-1` contains nodes, edges, provenance, firewalls. Then the EA tests look specifically
+> for nodes, provenance, firewalls… **representation-shaped**."*
+> $$ABK1 \to EA\ definition \to ABK1\ passes$$
+
+`[EMP]` I derived this loop **structurally** in `G-55` (invariants, `ABK-1` and its test suite
+all authored inside `182007`) **before reading this file**; the review derives it
+**semantically**. **Two routes, one defect** — and by §15's own standard this is genuine
+independent corroboration. Its prescribed fix:
+$Requirements \to Independent\ Criteria \to Tests \to Candidates \to Results \to Selection$ —
+*"must be **candidate-independent**."*
+
+## §3 · A formal logical error
+
+$Q_1 \neq Q_2 \implies Det(\cdot,Q_1,\Gamma) \neq Det(\cdot,Q_2,\Gamma)$ **is false** — two
+questions may legitimately share a determination. Warranted:
+$\exists Q_1,Q_2 : Det(E,Q_1,\Gamma) \neq Det(E,Q_2,\Gamma)$.
+⭐ **`injectivity ≠ sensitivity`.** *"This alone prevents a mathematical closure claim."*
+
+## §4 · ⭐⭐⭐ A systematic INTERFACE / SEMANTICS split
+
+| object | interface | semantics |
+|---|---|---|
+| `EVal` | 🟢 CLOSED (structure) | 🔴 OPEN (aggregation) |
+| `Det` | 🟢 CLOSED | 🔴 OPEN |
+| **`δ`** | 🟢 **CLOSED** | 🟡 **OPEN** |
+
+⭐ **The most precise statement of `δ`'s status yet.** `OPEN BY COMMISSION` says *why* it is
+open; **`δ interface CLOSED · δ complete semantics OPEN`** says *what*. Complementary.
+
+⭐ **`Contr ≠ False/Unknown` 🟢 CLOSED while "exact `Contr` semantics" 🟡 OPEN** — *the boundary
+is closed, the semantics are open.* A precise refinement for `CR-1` and the `U`-value thread,
+matching `R-INV-03`. The verdict scale is **graded** (`🟡` vs `🔴` are degrees of openness).
+
+## §5 · The positive residue — seven principles it *would* freeze
+
+Epistemic separation (`Truth ≠ Evaluation ≠ Determination ≠ Decision`) · non-explosion
+(`Contr(p) ⇏ ∀q,q`) · required distinctions (`R_req(Q,Γ) ⊆ 𝒟`) · representation adequacy ·
+provenance preservation · historical state preservation (`Retract ≠ deletion`) · kernel /
+non-kernel separation. *"~80–85 % of the constitutional theory is mature enough to freeze."*
+
+## §6 · ⚠️ Correction to `G-54`
+
+I wrote that the v1.3 refusal had *"nothing mathematical to rebut, only an authority that was
+never there."* **Too strong.** The refusal **also** carried a substantive mathematical
+adjudication — a named logical error, a named circularity, and a 24-row graded open list. The
+authority defect (`G-54`) stands; **the claim that the refusal was purely procedural does not.**
+Earlier record left standing per §7.
+
+$$\boxed{ABK\text{-}1 \text{ is not yet mathematically proven to be the unique minimal kernel.} \quad v1.3 \text{ remains OPEN / CLOSURE-BLOCKED.}}$$
