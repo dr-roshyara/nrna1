@@ -2890,3 +2890,69 @@ column.**
 * `Provenance` **CONTRADICTED** (*"three objects share the word"*) · `History` **CONTRADICTED** ·
   `Supersession` verified as a relation but **acyclicity unenforced** · `Missingness`
   *"5 files, dead after step 184"*.
+
+---
+
+# ⭐⭐⭐ G-52 — `v1.3`: a RESERVED label whose ~150 occurrences are a standing DENIAL of adoption
+
+⛔ **Premise withdrawn on measurement.** The commission framed `v1.3` as *"an isolated
+occurrence"*. Measured (both spellings, both forms, firewall excluded): **~150 files**, up to 13
+in one file, **2026-09-02 → 2026-09-07**, across **six lanes** including
+`docs/knowledgeos/governance/`, `verification/zero-algebra/`, `step-292`, and **Python source**.
+A bounded-search false gap of exactly the class the previous commission's §16 warns about.
+
+## Why the count is high — and why it means the opposite
+
+**46 files** carry `no v1.3` / `No Theory v1.3`; **8** carry an explicit *not ratified*. The
+label propagates as a **non-adoption compliance footer**:
+
+> `kos12/comp.py:14` — *"Baseline v1.2 unchanged. **No v1.3.** app/ untouched. Nothing adopted."*
+> `step-292/14_governance-impact.md` — `| Theory v1.3 | **not created** |`
+
+$$\boxed{\text{High occurrence} \Rightarrow \text{repeated DENIAL of adoption, not evidence of it.}}$$
+
+## A · Occurrence · B · Lineage · C · Adoption
+
+**A —** a **reserved future version slot**; never a body of content. Earliest **09-02T12:26**.
+
+**B —** the **only ADOPTED governance document** (`EPISTEMIC-STATUS-VOCABULARY.md:160`):
+*"Governance order is unchanged: `EXPERIMENT → AUDIT → ADJUDICATION → THEORY v1.3`."*
+`20260904-102000`: *"**Theory v1.2 remains frozen; no kernel law, algebra or Theory v1.3 is
+declared until audit/adjudication is complete.**"* ⇒ lineage from `v1.2` is **explicit and
+explicitly not yet traversed**.
+
+**C —** ⭐ **one** ratification claim exists, and the corpus already disposed of it.
+`09-MULTIPLICITY-REGISTER` §1: **Claim A** (09-02 **18:20**, four documents) —
+*"KnowledgeOS Kernel Theory v1.3 is Fully Ratified, Closed, and Complete"*, `CLOSURE-1…5` all
+🟢 RATIFIED. **Claim B** — *"four later or contemporaneous sources, **none of which accept
+it**"*, including **`step-292/00_INDEX` at 19:12 — 52 minutes later** — *"no v1.3 · kernel NOT
+SELECTABLE"*.
+
+> $$\boxed{\textbf{RESOLVED. The closure package is a PROPOSAL that was reviewed and not adopted. v1.2 is frozen; there is no v1.3.}}$$
+
+`10-CONFLICT-RECORDS` lists *"Theory v1.3 closure"* under **What I am NOT asking about** —
+*"resolved by the corpus."*
+
+## §4 classification
+
+$$\boxed{\textbf{PROPOSED VERSION} - \text{a RESERVED FUTURE LABEL under an unmet governance precondition}}$$
+
+The single adoption claim is **`SUPERSEDED-AS-PROPOSAL`**.
+
+## §8 version chain — neither offered form fits
+
+$$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT CREATED}\ \big]$$
+
+**Not** `v1.2 → v1.3` (continuity never traversed); **not** `v1.2 ⇢ v1.3_local` — **no local
+`v1.3` theory content exists anywhere in the corpus.** The label names an **unreached state**,
+not a branch. **Recording a local branch would invent a theory object the corpus does not
+contain**, which is precisely what §7 forbids.
+
+## §6 TheoryState impact — **none**
+
+`TheoryState_{v1.2}(t)` unchanged; **no `TheoryState_{v1.3}` is created.** No definition, type,
+`K`, `Sat`, transformation or invariant changes.
+
+⭐ **`CLOSURE-4`'s *"the semantic equivalence claim is too strong"* review — already recorded in
+`G-40` as one of the three rival `≡_sem` definitions — is part of the evidence that defeated the
+v1.3 ratification claim.** The two findings are one event seen from two directions.

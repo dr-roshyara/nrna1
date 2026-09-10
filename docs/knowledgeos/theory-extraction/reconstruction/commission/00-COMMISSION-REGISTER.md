@@ -716,3 +716,105 @@ continuation. **1 ↔ 2** cite each other zero times; **2 → 4** carries conten
 
 ⚠️ **Not reconciled, none adopted.** The 23-part rewrite is **~59,000 lines and unread** — the
 largest single unexplored theory artifact in the estate.
+
+---
+
+## M. `v1.3` — occurrence, lineage, adoption, separated
+
+⛔ **The "isolated occurrence" premise is withdrawn on measurement.** `v1.3` (all spellings and
+forms, firewall excluded) occurs in **~150 files**, up to 13 in one file, spanning **2026-09-02
+→ 2026-09-07**, across **six lanes** including `docs/knowledgeos/governance/`,
+`verification/zero-algebra/`, `theory-extraction/`, `step-292`, and **Python source**
+(`research/knowledgeos-sim/kos12/comp.py`).
+
+### ⭐⭐⭐ Why the count is high: it is a STANDING NEGATIVE DECLARATION
+
+**46 files** carry `no v1.3` / `No Theory v1.3`; **8** carry an explicit *not ratified*. The
+label propagates as a **non-adoption compliance footer**, not as theory content:
+
+| source | line |
+|---|---|
+| `research/knowledgeos-sim/kos12/comp.py:14` | *"Baseline v1.2 unchanged. **No v1.3.** app/ untouched. Nothing adopted."* |
+| `verification/zero-algebra/KR-ZERO-ALGEBRA-2026-09/README.md` | *"Theory v1.2 unchanged · **no v1.3** · kernel NOT SELECTED · nothing ratified"* |
+| `step-292/00_INDEX.md` | *"Nothing adopted · Theory v1.2 unchanged · **no v1.3** · kernel NOT SELECTABLE."* |
+| `step-292/14_governance-impact.md` | `| Theory v1.3 | **not created** |` |
+| `theory-v1.2-simulation/Z-DECISION…` | *"Theory v1.2 unchanged · **no v1.3** · nothing adopted"* |
+| 09-07 documents (×6) | *"**No Theory v1.3.** No kernel modification."* |
+
+$$\boxed{\text{High occurrence count} \Rightarrow \text{repeated DENIAL of adoption, not evidence of it.}}$$
+
+### A · Occurrence — what the label denotes
+
+A **reserved future version slot**, never a body of content. Earliest: **2026-09-02T12:26**
+(`…knowledge-is-not-one-pole…`).
+
+### B · Lineage — declared, and conditional
+
+The **only ADOPTED governance document**, `docs/knowledgeos/governance/EPISTEMIC-STATUS-VOCABULARY.md:160`:
+
+> *"**Governance order is unchanged:** `EXPERIMENT → AUDIT → ADJUDICATION → THEORY v1.3`."*
+
+`verification/zero-algebra/GOVERNANCE-FREEZE-2026-09-03.md`: *"**No adjudication to v1.3 is
+proposed on this evidence.**"*
+
+`20260904-102000` states the position verbatim:
+
+> *"the current governance position is still: **Theory v1.2 remains frozen; no kernel law,
+> algebra or Theory v1.3 is declared until audit/adjudication is complete**."* ·
+> *"**This is not a ratification of Theory v1.3.**"* · *"I would therefore **not write this into
+> the repository as 'Theory v1.3' yet**."*
+
+`20260904-021125`: *"**do not move to Theory v1.3 yet**; use this as the specification for the
+next formal proof artifact."*
+
+⇒ **`v1.3` is the declared TERMINUS of a governance sequence whose precondition is unmet.**
+Lineage from `v1.2` is **explicit** — and explicitly **not yet traversed**.
+
+### C · Adoption — one claim, contradicted in 52 minutes, and already adjudicated
+
+⭐ There **is** one ratification claim, and the corpus had already found and disposed of it.
+`gap-update-2026-09-02/09-MULTIPLICITY-REGISTER.md` §1:
+
+* **Claim A** — `…182003`, `…182005_final-architectural-review-…v13`,
+  `…182014/182015_ratification-assessment-final-closure-packages` (**2026-09-02 18:20**):
+  `CLOSURE-1…5` all **🟢 RATIFIED**, and
+  $$\text{“KnowledgeOS Kernel Theory v1.3 is Fully Ratified, Closed, and Complete.”}$$
+* **Claim B** — *"four later or contemporaneous sources, **none of which accept it**"*:
+  `…182009 §8` *"CLOSURE-4 — the semantic equivalence claim is too strong"* · `…182010 §7`
+  *"the claim that CLOSURE-4 is fully ratified **is not supported by the evidence**"* ·
+  ⭐ **`step-292/00_INDEX` at 09-02 19:12 — 52 minutes later** — *"no v1.3 · kernel NOT
+  SELECTABLE"* · `20260904-102000` · the **Theory 00–14 series** (*"Not Theory v1.3. Not a
+  ratification."*).
+
+> $$\boxed{\textbf{RESOLVED. The closure package is a PROPOSAL that was reviewed and not adopted. v1.2 is frozen; there is no v1.3.}}$$
+
+And `10-CONFLICT-RECORDS-DECISION-REQUIRED.md` lists **"Theory v1.3 closure"** under
+***What I am NOT asking about*** — *"resolved by the corpus — v1.2 frozen, no v1.3."*
+
+### §4 classification
+
+$$\boxed{\textbf{PROPOSED VERSION} \;-\; \text{a RESERVED FUTURE LABEL under an unmet governance precondition}}$$
+
+**Not** `ADOPTED` · **not** `EXPERIMENTAL VERSION` · **not** `SUPERSEDED` · **not**
+`IDENTITY UNRESOLVED` (its identity is perfectly clear). The single `ADOPTED THEORY VERSION`
+claim is **`SUPERSEDED-AS-PROPOSAL`**, adjudicated in-corpus.
+
+### §8 version chain — neither offered form fits, and forcing one would misreport
+
+$$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT CREATED}\ \big]$$
+
+**Not** `v1.2 → v1.3` (no continuity traversed) and **not** `v1.2 ⇢ v1.3_local` (**no local
+v1.3 theory content exists anywhere** — the label names an *unreached state*, not a branch).
+Recording a local branch would invent a theory object the corpus does not contain.
+
+### §6 · TheoryState impact — **none**
+
+$$TheoryState_{v1.2}(t) \text{ is unchanged. No } TheoryState_{v1.3} \text{ is created.}$$
+
+No definition, type, `K`, `Sat`, transformation or invariant changes. The `CLOSURE-1…5` package
+that carried the ratification claim is already recorded in my register as **`G-40`'s three rival
+`≡_sem` definitions** (`CLOSURE-4`) and is **unaffected** by this classification.
+
+⭐ **`CLOSURE-4`'s "too strong" review — which I recorded in `G-40` — is part of the evidence
+that defeated the v1.3 ratification claim.** The two findings are the same event seen from two
+directions.
