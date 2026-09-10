@@ -4435,3 +4435,67 @@ Dazu `Γ = (S,C,T,P,…)` (09-02) und **`Γ : E_t × Q × C → A_t`** (09-04) �
 
 Alle vier **aktiv**; `Δ`, `Ω`, `K_t` als Multi-Object mitgeführt.
 **Keines `READY FOR CLOSURE AUDIT`.**
+
+---
+
+# ⭐⭐⭐ G-72 — Block #1000–#2199: neun typmäßig unvereinbare `Zero`-Formen, und `Satisfied = HumanAuthorization`
+
+**1.200 Dateien, alle geprüft** (T1 88 · T2 622 · T3 490); **133 neue distinkte
+Definitionsformen** (`Zero` 45 · `δ` 45 · `Ω` 32 · `Sat` 11).
+
+## §1 · Die `Zero`-Familie, konkret
+
+| # | Form | Typ |
+|---|---|---|
+| A | *foundational meta-principle* (ratifiziert `Z-KOS-001`) | Meta-Prinzip |
+| B | `Zero(K) = invariant structural core of K` | Kern |
+| C | `Zero(K, G, EC) = Z_t` | Statuswert |
+| D | `Zero(K_t, G, EC_G) = {(r_i, Z_i) : r_i ∈ R_G}` | Menge typisierter Paare |
+| E | `Zero(K_t) = {Unknown, Conflicted, Ambiguous, …}` | **Wertemenge** |
+| F | `Zero(K, K*, EC) = EpistemicDistance(K,K*\|EC)` | **Distanzfunktion** |
+| G | `Zero(K, G, EC) = R_G ∖ Satisfied(K, R_G)` | **Mengendifferenz** |
+| H | `Zero(K_t) = Ω ∖ Represented(K_t)` *(boxed)* | **Ω-Komplement** |
+| I | `Zero(K_t, EC_t, Γ_t) ⟺ Δ = ∅` | Prädikat |
+
+$$\boxed{\text{Neun Formen. Meta-Prinzip · Kern · Wert · Paarmenge · Wertemenge · Distanz · Mengendifferenz · Komplement · Prädikat.}}$$
+
+⚠️ Das Typ-Audit vom 08-29 nennt **sechs**; ich zähle **neun**. **Die Diskrepanz ist nicht
+geklärt** — Zählkriterien können abweichen. Als offene Frage notiert, nicht aufgelöst.
+
+## §2 · ⭐⭐ Zwei belegbare Kanten
+
+* **`Zero_F` wurde verworfen.** `Zero(K,K*,EC) = EpistemicDistance` ist dieselbe Idee wie
+  `K_t* − K_t`, die **Theory v1.0 §29 ausdrücklich verwirft** (*"heterogeneous epistemic
+  structures cannot generally be subtracted"*). ⇒ **eine der neun Formen ist explizit
+  ausgeschieden.**
+* **`Zero_G` nimmt `DEF-21` strukturell vorweg** — `R_G ∖ Satisfied(K,R_G)` ist die
+  Mengendifferenz der unerfüllten Requirements, also `Δ_t`s Struktur unter anderem Namen.
+  ⚠️ Kante dennoch **`UNWITNESSED`** — keine Quelle stellt die Verbindung her.
+
+## §3 · ⭐⭐⭐ `Satisfied(K, r, EC) = HumanAuthorization(K, r)`
+
+`#1409 TV-F-002-004-wave1-recheck-findings` (2026-08-29). **Satisfaction wird mit menschlicher
+Autorisierung gleichgesetzt** — ein Governance-Begriff im Typ von `Sat`. Das ist die
+schärfste Form des `ILL-TYPED`-Befunds (*predicate vs set-function vs status*): hier wird
+`Sat` zur **Autorisierung**.
+
+## §4 · `Ω` ist ebenfalls eine Familie
+
+`Ω : DISPLACED → ABANDONED` (Zustandsabbildung, #1059) · `Ω_b = unbounded epistemic
+possibility` (#1067) · `Ω_A = (SupportStatus, AcceptanceStatus, CommitmentStatus, …)`
+(Statustupel, #1453) · `Ω_K` als Wahrscheinlichkeits-Stichprobenraum (v1.0 §87). **Vier
+Bedeutungen, `IDENTITY UNWITNESSED`.**
+
+⭐ Und `Zero_H = Ω ∖ Represented(K_t)` **koppelt die beiden Familien** — Zero ist dort das
+Nicht-Repräsentierte *in* Ω.
+
+## §5 · Messfehler in eigener Sache
+
+Beim Einfügen zerstörte `echo` in einer Schleife die Tabulatorstruktur zweier Zeilen
+(12 statt 13 Felder). **Vor dem Commit erkannt und mit `printf` repariert**; Register
+arity-clean, keine Duplikate. Zwölfter dokumentierter Messfehler.
+
+## §6 · Fahrplanstatus
+
+Verarbeitet bis **#2199**; **689 Dateien verbleiben** (#2200 → #2888). Alle vier Objekte
+aktiv, `Δ`/`Ω`/`K_t` mitgeführt. **Keines `READY FOR CLOSURE AUDIT`.**

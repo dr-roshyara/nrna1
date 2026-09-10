@@ -7190,3 +7190,54 @@ mission's own explicit stopping-condition list. Next task, named, not yet perfor
 chronological frontier determination across the remaining designated lanes
 (`phase_measure_theory/`, `synthesis/`, `verification/` excluding `zero-algebra/`, `reviews/`,
 `research/`).
+
+---
+
+## MD-098 — Global Chronological Frontier Determination, and the Kernel Corpus's Own Classification/
+Coordination Layer (9 files) — EXECUTED, CHECKPOINT
+
+Performed a fresh global chronological frontier determination across the remaining designated lanes
+(`phase_measure_theory/`, `synthesis/`, `verification/` excl. `zero-algebra/`, `reviews/`, `research/`)
+following `kernel/`'s own corpus-convergence (MD-097). Established populations and spans for all five
+lanes; corrected a scope ambiguity — `docs/knowledgeos/reviews/`'s 199 top-level files are a
+different, `OUT_OF_SCOPE_ROOT`-classified engineering-governance track (ARB/commission process),
+excluded per the standing MD-010/011 boundary; `reviews/exec/` (5 files) remains excluded per
+MD-043-DQ-2. Found the true global frontier is not any single lane in isolation but a tightly
+interleaved research burst spanning `brainstorming/synthesis/` (8 files), `kernel/classification/`
+(4 previously-unread control artifacts), and `docs/knowledgeos/reviews/kernel/session1/`+`session2/`
+(112 files) — confirmed, via direct cross-reference, to be **one continuous research programme**
+("Session 1 discovers; Session 2 challenges"), not four separate lanes.
+
+**Central discovery**: `kernel/classification/cluster-map.md` defines a named "adjudication workbook"
+(`W:C-1`–`W:C-19`, `W:F-CM-1a`/`1b`, `W:Wisdom`, `W:CC-1`), distinct from the v1.1 architecture's own
+`⟨C-1⟩`–`⟨C-5⟩` annotations. `W:C-7` = "`CONFLICTED`↔`ConflictRecord` cardinality"; `W:C-15` =
+"retraction/withdrawal representation" — the first explicit definition found anywhere in the corpus
+for the recurring, previously-undefined "C-15" token this reconstruction has tracked since MD-095.
+`ConflictRecord` and "Verification Port" are both referenced by this phase's own documents as already
+belonging to a pre-existing formal architecture (`⟦L⟧`/v1.1), not as File 44's own invention —
+strengthening the K-1 structure candidate's evidentiary basis materially, **without changing its
+classification**: held at `IDENTITY UNRESOLVED`, per explicit instruction not to resolve K-1 merely
+because a plausible bridge appears. Named as the single highest-priority target for a future,
+separately-authorized K-1/K2 adjudication phase — this phase explicitly declines to read the v1.1/
+Constitution formal architecture itself, which would constitute exactly that adjudication.
+
+Confirmed the origin of the `K-1`–`K-11`/`K-M0`/`K-M1`/`KCON-001`–`025`+ registry families (all born
+in `synthesis/`'s own four files, never cross-referenced with each other despite a five-hour common
+authorship window). Found major cross-validation: this reconstruction's own MD-093–096 chronological
+extraction independently reproduces nearly every headline finding of this pre-existing classification
+apparatus (the Fagin/Halpern chain, the aggregate-too-large recurrence, the measure-theory
+propose-attack pair, the Daoist-*ziran* dispute, the ADR-KOS-KERNEL-001 draft, the Wave-1 adjudication
+status report). Cross-checked the full corpus duplicate-register (12 pairs): 9 already independently
+confirmed by this reconstruction, 2 newly found within `kernel/`'s own closed scope, 1 genuinely new
+cross-folder duplicate flagged. A three-way internal population-count discrepancy (141/151/158) found
+across the classification programme's own four files, reported not resolved.
+
+No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-
+extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-098-global-frontier-synthesis-and-session1-session2-
+burst/` (4 files).
+
+**MD-098 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun: `docs/knowledgeos/reviews/kernel/session1/` (47 files) and `session2/`
+(65 files) — 112 files, one continuous research programme, warranting dedicated parallel extraction
+agents.

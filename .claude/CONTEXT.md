@@ -1,28 +1,48 @@
-**Updated:** 2026-09-11 (latest) — **MD-097 EXECUTED — `kernel/` CORPUS-CONVERGED.** Closed out
-`kernel/` entirely: read the directory's final 2026-08-27 cluster (2 files) and its final 2026-09-02
-file. **Central finding**: `20260902-185000_review-yes12345.md` — this reconstruction's own MD-021
-Phase 4 record's "sole `epistemic_knowledgeos`/C2 candidate across both corpora," cited again in
-MD-085 — is confirmed via `md5sum`/`diff` **byte-identical** to
-`20260825-192351-relational-logical-structure-as-core-mathematics-as-regimes.md` (already fully read
-in MD-096) and its own known `-duplicate` sibling — a **third** physical copy of the same ordinary
-Kernel-domain-discovery essay, not distinct C2-defining content. Recorded forward per this
-reconstruction's own standing discipline; MD-021/MD-085's own text not edited, no register row
-touched; named as a governance question for a future, separately-authorized phase (whether the C2
-evidence-population investigation should be revisited). **`kernel/` corpus-completion statement**:
-all 172 files now read continuously in chronological order across MD-093 (39) → MD-094 (20) → MD-095
-(52) → MD-096 (50) → MD-097 (3) = 172. The tracked F4 formal family
-(`Sat`/`Det_r`/`EvalReq`/`EC`/`EC_t`/`Γ`/`Δ_t`/`≡_sem`/`⪯_cap`/`MinKer`/`v1.3`) confirmed absent
-across every one of `kernel/`'s 172 files — the strongest possible negative-boundary statement
-available for this family within this directory. K-1 structure candidate, Kernel Identity Ledger,
-Knowledge-State family, Zero-family split, and the `K-`-label homonym family all stand exactly where
-MD-096 left them; no merges performed. 8 control/classification artifacts within `kernel/` remain
-named, unread. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched;
-`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
-scripts `CONSISTENT`. Full trace: `14_decision-log/MD-097-kernel-domain-discovery-closure/` (4
-files). **MD-097 status: EXECUTED. `kernel/` is now corpus-converged for the multi-object method**
-(modulo the 8 named control artifacts) — a genuine terminal condition for this specific scope, per
-the master mission's own explicit stopping-condition list. **Next task, named, not yet performed**: a
-fresh global chronological frontier determination across the remaining designated lanes
+**Updated:** 2026-09-11 (latest) — **MD-098 EXECUTED — GLOBAL FRONTIER DETERMINATION + KERNEL CORPUS
+CLASSIFICATION/COORDINATION LAYER (9 files), CHECKPOINT.** Performed the fresh global chronological
+frontier determination across the remaining designated lanes (`phase_measure_theory/`, `synthesis/`,
+`verification/` excl. `zero-algebra/`, `reviews/`, `research/`) that MD-097 named. Corrected a scope
+ambiguity: `docs/knowledgeos/reviews/`'s 199 top-level files are a different, `OUT_OF_SCOPE_ROOT`
+engineering-governance track (ARB/commission process), excluded per the standing MD-010/011
+boundary; `reviews/exec/` stays excluded per MD-043-DQ-2. Found the true global frontier is one
+continuous, tightly-interleaved research programme ("Session 1 discovers; Session 2 challenges")
+spanning `brainstorming/synthesis/` (8 files), 4 previously-unread `kernel/classification/` control
+artifacts, and `docs/knowledgeos/reviews/kernel/session1/`+`session2/` (112 files) — not four
+separate lanes. Read the smallest, most load-bearing 9 files of that cluster directly. **Central
+discovery**: `kernel/classification/cluster-map.md` defines a named "adjudication workbook"
+(`W:C-1`–`W:C-19`, `W:F-CM-1a`/`1b`, `W:Wisdom`, `W:CC-1`), distinct from the v1.1 architecture's own
+`⟨C-1⟩`–`⟨C-5⟩` annotations. `W:C-7` = "`CONFLICTED`↔`ConflictRecord` cardinality"; `W:C-15` =
+"retraction/withdrawal representation" — the first explicit definition found anywhere in the corpus
+for the recurring "C-15" token tracked since MD-095. `ConflictRecord` and "Verification Port" are now
+shown by independent textual evidence to very likely belong to a pre-existing formal architecture
+(`⟦L⟧`/v1.1), not File 44's own invention — strengthening the K-1 structure candidate's evidentiary
+basis materially, **without changing its classification** (`IDENTITY UNRESOLVED`, per explicit
+instruction not to resolve K-1 merely because a plausible bridge appears); named as the top-priority
+target for a future, separately-authorized K-1/K2 adjudication phase — this phase explicitly declines
+to read the v1.1/Constitution itself. Confirmed the origin of the `K-1`–`K-11`/`K-M0`/`K-M1`/
+`KCON-001`–`025`+ registry families (all born in `synthesis/`'s own four files, never cross-
+referenced with each other). Found major cross-validation: this reconstruction's own MD-093–096
+chronological extraction independently reproduces nearly every headline finding of this pre-existing
+classification apparatus (Fagin/Halpern chain, aggregate-too-large recurrence, measure-theory
+propose-attack pair, Daoist-*ziran* dispute, ADR-KOS-KERNEL-001, the Wave-1 adjudication status
+report). Cross-checked the full duplicate-register: 9 pairs already independently confirmed, 2 newly
+found within `kernel/`'s own closed scope, 1 genuinely new cross-folder duplicate flagged. No frozen
+artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and
+`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-098-global-frontier-synthesis-and-session1-session2-burst/` (4 files).
+**MD-098 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `docs/knowledgeos/
+reviews/kernel/session1/` (47 files) and `session2/` (65 files) — 112 files, one continuous research
+programme.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-097 EXECUTED — `kernel/`
+CORPUS-CONVERGED.** Closed out `kernel/` entirely (172 files across MD-093–097). **Central finding**:
+`20260902-185000_review-yes12345.md` — this reconstruction's own MD-021 Phase 4 record's "sole
+`epistemic_knowledgeos`/C2 candidate," cited again in MD-085 — confirmed via `md5sum`/`diff`
+byte-identical to an already-read ordinary `kernel/` essay. Recorded forward; MD-021/MD-085 not
+edited. Full trace: `14_decision-log/MD-097-kernel-domain-discovery-closure/` (4 files).
+
+**Earlier block (2026-09-11, superseded above — stands as history): a fresh global chronological
+frontier determination across the remaining designated lanes
 (`phase_measure_theory/`, `synthesis/`, `verification/` excluding `zero-algebra/`, `reviews/`,
 `research/`).
 
