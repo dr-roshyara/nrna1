@@ -3935,3 +3935,89 @@ per Eintrag) · `EPISTEMIC-STATUS-VOCABULARY` **`CROSS-VERSION`** (ADOPTED 09-04
 `docs/knowledgeos/reviews/synthesis/` — `analysis/` (46 GN-tragende Dateien) ·
 `commission-operation-registry/` · `final-architecture/` · `book-architecture/` · `prompts/`.
 **Bisher nie enumeriert.** Sie enthält das Governance-Gedächtnis des Programms.
+
+---
+
+# ⭐⭐⭐ G-66 — §10 ausgeführt: was die Governance-Zahlen wirklich zählen, und `GN-96` bestätigt `G-65` acht Tage früher
+
+## §1 · ⚠️ Mein Zählkriterium war unspezifiziert — jetzt disaggregiert
+
+`G-65` §4 zeigte eine Tabelle („`𝒪_core` 10 · `Zero` 8 · `δ` 4 · `Γ` 1 · `Sat`/`≡_sem`/`ℛ_req`
+0") ohne anzugeben, **was** gezählt wurde. §10 verlangt das zu Recht. Disaggregiert:
+
+| Objekt | Sektionen (**Erwähnung**) | **im Titel** (**Gegenstand**) | mit Akt-Verb |
+|---|---|---|---|
+| `𝒪_core` | 12 | **1** (`GN-78`) | 11 |
+| `Zero` | 8 | 0 | 5 |
+| `δ` | **2** | 0 | 2 |
+| `Γ` | 1 | 0 | 1 |
+| `Sat` · `≡_sem` · `ℛ_req` | **0** | 0 | 0 |
+
+⚠️ Zwei Korrekturen an mir selbst: `δ` fällt von 4 auf **2** (mein früheres `awk`-Muster hatte
+einen Escape-Fehler, sichtbar an den Warnungen), und meine Behauptung *„kein Objekt im Titel"*
+war zu stark — **`GN-78` nennt das Operation Registry**; mein Muster war
+groß-/kleinschreibungsempfindlich. **Neunter Messfehler dieser Klasse.**
+
+### Das Zählkriterium, jetzt explizit
+
+Die Zahl misst **beiläufige Erwähnung in einem prozessbezogenen Akt** — **nicht** „Entscheidung
+über das Objekt". Titel-Klassifikation der 85 Sektionen: **Ruling/Entscheid 28 · sonstige 22 ·
+Review/Audit 13 · Kommission 8 · Step 6 · Buch 4.**
+
+$$\boxed{\text{Genau EIN Governance-Akt hat je ein Theorieobjekt zum Gegenstand. Governance regiert PROZESSE und das BUCH.}}$$
+
+⭐ Eine hohe Zahl bedeutet also **keine** mathematische Sicherheit, und eine Null bedeutet
+**keine** Undefiniertheit — genau wie §10 es fordert. Für `Sat`, `≡_sem`, `ℛ_req` lautet der
+korrekte Status: **`GOVERNANCE-UNBEFASST`**, nicht „ungovernt" und nicht „undefiniert".
+
+## §2 · `GN-78` — warum `𝒪_core` nicht ratifiziert ist, evidenzbasiert
+
+> *"Drafted, **unsigned, creates no authority** … a **ratification cannot presently be signed on
+> evidence**."*
+
+Drei verifizierte Hindernisse: **(i)** mindestens **drei** nicht übereinstimmende
+Kandidaten-Mitgliedslisten, keine governiert · **(ii)** das diskriminierende
+Notwendigkeits-/Minimalitätskriterium **wurde von niemandem je ausgeführt** · **(iii)** das
+neueste Artefakt des führenden Kandidaten sagt selbst *"**must NOT be frozen as-is** … freezing
+it now would freeze an explicitly unproven minimality claim."*
+
+**"No candidate was chosen, named, or ranked by this lane."**
+
+⭐ **Vier signierbare Optionen**, darunter **Option 3: *"RULE OPEN and mark the contract BLOCKED
+as a first-class governance state"*** — genau meine `DEPENDENCY-BLOCKED`-Kategorie, als
+signierbare Governance-Option. **Nie signiert.**
+
+⭐ **Part C: ein achtteiliger Akzeptanzstandard**, inkl. *"the minimality test **executed**"*,
+den drei Prerequisites (geschlossenes Invariantenregister · typisierte Rejection-Semantik ·
+State-Identität/Gleichheit) und *independent review before ratification*. **Nie erfüllt.**
+
+⇒ **Die Nicht-Ratifikation ist EVIDENZBASIERT, nicht versäumt.** `𝒪_core`: `existiert YES ·
+eindeutig NO · wählbar NO · ratifiziert NO` (`GN-84`), mit `GN-78` als Begründung.
+
+## §3 · ⭐⭐⭐ `GN-96` — die Lane protokolliert ihre eigene Erschöpfung, und bestätigt `G-65`
+
+Letzter Akt der Serie (**2026-09-02**):
+
+> *"**Nothing ratified · nothing adjudicated · no option recommended · no signature manufactured
+> · no book file touched.**"*
+> *"**ANSWER TO THE MANDATED FINAL QUESTION: NO.** … **The research progressed; the
+> constitutional gate remains closed.**"*
+> *"**Both authority records checked.** GN ledger: **83 entries, head GN-94** (2026-08-31
+> 16:05). `docs/knowledgeos/governance/`: **9 files, latest act 2026-08-24**. **Every artifact
+> in scope (2026-09-01/02) postdates both.**"*
+
+⭐⭐⭐ **Das ist wörtlich mein `G-65`-Befund — acht Tage früher, von anderem Autor, mit exakten
+Zahlen.** Nach §14 ist das **echte unabhängige Korroboration** (andere Methode, andere
+Provenienz, früher), nicht Wiederholung derselben Lineage.
+
+⭐ Klassifikation von **~1.161** angekommenen Dateien: **A = 0 · B = 4 · C ≈ 20 · D ≈ 8 ·
+E ≈ 45 · F = 6** — **„The A register is empty."** `B-01…B-10`, zehn Blocker, durch **keinen**
+autoritativen Akt gehoben.
+
+$$\boxed{AdjudicationState = \emptyset \text{ — nicht „nicht gefunden", sondern von der Lane selbst festgestellt und protokolliert.}}$$
+
+## §4 · Temporale Klassifikation
+
+`GN-78`, `GN-84` — **`V1.2-HISTORICAL`** (2026-08-31). `GN-96` — **`V1.2-HISTORICAL`**
+(2026-09-02, Abschluss). Der achtteilige Akzeptanzstandard — **`V1.2-CANONICAL`** als
+Verfahrensnorm, **nie erfüllt**. `EPISTEMIC-STATUS-VOCABULARY` — **`CROSS-VERSION`**.
