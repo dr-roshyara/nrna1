@@ -1515,3 +1515,103 @@ already three days old.**
 ⭐ **Fourth instance of the estate's measured mechanism** — `EKS-49`/`EKS-52`: *lanes do not
 enumerate each other, so results do not travel.* Here what failed to travel was not a definition
 but **a refutation**.
+
+---
+
+# ⭐⭐⭐ `gap-update-2026-09-02/` READ DIRECTLY — the codomain question is DISSOLVED, and `G-28` is re-scoped
+
+## ⛔ First, the admission
+
+**I had cited nine files from this folder and never opened it.** Everything came through worker
+evidence packets. **13 documents, 1,924 lines — small enough to have read at any point.** The user
+asked whether I had; the honest answer was no. **Fifth instance of the estate's own mechanism, and
+the fourth with me inside it.**
+
+## ⭐⭐⭐ 1. The four "unreconciled `Sat` codomains" problem is DISSOLVED, not solved
+
+`04-CONVERGENCES` §3, quoting `KR-CONTR-EVAL-2026-09` §9 — labelled **a theorem in its own lane**:
+
+> *"**No flat domain — of ANY cardinality — indexed by evaluation outcome is adequate.**"*
+> *"**Minimum structure is a pair**, with an indispensable **reason/boundary** component; `reason`
+> alone is **not** adequate (10 values / 21 conditions; fails `Satisfied` vs `Unsatisfied`)."*
+> *"The minimum flat domain size **= the chromatic number `χ` of the required-distinction graph**;
+> **`χ = 3` on the protocol set, ranging 3–21.**"*
+
+**All four of my codomains are flat value sets:** `𝒮` (9→11) · `V_Sat` {⊤,⊥,U} · `𝒮_sat` {S,U,P,C} ·
+`{T,F,U}`.
+
+$$\boxed{\textbf{The reconciliation I was seeking is IMPOSSIBLE IN PRINCIPLE. No flat domain works at any cardinality.}}$$
+
+⇒ **`G-01` and `G-25`'s "which codomain?" question is MALFORMED**, and the corpus already knows it
+and supplies the replacement shape: **a pair — support-structure × reason/boundary** — with the
+minimum flat size computed as a **graph-colouring problem whose answer varies 3–21 with the
+condition set**. *"That is why no fixed flat vocabulary can work."*
+
+⚠️ **Not adopted** — recorded as the corpus's own result. No canonicalization.
+
+## ⭐⭐ 2. And `Σ = 𝒫({Support,Refute})` was REFUTED as adequate — by execution
+
+`04-CONVERGENCES` §2: the FDE four-element lattice, derived twice independently, then **executed**:
+
+| **11 preserved, 2 collapsed, `adequate = no`** |
+| *"K3 **collapses all five** `DirectContradiction\|X` pairs; **FDE preserves every one**"* |
+| *"Being refuted by an implementation of one's own model is the most informative outcome available"* |
+
+## ⭐⭐⭐ 3. `G-28` (`φ : R → P`) — RE-SCOPED. It is a KIND mismatch, not a missing function.
+
+`04-CONVERGENCES` §1 gives the decisive type fact, from `SPEC-RREQ-2026-V1`:
+
+> *"A distinction `d` is **an equivalence relation `~_d` on the state space `S`**. A representation
+> language `𝒦` with encoding `E : S → 𝒦` **preserves** `d` iff
+> `∀s₁,s₂: (s₁ ≁_d s₂) ⟹ (E(s₁) ≠ E(s₂))`."*
+
+| `R` (`ℛ_req`) | a set of **distinctions** — each an **equivalence relation on the state space** |
+| `P` | a **truth-bearer**, evaluated by `Eval(P,K) ∈ {T,F,U}` |
+
+$$\boxed{\textbf{A partition of the state space and a truth-bearer are different mathematical KINDS. There is no natural } R \to P \textbf{ because they are not the same sort of thing.}}$$
+
+⭐ **This confirms the context-mapping hypothesis.** `MV-F-9`'s parenthetical *"(or `R→2^P`)"* is the
+**type-correct** shape: a distinction corresponds to a **set** of propositions — those that separate
+its classes. **`R → P` was never going to exist; `R → 2^P` is the well-typed question.**
+
+⇒ **`G-28` classification: `CONCEPTUALLY PRESENT BUT FORMALLY UNSPECIFIED`** — *not* `GENUINE CORPUS
+GAP`. The relation is describable (a distinction is *witnessed by* propositions); no formal map is
+given; and the shape of the missing object is now known.
+
+## ⭐⭐ 4. `TG-02` is answered — `Sufficient` DOES have a signature
+
+`THEORY-GAP-REGISTER` `TG-02` reads *"**`Sufficient` has no signature**"* and is 🔴 **OPEN**.
+`04-CONVERGENCES` §1 supplies one, with a two-conjunct body:
+
+$$Sufficient(F,\mathcal O,\mathcal I) \iff \underbrace{Congruent(F,\mathcal O)}_{\text{operations well-defined on the quotient}} \wedge \underbrace{Expressive(F,\mathcal I)}_{=\ \mathcal R_{req}\text{-adequacy}}$$
+
+⭐ And the finding that goes with it: *"**A representation can be `ℛ_req`-adequate and still have an
+operation that is not well-defined on it.**"* — `ℛ_req` is stated **purely over states and one
+encoding**; it carries **no congruence conjunct**. *"Their `𝓘` schema and their `ℛ_req` spec are two
+documents: **they are the two conjuncts, written separately and never joined.**"*
+
+## ⚠️ 5. `NG-4` / `FR-001` reaches the R side itself
+
+> *"`KR-DIST-2026-09-02` exhibited a **sorites witness**: the distinguishability relation `~_Λ`
+> **fails transitivity**, so the quotient `H/~` **is not a well-defined object**."* — frozen as
+> **`FR-001`**, *"distinguishability cannot carry family-level complexity."*
+> *"⚠️ **I have not checked whether `~_F` and `~_Λ` are the same relation.** Until someone does, my
+> definition carries an unverified premise."*
+
+⇒ **If the operative distinguishability relation is not transitive, requirements-as-equivalence-
+relations may not be well-formed either.** The `R` side of the bridge has its own open question,
+and that lane flagged it against itself.
+
+## 6. Register impact
+
+| gap | action |
+|---|---|
+| **`G-01`** | ⭐ **DISSOLVED as posed.** "Which of the four codomains?" is malformed — **no flat domain is adequate at any cardinality** |
+| **`G-25`** | ⭐ **DISSOLVED as posed**, same reason. The three-vs-four codomain reconciliation cannot be completed *and need not be* |
+| **`G-27`** | **remains superseded** |
+| **`G-28`** | ⭐ **RE-SCOPED** → `CONCEPTUALLY PRESENT BUT FORMALLY UNSPECIFIED`. The well-typed question is **`R → 2^P`**, not `R → P` |
+| **`TG-02`** (verification lane) | ⚠️ **answered elsewhere** — `Sufficient(F,𝒪,ℐ)` has a signature and a two-conjunct body. **That lane still lists it 🔴 OPEN** |
+| **NEW `G-29`** | ⭐ **`ℛ_req` has no congruence conjunct.** Adequacy is stated over states and one encoding only; *"a representation can be `ℛ_req`-adequate and still have an operation that is not well-defined on it"* — `[PROP]`, and **testable** |
+| **NEW `G-30`** | ⚠️ **`~_F` ≟ `~_Λ` — unchecked.** If the operative distinguishability relation is non-transitive (`FR-001`), every quotient argument in `step-272` carries an unverified premise. **Flagged by that lane against itself, and never resolved** |
+
+**Standing qualifier unchanged: semantic coverage ≈1.5 % (32 of 2,099).**

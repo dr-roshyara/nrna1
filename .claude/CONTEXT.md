@@ -8519,7 +8519,18 @@ declared boundary**, the third instance after Ω-B and `Det_r`.
 `ρ_A` judges propositions"*, the `r↔P` map is **ABSENT**. **`G-28` opened.** `G-27` superseded.
 ⭐⭐ Independently corroborated by my own evaluation-family finding, from the other side.
 
-**Next:** ⭐ **read the 001–022 band** — birth of the best-evidenced object in the evaluation family, **never
+**`gap-update-2026-09-02/` read directly (13 docs, 1,924 L — I had cited nine of them via worker
+packets and never opened it).** ⭐⭐⭐ **The four-codomain problem is DISSOLVED:** *"No flat domain —
+of ANY cardinality — indexed by evaluation outcome is adequate"* (theorem in its lane); minimum
+structure is a **pair**; min flat size = **χ of the required-distinction graph, 3–21**. `G-01`,
+`G-25` **malformed as posed**. ⭐⭐ `Σ = 𝒫({Support,Refute})` **refuted as adequate by execution**
+(11 preserved, 2 collapsed). ⭐⭐⭐ **`G-28` re-scoped**: a distinction is *an equivalence relation on
+the state space*, a proposition is a truth-bearer — **different KINDS**; `R → 2^P` is the well-typed
+question. **`TG-02` answered elsewhere** (`Sufficient = Congruent ∧ Expressive`). `G-29` (`ℛ_req`
+has no congruence conjunct) and `G-30` (`~_F ≟ ~_Λ`, `~_Λ` non-transitive, `FR-001`) opened.
+
+**Next:** ⭐ **`G-30`** — the only open item that invalidates a *premise* rather than leaving a hole.
+Then the **001–022 band** — birth of the best-evidenced object in the evaluation family, **never
 read**, directly load-bearing on `G-01`, `G-25`, `G-27`. ⛔ ~180 files of 026–268 still unread;
 semantic coverage ≈1.5 % (32 of 2,099).
 
