@@ -1333,3 +1333,72 @@ remain incomparable with the 3-valued space; that result stands.
 | **backfill debt** | ⚠️ **step-018 is now load-bearing and unread** |
 
 **Standing qualifier: semantic coverage ≈1.5 % (32 of 2,099).**
+
+---
+
+# ⚠️ CORRECTION from the 2026-09-10 `mathematical_ideas` lane (3 files, read on request)
+
+**Source:** `20260910_1337_document_08.md` (555 L) · `20260910_1338_document.md` = `20260910_1343_document.md`
+(**byte-identical duplicates**, 1166 L each).
+
+## ⚠️ My `V_Sat × 𝒮_sat = INCOMPARABLE` verdict is QUALIFIED
+
+I rested it on two grounds: (a) `V_Sat` separates `⊥` from `U` while `𝒮_sat` merges them; (b) `𝒮_sat`
+has `P` and `C`, which `V_Sat` lacks. **Ground (b) is half wrong.** Verified at source:
+
+| `verification/DECISION-SIGMA-EPISTEMIC-STATUS.md` L103 | *"**4-state** (adds `Conflicted`) — **REFUTED as minimal** — `Conflicted` is **derived** (§5)"* |
+| L166 | *"`Conflicted` is derived, not primitive — **DERIVED** (executed construction)"* |
+| `verification/SIGMA-ADVERSARIAL-AUDIT.md` L110 | *"`Conflicted` is derived **survives this audit intact**"* |
+
+⇒ `C`'s presence does **not** make `𝒮_sat` richer — it is **derivable**, by an **executed
+construction that survived an adversarial audit**. **The incomparability now rests on the `U`/`⊥`
+merge and on `P` (partial) alone.** Ground (a) stands; ground (b) is reduced by half.
+
+## ⭐ Convergences that close edges I had left open
+
+`G-11`/`G-25`/`req-evaluation` left the `Sat → Δ → Zero → Det` chain with two unwitnessed edges.
+That lane reports corpus definitions for them:
+
+| `Δ_t = {r ∈ Req(EC_t) : ¬Sat(K_t,r)}` | closes `Sat → Δ_t` |
+| `Zero(K_t,EC_t) ⟺ Δ_t = ∅` | closes `Δ_t → Zero` |
+| `Det(K,p,EC,Γ) ⟺ ∀r ∈ Req_p(EC,Γ): Sat(K,r) = Satisfied` | closes `Sat → Det` |
+| `Decision = f(Determination, DecisionRule/Policy)`, with **`Determination ⇏ Decision` proved** | corroborates the separation |
+
+⚠️ **Recorded as REPORTED, not adopted.** These are another lane's citations; **I have not verified
+them at primary source.** ⚠️ Note also an arity divergence: `Δ_t`'s definition uses **`Sat(K_t,r)`
+(2 args)** while `theory-part-06` §6.18 has **`Sat(K,r,Γ)` (3 args)**.
+
+## ⭐⭐ A sharper smallest gap than my `G-27`
+
+That lane locates the residue precisely, and the two documents agree on it independently:
+
+$$\boxed{\textbf{What is missing is not a result space. It is the ACCEPTANCE RELATION that selects a value from one.}}$$
+
+- `r = (id, type, scope, content, **standard**, priority, validity)` — the `standard` field is named,
+  its responsibility is located (`→ EC.Rules → Policy_Det`), and **its mathematical body is never supplied**
+- `Policy_Det` is the closest same-document candidate and is **illustrative only**
+- ⇒ **`G1 → G2`**: the criterion for *"sufficient support"* / *"sufficient challenge"* determines `Det_r`
+
+**This supersedes `G-27`'s framing.** `G-27` said requirement-evaluation was never given a result
+space; `G-25` and this lane together show the result spaces exist (`{T,F,U}`, `𝒮_sat`, `V_Sat`) —
+**what has never existed is the rule that picks one of their values.**
+
+## ⛔ Lane divergence, flagged not followed
+
+`20260910_1338` opens: *"I would switch roles from **historical auditor** to **mathematical closure
+reviewer**"*, and derives `Sat(K,r) = Accept(Eval(K,r), r, Γ, EC)` — introducing an **`Acceptance`
+layer that is not in the historical chain**. It labels itself honestly: *"**only as a derived
+structural decomposition, not yet as canonical theory**"*.
+
+**My standing mandate forbids that phase** (*no canonicalization · no mathematical repair · no
+F3↔F4*). ⇒ **Not adopted, not merged.** But its closing hand-back is squarely reconstruction work
+and is the best-posed next task available:
+
+> *"Find whether the corpus ever supplies the **actual acceptance relation** — what makes an
+> assessment sufficient for a requirement under `EC` and `Γ` — and establish the lineage of `r`,
+> `Γ`, `EC`, `Eval`, `Standing`, and `Det_r` **without choosing among them**."*
+
+## Hygiene
+
+⚠️ `20260910_1338_document.md` and `20260910_1343_document.md` are **byte-identical** — a duplicate
+pair five minutes apart, of the kind `G-12` counted 21 of inside 026–268.
