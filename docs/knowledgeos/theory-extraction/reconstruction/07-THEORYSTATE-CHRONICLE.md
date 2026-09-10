@@ -204,7 +204,7 @@ readable corpus**.
 | 3 | `230` | names no predecessor but *"Steps 1–182"*; compresses 8 principles → 6-term equation | `UNWITNESSED` |
 | 4 | `262` | imports `K` from the executed batch, **forbids reopening** | `EXPLICIT_REPLACEMENT` |
 | 5 | `273` | replaces the 2-tuple with a 4-tuple on the authority of a missing step | `UNWITNESSED` |
-| ⭐ **6** | **`theory-part-01`, 2026-09-06 00:23:01** | **a 23-document, 21-part theory rewrite in one night.** *"write the theory from beginning to end as one coherent mathematical work"*; *"**I will not treat an attractive formulation as a theorem merely because it appeared in an earlier document.**"* Citation census across `theory-part-03/05/06` for `025d`·`025e`·`ContractSpecific`·`EvalRequirement`·`EvalContract`: **0·0·0** | ⭐ **`WITNESSED_REFOUNDING`** — the only one that **states its reason for not inheriting** |
+| ~~6~~ | ~~`theory-part-01`, 2026-09-06 00:23:01~~ | ⛔ **NOT A RE-FOUNDING — WITHDRAWN, see the G-25 adjudication.** The document calls the corpus *"**a strong starting point**"* and **exercises inheritance twice** (L1558 *"the corpus explicitly adopted history-preserving delta"*; L2011 *"the corpus explicitly withdrew…"*). Re-founding #1 (`031`) **drops** the 025 apparatus; this one does not | ⭐ **`DECLARED SELECTIVE-INHERITANCE REWRITE`** — inherits what the corpus **explicitly adopted or withdrew**, re-derives what merely appeared. **Five re-foundings stand, not six.** |
 
 **Preserved as an observation, not generalised** (§12 of the prior commission): *the middle interval
 contains repeated re-foundings rather than a demonstrably continuous formal evolution.*
@@ -597,3 +597,70 @@ re-derived it without the codomain.* Every one of these states is nonetheless
 **`governance = UNRESOLVED`**: not one of these formulations has been adopted by any act.
 
 > **Incomplete definition ≠ incomplete concept — and I proved it against my own two-hour-old claim.**
+
+---
+
+# ⛔ G-25 ADJUDICATION — three of my own claims withdrawn, and the corrected finding is stronger
+
+**Record:** `…/concept-family-birth-census/03-G-25-REFOUNDING-ADJUDICATION.md`
+
+## 1. ⛔ "Re-founding #6, the first witnessed one" — WITHDRAWN
+
+The four backward citations in `theory-part-01` — the only ones in **23 documents / ≈60,000 lines**
+— refute the reading:
+
+| L5 | *"The existing corpus gives us **a strong starting point**"* | ⭐ **declares CONTINUITY** |
+| L1558 | *"The corpus **explicitly adopted** history-preserving delta"* | ⭐ **exercises INHERITANCE** |
+| L2011 | *"The corpus **explicitly withdrew** the previous unique-minimality claim"* | inherits a negative result |
+
+**Correct classification: `DECLARED SELECTIVE-INHERITANCE REWRITE`.** Its rule is *inherit what the
+corpus explicitly **adopted** or **withdrew**; re-derive what merely appeared.*
+
+$$\boxed{\textbf{The 0-of-22 citation count is the measured EFFECT of that rule, not a declared restart.}}$$
+
+Because — as `G-00` established independently — **almost nothing in the 025-series ever received a
+governance act**, almost nothing passes the filter. **The corpus is not discarded; it is filtered
+through a rule it cannot satisfy.** **Five re-foundings stand, not six.**
+
+## 2. ⛔ "The conceptual birth HAS the codomain" — WITHDRAWN
+
+`Status` occurs **exactly once** in `025e`, at L1008, as a bare arrow target. **It is never
+defined**, and `025e` mentions `𝒮`/`025d`/the status set **zero times**. Its sibling in the same
+section **is** complete: `EvalContract → {Ready, Blocked, Invalid, Indeterminate}`.
+
+> **One section, two arrows: one codomain enumerated, the other only named.**
+
+Per the mandated split: codomain **named** = `PROVEN` · `EvalReq`'s codomain = `𝒱` =
+**`TYPE-CONSTRAINED`** (composition, never stated) · **`Status = 𝒱` = `INFERRED`, and withdrawn**.
+`EvalRequirement ≟ EvalReq` = **`IDENTITY UNWITNESSED`** (arity 3→4, `C`→`EC,Γ`, zero citation).
+
+## 3. ⛔⛔ "`V_Sat` has zero downstream consumers" — WITHDRAWN, and it inverts the finding
+
+**`Sat_c` has 17 executable hits.** `research/knowledgeos-sim/` holds `run_satc.py`,
+`kos12/satc_spec.py`, `phaseC.py`, `repairs.py`, `zerolens.py`, and result files
+`satc_phaseA_spec.json` · `satc_phaseB_adversarial.json` · `satc_phaseC_zero.json` ·
+`expG_core.json` · `eval_results.json`.
+
+`zerolens.py` L47: *"The coarse projection `π : 𝓑 → {T,F,U}` — **what `Sat_c` did**."*
+
+$$\boxed{\textbf{The class-indexed branch was specified, implemented, adversarially tested and run. } Det_r \textbf{ has ZERO executable presence.}}$$
+
+⭐ **The rewrite re-solved a problem that had already been solved *and implemented and tested*, with
+a formulation that has never been run.** That is the real cost of the inheritance filter, and it is
+measurable.
+
+## 4. ⭐ The `U` test settles the result spaces
+
+| | `V_Sat` | `𝒮_sat` |
+|---|---|---|
+| `⊥` provably-not-satisfied | ⭐ **separate value** | ⛔ **merged into `U`** |
+| `U` | *"cannot currently be determined"* | *"**unsatisfied/unknown**"* |
+| `P` partial, `C` conflicted | ⛔ absent | ⭐ present |
+
+**Neither refines the other. `DISTINCT OBJECT` and INCOMPARABLE** — the first pair of `Sat`
+codomains proven distinct rather than merely unmapped.
+
+## 5. TheoryState impact
+
+⛔ **No `TheoryState(t)` changes.** All three corrections are to **my reconstruction**. `Sat_c`'s
+implementation is used only from `t`=09-02 forward and is never back-propagated to `025e`.

@@ -978,3 +978,65 @@ design**. Both answer *"satisfaction means different things for different requir
 ⭐ **`G-25`.** It is upstream of `G-01`, `G-05`, `C-1` and the whole `Det_r` question — all four
 have an endpoint inside the 09-06 rewrite. `G-12` remains the larger chronological debt but is
 **not** upstream of this family.
+
+---
+
+# ⭐⭐ G-25 — DISPOSITION: **`DECLARED SELECTIVE-INHERITANCE REWRITE`, not a re-founding.** Three of my own claims withdrawn.
+
+**Record:** `…/concept-family-birth-census/03-G-25-REFOUNDING-ADJUDICATION.md`
+
+## Verdict on the central question
+
+**Neither continuation nor re-founding as I framed it.** `theory-part-01` **declares continuity**
+(*"a strong starting point"*, L5) and **exercises inheritance twice** (L1558 *"the corpus explicitly
+**adopted** history-preserving delta"*; L2011 *"the corpus explicitly **withdrew**…"*). Its rule:
+
+> **Inherit what the corpus explicitly ADOPTED or WITHDREW. Re-derive what merely appeared.**
+
+**23 documents · ≈60,000 lines · citations: `part-01` = 4, parts 02–21a = 0 · `025` = 0 in all 23.**
+⭐ **That count is the measured EFFECT of the rule, not a declared restart** — `G-00` established
+that almost nothing in the 025-series ever received a governance act, so almost nothing passes.
+
+⛔ **"Re-founding #6, the first witnessed one" WITHDRAWN. Five re-foundings stand, not six.**
+Re-founding #1 (`031`) *drops* the 025 apparatus; this document calls it a strong starting point.
+
+## Three withdrawals
+
+| my claim | verdict |
+|---|---|
+| *"the conceptual birth **HAS the codomain**"* | ⛔ **WITHDRAWN.** `Status` occurs **once** in `025e`, as a bare arrow target, and is **never defined**; `025e` cites `𝒮`/`025d` **zero times**. ⭐ Its sibling **is** complete: `EvalContract → {Ready,Blocked,Invalid,Indeterminate}`. **One section, two arrows: one enumerated, one only named** |
+| *"`V_Sat` … zero downstream consumers"* (`G-24`) | ⛔⛔ **WITHDRAWN and INVERTED.** ⭐ **`Sat_c` has 17 executable hits** — `research/knowledgeos-sim/` holds `run_satc.py`, `kos12/satc_spec.py`, and results for **phases A, B (adversarial) and C**. `zerolens.py` L47: *"the coarse projection `π : 𝓑 → {T,F,U}` — **what `Sat_c` did**"*. `Det_r`: **0 executable hits** |
+| *"gap CLOSED — `EvalReq`'s codomain"* | ⛔ **DOWNGRADED to `QUALIFIED`.** Per the mandated split: codomain **named** = `PROVEN` · `= 𝒱` = **`TYPE-CONSTRAINED`** (composition, never stated) · **`Status = 𝒱` = `INFERRED`, withdrawn** |
+
+## Result-space matrix — the `U` test is decisive
+
+| pair | classification |
+|---|---|
+| `𝒮_sat` × `𝕊_sat` | **SAME OBJECT — CONTINUATION** (same series, 9 min, `part-05` between) |
+| ⭐⭐ **`V_Sat` × `𝒮_sat`** | ⛔ **DISTINCT OBJECT — INCOMPARABLE.** `V_Sat` **separates** `⊥` (provably not satisfied) from `U` (*"cannot currently be determined"*); `𝒮_sat`'s single `U` = *"**unsatisfied/unknown**"* **merges** them. Conversely `𝒮_sat` has `P`,`C` which `V_Sat` lacks. **Neither refines the other** |
+| `𝒮` × each of the others | **IDENTITY UNWITNESSED** |
+
+⭐ **First pair of `Sat` codomains proven DISTINCT rather than merely unmapped.**
+
+## §9 dependency test — one claim withdrawn
+
+| claim | verdict | evidence |
+|---|---|---|
+| `G-25` → `Det_r` | ⭐ **DIRECT** | born at `theory-part-06` §6.18 |
+| `G-25` → `G-01` | ⭐ **DIRECT** | 2 of 4 codomains born inside (`𝒮_sat`, `𝕊_sat`) |
+| `G-25` → `G-05` | **DIRECT but thin** | `theory-part-02` **L1437** `R_{req}(Q,Γ) ⊆ Dist(R(K))` — one line |
+| `G-25` → `C-1` | ⛔ **UNWITNESSED — WITHDRAWN** | the rewrite's loss is **`Loss_T`** (parts 08/12/18), a **transformation** loss with a **set** condition `Loss_T ∩ Dist_EC(K) = ∅`. Different subscript, different index, **different object** |
+
+## `G-24` restated
+
+Not *"no consumers"*. ⭐ **"The implemented branch was not carried forward."** `Sat_c` — spec,
+runner, three phases, result files — is not mentioned by the rewrite that re-solved the same
+problem four days later with a formulation that has never been run.
+
+## Remaining unresolved
+
+**1.** ⭐ **What is `Status`?** — the only codomain in the family with **no elements at all**.
+**2.** ⭐⭐ **Why was the implemented branch dropped?** — the measured cost of the inheritance filter.
+**3.** `V_Sat` × `𝒮_sat` incomparability — unresolvable without a decision; none exists.
+**4.** `EvalRequirement ≟ EvalReq` — `IDENTITY UNWITNESSED`.
+**5.** `Det_r`'s body — **`FIREWALL-LIMITED`**, not `MISSING`.

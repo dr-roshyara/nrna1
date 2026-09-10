@@ -76,6 +76,38 @@ The concrete cost:
 | **3** | **An orphan check.** Any definition that is complete and referenced by nothing should be flagged — either it is superseded (say so) or it was lost (recover it). At present nothing detects this |
 | **4** | **When one question acquires a second answer, record the relationship or record that none exists.** Four answers with no stated relationships is not four options; it is an unpaid debt |
 
+## ⭐ Amendment, same day — the restart was NOT a restart, and the cost is larger than reported
+
+Re-read at source, the opening document does **not** discard the earlier work. It calls it
+**"a strong starting point"** and it **uses two earlier results as authority**. Its actual rule is
+narrower and more defensible than "start again":
+
+> **Inherit what the programme has explicitly adopted or explicitly withdrawn. Re-derive everything
+> that merely appeared in a document.**
+
+**That is a reasonable rule.** The problem is what it costs here: almost nothing in the earlier work
+was ever formally adopted, so almost nothing passes the filter. The rewrite cites the earlier
+material **four times in twenty-three documents and roughly sixty thousand lines**, and zero times
+after the first document. **The near-total re-derivation is the measured effect of the rule, not a
+decision anyone took.**
+
+### And the cost is worse than this ticket first said
+
+The satisfaction rule that the restart set aside was not merely written. **It was built and tested.**
+The repository holds a runner, a specification module, and result files from three test phases
+including an adversarial one. The replacement formulation — written four days later — **has never
+been run at all.**
+
+> **The programme replaced a specified, implemented and adversarially tested component with an
+> unimplemented one, and no document records the exchange.**
+
+This strengthens requirement 2 below and adds one:
+
+| | requirement |
+|---|---|
+| **5** | **Before re-deriving, check whether the existing version is already implemented.** An implemented component is evidence of a kind a document cannot supply, and discarding it costs more than discarding a draft |
+| **6** | **If the inheritance rule is "only what was formally adopted", then the adoption backlog is the real blocker.** A filter that nothing passes is indistinguishable from no inheritance at all — and that outcome was nobody's decision |
+
 ## Related
 
 | | |
