@@ -611,3 +611,108 @@ Distinct from every existing value: the artifact **exists**, is **well-formed**,
 **Cross-links declared:** `spec/STEP-VERIFY-001-010.md` · `spec/STEP-VERIFY-011-025.md` ·
 findings `TV-F-020…024` · `AC C-062…066`. ⭐ **`spec/` (45 files) is a `STEP-VERIFY` series** —
 a per-step verification apparatus this reconstruction has never enumerated.
+
+---
+
+## K. `CANONICAL-THEORY-TRIANGULATION` — three evidence streams, with declared independence
+
+`mandate: 20260830_1918 §3` · **26 concepts × 3 streams**:
+`corpus (INDEPENDENT) · mathematics (verifier) · running EKP (INDEPENDENT, third stream)`.
+
+> **Feedback-loop discipline (§16):** *"the **EKP** column is `INDEPENDENT` throughout — **it
+> predates and never cites this programme**. The **mathematics** column is verifier work and is
+> **never counted as independent confirmation of itself**."*
+
+⭐⭐⭐ **This is §15's discipline executed with three streams and a declared independence status
+per column.** Verdict vocabulary: `MATHEMATICALLY VERIFIED` · `ENGINEERINGALLY VERIFIED` ·
+`CORPUS ESTABLISHES` · `CONTRADICTED` · `REFUTED` · `OPEN`.
+
+### Load-bearing rows
+
+| concept | verdict |
+|---|---|
+| **Knowledge** | **OPEN** — `Information ⊇ Knowledge` is *"a boundary, not a definition"* |
+| **Epistemic Status `Σ`** | `Σ=(A,S,R,V,C)`, **2240 states** — **OPEN, both candidates refuted** |
+| **Assurance** | ⭐ **6 incompatible types — REFUTED as a single concept** (`D4`'s home, confirmed) |
+| **Provenance** | **CONTRADICTED** — *"three objects share the word"* |
+| **History** | **CONTRADICTED** — corpus puts `H` inside `Structure`; executed evidence puts it outside `K` |
+| **Identity** | **ENGINEERINGALLY VERIFIED** — *"the strongest triangulation in the table"* |
+| **Invariant** | ⭐ *"**~500 invariant IDs, no crosswalk**"* vs **18 executable lint rules** |
+| **Supersession** | relation verified; **acyclicity NOT enforced** — an unenforced gap |
+| **Missingness** | *"5 files, **dead after step 184**"* — `OPEN / NOT_DEFINED` |
+
+⭐⭐⭐ **`Σ ⊥ Γ` is the programme's strongest single evidence** — *"`authorities.yaml` states
+authority **is INDEPENDENT of status** with a worked cross-quadrant example, and a linter
+enforces both enums. **The strongest single piece of evidence in the programme, and it is
+independent of both other streams.**"*
+
+⭐⭐ **A new evidence form — refutation by absence:** *"EKP has **no temporal validity, no
+evidence field, no provenance field, no `Σ`**. A working knowledge platform was built without
+them. **That is evidence about what is load-bearing in practice, and the theory must explain the
+omission rather than ignore it.**"*
+
+⚠️ Note the four objects absent from the running system are four of the five **blocked** `Sat_c`
+classes (`temporal`, `evidence`… ) — recorded, **not** merged with `G-38`.
+
+---
+
+## L. ⭐⭐⭐ A THIRD theory construction — the 23-part rewrite of 2026-09-06
+
+`mathematical_ideas_that_can_be_implemented/20260906-*_theory-part-01…21a` — **23 files,
+≈ 59,000 lines**, all **2026-09-06**, four days after Theory v1.0. Part-01 is titled
+*"foundational distinctions and **plan for full rewrite**"*.
+
+`[EMP]` **Inheritance measured across all 23 parts:**
+
+| identifier | occurrences |
+|---|---|
+| `DEF-n` · `AX-n` · `THM-n` · `OPEN-n` | **0 · 0 · 0 · 0** |
+| `CANONICAL-KNOWLEDGEOS` · `NOT YET COMPLETE` · `THEORY-STATUS-VERDICT` | **0 · 0 · 0** |
+| `Theory v1.0` · `20260902-004631` · `DEF-33` · `AX-7` | **0 · 0 · 0 · 0** |
+
+**Zero apparatus inherited. Zero citation of either predecessor canonical theory.**
+
+### But content inheritance is explicit and verbatim
+
+Part-01, §1:
+
+> *"The earlier corpus reached a useful conceptual formulation: **KnowledgeOS is a
+> domain-independent epistemic state-transition system whose purpose is to preserve, represent,
+> evaluate and evolve knowledge-bearing states of participants over domain content.** **We
+> retain this as the starting point**, but the remainder of this theory will make every term in
+> that statement precise."*
+
+`[PROVEN]` That sentence occurs in **exactly two files corpus-wide**: **Theory v1.0 §87** and
+**theory-part-01**. It is v1.0's *final statement*, quoted without attribution and explicitly
+retained.
+
+### Declared method
+
+> *"write the theory from beginning to end as **one coherent mathematical work**, in parts, and
+> only afterward use the resulting theory to drive implementation."*
+> *"**I will not treat an attractive formulation as a theorem merely because it appeared in an
+> earlier document.**"*
+> *"the corpus explicitly rejected the earlier **'unique minimal kernel'** claim, and it also
+> distinguished mathematical proof from implementation-test evidence."*
+
+$$\boxed{\textbf{RE-FOUNDED} \;+\; \textbf{DECLARED CONTINUITY OF CONTENT} \;+\; \textbf{ZERO INHERITANCE OF APPARATUS}}$$
+
+This is the **precise** relationship, and it confirms the earlier session finding that
+*theory-part-01 declares continuity* — now with a verbatim witness. **Not** `CONTINUATION`
+(no apparatus carries over), **not** `INDEPENDENT CONSTRUCTION` (the core statement is
+explicitly retained).
+
+### §3 — the version lineage as measured
+
+| # | construction | date | apparatus | relation to predecessors |
+|---|---|---|---|---|
+| 1 | `CANONICAL-KNOWLEDGEOS-THEORY` | 08-30 | 11 tags, 30 prose sections, 24-box gate | commissioned; **re-verified downward by its own lane** |
+| 2 | **Theory v1.0** | 09-02 00:46 | `DEF-1…33`, `AX-1…7`, `THM-1…11`, `I1…I9`, `OPEN-1…6` | **INDEPENDENT CONSTRUCTION + PARTIAL OVERLAP** vs 1 (`G-46`) |
+| 3 | v1.1 correction → `KR-SIM-2026-09-02` → v1.2 | 09-02 08:54–09:26 | inherits 2 **explicitly** (*"Theory under test v1.0 (`DEF-1..33`…)"*) | **CONTINUATION** of 2 |
+| 4 | **`theory-part-01…21a`** | **09-06** | **none of the above** | **RE-FOUNDED** from 2's closing sentence; **zero apparatus, zero citation** |
+
+⭐ **Four constructions in eight days.** Only transition **2 → 3** is a citation-bearing
+continuation. **1 ↔ 2** cite each other zero times; **2 → 4** carries content without apparatus.
+
+⚠️ **Not reconciled, none adopted.** The 23-part rewrite is **~59,000 lines and unread** — the
+largest single unexplored theory artifact in the estate.

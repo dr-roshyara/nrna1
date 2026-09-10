@@ -2805,3 +2805,88 @@ is missing).
 The register covers **Steps 001–025 only**; later instalments **NOT LOCATED**. It cross-links
 `spec/STEP-VERIFY-001-010.md` and `STEP-VERIFY-011-025.md` — ⭐ **`spec/` (45 files) is a
 per-step `STEP-VERIFY` apparatus this reconstruction has never enumerated.**
+
+---
+
+# ⭐⭐⭐ G-50 — a THIRD theory construction: the 23-part rewrite of 2026-09-06
+
+`20260906-*_theory-part-01…21a` — **23 files, ≈59,000 lines**, all **2026-09-06**, four days
+after Theory v1.0. Part-01: *"foundational distinctions and **plan for full rewrite**"*.
+Record: commission register §L. *(Surfaced by the user mid-pass; the file named by the
+timestamp `003153` is **part-04**, transitions.)*
+
+## Inheritance, measured across all 23 parts
+
+| | occurrences |
+|---|---|
+| `DEF-n` · `AX-n` · `THM-n` · `OPEN-n` | **0 · 0 · 0 · 0** |
+| `Theory v1.0` · `20260902-004631` · `DEF-33` · `AX-7` | **0 · 0 · 0 · 0** |
+| `CANONICAL-KNOWLEDGEOS` · `NOT YET COMPLETE` · `THEORY-STATUS-VERDICT` | **0 · 0 · 0** |
+
+**Zero apparatus. Zero citation of either predecessor canonical theory.**
+
+## But the content inheritance is explicit and verbatim
+
+> *"The earlier corpus reached a useful conceptual formulation: **KnowledgeOS is a
+> domain-independent epistemic state-transition system whose purpose is to preserve, represent,
+> evaluate and evolve knowledge-bearing states of participants over domain content.** **We
+> retain this as the starting point**…"*
+
+`[PROVEN]` This sentence occurs in **exactly two files corpus-wide** — **Theory v1.0 §87**
+(its *final statement*) and **theory-part-01 §1**. Quoted without attribution, explicitly
+retained.
+
+Declared method: *"write the theory from beginning to end as **one coherent mathematical
+work**"* · *"**I will not treat an attractive formulation as a theorem merely because it
+appeared in an earlier document.**"*
+
+$$\boxed{\textbf{RE-FOUNDED} + \textbf{DECLARED CONTINUITY OF CONTENT} + \textbf{ZERO INHERITANCE OF APPARATUS}}$$
+
+**Not `CONTINUATION`** (no apparatus carries over); **not `INDEPENDENT CONSTRUCTION`** (the core
+statement is explicitly retained). This confirms the earlier finding that *theory-part-01
+declares continuity* — now with a verbatim witness.
+
+## §3 · The version lineage, as measured — four constructions in eight days
+
+| # | construction | date | apparatus | relation |
+|---|---|---|---|---|
+| 1 | `CANONICAL-KNOWLEDGEOS-THEORY` | 08-30 | 11 tags · 30 sections · 24-box gate | commissioned; **re-verified downward by its own lane** |
+| 2 | **Theory v1.0** | 09-02 00:46 | `DEF-1…33` `AX-1…7` `THM-1…11` `I1…I9` `OPEN-1…6` | **INDEPENDENT CONSTRUCTION + PARTIAL OVERLAP** vs 1 (`G-46`) |
+| 3 | v1.1 correction → `KR-SIM` → v1.2 | 09-02 08:54–09:26 | **inherits 2 explicitly** | **CONTINUATION** of 2 |
+| 4 | **`theory-part-01…21a`** | **09-06** | none of the above | **RE-FOUNDED** from 2's closing sentence |
+
+⭐ **Only transition 2 → 3 is a citation-bearing continuation.** `1 ↔ 2` cite each other zero
+times; `2 → 4` carries content without apparatus. **Version labels do not imply semantic
+continuity here — and in one case (2→4) content continuity exists with no version label at all.**
+
+⚠️ **~59,000 lines unread — the largest unexplored theory artifact in the estate.**
+
+---
+
+# G-51 — `CANONICAL-THEORY-TRIANGULATION`: three streams with declared independence
+
+`mandate: 20260830_1918 §3` · **26 concepts × 3 streams** —
+`corpus (INDEPENDENT) · mathematics (verifier) · running EKP (INDEPENDENT, third stream)`.
+
+> §16: *"the **EKP** column is `INDEPENDENT` throughout — **it predates and never cites this
+> programme**. The **mathematics** column … is **never counted as independent confirmation of
+> itself**."*
+
+⭐⭐⭐ **§15's discipline, executed with three streams and an independence status declared per
+column.**
+
+* ⭐⭐⭐ **`Σ ⊥ Γ`** — *"`authorities.yaml` states authority **is INDEPENDENT of status**… a
+  linter enforces both enums. **The strongest single piece of evidence in the programme, and it
+  is independent of both other streams.**"*
+* ⭐⭐ **Refutation by absence** — *"EKP has **no temporal validity, no evidence field, no
+  provenance field, no `Σ`**. A working knowledge platform was built without them. **That is
+  evidence about what is load-bearing in practice, and the theory must explain the omission
+  rather than ignore it.**"* ⚠️ Four of those overlap the **blocked** `Sat_c` classes —
+  **recorded, not merged with `G-38`.**
+* **`Σ = (A,S,R,V,C)`, 2240 states — OPEN, both candidates refuted.**
+* ⭐ **`Assurance`: 6 incompatible types, REFUTED as a single concept** — `D4`'s premise
+  confirmed and its home located (`ASSURANCE-RECONSTRUCTION-MATRIX`, `20260830_1918 §6`).
+* **`Invariant`: ~500 invariant IDs with no crosswalk** vs **18 executable lint rules.**
+* `Provenance` **CONTRADICTED** (*"three objects share the word"*) · `History` **CONTRADICTED** ·
+  `Supersession` verified as a relation but **acyclicity unenforced** · `Missingness`
+  *"5 files, dead after step 184"*.
