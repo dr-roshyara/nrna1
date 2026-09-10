@@ -3318,3 +3318,29 @@ no bridge invented; K-1/K2 untouched; `theory-extraction/` never accessed. Verif
 scripts `CONSISTENT`. Full trace: `14_decision-log/MD-092-early-morning-post-t22-segment/` (4 files).
 **MD-092 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `kernel/` or
 `phase_measure_theory/`, or the flagged MinKer cross-lane connection.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-093 — Kernel Domain-Discovery Burst 1 (39 files) — EXECUTED,
+CHECKPOINT.** Determined the global chronological frontier across all designated lanes (`kernel/`,
+`phase_measure_theory/`, `synthesis/`, `verification/`, `reviews/`, `research/`) — `kernel/`'s own
+earliest file (2026-08-22 16:19) is the earliest timestamp found anywhere in the corpus surveyed, nine
+days before the previously-established F4-lineage birth point. Five parallel agents read the first 39
+files (a continuous ~14-hour multi-lens brainstorming burst) in full. **Central finding**: this entire
+burst is pre-formal — `Sat`/`Det_r`/`EvalReq`/`EC`/`Γ`/`Δ_t`/`≡_sem`/`⪯_cap`/`MinKer`/`K-1` all
+confirmed absent. At least sixteen distinct, never-unified senses of "Kernel" are proposed, each
+immediately re-opened as unproven hypothesis. One genuine falsification event: the six-part
+`KnowledgeAggregate` invariant explicitly falsified via pairwise atomicity testing. The burst's own two
+closure attempts both self-label non-authoritative and defer all adjudication onward. A genuine ADR
+artifact exists (`ADR-KOS-KERNEL-001`), status `PROPOSED`, explicitly `NOT AUTHORIZED`. A
+previously-undocumented corpus feature found (a file silently containing a third AI-authored report
+with its own terminology dialect). Two competing, unreconciled Kernel-primitive-family models left open
+by the corpus itself. A `Question`/`Inquiry` primitive family flagged `IDENTITY UNRESOLVED` against the
+post-T22 fact-finding apparatus MD-089 independently rebuilt eleven days later. Two genuine
+methodological ancestors to this reconstruction's own discipline identified. ~34 explicit
+self-corrections documented; twelve dangling external references point to unread material elsewhere in
+`kernel/`. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-093-kernel-domain-discovery-burst-1/` (4 files). **MD-093 status: EXECUTED.
+CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own next ~39-file segment (2026-08-24 01:08
+onward).

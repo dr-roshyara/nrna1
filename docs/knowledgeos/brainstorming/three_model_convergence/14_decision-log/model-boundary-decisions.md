@@ -6966,3 +6966,46 @@ material. No frozen artifact modified; no object merged; no bridge invented; K-1
 CHECKPOINT** — per the master mission's continuous-execution instruction. Next frontier, named, not
 begun: `kernel/` or `phase_measure_theory/`, both large and never multi-object swept; or the flagged
 `≡_sem`/`⪯_cap`/Kernel-minimality cross-lane connection to MD-043–058.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-093 — Kernel Domain-Discovery Burst 1 (39 files) — EXECUTED,
+CHECKPOINT.** Determined the global chronological frontier across all designated lanes (`kernel/`,
+`phase_measure_theory/`, `synthesis/`, `verification/`, `reviews/`, `research/`) per the master
+mission's own six-question framework — none had received genuine multi-object extraction; `kernel/`'s
+own earliest file (2026-08-22 16:19) is the earliest timestamp found across every lane, nine days
+before this reconstruction's own previously-established F4-lineage birth point (M0001, 2026-09-01).
+Five parallel extraction agents read the first 39 files (a single continuous ~14-hour multi-lens
+brainstorming burst, closing with its own non-authoritative synthesis dossier) in full. **Central
+finding**: this entire burst is pre-formal — `Sat`, `Det_r`, `EvalReq`, `EC`/`EC_t`, `Γ`, standalone
+`r`-as-requirement, `Δ_t`, `≡_sem`, `⪯_cap`, `MinKer`, `K-1`/`K_1` are all confirmed absent by
+exhaustive search. **At least sixteen distinct, never-unified senses of "Kernel"** are proposed across
+the burst, each immediately re-opened as unproven hypothesis — a dominant "propose→immediately re-open"
+pattern in nearly every file. **One genuine falsification event**: the six-part `KnowledgeAggregate`
+invariant was explicitly falsified via pairwise atomicity testing (not merely left unresolved) and
+never resurrected in original form. The burst's own two closure attempts (a consolidated-summary
+document and a full synthesis dossier) both explicitly self-label as non-authoritative and defer all
+adjudication to a later process; the dossier's own 35-item non-collapse register (`NC-01`–`NC-35`) is
+explicitly qualified as "research constraints, not automatically constitutional invariants." A genuine
+formal governance artifact does exist — `ADR-KOS-KERNEL-001` — status `PROPOSED`, explicitly `NOT
+AUTHORIZED`. A previously-undocumented corpus feature found: one file silently contains a full third
+AI-authored architecture report (attributed to "Kimi") using a materially different terminology dialect
+than its two companion reports, never flagged in the filename or the document's own stated scope — a
+new class of corpus-hygiene finding, distinct from both `EKS-31` and Part 20's within-file duplication
+(MD-090). Two competing, unreconciled Kernel-primitive-family models found, left open by the corpus
+itself (a 19-primitive "v0.3" model vs. a six-dimension model). A `Question`/`Inquiry` primitive family
+(File 39) is flagged `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE` against the post-T22 fact-finding
+apparatus MD-089's own Thread 2 independently rebuilt eleven days later — no citation found either
+direction. Two genuine methodological ancestors to this reconstruction's own discipline identified: the
+"Ming (正名)" vocabulary-collision test and the closure dossier's three-tier `SOURCE FACT`/`LENS
+OBSERVATION`/`ARCHITECTURAL HYPOTHESIS` discipline, closing with "Preserve distinctions until the
+domain itself proves that they may lawfully collapse." ~34 explicit self-corrections documented; the
+cleanest chain (three prior-claim→correction→reason→surviving-claim instances in one document) matches
+the density already found in MD-092's own early-morning segment. Twelve dangling external references
+(`⟨C-1⟩`, `C-3`–`C-18`, `F-CM-1`/`2`, `DEF-1`) cited throughout as already-established, never defined
+within these 39 files — pointing to material elsewhere in `kernel/`'s own remaining 133 files. No
+frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/`
+never accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-093-kernel-domain-discovery-burst-1/` (4 files). **MD-093 status: EXECUTED. CHECKPOINT** — per the
+master mission's continuous-execution instruction. Next frontier, named, not begun: `kernel/`'s own
+next ~39-file segment (2026-08-24 01:08 onward), continuing the same directory's own chronology.

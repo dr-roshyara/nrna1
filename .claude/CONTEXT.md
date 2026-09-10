@@ -1,5 +1,35 @@
-**Updated:** 2026-09-10 (latest) — **MD-092 EXECUTED — EARLY-MORNING POST-T22 SEGMENT MULTI-OBJECT
-EXTRACTION (16 files), CHECKPOINT.** Precisely determined the next frontier: exactly 16 genuine files,
+**Updated:** 2026-09-10 (latest) — **MD-093 EXECUTED — KERNEL DOMAIN-DISCOVERY BURST 1 (39 files),
+CHECKPOINT.** Determined the global chronological frontier across all designated lanes (`kernel/`,
+`phase_measure_theory/`, `synthesis/`, `verification/`, `reviews/`, `research/`) per the master
+mission's own six-question framework — `kernel/`'s own earliest file (2026-08-22 16:19) is the
+earliest timestamp found anywhere, nine days before this reconstruction's own previously-established
+F4-lineage birth point. Five parallel agents read the first 39 files (a continuous ~14-hour multi-lens
+brainstorming burst) in full. **Central finding**: this entire burst is pre-formal — `Sat`/`Det_r`/
+`EvalReq`/`EC`/`EC_t`/`Γ`/`Δ_t`/`≡_sem`/`⪯_cap`/`MinKer`/`K-1`/`K_1` all confirmed absent. **At least
+sixteen distinct, never-unified senses of "Kernel"** are proposed, each immediately re-opened as
+unproven hypothesis — the dominant pattern in nearly every file. **One genuine falsification event**:
+the six-part `KnowledgeAggregate` invariant was explicitly falsified via pairwise atomicity testing,
+not merely left unresolved. The burst's own two closure attempts both self-label non-authoritative and
+defer all adjudication onward; its own 35-item non-collapse register is explicitly qualified as
+"research constraints, not constitutional invariants." A genuine ADR artifact exists
+(`ADR-KOS-KERNEL-001`), status `PROPOSED`, explicitly `NOT AUTHORIZED`. A previously-undocumented
+corpus feature: one file silently contains a full third AI-authored architecture report using a
+materially different terminology dialect, never flagged in its own filename or stated scope — a new
+class of corpus-hygiene finding. Two competing, unreconciled Kernel-primitive-family models found, left
+open by the corpus itself. A `Question`/`Inquiry` primitive family flagged `IDENTITY UNRESOLVED` against
+the post-T22 fact-finding apparatus MD-089 independently rebuilt eleven days later. Two genuine
+methodological ancestors to this reconstruction's own discipline identified (a Chinese-philosophical
+vocabulary-collision test; a three-tier `SOURCE FACT`/`LENS OBSERVATION`/`ARCHITECTURAL HYPOTHESIS`
+discipline). ~34 explicit self-corrections documented; twelve dangling external references
+(`⟨C-1⟩`/`C-3`–`18`/`F-CM-1`/`2`/`DEF-1`) point to unread material elsewhere in `kernel/`. No frozen
+artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` never
+accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-093-kernel-domain-discovery-burst-1/` (4 files). **MD-093 status: EXECUTED. CHECKPOINT.** Next
+frontier, named, not begun: `kernel/`'s own next ~39-file segment (2026-08-24 01:08 onward).
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-092 EXECUTED — EARLY-MORNING
+POST-T22 SEGMENT MULTI-OBJECT EXTRACTION (16 files), CHECKPOINT.** Precisely determined the next
+frontier: exactly 16 genuine files,
 2026-09-07 07:09–07:57, preceding MD-089's own Batch 1 cluster by ~5.5 hours, never covered by any
 prior phase. Two parallel agents read all 16 in full. **Central finding**: this segment is the direct
 predecessor session to MD-089's biocomm/Zero-algebra cluster — its own `Zero_{T,Π}(S;D)` criterion,
