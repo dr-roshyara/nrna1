@@ -2859,3 +2859,31 @@ F3↔F4 bridging; `theory-extraction/` never accessed. Verified both consistency
 Full trace: `14_decision-log/MD-078-controlled-operational-closure-construction/` (6 files). **MD-078
 status: EXECUTED. HARD STOP.** Construction remains unauthorized. Next action, named, not authorized:
 `EKS-48`'s own three-way decision, now informed by a substantially richer evidentiary basis.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-079 — Controlled Composition Audit — EXECUTED, HARD STOP.**
+User reviewed MD-078, accepted its corrections, declined to authorize `SAT-OPERATIONAL-CLOSURE-v1`, and
+redirected the next question to: can the existing corpus-native definitions be composed into T21's own
+intended computation without inventing a mapping? Ten-step method supplied and followed directly:
+strongest-candidate selection, full object-comparison matrices (ID/Source/Type/Meaning/Inputs/Outputs/
+Context/Relationship) for `r`/`Γ`/`EC`/`Sat`/`Zero`/`Det`/`Decision`, composition attempt, demonstrated-
+mapping test — pure adjudication over MD-078's own already-verified evidence, no new source reading, no
+agents dispatched (final adjudication kept with the main process, per the user's own instruction).
+**Central result**: composition fails at exactly two precisely-located points — `EC.Rules`'s own
+content and `Det_r`'s own body — each independently disclosed by the source as a deliberately open
+design parameter, not from a general absence of material; `r`'s own apparent six-way collision narrows
+on close comparison to one plausible requirement-sense family plus confirmed `UNRELATED_HOMONYM`s
+safely excludable. Neither `kos/inquiry.py` nor `Sat_c`/`Eval_c` supplies a demonstrated mapping to
+T21's own `r`/`EC`/`Γ` (structurally incompatible argument lists, neither cites T21) — both remain
+`RELATED CONSTRUCTION` only. New finding: `Det_r` is very likely an `UNRELATED_HOMONYM` to the much
+more stable, twice-proven `Det(K,p,EC,Γ)` family, not a variant of it. **Necessity verdict**: `Sat`
+need not be computed at all — the theory's own unbroken stipulated-input pattern already suffices to
+drive the fully-proven aggregation layer; `Det_r`/`EvalReq` is necessary only if T21's own specific
+computed-`Sat` route is the chosen path, and no existing material closes that route without invention.
+Reframes `EKS-48`'s own decision into a precise binary governance choice. No mapping invented; no
+construction; no frozen artifact modified; no backlog ticket. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-079-controlled-composition-audit/` (5 files). **MD-079
+status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action, named,
+not authorized: a human governance decision between accepting `Sat` as stipulated or authorizing
+construction for the two named failure points — not a further research phase.

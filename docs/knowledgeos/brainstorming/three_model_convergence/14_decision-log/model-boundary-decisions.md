@@ -6202,3 +6202,56 @@ competing definition canonicalized; no F3↔F4 bridging; `classification-registe
 **MD-078 status: EXECUTED. HARD STOP.** Construction remains exactly as unauthorized as before this
 phase. Next action, named, not authorized: `EKS-48`'s own three-way decision, now informed by a
 substantially richer evidentiary basis than MD-076/077 alone supplied.
+
+---
+
+## MD-079 — Controlled Composition Audit
+
+**EXECUTED, HARD STOP, 2026-09-10.** User reviewed MD-078, accepted its central corrections, and
+explicitly declined to authorize `SAT-OPERATIONAL-CLOSURE-v1` — redirecting the next question from
+"shall we invent `Det_r`?" to **"can the existing corpus-native definitions be composed into the
+T21-intended computation without introducing a new semantic object or an unjustified mapping?"**
+Ten-step method supplied and followed directly: select the strongest corpus-native candidate for each
+object, attempt composition without inventing mappings, identify exactly where it fails, test whether
+`kos/inquiry.py`/`Sat_c`/`Eval_c` supply a demonstrated mapping or merely a related construction, and
+only then judge necessity.
+
+**Method**: no new source reading — pure adjudication over MD-078's own already-verified evidence,
+performed by the main process directly (no agents dispatched, per the user's own instruction that final
+adjudication stay with the main researcher). Built full ID/Source/Type/Meaning/Inputs/Outputs/Context/
+Relationship comparison matrices for `r`, `Γ`, `EC`, `Sat`, `Zero`, `Det`, `Decision`.
+
+**Central result**: composition fails at exactly two precisely-located points, not from a general
+absence of material — `EC_B.Rules`'s own content (T21's own `EC=⟨Req,Rules,Scope,ER,TR,AR⟩`) and
+`Det_r`'s own body are each independently disclosed by the source itself as deliberately open design
+parameters, never populated anywhere in the corpus, and no other, better-developed object (`Req`,
+`Det(K,p,EC,Γ)`'s own proven aggregation layer, `Δ`/`Zero`) supplies their content by composition. The
+`r`-collision found in MD-078 turns out narrower on close matrix comparison than "six incompatible
+definitions" suggested: the requirement-sense lineage (`r_B`/`r_H`, T5's `[00-51]`, `kos/inquiry.py`'s
+own `Requirement`) forms one plausible, if unproven, family; the relation-instance and inference-rule
+senses are confirmed `UNRELATED_HOMONYM`s, safely excludable. Neither `kos/inquiry.py` nor `Sat_c`/
+`Eval_c` supplies a demonstrated mapping to T21's own `r`/`EC`/`Γ` — both take a structurally
+incompatible argument list (no `EC` argument in either; `kos/inquiry.py` has no `Γ` argument at all)
+and neither source names `Det_r`/`EvalReq`/the T21 rewrite anywhere — both remain correctly
+`RELATED CONSTRUCTION`, not completions. **New finding, not in MD-078**: `Det_r` is very likely an
+`UNRELATED_HOMONYM` to the much more stable, twice-independently-proven `Det(K,p,EC,Γ)` family
+(Part III Def 3.5/Thm 3.1, Part 21 Def 21.4) — a per-requirement policy function sharing a name-root
+with, but structurally distinct from, a universally-quantified proposition-level predicate.
+
+**Necessity verdict**: conditional, precisely scoped. `Sat` need not be computed at all — the corpus's
+own oldest, unbroken pattern (a stipulated, externally-supplied value) already suffices to drive the
+fully-proven aggregation layer. `Det_r`/`EvalReq` (or an equivalent) is necessary *if and only if* the
+project wants `T21`'s own specific computed-`Sat` route completed — no existing corpus-native or
+executable-research material closes that route without invention. This reframes `EKS-48`'s own
+three-way decision into a precise binary governance choice (accept `Sat` as permanently stipulated, or
+authorize construction specifically for the two named failure points) rather than an open-ended
+question.
+
+No mapping invented; no construction performed; no canonicalization; no frozen artifact (MD-024–078)
+modified; no backlog ticket (this phase sharpens `EKS-48`'s existing framing, not a new untracked
+problem). Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-079-controlled-composition-audit/` (5 files).
+
+**MD-079 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
+named, not authorized: a human governance decision between accepting `Sat` as a stipulated input or
+authorizing construction for the two precisely-named failure points — not a further research phase.

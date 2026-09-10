@@ -1,4 +1,27 @@
-**Updated:** 2026-09-10 (latest) — **MD-078 EXECUTED — CONCEPT-FAMILY RECONSTRUCTION THROUGH TIME
+**Updated:** 2026-09-10 (latest) — **MD-079 EXECUTED — CONTROLLED COMPOSITION AUDIT, HARD STOP.** User
+reviewed MD-078, accepted its corrections, declined to authorize `SAT-OPERATIONAL-CLOSURE-v1`, and
+redirected to: can the existing corpus-native definitions be composed into T21's own intended
+computation without inventing a mapping? Ten-step method supplied and followed: strongest-candidate
+selection, object-comparison matrices (ID/Source/Type/Meaning/Inputs/Outputs/Context/Relationship) for
+`r`/`Γ`/`EC`/`Sat`/`Zero`/`Det`/`Decision`, composition attempt, demonstrated-mapping test. **Central
+result**: composition fails at exactly two precisely-located points — `EC.Rules`'s own content and
+`Det_r`'s own body, each independently disclosed by the source as a deliberately open design parameter
+— not from a general absence of material; the `r`-collision narrows on close comparison to one
+plausible requirement-sense family plus confirmed `UNRELATED_HOMONYM`s safely excludable. Neither
+`kos/inquiry.py` nor `Sat_c`/`Eval_c` supplies a demonstrated mapping to T21's own `r`/`EC`/`Γ` (both
+take structurally incompatible argument lists, neither cites T21) — both remain `RELATED CONSTRUCTION`
+only. New finding: `Det_r` is very likely an `UNRELATED_HOMONYM` to the much more stable, twice-proven
+`Det(K,p,EC,Γ)` family, not a variant of it. **Necessity verdict**: `Sat` need not be computed at all —
+the theory's own unbroken stipulated-input pattern already suffices to drive the fully-proven
+aggregation layer; `Det_r`/`EvalReq` is necessary only if the project wants T21's own specific
+computed-`Sat` route completed, and no existing material closes that route without invention. Reframes
+`EKS-48`'s own decision into a precise binary governance choice. No mapping invented; no construction;
+no frozen artifact modified; no backlog ticket. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-079-controlled-composition-audit/` (5 files). **MD-079 status: EXECUTED.
+HARD STOP.** Next action, named, not authorized: a human governance decision between accepting `Sat`
+as stipulated or authorizing construction for the two named failure points.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-078 EXECUTED — CONCEPT-FAMILY RECONSTRUCTION THROUGH TIME
 (`Det_r`/`EvalReq`/`Sat`/`Γ` AND CO-EVOLVING OBJECTS), HARD STOP.** User superseded, mid-turn, an
 initially-authorized bounded construction phase (no construction artifact exists — superseded before
 any Gate A work). New mission: never conclude a concept is undefined merely because one document is
