@@ -2323,3 +2323,96 @@ record)** — one field name, two carriers, different types.
 
 `Σ` is given three axes — **Support · Conflict · Resolution**. Recorded only; **no reconciliation
 of `Σ` attempted.**
+
+---
+
+# ⭐⭐⭐ G-40 — five of six programme-level blockers are the theory's own `§86`, and two are misfiled in my plan
+
+Record: `verification/gap-discovery/theory-v1-0-def-register/01-OPEN-1-TO-6-AND-THE-FOUR-HOUR-REPLY.md`
+
+## §1 · `OPEN-1 … OPEN-6` (Theory v1.0 §86, 2026-09-02T00:46:31)
+
+*"A serious v1.0 must also state its limits."* Six are declared. Against my forward plan:
+`OPEN-1` carrier ↔ **`OQ-1`, "⛔ GATES EVERYTHING"** · `OPEN-2` structure of `K_t` ↔ carried
+only as *"two rival `K`"*, **not at phase level** · `OPEN-3` `≡_sem` ↔ **`CR-4`** · `OPEN-4` gap
+geometry ↔ **`G-12` metric** · `OPEN-5` uncertainty algebra ↔ **`TG-02`** · `OPEN-6` minimal
+kernel ↔ **kernel NOT SELECTED**.
+
+$$\boxed{\text{These are DECLARED LIMITS of v1.0, not blockers discovered afterwards.}}$$
+
+⭐ **`OQ-1` therefore joins the declared-boundary family** (`ρ_A`, `Det_r`, `Ω-B`, `⪰`). My
+plan's phrasing — *"KnowledgeOS has **no declared mathematical carrier**"* — should read **the
+carrier is declared OPEN, by name.** *Undeclared* and *declared-open* are different epistemic
+states; only the second carries an author's intent.
+
+`[EMP]` `OPEN-1…6` are cited **once** in the estate outside their own document. ⚠️ The
+`publicdigit/reviews/` `OPEN-1` is **a different object** (the `L3` vocabulary is PHP-derived,
+2026-08-18) — **a second identifier homonym, same day as `G-67`'s.**
+
+## §2 · The reply at 08:54:20 — `20260902-085420`, 4 h 08 m later
+
+**`OPEN-1`/`OPEN-2`** — a carrier candidate, self-labelled:
+$K_t=(E_t,\rho_t,\alpha_t,\pi_t,\tau_t)$, $\mathbb K=\{\text{well-formed epistemic states over }\mathcal C\}$,
+*"the first serious candidate for closing `OPEN-1` / `OPEN-2`"*, and *"not necessarily the final
+implementation tuple."* A **candidate is not a decision**, so my plan's decision claim stands —
+but this is the most load-bearing entry `V1` can carry and **the plan does not cite it**. `V1`
+has **at least two** candidates, not one.
+
+**`OPEN-4`** — §13 *"Gap is therefore not distance"*:
+$Gap \to Requirement\ Residual \to optional\ Measurement$, *"eliminates the temptation to invent
+a universal Knowledge Distance."* ⭐ This **does not** show a useful `d(Δ₁,Δ₂)` exists; it makes
+the metric a **regime choice downstream of `Δ_t`**. Recorded **DISSOLVED-BY-REORDERING**, not
+`ANSWERED`.
+
+**`OPEN-3`** — §20 defines
+$R_1\equiv_{sem}R_2 \iff \forall (Q,C,EC)\in\mathcal D: Obs_{EC,Q,C}(R_1)=Obs_{EC,Q,C}(R_2)$
+with the observable behaviour **enumerated — eight items**, and states outright that this
+*"removes the circularity"*. That is exactly what `CIRC-5` requires.
+`[UNDECIDABLE]` whether v1.1-simulation could have known: v1.1 has **no timestamp** and is
+datable only to *after 00:46:31*. **Not guessed.**
+
+## §3 · ⭐⭐⭐ But `≡_sem` has THREE rival definitions, and two of them cannot both hold
+
+| | definition | status |
+|---|---|---|
+| **A** | observational over 8 enumerated observables (§20, 08:54) | de-circularising; **cited by no other lane** |
+| **B** | `≡_sem^{Q,Γ,𝒪}` iff **determinations** match — **executable, has a tester** (CLOSURE-4) | ⚠️ standing review: ***"the semantic equivalence claim is too strong"*** |
+| **C** | `𝔎 = (K, =_str, ≡_sem, ≈_obs, SameId, ≡_H, ≡_P)` — `≡_sem` and `≈_obs` are ***distinct tuple positions*** (`261.25`, ground 4 of the Step 290 audit) | carried through Steps 288–291 |
+
+**A and C are incompatible.** If `≡_sem` *is* observational equivalence, C's two positions
+**collapse** — and `261` registers them apart precisely to prevent that. `CR-4` proposes filling
+**`≈_obs`** with B while §20 fills **`≡_sem`** with the same kind of content: **the collapse
+arrives by two routes.**
+
+> ⭐⭐ `CR-4` is filed in my plan as *"⭐ cheapest — the corpus already contains its own repair"*
+> and *"nearly self-resolving"*. It is **a three-way conflict in which one option collapses a
+> distinction another exists to protect, and a second carries a standing negative review.**
+
+**Second misclassification found in my own plan today, after `D1`. Both run the same way: a
+decision problem filed as cheap or mechanical because the multiplicity had not been enumerated.**
+
+## §4 · Two further objects
+
+**The four kinds of unknown changed in four hours.** §32 `Unobserved · Uninterpretable ·
+Unobservable · **Representationally inadequate*** → §14 `U1 · U2 · **U3 Underdetermined** · U4`.
+Three of four survive; the fourth swaps a property of the **representation** for a property of
+the **evidence**. ⭐ v1.1 files *"the four-way unknown taxonomy is exhaustive"* as **STILL
+REQUIRING MATHEMATICAL WORK** — testing exhaustiveness of one taxonomy without recording that a
+second exists.
+
+**`δ` has a declared signature.** §87:
+$\mathbb K \xrightarrow[EC,\mathcal I]{E,Q,C,H} \mathbb K$ — four inputs above, constrained below
+by the contract and the protected invariants. Relevant to `D3` (*"`δ` has nowhere to write"*):
+**here it writes `𝕂`.** A *signature*, not a commit rule — **`D3` not re-dispositioned.**
+The probabilistic layer `(Ω_K, 𝒜_K, P_K)` adds **a further `Ω` sense**; flagged for `G-21`/`G-22`,
+**not merged**.
+
+## §5 · Disposition
+
+**`C — COMPETING / DEPENDENCY-INCOMPLETE`** for `≡_sem`. `OPEN-1…6` are **`FIREWALL-FREE
+DECLARED BOUNDARIES`** — recorded as the theory's own limits, closed by nobody, and **not
+reclassified as corpus gaps.**
+
+The author's own summary governs how every `[THM]` in that document is read:
+> *"v1.0 closes the semantic architecture and derives a coherent formal framework; **it does not
+> yet prove uniqueness of the semantic state space or the minimal computational kernel.**"*
