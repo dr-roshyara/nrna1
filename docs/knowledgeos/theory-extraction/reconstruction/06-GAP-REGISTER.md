@@ -1479,3 +1479,39 @@ the other.** ⇒ `CORROBORATIVE`, **two independent lineages** (§ senior-statis
 | **`Det_r` (`G-14`/`G-25`)** | **RE-SCOPED** — its *"contract-specific"* body is the **same declared boundary** as `ρ_A`'s, not a separate hole |
 | **backfill debt** | ⭐ **`step-008` was load-bearing and unread** — as `step-018` was. **The 001–022 band has now produced two decisive objects; it should be read before any further gap is opened** |
 | **NEW `G-28`** | **`φ : R → P` is ABSENT** — the single bridge on which `Γ↔ρ_A`, `r↔P` and the requirement/proposition interlock all depend. Corpus-named (`MV-F-9`, `AF-F-13`), corroborated independently by my evaluation-family reconstruction |
+
+## ⚠️ `20260902-124810_simulation-one-proposer-two-evaluation-fields.md` — read on request
+
+**One proposal, two evaluation fields** (Liṅga/Yoni metaphor). §6.1 states the case exactly:
+one assertion — *"Nexus version is 3.69"* — **Supported** in Context 1, **Refuted** in Context 2.
+
+⭐ **That corroborates the acceptance finding above**, in a third lane: the same evidence yields
+different verdicts under different fields — `step-008`'s policy-relativity, restated 6 days later.
+
+### ⛔ But §6.3 commits an error the corpus had already REFUTED BY EXECUTION
+
+$$\text{§6.3: } \quad \text{Reconcile} = \frac{\text{Evaluation}_1 + \text{Evaluation}_2}{2}$$
+
+**This averages `Supported` and `Refuted`** — elements of a nominal/ordinal status set.
+
+| `16-MASTER-GAP-REGISTER` **G-07** | *"**Averaging over the ordinal status ladder is meaningless.** Decision flips across three admissible re-encodings. **Any average / percentage / weighted-threshold rule over `σ` is invalid.**"* — `EXECUTED` (EXP-4), **REFUTED** |
+| `14-FALSIFICATION-RESULTS` row 8 | *"Averaging `σ` is meaningful → **REFUTED** — flips across 3 admissible encodings"* |
+
+| refutation | **2026-08-30 21:05:24** |
+| this document | **2026-09-02 12:48:10** — ⭐ **2 days 15 hours later** |
+
+### ⭐⭐ And the corpus already holds the correct object for this exact case
+
+`step_272b` L1767: **`{Support, Refute} → Conflict`**, within
+**`Σ₀ = 𝒫({Support, Refute}) ≅ {0,1}²`** — a four-valued structure in which *Supported* **and**
+*Refuted* **join to `Conflicted`**, not to a midpoint.
+
+$$\boxed{\text{The document's own example has a correct answer in the corpus — } \mathbf{Conflicted} \text{ — and it computed an average instead.}}$$
+
+⛔ **Recorded, not repaired** (standing mandate: no mathematical repair). The point is historical:
+**a refuted operation reappeared 2.5 days later in another lane, and the correct replacement was
+already three days old.**
+
+⭐ **Fourth instance of the estate's measured mechanism** — `EKS-49`/`EKS-52`: *lanes do not
+enumerate each other, so results do not travel.* Here what failed to travel was not a definition
+but **a refutation**.
