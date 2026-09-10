@@ -175,8 +175,10 @@ K_v3  artifact D (𝒜,ℛ) · Assertion=(id,P,e,c,t,Π)   2   EXECUTED, EKP-par
                                                         minimality QUALIFIED: (K|𝒯)      [EMP]
 K_v4  step_262   (𝒜,ℛ)                              2   RESTATEMENT of K_v3,
                                                         qualification DROPPED → "PROVEN" [EMP]
-K_v5  step_273   (A,R,Σ,E_L)                        4   attributed to "Step 272",
-                                                        which has no artifact            UNWITNESSED
+K_v5  step_273   (A,R,Σ,E_L)                        4   attributed to "Step 272" = a MANDATE,
+                                                        executed 58 min LATER as 272a.
+                                                        Provenance IDENTIFIED but WEAK:
+                                                        a proposal, not a derivation      [EMP]/QUALIFIED
 ```
 
 **Transitions, classified conservatively:**
@@ -205,3 +207,47 @@ readable corpus**.
 
 **Preserved as an observation, not generalised** (§12 of the prior commission): *the middle interval
 contains repeated re-foundings rather than a demonstrably continuous formal evolution.*
+
+
+---
+
+## ⭐ K-LINEAGE — provenance status after `G-18` and `G-14`
+
+Per §10 of the current commission, three propositions kept strictly apart:
+
+| | proposition | status |
+|---|---|---|
+| **A** | `K=(𝒜,ℛ)` exists | **SUPPORTED** — `step_262` L9, artifact D §1 |
+| **B** | `K=(𝒜,ℛ)` has verified provenance to artifact D / the `20260830_1918` execution batch | **CLOSED** (`G-18`) |
+| **C** | `K=(A,R,Σ,E_L)` is a later formulation attributed to Step 272 | **SUPPORTED AS A CLAIM** |
+| **C′** | *what* Step 272 is | **CLOSED WITH QUALIFICATION** (`G-14`) — a **mandate**, executed as `272a` **58 min after** the citing document |
+
+$$\boxed{\textbf{Neither } K_{v4} \textbf{ nor } K_{v5} \textbf{ is merged. The relation between them remains } \texttt{UNWITNESSED} \textbf{: no document performs the } 2\to4 \textbf{ extension.}}$$
+
+**What changed:** `K_v5`'s provenance moves from *unidentified* to **identified-but-weak**. It rests
+on *"Step 272 **proposed** these components"* — a citation to a **commission**, not to a derivation,
+made an hour before that commission was executed.
+
+**What did not change:** the 4-tuple still has no derivation anywhere in the readable corpus, and
+`Σ`/`E_L` still enter without a witnessed argument.
+
+---
+
+## ARCHITECTURE CHANGE — 2026-09-10, five artifacts → four authorities
+
+Operating strategy §14 authorises four. The reconstruction had drifted to five.
+
+| file | before | after |
+|---|---|---|
+| `07-THEORYSTATE-CHRONICLE.md` | authority 1 | **authority 1** — unchanged |
+| `05-DEFINITION-EVOLUTION-REGISTRY.tsv` | authority 2, **7 objects / 44 rows** | **authority 2 — 13 objects / 71 rows** (migrated `Ω`×7, `δ`×4, `⪰`×3, `Conflict`×3, `Adequacy`×2, `𝒪_core`×3) |
+| `04-LINEAGE-EDGES.tsv` | authority 3 | **authority 3** — unchanged |
+| `06-GAP-REGISTER.md` | authority 4 | **authority 4** — unchanged |
+| `04-THEORY-CHRONICLE.md` | ⛔ **de facto fifth theory record**, 1 113 lines | → **`09-EVIDENCE-LOG.md`**, demoted to supporting evidence with an explicit non-authority header and a routing table |
+
+**Nothing deleted.** The demoted file keeps its full content as the audit trail showing how each
+authoritative entry was reached — including reasoning later withdrawn. **Reading rule recorded in
+its header: where it and an authority disagree, the authority wins.**
+
+Its proper remaining role — read records, worker evidence packets, batch narratives — is content
+that has no home among the four and correctly belongs in a supporting log.

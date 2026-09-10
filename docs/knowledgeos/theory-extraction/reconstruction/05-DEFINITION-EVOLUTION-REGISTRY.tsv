@@ -48,3 +48,25 @@ K	K_v2	2026-08-29T00:33	recovery step_155-156 L32	K_t=(𝒜_t,ℛ_t,ℰ_t,ℋ_t,
 K	K_v3	2026-08-30T19:24	verification/KNOWLEDGE-STATE-CANONICAL-MODEL §1 (artifact D)	K=(𝒜,ℛ); Assertion=(id,P,e,c,t,Π)	2-tuple	2	EKP parsed: |𝒜|=37, |ℛ|=51	assertions and relations	the EXECUTED reconstruction	DEFINITION + executed removal test	Operational	[EMP]; minimality QUALIFIED as Minimality(K|𝒯)
 K	K_v4	2026-08-30T19:27	step_262 L9	K=(𝒜,ℛ)	2-tuple	2	—	same	IMPORTED from K_v3	RESTATEMENT - but qualification DROPPED, reported 'PROVEN'	Formal	[EMP]; EKS-46
 K	K_v5	2026-08-30T21:44	step_273 L18	K=(A,R,Σ,E_L); Σ=Epistemic State, E_L=Evidence Links	4-tuple	4	—	assertions·relations·epistemic state·evidence links	attributed to 'Step 272'	EXTENSION of K_v4? UNWITNESSED - Step 272 has no artifact	Formal	[EMP] for the form; provenance UNRESOLVED (G-14)
+Omega	Ω_v1	2026-08-24 (claimed)	step_238 L83 (claim only)	Ω	measure-theoretic space	—	—	—	"kernel era" origin claim	CLAIM ONLY - artifact not located	Conceptual	[EMP] as a claim; referent UNRESOLVED (G-21)
+Omega	Ω_v2	2026-08-28T10:22	step-031 L596 (boxed)	Ω : W → O	function	1	World	Observation	the observation mechanism	BIRTH (witnessed)	Formal	[EMP]
+Omega	Ω_v3	2026-08-30T10:25	step_240 L97	Ω_t as 4th arg of δ_K(K_t,o_t,ρ_t,Ω_t)	parameter	—	—	—	unstated	REUSE - signature unresolved per 241 L470	Formal	[EMP]
+Omega	Ω_v4	2026-08-30T11:11	step_246 L625	Ω = {all possible knowledge states}	set	—	—	—	state space	UNRELATED_HOMONYM	Formal	[EMP]
+Omega	Ω_v5	2026-08-30T18:25	step_247 L750	(Ω,ℱ,μ) with Ω=𝕂	measure space	—	—	—	measure over knowledge states	UNRELATED_HOMONYM	Formal	[EMP]
+Omega	Ω_v6	2026-08-30T18:36	step_251 L306	Ω : W → O	function	1	World	Observation	observation map	RESTATEMENT of Ω_v2 (2 days later)	Formal	[EMP]
+Omega	Ω_v7	2026-08-30T19:35+	step_264 L747, step_266 L1193	f:Ω→ℝ ; (Ω,ℱ,P)	generic	—	—	—	generic measurable domain	UNRELATED_HOMONYM	Formal	[EMP]
+delta	δ_v1	2026-08-28T10:22	step-031 L391	δ : K × Event → K	function	2	KnowledgeState × Event	KnowledgeState	state transition	BIRTH	Formal	[EMP]
+delta	δ_v2	2026-08-29T01:13	step_161 L1447	δ(E,R,Auth,C) → {ACT,REFRAIN,DEFER,ESCALATE}	function	4	evidence×rules×authority×context	disposition set	disposition function; explicitly NOT deterministic	UNRELATED_HOMONYM	Formal	[EMP]
+delta	δ_v3	2026-08-30T10:25	step_240 L97	δ_K(K_t,o_t,ρ_t,Ω_t)	function	4	—	K	4-arg transition carrying Ω_t	SIGNATURE_CHANGE	Formal	[EMP]; 241 L470 "signature unresolved"
+delta	δ_v4	2026-08-30T18:36	step_251 L50	δ : 𝒦 × ℰ ⇀ 𝒦	partial function	2	states × events	states	CITED TO Q15, not defined in corpus	UNWITNESSED origin	Formal	[EMP]; Q15 absent from blocks 1,2,3,5
+succeq	⪰_v1	2026-08-27T18:35	step_025f §25F.14	s₁ ⪰_C s₂	context-indexed partial order	—	authority sources	—	authority precedence	BIRTH	Formal	[EMP]
+succeq	⪰_v2	2026-08-28T09:23	step_025h	d₂ ⪰ d₁	order	—	decisions	—	decision ordering	DISTINCT - not merged	Formal	[EMP]
+succeq	⪰_v3	2026-08-28T09:38	step_025j	A₂ ⪰ A₁	order	—	assertions	—	assertion ordering	DISTINCT - not merged	Formal	[EMP]; explains open record CR-2
+Conflict	Conf_v1	2026-08-27T18:35	step_025f §25F.6	Conflict(s₁,s₂,C,t)	predicate	4	sources × context × time	Boolean	conflict over governance SOURCES	BIRTH; earliest of the family	Formal	[EMP]
+Conflict	Conf_v2	2026-08-28T10:09	step_025u	Conflict = FirstClassKnowledgeState	status	—	—	—	conflict as a state not an error	REINTERPRETATION	Conceptual	[EMP]
+Conflict	Conf_v3	2026-09-02	math lane	Contr(p) etc — 7 signatures per CR-1	predicate	varies	propositions	—	contradiction predicate	NOT MERGED with Conf_v1	Formal	[EMP]
+Adequacy	Adq_v1	2026-08-30T21:59	step_276-final B §276.7	Definition(K) ≠ Adequacy(K, 𝒯)	relation	2	KnowledgeState × transformation family	—	sufficiency of a representation	BIRTH	Formal	[EMP]
+Adequacy	Adq_v2	2026-09-02	182019	Adequacy(R,Q,Γ) ⟺ ℛ_req(Q,Γ) ⊆ Preserved(R,Γ)	relation	3	representation × question × context	—	distinction-preservation	SIGNATURE_CHANGE + first arg K→R	UNWITNESSED	Formal	[EMP]
+O_core	O_v1	2026-08-30T21:59	step_276-final A §276.4	O_S ∪ O_E ∪ O_H ∪ O_G ∪ O_Q ∪ O_X	6 families, 27 ops	—	—	—	declared CLOSED	BIRTH	Formal	[EMP]; withdrawn by Doc B same file
+O_core	O_v2	2026-08-30T22:01	step_277 §277.23	{Assert,Retract,Supersede,Merge,Split,LinkEvidence}	6 state primitives	—	—	—	state-transition kernel	REDUCTION	Formal	[EMP]; not carried into 272a
+O_core	O_v3	2026-08-30T22:42	step_272a §272A.25	O_S ∪ O_E ∪ O_O ∪ O_H ∪ O_G	5 families, 19 ops	—	—	—	semantic operation universe	REPLACEMENT; does not cite 277	Formal	[EMP]

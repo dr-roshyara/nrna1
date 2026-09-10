@@ -1,3 +1,28 @@
+# EVIDENCE LOG — SUPPORTING RECORD, **NOT A THEORY AUTHORITY**
+
+> ⛔ **This file is not one of the four authoritative artifacts.** Operating strategy §14 authorises
+> exactly four: TheoryState Chronicle · Definition Evolution Registry · Lineage Graph · Gap Register.
+> This file had drifted into being a competing fifth theory record. **It has been demoted, not
+> deleted** — its content is history and history is never deleted.
+>
+> **Where its content now lives authoritatively:**
+>
+> | class of content | authoritative home |
+> |---|---|
+> | object histories (the 22 `CHRONICLE-n` sections) | `05-DEFINITION-EVOLUTION-REGISTRY.tsv` |
+> | lineage claims and their evidence classes | `04-LINEAGE-EDGES.tsv` |
+> | gap decisions, dispositions, withdrawals | `06-GAP-REGISTER.md` |
+> | theory states, turning points, re-foundings | `07-THEORYSTATE-CHRONICLE.md` |
+> | read records, worker evidence packets, batch narratives | **here — this is their proper home** |
+>
+> **Reading rule:** where this file and one of the four disagree, **the four win.** This file is
+> retained as the audit trail showing *how* each authoritative entry was arrived at, including the
+> reasoning that was later withdrawn.
+>
+> Renamed from `04-THEORY-CHRONICLE.md`, 2026-09-10, as an architecture correction under §6/§7.
+
+---
+
 # THEORY CHRONICLE — append-only
 
 Earlier interpretations are never overwritten. Semantic evolution is appended.

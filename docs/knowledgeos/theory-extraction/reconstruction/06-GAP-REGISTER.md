@@ -413,3 +413,91 @@ question, under investigation.
 primary gap that the single-lane search plan could not have resolved.** Promoted to a standing
 search rule: **any question about what was *executed*, *proven*, *closed* or *demonstrated* is
 searched in `verification/` first.**
+
+
+---
+
+# ⭐⭐ G-14 — DISPOSITION: **CLOSED WITH QUALIFICATION**
+
+**Question:** what exactly is "Step 272", cited ~50× and called *"the accepted Step 272 framework"*,
+with no `step_272` file?
+
+## Git provenance first, as instructed — and the rename lead is a DEAD END
+
+```
+git log --diff-filter=R -- .../phase_measure_theory/     ->  ZERO renames, ever
+git log --all --diff-filter=A  | grep step[-_]272[^ab]   ->  only verification/gap-discovery/step-272/*
+```
+
+**No file was ever named `step_272` in `phase_measure_theory/`, and nothing there was ever renamed.**
+The stopped worker's *"the rename record is decisive"* lead does **not** resolve this slot.
+Category (1) *renamed file* is **RULED OUT on git evidence.**
+
+## The answer, verbatim from the verification lane
+
+`verification/gap-discovery/step-272/01-STEP-272-PREMISE-AUDIT.md`, banner:
+
+> ⚠️ ***PARTIALLY SUPERSEDED*** *— see `05-ADDENDUM-STEP-272A.md`.*
+> ***Step 272 landed as Step 272A at 22:42:42**, nine minutes after this snapshot.*
+
+its §1 table:
+
+> *Missing step numbers | ⚠️ **217, 229, 268, 272** (272 has since landed → 217, 229, 268)*
+
+and `05-ADDENDUM-STEP-272A.md`:
+
+> *"**Step 272 is now present in the corpus as Step 272A**, written 2026-08-30 22:42:42 — nine
+> minutes after the premise audit in `01` was taken (22:33)."*
+
+$$\boxed{\textbf{"Step 272" was a MANDATE — a commission — later executed as Step 272A at 22:42:42.}}$$
+
+Category **(5) a never-executed commission** at the time of citation, subsequently retro-executed.
+Not (1) rename · not (2) embedded · not (3) session artifact · not (4) alias · not (6) unrecordable.
+
+## ⛔ The qualification — and it is the whole point
+
+```
+step_274   2026-08-30 21:43:17  ─┐  both cite "Step 272" as an authority
+step_273   2026-08-30 21:44:01  ─┘
+step_272a  2026-08-30 22:42:42  ←  Step 272 actually lands, 58 MINUTES LATER
+```
+
+**`step_273` cites "Step 272 proposed these components" a full hour before any Step-272 document
+existed.** It was citing **the mandate's proposal**, not a derived result.
+
+And `272a`'s own header declares `Successor: Step 273` — a step written **58 minutes before it** —
+while its opening sentence concedes: *"**Step 272A was intended to be derived first, and our later
+work jumped over that derivation.**"*
+
+## Consequence for `K = (A,R,Σ,E_L)` — provenance downgraded, not closed
+
+`K_v5`'s provenance is now **identified but weak**: it traces to **a proposal inside a commission**,
+cited as an authority before that commission was executed.
+
+$$\boxed{\textbf{"Step 272 proposed these components" is a citation to a MANDATE, not to a derivation.}}$$
+
+The 4-tuple is therefore **supported as a proposal**, not as a derived result — a materially weaker
+standing than *"Step 272 established it"* implies. **Not merged with `K_v4`.**
+
+## Disposition summary
+
+| | |
+|---|---|
+| **Referent** | the Step-272 **mandate**, executed as `step_272a` (2026-08-30 22:42:42) |
+| **Status** | **`CLOSED_WITH_QUALIFICATION`** |
+| **Qualification** | the citing documents (`273`, `274`) predate the execution by ~58 min and cite a *commission* |
+| **Effect on `K_v5`** | provenance identified; **strength downgraded to "proposed in a mandate"** |
+| **`G-20`** | now fully split and both halves disposed: `(𝒜,ℛ)` via `G-18`; `Σ`/`E_L` via `G-14`, qualified |
+
+## ⭐ A third instance of one pattern
+
+`G-18` and `G-14` resolve to the same mechanism:
+
+| claim | cited at | source actually available at |
+|---|---|---|
+| `K=(𝒜,ℛ)` "PROVEN" | `step_262` 19:27:07 | artifact D 19:24 — **3 min earlier**, and qualified `(K\|𝒯)` |
+| `K=(A,R,Σ,E_L)` "proposed" | `step_273` 21:44:01 | `step_272a` 22:42:42 — **58 min LATER** |
+
+**In both cases a downstream document treats an upstream item as settled at a moment when it either
+carried a qualification that was dropped, or did not yet exist.** Recorded as an **observation
+across two instances**, deliberately **not** generalised to a corpus property.

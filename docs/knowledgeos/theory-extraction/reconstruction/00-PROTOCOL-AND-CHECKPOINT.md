@@ -1022,3 +1022,78 @@ owed: [fold 04-THEORY-CHRONICLE into the four §14 artifacts,
        G-18 breadth (citation table, downstream qualification test, rival batches)]
 subagents: none running; not to be relaunched without instruction
 ```
+
+---
+
+# CHECKPOINT 012 — 2026-09-10 · G-14 closed with qualification; artifact architecture corrected
+
+```
+G-14:
+  Disposition:            CLOSED_WITH_QUALIFICATION
+
+  Step-272 referent:      a MANDATE (commission), executed as step_272a at 2026-08-30 22:42:42
+  Evidence:               verification/gap-discovery/step-272/01-STEP-272-PREMISE-AUDIT.md banner —
+                          "Step 272 landed as Step 272A at 22:42:42"; §1 table lists 272 among
+                          MISSING step numbers at 22:33. 05-ADDENDUM-STEP-272A.md confirms.
+                          git: ZERO renames in phase_measure_theory/, no file ever named step_272 —
+                          the rename hypothesis is RULED OUT on git evidence.
+  Qualification:          step_274 (21:43:17) and step_273 (21:44:01) cite "Step 272" as an
+                          authority 58 MINUTES BEFORE it existed. 272a's own header names
+                          "Successor: Step 273" — a step written 58 minutes earlier — and concedes
+                          "Step 272A was intended to be derived first".
+
+K=(A,R):
+  Current status:         EXISTS (supported) · PROVENANCE CLOSED to artifact D / batch 20260830_1918
+                          · minimality QUALIFIED at source as Minimality(K|T)
+
+K=(A,R,Sigma,E_L):
+  Current status:         SUPPORTED AS A CLAIM · provenance IDENTIFIED BUT WEAK — traces to a
+                          proposal inside a mandate, cited before execution. NOT merged with
+                          K=(A,R). The 2->4 extension remains UNWITNESSED.
+
+EKS-46:
+  Current verified scope:  the TWO ENDPOINTS ONLY — artifact D 19:24 ("earned … Minimality(K|T),
+                          relative to the transformation set") vs step_262 19:27 ("PROVEN").
+                          NOT generalised to 263/265/267; that inspection was never completed.
+
+Artifact consolidation:
+  Status:                 DONE. Five records -> four authorities.
+                          04-THEORY-CHRONICLE.md (1,113 lines) demoted to 09-EVIDENCE-LOG.md with a
+                          non-authority header, a routing table, and the rule "where this and an
+                          authority disagree, the authority wins". Nothing deleted.
+                          Object histories migrated into the registry: 7 objects/44 rows ->
+                          13 objects/71 rows.
+
+TheoryState changes:      K_v5 provenance: unidentified -> identified-but-weak.
+                          A/B/C/C' propositions recorded separately per §10.
+                          Architecture change recorded.
+Definition changes:       +27 rows — Omega x7, delta x4, succeq x3, Conflict x3, Adequacy x2,
+                          O_core x3, plus the five K versions.
+Lineage changes:          +4 edges (111 total): Step-272-mandate -> 272a EXECUTED-AS;
+                          step_273 -> mandate CITES-BEFORE-EXECUTION; 272a -> 273
+                          DECLARES-SUCCESSOR (backwards); phase_measure_theory renames = ZERO.
+Gap changes:              G-14 CLOSED_WITH_QUALIFICATION. G-20 fully split and both halves disposed.
+                          New cross-gap observation recorded across TWO instances only, not
+                          generalised.
+
+Next smallest load-bearing gap:
+  G-19 — step 268 was commissioned by step_267 to falsify K=(A,R) and its minimality claim, and
+  exists only as a 48-line commission ending "That is where the next step should begin."
+  It is now load-bearing in a way it was not before: G-18 showed the minimality claim is
+  QUALIFIED at source and unqualified downstream, and G-14 showed the 4-tuple rests on a
+  mandate's proposal. The falsification that would have tested exactly this was ordered and
+  never performed. Small, bounded, and directly downstream of both closures.
+```
+
+## Selection reasoning (§11 — chosen from the updated TheoryState, not the old ordering)
+
+`G-19` was previously a curiosity. After `G-18` and `G-14` it sits directly on the load path: both
+`K` formulations now have known-weak standing, and `step_268` is the one commissioned act that
+would have tested them. `G-01`/`G-05` (the 09-02 lane) are larger and downstream; `G-21` (`Ω`'s
+"kernel era" origin) opens a 181-file unread lane; `G-15`/`G-16`/`G-17` are provenance items that
+do not block the `K` line.
+
+## Chronology
+
+Not abandoned. The global stream resumes at the head of the unread window after this bounded
+investigation, per §8/§10.
