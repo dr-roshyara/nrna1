@@ -1185,3 +1185,77 @@ lane. ⭐ **The highest remaining risk is the semantic half of `G-12`**: ~180 fi
 unread line-by-line, and every object history now rests on a mechanical skeleton plus targeted
 reads. **Semantic coverage of the readable corpus remains ≈1.5 %**, and that figure — not the
 structural completeness — is what bounds every claim in this register.
+
+---
+
+# ⭐⭐ G-12 SEMANTIC — my own headline QUALIFIED, and `G-26` REFUTED
+
+**Record:** `…/gap-discovery/g-12-semantic/01-G-12-SEMANTIC-026-268.md`
+
+## ⛔ `G-26` — REFUTED by Ω-B's own birth document
+
+I opened it yesterday from a **bounded** search. Ω-B's history begins **2026-08-26 14:35**
+(`…masterful-synthesis-lord-lens-omega.md`) — **six days earlier, 33 files** — and states:
+
+> *"**Lord Lens (Ω):** … the ultimate epistemic horizon. **It is not a part of the system but a
+> philosophical anchor** for the system's purpose."*
+
+$$\boxed{\Omega_B \textbf{ is untyped BECAUSE ITS OWN DEFINITION EXCLUDES IT FROM THE SYSTEM.}}$$
+
+**A declared scope exclusion, not a corpus gap.** ⇒ **`G-26` RE-SCOPED**, to a narrow **modelling**
+question: *is a philosophical anchor that occupies the domain position of the top-level equation
+(`KnowledgeOS : Ω → S_t → A_t → …`) still outside the system?* Classification **D → B**.
+
+⭐ **Third of my own gap claims overturned by this method** (after `EvalReq`'s codomain and
+`V_Sat`'s consumers). **The pattern in my own work is now measured: I open gaps from bounded
+searches.**
+
+## ⭐⭐ The 025→026 boundary — notation lost, concepts not
+
+`G-12` reported the 025 symbols score **0** across 265 files. True. But over the same population:
+
+| **sufficiency 193/265 (73 %)** | **satisfaction 120/265 (45 %)** | **contract 107/265 (40 %)** | gap 52 | ⛔ *"requirement evaluation"* **0** |
+
+$$\boxed{\textbf{The NOTATION was lost. The CONCEPTS ran on through 45–73\% of the interval.}}$$
+
+And precisely which form survived — 83 technical uses, verified at s070/079/081/086/091/092/095/097/098/101,
+all of the shape *"the rule **is satisfied**"*, *"invariants remain **satisfied**"*:
+
+| | 025-series | 026–268 |
+|---|---|---|
+| form | `Satisfied(K,r,EC)` — a **named function** | an **unformalised predicate** |
+| **result space** | `𝒮` (9→10→11) | ⛔ **none** |
+
+⚠️ **`[PROPOSED]`, not a cause:** this would explain `G-25`'s four divergent `Sat` codomains —
+nothing carried a result space through, so each later lane supplied one. **No document says this**;
+recorded under the batch-003 precedent.
+
+## ⭐ `EvalReq` is singled out
+
+**The only 025-era object whose CONCEPT as well as its notation leaves the interval** — even
+*"requirement evaluation"* as a phrase scores **0 / 265**. And it is the same object `G-25` found
+still untyped at 09-06. ⇒ **D — GENUINE CORPUS GAP, scoped to the interval**, on an exhausted
+265-file search.
+
+## Gap-register impact
+
+| gap | action |
+|---|---|
+| **`G-26`** | ⭐ **RE-SCOPED D → B** — untyped by design; residual question is modelling, not definition |
+| **`G-12` semantic** | **PARTIAL.** The 025→026 boundary is now resolved as **de-formalisation**, not loss. ⛔ **~180 files still unread line-by-line** — this pass was object-targeted, not exhaustive |
+| **`EvalReq`** | **D**, interval-scoped |
+| **`EC`** | **E** — three homonyms, three arities, three bounded contexts, zero cross-references |
+| **`Zero`, `Δ_t`** | **E** — used throughout the interval, **never defined in it** |
+
+## §9 · Highest-risk remaining question
+
+Not `G-26` (bounded, and now re-scoped). Not the `Sat` codomains (recorded, `C`, awaiting a
+decision that is not mine to make).
+
+⭐ **It is `EvalReq`.** By `load × dependency × historical risk`: it is the **only** object whose
+concept *and* notation vanish for 265 files and which is **still untyped at the terminal state**
+(`G-25`); it sits on the evaluation→determination chain that `Det_r`, `Sat` and `𝒮_sat` all
+depend on; and **97 % of `Det_r`'s evidence — its nearest successor — is `FIREWALL-LIMITED`.**
+It is the one place where a genuine hole and an unreadable lane coincide.
+
+**Standing qualifier: semantic coverage of the readable corpus is ≈1.5 % (32 of 2,099).**

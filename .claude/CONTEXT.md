@@ -8390,9 +8390,21 @@ against *combining* two homonyms, not a verdict on Ω. `G-26` opened: **Ω-B (ep
 never typed** — the only genuine Ω gap. Record:
 `docs/knowledgeos/brainstorming/verification/gap-discovery/g-11-omega-269-291/`.
 
-**Next:** the **semantic half of `G-12`** — ~180 files of 026–268 unread line-by-line.
-⚠️ **Semantic coverage of the readable corpus remains ≈1.5 %** (32 of 2,099). That figure, not
-structural completeness, bounds every claim in the register.
+**`G-12` semantic — PARTIAL.** ⭐⭐ The 025 **symbols** score 0 across 265 files, but the
+**concepts** run at 45–73 % (sufficiency 193, satisfaction 120, contract 107). **Notation lost,
+concepts not.** What survived is satisfaction as an **unformalised predicate**; what was lost is a
+**typed function with a result space**. ⛔ **`G-26` REFUTED** — Ω-B is untyped *by design*
+(*"not a part of the system but a philosophical anchor"*, 2026-08-26, 33 files); **D → B**.
+Record: `…/gap-discovery/g-12-semantic/`.
+
+⭐ **Third of my own gap claims overturned by the birth-point method** (`EvalReq` codomain ·
+`V_Sat` consumers · Ω-B type). **Measured pattern: I open gaps from bounded searches.** Standing
+rule reinforced: apply birth-point → chronology → distributed completeness **before** any gap claim.
+
+**Next:** ⭐ **`EvalReq`** — the only 025-era object whose **concept and notation both** vanish for
+265 files (*"requirement evaluation"* = 0/265), still untyped at the terminal state, on the
+evaluation→determination chain, and whose nearest successor `Det_r` is **97 % FIREWALL-LIMITED**.
+⛔ **~180 files of 026–268 remain unread line-by-line**; semantic coverage ≈1.5 % (32 of 2,099).
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·

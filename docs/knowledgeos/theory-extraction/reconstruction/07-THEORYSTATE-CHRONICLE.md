@@ -796,3 +796,42 @@ lane, via Ω-B's rejection of `Ω = 𝒦`.
 
 **44 of 55 Ω-carrying files are `step_286`**, one lane, one thread, 08-31 18:15 → 09-01 11:52.
 ⇒ **one evidential lineage, not 44 confirmations.**
+
+---
+
+# STATE CHANGE — `G-12` semantic, 2026-09-10. Notation lost, concepts not.
+
+**Record:** `…/gap-discovery/g-12-semantic/01-G-12-SEMANTIC-026-268.md`
+
+## ⛔ `G-26` refuted, and it is the third of my own gap claims to fall
+
+Ω-B's history begins **2026-08-26 14:35**, not 09-01 — **33 files, six days earlier** — and its
+birth document says why there is no type: *"**It is not a part of the system but a philosophical
+anchor** for the system's purpose."* **A declared scope exclusion.** Classification **D → B**.
+
+⭐ **Measured pattern in my own work: I open gaps from bounded searches.** `EvalReq`'s codomain,
+`V_Sat`'s consumers, and now Ω-B's type — three claims, three refutations, all by applying the
+birth-point method to the object I had just declared incomplete.
+
+## ⭐⭐ The 025→026 boundary, resolved: DE-FORMALISATION
+
+`G-12` measured the 025 **symbols** at **0 / 265**. Over the same population the 025 **concepts**
+run at **45–73 %**: sufficiency **193**, satisfaction **120**, contract **107**.
+
+$$\boxed{\textbf{Declared continuity carried the CONCEPTS and dropped the NOTATION.}}$$
+
+And precisely: what survived is satisfaction as an **unformalised predicate** (*"the rule is
+satisfied"*, 83 technical uses); what was lost is satisfaction as a **typed function with a result
+space**.
+
+⚠️ **`[PROPOSED]`:** this would explain the four divergent `Sat` codomains — nothing carried a
+result space through the interval. **No document says it.** Recorded under the batch-003 precedent,
+not adopted.
+
+## The corrected mechanism, at three instances
+
+| `026` | declared continuity · **notation** dropped, **concepts** carried |
+| `Ω` | apparatus never left the corpus, only the working set — re-discovery logged as a gap closure |
+| **`EvalReq`** | ⭐ the **one** object where both notation **and** concept stop — and the one still untyped at the terminal state |
+
+**Three instances, three distinguishable mechanisms. Not generalised to a law.**
