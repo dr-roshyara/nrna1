@@ -1,5 +1,32 @@
-**Updated:** 2026-09-10 (latest) — **MD-089 EXECUTED — CONTINUOUS MULTI-OBJECT RECONSTRUCTION, FIRST
-RUN, CHECKPOINT (not a per-phase HARD STOP).** User commissioned a fundamental operating-mode change
+**Updated:** 2026-09-10 (latest) — **MD-090 EXECUTED — THEORY-00-21 MULTI-OBJECT EXTRACTION,
+CHECKPOINT.** User rejected any return to per-gap methodology; reconstruction determined its own next
+chronological frontier (justified against the mission's own six required criteria) and selected the
+full 23-file Theory-00-21 rewrite (2026-09-06) — read several times before but never genuinely
+multi-object extracted. Eight parallel extraction agents, full multi-object extraction. **Corrected
+finding**: `Sat`, `EC`, `Δ_t`, `Zero` all born in **Part 01**, not Part IV/V as previously recorded
+(corrected forward, prior text unedited). `Det_r`/`EvalReq` confirmed, by exhaustive search across all
+23 files, to occur exactly twice each, confined to Part VI §6.17–6.18, introduced in prose not as a
+numbered Definition, never reused elsewhere — including both flagship worked examples (21a, 21a-rev2),
+which both stipulate `Sat(K,r_i)=Satisfied` by fiat with zero `Det_r`/`EvalReq` invocation, extending
+MD-070's finding to the theory's own final worked demonstration. The `Δ_X`/`Zero_X` gap-template
+construction confirmed independently instantiated across at least nine domains, always via bare
+`Sat(K,r)`, never `Det_r`/`EvalReq`. `Determination⇏Decision` reinforced by six-plus sections/theorems
+within this corpus alone. Extensive further internal notational drift documented (extends `EKS-54`):
+seven+ incompatible pipeline chains, `r` overloaded five ways, an inquiry-relative-equivalence glyph
+switch both across parts and within one theorem inside a single part, `Δ`'s signature drifting within
+one part, a bounded-context decomposition proposed twice (5 vs. 7) five hours apart with no
+cross-reference, inconsistent Theorem/Proof apparatus. Corpus-hygiene: Part 20 is a full internal
+self-duplicate. Three new `TheoryState` entries opened; one open question flagged `IDENTITY
+UNRESOLVED — INSUFFICIENT EVIDENCE` (T21's `Decision`/`Act`/`ADR` vs. post-T22 `ActionRationale`/
+`AR_t` — no citation found in either direction). No frozen artifact modified; no object merged; no
+bridge invented; K-1/K2 untouched; `theory-extraction/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/MD-090-theory-00-21-multi-object-extraction/`
+(4 files). **MD-090 status: EXECUTED. CHECKPOINT** — immediately followed (same session) by MD-091, a
+bounded adjudication-only cross-check of the one flagged open question.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-089 EXECUTED — CONTINUOUS
+MULTI-OBJECT RECONSTRUCTION, FIRST RUN, CHECKPOINT (not a per-phase HARD STOP).** User commissioned a
+fundamental operating-mode change
 (the "MASTER MISSION — CONTINUOUS CHRONOLOGICAL MULTI-OBJECT RECONSTRUCTION"): global chronology,
 multi-object `TheoryState` tracking, document-first extraction, a Document→Object Impact Map,
 co-evolution tracked as evidence but never conflated with identity, no return-to-user merely to ask

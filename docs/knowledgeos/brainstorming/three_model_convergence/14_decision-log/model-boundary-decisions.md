@@ -6849,3 +6849,45 @@ MD-089-continuous-multi-object-reconstruction/` (4 files). **MD-089 status: EXEC
 per the master mission's own continuous-execution instruction, not a per-phase hard stop; the natural
 next segment (the remainder of `mathematical_ideas_that_can_be_implemented/`'s own broader population,
 or multi-object tracking extended into `kernel/`/`phase_measure_theory/`) is named, not yet begun.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-090 — Theory-00-21 Multi-Object Extraction — EXECUTED,
+CHECKPOINT.** User rejected any return to per-gap methodology and directed the reconstruction to
+determine its own next chronological frontier and continue automatically. **Frontier determination**:
+the full 23-file Theory-00-21 rewrite (2026-09-06, one continuous ~7.5-hour session) had been read
+several times (MD-067, 070, 078, 081, 082) but always filtered to the tracked family or one adversarial
+question — never genuinely multi-object extracted, despite being the single highest-density cluster for
+the entire `Sat`/`Det_r`/`EvalReq`/`EC`/`Γ` chain. Justified against the mission's own six required
+criteria (chronological position, prior inspection depth, TheoryState relevance, probability of new
+objects, unresolved dependencies, corpus/lane coverage) — recorded in full before any extraction began.
+**Method**: eight parallel extraction agents (2–3 parts each), full multi-object extraction, explicit
+cross-checks. **Central corrected finding**: `Sat`, `EC`, `Δ_t`, `Zero` are all born in **Part 01**, not
+Part IV/V as MD-067/076 had recorded — corrected forward, prior text unedited. `Det_r`/`EvalReq` are
+confirmed, by exhaustive search across all 23 files, to occur **exactly twice each**, confined entirely
+to Part VI §6.17–6.18, introduced in prose ("may be defined") rather than as a numbered Definition, and
+never reused anywhere else in the corpus — including both flagship worked examples (21a, 21a-rev2),
+which both stipulate `Sat(K,r_i)=Satisfied` by direct fiat with zero invocation of `Det_r`/`EvalReq`,
+extending MD-070's finding to the theory's own final, most-polished demonstration. The `Δ_X={r∈Req(X):
+¬Sat(K,r)}`/`Zero_X` construction is confirmed as one reused template, independently instantiated
+across at least nine domains spanning the whole corpus (persistence, retrieval, temporal, causal,
+model/forecast, risk, decision, reasoning, architecture) — always via bare `Sat(K,r)`, never `Det_r`/
+`EvalReq`. `Determination⇏Decision` independently reinforced by six-plus sections/theorems within this
+corpus alone (Parts 13, 16, 18). Extensive further internal notational drift documented, substantially
+extending `EKS-54`: at least seven incompatible pipeline-chain formulations; `r` overloaded five ways;
+`Eval`/`Det`/`Decision` arity and capitalization drift already within Parts 01–03; an inquiry-relative
+equivalence glyph switch (`≡` vs `≈`) both across Parts 07/08 and within one theorem inside Part 08
+itself; `Δ`'s own signature drifting *within* Part 17; `AuditTrace`/`Trace` given five different shapes;
+a bounded-context decomposition proposed twice (5 vs. 7 contexts) five hours apart in one session,
+neither referencing the other; inconsistent Theorem/Proof apparatus (differing QED glyphs, two Theorems
+in Part 18 with no Proof section at all). Corpus-hygiene finding: Part 20 (91KB) is a full internal
+duplicate of itself, distinct from the cross-file `EKS-31` pattern. Three new `TheoryState` entries
+opened (`Γ_R`, `Δ_Cog`/`Zero_Cog` [confirmed template instance], the four-relation identity family);
+one genuine open question flagged `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE` (T21's own `Decision`/
+`Act`/`ADR` apparatus vs. the post-T22 `ActionRationale`/`AR_t` chain — no citation found in either
+direction across two separate extraction passes). No frozen artifact modified; no object merged; no
+bridge invented; K-1/K2 untouched; `theory-extraction/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/MD-090-theory-00-21-multi-object-extraction/`
+(4 files). **MD-090 status: EXECUTED. CHECKPOINT** — per the master mission's continuous-execution
+instruction, immediately followed (same session) by MD-091, a bounded adjudication-only cross-check of
+the one flagged open question, reusing already-gathered evidence rather than reading new files.

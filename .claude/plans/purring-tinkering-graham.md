@@ -3251,3 +3251,24 @@ MD-089-continuous-multi-object-reconstruction/` (4 files). **MD-089 status: EXEC
 per the master mission's own continuous-execution instruction, not a per-phase hard stop; the natural
 next segment (the remainder of `mathematical_ideas_that_can_be_implemented/`'s own broader population,
 or multi-object tracking extended into `kernel/`/`phase_measure_theory/`) is named, not yet begun.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-090 — Theory-00-21 Multi-Object Extraction — EXECUTED,
+CHECKPOINT.** Determined the next chronological frontier per the master mission's own six required
+criteria: the full 23-file Theory-00-21 rewrite (2026-09-06), read several times before but never
+genuinely multi-object extracted. Eight parallel extraction agents processed all 23 parts.
+**Corrected finding**: `Sat`, `EC`, `Δ_t`, `Zero` all born in Part 01, not Part IV/V as previously
+recorded. `Det_r`/`EvalReq` confirmed to occur exactly twice each, confined to Part VI §6.17–6.18,
+introduced in prose not as a numbered Definition, never reused elsewhere — including both flagship
+worked examples, which both stipulate `Sat(K,r_i)=Satisfied` by fiat. The `Δ_X`/`Zero_X` gap-template
+construction confirmed instantiated across at least nine domains, always via bare `Sat(K,r)`, never
+`Det_r`/`EvalReq`. `Determination⇏Decision` reinforced by six-plus sections/theorems within this
+corpus alone. Extensive further internal notational drift documented, extending `EKS-54`. Corpus-
+hygiene: Part 20 is a full internal self-duplicate. Three new `TheoryState` entries opened; one open
+question flagged `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE` (T21's `Decision`/`Act`/`ADR` vs.
+post-T22 `ActionRationale`/`AR_t`). No frozen artifact modified; no object merged; no bridge invented;
+K-1/K2 untouched; `theory-extraction/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-090-theory-00-21-multi-object-extraction/` (4 files).
+**MD-090 status: EXECUTED. CHECKPOINT** — immediately followed (same session) by MD-091, a bounded
+adjudication-only cross-check of the one flagged open question.
