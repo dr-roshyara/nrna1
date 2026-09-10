@@ -864,3 +864,64 @@ was inferred from either.
 (64 files, ≥3 senses, two of them `C-06`-contradictory, all live after 285) · **`G-05`(b)** ·
 **`G-06`(`≡_sem`)** · **`G-21`** (per sense) · **`C-1`** (now precise) · **`G-04`** (deferred) ·
 **`G-23`** (new).
+
+## ⚠️ G-00 — AMENDMENTS after the verification-lane register inventory
+
+**Supplement:** `…/gap-discovery/g-00-register-reconciliation/02-G-00-SUPPLEMENT-AFTER-THE-REGISTER-INVENTORY.md`
+
+A systematic inventory of the `verification/` lane (**484 files**) amended **three of my own G-00
+rows**. All re-verified at source.
+
+| row | amendment |
+|---|---|
+| ⛔ **`G-01`** | **premise REFUTED, not merely too strong — and it asked about the wrong argument.** `025d` carries **six irreconcilable `Zero` forms**; the argument dropped at 25D.24/34 is **`G`**, not `EC` (`EC` survives in five of six), and 25D.31 replaces `G` with an unconstructed `K*`. The codomain went **9 → 10 → 11 and `𝒮` was never re-declared** — never 9/10 → 3; the 3-valued object is **`Σ`**, a different object my gap had silently joined. ⭐ And *"`Satisfied` is an element of `𝒮`, a set-valued function `Satisfied(K,R_G)`, **and** a predicate `Satisfied(K,r,EC)` — **three types under one name**"* |
+| ⭐ **`G-06`** | **RE-SCOPE → CLOSE.** The `≡_sem` half is answered by a **cited supersession**: `025s` §43 supersedes `025i` §37's *"explicitly provisional"* `KAID`, giving *"**the stable semantic identity of an epistemic meaning within a bounded context**"*, `KAID ≠ RecordID ≠ EntityID`, and §36 *"RESOLVES the three-level identity split"*. **Residue folds into `16-MASTER`'s `G-15`** — *"`Context` has no type, domain or equality anywhere"* |
+| ⚠️ **`G-07`** | **closure stands; my reason was loose.** `TG-02` actually reads *"`Sufficient` has no signature"* and is ⭐ **still 🔴 OPEN**. The *"six-component vector"* is a **different object** — `step-001` §3's `I(e_i,e_j)`, recorded as *"**LOST/UNACCOUNTED — never cited or reused downstream**"*. `TG-02` and "six-component" **never co-occur** in 464 files. My gap closes; **the sufficiency-signature question does not** |
+
+### Confirmed unchanged
+
+`ExpectedLoss`: **0 of 464.** `Loss_{ℛ_req}`: **0 of 464.** ⇒ `G-09`/`C-1` = `NO RELEVANT MATCH`;
+my primary-source adjudication stands. ⭐ **A third `C-1` endpoint found:** Q19 —
+*"DISTANCE_REJECTED / DISCREPANCY_ADOPTED … **scalar = policy decision instrument**"* — which
+answers the re-scoped question in one direction. **Still not adjudicated.**
+`G-17` confirmed `FIREWALL-LIMITED` (`0080`/`0094`/`resume.py`: 0 matches each).
+`G-16` strengthened: *"no file in the verification tree **defines or constructs** `v1.1`"*.
+`G-05`: ⭐ **`ℛ_req(Q,Γ)` as a form is written nowhere in that lane** — a notation-provenance flag
+on my own register.
+
+### ⭐⭐ A challenge to `G-19`'s and `G-22`'s independence language
+
+`16-MASTER` **`G-13`** (`EXECUTED`, CRITICAL): *"**Primary and secondary corpora are interleaved and
+mutually citing after ~Step 258**, within minutes … **Agreement between them is not independent
+corroboration.**"* **Every execution `G-19` found is after Step 258.**
+
+| claim | standing |
+|---|---|
+| *"none of the executing documents cites the commission"* | ✅ **stands** — a per-document check |
+| *"convergence, not compliance"* / *"independently"* | ⚠️ **qualified** — non-citation of *this* commission does not establish lane independence |
+
+⛔ **Adopted wording:** *"executed without reference to the commission"* replaces *"independently"*
+for anything after ~Step 258.
+
+### ⭐⭐ The register census — and two colliding ID schemes
+
+**~46 registers in `verification/` alone**, ≥10 ID prefixes. **Two prefixes carry two
+non-corresponding schemes:**
+
+| prefix | scheme A | scheme B |
+|---|---|---|
+| **`TG-`** | `THEORY-GAP-REGISTER` `TG-01…TG-21` (adjudicated) | `09-TRANSFORMATION-GAP` `TG-1…TG-7` (1-digit) |
+| **`C-`** | `independent/11` `C-01…C-17` (adjudicated) | `spec/AC` `C-001…C-097` — *"None is reconciled; none is adjudicated"* |
+
+⭐⭐ **The Ω overload is registered TWICE, under both schemes:** `TG-15` (*"the most dangerous naming
+collision found"*) **and** 1-digit `TG-2` (*"`Ω` is overloaded across three readings"*, `UNRESOLVED`,
+CRITICAL). ⇒ **`G-22` re-derived a finding the estate already held twice.**
+
+⚠️ And `gap-discovery/glyph-register/README.md` lists the worst-collided glyphs as
+**`𝒦/𝕂/K` (7) · `Π` (6) · `Θ` (5) · `Σ` (4) · `Γ` (4)** — **`Ω` is not in it.** The glyph register
+and `TG-15` **disagree about which glyph is worst.** Recorded, not adjudicated.
+
+### Revised totals
+
+**CLOSE 5** (`G-06` `G-07` `G-09` `G-15` `G-16`-half) · **RE-SCOPE 4** (`G-01` premise refuted, `G-05`,
+`C-1`, `G-21`) · **SPLIT 1** (`G-23`) · **reclassify 1** (`G-17`) · **KEEP OPEN 3** (`G-11` `G-12` `G-04`).

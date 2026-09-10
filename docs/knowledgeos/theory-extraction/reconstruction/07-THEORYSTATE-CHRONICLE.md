@@ -481,3 +481,55 @@ $$\boxed{\textbf{Four independent diagnoses of one mechanism. It is now a corpus
 **Promoted** — on four instances across three lanes and two authors, including one the corpus made
 about itself before this reconstruction began. **The claim promoted is narrow:** *in this estate,
 work is duplicated because lanes do not enumerate each other* — **not** any claim about the theory.
+
+## ⚠️ `G-00` amendments — and one qualification that reaches back into `G-19`
+
+The verification-lane register inventory (484 files) amended three `G-00` rows. Two matter to
+`TheoryState(t)`:
+
+### `Zero`'s ① state at `t` is far worse than `G-01` supposed
+
+`025d` (2026-08-27 18:31) carries **six non-mutually-reduced forms of `Zero` in one document** — a
+set of pairs · a set of requirements · ⭐ **a 4-tuple object that is no longer a function of
+`(K,G,EC)` at all** · a two-argument `Zero(K_t,EC_t)` with **`G` dropped** · `Zero(K,K*,EC)` with an
+**unconstructed `K*`** replacing `G` · and a `⊕`-fold whose `⊕` **collides** with evidence
+combination from `25C`.
+
+$$\boxed{\textbf{The dropped argument is } G \textbf{, not } EC. \textbf{ And } \mathcal S \textbf{ went } 9\to10\to11 \textbf{, never re-declared.}}$$
+
+⭐ **`Satisfied` is simultaneously an element of `𝒮`, a set-valued function, and a predicate — three
+types under one name, in one document.** The same defect as `Ω-1 × Ω-2`, and already on record.
+
+### `KAID`'s ③ adjudication exists, and it is a clean one
+
+`025s` §43 **explicitly and citedly supersedes** `025i` §37's *"provisional"* `KAID` —
+*"**the stable semantic identity of an epistemic meaning within a bounded context**"*, with
+`KAID ≠ RecordID ≠ EntityID` and the three-level split **resolved**. Described in the verification
+lane as *"one of the few honest supersessions in the batch."* **`G-06` closes**; its residue
+(*"`Context` … its granularity determines everything"*) folds into an existing gap.
+
+## ⛔ A qualification that reaches back
+
+`16-MASTER` **`G-13`**: *"**Primary and secondary corpora are interleaved and mutually citing after
+~Step 258**, within minutes … **Agreement between them is not independent corroboration.**"*
+
+**Every execution `G-19` found (20:47, 21:05, 21:13) is after Step 258.** The per-document facts
+stand — none cites Step 268, none is cited back. **The word *"independently"* does not.**
+
+⛔ **Adopted:** *"executed without reference to the commission"* — checkable per document —
+**replaces** *"independently"* for this interval. `G-22`'s `AF-003` corroboration is dated
+2026-08-28, **before** the interleaving, and is less affected; recorded, not resolved.
+
+## ⭐⭐ And the pattern's final form
+
+The estate holds **~46 registers** with **≥10 ID prefixes**, and **two prefixes carry two
+non-corresponding schemes** (`TG-01…21` vs `TG-1…7`; `C-01…17` vs `C-001…097`).
+
+**The Ω overload was already registered TWICE** — as `TG-15` (*"the most dangerous naming collision
+found"*) **and** as 1-digit `TG-2`. Meanwhile `glyph-register/README.md` names the worst-collided
+glyphs as `𝒦/𝕂/K` (7) · `Π` (6) · `Θ` (5) · `Σ` (4) · `Γ` (4) — **and `Ω` is not among them.**
+
+> **Three registers hold the same finding under three identifiers and disagree about its severity.**
+
+That is the promoted mechanism at its limit: not merely that lanes fail to enumerate each other, but
+that **the identifier space itself collides**, so even a diligent cross-reference can miss.

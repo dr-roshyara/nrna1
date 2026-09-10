@@ -1328,3 +1328,39 @@ other open gap is now either a bounded lookup or a normative question.
 
 **Resumes now.** `G-00` was the last meta-investigation; four consecutive bounded gaps have run.
 The global chronological stream restarts at `G-12` blocks 1, 2, 4, 5.
+
+## CHECKPOINT 015 — ADDENDUM after the register inventory
+
+The bounded worker's inventory of `verification/` (**484 files**) **amended three of my own G-00
+rows**, all re-verified at source before adoption.
+
+| | |
+|---|---|
+| ⛔ **`G-01`** | premise **REFUTED**, and it asked about **the wrong argument**: `025d` carries **six irreconcilable `Zero` forms**; **`G`** is the dropped argument, not `EC`; `𝒮` went **9→10→11, never re-declared**; and **`Satisfied` is three types under one name** |
+| ⭐ **`G-06`** | **RE-SCOPE → CLOSE.** `025s` §43 **citedly supersedes** `025i` §37 — *"the stable semantic identity of an epistemic meaning within a bounded context"*. Residue folds into `16-MASTER` `G-15` |
+| ⚠️ **`G-07`** | closure stands, **reason corrected**. `TG-02` is *"`Sufficient` has no signature"* and is **still OPEN**; the six-component vector is `step-001` §3's, recorded **LOST/UNACCOUNTED** |
+
+### ⛔ A qualification reaching back into `G-19` and `G-22`
+
+`16-MASTER` **`G-13`**: *"corpora are interleaved and mutually citing after ~Step 258 … **Agreement
+between them is not independent corroboration.**"* All three `G-19` executions are after Step 258.
+**The per-document non-citation facts stand; the word *"independently"* does not.**
+⛔ **Adopted wording: *"executed without reference to the commission."***
+
+### ⭐⭐ The identifier space itself collides
+
+**~46 registers · ≥10 prefixes · two prefixes carrying two non-corresponding schemes**
+(`TG-01…21` vs `TG-1…7`; `C-01…17` vs `C-001…097`). **The Ω overload was already registered twice**
+— `TG-15` and 1-digit `TG-2` — while `glyph-register/README.md` ranks the worst glyphs
+`𝒦/𝕂/K`(7) `Π`(6) `Θ`(5) `Σ`(4) `Γ`(4) and **omits `Ω` entirely**.
+
+> **Three registers hold one finding under three identifiers and disagree about its severity.**
+
+**Method rule 4 adopted:** *cross-referencing other lanes only works if identifiers mean one thing.*
+**Check the scheme, not just the ID.**
+
+### Revised totals
+
+**CLOSE 5 · RE-SCOPE 4 · SPLIT 1 · reclassify 1 · KEEP OPEN 3.** Registry **86 → 91 rows / 18 → 19
+objects**; edges **169 → 180**. `EKS-52` amended with the identifier-collision cause.
+**Next unchanged: `G-12`.**

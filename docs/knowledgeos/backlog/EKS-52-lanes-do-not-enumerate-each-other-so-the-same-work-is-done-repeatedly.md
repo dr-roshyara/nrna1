@@ -67,6 +67,33 @@ A one-line omission produced a systematic blind spot.
 * **Not** that the theory is affected. Every finding here is about **where knowledge is filed**, not
   about what is true.
 
+## ⭐ Amendment, same day: the problem is bigger, and it has a second cause
+
+A systematic count of one workstream's registers found **~46 separate lists of open items**, using
+**at least ten different identifier prefixes**. Two of those prefixes are **used by two different
+lists at once**:
+
+* one prefix numbers a 21-item adjudicated list **and** a 7-item list about a different subject;
+* another numbers a 17-item adjudicated list **and** an 88-item list explicitly marked *"none is
+  reconciled; none is adjudicated."*
+
+**The consequence is worse than the first cause.** With one shared identifier space, a diligent
+person who cross-references before opening a question will still miss the answer, because the same
+identifier points at two things and the same finding carries two identifiers.
+
+The naming collision this ticket's sibling (`EKS-51`) reports was in fact **already recorded twice**,
+under two identifiers, in two lists — and a **third** list ranks the severity of that same class of
+problem and **does not include that symbol at all**. Three lists, one finding, three identifiers,
+disagreeing severities.
+
+**So requirement 2 above is not sufficient on its own.** Checking other lists only works if
+identifiers mean one thing. Add:
+
+| | requirement |
+|---|---|
+| **5** | **One identifier space, or explicit namespacing.** An identifier that names two things names neither — the same defect already recorded twice in the ticket numbering itself |
+| **6** | **A single index of the lists**, before any attempt at a single index of the items. Nobody currently knows how many open-item registers exist; the count above took a dedicated search |
+
 ## Related
 
 | | |
