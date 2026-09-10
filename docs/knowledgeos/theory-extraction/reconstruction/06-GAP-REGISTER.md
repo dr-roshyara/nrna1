@@ -1040,3 +1040,83 @@ problem four days later with a formulation that has never been run.
 **3.** `V_Sat` × `𝒮_sat` incomparability — unresolvable without a decision; none exists.
 **4.** `EvalRequirement ≟ EvalReq` — `IDENTITY UNWITNESSED`.
 **5.** `Det_r`'s body — **`FIREWALL-LIMITED`**, not `MISSING`.
+
+---
+
+# ⭐⭐⭐ G-12 — DISPOSITION: the interval reconstructed. **The "re-foundings" concept is WITHDRAWN.**
+
+**Record:** `…/gap-discovery/g-12-interval-reconstruction/01-G-12-INTERVAL-026-268.md`
+
+## Census
+
+**265 files · 240 step numbers · 3 missing (`217`, `229`, `268`) · 21 duplicated.**
+⚠️ My first pass reported `224` missing — a **greedy regex** captured `182` from
+`…step_224_…at-step-**182**.md`. Corrected; now agrees with the corpus's own four records.
+
+## ⭐⭐⭐ The finding: declaration ≠ transmission
+
+| `step-025z` | 2026-08-28 **10:13:25** |
+| `step-026`, third line | **10:14:06** — *"**We continue from 25Z.**"* |
+
+Across all 265 files: `Sat` **0** · `EvalReq` **0** · `R_G` **0** · `Γ_G` **0** · `EC_G` **0** ·
+`ContractSpecific` **0** · `Derive(H,Ω,EC)` **0** · `EpistemicContract` **0**.
+`025` cited by name **once**, at `step_251`, as a **table row**. *(A second apparent hit at
+`step-152` is `C-025`, a constitution clause — discarded.)*
+
+$$\boxed{\textbf{Continuity DECLARED by name, 41 seconds later — and the apparatus NOT CARRIED.}}$$
+
+## ⛔ WITHDRAWAL — all six re-founding candidates declare continuity
+
+| `026` *"We continue from 25Z"* | `031` *"Steps 1–30 developed… Step 31 is the first deliberate attempt to turn that architecture into a formal mathematical system"* |
+| `183-pre` *"substantially aligned … should NOT be promoted"* | `186-pre` *"the distinctions **we have already established**"* |
+| `230` reduce *"the apparently large architecture"* | `262` *"We can now **continue**, but there is an important **correction**"* |
+
+**Not one declares a restart. Every discontinuity in this corpus is MEASURED, never DECLARED.**
+The chronicle's five-re-founding table is struck in place and replaced.
+
+## Corrections to my own registry, from an independent evidence sweep
+
+| | |
+|---|---|
+| ⛔ **`K_v1`** | **not the birth.** `K_t` is a **9-tuple** at `step-028` **10:15:30** — `(Evidence, Assertions, Arguments, Conflicts, Uncertainty, Models, Rules, Provenance, TemporalState)`. `031`'s **7-tuple** arrives **7 minutes later** framed only as *"We can now define a knowledge state:"*, citing `step-028` **zero times**. ⭐ **A silent arity reduction 9→7 in seven minutes** |
+| ⛔ **`EC` is three homonyms** | `032` = **`EpistemicClaim`**, 11-tuple · `117` = an **engineering-change** object, 8-tuple · and the 025-series **`EpistemicContract`**, which occurs **0 times in steps 026–099 and 0 times in 100–154** |
+| ⛔ **`Γ` has a fourth sense** | `053` §53.9: `Γ_A = (Commands_A, Queries_A, Events_A, Observations_A)` — the **published contract of a bounded context**. Beyond `G-02`'s three |
+| ⛔ **`Ω` has a further sense** | `049` §49.8: `C : Ω → {True,False}` — Ω as a **claim's domain**. `G-22`'s inventory did not reach 026–099 |
+| **`Zero`, `Δ_t`** | ⛔ **never defined in the interval.** A define/let/`:=` search near `Zero` returns **0 hits in 80 files**; `Δ_t` occurs **once**, inside a formula whose `where:` clause defines only `α_t` |
+
+## The interval's shape
+
+**Eight of nine objects born in one morning (10:14–12:26, steps 026–099)**, then silence —
+`Γ` **157** files · `Ω` **155** · `EC` 135 · `Δ_t` 117 · `τ` 112 — then a return in 183–267, then a
+**terminal staircase**: `Req` s234 · `Δ_t` s240 · `EC` s251 · `Determination` s252 · `τ` s263 ·
+`Zero` s264 · `K_t` s265 · `Ω` s266 · `Γ` s267.
+
+⭐ **Steps 100–154 (60 files) contain ZERO occurrences of `Zero`, `K_t`, `Ω`, `τ`, `Δ_t`, `Γ`** —
+independently verified. The one `EC` there is the engineering-change homonym.
+
+## `Update` — 10 signatures, arity 2–4, zero cross-references
+
+Corroborates `16-MASTER` `G-16` (*"45 RHS strings, 11 named functions, arities 1–6"*) independently.
+
+## The inherited codomain defect
+
+`Status` (025e, **named never defined**) · `Determination = f(Claim,Evidence,Method,Context)`
+(155a, **`f` unnamed, no codomain**) · `EvalReq` (09-06, **no codomain**).
+**Three objects, three eras, three lanes, the same defect — noticed by none of them.**
+
+## `Determination` is not born at 155a
+
+*"**Our previous architecture identified `Determination`**"* ⇒ retrospective import. Its
+corpus-wide birth is **`reviews/`, 2026-08-19 — a governance lane, nine days earlier.**
+
+## Terminal classifications
+
+`Ω` **E** · `Sat`/`EvalReq` **C** (and **absent from the interval entirely**) · `Determination`
+**E** · `Update` **E** · `K_t` **B** (sources outside the interval) · **the interval itself: A**,
+structurally.
+
+## G-12 status
+
+**CLOSED for structure** — births, silences, returns, deaths and object identity are mapped for
+9 objects over 265 files. ⚠️ **NOT closed for semantics**: ~180 files remain unread line-by-line,
+and this reconstruction is mechanical + targeted, not exhaustive. Re-scoped accordingly.

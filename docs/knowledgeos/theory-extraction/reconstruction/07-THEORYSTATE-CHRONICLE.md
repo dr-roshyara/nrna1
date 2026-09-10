@@ -195,7 +195,27 @@ model** also had"*, and sources itself to *"prior conversation context and uploa
 records"*. Recorded as `RETROSPECTIVE CITATION`, and its own referent is **`UNRECORDABLE` from the
 readable corpus**.
 
-## ⭐ Re-foundings — five now identified, each preserved
+## ⛔⛔ Re-foundings — THE WHOLE TABLE BELOW IS WITHDRAWN (G-12, 2026-09-10)
+
+**Every candidate was read at its own opening. NOT ONE DECLARES A RESTART.**
+
+| candidate | its own words | corrected |
+|---|---|---|
+| **026** | ⭐ *"**We continue from 25Z**"* — 41 s after `025z` | **CONTINUITY DECLARED** — and it is `026`, not `031`, that drops the 025 apparatus |
+| `031` | *"Steps 1–30 developed the conceptual mathematical architecture. Step 31 is the **first deliberate attempt to turn that architecture into a formal mathematical system**"* | **CONTINUITY — a MODE CHANGE** |
+| `183-pre` | *"**substantially aligned** … but some … **should NOT be promoted**"* | **SELECTIVE_REJECTION**, not replacement |
+| `230` | reduce *"**the apparently large architecture**"* to a kernel | **REDUCTION** |
+| `262` | *"We can now **continue**, but there is an important **correction**"* | **CORRECTION** |
+| `273` | — | unchanged this pass |
+| *(09-06)* | *"a **strong starting point**"*, inherits twice | **SELECTIVE INHERITANCE** (`G-25`) |
+
+$$\boxed{\textbf{Every discontinuity in this corpus is MEASURED, never DECLARED.}}$$
+
+> **The corrected mechanism, one thing not five events: apparatus is lost across DECLARED
+> continuities. Authors say they continue, and mean it; the objects do not travel with the
+> declaration.**
+
+### ~~The superseded table, preserved~~
 
 | # | where | what changed | classification |
 |---|---|---|---|
@@ -664,3 +684,57 @@ codomains proven distinct rather than merely unmapped.
 
 ⛔ **No `TheoryState(t)` changes.** All three corrections are to **my reconstruction**. `Sat_c`'s
 implementation is used only from `t`=09-02 forward and is never back-propagated to `025e`.
+
+---
+
+# STATE CHANGE — `G-12`: the 026–268 interval reconstructed, 2026-09-10
+
+**Record:** `…/gap-discovery/g-12-interval-reconstruction/01-G-12-INTERVAL-026-268.md`
+
+## The interval's shape, mechanically derived
+
+**265 files · 240 step numbers · 3 missing (217, 229, 268) · 21 duplicated.**
+
+$$\boxed{\textbf{Eight of nine tracked objects are born in ONE MORNING — 10:14 to 12:26 on 2026-08-28, steps 026–099.}}$$
+
+Then **silence**: `Γ` 157 files · `Ω` 155 · `EC` 135 · `Δ_t` 117 · `τ` 112 · `Zero` 74.
+Then a **return** in the 183–267 band. Then a **terminal staircase** — nine objects dying one per
+step: `Req` s234 · `Δ_t` s240 · `EC` s251 · `Determination` s252 · `τ` s263 · `Zero` s264 ·
+`K_t` s265 · `Ω` s266 · `Γ` s267.
+
+**This is not gradual evolution.** It is introduction, silence, return, extinction.
+
+## ⭐⭐⭐ The finding: declaration ≠ transmission
+
+| `step-025z` | **2026-08-28 10:13:25** |
+| `step-026`, third line | **10:14:06** — ⭐ *"**We continue from 25Z.**"* |
+
+And across all 265 files: `Sat` **0** · `EvalReq` **0** · `R_G` **0** · `Γ_G` **0** · `EC_G` **0** ·
+`ContractSpecific` **0** · `Derive(H,Ω,EC)` **0** · `EpistemicContract` **0**. `025` cited by name
+**once**, at `step_251`, two days later, as a **table row**.
+
+$$\boxed{\textbf{Continuity DECLARED by name, 41 seconds later — and the apparatus NOT CARRIED.}}$$
+
+## The codomain defect is inherited across three eras and never noticed
+
+| `Status` | `025e`, 08-27 | **named, never defined** |
+| `Determination = f(Claim,Evidence,Method,Context)` | `155a`, 08-28 | **`f` unnamed, no codomain** |
+| `EvalReq(K,r,EC,Γ)` | `theory-part-06`, 09-06 | **no codomain** (`𝒱` only `TYPE-CONSTRAINED`) |
+
+## `Determination` is not born at 155a
+
+`155a` §155A.20: *"**Our previous architecture identified `Determination`.**"* ⇒ retrospective
+import. Its corpus-wide birth is **`reviews/`, 2026-08-19 00:57 — a GOVERNANCE lane, nine days
+earlier.** `155a` carries the *how* as an explicit **`Method` argument**; `Det_r` (09-06) carries it
+as a **function-name index** — same structure, **zero citation**, `IDENTITY UNWITNESSED`.
+
+## `Update` — the interval's most overloaded operation
+
+**Ten distinct signatures, arity 2–4, each in 1–3 files, zero cross-references.** Corroborates
+`16-MASTER` `G-16` (*"45 RHS strings, 11 named functions, arities 1–6"*) from an independent census.
+
+## Two of my own regex defects, caught before publication
+
+`224` reported missing — a **greedy** `.*step[-_](\d{3})` captured `182` from
+`…step_224_…at-step-**182**.md`. And a second `step-026` exists (08-27 16:29), a work-programme
+document: **one step number, two unrelated documents, a day apart.**
