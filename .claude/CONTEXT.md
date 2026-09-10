@@ -1,4 +1,33 @@
-**Updated:** 2026-09-11 (latest) — **MD-098 EXECUTED — GLOBAL FRONTIER DETERMINATION + KERNEL CORPUS
+**Updated:** 2026-09-11 (latest) — **MD-099 EXECUTED — SESSION 1 / SESSION 2 KERNEL-REVIEW CLUSTER,
+SEQUENTIAL CHRONOLOGICAL READING COMPLETE (112 files), CHECKPOINT.** Per the user's explicit
+methodological correction, read all 112 files of `docs/knowledgeos/reviews/kernel/session1/` (47) and
+`session2/` (65) directly, one by one, in true global chronological order (interleaved by exact file
+mtime) — no parallel extraction agents for primary interpretation. **Central structural discovery**:
+Session 1's own source corpus is, almost file-for-file, the same `brainstorming/kernel/` directory
+this reconstruction already read in full across MD-093–097 — this cluster is a **third independently-
+conducted analytical layer** over the same primary corpus (Session 1 extracts via thesis-first
+sampling, disclosed at only ~3–5% of underlying text; Session 2 adversarially reviews Session 1's own
+40 findings). Recorded as methodological cross-validation under the standing wording correction, not
+new primary evidence; the reviewed programme's nine Kernel formulations corroborate, not extend, this
+reconstruction's own 33+-entry Kernel Identity Ledger. **Central new finding, native to this cluster's
+own second-order apparatus**: Session 2 discovered mid-review (`X-006`) that one Session-1 finding
+(`S1-F028`) extracts, as independent corpus evidence, **Session 2's own prior adjudication-track
+output** — a self-referential laundering loop, caught before consumption, containing the same K-1
+structure candidate this reconstruction has tracked since MD-094. This reconstruction's own prior
+citations are unaffected (read from the primary file directly); K-1 remains `IDENTITY UNRESOLVED`.
+Also recorded: a thirteen-mechanism dissolution taxonomy (GENUINE CONTRADICTION: 0, two constitutional
+tensions surviving — ziran vs `INV-KOS-IDENTITY-001`); eight method observations about the reviewed
+programme's own discipline; a reported (not independently re-verified) `EvidenceLinks`-resolves-
+Entity/VO-dilemma finding; the reviewed programme's own final recommendation (DEFER, pending a
+"13:47" reconstruction test and four denotation lookups, neither ever run). No frozen artifact
+modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and
+`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-099-session1-session2-kernel-review-completion/` (4 files). **MD-099
+status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: a fresh global frontier determination
+across `phase_measure_theory/` (894 files), `reviews/synthesis/` (305 files), `verification/` excl.
+`zero-algebra/` (496 files), `research/`'s three subdirectories (69 files) — none read at all yet.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-098 EXECUTED — GLOBAL FRONTIER DETERMINATION + KERNEL CORPUS
 CLASSIFICATION/COORDINATION LAYER (9 files), CHECKPOINT.** Performed the fresh global chronological
 frontier determination across the remaining designated lanes (`phase_measure_theory/`, `synthesis/`,
 `verification/` excl. `zero-algebra/`, `reviews/`, `research/`) that MD-097 named. Corrected a scope

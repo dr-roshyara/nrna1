@@ -3550,3 +3550,41 @@ frontier, named, not begun: `docs/knowledgeos/reviews/kernel/session1/` (47 file
 genuine ~73-hour gap at 21:24 08-25 → 22:00 08-28) — 112 files together, one continuous research
 programme, warranting dedicated parallel extraction agents given its scale rather than direct
 reading.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-099 — Session 1 / Session 2 Kernel-Review Cluster: Sequential
+Chronological Reading, Complete — EXECUTED, CHECKPOINT.** User's explicit methodological correction,
+accepted without disagreement: read all 112 files directly, main process only, true global
+chronological order (session1/session2 interleaved by exact file mtime), no parallel extraction agents
+for primary interpretation. A wording correction also accepted: "independently performed methodological
+cross-validation under a separate reconstruction procedure, with common corpus provenance" replaces
+"independent corroboration" going forward (MD-098's own text left unedited). **Central structural
+discovery**: Session 1's own source corpus is, almost file-for-file, the same `brainstorming/kernel/`
+directory this reconstruction already read in full across MD-093–097 — a **third independently-
+conducted analytical layer** over the same primary corpus (Session 1 extracts via thesis-first
+sampling, disclosed at only ~3–5% of underlying text read; Session 2 adversarially reviews Session 1's
+own 40 findings). Recorded as methodological cross-validation, not new primary evidence; the reviewed
+programme's nine Kernel formulations corroborate, not extend, this reconstruction's own 33+-entry
+Kernel Identity Ledger. **Central new finding, native to this cluster's own second-order apparatus**:
+Session 2 discovered mid-review (`X-006`) a full self-referential laundering loop — one Session-1
+finding (`S1-F028`) extracts, as independent corpus evidence, Session 2's own prior adjudication-track
+output, saved earlier in that conversation as a file inside the research corpus, containing the same
+K-1 structure candidate (`KnowledgeAggregate`+`ConflictRecord`, Verification Port as sole inbound gate)
+this reconstruction has tracked since MD-094. This reconstruction's own prior citations are unaffected
+(read from the primary file directly, not via a review-of-a-review); K-1 remains exactly where
+MD-094–098 left it: `IDENTITY UNRESOLVED`. Also recorded: a thirteen-mechanism dissolution taxonomy
+applied across the whole Session-1 record (GENUINE CONTRADICTION: 0, with two constitutional-altitude
+tensions surviving — ziran's "self-so" identity vs `INV-KOS-IDENTITY-001`'s "assigned, never derived,"
+and its composition with `S1-F016`'s identity-demotion finding); eight method observations (`M-1`–`M-8`)
+about the reviewed programme's own extraction discipline; a reported (not independently re-verified)
+reading of `EvidenceLinks` resolving the corpus's own "central unresolved" Evidence Entity-or-Value-
+Object question as a false dichotomy; and the reviewed programme's own final recommendation — DEFER
+Kernel implementation, pending two cheap, never-yet-run actions (a "what did we know at 13:47?"
+reconstruction test; four denotation lookups). No frozen artifact (MD-024–098) modified; no object
+merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and `verification/zero-algebra/`
+never accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-099-session1-session2-kernel-review-completion/` (4 files). **MD-099 status: EXECUTED. CHECKPOINT.**
+Next chronological frontier, named, not begun: a fresh global frontier determination across
+`phase_measure_theory/` (894 files), `reviews/synthesis/` (305 files), `verification/` excl.
+`zero-algebra/` (496 files), `research/`'s three subdirectories (69 files) — none read at all yet.
