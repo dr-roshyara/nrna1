@@ -1,4 +1,39 @@
-**Updated:** 2026-09-10 (latest) — **MD-081 EXECUTED — RESPONSIBILITY RECONSTRUCTION: `EC.Rules`/
+**Updated:** 2026-09-10 (latest) — **MD-082 EXECUTED — ACCEPTANCE/SUFFICIENCY SEMANTICS
+BIRTH-AND-EVOLUTION, AND A CORRECTION TO THE "NEVER WIRED" FINDING, HARD STOP.** User identified a
+real methodological error in MD-081 (conflating computational completeness with semantic existence,
+treating `Policy_Det` as a data point rather than a thread to trace through time) and redirected to a
+birth-and-evolution investigation with a mandatory three-way separation (object identity / semantic
+responsibility / computational completeness). **Central finding — a correction to five prior phases**:
+`Det(K,p,EC,Γ)` (Def 6.2, §6.27), `Δ_p` (§6.28), and `Zero_p`/`Zero(K,EC,Γ)` (§6.73–74) — all in
+`theory-part-06-...md`, the same file as `Det_r`/`EvalReq` — are defined using the exact 3-argument
+symbol `Sat(K,r,Γ)` that `[Def 6.18]` equates to `Det_r(EvalReq(K,r,EC,Γ),EC)`, with no rival
+same-symbol definition anywhere else in the corpus. **The 3-argument `Sat` is not "never wired to
+`Δ`/`Zero`," as MD-076 first claimed and MD-077/078/079/081 each repeated without re-checking — it is
+wired, within Part VI itself, through one continuous same-symbol chain.** Recorded forward; MD-076–081
+text not edited. Scope of the correction: semantic/definitional (`RECONSTRUCTED`, strongest same-object
+case in the family), not computational — Theorem 6.1's own proof treats `χ_EC(Sat(K,r,Γ))` as an
+already-available fact regardless of how determined, never invoking `Det_r`/`EvalReq` by name.
+**Semantic connection present; computational completeness still absent.** Also found: `Policy_Det`
+(§6.43) is confirmed, by direct search for its own exact phrasing, to occur nowhere else in the corpus
+— born, illustrated, and abandoned in one section, never completed. **Three-way classification applied
+throughout**: every genuine formal-object candidate found across five phases of searching (`Warrant`,
+`Assessment`/`Verdict`, `Admissible`/qualification-rule/evaluation-rule-`R`, `Policy_Det`) lands in the
+same cell — `defined`, not `computable`, not `empirically validated` — independently rediscovered ≥5
+times across four lanes by non-cross-citing authors. **Terminal classification, three dimensions kept
+separate**: `Req`/aggregation/separation remain `A` (aggregation now confirmed `computable given Sat's
+value by any route`); `EC`/`EC_t` remains `C`; `EC.Rules`/`standard`/`AcceptanceCondition`:
+`UNRESOLVED`/`SAME`(responsibility, source-confirmed link to `Policy_Det`)/`not defined`; `r`/`Γ`
+unchanged; `Det_r`/`EvalReq`: `D`(object, now with a `RECONSTRUCTED` downstream link)/`B`
+(`REDISCOVERED`)+`WIRED but not COMPUTED` (new). No new backlog ticket — the wiring correction is
+itself the deliverable. No construction; no mapping invented; no adoption; no governance decision; no
+frozen artifact modified; MD-080/081 not reopened; `theory-extraction/` never accessed. Verified both
+consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-082-acceptance-semantics-birth-evolution-and-internal-wiring-correction/` (5 files). **MD-082
+status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind from MD-080/081 —
+a human governance decision among the three named options, now resting on the most precise statement
+this reconstruction has produced of what is and is not computationally open.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-081 EXECUTED — RESPONSIBILITY RECONSTRUCTION: `EC.Rules`/
 `standard`/`Acceptance`, `r`, `Γ`, `EC` EVOLUTION, HARD STOP.** User accepted MD-080 as bounded, not
 terminal, and redirected to the remaining unresolved responsibilities. Scoping clarification raised
 and accepted before execution: reuse MD-078/079/080's own object-identity evidence for `r`/`Γ`/`EC`,
