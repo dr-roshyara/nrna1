@@ -1,32 +1,38 @@
-**Updated:** 2026-09-10 (latest) — **MD-096 EXECUTED — KERNEL DOMAIN-DISCOVERY BURST 4 (50 files),
-CHECKPOINT.** Continued `kernel/`'s own chronology from MD-095's own recommended frontier
-(2026-08-25 10:18–19:41, files 112–169, a full day's continuous burst). Seven parallel extraction
-agents read all 50 primary-content files in full (8 further control/classification artifacts
-identified, not yet read), applying the document-first unit of investigation (DOCUMENT → ALL OBJECTS
-→ CHRONOLOGICAL THEORY STATES → RELATIONSHIPS → RECONCILIATION) and the four-lens discipline.
-**Central K-1 finding**: `KnowledgeAggregate` and `ConflictRecord` co-occur together for the first
-time since MD-094's File 44 birth — sibling nodes in a "Kernel as the Boundary" diagram — the
-strongest lexical match found anywhere in the corpus for the K-1 structure's own origin, but no
-Verification-Port gate and no structural match; classification held at `IDENTITY UNRESOLVED`, per
-explicit instruction not to adjudicate merely because labels recur, now named as the priority target
-for a future K-1 adjudication phase. **New homonym finding**: an embedded, corpus-native "What is
-Knowledge?" survey (99+151 documents) produces its own `K-1`–`K-11` Knowledge-definition registry — a
-third independent `K-`-prefixed labeling system, alongside a fourth (`K-M0`/`K-M1`/`C-K1`), neither
-merged with this reconstruction's own tracked K-1 senses. **Two full propose→challenge→correct arcs
-traced**: the Fagin/Halpern possible-worlds Kernel-candidacy cluster (proposed, critiqued in nine
-points, explicitly retracted — "Kernel preserves; regimes reason"); and the "Knowledge Measure
-Theory" cluster (v0.1→v0.2→an unqualified overclaim episode→systematic rejection with a concrete
-Brownian-motion counterexample). `C-15` corroborated three further times, still `IDENTITY UNRESOLVED`
-against `C-14`–`C-18`. The Knowledge-State/Knowledge-Space tuple family extended by at least fourteen
-further mutually-unreconciled forms (now 28+ across MD-095–096). The tracked F4 formal family
-confirmed absent across all 50 files — extends continuous absence across the first 161 files of
-`kernel/`. Two duplicate file pairs confirmed byte-identical via `diff`/`md5sum`; two internal
-self-duplications and two documentary gaps found and reported verbatim. No frozen artifact modified;
-no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and
-`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
-trace: `14_decision-log/MD-096-kernel-domain-discovery-burst-4/` (4 files). **MD-096 status:
-EXECUTED. CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own final two clusters
-(2026-08-27, 2 files; 2026-09-02, 1 file), which would close out `kernel/` entirely.
+**Updated:** 2026-09-11 (latest) — **MD-097 EXECUTED — `kernel/` CORPUS-CONVERGED.** Closed out
+`kernel/` entirely: read the directory's final 2026-08-27 cluster (2 files) and its final 2026-09-02
+file. **Central finding**: `20260902-185000_review-yes12345.md` — this reconstruction's own MD-021
+Phase 4 record's "sole `epistemic_knowledgeos`/C2 candidate across both corpora," cited again in
+MD-085 — is confirmed via `md5sum`/`diff` **byte-identical** to
+`20260825-192351-relational-logical-structure-as-core-mathematics-as-regimes.md` (already fully read
+in MD-096) and its own known `-duplicate` sibling — a **third** physical copy of the same ordinary
+Kernel-domain-discovery essay, not distinct C2-defining content. Recorded forward per this
+reconstruction's own standing discipline; MD-021/MD-085's own text not edited, no register row
+touched; named as a governance question for a future, separately-authorized phase (whether the C2
+evidence-population investigation should be revisited). **`kernel/` corpus-completion statement**:
+all 172 files now read continuously in chronological order across MD-093 (39) → MD-094 (20) → MD-095
+(52) → MD-096 (50) → MD-097 (3) = 172. The tracked F4 formal family
+(`Sat`/`Det_r`/`EvalReq`/`EC`/`EC_t`/`Γ`/`Δ_t`/`≡_sem`/`⪯_cap`/`MinKer`/`v1.3`) confirmed absent
+across every one of `kernel/`'s 172 files — the strongest possible negative-boundary statement
+available for this family within this directory. K-1 structure candidate, Kernel Identity Ledger,
+Knowledge-State family, Zero-family split, and the `K-`-label homonym family all stand exactly where
+MD-096 left them; no merges performed. 8 control/classification artifacts within `kernel/` remain
+named, unread. No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/MD-097-kernel-domain-discovery-closure/` (4
+files). **MD-097 status: EXECUTED. `kernel/` is now corpus-converged for the multi-object method**
+(modulo the 8 named control artifacts) — a genuine terminal condition for this specific scope, per
+the master mission's own explicit stopping-condition list. **Next task, named, not yet performed**: a
+fresh global chronological frontier determination across the remaining designated lanes
+(`phase_measure_theory/`, `synthesis/`, `verification/` excluding `zero-algebra/`, `reviews/`,
+`research/`).
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-096 EXECUTED — KERNEL
+DOMAIN-DISCOVERY BURST 4 (50 files), CHECKPOINT.** Continued `kernel/`'s own chronology from MD-095's
+own recommended frontier (files 112–169, a full day's continuous burst). **Central K-1 finding**:
+`KnowledgeAggregate` and `ConflictRecord` co-occur together for the first time since MD-094's File 44
+birth — the strongest lexical match found for the K-1 structure's own origin, held `IDENTITY
+UNRESOLVED`. A third independent `K-1`–`K-11` Knowledge-definition registry found. Full trace:
+`14_decision-log/MD-096-kernel-domain-discovery-burst-4/` (4 files).
 
 **Previous block (2026-09-10, superseded above — stands as history): MD-095 EXECUTED — KERNEL
 DOMAIN-DISCOVERY BURST 3 (52 files), CHECKPOINT.** Continued `kernel/`'s own chronology from MD-094's

@@ -7151,3 +7151,42 @@ never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
 **MD-096 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
 frontier, named, not begun: `kernel/`'s own final two clusters (2026-08-27, 2 files; 2026-09-02, 1
 file), which would close out `kernel/` entirely.
+
+---
+
+## MD-097 — Kernel Domain-Discovery Closure (3 files, `kernel/`) — EXECUTED, `kernel/` CORPUS-CONVERGED
+
+Closed out `kernel/` in its entirety: read the directory's final 2026-08-27 cluster (2 files —
+Cavell multi-lens material; a well-typed Assertion/Provenance/History versioning model, neither
+mentioning `Kernel`/`K-1`/`ConflictRecord`/`KnowledgeAggregate`) and its final 2026-09-02 file.
+
+**Central finding**: `20260902-185000_review-yes12345.md` — the file this reconstruction's own
+MD-021 Phase 4 record identified as "the corpus's sole `epistemic_knowledgeos`/C2 candidate across
+both corpora," cited again in MD-085 — is confirmed, via `md5sum`/`diff`, **byte-identical** to
+`20260825-192351-relational-logical-structure-as-core-mathematics-as-regimes.md` (already fully read
+in MD-096, Kernel Identity Ledger entry #40) and its own already-known `-duplicate` sibling. This is
+a **third** physical copy of the same ordinary Kernel-domain-discovery essay, not distinct C2-defining
+content. Recorded forward per this reconstruction's own standing discipline; MD-021/MD-085's own text
+is not edited, and no classification-register row is touched — the finding is named as a governance
+question for a future, separately-authorized phase (whether the C2 evidence-population investigation
+should be revisited).
+
+**`kernel/` corpus-completion statement**: all 172 files now read continuously in chronological
+order across MD-093 (39) → MD-094 (20) → MD-095 (52) → MD-096 (50) → MD-097 (3) = 172. The tracked F4
+formal family (`Sat`/`Det_r`/`EvalReq`/`EC`/`EC_t`/`Γ`/`Δ_t`/`≡_sem`/`⪯_cap`/`MinKer`/`v1.3`) confirmed
+absent across every one of `kernel/`'s 172 files — the strongest possible negative-boundary statement
+available for this family within this directory. K-1 structure candidate, Kernel Identity Ledger,
+Knowledge-State family, Zero-family split, and the `K-`-label homonym family all stand exactly where
+MD-096 left them; no merges performed. 8 control/classification artifacts within `kernel/` remain
+named, unread.
+
+No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-
+extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-097-kernel-domain-discovery-closure/` (4 files).
+
+**MD-097 status: EXECUTED. `kernel/` is now corpus-converged for the multi-object method** (modulo
+the 8 named control artifacts) — a genuine terminal condition for this specific scope, per the master
+mission's own explicit stopping-condition list. Next task, named, not yet performed: a fresh global
+chronological frontier determination across the remaining designated lanes
+(`phase_measure_theory/`, `synthesis/`, `verification/` excluding `zero-algebra/`, `reviews/`,
+`research/`).
