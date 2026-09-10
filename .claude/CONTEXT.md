@@ -1,4 +1,36 @@
-**Updated:** 2026-09-10 (latest) — **MD-080 EXECUTED — RESPONSIBILITY-TRANSFER CHRONOLOGICAL
+**Updated:** 2026-09-10 (latest) — **MD-081 EXECUTED — RESPONSIBILITY RECONSTRUCTION: `EC.Rules`/
+`standard`/`Acceptance`, `r`, `Γ`, `EC` EVOLUTION, HARD STOP.** User accepted MD-080 as bounded, not
+terminal, and redirected to the remaining unresolved responsibilities. Scoping clarification raised
+and accepted before execution: reuse MD-078/079/080's own object-identity evidence for `r`/`Γ`/`EC`,
+perform genuinely new work only for genuinely new questions. **New work**: a ten-term successor
+search (`threshold`/`qualification`/`admissibility`/`evidence standard`/`decision rule`/`evaluation
+rule`/`contract rule`/`epistemic rule`/`criterion`/`policy`) across all seven lanes; a new
+responsibility-relation dimension layered onto `r`/`Γ`'s object-identity matrices; a full `EC₀→EC₉`
+evolution ledger; a role classification (evaluator/aggregator/acceptance-mechanism/consumer) for the
+`Sat` ecosystem. **Central finding**: `Policy_Det` (T21 Part VI §6.43 — the *same file* as `Det_r`/
+`EvalReq`) is the closest candidate found for `EC.Rules`'s own content — explicitly "belongs to the
+epistemic contract," but introduced as "for example," leaving "sufficient" undefined, exactly the
+threshold problem the very next section disowns in the source's own words. Further candidates
+(`Admissible`, the "qualification rule," "the evaluation rule `R`") were each independently,
+adversarially confirmed blocked by the verification lane's own prior governed audits (`NG-1`, `EG-2`).
+One genuinely complete, *executed* policy mechanism was found (`verification/
+POLICY-TYPE-RECONSTRUCTION.md`'s `Policy`/`Apply`, "all three components executed") — but governs
+action-authorization, a neighboring bounded context, not epistemic satisfaction. For `Γ`, separating
+object-identity from responsibility-relation shows its apparent four-way proliferation is better
+described as `SUBDIVIDED` (three later Parts narrow its general job into domain-specific contexts)
+than unstructured competition; `EvalReq`'s own bare usage remains unconnected to any subdivision — the
+actual, narrow blocker. For `r`, the two dimensions coincide cleanly (no divergence). **Terminal
+classification unchanged in verdict, sharpened in evidence**: A for `Req`/aggregation/separation; C
+for `EC`/`EC_t`; D for `EC.Rules`/`standard`/`AcceptanceCondition` (now the most richly evidenced D in
+the investigation); E for `r`/`Γ` object-identity; D/B (object/responsibility) for `Det_r`/`EvalReq`.
+No new backlog ticket — findings deepen `EKS-48`/`EKS-55` rather than surface a new problem. No
+construction; no mapping invented; no adoption; no frozen artifact modified; MD-080 not reopened;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-081-responsibility-reconstruction-ec-rules-r-gamma-ec/` (5 files). **MD-081
+status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind from MD-080 — a
+human governance decision among the three named options, now most fully evidenced.
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-080 EXECUTED — RESPONSIBILITY-TRANSFER CHRONOLOGICAL
 RECONSTRUCTION, HARD STOP.** User accepted MD-079 as valid but rejected its conditional necessity
 verdict as terminal, restating "reconstruct → reconcile → canonicalize" and redirecting to: what did
 the theory actually become over time, and where did this family's own semantic/computational

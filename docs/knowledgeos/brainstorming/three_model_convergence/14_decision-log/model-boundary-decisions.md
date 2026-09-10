@@ -6319,3 +6319,70 @@ named, not authorized: a human governance decision with three concrete options �
 permanently stipulated; authorize construction starting from `Standing(p)`/the executable alternatives
 per `EKS-55`'s own recommendation; or authorize construction of an entirely new object accepting no
 existing material maps without invention.
+
+---
+
+## MD-081 — Responsibility Reconstruction: `EC.Rules`/`standard`/`Acceptance`, `r`, `Γ`, `EC` Evolution
+
+**EXECUTED, HARD STOP, 2026-09-10.** User accepted MD-080 as a bounded historical finding, not
+terminal, and redirected to the remaining unresolved responsibilities: `EC.Rules`/`standard`/
+`Acceptance`/`AcceptanceCondition`, `r`, `Γ`, `EC`'s own evolution, and `Sat`'s own surrounding
+ecosystem. Before executing, a scoping clarification was raised and accepted: reuse MD-078/079/080's
+own already-verified object-identity evidence for `r`/`Γ`/`EC` rather than re-reading primary sources,
+performing genuinely new work only where a genuinely new question was posed.
+
+**New work performed**: a targeted, grep-first, read-on-hit search across all seven designated lanes
+for ten `EC.Rules`-successor candidate terms not yet checked by MD-080's own narrower sweep
+(`threshold`, `qualification`, `admissibility`, `evidence standard`, `decision rule`, `evaluation
+rule`, `contract rule`, `epistemic rule`, `criterion`, `policy`); the new responsibility-relation
+dimension applied to `r`'s and `Γ`'s already-established object-identity matrices; a full `EC₀→EC₉`
+chronological evolution ledger; a role classification (evaluator/aggregator/acceptance-mechanism/
+consumer) for the whole `Sat`-adjacent ecosystem.
+
+**Central finding**: `Policy_Det` (T21 Part VI §6.43 — the *same file* that introduces `Det_r`/
+`EvalReq`, immediately preceding the `Threshold` discussion) is the closest candidate found anywhere in
+this investigation for `EC.Rules`'s own missing content: `Policy_Det(p)={Established if sufficient
+independent support exists; Rejected if sufficient challenge exists; Conflicted if unresolved conflict
+remains; Unknown otherwise}`, explicitly stated to "belong to the epistemic contract" — but introduced
+as "for example" (a template, not a commitment), and its own "sufficient" conditions are exactly the
+undefined-threshold problem the very next section (§6.44) disowns in the source's own words: "a
+threshold without semantics is not a mathematical epistemic rule." Further genuine formal-object
+candidates (`Admissible=Pre∧Inv∧Assurance∧Auth`; the "qualification rule"; "the evaluation rule `R`")
+were each found and each independently, adversarially confirmed non-computable or blocked by the
+verification lane's own prior governed audit work (`NG-1`: "`Admissible`... depends on `Assurance`,
+which the corpus has REFUTED as definable"; `EG-2`: "the qualification rule is well-formed and
+non-computable"). One genuinely complete, *executed* policy mechanism was found (`verification/
+POLICY-TYPE-RECONSTRUCTION.md`'s own `Policy=(id,version,Gates,ValidityInterval,ResolutionBehavior)`,
+`Apply(p,d)` fully specified, "ACCEPTED — corpus step 57.47, all three components executed") — but it
+governs action-authorization (a neighboring bounded context, Part III's own "Decision Context"), not
+per-requirement epistemic satisfaction (Part III's own "Determination Context") — `RELATED
+RESPONSIBILITY`, not the same one.
+
+For `Γ`, separating object-identity from responsibility-relation (new this phase) produces a genuinely
+informative result the object-identity matrix alone could not: `Γ`'s apparent four-way proliferation
+(MD-078's own `E`) is, at the responsibility level, better described as **`SUBDIVIDED`** — three later
+Parts narrow `Γ_B`'s own general-purpose job into domain-specific contexts (identity, inference) rather
+than independently re-competing for the same general role. `EvalReq`'s own bare `Γ` usage remains
+unconnected to any of the three subdivisions — the actual, narrow blocker, not the broader
+proliferation. For `r`, the two dimensions were found to coincide cleanly (no divergence): confirmed
+homonyms are homonyms at both levels, the requirement-sense family is related-to-same at both levels.
+
+**Terminal classification, per component, unchanged in verdict but sharpened in evidence**: `A` for
+`Req`/aggregation/separation; `C` for `EC`/`EC_t`; `D` for `EC.Rules`/`standard`/`AcceptanceCondition`
+(now the most richly evidenced `D` in the investigation — multiple genuine attempts found, each
+independently confirmed blocked or scoped elsewhere, not simply "nothing found"); `E` for `r`/`Γ`
+object-identity (with the new `SUBDIVIDED`-responsibility nuance for `Γ`); `D`/`B`
+(object-level/responsibility-level) for `Det_r`/`EvalReq`, unchanged from MD-080.
+
+No new backlog ticket — every finding deepens evidence behind already-tracked decisions (`EKS-48`,
+`EKS-55`) or reuses already-established, independently-confirmed results, rather than surfacing a
+genuinely new, distinct, load-bearing problem. No construction performed; no mapping invented;
+`Standing(p)`/`Sat_c`/`Eval_c` not adopted; no governance choice made; no frozen artifact (MD-024–080)
+modified; MD-080 not reopened; `theory-extraction/` never accessed. Verified both consistency scripts
+`CONSISTENT`. Full trace: `14_decision-log/MD-081-responsibility-reconstruction-ec-rules-r-gamma-ec/`
+(5 files).
+
+**MD-081 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
+named, not authorized: unchanged in kind from MD-080 — a human governance decision among the three
+named options, now informed by the most complete evidentiary picture this reconstruction has produced
+for this object family.
