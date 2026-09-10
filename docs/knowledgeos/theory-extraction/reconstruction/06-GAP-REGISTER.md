@@ -2535,3 +2535,74 @@ three days before Theory v1.0 §75 and eight days before the script that hard-co
 * ⭐ The `G-rerun-with-evaluators` self-retraction is **`NON-GOAL-PROTECTED`** — twelve
   verification prompts forbid inventing evaluators, so *"`Eval_Gov` is invented governance,
   which A3 forbids"* is **commission compliance, not spontaneous insight.**
+
+---
+
+# ⭐⭐⭐ G-45 — `InvariantReg`'s commission, and a refinement of my own `G-37`
+
+**Mission §14.** Commission: `kernel/prompts/20260831-202424_step_287_…-not-normative.md`
+(2026-08-31T20:24:24).
+
+## The commission, verbatim
+
+> `ℐ = {I₁,…,Iₙ}` **"should initially mean the *candidate invariant set under investigation*,
+> not a ratified architectural set."** … STEP 287 **"cannot legitimately conclude: *these are
+> the final invariants `ℐ` of KnowledgeOS*. That would prematurely promote research into
+> architecture — exactly the thing D288 explicitly forbids."**
+>
+> Required status: **`RESEARCH ARTIFACT — NOT NORMATIVE / NOT ARCHITECTURE`**
+
+Six commissioned classes: `DERIVED` · `CORPUS-SUPPORTED` · `CONDITIONALLY DERIVED` ·
+**`NORMATIVE`** (*"requires a human/governance decision"*) · `G1 OPEN` · `REFUTED`.
+
+## ⚠️ Refinement — per §7, the earlier record is NOT rewritten
+
+$$Finding(t_1) \to Commission(t_2) \to Adjudication(t_3)$$
+
+* **`Finding(t₁)`** — `G-37`: `ℐ` **is** enumerated three times; *"never enumerated"* refuted.
+* **`Commission(t₂)`** — `ℐ` was commissioned as a **candidate set**; promotion **forbidden**.
+* **`Adjudication(t₃)`** — **both hold; they concern different predicates.**
+  **Enumerated ≠ normatively established.** `readiness/07`'s `NOT ENUMERATED` is **wrong as
+  literally written** and **right in substance** if it means *not normatively established* —
+  which is **the mandated state**.
+
+**Revised classification: `NON-GOAL-PROTECTED` + `ADJUDICATION-REQUIRED`.** `COMPETING` alone
+under-describes it: a candidate set is *supposed* to hold rivals.
+
+⭐ **And `D1` is now refuted in the corpus's own words, not merely in my judgement.** My plan
+files it *"a derivation, not a decision"*; the commissioned `NORMATIVE` class reads *"requires a
+human/governance decision."* **`D1` cannot be discharged by derivation by mandate.**
+
+⭐ My plan's *"the `𝓘` register exists with 7 candidates and 0 established"* is an **accurate**
+rendering of the commissioned scheme — `0 established` = 0 in `DERIVED`, **the mandated
+outcome.** The plan read the output correctly and mis-filed only the *route to resolution*.
+
+## The `D288` blocker list, and one item answered three days later
+
+`≡` no decision procedure · **`≈` — the observation set `𝒬` is not yet fixed** · `≅_λ`
+provenance-relevance predicate not fixed · **`Qualify` — genuine `G1` formal gap** · `𝒪` not
+enumerated · the ratified **8 primitives** not shown minimal against `𝒪`.
+
+⭐⭐⭐ `20260902-085420` §20 gives `≡_sem` an **enumerated eight-element observable set** — it
+**fixes exactly what `D288` said was missing for `≈`**, three days later, with **zero citation
+either way**. Recorded as a cross-lane `Commission → Gap → later Answer` chain. **Not adopted**:
+it is one of `G-40`'s three rivals and adopting it collapses `261.25`'s distinction.
+
+## ⭐⭐ `Qualify` — convergence that is not independent evidence
+
+`CANONICAL-KNOWLEDGEOS` §21 (**08-30**): *"Blocked: **the qualification predicate**"*.
+`step_288` (**08-31 20:39**): *"**one irreducible blocker: `Qualify`**"*. Two lanes, one day
+apart, same blocker, **and they do not cite each other** (`G-41`).
+
+**§15 discipline: they read the same corpus.** This is **independent execution, not independent
+theoretical evidence.** Recorded as convergent, **not** as confirmation.
+
+## Lane structure
+
+Three roles — `reviewer-a`, `reviewer-b`, `hpa` (supervisory) — with a visible cycle *draft
+mandate → review → accept-with-N-corrections → "do not freeze" → refined*. Two prompts are
+titled **"do not freeze"**.
+
+⭐⭐⭐ **82 of 117 kernel prompts are `step_286` — the Gītā strand. The programme spine is 33
+prompts.** 70 % of the kernel commission corpus went to a strand my forward plan records as
+closed with *"five cycles, **0 primitives**"*.

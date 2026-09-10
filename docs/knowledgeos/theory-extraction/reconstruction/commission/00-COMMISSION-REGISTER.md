@@ -235,3 +235,101 @@ My coverage ledger carries **one line** for it. `canonical-construction`,
 
 ⭐ **`DEFINITION-VERIFICATION-REGISTER.md` is another lane's definition register** — directly
 parallel to `05-DEFINITION-EVOLUTION-REGISTRY.tsv`, and never compared with it.
+
+---
+
+## G. §14 — `InvariantReg (ℐ)`: the commission, and the refinement it forces on `G-37`
+
+**Commission:** `kernel/prompts/20260831-202424_step_287_reviewer-step-287-invariants-as-research-only-derivability-audit-not-normative.md` (188 lines, **2026-08-31T20:24:24**)
+
+### What `ℐ` was commissioned to be
+
+> $\mathcal I = \{I_1,I_2,\ldots,I_n\}$ **"should initially mean the *candidate invariant set
+> under investigation*, not a ratified architectural set."**
+>
+> STEP 287 can establish *"which invariants are derivable from the current corpus and
+> ontology"* but **"cannot legitimately conclude: *these are the final invariants `ℐ` of
+> KnowledgeOS*. That would prematurely promote research into architecture — exactly the thing
+> D288 explicitly forbids."**
+>
+> Required final status: **`RESEARCH ARTIFACT — NOT NORMATIVE / NOT ARCHITECTURE`**
+
+### The commissioned classification scheme — six classes
+
+**`DERIVED`** (follows from ratified definitions) · **`CORPUS-SUPPORTED`** (present but not
+formally derived) · **`CONDITIONALLY DERIVED`** (follows only if an unresolved decision is
+chosen) · **`NORMATIVE`** (**requires a human/governance decision**) · **`G1 OPEN`** (required
+formal machinery absent) · **`REFUTED`**.
+
+$$\boxed{Commission \to Expected\ state \to Execution \to Observed\ result}$$
+
+| | |
+|---|---|
+| **Commission** (08-31 20:24) | enumerate **candidates**; classify derivability; **do not promote to normative** |
+| **Expected state** | a candidate set with **0 in `DERIVED`** until `≡`, `≈`, `≅_λ`, `Qualify`, `𝒪` resolve |
+| **Execution** | Step 287 artifact |
+| **Observed result** | my plan's own phrasing: *"the `𝓘` register exists with **7 candidates and 0 established**"* |
+
+⭐⭐⭐ **The plan's "7 candidates and 0 established" is an accurate rendering of the commissioned
+scheme.** `0 established` means *0 in the `DERIVED` class* — **the mandated outcome**, not a
+deficiency.
+
+### ⚠️ Refinement of `G-37` — recorded per §7, earlier record NOT rewritten
+
+$$Finding(t_1) \to Commission(t_2) \to Adjudication(t_3)$$
+
+| | |
+|---|---|
+| **`Finding(t₁)`** — `G-37`, this session | `ℐ` **is** enumerated three times (10-field schema · `K1…K7` · `I1…I9`); *"never enumerated"* is refuted; disposition `C — COMPETING` |
+| **`Commission(t₂)`** — 08-31T20:24 | `ℐ` was commissioned as a **candidate set**, with promotion to normative **explicitly forbidden** |
+| **`Adjudication(t₃)`** — now | **Both hold, and they are about different predicates.** *Enumerated* ≠ *normatively established*. `readiness/07`'s `NOT ENUMERATED` is **wrong as literally written** and **right in substance** if it means *not normatively established* — which is the mandated state. |
+
+**Revised classification: `NON-GOAL-PROTECTED` + `ADJUDICATION-REQUIRED`.** Not
+`GENUINE CORPUS GAP`; and `COMPETING` alone under-describes it, because the multiplicity is
+*permitted by mandate* — a candidate set is *supposed* to hold rivals.
+
+⭐ **`G-37`'s consequence for `D1` stands and is now explained.** `D1` is filed in my plan as
+*"a derivation, not a decision"*. The mandate's `NORMATIVE` class says the opposite in the
+corpus's own words: **"requires a human/governance decision."** `D1` cannot be discharged by
+derivation **by mandate**, not merely by my judgement.
+
+### The `D288` blocker list — five items, and one is answered three days later
+
+The same prompt records what `D288` established as unresolved:
+
+| blocked | reason given |
+|---|---|
+| `≡` | no decision procedure yet |
+| **`≈`** | **the observation set `𝒬` is not yet fixed** |
+| `≅_λ` | provenance-relevance predicate not fixed |
+| **`Qualify`** | **genuine `G1` formal gap** |
+| `𝒪` | the operation space has not been enumerated |
+| the ratified **8 primitives** | not demonstrated minimal against that operation space |
+
+⭐⭐⭐ **`≈` is blocked *because `𝒬` is not fixed* (08-31). `20260902-085420` §20 supplies
+`≡_sem` with an ENUMERATED eight-element observable set (09-02 08:54) — it fixes exactly that.
+Neither document cites the other.** Recorded as a cross-lane
+`Commission → Gap → later Answer` chain; **the answer is not adopted**, since §20's definition
+is one of the three rivals in `G-40` and adopting it collapses `261.25`'s distinction.
+
+### ⭐⭐ Convergence on `Qualify`, and the independence question
+
+| lane | date | statement |
+|---|---|---|
+| `CANONICAL-KNOWLEDGEOS-THEORY` §21 | **08-30** | Blocked: **the qualification predicate**; the authority→gate binding |
+| `step_288` consolidated position | **08-31 20:39** | ***"one irreducible blocker: `Qualify`"*** |
+
+Two lanes, one day apart, same blocker — and these two lanes **do not cite each other**
+(`G-41`). §15 discipline: they read **the same corpus**, so this is
+**independent execution, not independent theoretical evidence.** Recorded as such.
+
+### Lane structure recovered
+
+The kernel lane runs a three-role review protocol — **`reviewer-a`**, **`reviewer-b`**,
+**`hpa` (supervisory)** — with a visible cycle: *draft mandate → review → "accept with N
+corrections" → "do not freeze" → refined*. Two prompts are titled **"do not freeze"**
+(`step_287`, `step_291`).
+
+⭐⭐⭐ **82 of 117 kernel prompts are `step_286`**, and `step_286` is the **Gītā** strand. The
+programme **spine is 33 prompts** (steps 284, 285, 287–291). **70 % of the kernel commission
+corpus went to a strand my forward plan records as closed with *"five cycles, 0 primitives"*.**
