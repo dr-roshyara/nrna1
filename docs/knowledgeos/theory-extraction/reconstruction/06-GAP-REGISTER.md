@@ -925,3 +925,56 @@ and `TG-15` **disagree about which glyph is worst.** Recorded, not adjudicated.
 
 **CLOSE 5** (`G-06` `G-07` `G-09` `G-15` `G-16`-half) · **RE-SCOPE 4** (`G-01` premise refuted, `G-05`,
 `C-1`, `G-21`) · **SPLIT 1** (`G-23`) · **reclassify 1** (`G-17`) · **KEEP OPEN 3** (`G-11` `G-12` `G-04`).
+
+---
+
+# ⭐⭐ `EvalReq` / `Sat` reconstruction from the birth point — 2 gaps CLOSED, `G-01` re-scoped, 2 NEW
+
+**Record:** `…/gap-discovery/concept-family-birth-census/02-EVALREQ-SAT-BIRTH-TO-PRESENT.md`
+
+## ⛔ Two "gaps" closed — including one I created two hours earlier
+
+| gap | disposition | evidence |
+|---|---|---|
+| *"`EvalReq` has four arguments and **NO CODOMAIN**"* (my own birth census) | ⭐ **CLOSED — never a corpus gap** | its **conceptual birth** is `025e` §25E.27, **2026-08-27 18:33**, boxed: **`EvalRequirement(K,r,C) → Status`** — *with* a codomain, **10 days before** the lexical birth. And `𝒱` is defined **three sections earlier in the same document** (`theory-part-06` §6.15) and forced by composition, since `Det_r`'s domain **is** `𝒱` |
+| *"`𝕊_sat` is undefined"* | ⭐ **CLOSED** | **`𝒮_sat = {S,U,P,C}`**, `theory-part-03` §3.14 — **9 min 24 s earlier**; `theory-part-05` uses it in between |
+
+**Corroboration** — `verification/spec/STEP-VERIFY-025a-025g` L240, reading `025e` independently on
+2026-08-29: *"`EvalRequirement(K,r,C)→Status`; `EvalContract→{Ready,Blocked,Invalid,Indeterminate}`
+**is CLEAR and the file's most solid formal object**."*
+
+$$\boxed{\textbf{My census sentence was TRUE of one document and FALSE of the corpus — the exact error the directive's §6 and §12 warn against.}}$$
+
+## `G-01` — RE-SCOPED again, and now the count is known
+
+Not *"9/10 → 3"*. **`Sat` has FOUR codomains and no document maps any pair:**
+
+| codomain | values | source |
+|---|---|---|
+| `𝒮` | **9 → 10 → 11**, never re-declared | `025d` 25D.4/7/23 |
+| `V_Sat = {⊤,⊥,U}` | **3** | `Sat_c` doc, 09-02 09:39 |
+| `𝒮_sat = {S,U,P,C}` | **4** | `theory-part-03` §3.14, 09-06 00:30 |
+| `𝕊_sat` | = `𝒮_sat` | `theory-part-06` §6.18, 09-06 00:39 |
+
+⛔ **`V_Sat` × `𝒮_sat` is `DISTINCT OBJECT`** — 3 values vs 4, and `U` means *unknown* in one and
+*unsatisfied/unknown* in the other. **No mapping stated anywhere.**
+
+## New gaps
+
+| ID | question | why load-bearing | status |
+|---|---|---|---|
+| **G-24** | ⛔ **`V_Sat = {⊤,⊥,U}` is defined, boxed, complete — and occurs in exactly ONE file corpus-wide.** A satisfaction codomain with **zero downstream consumers** | The most fully-specified `Sat` in the corpus — signature, codomain **and** a 3-case model-theoretic body — is read by nothing. If `Sat` is later selected, this is the candidate that was silently skipped | **OPEN** |
+| **G-25** | ⭐⭐ **Re-founding #6.** `theory-part-01`, 2026-09-06 **00:23:01**: *"I will not treat an attractive formulation as a theorem merely because it appeared in an earlier document."* **23 documents, 00:23:01 → 07:51:53, a complete 21-part rewrite in one night**, citing `025d`/`025e`/`ContractSpecific`/`EvalRequirement`/`EvalContract` **0 times** — while **re-deriving** `025d`'s conclusion (`theory-part-03` §3.13 *"satisfaction semantics must be contract-specific"* = 25D.11's boxed `Satisfied = ContractSpecific`) | **Every object in this family is born inside it** (`Det_r`, `𝒮_sat`, the `Eval`/`EvalReq`/`Det_r` decomposition). Until its inheritance relation to the 025-series is established, **every 09-06 formulation is of unstated ancestry** — and `G-01`, `G-05`, `C-1` and `Det_r` all have an endpoint inside it | **OPEN** |
+
+## ⭐ Two rival solutions to one problem — recorded, not reconciled
+
+`Sat_c` (09-02) indexes satisfaction by **requirement class** and **gives a body**
+(`K_t,Γ_t ⊨ P_c(r)`). `Det_r` (09-06) indexes it by **contract** and **withholds the body by
+design**. Both answer *"satisfaction means different things for different requirements."*
+**Neither cites the other.** Both preserved.
+
+## Next, by dependency impact
+
+⭐ **`G-25`.** It is upstream of `G-01`, `G-05`, `C-1` and the whole `Det_r` question — all four
+have an endpoint inside the 09-06 rewrite. `G-12` remains the larger chronological debt but is
+**not** upstream of this family.

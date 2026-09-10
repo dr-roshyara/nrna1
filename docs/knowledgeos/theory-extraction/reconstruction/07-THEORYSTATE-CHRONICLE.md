@@ -204,6 +204,7 @@ readable corpus**.
 | 3 | `230` | names no predecessor but *"Steps 1–182"*; compresses 8 principles → 6-term equation | `UNWITNESSED` |
 | 4 | `262` | imports `K` from the executed batch, **forbids reopening** | `EXPLICIT_REPLACEMENT` |
 | 5 | `273` | replaces the 2-tuple with a 4-tuple on the authority of a missing step | `UNWITNESSED` |
+| ⭐ **6** | **`theory-part-01`, 2026-09-06 00:23:01** | **a 23-document, 21-part theory rewrite in one night.** *"write the theory from beginning to end as one coherent mathematical work"*; *"**I will not treat an attractive formulation as a theorem merely because it appeared in an earlier document.**"* Citation census across `theory-part-03/05/06` for `025d`·`025e`·`ContractSpecific`·`EvalRequirement`·`EvalContract`: **0·0·0** | ⭐ **`WITNESSED_REFOUNDING`** — the only one that **states its reason for not inheriting** |
 
 **Preserved as an observation, not generalised** (§12 of the prior commission): *the middle interval
 contains repeated re-foundings rather than a demonstrably continuous formal evolution.*
@@ -533,3 +534,66 @@ glyphs as `𝒦/𝕂/K` (7) · `Π` (6) · `Θ` (5) · `Σ` (4) · `Γ` (4) — 
 
 That is the promoted mechanism at its limit: not merely that lanes fail to enumerate each other, but
 that **the identifier space itself collides**, so even a diligent cross-reference can miss.
+
+---
+
+# STATE CHANGE — `EvalReq` / `Sat` / `𝒮_sat`, reconstructed from the birth point, 2026-09-10
+
+**Record:** `…/gap-discovery/concept-family-birth-census/02-EVALREQ-SAT-BIRTH-TO-PRESENT.md`
+
+## ⛔ I corrected my own census, two hours after writing it
+
+My birth census said *"`EvalReq(K,r,EC,Γ)` — four arguments, **NO CODOMAIN**."*
+**True of one document. False of the corpus.** The complementary-definition search succeeds
+**three times**:
+
+| "missing" | actually supplied | distance |
+|---|---|---|
+| `EvalReq`'s codomain | ⭐ `EvalRequirement(K,r,C) → **Status**`, `025e` §25E.27 — **and** `𝒱` by composition, `theory-part-06` §6.15 | **10 days earlier** / **3 sections earlier** |
+| `𝕊_sat` undefined | ⭐ `𝒮_sat = {S,U,P,C}`, `theory-part-03` §3.14 | **9 min 24 s earlier** |
+| `Sat`'s body deferred | ⭐ a complete 3-case body `K_t,Γ_t ⊨ P_c(r)` in `Sat_c` | **4 days earlier** |
+
+$$\boxed{\textbf{The lexical birth of } EvalReq \textbf{ is 10 days AFTER its conceptual birth — and the conceptual birth HAS the codomain the lexical one lacks.}}$$
+
+## ⭐⭐ Re-founding #6 — the first **witnessed** one
+
+`theory-part-01`, **2026-09-06 00:23:01**, opening lines: *"**I will not treat an attractive
+formulation as a theorem merely because it appeared in an earlier document.**"*
+
+**23 documents, 00:23:01 → 07:51:53, a complete 21-part theory rewrite in one night**, citing the
+025-series **zero times** — while **re-deriving its conclusion**: `theory-part-03` §3.13 *"the
+satisfaction semantics must be contract-specific"* is `025d` §25D.11's boxed
+`Satisfied = ContractSpecific`, ten days later, uncited.
+
+**This is the only re-founding in the corpus that states its reason for not inheriting.** #3 and #5
+are `UNWITNESSED`; this one is a **declared methodological choice**. That makes it the *least*
+mysterious and the *most* consequential: everything in the 09-06 lane is of deliberately unstated
+ancestry.
+
+## ⭐⭐ Two rival solutions to one problem, four days apart, neither citing the other
+
+Both answer *"satisfaction means different things for different requirements"*:
+
+| | `Sat_c` · 09-02 09:39 | `Det_r` · 09-06 00:39 |
+|---|---|---|
+| indexing | ⭐ **requirement class** — `r ∈ ℛ_c` | ⭐ **contract** — `EC` |
+| signature | `𝒦 × ℛ_c × Γ → V_Sat` | `Det_r : 𝒱 × EC → 𝕊_sat` |
+| **body** | ⭐ **GIVEN** — 3-case, model-theoretic `⊨` | ⛔ **withheld by design**, *"contract-specific"* |
+| codomain | `V_Sat = {⊤,⊥,U}` — **3** | `𝕊_sat = {S,U,P,C}` — **4** |
+
+**`Sat` now has four codomains** — `𝒮` (9→10→11, `025d`) · `V_Sat` (3) · `𝒮_sat` (4) · `𝕊_sat`
+(= `𝒮_sat`). **No document maps any pair.** `G-01` re-scoped accordingly: it is not a narrowing
+from 9/10 to 3; it is **four unreconciled codomains**.
+
+## ⛔ A defined object with zero consumers
+
+**`V_Sat = {⊤,⊥,U}` is boxed, complete, and occurs in exactly ONE file corpus-wide.** A codomain
+that nothing downstream reads. Recorded as **`G-24`**.
+
+## The methodological result
+
+**`TheoryState(t₁)` was COMPLETE.** `EvalRequirement` did not become incomplete — *a later document
+re-derived it without the codomain.* Every one of these states is nonetheless
+**`governance = UNRESOLVED`**: not one of these formulations has been adopted by any act.
+
+> **Incomplete definition ≠ incomplete concept — and I proved it against my own two-hour-old claim.**

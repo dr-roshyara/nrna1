@@ -8233,9 +8233,22 @@ property** (four diagnoses, three lanes): *lanes do not enumerate each other, so
 ledger enumerates every lane including its own** · **re-read a gap's premise before working it**
 (5 of 12 were mis-framed, not unanswered) · **read a register's dispositions, not its table rows.**
 
-**Next:** ⭐ **`G-12`** — the global chronological stream resumes. ~180 of 265 files in steps
-026–268 unread; the only open item whose missing thing is *primary source*, and `G-05`, `G-06`,
-`G-21`, `C-1` all have evidence intervals inside or adjacent to it. Then `G-11` (re-scoped).
+**Also 2026-09-10 — `EvalReq`/`Sat` reconstructed from the birth point.** ⛔ Closed a gap I had
+created two hours earlier: *"`EvalReq` has NO CODOMAIN"* is **true of one document, false of the
+corpus**. Conceptual birth = `025e` §25E.27, 2026-08-27 18:33, boxed `EvalRequirement(K,r,C) →
+Status` — **10 days before the lexical birth, with the codomain**. `𝕊_sat` = `𝒮_sat={S,U,P,C}`
+(`theory-part-03`, 9 min earlier). `Sat`'s body = `Sat_c`'s 3-case `⊨` (4 days earlier).
+
+⭐⭐ **RE-FOUNDING #6 — the first WITNESSED one.** `theory-part-01`, 09-06 00:23:01: *"I will not
+treat an attractive formulation as a theorem merely because it appeared in an earlier document."*
+23 documents, 00:23:01 → 07:51:53, a 21-part rewrite in one night, citing the 025-series **0
+times** while re-deriving its conclusions. **`Sat` now has FOUR unreconciled codomains**
+(`𝒮` 9→11 · `V_Sat` 3 · `𝒮_sat` 4 · `𝕊_sat`). `G-24` (`V_Sat` has zero consumers) and `G-25`
+(the re-founding) opened; `EKS-53` filed.
+
+**Next:** ⭐ **`G-25`** — by dependency impact. The 09-06 re-founding is upstream of `G-01`, `G-05`,
+`C-1` and the `Det_r` question; all four have an endpoint inside it. Then **`G-12`** (~180 of 265
+files in steps 026–268 unread) — the larger chronological debt, but not upstream of this family.
 
 **Standing constraints unchanged:** `three_model_convergence/` firewalled (count, never consume) ·
 do not canonicalize · do not select a kernel · do not merge lanes · do not repair contradictions ·
