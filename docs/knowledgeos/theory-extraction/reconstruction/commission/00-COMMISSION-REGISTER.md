@@ -1433,3 +1433,74 @@ not this file.)*
 **content-addressed**, because **`-duplicate`/`-variant` suffixes are unreliable in both
 directions** — `182015` is suffixed `-variant` and is an exact copy, while four exact copies
 carry unrelated titles.
+
+---
+
+## U. ⚠️ Correction to §T — the "symmetric inflation" claim was wrong
+
+`182015` re-verified: **md5 `9c8d7e99…` on both, 0 diff lines, 10,629 bytes each.** Both were
+added to git in **the same commit** `6f38df520` (2026-09-06 08:01), so **which is the original
+is `UNRECORDABLE`** — the `-variant` suffix is the only asymmetry, and it is not evidence.
+
+### What I got wrong
+
+In §T I wrote that `09-MULTIPLICITY-REGISTER` *"counts them separately in Claim A's four
+sources"* and reported a **symmetric inflation of both claims by one**. Re-reading the register
+verbatim:
+
+> **Claim A** — `…182003_consolidated-architectural-audit…`, `…182005_final-architectural-
+> review-…v13`, **`…182014/182015_ratification-assessment-final-closure-packages`** (2026-09-02
+> 18:20)
+
+⛔ **The register already writes `182014/182015` as ONE slashed entry.** It lists **three**
+references for Claim A and never claims four. The phrase *"four later or contemporaneous
+sources"* belongs to **Claim B alone**.
+
+### And Claim B's count is probably right too
+
+Claim B is introduced as *"**four** later or contemporaneous sources"* and its table has
+**five rows**. With `182009 ≡ 182010` collapsing to one adjudication (`G-57`), the five rows
+yield **exactly four distinct** adjudications — **matching the stated number.**
+
+$$\boxed{\text{The register's COUNTS are sound. Only its Claim B ROW LISTING double-lists one adjudication.}}$$
+
+### What survives from `G-57`/`G-58`
+
+| finding | status |
+|---|---|
+| `182014 ≡ 182015` byte-identical | ✅ **stands** — but the register **already knew**, writing them slashed |
+| `182009 ≡ 182010` are one adjudication in two role-framings | ✅ **stands, and is new** — the register lists them as separate rows |
+| *"Both sides inflated by one"* | ⛔ **WITHDRAWN** |
+| *"Exactly one document claims ratification"* (`G-58` §1) | ✅ **stands** — measured directly, independent of the register's counting |
+
+⚠️ **This is the third time this session I have mis-stated another lane's record while its own
+phrasing was more careful than mine** (after `G-52`'s *"52 minutes later"* and `G-54`'s
+*"nothing mathematical to rebut"*). **The recurring failure is summarising a register's count
+without re-reading its exact wording** — the same defect I have repeatedly found in the corpus.
+Earlier records left standing per §7.
+
+---
+
+### ⭐⭐⭐ A governance lane reached `G-54`'s conclusion first — and names a governance act
+
+`docs/knowledgeos/reviews/2026-09-06-KOS-GAP-OCORE-NECESSITY-PROOF.md` cites **`182015`** (not
+`182014`) and states:
+
+> $$\mathcal O_{\text{core}} = \{\text{ASSERT},\ \text{LINK},\ \text{REVISE},\ \text{RETRACT},\ \text{ISOLATE}\}$$
+> ⚠️ ***"Both are REVIEW/ASSESSMENT documents. A ratification *assessment* is not a
+> ratification**, and **`GN-84`** records `𝒪_core` as **NOT RATIFIED**. **Theory v1.3 does not
+> exist; v1.2 is frozen.**"*
+> `[REC]` the five-element set is a **candidate basis**:
+> $\mathcal O_{\text{semantic nucleus}} \supseteq \{ASSERT, LINK, REVISE, RETRACT, ISOLATE\}$
+
+⭐ **"A ratification assessment is not a ratification"** is exactly `G-54`'s advisory-vs-authority
+distinction, reached independently on **2026-09-06** by the governance lane — **four days
+before I derived it.** Recorded as an **independent, earlier derivation.**
+
+⭐ It also names **`GN-84`**, a governance act recording `𝒪_core` as **NOT RATIFIED** — a
+governance identifier **new to this reconstruction**, and the first located governance record
+bearing directly on the v1.3 objects.
+
+⭐ And it supplies the **five `𝒪_core` primitives by name** — `ASSERT · LINK · REVISE · RETRACT
+· ISOLATE` — which the v1.3 package cited as *"reduced to exactly 5 primitives"* without my
+having their identities. Note the **`⊇`**: a *candidate basis*, **not** a closed set.

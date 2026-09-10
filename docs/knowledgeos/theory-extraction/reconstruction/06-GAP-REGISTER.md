@@ -3405,3 +3405,54 @@ $$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT
 
 **`PROPOSED VERSION / CANDIDATE REGISTER`** · adoption **refused for want of authority** ·
 **`TheoryState` impact: none.**
+
+---
+
+# ⚠️ G-59 — CORRECTION to `G-58`: the "symmetric inflation" claim is withdrawn
+
+`182015` re-verified byte-identical to `182014` (md5 `9c8d7e99…`, 0 diff, 10,629 bytes), both
+added in **the same git commit** `6f38df520` — so **which is the original is `UNRECORDABLE`**.
+
+## What was wrong
+
+`G-58` §2 reported that `09-MULTIPLICITY-REGISTER` counted `182014`/`182015` separately in
+*"Claim A's four sources"*, giving a **symmetric inflation**. The register's actual wording:
+
+> **Claim A** — `…182003…`, `…182005…`, **`…182014/182015_ratification-assessment-final-closure-packages`**
+
+⛔ **It already writes them as ONE slashed entry**, lists **three** references, and never claims
+four. *"Four later or contemporaneous sources"* is **Claim B's** phrase alone. Moreover Claim B
+says *four* and tables *five* rows — and with `182009 ≡ 182010` collapsing (`G-57`), five rows
+give **exactly four distinct** adjudications, **matching the stated number**.
+
+$$\boxed{\text{The register's COUNTS are sound; only its Claim B ROW LISTING double-lists one adjudication.}}$$
+
+| finding | status |
+|---|---|
+| `182014 ≡ 182015` byte-identical | ✅ stands — **the register already knew** |
+| `182009 ≡ 182010` one adjudication, two framings | ✅ **stands and is new** |
+| *"both sides inflated by one"* | ⛔ **WITHDRAWN** |
+| *"exactly one document claims ratification"* (`G-58` §1) | ✅ stands — measured directly |
+
+⚠️ **Third time this session I have mis-stated another lane's record while its own phrasing was
+more careful than mine** — after `G-52`'s *"52 minutes later"* and `G-54`'s *"nothing
+mathematical to rebut"*. **The recurring defect: summarising a register's count without
+re-reading its exact wording** — precisely what I keep catching in the corpus. Earlier records
+left standing per §7.
+
+## ⭐⭐⭐ And the governance lane got to `G-54` first
+
+`reviews/2026-09-06-KOS-GAP-OCORE-NECESSITY-PROOF.md` cites **`182015`** (not `182014`) and
+states:
+
+> ⚠️ *"Both are REVIEW/ASSESSMENT documents. **A ratification assessment is not a
+> ratification**, and **`GN-84`** records `𝒪_core` as **NOT RATIFIED**. Theory v1.3 does not
+> exist; v1.2 is frozen."*
+
+⭐ That **is** `G-54`'s advisory-vs-authority distinction, reached **four days before I derived
+it**. Independent, earlier. It also yields two objects new to this register:
+
+* **`𝒪_core = {ASSERT, LINK, REVISE, RETRACT, ISOLATE}`** — the five primitives **named** at
+  last, and explicitly a **candidate basis**: `𝒪_semantic nucleus ⊇ {…}`, **not** `=`.
+* **`GN-84`** — a governance act recording `𝒪_core` **NOT RATIFIED**. **The first located
+  governance record bearing directly on the v1.3 objects**; the act itself not yet read.
