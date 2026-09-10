@@ -1271,3 +1271,82 @@ mathematically decisive coupling problems."*
 error, a named circularity, and a graded open list. **My earlier statement that "there was
 nothing mathematical to rebut" is too strong and is corrected here: there was, and this
 document is it.**
+
+---
+
+## S. `182010` — and a §15 finding that corrects a count I have been relying on
+
+Source: `20260902-182010_review-consolidation-as-senior-statistician.md` (1138 lines)
+*(user-supplied)*. Verdict: *"I would **NOT** ratify it as 'KnowledgeOS Kernel Theory v1.3
+fully closed and complete.'"*
+
+Its diagnosis restates `182009`'s in statistical language:
+
+> *"the document itself correctly identifies the earlier over-claims, but then **reintroduces
+> essentially the same problem at CLOSURE-3/4/5**: **a small executable demonstration is being
+> promoted into a mathematical/architectural proof.**"*
+
+### ⭐⭐⭐ §15 — `182009` and `182010` are NOT independent
+
+`[EMP]` **Structural fingerprint — the four-item remediation plan is identical:**
+
+| | `182009` §19 | `182010` §16 |
+|---|---|---|
+| **C1** | Determination **S**emantics | Determination **s**emantics |
+| **C2** | Operations + `δ` | Operations + `δ` |
+| **C3** | Composition + **E**quivalence | Composition + **e**quivalence |
+| **C4** | **Independent Kernel Selection** | Independent kernel selection |
+
+**Same labels, same order, same content areas** — differing only in capitalisation and bold.
+Both propose the **same replacement artifact ID**, `CLOSURE-SYNTHESIS-2026-v1.3` (*"Final
+Falsification Gate"* / *"Falsification Correction"*). Both independently "find" the **same**
+non-collapsing-axiom error, the **same** CLOSURE-5 circularity, the **same** *"unique minimal
+not demonstrated"*, and the **same** tautological-isolation-test objection.
+
+$$\boxed{\text{These are ONE adjudication under TWO role-framings — "as senior mathematician" and "as senior statistician" — not two independent reviews.}}$$
+
+### ⚠️ Consequence — the refutation count is inflated by one
+
+`09-MULTIPLICITY-REGISTER` lists **Claim B** as *"four later or contemporaneous sources, none of
+which accept it"*, counting `182009` and `182010` separately. On this evidence the **18:20
+batch contributes ONE refutation, not two.**
+
+| independent refutations of the v1.3 claim | status |
+|---|---|
+| the single 18:20 adjudication (`182009` ≡ `182010`) | ✅ **one**, not two |
+| `step-292/00_INDEX` (19:12, **outside the batch**) | ✅ independent |
+| `20260904-102000` (governance position) | ✅ independent |
+| the Theory 00–14 series | ✅ independent |
+
+⭐ **The refusal is not weakened** — three genuinely independent refusals remain, and the
+governance freeze is decisive on its own. **But the count must be stated correctly**: *independent
+execution ≠ independent theoretical evidence*, and here even *independent execution* fails —
+same batch, same skeleton, same remediation plan.
+
+⚠️ **Recorded; the multiplicity register is another lane's and is NOT amended by me.**
+
+### ⭐⭐ §17 — a four-tier status vocabulary, and it separates exactly what v1.3 conflated
+
+> *"I would **not throw away this document**. Instead I would issue
+> `CLOSURE-SYNTHESIS-2026-v1.3 — Falsification Correction` with a very explicit distinction:*
+> **Ratified constitutional principles** · **Validated candidate mechanisms** ·
+> **Open mathematical parameters** · **Unverified implementation claims**."*
+
+$$\boxed{\text{Constitutional} \neq \text{Validated-candidate} \neq \text{Open-parameter} \neq \text{Unverified-claim}}$$
+
+**This is the vocabulary whose absence produced the episode.** The v1.3 package collapsed all
+four into a single `✅ CLOSED` column (`G-54` §3). ⭐ It also *"would actually make KnowledgeOS
+**stronger**, not weaker"* — the review's own framing of why grading beats closing.
+
+### Also recorded
+
+* §10 *"Isolation test is effectively **tautological**"* — ⭐ the same word `THEORY-STATUS-VERDICT`
+  used of a *different* witness (*"the strongest cited witness is a tautology"*). **Two lanes,
+  two tests, one failure mode.** Not merged.
+* §4 *"the biggest DDD problem: **`Actionability` is leaking into Determination**"* — a
+  bounded-context violation, matching `182009` §5 (*"Actionability should not be inside
+  Determination"*).
+* §6 *"the **'monotonic `δ`' claim is mathematically misleading**"* — feeds the `δ` record.
+* §1 accepts as genuinely **CLOSED**: `ℛ_req(Q,Γ) ⊆ 𝒟` (*"removes the circularity"* — required
+  distinctions derive from **question/task and context, not from the kernel**), non-explosion,
+  and `Truth ≠ Evaluation ≠ Determination ≠ Decision`.

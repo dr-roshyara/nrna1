@@ -3260,3 +3260,74 @@ authority defect (`G-54`) stands; **the claim that the refusal was purely proced
 Earlier record left standing per §7.
 
 $$\boxed{ABK\text{-}1 \text{ is not yet mathematically proven to be the unique minimal kernel.} \quad v1.3 \text{ remains OPEN / CLOSURE-BLOCKED.}}$$
+
+---
+
+# ⭐⭐⭐ G-57 — the two 18:20 reviews are ONE adjudication under two role-framings
+
+Source: `20260902-182010_review-consolidation-as-senior-statistician.md` (1138 lines).
+Record: commission register §S. Verdict: *"I would **NOT** ratify it as 'KnowledgeOS Kernel
+Theory v1.3 fully closed and complete.'"*
+
+Its diagnosis restates `182009`'s statistically: *"the document … **reintroduces essentially
+the same problem at CLOSURE-3/4/5**: a **small executable demonstration is being promoted into
+a mathematical/architectural proof**."*
+
+## §1 · The §15 test — and it fails
+
+`[EMP]` **Identical four-item remediation plan:**
+
+| | `182009` §19 | `182010` §16 |
+|---|---|---|
+| C1 | Determination **S**emantics | Determination **s**emantics |
+| C2 | Operations + `δ` | Operations + `δ` |
+| C3 | Composition + **E**quivalence | Composition + **e**quivalence |
+| C4 | **Independent Kernel Selection** | Independent kernel selection |
+
+Same labels, same order, same content areas — differing only in case and bold. Both propose
+the **same replacement artifact ID** `CLOSURE-SYNTHESIS-2026-v1.3`, and both "independently"
+find the same non-collapsing-axiom error, the same CLOSURE-5 circularity, the same *"unique
+minimal not demonstrated"*, and the same tautological-isolation objection.
+
+$$\boxed{\text{ONE adjudication under TWO role-framings — not two independent reviews.}}$$
+
+## §2 · ⚠️ Correction to a count I have been relying on
+
+`09-MULTIPLICITY-REGISTER` counts `182009` and `182010` separately in **Claim B**'s *"four
+later or contemporaneous sources"*. **The 18:20 batch contributes ONE refutation, not two.**
+
+| independent refutation | |
+|---|---|
+| the single 18:20 adjudication (`182009` ≡ `182010`) | ✅ **one** |
+| `step-292/00_INDEX` (19:12, outside the batch) | ✅ |
+| `20260904-102000` (governance position) | ✅ |
+| Theory 00–14 series | ✅ |
+
+⭐ **The refusal is not weakened** — three genuinely independent refusals stand, and the
+governance freeze is decisive alone. **But the count must be stated correctly.** *Independent
+execution ≠ independent theoretical evidence* — and here even *independent execution* fails:
+same batch, same skeleton, same remediation plan. ⚠️ **The register belongs to another lane and
+is NOT amended by me.**
+
+## §3 · ⭐⭐ A four-tier status vocabulary — the one whose absence produced the episode
+
+> **Ratified constitutional principles** · **Validated candidate mechanisms** · **Open
+> mathematical parameters** · **Unverified implementation claims**
+
+$$\boxed{\text{Constitutional} \neq \text{Validated-candidate} \neq \text{Open-parameter} \neq \text{Unverified-claim}}$$
+
+The v1.3 package collapsed all four into one `✅ CLOSED` column (`G-54` §3). The review's own
+framing: grading *"would actually make KnowledgeOS **stronger**, not weaker."*
+
+## §4 · Also recorded
+
+* §10 *"Isolation test is effectively **tautological**"* — ⭐ the same word
+  `THEORY-STATUS-VERDICT` used of a **different** witness. **Two lanes, two tests, one failure
+  mode.** Not merged.
+* §4 *"`Actionability` is **leaking into** Determination"* — a bounded-context violation,
+  matching `182009` §5.
+* §6 *"the **'monotonic `δ`' claim is mathematically misleading**"* — feeds the `δ` record
+  beside `interface CLOSED / semantics OPEN`.
+* §1 accepts as genuinely **CLOSED**: **`ℛ_req(Q,Γ) ⊆ 𝒟`** — *required distinctions derive from
+  the **question/task and context, not from the kernel**; "that removes the circularity"* —
+  plus non-explosion and `Truth ≠ Evaluation ≠ Determination ≠ Decision`.
