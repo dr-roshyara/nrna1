@@ -395,3 +395,129 @@ Its immediate conversational antecedent **is** located, and it is not a mandate.
 | **executions with no commission** | Theory v1.0 (`NOT YET LOCATED`); the `≡_sem` repair at 08:54 |
 | **results with no adjudication** | ⭐ **`CANONICAL-KNOWLEDGEOS-THEORY` `THEORY NOT YET COMPLETE 19/24`** — no adjudication located, and Theory v1.0 three days later neither cites nor contradicts it explicitly |
 | **adjudications whose scope exceeds the commission** | ⭐ **candidate:** the 08-30 artifact reports **minimality box 16 ✓ "PROVEN relative to `𝒯`"** while `step_287`/`D288` (next day) record *the ratified 8 primitives have **not** been demonstrated minimal against the operation space `𝒪`*. **Recorded as a candidate only** — the two use different reference sets (`𝒯` vs `𝒪`), so this may be a scope difference rather than an overreach. **Not adjudicated by me.** |
+
+---
+
+## I. The 2026-08-30 commissioned artifact family — **58 artifacts, every one naming its mandate**
+
+`brainstorming/verification/` holds **58 top-level artifacts each carrying a `mandate:` header**,
+all dated **2026-08-30**. This is the most complete `Commission → Artifact → Result` family in
+the estate, and my coverage ledger carried **one line** for the lane.
+
+### Mandate references vs prompt files — §6
+
+| stamp | artifacts | prompt file |
+|---|---|---|
+| `20260830_1931` | 10 | ✓ |
+| `20260830_1918` | 10 | ✓ |
+| `20260830_1852` | 9 | ✓ |
+| **`20260830_2152`** | **4** | ⚠️ **MISSING** |
+| `20260830_1021` · `_1828` · `_1110` · `_1042` · `_1037` · `_1005` · `_0139` · `_935` | 1 each | ✓ |
+| **`20260830_1158`** | **1** | ⚠️ **MISSING** |
+
+**5 artifacts → `COMMISSION NOT RECORDED`.** Per §6 this does **not** mean no commission
+existed; both stamps fall inside the lane's active window (`…_1953` and `…_0105` bracket them).
+
+⭐ One artifact records the duplicate problem itself: `STATE-TRANSITION-ALGEBRA-AUDIT-232.md`
+declares `mandate: 20260830_2152 / 20260830_1005 (byte-identical duplicates) §6`. **The lane
+detected its own duplicated commissions.**
+
+### ⭐⭐⭐ A re-verification round exists — and it is the adjudication I reported as missing
+
+Eight artifacts carry `mandate: 20260830 re-verification`. `INDEPENDENT-CLOSURE-REVERIFICATION`
+opens: *"`THEORY-CLOSURE-AUDIT.md` is treated here as **a claim to be attacked**, not as a
+record. Nothing below is accepted because that document says it."*
+
+$$Claim \to Re\text{-}verification \to Withdrawal$$
+
+| | verdict |
+|---|---|
+| `THEORY-CLOSURE-AUDIT` | **ALL SIX GAPS CLOSED — 24/24 criteria met**, 3 declared scope exclusions |
+| `INDEPENDENT-CLOSURE-REVERIFICATION` | **NOT SUSTAINED — 0 of 6 verified as claimed.** Only `G4` Provenance survives intact; `G1`, `G5` **REFUTED**; `G2` non-incorporated source; `G3` partial; `G6` circular/superseded |
+| `UNCERTAINTY-NONIDENTIFIABILITY-MISSINGNESS` | **ALL THREE "SCOPE EXCLUSIONS" ARE FALSIFIED** |
+| `MATHEMATICAL-COMPLETENESS-AUDIT` | **9 of 30 symbols fail**; 6 dependency edges missing; 1 internal contradiction |
+| `CANONICAL-KNOWLEDGEOS-THEORY` | **NOT YET COMPLETE — 19/24** |
+
+**§18 correction:** I previously recorded the 19/24 verdict as *"a result with no adjudication"*.
+**An adjudication round exists.** Recorded, and the earlier entry is left standing per §7.
+
+### ⭐⭐⭐ `THEORY-STATUS-VERDICT` adjudicates my own `G-43`
+
+Its mandate **forbids a single PASS/FAIL**; it returns **eight separate closure verdicts**.
+Sense 3, verbatim:
+
+> **Computationally closed — 🟡 PARTIAL, and narrower than claimed.** Closed for a
+> fully-specified policy on **non-governance** operations. **Not closed for `commit`:**
+> `Qualify` has no body (**pipeline stop 1**) and **`δ` cannot write `Γ`** (**pipeline stop 2,
+> executed: `K₁ is K₀`**). ***"30/30 symbols resolve" is withdrawn*** — irreconcilable with the
+> same programme's 14/16.
+
+$$Finding(t_1) \to Commission(t_2) \to Adjudication(t_3)$$
+
+* **`Finding(t₁)`** — my `G-43`, from the canonical artifact: *"`δ` WAS EXECUTED — `K₁ =
+  δ(K₀,e₀)` computed end-to-end with zero author consultation; 28 of 30 symbols resolved."*
+* **`Commission(t₂)`** — the `re-verification` mandate: attack the claim; **forbid a single
+  PASS/FAIL**.
+* **`Adjudication(t₃)`** — **the same execution, reported twice with opposite valence.**
+  `K₁ = δ(K₀,e₀)` *"computed end-to-end"* **is** `K₁ is K₀` — **the computation ran and changed
+  nothing, because `δ` has nowhere to write.** The canonical artifact reports the run as a
+  success; the re-verification reports it as **pipeline stop 2**.
+
+⭐ **`G-43`'s "`δ` was EXECUTED" stands as a fact and is materially incomplete as reported.**
+`EXECUTED ≠ VALIDATED` (§17) — and here the *same executed computation* is the evidence for both
+readings. This is the sharpest instance in the reconstruction of why those two must stay apart.
+**And it is the source of my forward plan's `D3` note *"executed: `K₁ is K₀`"*.**
+
+### The symbol-count conflict — four numbers, one lane, one day
+
+**30/30** (withdrawn) · **28/30** (`CANONICAL-KNOWLEDGEOS` §21) · **21/30** (`MATHEMATICAL-
+COMPLETENESS-AUDIT`: 9 fail) · **14/16** (`COMPUTABILITY-MATRIX`). The verdict calls 30/30
+*"irreconcilable with the same programme's 14/16"*. **Recorded as an unresolved measurement
+conflict. Not reconciled — no canonicalization.**
+
+### ⭐⭐ The lane had already found what I later re-found
+
+* **Sense 2:** *"**11 of 25 terms carry >1 semantic role**… **`Ω` alone carries ≥4 global senses,
+  two foundational and opposite in direction.** The claim *'every canonical term now has exactly
+  one meaning'* is false by measurement."* And `INDEPENDENT-CLOSURE-REVERIFICATION` `G5`:
+  *"a worse overload (`Ω`, ≥4 global senses) **was never registered**."*
+  ⭐⭐⭐ **My `G-22`/`G-11` `Ω` sense inventory was measured here on 2026-08-30 — eleven days
+  before I opened it, and flagged as unregistered at the time.**
+* **Sense 6:** the policy-change loop *"**was already closed** by ratified `I-11` + `R-1`
+  stratification (v0.2, `GN-19`, **2026-08-28**). The audit closed it again, differently, on
+  2026-08-30. **Two unreconciled resolutions of one problem (`ES-005.4`)**."*
+  ⭐ **`EKS-52`'s pattern, diagnosed by that lane against the project's own standard.**
+* **Sense 8:** *"three 'inexpressible' capabilities **are expressible, and the corpus already
+  expresses them**."* — the estate's recurring *apparent gap ≠ missing theory*.
+
+### ⭐⭐⭐ §15 — that lane executed the provenance discipline, with a method
+
+`INDEPENDENT-CLOSURE-REVERIFICATION` **§13 independence check**, verbatim:
+
+> *"every corpus source cited below is committed to git **on or before 2026-08-28**; this
+> verification programme began **2026-08-29**. **No cited corpus evidence post-dates a verifier
+> finding.** The feedback-loop risk is real for the **verifier's own artifacts** and is why they
+> are not used as evidence here."*
+
+**`method: corpus re-read from primary sources · executed probes · git-date fingerprinting`.**
+This is the anti-contamination control §15 asks for, already built and dated. It also records
+*"**repetition inside one file is not corroboration**"* — Q17's cited passage is a duplicated
+block (lines 1779-2088 recur at 2385-2694).
+
+⭐ **A third model lane exists.** `G2`'s source is *"**DeepSeek research under a standing 'NOT
+INCORPORATED' ruling**"*, and `CLAUDE-CHATGPT-RECONCILIATION.md` (mandate `20260830_1852 §17`)
+reports *"all four compared steps are contamination-free"*. **Claude · ChatGPT · DeepSeek**,
+with a standing non-incorporation ruling on the third. ⚠️ Recorded as **provenance structure
+only**; no content consumed from it here.
+
+### Intra-day chronology
+
+All 58 artifacts are dated `2026-08-30` with no time; git first-commit is `09-06 08:02` for all
+(a bulk import) and therefore **carries no ordering information**. Citation between
+`CANONICAL-KNOWLEDGEOS-THEORY` and the re-verification round is **zero in both directions**.
+
+$$\boxed{\text{Intra-day order within 2026-08-30: } \texttt{CHRONOLOGY UNRECORDABLE}}$$
+
+**One logical order *is* established**, by content and not by timestamp:
+`THEORY-CLOSURE-AUDIT` → `INDEPENDENT-CLOSURE-REVERIFICATION`, because the latter **names the
+former as the claim it attacks**.

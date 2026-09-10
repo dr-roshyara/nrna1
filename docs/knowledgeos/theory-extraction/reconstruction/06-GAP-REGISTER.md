@@ -2606,3 +2606,133 @@ titled **"do not freeze"**.
 ⭐⭐⭐ **82 of 117 kernel prompts are `step_286` — the Gītā strand. The programme spine is 33
 prompts.** 70 % of the kernel commission corpus went to a strand my forward plan records as
 closed with *"five cycles, **0 primitives**"*.
+
+---
+
+# ⭐⭐⭐ G-46 — `G-41` resolved as a HISTORICAL relationship: **INDEPENDENT CONSTRUCTION with PARTIAL OVERLAP**
+
+**Mission §5.** *Not* "which theory is correct". Record:
+`reconstruction/commission/00-COMMISSION-REGISTER.md` §I.
+
+## §5 comparison — Theory A (`CANONICAL-KNOWLEDGEOS-THEORY`, 08-30) vs Theory B (`20260902-004631` v1.0, 09-02)
+
+| Object | **A** (08-30) | **B** (09-02) | Relationship | Evidence |
+|---|---|---|---|---|
+| **provenance** | **commissioned** — `mandate: 20260830 §16`, one of **58** mandate-bearing artifacts | **`COMMISSION NOT RECORDED`** — opens *"Yes."*, a dialogue turn | **structurally different** | headers; 229/416 answer-openers in B's folder |
+| **evidence vocabulary** | **11** — `CE FD TH EX EO IE SC VR RF US ND` | **7** — `DEF AX THM COR EMP ARCH OPEN` | **disjoint schemes** | both legends read |
+| **numbering** | none — 30 prose sections | `DEF-1…33` `AX-1…7` `THM-1…11` `I1…I9` `OPEN-1…6` | **B numbers, A does not** | `DEF-`/`AX-`/`I1`/`I9` = **0** in A |
+| **`K`** | **7 NECESSARY** `(id,P,e,c,t,Π,ℛ)`; and elsewhere in the lane *"`K=(𝒜,ℛ)` is under-specified and internally contradictory"*, *"the foundational layer is **not** `K` — it is `(ℰ,𝒟,V_D)`"* | **`OPEN-1`** — *"is there a unique `𝕂`?"* | **A answers, B declares open** | §22 vs §86 |
+| **minimality** | ✓ box 16 — **PROVEN relative to `𝒯`**, not ontologically | **`OPEN-6`** — *"has **not** established an eight- or thirteen-operator universal kernel"* | ⚠️ **CONTRADICTORY as stated**, but over **different reference sets** (`𝒯` vs the operator space) | both verbatim |
+| **transformation algebra** | ✓ box 11 — **fully typed** | kernel `𝒦=(𝒫,ℛ,δ,ℐ)` is **`[PROP]`** | ⚠️ **CONTRADICTORY** | both verbatim |
+| **`δ`** | *"`K₁ = δ(K₀,e₀)` computed end-to-end"* — **EXECUTED** | born §71 as a **kernel slot**, signature at §87, **no body** | **A executes what B declares** | §21 vs §71/§87 |
+| **`≡_sem`** | not an open box | **`OPEN-3`** | **B opens what A does not raise** | §86 |
+| **open items** | authority→gate binding · 2 blocked symbols · 3 overloaded terms · policy-change authorisation | carrier · `K_t` structure · `≡_sem` · gap geometry · uncertainty algebra · minimal kernel | **barely intersect** | §15 gate vs §86 |
+| **validation state** | *"empirically tested against a running system, falsified in five places"* | *"does not yet prove uniqueness of the semantic state space or the minimal computational kernel"* | **A claims empirical test; B claims none** | both verbatim |
+| **citation** | — | — | **ZERO both directions**, every probe | 6+6 probes, with control |
+
+## §5 classification
+
+$$\boxed{\textbf{INDEPENDENT CONSTRUCTION} + \textbf{PARTIAL OVERLAP}}$$
+
+**Not** `CONTINUATION`, `REVISION` or `CORRECTION`: B inherits no identifier, no vocabulary and
+no verdict from A, and never cites it. **Not** `IDENTITY UNRESOLVED`: they are plainly two
+constructions, not one object seen twice. The overlap is in **subject matter only** — `K`, `δ`,
+minimality, the transformation algebra — where they reach **incompatible completion claims**.
+
+⚠️ **Neither adopted. Not reconciled.** Per `20260829_1453` §4, the rule governing this corpus:
+*supersession is not established, therefore preserve the alternatives.*
+
+## §8 — "canonical" is a claim, decomposed
+
+| dimension | **A** | **B** |
+|---|---|---|
+| **conceptual authority** | a commissioned verification programme | a single reasoning turn continuing an 8-minute-earlier predecessor |
+| **mathematical authority** | executed probes, git-date fingerprinting, a running EKP | derivation from declared definitions; *"empirical claims remain explicitly empirical"* |
+| **governance authority** | ⭐ **none found** — no adoption act located for either | ⭐ **none found** |
+| **historical status** | **proposed as canonical, and then re-verified downward by its own lane** | **proposed as a baseline to freeze**; no freeze act located |
+
+$$\boxed{\text{Neither artifact has a located governance adoption. Both are PROPOSED-canonical.}}$$
+
+---
+
+# ⭐⭐⭐ G-47 — a re-verification round exists, and it adjudicates `G-43` and my §18 report
+
+## §18 correction
+
+I reported the 19/24 verdict as **"a result with no adjudication"**. **An adjudication round
+exists** — eight artifacts under `mandate: 20260830 re-verification`. Earlier entry left
+standing per §7.
+
+$$Claim \to Re\text{-}verification \to Withdrawal$$
+
+`THEORY-CLOSURE-AUDIT` **24/24, six gaps closed** → `INDEPENDENT-CLOSURE-REVERIFICATION`
+**NOT SUSTAINED, 0 of 6 verified as claimed** (*"treated here as a claim to be attacked, not as
+a record"*; only `G4` Provenance survives; `G1`,`G5` **REFUTED**) →
+`UNCERTAINTY-NONIDENTIFIABILITY-MISSINGNESS` **all three scope exclusions FALSIFIED**.
+
+## ⭐⭐⭐ The `G-43` adjudication — one execution, two valences
+
+`THEORY-STATUS-VERDICT` returns **eight separate verdicts** (its mandate **forbids a single
+PASS/FAIL**). Sense 3:
+
+> **PARTIAL — and narrower than claimed.** Not closed for `commit`: `Qualify` has no body
+> (**pipeline stop 1**) and **`δ` cannot write `Γ`** (**pipeline stop 2, executed: `K₁ is
+> K₀`**). ***"30/30 symbols resolve" is withdrawn*** — irreconcilable with the same programme's
+> 14/16.
+
+* **`Finding(t₁)`** — my `G-43`: *"`δ` WAS EXECUTED, computed end-to-end, 28/30 resolved."*
+* **`Adjudication(t₃)`** — **`K₁ = δ(K₀,e₀)` "computed end-to-end" and `K₁ is K₀` are the same
+  run.** The computation executed and **changed nothing**, because `δ` has nowhere to write. One
+  artifact reports it as success, the other as **pipeline stop 2**.
+
+⭐ **`G-43` stands as fact and was materially incomplete as reported.** `EXECUTED ≠ VALIDATED`
+(§17) — and here the *same executed computation* is the evidence for both readings. **This is
+also the located source of my forward plan's `D3` note *"executed: `K₁ is K₀`"*.**
+
+**Symbol-count conflict, unresolved:** **30/30** (withdrawn) · **28/30** (A §21) · **21/30**
+(9 fail) · **14/16**. **Not reconciled.**
+
+---
+
+# G-48 — the lane had already measured what I later re-found
+
+* ⭐⭐⭐ **`Ω`**: sense 2 — *"**`Ω` alone carries ≥4 global senses, two foundational and opposite
+  in direction.** The claim *'every canonical term now has exactly one meaning'* is false by
+  measurement"*; `G5` — *"a worse overload (`Ω`, ≥4 global senses) **was never registered**."*
+  **My `G-22`/`G-11` inventory was measured on 2026-08-30, eleven days early, and flagged as
+  unregistered at the time.** `11 of 25 terms carry >1 semantic role.`
+* ⭐ **`EKS-52`**: sense 6 — the policy-change loop *"was already closed by ratified `I-11`+`R-1`
+  (2026-08-28). The audit closed it again, differently, on 2026-08-30. **Two unreconciled
+  resolutions of one problem (`ES-005.4`)**."*
+* ⭐ **`D4`'s missing home located**: `ASSURANCE-RECONSTRUCTION-MATRIX.md` — *"`Assurance`
+  CANNOT be retained as one formal object"* (mandate `20260830_1918 §6`).
+* **Sense 8**: *"three 'inexpressible' capabilities **are expressible, and the corpus already
+  expresses them**."*
+
+## §15 — that lane built the anti-contamination control, with a method
+
+> **§13 independence check:** *"every corpus source cited below is committed to git **on or
+> before 2026-08-28**; this verification programme began **2026-08-29**. **No cited corpus
+> evidence post-dates a verifier finding.** The feedback-loop risk is real for the **verifier's
+> own artifacts** and is why they are not used as evidence here."*
+> `method: corpus re-read from primary sources · executed probes · git-date fingerprinting`
+
+Also: *"**repetition inside one file is not corroboration**"* (Q17's passage recurs at
+1779-2088 and 2385-2694).
+
+⭐ **A third model lane exists**: `G2`'s source is *"DeepSeek research under a standing **NOT
+INCORPORATED** ruling"*; `CLAUDE-CHATGPT-RECONCILIATION.md` reports *"all four compared steps are
+contamination-free"*. **Claude · ChatGPT · DeepSeek.** ⚠️ Recorded as **provenance structure
+only** — no content consumed.
+
+## Chronology
+
+All 58 artifacts are dated `2026-08-30` with no time; git first-commit is `09-06 08:02` for
+every one (bulk import) and **carries no ordering information**.
+$$\boxed{\text{Intra-day order within 2026-08-30: } \texttt{CHRONOLOGY UNRECORDABLE}}$$
+**One logical order is established by content, not timestamp:** `THEORY-CLOSURE-AUDIT` →
+`INDEPENDENT-CLOSURE-REVERIFICATION`, because the latter names the former as its target.
+
+**5 artifacts carry `COMMISSION NOT RECORDED`** (`20260830_2152` ×4, `20260830_1158` ×1) — both
+stamps fall inside the lane's active window, so per §6 this does **not** mean no commission
+existed.
