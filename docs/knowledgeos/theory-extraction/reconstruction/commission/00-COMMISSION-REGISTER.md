@@ -521,3 +521,93 @@ $$\boxed{\text{Intra-day order within 2026-08-30: } \texttt{CHRONOLOGY UNRECORDA
 **One logical order *is* established**, by content and not by timestamp:
 `THEORY-CLOSURE-AUDIT` → `INDEPENDENT-CLOSURE-REVERIFICATION`, because the latter **names the
 former as the claim it attacks**.
+
+---
+
+## J. `DEFINITION-VERIFICATION-REGISTER` — another lane's definition register, and the test I had been applying informally
+
+`mandate: 20260829_1956 §5` · **2026-08-29** · Steps **001–025** only (*"definitions from Steps
+026–205 are added as their verification bands land"* — **later instalments not located**).
+**29 definitions `DV-01…DV-29`**, each *"read **verbatim at source by the verifier** (not taken
+from any prior register)"*.
+
+### Its apparatus
+
+* **`D1…D10` test key** — existence · type · domain · codomain · preconditions · postconditions
+  · uniqueness/determinism · constructibility · computability · independent verifiability
+* **7-value verdict vocabulary** — `CLEAR` · `PARTIALLY_CLEAR` · `AMBIGUOUS` · `ILL-TYPED` ·
+  `INCOMPLETE` · `CONTRADICTORY` · `NOT_DEFINED`
+* **Standing rule §13** — *"SOURCE RESULT and VERIFIER OBSERVATION are kept apart; **no repair
+  is applied to the corpus here**."*
+
+### ⭐⭐⭐ The oracle convention — the discriminating test I had been applying without a name
+
+> *"Many definitions are **deliberately** parameterised by a policy `ρ` or an interpretation
+> function the corpus refuses to fix. **Where the source states this explicitly**, the definition
+> is scored **`CLEAR-relative-to-oracle`** and `D9` stops at `CONSTRUCTIBLE (oracle-gated)` —
+> **this is an honest design choice, not a defect.** **Where the parameterisation is silent**, it
+> is scored **`INCOMPLETE`**."*
+
+$$\boxed{\text{declared boundary} \iff \text{the parameterisation is STATED. Silent parameterisation} \iff \text{INCOMPLETE.}}$$
+
+This whole session has been re-deriving the *family* — `ρ_A`, `Det_r`, `Ω-B`, `⪰`, `OPEN-1…6`,
+`OPEN BY COMMISSION`. **This register supplies the discriminating test the family needed, and it
+is sharper than my formulation**: not *"is it declared?"* but *"is the parameterisation stated
+or silent?"* Recorded as a **methodological inheritance**, dated **2026-08-29** — twelve days
+before I re-derived it.
+
+### ⭐⭐⭐ Instalment verdict — the summary finding of my own session, measured independently
+
+> *"In the foundation and framework layers, the corpus's definitional hygiene is **high**:
+> **where a definition is left open, the source almost always says so**; where standard
+> mathematics is imported, it is imported correctly. **The defects are concentrated in
+> *canonicalisation* (orientation, alphabets, tuple identity, ID namespaces) rather than in
+> mathematics.** **No definition in Steps 001–025 was found mathematically wrong except `DV-05`,
+> which the corpus repaired itself within one hour.**"*
+
+| | count |
+|---|---|
+| definitions verified | **29** |
+| `CLEAR` / `PARTIALLY_CLEAR` | 13 / 10 |
+| `INCOMPLETE` | 4 (`𝒜` · EIG oracles · `ω` · EC-derivation) |
+| `AMBIGUOUS` | 1 (`≺` orientation) |
+| `ILL-TYPED` | 1 (`DV-05`, **self-repaired by the corpus**) |
+| `NOT_DEFINED` (**deliberate**) | 2 (`𝔹`'s consequence relation; `⊢`'s logic) |
+| **independently COMPUTED by the verifier** | **8** (`C1–C8`, all pass) |
+| standard-theory imports checked | 5 (Kleene · Shannon IG · Bayes/Beta · EVSI · delta method) — **all correct** |
+| **mathematical errors found** | **1** |
+
+**`apparent gap ≠ missing theory` was a measured result over Steps 001–025 before I began.**
+
+### §2 — object birth points recovered
+
+| object | birth | finding |
+|---|---|---|
+| **`Ind_ρ(e_i,e_j,G,C)`** | step-001 §1.1 | ⭐⭐⭐ **3-valued at birth** — `{Independent, Dependent, Unknown}`, ***"`Unknown` irreducible"*** (§10). **The earliest three-valuedness in the corpus**, well before `𝕋₃` and before `Sat`'s `U` |
+| **`≺`** dependency | step-002 §5 | **`AMBIGUOUS` — orientation unfixed.** *"both orientations yield isomorphic theories; the repair is a **notation act, not a mathematical one** — but it is a decision the corpus never took, so it **may not be silently assumed**"* |
+| **`=_I` · `≈_P`/`=_P` · `=_O`** | step-002 §5 | ⭐⭐ **the equality family's birth.** `=_I` CLEAR · `=_O` PARTIALLY_CLEAR · `≈_P` CLEAR-as-oracle. **Notation defect: the same relation is written `≈_P` and `=_P` inside one file.** ⭐ `≡_P` is a member of `261.25`'s 7-tuple — **the equality family traces to step-002** |
+| **`EA = (S⁺,S⁻,U,Q,V,D,X,Π)`** | step-003 §1 | 8-tuple; component sorts **deliberately not given** |
+| **`Conflict(P)`** | step-003 §3 | **`ILL-TYPED` as written** (`>0` presupposes an order the same document refuses to fix) → **repaired in-corpus** by step-004 §7–8 set-theoretically (`E⁺≠∅ ∧ E⁻≠∅`). ⭐ *"the cleanest genuine **RESOLUTION** found in the corpus so far"*, under a **four-condition resolution test**: same question · new result · actually answers · not reopened |
+| **`𝒬`** (confidence codomain) | step-005 §5 | **deliberately unfixed** — *"the corpus's measurement-theoretic high point — '0.8 has no epistemic meaning until its semantics are specified'… the refusal to fix `𝒬` is **principled, not evasive**"* |
+| **`T-K6a`** | step-004 §21 | ⭐ **PROVEN impossibility** — *"no multiset-of-strengths aggregator satisfies duplicate-invariance ∧ corroboration-increase."* The positive half remains a **DESIGN CHOICE** |
+
+⭐ **`Conflict`/`Contr` (`CR-1`) has a birth and an in-corpus repair**, both inside Steps 003–004,
+which my `CR-1` record (*"7 signatures"*) does not carry.
+
+### ⭐ A ninth negative-history value: `LOST / UNACCOUNTED`
+
+> *"**Status: LOST/UNACCOUNTED** — no later file in the corpus references `F1–F10` again. This is
+> a **genuine lineage loss of a well-formed artifact**."*
+
+Distinct from every existing value: the artifact **exists**, is **well-formed**, was **verified
+`CLEAR`**, and is **never cited again**. Not `NOT YET LOCATED` (it is located), not
+`GENUINE CORPUS GAP` (nothing is missing), not `OPEN BY COMMISSION`.
+
+### Other defects it registers
+
+*"the same content carries **three ID systems in one file**"* (16 unnamed properties / `A₁–A₈` /
+`E-K1–E-K10`) — *"`E-K` is the only set reused downstream and is therefore the canonical key."*
+
+**Cross-links declared:** `spec/STEP-VERIFY-001-010.md` · `spec/STEP-VERIFY-011-025.md` ·
+findings `TV-F-020…024` · `AC C-062…066`. ⭐ **`spec/` (45 files) is a `STEP-VERIFY` series** —
+a per-step verification apparatus this reconstruction has never enumerated.

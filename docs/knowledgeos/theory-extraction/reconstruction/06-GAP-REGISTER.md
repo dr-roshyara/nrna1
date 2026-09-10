@@ -2736,3 +2736,72 @@ $$\boxed{\text{Intra-day order within 2026-08-30: } \texttt{CHRONOLOGY UNRECORDA
 **5 artifacts carry `COMMISSION NOT RECORDED`** (`20260830_2152` ×4, `20260830_1158` ×1) — both
 stamps fall inside the lane's active window, so per §6 this does **not** mean no commission
 existed.
+
+---
+
+# ⭐⭐⭐ G-49 — the discriminating test for a declared boundary already existed, and it is sharper than mine
+
+`DEFINITION-VERIFICATION-REGISTER.md` (`mandate: 20260829_1956 §5`, **2026-08-29**, Steps
+001–025, **29 definitions read verbatim at source**). Full record: commission register §J.
+
+## The oracle convention
+
+> *"Many definitions are **deliberately** parameterised by a policy `ρ` or an interpretation
+> function the corpus refuses to fix. **Where the source states this explicitly**, the definition
+> is scored **`CLEAR-relative-to-oracle`** … **this is an honest design choice, not a defect.**
+> **Where the parameterisation is silent**, it is scored **`INCOMPLETE`**."*
+
+$$\boxed{\text{declared boundary} \iff \text{the parameterisation is STATED; silent parameterisation} \iff \texttt{INCOMPLETE}}$$
+
+This session re-derived the *family* — `ρ_A`, `Det_r`, `Ω-B`, `⪰`, `OPEN-1…6`,
+`OPEN BY COMMISSION`. **This supplies the test the family lacked**, and asks a sharper question
+than mine: not *"is it declared?"* but ***"is the parameterisation stated or silent?"***
+Recorded as **methodological inheritance**, twelve days early.
+
+## ⭐⭐⭐ The instalment verdict is this session's summary finding, measured first
+
+> *"the corpus's definitional hygiene is **high**: **where a definition is left open, the source
+> almost always says so** … **the defects are concentrated in *canonicalisation* (orientation,
+> alphabets, tuple identity, ID namespaces) rather than in mathematics.** **No definition in
+> Steps 001–025 was found mathematically wrong except `DV-05`, which the corpus repaired itself
+> within one hour.**"*
+
+29 definitions · 13 `CLEAR` · 10 `PARTIALLY_CLEAR` · 4 `INCOMPLETE` · 1 `AMBIGUOUS` · 1
+`ILL-TYPED` (self-repaired) · 2 `NOT_DEFINED` **deliberate** · **8 independently computed by the
+verifier, all pass** · 5 standard-theory imports checked, **all correct** · **1 mathematical
+error in total**.
+
+**`apparent gap ≠ missing theory` was a measured result over Steps 001–025 before I began.**
+
+## §2 births recovered
+
+* ⭐⭐⭐ **`Ind_ρ → {Independent, Dependent, Unknown}`** (step-001) — *"`Unknown` **irreducible**"*.
+  **The earliest three-valuedness in the corpus**, before `𝕋₃` and before `Sat`'s `U`.
+* ⭐⭐ **The equality family is born at step-002 §5** — `=_I` · `≈_P`/`=_P` · `=_O`, with the
+  **`≈_P`/`=_P` notation defect present at birth**. `≡_P` is a member of `261.25`'s 7-tuple:
+  **the family traces to step-002.**
+* **`≺` is `AMBIGUOUS` at birth** — orientation unfixed; *"a **notation act, not a mathematical
+  one** — but a decision the corpus never took, so it **may not be silently assumed**."*
+* ⭐ **`Conflict` (`CR-1`) has a birth AND an in-corpus repair**: `ILL-TYPED` at step-003
+  (`S⁺>0` presupposes an order the same document refuses to fix) → set-theoretic
+  `E⁺≠∅ ∧ E⁻≠∅` at step-004, **within one hour** — *"the cleanest genuine RESOLUTION found in
+  the corpus so far"*, under a **four-condition resolution test** (same question · new result ·
+  actually answers · not reopened). **My `CR-1` record carries neither the birth nor the repair.**
+* **`𝒬` deliberately unfixed** — *"the refusal to fix `𝒬` is **principled, not evasive**."*
+* ⭐ **`T-K6a` PROVEN** — no multiset-of-strengths aggregator satisfies duplicate-invariance ∧
+  corroboration-increase. The positive half is a **DESIGN CHOICE**.
+
+## ⭐ A ninth negative-history value: `LOST / UNACCOUNTED`
+
+> *"**Status: LOST/UNACCOUNTED** — no later file in the corpus references `F1–F10` again. A
+> **genuine lineage loss of a well-formed artifact**."*
+
+The artifact **exists**, is **well-formed**, was verified **`CLEAR`**, and is **never cited
+again.** Distinct from `NOT YET LOCATED` (it is located) and from `GENUINE CORPUS GAP` (nothing
+is missing).
+
+## Coverage
+
+The register covers **Steps 001–025 only**; later instalments **NOT LOCATED**. It cross-links
+`spec/STEP-VERIFY-001-010.md` and `STEP-VERIFY-011-025.md` — ⭐ **`spec/` (45 files) is a
+per-step `STEP-VERIFY` apparatus this reconstruction has never enumerated.**

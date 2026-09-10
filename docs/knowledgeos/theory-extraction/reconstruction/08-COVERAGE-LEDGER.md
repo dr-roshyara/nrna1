@@ -106,3 +106,22 @@ parallel to `05-DEFINITION-EVOLUTION-REGISTRY.tsv` and **never compared with it.
 
 **Prompt corpus read so far: 4 of 169** (`20260829_1453`, `20260830_1953`,
 `20260902-085654`, `20260901-025251`).
+
+### `brainstorming/verification/` — what the 2026-08-30 family actually contains
+
+**58 top-level artifacts each declaring a `mandate:` header.** Read this pass: 6
+(`CANONICAL-KNOWLEDGEOS-THEORY`, `CANONICAL-THEORY-TRIANGULATION` (header),
+`DEFINITION-VERIFICATION-REGISTER`, `INDEPENDENT-CLOSURE-REVERIFICATION`,
+`THEORY-STATUS-VERDICT`, and mandate/status headers of all 58).
+
+**Still unread and load-bearing:** `SIGMA-RECONSTRUCTION-AFTER-POLICY` (*"RESOLVED"*) ·
+`SIGMA-ADVERSARIAL-AUDIT` (*"my own three-state result is partially refuted"*) ·
+`DECISION-SIGMA-EPISTEMIC-STATUS` · `KNOWLEDGE-STATE-FINAL-AUDIT` (*"`K=(𝒜,ℛ)` under-specified
+and internally contradictory"*) · `THEORY-OBJECT-DEPENDENCY-GRAPH` (*"the foundational layer is
+not `K` — it is `(ℰ,𝒟,V_D)`"*) · `MATHEMATICAL-COMPLETENESS-AUDIT` · `THEORY-GAP-REGISTER`
+(21 gaps) · `FINAL-THEORY-GAP-REGISTER` (9 gaps, 2 blocking) · `COMPUTABILITY-MATRIX` ·
+`ASSURANCE-RECONSTRUCTION-MATRIX` · `CLAUDE-CHATGPT-RECONCILIATION` · the 10 `POLICY-*` artifacts.
+
+⭐ **`spec/` (45 files) is a per-step `STEP-VERIFY-NNN-NNN` series** — never enumerated here.
+
+**Prompt corpus read: 6 of 169.**
