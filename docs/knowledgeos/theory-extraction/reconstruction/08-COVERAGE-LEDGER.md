@@ -47,7 +47,8 @@ the readable corpus read semantically, plus a mechanical extraction over 2 083 d
 | lane | files | status |
 |---|---|---|
 | ⭐⭐ **`theory-extraction/` — THIS RECONSTRUCTION'S OWN PARENT LANE** | **121 top-level `.md`, of which 101 are `P`-numbered audits, + 8 `elements/` files** | ⛔ **NOT-READ — and, until 2026-09-10, NOT EVEN LISTED HERE.** `G-00` found `G-06`, `G-07`, `G-16` and half of `G-01` already answered in it, and `02-ELEMENT-INDEX.md` already carrying the homonym rule `G-22` re-derived. **The ledger's failure to enumerate this lane is the structural cause of the duplication.** |
-| `verification/` | 480 | **NOT-READ** except `step-280/281/282` execution artifacts (5 read) — ⚠️ `G-22`/`G-00`: `TG-15`, `C-06`, `GN-09`, `D-R27` and `16-MASTER-GAP-REGISTER` all live here |
+| `verification/` (under `brainstorming/`) | 480 | **NOT-READ** except `step-280/281/282` artifacts (5) and ⭐ `gap-discovery/gap-update-2026-09-02/` (13 docs, **READ 2026-09-10**) — ⚠️ `TG-15`, `C-06`, `GN-09`, `D-R27`, `16-MASTER-GAP-REGISTER` all live here |
+| ⭐⭐ **`verification/zero-algebra/` — REPO ROOT, previously uncharacterised** | **174 files** — 13 executed `KR-*-2026-09` packages: 59 `.py`, 53 `.json` results, 50 `.md`, 8 `.jsonl` corpora | ⛔ **NOT-READ.** Includes `KR-BRIDGE-01-ZERO-PRESERVATION` — **25,000 cases, controls PASS, "OUTCOME A — NO RELATIONSHIP OBSERVED"**. `adequa*` 28 files · `preserv*` 45 · **`ℛ_req` 0 · `Congruent` 0**. **The largest body of executed evidence in the estate. `G-32`** |
 | `mathematical_ideas_…` | 411 | **NOT-READ** by Main; surveyed by Worker C |
 | `kernel/` | 181 | **NOT-READ** |
 | root + misc | 132 | **NOT-READ** |

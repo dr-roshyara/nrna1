@@ -1615,3 +1615,162 @@ and that lane flagged it against itself.
 | **NEW `G-30`** | ⚠️ **`~_F` ≟ `~_Λ` — unchecked.** If the operative distinguishability relation is non-transitive (`FR-001`), every quotient argument in `step-272` carries an unverified premise. **Flagged by that lane against itself, and never resolved** |
 
 **Standing qualifier unchanged: semantic coverage ≈1.5 % (32 of 2,099).**
+
+---
+
+# ⭐⭐⭐ R → P → Eval → Accept, reconstructed. **`G-28` VERDICT: `IMPLICITLY TYPE-CONSTRAINED`.** The bridge exists as `P_c`, and it contradicts its own signature.
+
+*(§5/§6/§15 of this commission were discharged by the `gap-update-2026-09-02` read; this pass covers §2, §3, §4, §7, §9, §10, §13.)*
+
+## A · Birth-point table
+
+| object | lexical | conceptual / first definition | first formal type |
+|---|---|---|---|
+| **`P` (proposition)** | s002, 08-27 14:09 | ⭐ **s018 §23, 16:06:59** — as a **rule component**: *"KnowledgeOS must determine whether `A,B,C` are true / false / unknown… This gives us a three-valued **rule evaluation**"* | truth-apt formula in `A ∧ B ⇒ C` |
+| **`Eval`** | ⭐ **s018 §23** | `Eval(P,K) ∈ {True,False,Unknown}` — **boxed** | `P × K → 𝕋₃` |
+| **`𝕋₃ = {T,F,U}`** | ⭐ **s018 §25** | **named**, with tables `T∧U=U`, `F∧U=F` | ⭐ **strong Kleene, at birth** |
+| **`AcceptancePolicy` / `ρ_A`** | s007, 14:27 | **s008 §12, 15:19:20** | `ρ_A`, six example conditions |
+| **`Accept`** | s008 §11 | `EA ⊨ Policy ⟹ Accept(P)` | entailment → predicate |
+| **`r` / requirement** | s003, 14:11 | later: `r=(id,type,scope,content,standard,priority,validity)` | and in `ℛ_req`: **an equivalence relation `~_d` on `S`** |
+| **`EC`** | ⭐ **only s017** in the whole band | — | — |
+| **`Γ`** | s006 | — | — |
+
+⭐ **The entire band is 25 files / ~40,000 lines, written 2026-08-27 14:06 → 16:18 — two hours twelve minutes.**
+
+## D · What `Eval` actually evaluates — settled
+
+`s018` is titled *"rules, inference, logic, constraints and the reasoning engine"*, and §23's context is
+the evaluation of **rule antecedents and consequents** (`A ∧ B ⇒ C`), with §24 *"**Unknown premise
+does not become True**"* for open-world reasoning.
+
+$$\boxed{\textbf{At birth, } P \textbf{ is a RULE COMPONENT — a truth-apt formula in an inference system. Not a requirement, not an assertion about } K.}$$
+
+## C · The R → P bridge — **found, as `P_c`**
+
+`Sat_c` (2026-09-02 09:39), body:
+
+$$Sat_c(K_t,r;\Gamma_t)=\begin{cases}\top & K_t,\Gamma_t \models \mathbf{P_c(r)}\\ \bot & K_t,\Gamma_t \models \neg \mathbf{P_c(r)}\\ \mathsf U & \text{otherwise}\end{cases}$$
+
+⭐ **`P_c(r)` stands to the right of `⊨` and is negated.** That **forces** it to be a **formula**.
+⇒ `P_c : ℛ_c → Formulas` — **a class-indexed requirement→proposition map.**
+
+### ⛔ And it contradicts its own stated signature, seven lines later
+
+| (a) **usage**, L1610–11 | `K_t,Γ_t ⊨ P_c(r)` ⇒ `P_c(r)` is a **formula**, `P_c` is **1-ary** |
+| (b) **declared type**, L1622 | `P_c : 𝒦 × ℛ_c × Γ → {true,false,undetermined}` ⇒ `P_c` is **3-ary**, returns a **truth value** |
+| (c) **third use**, L1632 | `Sat_c = Eval(P_c, K_t, r, Γ_t)` ⇒ `P_c` is a **first-class argument** |
+
+Under (b), `P_c(r)` is ill-formed and `⊨ P_c(r)` is a **type error** — one cannot entail a truth
+value. **Three readings of `P_c` in twenty-five lines, unnoticed.**
+
+⭐ And a **fourth `Eval` arity** in the same document: `Eval(K_t, r; Γ_t)` (L884, L895) — `Eval`
+applied to a **requirement** directly, alongside `Eval(P_c,K_t,r,Γ_t)`.
+
+## G · `G-28` VERDICT
+
+$$\boxed{\textbf{B — IMPLICITLY TYPE-CONSTRAINED}}$$
+
+**Not `A`** — the map is never *declared* as `ℛ_c → Formulas`; it appears only in usage, and the
+one declaration given contradicts it. **Not `C`** — this is more than a conceptual relation: the
+entailment **forces** the type. **Not `D`** — a bridge exists. **Not upgraded**, per §6.
+
+⛔ **Supersedes my previous re-scope** (`CONCEPTUALLY PRESENT BUT FORMALLY UNSPECIFIED`) — that was
+one level too weak.
+
+## F · Chain matrix
+
+| edge | status | evidence |
+|---|---|---|
+| `r → P_c(r)` | ⭐ **TYPE-CONSTRAINED** | forced by `⊨ P_c(r)`; declared type contradicts it |
+| `P → Eval` | ⭐ **DIRECT** | `s018` §23, boxed |
+| `Eval → 𝕋₃ = {T,F,U}` | ⭐ **DIRECT** | `s018` §25, with Kleene tables |
+| `Sat_c → Eval` | ⭐ **DIRECT** | **`Sat_c = Eval(P_c, K_t, r, Γ_t)`** — the requirement side explicitly defined *through* the proposition side |
+| `𝕋₃ → V_Sat` | **TYPE-CONSTRAINED** | same three values, same *undetermined* third; ⛔ **0 citations of s018**, but **5 mentions of Kleene** ⇒ **independent re-derivation**, not inheritance |
+| `Eval → Accept` | ⚠️ **UNWITNESSED** | `ρ_A` consumes an **Evidence Assessment**, not `Eval`'s output. No document composes them |
+| `r → Accept` | ⛔ **UNWITNESSED** | `ρ_A` accepts **propositions** |
+
+## E · What `AcceptancePolicy` accepts
+
+**A proposition `P`**, on the basis of an **Evidence Assessment `EA`** — `EA ⊨ ρ_A ⟹ Accept(P)`.
+Result is an **event** (`AssertionAccepted`) plus a **state transition** (`Supported → Accepted`).
+Semantics: ⭐ **mixed by declaration** — *"Mathematics defines what an assessment means; **Policy**
+defines when it is sufficient; **Governance** defines who may commit"*, and *"these are examples of
+policy, **not universal laws**"*.
+
+⇒ **It is NOT the acceptance relation for requirements**, and it never claimed to be.
+
+## §13 · DDD
+
+| **`AcceptancePolicy`** | ⭐ `s008` §14 declares a bounded context: **"Knowledge Commitment"** — `Assertion` · `EvidenceAssessment` · `AcceptancePolicy` · `AcceptanceDecision` · `Commitment` · `Authority` |
+| **`Eval` / `P` / `𝕋₃`** | `s018` — the **reasoning engine**; ⛔ **declares no bounded context** |
+| **`r` / `ℛ_req`** | state-space distinctions — a third setting |
+
+⇒ ⭐ **The acceptance side has a named context; the rule/evaluation side has none; the requirement
+side is a third.** The φ question is a **context-mapping question across three settings**, and only
+one of the three has declared its boundary.
+
+## §11 · Provenance
+
+| `𝕋₃` Kleene structure | ⭐ **two independent lineages** — `s018` (08-27, with tables) and `s240` (08-30, *"independently exhaustively checked… strong Kleene"*). `Sat_c` (09-02) is a **third**, citing neither but naming Kleene 5×. **Three arrivals, zero citations between them** |
+| `P_c` as a bridge | **one document, one lineage.** Not corroborated anywhere |
+
+## H · Impact
+
+| **`G-28`** | ⭐ **`IMPLICITLY TYPE-CONSTRAINED`** — the strongest classification the evidence supports |
+| **`G-01` / `G-25`** | **remain dissolved** — no flat domain is adequate at any cardinality |
+| **`G-27`** | **remains superseded** |
+| **NEW `G-31`** | ⛔ **`P_c` carries three incompatible readings in twenty-five lines** — a formula-valued map, a 3-ary truth-valued predicate, and a first-class argument to `Eval`; plus a fourth `Eval` arity in the same file. **The one bridge the corpus has is internally ill-typed** |
+| **backfill debt** | ⭐ **the 001–022 band is now READ for this family** — `s008` and `s018` both proved load-bearing, as predicted |
+
+## I · Next, by load × dependency × historical risk
+
+⭐ **`G-31`.** It is the *only* open item that sits **on** the bridge rather than beside it: if `P_c`
+cannot be typed consistently, then `Sat_c` — the sole implemented satisfaction function
+(17 executable hits) — rests on an ill-formed premise, and `Sat_c = Eval(P_c,…)` is the single line
+joining the requirement and proposition subtheories. **`G-30`** (`~_F ≟ ~_Λ`) remains second: it
+threatens a premise, but of a lane that is not implemented.
+
+**Semantic coverage ≈1.5 % (32 of 2,099) — unchanged.**
+
+## ⚠️ ADDENDUM — "there might be more gap-update folders". There is only one. But the enumeration found something larger.
+
+**`gap-update-*`: exactly one folder exists.** ✅ The question is closed.
+
+⭐⭐⭐ **But enumerating the whole class surfaced an unrecorded executable estate:**
+
+### `verification/zero-algebra/` — 13 `KR-*-2026-09` packages, **174 files**
+
+**59 Python · 53 JSON results · 50 Markdown · 8 JSONL corpora**, with `code/`, `corpus/`,
+`results/`, `witnesses/`, `manifests/`, `schemas/`.
+Packages: `KR-BRIDGE-01/02/03` · `KR-ZERO-ALGEBRA` · `KR-ZERO-GROUP` · `KR-ZERO-ORDER` ·
+`KR-REP-REDUCTION` · `KR-ZOOM-01/02/03` · `KR-ZOOM-OUT-01/02/03` · `METHODOLOGY-2026-09`.
+
+⚠️ **My `08-COVERAGE-LEDGER` lists the root `verification/` as "209 files · NOT-READ" and
+characterises it no further.** Same defect as the `theory-extraction/` omission `G-00` found —
+**an enumerated-but-undescribed lane is a lane nobody searches.**
+
+### `KR-BRIDGE-01-ZERO-PRESERVATION-2026-09` — an executed adequacy experiment
+
+| verdict | ⭐ **"OUTCOME A — NO RELATIONSHIP OBSERVED"** — a negative result |
+| scale | **25,000 cases**, seeded (`train 20260904` / `test 88020260904`), 2026-09-04, Python 3.13.2 |
+| controls | `A_preserving_is_adequate` **1.0 PASS** · `B_destroying_is_inadequate` **0.0 PASS** · `C_invertible_recoding_matches_A` **PASS** |
+| discipline | *"**no carrier is declared**"* · *"Zero is **NEVER** defined using `Q`… Disjoint reads"* · *"every `R = T(D)` is computed from `D` **DIRECTLY**. No chain."* |
+| its own caveat | *"**Read the AUDIT FIRST** — it records **two material limitations and one label mismatch** that qualify everything below"* |
+
+### ⭐⭐ And the vocabularies are disjoint
+
+| across all 13 packages | `adequa*` **28 files** · `preserv*` **45 files** |
+| but | ⛔ **`ℛ_req` — 0 files** · ⛔ **`Congruent` — 0 files** |
+
+$$\boxed{\textbf{Two lanes work representation-adequacy-under-preservation with DISJOINT vocabularies and zero cross-reference — one with 25,000 executed cases, the other with none.}}$$
+
+⇒ ⭐ **`G-29` may be testable against an experiment that already exists.** `[PROPOSED]` — I have
+**not** verified that `KR-BRIDGE`'s *preservation-adequacy* and `SPEC-RREQ`'s *`ℛ_req`-adequacy* are
+the same notion. **Recorded as a candidate, not adopted.**
+
+### `NEW G-32`
+
+⛔ **`verification/zero-algebra/` (174 files, 13 executed packages) has never been enumerated by
+this reconstruction.** It is the **largest body of executed evidence** found so far and it is the
+**third** unenumerated lane (`theory-extraction/`, `gap-update-2026-09-02/`, now this).
+**The coverage ledger's lane list is itself unreliable, and that is now a measured property.**

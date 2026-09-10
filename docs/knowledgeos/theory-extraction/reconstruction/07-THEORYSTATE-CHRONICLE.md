@@ -876,3 +876,52 @@ Continuity **measured, not declared** — the same evidential shape as `026`'s a
 **Every one was a gap opened from a bounded search and refuted by the birth-point method.**
 This is no longer an observation about the corpus. **It is a measured property of my own procedure**,
 and the standing rule now has four confirmations behind it.
+
+---
+
+# STATE CHANGE — the R → P → Eval → Accept chain, 2026-09-10
+
+## ⭐⭐ The foundation is two hours long
+
+The 001–022 band is **25 files, ~40,000 lines, written 2026-08-27 14:06 → 16:18** — **2 h 12 min**.
+`Eval`, `𝕋₃`, `AcceptancePolicy` and the proposition/requirement split all originate inside it.
+
+## ⭐⭐⭐ What `P` is, at birth
+
+`step-018` §23–25 (16:06:59), boxed: `Eval(P,K) ∈ {True,False,Unknown}`, and `𝕋₃ = {T,F,U}` with
+`T∧U=U`, `F∧U=F` — ⭐ **strong Kleene at birth, with tables.** The section is **rule evaluation**
+(`A ∧ B ⇒ C`); §24: *"Unknown premise does not become True."*
+
+$$\boxed{P \textbf{ is a RULE COMPONENT. } r \textbf{ is a state-space distinction. } \varphi \textbf{ is a CROSS-LAYER map, not a same-level function.}}$$
+
+## ⭐⭐⭐ The bridge exists — as `P_c` — and it is ill-typed
+
+`Sat_c`, 09-02: `K_t,Γ_t ⊨ **P_c(r)**` — standing right of `⊨` and negated, which **forces**
+`P_c : ℛ_c → Formulas`. **A class-indexed requirement→proposition map.**
+
+But seven lines later: `P_c : 𝒦 × ℛ_c × Γ → {true,false,undetermined}` — **3-ary, truth-valued**.
+And at L1632: `Sat_c = Eval(P_c, K_t, r, Γ_t)` — **first-class**.
+
+⛔ **Three readings in twenty-five lines. Under the declared type, `⊨ P_c(r)` is a type error.**
+Plus a **fourth `Eval` arity** — `Eval(K_t, r; Γ_t)` — in the same file. **`G-31`.**
+
+⇒ **`G-28` = `IMPLICITLY TYPE-CONSTRAINED`** — one level stronger than my previous re-scope, and
+**not** upgraded to *explicit*.
+
+## Three arrivals at Kleene, none citing another
+
+`s018` (08-27, tables) · `s240` (08-30, *"independently exhaustively checked"*) · `Sat_c` (09-02,
+**5 Kleene mentions, 0 citations of s018**). **Three lineages.**
+
+## ⛔ And a third unenumerated lane
+
+**`verification/zero-algebra/` — 174 files, 13 executed `KR-*` packages** (59 py, 53 json results,
+8 jsonl corpora), including **`KR-BRIDGE-01-ZERO-PRESERVATION`: 25,000 cases, controls PASS,
+verdict "OUTCOME A — NO RELATIONSHIP OBSERVED"**.
+⛔ `adequa*` in 28 files, `preserv*` in 45 — and **`ℛ_req` in 0, `Congruent` in 0.**
+
+> **Two lanes work representation-adequacy-under-preservation with disjoint vocabularies and zero
+> cross-reference — one with 25,000 executed cases, the other with none.**
+
+**Third unenumerated lane** after `theory-extraction/` and `gap-update-2026-09-02/`.
+**The coverage ledger's own lane list is now a measured unreliability.**
