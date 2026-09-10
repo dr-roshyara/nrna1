@@ -3344,3 +3344,24 @@ self-corrections documented; twelve dangling external references point to unread
 `14_decision-log/MD-093-kernel-domain-discovery-burst-1/` (4 files). **MD-093 status: EXECUTED.
 CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own next ~39-file segment (2026-08-24 01:08
 onward).
+
+---
+
+**Status update, 2026-09-10 (latest): MD-094 — Kernel Domain-Discovery Burst 2 (20 files) — EXECUTED,
+CHECKPOINT.** Continued `kernel/`'s own chronology from MD-093's own recommended frontier
+(2026-08-24 01:08–03:36). Three parallel extraction agents read all 20 files in full. **Central
+finding**: File 44 introduces a "K-1 structure" (`KnowledgeAggregate`+`ConflictRecord`, Verification
+Port as sole gate) — the exact token this reconstruction has treated as an already-frozen governance
+track since MD-067, without ever having read its own origin; no identity statement connects the two —
+recorded `IDENTITY UNRESOLVED`, the highest-priority candidate yet found for that track's origin. The
+same file confirmed not actually an adjudication despite its own title. Four further unreconciled
+Kernel senses found (running ledger now twenty candidates). Confirmed a genuine fork: one sub-thread
+contains zero occurrences of "Kernel" as a KnowledgeOS concept. "EKS" resolved as "Engineering
+Knowledge System." A third independent site for the RAG-boundary claim family found. The corpus's own
+explicit pivot toward formalization found. Two clean self-corrections plus one partially-propagated
+terminology correction documented. No frozen artifact modified; no object merged; no bridge invented;
+K-1/K2 untouched per this reconstruction's own standing freeze; `theory-extraction/` and
+`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-094-kernel-domain-discovery-burst-2/` (4 files). **MD-094 status: EXECUTED.
+CHECKPOINT.** Next frontier, named, not begun: `kernel/`'s own continuation from 2026-08-24 09:44
+onward, or a bounded adjudication-only phase testing the K-1 structure candidate.

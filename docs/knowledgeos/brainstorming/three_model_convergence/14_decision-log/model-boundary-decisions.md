@@ -7009,3 +7009,44 @@ never accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_
 MD-093-kernel-domain-discovery-burst-1/` (4 files). **MD-093 status: EXECUTED. CHECKPOINT** — per the
 master mission's continuous-execution instruction. Next frontier, named, not begun: `kernel/`'s own
 next ~39-file segment (2026-08-24 01:08 onward), continuing the same directory's own chronology.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-094 — Kernel Domain-Discovery Burst 2 (20 files) — EXECUTED,
+CHECKPOINT.** Continued `kernel/`'s own chronology from MD-093's own recommended next frontier
+(2026-08-24 01:08), bounded by a genuine ~6-hour session break at 03:36. Three parallel extraction
+agents read all 20 files in full. **Central finding**: File 44 (`wave-1-kernel-extent-versus-contents-
+adjudication-status`) introduces a **"K-1 structure"** (`KnowledgeAggregate`+`ConflictRecord`,
+Verification Port as sole inbound gate) — the exact token this reconstruction has treated as an
+already-frozen, permanently-untouched governance track in every phase closure since MD-067, without
+ever having read its own origin. No explicit identity statement connects the two within this batch —
+recorded `IDENTITY UNRESOLVED — INSUFFICIENT EVIDENCE`, the single highest-priority candidate this
+reconstruction has yet found for that track's own origin, named for a future adjudication-only phase.
+The same file is confirmed, by direct analysis, **not actually an adjudication despite its own title**
+— a live status note explicitly deferring its own ruling, running as a wholly separate governance
+track (`C-14`–`C-18`, `F-CM-1a/1b`, "the second corpus... sealed") with zero cross-reference to the
+surrounding book-extraction material. Kernel-identity proliferation continues: four further
+unreconciled Kernel senses found this phase (a "Layer 1 — Knowledge Kernel" ten-field candidate; a
+Human-AI-collaboration boundary object; two more unreconciled candidate-content lists), bringing the
+running ledger to twenty non-identified "Kernel" candidates across the burst's own first ~30 hours.
+Confirmed a genuine fork in the burst's own chronology: batch C (files 54–59) contains **zero**
+occurrences of "Kernel" as a KnowledgeOS concept, developing an independent statistical/causal-
+inference/evidence-acquisition research line instead. Resolved the "EKS" check: explicitly self-defined
+in-text as "Engineering Knowledge System," distinct from this reconstruction's own backlog-ticket
+prefix; a further acronym ("PKS") flagged for future collision-risk tracking. Confirmed a third,
+independent site for the RAG-boundary claim family (`Retrieved≠Relevant≠Supported≠True≠Authoritative`),
+predating both prior sites this reconstruction already found by roughly two weeks — no citation links
+any of the three. Found the corpus's own explicit methodological pivot toward formalization ("Technical
+first, with a formal/mathematical layer underneath it") — though no formal notation itself appears
+anywhere in this 20-file window, marking *when* the programme decided to formalize ahead of *where* it
+did so. Two clean, fully-narrated self-corrections documented (a protocol-compliance correction; an
+architectural-conclusion revision), plus one partially-propagated terminology correction
+(`KnowledgeClaim`→`KnowledgeAssertion`, not carried through the very next file — recorded as ongoing
+drift). No frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched (per this
+reconstruction's own standing governance-freeze, notwithstanding the new candidate-origin finding);
+`theory-extraction/` and `verification/zero-algebra/` (the concurrent session's own active lane) never
+accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-094-kernel-domain-discovery-burst-2/` (4 files). **MD-094 status: EXECUTED. CHECKPOINT.** Next
+frontier, named, not begun: `kernel/`'s own continuation from 2026-08-24 09:44 onward, or a bounded
+adjudication-only phase testing the "K-1 structure" candidate against this reconstruction's own
+governance-frozen K-1/K2 references.
