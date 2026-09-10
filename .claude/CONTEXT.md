@@ -1,4 +1,34 @@
-**Updated:** 2026-09-11 (latest) — **MD-102 EXECUTED — `K_t^*` GETS AN ACTUAL DEFINITION, `Φ` EVOLVES
+**Updated:** 2026-09-11 (latest) — **MD-103 EXECUTED — `DETERMINATION`/`WARRANT`/`REASON`/
+`JUSTIFICATION` BORN, EVIDENCE REDEFINED AS A RELATION, AND A SECOND, COMPETING `K_t^*` FORMULATION
+(positions 25-30), CHECKPOINT.** Continued directly from MD-102's own named position 25. Central
+finding: this segment is the literal source of position 25's own filename ("Extraction retrieves
+material. Determination establishes what that material warrants asserting.") — births `Extraction`,
+`Determination` (`F=D(O,P,M,A,H)`, refined to `D(p|E,R,C,t)`), `Warrant` (`Fact(p)⇐Warrant(p|R,C,t)`),
+`Reason` (seven-field tuple, seven reason-types — "probability is one kind of reason, not the
+definition of reason"), `Justification` (`J(R,C)⇒Valid(R)`), `Admission` — none merged into one
+"epistemic evaluation" concept. `Fact` receives four further formulations (now ≥8 total across
+MD-102-103). **`Evidence` reclassified from object to RELATION** (`Supports(O,p,C,t)`), challenging
+"raw evidence" terminology — a genuine DDD fork (Entity vs. Relation). **`K_t^*` receives a second,
+competing gloss** (`K_t^*(p|C_t)`, conditional/possibly non-crisp, "Ideal Knowledge ≠ omniscience") —
+NOT merged with MD-102's own closure-operator gloss; both preserved. `E_t(p)`/`ℰ_t(p)` born, joining
+`Φ`/`Status(k,t,C)`/`K_t^*` in an unreconciled "epistemic evaluation function" cluster, IDENTITY
+UNRESOLVED throughout. **`Acceptance` SEARCHED AND NOT FOUND** (the mission's own named object);
+`Admission` plays a similar role instead — flagged as a terminology variant, not merged.
+`Rule`/`Criterion`/`Material` remain component-role-only. **New corpus-hygiene finding**: position
+25's own file is a full internal self-duplicate (a new duplication shape, distinct from MD-101/102's
+own). Positions 29/30's provenance resolved directly (a synthesis and its own critique, 16 seconds
+apart on disk — a tool save-order artifact). F4 formal family confirmed absent across all six files,
+extending the boundary to 321 files. No frozen artifact modified; no object merged; no bridge
+invented; K-1/K2 untouched; `theory-extraction/` and `verification/zero-algebra/` never accessed.
+Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-103-phase-measure-theory-determination-warrant-reason-segment/` (5 files). **MD-103 status:
+EXECUTED. CHECKPOINT.** Next frontier, named, not begun: continue from position 31
+(`20260825-235804_kernel-problem-minimum-substrate-for-conditional-determination.md`) onward; position
+32 requires direct verification against MD-102's own "Fact is the missing bridge" framing (filename
+suggests "Determination is the missing mathematical object" — not yet confirmed by content); position
+33 is already known to be a duplicate of position 31.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-102 EXECUTED — `K_t^*` GETS AN ACTUAL DEFINITION, `Φ` EVOLVES
 AND IS CHALLENGED, AND "THE FACT PROBLEM" IS NAMED (positions 18-24), CHECKPOINT.** Continued MD-101's
 own discipline (net-new accounting; verify every file's actual content; keep external theory external;
 no identity assumed for new objects). Read seven files, positions 18-24 (2026-08-25 23:10-23:39), none

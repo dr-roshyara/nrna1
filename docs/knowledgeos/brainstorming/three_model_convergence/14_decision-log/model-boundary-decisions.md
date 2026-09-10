@@ -7413,3 +7413,60 @@ zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. F
 **MD-102 status: EXECUTED. CHECKPOINT.** Next chronological frontier, named, not begun: continue from
 position 25 (`20260825-234405_extraction-retrieves-material-determination-establishes-warrant.md`)
 onward, watching specifically for how "The Fact Problem" develops next.
+
+## MD-103 — `phase_measure_theory/` Root, Positions 25-30: `Determination`/`Warrant`/`Reason`/
+`Justification` Born, Evidence Redefined as a Relation, and a Second, Competing `K_t^*` Formulation
+
+Continued directly from MD-102's own named position 25, per the user's most recent "MASTER MISSION —
+CONTINUE CHRONOLOGICAL MULTI-OBJECT RECONSTRUCTION" instruction, which additionally named
+`Extraction`/`Material`/`Determination`/`Warrant`/`Evidence`/`Justification`/`Qualification`/
+`Acceptance`/`Rule`/`Criterion` as objects to track SEPARATELY from "The Fact Problem." Read six files,
+positions 25-30 (2026-08-25 23:44:05 through 23:57:54).
+
+**Central finding**: this segment is the literal source of position 25's own filename —
+"Extraction retrieves material. Determination establishes what that material warrants asserting." —
+which births `Extraction`, `Determination` (`F=D(O,P,M,A,H)`, later refined to `D(p|E,R,C,t)`),
+`Warrant` (`Fact(p)⇐Warrant(p|R,C,t)`), `Reason` (a seven-field tuple with seven reason-types,
+"probability is one kind of reason, not the definition of reason"), `Justification`
+(`J(R,C)⇒Valid(R)`, distinct from Reason), and `Admission` ("records the resulting epistemic
+status") — none merged into a single "epistemic evaluation" concept, per the user's explicit
+instruction. `Fact` itself receives four further, mutually distinct structural formulations this
+segment (now at least eight total across MD-102-103), none declared canonical.
+
+**`Evidence` is explicitly reclassified from an object to a RELATION** — `Supports(O,p,C,t)` —
+directly challenging "raw evidence" terminology proposed by this segment's own uploaded AI synthesis
+(position 30); a genuine DDD-significant finding (Evidence-as-Entity vs. Evidence-as-Relation, now a
+live architectural fork).
+
+**`K_t^*` (born MD-102) receives a second, competing gloss**: `K_t^*(p|C_t)`, explicitly conditional
+and possibly irreducibly non-crisp ("Ideal Knowledge ≠ omniscience") — recorded as a second evidence
+event, NOT a replacement of MD-102's own closure-operator gloss; both preserved, unreconciled.
+`E_t(p)`/`ℰ_t(p)` born as a third/fourth member of an expanding, unreconciled "graded epistemic
+evaluation" cluster alongside `Φ`/`Status(k,t,C)`/`K_t^*` — relationship among all five kept
+IDENTITY UNRESOLVED throughout.
+
+**`Acceptance` — the specific lexical item the mission named — was SEARCHED AND NOT FOUND** anywhere
+in positions 25-30; `Admission` plays a structurally similar role instead, flagged as a possible
+terminology variant, not merged. `Rule`/`Criterion`/`Material` remain component-role-only, never
+independently typed this segment.
+
+**A new corpus-hygiene finding**: position 25's own file is a full internal self-duplicate (its
+entire content appears twice within the single file) — a different duplication shape than MD-101's
+cross-file duplicates or MD-102's within-file partial-tail duplicate. Provenance chain for positions
+29/30 resolved directly: position 30 is the actual uploaded AI-authored synthesis; position 29 is a
+critique of it, saved 16 seconds earlier on disk — a save-order artifact of the logging tool, not a
+logical contradiction.
+
+F4 formal family confirmed absent across all six files, extending the boundary to 321 files. No
+frozen artifact (MD-024–102) modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-103-phase-measure-theory-determination-warrant-reason-segment/` (5 files).
+
+**MD-103 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun: continue from position 31
+(`20260825-235804_kernel-problem-minimum-substrate-for-conditional-determination.md`) onward; position
+32 (`...determination-is-the-missing-mathematical-object.md`) requires direct verification against
+MD-102's own "Fact is the missing bridge" framing, per the standing "never trust filenames"
+discipline; position 33 is already known from MD-101's own exact-duplicate register to be a confirmed
+duplicate of position 31.
