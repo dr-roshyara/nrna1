@@ -3532,3 +3532,78 @@ $K_{t+1}=\delta(K_t,o,\Gamma) \implies V(K_t) \subseteq V(K_{t+1}) \land H(K_t) 
 the formal statement of `Retract ≠ deletion`, and it sits alongside `δ interface CLOSED /
 semantics OPEN` (`G-56`) and `OPEN BY COMMISSION` (`G-47`) as the **what**, **status** and
 **why** of `δ` respectively.
+
+---
+
+# ⭐⭐⭐ G-61 — **THE RETRACTION FORKED.** The v1.3 episode ends in two incompatible retractions, neither adopted
+
+Source: `20260902-182025_review-exceptionally-sharp-rigorous.md` (806 lines), **byte-identical
+to `182026`**. Record: commission register §W. **This closes the v1.3 reconstruction.**
+
+## §1 · The fork, measured
+
+`[EMP]` Both documents say ***"accepted in full"***, of the **same** reviews, in the **same**
+25-second batch — and reach **opposite** outcomes:
+
+| | `182024` | `182025` |
+|---|---|---|
+| successor artifact | `THEORY-CLOSURE-GATE-2026-v1.0` | `CLOSURE-SYNTHESIS-2026-v1.3 — FINAL FALSIFICATION GATE` |
+| kernel-theory status | **THEORETICALLY CLOSED** | **OPEN / CLOSURE-BLOCKED** |
+| mechanism | closure by recategorisation (`G-60`) | genuine acceptance |
+
+$$\boxed{\text{Same reviews} \longrightarrow \begin{cases} 182024: & \textbf{CLOSED} \\ 182025: & \textbf{OPEN / CLOSURE-BLOCKED} \end{cases}}$$
+
+⭐ **`182025` is the compliant branch.** `182009:1125` demanded the artifact
+*"`CLOSURE-SYNTHESIS-2026-v1.3 — Final Falsification Gate`"* with status *"Discovery CLOSED →
+Constitutional Core CLOSED → Kernel Theory NOT YET CLOSED"*; **`182025` adopts both verbatim.**
+`182024` invents a different artifact and reverses the verdict.
+
+## §2 · ⭐⭐⭐ Why nothing propagated
+
+| successor | corpus files | all in-batch? |
+|---|---|---|
+| `THEORY-CLOSURE-GATE-2026-v1.0` | **2** | ✅ |
+| `CLOSURE-SYNTHESIS-2026-v1.3` | **7** | ✅ |
+
+**The episode did not end in a decision — it ended in a FORK, and neither branch left the
+batch.** The estate reverted to `no v1.3` not because a ratification was overturned (`G-58`),
+nor only for want of authority (`G-54`), but because **the retraction itself was ambiguous and
+neither successor was adopted.**
+
+$$\text{Commission} \to \text{Execution} \to \text{Claim} \to \text{Adjudication} \to \textbf{FORKED RETRACTION} \to \text{no successor adopted}$$
+
+## §3 · Four defects accepted by name
+
+**Measurement Scale Fallacy** (⭐ **fourth `DV-05` instance**) · ⭐ **Pseudo-Confidence
+Intervals** — *"calling it a 'Confidence Interval' is **mathematically indefensible** without a
+defined sampling distribution, coverage probability, or stochastic estimator"* · **The
+Injective Fallacy** · **DDD Boundary Leakage**.
+
+## §4 · ⭐ The five `𝒪_core` primitives, at last as CONTRACTS
+
+`ASSERT(p,payload)` · `LINK(p₁,p₂,relation)` · `REVISE(p,new_proposition)` ·
+`RETRACT(p,reason)` · `ISOLATE(p,scope)` — with **`Invariant 2.1.1 (Structural History
+Preservation)`** and **`Axiom 1.5.1 (Existential Query Non-Collapse)`**, and
+**`Phase C4 — Candidate-Independent Kernel Selection`** adopting the reviews' `C4`.
+
+**First appearance as contracts rather than a name list.** `[PROP]` — `GN-84` still records
+`𝒪_core` **NOT RATIFIED**.
+
+## §5 · ⚠️ Duplication in the 18:20 batch — 4 instances in 27 files (15 %)
+
+**File-level:** `182014 ≡ 182015` · `182025 ≡ 182026`.
+**Internal:** `182007`'s `SPEC-EVAL` twice (3/179 differing) · ⭐ **`182025`'s audit block
+twice — lines 13–130 ≡ 149–266, `0` differing lines of 118.**
+
+⭐ *A document that duplicates its own audit findings verbatim, inside a batch containing two
+exact file copies, is not a sound basis for a ratification act.*
+`INDEPENDENT-CLOSURE-REVERIFICATION` states the rule: ***"repetition inside one file is not
+corroboration."***
+
+## §6 · Final disposition of `v1.3` — unchanged, now completely evidenced
+
+$$v1.2\ \text{(FROZEN)} \;\longrightarrow\; \big[\ v1.3\ \textbf{RESERVED · NOT CREATED}\ \big]$$
+
+Three defect classes are now named — **fabricated authority** (`G-54`), **self-validating
+tests** (`G-55`), **closure by recategorisation** (`G-60`) — and a fourth structural fact:
+**the retraction forked** (`G-61`). **`TheoryState` impact: none.**

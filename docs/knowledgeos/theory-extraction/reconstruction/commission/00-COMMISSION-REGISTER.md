@@ -1588,3 +1588,84 @@ throughout. Not merged.**
 $K_{t+1} = \delta(K_t,o,\Gamma) \implies V(K_t) \subseteq V(K_{t+1}) \land H(K_t) \subseteq H(K_{t+1})$
 — *"structurally append-only… Epistemic standing changes; historical existence persists."*
 **This is a δ constraint, and it is the most concrete δ semantics located so far.**
+
+---
+
+## W. ⭐⭐⭐ `182025` — **THE RETRACTION FORKED.** Two incompatible retractions, same batch
+
+Source: `20260902-182025_review-exceptionally-sharp-rigorous.md` (806 lines)
+*(user-supplied)*; **byte-identical to `182026`** (md5 `c415dab9…`, 0 diff).
+
+> *"Your verdict is **accepted in full**. The declaration that KnowledgeOS Theory v1.3 is
+> mathematically closed is **rescinded**"* →
+> $\boxed{\text{CLOSURE-SYNTHESIS-2026-v1.3 — FINAL FALSIFICATION GATE}}$
+> *Status: Discovery CLOSED | Constitutional Core CLOSED | **Kernel Theory OPEN /
+> CLOSURE-BLOCKED***
+
+### The fork, measured
+
+`[EMP]` Both documents say *"accepted in full"*, of the **same** reviews, in the **same**
+25-second batch — and reach **opposite** outcomes:
+
+| | `182024` | `182025` |
+|---|---|---|
+| replacement artifact | `THEORY-CLOSURE-GATE-2026-v1.0` | `CLOSURE-SYNTHESIS-2026-v1.3 — FINAL FALSIFICATION GATE` |
+| kernel-theory status | **THEORETICALLY CLOSED** (Zero Category A Gaps) | **OPEN / CLOSURE-BLOCKED** |
+| mechanism | ⭐ **closure by recategorisation** (`G-60`) | ⭐ **genuine acceptance** |
+
+$$\boxed{\text{Same reviews} \longrightarrow \begin{cases} 182024: & \textbf{CLOSED} \\ 182025: & \textbf{OPEN / CLOSURE-BLOCKED}\end{cases}}$$
+
+⭐ **`182025` is the compliant response.** `182009:1125` demanded *"`CLOSURE-SYNTHESIS-2026-v1.3
+— Final Falsification Gate`"* with status *"Discovery CLOSED → Constitutional Core CLOSED →
+Kernel Theory NOT YET CLOSED"*. **`182025` adopts that artifact name and that status line
+verbatim.** `182024` invents a different artifact and reverses the verdict.
+
+### ⭐⭐⭐ This finally explains the downstream silence
+
+`[EMP]` **Neither replacement left the batch:**
+
+| artifact | corpus files | all in the 18:20 batch? |
+|---|---|---|
+| `THEORY-CLOSURE-GATE-2026-v1.0` | **2** | ✅ yes |
+| `CLOSURE-SYNTHESIS-2026-v1.3` | **7** | ✅ yes |
+
+**The v1.3 episode did not end in a decision. It ended in a FORK, and neither branch was
+adopted.** The estate then reverted to `no v1.3` — not because a ratification was overturned
+(`G-58`), and not only for want of authority (`G-54`), but because **the retraction itself was
+ambiguous and neither successor propagated.**
+
+$$\boxed{\text{Commission} \to \text{Execution} \to \text{Claim} \to \text{Adjudication} \to \textbf{FORKED RETRACTION} \to \text{no successor adopted}}$$
+
+### The four defects `182025` accepts by name
+
+1. **The Measurement Scale Fallacy** — arithmetic `S⁺−S⁻` requires a scale specification
+   (ratio vs ordinal/interval). ⭐ **Fourth instance of `DV-05`.**
+2. ⭐ **Pseudo-Confidence Intervals** — *"calculating `conf_low = net − μ`… and calling it a
+   'Confidence Interval' is **mathematically indefensible** without a defined sampling
+   distribution, coverage probability, or stochastic estimator."*
+3. **The Injective Fallacy in Query Sensitivity** — named as such; existential non-collapse
+   required, *"not global injectivity."*
+4. **DDD Boundary Leakage** — `Actionability ∈ {Permitted, RequiresHumanReview, Blocked}`
+   inside `Determination`.
+
+### ⭐ It supplies the five `𝒪_core` CONTRACTS — not just the names
+
+`Contract 1 ASSERT(p, payload)` · `2 LINK(p₁,p₂,relation)` · `3 REVISE(p, new_proposition)` ·
+`4 RETRACT(p, reason)` · `5 ISOLATE(p, scope)`, plus **`Invariant 2.1.1 (Structural History
+Preservation)`** and **`Axiom 1.5.1 (Existential Query Non-Collapse)`**, and
+**`Phase C4 — Candidate-Independent Kernel Selection`** — the reviews' `C4` adopted verbatim.
+
+⭐ **This is the first time the five primitives appear as contracts rather than a list.**
+Recorded `[PROP]`; `GN-84` still records `𝒪_core` **NOT RATIFIED**.
+
+### ⚠️ Duplication census of the 18:20 batch — 4 duplications in 27 files (15 %)
+
+| kind | instances |
+|---|---|
+| **file-level** | `182014 ≡ 182015` · `182025 ≡ 182026` |
+| **internal** | `182007` `SPEC-EVAL` twice (3/179 differing) · **`182025` audit block twice — lines 13–130 ≡ 149–266, `0` differing lines of 118** |
+
+⭐ *A document that duplicates its own audit findings verbatim, inside a batch containing two
+exact file copies, is not a reliable basis for a ratification act* — and
+`INDEPENDENT-CLOSURE-REVERIFICATION`'s rule applies directly: ***"repetition inside one file is
+not corroboration."***
