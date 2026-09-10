@@ -120,3 +120,72 @@ instruction* rather than in the artifact itself. **Prompts are primary sources.*
 `[NEG]` No item is closed · `CIRC-5`'s three rival `≡_sem` definitions stand unreconciled ·
 `TG-1` stands · no repair applied · v1.1's findings are neither promoted nor demoted, only their
 **silence** is reclassified · `three_model_convergence/` not consumed.
+
+---
+
+# 5. The rule applied immediately: `δ` is `OPEN BY COMMISSION`
+
+**A fifth unenumerated lane.** `prompt` appears **zero** times in my coverage ledger, and the
+estate holds **246 prompt files**: `knowledgeos_kernel/prompts` **117** ·
+`verification/prompts` **40** · `reviews/synthesis/prompts` **10** · `pks` 1 · `publicdigit` 1 ·
+**39 loose**. This is the lane that governs how every other lane's `OPEN` items must be read.
+
+⚠️ **A fifth measurement defect of mine, caught before publication.** My first sweep for `δ` in
+this lane used `\bδ\b` and `\\delta` and returned **zero files**. A word-boundary assertion
+around a non-ASCII glyph does not do what it looks like it does. The corrected count:
+**180 occurrences across 42 files.** *The zero measured my regex, not the lane.*
+
+## `REFINED-STEP-290 — OPERATION SEMANTICS`
+
+> **"Step 290 must define what it means for a KnowledgeOS operation to be semantically valid,
+> **without prematurely selecting** the final operation set, kernel state, equality relation, or
+> implementation."**
+>
+> *status:* **OPEN — research to be executed** · *authority:* **Research derives; Governance
+> ratifies normative choices**
+
+It asks whether $\delta : K \times O \rightarrow K'$ suffices **or** whether the corpus requires
+a richer model — listing thirteen candidate ingredients (events, assertions, observations,
+evidence, provenance, policy, authority, rejection, retraction, contradiction, history, time,
+external effects) — and scopes itself to *"operation semantics **before** operation
+canonicalization"*.
+
+### §2 Non-goals — thirteen, verbatim
+
+> Step 290 **MUST NOT**: 1. select the final kernel · 2. declare `(𝒜,ℛ)` to be the kernel ·
+> 3. resolve the equality decision problem · 4. decide whether `Π ∈ ≡` · 5. define the final
+> observation model · 6. introduce new primitives · 7. promote philosophical concepts into
+> architecture · 8. **select a final operation registry** · 9. **declare `δ` total** ·
+> 10. assume operations are deterministic · 11. assume every operation changes `K` ·
+> 12. assume every operation is reversible · 13. resolve Governance questions by mathematical
+> argument.
+
+$$\boxed{\text{operation semantics} \neq \text{operation registry} \neq \text{implementation}}$$
+
+$$\boxed{\delta \text{ is } \textbf{OPEN BY COMMISSION}. \text{ Its body is Non-goal \#8; its totality is Non-goal \#9.}}$$
+
+`satc_spec.py`'s blocker — *"`operational`: δ is Step 290 and is open"* — is **factually correct
+and reads as a deficiency**. Step 290's own mandate makes leaving it open the **required
+outcome**. `δ` is named as open by three lanes; **none of the three records that a mandate
+required it.**
+
+### ⭐ Third consequence for my own forward plan
+
+`CR-3` is filed there as *"`δ` ① **event** or **operation** ② **total**, or **partial with a
+`Reject` codomain**"*. **Non-goal #9 forbids the research lane from declaring `δ` total.** The
+option is not open *to that lane* and never was — so `δ`'s non-totality in the corpus is
+**evidence of a mandate, not evidence about `δ`**. `CR-3` remains a genuine governance decision
+(Non-goal #13 reserves it), but one of its two branches has **no research evidence behind it and
+could not have had any.**
+
+**Three misclassifications in my own plan today** — `D1` (a decision filed as a derivation),
+`CR-4` (a three-way conflict filed as cheapest), `CR-3` (a branch treated as evidentially open
+when it was barred). ⭐ **All three share one cause: the commissioning constraints were never
+read.**
+
+### And `§3 Inherited constraints` adds a fourth relation
+
+Step 287 is quoted as leaving **four** distinct state-level relations with unresolved decision
+procedures: $=$, $\equiv$, $\approx$, $\cong_\lambda$. My `G-40` record of the `≡_sem` conflict
+counted **three** definitions across `≡_sem`/`≈_obs`. **`≅_λ` is new to this register** and is
+recorded, not merged.

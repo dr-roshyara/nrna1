@@ -61,3 +61,23 @@ the readable corpus read semantically, plus a mechanical extraction over 2 083 d
 4. `025g`–`025z` — 20 documents at `READ-STRUCTURAL` only
 5. **Q-series, 31 documents** — candidate common ancestor, entirely unread
 6. `001`–`022`, incl. `step-016`
+
+## ⭐ Fifth unenumerated lane — `prompts/` (246 files) — **NEVER READ AS EVIDENCE**
+
+| location | files |
+|---|---|
+| `phase_measure_theory/knowledgeos_kernel/prompts/` | **117** |
+| `brainstorming/verification/prompts/` | **40** |
+| `knowledgeos/reviews/synthesis/prompts/` | 10 |
+| `docs/pks/prompts/`, `docs/publicdigit/prompts/` | 1 + 1 |
+| loose `*prompt*` files elsewhere | **39** |
+| **total** | **246** |
+
+`prompt` occurred **zero** times in this ledger before 2026-09-10. Following the
+`OPEN BY COMMISSION` finding, this lane is **primary source material**: a commissioning mandate
+determines whether another lane's `OPEN` item is a corpus gap or a required outcome. Two items
+have already been reclassified from it (`CIRC-5`, `δ`).
+
+**Read so far: 2 of 246.** The rest is open coverage debt, and it is now the highest-priority
+debt in the ledger because every unread mandate can change the classification of an item already
+recorded elsewhere.
