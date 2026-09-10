@@ -2993,3 +2993,35 @@ trace: `14_decision-log/MD-082-acceptance-semantics-birth-evolution-and-internal
 (5 files). **MD-082 status: EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in
 kind from MD-080/081 — a human governance decision among the three named options, now resting on the
 most precise statement this reconstruction has produced of what is and is not computationally open.
+
+---
+
+**Status update, 2026-09-10 (latest): MD-083 — External Research-Session Cross-Check and Candidate
+Construction Proposal — EXECUTED, HARD STOP.** User directed attention to three 2026-09-10-dated files
+in the math lane — outputs from a separate research session the user consulted directly, matching the
+`EKS-31` corpus-hygiene pattern (self-referential, quoting this reconstruction's own MD-070/078/080/
+081/082 findings near-verbatim). Instruction: skip re-logging content already in this reconstruction's
+own record; treat genuinely new content as a candidate worth recording. **`document_08.md`
+cross-check**: the substantial majority restates already-logged findings — not re-logged; one
+systematic imprecision noted but not adopted (repeatedly restates "defined" as "derived"/"computable,"
+exactly the conflation MD-082's three-way discipline exists to prevent); one genuinely new, specific
+claim — `Standing(p)`'s alleged `Σ={Unknown,Supported,Refuted}` — independently verified and found
+**not corroborated by any corpus file** (the only "Supported"/"Refuted" co-occurrence is two ordinary
+matrix values in an unrelated worked example, no "Unknown," no named `Σ` object); recorded as
+checked-and-refuted, not adopted. **`document_1343.md` evaluation**: confirmed genuinely new — a
+construction proposal (`Accept:𝔸×R×Γ×EC→𝔹`, `Suff` left an open primitive, `𝔸={Established,Rejected,
+Conflicted,Unknown}`, `Σ_{EC,Γ}(K)` semantic signature, a `SAT-CLOSURE-01` five-condition gate).
+Evaluated, not adopted: disciplined on several points (refuses to invent a numeric threshold for
+`Suff`, refuses to force a 2-valued/3-valued `Sat` choice, correctly preserves
+`Unknown≠False≠ProbabilityZero`, independently reaching the same "open primitive" conclusion MD-082
+reached for `Policy_Det`) — but its own chosen `𝔸` silently selects one of ≥3 competing, unreconciled
+corpus-native status-vocabularies without flagging the choice, a real gap in its own stated "derive
+only what is forced" discipline. Relationship to `Det_r`: `RELATED OBJECT, CONSTRUCTED CANDIDATE` (same
+classification as `kos/inquiry.py`'s own `Sat`) — not a demonstrated completion. Disposition:
+`PROPOSED CANDIDATE, NOT ADOPTED`. No new backlog ticket — both findings feed `EKS-48`/`EKS-55`. No
+construction; no mapping invented; no adoption; no frozen artifact modified; `theory-extraction/` never
+accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-083-external-session-cross-check-and-candidate-construction-proposal/` (3 files). **MD-083 status:
+EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged in kind — a human governance
+decision among the named options, now additionally informed by an evaluated (not adopted) external
+construction candidate.

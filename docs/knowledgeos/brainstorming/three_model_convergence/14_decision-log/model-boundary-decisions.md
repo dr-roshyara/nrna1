@@ -6448,3 +6448,53 @@ Full trace: `14_decision-log/MD-082-acceptance-semantics-birth-evolution-and-int
 named, not authorized: unchanged in kind from MD-080/081 — a human governance decision among the three
 named options, now resting on the most precise statement this reconstruction has produced of exactly
 what is and is not computationally open in this object family.
+
+---
+
+## MD-083 — External Research-Session Cross-Check and Candidate Construction Proposal
+
+**EXECUTED, HARD STOP, 2026-09-10.** User directed attention to three files dated 2026-09-10
+(`mathematical_ideas_that_can_be_implemented/20260910_1337_document_08.md`,
+`20260910_1338/1343_document.md`, the latter two byte-identical) — outputs from a separate research
+session the user consulted directly, not primary corpus material, matching the `EKS-31` corpus-hygiene
+pattern (self-referential, downstream commentary quoting this reconstruction's own MD-070/078/080/081/
+082 findings near-verbatim, including citing `GAP-004` and the `Γ`/`SUBDIVIDED` finding). Instruction:
+skip re-logging content already in this reconstruction's own record; treat genuinely new content as a
+candidate worth recording.
+
+**`document_08.md` cross-check**: the substantial majority of its content restates already-logged
+findings (the full `EC_t→Req→r→Eval→EvalReq→Sat→Δ→Zero→Det→Decision` chain, `EC`'s competing versions,
+`standard`/`Policy_Det`'s connection, `Γ`'s `SUBDIVIDED` classification, the GAP-004 recommendation) —
+not re-logged. One systematic imprecision noted but not adopted: the document repeatedly restates
+"defined" as "derived"/"computable" for `Eval` and the `Sat=Det_r∘EvalReq∘Eval` composition, exactly
+the conflation MD-082's own three-way discipline exists to prevent. One genuinely new, specific claim —
+`Standing(p)`'s alleged output space `Σ={Unknown,Supported,Refuted}` — was independently verified this
+phase and found **not corroborated by any file in the corpus**; the only genuine co-occurrence of
+"Supported"/"Refuted" is two ordinary cell values in an unrelated worked-example matrix
+(`20260902-124810_simulation-...md`), with no "Unknown" alongside them and no named `Σ` object.
+Recorded as a checked-and-refuted claim, not adopted.
+
+**`document_1343.md` evaluation**: confirmed genuinely new — a construction proposal (`Accept:
+𝔸×R×Γ×EC→𝔹`, `Suff(E,r,Γ,EC)` left as an open primitive, `𝔸={Established,Rejected,Conflicted,
+Unknown}`, `Σ_{EC,Γ}(K)` as a semantic signature, a named `SAT-CLOSURE-01` five-condition closure gate)
+not present anywhere in MD-076–082. Evaluated, not adopted: genuinely disciplined on several points
+(refuses to invent a numeric/probabilistic threshold for `Suff`, refuses to choose between 2-valued and
+3-valued `Sat` codomains, correctly preserves `Unknown≠False≠ProbabilityZero`) — arriving independently
+at the same "open primitive" conclusion MD-082 §03 reached for `Policy_Det`'s own undefined conditions.
+One genuine gap found in the proposal's own stated discipline ("derive only what is forced"): its
+chosen `𝔸` silently selects one of at least three competing, unreconciled corpus-native status-
+vocabularies (§6.42's unnamed set, `Policy_Det`'s own set, Part V's 5-value `𝕊_sat`) without flagging
+the selection as a choice. Relationship to `Det_r`: `RELATED OBJECT, CONSTRUCTED CANDIDATE` (same
+classification this reconstruction gave `kos/inquiry.py`'s own `Sat`, MD-079) — not a demonstrated
+completion. Disposition: `PROPOSED CANDIDATE, NOT ADOPTED`.
+
+No new backlog ticket — both findings feed `EKS-48`'s own already-tracked construction-authorization
+decision and `EKS-55`'s own recommendation to start from tested material, rather than naming a new
+problem. No construction performed; no mapping invented; no adoption; no frozen artifact (MD-024–082)
+modified; `theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-083-external-session-cross-check-and-candidate-construction-proposal/`
+(3 files).
+
+**MD-083 status: EXECUTED. HARD STOP.** `SAT-OPERATIONAL-CLOSURE-v1` remains unauthorized. Next action,
+named, not authorized: unchanged in kind — a human governance decision among the named options, now
+additionally informed by an evaluated (not adopted) external construction candidate.
