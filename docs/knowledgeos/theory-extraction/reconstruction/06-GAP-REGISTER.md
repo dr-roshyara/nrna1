@@ -4499,3 +4499,84 @@ arity-clean, keine Duplikate. Zwölfter dokumentierter Messfehler.
 
 Verarbeitet bis **#2199**; **689 Dateien verbleiben** (#2200 → #2888). Alle vier Objekte
 aktiv, `Δ`/`Ω`/`K_t` mitgeführt. **Keines `READY FOR CLOSURE AUDIT`.**
+
+---
+
+# ⭐⭐⭐ G-73 — FAHRPLAN ERSCHÖPFT (Terminalbedingung A). Schlussblock, und ein Selbstkontaminations-Befund
+
+**Schlussblock #2200–#2887**: 688 Dateien, alle geprüft (T1 152 · T2 412 · T3 124);
+**345 neue distinkte Formen** (`Sat` 159 · `Zero` 141 · `δ` 37 · `Γ` 8).
+
+$$\boxed{\text{Gesamtlauf: } 2.888 \text{ Dateien, ALLE geprüft. Terminalbedingung A erreicht.}}$$
+
+## §1 · ⭐⭐⭐ Der Rewrite-`Zero` ist ein **Schema**, kein Prädikat
+
+`G-63` führte den Rewrite-Zero als ein Prädikat `Zero(K,EC,Γ)`. **Falsch.** Es gibt **eine
+Instanz pro Part**, jeweils kontraktrelativ:
+
+| Part | Form | Kontrakt |
+|---|---|---|
+| 06 | `Zero_p(K, EC, Γ)` | Epistemic |
+| 14 | `Zero_C(K, CC)` | **Causality** |
+| 16 | `Zero(K, DC)` | **Decision** |
+| 19 | `Zero_P(P, PC)` | **Persistence** |
+| 20 | `Zero_R(K, RC)` | **Retrieval** |
+| 21 | `Zero_Cog(K, RCog)` | **Cognitive** |
+| 21a | `Zero_release(K)` | die Worked-Example-Instanz |
+
+$$\boxed{Zero_X(K, XC) \text{ — ein parametrisiertes Schema über Kontrakttypen.}}$$
+
+Das ist die eigentliche Struktur, und sie erklärt, warum `Zero` im Rewrite 232-mal vorkommt.
+
+## §2 · ⭐⭐ Eine **zweite** Zero-Explosion, algebraisch, nach v1.2
+
+Der `KR-ZERO`-Algebra-Strang (09-03 bis 09-07) erzeugt eine ganz andere Familie:
+`Zero_{T,I}(x)` · `Zero(S;D)` · **`Zero(S) = f(Zero(x₁),…,Zero(xₙ))`** (Kompositionsfunktion)
+· **`Zero_i(K_t) ⟺ Π_i(K_t) = 0_{O_i}`** (Projektion) · `Zero(M₁,M₂)` (über *Nachrichten*, im
+Biocomm-Strang) · `ZeroSignature(S)` · `Zero_r(x) ⇒ ¬Zero_{r+1}(x')`.
+
+⚠️ **`POST-V1.2`** — **nicht** mit den neun v1.2-Formen (`G-72`) zu vermengen.
+
+## §3 · ⚠️ `Sat` hat **zwei Signaturen im selben Rewrite**
+
+`Sat : 𝕂 × Req → 𝒮_sat` (part-02) gegen `Sat(K, r, Γ)` (part-05/06) — **mit und ohne `Γ`**,
+keine verbindende Quelle. Dazu part-06s Belege `Sat(K,r,EC₁) = Satisfied` vs
+`Sat(K,r,EC₂) = Unsatisfied` — dieselbe Anforderung, zwei Kontrakte, zwei Ergebnisse
+(korrekt, aber die Signatur nennt `EC` gar nicht).
+
+## §4 · ⚠️⚠️ Selbstkontamination des Fahrplans (§14)
+
+Ab **#2839** sind die Treffer überwiegend **meine eigenen Rekonstruktionsartefakte** —
+`EKS-44`, `EKS-45`, `00-FINDINGS`, `06-GAP-REGISTER`, `07-THEORYSTATE-CHRONICLE`,
+`02-EVALREQ-SAT-BIRTH-TO-PRESENT`, `01-OMEGA-SENSE-INVENTORY` …
+
+$$\boxed{\text{Der Fahrplan enthält meine eigene Arbeit. Sie darf NICHT als unabhängige Evidenz zählen.}}$$
+
+Das ist genau die Rückkopplung, vor der `INDEPENDENT-CLOSURE-REVERIFICATION` §13 warnte
+(*"the feedback-loop risk is real for the verifier's own artifacts"*). **Für jede künftige
+Zählung: Artefakte aus `theory-extraction/reconstruction/` und `gap-discovery/` sind aus der
+Evidenzpopulation auszuschließen.**
+
+## §5 · Bilanz des Gesamtlaufs
+
+| | |
+|---|---|
+| Dateien im Fahrplan (ohne Firewall, existent) | **2.888** |
+| **geprüft** | **2.888 (100 %)** |
+| Definitionsereignisse ab #250 | **888** |
+| distinkte Definitionsformen | `Zero` ~440 · `Sat` ~336 · `δ` ~163 · `Γ` ~18 |
+| Objekte im Register | **123** |
+
+## §6 · Status der vier Leitobjekte
+
+| Objekt | Birth | Chronologie | §22-Bedingungen | Status |
+|---|---|---|---|---|
+| `Zero` | 08-22 (Lens) | ✅ **durchlaufen** | 1,2,3,5 erfüllt; 4,6,7,8,9,10 offen | **NICHT** closure-ready |
+| `Γ` | 08-24 (Constraints) | ✅ durchlaufen | 1,2,3,5 | **NICHT** closure-ready |
+| `δ` | 08-26 (partiell, Event) | ✅ durchlaufen | 1,2,3,5 | **NICHT** closure-ready |
+| `Sat` | 08-27 (`Sat(K,r_i)`) | ✅ durchlaufen | 1,2,3,5 | **NICHT** closure-ready |
+
+⭐ **Die Chronologie ist durchlaufen (§22.2), aber Typprüfung, Dependency-Closure,
+Refinement-Prüfung und Governance-Prüfung je Form stehen aus.** Damit ist die
+**Rekonstruktionsphase abgeschlossen** und die **Reconciliation-Phase eröffnet** — in dieser
+Reihenfolge, wie die Grundregel es verlangt.
