@@ -4348,3 +4348,90 @@ dokumentiert, nicht stillschweigend gefiltert.
 
 **`Zero`: `BIRTH LOCATED · CHRONOLOGY IN PROGRESS`** — 120 von 2.638 Dateien geprüft.
 Weiterhin **nicht** `READY FOR CLOSURE AUDIT`.
+
+---
+
+# ⭐⭐⭐ G-71 — Der Fahrplanlauf #370→#1000 korrigiert vier eigene Befunde und findet zwei frühere Typ-Audits
+
+**Blöcke #370–#999** (630 Dateien, alle geprüft: T1 256 · T2 168 · T3 206) sowie ein
+**Definitionsereignis-Census über den gesamten Restfahrplan**.
+
+## §1 · Die wahre Arbeitsmenge
+
+`[EMP]` **888 Definitionsereignisse ab #250** (von 2.638 geprüften Dateien):
+`K_t` **537** · `Zero` **367** · `Δ` 188 · `Ω` 102 · `Sat` 102 · `δ` 88 · `Γ` 73.
+
+**Distinkte Definitionsformen:** `Zero` **258** · `Sat` **166** · `δ` **81** · `Γ` **10**.
+⇒ Nicht 2.638 Dateien sind zu lesen, sondern **~500 distinkte Definitionsformen** zu ordnen.
+
+## §2 · ⚠️ Korrektur 1 — `δ` war **von Geburt an partiell**
+
+`#771` (Geburtsdatei, 2026-08-26) enthält:
+$$\delta : \mathcal{K} \times \mathcal{E} \rightharpoonup \mathcal{K}$$
+`\rightharpoonup` = **partielle Funktion**, 4 Treffer in der Datei.
+
+**`G-69` sagte, die Partialität komme erst mit dem Rewrite (`δ_C`). Falsch.** Früherer
+Eintrag bleibt stehen (§16).
+
+## §3 · ⚠️ Korrektur 2 — der Event→Operation-Wechsel ist am **2026-08-29**, nicht 09-02
+
+`#1453` `STEP-TRACE-B4`: $$\boxed{\delta : K \times \mathcal{O}_K \rightharpoonup K}$$
+mit ausdrücklicher Begründung *"(**partial because** e.g. `Resolve(`…)"*.
+
+⇒ Die Lücke `δ_A → δ_B` ist **teilweise geschlossen**: der Argumentwechsel geschieht drei
+Tage vor `SPEC-DELTA`. **Die Kante bleibt dennoch `UNWITNESSED`**, solange keine Quelle
+`δ_B`s Codomain `𝒮_rep × ℳ_trace` an diese Form anschließt.
+
+## §4 · ⭐⭐⭐ `𝒪_K` — **acht** Operationen, völlig andere Namen
+
+$$\mathcal{O}_K = \{\text{Introduce},\ \text{Corroborate},\ \text{Qualify},\ \text{Contradict},\ \text{Supersede},\ \dots\}$$
+
+gegen `𝒪_core = {ASSERT, LINK, REVISE, RETRACT, ISOLATE}`. **Andere Kardinalität, disjunkte
+Namen, keine verbindende Quelle.** ⇒ `IDENTITY UNWITNESSED`.
+
+Dieselbe Datei nennt zudem **`K_t` als 6-Tupel** (sechste `K`-Form) und **`K1–K8`** (sechste
+Invariantenmenge — *nicht* Step-120s `K1–K7`, trotz Namensähnlichkeit).
+
+## §5 · ⭐⭐⭐ Zwei frühere Typ-Audits, die ich nicht kannte
+
+`#1466 STEP-VERIFY-025a-025g` (**2026-08-29**):
+
+> *"**Zero: AMBIGUOUS → CONTRADICTORY (six forms)**. **Sat/Satisfied: ILL-TYPED (predicate vs
+> set-function vs status)**. EpistemicDistance: NOT_DEFINED."*
+
+⭐ **Meine Zero-Familie wurde am 2026-08-29 festgestellt — elf Tage vor mir, mit dem
+schärferen Verdikt `CONTRADICTORY`.** Und `Sat` trägt ein förmliches **`ILL-TYPED`**-Urteil
+über **drei unvereinbare Typen**.
+
+## §6 · ⚠️ Korrektur 3 — `Sat`s Wertigkeit ist keine Steigerung
+
+`#863`/`#872` (**2026-08-27**): `Satisfies(E,A,C) = True/False/**Unknown**` und
+**`Satisfied(K, r, EC)`** — **dreiwertig und dreiargumentig**, fünf Tage **vor** Theory v1.0s
+`Sat(K_t,r) = 1 | 0`.
+
+$$\text{08-27: 3-wertig, 3-arg} \;\longrightarrow\; \text{09-02: binär, 2-arg} \;\longrightarrow\; \text{09-06: 5-wertig, 3-arg}$$
+
+**Die binäre v1.0-Form ist eine REDUKTION, keine Vorstufe.** Meine Sequenz
+*2→3→5* ist damit widerlegt.
+
+## §7 · ⚠️ Korrektur 4 — `Γ` hat **mindestens acht** Bedeutungen
+
+Neu hinzu: **`Γ` = *„the theoretically defined governance-status dimension"*** (`#1633`,
+08-30) und **`Γ = {p₁,…,pₙ}`** — das klassische **logische Prämissen-Γ** (`part-10`, 09-06).
+Dazu `Γ = (S,C,T,P,…)` (09-02) und **`Γ : E_t × Q × C → A_t`** (09-04) — letzteres ist
+*Attribution*, aber mit **anderer Signatur** als `Γ(E,Q,C,EC)`.
+
+⇒ `Γ₀` · `Γ_H` · `Γ_P` · `Γ_ctx-contract` · `Γ_gov` · `Γ₁` · `Γ₂` · `Γ_logic` —
+**paarweise `IDENTITY UNWITNESSED`.**
+
+## §8 · Fahrplanstatus
+
+| Objekt | Birth | verarbeitet bis | verbleibend |
+|---|---|---|---|
+| `Zero` | #250 | **#999** | **1.889** |
+| `Γ` | #466 | **#999** (aktiv) | 1.889 |
+| `δ` | #771 | **#999** (aktiv) | 1.889 |
+| `Sat` | #857 | **#999** (aktiv) | 1.889 |
+
+Alle vier **aktiv**; `Δ`, `Ω`, `K_t` als Multi-Object mitgeführt.
+**Keines `READY FOR CLOSURE AUDIT`.**
