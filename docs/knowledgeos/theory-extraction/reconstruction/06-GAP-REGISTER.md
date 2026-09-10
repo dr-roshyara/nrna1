@@ -4021,3 +4021,76 @@ $$\boxed{AdjudicationState = \emptyset \text{ — nicht „nicht gefunden", sond
 `GN-78`, `GN-84` — **`V1.2-HISTORICAL`** (2026-08-31). `GN-96` — **`V1.2-HISTORICAL`**
 (2026-09-02, Abschluss). Der achtteilige Akzeptanzstandard — **`V1.2-CANONICAL`** als
 Verfahrensnorm, **nie erfüllt**. `EPISTEMIC-STATUS-VOCABULARY` — **`CROSS-VERSION`**.
+
+---
+
+# ⭐⭐⭐ G-67b — `COUNT EVIDENCE BY FUNCTION AND PROVENANCE`: null Ratifikationen, und ein zehnter Messfehler in meiner eigenen frischen Tabelle
+
+*(Als `G-67b` geführt, weil `G-67` bereits ein Homonym zweier Lanes ist — `G-37`.)*
+Register: `reconstruction/governance/00-GOVERNANCE-EVIDENCE-REGISTER.md`.
+
+## §1 · ⛔ Eine eigene Messung verworfen, bevor sie publiziert wurde
+
+Ich baute zunächst eine 11-Dimensionen-Tabelle per **Sektions-Ko-Okkurrenz** und erhielt
+`𝒪_core · Ratification 11`. **Unzulässig:** sie leitet „Ratifikation" daraus ab, dass das Wort
+`RATIFIED` *irgendwo im selben Abschnitt* steht — meist über **das Buch**. Das verletzt
+Kommission §1 (*"Keine Dimension darf stillschweigend aus einer anderen abgeleitet werden"*).
+Zusätzlich fing `\bZero\b` case-insensitiv *"**ZERO** AUTHORITATIVE ACTS"*.
+
+**Zehnter Messfehler — und der erste, den ich in einer Tabelle finde, die ich in derselben
+Antwort erst gebaut hatte.** Nach §9 bleiben alle drei Messungen stehen:
+
+| # | Methode | Ergebnis | Ursache | Status |
+|---|---|---|---|---|
+| 1 | Sektions-Ko-Okkurrenz (`awk`) | `𝒪_core 10 · Zero 8 · δ 4 · Γ 1` | `\|`-Escape-Fehler, case-sensitiv | überholt |
+| 2 | + Akt-Verben, Abschnitts-Skopus | `𝒪_core Ratif **11**` | ⛔ Ableitung aus Ko-Okkurrenz | **verworfen** |
+| 3 | **satzbezogen** + Falsch-Positiv-Kontrolle | siehe unten | — | **gültig** |
+
+## §2 · Die gültige Messung
+
+| Objekt | Mention | **Subject** | Ratif | Reject | Decision | Recomm | **NEG** |
+|---|---|---|---|---|---|---|---|
+| `𝒪_core` | 12 | **1** | **2 — beide Verneinungen** | 0 | 2 | 0 | **3** |
+| `Zero` | 8 | 0 | **0** (3 Treffer, alle Falsch-Positive) | 0 | 4 | 1 | 1 |
+| `δ` | 2 | 0 | 0 | 2 | 0 | 1 | 0 |
+| `Γ` | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| `Sat` · `≡sem` · `ℛ_req` | **0** | 0 | 0 | 0 | 0 | 0 | 0 |
+
+**Kontrollbelege** — die *einzigen* zwei Sätze mit `𝒪_core` + `RATIFIED`:
+*"**𝒪_core is NOT frozen and NOT ratified**"* · *"| **NO** | | Is the operation registry
+ratified?"*
+
+$$\boxed{\text{Positive Ratifikationen von Theorieobjekten in 85 Governance-Akten: } \mathbf{0}}$$
+
+**Drei getrennte Kennzahlen (§11):** `RATIFIED` lexikalisch **33** · buchbezogen **7** ·
+**Theorieobjekt-Ratifikationen 0**. ⚠️ Diese drei nie zusammenwerfen.
+
+⇒ `Sat`, `≡sem`, `ℛ_req`: **`GOVERNANCE-UNBEFASST`** — *nie Gegenstand eines Akts*, weder
+ungovernt noch undefiniert.
+
+## §3 · Governance-Wahrheit ≠ mathematischer Status (§5)
+
+$$\text{RATIFIED}=\text{NO} \not\Rightarrow \text{MATHEMATICALLY FALSE} \qquad \text{RECOMMENDED}=\text{YES} \not\Rightarrow \text{PROVEN}$$
+
+`𝒪_core`: Governance **NOT RATIFIED** / Mathematik `DEFINED` **+ `COMPETING`** (≥3
+Mitgliedslisten). `δ`: **kein Akt** / `TYPE-CLOSED`, Semantik `PARTIAL`. `Sat`: **unbefasst** /
+`DEFINED`, Dependency-Closure offen. `≡sem`: **unbefasst** / **`COMPETING DEFINITIONS`**.
+
+## §4 · `GN-78` (§4 der Kommission)
+
+Gegenstand: das Operation Registry. Handlungstyp: **Instrument entworfen, unsigniert**.
+Entscheidung/Auswahl/Ratifikation: **keine**. Behandlung: ⭐ **rein governance-seitig** — die
+drei Hindernisse sind Evidenz- und Verfahrenshindernisse (*ein nie ausgeführtes Kriterium*),
+**keine mathematische Widerlegung**. ⇒ **aus `Subject` folgt NICHT `adopted`.**
+
+## §5 · `GN-96` — was genau erschöpft ist (§3 der Kommission)
+
+Erschöpft ist die **Intake-Prüfung der angekommenen Artefakte gegen die zehn Blocker
+`B-01…B-10`** — nicht die Theorie. *"The newly arrived material did **not** lift any of
+B-01…B-10 through an authoritative governance act."* Klassifikation von ~1.161 Dateien:
+**A = 0**.
+
+$$\boxed{\text{Governance-lane exhaustion} \neq \text{theory exhaustion}}$$
+
+Die Lane trennt beides selbst: *"**The research progressed; the constitutional gate remains
+closed.**"*
