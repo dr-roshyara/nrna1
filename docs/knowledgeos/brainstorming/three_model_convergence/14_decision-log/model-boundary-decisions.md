@@ -6129,3 +6129,76 @@ untouched. Verified both consistency scripts `CONSISTENT`. Full trace:
 `EKS-48`'s own three-way decision (authorize/decline/re-scope a `SAT-OPERATIONAL-CLOSURE-v1`
 construction phase), now further grounded by the finding that no later corpus-native evolution exists
 to consult in its place.
+
+---
+
+## MD-078 — Concept-Family Reconstruction Through Time: `Det_r`/`EvalReq`/`Sat`/`Γ` and Co-Evolving Objects
+
+**EXECUTED, HARD STOP, 2026-09-10.** User's mission superseded, mid-turn, an initially-authorized
+bounded construction phase (no construction artifact exists from that authorization — superseded before
+any Gate A work was written). New mission: **"Never conclude that a concept is undefined or
+semantically incomplete merely because one document contains an incomplete definition."** Reconstruct
+the full historical evolution of `Det_r`/`EvalReq`/`Sat`/`Sat_c`/`Γ`/`EC_t`/`Req`/`r`/`standard`/
+`Acceptance`/`Eval`/`Eval_c`/`Δ_t`/`Zero`/`Determination`/`Decision` across the **whole corpus** (not
+just the math lane) before deciding whether MD-076/077's `Det_r`/`EvalReq` gap is genuinely
+unresolvable or already supplied elsewhere.
+
+**Method**: direct full-text verification of all 21 parts of the "Theory-00-21" rewrite
+(`mathematical_ideas_that_can_be_implemented/20260906-*theory-part-*`, 5 parts read directly, 16 by
+three parallel extraction agents) plus a cross-lane sweep (`kernel/`, `verification/`, `synthesis/`,
+`reviews/kernel/`, `reviews/` excl. `synthesis/`, top-level `verification/`, top-level `research/`).
+`theory-extraction/` never accessed.
+
+**Central discoveries**: (1) **a concurrent session independently produced a near-identical birth
+census for this exact object family** (`verification/gap-discovery/concept-family-birth-census/
+01-BIRTH-CENSUS-DET-R-FAMILY.md`, dated today), self-firewalled *against* `three_model_convergence/` —
+the mirror of this reconstruction's own firewall against `theory-extraction/`; its own named blocker
+("a ruling on whether this reconstruction may read `three_model_convergence/`... everything else is
+downstream of it") is resolved by this phase's own broader access. (2) `Det_r`/`EvalReq` are now
+independently confirmed, by two separate methodologies from two separate sessions, to have **exactly
+one genuine occurrence in the entire corpus** (Part VI §6.18) — one claimed earlier `EvalReq` occurrence
+in the concurrent census is a corrected substring false positive (`EvalRequirement`, a homonym). (3)
+`Sat(K,r_i)` was **never given a computation rule even at its own genuine birth**
+(`phase_measure_theory/step-023`, 2026-08-27, five days before `T5`) — the fiat-stipulation pattern
+MD-070 found in T22's worked example is the theory's original, unbroken, 10-day pattern, and
+`Det_r`/`EvalReq` is the single, same-session-abandoned attempt to replace it. (4) **Foundational
+symbols proliferate into mutually incompatible definitions within the SAME 21-part rewrite**, far
+beyond anything MD-067–077 characterized: `r` denotes at least six structurally distinct objects
+(two pairs contradicting *within the same file*); `Γ` receives at least four mutually inconsistent
+formal structures; `Zero`/`Det`/`Decision` show comparable arity drift Part to Part. (5) **One
+genuinely strong positive finding**: `research/knowledgeos-sim/kos12/` supplies a complete,
+adversarially-tested, executable three-valued `Sat_c`/`Eval_c`; `research/knowledgeos-sim/kos/
+inquiry.py` supplies a complete, executable, kind-dispatched `Sat`/`Gap`/`Zero`/`Adequate`, citing the
+same `DEF-20/21/22` IDs `T5` uses — both classified `RELATED OBJECT, CONSTRUCTED CANDIDATE`, not `SAME
+OBJECT`, per the source's own disclosed non-canonical status and genuinely different signatures.
+
+**Per-object terminal classification, not forced to one family-wide verdict**: **A (complete)** for
+`Req`'s own shape, `Δ`/`Zero`/`Det` given `Sat` values, and the `Determination⇏Decision` separation
+(independently proven at least four times across different Parts — the most robustly corroborated
+single result in the family); **C (competing complete definitions)** for `EC`/`EC_t` (≥7 distinct
+formulations across the full corpus history) and the 2-arg/3-arg `Sat`/`𝕊_sat` split; **D (genuine
+corpus gap)** for `Det_r`'s/`EvalReq`'s own body, `standard`/`EC.Rules`, and `AcceptanceCondition` (the
+most exhaustively-confirmed absence in this investigation — zero occurrences across all 23 rewrite
+files and 6 additional lanes); **E (object identity unresolved)** for `r` (most severely) and `Γ`; **B
+(complete through multiple sources)**, for a related not identical construction, for `Sat_c`/`Eval_c`
+and `kos/inquiry.py`'s own `Sat`. MD-076's Terminal Classification C for `Det_r`/`EvalReq` specifically
+is **not overturned** — both methodologies converge on the same one-occurrence fact — but the
+surrounding family is shown to be differently, and mostly more severely, unresolved than absence alone
+would suggest.
+
+**Backlog**: one new ticket filed, `EKS-54` (initially attempted as `EKS-52`, renumbered after finding
+`EKS-52`/`EKS-53` already taken by a same-day concurrent session) — the T21 rewrite's own internal
+notational inconsistency across foundational symbols, load-bearing because this reconstruction's own
+citation practice treats Theory-00-21 as one coherent source without checking whether other Parts
+contradict the cited one. No other new ticket — the executable-code findings feed `EKS-48`'s own
+already-tracked decision; the concurrent-session cross-lane question is resolved within this phase's
+own deliverables.
+
+No frozen artifact (MD-024–077) modified; no new `Sat`/`Det_r`/`EvalReq`/`Γ` body invented; no
+competing definition canonicalized; no F3↔F4 bridging; `classification-register.tsv` untouched;
+`theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`. Full trace:
+`14_decision-log/MD-078-controlled-operational-closure-construction/` (6 files).
+
+**MD-078 status: EXECUTED. HARD STOP.** Construction remains exactly as unauthorized as before this
+phase. Next action, named, not authorized: `EKS-48`'s own three-way decision, now informed by a
+substantially richer evidentiary basis than MD-076/077 alone supplied.

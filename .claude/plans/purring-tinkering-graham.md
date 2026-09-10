@@ -2823,3 +2823,39 @@ untouched; `theory-extraction/` never accessed. Verified both consistency script
 trace: `14_decision-log/MD-077-post-t22-chronological-continuation/` (4 files). **MD-077 status:
 EXECUTED. HARD STOP.** Next action, named, not authorized: unchanged from MD-076 — `EKS-48`'s own
 three-way decision (authorize/decline/re-scope a `SAT-OPERATIONAL-CLOSURE-v1` construction phase).
+
+---
+
+**Status update, 2026-09-10 (latest): MD-078 — Concept-Family Reconstruction Through Time
+(`Det_r`/`EvalReq`/`Sat`/`Γ` and Co-Evolving Objects) — EXECUTED, HARD STOP.** User superseded, mid-turn,
+an initially-authorized bounded construction phase (no construction artifact exists — superseded before
+any Gate A work). New mission: never conclude a concept is undefined merely because one document is
+incomplete — reconstruct the full evolution of 16 tracked objects across the whole corpus, not just the
+math lane, before treating MD-076/077's `Det_r`/`EvalReq` gap as final. **Method**: full-text
+verification of all 21 parts of the "Theory-00-21" rewrite plus a cross-lane sweep (`kernel/`,
+`verification/`, `synthesis/`, `reviews/`, top-level `verification/` and `research/`);
+`theory-extraction/` never accessed. **Central discoveries**: a concurrent session independently
+produced a near-identical birth census for this exact family, self-firewalled against
+`three_model_convergence/` — its own named blocker resolved by this phase's broader access; `Det_r`/
+`EvalReq` independently confirmed, by two methodologies from two sessions, to have exactly one genuine
+occurrence anywhere (Part VI §6.18); `Sat(K,r_i)` was never given a computation rule even at its own
+genuine birth (`phase_measure_theory/step-023`, 2026-08-27, five days before `T5`) — the T22
+fiat-stipulation pattern is the theory's original, unbroken 10-day pattern, and `Det_r`/`EvalReq` is
+the single, same-session-abandoned attempt to replace it; foundational symbols proliferate into
+mutually incompatible definitions within the same 21-part rewrite (`r` ≥6 distinct objects, `Γ` ≥4,
+several contradicting within the same file); a genuinely strong positive finding —
+`research/knowledgeos-sim/` supplies a complete, executable, adversarially-tested `Sat_c`/`Eval_c` and
+an alternative working `Sat`/`Gap`/`Zero`, both `RELATED OBJECT, CONSTRUCTED CANDIDATE`, not `SAME
+OBJECT`. **Per-object terminal classification, not forced to one verdict**: A for `Req`'s shape,
+`Δ`/`Zero`/`Det` given `Sat` values, and `Determination⇏Decision` (proven independently ≥4 times); C
+for `EC`/`EC_t` (≥7 distinct formulations) and the 2-arg/3-arg `Sat` split; D for `Det_r`/`EvalReq`'s
+own body, `standard`/`EC.Rules`, and `AcceptanceCondition` (zero occurrences anywhere searched); E for
+`r` (most severely) and `Γ`; B for `Sat_c`/`Eval_c`. MD-076's Classification C for `Det_r`/`EvalReq`
+stands, now doubly corroborated — not overturned; the surrounding family is shown differently, mostly
+more severely, unresolved than absence alone suggested. One new backlog ticket, `EKS-54` (renumbered
+from `EKS-52`/`53`, already taken by a concurrent session) — the T21 rewrite's own severe internal
+notational inconsistency. No frozen artifact modified; no new body invented; no canonicalization; no
+F3↔F4 bridging; `theory-extraction/` never accessed. Verified both consistency scripts `CONSISTENT`.
+Full trace: `14_decision-log/MD-078-controlled-operational-closure-construction/` (6 files). **MD-078
+status: EXECUTED. HARD STOP.** Construction remains unauthorized. Next action, named, not authorized:
+`EKS-48`'s own three-way decision, now informed by a substantially richer evidentiary basis.
