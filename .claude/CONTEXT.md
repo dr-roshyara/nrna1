@@ -1,4 +1,31 @@
-**Updated:** 2026-09-10 (latest) — **MD-075 EXECUTED — CONTROLLED CLOSURE OF GAP-008, GAP-006, AND
+**Updated:** 2026-09-10 (latest) — **MD-076 EXECUTED — `Det_r`/`EvalReq` BIRTH-AND-EVOLUTION AND
+COMPUTABILITY SYNTHESIS, HARD STOP.** User's mission: chronologically reconstruct the birth/evolution
+of `Det_r`/`EvalReq`/`Eval`/`Eval_c`/`Req`/`r`/`standard`/`Acceptance`/`Sat`/`Sat_c`/`EC_t` and
+determine whether the corpus supplies enough to compute `Det_r`/`EvalReq`, without inventing the
+missing computation. **Disclosed before any work began**: the nine requested deliverables
+substantially duplicate already-frozen work (`MD-067`'s own chronological traversal; `MD-068`'s
+Definition Evolution Registry; `MD-069`'s literal `EC_t→Req→r→Eval→EvalReq→Sat→Δ_t` `TheoryState`
+timeline; `MD-070`'s adversarial computability review; a concurrent session's `MD-073`/`074`, which
+already ran the literal single-case computation attempt and returned BLOCKED). **Executed as a pure
+synthesis — no new corpus file read**, per this project's own "reuse, not redo" discipline (proven at
+MD-071/MD-075). **Central sharpening**: `EvalReq` (`[05-41]`, T21) is the only function in the chain
+never given a type signature/codomain, unlike `Eval`(→`𝒱`) and `Det_r`(→`𝕊_sat`); `Det_r`'s own body
+is, by the source's own explicit design, an intentionally externally-supplied parameter, disclosed at
+birth, never actually supplied. The dependency graph is disconnected at **both** ends: `r→Eval` is
+never composed into `EvalReq` (`Eval(` has zero invocations anywhere), and the decisive 3-argument
+`Sat(K,r,Γ)=Det_r(EvalReq(...),EC)` is never wired to `Δ_t`/`Zero` — every concrete instance in the
+corpus uses the older 2-argument `Sat(K,r)` instead, including documents written after the 3-argument
+form existed. **Terminal classification: C — FORMALLY SPECIFIED BUT SEMANTICALLY OPEN** (D
+considered and rejected: exactly one `Det_r`/`EvalReq` definition each, never rivaled — the 2-arg/
+3-arg mismatch is an orphaned extension, not competing definitions in conflict). No frozen artifact
+(MD-024–075) modified; no new `Sat` body invented; K-1/K2 untouched; no backlog ticket (the gap is
+already fully tracked via `EKS-44`/`47`/`48`). Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-076-detr-evalreq-birth-and-computability-synthesis/` (8 files). Next
+action, named, not authorized: `EKS-48`'s own three-way decision (authorize/decline/re-scope a
+`SAT-OPERATIONAL-CLOSURE-v1` construction phase).
+
+**Previous block (2026-09-10, superseded above — stands as history): MD-075 EXECUTED — CONTROLLED
+CLOSURE OF GAP-008, GAP-006, AND
 GAP-007, HARD STOP.** User's mission: a bounded evidence-resolution phase (not a new census, not
 canonicalization) closing the three gaps MD-072 named, strictly sequenced (`GAP-008` first, then
 `GAP-006`, then `GAP-007`), governed by an accepted rule: absence from `kernel/` is not absence from

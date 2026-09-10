@@ -6022,3 +6022,53 @@ F3↔F4 bridge attempted; K-1/K2 governance not reopened; no further large corpu
 phase closes out the targeted-extension work MD-072's own Extension Decision B called for. Next
 action, named, not authorized: the `Det_r`/`EvalReq` computed-body question MD-070 first named remains
 this reconstruction's own smallest genuinely open research input.
+
+---
+
+## MD-076 — `Det_r`/`EvalReq` Birth-and-Evolution and Computability Synthesis
+
+**Authorization**: user's mission to chronologically reconstruct the birth and evolution of `Det_r`,
+`EvalReq`, `Eval`, `Eval_c`, `Req`, `r`, `standard`, `Acceptance`, `Sat`, `Sat_c`, `EC_t`, and determine
+whether the corpus supplies enough to actually compute `Det_r`/`EvalReq`, without inventing the missing
+computation.
+
+**Disclosed before any work began**: this mission's nine requested deliverables substantially duplicate
+already-frozen work — `MD-067` already performed the exact chronological, queue-driven traversal
+requested; `MD-068` is the Definition Evolution Registry; `MD-069` is literally the requested
+`EC_t→Req→r→Eval→EvalReq→Sat→Δ_t` `TheoryState` timeline with typed edges; `MD-070` is the adversarial
+review of the computability question itself; a concurrent session's `MD-073`/`MD-074` already ran the
+literal single-case computation attempt and returned BLOCKED. **Executed as a synthesis, per this
+project's own "reuse, not redo" discipline (proven at MD-071/MD-075): no new corpus file was read.**
+Every finding is drawn from these six already-committed artifact sets, cited by section/line where they
+themselves cite primary source.
+
+**Central sharpening (new precision, not new discovery)**: `EvalReq` (`[05-41]`, T21) is the only
+function in the entire chain never given a type signature or codomain — unlike `Eval`(→`𝒱`) and
+`Det_r`(→`𝕊_sat`). `Det_r`'s own body is, by the source's own explicit design (`[05-40]`), an
+intentionally externally-supplied per-contract parameter, disclosed at birth, never actually supplied
+anywhere. The dependency graph the mission itself asked to be tested (not assumed) is disconnected at
+**both** ends: `r→Eval` is never composed into `EvalReq` (`Eval(` has zero invocations anywhere in the
+corpus), and the decisive 3-argument `Sat(K,r,Γ)=Det_r(EvalReq(...),EC)` output is never wired to
+`Δ_t`/`Zero` — every `Δ_t`/`Zero` definition and every concrete `Sat` stipulation in the corpus uses
+the older, simpler 2-argument `Sat(K,r)` instead, including in documents written after the 3-argument
+form was introduced.
+
+**Terminal classification: C — FORMALLY SPECIFIED BUT SEMANTICALLY OPEN.** D (formula itself unstable)
+was seriously considered given the 2-arg/3-arg mismatch, and explicitly rejected: there is exactly one
+`Det_r`/`EvalReq` definition each, never rivaled or revised — the mismatch is an unused/orphaned
+extension, not two competing definitions in conflict, so it is reported as a compounding defect under
+C rather than elevated to D.
+
+**No frozen artifact (MD-024–075) modified.** No new `Sat` body invented. No K-1/K2 work touched. No
+backlog ticket filed — the gap this phase investigates is already fully tracked (`EKS-44`/`47`/`48`);
+no genuinely new load-bearing problem was discovered beyond what those tickets and `MD-073`/`074`
+already record.
+
+**Verification**: `resume.py`/`resume_mathematical.py` → both `CONSISTENT`, unchanged;
+`classification-register.tsv` unchanged; only the new `14_decision-log/MD-076-detr-evalreq-birth-and-
+computability-synthesis/` directory (8 files) plus this entry written.
+
+**MD-076 status: EXECUTED. HARD STOP.** No implementation, canonicalization, external literature,
+F3↔F4 bridging, or K-1/K2 governance performed or opened. Next action, named, not authorized: `EKS-48`'s
+own three-way decision (authorize/decline/re-scope a `SAT-OPERATIONAL-CLOSURE-v1` construction phase)
+remains this reconstruction's own smallest genuinely open next step.
