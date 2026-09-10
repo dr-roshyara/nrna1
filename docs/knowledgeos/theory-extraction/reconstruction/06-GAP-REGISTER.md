@@ -3824,3 +3824,114 @@ the constitutional separation says one must not stop.**
 **part-18 contains no invariant register** — 0 table rows, invariants discussed only
 structurally (aggregate, cross-aggregate). **It is NOT a sixth enumeration.** The register
 stands at **five** (`G-60` §5).
+
+---
+
+# ⭐⭐⭐ G-65 — `GN-84` als Primärquelle, und ein 81-Akte-Governance-Register, das ich als „leer" bezeichnet hatte
+
+**§13 der Kommission, ausgeführt.** Primärquelle:
+`reviews/synthesis/analysis/governance-notes.md` §GN-84 — **nicht** aus Sekundärzitaten.
+
+## §1 · ⚠️ Korrektur: `AdjudicationState` war nie leer
+
+Ich schrieb in `G-63` §12: *"`AdjudicationState` — **none located**."* Das Register existiert:
+**`governance-notes.md`, 2397 Zeilen, 81 GN-Sektionen, `GN-19` (2026-08-28) → `GN-95`
+(2026-09-02)**, mit **96 GN-Ids** estate-weit zitiert. **Ich hatte es nicht lokalisiert.**
+Früherer Eintrag bleibt stehen (§7).
+
+⚠️ **Registerlücke:** `GN-04`…`GN-18` (15 Akte) werden zitiert, haben aber **keine Sektion**;
+14 Sektionen tragen **kein Datum**. Status: **`NOT YET LOCATED`**.
+
+## §2 · `GN-84` — HPA ASSESSMENT: **PROGRESS, NOT CLOSURE** (2026-08-31)
+
+> **"No ratification. Verdict D accepted as a RECOMMENDATION PENDING INDEPENDENT FALSIFICATION
+> — not as the final HPA decision."**
+
+⭐⭐⭐ **Die vier Statusfragen, ausdrücklich „never merged":**
+
+| Frage | Status |
+|---|---|
+| Existiert ein minimales Operation-Registry unter dem getesteten Kriterium? | **YES** |
+| Ist es **eindeutig**? | **NO — six found** |
+| Kann eines aus heutiger Evidenz als kanonisch **gewählt** werden? | **NO** |
+| Ist das Registry **ratifiziert**? | **NO** |
+
+**Ein Objekt, vier getrennte Statusdimensionen.** Das ist genau die Closure-Matrix-Disziplin,
+die §6 dieser Kommission verlangt — und sie ist **zehn Tage älter**.
+
+### ⭐ Verbindliche Terminologie, permanent
+
+> **„minimal under the chosen computational criterion" ≠ „minimal canonical operation set of
+> KnowledgeOS."** *The first has been shown **non-unique**. The second has **not been
+> demonstrated at all**. The two may never be substituted for one another.*
+
+⭐ Und `GN-84` unterscheidet selbst **bindend-per-Eintrag** von **ratifiziert**: *"Formal
+addition to the ratified terminology registers `FA-4`/`BA-3` **requires a ratification act**;
+until then the distinction **binds by this entry**."*
+
+### ⭐ `AF-F-33` — ein Governance-Zitierverbot auf ein mathematisches Resultat
+
+*"the prior '14-forced/18-upper' bound is **PROPOSED, not DERIVED**, and **may not be cited as
+mathematical evidence**."* (mit `AF-F-31` Reject-Spannung, `AF-F-32` A6-Kreuzung).
+
+### Explizite Nicht-Autorisierungen (Governance-Ebene)
+
+*do **not** resolve the six registries · do **not** choose `Reject` · do **not** repair `I-12`
+or Art. 8 · do **not** write the implementation specification · do not accept the Σ/`Q_t`
+independence claim merely because the derivation asserts it.*
+
+⭐ **Das ist `OPEN BY COMMISSION` — aber von Governance ausgesprochen, nicht von einem
+Forschungsmandat.** Entscheidungsbaum: `derivation → independent falsification → reconcile →
+HPA decision → derive/ratify registry → transformation semantics → implementation spec →
+implementation/tests`.
+
+## §3 · ⭐⭐⭐ Zwei getrennte Governance-Lanes — und sie enden vor den späten Artefakten
+
+| Lane | Inhalt | Zeitfenster |
+|---|---|---|
+| `docs/knowledgeos/governance/` | **formelle Akte** (`ADOPTION-DECISION`, `AUTHORIZATION-DECISION`) | **08-22 → 08-24** (+ `EPISTEMIC-STATUS-VOCABULARY` **ADOPTED 09-04**) |
+| `reviews/synthesis/analysis/governance-notes.md` | **GN-Serie**, HPA-Rulings | **08-28 → 09-02** |
+
+$$\text{GN-Serie endet } 09\text{-}02 \;\;\big|\;\; \text{v1.3-Episode } 09\text{-}02\ 18{:}20 \;\;\big|\;\; \text{Rewrite } 09\text{-}06$$
+
+⭐⭐⭐ **Es gibt keinen GN-Akt zur v1.3-Episode und keinen zum Rewrite, weil die GN-Aufzeichnung
+vorher endet** — **`NOT YET LOCATED` / Registerlücke, nicht „nicht adjudiziert".**
+
+### ⚠️ Und damit korrigiere ich `G-58`/`G-61`
+
+Ich schrieb, die v1.3-Episode sei nie adjudiziert worden. **Auf Governance-Ebene wurde sie
+adjudiziert:** `EPISTEMIC-STATUS-VOCABULARY.md`, **`ADOPTED` am 2026-09-04 — zwei Tage nach der
+Episode** — hält fest: *"**Governance order is unchanged:** `EXPERIMENT → AUDIT → ADJUDICATION
+→ THEORY v1.3`."* **Ein formeller ADOPTED-Akt bekräftigt die Ordnung und lässt `v1.3` als
+unerreichten Terminus stehen.** Die Disposition `RESERVED · NOT CREATED` bleibt — sie ist jetzt
+**governance-belegt** statt nur durch Fußzeilen.
+
+## §4 · ⭐⭐⭐ Governance-Abdeckung nach Objekt — und die Lücke ist systematisch
+
+| Objekt | GN-Sektionen |
+|---|---|
+| `𝒪_core` | **10** |
+| `Zero` | **8** |
+| `δ` | 4 |
+| `Γ` | 1 |
+| **`Sat`** | **0** |
+| **`≡_sem`** | **0** |
+| **`ℛ_req`** | **0** |
+
+$$\boxed{\text{Die Objekte mit den meisten offenen mathematischen Fragen haben NULL Governance-Abdeckung.}}$$
+
+`ratif*` erscheint in **54 von 81** Sektionen — Ratifikation ist das beherrschende Thema des
+Registers, aber **nie für `Sat`, `≡_sem` oder `ℛ_req`.**
+
+## §5 · Temporale Klassifikation (§5 der Kommission)
+
+`GN-84` und die vier Statusfragen: **`V1.2-HISTORICAL`** (2026-08-31, innerhalb des
+v1.2-Fensters) · die verbindliche Minimalitäts-Terminologie: **`V1.2-CANONICAL`** (bindet
+per Eintrag) · `EPISTEMIC-STATUS-VOCABULARY` **`CROSS-VERSION`** (ADOPTED 09-04, regelt den
+Übergang zu v1.3).
+
+## §6 · Achte, unenumerierte Lane
+
+`docs/knowledgeos/reviews/synthesis/` — `analysis/` (46 GN-tragende Dateien) ·
+`commission-operation-registry/` · `final-architecture/` · `book-architecture/` · `prompts/`.
+**Bisher nie enumeriert.** Sie enthält das Governance-Gedächtnis des Programms.
