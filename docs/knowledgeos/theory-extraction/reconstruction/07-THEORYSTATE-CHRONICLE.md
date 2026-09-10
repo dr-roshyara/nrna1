@@ -1088,3 +1088,59 @@ in `History`. **Implemented-but-not-specified** — the only such case in this r
 order is meaningless here (v1.1 committed one minute *after* v1.2). It was dated from **content
 alone**: experiment ID `KR-SIM-2026-09-02`, seed `20260902`, and **two `§` cross-references that
 resolve exactly** into `20260902-004631`. **`UNRECORDABLE` timestamp, recovered chronology.**
+
+---
+
+# `TheoryState` — v1.0 → v1.1 → v1.2 in 8 h 40 m of one day, now dated to the second
+
+| time, 2026-09-02 | event |
+|---|---|
+| **00:46:31** | **Theory v1.0** — `DEF-1…33`, `AX-1…7`, `THM-1…11`, `I1…I9`, `OPEN-1…6` |
+| **08:23:33** | `r = (id,type,scope,content,standard,priority,validity)`; `I_t = ℛ_t` |
+| **08:54:20** | **the v1.1 correction** (§1 `K ⊆ E`) · **carrier candidate** `K_t=(E_t,ρ_t,α_t,π_t,τ_t)` (§4) · **`≡_sem` repair** (§20) · `U1–U4` (§14) · *"Gap is not distance"* (§13) |
+| **08:56:54** | ⭐ **the prompt commissioning the v1.1 simulation** — 2 m 34 s later |
+| *(after)* | **`KR-SIM-2026-09-02`** executes |
+| **09:12:43** | `theory-v1-2-corrections-against-steps-285-290` |
+| **09:26:47** | **v1.2** — `E_min`/`π_min`, `Sat` becomes 3-valued, `Gap` becomes a partition |
+
+**The whole version sequence is one morning.** Every "version" of this theory that my registry
+tracks was written between breakfast and mid-morning of a single day, and the register can now
+place each object inside it.
+
+## ⭐⭐⭐ The eighth negative-history category — `OPEN BY COMMISSION`
+
+Record: `verification/gap-discovery/theory-v1-0-def-register/02-OPEN-BY-COMMISSION.md`
+
+I was one step from concluding that v1.1-simulation **missed** the `≡_sem` repair — that it filed
+`CIRC-5` as *"currently circular"* while the de-circularising definition sat nineteen sections
+away in the document it was implementing. **The commissioning prompt refutes that.**
+
+> l.32 *"Do NOT silently repair definitions."* · l.1422 *"Do NOT silently change the theory."*
+> · l.1425 *"**26. CIRCULARITY AUDIT** — Explicitly search for circular definitions."*
+> · l.1449 *"If circularity exists … **do NOT repair silently.**"*
+
+**Every register I had been reading as v1.1's list of shortcomings is a commissioned deliverable
+executed under an explicit no-repair instruction** — the circularity audit, the 10-collision
+table, `TG-1…13`, `CE-1…3`, the no-smuggling audit, the proof obligations. `C-type-system`'s
+*"none silently repaired"* is **quoting its own instruction back**, and
+`L`'s *"presented, not chosen … this lane does not make it"* is **compliance, not reticence**.
+
+$$\boxed{\textbf{OPEN BY COMMISSION} — \text{the lane FOUND it, was INSTRUCTED not to resolve it, and COMPLIED.}}$$
+
+It is **not a weaker form of any existing value.** An audit that names a defect, sites it, rates
+its severity and is forbidden to touch it produces a record **identical in shape to ignorance and
+opposite in meaning**.
+
+### The rule this yields, binding on the rest of the reconstruction
+
+> **Before classifying any audit lane's `OPEN` item as evidence of a corpus gap, read that lane's
+> commissioning prompt.** An item may be open **because the lane was told to leave it open.**
+> Where the prompt cannot be located: **`NOT YET LOCATED`**, never `GENUINE CORPUS GAP`.
+
+⭐ Eighth time this session an apparent absence has proved a declared boundary — and the **first**
+time the declaration lived in a *commissioning instruction* rather than in the artifact.
+**Prompts are primary sources.** The `prompts/` directories in this estate have been **counted
+and never read as evidence** — recorded as the next coverage debt.
+
+⚠️ **Nothing is closed by this.** `≡_sem` still has three rival definitions; `TG-1` still holds.
+Only the **evidence class of the silence** changes.
