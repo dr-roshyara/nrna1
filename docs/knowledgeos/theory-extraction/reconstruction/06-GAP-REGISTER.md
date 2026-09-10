@@ -4168,3 +4168,82 @@ sind **1 und 3** erfüllt. **Keines ist `READY FOR CLOSURE AUDIT`.**
 
 ⚠️ **Damit ist auch klar, wie weit der bisherige Pass wirklich trug:** der 23-Part-Rewrite ist
 **eine Episode am Ende** des Fahrplans, nicht die Theoriegeschichte (§20).
+
+---
+
+# ⭐⭐⭐ G-69 — `SPEC-DELTA-2026-v1.0`: eine nie gelesene, vollständige `δ`-Spezifikation mit zwei mathematischen Defekten
+
+**Schritt D für `δ`**, ab `20260902-182007` vorwärts. Von 258 gestempelten Dateien nach dem
+Schnitt tragen **46** ein `δ`, **31** mathematisch verankert. Die mit Abstand dichteste:
+`20260902-182017_spec-det-2026-v1-determination-semantics.md` — **120 `δ`**, nie gelesen.
+
+Sie enthält **zwei** Spezifikationen: `SPEC-DET-2026-v1.0` (Determination) **und**
+`SPEC-DELTA-2026-v1.0` (Transition Semantics).
+
+## §1 · Die dritte `δ`-Signatur
+
+$$\delta:\ \mathcal{S}_{\text{rep}} \times \mathcal{O}_{\text{core}} \times \mathcal{CTX}\ \longrightarrow\ \mathcal{S}_{\text{rep}} \times \mathcal{M}_{\text{trace}}, \qquad \delta(R,op,\mathcal C)\mapsto\langle R',\mu\rangle$$
+
+mit $\mu=\langle \text{TxID},\text{Timestamp},\text{ActorID},\text{PreStateHash},\text{PostStateHash},\Delta_{\text{provenance}}\rangle$.
+
+| | Domain | Codomain | Totalität |
+|---|---|---|---|
+| Geburt **08-26** | `K_t × e_t` (**Event**) | `K_{t+1}` | — |
+| **SPEC-DELTA 09-02** | `𝒮_rep × 𝒪_core × CTX` | **`𝒮_rep × ℳ_trace`** | **TOTAL** |
+| Rewrite **09-06** | `𝕂 × 𝒪 × Ctx` | **`𝕂 ∪ {⊥}`** | **PARTIELL** |
+
+⭐⭐⭐ **Die Rewrite-Form ist KEINE Verfeinerung der Spec-Form** — *total mit Trace* und
+*partiell mit `⊥`* schließen einander aus. **Keine Quelle leitet eine aus der anderen ab.**
+
+## §2 · ⚠️ Defekt 1 — die Determinismus-Invariante ist tautologisch
+
+> *"Given identical initial state `R`, operation `op`, and context `𝒞`, `δ` must produce an
+> identical target state `R'`."* → $$\delta(R, op, \mathcal{C}) = \delta(R, op, \mathcal{C})$$
+
+**Die Formel lautet `x = x`** — für jede Funktion trivial wahr. **Sie drückt die Prosa nicht
+aus:** Determinismus wäre erst dann eine Bedingung, wenn `δ` als Relation oder mit einem
+Zustands-/Zufallsparameter modelliert wäre. **Die Invariante ist leer.** *(Nicht repariert.)*
+
+## §3 · ⚠️ Defekt 2 — `δ⁻¹` widerspricht Invariante 1
+
+$$\exists\,\delta^{-1}:\ \mathcal{S}_{\text{rep}}\times\mathcal{M}_{\text{trace}}\to\mathcal{S}_{\text{rep}}\quad\text{s.t.}\quad \delta^{-1}(\delta(R,op,\mathcal C).R',\mu)=R$$
+
+gegen **Invariante 1**: $\text{Nodes}(R)\subseteq\text{Nodes}(R')$ — und der Text sagt
+ausdrücklich, `δ⁻¹` *"does not wipe the audit log; rather, it **appends a counter-record**."*
+
+**Ein Anhängen kann `R'` nicht auf `R` reduzieren.** Die Gleichung ist unter Invariante 1
+**unerfüllbar**, außer im trivialen Fall `R' = R`. **Existenzbehauptung ohne Beweis.**
+
+## §4 · ⭐⭐⭐ Die Operationsmenge stimmt nicht mit `𝒪_core` überein
+
+`δ₊` {`ASSERT`, `LINK`} · `δ_rev` {`REVISE`, **`REFACTOR`**} · `δ₋` {`RETRACT`}
+
+`[EMP]` Vorkommen in der Datei: `RETRACT` 30 · `REVISE` 24 · `ASSERT` 24 · **`REFACTOR` 6** ·
+`LINK` 6 · **`ISOLATE` 0**.
+
+**`ISOLATE` — eine der fünf `𝒪_core`-Operationen — fehlt vollständig; `REFACTOR` ist neu.**
+Gegenprobe: `REFACTOR` erscheint im übrigen Korpus nur in *Implementierungs- und
+Plandokumenten* (Project Constitution, Implementation Architecture, `docs/plans/`) — **ein
+Software-Begriff, in die Operationsmenge importiert.**
+
+## §5 · Weitere Befunde
+
+* ⚠️ **Fünfte interne Duplikation:** `SPEC-DELTA` steht zweimal (Z. 206–401 ≡ 402–597, md5
+  identisch, 0 differierende Zeilen). Nach `182007`, `182025`, part-20, `182014≡182015`.
+* ⚠️ **Status `[RATIFIED]` — Selbstauszeichnung.** Nach `GN-84`/`GN-96`: **null positive
+  Ratifikationen** von Theorieobjekten. Autorität: *"HPA Supervisory / KnowledgeOS
+  **Architecture Board**"* — dieselbe Konstruktion wie die fabrizierte *"Formal Epistemology &
+  Architecture Board"* (`G-54`). **Governance-Wahrheit: `NICHT RATIFIZIERT`.**
+* **Drei Transitionsklassen mit Guards** und Vor-/Nachbedingungen je Klasse — die konkreteste
+  operationale `δ`-Beschreibung im Korpus.
+
+## §6 · Konsequenz für die `δ`-Lineage
+
+$$\underbrace{\delta(K_t,e_t)}_{\text{08-26, Event}} \;\;\big|\;\; \underbrace{\delta(R,op,\mathcal C)\mapsto\langle R',\mu\rangle}_{\text{09-02, total+Trace}} \;\;\big|\;\; \underbrace{\delta:\mathbb K\times\mathcal O\times\mathbf{Ctx}\to\mathbb K\cup\{\bot\}}_{\text{09-06, partiell}}$$
+
+**Drei Formen, keine Ableitungskante belegt.** ⇒ `LINEAGE UNWITNESSED` zwischen allen dreien;
+temporale Klassifikation **`V1.2-HISTORICAL`** für die Spec-Form, **`POST-V1.2`** für die
+Rewrite-Form. **`δ` ist NICHT `READY FOR CLOSURE AUDIT`.**
+
+**Fahrplanstatus `δ`:** Birth #771 → verarbeitet bis `20260902-182017`; **45 weitere
+`δ`-tragende Dateien** nach dem Schnitt verbleiben.
