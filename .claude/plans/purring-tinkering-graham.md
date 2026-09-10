@@ -3588,3 +3588,32 @@ MD-099-session1-session2-kernel-review-completion/` (4 files). **MD-099 status: 
 Next chronological frontier, named, not begun: a fresh global frontier determination across
 `phase_measure_theory/` (894 files), `reviews/synthesis/` (305 files), `verification/` excl.
 `zero-algebra/` (496 files), `research/`'s three subdirectories (69 files) — none read at all yet.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-100 — Opening the `phase_measure_theory/` Frontier (8 files) —
+EXECUTED, CHECKPOINT.** User's methodological correction accepted without disagreement (tightened
+"third independent analytical layer" to "third methodological/cross-validation layer over
+substantially overlapping primary corpus"). Determined the true global chronological frontier across
+the four newly-designated lanes: `phase_measure_theory/`'s own root-level population (566 files, never
+before read — distinct from the `knowledgeos_kernel/research/` subdirectory already covered via
+MD-057–092) starts earliest, 2026-08-25 20:42:44, preceding `reviews/synthesis/`, `brainstorming/
+verification/`, and `research/`'s own earliest files. Read the first 8 root files directly, main
+process only, in exact chronological order. **Central structural finding**: this root population is
+one continuously-saved dialogue, heavily self-quoting between consecutive files — file 3 contains
+files 1 and 2 verbatim before its own new content begins, and filename patterns confirm this pattern
+continues through much of the population. Adopted a net-new-content-only reading discipline for this
+lane going forward. **Central content finding**: this 8-file segment proposes and self-critiques a
+"Phase-1 Core" ten-tuple `𝒞=(D,P,T,Ctx,I,E,K,R,H,Θ)`, then reframes around temporal epistemic
+reconstruction — `K_t^A=Extract(H_{≤t},F_t^A,R_t)`, `Kernel(H_{≤T})⟹Reconstruct(E_t) ∀t≤T` — a
+**fourth** independently-arrived-at, non-cross-citing site converging on "reconstruct from substrate,
+don't store the answer," alongside `kernel/`'s own `S1-F038` and the math lane's `EC_t`/`Sat` chain.
+Recorded as a structural-correspondence candidate only, per the identity ladder; no merge. The F4
+formal family confirmed absent across all 8 files, extending the negative boundary to 301 files across
+four structurally distinct lanes. No frozen artifact modified; no object merged; no bridge invented;
+K-1/K2 untouched; `theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both
+consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-100-phase-measure-theory-frontier-opening/` (4 files). **MD-100 status: EXECUTED. CHECKPOINT** — an
+honest, early-stage checkpoint (8 of 566 root files; 894 files in the directory as a whole). Next
+chronological frontier, named, not begun: continue `phase_measure_theory/`'s root population from file
+9 (`20260825-221301_next-research-direction-after-measure-theory.md`) onward.
