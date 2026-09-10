@@ -925,3 +925,57 @@ verdict "OUTCOME A — NO RELATIONSHIP OBSERVED"**.
 
 **Third unenumerated lane** after `theory-extraction/` and `gap-update-2026-09-02/`.
 **The coverage ledger's own lane list is now a measured unreliability.**
+
+---
+
+# STATE CHANGE — `G-31` resolved, and my "implemented" claim withdrawn, 2026-09-10
+
+## ⛔ Fifth withdrawal — `Sat_c` was never implemented
+
+`kos12/satc_spec.py`, its own header, twice: *"**SPECIFICATION, NOT IMPLEMENTATION.**
+**define `Sat_c` ≠ implement `Sat_c`**"* · *"**not canonical, not implemented**"*. And all three
+result files: *"Phase B tests the specification against **the four deterministic cases already
+found. No new randomized trials.**"*
+
+I said *"specified, implemented, adversarially tested and run"* and used it **twice** as a contrast
+against `Det_r`. **Corrected:** a **machine-readable specification**, checked against four
+pre-existing cases. `Det_r` still has none — **the asymmetry survives, the word does not.**
+
+## ⭐⭐⭐ `G-31` RESOLVED — the object was never inconsistent, the prose was
+
+All eight class predicates, extracted from the specification:
+
+```
+P_C  ≡ p ∈ Content(K_t)          P_S   ≡ ES(p,K_t) ⪰ s_min
+P_E  ≡ Evidence(K_t,p) ⊨ E_min   P_Con ≡ ¬Contr(K_t,p)
+P_P  ≡ Π(p) ⊨ π_min              P_G   ≡ Eval_Gov(K_t,g) = ⊤
+P_T  ≡ p established over I      P_O   ≡ Sat_κ(δ(K_t,o))
+```
+
+**Every one is 1-ary and formula-valued.** ⇒ the prose's `𝒦×ℛ_c×Γ → {true,false,undetermined}` is a
+**transcription error in one document**; the specification settles it **eight times over**.
+
+⇒ **`G-28` upgraded to `DEFINED UNDER ANOTHER NAME`** — the bridge is the family `{P_c}`.
+⛔ Still not explicit: **eight instances, no general map, never named `φ`**.
+
+## ⭐⭐⭐ Only 3 of 8 requirement classes are evaluable — and the blockers are ours
+
+| `EXECUTABLE_NOW` | content · evidence · provenance |
+| `BLOCKED` | status · consistency · governance · temporal · operational |
+
+Blocked on `⪰`, `Eval_Gov`, `δ`'s commit case, and a **nested `Sat_κ`** — four objects already open
+in this register.
+
+$$\boxed{\textbf{The specification's own BLOCKED list is a dependency map of the corpus's open problems — written independently, and it agrees.}}$$
+
+## ⭐⭐ Two convergences, neither cited
+
+**The flat-domain theorem is already satisfied here.** `KR-CONTR-EVAL` §9 demands *"minimum
+structure is a **pair**, with an indispensable **reason/boundary** component"*; `satc_spec.py`
+declares **Level 1** (value ∈ `{⊤,⊥,U}`) and **Level 2** `Just_c` over **nine reason codes**.
+**Sixth independent convergence.**
+
+**And the `U` question is settled at source:** *"`⊥`: `¬p ∈ Content(K_t)` — **an EXPLICIT negation,
+not an absence**"*; *"`U`: neither `p` nor `¬p` present. **absence ≠ negation**"*.
+⇒ `𝒮_sat`'s single `U` collapses exactly this. **My `V_Sat` × `𝒮_sat` `INCOMPARABLE` verdict is
+confirmed at source, on the ground I said still stood.**

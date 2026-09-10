@@ -1774,3 +1774,105 @@ the same notion. **Recorded as a candidate, not adopted.**
 this reconstruction.** It is the **largest body of executed evidence** found so far and it is the
 **third** unenumerated lane (`theory-extraction/`, `gap-update-2026-09-02/`, now this).
 **The coverage ledger's lane list is itself unreliable, and that is now a measured property.**
+
+---
+
+# ⭐⭐⭐ G-31 — RESOLVED. The prose type is a transcription error; the specification is consistent eight times over. And I must withdraw "implemented".
+
+## ⛔ First: `Sat_c` is NOT implemented. My claim was wrong.
+
+`research/knowledgeos-sim/kos12/satc_spec.py`, its own header:
+
+> *"PHASE A — Formal specification of the eight `Sat_c`. **SPECIFICATION, NOT IMPLEMENTATION.**
+> **define `Sat_c` ≠ implement `Sat_c`**"*
+> *"Status: **Sat_c Formal Candidate Specification v0.1 — not canonical, not implemented.**"*
+
+And all three result files carry the same `_meta.note`:
+
+> *"**Phase A is SPECIFICATION, not implementation.** Phase B tests the specification against
+> **the four deterministic cases already found**. **No new randomized trials.**"*
+
+⛔ **I claimed "`Sat_c` was specified, implemented, adversarially tested and run" and used it twice
+as a load-bearing contrast against `Det_r`. WITHDRAWN.** The 17 executable hits are a
+**machine-checked formal specification**, not an implementation, and the files say so three times.
+
+**Corrected statement:** `Sat_c` has a **machine-readable specification** in three phases, checked
+against **four pre-existing deterministic cases**. `Det_r` has **none**. The asymmetry survives; the
+word *implemented* does not. **Fifth withdrawal of my own claim.**
+
+## ⭐⭐⭐ `G-31` RESOLVED — all eight `P_c` are 1-ary and formula-valued
+
+Extracted from the specification itself:
+
+| class | `P_c(r) ≡ …` |
+|---|---|
+| content | `p ∈ Content(K_t)` |
+| evidence | `Evidence(K_t,p) ⊨ E_min` |
+| provenance | `Π(p) ⊨ π_min` |
+| status | `ES(p,K_t) ⪰ s_min` |
+| consistency | `¬Contr(K_t,p)` |
+| governance | `Eval_Gov(K_t,g) = ⊤` |
+| temporal | `p established over I` |
+| operational | `Sat_κ(δ(K_t,o))` |
+
+$$\boxed{\textbf{Eight predicates, every one of the form } P_c : r \mapsto \text{a formula about } K_t.}$$
+
+⇒ **The declared `P_c : 𝒦×ℛ_c×Γ → {true,false,undetermined}` is a TRANSCRIPTION ERROR in that one
+prose document.** The object is consistent; **the inconsistency was local to the prose**, and the
+machine-readable spec settles it **eight times over**.
+`r = (Content, p)` — a **(class-tag, payload)** pair; `P_c` extracts the payload and forms a claim
+about `K_t`.
+
+## ⭐⭐ `G-28` upgraded: `DEFINED UNDER ANOTHER NAME`
+
+The bridge is not merely implicit. It is **specified class-by-class as the family
+`{P_C, P_E, P_P, P_S, P_Con, P_G, P_T, P_O}`** — machine-readable, eight instances.
+⛔ **Still not `A`**: the corpus never states the *general* map, never names it `φ`, and never says
+"this is the requirement→proposition bridge." **It gives the eight instances and no abstraction.**
+
+⇒ **`G-28` = `DEFINED UNDER ANOTHER NAME`** — one level stronger than `IMPLICITLY TYPE-CONSTRAINED`,
+and still short of explicit.
+
+## ⭐⭐⭐ Only 3 of 8 requirement classes are evaluable
+
+| **`EXECUTABLE_NOW`** | `content` · `evidence` · `provenance` |
+| **`BLOCKED`** | `status` · `consistency` · `governance` · `temporal` · `operational` |
+
+And the blocked five are blocked **on exactly the objects this reconstruction has found
+unresolved**: `⪰` (the status ordering — `G-02`'s neighbourhood), `Eval_Gov` (governance
+evaluation), `δ`'s commit case (`TG-09`, `NG-2`), and a **nested `Sat_κ`**.
+
+$$\boxed{\textbf{The specification's own BLOCKED list is a map of the corpus's open problems — written independently, and it agrees.}}$$
+
+## ⭐⭐ And the flat-domain theorem is already satisfied here
+
+`satc_spec.py` declares **two levels**:
+
+| **Level 1** | `Sat_c(K,r;Γ) ∈ {⊤,⊥,U}` — **the value** |
+| **Level 2** | `Just_c(K,r;Γ)` — ⭐ **WHY that value**, over 9 reason codes (`UNOBSERVED`, `UNINTERPRETED`, `UNDERDETERMINED`, `UNOBSERVABLE`, `NO_EVALUATOR`, `NO_ORDERING`, `DELTA_UNDEFINED`, `INSUFFICIENT_PROVENANCE`, `NO_TEMPORAL_SEMANTICS`) |
+
+`KR-CONTR-EVAL-2026-09` §9's theorem demands *"**minimum structure is a pair**, with an
+indispensable **reason/boundary** component"*. **`satc_spec.py` independently specifies exactly that
+pair** — value + reason — and neither cites the other. ⭐ **Sixth independent convergence recorded.**
+
+## ⭐ And it settles the `U` semantics `G-11` left open
+
+> *"`⊥`: `¬p ∈ Content(K_t)` — **an EXPLICIT negation, not an absence**"* ·
+> *"`U`: neither `p` nor `¬p` present. **absence ≠ negation**"*
+
+⇒ **`V_Sat`'s `⊥` is explicit refutation; its `U` is absence.** `𝒮_sat`'s single `U` =
+*"unsatisfied/unknown"* **collapses precisely this distinction**. My `DISTINCT — INCOMPARABLE`
+verdict is **confirmed at source**, on the ground I said still stood.
+
+## Register impact
+
+| **`G-31`** | ⭐ **CLOSED** — prose transcription error; the object is consistent |
+| **`G-28`** | ⭐ **UPGRADED → `DEFINED UNDER ANOTHER NAME`** (the `{P_c}` family) |
+| **`G-11`'s `U` finding** | ⭐ **CONFIRMED at source** — *absence ≠ negation* |
+| **`G-25`/`G-01`** | unchanged — still dissolved by the flat-domain theorem, which `satc_spec` independently satisfies |
+| ⛔ **my "implemented" claim** | **WITHDRAWN** wherever it appears (`G-25` addendum, `req-evaluation` record, chronicle) |
+| **NEW `G-33`** | ⭐ **5 of 8 requirement classes are `BLOCKED`**, on `⪰`, `Eval_Gov`, `δ`-commit and nested `Sat_κ`. **This is the corpus's own dependency list for satisfaction, and it has never been reconciled with the gap register** |
+
+**Next, by load × dependency × historical risk: `G-33`** — it is the only item that is *both*
+machine-declared *and* enumerates its own blockers, and four of the five name objects already open
+in this register. **`G-32`** (174 files of executed evidence) remains second.
