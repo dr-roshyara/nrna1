@@ -3762,3 +3762,65 @@ part-frequency as corroboration.
 re-founding, nor merely documentation — it is an **uncited self-contained re-derivation** whose
 relation to the numbered lineage is **content inheritance without apparatus** (`G-50`), and
 whose own status was never assessed by any lane.
+
+---
+
+# ⚠️ G-64 — CORRECTION to `G-63` §2, and Session B's two structural findings
+
+## §1 · ⚠️ My corpus census was wrong — the largest part is an exact internal double
+
+`G-63` reported **"23 files, 61,368 lines, ZERO byte-identical duplicates."** The dedup was
+**file-to-file only**. Checking *inside* files:
+
+`[EMP]` **`theory-part-20`** (7,189 lines) — lines **1–3594** and **3595–7188** have **identical
+md5 and 0 differing lines**; both halves open with the same sentence and the same
+`# Part XX —` heading.
+
+$$\boxed{\text{RAW } 61{,}390 \longrightarrow \text{EFFECTIVE } 57{,}795 \quad (3{,}595 \text{ redundant lines, } 5.9\%)}$$
+
+Systematic check across all 23: **only part-20** is doubled; part-14 carries a repeated main
+heading but is **not** a double. ⭐ **Rule earned: a duplication census needs BOTH file-level
+md5 AND intra-file block comparison.** This is the fourth internal duplication found in this
+estate (`182007`, `182025`, part-20, plus `182014≡182015` at file level). Earlier record left
+standing per §7.
+
+## §2 · ⭐ A three-level verification taxonomy, recurring in three parts
+
+Parts **18, 19, 21** each carry:
+**Level 1 — Formal / Semantic** (*"Is the architecture semantically **capable of representing**
+the theory?"*) · **Level 2 — Computational / Implementation** · **Level 3 — Operational /
+Empirical**.
+
+⭐ It maps onto `Specified ≠ Implemented ≠ Executed ≠ Validated` and onto `182009`'s four-level
+ladder — **the rewrite carries the discipline structurally, in three separate parts**, without
+citing either source.
+
+## §3 · ⭐⭐⭐ The worked example — the estate's first chain reaching AUTHORIZATION
+
+`part-21a rev2` runs: Inquiry → Decision Contract → Retrieval → four Evidence Objects → Rule →
+Applicability → Derivation → **Derivation Tree** → **Proof Object** → **Proof Verification** →
+Reasoning Result → **Determination** → **Decision Layer** → **Managerial Authorization** →
+**Final Decision Outcome**.
+
+Two non-collapse steps are **shown, not asserted**:
+
+* **§21A.9** — *"'All four records exist, therefore release is permitted.' **That is
+  premature.**"*
+* **§21A.18** — a **€75,000** shipment against a *"above €50,000 requires managerial approval
+  even when all release conditions are satisfied"* policy: *"The release determination
+  **remains** `ReleasePermitted(S)`."* ⭐ **The determination is unchanged and correct; the
+  decision differs.** That is precisely why `Determination ≠ Decision` is constitutional.
+
+⭐ **The 39-second revision itself enacts the separation.** `21a` v1 ends at *verified
+determination* (§21A.31); `rev2` adds three sections including **`21A.33 Final Decision
+Record`**, carrying the chain through decision and authorization. **v1 stopped exactly where
+the constitutional separation says one must not stop.**
+
+⚠️ **§17 classification: this is an ILLUSTRATION, not a validation.** It shows the pipeline is
+**coherent**, not that it is **correct**. Recorded `[PROP]`.
+
+## §4 · Negative result, correctly not over-claimed
+
+**part-18 contains no invariant register** — 0 table rows, invariants discussed only
+structurally (aggregate, cross-aggregate). **It is NOT a sixth enumeration.** The register
+stands at **five** (`G-60` §5).
