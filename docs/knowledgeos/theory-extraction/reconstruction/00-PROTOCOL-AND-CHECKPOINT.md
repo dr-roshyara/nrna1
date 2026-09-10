@@ -9,6 +9,43 @@ topic lineages and current state only afterward.
 
 ---
 
+## PHASE II — RECONCILE · **ABGESCHLOSSEN** (2026-09-11)
+
+`RECONSTRUCT FIRST → RECONCILE LATER → CANONICALIZE LAST` — Phase II ist beendet.
+**CANONICALIZE ist nicht eröffnet.**
+
+| | Register | Kernbefund |
+|---|---|---|
+| A | `reconciliation/01-ZERO-RECONCILIATION.md` | 176 Formen, 10 Familien; `Zero_strict` in jedem Test unerreichbar |
+| B | `reconciliation/02-SAT-RECONCILIATION.md` | ungetypt geboren; part-03 und part-05 widersprechen sich am selben Tag |
+| C | `reconciliation/03-DELTA-RECONCILIATION.md` | 18 Familien; an einer Stelle keine Transition, sondern eine Entscheidung |
+| D | `reconciliation/04-GAMMA-RECONCILIATION.md` | zugleich Menge, Tupel, Funktion und Wert; `EKS-47` zu widerrufen |
+| E | `reconciliation/05-DEPENDENCY-CLOSURE.md` | **11er-Zyklus**, keine topologische Ordnung, 5 Senken |
+| F | `reconciliation/06-V12-MEMBERSHIP.md` | **1 von 51** Familien ist v1.2-Mitglied; Baseline existiert doppelt |
+| C′ | `reconciliation/07-REMAINING-FOUR.md` | `𝒪_core`-Rücknahme `UNVERIFIED AUTHORITY`; die einzige Identität ist quellenseitig gesperrt |
+| **G** | `reconciliation/08-CLOSURE-MATRIX-AND-VERDICT.md` | ⭐ **v1.2 KANN NICHT GESCHLOSSEN WERDEN — die Sperre ist nicht mathematisch** |
+
+**Bilanz:** ≈ 59 Objektfamilien · **0 Merges** · **1** fremde Identitätsaussage (von ihrer
+Quelle als `[INF]` gesperrt) · ≥ 140 Trennungsaussagen · **17** offengelegte eigene
+Messfehler · **1** offengelegter und quarantänierter Firewall-Vorfall.
+
+### Negativ-Vokabular — zehnter Wert
+
+`NOT YET SEARCHED` · `NOT YET LOCATED` · `PARTIALLY EVIDENCED` · `DEFINED ELSEWHERE` ·
+`DEPENDENCY-BLOCKED` · `FIREWALL-LIMITED` · `GENUINE CORPUS GAP` · `OPEN BY COMMISSION` ·
+`LOST/UNACCOUNTED` · ⭐ **`UNADDRESSED BY THE BASELINE`** *(neu: Senke des
+Abhängigkeitsgraphen, von der eingefrorenen Baseline weder als Mitglied noch als offen
+genannt — `Γ`)*
+
+### Neue Reconciliation-Urteilsklassen
+
+`IDENTITY UNWITNESSED` · `DISTINCT` · **`DISTINCT WITH CONTRADICTION`** ·
+**`DISTINCT ROLE`** · **`DELIBERATELY DISTINCT INSTANCES`** · **`ORDERED, NOT IDENTICAL`** ·
+**`IDENTIFICATION WITNESSED — UPGRADE FORBIDDEN BY SOURCE`** · `HOMONYM` · `UNTYPED` ·
+`UNWITNESSED AS DEFINITION` · `UNDERSPECIFIED` · `TYPE ERROR, NICHT IDENTITÄT`
+
+---
+
 ## 0. Disagreements recorded before execution (settled by measurement, not opinion)
 
 ### 0.1 ⛔ The queue cannot deliver corpus-wide coverage — 64.8% of it is firewalled
