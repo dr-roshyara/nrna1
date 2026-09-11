@@ -3774,3 +3774,30 @@ CONSISTENT. Full trace: 14_decision-log/MD-105-correction-addendum-per-file-cros
 **MD-105 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun (unchanged from MD-104):
 continue from position 36 (20260826-000501_business-example-of-the-conditional-problem.md) onward,
 applying the newly-adopted per-file cross-check discipline from this position forward.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-106 - The "Ideal State First" Model Reversal,
+Dimension-Discovery vs. State-Extraction, and a Landmark Corpus Self-Assessment (60-70%/20-30%),
+positions 36-45 - EXECUTED, CHECKPOINT.** Continued directly from MD-105's own named position 36,
+applying the newly-adopted per-file cross-check discipline. Read eight distinct files (2026-08-26
+00:05-00:32); positions 41-42 confirmed exact duplicates of position 40 via md5sum. **Pipeline-
+direction reversal**: every chain since MD-100 began with Observation; position 37 reverses this to
+IDEAL STATE -> EXPECTATIONS/CRITERIA -> OBSERVATION -> COMPARISON -> DETERMINATION -> FACT/KNOWLEDGE.
+I_t (Ideal/Reference State) opens with immediate internal proliferation (six candidate sources,
+three-way disambiguation, descriptive/normative split, domain-indexed variants), then its own
+explicit self-correction three positions later: "the phrase 'the ideal state' is dangerous." Both
+pipelines preserved, unreconciled. Two new Knowledge-state formulas (K_t=Pi_t(I_t),
+K_t=Compare(O_t,I_t,R_t)) extend the Fact/Knowledge ledger to 11+ formulations. Dimension-discovery-
+vs-state-extraction distinguished (D_t->D-hat_t vs. I_t(D-hat_t)->K_t), three confidence types
+introduced (C_fact/C_coverage/C_model). A sixth-way Knowledge-kind taxonomy introduced, not merged
+with the earlier five-kinds-of-Fact taxonomy. **Landmark self-assessment** (position 45): an 18-row
+status table, explicit self-rating "60-70% conceptual, 20-30% formal," closing "Kernel: NOT READY TO
+DEFINE" - logged as a historical fact about the corpus's own belief, not this reconstruction's own
+verdict. F4 formal family confirmed absent across all eight files, extending the boundary to 333
+files. No frozen artifact modified; K-1/K2 untouched; theory-extraction/ and
+verification/zero-algebra/ never accessed. Verified both consistency scripts CONSISTENT. Full trace:
+14_decision-log/MD-106-phase-measure-theory-ideal-state-reversal-and-retrospective/ (5 files).
+**MD-106 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun: continue from position 46
+(20260826-004057_dimensions-facts-and-values-model-challenge-expanded.md) onward; a ~8.5-hour
+chronological gap exists between position 49 and position 50, a candidate natural segment boundary.

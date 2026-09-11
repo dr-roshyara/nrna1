@@ -7570,3 +7570,46 @@ MD-105-correction-addendum-per-file-cross-check/` (5 files).
 frontier, named, not begun (unchanged from MD-104): continue from position 36
 (`20260826-000501_business-example-of-the-conditional-problem.md`) onward, applying the newly-adopted
 per-file cross-check discipline from this position forward.
+
+## MD-106 — `phase_measure_theory/` Root, Positions 36-45: The "Ideal State First" Model Reversal,
+Dimension-Discovery vs. State-Extraction, and a Landmark Corpus Self-Assessment (60-70%/20-30%)
+
+Continued directly from MD-105's own named position 36, applying the newly-adopted per-file cross-
+check discipline (title/duplicate-status checked alongside direct reading; every substantive claim
+grounded in the raw `.md` file). Read eight distinct files, positions 36-40 and 43-45 (2026-08-26
+00:05:01 through 00:32:42); positions 41-42 verified via `md5sum` to be exact duplicates of position
+40, not re-read.
+
+**Central finding 1 — a genuine pipeline-direction reversal**: every chain tracked since MD-100 began
+with `Observation`; position 37 explicitly reverses this to `IDEAL STATE → EXPECTATIONS/CRITERIA →
+OBSERVATION → COMPARISON → DETERMINATION → FACT/KNOWLEDGE`. `I_t` (Ideal/Reference State) opens as a
+major new object family with immediate internal proliferation (six candidate sources; a three-way
+disambiguation; descriptive-vs-normative variants; domain-indexed variants) — and its own explicit
+self-correction three positions later: "the phrase 'the ideal state' is dangerous." Both pipeline
+directions preserved, unreconciled.
+
+**Central finding 2**: two new Knowledge-state formulas (`K_t=Π_t(I_t)`, `K_t=Compare(O_t,I_t,R_t)`)
+extend the Fact/Knowledge formula ledger to at least eleven distinct formulations, none merged. A new
+dimension-discovery-vs-state-extraction distinction is formalized (`D_t→D̂_t` vs. `I_t(D̂_t)→K_t`),
+with three confidence types (`C_fact`/`C_coverage`/`C_model`). A sixth-way Knowledge-kind taxonomy
+(Descriptive/Evaluative/Normative/Inferential/Probabilistic/Historical) is introduced, explicitly NOT
+merged with the earlier five-kinds-of-Fact taxonomy despite lexical overlap.
+
+**Central finding 3 — a landmark, source-native self-assessment**: an 18-row status table (🟢/🟠/🔴),
+explicit self-rating **"60-70% of the conceptual framing, 20-30% of the formal problem,"** and a
+proposed but unexecuted three-case empirical falsification test, closing with "KnowledgeOS Kernel: NOT
+READY TO DEFINE." Logged as a HISTORICAL FACT about the corpus's own state of belief, not adopted as
+this reconstruction's own verdict.
+
+A confirmed 3-way exact-duplicate group (positions 40/41/42) verified via `md5sum`. F4 formal family
+confirmed absent across all eight distinct files, extending the boundary to 333 files. No frozen
+artifact (MD-024–105) modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-106-phase-measure-theory-ideal-state-reversal-and-retrospective/` (5 files).
+
+**MD-106 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun: continue from position 46
+(`20260826-004057_dimensions-facts-and-values-model-challenge-expanded.md`) onward; a genuine ~8.5-
+hour chronological gap exists between position 49 (01:59:13) and position 50 (10:23:07), a candidate
+natural segment boundary for a future phase.

@@ -1,4 +1,30 @@
-**Updated:** 2026-09-11 (latest) — **MD-105 EXECUTED — CORRECTION AND ADDENDUM VIA CROSS-CHECK AGAINST
+**Updated:** 2026-09-11 (latest) — **MD-106 EXECUTED — THE "IDEAL STATE FIRST" MODEL REVERSAL,
+DIMENSION-DISCOVERY VS. STATE-EXTRACTION, AND A LANDMARK CORPUS SELF-ASSESSMENT (60-70%/20-30%)
+(positions 36-45), CHECKPOINT.** Continued directly from MD-105's own named position 36, applying the
+newly-adopted per-file cross-check discipline. Read eight distinct files (2026-08-26 00:05-00:32);
+positions 41-42 confirmed exact duplicates of position 40. **Pipeline-direction reversal**: every
+chain since MD-100 began with `Observation`; position 37 reverses this to `IDEAL STATE → EXPECTATIONS/
+CRITERIA → OBSERVATION → COMPARISON → DETERMINATION → FACT/KNOWLEDGE`. `I_t` (Ideal/Reference State)
+opens with immediate internal proliferation (six candidate sources, three-way disambiguation,
+descriptive/normative split, domain-indexed variants), then its own explicit self-correction three
+positions later: "the phrase 'the ideal state' is dangerous." Both pipelines preserved, unreconciled.
+Two new Knowledge-state formulas (`K_t=Π_t(I_t)`, `K_t=Compare(O_t,I_t,R_t)`) extend the Fact/
+Knowledge ledger to 11+ formulations. Dimension-discovery-vs-state-extraction distinguished
+(`D_t→D̂_t` vs. `I_t(D̂_t)→K_t`), three confidence types (`C_fact`/`C_coverage`/`C_model`). A
+sixth-way Knowledge-kind taxonomy introduced, NOT merged with the earlier five-kinds-of-Fact
+taxonomy. **Landmark self-assessment**: an 18-row status table, explicit self-rating **"60-70%
+conceptual, 20-30% formal,"** closing "Kernel: NOT READY TO DEFINE" — logged as a HISTORICAL FACT
+about the corpus's own belief, not this reconstruction's own verdict. A 3-way exact-duplicate group
+confirmed via `md5sum`. F4 formal family confirmed absent across all eight files, extending the
+boundary to 333 files. No frozen artifact modified; no object merged; no bridge invented; K-1/K2
+untouched; `theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both
+consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-106-phase-measure-theory-ideal-state-reversal-and-retrospective/` (5 files). **MD-106 status:
+EXECUTED. CHECKPOINT.** Next frontier, named, not begun: continue from position 46
+(`20260826-004057_dimensions-facts-and-values-model-challenge-expanded.md`) onward; a ~8.5-hour
+chronological gap exists between position 49 and position 50, a candidate natural segment boundary.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-105 EXECUTED — CORRECTION AND ADDENDUM VIA CROSS-CHECK AGAINST
 `01_source-analysis/per-file/` RECORDS (seq 0347–0381), EVERY CLAIM VERIFIED AGAINST RAW SOURCE,
 CHECKPOINT.** Triggered by the user asking directly whether this pre-existing per-file YAML layer
 (built during an earlier, differently-authorized MD-021 Model-C1 pass, covering the whole main corpus
