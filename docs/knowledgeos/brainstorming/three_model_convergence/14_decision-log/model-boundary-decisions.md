@@ -7519,3 +7519,54 @@ MD-104-phase-measure-theory-s-kernel-hypothesis-and-invariance-theorem/` (5 file
 frontier, named, not begun: continue from position 36
 (`20260826-000501_business-example-of-the-conditional-problem.md`) onward, watching for whether "the
 missing X" question (Fact vs. Determination) or the `S_Kernel`/invariance-theorem threads recur.
+
+## MD-105 — Correction and Addendum to MD-100–104, via Cross-Check Against `01_source-analysis/
+per-file/` Records (Sequences 0347–0381), Every Claim Verified Against Raw Source
+
+Triggered by the user asking directly whether `01_source-analysis/per-file/` (an earlier, differently
+-authorized reconstruction pass's per-file YAML summaries, covering the entire main brainstorming
+corpus by global sequence number) had been checked during MD-100–104. It had not. The user then asked
+whether these records could help surface missing derivations, and, after a first pass confirmed real
+gaps, authorized recording the correction as a dedicated entry.
+
+**Discipline maintained**: the per-file YAML records are themselves synthesis, not source evidence —
+every finding below was independently verified against the raw `.md` file before being logged.
+
+**Central correction**: MD-103's "a new duplication shape... distinct from MD-101/102's own" (position
+25, seq 0371) is WRONG — this is the EIGHTH instance of a single, continuously-tracked intra-file
+self-duplication series (a save-tool artifact) starting at seq 0267 (pre-scope) and recurring at 0343,
+0354, 0360, 0362, 0365, 0366, 0371. MD-100–102 should have caught instances 3–7 (seq 0354/0360/0362/
+0365/0366) within their own scope and did not. MD-104's "fourth distinct shape" claim for the
+0381=0380+0377 concatenation is overstated but not wrong in substance — independently confirmed by the
+pre-existing record. No content finding in any of MD-100–104 is overturned; only the duplication
+bookkeeping was incomplete/mislabeled.
+
+**New objects opened, each verified verbatim against raw source**: a ninth, EARLIER Fact formulation
+`F=(claim,evidence,context,time,source,validity)` at seq 0362 (within MD-101's own scope, predating
+every previously-tracked Fact formulation); `Claim` and `Hypothesis` as distinct corpus-native
+epistemic categories at seq 0368 (a boxed seven-way Reality/Observation/Evidence/Fact/Claim/
+Hypothesis/Derived-Knowledge distinction — already read directly for MD-102, but this object
+dimension was missed); the named principle "Knowledge ≠ Knowledge State ≠ Knowledge Space ≠ Knowledge
+Extraction" at seq 0359 (within MD-101's own scope), plus a structured decalogue `FACT-KST-01`–`10`
+and three hypotheses `H-KST-1/2/3` (all EXTERNAL THEORY, not adopted); the seL4-derived six-item
+Kernel-candidate cluster (`Identity+History+Provenance+Context+TemporalIntegrity+Reconstruction`, seq
+0351); the "Refusal" file's structured challenge instruments (a ten-row table, a four-part
+counterexample requirement, a nine-stage research sequence, seq 0353); "ban 'belief' from the Kernel
+vocabulary" (seq 0360, Negative-History Register); a newly-adopted Bridge-Candidate Register (6
+CANDIDATE-status entries, seq 0370–0372, sourced from the MD-017 `bridge_candidate` classification
+dimension this reconstruction had never previously used).
+
+**Standing-method decision**: per-file YAML cross-check adopted going forward as a quality-check step
+for every future position — navigation/cross-check only, never source evidence, every surfaced item
+verified against raw source before being logged as evidence. Does not apply to lanes with no
+corresponding per-file records (e.g. `kernel/`).
+
+No frozen artifact (MD-024–104) modified; no classification-register row touched; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-105-correction-addendum-per-file-cross-check/` (5 files).
+
+**MD-105 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun (unchanged from MD-104): continue from position 36
+(`20260826-000501_business-example-of-the-conditional-problem.md`) onward, applying the newly-adopted
+per-file cross-check discipline from this position forward.

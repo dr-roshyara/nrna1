@@ -1,4 +1,31 @@
-**Updated:** 2026-09-11 (latest) — **MD-104 EXECUTED — THE `S_KERNEL` HYPOTHESIS, "DETERMINATION IS
+**Updated:** 2026-09-11 (latest) — **MD-105 EXECUTED — CORRECTION AND ADDENDUM VIA CROSS-CHECK AGAINST
+`01_source-analysis/per-file/` RECORDS (seq 0347–0381), EVERY CLAIM VERIFIED AGAINST RAW SOURCE,
+CHECKPOINT.** Triggered by the user asking directly whether this pre-existing per-file YAML layer
+(built during an earlier, differently-authorized MD-021 Model-C1 pass, covering the whole main corpus
+by sequence number) had been checked during MD-100–104 — it had not — and whether it could surface
+missing derivations — it did. **Central correction**: MD-103's "a new duplication shape" claim
+(position 25, seq 0371) was WRONG — this is the EIGHTH instance of a single, continuously-tracked
+intra-file self-duplication series (0267→0343→0354→0360→0362→0365→0366→0371, a save-tool artifact),
+which MD-100–102 should have caught at instances 3–7 within their own scope and did not; MD-104's
+"fourth distinct shape" claim (seq 0381) is overstated but not wrong in substance. No content finding
+in MD-100–104 is overturned — only the duplication bookkeeping. **New objects opened, each verified
+verbatim against raw source**: a ninth, EARLIER Fact formulation `F=(claim,evidence,context,time,
+source,validity)` (seq 0362, predates every previously-tracked Fact formulation); `Claim` and
+`Hypothesis` as distinct epistemic categories (seq 0368, already read for MD-102 but this object
+dimension was missed); the named principle "Knowledge≠KnowledgeState≠KnowledgeSpace≠
+KnowledgeExtraction" plus `FACT-KST-01`–`10`/`H-KST-1/2/3` (seq 0359); the seL4-derived six-item
+Kernel-candidate cluster (seq 0351); the "Refusal" file's structured challenge instruments (seq 0353);
+"ban Belief from Kernel vocabulary" (seq 0360); a newly-adopted Bridge-Candidate Register (6
+CANDIDATE-status entries, seq 0370–0372). **Standing-method decision**: per-file YAML cross-check
+adopted going forward as a quality-check step for every future position — navigation only, never
+source evidence, every item verified against raw source before being logged. No frozen artifact
+modified; no classification-register row touched; K-1/K2 untouched; `theory-extraction/` and
+`verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-105-correction-addendum-per-file-cross-check/` (5 files). **MD-105 status:
+EXECUTED. CHECKPOINT.** Next frontier, named, not begun (unchanged from MD-104): continue from
+position 36 (`20260826-000501_business-example-of-the-conditional-problem.md`) onward.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-104 EXECUTED — THE `S_KERNEL` HYPOTHESIS, "DETERMINATION IS
 THE MISSING MATHEMATICAL OBJECT" (A COMPETING FRAMING TO MD-102'S "FACT"), AND A CANDIDATE "EPISTEMIC
 REPRESENTATION INVARIANCE" THEOREM (positions 31, 32, 34, 35), CHECKPOINT.** Continued directly from
 MD-103's own named position 31 (position 33 logged as a known reuse from MD-101's register, not

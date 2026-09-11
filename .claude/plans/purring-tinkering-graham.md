@@ -3743,3 +3743,34 @@ files). **MD-104 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a 
 chronological frontier, named, not begun: continue from position 36 (`20260826-000501_business-
 example-of-the-conditional-problem.md`) onward, watching for whether "the missing X" question (Fact
 vs. Determination) or the `S_Kernel`/invariance-theorem threads recur.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-105 — Correction and Addendum via Cross-Check Against
+per-file records (seq 0347-0381) — EXECUTED, CHECKPOINT.** The user asked directly whether
+`01_source-analysis/per-file/` (an earlier, differently-authorized MD-021 Model-C1 pass's per-file
+YAML summaries) had been checked during MD-100-104 - it had not. The user then asked whether it could
+surface missing derivations - a read-only audit fork confirmed it could - and authorized recording the
+correction as a dedicated entry. Every finding was independently verified against raw source before
+being logged; the per-file records themselves are treated as synthesis, never source evidence.
+**Central correction**: MD-103's "a new duplication shape" claim (position 25, seq 0371) was WRONG -
+the EIGHTH instance of a single, continuously-tracked intra-file self-duplication series (a save-tool
+artifact recurring at seq 0267/0343/0354/0360/0362/0365/0366/0371), which MD-100-102 should have
+caught at instances 3-7 within their own scope and did not; MD-104's "fourth distinct shape" claim
+(seq 0381) is overstated but not wrong in substance. No content finding in MD-100-104 is overturned -
+only the duplication bookkeeping, corrected forward, their own text unedited. **New objects opened,
+each verified verbatim against raw source**: a ninth, earlier Fact formulation
+F=(claim,evidence,context,time,source,validity) (seq 0362); Claim and Hypothesis as distinct epistemic
+categories (seq 0368); the named principle Knowledge!=KnowledgeState!=KnowledgeSpace!=
+KnowledgeExtraction plus FACT-KST-01-10/H-KST-1/2/3 (seq 0359); the seL4-derived six-item
+Kernel-candidate cluster (seq 0351); the Refusal file's structured challenge instruments (seq 0353);
+"ban Belief from Kernel vocabulary" (seq 0360); a newly-adopted Bridge-Candidate Register (6
+candidate-status entries, seq 0370-0372). **Standing-method decision**: per-file YAML cross-check
+adopted going forward as a quality-check step for every future position - navigation only, never
+source evidence, every item verified against raw source before being logged; does not apply to lanes
+with no corresponding per-file records (e.g. kernel/). No frozen artifact modified; K-1/K2 untouched;
+theory-extraction/ and verification/zero-algebra/ never accessed. Verified both consistency scripts
+CONSISTENT. Full trace: 14_decision-log/MD-105-correction-addendum-per-file-cross-check/ (5 files).
+**MD-105 status: EXECUTED. CHECKPOINT.** Next frontier, named, not begun (unchanged from MD-104):
+continue from position 36 (20260826-000501_business-example-of-the-conditional-problem.md) onward,
+applying the newly-adopted per-file cross-check discipline from this position forward.
