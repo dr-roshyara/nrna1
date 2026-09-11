@@ -1,4 +1,27 @@
-**Updated:** 2026-09-11 (latest) — **MD-103 EXECUTED — `DETERMINATION`/`WARRANT`/`REASON`/
+**Updated:** 2026-09-11 (latest) — **MD-104 EXECUTED — THE `S_KERNEL` HYPOTHESIS, "DETERMINATION IS
+THE MISSING MATHEMATICAL OBJECT" (A COMPETING FRAMING TO MD-102'S "FACT"), AND A CANDIDATE "EPISTEMIC
+REPRESENTATION INVARIANCE" THEOREM (positions 31, 32, 34, 35), CHECKPOINT.** Continued directly from
+MD-103's own named position 31 (position 33 logged as a known reuse from MD-101's register, not
+re-read). **`S_Kernel = (D,𝓔,𝓢,𝓣,𝓤)`** (Domain/Evidence/Sources/Temporal/Uncertainty) proposed as a
+Kernel-substrate hypothesis, explicitly "a research hypothesis, not an established fact" — DISTINCT
+from `K_t^A`/`κ(K_t)`/`K_t^*`/`MinKer`/K-1/K-2, none merged. **Position 32's filename CONFIRMED
+ACCURATE** by direct reading: "Determination is the missing mathematical object" — a genuine
+COMPETING FRAMING to MD-102's own "Fact is the missing bridge," both preserved, neither superseding
+the other. `Determination` receives a third signature (`D_t(p)`); `ℰ_t(p)` (MD-103) receives its
+first candidate internal structure (six fields, `status` flagged as a homonym-risk vs.
+`Status(k,t,C)`). A candidate **"Epistemic Representation Invariance" theorem** proposed (built on
+`U_R`/`Answer_R`/`Update_R`/`Explain_R`), explicitly self-labeled unproven; the same file proposes TWO
+unreconciled 7-tuples for the abstract epistemic state `S` within itself. **Position 35 confirmed via
+`diff` to be positions 34+31 concatenated verbatim** — a new duplication shape (full cross-file
+recombination), zero net-new content, logged as a reuse event. F4 formal family confirmed absent
+across all four files, extending the boundary to 325 files. No frozen artifact modified; no object
+merged; no bridge invented; K-1/K2 untouched; `theory-extraction/` and `verification/zero-algebra/`
+never accessed. Verified both consistency scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-104-phase-measure-theory-s-kernel-hypothesis-and-invariance-theorem/` (5 files). **MD-104 status:
+EXECUTED. CHECKPOINT.** Next frontier, named, not begun: continue from position 36
+(`20260826-000501_business-example-of-the-conditional-problem.md`) onward.
+
+**Previous block (2026-09-11, superseded above — stands as history): MD-103 EXECUTED — `DETERMINATION`/`WARRANT`/`REASON`/
 `JUSTIFICATION` BORN, EVIDENCE REDEFINED AS A RELATION, AND A SECOND, COMPETING `K_t^*` FORMULATION
 (positions 25-30), CHECKPOINT.** Continued directly from MD-102's own named position 25. Central
 finding: this segment is the literal source of position 25's own filename ("Extraction retrieves

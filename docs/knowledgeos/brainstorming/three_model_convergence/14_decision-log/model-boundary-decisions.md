@@ -7470,3 +7470,52 @@ frontier, named, not begun: continue from position 31
 MD-102's own "Fact is the missing bridge" framing, per the standing "never trust filenames"
 discipline; position 33 is already known from MD-101's own exact-duplicate register to be a confirmed
 duplicate of position 31.
+
+## MD-104 — `phase_measure_theory/` Root, Positions 31-35: The `S_Kernel` Hypothesis, "Determination
+Is the Missing Mathematical Object" (a Competing Framing to MD-102's "Fact"), and a Candidate
+"Epistemic Representation Invariance" Theorem
+
+Continued directly from MD-103's own named position 31. Read four files, positions 31, 32, 34, 35
+(2026-08-25 23:58:04 through 2026-08-26 00:03:39); position 33 was NOT re-read as new evidence — it
+is already known from MD-101's own exact-duplicate register to be a confirmed byte-identical
+duplicate of position 31, and the reuse event is logged, not re-derived.
+
+**Central finding 1**: a new candidate Kernel-substrate tuple is proposed — `S_Kernel = (D, 𝓔, 𝓢, 𝓣,
+𝓤)` (Domain, Evidence, Sources, Temporal structure, Uncertainty metadata), derived informally as the
+intersection of what KST/Bayesian/Dempster-Shafer/Non-Monotonic-Logic/Argumentation-Theory each
+require, and explicitly self-labeled "a research hypothesis, not an established fact." Recorded as
+its own trajectory, DISTINCT from `K_t^A`/`κ(K_t)`/`K_t^*`/`MinKer`/K-1/K-2 — none merged.
+
+**Central finding 2**: position 32's own filename is CONFIRMED ACCURATE by direct reading (a rare
+positive instance under the standing "never trust filenames" discipline) — the file states directly
+"I think Determination is the missing mathematical object in the current framework." This is a
+genuine COMPETING FRAMING to MD-102's own "Fact is the missing bridge" (positions 20-23) — two
+different "the missing X" claims about two different objects, both preserved, neither declared to
+supersede the other. `Determination` receives a third distinct signature (`D_t(p)`); `ℰ_t(p)` (born
+MD-103) receives its first candidate internal structure — a six-field tuple `(proposition, support,
+justification, status, uncertainty, time)` — with the `status` field's possible resonance to
+`Status(k,t,C)` (MD-102) flagged as a homonym-risk, not merged.
+
+**Central finding 3**: a candidate "Epistemic Representation Invariance" theorem is proposed
+(position 34), built on an abstract update operator `U_R` and three generic regime operations
+(`Update_R`, `Answer_R`, `Explain_R`) — explicitly self-labeled "not a theorem we have proved yet."
+The same file proposes TWO non-reconciled 7-tuple formulations of the abstract epistemic state itself
+(`S=(K,Γ,Π,Ω,Θ,C,t)` and later `S=(𝒫,𝒞,𝒜,𝒯,𝒦,𝒢,ℋ)`) — an internal, unflagged multiplicity, both
+preserved.
+
+**Central finding 4**: position 35 is confirmed, via direct `diff`, to be position 34's full content
+plus position 31's full content concatenated verbatim — a NEW duplication shape (full cross-file
+recombination, the fourth distinct shape found in this lane after MD-101's cross-file exact
+duplicates, MD-102's within-file partial-tail duplicate, and MD-103's within-file full self-
+duplicate). Net-new content from position 35: ZERO, logged as a reuse event.
+
+F4 formal family confirmed absent across all four files, extending the boundary to 325 files. No
+frozen artifact (MD-024–103) modified; no object merged; no bridge invented; K-1/K2 untouched;
+`theory-extraction/` and `verification/zero-algebra/` never accessed. Verified both consistency
+scripts `CONSISTENT`. Full trace: `14_decision-log/
+MD-104-phase-measure-theory-s-kernel-hypothesis-and-invariance-theorem/` (5 files).
+
+**MD-104 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next chronological
+frontier, named, not begun: continue from position 36
+(`20260826-000501_business-example-of-the-conditional-problem.md`) onward, watching for whether "the
+missing X" question (Fact vs. Determination) or the `S_Kernel`/invariance-theorem threads recur.

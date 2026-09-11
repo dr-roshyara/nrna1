@@ -3715,3 +3715,31 @@ conditional-determination.md`) onward; position 32 requires direct content verif
 MD-102's own "Fact is the missing bridge" framing (filename suggests "Determination is the missing
 mathematical object" — not yet confirmed); position 33 is already known from MD-101's own
 exact-duplicate register to be a confirmed duplicate of position 31.
+
+---
+
+**Status update, 2026-09-11 (latest): MD-104 — `phase_measure_theory/` Root, Positions 31-35: The
+`S_Kernel` Hypothesis, "Determination Is the Missing Mathematical Object" (a Competing Framing to
+MD-102's "Fact"), and a Candidate "Epistemic Representation Invariance" Theorem — EXECUTED,
+CHECKPOINT.** Continued directly from MD-103's own named position 31. Read four files, positions 31,
+32, 34, 35 (2026-08-25 23:58:04 through 2026-08-26 00:03:39); position 33 logged as a known reuse from
+MD-101's own register, not re-read. **`S_Kernel = (D,𝓔,𝓢,𝓣,𝓤)`** (Domain/Evidence/Sources/Temporal/
+Uncertainty) proposed as a Kernel-substrate hypothesis, explicitly "a research hypothesis, not an
+established fact" — DISTINCT from `K_t^A`/`κ(K_t)`/`K_t^*`/`MinKer`/K-1/K-2, none merged. **Position
+32's filename CONFIRMED ACCURATE** by direct reading: "Determination is the missing mathematical
+object" — a genuine COMPETING FRAMING to MD-102's own "Fact is the missing bridge," both preserved,
+neither superseding the other. `Determination` receives a third signature (`D_t(p)`); `ℰ_t(p)`
+(MD-103) receives its first candidate internal structure (six fields), `status` flagged as a
+homonym-risk against `Status(k,t,C)`. **A candidate "Epistemic Representation Invariance" theorem
+proposed** (position 34), built on `U_R`/`Answer_R`/`Update_R`/`Explain_R`, explicitly self-labeled
+unproven; the same file proposes two unreconciled 7-tuples for the abstract epistemic state `S`
+within itself. **Position 35 confirmed via `diff` to be positions 34+31 concatenated verbatim** — a
+new duplication shape (full cross-file recombination), zero net-new content, logged as a reuse event.
+F4 formal family confirmed absent across all four files, extending the boundary to 325 files. No
+frozen artifact modified; no object merged; no bridge invented; K-1/K2 untouched; `theory-extraction/`
+and `verification/zero-algebra/` never accessed. Verified both consistency scripts `CONSISTENT`. Full
+trace: `14_decision-log/MD-104-phase-measure-theory-s-kernel-hypothesis-and-invariance-theorem/` (5
+files). **MD-104 status: EXECUTED. CHECKPOINT** — not a terminal claim, not a hard stop. Next
+chronological frontier, named, not begun: continue from position 36 (`20260826-000501_business-
+example-of-the-conditional-problem.md`) onward, watching for whether "the missing X" question (Fact
+vs. Determination) or the `S_Kernel`/invariance-theorem threads recur.
