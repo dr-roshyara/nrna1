@@ -53,8 +53,18 @@ final class OperationCapabilityMapper
             'view_candidates' => true, // Always readable — no security gate
 
             // ── Results & Publication ──
-            'view_results' => !$snapshot->isLocked,
-            'download_receipt' => !$snapshot->isLocked,
+            // NOTE: results are viewable once the election has reached ResultsPublished
+            // (or Archived) — NOT "!isLocked", which is an edit-lock concept that is
+            // (correctly) true throughout ResultsPublished, making results unreachable
+            // exactly when they should be viewable.
+            'view_results' => in_array($snapshot->state, [
+                ElectionLifecycleState::ResultsPublished,
+                ElectionLifecycleState::Archived,
+            ], true),
+            'download_receipt' => in_array($snapshot->state, [
+                ElectionLifecycleState::ResultsPublished,
+                ElectionLifecycleState::Archived,
+            ], true),
 
             // ── Default: Undefined operations forbidden ──
             default => false,

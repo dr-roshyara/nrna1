@@ -19,10 +19,12 @@ class VotingReceiptController extends Controller
      */
     public function index(Organisation $organisation, Election $election)
     {
-        // Security: Only accessible after results are published
-        // Check both results_published_at (timestamp) and results_published (boolean) for backward compatibility
-        if (!$election->results_published_at && !$election->results_published) {
-            abort(403, 'Results have not been published yet.');
+        // Security: only accessible while results are visible. results_published is the
+        // single toggle-able flag (Hide/Unhide) — results_published_at is a permanent
+        // "was ever published" timestamp and must NOT gate this, or hiding results would
+        // never actually hide this page once first published.
+        if (!$election->results_published) {
+            abort(404);
         }
 
         $receiptCodes = ReceiptCode::where('election_id', $election->id)

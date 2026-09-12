@@ -22,7 +22,8 @@
       "inactive": "Inaktiv",
       "results": "Wahlergebnis",
       "published": "Veröffentlicht",
-      "unpublished": "Unveröffentlicht"
+      "unpublished": "Unveröffentlicht",
+      "receipt_codes": "Quittungscodes"
     },
     "dates": {
       "title": "Wahltermine",

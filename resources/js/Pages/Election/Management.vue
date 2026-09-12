@@ -913,6 +913,20 @@
               </svg>
               <span>{{ t.sections.status.results }}</span>
             </a>
+
+            <!-- Receipt codes: same visibility as the public results page — tied to
+                 results_published, so it hides/shows in sync with Hide/Unhide Result. -->
+            <a
+              v-if="election.results_published"
+              :href="route('organisations.election.receipt-codes', { organisation: organisation?.slug, election: election.slug })"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-50 to-yellow-50 text-amber-700 font-semibold rounded-lg border-2 border-amber-200 hover:border-amber-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-amber-200 transition-all duration-200 w-full sm:w-auto"
+              title="View randomized receipt codes for public verification"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span>{{ t.sections.status.receipt_codes }}</span>
+            </a>
           </div>
         </SectionCard>
 

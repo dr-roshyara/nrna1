@@ -155,13 +155,13 @@
           <div class="lg:col-span-1">
             <!-- Verification Statistics -->
             <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sticky top-24">
-              <h3 class="text-lg font-bold text-slate-900 mb-6">Verification Summary</h3>
+              <h3 class="text-lg font-bold text-slate-900 mb-6">Summary of Second verification by Voter</h3>
 
               <div class="space-y-6">
                 <!-- Verified Count -->
                 <div class="text-center p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
                   <div class="text-3xl font-black text-green-600 mb-2">{{ reverified_count }}</div>
-                  <div class="text-sm font-semibold text-green-900">Verified Votes</div>
+                  <div class="text-sm font-semibold text-green-900">Verified by Voter</div>
                   <div class="text-xs text-green-700 mt-1">of {{ total_votes }} total</div>
                 </div>
 
