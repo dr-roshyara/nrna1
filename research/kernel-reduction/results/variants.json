@@ -1,0 +1,223 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "variants": {
+  "V0": {
+   "desc": "baseline model as declared in 04-operator-contracts",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "A-irreducible",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V1": {
+   "desc": "meaning-assignment and symbolic-encoding are ONE atom",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "B-derivable",
+    "Represent": "B-derivable",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "A-irreducible",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "Interpret",
+    "Represent",
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V2": {
+   "desc": "Infer may act on SemanticContent, not only Representation",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "A-irreducible",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V3": {
+   "desc": "closure-judgment is NOT primitive: adequacy = difference-decision over NormDelta",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "B-derivable",
+    "Select": "A-irreducible",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "Discriminate",
+    "DetectGap",
+    "Determine"
+   ]
+  },
+  "V4": {
+   "desc": "DetectGap's difference-decision is SCOPED to NormDelta (not a general power)",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "A-irreducible",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "A-irreducible",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "DetectGap"
+   ]
+  },
+  "V5": {
+   "desc": "preference-over-actions is NOT primitive: choice = difference-decision + Objective",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "B-derivable",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "Discriminate",
+    "DetectGap",
+    "Select"
+   ]
+  },
+  "V6": {
+   "desc": "a Verdict REQUIRES a surviving-defeater step (validation presupposes challenge)",
+   "baseline_lost": [],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "A-irreducible",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "A-irreducible",
+    "Qualify": "A-irreducible"
+   },
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V7": {
+   "desc": "raw C0: no evidential-qualification operator at all",
+   "baseline_lost": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "results": {
+    "Observe": "A-irreducible",
+    "Interpret": "A-irreducible",
+    "Represent": "A-irreducible",
+    "Relate": "A-irreducible",
+    "Discriminate": "B-derivable",
+    "Hypothesize": "A-irreducible",
+    "Infer": "A-irreducible",
+    "DetectGap": "B-derivable",
+    "Challenge": "A-irreducible",
+    "Validate": "B-derivable",
+    "Revise": "A-irreducible",
+    "Determine": "A-irreducible",
+    "Select": "A-irreducible"
+   },
+   "derivable": [
+    "Discriminate",
+    "DetectGap",
+    "Validate"
+   ]
+  }
+ }
+}

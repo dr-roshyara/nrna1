@@ -1,0 +1,146 @@
+{
+ "directed": {
+  "Balanced \u2227 \u00acReconciled": {
+   "separable": false,
+   "witness": null
+  },
+  "Balanced \u2227 \u00acDetermined": {
+   "separable": true,
+   "witness": "w_bal_only"
+  },
+  "Balanced \u2227 \u00acKnown": {
+   "separable": true,
+   "witness": "w_bal_only"
+  },
+  "Balanced \u2227 \u00acClosed": {
+   "separable": true,
+   "witness": "w_bal_only"
+  },
+  "Reconciled \u2227 \u00acBalanced": {
+   "separable": true,
+   "witness": "w_rec_not_bal"
+  },
+  "Reconciled \u2227 \u00acDetermined": {
+   "separable": true,
+   "witness": "w_bal_only"
+  },
+  "Reconciled \u2227 \u00acKnown": {
+   "separable": true,
+   "witness": "w_bal_only"
+  },
+  "Reconciled \u2227 \u00acClosed": {
+   "separable": true,
+   "witness": "w_bal_only"
+  },
+  "Determined \u2227 \u00acBalanced": {
+   "separable": true,
+   "witness": "w_rec_not_bal"
+  },
+  "Determined \u2227 \u00acReconciled": {
+   "separable": true,
+   "witness": "w_det_not_rec"
+  },
+  "Determined \u2227 \u00acKnown": {
+   "separable": true,
+   "witness": "w_det_not_known"
+  },
+  "Determined \u2227 \u00acClosed": {
+   "separable": true,
+   "witness": "w_known_not_closed"
+  },
+  "Known \u2227 \u00acBalanced": {
+   "separable": true,
+   "witness": "w_rec_not_bal"
+  },
+  "Known \u2227 \u00acReconciled": {
+   "separable": true,
+   "witness": "w_det_not_rec"
+  },
+  "Known \u2227 \u00acDetermined": {
+   "separable": false,
+   "witness": null
+  },
+  "Known \u2227 \u00acClosed": {
+   "separable": true,
+   "witness": "w_known_not_closed"
+  },
+  "Closed \u2227 \u00acBalanced": {
+   "separable": true,
+   "witness": "w_rec_not_bal"
+  },
+  "Closed \u2227 \u00acReconciled": {
+   "separable": true,
+   "witness": "w_det_not_rec"
+  },
+  "Closed \u2227 \u00acDetermined": {
+   "separable": true,
+   "witness": "w_closed_not_det"
+  },
+  "Closed \u2227 \u00acKnown": {
+   "separable": true,
+   "witness": "w_det_not_known"
+  }
+ },
+ "pairs": {
+  "Balanced | Reconciled": {
+   "distinguishable": true,
+   "both_directions": false,
+   "witness_a_not_b": null,
+   "witness_b_not_a": "w_rec_not_bal"
+  },
+  "Balanced | Determined": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_bal_only",
+   "witness_b_not_a": "w_rec_not_bal"
+  },
+  "Balanced | Known": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_bal_only",
+   "witness_b_not_a": "w_rec_not_bal"
+  },
+  "Balanced | Closed": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_bal_only",
+   "witness_b_not_a": "w_rec_not_bal"
+  },
+  "Reconciled | Determined": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_bal_only",
+   "witness_b_not_a": "w_det_not_rec"
+  },
+  "Reconciled | Known": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_bal_only",
+   "witness_b_not_a": "w_det_not_rec"
+  },
+  "Reconciled | Closed": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_bal_only",
+   "witness_b_not_a": "w_det_not_rec"
+  },
+  "Determined | Known": {
+   "distinguishable": true,
+   "both_directions": false,
+   "witness_a_not_b": "w_det_not_known",
+   "witness_b_not_a": null
+  },
+  "Determined | Closed": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_known_not_closed",
+   "witness_b_not_a": "w_closed_not_det"
+  },
+  "Known | Closed": {
+   "distinguishable": true,
+   "both_directions": true,
+   "witness_a_not_b": "w_known_not_closed",
+   "witness_b_not_a": "w_det_not_known"
+  }
+ }
+}

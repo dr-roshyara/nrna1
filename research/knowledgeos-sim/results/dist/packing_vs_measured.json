@@ -1,0 +1,50 @@
+[
+ {
+  "space": "grouped g=50",
+  "sd": 1.4142,
+  "distinguishable": true,
+  "packing": 50,
+  "measured": 51.1,
+  "ratio": 0.98
+ },
+ {
+  "space": "grouped g=200",
+  "sd": 1.4142,
+  "distinguishable": true,
+  "packing": 200,
+  "measured": 201.9,
+  "ratio": 0.99
+ },
+ {
+  "space": "independent",
+  "sd": 1.4142,
+  "distinguishable": true,
+  "packing": 1000,
+  "measured": 940.6,
+  "ratio": 1.06
+ },
+ {
+  "space": "correlated \u03c1=0.5",
+  "sd": 1.0,
+  "distinguishable": true,
+  "packing": 1000,
+  "measured": 200.6,
+  "ratio": 4.99
+ },
+ {
+  "space": "correlated \u03c1=0.9",
+  "sd": 0.4472,
+  "distinguishable": true,
+  "packing": 1000,
+  "measured": 9.0,
+  "ratio": 111.11
+ },
+ {
+  "space": "correlated \u03c1=0.95",
+  "sd": 0.3162,
+  "distinguishable": true,
+  "packing": 1000,
+  "measured": 4.5,
+  "ratio": 222.22
+ }
+]

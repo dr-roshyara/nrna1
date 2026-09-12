@@ -1,0 +1,51 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "are the reason representations equivalent under R_req?",
+ "pairwise": [
+  {
+   "m1": "Structured[FlatReason]",
+   "m2": "Structured[LocusModalityReason]",
+   "equivalent": true,
+   "differences": {}
+  },
+  {
+   "m1": "Structured[FlatReason]",
+   "m2": "Structured[StructuredBoundary]",
+   "equivalent": true,
+   "differences": {}
+  },
+  {
+   "m1": "Structured[LocusModalityReason]",
+   "m2": "Structured[StructuredBoundary]",
+   "equivalent": true,
+   "differences": {}
+  }
+ ],
+ "adequacy": {
+  "Structured[FlatReason]": {
+   "adequate": true,
+   "preserved": 13,
+   "collapsed": 0
+  },
+  "Structured[LocusModalityReason]": {
+   "adequate": true,
+   "preserved": 13,
+   "collapsed": 0
+  },
+  "Structured[StructuredBoundary]": {
+   "adequate": true,
+   "preserved": 13,
+   "collapsed": 0
+  }
+ },
+ "note": "equivalence UNDER R_req is not identity. A representation can be adequate while losing distinctions R_req does not demand."
+}

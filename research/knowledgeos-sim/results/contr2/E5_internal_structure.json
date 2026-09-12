@@ -1,0 +1,148 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "is contradiction one state, or does it have internal structure?",
+ "family_size": 10,
+ "by_candidate": {
+  "A_fourth_value": {
+   "n_classes": 2,
+   "classes": {
+    "('C',)": [
+     "DirectContradiction",
+     "SourceConflict",
+     "ObservationConflict",
+     "UnequalConfidence",
+     "ContextDifference",
+     "TemporalDifference",
+     "ModelConflict",
+     "EvidenceConflict"
+    ],
+    "('F',)": [
+     "Retraction",
+     "Supersession"
+    ]
+   }
+  },
+  "B_delegated_relation": {
+   "n_classes": 2,
+   "classes": {
+    "('U', True)": [
+     "DirectContradiction",
+     "SourceConflict",
+     "ObservationConflict",
+     "UnequalConfidence",
+     "ContextDifference",
+     "TemporalDifference",
+     "ModelConflict",
+     "EvidenceConflict"
+    ],
+    "('F', False)": [
+     "Retraction",
+     "Supersession"
+    ]
+   }
+  },
+  "C_exclusive": {
+   "n_classes": 2,
+   "classes": {
+    "('T',)": [
+     "DirectContradiction",
+     "SourceConflict",
+     "ObservationConflict",
+     "UnequalConfidence",
+     "ContextDifference",
+     "TemporalDifference",
+     "ModelConflict",
+     "EvidenceConflict"
+    ],
+    "('F',)": [
+     "Retraction",
+     "Supersession"
+    ]
+   }
+  },
+  "D_structured": {
+   "n_classes": 10,
+   "classes": {
+    "('C', (True, True), None, ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))": [
+     "DirectContradiction"
+    ],
+    "('C', (True, True), None, ('S1', 'S2'), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))": [
+     "SourceConflict"
+    ],
+    "('C', (True, True), None, ('S1',), ('observation',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))": [
+     "ObservationConflict"
+    ],
+    "('C', (True, True), None, ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (0.1, 0.95))": [
+     "UnequalConfidence"
+    ],
+    "('C', (True, True), None, ('S1',), ('claim',), ('C1', 'C2'), (1,), ('M1',), ('active',), (1.0, 1.0))": [
+     "ContextDifference"
+    ],
+    "('C', (True, True), None, ('S1',), ('claim',), ('C1',), (1, 2), ('M1',), ('active',), (1.0, 1.0))": [
+     "TemporalDifference"
+    ],
+    "('C', (True, True), None, ('S1',), ('model',), ('C1',), (1,), ('M1', 'M2'), ('active',), (1.0, 1.0))": [
+     "ModelConflict"
+    ],
+    "('C', (True, True), None, ('S1',), ('evidence',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))": [
+     "EvidenceConflict"
+    ],
+    "('F', (False, True), None, ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active', 'retracted'), (1.0,))": [
+     "Retraction"
+    ],
+    "('F', (False, True), None, ('S1',), ('claim',), ('C1',), (2,), ('M1',), ('active', 'superseded'), (1.0,))": [
+     "Supersession"
+    ]
+   }
+  }
+ },
+ "second_order_combinations": [
+  {
+   "combination": "Contr+insufficient_evidence",
+   "A_fourth_value": "('C',)",
+   "B_delegated_relation": "('U', True)",
+   "C_exclusive": "('U',)",
+   "D_structured": "('C', (True, True), 'insufficient', ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))"
+  },
+  {
+   "combination": "Contr+not_assessed",
+   "A_fourth_value": "('C',)",
+   "B_delegated_relation": "('U', True)",
+   "C_exclusive": "('U',)",
+   "D_structured": "('C', (True, True), 'not-assessed', ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))"
+  },
+  {
+   "combination": "Contr+unobservable",
+   "A_fourth_value": "('C',)",
+   "B_delegated_relation": "('U', True)",
+   "C_exclusive": "('U',)",
+   "D_structured": "('C', (True, True), 'unobservable', ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))"
+  },
+  {
+   "combination": "Contr+underdetermined",
+   "A_fourth_value": "('C',)",
+   "B_delegated_relation": "('U', True)",
+   "C_exclusive": "('U',)",
+   "D_structured": "('C', (True, True), 'underdetermined', ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))"
+  },
+  {
+   "combination": "Contr+not_applicable",
+   "A_fourth_value": "('C',)",
+   "B_delegated_relation": "('U', True)",
+   "C_exclusive": "('U',)",
+   "D_structured": "('C', (True, True), 'not-applicable', ('S1',), ('claim',), ('C1',), (1,), ('M1',), ('active',), (1.0, 1.0))"
+  }
+ ],
+ "A_collapses_all_combinations_to_one_value": true,
+ "interpretation": "if A maps the whole family and all second-order combinations to a single value C, then C separates contradiction from non-contradiction while destroying every distinction WITHIN contradiction"
+}

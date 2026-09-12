@@ -1,0 +1,2820 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-G",
+  "status": "[EXP] CANDIDATE \u2014 NON-CANONICAL",
+  "note": "Eval_c is the primary object; Sat_c := value \u2218 Eval_c is a CANDIDATE PROJECTION, tested not assumed. Nothing here is KnowledgeOS architecture.",
+  "id_collision": "the commissioning document reuses KR-SIM-2026-09-02-E, already taken by the evaluator run; this experiment is recorded as -G"
+ },
+ "n": 168,
+ "results": [
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "UNDEFINED",
+   "reason": "CONTRADICTORY_INPUT",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": true,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[NEG]",
+   "trace": [
+    "no value in {T,F,U} exists for this input"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "U",
+   "reason": "UNOBSERVED",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "F",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "U",
+   "reason": "INSUFFICIENT_PROVENANCE",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "absent",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "UNDEFINED",
+   "reason": "CONTRADICTORY_INPUT",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": true,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[NEG]",
+   "trace": [
+    "no value in {T,F,U} exists for this input"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "delta",
+    "eval_content"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 defined and applicable",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "three_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "NON_TERMINATING",
+   "evaluator": "candidate",
+   "dependencies": [
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[NEG]",
+   "trace": [
+    "Eval_op depth 0",
+    "Eval_op depth 1",
+    "Eval_op depth 2",
+    "Eval_op depth 3",
+    "Eval_op depth 4",
+    "Eval_op depth 5",
+    "Eval_op depth 6",
+    "Eval_op depth 7",
+    "Eval_op depth 8",
+    "cut off by an ARBITRARY bound \u2014 not a semantic result"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "C",
+   "reason": "CONTRADICTION",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": true,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[HYPOTHESIS]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "U",
+   "reason": "UNOBSERVED",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "F",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "U",
+   "reason": "INSUFFICIENT_PROVENANCE",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "absent",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "C",
+   "reason": "CONTRADICTION",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": true,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[HYPOTHESIS]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "delta",
+    "eval_content"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 defined and applicable",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "four_valued",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "NON_TERMINATING",
+   "evaluator": "candidate",
+   "dependencies": [
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[NEG]",
+   "trace": [
+    "Eval_op depth 0",
+    "Eval_op depth 1",
+    "Eval_op depth 2",
+    "Eval_op depth 3",
+    "Eval_op depth 4",
+    "Eval_op depth 5",
+    "Eval_op depth 6",
+    "Eval_op depth 7",
+    "Eval_op depth 8",
+    "cut off by an ARBITRARY bound \u2014 not a semantic result"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B1-factivity",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": true,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "delegated to Sat_consistency; Contr is undefined"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B2-revision",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "U",
+   "reason": "UNOBSERVED",
+   "evaluator": "candidate",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "F",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "U",
+   "reason": "INSUFFICIENT_PROVENANCE",
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "absent",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B3-no-source",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "B4-blocked",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": true,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "delegated to Sat_consistency; Contr is undefined"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S1-contradiction",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "DELTA_UNDEFINED",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 undefined (Step 290)",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u03b4 is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S2-delta-defined",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "delta",
+    "eval_content"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "\u03b4 defined and applicable",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "content",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [
+    "consistency"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "evidence",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "provenance",
+   "value": "T",
+   "reason": null,
+   "evaluator": "candidate",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "present",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[PROP]",
+   "trace": []
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "status",
+   "value": "U",
+   "reason": "NO_ORDERING",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "\u2ab0 on epistemic status is not defined by the theory"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "consistency",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "Contr is not defined; the 4th-value question is OPEN"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "governance",
+   "value": "U",
+   "reason": "NO_EVALUATOR",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "temporal",
+   "value": "U",
+   "reason": "NO_TEMPORAL_SEMANTICS",
+   "evaluator": "OPEN",
+   "dependencies": [],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "single undifferentiated t; no valid/observation/record split",
+   "operational_state": "n/a",
+   "theory_status": "[OPEN]",
+   "trace": [
+    "KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids"
+   ]
+  },
+  {
+   "case": "S3-kappa-op",
+   "content_model": "delegated",
+   "evaluator_class": "operational",
+   "value": "U",
+   "reason": "NON_TERMINATING",
+   "evaluator": "candidate",
+   "dependencies": [
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational",
+    "operational"
+   ],
+   "contradiction": false,
+   "provenance_state": "n/a",
+   "temporal_state": "n/a",
+   "operational_state": "n/a",
+   "theory_status": "[NEG]",
+   "trace": [
+    "Eval_op depth 0",
+    "Eval_op depth 1",
+    "Eval_op depth 2",
+    "Eval_op depth 3",
+    "Eval_op depth 4",
+    "Eval_op depth 5",
+    "Eval_op depth 6",
+    "Eval_op depth 7",
+    "Eval_op depth 8",
+    "cut off by an ARBITRARY bound \u2014 not a semantic result"
+   ]
+  }
+ ]
+}

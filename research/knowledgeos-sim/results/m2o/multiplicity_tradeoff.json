@@ -1,0 +1,44 @@
+{
+ "signal": 0.6,
+ "sigma": 1.0,
+ "alpha": 0.05,
+ "rows": {
+  "1": {
+   "z": 1.6449,
+   "tau_at_m40": 0.2601,
+   "truth_admissible_at_m40": true,
+   "m_required": 8
+  },
+  "10": {
+   "z": 2.5758,
+   "tau_at_m40": 0.4073,
+   "truth_admissible_at_m40": true,
+   "m_required": 19
+  },
+  "100": {
+   "z": 3.2905,
+   "tau_at_m40": 0.5203,
+   "truth_admissible_at_m40": true,
+   "m_required": 31
+  },
+  "1000": {
+   "z": 3.8906,
+   "tau_at_m40": 0.6152,
+   "truth_admissible_at_m40": false,
+   "m_required": 43
+  },
+  "10000": {
+   "z": 4.4172,
+   "tau_at_m40": 0.6984,
+   "truth_admissible_at_m40": false,
+   "m_required": 55
+  },
+  "100000": {
+   "z": 4.8916,
+   "tau_at_m40": 0.7734,
+   "truth_admissible_at_m40": false,
+   "m_required": 67
+  }
+ },
+ "law": "m > (z_(1-\u03b1/n) \u00b7 \u03c3 / signal)\u00b2 ,  z\u00b2 ~ 2 ln n"
+}

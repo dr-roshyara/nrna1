@@ -1,0 +1,121 @@
+{
+ "1 genuine reconciliation": {
+  "scalar_sum": 0.8,
+  "balanced": false,
+  "reconciled": true,
+  "determined": true,
+  "closed": true,
+  "relations": [
+   "qualify",
+   "support"
+  ],
+  "note": "the qualifier is absorbed"
+ },
+ "2 unresolved contradiction": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": false,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "contradict",
+   "support"
+  ],
+  "note": "both stand"
+ },
+ "3 insufficient evidence": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "neither meets threshold"
+ },
+ "4 incomparable evidence": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "different targets"
+ },
+ "5 dependent evidence": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": true,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "the negative is a copy"
+ },
+ "6 wrong model": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "fits, causally invalid"
+ },
+ "7 multiple surviving H": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "three live"
+ },
+ "8 temporal mismatch": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": true,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "true@t1, false@t2"
+ },
+ "9 irrelevant evidence": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "irrelevant"
+  ],
+  "note": "neither bears on H"
+ },
+ "10 accidental cancellation": {
+  "scalar_sum": 0.0,
+  "balanced": true,
+  "reconciled": true,
+  "determined": false,
+  "closed": false,
+  "relations": [
+   "oppose",
+   "support"
+  ],
+  "note": "coincidence"
+ }
+}

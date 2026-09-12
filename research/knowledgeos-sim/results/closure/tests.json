@@ -1,0 +1,50 @@
+{
+ "S10_event_vs_state": {
+  "closed_at_t": true,
+  "closed_at_t1": false,
+  "state_model": "Closed_t(K) FLIPS true\u2192false; under Model A closure is not stable",
+  "event_model": "ClosureEvent_t is a historical fact that OCCURRED; K_{t+1} is revisable",
+  "verdict": "Model B survives revision, Model A does not. Closure as a STATE is refuted by temporal revision; closure as an EVENT is not. [EXP]",
+  "caution": "this does NOT make the event permanent TRUTH \u2014 only permanent as an event"
+ },
+ "S16_reconciliation": {
+  "computable_from_argument_relations_alone": true,
+  "verdict": "DERIVABLE \u2014 Reconciliation is a PREDICATE over the ArgumentField's typed relations, not an independent operation. It introduces no power the relation typing lacks. [EXP]",
+  "caveat": "derivable \u2260 mergeable: it may still be a distinct DDD responsibility"
+ },
+ "S17_closure_derived": {
+  "closure_equals_determined_and_adequate": true,
+  "verdict": "DERIVABLE from (Determination \u2227 Adequacy) in this model \u2014 ClosureEvent adds no power. But \u00a710 shows it adds a HISTORICAL RECORD that neither conjunct carries. [PROP]",
+  "note": "derivable as a PREDICATE, not as an EVENT: the event's irreversibility is extra structure"
+ },
+ "S19_zero_integration": {
+  "hosted": {
+   "unresolved argument": "G_conflict?",
+   "unexamined assumption": "G_assumption",
+   "insufficient discrimination": "G_assessment",
+   "competing hypothesis": "G_value"
+  },
+  "unhosted": [
+   "missing counterargument",
+   "unsupported reconciliation",
+   "closure under weak standards"
+  ],
+  "verdict": "4/7 hosted by the existing facets; 3 have NO facet. NOT added \u2014 the protocol forbids automatic extension. [OPEN]",
+  "detail": {
+   "missing counterargument": "a boundary about what is ABSENT from the ArgumentField; no facet expresses absence-of-argument",
+   "unsupported reconciliation": "a boundary about the WARRANT of a reconciliation, not about evidence or assessment",
+   "closure under weak standards": "a boundary about the STANDARD that licensed closure; G_model covers missing evaluators, not weak ones"
+  }
+ },
+ "S21_kernel": {
+  "capabilities": {
+   "Proposal generation": "content-generation \u2014 already held by Hypothesize (kernel lane). DERIVABLE",
+   "Challenge generation": "adversarial-negation \u2014 2/12 derivable across representations. UNRESOLVED",
+   "Argument relation": "relational-linking at the argument layer \u2014 Relate holds it. DERIVABLE",
+   "Evidence assessment": "warrant-assessment \u2014 Validate holds it. UNRESOLVED (1/12)",
+   "Reconciliation": "a predicate over typed relations. DERIVABLE (\u00a716)",
+   "Closure detection": "Determination \u2227 Adequacy as a predicate; the EVENT record is extra. DERIVABLE as predicate, UNRESOLVED as event"
+  },
+  "verdict": "No capability here requires NEW irreducible kernel power. But kernel minimality remains BLOCKED: semantic equivalence (\u2261_sem) is undefined, so no minimality claim is admissible. The KR-2026-09-01 cardinality result is NOT reused as proof."
+ }
+}

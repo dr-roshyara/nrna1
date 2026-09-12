@@ -1,0 +1,106 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "is a fourth VALUE necessary, given the boundary object?",
+ "m4_conflates_at_value": [
+  [
+   "CHs",
+   "CHS"
+  ],
+  [
+   "ChS",
+   "CHS"
+  ],
+  [
+   "ChS",
+   "CHs"
+  ],
+  [
+   "Chs",
+   "CHS"
+  ],
+  [
+   "Chs",
+   "CHs"
+  ],
+  [
+   "Chs",
+   "ChS"
+  ],
+  [
+   "chs",
+   "chS"
+  ]
+ ],
+ "m3_conflates_at_boundary": [
+  [
+   "CHs",
+   "CHS"
+  ],
+  [
+   "ChS",
+   "CHS"
+  ],
+  [
+   "ChS",
+   "CHs"
+  ],
+  [
+   "Chs",
+   "CHS"
+  ],
+  [
+   "Chs",
+   "CHs"
+  ],
+  [
+   "Chs",
+   "ChS"
+  ],
+  [
+   "chs",
+   "chS"
+  ]
+ ],
+ "m3_conflates_at_value": [
+  [
+   "CHs",
+   "CHS"
+  ],
+  [
+   "ChS",
+   "CHS"
+  ],
+  [
+   "ChS",
+   "CHs"
+  ],
+  [
+   "Chs",
+   "CHS"
+  ],
+  [
+   "Chs",
+   "CHs"
+  ],
+  [
+   "Chs",
+   "ChS"
+  ],
+  [
+   "chs",
+   "chS"
+  ]
+ ],
+ "m4_distinguishes_more_than_m3_boundary": [],
+ "m3_boundary_distinguishes_more_than_m4": [],
+ "equivalent": true
+}

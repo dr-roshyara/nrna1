@@ -1,0 +1,63 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "does contradiction introduce an irreducible kernel capability?",
+ "candidate_powers": [
+  "Observe",
+  "Interpret",
+  "Represent",
+  "Relate",
+  "Discriminate",
+  "Hypothesize",
+  "DetectGap",
+  "Challenge",
+  "Validate",
+  "Revise",
+  "Determine",
+  "Select",
+  "Qualify"
+ ],
+ "derivation": {
+  "detect that Pos and Neg both hold": {
+   "powers": [
+    "Represent",
+    "Relate",
+    "Discriminate"
+   ],
+   "argument": "both commitments are already REPRESENTED; detecting that they are related by negation and are distinct is Relate + Discriminate"
+  },
+  "classify the contradiction subtype": {
+   "powers": [
+    "Discriminate",
+    "Qualify"
+   ],
+   "argument": "subtype is a function of provenance/context/time fields already present in the representation (E4)"
+  },
+  "decide whether it must be resolved": {
+   "powers": [
+    "Challenge",
+    "Determine"
+   ],
+   "argument": "a governance/evaluation act, not a representational one"
+  },
+  "resolve it": {
+   "powers": [
+    "Revise",
+    "Select"
+   ],
+   "argument": "supersession or retraction -- existing revision machinery"
+  }
+ },
+ "all_steps_derivable": true,
+ "verdict_argument": "no step required a power outside the candidate set. Detection is Relate+Discriminate over an existing representation. Therefore contradiction is a SEMANTIC STATE, not a kernel operator -- subject to the standing caveat that the candidate operator set is not final",
+ "caveat": "derivability relative to the TESTED operator set (protocol S22)"
+}

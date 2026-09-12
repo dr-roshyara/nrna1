@@ -1,0 +1,107 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "do the new witnesses break anything for the surviving triples?",
+ "results": {
+  "majority|phi_time_context|filter": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "majority|phi_time_context|keep": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "majority|phi_time_context|demote": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "majority|phi_time_context_layer|filter": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "majority|phi_time_context_layer|keep": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "majority|phi_time_context_layer|demote": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "last-wins|phi_time_context|filter": {
+   "W1_reported_as_conflict": false,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "last-wins|phi_time_context|keep": {
+   "W1_reported_as_conflict": false,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "last-wins|phi_time_context|demote": {
+   "W1_reported_as_conflict": false,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "last-wins|phi_time_context_layer|filter": {
+   "W1_reported_as_conflict": false,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "last-wins|phi_time_context_layer|keep": {
+   "W1_reported_as_conflict": false,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "last-wins|phi_time_context_layer|demote": {
+   "W1_reported_as_conflict": false,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "intraframe-only|phi_time_context|filter": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "intraframe-only|phi_time_context|keep": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "intraframe-only|phi_time_context|demote": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "intraframe-only|phi_time_context_layer|filter": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "intraframe-only|phi_time_context_layer|keep": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  },
+  "intraframe-only|phi_time_context_layer|demote": {
+   "W1_reported_as_conflict": true,
+   "no_false_conflict_on_divergence": true,
+   "divergence_distinguishable_from_NoEvidence": true
+  }
+ },
+ "all_hold": false
+}

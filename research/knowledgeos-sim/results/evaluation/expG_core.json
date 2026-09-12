@@ -1,0 +1,346 @@
+{
+ "byvalue": {
+  "T": [
+   [
+    "None",
+    "candidate",
+    "[PROP]",
+    "False",
+    "()"
+   ]
+  ],
+  "U": [
+   [
+    "NON_TERMINATING",
+    "candidate",
+    "[NEG]",
+    "False",
+    "('Eval_op depth 0', 'Eval_op depth 1', 'Eval_op depth 2', 'Eval_op depth 3', 'Eval_op depth 4', 'Eval_op depth 5', 'Eval_op depth 6', 'Eval_op depth 7', 'Eval_op depth 8', 'cut off by an ARBITRARY bound \u2014 not a semantic result')"
+   ],
+   [
+    "NO_EVALUATOR",
+    "OPEN",
+    "[OPEN]",
+    "True",
+    "('delegated to Sat_consistency; Contr is undefined',)"
+   ],
+   [
+    "NO_EVALUATOR",
+    "OPEN",
+    "[OPEN]",
+    "False",
+    "('Contr is not defined; the 4th-value question is OPEN',)"
+   ],
+   [
+    "UNOBSERVED",
+    "candidate",
+    "[PROP]",
+    "False",
+    "()"
+   ],
+   [
+    "NO_TEMPORAL_SEMANTICS",
+    "OPEN",
+    "[OPEN]",
+    "False",
+    "(\"KR-SIM-2026-09-02-E's Eval_Time is retracted: it equated interval coverage with temporal validity, which A4 forbids\",)"
+   ],
+   [
+    "NO_EVALUATOR",
+    "OPEN",
+    "[OPEN]",
+    "False",
+    "('corpus defines no governance artifact, no authority evidence, no conflict rule; an authority table would be invented semantics',)"
+   ],
+   [
+    "NO_ORDERING",
+    "OPEN",
+    "[OPEN]",
+    "False",
+    "('\u2ab0 on epistemic status is not defined by the theory',)"
+   ],
+   [
+    "INSUFFICIENT_PROVENANCE",
+    "candidate",
+    "[PROP]",
+    "False",
+    "()"
+   ],
+   [
+    "DELTA_UNDEFINED",
+    "OPEN",
+    "[OPEN]",
+    "False",
+    "('\u03b4 is not defined by the theory',)"
+   ]
+  ],
+  "UNDEFINED": [
+   [
+    "CONTRADICTORY_INPUT",
+    "candidate",
+    "[NEG]",
+    "True",
+    "('no value in {T,F,U} exists for this input',)"
+   ]
+  ],
+  "F": [
+   [
+    "None",
+    "candidate",
+    "[PROP]",
+    "False",
+    "()"
+   ]
+  ],
+  "C": [
+   [
+    "CONTRADICTION",
+    "candidate",
+    "[HYPOTHESIS]",
+    "True",
+    "()"
+   ]
+  ]
+ },
+ "n_situations": 13,
+ "n_values": 5,
+ "discriminating_cases": [
+  "B3-no-source"
+ ],
+ "zero": {
+  "B1-factivity": {
+   "values": {
+    "content": "T",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": null,
+    "evidence": null,
+    "provenance": null,
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U",
+   "u_buckets": {
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory",
+    "operational": "theory"
+   }
+  },
+  "B2-revision": {
+   "values": {
+    "content": "U",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": "NO_EVALUATOR",
+    "evidence": null,
+    "provenance": null,
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U",
+   "u_buckets": {
+    "content": "theory",
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory",
+    "operational": "theory"
+   }
+  },
+  "B3-no-source": {
+   "values": {
+    "content": "U",
+    "evidence": "F",
+    "provenance": "U",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": "UNOBSERVED",
+    "evidence": null,
+    "provenance": "INSUFFICIENT_PROVENANCE",
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "strict": false,
+   "reasoned": false,
+   "weak": false,
+   "kleene": "F",
+   "u_buckets": {
+    "content": "agent",
+    "provenance": "agent",
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory",
+    "operational": "theory"
+   }
+  },
+  "B4-blocked": {
+   "values": {
+    "content": "T",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": null,
+    "evidence": null,
+    "provenance": null,
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U",
+   "u_buckets": {
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory",
+    "operational": "theory"
+   }
+  },
+  "S1-contradiction": {
+   "values": {
+    "content": "U",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": "NO_EVALUATOR",
+    "evidence": null,
+    "provenance": null,
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U",
+   "u_buckets": {
+    "content": "theory",
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory",
+    "operational": "theory"
+   }
+  },
+  "S2-delta-defined": {
+   "values": {
+    "content": "T",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "T"
+   },
+   "reasons": {
+    "content": null,
+    "evidence": null,
+    "provenance": null,
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": null
+   },
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U",
+   "u_buckets": {
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory"
+   }
+  },
+  "S3-kappa-op": {
+   "values": {
+    "content": "T",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "U",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": null,
+    "evidence": null,
+    "provenance": null,
+    "status": "NO_ORDERING",
+    "consistency": "NO_EVALUATOR",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "NON_TERMINATING"
+   },
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U",
+   "u_buckets": {
+    "status": "theory",
+    "consistency": "theory",
+    "governance": "theory",
+    "temporal": "theory",
+    "operational": "theory"
+   }
+  }
+ }
+}

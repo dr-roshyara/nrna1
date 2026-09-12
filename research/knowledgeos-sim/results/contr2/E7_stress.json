@@ -1,0 +1,54 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "robustness of contradiction DETECTION under random states",
+ "trials": 20000,
+ "seed": 20260902,
+ "generator": "uniform over the field domains",
+ "independent_cases": true,
+ "contradictory_fraction": 0.2037,
+ "misclassification": {
+  "A_fourth_value": {
+   "n": 0,
+   "rate": 0.0,
+   "ci95": [
+    0,
+    0.0
+   ]
+  },
+  "B_delegated_relation": {
+   "n": 0,
+   "rate": 0.0,
+   "ci95": [
+    0,
+    0.0
+   ]
+  },
+  "C_exclusive": {
+   "n": 4074,
+   "rate": 0.2037,
+   "ci95": [
+    0.19812,
+    0.20928
+   ]
+  },
+  "D_structured": {
+   "n": 0,
+   "rate": 0.0,
+   "ci95": [
+    0,
+    0.0
+   ]
+  }
+ },
+ "caveat": "Candidate C is EXPECTED to misclassify -- it structurally cannot hold both polarities.  This is robustness, NOT proof; the deterministic witnesses in E1/E2 are the evidence."
+}

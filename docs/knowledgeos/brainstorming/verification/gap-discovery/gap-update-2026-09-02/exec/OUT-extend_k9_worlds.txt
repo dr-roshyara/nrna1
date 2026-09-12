@@ -1,0 +1,25 @@
+==============================================================================
+EXTENDED WORLD SET
+==============================================================================
+  worlds: 66   (review lane's design: 14)
+  closure size ranges over 15 .. 23 of 29
+  review lane published:   15 .. 22
+  -> the published range is CONFIRMED and WIDENS to 15..23
+
+  present in EVERY world (8): Assertion, Identity, InvariantReg, K, Proposition, Provenance, Relation, RelationType
+  of those BLOCKED (5):
+      D?  Identity        clear-all-lanes
+      D   InvariantReg    NOT ENUMERATED
+      A   K               formal+L5
+      D   Proposition     formal
+      D   Relation        formal
+
+  review lane's triply-robust blocked set (5): Identity, InvariantReg, K, Proposition, Relation
+  -> IDENTICAL under the wider set
+
+  present in NO world (3): Lineage, Measurement, Orphan
+
+==============================================================================
+O_core ACROSS THE WIDER SET
+==============================================================================
+  O_core present in 34 of 66 worlds (51 %)

@@ -1,0 +1,7 @@
+{
+ "diagnosis": "S3/S5 differ in condition TYPE inside G_assessment, not in facet membership",
+ "minimal_repair": "typed vocabulary for G_assessment (3 values)",
+ "collisions_after": [],
+ "critical_after": [],
+ "repaired": true
+}

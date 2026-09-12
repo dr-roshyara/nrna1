@@ -1,0 +1,112 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "Contradiction => Zero?  And is Zero determined by contradiction?",
+ "rows": [
+  {
+   "condition": "DirectContradiction",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "SourceConflict",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "ObservationConflict",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "UnequalConfidence",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "ContextDifference",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "TemporalDifference",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "ModelConflict",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  },
+  {
+   "condition": "EvidenceConflict",
+   "A_value": "C",
+   "B_value": "U",
+   "A_zero_weak": true,
+   "A_zero_kleene": "T",
+   "B_zero_weak": true,
+   "B_zero_kleene": "U",
+   "closes_under_A": true,
+   "closes_under_B": true
+  }
+ ],
+ "contradiction_implies_not_zero": false,
+ "zero_values_over_contradictory_states": [
+  "T"
+ ],
+ "zero_values_over_noncontradictory_states": [
+  "U"
+ ],
+ "zero_determined_by_contradiction_alone": true
+}

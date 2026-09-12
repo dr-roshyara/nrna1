@@ -1,0 +1,30 @@
+{
+ "separating_case": {
+  "values": {
+   "content": "U",
+   "evidence": "T",
+   "provenance": "T",
+   "status": "T",
+   "consistency": "T",
+   "governance": "U",
+   "temporal": "U",
+   "operational": "U"
+  },
+  "reasons": {
+   "content": "UNOBSERVED",
+   "evidence": null,
+   "provenance": null,
+   "status": null,
+   "consistency": null,
+   "governance": "NO_EVALUATOR",
+   "temporal": "NO_TEMPORAL_SEMANTICS",
+   "operational": "DELTA_UNDEFINED"
+  },
+  "strict": false,
+  "reasoned": false,
+  "weak": true,
+  "kleene": "U",
+  "reasoned_distinct_from_weak": true
+ },
+ "zero_does_not_imply_truth": true
+}

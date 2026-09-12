@@ -1,0 +1,89 @@
+{
+ "n_states": 9,
+ "n_pairs": 36,
+ "boundary_collisions": [],
+ "all_nine_distinct": true,
+ "critical_six_collisions": [],
+ "critical_six_distinct": true,
+ "projection": {
+  "S1_contradiction": "U",
+  "S2_absence": "U",
+  "S3_evidence_insufficient": "U",
+  "S4_unobservable": "U",
+  "S5_underdetermined": "U",
+  "S6_theory_incomplete": "U",
+  "S7_agent_remediable": "U",
+  "S8_not_applicable": "U",
+  "S9_not_assessed": "U"
+ },
+ "all_project_to_same_value": true,
+ "zi": {
+  "ZI-01 Unknown \u2260 Absent": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S5_underdetermined",
+    "S2_absence"
+   ]
+  },
+  "ZI-02 NotAssessed \u2260 LowConfidence": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S9_not_assessed",
+    "S3_evidence_insufficient"
+   ]
+  },
+  "ZI-03 NotApplicable \u2260 Unknown": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S8_not_applicable",
+    "S5_underdetermined"
+   ]
+  },
+  "ZI-04 NoEvidence \u2260 InvalidEvidence": {
+   "testable": false,
+   "reason": "the nine-state suite contains no case for it"
+  },
+  "ZI-05 Unresolved \u2260 False": {
+   "testable": false,
+   "reason": "requires a truth-value comparison, which this experiment does not ask"
+  },
+  "ZI-06 UnknownDimension \u2260 UnknownValue": {
+   "testable": false,
+   "reason": "the nine-state suite contains no case for it"
+  },
+  "ZI-07 Representation \u2260 Reality": {
+   "testable": false,
+   "reason": "the nine-state suite contains no case for it"
+  },
+  "ZI-08 PreviouslyUnknown \u2260 PreviouslyAbsent": {
+   "testable": false,
+   "reason": "the nine-state suite contains no case for it"
+  },
+  "ZI-09 Conflict \u2260 Invalidity": {
+   "testable": false,
+   "reason": "requires a truth-value comparison, which this experiment does not ask"
+  },
+  "ZI-10 NoKnownGap \u2260 Complete": {
+   "testable": false,
+   "reason": "the nine-state suite contains no case for it"
+  }
+ },
+ "facets_used": {
+  "G_conflict": 1,
+  "G_value": 6,
+  "G_assessment": 3,
+  "G_evidence": 4,
+  "G_observability": 2,
+  "G_model": 1,
+  "G_scope": 1
+ },
+ "facets_unused": [
+  "G_dimension",
+  "G_interpretation",
+  "G_assumption",
+  "G_temporal"
+ ]
+}

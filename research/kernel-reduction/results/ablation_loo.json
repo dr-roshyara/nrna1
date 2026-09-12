@@ -1,0 +1,700 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "leave_one_out": {
+  "Observe": {
+   "baseline_score": 25,
+   "ablated_score": 8,
+   "lost_capabilities": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "reconstructed": [
+    "C5",
+    "C8",
+    "C11",
+    "C12",
+    "C13",
+    "C15",
+    "C18",
+    "C23"
+   ],
+   "exclusive_atoms": [
+    "world-contact"
+   ],
+   "result": "A-irreducible"
+  },
+  "Interpret": {
+   "baseline_score": 25,
+   "ablated_score": 11,
+   "lost_capabilities": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "reconstructed": [
+    "C1",
+    "C5",
+    "C8",
+    "C11",
+    "C12",
+    "C13",
+    "C15",
+    "C18",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "meaning-assignment"
+   ],
+   "result": "A-irreducible"
+  },
+  "Represent": {
+   "baseline_score": 25,
+   "ablated_score": 24,
+   "lost_capabilities": [
+    "C3"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "symbolic-encoding"
+   ],
+   "result": "A-irreducible"
+  },
+  "Relate": {
+   "baseline_score": 25,
+   "ablated_score": 23,
+   "lost_capabilities": [
+    "C22",
+    "C4"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "relational-linking"
+   ],
+   "result": "A-irreducible"
+  },
+  "Discriminate": {
+   "baseline_score": 25,
+   "ablated_score": 25,
+   "lost_capabilities": [],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [],
+   "result": "B-derivable"
+  },
+  "Hypothesize": {
+   "baseline_score": 25,
+   "ablated_score": 22,
+   "lost_capabilities": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "content-generation"
+   ],
+   "result": "A-irreducible"
+  },
+  "Infer": {
+   "baseline_score": 25,
+   "ablated_score": 24,
+   "lost_capabilities": [
+    "C7"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "entailment"
+   ],
+   "result": "A-irreducible"
+  },
+  "DetectGap": {
+   "baseline_score": 25,
+   "ablated_score": 25,
+   "lost_capabilities": [],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [],
+   "result": "B-derivable"
+  },
+  "Challenge": {
+   "baseline_score": 25,
+   "ablated_score": 24,
+   "lost_capabilities": [
+    "C9"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "adversarial-negation"
+   ],
+   "result": "A-irreducible"
+  },
+  "Validate": {
+   "baseline_score": 25,
+   "ablated_score": 22,
+   "lost_capabilities": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "warrant-assessment"
+   ],
+   "result": "A-irreducible"
+  },
+  "Revise": {
+   "baseline_score": 25,
+   "ablated_score": 22,
+   "lost_capabilities": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C12",
+    "C13",
+    "C14",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "state-mutation"
+   ],
+   "result": "A-irreducible"
+  },
+  "Determine": {
+   "baseline_score": 25,
+   "ablated_score": 23,
+   "lost_capabilities": [
+    "C12",
+    "C23"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "closure-judgment"
+   ],
+   "result": "A-irreducible"
+  },
+  "Select": {
+   "baseline_score": 25,
+   "ablated_score": 24,
+   "lost_capabilities": [
+    "C13"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C10",
+    "C11",
+    "C12",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25"
+   ],
+   "exclusive_atoms": [
+    "preference-over-actions"
+   ],
+   "result": "A-irreducible"
+  },
+  "Qualify": {
+   "baseline_score": 25,
+   "ablated_score": 21,
+   "lost_capabilities": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "reconstructed": [
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C18",
+    "C19",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24"
+   ],
+   "exclusive_atoms": [
+    "evidential-qualification"
+   ],
+   "result": "A-irreducible"
+  }
+ },
+ "scenario_ablation": {
+  "Observe": {
+   "passed": 3,
+   "failed": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8",
+    "S9",
+    "S10",
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  "Interpret": {
+   "passed": 4,
+   "failed": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S7",
+    "S8",
+    "S9",
+    "S10",
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  "Represent": {
+   "passed": 11,
+   "failed": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S16"
+   ]
+  },
+  "Relate": {
+   "passed": 14,
+   "failed": [
+    "S10",
+    "S16"
+   ]
+  },
+  "Discriminate": {
+   "passed": 16,
+   "failed": []
+  },
+  "Hypothesize": {
+   "passed": 11,
+   "failed": [
+    "S5",
+    "S7",
+    "S8",
+    "S14",
+    "S15"
+   ]
+  },
+  "Infer": {
+   "passed": 15,
+   "failed": [
+    "S9"
+   ]
+  },
+  "DetectGap": {
+   "passed": 16,
+   "failed": []
+  },
+  "Challenge": {
+   "passed": 15,
+   "failed": [
+    "S9"
+   ]
+  },
+  "Validate": {
+   "passed": 13,
+   "failed": [
+    "S8",
+    "S9",
+    "S15"
+   ]
+  },
+  "Revise": {
+   "passed": 14,
+   "failed": [
+    "S4",
+    "S6"
+   ]
+  },
+  "Determine": {
+   "passed": 13,
+   "failed": [
+    "S7",
+    "S11",
+    "S12"
+   ]
+  },
+  "Select": {
+   "passed": 15,
+   "failed": [
+    "S13"
+   ]
+  },
+  "Qualify": {
+   "passed": 9,
+   "failed": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S8",
+    "S9",
+    "S15"
+   ]
+  }
+ },
+ "exclusive_atoms": {
+  "Observe": [
+   "world-contact"
+  ],
+  "Interpret": [
+   "meaning-assignment"
+  ],
+  "Represent": [
+   "symbolic-encoding"
+  ],
+  "Relate": [
+   "relational-linking"
+  ],
+  "Discriminate": [],
+  "Hypothesize": [
+   "content-generation"
+  ],
+  "Infer": [
+   "entailment"
+  ],
+  "DetectGap": [],
+  "Challenge": [
+   "adversarial-negation"
+  ],
+  "Validate": [
+   "warrant-assessment"
+  ],
+  "Revise": [
+   "state-mutation"
+  ],
+  "Determine": [
+   "closure-judgment"
+  ],
+  "Select": [
+   "preference-over-actions"
+  ],
+  "Qualify": [
+   "evidential-qualification"
+  ]
+ }
+}

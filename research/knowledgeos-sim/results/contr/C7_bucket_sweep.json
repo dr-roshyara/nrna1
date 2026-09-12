@@ -1,0 +1,32 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "is the separation an artifact of the bucket assignment?",
+ "sweep": {
+  "contr=agent,noeval=agent": {
+   "boundary_relations_differ": true,
+   "zero_reasoned_separates": true
+  },
+  "contr=agent,noeval=theory": {
+   "boundary_relations_differ": true,
+   "zero_reasoned_separates": false
+  },
+  "contr=theory,noeval=agent": {
+   "boundary_relations_differ": true,
+   "zero_reasoned_separates": true
+  },
+  "contr=theory,noeval=theory": {
+   "boundary_relations_differ": true,
+   "zero_reasoned_separates": false
+  }
+ },
+ "boundary_separation_holds_in_all": true
+}

@@ -1,0 +1,57 @@
+==============================================================================
+0. PROVENANCE
+==============================================================================
+  graph + closure() imported from: ../../readiness/exec/minimum_implementable.py
+  nodes: 29
+
+==============================================================================
+1. CONTROL — does K_4 reproduce the source's published result?
+==============================================================================
+  Closure(K_4)           size 18 of 29   blocked 15   unblocked 3
+  published: 18 constructs / 15 blocked   ->  REPRODUCED
+
+==============================================================================
+2. Closure(K_9) under the review lane's DECLARED mapping
+==============================================================================
+  seeds (10): Authority, Authorization, Determination, Evidence, InvariantReg, K, Policy, Qualification, Sigma, Transformation
+  Closure(K_9)           size 20 of 29   blocked 17   unblocked 3
+  published: 20 constructs           ->  REPRODUCED
+
+==============================================================================
+3. INCOMPARABILITY — the load-bearing claim
+==============================================================================
+  Closure(K_4) subset of Closure(K_9)?  False
+  Closure(K_9) subset of Closure(K_4)?  False
+  K_4 \ K_9 (3): ['History', 'Rejection', 'Replay']
+  K_9 \ K_4 (5): ['Assessment', 'Authority', 'Authorization', 'Determination', 'Qualification']
+  intersection (15)
+  reached by NEITHER (6): ['Gamma', 'Lineage', 'Measurement', 'Missingness', 'Orphan', 'Q_t']
+  published: INCOMPARABLE            ->  REPRODUCED
+
+==============================================================================
+4. DEGENERACY — is Qualification definitional?
+==============================================================================
+  Qualification in Closure(K_9)                : True
+  Qualification in Closure(K_9) with C-7 removed: False
+  -> reached ONLY via its own seed. The degeneracy warning is CORRECT.
+
+==============================================================================
+5. ONE-AT-A-TIME MAPPING SENSITIVITY
+==============================================================================
+  C-1 -> ['Sigma']                  size 16   d=[] / -['Equality', 'O_core', 'Operations', 'Transformation']  REPRODUCED
+  C-2 -> ['Authority']              size 20   d=[] / -[]  REPRODUCED
+  C-4 -> ['Gamma']                  size 21   d=['Gamma'] / -[]  REPRODUCED
+  C-5 -> ['Assessment']             size 20   d=[] / -[]  REPRODUCED
+  C-6 -> ['Missingness']            size 22   d=['Missingness', 'Q_t'] / -[]  REPRODUCED
+
+==============================================================================
+6. FULL PRODUCT OVER ALL PERTURBED ROWS — the range claim
+==============================================================================
+  worlds enumerated: 32   min 16   max 23
+  published range: 15 … 22           ->  *** got 16…23 ***
+
+==============================================================================
+7. O_core FRAGILITY — does it enter through one row only?
+==============================================================================
+  perturbing C-1 alone REMOVES O_core from the closure
+  O_core in Closure(K_9): True

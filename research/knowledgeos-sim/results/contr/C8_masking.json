@@ -1,0 +1,149 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "does masking by other requirements explain D-0's agreement?",
+ "state": "X1 (agent holds {p, not-p}) plus N other requirements at U",
+ "rows": [
+  {
+   "other_U": 0,
+   "other_bucket": null,
+   "readings": {
+    "three_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "T",
+     "strict": false
+    },
+    "four_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "T",
+     "strict": false
+    },
+    "delegated": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    }
+   },
+   "distinct_reading_profiles": 2,
+   "models_separable": true
+  },
+  {
+   "other_U": 1,
+   "other_bucket": "theory",
+   "readings": {
+    "three_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    },
+    "four_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    },
+    "delegated": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    }
+   },
+   "distinct_reading_profiles": 1,
+   "models_separable": false
+  },
+  {
+   "other_U": 1,
+   "other_bucket": "agent",
+   "readings": {
+    "three_valued": {
+     "weak": true,
+     "reasoned": false,
+     "kleene": "U",
+     "strict": false
+    },
+    "four_valued": {
+     "weak": true,
+     "reasoned": false,
+     "kleene": "U",
+     "strict": false
+    },
+    "delegated": {
+     "weak": true,
+     "reasoned": false,
+     "kleene": "U",
+     "strict": false
+    }
+   },
+   "distinct_reading_profiles": 1,
+   "models_separable": false
+  },
+  {
+   "other_U": 5,
+   "other_bucket": "theory",
+   "readings": {
+    "three_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    },
+    "four_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    },
+    "delegated": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    }
+   },
+   "distinct_reading_profiles": 1,
+   "models_separable": false
+  },
+  {
+   "other_U": 6,
+   "other_bucket": "theory",
+   "readings": {
+    "three_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    },
+    "four_valued": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    },
+    "delegated": {
+     "weak": true,
+     "reasoned": true,
+     "kleene": "U",
+     "strict": false
+    }
+   },
+   "distinct_reading_profiles": 1,
+   "models_separable": false
+  }
+ ],
+ "masked_when_other_U_present": true,
+ "separable_in_isolation": true,
+ "interpretation": "if separable at other_U=0 and masked at other_U>0, then D-0's agreement is a MASKING artifact of the 8-class setting, not a property of the models"
+}

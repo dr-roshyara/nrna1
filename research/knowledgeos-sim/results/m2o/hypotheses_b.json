@@ -1,0 +1,43 @@
+{
+ "H5_H6_H7": {
+  "cases": {
+   "CASE 1 100\u2192unique": {
+    "n_admissible": 2,
+    "members": [
+     "H_true",
+     "Z37"
+    ],
+    "expected": "|A|=1"
+   },
+   "CASE 2 100\u2192two": {
+    "n_admissible": 5,
+    "members": [
+     "H_true",
+     "H_twin",
+     "Z25",
+     "Z7"
+    ],
+    "expected": "|A|>1"
+   },
+   "CASE 3 100\u2192none": {
+    "n_admissible": 0,
+    "members": [],
+    "expected": "|A|=0"
+   }
+  },
+  "all_three_reachable": false
+ },
+ "H3_selection_vs_validation": {
+  "selected": "H_decoy",
+  "truth": "H_true",
+  "heldout": 0.9849,
+  "validated": true,
+  "selected_is_true": false,
+  "verdict": "Selected(H) and Validated(H) are separately observable; the decoy world makes them come apart. Selection MUST NOT be converted into validation."
+ },
+ "H11_kernel": {
+  "agreement": "200/200",
+  "verdict": "A \u2014 REDUNDANCY: Selection = Discriminate + Validate + Determine, reproduced exactly",
+  "caveat": "This is DERIVABILITY OF THE SET-VALUED OPERATION only. It does NOT establish that Selection is not a distinct DDD responsibility (outcome B), and per \u00a719 no kernel minimality claim is admissible while \u2261_sem is undefined."
+ }
+}

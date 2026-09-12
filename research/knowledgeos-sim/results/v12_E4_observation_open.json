@@ -1,0 +1,57 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-B",
+  "model": "KnowledgeOS-Simulation-v1.2",
+  "theory": "KnowledgeOS Theory v1.2 (weakened v1.1) + class-indexed three-valued Sat",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "status_vocabulary": [
+   "ESTABLISHED",
+   "DERIVED",
+   "BOUNDED",
+   "HYPOTHESIS",
+   "INTERPRETATION",
+   "CORROBORATION",
+   "NORMATIVE",
+   "TECHNICALLY OPEN",
+   "DEFERRED",
+   "REFUTED",
+   "UNKNOWN"
+  ]
+ },
+ "variants": {
+  "candidate(x,t,c,s)": {
+   "status": "unique",
+   "A": [
+    "RHEL9.8"
+   ],
+   "independent_sources": 2,
+   "attributed": true,
+   "zero_strict": false,
+   "zero_weak": true
+  },
+  "no-source": {
+   "status": "cannot-determine",
+   "A": [],
+   "independent_sources": 1,
+   "attributed": false,
+   "zero_strict": false,
+   "zero_weak": false
+  },
+  "no-context": {
+   "status": "unique",
+   "A": [
+    "RHEL9.8"
+   ],
+   "independent_sources": 2,
+   "attributed": true,
+   "zero_strict": false,
+   "zero_weak": true
+  }
+ },
+ "result_depends_on_observation_model": [
+  "no-source"
+ ]
+}

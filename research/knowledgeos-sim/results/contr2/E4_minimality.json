@@ -1,0 +1,78 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "what is the SMALLEST structure preserving the required distinctions?",
+ "single_field_ablation": {
+  "value": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "polarity": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "reason": {
+   "adequate_without_it": false,
+   "distinctions_lost": [
+    [
+     "Unknown",
+     "Absent"
+    ]
+   ]
+  },
+  "provenance": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "evidence": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "context": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "time": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "model": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "status": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  },
+  "confidence": {
+   "adequate_without_it": true,
+   "distinctions_lost": []
+  }
+ },
+ "necessary_fields": [
+  "reason"
+ ],
+ "minimum_size": 2,
+ "n_minimum_sets": 2,
+ "minimum_sets": [
+  [
+   "value",
+   "reason"
+  ],
+  [
+   "polarity",
+   "reason"
+  ]
+ ],
+ "unique_minimum": false,
+ "caveat": "experimental minimality for the TESTED distinction set only"
+}

@@ -1,0 +1,22 @@
+{
+ "H1": {
+  "verdict": "REFUTED as stated",
+  "collapse": "Absent \u00b7 Unknown \u00b7 NotAssessed \u00b7 Contradiction all map to the zero vector",
+  "note": "v + (\u2212v) = 0 makes contradiction indistinguishable from absence",
+  "relation": "the same collapse as value\u2218Eval (9 situations \u2192 U), re-expressed geometrically"
+ },
+ "H6": {
+  "verdict": "does not repair factivity",
+  "reason": "\u0393's domain excludes truth; a change of representation does not change the domain"
+ },
+ "H9": {
+  "verdict": "PARTIALLY CONFIRMED",
+  "invariant_under": "orthogonal change of basis (functions of the spectrum)",
+  "not_invariant_under": "per-candidate rescaling, which KnowledgeOS admits"
+ },
+ "H12": {
+  "verdict": "NOT a reduction on the tested questions",
+  "gives": "a well-defined joint object and a vocabulary for the gap",
+  "does_not_give": "effective complexity \u00b7 semantic equivalence \u00b7 independence \u00b7 factivity"
+ }
+}

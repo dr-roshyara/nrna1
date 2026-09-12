@@ -1,0 +1,189 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "do the four ORIGINAL Zero readings separate the models?",
+ "rows": [
+  {
+   "case": "chs",
+   "three_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   }
+  },
+  {
+   "case": "chS",
+   "three_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   }
+  },
+  {
+   "case": "cHs",
+   "three_valued": {
+    "strict": false,
+    "weak": false,
+    "reasoned": false,
+    "kleene": "F"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": false,
+    "reasoned": false,
+    "kleene": "F"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": false,
+    "reasoned": false,
+    "kleene": "F"
+   }
+  },
+  {
+   "case": "cHS",
+   "three_valued": {
+    "strict": true,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "four_valued": {
+    "strict": true,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "delegated": {
+    "strict": true,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   }
+  },
+  {
+   "case": "Chs",
+   "three_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   }
+  },
+  {
+   "case": "ChS",
+   "three_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   }
+  },
+  {
+   "case": "CHs",
+   "three_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   }
+  },
+  {
+   "case": "CHS",
+   "three_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "four_valued": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "T"
+   },
+   "delegated": {
+    "strict": false,
+    "weak": true,
+    "reasoned": true,
+    "kleene": "U"
+   }
+  }
+ ],
+ "separated": {
+  "three_valued|four_valued": false,
+  "three_valued|delegated": true,
+  "four_valued|delegated": true
+ },
+ "any_separation": true
+}

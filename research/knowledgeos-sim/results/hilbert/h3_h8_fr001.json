@@ -1,0 +1,28 @@
+{
+ "H8": {
+  "eps": 0.5,
+  "step": 0.45,
+  "n": 12,
+  "adjacent_within_eps": true,
+  "endpoints_beyond_eps": true,
+  "transitive": false,
+  "verdict": "REFUTED \u2014 reproduces the FR-001 transitivity failure",
+  "fr001_relation": "CONSISTENT: Hilbert distance is subject to the same frozen boundary"
+ },
+ "H3": {
+  "cov": 0.0,
+  "orthogonal": true,
+  "probabilistically_independent": false,
+  "witness": "X~U{-1,0,1}, Y=1[X=0]",
+  "verdict": "REFUTED as stated; CONDITIONALLY VALID if jointly Gaussian is assumed",
+  "note": "assuming joint Gaussianity is itself a modelling commitment, not a free choice"
+ },
+ "FR001_compatibility": {
+  "fr001": "pairwise distinguishability cannot generally carry family-level complexity",
+  "hilbert_claim": "a Hilbert/spectral representation supplies the joint object FR-001 said was missing",
+  "test": "does a spectral functional reproduce the measured family-level burden?",
+  "result": "NO \u2014 all four tested functionals are exact on block structure and fail on equicorrelation by up to 50x, UNDERESTIMATING",
+  "relation": "STRENGTHENS FR-001, does not replace it",
+  "detail": "FR-001 showed the PAIRWISE route overestimates (packing 1000 vs 201, up to 222x). KR-HILBERT shows the SPECTRAL route underestimates (PR 4 vs 201, 50x). The measured value lies BETWEEN the two natural constructions and is captured by neither."
+ }
+}

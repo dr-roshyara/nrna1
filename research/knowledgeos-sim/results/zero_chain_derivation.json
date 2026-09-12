@@ -1,0 +1,6 @@
+{
+ "assignments": 1620000,
+ "strict_implies_reasoned_counterexamples": 0,
+ "reasoned_implies_weak_counterexamples": 0,
+ "status": "DERIVED from the definitions; independent of the bucket partition"
+}

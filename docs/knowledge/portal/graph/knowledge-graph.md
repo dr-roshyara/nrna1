@@ -15,7 +15,7 @@ related_to: [PORTAL-INDEX]
 
 # Knowledge Graph
 
-> **Generated** by `npm run knowledge-graph` on 2026-06-27. Do not hand-edit.
+> **Generated** by `npm run knowledge-graph` on 2026-08-30. Do not hand-edit.
 > Nodes = governed documents (grouped by bounded context); edges = typed relationships.
 
 ```mermaid
@@ -56,6 +56,7 @@ graph LR
     GRAPH_README["GRAPH-README<br/><small>portal</small>"]
     GUIDE_EKP["GUIDE-EKP<br/><small>guide</small>"]
     KNOWLEDGE_CONSTITUTION["KNOWLEDGE-CONSTITUTION<br/><small>constitution</small>"]
+    META_DOC_MIGRATION_CHECKLIST["META-DOC-MIGRATION-CHECKLIST<br/><small>checklist</small>"]
     META_LIFECYCLE["META-LIFECYCLE<br/><small>reference</small>"]
     META_NAMING["META-NAMING<br/><small>reference</small>"]
     PKG_ARCHITECTURE_REVIEW["PKG-ARCHITECTURE-REVIEW<br/><small>package</small>"]
@@ -82,8 +83,17 @@ graph LR
   subgraph trust["trust"]
     TRU_README["TRU-README<br/><small>domain-model</small>"]
   end
+  KNOWLEDGE_CONSTITUTION -->|related_to| META_LIFECYCLE
+  META_LIFECYCLE -->|derived_from| KNOWLEDGE_CONSTITUTION
+  META_LIFECYCLE -->|related_to| KNOWLEDGE_CONSTITUTION
+  META_NAMING -->|related_to| KNOWLEDGE_CONSTITUTION
+  META_DOC_MIGRATION_CHECKLIST -->|related_to| META_LIFECYCLE
   AI_README -->|related_to| PORTAL_INDEX
   AI_README -->|related_to| KNOWLEDGE_CONSTITUTION
+  ADJ_README -->|related_to| HUB_ADJUDICATION
+  ADJ_README -->|documents| ADJ_DISC_BOUNDARY
+  ADJ_README -->|documents| ADJ_MODEL_DETERMINATION
+  ADJ_README -->|documents| ADJ_SM_DETERMINATION
   ADJ_DISC_BOUNDARY -->|related_to| ADJ_README
   ADJ_DISC_BOUNDARY -->|documents| ADJ_MODEL_DETERMINATION
   ADJ_IMPL_WIRING -->|related_to| ADJ_README
@@ -91,10 +101,6 @@ graph LR
   ADJ_MODEL_DETERMINATION -->|related_to| ADJ_README
   ADJ_MODEL_DETERMINATION -->|tested_by| ADJ_TESTS
   ADJ_MODEL_DETERMINATION -->|state_machine| ADJ_SM_DETERMINATION
-  ADJ_README -->|related_to| HUB_ADJUDICATION
-  ADJ_README -->|documents| ADJ_DISC_BOUNDARY
-  ADJ_README -->|documents| ADJ_MODEL_DETERMINATION
-  ADJ_README -->|documents| ADJ_SM_DETERMINATION
   ADJ_ROADMAP -->|related_to| ADJ_README
   ADJ_SM_DETERMINATION -->|related_to| ADJ_MODEL_DETERMINATION
   ADJ_TESTS -->|related_to| ADJ_MODEL_DETERMINATION
@@ -108,25 +114,20 @@ graph LR
   MEM_README -->|related_to| PORTAL_INDEX
   SHR_README -->|related_to| PORTAL_INDEX
   TRU_README -->|related_to| PORTAL_INDEX
+  GLOBAL_README -->|related_to| PORTAL_INDEX
   GUIDE_EKP -->|requires| META_NAMING
   GUIDE_EKP -->|related_to| PORTAL_INDEX
   GUIDE_EKP -->|related_to| KNOWLEDGE_CONSTITUTION
   GUIDE_EKP -->|related_to| META_LIFECYCLE
   GUIDE_EKP -->|related_to| META_NAMING
-  GLOBAL_README -->|related_to| PORTAL_INDEX
-  KNOWLEDGE_CONSTITUTION -->|related_to| META_LIFECYCLE
   PORTAL_ADR_INDEX -->|related_to| PORTAL_INDEX
-  PORTAL_BY_ROLE -->|related_to| PORTAL_INDEX
-  PORTAL_BY_TYPE -->|related_to| PORTAL_INDEX
-  GRAPH_FULL -->|related_to| PORTAL_INDEX
   GRAPH_README -->|related_to| PORTAL_INDEX
+  GRAPH_FULL -->|related_to| PORTAL_INDEX
   HUB_ADJUDICATION -->|related_to| PORTAL_INDEX
   HUB_ADJUDICATION -->|related_to| HUB_ELECTION
   HUB_ADJUDICATION -->|documents| ADJ_README
   HUB_ELECTION -->|related_to| PORTAL_INDEX
   HUB_ELECTION -->|related_to| HUB_ADJUDICATION
-  PORTAL_INDEX -->|related_to| KNOWLEDGE_CONSTITUTION
-  PORTAL_INDEX -->|related_to| META_LIFECYCLE
   PKG_README -->|related_to| PORTAL_INDEX
   RCP_CREATE_ADR -->|requires| META_NAMING
   RCP_CREATE_ADR -->|related_to| PORTAL_ADR_INDEX
@@ -134,11 +135,12 @@ graph LR
   RCP_IMPLEMENT_AGGREGATE -->|requires| META_NAMING
   RCP_IMPLEMENT_AGGREGATE -->|related_to| PKG_IMPLEMENT_AGGREGATE
   RCP_IMPLEMENT_AGGREGATE -->|related_to| RCP_CREATE_ADR
+  PORTAL_INDEX -->|related_to| KNOWLEDGE_CONSTITUTION
+  PORTAL_INDEX -->|related_to| META_LIFECYCLE
+  PORTAL_BY_ROLE -->|related_to| PORTAL_INDEX
+  PORTAL_BY_TYPE -->|related_to| PORTAL_INDEX
   RESEARCH_README -->|related_to| PORTAL_INDEX
   WORKING_README -->|related_to| PORTAL_INDEX
-  META_LIFECYCLE -->|derived_from| KNOWLEDGE_CONSTITUTION
-  META_LIFECYCLE -->|related_to| KNOWLEDGE_CONSTITUTION
-  META_NAMING -->|related_to| KNOWLEDGE_CONSTITUTION
   PKG_ARCHITECTURE_REVIEW -->|includes| KNOWLEDGE_CONSTITUTION
   PKG_ARCHITECTURE_REVIEW -->|includes| META_LIFECYCLE
   PKG_ARCHITECTURE_REVIEW -->|includes| PORTAL_ADR_INDEX
@@ -153,4 +155,4 @@ graph LR
   PKG_IMPLEMENT_AGGREGATE -->|includes| ADJ_SM_DETERMINATION
 ```
 
-*Nodes:* 38 · *edges:* 69.
+*Nodes:* 39 · *edges:* 70.

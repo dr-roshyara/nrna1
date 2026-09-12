@@ -1,0 +1,137 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-G",
+  "status": "[EXP] CANDIDATE \u2014 NON-CANONICAL",
+  "note": "Eval_c is the primary object; Sat_c := value \u2218 Eval_c is a CANDIDATE PROJECTION, tested not assumed. Nothing here is KnowledgeOS architecture.",
+  "id_collision": "the commissioning document reuses KR-SIM-2026-09-02-E, already taken by the evaluator run; this experiment is recorded as -G"
+ },
+ "cases": {
+  "B1-factivity": {
+   "note": "policy-trusted source, false report",
+   "K": {
+    "content": [
+     "p"
+    ],
+    "weight": 1.0,
+    "evidence_seen": true,
+    "provenance": [
+     "a1"
+    ]
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": false
+   },
+   "kappa": "content"
+  },
+  "B2-revision": {
+   "note": "stale evidence never retired",
+   "K": {
+    "content": [
+     "np",
+     "p"
+    ],
+    "weight": 1.0,
+    "evidence_seen": true,
+    "provenance": [
+     "a1",
+     "a2"
+    ]
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": false
+   },
+   "kappa": "content"
+  },
+  "B3-no-source": {
+   "note": "source/provenance removed",
+   "K": {
+    "content": [],
+    "weight": 0.0,
+    "evidence_seen": true,
+    "provenance": []
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": false
+   },
+   "kappa": "content"
+  },
+  "B4-blocked": {
+   "note": "only the blocked classes remain",
+   "K": {
+    "content": [
+     "p"
+    ],
+    "weight": 1.0,
+    "evidence_seen": true,
+    "provenance": [
+     "a1"
+    ]
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": false
+   },
+   "kappa": "content"
+  },
+  "S1-contradiction": {
+   "note": "PB-2 separating case",
+   "K": {
+    "content": [
+     "np",
+     "p"
+    ],
+    "weight": 1.0,
+    "evidence_seen": true,
+    "provenance": [
+     "a1"
+    ]
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": false
+   },
+   "kappa": "content"
+  },
+  "S2-delta-defined": {
+   "note": "PB-5: \u03b4 supplied, \u03ba non-operational",
+   "K": {
+    "content": [
+     "p"
+    ],
+    "weight": 1.0,
+    "evidence_seen": true,
+    "provenance": [
+     "a1"
+    ]
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": true,
+    "postcondition_met": true
+   },
+   "kappa": "content"
+  },
+  "S3-kappa-op": {
+   "note": "PB-5: \u03ba = operational, NOT excluded",
+   "K": {
+    "content": [
+     "p"
+    ],
+    "weight": 1.0,
+    "evidence_seen": true,
+    "provenance": [
+     "a1"
+    ]
+   },
+   "r": {
+    "e_min": 1.0,
+    "delta_defined": true,
+    "postcondition_met": true
+   },
+   "kappa": "operational"
+  }
+ }
+}

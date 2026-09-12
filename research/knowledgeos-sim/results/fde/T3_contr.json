@@ -1,0 +1,71 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "is FDEConflict the same predicate as Contr?",
+ "by_frame_qualifier": {
+  "phi_empty  (Pos^Neg only)": {
+   "equivalent": true,
+   "divergences": []
+  },
+  "phi_time": {
+   "equivalent": false,
+   "divergences": [
+    {
+     "scenario": "TemporalConflict",
+     "FDEConflict": true,
+     "Contr": false
+    }
+   ]
+  },
+  "phi_context": {
+   "equivalent": false,
+   "divergences": [
+    {
+     "scenario": "ContextConflict",
+     "FDEConflict": true,
+     "Contr": false
+    }
+   ]
+  },
+  "phi_time_context": {
+   "equivalent": false,
+   "divergences": [
+    {
+     "scenario": "TemporalConflict",
+     "FDEConflict": true,
+     "Contr": false
+    },
+    {
+     "scenario": "ContextConflict",
+     "FDEConflict": true,
+     "Contr": false
+    }
+   ]
+  },
+  "phi_time_context_layer": {
+   "equivalent": false,
+   "divergences": [
+    {
+     "scenario": "TemporalConflict",
+     "FDEConflict": true,
+     "Contr": false
+    },
+    {
+     "scenario": "ContextConflict",
+     "FDEConflict": true,
+     "Contr": false
+    }
+   ]
+  }
+ },
+ "equivalent_under_any_tested_phi": true,
+ "note": "FDEConflict is a DETECTOR over Standing. It has no access to the frame, so it cannot implement any phi other than the empty one."
+}

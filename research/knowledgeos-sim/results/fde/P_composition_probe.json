@@ -1,0 +1,67 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "which composition rules produce a conflicting Standing?",
+ "rules_enumerated": [
+  "union (FDE-like)",
+  "majority",
+  "last-wins (recency)",
+  "strict (conflict->none)"
+ ],
+ "rows": [
+  {
+   "case": "single_positive",
+   "union (FDE-like)": "positive-support",
+   "majority": "positive-support",
+   "last-wins (recency)": "positive-support",
+   "strict (conflict->none)": "positive-support"
+  },
+  {
+   "case": "single_negative",
+   "union (FDE-like)": "negative-support",
+   "majority": "negative-support",
+   "last-wins (recency)": "negative-support",
+   "strict (conflict->none)": "negative-support"
+  },
+  {
+   "case": "two_agreeing",
+   "union (FDE-like)": "positive-support",
+   "majority": "positive-support",
+   "last-wins (recency)": "positive-support",
+   "strict (conflict->none)": "positive-support"
+  },
+  {
+   "case": "contradictory",
+   "union (FDE-like)": "conflicting",
+   "majority": "unsupported",
+   "last-wins (recency)": "negative-support",
+   "strict (conflict->none)": "unsupported"
+  },
+  {
+   "case": "contradictory_weighted",
+   "union (FDE-like)": "conflicting",
+   "majority": "unsupported",
+   "last-wins (recency)": "negative-support",
+   "strict (conflict->none)": "unsupported"
+  },
+  {
+   "case": "superseded",
+   "union (FDE-like)": "conflicting",
+   "majority": "unsupported",
+   "last-wins (recency)": "negative-support",
+   "strict (conflict->none)": "unsupported"
+  }
+ ],
+ "conflict_producing_rules": [
+  "union (FDE-like)"
+ ],
+ "warning": "NO rule is adopted. Enumerated first, witnesses second -- the ordering KR-CONTR-EVAL S21.1 requires of KR-COMP."
+}

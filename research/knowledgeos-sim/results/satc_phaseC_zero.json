@@ -1,0 +1,173 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-D",
+  "model": "Sat_c Formal Candidate Specification v0.1",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "note": "Phase A is SPECIFICATION, not implementation. Phase B tests the specification against the four deterministic cases already found. No new randomized trials."
+ },
+ "cases": {
+  "B1-factivity": {
+   "desc": "policy-trusted source reports a falsehood",
+   "values": {
+    "content": "T",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "T",
+    "consistency": "T",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": null,
+    "evidence": null,
+    "provenance": null,
+    "status": null,
+    "consistency": null,
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "U_buckets": {
+    "theory-blocked": [
+     "governance",
+     "temporal",
+     "operational"
+    ]
+   },
+   "zero_strict": false,
+   "zero_weak": true,
+   "zero_kleene": "U",
+   "zero_reasoned": true
+  },
+  "B2-revision": {
+   "desc": "stale evidence never retired; rivals both live",
+   "values": {
+    "content": "U",
+    "evidence": "U",
+    "provenance": "T",
+    "status": "F",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": "UNDERDETERMINED",
+    "evidence": "UNDERDETERMINED",
+    "provenance": null,
+    "status": null,
+    "consistency": "UNDERDETERMINED",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "U_buckets": {
+    "agent-remediable": [
+     "content",
+     "evidence",
+     "consistency"
+    ],
+    "theory-blocked": [
+     "governance",
+     "temporal",
+     "operational"
+    ]
+   },
+   "zero_strict": false,
+   "zero_weak": false,
+   "zero_kleene": "F",
+   "zero_reasoned": false
+  },
+  "B3-no-source": {
+   "desc": "source component removed from the observation model",
+   "values": {
+    "content": "U",
+    "evidence": "U",
+    "provenance": "U",
+    "status": "F",
+    "consistency": "U",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": "UNDERDETERMINED",
+    "evidence": "UNDERDETERMINED",
+    "provenance": "INSUFFICIENT_PROVENANCE",
+    "status": null,
+    "consistency": "UNDERDETERMINED",
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "U_buckets": {
+    "agent-remediable": [
+     "content",
+     "evidence",
+     "provenance",
+     "consistency"
+    ],
+    "theory-blocked": [
+     "governance",
+     "temporal",
+     "operational"
+    ]
+   },
+   "zero_strict": false,
+   "zero_weak": false,
+   "zero_kleene": "F",
+   "zero_reasoned": false
+  },
+  "B4-open-classes": {
+   "desc": "determined & corroborated; only the open classes remain",
+   "values": {
+    "content": "T",
+    "evidence": "T",
+    "provenance": "T",
+    "status": "T",
+    "consistency": "T",
+    "governance": "U",
+    "temporal": "U",
+    "operational": "U"
+   },
+   "reasons": {
+    "content": null,
+    "evidence": null,
+    "provenance": null,
+    "status": null,
+    "consistency": null,
+    "governance": "NO_EVALUATOR",
+    "temporal": "NO_TEMPORAL_SEMANTICS",
+    "operational": "DELTA_UNDEFINED"
+   },
+   "U_buckets": {
+    "theory-blocked": [
+     "governance",
+     "temporal",
+     "operational"
+    ]
+   },
+   "zero_strict": false,
+   "zero_weak": true,
+   "zero_kleene": "U",
+   "zero_reasoned": true
+  }
+ },
+ "implication_order_strict_reasoned_weak": true,
+ "disagreements": {
+  "B1-factivity": {
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U"
+  },
+  "B4-open-classes": {
+   "strict": false,
+   "reasoned": true,
+   "weak": true,
+   "kleene": "U"
+  }
+ }
+}

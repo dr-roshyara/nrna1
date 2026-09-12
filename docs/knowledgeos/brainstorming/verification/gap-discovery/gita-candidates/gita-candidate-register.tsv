@@ -1,0 +1,47 @@
+id	tier	gita_term	chapter	knowledgeos_object	status	new_to_kos	source_artifact
+K1	T4	Kṣetra / Kṣetra-jña	13	𝒩 ∉ K (knower not in state)	ratified FA-4 grade [E]	no — corpus-native	18,19
+K2	T4	Sañjaya	1	Ω, observation layer W--Ω-->O	corpus-native 2026-08-26	no — corpus-native	18,19
+K3	T4	Event ≠ State	11	corroborates Event + State primitives	T4 corroboration	no — corpus-native	20,30
+S1	T4-SHAPE	kernel triple	—	𝕂 = (K_t, Ω_K, ℐ)	all 3 slots EMPTY	shape only	20
+S2	T4-SHAPE	Discriminate/Qualify/Transition	—	≅ {≡, G1, δ}	independent arrival at the 3 blockers	shape only	20
+S3	T4-SHAPE	operator contract	—	Op=<Name,Input,Pre,Transform,Post,Inv,Evidence>	5 of 291's missing pieces; no identity slot	shape only	31
+S4	T4-SHAPE	failure modes F1-F4	1	kernel failure semantics	SHAPED, 4 carriers missing	shape only	28
+N1	T3	Karma ≠ Karma-phala	—	Command ≠ Transformation (256.21)	R6 derived from typing	no	18
+N2	T3	Vairāgya	—	Admissible has no outcome conjunct (I-V)	R6 — only invariant testable today	no	18
+N3	T3	Sārathi	—	Guidance ≠ Authority (AP-1)	R6 — IMPLEMENTED 132/132 humanActRef	no	18
+N4	T3	Buddhi	—	the assessment stages	R4 — four stages not five	no	18,30
+N5	T3	Yajña	—	evidence aggregation (025c,025n)	T3 — unexamined	unexamined	18
+N6	T3	Śraddhā / Śaṅkā	—	trust, confidence, abstention rule	T3 — unexamined	unexamined	18
+N7	T3	Kṣamā	—	error tolerance	T3 — unexamined	unexamined	18
+N8	T3	Dhyāna	6	epistemic-regulation loop	[H-G6-1] blocked on δ<-𝒯<-𝒪	unexamined	18,16
+P1	T2	Guṇa (Sattva/Rajas/Tamas)	14,17	Σ or a separate mode G_t	FORK: derived-from-Σ (θ gap) vs independent (no carrier)	open fork	18,25
+P2	T2	Jñāna / Vijñāna	—	Qualify	G1 — named, typed, NO BODY	no	18,17
+P3	T2	Māyā / Avidyā	5	missingness	= MNAR; not identified from observed data	names A6/G-60	18,17
+P4	T2	Prakṛti	—	computational substrate	T2 — uncontested	no	18
+P5	T2	Smṛti	—	history, E_L	T2 — overlaps open ≅_H/∼_H	no	18
+D1	T2	dimension / value layer	—	presupposed by ≡_D; not carried by the eight	5th arrival at "no total order on K"	layer gap	21
+M1	T2	𝒟_t as varying set	—	carrier for CF#7 (not-asked vs absent)	STRUCTURE exists; POPULATION RULE blocked (258.21 over 𝒯)	candidate carrier	35
+X1	T0	Ātman = 𝒦_ātma	—	knowledge identity	REFUTED — Ch5+Ch6 reject Ātma=Knowledge; Ātma is 𝒩	—	18
+X2	T0	Kṛṣṇa = 𝒦_supreme / Ω	—	—	REFUTED — theological status; inspiration never identity	—	18
+X3	T0	Paramātmā = 𝒦	—	knowledge space	REFUTED — RX; rejected again Ch5 §15	—	18
+X4	T0	Mokṣa = infinite knowledge / DR=1	6	—	REFUTED — Ch6: too simplistic	—	18
+X5	T0	Nirvāṇa = complete epistemic closure	—	—	REFUTED — imports a banned unqualified term	—	18
+X6	T0	Sattva/Rajas/Tamas = Σ 3-valued	14	Σ	REFUTED — flattens 5 axes / 2240 states to 3	—	18,19
+X7	T0	Θ_total five-operator algebra	—	transformation algebra	REFUTED — type-check failure across 4 carriers	—	18,D285-4
+X8	T0	universal knower	13	—	T0 as projection; outside falsification domain	—	18
+E1	T0	𝒦_supreme = sup(Ω)	13	—	TYPE ERROR — sup needs an order; 0 of 5 axes ordered	—	19
+E2	T0	Σ = (Supported,Strong) etc	14	Σ	TYPE ERROR — values in no ratified axis; targets superseded Σ₀	—	19
+E3	T0	∀T∈𝒯 invariance of 𝒦_ātma	8	—	quantifies over UNENUMERATED 𝒯 — inapplicable	—	19
+R1	T0-refused	K_t = Relationship(ℱ, A_t)	13	K's composition	REFUSED — a constitutive claim, not a separation	—	18
+A1	T3	inquiry revision (Ch2)	2	Q_t --Understanding--> Q_{t+1}, Q_{t+1} ≢ Q_t	candidate layer; constrains Q_t (not ratified)	NEW	20260907-132442
+A2	T2	MisframedInquiry (Ch2)	2	a new Zero class; Gap_missing ≠ Gap_misinterpreted	typed candidate	NEW	20260907-132442
+A3	T3	contract-relative completion (Ch2)	2	FactFindingComplete iff declared adequacy condition met (NOT Determine=True)	7 outcome classes	NEW	20260907-132442
+A4	T2	non-monotone dimensional discovery (Ch2)	2	a new dimension can change interpretation of earlier ones	stronger than ZF2 monotone	NEW	20260907-132442
+A5	T3	Type A vs Type B fact-finding (Ch3)	3	state fact-finding vs action fact-finding	a LAYER	NEW	20260907-132503
+A6	T3	Determination does not select action (Ch3)	3	Determination(H) ⇏ Select(Action)	separation	NEW	20260907-132503,132531
+A7	T4-corroboration	epistemic vs operational (Ch3)	3	Epistemic determination ≠ Operational readiness; Determine → Action Policy	corroborates the owned 5-cut pipeline	no — corpus-native	20260907-140438
+A8	T3	inaction is an action-state (Ch3)	3	NoAction ≠ NoDecision	separation	NEW	20260907-132503
+A9	T3	Warrant (Ch3)	3	Warrant(a|K,Q,C,S,R) over 7 requirement families; W_t in {Warranted,NotWarranted,Underdetermined,Blocked}	a NEW OBJECT; explicitly not EU(a)>0	NEW	20260907-132559
+A10	T3	action pipeline (Ch3)	3	Problem Discovery → State FF → Action FF → Authorization → Action, with feedback	layer	NEW	20260907-132559
+A11	T2	action triggers fact-finding (Ch3)	3	ActionRecommendation → Challenge → Clarification	typed candidate	NEW	20260907-132503
+A12	collision	AR_t vs R_t	3	notation collision	16th collision; corrected at source	—	20260907-132559

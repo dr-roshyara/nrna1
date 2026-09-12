@@ -1,0 +1,128 @@
+{
+ "T1_facet_untyping": {
+  "G_value": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_dimension": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_assessment": {
+   "collisions": 1,
+   "critical": 0,
+   "typing_needed": true,
+   "new": [
+    [
+     "S3_evidence_insufficient",
+     "S15_no_known_gap"
+    ]
+   ]
+  },
+  "G_evidence": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_interpretation": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_conflict": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_assumption": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_temporal": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_scope": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  },
+  "G_model": {
+   "collisions": 3,
+   "critical": 0,
+   "typing_needed": true,
+   "new": [
+    [
+     "S6_theory_incomplete",
+     "S17_no_ordering"
+    ],
+    [
+     "S6_theory_incomplete",
+     "S18_delta_undefined"
+    ],
+    [
+     "S17_no_ordering",
+     "S18_delta_undefined"
+    ]
+   ]
+  },
+  "G_observability": {
+   "collisions": 0,
+   "critical": 0,
+   "typing_needed": false,
+   "new": []
+  }
+ },
+ "T2_load_bearing_distinctions": {
+  "G_assessment: insufficient-magnitude ~ sufficient": {
+   "new_collisions": [
+    [
+     "S3_evidence_insufficient",
+     "S15_no_known_gap"
+    ]
+   ],
+   "breaks_critical": false
+  },
+  "G_model: no-evaluator ~ delta-undefined": {
+   "new_collisions": [
+    [
+     "S6_theory_incomplete",
+     "S18_delta_undefined"
+    ]
+   ],
+   "breaks_critical": false
+  },
+  "G_model: no-evaluator ~ no-ordering": {
+   "new_collisions": [
+    [
+     "S6_theory_incomplete",
+     "S17_no_ordering"
+    ]
+   ],
+   "breaks_critical": false
+  },
+  "G_model: delta-undefined ~ no-ordering": {
+   "new_collisions": [
+    [
+     "S17_no_ordering",
+     "S18_delta_undefined"
+    ]
+   ],
+   "breaks_critical": false
+  }
+ },
+ "n_distinctions_total": 41,
+ "n_load_bearing": 4
+}

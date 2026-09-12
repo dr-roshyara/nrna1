@@ -1,0 +1,59 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-B",
+  "model": "KnowledgeOS-Simulation-v1.2",
+  "theory": "KnowledgeOS Theory v1.2 (weakened v1.1) + class-indexed three-valued Sat",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "status_vocabulary": [
+   "ESTABLISHED",
+   "DERIVED",
+   "BOUNDED",
+   "HYPOTHESIS",
+   "INTERPRETATION",
+   "CORROBORATION",
+   "NORMATIVE",
+   "TECHNICALLY OPEN",
+   "DEFERRED",
+   "REFUTED",
+   "UNKNOWN"
+  ]
+ },
+ "CE1": {
+  "attributed": {
+   "os": "RHEL9.8"
+  },
+  "truth": {
+   "os": "RHEL8.6"
+  },
+  "factivity_violated": true,
+  "v12_changes_this": false,
+  "reason": "v1.2 \u00a79 DOWNGRADES E_t != K_t to a research distinction and adds no factivity mechanism. The witness is untouched."
+ },
+ "CE3": {
+  "status": "underdetermined",
+  "A": [
+   "RHEL9.8",
+   "RHEL8.6"
+  ],
+  "persists": true,
+  "v12_changes_this": false,
+  "reason": "v1.2 \u00a7VIII NAMES revision/supersession/contradiction/retraction/history as a section, but defines no retirement relation. Structure named, semantics still TECHNICALLY OPEN.",
+  "v11_reported_as": "gap (requirement unsatisfied)",
+  "v12_reports_as": {
+   "violated": [
+    "rs"
+   ],
+   "undetermined": [
+    "rc",
+    "re",
+    "rx",
+    "rg",
+    "rt",
+    "ro"
+   ]
+  }
+ }
+}

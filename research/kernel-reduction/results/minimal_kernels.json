@@ -1,0 +1,54 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "n_covering_subsets": 3,
+ "minimal_kernels": [
+  [
+   "Challenge",
+   "Determine",
+   "Discriminate",
+   "Hypothesize",
+   "Infer",
+   "Interpret",
+   "Observe",
+   "Qualify",
+   "Relate",
+   "Represent",
+   "Revise",
+   "Select",
+   "Validate"
+  ],
+  [
+   "Challenge",
+   "DetectGap",
+   "Determine",
+   "Hypothesize",
+   "Infer",
+   "Interpret",
+   "Observe",
+   "Qualify",
+   "Relate",
+   "Represent",
+   "Revise",
+   "Select",
+   "Validate"
+  ]
+ ]
+}

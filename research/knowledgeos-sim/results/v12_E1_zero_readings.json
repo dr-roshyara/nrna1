@@ -1,0 +1,145 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-B",
+  "model": "KnowledgeOS-Simulation-v1.2",
+  "theory": "KnowledgeOS Theory v1.2 (weakened v1.1) + class-indexed three-valued Sat",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "status_vocabulary": [
+   "ESTABLISHED",
+   "DERIVED",
+   "BOUNDED",
+   "HYPOTHESIS",
+   "INTERPRETATION",
+   "CORROBORATION",
+   "NORMATIVE",
+   "TECHNICALLY OPEN",
+   "DEFERRED",
+   "REFUTED",
+   "UNKNOWN"
+  ]
+ },
+ "cases": {
+  "determined-corroborated": {
+   "per_req": {
+    "rc": "T",
+    "re": "T",
+    "rp": "T",
+    "rs": "T",
+    "rx": "T",
+    "rg": "U",
+    "rt": "U",
+    "ro": "U"
+   },
+   "violated": [],
+   "undetermined": [
+    "rg",
+    "rt",
+    "ro"
+   ],
+   "satisfied": [
+    "rc",
+    "re",
+    "rp",
+    "rs",
+    "rx"
+   ],
+   "zero_strict": false,
+   "zero_weak": true,
+   "zero_three": "U"
+  },
+  "underdetermined": {
+   "per_req": {
+    "rc": "U",
+    "re": "U",
+    "rp": "T",
+    "rs": "F",
+    "rx": "U",
+    "rg": "U",
+    "rt": "U",
+    "ro": "U"
+   },
+   "violated": [
+    "rs"
+   ],
+   "undetermined": [
+    "rc",
+    "re",
+    "rx",
+    "rg",
+    "rt",
+    "ro"
+   ],
+   "satisfied": [
+    "rp"
+   ],
+   "zero_strict": false,
+   "zero_weak": false,
+   "zero_three": "F"
+  },
+  "no-evidence": {
+   "per_req": {
+    "rc": "U",
+    "re": "U",
+    "rp": "U",
+    "rs": "F",
+    "rx": "T",
+    "rg": "U",
+    "rt": "U",
+    "ro": "U"
+   },
+   "violated": [
+    "rs"
+   ],
+   "undetermined": [
+    "rc",
+    "re",
+    "rp",
+    "rg",
+    "rt",
+    "ro"
+   ],
+   "satisfied": [
+    "rx"
+   ],
+   "zero_strict": false,
+   "zero_weak": false,
+   "zero_three": "F"
+  },
+  "weak-evidence": {
+   "per_req": {
+    "rc": "U",
+    "re": "U",
+    "rp": "T",
+    "rs": "F",
+    "rx": "T",
+    "rg": "U",
+    "rt": "U",
+    "ro": "U"
+   },
+   "violated": [
+    "rs"
+   ],
+   "undetermined": [
+    "rc",
+    "re",
+    "rg",
+    "rt",
+    "ro"
+   ],
+   "satisfied": [
+    "rp",
+    "rx"
+   ],
+   "zero_strict": false,
+   "zero_weak": false,
+   "zero_three": "F"
+  }
+ },
+ "readings_disagree_on": [
+  "determined-corroborated"
+ ],
+ "v11_equivalent_reading": "none"
+}

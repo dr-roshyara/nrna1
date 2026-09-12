@@ -5,7 +5,12 @@
 | **Stage** | `20-objects` |
 | **Kind** | topic |
 | **Provenance** | `DERIVED` |
-| **Status vector** | `DERIVED` · `<evidence_status>` · `<identity_status>` · `ACTIVE` |
+| **Claim layer** | `OBSERVATION` — the agent reports which forms are present |
+| **Governance** | `NONE-RECORDED` |
+| **Status vector** | `DERIVED · OBSERVATION · <evidence_status> · <identity_status> · ACTIVE · NONE-RECORDED` |
+
+> Every row of §2 is **source material**, cited by anchor. The topic file groups it; it never
+> restates it as its own (§C4.3). Grouping is not merging, and neither is it adoption.
 
 ## 1. What is being discussed
 
@@ -15,7 +20,8 @@
 |---|---|---|---|
 | | | | |
 
-*Every row carries an anchor (§C9). A form with no anchor cannot be reconciled later.*
+*Every row carries an anchor (§C9). A form with no anchor cannot be reconciled later. The `as
+written` column is verbatim — **never normalised**, not even for spelling.*
 
 ## 3. What is NOT merged — and why
 

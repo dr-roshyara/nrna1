@@ -1,0 +1,295 @@
+{
+ "n_states": 18,
+ "n_pairs": 153,
+ "collisions": [],
+ "all_distinct": true,
+ "critical_collisions": [],
+ "critical_distinct": true,
+ "parsimony": {
+  "G_value:none": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_value:single": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_value:rivals": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_value:contradictory": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_dimension:known": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_dimension:unknown": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assessment:not-assessed": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assessment:insufficient-magnitude": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assessment:insufficient-discrimination": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assessment:sufficient": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_evidence:none": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_evidence:present": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_evidence:invalid": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_evidence:not-yet-gathered": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_interpretation:resolved": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_interpretation:ambiguous": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_interpretation:uninterpreted": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_conflict:none": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_conflict:unresolved": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_conflict:resolved-by-supersession": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assumption:explicit": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assumption:implicit": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_assumption:unknown": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_temporal:current": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_temporal:stale": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_temporal:no-temporal-semantics": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_scope:in-scope": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_scope:out-of-scope": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_model:available": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_model:no-evaluator": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_model:delta-undefined": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_model:no-ordering": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_observability:observed": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_observability:channel-exists-unqueried": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  },
+  "G_observability:no-channel": {
+   "needed": false,
+   "new_collisions": [],
+   "breaks_critical": false
+  }
+ },
+ "n_types": 35,
+ "n_load_bearing": 0,
+ "zi": {
+  "ZI-01 Unknown \u2260 Absent": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S7_agent_remediable",
+    "S2_absence"
+   ]
+  },
+  "ZI-02 NotAssessed \u2260 LowConfidence": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S9_not_assessed",
+    "S3_evidence_insufficient"
+   ]
+  },
+  "ZI-03 NotApplicable \u2260 Unknown": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S8_not_applicable",
+    "S5_underdetermined"
+   ]
+  },
+  "ZI-04 NoEvidence \u2260 InvalidEvidence": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S2_absence",
+    "S10_invalid_evidence"
+   ]
+  },
+  "ZI-05 Unresolved \u2260 False": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S13_ambiguous",
+    "S10_invalid_evidence"
+   ]
+  },
+  "ZI-06 UnknownDimension \u2260 UnknownValue": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S11_unknown_dimension",
+    "S2_absence"
+   ]
+  },
+  "ZI-08 PreviouslyUnknown \u2260 PreviouslyAbsent": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S12_stale",
+    "S2_absence"
+   ]
+  },
+  "ZI-09 Conflict \u2260 Invalidity": {
+   "testable": true,
+   "distinct": true,
+   "states": [
+    "S1_contradiction",
+    "S10_invalid_evidence"
+   ]
+  },
+  "ZI-07 Representation \u2260 Reality": {
+   "testable": false,
+   "reason": "\u00a726's eleven facets contain NO representation/reality facet. A 12th facet would be required; this experiment does not invent one."
+  },
+  "ZI-10 NoKnownGap \u2260 Complete": {
+   "testable": false,
+   "reason": "a property of the boundary SET (B = \u2205 \u2260 complete), not of any facet. It is a meta-level invariant and cannot be expressed facet-wise."
+  }
+ },
+ "projection": {
+  "S1_contradiction": "U",
+  "S2_absence": "U",
+  "S3_evidence_insufficient": "U",
+  "S4_unobservable": "U",
+  "S5_underdetermined": "U",
+  "S6_theory_incomplete": "U",
+  "S7_agent_remediable": "U",
+  "S8_not_applicable": "U",
+  "S9_not_assessed": "U",
+  "S10_invalid_evidence": "U",
+  "S11_unknown_dimension": "U",
+  "S12_stale": "U",
+  "S13_ambiguous": "U",
+  "S14_implicit_assumption": "U",
+  "S15_no_known_gap": "T",
+  "S16_uninterpreted": "U",
+  "S17_no_ordering": "U",
+  "S18_delta_undefined": "U"
+ },
+ "facets_used": {
+  "G_conflict": 1,
+  "G_value": 12,
+  "G_evidence": 8,
+  "G_assessment": 4,
+  "G_observability": 2,
+  "G_model": 3,
+  "G_scope": 1,
+  "G_dimension": 1,
+  "G_temporal": 1,
+  "G_interpretation": 2,
+  "G_assumption": 1
+ },
+ "facets_unused": []
+}

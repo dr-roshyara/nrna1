@@ -1,0 +1,113 @@
+{
+ "N1": {
+  "claim": "Eval_c is total",
+  "result": "FALSIFIED for the three-valued content model",
+  "evidence": [
+   [
+    "B2-revision",
+    "content"
+   ],
+   [
+    "S1-contradiction",
+    "content"
+   ]
+  ],
+  "note": "four_valued and delegated are total; the model the theory currently proposes is not"
+ },
+ "N2": {
+  "claim": "three values are sufficient",
+  "result": "FALSIFIED",
+  "evidence": "7 distinct evaluation situations collapse into U",
+  "note": "spanning [OPEN], [PROP] and [NEG] statuses and both OPEN and candidate evaluators; Rule 3 requires these be distinguishable"
+ },
+ "N3": {
+  "claim": "every U carries a valid reason",
+  "result": "HELD on this suite",
+  "evidence": "0 U results without a reason",
+  "note": "not proof of exhaustiveness"
+ },
+ "N4": {
+  "claim": "the eight classes are mutually independent",
+  "result": "FALSIFIED",
+  "evidence": {
+   "content": [
+    "consistency"
+   ]
+  },
+  "note": "content delegates to consistency (PB-2's only clean repair); operational depends on delta and on eval_\u03ba. At least two classes are not independent"
+ },
+ "N5": {
+  "claim": "the eight classes are exhaustive",
+  "result": "NOT TESTED / OPEN",
+  "evidence": null,
+  "note": "no procedure exists to enumerate requirement classes; the experiment cannot falsify or confirm this"
+ },
+ "N6": {
+  "claim": "composite Kleene conjunction is appropriate",
+  "result": "FALSIFIED AS FORCED",
+  "evidence": {
+   "discriminating_case": [
+    "B3-no-source"
+   ],
+   "values": {
+    "kleene": "F",
+    "u_dominant": "U",
+    "bochvar": "U"
+   }
+  },
+  "note": "Kleene lets a definite \u22a5 survive an undetermined sibling; U-dominant rules mask it. The suite discriminates, so Kleene is a CHOICE, not a consequence"
+ },
+ "N7": {
+  "claim": "operational evaluation is well-founded",
+  "result": "FALSIFIED",
+  "evidence": {
+   "value": "U",
+   "reason": "NON_TERMINATING",
+   "depth": 8,
+   "trace_tail": "cut off by an ARBITRARY bound \u2014 not a semantic result"
+  },
+  "note": "\u03ba = operational was NOT excluded, per A5; it recursed to an arbitrary bound. The bound is not a semantic result"
+ },
+ "N8": {
+  "claim": "Zero implies truth",
+  "result": "FALSIFIED",
+  "evidence": {
+   "case": "B1-factivity",
+   "zero_weak": true,
+   "zero_reasoned": true,
+   "attributed_value_was_false": true
+  },
+  "note": "B1 closes under weak AND reasoned while the attribution is false. Closure \u27c2 Truth retained"
+ },
+ "N9": {
+  "claim": "Zero_reasoned is merely another spelling of Zero_weak",
+  "result": "FALSIFIED \u2014 but ONLY by a constructed case",
+  "evidence": {
+   "agree_on_B_suite": true,
+   "separating_case": {
+    "values": {
+     "content": "U",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "weak": true,
+    "reasoned": false,
+    "agent_U": [
+     "content"
+    ]
+   }
+  },
+  "note": "IMPORTANT SELF-CORRECTION: once the invented governance/temporal evaluators are RETRACTED, reasoned and weak agree on ALL seven suite cases. The 8-vs-36 separation reported in KR-SIM-2026-09-02-E was an ARTIFACT of the invented evaluators"
+ },
+ "N10": {
+  "claim": "supplying evaluators automatically makes Sat canonical",
+  "result": "FALSIFIED",
+  "evidence": "A3/A4 returned OPEN rather than inventing semantics; no evaluator was supplied, and Sat's status is unchanged",
+  "note": "the previous run's evaluators are retracted as corpus-unsupported"
+ }
+}

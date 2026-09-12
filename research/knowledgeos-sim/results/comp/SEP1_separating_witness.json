@@ -1,0 +1,62 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "which witness separates majority / last-wins / intraframe-only?",
+ "phi": "phi_time_context",
+ "status_policy": "filter",
+ "witnesses": {
+  "W1_conflict_plus_divergence": {
+   "outputs": {
+    "majority": "conflicting",
+    "last-wins": "negative-support",
+    "intraframe-only": "conflicting"
+   },
+   "n_distinct": 2,
+   "separates_all_three": false,
+   "n_frames": 3
+  },
+  "W2_asymmetric_divergence": {
+   "outputs": {
+    "majority": "positive-support",
+    "last-wins": "negative-support",
+    "intraframe-only": "unsupported"
+   },
+   "n_distinct": 3,
+   "separates_all_three": true,
+   "n_frames": 3
+  },
+  "W3_symmetric_divergence": {
+   "outputs": {
+    "majority": "unsupported",
+    "last-wins": "negative-support",
+    "intraframe-only": "unsupported"
+   },
+   "n_distinct": 2,
+   "separates_all_three": false,
+   "n_frames": 2
+  },
+  "W4_W2_reordered": {
+   "outputs": {
+    "majority": "positive-support",
+    "last-wins": "positive-support",
+    "intraframe-only": "unsupported"
+   },
+   "n_distinct": 2,
+   "separates_all_three": false,
+   "n_frames": 3
+  }
+ },
+ "separating": [
+  "W2_asymmetric_divergence"
+ ],
+ "finding": "internal conflict is ABSORBING under both majority and intraframe-only -- both short-circuit to (1,1) as soon as any frame conflicts internally. So adding internal conflict DESTROYS the separation rather than creating it. The separating witness must have NO internal conflict and ASYMMETRIC divergence."
+}

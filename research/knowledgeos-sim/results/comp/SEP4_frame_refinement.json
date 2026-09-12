@@ -1,0 +1,81 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "does refining the frame partition change the verdict?",
+ "criterion": "C7 -- frame-refinement invariance [PROP], this lane's",
+ "note": "evidence CONTENT is identical in both cases; only the recording resolution of `time` differs, which changes the frame COUNT",
+ "all_rules": {
+  "union": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "conflicting",
+   "fine": "conflicting",
+   "refinement_invariant": true
+  },
+  "majority": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "unsupported",
+   "fine": "positive-support",
+   "refinement_invariant": false
+  },
+  "last-wins": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "negative-support",
+   "fine": "negative-support",
+   "refinement_invariant": true
+  },
+  "strict": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "unsupported",
+   "fine": "unsupported",
+   "refinement_invariant": true
+  },
+  "intraframe-only": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "unsupported",
+   "fine": "unsupported",
+   "refinement_invariant": true
+  }
+ },
+ "surviving_rules": {
+  "majority": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "unsupported",
+   "fine": "positive-support",
+   "refinement_invariant": false
+  },
+  "last-wins": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "negative-support",
+   "fine": "negative-support",
+   "refinement_invariant": true
+  },
+  "intraframe-only": {
+   "coarse_frames": 2,
+   "fine_frames": 3,
+   "coarse": "unsupported",
+   "fine": "unsupported",
+   "refinement_invariant": true
+  }
+ },
+ "refinement_dependent": [
+  "majority"
+ ],
+ "separates_the_two_survivors": true,
+ "caveat": "this is a COST, measured. Whether refinement-dependence is DISQUALIFYING is a judgement, not an experimental result."
+}

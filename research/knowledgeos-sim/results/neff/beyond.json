@@ -1,0 +1,45 @@
+{
+ "Q2_beyond_admissibility": [
+  {
+   "n": 1000,
+   "groups": 1000,
+   "tau_on_H": 0.6152,
+   "tau_on_Neff": 0.6152,
+   "admit_rate": 0.487,
+   "validate_rate": 0.206,
+   "unique_determination_rate": 0.468
+  },
+  {
+   "n": 1000,
+   "groups": 200,
+   "tau_on_H": 0.6152,
+   "tau_on_Neff": 0.5504,
+   "admit_rate": 0.639,
+   "validate_rate": 0.395,
+   "unique_determination_rate": 0.605
+  },
+  {
+   "n": 1000,
+   "groups": 50,
+   "tau_on_H": 0.6152,
+   "tau_on_Neff": 0.4886,
+   "admit_rate": 0.761,
+   "validate_rate": 0.576,
+   "unique_determination_rate": 0.72
+  },
+  {
+   "n": 1000,
+   "groups": 10,
+   "tau_on_H": 0.6152,
+   "tau_on_Neff": 0.4073,
+   "admit_rate": 0.899,
+   "validate_rate": 0.789,
+   "unique_determination_rate": 0.855
+  }
+ ],
+ "Q3_channel": {
+  "same_channel_detection": 0.0075,
+  "independent_channel_detection": 0.9928,
+  "verdict": "[EXP] the scope-bound is CORRECT. An independent channel detects the decoy in ~100% of trials; the same channel detects it in ~0%. The negative result is bounded to same-channel validation, exactly as the review required."
+ }
+}

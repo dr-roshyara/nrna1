@@ -1,0 +1,223 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "which models agree about which cases are alike?",
+ "by_level": {
+  "value": {
+   "three_valued|four_valued": {
+    "separated": false,
+    "conflated_only_by_three_valued": [],
+    "conflated_only_by_four_valued": []
+   },
+   "three_valued|delegated": {
+    "separated": true,
+    "conflated_only_by_three_valued": [],
+    "conflated_only_by_delegated": [
+     [
+      "chS",
+      "CHS"
+     ],
+     [
+      "chS",
+      "CHs"
+     ],
+     [
+      "chS",
+      "ChS"
+     ],
+     [
+      "chS",
+      "Chs"
+     ],
+     [
+      "chs",
+      "CHS"
+     ],
+     [
+      "chs",
+      "CHs"
+     ],
+     [
+      "chs",
+      "ChS"
+     ],
+     [
+      "chs",
+      "Chs"
+     ]
+    ]
+   },
+   "four_valued|delegated": {
+    "separated": true,
+    "conflated_only_by_four_valued": [],
+    "conflated_only_by_delegated": [
+     [
+      "chS",
+      "CHS"
+     ],
+     [
+      "chS",
+      "CHs"
+     ],
+     [
+      "chS",
+      "ChS"
+     ],
+     [
+      "chS",
+      "Chs"
+     ],
+     [
+      "chs",
+      "CHS"
+     ],
+     [
+      "chs",
+      "CHs"
+     ],
+     [
+      "chs",
+      "ChS"
+     ],
+     [
+      "chs",
+      "Chs"
+     ]
+    ]
+   }
+  },
+  "boundary": {
+   "three_valued|four_valued": {
+    "separated": false,
+    "conflated_only_by_three_valued": [],
+    "conflated_only_by_four_valued": []
+   },
+   "three_valued|delegated": {
+    "separated": true,
+    "conflated_only_by_three_valued": [],
+    "conflated_only_by_delegated": [
+     [
+      "chS",
+      "CHS"
+     ],
+     [
+      "chS",
+      "CHs"
+     ],
+     [
+      "chS",
+      "ChS"
+     ],
+     [
+      "chS",
+      "Chs"
+     ],
+     [
+      "chs",
+      "CHS"
+     ],
+     [
+      "chs",
+      "CHs"
+     ],
+     [
+      "chs",
+      "ChS"
+     ],
+     [
+      "chs",
+      "Chs"
+     ]
+    ]
+   },
+   "four_valued|delegated": {
+    "separated": true,
+    "conflated_only_by_four_valued": [],
+    "conflated_only_by_delegated": [
+     [
+      "chS",
+      "CHS"
+     ],
+     [
+      "chS",
+      "CHs"
+     ],
+     [
+      "chS",
+      "ChS"
+     ],
+     [
+      "chS",
+      "Chs"
+     ],
+     [
+      "chs",
+      "CHS"
+     ],
+     [
+      "chs",
+      "CHs"
+     ],
+     [
+      "chs",
+      "ChS"
+     ],
+     [
+      "chs",
+      "Chs"
+     ]
+    ]
+   }
+  }
+ },
+ "named_corpus_pair": {
+  "X1": "corpus S1-contradiction: agent holds {p, not-p}",
+  "X2": "corpus: Sat_consistency has no evaluator (Contr undefined)",
+  "models": {
+   "three_valued": {
+    "X1": [
+     "UNDEFINED",
+     "CONTRADICTORY_INPUT"
+    ],
+    "X2": [
+     "U",
+     "NO_EVALUATOR"
+    ],
+    "distinguishes_X1_X2": true,
+    "distinguishes_at_value_level": true
+   },
+   "four_valued": {
+    "X1": [
+     "C",
+     "CONTRADICTION"
+    ],
+    "X2": [
+     "U",
+     "NO_EVALUATOR"
+    ],
+    "distinguishes_X1_X2": true,
+    "distinguishes_at_value_level": true
+   },
+   "delegated": {
+    "X1": [
+     "U",
+     "NO_EVALUATOR"
+    ],
+    "X2": [
+     "U",
+     "NO_EVALUATOR"
+    ],
+    "distinguishes_X1_X2": false,
+    "distinguishes_at_value_level": false
+   }
+  }
+ }
+}

@@ -1,0 +1,79 @@
+[
+ {
+  "label": "independent",
+  "kind": "independent",
+  "n": 1000,
+  "rho": 0.0,
+  "groups": 1000,
+  "tau_empirical": 3.8757,
+  "z": 3.8757,
+  "N_eff": 940.6,
+  "N_eff_over_n": 0.9406
+ },
+ {
+  "label": "grouped g=50",
+  "kind": "grouped",
+  "n": 1000,
+  "rho": 1.0,
+  "groups": 50,
+  "tau_empirical": 3.097,
+  "z": 3.097,
+  "N_eff": 51.1,
+  "N_eff_over_n": 0.0511
+ },
+ {
+  "label": "grouped g=200",
+  "kind": "grouped",
+  "n": 1000,
+  "rho": 1.0,
+  "groups": 200,
+  "tau_empirical": 3.4833,
+  "z": 3.4833,
+  "N_eff": 201.9,
+  "N_eff_over_n": 0.2019
+ },
+ {
+  "label": "correlated \u03c1=0.9",
+  "kind": "correlated",
+  "n": 1000,
+  "rho": 0.9,
+  "groups": 1000,
+  "tau_empirical": 2.5411,
+  "z": 2.5411,
+  "N_eff": 9.0,
+  "N_eff_over_n": 0.009
+ },
+ {
+  "label": "correlated \u03c1=0.5",
+  "kind": "correlated",
+  "n": 1000,
+  "rho": 0.5,
+  "groups": 1000,
+  "tau_empirical": 3.4816,
+  "z": 3.4816,
+  "N_eff": 200.6,
+  "N_eff_over_n": 0.2006
+ },
+ {
+  "label": "correlated \u03c1=0.1",
+  "kind": "correlated",
+  "n": 1000,
+  "rho": 0.1,
+  "groups": 1000,
+  "tau_empirical": 3.8208,
+  "z": 3.8208,
+  "N_eff": 751.8,
+  "N_eff_over_n": 0.7518
+ },
+ {
+  "label": "independent",
+  "kind": "independent",
+  "n": 50,
+  "rho": 0.0,
+  "groups": 50,
+  "tau_empirical": 3.097,
+  "z": 3.097,
+  "N_eff": 51.1,
+  "N_eff_over_n": 1.023
+ }
+]

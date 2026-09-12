@@ -1,0 +1,12 @@
+{
+ "cell_balanced_not_reconciled": {
+  "witness_exists": true,
+  "note": "catalogue gap; negative-control case 2 is the witness"
+ },
+ "cell_known_not_determined": {
+  "constructible": true,
+  "forbidden_by": "justified-unique attribution policy (P2)",
+  "reachable_under": "justified-any",
+  "verdict": "Known \u21d2 Determined is POLICY-RELATIVE, not conceptual"
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "genuine categorical field, or disguised state identifier?",
+ "by_representation": {
+  "FlatReason": {
+   "n_scenarios": 18,
+   "n_distinct_values": 10,
+   "is_identity_encoding": false,
+   "n_pairs_collapsed": 36,
+   "adequate_alone": false,
+   "preserved_alone": "11/13"
+  },
+  "LocusModalityReason": {
+   "n_scenarios": 18,
+   "n_distinct_values": 10,
+   "is_identity_encoding": false,
+   "n_pairs_collapsed": 36,
+   "adequate_alone": false,
+   "preserved_alone": "11/13"
+  },
+  "StructuredBoundary": {
+   "n_scenarios": 18,
+   "n_distinct_values": 10,
+   "is_identity_encoding": false,
+   "n_pairs_collapsed": 36,
+   "adequate_alone": false,
+   "preserved_alone": "11/13"
+  }
+ },
+ "verdict_rule": "genuine iff NOT an identity encoding AND it collapses pairs AND it is not adequate alone"
+}

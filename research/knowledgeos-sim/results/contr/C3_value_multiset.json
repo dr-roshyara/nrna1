@@ -1,0 +1,109 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "do M3 and MD ever differ in VALUE?",
+ "cases_examined": 8,
+ "value_differences": [
+  {
+   "case": "Chs",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  },
+  {
+   "case": "ChS",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  },
+  {
+   "case": "CHs",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  },
+  {
+   "case": "CHS",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  }
+ ],
+ "value_differences_n": 4,
+ "reason_differences": [
+  {
+   "case": "Chs",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  },
+  {
+   "case": "ChS",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  },
+  {
+   "case": "CHs",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  },
+  {
+   "case": "CHS",
+   "three_valued": [
+    "UNDEFINED",
+    "CONTRADICTORY_INPUT"
+   ],
+   "delegated": [
+    "U",
+    "NO_EVALUATOR"
+   ]
+  }
+ ],
+ "reason_differences_n": 4,
+ "theorem": "if value_differences_n == 0 then NO function of values alone separates M3 from MD -- exhaustive over the parameterization"
+}

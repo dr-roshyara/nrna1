@@ -1,0 +1,52 @@
+{
+ "T2": {
+  "question": "Can historical closure be reconstructed from state alone?",
+  "current_content_identical": true,
+  "answer": "NO",
+  "basis": "the pair has identical current content and different histories; no function of K_t can distinguish them"
+ },
+ "T5": {
+  "question": "Can an external History context provide it without enlarging the kernel?",
+  "answer": "YES",
+  "basis": "zero kernel reads of history; the preservation duty (AX-5, I9) is WRITE-SIDE and is satisfiable by an append-only store outside the kernel"
+ },
+ "T4": {
+  "question": "Does anything require the EVENT, or merely historical state?",
+  "answer": "NEITHER, currently",
+  "basis": "AX-5 / I9 / \u00a717 require the record to SURVIVE. Preservation is not consumption. No operation reads the record, so nothing requires the event qua event."
+ },
+ "domain_probes": {
+  "re-closure under a stronger standard": {
+   "distinguishes": true,
+   "in_theory": false,
+   "note": "a governance rule of the form 'a reopened proposition needs a stronger standard' would read history. THE THEORY CONTAINS NO SUCH RULE."
+  },
+  "stability / churn metric": {
+   "distinguishes": true,
+   "in_theory": false,
+   "note": "an analytics concern; no theory object consumes it"
+  },
+  "explanation / why-do-we-believe-X": {
+   "distinguishes": true,
+   "in_theory": true,
+   "note": "AX-5 provenance preservation and I9 require the trail to SURVIVE; they do not require any OPERATION to read it"
+  },
+  "supersession traceability (\u00a717 / CE-3)": {
+   "distinguishes": true,
+   "in_theory": true,
+   "note": "the theory requires a superseded claim to remain traceable \u2014 again a PRESERVATION obligation, not an operation input"
+  }
+ },
+ "corpus_search": {
+  "searched": [
+   "reopen",
+   "re-open",
+   "previously closed",
+   "was closed",
+   "closed before",
+   "re-closure"
+  ],
+  "finding": "every hit is either RESEARCH-PROGRAMME closure (steps, audits, gap closure) \u2014 a different sense of 'closed' \u2014 or the KR-CLOSURE protocol's own scenario text (S14). NO operation, rule or policy in the corpus reads whether a proposition was previously closed.",
+  "consequence": "Hypothesis B has NO corpus support: it is a design option, not a discovered fact."
+ }
+}

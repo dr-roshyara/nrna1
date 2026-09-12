@@ -1,0 +1,335 @@
+I would **not treat the attached document as a new theory result**. It is essentially a consolidated record of the preceding reasoning, and it supports the same methodological conclusion.
+
+The important consequence is that we should now move from **D4.5 core definitions** to the missing derivation:
+
+# D4.5.12 — Observation-Family Minimality & Quotient Realizability
+
+The attached material reinforces the separation:
+
+$$
+\boxed{
+\text{Eliminability}
+\neq
+\text{Preservation}
+\neq
+\text{Realization}
+}
+$$
+
+and, independently,
+
+$$
+\boxed{
+\text{Requirement-faithfulness}
+\neq
+\text{Minimality}.
+}
+$$
+
+That distinction is crucial. The current D4.5 theorem proves that
+
+$$
+\ker_{\rm rep}(\rho_{\mathcal O})
+\subseteq
+\sim_{\rm req}^{Q,\Gamma}
+$$
+
+is exactly the right criterion for a requirement-faithful observation representation. But it does **not** tell us whether \(\mathcal O\) contains unnecessary observables.
+
+## The next research question
+
+We should therefore formulate:
+
+> **Given \(Q,\Gamma\) and the required-distinction relation \(\sim_{\rm req}^{Q,\Gamma}\), when does an admissible observation family generate exactly the required quotient, and when is that family minimal?**
+
+There are three progressively stronger questions.
+
+### R1 — Faithfulness
+
+Does
+
+$$
+\boxed{
+\equiv_{\mathcal O}
+\subseteq
+\sim_{\rm req}^{Q,\Gamma}
+}
+$$
+
+hold?
+
+If yes, \(\mathcal O\) preserves all required distinctions.
+
+### R2 — Exact realizability
+
+Does there exist an admissible \(\mathcal O\) such that
+
+$$
+\boxed{
+\equiv_{\mathcal O}
+=
+\sim_{\rm req}^{Q,\Gamma}?
+}
+$$
+
+This is stronger.
+
+It asks whether the required-distinction quotient can actually be **realized by observations**.
+
+### R3 — Minimality
+
+If such families exist, which one is minimal?
+
+For inclusion minimality:
+
+$$
+\boxed{
+\mathcal O^\ast
+\text{ is minimal}
+\iff
+\equiv_{\mathcal O^\ast}
+\subseteq
+\sim_{\rm req}
+}
+$$
+
+and
+
+$$
+\forall\mathcal O'\subsetneq\mathcal O^\ast:
+\quad
+\equiv_{\mathcal O'}
+\nsubseteq
+\sim_{\rm req}.
+$$
+
+For cardinality minimality:
+
+$$
+\boxed{
+|\mathcal O^\ast|
+=
+\min_{\mathcal O\in\mathfrak O_{\rm adm}}
+|\mathcal O|
+}
+$$
+
+subject to
+
+$$
+\equiv_{\mathcal O}
+\subseteq
+\sim_{\rm req}.
+$$
+
+---
+
+# One further mathematical distinction we should add
+
+There is a potentially even more fundamental issue.
+
+An observation family can be requirement-faithful **without being exact**:
+
+$$
+\equiv_{\mathcal O}
+\subsetneq
+\sim_{\rm req}.
+$$
+
+That means the observations distinguish **more states than the inquiry requires**.
+
+Conversely, if
+
+$$
+\equiv_{\mathcal O}
+\supsetneq
+\sim_{\rm req},
+$$
+
+then some required distinctions have been collapsed.
+
+So we obtain three regimes:
+
+$$
+\boxed{
+\begin{array}{rcl}
+\equiv_{\mathcal O}\subsetneq\sim_{\rm req}
+&:&
+\text{over-resolving representation}\\[3pt]
+\equiv_{\mathcal O}=\sim_{\rm req}
+&:&
+\text{exact requirement representation}\\[3pt]
+\equiv_{\mathcal O}\not\subseteq\sim_{\rm req}
+&:&
+\text{requirement-inadequate representation}.
+\end{array}
+}
+$$
+
+This is valuable because it gives us a precise meaning of **representation excess** without yet introducing entropy, information metrics, topology, probability, or complexity.
+
+---
+
+# And this connects directly to the reduction experiments
+
+The numerical KR-REP-REDUCTION/BRIDGE results in the attached material should remain **empirical evidence about particular transformation systems**, not definitions of the abstract D4.5 objects. The experiments demonstrate that preservation boundaries can occur and that Zero occurrence does not, in the tested regimes, constitute a preservation criterion. 
+
+Therefore we should **not** use those experiments to define the observation quotient.
+
+Instead:
+
+$$
+\boxed{
+\text{D4.5 derives the abstract representation criterion}
+}
+$$
+
+and
+
+$$
+\boxed{
+\text{experiments test particular representations against it}.
+}
+$$
+
+That preserves the corpus/theory boundary.
+
+---
+
+# The crucial next algebraic test
+
+There is one thing I would add to D4.5.12 before moving to D5:
+
+Suppose
+
+$$
+\mathcal S_{\rm req}
+=
+\mathcal S/\sim_{\rm req}.
+$$
+
+We need to determine whether the mandatory operations descend to this quotient.
+
+For every mandatory operation
+
+$$
+f:S^n\rightharpoonup S
+$$
+
+we need:
+
+$$
+s_i\sim_{\rm req}s_i'
+\quad\forall i
+$$
+
+to imply both:
+
+$$
+Defined(f(s_1,\ldots,s_n))
+\iff
+Defined(f(s_1',\ldots,s_n'))
+$$
+
+and, when defined,
+
+$$
+\boxed{
+f(s_1,\ldots,s_n)
+\sim_{\rm req}
+f(s_1',\ldots,s_n').
+}
+$$
+
+Only then can we define
+
+$$
+\bar f([s_1],\ldots,[s_n])
+=
+[f(s_1,\ldots,s_n)].
+$$
+
+So the real D4.5 endpoint becomes:
+
+$$
+\boxed{
+\text{Required distinctions}
+\rightarrow
+\text{observations}
+\rightarrow
+\text{quotient}
+\rightarrow
+\text{congruence}
+\rightarrow
+\text{induced algebra}.
+}
+$$
+
+---
+
+# Revised D4.5 status
+
+I would therefore freeze the following:
+
+| Component                                | Status                             |
+| ---------------------------------------- | ---------------------------------- |
+| Observable                               | **Definition established**         |
+| Observation domain                       | **Definition established**         |
+| Observation result                       | **Definition established**         |
+| Observation family                       | **Definition established**         |
+| Separation                               | **Theorem/definition established** |
+| Observational equivalence                | **Proved equivalence relation**    |
+| Requirement separation                   | **Definition established**         |
+| Requirement-faithful representation      | **Theorem proved**                 |
+| Observational quotient                   | **Mathematically established**     |
+| Coarsest requirement-preserving quotient | **Established, conditional on D1** |
+| Quotient congruence                      | **Definition established**         |
+| Induced operation                        | **Theorem under congruence**       |
+| Exact observation realizability          | **OPEN**                           |
+| Inclusion-minimal observation family     | **OPEN**                           |
+| Cardinality-minimal family               | **OPEN**                           |
+| Minimal concrete Knowledge State         | **OPEN**                           |
+| \(K=(A,R,E)\)                            | **Candidate only**                 |
+| Kernel minimality                        | **OPEN**                           |
+| Topology                                 | **Not introduced**                 |
+| Probability                              | **Not introduced**                 |
+
+## Therefore
+
+I would now record:
+
+$$
+\boxed{
+D4.5 =
+\text{CORE CLOSED}
++
+\text{MINIMALITY OPEN}.
+}
+$$
+
+And the next artifact should be:
+
+> **D4.5.12 — Observation-Family Minimality, Exact Realizability & Quotient Compatibility**
+
+with the explicit three-part research programme:
+
+$$
+\boxed{
+\text{Faithfulness}
+\rightarrow
+\text{Exact Realizability}
+\rightarrow
+\text{Minimality}
+}
+$$
+
+followed by
+
+$$
+\boxed{
+\text{Congruence of } \sim_{\rm req}
+\text{ under the mandatory D5 operations}.
+}
+$$
+
+**That is now the cleanest mathematical gate before D5.** We should not yet define the minimum KnowledgeOS Kernel, and we should definitely not introduce topology or probability before this gate is resolved.

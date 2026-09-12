@@ -1,0 +1,41 @@
+{
+  "carrier": "Rec(v,s,t,rank) / Case(recs) -- KR-REP-REDUCTION-2026-09",
+  "level": "R5",
+  "level_fields": [
+    "s",
+    "v"
+  ],
+  "chain": "D->R5->R4->R3->R2",
+  "rank_convention": "ascending",
+  "Q": "(argmax_source(D), decile(sum v))",
+  "n_cases": 40000,
+  "seed": 20260903,
+  "k_anon": 2,
+  "adequacy": {
+    "H_hat_Q_given_R": 0.0,
+    "N_viol": 0,
+    "adequate": true,
+    "n_fibers": 26826,
+    "max_fiber": 7,
+    "mean_fiber": 1.491,
+    "singleton_fibers": 16939,
+    "conflicted_fibers": 0
+  },
+  "control_published_frame": {
+    "F_n": 1.0
+  },
+  "route1_weak_decoder": {
+    "O_weak": "first record's source; decile unchanged",
+    "F_n": 0.52065,
+    "F_argmax": 0.52065,
+    "F_decile": 1.0,
+    "witness": true
+  },
+  "route2_k_anonymity": {
+    "k": 2,
+    "blocked_cases": 16939,
+    "F_n": 0.57652,
+    "witness": true
+  },
+  "verdict": "EXHIBITED"
+}

@@ -1,0 +1,782 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "C0": {
+  "score": 21,
+  "total": 25,
+  "lost": [
+   "C10",
+   "C16",
+   "C17",
+   "C25"
+  ],
+  "kinds": [
+   "ActionSet",
+   "Claim",
+   "Context",
+   "Decision",
+   "Defeater",
+   "Determination",
+   "Discrimination",
+   "EpistemicState",
+   "Gap",
+   "Hypothesis",
+   "IdealState",
+   "Inquiry",
+   "NormDelta",
+   "Objective",
+   "Observation",
+   "Policy",
+   "Relation",
+   "Representation",
+   "Rule",
+   "SemanticContent",
+   "World"
+  ],
+  "pool": [
+   "adversarial-negation",
+   "closure-judgment",
+   "content-generation",
+   "difference-decision",
+   "entailment",
+   "meaning-assignment",
+   "norm-comparison",
+   "preference-over-actions",
+   "relational-linking",
+   "state-mutation",
+   "symbolic-encoding",
+   "warrant-assessment",
+   "world-contact"
+  ]
+ },
+ "C0_plus": {
+  "score": 25,
+  "total": 25,
+  "lost": [],
+  "kinds": [
+   "ActionSet",
+   "Claim",
+   "Context",
+   "Decision",
+   "Defeater",
+   "Determination",
+   "Discrimination",
+   "EpistemicState",
+   "Evidence",
+   "Gap",
+   "Hypothesis",
+   "IdealState",
+   "Inquiry",
+   "NormDelta",
+   "Objective",
+   "Observation",
+   "Policy",
+   "Relation",
+   "Representation",
+   "Rule",
+   "SemanticContent",
+   "Verdict",
+   "World"
+  ],
+  "pool": [
+   "adversarial-negation",
+   "closure-judgment",
+   "content-generation",
+   "difference-decision",
+   "entailment",
+   "evidential-qualification",
+   "meaning-assignment",
+   "norm-comparison",
+   "preference-over-actions",
+   "relational-linking",
+   "state-mutation",
+   "symbolic-encoding",
+   "warrant-assessment",
+   "world-contact"
+  ]
+ },
+ "scenarios_C0": [
+  {
+   "id": "S1",
+   "passed": false,
+   "failed_capabilities": [
+    "C25"
+   ],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S2",
+   "passed": false,
+   "failed_capabilities": [
+    "C25"
+   ],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S3",
+   "passed": false,
+   "failed_capabilities": [
+    "C25"
+   ],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S4",
+   "passed": false,
+   "failed_capabilities": [
+    "C25"
+   ],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S5",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S6",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S7",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Determination",
+    "Discrimination",
+    "EpistemicState",
+    "Gap",
+    "Hypothesis",
+    "IdealState",
+    "Inquiry",
+    "NormDelta",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S8",
+   "passed": false,
+   "failed_capabilities": [
+    "C10"
+   ],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S9",
+   "passed": false,
+   "failed_capabilities": [
+    "C10",
+    "C17",
+    "C16"
+   ],
+   "kinds": [
+    "Claim",
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "Rule",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S10",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S11",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Determination",
+    "Discrimination",
+    "EpistemicState",
+    "Gap",
+    "Hypothesis",
+    "IdealState",
+    "Inquiry",
+    "NormDelta",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S12",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Determination",
+    "Discrimination",
+    "EpistemicState",
+    "Gap",
+    "Hypothesis",
+    "IdealState",
+    "Inquiry",
+    "NormDelta",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S13",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "ActionSet",
+    "Context",
+    "Decision",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Objective",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S14",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S15",
+   "passed": false,
+   "failed_capabilities": [
+    "C25",
+    "C10"
+   ],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S16",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  }
+ ],
+ "scenarios_C0_plus": [
+  {
+   "id": "S1",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S2",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S3",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S4",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S5",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S6",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S7",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Determination",
+    "Discrimination",
+    "EpistemicState",
+    "Gap",
+    "Hypothesis",
+    "IdealState",
+    "Inquiry",
+    "NormDelta",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S8",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S9",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Claim",
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "Rule",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S10",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S11",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Determination",
+    "Discrimination",
+    "EpistemicState",
+    "Gap",
+    "Hypothesis",
+    "IdealState",
+    "Inquiry",
+    "NormDelta",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S12",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Determination",
+    "Discrimination",
+    "EpistemicState",
+    "Gap",
+    "Hypothesis",
+    "IdealState",
+    "Inquiry",
+    "NormDelta",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S13",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "ActionSet",
+    "Context",
+    "Decision",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Objective",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  },
+  {
+   "id": "S14",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S15",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Evidence",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Policy",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "Verdict",
+    "World"
+   ]
+  },
+  {
+   "id": "S16",
+   "passed": true,
+   "failed_capabilities": [],
+   "kinds": [
+    "Context",
+    "Defeater",
+    "Discrimination",
+    "EpistemicState",
+    "Hypothesis",
+    "Inquiry",
+    "Observation",
+    "Relation",
+    "Representation",
+    "SemanticContent",
+    "World"
+   ]
+  }
+ ]
+}

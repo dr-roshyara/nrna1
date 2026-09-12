@@ -1,0 +1,117 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02",
+  "model": "KnowledgeOS-Simulation-v1.1",
+  "theory": "KnowledgeOS Theory v1.0 (DEF-1..33, AX-1..7, THM-1..10, I1..I9) + v1.1 correction",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "seeds_random": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000
+ },
+ "cases": {
+  "AD-1": {
+   "name": "highly probable but FALSE claim from a confident source",
+   "probe": "P11",
+   "attributed": {
+    "os": "RHEL9.8"
+   },
+   "failures": [
+    "P11"
+   ]
+  },
+  "AD-2": {
+   "name": "TRUE claim with weak evidence",
+   "probe": "no-attribution",
+   "attributed": {},
+   "failures": []
+  },
+  "AD-3": {
+   "name": "duplicated evidence presented as two sources",
+   "probe": "P8",
+   "attributed": {},
+   "failures": []
+  },
+  "AD-4": {
+   "name": "correlated evidence from one upstream feed",
+   "probe": "P8",
+   "attributed": {},
+   "failures": []
+  },
+  "AD-6": {
+   "name": "wrong model with excellent fit",
+   "probe": "P9",
+   "attributed": {},
+   "failures": []
+  },
+  "AD-7": {
+   "name": "correct model with sparse evidence",
+   "probe": "no-fabrication",
+   "attributed": {},
+   "failures": []
+  },
+  "AD-8": {
+   "name": "rejected hypothesis later reinstated",
+   "probe": "history-preserved",
+   "attributed": {
+    "os": "Ubuntu22.04"
+   },
+   "failures": []
+  },
+  "AD-9": {
+   "name": "observation with ambiguous interpretation",
+   "probe": "ambiguity-preserved",
+   "attributed": {},
+   "failures": []
+  },
+  "AD-18": {
+   "name": "conclusion generated without supporting evidence",
+   "probe": "P10",
+   "attributed": {
+    "os": "RHEL9.8"
+   },
+   "failures": [
+    "P10"
+   ]
+  }
+ },
+ "counterexamples": [
+  {
+   "id": "CE-1",
+   "scenario": "AD-1",
+   "property": "P11",
+   "detail": {
+    "n_attributed": 1,
+    "violations": [
+     [
+      "os",
+      "RHEL9.8",
+      "RHEL8.6"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "CE-2",
+   "scenario": "AD-18",
+   "property": "P10",
+   "detail": {
+    "interpretations": 0,
+    "determinations": 1,
+    "unexplained": [
+     [
+      "os",
+      "determination with no supporting assessment"
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,99 @@
+{
+ "B1-factivity": {
+  "n_B": 5,
+  "n_gap": 5,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "theory"
+  ]
+ },
+ "B2-revision": {
+  "n_B": 6,
+  "n_gap": 6,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "normative",
+   "theory"
+  ]
+ },
+ "B3-no-source": {
+  "n_B": 8,
+  "n_gap": 8,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 8,
+  "kinds": [
+   "NotEstablished",
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "agent",
+   "theory"
+  ]
+ },
+ "B4-blocked": {
+  "n_B": 5,
+  "n_gap": 5,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "theory"
+  ]
+ },
+ "S1-contradiction": {
+  "n_B": 6,
+  "n_gap": 6,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "normative",
+   "theory"
+  ]
+ },
+ "S2-delta-defined": {
+  "n_B": 4,
+  "n_gap": 4,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 4,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "theory"
+  ]
+ },
+ "S3-kappa-op": {
+  "n_B": 5,
+  "n_gap": 5,
+  "gap_recoverable": true,
+  "B_carries_more": false,
+  "distinct_B_records": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "remediability": [
+   "theory"
+  ]
+ }
+}

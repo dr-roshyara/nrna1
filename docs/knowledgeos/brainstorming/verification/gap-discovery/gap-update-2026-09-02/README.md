@@ -36,6 +36,7 @@ governance act.**
 | 08 | [**Scope Error: Four Absence Claims Withdrawn**](./08-SCOPE-ERROR-AND-CORRECTIONS.md) | ⚠️ **my probe covered 564 of 3 136+ files and used glyph-literal patterns over a LaTeX corpus.** `(Ω,𝓕,P)`, `Θ`, the independence relation and the congruence conjunct are all **present**. 4 claims withdrawn, 2 corrected |
 | 09 | [**Multiplicity Register**](./09-MULTIPLICITY-REGISTER.md) | the corpus rule applied to all 17 blockers — **16 are state B (defined multiple ways), 1 is A, none is an absence** |
 | 10 | [**Conflict Records · DECISION REQUIRED**](./10-CONFLICT-RECORDS-DECISION-REQUIRED.md) | 5 records in the mandated shape · `Contr` · `⪰` · `δ` · `≡_sem` · `Qualify` |
+| 11 | [**Independent Verification of `Closure(𝒦₉)`**](./11-INDEPENDENT-VERIFICATION-K9-CLOSURE.md) | 15 of 15 published numbers **reproduce**; graph transcription **byte-identical**; range **widens to 15…23** over 66 worlds; **`InvariantReg` blocked in 66/66**; **`𝒪_core` present in 51 %** |
 
 ---
 

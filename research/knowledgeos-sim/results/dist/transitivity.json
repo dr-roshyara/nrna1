@@ -1,0 +1,19 @@
+{
+ "regime": {
+  "m": 40,
+  "sigma": 1.0,
+  "alpha": 0.05,
+  "se": 0.15811388300841897
+ },
+ "direct_witness": null,
+ "chain": {
+  "delta": 0.3099,
+  "step": 0.2789,
+  "n": 12,
+  "neighbours_indistinguishable": true,
+  "endpoints_distinguishable": true,
+  "span": 3.068
+ },
+ "transitive": false,
+ "conclusion": "H/~_\u039b is ill-defined; packing number is the well-defined replacement"
+}

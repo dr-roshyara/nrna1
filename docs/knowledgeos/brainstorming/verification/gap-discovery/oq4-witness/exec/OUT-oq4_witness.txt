@@ -1,0 +1,56 @@
+==============================================================================
+OQ-4 WITNESS SEARCH   Adequacy != Realization
+==============================================================================
+  carrier          Rec(v, s, t, rank) / Case(recs)  -- KR-REP-REDUCTION-2026-09
+  representation   R5   fields ['s', 'v']
+  chain            D -> R5=T5(D) -> R4 -> R3 -> R2   (rank_convention=ascending)
+  inquiry Q        (argmax_source(D), decile(sum v))
+  N_CASES          40000      seed 20260903
+  k-anonymity      k = 2   (declared before the run)
+
+------------------------------------------------------------------------------
+1. ADEQUACY at R5  (a property of (T, Q, population) -- not of O, not of C)
+------------------------------------------------------------------------------
+  Hhat(Q|R)   = 0.00000
+  N_viol      = 0          <- exact, bias-free; authoritative for 'exactly zero'
+  adequate    = True
+  fibers      = 26826   singleton 16939   max 7   conflicted 0
+
+------------------------------------------------------------------------------
+2. CONTROL -- the published frame  (Q, C, O)
+------------------------------------------------------------------------------
+  A_n = 1.00000      F_n = 1.00000
+  published run reported F_n = 1.0 at R5  ->  REPRODUCED
+  => adequate AND F=1: the published design excluded its own target by construction.
+
+------------------------------------------------------------------------------
+3. ROUTE 1 -- frame (Q, C, O_weak):  a decoder weaker than the information
+------------------------------------------------------------------------------
+  F_n                = 0.52065
+  argmax component   = 0.52065     <- where O_weak is weaker
+  decile component   = 1.00000     <- unchanged by construction
+  Hhat(Q|R) = 0.00000  AND  F = 0.52065 < 1   ->  WITNESS FOUND
+
+------------------------------------------------------------------------------
+4. ROUTE 2 -- frame (Q, C and k-anonymity(k=2), O):  a constraint that bites
+------------------------------------------------------------------------------
+  A_n (with k-anon)  = 0.57652
+  cases blocked      = 16939   (42.35 %)
+  F_n                = 0.57652
+  Hhat(Q|R) = 0.00000  AND  F = 0.57652 < 1   ->  WITNESS FOUND
+
+  ** the tension, measured: a SINGLETON fiber is maximally adequate (its Q is
+     determined) and maximally re-identifying (k-anonymity forbids decoding it).
+     singleton fibers = 16939 of 26826
+
+==============================================================================
+VERDICT
+==============================================================================
+  route 1  weaker decoder        WITNESS   Hhat(Q|R)=0.00000  F=0.52065
+  route 2  binding constraint    WITNESS   Hhat(Q|R)=0.00000  F=0.57652
+
+  Adequacy != Realization  ->  EXHIBITED
+  SCOPE: this carrier, this chain, this Q, level R5, N=40000, seed 20260903,
+         rank_convention=ascending.  Nothing outside that scope is claimed.
+
+  wrote /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/brainstorming/verification/gap-discovery/oq4-witness/exec/oq4_witness.json

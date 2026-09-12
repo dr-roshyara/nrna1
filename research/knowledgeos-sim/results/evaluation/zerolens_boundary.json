@@ -1,0 +1,266 @@
+{
+ "three_valued/B1-factivity": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/B2-revision": {
+  "n_boundary": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:Conflict"
+  ],
+  "pi_value": "U",
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/B3-no-source": {
+  "n_boundary": 8,
+  "kinds": [
+   "NotEstablished",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:NotEstablished",
+   "evidence:NotEstablished",
+   "provenance:NotEstablished"
+  ],
+  "pi_value": "F",
+  "zero_boundary": false,
+  "zero_weak": false,
+  "zero_reasoned": false
+ },
+ "three_valued/B4-blocked": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/S1-contradiction": {
+  "n_boundary": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:Conflict"
+  ],
+  "pi_value": "U",
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/S2-delta-defined": {
+  "n_boundary": 4,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/S3-kappa-op": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/B1-factivity": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/B2-revision": {
+  "n_boundary": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:Conflict"
+  ],
+  "pi_value": "U",
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/B3-no-source": {
+  "n_boundary": 8,
+  "kinds": [
+   "NotEstablished",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:NotEstablished",
+   "evidence:NotEstablished",
+   "provenance:NotEstablished"
+  ],
+  "pi_value": "F",
+  "zero_boundary": false,
+  "zero_weak": false,
+  "zero_reasoned": false
+ },
+ "four_valued/B4-blocked": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/S1-contradiction": {
+  "n_boundary": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:Conflict"
+  ],
+  "pi_value": "U",
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/S2-delta-defined": {
+  "n_boundary": 4,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/S3-kappa-op": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/B1-factivity": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/B2-revision": {
+  "n_boundary": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:Conflict"
+  ],
+  "pi_value": "U",
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/B3-no-source": {
+  "n_boundary": 8,
+  "kinds": [
+   "NotEstablished",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:NotEstablished",
+   "evidence:NotEstablished",
+   "provenance:NotEstablished"
+  ],
+  "pi_value": "F",
+  "zero_boundary": false,
+  "zero_weak": false,
+  "zero_reasoned": false
+ },
+ "delegated/B4-blocked": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/S1-contradiction": {
+  "n_boundary": 6,
+  "kinds": [
+   "Conflict",
+   "TheoryIncomplete"
+  ],
+  "blocking": [
+   "content:Conflict"
+  ],
+  "pi_value": "U",
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/S2-delta-defined": {
+  "n_boundary": 4,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/S3-kappa-op": {
+  "n_boundary": 5,
+  "kinds": [
+   "TheoryIncomplete"
+  ],
+  "blocking": [],
+  "pi_value": "U",
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ }
+}

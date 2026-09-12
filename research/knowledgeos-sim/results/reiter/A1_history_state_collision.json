@@ -1,0 +1,31 @@
+{
+ "_meta": {
+  "experiment_id": "KR-REITER-2026-09",
+  "source": "Reiter 2001, Knowledge in Action",
+  "source_role": "[EXT] independent formal-methods source -- NEVER an authority",
+  "theory": "v1.2 UNCHANGED",
+  "adopted": "nothing",
+  "deterministic": true,
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "claim": "two distinct situations can share a state",
+ "situation_1": [
+  "turn_on"
+ ],
+ "situation_2": [
+  "turn_on",
+  "turn_off",
+  "turn_on"
+ ],
+ "state_1": [
+  "F"
+ ],
+ "state_2": [
+  "F"
+ ],
+ "states_identical": true,
+ "situations_identical": false,
+ "collision_demonstrated": true,
+ "corollary": "no function of the STATE can recover the history -- so Situation != State is not a stipulation, it is forced"
+}

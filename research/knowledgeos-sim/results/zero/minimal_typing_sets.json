@@ -1,0 +1,15 @@
+{
+ "minimal_typing_sets": [
+  [
+   "G_value",
+   "G_assessment",
+   "G_model"
+  ],
+  [
+   "G_assessment",
+   "G_evidence",
+   "G_model"
+  ]
+ ],
+ "s3_s5_redundantly_separated": true
+}

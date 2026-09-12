@@ -1,0 +1,24 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "addendum": "19-directive-adoption",
+  "date": "2026-09-01"
+ },
+ "design": "PAIRED: every arm sees the identical world stream for a given seed (verified)",
+ "distinct_worlds": 10000,
+ "not_independent_observations": 150000,
+ "mcnemar_P10_baseline_vs_Challenge_ablated": {
+  "b_ablated_fails_only": 5944,
+  "c_baseline_fails_only": 0,
+  "both": 0,
+  "neither": 4056
+ },
+ "guard_active": 5944,
+ "guard_active_rate": 0.5944,
+ "guard_active_ci95": [
+  0.5847417764448216,
+  0.6039857219993762
+ ],
+ "conditional_failure_rate_given_guard": 1.0,
+ "note": "conditional rate is 1.0000 DETERMINISTICALLY; the only sampled quantity is the generator's guard-activation rate"
+}

@@ -1,0 +1,80 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02",
+  "model": "KnowledgeOS-Simulation-v1.1",
+  "theory": "KnowledgeOS Theory v1.0 (DEF-1..33, AX-1..7, THM-1..10, I1..I9) + v1.1 correction",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "seeds_random": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000
+ },
+ "witness": {
+  "policy": "justified-unique",
+  "epistemic_states_identical": true,
+  "worlds_differ": true,
+  "K_identical": true,
+  "attributed_w1": true,
+  "attributed_w2": true,
+  "factive_w1": true,
+  "factive_w2": false,
+  "factivity_violated": true,
+  "truth_w1": "RHEL9.8",
+  "truth_w2": "RHEL8.6",
+  "attributed_value": "RHEL9.8"
+ },
+ "policy_sweep": {
+  "justified-unique": {
+   "policy": "justified-unique",
+   "epistemic_states_identical": true,
+   "worlds_differ": true,
+   "K_identical": true,
+   "attributed_w1": true,
+   "attributed_w2": true,
+   "factive_w1": true,
+   "factive_w2": false,
+   "factivity_violated": true,
+   "truth_w1": "RHEL9.8",
+   "truth_w2": "RHEL8.6",
+   "attributed_value": "RHEL9.8",
+   "attributes_anything": true
+  },
+  "justified-any": {
+   "policy": "justified-any",
+   "epistemic_states_identical": true,
+   "worlds_differ": true,
+   "K_identical": true,
+   "attributed_w1": true,
+   "attributed_w2": true,
+   "factive_w1": true,
+   "factive_w2": false,
+   "factivity_violated": true,
+   "truth_w1": "RHEL9.8",
+   "truth_w2": "RHEL8.6",
+   "attributed_value": "RHEL9.8",
+   "attributes_anything": true
+  },
+  "none": {
+   "policy": "none",
+   "epistemic_states_identical": true,
+   "worlds_differ": true,
+   "K_identical": true,
+   "attributed_w1": false,
+   "attributed_w2": false,
+   "factive_w1": null,
+   "factive_w2": null,
+   "factivity_violated": false,
+   "truth_w1": "RHEL9.8",
+   "truth_w2": "RHEL8.6",
+   "attributed_value": null,
+   "attributes_anything": false
+  }
+ }
+}

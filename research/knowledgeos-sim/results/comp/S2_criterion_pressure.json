@@ -1,0 +1,35 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "which criteria conflict?",
+ "n_combinations": 90,
+ "satisfied_by_n_combinations": {
+  "C1_preserves_conflict": 72,
+  "C2_supersession_not_conflict": 75,
+  "C3_preserves_boundary": 18,
+  "C4_no_false_opposition": 90,
+  "C5_frame_explicit": 63
+ },
+ "jointly_satisfied_pairs": {
+  "C1_preserves_conflict+C2_supersession_not_conflict": 57,
+  "C1_preserves_conflict+C3_preserves_boundary": 18,
+  "C1_preserves_conflict+C4_no_false_opposition": 72,
+  "C1_preserves_conflict+C5_frame_explicit": 48,
+  "C2_supersession_not_conflict+C3_preserves_boundary": 18,
+  "C2_supersession_not_conflict+C4_no_false_opposition": 75,
+  "C2_supersession_not_conflict+C5_frame_explicit": 56,
+  "C3_preserves_boundary+C4_no_false_opposition": 18,
+  "C3_preserves_boundary+C5_frame_explicit": 18,
+  "C4_no_false_opposition+C5_frame_explicit": 63
+ },
+ "impossible_pairs": []
+}

@@ -1,0 +1,16 @@
+{
+ "definition": "Stagnant_t \u27fa K_{t+1} \u2260 K_t \u2227 \u0394_{t+1} = \u0394_t",
+ "fires_from_iteration": 2,
+ "caveat": "\u0394 as a COUNT is not an ordering; equal counts can hide a wholly different gap set. Closing this requires \u2ab0.",
+ "witness": {
+  "before": [
+   "g1",
+   "g2"
+  ],
+  "after": [
+   "g3",
+   "g4"
+  ],
+  "delta_unchanged": true
+ }
+}

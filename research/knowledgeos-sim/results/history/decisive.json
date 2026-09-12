@@ -1,0 +1,20 @@
+{
+ "current_content_identical": true,
+ "histories_differ": true,
+ "op_outputs_differ": [],
+ "history_writes": [
+  {
+   "fn": "Revise",
+   "line": 143,
+   "kind": "WRITE",
+   "text": "E.history.append(dict(t=E.t, transition=\"Snapshot(pre-revision)\","
+  },
+  {
+   "fn": "Supersede",
+   "line": 152,
+   "kind": "WRITE",
+   "text": "E.history.append(dict(t=E.t, transition=\"Supersede\", produced=f\"{prop}\","
+  }
+ ],
+ "history_reads": []
+}

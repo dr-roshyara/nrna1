@@ -1,0 +1,17 @@
+{
+ "measured": {
+  "independent n=1000": 940.6,
+  "grouped g=200": 201.9,
+  "grouped g=50": 51.1,
+  "correlated \u03c1=0.1": 751.8,
+  "correlated \u03c1=0.5": 200.6,
+  "correlated \u03c1=0.9": 9.0
+ },
+ "mean_log_error": {
+  "|H| (raw count)": 1.8729081496442153,
+  "independent groups g": 1.115785335492456,
+  "n(1-\u03c1)": 0.5989365372921717,
+  "n(1-\u03c1)\u00b2": 0.08208773910555599,
+  "Cheverud M_eff": 0.7909034409861144
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "is the minimum-domain problem a CARDINALITY problem?",
+ "no_determinate_value_family": [
+  "Unknown",
+  "Absent",
+  "NotAssessed",
+  "NotApplicable",
+  "Unobservable",
+  "Uninterpreted",
+  "InsufficientEvidence",
+  "Underdetermined",
+  "TheoryIncomplete"
+ ],
+ "evaluation_outcome_per_condition": {
+  "Unknown": "U",
+  "Absent": "U",
+  "NotAssessed": "U",
+  "NotApplicable": "U",
+  "Unobservable": "U",
+  "Uninterpreted": "U",
+  "InsufficientEvidence": "U",
+  "Underdetermined": "U",
+  "TheoryIncomplete": "U"
+ },
+ "outcome_identical_across_family": true,
+ "theorem": "if the evaluation outcome is identical across the family, then NO function of the outcome alone separates any pair in it -- so no flat domain, of ANY cardinality, indexed by evaluation outcome is adequate.  The obstruction is not the number of values.",
+ "separation_by_single_field": {
+  "value": {
+   "n_distinct": 1,
+   "separates_all": false
+  },
+  "polarity": {
+   "n_distinct": 2,
+   "separates_all": false
+  },
+  "reason": {
+   "n_distinct": 9,
+   "separates_all": true
+  },
+  "provenance": {
+   "n_distinct": 2,
+   "separates_all": false
+  },
+  "evidence": {
+   "n_distinct": 3,
+   "separates_all": false
+  },
+  "context": {
+   "n_distinct": 2,
+   "separates_all": false
+  },
+  "time": {
+   "n_distinct": 2,
+   "separates_all": false
+  },
+  "model": {
+   "n_distinct": 2,
+   "separates_all": false
+  },
+  "status": {
+   "n_distinct": 2,
+   "separates_all": false
+  },
+  "confidence": {
+   "n_distinct": 3,
+   "separates_all": false
+  }
+ },
+ "fields_that_separate_all": [
+  "reason"
+ ]
+}

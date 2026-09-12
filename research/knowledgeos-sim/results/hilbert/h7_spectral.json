@@ -1,0 +1,74 @@
+{
+ "rows": [
+  {
+   "space": "independent",
+   "measured": 940.6,
+   "participation ratio": 1000.0,
+   "exp(spectral entropy)": 1000.0,
+   "trace/\u03bb_max": 1000.0,
+   "rank": 1000,
+   "naive_ess": 1000
+  },
+  {
+   "space": "grouped g=200",
+   "measured": 201.9,
+   "participation ratio": 200.0,
+   "exp(spectral entropy)": 200.0,
+   "trace/\u03bb_max": 200.0,
+   "rank": 200,
+   "naive_ess": 1000
+  },
+  {
+   "space": "grouped g=50",
+   "measured": 51.1,
+   "participation ratio": 50.0,
+   "exp(spectral entropy)": 50.0,
+   "trace/\u03bb_max": 50.0,
+   "rank": 50,
+   "naive_ess": 1000
+  },
+  {
+   "space": "equicorr \u03c1=0.1",
+   "measured": 751.8,
+   "participation ratio": 90.99,
+   "exp(spectral entropy)": 690.16,
+   "trace/\u03bb_max": 9.91,
+   "rank": 1000,
+   "naive_ess": 9.91
+  },
+  {
+   "space": "equicorr \u03c1=0.5",
+   "measured": 200.6,
+   "participation ratio": 3.99,
+   "exp(spectral entropy)": 63.0,
+   "trace/\u03bb_max": 2.0,
+   "rank": 1000,
+   "naive_ess": 2.0
+  },
+  {
+   "space": "equicorr \u03c1=0.9",
+   "measured": 9.0,
+   "participation ratio": 1.23,
+   "exp(spectral entropy)": 2.76,
+   "trace/\u03bb_max": 1.11,
+   "rank": 1000,
+   "naive_ess": 1.11
+  },
+  {
+   "space": "equicorr \u03c1=0.95",
+   "measured": 4.5,
+   "participation ratio": 1.11,
+   "exp(spectral entropy)": 1.72,
+   "trace/\u03bb_max": 1.05,
+   "rank": 1000,
+   "naive_ess": 1.05
+  }
+ ],
+ "mean_log_error": {
+  "participation ratio": 1.3586436748283135,
+  "exp(spectral entropy)": 0.4970486920514259,
+  "trace/\u03bb_max": 1.7964680045080264,
+  "rank": 1.728341413594514,
+  "naive ESS": 2.445430416638106
+ }
+}

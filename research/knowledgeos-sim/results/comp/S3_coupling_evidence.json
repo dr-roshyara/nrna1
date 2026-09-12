@@ -1,0 +1,68 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "are composition and frame qualification coupled?",
+ "best_phi_per_rule": {
+  "union": "phi_layer|filter",
+  "majority": "phi_time_context|filter",
+  "last-wins": "phi_time_context|filter",
+  "strict": "phi_time|filter",
+  "intraframe-only": "phi_time_context|filter"
+ },
+ "rule_ranking_depends_on_phi": true,
+ "n_distinct_rule_rankings_across_phi": 2,
+ "rule_ranking_per_phi": {
+  "phi_none": [
+   "union",
+   "majority",
+   "last-wins",
+   "intraframe-only",
+   "strict"
+  ],
+  "phi_time": [
+   "majority",
+   "last-wins",
+   "intraframe-only",
+   "union",
+   "strict"
+  ],
+  "phi_context": [
+   "majority",
+   "last-wins",
+   "intraframe-only",
+   "union",
+   "strict"
+  ],
+  "phi_layer": [
+   "union",
+   "majority",
+   "last-wins",
+   "intraframe-only",
+   "strict"
+  ],
+  "phi_time_context": [
+   "majority",
+   "last-wins",
+   "intraframe-only",
+   "union",
+   "strict"
+  ],
+  "phi_time_context_layer": [
+   "majority",
+   "last-wins",
+   "intraframe-only",
+   "union",
+   "strict"
+  ]
+ },
+ "verdict": "coupled iff the rule ranking changes with phi -- i.e. you cannot choose the composition rule without having chosen phi"
+}

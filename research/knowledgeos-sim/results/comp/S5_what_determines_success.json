@@ -1,0 +1,42 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "which of the three dimensions determines success?",
+ "by_phi": {
+  "phi_none": "0/15",
+  "phi_time": "0/15",
+  "phi_context": "0/15",
+  "phi_layer": "0/15",
+  "phi_time_context": "9/15",
+  "phi_time_context_layer": "9/15"
+ },
+ "by_rule": {
+  "union": "0/18",
+  "majority": "6/18",
+  "last-wins": "6/18",
+  "strict": "0/18",
+  "intraframe-only": "6/18"
+ },
+ "by_status_policy": {
+  "filter": "6/30",
+  "keep": "6/30",
+  "demote": "6/30"
+ },
+ "rules_that_succeed_given_adequate_phi": [
+  "intraframe-only",
+  "last-wins",
+  "majority"
+ ],
+ "rule_underdetermined_given_adequate_phi": true,
+ "status_policy_irrelevant": true,
+ "phi_non_additive": "phi_time and phi_context each pass 0, but phi_time_context passes -- neither feature alone suffices"
+}

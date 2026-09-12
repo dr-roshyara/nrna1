@@ -1,0 +1,59 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "is `reason` a genuine categorical field, or a disguised state id?",
+ "n_conditions": 21,
+ "n_distinct_reason_values": 10,
+ "distinct_reason_values": [
+  "absent",
+  "insufficient",
+  "not-applicable",
+  "not-assessed",
+  "theory-incomplete",
+  "underdetermined",
+  "uninterpreted",
+  "unobservable",
+  "unobserved",
+  "None"
+ ],
+ "is_identity_encoding": false,
+ "n_pairs_collapsed_by_reason": 66,
+ "example_collapses": [
+  [
+   "Satisfied",
+   "Unsatisfied"
+  ],
+  [
+   "Satisfied",
+   "DirectContradiction"
+  ],
+  [
+   "Satisfied",
+   "SourceConflict"
+  ],
+  [
+   "Satisfied",
+   "ObservationConflict"
+  ],
+  [
+   "Satisfied",
+   "UnequalConfidence"
+  ],
+  [
+   "Satisfied",
+   "Retraction"
+  ]
+ ],
+ "reason_alone_adequate": false,
+ "reason_alone_separated": "11/12",
+ "verdict": "reason is a GENUINE categorical field iff it is not an identity encoding AND it collapses pairs AND it is not adequate alone"
+}

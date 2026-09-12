@@ -1,0 +1,16 @@
+{
+ "facets_plus_prose_collisions": [],
+ "keys_only_collisions": [
+  [
+   "S3_evidence_insufficient",
+   "S5_underdetermined"
+  ]
+ ],
+ "keys_only_critical_collisions": [
+  [
+   "EvidenceInsufficiency",
+   "Underdetermined"
+  ]
+ ],
+ "min_facet_subset_for_critical_six": null
+}

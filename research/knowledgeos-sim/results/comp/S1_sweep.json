@@ -1,0 +1,2530 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "does any (rule, phi, status_policy) satisfy all five criteria?",
+ "n_combinations": 90,
+ "n_satisfying_all_five": 18,
+ "satisfying": [
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "filter"
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "keep"
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "demote"
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter"
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep"
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote"
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context",
+   "status_policy": "filter"
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context",
+   "status_policy": "keep"
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context",
+   "status_policy": "demote"
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter"
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep"
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote"
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context",
+   "status_policy": "filter"
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context",
+   "status_policy": "keep"
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context",
+   "status_policy": "demote"
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter"
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep"
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote"
+  }
+ ],
+ "best_partial": [
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  }
+ ],
+ "rows": [
+  {
+   "rule": "union",
+   "phi": "phi_none",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_none",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_none",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi",
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi",
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi",
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi",
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi",
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "union",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "TemporalConflict reported as conflict though `time` is in phi",
+     "ContextConflict reported as conflict though `context` is in phi"
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_none",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_none",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_none",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "majority",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_none",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_none",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_none",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "last-wins",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_none",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi is empty yet TemporalConflict is not conflict -- the rule is applying a frame it did not declare"
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_none",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi is empty yet TemporalConflict is not conflict -- the rule is applying a frame it did not declare"
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_none",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi is empty yet TemporalConflict is not conflict -- the rule is applying a frame it did not declare"
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "strict",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": false,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C1_preserves_conflict": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContradictoryRules"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_none",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_none",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 2,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_none",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": false
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ],
+    "C5_frame_explicit": [
+     "phi_none declares no frame: over-generation is unavoidable (E-FDE-4)"
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": false,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 3,
+   "all_five": false,
+   "witnesses": {
+    "C2_supersession_not_conflict": [
+     "SupersededEvidence"
+    ],
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": false,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 4,
+   "all_five": false,
+   "witnesses": {
+    "C3_preserves_boundary": [
+     [
+      "TemporalConflict",
+      "DirectContradiction"
+     ],
+     [
+      "ContextConflict",
+      "DirectContradiction"
+     ]
+    ]
+   }
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context_layer",
+   "status_policy": "filter",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context_layer",
+   "status_policy": "keep",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  },
+  {
+   "rule": "intraframe-only",
+   "phi": "phi_time_context_layer",
+   "status_policy": "demote",
+   "criteria": {
+    "C1_preserves_conflict": true,
+    "C2_supersession_not_conflict": true,
+    "C3_preserves_boundary": true,
+    "C4_no_false_opposition": true,
+    "C5_frame_explicit": true
+   },
+   "n_satisfied": 5,
+   "all_five": true,
+   "witnesses": {}
+  }
+ ]
+}

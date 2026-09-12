@@ -1,0 +1,45 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "does any candidate pass by degenerate means?",
+ "guards": {
+  "A_fourth_value": {
+   "positive_capability -- can represent contradiction": true,
+   "negative_separation -- no false contradiction": true,
+   "completeness -- all required distinctions": false,
+   "not_degenerate -- uses more than one value": true,
+   "n_distinct_values": 4
+  },
+  "B_delegated_relation": {
+   "positive_capability -- can represent contradiction": true,
+   "negative_separation -- no false contradiction": true,
+   "completeness -- all required distinctions": false,
+   "not_degenerate -- uses more than one value": true,
+   "n_distinct_values": 4
+  },
+  "C_exclusive": {
+   "positive_capability -- can represent contradiction": false,
+   "negative_separation -- no false contradiction": false,
+   "completeness -- all required distinctions": false,
+   "not_degenerate -- uses more than one value": true,
+   "n_distinct_values": 3
+  },
+  "D_structured": {
+   "positive_capability -- can represent contradiction": true,
+   "negative_separation -- no false contradiction": true,
+   "completeness -- all required distinctions": true,
+   "not_degenerate -- uses more than one value": true,
+   "n_distinct_values": 21
+  }
+ },
+ "note": "'everything is U' and 'everything is C' both fail: the first fails positive capability, the second fails negative separation"
+}

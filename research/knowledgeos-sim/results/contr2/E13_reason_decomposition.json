@@ -1,0 +1,80 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "does `reason` factor into orthogonal sub-dimensions?",
+ "factorization": {
+  "absent": [
+   "representation",
+   "not-present"
+  ],
+  "not-applicable": [
+   "scope",
+   "out-of-scope"
+  ],
+  "unobservable": [
+   "world",
+   "inaccessible"
+  ],
+  "unobserved": [
+   "agent",
+   "not-yet-done"
+  ],
+  "uninterpreted": [
+   "agent",
+   "not-yet-done"
+  ],
+  "not-assessed": [
+   "agent",
+   "not-yet-done"
+  ],
+  "insufficient": [
+   "evidence",
+   "insufficient"
+  ],
+  "underdetermined": [
+   "evidence",
+   "non-discriminating"
+  ],
+  "theory-incomplete": [
+   "theory",
+   "no-evaluator"
+  ],
+  "None": [
+   "none",
+   "none"
+  ]
+ },
+ "n_flat_reason_values": 10,
+ "n_factored_values": 8,
+ "distinctions_lost_by_factoring": [
+  [
+   "Unknown",
+   "NotAssessed"
+  ],
+  [
+   "Unknown",
+   "Uninterpreted"
+  ],
+  [
+   "NotAssessed",
+   "Uninterpreted"
+  ]
+ ],
+ "factoring_is_lossless": false,
+ "distinct_values_per_factor": {
+  "locus": 7,
+  "modality": 8
+ },
+ "value_plus_factored_reason_adequate": true,
+ "value_plus_factored_reason_score": "12/12",
+ "status": "[PROP] -- a TESTED hypothesis about reason's structure, not an adopted vocabulary. The factor names are candidates and carry no authority."
+}

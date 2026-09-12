@@ -1,0 +1,4265 @@
+{
+ "phaseC_no_invention": {
+  "n_situations": 80,
+  "strict_reachable": false,
+  "n_strict": 0,
+  "n_reasoned": 8,
+  "n_weak": 36,
+  "chain_holds": true,
+  "rows": {
+   "grants/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "denies/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "U",
+     "consistency": "U",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": "NO_ORDERING",
+     "consistency": "NO_ORDERING",
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   }
+  }
+ },
+ "phaseC_invented": {
+  "n_situations": 80,
+  "strict_reachable": true,
+  "n_strict": 1,
+  "n_reasoned": 8,
+  "n_weak": 36,
+  "chain_holds": true,
+  "rows": {
+   "grants/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": true,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "T"
+   },
+   "grants/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "grants/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "grants/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "T",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "denies/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "denies/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "F",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": null,
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "silent/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "silent/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_SILENT",
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "expired/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "expired/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_EXPIRED",
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/full/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/full/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/full/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/full/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "T",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": true,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/partial/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/partial/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/partial/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/partial/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "COVERAGE_INCOMPLETE",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/counter/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/counter/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/counter/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/counter/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "F",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": null,
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/no_interval/met": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "T"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/no_interval/unmet_post": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "F"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": null,
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": false,
+    "kleene": "F"
+   },
+   "conflicting/no_interval/pre_unmet": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": "PRECONDITION_UNMET",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   },
+   "conflicting/no_interval/kappa_op": {
+    "values": {
+     "content": "T",
+     "evidence": "T",
+     "provenance": "T",
+     "status": "T",
+     "consistency": "T",
+     "governance": "U",
+     "temporal": "U",
+     "operational": "U"
+    },
+    "reasons": {
+     "status": null,
+     "consistency": null,
+     "governance": "AUTHORITY_CONFLICT",
+     "temporal": "NO_INTERVAL",
+     "operational": "KAPPA_OPERATIONAL",
+     "content": null,
+     "evidence": null,
+     "provenance": null
+    },
+    "strict": false,
+    "reasoned": false,
+    "weak": true,
+    "kleene": "U"
+   }
+  }
+ },
+ "PB4": {
+  "by_arity": {
+   "1": {
+    "composites": 8,
+    "permanently_U": 2,
+    "rate": 0.25
+   },
+   "2": {
+    "composites": 28,
+    "permanently_U": 13,
+    "rate": 0.4642857142857143
+   },
+   "3": {
+    "composites": 56,
+    "permanently_U": 36,
+    "rate": 0.6428571428571429
+   },
+   "4": {
+    "composites": 70,
+    "permanently_U": 55,
+    "rate": 0.7857142857142857
+   },
+   "5": {
+    "composites": 56,
+    "permanently_U": 50,
+    "rate": 0.8928571428571429
+   },
+   "6": {
+    "composites": 28,
+    "permanently_U": 27,
+    "rate": 0.9642857142857143
+   },
+   "7": {
+    "composites": 8,
+    "permanently_U": 8,
+    "rate": 1.0
+   },
+   "8": {
+    "composites": 1,
+    "permanently_U": 1,
+    "rate": 1.0
+   }
+  },
+  "all_eight": "U",
+  "still_blocked": [
+   "status",
+   "consistency"
+  ]
+ },
+ "PB3": {
+  "reasons_produced": [
+   "AUTHORITY_CONFLICT",
+   "AUTHORITY_EXPIRED",
+   "AUTHORITY_SILENT",
+   "COVERAGE_INCOMPLETE",
+   "KAPPA_OPERATIONAL",
+   "NO_INTERVAL",
+   "PRECONDITION_UNMET"
+  ],
+  "n_situations": 80,
+  "unclassified": [],
+  "new_reasons_declared": [
+   "AUTHORITY_SILENT",
+   "AUTHORITY_EXPIRED",
+   "AUTHORITY_CONFLICT",
+   "COVERAGE_INCOMPLETE",
+   "NO_INTERVAL",
+   "PRECONDITION_UNMET",
+   "KAPPA_OPERATIONAL"
+  ],
+  "all_new_reasons_seen": true
+ },
+ "PB5": {
+  "restricted": [
+   "U",
+   "KAPPA_OPERATIONAL"
+  ],
+  "unrestricted": [
+   "U",
+   "KAPPA_OPERATIONAL"
+  ],
+  "verdict": "Restricting \u03ba to the seven non-operational classes keeps the family well-founded and returns U(KAPPA_OPERATIONAL). Unrestricted, the recursion must be cut off by an arbitrary depth bound \u2014 the PB-5 defect is now REACHABLE, not merely conjectured."
+ }
+}

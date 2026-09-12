@@ -1,0 +1,37 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "context_dpi": {
+  "H_X": 2.0,
+  "I_X_S": 1.5,
+  "I_X_Sprime": 0.5,
+  "loss": 1.0,
+  "dpi_ok": true
+ },
+ "confounding": {
+  "n": 4000,
+  "seed": 11,
+  "ols_beta": 1.8517880107987543,
+  "r2": 0.8990808641469045,
+  "true_causal_effect": 0.0,
+  "association_strong": true,
+  "causal_claim_licensed": false
+ }
+}

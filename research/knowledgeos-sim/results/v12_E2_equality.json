@@ -1,0 +1,180 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-B",
+  "model": "KnowledgeOS-Simulation-v1.2",
+  "theory": "KnowledgeOS Theory v1.2 (weakened v1.1) + class-indexed three-valued Sat",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "status_vocabulary": [
+   "ESTABLISHED",
+   "DERIVED",
+   "BOUNDED",
+   "HYPOTHESIS",
+   "INTERPRETATION",
+   "CORROBORATION",
+   "NORMATIVE",
+   "TECHNICALLY OPEN",
+   "DEFERRED",
+   "REFUTED",
+   "UNKNOWN"
+  ]
+ },
+ "matrix": {
+  "identity->struct_eq": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_id_diff_content"
+   ]
+  },
+  "identity->sem_equiv": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_id_diff_content"
+   ]
+  },
+  "identity->obs_equiv": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_id_diff_content"
+   ]
+  },
+  "identity->prov_equiv": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_id_diff_content"
+   ]
+  },
+  "struct_eq->identity": {
+   "separable": false,
+   "witness": null
+  },
+  "struct_eq->sem_equiv": {
+   "separable": false,
+   "witness": null
+  },
+  "struct_eq->obs_equiv": {
+   "separable": false,
+   "witness": null
+  },
+  "struct_eq->prov_equiv": {
+   "separable": false,
+   "witness": null
+  },
+  "sem_equiv->identity": {
+   "separable": true,
+   "witness": [
+    "base",
+    "diff_id_same_content"
+   ]
+  },
+  "sem_equiv->struct_eq": {
+   "separable": true,
+   "witness": [
+    "base",
+    "diff_id_same_content"
+   ]
+  },
+  "sem_equiv->obs_equiv": {
+   "separable": false,
+   "witness": null
+  },
+  "sem_equiv->prov_equiv": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_sem_diff_prov"
+   ]
+  },
+  "obs_equiv->identity": {
+   "separable": true,
+   "witness": [
+    "base",
+    "diff_id_same_content"
+   ]
+  },
+  "obs_equiv->struct_eq": {
+   "separable": true,
+   "witness": [
+    "base",
+    "diff_id_same_content"
+   ]
+  },
+  "obs_equiv->sem_equiv": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_obs_diff_sem"
+   ]
+  },
+  "obs_equiv->prov_equiv": {
+   "separable": true,
+   "witness": [
+    "base",
+    "same_sem_diff_prov"
+   ]
+  },
+  "prov_equiv->identity": {
+   "separable": true,
+   "witness": [
+    "base",
+    "diff_id_same_content"
+   ]
+  },
+  "prov_equiv->struct_eq": {
+   "separable": true,
+   "witness": [
+    "base",
+    "diff_id_same_content"
+   ]
+  },
+  "prov_equiv->sem_equiv": {
+   "separable": false,
+   "witness": null
+  },
+  "prov_equiv->obs_equiv": {
+   "separable": false,
+   "witness": null
+  }
+ },
+ "n_pairs": 20,
+ "n_separable": 13,
+ "non_separable": [
+  "struct_eq->identity",
+  "struct_eq->sem_equiv",
+  "struct_eq->obs_equiv",
+  "struct_eq->prov_equiv",
+  "sem_equiv->obs_equiv",
+  "prov_equiv->sem_equiv",
+  "prov_equiv->obs_equiv"
+ ],
+ "lambda_dependence": {
+  "('status', 'value')": {
+   "sem_implies_obs": true,
+   "witness": null
+  },
+  "('status', 'value', 'provenance')": {
+   "sem_implies_obs": false,
+   "witness": [
+    "base",
+    "same_sem_diff_prov"
+   ]
+  },
+  "('status', 'value', 'weight')": {
+   "sem_implies_obs": false,
+   "witness": [
+    "base",
+    "diff_weight_only"
+   ]
+  },
+  "('A',)": {
+   "sem_implies_obs": true,
+   "witness": null
+  }
+ }
+}

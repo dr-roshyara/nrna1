@@ -1,0 +1,1554 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "n_per_arm": 10000,
+ "results": {
+  "_baseline": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Observe": {
+   "P1": {
+    "failures": 2021,
+    "rate": 0.2021,
+    "ci95": [
+     0.19434437537206378,
+     0.21008441926218951
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 2418,
+    "rate": 0.2418,
+    "ci95": [
+     0.233507972215153,
+     0.25029033182836563
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 4957,
+    "rate": 0.4957,
+    "ci95": [
+     0.48590389529743866,
+     0.5054994072098701
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P8": {
+    "failures": 7998,
+    "rate": 0.7998,
+    "ci95": [
+     0.7918425955333452,
+     0.8075271505849857
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 4957,
+    "rate": 0.4957,
+    "ci95": [
+     0.48590389529743866,
+     0.5054994072098701
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   }
+  },
+  "Interpret": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 2418,
+    "rate": 0.2418,
+    "ci95": [
+     0.233507972215153,
+     0.25029033182836563
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 4957,
+    "rate": 0.4957,
+    "ci95": [
+     0.48590389529743866,
+     0.5054994072098701
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 7998,
+    "rate": 0.7998,
+    "ci95": [
+     0.7918425955333452,
+     0.8075271505849857
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 4957,
+    "rate": 0.4957,
+    "ci95": [
+     0.48590389529743866,
+     0.5054994072098701
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   }
+  },
+  "Represent": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Relate": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 4957,
+    "rate": 0.4957,
+    "ci95": [
+     0.48590389529743866,
+     0.5054994072098701
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Discriminate": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Hypothesize": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 2418,
+    "rate": 0.2418,
+    "ci95": [
+     0.233507972215153,
+     0.25029033182836563
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 7998,
+    "rate": 0.7998,
+    "ci95": [
+     0.7918425955333452,
+     0.8075271505849857
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.3582,
+    "vacuous": false
+   }
+  },
+  "Infer": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "DetectGap": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Challenge": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 5944,
+    "rate": 0.5944,
+    "ci95": [
+     0.5847417764448216,
+     0.6039857219993762
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Validate": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   }
+  },
+  "Revise": {
+   "P1": {
+    "failures": 5075,
+    "rate": 0.5075,
+    "ci95": [
+     0.4977001036752012,
+     0.5172941361376322
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 5001,
+    "rate": 0.5001,
+    "ci95": [
+     0.49030184363646045,
+     0.509898079561044
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Determine": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Select": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5944,
+    "vacuous": false
+   }
+  },
+  "Qualify": {
+   "P1": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5075,
+    "vacuous": false
+   },
+   "P2": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.2418,
+    "vacuous": false
+   },
+   "P3": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   },
+   "P4": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.5001,
+    "vacuous": false
+   },
+   "P5": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P6": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.6031,
+    "vacuous": false
+   },
+   "P7": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 1.0,
+    "vacuous": false
+   },
+   "P8": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.7998,
+    "vacuous": false
+   },
+   "P9": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.4957,
+    "vacuous": false
+   },
+   "P10": {
+    "failures": 0,
+    "rate": 0.0,
+    "ci95": [
+     0.0,
+     0.00038401247776654115
+    ],
+    "guard_active_rate": 0.0,
+    "vacuous": true
+   }
+  }
+ }
+}

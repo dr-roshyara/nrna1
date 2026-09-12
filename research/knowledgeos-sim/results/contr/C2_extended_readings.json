@@ -1,0 +1,49 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "does extending the readings to see C separate the models?",
+ "treatments": {
+  "as_blocking": {
+   "separated": {
+    "three_valued|four_valued": false,
+    "three_valued|delegated": true,
+    "four_valued|delegated": true
+   },
+   "witness": {
+    "three_valued|delegated": "Chs",
+    "four_valued|delegated": "Chs"
+   }
+  },
+  "as_gap": {
+   "separated": {
+    "three_valued|four_valued": false,
+    "three_valued|delegated": true,
+    "four_valued|delegated": true
+   },
+   "witness": {
+    "three_valued|delegated": "Chs",
+    "four_valued|delegated": "Chs"
+   }
+  },
+  "as_closing": {
+   "separated": {
+    "three_valued|four_valued": false,
+    "three_valued|delegated": true,
+    "four_valued|delegated": true
+   },
+   "witness": {
+    "three_valued|delegated": "Chs",
+    "four_valued|delegated": "Chs"
+   }
+  }
+ },
+ "note": "as_closing reproduces the D-0 defect by construction"
+}

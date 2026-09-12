@@ -1,0 +1,52 @@
+{
+ "1": {
+  "n": 1,
+  "trials": 200,
+  "max_training": 0.0027,
+  "heldout_of_selected": 0.003,
+  "heldout_mean_all": 0.003,
+  "selection_optimism": -0.0003,
+  "sd_heldout_selected": 0.1524,
+  "theory_sqrt2lnn": 0.0
+ },
+ "10": {
+  "n": 10,
+  "trials": 200,
+  "max_training": 0.2367,
+  "heldout_of_selected": 0.0082,
+  "heldout_mean_all": -0.0002,
+  "selection_optimism": 0.2285,
+  "sd_heldout_selected": 0.1588,
+  "theory_sqrt2lnn": 0.3393
+ },
+ "100": {
+  "n": 100,
+  "trials": 200,
+  "max_training": 0.3915,
+  "heldout_of_selected": -0.0031,
+  "heldout_mean_all": -0.0017,
+  "selection_optimism": 0.3945,
+  "sd_heldout_selected": 0.1542,
+  "theory_sqrt2lnn": 0.4799
+ },
+ "1000": {
+  "n": 1000,
+  "trials": 200,
+  "max_training": 0.5116,
+  "heldout_of_selected": 0.0152,
+  "heldout_mean_all": 0.0006,
+  "selection_optimism": 0.4964,
+  "sd_heldout_selected": 0.1558,
+  "theory_sqrt2lnn": 0.5877
+ },
+ "10000": {
+  "n": 10000,
+  "trials": 200,
+  "max_training": 0.6101,
+  "heldout_of_selected": -0.012,
+  "heldout_mean_all": -0.0001,
+  "selection_optimism": 0.6222,
+  "sd_heldout_selected": 0.1737,
+  "theory_sqrt2lnn": 0.6786
+ }
+}

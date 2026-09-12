@@ -1,0 +1,169 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "which candidates separate the REQUIRED distinctions, and what is the minimum flat domain size?",
+ "required_provenance": "protocol S9 table + invariant candidates I1-I5",
+ "candidates": {
+  "A_fourth_value": {
+   "candidate": "A_fourth_value",
+   "required_pairs": 12,
+   "separated": 7,
+   "failures": [
+    {
+     "pair": [
+      "Unknown",
+      "Absent"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "Absent",
+      "NotAssessed"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "NotAssessed",
+      "NotApplicable"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "InsufficientEvidence",
+      "Underdetermined"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "Underdetermined",
+      "Unobservable"
+     ],
+     "collapsed_to": "('U',)"
+    }
+   ],
+   "adequate": false,
+   "distinct_values_used_on_required_nodes": 4
+  },
+  "B_delegated_relation": {
+   "candidate": "B_delegated_relation",
+   "required_pairs": 12,
+   "separated": 7,
+   "failures": [
+    {
+     "pair": [
+      "Unknown",
+      "Absent"
+     ],
+     "collapsed_to": "('U', False)"
+    },
+    {
+     "pair": [
+      "Absent",
+      "NotAssessed"
+     ],
+     "collapsed_to": "('U', False)"
+    },
+    {
+     "pair": [
+      "NotAssessed",
+      "NotApplicable"
+     ],
+     "collapsed_to": "('U', False)"
+    },
+    {
+     "pair": [
+      "InsufficientEvidence",
+      "Underdetermined"
+     ],
+     "collapsed_to": "('U', False)"
+    },
+    {
+     "pair": [
+      "Underdetermined",
+      "Unobservable"
+     ],
+     "collapsed_to": "('U', False)"
+    }
+   ],
+   "adequate": false,
+   "distinct_values_used_on_required_nodes": 4
+  },
+  "C_exclusive": {
+   "candidate": "C_exclusive",
+   "required_pairs": 12,
+   "separated": 7,
+   "failures": [
+    {
+     "pair": [
+      "Unknown",
+      "Absent"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "Absent",
+      "NotAssessed"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "NotAssessed",
+      "NotApplicable"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "InsufficientEvidence",
+      "Underdetermined"
+     ],
+     "collapsed_to": "('U',)"
+    },
+    {
+     "pair": [
+      "Underdetermined",
+      "Unobservable"
+     ],
+     "collapsed_to": "('U',)"
+    }
+   ],
+   "adequate": false,
+   "distinct_values_used_on_required_nodes": 3
+  },
+  "D_structured": {
+   "candidate": "D_structured",
+   "required_pairs": 12,
+   "separated": 12,
+   "failures": [],
+   "adequate": true,
+   "distinct_values_used_on_required_nodes": 11
+  }
+ },
+ "minimum_flat_domain": {
+  "chromatic_number": 3,
+  "clique_lower_bound": 3,
+  "max_clique": [
+   "Absent",
+   "DirectContradiction",
+   "NotAssessed"
+  ],
+  "n_nodes": 11,
+  "n_required_edges": 12
+ },
+ "consequence": "a FLAT value domain needs at least chromatic_number values; a fourth value is necessary only if that number exceeds 3, and sufficient only if it equals 4"
+}

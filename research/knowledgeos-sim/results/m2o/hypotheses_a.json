@@ -1,0 +1,79 @@
+{
+ "H12_generators": {
+  "G1_random": {
+   "false_proportion": 1.0,
+   "diversity": 1.0,
+   "n_candidates": 1000,
+   "n_independent": 1000
+  },
+  "G2_diverse": {
+   "false_proportion": 1.0,
+   "diversity": 1.0,
+   "n_candidates": 1000,
+   "n_independent": 1000
+  },
+  "G3_correlated": {
+   "false_proportion": 1.0,
+   "diversity": 0.2,
+   "n_candidates": 1000,
+   "n_independent": 200
+  },
+  "G4_near_dup": {
+   "false_proportion": 1.0,
+   "diversity": 0.05,
+   "n_candidates": 1000,
+   "n_independent": 50
+  },
+  "G5_adversarial": {
+   "false_proportion": 1.0,
+   "diversity": 1.0,
+   "n_candidates": 1000,
+   "n_independent": 1000
+  },
+  "G6_mostly_false": {
+   "false_proportion": 1.0,
+   "diversity": 1.0,
+   "n_candidates": 1000,
+   "n_independent": 1000
+  },
+  "G7_mostly_true": {
+   "false_proportion": 0.2,
+   "diversity": 1.0,
+   "n_candidates": 1000,
+   "n_independent": 1000
+  }
+ },
+ "H8_ordering": {
+  "pareto": [
+   "H_true",
+   "H_twin",
+   "X0",
+   "X2",
+   "X3",
+   "X4",
+   "X5",
+   "X6",
+   "X7"
+  ],
+  "scalar": [
+   "H_true"
+  ],
+  "threshold": [
+   "H_true"
+  ],
+  "incomparable_preserved": true
+ },
+ "H2_rho": {
+  "high \u03c1, NO quality gain": {
+   "rho": 0.999,
+   "heldout_of_selected": 0.1756,
+   "truth_selected": false,
+   "note": "null world: nothing to learn; \u03c1=0.999"
+  },
+  "low \u03c1, quality GAIN": {
+   "rho": 0.1,
+   "removed": "H_bad (decisively refuted)",
+   "note": "only 10% reduction, but it removed the one candidate evidence excludes"
+  }
+ }
+}

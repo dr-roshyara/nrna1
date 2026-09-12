@@ -1,0 +1,186 @@
+{
+ "trace": [
+  {
+   "iter": 1,
+   "n_hyp": 2,
+   "boundary": [
+    "G_assessment:not-assessed",
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 6,
+   "n_gaps": 3,
+   "delta": 3,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 2,
+   "n_hyp": 3,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 3,
+   "n_hyp": 4,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 4,
+   "n_hyp": 5,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 5,
+   "n_hyp": 6,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 6,
+   "n_hyp": 7,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 7,
+   "n_hyp": 8,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 8,
+   "n_hyp": 9,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 9,
+   "n_hyp": 10,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 10,
+   "n_hyp": 11,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 11,
+   "n_hyp": 12,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  },
+  {
+   "iter": 12,
+   "n_hyp": 13,
+   "boundary": [
+    "G_model:delta-undefined",
+    "G_model:no-evaluator",
+    "G_model:no-ordering",
+    "G_temporal:no-temporal-semantics",
+    "G_value:rivals"
+   ],
+   "n_boundary": 5,
+   "n_gaps": 2,
+   "delta": 2,
+   "theory_blocked": 4
+  }
+ ],
+ "boundary_fixed_point": true
+}

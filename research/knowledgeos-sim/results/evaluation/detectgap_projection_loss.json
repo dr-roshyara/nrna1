@@ -1,0 +1,14 @@
+{
+ "distinct_boundary_types": {
+  "('TheoryIncomplete', 'theory', False)": 34,
+  "('Conflict', 'normative', True)": 2,
+  "('NotEstablished', 'agent', True)": 3
+ },
+ "n_types": 3,
+ "loss": "attribute-lossy, not cardinality-lossy",
+ "lost_fields": [
+  "kind",
+  "remediable_by",
+  "blocking"
+ ]
+}

@@ -1,0 +1,941 @@
+# EKS-48 — Semantic Closure Construction for `Sat`
+
+**Status:** PROPOSED — GOVERNANCE / AUTHORSHIP DECISION REQUIRED
+**Date:** 2026-09-09
+**Type:** Research / Theory Construction
+**Predecessors:** MD-070, MD-073, MD-074, EKS-44, EKS-47
+**Scope:** KnowledgeOS Theory / `Sat(K,r,Γ)` operational closure
+
+---
+
+## 1. Problem Statement
+
+The KnowledgeOS corpus contains a progressively refined definition of requirement satisfaction:
+
+$$
+\boxed{
+Sat(K,r,\Gamma)
+=
+Det_r\!\left(EvalReq(K,r,EC,\Gamma),EC\right)
+}
+$$
+
+The definition establishes the typed role of `Sat`, but the end-to-end closure test has demonstrated that the existing corpus does not contain sufficient semantics to execute the chain for a concrete requirement.
+
+MD-074 independently verified the prior MD-073 result and reached the same first break:
+
+$$
+EvalReq(K,r,EC,\Gamma)
+$$
+
+cannot be invoked because no concrete `EC` instance and no definition or instance of \(\Gamma\) are available. It additionally established that `EvalReq` has no type signature/codomain and that `Det_r` has no operational body.
+
+Therefore:
+
+$$
+\boxed{
+Sat\text{ is defined, but its operational semantic closure is not established.}
+}
+$$
+
+---
+
+## 2. Current Evidence
+
+The following findings are considered established by MD-074:
+
+### 2.1 `Sat` definition
+
+The current corpus reconstruction contains:
+
+$$
+Sat(K,r,\Gamma)
+=
+Det_r(EvalReq(K,r,EC,\Gamma),EC).
+$$
+
+This definition is **not reopened by EKS-48**.
+
+### 2.2 `EC`
+
+The corpus provides an EC schema:
+
+$$
+EC=
+\langle Req,Rules,Scope,ER,TR,AR\rangle
+$$
+
+but no concrete EC instance was found for the tested case.
+
+Status:
+
+$$
+\boxed{\text{Schema: DERIVED}}
+$$
+
+$$
+\boxed{\text{Construction/instance: NOT ESTABLISHED}}
+$$
+
+### 2.3 \(\Gamma\)
+
+No formal definition or concrete instance of \(\Gamma\) was established.
+
+Status:
+
+$$
+\boxed{\Gamma:\text{ NOT ESTABLISHED}}
+$$
+
+### 2.4 `EvalReq`
+
+`EvalReq` occurs as part of the typed `Sat` machinery, but the corpus does not provide a complete type signature, codomain, or general operational procedure sufficient for the tested requirement.
+
+Status:
+
+$$
+\boxed{\text{NOT ESTABLISHED}}
+$$
+
+### 2.5 `Det_r`
+
+`Det_r` has a typed role but no corpus-grounded operational body sufficient to execute the concrete case.
+
+Status:
+
+$$
+\boxed{\text{NOT ESTABLISHED}}
+$$
+
+### 2.6 Actual `Sat` computation
+
+The corpus's worked example stipulates a satisfaction result but does not compute it through:
+
+$$
+Eval\rightarrow EvalReq\rightarrow Det_r\rightarrow Sat.
+$$
+
+The executed worked-example derivation instead proceeds through the release rule:
+
+$$
+\rho_{release}
+\rightarrow
+\text{proof object}
+\rightarrow
+ReleasePermitted(S).
+$$
+
+Consequently, the typed three-argument `Sat(K,r,\Gamma)` chain remains operationally unexecuted.
+
+---
+
+# 3. Decision Required
+
+The historical reconstruction phase has reached a hard stop.
+
+The next question is therefore no longer:
+
+> “What does the existing corpus say `Sat` means?”
+
+It is:
+
+> **Are we authorized to construct the missing semantic machinery required to make the existing `Sat` definition operational?**
+
+This is a **governance/authorship decision**, not an implementation decision.
+
+---
+
+# 4. Proposed Construction Scope
+
+If authorized, the next phase should investigate four dependencies in the following order.
+
+## C1 — Define \(\Gamma\)
+
+Determine what semantic/context parameter \(\Gamma\) is required to represent.
+
+Questions:
+
+* What information does \(\Gamma\) provide?
+* Why is it required by `Eval`/`EvalReq`?
+* What is its type?
+* What are its admissible values?
+* Is it a context, interpretation environment, evaluation regime, or something else?
+* Can its semantics be derived from existing theory?
+* If not, what new theory is being introduced?
+
+No assumption that \(\Gamma\) has a particular interpretation is permitted.
+
+---
+
+## C2 — Define EC construction
+
+The corpus gives an EC schema, but not a general construction rule for producing:
+
+$$
+EC
+$$
+
+from a concrete decision contract / requirement environment.
+
+The research must determine whether a construction such as
+
+$$
+DecisionContract
+\rightarrow EC
+$$
+
+can be justified.
+
+If a new construction rule is necessary, it must be explicitly classified as:
+
+$$
+\boxed{\text{NEW THEORY CONSTRUCTION}}
+$$
+
+rather than corpus recovery.
+
+---
+
+## C3 — Define `EvalReq`
+
+Establish the missing requirement-level evaluation operation:
+
+$$
+EvalReq(K,r,EC,\Gamma)
+\rightarrow ?
+$$
+
+The phase must determine:
+
+* input type,
+* output type,
+* relation to `Eval`,
+* relation to requirement \(r\),
+* treatment of evidence,
+* treatment of counter-support,
+* uncertainty,
+* conflict,
+* dependencies,
+* assumptions,
+* justification,
+* behavior for insufficient information.
+
+No arbitrary reduction of `EvalReq` to a component-membership test is allowed.
+
+In particular, the phase must not silently introduce:
+
+$$
+Accept_r
+$$
+
+or:
+
+$$
+\pi_r(K).
+$$
+
+---
+
+## C4 — Define `Det_r`
+
+Establish the operational determination function:
+
+$$
+Det_r:
+\mathcal V\times EC
+\rightarrow
+\mathbb S_{sat}.
+$$
+
+Questions include:
+
+* What information from the evaluation vector determines satisfaction?
+* What is the codomain?
+* Is the result binary or richer?
+* How are conflict and uncertainty handled?
+* What role does EC play?
+* What makes a determination justified?
+* Is determination merely evaluation classification, or does it require an additional warrant?
+
+Again, these questions must be answered through explicit theory construction and validation, not assumption.
+
+---
+
+# 5. Dependency Order
+
+The proposed dependency graph is:
+
+$$
+\boxed{
+\Gamma
+\rightarrow
+EC\text{ construction}
+\rightarrow
+EvalReq
+\rightarrow
+Det_r
+\rightarrow
+Sat
+\rightarrow
+\Delta
+\rightarrow
+Zero
+}
+$$
+
+This ordering is intentional.
+
+Do not attempt to compute `Sat` before its upstream dependencies have been closed.
+
+Do not attempt to define computational Zero before `Sat` is executable.
+
+---
+
+# 6. Research / Construction Boundary
+
+This phase must maintain the following distinction:
+
+### Corpus reconstruction
+
+$$
+\text{What does the existing corpus establish?}
+$$
+
+versus
+
+### Theory construction
+
+$$
+\text{What additional semantics must we introduce to make the system operational?}
+$$
+
+The second is permitted only if explicitly authorized.
+
+No newly constructed definition may be retroactively described as historical corpus semantics.
+
+---
+
+# 7. Explicit Non-Goals
+
+EKS-48 does **not** authorize:
+
+* implementation in the KnowledgeOS application;
+* canonicalization of a new \(K_t\) representation;
+* selection of V7;
+* adoption of \(\Sigma=(A,S,R,V,C)\) as ontology;
+* introduction of `Accept_r`;
+* component-membership semantics;
+* operation-minimality claims;
+* F3↔F4 equivalence;
+* GA-001 / GA-038 closure;
+* architecture changes;
+* governance ratification of newly constructed theory.
+
+Those are downstream activities.
+
+---
+
+# 8. Required Deliverables if Authorized
+
+The phase should produce:
+
+1. **Gamma Semantics Specification**
+2. **EC Construction Semantics Specification**
+3. **EvalReq Semantics Specification**
+4. **Det_r Semantics Specification**
+5. **One end-to-end worked computation**
+6. **Adversarial counterexample suite**
+7. **Theory / assumption / construction boundary register**
+8. **Independent validation report**
+9. **Final closure verdict**
+
+The final verdict must distinguish:
+
+$$
+\boxed{
+COMPUTABLE
+}
+$$
+
+$$
+\boxed{
+PARTIALLY\ COMPUTABLE
+}
+$$
+
+or
+
+$$
+\boxed{
+STILL\ UNDERDETERMINED
+}
+$$
+
+---
+
+# 9. Acceptance Criteria
+
+EKS-48 is successful only if a concrete corpus-grounded requirement can be processed without hidden semantic assumptions:
+
+$$
+K,r,EC,\Gamma
+$$
+
+$$
+\downarrow
+$$
+
+$$
+EvalReq(K,r,EC,\Gamma)
+$$
+
+$$
+\downarrow
+$$
+
+$$
+Det_r(...)
+$$
+
+$$
+\downarrow
+$$
+
+$$
+Sat(K,r,\Gamma)
+$$
+
+and every transition is:
+
+* formally specified,
+* traceable,
+* reproducible,
+* independently reviewable.
+
+A formula that merely makes the computation possible is **not sufficient**.
+
+The phase must establish why the formula is justified.
+
+---
+
+# 10. Current Verdict
+
+MD-074 establishes:
+
+$$
+\boxed{
+\textbf{SAT OPERATIONAL CLOSURE: BLOCKED}
+}
+$$
+
+The blocker is not the existence of `Sat`.
+
+The blocker is the absence of sufficient operational semantics for:
+
+$$
+\boxed{
+\Gamma,\quad EC\text{-construction},\quad EvalReq,\quad Det_r.
+}
+$$
+
+MD-074 explicitly records these as the smallest next research inputs, but also states that they are **not yet authorized** and would constitute new theory construction rather than corpus recovery.
+
+---
+
+# 11. Governance Decision
+
+**Decision required from the responsible theory authority:**
+
+> **Authorize or reject construction of the missing semantic machinery required for operational `Sat`.**
+
+If authorized, EKS-48 opens a controlled **Theory Construction Phase**.
+
+If rejected, the project records:
+
+$$
+\boxed{
+\text{Historical Sat semantics are operationally underdetermined by the corpus.}
+}
+$$
+
+No implementation should proceed under either outcome until the decision is explicit.
+
+---
+
+**Status:** PROPOSED — NOT AUTHORIZED
+**Next gate:** Governance / theory-authorship decision
+**Implementation:** BLOCKED
+**Canonicalization:** BLOCKED
+**Historical reconstruction:** HARD STOP
+**New theory construction:** PENDING AUTHORIZATION
+#
+# EKS-48 — Semantic Closure Construction for `Sat`
+
+**Status:** PROPOSED — GOVERNANCE / AUTHORSHIP DECISION REQUIRED
+**Date:** 2026-09-09
+**Type:** Research / Theory Construction
+**Predecessors:** MD-070, MD-073, MD-074, EKS-44, EKS-47
+**Scope:** KnowledgeOS Theory / `Sat(K,r,Γ)` operational closure
+
+---
+
+## 1. Problem Statement
+
+The KnowledgeOS corpus contains a progressively refined definition of requirement satisfaction:
+
+$$
+\boxed{
+Sat(K,r,\Gamma)
+=
+Det_r\!\left(EvalReq(K,r,EC,\Gamma),EC\right)
+}
+$$
+
+The definition establishes the typed role of `Sat`, but the end-to-end closure test has demonstrated that the existing corpus does not contain sufficient semantics to execute the chain for a concrete requirement.
+
+MD-074 independently verified the prior MD-073 result and reached the same first break:
+
+$$
+EvalReq(K,r,EC,\Gamma)
+$$
+
+cannot be invoked because no concrete `EC` instance and no definition or instance of \(\Gamma\) are available. It additionally established that `EvalReq` has no type signature/codomain and that `Det_r` has no operational body.
+
+Therefore:
+
+$$
+\boxed{
+Sat\text{ is defined, but its operational semantic closure is not established.}
+}
+$$
+
+---
+
+## 2. Current Evidence
+
+The following findings are considered established by MD-074:
+
+### 2.1 `Sat` definition
+
+The current corpus reconstruction contains:
+
+$$
+Sat(K,r,\Gamma)
+=
+Det_r(EvalReq(K,r,EC,\Gamma),EC).
+$$
+
+This definition is **not reopened by EKS-48**.
+
+### 2.2 `EC`
+
+The corpus provides an EC schema:
+
+$$
+EC=
+\langle Req,Rules,Scope,ER,TR,AR\rangle
+$$
+
+but no concrete EC instance was found for the tested case.
+
+Status:
+
+$$
+\boxed{\text{Schema: DERIVED}}
+$$
+
+$$
+\boxed{\text{Construction/instance: NOT ESTABLISHED}}
+$$
+
+### 2.3 \(\Gamma\)
+
+No formal definition or concrete instance of \(\Gamma\) was established.
+
+Status:
+
+$$
+\boxed{\Gamma:\text{ NOT ESTABLISHED}}
+$$
+
+### 2.4 `EvalReq`
+
+`EvalReq` occurs as part of the typed `Sat` machinery, but the corpus does not provide a complete type signature, codomain, or general operational procedure sufficient for the tested requirement.
+
+Status:
+
+$$
+\boxed{\text{NOT ESTABLISHED}}
+$$
+
+### 2.5 `Det_r`
+
+`Det_r` has a typed role but no corpus-grounded operational body sufficient to execute the concrete case.
+
+Status:
+
+$$
+\boxed{\text{NOT ESTABLISHED}}
+$$
+
+### 2.6 Actual `Sat` computation
+
+The corpus's worked example stipulates a satisfaction result but does not compute it through:
+
+$$
+Eval\rightarrow EvalReq\rightarrow Det_r\rightarrow Sat.
+$$
+
+The executed worked-example derivation instead proceeds through the release rule:
+
+$$
+\rho_{release}
+\rightarrow
+\text{proof object}
+\rightarrow
+ReleasePermitted(S).
+$$
+
+Consequently, the typed three-argument `Sat(K,r,\Gamma)` chain remains operationally unexecuted.
+
+---
+
+# 3. Decision Required
+
+The historical reconstruction phase has reached a hard stop.
+
+The next question is therefore no longer:
+
+> “What does the existing corpus say `Sat` means?”
+
+It is:
+
+> **Are we authorized to construct the missing semantic machinery required to make the existing `Sat` definition operational?**
+
+This is a **governance/authorship decision**, not an implementation decision.
+
+---
+
+# 4. Proposed Construction Scope
+
+If authorized, the next phase should investigate four dependencies in the following order.
+
+## C1 — Define \(\Gamma\)
+
+Determine what semantic/context parameter \(\Gamma\) is required to represent.
+
+Questions:
+
+* What information does \(\Gamma\) provide?
+* Why is it required by `Eval`/`EvalReq`?
+* What is its type?
+* What are its admissible values?
+* Is it a context, interpretation environment, evaluation regime, or something else?
+* Can its semantics be derived from existing theory?
+* If not, what new theory is being introduced?
+
+No assumption that \(\Gamma\) has a particular interpretation is permitted.
+
+---
+
+## C2 — Define EC construction
+
+The corpus gives an EC schema, but not a general construction rule for producing:
+
+$$
+EC
+$$
+
+from a concrete decision contract / requirement environment.
+
+The research must determine whether a construction such as
+
+$$
+DecisionContract
+\rightarrow EC
+$$
+
+can be justified.
+
+If a new construction rule is necessary, it must be explicitly classified as:
+
+$$
+\boxed{\text{NEW THEORY CONSTRUCTION}}
+$$
+
+rather than corpus recovery.
+
+---
+
+## C3 — Define `EvalReq`
+
+Establish the missing requirement-level evaluation operation:
+
+$$
+EvalReq(K,r,EC,\Gamma)
+\rightarrow ?
+$$
+
+The phase must determine:
+
+* input type,
+* output type,
+* relation to `Eval`,
+* relation to requirement \(r\),
+* treatment of evidence,
+* treatment of counter-support,
+* uncertainty,
+* conflict,
+* dependencies,
+* assumptions,
+* justification,
+* behavior for insufficient information.
+
+No arbitrary reduction of `EvalReq` to a component-membership test is allowed.
+
+In particular, the phase must not silently introduce:
+
+$$
+Accept_r
+$$
+
+or:
+
+$$
+\pi_r(K).
+$$
+
+---
+
+## C4 — Define `Det_r`
+
+Establish the operational determination function:
+
+$$
+Det_r:
+\mathcal V\times EC
+\rightarrow
+\mathbb S_{sat}.
+$$
+
+Questions include:
+
+* What information from the evaluation vector determines satisfaction?
+* What is the codomain?
+* Is the result binary or richer?
+* How are conflict and uncertainty handled?
+* What role does EC play?
+* What makes a determination justified?
+* Is determination merely evaluation classification, or does it require an additional warrant?
+
+Again, these questions must be answered through explicit theory construction and validation, not assumption.
+
+---
+
+# 5. Dependency Order
+
+The proposed dependency graph is:
+
+$$
+\boxed{
+\Gamma
+\rightarrow
+EC\text{ construction}
+\rightarrow
+EvalReq
+\rightarrow
+Det_r
+\rightarrow
+Sat
+\rightarrow
+\Delta
+\rightarrow
+Zero
+}
+$$
+
+This ordering is intentional.
+
+Do not attempt to compute `Sat` before its upstream dependencies have been closed.
+
+Do not attempt to define computational Zero before `Sat` is executable.
+
+---
+
+# 6. Research / Construction Boundary
+
+This phase must maintain the following distinction:
+
+### Corpus reconstruction
+
+$$
+\text{What does the existing corpus establish?}
+$$
+
+versus
+
+### Theory construction
+
+$$
+\text{What additional semantics must we introduce to make the system operational?}
+$$
+
+The second is permitted only if explicitly authorized.
+
+No newly constructed definition may be retroactively described as historical corpus semantics.
+
+---
+
+# 7. Explicit Non-Goals
+
+EKS-48 does **not** authorize:
+
+* implementation in the KnowledgeOS application;
+* canonicalization of a new \(K_t\) representation;
+* selection of V7;
+* adoption of \(\Sigma=(A,S,R,V,C)\) as ontology;
+* introduction of `Accept_r`;
+* component-membership semantics;
+* operation-minimality claims;
+* F3↔F4 equivalence;
+* GA-001 / GA-038 closure;
+* architecture changes;
+* governance ratification of newly constructed theory.
+
+Those are downstream activities.
+
+---
+
+# 8. Required Deliverables if Authorized
+
+The phase should produce:
+
+1. **Gamma Semantics Specification**
+2. **EC Construction Semantics Specification**
+3. **EvalReq Semantics Specification**
+4. **Det_r Semantics Specification**
+5. **One end-to-end worked computation**
+6. **Adversarial counterexample suite**
+7. **Theory / assumption / construction boundary register**
+8. **Independent validation report**
+9. **Final closure verdict**
+
+The final verdict must distinguish:
+
+$$
+\boxed{
+COMPUTABLE
+}
+$$
+
+$$
+\boxed{
+PARTIALLY\ COMPUTABLE
+}
+$$
+
+or
+
+$$
+\boxed{
+STILL\ UNDERDETERMINED
+}
+$$
+
+---
+
+# 9. Acceptance Criteria
+
+EKS-48 is successful only if a concrete corpus-grounded requirement can be processed without hidden semantic assumptions:
+
+$$
+K,r,EC,\Gamma
+$$
+
+$$
+\downarrow
+$$
+
+$$
+EvalReq(K,r,EC,\Gamma)
+$$
+
+$$
+\downarrow
+$$
+
+$$
+Det_r(...)
+$$
+
+$$
+\downarrow
+$$
+
+$$
+Sat(K,r,\Gamma)
+$$
+
+and every transition is:
+
+* formally specified,
+* traceable,
+* reproducible,
+* independently reviewable.
+
+A formula that merely makes the computation possible is **not sufficient**.
+
+The phase must establish why the formula is justified.
+
+---
+
+# 10. Current Verdict
+
+MD-074 establishes:
+
+$$
+\boxed{
+\textbf{SAT OPERATIONAL CLOSURE: BLOCKED}
+}
+$$
+
+The blocker is not the existence of `Sat`.
+
+The blocker is the absence of sufficient operational semantics for:
+
+$$
+\boxed{
+\Gamma,\quad EC\text{-construction},\quad EvalReq,\quad Det_r.
+}
+$$
+
+MD-074 explicitly records these as the smallest next research inputs, but also states that they are **not yet authorized** and would constitute new theory construction rather than corpus recovery.
+
+---
+
+# 11. Governance Decision
+
+**Decision required from the responsible theory authority:**
+
+> **Authorize or reject construction of the missing semantic machinery required for operational `Sat`.**
+
+If authorized, EKS-48 opens a controlled **Theory Construction Phase**.
+
+If rejected, the project records:
+
+$$
+\boxed{
+\text{Historical Sat semantics are operationally underdetermined by the corpus.}
+}
+$$
+
+No implementation should proceed under either outcome until the decision is explicit.
+
+---
+
+**Status:** PROPOSED — NOT AUTHORIZED
+**Next gate:** Governance / theory-authorship decision
+**Implementation:** BLOCKED
+**Canonicalization:** BLOCKED
+**Historical reconstruction:** HARD STOP
+**New theory construction:** PENDING AUTHORIZATION

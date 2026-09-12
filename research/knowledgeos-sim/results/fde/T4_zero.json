@@ -1,0 +1,115 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "can Zero be determined from Standing alone?",
+ "standing_classes": {
+  "(True, False)": [
+   "PositiveEvidence",
+   "NotAssessed",
+   "Underdetermined",
+   "InsufficientEvidence",
+   "TheoryIncomplete"
+  ],
+  "(False, True)": [
+   "NegativeEvidence",
+   "SupersededEvidence"
+  ],
+  "(True, True)": [
+   "DirectContradiction",
+   "ConflictingSources",
+   "TemporalConflict",
+   "ContradictoryRules",
+   "ContradictoryObservations",
+   "ContradictoryInterpretations",
+   "ContextConflict"
+  ],
+  "(False, False)": [
+   "NoEvidence",
+   "Unobservable",
+   "ScopeExclusion",
+   "Absent"
+  ]
+ },
+ "standing_classes_with_multiple_boundaries": {
+  "(True, False)": [
+   [
+    "PositiveEvidence",
+    "Boundary(facet=None, condition=None)"
+   ],
+   [
+    "NotAssessed",
+    "Boundary(facet='evidence', condition='not-assessed')"
+   ],
+   [
+    "Underdetermined",
+    "Boundary(facet='evidence', condition='underdetermined')"
+   ],
+   [
+    "InsufficientEvidence",
+    "Boundary(facet='evidence', condition='insufficient-evidence')"
+   ],
+   [
+    "TheoryIncomplete",
+    "Boundary(facet='theory', condition='theory-incomplete')"
+   ]
+  ],
+  "(False, True)": [
+   [
+    "NegativeEvidence",
+    "Boundary(facet=None, condition=None)"
+   ],
+   [
+    "SupersededEvidence",
+    "Boundary(facet='evidence', condition='superseded')"
+   ]
+  ],
+  "(False, False)": [
+   [
+    "NoEvidence",
+    "Boundary(facet='observation', condition='unobserved')"
+   ],
+   [
+    "Unobservable",
+    "Boundary(facet='world', condition='unobservable')"
+   ],
+   [
+    "ScopeExclusion",
+    "Boundary(facet='scope', condition='out-of-scope')"
+   ],
+   [
+    "Absent",
+    "Boundary(facet='representation', condition='not-present')"
+   ]
+  ]
+ },
+ "zero_determinable_from_standing_alone": false,
+ "the_00_class": [
+  [
+   [
+    "NoEvidence",
+    "Boundary(facet='observation', condition='unobserved')"
+   ],
+   [
+    "Unobservable",
+    "Boundary(facet='world', condition='unobservable')"
+   ],
+   [
+    "ScopeExclusion",
+    "Boundary(facet='scope', condition='out-of-scope')"
+   ],
+   [
+    "Absent",
+    "Boundary(facet='representation', condition='not-present')"
+   ]
+  ]
+ ],
+ "conclusion": "(0,0) cannot say WHY there is no support. Standing therefore underdetermines Zero, and Zero must consume Boundary as well. FDE-like Standing != Boundary != Zero."
+}

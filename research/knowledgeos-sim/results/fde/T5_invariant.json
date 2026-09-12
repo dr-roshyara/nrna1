@@ -1,0 +1,52 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "which invariants hold under which representation?",
+ "results": {
+  "I1_Contr_ne_NoEvidence": {
+   "Classical": "not-representable",
+   "K3": "collapsed",
+   "FDE": "preserved",
+   "Structured[StructuredBoundary]": "preserved"
+  },
+  "I2_Contr_ne_Absent": {
+   "Classical": "not-representable",
+   "K3": "collapsed",
+   "FDE": "preserved",
+   "Structured[StructuredBoundary]": "preserved"
+  },
+  "I3_Contr_ne_NotAssessed": {
+   "Classical": "not-representable",
+   "K3": "collapsed",
+   "FDE": "preserved",
+   "Structured[StructuredBoundary]": "preserved"
+  },
+  "I4_Contr_ne_Insufficient": {
+   "Classical": "not-representable",
+   "K3": "collapsed",
+   "FDE": "preserved",
+   "Structured[StructuredBoundary]": "preserved"
+  },
+  "I5_Contr_ne_Unobservable": {
+   "Classical": "not-representable",
+   "K3": "collapsed",
+   "FDE": "preserved",
+   "Structured[StructuredBoundary]": "preserved"
+  },
+  "I11_Contr_ne_Satisfied_PROPOSED": {
+   "Classical": "not-representable",
+   "K3": "preserved",
+   "FDE": "preserved",
+   "Structured[StructuredBoundary]": "preserved"
+  }
+ },
+ "note": "I11 is PROPOSED and unratified. 'not-representable' is reported distinctly from 'preserved' -- a model that cannot express a situation has not satisfied an invariant about it."
+}

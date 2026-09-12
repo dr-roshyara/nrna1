@@ -1,0 +1,53 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "does any composition rule separate M3 from M4?",
+ "rules": {
+  "ignore": {
+   "token_sensitive": false,
+   "separates_m3_from_m4": false,
+   "witness": null
+  },
+  "strict": {
+   "token_sensitive": false,
+   "separates_m3_from_m4": false,
+   "witness": null
+  },
+  "absorbing": {
+   "token_sensitive": false,
+   "separates_m3_from_m4": false,
+   "witness": null
+  },
+  "belnap_blind": {
+   "token_sensitive": false,
+   "separates_m3_from_m4": false,
+   "witness": null
+  },
+  "belnap_designated": {
+   "token_sensitive": true,
+   "separates_m3_from_m4": true,
+   "witness": {
+    "pair": [
+     "chs",
+     "Chs"
+    ],
+    "m3": "U",
+    "m4": "C"
+   }
+  }
+ },
+ "token_blind_rules_separate": false,
+ "token_sensitive_rule_separates": true,
+ "test_is_non_vacuous": true,
+ "corpus_supplies_a_token_sensitive_rule": false,
+ "corpus_provenance": "Experiment G: the composition rule AND its level (requirement / evaluator / value) are both OPEN. No designated-element semantics for C appears in the corpus.",
+ "consequence": "M3 and M4 separate IFF the composition rule is token-sensitive.  The corpus supplies no such rule, and composition is itself OPEN.  So the fourth-value question is NOT independent: it is a COROLLARY of the composition question."
+}

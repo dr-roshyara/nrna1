@@ -1,0 +1,57 @@
+{
+ "baseline": {
+  "arm": "baseline",
+  "n": 10000,
+  "attributions": 3320,
+  "false_attributions": 390,
+  "knowledge_claims": 3320,
+  "false_knowledge_claims": 390,
+  "factivity_violation_rate": 0.11746987951807229,
+  "attribution_coverage": 0.332,
+  "decision_lane_functional_rate": 0.332
+ },
+ "R1": {
+  "arm": "R1",
+  "n": 10000,
+  "attributions": 3320,
+  "false_attributions": 390,
+  "knowledge_claims": 0,
+  "false_knowledge_claims": 0,
+  "factivity_violation_rate": null,
+  "attribution_coverage": 0.332,
+  "decision_lane_functional_rate": 0.332
+ },
+ "R2": {
+  "arm": "R2",
+  "n": 10000,
+  "attributions": 3320,
+  "false_attributions": 390,
+  "knowledge_claims": 0,
+  "false_knowledge_claims": 0,
+  "factivity_violation_rate": null,
+  "attribution_coverage": 0.332,
+  "decision_lane_functional_rate": 0.332
+ },
+ "R3": {
+  "arm": "R3",
+  "n": 10000,
+  "attributions": 1143,
+  "false_attributions": 135,
+  "knowledge_claims": 1143,
+  "false_knowledge_claims": 135,
+  "factivity_violation_rate": 0.11811023622047244,
+  "attribution_coverage": 0.1143,
+  "decision_lane_functional_rate": 0.1143
+ },
+ "R3prime": {
+  "arm": "R3prime",
+  "n": 10000,
+  "attributions": 3497,
+  "false_attributions": 0,
+  "knowledge_claims": 3497,
+  "false_knowledge_claims": 0,
+  "factivity_violation_rate": 0.0,
+  "attribution_coverage": 0.3497,
+  "decision_lane_functional_rate": 0.3497
+ }
+}

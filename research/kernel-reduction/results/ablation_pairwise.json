@@ -1,0 +1,2372 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "pairs": {
+  "Challenge+DetectGap": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [],
+   "lost_pair": [
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Determine": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C12",
+    "C23"
+   ],
+   "lost_pair": [
+    "C12",
+    "C23",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Discriminate": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [],
+   "lost_pair": [
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Hypothesize": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_pair": [
+    "C19",
+    "C20",
+    "C6",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Infer": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C7"
+   ],
+   "lost_pair": [
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Interpret": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Observe": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Qualify": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C25",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Relate": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C22",
+    "C4",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Represent": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C3",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Revise": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C24",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Select": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Challenge+Validate": {
+   "lost_a": [
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Determine": {
+   "lost_a": [],
+   "lost_b": [
+    "C12",
+    "C23"
+   ],
+   "lost_pair": [
+    "C12",
+    "C23",
+    "C8"
+   ],
+   "synergistic_loss": [
+    "C8"
+   ],
+   "interaction": true
+  },
+  "DetectGap+Discriminate": {
+   "lost_a": [],
+   "lost_b": [],
+   "lost_pair": [
+    "C19",
+    "C20",
+    "C5",
+    "C8"
+   ],
+   "synergistic_loss": [
+    "C19",
+    "C20",
+    "C5",
+    "C8"
+   ],
+   "interaction": true
+  },
+  "DetectGap+Hypothesize": {
+   "lost_a": [],
+   "lost_b": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_pair": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Infer": {
+   "lost_a": [],
+   "lost_b": [
+    "C7"
+   ],
+   "lost_pair": [
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Interpret": {
+   "lost_a": [],
+   "lost_b": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Observe": {
+   "lost_a": [],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Qualify": {
+   "lost_a": [],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Relate": {
+   "lost_a": [],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C22",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Represent": {
+   "lost_a": [],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Revise": {
+   "lost_a": [],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Select": {
+   "lost_a": [],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "DetectGap+Validate": {
+   "lost_a": [],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Discriminate": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [],
+   "lost_pair": [
+    "C12",
+    "C23"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Hypothesize": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_pair": [
+    "C12",
+    "C19",
+    "C20",
+    "C23",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Infer": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C7"
+   ],
+   "lost_pair": [
+    "C12",
+    "C23",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Interpret": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C10",
+    "C12",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Observe": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C12",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Qualify": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C12",
+    "C16",
+    "C17",
+    "C23",
+    "C25"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Relate": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C12",
+    "C22",
+    "C23",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Represent": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C12",
+    "C23",
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Revise": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C12",
+    "C15",
+    "C23",
+    "C24"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Select": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C12",
+    "C13",
+    "C23"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Determine+Validate": {
+   "lost_a": [
+    "C12",
+    "C23"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C12",
+    "C16",
+    "C17",
+    "C23"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Hypothesize": {
+   "lost_a": [],
+   "lost_b": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_pair": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Infer": {
+   "lost_a": [],
+   "lost_b": [
+    "C7"
+   ],
+   "lost_pair": [
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Interpret": {
+   "lost_a": [],
+   "lost_b": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Observe": {
+   "lost_a": [],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Qualify": {
+   "lost_a": [],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Relate": {
+   "lost_a": [],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C22",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Represent": {
+   "lost_a": [],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Revise": {
+   "lost_a": [],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Select": {
+   "lost_a": [],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Discriminate+Validate": {
+   "lost_a": [],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Infer": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C7"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [
+    "C10",
+    "C16",
+    "C17",
+    "C9"
+   ],
+   "interaction": true
+  },
+  "Hypothesize+Interpret": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Observe": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Qualify": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C25",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Relate": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C19",
+    "C20",
+    "C22",
+    "C4",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Represent": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C3",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [
+    "C10",
+    "C16",
+    "C17",
+    "C7",
+    "C9"
+   ],
+   "interaction": true
+  },
+  "Hypothesize+Revise": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C19",
+    "C20",
+    "C24",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Select": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13",
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Hypothesize+Validate": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Interpret": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Observe": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Qualify": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C25",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Relate": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C22",
+    "C4",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Represent": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C3",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Revise": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C24",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Select": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Infer+Validate": {
+   "lost_a": [
+    "C7"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C7"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Observe": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Qualify": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Relate": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Represent": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Revise": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C10",
+    "C11",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Select": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C10",
+    "C13",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Interpret+Validate": {
+   "lost_a": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Observe+Qualify": {
+   "lost_a": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Observe+Relate": {
+   "lost_a": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Observe+Represent": {
+   "lost_a": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Observe+Revise": {
+   "lost_a": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C11",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Observe+Select": {
+   "lost_a": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C13",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Observe+Validate": {
+   "lost_a": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Qualify+Relate": {
+   "lost_a": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_b": [
+    "C22",
+    "C4"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C22",
+    "C25",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Qualify+Represent": {
+   "lost_a": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C25",
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Qualify+Revise": {
+   "lost_a": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C10",
+    "C11",
+    "C15",
+    "C16",
+    "C17",
+    "C24",
+    "C25"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Qualify+Select": {
+   "lost_a": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C10",
+    "C13",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Qualify+Validate": {
+   "lost_a": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Relate+Represent": {
+   "lost_a": [
+    "C22",
+    "C4"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C22",
+    "C3",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Relate+Revise": {
+   "lost_a": [
+    "C22",
+    "C4"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C22",
+    "C24",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Relate+Select": {
+   "lost_a": [
+    "C22",
+    "C4"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13",
+    "C22",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Relate+Validate": {
+   "lost_a": [
+    "C22",
+    "C4"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C22",
+    "C4"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Represent+Revise": {
+   "lost_a": [
+    "C3"
+   ],
+   "lost_b": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_pair": [
+    "C11",
+    "C15",
+    "C24",
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Represent+Select": {
+   "lost_a": [
+    "C3"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C13",
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Represent+Validate": {
+   "lost_a": [
+    "C3"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C3"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Revise+Select": {
+   "lost_a": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_b": [
+    "C13"
+   ],
+   "lost_pair": [
+    "C11",
+    "C13",
+    "C15",
+    "C24"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Revise+Validate": {
+   "lost_a": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C11",
+    "C15",
+    "C16",
+    "C17",
+    "C24"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  },
+  "Select+Validate": {
+   "lost_a": [
+    "C13"
+   ],
+   "lost_b": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "lost_pair": [
+    "C10",
+    "C13",
+    "C16",
+    "C17"
+   ],
+   "synergistic_loss": [],
+   "interaction": false
+  }
+ },
+ "interacting": {
+  "DetectGap+Determine": {
+   "lost_a": [],
+   "lost_b": [
+    "C12",
+    "C23"
+   ],
+   "lost_pair": [
+    "C12",
+    "C23",
+    "C8"
+   ],
+   "synergistic_loss": [
+    "C8"
+   ],
+   "interaction": true
+  },
+  "DetectGap+Discriminate": {
+   "lost_a": [],
+   "lost_b": [],
+   "lost_pair": [
+    "C19",
+    "C20",
+    "C5",
+    "C8"
+   ],
+   "synergistic_loss": [
+    "C19",
+    "C20",
+    "C5",
+    "C8"
+   ],
+   "interaction": true
+  },
+  "Hypothesize+Infer": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C7"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [
+    "C10",
+    "C16",
+    "C17",
+    "C9"
+   ],
+   "interaction": true
+  },
+  "Hypothesize+Represent": {
+   "lost_a": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "lost_b": [
+    "C3"
+   ],
+   "lost_pair": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C3",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [
+    "C10",
+    "C16",
+    "C17",
+    "C7",
+    "C9"
+   ],
+   "interaction": true
+  }
+ },
+ "triples": {
+  "DetectGap+Discriminate+Determine": {
+   "lost_triple": [
+    "C12",
+    "C19",
+    "C20",
+    "C23",
+    "C5",
+    "C8"
+   ],
+   "synergistic_loss": [
+    "C19",
+    "C20",
+    "C5",
+    "C8"
+   ]
+  },
+  "Hypothesize+Infer+Represent": {
+   "lost_triple": [
+    "C10",
+    "C16",
+    "C17",
+    "C19",
+    "C20",
+    "C3",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "synergistic_loss": [
+    "C10",
+    "C16",
+    "C17",
+    "C9"
+   ]
+  }
+ }
+}

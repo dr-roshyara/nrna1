@@ -1,0 +1,519 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02",
+  "model": "KnowledgeOS-Simulation-v1.1",
+  "theory": "KnowledgeOS Theory v1.0 (DEF-1..33, AX-1..7, THM-1..10, I1..I9) + v1.1 correction",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "seeds_random": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000
+ },
+ "smuggling": {
+  "forbidden_reads": [],
+  "capability_introducers": {
+   "world-contact": [
+    "Acquire"
+   ],
+   "evidential-admission": [
+    "Qualify"
+   ],
+   "meaning-assignment": [
+    "Interpret"
+   ],
+   "hypothesis-space": [
+    "OpenHypothesisSpace"
+   ],
+   "target-relative-weight": [
+    "Assess"
+   ],
+   "set-valued-selection": [
+    "Determine"
+   ],
+   "attribution": [
+    "knowledge_attribution"
+   ],
+   "elimination": [
+    "Reject"
+   ],
+   "state-commit": [
+    "Revise",
+    "Supersede"
+   ]
+  },
+  "scenario_helpers": [
+   "World",
+   "Channel",
+   "EpistemicState",
+   "knowledge_attribution",
+   "unknown_kind",
+   "Inquiry",
+   "Requirement",
+   "EpistemicStandard",
+   "EpistemicContract",
+   "Gap",
+   "Zero",
+   "Adequate",
+   "ideal_state"
+  ],
+  "helper_introduces_capability": [],
+  "note": "Only kos/transitions.py mutates E; scenarios orchestrate, the lexicon and admission policy are DECLARED inputs, not capabilities."
+ },
+ "helper_writes": [
+  {
+   "fn": "kos.scenarios.scenario_C",
+   "stmt": "E.observations[oid][\"token\"] =",
+   "issue": "non-transition WRITES epistemic state"
+  },
+  {
+   "fn": "kos.scenarios.scenario_F",
+   "stmt": "E.observations[oid][\"token\"] =",
+   "issue": "non-transition WRITES epistemic state"
+  },
+  {
+   "fn": "kos.scenarios.scenario_G",
+   "stmt": "E.observations[o1][\"token\"] =",
+   "issue": "non-transition WRITES epistemic state"
+  },
+  {
+   "fn": "kos.scenarios.scenario_G",
+   "stmt": "E.observations[o2][\"token\"] =",
+   "issue": "non-transition WRITES epistemic state"
+  }
+ ],
+ "circularity": [
+  {
+   "id": "CIRC-1",
+   "a": "Knowledge defined via Truth (DEF-1 factivity)",
+   "b": "Truth inferred from Knowledge",
+   "circular": false,
+   "finding": "NOT circular in this implementation: truth exists ONLY in World and no agent transition reads it. This is precisely WHY factivity fails \u2014 the non-circularity and the impossibility are the same fact.",
+   "grounding": "World.truth is exogenous; the evaluator alone reads it."
+  },
+  {
+   "id": "CIRC-2",
+   "a": "Zero defined via Gap (DEF-22)",
+   "b": "Gap defined via Zero",
+   "circular": false,
+   "finding": "One-directional: Gap is primitive (unsatisfied requirements), Zero := (\u0394 = \u2205).",
+   "grounding": "Sat(K,r) is defined per requirement kind, independently of Zero."
+  },
+  {
+   "id": "CIRC-3",
+   "a": "Adequacy defined via Satisfaction (DEF-20)",
+   "b": "Satisfaction defined via Adequacy",
+   "circular": false,
+   "finding": "Not circular, but Adequate and Zero are EXTENSIONALLY IDENTICAL in v1.0/v1.1: both reduce to \u0394 = \u2205. One of the two definitions does no independent work. REDUNDANCY, not circularity.",
+   "grounding": "DEF-20 and DEF-22 collapse; recommend one be derived from the other."
+  },
+  {
+   "id": "CIRC-4",
+   "a": "Determination defined via Knowledge",
+   "b": "Knowledge defined via Determination (\u0393)",
+   "circular": false,
+   "finding": "One-directional: Determine reads assessments and the standard only; \u0393 reads determinations. No back-edge.",
+   "grounding": "Determine() never consults E.attributions."
+  },
+  {
+   "id": "CIRC-5",
+   "a": "Semantic equivalence defined via behaviour",
+   "b": "Behaviour defined via semantic equivalence",
+   "circular": true,
+   "finding": "PARTLY CIRCULAR AND UNRESOLVED. P7 compares behaviour under a semantic projection chosen by the experimenter. A different projection gives a different equivalence. The theory supplies no independent grounding for which projection is THE semantic one.",
+   "grounding": "NONE AVAILABLE \u2014 this is the open problem the previous experiment reached as 'what is the correct semantic granularity'."
+  }
+ ],
+ "types": {
+  "n_types": 26,
+  "notation_collisions": {
+   "P": [
+    "Proposition (DEF-5)",
+    "Probability (DEF-18)",
+    "Preservation vector \ud835\udcab (\u00a766)"
+   ],
+   "H": [
+    "Hypothesis",
+    "History (DEF-25)",
+    "HypothesisSpace H_Q"
+   ],
+   "E": [
+    "Evidence (DEF-7)",
+    "EpistemicState E_t (v1.1)",
+    "Expectation"
+   ],
+   "K": [
+    "KnowledgeState K_t (DEF-11)",
+    "Kernel \ud835\udca6 (DEF-32)",
+    "Knowledge Space \ud835\udd42"
+   ],
+   "S": [
+    "EpistemicStandard S^epi",
+    "Support axis of \u03a3",
+    "SemDomain"
+   ],
+   "C": [
+    "Context",
+    "Conflict axis of \u03a3",
+    "semantic core \ud835\udc9e (DEF)"
+   ],
+   "R": [
+    "Requirement",
+    "Resolution axis of \u03a3",
+    "Representation space"
+   ],
+   "M": [
+    "Model M_t",
+    "Measure",
+    "Mapping"
+   ],
+   "I": [
+    "IdealState I_t",
+    "Invariant I1..I9",
+    "Information/Mutual information"
+   ],
+   "Q": [
+    "Inquiry Q",
+    "Quotient"
+   ]
+  },
+  "worst": [
+   "P",
+   [
+    "Proposition (DEF-5)",
+    "Probability (DEF-18)",
+    "Preservation vector \ud835\udcab (\u00a766)"
+   ]
+  ]
+ },
+ "type_table": {
+  "RealityState": {
+   "inputs": [
+    "-"
+   ],
+   "carrier": "world",
+   "forbidden": [
+    "Observation"
+   ]
+  },
+  "Observation": {
+   "inputs": [
+    "RealityState",
+    "Channel"
+   ],
+   "carrier": "percept",
+   "forbidden": [
+    "RealityState",
+    "Evidence"
+   ]
+  },
+  "Information": {
+   "inputs": [
+    "Observation"
+   ],
+   "carrier": "signal content",
+   "forbidden": [
+    "Evidence"
+   ]
+  },
+  "Evidence": {
+   "inputs": [
+    "Observation",
+    "Policy"
+   ],
+   "carrier": "admitted datum",
+   "forbidden": [
+    "Observation",
+    "Interpretation"
+   ]
+  },
+  "Interpretation": {
+   "inputs": [
+    "Evidence",
+    "Context"
+   ],
+   "carrier": "semantic content",
+   "forbidden": [
+    "Evidence",
+    "Hypothesis"
+   ]
+  },
+  "Claim": {
+   "inputs": [
+    "Interpretation"
+   ],
+   "carrier": "asserted content",
+   "forbidden": [
+    "Knowledge"
+   ]
+  },
+  "Hypothesis": {
+   "inputs": [
+    "Claim",
+    "HypothesisSpace"
+   ],
+   "carrier": "candidate",
+   "forbidden": [
+    "Interpretation",
+    "Determination"
+   ]
+  },
+  "HypothesisSpace": {
+   "inputs": [
+    "Inquiry"
+   ],
+   "carrier": "H_Q",
+   "forbidden": [
+    "Determination"
+   ]
+  },
+  "EvidenceAssessment": {
+   "inputs": [
+    "Evidence",
+    "Hypothesis",
+    "HypothesisSpace",
+    "Model",
+    "EpistemicStandard",
+    "Context"
+   ],
+   "carrier": "weight/verdict",
+   "forbidden": [
+    "Determination"
+   ]
+  },
+  "EpistemicStandard": {
+   "inputs": [
+    "-"
+   ],
+   "carrier": "S^epi",
+   "forbidden": [
+    "Authorization",
+    "Policy",
+    "RealityState"
+   ]
+  },
+  "Model": {
+   "inputs": [
+    "-"
+   ],
+   "carrier": "(Struct,Assump,Param)",
+   "forbidden": [
+    "RealityState"
+   ]
+  },
+  "Determination": {
+   "inputs": [
+    "EvidenceAssessment",
+    "HypothesisSpace"
+   ],
+   "carrier": "A_t \u2286 H_Q",
+   "forbidden": [
+    "Knowledge",
+    "Decision"
+   ]
+  },
+  "KnowledgeAttribution": {
+   "inputs": [
+    "Determination",
+    "EpistemicContract"
+   ],
+   "carrier": "Knows(a,p,c,t)",
+   "forbidden": [
+    "Determination",
+    "EpistemicState"
+   ]
+  },
+  "EpistemicState": {
+   "inputs": [
+    "*"
+   ],
+   "carrier": "E_t",
+   "forbidden": [
+    "KnowledgeState"
+   ]
+  },
+  "KnowledgeState": {
+   "inputs": [
+    "EpistemicState",
+    "Inquiry",
+    "Context",
+    "EpistemicContract"
+   ],
+   "carrier": "K_t = \u0393(E_t,\u2026)",
+   "forbidden": [
+    "EpistemicState",
+    "IdealState"
+   ]
+  },
+  "Inquiry": {
+   "inputs": [
+    "-"
+   ],
+   "carrier": "Q=(Target,Purpose,Context,Req,Constraints)",
+   "forbidden": [
+    "Decision"
+   ]
+  },
+  "IdealState": {
+   "inputs": [
+    "Inquiry",
+    "Context",
+    "EpistemicStandard",
+    "EpistemicContract"
+   ],
+   "carrier": "I_t",
+   "forbidden": [
+    "KnowledgeState",
+    "RealityState"
+   ]
+  },
+  "Requirement": {
+   "inputs": [
+    "Inquiry",
+    "EpistemicContract"
+   ],
+   "carrier": "r",
+   "forbidden": [
+    "Gap"
+   ]
+  },
+  "Gap": {
+   "inputs": [
+    "KnowledgeState",
+    "Requirement"
+   ],
+   "carrier": "\u0394_t",
+   "forbidden": [
+    "Zero",
+    "Innovation"
+   ]
+  },
+  "Zero": {
+   "inputs": [
+    "Gap"
+   ],
+   "carrier": "predicate",
+   "forbidden": [
+    "Gap",
+    "probability 0",
+    "certainty"
+   ]
+  },
+  "Proposal": {
+   "inputs": [
+    "KnowledgeState",
+    "Gap"
+   ],
+   "carrier": "proposed act",
+   "forbidden": [
+    "Decision"
+   ]
+  },
+  "Decision": {
+   "inputs": [
+    "Proposal"
+   ],
+   "carrier": "chosen act",
+   "forbidden": [
+    "Determination",
+    "Authorization"
+   ]
+  },
+  "Authorization": {
+   "inputs": [
+    "Decision",
+    "Governance"
+   ],
+   "carrier": "permission",
+   "forbidden": [
+    "Decision",
+    "Action",
+    "EpistemicStandard"
+   ]
+  },
+  "Action": {
+   "inputs": [
+    "Authorization"
+   ],
+   "carrier": "world effect",
+   "forbidden": [
+    "Authorization"
+   ]
+  },
+  "History": {
+   "inputs": [
+    "*"
+   ],
+   "carrier": "append-only log",
+   "forbidden": [
+    "KnowledgeState"
+   ]
+  },
+  "Identity": {
+   "inputs": [
+    "-"
+   ],
+   "carrier": "stable id",
+   "forbidden": [
+    "state equality"
+   ]
+  }
+ },
+ "notation_collisions": {
+  "P": [
+   "Proposition (DEF-5)",
+   "Probability (DEF-18)",
+   "Preservation vector \ud835\udcab (\u00a766)"
+  ],
+  "H": [
+   "Hypothesis",
+   "History (DEF-25)",
+   "HypothesisSpace H_Q"
+  ],
+  "E": [
+   "Evidence (DEF-7)",
+   "EpistemicState E_t (v1.1)",
+   "Expectation"
+  ],
+  "K": [
+   "KnowledgeState K_t (DEF-11)",
+   "Kernel \ud835\udca6 (DEF-32)",
+   "Knowledge Space \ud835\udd42"
+  ],
+  "S": [
+   "EpistemicStandard S^epi",
+   "Support axis of \u03a3",
+   "SemDomain"
+  ],
+  "C": [
+   "Context",
+   "Conflict axis of \u03a3",
+   "semantic core \ud835\udc9e (DEF)"
+  ],
+  "R": [
+   "Requirement",
+   "Resolution axis of \u03a3",
+   "Representation space"
+  ],
+  "M": [
+   "Model M_t",
+   "Measure",
+   "Mapping"
+  ],
+  "I": [
+   "IdealState I_t",
+   "Invariant I1..I9",
+   "Information/Mutual information"
+  ],
+  "Q": [
+   "Inquiry Q",
+   "Quotient"
+  ]
+ }
+}

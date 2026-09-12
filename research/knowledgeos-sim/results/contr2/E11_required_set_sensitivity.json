@@ -1,0 +1,45 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "how sensitive is the minimum domain to the required set?",
+ "sets": {
+  "S1_protocol_minimum": {
+   "n_edges": 12,
+   "n_nodes": 11,
+   "chromatic_number": 3,
+   "D_structured_adequate": true
+  },
+  "S2_plus_unknown_family_mutually_distinct": {
+   "n_edges": 48,
+   "n_nodes": 12,
+   "chromatic_number": 9,
+   "D_structured_adequate": true
+  },
+  "S3_plus_contradiction_family_mutually_distinct": {
+   "n_edges": 76,
+   "n_nodes": 19,
+   "chromatic_number": 9,
+   "D_structured_adequate": true
+  },
+  "S4_all_conditions_mutually_distinct": {
+   "n_edges": 210,
+   "n_nodes": 21,
+   "chromatic_number": 21,
+   "D_structured_adequate": true
+  }
+ },
+ "range": [
+  3,
+  21
+ ],
+ "interpretation": "the 'minimum evaluation domain' is NOT a property of contradiction. It is a function of which distinctions the programme declares required -- which is a MODELLING DECISION the protocol has not fully made."
+}

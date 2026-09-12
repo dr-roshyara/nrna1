@@ -1,0 +1,461 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "addendum": "18-audit-response",
+  "date": "2026-09-01"
+ },
+ "representations": [
+  "V0",
+  "V1",
+  "V2",
+  "V3",
+  "V4",
+  "V5",
+  "V6",
+  "V7",
+  "V8",
+  "V9",
+  "V11",
+  "V12"
+ ],
+ "grid": {
+  "Observe": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "Interpret": [
+   ".",
+   "D",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D"
+  ],
+  "Represent": [
+   ".",
+   "D",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D",
+   "D"
+  ],
+  "Relate": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "Discriminate": [
+   "D",
+   "D",
+   "D",
+   "D",
+   ".",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D"
+  ],
+  "Hypothesize": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D",
+   ".",
+   "D"
+  ],
+  "Infer": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "DetectGap": [
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D",
+   "D"
+  ],
+  "Challenge": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D",
+   ".",
+   ".",
+   "D"
+  ],
+  "Validate": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D",
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "Revise": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "."
+  ],
+  "Determine": [
+   ".",
+   ".",
+   ".",
+   "D",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D"
+  ],
+  "Select": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "D"
+  ],
+  "Qualify": [
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   ".",
+   "X",
+   ".",
+   ".",
+   ".",
+   "."
+  ]
+ },
+ "per_variant": {
+  "V0": {
+   "desc": "baseline model as declared in 04-operator-contracts",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V1": {
+   "desc": "meaning-assignment and symbolic-encoding are ONE atom",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Interpret",
+    "Represent",
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V2": {
+   "desc": "Infer may act on SemanticContent, not only Representation",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V3": {
+   "desc": "closure-judgment is NOT primitive: adequacy = difference-decision over NormDelta",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap",
+    "Determine"
+   ]
+  },
+  "V4": {
+   "desc": "DetectGap's difference-decision is SCOPED to NormDelta (not a general power)",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "DetectGap"
+   ]
+  },
+  "V5": {
+   "desc": "preference-over-actions is NOT primitive: choice = difference-decision + Objective",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap",
+    "Select"
+   ]
+  },
+  "V6": {
+   "desc": "a Verdict REQUIRES a surviving-defeater step (validation presupposes challenge)",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V7": {
+   "desc": "raw C0: no evidential-qualification operator at all",
+   "n_ops": 13,
+   "coverage": "21/25",
+   "lost": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "scenarios": "9/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap",
+    "Validate"
+   ]
+  },
+  "V8": {
+   "desc": "AUDIT S8: a Defeater is a rival Hypothesis discriminated against a Claim (Challenge removed from the model, not absorbed)",
+   "n_ops": 13,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V9": {
+   "desc": "AUDIT S26: a Hypothesis is a Representation related to an existing one (Hypothesize removed from the model)",
+   "n_ops": 13,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V11": {
+   "desc": "AUDIT S24: `Representation` is not the private product of one operator - any structuring power yields it",
+   "n_ops": 14,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Represent",
+    "Discriminate",
+    "DetectGap"
+   ]
+  },
+  "V12": {
+   "desc": "AUDIT MAXIMAL: every audit reduction hypothesis granted at once (V1 + V3 + V5 + V8 + V9 + V11)",
+   "n_ops": 12,
+   "coverage": "25/25",
+   "lost": [],
+   "scenarios": "16/16",
+   "derivable": [
+    "Interpret",
+    "Represent",
+    "Discriminate",
+    "DetectGap",
+    "Determine",
+    "Select"
+   ]
+  }
+ },
+ "custody_I9": {
+  "V0": [
+   "Challenge"
+  ],
+  "V1": [
+   "Challenge"
+  ],
+  "V2": [
+   "Challenge"
+  ],
+  "V3": [
+   "Challenge"
+  ],
+  "V4": [
+   "Challenge"
+  ],
+  "V5": [
+   "Challenge"
+  ],
+  "V6": [],
+  "V7": [],
+  "V8": [
+   "Hypothesize",
+   "Infer"
+  ],
+  "V9": [
+   "Challenge"
+  ],
+  "V11": [
+   "Challenge"
+  ],
+  "V12": [
+   "Relate",
+   "Infer"
+  ]
+ },
+ "derivability_count": {
+  "Observe": 0,
+  "Interpret": 2,
+  "Represent": 3,
+  "Relate": 0,
+  "Discriminate": 11,
+  "Hypothesize": 2,
+  "Infer": 0,
+  "DetectGap": 12,
+  "Challenge": 2,
+  "Validate": 1,
+  "Revise": 0,
+  "Determine": 2,
+  "Select": 2,
+  "Qualify": 0
+ },
+ "v12_minimal_kernels": [
+  [
+   "DetectGap",
+   "Infer",
+   "Interpret",
+   "Observe",
+   "Qualify",
+   "Relate",
+   "Revise",
+   "Validate"
+  ],
+  [
+   "Determine",
+   "Infer",
+   "Interpret",
+   "Observe",
+   "Qualify",
+   "Relate",
+   "Revise",
+   "Validate"
+  ],
+  [
+   "DetectGap",
+   "Infer",
+   "Observe",
+   "Qualify",
+   "Relate",
+   "Represent",
+   "Revise",
+   "Validate"
+  ],
+  [
+   "Determine",
+   "Infer",
+   "Observe",
+   "Qualify",
+   "Relate",
+   "Represent",
+   "Revise",
+   "Validate"
+  ]
+ ]
+}

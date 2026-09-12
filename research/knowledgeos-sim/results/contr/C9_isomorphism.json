@@ -1,0 +1,26 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "theory": "v1.2 (unchanged)",
+  "factivity": "DECIDED R1: K_t -> A_t",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "are M3 and M4 the same model under relabeling?",
+ "relabeling": {
+  "values": {
+   "UNDEFINED": "C"
+  },
+  "reasons": {
+   "CONTRADICTORY_INPUT": "CONTRADICTION"
+  }
+ },
+ "cases_checked": 8,
+ "commutation_failures": [],
+ "isomorphic_as_value_assignments": true,
+ "relabeling_is_injective": true,
+ "caveat": "isomorphic as ASSIGNMENTS does not mean equivalent for all purposes -- a genuine fourth value earns its keep in the COMPOSITION algebra, not in the assignment.  See C10."
+}

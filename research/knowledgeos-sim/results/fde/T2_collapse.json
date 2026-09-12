@@ -1,0 +1,118 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "question": "where does each representation merge scenarios?",
+ "note": "over ALL scenario pairs, not only required ones",
+ "models": {
+  "Classical": {
+   "n_distinct_representations": 3,
+   "n_scenarios": 18,
+   "merged_classes": {
+    "('P',)": [
+     "PositiveEvidence",
+     "NotAssessed",
+     "Underdetermined",
+     "InsufficientEvidence",
+     "TheoryIncomplete"
+    ],
+    "('\u00acP',)": [
+     "NegativeEvidence",
+     "SupersededEvidence"
+    ],
+    "\u00abnot-representable\u00bb": [
+     "DirectContradiction",
+     "NoEvidence",
+     "Unobservable",
+     "ConflictingSources",
+     "ScopeExclusion",
+     "TemporalConflict",
+     "ContradictoryRules",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "Absent",
+     "ContextConflict"
+    ]
+   }
+  },
+  "K3": {
+   "n_distinct_representations": 3,
+   "n_scenarios": 18,
+   "merged_classes": {
+    "('F',)": [
+     "NegativeEvidence",
+     "SupersededEvidence"
+    ],
+    "('U',)": [
+     "DirectContradiction",
+     "NoEvidence",
+     "NotAssessed",
+     "Unobservable",
+     "Underdetermined",
+     "ConflictingSources",
+     "ScopeExclusion",
+     "TemporalConflict",
+     "ContradictoryRules",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "InsufficientEvidence",
+     "TheoryIncomplete",
+     "Absent",
+     "ContextConflict"
+    ]
+   }
+  },
+  "FDE": {
+   "n_distinct_representations": 4,
+   "n_scenarios": 18,
+   "merged_classes": {
+    "(True, False)": [
+     "PositiveEvidence",
+     "NotAssessed",
+     "Underdetermined",
+     "InsufficientEvidence",
+     "TheoryIncomplete"
+    ],
+    "(False, True)": [
+     "NegativeEvidence",
+     "SupersededEvidence"
+    ],
+    "(True, True)": [
+     "DirectContradiction",
+     "ConflictingSources",
+     "TemporalConflict",
+     "ContradictoryRules",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations",
+     "ContextConflict"
+    ],
+    "(False, False)": [
+     "NoEvidence",
+     "Unobservable",
+     "ScopeExclusion",
+     "Absent"
+    ]
+   }
+  },
+  "Structured[StructuredBoundary]": {
+   "n_distinct_representations": 14,
+   "n_scenarios": 18,
+   "merged_classes": {
+    "((True, True), (None, None), ('C1',), ('S1',))": [
+     "DirectContradiction",
+     "TemporalConflict",
+     "ContradictoryRules",
+     "ContradictoryObservations",
+     "ContradictoryInterpretations"
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,51 @@
+[
+ {
+  "removed": "DetectGap",
+  "absorber": "Validate",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ },
+ {
+  "removed": "Challenge",
+  "absorber": "Validate",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ },
+ {
+  "removed": "Determine",
+  "absorber": "Infer",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ },
+ {
+  "removed": "Select",
+  "absorber": "Determine",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ },
+ {
+  "removed": "Interpret",
+  "absorber": "Represent",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ },
+ {
+  "removed": "Qualify",
+  "absorber": "Observe",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ },
+ {
+  "removed": "Hypothesize",
+  "absorber": "Infer",
+  "restores_full_coverage": true,
+  "lost": [],
+  "smuggling": true
+ }
+]

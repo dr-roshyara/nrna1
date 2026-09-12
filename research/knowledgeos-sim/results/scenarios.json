@@ -1,0 +1,202 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02",
+  "model": "KnowledgeOS-Simulation-v1.1",
+  "theory": "KnowledgeOS Theory v1.0 (DEF-1..33, AX-1..7, THM-1..10, I1..I9) + v1.1 correction",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "seeds_random": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000
+ },
+ "scenarios": {
+  "A": {
+   "expect": "unique determination, attributed, K != raw observation",
+   "determinations": {
+    "os": {
+     "status": "unique",
+     "A": [
+      "RHEL9.8"
+     ],
+     "standard_met": true
+    }
+   },
+   "K": {
+    "os": {
+     "status": "unique",
+     "attributed": true,
+     "value": "RHEL9.8"
+    }
+   },
+   "unknown": null
+  },
+  "B": {
+   "expect": "cannot-determine, Zero=false, Gap nonempty, nothing invented",
+   "determinations": {
+    "reachable": {
+     "status": "cannot-determine",
+     "A": [],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "reachable": {
+     "status": "cannot-determine",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": "UNOBSERVABLE"
+  },
+  "C": {
+   "expect": "H1 rejected; A={RHEL9.8,RHEL8.6}; underdetermined; no attribution",
+   "determinations": {
+    "os": {
+     "status": "underdetermined",
+     "A": [
+      "RHEL9.8",
+      "RHEL8.6"
+     ],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "os": {
+     "status": "underdetermined",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": null
+  },
+  "D": {
+   "expect": "same evidence & reality; determination differs by standard",
+   "determinations": {},
+   "K": {},
+   "unknown": null
+  },
+  "E": {
+   "expect": "same K_t, different I_t, different \u0394_t",
+   "determinations": {
+    "os": {
+     "status": "unique",
+     "A": [
+      "RHEL9.8"
+     ],
+     "standard_met": true
+    }
+   },
+   "K": {
+    "os": {
+     "status": "unique",
+     "attributed": true,
+     "value": "RHEL9.8"
+    }
+   },
+   "unknown": null
+  },
+  "F": {
+   "expect": "conflict preserved: A={8081,8082}, no averaging, no attribution",
+   "determinations": {
+    "port": {
+     "status": "underdetermined",
+     "A": [
+      8081,
+      8082
+     ],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "port": {
+     "status": "underdetermined",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": null
+  },
+  "G": {
+   "expect": "dependence-aware run drops the copy; naive run double counts",
+   "determinations": {
+    "port": {
+     "status": "cannot-determine",
+     "A": [],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "port": {
+     "status": "cannot-determine",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": null
+  },
+  "H": {
+   "expect": "high fit under M1, causal_status not-identified, no causal knowledge",
+   "determinations": {
+    "x_causes_y": {
+     "status": "cannot-determine",
+     "A": [],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "x_causes_y": {
+     "status": "cannot-determine",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": null
+  },
+  "I": {
+   "expect": "K1 != K2, identity stable, K1 recoverable from history",
+   "determinations": {
+    "os": {
+     "status": "underdetermined",
+     "A": [
+      "RHEL9.8",
+      "RHEL8.6"
+     ],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "os": {
+     "status": "underdetermined",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": null
+  },
+  "J": {
+   "expect": "UNOBSERVABLE, not observed-false and not probability zero",
+   "determinations": {
+    "reachable": {
+     "status": "cannot-determine",
+     "A": [],
+     "standard_met": false
+    }
+   },
+   "K": {
+    "reachable": {
+     "status": "cannot-determine",
+     "attributed": false,
+     "value": null
+    }
+   },
+   "unknown": "UNOBSERVABLE"
+  }
+ }
+}

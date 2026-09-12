@@ -1,0 +1,508 @@
+{
+ "total": 37,
+ "by_kind": {
+  "NEGATED-IN-CONTEXT": 12,
+  "QUOTED-IN-CRITIQUE": 7,
+  "LIVE ASSERTION": 11,
+  "QUOTED-IN-AUDIT": 7
+ },
+ "live": [
+  {
+   "file": "phase_measure_theory/20260826-160024_the-human-knower-cleaner-formulation.md",
+   "line": 29,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya + S\u0101rathi",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-160657_what-we-have-solved-and-what-remains.md",
+   "line": 19,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya\\ capability + S\u0101rathi\\ role",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-160657_what-we-have-solved-and-what-remains.md",
+   "line": 811,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya + S\u0101rathi",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-161035_start-with-the-underlying-reality.md",
+   "line": 646,
+   "lhs": "KnowledgeOS",
+   "rhs": "(Sa\u00f1jaya,\\ Zero,\\ S\u0101rathi)",
+   "lenses": [
+    "Zero",
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-174215_knowledgeos-the-complete-mathematical-model.md",
+   "line": 2142,
+   "lhs": "KnowledgeOS",
+   "rhs": "S\u0101rathi/Sa\u00f1jaya capability**, and **human = Knower** into one mathematically coherent mode",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-174810_question-7-what-is-knowledge-itself.md",
+   "line": 317,
+   "lhs": "K_t",
+   "rhs": "\\text{The set of all } K_J \\text{ + Relationships + Evidence + History + Zero + Lord}",
+   "lenses": [
+    "Zero",
+    "Lord"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/external_research/gita_chapter4/20260829-003716_step_286_short-confirmation-gita-chapter-4-derivation.md",
+   "line": 17,
+   "lhs": "KnowledgeOS",
+   "rhs": "an Epistemic S\u0101rathi guiding the Knower through an evolving knowledge journey}}",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/knowledgeos_kernel/prompts/20260901-010553_step_286_purification-as-multi-dimensional-qualification-not-more-knowledge.md",
+   "line": 598,
+   "lhs": "Kernel",
+   "rhs": "Mind** becomes a computationally interpretable model in which **Buddhi chooses epistemic o",
+   "lenses": [
+    "Buddhi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/dimension-registry.md",
+   "line": 2695,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sanjaya-capability + Sarathi-capability**, closing into a full",
+   "lenses": [
+    "Sarathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0436.md",
+   "line": 29,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya-capability + S\u0101rathi-capability**, closing into a full",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0436.md",
+   "line": 36,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya-capability+S\u0101rathi-capability closed-loop architecture |",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  }
+ ],
+ "all": [
+  {
+   "file": "phase_measure_theory/20260826-151225_rigorous-analysis-of-the-sanjaya-layer.md",
+   "line": 1157,
+   "lhs": "KnowledgeOS",
+   "rhs": "Krishna.",
+   "lenses": [
+    "Krishna"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "phase_measure_theory/20260826-151244_second-correction-sarathi-does-not-own-the-frame.md",
+   "line": 446,
+   "lhs": "KnowledgeOS",
+   "rhs": "Krishna.",
+   "lenses": [
+    "Krishna"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "phase_measure_theory/20260826-160024_the-human-knower-cleaner-formulation.md",
+   "line": 29,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya + S\u0101rathi",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-160657_what-we-have-solved-and-what-remains.md",
+   "line": 19,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya\\ capability + S\u0101rathi\\ role",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-160657_what-we-have-solved-and-what-remains.md",
+   "line": 811,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya + S\u0101rathi",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-161035_start-with-the-underlying-reality.md",
+   "line": 646,
+   "lhs": "KnowledgeOS",
+   "rhs": "(Sa\u00f1jaya,\\ Zero,\\ S\u0101rathi)",
+   "lenses": [
+    "Zero",
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-174215_knowledgeos-the-complete-mathematical-model.md",
+   "line": 2142,
+   "lhs": "KnowledgeOS",
+   "rhs": "S\u0101rathi/Sa\u00f1jaya capability**, and **human = Knower** into one mathematically coherent mode",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260826-174810_question-7-what-is-knowledge-itself.md",
+   "line": 317,
+   "lhs": "K_t",
+   "rhs": "\\text{The set of all } K_J \\text{ + Relationships + Evidence + History + Zero + Lord}",
+   "lenses": [
+    "Zero",
+    "Lord"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/20260829-003330_step_155-156_recovery-of-earlier-step-155-156-material-sarathi-formulation.md",
+   "line": 59,
+   "lhs": "KnowledgeOS",
+   "rhs": "S\u0101rathi \u2192 guide the epistemic journey \u2192 expose Zero \u2192 challenge insufficient objectives \u2192 ",
+   "lenses": [
+    "Zero",
+    "S\u0101rathi"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "phase_measure_theory/20260829-015928_step_183-pre_architecture-and-gita-alignment-review-of-steps-1-182.md",
+   "line": 673,
+   "lhs": "KnowledgeOS",
+   "rhs": "Krishna.",
+   "lenses": [
+    "Krishna"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "phase_measure_theory/external_research/gita_chapter4/20260829-003716_step_286_short-confirmation-gita-chapter-4-derivation.md",
+   "line": 17,
+   "lhs": "KnowledgeOS",
+   "rhs": "an Epistemic S\u0101rathi guiding the Knower through an evolving knowledge journey}}",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/knowledgeos_kernel/prompts/20260901-010553_step_286_purification-as-multi-dimensional-qualification-not-more-knowledge.md",
+   "line": 598,
+   "lhs": "Kernel",
+   "rhs": "Mind** becomes a computationally interpretable model in which **Buddhi chooses epistemic o",
+   "lenses": [
+    "Buddhi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "phase_measure_theory/knowledgeos_kernel/prompts/20260901-021321_step_286_gita-lens-model-of-knowledgeos-synthesis-of-chapters-01-18.md",
+   "line": 271,
+   "lhs": "Kernel",
+   "rhs": "Buddhi** mistake.",
+   "lenses": [
+    "Buddhi"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B3-20260826-q-series.md",
+   "line": 8,
+   "lhs": "K_t",
+   "rhs": "(\ud835\udc9c,\u211b,\u2130,\u210b,\ud835\udcb5,\u2112)` \u2014 containing the exact Zero/Lord-inside-K error Q13's critique later attack",
+   "lenses": [
+    "Zero",
+    "Lord"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B2-20260826-early.md",
+   "line": 311,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya + S\u0101rathi`; `Sa\u00f1jaya = KnowledgeOS as Observer` (`Reality \u2192 Observation \u2192 Evidence",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B2-20260826-early.md",
+   "line": 314,
+   "lhs": "KnowledgeOS",
+   "rhs": "the system that operationalizes it via Sa\u00f1jaya + S\u0101rathi; invariant `Krishna \u2260 KnowledgeOS",
+   "lenses": [
+    "Krishna",
+    "S\u0101rathi"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B2-20260826-early.md",
+   "line": 317,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya capability + S\u0101rathi role`; Knower is human; `Knower \u2260 Observer`; `Different Knowe",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B2-20260826-early.md",
+   "line": 421,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya + S\u0101rathi`; `KnowledgeOS \u2260 Krishna`; `KnowledgeOS = The system that makes Krishna-",
+   "lenses": [
+    "Krishna",
+    "S\u0101rathi"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B2-20260826-early.md",
+   "line": 438,
+   "lhs": "K_t",
+   "rhs": "(\ud835\udc9c_t, \u211b_t, \u2130_t, \u210b_t, \ud835\udcb5_t, \u2112_t)` (accepted/active assertions, relationships, evidence, full",
+   "lenses": [
+    "Zero",
+    "Lord"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "verification/spec/STEP-TRACE-B2-20260826-early.md",
+   "line": 534,
+   "lhs": "K_t",
+   "rhs": "(\ud835\udc9c_t, \u211b_t, \u2130_t, \u210b_t, \ud835\udcb5_t, \u2112_t)` \u2014 Zero findings and Lord candidates as *components of the ",
+   "lenses": [
+    "Zero",
+    "Lord"
+   ],
+   "kind": "QUOTED-IN-AUDIT"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/dimension-registry.md",
+   "line": 2695,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sanjaya-capability + Sarathi-capability**, closing into a full",
+   "lenses": [
+    "Sarathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/dimension-registry.md",
+   "line": 2884,
+   "lhs": "KnowledgeOS",
+   "rhs": "Knowledge Model + Epistemic Capabilities (Zero/Lord/Sarathi) + Human. Makes Zero operation",
+   "lenses": [
+    "Zero",
+    "Lord",
+    "Sarathi"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/dimension-registry.md",
+   "line": 3333,
+   "lhs": "K_t",
+   "rhs": "(\ud835\udcab_t,\ud835\udc9c_t,\u211b_t,\u2130_t,\u03a3_t,\ud835\udc9e_t,\ud835\udcaf_t,\u03a0_t), with Zero/Lord as pure derived",
+   "lenses": [
+    "Zero",
+    "Lord"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0363.md",
+   "line": 34,
+   "lhs": "Kernel",
+   "rhs": "minimal sufficient substrate`). Sharpens the Remove(X)/Zero-Lens",
+   "lenses": [
+    "Zero"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0436.md",
+   "line": 29,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya-capability + S\u0101rathi-capability**, closing into a full",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0436.md",
+   "line": 36,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya-capability+S\u0101rathi-capability closed-loop architecture |",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "LIVE ASSERTION"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0437.md",
+   "line": 15,
+   "lhs": "KnowledgeOS",
+   "rhs": "Sa\u00f1jaya-capability+S\u0101rathi-capability",
+   "lenses": [
+    "S\u0101rathi"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0453.md",
+   "line": 15,
+   "lhs": "KnowledgeOS",
+   "rhs": "Knowledge Model + Epistemic Capabilities (Zero/Lord/S\u0101rathi) +",
+   "lenses": [
+    "Zero",
+    "Lord",
+    "S\u0101rathi"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "three_model_convergence/01_source-analysis/per-file/0479.md",
+   "line": 23,
+   "lhs": "K_t",
+   "rhs": "(\ud835\udcab_t,\ud835\udc9c_t,\u211b_t,\u2130_t,\u03a3_t,\ud835\udc9e_t,\ud835\udcaf_t,\u03a0_t), with Z_t=Zero(K_t,...)",
+   "lenses": [
+    "Zero"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125443_critique-yoni-identified-with-kernel-too-early-four-conflations.md",
+   "line": 5,
+   "lhs": "Kernel",
+   "rhs": "Yoni.\u201d**",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125443_critique-yoni-identified-with-kernel-too-early-four-conflations.md",
+   "line": 68,
+   "lhs": "Kernel",
+   "rhs": "Yoni",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125443_critique-yoni-identified-with-kernel-too-early-four-conflations.md",
+   "line": 173,
+   "lhs": "Kernel",
+   "rhs": "Yoni**",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125443_critique-yoni-identified-with-kernel-too-early-four-conflations.md",
+   "line": 728,
+   "lhs": "Kernel",
+   "rhs": "Yoni",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125443_critique-yoni-identified-with-kernel-too-early-four-conflations.md",
+   "line": 817,
+   "lhs": "Kernel",
+   "rhs": "Yoni\u201d equation.",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "QUOTED-IN-CRITIQUE"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125732_yoni-lens-as-a-field-lens-not-a-new-kernel.md",
+   "line": 10,
+   "lhs": "Kernel",
+   "rhs": "Yoni}",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-125732_yoni-lens-as-a-field-lens-not-a-new-kernel.md",
+   "line": 641,
+   "lhs": "Kernel",
+   "rhs": "Yoni` formulation.",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  },
+  {
+   "file": "mathematical_ideas_that_can_be_implemented/20260902-130042_yoni-lens-theory-specification-and-integration.md",
+   "line": 27,
+   "lhs": "Kernel",
+   "rhs": "Yoni` | The lens is a **perspective**, not a kernel component |",
+   "lenses": [
+    "Yoni"
+   ],
+   "kind": "NEGATED-IN-CONTEXT"
+  }
+ ]
+}

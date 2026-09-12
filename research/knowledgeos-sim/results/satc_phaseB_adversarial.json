@@ -1,0 +1,297 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-D",
+  "model": "Sat_c Formal Candidate Specification v0.1",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "note": "Phase A is SPECIFICATION, not implementation. Phase B tests the specification against the four deterministic cases already found. No new randomized trials."
+ },
+ "PB1_exclusivity": {
+  "content": {
+   "top": "p \u2208 Content(K_t)",
+   "bot": "\u00acp \u2208 Content(K_t)   \u2014 an EXPLICIT negation, not an absence",
+   "bot_is_not_complement_of_top": true,
+   "coherent": false
+  },
+  "evidence": {
+   "top": "Evidence(K_t,p) \u22a8 E_min",
+   "bot": "Evidence(K_t,p) \u22a8 \u00acE_min",
+   "bot_is_not_complement_of_top": false,
+   "coherent": true
+  },
+  "provenance": {
+   "top": "\u03a0(p) \u22a8 \u03c0_min",
+   "bot": "\u03a0(p) \u22a8 \u00ac\u03c0_min",
+   "bot_is_not_complement_of_top": false,
+   "coherent": true
+  },
+  "status": {
+   "top": "ES(p,K_t) \u2ab0 s_min",
+   "bot": "ES(p,K_t) \u227a s_min",
+   "bot_is_not_complement_of_top": false,
+   "coherent": true
+  },
+  "consistency": {
+   "top": "\u00acContr(K_t,p)",
+   "bot": "Contr(K_t,p)",
+   "bot_is_not_complement_of_top": false,
+   "coherent": true
+  },
+  "governance": {
+   "top": "the authority grants g",
+   "bot": "the authority denies g",
+   "bot_is_not_complement_of_top": true,
+   "coherent": true
+  },
+  "temporal": {
+   "top": "p established over I",
+   "bot": "p established false over I",
+   "bot_is_not_complement_of_top": false,
+   "coherent": true
+  },
+  "operational": {
+   "top": "\u03b4 defined \u2227 applicable \u2227 postcondition \u03ba met",
+   "bot": "\u03b4 defined \u2227 applicable \u2227 \u03ba not met",
+   "bot_is_not_complement_of_top": false,
+   "coherent": true
+  }
+ },
+ "PB2_content_contradiction": {
+  "p_present": true,
+  "neg_p_present": true,
+  "skeleton_yields": "\u22a4 and \u22a5 simultaneously",
+  "codomain_has_a_value_for_it": false,
+  "verdict": "INCOHERENT AS SPECIFIED \u2014 Sat_content is not a function when K holds both p and \u00acp. Either the codomain needs a 4th value C, or Sat_content must delegate to Sat_consistency first.",
+  "note": "This is the review's OPEN question about a 4-valued codomain, reached from the content class rather than the consistency class."
+ },
+ "PB3_just_completeness": {
+  "cases": {
+   "B1-factivity": {
+    "content": {
+     "value": "T",
+     "just": null
+    },
+    "evidence": {
+     "value": "T",
+     "just": null
+    },
+    "provenance": {
+     "value": "T",
+     "just": null
+    },
+    "status": {
+     "value": "T",
+     "just": null
+    },
+    "consistency": {
+     "value": "T",
+     "just": null
+    },
+    "governance": {
+     "value": "U",
+     "just": "NO_EVALUATOR"
+    },
+    "temporal": {
+     "value": "U",
+     "just": "NO_TEMPORAL_SEMANTICS"
+    },
+    "operational": {
+     "value": "U",
+     "just": "DELTA_UNDEFINED"
+    }
+   },
+   "B2-revision": {
+    "content": {
+     "value": "U",
+     "just": "UNDERDETERMINED"
+    },
+    "evidence": {
+     "value": "U",
+     "just": "UNDERDETERMINED"
+    },
+    "provenance": {
+     "value": "T",
+     "just": null
+    },
+    "status": {
+     "value": "F",
+     "just": null
+    },
+    "consistency": {
+     "value": "U",
+     "just": "UNDERDETERMINED"
+    },
+    "governance": {
+     "value": "U",
+     "just": "NO_EVALUATOR"
+    },
+    "temporal": {
+     "value": "U",
+     "just": "NO_TEMPORAL_SEMANTICS"
+    },
+    "operational": {
+     "value": "U",
+     "just": "DELTA_UNDEFINED"
+    }
+   },
+   "B3-no-source": {
+    "content": {
+     "value": "U",
+     "just": "UNDERDETERMINED"
+    },
+    "evidence": {
+     "value": "U",
+     "just": "UNDERDETERMINED"
+    },
+    "provenance": {
+     "value": "U",
+     "just": "INSUFFICIENT_PROVENANCE"
+    },
+    "status": {
+     "value": "F",
+     "just": null
+    },
+    "consistency": {
+     "value": "U",
+     "just": "UNDERDETERMINED"
+    },
+    "governance": {
+     "value": "U",
+     "just": "NO_EVALUATOR"
+    },
+    "temporal": {
+     "value": "U",
+     "just": "NO_TEMPORAL_SEMANTICS"
+    },
+    "operational": {
+     "value": "U",
+     "just": "DELTA_UNDEFINED"
+    }
+   },
+   "B4-open-classes": {
+    "content": {
+     "value": "T",
+     "just": null
+    },
+    "evidence": {
+     "value": "T",
+     "just": null
+    },
+    "provenance": {
+     "value": "T",
+     "just": null
+    },
+    "status": {
+     "value": "T",
+     "just": null
+    },
+    "consistency": {
+     "value": "T",
+     "just": null
+    },
+    "governance": {
+     "value": "U",
+     "just": "NO_EVALUATOR"
+    },
+    "temporal": {
+     "value": "U",
+     "just": "NO_TEMPORAL_SEMANTICS"
+    },
+    "operational": {
+     "value": "U",
+     "just": "DELTA_UNDEFINED"
+    }
+   }
+  },
+  "unexplained": [
+   [
+    "B2-revision",
+    "content",
+    "UNDERDETERMINED NOT in class's declared u_reasons"
+   ],
+   [
+    "B3-no-source",
+    "content",
+    "UNDERDETERMINED NOT in class's declared u_reasons"
+   ]
+  ],
+  "hypothesis_holds": false,
+  "distinct_reasons_used": [
+   "DELTA_UNDEFINED",
+   "INSUFFICIENT_PROVENANCE",
+   "NO_EVALUATOR",
+   "NO_TEMPORAL_SEMANTICS",
+   "UNDERDETERMINED"
+  ]
+ },
+ "PB4_composition": {
+  "by_arity": {
+   "1": {
+    "composites": 8,
+    "permanently_U": 5,
+    "rate": 0.625
+   },
+   "2": {
+    "composites": 28,
+    "permanently_U": 25,
+    "rate": 0.8928571428571429
+   },
+   "3": {
+    "composites": 56,
+    "permanently_U": 55,
+    "rate": 0.9821428571428571
+   },
+   "4": {
+    "composites": 70,
+    "permanently_U": 70,
+    "rate": 1.0
+   },
+   "5": {
+    "composites": 56,
+    "permanently_U": 56,
+    "rate": 1.0
+   },
+   "6": {
+    "composites": 28,
+    "permanently_U": 28,
+    "rate": 1.0
+   },
+   "7": {
+    "composites": 8,
+    "permanently_U": 8,
+    "rate": 1.0
+   },
+   "8": {
+    "composites": 1,
+    "permanently_U": 1,
+    "rate": 1.0
+   }
+  },
+  "all_eight": "U",
+  "verdict": "Any composite requirement touching one of the five blocked classes is permanently U under Kleene conjunction, no matter how well the executable classes perform."
+ },
+ "PB5_recursion": {
+  "recursive_classes": [
+   "operational"
+  ],
+  "definition": "Sat_op(K,r) = Sat_\u03ba(\u03b4(K,o))",
+  "well_founded_if": "\u03ba is drawn from the seven NON-operational classes",
+  "ill_founded_if": "\u03ba may itself be an operational requirement",
+  "theory_states_which": false,
+  "verdict": "UNDER-SPECIFIED \u2014 the theory does not restrict \u03ba, so the family is not provably well-founded. An operational requirement whose postcondition is itself operational regresses without a base case."
+ },
+ "PB6_factivity_hook": {
+  "per_class": {
+   "content": "NONE \u2014 content membership is not truth",
+   "evidence": "NONE \u2014 and this is where CE-1 originates: E_min can be met by a false report",
+   "provenance": "NONE",
+   "status": "NONE",
+   "consistency": "NONE",
+   "governance": "NONE \u2014 **authority is not truth**",
+   "temporal": "NONE",
+   "operational": "NONE"
+  },
+  "any_class_requires_truth": false,
+  "verdict": "**NO class in the family requires factivity.** A knowledge state can satisfy all eight and still be false. CE-1 is therefore not an accident of \u0393 \u2014 the satisfaction family has no place to attach truth."
+ }
+}

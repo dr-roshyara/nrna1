@@ -9,15 +9,28 @@ id:            <ID>
 date:          <YYYY-MM-DD>
 stage:         <NN-stage>
 kind:          <session | finding | decision | open-question | topic | synthesis>
-provenance:    DERIVED
+provenance:    <PRIMARY | DERIVED | SECONDARY-SYNTHESIS>
+claim_layer:   <UTTERANCE | OBSERVATION | INTERPRETATION | HYPOTHESIS | FINDING | N/A>
+governance:    <NONE-RECORDED | reviewed | recommended | selected | adopted | ratified | rejected | withdrawn | N/A>
 evidence_status: <value>
 identity_status: <value>
 lifecycle:     <ACTIVE | DORMANT | RETRACTED | SUPERSEDED | CONTESTED>
-origin:        <EVIDENCE | DERIVED-PROPOSAL>
 anchor:        <heading or verbatim quote — never a line number (§C9)>
+cites:         <record id(s) this record rests on, or null>
 corrects:      <record id, or null>
 ---
 ```
+
+> **`provenance` and `claim_layer` are two questions, not one** (§C4.1).
+> `provenance` — who produced this record. `claim_layer` — what role it plays in the corpus.
+> Neither is derived from the other, and **`claim_layer` is not a ladder**: `FINDING` is not higher
+> than `OBSERVATION`, only different.
+>
+> **`governance` is orthogonal to both** (§C4.4) — it lists recorded acts, not strength, and it never
+> changes a `claim_layer`. `claim_layer: N/A` marks a record that is an **act**, not a claim.
+>
+> **`cites` is how the evidence layer stays intact.** An assessment of an utterance cites the
+> utterance; it never re-types it (§C4.3).
 
 **Statement**
 
@@ -25,7 +38,7 @@ corrects:      <record id, or null>
 
 **Says what**
 
-`<what this record is based on — cited, not paraphrased>`
+`<what this record is based on — cited by record id or quoted with an anchor, never paraphrased>`
 
 **Does not say**
 

@@ -1,0 +1,292 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-FDE-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "research/knowledgeos-sim only; app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true
+ },
+ "required_provenance": "KR-CONTR-EVAL-2026-09 R_req (protocol S9 + I1-I5); the last pair is the PROPOSED I11 and is flagged as unratified",
+ "n_required": 13,
+ "models": {
+  "Classical": {
+   "outcomes": {
+    "PositiveEvidence|NegativeEvidence": "preserved",
+    "NegativeEvidence|NoEvidence": "not-representable",
+    "NoEvidence|Absent": "not-representable",
+    "Absent|NotAssessed": "not-representable",
+    "NotAssessed|ScopeExclusion": "not-representable",
+    "InsufficientEvidence|Underdetermined": "collapsed",
+    "Underdetermined|Unobservable": "not-representable",
+    "DirectContradiction|NoEvidence": "not-representable",
+    "DirectContradiction|Absent": "not-representable",
+    "DirectContradiction|InsufficientEvidence": "not-representable",
+    "DirectContradiction|TheoryIncomplete": "not-representable",
+    "DirectContradiction|NotAssessed": "not-representable",
+    "DirectContradiction|PositiveEvidence": "not-representable"
+   },
+   "preserved": 1,
+   "collapsed": 1,
+   "not_representable": 11,
+   "adequate": false
+  },
+  "K3": {
+   "outcomes": {
+    "PositiveEvidence|NegativeEvidence": "preserved",
+    "NegativeEvidence|NoEvidence": "preserved",
+    "NoEvidence|Absent": "collapsed",
+    "Absent|NotAssessed": "collapsed",
+    "NotAssessed|ScopeExclusion": "collapsed",
+    "InsufficientEvidence|Underdetermined": "collapsed",
+    "Underdetermined|Unobservable": "collapsed",
+    "DirectContradiction|NoEvidence": "collapsed",
+    "DirectContradiction|Absent": "collapsed",
+    "DirectContradiction|InsufficientEvidence": "collapsed",
+    "DirectContradiction|TheoryIncomplete": "collapsed",
+    "DirectContradiction|NotAssessed": "collapsed",
+    "DirectContradiction|PositiveEvidence": "preserved"
+   },
+   "preserved": 3,
+   "collapsed": 10,
+   "not_representable": 0,
+   "adequate": false
+  },
+  "FDE": {
+   "outcomes": {
+    "PositiveEvidence|NegativeEvidence": "preserved",
+    "NegativeEvidence|NoEvidence": "preserved",
+    "NoEvidence|Absent": "collapsed",
+    "Absent|NotAssessed": "preserved",
+    "NotAssessed|ScopeExclusion": "preserved",
+    "InsufficientEvidence|Underdetermined": "collapsed",
+    "Underdetermined|Unobservable": "preserved",
+    "DirectContradiction|NoEvidence": "preserved",
+    "DirectContradiction|Absent": "preserved",
+    "DirectContradiction|InsufficientEvidence": "preserved",
+    "DirectContradiction|TheoryIncomplete": "preserved",
+    "DirectContradiction|NotAssessed": "preserved",
+    "DirectContradiction|PositiveEvidence": "preserved"
+   },
+   "preserved": 11,
+   "collapsed": 2,
+   "not_representable": 0,
+   "adequate": false
+  },
+  "Structured[StructuredBoundary]": {
+   "outcomes": {
+    "PositiveEvidence|NegativeEvidence": "preserved",
+    "NegativeEvidence|NoEvidence": "preserved",
+    "NoEvidence|Absent": "preserved",
+    "Absent|NotAssessed": "preserved",
+    "NotAssessed|ScopeExclusion": "preserved",
+    "InsufficientEvidence|Underdetermined": "preserved",
+    "Underdetermined|Unobservable": "preserved",
+    "DirectContradiction|NoEvidence": "preserved",
+    "DirectContradiction|Absent": "preserved",
+    "DirectContradiction|InsufficientEvidence": "preserved",
+    "DirectContradiction|TheoryIncomplete": "preserved",
+    "DirectContradiction|NotAssessed": "preserved",
+    "DirectContradiction|PositiveEvidence": "preserved"
+   },
+   "preserved": 13,
+   "collapsed": 0,
+   "not_representable": 0,
+   "adequate": true
+  }
+ },
+ "witnesses": [
+  {
+   "situation_a": "NegativeEvidence",
+   "situation_b": "NoEvidence",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "('\u00acP',)",
+    "b": "\u00abnot-representable\u00bb"
+   }
+  },
+  {
+   "situation_a": "NoEvidence",
+   "situation_b": "Absent",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "\u00abnot-representable\u00bb"
+   }
+  },
+  {
+   "situation_a": "Absent",
+   "situation_b": "NotAssessed",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "('P',)"
+   }
+  },
+  {
+   "situation_a": "NotAssessed",
+   "situation_b": "ScopeExclusion",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "('P',)",
+    "b": "\u00abnot-representable\u00bb"
+   }
+  },
+  {
+   "situation_a": "InsufficientEvidence",
+   "situation_b": "Underdetermined",
+   "representation": "Classical",
+   "identical_representation": "('P',)",
+   "required_distinction": "InsufficientEvidence != Underdetermined"
+  },
+  {
+   "situation_a": "Underdetermined",
+   "situation_b": "Unobservable",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "('P',)",
+    "b": "\u00abnot-representable\u00bb"
+   }
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "NoEvidence",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "\u00abnot-representable\u00bb"
+   }
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "Absent",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "\u00abnot-representable\u00bb"
+   }
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "InsufficientEvidence",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "('P',)"
+   }
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "TheoryIncomplete",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "('P',)"
+   }
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "NotAssessed",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "('P',)"
+   }
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "PositiveEvidence",
+   "representation": "Classical",
+   "not_representable": {
+    "a": "\u00abnot-representable\u00bb",
+    "b": "('P',)"
+   }
+  },
+  {
+   "situation_a": "NoEvidence",
+   "situation_b": "Absent",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "NoEvidence != Absent"
+  },
+  {
+   "situation_a": "Absent",
+   "situation_b": "NotAssessed",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "Absent != NotAssessed"
+  },
+  {
+   "situation_a": "NotAssessed",
+   "situation_b": "ScopeExclusion",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "NotAssessed != ScopeExclusion"
+  },
+  {
+   "situation_a": "InsufficientEvidence",
+   "situation_b": "Underdetermined",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "InsufficientEvidence != Underdetermined"
+  },
+  {
+   "situation_a": "Underdetermined",
+   "situation_b": "Unobservable",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "Underdetermined != Unobservable"
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "NoEvidence",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "DirectContradiction != NoEvidence"
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "Absent",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "DirectContradiction != Absent"
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "InsufficientEvidence",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "DirectContradiction != InsufficientEvidence"
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "TheoryIncomplete",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "DirectContradiction != TheoryIncomplete"
+  },
+  {
+   "situation_a": "DirectContradiction",
+   "situation_b": "NotAssessed",
+   "representation": "K3",
+   "identical_representation": "('U',)",
+   "required_distinction": "DirectContradiction != NotAssessed"
+  },
+  {
+   "situation_a": "NoEvidence",
+   "situation_b": "Absent",
+   "representation": "FDE",
+   "identical_representation": "(False, False)",
+   "required_distinction": "NoEvidence != Absent"
+  },
+  {
+   "situation_a": "InsufficientEvidence",
+   "situation_b": "Underdetermined",
+   "representation": "FDE",
+   "identical_representation": "(True, False)",
+   "required_distinction": "InsufficientEvidence != Underdetermined"
+  }
+ ]
+}

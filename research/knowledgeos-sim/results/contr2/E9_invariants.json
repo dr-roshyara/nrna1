@@ -1,0 +1,65 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "which invariant candidates survive testing?",
+ "results": {
+  "I1_Contr_ne_Unknown": {
+   "A_fourth_value": true,
+   "B_delegated_relation": true,
+   "C_exclusive": true,
+   "D_structured": true
+  },
+  "I2_Contr_ne_Absent": {
+   "A_fourth_value": true,
+   "B_delegated_relation": true,
+   "C_exclusive": true,
+   "D_structured": true
+  },
+  "I3_Contr_ne_NotAssessed": {
+   "A_fourth_value": true,
+   "B_delegated_relation": true,
+   "C_exclusive": true,
+   "D_structured": true
+  },
+  "I4_Contr_ne_InsufficientEvidence": {
+   "A_fourth_value": true,
+   "B_delegated_relation": true,
+   "C_exclusive": true,
+   "D_structured": true
+  },
+  "I5_Contr_ne_Unobservable": {
+   "A_fourth_value": true,
+   "B_delegated_relation": true,
+   "C_exclusive": true,
+   "D_structured": true
+  },
+  "I11_Contr_ne_Satisfied_PROPOSED": {
+   "A_fourth_value": true,
+   "B_delegated_relation": true,
+   "C_exclusive": false,
+   "D_structured": true
+  },
+  "I11_note": "PROPOSED addition. I1-I5 compare contradiction only against the UNKNOWN family, so a candidate can satisfy all five by mapping contradiction to T. Candidate C does exactly that.",
+  "I7_Contr_ne_Zero": {
+   "zero_weak_on_contradiction_under_B": true,
+   "note": "if a contradictory state CLOSES, Contr and Zero are not the same object"
+  },
+  "I8_Detect_ne_Resolve": {
+   "argument": "E8 assigns detection to Relate+Discriminate and resolution to Revise+Select -- disjoint power sets",
+   "holds": true
+  },
+  "I10_historical_ne_current": {
+   "retraction_vs_direct_differ_under_D": true,
+   "note": "Retraction holds p historically but not currently"
+  }
+ }
+}

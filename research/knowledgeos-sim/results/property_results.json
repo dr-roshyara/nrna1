@@ -1,0 +1,1714 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02",
+  "model": "KnowledgeOS-Simulation-v1.1",
+  "theory": "KnowledgeOS Theory v1.0 (DEF-1..33, AX-1..7, THM-1..10, I1..I9) + v1.1 correction",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "seeds_random": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000
+ },
+ "catalog": {
+  "P1": {
+   "statement": "Evidence != Knowledge",
+   "definitional": false
+  },
+  "P2": {
+   "statement": "Determination != Knowledge",
+   "definitional": false
+  },
+  "P3": {
+   "statement": "Rejection != Acceptance",
+   "definitional": true
+  },
+  "P4": {
+   "statement": "Gap != Zero (Zero is the closure predicate over the gap)",
+   "definitional": true
+  },
+  "P5": {
+   "statement": "Inquiry changes adequacy requirements",
+   "definitional": false
+  },
+  "P6": {
+   "statement": "Historical state remains distinguishable from current state",
+   "definitional": false
+  },
+  "P7": {
+   "statement": "Representation equality is not required for semantic equality",
+   "definitional": false
+  },
+  "P8": {
+   "statement": "Evidence dependence prevents unjustified double counting",
+   "definitional": false
+  },
+  "P9": {
+   "statement": "Model fit does not imply causal validity",
+   "definitional": false
+  },
+  "P10": {
+   "statement": "No unsupported semantic information is created",
+   "definitional": false
+  },
+  "P11": {
+   "statement": "Knowledge attribution respects factivity: Knows(a,p,c,t) -> True(p,c,t)",
+   "definitional": false
+  },
+  "P12": {
+   "statement": "Different epistemic standards can produce different assessments",
+   "definitional": false
+  },
+  "P13": {
+   "statement": "Unobservable != Underdetermined",
+   "definitional": false
+  },
+  "P14": {
+   "statement": "Completeness != Sufficiency",
+   "definitional": false
+  },
+  "P15": {
+   "statement": "Decision != Determination",
+   "definitional": false
+  },
+  "P16": {
+   "statement": "Authorization != Decision",
+   "definitional": false
+  },
+  "P17": {
+   "statement": "Action != Authorization",
+   "definitional": false
+  },
+  "P18": {
+   "statement": "Current state != history",
+   "definitional": false
+  },
+  "P19": {
+   "statement": "Changing K_t does not imply changing identity",
+   "definitional": false
+  },
+  "P20": {
+   "statement": "Zero is inquiry-relative",
+   "definitional": false
+  }
+ },
+ "per_scenario": {
+  "P1": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_evidence": 2,
+     "n_attributed": 1
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: no evidence"
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_evidence": 1,
+     "n_attributed": 0
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_evidence": 2,
+     "n_attributed": 1
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_evidence": 2,
+     "n_attributed": 0
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_evidence": 2,
+     "n_attributed": 0
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: no evidence"
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_evidence": 2,
+     "n_attributed": 0
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: no evidence"
+    }
+   }
+  },
+  "P2": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "os": "unique"
+     },
+     "attributed": [
+      "os"
+     ],
+     "violation": []
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "reachable": "cannot-determine"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "os": "underdetermined"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "os": "unique"
+     },
+     "attributed": [
+      "os"
+     ],
+     "violation": []
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "port": "underdetermined"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "port": "cannot-determine"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "x_causes_y": "cannot-determine"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "os": "underdetermined"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "reachable": "cannot-determine"
+     },
+     "attributed": [],
+     "violation": []
+    }
+   }
+  },
+  "P3": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "rejected": {
+      "os": [
+       "Ubuntu22.04"
+      ]
+     },
+     "determinations": {
+      "os": [
+       "RHEL9.8",
+       "RHEL8.6"
+      ]
+     }
+    }
+   },
+   "D": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {
+     "reason": "no rejection"
+    }
+   }
+  },
+  "P4": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [],
+     "zero": true
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [
+      "r1"
+     ],
+     "zero": false
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [
+      "r1"
+     ],
+     "zero": false
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": true,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [
+      "r1"
+     ],
+     "zero": false
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [
+      "r1"
+     ],
+     "zero": false
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [
+      "r1"
+     ],
+     "zero": false
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [
+      "r1"
+     ],
+     "zero": false
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": true,
+    "detail": {
+     "gap": [],
+     "zero": true
+    }
+   }
+  },
+  "P5": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "I1": {
+      "inquiry": "Q1",
+      "context": "network",
+      "standard": "S-lenient",
+      "contract": "EC-1",
+      "requirements": [
+       "r1"
+      ]
+     },
+     "I2": {
+      "inquiry": "Q2",
+      "context": "network",
+      "standard": "S-lenient",
+      "contract": "EC-1",
+      "requirements": [
+       "r1",
+       "r2"
+      ]
+     },
+     "gap1": [],
+     "gap2": [
+      "r2"
+     ]
+    }
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P6": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history": 13,
+     "superseded": 1
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing superseded"
+    }
+   }
+  },
+  "P7": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "syntactic_equal": false,
+     "semantic_equal": true
+    }
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P8": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "naive_weight": 2.0,
+     "aware_weight": 1.0,
+     "naive_sources": 2,
+     "aware_sources": 1,
+     "dropped": 1,
+     "naive_status": "unique",
+     "aware_status": "cannot-determine"
+    }
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P9": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "M1_r2": 0.8996208567849538,
+     "M1_beta": 1.8517437054100114,
+     "M1_causal": "not-identified",
+     "true_effect": 0.0,
+     "attributed_causal": []
+    }
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P10": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 2,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 0,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 1,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 2,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 2,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 2,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 0,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 2,
+     "determinations": 1,
+     "unexplained": []
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "interpretations": 0,
+     "determinations": 1,
+     "unexplained": []
+    }
+   }
+  },
+  "P11": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_attributed": 1,
+     "violations": []
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "n_attributed": 1,
+     "violations": []
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {
+     "reason": "guard inactive: nothing attributed"
+    }
+   }
+  },
+  "P12": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determinations": {
+      "S-lenient": "unique",
+      "S-strict": "cannot-determine"
+     },
+     "identical_evidence": true
+    }
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P13": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "kind": "UNDERDETERMINED",
+     "A": [
+      "RHEL9.8",
+      "RHEL8.6"
+     ],
+     "status": "underdetermined"
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "kind": "UNOBSERVABLE",
+     "determination": "cannot-determine"
+    }
+   }
+  },
+  "P14": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "adequate_for_Q1": true,
+     "adequate_for_Q2": false,
+     "K_complete": false
+    }
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P15": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "determination": [
+      "RHEL9.8"
+     ],
+     "decisions": [
+      "patch",
+      "migrate"
+     ]
+    }
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P16": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "decision": "migrate",
+     "granted": false
+    }
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P17": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "granted": true,
+     "executed": false
+    }
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P18": {
+   "A": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 10,
+     "current_determinations": 1
+    }
+   },
+   "B": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 2,
+     "current_determinations": 1
+    }
+   },
+   "C": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 7,
+     "current_determinations": 1
+    }
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 10,
+     "current_determinations": 1
+    }
+   },
+   "F": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 10,
+     "current_determinations": 1
+    }
+   },
+   "G": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 10,
+     "current_determinations": 1
+    }
+   },
+   "H": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 2,
+     "current_determinations": 1
+    }
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 13,
+     "current_determinations": 1
+    }
+   },
+   "J": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "history_entries": 2,
+     "current_determinations": 1
+    }
+   }
+  },
+  "P19": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "K1": {
+      "os": {
+       "status": "unique",
+       "A": [
+        "RHEL9.8"
+       ],
+       "independent_sources": 1,
+       "weight": 1.0,
+       "causal_status": "not-identified",
+       "provenance": [
+        "a4"
+       ],
+       "assumptions": [
+        "standard S-lenient"
+       ],
+       "attributed": true,
+       "value": "RHEL9.8"
+      }
+     },
+     "K2": {
+      "os": {
+       "status": "underdetermined",
+       "A": [
+        "RHEL9.8",
+        "RHEL8.6"
+       ],
+       "independent_sources": 1,
+       "weight": 1.0,
+       "causal_status": "not-identified",
+       "provenance": [
+        "a4",
+        "a8"
+       ],
+       "assumptions": [
+        "standard S-lenient"
+       ],
+       "attributed": false,
+       "value": null
+      }
+     },
+     "identity_stable": true
+    }
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  },
+  "P20": {
+   "A": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "B": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "C": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "D": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "E": {
+    "verdict": "PASS",
+    "guard_active": true,
+    "definitional": false,
+    "detail": {
+     "zero_Q1": true,
+     "zero_Q2": false,
+     "same_K": true
+    }
+   },
+   "F": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "G": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "H": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "I": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   },
+   "J": {
+    "verdict": "UNTESTABLE",
+    "guard_active": false,
+    "definitional": false,
+    "detail": {}
+   }
+  }
+ }
+}

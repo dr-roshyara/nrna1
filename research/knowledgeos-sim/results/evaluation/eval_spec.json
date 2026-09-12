@@ -1,0 +1,122 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-G",
+  "status": "[EXP] CANDIDATE \u2014 NON-CANONICAL",
+  "note": "Eval_c is the primary object; Sat_c := value \u2218 Eval_c is a CANDIDATE PROJECTION, tested not assumed. Nothing here is KnowledgeOS architecture.",
+  "id_collision": "the commissioning document reuses KR-SIM-2026-09-02-E, already taken by the evaluator run; this experiment is recorded as -G"
+ },
+ "canonical": false,
+ "classes": {
+  "content": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "candidate",
+   "theory_status": "[PROP]",
+   "u_reasons_observed": [
+    "NO_EVALUATOR",
+    "UNOBSERVED"
+   ],
+   "dependencies": [
+    "consistency"
+   ],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": "totality depends on the A1 model chosen"
+  },
+  "evidence": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "candidate",
+   "theory_status": "[PROP]",
+   "u_reasons_observed": [],
+   "dependencies": [],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": ""
+  },
+  "provenance": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "candidate",
+   "theory_status": "[PROP]",
+   "u_reasons_observed": [
+    "INSUFFICIENT_PROVENANCE"
+   ],
+   "dependencies": [],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": ""
+  },
+  "status": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "OPEN / NO_EVALUATOR",
+   "theory_status": "[OPEN]",
+   "u_reasons_observed": [
+    "NO_ORDERING"
+   ],
+   "dependencies": [],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": "\u2ab0 undefined"
+  },
+  "consistency": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "OPEN / NO_EVALUATOR",
+   "theory_status": "[OPEN]",
+   "u_reasons_observed": [
+    "NO_EVALUATOR"
+   ],
+   "dependencies": [],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": "Contr undefined; 4th value OPEN"
+  },
+  "governance": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "OPEN / NO_EVALUATOR",
+   "theory_status": "[OPEN]",
+   "u_reasons_observed": [
+    "NO_EVALUATOR"
+   ],
+   "dependencies": [],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": "no governance artifact / authority evidence / conflict rule"
+  },
+  "temporal": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "OPEN / NO_EVALUATOR",
+   "theory_status": "[OPEN]",
+   "u_reasons_observed": [
+    "NO_TEMPORAL_SEMANTICS"
+   ],
+   "dependencies": [],
+   "well_foundedness": "n/a",
+   "factivity_requirement": "NONE",
+   "unresolved": "valid vs observation vs record time not distinguished by the corpus"
+  },
+  "operational": {
+   "primary_object": "Eval_c(K_t, r, \u0393_t) \u2192 EVal_c",
+   "value_domain": "{T,F,U} candidate; C only under the four-valued model",
+   "evaluator": "OPEN / NO_EVALUATOR",
+   "theory_status": "[OPEN]",
+   "u_reasons_observed": [
+    "DELTA_UNDEFINED",
+    "NON_TERMINATING"
+   ],
+   "dependencies": [],
+   "well_foundedness": "OPEN \u2014 \u03ba unrestricted recurses",
+   "factivity_requirement": "NONE",
+   "unresolved": "\u03b4 undefined (Step 290)"
+  }
+ },
+ "content_models": [
+  "three_valued",
+  "four_valued",
+  "delegated"
+ ]
+}

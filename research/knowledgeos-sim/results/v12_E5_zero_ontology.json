@@ -1,0 +1,103 @@
+{
+ "_meta": {
+  "experiment_id": "KR-SIM-2026-09-02-B",
+  "model": "KnowledgeOS-Simulation-v1.2",
+  "theory": "KnowledgeOS Theory v1.2 (weakened v1.1) + class-indexed three-valued Sat",
+  "status": "[EXP]",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "seed": 20260902,
+  "status_vocabulary": [
+   "ESTABLISHED",
+   "DERIVED",
+   "BOUNDED",
+   "HYPOTHESIS",
+   "INTERPRETATION",
+   "CORROBORATION",
+   "NORMATIVE",
+   "TECHNICALLY OPEN",
+   "DEFERRED",
+   "REFUTED",
+   "UNKNOWN"
+  ]
+ },
+ "gap": {
+  "violated": [],
+  "undetermined": [
+   "re",
+   "rg",
+   "rt",
+   "ro"
+  ],
+  "satisfied": [
+   "rc",
+   "rp",
+   "rs",
+   "rx"
+  ],
+  "per_req": {
+   "rc": "T",
+   "re": "U",
+   "rp": "T",
+   "rs": "T",
+   "rx": "T",
+   "rg": "U",
+   "rt": "U",
+   "ro": "U"
+  }
+ },
+ "readings": {
+  "state": {
+   "claim": "Zero is part of K_t",
+   "test": "is Zero stored in K, or computed from it?",
+   "result": "COMPUTED \u2014 Zero is a function of (K, Req); no K carries it",
+   "verdict": "REFUTED as a state"
+  },
+  "relation": {
+   "claim": "Zero relates two objects",
+   "test": "arity of the Zero function",
+   "result": "Zero(K, Req) is a PREDICATE over one state plus a contract; it relates K to a requirement SET, not to another K",
+   "verdict": "PARTIAL \u2014 it is contract-relative, not state-to-state"
+  },
+  "predicate": {
+   "claim": "Zero is a predicate on K",
+   "test": "does it return a truth value?",
+   "result": "two-valued under readings strict/weak; THREE-valued under Kleene (U)",
+   "verdict": "SUPPORTED \u2014 but its arity is 2 (K, Req) and its VALUE SET is contested: {T,F} or {T,F,U}"
+  },
+  "boundary": {
+   "claim": "Zero marks the represented/unrepresented boundary",
+   "test": "does Zero distinguish 'absent' from 'negated'?",
+   "result": "only under three-valued Sat: U marks absence, F marks negation. Under two-valued Sat the boundary COLLAPSES",
+   "verdict": "SUPPORTED ONLY UNDER THREE-VALUED Sat"
+  },
+  "derived_view": {
+   "claim": "Zero is a projection of K",
+   "test": "is it recomputable from K and Req alone?",
+   "result": "yes \u2014 GapPartition(K,Req) determines every reading",
+   "verdict": "SUPPORTED"
+  },
+  "missingness": {
+   "claim": "Zero represents missingness",
+   "test": "does Zero distinguish the four unknown kinds?",
+   "result": "NO \u2014 UNOBSERVED / UNINTERPRETED / UNDERDETERMINED / UNOBSERVABLE all map to U. Zero cannot tell them apart",
+   "verdict": "REFUTED \u2014 Zero is coarser than the missingness taxonomy"
+  },
+  "metaphor": {
+   "claim": "Zero is merely a conceptual metaphor",
+   "test": "does removing it change any computed outcome?",
+   "result": "no outcome depends on the NAME; every outcome depends on GapPartition. Zero adds a label, not a computation",
+   "verdict": "NOT REFUTED \u2014 Zero may be a NAME for a derived view"
+  }
+ },
+ "surviving": [
+  "predicate",
+  "derived_view",
+  "boundary(3-valued only)",
+  "metaphor"
+ ],
+ "refuted": [
+  "state",
+  "missingness"
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "does the verdict survive dropping C5?",
+ "n_passing_C1_C4": 18,
+ "phis_that_can_pass": [
+  "phi_time_context",
+  "phi_time_context_layer"
+ ],
+ "rules_that_can_pass": [
+  "intraframe-only",
+  "last-wins",
+  "majority"
+ ],
+ "phi_none_can_pass": false,
+ "union_can_pass": false,
+ "strict_can_pass": false,
+ "conclusion": "if phi_none and union CANNOT pass on C1-C4 alone, then C5's operationalization is not carrying the exclusion"
+}

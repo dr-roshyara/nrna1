@@ -1,0 +1,196 @@
+{
+ "_meta": {
+  "experiment_id": "KR-2026-09-01",
+  "model_version": "kr-model-1.0",
+  "date": "2026-09-01",
+  "python": "3.13.2",
+  "seeds": [
+   1,
+   7,
+   13,
+   101,
+   2718
+  ],
+  "trials_per_seed": 2000,
+  "capability_model": "C1..C24 + C25(added)",
+  "operator_sets": [
+   "C0(13)",
+   "C0+(14)"
+  ]
+ },
+ "atom_leave_one_out": {
+  "adversarial-negation": {
+   "holders": [
+    "Challenge"
+   ],
+   "lost_capabilities": [
+    "C9"
+   ],
+   "result": "irreducible-power"
+  },
+  "closure-judgment": {
+   "holders": [
+    "Determine"
+   ],
+   "lost_capabilities": [
+    "C12",
+    "C23"
+   ],
+   "result": "irreducible-power"
+  },
+  "content-generation": {
+   "holders": [
+    "Hypothesize"
+   ],
+   "lost_capabilities": [
+    "C19",
+    "C20",
+    "C6"
+   ],
+   "result": "irreducible-power"
+  },
+  "difference-decision": {
+   "holders": [
+    "DetectGap",
+    "Discriminate"
+   ],
+   "lost_capabilities": [
+    "C19",
+    "C20",
+    "C5",
+    "C8"
+   ],
+   "result": "irreducible-power"
+  },
+  "entailment": {
+   "holders": [
+    "Infer"
+   ],
+   "lost_capabilities": [
+    "C7"
+   ],
+   "result": "irreducible-power"
+  },
+  "evidential-qualification": {
+   "holders": [
+    "Qualify"
+   ],
+   "lost_capabilities": [
+    "C10",
+    "C16",
+    "C17",
+    "C25"
+   ],
+   "result": "irreducible-power"
+  },
+  "meaning-assignment": {
+   "holders": [
+    "Interpret"
+   ],
+   "lost_capabilities": [
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "result": "irreducible-power"
+  },
+  "norm-comparison": {
+   "holders": [
+    "DetectGap",
+    "Determine"
+   ],
+   "lost_capabilities": [
+    "C12",
+    "C23",
+    "C8"
+   ],
+   "result": "irreducible-power"
+  },
+  "preference-over-actions": {
+   "holders": [
+    "Select"
+   ],
+   "lost_capabilities": [
+    "C13"
+   ],
+   "result": "irreducible-power"
+  },
+  "relational-linking": {
+   "holders": [
+    "Relate"
+   ],
+   "lost_capabilities": [
+    "C22",
+    "C4"
+   ],
+   "result": "irreducible-power"
+  },
+  "state-mutation": {
+   "holders": [
+    "Revise"
+   ],
+   "lost_capabilities": [
+    "C11",
+    "C15",
+    "C24"
+   ],
+   "result": "irreducible-power"
+  },
+  "symbolic-encoding": {
+   "holders": [
+    "Represent"
+   ],
+   "lost_capabilities": [
+    "C3"
+   ],
+   "result": "irreducible-power"
+  },
+  "warrant-assessment": {
+   "holders": [
+    "Validate"
+   ],
+   "lost_capabilities": [
+    "C10",
+    "C16",
+    "C17"
+   ],
+   "result": "irreducible-power"
+  },
+  "world-contact": {
+   "holders": [
+    "Observe"
+   ],
+   "lost_capabilities": [
+    "C1",
+    "C10",
+    "C14",
+    "C16",
+    "C17",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C3",
+    "C4",
+    "C6",
+    "C7",
+    "C9"
+   ],
+   "result": "irreducible-power"
+  }
+ }
+}

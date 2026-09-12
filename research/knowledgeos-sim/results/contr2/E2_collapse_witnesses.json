@@ -1,0 +1,286 @@
+{
+ "_meta": {
+  "experiment_id": "KR-CONTR-2026-09",
+  "protocol_author": "KnowledgeOS research programme",
+  "executor": "Claude Code CLI (this lane)",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "fr001": "frozen, not reopened",
+  "factivity_track": "independent; not depended on",
+  "date": "2026-09-02",
+  "python": "3.13.2"
+ },
+ "question": "exactly WHERE does each candidate collapse distinctions?",
+ "note": "witnesses shown, per protocol S10 -- not a bare pass/fail",
+ "candidates": {
+  "A_fourth_value": {
+   "n_collapsed_pairs": 67,
+   "n_total_pairs": 210,
+   "collapses_by_value": {
+    "('U',)": [
+     [
+      "Unknown",
+      "Absent"
+     ],
+     [
+      "Unknown",
+      "NotAssessed"
+     ],
+     [
+      "Unknown",
+      "InsufficientEvidence"
+     ],
+     [
+      "Unknown",
+      "Underdetermined"
+     ],
+     [
+      "Unknown",
+      "Unobservable"
+     ],
+     [
+      "Unknown",
+      "NotApplicable"
+     ],
+     [
+      "Unknown",
+      "Uninterpreted"
+     ],
+     [
+      "Unknown",
+      "TheoryIncomplete"
+     ]
+    ],
+    "('F',)": [
+     [
+      "Unsatisfied",
+      "Retraction"
+     ],
+     [
+      "Unsatisfied",
+      "Supersession"
+     ],
+     [
+      "Retraction",
+      "Supersession"
+     ]
+    ],
+    "('C',)": [
+     [
+      "DirectContradiction",
+      "SourceConflict"
+     ],
+     [
+      "DirectContradiction",
+      "ObservationConflict"
+     ],
+     [
+      "DirectContradiction",
+      "UnequalConfidence"
+     ],
+     [
+      "DirectContradiction",
+      "ContextDifference"
+     ],
+     [
+      "DirectContradiction",
+      "TemporalDifference"
+     ],
+     [
+      "DirectContradiction",
+      "ModelConflict"
+     ],
+     [
+      "DirectContradiction",
+      "EvidenceConflict"
+     ],
+     [
+      "SourceConflict",
+      "ObservationConflict"
+     ]
+    ]
+   }
+  },
+  "B_delegated_relation": {
+   "n_collapsed_pairs": 67,
+   "n_total_pairs": 210,
+   "collapses_by_value": {
+    "('U', False)": [
+     [
+      "Unknown",
+      "Absent"
+     ],
+     [
+      "Unknown",
+      "NotAssessed"
+     ],
+     [
+      "Unknown",
+      "InsufficientEvidence"
+     ],
+     [
+      "Unknown",
+      "Underdetermined"
+     ],
+     [
+      "Unknown",
+      "Unobservable"
+     ],
+     [
+      "Unknown",
+      "NotApplicable"
+     ],
+     [
+      "Unknown",
+      "Uninterpreted"
+     ],
+     [
+      "Unknown",
+      "TheoryIncomplete"
+     ]
+    ],
+    "('F', False)": [
+     [
+      "Unsatisfied",
+      "Retraction"
+     ],
+     [
+      "Unsatisfied",
+      "Supersession"
+     ],
+     [
+      "Retraction",
+      "Supersession"
+     ]
+    ],
+    "('U', True)": [
+     [
+      "DirectContradiction",
+      "SourceConflict"
+     ],
+     [
+      "DirectContradiction",
+      "ObservationConflict"
+     ],
+     [
+      "DirectContradiction",
+      "UnequalConfidence"
+     ],
+     [
+      "DirectContradiction",
+      "ContextDifference"
+     ],
+     [
+      "DirectContradiction",
+      "TemporalDifference"
+     ],
+     [
+      "DirectContradiction",
+      "ModelConflict"
+     ],
+     [
+      "DirectContradiction",
+      "EvidenceConflict"
+     ],
+     [
+      "SourceConflict",
+      "ObservationConflict"
+     ]
+    ]
+   }
+  },
+  "C_exclusive": {
+   "n_collapsed_pairs": 75,
+   "n_total_pairs": 210,
+   "collapses_by_value": {
+    "('U',)": [
+     [
+      "Unknown",
+      "Absent"
+     ],
+     [
+      "Unknown",
+      "NotAssessed"
+     ],
+     [
+      "Unknown",
+      "InsufficientEvidence"
+     ],
+     [
+      "Unknown",
+      "Underdetermined"
+     ],
+     [
+      "Unknown",
+      "Unobservable"
+     ],
+     [
+      "Unknown",
+      "NotApplicable"
+     ],
+     [
+      "Unknown",
+      "Uninterpreted"
+     ],
+     [
+      "Unknown",
+      "TheoryIncomplete"
+     ]
+    ],
+    "('T',)": [
+     [
+      "Satisfied",
+      "DirectContradiction"
+     ],
+     [
+      "Satisfied",
+      "SourceConflict"
+     ],
+     [
+      "Satisfied",
+      "ObservationConflict"
+     ],
+     [
+      "Satisfied",
+      "UnequalConfidence"
+     ],
+     [
+      "Satisfied",
+      "ContextDifference"
+     ],
+     [
+      "Satisfied",
+      "TemporalDifference"
+     ],
+     [
+      "Satisfied",
+      "ModelConflict"
+     ],
+     [
+      "Satisfied",
+      "EvidenceConflict"
+     ]
+    ],
+    "('F',)": [
+     [
+      "Unsatisfied",
+      "Retraction"
+     ],
+     [
+      "Unsatisfied",
+      "Supersession"
+     ],
+     [
+      "Retraction",
+      "Supersession"
+     ]
+    ]
+   }
+  },
+  "D_structured": {
+   "n_collapsed_pairs": 0,
+   "n_total_pairs": 210,
+   "collapses_by_value": {}
+  }
+ }
+}

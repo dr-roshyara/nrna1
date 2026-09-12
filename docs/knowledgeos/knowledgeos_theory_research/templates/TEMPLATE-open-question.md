@@ -5,14 +5,19 @@
 | **ID** | `OQ-<nn>` |
 | **Stage** | `<NN-stage>` |
 | **Kind** | open question |
-| **Provenance** | `DERIVED` |
-| **Status vector** | `DERIVED` · `NOT-EVIDENCED-IN-CAPTURE` · `N/A` · `ACTIVE` |
+| **Provenance** | `DERIVED` — the question is the agent's, even when the gap is in a source |
+| **Claim layer** | `OBSERVATION` — the agent records a gap it has witnessed |
+| **Governance** | `NONE-RECORDED` |
+| **Status vector** | `DERIVED · OBSERVATION · NOT-EVIDENCED-IN-CAPTURE · N/A · ACTIVE · NONE-RECORDED` |
 | **Raised** | `<YYYY-MM-DD>` |
 | **Owner** | `<role — or UNASSIGNED>` |
 | **Route** | `<which stage or act can answer it>` |
 
 > **An unowned question is recorded as `UNASSIGNED`, never silently assigned to whoever happened to
 > raise it.**
+>
+> **An unresolved question is recorded as a question — never resolved by widening a vocabulary.** If
+> the gap is in this root's own record model, `OQ-nn` is where it goes (§C10).
 
 ## 1. The question
 
@@ -25,7 +30,8 @@ is a finding about the question.>`
 
 ## 3. What would answer it
 
-`<the evidence or act that would close it>`
+`<the evidence or act that would close it — stated as a case that would force the answer, not as a
+topic that would be interesting>`
 
 ## 4. What it blocks
 

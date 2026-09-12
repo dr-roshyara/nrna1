@@ -1,0 +1,251 @@
+{
+ "three_valued/B1-factivity": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/B2-revision": {
+  "B": [
+   "G_conflict:unresolved",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics",
+   "G_value:contradictory"
+  ],
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/B3-no-source": {
+  "B": [
+   "G_assessment:insufficient-magnitude",
+   "G_evidence:none",
+   "G_evidence:not-yet-gathered",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": false,
+  "zero_weak": false,
+  "zero_reasoned": false
+ },
+ "three_valued/B4-blocked": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/S1-contradiction": {
+  "B": [
+   "G_conflict:unresolved",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics",
+   "G_value:contradictory"
+  ],
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/S2-delta-defined": {
+  "B": [
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "three_valued/S3-kappa-op": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/B1-factivity": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/B2-revision": {
+  "B": [
+   "G_conflict:unresolved",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics",
+   "G_value:contradictory"
+  ],
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/B3-no-source": {
+  "B": [
+   "G_assessment:insufficient-magnitude",
+   "G_evidence:none",
+   "G_evidence:not-yet-gathered",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": false,
+  "zero_weak": false,
+  "zero_reasoned": false
+ },
+ "four_valued/B4-blocked": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/S1-contradiction": {
+  "B": [
+   "G_conflict:unresolved",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics",
+   "G_value:contradictory"
+  ],
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/S2-delta-defined": {
+  "B": [
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "four_valued/S3-kappa-op": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/B1-factivity": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/B2-revision": {
+  "B": [
+   "G_conflict:unresolved",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics",
+   "G_value:contradictory"
+  ],
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/B3-no-source": {
+  "B": [
+   "G_assessment:insufficient-magnitude",
+   "G_evidence:none",
+   "G_evidence:not-yet-gathered",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": false,
+  "zero_weak": false,
+  "zero_reasoned": false
+ },
+ "delegated/B4-blocked": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/S1-contradiction": {
+  "B": [
+   "G_conflict:unresolved",
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics",
+   "G_value:contradictory"
+  ],
+  "zero_boundary": false,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/S2-delta-defined": {
+  "B": [
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ },
+ "delegated/S3-kappa-op": {
+  "B": [
+   "G_model:delta-undefined",
+   "G_model:no-evaluator",
+   "G_model:no-ordering",
+   "G_temporal:no-temporal-semantics"
+  ],
+  "zero_boundary": true,
+  "zero_weak": true,
+  "zero_reasoned": true
+ }
+}

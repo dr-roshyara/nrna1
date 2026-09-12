@@ -1,0 +1,46 @@
+{
+ "_meta": {
+  "experiment_id": "KR-COMP-2026-09",
+  "theory": "v1.2 UNCHANGED",
+  "theory_v13": false,
+  "production_boundary": "app/ untouched",
+  "adopted": "nothing",
+  "date": "2026-09-02",
+  "python": "3.13.2",
+  "deterministic": true,
+  "seed": null
+ },
+ "question": "is each rule a function of the evidence SET?",
+ "note": "W2 and W4 are the SAME multiset of evidence, permuted",
+ "rules": {
+  "union": {
+   "W2": "conflicting",
+   "W4_permuted": "conflicting",
+   "order_invariant": true
+  },
+  "majority": {
+   "W2": "positive-support",
+   "W4_permuted": "positive-support",
+   "order_invariant": true
+  },
+  "last-wins": {
+   "W2": "negative-support",
+   "W4_permuted": "positive-support",
+   "order_invariant": false
+  },
+  "strict": {
+   "W2": "unsupported",
+   "W4_permuted": "unsupported",
+   "order_invariant": true
+  },
+  "intraframe-only": {
+   "W2": "unsupported",
+   "W4_permuted": "unsupported",
+   "order_invariant": true
+  }
+ },
+ "order_dependent_rules": [
+  "last-wins"
+ ],
+ "criterion": "C6 -- proposed by THIS LANE, not the commission. A rule whose output depends on enumeration order is not well-defined on the evidence set."
+}
