@@ -96,26 +96,33 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
             ]);
         }
 
-        // 5. Voting active — voting window is open NOW
+        // 5. Voting active — voting has been explicitly opened AND the voting window is open NOW.
+        // `voting_locked` is set as a side effect of the manual "open_voting" action
+        // (Election::applySideEffectsForOpenVoting()) or the self-service auto-transition
+        // cron (Election::enforceVotingLock(), gated by allow_auto_transition + grace period).
+        // Without this check, merely scheduling a future voting_starts_at via the timeline
+        // settings form (independent of ever opening voting) would auto-activate voting
+        // once that time passed — voting must be BOTH explicitly opened AND within its window.
         // EM-VOT-002 (Election Manifesto §4a): voting requires at least one
         // approved candidate on EVERY path into voting_active — including this
         // computed one, which no command guard can reach (PBDIGIT-64). When
         // unmet, no substitute state is chosen here: derivation falls through
         // to the existing rules below (fallback semantics are an open PO decision).
-        if ($this->isVotingWindowOpenNow($election) && $this->hasCandidatesApproved($election)) {
+        if ($election->voting_locked && $this->isVotingWindowOpenNow($election) && $this->hasCandidatesApproved($election)) {
             return ElectionLifecycleState::VotingActive;
         }
 
-        // 6. Ready for voting — setup complete, awaiting voting window
+        // 6. Ready for voting — setup complete, not yet actively voting.
+        // Reached whenever step 5 did not already claim VotingActive: covers the
+        // window not having opened yet, AND the window having opened but voting not
+        // yet explicitly locked/opened (voting_locked === false), AND no approved
+        // candidates yet. All of these are "ready, awaiting the open" — not an error.
         if ($election->administration_completed && $election->nomination_completed) {
-            // Check if voting window hasn't opened yet
-            if ($election->voting_starts_at !== null && $now->lt($election->voting_starts_at)) {
+            if ($election->voting_starts_at !== null && $election->voting_ends_at !== null) {
                 return ElectionLifecycleState::ReadyForVoting;
             }
             // If no voting times set, cannot be ready (incomplete setup)
-            if ($election->voting_starts_at === null || $election->voting_ends_at === null) {
-                return ElectionLifecycleState::SetupNomination;
-            }
+            return ElectionLifecycleState::SetupNomination;
         }
 
         // 7. Setup nomination — democratic candidacy process

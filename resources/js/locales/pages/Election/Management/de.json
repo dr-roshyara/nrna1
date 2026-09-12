@@ -35,6 +35,7 @@
       "title": "Logo der Organisation",
       "subtitle": "Wird auf der Wahlseite der Wähler angezeigt",
       "current": "Aktuell",
+      "preview": "Vorschau (noch nicht hochgeladen)",
       "no_logo": "Kein Logo",
       "upload_label": "Neues Logo hochladen",
       "file_hint": "PNG, JPG, WebP oder SVG · max. 2 MB",
@@ -88,13 +89,17 @@
     "results": {
       "title": "Ergebnisverwaltung",
       "btn_publish": "Ergebnisse veröffentlichen",
-      "btn_unpublish": "Veröffentlichung zurückziehen"
+      "btn_unpublish": "Veröffentlichung zurückziehen",
+      "btn_hide": "Ergebnisse ausblenden",
+      "btn_unhide": "Ergebnisse wieder einblenden"
     }
   },
   "confirm": {
     "activate": "Möchten Sie diese Wahl wirklich aktivieren? Der Status ändert sich auf Aktiv und die Abstimmung kann beginnen.",
     "publish": "Möchten Sie die Wahlergebnisse wirklich veröffentlichen? Diese werden dann für alle Wähler sichtbar.",
     "unpublish": "Möchten Sie die Wahlergebnisse wirklich zurückziehen?",
+    "hide": "Möchten Sie die Wahlergebnisse wirklich ausblenden? Die Ergebnisseite wird für Wähler nicht mehr erreichbar sein (404), bis Sie sie wieder einblenden.",
+    "unhide": "Möchten Sie die Wahlergebnisse wirklich wieder einblenden? Die Ergebnisseite wird für Wähler wieder erreichbar sein.",
     "open_voting": "Möchten Sie den Abstimmungszeitraum wirklich öffnen? Wähler können ihre Stimme abgeben.",
     "close_voting": "Möchten Sie den Abstimmungszeitraum wirklich schließen? Es werden keine neuen Stimmen mehr angenommen."
   },

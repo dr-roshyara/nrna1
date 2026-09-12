@@ -35,6 +35,7 @@
       "title": "Organisation Logo",
       "subtitle": "Displayed on the election page seen by voters",
       "current": "Current",
+      "preview": "Preview (not yet uploaded)",
       "no_logo": "No logo",
       "upload_label": "Upload new logo",
       "file_hint": "PNG, JPG, WebP or SVG · max 2 MB",
@@ -88,13 +89,17 @@
     "results": {
       "title": "Result Management",
       "btn_publish": "Publish Results",
-      "btn_unpublish": "Unpublish Results"
+      "btn_unpublish": "Unpublish Results",
+      "btn_hide": "Hide Results",
+      "btn_unhide": "Unhide Results"
     }
   },
   "confirm": {
     "activate": "Are you sure you want to activate this election? The status will change to active and voting can begin.",
     "publish": "Are you sure you want to publish the election results? This will make them available to all voters.",
     "unpublish": "Are you sure you want to unpublish the election results?",
+    "hide": "Are you sure you want to hide the election results? The results page will become unavailable (404) to voters until you unhide it.",
+    "unhide": "Are you sure you want to unhide the election results? The results page will become available to voters again.",
     "open_voting": "Are you sure you want to open the voting period? Voters will be able to cast their votes.",
     "close_voting": "Are you sure you want to close the voting period? No new votes will be accepted."
   },

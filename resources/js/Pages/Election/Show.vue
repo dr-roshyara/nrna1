@@ -25,7 +25,7 @@
                             </div>
                             <h1 class="esp-hero__title">{{ election.name }}</h1>
                             <div class="esp-hero__meta">
-                                <span class="esp-meta-date">{{ formatDate(election.start_date) }} — {{ formatDate(election.end_date) }}</span>
+                                <span class="esp-meta-date">{{ formatDate(votingStart) }} — {{ formatDate(votingEnd) }}</span>
                                 <span class="esp-meta-dot" aria-hidden="true">·</span>
                                 <span class="esp-meta-status" :class="`esp-status--${election.state}`">{{ election.state }}</span>
                             </div>
@@ -193,11 +193,11 @@
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.started_label', 'Beginn') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(votingStart) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.ended_label', 'Ende') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(votingEnd) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.completed.status_label', 'Status') }}</dt>
@@ -221,11 +221,11 @@
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.started_label', 'Beginn') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(votingStart) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.period_ended.ended_label', 'Ende') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(votingEnd) }}</dd>
                                 </div>
                             </div>
                         </template>
@@ -240,16 +240,16 @@
                                 </div>
                             </div>
                             <p class="esp-ineligible-body" style="margin-bottom:1.5rem">
-                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDateTime(election.start_date) }, `Sie sind registriert und können ab dem ${formatDateTime(election.start_date)} abstimmen. Bitte kommen Sie dann zurück.`) }}
+                                {{ $t('pages.election-show.not_yet_open.body', { election: election.name, date: formatDateTime(votingStart) }, `Sie sind registriert und können ab dem ${formatDateTime(votingStart)} abstimmen. Bitte kommen Sie dann zurück.`) }}
                             </p>
                             <div class="esp-certificate">
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.opens_label', 'Öffnet am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDateTime(election.start_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(votingStart) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.closes_label', 'Schließt am') }}</dt>
-                                    <dd class="esp-certificate__value">{{ formatDateTime(election.end_date) }}</dd>
+                                    <dd class="esp-certificate__value">{{ formatDateTime(votingEnd) }}</dd>
                                 </div>
                                 <div class="esp-certificate__row">
                                     <dt class="esp-certificate__label">{{ $t('pages.election-show.not_yet_open.status_label', 'Ihr Status') }}</dt>
@@ -322,16 +322,24 @@ function startVoting () {
     })
 }
 
+// ─── Voting window ────────────────────────────────────────────────────────────
+// The actual voting window is `voting_starts_at`/`voting_ends_at` (what the backend
+// lifecycle engine's canVote() gates on, and what the Management dashboard shows).
+// `start_date`/`end_date` are a separate, unrelated "election period" field pair —
+// only used here as a fallback for elections that haven't had a voting window set yet.
+const votingStart = computed(() => props.election.voting_starts_at ?? props.election.start_date)
+const votingEnd   = computed(() => props.election.voting_ends_at   ?? props.election.end_date)
+
 // ─── Date checks ──────────────────────────────────────────────────────────────
-const electionEnded  = computed(() => props.election.end_date   && Date.now() > new Date(props.election.end_date))
-const electionStarted = computed(() => props.election.start_date && Date.now() >= new Date(props.election.start_date))
+const electionEnded   = computed(() => votingEnd.value   && Date.now() > new Date(votingEnd.value))
+const electionStarted = computed(() => votingStart.value && Date.now() >= new Date(votingStart.value))
 
 // ─── Countdown ────────────────────────────────────────────────────────────────
 const countdown = ref({ hours: '00', minutes: '00', seconds: '00' })
 let timer = null
 
 function tick () {
-    const diff = new Date(props.election.end_date) - Date.now()
+    const diff = new Date(votingEnd.value) - Date.now()
     if (diff <= 0) {
         countdown.value = { hours: '00', minutes: '00', seconds: '00' }
         return
@@ -441,14 +449,14 @@ const ballotCardClass = computed(() => ({
 }
 
 .esp-org-logo__img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    border-radius: 16px;
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 24px;
     background: rgba(247, 243, 236, 0.12);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(181, 134, 43, 0.35);
-    padding: 10px;
+    padding: 2px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
     animation: esp-logo-in 0.5s cubic-bezier(.22,.68,0,1.2) both;
 }

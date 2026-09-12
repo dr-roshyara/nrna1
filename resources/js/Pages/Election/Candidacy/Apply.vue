@@ -854,9 +854,9 @@ function submitForm() {
   align-items: flex-start;
 }
 .photo-preview-frame {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
   border: 2px solid #D4C9B0;
   overflow: hidden;
   background: #F3F0E8;
@@ -869,8 +869,8 @@ function submitForm() {
 .photo-preview-frame.has-photo { border-color: #7C6A42; }
 .photo-preview-img { width: 100%; height: 100%; object-fit: cover; }
 .photo-preview-placeholder {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   color: #D4C9B0;
 }
 .photo-controls {

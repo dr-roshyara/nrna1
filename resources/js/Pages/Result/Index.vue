@@ -1,5 +1,4 @@
 <template>
-  <PublicDigitLayout>
     <!-- Main Content -->
     <main class="flex-1 bg-gray-100">
       <!-- Hero Header -->
@@ -19,7 +18,7 @@
                 <img
                   :src="final_result.logo_url"
                   :alt="final_result.org_name || 'Organisation logo'"
-                  class="h-20 w-auto max-w-40 rounded-lg bg-white/10 p-1 object-contain"
+                  class="h-32 w-auto max-w-64 rounded-lg bg-white/10 p-2 object-contain"
                 />
               </div>
               <div class="mb-5 inline-flex items-center gap-1 rounded-full border border-accent-500/40 bg-accent-500/15 px-4 py-1" aria-hidden="true">
@@ -54,7 +53,7 @@
       </header>
 
       <!-- Action Buttons -->
-      <section class="mx-auto mb-8 max-w-3xl space-x-3 px-4">
+      <section class="mx-auto mt-8 mb-8 max-w-3xl space-x-3 px-4">
         <Button
           @click="downloadPDF"
           variant="primary"
@@ -141,18 +140,13 @@
         </div>
       </footer>
     </main>
-
-  </PublicDigitLayout>
 </template>
 
 <script>
 import Button from '@/Components/Button.vue'
 import PostResult from '@/Pages/Result/PostResult.vue'
-import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 
 export default {
-  // PublicDigitFooter was registered here but never imported, and is not used in the
-  // template — an undefined identifier that threw a ReferenceError on page load.
   components: { Button, PostResult },
 
   props: {

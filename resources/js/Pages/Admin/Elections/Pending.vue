@@ -9,14 +9,6 @@
                 </p>
             </div>
 
-            <!-- Flash Messages -->
-            <div v-if="$page.props.success" class="rounded-md bg-green-50 p-4">
-                <div class="text-sm text-green-800">{{ $page.props.success }}</div>
-            </div>
-            <div v-if="$page.props.error" class="rounded-md bg-danger-50 p-4">
-                <div class="text-sm text-danger-800">{{ $page.props.error }}</div>
-            </div>
-
             <!-- Elections Table -->
             <div class="bg-white rounded-lg shadow overflow-hidden">
                 <table v-if="elections.data.length > 0" class="min-w-full divide-y divide-gray-200">

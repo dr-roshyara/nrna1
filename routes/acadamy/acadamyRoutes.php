@@ -1,4 +1,5 @@
- <?php 
+<?php
+
 use App\Http\Controllers\StudentController;
 
   Route::get('/student/create', [StudentController::class, 'create'])->name('student.create');

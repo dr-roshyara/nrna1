@@ -79,12 +79,36 @@
 
         <!-- Public Footer -->
         <PublicDigitFooter />
+
+        <!-- Flash message toast — shows session success/error/message flashed by any
+             platform admin action (e.g. approve/reject election). -->
+        <Transition name="admin-toast">
+            <div
+                v-if="toast"
+                role="status"
+                aria-live="polite"
+                class="fixed top-4 right-4 z-50 max-w-sm rounded-lg px-4 py-3 pr-10 text-sm font-medium shadow-lg"
+                :class="{
+                    'bg-green-600 text-white': toast.type === 'success',
+                    'bg-danger-600 text-white': toast.type === 'error',
+                    'bg-slate-800 text-white': toast.type === 'message',
+                }"
+            >
+                {{ toast.text }}
+                <button
+                    type="button"
+                    @click="toast = null"
+                    aria-label="Dismiss"
+                    class="absolute top-2 right-2 text-white/70 hover:text-white"
+                >✕</button>
+            </div>
+        </Transition>
     </div>
 </template>
 
 <script>
-import { ref } from 'vue'
-import { Link } from '@inertiajs/vue3'
+import { ref, watch } from 'vue'
+import { Link, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
@@ -108,7 +132,36 @@ export default {
             }
         }
 
-        return { currentLocale, handleLanguageChange }
+        // Flash toast — HandleInertiaRequests shares `success`/`error`/`message` as
+        // top-level session-flash props on every response; surface them here once,
+        // globally, instead of every admin page re-implementing its own flash box.
+        const page = usePage()
+        const toast = ref(null)
+        let dismissTimer = null
+
+        const showToast = (type, text) => {
+            toast.value = { type, text }
+            clearTimeout(dismissTimer)
+            dismissTimer = setTimeout(() => { toast.value = null }, 5000)
+        }
+
+        watch(() => page.props.success, (value) => { if (value) showToast('success', value) })
+        watch(() => page.props.error, (value) => { if (value) showToast('error', value) })
+        watch(() => page.props.message, (value) => { if (value) showToast('message', value) })
+
+        return { currentLocale, handleLanguageChange, toast }
     }
 }
 </script>
+
+<style scoped>
+.admin-toast-enter-active,
+.admin-toast-leave-active {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.admin-toast-enter-from,
+.admin-toast-leave-to {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+</style>

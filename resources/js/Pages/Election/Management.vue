@@ -786,11 +786,12 @@
           </div>
 
           <div class="flex flex-col sm:flex-row gap-6 items-start">
-            <!-- Current logo preview -->
+            <!-- Logo preview: the just-picked (not yet uploaded) file takes priority
+                 over the persisted logo, so the user sees what they're about to upload. -->
             <div class="flex-shrink-0">
               <div class="w-24 h-24 rounded-xl border-2 border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden">
-                <img v-if="organisation?.logo"
-                     :src="organisation.logo"
+                <img v-if="logoPreviewUrl || organisation?.logo"
+                     :src="logoPreviewUrl || organisation.logo"
                      alt="Organisation logo"
                      class="w-full h-full object-contain p-1" />
                 <svg v-else class="w-10 h-10 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -798,7 +799,7 @@
                 </svg>
               </div>
               <p class="text-xs text-slate-400 text-center mt-1.5">
-                {{ organisation?.logo ? t.sections.logo.current : t.sections.logo.no_logo }}
+                {{ logoPreviewUrl ? t.sections.logo.preview : (organisation?.logo ? t.sections.logo.current : t.sections.logo.no_logo) }}
               </p>
             </div>
 
@@ -850,8 +851,9 @@
           </div>
 
           <div class="flex flex-col sm:flex-row gap-3">
+            <!-- Publish Result: one-time lifecycle action (counting → results_published). -->
             <ActionButton
-              v-if="!election.results_published"
+              v-if="election.state !== 'results_published'"
               variant="success"
               size="md"
               :disabled="!canPublishResults"
@@ -864,22 +866,40 @@
               </svg>
               {{ t.sections.results.btn_publish }}
             </ActionButton>
-            <p v-if="!canPublishResults && !election.results_published && (denialDetail(ElectionActions.PUBLISH_RESULTS) ?? denialLabel(ElectionActions.PUBLISH_RESULTS))" class="mt-2 text-xs text-slate-400 font-medium">
+            <p v-if="!canPublishResults && election.state !== 'results_published' && (denialDetail(ElectionActions.PUBLISH_RESULTS) ?? denialLabel(ElectionActions.PUBLISH_RESULTS))" class="mt-2 text-xs text-slate-400 font-medium">
               {{ denialDetail(ElectionActions.PUBLISH_RESULTS) ?? denialLabel(ElectionActions.PUBLISH_RESULTS) }}
             </p>
 
+            <!-- Hide / Unhide Result: pure visibility toggle for the public results URL,
+                 available once results have been officially published. Does not touch the
+                 (permanent) lifecycle state — only the results_published flag. -->
             <ActionButton
-              v-if="election.results_published"
+              v-if="election.state === 'results_published' && election.results_published"
               variant="outline"
               size="md"
               :loading="isLoading"
               class="w-full sm:w-auto"
-              @click="unpublishResults"
+              @click="hideResults"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
               </svg>
-              {{ t.sections.results.btn_unpublish }}
+              {{ t.sections.results.btn_hide }}
+            </ActionButton>
+
+            <ActionButton
+              v-if="election.state === 'results_published' && !election.results_published"
+              variant="success"
+              size="md"
+              :loading="isLoading"
+              class="w-full sm:w-auto"
+              @click="unhideResults"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              {{ t.sections.results.btn_unhide }}
             </ActionButton>
 
             <a
@@ -1090,6 +1110,12 @@ const isLoading           = ref(false)
 const isUploadingLogo     = ref(false)
 const logoFile            = ref(null)
 const logoFileInput       = ref(null)
+const logoPreviewUrl      = ref(null)
+
+function clearLogoPreview() {
+  if (logoPreviewUrl.value) URL.revokeObjectURL(logoPreviewUrl.value)
+  logoPreviewUrl.value = null
+}
 
 // Phase completion modal
 const showCompletionModal  = ref(false)
@@ -1107,6 +1133,7 @@ const onLogoFileChange = (e) => {
   const file = e.target.files?.[0]
   if (!file) {
     logoFile.value = null
+    clearLogoPreview()
     return
   }
 
@@ -1115,6 +1142,7 @@ const onLogoFileChange = (e) => {
   if (file.size > maxSize) {
     alert('File too large. Maximum file size is 2MB.')
     logoFile.value = null
+    clearLogoPreview()
     e.target.value = ''
     return
   }
@@ -1124,11 +1152,14 @@ const onLogoFileChange = (e) => {
   if (!allowedTypes.includes(file.type)) {
     alert('Invalid file type. Please upload an image (JPEG, PNG, GIF, WebP, or SVG).')
     logoFile.value = null
+    clearLogoPreview()
     e.target.value = ''
     return
   }
 
   logoFile.value = file
+  clearLogoPreview()
+  logoPreviewUrl.value = URL.createObjectURL(file)
 }
 
 const uploadLogo = () => {
@@ -1142,6 +1173,7 @@ const uploadLogo = () => {
     onFinish: () => {
       isUploadingLogo.value = false
       logoFile.value = null
+      clearLogoPreview()
       if (logoFileInput.value) logoFileInput.value.value = ''
     },
   })
@@ -1290,6 +1322,28 @@ const unpublishResults = () => {
   if (!confirm(t.value.confirm.unpublish)) return
   isLoading.value = true
   router.post(route('elections.unpublish', { election: props.election.slug }), {}, {
+    preserveScroll: true,
+    onFinish: () => { isLoading.value = false },
+  })
+}
+
+// Hide/unhide toggle — pure visibility flag, available once results have been officially
+// published at least once. Reuses the publish/unpublish endpoints, which already just flip
+// the `results_published` flag without touching the (permanent) lifecycle state once it has
+// reached `results_published`.
+const hideResults = () => {
+  if (!confirm(t.value.confirm.hide)) return
+  isLoading.value = true
+  router.post(route('elections.unpublish', { election: props.election.slug }), {}, {
+    preserveScroll: true,
+    onFinish: () => { isLoading.value = false },
+  })
+}
+
+const unhideResults = () => {
+  if (!confirm(t.value.confirm.unhide)) return
+  isLoading.value = true
+  router.post(route('elections.publish', { election: props.election.slug }), {}, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })

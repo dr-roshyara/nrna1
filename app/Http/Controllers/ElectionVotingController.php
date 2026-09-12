@@ -88,7 +88,7 @@ class ElectionVotingController extends Controller
             'ipBlockMessage'   => $ipBlock['message'],
             'remainingVotes'   => $ipBlock['remainingVotes'] ?? null,
             'organisation'     => $org,
-            'organisationLogo' => $org?->logo ? asset($org->logo) : null,
+            'organisationLogo' => $org?->logo ? \Storage::disk('public')->url($org->logo) : null,
             'organisationName' => $org?->name,
         ]);
     }

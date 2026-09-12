@@ -35,6 +35,7 @@
       "title": "संस्थाको लोगो | Organisation Logo",
       "subtitle": "मतदाताले देख्ने चुनाव पृष्ठमा देखाइन्छ | Displayed on the election page seen by voters",
       "current": "हालको | Current",
+      "preview": "पूर्वावलोकन (अझै अपलोड नभएको) | Preview (not yet uploaded)",
       "no_logo": "लोगो छैन | No logo",
       "upload_label": "नयाँ लोगो अपलोड गर्नुहोस् | Upload new logo",
       "file_hint": "PNG, JPG, WebP वा SVG · अधिकतम २ MB",
@@ -88,13 +89,17 @@
     "results": {
       "title": "परिणाम व्यवस्थापन | Result Management",
       "btn_publish": "परिणाम प्रकाशित गर्नुहोस् | Publish Results",
-      "btn_unpublish": "परिणाम लुकाउनुहोस् | Unpublish Results"
+      "btn_unpublish": "परिणाम लुकाउनुहोस् | Unpublish Results",
+      "btn_hide": "परिणाम लुकाउनुहोस् | Hide Results",
+      "btn_unhide": "परिणाम देखाउनुहोस् | Unhide Results"
     }
   },
   "confirm": {
     "activate": "के तपाईं यो निर्वाचन सक्रिय गर्न चाहनुहुन्छ? | Are you sure you want to activate this election?",
     "publish": "के तपाईं परिणाम प्रकाशित गर्न चाहनुहुन्छ? | Are you sure you want to publish the election results?",
     "unpublish": "के तपाईं परिणाम हटाउन चाहनुहुन्छ? | Are you sure you want to unpublish the election results?",
+    "hide": "के तपाईं परिणाम लुकाउन चाहनुहुन्छ? यो पृष्ठ मतदाताहरूका लागि उपलब्ध हुनेछैन (404)। | Are you sure you want to hide the results? The page will become unavailable (404) to voters.",
+    "unhide": "के तपाईं परिणाम फेरि देखाउन चाहनुहुन्छ? | Are you sure you want to unhide the results?",
     "open_voting": "के तपाईं मतदान खोल्न चाहनुहुन्छ? | Are you sure you want to open the voting period?",
     "close_voting": "के तपाईं मतदान बन्द गर्न चाहनुहुन्छ? | Are you sure you want to close the voting period?"
   },

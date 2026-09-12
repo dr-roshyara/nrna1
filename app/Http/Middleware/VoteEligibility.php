@@ -61,22 +61,15 @@ class VoteEligibility
                 // This is NOT duplicating governance logic — it delegates to the SSOT.
                 $lifecycle = ElectionLifecycle::of($election);
 
-                // Constitutional boundary classification:
-                // Preparatory operations (code creation, agreement) MAY occur before
-                // VotingActive. Constitutional operations (ballot rendering, vote
-                // persistence) are gated by canVote() here AND by the 'voting.active'
-                // middleware + controller-level checks (defense-in-depth).
-                $preparatoryRoutes = [
-                    'slug.code.create',
-                    'slug.code.store',
-                    'slug.code.agreement',
-                    'slug.code.agreement.submit',
-                ];
-                $isPreparatory = in_array($request->route()->getName(), $preparatoryRoutes, true);
-
-                // INVARIANT H: Suspension overrides ALL permissions — including
-                // preparatory operations. No voting-flow step proceeds while suspended.
-                if ($lifecycle->state()->isSuspended() || (!$isPreparatory && !$lifecycle->canVote())) {
+                // Product decision (superseding the earlier "preparatory route" carve-out):
+                // code creation/agreement must be available ONLY during the voting
+                // window — not before it opens, not after it closes. canVote() already
+                // encodes exactly that window (voting_locked + time window + approved
+                // candidates), so every voter-flow step is now gated uniformly by it.
+                //
+                // INVARIANT H: Suspension overrides ALL permissions — canVote() is
+                // false while suspended, so this also blocks correctly during suspension.
+                if (!$lifecycle->canVote()) {
                     $blockedReason = $lifecycle->blockedReason()
                         ?? 'Voting is not currently active for this election.';
 

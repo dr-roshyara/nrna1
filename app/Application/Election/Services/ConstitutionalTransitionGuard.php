@@ -117,6 +117,18 @@ final class ConstitutionalTransitionGuard
             return false;
         }
 
+        // Platform-level admin roles are governed by dedicated User columns
+        // (platform_role / is_super_admin — see User::isPlatformAdmin()/isSuperAdmin()),
+        // the same check EnsurePlatformAdmin middleware uses to gate /platform/*.
+        // The Spatie `roles` table has no seeded platform_admin/super_admin roles,
+        // so hasRole() below can never grant these — check the columns directly.
+        if (in_array('platform_admin', $requiredRoles, true) && $user->isPlatformAdmin()) {
+            return true;
+        }
+        if (in_array('super_admin', $requiredRoles, true) && $user->isSuperAdmin()) {
+            return true;
+        }
+
         // Check if user is a committee member with one of the required roles
         // First check Spatie permission roles (global roles)
         foreach ($requiredRoles as $role) {

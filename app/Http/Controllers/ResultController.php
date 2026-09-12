@@ -21,7 +21,7 @@ class ResultController extends Controller
             ->firstOrFail();
 
         if (! $election->results_published) {
-            abort(403, 'Election results have not been published yet.');
+            abort(404);
         }
 
         $totalVotes = Vote::withoutGlobalScopes()
@@ -84,7 +84,7 @@ class ResultController extends Controller
             'election_name'    => $election->name,
             'election_slug'    => $election->slug,
             'posts'            => $postsData,
-            'logo_url'         => $organisation?->logo ? asset($organisation->logo) : null,
+            'logo_url'         => $organisation?->logo ? \Storage::disk('public')->url($organisation->logo) : null,
             'org_name'         => $organisation?->name,
             'org_slug'         => $organisation?->slug,
         ];

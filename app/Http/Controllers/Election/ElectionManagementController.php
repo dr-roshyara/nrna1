@@ -696,7 +696,7 @@ class ElectionManagementController extends Controller
                 'id'   => $organisation->id,
                 'slug' => $organisation->slug,
                 'name' => $organisation->name,
-                'logo' => $organisation->logo ? asset($organisation->logo) : null,
+                'logo' => $organisation->logo ? \Storage::disk('public')->url($organisation->logo) : null,
             ] : null,
             'stats'           => $election->voter_stats,
             'postsCount'      => $stateMachine['postsCount'],
@@ -728,7 +728,7 @@ class ElectionManagementController extends Controller
 
         // Delete old logo
         if ($organisation->logo) {
-            \Storage::delete($organisation->logo);
+            \Storage::disk('public')->delete($organisation->logo);
         }
 
         $path = $request->file('logo')->store(
@@ -816,11 +816,28 @@ class ElectionManagementController extends Controller
     }
 
     /**
-     * Publish results — chief only. Transitions state and sets timestamp via state machine.
+     * Publish results — chief only. Transitions state and sets timestamp via state machine
+     * on first publish. The lifecycle state never leaves `results_published` once reached
+     * (see ElectionConstitution::RULES), so a later re-publish (after the results were
+     * hidden via unpublish()) is just re-raising the `results_published` visibility flag —
+     * a flag toggle, not a lifecycle transition.
      */
     public function publish(Election $election): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('publishResults', $election);
+
+        if ($election->state === 'results_published') {
+            $election->update(['results_published' => true]);
+
+            event(new ResultsPublishedEvent(
+                electionId: $election->id,
+                publishedBy: auth()->id(),
+                publishedAt: new DateTimeImmutable(($election->results_published_at ?? now())->toDateTimeString()),
+                state: $election->state,
+            ));
+
+            return back()->with('success', 'Results published successfully.');
+        }
 
         // Verify vote-result integrity before publishing; auto-correct any drift
         $failedVerifications = 0;
