@@ -18,6 +18,7 @@ use App\Models\Result;
 use App\Models\Code;
 use App\Models\Election;
 use App\Models\Upload;
+use App\Services\BallotAssemblyService;
 use App\Services\VotingServiceFactory;
 use App\Services\ElectionAuditService;
 use Carbon\Carbon;
@@ -345,38 +346,9 @@ public function create(Request $request)
                 ];
             })->values();
     } else {
-        // Real election: fetch real candidates using model relationships
-        $national_posts = Post::withoutGlobalScopes()
-            ->with(['candidacies' => function ($query) {
-                $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
-            }])
-            ->where('election_id', $election->id)
-            ->where('is_national_wide', true)
-            ->orderBy('position_order')
-            ->get()
-            ->map(function ($post) {
-                return [
-                    'post_id' => $post->id,
-                    'name' => $post->name,
-                    'nepali_name' => $post->nepali_name,
-                    'required_number' => $post->required_number,
-                    'candidates' => $post->candidacies->map(function ($c) {
-                        return [
-                            'candidacy_id' => $c->id,
-                            'user' => [
-                                'id' => $c->user_id,
-                                'name' => $c->user?->name ?? $c->name ?? 'Candidate',
-                            ],
-                            'post_id' => $c->post_id,
-                            'image_path_1' => $c->image_path_1,
-                            'candidacy_name' => $c->name,
-                            'proposer_name' => null,
-                            'supporter_name' => null,
-                            'position_order' => $c->position_order,
-                        ];
-                    })->values(),
-                ];
-            })->values();
+        // Real election: extracted to BallotAssemblyService so the ballot
+        // preview feature can reuse the identical query/mapping logic.
+        $national_posts = app(BallotAssemblyService::class)->buildNationalPosts($election);
     }
 
     // Similarly update the regional posts query
@@ -420,39 +392,9 @@ public function create(Request $request)
                     ];
                 })->values();
         } else {
-            // Real election: fetch real candidates using model relationships
-            $regional_posts = Post::withoutGlobalScopes()
-                ->with(['candidacies' => function ($query) {
-                    $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
-                }])
-                ->where('election_id', $election->id)
-                ->where('is_national_wide', false)
-                ->where('state_name', trim($auth_user->region))
-                ->orderBy('position_order')
-                ->get()
-                ->map(function ($post) {
-                    return [
-                        'post_id' => $post->id,
-                        'name' => $post->name,
-                        'nepali_name' => $post->nepali_name,
-                        'required_number' => $post->required_number,
-                        'candidates' => $post->candidacies->map(function ($c) {
-                            return [
-                                'candidacy_id' => $c->id,
-                                'user' => [
-                                    'id' => $c->user_id,
-                                    'name' => $c->user?->name ?? $c->name ?? 'Candidate',
-                                ],
-                                'post_id' => $c->post_id,
-                                'image_path_1' => $c->image_path_1,
-                                'candidacy_name' => $c->name,
-                                'proposer_name' => null,
-                                'supporter_name' => null,
-                                'position_order' => $c->position_order,
-                            ];
-                        })->values(),
-                    ];
-                })->values();
+            // Real election: extracted to BallotAssemblyService so the ballot
+            // preview feature can reuse the identical query/mapping logic.
+            $regional_posts = app(BallotAssemblyService::class)->buildRegionalPosts($election, $auth_user->region);
         }
     }
 

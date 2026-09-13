@@ -1573,6 +1573,15 @@ class Election extends Model
     }
 
     /**
+     * Ballot Preview is reachable from ReadyForVoting through VotingActive —
+     * once candidates are set and before/while voting is open.
+     */
+    public function canBePreviewed(): bool
+    {
+        return $this->currentState()->isVotingPhase();
+    }
+
+    /**
      * Get the complete capability snapshot from the engine
      */
     public function getEngineSnapshot(): ElectionLifecycleSnapshot

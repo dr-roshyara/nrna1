@@ -8,6 +8,7 @@ use App\Models\Organisation;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 class OrganisationVoterHubTest extends TestCase
@@ -93,6 +94,28 @@ class OrganisationVoterHubTest extends TestCase
              ->assertInertia(fn ($page) =>
                  $page->has('activeElections', 1)
                       ->where('activeElections.0.id', $active->id)
+             );
+    }
+
+    public function test_voter_hub_includes_can_preview_ballot_true_during_voting_active(): void
+    {
+        $election = ElectionScenarioFactory::votingActive($this->org);
+
+        $this->actingAs($this->member)
+             ->get(route('organisations.voter-hub', $this->org->slug))
+             ->assertInertia(fn ($page) =>
+                 $page->where('activeElections.0.can_preview_ballot', true)
+             );
+    }
+
+    public function test_voter_hub_includes_can_preview_ballot_false_during_setup_nomination(): void
+    {
+        $election = ElectionScenarioFactory::setupNomination($this->org);
+
+        $this->actingAs($this->member)
+             ->get(route('organisations.voter-hub', $this->org->slug))
+             ->assertInertia(fn ($page) =>
+                 $page->where('activeElections.0.can_preview_ballot', false)
              );
     }
 }

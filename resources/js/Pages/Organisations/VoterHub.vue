@@ -404,6 +404,28 @@
                       </svg>
                     </a>
 
+                    <!-- Preview Ballot — only while it's a reachable voting phase -->
+                    <a
+                      v-if="election.can_preview_ballot"
+                      :href="route('organisations.elections.ballot-preview', { organisation: organisation.slug, election: election.slug })"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-indigo-200 bg-indigo-50 hover:bg-white hover:border-indigo-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-1"
+                      :aria-label="`Preview the ballot for ${election.name}`"
+                    >
+                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                      </span>
+                      <span class="flex-1 min-w-0">
+                        <span class="block text-sm font-semibold text-indigo-800">Preview Ballot</span>
+                        <span class="block text-xs text-indigo-600">See how the ballot will look</span>
+                      </span>
+                      <svg class="w-4 h-4 text-indigo-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+
                     <!-- View Receipt Codes — only if results are published -->
                     <a
                       v-if="election.results_published_at"

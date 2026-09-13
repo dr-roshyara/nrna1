@@ -188,8 +188,11 @@ final class ElectionScenarioFactory
                 'administration_completed_at' => $now->copy()->subDays(1),
                 'nomination_completed' => true,
                 'nomination_completed_at' => $now->copy()->subHours(23),
-                // Voting not locked
-                'voting_locked' => false,
+                // Voting explicitly opened — required alongside the time window
+                // for VotingActive derivation (ElectionLifecycleEngineImpl: a
+                // scheduled voting_starts_at alone must not auto-activate voting
+                // without the chief explicitly opening it).
+                'voting_locked' => true,
                 // No results
                 'results_published_at' => null,
             ]);

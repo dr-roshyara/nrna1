@@ -204,8 +204,22 @@
                         </ul>
                     </div>
 
+                    <!-- ── Preview Mode Banner (replaces Agreement & Submit) ── -->
+                    <div v-if="previewMode"
+                         class="bg-indigo-50 border-2 border-indigo-200 rounded-xl p-6 max-w-4xl mx-auto text-center">
+                        <p class="font-sans font-bold text-indigo-900 text-lg mb-1">
+                            🔍 Preview — this is what the {{ election?.name }} ballot will look like.
+                        </p>
+                        <p class="font-sans text-indigo-700 text-sm">
+                            Anyone with access to this election can see this page. No vote will be recorded here.
+                        </p>
+                        <p v-if="previewHasNoRegionNotice" class="font-sans text-indigo-600 text-sm mt-3">
+                            You haven't set a region on your profile, so the regional section of the ballot isn't shown here.
+                        </p>
+                    </div>
+
                     <!-- ── Agreement & Submit ── -->
-                    <div class="bg-white rounded-xl shadow-lg border border-neutral-200 p-8 max-w-4xl mx-auto">
+                    <div v-else class="bg-white rounded-xl shadow-lg border border-neutral-200 p-8 max-w-4xl mx-auto">
                         <div class="border-2 border-primary-200 rounded-xl p-6 bg-primary-50 mb-6">
                             <h3 class="text-xl font-serif text-primary-800 text-center mb-5">
                                 {{ $t('pages.voting.agreement.title') }}
@@ -315,6 +329,13 @@
 </template>
 
 <script>
+// Two modes render through this component:
+//   1. Real voting  (previewMode = false, the default) — full agreement/submit
+//      flow, draft autosave, and vote persistence via CreateVotingPage's own routes.
+//   2. Ballot Preview (previewMode = true, set only by Pages/Vote/BallotPreview.vue) —
+//      read-only except for interactive candidate selection; no submit UI, no
+//      draft autosave/restore, no vote can ever be persisted from this render.
+// previewMode is the single authoritative gate for anything submission-related.
 import { useForm } from '@inertiajs/vue3'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
 import WorkflowStepIndicator from '@/Components/Workflow/WorkflowStepIndicator.vue'
@@ -342,6 +363,13 @@ export default {
         slug:            { type: String,  default: null },
         useSlugPath:     { type: Boolean, default: false },
         election:        { type: Object,  default: null },
+        // Ballot Preview: read-only, interactive-but-non-submittable rendering
+        // of this same page (see Pages/Vote/BallotPreview.vue). previewMode is
+        // the SINGLE authoritative gate for anything submission-related below —
+        // it hardcodes the confirm/submit UI off and skips the draft-autosave
+        // localStorage read/write entirely so a preview visit can never read or
+        // corrupt a real in-progress draft for the same user+election.
+        previewMode:     { type: Boolean, default: false },
     },
 
     setup(props) {
@@ -434,6 +462,16 @@ export default {
                    !this.isLoading
         },
 
+        // Preview-only counterpart to hasRegionButNoPosts: the preview never
+        // receives user_region (see BallotPreviewController), so whether the
+        // viewer has no region set is inferred from has_regional_posts being
+        // true while regional_posts came back empty.
+        previewHasNoRegionNotice() {
+            return this.previewMode &&
+                   !!this.election?.has_regional_posts &&
+                   this.normalizedRegionalPosts.length === 0
+        },
+
         submitRoute() {
             return this.useSlugPath && this.slug
                 ? route('slug.vote.submit', { vslug: this.slug })
@@ -480,8 +518,13 @@ export default {
 
         await this.$nextTick()
         this.isLoading = false
-        this.loadDraft()
-        this.autoSaveInterval = setInterval(() => this.saveDraft(), 30_000)
+
+        // Preview mode never reads or writes the real draft — no autosave
+        // interval started, no restore-on-mount attempted (see previewMode prop doc).
+        if (!this.previewMode) {
+            this.loadDraft()
+            this.autoSaveInterval = setInterval(() => this.saveDraft(), 30_000)
+        }
     },
 
     beforeUpdate() {
@@ -585,6 +628,10 @@ export default {
         },
 
         requestSubmit() {
+            // Belt-and-braces alongside the template v-if="!previewMode" that
+            // hides the submit button/form entirely in preview mode.
+            if (this.previewMode) return
+
             this.postErrors = {}
 
             const validationErrors = this.validateAllPosts()
@@ -603,6 +650,8 @@ export default {
         },
 
         confirmSubmit() {
+            if (this.previewMode) return
+
             this.showConfirmModal = false
             this.loading = true
 

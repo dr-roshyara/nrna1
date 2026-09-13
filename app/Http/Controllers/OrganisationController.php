@@ -489,6 +489,7 @@ class OrganisationController extends Controller
                 'start_date'  => $e->start_date,
                 'end_date'    => $e->end_date,
                 'description' => $e->description,
+                'can_preview_ballot'  => $e->canBePreviewed(),
                 'posts'       => $e->posts->map(fn ($p) => [
                     'id'               => $p->id,
                     'name'             => $p->name,

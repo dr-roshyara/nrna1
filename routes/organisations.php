@@ -18,6 +18,7 @@
  * - No cross-organisation data access is possible
  */
 
+use App\Http\Controllers\BallotPreviewController;
 use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
 use App\Http\Controllers\Election\VoterImportController;
@@ -303,6 +304,12 @@ Route::prefix('organisations/{organisation:slug}')
             Route::middleware(['election.state:view_results'])->group(function () {
                 Route::get('/receipt-codes',                            [VotingReceiptController::class, 'index'])      ->name('organisations.election.receipt-codes');
                 Route::post('/votes/confirm-correct',                   [VotingReceiptController::class, 'confirmCorrect'])->name('organisations.vote.confirm-correct');
+            });
+
+            // ── BALLOT PREVIEW (ReadyForVoting through VotingActive) ─────────────────
+            Route::middleware(['election.state:preview_ballot'])->group(function () {
+                Route::get('/ballot-preview', [BallotPreviewController::class, 'index'])
+                    ->name('organisations.elections.ballot-preview');
             });
 
             // ── MANAGEMENT DASHBOARD (accessible during administration and nomination phases) ──

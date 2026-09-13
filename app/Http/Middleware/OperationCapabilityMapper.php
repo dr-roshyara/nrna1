@@ -66,6 +66,11 @@ final class OperationCapabilityMapper
                 ElectionLifecycleState::Archived,
             ], true),
 
+            // ── Ballot Preview ──
+            // Read-only, interactive-but-non-submittable ballot view — reachable
+            // from ReadyForVoting through VotingActive (isVotingPhase()).
+            'preview_ballot' => $snapshot->state->isVotingPhase(),
+
             // ── Default: Undefined operations forbidden ──
             default => false,
         };
@@ -103,6 +108,11 @@ final class OperationCapabilityMapper
 
             'view_results',
             'download_receipt' => 'Results are not yet available',
+
+            // Deliberately generic — the preview link's audience is any org
+            // member/officer, not just this election's registered voters, so
+            // we don't leak lifecycle phase to them.
+            'preview_ballot' => "This preview isn't available right now.",
 
             default => 'Operation not permitted in current election state',
         };
