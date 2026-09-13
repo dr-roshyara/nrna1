@@ -369,14 +369,31 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function cannot_complete_nomination_with_pending_candidates(): void
     {
+        // Real setup_nomination derivation facts (not the raw 'state' column) —
+        // required now that complete_nomination goes through the constitutional
+        // Guard, which derives state from ElectionLifecycleEngineImpl, not from
+        // a literal state string.
+        $this->election->update(['administration_completed' => true]);
+        $this->setupAdminAsChiefOfficer();
+        $this->actingAs($this->admin);
+
         $post = Post::factory()->create(['election_id' => $this->election->id]);
 
+        // An approved candidacy is included so the ONLY unmet precondition is
+        // "pending" — isolating the exact cause this test names, matching the
+        // Guard's single-precondition friendly-message path.
+        Candidacy::factory()->create([
+            'post_id' => $post->id,
+            'status'  => 'approved',
+        ]);
         Candidacy::factory()->create([
             'post_id' => $post->id,
             'status'  => 'pending',
         ]);
 
-        $this->expectException(\InvalidArgumentException::class);
+        // Precondition failures are now raised by ConstitutionalTransitionGuard,
+        // not the legacy method — expected exception type changed accordingly.
+        $this->expectException(\App\Exceptions\InvalidTransitionException::class);
         $this->expectExceptionMessageMatches('/pending/i');
 
         $this->election->completeNomination('Ready', $this->admin->id);
@@ -386,6 +403,9 @@ class ElectionStateMachineTest extends TestCase
     public function complete_nomination_transitions_state_correctly(): void
     {
         $this->election->update(['administration_completed' => true]);
+        $this->setupAdminAsChiefOfficer();
+        $this->actingAs($this->admin);
+
         $post = Post::factory()->create(['election_id' => $this->election->id]);
 
         Candidacy::factory()->create([
@@ -404,6 +424,9 @@ class ElectionStateMachineTest extends TestCase
     public function completing_nomination_auto_sets_voting_dates(): void
     {
         $this->election->update(['administration_completed' => true]);
+        $this->setupAdminAsChiefOfficer();
+        $this->actingAs($this->admin);
+
         $post = Post::factory()->create(['election_id' => $this->election->id]);
 
         Candidacy::factory()->create(['post_id' => $post->id, 'status' => 'approved']);
@@ -892,7 +915,12 @@ class ElectionStateMachineTest extends TestCase
     /** @test */
     public function nomination_completed_event_is_dispatched(): void
     {
-        $this->election->update(['state' => 'nomination']);
+        // Real setup_nomination derivation fact, replacing the stale raw
+        // 'state' string — see cannot_complete_nomination_with_pending_candidates.
+        $this->election->update(['administration_completed' => true]);
+        $this->setupAdminAsChiefOfficer();
+        $this->actingAs($this->admin);
+
         $post = Post::factory()->create(['election_id' => $this->election->id]);
         Candidacy::factory()->create([
             'post_id' => $post->id,

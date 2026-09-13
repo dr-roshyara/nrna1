@@ -122,8 +122,13 @@ class EmVot002OpenVotingPreconditionTest extends TestCase
             $this->guard->assertAllowed($election, 'open_voting', $this->setupNominationSnapshot());
             $this->fail('EM-VOT-002: open_voting must be refused with zero approved candidates');
         } catch (InvalidTransitionException $e) {
-            $this->assertStringContainsString('has_approved_candidates', $e->getMessage(),
-                'The refusal must name the unmet precondition');
+            // Friendly message (added in Slice B), not the raw precondition name —
+            // still identifies the same unmet precondition.
+            $this->assertStringContainsString(
+                'At least one candidate must be approved',
+                $e->getMessage(),
+                'The refusal must name the unmet precondition'
+            );
         }
     }
 

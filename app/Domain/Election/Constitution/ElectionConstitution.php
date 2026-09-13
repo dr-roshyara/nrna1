@@ -76,9 +76,16 @@ final class ElectionConstitution
         'complete_nomination' => [
             'allowed_states' => ['setup_nomination'],
             'allowed_roles' => ['chief', 'deputy'],
-            'preconditions' => ['has_approved_candidates'],
+            'preconditions' => ['has_approved_candidates', 'no_pending_candidacies'],
             'target_state' => 'setup_nomination',
-            'description' => 'Complete candidate approval process',
+            'description' => 'Complete candidate approval process (chief/deputy)',
+        ],
+        'auto_complete_nomination' => [
+            'allowed_states' => ['setup_nomination'],
+            'allowed_roles' => ['system'],
+            'preconditions' => ['has_approved_candidates', 'no_pending_candidacies'],
+            'target_state' => 'setup_nomination',
+            'description' => 'Complete candidate approval process (automatic, grace-period timeout)',
         ],
 
         // ──── CANDIDACY APPLICATIONS (Members) ────

@@ -94,12 +94,17 @@ class StateMachineTransitionAuditTest extends TestCase
     #[\PHPUnit\Framework\Attributes\Test]
     public function complete_nomination_does_not_change_state_to_voting(): void
     {
+        // Real setup_nomination derivation fact, replacing the stale raw
+        // 'state' string — complete_nomination now goes through the
+        // constitutional Guard, which derives state from
+        // ElectionLifecycleEngineImpl, not from a literal state string.
         $this->election->update([
-            'state'           => 'nomination',
+            'administration_completed' => true,
             'posts_count'     => 1,
             'voters_count'    => 1,
             'candidates_count' => 1,
         ]);
+        $this->actingAs($this->chief);
 
         Candidacy::factory()->create([
             'post_id' => Post::factory()->create(['election_id' => $this->election->id])->id,
@@ -108,18 +113,22 @@ class StateMachineTransitionAuditTest extends TestCase
 
         $this->election->completeNomination('Nomination complete', $this->chief->id);
 
-        $this->assertEquals('nomination', $this->election->fresh()->state);
+        // 'setup_nomination' is the current constitutional name for the
+        // same phase this test's name calls "nomination" — the assertion's
+        // substance (still nomination, not voting) is unchanged.
+        $this->assertEquals('setup_nomination', $this->election->fresh()->state);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
     public function complete_nomination_sets_nomination_completed_flag_without_changing_state(): void
     {
         $this->election->update([
-            'state'           => 'nomination',
+            'administration_completed' => true,
             'posts_count'     => 1,
             'voters_count'    => 1,
             'candidates_count' => 1,
         ]);
+        $this->actingAs($this->chief);
 
         Candidacy::factory()->create([
             'post_id' => Post::factory()->create(['election_id' => $this->election->id])->id,
@@ -131,7 +140,7 @@ class StateMachineTransitionAuditTest extends TestCase
         $fresh = $this->election->fresh();
         $this->assertTrue($fresh->nomination_completed);
         $this->assertNotNull($fresh->nomination_completed_at);
-        $this->assertEquals('nomination', $fresh->state);
+        $this->assertEquals('setup_nomination', $fresh->state);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]

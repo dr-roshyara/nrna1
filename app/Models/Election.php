@@ -1366,34 +1366,9 @@ class Election extends Model
      * Sets nomination_completed flag and auto-configures voting dates.
      * Does NOT change state — that happens via open_voting transition.
      */
-    public function completeNomination(string $reason, ?string $actorId = null): void
+    public function completeNomination(string $reason, string $actorId): void
     {
-        $pendingCount = $this->candidacies()->withoutGlobalScopes()->where('status', 'pending')->count();
-
-        if ($pendingCount > 0) {
-            throw new \InvalidArgumentException("Cannot complete nomination: {$pendingCount} candidates pending approval");
-        }
-
-        if ($this->candidacies()->withoutGlobalScopes()->where('status', 'approved')->count() === 0) {
-            throw new \InvalidArgumentException('Cannot complete nomination: No candidates approved');
-        }
-
-        $this->update([
-            'nomination_completed'   => true,
-            'nomination_completed_at' => now(),
-        ]);
-
-        // Auto-set voting dates if not already set
-        if (!$this->voting_starts_at) {
-            $this->update([
-                'voting_starts_at' => now(),
-                'voting_ends_at'   => now()->addDays(4),
-            ]);
-        }
-
-        $this->logStateChange('nomination_completed', ['reason' => $reason, 'actor_id' => $actorId]);
-
-        Event::dispatch(new NominationCompleted($this, $actorId, $reason));
+        $this->transitionTo(\App\Domain\Election\StateMachine\Transition::manual('complete_nomination', $actorId, $reason));
     }
 
     /**
@@ -1720,6 +1695,7 @@ class Election extends Model
                         'close_voting' => $this->applySideEffectsForCloseVoting($currentTime),
                         'approve'      => $this->applySideEffectsForApprove($transition->actorId, $currentTime),
                         'complete_administration' => $this->applySideEffectsForCompleteAdministration($currentTime),
+                        'complete_nomination', 'auto_complete_nomination' => $this->applySideEffectsForCompleteNomination($currentTime),
                         'publish_results' => $this->applySideEffectsForPublishResults($currentTime),
                         'archive'      => $this->applySideEffectsForArchive($currentTime),
                         'suspend'      => $this->applySideEffectsForSuspend($transition->actorId, $transition->reason, $currentTime),
@@ -1740,6 +1716,7 @@ class Election extends Model
                     'approve'             => event(new \App\Domain\Election\Events\ElectionApproved($this, $transition->actorId, $transition->reason)),
                     'submit_for_approval' => event(new \App\Domain\Election\Events\ElectionSubmittedForApproval($this, $transition->actorId)),
                     'reject'              => event(new \App\Domain\Election\Events\ElectionRejected($this, $transition->actorId, $transition->reason)),
+                    'complete_nomination', 'auto_complete_nomination' => event(new NominationCompleted($this, $transition->actorId, $transition->reason)),
                     default               => event(new \App\Events\ElectionStateChangedEvent($this, $fromState, $toState, $transition->trigger->value, $transition->actorId)),
                 };
 
@@ -1791,6 +1768,33 @@ class Election extends Model
     {
         if ($reason = $this->whyCannotCompleteAdministration()) {
             throw new \InvalidArgumentException($reason);
+        }
+    }
+
+    // NominationCompletionPredicates is the single source of truth for both
+    // preconditions, consumed here (unconditional hook — the only enforcement
+    // point reached by the system-triggered auto_complete_nomination path,
+    // since ConstitutionalTransitionGuard::assertAllowed() is skipped for
+    // system-triggered transitions) and by ConstitutionalTransitionGuard (the
+    // human complete_nomination path, where the guard already blocks first).
+    private function validateCompleteNomination(\App\Domain\Election\StateMachine\Transition $transition): void
+    {
+        $this->assertNominationCompletionPredicatesMet();
+    }
+
+    private function validateAutoCompleteNomination(\App\Domain\Election\StateMachine\Transition $transition): void
+    {
+        $this->assertNominationCompletionPredicatesMet();
+    }
+
+    private function assertNominationCompletionPredicatesMet(): void
+    {
+        if (!\App\Application\Election\Services\NominationCompletionPredicates::hasApprovedCandidates($this)) {
+            throw new \DomainException('At least one candidate must be approved before nomination can be completed.');
+        }
+
+        if (!\App\Application\Election\Services\NominationCompletionPredicates::hasNoPendingCandidacies($this)) {
+            throw new \DomainException('All pending candidacy applications must be approved or rejected before nomination can be completed.');
         }
     }
 
@@ -1907,6 +1911,27 @@ class Election extends Model
                 'voting_locked' => true,
                 'voting_locked_at' => $currentTime,
             ]);
+    }
+
+    // Shared by both complete_nomination (human) and auto_complete_nomination
+    // (system) — same facts, same auto-set-voting-window behavior as the
+    // legacy completeNomination(). Deliberately does NOT touch voting_locked:
+    // opening voting remains open_voting's sole responsibility.
+    private function applySideEffectsForCompleteNomination(\Carbon\Carbon $currentTime): void
+    {
+        $updateData = [
+            'nomination_completed' => true,
+            'nomination_completed_at' => $currentTime,
+        ];
+
+        if (!$this->voting_starts_at) {
+            $updateData['voting_starts_at'] = $currentTime;
+            $updateData['voting_ends_at'] = $currentTime->copy()->addDays(4);
+        }
+
+        \Illuminate\Support\Facades\DB::table('elections')
+            ->where('id', $this->id)
+            ->update($updateData);
     }
 
     private function applySideEffectsForSubmitForApproval(?string $actorId, \Carbon\Carbon $currentTime): void

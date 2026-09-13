@@ -195,6 +195,8 @@ final class ConstitutionalTransitionGuard
      */
     private const PRECONDITION_MESSAGES = [
         'voting_window_defined' => 'Update Voting date and time first.',
+        'has_approved_candidates' => 'At least one candidate must be approved before nomination can be completed.',
+        'no_pending_candidacies' => 'All pending candidacy applications must be approved or rejected before nomination can be completed.',
     ];
 
     /**
@@ -214,9 +216,8 @@ final class ConstitutionalTransitionGuard
                 ->where('role', 'chief')
                 ->where('status', 'active')
                 ->exists(),
-            'has_approved_candidates' => $election->candidacies()
-                ->where('status', 'approved')
-                ->exists(),
+            'has_approved_candidates' => \App\Application\Election\Services\NominationCompletionPredicates::hasApprovedCandidates($election),
+            'no_pending_candidacies' => \App\Application\Election\Services\NominationCompletionPredicates::hasNoPendingCandidacies($election),
             // The chief must configure the voting end time (via Timeline settings)
             // before opening voting — open_voting always sets voting_starts_at = now(),
             // so the configured voting_ends_at must still be in the future relative to

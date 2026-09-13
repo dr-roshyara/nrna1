@@ -61,12 +61,15 @@ class ProcessElectionAutoTransitions extends Command
             return 0;
         }
 
-        $systemId = null;
         try {
             $approved = $election->candidacies()->withoutGlobalScopes()->where('status', 'approved')->count();
             $pending = $election->candidacies()->withoutGlobalScopes()->where('status', 'pending')->count();
 
-            $election->completeNomination('Automatic transition after grace period', $systemId);
+            $election->transitionTo(\App\Domain\Election\StateMachine\Transition::automatic(
+                action: 'auto_complete_nomination',
+                trigger: \App\Domain\Election\StateMachine\TransitionTrigger::GRACE_PERIOD,
+                reason: 'Automatic transition after grace period',
+            ));
             return 1;
         } catch (\Exception $e) {
             $this->warn("Failed to transition election {$election->id} to nomination: {$e->getMessage()}");
