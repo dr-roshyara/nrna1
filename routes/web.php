@@ -251,6 +251,11 @@ Route::get('/help/voters-verification_guide', function () {
     return Inertia::render('Tutorials/VotersManagement');
 })->name('tutorials.voters-verification-guide');
 
+// Ballot Preview tutorial — public, no auth required
+Route::get('/help/ballot-preview-guide', function () {
+    return Inertia::render('Tutorials/BallotPreviewGuide');
+})->name('tutorials.ballot-preview-guide');
+
 // Membership modes tutorial — public, no auth required
 Route::get('/help/membership-modes', function () {
     return Inertia::render('Tutorials/MembershipModes');

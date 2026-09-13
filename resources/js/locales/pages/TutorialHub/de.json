@@ -42,6 +42,11 @@
       "description": "Wie die Wähleridentität während und nach dem Wahlprozess verifiziert wird.",
       "badge": "Sicherheit"
     },
+    "ballot_preview": {
+      "title": "Stimmzettel-Vorschau",
+      "description": "Sehen Sie genau, wie Ihr Stimmzettel aussehen wird, bevor die Abstimmung beginnt — eine reine Ansicht, es wird keine Stimme aufgezeichnet.",
+      "badge": "Neu"
+    },
     "committee_management": {
       "title": "Ausschussverwaltung",
       "description": "Ausschüsse erstellen, Mitglieder zuweisen, Details bearbeiten und den gesamten Ausschuss-Lebenszyklus verwalten.",

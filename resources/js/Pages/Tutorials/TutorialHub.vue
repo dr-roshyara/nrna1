@@ -80,6 +80,14 @@
               :badge="$t('pages.tutorial-hub.cards.voter_verification.badge')"
               badge-color="success"
             />
+            <TutorialCard
+              :title="$t('pages.tutorial-hub.cards.ballot_preview.title')"
+              :description="$t('pages.tutorial-hub.cards.ballot_preview.description')"
+              icon="🔍"
+              href="/help/ballot-preview-guide"
+              :badge="$t('pages.tutorial-hub.cards.ballot_preview.badge')"
+              badge-color="primary"
+            />
           </div>
         </section>
 

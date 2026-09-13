@@ -42,6 +42,11 @@
       "description": "How voter identity is verified during and after the election process.",
       "badge": "Security"
     },
+    "ballot_preview": {
+      "title": "Ballot Preview",
+      "description": "See exactly how your ballot will look before voting opens — a read-only preview, no vote is ever recorded.",
+      "badge": "New"
+    },
     "committee_management": {
       "title": "Committee Management",
       "description": "Create committees, assign members, edit details, and manage the full committee lifecycle.",
