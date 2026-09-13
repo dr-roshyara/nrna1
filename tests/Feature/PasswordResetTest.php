@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Password;
+use Symfony\Component\Mailer\Exception\TransportException;
 use Tests\TestCase;
 
 class PasswordResetTest extends TestCase
@@ -73,5 +75,34 @@ class PasswordResetTest extends TestCase
 
             return true;
         });
+    }
+
+    /**
+     * Real production incident: the outbound mail transport rejected the
+     * send (SMTP 554 "outbound sending disabled"). That exception is not
+     * caught anywhere between Password::sendResetLink() and the mail
+     * transport, so it used to bubble all the way up to a raw 500 —
+     * showing Laravel's debug page (with APP_DEBUG=true) or an unstyled
+     * generic error page (with it false), either way with no useful
+     * message to the user. The controller must catch mailer/transport
+     * failures and respond the same way it already responds to any other
+     * "could not send" case: back() with a friendly error, never a 500.
+     */
+    public function test_mail_transport_failure_returns_gracefully_instead_of_500()
+    {
+        $user = User::factory()->create();
+
+        Password::shouldReceive('sendResetLink')
+            ->once()
+            ->andThrow(new TransportException(
+                'Expected response code "250" but got code "554", with message "554 5.7.1 Outbound sending is disabled for this account".'
+            ));
+
+        $response = $this->post('/forgot-password', [
+            'email' => $user->email,
+        ]);
+
+        $response->assertStatus(302);
+        $response->assertSessionHasErrors('email');
     }
 }

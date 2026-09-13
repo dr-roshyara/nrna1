@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 class PasswordResetController extends Controller
 {
@@ -29,10 +30,28 @@ class PasswordResetController extends Controller
             'email' => $request->email,
         ]);
 
-        // Send the password reset link
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        // Send the password reset link. Password::sendResetLink() dispatches
+        // the notification mail synchronously — a transport-level failure
+        // (e.g. the mail account's outbound sending being disabled) throws
+        // instead of returning a status string, and nothing upstream catches
+        // it. Left uncaught, that surfaces as a raw 500 to the user (the
+        // full debug page if APP_DEBUG=true, an unstyled generic error page
+        // otherwise) instead of the same graceful "couldn't send" response
+        // every other failure status already gets below.
+        try {
+            $status = Password::sendResetLink(
+                $request->only('email')
+            );
+        } catch (TransportExceptionInterface $e) {
+            Log::error('❌ Password reset link mail transport failure', [
+                'email' => $request->email,
+                'exception' => $e->getMessage(),
+            ]);
+
+            return back()->withErrors([
+                'email' => 'We were unable to send the reset email right now. Please try again later.',
+            ]);
+        }
 
         if ($status === Password::RESET_LINK_SENT) {
             Log::info('✅ Password reset link sent successfully', [
