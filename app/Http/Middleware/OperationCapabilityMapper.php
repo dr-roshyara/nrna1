@@ -71,6 +71,19 @@ final class OperationCapabilityMapper
             // from ReadyForVoting through VotingActive (isVotingPhase()).
             'preview_ballot' => $snapshot->state->isVotingPhase(),
 
+            // ── Candidate Photo Editing ──
+            // Committee-only (see ElectionPolicy::managePosts()) photo crop/replace,
+            // allowed only before voting starts — denied from VotingActive onward
+            // (and, since Suspended is absent from this allow-list, while suspended).
+            'edit_candidate_photo' => in_array($snapshot->state, [
+                ElectionLifecycleState::Draft,
+                ElectionLifecycleState::SubmittedForApproval,
+                ElectionLifecycleState::Approved,
+                ElectionLifecycleState::SetupAdministration,
+                ElectionLifecycleState::SetupNomination,
+                ElectionLifecycleState::ReadyForVoting,
+            ], true),
+
             // ── Default: Undefined operations forbidden ──
             default => false,
         };
@@ -113,6 +126,8 @@ final class OperationCapabilityMapper
             // member/officer, not just this election's registered voters, so
             // we don't leak lifecycle phase to them.
             'preview_ballot' => "This preview isn't available right now.",
+
+            'edit_candidate_photo' => 'Candidate photos can only be edited before voting starts.',
 
             default => 'Operation not permitted in current election state',
         };

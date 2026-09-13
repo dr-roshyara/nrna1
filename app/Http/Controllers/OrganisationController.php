@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Domain\Election\Enum\ElectionLifecycleState;
+use App\Http\Middleware\OperationCapabilityMapper;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
@@ -694,10 +695,25 @@ class OrganisationController extends Controller
                 ])->values(),
             ]);
 
+        // UX guidance only — the PATCH endpoint (CandidacyPhotoController)
+        // independently re-derives and enforces both the role check and the
+        // lifecycle capability on every request, regardless of this flag.
+        $isCommitteeManager = ElectionOfficer::where('election_id', $electionModel->id)
+            ->where('user_id', auth()->id())
+            ->whereIn('role', ['chief', 'deputy'])
+            ->where('status', 'active')
+            ->exists();
+        $canEditCandidatePhotos = $isCommitteeManager
+            && OperationCapabilityMapper::isOperationAllowed(
+                'edit_candidate_photo',
+                ElectionLifecycle::of($electionModel)->snapshot()
+            );
+
         return Inertia::render('Organisations/Candidates', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
             'posts'        => $posts->values(),
+            'can_edit_candidate_photos' => $canEditCandidatePhotos,
         ]);
     }
 

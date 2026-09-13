@@ -21,6 +21,7 @@
 use App\Http\Controllers\BallotPreviewController;
 use App\Http\Controllers\CandidacyApplicationController;
 use App\Http\Controllers\Election\CandidacyManagementController;
+use App\Http\Controllers\Election\CandidacyPhotoController;
 use App\Http\Controllers\Election\VoterImportController;
 use App\Http\Controllers\Election\VoterVerificationController;
 use App\Http\Controllers\Election\CandidacyReviewController;
@@ -326,6 +327,11 @@ Route::prefix('organisations/{organisation:slug}')
             // ── READ-ONLY PAGES (accessible in multiple/all phases) ──────────────────
             Route::get('/positions',          [OrganisationController::class, 'voterPosts'])->name('organisations.elections.positions');
             Route::get('/candidates',         [OrganisationController::class, 'voterCandidates'])->name('organisations.elections.candidates');
+
+            // Candidate photo edit — committee-only (chief|deputy), pre-voting only.
+            Route::patch('/candidates/{candidacy}/photo', [CandidacyPhotoController::class, 'update'])
+                ->middleware('election.state:edit_candidate_photo')
+                ->name('organisations.elections.candidates.update-photo');
             Route::get('/voters', [OrganisationController::class, 'voters'])
                 ->name('organisations.elections.voters')
                 ->middleware('throttle:60,1');

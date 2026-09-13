@@ -1,15 +1,51 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
-import { Link } from '@inertiajs/vue3'
+import PhotoEditModal from '@/Components/Candidacy/PhotoEditModal.vue'
+import { Link, router } from '@inertiajs/vue3'
 
 const props = defineProps({
   organisation: Object,
   election: Object,
   posts: Array,
+  // UX guidance only — the PATCH endpoint (CandidacyPhotoController)
+  // independently re-derives and enforces both the committee role check and
+  // the pre-voting lifecycle capability on every request. This prop never
+  // duplicates that authorization logic; it only controls whether the
+  // affordance is rendered.
+  can_edit_candidate_photos: { type: Boolean, default: false },
 })
 
 const backUrl = computed(() => route('organisations.voter-hub', props.organisation.slug))
+
+const editingCandidate = ref(null)
+
+function openPhotoEditor(candidate) {
+  editingCandidate.value = candidate
+}
+
+function closePhotoEditor() {
+  editingCandidate.value = null
+}
+
+function onPhotoUpdated() {
+  editingCandidate.value = null
+  router.reload({ only: ['posts'], preserveScroll: true })
+}
+
+const editingPhotoUrl = computed(() => {
+  if (!editingCandidate.value || !editingCandidate.value.image_path_1) return null
+  return `/storage/${editingCandidate.value.image_path_1}`
+})
+
+const editingUpdateUrl = computed(() => {
+  if (!editingCandidate.value) return null
+  return route('organisations.elections.candidates.update-photo', {
+    organisation: props.organisation.slug,
+    election: props.election.slug,
+    candidacy: editingCandidate.value.id,
+  })
+})
 </script>
 
 <template>
@@ -108,6 +144,16 @@ const backUrl = computed(() => route('organisations.voter-hub', props.organisati
                       {{ candidate.description }}
                     </p>
                     <div v-else class="text-slate-400 text-sm mt-2 italic">No description provided</div>
+
+                    <button
+                      v-if="can_edit_candidate_photos"
+                      type="button"
+                      data-testid="edit-photo-button"
+                      class="mt-3 text-sm font-semibold text-primary-600 hover:text-primary-700"
+                      @click="openPhotoEditor(candidate)"
+                    >
+                      Edit Photo
+                    </button>
                   </div>
                 </div>
               </div>
@@ -116,6 +162,15 @@ const backUrl = computed(() => route('organisations.voter-hub', props.organisati
         </div>
       </div>
     </div>
+
+    <PhotoEditModal
+      v-if="editingCandidate"
+      :photo-url="editingPhotoUrl"
+      :update-url="editingUpdateUrl"
+      :candidate-name="editingCandidate.name"
+      @close="closePhotoEditor"
+      @updated="onPhotoUpdated"
+    />
   </ElectionLayout>
 </template>
 
