@@ -110,7 +110,20 @@ class ElectionModelLockAndAuditTest extends TestCase
         $this->assertTrue($election->fresh()->results_locked);
     }
 
-    public function test_complete_nomination_locks_voting_on_start(): void
+    /**
+     * Renamed from test_complete_nomination_locks_voting_on_start, which
+     * asserted the opposite of what completeNomination() has ever actually
+     * done (verified: neither the pre-Slice-B legacy implementation nor the
+     * current constitutional one touches voting_locked — only open_voting
+     * and the system's grace-period auto-lock path, Election::enforceVotingLock(),
+     * may establish it). This was a stale/incorrect assertion, not a
+     * migration regression — see the Slice C read-only investigation report.
+     *
+     * completeNomination() now goes through ConstitutionalTransitionGuard,
+     * which requires an authenticated chief/deputy ElectionOfficer for any
+     * caller, not just HTTP requests (see Slice B).
+     */
+    public function test_complete_nomination_does_not_lock_voting(): void
     {
         $election = Election::factory()->create([
             'administration_completed' => true,
@@ -131,13 +144,23 @@ class ElectionModelLockAndAuditTest extends TestCase
             'status' => 'approved',
         ]);
 
-        $user = User::factory()->create();
-        $election->completeNomination('Test reason', $user->id);
+        $chief = User::factory()->create();
+        \App\Models\ElectionOfficer::create([
+            'organisation_id' => $election->organisation_id,
+            'election_id' => $election->id,
+            'user_id' => $chief->id,
+            'role' => 'chief',
+            'status' => 'active',
+        ]);
+        $this->actingAs($chief);
+
+        $election->completeNomination('Test reason', $chief->id);
 
         $fresh = $election->fresh();
         $this->assertTrue($fresh->nomination_completed);
-        $this->assertTrue($fresh->voting_locked);
-        $this->assertEquals($user->id, $fresh->voting_locked_by);
+        $this->assertNotNull($fresh->nomination_completed_at);
+        $this->assertFalse((bool) $fresh->voting_locked);
+        $this->assertNull($fresh->voting_locked_by);
     }
 
     public function test_complete_administration_still_works(): void
