@@ -103,6 +103,10 @@ class ProcessElectionAutoTransitions extends Command
             return 0;
         }
 
+        if (!\App\Application\Election\Services\NominationCompletionPredicates::hasApprovedCandidates($election)) {
+            return 0;
+        }
+
         $systemId = null;
         try {
             $election->enforceVotingLock($systemId);

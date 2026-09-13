@@ -145,6 +145,31 @@ class ProcessElectionAutoTransitionsTest extends TestCase
         $this->assertFalse($election->voting_locked);
     }
 
+    /**
+     * C2a: the automatic voting-lock path must not establish voting_locked
+     * without at least one approved candidate — otherwise the election could
+     * reach Counting with zero candidates once the voting window elapses
+     * (Slice C2 investigation finding).
+     */
+    public function test_skips_voting_transition_when_zero_approved_candidates(): void
+    {
+        $election = Election::factory()->create([
+            'administration_completed' => true,
+            'nomination_completed' => true,
+            'allow_auto_transition' => true,
+            'auto_transition_grace_days' => 0,
+            'nomination_completed_at' => now()->subDays(1),
+        ]);
+
+        // Post exists but has zero candidacies at all — zero approved, zero pending.
+        Post::factory()->create(['election_id' => $election->id]);
+
+        $this->artisan('elections:process-auto-transitions')->assertExitCode(0);
+
+        $election->refresh();
+        $this->assertFalse($election->voting_locked);
+    }
+
     public function test_skips_voting_transition_when_grace_not_elapsed(): void
     {
         $election = Election::factory()->create([
