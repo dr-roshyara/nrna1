@@ -182,7 +182,8 @@
                 <!-- Spacer -->
                 <div class="flex-grow"></div>
 
-                <!-- Dual CTA: Results + Receipt Codes -->
+                <!-- Results CTA — Receipt Codes is committee-only and lives in
+                     Voter Management, not Voter Hub. -->
                 <div class="pt-6 border-t border-white/20 group-hover:border-white/40 transition-colors duration-300 space-y-2 flex flex-col gap-2">
                   <!-- View Results Button -->
                   <a
@@ -194,18 +195,6 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
                     View Results
-                  </a>
-
-                  <!-- View Receipt Codes Button -->
-                  <a
-                    :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
-                    class="inline-flex items-center justify-center gap-2 w-full bg-green-600/80 hover:bg-green-500 text-white font-extrabold text-base py-3 px-4 rounded-lg transition-all duration-300 border border-green-500/50 hover:border-green-400 shadow-md hover:shadow-lg hover:scale-105"
-                    :aria-label="`View receipt codes for ${election.name}`"
-                  >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-                    </svg>
-                    Receipt Codes
                   </a>
                 </div>
               </div>
@@ -384,11 +373,11 @@
                       </svg>
                     </a>
 
-                    <!-- Verify Vote -->
+                    <!-- See Your Vote -->
                     <a
                       href="/vote/verify_to_show"
                       class="flex items-center gap-3 px-4 py-3 rounded-xl border border-primary-200 bg-primary-50 hover:bg-white hover:border-primary-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1"
-                      aria-label="Verify your submitted vote"
+                      aria-label="See your submitted vote"
                     >
                       <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center" aria-hidden="true">
                         <svg class="w-4 h-4 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -396,7 +385,7 @@
                         </svg>
                       </span>
                       <span class="flex-1 min-w-0">
-                        <span class="block text-sm font-semibold text-primary-800">Verify Vote</span>
+                        <span class="block text-sm font-semibold text-primary-800">See Your Vote</span>
                         <span class="block text-xs text-primary-600">View and verify your vote</span>
                       </span>
                       <svg class="w-4 h-4 text-primary-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -426,26 +415,6 @@
                       </svg>
                     </a>
 
-                    <!-- View Receipt Codes — only if results are published -->
-                    <a
-                      v-if="election.results_published_at"
-                      :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
-                      class="flex items-center gap-3 px-4 py-3 rounded-xl border border-green-200 bg-green-50 hover:bg-white hover:border-green-300 hover:shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
-                      :aria-label="`View verification codes for ${election.name}`"
-                    >
-                      <span class="flex-shrink-0 w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center" aria-hidden="true">
-                        <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01"/>
-                        </svg>
-                      </span>
-                      <span class="flex-1 min-w-0">
-                        <span class="block text-sm font-semibold text-green-800">Receipt Codes</span>
-                        <span class="block text-xs text-green-600">Verify all voter codes</span>
-                      </span>
-                      <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                      </svg>
-                    </a>
 
 
                     <!-- Apply for Candidacy — only if not yet applied -->
@@ -491,17 +460,18 @@
 
                 <!-- CTA -->
                 <div class="pt-1">
-                  <!-- Results Published: Show Receipt Codes CTA -->
+                  <!-- Results Published: Show Results CTA — Receipt Codes is
+                       committee-only and lives in Voter Management, not here. -->
                   <a
                     v-if="election.results_published_at"
-                    :href="route('organisations.election.receipt-codes', { organisation: organisation.slug, election: election.slug })"
+                    :href="route('result.index', { election: election.slug })"
                     class="flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-sm font-semibold py-2.5 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
-                    :aria-label="`View receipt codes for ${election.name}`"
+                    :aria-label="`View results for ${election.name}`"
                   >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                     </svg>
-                    View Receipt Codes
+                    View Results
                   </a>
 
                   <!-- Still Active: Vote or Status -->

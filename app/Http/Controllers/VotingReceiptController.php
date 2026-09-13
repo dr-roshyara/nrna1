@@ -19,6 +19,12 @@ class VotingReceiptController extends Controller
      */
     public function index(Organisation $organisation, Election $election)
     {
+        // Committee-only: the full randomized receipt-code list is a governance/
+        // audit view (ElectionPolicy::viewResults — active election officer for
+        // this organisation), distinct from a voter's own self-service lookup
+        // via /vote/verify_to_show.
+        $this->authorize('viewResults', $election);
+
         // Security: only accessible while results are visible. results_published is the
         // single toggle-able flag (Hide/Unhide) — results_published_at is a permanent
         // "was ever published" timestamp and must NOT gate this, or hiding results would

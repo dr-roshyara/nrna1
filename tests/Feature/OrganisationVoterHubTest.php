@@ -97,6 +97,25 @@ class OrganisationVoterHubTest extends TestCase
              );
     }
 
+    /**
+     * Boundary B one-liner (see Ballot Preview plan §7): the existing "Receipt
+     * Codes" quick-action tile in VoterHub.vue is gated on
+     * election.results_published_at, but voterHub()'s activeElections map never
+     * included that field — the tile has been silently dead. Named and tested
+     * separately from the ballot-preview feature's own suite.
+     */
+    public function test_voter_hub_includes_results_published_at_field(): void
+    {
+        $election = ElectionScenarioFactory::resultsPublished($this->org);
+
+        $this->actingAs($this->member)
+             ->get(route('organisations.voter-hub', $this->org->slug))
+             ->assertInertia(fn ($page) =>
+                 $page->has('activeElections', 1)
+                      ->where('activeElections.0.results_published_at', fn ($value) => $value !== null)
+             );
+    }
+
     public function test_voter_hub_includes_can_preview_ballot_true_during_voting_active(): void
     {
         $election = ElectionScenarioFactory::votingActive($this->org);
