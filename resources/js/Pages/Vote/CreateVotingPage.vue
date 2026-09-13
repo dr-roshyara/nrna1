@@ -456,8 +456,14 @@ export default {
                    this.votingProgress.completed === this.votingProgress.total
         },
 
+        // Regional participation is optional at the election level — a
+        // national-only election (has_regional_posts === false) is a valid
+        // configuration, not a warning condition. This must only fire when the
+        // election actually defines regional posts and the current voter's
+        // own region has none among them.
         hasRegionButNoPosts() {
-            return !!this.user_region &&
+            return this.election?.has_regional_posts === true &&
+                   !!this.user_region &&
                    this.normalizedRegionalPosts.length === 0 &&
                    !this.isLoading
         },

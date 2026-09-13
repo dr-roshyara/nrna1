@@ -438,6 +438,14 @@ public function create(Request $request)
         'type' => $election->type,
         'description' => $election->description,
         'is_active' => $lifecycle->canVote(),
+        // Regional participation is optional at the election level — a
+        // national-only election is valid, not an error. This flag lets the
+        // frontend distinguish "this election has no regional section at all"
+        // from "the voter's own region has no matching posts", so the
+        // regional-empty warning only fires in the latter case.
+        'has_regional_posts' => $election->isDemo()
+            ? DemoPost::where('election_id', $election->id)->where('is_national_wide', false)->exists()
+            : Post::withoutGlobalScopes()->where('election_id', $election->id)->where('is_national_wide', false)->exists(),
     ], $electionSettings ?? []) : null;
 
     return Inertia::render('Vote/CreateVotingPage', [
