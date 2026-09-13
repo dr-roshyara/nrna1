@@ -129,6 +129,7 @@ class ElectionPolicyStateAwareTest extends TestCase
             'nomination_completed' => true,
             'voting_starts_at' => now()->subDays(2),
             'voting_ends_at' => now()->subHours(2),  // Voting ended → Counting state
+            'voting_locked' => true,  // voting was legitimately opened (required for Counting derivation)
             'results_published_at' => null,
         ]);
 

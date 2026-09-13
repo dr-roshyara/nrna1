@@ -272,6 +272,10 @@ final class ElectionScenarioFactory
                 // Voting window is CLOSED
                 'voting_starts_at' => $now->copy()->subDays(1),
                 'voting_ends_at' => $now->copy()->subMinute(),
+                // Voting was legitimately opened — required alongside the
+                // elapsed window for Counting derivation (ElectionLifecycleEngineImpl:
+                // an elapsed voting_ends_at alone is not evidence voting occurred).
+                'voting_locked' => true,
                 // Setup complete
                 'administration_completed' => true,
                 'nomination_completed' => true,

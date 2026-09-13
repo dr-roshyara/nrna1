@@ -280,4 +280,63 @@ class ElectionLifecycleEngineTest extends TestCase
         $this->assertEquals(ElectionLifecycleState::Suspended, $state,
             'Suspension must override VotingActive state; engine checks suspended_at first');
     }
+
+    /**
+     * RED test (migration-conflict finding, onf-europe-test-7891ba99 incident):
+     * Counting is constitutionally reachable only via close_voting, itself only
+     * reachable from voting_active, which requires voting_locked === true. Yet
+     * rule 4 (Counting) currently derives Counting from an elapsed voting_ends_at
+     * alone — with no check that voting was ever legitimately opened at all.
+     *
+     * An election whose nomination was completed AFTER its (already-elapsed)
+     * voting window was configured, but which was NEVER opened via open_voting
+     * (voting_locked stays false, no election_state_transitions row exists for
+     * open_voting/close_voting), must NOT be derived as Counting — the elapsed
+     * timestamp alone is not evidence that voting was ever opened.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function counting_is_not_derived_when_voting_was_never_opened(): void
+    {
+        $election = Election::factory()->create([
+            'approved_at' => now()->subDays(2),
+            'administration_completed' => true,
+            'nomination_completed' => true,
+            'voting_starts_at' => now()->subDays(1),
+            'voting_ends_at' => now()->subMinute(),
+            'voting_locked' => false,
+            'results_published_at' => null,
+        ]);
+
+        $state = $this->engine->getState($election);
+
+        $this->assertNotEquals(ElectionLifecycleState::Counting, $state,
+            'An elapsed voting_ends_at alone must not derive Counting — voting_locked must also be true, ' .
+            'evidencing that voting was legitimately opened (see onf-europe-test-7891ba99 incident).'
+        );
+    }
+
+    /**
+     * Positive/legitimate-path counterpart: when voting genuinely was opened
+     * (voting_locked === true) and its window has since elapsed, Counting must
+     * still be derived, exactly as before.
+     */
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function counting_is_derived_when_voting_was_legitimately_opened_and_window_elapsed(): void
+    {
+        $election = Election::factory()->create([
+            'approved_at' => now()->subDays(2),
+            'administration_completed' => true,
+            'nomination_completed' => true,
+            'voting_starts_at' => now()->subDays(1),
+            'voting_ends_at' => now()->subMinute(),
+            'voting_locked' => true,
+            'results_published_at' => null,
+        ]);
+
+        $state = $this->engine->getState($election);
+
+        $this->assertEquals(ElectionLifecycleState::Counting, $state,
+            'A legitimately-opened election (voting_locked=true) whose window has elapsed must still derive Counting.'
+        );
+    }
 }

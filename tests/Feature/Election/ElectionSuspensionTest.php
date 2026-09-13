@@ -192,6 +192,7 @@ class ElectionSuspensionTest extends TestCase
             'nomination_completed' => true,
             'voting_starts_at' => now()->subHours(5),
             'voting_ends_at' => now()->subHours(1),   // voting ended 1 hour ago
+            'voting_locked' => true,                  // voting was legitimately opened (required for Counting derivation)
             'results_published_at' => null,
             'suspended_at' => now()->subHours(2),     // suspended 2 hours ago (after voting ended)
             'suspended_lifecycle_context' => ElectionLifecycleState::VotingActive->value,  // old context

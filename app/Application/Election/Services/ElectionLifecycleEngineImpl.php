@@ -84,7 +84,7 @@ final class ElectionLifecycleEngineImpl implements ElectionLifecycleEngine
         // CRITICAL: Requires legitimate setup completion
         if ($election->voting_ends_at !== null && $now->gte($election->voting_ends_at)) {
             // Verify setup was completed legitimately
-            if ($election->approved_at !== null && $election->administration_completed && $election->nomination_completed) {
+            if ($election->voting_locked && $election->approved_at !== null && $election->administration_completed && $election->nomination_completed) {
                 return ElectionLifecycleState::Counting;
             }
             // Setup incomplete but voting closed → constitutional limbo (soft enforcement)
