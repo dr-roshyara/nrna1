@@ -65,7 +65,10 @@
       "currently_inactive": "मतदान हाल निष्क्रिय छ | Voting is currently inactive",
       "btn_open": "मतदान सुरु गर्नुहोस् | Open Voting",
       "btn_lock": "लक र सुरु गर्नुहोस् | Lock & Start",
-      "btn_close": "मतदान समाप्त गर्नुहोस् | Close Voting"
+      "btn_close": "मतदान समाप्त गर्नुहोस् | Close Voting",
+      "extend_voting_label": "मतदान समाप्ति समय बढाउनुहोस् | Extend Voting End Time",
+      "extend_voting_hint": "हालको समाप्ति समय: | Current end time:",
+      "btn_extend": "बढाउनुहोस् | Extend"
     },
     "posts": {
       "title": "पदहरू र उम्मेद्वार | Posts & Candidates",
@@ -102,7 +105,8 @@
     "hide": "के तपाईं परिणाम लुकाउन चाहनुहुन्छ? यो पृष्ठ मतदाताहरूका लागि उपलब्ध हुनेछैन (404)। | Are you sure you want to hide the results? The page will become unavailable (404) to voters.",
     "unhide": "के तपाईं परिणाम फेरि देखाउन चाहनुहुन्छ? | Are you sure you want to unhide the results?",
     "open_voting": "के तपाईं मतदान खोल्न चाहनुहुन्छ? | Are you sure you want to open the voting period?",
-    "close_voting": "के तपाईं मतदान बन्द गर्न चाहनुहुन्छ? | Are you sure you want to close the voting period?"
+    "close_voting": "के तपाईं मतदान बन्द गर्न चाहनुहुन्छ? | Are you sure you want to close the voting period?",
+    "extend_voting": "के तपाईं मतदान अवधि यो नयाँ समयसम्म बढाउन चाहनुहुन्छ? | Are you sure you want to extend the voting period to this new end time?"
   },
   "states": {
     "draft": "ड्राफ्ट | Draft",

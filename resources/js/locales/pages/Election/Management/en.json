@@ -65,7 +65,10 @@
       "currently_inactive": "Voting is currently inactive",
       "btn_open": "Open Voting",
       "btn_lock": "Lock & Start",
-      "btn_close": "Close Voting"
+      "btn_close": "Close Voting",
+      "extend_voting_label": "Extend Voting End Time",
+      "extend_voting_hint": "Current end time:",
+      "btn_extend": "Extend"
     },
     "posts": {
       "title": "Posts & Candidates",
@@ -102,7 +105,8 @@
     "hide": "Are you sure you want to hide the election results? The results page will become unavailable (404) to voters until you unhide it.",
     "unhide": "Are you sure you want to unhide the election results? The results page will become available to voters again.",
     "open_voting": "Are you sure you want to open the voting period? Voters will be able to cast their votes.",
-    "close_voting": "Are you sure you want to close the voting period? No new votes will be accepted."
+    "close_voting": "Are you sure you want to close the voting period? No new votes will be accepted.",
+    "extend_voting": "Are you sure you want to extend the voting period to this new end time?"
   },
   "states": {
     "draft": "Draft",

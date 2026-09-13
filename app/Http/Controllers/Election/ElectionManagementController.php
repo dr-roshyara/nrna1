@@ -969,6 +969,33 @@ class ElectionManagementController extends Controller
     }
 
     /**
+     * Extend the voting end time while voting is active — chief or deputy.
+     * voting_starts_at is permanent once voting opens; only the end time may be
+     * pushed later (never earlier, never before voting has been opened).
+     *
+     * POST /elections/{election}/extend-voting
+     */
+    public function extendVoting(Request $request, Election $election): RedirectResponse
+    {
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'voting_ends_at' => ['required', 'date', 'after:now'],
+        ]);
+
+        try {
+            $election->extendVotingEndTime(
+                \Carbon\Carbon::parse($validated['voting_ends_at']),
+                auth()->id()
+            );
+
+            return back()->with('success', 'Voting period extended successfully.');
+        } catch (\DomainException $e) {
+            return back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
      * SUSPEND ELECTION — governance intervention overlay.
      *
      * This is NOT lifecycle progression. Suspension is an operational governance override

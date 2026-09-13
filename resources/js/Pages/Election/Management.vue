@@ -264,6 +264,34 @@
                       <p v-if="!canCloseVoting && (denialDetail(ElectionActions.CLOSE_VOTING) ?? denialLabel(ElectionActions.CLOSE_VOTING))" class="mt-2 text-xs text-slate-400 font-medium">
                         {{ denialDetail(ElectionActions.CLOSE_VOTING) ?? denialLabel(ElectionActions.CLOSE_VOTING) }}
                       </p>
+
+                      <!-- Extend voting end time — only while voting is active.
+                           Start time is permanent and never editable once set. -->
+                      <div class="mt-4 pt-4 border-t border-slate-100">
+                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1.5">
+                          {{ t.sections.election_control.extend_voting_label }}
+                        </label>
+                        <p class="text-xs text-slate-400 mb-2">
+                          {{ t.sections.election_control.extend_voting_hint }} {{ formatDateTime(election.voting_ends_at) }}
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                          <input
+                            type="datetime-local"
+                            v-model="extendVotingEndsAt"
+                            :min="toDatetimeLocal(election.voting_ends_at)"
+                            class="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                          />
+                          <ActionButton
+                            variant="outline"
+                            size="md"
+                            :loading="isLoading"
+                            :disabled="!extendVotingEndsAt"
+                            @click="extendVoting"
+                          >
+                            {{ t.sections.election_control.btn_extend }}
+                          </ActionButton>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </transition>
@@ -1198,6 +1226,13 @@ function toDatetimeLocal(raw) {
   return new Date(raw).toISOString().slice(0, 16)
 }
 
+function formatDateTime(raw) {
+  if (!raw) return '—'
+  return new Date(raw).toLocaleString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit',
+  })
+}
+
 const currentState = computed(() => props.stateMachine?.currentState ?? 'draft')
 const capabilities = useElectionCapabilities(computed(() => props.stateMachine))
 
@@ -1376,6 +1411,22 @@ const closeVoting = () => {
   if (!confirm(t.value.confirm.close_voting)) return
   isLoading.value = true
   router.post(route('elections.close-voting', { election: props.election.slug }), {}, {
+    preserveScroll: true,
+    onFinish: () => { isLoading.value = false },
+  })
+}
+
+// Voting end time can be extended (never shortened, never before opening) while
+// voting is active — voting_starts_at stays permanent once set.
+const extendVotingEndsAt = ref('')
+
+const extendVoting = () => {
+  if (!extendVotingEndsAt.value) return
+  if (!confirm(t.value.confirm.extend_voting)) return
+  isLoading.value = true
+  router.post(route('elections.extend-voting', { election: props.election.slug }), {
+    voting_ends_at: extendVotingEndsAt.value,
+  }, {
     preserveScroll: true,
     onFinish: () => { isLoading.value = false },
   })

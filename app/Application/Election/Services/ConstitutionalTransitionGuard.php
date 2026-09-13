@@ -174,11 +174,28 @@ final class ConstitutionalTransitionGuard
         if (!empty($unmetConditions)) {
             $condStr = implode(', ', $unmetConditions);
             $this->metrics?->recordIllegalActivationAttempt($election->id, "Unmet preconditions for action '$action': {$condStr}");
+
+            // A single unmet precondition gets its human-readable message (matching
+            // what the UI shows proactively); multiple failures fall back to the
+            // generic technical list, which is rare and always paired with the UI hint.
+            if (count($unmetConditions) === 1 && isset(self::PRECONDITION_MESSAGES[$unmetConditions[0]])) {
+                throw new InvalidTransitionException(self::PRECONDITION_MESSAGES[$unmetConditions[0]]);
+            }
+
             throw new InvalidTransitionException(
                 "Action '{$action}' cannot proceed. Unmet preconditions: {$condStr}"
             );
         }
     }
+
+    /**
+     * Human-readable messages for preconditions that are commonly hit by a chief
+     * clicking a button, rather than an attack — shown as-is instead of the
+     * generic "Unmet preconditions: <name>" technical listing.
+     */
+    private const PRECONDITION_MESSAGES = [
+        'voting_window_defined' => 'Update Voting date and time first.',
+    ];
 
     /**
      * Check if a specific precondition is met for an election.
@@ -200,7 +217,12 @@ final class ConstitutionalTransitionGuard
             'has_approved_candidates' => $election->candidacies()
                 ->where('status', 'approved')
                 ->exists(),
-            'voting_window_defined' => $election->voting_starts_at !== null && $election->voting_ends_at !== null,
+            // The chief must configure the voting end time (via Timeline settings)
+            // before opening voting — open_voting always sets voting_starts_at = now(),
+            // so the configured voting_ends_at must still be in the future relative to
+            // the actual opening moment, not just relative to whatever start was
+            // originally planned.
+            'voting_window_defined' => $election->voting_ends_at !== null && $election->voting_ends_at->isFuture(),
 
             // NEW: Timezone must be configured (dedicated column on elections table)
             'timezone_set' => !empty($election->timezone),

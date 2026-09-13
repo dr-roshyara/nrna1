@@ -1601,6 +1601,40 @@ class Election extends Model
         $this->logStateChange('voting_locked', ['actor_id' => $actorId]);
     }
 
+    /**
+     * Extend the voting end time while voting is active. voting_starts_at is
+     * permanent once voting has been opened; only voting_ends_at may move, and
+     * only later — this is an extension, never a way to shorten the window.
+     */
+    public function extendVotingEndTime(\Carbon\Carbon $newEndTime, ?string $actorId = null): void
+    {
+        if (!$this->voting_locked) {
+            throw new \DomainException('Voting has not been opened yet — there is no voting period to extend.');
+        }
+
+        if ($this->currentState() !== \App\Domain\Election\Enum\ElectionLifecycleState::VotingActive) {
+            throw new \DomainException('Voting end time can only be extended while voting is active.');
+        }
+
+        if (!$newEndTime->isFuture()) {
+            throw new \DomainException('New voting end time must be in the future.');
+        }
+
+        if (!$this->voting_ends_at || $newEndTime->lte($this->voting_ends_at)) {
+            throw new \DomainException('New voting end time must be later than the current end time.');
+        }
+
+        $previousEnd = $this->voting_ends_at;
+
+        $this->update(['voting_ends_at' => $newEndTime]);
+
+        $this->logStateChange('voting_extended', [
+            'actor_id' => $actorId,
+            'previous_end' => $previousEnd->toIso8601String(),
+            'new_end' => $newEndTime->toIso8601String(),
+        ]);
+    }
+
     public function lockResults(): void
     {
         $this->update([
@@ -1817,11 +1851,16 @@ class Election extends Model
 
     private function applySideEffectsForOpenVoting(?string $actorId, \Carbon\Carbon $currentTime): void
     {
-        // Debug: Log the values being set
+        // The 'voting_window_defined' precondition (ConstitutionalTransitionGuard)
+        // already guarantees voting_ends_at is set and still in the future — so it
+        // is honored here as-is, never overridden with a hardcoded default. Only
+        // voting_starts_at is forced to "now": that is the one value the chief
+        // cannot pre-configure, since opening voting IS the start moment, and it
+        // becomes permanent the instant this runs (see canUpdatePhaseDates('voting')).
         \Illuminate\Support\Facades\Log::info('applySideEffectsForOpenVoting', [
             'election_id' => $this->id,
             'currentTime' => $currentTime->toIso8601String(),
-            'currentTime + 4 days' => $currentTime->copy()->addDays(4)->toIso8601String(),
+            'voting_ends_at' => $this->voting_ends_at?->toIso8601String(),
         ]);
 
         $updateData = [
@@ -1829,10 +1868,11 @@ class Election extends Model
             // NO deprecated 'status' column — use SSOT engine for state derivation
             'nomination_completed' => true,
             'nomination_completed_at' => $currentTime,
-            // Always activate voting window to start NOW when opening voting
-            // This ensures engine derives VotingActive state (window is open)
+            // Voting starts NOW, at the moment it is explicitly opened. This is
+            // permanent — the chief cannot change it once set.
             'voting_starts_at' => $currentTime,
-            'voting_ends_at' => $currentTime->copy()->addDays(4),
+            // voting_ends_at is left untouched: it must already be configured
+            // (and in the future) by this point, per validateOpenVoting().
             // Lock voting as part of opening voting
             'voting_locked' => true,
             'voting_locked_at' => $currentTime,
@@ -2105,12 +2145,14 @@ class Election extends Model
         if (!$this->timezone) {
             return 'Timezone must be set before opening voting.';
         }
-        if (!$this->voting_starts_at || !$this->voting_ends_at) {
-            return 'Voting window (start and end times) must be defined.';
+        // The chief must configure the voting end time before opening voting.
+        // open_voting always sets voting_starts_at = now() at the moment it is
+        // clicked, so only voting_ends_at needs to be pre-configured — and it must
+        // still be in the future relative to that moment, not just relative to
+        // whatever start time was originally planned.
+        if (!$this->voting_ends_at || !$this->voting_ends_at->isFuture()) {
+            return 'Update Voting date and time first.';
         }
-        // NOTE: Don't check if voting_starts_at has been reached.
-        // The open_voting action itself sets voting_starts_at = now(),
-        // so checking if it's in the future would block the action.
         return null;
     }
 

@@ -65,7 +65,10 @@
       "currently_inactive": "Abstimmung ist derzeit inaktiv",
       "btn_open": "Abstimmung öffnen",
       "btn_lock": "Sperren & Starten",
-      "btn_close": "Abstimmung schließen"
+      "btn_close": "Abstimmung schließen",
+      "extend_voting_label": "Abstimmungsende verlängern",
+      "extend_voting_hint": "Aktuelles Ende:",
+      "btn_extend": "Verlängern"
     },
     "posts": {
       "title": "Stellen & Kandidaten",
@@ -102,7 +105,8 @@
     "hide": "Möchten Sie die Wahlergebnisse wirklich ausblenden? Die Ergebnisseite wird für Wähler nicht mehr erreichbar sein (404), bis Sie sie wieder einblenden.",
     "unhide": "Möchten Sie die Wahlergebnisse wirklich wieder einblenden? Die Ergebnisseite wird für Wähler wieder erreichbar sein.",
     "open_voting": "Möchten Sie den Abstimmungszeitraum wirklich öffnen? Wähler können ihre Stimme abgeben.",
-    "close_voting": "Möchten Sie den Abstimmungszeitraum wirklich schließen? Es werden keine neuen Stimmen mehr angenommen."
+    "close_voting": "Möchten Sie den Abstimmungszeitraum wirklich schließen? Es werden keine neuen Stimmen mehr angenommen.",
+    "extend_voting": "Möchten Sie den Abstimmungszeitraum wirklich bis zu diesem neuen Zeitpunkt verlängern?"
   },
   "states": {
     "draft": "Entwurf",

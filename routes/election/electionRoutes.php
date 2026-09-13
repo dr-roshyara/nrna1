@@ -294,6 +294,10 @@ Route::middleware(['auth', 'verified', 'tenant'])
             ->name('elections.close-voting')
             ->can('manageSettings', 'election');
 
+        Route::post('/extend-voting', [ElectionManagementController::class, 'extendVoting'])
+            ->name('elections.extend-voting')
+            ->can('manageSettings', 'election');
+
         // SUSPEND ELECTION — governance intervention overlay (chief only via suspendElection)
         // NOT lifecycle progression. See suspendElection policy for authorization semantics.
         Route::post('/suspend', [ElectionManagementController::class, 'suspend'])
