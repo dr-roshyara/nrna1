@@ -303,6 +303,7 @@ Route::prefix('organisations/{organisation:slug}')
             // ── RESULTS PHASE ONLY ─────────────────────────────────────────────────
             Route::middleware(['election.state:view_results'])->group(function () {
                 Route::get('/receipt-codes',                            [VotingReceiptController::class, 'index'])      ->name('organisations.election.receipt-codes');
+                Route::get('/receipt-codes/download',                   [VotingReceiptController::class, 'download'])   ->name('organisations.election.receipt-codes.download');
                 Route::post('/votes/confirm-correct',                   [VotingReceiptController::class, 'confirmCorrect'])->name('organisations.vote.confirm-correct');
             });
 

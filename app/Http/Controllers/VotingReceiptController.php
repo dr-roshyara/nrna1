@@ -73,6 +73,59 @@ class VotingReceiptController extends Controller
     }
 
     /**
+     * Download the committee-facing receipt-code list as CSV.
+     *
+     * Same authorization/visibility boundary as index() — a download must
+     * never be reachable by anyone who couldn't already see the page. The
+     * order is independently re-shuffled on every call (never the storage/
+     * insertion order), exactly like the on-screen list already re-shuffles
+     * on every page load — so the serial numbers in a downloaded file are not
+     * a stable identity and will differ between downloads.
+     *
+     * @param Organisation $organisation
+     * @param Election $election
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function download(Organisation $organisation, Election $election)
+    {
+        $this->authorize('viewResults', $election);
+
+        if (!$election->results_published) {
+            abort(404);
+        }
+
+        $rows = ReceiptCode::where('election_id', $election->id)
+            ->get()
+            ->shuffle()
+            ->values();
+
+        $filename = 'receipt-codes-' . $election->slug . '.csv';
+
+        $headers = [
+            'Content-Type'        => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => "attachment; filename=\"{$filename}\"",
+        ];
+
+        $callback = function () use ($rows) {
+            $handle = fopen('php://output', 'w');
+            fprintf($handle, chr(0xEF) . chr(0xBB) . chr(0xBF)); // UTF-8 BOM
+            // No status column: election receipt exports must not carry
+            // negative-sounding wording ("Not Verified") that could read as
+            // casting doubt on the election's credibility.
+            fputcsv($handle, ['#', 'Receipt Code']);
+            foreach ($rows as $index => $code) {
+                fputcsv($handle, [
+                    $index + 1,
+                    $code->receipt_code,
+                ]);
+            }
+            fclose($handle);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
+
+    /**
      * Mark a vote as verified by the voter
      *
      * @param Request $request
