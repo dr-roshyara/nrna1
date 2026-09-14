@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Http\Middleware\OperationCapabilityMapper;
+use App\Models\Code;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
@@ -733,9 +734,41 @@ class OrganisationController extends Controller
             'You are not authorised to view this election.'
         );
 
+        // has_voted is authoritative from Code.has_voted (the sole,
+        // transactionally-consistent writer — VoteController::markUserAsVoted(),
+        // same DB transaction as the vote save, enforced 1-row-per-voter by
+        // the codes_election_id_user_id_unique DB constraint). NOT from
+        // ElectionMembership.has_voted, which has no production writer.
+        // Built once, used for both display and the stats/filter below —
+        // avoids an N+1 and avoids joining the paginated/sorted membership
+        // query against codes.
+        $votedUserIds = Code::withoutGlobalScopes()
+            ->where('election_id', $electionModel->id)
+            ->where('has_voted', true)
+            ->pluck('user_id')
+            ->all();
+        $votedUserIdSet = array_flip($votedUserIds);
+
+        // Stats describe the whole electorate for this election — every
+        // 'voter' membership, regardless of pagination, status filter,
+        // voted filter, or sort. A missing Code row is deterministically
+        // "not voted" (no repository evidence for any other meaning).
+        $allVoterUserIds = $electionModel->memberships()
+            ->withoutGlobalScopes()
+            ->where('role', 'voter')
+            ->pluck('user_id');
+        $total = $allVoterUserIds->count();
+        $votedCount = $allVoterUserIds->filter(fn ($userId) => isset($votedUserIdSet[$userId]))->count();
+        $stats = [
+            'total' => $total,
+            'voted' => $votedCount,
+            'not_voted' => $total - $votedCount,
+            'participation_percentage' => $total > 0 ? round(($votedCount / $total) * 100, 1) : 0.0,
+        ];
+
         $query = $electionModel->memberships()
             ->withoutGlobalScopes()
-            ->with(['user' => fn ($q) => $q->withoutGlobalScopes()->select('id', 'name')])
+            ->with(['user' => fn ($q) => $q->withoutGlobalScopes()->select('id', 'name', 'last_login_at')])
             ->where('role', 'voter');
 
         $sort      = request('sort', 'assigned_at');
@@ -760,20 +793,30 @@ class OrganisationController extends Controller
             }
         }
 
+        if ($voted = request('voted')) {
+            if ($voted === 'voted') {
+                $query->whereIn('election_memberships.user_id', $votedUserIds);
+            } elseif ($voted === 'not_voted') {
+                $query->whereNotIn('election_memberships.user_id', $votedUserIds ?: ['00000000-0000-0000-0000-000000000000']);
+            }
+        }
+
         $voters = $query->paginate(50)
             ->through(fn ($m) => [
                 'id'                => $m->id,
                 'name'              => $m->user?->name ?? '—',
                 'status'            => $m->status,
                 'suspension_status' => $m->suspension_status,
-                'has_voted'         => (bool) $m->has_voted,
+                'has_voted'         => isset($votedUserIdSet[$m->user_id]),
+                'last_login_at'     => $m->user?->last_login_at,
             ]);
 
         return Inertia::render('Organisations/Voters', [
             'organisation' => $organisation->only('id', 'name', 'slug'),
             'election'     => $electionModel->only('id', 'name', 'slug', 'status'),
             'voters'       => $voters,
-            'filters'      => ['sort' => $sort, 'direction' => $direction, 'status' => request('status')],
+            'stats'        => $stats,
+            'filters'      => ['sort' => $sort, 'direction' => $direction, 'status' => request('status'), 'voted' => request('voted')],
         ]);
     }
 

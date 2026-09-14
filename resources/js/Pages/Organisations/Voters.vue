@@ -7,6 +7,7 @@ const props = defineProps({
   organisation: Object,
   election: Object,
   voters: Object, // paginated: { data, current_page, last_page, total, links }
+  stats: Object,  // { total, voted, not_voted, participation_percentage } — whole electorate, not the current page/filter
   filters: Object,
 })
 
@@ -15,6 +16,7 @@ const backUrl = computed(() => route('organisations.voter-hub', props.organisati
 const currentSort      = ref(props.filters?.sort ?? 'assigned_at')
 const currentDirection = ref(props.filters?.direction ?? 'asc')
 const currentStatus    = ref(props.filters?.status ?? '')
+const currentVoted     = ref(props.filters?.voted ?? '')
 
 const statusOptions = [
   { value: '',                   label: 'All' },
@@ -23,6 +25,12 @@ const statusOptions = [
   { value: 'inactive',           label: 'Inactive' },
   { value: 'removed',            label: 'Removed' },
   { value: 'pending_suspension', label: 'Pending Suspension' },
+]
+
+const votedOptions = [
+  { value: '',           label: 'All voting status' },
+  { value: 'voted',       label: 'Voted' },
+  { value: 'not_voted',   label: 'Not voted' },
 ]
 
 const applyFilters = () => {
@@ -35,6 +43,7 @@ const applyFilters = () => {
       sort: currentSort.value,
       direction: currentDirection.value,
       status: currentStatus.value || undefined,
+      voted: currentVoted.value || undefined,
     },
     { preserveState: true, preserveScroll: true }
   )
@@ -50,13 +59,11 @@ const toggleSort = (column) => {
   applyFilters()
 }
 
-// Status display with priority: pending_suspension > voted > active > invited > inactive > removed
+// Status display: pending_suspension overrides membership status. The dedicated
+// Voted column (not this Status column) is the sole voting-status indicator.
 const displayStatus = (voter) => {
   if (voter.suspension_status === 'proposed') {
     return { label: 'Pending Suspension', cls: 'bg-amber-100 text-amber-800 border-amber-200' }
-  }
-  if (voter.has_voted) {
-    return { label: 'Voted', cls: 'bg-green-100 text-green-800 border-green-200' }
   }
   const map = {
     active:   { label: 'Active',   cls: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
@@ -74,6 +81,20 @@ const sortIcon = (column) => {
 
 const goToPage = (url) => {
   if (url) router.get(url, {}, { preserveState: true, preserveScroll: true })
+}
+
+// Same date-formatting convention as Organisations/VoterHub.vue's
+// formatDate (toLocaleString instead of toLocaleDateString, since exact
+// login time is operationally useful here). This page has no i18n/locale
+// composable of its own (unlike VoterHub), so 'en-GB' is used directly,
+// consistent with this file's own existing plain-English UI text.
+// NULL is a distinct, real fact (never logged in) — must read as "Never",
+// not an empty/blank cell.
+const formatLastLogin = (d) => {
+  if (!d) return 'Never'
+  return new Date(d).toLocaleString('en-GB', {
+    day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit',
+  })
 }
 </script>
 
@@ -112,10 +133,34 @@ const goToPage = (url) => {
           </a>
         </div>
 
+        <!-- Participation stats — compact, not a dashboard card: the voter
+             table below is the primary thing to operate on this page. -->
+        <div
+          v-if="stats"
+          class="bg-white rounded-xl border border-slate-200 px-5 py-3 mb-4 flex items-center gap-6 flex-wrap text-sm"
+          role="group"
+          aria-label="Voting participation summary"
+        >
+          <span>
+            <span class="font-bold text-green-700">{{ stats.voted }}</span>
+            <span class="text-slate-500"> voted</span>
+          </span>
+          <span>
+            <span class="font-bold text-slate-700">{{ stats.not_voted }}</span>
+            <span class="text-slate-500"> not voted</span>
+          </span>
+          <span>
+            <span class="font-bold text-primary-700">{{ stats.participation_percentage }}%</span>
+            <span class="text-slate-500"> participation</span>
+          </span>
+          <span class="text-xs text-slate-400 ml-auto">{{ stats.total }} total voters</span>
+        </div>
+
         <!-- Filter bar -->
         <div class="bg-white rounded-xl border border-slate-200 px-5 py-4 mb-6 flex items-center gap-4 flex-wrap">
-          <label class="text-sm font-medium text-slate-600">Filter by status:</label>
+          <label for="status-filter" class="text-sm font-medium text-slate-600">Filter by status:</label>
           <select
+            id="status-filter"
             v-model="currentStatus"
             @change="applyFilters"
             class="text-sm border border-slate-200 rounded-lg px-3 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
@@ -124,6 +169,20 @@ const goToPage = (url) => {
               {{ opt.label }}
             </option>
           </select>
+
+          <label for="voted-filter" class="text-sm font-medium text-slate-600">Filter by voting status:</label>
+          <select
+            id="voted-filter"
+            data-testid="voted-filter"
+            v-model="currentVoted"
+            @change="applyFilters"
+            class="text-sm border border-slate-200 rounded-lg px-3 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-primary-400"
+          >
+            <option v-for="opt in votedOptions" :key="opt.value" :value="opt.value">
+              {{ opt.label }}
+            </option>
+          </select>
+
           <span class="text-xs text-slate-400 ml-auto">
             Page {{ voters.current_page }} of {{ voters.last_page }}
           </span>
@@ -147,6 +206,11 @@ const goToPage = (url) => {
 
         <!-- Voter table -->
         <div v-else class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+          <!-- overflow-x-auto: four columns no longer reliably fit small
+               screens — scroll the table horizontally rather than break the
+               page layout (established pattern elsewhere in this app, e.g.
+               Election/ReceiptCodes.vue). -->
+          <div class="overflow-x-auto">
           <table class="w-full text-sm">
             <thead>
               <tr class="border-b border-slate-100 bg-slate-50">
@@ -166,6 +230,8 @@ const goToPage = (url) => {
                     Status <span class="text-slate-400 text-xs">{{ sortIcon('status') }}</span>
                   </button>
                 </th>
+                <th class="text-left px-6 py-3 font-semibold text-slate-600">Voted</th>
+                <th class="text-left px-6 py-3 font-semibold text-slate-600">Last Login</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100">
@@ -174,17 +240,8 @@ const goToPage = (url) => {
                 :key="voter.id"
                 class="hover:bg-slate-50 transition-colors"
               >
-                <td class="px-6 py-3.5 font-medium text-slate-900 flex items-center gap-2">
+                <td class="px-6 py-3.5 font-medium text-slate-900">
                   {{ voter.name }}
-                  <svg
-                    v-if="voter.has_voted"
-                    class="w-4 h-4 text-green-500 flex-shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    title="Has voted"
-                  >
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                  </svg>
                 </td>
                 <td class="px-6 py-3.5">
                   <span
@@ -193,9 +250,25 @@ const goToPage = (url) => {
                     {{ displayStatus(voter).label }}
                   </span>
                 </td>
+                <td class="px-6 py-3.5">
+                  <span
+                    :class="[
+                      'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
+                      voter.has_voted
+                        ? 'bg-green-100 text-green-800 border-green-200'
+                        : 'bg-slate-100 text-slate-600 border-slate-200',
+                    ]"
+                  >
+                    {{ voter.has_voted ? 'Voted' : 'Not voted' }}
+                  </span>
+                </td>
+                <td class="px-6 py-3.5 text-slate-600 whitespace-nowrap">
+                  {{ formatLastLogin(voter.last_login_at) }}
+                </td>
               </tr>
             </tbody>
           </table>
+          </div>
 
           <!-- Pagination -->
           <div v-if="voters.last_page > 1" class="flex items-center justify-between px-6 py-4 border-t border-slate-100">

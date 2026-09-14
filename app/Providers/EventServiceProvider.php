@@ -18,7 +18,9 @@ use App\Contexts\Membership\Application\Member\Listeners\MemberFeeStateListener;
 use App\Contexts\Governance\Domain\Committee\Events\MemberAssignedToCommittee;
 use App\Contexts\Governance\Domain\Committee\Events\MemberRemovedFromCommittee;
 use App\Contexts\Governance\Infrastructure\Projection\CommitteeMemberProjectionListener;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
+use App\Listeners\RecordLastLoginTimestamp;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
@@ -34,6 +36,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
             'App\Listeners\CreateUserOrganisationRole',
+        ],
+        Login::class => [
+            RecordLastLoginTimestamp::class,
         ],
         'App\Events\Event' => [
             'App\Listeners\EventListener',

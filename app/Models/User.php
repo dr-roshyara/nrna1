@@ -97,6 +97,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'voting_ip',              // Voting IP is mass-assignable for audit trail
         'leaderboard_visibility', // Contribution leaderboard privacy preference
         'residence_geo_unit_id',  // F2: Geographic unit for member context
+        'last_login_at',          // Operational fact only, written by RecordLastLoginTimestamp
     ];
 
     /**
