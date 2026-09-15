@@ -208,18 +208,26 @@ class ProcessMemberImportJob implements ShouldQueue
     /**
      * Get the default membership type ID for the organisation
      * Falls back to global membership type if organisation-specific one doesn't exist
+     *
+     * `is_active` — not `grants_voting_rights` — is the correct validity
+     * criterion here: it's what MembershipTypePolicy::assertActive() and
+     * EloquentMembershipTypeRepository actually check, and voting rights are
+     * a downstream concern (Member::getVotingRightsAttribute(), voter
+     * eligibility) that import never needs to decide. Requiring a voting
+     * type made import impossible for any organisation whose types were all
+     * created through the admin UI, which has no field to set that flag.
      */
     private function getDefaultMembershipTypeId(Organisation $org): string
     {
         // First, try organisation-specific membership type
         $type = MembershipType::where('organisation_id', $org->id)
-            ->where('grants_voting_rights', true)
+            ->where('is_active', true)
             ->first();
 
         // Fall back to global membership type
         if (!$type) {
             $type = MembershipType::whereNull('organisation_id')
-                ->where('grants_voting_rights', true)
+                ->where('is_active', true)
                 ->first();
         }
 

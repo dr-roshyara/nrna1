@@ -164,4 +164,86 @@ class MemberImportTest extends TestCase
         $this->assertNotNull($member->membership_number);
         $this->assertMatchesRegularExpression('/^M[A-Z0-9]{8}$/', $member->membership_number);
     }
+
+    // ── Default membership type selection (grants_voting_rights independence) ──
+    //
+    // getDefaultMembershipTypeId() must select any ACTIVE membership type, not
+    // specifically a voting-enabled one. grants_voting_rights is a downstream
+    // concern (Member::getVotingRightsAttribute(), VoterEligibilityService,
+    // NewsletterService) — never consulted by MembershipTypePolicy::assertActive()
+    // or EloquentMembershipTypeRepository, which only ever check is_active. Every
+    // membership type created through the admin UI (MembershipTypeController) is
+    // grants_voting_rights=false by construction (the form has no field for it),
+    // so requiring grants_voting_rights=true here made import impossible for any
+    // organisation that only used that UI — including election-only
+    // organisations (uses_full_membership=false), where voting rights aren't
+    // gated by membership type at all.
+
+    public function test_import_succeeds_with_only_an_active_non_voting_membership_type(): void
+    {
+        $org = Organisation::factory()->create(['type' => 'tenant']);
+        // MemberImportJob uses BelongsToTenant — must point the session at
+        // this test's own org, not the shared $this->org from setUp().
+        session(['current_organisation_id' => $org->id]);
+        MembershipType::factory()->create([
+            'organisation_id'      => $org->id,
+            'grants_voting_rights' => false,
+            'is_active'            => true,
+        ]);
+        $admin = User::factory()->create(['organisation_id' => $org->id]);
+
+        $path = "imports/{$org->id}/" . Str::uuid() . '_test.csv';
+        Storage::disk('local')->put($path, "email;firstname;lastname\nnonvoting@example.com;Non;Voting\n");
+        $importJob = MemberImportJob::create([
+            'organisation_id'   => $org->id,
+            'initiated_by'      => $admin->id,
+            'file_path'         => $path,
+            'original_filename' => 'test.csv',
+            'status'            => 'pending',
+        ]);
+
+        $job = $this->runJob($importJob);
+
+        $this->assertEquals(1, $job->imported_count, implode(' ', array_column($job->error_log ?? [], 'message')));
+        $this->assertDatabaseHas('users', ['email' => 'nonvoting@example.com']);
+    }
+
+    // NOTE: a "global fallback" test (organisation_id IS NULL membership type)
+    // is deliberately NOT included here. Verification found that
+    // membership_types.organisation_id is a NOT NULL foreign key at the
+    // schema level (migration 2026_04_03_155706_create_membership_types_table),
+    // so such a row can never exist — confirmed by an actual constraint
+    // violation when the test attempted to insert one. The global-fallback
+    // branch in getDefaultMembershipTypeId() is therefore dead code today,
+    // independently of this fix. Reported to the user; not addressed as part
+    // of this change (separate architectural decision, out of scope here).
+
+    public function test_import_still_fails_clearly_when_no_active_membership_type_exists(): void
+    {
+        // Regression guard: removing the grants_voting_rights predicate must
+        // not remove the "no usable type at all" failure — it must still be
+        // reported clearly rather than importing members with no type.
+        $org = Organisation::factory()->create(['type' => 'tenant']);
+        session(['current_organisation_id' => $org->id]);
+        $admin = User::factory()->create(['organisation_id' => $org->id]);
+
+        $path = "imports/{$org->id}/" . Str::uuid() . '_test.csv';
+        Storage::disk('local')->put($path, "email;firstname;lastname\nnotype@example.com;No;Type\n");
+        $importJob = MemberImportJob::create([
+            'organisation_id'   => $org->id,
+            'initiated_by'      => $admin->id,
+            'file_path'         => $path,
+            'original_filename' => 'test.csv',
+            'status'            => 'pending',
+        ]);
+
+        $job = $this->runJob($importJob);
+
+        $job->refresh();
+        $this->assertEquals('failed', $job->status);
+        $this->assertStringContainsString(
+            'No default membership type found',
+            $job->error_log[0]['message'] ?? ''
+        );
+    }
 }
