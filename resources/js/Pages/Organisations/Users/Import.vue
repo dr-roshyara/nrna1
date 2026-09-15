@@ -338,7 +338,10 @@ const runImport = () => {
 
   const formData = new FormData()
   formData.append('file', rawFile.value)
-  formData.append('confirmed', 'true')
+  // Laravel's `boolean` validation rule only accepts true/false/0/1/"0"/"1"
+  // (strict in_array check) — the string "true" fails it, since FormData
+  // fields are always sent as strings over multipart upload.
+  formData.append('confirmed', '1')
 
   router.post(
     route('organisations.users.import.process', props.organisation.slug),

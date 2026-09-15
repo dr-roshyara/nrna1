@@ -169,6 +169,58 @@ class OrganisationUserImportTest extends TestCase
         ]);
     }
 
+    /**
+     * Regression for the bug where Import.vue sent `formData.append('confirmed', 'true')`.
+     * Laravel's `boolean` rule only accepts true/false/0/1/"0"/"1" (strict in_array),
+     * so the literal string "true" always failed with "The confirmed field must be
+     * true or false." — the endpoint was unconditionally broken for every real
+     * browser upload. The other tests in this file pass PHP's native `true`
+     * (e.g. line 114/218), which Laravel's test harness stores as-is and never
+     * coerces to a string, so they could not have caught this: only a real
+     * multipart/form-data request — or an explicit string here — reproduces it.
+     *
+     * @test
+     */
+    public function process_rejects_confirmed_as_the_string_true(): void
+    {
+        Storage::fake('local');
+
+        $content = "email,name,is_org_user,is_member,is_voter,election_id\n";
+        $content .= "regression@example.com,Regression User,YES,NO,NO,\n";
+
+        $file = UploadedFile::fake()->createWithContent('users.csv', $content);
+
+        $response = $this->post(
+            route('organisations.users.import.process', $this->org),
+            ['file' => $file, 'confirmed' => 'true']
+        );
+
+        $response->assertSessionHasErrors('confirmed');
+        $this->assertNull(User::where('email', 'regression@example.com')->first());
+    }
+
+    /** @test */
+    public function process_accepts_confirmed_as_the_string_one_matching_real_browser_uploads(): void
+    {
+        Storage::fake('local');
+
+        $content = "email,name,is_org_user,is_member,is_voter,election_id\n";
+        $content .= "wireformat@example.com,Wire Format User,YES,NO,NO,\n";
+
+        $file = UploadedFile::fake()->createWithContent('users.csv', $content);
+
+        // '1' as a string is exactly what a browser's FormData sends over real
+        // multipart/form-data — this is the fixed value Import.vue now appends.
+        $response = $this->post(
+            route('organisations.users.import.process', $this->org),
+            ['file' => $file, 'confirmed' => '1']
+        );
+
+        $response->assertRedirect();
+        $response->assertSessionHasNoErrors();
+        $this->assertNotNull(User::where('email', 'wireformat@example.com')->first());
+    }
+
     /** @test */
     public function non_owner_cannot_access_import()
     {
