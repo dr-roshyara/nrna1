@@ -142,6 +142,12 @@ const props = defineProps({
   elections: { type: Array, default: () => [] },
   audienceTypes: { type: Array, default: () => ['all_members'] },
   audienceLabels: { type: Object, default: () => {} },
+  // Set when opened from an election's own management screen (e.g. the
+  // "Notify Voters" action) rather than the generic newsletter list —
+  // pre-fills the form so an election officer never has to know the
+  // audience-type/election-id mechanics exist.
+  defaultElectionId: { type: String, default: null },
+  defaultAudienceType: { type: String, default: null },
 })
 
 const page       = usePage()
@@ -192,8 +198,8 @@ const form = ref({
   subject: '',
   html_content: '',
   plain_text: '',
-  audience_type: 'all_members',
-  audience_meta: { election_id: null },
+  audience_type: props.defaultAudienceType ?? 'all_members',
+  audience_meta: { election_id: props.defaultElectionId ?? null },
 })
 const errors = ref({})
 const submitting = ref(false)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Membership;
 use App\Exceptions\InvalidNewsletterStateException;
 use App\Http\Controllers\Controller;
 use App\Models\Election;
+use App\Models\ElectionOfficer;
 use App\Models\NewsletterAttachment;
 use App\Models\Organisation;
 use App\Models\OrganisationNewsletter;
@@ -46,7 +47,13 @@ class OrganisationNewsletterController extends Controller
     public function create(Request $request, Organisation $organisation)
     {
         $org = $organisation;
-        $this->authorizeAdmin($org, $request->user());
+        $electionId = $request->query('election_id');
+        $this->authorizeNewsletterAccess($org, $request->user(), null, $electionId);
+
+        $role = UserOrganisationRole::where('organisation_id', $org->id)
+            ->where('user_id', $request->user()->id)
+            ->value('role');
+        $isOrgAdmin = in_array($role, ['admin', 'owner']);
 
         // No status predicate: nothing ever writes elections.status='deleted', and
         // deletion is SoftDeletes' concern (deleted_at global scope), not a lifecycle
@@ -72,18 +79,37 @@ class OrganisationNewsletterController extends Controller
             'org_admins' => 'Organisation Admins',
         ];
 
+        $audienceTypes = NewsletterService::AUDIENCE_TYPES;
+
+        if (! $isOrgAdmin) {
+            // authorizeNewsletterAccess() already confirmed this user
+            // administers $electionId — narrow what's offered so an
+            // election officer never sees Membership/org-role audiences
+            // they have no access to use.
+            $elections = $elections->where('id', $electionId)->values();
+            $audienceTypes = $this->electionAudienceTypes();
+            $audienceLabels = array_intersect_key($audienceLabels, array_flip($audienceTypes));
+        }
+
         return Inertia::render('Organisations/Membership/Newsletter/Create', [
             'organisation' => $org,
             'elections' => $elections,
-            'audienceTypes' => NewsletterService::AUDIENCE_TYPES,
+            'audienceTypes' => $audienceTypes,
             'audienceLabels' => $audienceLabels,
+            'defaultElectionId' => $electionId,
+            'defaultAudienceType' => $electionId ? 'election_voters' : null,
         ]);
     }
 
     public function store(Request $request, Organisation $organisation)
     {
         $org = $organisation;
-        $this->authorizeAdmin($org, $request->user());
+        $this->authorizeNewsletterAccess(
+            $org,
+            $request->user(),
+            $request->input('audience_type'),
+            $request->input('audience_meta.election_id')
+        );
 
         $key = 'newsletters:' . $request->user()->id;
         if (RateLimiter::tooManyAttempts($key, 3)) {
@@ -111,11 +137,21 @@ class OrganisationNewsletterController extends Controller
     public function show(Request $request, Organisation $organisation, int $id)
     {
         $org = $organisation;
-        $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)
             ->with(['auditLogs', 'attachments'])
             ->findOrFail($id);
+
+        // Authorize from the persisted newsletter's own election identity,
+        // never from a client-supplied parameter — otherwise a chief
+        // authorized for one election could act on another election's
+        // newsletter simply by knowing its ID.
+        $this->authorizeNewsletterAccess(
+            $org,
+            $request->user(),
+            $newsletter->audience_type,
+            $newsletter->audience_meta['election_id'] ?? null
+        );
 
         $recipients = $newsletter->recipients()->paginate(20);
 
@@ -231,9 +267,17 @@ class OrganisationNewsletterController extends Controller
     public function send(Request $request, Organisation $organisation, int $id)
     {
         $org = $organisation;
-        $this->authorizeAdmin($org, $request->user());
 
         $newsletter = OrganisationNewsletter::where('organisation_id', $org->id)->findOrFail($id);
+
+        // Same rule as show(): authorize from the persisted newsletter's
+        // own election identity, never a client-supplied parameter.
+        $this->authorizeNewsletterAccess(
+            $org,
+            $request->user(),
+            $newsletter->audience_type,
+            $newsletter->audience_meta['election_id'] ?? null
+        );
 
         try {
             $this->service->dispatch($newsletter);
@@ -345,5 +389,50 @@ class OrganisationNewsletterController extends Controller
         if (! in_array($role, ['admin', 'owner'])) {
             abort(403);
         }
+    }
+
+    private function electionAudienceTypes(): array
+    {
+        return array_values(array_filter(
+            NewsletterService::AUDIENCE_TYPES,
+            fn (string $type) => str_starts_with($type, 'election_')
+        ));
+    }
+
+    /**
+     * Org admin/owner keep full access to every audience type, unchanged.
+     * An active Election Chief/Deputy — the same authority already used
+     * for suspend/remove/reinstate elsewhere in this app
+     * (ElectionPolicy::manageVoters) — may additionally act on
+     * election-audience newsletters (election_voters, election_all, etc.)
+     * for the specific election named by $electionId, without needing
+     * org-admin rights. $audienceType === null means "just viewing the
+     * compose form for this election" (the specific type isn't chosen
+     * yet); any non-null, non-election type is always rejected for a
+     * non-admin, regardless of which election is named.
+     */
+    private function authorizeNewsletterAccess(Organisation $org, $user, ?string $audienceType, ?string $electionId): void
+    {
+        $role = UserOrganisationRole::where('organisation_id', $org->id)
+            ->where('user_id', $user->id)
+            ->value('role');
+
+        if (in_array($role, ['admin', 'owner'])) {
+            return;
+        }
+
+        if ($electionId && ($audienceType === null || in_array($audienceType, $this->electionAudienceTypes(), true))) {
+            $isElectionOfficer = ElectionOfficer::where('election_id', $electionId)
+                ->where('user_id', $user->id)
+                ->whereIn('role', ['chief', 'deputy'])
+                ->where('status', 'active')
+                ->exists();
+
+            if ($isElectionOfficer) {
+                return;
+            }
+        }
+
+        abort(403);
     }
 }

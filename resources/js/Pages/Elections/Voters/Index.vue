@@ -146,18 +146,30 @@
             <h2 class="voters-page-title">Voter Management</h2>
             <p class="voters-page-subtitle">Assign, verify and manage election voters</p>
           </div>
-          <a
-            href="/help/voters-verification_guide"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="voters-guide-link"
-            aria-label="Open Voter Management Guide in new window"
-          >
-            <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span>View Voter Guide</span>
-          </a>
+          <div class="voters-page-actions">
+            <a
+              :href="route('organisations.membership.newsletters.create', organisation.slug) + '?election_id=' + election.id"
+              class="voters-notify-link"
+              aria-label="Send an email notice to this election's voters"
+            >
+              <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span>Notify Voters</span>
+            </a>
+            <a
+              href="/help/voters-verification_guide"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="voters-guide-link"
+              aria-label="Open Voter Management Guide in new window"
+            >
+              <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>View Voter Guide</span>
+            </a>
+          </div>
         </div>
 
         <!-- Flash -->
@@ -868,6 +880,33 @@ const cancelProposal = (m) => {
 .voters-guide-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(212, 168, 71, 0.4);
+}
+
+.voters-page-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.voters-notify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #4f7cf6 0%, #3b5fe0 100%);
+  color: white;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(79, 124, 246, 0.3);
+}
+
+.voters-notify-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(79, 124, 246, 0.4);
 }
 
 .voters-guide-icon {
