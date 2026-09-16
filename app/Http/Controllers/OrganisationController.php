@@ -248,7 +248,7 @@ class OrganisationController extends Controller
 
         // Return organisation overview page
         return inertia('Organisations/Show', [
-            'organisation'       => $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address']),
+            'organisation'       => $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address', 'uses_full_membership']),
             'stats'              => $stats,
             'demoStatus'         => $demoStatus,
             'canManage'          => $canManage,

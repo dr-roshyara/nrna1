@@ -16,20 +16,11 @@
 
     <main id="main-content" role="main">
 
-      <!-- ═══════════════════════════════════════════════════
-           ZONE 1 · ORGANISATION AT A GLANCE
-           White zone — header + stats
-      ═══════════════════════════════════════════════════ -->
-      <div class="zone zone--glance">
+      <!-- Officer role banner — a role notice, not a membership stat, so it
+           stays visible regardless of full-membership vs. election-only mode. -->
+      <div v-if="isOfficer" class="zone zone--glance zone--officer-only">
         <div class="zone__inner">
-          <div class="zone__label">
-            <span class="zone__label-dot zone__label-dot--slate"></span>
-            {{ $t('pages.organisation-show.stats.title') }}
-          </div>
-
-          <!-- Officer role banner -->
-          <div v-if="isOfficer"
-            class="officer-banner mb-5"
+          <div class="officer-banner mb-0"
             :class="{
               'officer-banner--chief': isChief,
               'officer-banner--deputy': isDeputy,
@@ -43,6 +34,21 @@
               <template v-if="officerElectionNames.length > 0"> {{ $t('pages.organisation-show.officer.for') }} <strong>{{ officerElectionNames.join(', ') }}</strong>.</template>
               <template v-else> {{ $t('pages.organisation-show.officer.for_organisation') }}</template>
             </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════
+           ZONE 1 · ORGANISATION AT A GLANCE
+           White zone — header + stats. Full-Membership only: an
+           election-only organisation has no Member records, so these
+           counts don't apply to it.
+      ═══════════════════════════════════════════════════ -->
+      <div v-if="organisation.uses_full_membership" class="zone zone--glance">
+        <div class="zone__inner">
+          <div class="zone__label">
+            <span class="zone__label-dot zone__label-dot--slate"></span>
+            {{ $t('pages.organisation-show.stats.title') }}
           </div>
 
           <OrganizationHeader :organisation="organisation" />
