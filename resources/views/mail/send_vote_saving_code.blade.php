@@ -57,13 +57,16 @@
                                 <tr>
                                     <td align="center">
                                         <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); position: relative;">
-                                            <p style="margin: 0 0 10px 0; color: #fef3c7; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
+                                            <!-- Text is dark, not light: some email clients strip the
+                                                 background above, which would make light text on a
+                                                 white fallback background unreadable. -->
+                                            <p style="margin: 0 0 10px 0; color: #1f2937; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
                                                 🔐 Your Confidential Receipt Code
                                             </p>
-                                            <p style="margin: 0 0 15px 0; color: #ffffff; font-size: 36px; font-weight: 700; letter-spacing: 6px; font-family: 'Courier New', monospace;">
+                                            <p style="margin: 0 0 15px 0; color: #000000; font-size: 36px; font-weight: 700; letter-spacing: 6px; font-family: 'Courier New', monospace;">
                                                 {{ $vote_saving_code }}
                                             </p>
-                                            <p style="margin: 0; color: #fef3c7; font-size: 11px; line-height: 1.4;">
+                                            <p style="margin: 0; color: #1f2937; font-size: 11px; line-height: 1.4;">
                                                 Keep this code secure and private
                                             </p>
                                         </div>
