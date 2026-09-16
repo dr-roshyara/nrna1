@@ -52,6 +52,20 @@
                 <span class="hidden sm:inline">Import Voters</span>
                 <span class="sm:hidden">Import</span>
               </a>
+              <!-- Notify Voters Link -->
+              <a
+                v-if="organisation"
+                :href="voterNotifyUrl"
+                class="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-50 to-indigo-50 text-primary-700 font-semibold rounded-lg border-2 border-primary-200 hover:border-primary-400 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-blue-200 transition-all duration-200 whitespace-nowrap"
+                aria-label="Send an email notice to this election's voters"
+                title="Send an email notice to this election's voters"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="hidden sm:inline">Notify Voters</span>
+                <span class="sm:hidden">Notify</span>
+              </a>
               <!-- Tutorial/Help Link -->
               <a
                 :href="route('tutorials.election-settings')"
