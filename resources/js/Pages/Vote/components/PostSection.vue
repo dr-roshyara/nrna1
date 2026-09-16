@@ -67,9 +67,6 @@
 
                     <!-- Candidate Info -->
                     <div class="candidate-info">
-                        <h3 class="candidate-name">{{ candidate.candidacy_name || candidate.user_name }}</h3>
-                        <p v-if="candidate.position_order" class="candidate-position">#{{ candidate.position_order }}</p>
-
                         <!-- Checkbox -->
                         <div class="candidate-checkbox-wrapper">
                             <div class="checkbox-box" :class="{ 'checkbox-checked': isSelected(candidate) }">
@@ -81,6 +78,9 @@
                                 {{ isSelected(candidate) ? $t('pages.voting.candidate_selection.checkbox_selected') : $t('pages.voting.candidate_selection.checkbox_select') }}
                             </span>
                         </div>
+
+                        <h3 class="candidate-name">{{ candidate.candidacy_name || candidate.user_name }}</h3>
+                        <p v-if="candidate.position_order" class="candidate-position">#{{ candidate.position_order }}</p>
                     </div>
 
                     <!-- Hidden checkbox for form semantics -->
@@ -405,6 +405,49 @@ export default {
     animation: fadeInUp 0.5s ease-out both;
     outline: none;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding-bottom: 1.25rem;
+}
+
+/* Divider line bleeds through the container's own padding so it runs
+   edge-to-edge, instead of stopping at the card's own box. */
+.candidate-card::after {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    right: -2.5rem;
+    bottom: 0;
+    height: 4px;
+    background: #ef4444;
+}
+
+@media (min-width: 1024px) {
+    .candidate-card {
+        padding-right: 1.25rem;
+        padding-bottom: 0;
+    }
+
+    .candidate-card::after {
+        left: auto;
+        right: 0;
+        top: -3rem;
+        bottom: -3rem;
+        width: 4px;
+        height: auto;
+    }
+
+    .candidate-card:nth-child(3n)::after {
+        display: none;
+    }
+}
+
+@media (min-width: 1280px) {
+    .candidate-card:nth-child(3n)::after {
+        display: block;
+    }
+
+    .candidate-card:nth-child(4n)::after {
+        display: none;
+    }
 }
 
 .candidate-card:focus {
@@ -568,9 +611,9 @@ export default {
     display: flex;
     align-items: center;
     gap: 1.25rem;
-    margin-top: 1.25rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #e5e7eb;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .checkbox-box {
