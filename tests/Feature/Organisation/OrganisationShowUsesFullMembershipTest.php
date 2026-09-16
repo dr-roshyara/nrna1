@@ -55,4 +55,36 @@ class OrganisationShowUsesFullMembershipTest extends TestCase
 
         $this->assertFalse($props['organisation']['uses_full_membership']);
     }
+
+    public function test_logo_url_is_null_when_no_logo_is_set(): void
+    {
+        $org  = Organisation::factory()->create(['type' => 'tenant', 'logo' => null]);
+        $user = $this->makeMember($org);
+
+        $props = $this->actingAs($user)
+            ->get(route('organisations.show', $org->slug))
+            ->assertOk()
+            ->inertiaPage()['props'];
+
+        $this->assertNull($props['organisation']['logo_url']);
+    }
+
+    public function test_logo_url_resolves_the_stored_path_to_a_public_storage_url(): void
+    {
+        // organisations.logo stores a relative path under the "public" disk
+        // (set by OrganisationController::store()'s upload handling) — the
+        // page needs the resolved, browser-usable URL, not the raw path.
+        $org  = Organisation::factory()->create(['type' => 'tenant', 'logo' => 'uploads/logos/example.png']);
+        $user = $this->makeMember($org);
+
+        $props = $this->actingAs($user)
+            ->get(route('organisations.show', $org->slug))
+            ->assertOk()
+            ->inertiaPage()['props'];
+
+        $this->assertSame(
+            \Storage::disk('public')->url('uploads/logos/example.png'),
+            $props['organisation']['logo_url']
+        );
+    }
 }

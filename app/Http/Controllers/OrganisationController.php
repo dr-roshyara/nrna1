@@ -248,7 +248,10 @@ class OrganisationController extends Controller
 
         // Return organisation overview page
         return inertia('Organisations/Show', [
-            'organisation'       => $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address', 'uses_full_membership']),
+            'organisation'       => array_merge(
+                $organisation->only(['id', 'name', 'slug', 'type', 'email', 'address', 'uses_full_membership']),
+                ['logo_url' => $organisation->logo ? \Storage::disk('public')->url($organisation->logo) : null]
+            ),
             'stats'              => $stats,
             'demoStatus'         => $demoStatus,
             'canManage'          => $canManage,
