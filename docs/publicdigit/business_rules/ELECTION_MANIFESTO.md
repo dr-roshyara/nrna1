@@ -431,15 +431,15 @@ The Chief **must not be able to bypass, suppress, or override a refusal through 
 
 | ID | Open question | Blocks |
 |---|---|---|
-| **EM-OPEN-001** | **`BR-1.12`** — after Election-Only admission, is the `ElectionMembership` immediately **`ACTIVE`**, or initially **`INVITED`** requiring explicit Election Chief approval? | ✅ **RESOLVED 2026-09-16** — both paths coexist: manual admission enters `INVITED`, requiring explicit activation; Election Chief bulk-import/assignment establishes `ACTIVE` directly. See `2026-09-16-election-membership-suspension-removal-governance-decision.md` §3. |
-| **EM-OPEN-002** | **`BR-1.13`** — is Election Chief suspension a one-actor or two-actor act? | ✅ **RESOLVED 2026-09-16** — one-actor. A single authorized `manageVoters` officer (Chief or Deputy) is sufficient to suspend; the previously-implemented two-person propose/confirm entry is superseded where it conflicts. See decision doc §5. |
-| **EM-OPEN-003** | **`Q3`** — what concept represents current exercisability, and where does a suspension decision live? | ✅ **RESOLVED 2026-09-16 (lifecycle/location half only)** — the suspension decision lives in the new Election Membership Lifecycle (State Machine 2); current exercisability continues to be represented by the existing mechanism (State Machine 1), driven one-way from SM2. See decision doc §9. |
-| **EM-OPEN-004** | **`BR-1.1`/`BR-1.2`** — what does removal mean, and is it reversible? *(`EM-ENT-003` forward-references this)* | ✅ **RESOLVED 2026-09-16** — removal is final; a removed Election Member cannot be reactivated or reinstated. See decision doc §2. |
-| **EM-OPEN-005** | **`BR-1.8`** — who may restore, and with how many actors? | ✅ **RESOLVED 2026-09-16 (authority-role half only)** — restoration (`SUSPENDED → ACTIVE`, "reinstatement") remains subject to the existing `manageVoters` authority (Chief or Deputy); the decision does not add a distinct actor-count/separation-of-duties requirement to reinstatement itself (the four-eyes rule adopted alongside this applies to removal only — decision doc §6/§8). |
-| **EM-OPEN-006** | **`Q-E1`** — must suspension prevent credential issuance and invalidate an existing credential? | ⛔ **Still open.** `2026-09-16-election-membership-suspension-removal-governance-decision.md` §10 explicitly declines to resolve this — `Code.has_voted`, credential issuance and credential invalidation are unchanged and remain governed by this item. |
-| **EM-OPEN-007** | **`Q-E2`** — must a suspended member be distinguishable from one who has voted, at the enforcing gate? | 🟡 **Partially informed 2026-09-16** — distinguishability is now required and achieved at the Election Membership Lifecycle (SM2) layer for administration/reporting purposes. The existing enforcing gate (State Machine 1) is explicitly preserved unchanged and does not itself distinguish the reason a membership is non-active. Whether that is sufficient to close `Q-E2` at the gate itself remains open. |
-| **EM-OPEN-008** | **`BR-1.5`/`BR-1.6`** — is a reason mandatory; must every act be audited unconditionally? | 🟡 **Partially informed 2026-09-16** — the effective suspension actor must now be retained as a stable identifier (decision doc §7), so suspension specifically is actor-audited. A general "reason mandatory, every act audited" rule is not adopted by this decision and remains open. |
-| **EM-OPEN-009** | **`BR-1.7`** — is suspension temporary or indefinite? | ⛔ **Still open.** Not addressed by `2026-09-16-election-membership-suspension-removal-governance-decision.md`. |
+| **EM-OPEN-001** | **`BR-1.12`** — after Election-Only admission, is the `ElectionMembership` immediately **`ACTIVE`**, or initially **`INVITED`** requiring explicit Election Chief approval? | 🔴 **the Election-Only ADMISSION slice** |
+| **EM-OPEN-002** | **`BR-1.13`** — is Election Chief suspension a one-actor or two-actor act? | the suspension slice |
+| **EM-OPEN-003** | **`Q3`** — what concept represents current exercisability, and where does a suspension decision live? | changes to non-exercisability |
+| **EM-OPEN-004** | **`BR-1.1`/`BR-1.2`** — what does removal mean, and is it reversible? *(`EM-ENT-003` forward-references this)* | the removal slice |
+| **EM-OPEN-005** | **`BR-1.8`** — who may restore, and with how many actors? | the restore slice |
+| **EM-OPEN-006** | **`Q-E1`** — must suspension prevent credential issuance and invalidate an existing credential? | coherence |
+| **EM-OPEN-007** | **`Q-E2`** — must a suspended member be distinguishable from one who has voted, at the enforcing gate? | follows `Q3` |
+| **EM-OPEN-008** | **`BR-1.5`/`BR-1.6`** — is a reason mandatory; must every act be audited unconditionally? | defaultable |
+| **EM-OPEN-009** | **`BR-1.7`** — is suspension temporary or indefinite? | defaultable |
 | **EM-OPEN-010** | **`Q-D1`** — disposition of the dormant organisation-membership eligibility query | — |
 | **EM-OPEN-011** | **`D-APPLY`** (+`V-1`, `V-2`, `V-3`) — apply the proposed `ADR-002` amendment? | — |
 | **EM-OPEN-012** | **`G-REC`** — section-level recognition of the Officer Guide *(assessed `D` — mixed authority; not promoted)* | — |
@@ -603,10 +603,10 @@ The Chief **must not be able to bypass, suppress, or override a refusal through 
 | `EM-EO-004` | Organisation change has no automatic election effect in this mode | Session 1 |
 | `EM-ENT-001`, `EM-ENT-005` | One election-specific entitlement concept | Session 1 |
 | `EM-ENT-002`, `EM-GOV-001` | Existence and exercisability are separately observable | Session 1 |
-| `EM-ENT-003` | Entitlement persists until a defined removal act | **unblocked 2026-09-16 — `EM-OPEN-004` resolved, see `2026-09-16-election-membership-suspension-removal-governance-decision.md`** |
+| `EM-ENT-003` | Entitlement persists until a defined removal act | **blocked by `EM-OPEN-004`** |
 | `EM-ENT-004` | Organisation change does not destroy the entitlement | Session 1 |
 | `EM-ENT-006` | Election-side removal leaves Organisation Membership intact | Session 1 |
-| `EM-GOV-002`, `EM-GOV-003` | Chief suspension, distinct from organisation-driven suspension | **unblocked 2026-09-16 — `EM-OPEN-002` resolved (one-actor), see `2026-09-16-election-membership-suspension-removal-governance-decision.md`** |
+| `EM-GOV-002`, `EM-GOV-003` | Chief suspension, distinct from organisation-driven suspension | **partly blocked by `EM-OPEN-002`** |
 | `EM-VOC-001`…`003` | Vocabulary discipline | Sessions 1 and 3 |
 | `EM-SEQ-001`, `EM-SEQ-002` | Phase discipline | Session 2 |
 | `EM-FM-001`…`006` | — | **DEFERRED — not to be verified or implemented in this phase** |
