@@ -349,21 +349,12 @@
                 </div>
               </div>
               <div class="px-8 py-5">
-                <div class="grid grid-cols-3 gap-4">
-                  <a
-                    :href="`/organisations/${organisation.slug}/members`"
-                    class="block rounded-xl bg-slate-50 border border-slate-200 p-4 text-center hover:bg-slate-100 hover:border-slate-400 hover:shadow-sm transition-all duration-200 group no-underline"
-                  >
-                    <p class="text-2xl font-bold text-slate-700 group-hover:text-slate-900">{{ stats?.members_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">{{ $t('pages.organisation-show.voters.total_members') }}</p>
-                  </a>
-                  <a
-                    :href="`/organisations/${organisation.slug}/members`"
-                    class="block rounded-xl bg-emerald-50 border border-emerald-200 p-4 text-center hover:bg-emerald-100 hover:border-emerald-400 hover:shadow-sm transition-all duration-200 group no-underline"
-                  >
-                    <p class="text-2xl font-bold text-emerald-700 group-hover:text-emerald-900">{{ stats?.active_members_count ?? 0 }}</p>
-                    <p class="text-xs text-slate-500 mt-0.5 group-hover:text-slate-700">{{ $t('pages.organisation-show.voters.active') }}</p>
-                  </a>
+                <!-- Member counts removed: an organisation can run multiple
+                     elections, each with its own voter roster, so a single
+                     org-wide "total/active voters" number would be
+                     meaningless. Live Elections is the one figure that's
+                     genuinely one-per-organisation. -->
+                <div class="max-w-xs">
                   <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-center">
                     <p class="text-2xl font-bold text-amber-600">{{ stats?.active_elections_count ?? 0 }}</p>
                     <p class="text-xs text-slate-500 mt-0.5">{{ $t('pages.organisation-show.voters.live_elections') }}</p>
