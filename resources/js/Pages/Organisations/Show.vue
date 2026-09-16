@@ -16,11 +16,19 @@
 
     <main id="main-content" role="main">
 
-      <!-- Officer role banner — a role notice, not a membership stat, so it
-           stays visible regardless of full-membership vs. election-only mode. -->
-      <div v-if="isOfficer" class="zone zone--glance zone--officer-only">
+      <!-- ═══════════════════════════════════════════════════
+           ZONE 1 · ORGANISATION AT A GLANCE
+           White zone — identity header always shows; the officer
+           banner is a role notice, not a membership stat. Only the
+           StatsGrid (member counts) is Full-Membership-only: an
+           election-only organisation has no Member records, so those
+           counts don't apply to it.
+      ═══════════════════════════════════════════════════ -->
+      <div class="zone zone--glance">
         <div class="zone__inner">
-          <div class="officer-banner mb-0"
+          <!-- Officer role banner -->
+          <div v-if="isOfficer"
+            class="officer-banner mb-5"
             :class="{
               'officer-banner--chief': isChief,
               'officer-banner--deputy': isDeputy,
@@ -35,27 +43,19 @@
               <template v-else> {{ $t('pages.organisation-show.officer.for_organisation') }}</template>
             </span>
           </div>
-        </div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════
-           ZONE 1 · ORGANISATION AT A GLANCE
-           White zone — header + stats. Full-Membership only: an
-           election-only organisation has no Member records, so these
-           counts don't apply to it.
-      ═══════════════════════════════════════════════════ -->
-      <div v-if="organisation.uses_full_membership" class="zone zone--glance">
-        <div class="zone__inner">
-          <div class="zone__label">
-            <span class="zone__label-dot zone__label-dot--slate"></span>
-            {{ $t('pages.organisation-show.stats.title') }}
-          </div>
 
           <OrganizationHeader :organisation="organisation" />
 
-          <div class="mt-6">
-            <StatsGrid :stats="stats" :organisation-slug="organisation.slug" />
-          </div>
+          <template v-if="organisation.uses_full_membership">
+            <div class="zone__label mt-6">
+              <span class="zone__label-dot zone__label-dot--slate"></span>
+              {{ $t('pages.organisation-show.stats.title') }}
+            </div>
+
+            <div class="mt-6">
+              <StatsGrid :stats="stats" :organisation-slug="organisation.slug" />
+            </div>
+          </template>
         </div>
       </div>
 
