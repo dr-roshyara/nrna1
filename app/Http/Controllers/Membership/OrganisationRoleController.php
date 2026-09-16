@@ -129,18 +129,27 @@ class OrganisationRoleController extends Controller
             ->where('organisation_id', $organisation->id)
             ->firstOrFail();
 
-        // Check for existing assignment in this organisation (unique constraint on user_id, organisation_id)
-        $existing = ElectionOfficer::where('user_id', $validated['user_id'])
+        // Check for an existing assignment for this exact (user, organisation,
+        // election) combination — matching the actual unique constraint
+        // (election_officers_user_org_election_unique). withTrashed() is
+        // required: ElectionOfficer uses SoftDeletes, and the constraint has
+        // no `deleted_at IS NULL` qualifier, so a previously-removed
+        // assignment for this same election still occupies that unique key
+        // and must be restored rather than re-inserted.
+        $existing = ElectionOfficer::withTrashed()
+            ->where('user_id', $validated['user_id'])
             ->where('organisation_id', $organisation->id)
+            ->where('election_id', $validated['election_id'])
             ->first();
 
         if ($existing) {
-            // Update if it's the same election, or if changing across elections
-            if ($existing->election_id === $validated['election_id'] && $existing->role === $validated['role']) {
+            if (! $existing->trashed() && $existing->role === $validated['role']) {
                 return back()->with('error', 'This user is already assigned as ' . $existing->role . ' for this election.');
             }
-            // Update to new election and role
-            $existing->update(['election_id' => $validated['election_id'], 'role' => $validated['role'], 'status' => 'active']);
+            if ($existing->trashed()) {
+                $existing->restore();
+            }
+            $existing->update(['role' => $validated['role'], 'status' => 'active']);
             $user = User::find($validated['user_id']);
             return back()->with('success', ($user->name ?? 'User') . ' officer role updated to ' . $validated['role'] . ' for "' . $election->name . '".');
         }

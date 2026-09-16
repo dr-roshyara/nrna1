@@ -268,4 +268,28 @@ class ElectionVotersListTest extends TestCase
 
         $response->assertOk();
     }
+
+    public function test_election_chief_who_is_not_a_voter_or_org_admin_can_view(): void
+    {
+        // Bug report: a Chief is neither an org owner/admin/commission NOR
+        // separately registered as a voter/observer on the roster — the
+        // controller's own comment says this page is "for ALL election
+        // members (including officers)," but canAccessElection() never
+        // checked ElectionOfficer at all.
+        $chief = User::factory()->forOrganisation($this->organisation)->create();
+        \App\Models\ElectionOfficer::create([
+            'organisation_id' => $this->organisation->id,
+            'election_id'     => $this->election->id,
+            'user_id'         => $chief->id,
+            'role'            => 'chief',
+            'status'          => 'active',
+            'appointed_by'    => $chief->id,
+            'appointed_at'    => now(),
+            'accepted_at'     => now(),
+        ]);
+
+        $response = $this->actingAs($chief)->get($this->votersUrl());
+
+        $response->assertOk();
+    }
 }
