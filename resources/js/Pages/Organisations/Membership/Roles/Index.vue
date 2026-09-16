@@ -143,7 +143,7 @@
                       class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 <option value="" disabled>— select —</option>
                 <option v-for="e in elections" :key="e.id" :value="e.id">
-                  {{ e.name }} <span class="text-neutral-400">({{ e.status }})</span>
+                  {{ e.name }} ({{ e.status }})
                 </option>
               </select>
             </div>
