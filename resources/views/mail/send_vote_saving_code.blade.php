@@ -14,11 +14,11 @@
 
                     <!-- Header with Celebration Gradient -->
                     <tr>
-                        <td style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); padding: 40px 30px; text-align: center;">
+                        <td style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); padding: 40px 30px; text-align: center;">
                             <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">
                                 🎉 Vote Successfully Recorded!
                             </h1>
-                            <p style="margin: 10px 0 0 0; color: #fef3c7; font-size: 14px; font-weight: 400;">
+                            <p style="margin: 10px 0 0 0; color: #dbeafe; font-size: 14px; font-weight: 400;">
                                 Your Secure Vote Receipt Code
                             </p>
                         </td>
@@ -56,7 +56,7 @@
                             <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin: 30px 0;">
                                 <tr>
                                     <td align="center">
-                                        <div style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3); position: relative;">
+                                        <div style="background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); border-radius: 10px; padding: 30px; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3); position: relative;">
                                             <!-- Text is dark, not light: some email clients strip the
                                                  background above, which would make light text on a
                                                  white fallback background unreadable. -->
@@ -100,11 +100,11 @@
                             </table>
 
                             <!-- Privacy Options -->
-                            <div style="background-color: #fffbeb; border: 2px solid #fbbf24; padding: 20px; margin: 25px 0; border-radius: 8px; text-align: center;">
-                                <p style="margin: 0 0 10px 0; color: #78350f; font-size: 14px; font-weight: 700;">
+                            <div style="background-color: #eff6ff; border: 2px solid #93c5fd; padding: 20px; margin: 25px 0; border-radius: 8px; text-align: center;">
+                                <p style="margin: 0 0 10px 0; color: #1e3a8a; font-size: 14px; font-weight: 700;">
                                     💡 Privacy Recommendation
                                 </p>
-                                <p style="margin: 0; color: #92400e; font-size: 13px; line-height: 1.6;">
+                                <p style="margin: 0; color: #1e40af; font-size: 13px; line-height: 1.6;">
                                     If you feel any pressure to show your vote to others, or want to ensure maximum privacy,
                                     <strong>delete this email now</strong>. Once deleted, your vote remains secure and completely anonymous.
                                 </p>
@@ -151,11 +151,11 @@
                                 </div>
 
                                 <!-- Privacy Box Nepali -->
-                                <div style="background-color: #fef9c3; border: 2px dashed #ca8a04; padding: 20px; margin: 25px 0; border-radius: 8px;">
-                                    <p style="margin: 0 0 10px 0; color: #713f12; font-size: 14px; font-weight: 700; text-align: center;">
+                                <div style="background-color: #eff6ff; border: 2px dashed #93c5fd; padding: 20px; margin: 25px 0; border-radius: 8px;">
+                                    <p style="margin: 0 0 10px 0; color: #1e3a8a; font-size: 14px; font-weight: 700; text-align: center;">
                                         🛡️ गोपनीयता सिफारिस
                                     </p>
-                                    <p style="margin: 0; color: #854d0e; font-size: 13px; line-height: 1.7; text-align: center;">
+                                    <p style="margin: 0; color: #1e40af; font-size: 13px; line-height: 1.7; text-align: center;">
                                         यदि तपाईंलाई आफ्नो मत अरूलाई देखाउन दबाब आउने सम्भावना छ भने, वा अधिकतम गोपनीयता चाहनुहुन्छ भने,<br>
                                         <strong style="color: #dc2626;">कृपया यो इमेल अहिले नै डिलिट गर्नुहोस्।</strong><br>
                                         एक पटक डिलिट भएपछि, तपाईंको मत सुरक्षित र पूर्ण रूपमा गुमनाम रहन्छ।
