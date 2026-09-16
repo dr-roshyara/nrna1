@@ -1,7 +1,7 @@
 # Governance Decision: Election Membership Suspension, Removal and State-Machine Relationship
 
 **Type:** Formal PO/ARB governance decision · **Date:** 2026-09-16
-**Resolves:** `EM-OPEN-001`, `EM-OPEN-002`, `EM-OPEN-003` (lifecycle/exercisability half), `EM-OPEN-004`, `EM-OPEN-005` (authority half — actor count, not role) · **Explicitly does not resolve:** `EM-OPEN-006` (credential issuance/invalidation), `EM-OPEN-009` (temporary vs. indefinite suspension) · **Partially informs:** `EM-OPEN-007` (distinguishability is achieved at the Election Membership Lifecycle layer, not at the existing Voting Engine gate — see §9), `EM-OPEN-008` (actor-identity retention is now mandatory for suspension specifically; a general audit-everywhere rule is not adopted here)
+**Resolves:** `EM-OPEN-001`, `EM-OPEN-002`, `EM-OPEN-004` · **Remains open, not resolved by this decision:** `EM-OPEN-003` (what concept represents current exercisability, and where does a suspension decision live — this document's SM1/SM2 model is the candidate answer but has not been recorded as resolving `EM-OPEN-003` in `ELECTION_MANIFESTO.md`), `EM-OPEN-005` (who may restore, and with how many actors — same status), `EM-OPEN-006` (credential issuance/invalidation), `EM-OPEN-009` (temporary vs. indefinite suspension) · **Partially informs:** `EM-OPEN-007` (distinguishability is achieved at the Election Membership Lifecycle layer, not at the existing Voting Engine gate — see §9), `EM-OPEN-008` (actor-identity retention is now mandatory for suspension specifically; a general audit-everywhere rule is not adopted here)
 
 ---
 
