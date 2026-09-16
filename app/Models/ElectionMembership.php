@@ -210,9 +210,19 @@ class ElectionMembership extends Model
 
     public function confirmSuspension(User $confirmer): void
     {
+        // suspended_by is the effective-suspension actor (the confirmer —
+        // their action is what actually causes the suspension), kept
+        // separate from suspension_proposed_by (the proposer's name), per
+        // the 2026-09-16 governance decision §7: the two concepts must not
+        // be conflated.
         $this->update([
             'status'            => 'inactive',
             'suspension_status' => 'confirmed',
+            'metadata'          => array_merge($this->metadata ?? [], [
+                'suspended_by'       => $confirmer->id,
+                'suspended_by_email' => $confirmer->email,
+                'suspended_at'       => now()->toIso8601String(),
+            ]),
         ]);
     }
 

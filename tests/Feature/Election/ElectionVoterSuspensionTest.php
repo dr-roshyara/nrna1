@@ -114,6 +114,32 @@ class ElectionVoterSuspensionTest extends TestCase
         $this->assertEquals('confirmed', $membership->fresh()->suspension_status);
     }
 
+    public function test_confirm_suspension_records_the_confirming_officer_identity(): void
+    {
+        // Transparency requirement: the officer who actually causes the
+        // suspension (the confirmer, not the proposer) must be recorded as a
+        // stable actor identifier — distinct from suspension_proposed_by,
+        // which stays the proposer's name and must not be repurposed.
+        $membership = $this->makeMembership('active');
+        $membership->proposeSuspension($this->chief);
+
+        $this->actingAs($this->deputy)
+            ->withSession($this->orgSession())
+            ->post(route('elections.voters.confirm-suspension', [
+                'organisation' => $this->org->slug,
+                'election'     => $this->election->slug,
+                'membership'   => $membership->id,
+            ]))
+            ->assertRedirect();
+
+        $fresh = $membership->fresh();
+        $this->assertEquals($this->deputy->id, $fresh->metadata['suspended_by'] ?? null);
+        $this->assertEquals($this->deputy->email, $fresh->metadata['suspended_by_email'] ?? null);
+        $this->assertNotNull($fresh->metadata['suspended_at'] ?? null);
+        // Proposer identity must remain untouched and distinct.
+        $this->assertEquals($this->chief->name, $fresh->suspension_proposed_by);
+    }
+
     public function test_proposer_cannot_confirm_own_proposal(): void
     {
         $membership = $this->makeMembership('active');

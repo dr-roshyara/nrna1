@@ -213,6 +213,9 @@
                 <th class="reg-th reg-th--no">#</th>
                 <th class="reg-th">Voter</th>
                 <th class="reg-th">Status</th>
+                <th class="reg-th">Proposed by</th>
+                <th class="reg-th">Suspended by</th>
+                <th class="reg-th">Removed by</th>
                 <th class="reg-th">Voted</th>
                 <th class="reg-th">Assigned</th>
                 <th class="reg-th reg-th--actions">Actions</th>
@@ -266,6 +269,22 @@
                     <span class="status-dot"></span>
                     {{ statusLabel(membership.status) }}
                   </span>
+                </td>
+
+                <!-- Proposed by — transparency: who proposed the pending/most recent suspension -->
+                <td class="reg-td">
+                  <span class="date-mono">{{ membership.suspension_proposed_by ?? '—' }}</span>
+                </td>
+
+                <!-- Suspended by — transparency: the officer whose confirmation actually
+                     caused the suspension (distinct from the proposer above) -->
+                <td class="reg-td">
+                  <span class="date-mono">{{ membership.metadata?.suspended_by_email ?? '—' }}</span>
+                </td>
+
+                <!-- Removed by — transparency: who performed the removal -->
+                <td class="reg-td">
+                  <span class="date-mono">{{ membership.metadata?.removed_by_email ?? '—' }}</span>
                 </td>
 
                 <!-- Voted -->
@@ -355,7 +374,7 @@
                 v-if="membership.suspension_status === 'proposed'"
                 class="suspension-info-row"
               >
-                <td colspan="6">
+                <td colspan="9">
                   <div class="suspension-banner">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
                     <span>Suspension proposed by <strong>{{ membership.suspension_proposed_by }}</strong> · {{ formatDate(membership.suspension_proposed_at) }}</span>
@@ -367,7 +386,7 @@
 
               <!-- Empty -->
               <tr v-if="voters.data.length === 0">
-                <td colspan="6" class="reg-empty">
+                <td colspan="9" class="reg-empty">
                   <div class="empty-state">
                     <svg class="w-10 h-10 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
