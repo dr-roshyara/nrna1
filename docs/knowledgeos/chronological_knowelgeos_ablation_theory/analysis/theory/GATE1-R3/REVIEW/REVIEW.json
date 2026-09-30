@@ -1,0 +1,67 @@
+{
+  "recomputation_matches": {
+    "C1_vs_C2": true,
+    "C1_vs_C2_detail": "V1 24/28=0.857, V2 23/28=0.821, V3 24/28=0.857 (kappa 0.273 reproduced; chance agreement 0.804), V4 26/28=0.929; V5 1.0, V6 1.0, V7 0.964 also match",
+    "B1_vs_B2": "not_recomputed",
+    "B1_vs_B2_detail": "B1/B2 coding files were not found at any tried path; the agreement values are internally consistent with the listed disagreement counts (V1 17, V2 1, V3 1, V4 7)",
+    "disagreeing_rows": {
+      "B1_B2": {"V1": ["R-30","R-32","R-35","R-38","R-45","R-46","R-49","R-55","R-56","R-58","R-61","R-62","R-63","R-65","R-67","R-68","R-93"], "V2": ["R-67"], "V3": ["R-97"], "V4": ["R-50","R-52","R-55","R-61","R-63","R-67","R-93"]},
+      "C1_C2": {"V1": ["R-36","R-40","R-64","R-97"], "V2": ["R-35","R-49","R-56","R-63","R-68"], "V3": ["R-36","R-40","R-61","R-97"], "V4": ["R-49","R-92"], "V7": ["R-30"]}
+    }
+  },
+  "regression_causes": [
+    {"row": "R-35", "judgement": "V2", "rule": "G7", "who_is_right": "C2 (UNTESTABLE); the manual does not settle the one-term case", "quote": "Rename ADOPTED (execution deferred) | G7: 'V2 applies only if the record mentions permission, authorization, commissioning or execution; separating approval or acceptance from execution is outside V2.'"},
+    {"row": "R-49", "judgement": "V2", "rule": "G7", "who_is_right": "C2 (UNTESTABLE): none of the four terms is mentioned", "quote": "keeps evidence collection separate from repair ... No remediation work package is opened by this ruling."},
+    {"row": "R-56", "judgement": "V2", "rule": "G7 (exclusion scope), with G6 admitting AMBIGUOUS", "who_is_right": "C1 (SUPPORTED): authorization and execution are both mentioned and kept apart", "quote": "Execution of 7B is a SEPARATE act and has NOT been issued ... execution still NOT authorized"},
+    {"row": "R-63", "judgement": "V2", "rule": "G7 ('mentions', one-term case)", "who_is_right": "C1 (UNTESTABLE): a single list-item mention, nothing to keep apart", "quote": "every supported lifecycle transition — opened · authorized · accepted & closed · design decided"},
+    {"row": "R-68", "judgement": "V2", "rule": "G7 (acceptance/execution exclusion)", "who_is_right": "C2 (UNTESTABLE)", "quote": "acceptance of the executed work requires this subdivision first"},
+    {"row": "R-36", "judgement": "V3", "rule": "other: V3 has no rule for changes made by not-modelled acts; G6 lets AMBIGUOUS through", "who_is_right": "C2 (SUPPORTED): both coders list AMEND as not modelled, so no section B frame applies", "quote": "AST-013 amended (+6 lines)"},
+    {"row": "R-40", "judgement": "V3", "rule": "G6 (a competing reading must bear on 'that judgement')", "who_is_right": "C1 (SUPPORTED): C2's readings concern V2; V3 is SUPPORTED under both", "quote": "A4 candidate + OQ-ENG-004 protocol commissioned"},
+    {"row": "R-61", "judgement": "V3", "rule": "G6 admits the reading; the question itself is source interpretation", "who_is_right": "C1 (SUPPORTED), moderate confidence: section A's ACCEPT covers 'a completed assessment'", "quote": "accepted as the authoritative assessment of the current governance model"},
+    {"row": "R-97", "judgement": "V3", "rule": "other: same gap as R-36 (this row also disagreed under B1-B2)", "who_is_right": "C2 (SUPPORTED): REPLACE is listed as not modelled by both coders", "quote": "STANDING SCOPE STATEMENT, replacing any broader claim"}
+  ],
+  "gain_validity": [
+    {"row": "R-30", "judgement": "V1", "true_or_convergent": "true"},
+    {"row": "R-46", "judgement": "V1", "true_or_convergent": "true"},
+    {"row": "R-55", "judgement": "V1", "true_or_convergent": "true"},
+    {"row": "R-65", "judgement": "V1", "true_or_convergent": "true under G4; validity caveat (G4 turns a substantive guard into a textual trigger)"},
+    {"row": "R-58", "judgement": "V1", "true_or_convergent": "true but fragile (reached by different routes; C2's relies on a per-act default absent from Gate 1)"},
+    {"row": "R-45", "judgement": "V1", "true_or_convergent": "possibly convergent (guards read as attached to operations, not content)"},
+    {"row": "R-35", "judgement": "V1", "true_or_convergent": "possibly convergent (a new name may be new vocabulary with only a purpose given)"},
+    {"row": "R-31", "judgement": "V1", "true_or_convergent": "convergent error on the letter of G1 (both coded NOT-MODELLED; G1 requires UNTESTABLE, or VIOLATED if guarded); RESERVE R-57 splits on the same point"},
+    {"row": "R-55", "judgement": "V4", "true_or_convergent": "true"},
+    {"row": "R-93", "judgement": "V4", "true_or_convergent": "true"},
+    {"row": "R-67", "judgement": "V4", "true_or_convergent": "true"},
+    {"row": "R-52", "judgement": "V4", "true_or_convergent": "true"},
+    {"row": "R-63", "judgement": "V4", "true_or_convergent": "true, provided 'status' includes classification"},
+    {"row": "R-61", "judgement": "V4", "true_or_convergent": "true, provided 'status change' includes standing"}
+  ],
+  "correlated_prior_assessment": "Partly shared priors. Ops Jaccard is 1.0 on both bundles, and on RESERVE it rose from 0.821 to 1.0 although section G has no rule about operations, so r3 cannot explain it. Contestable choices come out identical (R-73/R-92 ADOPT-DECISION, R-75 ANNOTATE rather than CONTRA), and both coders share unmandated readings (guards attached to operations; G2 over G1 on R-31). Their AMBIGUOUS choices do not overlap, so they are not copies. The design can establish within-family reproducibility and a narrow causal attribution (G1 removed the 17 vacuous-case splits; G7 created the V2 splits). It cannot establish reliability across coders in general, validity, or run-to-run noise (one run per coder). Same-family agreement is an upper bound; the non-Claude coder is the real test.",
+  "prereg_outcome": "Row 3: 'V1 improves but another judgement drops by > 0.1' (V2 -0.143, V3 -0.107), i.e. a trade-off in which the G rules interact, and a review is needed. Row 1 does not apply. The sealed expectation was right on V1 and wrong that the other judgements would be stable.",
+  "derived_prediction_falsified": true,
+  "derived_prediction_detail": "V1 gain: Gate 1 +0.464 vs RESERVE 0.000. Mean over V1-V7: Gate 1 +0.071 vs RESERVE +0.011. Mean r3 levels: Gate 1 0.918 vs RESERVE 0.912. Only ops Jaccard gains more on RESERVE, and G does not target it. Caveats: the prediction named no metric, and RESERVE's V1 ceiling (0.923, so at most +0.077) meant it almost could not succeed on V1. The F1/F2/F4 mechanism gets partial support (R-40 V1, R-36 V1, R-49/R-92 V4), but RESERVE V4 fell despite having F4.",
+  "r4_recommendations": [
+    {"rule": "G7", "fix": "Define 'mentions' as the four words in any word form (e.g. 'authorized', 'executed'); a concept in other words does not count.", "type": "clarification", "addresses": ["R-35","R-49","R-63","R-68"]},
+    {"rule": "G7", "fix": "V2 is UNTESTABLE unless at least two of the four terms are mentioned; the approval/acceptance exclusion removes only that pair.", "type": "substantive", "addresses": ["R-35","R-56","R-63","R-68"]},
+    {"rule": "D-V3", "fix": "A direct change attributed to an act listed under not_modelled is outside V3.", "type": "clarification", "addresses": ["R-36","R-97"]},
+    {"rule": "G6", "fix": "A competing reading counts only if it is consistent with the operations and not_modelled acts the coder listed and changes the code of this judgement; a reading that concerns another judgement does not count.", "type": "clarification", "addresses": ["R-40","R-36","R-97"]},
+    {"rule": "G1/G2", "fix": "Apply G1 first; NOT-MODELLED only when at least one unmodelled act would be guarded by section C.", "type": "clarification", "addresses": ["R-31","RESERVE R-57"]},
+    {"rule": "section C evidence bars", "fix": "The bars attach to the content of an act (new vocabulary, categories, methodology), whatever its operation.", "type": "clarification", "addresses": ["R-45","R-35"]},
+    {"rule": "G5 / G2 on Gate 1", "fix": "Import F4 (definition of evidence) and F1 (per-act UNTESTABLE when a guard's satisfaction is unstated) into the Gate 1 manual, or stop comparing gains across the two non-equivalent manuals.", "type": "substantive (needs human authorization)", "addresses": ["R-49 V4","R-92 V4","R-40 V1"]}
+  ],
+  "disagreements": [
+    {"id": "D1", "item": "The V2 drop is caused by G7's undefined 'mentions' and the unclear scope of its exclusion (5 rows)", "class": "wording"},
+    {"id": "D2", "item": "The V3 drop is not a G-rule effect: G6's unconstrained competing readings plus a V3 gap for not-modelled acts (R-36, R-40, R-97 coding; R-61 source interpretation)", "class": "coding"},
+    {"id": "D3a", "item": "V1 R-36: G2's 'act' is undefined (F2 absent)", "class": "wording"},
+    {"id": "D3b", "item": "V1 R-40: 'the problem' is undefined in G4; G4 conflicts with the section E silence rule", "class": "wording"},
+    {"id": "D3c", "item": "V1 R-64: C1's VIOLATED reading is not formally available for a refusal; G3 makes the cited rule irrelevant; C2 is right", "class": "formal reasoning"},
+    {"id": "D3d", "item": "V1 R-97: C1 treats 'no evidence requests reopening' as a rule citation; C2 is right", "class": "source interpretation"},
+    {"id": "D4", "item": "V4 R-49 and R-92: 'evidence' is undefined without F4", "class": "evidence scope"},
+    {"id": "D5", "item": "V7 R-30 persists from B1-B2; there is no supersession verb, so C1 (UNTESTABLE) is right", "class": "source interpretation"},
+    {"id": "D6", "item": "R-31: both C coders apply G2 over G1, a convergent error on the letter of G1", "class": "formal reasoning"},
+    {"id": "D7", "item": "Ops Jaccard of 1.0 (0.821 to 1.0 on RESERVE with no G rule on operations) indicates shared priors; 'improves reliability' should read 'within-family reproducibility'", "class": "independence"},
+    {"id": "D8", "item": "The sealed expectation that the other judgements would be stable was wrong", "class": "substantive"},
+    {"id": "D9", "item": "The derived prediction is falsified, but it was posed without a metric and against a V1 ceiling", "class": "formal reasoning"},
+    {"id": "D10", "item": "B1-B2 could not be recomputed from codings (files not found); only internal consistency was checked", "class": "evidence scope"}
+  ]
+}

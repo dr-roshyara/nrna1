@@ -1,0 +1,878 @@
+# SLICE-VIEW v1 (R7 v2.7): one line per JSON leaf of the frozen slice — <path> TAB <kind> TAB <payload>; path = JSON array of keys/indices; kinds: N scalar, E empty container, S k/n string chunk (JSON)
+["batch_id"]	S 1/1	"OB0012"
+["bundle","reconciliation_object","aliases",0]	S 1/1	"Epistemic relations as first-class"
+["bundle","reconciliation_object","assumption_register"]	E	[]
+["bundle","reconciliation_object","candidate_births","conceptual","anchor"]	S 1/1	"Deferred Mechanisms -- useful but not constitutional"
+["bundle","reconciliation_object","candidate_births","conceptual","source_id"]	S 1/1	"S0239"
+["bundle","reconciliation_object","candidate_births","formal","anchor"]	S 1/1	"Family 1 -- IDENTITY (What is this knowledge? -- identity conditions of meaning)"
+["bundle","reconciliation_object","candidate_births","formal","source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","candidate_births","governance"]	N	null
+["bundle","reconciliation_object","candidate_births","lexical","anchor"]	S 1/1	"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)"
+["bundle","reconciliation_object","candidate_births","lexical","source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","candidate_births","operational"]	N	null
+["bundle","reconciliation_object","completeness","assumptions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","assumptions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","dependencies","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","dependencies","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","examples","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","examples","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","experiments","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","experiments","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids",0]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids",1]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","formal_definition","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","informal_meaning","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","informal_meaning","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","invariants","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","invariants","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","open_questions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","open_questions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",0]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","purpose_rationale","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","semantics","source_ids",0]	S 1/1	"S2306"
+["bundle","reconciliation_object","completeness","semantics","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","type_signature","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","type_signature","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","warnings","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","warnings","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness_absences",0]	S 1/1	"informal_meaning"
+["bundle","reconciliation_object","completeness_absences",1]	S 1/1	"type_signature"
+["bundle","reconciliation_object","completeness_absences",2]	S 1/1	"invariants"
+["bundle","reconciliation_object","completeness_absences",3]	S 1/1	"dependencies"
+["bundle","reconciliation_object","completeness_absences",4]	S 1/1	"assumptions"
+["bundle","reconciliation_object","completeness_absences",5]	S 1/1	"examples"
+["bundle","reconciliation_object","completeness_absences",6]	S 1/1	"warnings"
+["bundle","reconciliation_object","completeness_absences",7]	S 1/1	"experiments"
+["bundle","reconciliation_object","completeness_absences",8]	S 1/1	"open_questions"
+["bundle","reconciliation_object","files_touching",0]	S 1/1	"S2306"
+["bundle","reconciliation_object","group_ids",0]	S 1/1	"G1173"
+["bundle","reconciliation_object","group_ids",1]	S 1/1	"G1183"
+["bundle","reconciliation_object","group_ids",2]	S 1/1	"G1200"
+["bundle","reconciliation_object","group_ids",3]	S 1/1	"G1216"
+["bundle","reconciliation_object","group_ids",4]	S 1/1	"G1229"
+["bundle","reconciliation_object","group_ids",5]	S 1/1	"G1241"
+["bundle","reconciliation_object","group_ids",6]	S 1/1	"G1249"
+["bundle","reconciliation_object","group_ids",7]	S 1/1	"G1255"
+["bundle","reconciliation_object","group_ids",8]	S 1/1	"G1267"
+["bundle","reconciliation_object","group_ids",9]	S 1/1	"G1274"
+["bundle","reconciliation_object","group_ids",10]	S 1/1	"G1275"
+["bundle","reconciliation_object","group_ids",11]	S 1/1	"G1276"
+["bundle","reconciliation_object","group_ids",12]	S 1/1	"G1277"
+["bundle","reconciliation_object","group_ids",13]	S 1/1	"G1278"
+["bundle","reconciliation_object","group_ids",14]	S 1/1	"G1279"
+["bundle","reconciliation_object","group_ids",15]	S 1/1	"G1280"
+["bundle","reconciliation_object","group_ids",16]	S 1/1	"G1281"
+["bundle","reconciliation_object","last_seen"]	S 1/1	"S2306"
+["bundle","reconciliation_object","lifecycle_candidate"]	S 1/1	"ACTIVE"
+["bundle","reconciliation_object","lifecycle_evidence","contested_by_own_contradiction_type"]	N	false
+["bundle","reconciliation_object","lifecycle_evidence","retracted_by"]	E	[]
+["bundle","reconciliation_object","lifecycle_evidence","superseded_by"]	E	[]
+["bundle","reconciliation_object","notations",0]	S 1/1	"H-KOS-Relation-001"
+["bundle","reconciliation_object","pair_count"]	N	17
+["bundle","reconciliation_object","pairs_touching",0,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",0,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"notes_for_p3b"]	S 1/1	"Both fully sampled (4 of 4, 6 of 6, no truncation) -- this matches the documented 'shared S0237/S0239 candidate-register census rows' pattern explicitly called out as producing correct UNWITNESSED verdicts in prior batches."
+["bundle","reconciliation_object","pairs_touching",0,"pair_id"]	S 1/1	"RP0776"
+["bundle","reconciliation_object","pairs_touching",0,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",0,"what_says_this"]	S 1/1	"a and b share dual-labeled rows from S0237 (the 25-row candidate register census) and S0239 (identity-family validation decisions) -- but this is exactly the flagged false-positive pattern: both are merely co-listed as separate, distinct rows within the same large registry/census document (S0237's Family 1 IDENTITY table lists H-KOS-Context-001 and H-KOS-Relation-001 alongside several other unrelated hypotheses: INV-KOS-002, H-KOS-NonInterference-001, H-KOS-Contradiction-001, H-KOS-Relationship-001, H-ZERO-001, etc.), not evidence that the two specific hypotheses derive from or extend one another. No lineage_claims or content links H-KOS-Context-001 (Semantic Frame Preservation, ruled consolidated with Context-002 into Identity Law clause 1, per S0240) specifically to H-KOS-Relation-001 (Epistemic Relations first-class) beyond shared census/validation-batch membership."
+["bundle","reconciliation_object","pairs_touching",0,"what_would_make_this_wrong"]	S 1/1	"A row explicitly stating Context-001's semantic-frame-preservation principle depends on or was derived from Relation-001's epistemic-relations-first-class principle, or vice versa."
+["bundle","reconciliation_object","pairs_touching",0,"with_label"]	S 1/1	"h-kos-context-001-semantic-frame-preservation"
+["bundle","reconciliation_object","pairs_touching",1,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",1,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",1,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",1,"notes_for_p3b"]	S 1/1	"Pattern repeats across several H-KOS-*/INV-KOS-* sibling pairs in this batch (RP0805, RP0854, RP0856, RP0881, RP1008, RP1025) -- all appear to be independently-numbered entries in the same hypothesis/invariant registry, correctly defaulting to UNWITNESSED absent a specific cross-reference."
+["bundle","reconciliation_object","pairs_touching",1,"pair_id"]	S 1/1	"RP0786"
+["bundle","reconciliation_object","pairs_touching",1,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",1,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",1,"what_says_this"]	S 1/1	"group_evidence is CO-OCCURRENCE only (5 co-occurrences in contribution labels[]); these are two differently-numbered hypotheses (H-KOS-Context-002 on Nyaya delimiting conditions/avacchedaka, vs H-KOS-Relation-001 on epistemic relations as first-class objects) from what is evidently a shared numbered H-KOS-nnn hypothesis registry, but no row or claim connects these two specific hypotheses to each other beyond co-appearing in the same registry documents."
+["bundle","reconciliation_object","pairs_touching",1,"what_would_make_this_wrong"]	S 1/1	"A row explicitly stating H-KOS-Context-002's delimiting-condition mechanism depends on or specializes H-KOS-Relation-001's epistemic-relations-as-first-class framework would establish a real relationship."
+["bundle","reconciliation_object","pairs_touching",1,"with_label"]	S 1/1	"h-kos-context-002-avacchedaka"
+["bundle","reconciliation_object","pairs_touching",2,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",2,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",2,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",2,"notes_for_p3b"]	S 1/1	"Classic shared-registry co-occurrence: both are independent candidate hypotheses tracked in the same master census (S0237/S0239), not conceptually related to each other beyond both being under governance review."
+["bundle","reconciliation_object","pairs_touching",2,"pair_id"]	S 1/1	"RP0803"
+["bundle","reconciliation_object","pairs_touching",2,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",2,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",2,"what_says_this"]	S 1/1	"Both complete families (5 and 6 rows, no truncation) share sources S0237/S0239 -- a shared 25-row candidate-hypothesis census/register and its validation pass -- but A (H-KOS-Dialogue-001, Family 7 CONTRADICTION, 'Structured Opposition'/Matilal Vada-Jalpa-Vitanda) and B (H-KOS-Relation-001, 'Epistemic relations as first-class') are two distinct, separately-numbered candidate items within that shared registry, not a derivation of one from the other. A's Family-7 row and B's Family-1-adjacent content are entered in different rows of the same table with no cross-reference; B's unique row (S2306) corrects B's own audit terminology without mentioning A."
+["bundle","reconciliation_object","pairs_touching",2,"what_would_make_this_wrong"]	S 1/1	"A row in the census explicitly deriving H-KOS-Dialogue-001's structured-opposition mechanism from H-KOS-Relation-001's relations-as-first-class principle (or vice versa) -- not present in either complete row set."
+["bundle","reconciliation_object","pairs_touching",2,"with_label"]	S 1/1	"h-kos-dialogue-001-structured-opposition"
+["bundle","reconciliation_object","pairs_touching",3,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",3,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",3,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",3,"notes_for_p3b"]	S 1/1	"Recommend a follow-on check reading S0237's full untruncated anchor/statement text for the Family 6 and compression-test rows (from 02-FILES/03-CONTRIBUTIONS source) if a tighter verdict is needed, since the displayed excerpt itself was truncated mid-sentence."
+["bundle","reconciliation_object","pairs_touching",3,"pair_id"]	S 1/1	"RP0820"
+["bundle","reconciliation_object","pairs_touching",3,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",3,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",3,"what_says_this"]	S 1/1	"Both labels are candidates in the same governance census document; a is one of the nine Family 6 (REASONING) candidates (S0237), and b's own specific row S2306 ('Correction D2: H-KOS-Relation-001's earlier incomplete pair-by-pair audit is replaced...') concerns only b's internal audit correction, with no mention of a. No row in either family's full (untruncated) list connects the two specific labels beyond both appearing in the same overall UM-22 compression-test sweep and Family-list census rows. Group evidence G1216 is CO-OCCURRENCE."
+["bundle","reconciliation_object","pairs_touching",3,"what_would_make_this_wrong"]	S 1/1	"If the truncated portion of Family 6's row (S0237, cut off with '...' in the visible anchor text) explicitly states a compression/subsumption test between Failure-001 and Relation-001 specifically, this verdict would need revisiting -- I read only the visible, non-truncated portion since a_trunc=0/b_trunc=0 indicates no rows were cut from the family, only the printed anchor text field was truncated for display."
+["bundle","reconciliation_object","pairs_touching",3,"with_label"]	S 1/1	"h-kos-failure-001-failed-reasoning-preservation"
+["bundle","reconciliation_object","pairs_touching",4,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",4,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",4,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",4,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",4,"pair_id"]	S 1/1	"RP0833"
+["bundle","reconciliation_object","pairs_touching",4,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",4,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",4,"what_says_this"]	S 1/1	"Both A (h-kos-fallacy-001-invalid-reasoning-detection) and B (h-kos-relation-001-epistemic-relations-first-class) are siblings in the same Family 6 REASONING register (S0237/S0239, 9-row family) -- co-listed with individual validation verdicts but no row relates them to each other specifically."
+["bundle","reconciliation_object","pairs_touching",4,"what_would_make_this_wrong"]	S 1/1	"If a row explicitly merged or cross-referenced H-KOS-Fallacy-001 and H-KOS-Relation-001."
+["bundle","reconciliation_object","pairs_touching",4,"with_label"]	S 1/1	"h-kos-fallacy-001-invalid-reasoning-detection"
+["bundle","reconciliation_object","pairs_touching",5,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",5,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",5,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",5,"notes_for_p3b"]	S 1/1	"Third same-census-only pair in this batch defaulting to UNWITNESSED (see RP0797, RP0846) -- the census document generates many spurious CO-OCCURRENCE groupings among its 25 candidate rows that are not actually related to each other."
+["bundle","reconciliation_object","pairs_touching",5,"pair_id"]	S 1/1	"RP0848"
+["bundle","reconciliation_object","pairs_touching",5,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",5,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",5,"what_says_this"]	S 1/1	"Both labels co-occur only via the same 25-row register census document (S0237/S0239); no lineage_claims connect them. The census explicitly places them in different families: a (H-KOS-Intent-001) is Family 6 REASONING, paired in compression-test cluster (8) with Dialogue-001/Contradiction-001/Revisability-001; b (H-KOS-Relation-001) is Family 1 IDENTITY ('Epistemic relations as first-class', HPA-rated 'one of the strongest kernel candidates'), and its own compression-test cluster (3) is 'Relation-001 subsumption test -> RELATED (principle/instance)' with no mention of Intent-001. b also has an independent, unrelated row (S2306, 'constitutively-relational rather than derivation-type' terminology correction) with no connection to a's reasoning-intent content."
+["bundle","reconciliation_object","pairs_touching",5,"what_would_make_this_wrong"]	S 1/1	"If a future document explicitly ties reasoning purpose/intent (Vada/Jalpa/Vitanda) to the first-class-relations model (e.g. arguing that intent itself must be represented as a first-class epistemic relation), that would establish genuine continuity currently absent."
+["bundle","reconciliation_object","pairs_touching",5,"with_label"]	S 1/1	"h-kos-intent-001-purpose-of-reasoning"
+["bundle","reconciliation_object","pairs_touching",6,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",6,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",6,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",6,"notes_for_p3b"]	S 1/1	"Same registry-sibling pattern as RP0786."
+["bundle","reconciliation_object","pairs_touching",6,"pair_id"]	S 1/1	"RP0856"
+["bundle","reconciliation_object","pairs_touching",6,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",6,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",6,"what_says_this"]	S 1/1	"group_evidence is CO-OCCURRENCE only (2 co-occurrences); differently-numbered H-KOS registry entries (epistemic inquiry lifecycle vs epistemic relations as first-class objects) with no specific cross-reference in the sampled evidence."
+["bundle","reconciliation_object","pairs_touching",6,"what_would_make_this_wrong"]	S 1/1	"A row showing the lifecycle stages are themselves modeled as first-class epistemic relations would establish a real relationship."
+["bundle","reconciliation_object","pairs_touching",6,"with_label"]	S 1/1	"h-kos-lifecycle-reasoning-001"
+["bundle","reconciliation_object","pairs_touching",7,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",7,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",7,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",7,"notes_for_p3b"]	S 1/1	"Note for the object-identity record (not this pair): a (h-kos-noninterference-001) IS formally claimed as the transition-form of / same-law-as inv-kos-001-dimension-independence, per S0240 -- relevant to whichever pair actually pairs those two labels."
+["bundle","reconciliation_object","pairs_touching",7,"pair_id"]	S 1/1	"RP0862"
+["bundle","reconciliation_object","pairs_touching",7,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",7,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",7,"what_says_this"]	S 1/1	"CO-OCCURRENCE only (2 co-occurrences). S0240 does carry a real SOURCE-CLAIMED-REFINEMENT row for a ('H-KOS-NonInterference-001 is the transition-form of INV-KOS-001 (Dimension Independence). They render as one law.'), but its target is inv-kos-001-dimension-independence (a different label, not in this pair) -- not b (h-kos-relation-001-epistemic-relations-first-class). No claim connects a to b directly."
+["bundle","reconciliation_object","pairs_touching",7,"what_would_make_this_wrong"]	S 1/1	"A row stating h-kos-relation-001's epistemic-relations-first-class principle is the same law as, or required by, h-kos-noninterference-001 would establish a claim; currently they appear to be two separate items in the same invariant family register (S0237/S0239) with no direct link shown."
+["bundle","reconciliation_object","pairs_touching",7,"with_label"]	S 1/1	"h-kos-noninterference-001"
+["bundle","reconciliation_object","pairs_touching",8,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",8,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",8,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",8,"notes_for_p3b"]	S 1/1	"Cross-family co-occurrence via the same generic 'Deferred Mechanisms' listing rather than any specific pairwise ruling; correctly UNWITNESSED. This closes the cluster of five Constitutional-Invariant-Map CO-OCCURRENCE pairs in RP0009 (RP0787, RP0799, RP0850, RP0851, RP0876); only RP0799 had a direct compression-test ruling."
+["bundle","reconciliation_object","pairs_touching",8,"pair_id"]	S 1/1	"RP0876"
+["bundle","reconciliation_object","pairs_touching",8,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",8,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",8,"what_says_this"]	S 1/1	"Grouped by CO-OCCURRENCE (2x): both appear in the master 25-row census (S0237) and both have a partially-deferred (ENGINE/REPRESENTATION) component listed in the generic 'Deferred Mechanisms' table (S0239), but belong to different families entirely (A is Family 6 REASONING; B is Family 1 IDENTITY). The one compression-test ruling involving Relation-001 (cluster 3, 'Relation-001 subsumption test -> RELATED (principle/instance)') concerns Relation-001's relationship to ITS OWN instances (INV-001..004 + Expression!=Meaning + Observation!=Inference), not to Reasoning-Separation-001, which is never named in any compression cluster alongside Relation-001."
+["bundle","reconciliation_object","pairs_touching",8,"what_would_make_this_wrong"]	S 1/1	"A compression-test row explicitly pairing Reasoning-Separation-001 and Relation-001 would supply direct evidence; none exists in the captured rows."
+["bundle","reconciliation_object","pairs_touching",8,"with_label"]	S 1/1	"h-kos-reasoning-separation-001-generate-vs-evaluate"
+["bundle","reconciliation_object","pairs_touching",9,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",9,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",9,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",9,"notes_for_p3b"]	S 1/1	"Near-identical naming (Relation-001 vs Relationship-001) is a genuine confusability risk worth a targeted look if P3b needs to disambiguate the corpus's Family-1/Family-6 relation vocabulary, but no positive separation or identity evidence was found in the sampled rows to justify HOMONYM or SAME here."
+["bundle","reconciliation_object","pairs_touching",9,"pair_id"]	S 1/1	"RP0883"
+["bundle","reconciliation_object","pairs_touching",9,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",9,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",9,"what_says_this"]	S 1/1	"Both are entries in the same 25-row Candidate register (S0237), and 'Relation-001' vs 'Relationship-001' are similarly-named but distinct registrations. S2306 (a-side only) shows 'Correction D2: H-KOS-Relation-001's earlier incomplete pair-by-pair audit is replaced by a corrected complete audit' -- this is a correction internal to Relation-001 itself, not a claim connecting it to Relationship-001-Tripuji. No row merges or continuities the two; CO-OCCURRENCE only."
+["bundle","reconciliation_object","pairs_touching",9,"what_would_make_this_wrong"]	S 1/1	"A row explicitly distinguishing or merging 'Relation' (H-KOS-Relation-001) from/with 'Relationship' (H-KOS-Relationship-001-Tripuji) as the same or different constitutional candidates would resolve this either toward HOMONYM (if explicitly kept separate despite near-identical naming) or SAME/REFINEMENT."
+["bundle","reconciliation_object","pairs_touching",9,"with_label"]	S 1/1	"h-kos-relationship-001-tripuji"
+["bundle","reconciliation_object","pairs_touching",10,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",10,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",10,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",10,"notes_for_p3b"]	S 1/1	"Fourth instance in this batch of the S0237/S0239 shared-census pattern (with RP0802, RP0840, RP0868); recommend a single consolidated note to P3b about all four rather than treating each independently."
+["bundle","reconciliation_object","pairs_touching",10,"pair_id"]	S 1/1	"RP0884"
+["bundle","reconciliation_object","pairs_touching",10,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",10,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",10,"what_says_this"]	S 1/1	"Same shared-census pattern as RP0802/RP0840/RP0868: the only connecting rows are S0237 (25-row Candidate register) and S0239 (validation decisions). a's own family text visible here shows Family 1 (IDENTITY) content; b's shows Family 2 (EVIDENCE) content -- neither H-KOS-Relation-001 nor H-KOS-Uncertainty-001's specific family placement/row text was directly visible in the truncated excerpts, but both a and b are drawn from the same 25-row census document with no evidence the census itself treats them as related (they are not named in the same family-table excerpt shown)."
+["bundle","reconciliation_object","pairs_touching",10,"what_would_make_this_wrong"]	S 1/1	"If the untruncated S0237 text places both H-KOS-Relation-001 and H-KOS-Uncertainty-001 in the SAME family with an explicit DISTINCT/SUBSUMES ruling between them (unlike the visible IDENTITY vs EVIDENCE family split), this verdict should be revisited."
+["bundle","reconciliation_object","pairs_touching",10,"with_label"]	S 1/1	"h-kos-uncertainty-001-structured-doubt"
+["bundle","reconciliation_object","pairs_touching",11,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",11,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",11,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",11,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",11,"pair_id"]	S 1/1	"RP0885"
+["bundle","reconciliation_object","pairs_touching",11,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",11,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",11,"what_says_this"]	S 1/1	"Only evidence is CO-OCCURRENCE (2 times) within the same H-KOS-* numbered hypothesis catalogue -- sibling-registry-entries pattern. Although Vyapti (an inference-warranting relation) is plausibly a specific instance of the general 'epistemic relations as first-class' principle, no row makes this containment claim explicitly; per protocol, similar purpose/thematic fit is insufficient alone."
+["bundle","reconciliation_object","pairs_touching",11,"what_would_make_this_wrong"]	S 1/1	"Would be wrong if a later row explicitly names Vyapti as a worked example instantiating the first-class-relations principle."
+["bundle","reconciliation_object","pairs_touching",11,"with_label"]	S 1/1	"h-kos-vyapti-001-inference-warranting-relation"
+["bundle","reconciliation_object","pairs_touching",12,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",12,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",12,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",12,"notes_for_p3b"]	S 1/1	"Both fully sampled (6/6, 6/6, no truncation). Third pair in this batch (with RP0791, RP0828) drawn from the same S0237/S0239 25-candidate registry-census exercise -- consistent with the documented pattern that this census structure generates many co-occurring-but-unrelated label pairs across families."
+["bundle","reconciliation_object","pairs_touching",12,"pair_id"]	S 1/1	"RP0886"
+["bundle","reconciliation_object","pairs_touching",12,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",12,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",12,"what_says_this"]	S 1/1	"Same S0237/S0239 candidate-register census pattern as RP0791/RP0828. A (H-KOS-Relation-001) belongs to Family 1 IDENTITY (consolidated as principle+representation into law 1, per S0239's Identity-family validation). B (H-ZERO-001) belongs to a different family, Family 2 EVIDENCE (consolidated with H-KOS-Uncertainty-001 into law 9, per Special Area B ruling). The ten named compression-test clusters never pair A and B together (A is tested in cluster 3, Relation-001 subsumption test -> RELATED as principle/instance of its own family; B is folded via cluster 9, Uncertainty-001<->Abhava-001 -> SUBSUMES, and Special Area B). Each has an entirely separate validation history, evidence code (A: C-6 hypergraph corroboration; B: C-10 EKS evidence), and final law assignment (A: law 1; B: law 9)."
+["bundle","reconciliation_object","pairs_touching",12,"what_would_make_this_wrong"]	S 1/1	"If a fuller reading of the Relation-001 hypergraph representation showed it modeling H-ZERO-001's Unknown state as one of its first-class epistemic relations (a genuine formal dependency), this could establish EXTENSION. Not supported in the sampled rows -- both are treated as fully independent kernel-law candidates throughout the census, clustering, and validation passes."
+["bundle","reconciliation_object","pairs_touching",12,"with_label"]	S 1/1	"h-zero-001-unknown-valid-state"
+["bundle","reconciliation_object","pairs_touching",13,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",13,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",13,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",13,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",13,"pair_id"]	S 1/1	"RP0887"
+["bundle","reconciliation_object","pairs_touching",13,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",13,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",13,"what_says_this"]	S 1/1	"CO-OCCURRENCE only (G1278), no lineage_claims found."
+["bundle","reconciliation_object","pairs_touching",13,"what_would_make_this_wrong"]	S 1/1	"An explicit claim tying epistemic-relations-as-first-class to dimension-independence would establish a relationship."
+["bundle","reconciliation_object","pairs_touching",13,"with_label"]	S 1/1	"inv-kos-001-dimension-independence"
+["bundle","reconciliation_object","pairs_touching",14,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",14,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",14,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",14,"notes_for_p3b"]	S 1/1	"Same census-co-occurrence cluster as RP0778/RP0812/RP0820/RP0821/RP0857."
+["bundle","reconciliation_object","pairs_touching",14,"pair_id"]	S 1/1	"RP0888"
+["bundle","reconciliation_object","pairs_touching",14,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",14,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",14,"what_says_this"]	S 1/1	"Both are candidates in the same Family 1 (IDENTITY) census table and validated in the same S0239 pass, both surviving into 'law 1' but as distinct entries (INV-KOS-002 as its own Adopted Core clause; H-KOS-Relation-001 is not shown consolidated with it -- the consolidation decision S0240 referenced in RP0778 merges Context-001 with Context-002, not Relation-001 with INV-KOS-002). b's own specific correction row (S2306) concerns only H-KOS-Relation-001's internal audit terminology fix, with no mention of INV-KOS-002. Group evidence G1279 is CO-OCCURRENCE."
+["bundle","reconciliation_object","pairs_touching",14,"what_would_make_this_wrong"]	S 1/1	"If a's constitutively-relational audit (S2306) were shown to depend on or redefine INV-KOS-002's semantic-continuity content, a real relationship would exist -- the visible evidence shows S2306 addressing only H-KOS-Relation-001's own internal terminology."
+["bundle","reconciliation_object","pairs_touching",14,"with_label"]	S 1/1	"inv-kos-002-semantic-continuity"
+["bundle","reconciliation_object","pairs_touching",15,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",15,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",15,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",15,"notes_for_p3b"]	S 1/1	"Flag for P3b: verify whether 'H-KOS-Relationship-001' (compared against INV-KOS-Agent-001 in S0237's cluster 2) is the same candidate as this pair's A-label 'h-kos-relation-001-epistemic-relations-first-class', or a separate, similarly-named entry in the 25-row register. If confirmed identical, the correct verdict is likely SEPARATION/DISTINCT (near-HOMONYM) rather than UNWITNESSED."
+["bundle","reconciliation_object","pairs_touching",15,"pair_id"]	S 1/1	"RP0889"
+["bundle","reconciliation_object","pairs_touching",15,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",15,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",15,"what_says_this"]	S 1/1	"Same shared-census pattern. S0237's compression-test list does record a near-miss: '(2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED', which does involve INV-KOS-Agent-001 (=B) and a similarly-named 'H-KOS-Relationship-001' -- but that compared item is 'Relationship-001', not confirmed identical to this pair's 'h-kos-relation-001-epistemic-relations-first-class' (A). Given the naming is close but not confirmed to be the exact same candidate ID, I could not verify this compression test actually covers this specific pair."
+["bundle","reconciliation_object","pairs_touching",15,"what_would_make_this_wrong"]	S 1/1	"If Relationship-001 and Relation-001 are confirmed to be the same candidate under two spellings, then the register's own 'DISTINCT/SUPERSEDED' compression-test ruling would be positive evidence of an explicit distinctness finding (potentially supporting HOMONYM or at least a documented non-merge ruling) between this pair."
+["bundle","reconciliation_object","pairs_touching",15,"with_label"]	S 1/1	"inv-kos-agent-001-epistemic-agency"
+["bundle","reconciliation_object","pairs_touching",16,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",16,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",16,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",16,"notes_for_p3b"]	S 1/1	"Same shared-registry-row false-positive pattern as RP0829: two sibling entries in the same 25-item candidate census, different families (IDENTITY vs EVIDENCE), no direct compression-test link."
+["bundle","reconciliation_object","pairs_touching",16,"pair_id"]	S 1/1	"RP0890"
+["bundle","reconciliation_object","pairs_touching",16,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",16,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",16,"what_says_this"]	S 1/1	"Both share the same S0237/S0239 candidate-register census rows (the same 25-item table and its validation results) -- the coincidental co-listing pattern flagged by the task brief. They belong to DIFFERENT families in the census: a (H-KOS-Relation-001) is Family 1 IDENTITY ('the general principle UNDER the separation family, with INV-001..004 + Expression!=Meaning + Observation!=Inference as its instances'); b (INV-KOS-Pramana-001) is Family 2 EVIDENCE ('Means of Acquisition -- forbids the Source-role collapse'). The compression-test rulings (S0237, ten named clusters) never pair Relation-001 with Pramana-001 -- cluster 3 relates Relation-001 to the INV-001..004 principle family, and cluster 4 finds Pramana-001 DISTINCT from Reasoning-Separation-001/Agent-001/INV-001. They receive different SURVIVES dispositions in S0239 (Relation-001: KERNEL(principle)+REPRESENTATION(graph), laws unspecified; Pramana-001: KERNEL(principle)+REPRESENTATION(evidence-record schema), laws 3+6)."
+["bundle","reconciliation_object","pairs_touching",16,"what_would_make_this_wrong"]	S 1/1	"If a later compression-test explicitly paired Relation-001 and Pramana-001 for subsumption/overlap testing (as was done for other specific pairs in this same table), a positive relationship might be warranted -- but no such row exists in the captured evidence."
+["bundle","reconciliation_object","pairs_touching",16,"with_label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["bundle","reconciliation_object","primary_layer_provisional"]	S 1/1	"LAYER-UNRESOLVED"
+["bundle","reconciliation_object","rationale_evidence",0,"anchor"]	S 1/1	"Compression-test rulings (Filter . Separate . Test -- UM-22 protocol)"
+["bundle","reconciliation_object","rationale_evidence",0,"source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","rationale_evidence",0,"statement"]	S 1/1	"Ten named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-002<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here."
+["bundle","reconciliation_object","rationale_evidence",0,"types",0]	S 1/1	"ANALYSIS"
+["bundle","reconciliation_object","row_count"]	N	6
+["bundle","reconciliation_object","secondary_roles_provisional"]	E	[]
+["bundle","reconciliation_object","working_label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["bundle","rows_verbatim",0]	S 1/4	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)\", \"explicit_date\": \"2026-08-22\", \"scope\": \"OBJECT\", \"labels\": [\"inv-kos-001-dimension-independence\", \"inv-kos-002-semantic-continuity\", \"h-kos-context-001-semantic-frame-preservation\", \"h-kos-noninterference-001\", \"h-kos-contradiction-001-conflict-preservation\", \"h-kos-relationship-001-tripuji\", \"h-zero-001-unknown-valid-state\", \"inv-kos-inference-001-observation-ne-inference\", \"inv-kos-justification-001\", \"inv-kos-revisability-001-revision-ne-deletion\", \"inv-kos-decision-001-decision-relationship\", \"inv-kos-agent-001-epistemic-agency\", \"h-kos-reasoning-separation-001-generate-vs-evaluate\", \"h-kos-reasoning-provenance-001\", \"h-kos-vyapti-001-inference-warranting"
+["bundle","rows_verbatim",0]	S 2/4	"-relation\", \"h-kos-uncertainty-001-structured-doubt\", \"h-kos-fallacy-001-invalid-reasoning-detection\", \"h-kos-relation-001-epistemic-relations-first-class\", \"h-kos-context-002-avacchedaka\", \"h-kos-lifecycle-reasoning-001\", \"h-kos-intent-001-purpose-of-reasoning\", \"h-kos-failure-001-failed-reasoning-preservation\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-dialogue-001-structured-opposition\", \"h-kos-evidenceauthenticity-001\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"DEFINITION\"], \"statement\": \"Register census, the full 25-row Candidate table, each fixed to ID/original registration/lineage: (1) INV-KOS-001 Dimension Independence; (2) INV-KOS-002 Semantic Continuity; (3) H-KOS-Context-001 Semantic Frame Preservation; (4) H-KOS-NonInterference-001 No implicit dimension transitions; (5) H-KOS-Contradiction-001 Conflict Preservation; (6) H-KOS-Relationship-001 Knowledge Relationship Integrity (Tripuji, 'the genuinely NEW relationship candidate'); (7) H-ZERO-"
+["bundle","rows_verbatim",0]	S 3/4	"001 UNKNOWN is a valid epistemic state; (8) INV-KOS-Inference-001 Observation != Inference; (9) INV-KOS-Justification-001 Nature of justification; (10) INV-KOS-Revisability-001 Revision != Deletion; (11) INV-KOS-Decision-001 Decision Relationship; (12) INV-KOS-Agent-001 Epistemic Agency (supersedes H-KOS-Agent-001, UM-29); (13) H-KOS-Reasoning-Separation-001 Generate vs Evaluate; (14) H-KOS-Reasoning-Provenance-001 Reasoning path preservation; (15) H-KOS-Vyapti-001 Inference-warranting relation; (16) H-KOS-Uncertainty-001 Structured doubt (Samsaya); (17) H-KOS-Fallacy-001 Invalid-reasoning detection; (18) H-KOS-Relation-001 Epistemic relations as first-class (HPA: 'one of the strongest kernel candidates'); (19) H-KOS-Context-002 Avacchedaka -- delimiting conditions (SAME-ID reproduced SS33); (20) H-KOS-Lifecycle-Reasoning-001 Epistemic inquiry lifecycle; (21) H-KOS-Intent-001 Purpose/intent of reasoning ('genuinely novel content'); (22) H-KOS-Failure-001 Failed-reasoning preservation; "
+["bundle","rows_verbatim",0]	S 4/4	"(23) INV-KOS-Pramana-001 Means of acquisition; (24) H-KOS-Dialogue-001 Structured opposition; (25) H-KOS-EvidenceAuthenticity-001 Evidence vs pseudo-evidence.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",1]	S 1/3	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Compression-test rulings (Filter . Separate . Test -- UM-22 protocol)\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"h-kos-context-002-avacchedaka\", \"inv-kos-agent-001-epistemic-agency\", \"h-kos-relation-001-epistemic-relations-first-class\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-vyapti-001-inference-warranting-relation\", \"h-kos-fallacy-001-invalid-reasoning-detection\", \"h-kos-failure-001-failed-reasoning-preservation\", \"h-kos-dialogue-001-structured-opposition\", \"h-kos-uncertainty-001-structured-doubt\", \"inv-kos-001-dimension-independence\", \"h-kos-noninterference-001\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"ANALYSIS\"], \"statement\": \"Ten named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-00"
+["bundle","rows_verbatim",1]	S 2/3	"2<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment"
+["bundle","rows_verbatim",1]	S 3/3	"\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",2]	S 1/2	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Family 1 -- IDENTITY (What is this knowledge? -- identity conditions of meaning)\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"inv-kos-002-semantic-continuity\", \"h-kos-context-001-semantic-frame-preservation\", \"h-kos-context-002-avacchedaka\", \"h-kos-relationship-001-tripuji\", \"h-kos-relation-001-epistemic-relations-first-class\", \"kos-invariant-family-taxonomy\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"FORMALIZATION\"], \"statement\": \"Family 1 (IDENTITY) table: INV-KOS-002 Semantic Continuity (forbids Representation->Meaning); H-KOS-Context-001 Semantic Frame Preservation (forbids Context Removal->Meaning); H-KOS-Context-002 Avacchedaka (forbids Unbounded Claim->Over-extended Knowledge; compression ruling SUBSUMES SemanticBoundary-001, Ontology-001, Abhava Boundary-001 facet, and the type-model context-c"
+["bundle","rows_verbatim",2]	S 2/2	"lause as facets of this one row); H-KOS-Relationship-001 Knowledge Relationship Integrity/Tripuji (forbids Known Object->Detached Autonomous Truth); H-KOS-Relation-001 Epistemic Relations as First-Class (forbids Relation->Attribute; compression ruling: the general principle UNDER the separation family, with INV-001..004 + Expression!=Meaning + Observation!=Inference as its instances).\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",3]	S 1/2	"{\"source_id\": \"S0239\", \"path\": \"docs/knowledgeos/architecture/20260822-0927-KOS-EP01-P5-Constitutional-Invariant-Decision-Matrix-v1.0.md\", \"anchor\": \"Deferred Mechanisms -- useful but not constitutional\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"h-kos-reasoning-separation-001-generate-vs-evaluate\", \"h-kos-fallacy-001-invalid-reasoning-detection\", \"h-kos-dialogue-001-structured-opposition\", \"h-kos-lifecycle-reasoning-001\", \"h-kos-intent-001-purpose-of-reasoning\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-context-002-avacchedaka\", \"h-zero-001-unknown-valid-state\", \"h-kos-relation-001-epistemic-relations-first-class\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"CONCEPT\"], \"statement\": \"11 deferred mechanisms/representations, each tagged to the law it serves: Validation Layer verdict vocabulary (ENGINE, law 6); fallacy detection machinery (ENGINE, law 7); structured-opposition/debate pipeline (ENGINE, law 8); epistemic-inquiry life"
+["bundle","rows_verbatim",3]	S 2/2	"cycle stages (MECHANISM, law 6); intent preservation/Vada-Jalpa-Vitanda classification (ENGINE, law 6); evidence record schema (REPRESENTATION, laws 3+6); context-boundary tuple (REPRESENTATION, law 1); epistemic state model (REPRESENTATION, law 9); Abhava four-fold absence taxonomy+classifier (REPRESENTATION/ENGINE, law 9); epistemic graph/hypergraph (REPRESENTATION, law 1); TMS/AGM/type theory/topology (MECHANISM/lenses, explanatory only).\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",4]	S 1/2	"{\"source_id\": \"S0239\", \"path\": \"docs/knowledgeos/architecture/20260822-0927-KOS-EP01-P5-Constitutional-Invariant-Decision-Matrix-v1.0.md\", \"anchor\": \"Family 2.1 Identity family\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"inv-kos-002-semantic-continuity\", \"h-kos-context-001-semantic-frame-preservation\", \"h-kos-context-002-avacchedaka\", \"h-kos-relationship-001-tripuji\", \"h-kos-relation-001-epistemic-relations-first-class\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"VALIDATION\"], \"statement\": \"Identity-family validation decisions: INV-KOS-002 STRONG (reproduced 3x, two-X LLM comparison) -> KERNEL, SURVIVES (Adopted Core law 1); H-KOS-Context-001 STRONG saturation -> KERNEL, SURVIVES/CONSOLIDATE with Context-002 into law 1; H-KOS-Context-002 STRONG saturation (Avacchedaka) -> KERNEL(principle)+REPRESENTATION(the tuple), SURVIVES (see Special Area A); H-KOS-Relationship-001 STRONG (SS30 fundamental discovery, Tripuji trinity) -> KERNEL, SURV"
+["bundle","rows_verbatim",4]	S 2/2	"IVES (laws 1+10); H-KOS-Relation-001 STRONG (hypergraph corroboration, C-6) -> KERNEL(principle)+REPRESENTATION(graph), SURVIVES -- the principle constitutional, the graph an expression layer.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",5]	S 1/2	"{\"source_id\": \"S2306\", \"path\": \"docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-161624_next-prompt-repair-verify-freeze-checkpoint-0080-0094.md\", \"anchor\": \"The corrected terminology MUST be: constitutively-relational rather than: derivation-type\", \"explicit_date\": null, \"scope\": \"OBJECT\", \"labels\": [\"h-kos-relation-001-epistemic-relations-first-class\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"CORRECTION\", \"DISTINCTION\"], \"statement\": \"Correction D2: H-KOS-Relation-001's earlier incomplete pair-by-pair audit is replaced by a corrected complete audit distinguishing source-native examples, imported examples, authority-type collapses, constitutively-relational cases, category distinctions, and cases where the hypothesis merely redescribes existing architecture; required terminology changes from 'derivation-type' to 'constitutively-relational'; the finding must NOT be generalized to all forbidden-collapse pairs. Specific per-pair"
+["bundle","rows_verbatim",5]	S 2/2	" record: Evidence != Authority and Observation != Decision and Assessment != Authority show the relation framing adds no explanatory content, while Expression != Meaning and Representation != Identity show the relation framing does provide additional explanatory structure. The hypothesis's status remains 'semantic_definition' and has explicitly NOT reached 'constraint', 'operator', or 'invariant_preservation_test' -- must not be promoted.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0056\"}"
+["bundle","sources_verbatim",0]	S 1/3	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"1787383067\", \"mtime_block\": null, \"explicit_dates\": [\"2026-08-22\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"The P4 deliverable: consolidates a 29-row register (25 candidates + 4 Established) into an 8-family Constitutional Invariant Map (Identity/Evidence/Authority/Transformation/Temporal/Reasoning/Contradiction/Agent), a 5 non-identity negative boundary, a kernel/engine/representation 3-layer boundary, a mathematical-lens consolidation, an LLM-comparison table, ten compression-test rulings, and landscape integration (C-1..C-10) against EKS/PKS/AIP -- explicitly NOT a kernel decision.\", \"objects_touched\": [\"kos-constitutional-invariant-map\", \"kos-canonical-essence\", \"kos-negative-boundary-non-identities\", \"kos-invariant-family-taxonomy\", \"kos-kernel-engine-boundary\", "
+["bundle","sources_verbatim",0]	S 2/3	"\"human-act\", \"grant-record\", \"capability\", \"provenance\", \"pks\", \"knowledgeos-platform\"], \"contribution_assessment\": \"Registers a full census fixing each of 29 rows to ID/original-registration/lineage/validation-state (Rule 2 identity discipline); resolves ten named compression-test clusters (SUBSUMES/DISTINCT/RELATED/COMPLEMENTARY/OVERLAPPING) by ID rather than resemblance; and cross-maps the register onto ten current-architecture landscape findings (C-1..C-10) from EKS/PKS/AIP, explicitly distinguishing implemented mechanism from domain ownership.\", \"provenance\": \"SECONDARY-SYNTHESIS\", \"in_file_overlap_claim\": {\"kind\": \"EXTENDS\", \"target\": \"the register distributed across KnowledgeOS_Character_Definition.md SS14-33 and KnowledgeOS_Conceptual_Foundation.md SS16/20 (not in this file group), and the C-1..C-10 landscape evidence in 20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md (not in this file group)\"}, \"_batch_id\": \"B0006\", \"best_historical_date\": \"2026-08-22\", \"best"
+["bundle","sources_verbatim",0]	S 3/3	"_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",1]	S 1/2	"{\"source_id\": \"S0239\", \"path\": \"docs/knowledgeos/architecture/20260822-0927-KOS-EP01-P5-Constitutional-Invariant-Decision-Matrix-v1.0.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"1787383792\", \"mtime_block\": null, \"explicit_dates\": [\"2026-08-22\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"The P5 deliverable: validates all 29 register rows against the Evidence/Domain-Independence/Necessity/Failure test, classifying 26 as KERNEL/SURVIVES (4 CONSOLIDATE), 2 as ENGINE/DEFERRED, 1 as MECHANISM/DEFERRED, 0 REJECTED/DOMAIN-SPECIFIC; compresses the 22 surviving candidates into an 11-law 'Adopted Constitutional Core'; rules on three Navya-Nyaya special areas (Avacchedaka, Abhava, Coextension) and validates the LLM-comparison claim to exactly two fundamental absences.\", \"objects_touched\": [\"kos-constitutional-invariant-decision-matrix\", \"kos-constitutional-invariant-map\", \"kos-negative-boundary-non-identities\"], \"contribution_assessment\": \"Prod"
+["bundle","sources_verbatim",1]	S 2/2	"uces the load-bearing 11-law Adopted Core table (each law independently failure-tested), a Deferred-Mechanisms table, a Rejected-Concepts table, and the 'Final Kernel Boundary' statement; explicitly frames its own classifications as validation outcomes, not adoptions, leaving the step-5 kernel decision to a separate ruling.\", \"provenance\": \"SECONDARY-SYNTHESIS\", \"in_file_overlap_claim\": {\"kind\": \"EXTENDS\", \"target\": \"the P4 Constitutional Invariant Map v1.0 register census (S3.0), compression-test rulings (S3.9) and landscape evidence C-1..C-10 (S3.10)\"}, \"_batch_id\": \"B0006\", \"best_historical_date\": \"2026-08-22\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",2]	S 1/2	"{\"source_id\": \"S2306\", \"path\": \"docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260901-161624_next-prompt-repair-verify-freeze-checkpoint-0080-0094.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"1788272184\", \"mtime_block\": null, \"explicit_dates\": [], \"order_evidence\": \"FILENAME-DATESTAMP\", \"status\": \"CONTENT\", \"summary\": \"A 'next prompt' governance/audit protocol assigning an adversarial-auditor role to repair and independently re-verify research checkpoint 0080-0094, applying four named corrections (D1 Context instability, D2 H-KOS-Relation-001 scope/terminology, D3 wording, D9 causal-claim downgrade) while forbidding any further source reading, candidate promotion, or new theory introduction.\", \"objects_touched\": [\"checkpoint-0080-0094-repair-audit-protocol\", \"context-dimension-cross-and-intra-document-instability\", \"h-kos-relation-001-epistemic-relations-first-class\"], \"contribution_assessment\": \"Pure methodological/governance a"
+["bundle","sources_verbatim",2]	S 2/2	"rtifact: it does not itself advance the theory but constrains how a prior checkpoint's findings may be corrected and re-stated, tightens the Context-dimension finding from 'three treatments' to 'three treatments plus per-file internal instability', narrows H-KOS-Relation-001's claimed explanatory scope and required terminology, downgrades a causal claim to a compatibility claim leaving a competing recency explanation on record, and restates a ten-stage promotion-chain discipline ('No shortcut is permitted') plus a mandatory self-adversarial re-challenge of the repair itself.\", \"provenance\": \"PRIMARY\", \"in_file_overlap_claim\": null, \"_batch_id\": \"B0056\", \"best_historical_date\": \"1788272184\", \"best_historical_date_basis\": \"MTIME\"}"
+["bundle","working_label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["contract_sha256"]	S 1/1	"b8eef043f3b2ea4bbeb8be03fb1487787c6b1b6712455eaf15286299393809da"
+["family_md"]	S 1/15	"# h-kos-relation-001-epistemic-relations-first-class\n\n**Scope(s):** OBJECT · **Row count:** 6 ·\n**Lifecycle (candidate):** ACTIVE · **Layer (provisional):** LAYER-UNRESOLVED\n**Notations:** `H-KOS-Relation-001`\n**Aliases:** \"Epistemic relations as first-class\"\n**Candidate group membership (NOT an identity claim):**\n- G1173: co-occurs with `h-kos-context-001-semantic-frame-preservation` — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- G1183: co-occurs with `h-kos-context-002-avacchedaka` — labels co-occur in the same contribution's labels[] 5 separate times across the corpus\n- G1200: co-occurs with `h-kos-dialogue-001-structured-opposition` — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- G1216: co-occurs with `h-kos-failure-001-failed-reasoning-preservation` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1229: co-occurs with `h-kos-fallacy-001-invalid-reasonin"
+["family_md"]	S 2/15	"g-detection` — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- G1241: co-occurs with `h-kos-intent-001-purpose-of-reasoning` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1249: co-occurs with `h-kos-lifecycle-reasoning-001` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1255: co-occurs with `h-kos-noninterference-001` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1267: co-occurs with `h-kos-reasoning-separation-001-generate-vs-evaluate` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1274: co-occurs with `h-kos-relationship-001-tripuji` — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- G1275: co-occurs with `h-kos-uncertainty-001-structured-doubt` — labels co-occur in the same contribution's labels[] 2 separate times across the"
+["family_md"]	S 3/15	" corpus\n- G1276: co-occurs with `h-kos-vyapti-001-inference-warranting-relation` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1277: co-occurs with `h-zero-001-unknown-valid-state` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1278: co-occurs with `inv-kos-001-dimension-independence` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1279: co-occurs with `inv-kos-002-semantic-continuity` — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- G1280: co-occurs with `inv-kos-agent-001-epistemic-agency` — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- G1281: co-occurs with `inv-kos-pramana-001-means-of-acquisition` — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n\n## Sources (how this label entered the ledger)\n\n- OBJECT-INDEX, batch B0006, sco"
+["family_md"]	S 4/15	"pe OBJECT: \"One of the 25 'Candidate' constitutional-invariant register rows (Epistemic relations as first-class), fixed by ID/original-registration/lineage/validation-state (P4 SS3.0); classified in the P5 Decision Matrix and (where it survives) rendered into one of the 11 kernel laws.\"\n\n## Candidate births\n\n- CANDIDATE-LEXICAL-BIRTH: [S0237 §\"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)\"]\n- CANDIDATE-CONCEPTUAL-BIRTH: [S0239 §\"Deferred Mechanisms -- useful but not constitutional\"]\n- CANDIDATE-FORMAL-BIRTH: [S0237 §\"Family 1 -- IDENTITY (What is this knowledge? -- identity conditions of meaning)\"]\n- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n\n## Lifecycle\n\nlast_seen: S2306. Candidate lifecycle: ACTIVE.\nEvidence: `lifecycle_evidence` is empty (retracted_by: [], superseded_by: "
+["family_md"]	S 5/15	"[], contested_by_own_contradiction_type: false). ACTIVE is a recency heuristic based on last use (S2306), not a confirmed retirement or a confirmed ongoing status.\n\n## Completeness roll-up\n\n| Dimension | Status | source_ids |\n|---|---|---|\n| purpose_rationale | PRESENT | S0237 |\n| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |\n| formal_definition | PRESENT | S0237 (×2) |\n| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |\n| invariants | NOT-EVIDENCED-IN-CAPTURE | — |\n| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |\n| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |\n| semantics | PRESENT | S2306 |\n| examples | NOT-EVIDENCED-IN-CAPTURE | — |\n| warnings | NOT-EVIDENCED-IN-CAPTURE | — |\n| experiments | NOT-EVIDENCED-IN-CAPTURE | — |\n| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |\n\n## Rationale\n\nTen named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-002<->SemanticBoundary<->Ontology-001<->type"
+["family_md"]	S 6/15	"-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here [S0237].\n\n## Assumption register\n\nNOT-EVIDENCED-IN-CAPTURE.\n\n## All rows (source_id order)\n\n- [S0237] types=[DEFINITION] scope=OBJECT — also labeled `inv-kos-001-dimension-independence`, `inv-kos-002-semantic-continuity`, `h-kos"
+["family_md"]	S 7/15	"-context-001-semantic-frame-preservation`, `h-kos-noninterference-001`, `h-kos-contradiction-001-conflict-preservation`, `h-kos-relationship-001-tripuji`, `h-zero-001-unknown-valid-state`, `inv-kos-inference-001-observation-ne-inference`, `inv-kos-justification-001`, `inv-kos-revisability-001-revision-ne-deletion`, `inv-kos-decision-001-decision-relationship`, `inv-kos-agent-001-epistemic-agency`, `h-kos-reasoning-separation-001-generate-vs-evaluate`, `h-kos-reasoning-provenance-001`, `h-kos-vyapti-001-inference-warranting-relation`, `h-kos-uncertainty-001-structured-doubt`, `h-kos-fallacy-001-invalid-reasoning-detection`, `h-kos-context-002-avacchedaka`, `h-kos-lifecycle-reasoning-001`, `h-kos-intent-001-purpose-of-reasoning`, `h-kos-failure-001-failed-reasoning-preservation`, `inv-kos-pramana-001-means-of-acquisition`, `h-kos-dialogue-001-structured-opposition`, `h-kos-evidenceauthenticity-001` — \"Register census, the full 25-row Candidate table, each fixed to ID/original registratio"
+["family_md"]	S 8/15	"n/lineage: (1) INV-KOS-001 Dimension Independence; (2) INV-KOS-002 Semantic Continuity; (3) H-KOS-Context-001 Semantic Frame Preservation; (4) H-KOS-NonInterference-001 No implicit dimension transitions; (5) H-KOS-Contradiction-001 Conflict Preservation; (6) H-KOS-Relationship-001 Knowledge Relationship Integrity (Tripuji, 'the genuinely NEW relationship candidate'); (7) H-ZERO-001 UNKNOWN is a valid epistemic state; (8) INV-KOS-Inference-001 Observation != Inference; (9) INV-KOS-Justification-001 Nature of justification; (10) INV-KOS-Revisability-001 Revision != Deletion; (11) INV-KOS-Decision-001 Decision Relationship; (12) INV-KOS-Agent-001 Epistemic Agency (supersedes H-KOS-Agent-001, UM-29); (13) H-KOS-Reasoning-Separation-001 Generate vs Evaluate; (14) H-KOS-Reasoning-Provenance-001 Reasoning path preservation; (15) H-KOS-Vyapti-001 Inference-warranting relation; (16) H-KOS-Uncertainty-001 Structured doubt (Samsaya); (17) H-KOS-Fallacy-001 Invalid-reasoning detection; (18) H-KOS-"
+["family_md"]	S 9/15	"Relation-001 Epistemic relations as first-class (HPA: 'one of the strongest kernel candidates'); (19) H-KOS-Context-002 Avacchedaka -- delimiting conditions (SAME-ID reproduced SS33); (20) H-KOS-Lifecycle-Reasoning-001 Epistemic inquiry lifecycle; (21) H-KOS-Intent-001 Purpose/intent of reasoning ('genuinely novel content'); (22) H-KOS-Failure-001 Failed-reasoning preservation; (23) INV-KOS-Pramana-001 Means of acquisition; (24) H-KOS-Dialogue-001 Structured opposition; (25) H-KOS-EvidenceAuthenticity-001 Evidence vs pseudo-evidence.\" (anchor: \"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)\")\n- [S0237] types=[FORMALIZATION] scope=CROSS-OBJECT — also labeled `inv-kos-002-semantic-continuity`, `h-kos-context-001-semantic-frame-preservation`, `h-kos-context-002-avacchedaka`, `h-kos-relationship-001-tripuji`, `kos-invariant-family-taxonomy` — \"Fam"
+["family_md"]	S 10/15	"ily 1 (IDENTITY) table: INV-KOS-002 Semantic Continuity (forbids Representation->Meaning); H-KOS-Context-001 Semantic Frame Preservation (forbids Context Removal->Meaning); H-KOS-Context-002 Avacchedaka (forbids Unbounded Claim->Over-extended Knowledge; compression ruling SUBSUMES SemanticBoundary-001, Ontology-001, Abhava Boundary-001 facet, and the type-model context-clause as facets of this one row); H-KOS-Relationship-001 Knowledge Relationship Integrity/Tripuji (forbids Known Object->Detached Autonomous Truth); H-KOS-Relation-001 Epistemic Relations as First-Class (forbids Relation->Attribute; compression ruling: the general principle UNDER the separation family, with INV-001..004 + Expression!=Meaning + Observation!=Inference as its instances).\" (anchor: \"Family 1 -- IDENTITY (What is this knowledge? -- identity conditions of meaning)\")\n- [S0237] types=[ANALYSIS] scope=CROSS-OBJECT — also labeled `h-kos-context-002-avacchedaka`, `inv-kos-agent-001-epistemic-agency`, `inv-kos-pram"
+["family_md"]	S 11/15	"ana-001-means-of-acquisition`, `h-kos-vyapti-001-inference-warranting-relation`, `h-kos-fallacy-001-invalid-reasoning-detection`, `h-kos-failure-001-failed-reasoning-preservation`, `h-kos-dialogue-001-structured-opposition`, `h-kos-uncertainty-001-structured-doubt`, `inv-kos-001-dimension-independence`, `h-kos-noninterference-001` — \"Ten named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-002<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) F"
+["family_md"]	S 12/15	"allacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here.\" (anchor: \"Compression-test rulings (Filter . Separate . Test -- UM-22 protocol)\")\n- [S0239] types=[VALIDATION] scope=CROSS-OBJECT — also labeled `inv-kos-002-semantic-continuity`, `h-kos-context-001-semantic-frame-preservation`, `h-kos-context-002-avacchedaka`, `h-kos-relationship-001-tripuji` — \"Identity-family validation decisions: INV-KOS-002 STRONG (reproduced 3x, two-X LLM comparison) -> KERNEL, SURVIVES (Adopted Core law 1); H-KOS-Context-001 STRONG saturation -> KERNEL, SURVIVES/CONSOLIDATE with Context-002 into law 1; H-KOS-Context-002 STRONG saturation (Avacchedaka) -> KERNEL(principle)+REPRESENTATION(the tuple), SURVIVES (see Special Area A); H-KOS-Relationship-001 STRONG"
+["family_md"]	S 13/15	" (SS30 fundamental discovery, Tripuji trinity) -> KERNEL, SURVIVES (laws 1+10); H-KOS-Relation-001 STRONG (hypergraph corroboration, C-6) -> KERNEL(principle)+REPRESENTATION(graph), SURVIVES -- the principle constitutional, the graph an expression layer.\" (anchor: \"Family 2.1 Identity family\")\n- [S0239] types=[CONCEPT] scope=CROSS-OBJECT — also labeled `h-kos-reasoning-separation-001-generate-vs-evaluate`, `h-kos-fallacy-001-invalid-reasoning-detection`, `h-kos-dialogue-001-structured-opposition`, `h-kos-lifecycle-reasoning-001`, `h-kos-intent-001-purpose-of-reasoning`, `inv-kos-pramana-001-means-of-acquisition`, `h-kos-context-002-avacchedaka`, `h-zero-001-unknown-valid-state` — \"11 deferred mechanisms/representations, each tagged to the law it serves: Validation Layer verdict vocabulary (ENGINE, law 6); fallacy detection machinery (ENGINE, law 7); structured-opposition/debate pipeline (ENGINE, law 8); epistemic-inquiry lifecycle stages (MECHANISM, law 6); intent preservation/Vada-Jal"
+["family_md"]	S 14/15	"pa-Vitanda classification (ENGINE, law 6); evidence record schema (REPRESENTATION, laws 3+6); context-boundary tuple (REPRESENTATION, law 1); epistemic state model (REPRESENTATION, law 9); Abhava four-fold absence taxonomy+classifier (REPRESENTATION/ENGINE, law 9); epistemic graph/hypergraph (REPRESENTATION, law 1); TMS/AGM/type theory/topology (MECHANISM/lenses, explanatory only).\" (anchor: \"Deferred Mechanisms -- useful but not constitutional\")\n- [S2306] types=[CORRECTION, DISTINCTION] scope=OBJECT — \"Correction D2: H-KOS-Relation-001's earlier incomplete pair-by-pair audit is replaced by a corrected complete audit distinguishing source-native examples, imported examples, authority-type collapses, constitutively-relational cases, category distinctions, and cases where the hypothesis merely redescribes existing architecture; required terminology changes from 'derivation-type' to 'constitutively-relational'; the finding must NOT be generalized to all forbidden-collapse pairs. Specific "
+["family_md"]	S 15/15	"per-pair record: Evidence != Authority and Observation != Decision and Assessment != Authority show the relation framing adds no explanatory content, while Expression != Meaning and Representation != Identity show the relation framing does provide additional explanatory structure. The hypothesis's status remains 'semantic_definition' and has explicitly NOT reached 'constraint', 'operator', or 'invariant_preservation_test' -- must not be promoted.\" (anchor: \"The corrected terminology MUST be: constitutively-relational rather than: derivation-type\")\n\n## Notes for P3\n\n- This is my own observation: this label participates in 17 candidate groups (G1173, G1183, G1200, G1216, G1229, G1241, G1249, G1255, G1267, G1274, G1275, G1276, G1277, G1278, G1279, G1280, G1281) — a comparatively dense cross-linkage that may be worth prioritizing in P3 reconciliation.\n"
+["family_md_sha256"]	S 1/1	"a746994b0906d33d6723434e9668afb5751d56df8b6cbcf0c4abd2b6fe057044"
+["family_md_status"]	S 1/1	"PRESENT"
+["hub"]	N	false
+["hub_record"]	N	null
+["in_checklist"]	N	false
+["input_manifest_sha256"]	S 1/1	"a20cf3a3e2fc9e1fc9c38919838c9edb3a0d901577a060d5804dc1e899a150b6"
+["p3a_pairs",0,"_batch_id"]	S 1/1	"RP0027"
+["p3a_pairs",0,"a"]	S 1/1	"h-kos-context-001-semantic-frame-preservation"
+["p3a_pairs",0,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",0,"basis"]	S 1/1	"NONE"
+["p3a_pairs",0,"notes_for_p3b"]	S 1/1	"Both fully sampled (4 of 4, 6 of 6, no truncation) -- this matches the documented 'shared S0237/S0239 candidate-register census rows' pattern explicitly called out as producing correct UNWITNESSED verdicts in prior batches."
+["p3a_pairs",0,"pair_id"]	S 1/1	"RP0776"
+["p3a_pairs",0,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",0,"what_says_this"]	S 1/1	"a and b share dual-labeled rows from S0237 (the 25-row candidate register census) and S0239 (identity-family validation decisions) -- but this is exactly the flagged false-positive pattern: both are merely co-listed as separate, distinct rows within the same large registry/census document (S0237's Family 1 IDENTITY table lists H-KOS-Context-001 and H-KOS-Relation-001 alongside several other unrelated hypotheses: INV-KOS-002, H-KOS-NonInterference-001, H-KOS-Contradiction-001, H-KOS-Relationship-001, H-ZERO-001, etc.), not evidence that the two specific hypotheses derive from or extend one another. No lineage_claims or content links H-KOS-Context-001 (Semantic Frame Preservation, ruled consolidated with Context-002 into Identity Law clause 1, per S0240) specifically to H-KOS-Relation-001 (Epistemic Relations first-class) beyond shared census/validation-batch membership."
+["p3a_pairs",0,"what_would_make_this_wrong"]	S 1/1	"A row explicitly stating Context-001's semantic-frame-preservation principle depends on or was derived from Relation-001's epistemic-relations-first-class principle, or vice versa."
+["p3a_pairs",1,"_batch_id"]	S 1/1	"RP0011"
+["p3a_pairs",1,"a"]	S 1/1	"h-kos-context-002-avacchedaka"
+["p3a_pairs",1,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",1,"basis"]	S 1/1	"NONE"
+["p3a_pairs",1,"notes_for_p3b"]	S 1/1	"Pattern repeats across several H-KOS-*/INV-KOS-* sibling pairs in this batch (RP0805, RP0854, RP0856, RP0881, RP1008, RP1025) -- all appear to be independently-numbered entries in the same hypothesis/invariant registry, correctly defaulting to UNWITNESSED absent a specific cross-reference."
+["p3a_pairs",1,"pair_id"]	S 1/1	"RP0786"
+["p3a_pairs",1,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",1,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",1,"what_says_this"]	S 1/1	"group_evidence is CO-OCCURRENCE only (5 co-occurrences in contribution labels[]); these are two differently-numbered hypotheses (H-KOS-Context-002 on Nyaya delimiting conditions/avacchedaka, vs H-KOS-Relation-001 on epistemic relations as first-class objects) from what is evidently a shared numbered H-KOS-nnn hypothesis registry, but no row or claim connects these two specific hypotheses to each other beyond co-appearing in the same registry documents."
+["p3a_pairs",1,"what_would_make_this_wrong"]	S 1/1	"A row explicitly stating H-KOS-Context-002's delimiting-condition mechanism depends on or specializes H-KOS-Relation-001's epistemic-relations-as-first-class framework would establish a real relationship."
+["p3a_pairs",2,"_batch_id"]	S 1/1	"RP0014"
+["p3a_pairs",2,"a"]	S 1/1	"h-kos-dialogue-001-structured-opposition"
+["p3a_pairs",2,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",2,"basis"]	S 1/1	"NONE"
+["p3a_pairs",2,"notes_for_p3b"]	S 1/1	"Classic shared-registry co-occurrence: both are independent candidate hypotheses tracked in the same master census (S0237/S0239), not conceptually related to each other beyond both being under governance review."
+["p3a_pairs",2,"pair_id"]	S 1/1	"RP0803"
+["p3a_pairs",2,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",2,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",2,"what_says_this"]	S 1/1	"Both complete families (5 and 6 rows, no truncation) share sources S0237/S0239 -- a shared 25-row candidate-hypothesis census/register and its validation pass -- but A (H-KOS-Dialogue-001, Family 7 CONTRADICTION, 'Structured Opposition'/Matilal Vada-Jalpa-Vitanda) and B (H-KOS-Relation-001, 'Epistemic relations as first-class') are two distinct, separately-numbered candidate items within that shared registry, not a derivation of one from the other. A's Family-7 row and B's Family-1-adjacent content are entered in different rows of the same table with no cross-reference; B's unique row (S2306) corrects B's own audit terminology without mentioning A."
+["p3a_pairs",2,"what_would_make_this_wrong"]	S 1/1	"A row in the census explicitly deriving H-KOS-Dialogue-001's structured-opposition mechanism from H-KOS-Relation-001's relations-as-first-class principle (or vice versa) -- not present in either complete row set."
+["p3a_pairs",3,"_batch_id"]	S 1/1	"RP0003"
+["p3a_pairs",3,"a"]	S 1/1	"h-kos-failure-001-failed-reasoning-preservation"
+["p3a_pairs",3,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",3,"basis"]	S 1/1	"NONE"
+["p3a_pairs",3,"notes_for_p3b"]	S 1/1	"Recommend a follow-on check reading S0237's full untruncated anchor/statement text for the Family 6 and compression-test rows (from 02-FILES/03-CONTRIBUTIONS source) if a tighter verdict is needed, since the displayed excerpt itself was truncated mid-sentence."
+["p3a_pairs",3,"pair_id"]	S 1/1	"RP0820"
+["p3a_pairs",3,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",3,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",3,"what_says_this"]	S 1/1	"Both labels are candidates in the same governance census document; a is one of the nine Family 6 (REASONING) candidates (S0237), and b's own specific row S2306 ('Correction D2: H-KOS-Relation-001's earlier incomplete pair-by-pair audit is replaced...') concerns only b's internal audit correction, with no mention of a. No row in either family's full (untruncated) list connects the two specific labels beyond both appearing in the same overall UM-22 compression-test sweep and Family-list census rows. Group evidence G1216 is CO-OCCURRENCE."
+["p3a_pairs",3,"what_would_make_this_wrong"]	S 1/1	"If the truncated portion of Family 6's row (S0237, cut off with '...' in the visible anchor text) explicitly states a compression/subsumption test between Failure-001 and Relation-001 specifically, this verdict would need revisiting -- I read only the visible, non-truncated portion since a_trunc=0/b_trunc=0 indicates no rows were cut from the family, only the printed anchor text field was truncated for display."
+["p3a_pairs",4,"_batch_id"]	S 1/1	"RP0004"
+["p3a_pairs",4,"a"]	S 1/1	"h-kos-fallacy-001-invalid-reasoning-detection"
+["p3a_pairs",4,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",4,"basis"]	S 1/1	"NONE"
+["p3a_pairs",4,"pair_id"]	S 1/1	"RP0833"
+["p3a_pairs",4,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",4,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",4,"what_says_this"]	S 1/1	"Both A (h-kos-fallacy-001-invalid-reasoning-detection) and B (h-kos-relation-001-epistemic-relations-first-class) are siblings in the same Family 6 REASONING register (S0237/S0239, 9-row family) -- co-listed with individual validation verdicts but no row relates them to each other specifically."
+["p3a_pairs",4,"what_would_make_this_wrong"]	S 1/1	"If a row explicitly merged or cross-referenced H-KOS-Fallacy-001 and H-KOS-Relation-001."
+["p3a_pairs",5,"_batch_id"]	S 1/1	"RP0008"
+["p3a_pairs",5,"a"]	S 1/1	"h-kos-intent-001-purpose-of-reasoning"
+["p3a_pairs",5,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",5,"basis"]	S 1/1	"NONE"
+["p3a_pairs",5,"notes_for_p3b"]	S 1/1	"Third same-census-only pair in this batch defaulting to UNWITNESSED (see RP0797, RP0846) -- the census document generates many spurious CO-OCCURRENCE groupings among its 25 candidate rows that are not actually related to each other."
+["p3a_pairs",5,"pair_id"]	S 1/1	"RP0848"
+["p3a_pairs",5,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",5,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",5,"what_says_this"]	S 1/1	"Both labels co-occur only via the same 25-row register census document (S0237/S0239); no lineage_claims connect them. The census explicitly places them in different families: a (H-KOS-Intent-001) is Family 6 REASONING, paired in compression-test cluster (8) with Dialogue-001/Contradiction-001/Revisability-001; b (H-KOS-Relation-001) is Family 1 IDENTITY ('Epistemic relations as first-class', HPA-rated 'one of the strongest kernel candidates'), and its own compression-test cluster (3) is 'Relation-001 subsumption test -> RELATED (principle/instance)' with no mention of Intent-001. b also has an independent, unrelated row (S2306, 'constitutively-relational rather than derivation-type' terminology correction) with no connection to a's reasoning-intent content."
+["p3a_pairs",5,"what_would_make_this_wrong"]	S 1/1	"If a future document explicitly ties reasoning purpose/intent (Vada/Jalpa/Vitanda) to the first-class-relations model (e.g. arguing that intent itself must be represented as a first-class epistemic relation), that would establish genuine continuity currently absent."
+["p3a_pairs",6,"_batch_id"]	S 1/1	"RP0011"
+["p3a_pairs",6,"a"]	S 1/1	"h-kos-lifecycle-reasoning-001"
+["p3a_pairs",6,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",6,"basis"]	S 1/1	"NONE"
+["p3a_pairs",6,"notes_for_p3b"]	S 1/1	"Same registry-sibling pattern as RP0786."
+["p3a_pairs",6,"pair_id"]	S 1/1	"RP0856"
+["p3a_pairs",6,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",6,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",6,"what_says_this"]	S 1/1	"group_evidence is CO-OCCURRENCE only (2 co-occurrences); differently-numbered H-KOS registry entries (epistemic inquiry lifecycle vs epistemic relations as first-class objects) with no specific cross-reference in the sampled evidence."
+["p3a_pairs",6,"what_would_make_this_wrong"]	S 1/1	"A row showing the lifecycle stages are themselves modeled as first-class epistemic relations would establish a real relationship."
+["p3a_pairs",7,"_batch_id"]	S 1/1	"RP0007"
+["p3a_pairs",7,"a"]	S 1/1	"h-kos-noninterference-001"
+["p3a_pairs",7,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",7,"basis"]	S 1/1	"NONE"
+["p3a_pairs",7,"notes_for_p3b"]	S 1/1	"Note for the object-identity record (not this pair): a (h-kos-noninterference-001) IS formally claimed as the transition-form of / same-law-as inv-kos-001-dimension-independence, per S0240 -- relevant to whichever pair actually pairs those two labels."
+["p3a_pairs",7,"pair_id"]	S 1/1	"RP0862"
+["p3a_pairs",7,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",7,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",7,"what_says_this"]	S 1/1	"CO-OCCURRENCE only (2 co-occurrences). S0240 does carry a real SOURCE-CLAIMED-REFINEMENT row for a ('H-KOS-NonInterference-001 is the transition-form of INV-KOS-001 (Dimension Independence). They render as one law.'), but its target is inv-kos-001-dimension-independence (a different label, not in this pair) -- not b (h-kos-relation-001-epistemic-relations-first-class). No claim connects a to b directly."
+["p3a_pairs",7,"what_would_make_this_wrong"]	S 1/1	"A row stating h-kos-relation-001's epistemic-relations-first-class principle is the same law as, or required by, h-kos-noninterference-001 would establish a claim; currently they appear to be two separate items in the same invariant family register (S0237/S0239) with no direct link shown."
+["p3a_pairs",8,"_batch_id"]	S 1/1	"RP0009"
+["p3a_pairs",8,"a"]	S 1/1	"h-kos-reasoning-separation-001-generate-vs-evaluate"
+["p3a_pairs",8,"b"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",8,"basis"]	S 1/1	"NONE"
+["p3a_pairs",8,"notes_for_p3b"]	S 1/1	"Cross-family co-occurrence via the same generic 'Deferred Mechanisms' listing rather than any specific pairwise ruling; correctly UNWITNESSED. This closes the cluster of five Constitutional-Invariant-Map CO-OCCURRENCE pairs in RP0009 (RP0787, RP0799, RP0850, RP0851, RP0876); only RP0799 had a direct compression-test ruling."
+["p3a_pairs",8,"pair_id"]	S 1/1	"RP0876"
+["p3a_pairs",8,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",8,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",8,"what_says_this"]	S 1/1	"Grouped by CO-OCCURRENCE (2x): both appear in the master 25-row census (S0237) and both have a partially-deferred (ENGINE/REPRESENTATION) component listed in the generic 'Deferred Mechanisms' table (S0239), but belong to different families entirely (A is Family 6 REASONING; B is Family 1 IDENTITY). The one compression-test ruling involving Relation-001 (cluster 3, 'Relation-001 subsumption test -> RELATED (principle/instance)') concerns Relation-001's relationship to ITS OWN instances (INV-001..004 + Expression!=Meaning + Observation!=Inference), not to Reasoning-Separation-001, which is never named in any compression cluster alongside Relation-001."
+["p3a_pairs",8,"what_would_make_this_wrong"]	S 1/1	"A compression-test row explicitly pairing Reasoning-Separation-001 and Relation-001 would supply direct evidence; none exists in the captured rows."
+["p3a_pairs",9,"_batch_id"]	S 1/1	"RP0002"
+["p3a_pairs",9,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",9,"b"]	S 1/1	"h-kos-relationship-001-tripuji"
+["p3a_pairs",9,"basis"]	S 1/1	"NONE"
+["p3a_pairs",9,"notes_for_p3b"]	S 1/1	"Near-identical naming (Relation-001 vs Relationship-001) is a genuine confusability risk worth a targeted look if P3b needs to disambiguate the corpus's Family-1/Family-6 relation vocabulary, but no positive separation or identity evidence was found in the sampled rows to justify HOMONYM or SAME here."
+["p3a_pairs",9,"pair_id"]	S 1/1	"RP0883"
+["p3a_pairs",9,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",9,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",9,"what_says_this"]	S 1/1	"Both are entries in the same 25-row Candidate register (S0237), and 'Relation-001' vs 'Relationship-001' are similarly-named but distinct registrations. S2306 (a-side only) shows 'Correction D2: H-KOS-Relation-001's earlier incomplete pair-by-pair audit is replaced by a corrected complete audit' -- this is a correction internal to Relation-001 itself, not a claim connecting it to Relationship-001-Tripuji. No row merges or continuities the two; CO-OCCURRENCE only."
+["p3a_pairs",9,"what_would_make_this_wrong"]	S 1/1	"A row explicitly distinguishing or merging 'Relation' (H-KOS-Relation-001) from/with 'Relationship' (H-KOS-Relationship-001-Tripuji) as the same or different constitutional candidates would resolve this either toward HOMONYM (if explicitly kept separate despite near-identical naming) or SAME/REFINEMENT."
+["p3a_pairs",10,"_batch_id"]	S 1/1	"RP0030"
+["p3a_pairs",10,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",10,"b"]	S 1/1	"h-kos-uncertainty-001-structured-doubt"
+["p3a_pairs",10,"basis"]	S 1/1	"NONE"
+["p3a_pairs",10,"notes_for_p3b"]	S 1/1	"Fourth instance in this batch of the S0237/S0239 shared-census pattern (with RP0802, RP0840, RP0868); recommend a single consolidated note to P3b about all four rather than treating each independently."
+["p3a_pairs",10,"pair_id"]	S 1/1	"RP0884"
+["p3a_pairs",10,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",10,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",10,"what_says_this"]	S 1/1	"Same shared-census pattern as RP0802/RP0840/RP0868: the only connecting rows are S0237 (25-row Candidate register) and S0239 (validation decisions). a's own family text visible here shows Family 1 (IDENTITY) content; b's shows Family 2 (EVIDENCE) content -- neither H-KOS-Relation-001 nor H-KOS-Uncertainty-001's specific family placement/row text was directly visible in the truncated excerpts, but both a and b are drawn from the same 25-row census document with no evidence the census itself treats them as related (they are not named in the same family-table excerpt shown)."
+["p3a_pairs",10,"what_would_make_this_wrong"]	S 1/1	"If the untruncated S0237 text places both H-KOS-Relation-001 and H-KOS-Uncertainty-001 in the SAME family with an explicit DISTINCT/SUBSUMES ruling between them (unlike the visible IDENTITY vs EVIDENCE family split), this verdict should be revisited."
+["p3a_pairs",11,"_batch_id"]	S 1/1	"RP0017"
+["p3a_pairs",11,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",11,"b"]	S 1/1	"h-kos-vyapti-001-inference-warranting-relation"
+["p3a_pairs",11,"basis"]	S 1/1	"NONE"
+["p3a_pairs",11,"pair_id"]	S 1/1	"RP0885"
+["p3a_pairs",11,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",11,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",11,"what_says_this"]	S 1/1	"Only evidence is CO-OCCURRENCE (2 times) within the same H-KOS-* numbered hypothesis catalogue -- sibling-registry-entries pattern. Although Vyapti (an inference-warranting relation) is plausibly a specific instance of the general 'epistemic relations as first-class' principle, no row makes this containment claim explicitly; per protocol, similar purpose/thematic fit is insufficient alone."
+["p3a_pairs",11,"what_would_make_this_wrong"]	S 1/1	"Would be wrong if a later row explicitly names Vyapti as a worked example instantiating the first-class-relations principle."
+["p3a_pairs",12,"_batch_id"]	S 1/1	"RP0019"
+["p3a_pairs",12,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",12,"b"]	S 1/1	"h-zero-001-unknown-valid-state"
+["p3a_pairs",12,"basis"]	S 1/1	"NONE"
+["p3a_pairs",12,"notes_for_p3b"]	S 1/1	"Both fully sampled (6/6, 6/6, no truncation). Third pair in this batch (with RP0791, RP0828) drawn from the same S0237/S0239 25-candidate registry-census exercise -- consistent with the documented pattern that this census structure generates many co-occurring-but-unrelated label pairs across families."
+["p3a_pairs",12,"pair_id"]	S 1/1	"RP0886"
+["p3a_pairs",12,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",12,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",12,"what_says_this"]	S 1/1	"Same S0237/S0239 candidate-register census pattern as RP0791/RP0828. A (H-KOS-Relation-001) belongs to Family 1 IDENTITY (consolidated as principle+representation into law 1, per S0239's Identity-family validation). B (H-ZERO-001) belongs to a different family, Family 2 EVIDENCE (consolidated with H-KOS-Uncertainty-001 into law 9, per Special Area B ruling). The ten named compression-test clusters never pair A and B together (A is tested in cluster 3, Relation-001 subsumption test -> RELATED as principle/instance of its own family; B is folded via cluster 9, Uncertainty-001<->Abhava-001 -> SUBSUMES, and Special Area B). Each has an entirely separate validation history, evidence code (A: C-6 hypergraph corroboration; B: C-10 EKS evidence), and final law assignment (A: law 1; B: law 9)."
+["p3a_pairs",12,"what_would_make_this_wrong"]	S 1/1	"If a fuller reading of the Relation-001 hypergraph representation showed it modeling H-ZERO-001's Unknown state as one of its first-class epistemic relations (a genuine formal dependency), this could establish EXTENSION. Not supported in the sampled rows -- both are treated as fully independent kernel-law candidates throughout the census, clustering, and validation passes."
+["p3a_pairs",13,"_batch_id"]	S 1/1	"RP0012"
+["p3a_pairs",13,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",13,"b"]	S 1/1	"inv-kos-001-dimension-independence"
+["p3a_pairs",13,"basis"]	S 1/1	"NONE"
+["p3a_pairs",13,"pair_id"]	S 1/1	"RP0887"
+["p3a_pairs",13,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",13,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",13,"what_says_this"]	S 1/1	"CO-OCCURRENCE only (G1278), no lineage_claims found."
+["p3a_pairs",13,"what_would_make_this_wrong"]	S 1/1	"An explicit claim tying epistemic-relations-as-first-class to dimension-independence would establish a relationship."
+["p3a_pairs",14,"_batch_id"]	S 1/1	"RP0003"
+["p3a_pairs",14,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",14,"b"]	S 1/1	"inv-kos-002-semantic-continuity"
+["p3a_pairs",14,"basis"]	S 1/1	"NONE"
+["p3a_pairs",14,"notes_for_p3b"]	S 1/1	"Same census-co-occurrence cluster as RP0778/RP0812/RP0820/RP0821/RP0857."
+["p3a_pairs",14,"pair_id"]	S 1/1	"RP0888"
+["p3a_pairs",14,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",14,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",14,"what_says_this"]	S 1/1	"Both are candidates in the same Family 1 (IDENTITY) census table and validated in the same S0239 pass, both surviving into 'law 1' but as distinct entries (INV-KOS-002 as its own Adopted Core clause; H-KOS-Relation-001 is not shown consolidated with it -- the consolidation decision S0240 referenced in RP0778 merges Context-001 with Context-002, not Relation-001 with INV-KOS-002). b's own specific correction row (S2306) concerns only H-KOS-Relation-001's internal audit terminology fix, with no mention of INV-KOS-002. Group evidence G1279 is CO-OCCURRENCE."
+["p3a_pairs",14,"what_would_make_this_wrong"]	S 1/1	"If a's constitutively-relational audit (S2306) were shown to depend on or redefine INV-KOS-002's semantic-continuity content, a real relationship would exist -- the visible evidence shows S2306 addressing only H-KOS-Relation-001's own internal terminology."
+["p3a_pairs",15,"_batch_id"]	S 1/1	"RP0018"
+["p3a_pairs",15,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",15,"b"]	S 1/1	"inv-kos-agent-001-epistemic-agency"
+["p3a_pairs",15,"basis"]	S 1/1	"NONE"
+["p3a_pairs",15,"notes_for_p3b"]	S 1/1	"Flag for P3b: verify whether 'H-KOS-Relationship-001' (compared against INV-KOS-Agent-001 in S0237's cluster 2) is the same candidate as this pair's A-label 'h-kos-relation-001-epistemic-relations-first-class', or a separate, similarly-named entry in the 25-row register. If confirmed identical, the correct verdict is likely SEPARATION/DISTINCT (near-HOMONYM) rather than UNWITNESSED."
+["p3a_pairs",15,"pair_id"]	S 1/1	"RP0889"
+["p3a_pairs",15,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",15,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",15,"what_says_this"]	S 1/1	"Same shared-census pattern. S0237's compression-test list does record a near-miss: '(2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED', which does involve INV-KOS-Agent-001 (=B) and a similarly-named 'H-KOS-Relationship-001' -- but that compared item is 'Relationship-001', not confirmed identical to this pair's 'h-kos-relation-001-epistemic-relations-first-class' (A). Given the naming is close but not confirmed to be the exact same candidate ID, I could not verify this compression test actually covers this specific pair."
+["p3a_pairs",15,"what_would_make_this_wrong"]	S 1/1	"If Relationship-001 and Relation-001 are confirmed to be the same candidate under two spellings, then the register's own 'DISTINCT/SUPERSEDED' compression-test ruling would be positive evidence of an explicit distinctness finding (potentially supporting HOMONYM or at least a documented non-merge ruling) between this pair."
+["p3a_pairs",16,"_batch_id"]	S 1/1	"RP0020"
+["p3a_pairs",16,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",16,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",16,"basis"]	S 1/1	"NONE"
+["p3a_pairs",16,"notes_for_p3b"]	S 1/1	"Same shared-registry-row false-positive pattern as RP0829: two sibling entries in the same 25-item candidate census, different families (IDENTITY vs EVIDENCE), no direct compression-test link."
+["p3a_pairs",16,"pair_id"]	S 1/1	"RP0890"
+["p3a_pairs",16,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",16,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",16,"what_says_this"]	S 1/1	"Both share the same S0237/S0239 candidate-register census rows (the same 25-item table and its validation results) -- the coincidental co-listing pattern flagged by the task brief. They belong to DIFFERENT families in the census: a (H-KOS-Relation-001) is Family 1 IDENTITY ('the general principle UNDER the separation family, with INV-001..004 + Expression!=Meaning + Observation!=Inference as its instances'); b (INV-KOS-Pramana-001) is Family 2 EVIDENCE ('Means of Acquisition -- forbids the Source-role collapse'). The compression-test rulings (S0237, ten named clusters) never pair Relation-001 with Pramana-001 -- cluster 3 relates Relation-001 to the INV-001..004 principle family, and cluster 4 finds Pramana-001 DISTINCT from Reasoning-Separation-001/Agent-001/INV-001. They receive different SURVIVES dispositions in S0239 (Relation-001: KERNEL(principle)+REPRESENTATION(graph), laws unspecified; Pramana-001: KERNEL(principle)+REPRESENTATION(evidence-record schema), laws 3+6)."
+["p3a_pairs",16,"what_would_make_this_wrong"]	S 1/1	"If a later compression-test explicitly paired Relation-001 and Pramana-001 for subsumption/overlap testing (as was done for other specific pairs in this same table), a positive relationship might be warranted -- but no such row exists in the captured evidence."
+["pairs_touching_missing"]	E	[]
+["population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["quarantine","p3a_pairs_withheld"]	N	0
+["quarantine","reconciliation_pairs_withheld"]	N	0
+["quarantine","sources_withheld"]	N	0
+["run_id"]	S 1/1	"OB0012-R7"
+["search_records",0,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",0,"ledger_hits","S0221",0,0]	S 1/1	"H-KOS-Relation-001: KnowledgeOS SHALL treat epistemic relationships as first-class entities and SHALL NOT reduce them into attributes of knowledge objects. This is probably one of the strongest kernel candidates discovered so far."
+["search_records",0,"ledger_hits","S0221",0,1]	N	2
+["search_records",0,"ledger_hits","S0237",0,0]	S 1/1	"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)"
+["search_records",0,"ledger_hits","S0237",0,1]	N	0
+["search_records",0,"ledger_hits","S0237",1,0]	S 1/1	"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)"
+["search_records",0,"ledger_hits","S0237",1,1]	N	2
+["search_records",0,"ledger_hits","S0237",2,0]	S 1/1	"Family 1 -- IDENTITY (What is this knowledge? -- identity conditions of meaning)"
+["search_records",0,"ledger_hits","S0237",2,1]	N	0
+["search_records",0,"ledger_hits","S0237",3,0]	S 1/1	"Family 1 -- IDENTITY (What is this knowledge? -- identity conditions of meaning)"
+["search_records",0,"ledger_hits","S0237",3,1]	N	2
+["search_records",0,"ledger_hits","S0239",0,0]	S 1/1	"Family 2.1 Identity family"
+["search_records",0,"ledger_hits","S0239",0,1]	N	2
+["search_records",0,"ledger_hits","S0241",0,0]	S 1/1	"Article 1 -- Identity: 1. ... preserve the identity of knowledge ... 3. Similarity SHALL NOT become identity ... 4. Context SHALL remain part of identity ... 5. Knowledge SHALL be a relationship"
+["search_records",0,"ledger_hits","S0241",0,1]	N	2
+["search_records",0,"ledger_hits","S2306",0,0]	S 1/1	"The corrected terminology MUST be: constitutively-relational rather than: derivation-type"
+["search_records",0,"ledger_hits","S2306",0,1]	N	2
+["search_records",0,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",0,"raw_hits","S0221",0,0]	N	2174
+["search_records",0,"raw_hits","S0221",0,1]	N	2
+["search_records",0,"raw_hits","S0237",0,0]	N	13935
+["search_records",0,"raw_hits","S0237",0,1]	N	2
+["search_records",0,"raw_hits","S0237",1,0]	N	13958
+["search_records",0,"raw_hits","S0237",1,1]	N	0
+["search_records",0,"raw_hits","S0237",2,0]	N	17678
+["search_records",0,"raw_hits","S0237",2,1]	N	2
+["search_records",0,"raw_hits","S0237",3,0]	N	17699
+["search_records",0,"raw_hits","S0237",3,1]	N	0
+["search_records",0,"raw_hits","S0237",4,0]	N	34715
+["search_records",0,"raw_hits","S0237",4,1]	N	2
+["search_records",0,"raw_hits","S0237",5,0]	N	42963
+["search_records",0,"raw_hits","S0237",5,1]	N	2
+["search_records",0,"raw_hits","S0237",6,0]	N	43263
+["search_records",0,"raw_hits","S0237",6,1]	N	2
+["search_records",0,"raw_hits","S0239",0,0]	N	6560
+["search_records",0,"raw_hits","S0239",0,1]	N	2
+["search_records",0,"raw_hits","S0239",1,0]	N	19101
+["search_records",0,"raw_hits","S0239",1,1]	N	2
+["search_records",0,"raw_hits","S0241",0,0]	N	4117
+["search_records",0,"raw_hits","S0241",0,1]	N	2
+["search_records",0,"raw_hits","S0294",0,0]	N	24265
+["search_records",0,"raw_hits","S0294",0,1]	N	2
+["search_records",0,"raw_hits","S0294",1,0]	N	25372
+["search_records",0,"raw_hits","S0294",1,1]	N	2
+["search_records",0,"raw_hits","S0294",2,0]	N	31202
+["search_records",0,"raw_hits","S0294",2,1]	N	2
+["search_records",0,"raw_hits","S0294",3,0]	N	47650
+["search_records",0,"raw_hits","S0294",3,1]	N	2
+["search_records",0,"raw_hits","S0294",4,0]	N	53505
+["search_records",0,"raw_hits","S0294",4,1]	N	2
+["search_records",0,"raw_hits","S0294",5,0]	N	84232
+["search_records",0,"raw_hits","S0294",5,1]	N	2
+["search_records",0,"raw_hits","S2306",0,0]	N	1820
+["search_records",0,"raw_hits","S2306",0,1]	N	2
+["search_records",0,"raw_hits","S2306",1,0]	N	4529
+["search_records",0,"raw_hits","S2306",1,1]	N	2
+["search_records",0,"raw_hits","S2306",2,0]	N	7205
+["search_records",0,"raw_hits","S2306",2,1]	N	2
+["search_records",0,"record"]	S 1/1	"LABEL-HITS"
+["search_records",0,"terms",0]	S 1/1	"epistemic relations as first-class"
+["search_records",0,"terms",1]	S 1/1	"h kos relation 001 epistemic relations first class"
+["search_records",0,"terms",2]	S 1/1	"h-kos-relation-001"
+["search_records",0,"terms",3]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",1,"dimension"]	S 1/1	"informal_meaning"
+["search_records",1,"files_searched"]	N	2734
+["search_records",1,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",1,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",1,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",1,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",1,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",1,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",1,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",1,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",1,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",1,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",1,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",1,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",1,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",1,"identity_summary","p0_row_exception"]	N	3
+["search_records",1,"identity_summary","stasis_unobservable"]	N	1
+["search_records",1,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",1,"negative_label"]	N	null
+["search_records",1,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",1,"record"]	S 1/1	"DIMENSION"
+["search_records",1,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",2,"dimension"]	S 1/1	"type_signature"
+["search_records",2,"files_searched"]	N	2734
+["search_records",2,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",2,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",2,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",2,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",2,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",2,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",2,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",2,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",2,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",2,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",2,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",2,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",2,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",2,"identity_summary","p0_row_exception"]	N	3
+["search_records",2,"identity_summary","stasis_unobservable"]	N	1
+["search_records",2,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",2,"negative_label"]	N	null
+["search_records",2,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",2,"record"]	S 1/1	"DIMENSION"
+["search_records",2,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",3,"dimension"]	S 1/1	"invariants"
+["search_records",3,"files_searched"]	N	2734
+["search_records",3,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",3,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",3,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",3,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",3,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",3,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",3,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",3,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",3,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",3,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",3,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",3,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",3,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",3,"identity_summary","p0_row_exception"]	N	3
+["search_records",3,"identity_summary","stasis_unobservable"]	N	1
+["search_records",3,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",3,"negative_label"]	N	null
+["search_records",3,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",3,"record"]	S 1/1	"DIMENSION"
+["search_records",3,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",4,"dimension"]	S 1/1	"dependencies"
+["search_records",4,"files_searched"]	N	2734
+["search_records",4,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",4,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",4,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",4,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",4,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",4,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",4,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",4,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",4,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",4,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",4,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",4,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",4,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",4,"identity_summary","p0_row_exception"]	N	3
+["search_records",4,"identity_summary","stasis_unobservable"]	N	1
+["search_records",4,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",4,"negative_label"]	N	null
+["search_records",4,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",4,"record"]	S 1/1	"DIMENSION"
+["search_records",4,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",5,"dimension"]	S 1/1	"assumptions"
+["search_records",5,"files_searched"]	N	2734
+["search_records",5,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",5,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",5,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",5,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",5,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",5,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",5,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",5,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",5,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",5,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",5,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",5,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",5,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",5,"identity_summary","p0_row_exception"]	N	3
+["search_records",5,"identity_summary","stasis_unobservable"]	N	1
+["search_records",5,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",5,"negative_label"]	N	null
+["search_records",5,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",5,"record"]	S 1/1	"DIMENSION"
+["search_records",5,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",6,"dimension"]	S 1/1	"examples"
+["search_records",6,"files_searched"]	N	2734
+["search_records",6,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",6,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",6,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",6,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",6,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",6,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",6,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",6,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",6,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",6,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",6,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",6,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",6,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",6,"identity_summary","p0_row_exception"]	N	3
+["search_records",6,"identity_summary","stasis_unobservable"]	N	1
+["search_records",6,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",6,"negative_label"]	N	null
+["search_records",6,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",6,"record"]	S 1/1	"DIMENSION"
+["search_records",6,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",7,"dimension"]	S 1/1	"warnings"
+["search_records",7,"files_searched"]	N	2734
+["search_records",7,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",7,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",7,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",7,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",7,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",7,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",7,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",7,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",7,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",7,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",7,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",7,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",7,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",7,"identity_summary","p0_row_exception"]	N	3
+["search_records",7,"identity_summary","stasis_unobservable"]	N	1
+["search_records",7,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",7,"negative_label"]	N	null
+["search_records",7,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",7,"record"]	S 1/1	"DIMENSION"
+["search_records",7,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",8,"dimension"]	S 1/1	"experiments"
+["search_records",8,"files_searched"]	N	2734
+["search_records",8,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",8,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",8,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",8,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",8,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",8,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",8,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",8,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",8,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",8,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",8,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",8,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",8,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",8,"identity_summary","p0_row_exception"]	N	3
+["search_records",8,"identity_summary","stasis_unobservable"]	N	1
+["search_records",8,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",8,"negative_label"]	N	null
+["search_records",8,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",8,"record"]	S 1/1	"DIMENSION"
+["search_records",8,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",9,"dimension"]	S 1/1	"open_questions"
+["search_records",9,"files_searched"]	N	2734
+["search_records",9,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",9,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",9,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",9,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",9,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",9,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",9,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",9,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",9,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",9,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",9,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",9,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",9,"hits_ref"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",9,"identity_summary","p0_row_exception"]	N	3
+["search_records",9,"identity_summary","stasis_unobservable"]	N	1
+["search_records",9,"label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["search_records",9,"negative_label"]	N	null
+["search_records",9,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",9,"record"]	S 1/1	"DIMENSION"
+["search_records",9,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["semantic_status_mechanical","note"]	N	null
+["semantic_status_mechanical","rule"]	S 1/1	"ROW-4"
+["semantic_status_mechanical","value"]	S 1/1	"IDENTITY-UNWITNESSED"
+["source_meta","S0221","best_historical_date"]	S 1/1	"1787358352"
+["source_meta","S0221","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0221","explicit_dates"]	E	[]
+["source_meta","S0221","file_mtime"]	S 1/1	"1787358352"
+["source_meta","S0221","mtime_block"]	N	null
+["source_meta","S0221","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0221","status"]	S 1/1	"CONTENT"
+["source_meta","S0237","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0237","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0237","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0237","file_mtime"]	S 1/1	"1787383067"
+["source_meta","S0237","mtime_block"]	N	null
+["source_meta","S0237","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0237","status"]	S 1/1	"CONTENT"
+["source_meta","S0239","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0239","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0239","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0239","file_mtime"]	S 1/1	"1787383792"
+["source_meta","S0239","mtime_block"]	N	null
+["source_meta","S0239","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0239","status"]	S 1/1	"CONTENT"
+["source_meta","S0240","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0240","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0240","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0240","file_mtime"]	S 1/1	"1787384408"
+["source_meta","S0240","mtime_block"]	N	null
+["source_meta","S0240","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0240","status"]	S 1/1	"CONTENT"
+["source_meta","S0241","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0241","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0241","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0241","file_mtime"]	S 1/1	"1787385112"
+["source_meta","S0241","mtime_block"]	N	null
+["source_meta","S0241","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0241","status"]	S 1/1	"CONTENT"
+["source_meta","S0294","best_historical_date"]	S 1/1	"1787395731"
+["source_meta","S0294","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0294","explicit_dates"]	E	[]
+["source_meta","S0294","file_mtime"]	S 1/1	"1787395731"
+["source_meta","S0294","mtime_block"]	N	null
+["source_meta","S0294","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0294","status"]	S 1/1	"CONTENT"
+["source_meta","S1752","best_historical_date"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1752","explicit_dates"]	E	[]
+["source_meta","S1752","file_mtime"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","mtime_block"]	N	null
+["source_meta","S1752","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1752","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1821","best_historical_date"]	S 1/1	"1788124763"
+["source_meta","S1821","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1821","explicit_dates"]	E	[]
+["source_meta","S1821","file_mtime"]	S 1/1	"1788124763"
+["source_meta","S1821","mtime_block"]	N	null
+["source_meta","S1821","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1821","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1824","best_historical_date"]	S 1/1	"1788124863"
+["source_meta","S1824","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1824","explicit_dates"]	E	[]
+["source_meta","S1824","file_mtime"]	S 1/1	"1788124863"
+["source_meta","S1824","mtime_block"]	N	null
+["source_meta","S1824","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1824","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1895","best_historical_date"]	S 1/1	"1788128669"
+["source_meta","S1895","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1895","explicit_dates"]	E	[]
+["source_meta","S1895","file_mtime"]	S 1/1	"1788128669"
+["source_meta","S1895","mtime_block"]	N	null
+["source_meta","S1895","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1895","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1899","best_historical_date"]	S 1/1	"1788128726"
+["source_meta","S1899","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1899","explicit_dates"]	E	[]
+["source_meta","S1899","file_mtime"]	S 1/1	"1788128726"
+["source_meta","S1899","mtime_block"]	N	null
+["source_meta","S1899","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1899","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1909","best_historical_date"]	S 1/1	"1788128760"
+["source_meta","S1909","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1909","explicit_dates"]	E	[]
+["source_meta","S1909","file_mtime"]	S 1/1	"1788128760"
+["source_meta","S1909","mtime_block"]	N	null
+["source_meta","S1909","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1909","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1928","best_historical_date"]	S 1/1	"1788129394"
+["source_meta","S1928","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1928","explicit_dates"]	E	[]
+["source_meta","S1928","file_mtime"]	S 1/1	"1788129394"
+["source_meta","S1928","mtime_block"]	N	null
+["source_meta","S1928","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1928","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1929","best_historical_date"]	S 1/1	"1788129395"
+["source_meta","S1929","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1929","explicit_dates"]	E	[]
+["source_meta","S1929","file_mtime"]	S 1/1	"1788129395"
+["source_meta","S1929","mtime_block"]	N	null
+["source_meta","S1929","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1929","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1930","best_historical_date"]	S 1/1	"1788129397"
+["source_meta","S1930","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1930","explicit_dates"]	E	[]
+["source_meta","S1930","file_mtime"]	S 1/1	"1788129397"
+["source_meta","S1930","mtime_block"]	N	null
+["source_meta","S1930","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1930","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2306","best_historical_date"]	S 1/1	"1788272184"
+["source_meta","S2306","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2306","explicit_dates"]	E	[]
+["source_meta","S2306","file_mtime"]	S 1/1	"1788272184"
+["source_meta","S2306","mtime_block"]	N	null
+["source_meta","S2306","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S2306","status"]	S 1/1	"CONTENT"
+["source_meta","S2791","best_historical_date"]	S 1/1	"1788679896"
+["source_meta","S2791","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2791","explicit_dates"]	E	[]
+["source_meta","S2791","file_mtime"]	S 1/1	"1788679896"
+["source_meta","S2791","mtime_block"]	N	null
+["source_meta","S2791","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2791","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2795","best_historical_date"]	S 1/1	"1788679967"
+["source_meta","S2795","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2795","explicit_dates"]	E	[]
+["source_meta","S2795","file_mtime"]	S 1/1	"1788679967"
+["source_meta","S2795","mtime_block"]	N	null
+["source_meta","S2795","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2795","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2798","best_historical_date"]	S 1/1	"1788680353"
+["source_meta","S2798","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2798","explicit_dates"]	E	[]
+["source_meta","S2798","file_mtime"]	S 1/1	"1788680353"
+["source_meta","S2798","mtime_block"]	N	null
+["source_meta","S2798","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2798","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_tracks","S0237","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0237","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0239","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0239","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S2306","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S2306","track_tag"]	S 1/1	"UNCLASSIFIED"
+["stage2_files",0]	S 1/1	"S0221"
+["stage2_files",1]	S 1/1	"S0237"
+["stage2_files",2]	S 1/1	"S0239"
+["stage2_files",3]	S 1/1	"S0241"
+["stage2_files",4]	S 1/1	"S0294"
+["stage2_files",5]	S 1/1	"S2306"
+["tier"]	S 1/1	"U"
+["working_label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"

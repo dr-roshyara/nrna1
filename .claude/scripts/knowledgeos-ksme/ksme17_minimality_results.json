@@ -1,0 +1,96 @@
+{
+  "n_states_in_closure": 12,
+  "partition_minimality": {
+    "n_classes": 4,
+    "rounds_to_fixed_point": 1,
+    "classes_sizes": [
+      1,
+      1,
+      2,
+      8
+    ]
+  },
+  "component_minimality": {
+    "minimal_S": [
+      "P",
+      "E"
+    ],
+    "size": 2,
+    "n_subsets_tested": 8,
+    "all_tested_summary": [
+      {
+        "S": [],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "P"
+        ],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "Sigma"
+        ],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "E"
+        ],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "tau"
+        ],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "Pi"
+        ],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "P",
+          "Sigma"
+        ],
+        "sufficient": false
+      },
+      {
+        "S": [
+          "P",
+          "E"
+        ],
+        "sufficient": true
+      }
+    ]
+  },
+  "representation_minimality": {
+    "best": "F_no_tau_pi",
+    "all_candidates": [
+      {
+        "name": "F_full",
+        "sufficient": true,
+        "cost": 5
+      },
+      {
+        "name": "F_no_tau_pi",
+        "sufficient": true,
+        "cost": 3
+      },
+      {
+        "name": "F_P_Sigma_only",
+        "sufficient": false,
+        "cost": null
+      },
+      {
+        "name": "F_P_only",
+        "sufficient": false,
+        "cost": null
+      }
+    ]
+  }
+}

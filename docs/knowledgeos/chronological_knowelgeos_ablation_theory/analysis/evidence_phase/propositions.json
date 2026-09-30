@@ -1,0 +1,27 @@
+{
+ "kind": "evidence propositions, fixed BEFORE any corpus read (design only). Each proposition is a falsifiable historical claim; 'property' ties it to a frozen SPEC-G25-r1 property and the value that the claim REQUIRES. property=null means no frozen model can express it (CANNOT-EXPRESS).",
+ "results_source": "analysis/gate25/results_ref.json (sha256 1771c79a…; SECONDARY reproduction only until non-Claude verification)",
+ "primary_models": ["MT1-P0", "MT1-P1", "MT2-P0", "MT2-P1"],
+ "control_models": ["MT0"],
+ "propositions": [
+  {"id": "EP-01", "eq": "EQ-1", "claim": "authorization carries an explicit scope and/or a named authority that limits what it permits", "property": null, "gap": "FRN-3 authorization scope"},
+  {"id": "EP-02a", "eq": "EQ-2", "claim": "at every promotion event, the evidence floor holds (evidence present or eligible)", "property": "EVENT-FLOOR-SAFETY", "requires": "HOLDS"},
+  {"id": "EP-02b", "eq": "EQ-2", "claim": "at every promotion event, the item meets the bar (eligible)", "property": "EVENT-ELIGIBILITY-SAFETY", "requires": "HOLDS"},
+  {"id": "EP-02c", "eq": "EQ-2", "claim": "a promotion may proceed on an earlier authorization even though the floor no longer holds at promotion (strict TOCTOU permitted)", "property": "EVENT-FLOOR-SAFETY", "requires": "FAILS"},
+  {"id": "EP-03a", "eq": "EQ-3", "claim": "an adopted item can remain adopted after its evidence falls below the floor", "property": "PERSIST", "requires": "REACHABLE"},
+  {"id": "EP-04a", "eq": "EQ-4", "claim": "every loss of adopted status is an explicit governance revocation act", "property": "REVOC-EXPLICIT", "requires": "HOLDS"},
+  {"id": "EP-04b", "eq": "EQ-4", "claim": "adopted status is lost automatically when evidence falls below the floor", "property": "AUTO-INVAL", "requires": "HOLDS"},
+  {"id": "EP-05a", "eq": "EQ-5", "claim": "validation is a precondition of promotion (not merely an expectation)", "property": null, "gap": "FRN-3 reassessment / validation act"},
+  {"id": "EP-05b", "eq": "EQ-5", "claim": "after authorization and loss of the floor, promotion requires new evidence first", "property": "REVAL-a", "requires": "NOT_REACHABLE"},
+  {"id": "EP-06", "eq": "EQ-6", "claim": "a change of the bar/rule changes the status of pending or adopted items", "property": null, "gap": "A6 (u' = u) in every model; T5 only shows reachability"},
+  {"id": "EP-07", "eq": "EQ-7", "claim": "pending (authorized, not promoted) items are governed by a stated transition rule when the bar changes", "property": null, "gap": "A6"},
+  {"id": "EP-08", "eq": "EQ-8", "claim": "already adopted items are re-assessed when the bar changes", "property": null, "gap": "A6"},
+  {"id": "EP-09", "eq": "EQ-9", "claim": "grandfathering is explicit", "property": null, "gap": "A6"},
+  {"id": "EP-10", "eq": "EQ-10", "claim": "rule changes apply retroactively", "property": null, "gap": "A6"},
+  {"id": "EP-11", "eq": "EQ-11", "claim": "later evidence can overturn an adoption through a defined act", "property": null, "gap": "FRN-3 amendment / reassessment act"},
+  {"id": "EP-12", "eq": "EQ-12", "claim": "promotion is a discrete event distinct from the resulting adopted state", "property": null, "structural": "every MT model separates the PromEvent step (ad 0->1) from the state ad; recorded as STRUCTURALLY-CONSISTENT, not a discriminator"},
+  {"id": "EP-13a", "eq": "EQ-13", "claim": "an exception below the bar requires that some evidence exists", "property": "AUTH-EVIDENCE-SAFETY-scoped", "requires": "HOLDS"},
+  {"id": "EP-13b", "eq": "EQ-13", "claim": "an exception below the bar may be authorized with no evidence at all", "property": "AUTH-EVIDENCE-SAFETY-scoped", "requires": "FAILS"},
+  {"id": "EP-13c", "eq": "EQ-13", "claim": "no authorization below the bar is valid", "property": "AUTH-ELIGIBILITY-SAFETY", "requires": "HOLDS"}
+ ]
+}

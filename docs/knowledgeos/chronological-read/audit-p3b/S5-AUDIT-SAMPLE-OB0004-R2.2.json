@@ -1,0 +1,67 @@
+{
+ "body": {
+  "audit_group": {
+   "cross_batch_audit_due_after_this": false,
+   "first_index": 0,
+   "group": 0,
+   "last_index": 4
+  },
+  "batch_id": "OB0004",
+  "batch_seed": 1897904471,
+  "f3_stage2b": {},
+  "mandatory_contested_or_homonym_split": [],
+  "mandatory_register": [
+   "OB0004-R2.2:OB0004:18"
+  ],
+  "manifest_index": 0,
+  "n_batches": 396,
+  "other_register_sample": [
+   "OB0004-R2.2:OB0004:17",
+   "OB0004-R2.2:OB0004:28"
+  ],
+  "records_in_batch": {
+   "objects": 5,
+   "register": 28,
+   "total": 33
+  },
+  "seed_root": 20261100,
+  "seeded_records": {
+   "n": 5,
+   "object_available": true,
+   "object_included": true,
+   "objects": [
+    "strategic-behavior-game-theory-model"
+   ],
+   "register": [
+    "OB0004-R2.2:OB0004:14",
+    "OB0004-R2.2:OB0004:3",
+    "OB0004-R2.2:OB0004:4",
+    "OB0004-R2.2:OB0004:5"
+   ],
+   "target": 5
+  }
+ },
+ "header": {
+  "input_hashes": {
+   "ledger-p3b-r2/OB0004-R2.2/objects.jsonl": "ce851a865db5d70e6b4ee8a8b754445bb20d8ad64546297e72e17990f5fb46d7",
+   "ledger-p3b-r2/OB0004-R2.2/register.jsonl": "2d53ff3662fadb996f9aabccbe0b8075d73d0381b971a5b1e447b6eb384869b6"
+  },
+  "numpy_version": "2.5.0",
+  "output_sha256": "f0ca52e95aba57557236477b905bca0fe8b2e721bfb166197315c4baa6660a89",
+  "parameters": {
+   "index": 0,
+   "n_batches": 396,
+   "seed_root": 20261100
+  },
+  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "protocol_sha256": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12",
+  "python_version": "3.13.2",
+  "run_timestamp_utc": "2026-09-25T09:23:30Z",
+  "script_committed_unmodified": true,
+  "script_name": "scripts/p3b_s5_audit_sample.py",
+  "script_version": "44852dbdde1144f8cb3dc810deb73a76cbafe591",
+  "seed": 1897904471
+ }
+}

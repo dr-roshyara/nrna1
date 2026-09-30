@@ -270,6 +270,12 @@ php scripts/doc-placement.php --list | --self-test | --verify
 - **LESSON, BASH: `case` globs SPAN `/` — `docs/pks/x.md` matches `docs/*.md`. Path tests that need precision belong in PHP, not in a case glob. Caught by testing the NEGATIVE cases.**
 - **`npm run knowledge-lint` BASELINE = 9 errors / 0 warnings — all nine are broken `architecture/` links from today's `architecture_legacy/` move, PRE-EXISTING. ALWAYS RECORD THE BASELINE BEFORE AND AFTER: my first pass took it to 10 (a new `docs/knowledge/` doc needs a knowledge card), the linter caught it, fixed.**
 
+## ⚠️ `KOS-CONTRACT-NEUTRALITY-001` review documents: correct placement is `docs/knowledgeos/`, not `docs/publicdigit/` — forward-only correction (2026-09-28)
+
+- **The resolver already says so and always did:** `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos` → `docs/knowledgeos` (verified 2026-09-28). The invocation used earlier the same day (`--scope=cross-product`) was the wrong argument, not a tool gap — no registry/script edit was needed to fix this.
+- **~60+ existing `KOS-CONTRACT-NEUTRALITY-001` documents (and ~68 more across other `KOS-*` work items) already sit under `docs/publicdigit/reviews/`**, accumulated over six weeks by multiple sessions, none invoking the resolver correctly. **Left in place, by explicit human decision** — this is the same shape as "A sequencing deviation is RECORDED, not reverted" (above): the applied content is not wrong, reverting/migrating 128 files would only launder the sequence, not improve it.
+- **Forward rule, binding from 2026-09-28: every NEW review/governance document for `KOS-CONTRACT-NEUTRALITY-001` (and any other `KOS-*` work item) goes under `docs/knowledgeos/reviews/`**, resolved via the command above — not `docs/publicdigit/reviews/`, regardless of what the existing 128-file corpus there might suggest by precedent. Precedent from a misapplied tool is not a rule.
+
 ## ✅ ES AMENDMENTS **ARE** PERMITTED UNDER THE FREEZE — by explicit ruling (R-41 is the controlling precedent; verified 2026-08-01)
 
 - **⛔ CORRECTS THE ENTRY BELOW AND MY OWN PACKAGE CLAIM ("no precedent for a standards amendment under the freeze") — THE PRECEDENT EXISTS AND IS RECENT. `git log -- 'engineering/governance/ES-*.md'` shows repeated post-R-37 amendments: **R-41/ES-004.3 (2026-07-30, "adopted ... Principal Architect instruction", then refined same day at ARB review) · ES-006.4 Harvest Question ("ARB harvest amendment") · ES-004.2 plan naming ("overridden ... Decision Authority") · ES-002 pointer registration**. **I searched the freeze-note convention and the rulings register but NEVER RAN GIT LOG ON THE ES FILES. That is the obvious search.**
@@ -967,3 +973,186 @@ is promoted, removed, merged or declared verified because a finding looks relate
 md5-identical groups already classified by the archaeology census; and substring false positives — `OWA`
 matched inside `OWASP`/`TOWARD` *(`P-67`)*, `EC` inside `DECISION`/`EXECUTION` *(`P-74`)*, each of which
 would have inverted a verdict.
+
+## Election lifecycle — constitutional authority facts (durable, 2026-09-13)
+
+- **`ElectionConstitution` (`app/Domain/Election/Constitution/ElectionConstitution.php`)'s `allowed_roles` per action is an intrinsic constitutional invariant, not an HTTP-boundary-only convenience** — backed by ADR-001 (`docs/architecture/decisions/001-constitutional-capability-sovereignty.md`) and the ARB-accepted rule-ownership map (`docs/publicdigit/reviews/2026-08-12-election-constitution-authority-investigation.md`, which explicitly places "who may act" inside the Constitution's authority). Any action routed through `Election::transitionTo()` gets its role enforced by `ConstitutionalTransitionGuard` for every caller, not just HTTP requests — confirmed true today for `complete_administration`, `submit_for_approval`, `open_voting`, `close_voting`, `approve`, `publish_results`, and (as of the Slice B migration) `complete_nomination`.
+- **`ConstitutionalTransitionGuard::userHasAnyRole()` checks Laravel's `Auth::user()`, never the `Transition`'s own `$actorId`.** The two are independent inputs: `$actorId` is audit/event identity only (written to `election_state_transitions.actor_id` and threaded into domain events); authorization is derived entirely from the authenticated session. A test or script calling a `transitionTo()`-backed model method directly, without `actingAs()`, will fail the role check regardless of which `$actorId` string it passes.
+- **`voting_locked` has three writers, not one** — `Election::applySideEffectsForOpenVoting()` (the primary, human `open_voting` action), `Election::applySideEffectsForCloseVoting()` (re-affirms; already true by the time `close_voting` is reachable, since `VotingActive` derivation itself requires `voting_locked`), and `Election::enforceVotingLock()` — an explicitly-documented "infrastructure enforcement... bypasses the constitutional state machine intentionally" method called from **two** places in `app/Console/Commands/ProcessElectionAutoTransitions.php`: `processNominationToVotingTransition()` (a self-service auto-lock-voting path — nomination done + grace period elapsed + no pending candidates — that never goes through `open_voting`/the Constitution at all) and its own `enforceVotingLock()` wrapper (seals an already-expired window that was never explicitly closed). Any future invariant statement about "who may lock voting" must account for all three, not just `open_voting`.
+- **`Election::completeNomination()`/`auto_complete_nomination` never set `voting_locked`** — verified both by the legacy implementation (never touched it) and the migrated constitutional implementation (`applySideEffectsForCompleteNomination()` only touches `nomination_completed`/`nomination_completed_at`/the voting window). This is the invariant Slice A/B exist to protect.
+- **`ProcessElectionAutoTransitions::processNominationToVotingTransition()` (the auto-lock path) requires an approved candidate as of `8dbe4f668`** — it already required no pending candidacies; it now also requires `NominationCompletionPredicates::hasApprovedCandidates()`, closing the path by which a zero-candidate election could reach `Counting`. `enforceVotingLock()` itself, and its second call site (sealing an already-expired window), were untouched.
+- **`EM-VOT-004` (Election Manifesto, ADOPTED PO/ARB 2026-08-15) says a clock-driven mechanism must never exercise the Chief Election Officer's authority to start voting — and its implementation authorization was explicitly withheld at adoption and remains withheld** (verified 2026-09-13, no later authorization found; `PBDIGIT-59`/`G-1`/`G-2` — which timestamp is the official schedule — is the named Tier-1 blocker). `ProcessElectionAutoTransitions`'s clock-driven auto-lock path is the mechanism this rule is in tension with. **Do not migrate `enforceVotingLock()`/`ProcessElectionAutoTransitions` into the Constitution, split/retire `voting_locked`, or otherwise implement `EM-VOT-004` without first checking for an explicit, later PO/ARB implementation authorization** — a PO/ARB decision request for the seven blocking questions was drafted and committed (`2e3fc0aa3`: `docs/publicdigit/reviews/2026-09-13-decision-request-start-of-voting-governance-gate.md`); check it (and any response to it) before touching this area again.
+
+## KnowledgeOS corpus-research methodology — standing rules (2026-09-21, applies to ALL future KSME/corpus-research work)
+
+**These two rules govern how any future session must search the KnowledgeOS brainstorming corpus
+(`docs/knowledgeos/brainstorming/`). They are cumulative — apply both together, every time.**
+
+1. **Mandatory Chronological Continuity Rule.** The unit of investigation is the research *thread*, not
+   the calendar day or the single matched file. When a relevant term/concept/claim is found: identify its
+   exact file timestamp; read backward (same-thread files preceding it, to find where it was actually
+   introduced); read forward (same-day, then next-day, then however many further days the thread visibly
+   continues) until the thread clearly terminates, is superseded, is rejected, or a genuinely new
+   independent thread begins. **Any file timestamped ≥22:00 mandatorily requires checking the following
+   calendar day(s)** — do not stop at midnight. Never conclude "introduced here" / "missing" / "solved" /
+   "rejected" / "unresolved" from a single file. For load-bearing findings, record the traversal explicitly:
+   matched file+timestamp, preceding files inspected, forward files inspected (same-day and cross-midnight),
+   final status, provenance tier.
+2. **Mandatory Comprehensive Term Discovery Rule.** Reading any relevant document means extracting every
+   load-bearing mathematical/logical/semantic/domain term it contains — not only the term that motivated
+   the search (operations, observations, state components, relations, equalities/orderings, transition/
+   contradiction concepts, identity/provenance concepts, algorithms, theorems/axioms, counterexamples,
+   named models/frameworks, notations). Maintain a cumulative Term-Discovery-Registry (columns: Term |
+   First discovered in | Timestamp | Defined? | Source location | Related terms | Predecessors |
+   Successors | Status | Same-day traversal | Cross-midnight traversal | Research thread) and record
+   inter-term relationships (defines/refines/contradicts/replaces/depends-on/implements/falsifies/
+   verifies/generalizes/specializes/derives/is-equivalent-to/is-distinct-from). Every newly discovered
+   load-bearing term is itself a candidate seed for rule 1's traversal — do not return to only the
+   original search term. First applied in full in `KSME-11` (see
+   `docs/knowledgeos/chronological-read/audit-p3a/three-model-convergence/track-separation/
+   KSME-11-TERM-DISCOVERY-REGISTRY.md`, explicitly partial/growing, not a finished artifact).
+
+A keyword hit is a navigation point, never an authoritative conclusion, under either rule.
+
+3. **Mandatory Chronological Dependency-Closure Protocol (2026-09-21, supersedes/subsumes rules 1-2 above
+   — apply this, not the two narrower rules, going forward).** Triggered when Claude, asked directly,
+   admitted the two rules above were still being applied in a seed-question-driven way rather than as a
+   full recursive closure. Every document read is simultaneously a discovery source, a dependency source,
+   and a chronological navigation source — the current research question is only an entry point, never the
+   boundary of what gets extracted or traversed.
+   - **UNDERIVED-term queue**: every load-bearing term whose meaning is not established in current
+     evidence, whose predecessor definition is unreconstructed, or whose semantic type is unclear gets
+     added to a persistent queue (fields: term, exact source, timestamp, context, semantic role, why
+     underived, predecessor/successor candidates, dependencies, status, traversal status). Traversing one
+     UNDERIVED term recursively surfaces new ones — queue and traverse those too, until the queue is empty
+     or every remaining item has an explicit terminal status. Do not silently infer a term's meaning.
+   - **Six-plus status vocabulary, never collapsed**: `NOT-YET-TRAVERSED` / `NOT-FOUND-IN-SEARCH` /
+     `NO-SOURCE-FOUND-AFTER-EXHAUSTIVE-SEARCH` / `SOURCE-EXPLICITLY-ABSENT` / `SOURCE-EXPLICITLY-REJECTED` /
+     `UNRESOLVED` / `GOVERNANCE-DEPENDENT`. Never convert "I didn't find it" into "it doesn't exist" —
+     these are different claims with different evidence requirements.
+   - **Symbol Identity, not glyph identity**: track a symbol as `(glyph, context, source, timestamp,
+     semantic role)`, not by its glyph alone. Two occurrences of the same name/symbol are DISTINCT
+     identities by default until a source-supported relation (not thematic resemblance) establishes
+     otherwise. Real examples already found this way: `⊕` (3 unrelated objects), `Contr` (2 unrelated
+     objects, related only by authorial analogy), `Conflict` (5 disjoint objects within one document
+     alone), `Authorize` (4 signatures, 3 distinct identities).
+   - **Typed research dependency graph**: every finding becomes a node; every relationship a typed,
+     provenanced, tiered edge — `defines / defines-in-context / refines / derives / depends-on /
+     implements / falsifies / verifies / contradicts / replaces / supersedes / generalizes / specializes /
+     instantiates / is-equivalent-to / is-distinct-from / requires / blocks / motivates / operationalizes /
+     merely-analogizes`.
+   - **Research closure ≠ mathematical closure.** Distinguish `CORPUS DEPENDENCY CLOSURE` /
+     `SEMANTIC CLOSURE` / `EXECUTABLE CLOSURE` / `BEHAVIORAL CLOSURE` / `MATHEMATICAL PROOF` — exhausting
+     the term/dependency graph never by itself means the underlying theory is complete.
+   - **No experiment before dependency closure.** Before implementing any major semantic experiment,
+     verify every load-bearing term it needs has been traversed and every dependency is either derived,
+     source-grounded, or has an explicit terminal/blocked status. If not, continue traversal instead of
+     implementing.
+   - **Every report includes closure statistics**: documents read directly / via synthesis / unread; terms
+     discovered; UNDERIVED at start / resolved / remaining; traversals (incl. cross-midnight); dependency
+     edges added; notation/signature collisions; newly discovered blockers; explicitly rejected hypotheses;
+     unresolved governance decisions. First applied in full in `KSME-13A` (see
+     `docs/knowledgeos/chronological-read/audit-p3a/three-model-convergence/track-separation/
+     KSME-13A-REPORT.md`).
+   - A queue that is **not empty** at the end of a pass is an honest, expected, valid outcome — not a
+     failure — as long as every remaining item carries a precise terminal status and reason.
+
+4. **Derivation-First Protocol (2026-09-21, applies whenever new theory/construction is considered for
+   ANY candidate result `R`, not only during corpus-search passes).** Before introducing anything new:
+   - **Source search** — find every corpus occurrence of the relevant definitions, premises, lemmas,
+     equations, intermediate results.
+   - **Derivation reconstruction** — determine whether the corpus already gives `P_1,...,P_n ⟹ R`,
+     possibly distributed across documents.
+   - **Derivation validation** — check the inference is actually mathematically/logically valid, not
+     merely plausible.
+   - **Classify**: `SOURCE-DERIVED` (derivation explicitly present) / `CORPUS-DERIVABLE` (premises and
+     steps present but distributed, assembly needed) / `DERIVED-BY-RECONSTRUCTION` (reconstructible
+     without adding a new substantive premise) / `UNDERIVED` (corpus does not provide enough).
+   - **Only for `UNDERIVED`**: identify the specific missing premise, then introduce the minimum necessary
+     new material — tagged `DERIVED`, `CONSTRUCTION`, or `HYPOTHESIS`, never silently absorbed as if it
+     were corpus fact.
+   - The question is always **"is this already derived?" before "how should we derive this?"** — applies
+     equally to reusing an existing exact-computation primitive (e.g. fixed-point partition refinement)
+     and to a full theoretical construction (e.g. `K_min=E/∼_B`, `F∘T̂=T∘F`, any candidate `K_t`/`(A,R)`).
+   - First applied retroactively (and found already-satisfied) in `KSME-17`: all three construction gaps
+     (`ess.py`'s `EvidenceAdded`/`ConflictResolved`/`Rollback` completions) were checked against KSME-16's
+     own prior exhaustive search and confirmed `UNDERIVED` before any construction began.
+
+---
+
+## ⭐⭐ KnowledgeOS reconstruction — the FUNDAMENTAL execution rule *(2026-09-23, standing)*
+
+> ## ⭐⭐ AT EVERY NEW SESSION START — READ `prompts/readme.md` FIRST
+>
+> **`docs/knowledgeos/knowledgeos_theory_chronological_extraction/prompts/readme.md`** — the *KnowledgeOS Execution Instruction* (84 lines). ⛔ **Standing user instruction (2026-09-23): read it at every new start.** ⚠️ **Everything below this box is a POINTER to it, never a replacement** — if the two ever differ, **the readme wins**.
+>
+> ⭐ **It carries the step most often skipped**, §*Immediate task*: *"Before performing another large batch of work, inspect the current state and report: 1 Phase-1 completion status · 2 Theory Objects and Threads · 3 clusters · 4 gaps and obligations · 5 Candidate Theory state · 6 what is ready for Phase 2 · 7 required targeted investigations · 8 **the single next action best justified by the current research state**. Then execute that next action."*
+>
+> ⛔ **Skipping that inspection is what produced the 2026-09-23 failure** — two governance verification records sat unread in the tree while the next unit ran, and two already-identified defects recurred. **It is the Layer-3 half of `RA-16`** (Research Architecture v1.2 §8B).
+>
+> ⚠️ **If the file is absent, say so — do not proceed on the summary below.** *(It was untracked in git as of 2026-09-23; see the note at the end of this section.)*
+
+> ### ⛔ **Do not create a new methodology. Do not replace either existing protocol.**
+
+| Phase | Authoritative protocol |
+|---|---|
+| **Phase 1** | **Master Protocol** — `prompts/knowledge_os_protocoll.md` |
+| **Phase 2** | **Step-2 Theory Construction Protocol v3.2** — `prompts/knowledge_os_step2_theory_construction_protocol.md` |
+
+### The division of responsibility — ⭐ this is the part that keeps being got wrong
+
+| | |
+|---|---|
+| ⭐ **Phase 1 is FILE-DRIVEN** | every canonical corpus file that has not completed Phase 1. **Apply §9 and §9A COMPLETELY** — dossier (§6) · File Reconstruction Record · 12 gates · 30 steps across 5 layers · the Phase-1 registries. ⛔ **Never classify a file irrelevant by filename, folder or document type** |
+| ⭐⭐ **Phase 2 is THEORY-DRIVEN** | ⛔ **NOT executed automatically after every file.** It operates on the emerging state — Theory Objects · Threads · Clusters · Derivations · Propositions · Contradictions · Gaps · Obligations · Open Questions · candidate structures. **It may begin as soon as a coherent object/thread/cluster exists; it need not wait for the whole corpus** |
+
+### Targeted feedback — the loop between them
+
+```
+Phase-2 discovery → Phase-1 correction/request → updated Phase-1 evidence → Phase-2 reassessment
+```
+
+⛔ **Never silently modify Phase-1 historical reconstruction from inside Phase 2.**
+⛔ **Do not reread files without a reason.** If Phase 2 needs evidence, **formulate a specific research obligation** and run a targeted investigation.
+
+### Theory construction
+
+⭐ **Recover and consolidate the theory ACTUALLY DEVELOPED in the corpus. Search the corpus BEFORE introducing anything new.**
+
+**Genuinely necessary and unsupported → mark `[E] EXPERT-DERIVED`** with rationale, assumptions, alternatives, falsification conditions.
+
+⛔ **Do not invent mathematical definitions, thresholds, axioms or structures merely to make the theory look complete.**
+
+**Maintain the chain, and never skip a link:**
+
+```
+Evidence → Reconstruction → Hypothesis → Derivation → Validation → Canonical
+```
+
+⛔ **Do not promote Candidate Theory to validated or canonical prematurely.**
+
+### ⛔ The standing prohibition
+
+**Do not create another protocol, another phase model, or additional governance gates unless a CONCRETE CONTRADICTION in the existing architecture requires one.**
+
+> ⚠️ **Why this is recorded as memory rather than as a new document:** the rule's own last line forbids adding architecture, and I have repeatedly drifted by executing a lighter cycle assembled from conversation while reporting it as protocol conformance. ⭐ **The two protocols are authoritative; this note only records how they divide.**
+
+### 📂 The four files this work depends on — and one that is at risk
+
+| File | State (2026-09-23) |
+|---|---|
+| `prompts/readme.md` — **the Execution Instruction** | ⛔ **UNTRACKED — never committed.** ⚠️ Read at every start, yet absent from history and from any clone |
+| `prompts/knowledge_os_protocoll.md` — Master Protocol, Phase 1 | ✅ tracked · 4,650 lines |
+| `prompts/knowledge_os_step2_theory_construction_protocol.md` — Step-2 v3.2, Phase 2 | ✅ tracked · 2,333 lines |
+| `prompts/KNOWLEDGEOS-RESEARCH-ARCHITECTURE.md` — ⭐ **the governing architecture, v1.2 FROZEN** | ✅ tracked · **this is the architecture** |
+
+⛔ **`prompts/architecture_phase_1_phase_2.md` is NOT the architecture** — it is the superseded chat proposal that produced v1.0, and now carries a `SUPERSEDED` banner. ⚠️ **An architecture review was once written against it by mistake; three of its seven corrections were already implemented and one would have regressed the artifact.**
+
+> ⚠️ **Open with the human: `prompts/readme.md` is untracked.** ⛔ **Not committed unilaterally** — authorship is the human's and `GIA-8` bars this session from committing governance artifacts. **Ask before assuming it will survive.**
+
+## S-Series research principle (KnowledgeOS chronological-read; human instruction 2026-09-27)
+- **A researcher's responsibility is to observe the current corpus as brainstorming material and derive a robust theory from it.** The corpus is historical intellectual material and a source of hypotheses. It is never specification, truth, proof or canonical theory.
+- **Robust** means the theory is formalized, attacked with counterexamples and competing models (including a null model: method + topic frequency), statistically tested, and independently corroborated. Keep only what survives. **"No coherent theory found" is a valid outcome.**
+- **Keep separate:** method artefacts vs structure; verifier soundness vs reconstruction correctness (θ_E) vs disagreement (θ_D); observation vs hypothesis vs theorem.
+- **ML proposes; mathematics formalizes; statistics evaluates; logic attacks; researchers decide.**
+- **The corpus supplies observations and hypotheses; the researcher supplies formalization, falsification, statistical testing, computational attack, independent reconstruction and corroboration.** Optimize to discover *whether* a theory survives, never to obtain one. S5 is the measurement instrument, not the goal. Reproducibility ≠ agreement ≠ truth.

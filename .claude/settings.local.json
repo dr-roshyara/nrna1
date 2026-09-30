@@ -29,7 +29,8 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:electionguard-python.readthedocs.io)",
       "WebFetch(domain:eprint.iacr.org)",
-      "WebFetch(domain:electionguard.vote)"
+      "WebFetch(domain:electionguard.vote)",
+      "Bash(git commit -m 'chore\\(state\\): Session 3 readiness gate — one GREEN row; no ticket passes the six-condition gate *)"
     ]
   },
   "plansDirectory": "./.claude/plans"

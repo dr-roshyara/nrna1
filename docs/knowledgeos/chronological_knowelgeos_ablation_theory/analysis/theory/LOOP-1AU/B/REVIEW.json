@@ -1,0 +1,64 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "verdict_basis": "All counts, class totals, per-operation table, tier arithmetic (21/11/1/3), v1 and act-only verdict columns and SCHEMA-v1 quotes verified against EVENTS.json and the audit files; nothing fabricated. Limitations: necessity overstated in breadth (only k depends solely on the distinction), dual-nature mechanism deferred, tier rule inconsistently applied, NORM s-contrast undercount, loaded option consequences, missing defer/pilot and rule-only options.",
+  "verified_correct": [
+    "36 events; per-operation counts ADOPT 3, AUTHORIZE-IMPL 2, REGISTER 2, OPEN-WORK 2, START 11, RAISE 9, ASSIGN-ID 2, SUPERSEDE 4, ANNOTATE 1",
+    "class totals ACT 19 / NORM 13 / GENERIC 1 / UNCLEAR 3; A 10/9/13/1/3; reviewer 11/8/13/1/3",
+    "single class disagreement R-89 (D2), both ACT",
+    "tier totals and ACT 10/8/1, NORM 10/3 splits",
+    "v1 column (recorded witnesses) and act-only column match AUDIT-1AR-RECONCILIATION and reviewer surviving_support",
+    "§2 quotes for R-58 7C, R-65 7C, R-90 retired, R-91 held are verbatim from AUDIT-1AR-WORKER.json; v1 codings match EVENTS.json"
+  ],
+  "fidelity_issues": [
+    {"id": "F1", "location": "PACKAGE.md §2 examples 2-3", "issue": "Worker A's reasoning ('No record that 7C actually started is provided'; 'No attempt to assign R-90 again is recorded') is labelled SOURCE FACT and introduced as 'The source says'; these are A's inferences over the provided excerpts only", "classification": "wording / evidence scope"},
+    {"id": "F2", "location": "PACKAGE.md §3 tiers; PACKAGE.json tiers", "issue": "Chief's declined ADOPT placed in T2 on the basis 'agreed after close check', which is not one of the stated T2 criteria; the same reviewer list covers REGISTER-rule and all 10 register-row STARTs, which stay T1 (except R-72). Either move the Chief record to T1 or move REGISTER-rule and 9 STARTs to T2; the 21 auto / 11 blind split changes", "classification": "coding"},
+    {"id": "F3", "location": "PACKAGE.md §7 NORM column, s", "issue": "Reports 2 contrasts (recorded list) in a column labelled INF/recomputed; recomputation from EVENTS.json gives 4 cross-cluster single-field s contrasts among NORM records (7B R-47/R-58, 7B R-56/R-58, 7C R-58/R-65, §12 R-81/R-86). All circular (D9), no verdict change, but the counting basis is mixed silently", "classification": "evidence scope"},
+    {"id": "F4", "location": "PACKAGE.md §1", "issue": "Omits v1's per-field epistemic basis (SOURCE/DERIVED/UNKNOWN), the existing v1 mechanism most relevant to whether an outcome is attested", "classification": "source interpretation"},
+    {"id": "F5", "location": "PACKAGE.md §5", "issue": "'No v1 field is overwritten' contradicts 'v1 outcome ... replaced by NOT_APPLICABLE' (value preserved in v1_outcome, but the sentence is false)", "classification": "wording"},
+    {"id": "F6", "location": "PACKAGE.json alternatives B-guide-only", "issue": "'13/36 violated the existing rule' ignores the GENERIC_PRACTICE record, which also violates 'one historical act' (>= 14)", "classification": "wording"},
+    {"id": "F7", "location": "PACKAGE.md §6", "issue": "Ambiguity rule cites R-60 'placed ... under a heading' as an UNKNOWN case, prejudging the blind recode of a record both coders agree is NORM; if applied, NORM 13 -> 12, not reflected in §3/§7", "classification": "coding"},
+    {"id": "F8", "location": "PACKAGE.md §3 non-class notes", "issue": "Omits reviewer D6: R-56's quoted sentence sits in a passage marked 'Recording note, not part of this ruling' (class unchanged)", "classification": "evidence scope"}
+  ],
+  "necessity_assessment": {
+    "conclusion": "Recording the distinction is necessary, but narrowly: only k's verdict change is attributable solely to it. The package overstates breadth (claims k, s, h) and uses a strawman filter test, while omitting the decisive argument.",
+    "decisive_argument_missing_from_package": "Both v1 k-pairs (REGISTER R-90 vs REGISTER-rule; OPEN-WORK note vs OPEN-WORK ruling) are identical on every v1 field except k itself and outcome, so no analysis-time filter over v1 fields can separate them without filtering on the variable under test.",
+    "overstatement": [
+      "s: v1 support is circular by construction (D9) regardless of the norm/act split; an anti-circularity rule removes it without r2",
+      "h: the only v1 pair has an UNCLEAR side with no source text; it fails on anchoring under v1 already"
+    ],
+    "filter_strawman": "Package tests single fields and 'drop START'. The combined filter r=EXECUTION AND genre=register-row removes exactly the 10 START norm statements and keeps git; r=UNK removes both ASSIGN records. Residual failures: R-60-note, REGISTER-rule (k) and R-83 only. (This filter is itself post hoc.)",
+    "implicit_in_v1": "v1 §1 already forbids non-act records, and outcome has an epistemic basis (SOURCE/DERIVED/UNKNOWN); a REFUSED coded from 'remains unauthorized' should be DERIVED. EVENTS.json carries no basis values, so whether v1 already discriminates is UNKNOWN, not 'no'.",
+    "fragility": "k's demotion rests on 2 records: R-60-note (A: 'ambiguous', T2) and REGISTER-rule (GENERIC). If R-60-note is blind-recoded ACT-REFUSED, k becomes WEAK, not 0.",
+    "classification": "formal reasoning"
+  },
+  "dual_nature_assessment": {
+    "conclusion": "Identified in §8 but not handled; the only repair mechanism (stated_by) is deferred.",
+    "prevalence": "Every one of the 13 NORM records is the content of a ruling/annotation act (R-47, R-56, R-58, R-60, R-65, R-72, R-79, R-81, R-83, R-86, R-90). Several ACT outcomes rest on norm-type determinations: Chief's declined ADOPT (R-81 provenance annotation 'DOES NOT HOLD'), R-89 NOT-IN-FORCE (R-86 standing rule, per D2), R-91 held. Both surviving a-pairs, the only SUPPORTED core, sit on this boundary. F4 is not evaluated on the 36 although it could be now.",
+    "single_field_sufficient_for_act_only_count": "Only if observation_type is explicitly defined relative to the record's o ('is an attempt at or performance of o attested?'); the package never states this convention, so R-58-type rows remain coder-dependent.",
+    "single_field_insufficient_for_norm_dataset": "For norm records, a/r/s are ambiguous between the stating act and the governed act. The package flags only r; a is equally affected (START norms carry a=ENGINEERING but were stated by ARB/DA), so the NORM a=0 is an artefact.",
+    "recommended_two_level_form": "Keep observation_type (defined relative to o) plus a mandatory, not deferred, source_act = {anchored row, operation that row itself performs}. NORM records' a/r/s describe the governed act; the stater is reached through source_act. NORM records never enter R3, so there is no double counting.",
+    "classification": "formal reasoning / substantive"
+  },
+  "minimal_alternative": {
+    "description": "v1-internal rule change, no new field: (1) make the epistemic basis of outcome mandatory; (2) amend R3 so a record enters legality witnesses only if an attempt at or performance of o is attested by an anchored source (outcome basis SOURCE), excluding outcomes DERIVED from a permission statement; (3) anti-circularity clause: outcome may not be coded from the same text as the witnessed variable.",
+    "achieves": "Act-only verdicts for k, s (via clause 3) and h; no records deleted.",
+    "costs": "Norm records keep a misleading outcome value; the NORM dataset stays untyped; the dual-nature problem is not addressed.",
+    "relation_to_package": "Smaller than the package's §4(a). The package's rejection of the outcome extension (§4c) partly rests on a false premise ('cannot express UNKNOWN'; under v1 §1 any unestablished field is already UNK); the overload objection stands.",
+    "classification": "formal reasoning"
+  },
+  "loaded_options": [
+    {"option": "A", "text": "Future coding cannot repeat the conflation silently", "problem": "A wrong type is as silent as a wrong outcome; only a missing type is caught. Contradicted by the package's own coder-dependence failure mode.", "classification": "wording / formal reasoning"},
+    {"option": "B", "text": "coders who use SCHEMA-v1 alone will reproduce the error", "problem": "Stated as fact, but it is exactly the untested falsification criterion F1.", "classification": "formal reasoning"},
+    {"option": "C", "text": "k and s remain 'SUPPORTED' ... later datasets will not be comparable", "problem": "Treats 'do not adopt r2' as 'ignore the audits'. s can be downgraded by D9 circularity without r2, and the k finding can be reported as a caveat; non-comparability is speculative.", "classification": "substantive"},
+    {"option": "missing", "text": "D: defer and run the F1/F3 blind pilot on verdict-bearing records with thresholds fixed first; E: the v1-internal rule change; F: the two-level form (observation_type + mandatory source_act)", "problem": "Without D and E the menu is tilted towards A.", "classification": "substantive"}
+  ],
+  "disagreements": [
+    {"id": "X1", "package_position": "Verdicts of k, s and h depend on the distinction (§10)", "review_position": "Only k depends solely on it; s falls to D9 circularity, h to a missing anchor", "classification": "formal reasoning"},
+    {"id": "X2", "package_position": "No v1 field already encodes the distinction", "review_position": "The epistemic basis of outcome may; UNKNOWN because EVENTS.json lacks basis values", "classification": "source interpretation"},
+    {"id": "X3", "package_position": "A v1 filter works only with an extra per-record label", "review_position": "True for k (pairs identical except k/outcome), but shown only for a strawman filter; a combined r/genre filter removes 10 of the 13 norm statements", "classification": "formal reasoning"},
+    {"id": "X4", "package_position": "Defer stated_by; a single-valued type suffices for minimal r2", "review_position": "The type must be defined relative to o, and source_act must be mandatory; dual-nature rows are the norm, not the exception, and they touch both surviving a-pairs", "classification": "substantive"},
+    {"id": "X5", "package_position": "T1 (21) records typed automatically from audit classes", "review_position": "Audit coders knew what the classes meant for the witnesses; verdict-bearing T1 records (REGISTER-rule, 9 START norms, R-86, R-70) or a random T1 sample need blind recoding. Mitigating fact omitted by the package: the 1ar sealed expectation failed for k", "classification": "independence"},
+    {"id": "X6", "package_position": "Falsification criteria F1-F6 as stated", "review_position": "Thresholds unspecified; F1 relies on one coder; F2 targets classes rather than verdicts and is too strict; F3 measures reliability, not validity; F4 can be evaluated on the 36 now", "classification": "formal reasoning"},
+    {"id": "X7", "package_position": "Outcome extension cannot express GENERIC_PRACTICE or UNKNOWN (§4c)", "review_position": "UNK is already expressible under v1 §1; a GENERIC value could be added; only the overload objection holds", "classification": "formal reasoning"}
+  ]
+}

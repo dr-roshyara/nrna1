@@ -1,0 +1,126 @@
+{
+ "U": "UNK",
+ "START_events_BASE": [
+  {
+   "event_id": "START WP-4B at R-72 (proviso unmet)",
+   "cluster": "R-72",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "auth-proviso-unmet",
+   "t": "WP-4B",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "START WP-4B 08-03 16:10",
+   "cluster": "git-6a67da5d7",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "UNK",
+   "t": "WP-4B",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "START WP-8 (permission only)",
+   "cluster": "R-79",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "permission-only",
+   "t": "WP-8",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "START 7A after AUTHORIZE(7A)",
+   "cluster": "R-47",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "authorized",
+   "t": "7A",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "START 7B after AUTHORIZE(7A)",
+   "cluster": "R-47",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "not-authorized",
+   "t": "7B",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "START 7B at R-56 (plan approved, execution not issued)",
+   "cluster": "R-56",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "not-authorized",
+   "t": "7B",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "START 7B at R-58 (execution authorized)",
+   "cluster": "R-58",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "authorized",
+   "t": "7B",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "START 7C at R-58 (remains unauthorized)",
+   "cluster": "R-58",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "not-authorized",
+   "t": "7C",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "START 7C at R-65 (authorized)",
+   "cluster": "R-65",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "authorized",
+   "t": "7C",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+   "cluster": "R-81",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "not-authorized",
+   "t": "§12-reconcile",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "START §12 reconcile at R-86 (Batch 7 released)",
+   "cluster": "R-86",
+   "o": "START",
+   "a": "ENGINEERING",
+   "k": "work",
+   "s": "authorized",
+   "t": "§12-reconcile",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  }
+ ]
+}

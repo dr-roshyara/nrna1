@@ -1,0 +1,180 @@
+{
+  "ruling_states": [
+    {
+      "ruling": "R-70",
+      "state_label": "at issue",
+      "issuer": {"value": "ARB", "quote": "Execution Governance · Authorization · ARB.", "conflict": "R-81 annotation: \"Every prior ruling R-1..R-80 was issued by the human authority\""},
+      "status": {"value": "none stated", "quote": "WP-7B-R1 **authorized to implement**"},
+      "adopter": {"value": "none", "basis": "no adoption act on R-70 is recorded in any row"},
+      "in_force": {"value": "UNK", "mode": "not established", "basis": "no row states or determines whether R-70 is in force; R-81 only says who issued R-1..R-80"}
+    },
+    {
+      "ruling": "R-81",
+      "state_label": "at issue / under provenance annotation (before R-86)",
+      "issuer": {"value": "ARB Chief", "quote": "ISSUED BY THE ARB CHIEF under the Session-1 mandate — NOT independently confirmed by the decision authority"},
+      "status": {"value": "PREPARED", "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION"},
+      "adopter": {"value": "none", "quote": "AWAITING ADOPTION"},
+      "in_force": {"value": "NOT-IN-FORCE", "mode": "derived", "quote": "“BATCH 7 IS RELEASED” DOES NOT HOLD", "basis": "R-81's operative effect (lifting Batch 7's freeze) is stated not to hold; R-86: \"These become governing rulings effective immediately\" (i.e. not governing before)"}
+    },
+    {
+      "ruling": "R-81",
+      "state_label": "after R-86",
+      "issuer": {"value": "ARB Chief", "quote": "ISSUED BY THE ARB CHIEF under the Session-1 mandate"},
+      "status": {"value": "ADOPTED", "quote": "✅ ADOPTED 2026-08-04 BY THE DECISION AUTHORITY, WITHOUT AMENDMENT (adoption act: R-86)"},
+      "adopter": {"value": "Decision Authority", "quote": "ADOPTED 2026-08-04 BY THE DECISION AUTHORITY"},
+      "in_force": {"value": "IN-FORCE", "mode": "stated", "quote": "THIS RULING IS GOVERNING."}
+    },
+    {
+      "ruling": "R-82",
+      "state_label": "at issue (before R-86)",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief acting on a delegated session mandate", "note": "identification of 'these five' with R-81..R-85 is an inference from R-86 ('R-81 through R-85', 'the five')"},
+      "status": {"value": "PREPARED", "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION"},
+      "adopter": {"value": "none", "quote": "AWAITING ADOPTION"},
+      "in_force": {"value": "NOT-IN-FORCE", "mode": "derived", "quote": "These become governing rulings effective immediately.", "basis": "'become governing' on adoption by R-86 implies not governing while PREPARED; R-81 annotation: \"“BATCH 7 IS RELEASED” DOES NOT HOLD\""}
+    },
+    {
+      "ruling": "R-82",
+      "state_label": "after R-86",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief"},
+      "status": {"value": "ADOPTED", "quote": "R-81 THROUGH R-85 ADOPTED WITHOUT AMENDMENT"},
+      "adopter": {"value": "Decision Authority", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+      "in_force": {"value": "IN-FORCE", "mode": "stated", "quote": "These become governing rulings effective immediately."}
+    },
+    {
+      "ruling": "R-83",
+      "state_label": "at issue (before R-86)",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief acting on a delegated session mandate", "note": "same inference as R-82"},
+      "status": {"value": "PREPARED", "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION"},
+      "adopter": {"value": "none", "quote": "AWAITING ADOPTION"},
+      "in_force": {"value": "NOT-IN-FORCE", "mode": "derived", "quote": "These become governing rulings effective immediately.", "basis": "as R-82"}
+    },
+    {
+      "ruling": "R-83",
+      "state_label": "after R-86",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief"},
+      "status": {"value": "ADOPTED", "quote": "R-81 THROUGH R-85 ADOPTED WITHOUT AMENDMENT"},
+      "adopter": {"value": "Decision Authority", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+      "in_force": {"value": "IN-FORCE", "mode": "stated", "quote": "These become governing rulings effective immediately."}
+    },
+    {
+      "ruling": "R-84",
+      "state_label": "at issue (before R-86)",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief acting on a delegated session mandate", "note": "same inference as R-82"},
+      "status": {"value": "PREPARED", "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION"},
+      "adopter": {"value": "none", "quote": "AWAITING ADOPTION"},
+      "in_force": {"value": "NOT-IN-FORCE", "mode": "derived", "quote": "These become governing rulings effective immediately.", "basis": "as R-82"}
+    },
+    {
+      "ruling": "R-84",
+      "state_label": "after R-86",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief"},
+      "status": {"value": "ADOPTED", "quote": "R-81 THROUGH R-85 ADOPTED WITHOUT AMENDMENT"},
+      "adopter": {"value": "Decision Authority", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+      "in_force": {"value": "IN-FORCE", "mode": "stated", "quote": "These become governing rulings effective immediately."}
+    },
+    {
+      "ruling": "R-85",
+      "state_label": "at issue (before R-86)",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief acting on a delegated session mandate", "note": "same inference as R-82"},
+      "status": {"value": "PREPARED", "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION"},
+      "adopter": {"value": "none", "quote": "AWAITING ADOPTION"},
+      "in_force": {"value": "NOT-IN-FORCE", "mode": "derived", "quote": "These become governing rulings effective immediately.", "basis": "as R-82"}
+    },
+    {
+      "ruling": "R-85",
+      "state_label": "after R-86",
+      "issuer": {"value": "ARB Chief", "quote": "these five were filed by the Chief"},
+      "status": {"value": "ADOPTED", "quote": "R-81 THROUGH R-85 ADOPTED WITHOUT AMENDMENT"},
+      "adopter": {"value": "Decision Authority", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+      "in_force": {"value": "IN-FORCE", "mode": "stated", "quote": "These become governing rulings effective immediately."}
+    },
+    {
+      "ruling": "R-86",
+      "state_label": "at issue",
+      "issuer": {"value": "Decision Authority", "quote": "Programme Governance · Adoption · DECISION AUTHORITY."},
+      "status": {"value": "none stated", "quote": "R-81..R-85 GOVERNING; batch 7 RELEASED; engineering AUTHORIZED", "note": "no PREPARED/ADOPTED marker is attached to R-86 itself"},
+      "adopter": {"value": "none", "basis": "no adoption of R-86 is recorded; it is itself the Decision Authority's act"},
+      "in_force": {"value": "IN-FORCE", "mode": "derived", "quote": "✅ ADOPTED 2026-08-04 BY THE DECISION AUTHORITY, WITHOUT AMENDMENT (adoption act: R-86). THIS RULING IS GOVERNING.", "basis": "R-81 records R-86's adoption as having taken effect, so R-86 operated"}
+    },
+    {
+      "ruling": "R-88",
+      "state_label": "as referenced by R-89",
+      "issuer": {"value": "UNK"},
+      "status": {"value": "UNK", "quote": "R-88's adoption was a SINGLE ACT", "note": "ambiguous whether R-88 IS an adoption act or WAS adopted"},
+      "adopter": {"value": "UNK"},
+      "in_force": {"value": "IN-FORCE", "mode": "derived", "quote": "(1) single owner — ✅ Adjudication (R-88)", "basis": "R-89 relies on R-88 as settled authority and says its adoption 'expressly left the PREPARED→ADOPTED mechanism in force'"}
+    },
+    {
+      "ruling": "R-89",
+      "state_label": "at issue",
+      "issuer": {"value": "ARB Chief", "quote": "⚠️ PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED."},
+      "status": {"value": "PREPARED", "quote": "ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED."},
+      "adopter": {"value": "none", "quote": "this ruling awaits the Decision Authority"},
+      "in_force": {"value": "NOT-IN-FORCE", "mode": "derived", "quote": "this ruling awaits the Decision Authority. One sentence of confirmation converts it to ADOPTED.", "basis": "R-86: 'Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it'; R-81/R-86 precedent: a PREPARED ruling's effect 'DOES NOT HOLD' and only 'become[s] governing' on adoption"}
+    },
+    {
+      "ruling": "R-95",
+      "state_label": "at issue",
+      "issuer": {"value": "ARB Chief", "quote": "Execution Governance · Authorization · ARB CHIEF."},
+      "status": {"value": "none stated", "quote": "EP-01 plans may be prepared. Code may not yet be written.", "note": "unlike R-89, no PREPARED marker; R-86's rule would assign PREPARED by issuer, but that is not the marker the text shows"},
+      "adopter": {"value": "none", "basis": "no adoption recorded in R-95's row"},
+      "in_force": {"value": "UNK", "mode": "not established", "basis": "text does not state force; derivation via R-86's issuer rule would give NOT-IN-FORCE, but 'RULING AS REFINED AT ISSUE' leaves an unnamed actor's act at issue open, and the register excerpt is partial"}
+    }
+  ],
+  "models": {
+    "M_issuer": {
+      "verdict": "FALSIFIED",
+      "deciding_pairs": [
+        {"a": "R-81 at issue", "b": "R-81 after R-86", "shared_value": "ARB Chief", "in_force": ["NOT-IN-FORCE (derived)", "IN-FORCE (stated)"]},
+        {"a": "R-89 at issue", "b": "R-82..R-85 after R-86", "shared_value": "ARB Chief", "in_force": ["NOT-IN-FORCE (derived)", "IN-FORCE (stated)"]}
+      ],
+      "undetermined_pairs": [
+        {"a": "R-95 at issue", "b": "any other ARB Chief state", "reason": "R-95 in_force UNK"},
+        {"a": "R-88", "b": "any", "reason": "issuer UNK"}
+      ]
+    },
+    "M_status": {
+      "verdict": "UNDETERMINED",
+      "deciding_pairs": [],
+      "consistent_pairs": [
+        {"value": "PREPARED", "states": ["R-81..R-85 at issue", "R-89 at issue"], "in_force": "all NOT-IN-FORCE (derived)"},
+        {"value": "ADOPTED", "states": ["R-81..R-85 after R-86"], "in_force": "all IN-FORCE (stated)"}
+      ],
+      "undetermined_pairs": [
+        {"a": "R-86 (none stated, IN-FORCE derived)", "b": "R-95 (none stated, UNK)", "reason": "R-95 in_force UNK"},
+        {"a": "R-86 (none stated, IN-FORCE derived)", "b": "R-70 (none stated, UNK)", "reason": "R-70 in_force UNK"},
+        {"a": "R-88", "b": "any", "reason": "status UNK"}
+      ],
+      "sensitivity": "If R-95 is derived NOT-IN-FORCE via R-86's issuer rule, then R-86 vs R-95 (both 'none stated', opposite force) FALSIFIES M_status as defined on the stated marker; the model holds only if 'status' means the rule-assigned status (R-95 → PREPARED)."
+    },
+    "M_adopter": {
+      "verdict": "FALSIFIED",
+      "deciding_pairs": [
+        {"a": "R-81 at issue (adopter none, NOT-IN-FORCE derived)", "b": "R-86 (adopter none, IN-FORCE derived)", "shared_value": "none"},
+        {"a": "R-89 at issue (adopter none, NOT-IN-FORCE derived)", "b": "R-86 (adopter none, IN-FORCE derived)", "shared_value": "none"}
+      ],
+      "undetermined_pairs": [
+        {"a": "R-70 / R-95 (adopter none)", "b": "any 'none' state", "reason": "in_force UNK"},
+        {"a": "R-88", "b": "any", "reason": "adopter UNK"}
+      ],
+      "sensitivity": "Rests on coding R-86's adopter as 'none' (not UNK) and on R-86's derived IN-FORCE. If R-86's adopter is UNK, M_adopter becomes UNDETERMINED (none→NOT, Decision Authority→IN otherwise consistent)."
+    },
+    "M_chain": {
+      "verdict": "UNDETERMINED (does not meet the survival condition because M_status is UNDETERMINED; the attribution condition is met)",
+      "status_changes": [
+        {"ruling": "R-81", "from": "PREPARED", "to": "ADOPTED", "by_actor": "Decision Authority (act: R-86)", "quote": "✅ ADOPTED 2026-08-04 BY THE DECISION AUTHORITY, WITHOUT AMENDMENT (adoption act: R-86)."},
+        {"ruling": "R-82", "from": "PREPARED", "to": "ADOPTED", "by_actor": "Decision Authority (act: R-86)", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+        {"ruling": "R-83", "from": "PREPARED", "to": "ADOPTED", "by_actor": "Decision Authority (act: R-86)", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+        {"ruling": "R-84", "from": "PREPARED", "to": "ADOPTED", "by_actor": "Decision Authority (act: R-86)", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+        {"ruling": "R-85", "from": "PREPARED", "to": "ADOPTED", "by_actor": "Decision Authority (act: R-86)", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."}
+      ],
+      "uncoded_change_note": "R-81 also moved from as-filed (unmarked, summary claiming 'isolation repair ACTIVE') to PREPARED by the ARB Chief's own provenance annotation ('The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour'); this is attributable to the Chief but was not coded as a separate state."
+    }
+  },
+  "notes": [
+    "Only M_issuer is falsified on robust values (same ruling R-81, same issuer, force changes on adoption). M_adopter's falsification depends on coding choices for R-86. M_status is never contradicted by explicitly marked PREPARED/ADOPTED states; it is UNDETERMINED only because two 'none stated' rulings (R-70, R-95) have UNK force.",
+    "Most NOT-IN-FORCE values are derived, and the derivation uses the text's own PREPARED→not governing link (R-81, R-86). This makes the M_status test partly circular for R-89; R-81..R-85's NOT-IN-FORCE rests on R-86's 'become governing' wording rather than on the marker.",
+    "R-86 itself states the force rule in issuer terms: 'Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it' — issuer determines default status, adoption act changes status, status gates force: the text's own shape is M_chain.",
+    "Cited-only rulings excluded from coding (force presupposed, not stated): R-60, R-66, R-72, R-76, R-79. R-83 is covered within R-81..R-85."
+  ]
+}

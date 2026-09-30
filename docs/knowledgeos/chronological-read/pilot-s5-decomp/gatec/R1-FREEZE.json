@@ -1,0 +1,60 @@
+{
+ "budget_rule": "<= 800,000 bytes per verification agent; split by label if exceeded (pre-registration \u00a74)",
+ "candidates": 51,
+ "candidates_sha256": "22c70a8f6c06799c22fbb35965b1a9e0e4b1a5e5147c74f06c83a876551763ac",
+ "distinct_bytes": 830188,
+ "distinct_files": [
+  "S1018",
+  "S1019",
+  "S1020",
+  "S1021",
+  "S1022",
+  "S1023",
+  "S1030",
+  "S1484",
+  "S1520",
+  "S1522",
+  "S1524",
+  "S1525",
+  "S1529",
+  "S1532",
+  "S1535",
+  "S1539"
+ ],
+ "freeze": "GATE-C R1 trigger registry frozen before any R2 read",
+ "triggers": 28,
+ "triggers_sha256": "6a7ac1e35348f390ff593882e12c9638008c0aa1444150d879c0c61d4fd861df",
+ "utc": "2026-09-25T12:20:53Z",
+ "verification_agents": {
+  "PX0104-U01": {
+   "knowledgeos-architecture-constitution-v01": {
+    "bytes": 488029,
+    "files": [
+     "S1018",
+     "S1019",
+     "S1020",
+     "S1021",
+     "S1022",
+     "S1023",
+     "S1030",
+     "S1484",
+     "S1522",
+     "S1524"
+    ]
+   }
+  },
+  "PX0104-U02": {
+   "step-verify-programme": {
+    "bytes": 342159,
+    "files": [
+     "S1520",
+     "S1525",
+     "S1529",
+     "S1532",
+     "S1535",
+     "S1539"
+    ]
+   }
+  }
+ }
+}

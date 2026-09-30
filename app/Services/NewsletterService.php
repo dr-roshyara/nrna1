@@ -191,10 +191,14 @@ class NewsletterService
 
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->where('role', 'voter')
-            ->where('status', 'active')
+            ->where('election_memberships.role', 'voter')
+            ->where('election_memberships.status', 'active')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -207,11 +211,15 @@ class NewsletterService
 
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->where('role', 'voter')
-            ->where('has_voted', false)
-            ->where('status', 'active')
+            ->where('election_memberships.role', 'voter')
+            ->where('election_memberships.has_voted', false)
+            ->where('election_memberships.status', 'active')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -224,10 +232,14 @@ class NewsletterService
 
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->where('role', 'voter')
-            ->where('has_voted', true)
+            ->where('election_memberships.role', 'voter')
+            ->where('election_memberships.has_voted', true)
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -240,9 +252,13 @@ class NewsletterService
 
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->where('role', 'candidate')
+            ->where('election_memberships.role', 'candidate')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -255,9 +271,13 @@ class NewsletterService
 
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->where('role', 'observer')
+            ->where('election_memberships.role', 'observer')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -272,7 +292,11 @@ class NewsletterService
             ->where('election_officers.election_id', $electionId)
             ->where('election_officers.status', 'active')
             ->join('users', 'election_officers.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -285,10 +309,14 @@ class NewsletterService
 
         $voters = ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
-            ->whereIn('role', ['voter', 'candidate', 'observer'])
+            ->whereIn('election_memberships.role', ['voter', 'candidate', 'observer'])
             ->where('election_memberships.status', 'active')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -298,7 +326,11 @@ class NewsletterService
             ->where('election_id', $electionId)
             ->where('election_officers.status', 'active')
             ->join('users', 'election_officers.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
@@ -310,10 +342,14 @@ class NewsletterService
     private function queryOrgParticipantsStaff(Organisation $organisation): Builder
     {
         return OrganisationParticipant::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
+            ->where('organisation_participants.organisation_id', $organisation->id)
             ->where('participant_type', 'staff')
             ->join('users', 'organisation_participants.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
             ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
@@ -322,10 +358,14 @@ class NewsletterService
     private function queryOrgParticipantsGuests(Organisation $organisation): Builder
     {
         return OrganisationParticipant::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
+            ->where('organisation_participants.organisation_id', $organisation->id)
             ->where('participant_type', 'guest')
             ->join('users', 'organisation_participants.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
             ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
@@ -334,10 +374,14 @@ class NewsletterService
     private function queryOrgAdmins(Organisation $organisation): Builder
     {
         return UserOrganisationRole::withoutGlobalScopes()
-            ->where('organisation_id', $organisation->id)
-            ->whereIn('role', ['admin', 'owner', 'commission'])
+            ->where('user_organisation_roles.organisation_id', $organisation->id)
+            ->whereIn('user_organisation_roles.role', ['admin', 'owner', 'commission'])
             ->join('users', 'user_organisation_roles.user_id', '=', 'users.id')
-            ->leftJoin('members', 'users.id', '=', 'members.user_id')
+            ->leftJoin('organisation_users', function ($join) use ($organisation) {
+                $join->on('organisation_users.user_id', '=', 'users.id')
+                    ->where('organisation_users.organisation_id', $organisation->id);
+            })
+            ->leftJoin('members', 'members.organisation_user_id', '=', 'organisation_users.id')
             ->where('users.organisation_id', $organisation->id)
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')

@@ -1,0 +1,46 @@
+{
+ "seed": 20260925,
+ "rule": "per batch 1 object + 4 research (up to 2 HYPOTHESIS/STRUCTURE-CANDIDATE)",
+ "sample": [
+  {
+   "batch": "PB02",
+   "object": "glyph-register-v3-collision-inventory-2026-09",
+   "research": [
+    "S4-PILOT-R2-002:PB02:16",
+    "S4-PILOT-R2-002:PB02:3",
+    "S4-PILOT-R2-002:PB02:10",
+    "S4-PILOT-R2-002:PB02:17"
+   ]
+  },
+  {
+   "batch": "PB03",
+   "object": "minimal-adequate-representation-entropy-formalization",
+   "research": [
+    "S4-PILOT-R2-002:PB03:11",
+    "S4-PILOT-R2-002:PB03:7",
+    "S4-PILOT-R2-002:PB03:4",
+    "S4-PILOT-R2-002:PB03:12"
+   ]
+  },
+  {
+   "batch": "PB04",
+   "object": "session-completion-handoff-protocol",
+   "research": [
+    "S4-PILOT-R2-002:PB04:17",
+    "S4-PILOT-R2-002:PB04:1",
+    "S4-PILOT-R2-002:PB04:18",
+    "S4-PILOT-R2-002:PB04:19"
+   ]
+  },
+  {
+   "batch": "PB05",
+   "object": "step-verify-programme",
+   "research": [
+    "S4-PILOT-R2-002:PB05:16",
+    "S4-PILOT-R2-002:PB05:23",
+    "S4-PILOT-R2-002:PB05:3",
+    "S4-PILOT-R2-002:PB05:1"
+   ]
+  }
+ ]
+}

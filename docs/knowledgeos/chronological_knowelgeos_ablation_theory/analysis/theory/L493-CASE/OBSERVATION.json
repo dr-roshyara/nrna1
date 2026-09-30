@@ -1,0 +1,20 @@
+{
+ "name": "L493-A binding vocabulary ruling",
+ "read": ".claude/sessions/2026-08-15.md L483-L495 (b5c2487c...), after freeze commit 9e610e412",
+ "obs": {"EV": "NOT-RECORDED", "QUAL": "NOT-RECORDED", "VAL": "NOT-RECORDED", "OBL": "NOT-RECORDED", "EXC": "NOT-RECORDED", "AUTH": "PRESENT", "SEM": "UNKNOWN"},
+ "attrs": {"force": "UNKNOWN", "kind": "UNKNOWN", "high": "UNKNOWN"},
+ "acts": {
+  "A (L486-L491)": {"what": "SOURCE-FACT: 'BINDING VOCABULARY RULING — applies to ALL future documentation': closure must be stated with its plane named", "authority": "SOURCE-FACT: PO/ARB (section heading and L485)",
+      "evidence": "NOT-RECORDED as a basis. The occasion is one instance (the earlier single-line 'is CLOSED' headline, L491), but the section does not state it as the ruling's evidence -> not coded as EV",
+      "order": "SOURCE-FACT: ruling, then 'Applied immediately' to the closure artifact §5, CONTEXT.md and this log's §Eighth heading (existing artifacts, although the ruling is stated for 'future documentation')",
+      "force": "UNKNOWN: whether a vocabulary ruling falls under I-R39 ('methodology principles') is not stated"},
+  "B (L492-L493)": {"what": "SOURCE-FACT: PO/ARB architectural observation 'three distinct state planes, which are not one state machine'", "act": "NON-PROMOTION: 'NOT promoted to methodology — single occurrence, and ES-006.1 forbids promoting from one'",
+      "coding": "a Reject: every Promote hypothesis permits it (outside the r2 instrument; r3.1 OUT-OF-SCOPE for Reject)",
+      "citation": "SOURCE-FACT: the bar is attributed to ES-006.1. PRIOR SOURCE-FACT (F-LOG-0107): ES-006.1's text never contains a repeated-evidence bar. MODEL-INTERPRETATION: the wording ('from one' / 'single occurrence') matches I-CLAUDE (instances >= 2, strength 1, NON-NORMATIVE host), not I-R39 (contexts >= 2)",
+      "adopter": "NOT-RECORDED (passive 'registered')"}},
+ "outside_alphabet_source_facts": [
+  "PLURAL STATE (L487-L488, L492): the same work item is 'Governance/documentary closure: CLOSED' and 'workflow-machine state: OPEN' at once; three state planes (execution, machine-authoritative / governance lifecycle, documentary / architecture findings, documentary); 'The danger would be pretending they are one state machine when they currently are not'",
+  "OBSERVATION != AUTHORIZATION (L493): whether to unify the planes 'is architecture work nobody is yet authorized to perform'",
+  "ACCEPTANCE != MANDATE (L485, L494): 'This is not a reason to reopen this work item'; 'Nothing reopened. Nothing commissioned.'",
+  "TEMPORAL SCOPE (L486, L491): stated for future documentation, applied at once to existing artifacts"]
+}

@@ -1,0 +1,334 @@
+{
+ "label": "POST-HOC SENSITIVITY (rule chosen after seeing the primary table): same test, same source family, Jaccard>=0.30 OR token containment of the shorter wording >=0.80",
+ "summary": {
+  "AGREEMENT": 18,
+  "DISAGREEMENT": 1,
+  "SELF-ONLY": 7,
+  "BLIND-ONLY": 13
+ },
+ "rows": [
+  {
+   "class": "AGREEMENT",
+   "test": "F-A2e",
+   "self": 0,
+   "other": 1,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A2e",
+   "self": 1,
+   "other": 0,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A2e",
+   "self": 2,
+   "other": 2,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A3g",
+   "self": 4,
+   "other": 6,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A3g",
+   "self": 5,
+   "other": 7,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A4",
+   "self": 6,
+   "other": 9,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A4",
+   "self": 8,
+   "other": 10,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A5e",
+   "self": 9,
+   "other": 12,
+   "self_cls": "AMBIGUOUS",
+   "self_comp": "DIRECT_COUNTEREXAMPLE",
+   "other_cls": "AMBIGUOUS",
+   "other_comp": "DIRECT_COUNTEREXAMPLE"
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A5e",
+   "self": 10,
+   "other": 13,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "DISAGREEMENT",
+   "test": "F-A5e",
+   "self": 11,
+   "other": 17,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "AMBIGUOUS",
+   "other_comp": "NOT_BEARING"
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A5e",
+   "self": 12,
+   "other": 15,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A5g",
+   "self": 13,
+   "other": 14,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A5g",
+   "self": 14,
+   "other": 16,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A6",
+   "self": 16,
+   "other": 23,
+   "self_cls": "NOT_EVIDENCED",
+   "self_comp": null,
+   "other_cls": "NOT_EVIDENCED",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A0",
+   "self": 20,
+   "other": 21,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A0",
+   "self": 21,
+   "other": 22,
+   "self_cls": "NOT_EVIDENCED",
+   "self_comp": null,
+   "other_cls": "NOT_EVIDENCED",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A3m",
+   "self": 22,
+   "other": 19,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "F-A3m",
+   "self": 23,
+   "other": 20,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "AGREEMENT",
+   "test": "Q-H6",
+   "self": 24,
+   "other": 27,
+   "self_cls": "DIRECT_SUPPORT",
+   "self_comp": null,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "F-A2e",
+   "self": 3,
+   "self_cls": "NOT_EVIDENCED"
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "F-A4",
+   "self": 7,
+   "self_cls": "AMBIGUOUS"
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "F-A5g",
+   "self": 15,
+   "self_cls": "NOT_EVIDENCED"
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "F-A6",
+   "self": 17,
+   "self_cls": "NOT_EVIDENCED"
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "F-A6",
+   "self": 18,
+   "self_cls": "NOT_EVIDENCED"
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "F-A6",
+   "self": 19,
+   "self_cls": "NOT_EVIDENCED"
+  },
+  {
+   "class": "SELF-ONLY",
+   "test": "Q-H6",
+   "self": 25,
+   "self_cls": "DIRECT_SUPPORT"
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A2e",
+   "other": 3,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A2e",
+   "other": 4,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A2e",
+   "other": 5,
+   "other_cls": "AMBIGUOUS",
+   "other_comp": "DIRECT_COUNTEREXAMPLE"
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A3g",
+   "other": 8,
+   "other_cls": "NOT_EVIDENCED",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A4",
+   "other": 11,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A5e",
+   "other": 18,
+   "other_cls": "NOT_EVIDENCED",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A6",
+   "other": 24,
+   "other_cls": "NOT_EVIDENCED",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A6",
+   "other": 25,
+   "other_cls": "AMBIGUOUS",
+   "other_comp": "NOT_BEARING"
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "F-A6",
+   "other": 26,
+   "other_cls": "AMBIGUOUS",
+   "other_comp": "DIRECT_COUNTEREXAMPLE"
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "Q-H6",
+   "other": 28,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "Q-H6",
+   "other": 29,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "Q-H6",
+   "other": 30,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  },
+  {
+   "class": "BLIND-ONLY",
+   "test": "Q-H6",
+   "other": 31,
+   "other_cls": "DIRECT_SUPPORT",
+   "other_comp": null
+  }
+ ]
+}

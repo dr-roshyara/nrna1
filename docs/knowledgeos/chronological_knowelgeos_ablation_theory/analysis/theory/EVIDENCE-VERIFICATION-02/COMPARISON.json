@@ -1,0 +1,18 @@
+[
+ {
+  "q": "Q1",
+  "self": "YES",
+  "agent": "YES",
+  "match": "EXACT",
+  "quote": "- ES-004.3 adopted by explicit PA instruction (recorded R-41); the rule generalizes the WP-1 status-line correction into permanent governance.",
+  "reason": "The adoption appears in the first entry's Summary and Decisions sections, while the entry headed \"## ES-004.3 VALIDATION EXECUTED — VALIDATED UNCHANGED, DECLARED ARCHITECTURALLY STABLE\" comes later, after the refinement entry."
+ },
+ {
+  "q": "Q2",
+  "self": "NO",
+  "agent": "NO",
+  "match": "EXACT",
+  "quote": "## ES-004.3 VALIDATION EXECUTED — VALIDATED UNCHANGED, DECLARED ARCHITECTURALLY STABLE",
+  "reason": "The only validation or review records (the refinement's \"Self-review passed\" and the later \"VALIDATION EXECUTED\" entry) come after the adoption entry, and nothing in the fragment places any qualification or validation before the adoption."
+ }
+]

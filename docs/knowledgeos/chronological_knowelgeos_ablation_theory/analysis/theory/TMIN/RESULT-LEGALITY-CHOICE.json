@@ -1,0 +1,117 @@
+{
+ "labels": "MODEL-DERIVED; selected coded events; UNDETERMINED != redundant",
+ "events": 24,
+ "refusals": {
+  "RULE": 9,
+  "CHOICE": 2
+ },
+ "LEGALITY": {
+  "events": 22,
+  "variable_necessity": {
+   "o": "UNDETERMINED",
+   "r": "UNDETERMINED",
+   "a": {
+    "NECESSARY": [
+     [
+      "ADOPT-by-Chief(R-81..85)",
+      "ADOPT-by-Authority(R-86)"
+     ]
+    ]
+   },
+   "k": {
+    "NECESSARY": [
+     [
+      "REGISTER(R-90 operational acceptance)",
+      "REGISTER(constitutional decision)"
+     ]
+    ]
+   },
+   "sigma": {
+    "NECESSARY": [
+     [
+      "START(WP-4B)",
+      "START(WP-4B)@R-72"
+     ],
+     [
+      "START(WP-4B)",
+      "START(WP-8)"
+     ]
+    ]
+   },
+   "eps": "UNDETERMINED",
+   "x": "UNDETERMINED"
+  },
+  "sufficiency_counterexamples": [
+   [
+    "ADOPT-by-Authority(R-86)",
+    "ADOPT-by-Authority(R-91)"
+   ]
+  ]
+ },
+ "CHOICE": {
+  "events": 15,
+  "variable_necessity": {
+   "o": {
+    "NECESSARY": [
+     [
+      "SUPERSEDE(PB-006 row) (R-94)",
+      "ANNOTATE(PB-006 row) (R-94)"
+     ]
+    ]
+   },
+   "r": "UNDETERMINED",
+   "a": "UNDETERMINED",
+   "k": "UNDETERMINED",
+   "sigma": "UNDETERMINED",
+   "eps": "UNDETERMINED",
+   "x": "UNDETERMINED"
+  },
+  "sufficiency_counterexamples": []
+ },
+ "grounds": {
+  "L493-B": [
+   "RULE",
+   "'ES-006.1 forbids promoting from one'"
+  ],
+  "ADOPT-by-Chief(R-81..85)": [
+   "RULE",
+   "'the one reading no self-issued act may adopt'"
+  ],
+  "ADOPT-by-Authority(R-91)": [
+   "RULE",
+   "'Event D SEPARATES evidence submission from constitutional review'"
+  ],
+  "START(WP-4B)@R-72": [
+   "RULE",
+   "'SO IMPLEMENTATION DOES NOT BEGIN' (proviso unmet)"
+  ],
+  "START(WP-8)": [
+   "RULE",
+   "'NOT PERMITTED: any implementation work for WP-8'"
+  ],
+  "AUTHORIZE(4C)@R-72": [
+   "CHOICE",
+   "'GROUNDS FOR THE SLICE-AT-A-TIME FORM' — a principled choice by the authorizing body"
+  ],
+  "RAISE under freeze (L205)": [
+   "RULE",
+   "the freeze: 'no new meta-principles … minted from here'"
+  ],
+  "REGISTER(R-90 operational acceptance)": [
+   "RULE",
+   "'the register holds constitutional decisions'"
+  ],
+  "SUPERSEDE(ADR-T14) (R-77)": [
+   "RULE",
+   "'NOT SUFFICIENT TO SUPERSEDE AN ACCEPTED ADR' (an evidence standard)"
+  ],
+  "SUPERSEDE(§12) (R-83)": [
+   "RULE",
+   "'only by SUPERSEDING §12 — and no evidence was presented for superseding it'"
+  ],
+  "SUPERSEDE(PB-006 row) (R-94)": [
+   "CHOICE",
+   "retain · annotate · supersede → 'superseding would blur chronology'"
+  ]
+ }
+}

@@ -1,0 +1,260 @@
+{
+ "batches": {
+  "PB02": [
+   "five-blocker-triage-table",
+   "gita-hypothesis-architecture-consequence-pipeline",
+   "glyph-register-v3-collision-inventory-2026-09",
+   "h-kos-lifecycle-reasoning-001",
+   "hpa-gita-chapter18-synthesis-determination-mode-model"
+  ],
+  "PB03": [
+   "invariant-universe-not-one-mathematical-object",
+   "knowledge-graph-not-equal-knowledge-state",
+   "knowledgeos-type-system",
+   "linga-yoni-projection-transformation-experiment",
+   "minimal-adequate-representation-entropy-formalization"
+  ],
+  "PB04": [
+   "nyaya-sutra-kernel-falsification-lens",
+   "rejection-produces-hypothesis-space-not-truth",
+   "relation-8-tuple-vs-triple-reduction",
+   "reverification-updated-dependency-chain-and-matrix",
+   "session-completion-handoff-protocol"
+  ],
+  "PB05": [
+   "shannon-weaver-information-theory-lens",
+   "step-verify-programme",
+   "step185-differentiated-non-identity-chain",
+   "step291-n4-leverage-not-earliest",
+   "sufficient-state-control-theory-lens"
+  ]
+ },
+ "contract": {
+  "path": "prompts/20260924_1950_p3b-agent-contract-r22.md",
+  "sections_verbatim": [
+   "## 1A Research-first principle",
+   "## 1B Three research output layers",
+   "## 1C Historical time vs research time",
+   "## 1D Discovery is allowed; canonicalization is not",
+   "## 1E Openness",
+   "## 3.4 Firewalled and secondary files inside the boundary",
+   "## 9.8 Per-label procedure",
+   "## 9A Researcher role",
+   "## 9B Research discovery loop",
+   "## 9C Research checklist",
+   "# 11. EVIDENCE MODEL",
+   "# 12. RELATIONSHIP MODEL",
+   "# 13. RESEARCH REGISTER",
+   "# 14. TEMPORAL / HINDSIGHT CONTROLS",
+   "# 16. AI INTERPRETATION BOUNDARY",
+   "# 18. PROVENANCE REQUIREMENTS",
+   "# 20. QUALITY GATES"
+  ],
+  "sha256": "336eb3f98d4ec27f6c339f5cc85e9682ca62dddaea229dd0bf1ae173182d54b5"
+ },
+ "enforcement_blobs": {
+  "scripts/p3b_discovery_io.py": "e4df3151f07cf3033422fb5d95263a3c09642e51",
+  "scripts/p3b_read_source.py": "8908f235d5f7d057984d6ea62ff97091be5e84db",
+  "scripts/p3b_s3_mechanical_prep.py": "95017f1230a73ff67f89b38c0e7b084a3149655d",
+  "scripts/p3b_s4_verify_r22.py": "8573264eb3b96aa57e5221d39d5e18f76340ffae",
+  "scripts/p3b_stage2a_scan.py": "5744445a93d1784b671f165a59e67fb8bb80721c"
+ },
+ "enums": {
+  "absences.<dimension>.resolution": [
+   "FOUND",
+   "GENUINELY-UNDEFINED-AFTER-CENSUS",
+   "FIREWALL-BLOCKED",
+   "ESCALATED"
+  ],
+  "births.<kind>": [
+   "ESTABLISHED-<KIND>-BIRTH[S####]",
+   "MOVED[S####, quote]",
+   "UNORDERED-BLOCK[BULK-nn]",
+   "BIRTH-UNRESOLVED-MTIME-ONLY[S####]",
+   "ESCALATED[TIMESTAMP-ANOMALY: reason]",
+   "ESCALATED[G-08: sole basis S#### is SECONDARY-SYNTHESIS|PROVENANCE-UNRESOLVED|UNKNOWN]",
+   "NOT-EVIDENCED-IN-CAPTURE"
+  ],
+  "dependency_edges[].kind": [
+   "DEFINITIONAL",
+   "DERIVATIONAL",
+   "USAGE",
+   "EXPLANATORY",
+   "VALIDATION",
+   "GOVERNANCE"
+  ],
+  "lens (register)": [
+   "MATHEMATICAL",
+   "STATISTICAL",
+   "DDD",
+   "LOGIC",
+   "EPISTEMIC",
+   "CHRONOLOGICAL",
+   "MIXED"
+  ],
+  "lifecycle_stage (register)": [
+   "OBSERVED",
+   "ANALYSED",
+   "HYPOTHESIS-STATED",
+   "TEST-DEFINED"
+  ],
+  "mathematical_status": [
+   "CONSISTENT",
+   "INCONSISTENT",
+   "UNDER-SPECIFIED",
+   "UNDECIDABLE-FROM-CORPUS",
+   "NOT-APPLICABLE",
+   null
+  ],
+  "output_layer (register)": [
+   "B",
+   "C"
+  ],
+  "primary_layer": [
+   "FOUNDATIONAL",
+   "DERIVED",
+   "OPERATIONAL",
+   "META-THEORETICAL",
+   "LAYER-UNRESOLVED"
+  ],
+  "record_status": [
+   "PROPOSED"
+  ],
+  "scale (register)": [
+   "OBJECT"
+  ],
+  "secondary_roles[]": [
+   "FOUNDATIONAL",
+   "DERIVED",
+   "OPERATIONAL",
+   "META-THEORETICAL"
+  ],
+  "semantic_status": [
+   null
+  ],
+  "stage2_dispositions[].by_dimension.<dimension>": [
+   "FOUND",
+   "FALSE-HIT",
+   "UNSUPPLIED-DIMENSION",
+   "ESCALATED"
+  ],
+  "stage2_dispositions[].method": [
+   "WHOLE-FILE",
+   "STAGE-2A-2B"
+  ],
+  "tier": [
+   "U",
+   "Z"
+  ],
+  "timeline[].change_vs_previous": [
+   "FIRST",
+   "RESTATES",
+   "EXTENDS",
+   "NARROWS",
+   "CHANGES-DEFINITION",
+   "CHANGES-TYPE",
+   "CHANGES-TERM",
+   "CONTRADICTS",
+   "RETRACTS",
+   "NOT-COMPARABLE"
+  ],
+  "timeline[].date_applies_to_file": [
+   "CONFIRMED",
+   "NOT-CONFIRMED",
+   "NOT-ASSESSED"
+  ],
+  "timeline[].order": [
+   "ORDERED",
+   "UNORDERED-BLOCK"
+  ],
+  "type_status": [
+   "CLOSED",
+   "INCOMPLETE",
+   "UNTYPED",
+   null
+  ]
+ },
+ "failures": [],
+ "input_hashes": {
+  "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+  "03-CONTRIBUTIONS.jsonl": "4c192e8903b50a775964898b233ef2b24a9fffbd3c6e73906a34c4f88ed3c6f8",
+  "20-FAMILIES/_derived.json": "131a55ffd92794d462e24f1a1fc49c569b9abe5cd8641b45e0830ba66b60f059",
+  "20-FAMILIES/approx-x-equivalence-relation-proof-and-32-projections-precision.md": "70a27214a14d13529f325c8bad9f4977a424adbce5d638135a91058e462bfbaf",
+  "20-FAMILIES/boring-kernel-purpose-vs-extent-dissolution.md": "a82fdacf6a2eb7739c56fedf10798ed9127432dcdbb9561c7f625c2b35edcdde",
+  "20-FAMILIES/capability-existence-vs-category-distinction.md": "0ae4e2500ea3574120cf20988658a63f7e864df0e3d75e5935e535ea0f02b604",
+  "20-FAMILIES/composition-root-di-principle.md": "91d05eab99b030c754ababa0a391f89d075344b640cdc11c5c437160b345fcc1",
+  "20-FAMILIES/discovery-derivation-architecture-ratification-implementation-stage-separation-principle.md": "36797ba6bb7d362575a7f248a604e3ae8e7f95b19e4cb27f93a65f4dd453633f",
+  "20-FAMILIES/five-blocker-triage-table.md": "e5fed4112273ea44e54cecd9113f23ca1a7c6fb3e614ab4c4b7cc00bdc6e0127",
+  "20-FAMILIES/gita-hypothesis-architecture-consequence-pipeline.md": "8307d83799fa6a68f059709b14d07a0102dc8547ffa7afa2f2c640a3c0bb8261",
+  "20-FAMILIES/glyph-register-v3-collision-inventory-2026-09.md": "ef80b1e6f4d8700feeb3ede2e5f1c2f20d4c2e2d578403e05360068c73f0d0d5",
+  "20-FAMILIES/h-kos-lifecycle-reasoning-001.md": "2676180f15c14b7d9eba9745f5677700aafdbd540d0587c50e8bccf8e3dac626",
+  "20-FAMILIES/hpa-gita-chapter18-synthesis-determination-mode-model.md": "67b001420b78cc01b5721ddfbdbfc1c69d1afd0406c87f940fb85bbcca4603f1",
+  "20-FAMILIES/invariant-universe-not-one-mathematical-object.md": "3816af2a544b6b5b250b615991a5a592d17d4ef94548a725e7d594bbd8c712cb",
+  "20-FAMILIES/knowledge-graph-not-equal-knowledge-state.md": "ed7a33bf48de7c5ce530852e65b4599214f2dee4e8f864a191d613669fb6a3b6",
+  "20-FAMILIES/knowledgeos-type-system.md": "23949b08d8459e58beccf1093476de0e76e760ce454d83a7856cffc0c69a1df1",
+  "20-FAMILIES/linga-yoni-projection-transformation-experiment.md": "f1b39df78f414851175eb3f39903690d40234101c6e044d32911e1de95530ab4",
+  "20-FAMILIES/minimal-adequate-representation-entropy-formalization.md": "d12f7d59a9cd7d1985e524f709196eeecfffb08053c7cf19678b1edabdd0ca4f",
+  "20-FAMILIES/nyaya-sutra-kernel-falsification-lens.md": "7c1708c574d14aec95ec29d29377e0014b53c3705f758e4a402c5343720759a6",
+  "20-FAMILIES/rejection-produces-hypothesis-space-not-truth.md": "aa5074c69180c5efb8865a5935ade9b6d23e684b421570353c6272e64e25c70e",
+  "20-FAMILIES/relation-8-tuple-vs-triple-reduction.md": "4b6a91b200a019f6eef1bbebf0d4763d264d94ac52507606d63ec2761015832d",
+  "20-FAMILIES/reverification-updated-dependency-chain-and-matrix.md": "03db50e10bdeebd9e7972a3c7d175804cb49517869af4ac6cf61e6e9d0cf4cde",
+  "20-FAMILIES/session-completion-handoff-protocol.md": "a55947650beb7f60daf4a4ca3d29e62767636069592b8f8499b9299d62ec25a8",
+  "20-FAMILIES/shannon-weaver-information-theory-lens.md": "f2a2666f608d5d961a6f5c87f777099ea9b8440a74869e0d610d32e05e41177d",
+  "20-FAMILIES/step-verify-programme.md": "5fc4c375b51f2ed9f4c30cf0f0deb7d114186ec938336b6e9abd5873e83edf92",
+  "20-FAMILIES/step185-differentiated-non-identity-chain.md": "78930302912e3f90c1f2977d7063d5fa74d59913c9b7a494df55b49e6ed57174",
+  "20-FAMILIES/step291-n4-leverage-not-earliest.md": "224a971fcbc47cdd078caf67fb54c693f7b7929250d88d2285a52b114e62cc02",
+  "20-FAMILIES/sufficient-state-control-theory-lens.md": "ec5ba31ec1734ba7675d9507607281ec44beffec03e2f2817ec7c909f683786c",
+  "20-FAMILIES/uncertainty-statistical-model-based-reasoning-part21.md": "99de06aeb97a929daff38f7e09ed98d45eefe33ffb177cbc020910e01b51dab9",
+  "20-FAMILIES/v1-1-sim-kernel-capability-set.md": "4c5b2ed317ab47afd699a8446f417ed1d3aa8a56121dcf86939e69bb2b03562e",
+  "20-FAMILIES/vedic-palmistry-structural-reasoning-inventory-2026-09.md": "11405042eecea18511a5ba924b86fcc287d2212f47c96f8dce7a5e023e9e7d36",
+  "20-FAMILIES/verification-pipeline-and-reasoning-failure-not-falsehood.md": "a96dcce6fc7c4230e32685772421a1d806ec0d3f859b9b5706032f8da63418a3",
+  "20-FAMILIES/verification-reconciliation-gate-directive.md": "4468f45e12b62c6295c98a3df96051b74170d2b02d4c288334516264e1b53ca5",
+  "31-RECONCILIATION-PAIRS.jsonl": "d8ec552766c6d4852e407d459f71f01a58e1561c25de27d116b1a6ab445a748d",
+  "P3B-DISCOVERY-SEARCH.jsonl": "3dc5a5a18f29ecc96f90524fc55002cebc7e1bbee68c6db3decd4f2509a52c2d",
+  "P3B-HOLDOUT-SEAL.json": "9b99169d30d57b2ecc1d331838652aa6b765ce722059b30095a03df077d589c0",
+  "P3B-IDENTITY-MANIFEST.jsonl": "74cb210bb63d1956647186a53f2f54119fd6a219fb6b23795ad9b6fe3ea0d042",
+  "P3B-SAMPLE-PLAN.jsonl": "0cc706f40b7f92eebbc75eb07bb34ef1eff3bcf3515371c35674244d355cee80",
+  "P3B-TIERS.jsonl": "1ea659d4668d6f197068f6069e736cfbe98e00b8d2948197ac5fb583c835595e",
+  "_batch_input_r2/bundle_index_discovery.jsonl": "00b5d51435f7f49bba35702171a1afa92469caabf5d6cefdaf1a2fda67a78b12",
+  "ledger-p3b/OB0001/objects.jsonl": "a33dddc72b77bc86537f9f0b4713ec87a9e5c200fb6753205593c7de481bd5dd",
+  "ledger-p3b/OB0002/objects.jsonl": "0a6ca4f71b83c67dc4eca8fbccad8c5fbb1272139ff84bed3a9a862905422d09",
+  "ledger-p3b/OB0003/objects.jsonl": "b5b02d4507911237d45c3cb152a3b19352649fcdd4fa79ef1279814a4f707bad",
+  "prompts/20260924_1853_p3b-phase1-continuation-protocol-v1.6.6.md": "1eb7ac4e258c81318690f7ddfb804dd1d6b505a1a73aa1d2c9a07ec07693fe3f"
+ },
+ "input_manifest_sha256": "b4fe96ff9e7954d7e376e5a30681ce6c4262e08e5602d25fe6bdd3c6543e9070",
+ "output_sha256": "40849f7153a7382f8823561d5ed16784db62bf15e4dc8cdf372b4faa95f8e558",
+ "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+ "protocol": "prompts/20260924_1853_p3b-phase1-continuation-protocol-v1.6.6.md",
+ "protocol_sha256": "1eb7ac4e258c81318690f7ddfb804dd1d6b505a1a73aa1d2c9a07ec07693fe3f",
+ "python_version": "3.13.2",
+ "reruns": "S4-PILOT-R2-001 batches PB02, PB03, PB04, PB05 (G-LOG-0021)",
+ "result": "PASS",
+ "run_id": "S4-PILOT-R2-002",
+ "run_timestamp_utc": "2026-09-24T17:50:53Z",
+ "schema_sha256": "542e7eed2ef6c247970476d36df6b0bb5a0ae66c0cd884d5e0b7532f039b6621",
+ "scratch_root": "/tmp/p3b-s4-r22-scratch",
+ "script_name": "p3b_s4_prepare_r22.py",
+ "script_version": "73844c0ca6a9a43941f3b967aa890d82fb07b454",
+ "slices": {
+  "five-blocker-triage-table": "56b1f5a6490c6cc19adc8d0b53d95d0b3ba72310da9a3fbbf5b37a4e56412b5f",
+  "gita-hypothesis-architecture-consequence-pipeline": "8bcf6d14b7857d33f2b18af3ffdc569c42b067faa9fd5f4744aff7c4c342f4fa",
+  "glyph-register-v3-collision-inventory-2026-09": "a88f197e580f4f205f24a28d0c33eb10c8dcf2328cdca1b264a06d4eb02c2256",
+  "h-kos-lifecycle-reasoning-001": "a3c218bfa5229ebc03352af5a3ed1027a39117210f669cac36e6bd6dc4e415cb",
+  "hpa-gita-chapter18-synthesis-determination-mode-model": "dc8c29d49e433d49a43e9a138d68b0993f22ded3211f55ca44396148de41cdec",
+  "invariant-universe-not-one-mathematical-object": "1112e288cdee8cb635dbaa18c0c78b3a9b7dd407a528a9d7489da62d04019081",
+  "knowledge-graph-not-equal-knowledge-state": "7d722c2c9287de9722d8517fb34af949aec7e87266e3eef31acb0df4d78cca68",
+  "knowledgeos-type-system": "803dabaeb1563ea74dbe9dfb1859daab7e24edfd4cacefe0f2f4d5ad26ab99b8",
+  "linga-yoni-projection-transformation-experiment": "60c9757da7eb7bdfb7e40b193a66c6930485c142b16d5648f975fbca0954f6c7",
+  "minimal-adequate-representation-entropy-formalization": "643ee633492aabd57932cb9af2458006d761a657402c90f76281eb34acf150f5",
+  "nyaya-sutra-kernel-falsification-lens": "6c0b692384797540af292f8d6745c2b8a4a835022b39b7c1255a68c41e9e5a63",
+  "rejection-produces-hypothesis-space-not-truth": "a0e12982bfbbd0653f5c4f2c2f0f4f0731d1721ab395f44fc8425b9b68858199",
+  "relation-8-tuple-vs-triple-reduction": "6535af75c32875c21d74419423ef028e4352d94235913e3f4e08d78f6e0cb510",
+  "reverification-updated-dependency-chain-and-matrix": "4e663c2ce2b04d8982d22e1b8f7f9ba4068039f5357cc939bb1a02d1ff98a755",
+  "session-completion-handoff-protocol": "043effe7f96af283e7915e5544fca3398bf80f4f27d084e6bb2d82a8b06215cb",
+  "shannon-weaver-information-theory-lens": "231a78c30179127a214bb94a4513adbd6f0f0c615693b03ae42800d073877801",
+  "step-verify-programme": "728316869148fbdc7c5bf8c474fbc1bd1fc18752e23144dbd4a594d9bacde515",
+  "step185-differentiated-non-identity-chain": "f01fd7d629e0c19cb3ec6a583e9a76acc25200134e35e49dba57e7b431971507",
+  "step291-n4-leverage-not-earliest": "860499198ac43f9412effe7b87efefd6967522e2ec03d6a1c5ce5aa2a4f230d6",
+  "sufficient-state-control-theory-lens": "d6270aae405fc58e1de9d09ff7b10d4e0f78c07e3bcfa120d8cce2220cd68613"
+ }
+}

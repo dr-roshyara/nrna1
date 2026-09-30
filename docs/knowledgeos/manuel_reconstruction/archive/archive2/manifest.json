@@ -1,0 +1,29 @@
+{
+  "process": "KnowledgeOS Fast Chronological Knowledge Extraction",
+  "strategy_version": 2,
+  "source_list": "docs/knowledgeos/list_of_files_to_read.log",
+  "total_sources_listed": 3081,
+  "processed": 5,
+  "next_source": "F0006",
+  "batch_size_target": 75,
+  "current_batch": "extractions/batch-0001.jsonl",
+  "ledger": "source-ledger.jsonl",
+  "state": "state/chronological-state.jsonl",
+  "milestones": [
+    "milestones/milestone-0001.md"
+  ],
+  "marker_vocabulary": [
+    "SOURCE",
+    "INFERENCE",
+    "HYPOTHESIS"
+  ],
+  "delta_vocabulary": [
+    "NEW",
+    "CHANGED",
+    "CONFIRMED",
+    "REMOVED",
+    "CONTRADICTED"
+  ],
+  "archive": "archive/strategy-v1-3file-trial/",
+  "created": "2026-09-24"
+}

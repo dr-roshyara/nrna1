@@ -1,0 +1,64 @@
+{
+  "decision_act": {
+    "act": "Explicit Principal Architect (PA) instruction adopting ES-004.3; the register row R-41 and commit 7632b5685 record it but are not the act itself.",
+    "quotes": [
+      "S2 Decisions: \"ES-004.3 adopted by explicit PA instruction (recorded R-41)\"",
+      "S1 R-41: \"Artifact Lifecycle Consistency adopted as a permanent documentation standard (Principal Architect instruction).\"",
+      "S2 Summary: \"PA instruction institutionalized: **Artifact Lifecycle Consistency** — adopted as **ES-004.3**\"",
+      "S2 Completed: \"the register records the decision event\"",
+      "G subject: \"ES-004.3 Artifact Lifecycle Consistency adopted (PA instruction, R-41)\""
+    ],
+    "performed_by": "The Principal Architect (\"PA instruction\" / \"Principal Architect instruction\"). The hosting, the R-41 append and the commit were carried out by the session author (commit \"Co-Authored-By: Claude Fable 5\"). The sources give the human committer as UNK.",
+    "time_or_position": "Date 2026-07-30 (the R-41 date column: \"| R-41 | 2026-07-30 |\"). Time of day of the instruction: UNK. The commit time \"2026-07-30 19:33:58 +0200\" is when the recording was committed, not when the instruction was given. Position (INFERENCE): the instruction comes first and is then \"institutionalized\" (hosted in ES-004.3, recorded in R-41)."
+  },
+  "instance1": {
+    "what": "\"the WP-1 closure inconsistency (a CLOSED plan whose header still read \\\"AUTHORIZED — execution begins…\\\"), corrected 2026-07-30\" (S1); the fix is \"Work Plan ✔ (status line fixed `307b90e8e`)\" (S2).",
+    "observed_relative_to_decision": "BEFORE the decision (INFERENCE, strong). It is labelled \"Provenance\" (S1), and \"the rule generalizes the WP-1 status-line correction into permanent governance\" (S2 Decisions). Only the correction date, 2026-07-30, is stated. The exact time it was observed: UNK. Commit 307b90e8e is cited by hash inside content committed in 7632b5685, so 307b90e8e existed before that content was written (INFERENCE)."
+  },
+  "instance2": {
+    "what": "ADR-T22's row \"still carried the issuance-time \\\"Implementation NOT yet authorized\\\"\" clause, which was annotated \"*(status at issuance — since REALIZED by WP-1, ARB-accepted 2026-07-27; ES-004.3 annotation, decision text unchanged)*\" (S2). ADR-T21's identical clause was \"verified still ACCURATE ... untouched\".",
+    "caught_by": "\"First execution of the slice-closure synchronization checklist\" (G); \"Checklist executed against WP-1 (first application)\" (S2); \"first checklist execution the same day caught a second instance\" (S1).",
+    "activity_required_rule": "INFERENCE: yes, the rule's text had to exist. The checklist is part of the rule's content (S1: \"Minimum synchronization checklist at slice closure: ...\"; S2: ES-004.3 hosted with a \"slice-closure synchronization checklist\"). The run is called the rule's \"first application\", and the annotation is labelled an \"ES-004.3 annotation\". No source says in so many words that the checklist could not be run before adoption, as opposed to being run from a draft: UNK as a SOURCE FACT.",
+    "observed_relative_to_decision": "AFTER the decision (INFERENCE). Stated as SOURCE FACT: same day (2026-07-30), same commit (7632b5685). Exact time: UNK."
+  },
+  "ordering": "SECOND-AFTER-DECISION",
+  "ordering_status": "INFERENCE, not a stated timestamp. The sources never give a clock time for either the PA instruction or the checklist run.",
+  "decisive_quotes": [
+    "S2 Decisions: \"ES-004.3 adopted by explicit PA instruction (recorded R-41); the rule generalizes the WP-1 status-line correction into permanent governance.\" (the stated basis is instance 1 only)",
+    "S2 Completed: \"**Checklist executed against WP-1 (first application):**\" (application of an existing rule)",
+    "S2 Completed: \"annotated *(status at issuance — since REALIZED by WP-1, ARB-accepted 2026-07-27; ES-004.3 annotation, decision text unchanged)*\" (the annotation cites ES-004.3 as its authority)",
+    "S2 Summary: \"adopted as **ES-004.3** ... First checklist execution against WP-1's closure caught a second real instance.\" (adoption stated first, then the checklist run)",
+    "G body: \"First execution of the slice-closure synchronization checklist caught ADR-T22's stale issuance-time 'Implementation NOT yet authorized' clause\"",
+    "S1: \"Minimum synchronization checklist at slice closure: Work Plan · CONTEXT.md · Session Log · Developer Guide · Acceptance Record · ADR references.\" (the checklist is part of the rule)",
+    "S2 Completed order: \"ES-004.3 hosted\" → \"R-41 appended\" → \"Checklist executed against WP-1 (first application)\""
+  ],
+  "contrary_quotes": [
+    "S1 R-41 (the decision record itself) lists the second instance under Provenance: \"Provenance: the WP-1 closure inconsistency ..., corrected 2026-07-30; first checklist execution the same day caught a second instance (ADR-T22 row's issuance-time \\\"Implementation NOT yet authorized\\\" clause, annotated).\" (the record of the decision already contains instance 2)",
+    "G: one commit 7632b5685, \"2026-07-30 19:33:58 +0200\", holds both \"ES-004.3 Artifact Lifecycle Consistency adopted (PA instruction, R-41)\" and \"ADR-T22 status annotated per first checklist run\" (they cannot be told apart at git level, which is consistent with SAME-ACT)",
+    "S1: \"| R-41 | 2026-07-30 |\" and \"first checklist execution the same day\" (same day only, with no finer ordering)",
+    "S2 Completed: \"R-41 appended ... the register records the decision event\" (if the decision event is taken to be the R-41 append, the R-41 text that cites instance 2 was written after instance 2 was found)",
+    "S2 Summary: \"PA instruction institutionalized\" (the time of the instruction relative to any drafting of the checklist is not given)"
+  ],
+  "decision_time_evidence": 1,
+  "decision_time_evidence_status": "This follows formally from the ordering inference plus \"caught\" (first discovery by the checklist run). If the decision act is instead taken to be the writing of the R-41 record, that record already cites 2 instances. If ordering is treated as UNDETERMINED, the value is UNK.",
+  "git_can_order": {
+    "can": [
+      "Commit 7632b5685 (2026-07-30 19:33:58 +0200) contains both the adoption record (ES-004 +10, register +1, CLAUDE.md +1, MEMORY) and the ADR-T22 annotation (ADR-T-LOG 1 line changed). Both were committed by that timestamp.",
+      "Commit 307b90e8e (the instance-1 fix) is cited by hash in session-log content added in 7632b5685, so it came before that content was committed (INFERENCE). Its date is not in the sources.",
+      "The session log gained +16 lines in 7632b5685, but S2 lines 1-41 are longer than that. The 'REFINED ROLE-BASED' and 'VALIDATION EXECUTED' sections were therefore probably added in later commits (INFERENCE)."
+    ],
+    "cannot": [
+      "Cannot order the PA instruction against the checklist run. The instruction is not a git event, and both of its results sit in one commit.",
+      "Cannot order events inside commit 7632b5685: ES-004.3 hosting, the R-41 append and the ADR-T22 annotation.",
+      "Cannot give the time instance 1 was observed or instance 2 was caught. Git records commit time, not the time of observation or discovery."
+    ]
+  },
+  "ambiguities": [
+    "Which act is 'the decision act': the PA instruction, ES-004.3 hosting, the R-41 append, or commit 7632b5685?",
+    "Adopted vs. drafted: was the checklist run from adopted rule text or from a draft awaiting adoption?",
+    "'the same day' in S1 is relative to the instance-1 correction, not to the decision.",
+    "Whether bullet order in S2 'Completed' is chronological is not stated.",
+    "The R-41 'Provenance' covers both instances, so its evidence base may be read as the decision's (2) or as the provenance written up afterwards.",
+    "Who performed the checklist run and the recording (PA, or the session agent 'Claude Fable 5' co-author) is not stated."
+  ]
+}

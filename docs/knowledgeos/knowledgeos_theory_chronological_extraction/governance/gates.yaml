@@ -1,0 +1,500 @@
+# gates.yaml — the rule book for TEMPORARY KnowledgeOS research governance.
+#
+# Governance proposes status here. The human activates in governance-state.yaml.
+# Neither file contains executable logic: `check` NAMES a runner implementation.
+#
+# Catalogue discipline: a gate is listed here whether or not it is implemented,
+# so that the unimplemented ones stay VISIBLE instead of being silently absent.
+# `not_yet_defined` is an honest status, not a placeholder to be cleared.
+
+catalogue:
+  version: 1
+  scope: knowledgeos_theory_chronological_extraction
+  temporary: true
+  supersedes: check-gates.py   # research tool, withdrawn as a standalone claim
+
+gates:
+
+  # ────────────────────────────────────────────────────────────────────
+  # Preconditions — if these fail, no other verdict is trustworthy
+  # ────────────────────────────────────────────────────────────────────
+
+  - id: KOS-G-001
+    name: artifacts-parse
+    stage: CHECKPOINT
+    timing: PRE
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      Every .jsonl artifact parses. A malformed registry makes every
+      downstream measurement meaningless rather than merely wrong.
+    source: {protocol: none, rule: precondition}
+    inputs: [every .jsonl under the workspace, recursively, excluding the top-level governance/ tree and hidden directories]
+    pass_condition:
+      type: deterministic
+      check: jsonl_wellformed
+      rule: every non-blank line of every .jsonl file parses as JSON.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-002
+    name: no-duplicate-ids
+    stage: CHECKPOINT
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: Identifier collisions silently merge two findings into one.
+    source: {protocol: knowledge_os_protocoll.md, rule: "§37 check 4 family"}
+    pass_condition:
+      type: deterministic
+      check: no_duplicate_ids
+      rule: theory-object ids and relation rows are each unique.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-003
+    name: no-dangling-references
+    stage: CHECKPOINT
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      A reference to a non-existent T-/G-/F- id is a recording defect. This
+      check has caught real defects in two consecutive batches.
+    source: {protocol: knowledge_os_protocoll.md, rule: "§37 check 4"}
+    inputs:
+      - scanned: every .jsonl under the workspace, recursively, excluding the top-level governance/ tree and hidden directories (markdown is NOT scanned)
+      - known T-ids: THEORY-OBJECTS.jsonl
+      - known G-ids: GAPS.jsonl
+      - known F-ids: docs/knowledgeos/list_of_files_to_read.log, the canonical corpus list (L0-DEC-17)
+    pass_condition:
+      type: deterministic
+      check: no_dangling_refs
+      rule: >
+        every T-/G-/F- identifier cited in a scanned .jsonl artifact exists in
+        its known set. A missing input, or a canonical list with no file ids,
+        is INCONCLUSIVE.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  # ────────────────────────────────────────────────────────────────────
+  # Phase 1 — evidence and theory-discovery indexing
+  # ────────────────────────────────────────────────────────────────────
+
+  - id: KOS-G-010
+    name: theory-discovery-index-coverage
+    stage: PHASE_1
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      Every registered file carries a Theory Discovery Index entry. Built
+      from the error that cost the most: two files excluded by document kind
+      held the corpus's own answer to "what is KnowledgeOS for".
+    source: {protocol: knowledge_os_protocoll.md, rule: P1-Q1}
+    inputs: [FILE-REGISTRY.jsonl, THEORY-DISCOVERY-INDEX.jsonl]
+    pass_condition:
+      type: deterministic
+      check: index_coverage
+      rule: every file_id in the registry appears in the index.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-011
+    name: index-false-states-reason
+    stage: PHASE_1
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: An unexplained exclusion is the exclusion that hides the error.
+    source: {protocol: knowledge_os_protocoll.md, rule: P1-Q1}
+    pass_condition:
+      type: deterministic
+      check: index_false_has_reason
+      rule: every candidate_theory_bearing=false entry carries a non-empty why.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-012
+    name: index-reason-is-not-document-kind
+    stage: PHASE_1
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      The clause the whole gate exists for. "It is a governance/process
+      document" is document kind wearing a justification.
+    source: {protocol: knowledge_os_protocoll.md, rule: P1-Q1}
+    pass_condition:
+      type: deterministic
+      check: index_reason_not_document_kind
+      rule: no exclusion reason is a restatement of document kind.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-013
+    name: theory-bearing-discriminator-validated
+    stage: PHASE_1
+    timing: CHECKPOINT
+    class: REVIEW
+    tier: B
+    status: active
+    purpose: >
+      C2 is computable but not validated while every index entry reads true.
+      A discriminator that has never returned false has not been shown to
+      discriminate. This is a REVIEW gate: the runner reports the count and
+      a reviewer judges. It must never auto-PASS on a count alone.
+    source: {protocol: END-TO-END-ENFORCEMENT-AUDIT.md, rule: C2}
+    pass_condition:
+      type: review
+      rule: >
+        a reviewer confirms the discriminator has returned false at least
+        once with a reason that survives review.
+    failure: {effect: WARN}
+    human_decision_required: false
+
+  # ────────────────────────────────────────────────────────────────────
+  # Phase 2 — recovery, construction, theory document
+  # ────────────────────────────────────────────────────────────────────
+
+  - id: KOS-G-020
+    name: relational-completeness
+    stage: PHASE_2
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      A theory of disconnected fragments satisfies every other gate. 14
+      relationship types were vocabulary with 0 of 14 gated.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q59}
+    inputs: [THEORY-OBJECTS.jsonl, phase2_extraction/THEORY-OBJECT-RELATIONS.jsonl]
+    pass_condition:
+      type: deterministic
+      check: relations_coverage
+      rule: every theory object has a relations record.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-021
+    name: none-found-states-reason
+    stage: PHASE_2
+    timing: POST
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      NONE_FOUND without a reason is an unrecorded absence of search, not a
+      recorded absence of evidence.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q59}
+    pass_condition:
+      type: deterministic
+      check: relations_none_found_has_reason
+      rule: every NONE_FOUND in a relations record is accompanied by a reason.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-022
+    name: theory-document-completeness
+    stage: PHASE_2
+    timing: CHECKPOINT
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      Built from a measured failure: three seed items were dropped from the
+      theory document and every gate passed. The check is a set difference.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q60}
+    inputs: [phase2_extraction/THEORY-SEED.md, phase2_extraction/CANDIDATE-KNOWLEDGEOS-THEORY.md]
+    pass_condition:
+      type: deterministic
+      check: seed_trace_complete
+      rule: "{seed items} minus {items traced in the appendix} is empty."
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-023
+    name: no-phantom-trace-entries
+    stage: PHASE_2
+    timing: CHECKPOINT
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      The reverse difference. A traced item absent from the seed means the
+      trace is citing something that was never admitted.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q60}
+    pass_condition:
+      type: deterministic
+      check: seed_trace_no_phantom
+      rule: "{traced} minus {seed} is empty."
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-024
+    name: theory-document-exists
+    stage: PHASE_2
+    timing: CHECKPOINT
+    class: AUT
+    tier: A
+    status: active
+    purpose: Machinery outrunning the theory. Iteration 1 failed this.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q41}
+    pass_condition:
+      type: deterministic
+      check: theory_doc_exists
+      rule: CANDIDATE-KNOWLEDGEOS-THEORY.md exists and is non-empty.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-025
+    name: theory-body-free-of-identifiers
+    stage: PHASE_2
+    timing: CHECKPOINT
+    class: AUT
+    tier: B
+    status: active
+    purpose: >
+      Identifiers belong in the trace appendix. The body stays prose so the
+      theory is legible to someone who is not its author.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q42}
+    pass_condition:
+      type: deterministic
+      check: theory_body_no_identifiers
+      rule: no seed identifiers appear before the trace appendix.
+    failure: {effect: WARN}
+    human_decision_required: false
+
+  - id: KOS-G-026
+    name: theory-body-free-of-json-references
+    stage: PHASE_2
+    timing: CHECKPOINT
+    class: AUT
+    tier: B
+    status: active
+    purpose: >
+      The theory must be readable without opening a registry. This gate has
+      already fired once on the author's own text.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q43}
+    pass_condition:
+      type: deterministic
+      check: theory_body_no_json_refs
+      rule: no .jsonl filename appears before the trace appendix.
+    failure: {effect: WARN}
+    human_decision_required: false
+
+  - id: KOS-G-027
+    name: gaps-dispositioned
+    stage: PHASE_2
+    timing: CHECKPOINT
+    class: AUT
+    tier: A
+    status: active
+    purpose: >
+      Gaps accumulating silently with no forcing function. "unresolved" is
+      not a disposition.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q57}
+    pass_condition:
+      type: deterministic
+      check: gaps_dispositioned
+      rule: >
+        every gap carries FILLED / REFUSED / POINTER / WAITING / BLOCKED
+        or a RESOLVED variant.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  # ────────────────────────────────────────────────────────────────────
+  # Judgement gates — the runner NEVER passes these
+  # ────────────────────────────────────────────────────────────────────
+
+  - id: KOS-G-040
+    name: search-before-construction
+    stage: PHASE_2
+    timing: PRE
+    class: REVIEW
+    tier: A
+    status: active
+    purpose: >
+      The programme's own recorded failure mode. A targeted search precedes
+      any expert construction. No script can see whether a search happened.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: "Q38 + Q53"}
+    pass_condition:
+      type: review
+      rule: a reviewer confirms the search was run and its scope recorded.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-041
+    name: search-before-experiment-design
+    stage: EXPERIMENT
+    timing: PRE
+    class: REVIEW
+    tier: A
+    status: proposed
+    purpose: >
+      Q53/Q38 cover constructing a FORMULATION, not designing an EXPERIMENT.
+      An experiment the corpus has already run was queued twice in one
+      session because no gate covered this. PROPOSED, not active: the
+      methodology is frozen and one occurrence is not promotion evidence.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: "gap between Q38/Q53"}
+    pass_condition:
+      type: review
+      rule: >
+        a reviewer confirms the corpus was searched for an existing answer
+        before the experiment was designed.
+    failure: {effect: BLOCK}
+    human_decision_required: true
+
+  - id: KOS-G-042
+    name: no-exclusion-by-document-kind
+    stage: PHASE_2
+    timing: POST
+    class: REVIEW
+    tier: A
+    status: active
+    purpose: >
+      Downstream companion to KOS-G-012. A script sees a stated reason; only
+      a reviewer sees whether kind did the real work.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q54}
+    pass_condition:
+      type: review
+      rule: a reviewer confirms no contribution was excluded by kind alone.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-043
+    name: no-term-collision
+    stage: PHASE_2
+    timing: POST
+    class: REVIEW
+    tier: A
+    status: active
+    purpose: >
+      No new term reuses a corpus term with a different meaning. Violated
+      once and corrected by renaming.
+    source: {protocol: KNOWLEDGEOS-RESEARCH-ARCHITECTURE.md, rule: "RA-9 / Q56"}
+    pass_condition:
+      type: review
+      rule: a reviewer confirms no introduced term collides with a corpus term.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-044
+    name: origin-labels-present
+    stage: PHASE_2
+    timing: POST
+    class: REVIEW
+    tier: A
+    status: active
+    purpose: >
+      Every statement carries [C]/[S]/[E]/[T] and origin is never collapsed
+      into strength. An expert construction reading as a corpus fact, or a
+      test-derived change reading as validated.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: "Q51 + Q52"}
+    pass_condition:
+      type: review
+      rule: a reviewer confirms origin labelling and [E]/[T] field completeness.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-045
+    name: no-silent-promotion
+    stage: EXPERIMENT
+    timing: POST
+    class: REVIEW
+    tier: A
+    status: active
+    purpose: >
+      No experiment result silently promoted to validated or canonical. An
+      implementation success read as theory validation.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q50}
+    pass_condition:
+      type: review
+      rule: a reviewer confirms no strength label rose without evidence.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-046
+    name: statistical-claims-stated-fully
+    stage: EXPERIMENT
+    timing: POST
+    class: REVIEW
+    tier: B
+    status: active
+    purpose: >
+      Every count states population, frame, unit, dependence, generalization
+      and limitation. A convenience count becoming a statistical law.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: Q49}
+    pass_condition:
+      type: review
+      rule: a reviewer confirms each reported count is fully qualified.
+    failure: {effect: WARN}
+    human_decision_required: false
+
+  - id: KOS-G-047
+    name: falsifier-preregistered
+    stage: EXPERIMENT
+    timing: PRE
+    class: AUT
+    tier: A
+    status: not_yet_defined
+    purpose: >
+      The falsifier is recorded before the experiment runs. Listed so the
+      absence stays visible. NOT implemented: the experiment records do not
+      currently carry a timestamp or commit that would make the ordering
+      decidable, so the check cannot be written honestly yet.
+    source: {protocol: knowledge_os_step2_theory_construction_protocol.md, rule: "Q47 family"}
+    pass_condition:
+      type: deterministic
+      check: NOT_IMPLEMENTED
+      rule: the falsifier record precedes the experiment execution record.
+    failure: {effect: BLOCK}
+    human_decision_required: true
+
+  # ────────────────────────────────────────────────────────────────────
+  # Reserved to the human authority — the runner never evaluates these
+  # ────────────────────────────────────────────────────────────────────
+
+  - id: KOS-G-060
+    name: acceptance-of-own-work
+    stage: CHECKPOINT
+    timing: CHECKPOINT
+    class: HUMAN
+    tier: A
+    status: active
+    purpose: >
+      Engineering supplies evidence and never accepts its own work. Every
+      acceptance in this programme so far has been the author's. No
+      instrument can close this, because an instrument the author wrote is
+      not an independent acceptor.
+    source: {protocol: "EP-02 / R-34", rule: R-34}
+    pass_condition:
+      type: review
+      rule: a human authority records the acceptance.
+    failure: {effect: BLOCK}
+    human_decision_required: true
+
+  - id: KOS-G-061
+    name: frozen-artifact-modification
+    stage: CHECKPOINT
+    timing: PRE
+    class: HUMAN
+    tier: A
+    status: active
+    purpose: >
+      Whether a frozen artifact may be edited to remove stale state is an
+      authorization question, not a measurement. Currently outstanding: the
+      Q-gate registry inside the frozen Phase-2 protocol carries a
+      compliance-status column that is out of date.
+    source: {protocol: KNOWLEDGEOS-RESEARCH-ARCHITECTURE.md, rule: "§9 change control"}
+    pass_condition:
+      type: review
+      rule: a human authority rules on the edit before it is made.
+    failure: {effect: BLOCK}
+    human_decision_required: true

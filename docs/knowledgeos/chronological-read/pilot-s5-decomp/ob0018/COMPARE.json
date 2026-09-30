@@ -1,0 +1,5033 @@
+{
+ "P": {
+  "adjacency": [
+   {
+    "arm": "EXTENDS",
+    "baseline": "EXTENDS",
+    "equal": true,
+    "pair": [
+     "S1623",
+     "S1627"
+    ]
+   },
+   {
+    "arm": "NARROWS",
+    "baseline": "EXTENDS",
+    "equal": false,
+    "pair": [
+     "S1627",
+     "S1629"
+    ]
+   },
+   {
+    "arm": "RESTATES",
+    "baseline": "RESTATES",
+    "equal": true,
+    "pair": [
+     "S1629",
+     "S1631"
+    ]
+   },
+   {
+    "arm": "EXTENDS",
+    "baseline": "EXTENDS",
+    "equal": true,
+    "pair": [
+     "S1631",
+     "S1633"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "cross_unit_undefined": [],
+  "edges": {
+   "endpoint_valid": 2,
+   "endpoint_validity": 1.0,
+   "jaccard_R1": 0.5,
+   "jaccard_R2": 1.0,
+   "n": 2
+  },
+  "fields": [
+   {
+    "class": "different",
+    "field": "births.lexical",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "births.conceptual",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.formal",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.operational",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.governance",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.assumptions.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.assumptions.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.dependencies.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.dependencies.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.informal_meaning.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.informal_meaning.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.invariants.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.invariants.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.type_signature.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.type_signature.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "semantic_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "type_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "mathematical_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "primary_layer",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "semantic_status_rule",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "tier",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "secondary_roles",
+    "judgment": false
+   },
+   {
+    "class": "coarse",
+    "field": "dependency_edges",
+    "judgment": false
+   },
+   {
+    "class": "different",
+    "field": "timeline",
+    "judgment": false
+   },
+   {
+    "class": "different",
+    "field": "escalations",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26056#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26056#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26067#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26067#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:3419#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:3484#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:4236#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:4490#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:5225#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:11120#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:5894#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:5937#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.type_signature",
+    "judgment": true
+   }
+  ],
+  "residual_calibration": []
+ },
+ "Q": {
+  "adjacency": [
+   {
+    "arm": "EXTENDS",
+    "baseline": "EXTENDS",
+    "equal": true,
+    "pair": [
+     "S1623",
+     "S1627"
+    ]
+   },
+   {
+    "arm": "NARROWS",
+    "baseline": "EXTENDS",
+    "equal": false,
+    "pair": [
+     "S1627",
+     "S1629"
+    ]
+   },
+   {
+    "arm": "RESTATES",
+    "baseline": "RESTATES",
+    "equal": true,
+    "pair": [
+     "S1629",
+     "S1631"
+    ]
+   },
+   {
+    "arm": "EXTENDS",
+    "baseline": "EXTENDS",
+    "equal": true,
+    "pair": [
+     "S1631",
+     "S1633"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "cross_unit_undefined": [],
+  "edges": {
+   "endpoint_valid": 2,
+   "endpoint_validity": 1.0,
+   "jaccard_R1": 0.5,
+   "jaccard_R2": 1.0,
+   "n": 2
+  },
+  "fields": [
+   {
+    "class": "different",
+    "field": "births.lexical",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "births.conceptual",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.formal",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "births.operational",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.governance",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.assumptions.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.assumptions.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.dependencies.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.dependencies.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.informal_meaning.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.informal_meaning.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.invariants.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.invariants.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.type_signature.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.type_signature.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "semantic_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "type_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "mathematical_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "primary_layer",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "semantic_status_rule",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "tier",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "secondary_roles",
+    "judgment": false
+   },
+   {
+    "class": "coarse",
+    "field": "dependency_edges",
+    "judgment": false
+   },
+   {
+    "class": "different",
+    "field": "timeline",
+    "judgment": false
+   },
+   {
+    "class": "coarse",
+    "field": "escalations",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26056#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26056#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26067#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26067#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:3419#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:3484#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:4236#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:4490#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:5225#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:11120#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:5894#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:5937#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.type_signature",
+    "judgment": true
+   }
+  ],
+  "residual_calibration": []
+ },
+ "R": {
+  "adjacency": [
+   {
+    "arm": "EXTENDS",
+    "baseline": "EXTENDS",
+    "equal": true,
+    "pair": [
+     "S1623",
+     "S1627"
+    ]
+   },
+   {
+    "arm": "NARROWS",
+    "baseline": "EXTENDS",
+    "equal": false,
+    "pair": [
+     "S1627",
+     "S1629"
+    ]
+   },
+   {
+    "arm": "RESTATES",
+    "baseline": "RESTATES",
+    "equal": true,
+    "pair": [
+     "S1629",
+     "S1631"
+    ]
+   },
+   {
+    "arm": "EXTENDS",
+    "baseline": "EXTENDS",
+    "equal": true,
+    "pair": [
+     "S1631",
+     "S1633"
+    ]
+   }
+  ],
+  "conflicts": [],
+  "cross_unit_undefined": [],
+  "edges": {
+   "endpoint_valid": 2,
+   "endpoint_validity": 1.0,
+   "jaccard_R1": 0.5,
+   "jaccard_R2": 1.0,
+   "n": 2
+  },
+  "fields": [
+   {
+    "class": "different",
+    "field": "births.lexical",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "births.conceptual",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.formal",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "births.operational",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "births.governance",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.assumptions.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.assumptions.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.dependencies.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.dependencies.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.informal_meaning.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.informal_meaning.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.invariants.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.invariants.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "absences.type_signature.resolution",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "absences.type_signature.supplied_by",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "semantic_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "type_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "mathematical_status",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "primary_layer",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "semantic_status_rule",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "tier",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "secondary_roles",
+    "judgment": false
+   },
+   {
+    "class": "coarse",
+    "field": "dependency_edges",
+    "judgment": false
+   },
+   {
+    "class": "different",
+    "field": "timeline",
+    "judgment": false
+   },
+   {
+    "class": "different",
+    "field": "escalations",
+    "judgment": false
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26056#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26056#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26056#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26067#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1618.raw:26067#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1618.raw:26067#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.ledger:\"A component is removable only if there exists a reconstruction function r_i: K^-i -> K such that all required semantics are preserved. For every valid operation T, we require a commuting condition: r_i o T^-i = T o r_i. ... This is the formal version of the state-sufficiency criterion already develo\"#3.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:13#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:2#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:22283#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1620.raw:850#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1621.raw:94#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.ledger:\"Step 254 (independent, contamination-checked) contributes: F o That = T o F. A representation F is adequate for a transformation set iff it commutes with those transformations -- a homomorphism condition. This is strictly stronger than my removal tests, which only show that no component can be delet\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:3419#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3419#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:3484#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:3484#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:4236#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4236#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:4490#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:4490#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1627.raw:5225#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1627.raw:5225#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1629.ledger:\"If k enters the system with Prov(k)=p0, then History(T_0)=empty while Prov(k)=p0. Thus the earlier counterexample survives.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1631.raw:289#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:10758#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:2380#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1632.raw:482#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1637.ledger:\"Transformation | F\\u2218T\\u0302=T\\u2218F (254); Action \\u2209 K (253) | \\ud835\\udd42\\u00d7Op\\u00d7Policy\\u00d7Authority \\u21c0 \\ud835\\udd42\\u00d7Outcome | ABSENT \\u2014 editing is by hand | MATHEMATICALLY VERIFIED; NOT engineeringally\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.ledger:\"The model is executable, so removal is testable. The phrase MINIMAL KERNEL is therefore earned \\u2014 but only in the sense step 254 names: Minimality(K | \\ud835\\udcaf), relative to the transformation set. Not ontological necessity. A richer \\ud835\\udcaf could force more.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1641.raw:6351#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.ledger:\"G-7 | retract breaks F\\u2218T\\u0302 = T\\u2218F | either exclude retract or add tombstones | step 254's own adequacy criterion fails on one operation ... adopt append-only (matches ReplayAssertion's immutability invariant) ... OPEN \\u2014 recommend append-only\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1647.raw:4000#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.ledger:\"7 NECESSARY in K (id, P, e, c, t, \\u03a0, \\u211b) \\u00b7 2 NECESSARY-EXTERNAL (Policy, Authority) \\u00b7 1 DERIVED (\\u03a3 \\u2014 derivation exhibited, not merely asserted) \\u00b7 1 EXTERNAL (History). MINIMALITY PROVEN relative to the transformation set \\ud835\\udcaf ... NOT proven ontologically, and three capabilities have no representation in\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1667.raw:10672#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1673.raw:10736#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1685.raw:2431#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.ledger:\"Every one of the eleven candidates is load-bearing for K: removing any of them destroys it. ... Entity is the most load-bearing (removal leaves 6 of 26 nodes) ... Relation/RelationType are the least (18/17 survive) -- they matter only from K upward.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:11120#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:11120#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:5894#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5894#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "different",
+    "field": "stage2_dispositions.S1691.raw:5937#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1691.raw:5937#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1721.raw:3454#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1723.raw:1345#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.ledger:\"G-01 as stated in the first-order pass is wrong in its premise and wrong in its inference.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1760.raw:1005#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1767.raw:9266#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94635#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1890.raw:94646#0.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S1993.raw:40337#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.ledger:\"Whether \\u03a0 belongs in semantic equality is an OPEN corpus decision. CORPUS \\u2014 Step 254 Decision 3: 'Is governance/authority part of semantic equality? Should K1=K2 require the same Authority/Policy/Governance, or only the same epistemic content?' \\u2014 explicitly undecided. So D285-5's =_semantic \\u2014 which discards \\u03a0 \\u2014 silently resolved an open corpus decision. The relation is named in the corpus; the projection I used is not, and the choice it embodies is Decision 3, which the corpus leaves open. B's suspicion was correct and understated.\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2082.raw:3362#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.ledger:\"**Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:1094#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2094.raw:6094#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.ledger:\"**2** | \\u26a0\\ufe0f **`=_semantic` is a research construct, not a corpus primitive.** ... **whether `\\u03a0` is inside it is Step 254 Decision 3 \\u2014 explicitly OPEN.** The projection used here (discard `id`, `e`, `\\u03a0`) **silently resolved that open decision**\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2098.raw:4313#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2106.raw:361#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.ledger:\"| **2** | enumerate `\\ud835\\udcd8`, the invariant universe **over `K_t`** | **D** derivation | act 1 | | **3** | resolve identity + equality | **D**, then **G** | Step 254 Decision 3 | | **4** | determine and **ratify `\\ud835\\udcaa_core`** against the ratified `K_t` | **D + G** | acts 1, 2 | | **5** | resolve rejection semantics \\u2014 **`Reject \\u2194 I-12 \\u2194 Article 8`** | **G** | independent | | **6** | derive `\\u03b4` \\u2014 signature, pre/postconditions, partiality, composition | **D** | acts 3, 4, 5 |\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2116.raw:2442#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2122.raw:7380#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2131.ledger:\"**`I-C` is the most dependency-loaded:** it is substantive under `\\u2261`-with-`\\u03a0`-excluded and **vacuous** under `\\u2245_\\u03bb`. **Decision 3 does not merely refine it \\u2014 it decides whether it says anything.**\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.ledger:\"`CORPUS` \\u2014 **Step 254 Decision 3, verbatim OPEN:** *\\\"Is governance/authority part of semantic equality? Should `K\\u2081 = K\\u2082` require the same Authority/Policy/Governance, or only the same epistemic content?\\\"*\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:25077#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2132.raw:6027#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2136.ledger:\"DECISION 3 \\u2014 Pi in equiv ? ... Analyze BOTH branches ... Do NOT recommend either branch. ... Do NOT call either branch \\\"the architecture\\\".\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:11714#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2338.raw:9528#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.ledger:\"The break moves DOWN one link -- from canonical concepts to formal definitions, and inside that link to a SINGLE construct: Qualify. ... Surviving blockers: 1 Qualify ... 2 Pi in equiv? ... 3 K-CANONICAL-DECISION ... 4 OQ-2/DECISION-02 ... 5 Reject<->I-12<->Article 8 ... 6 O_core not frozen ... 7 de\"#6.type_signature",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.assumptions",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.dependencies",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.informal_meaning",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.invariants",
+    "judgment": true
+   },
+   {
+    "class": "exact",
+    "field": "stage2_dispositions.S2784.raw:15294#6.type_signature",
+    "judgment": true
+   }
+  ],
+  "residual_calibration": []
+ }
+}

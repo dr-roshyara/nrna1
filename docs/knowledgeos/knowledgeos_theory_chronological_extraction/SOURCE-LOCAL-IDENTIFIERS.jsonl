@@ -1,0 +1,317 @@
+{"label":"C-1","classification":"AMBIGUOUS_IDENTIFIER","distinct_concepts":4,"occurrences":[{"file":"F0002","meaning":"model amnesia — a defect, n=11","scope":"the validation matrix's concept register"},{"file":"F0006","meaning":"model amnesia — same concept as F0002","scope":"Package 10's requirement candidate"},{"file":"F0003","meaning":"Product Primacy — a CANONICAL concern","scope":"the synthesis matrix's canonical register"},{"file":"F0010","meaning":"the first of three accepted corrections ('there is no strategic-DDD method — REFUTED')","scope":"§0's corrections register"}],"identity_verdict":"F0002 and F0006 are THE SAME concept (agree on meaning, type, scope, defining property, dependencies, role — all six §19A criteria). F0003 and F0010 are each DIFFERENT concepts sharing only the lexeme.","protocol_id_minted":null,"protocol_id_minted_reason":"NONE. Per §4A rule 2, a corpus identifier is quoted, never minted. 'C-1' appears only inside historical_names[] on T-0012 (the model-amnesia object) and inside source_terms elsewhere.","collision_detected_by":"this reconstruction; no source file notices it","notes":"THE decisive test case. Lexical merge would have produced one object conflating a defect, a canonical governance concern, and a correction ID."}
+{"label":"I-1","classification":"AMBIGUOUS_IDENTIFIER","distinct_concepts":3,"occurrences":[{"file":"F0002","meaning":"Knowledge != Artifact","scope":"concept register"},{"file":"F0009","meaning":"'the strategic model the commission asks for already exists' — an INTERPRETATION with confidence High","scope":"§4 interpretations register"},{"file":"F0003","meaning":"referenced as 'I-1 split' re: Knowledge Asset","scope":"a rejected-claim citation"}],"identity_verdict":"F0002 and F0003 plausibly co-refer (both about the Knowledge/Artifact split); F0009's I-1 is unrelated. NOT merged — F0002/F0003 co-reference is PLAUSIBLE, not established, and §19A requires agreement on all six criteria.","protocol_id_minted":null,"collision_detected_by":"this reconstruction","notes":"A harder case than C-1: two of three MIGHT be the same. Recorded as UNCERTAIN rather than merged or split."}
+{"label":"R-n","classification":"AMBIGUOUS_IDENTIFIER","distinct_concepts":3,"occurrences":[{"file":"F0003","meaning":"R-1..R-12 = REJECTED claims","scope":"§5 rejected register"},{"file":"F0003","meaning":"R-1..R-77 = the enacted platform RULINGS log","scope":"C-10, the SAME FILE"},{"file":"F0010","meaning":"R-A/R-B/R-C = the three bootstrap responsibilities","scope":"§0 C-3"}],"identity_verdict":"Three unrelated registers. Note the first two collide WITHIN A SINGLE FILE — F0003 uses 'R-1' for a rejected claim in §5 and cites 'R-1..R-77' as rulings in §1.","protocol_id_minted":"R-0001..R-0010 (protocol Relationship IDs)","protocol_id_minted_reason":"Zero-padded 4-digit form per §4A rule 1 distinguishes them from all three corpus senses.","collision_detected_by":"this reconstruction","notes":"Strongest evidence for §4A's padding convention: the corpus itself overloads R-n twice in one document."}
+{"label":"F-1 / F-2 / F-3","classification":"SOURCE_LOCAL_IDENTIFIER","distinct_concepts":1,"occurrences":[{"file":"F0008","meaning":"the three load-bearing FAILURES of the MVK bootstrap","scope":"§5"}],"identity_verdict":"Single consistent meaning; also referenced by F0010 and F0005 with the same sense.","protocol_id_minted":null,"protocol_id_minted_reason":"Direct collision with the protocol's F#### File namespace. Preserved verbatim as source_terms; never rewritten.","collision_detected_by":"this reconstruction","notes":"The most dangerous collision in the set: 'F-3' and 'F0003' are one character apart and mean entirely unrelated things (a bootstrap failure vs the Synthesis Matrix file). Padding is what separates them."}
+{"label":"AR-1","classification":"SOURCE_LOCAL_IDENTIFIER","distinct_concepts":1,"occurrences":[{"file":"F0008","meaning":"an architectural RISK — 'extracting a platform that cannot bootstrap' — rated HIGH, later REALIZED","scope":"the Product Boundary Discovery's risk register"}],"identity_verdict":"Single meaning.","protocol_id_minted":null,"protocol_id_minted_reason":"Collides with the protocol's AR-### Architecture Object namespace (§0C). No AR-### was minted in this pilot anyway (no Reference Architecture), so the collision is latent rather than active — but it would fire on the first architecture object created.","collision_detected_by":"this reconstruction","notes":"Latent collision. Worth noting that a RISK and an ARCHITECTURE OBJECT are semantically adjacent enough to be confusable by a reader, not just by a parser."}
+{"label":"T1-T5","classification":"SOURCE_LOCAL_IDENTIFIER","distinct_concepts":1,"occurrences":[{"file":"F0001","meaning":"the five product-architecture TIERS (KnowledgeOS / Services / Product PKS / Business Product / Running Software)","scope":"§2"}],"identity_verdict":"Single meaning.","protocol_id_minted":null,"protocol_id_minted_reason":"Collides with the protocol's T-### Theory Object namespace. Note the corpus form is unhyphenated ('T1'), the protocol form hyphenated and padded ('T-0001') — two discriminators, not one.","collision_detected_by":"this reconstruction","notes":"These tiers ARE the clearest Historical Architecture content in the batch (see ARCHITECTURE-OBJECTS.jsonl HA-0001..HA-0005)."}
+{"label":"P1-P5","classification":"SOURCE_LOCAL_IDENTIFIER","distinct_concepts":1,"occurrences":[{"file":"F0001","meaning":"the five candidate PRINCIPLES","scope":"§4"}],"identity_verdict":"Single meaning, and UNIQUELY SELF-AWARE: F0001 explicitly declares 'P1–P5 are DOCUMENT-LOCAL LABELS, not minted identifiers', having run CAP-001 which returned INCONCLUSIVE.","protocol_id_minted":null,"protocol_id_minted_reason":"The source itself forbids treating these as global identifiers.","collision_detected_by":"THE SOURCE ITSELF","notes":"The corpus performed the protocol's source-local-vs-global distinction on its own, before the protocol existed. Direct external corroboration that §4A's concern is real."}
+{"label":"G-1..G-10","classification":"SOURCE_LOCAL_IDENTIFIER","distinct_concepts":1,"occurrences":[{"file":"F0001","meaning":"EVIDENCE GAPS","scope":"§7"}],"identity_verdict":"Single meaning.","protocol_id_minted":"G-0001..G-0005 (protocol Gap IDs)","protocol_id_minted_reason":"Semantically ADJACENT to the protocol's Gap namespace, which makes it more dangerous, not less — a reader could plausibly believe G-1 and G-0001 are the same register. Padding + an explicit note in each record.","collision_detected_by":"this reconstruction","notes":"F0001's G-6 is 'CAP-001 evidence: 1 row' — an evidence gap. The protocol's G-0001 is a missing derivation. Adjacent concepts, different registers."}
+{"label":"D-1..D-10","classification":"SOURCE_LOCAL_IDENTIFIER","distinct_concepts":2,"occurrences":[{"file":"F0006","meaning":"ARB DECISION packages","scope":"the docket"},{"file":"F0002","meaning":"'D = Discovery' — a source-ROLE code in the matrix's Role column","scope":"§1 legend"}],"identity_verdict":"Two different registers; F0002's is a single-letter role code rather than a numbered series, so the collision is partial.","protocol_id_minted":null,"protocol_id_minted_reason":"Collides with the protocol's D-### Definition namespace. No D-### minted in this pilot.","collision_detected_by":"this reconstruction","notes":null}
+{"label":"S0007..S0041","classification":"EXTERNAL_IDENTIFIER","distinct_concepts":1,"occurrences":[{"file":"P3A 02-FILES.jsonl","meaning":"P3A's own source IDs for these same files","scope":"the frozen P3A baseline"}],"identity_verdict":"A complete, consistent, parallel identity system for the same 10 files.","protocol_id_minted":null,"protocol_id_minted_reason":"Carried as a cross-reference field (p3a_source_id) in FILE-REGISTRY. Not promoted, not suppressed.","collision_detected_by":"this reconstruction","notes":"§2 forbids the S-number as a reconstruction UNIT; it does not forbid using it as a JOIN KEY, which is what it is good for. See PILOT-F15."}
+{"series":"D-","distinct_meanings":4,"severity":"CRITICAL","instances":[{"file":"F0020","range":"D-1..D-7","means":"candidate knowledge DOMAINS (Engineering Governance, Method, Runtime, Workflow, Capability, Evidence, PKS)"},{"file":"F0024","range":"D-1..D-7","means":"THE SAME domains - identity confirmed, this pair is consistent"},{"file":"F0006","range":"D-1..D-10","means":"DECISION PACKAGES - unrelated"},{"file":"F0013","range":"D-I..D-VI","means":"DIMENSIONS - roman numerals, a deliberate disambiguation"},{"file":"F0015","range":"D-1..D-5","means":"DIVERGENCES found by an independent review - unrelated"}],"collision_note":"F0020's D-1 (Engineering Governance) and F0015's D-1 (the 0-traversals falsification) are the SAME STRING meaning entirely different things, in two files carrying the SAME DATE. A naive cross-file identifier join would fuse them.","protocol_consequence":"§4A's namespacing and §19A's six-criteria identity test are both load-bearing here. Corroborates T-0021 from the reconstruction side.","disambiguation_observed":"F0013's use of roman numerals (D-I..D-VI) is the corpus DISAMBIGUATING ITSELF - evidence that the collision was felt by the authors."}
+{"series":"R-","distinct_meanings":3,"severity":"CRITICAL","instances":[{"file":"F0020","range":"R-1..R-8","means":"architectural RECOMMENDATIONS"},{"file":"F0016 / F0017","range":"R-2, R-5, R-7, R-8","means":"validated RELATIONSHIP EDGES in a validation matrix"},{"file":"F0015","range":"R-36, R-41, R-63","means":"traversal/round RECORDS used as falsification evidence"}],"collision_note":"F0020's R-2 ('put the Baseline collision to the ARB') and F0016's R-2 ('policy defined != enforced') are the same string in files two days apart.","protocol_consequence":"HIGHEST. This collides with the RECONSTRUCTION'S OWN verified-edge series R-####. §4A's zero-padding convention (R-0001 vs R-2) is the only thing keeping them apart, and it was adopted BEFORE this collision was observed - a safeguard vindicated by later evidence."}
+{"series":"P-","distinct_meanings":3,"severity":"HIGH","instances":[{"file":"F0018","range":"P-1..P-10","means":"progression MECHANISMS"},{"file":"F0001","range":"P1, P2","means":"candidate PRINCIPLES (Method/Binding/Evidence; the portability ladder)"},{"file":"F0016 / F0017","range":"P4","means":"the P4 LIFECYCLE, an internal decomposition with no external equivalent"}],"collision_note":"F0018's P-4 means 'methodology maturity'; F0016's P4 means the P4 lifecycle. Hyphen presence is the ONLY orthographic difference, and it is not reliable."}
+{"series":"K-","distinct_meanings":2,"severity":"MEDIUM","instances":[{"file":"F0019","range":"K-01..K-30","means":"knowledge ASSET FAMILIES"},{"file":"F0003 / F0004","range":"K- buckets","means":"synthesis-matrix buckets"}],"collision_note":"F0019's K-19 (the RQ-002 Meta-Model) is heavily cited; a join against F0003's K- series would be wrong."}
+{"series":"G-","distinct_meanings":3,"severity":"MEDIUM","instances":[{"file":"F0014","range":"G-1..G-5","means":"lifecycle GAPS"},{"file":"F0001 / F0011","range":"G-1","means":"the GENESIS gap"},{"file":"F0012","range":"G-C1","means":"a consolidation gap"}],"collision_note":"Also collides with the reconstruction's own G-#### gap series; padding again separates them."}
+{"series":"M-","distinct_meanings":2,"severity":"LOW","instances":[{"file":"F0019","range":"M-1..M-9","means":"MISSING KNOWLEDGE items, four of them retracted"},{"file":"reconstruction","range":"M-####","means":"MERGES (§41 artifact, not created - no merges found)"}]}
+{"series":"I-","distinct_meanings":3,"severity":"MEDIUM","instances":[{"file":"F0013","range":"I-1","means":"'Knowledge != Artifact'"},{"file":"F0002","range":"I-1","means":"identity discipline - PARTIAL MATCH with F0013's I-1"},{"file":"F0016","range":"I-1, I-8","means":"I-8 = 'governance precedes automation'"},{"file":"F0020","range":"I-6","means":"'the runtime is an ADAPTER that never owns knowledge'"},{"file":"F0014","range":"I-4","means":"the ATTESTS/PROJECTION claim, falsification WITHDRAWN"}],"identity_note":"F0013's I-1 and F0002's I-1 were UNCERTAIN in batch 001; F0013's reading ('Knowledge != Artifact') is consistent with F0002's identity discipline but does not establish identity under §19A. Left UNCERTAIN - a deliberate negative result."}
+{"series":"UNIQUE_SERIES_NO_COLLISION","distinct_meanings":1,"severity":"NONE","instances":[{"file":"F0018","range":"PM-1..PM-5","means":"progression-model open questions"},{"file":"F0014","range":"LG-1..LG-6","means":"lifecycle-gap open questions"},{"file":"F0016","range":"U-GR-1..U-GR-3","means":"governed-retrieval unknowns"},{"file":"F0020","range":"PD-3","means":"the Engineering Knowledge Platform domain"},{"file":"multiple","range":"H-CAT-1, GEP-F1, BRM-1, SD-1, MC-01..08, PGP-01..05, CAP-001, ES-001..006","means":"externally-owned governed identifiers"}],"note":"Recorded as a POSITIVE finding: the corpus mints unique prefixes when a series is new to a document, and reuses bare letters when continuing a local convention. The collisions are concentrated in single-letter series."}
+{"file_id": "F0032(canonical)", "local_id": "U-1", "kind": "UNTESTED_ASSUMPTION", "text": "generates→PKS — the distinctive bet (n=0 inside and outside)", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-2", "kind": "UNTESTED_ASSUMPTION", "text": "pattern extraction — EPC machinery never armed", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-3", "kind": "UNTESTED_ASSUMPTION", "text": "retirement — never observed in any register", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-4", "kind": "UNTESTED_ASSUMPTION", "text": "the formal back-edge — informal n≈3, formal n=0", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-5", "kind": "UNTESTED_ASSUMPTION", "text": "attestation — DERIVED→REVIEWED→ATTESTED→RELEASED never walked", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-6", "kind": "UNTESTED_ASSUMPTION", "text": "the frozen BC map — never consulted by any decision", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-7", "kind": "UNTESTED_ASSUMPTION", "text": "DOMAIN classification — never changed a recorded decision", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-8", "kind": "UNTESTED_ASSUMPTION", "text": "PURPOSE — unratified therefore unexercisable", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-9", "kind": "UNTESTED_ASSUMPTION", "text": "the Decision Model consulted as a whole — never observed end-to-end", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-10", "kind": "UNTESTED_ASSUMPTION", "text": "the verdict-vocabulary collision (ES-003.1 vs CAP-001 §5) — never forced in practice", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "U-11", "kind": "UNTESTED_ASSUMPTION", "text": "multi-product anything — the gate everything waits behind", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "U-n is file-local; no corpus-wide U- series is asserted"}
+{"file_id": "F0032(canonical)", "local_id": "C1..C6", "kind": "CLAIM_SERIES", "text": "six claim components of the strategic verdict", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0032(canonical)", "local_id": "R-75", "kind": "CITED_RULING", "text": "the prohibition sequence that blocked WP-4B", "scope": "CORPUS_WIDE", "⚠️ note": "cited, not defined here"}
+{"file_id": "F0026", "local_id": "R-1", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Capability protects exactly ONE invariant", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-2", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Policy defined SEPARATELY from enforced", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-3", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Knowledge represented-by Artifact", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-4", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Space generates Projection, attested authoritative", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-5", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Evidence harvested->Candidate granted->Promotion", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-6", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "⭐ KnowledgeOS creates PKS — THE unique edge", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-7", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Capability runtime-faced-by Execution Asset -> Runtime Adapter", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-8", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Product binds Platform", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-9", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Knowledge Space declared boundary; spaces NEST", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "R-10", "kind": "ARCHITECTURAL_RELATIONSHIP", "text": "Mission enacted-by machinery", "scope": "LOCAL_TO_FILE", "⚠️ collision_check": "⛔ R-n here are EDGES of the platform graph. The corpus ALSO uses R-nn for RULINGS (e.g. R-75, R-46). Same token shape, different referent — recorded, not resolved."}
+{"file_id": "F0026", "local_id": "[FETCHED]/[CANONICAL]", "kind": "PROVENANCE_MARKER", "text": "web-read this session vs established literature, core thesis only", "scope": "ADOPTED_AS_STANDING"}
+{"file_id": "F0027", "local_id": "C-1", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-2", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-3", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-4", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-5", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-6", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-7", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-8", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-9", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-10", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-11", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-12", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "C-13", "kind": "CONCEPT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "I-1", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-2", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-3", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-4", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "UNDERSPECIFIED"}
+{"file_id": "F0027", "local_id": "I-5", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-6", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-7", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "BREACHED"}
+{"file_id": "F0027", "local_id": "I-8", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-9", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-10", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "unqualified"}
+{"file_id": "F0027", "local_id": "I-11", "kind": "INVARIANT", "scope": "LOCAL_TO_FILE", "⚠️ status": "RESTATED"}
+{"file_id": "F0027", "local_id": "H-1", "kind": "HYPOTHESIS_NOT_ADMITTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "H-2", "kind": "HYPOTHESIS_NOT_ADMITTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "H-3", "kind": "HYPOTHESIS_NOT_ADMITTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "H-4", "kind": "HYPOTHESIS_NOT_ADMITTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0027", "local_id": "RO-1", "kind": "OPEN_QUESTION", "scope": "LOCAL_TO_FILE", "⛔ collision_check": "⚠️ RO-n here are the FILE's open questions. This reconstruction ALSO uses RO-nnnn for research obligations. Same prefix, different series — recorded, not resolved."}
+{"file_id": "F0027", "local_id": "RO-2", "kind": "OPEN_QUESTION", "scope": "LOCAL_TO_FILE", "⛔ collision_check": "⚠️ RO-n here are the FILE's open questions. This reconstruction ALSO uses RO-nnnn for research obligations. Same prefix, different series — recorded, not resolved."}
+{"file_id": "F0027", "local_id": "RO-3", "kind": "OPEN_QUESTION", "scope": "LOCAL_TO_FILE", "⛔ collision_check": "⚠️ RO-n here are the FILE's open questions. This reconstruction ALSO uses RO-nnnn for research obligations. Same prefix, different series — recorded, not resolved."}
+{"file_id": "F0027", "local_id": "RO-4", "kind": "OPEN_QUESTION", "scope": "LOCAL_TO_FILE", "⛔ collision_check": "⚠️ RO-n here are the FILE's open questions. This reconstruction ALSO uses RO-nnnn for research obligations. Same prefix, different series — recorded, not resolved."}
+{"file_id": "F0001", "local_id": "P1", "kind": "PRINCIPLE", "scope": "⭐ EXPLICITLY DOCUMENT-LOCAL", "note": "the file states 'P1–P5 are DOCUMENT-LOCAL LABELS, not minted identifiers'; CAP-001 returned INCONCLUSIVE and nothing was minted"}
+{"file_id": "F0001", "local_id": "P2", "kind": "PRINCIPLE", "scope": "⭐ EXPLICITLY DOCUMENT-LOCAL", "note": "the file states 'P1–P5 are DOCUMENT-LOCAL LABELS, not minted identifiers'; CAP-001 returned INCONCLUSIVE and nothing was minted"}
+{"file_id": "F0001", "local_id": "P3", "kind": "PRINCIPLE", "scope": "⭐ EXPLICITLY DOCUMENT-LOCAL", "note": "the file states 'P1–P5 are DOCUMENT-LOCAL LABELS, not minted identifiers'; CAP-001 returned INCONCLUSIVE and nothing was minted"}
+{"file_id": "F0001", "local_id": "P4", "kind": "PRINCIPLE", "scope": "⭐ EXPLICITLY DOCUMENT-LOCAL", "note": "the file states 'P1–P5 are DOCUMENT-LOCAL LABELS, not minted identifiers'; CAP-001 returned INCONCLUSIVE and nothing was minted"}
+{"file_id": "F0001", "local_id": "P5", "kind": "PRINCIPLE", "scope": "⭐ EXPLICITLY DOCUMENT-LOCAL", "note": "the file states 'P1–P5 are DOCUMENT-LOCAL LABELS, not minted identifiers'; CAP-001 returned INCONCLUSIVE and nothing was minted"}
+{"file_id": "F0001", "local_id": "T1", "kind": "TIER", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "T2", "kind": "TIER", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "T3", "kind": "TIER", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "T4", "kind": "TIER", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "T5", "kind": "TIER", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "L-1", "kind": "LIFECYCLE_TRANSITION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "L-2", "kind": "LIFECYCLE_TRANSITION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "L-3", "kind": "LIFECYCLE_TRANSITION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "L-4", "kind": "LIFECYCLE_TRANSITION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "L-5", "kind": "LIFECYCLE_TRANSITION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "L-6", "kind": "LIFECYCLE_TRANSITION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-1", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-2", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-3", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-4", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "⛔ G-4 here = 'No second runtime adapter'. A different 'G-4' is invoked in F0014. Referred to B-12; not resolved."}
+{"file_id": "F0001", "local_id": "G-5", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-6", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-7", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-8", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-9", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "G-10", "kind": "EVIDENCE_GAP", "scope": "⛔ LOCAL — BUT COLLIDES", "note": "LOCAL_TO_FILE"}
+{"file_id": "F0001", "local_id": "OQ-S1", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-S2", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-S3", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-S4", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-S5", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-K1", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-K2", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-K3", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-K4", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-K5", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-K6", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-C1", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0001", "local_id": "OQ-C2", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0010", "local_id": "C-1", "kind": "CORRECTION_ACCEPTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0010", "local_id": "C-2", "kind": "CORRECTION_ACCEPTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0010", "local_id": "C-3", "kind": "CORRECTION_ACCEPTED", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0010", "local_id": "R-A", "kind": "RESPONSIBILITY", "scope": "CROSS_FILE", "note": "⭐ restated in F0001 §P3"}
+{"file_id": "F0010", "local_id": "R-B", "kind": "RESPONSIBILITY", "scope": "CROSS_FILE", "note": "⭐ restated in F0001 §P3"}
+{"file_id": "F0010", "local_id": "R-C", "kind": "RESPONSIBILITY", "scope": "CROSS_FILE", "note": "⭐ restated in F0001 §P3"}
+{"file_id": "F0010", "local_id": "OQ-S1", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE", "note": "⭐ ORIGINATES HERE; F0001 carries it forward"}
+{"file_id": "F0010", "local_id": "OQ-S2", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE", "note": "⭐ ORIGINATES HERE; F0001 carries it forward"}
+{"file_id": "F0010", "local_id": "OQ-S3", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE", "note": "⭐ ORIGINATES HERE; F0001 carries it forward"}
+{"file_id": "F0010", "local_id": "OQ-S4", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE", "note": "⭐ ORIGINATES HERE; F0001 carries it forward"}
+{"file_id": "F0010", "local_id": "OQ-S5", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE", "note": "⭐ ORIGINATES HERE; F0001 carries it forward"}
+{"file_id": "F0010", "local_id": "F-3", "kind": "⛔ WITHDRAWN_FINDING", "scope": "CROSS_FILE", "note": "⛔ 'there is no strategic-DDD method' — REFUTED by its own author in this file"}
+{"file_id": "F0010", "local_id": "H-CAT-1", "kind": "EXTERNAL_REFUSAL", "scope": "CROSS_FILE"}
+{"file_id": "F0010", "local_id": "SD-1", "kind": "EXTERNAL_PRINCIPLE", "scope": "CROSS_FILE", "note": "⭐ the identified blocker"}
+{"file_id": "F0002", "local_id": "X-1", "kind": "EXTERNAL_CHALLENGE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0002", "local_id": "X-2", "kind": "EXTERNAL_CHALLENGE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0002", "local_id": "X-3", "kind": "EXTERNAL_CHALLENGE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0002", "local_id": "X-4", "kind": "EXTERNAL_CHALLENGE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0002", "local_id": "X-5", "kind": "EXTERNAL_CHALLENGE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0002", "local_id": "[FETCHED]", "kind": "PROVENANCE_GRADE", "scope": "⭐ CROSS_FILE — reused by F0026"}
+{"file_id": "F0002", "local_id": "[CANONICAL]", "kind": "PROVENANCE_GRADE", "scope": "⭐ CROSS_FILE — reused by F0026"}
+{"file_id": "F0003", "local_id": "C-1", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-2", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-3", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-4", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-5", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-6", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-7", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-8", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-9", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-10", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-11", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "C-12", "kind": "CANONICAL_ITEM", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-1", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-2", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-3", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-4", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-5", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-6", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-7", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-8", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-9", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-10", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-11", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-12", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-13", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-14", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "K-15", "kind": "CANDIDATE", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-1", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-2", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-3", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-4", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-5", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-6", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-7", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-8", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "H-9", "kind": "HYPOTHESIS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0003", "local_id": "R-1", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-2", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-3", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-4", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-5", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-6", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-7", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-8", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-9", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-10", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-11", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0003", "local_id": "R-12", "kind": "⛔ REJECTED_CLAIM", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ R-n here are REJECTIONS. F0026 uses R-n for RELATIONSHIPS; the corpus uses R-nn for RULINGS. ⛔ Three series, same prefix — recorded, not resolved."}
+{"file_id": "F0005", "local_id": "ARCHITECTURAL", "kind": "GAP_KIND", "scope": "CROSS_FILE"}
+{"file_id": "F0005", "local_id": "GOVERNANCE", "kind": "GAP_KIND", "scope": "CROSS_FILE"}
+{"file_id": "F0005", "local_id": "EVIDENCE", "kind": "GAP_KIND", "scope": "CROSS_FILE"}
+{"file_id": "F0005", "local_id": "BOUNDARY", "kind": "ENFORCEMENT_TERM", "scope": "CROSS_FILE"}
+{"file_id": "F0005", "local_id": "TRIGGER", "kind": "ENFORCEMENT_TERM", "scope": "CROSS_FILE"}
+{"file_id": "F0005", "local_id": "ADVISORY", "kind": "ENFORCEMENT_TERM", "scope": "CROSS_FILE"}
+{"file_id": "F0005", "local_id": "E-1", "kind": "EVIDENCE_GAP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0005", "local_id": "E-2", "kind": "EVIDENCE_GAP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0005", "local_id": "E-3", "kind": "EVIDENCE_GAP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0006", "local_id": "D-1", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-2", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-3", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-4", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-5", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-6", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-7", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-8", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-9", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-10", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-9a", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0006", "local_id": "D-9b", "kind": "DOCKET_DECISION", "scope": "CROSS_FILE"}
+{"file_id": "F0009", "local_id": "O-1", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-2", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-3", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-4", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-5", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-6", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-7", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-8", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-9", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-10", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-11", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-12", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-13", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-14", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-15", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-16", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-17", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-18", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-19", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-20", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-21", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-22", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-23", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "O-24", "kind": "OBSERVATION", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0009", "local_id": "I-1", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-2", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-3", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-4", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-5", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-6", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-7", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-8", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-9", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-10", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-11", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "I-12", "kind": "INTERPRETATION_WITH_CONFIDENCE", "scope": "LOCAL_TO_FILE", "⛔ collision": "⚠️ I-n here are INTERPRETATIONS. F0027 uses I-n for INVARIANTS. ⛔ Recorded, not resolved."}
+{"file_id": "F0009", "local_id": "OQ-K1", "kind": "OPEN_QUESTION", "scope": "⭐ CROSS_FILE — originates here, carried into F0001"}
+{"file_id": "F0009", "local_id": "OQ-K2", "kind": "OPEN_QUESTION", "scope": "⭐ CROSS_FILE — originates here, carried into F0001"}
+{"file_id": "F0009", "local_id": "OQ-K3", "kind": "OPEN_QUESTION", "scope": "⭐ CROSS_FILE — originates here, carried into F0001"}
+{"file_id": "F0009", "local_id": "OQ-K4", "kind": "OPEN_QUESTION", "scope": "⭐ CROSS_FILE — originates here, carried into F0001"}
+{"file_id": "F0009", "local_id": "OQ-K5", "kind": "OPEN_QUESTION", "scope": "⭐ CROSS_FILE — originates here, carried into F0001"}
+{"file_id": "F0009", "local_id": "OQ-K6", "kind": "OPEN_QUESTION", "scope": "⭐ CROSS_FILE — originates here, carried into F0001"}
+{"file_id": "F0011", "local_id": "SP-1", "kind": "STRATEGIC_PRODUCT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "SP-2", "kind": "STRATEGIC_PRODUCT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "SP-3", "kind": "STRATEGIC_PRODUCT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "SP-4", "kind": "STRATEGIC_PRODUCT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "SP-5", "kind": "STRATEGIC_PRODUCT", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "PR-1", "kind": "CANDIDATE_RELATIONSHIP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "PR-2", "kind": "CANDIDATE_RELATIONSHIP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "PR-3", "kind": "CANDIDATE_RELATIONSHIP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "PR-4", "kind": "CANDIDATE_RELATIONSHIP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "PR-5", "kind": "CANDIDATE_RELATIONSHIP", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-1", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-2", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-3", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-4", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-5", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-6", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-7", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-8", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-9", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-10", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "X-11", "kind": "EXTRACTION_CLASS", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-1", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-2", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-3", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-4", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-5", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-6", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-7", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "AR-8", "kind": "ARCHITECTURAL_RISK", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-1", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-2", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-3", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "⭐ F0011 G-4 = 'no second adopting product'; F0001 G-4 = 'no second runtime adapter'. The series shifted by one when F0011's G-2 closed. ⛔ REFERRED TO B-12."}
+{"file_id": "F0011", "local_id": "G-4", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "⭐ F0011 G-4 = 'no second adopting product'; F0001 G-4 = 'no second runtime adapter'. The series shifted by one when F0011's G-2 closed. ⛔ REFERRED TO B-12."}
+{"file_id": "F0011", "local_id": "G-5", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "⭐ F0011 G-4 = 'no second adopting product'; F0001 G-4 = 'no second runtime adapter'. The series shifted by one when F0011's G-2 closed. ⛔ REFERRED TO B-12."}
+{"file_id": "F0011", "local_id": "G-6", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-7", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-8", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-9", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0011", "local_id": "G-10", "kind": "⛔ EVIDENCE_GAP", "scope": "⛔ LOCAL — AND DIVERGENT", "⛔ divergence": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-1", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-2", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-3", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-4", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-5", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-6", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-7", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-8", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-9", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-10", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-11", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-12", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-13", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-14", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-15", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "M-16", "kind": "MIGRATION_ROW", "scope": "LOCAL_TO_FILE"}
+{"file_id": "F0012", "local_id": "G-C1", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0012", "local_id": "G-C2", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0012", "local_id": "G-C3", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0012", "local_id": "G-C4", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0012", "local_id": "G-C5", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0012", "local_id": "G-C6", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0012", "local_id": "G-C7", "kind": "⚠️ EVIDENCE_GAP", "scope": "⛔ A THIRD G-PREFIX VARIANT — referred to B-12"}
+{"file_id": "F0013", "local_id": "D-I", "kind": "DIMENSION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "D-II", "kind": "DIMENSION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "D-III", "kind": "DIMENSION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "D-IV", "kind": "DIMENSION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "D-V", "kind": "DIMENSION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "D-VI", "kind": "DIMENSION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "MM-1", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "MM-2", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "MM-3", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}
+{"file_id": "F0013", "local_id": "MM-4", "kind": "OPEN_QUESTION", "scope": "CROSS_FILE"}

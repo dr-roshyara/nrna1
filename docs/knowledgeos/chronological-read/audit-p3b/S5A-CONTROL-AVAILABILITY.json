@@ -1,0 +1,352 @@
+{
+ "body": {
+  "artifact": "S5A-CONTROL-AVAILABILITY.json",
+  "generators": {
+   "G-NOTATION": {
+    "analysed": 87,
+    "by_arity": {
+     "2": {
+      "analysed": 78,
+      "nca": 0,
+      "nca_rate": 0.0
+     },
+     "3": {
+      "analysed": 9,
+      "nca": 0,
+      "nca_rate": 0.0
+     }
+    },
+    "control_reuse_all_analysed": {
+     "control_labels_also_candidate_labels": 111,
+     "control_labels_distinct": 111,
+     "control_sets_distinct": 149,
+     "control_sets_reused": 4,
+     "control_slots": 153,
+     "distinct_control_sets_per_label": {
+      "max": 10,
+      "mean": 2.847,
+      "median": 2
+     },
+     "max_matched_sets_per_control_set": 2
+    },
+    "control_reuse_test_family": {
+     "control_labels_also_candidate_labels": 91,
+     "control_labels_distinct": 102,
+     "control_sets_distinct": 98,
+     "control_sets_reused": 0,
+     "control_slots": 98,
+     "distinct_control_sets_per_label": {
+      "max": 5,
+      "mean": 1.922,
+      "median": 2.0
+     },
+     "max_matched_sets_per_control_set": 1
+    },
+    "full_list": 87,
+    "nca_rate": 0.0,
+    "no_control_available": 0,
+    "population": 126,
+    "r_s_distribution": {
+     "1": 21,
+     "2": 66
+    },
+    "relaxation_level_by_candidate": {
+     "0": 66,
+     "1": 11,
+     "2": 8,
+     "3": 1,
+     "4": 1
+    },
+    "relaxation_level_of_controls": {
+     "0": 117,
+     "1": 17,
+     "2": 15,
+     "3": 2,
+     "4": 2
+    },
+    "relaxation_levels_legend": {
+     "0": [],
+     "1": [
+      "degree"
+     ],
+     "2": [
+      "degree",
+      "span"
+     ],
+     "3": [
+      "degree",
+      "span",
+      "prov"
+     ],
+     "4": [
+      "degree",
+      "span",
+      "prov",
+      "pair"
+     ],
+     "5": [
+      "degree",
+      "span",
+      "prov",
+      "pair",
+      "row"
+     ]
+    },
+    "test_family_size": 57
+   },
+   "G-SHARED-GROUP": {
+    "analysed": 530,
+    "by_arity": {
+     "2": {
+      "analysed": 520,
+      "nca": 0,
+      "nca_rate": 0.0
+     },
+     "3": {
+      "analysed": 10,
+      "nca": 0,
+      "nca_rate": 0.0
+     }
+    },
+    "control_reuse_all_analysed": {
+     "control_labels_also_candidate_labels": 549,
+     "control_labels_distinct": 682,
+     "control_sets_distinct": 1018,
+     "control_sets_reused": 6,
+     "control_slots": 1024,
+     "distinct_control_sets_per_label": {
+      "max": 10,
+      "mean": 3.013,
+      "median": 3.0
+     },
+     "max_matched_sets_per_control_set": 2
+    },
+    "control_reuse_test_family": {
+     "control_labels_also_candidate_labels": 378,
+     "control_labels_distinct": 581,
+     "control_sets_distinct": 504,
+     "control_sets_reused": 1,
+     "control_slots": 505,
+     "distinct_control_sets_per_label": {
+      "max": 7,
+      "mean": 1.735,
+      "median": 1
+     },
+     "max_matched_sets_per_control_set": 2
+    },
+    "full_list": 530,
+    "nca_rate": 0.0,
+    "no_control_available": 0,
+    "population": 819,
+    "r_s_distribution": {
+     "1": 36,
+     "2": 494
+    },
+    "relaxation_level_by_candidate": {
+     "0": 514,
+     "1": 11,
+     "2": 5
+    },
+    "relaxation_level_of_controls": {
+     "0": 996,
+     "1": 18,
+     "2": 10
+    },
+    "relaxation_levels_legend": {
+     "0": [],
+     "1": [
+      "degree"
+     ],
+     "2": [
+      "degree",
+      "span"
+     ],
+     "3": [
+      "degree",
+      "span",
+      "prov"
+     ],
+     "4": [
+      "degree",
+      "span",
+      "prov",
+      "pair"
+     ],
+     "5": [
+      "degree",
+      "span",
+      "prov",
+      "pair",
+      "row"
+     ]
+    },
+    "test_family_size": 262
+   },
+   "G-TYPE-SIM": {
+    "analysed": 300,
+    "by_arity": {
+     "2": {
+      "analysed": 30,
+      "nca": 0,
+      "nca_rate": 0.0
+     },
+     "3": {
+      "analysed": 270,
+      "nca": 0,
+      "nca_rate": 0.0
+     }
+    },
+    "control_reuse_all_analysed": {
+     "control_labels_also_candidate_labels": 156,
+     "control_labels_distinct": 256,
+     "control_sets_distinct": 565,
+     "control_sets_reused": 1,
+     "control_slots": 566,
+     "distinct_control_sets_per_label": {
+      "max": 29,
+      "mean": 6.395,
+      "median": 5.0
+     },
+     "max_matched_sets_per_control_set": 2
+    },
+    "control_reuse_test_family": {
+     "control_labels_also_candidate_labels": 57,
+     "control_labels_distinct": 135,
+     "control_sets_distinct": 76,
+     "control_sets_reused": 0,
+     "control_slots": 76,
+     "distinct_control_sets_per_label": {
+      "max": 4,
+      "mean": 1.607,
+      "median": 1
+     },
+     "max_matched_sets_per_control_set": 1
+    },
+    "full_list": 37219,
+    "nca_rate": 0.0,
+    "no_control_available": 0,
+    "population": 265,
+    "r_s_distribution": {
+     "1": 34,
+     "2": 266
+    },
+    "relaxation_level_by_candidate": {
+     "0": 288,
+     "1": 7,
+     "2": 3,
+     "4": 2
+    },
+    "relaxation_level_of_controls": {
+     "0": 545,
+     "1": 12,
+     "2": 5,
+     "4": 4
+    },
+    "relaxation_levels_legend": {
+     "0": [],
+     "1": [
+      "degree"
+     ],
+     "2": [
+      "degree",
+      "span"
+     ],
+     "3": [
+      "degree",
+      "span",
+      "prov"
+     ],
+     "4": [
+      "degree",
+      "span",
+      "prov",
+      "pair"
+     ],
+     "5": [
+      "degree",
+      "span",
+      "prov",
+      "pair",
+      "row"
+     ]
+    },
+    "test_family_size": 41
+   }
+  },
+  "status": "PRE-S5 DESIGN EVIDENCE; not a tuning input"
+ },
+ "header": {
+  "artifact": "audit-p3b/S5A-CONTROL-AVAILABILITY.json",
+  "deliverable": "O-25",
+  "input_hashes": {
+   "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+   "03-CONTRIBUTIONS.jsonl": "4c192e8903b50a775964898b233ef2b24a9fffbd3c6e73906a34c4f88ed3c6f8",
+   "20-FAMILIES/_derived.json": "131a55ffd92794d462e24f1a1fc49c569b9abe5cd8641b45e0830ba66b60f059",
+   "31-RECONCILIATION-PAIRS.jsonl": "d8ec552766c6d4852e407d459f71f01a58e1561c25de27d116b1a6ab445a748d",
+   "P3B-DISCOVERY-SEARCH.jsonl": "3dc5a5a18f29ecc96f90524fc55002cebc7e1bbee68c6db3decd4f2509a52c2d",
+   "P3B-HOLDOUT-SEAL.json": "9b99169d30d57b2ecc1d331838652aa6b765ce722059b30095a03df077d589c0",
+   "P3B-S5-HUBS.jsonl": "e150d7a5ac3c405b6e2226d70323314d23a106bbb3442c0110dcc6ae4d366d91",
+   "P3B-SAMPLE-PLAN.jsonl": "0cc706f40b7f92eebbc75eb07bb34ef1eff3bcf3515371c35674244d355cee80",
+   "_batch_input_r2/bundle_index_discovery.jsonl": "00b5d51435f7f49bba35702171a1afa92469caabf5d6cefdaf1a2fda67a78b12"
+  },
+  "numpy_version": "2.5.0",
+  "output_sha256": "4b55017e5ac2e03b210792bece60534b2900a8b50ee138d580f1617e169e1fcf",
+  "parameters": {
+   "budget": 300,
+   "budget_seed_root": 20261001,
+   "control_parameters": {
+    "band_variables": [
+     "row",
+     "pair",
+     "prov",
+     "span",
+     "degree"
+    ],
+    "blind_seed_root": 20261008,
+    "control_seed_root": 20261009,
+    "never_relaxed": [
+     "arity",
+     "has_formal_rows (G-TYPE-SIM)"
+    ],
+    "r": 2,
+    "r_s_1_kept": true,
+    "relax_when": "pool empty (A.7)",
+    "relaxation_order": [
+     "degree",
+     "span",
+     "prov",
+     "pair",
+     "row"
+    ],
+    "sampler": {
+     "enum_limit": 5000,
+     "law": "uniform over the valid pool",
+     "max_tries": 4000
+    },
+    "set_band": "sorted multiset of member bands per variable (p3b_s5_common.set_band)",
+    "stream": "SeedSequence(20261009, spawn_key=(generator index, analysed-candidate index))"
+   },
+   "degree_cap": 10,
+   "generators": [
+    "G-SHARED-GROUP",
+    "G-NOTATION",
+    "G-TYPE-SIM"
+   ],
+   "type_table_sha256": "9786ef2cabb3d36d216b6c7a74dc2c0592ecad383dc023b583a1f3884816c8ff",
+   "type_table_version": "S5A-TYPE-SIM-TABLE-1"
+  },
+  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "protocol_sha256": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12",
+  "python_version": "3.13.2",
+  "run_timestamp_utc": "2026-09-25T00:57:57Z",
+  "script_committed_unmodified": true,
+  "script_name": "scripts/p3b_s5a_control_availability.py",
+  "script_version": "c13e4c87d33eaea10465d6d25d1d00a2df4df4c8",
+  "seed": {
+   "budget_root": 20261001,
+   "control_root": 20261009
+  }
+ }
+}

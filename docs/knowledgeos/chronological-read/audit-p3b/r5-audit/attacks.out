@@ -1,0 +1,53 @@
+BASE   | expected PASS | observed PASS | committed valid fixture
+B1     | expected FAIL | observed PASS  <-- FALSE PASS | SINGLE path, true R(L)=702,000 B > 600,000 B; declared sizes are never bound to content bytes
+B1b    | expected FAIL | observed PASS  <-- FALSE PASS | committed fixture: DECOMPOSED declared 1.0 MB, actual content 20 KB (should be SINGLE) - PASSES
+         (units by permuted order: [['S9511', 'S9513'], ['S9512', 'S9514']]  vs frozen-key units: [['S9511', 'S9512'], ['S9513', 'S9514']] )
+B2     | expected FAIL | observed PASS  <-- FALSE PASS | packing order not recomputed from the slice's source_meta (packing_key)
+B3     | expected FAIL | observed PASS  <-- FALSE PASS | plan_sha256 arbitrary / never checked
+C1     | expected FAIL | observed PASS  <-- FALSE PASS | timezone offset: synthesis 06:00Z < validation 10:00Z, lexicographic compare passes
+C2     | expected FAIL | observed PASS  <-- FALSE PASS | non-ISO strings ('2026-10-01' < 'later')
+C3     | expected FAIL | observed PASS  <-- FALSE PASS | unit reads (log utc 12:30Z) after units_validated (10:00Z) and synthesis (11:00Z)
+C4     | expected FAIL | observed PASS  <-- FALSE PASS | fractional seconds: '10:00:00.5Z' vs '10:00:00Z' ('.'<'Z' lexicographically)
+D1     | expected FAIL | observed PASS  <-- FALSE PASS | reading_state_violations tests only 'CHANGES-*'; NARROWS/CONTRADICTS/RETRACTS escape
+D1b    | expected FAIL | observed FAIL | control: same with CHANGES-DEFINITION
+         - R5 syn-decomp: timeline: change point on non-WHOLE-FILE source S9512
+         (run L03 read: ['S9503'] ; record claims WHOLE-FILE for S9502 and FOUND from it)
+D2     | expected FAIL | observed PASS  <-- FALSE PASS | WHOLE-FILE + FOUND backed by pages read in ANOTHER label's run (item 10 'label's own reading runs')
+D3     | expected FAIL | observed PASS  <-- FALSE PASS | extra / duplicated / foreign ack tokens (superset test)
+D4     | expected FAIL | observed PASS  <-- FALSE PASS | whole-content (non-byte-mode) read entry in a revision-5 run
+D5     | expected FAIL | observed PASS  <-- FALSE PASS | NOT-CONSUMED row source, no CONTRACT-DEVIATION escalation naming it
+E1     | expected FAIL | observed PASS  <-- FALSE PASS | synthesis read disguised under a unit run id, after synthesis dispatch
+E2     | expected FAIL | observed PASS  <-- FALSE PASS | reads under undeclared run ids L02U09 / L09
+E3     | expected FAIL | observed PASS  <-- FALSE PASS | synthesis read with --batch OB9599
+E4     | expected FAIL | observed PASS  <-- FALSE PASS | refused read attempt by synthesis (possible SEAL-BREACH-ATTEMPT)
+E5     | expected FAIL | observed FAIL | two labels declare the same single-context run id
+         - R5 run OB9501-R5-L01: NON-PERMITTED-EXPOSURE (1 file(s))
+F1     | expected FAIL | observed PASS  <-- FALSE PASS | S1 YES quote not checked against the file bytes (content is in hand)
+F2     | expected PASS* | observed PASS | blanket NOT-DETERMINABLE (no quote) always passes; not machine-decidable
+F3     | expected FAIL | observed PASS  <-- FALSE PASS | pair-id substring match anywhere in register/escalation text
+F4     | expected FAIL | observed PASS  <-- FALSE PASS | escalation reason LOAD (contract: OTHER) accepted (full verifier's G-05/HUB may catch LOAD on non-hub)
+H1     | S3 lint variants (empty list = lint PASS):
+         'S9511 through S9513'                  -> PASS (missed)
+         'S9511…S9513'                          -> PASS (missed)
+         'S9511 − S9513'                        -> PASS (missed)
+         'S9511‒S9513'                          -> PASS (missed)
+         'S9511-13'                             -> PASS (missed)
+         'S9511/S9513'                          -> PASS (missed)
+         'S9511 bis S9513'                      -> PASS (missed)
+         'S9511~S9513'                          -> PASS (missed)
+         'S9511 ― S9513'                        -> PASS (missed)
+         'S9511 until S9513'                    -> PASS (missed)
+         'S9511 – S9513'                        -> caught
+         'See the Register record 3'            -> PASS (missed)
+         'cf. register'                         -> PASS (missed)
+         'see research-register'                -> PASS (missed)
+         'OB9501-R5:OB9501#3'                   -> PASS (missed)
+         'OB9501 : 3'                           -> PASS (missed)
+H2     | expected FAIL | observed PASS  <-- FALSE PASS | EMPTY label: S-id range + class-less edge + timeline from another label's file
+H3     | expected FAIL | observed PASS  <-- FALSE PASS | layer-A pointer in an object lacking 'timeline' (full verifier SCHEMA/G-12 would catch)
+         unit records: {"OB9501-R5-L02U01": [{"source_id": "S9511", "reading_state": "WHOLE-FILE", "ack_tokens": ["ACK-e856a748e638"], "pair_evidence_checks": []}, {"source_id": "S9512", "reading_state": "WHOLE-FILE", "ack_ ...
+J1     | expected FAIL | observed PASS  <-- FALSE PASS | synthesis claims with no record-level provenance (DECOMPOSED)
+D5b    | expected FAIL | observed PASS  <-- FALSE PASS | unread required row source, object silent (no CONTRACT-DEVIATION escalation)
+E6     | expected FAIL | observed PASS  <-- FALSE PASS | two labels share one single-context run id (one agent, two labels)
+
+SUMMARY: 29 attacks, 25 false PASS: ['B1', 'B1b', 'B2', 'B3', 'C1', 'C2', 'C3', 'C4', 'D1', 'D2', 'D3', 'D4', 'D5', 'E1', 'E2', 'E3', 'E4', 'F1', 'F3', 'F4', 'H2', 'H3', 'J1', 'D5b', 'E6']

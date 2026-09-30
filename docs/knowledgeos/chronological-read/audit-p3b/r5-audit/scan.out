@@ -1,0 +1,6 @@
+second reader call foreign run                             -> (2, None)
+synthesis using a unit run id                              -> (2, 'READER-FOREIGN-RUN-OR-BATCH')
+python open() of a corpus path (no glob, token list empty) -> (0, None)
+cat of a relative path                                     -> (0, None)
+git show via variable                                      -> (0, None)
+importlib of discovery io                                  -> (0, None)

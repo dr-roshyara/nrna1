@@ -1,0 +1,231 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0007-RETROFIT-B1",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization 2026-09-23 — 31 admissible files, batches of 5",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0007-RETROFIT-B1."
+ },
+ "⛔ theory_object_disposition": "⛔ Under O-1=A only own-file objects are in scope; none altered in this batch.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0005",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Architecture_Fitness_Assessment.md",
+ "sha256": "44cd75953f54",
+ "canonical_sequence_position": 5,
+ "lines_total": 210,
+ "source_self_declared_status": "⚠️ 'Generated — never authoritative without human review' · '⛔ Submitted to the Decision Authority. Nothing in this document executes.'",
+ "source_document_kind": "⭐ FITNESS ASSESSMENT. ⛔ 'Not discovery · not brainstorming · not redesign.'",
+ "source_research_question": "⭐ THE FITNESS FUNCTION, VERBATIM: 'Does today's architecture support `knowledgeos init`?'",
+ "reconstruction_question": "⛔ DISTINCT: is the enforcement finding sourced here rather than inferred downstream, and are the three gap kinds cleanly separated?",
+ "source_method_declared": "⭐ 11 responsibilities × 5 dimensions (METHOD · BINDING · EVIDENCE · IMPLEMENTATION · ⭐ ENFORCEMENT, added by this assessment), scored L0–L4.",
+ "definitions": [
+  {
+   "term": "ARCHITECTURAL gap",
+   "def": "a responsibility the architecture has no place for — resolved by MODELLING"
+  },
+  {
+   "term": "GOVERNANCE gap",
+   "def": "a clause coupling a reusable thing to one product — resolved by A RULING"
+  },
+  {
+   "term": "EVIDENCE gap",
+   "def": "the thing exists but has never been exercised — ⛔ resolved ONLY BY DOING IT"
+  },
+  {
+   "term": "BOUNDARY",
+   "def": "must never happen — permissions.deny ×19 — ✅ ENFORCED"
+  },
+  {
+   "term": "TRIGGER",
+   "def": "ask the engineer — permissions.ask ×22 — ✅ ENFORCED"
+  },
+  {
+   "term": "ADVISORY",
+   "def": "mentions it and proceeds — 10 hooks + 6 scripts ×16 — ⛔ NOT enforced"
+  },
+  {
+   "term": "GENESIS",
+   "def": "⭐ a route from idea → first decision; the ONE architectural gap"
+  }
+ ],
+ "assumptions": [
+  "a specification is not an implementation",
+  "maturity ≠ enforcement",
+  "P3: a responsibility becomes a component only at n≥2 with a repeatable pattern"
+ ],
+ "premises": [
+  "Reference Architecture §7 ('never idea → ADR → implementation')",
+  "ES-002.1 ('the architecture has demonstrated stability')",
+  "charter gate 4",
+  "BRM-1",
+  "P1/P2/P3 (= F0001's principles)"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. Counts and level scores: 8/11 METHOD complete · 4/11 carry a binding · 4/11 at n=0 evidence · 6/11 fully manual · ⛔ 0/11 enforcing (corrected — see below) · 92 artifacts · 1,532 files · 106 reports.",
+ "derivations": [
+  {
+   "id": "DI-F0005-01",
+   "from": [
+    "11 responsibilities scored on 5 dimensions"
+   ],
+   "to": "⭐ 1 architectural gap · 1 governance gap · 4 evidence gaps",
+   "form": "⭐ GAP_KIND_SEPARATION",
+   "validity": "⭐ VALID — and declared 'this assessment's main contribution'"
+  },
+  {
+   "id": "DI-F0005-02",
+   "from": [
+    "Reference Architecture §7 forbids idea→ADR→implementation",
+    "ES-002.1 presupposes demonstrated stability"
+   ],
+   "to": "⭐ GENESIS is the ONE architectural gap — no place in the architecture to put it",
+   "form": "DERIVED_FROM_THE_ARCHITECTURE'S_OWN_LIFECYCLE",
+   "validity": "⭐ VALID AND STRONG",
+   "⭐ note": "'it is stated in the Reference Architecture's own lifecycle model (§7) — not in a policy annex'"
+  },
+  {
+   "id": "DI-F0005-03",
+   "from": [
+    "`.claude/settings.json` deny×19 + ask×22"
+   ],
+   "to": "⭐⭐ '41 controls the runtime genuinely ENFORCES' — and the self-correction: 'what I actually established is that NO CAPABILITY enforces, not that nothing does'",
+   "form": "⭐ SELF_FALSIFICATION_BY_APPLYING_OWN_VOCABULARY",
+   "validity": "⭐⭐ VALID AND STRONG — the file falsifies its own headline in place"
+  },
+  {
+   "id": "DI-F0005-04",
+   "from": [
+    "ES-005.1's binding leak found by reading, not grepping"
+   ],
+   "to": "⭐ a FOURTH instance of P2's instrument finding",
+   "form": "INSTANCE_ACCUMULATION",
+   "validity": "⭐ VALID"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'The architecture is not underdesigned. It is under-exercised — and nowhere enforcing.'",
+  "⭐⭐ 'enforcement lives in the RUNTIME ADAPTER; capabilities live in the PLATFORM. Enforcement exists exactly where governance does not, and is absent exactly where it does.'",
+  "⭐ 5 of 11 responsibilities need no architecture at all — 'their gap is use'",
+  "⛔ `knowledgeos init` is PREMATURE: PKS Generation is n=0 and P3 forbids componentising below n=2"
+ ],
+ "dependencies": [
+  "Reference Architecture §7 · §1 (N-10)",
+  "ES-001..006",
+  "EEP",
+  "Round47-00 / Round47-OP",
+  "CAP-001",
+  "DDD_Tactical_Governance_Principles",
+  "BRM-1",
+  "EAD-1",
+  "H-CAT-1",
+  "OQ-S1 · OQ-S3 · OQ-S4",
+  "KnowledgeOS_Platform_Capability_Model.md §0",
+  "KnowledgeOS_Operational_Knowledge_Principles.md §2"
+ ],
+ "previous_related_files": "⭐ 'Baseline treated as closed': Architecture Baseline (= F0001) · Product Boundary Discovery · Architecture Consolidation · Strategic Boundary Consolidation (= F0010) · MVK Bootstrap Validation · CAP-001 · Engineering Platform · Round47-00/OP. ⛔ The rest NOT_RECOVERABLE_WITHOUT_REREAD.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — it answers what blocks the platform's own vision.",
+ "architectural_role": "⭐ FITNESS / READINESS ASSESSMENT.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the three gap KINDS",
+   "the ENFORCEMENT dimension",
+   "BOUNDARY/TRIGGER/ADVISORY",
+   "'maturity ≠ enforcement'",
+   "the kernel membership list (§7)",
+   "the PKS membership list (§8)"
+  ],
+  "⭐ corrected": [
+   "⛔⛔ '0 OF 11 ENFORCING' — corrected IN PLACE to 'no CAPABILITY enforces, not that nothing does'",
+   "Strategic Discovery is NOT n=1 — 92 artifacts, Rounds 16–31",
+   "three corrections to the Addendum's matrix (SD-1 misattributed · ES-005.1 is a binding inside governance · a spec is not an implementation)"
+  ],
+  "⛔ retired": [
+   "the term 'Capability Runtime' — 'names a runtime that does not exist; there is one script' (recorded, not renamed)"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0002 (P1)",
+  "T-0003 (P2)",
+  "T-0004 (P3)",
+  "T-0005 (GENESIS)",
+  "T-0007 (SD-1)",
+  "T-0042 (enforcement)"
+ ],
+ "sequential_graph_position": "canonical position 5; dated 2026-08-02 ⭐ — the SAME day as F0001/F0010, and it names both as closed baseline, so it is AFTER them",
+ "file_relationships": [
+  {
+   "to": "F0001",
+   "kind": "⭐ APPLIES",
+   "note": "§8 'this is P1 applied'; P2's instrument finding extended to a 4th instance; P3 used to rule init premature"
+  },
+  {
+   "to": "F0010",
+   "kind": "CONSUMES",
+   "note": "Strategic Boundary Consolidation in the closed baseline"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ OUTSTANDING. It falsifies its own headline finding in place, separates three gap kinds that were being conflated, and issues three corrections to its own commissioning addendum.",
+ "gaps": [
+  {
+   "id": "G-F0005-A",
+   "⚠️ gap": "the L0–L4 maturity levels are applied without a stated rubric",
+   "⭐ significance": "the level column carries weight in the 'shape of the answer' totals"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0005-01",
+   "⭐ finding": "⭐⭐ THE 'NO CAPABILITY ENFORCES' CLAIM IS SOURCE-SUPPORTED — HERE, VERBATIM, NOT AN INTERPRETATION",
+   "detail": "F0005 states: '⛔ What I actually established is that NO CAPABILITY enforces, not that nothing does', with the table BOUNDARY 19 ✅ / TRIGGER 22 ✅ / ⭐ ADVISORY 16 ⛔.",
+   "⭐ consequence": "⭐⭐ GVR-F0032 P-1 found T-0042's '41 enforced / 0 capabilities' only PARTIALLY_CONFIRMED because 'the source does not state that no capability enforces'. ⭐ That is true OF F0032 — but T-0042's own sources are F0038 and F0040, not F0032, and ⭐ F0005 states the claim VERBATIM. Under RA-15 the claim is SOURCE-SUPPORTED.",
+   "⛔ disposition": "⛔ T-0042 is NOT this file's object under O-1=A. RECORDED as a factual pointer for whoever disposes GVR-F0032 P-1.",
+   "status": "⭐ RECORDED_FOR_X-4",
+   "⚠️ RA-15_honesty": "⛔ SOURCE-SUPPORTED ✅ · RECONSTRUCTION-VALID ✅ · ⛔ INDEPENDENTLY CORROBORATED — NO. F0005 is the same programme, and F0038/F0040 cite the same `.claude/settings.json` counts. ⭐ Three files, one measurement.",
+   "⚠️ self_correction": "⭐ Canonical discovery found T-0042 already records this correctly ('41 controls ARE enforced; no CAPABILITY is'). F0005 adds a third supporting file, not a new finding."
+  },
+  {
+   "id": "AUDIT-F0005-02",
+   "⭐ finding": "⭐ A FOURTH INSTANCE OF P2's INSTRUMENT FINDING, and the file says so",
+   "detail": "'ES-005.1's binding leak (correction #2 above) is a fourth instance — ⭐ found by reading, not grepping.'",
+   "⭐ consequence": "⭐ T-0003 (P2) is F0001's object. F0005 supplies a 4th instance. ⛔ Outside O-1=A for this unit — recorded, not written.",
+   "status": "RECORDED"
+  },
+  {
+   "id": "AUDIT-F0005-03",
+   "⚠️ finding": "an in-place CORRECTION APPENDED that contradicts a scored row",
+   "detail": "'Row 2's EVIDENCE cell was wrong… ⛔ Strategic Discovery is not n=1' — 92 artifacts, Rounds 16–31. ⭐ The row is corrected in the table AND the correction is banner-flagged at the top.",
+   "⭐ assessment": "⭐ CORRECTLY HANDLED — banner + in-row correction + explicit statement that 'the gap-kind analysis is unaffected; the maturity scoring of row 2 is'.",
+   "status": "RESOLVED_BY_SOURCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the 11×5 matrix",
+  "the three gap kinds",
+  "the enforcement counts",
+  "the kernel and PKS membership lists",
+  "the three Addendum corrections"
+ ],
+ "provenance_second_hand": [
+  "⛔ `.claude/settings.json` counts, quoted from Operational Knowledge Principles §2",
+  "⛔ the 92-artifact discovery programme, cited not enumerated"
+ ],
+ "negative_evidence": "⭐⭐ THE BEST SELF-DIRECTED NEGATIVE HANDLING SO FAR: the file's own headline ('0 of 11 enforcing') is falsified inside the same document by applying its own newly-minted vocabulary, and the corrected form is stated precisely rather than deleted.",
+ "multi_dimensional_confidence": {
+  "the three gap kinds": "⭐ HIGH",
+  "GENESIS as architectural": "⭐ HIGH — derived from the architecture's own §7",
+  "'no capability enforces'": "⭐ HIGH — verbatim, with counts",
+  "the L0–L4 levels": "⚠️ MEDIUM — no rubric",
+  "the 41 count": "⭐ HIGH — deny 19 + ask 22, itemised"
+ },
+ "not_recoverable_without_reread": [
+  "Operational Knowledge Principles §2",
+  "Platform Capability Model §0",
+  "the 92 Rounds 16–31 artifacts",
+  "the Senior Knowledge Engineer's Addendum"
+ ]
+}

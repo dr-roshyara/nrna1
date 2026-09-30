@@ -1,0 +1,47 @@
+{
+ "test": "T1 r0 vs R-39 (L0-REL-14)",
+ "prereg": "prompts/KNOWLEDGEOS-T1-TRANSITION-ONTOLOGY-PREREGISTRATION.md (r0, unmodified)",
+ "source": {
+  "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+  "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+  "line": 25,
+  "row_sha256": "5f9637b78c2551e1faec1936fea72fe3d24d606c780dc2a16e6217c0e30d6307"
+ },
+ "classification": {
+  "kind_PKS": {
+   "result": "NO",
+   "quote": "early promotion of the DDD Tactical Governance Principles to the Engineering Platform",
+   "basis": "engineering methodology module under ES-006.1; T1 r0 lists 'engineering knowledge artifact' as a kind separate from PKS"
+  },
+  "review_complete": {
+   "result": "UNKNOWN",
+   "quote": ""
+  },
+  "findings_dispositioned": {
+   "result": "UNKNOWN",
+   "quote": ""
+  },
+  "remediation_verified": {
+   "result": "UNKNOWN",
+   "quote": ""
+  },
+  "READY_before_promotion": {
+   "result": "UNDETERMINED",
+   "basis": "READY defined only for kind PKS (frozen §2); constituents unstated"
+  },
+  "promotion_occurred": {
+   "result": "YES",
+   "quote": "The Decision Authority approved promotion on 2026-07-26"
+  }
+ },
+ "outcome": "OUT-OF-SCOPE for F2 (kind mismatch; frozen §6) -> T1 r0 untested on F2; neither falsified nor supported",
+ "consequence": "T1 r0 READY is too narrow for ES-006.1 engineering-knowledge promotion; any READY for that kind written now is contaminated by R-39 knowledge, so R-39 cannot be its test case; next test requires a different, unread engineering-knowledge promotion case",
+ "source_facts_for_theory_not_MT_interpreted": {
+  "normal_bar": "requires evidence from more than one bounded context",
+  "decision": "The Decision Authority approved promotion on 2026-07-26 with evidence from ONE context",
+  "validation": "the next bounded context that adopts the module either confirms the principles or produces the amendment evidence",
+  "rule_status": "this exception does not weaken the rule",
+  "outcome_col": "Early promotion recorded as explicit exception; promotion rule intact"
+ },
+ "not_done": "no engine run (instruction: classify only), no MT interpretation, no READY redefinition, no MK, no ML"
+}

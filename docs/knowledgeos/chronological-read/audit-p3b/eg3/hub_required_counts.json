@@ -1,0 +1,38 @@
+{
+ "_note": "orchestrator counts-only, 2026-09-29; first computation (earlier today) used the first-leaf variant copied from the A3 probe",
+ "all": {
+  "max": 5950,
+  "median": 318,
+  "n": 66,
+  "p90": 1735,
+  "sum": 49934
+ },
+ "citable_first_leaf_variant": {
+  "max": 127,
+  "median": 41,
+  "n": 66,
+  "p90": 88,
+  "sum": 3354
+ },
+ "citable_rule3_exclude_all_hits": {
+  "max": 127,
+  "median": 41,
+  "n": 66,
+  "p90": 88,
+  "sum": 3349
+ },
+ "narrow_first_leaf_variant": {
+  "max": 123,
+  "median": 41,
+  "n": 66,
+  "p90": 88,
+  "sum": 3257
+ },
+ "narrow_rule3_exclude_all_hits": {
+  "max": 123,
+  "median": 41,
+  "n": 66,
+  "p90": 88,
+  "sum": 3252
+ }
+}

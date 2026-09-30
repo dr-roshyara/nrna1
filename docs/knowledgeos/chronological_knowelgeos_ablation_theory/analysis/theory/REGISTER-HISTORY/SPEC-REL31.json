@@ -1,0 +1,16 @@
+{
+ "test": "L0-REL-31: discriminate H-status vs H-window vs H-strict-with-exceptions on the same-day decision-cell edits",
+ "status": "FROZEN BEFORE any diff hunk or edit-commit subject is read",
+ "rows": ["R-96", "R-98", "R-99", "R-51"],
+ "edits": "every commit where the row's column-3 cell differs (whitespace-normalized) from its previous version (from the frozen register_history_check.py parsing)",
+ "mechanical_indicators_per_edit (computed on the PRE-edit version)": {
+   "status_marker": "PREPARED if the row contains 'PREPARED' and no 'ADOPTED <date>' / 'THIS RULING IS GOVERNING'; ADOPTED-OR-GOVERNING if it contains either; NONE otherwise (an unmarked row = issued by the human authority, governing at issue per F-LOG-0124 P3')",
+   "cited_by_other_rows": "number of OTHER rows in the pre-edit version whose text contains the ruling ID as a whole token"},
+ "bounded_read": "the word-level diff of column 3 (old vs new) for each edit, and the edit commit's subject line; nothing else",
+ "edit_kind (coded from the hunk)": ["LABELLED-CORRECTION (the change itself says it corrects/amends)", "REWORDING (same claims, different words)", "SUBSTANTIVE (a claim added, removed or changed)", "STRUCTURAL (text moved between cells / formatting)"],
+ "predictions": {
+   "H-status": "every SUBSTANTIVE or REWORDING edit has pre-edit status_marker = PREPARED",
+   "H-window": "every SUBSTANTIVE or REWORDING edit has cited_by_other_rows = 0",
+   "H-strict-with-exceptions": "at least one SUBSTANTIVE edit with status_marker != PREPARED and cited_by_other_rows > 0 and no LABELLED-CORRECTION"},
+ "decision_rule": "a hypothesis is FALSIFIED by one counter-instance among these edits; both H-status and H-window may survive; STRUCTURAL edits are excluded from all three"
+}

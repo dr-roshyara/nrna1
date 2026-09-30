@@ -1,0 +1,457 @@
+{
+  "seed_case": {
+    "pair_id": "RP0526",
+    "a": "epistemic-sarathi-see-guide-decide",
+    "b": "sarathi-investigation-guide",
+    "recorded_relationship": "SAME",
+    "note": "Not counted in candidates_found (it is the seed, examined only to characterize the pattern, per task instructions). Its own 'what_would_make_this_wrong' text contains the exact self-admission language ('recovered from prior context rather than freshly read', 'own text ... cautions it has not verified against the original Step 155/156 artifacts') that no other record in the corpus reproduces verbatim -- see method note below."
+  },
+  "method_note": "Searched all 1793 records' what_says_this/what_would_make_this_wrong/notes_for_p3b fields for (1) exact-phrase signals ('recovered from prior context', 'not verified against', 'never checked against', 'self-admit', 'retrospective', 'reconstruct', 'summariz', 'restate', 'unverified', 'preview', 'own source', etc.), then (2) full-text manual review of every hit to judge whether the underlying provenance-asymmetry pattern (one side markedly less-verified/reconstructed vs. the other being the fuller, primary, verified record) was genuinely present, since 30 different batch-evaluators phrased this differently. Exact-phrase signals unique to RP0526 in the entire corpus: 'recovered from prior context' (1 hit, RP0526 only), 'not yet read'/'not freshly read' (1 hit, RP0526 only). Broader thematic buckets ('reconstruction' n=99, 'restate' n=97, 'preview' n=26, 'summariz' n=12, 'own source' n=26) were mostly false positives: 'reconstruction'/'preview' overwhelmingly name in-corpus research methodologies or draft-precedes-final maturity relationships (structurally different from RP0526's asymmetry), and the generic hedge phrase pattern 'would be wrong if X were independently/coincidentally derived' is standard boilerplate appearing in ~125 unrelated REFINEMENT/EXTENSION rows, not a marker of this specific pattern.",
+  "candidates_found": [
+    {
+      "pair_id": "RP0338",
+      "a": "constitutional-turn-book-chapter",
+      "b": "kos-constitution-v1",
+      "recorded_relationship": "DERIVED-FROM",
+      "shows_provenance_asymmetry": true,
+      "classified_like_rp0526": false,
+      "reasoning": "Near-exact structural match to RP0526: a is explicitly characterized as 'the book's own chapter narrating and citing' the Constitution artifacts, 'a secondary narrative account built on b's already-established governance record', and 'a later narrative summary rather than the site where the governance gap was first found' -- a is a later, non-primary retelling of content b documents as the primary governance record. UNLIKE RP0526, this was classified conservatively as DERIVED-FROM, not SAME/REFINEMENT/EXTENSION. This is direct evidence that evaluators elsewhere in the corpus correctly downgrade this exact asymmetry rather than defaulting to a positive-continuity verdict."
+    },
+    {
+      "pair_id": "RP1470",
+      "a": "oq1-carrier-falsified-k-t-ratified",
+      "b": "primary-blocker-characterized-and-corrected",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": true,
+      "classified_like_rp0526": true,
+      "reasoning": "A is explicitly the later document that 'incorporates/re-audits' b's specific finding as part of a broader re-review. The record's own what_would_make_this_wrong explicitly names the RP0526-shaped risk: 'If A's Section 5 re-audit merely cites/summarizes B's earlier finding without it being literally the same experimental result (e.g. an independent re-derivation reaching the same conclusion), this would be CORROBORATED-CONTINUATION rather than strict SAME.' The evaluator resolved this in favor of SAME on the strength of identical formulas/blocker language in both, which is somewhat stronger corroborating evidence than RP0526 had -- but the reasoning shape (a self-flagged 'could just be a summary' risk resolved toward a positive-continuity verdict) mirrors RP0526's structure closely enough to flag as the same risk pattern."
+    },
+    {
+      "pair_id": "RP0625",
+      "a": "formal-lord-action-selection-algebra",
+      "b": "lord-algebra-025g",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": true,
+      "classified_like_rp0526": true,
+      "reasoning": "A is extracted directly from the primary source document (step-025g). B is explicitly 'later independent verification-pass restatements of that SAME document' drawn from separate audit/verification files, i.e. a secondary, downstream account rather than the primary artifact itself -- the same primary-vs-secondary shape as RP0526. Classified SAME (with an explicit recommendation to merge the labels). Weaker match than RP1470/RP0338 in one respect: b's secondary account is described as a verification/audit pass that reproduces the primary content 'near-verbatim' and even surfaces an internal contradiction in it, which is a stronger-verification act than RP0526's self-admittedly-unchecked retrospective recall -- so the asymmetry here is real but of a different, arguably safer, character than RP0526's."
+    },
+    {
+      "pair_id": "RP0444",
+      "a": "dimension-discovery-uncertainty",
+      "b": "missingness-taxonomy-abhava",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": true,
+      "classified_like_rp0526": true,
+      "reasoning": "B's own source (S1849) hedges that its D_t construct is 'not invented, but recovered from the corpus's own Zero-lens construction' -- an explicit self-admitted uncertainty about origin/directionality, structurally similar to RP0526's self-admitted-unverified caveat. The evaluator's own notes flag this: 'muddies directionality -- may be mutual/convergent rather than a clean one-way extension; flag for closer look.' Despite the flagged uncertainty, EXTENSION (a positive-continuity relationship) was still recorded, echoing RP0526's pattern of resolving a self-admitted provenance doubt in favor of the stronger relationship rather than the more conservative one."
+    },
+    {
+      "pair_id": "RP0680",
+      "a": "gita-audit-untested-assumption-study",
+      "b": "gita-declared-vs-effective-reads-study",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Retrospects' here refers to b counting/naming prior cycles in an ongoing research programme, not to one side being an unverified summary of the other's fuller record. No verification-status asymmetry present."
+    },
+    {
+      "pair_id": "RP1563",
+      "a": "s1604-theory-discovery-phase-mandate",
+      "b": "s1605-question-7-assertion-layer-rediscovery",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "The 'retrospectively describing' language appears only in the hypothetical what_would_make_this_wrong clause (a possible way the verdict could be wrong), not as an actual finding in the evidence. No genuine asymmetry is asserted; already CONTINUATION, the conservative relationship."
+    },
+    {
+      "pair_id": "RP1649",
+      "a": "sigma-five-axis-epistemic-state-q4a",
+      "b": "step289-degeneracy-audit-principle",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Retrospectively' describes B applying a degeneracy rule after-the-fact to prior results (a content/method fact), not B being an unverified summary of A. Different sense of the word; no provenance-verification asymmetry between the two documents themselves."
+    },
+    {
+      "pair_id": "RP1706",
+      "a": "step212-architecture-gap-discovery",
+      "b": "step214-evidence-ledger",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Retrospective reconstruction' is the two documents' shared research-programme topic (a failed evidence-reconstruction effort), quoted verbatim from a verbatim deferral chain -- not a claim that one document is an unverified summary of the other. Already conservative (CONTINUATION)."
+    },
+    {
+      "pair_id": "RP1712",
+      "a": "step214-evidence-ledger",
+      "b": "step215-reconstruction-method",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Same research-programme-topic use of 'reconstruction'/'retrospective' as RP1706; bidirectional explicit cross-citation, not an unverified-summary relationship. Conservative CONTINUATION."
+    },
+    {
+      "pair_id": "RP1720",
+      "a": "step236-evidence-based-reconstruction-failure-finding",
+      "b": "step239-claim-registry-kernel-genealogy",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Both about the same failed-reconstruction audit programme as subject matter; B 'absorbs and confirms' A's finding via direct programme continuation, not via an unverified retrospective restatement. Conservative CONTINUATION."
+    },
+    {
+      "pair_id": "RP0020",
+      "a": "action-rationale-and-why-act-factfinding",
+      "b": "knowledgeos-research-ledger-2026-09-artifact-status-matrix",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B restates/corrects A's equation as part of normal governance-ledger tracking; no self-admitted unverified-against-original caveat present."
+    },
+    {
+      "pair_id": "RP0112",
+      "a": "atharva-veda-ddd-architecture-and-zero-study-2026-09",
+      "b": "kr-algebra-zero-quotient-congruence-hierarchy-2026-09",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "A restates/summarizes b's formalization while extending the research lane, but no verification-status caveat is present, and the verdict is already the conservative CONTINUATION rather than SAME/REFINEMENT/EXTENSION."
+    },
+    {
+      "pair_id": "RP0697",
+      "a": "gita-chapter3-validation-exercise",
+      "b": "gita-chapter4-actor-role-model",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Summarize' refers to b's own planned future work item (summarizing Chapter 4 propositions), not to b being an unverified summary of a. No asymmetry; conservative CONTINUATION."
+    },
+    {
+      "pair_id": "RP1107",
+      "a": "knowledge-as-temporal-state-trajectory",
+      "b": "knowledge-vector-measurement-framework",
+      "recorded_relationship": "UNWITNESSED",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B's explicit lineage claim targets a different object entirely (the Dhatu hypothesis), not A. No asymmetry between A and B; correctly UNWITNESSED."
+    },
+    {
+      "pair_id": "RP1245",
+      "a": "kos-canonical-domain-model",
+      "b": "kos-domain-model-preview",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Preview' precedes 'canonical' as an early rough draft that was later elaborated -- ordinary draft-to-final maturity within one continuous authorship, not a later unverified retrospective summary of an established primary thread. No self-admitted verification gap."
+    },
+    {
+      "pair_id": "RP1356",
+      "a": "kr-bridge-01-zero-preservation-experiment-protocol-2026-09",
+      "b": "kr-rep-reduction-executed-results-interpretation-2026-09",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "A explicitly names B as a prior result it builds on/summarizes as background baseline; this is normal citation of established experimental results, not an unverified memory-based restatement."
+    },
+    {
+      "pair_id": "RP1357",
+      "a": "kr-bridge-01-zero-preservation-experiment-protocol-2026-09",
+      "b": "kr-rep-reduction-formal-corrections-2026-09",
+      "recorded_relationship": "DERIVED-FROM",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "A explicitly, repeatedly self-describes as built on B as a parent experiment; correctly classified conservatively as DERIVED-FROM (not SAME), and no verification-status caveat is present anyway."
+    },
+    {
+      "pair_id": "RP1368",
+      "a": "kr-contr-fde-four-representation-adequacy-test",
+      "b": "w-kr-contr-eval-structured-evaluation-result",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B narrates and builds on A's own already-executed test result; ordinary citation of a verified experimental outcome, no unverified-summary asymmetry."
+    },
+    {
+      "pair_id": "RP1485",
+      "a": "policy-stratification-invariant",
+      "b": "ratified-invariant-catalog-i1-i12",
+      "recorded_relationship": "UNWITNESSED",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Part-of/catalog-member relation (A is the detailed elaboration of one catalog entry in B), independently compiled with matching content -- not a retrospective-summary/primary-record asymmetry. Correctly UNWITNESSED."
+    },
+    {
+      "pair_id": "RP1775",
+      "a": "worked-example-final-decision-outcome",
+      "b": "worked-example-final-decision-record",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Both are sequential subsections of the SAME single source document describing one worked example; there is no separate 'unverified retrospective' artifact vs. a separately-documented primary thread."
+    },
+    {
+      "pair_id": "RP1778",
+      "a": "worked-example-final-decision-record",
+      "b": "worked-example-final-principle",
+      "recorded_relationship": "CONTINUATION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Consecutive numbered subsections of one document; no cross-artifact verification asymmetry. Already conservative (CONTINUATION)."
+    },
+    {
+      "pair_id": "RP0036",
+      "a": "agent-architecture-conformance-model",
+      "b": "runtime-architecture-conformance-model",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Previews' here means A forward-previews the NEXT step (B), the opposite temporal/verification direction from RP0526 (where the LATER document was the unverified one). Ordinary forward-referencing sequential step relationship."
+    },
+    {
+      "pair_id": "RP0084",
+      "a": "architecture-conformance-engineering-model",
+      "b": "knowledgeos-conformance-matrix-model",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Same forward-preview-of-next-step pattern as RP0036; not a retrospective/unverified-summary relationship."
+    },
+    {
+      "pair_id": "RP0564",
+      "a": "evidence-based-architecture-reconstruction-methodology",
+      "b": "knowledgeos-architectural-inventory-methodology",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Same forward-preview-of-next-step pattern; 'reconstruction' names A's methodology topic, not a claim that A is an unverified summary of B."
+    },
+    {
+      "pair_id": "RP1108",
+      "a": "knowledge-atma-identity-concept",
+      "b": "knowledge-identity-atma-algebra",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B (chronologically between two phases of A's own development) supplies formal apparatus operationalizing A's earlier philosophical concept; a legitimate, source-confirmed dependency, not an unverified retrospective restatement."
+    },
+    {
+      "pair_id": "RP1161",
+      "a": "knowledgeos-actual-component-inventory-methodology",
+      "b": "knowledgeos-actual-system-boundary-model",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Direct source-stated 'Extends ... ; previews Step 112' dependency claim by step number; ordinary sequential-step extension, no verification-status asymmetry."
+    },
+    {
+      "pair_id": "RP1164",
+      "a": "knowledgeos-actual-graph-extraction-methodology",
+      "b": "knowledgeos-semantic-core-evidence-test-model",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Same explicit named 'Extends ...; previews Step 117' pattern as other Step 1xx methodology pairs; not the RP0526 asymmetry."
+    },
+    {
+      "pair_id": "RP1185",
+      "a": "knowledgeos-constitution-implementation-conformance-test-model",
+      "b": "knowledgeos-control-loop-evidence-test-model",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Same explicit named-extension-plus-forward-preview pattern; unambiguous source-stated dependency, not a retrospective-summary asymmetry."
+    },
+    {
+      "pair_id": "RP1220",
+      "a": "knowledgeos-semantic-core-evidence-test-model",
+      "b": "knowledgeos-semantic-core-model",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Same explicit named-extension-plus-forward-preview pattern as the other Step 1xx methodology chain pairs."
+    },
+    {
+      "pair_id": "RP1261",
+      "a": "kos-domain-model-preview",
+      "b": "kos-domain-model-reduction-preview",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "b is a later reduction/refinement phase of the same domain-model exercise a opened (18 candidates reduced to 10) -- ordinary draft-to-refinement maturity progression within one continuous exercise, no unverified-retrospective-summary claim."
+    },
+    {
+      "pair_id": "RP1569",
+      "a": "s1605-question-7-assertion-layer-rediscovery",
+      "b": "s1622-p-reconstruction-entity-dimension-value",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Rediscovery'/'reconstruction' here describe a corpus-wide phenomenon (content lost from numbered steps, recovered via a separate Q-series search), not one document being an unverified summary of the other's fuller documented thread."
+    },
+    {
+      "pair_id": "RP1648",
+      "a": "sigma-five-axis-epistemic-state-q4a",
+      "b": "sigma-five-axis-flattening-and-derived-repairs",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B repeatedly, explicitly cites A by name/alias with specific technical claims ('recovered from corpus source Q4A') as normal provenance-tracing citation, not a self-admitted-unverified restatement. Already the more cautious SOURCE-CLAIMED-ONLY/REFINEMENT combination."
+    },
+    {
+      "pair_id": "RP1199",
+      "a": "knowledgeos-information-transformation-theory-consolidated-draft-2026-09",
+      "b": "theory-v1-2-fifteen-document-set-2026-09",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "A explicitly frames itself as a later synthesis built on B as 'the frozen baseline', but supports this with matching specific experimental data (identical retraction findings, exact violation counts) rather than an unverified memory-based claim -- this is verified cross-reference, not the RP0526 pattern."
+    },
+    {
+      "pair_id": "RP0654",
+      "a": "g-11-omega-269-291-reconstruction",
+      "b": "g-22-omega-sense-inventory-231-267",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Byte-identical shared source rows under the same source id in both families -- genuine textual identity, not one side being a less-verified reconstruction of the other."
+    },
+    {
+      "pair_id": "RP1241",
+      "a": "knowledgeos-type-system",
+      "b": "unknown-value-bottom-element-gap",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B has zero extracted rows of its own (a registered gap label with no independent content) -- this is a data-sparsity issue, not a retrospective-vs-primary verification asymmetry."
+    },
+    {
+      "pair_id": "RP1156",
+      "a": "knowledge-transfer-phase1-measure-theory-doc",
+      "b": "relational-structure-core-regime-model",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B is a direct, source-confirmed corrective follow-on pass over A's own content (explicit verbatim Phase-1A/1B terminology reuse); a normal, well-evidenced refinement, not an unverified retrospective restatement."
+    },
+    {
+      "pair_id": "RP0271",
+      "a": "causal-cascade-mediation-model",
+      "b": "dynamic-causal-system-model",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Both extracted verbatim from the identical single source document (Step 44) -- two extraction angles on one delivery, not a primary-vs-retrospective-summary relationship."
+    },
+    {
+      "pair_id": "RP0629",
+      "a": "formal-state-transition-system-K",
+      "b": "knowledge-state-transition-central-equation",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "The corpus's own UNKNOWN-OBJECT-CANDIDATE row leaves identity an open, unconfirmed candidate ('may be the same... restated through the Gita/Buddhi lens') -- this is a labeled uncertainty about whether two formalizations are the same object, not a verification-status asymmetry between a primary and a reconstructed account of the same content."
+    },
+    {
+      "pair_id": "RP0678",
+      "a": "gita-action-not-result-invariant",
+      "b": "operation-non-injectivity-hypothesis",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Identical formula appears verbatim in both notation sets; no claim that either side is an unverified/retrospective reconstruction of the other."
+    },
+    {
+      "pair_id": "RP1033",
+      "a": "inv-kos-candidate-series",
+      "b": "zero-neutral-state-lens",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Backed by an explicit governance SOURCE-CLAIMED-IDENTITY designation-reconciliation row, not a memory-based restatement claim."
+    },
+    {
+      "pair_id": "RP1496",
+      "a": "proposition-assertion-knowledge-hierarchy",
+      "b": "s1605-question-7-assertion-layer-rediscovery",
+      "recorded_relationship": "SAME",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "'Rediscovery' here means the corpus's own finding that a formal hierarchy was independently re-derived/converged upon across multiple attacks -- a convergence finding, not one side being an unverified retrospective summary of a fuller primary thread."
+    },
+    {
+      "pair_id": "RP1240",
+      "a": "knowledgeos-type-system",
+      "b": "s1605-question-7-assertion-layer-rediscovery",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Explicit SOURCE-CLAIMED-REFINEMENT lineage row with a direct quote proposing to change B's own tuple; ordinary, well-evidenced refinement, no verification-status asymmetry."
+    },
+    {
+      "pair_id": "RP1546",
+      "a": "s1598-k0-construction-and-content-qualification-governance",
+      "b": "s1605-question-7-assertion-layer-rediscovery",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B resolves contradictions in A's construction via direct textual reference to A's own hedge; not an unverified-retrospective-summary relationship."
+    },
+    {
+      "pair_id": "RP1567",
+      "a": "s1605-question-7-assertion-layer-rediscovery",
+      "b": "s1612-k-minimality-proof-and-valid-k-computability",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "B is a proof-based capstone derivation directly reconciling against A's exact stated container; well-evidenced refinement via proof, not memory-based restatement."
+    },
+    {
+      "pair_id": "RP1571",
+      "a": "s1605-question-7-assertion-layer-rediscovery",
+      "b": "step232-knowledge-state-algebra",
+      "recorded_relationship": "EXTENSION",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "A explicitly names B's step-232.4 as one of its named foundational sources; ordinary sourced extension, not an unverified retrospective claim."
+    },
+    {
+      "pair_id": "RP0525",
+      "a": "epistemic-sarathi-see-guide-decide",
+      "b": "s1605-question-7-assertion-layer-rediscovery",
+      "recorded_relationship": "UNWITNESSED",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Shares family member 'a' with RP0526 but is correctly classified UNWITNESSED on shared-notation-only evidence -- no asymmetry claim here at all, and the corpus's own text is quoted noting this is a 'textbook SHARED-NOTATION-only weak signal ... correctly defaults to UNWITNESSED', i.e. a second data point that the same evaluators DO default conservatively when evidence is genuinely too thin."
+    },
+    {
+      "pair_id": "RP0653",
+      "a": "g-11-omega-269-291-reconstruction",
+      "b": "g-12-theorystate-reconstruction-026-268-interval",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Direct textual correction with both source rows appearing verbatim in both families' samples -- a corpus-demonstrated refinement, not a retrospective-summary-vs-primary-record asymmetry."
+    },
+    {
+      "pair_id": "RP1052",
+      "a": "k-sufficiency-conditional-on-unstated-operation-set",
+      "b": "theory-evolution-map-independent-reconstruction",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Direct identifier match (A's alias drawn from B's own numbering scheme); ordinary catalog-registered refinement, no verification-asymmetry claim."
+    },
+    {
+      "pair_id": "RP0429",
+      "a": "det-r-evalreq-sat-family-birth-census",
+      "b": "g-12-theorystate-reconstruction-026-268-interval",
+      "recorded_relationship": "REFINEMENT",
+      "shows_provenance_asymmetry": false,
+      "classified_like_rp0526": false,
+      "reasoning": "Refinement demonstrated via direct census-data correction (symbol-vs-concept scoring), corpus-demonstrated rather than merely claimed; not a memory-based restatement asymmetry."
+    }
+  ],
+  "total_candidates": 49,
+  "confirmed_asymmetry_cases": 4,
+  "classified_same_as_rp0526_pattern": 3,
+  "classified_more_conservatively": 1
+}

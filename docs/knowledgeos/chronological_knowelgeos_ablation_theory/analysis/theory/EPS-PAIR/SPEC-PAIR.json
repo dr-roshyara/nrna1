@@ -1,0 +1,8 @@
+{
+ "test": "1y bounded read of R-94 (L80): does it form an evidence-only minimal pair with R-83 (REFUSED supersession, ARB-CHIEF, design-rule, ε = 0)?",
+ "status": "FROZEN before reading R-94",
+ "code_from_R-94": ["o (is the act a SUPERSEDE of something, and PERFORMED?)", "a", "k (kind of the superseded object)", "σ (prior state of that object)", "ε (evidence stated for the supersession: 0 / 1 / 2+ / NR)", "x"],
+ "pair_rule": "minimal ε-pair iff o = SUPERSEDE, outcome PERFORMED, a = ARB-CHIEF, k = design-rule, σ = normal and ε known and != 0 (all equal to R-83 except ε). If any of o, a, k, σ differs or is UNKNOWN, NO pair; report which field breaks it",
+ "results": ["ε NECESSARY (pair formed)", "NO-PAIR (field named)", "UNDETERMINED (row silent)"],
+ "then": "add R-94 as a coded event to the T-min table and re-run tmin_check.py (instrument unchanged)"
+}

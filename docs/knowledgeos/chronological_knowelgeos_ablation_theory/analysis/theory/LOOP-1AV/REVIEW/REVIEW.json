@@ -1,0 +1,161 @@
+{
+  "inputs_read": ["REVIEW-TASK.md", "TASK.md", "SOURCES.md", "PREREG.md", "SCORE.json", "score_1av.py", "PACKAGE-REVIEW.json", "CODING-P1.json", "CODING-P2.json", "NOTES-P1.md", "NOTES-P2.md", "AUDIT-1AR-WORKER.json", "AUDIT-1AR-REVIEW.json"],
+  "inputs_missing": ["EVENTS.json (not in the review folder; event clusters and targets could not be checked beyond the event_id strings)"],
+  "recomputation_matches": {
+    "overall": true,
+    "type_4class": {"reported": [1.0, 1.0], "recomputed": [1.0, 1.0], "note": "36/36 identical labels"},
+    "type_act_binary": {"reported": [1.0, 1.0], "recomputed": [1.0, 1.0]},
+    "class_counts_each_coder": {"ACT_OBSERVATION": 20, "NORM_STATEMENT": 12, "GENERIC_PRACTICE": 1, "UNKNOWN": 3, "matches": true},
+    "source_act_operation": {"reported": [0.972, 0.965], "recomputed": [0.972, 0.965], "only_difference": "RAISE L493-B (single occurrence): P1 UNKNOWN, P2 REGISTER", "p_e": "277/1296"},
+    "dual_YES": {"reported": {"P1": 27, "P2": 27, "both": 27}, "recomputed": {"P1": 27, "P2": 27, "both": 27}, "NO": ["REGISTER operational acceptance (R-90)", "REGISTER constitutional decision (rule)", "START WP-4B 08-03 16:10", "ASSIGN the retired number R-90", "SUPERSEDE PB-006 row declined (R-94)", "ANNOTATE PB-006 row chosen (R-94)"], "UNK": ["RAISE L493-B (single occurrence)", "ASSIGN a never-used number", "SUPERSEDE D-12 by ADR-MP"]},
+    "unknown_share": {"reported": 0.083, "recomputed": 0.083},
+    "vs_audit": {"reported": [0.972, 0.952], "recomputed": [0.972, 0.952], "audit_counts": {"ACT": 19, "NORM": 13, "GENERIC": 1, "UNKNOWN": 3}, "p_e": "546/1296", "note": "classes_reviewer covers all 36 events, so the audit is entirely the 1ar reviewer's classes; the worker and reviewer differ only on R-89, and both of their classes map to ACT"}
+  },
+  "textual_overlap_estimate": {
+    "type_quote_identical_span": 25,
+    "type_quote_one_contains_other": 9,
+    "type_quote_different_span": 2,
+    "different_span_events": ["AUTHORIZE-IMPL R-89 (Chief, PREPARED)", "RAISE L493-B (single occurrence)"],
+    "span_level_overlap_percent": 88,
+    "source_act_operation_identical": "35/36, including the identical free-text verbs OTHER:NARRATE x3, OTHER:DEFER, OTHER:ADJUDICATE",
+    "anchor_strings": "near-identical, e.g. 'as carried on R-81 and R-83' vs 'as carried in R-81 and R-83'",
+    "deontic_identical": "11/12 (R-83: REQUIRED vs UNK)",
+    "dual_identical": "36/36",
+    "notes": "The same hard events are flagged with the same arguments: R-77 same-day block vs the git commit; the missing R-36 matrix; the REGISTER rule 'could also be NORM'; the R-60 split; R-83 PREPARED until R-86",
+    "sample_events_checked": [
+      {"event": "ADOPT R-81..85 by the Chief (declined)", "overlap": "~85%, P1 = P2 + one clause"},
+      {"event": "ADOPT R-81..85 by the DA (R-86)", "overlap": "100%"},
+      {"event": "ADOPT R-91 by the DA (held)", "overlap": "~85%, P2 = P1 + one clause"},
+      {"event": "AUTHORIZE-IMPL R-70 (ARB)", "overlap": "~80%"},
+      {"event": "AUTHORIZE-IMPL R-89 (Chief, PREPARED)", "overlap": "~20%"},
+      {"event": "REGISTER operational acceptance (R-90)", "overlap": "~70%, P2 is a prefix of P1"},
+      {"event": "OPEN-WORK by a recording note (R-60)", "overlap": "~90%"},
+      {"event": "START WP-4B at R-72 (proviso unmet)", "overlap": "100%"},
+      {"event": "START WP-8 (permission only)", "overlap": "~60%"},
+      {"event": "START 7A after AUTHORIZE(7A)", "overlap": "~60%"},
+      {"event": "RAISE promoted/not promoted x7 (R-36)", "overlap": "100%"},
+      {"event": "RAISE L493-B (single occurrence)", "overlap": "0%"},
+      {"event": "SUPERSEDE §12 (R-83)", "overlap": "~75%"},
+      {"event": "START WP-4B 08-03 16:10", "overlap": "100%"}
+    ]
+  },
+  "degenerate_agreement_assessment": {
+    "conclusion": "The 1.000 agreement cannot separate a clear distinction from near-deterministic output by one model on one prompt, and the evidence leans towards determinism.",
+    "evidence": [
+      "~88% span-level quote overlap; identical invented OTHER:<verb> values in an open slot",
+      "On the 6 events that the coders' own notes call ambiguous (R-60 note, REGISTER rule, R-83, R-89, R-77, R-36 item mapping), both chose the same side 6/6 (about 1/64 if each were an independent coin-flip)",
+      "The event_id strings carry interpretive cues drawn from the audit side ('permission only', 'proviso unmet', 'remains unauthorized', 'declined', 'held', 'rule', 'promoted/not promoted'), and these drive both coder agreement and convergence with the audit",
+      "Disagreements occur only on low-stakes fields (a deontic value, the source_act of an UNKNOWN event, one quote span)"
+    ],
+    "discriminating_tests": [
+      "cross-family or human coders",
+      "within-model baseline: paraphrased TASK.md, shuffled order, event ids stripped to operation + anchor + target; compare between-coder agreement with the re-run baseline",
+      "tie-break flip test ('prefer NORM' vs 'prefer ACT'); labels that flip mark the real boundary",
+      "agreement reported on the hard subset and on effective units (R-36 cluster = 1)",
+      "a gold set of minimal pairs: the same row text coded against different operations"
+    ],
+    "classification": "independence"
+  },
+  "validity_checks": [
+    {"event": "ADOPT R-81..85 by the Chief (declined)", "label": "ACT_OBSERVATION", "correct": true, "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND “BATCH 7 IS RELEASED” DOES NOT HOLD."},
+    {"event": "ADOPT R-81..85 by the DA (R-86)", "label": "ACT_OBSERVATION", "correct": true, "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+    {"event": "ADOPT R-91 by the DA (held)", "label": "ACT_OBSERVATION", "correct": true, "quote": "HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED"},
+    {"event": "AUTHORIZE-IMPL R-70 (ARB)", "label": "ACT_OBSERVATION", "correct": true, "quote": "WP-7B-R1 is authorized to extract the interim anchor resolution into an `EvidenceAnchorResolver` port"},
+    {"event": "AUTHORIZE-IMPL R-89 (Chief, PREPARED)", "label": "ACT_OBSERVATION", "correct": true, "quote": "WP-4C-1 — `AdjudicationFailureDeclared` (the domain event, its outbox hydrator, and its catalog deliverable) — is AUTHORIZED.", "note": "performed in PREPARED form; in-force status open"},
+    {"event": "REGISTER operational acceptance (R-90)", "label": "ACT_OBSERVATION", "correct": true, "quote": "Then R-90 itself withdrawn before adoption, because the Authority ruled it was operational acceptance rather than a constitutional decision"},
+    {"event": "REGISTER constitutional decision (rule)", "label": "GENERIC_PRACTICE", "correct": true, "quote": "the register holds constitutional decisions"},
+    {"event": "OPEN-WORK by a recording note (R-60)", "label": "ACT_OBSERVATION", "correct": false, "quote": "A recording note cannot open a work package — that is the ruling/note distinction this register enforces — so it is filed as a ruling in line with the operative text.", "note": "Contestable. The attested act is a successful opening as a ruling plus a reclassification; for note-based opening only a power norm is stated. The audit's NORM is more defensible. Genuine boundary case."},
+    {"event": "OPEN-WORK by a ruling (R-60 refiled)", "label": "ACT_OBSERVATION", "correct": true, "quote": "WP-7B-R1 OPENED — Interim Anchor Extraction"},
+    {"event": "START WP-4B at R-72 (proviso unmet)", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN"},
+    {"event": "START WP-4B 08-03 16:10", "label": "ACT_OBSERVATION", "correct": true, "quote": "Four keystones written; 4 failed (0 assertions). STOP at the RED boundary."},
+    {"event": "START WP-8 (permission only)", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "NO IMPLEMENTATION WORK FOR WP-8 SHALL COMMENCE"},
+    {"event": "START 7A after AUTHORIZE(7A)", "label": "NORM_STATEMENT / PERMITTED", "correct": true, "quote": "First authorized activity: RED at 7A", "note": "no record that 7A RED began"},
+    {"event": "START 7B after AUTHORIZE(7A)", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "Scope is slice-granular: 7A ONLY — 7B and 7C are NOT authorized"},
+    {"event": "RAISE promoted #2, #3, #9, #10; not promoted #5, #14, #17 (R-36, 7 events)", "label": "ACT_OBSERVATION", "correct": false, "quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours), 6 one-line behaviours / Expressly NOT promoted:", "note": "Contestable. The act is attested at row level but not on the event's target (item #N, which is in the unprovided matrix). This is inconsistent with L493-B being coded UNKNOWN. Strictly UNKNOWN. Both coders concede this in their notes."},
+    {"event": "RAISE L493-B (single occurrence)", "label": "UNKNOWN", "correct": true, "quote": "S0815-L483: session log 2026-08-15, lines 480-490", "note": "cluster text is provided; the target line is not in it"},
+    {"event": "RAISE P1 / R-41 (by PA instruction)", "label": "ACT_OBSERVATION", "correct": true, "quote": "Artifact Lifecycle Consistency adopted as a permanent documentation standard (Principal Architect instruction)."},
+    {"event": "ASSIGN a never-used number", "label": "UNKNOWN", "correct": true, "quote": "ADR-MP, register-numbering: NO SOURCE TEXT PROVIDED"},
+    {"event": "ASSIGN the retired number R-90", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "THE NUMBER R-90 IS RETIRED AND MUST NOT BE REUSED."},
+    {"event": "SUPERSEDE ADR-T14 (R-77)", "label": "ACT_OBSERVATION", "correct": true, "quote": "this ruling adjudicates a CHARACTERIZATION and a supersession question", "note": "the proposal is implicit, via the offered characterization"},
+    {"event": "SUPERSEDE §12 (R-83)", "label": "NORM_STATEMENT / REQUIRED (P1), UNK (P2)", "correct": false, "quote": "which cannot be achieved by SCOPING — only by SUPERSEDING §12 — and no evidence was presented for superseding it", "note": "Contestable. This is a necessity argument, not a permission, prohibition or requirement. The row rejects the option 'exclude B', whose only route was supersession, so a refused implicit proposal (ACT) or UNKNOWN fits better. The audit shares the NORM label."},
+    {"event": "SUPERSEDE D-12 by ADR-MP", "label": "UNKNOWN", "correct": true, "quote": "ADR-MP, register-numbering: NO SOURCE TEXT PROVIDED"},
+    {"event": "SUPERSEDE PB-006 row declined (R-94)", "label": "ACT_OBSERVATION", "correct": true, "quote": "Of the three engineering-presented outcomes (retain · annotate · supersede), ANNOTATE is adopted."},
+    {"event": "ANNOTATE PB-006 row chosen (R-94)", "label": "ACT_OBSERVATION", "correct": true, "quote": "ANNOTATE is adopted. ... Executed at `IMPLEMENTATION_PROGRESS.md:58`."},
+    {"event": "START 7B at R-56 (plan approved, execution not issued)", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "execution still NOT authorized", "note": "both coders' quotes open with the recording-note sentence, which is 'not part of this ruling'"},
+    {"event": "START 7B at R-58 (execution authorized)", "label": "NORM_STATEMENT / PERMITTED", "correct": true, "quote": "Engineering is authorized to begin Slice 7B RED on keystones K1–K10"},
+    {"event": "START 7C at R-58 (remains unauthorized)", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "Slice 7C remains unauthorized"},
+    {"event": "START 7C at R-65 (authorized)", "label": "NORM_STATEMENT / PERMITTED", "correct": true, "quote": "Slice 7C AUTHORIZED; engineering may begin RED"},
+    {"event": "START §12 reconcile at R-81 (Batch 7 frozen)", "label": "NORM_STATEMENT / FORBIDDEN", "correct": true, "quote": "isolation repair ACTIVE, all other Batch-7 work still frozen"},
+    {"event": "START §12 reconcile at R-86 (Batch 7 released)", "label": "NORM_STATEMENT / PERMITTED", "correct": true, "quote": "engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile"}
+  ],
+  "validity_summary": {"events_checked": 36, "correct": 27, "contestable_shared": 9, "contestable_events": ["R-36 x7", "SUPERSEDE §12 (R-83)", "OPEN-WORK by a recording note (R-60)"]},
+  "shared_errors": [
+    {"id": "S1", "events": "R-36 x7", "issue": "Coded ACT although the act on the event's target (item #N) is unattested. The opposite standard was applied to L493-B.", "verdict": "PLAUSIBLE", "classification": "source interpretation"},
+    {"id": "S2", "events": "OPEN-WORK by a recording note (R-60)", "issue": "Both coders read a power norm plus a reclassification as a refused note-based opening. The audit's NORM is more defensible.", "verdict": "PLAUSIBLE", "classification": "source interpretation"},
+    {"id": "S3", "events": "SUPERSEDE §12 (R-83)", "issue": "A necessity argument is coded as NORM (P1 REQUIRED). Better read as a refused implicit option, or UNKNOWN. Shared with the audit.", "verdict": "PLAUSIBLE", "classification": "source interpretation"},
+    {"id": "S4", "events": "SUPERSEDE/ANNOTATE PB-006 (R-94)", "issue": "Dual coded NO although the row states a norm about other acts ('PB-006 is neither reopened nor re-verified'). This is the one inconsistency in an otherwise genre-determined dual field.", "verdict": "PLAUSIBLE", "classification": "coding"},
+    {"id": "S5", "events": "START 7B at R-56", "issue": "Both quotes open with the sentence from the recording note ('not part of this ruling') rather than the operative outcome column. The label is unaffected.", "verdict": "CONFIRMED", "classification": "wording"}
+  ],
+  "audit_difference": {
+    "event": "OPEN-WORK by a recording note (R-60)",
+    "pilot": "ACT_OBSERVATION (P1 = P2)",
+    "audit": "PERMISSION-STATEMENT -> NORM_STATEMENT (worker and reviewer agree)",
+    "who_is_right": "The audit, narrowly. The row attests a successful opening as a ruling and a reclassification of the note heading; for note-based opening it states only a power rule ('cannot open'). Nothing was turned down. The pilot's reading draws on TASK.md's 'attempted ... refused' clause and on the event id's framing. This is a genuine boundary case.",
+    "quote": "A recording note cannot open a work package — that is the ruling/note distinction this register enforces — so it is filed as a ruling in line with the operative text.",
+    "consequence": "PACKAGE-REVIEW flagged exactly this record: 'If R-60-note is blind-recoded ACT-REFUSED, k becomes WEAK, not 0.' Taken at face value, the pilot would move k from 0 to WEAK. Given the degenerate agreement, the pilot does not support that move.",
+    "classification": "source interpretation / substantive"
+  },
+  "dual_assessment": {
+    "plausible": true,
+    "too_liberal": false,
+    "finding": "dual in effect encodes 'the anchor is a governance-performing register row': YES on 27/29 register-anchored events; NO on all log- and git-anchored events; UNK on the UNKNOWNs. It is definitional, not liberal. The only inconsistency is R-94 NO, which errs towards NO.",
+    "yes_cases_checked": [
+      {"event": "ADOPT R-81..85 by the DA (R-86)", "genuine": true, "norm": "Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it"},
+      {"event": "SUPERSEDE ADR-T14 (R-77)", "genuine": true, "norm": "supersession requires an EXPLICIT ACT, NEVER INFERENCE"},
+      {"event": "OPEN-WORK by a recording note (R-60)", "genuine": true, "norm": "A recording note cannot open a work package"},
+      {"event": "AUTHORIZE-IMPL R-70 (ARB)", "genuine": "trivially", "norm": "NO EXTERNALLY OBSERVABLE BEHAVIOUR SHALL CHANGE"},
+      {"event": "RAISE promoted #2 (R-36)", "genuine": "at row level; one row counted 7 times", "norm": "the promoted behaviours"}
+    ],
+    "no_cases_checked": {"log_or_git_anchored_4": "NO by definition (the anchor performs no listed act)", "R-94_x2": "questionable; should arguably be YES"},
+    "implication_single_vs_two_level": "For the 11 register-anchored NORM records, the row's own act differs from the event's operation, so a single observation_type cannot carry both. This supports a mandatory source_act (two-level). The dual flag itself adds little beyond source_act plus the anchor genre, and 27/36 measures the source genre, not an independently detected phenomenon. PREREG's expectation (>= 10 NORM dual, observed 11/12) was met by construction.",
+    "classification": "coding / formal reasoning"
+  },
+  "unknown_assessment": {
+    "all_three_are_no_source_text": false,
+    "no_source_text": ["ASSIGN a never-used number", "SUPERSEDE D-12 by ADR-MP"],
+    "partial_text": "RAISE L493-B: its cluster excerpt S0815 lines 480-490 is provided, but the target line is not in it. P2 found a candidate (the BINDING VOCABULARY RULING) and coded source_act REGISTER, which is the only source_act disagreement.",
+    "labels_correct": true,
+    "share_is_lower_bound": "Under a strict 'on this target' reading, the 7 R-36 item events (and arguably R-83) would also be UNKNOWN: up to 10-11/36 (0.28-0.31).",
+    "classification": "evidence scope"
+  },
+  "implication_for_A_vs_B": {
+    "can_establish": [
+      "The two-level form can be coded (every field filled in; source_act 35/36; deontic 11/12)",
+      "It is reproducible within one model on one prompt (the upper bound PREREG names)",
+      "In this norm-register genre, the stating act usually differs from the event's operation, so any analysis that needs the stater needs a source_act-like field, which B does not record",
+      "SCORE.json is arithmetically correct"
+    ],
+    "cannot_establish": [
+      "Reliability in the F3 sense: the coders are not independent (same family, ~88% quote overlap, identical invented verbs, 6/6 hard cases on the same side, cue-bearing event ids)",
+      "Validity: 9/36 labels are contestable in the same way for both coders, and the single audit departure is, on this review's reading, the pilot's error",
+      "External validation from convergence: the audit is the same family and cued by the same descriptions",
+      "Anything about B: there was no B arm, and F1 is untested; the pilot removes the 'A cannot be coded' objection but gives no evidence that B is insufficient for act-only verdicts",
+      "Generalisation: ~28 effective row-units; 7 events from one row; one non-register execution record"
+    ],
+    "threshold": "The adoption threshold is the human's and is not set here.",
+    "discriminating_next_step": "A cross-family or perturbed-prompt recode with event ids stripped, plus a B arm coding the same 36 events under the v1-internal rules, both scored on verdicts (a, k, s, e, h), not only on classes",
+    "classification": "evidence scope / substantive"
+  },
+  "disagreements": [
+    {"id": "X1", "claim": "observation_type agreement 1.000 (kappa 1.000) shows the distinction is reliable (F3)", "review_position": "It is an upper bound consistent with same-model determinism; on self-declared hard cases the coders agree 6/6", "classification": "independence"},
+    {"id": "X2", "claim": "Convergence 0.972 with the audit supports validity", "review_position": "The audit is the same family and the event ids carry audit-side cues; this is not external validation", "classification": "independence"},
+    {"id": "X3", "claim": "dual = YES on 27/36 confirms F4", "review_position": "dual is determined by genre (27/29 register rows); this confirms that source_act is needed, not that dual is an independent phenomenon; PREREG's expectation was met by construction", "classification": "formal reasoning"},
+    {"id": "X4", "claim": "The 3 UNKNOWNs are the no-source cases (F5)", "review_position": "Only 2 of 3 are; L493-B has partial text; the share is a lower bound", "classification": "evidence scope"},
+    {"id": "X5", "claim": "The pilot's R-60-note class (ACT) is a blind recode that can update the audit", "review_position": "The audit's NORM is more defensible; the pilot recode would trigger PACKAGE-REVIEW's k 0 -> WEAK fragility without adequate support", "classification": "substantive"},
+    {"id": "X6", "claim": "source_act agreement 0.972", "review_position": "On decidable events it is 35/35, including identical free-text OTHER verbs, which is a determinism signal, not a reliability result", "classification": "independence"},
+    {"id": "X7", "claim": "n = 36", "review_position": "About 28 effective row-units (the 7 R-36 events rest on one row and one quote); zero disagreements in ~28 units gives a rule-of-three bound of ~0.89 even under independence", "classification": "evidence scope"},
+    {"id": "X8", "claim": "PREREG: 'coders do not see the audit classes'", "review_position": "True in letter only; the event_id descriptions encode the intended readings ('permission only', 'declined', 'held', 'rule')", "classification": "independence"},
+    {"id": "X9", "claim": "The R-36 ACT labels are valid", "review_position": "Valid only at row level; the event's target (item #N) is unattested, and treating these as ACT is inconsistent with L493-B being coded UNKNOWN", "classification": "source interpretation"},
+    {"id": "X10", "claim": "R-83 is a NORM_STATEMENT (P1: REQUIRED)", "review_position": "It is a necessity argument; a refused implicit option (ACT) or UNKNOWN fits better", "classification": "source interpretation"}
+  ]
+}

@@ -1,0 +1,401 @@
+"""Tests for p3b_v1_1_instrument.py (V1.1 instrument-validation tooling). Synthetic data and temp files only; reads
+no corpus and no harness transcript."""
+import importlib.util
+import json
+import os
+import tempfile
+import unittest
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+spec = importlib.util.spec_from_file_location("v11", os.path.join(HERE, "..", "p3b_v1_1_instrument.py"))
+v = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(v)
+COMMIT = "0123abcd" + "0" * 32
+NONCE_A, NONCE_B = "a" * 32, "b" * 32
+V1ABS = "/repo/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1"
+CWD = "/repo"
+
+
+def text():
+    return ("preamble\n\n# One\nalpha beta\n\n```\n# fenced, not a heading\n```\n\n## Two\n"
+            + "".join(f"paragraph {i} " * 40 + "\n\n" for i in range(40)) + "### Three\nlast\n\n  \n")
+
+
+class Segmentation(unittest.TestCase):
+    def test_tiles_deterministic_bounded(self):
+        t = text()
+        s = v.segment(t)
+        self.assertTrue(v.tiles(s, len(t)))
+        self.assertEqual(s, v.segment(t))
+        self.assertEqual([x["kind"] for x in s][:3], ["PREAMBLE", "HEADING", "HEADING"])
+
+    def test_edge_branches(self):                               # m6: branches not covered in v1
+        cases = {"leading-ws": "\n\n\n# A\ntext\n", "heading-first": "# A\ntext\n",
+                 "unclosed-fence": "# A\n```\n# B\n" + "z\n\n" * 4000, "crlf": "# A\r\ntext\r\n\r\n# B\r\nmore\r\n",
+                 "seven-hash": "####### not\n# real\nx\n", "no-newline": "plain", "empty": ""}
+        for name, t in cases.items():
+            s = v.segment(t)
+            self.assertEqual(s, v.segment(t), name)
+            if t:
+                self.assertTrue(v.tiles(s, len(t)), name)
+        self.assertEqual([x["kind"] for x in v.segment(cases["leading-ws"])], ["HEADING"])
+        self.assertEqual([x["kind"] for x in v.segment(cases["seven-hash"])], ["PREAMBLE", "HEADING"])
+        self.assertEqual(len(v.segment(cases["crlf"])), 2)
+        self.assertTrue(all(x["kind"] in ("HEADING", "SPLIT") for x in v.segment(cases["unclosed-fence"])))
+
+    def test_map_ids_stable(self):
+        m = v.segment_map("S0001", text())
+        self.assertEqual(m[0]["segment_id"], "S0001-g001")
+        self.assertEqual(m, v.segment_map("S0001", text()))
+
+
+def prop(pid, quote="alpha beta", **kw):
+    p = {"proposition_id": pid, "proposition_type": "CLAIM", "status": "ASSERTED", "statement": "s", "quote": quote,
+         "register_decision": "PROMOTE"}
+    p.update(kw)
+    return p
+
+
+class Checks(unittest.TestCase):
+    def setUp(self):
+        self.t = text()
+        self.map = v.segment_map("S0001", self.t)
+        self.texts = {"S0001": self.t}
+
+    def full(self):
+        return [{"segment_id": s["segment_id"], "source_id": "S0001", "result": "PROPOSITIONS",
+                 "propositions": [prop(f"P{i}", self.t[s["char_start"]:s["char_end"]].strip()[:12])]}
+                for i, s in enumerate(self.map)]
+
+    def test_full_inventory_passes(self):
+        r, f = v.check_inventory(self.full(), self.map, self.texts)
+        self.assertEqual(r["coverage"], {"S0001": 1.0})
+        self.assertEqual(f, [])
+
+    def test_failures_are_keyed(self):
+        recs = self.full()[1:]                                   # first segment missing
+        recs[0]["propositions"][0]["quote"] = "preamble"          # quote from another segment
+        recs[1]["propositions"].append(prop(recs[0]["propositions"][0]["proposition_id"]))   # duplicate id
+        _, f = v.check_inventory(recs, self.map, self.texts)
+        classes = {x["class"] for x in f}
+        self.assertIn("MISSING-SEGMENT", classes)
+        self.assertIn("QUOTE-OUT-OF-SEGMENT", classes)
+        self.assertIn("SCHEMA:duplicate-proposition_id", classes)
+
+    def test_vacuous_inventory_has_full_coverage(self):          # the reason capture must stay a VALID gate (R1)
+        vac = [{"segment_id": s["segment_id"], "source_id": "S0001", "result": "NO-SUBSTANTIVE-PROPOSITION",
+                "reason": "x"} for s in self.map]
+        r, f = v.check_inventory(vac, self.map, self.texts)
+        self.assertEqual((r["coverage"]["S0001"], f), (1.0, []))
+
+    def test_validate_mode_skips_quotes(self):
+        recs = self.full()
+        recs[0]["propositions"][0]["quote"] = "not in the file at all"
+        _, f = v.check_inventory(recs, self.map, None)
+        self.assertEqual(f, [])
+
+    def test_open_checks(self):
+        recs = [{"item_id": "i1", "source_id": "S0001", "statement": "s", "quote": "alpha beta"},
+                {"item_id": "i1", "source_id": "S0001", "statement": "s", "quote": "zzz"},
+                {"item_id": "i3", "source_id": "S9999", "statement": "s", "quote": "q"}]
+        _, f = v.check_open(recs, {"S0001"}, self.texts)
+        self.assertEqual(sorted(x["class"] for x in f), ["QUOTE-MISS", "SCHEMA:item_id", "SCHEMA:source_id"])
+
+    def test_length_summary(self):
+        self.assertEqual(v.length_summary([3, 1, 2])["median"], 2)
+        self.assertIsNone(v.length_summary([]))
+
+
+class Repair(unittest.TestCase):                                   # R4
+    def seg_rec(self, props):
+        return {"segment_id": "g1", "source_id": "S0001", "result": "PROPOSITIONS", "propositions": props}
+
+    def test_unflagged_key_rejected(self):
+        out, d = v.apply_repair([{"item_id": "a"}, {"item_id": "b", "q": 1}], [{"item_id": "b", "q": 2}],
+                                [{"key": "a", "proposition_id": None, "class": "QUOTE-MISS"}], "item_id")
+        self.assertEqual(d, [{"key": "b", "decision": "REJECTED", "reason": "UNFLAGGED-KEY"}])
+        self.assertIn({"item_id": "b", "q": 1}, out)
+
+    def test_flagged_item_replace_and_withdraw(self):
+        fl = [{"key": "a", "proposition_id": None, "class": "QUOTE-MISS"},
+              {"key": "b", "proposition_id": None, "class": "QUOTE-MISS"}]
+        out, d = v.apply_repair([{"item_id": "a", "q": 0}, {"item_id": "b"}],
+                                [{"item_id": "a", "q": 9}, {"item_id": "b", "withdrawn": True}], fl, "item_id")
+        self.assertEqual(out, [{"item_id": "a", "q": 9}])
+        self.assertEqual([x["decision"] for x in d], ["ACCEPTED", "ACCEPTED"])
+
+    def test_seg_unflagged_proposition_must_not_change(self):
+        orig = [self.seg_rec([prop("p1"), prop("p2")])]
+        fl = [{"key": "g1", "proposition_id": "p1", "class": "QUOTE-MISS"}]
+        changed = self.seg_rec([prop("p1", "new"), prop("p2", "EDITED")])
+        _, d = v.apply_repair(orig, [changed], fl, "segment_id")
+        self.assertEqual(d[0]["reason"], "CHANGED-UNFLAGGED")
+        ok = self.seg_rec([prop("p1", "new"), prop("p2")])
+        out, d = v.apply_repair(orig, [ok], fl, "segment_id")
+        self.assertEqual(d[0]["decision"], "ACCEPTED")
+        self.assertEqual(out[0]["propositions"][0]["quote"], "new")
+
+    def test_seg_no_added_propositions(self):
+        orig = [self.seg_rec([prop("p1")])]
+        fl = [{"key": "g1", "proposition_id": "p1", "class": "QUOTE-MISS"}]
+        _, d = v.apply_repair(orig, [self.seg_rec([prop("p1"), prop("p9")])], fl, "segment_id")
+        self.assertEqual(d[0]["reason"], "ADDED-PROPOSITION")
+
+    def test_seg_drop_flagged_only(self):
+        orig = [self.seg_rec([prop("p1"), prop("p2")])]
+        fl = [{"key": "g1", "proposition_id": "p1", "class": "QUOTE-MISS"}]
+        out, d = v.apply_repair(orig, [self.seg_rec([prop("p2")])], fl, "segment_id")
+        self.assertEqual((d[0]["decision"], [p["proposition_id"] for p in out[0]["propositions"]]),
+                         ("ACCEPTED", ["p2"]))
+
+    def test_missing_segment_added_and_duplicates_rejected(self):
+        fl = [{"key": "g2", "proposition_id": None, "class": "MISSING-SEGMENT"}]
+        new = {"segment_id": "g2", "source_id": "S0001", "result": "NO-SUBSTANTIVE-PROPOSITION", "reason": "r"}
+        out, d = v.apply_repair([], [new], fl, "segment_id")
+        self.assertEqual(out, [new])
+        _, d = v.apply_repair([], [new, dict(new)], fl, "segment_id")
+        self.assertTrue(all(x["reason"] == "DUPLICATE-REPAIR" for x in d))
+
+    def test_original_not_mutated(self):
+        orig = [{"item_id": "a", "q": 0}]
+        v.apply_repair(orig, [{"item_id": "a", "q": 1}], [{"key": "a", "proposition_id": None, "class": "X"}],
+                       "item_id")
+        self.assertEqual(orig, [{"item_id": "a", "q": 0}])
+
+
+class Blinding(unittest.TestCase):                                 # R5
+    outs = {s: [{"orig_id": f"{s}-1", "source_id": "S0001", "statement": "x", "quote": "q"}] for s in v.SOURCES}
+
+    def test_nonce_required_and_deterministic(self):
+        with self.assertRaises(v.V1Error):
+            v.equalize(self.outs, "")
+        self.assertEqual(v.equalize(self.outs, NONCE_A), v.equalize(self.outs, NONCE_A))
+
+    def test_mapping_depends_on_nonce_not_commit(self):
+        maps = {tuple(v.equalize(self.outs, n * 32)[1]["letter_of_source"].values()) for n in "abcdef0123456789"}
+        self.assertGreater(len(maps), 1)
+        ids_a = {i["item_id"] for L in v.equalize(self.outs, NONCE_A)[0].values() for i in L}
+        ids_b = {i["item_id"] for L in v.equalize(self.outs, NONCE_B)[0].values() for i in L}
+        self.assertFalse(ids_a & ids_b)
+
+    def test_lists_carry_no_source_fields(self):
+        for items in v.equalize(self.outs, NONCE_A)[0].values():
+            self.assertEqual(set(items[0]), {"item_id", "list", "source_id", "statement", "quote"})
+
+
+def rec(run, calls, models=None, persisted=()):
+    role, alias, _ = v.RUNS[run]
+    return {"cwd": CWD, "api_models": models or [v.MODEL_IDS[alias]], "persisted_outputs": list(persisted),
+            "tool_calls": [{"ts": "2026-09-25T12:00:00.000Z", "id": f"t{i}", "name": n, "input": inp}
+                           for i, (n, inp) in enumerate(calls)]}
+
+
+class ToolCallAudit(unittest.TestCase):                            # R2
+    def reader(self, run, sid, label, page=1):
+        return (f"cd /repo/docs/knowledgeos/chronological-read && python3 scripts/p3b_read_source.py --run {run} "
+                f"--batch PX0106 --label {label} --step 10 --page {page} {sid}")
+
+    def test_allowed_extractor_run(self):
+        r = rec("PX0106-U01", [("Bash", {"command": self.reader("PX0106-U01", "S1022", v.LABEL_C)}),
+                               ("Read", {"file_path": V1ABS + "/SEGMENT-MAP.json"}),
+                               ("Write", {"file_path": V1ABS + "/OUT-PX0106-U01.jsonl"}),
+                               ("Bash", {"command": "python3 scripts/p3b_v1_1_instrument.py validate --run PX0106-U01"}),
+                               ("SubagentHandback", {})])
+        self.assertEqual(v.audit_calls("PX0106-U01", r, V1ABS), [])
+
+    def test_m2_reading_m1_decisions_is_detected(self):
+        for call in (("Read", {"file_path": V1ABS + "/DECISIONS-A01.jsonl"}),
+                     ("Bash", {"command": "cat pilot-s5-decomp/v1/DECISIONS-A01.jsonl"}),
+                     ("Bash", {"command": "git show HEAD:x/DECISIONS-A01.jsonl"}),
+                     ("Bash", {"command": "python3 -c \"open('DEC'+'ISIONS-A01.jsonl')\""}),
+                     ("Grep", {"pattern": "MATCH", "path": V1ABS}),
+                     ("Read", {"file_path": V1ABS + "/SOURCE-KEY.json"})):
+            self.assertTrue(v.audit_calls("PX0106-A02", rec("PX0106-A02", [call]), V1ABS), call)
+
+    def test_m1_cannot_read_m2_material(self):
+        r = rec("PX0106-A01", [("Read", {"file_path": V1ABS + "/DECISIONS-A02.jsonl"})])
+        self.assertTrue(v.audit_calls("PX0106-A01", r, V1ABS))
+
+    def test_extractor_cannot_read_other_outputs_or_wrong_files(self):
+        self.assertTrue(v.audit_calls("PX0106-U03", rec("PX0106-U03", [
+            ("Read", {"file_path": V1ABS + "/OUT-PX0106-U05.jsonl"})]), V1ABS))
+        self.assertTrue(v.audit_calls("PX0106-U03", rec("PX0106-U03", [
+            ("Bash", {"command": self.reader("PX0106-U03", "S1413", v.LABEL_S)})]), V1ABS))      # other label
+        self.assertTrue(v.audit_calls("PX0106-U03", rec("PX0106-U03", [
+            ("Bash", {"command": self.reader("PX0106-U05", "S1022", v.LABEL_C)})]), V1ABS))      # other run id
+        self.assertTrue(v.audit_calls("PX0106-U03", rec("PX0106-U03", [
+            ("Bash", {"command": self.reader("PX0106-U03", "S1022", v.LABEL_C) + " > /tmp/x"})]), V1ABS))
+
+    def test_persisted_output_of_own_call_readable(self):
+        p = "/home/u/.claude/projects/x/tool-results/abc.txt"
+        r = rec("PX0106-U03", [("Read", {"file_path": p})], persisted=[p])
+        self.assertEqual(v.audit_calls("PX0106-U03", r, V1ABS), [])
+        r = rec("PX0106-U03", [("Read", {"file_path": p})])
+        self.assertTrue(v.audit_calls("PX0106-U03", r, V1ABS))
+
+    def test_writes_limited_to_own_outputs(self):
+        self.assertTrue(v.audit_calls("PX0106-A02", rec("PX0106-A02", [
+            ("Write", {"file_path": V1ABS + "/DECISIONS-A01.jsonl"})]), V1ABS))
+
+    def test_parse_transcript(self):
+        lines = [{"cwd": CWD, "timestamp": "2026-09-25T12:00:00.100Z",
+                  "message": {"model": "claude-fable-5-1", "content": [
+                      {"type": "tool_use", "id": "t1", "name": "Write",
+                       "input": {"file_path": "/x/OUT.jsonl", "content": "big"}}]}},
+                 {"timestamp": "2026-09-25T12:00:01.000Z", "message": {"content": [
+                     {"type": "tool_result", "content": "Output too large. Full output saved to: /p/tool-results/q.json\n"}]}},
+                 {"timestamp": "2026-09-25T12:00:02.000Z", "message": {"model": "<synthetic>", "content": "x"}}]
+        with tempfile.NamedTemporaryFile("w", suffix=".jsonl", delete=False) as f:
+            f.write("\n".join(json.dumps(x) for x in lines) + "\n")
+        try:
+            r = v.parse_transcript(f.name)
+        finally:
+            os.unlink(f.name)
+        self.assertEqual(r["api_models"], ["claude-fable-5-1"])
+        self.assertEqual(r["persisted_outputs"], ["/p/tool-results/q.json"])
+        self.assertNotIn("content", r["tool_calls"][0]["input"])
+        self.assertIn("content_sha256", r["tool_calls"][0]["input"])
+        self.assertEqual((r["first_ts"], r["last_ts"]), ("2026-09-25T12:00:00.100Z", "2026-09-25T12:00:02.000Z"))
+
+
+class Kappa(unittest.TestCase):                                     # m1–m3
+    cl = [{"cluster_id": "x1", "list": "X"}, {"cluster_id": "y1", "list": "Y"}, {"cluster_id": "z1", "list": "Z"}]
+
+    def dec(self, cid, other, status, target=None):
+        return {"cluster_id": cid, "other_list": other, "status": status, "target_cluster": target}
+
+    def full(self):
+        return [self.dec("x1", "Y", "MATCH", "y1"), self.dec("x1", "Z", "NONE"),
+                self.dec("y1", "X", "MATCH", "x1"), self.dec("y1", "Z", "PARTIAL", "z1")]
+
+    def test_identical_and_direction(self):
+        k = v.kappas(self.full(), self.full(), ["x1", "y1"], self.cl)
+        self.assertEqual((k["kappa_target"], k["units_expected"]), (1.0, 4))
+        self.assertIn("X->Y", k["kappa_target_by_direction"])
+
+    def test_missing_unit_not_computable(self):
+        d2 = self.full()[:-1]
+        k = v.kappas(self.full(), d2, ["x1", "y1"], self.cl)
+        self.assertIsNone(k["kappa_target"])
+        self.assertEqual(k["missing_in_m2"], 1)
+        k = v.kappas(self.full()[1:], self.full(), ["x1", "y1"], self.cl)
+        self.assertEqual(k["missing_in_m1"], 1)
+
+    def test_degenerate_not_one(self):
+        d = [self.dec("x1", "Y", "NONE"), self.dec("x1", "Z", "NONE")]
+        k = v.kappas(d, d, ["x1"], self.cl)
+        self.assertIsNone(k["kappa_target"])
+        self.assertIn("p_e", k["not_computable_reason"])
+
+    def test_target_disagreement_lowers_kappa(self):
+        d2 = self.full()
+        d2[0] = self.dec("x1", "Y", "MATCH", "y9")
+        k = v.kappas(self.full(), d2, ["x1", "y1"], self.cl)
+        self.assertLess(k["kappa_target"], 1.0)
+
+
+class Capture(unittest.TestCase):                                   # R1
+    L = {"SEG": "X", "E1": "Y", "E2": "Z"}
+
+    def data(self, n, seg_status):
+        cl = [{"cluster_id": f"y{i}", "list": "Y"} for i in range(n)]
+        d = [{"cluster_id": f"y{i}", "other_list": "Z", "status": "MATCH"} for i in range(n)]
+        d += [{"cluster_id": f"y{i}", "other_list": "X", "status": seg_status(i)} for i in range(n)]
+        return cl, d
+
+    def test_small_agreed_set_not_computable(self):
+        cl, d = self.data(19, lambda i: "MATCH")
+        c = v.capture(cl, d, self.L)
+        self.assertIsNone(c["lenient"])
+        self.assertEqual(c["lenient_observed"], 1.0)
+
+    def test_computable_at_minimum(self):
+        cl, d = self.data(20, lambda i: "PARTIAL" if i % 2 else "NONE")
+        c = v.capture(cl, d, self.L)
+        self.assertEqual((c["strict"], c["lenient"]), (0.0, 0.5))
+
+
+class Decision(unittest.TestCase):                                  # R1, R3
+    base = {"run_invalid": [], "seg_exhausted": [], "other_failed": [], "coverage_completed": {"PX0106-U01": 1.0},
+            "coverage_all_one": True, "quote_miss_completed": {"PX0106-U01": 0.0}, "quote_miss_any": False,
+            "schema_ok": True, "kappa": 0.7, "kappa_reason": None, "capture": 0.9, "capture_observed": 0.9, "agreed": 30}
+
+    def d(self, **kw):
+        return v.decide(dict(self.base, **kw))[:2]
+
+    def test_valid(self):
+        self.assertEqual(self.d(), ("INSTRUMENTS-VALID", None))
+
+    def test_run_invalid_dominates(self):
+        self.assertEqual(self.d(run_invalid=["x"], kappa=0.1), ("NEEDS-REVISION", "RUN-INVALID"))
+
+    def test_capture_never_not_usable(self):
+        self.assertEqual(self.d(capture=0.1), ("NEEDS-REVISION", "INSTRUMENT"))
+        self.assertEqual(self.d(capture=None, agreed=3), ("NEEDS-REVISION", "INSTRUMENT-UNDETERMINED"))
+
+    def test_kappa_states(self):
+        self.assertEqual(self.d(kappa=0.3), ("NOT-USABLE", None))
+        self.assertEqual(self.d(kappa=0.5), ("NEEDS-REVISION", "INSTRUMENT"))
+        self.assertEqual(self.d(kappa=None, kappa_reason="r"), ("NEEDS-REVISION", "INSTRUMENT-UNDETERMINED"))
+
+    def test_coverage_and_quotes(self):
+        self.assertEqual(self.d(coverage_completed={"PX0106-U01": 0.9}, coverage_all_one=False), ("NOT-USABLE", None))
+        self.assertEqual(self.d(coverage_completed={"PX0106-U01": 0.97}, coverage_all_one=False),
+                         ("NEEDS-REVISION", "INSTRUMENT"))
+        self.assertEqual(self.d(quote_miss_completed={"PX0106-U03": 0.2}, quote_miss_any=True), ("NOT-USABLE", None))
+        self.assertEqual(self.d(schema_ok=False), ("NEEDS-REVISION", "INSTRUMENT"))
+
+    def test_failed_runs(self):                                      # §17 vs §18 resolved
+        self.assertEqual(self.d(seg_exhausted=["PX0106-U02"], coverage_completed={}),
+                         ("NEEDS-REVISION", "INSTRUMENT"))
+        self.assertEqual(self.d(other_failed=["PX0106-A02"], kappa=None, kappa_reason="r"),
+                         ("NEEDS-REVISION", "INSTRUMENT-UNDETERMINED"))
+
+    def test_low_capture_reports_causes(self):
+        reasons = v.decide(dict(self.base, capture=0.2))[2]
+        self.assertTrue(any("possible causes" in r for r in reasons))
+
+
+class Order(unittest.TestCase):
+    def prov(self, gap=None):
+        out = []
+        for i, (s, files) in enumerate(v.STAGES):
+            if s == gap:
+                continue
+            out.append({"stage": s, "utc": f"2026-09-25T12:{i:02d}:00.000000Z",
+                        "files": {f: "h" for f in files}})
+        return out
+
+    def test_clean_order(self):
+        recs = {"PX0106-A01": {"first_ts": "2026-09-25T12:04:30.000Z", "last_ts": "2026-09-25T12:04:50.000Z"}}
+        self.assertEqual(v.order_breaches(self.prov(), recs), [])
+
+    def test_violations(self):
+        self.assertTrue(v.order_breaches(self.prov(gap="lists"), {}))
+        recs = {"PX0106-A02": {"first_ts": "2026-09-25T12:05:10.000Z", "last_ts": "2026-09-25T12:05:20.000Z"}}
+        self.assertTrue(any("sample" in w for _, w in v.order_breaches(self.prov(), recs)))
+        recs = {"PX0106-U03": {"first_ts": "2026-09-25T12:01:10.000Z", "last_ts": "2026-09-25T12:01:20.000Z",
+                               "tool_calls": [{"name": "Write", "ts": "2026-09-25T12:01:30.000Z",
+                                               "input": {"file_path": "/v1/OUT-PX0106-U03.repair.jsonl"}}]}}
+        self.assertTrue(any("repair file" in w for _, w in v.order_breaches(self.prov(), recs)))
+
+    def test_seal_hash_must_match(self):
+        p = self.prov()
+        p[-1]["files"]["SOURCE-KEY.json"] = "other"
+        self.assertTrue(any("changed between" in w for _, w in v.order_breaches(p, {})))
+
+    def test_ts_parsing(self):
+        self.assertLess(v.ts("2026-09-25T12:00:00.123Z"), v.ts("2026-09-25T12:00:00.123456Z"))
+
+
+class Guard(unittest.TestCase):
+    def test_refuses_without_authorization(self):
+        self.assertEqual(v.main(["segment", "--commit", COMMIT]), 1)
+        self.assertEqual(v.main(["result"]), 2)
+
+    def test_canaries_unique(self):
+        self.assertEqual(len({v.canary(COMMIT, r) for r in v.RUNS}), len(v.RUNS))
+
+
+if __name__ == "__main__":
+    unittest.main()

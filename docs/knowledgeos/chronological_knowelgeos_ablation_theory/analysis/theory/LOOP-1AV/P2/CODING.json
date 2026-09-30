@@ -1,0 +1,292 @@
+{
+ "events": [
+  {
+   "event_id": "ADOPT R-81..85 by the Chief (declined)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND “BATCH 7 IS RELEASED” DOES NOT HOLD.** The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour",
+   "source_act": {"anchor": "R-81..85 PROVENANCE ANNOTATION 2026-08-04 (as carried in R-81 and R-83)", "operation": "ANNOTATE"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "ADOPT R-81..85 by the DA (R-86)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment. These become governing rulings effective immediately.",
+   "source_act": {"anchor": "R-86", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "ADOPT R-91 by the DA (held)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED (annotation; the text above is unchanged and retained).** **The Decision Authority held it",
+   "source_act": {"anchor": "R-91 (HELD annotation 2026-08-04)", "operation": "ANNOTATE"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "AUTHORIZE-IMPL R-70 (ARB)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "WP-7B-R1 is authorized to extract the interim anchor resolution into an `EvidenceAnchorResolver` port and a `TemporaryDefaultAnchorResolver` implementation.",
+   "source_act": {"anchor": "R-70", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "AUTHORIZE-IMPL R-89 (Chief, PREPARED)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — Execution Governance · Authorization · ARB CHIEF (PREPARED).",
+   "source_act": {"anchor": "R-89", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "REGISTER operational acceptance (R-90)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Then **R-90 itself withdrawn before adoption**, because the Authority ruled it was operational acceptance rather than a constitutional decision",
+   "source_act": {"anchor": "S0804-L576", "operation": "OTHER:NARRATE"},
+   "deontic": "n/a",
+   "dual": "NO"
+  },
+  {
+   "event_id": "REGISTER constitutional decision (rule)",
+   "observation_type": "GENERIC_PRACTICE",
+   "type_quote": "*the register holds constitutional decisions*",
+   "source_act": {"anchor": "S0804-L576", "operation": "OTHER:NARRATE"},
+   "deontic": "n/a",
+   "dual": "NO"
+  },
+  {
+   "event_id": "OPEN-WORK by a recording note (R-60)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "the issuing text placed this motion under a heading reading \"Recording Notes -- Not Part of Ruling\" ... **A recording note cannot open a work package** — that is the ruling/note distinction this register enforces — so it is filed as a ruling",
+   "source_act": {"anchor": "R-60", "operation": "OPEN-WORK"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "OPEN-WORK by a ruling (R-60 refiled)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "WP-7B-R1 OPENED — Interim Anchor Extraction ... **Opened, not delivered.** ... so it is filed as a ruling in line with the operative text.",
+   "source_act": {"anchor": "R-60", "operation": "OPEN-WORK"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START WP-4B at R-72 (proviso unmet)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN",
+   "source_act": {"anchor": "R-72", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "FORBIDDEN",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START WP-4B 08-03 16:10",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Subject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive\n\nFour keystones written; 4 failed (0 assertions). STOP at the RED boundary.",
+   "source_act": {"anchor": "git-6a67da5d7", "operation": "START"},
+   "deontic": "n/a",
+   "dual": "NO"
+  },
+  {
+   "event_id": "START WP-8 (permission only)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "NO IMPLEMENTATION WORK FOR WP-8 SHALL COMMENCE until the two remaining governance acts are completed",
+   "source_act": {"anchor": "R-79", "operation": "OTHER:DEFER"},
+   "deontic": "FORBIDDEN",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START 7A after AUTHORIZE(7A)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "First authorized activity: RED at 7A",
+   "source_act": {"anchor": "R-47", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "PERMITTED",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START 7B after AUTHORIZE(7A)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "Scope is slice-granular: 7A ONLY — 7B and 7C are NOT authorized** and follow their own gates.",
+   "source_act": {"anchor": "R-47", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "FORBIDDEN",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE promoted #2",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours), 6 one-line behaviours:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE promoted #3",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours), 6 one-line behaviours:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE promoted #9",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours), 6 one-line behaviours:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE promoted #10",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours), 6 one-line behaviours:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE not promoted #5",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Expressly NOT promoted:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE not promoted #14",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Expressly NOT promoted:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE not promoted #17",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Expressly NOT promoted:",
+   "source_act": {"anchor": "R-36", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "RAISE L493-B (single occurrence)",
+   "observation_type": "UNKNOWN",
+   "type_quote": "BINDING VOCABULARY RULING — applies to ALL future documentation, not just this artifact",
+   "source_act": {"anchor": "S0815-L483", "operation": "REGISTER"},
+   "deontic": "n/a",
+   "dual": "UNK"
+  },
+  {
+   "event_id": "RAISE P1 / R-41 (by PA instruction)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Artifact Lifecycle Consistency adopted as a permanent documentation standard (Principal Architect instruction).** ... rule text hosted ONCE as **ES-004.3**",
+   "source_act": {"anchor": "R-41", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "ASSIGN a never-used number",
+   "observation_type": "UNKNOWN",
+   "type_quote": "ADR-MP, register-numbering: NO SOURCE TEXT PROVIDED",
+   "source_act": {"anchor": "register-numbering", "operation": "UNKNOWN"},
+   "deontic": "n/a",
+   "dual": "UNK"
+  },
+  {
+   "event_id": "ASSIGN the retired number R-90",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "**The number R-90 is RETIRED, not recycled**, or the withdrawal would recreate the very defect R-89's collision exposed.",
+   "source_act": {"anchor": "S0804-L576", "operation": "OTHER:NARRATE"},
+   "deontic": "FORBIDDEN",
+   "dual": "NO"
+  },
+  {
+   "event_id": "SUPERSEDE ADR-T14 (R-77)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "THE INCONSISTENCY CHARACTERIZATION IS NOT ADOPTED; ADR-T14 IS NOT SUPERSEDED",
+   "source_act": {"anchor": "R-77", "operation": "OTHER:ADJUDICATE"},
+   "deontic": "n/a",
+   "dual": "YES"
+  },
+  {
+   "event_id": "SUPERSEDE §12 (R-83)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "Excluding B would leave §12 unimplemented anywhere in the programme, which cannot be achieved by SCOPING — only by SUPERSEDING §12 — and no evidence was presented for superseding it.",
+   "source_act": {"anchor": "R-83", "operation": "ADOPT"},
+   "deontic": "UNK",
+   "dual": "YES"
+  },
+  {
+   "event_id": "SUPERSEDE D-12 by ADR-MP",
+   "observation_type": "UNKNOWN",
+   "type_quote": "ADR-MP, register-numbering: NO SOURCE TEXT PROVIDED",
+   "source_act": {"anchor": "ADR-MP", "operation": "UNKNOWN"},
+   "deontic": "n/a",
+   "dual": "UNK"
+  },
+  {
+   "event_id": "SUPERSEDE PB-006 row declined (R-94)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "Of the three engineering-presented outcomes (retain · annotate · supersede), **ANNOTATE is adopted.** **GROUNDS AS ISSUED:** *the historical acceptance remains correct; superseding would blur chronology",
+   "source_act": {"anchor": "R-94", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "NO"
+  },
+  {
+   "event_id": "ANNOTATE PB-006 row chosen (R-94)",
+   "observation_type": "ACT_OBSERVATION",
+   "type_quote": "**ANNOTATE is adopted.** ... Executed at `IMPLEMENTATION_PROGRESS.md:58`.",
+   "source_act": {"anchor": "R-94", "operation": "ADOPT"},
+   "deontic": "n/a",
+   "dual": "NO"
+  },
+  {
+   "event_id": "START 7B at R-56 (plan approved, execution not issued)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "**Execution of 7B is a SEPARATE act and has NOT been issued** ... **execution still NOT authorized**",
+   "source_act": {"anchor": "R-56", "operation": "AUTHORIZE-PLAN"},
+   "deontic": "FORBIDDEN",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START 7B at R-58 (execution authorized)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "Engineering is authorized to begin Slice 7B RED on keystones K1–K10, with K9 inside 7B. No additional governance act is required before RED.",
+   "source_act": {"anchor": "R-58", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "PERMITTED",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START 7C at R-58 (remains unauthorized)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "Slice 7C remains unauthorized; F-WP6R-1 remains a separate, unauthorized concern.",
+   "source_act": {"anchor": "R-58", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "FORBIDDEN",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START 7C at R-65 (authorized)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "Slice 7C AUTHORIZED; engineering may begin RED; queue 10 closed",
+   "source_act": {"anchor": "R-65", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "PERMITTED",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "Batch 7 partially released: isolation repair ACTIVE, all other Batch-7 work still frozen",
+   "source_act": {"anchor": "R-81", "operation": "AUTHORIZE-IMPL"},
+   "deontic": "FORBIDDEN",
+   "dual": "YES"
+  },
+  {
+   "event_id": "START §12 reconcile at R-86 (Batch 7 released)",
+   "observation_type": "NORM_STATEMENT",
+   "type_quote": "**engineering is AUTHORIZED to execute** R-81's per-process isolation, R-84's §12 reconcile (ack on self-redelivery; dead-letter + escalate otherwise)",
+   "source_act": {"anchor": "R-86", "operation": "ADOPT"},
+   "deontic": "PERMITTED",
+   "dual": "YES"
+  }
+ ]
+}

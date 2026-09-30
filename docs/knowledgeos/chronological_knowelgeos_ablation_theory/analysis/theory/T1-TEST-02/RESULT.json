@@ -1,0 +1,79 @@
+{
+ "test": "T1 r1 vs candidate B (L0-REL-15)",
+ "prereg": "prompts/KNOWLEDGEOS-T1-R1-PREREGISTRATION.md (frozen at 136706d79, before reading)",
+ "source": {
+  "path": "engineering/knowledge/methodology/Layer_Verification_Rule.md",
+  "sha256": "8acc1f0a830fb9455573c1cd015cabc135972edfb3d9c16e9eafd8e207240270",
+  "lines_read": [
+   [
+    1,
+    11
+   ],
+   [
+    142,
+    165
+   ],
+   [
+    170,
+    182
+   ]
+  ]
+ },
+ "classification": {
+  "kind": {
+   "result": "engineering-knowledge artifact (in scope)",
+   "quote": "Engineering Platform methodology module"
+  },
+  "start_rung": {
+   "result": "UNKNOWN"
+  },
+  "target_rung": {
+   "result": "UNKNOWN",
+   "quote": "Promotion to a reusable artifact requested by the ARB, 2026-08-01"
+  },
+  "E1_necessity_evidence": {
+   "result": "YES",
+   "quote": "It reaches a defect class the executable gates demonstrably do not"
+  },
+  "E2_proposal": {
+   "result": "YES",
+   "quote": "Requested of the Decision Authority"
+  },
+  "E3_qualification": {
+   "result": "UNKNOWN (applies only if target >= Engineering Standard)"
+  },
+  "READY_E": {
+   "result": "YES if target < Engineering Standard; else UNDETERMINED"
+  },
+  "decision": {
+   "result": "NONE",
+   "quote": "None of the above has been done"
+  },
+  "PROMOTED": {
+   "result": "NO",
+   "quote": "PROPOSED — NOT ADOPTED"
+  },
+  "FROZEN": {
+   "result": "YES (author-freeze)",
+   "quote": "FROZEN 2026-08-01"
+  }
+ },
+ "falsifiers": {
+  "F2-E": "NOT TRIGGERED (no promotion)",
+  "F7": "TRIGGERED, conditional on target < Engineering Standard -> Case C: readiness not sufficient; H-R3 refuted for this case; T1 r1 survives (it does not claim sufficiency). Else Case D (missing: target rung + qualification record)",
+  "F8": "NOT TRIGGERED; source defends non-collapse: Frozen ≠ adopted, and the distinction is load-bearing",
+  "F1/F6": "NOT TRIGGERED (no governance-status change asserted; freeze is author-level per source)"
+ },
+ "case_E_tension": {
+  "statement_1": "Phase-02.6 L32: Frozen is a governance stage after Authoritative (C_platform)",
+  "statement_2": "the freeze binds the author, not the Authority",
+  "finding": "FROZEN is overloaded: author-freeze vs governance-freeze; both preserved; HYP for r2: split into two predicates"
+ },
+ "further_source_facts": {
+  "evidence_triggered_retirement_proposal": "should be retired",
+  "R-34_cited": "authority is created only by explicit issuance",
+  "thin_evidence_exception_requested": "including the thin-evidence exception and the validation expectation"
+ },
+ "exposure": "one matched sentence (L182) seen in an earlier locate pass; T1 r1 frozen before reading",
+ "not_done": "no engine run, no MT interpretation, no amendment of T1 r1, no MK, no ML"
+}

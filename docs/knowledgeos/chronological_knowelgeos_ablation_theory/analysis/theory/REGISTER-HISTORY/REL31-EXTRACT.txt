@@ -1,0 +1,54 @@
+=== R-96 edit at 562492d2b (2026-08-04); pre-edit e6a6aaf9e: status=NONE cited_by_other_rows=0
+subject: docs(governance): R-96 corrected -- the discovery check the ARB required found two defects
+  [replace] -'**Closes'
+          +'**⚠️ CORRECTED 2026-08-04, SAME DAY, BEFORE ANY ENTRY WAS CREATED — the ARB required a canonical-discovery check first (ES-005.4), and it changed the ruling twice over.** **(a) THE NAMED OWNER POINTS AT NOTHING SUITABLE.** `docs/implementation/Architecture_Debt_Backlog.md` exists but is a **test-failure debt register** (AD-001…AD-010, testsuite failures) and is **CLEARED**. Filing a strategic design gap there would be a category error. **No strategic-architecture backlog artifact exists.** Per'
+  [replace] -"'COL-5a"
+          +"rule, the missing home is **NAMED AND RETURNED TO GOVERNANCE — no artifact and no folder was invented.** **(b) MORE MATERIALLY: ACCEPTED ARCHITECTURE ALREADY SUBSUMES COL-5a.** `EPIC-002_Relationship_Pattern_Selection.md` records **COL-5a → Subsumed into COL-1 — CONFIRMED**: *“the return channel of one contract, not a second relationship”*, and the confirmation **explicitly considered and REJECTED** the attack that the corrective demand deserves its own contract. **So ‘COL-5a's mechanism’ must not be carried as an item with its own identity** — that would re-open the edge subsumption deliberat"
+  [replace] -"unallocated' carry.**"
+          +"gap may still exist, and it belongs to COL-1's return channel.** **The classification stands** (architectural work — not implementation, not governance, not business policy); **the owner assignment does not.**"
+=== R-98 edit at 6c6d5866c (2026-08-04); pre-edit f4e0cdc37: status=NONE cited_by_other_rows=0
+subject: docs(state): PROGRAM_STATUS rewritten to where we are now; R-98 accepted, R-100 adopted, R-99 refined
+  [insert] -''
+          +'**✅ ACCEPTED BY THE ARB CHIEF, 2026-08-04** — evidence supports that the commissioned scope was delivered, verification completed, and remaining items belong to other authorities. **Engineering formally enters REPOSITORY STEWARDSHIP MODE.**'
+=== R-98 edit at 2f804b81e (2026-08-04); pre-edit f0ec38daa: status=NONE cited_by_other_rows=1
+subject: docs(verification): architecture consistency verified -- three checks clean, two inconsistencies, one in governance itself
+  [replace] -'NO'
+          +'**NO UNRESOLVED ENGINEERING UNCERTAINTY REMAINS WITHIN THE COMMISSIONED SCOPE.** **⚠️ QUALIFIED BY THE ARB, 2026-08-04 — this is NOT ‘no'
+  [replace] -'uncertainty remains'
+          +'work remains’: the transaction-boundary repair and the held deliverables are acknowledged technical work'
+  [replace] -'requires further coding, discovery or architectural investigation before handover.**'
+          +'is GOVERNANCE-GATED, not engineering-unknown.**'
+  [replace] -'MODE.**'
+          +'MODE — FOR THE CURRENT AUTHORIZED SCOPE, NOT AS A PERMANENT STATE.** **Once a new implementation commission is authorized, engineering legitimately LEAVES stewardship mode.**'
+=== R-99 edit at 6c6d5866c (2026-08-04); pre-edit f4e0cdc37: status=NONE cited_by_other_rows=0
+subject: docs(state): PROGRAM_STATUS rewritten to where we are now; R-98 accepted, R-100 adopted, R-99 refined
+  [insert] -''
+          +'**✅ HOLD CONFIRMED BY THE ARB CHIEF, 2026-08-04, with a REFINEMENT: the closure must not be recorded against the label ‘Audit System v1.x’ at all** — governance shall identify the **precise governed object**, candidates offered being **`Engineering Verification Framework v1.x`** · **`Engineering Evidence Governance v1.x`** · **`Verification & Traceability Framework v1.x`**. **Only once the governed subject is explicitly named does the closure become effective.**'
+=== R-99 edit at f0ec38daa (2026-08-04); pre-edit 6c6d5866c: status=NONE cited_by_other_rows=0
+subject: docs(governance): R-99 EFFECTIVE -- Engineering Verification Framework v1.x is CLOSED
+  [replace] -'**⏸️ AUDIT SYSTEM CLOSURE'
+          +'**✅ ENGINEERING VERIFICATION FRAMEWORK v1.x'
+  [replace] -'HELD FOR A REFERENT, NOT RECORDED AS'
+          +'CLOSED.'
+  [replace] -'CHIEF (HELD).**'
+          +"CHIEF.** **REFERENT NAMED BY THE ARB CHIEF, 2026-08-04: `Engineering Verification Framework v1.x`** — the first of the three candidate names. The hold's condition (*“only after the governed subject is explicitly named should the closure become effective”*) **is met, and the ruling takes effect UNAMENDED.** **The label ‘Audit System v1.x’ is NOT used, per the refinement.**"
+  [insert] -''
+          +"**✅ SO NAMED — AND THE SUBJECT'S EXTENT IS DELIMITED FROM EVIDENCE, because a closure over an undelimited set cannot be enforced:** the framework is evidenced by the **`engineering/verification/` tree** — **reports 122 · observations 8 · commissions 7 · qualification 7 · metrics 1 (145 artifacts, counted 2026-08-04)** — together with the evidence discipline those artifacts exercise. **⚠️ MATERIAL CAVEAT RECORDED RATHER THAN GLOSSED: NO SPECIFICATION DOCUMENT DEFINES THIS FRAMEWORK.** *“Verification Framework”* appears nowhere in `engineering/governance/` or `docs/adr/`, and **`ES-006` is ‘Engi"
+=== R-99 edit at 8388ce911 (2026-08-04); pre-edit 2f804b81e: status=NONE cited_by_other_rows=0
+subject: docs(verification): a count is not a definition -- structural scope for R-99; checks 6 and 7 verified
+  [replace] -"SUBJECT'S EXTENT"
+          +'SUBJECT'
+  [replace] -'DELIMITED FROM EVIDENCE,'
+          +'DELIMITED,'
+  [replace] -'enforced:**'
+          +'enforced.** **GOVERNED OBJECT, DEFINED STRUCTURALLY (ARB, 2026-08-04):**'
+  [insert] -''
+          +'consists of **the verification architecture, practices, evidence model, traceability conventions, and the verification artifacts maintained under the verification namespace.** **⚠️ AN ARTIFACT COUNT IS NOT PART OF THE DEFINITION** — an earlier version delimited the subject as ‘145 artifacts’. **A count'
+  [replace] -'evidenced by the **`engineering/verification/` tree** — **reports'
+          +'OPERATIONAL INVENTORY, not constitutional scope**, and it changes with every commit; a definition that drifts daily cannot delimit a closed object. *(Inventory as of 2026-08-04, cited as evidence only, never as scope: reports'
+  [replace] -'1 (145 artifacts, counted 2026-08-04)** — together with the evidence discipline those artifacts exercise.'
+          +'1.)*'
+=== R-51 edit at 3be1e088e (2026-08-01); pre-edit 055254364: status=NONE cited_by_other_rows=0
+subject: docs(governance): separate ARB rulings from recording notes; make the decision record canonical
+  [insert] -''
+          +'PREPARATION'

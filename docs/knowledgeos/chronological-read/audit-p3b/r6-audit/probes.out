@@ -1,0 +1,61 @@
+== A  '/' and related notations. Endpoints A=S0957, B=S2361 are assembled in memory and PRINTED AS A/B, so no file text implies an interval (H-19). Synthetic hold-out id S1500 lies inside the interval.
+form                                     R6 S3 RANGE6   canonical (G-LOG-0045)  
+'A/B'                                    False          False                   
+'A-B'                                    True           True                    
+'A..B'                                   True           True                    
+'A–B'                                    True           True                    
+'A, B'                                   False          False                   
+'A / B'                                  False          False                   
+'A--B'                                   False          True                      <-- differ
+'A up to B'                              False          True                      <-- differ
+'between A and B'                        False          True                      <-- differ
+'A\xad-B'                                False          True                      <-- differ
+'A‐B'                                    False          True                      <-- differ
+'A－B'                                    False          True                      <-- differ
+'A \\u2013 B'                            False          True                      <-- differ
+'A\u200b–B'                              False          True                      <-- differ
+'A:B'                                    False          False                   
+'A->B'                                   False          False                   
+'A→B'                                    False          False                   
+'A-1600 (abbreviated, S1500 inside)'     True           True                    
+'A to 1998 revision'                     True           True                    
+
+== B  H3: layer-A binding (s3_lint_v6)
+  object with keys, pos 0, layer_a={0}                 -> CAUGHT
+  keys stripped, pos 0, layer_a={0}                    -> CAUGHT
+  keys renamed, pos 0, layer_a={0}                     -> CAUGHT
+  no working_label, pos 0, layer_a={0}                 -> CAUGHT
+  keys stripped, pos 1 (register slot), layer_a={0}    -> missed
+  object-shaped record in register slot, layer_a={0}   -> CAUGHT
+  keys stripped, layer_a=() (key sniffing only)        -> missed
+  verifier call site: final_records = [obj] + register + P1-gap and layer_a={0} (p3b_s5_r6_verify.py l.159/163): the object is always at index 0 by construction
+
+== C  reader: reader_plan_check (defence in depth) and run grammar
+  valid                                      -> (True, None)
+  no plan                                    -> (False, 'no frozen revision-6 plan for this batch')
+  plan of another batch                      -> (False, 'no frozen revision-6 plan for this batch')
+  unplanned run                              -> (False, 'run not in the frozen plan')
+  synthesis run reads                        -> (False, 'synthesis runs may not read (records-only synthesis)')
+  file not permitted                         -> (False, 'file not permitted for this run')
+  forged --label                             -> (False, "--label differs from the run's plan owner")
+  other label's unit, correct owner label    -> (True, None)
+  run OB9011-R2          paged-mode grammar True   plain-mode grammar True   plan check applies: False
+  run OB9011-R2.1        paged-mode grammar True   plain-mode grammar True   plan check applies: False
+  run OB9011-R2S         paged-mode grammar True   plain-mode grammar True   plan check applies: False
+  run OB9011-R6-L03U01   paged-mode grammar True   plain-mode grammar False  plan check applies: True
+  run OB9011-R7-L01      paged-mode grammar False  plain-mode grammar False  plan check applies: False
+  run OB9011-R5-L01      paged-mode grammar False  plain-mode grammar False  plan check applies: False
+  reader plan path  : _batch_input_r2/s5/rev6/{batch}.R6-PLAN.json
+  verifier plan path: <manifest header slice_root, default _batch_input_r2/s5>/<batch>.R6-PLAN.json (reader does not check the manifest-bound r6_plan_sha256)
+
+== D  production quote checker on object-level quotes (attacks P12 / P13), fake resolver
+  exact 1  whitespace 0  miss 2: ['.absences.examples.supplied_by.quote', '.dependency_edges[0].quote']
+
+== E  ML boundary: imports on the evidence / sampling path
+  p3b_s5_r6.py           ML imports: 0  similarity/ML words: 0  imports: ['datetime', 'hashlib', 'importlib.util', 'json', 'math', 'os', 'random', 're', 'sys']
+  p3b_s5_r6_verify.py    ML imports: 0  similarity/ML words: 0  imports: ['collections', 'hashlib', 'importlib.util', 'json', 'os']
+  p3b_s5_r5.py           ML imports: 0  similarity/ML words: 0  imports: ['codecs', 'collections', 'hashlib', 'io', 'json', 'math', 'os', 'p3b_s5_common', 'p3b_s5_prepare', 'random', 're', 'sys', 'zipfile']
+  p3b_s5_verify.py       ML imports: 0  similarity/ML words: 0  imports: ['collections', 'importlib.util', 'json', 'os', 'p3b_s5_ops_lib', 'p3b_s5_quarantine_scan', 're', 'sys']
+  p3b_read_source.py     ML imports: 0  similarity/ML words: 0  imports: ['datetime', 'importlib.util', 'json', 'os', 're', 'stat', 'sys']
+  p3b_s5_common.py       ML imports: 2  similarity/ML words: 0  imports: ['datetime', 'hashlib', 'importlib.util', 'json', 'numpy', 'os', 'platform', 're', 'subprocess', 'sys', 'unicodedata']
+  p3b_s5_quotes.py       ML imports: 0  similarity/ML words: 0  imports: ['importlib.util', 'json', 'os', 're', 'sys']

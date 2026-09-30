@@ -1,0 +1,67 @@
+{
+ "adjacencies": [
+  [
+   "S1623",
+   "S1627"
+  ],
+  [
+   "S1627",
+   "S1629"
+  ],
+  [
+   "S1629",
+   "S1631"
+  ],
+  [
+   "S1631",
+   "S1633"
+  ]
+ ],
+ "calibration_pairs": [],
+ "conflicts": [],
+ "defines_dimensions": [
+  "assumptions",
+  "dependencies",
+  "informal_meaning",
+  "invariants",
+  "type_signature"
+ ],
+ "edge_endpoints_invalid": [
+  {
+   "anchor": "## Step 254 — Formal Minimality and Reconstruction Tests",
+   "kind": "DERIVATIONAL",
+   "quote": "The next step should now take the candidate primitive families and perform the removal test demanded by the governing prompt:",
+   "source_id": "S1618",
+   "target_label": "Step 253 primitive-object and type-system audit — candidate primitive families (label not resolved; the Step-254 removal test takes them as input)"
+  },
+  {
+   "anchor": "## Step 254 — Formal Minimality and Reconstruction Tests",
+   "kind": "GOVERNANCE",
+   "quote": "The next step should now take the candidate primitive families and perform the removal test demanded by the governing prompt:",
+   "source_id": "S1618",
+   "target_label": "governing prompt / verification mandate (label not resolved)"
+  },
+  {
+   "anchor": "6. DECISION 3 — Π ∈ ≡ ?",
+   "kind": "USAGE",
+   "quote": "Explicitly investigate the Step-254 / Step-287 decision:",
+   "source_id": "S2136",
+   "target_label": "Step 288 equality decision-procedure reconciliation mandate (label not resolved; downstream — the mandate investigates the label's Decision 3 and its effects on ≡, ≅_λ, D285-5, D285-6, deduplication, canonicalization, provenance, replay, δ, governance)"
+  },
+  {
+   "anchor": "## The fourth headline (2026-08-31, ten prompt files, two reviewers)",
+   "kind": "GOVERNANCE",
+   "quote": "(Step 254 Decision 3: is `Π` inside `≡`?). Only **`Qualify` is `G1` irreducible.**",
+   "source_id": "S2338",
+   "target_label": "equality relations ≡ / ≈ / ≅_λ (D288 targets; label not resolved; downstream — three of four D288 targets are stated to be one decision (Decision 3) away)"
+  },
+  {
+   "anchor": "## The fifth headline (2026-08-31, register v0.1 + kernel programme)",
+   "kind": "GOVERNANCE",
+   "quote": "B, **the corpus itself** (Step 261 §261.23), and this programme. **Two decisions, in order:",
+   "source_id": "S2338",
+   "target_label": "K-CANONICAL-DECISION (label not resolved; stated to come after the Π-in-≡ decision)"
+  }
+ ],
+ "edges_without_quote": []
+}

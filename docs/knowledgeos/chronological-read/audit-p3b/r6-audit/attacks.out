@@ -1,0 +1,693 @@
+== 0 positive control (own fixture OB9011: 3 SINGLE + 2 DECOMPOSED labels, 3+2 units)
+C0       CTRL    exp=PASS obs=PASS R6=PASS nfail=0 => OK
+
+== R5-01 provenance: SOURCE -> READING RECORD -> FACT -> CLAIM
+P1       R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # fact removed, claim map unchanged
+P2       R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # wrong fact id
+P3a      R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # evidence ref to a fact in another label's run
+P3b      R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 P OB9011-R6-L03U02 S0786 fact 'moved': quote not found in the authoritative source bytes
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # fact placed in a unit run that is not permitted S0794
+P3c      R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # fact of another source in the same run
+P3d      R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # ref names the right source, the fact id exists only under another source
+P4a      R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=36 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 P L3: claim absence:open_questions has no valid evidence path (claim → fact → record → source bytes)
+           | R6 P L3: claim absence:warnings has no valid evidence path (claim → fact → record → source bytes)
+           # CHANGES-DEFINITION + births on a READ-PARTIAL record
+P5       R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P OB9011-R6-L03U01 S0794 fact 'L3-f004': quote not found in the authoritative source bytes
+           # fact quote not in the authoritative bytes
+P6a      R5-01   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # quote = 40 bytes of filler text: referential link holds, no semantic support
+P6b      R5-01   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # one-character quote; no minimum length / specificity rule exists
+P7       R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L3: claim timeline:S0794 has no valid evidence path (claim → fact → record → source bytes)
+           # wrong-kind fact (BIRTH) for a timeline claim
+P8       R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P OB9011-R6-L03U01 S0794 fact 'L3-f004': missing or duplicate fact_id
+           # duplicate fact id inside one record
+P9a      R5-01   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: unit record files changed after validation (or validation did not bind them)
+           # units-validated binds other record hashes than the current files
+P9b      R5-01   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # record content edited after validation with all declared hashes recomputed ('auto'): the verifier cannot know the files ever differed
+P10      R5-01   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # extra EXTENDS point with source_id null: no source, no fact
+P10b     R5-01   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # extra point with source_id ''
+P10c     R5-01   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # source-less FIRST point inserted before the real first appearance
+P11      R5-01   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # non-object timeline entry carrying a historical claim
+P12      R5-01   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # object-level supplied_by.quote not in bytes (fact is valid)
+P13      R5-01   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # R2 edge quote (the addendum: 'quote that explicitly states the dependency') not in bytes
+P14      R5-01   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # the unit's change_candidate (RESTATES) ≠ claimed CHANGES-DEFINITION; the addendum says 'right kind and fields' but names no timeline field to compare
+P15      R5-01   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # timeline_summary.contradicted_by = [S1890] with no CONTRADICTS point and no fact: a claim-bearing field outside the enumerated claim list
+P15b     R5-01   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # superseded_by_sources names S2615 with no fact: outside the enumerated claim list
+
+== R5-02 temporal (label L3, DECOMPOSED)
+T1       R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: synthesis not strictly after unit validation (R19)
+           # 13:00+05:00 = 08:00Z, before units-validated 09:00Z (string-wise later)
+T1c      R5-02   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # = 09:00Z: valid offset control
+T2       R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: synthesis not strictly after unit validation (R19)
+           # fractional seconds, reversed
+T2c      R5-02   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # fractional control
+T3.0     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '2026-11-02 09:00:00Z'
+T3.1     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '2026-11-02T09:00Z'
+T3.2     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '2026-11-02T09:00:00'
+T3.3     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '2026-11-02T24:30:00Z'
+T3.4     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '2026-11-02T09:00:00+0200'
+T3.5     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '2026-11-31T09:00:00Z'
+T3.6     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed 'later'
+T3.7     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # malformed '1730538000'
+T3.z     R5-02   exp=BND  obs=FAIL R6=FAIL nfail=1 => BND-FAIL
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # lowercase t/z is valid RFC 3339 §5.6 (NOTE); rejection is conservative
+T3.nl    R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # trailing newline
+T4       R5-02   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # every time non-UTC but consistent
+T5       R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: unit reads logged after units-validated (R19)
+           # one unit page read 1 s after units-validated
+T5c      R5-02   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # read at exactly units-validated (≤ allowed)
+T7       R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: synthesis not strictly after unit validation (R19)
+           # synthesis before validation
+T7b      R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: synthesis not strictly after unit validation (R19)
+           # synthesis == validation (strict <)
+T8       R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: synthesis output produced before synthesis dispatch
+           # produced before synthesis dispatch
+T9       R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L5: reads logged after the object was produced
+           # SINGLE: RUN-MANIFEST produced before the reader-logged reads
+T10      R5-02   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # two units-validated records for one label (09:45Z after dispatch, then 09:00Z): ambiguous, precedence undefined
+T10b     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: synthesis not strictly after unit validation (R19)
+           # same two records, other order
+T11a     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: OB9011-R6-L03U01: read-log utc None is not strict RFC 3339 with a zone
+           # read-log entry without utc
+T11b     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: units-validated / synthesis-dispatched stage missing or not strict RFC 3339
+           # stages missing
+T11c     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: final run OB9011-R6-L03S has no strict produced_utc in RUN-MANIFEST.json
+           # no produced_utc
+T11d     R5-02   exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 T L5: final run OB9011-R6-L05 has no strict produced_utc in RUN-MANIFEST.json
+           | R6 T L5: final run's manifest does not bind the exact current record files of the reading runs
+           # SINGLE without RUN-MANIFEST
+T12      R5-02   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # duplicate (identical) read timestamps are legitimate
+
+== R5-03 execution / run set
+E1       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E run directory OB9011-R6-L03U09: not a planned run
+           # undeclared R6 unit run
+E2       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=12 => OK
+           | R6 E OB9011-R6-L03U01: log entry working_label ≠ the run's plan owner
+           | R6 E OB9011-R6-L03U01: read of a file not permitted for this run
+           | R6 E OB9011-R6-L03U01: log entry working_label ≠ the run's plan owner
+           # one run id used by two labels
+E3       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E OB9011-R6-L03U01: log entry names another batch or run
+           # entry names another batch
+E4       R5-03   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # wrong-revision run dir (R7) with reads of a planned file
+E5       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E run directory OB9011-R5-L03U01: revision-5 runs are withdrawn
+           # R5 run dir
+E6       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E OB9011-R6-L03U01: log entry names another batch or run
+           # entry names a foreign run inside a planned log
+E7       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L3: unit reads logged after units-validated (R19)
+           # synthesis reads under a unit run id after dispatch (reader time)
+E8       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=6 => OK
+           | R6 E OB9011-R6-L03S: records-only synthesis performed a read
+           | R6 E OB9011-R6-L03S: records-only synthesis performed a read
+           | R6 E OB9011-R6-L03S: records-only synthesis performed a read
+           # reads under the synthesis run
+E9       R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=10 => OK
+           | R6 E OB9011-R6-L03U02: planned reading run has no READ-LOG.jsonl
+           | R6 R OB9011-R6-L03U02 S0786: WHOLE-FILE without complete byte coverage in the owning run
+           | R6 R OB9011-R6-L03U02 S1890: WHOLE-FILE without complete byte coverage in the owning run
+           # per-run log missing
+E10      R5-03   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # extra log in the assembled dir (the reader grammar cannot write there)
+E11      R5-03   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # L3's synthesis agent reads S0794 under legacy run id OB9011-R2 (reader grammar accepts it for OB batches) after synthesis dispatch
+E11b     R5-03   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # L3's synthesis agent reads S0794 under legacy run id OB9011-R2.1 (reader grammar accepts it for OB batches) after synthesis dispatch
+E11c     R5-03   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # L3's synthesis agent reads S0794 under legacy run id OB9011-R2S (reader grammar accepts it for OB batches) after synthesis dispatch
+E12      R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E OB9011-R6-L03U01: refused read (runbook stop condition 16)
+           # a refused entry (stop condition 16)
+E13      R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=11 => OK
+           | R6 E OB9011-R6-L03U01: read of a file not permitted for this run
+           | R6 E OB9011-R6-L03U01: read of a file not permitted for this run
+           | R6 E OB9011-R6-L03U01: read of a file not permitted for this run
+           # unit reads a file of another unit
+E14      R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=37 => OK
+           | R6 E OB9011-R6-L03U01: character-mode page read (byte mode is mandatory)
+           | R6 R OB9011-R6-L03U01 S0785: WHOLE-FILE without complete byte coverage in the owning run
+           | R6 P L3: claim absence:examples has no valid evidence path (claim → fact → record → source bytes)
+           # character-mode page
+E14b     R5-03   exp=FAIL obs=FAIL R6=FAIL nfail=37 => OK
+           | R6 E OB9011-R6-L03U01: log entry without a byte-mode page record
+           | R6 R OB9011-R6-L03U01 S0785: WHOLE-FILE without complete byte coverage in the owning run
+           | R6 P L3: claim absence:examples has no valid evidence path (claim → fact → record → source bytes)
+           # entry without page
+E15      R5-03   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # read of an OB9011 file under another batch's run dir: outside this batch's verification scope
+
+== R5-04 label ownership (run -> label from the plan)
+O1       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=7 => OK
+           | R6 E OB9011-R6-L01: log entry working_label ≠ the run's plan owner
+           | R6 E OB9011-R6-L02: log entry working_label ≠ the run's plan owner
+           # run(L1) declares working_label L2 and vice versa
+O2       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L2: frozen plan ≠ independent derivation (runs)
+           # plan: one run owned by two labels
+O3       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L2: frozen plan ≠ independent derivation (files, index, packing_order, path, row_sources, runs, sizes, units)
+           # plan: label missing (no owner)
+O4       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 L foreign-label-x: frozen plan ≠ independent derivation (files, index, packing_order, path, row_sources, runs, sizes, units)
+           | R6 L L2: frozen plan ≠ independent derivation (files, index, packing_order, path, row_sources, runs, sizes, units)
+           # plan: run owned by a label outside the batch
+O5       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=35 => OK
+           | R6 L L1: frozen plan ≠ independent derivation (index, runs)
+           | R6 L L2: frozen plan ≠ independent derivation (index, runs)
+           | R6 E OB9011-R6-L01: log entry working_label ≠ the run's plan owner
+           # manifest label order permuted; plan and run dirs from the old order
+O6       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 E OB9011-R6-L03U01: log entry working_label ≠ the run's plan owner
+           | R6 E OB9011-R6-L03U01: log entry working_label ≠ the run's plan owner
+           # forged --label on two entries of a valid run
+O7       R5-04   exp=FAIL obs=FAIL R6=FAIL nfail=77 => OK
+           | R6 S2: births.lexical cites S2813, not a row source of the label
+           | R6 P L1: claim timeline:S2813 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 P L1: claim birth:lexical:S2813 has no valid evidence path (claim → fact → record → source bytes)
+           # objects of L1/L2 exchanged (valid runs, malicious label metadata on the object)
+
+== R5-05 plan integrity (the plan must equal the independent derivation)
+L1       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (sizes)
+           # declared size altered (hash updated)
+L2       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=102 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order, path, runs, sizes, units)
+           | R6 E run directory OB9011-R6-L05: not a planned run
+           | R6 E OB9011-R6-L05U01: planned reading run has no READ-LOG.jsonl
+           # authoritative content altered after planning
+L2b      R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=13 => OK
+           | R6 E OB9011-R6-L05: 1 logged page(s) fail hash / span verification
+           | R6 R OB9011-R6-L05 S2627: WHOLE-FILE without complete byte coverage in the owning run
+           | R6 P L5: claim stage2:S2627:ledger:"H_hat(Q|R)=0 means no observed R-fiber contains conflicting Q values. This is evidence about the observed population, not pr
+           # content altered, same size (plan still equal; page hashes must catch it)
+L3       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L3: frozen plan ≠ independent derivation (packing_order)
+           # packing order permuted
+L4       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L3: frozen plan ≠ independent derivation (runs, units)
+           # units permuted (a file swapped between units)
+L5       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L plan hash ≠ the manifest-bound r6_plan_sha256
+           # stale plan hash
+L6       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L4: frozen plan ≠ independent derivation (path)
+           # correct hash of the wrong plan
+L7       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L3: frozen plan ≠ independent derivation (packing_order)
+           # plan derived from stale metadata
+L8       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=12 => OK
+           | R6 L L4: frozen plan ≠ independent derivation (runs, units)
+           | R6 E OB9011-R6-L04U02: read of a file not permitted for this run
+           | R6 E OB9011-R6-L04U02: read of a file not permitted for this run
+           # valid-looking but incorrect units: every artifact consistent with a forged partition
+L9       R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L plan hash ≠ the manifest-bound r6_plan_sha256
+           # no plan hash in the manifest entry
+L10      R5-05   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L frozen plan ≠ independent derivation
+           # extra key in the plan
+
+== R5-06 reading state x claim type (L4 file S2455, DECOMPOSED; delta over a state-only baseline)
+R-RP-EXT R5-06   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # READ-PARTIAL (pages dropped: evidence) + EXTENDS point (permitted class); the TIMELINE fact's quote lies on a page this run never logged
+R-RP-CHANGES-D R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-DEFINITION point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + CHANGES-DEFINITION
+R-RP-CHANGES-T R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-TYPE point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + CHANGES-TYPE
+R-RP-CHANGES-T R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-TERM point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + CHANGES-TERM
+R-RP-NARROWS R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: NARROWS point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + NARROWS
+R-RP-CONTRADIC R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CONTRADICTS point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + CONTRADICTS
+R-RP-RETRACTS R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: RETRACTS point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + RETRACTS
+R-RP-SUPERSEDE R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: SUPERSEDES point on non-WHOLE-FILE source S2455
+           # READ-PARTIAL + SUPERSEDES
+R-RP-birth R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=2 [baseline PASS 0f] => OK
+           | R6 R L4: births.conceptual: cites non-WHOLE-FILE source S2455
+           # READ-PARTIAL + birth (BIRTH-UNRESOLVED form, with a fact)
+R-RP-found R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=5 [baseline PASS 0f] => OK
+           | R6 P L4: claim absence:assumptions has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: absences.assumptions: FOUND supplied by a non-WHOLE-FILE source S2455
+           # READ-PARTIAL + FOUND absence
+R-RP-edge R5-06   exp=BND  obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => BND-PASS
+           # READ-PARTIAL + R2 edge (the addendum requires no WHOLE-FILE for edges)
+R-RP-tsum R5-06   exp=FAIL obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => FALSE-PASS
+           # READ-PARTIAL + timeline_summary.contradicted_by=[S2455] (a CONTRADICTS claim in another field)
+R-RP-sup R5-06   exp=FAIL obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => FALSE-PASS
+           # READ-PARTIAL + superseded_by_sources=[S2455] (feeds end(p), rev3 §A.10; a RETRACTS-like claim)
+R-NC-EXT R5-06   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # NOT-CONSUMED (pages dropped: all) + EXTENDS point (permitted class); the TIMELINE fact's quote lies on a page this run never logged
+R-NC-CHANGES-D R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-DEFINITION point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + CHANGES-DEFINITION
+R-NC-CHANGES-T R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-TYPE point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + CHANGES-TYPE
+R-NC-CHANGES-T R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-TERM point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + CHANGES-TERM
+R-NC-NARROWS R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: NARROWS point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + NARROWS
+R-NC-CONTRADIC R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CONTRADICTS point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + CONTRADICTS
+R-NC-RETRACTS R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: RETRACTS point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + RETRACTS
+R-NC-SUPERSEDE R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: SUPERSEDES point on non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + SUPERSEDES
+R-NC-birth R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=2 [baseline PASS 0f] => OK
+           | R6 R L4: births.conceptual: cites non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + birth (BIRTH-UNRESOLVED form, with a fact)
+R-NC-found R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=6 [baseline PASS 0f] => OK
+           | R6 P L4: claim absence:assumptions has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: absences.assumptions: FOUND supplied by a non-WHOLE-FILE source S2455
+           # NOT-CONSUMED + FOUND absence
+R-NC-edge R5-06   exp=BND  obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => BND-PASS
+           # NOT-CONSUMED + R2 edge (the addendum requires no WHOLE-FILE for edges)
+R-NC-tsum R5-06   exp=FAIL obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => FALSE-PASS
+           # NOT-CONSUMED + timeline_summary.contradicted_by=[S2455] (a CONTRADICTS claim in another field)
+R-NC-sup R5-06   exp=FAIL obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => FALSE-PASS
+           # NOT-CONSUMED + superseded_by_sources=[S2455] (feeds end(p), rev3 §A.10; a RETRACTS-like claim)
+R-RF-EXT R5-06   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # READ-FAILED (pages dropped: all) + EXTENDS point (permitted class); the TIMELINE fact's quote lies on a page this run never logged
+R-RF-CHANGES-D R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-DEFINITION point on non-WHOLE-FILE source S2455
+           # READ-FAILED + CHANGES-DEFINITION
+R-RF-CHANGES-T R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-TYPE point on non-WHOLE-FILE source S2455
+           # READ-FAILED + CHANGES-TYPE
+R-RF-CHANGES-T R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CHANGES-TERM point on non-WHOLE-FILE source S2455
+           # READ-FAILED + CHANGES-TERM
+R-RF-NARROWS R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: NARROWS point on non-WHOLE-FILE source S2455
+           # READ-FAILED + NARROWS
+R-RF-CONTRADIC R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: CONTRADICTS point on non-WHOLE-FILE source S2455
+           # READ-FAILED + CONTRADICTS
+R-RF-RETRACTS R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: RETRACTS point on non-WHOLE-FILE source S2455
+           # READ-FAILED + RETRACTS
+R-RF-SUPERSEDE R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=3 [baseline PASS 0f] => OK
+           | R6 P L4: claim timeline:S2455 has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: timeline: SUPERSEDES point on non-WHOLE-FILE source S2455
+           # READ-FAILED + SUPERSEDES
+R-RF-birth R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=2 [baseline PASS 0f] => OK
+           | R6 R L4: births.conceptual: cites non-WHOLE-FILE source S2455
+           # READ-FAILED + birth (BIRTH-UNRESOLVED form, with a fact)
+R-RF-found R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=6 [baseline PASS 0f] => OK
+           | R6 P L4: claim absence:assumptions has no valid evidence path (claim → fact → record → source bytes)
+           | R6 R L4: absences.assumptions: FOUND supplied by a non-WHOLE-FILE source S2455
+           # READ-FAILED + FOUND absence
+R-RF-edge R5-06   exp=BND  obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => BND-PASS
+           # READ-FAILED + R2 edge (the addendum requires no WHOLE-FILE for edges)
+R-RF-tsum R5-06   exp=FAIL obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => FALSE-PASS
+           # READ-FAILED + timeline_summary.contradicted_by=[S2455] (a CONTRADICTS claim in another field)
+R-RF-sup R5-06   exp=FAIL obs=PASS R6=PASS nfail=0 [baseline PASS 0f] => FALSE-PASS
+           # READ-FAILED + superseded_by_sources=[S2455] (feeds end(p), rev3 §A.10; a RETRACTS-like claim)
+R-noCD   R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=5 => OK
+           | R6 P L4: absences.assumptions GENUINELY-UNDEFINED with an incomplete census
+           | R6 P L4: absences.dependencies GENUINELY-UNDEFINED with an incomplete census
+           | R6 R L4: absences.assumptions: GENUINELY-UNDEFINED-AFTER-CENSUS with an incomplete census
+           # READ-PARTIAL without a CONTRACT-DEVIATION escalation
+R-offscale R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=7 => OK
+           | R6 R OB9011-R6-L04U01 S2455: reading_state 'WHOLE-FILE ' off-scale
+           | R6 P L4: absences.assumptions GENUINELY-UNDEFINED with an incomplete census
+           | R6 P L4: absences.dependencies GENUINELY-UNDEFINED with an incomplete census
+           # state off-scale
+R-wholeNoCov R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=4 => OK
+           | R6 R OB9011-R6-L04U01 S2455: WHOLE-FILE without complete byte coverage in the owning run
+           | R6 P L4: absences.assumptions GENUINELY-UNDEFINED with an incomplete census
+           | R6 P L4: absences.dependencies GENUINELY-UNDEFINED with an incomplete census
+           # WHOLE-FILE claimed, page 1 missing
+R-ackExtra R5-06   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 R OB9011-R6-L04U01 S2455: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           # extra ack token (R5-11)
+
+== R5-07 S1 pair-evidence checks
+S1a      R5-07   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # correct YES + quote (= positive control)
+S1b      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           # YES + fabricated quote
+S1c      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           # YES + quote from another source
+S1d      R5-07   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # YES + a real quote of the same file that is about another pair (semantics)
+S1e      R5-07   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # YES + substring collision ('lorem')
+S1f      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 S1 L1: no pair-evidence check for pair RP1041 in S2131
+           | R6 S1 L1: pair RP1042: NO without a VERDICT-EVIDENCE-CONFLICT register record naming it exactly
+           | R6 S1 L1: pair RP1042: NO without an escalation (reason OTHER, detail 'VERDICT-EVIDENCE-CONFLICT: RP1042')
+           # NO under the wrong pair id
+S1g      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041: NO without an escalation (reason OTHER, detail 'VERDICT-EVIDENCE-CONFLICT: RP1041')
+           # NO + register, no OTHER escalation
+S1h      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041: NO without an escalation (reason OTHER, detail 'VERDICT-EVIDENCE-CONFLICT: RP1041')
+           # NO + escalation naming RP10410 (wrong token)
+S1h2     R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041: NO without a VERDICT-EVIDENCE-CONFLICT register record naming it exactly
+           # NO + escalation, no VEC register record (pre-existing VEC topic stripped)
+S1i      R5-07   exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # complete NO (register + OTHER escalation)
+S1j      R5-07   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # NOT-DETERMINABLE
+S1k      R5-07   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # blanket NOT-DETERMINABLE (F2)
+S1l      R5-07   exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # duplicate pair id: an unescalated NO with a fabricated quote precedes the YES
+S1m      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041 in S2131: supports 'MAYBE' off-scale
+           # supports off-scale
+S1n      R5-07   exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: no pair-evidence check for pair RP1041 in S2131
+           # required check missing
+
+== H3 layer-A pointer binding (full path, object of L2)
+H3.0     H3      exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # pointer text in layer A: 'see the Register record for details'
+H3.1     H3      exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # pointer text in layer A: 'cf. register'
+H3.2     H3      exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # pointer text in layer A: 'rs_id pending'
+H3.3     H3      exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # pointer text in layer A: 'OB9011:7'
+H3.4     H3      exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # pointer text in layer A: 'OB9011-R6:OB9011:7'
+H3.5     H3      exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # pointer text in layer A: 'OB9011#7'
+H3.6     H3      exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # pointer text in layer A: 'register  record 7'
+H3.7     H3      exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # pointer text in layer A: 'register\xa0entry 7'
+H3.8     H3      exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # pointer text in layer A: 'rs-id 7'
+H3.9     H3      exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # pointer text in layer A: 'OB9011 : 7'
+H3.10    H3      exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # pointer text in layer A: 'OB9011：7'
+H3.11    H3      exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # pointer text in layer A: 'see\u200b the register'
+
+== PASS ⇒ P∧E∧R∧T∧L∧S: exactly one invariant violated, then combinations
+I1-P     PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+           # only P violated
+I1-E     PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           # only E violated
+I1-R     PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           # only R violated
+I1-T     PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+           # only T violated
+I1-L     PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           # only L violated
+I1-S     PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           # only S violated
+I2-PE    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I2-PR    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I2-PT    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I2-PL    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I2-PS    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I2-ER    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+I2-ET    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I2-EL    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+I2-ES    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+I2-RT    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I2-RL    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+I2-RS    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+I2-TL    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I2-TS    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I2-LS    PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+I3-PER   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PET   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PEL   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PES   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PRT   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PRL   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PRS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PTL   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PTS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-PLS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 P L5: claim timeline:S2640 has no valid evidence path (claim → fact → record → source bytes)
+I3-ERT   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I3-ERL   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+I3-ERS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+I3-ETL   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I3-ETS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I3-ELS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+I3-RTL   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I3-RTS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I3-RLS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+I3-TLS   PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 S1 L1: pair RP1041 in S2131: YES quote not found in the authoritative bytes
+           | R6 T L4: synthesis not strictly after unit validation (R19)
+I6-PERTLS PASS-INV exp=FAIL obs=FAIL R6=FAIL nfail=6 => OK
+           | R6 L L5: frozen plan ≠ independent derivation (packing_order)
+           | R6 E run directory OB9011-R6-L02U01: not a planned run
+           | R6 R OB9011-R6-L01 S2131: acknowledgement tokens ≠ the page tokens (missing, extra or duplicate)
+
+== Trust boundary (can an authoritative input be forged / contradicted?)
+TB1      TRUST   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # READ-LOG.jsonl hand-written: nothing binds it to the reader
+TB2      TRUST   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # E7 with a back-dated utc (log edited): indistinguishable from a unit read
+TB3      TRUST   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # R6-PROVENANCE.jsonl rewritten by the orchestrator: declarations only
+TB4      TRUST   exp=FAIL obs=FAIL R6=FAIL nfail=9 => OK
+           | R6 contract revision 5 is withdrawn (superseded by revision 6; G-LOG-0083)
+           # manifest header revision 5 (withdrawn)
+TB5      TRUST   exp=BND  obs=PASS R6=PASS nfail=0 => BND-PASS
+           # manifest header revision 7 routes to R6
+TB6      TRUST   exp=FAIL obs=FAIL R6=None nfail=1 => OK
+           | EXCEPTION TypeError: '>=' not supported between instances of 'str' and 'int'
+           # manifest header revision as a string
+
+== SUMMARY
+cases: 206 {"BND-FAIL": 1, "BND-PASS": 19, "FALSE-PASS": 24, "OK": 162}
+  FALSE-PASS P10        R5-01    extra EXTENDS point with source_id null: no source, no fact
+  FALSE-PASS P10b       R5-01    extra point with source_id ''
+  FALSE-PASS P10c       R5-01    source-less FIRST point inserted before the real first appearance
+  FALSE-PASS P11        R5-01    non-object timeline entry carrying a historical claim
+  FALSE-PASS P12        R5-01    object-level supplied_by.quote not in bytes (fact is valid)
+  FALSE-PASS P13        R5-01    R2 edge quote (the addendum: 'quote that explicitly states the dependency') not in bytes
+  FALSE-PASS T10        R5-02    two units-validated records for one label (09:45Z after dispatch, then 09:00Z): ambiguous, precedence undefined
+  FALSE-PASS E4         R5-03    wrong-revision run dir (R7) with reads of a planned file
+  FALSE-PASS E11        R5-03    L3's synthesis agent reads S0794 under legacy run id OB9011-R2 (reader grammar accepts it for OB batches) after synthesis dispatch
+  FALSE-PASS E11b       R5-03    L3's synthesis agent reads S0794 under legacy run id OB9011-R2.1 (reader grammar accepts it for OB batches) after synthesis dispatch
+  FALSE-PASS E11c       R5-03    L3's synthesis agent reads S0794 under legacy run id OB9011-R2S (reader grammar accepts it for OB batches) after synthesis dispatch
+  FALSE-PASS R-RP-tsum  R5-06    READ-PARTIAL + timeline_summary.contradicted_by=[S2455] (a CONTRADICTS claim in another field)
+  FALSE-PASS R-RP-sup   R5-06    READ-PARTIAL + superseded_by_sources=[S2455] (feeds end(p), rev3 §A.10; a RETRACTS-like claim)
+  FALSE-PASS R-NC-tsum  R5-06    NOT-CONSUMED + timeline_summary.contradicted_by=[S2455] (a CONTRADICTS claim in another field)
+  FALSE-PASS R-NC-sup   R5-06    NOT-CONSUMED + superseded_by_sources=[S2455] (feeds end(p), rev3 §A.10; a RETRACTS-like claim)
+  FALSE-PASS R-RF-tsum  R5-06    READ-FAILED + timeline_summary.contradicted_by=[S2455] (a CONTRADICTS claim in another field)
+  FALSE-PASS R-RF-sup   R5-06    READ-FAILED + superseded_by_sources=[S2455] (feeds end(p), rev3 §A.10; a RETRACTS-like claim)
+  FALSE-PASS S1l        R5-07    duplicate pair id: an unescalated NO with a fabricated quote precedes the YES
+  FALSE-PASS H3.6       H3       pointer text in layer A: 'register  record 7'
+  FALSE-PASS H3.7       H3       pointer text in layer A: 'register\xa0entry 7'
+  FALSE-PASS H3.8       H3       pointer text in layer A: 'rs-id 7'
+  FALSE-PASS H3.9       H3       pointer text in layer A: 'OB9011 : 7'
+  FALSE-PASS H3.10      H3       pointer text in layer A: 'OB9011：7'
+  FALSE-PASS H3.11      H3       pointer text in layer A: 'see\u200b the register'

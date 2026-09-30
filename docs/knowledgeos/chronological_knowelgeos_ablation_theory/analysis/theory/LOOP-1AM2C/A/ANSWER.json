@@ -1,0 +1,57 @@
+{
+  "actor": "UNK",
+  "actor_quotes_for": [
+    {
+      "supports": "SESSION-AUTHOR/ENGINEERING",
+      "line": 41,
+      "quote": "**Disposition:** registered as the PO's **framing of `O-CLOSURE-VOCAB`**, to belong to that item **if and when it is commissioned**. **NOT promoted to methodology** — single occurrence, and ES-006.1 forbids promoting from one."
+    },
+    {
+      "supports": "SESSION-AUTHOR/ENGINEERING",
+      "line": 39,
+      "quote": "**Applied immediately** to the closure artifact §5 (headline restated in the ruled two-line form), `CONTEXT.md`, and this log's §Eighth heading. My earlier single-line \"is CLOSED\" headline was exactly the formulation the ruling forbids — corrected, not defended."
+    },
+    {
+      "supports": "SESSION-AUTHOR/ENGINEERING",
+      "line": 41,
+      "quote": "Whether the planes should be unified, formally separated, or left alone is **architecture work nobody is yet authorized to perform**."
+    },
+    {
+      "supports": "SESSION-AUTHOR/ENGINEERING",
+      "line": 42,
+      "quote": "**Nothing reopened. Nothing commissioned. Sessions 1 and 3 not re-engaged.**"
+    }
+  ],
+  "actor_quotes_against": [
+    {
+      "supports": "PO or PO/ARB",
+      "line": 40,
+      "quote": "**PO/ARB architectural observation registered — three distinct state planes**, which are *not* one state machine"
+    },
+    {
+      "supports": "PO",
+      "line": 41,
+      "quote": "registered as the PO's **framing of `O-CLOSURE-VOCAB`**"
+    },
+    {
+      "supports": "PO/ARB",
+      "line": 23,
+      "quote": "**Disposition remains the PO/ARB's — Governance chose no remedy and issued no grant.**"
+    },
+    {
+      "supports": "PO/ARB",
+      "line": 31,
+      "quote": "### Ninth — PO/ARB ACCEPTED the finalization; vocabulary ruling registered and applied"
+    },
+    {
+      "supports": "OTHER:ES-006.1 (a rule, not an actor)",
+      "line": 41,
+      "quote": "ES-006.1 forbids promoting from one"
+    }
+  ],
+  "act_type": "UNK",
+  "act_quote": "**NOT promoted to methodology** — single occurrence, and ES-006.1 forbids promoting from one.",
+  "ground_quote": "single occurrence, and ES-006.1 forbids promoting from one",
+  "evidence": 1,
+  "unit": "occurrence (quoted: \"single occurrence\")"
+}

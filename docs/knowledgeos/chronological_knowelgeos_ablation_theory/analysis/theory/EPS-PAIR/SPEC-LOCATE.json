@@ -1,0 +1,10 @@
+{
+ "test": "1y: find a PERFORMED supersession to pair with the REFUSED ones (R-77 ARB/ADR, ε insufficient; R-83 ARB-CHIEF/design-rule, ε 0)",
+ "status": "FROZEN before the locate runs",
+ "source": "rulings register 7795c14b... rows R-30..R-100 (current text) + git history is NOT used here",
+ "match_classes": {"SUPERSEDE-POS": "/supersed(es|ed by|ing)\\b|replaces\\b/i with no negation token (not|no|never|nor|without|rather than) within the 40 chars before",
+                   "SUPERSEDE-NEG": "the same match preceded by a negation token within 40 chars"},
+ "output": "row ID, date, category triple, counts of POS / NEG matches; no row text",
+ "selection_rule": "candidate = a row with >= 1 SUPERSEDE-POS; rank: same authority as a refused case (ARB or ARB-CHIEF) first, then same kind cue (ADR / design-rule term present: /ADR-|§\\d+/), then earliest; R-77 and R-83 excluded",
+ "next": "only if a candidate exists: a bounded read of that one row, with pair criteria frozen before"
+}

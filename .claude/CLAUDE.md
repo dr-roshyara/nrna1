@@ -676,6 +676,17 @@ This file should always reflect the latest project state.
 
 Whenever work starts or finishes, update CONTEXT.md.
 
+## CONTEXT routing (which CONTEXT file)
+
+**Derived from the path being changed, never chosen:**
+
+| Work on | Working-state file |
+|---|---|
+| code under `./app/` → **PublicDigit** | `.claude/CONTEXT-publicdigit.md` |
+| everything else (KnowledgeOS, governance, docs) | `.claude/CONTEXT.md` |
+
+"Update CONTEXT.md" above means *the routed file*. **Automation:** a `PreToolUse` hook (`.claude/scripts/context-route-reminder.sh`) states the routing on the first Write/Edit under `app/` in a session (non-blocking). `context-router.py` at SessionStart remains a git-history *suggestion* only.
+
 ---
 
 # Plans

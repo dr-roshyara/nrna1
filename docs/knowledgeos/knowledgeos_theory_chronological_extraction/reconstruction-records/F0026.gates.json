@@ -1,0 +1,83 @@
+{
+ "file_id": "F0026",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "status": "SATISFIED",
+   "evidence": "complete read, 101 lines; receipt 82009d2c…"
+  },
+  {
+   "gate": "EXTRACTION_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "3 definitions · 5 premises · 6 claims · 4 derivations"
+  },
+  {
+   "gate": "SEMANTIC_UNDERSTANDING_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "source question and reconstruction question recorded separately"
+  },
+  {
+   "gate": "ARCHITECTURE_ALIGNMENT_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "edge-validation instrument; architecture explicitly held fixed"
+  },
+  {
+   "gate": "RELATIONSHIP_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "3 relationships incl. ESTABLISHES T-0027"
+  },
+  {
+   "gate": "DERIVATION_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "D1-D4; D2's limit (negative search) declared"
+  },
+  {
+   "gate": "CONTINUITY_ASSESSED",
+   "status": "SATISFIED",
+   "evidence": "4 dimensions; math/statistical NOT_APPLICABLE with reason"
+  },
+  {
+   "gate": "GAP_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "5 gaps, one found by this reconstruction (unstated search scope)"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "status": "NOT_SATISFIED",
+   "evidence": "⛔ BLOCKED under O-1=A (L0-DEC-08). ⛔ GVR-F0026 P-1: T-0027's name 'The distinctive bet is exactly ONE EDGE (R-6)' carries the PRE-REV-2 framing, while F0026's own REV 2 (L48) reads 'R-6 BROADENED per review: the bet is the INTEGRATION, not one edge'. ⭐ Own-file, §5A case 1 — representable. §5A mechanics (m1) hash computation and (m2) unversioned→v1 are undefined. 0 of 46 rows carry §5A fields."
+  },
+  {
+   "gate": "IMPLEMENTATION_IMPLICATIONS_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "NOT_APPLICABLE with reason"
+  },
+  {
+   "gate": "PROVENANCE_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "manifest id · sha pre-read · receipt post-read · manifest_hash"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "status": "SATISFIED",
+   "evidence": "40/40 required fields"
+  }
+ ],
+ "satisfied": 11,
+ "total": 12,
+ "dossier_status": "INCOMPLETE_BY_DESIGN",
+ "blocking_gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+ "why_blocked": "⛔ Rule 8: this retrofit may not upgrade or validate any other Theory Object.",
+ "⭐ O-1_evaluation": {
+  "date": "2026-09-23",
+  "authority": "L0-DEC-08 (O-1 = interpretation A)",
+  "own_objects": [
+   "T-0027"
+  ],
+  "verdict": "BLOCKED",
+  "objects_needing_5A_revision": [
+   "T-0027"
+  ],
+  "basis": "⛔ GVR-F0026 P-1: T-0027's name 'The distinctive bet is exactly ONE EDGE (R-6)' carries the PRE-REV-2 framing, while F0026's own REV 2 (L48) reads 'R-6 BROADENED per review: the bet is the INTEGRATION, not one edge'. ⭐ Own-file, §5A case 1 — representable.",
+  "blocker": "§5A mechanics (m1) hash computation and (m2) unversioned→v1 are undefined. 0 of 46 rows carry §5A fields."
+ }
+}

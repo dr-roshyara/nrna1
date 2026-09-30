@@ -1,0 +1,83 @@
+{
+ "labels": "MODEL-DERIVED from coded development events (selected, not a sample); UNDETERMINED != redundant",
+ "events": 23,
+ "variable_necessity": {
+  "o": {
+   "NECESSARY": [
+    [
+     "SUPERSEDE(PB-006 row) (R-94)",
+     "ANNOTATE(PB-006 row) (R-94)"
+    ]
+   ]
+  },
+  "r": "UNDETERMINED",
+  "a": {
+   "NECESSARY": [
+    [
+     "ADOPT-by-Chief(R-81..85)",
+     "ADOPT-by-Authority(R-86)"
+    ]
+   ]
+  },
+  "k": {
+   "NECESSARY": [
+    [
+     "REGISTER(R-90 operational acceptance)",
+     "REGISTER(constitutional decision)"
+    ]
+   ]
+  },
+  "sigma": {
+   "NECESSARY": [
+    [
+     "START(WP-4B)",
+     "START(WP-4B)@R-72"
+    ],
+    [
+     "START(WP-4B)",
+     "START(WP-8)"
+    ]
+   ]
+  },
+  "eps": "UNDETERMINED",
+  "x": "UNDETERMINED"
+ },
+ "sufficiency_counterexamples": [
+  [
+   "ADOPT-by-Authority(R-86)",
+   "ADOPT-by-Authority(R-91)"
+  ]
+ ],
+ "markov": [
+  {
+   "pair": [
+    "R-90 (withdrawn)",
+    "R-91 (held)"
+   ],
+   "apparent_state": "not adopted",
+   "futures_equal": false,
+   "finite_fix": "status ∈ {PREPARED, ADOPTED, HELD, WITHDRAWN} + registry {unused, used, retired}",
+   "ref": "F-LOG-0122, 0123"
+  },
+  {
+   "pair": [
+    "WP-4B at R-72 (08-02)",
+    "WP-4B at 16:10 (08-03)"
+   ],
+   "apparent_state": "authorization = in principle (conditional)",
+   "futures_equal": false,
+   "finite_fix": "authorization carries its proviso state (unmet / discharged); the proviso is R-72's own ('no unresolved governance blockers'), not R-79's Board acts",
+   "ref": "R-72, R-78, git (F-LOG-0128), this entry"
+  },
+  {
+   "pair": [
+    "a Chief ruling before R-86",
+    "a Chief ruling after R-86"
+   ],
+   "apparent_state": "issued by Chief",
+   "futures_equal": true,
+   "finite_fix": "none needed: adoption creates no delegation (R-86/R-87/R-89 explicit)",
+   "ref": "F-LOG-0123"
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+[
+ {
+  "case": "TEST R-100 (new-commission rule)",
+  "reading_dependencies": [],
+  "force": "AMBIGUOUS",
+  "text": {
+   "ev": "NOT-RECORDED",
+   "q": "UNKNOWN",
+   "dec": "CONFORMS"
+  },
+  "text_explanations": {},
+  "interpretations": [
+   {
+    "id": "I-R39",
+    "t": "2026-07-26",
+    "eligible": true,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges_act": "YES",
+    "conformance": {
+     "bar": "NOT-RECORDED"
+    },
+    "explanations": {}
+   },
+   {
+    "id": "I-MEMORY",
+    "t": "2026-08-01",
+    "eligible": false,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges_act": "YES",
+    "conformance": {
+     "bar": "NOT-RECORDED"
+    },
+    "explanations": {}
+   },
+   {
+    "id": "I-CLAUDE",
+    "t": "2026-08-01",
+    "eligible": false,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges_act": "YES",
+    "conformance": {
+     "bar": "NOT-RECORDED"
+    },
+    "explanations": {}
+   },
+   {
+    "id": "I-ES0013",
+    "t": "2026-08-16",
+    "eligible": true,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges_act": "NO (interpretation postdates the act)"
+   }
+  ],
+  "pattern": "T != I and O |= I (practice follows interpretation drift)",
+  "claims": {
+   "C1": "NOT-TRIGGERED",
+   "C2": "NOT-TRIGGERED",
+   "C3": "NOT-TRIGGERED",
+   "C4": "NOT-TRIGGERED"
+  }
+ },
+ {
+  "post_run_classification (researcher; the instrument is NOT amended)": {
+   "instrument_defect": "the pattern 'O |= I' and 'C3 NOT-TRIGGERED' are VACUOUS: every decidable requirement is NOT-RECORDED/UNKNOWN; 'no DEVIATES' was treated as conformance",
+   "correct_outcome": {
+    "C1": "NOT-TRIGGERED",
+    "C2": "NOT-TRIGGERED",
+    "C3": "UNDETERMINABLE (no decidable requirement)",
+    "C4": "NOT-TRIGGERED; observation NEW-AUTHORITY 'ARB CHIEF'",
+    "pattern": "UNDETERMINED"
+   },
+   "minimum_missing_evidence": "the necessity evidence (R-37 burden) for R-100: commit 6c6d5866c message and/or the 2026-08-04 session-log R-100 section",
+   "fix_scheduled": "r3.1 instrument, frozen BEFORE the next test: CONFORMS requires >= 1 MET requirement; claims with only undecidable inputs -> UNDETERMINABLE",
+   "source_findings": [
+    "the authority sets the kind in the act: 'ENGINEERING GOVERNANCE PRINCIPLE — NOT a constitutional one'",
+    "'No stage inherits the next one's authority' / 'completing discovery grants NO mandate to model' (completion != mandate; two-phase governed work)",
+    "generalized from a single context (WP-4) with no recorded evidence and no exception"
+   ]
+  }
+ }
+]

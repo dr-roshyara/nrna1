@@ -13,6 +13,7 @@ use EngineeringKnowledge\Capabilities\Cohesion\Domain\ExclusionReason;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\GraphBuilder;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\Lcom4;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\MethodFacts;
+use EngineeringKnowledge\Capabilities\Cohesion\Domain\MethodRole;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\QualifierKind;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\ReferenceMode;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\StateAccess;
@@ -166,10 +167,17 @@ final class CohesionSemanticsTest extends TestCase
         self::assertSame(1, Lcom4::compute(GraphBuilder::build($u)));
     }
 
+    /**
+     * L4 excludes by `methodRole`, a closed-vocabulary L3 fact, never by name (R1,
+     * `KOS-PYTHON-RULE-VALIDATION`, 2026-09-27). The name `'__construct'` here is
+     * incidental fixture flavour, not what triggers exclusion — the explicit
+     * `MethodRole::Lifecycle` argument is what does. A differently-named method with the
+     * same role is excluded identically; see `MethodRoleLifecycleNormalizationTest`.
+     */
     public function test_constructors_are_excluded_from_the_node_set(): void
     {
         $u = $this->unit(
-            new MethodFacts('__construct', true, [new StateAccess('p', AccessMode::Direct)], []),
+            new MethodFacts('__construct', true, [new StateAccess('p', AccessMode::Direct)], [], MethodRole::Lifecycle),
             new MethodFacts('a', true, [new StateAccess('p', AccessMode::Direct)], []),
             new MethodFacts('b', true, [new StateAccess('q', AccessMode::Direct)], []),
         );

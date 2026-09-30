@@ -1,0 +1,108 @@
+# gate-schema.yaml — the shape every entry in gates.yaml must satisfy.
+#
+# TEMPORARY KNOWLEDGEOS RESEARCH GOVERNANCE. Scoped to this research
+# workspace only. NOT platform governance, NOT a registry asset, NOT a
+# general research-governance mechanism. See README.md.
+#
+# RULE: this file and gates.yaml DESCRIBE gates. They contain no executable
+# logic. `pass_condition.check` NAMES an implementation in the runner; it
+# never expresses one.
+
+schema:
+  version: 1
+  name: kos-research-gate-schema
+
+required_fields:
+  - id
+  - name
+  - stage
+  - timing
+  - class
+  - tier
+  - status
+  - purpose
+  - source
+  - pass_condition
+  - failure
+  - human_decision_required
+
+field_rules:
+
+  id:
+    pattern: "^KOS-G-[0-9]{3}$"
+    note: stable; never reused, never renumbered.
+
+  stage:
+    enum: [PHASE_1, PHASE_2, EXPERIMENT, CHECKPOINT, COMMIT]
+
+  timing:
+    enum: [PRE, POST, CHECKPOINT]
+    note: >
+      PRE runs before the work it guards; POST after; CHECKPOINT at a
+      declared research checkpoint.
+
+  class:
+    enum: [AUT, REVIEW, HUMAN]
+    note: >
+      AUT    — decidable by the runner from artifacts on disk.
+      REVIEW — requires a reviewer's judgement. The runner reports
+               REVIEW_REQUIRED and NEVER reports PASS for these.
+      HUMAN  — a decision reserved to the human authority. The runner
+               never evaluates these at all.
+
+  tier:
+    enum: [A, B]
+    note: >
+      A — may BLOCK when active and activated.
+      B — advisory; reports, never blocks, whatever its failure.effect says.
+
+  status:
+    enum: [proposed, active, deferred, not_yet_defined, retired]
+    note: >
+      Proposed by Governance. ONLY `active` is eligible to block, and
+      eligibility is not sufficient: see activation below.
+
+  pass_condition:
+    required: [type]
+    type:
+      enum: [deterministic, review]
+    check:
+      note: >
+        Required when type is deterministic. Names an implementation
+        registered in the runner. An unknown name is an ERROR, never a PASS.
+    rule:
+      note: human-readable statement of what is being measured.
+
+  failure:
+    required: [effect]
+    effect:
+      enum: [BLOCK, WARN]
+
+  human_decision_required:
+    type: boolean
+
+activation:
+  note: >
+    A gate blocks only when BOTH hold:
+      1. gates.yaml gives it status: active     (Governance proposes)
+      2. governance-state.yaml lists its id     (the human activates)
+    Condition 2 is not editable by Governance in this arrangement and is
+    what makes activation a human act rather than a file edit. A gate that
+    satisfies 1 but not 2 is reported NOT_ACTIVATED and blocks nothing.
+
+what_a_verdict_means:
+  PASS: >
+    The applicable automated precondition passed. It does NOT mean the
+    research is valid, the theory is right, or the protocol was followed.
+  FAIL: >
+    The measured precondition did not hold. It does NOT mean the theory is
+    wrong.
+  BLOCK: >
+    The research session may not proceed under the currently ACTIVE and
+    ACTIVATED governance rules. A statement about process conformance only.
+  REVIEW_REQUIRED: >
+    A reviewer must judge this. Never auto-PASS, never auto-FAIL.
+  NOT_ACTIVATED: >
+    Defined and eligible, but no human activation record exists.
+  ERROR: >
+    The gate could not be evaluated. Treated as not-passing, never as PASS.

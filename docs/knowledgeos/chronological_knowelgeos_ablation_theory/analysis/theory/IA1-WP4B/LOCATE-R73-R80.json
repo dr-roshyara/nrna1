@@ -1,0 +1,75 @@
+{
+ "labels": "LOCATE-ONLY: record time + term-class presence; no row text",
+ "R-73": {
+  "first_recorded": "2026-08-03T00:17:40+02:00",
+  "commit": "4a5880db7",
+  "PROMOTION": false,
+  "ALLOCATION": false,
+  "WP-4B": true,
+  "RED": false,
+  "unblock/may begin/proviso": false
+ },
+ "R-74": {
+  "first_recorded": "2026-08-03T00:17:40+02:00",
+  "commit": "4a5880db7",
+  "PROMOTION": false,
+  "ALLOCATION": false,
+  "WP-4B": true,
+  "RED": false,
+  "unblock/may begin/proviso": false
+ },
+ "R-75": {
+  "first_recorded": "2026-08-03T00:17:40+02:00",
+  "commit": "4a5880db7",
+  "PROMOTION": false,
+  "ALLOCATION": true,
+  "WP-4B": false,
+  "RED": false,
+  "unblock/may begin/proviso": false
+ },
+ "R-76": {
+  "first_recorded": "2026-08-03T00:17:40+02:00",
+  "commit": "4a5880db7",
+  "PROMOTION": false,
+  "ALLOCATION": true,
+  "WP-4B": true,
+  "RED": true,
+  "unblock/may begin/proviso": false
+ },
+ "R-77": {
+  "first_recorded": "2026-08-03T15:28:34+02:00",
+  "commit": "fa9817444",
+  "PROMOTION": false,
+  "ALLOCATION": false,
+  "WP-4B": true,
+  "RED": false,
+  "unblock/may begin/proviso": false
+ },
+ "R-78": {
+  "first_recorded": "2026-08-03T15:34:25+02:00",
+  "commit": "35839e7e8",
+  "PROMOTION": false,
+  "ALLOCATION": true,
+  "WP-4B": false,
+  "RED": false,
+  "unblock/may begin/proviso": false
+ },
+ "R-79": {
+  "first_recorded": "2026-08-03T15:47:45+02:00",
+  "commit": "b3678e1e1",
+  "PROMOTION": true,
+  "ALLOCATION": true,
+  "WP-4B": true,
+  "RED": true,
+  "unblock/may begin/proviso": false
+ },
+ "R-80": {
+  "first_recorded": "2026-08-03T15:53:09+02:00",
+  "commit": "f5d84b67e",
+  "PROMOTION": true,
+  "ALLOCATION": true,
+  "WP-4B": false,
+  "RED": false,
+  "unblock/may begin/proviso": true
+ }
+}

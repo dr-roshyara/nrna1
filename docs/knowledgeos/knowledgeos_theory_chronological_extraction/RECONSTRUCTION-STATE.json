@@ -1,0 +1,146 @@
+{
+  "state_version": "0.1.0-PILOT",
+  "protocol_version": "knowledge_os_protocoll.md @ commit f3e606cac",
+  "corpus_registry_hash": "NOT_COMPUTED \u2014 see PILOT-F12; \u00a736A requires it, this pilot did not implement hashing",
+  "last_processed_file_id": "F0010",
+  "last_processed_sequence": 10,
+  "current_processing_file_id": null,
+  "current_processing_state": "COMPLETED",
+  "file_counts": {
+    "expected": 10,
+    "read": 10,
+    "reconstruction_records": 10,
+    "dossiers_written": 1,
+    "dossiers_deferred": 9
+  },
+  "edge_counts": {
+    "verified": 10,
+    "candidate": 0,
+    "sequential": 0,
+    "derivation": 0
+  },
+  "theory_object_counts": {
+    "total": 7,
+    "candidate": 3,
+    "reconstructed": 4,
+    "validated": 0,
+    "canonical": 0
+  },
+  "architecture_object_counts": {
+    "reference_AR": 0,
+    "historical_HA": 0,
+    "note": "No Reference Architecture exists to map against (\u00a749 item 1 BLOCKING, confirmed empirically). HA-### not minted \u2014 see PILOT-F05."
+  },
+  "gap_counts": {
+    "open": 5,
+    "resolved": 0
+  },
+  "contradiction_counts": {
+    "open": 3,
+    "resolved": 2
+  },
+  "active_theory_threads": [],
+  "active_theory_threads_note": "TH-### not minted in this pilot. Thread discovery was performed informally (the Genesis thread F0008->F0005->F0001 is the clearest) but \u00a719B's identity test could not be satisfied without the Reference Architecture that Layer 2 depends on.",
+  "active_theory_objects": [
+    "T-0001",
+    "T-0002",
+    "T-0003",
+    "T-0004",
+    "T-0005",
+    "T-0007",
+    "T-0012"
+  ],
+  "active_definitions": [],
+  "active_assumptions": [],
+  "active_architecture_objects": [],
+  "recent_relevant_files": [
+    "F0008",
+    "F0010",
+    "F0001",
+    "F0005"
+  ],
+  "open_gaps": [
+    "G-0001",
+    "G-0002",
+    "G-0003",
+    "G-0004",
+    "G-0005"
+  ],
+  "open_branches": [],
+  "open_derivations": [
+    "DI-0001",
+    "DI-0002",
+    "DI-0003",
+    "DI-0004",
+    "DI-0005"
+  ],
+  "open_contradictions": [
+    "C-0002",
+    "C-0004",
+    "C-0005"
+  ],
+  "open_research_obligations": [
+    "RO-0001",
+    "RO-0002",
+    "RO-0003",
+    "RO-0004",
+    "RO-0006",
+    "RO-0007"
+  ],
+  "last_checkpoint": "pilot-batch-001",
+  "checkpoint_hash": "NOT_COMPUTED",
+  "schema_versions": {
+    "note": "No schemas were frozen before this pilot ran \u2014 \u00a745 Gates 1-3 were NOT executed. This is the pilot's single largest deviation from the protocol and is recorded as PILOT-F13."
+  },
+  "batches_completed": [
+    "batch-001 (F0001-F0010)",
+    "batch-002 (F0011-F0025)"
+  ],
+  "files_read": 25,
+  "window": "F0001-F0025 of 3081",
+  "coverage_pct": 0.81,
+  "artifact_counts": {
+    "FILE-REGISTRY": 25,
+    "VERIFIED-EDGES": 19,
+    "THEORY-OBJECTS": 23,
+    "THEORY-THREADS": 8,
+    "ARCHITECTURE-OBJECTS": 10,
+    "GAPS": 11,
+    "CONTRADICTIONS": 9,
+    "RESEARCH-OBLIGATIONS": 14,
+    "DERIVATION-INSTANCES": 14,
+    "INTRA-FILE-REVISIONS": 15,
+    "SOURCE-LOCAL-IDENTIFIERS": 18,
+    "ORDERING-CONSTRAINTS": 8,
+    "P3A-COMPARISON": 7
+  },
+  "tier2_absences": {
+    "BRANCHES.jsonl": "ABSENT_BY_CONTENT - searched all 25 files for a forked formulation carried forward in parallel; none found. Every divergence observed resolved by supersession, refutation or dissolution, never by branching.",
+    "MERGES.jsonl": "ABSENT_BY_CONTENT - searched: every VERIFIED-EDGES record was inspected for a theory-object merge, and every THEORY-OBJECTS pair sharing a label or a source file was tested under \u00a719A. R-0005 is labelled MERGE at FILE level (F0010+F0009 -> F0001) but merges no theory objects. TH-0003 was deliberately left UNCERTAIN rather than merged. Zero object merges found.",
+    "CONTINUITY.jsonl": "ABSENT_BY_CONTENT - continuity is recorded per-edge on VERIFIED-EDGES; a separate register would duplicate authority (\u00a75).",
+    "CANDIDATE-EDGES.jsonl": "ABSENT_BY_CONTENT - \u00a78 candidate layer degenerates in this window: all 19 edges are explicitly stated in text, none inferred.",
+    "SEQUENTIAL-EDGES.jsonl": "SUPERSEDED - replaced by ORDERING-CONSTRAINTS.jsonl, which records a PARTIAL ORDER over EVENTS rather than a sequence over files. See OC-0003/OC-0005 for why file-level sequencing is unsound.",
+    "IMPLEMENTATION-READINESS.jsonl": "ABSENT_BY_CONTENT - 24 of 25 files declare \"Nothing in this document executes\". F0025 is the sole exception and is recorded as a discontinuity in FILE-REGISTRY.",
+    "PROPOSITIONS.jsonl": "ABSENT_BY_CONTENT - propositions recorded as typed THEORY-OBJECTS (object_type: Proposition); a separate file would split one registry.",
+    "ASSUMPTIONS.jsonl": "ABSENT_BY_CONTENT - assumptions recorded per theory object and per derivation instance.",
+    "DEFINITIONS.jsonl": "ABSENT_BY_CONTENT - recorded as object_type: Definition.",
+    "CANDIDATE-THEORY-OBJECTS.jsonl": "NOT_SEARCHED - \u00a719C candidate-theory layer was not exercised in either batch. This is an admission, not a finding."
+  },
+  "batch_002_findings": {
+    "integer_sequence_deprecated": "historical_sequence integers are NOT assigned in batch 002. OC-0003 and OC-0005 show a file occupies MULTIPLE positions (F0019 commission precedes F0020; F0019 revision follows it; F0020->F0024->F0020 is cyclic at file level). The ordering graph G_S must have EVENTS as nodes. Batch-001 integers are retained as historical record but are not authoritative.",
+    "registry_schema_split": "Batch-001 rows use the deprecated scalar authored_date_from_content; batch-002 rows use typed date_events[]. Migration obligation RO-0014.",
+    "dangling_references_found": "4 (T-0006, T-0008, T-0010, T-0011) plus 1 numbering gap (T-0009), all originating in batch 001, all detected by \u00a737 check 4. Second consecutive batch in which this check caught a real defect.",
+    "p3a_cumulative_error_rate": "7 of 25 (28%), mechanism uniform in 7 of 7.",
+    "corpus_not_self_contained": "G-0007 - load-bearing instruments cited throughout the window live outside docs/knowledgeos/ and are therefore outside the 3081-entry registry entirely. Escalated to \u00a749: this is a SCOPE finding, not a batch finding.",
+    "check_14_defect": "CHECK 14 AS SPECIFIED IS WRONG, found by running it. It flags F0016 because a cited-artifact date_event shares the VALUE 2026-08-03 with historical_sequence_date. But F0016 derives that date from its own COMMISSION event (applies_to: THIS_FILE); the external research input merely happens to be same-day. The check tests VALUE COINCIDENCE where it should test PROVENANCE. Correct predicate: reject only if NO applies_to=THIS_FILE event supports historical_sequence_date. Under the corrected predicate F0016 passes and all 15 batch-002 rows pass. Classified as a PROTOCOL DEFECT (AUDIT-05), not a data defect. Same-day citation is common in this corpus, so the false-positive rate of the specified check would be high at scale.",
+    "canonical_discovery_failure": "SELF-OBSERVED, recorded not repaired. The Step-2 protocol was drafted WITHOUT searching docs/knowledgeos/backlog/, the folder it was being written into. EKS-35 already registered findings F-1/F-2 (timestamps do not encode argument order) from 2026-09-09, with stronger evidence. This is a further occurrence of proposing-before-searching - the failure mode T-0023 counts and F0015 records as occurrence #11. It also drew on an INDEXED region, corroborating C-0006: the cause is not only a missing index but an unread one. Consequences: gate G2-F and quality gate Q10 added to the Step-2 proposal; obligations RO-0015/RO-0016 opened."
+  },
+  "gates": {
+    "gate_0_protocol_frozen": false,
+    "gate_1_window_read": true,
+    "gate_2_artifacts_written": true,
+    "gate_3_batch_validated": true,
+    "step2_authorized": "PENDING - Step-2 protocol is a PROPOSAL awaiting review",
+    "gate_canonical_discovery": false
+  }
+}

@@ -8,14 +8,15 @@ namespace EngineeringKnowledge\Capabilities\Cohesion\Domain;
 final readonly class MethodFacts
 {
     /**
-     * @param list<StateAccess>        $stateAccesses
-     * @param list<BehaviourReference> $behaviourReferences
+     * @param list<StateAccess>                                          $stateAccesses
+     * @param list<BehaviourReference|IndeterminateBehaviourReference>   $behaviourReferences
      */
     public function __construct(
         public string $methodIdentity,
         public bool $hasBody,
         public array $stateAccesses = [],
         public array $behaviourReferences = [],
+        public MethodRole $methodRole = MethodRole::Ordinary,
     ) {
     }
 }

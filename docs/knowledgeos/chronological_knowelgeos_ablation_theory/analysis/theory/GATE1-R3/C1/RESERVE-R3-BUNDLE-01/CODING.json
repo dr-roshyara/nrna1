@@ -1,0 +1,197 @@
+{
+ "R-33": {
+  "ops": ["SUPERSEDE"],
+  "not_modelled": ["DEFINE"],
+  "annotations_by_others": [],
+  "authority_named": false,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-42": {
+  "ops": ["RATIFY", "CREATE-NORM"],
+  "not_modelled": ["AFFIRM", "REFUTE"],
+  "annotations_by_others": [],
+  "authority_named": false,
+  "V": {
+   "V1": "SUPPORTED",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-48": {
+  "ops": ["ACCEPT"],
+  "not_modelled": [],
+  "annotations_by_others": ["R-62 RECORDING CORRECTION A1 (2026-08-01, annotation; decision unchanged): transition type reads ACCEPTANCE, not Approval"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "AMBIGUOUS",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-54": {
+  "ops": [],
+  "not_modelled": ["ACTIVATE (moves AUTHORIZED -> ACTIVE; 'starts the clock')"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "AMBIGUOUS",
+   "V3": "NOT-MODELLED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-57": {
+  "ops": [],
+  "not_modelled": ["CORRECT (an approved plan's mechanism sentence)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "NOT-MODELLED",
+   "V2": "UNTESTABLE",
+   "V3": "NOT-MODELLED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-59": {
+  "ops": ["ACCEPT", "CORRECT-TEXT"],
+  "not_modelled": ["RECORD (criterion 5 as explicit architectural debt)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-60": {
+  "ops": ["OPEN-WORK", "CORRECT-TEXT"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-69": {
+  "ops": ["ACCEPT"],
+  "not_modelled": ["CORRECT (integration contract §5, D-1)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-70": {
+  "ops": ["AUTHORIZE"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-71": {
+  "ops": ["ACCEPT", "ADOPT-DECISION", "OPEN-WORK"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-74": {
+  "ops": ["ADOPT-DECISION"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-76": {
+  "ops": ["CONFIRM"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "AMBIGUOUS",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-95": {
+  "ops": ["AUTHORIZE"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "AMBIGUOUS",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ }
+}

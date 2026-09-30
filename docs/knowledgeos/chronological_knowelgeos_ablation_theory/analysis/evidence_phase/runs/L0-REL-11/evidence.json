@@ -1,0 +1,154 @@
+{
+ "release": "L0-REL-11",
+ "sources": {
+  "S-8": {
+   "path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "lines": [
+    26,
+    27
+   ]
+  },
+  "S-9": {
+   "path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "lines": [
+    155,
+    161
+   ]
+  }
+ },
+ "cells": [
+  {
+   "id": "G1-c1",
+   "claim_id": "G1-L26-explicit",
+   "proposition": "EP-04a",
+   "source_slot": "S-8",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "never Approved/Promoted/Retired/Closed",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "Retired (loss of standing) is never conferred by workflow words; only explicit ARB decisions create governance",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "governance status of engineering artifacts (ES-001.2, ARB rule)"
+   },
+   "notes": "ES-001.2 makes every governance status, including Promoted and Retired, performative: created only by an explicit ARB decision; records do not create it. Mapping governance status onto MT 'ad' is an interpretation (hence MEDIUM)."
+  },
+  {
+   "id": "G1-c2",
+   "claim_id": "G1-L26-explicit",
+   "proposition": "EP-04b",
+   "source_slot": "S-8",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "never Approved/Promoted/Retired/Closed",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same: no status change without an explicit decision",
+   "assessment": "REFUTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "governance status of engineering artifacts (ES-001.2, ARB rule)"
+   },
+   "notes": "ES-001.2 makes every governance status, including Promoted and Retired, performative: created only by an explicit ARB decision; records do not create it. Mapping governance status onto MT 'ad' is an interpretation (hence MEDIUM). Automatic loss on evidence change would be a status change without a decision."
+  },
+  {
+   "id": "G1-c3",
+   "claim_id": "G1-L26-roles",
+   "proposition": "EP-01",
+   "source_slot": "S-8",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "Authors propose; the authority adopts",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "a named authority adopts; decisions are per item (Approve / Reject / Defer)",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "governance status of engineering artifacts (ES-001.2, ARB rule)"
+   },
+   "notes": "Names the adopting authority and per-item granularity. MT has no authority/scope variable, so this is CANNOT-EXPRESS for the family."
+  },
+  {
+   "id": "G2-c1",
+   "claim_id": "G2-L157-supersede",
+   "proposition": "EP-11",
+   "source_slot": "S-9",
+   "source_path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "source_sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "anchor": {
+    "start_line": 157,
+    "end_line": 157
+   },
+   "exact_wording": "produces a superseding version of this dictionary",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "a changed definition requires an ADR and produces a superseding version; never silent redefinition",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "frozen ubiquitous-language dictionary (Phase-02.6 §5)"
+   },
+   "notes": "A defined act (ADR, then supersession) changes a frozen artifact, but no evidence trigger is stated; it cannot decide 'later evidence overturns adoption'."
+  }
+ ],
+ "events": [
+  {
+   "id": "G1-e1",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "(ARB 2026-07-11)",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-11",
+   "notes": "ES-001.2 rule adopted by the ARB"
+  }
+ ]
+}

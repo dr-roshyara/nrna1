@@ -1,0 +1,169 @@
+{
+ "body": {
+  "absence_dimensions": 19694,
+  "dimensions_with_zero_stage1_hits": 5976,
+  "hits_per_label_distribution": {
+   "max": 64277,
+   "p50": 4,
+   "p90": 125,
+   "p99": 9148
+  },
+  "labels_with_absence_dimensions": 2448,
+  "per_file_label_concentration_top": [
+   {
+    "labels": 197,
+    "source_id": "S1890"
+   },
+   {
+    "labels": 169,
+    "source_id": "S1529"
+   },
+   {
+    "labels": 165,
+    "source_id": "S1555"
+   },
+   {
+    "labels": 160,
+    "source_id": "S2607"
+   },
+   {
+    "labels": 150,
+    "source_id": "S0294"
+   },
+   {
+    "labels": 141,
+    "source_id": "S2338"
+   },
+   {
+    "labels": 119,
+    "source_id": "S1531"
+   },
+   {
+    "labels": 118,
+    "source_id": "S0237"
+   },
+   {
+    "labels": 111,
+    "source_id": "S1486"
+   },
+   {
+    "labels": 110,
+    "source_id": "S1426"
+   }
+  ],
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "provisional": "discovery-population workload (S3b, without sealed material); S4 calibrates",
+  "stage1_hits_total_over_labels_with_dimensions": 673652,
+  "stage2_whole_file_reading_chars_if_every_hit_file_read_once_per_label": 1895313263,
+  "top_labels_by_hits": [
+   {
+    "hits": 64277,
+    "label": "three-candidate-kernel-architectures",
+    "raw_files": 2413
+   },
+   {
+    "hits": 42860,
+    "label": "evidence",
+    "raw_files": 2402
+   },
+   {
+    "hits": 29719,
+    "label": "KnowledgeOS",
+    "raw_files": 1987
+   },
+   {
+    "hits": 21824,
+    "label": "knowledge-extraction-inverse-problem-hypothesis",
+    "raw_files": 1421
+   },
+   {
+    "hits": 21437,
+    "label": "step285-canonical-state-reconciliation-protocol",
+    "raw_files": 1416
+   },
+   {
+    "hits": 19539,
+    "label": "distinct-noninterchangeable-communication-states",
+    "raw_files": 1847
+   },
+   {
+    "hits": 16197,
+    "label": "status-sigma-five-axis-overload",
+    "raw_files": 2080
+   },
+   {
+    "hits": 15938,
+    "label": "z-kos-001-zero-principle",
+    "raw_files": 1411
+   },
+   {
+    "hits": 15937,
+    "label": "z-kos-001-neutral-reference",
+    "raw_files": 1411
+   },
+   {
+    "hits": 15056,
+    "label": "authority-permission-vs-trust-rank-collision",
+    "raw_files": 1562
+   },
+   {
+    "hits": 15051,
+    "label": "ideal-state-comparison-model",
+    "raw_files": 1011
+   },
+   {
+    "hits": 14810,
+    "label": "gita-chapter4-mathematical-derivation",
+    "raw_files": 1036
+   },
+   {
+    "hits": 14628,
+    "label": "identity-continuity-similarity-triad",
+    "raw_files": 1569
+   },
+   {
+    "hits": 14237,
+    "label": "candidate-two-axis-conflation",
+    "raw_files": 1698
+   },
+   {
+    "hits": 13429,
+    "label": "knowledge-state-eight-primitives-chapter",
+    "raw_files": 1011
+   }
+  ],
+  "unique_files_hit": 2724
+ },
+ "header": {
+  "addendum": "prompts/20260924_1625_p3b-H19-holdout-addendum-v1.5.md",
+  "addendum_sha256": "75a5e45d0f8a1e5726beb92ef1ac18c540355ce51cdec7b8dd6873399e806ae3",
+  "artifact": "P3B-WORKLOAD-DISCOVERY.json",
+  "failures": [],
+  "input_hashes": {
+   "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+   "03-CONTRIBUTIONS.jsonl": "4c192e8903b50a775964898b233ef2b24a9fffbd3c6e73906a34c4f88ed3c6f8",
+   "08-OVERLAP-REGISTER.jsonl": "83fa36e9d8bb31a3d7da65f7f03c047daf47705c08175d086079c3613286f925",
+   "20-FAMILIES/_derived.json": "131a55ffd92794d462e24f1a1fc49c569b9abe5cd8641b45e0830ba66b60f059",
+   "31-RECONCILIATION-PAIRS.jsonl": "d8ec552766c6d4852e407d459f71f01a58e1561c25de27d116b1a6ab445a748d",
+   "P3B-ABSENCE-SEARCH.jsonl": "1f7c832d5bb82e3a20b92cf37f30633971a9124ff4bb50a52e77d46986331b5d",
+   "P3B-IDENTITY-MANIFEST.jsonl": "74cb210bb63d1956647186a53f2f54119fd6a219fb6b23795ad9b6fe3ea0d042",
+   "P3B-TIERS.jsonl": "1ea659d4668d6f197068f6069e736cfbe98e00b8d2948197ac5fb583c835595e",
+   "_batch_input_r2/bundle_index.jsonl": "d64a2410b7dae6a240224ded70dd36bc6b6d5c422293b53e2f4117d0513161c9",
+   "ledger-p3b/OB0001/objects.jsonl": "a33dddc72b77bc86537f9f0b4713ec87a9e5c200fb6753205593c7de481bd5dd",
+   "ledger-p3b/OB0002/objects.jsonl": "0a6ca4f71b83c67dc4eca8fbccad8c5fbb1272139ff84bed3a9a862905422d09",
+   "ledger-p3b/OB0003/objects.jsonl": "b5b02d4507911237d45c3cb152a3b19352649fcdd4fa79ef1279814a4f707bad",
+   "prompts/20260924_1505_p3b-phase1-continuation-protocol-v1.6.5.md": "b70fc216ea6a1cde5a8efbfc1ea2ac1397f18b519bf1c04c292a44d7415ee3f7",
+   "prompts/20260924_1625_p3b-H19-holdout-addendum-v1.5.md": "75a5e45d0f8a1e5726beb92ef1ac18c540355ce51cdec7b8dd6873399e806ae3"
+  },
+  "output_sha256": "ae2dfd89b9da68c9fdaee9708f14c146667e71ece2e41f7d83dde3f489efc71c",
+  "protocol": "prompts/20260924_1505_p3b-phase1-continuation-protocol-v1.6.5.md",
+  "protocol_sha256": "b70fc216ea6a1cde5a8efbfc1ea2ac1397f18b519bf1c04c292a44d7415ee3f7",
+  "python_version": "3.13.2",
+  "result": "PASS",
+  "run_timestamp_utc": "2026-09-24T15:22:45Z",
+  "script_committed_unmodified": true,
+  "script_name": "p3b_s3b_holdout_sample_plan.py",
+  "script_version": "342ba2353ea760f003dcc3686931093ac601e2b8",
+  "seal_id": "HS-3d32dd44d162"
+ }
+}

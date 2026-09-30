@@ -1,0 +1,280 @@
+{
+ "file_id": "F0010",
+ "canonical_path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-boundary-consolidation.md",
+ "sha256": "a49c3ae022cd078c2813d0500dd549c945255c5dc5879eea12611487cd12d81f",
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_sequence_position": 10,
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "lines_total": 292,
+ "read_unit": "U-0006-RETROFIT-PILOT",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ reason": "authorized Phase-1 retrofit pilot, file 3 of 3",
+  "prior_read": "⚠️ YES — pre-§9 prose regime",
+  "original_read_conformance": "PARTIAL"
+ },
+ "source_self_declared_status": "⚠️ 'STRATEGIC DISCOVERY REPORT' · 'Generated — never authoritative without human review' · '⛔ Submitted to the Decision Authority. Nothing in this document executes.'",
+ "⛔ status_upgrade_check": "NOT UPGRADED. A discovery report, not a decision.",
+ "source_document_kind": "STRATEGIC DISCOVERY REPORT — ⛔ 'No implementation · no ADR update · no repository restructuring · no folder proposal · no new capability · no governance amendment'",
+ "source_research_question": "⭐ VERBATIM: 'does the MVK experiment change the Strategic Domain Model of KnowledgeOS?'",
+ "⭐ source_answer": "⭐ 'NO. The experiment does not change the Strategic Domain Model. It changes the EXTRACTION BOUNDARY, and it corrects one of my own findings outright.'",
+ "reconstruction_question": "⛔ DISTINCT: is the NO sound, is the self-refutation genuine, and is F0010 an INDEPENDENT witness to the objects it shares with F0001?",
+ "source_method_declared": "⭐ 'Each of the six candidates is tested against the repository's OWN admissible-justification list (Round47-OP), because using the programme's own test is the only non-arbitrary way to answer this.'",
+ "definitions": [
+  {
+   "term": "KnowledgeOS",
+   "def": "PRODUCT — canon: 'potential product', gate unopened"
+  },
+  {
+   "term": "PKS",
+   "def": "GENERATED PRODUCT ARTIFACT — an instance, one per product",
+   "⚠️": "'generated' is n=0"
+  },
+  {
+   "term": "PublicDigit",
+   "def": "BUSINESS PRODUCT"
+  },
+  {
+   "term": "Runtime adapters",
+   "def": "⛔ NOT products — replaceable adapters"
+  },
+  {
+   "term": "Bootstrap · Capabilities · Governance · Validation · Learning",
+   "def": "⛔ INTERNAL SUBSYSTEMS of KnowledgeOS — 'analogous to Spring Core / Beans / MVC'"
+  },
+  {
+   "term": "CASE-LAW DILUTION",
+   "def": "⭐ a document is mostly one project's history"
+  },
+  {
+   "term": "COUPLING AT THE BOUNDARY",
+   "def": "⭐ a document is general but its intake rule names one product"
+  },
+  {
+   "term": "R-A / R-B / R-C",
+   "def": "⭐ bootstrap a PKS (n=0) · bootstrap engineering (n=1) · bootstrap software (n=0)"
+  }
+ ],
+ "assumptions": [
+  "⭐ the programme's own admissible-justification list is the only non-arbitrary test for its own candidates",
+  "⭐ product ownership and architectural responsibility are ORTHOGONAL and must not be collapsed",
+  "ES-006.1: n=1 admits a candidate, never a rule",
+  "ES-005.2: a directory exists only when its first artifact arrives"
+ ],
+ "premises": [
+  "Round47-00 SD-1..SD-7 (ADOPTED 2026-06-26)",
+  "Round47-OP (BINDING OPERATING PROTOCOL)",
+  "H-CAT-1's refusal of the parent abstraction",
+  "the ARB ruling that the relationship is the conclusion",
+  "EAD-1's zero-election-terms test"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⚠️ Counts only — 1,532 code files · 106 reports · n=0/n=1 evidence bounds · '~90%' and '~95% case law' (⛔ estimates, no method given).",
+ "derivations": [
+  {
+   "id": "DI-F0010-01",
+   "from": [
+    "Round47-00 is ADOPTED",
+    "Round47-OP is BINDING",
+    "it contains nine boundary criteria"
+   ],
+   "to": "⛔ 'There is no strategic-DDD method' is REFUTED",
+   "form": "REFUTATION_BY_EXISTENCE_PROOF",
+   "validity": "⭐ VALID AND STRONG — refutes the AUTHOR'S OWN prior finding F-3 on repository evidence"
+  },
+  {
+   "id": "DI-F0010-02",
+   "from": [
+    "the nine criteria are domain-free",
+    "SD-1 requires a Certified Domain Knowledge Release v1.0 only PublicDigit has"
+   ],
+   "to": "the blocker is COUPLING, not absence",
+   "form": "LOCATE_THE_BLOCKER",
+   "validity": "⭐ VALID"
+  },
+  {
+   "id": "DI-F0010-03",
+   "from": [
+    "the methodology corpus has zero election terms yet is ~90–95% case law",
+    "Round47-OP is general yet unconsumable"
+   ],
+   "to": "⭐ TWO blocker classes; neither detectable by vocabulary search",
+   "form": "TWO_DIRECTIONAL_VALIDATION",
+   "validity": "⭐ VALID — the file explicitly notes it 'holds in BOTH directions, which is stronger than stated'"
+  },
+  {
+   "id": "DI-F0010-04",
+   "from": [
+    "six candidates tested against the nine admissible criteria"
+   ],
+   "to": "⛔ NO NEW STABLE STRATEGIC DOMAIN IS EVIDENCED",
+   "form": "⭐ EXHAUSTIVE_TEST_AGAINST_A_DECLARED_CRITERION_LIST",
+   "validity": "⭐ VALID FOR THE SIX",
+   "⚠️ limit": "the six candidates are author-chosen; no sampling frame"
+  },
+  {
+   "id": "DI-F0010-05",
+   "from": [
+    "TESTED: Knowledge → ARCHITECT → Software",
+    "NOT TESTED: KnowledgeOS → PKS GENERATOR → Software"
+   ],
+   "to": "⭐ three distinct responsibilities, only one ever exercised",
+   "form": "DECOMPOSITION_OF_A_CONFLATED_CLAIM",
+   "validity": "⭐ VALID — labelled 'the most consequential correction'"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'NO NEW STABLE STRATEGIC DOMAIN IS EVIDENCED'",
+  "⭐ 'The strategic model is stable. Stop consolidating it.'",
+  "⭐ 'bootstrapping is THREE responsibilities, not one — and two of the three have never been attempted'",
+  "⭐ 'One of five arrows is evidenced. The loop-closing arrow is empty, and the loop contains a component that has never existed.'",
+  "⭐ 'the next move is one ARB answer, not another document'"
+ ],
+ "dependencies": [
+  "MVK Bootstrap Validation",
+  "Product Boundary Discovery",
+  "Engineering Platform Reference Architecture",
+  "Capability Catalog",
+  "PKS Phase II Methodology Baseline v1.2",
+  "Round47-00",
+  "Round47-OP",
+  "H-CAT-1",
+  "EAD-1",
+  "ES-003.3 · ES-004.2/.3 · ES-005.1/.2/.3/.4 · ES-006.1/.4",
+  "CAP-001..006",
+  "PMR-9 · PMR-10",
+  "OQ-ENG-004"
+ ],
+ "previous_related_files": "⛔ NOT_RECOVERABLE_WITHOUT_REREAD — the seven 'Inputs reviewed' are named but their content would require reopening those files.",
+ "knowledgeos_purpose_relevance": "⭐ MAXIMAL — this file answers the boundary question that F0001 then synthesizes.",
+ "architectural_role": "⭐ DISCOVERY REPORT — the evidential layer BENEATH F0001's synthesis.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the two blocker classes",
+   "R-A/R-B/R-C",
+   "the three architectural levels",
+   "the orthogonality of product ownership vs architectural responsibility",
+   "the conceptual context map with per-arrow evidence status",
+   "OQ-S1..OQ-S5"
+  ],
+  "⭐ corrected": [
+   "⛔ F-3 'there is no strategic-DDD method' — REFUTED BY ITS OWN AUTHOR",
+   "'MVK failed' ≠ 'KnowledgeOS failed'",
+   "'the bootstrap responsibility' — one thing → THREE"
+  ],
+  "⛔ withdrawn": [
+   "F-3, outright"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0001",
+  "T-0002",
+  "T-0004",
+  "T-0005",
+  "T-0006",
+  "T-0007",
+  "T-0008",
+  "T-0010"
+ ],
+ "⛔ theory_object_disposition": "⛔ NONE UPGRADED OR DOWNGRADED — rule 6.",
+ "sequential_graph_position": "⭐ canonical position 10, dated the same day as F0001 (position 1). ⭐ TWO INDEPENDENT SIGNALS place F0010 BEFORE F0001 in authorship — see the ordering finding below.",
+ "file_relationships": [
+  {
+   "to": "F0001",
+   "kind": "⭐ IS_A_SOURCE_OF",
+   "note": "F0001's traceability names 'Strategic Boundary Consolidation' — this file's exact title — among its four source syntheses"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH — every candidate carries its criteria, every arrow its evidence status, every recommendation its n.",
+ "derivation_completeness_audit": "⭐ THE STRONGEST OF THE FOUR FILES AUDITED SO FAR ON NEGATIVE-EVIDENCE METHOD. ⭐ Its negative conclusion ('no new domain') is reached by testing each candidate against a DECLARED, EXTERNALLY-AUTHORED criterion list, and it says why: 'using the programme's own test is the only non-arbitrary way to answer this.' ⛔ Contrast F0026 (RO-0019), F0027 (RO-0020) and F0001 (RO-0023), whose negative searches state no scope at all.",
+ "gaps": [
+  {
+   "id": "G-F0010-A",
+   "⚠️ gap": "the SIX candidates are author-chosen; no sampling frame",
+   "⭐ significance": "'no new domain is evidenced' is sound FOR THESE SIX. It is not a survey of the space of possible domains. ⚠️ Same shape as RO-0021 (F0027) and RO-0024 (F0001)."
+  },
+  {
+   "id": "G-F0010-B",
+   "⛔ gap": "'~90% case law' and '~95% case law' are given with NO measurement method",
+   "⭐ significance": "these percentages carry real argumentative weight — they are the evidence for CASE-LAW DILUTION as a class — yet nothing states how they were obtained."
+  },
+  {
+   "id": "G-F0010-C",
+   "⚠️ gap": "ES-005.4 is recorded as 'UNKNOWN — deferred, therefore silent … cannot be cited as authority'",
+   "note": "⛔ recorded as a factual observation about the corpus's own state. ⛔ NOT extended to any claim about the platform outside the corpus."
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0010-01",
+   "⛔ finding": "⭐⭐ F0001 AND F0010 ARE NOT INDEPENDENT WITNESSES — F0001 IS A SYNTHESIS OF F0010",
+   "detail": "F0001's traceability reads: 'SYNTHESIS of the Architecture Consolidation · Product Boundary Discovery · MVK Bootstrap Validation · ⭐ Strategic Boundary Consolidation'. ⭐ 'Strategic Boundary Consolidation' is F0010's exact title.",
+   "⭐ consequence": "T-0002, T-0004, T-0005, T-0006, T-0007 and T-0008 each list BOTH F0001 and F0010 as historical_sources. ⛔ That reads as two-source corroboration. It is TRANSMISSION: the two blocker classes, R-A/R-B/R-C, the three levels, OQ-S1..S5 and the context map all originate in F0010 and are restated in F0001.",
+   "⭐ the general shape": "⛔ Counting a synthesis and its source as two witnesses inflates n — the exact error ES-006.1's repetition bar exists to prevent.",
+   "status": "RECORDED_NOT_RESOLVED",
+   "⛔ disposition": "rule 6 forbids adjusting the objects here."
+  },
+  {
+   "id": "AUDIT-F0010-02",
+   "⭐ finding": "⭐ THE ORDERING IS RESOLVED BY A MONOTONE COUNTER, NOT BY A TIMESTAMP",
+   "detail": "Both files are dated 2026-08-02 and both carry the canonical timestamp 'Aug 5 15:44'. ⛔ Neither date orders them. ⭐ But F0010 §10 recommendation 5 reads 'Run CAP-001 at the next real minting — still 0 executions, 0 decisions changed', while F0001 §7 records 'G-6 MOVED TODAY … 1 row, 1 decision changed (was 0/0)'.",
+   "⭐ conclusion": "⭐ CAP-001's execution count is monotone non-decreasing. 0 precedes 1. ⭐ F0010 WAS WRITTEN BEFORE F0001, on internal evidence, independently of the citation in AUDIT-F0010-01.",
+   "⭐ significance": "TWO INDEPENDENT SIGNALS agree: the citation and the counter. ⛔ Both contradict the canonical log's order (F0001=1, F0010=10) — which orders by FILE MTIME, not authorship.",
+   "status": "⭐ RESOLVED_FOR_THIS_PAIR"
+  },
+  {
+   "id": "AUDIT-F0010-03",
+   "⚠️ finding": "a self-refutation, correctly executed",
+   "detail": "⭐ §0 C-1 refutes the author's own prior F-3 ('there is no strategic-DDD method') on repository evidence, and §Closing restates it under 'What was wrong in my own report'.",
+   "⭐ assessment": "⭐ POSITIVE METHOD EVIDENCE — the refutation is stated in the body, in the closing AND in the traceability line. ⛔ Nothing was quietly rewritten.",
+   "status": "RESOLVED_BY_SOURCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the six-candidate test table",
+  "the four-part extraction-readiness table (16 artifacts)",
+  "the context map with per-arrow status",
+  "the six-row promotion-evidence table",
+  "OQ-S1..S5",
+  "the nine 'Decisions Explicitly Not Taken'"
+ ],
+ "provenance_second_hand": [
+  "⛔ the seven 'Inputs reviewed' — named, their content quoted not re-derived",
+  "Round47-OP's nine criteria (quoted verbatim)",
+  "H-CAT-1's refusal",
+  "EAD-1's result"
+ ],
+ "provenance_this_reconstruction": [
+  "manifest id F0010",
+  "sha verified pre-read",
+  "receipt U-0006-RETROFIT-PILOT post-read"
+ ],
+ "negative_evidence": "⭐ THE BEST-HANDLED NEGATIVE EVIDENCE IN THE FOUR FILES AUDITED. ⭐ 'NO NEW STABLE STRATEGIC DOMAIN IS EVIDENCED' is reached by testing six candidates against nine DECLARED criteria authored elsewhere, with the choice of test justified: 'the only non-arbitrary way to answer this'. ⭐ The file even turns the criterion on its own table: '\"It seems reasonable\" is NOT admissible.' ⚠️ The remaining weakness is the SELECTION of the six, not the test applied to them.",
+ "multi_dimensional_confidence": {
+  "the NO answer, for the six candidates tested": "⭐ HIGH",
+  "the NO answer as a survey of possible domains": "⚠️ MEDIUM — author-chosen six",
+  "the C-1 self-refutation": "⭐ HIGH — existence proof",
+  "the two blocker classes": "⭐ HIGH — validated in both directions",
+  "the ~90%/~95% case-law figures": "⛔ LOW — no method",
+  "R-A/R-B/R-C": "⭐ HIGH — a decomposition, not an empirical claim",
+  "F0001+F0010 as two witnesses": "⛔ VERY LOW — they are one witness and its synthesis"
+ },
+ "dossier_status": "INCOMPLETE_BY_DESIGN",
+ "dossier_status_reason": "⛔ Gate 9 intentionally NOT satisfied — authorization rule 6.",
+ "not_recoverable_without_reread": [
+  "the seven named 'Inputs reviewed'",
+  "F-3's original wording in the MVK Bootstrap Validation report",
+  "whether T-0002/T-0004/T-0005/T-0007 already flag F0001 as derivative of F0010"
+ ],
+ "⚠️ erratum_E-01": {
+  "corrected": "lines_total",
+  "basis": "wc -l on the canonical file, 2026-09-23",
+  "⛔ class": "N-2 recurrence — the same off-by-one governance recorded for F0026 ('101 lines' vs 100)",
+  "⭐ root cause": "the number was written without being checked against the file. ⛔ NOT a trailing-newline artifact — all three pilot files end in a newline; that hypothesis was tested and refuted.",
+  "⛔ effect on evidence": "NONE. sha256 and the read receipt bind the content; only the descriptive count was wrong.",
+  "authority": "L0 2026-09-23 — corrections unblocked once O-1 and the authorization question were answered",
+  "was": 293,
+  "now": 292
+ }
+}

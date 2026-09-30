@@ -1,0 +1,66 @@
+# kos-governance-runtime
+
+**Scope(s):** THEORY-LEVEL · **Row count:** 18 · **Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** GT-ARCH-001, Proposal/Decision/Observation/Verification · **Aliases:** Step 155 KnowledgeOS Governance Runtime
+**Candidate group membership (NOT an identity claim):**
+- **G0935** [`kos-governance-runtime` · `kos-runtime-architecture`] — working_label token overlap Jaccard=0.50 (shared tokens: ['kos', 'runtime'])
+
+
+## Sources (how this label entered the ledger)
+- **OBJECT-INDEX**, batch `B0025`, scope `THEORY-LEVEL`: Step 155's organizational Governance Runtime: the four-concept separation (Proposal/Decision/Implementation-Observation/Verification), temporal/exception governance, role-sensitive context reuse, and the Governance Golden Trace GT-ARCH-001 alongside the Engineering Golden Trace.
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S1056] §"Governance decides. Assurance verifies. Engineering implements. AI assists."
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S1056] §"PROPOSED → APPROVED → IMPLEMENTED → VERIFIED — not sequential statuses of one object, but belonging to Proposal/Decision/Implementation/Verification respectively."
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+
+## Lifecycle
+last_seen: S1056. Candidate lifecycle: DORMANT.
+Evidence: No retraction/supersession/contradiction evidence recorded. The DORMANT classification is a heuristic based on how recently (by source_id) this label was last used (S1056), not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source IDs |
+|---|---|---|
+| purpose_rationale | PRESENT | S1056 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | PRESENT | S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056 |
+| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |
+| invariants | NOT-EVIDENCED-IN-CAPTURE | — |
+| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056, S1056 |
+| examples | PRESENT | S1056, S1056, S1056, S1056, S1056 |
+| warnings | PRESENT | S1056, S1056 |
+| experiments | NOT-EVIDENCED-IN-CAPTURE | — |
+| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |
+
+## Rationale
+- [S1056] (ARGUMENT/DISTINCTION) Contrasts the common architecture mistake of isolating governance from engineering with KnowledgeOS's operationally connected model.
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- [S1056] types=[PRINCIPLE] scope=THEORY-LEVEL — "States the foundational four-way separation as one of the strongest invariants of KnowledgeOS; defines the Governance Runtime's responsibility (architecture changes, rule changes, exceptions, approvals, effective versions, accountability, decision records) as distinct from performing technical verification itself, with the governance architecture pipeline Change Proposal->Impact Analysis->Architecture Review->Governance Decision->{REJECT, APPROVE->Registry Version->Implementation->Assurance->{PASS,FAIL}} — 'approval precedes effectiveness, while assurance follows implementation.'" (anchor: "Governance decides. Assurance verifies. Engineering implements. AI assists.")
+- [S1056] types=[DISTINCTION, EXAMPLE] scope=THEORY-LEVEL — "States the four-question model (what is proposed / what has been approved / what has actually been implemented / does implementation conform) and works four pairwise non-equivalences: Proposal ≠ Decision (an AI proposal to introduce a bounded context is not an ArchitectureDecision); Decision ≠ Implementation (Board approval ≠ code already changed); Implementation ≠ Conformance (only assurance establishes Conformant); Conformance ≠ Approval (code can technically conform to an unapproved architecture) — 'this distinction is extremely important.'" (anchor: "Proposal ≠ Decision ≠ Implementation(Observation) ≠ Verification — four distinct domain concepts, not sequential statuses of one object.")
+- [S1056] types=[FORMALIZATION] scope=OBJECT — "Defines the GovernanceDecision aggregate (states DRAFT/SUBMITTED/UNDER_REVIEW/APPROVED/REJECTED/SUPERSEDED, lifecycle organization-defined) and the Architecture Change Proposal schema (proposalId, subject, requestedChange, rationale, affectedArchitecture, impactAssessment, proposer, status), noting the proposal itself is not authoritative architecture." (anchor: "PROPOSED → APPROVED → IMPLEMENTED → VERIFIED — not sequential statuses of one object, but belonging to Proposal/Decision/Implementation/Verification respectively.")
+- [S1056] types=[DISTINCTION, EXAMPLE] scope=THEORY-LEVEL — "Defines impact-analysis scope (Bounded Contexts, Dependencies, APIs, Events, Persistence, Security, Operations, Teams, Processes, Existing Exceptions) partly automated and distinguishes AI-generated impact summaries (still analysis, not decision) from deterministic impact checks (strong evidence)." (anchor: "AI-assisted impact analysis (Registry, repository, dependency graph, historical decisions, existing evidence) remains ImpactAssessment=Analysis, not a governance decision. Deterministic impact analysis (e.g. 'remove Module B' -> checker identifies 17 dependent modules) is strong evidence the AI can explain.")
+- [S1056] types=[DISTINCTION, EXAMPLE] scope=THEORY-LEVEL — "Requires the Registry to identify the responsible authority per decision type (e.g. Architecture Principle Change->Architecture Board, Implementation Exception->designated approval authority), coming from the organization's actual governance model rather than being invented; distinguishes the person performing an operation (Actor) from the empowered organizational role/body (Authority)." (anchor: "Actor ≠ Authority — e.g. Actor: Domain Architect, Authority: Architecture Board.")
+- [S1056] types=[FORMALIZATION] scope=OBJECT — "Requires a decision to reference its supporting evidence and defines the full provenance traversal answering 'why was this architecture approved,' called 'governed architectural memory.'" (anchor: "Decision D42 basedOn ImpactAssessment, basedOn ArchitectureEvidence, basedOn RiskAssessment, produces ApprovedArchitectureVersion — decision traceability. Architecture Version → Decision → Proposal → Impact Analysis → Evidence → Original Observations — governed architectural memory.")
+- [S1056] types=[FORMALIZATION, EXAMPLE] scope=THEORY-LEVEL — "Formalizes temporal governance Architecture(t) with a worked historical-verification example showing which version applies to a release depending on effective dates, essential for correct historical audit; requires supersession (v1.0-supersededBy->v1.1) to keep v1.0 historically available, never overwritten; states approved decisions are historical — corrections produce new records rather than editing the original." (anchor: "Architecture v1.1 Status=APPROVED, Effective=2026-10-01. Before that date, v1.0 may remain applicable. ApplicableArchitecture = f(date, effectiveVersions, exceptions). A September-15 release must be evaluated against v1.0, not v1.1.")
+- [S1056] types=[FORMALIZATION] scope=OBJECT — "Lists a candidate ten-event governance vocabulary, to be derived from the actual lifecycle." (anchor: "ProposalSubmitted, ReviewStarted, ImpactAssessmentCompleted, DecisionApproved, DecisionRejected, ArchitectureVersionApproved, ArchitectureVersionActivated, ArchitectureVersionSuperseded, ExceptionApproved, ExceptionExpired.")
+- [S1056] types=[DISTINCTION, FORMALIZATION] scope=THEORY-LEVEL — "Elaborates the exception mechanism (Architecture Rule->Violation->Exception Request->Governance Decision->{REJECT->violation remains blocking, APPROVE->constrained deviation}), the exception schema, and worked conditional examples (e.g. allowed only if module remains isolated, no production deployment, migration completed by date X)." (anchor: "Exception ≠ ArchitectureChange — approving that Module X may temporarily violate Rule R does not mean Rule R has changed. Exception{exceptionId,ruleId,subject,scope,rationale,approver,approvedAt,effectiveFrom,expiresAt,conditions}. Conditions prevent a blanket bypass.")
+- [S1056] types=[FORMALIZATION] scope=THEORY-LEVEL — "Presents the Governance Runtime/Assurance Engine interaction and the resulting operational governance feedback loop." (anchor: "Governance Runtime defines Applicable Architecture → Assurance Engine verifies → Implementation; Assurance Finding flows back to Governance Runtime. GOVERNANCE → Architecture Rule → IMPLEMENTATION → ASSURANCE → {PASS, FAIL→FINDING→GOVERNANCE}.")
+- [S1056] types=[WARNING, PRINCIPLE] scope=THEORY-LEVEL — "States governance decisions must rest on traceable evidence, not AI-generated summaries alone." (anchor: "Governance must not consume only AI summaries ('the proposed change affects three contexts'); the authoritative basis is Evidence+Impact Assessment+Architecture Registry+Existing Decisions+Risk Information, with the AI explanation only a convenience layer.")
+- [S1056] types=[FORMALIZATION, EXAMPLE] scope=THEORY-LEVEL — "Extends the Context Service to serve governance users (Architecture Board member context: Proposal, Current/Proposed Architecture, Impact, Findings, Exceptions, Evidence, Previous Decisions) and generalizes Context as role-sensitive — a powerful reuse of the platform across all actor types." (anchor: "Context service reused for Developer→Engineering Context, Agent→Agent Context, Domain Architect→Architecture Context, Architecture Board→Governance Context. Context = f(Subject,Task,Role,Authority,Scope).")
+- [S1056] types=[FORMALIZATION, DISTINCTION] scope=THEORY-LEVEL — "Distinguishes technical actions from governance actions while unifying them under one authorization infrastructure, and distinguishes a governance decision (defines/changes policy or architecture) from an authorization policy/action permission — the two domains interact but remain distinct (Governance Decision->Authorization Policy->Action Permission)." (anchor: "SubmitProposal, ReviewProposal, ApproveArchitecture, ApproveException, ActivateArchitecture — governance actions requiring authorization, distinct from technical actions (READ_NEXUS, DEPLOY_APPLICATION) but sharing the same Action/Authorization pattern. GovernanceAction ⊆ Action. ArchitectureDecision=APPROVED does not automatically mean DeveloperMayDeploy.")
+- [S1056] types=[FORMALIZATION] scope=THEORY-LEVEL — "Presents the target Governance Runtime architecture diagram, and the resulting clean authority hierarchy (Governance defines->Architecture/Rules->Implementation->Runtime) paired with the upward evidence flow (Runtime->Observation->Evidence->Assurance->Governance), forming Governance<->Engineering feedback through evidence and assurance." (anchor: "Governance Context {Proposal, Decision, Exception} → Governance Rules → Architecture Registry → Assurance Engine → Findings → Governance Review.")
+- [S1056] types=[ARGUMENT, DISTINCTION] scope=THEORY-LEVEL — "Contrasts the common architecture mistake of isolating governance from engineering with KnowledgeOS's operationally connected model." (anchor: "Governance→PDF→Developer (typical anti-pattern) vs Governance→Machine-readable rule→Implementation→Deterministic verification→Evidence→Governance (KnowledgeOS target) — governance becomes operationally connected to engineering.")
+- [S1056] types=[PRINCIPLE, WARNING] scope=THEORY-LEVEL — "States the opposite anti-pattern (machine unilaterally changing architecture) is equally forbidden, and enumerates AI's proper supportive role in governance versus what it must never silently perform." (anchor: "Machine detects pattern → Machine changes architecture (not the target) vs Machine→Observation→Analysis→Proposal→Human Governance→Decision (the target). AI can support proposal drafting, impact analysis, evidence synthesis, dependency analysis, alternative generation, risk identification, decision briefing, remediation suggestions; AI should not silently perform architecture approval, exception approval, governance policy creation, or authority delegation unless explicitly delegated under a governed model.")
+- [S1056] types=[FORMALIZATION, RESTATEMENT] scope=THEORY-LEVEL — "Presents the closed-loop platform description (Govern=authoritative decision, Guide=governed context, Build=engineering, Observe=evidence, Assure=deterministic verification, Learn=validated knowledge, Govern=subsequent decisions)." (anchor: "Govern → Guide → Build → Observe → Assure → Learn → Govern.")
+- [S1056] types=[RESTATEMENT] scope=THEORY-LEVEL — "Step 155 verdict, boxing the now-structurally-complete governance model in seven statements." (anchor: "Governance decides what should be true. Registry records the declared architecture. Engineering implements it. Observation records what exists. Assurance determines whether it conforms. KnowledgeOS preserves the trace. AI accelerates reasoning across the loop, but does not silently become the authority.")
+
+## Notes for P3
+- No unusual internal tensions or notable evidentiary anomalies observed while compiling this file.

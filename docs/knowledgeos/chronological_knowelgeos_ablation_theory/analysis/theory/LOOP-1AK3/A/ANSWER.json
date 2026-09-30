@@ -1,0 +1,57 @@
+{
+  "same_object": {
+    "value": "YES (asserted, qualified 'in substance')",
+    "basis": "SOURCE",
+    "quote_p1": "Parked candidate ...: an **Implementation Execution Contract** — reusable doc (implementation philosophy · Auto/Plan policy · STOP conditions · scope discipline · ARB escalation)",
+    "quote_p2": "This protocol is, in substance, the **\"Implementation Execution Contract\"** candidate that the PA parked on 2026-07-26",
+    "caveat": "Identity is asserted by P2's author, not by P1. P1's object is a 5-part reusable doc; P2's object is a 17-phase protocol. 'In substance' concedes they are not the same artifact."
+  },
+  "dispositions": [
+    {
+      "id": "P1",
+      "source": "session log 2026-07-26, lines 425-440",
+      "object": {"value": "Implementation Execution Contract", "basis": "SOURCE", "quote": "an **Implementation Execution Contract** — reusable doc ... that future WPs reference instead of repeating"},
+      "kind": {"value": "reusable document", "basis": "SOURCE", "quote": "reusable doc (implementation philosophy · Auto/Plan policy · STOP conditions · scope discipline · ARB escalation)"},
+      "actor": {"value": "chair", "basis": "SOURCE", "quote": "FINAL HANDOFF CONFIRMATION (chair) — chapter closed for its intended purpose; one candidate parked"},
+      "target": {"value": "extraction / promotion into a reusable doc that future WPs reference", "basis": "SOURCE", "quote": "evidence-before-promotion ... Extract only after WP-1 + a few more slices demonstrate the shape is stable — not now"},
+      "state_before": {"value": "candidate (not yet extracted)", "basis": "SOURCE", "quote": "one candidate parked"},
+      "evidence": {"value": "UNK (inferred reading: 0 completed slices)", "basis": "UNK", "quote": "further contract polish would not produce proportionate value vs. starting WP-1", "note": "No count is stated; the text only states the bar ('WP-1 + a few more slices'). That WP-1 had not started implies 0 slices, but that is an inference."},
+      "exception": {"value": "UNK", "basis": "UNK", "quote": null, "note": "P1 does not mention an exception."},
+      "outcome": {"value": "NOT-RAISED", "basis": "SOURCE", "quote": "not now. Revisit alongside the slice-ledger candidate (~WP-3/WP-4)"},
+      "ground": {"value": "RULE", "basis": "SOURCE", "quote": "Parked candidate (evidence-before-promotion, same family as the slice-ledger candidate)", "note": "A principle is cited by name. A CHOICE reading is also possible: the chair's proportionality judgment ('would not produce proportionate value')."}
+    },
+    {
+      "id": "P2",
+      "source": "session log 2026-07-30, lines 193-204",
+      "object": {"value": "DDD-Driven Architectural Implementation Protocol (17 phases)", "basis": "SOURCE", "quote": "DDD-Driven Architectural Implementation Protocol received (17 phases)"},
+      "kind": {"value": "protocol / operating standard (explicitly not a standards document)", "basis": "SOURCE", "quote": "ADOPTED AS THE OPERATING STANDARD for implementation work; NOT self-promoted into a standards document"},
+      "actor": {"value": "PA (issuer); adopter unnamed (passive 'ADOPTED')", "basis": "SOURCE", "quote": "Received from the PA as the going-forward protocol."},
+      "target": {"value": "operating standard for implementation work, in force from the next work package", "basis": "SOURCE", "quote": "ADOPTED AS THE OPERATING STANDARD for implementation work ... In force from the next work package"},
+      "state_before": {"value": "parked candidate", "basis": "SOURCE", "quote": "the \"Implementation Execution Contract\" candidate that the PA parked on 2026-07-26"},
+      "evidence": {"value": "2 slices (WP-1, WP-2)", "basis": "SOURCE", "quote": "Evidence today = **two** slices (WP-1, WP-2)."},
+      "exception": {"value": "NO", "basis": "SOURCE", "quote": "(a) adopt now as an explicit early promotion (R-39 ...) recorded as an exception ... Recommendation: (b)", "note": "The exception is offered only as a pending DA option (a). The adoption that actually took place is not recorded as an exception."},
+      "outcome": {"value": "RAISED", "basis": "SOURCE", "quote": "ADOPTED AS THE OPERATING STANDARD ... In force from the next work package", "note": "RAISED to operating standard only. Promotion to a standards document was NOT raised; it is left to the DA."},
+      "ground": {"value": "UNK", "basis": "UNK", "quote": "Received from the PA as the going-forward protocol.", "note": "No rule is cited that requires the adoption. It is a directive from an authority. Declining to write a standards doc is RULE-grounded ('Phase 16 forbids')."}
+    }
+  ],
+  "comparison": {
+    "kind": "KNOWN-DIFFERENT (reusable document vs protocol adopted as operating standard, explicitly not a document)",
+    "actor": "UNK-EQUALITY (chair vs PA; P2 attributes the P1 parking to the PA, but no source equates chair with PA)",
+    "target": "KNOWN-DIFFERENT (extraction/promotion to a reusable doc vs operating standard without a standards doc)",
+    "state_before": "KNOWN-DIFFERENT (candidate vs parked candidate)",
+    "exception": "UNK (P1 UNK, P2 NO)",
+    "evidence": "P1 UNK (inferred 0) vs P2 2 slices; not known to differ from the source alone",
+    "outcomes": "differ (NOT-RAISED vs RAISED)",
+    "p1_ground": "RULE (with a CHOICE alternative)"
+  },
+  "classification": "NOT A WITNESS",
+  "decisive_fields": ["kind", "target", "state_before"],
+  "decisive_note": "Three compared fields are known and different, and each one alone is enough for NOT A WITNESS. Two more reasons point the same way: the P1 evidence count is not stated in the text, and object identity is only claimed 'in substance'.",
+  "alternatives": [
+    {"reading": "Take P2's target to be the same as P1's (promotion into a reusable/standards doc).", "result": "P2's outcome for that target is NOT-RAISED, because the decision is pending with the DA and (b) is recommended. The outcomes then do not differ, so it is NOT A WITNESS."},
+    {"reading": "Treat state_before as the pre-disposition status of the idea in general, ignoring the parking.", "result": "kind and target still differ, so it is NOT A WITNESS."},
+    {"reading": "Take P1's ground as CHOICE (chair's proportionality judgment).", "result": "NOT A WITNESS on that ground too."},
+    {"reading": "Take P1's evidence as 0 slices (inference from 'vs. starting WP-1').", "result": "Evidence then differs (0 vs 2), but kind, target and state_before still differ, so it is NOT A WITNESS."},
+    {"reading": "Treat the objects as different (5-part reusable doc vs 17-phase protocol).", "result": "NOT A WITNESS (objects differ)."}
+  ]
+}

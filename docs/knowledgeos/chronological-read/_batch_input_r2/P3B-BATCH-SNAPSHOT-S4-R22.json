@@ -1,0 +1,50 @@
+{
+ "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+ "batches": {
+  "PB02": {
+   "slices": {
+    "five-blocker-triage-table": "56b1f5a6490c6cc19adc8d0b53d95d0b3ba72310da9a3fbbf5b37a4e56412b5f",
+    "gita-hypothesis-architecture-consequence-pipeline": "8bcf6d14b7857d33f2b18af3ffdc569c42b067faa9fd5f4744aff7c4c342f4fa",
+    "glyph-register-v3-collision-inventory-2026-09": "a88f197e580f4f205f24a28d0c33eb10c8dcf2328cdca1b264a06d4eb02c2256",
+    "h-kos-lifecycle-reasoning-001": "a3c218bfa5229ebc03352af5a3ed1027a39117210f669cac36e6bd6dc4e415cb",
+    "hpa-gita-chapter18-synthesis-determination-mode-model": "dc8c29d49e433d49a43e9a138d68b0993f22ded3211f55ca44396148de41cdec"
+   }
+  },
+  "PB03": {
+   "slices": {
+    "invariant-universe-not-one-mathematical-object": "1112e288cdee8cb635dbaa18c0c78b3a9b7dd407a528a9d7489da62d04019081",
+    "knowledge-graph-not-equal-knowledge-state": "7d722c2c9287de9722d8517fb34af949aec7e87266e3eef31acb0df4d78cca68",
+    "knowledgeos-type-system": "803dabaeb1563ea74dbe9dfb1859daab7e24edfd4cacefe0f2f4d5ad26ab99b8",
+    "linga-yoni-projection-transformation-experiment": "60c9757da7eb7bdfb7e40b193a66c6930485c142b16d5648f975fbca0954f6c7",
+    "minimal-adequate-representation-entropy-formalization": "643ee633492aabd57932cb9af2458006d761a657402c90f76281eb34acf150f5"
+   }
+  },
+  "PB04": {
+   "slices": {
+    "nyaya-sutra-kernel-falsification-lens": "6c0b692384797540af292f8d6745c2b8a4a835022b39b7c1255a68c41e9e5a63",
+    "rejection-produces-hypothesis-space-not-truth": "a0e12982bfbbd0653f5c4f2c2f0f4f0731d1721ab395f44fc8425b9b68858199",
+    "relation-8-tuple-vs-triple-reduction": "6535af75c32875c21d74419423ef028e4352d94235913e3f4e08d78f6e0cb510",
+    "reverification-updated-dependency-chain-and-matrix": "4e663c2ce2b04d8982d22e1b8f7f9ba4068039f5357cc939bb1a02d1ff98a755",
+    "session-completion-handoff-protocol": "043effe7f96af283e7915e5544fca3398bf80f4f27d084e6bb2d82a8b06215cb"
+   }
+  },
+  "PB05": {
+   "slices": {
+    "shannon-weaver-information-theory-lens": "231a78c30179127a214bb94a4513adbd6f0f0c615693b03ae42800d073877801",
+    "step-verify-programme": "728316869148fbdc7c5bf8c474fbc1bd1fc18752e23144dbd4a594d9bacde515",
+    "step185-differentiated-non-identity-chain": "f01fd7d629e0c19cb3ec6a583e9a76acc25200134e35e49dba57e7b431971507",
+    "step291-n4-leverage-not-earliest": "860499198ac43f9412effe7b87efefd6967522e2ec03d6a1c5ce5aa2a4f230d6",
+    "sufficient-state-control-theory-lens": "d6270aae405fc58e1de9d09ff7b10d4e0f78c07e3bcfa120d8cce2220cd68613"
+   }
+  }
+ },
+ "contract_sha256": "336eb3f98d4ec27f6c339f5cc85e9682ca62dddaea229dd0bf1ae173182d54b5",
+ "enforcement_blobs": {
+  "scripts/p3b_discovery_io.py": "e4df3151f07cf3033422fb5d95263a3c09642e51",
+  "scripts/p3b_read_source.py": "8908f235d5f7d057984d6ea62ff97091be5e84db",
+  "scripts/p3b_s3_mechanical_prep.py": "95017f1230a73ff67f89b38c0e7b084a3149655d",
+  "scripts/p3b_s4_verify_r22.py": "8573264eb3b96aa57e5221d39d5e18f76340ffae",
+  "scripts/p3b_stage2a_scan.py": "5744445a93d1784b671f165a59e67fb8bb80721c"
+ },
+ "run_id": "S4-PILOT-R2-002"
+}

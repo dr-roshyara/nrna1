@@ -1,0 +1,58 @@
+EM0    R5-08  exp=PASS obs=PASS R6=PASS nfail=0 => OK
+           # valid EMPTY label (positive control; plan re-derived: L2 EMPTY, no runs)
+EM1    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S L2: EMPTY object with timeline points
+           | R6 P L2: claim timeline:S2813 has no valid evidence path (claim → fact → record → source bytes)
+           # EMPTY + timeline point on its former file
+EM2    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=3 => OK
+           | R6 S2: births.lexical cites S2813, not a row source of the label
+           | R6 S L2: births.lexical must be NOT-EVIDENCED-IN-CAPTURE for an empty required set
+           | R6 P L2: claim birth:lexical:S2813 has no valid evidence path (claim → fact → record → source bytes)
+           # EMPTY + S-id birth
+EM3    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=6 => OK
+           | R6 S L2: absences.assumptions: FOUND impossible with an empty required set
+           | R6 P L2: claim absence:assumptions has no valid evidence path (claim → fact → record → source bytes)
+           # EMPTY + FOUND absence
+EM4    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S L2: absences.assumptions: GENUINELY-UNDEFINED-AFTER-CENSUS impossible with an empty required set
+           # EMPTY + GENUINELY-UNDEFINED
+EM5    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S L2: R1-STRUCTURAL edge to x not grounded in a row source
+           | R6 S L2: EMPTY object with dependency edges
+           # EMPTY + R1 edge
+EM6    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S L2: EMPTY object with dependency edges
+           | R6 P L2: claim edge:x:S2813 has no valid evidence path (claim → fact → record → source bytes)
+           # EMPTY + R2 edge with a true quote
+EM7    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S L2: EMPTY object with timeline points
+           | R6 P L2: claim timeline:S2131 has no valid evidence path (claim → fact → record → source bytes)
+           # EMPTY + point on another label's file
+EM8    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=8 => OK
+           | R6 S L2: stage-2 dispositions present for an empty required set
+           | R6 P L2: claim stage2:S2131:ledger:"> \u26a0\ufe0f **The fourth category does not fit the schema.** **Layer invariants are not transition properties** \u2014 `R
+           | R6 P L2: claim stage2:S2131:ledger:"> \u26a0\ufe0f **The fourth category does not fit the schema.** **Layer invariants are not transition properties** \u2014 `R
+           # EMPTY + a stage-2 disposition (claim)
+EM9    R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 E run directory OB9011-R6-L02: not a planned run
+           # EMPTY label's agent reads under its old SINGLE run id (unplanned run)
+EM10   R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S3 L2: record 0: S-id range
+           # EMPTY + S-id range
+EM11   R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=2 => OK
+           | R6 S3 L2: record 0: register id or pointer in layer A
+           # EMPTY + layer-A pointer
+EM12   R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S L2: missing escalation naming EMPTY-REQUIRED-SET
+           # EMPTY without the EMPTY-REQUIRED-SET escalation
+EM13   R5-08  exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # EMPTY + timeline_summary.contradicted_by = [another label's file]
+EM14   R5-08  exp=FAIL obs=PASS R6=PASS nfail=0 => FALSE-PASS
+           # EMPTY + superseded_by_sources = [another label's file]
+EM15   R5-08  exp=FAIL obs=FAIL R6=FAIL nfail=1 => OK
+           | R6 S L2: EMPTY object with timeline points
+           # EMPTY + non-object timeline entry
+
+== SUMMARY {'FALSE-PASS': 2, 'OK': 14}
+  FALSE-PASS EM13 EMPTY + timeline_summary.contradicted_by = [another label's file]
+  FALSE-PASS EM14 EMPTY + superseded_by_sources = [another label's file]

@@ -1,0 +1,2961 @@
+{
+ "record": "L0-REL-10 locate-only (sentence level)",
+ "include": [
+  "docs/knowledgeos/",
+  "docs/knowledge/",
+  "engineering/",
+  "docs/pks/"
+ ],
+ "exclude": [
+  "docs/knowledgeos/chronological_knowelgeos_ablation_theory/",
+  "docs/knowledgeos/knowledgeos_theory_chronological_extraction/",
+  "docs/knowledgeos/chronological-read/",
+  "/brainstorming/",
+  "/analysis/",
+  "/evidence_phase/",
+  "/prompts/",
+  "/comparison",
+  "/tests/",
+  "test-output",
+  "/_generated/"
+ ],
+ "files": 1240,
+ "sentences": 307609,
+ "patterns": {
+  "CON": "contradict\\w*|counter-?evidence|refut\\w*|falsif\\w*|later evidence|conflicting evidence|disconfirm\\w*|\\bfails? (?:to|qualification)|evidence (?:weaken\\w*|changes?)",
+  "STAND": "promot\\w*|\\bstanding\\b|qualif\\w*|\\bstatus\\b|\\bstandard\\b|adopt\\w*|approved|authoritative|canonical|ratif\\w*",
+  "CHG": "withdr[ae]w\\w*|retir\\w*|supersed\\w*|invalidat\\w*|revo[ck]\\w*|demot\\w*|requalif\\w*|re-qualif\\w*|reassess\\w*|revis\\w*|\\blos(?:e|es|t|ing)\\b|remov\\w*|reopen\\w*|re-open\\w*|downgrad\\w*|revert\\w*",
+  "COND": "\\bif\\b|\\bwhen\\b|\\bupon\\b|\\bonce\\b|\\bunless\\b|\\bwhenever\\b|\\btriggers?\\b|\\bcauses?\\b|\\bleads? to\\b|→|->",
+  "PROC": "\\breview\\w*|\\bARB\\b|\\bruling\\b|\\bdecid\\w*|dispos\\w*|\\bmust\\b|\\bshall\\b|\\brequired?\\b",
+  "AUTH": "authori[sz]\\w*|commission\\w*|approv\\w*|reserv\\w*",
+  "PROM": "promot\\w*|qualif\\w*|adopt\\w*|\\bstanding\\b",
+  "SEP": "\\bbefore\\b|prior to|\\bthen\\b|subsequent\\w*|\\bpending\\b|after (?:approval|authori[sz]ation)|authori[sz]ed to|commissioned to|awaiting",
+  "TWOP": "authori[sz]ed to (?:promote|qualify|adopt)|commissioned to (?:promote|qualify)|pending (?:promotion|qualification)|after (?:approval|authori[sz]ation)[^.]{0,60}promot|approv\\w*[^.]{0,60}\\b(?:then|subsequently|before)\\b[^.]{0,40}promot|promot\\w*[^.]{0,60}after (?:approval|authori[sz]ation)",
+  "ONE": "(?:approv\\w*|authori[sz]\\w*)\\s*(?:and|&|/)\\s*promot\\w*"
+ },
+ "rules": {
+  "T1": "CON & STAND gate; DIRECT = +CHG & COND; PROCEDURE = +CHG or PROC; else TERMINOLOGY; product/infra context -> DIFFERENT-DOMAIN",
+  "T2": "(AUTH & PROM & SEP) or ONE; TWO-PHASE = explicit two-act pattern; SINGLE-ACT = 'approve(s) and promote(s)'; ROLE-ONLY = 'authority' noun without an authorize-act; else TERMINOLOGY"
+ },
+ "target_I": [
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-boundary-consolidation.md",
+   "sha256": "a49c3ae022cd078c2813d0500dd549c945255c5dc5879eea12611487cd12d81f",
+   "line": 232,
+   "heading": [
+    226,
+    "## 7. What the experiment DID change"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ **REFUTED** — it exists, ADOPTED and BINDING;"
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-boundary-consolidation.md",
+   "sha256": "a49c3ae022cd078c2813d0500dd549c945255c5dc5879eea12611487cd12d81f",
+   "line": 283,
+   "heading": [
+    275,
+    "## ⭐ Closing"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**\"no strategic DDD\" — refuted.** It exists, ADOPTED and BINDING."
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-boundary-consolidation.md",
+   "sha256": "a49c3ae022cd078c2813d0500dd549c945255c5dc5879eea12611487cd12d81f",
+   "line": 290,
+   "heading": [
+    275,
+    "## ⭐ Closing"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**three PA corrections accepted, one of which (C-1) REFUTES the MVK validation report's F-3 on repository evidence** — `Round47-00` (ADOPTED) and `Round47-OP` (BINDING) contain nine product-neutral boundary criteria;"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_ARB_Decision_Docket.md",
+   "sha256": "52b2ad804d69b131831bff2c369a9af3a8bb8f078313be80253813e5d35e0dc1",
+   "line": 54,
+   "heading": [
+    45,
+    "## 📋 Package 2 — **D-5 · Ratify the enacted mission** *(one signature; unblocks the frame)*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "MQ-7 *(a falsifier should be attached at ratification)*"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_ARB_Decision_Docket.md",
+   "sha256": "52b2ad804d69b131831bff2c369a9af3a8bb8f078313be80253813e5d35e0dc1",
+   "line": 69,
+   "heading": [
+    58,
+    "## 📋 Package 3 — **D-1 · Dispose E-1 (the EKP consumption model)** *(blocks the knowledge-model section)*"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**ADOPT a scoped disposition** — *acknowledge the falsification, retain the metadata/lint layer, defer any consumption redesign to evidence*"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Architecture_Validation_Matrix.md",
+   "sha256": "bfe12cfe76abee569aeb5f0be167c67f13a37aeeee8dd2e6d627b9e7b22cd4ec",
+   "line": 43,
+   "heading": [
+    39,
+    "## 2. ⛔ The challenges the literature raises — recorded, not absorbed"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "[CANONICAL] **Hansen et al., codification vs personalization**: pure-codification knowledge strategies fail when consumption is personal/contextual — ⭐ **externally corroborates E-1's falsification of the EKP consumption model.** *The metadata layer is aligned;"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Domain_Model.md",
+   "sha256": "33f64ca71e4eb16c8fd2d3eb5bf3fe9bada5559b8a6d12ec4f132c61e6403bdd",
+   "line": 31,
+   "heading": [
+    1,
+    "# KnowledgeOS — Engineering Knowledge Domain Model"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ **PKS-as-projection FALSIFIED for existing artifacts** — they carry `Status: ACCEPTED WITH REFINEMENTS` and an ARB endorsement of **9.9/10**."
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+   "sha256": "b685f5991338f24df135a50bd7d004999d62401bdac10f9c0ef8241ecbbed7bc",
+   "line": 96,
+   "heading": [
+    70,
+    "## 4. ⭐⭐⭐ The flagship finding — `authority` is not one dimension"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ⚠️ *This also explains why the `I-4` confusion was so persistent: `derived` (provenance) was read as if it entailed low standing — but a signed financial statement is `derived` in provenance and `authoritative` in standing, **simultaneously and without contradiction.***"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Independent_Review_Phase_B.md",
+   "sha256": "1eb507c0065f42b67e2a93692d420a1c3cbd875210fa16d0bcac47c41ed9ec73",
+   "line": 60,
+   "heading": [
+    60,
+    "### ⛔ D-4 · **A standing falsification we never surfaced**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**A standing falsification we never surfaced**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Independent_Review_Phase_B.md",
+   "sha256": "1eb507c0065f42b67e2a93692d420a1c3cbd875210fa16d0bcac47c41ed9ec73",
+   "line": 64,
+   "heading": [
+    64,
+    "### ⚠️ D-5 · **The constitution in force is unratified — sharpened from a gap into a contradiction**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**The constitution in force is unratified — sharpened from a gap into a contradiction**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Ontology_Architecture_Classification.md",
+   "sha256": "9ec2547ce7ed4315127c06e1c724c0825e88247475bd3b973a2f1f8ff0ddbc69",
+   "line": 80,
+   "heading": [
+    76,
+    "## 4. PKS as a projection — validated"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ⛔⛔ **SHARPENED 2026-08-02 by falsification test W-3: it is STRONGER THAN “blocked”.** **Existing PKS artifacts are POSITIVELY AUTHORITATIVE** — they carry `Status: ACCEPTED WITH REFINEMENTS`, a `Commission`, and a `Disposition History` recording an **ARB endorsement of 9.9/10**."
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Ontology_Architecture_Classification.md",
+   "sha256": "9ec2547ce7ed4315127c06e1c724c0825e88247475bd3b973a2f1f8ff0ddbc69",
+   "line": 80,
+   "heading": [
+    76,
+    "## 4. PKS as a projection — validated"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ *That is the lifecycle of an authoritative artifact and is incompatible with `derived`.* **PKS-as-projection is therefore FALSIFIED for every artifact that exists today**, and survives only as a claim about artifacts that do not."
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Ontology_Cross_Product_Validation.md",
+   "sha256": "812a496360c4b56344bc8969b9d4a0e4b439de3740734fc959642d89e3cdb390",
+   "line": 197,
+   "heading": [
+    181,
+    "## ⭐ Closing"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ **`I-4` FALSIFIED (a discharge summary and a financial statement are both generated AND authoritative — derivation and authority are independent), bearing directly on DP-2 / CAP-002**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Operational_Knowledge_Principles.md",
+   "sha256": "277e9570d619b0dc2dee0b8a0d26058c380ac84727c7682b8ba2c1237021c976",
+   "line": 38,
+   "heading": [
+    36,
+    "## 2. ⭐⭐ The correction the new vocabulary produced immediately"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`Boundaries ≠ Triggers` is worth adopting because applying it falsified a claim of mine within minutes.**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Phase_B_Evidence_Reconciliation.md",
+   "sha256": "4900232124b051c00ef73291892b219ba97dda0c2ffd374f061aa54e874e9037",
+   "line": 70,
+   "heading": [
+    61,
+    "## Category D — Architectural / Governance Decisions Required"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Ratify (or decline) the ES set, the Reference Architecture, the Metamodel** — ends the \"governs by a proposed constitution\" contradiction"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Platform_Capability_Model.md",
+   "sha256": "6bb1078060ed5283780bee68a9ddeac693ad473fbf094ff77663d580371bbdc3",
+   "line": 20,
+   "heading": [
+    1,
+    "# KnowledgeOS — Platform Capability Model"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ⛔ **AND RQ-002 REFUTES THIS DOCUMENT'S METHOD:** its “three smoking guns” establish that **a FLAT classification conflates dimensions** — *“one thing cannot change type by being encoded differently.”* ⚠️ **§2's “one class per capability” is that error.** *Read the classes as values on **AUTHORITY-"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Vision_Mission_Clarification.md",
+   "sha256": "2f105ce243d31d85ebd38365873290bafdc2d842b9e69376c31a020131c0c22b",
+   "line": 46,
+   "heading": [
+    39,
+    "## 1. Vision — does the repository evidence one?"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐ The charter's own qualifier: **\"(to be validated or falsified — not assumed)\"**"
+  },
+  {
+   "path": "docs/knowledgeos/OKF_KnowledgeOS_Architecture_Synthesis.md",
+   "sha256": "b4e76a73d4d3ea0b6e8bca9bb4e7ad68207595b53990623ae487ee9db9e421c6",
+   "line": 76,
+   "heading": [
+    71,
+    "### ⭐ Two corrections to the Addendum's own positioning"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ **FALSIFIED last round.** *Existing PKS artifacts carry `Status: ACCEPTED WITH REFINEMENTS`, a `Commission`, and **ARB endorsement 9.9/10**."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/03-KnowledgeOS-Evidence-Assurance-and-Governance.md",
+   "sha256": "5167d3d8102016bb2bce288fc12b563aece2e837971dc538a62cb3046304dae4",
+   "line": 140,
+   "heading": [
+    136,
+    "## 5 · Contradictions & tensions (surfaced, not resolved)"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**ADR status reads both ways**: the ADR artifact is PROPOSED while a separate decision act has already DECIDED B′/R-CONFLICT — the corpus and the decision record must be read together or they appear to contradict"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md",
+   "sha256": "32c228975a12acb0f94c773cdf82d87e6b5d601628762ec6da3d13428466e6bb",
+   "line": 404,
+   "heading": [
+    395,
+    "### ⚠️ A1.0 · Root cause — owned, because it is itself a finding"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ⭐ **PROPOSED (a durable discipline, not a decision):** **an absence claim requires an exhaustive, untruncated search AND an explicit statement of what was searched.** This is the same shape as Track 1's `O-1` (*a probe that cannot fail is not evidence*) and `O-2` (*a probe that can only observe th"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2140-EKS-Current-Architecture-Baseline-Stage-1.md",
+   "sha256": "d97908885460a6141c3b555ffda01556448ad8bcc2878263202cb6fe2586ede0",
+   "line": 758,
+   "heading": [
+    754,
+    "### 13.3 Standards lifecycle — class **F**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> **The governance standards that EKS instructs every process to obey have never been adopted.** Class **F — CONTRADICTED** (§25.1 X-3)."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md",
+   "sha256": "16e48b76950c1f9ef322c3fd190ffd8e55f9c7132e1bee50469613a094bcb0c1",
+   "line": 21,
+   "heading": [
+    13,
+    "## 🔧 ERRATUM — P3-F1 · BOUNDED EVIDENCE COMPLETION (2026-08-21)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "| The unread body is part of the approved corpus (plan §5.3) and contained current-state facts contradicting the baseline;"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md",
+   "sha256": "16e48b76950c1f9ef322c3fd190ffd8e55f9c7132e1bee50469613a094bcb0c1",
+   "line": 66,
+   "heading": [
+    53,
+    "### 0.4 Reality classes"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**No B/C/G finding is promoted to A.** **No gap is filled to make the reconstruction coherent.** **Contradictions are surfaced, never silently reconciled — both sides are recorded.**"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md",
+   "sha256": "16e48b76950c1f9ef322c3fd190ffd8e55f9c7132e1bee50469613a094bcb0c1",
+   "line": 235,
+   "heading": [
+    228,
+    "### 6.4 The GOV-STATE-DURABILITY authority decision state — **CONTRADICTION SURFACED**"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**UNKNOWN / contradiction:** the precise act sequence by which D1/D2 passed from \"NOT SELECTED\" (per the registration review) to \"SELECT B′ / ADOPT\" (per the runtime grant) is **not established by the current corpus**."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md",
+   "sha256": "16e48b76950c1f9ef322c3fd190ffd8e55f9c7132e1bee50469613a094bcb0c1",
+   "line": 235,
+   "heading": [
+    228,
+    "### 6.4 The GOV-STATE-DURABILITY authority decision state — **CONTRADICTION SURFACED**"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The runtime authority record is the authoritative workflow state per AST-015 (state = fold), so the operative recorded state is D1 = B′ SELECTED, D2 = ADOPT, **but the tracked registration review contradicts that and is not amended**."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2259-AIP-Current-Architecture-Reconstruction-Stage-3.md",
+   "sha256": "16e48b76950c1f9ef322c3fd190ffd8e55f9c7132e1bee50469613a094bcb0c1",
+   "line": 490,
+   "heading": [
+    484,
+    "## 17 · Headline structural findings"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**The D1/D2 decision state is contradictory** across the corpus: runtime grant records SELECT B′ / SELECT ADOPT;"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md",
+   "sha256": "be8d503cfb6126001b6763d1d846617b6d63c52bbb55c415f2d36642e90749f5",
+   "line": 85,
+   "heading": [
+    78,
+    "### 03.2 Secondary research input (hypotheses only, NEVER architecture)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Evidence-hierarchy rule (binding):** a principle that is elegant but not supported by S-02/S-03/S-04 evidence is recorded as NOT-SUPPORTED / CONTRADICTED / UNKNOWN — never promoted."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md",
+   "sha256": "be8d503cfb6126001b6763d1d846617b6d63c52bbb55c415f2d36642e90749f5",
+   "line": 228,
+   "heading": [
+    219,
+    "### 07.1 What AIP establishes relevant to the epistemic pipeline"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**D1/D2 decision state is CONTRADICTORY** across the corpus (runtime grant SELECT B′/ADOPT vs registration review NOT SELECTED)."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md",
+   "sha256": "be8d503cfb6126001b6763d1d846617b6d63c52bbb55c415f2d36642e90749f5",
+   "line": 366,
+   "heading": [
+    360,
+    "### 12.1 What is authoritative vs diagnostic in each system"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "but the D1/D2 contradiction shows a produced record can conflict with the authoritative record."
+  },
+  {
+   "path": "docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN-AMD6-SUMMARY.md",
+   "sha256": "42e6655b14ae8e729778e22573843b3ef272accaa24b89b48677b5cc78fe2336",
+   "line": 89,
+   "heading": [
+    87,
+    "## `DI-4` — §8 carried the refuted model as CURRENT → **ADDRESSED** *(§8)*"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Defect:** §8's Phase-7 row still read *\"removal is refused until the difference is reconciled and re-verified\"* — **the one-branch-for-both model `RD-3` refuted, standing unlabelled as current text in the section a Phase-7 operator consults.** Two competing current definitions, which §0.4.4 forbid"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md",
+   "sha256": "b075f1734aee1d104f89e936a945d212adb55296c5c2afe2860ef81b2f104098",
+   "line": 610,
+   "heading": [
+    584,
+    "# 4 · Migration phases — **AMD4: the table is now in EXECUTABLE ORDER, and Phase 7 is guarded**"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ **`CL-5`/`RC-6`: the target carries a NON-AUTHORITATIVE MARKER from HERE until it is RETRACTED at Phase 5 step 5 — see §4.5's lifecycle.** *(Superseded wording: AMD4/AMD5 said *\"for the whole 3→5 window\"*, which contradicted the same section's lifecycle table once `RD-7` added the retraction — an "
+  },
+  {
+   "path": "docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md",
+   "sha256": "b075f1734aee1d104f89e936a945d212adb55296c5c2afe2860ef81b2f104098",
+   "line": 1057,
+   "heading": [
+    1055,
+    "### 🔴 ⭐ **AMD5 (`RD-7`) — THE STAGING MARKER IS RETRACTED. No phase did that, and the omission was durable.**"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**AMD4 gave the staging marker a lifetime — *\"from Phase 2 until Phase 5\"* — but Phase 5's mandated steps wrote only the runtime DEMOTED marker, and no row removed the staging one.** ⭐ **Because the staging store is COMMITTED at `2c-commit`, the consequence was versioned and permanent: after the wri"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN.md",
+   "sha256": "b075f1734aee1d104f89e936a945d212adb55296c5c2afe2860ef81b2f104098",
+   "line": 1077,
+   "heading": [
+    1055,
+    "### 🔴 ⭐ **AMD5 (`RD-7`) — THE STAGING MARKER IS RETRACTED. No phase did that, and the omission was durable.**"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ⛔ **It is falsified by the ordering this same section calls load-bearing: authority transfers at step 3, the retraction is at step 5** ⇒ **through steps 3→4→5 the store that is ALREADY authoritative is on-disk labelled `NON-AUTHORITATIVE`.** ⭐ **The old box enumerated *\"before the switch\"* and *\"a"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/KOS-AIP04-DISCOVERY-001-capability-architecture-analysis.md",
+   "sha256": "fa1efe2cb5738638d806b12099a726310378cd8fb6ba6d629cb04149191830c7",
+   "line": 64,
+   "heading": [
+    58,
+    "## 2 · The adopted six-role operating model as fixed input"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ **Consequence for this lane's own history, stated rather than left implicit:** the discovery's corrected finding `F-3″` turned on the **absence of an adopting governed act.** **That act now exists.** ⇒ `F-3″` is **superseded by decision from the point of adoption — not falsified.** ⛔ And the adopt"
+  },
+  {
+   "path": "docs/knowledgeos/backlog/00_index.md",
+   "sha256": "e8812881c601f907480cb69bcd2d27540e0037e31b015373660804ad8b17c560",
+   "line": 48,
+   "heading": [
+    1,
+    "# KnowledgeOS / EKS Backlog — Index"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Documents written in the same batch give contradictory dispositions of the same item — one calls it open, another calls it ratified — and nothing reconciles them"
+  },
+  {
+   "path": "docs/knowledgeos/backlog/00_index.md",
+   "sha256": "e8812881c601f907480cb69bcd2d27540e0037e31b015373660804ad8b17c560",
+   "line": 54,
+   "heading": [
+    1,
+    "# KnowledgeOS / EKS Backlog — Index"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "All three were classified **NON-BLOCKING** and are **carried by**, not contradicted by, the `AST-019` adoption and authorization of the same date."
+  },
+  {
+   "path": "docs/knowledgeos/backlog/EKS-40-one-batch-gives-contradictory-dispositions-of-the-same-item.md",
+   "sha256": "d4258b45f47d09a39af0068aab0dd8057b13c8fb9caec8fe2737f9448f2b1be6",
+   "line": 1,
+   "heading": [
+    1,
+    "# EKS-40 — Documents written in the same batch give contradictory dispositions of the same item — one calls it"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "# EKS-40 — Documents written in the same batch give contradictory dispositions of the same item — one calls it open, another calls it ratified — and nothing reconciles them"
+  },
+  {
+   "path": "docs/knowledgeos/backlog/EKS-49-a-commissioning-lane-and-an-executing-lane-never-tell-each-other.md",
+   "sha256": "156f271e4ec5c0abec17159893b849654701827c3092ea63a6ca9a8d888f07ff",
+   "line": 76,
+   "heading": [
+    71,
+    "## What would close this"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**A status claim must cite the artifact it rests on.** *\"Not yet tested\"* with no citation is unfalsifiable and, in this case, wrong"
+  },
+  {
+   "path": "docs/knowledgeos/governance/2026-09-23-RESEARCH-GOVERNANCE-GATE-ARCHITECTURE-assessment.md",
+   "sha256": "e2332ed88e60faac51810faa88c7ef9493b1652843cbe36ee76c9ba1e17eed9c",
+   "line": 103,
+   "heading": [
+    86,
+    "## C. GAP ANALYSIS"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Status contradictions: `P2P` \"not adopted/not executed\" vs."
+  },
+  {
+   "path": "docs/knowledgeos/governance/2026-09-23-RESEARCH-GOVERNANCE-GATE-ARCHITECTURE-assessment.md",
+   "sha256": "e2332ed88e60faac51810faa88c7ef9493b1652843cbe36ee76c9ba1e17eed9c",
+   "line": 335,
+   "heading": [
+    319,
+    "## K. REQUIRED ARCHITECTURE CHANGES"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Resolve status contradictions (`P2P` \"not adopted\", `step2_authorized PENDING`, E-*/R-* \"awaiting\")"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/D-gap-register-and-comparison.md",
+   "sha256": "b565beb2d6f9e8e4c76fbfb4bee41c8fad79921bf1f675b24979339793c16c71",
+   "line": 17,
+   "heading": [
+    3,
+    "## Theory gaps under v1.2"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The status vocabulary cannot express \"refuted as reading A, surviving as reading B\""
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/D-gap-register-and-comparison.md",
+   "sha256": "b565beb2d6f9e8e4c76fbfb4bee41c8fad79921bf1f675b24979339793c16c71",
+   "line": 42,
+   "heading": [
+    38,
+    "## The one thing v1.2 made worse"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "contradiction go away — the witness still runs — but it does mean **v1.2 has no ratified statement"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/EXPERIMENT-ID-REGISTRY.md",
+   "sha256": "7acad80cea35ab7e3abb003e6c2e90f2b7de2582574790b4d561e70ce04e0f91",
+   "line": 67,
+   "heading": [
+    49,
+    "## Zero-algebra lane — IDs registered 2026-09-04"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "does inquiry evidence change `Zero` status?"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/G-evaluation-semantics-experiment.md",
+   "sha256": "8f04e3054bda3b491d3a5c50ff02743fc419520f63cd7111326bc710c483a99b",
+   "line": 366,
+   "heading": [
+    354,
+    "## NEXT EXPERIMENT"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**No contradiction model is adopted.**"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/G-rerun-with-evaluators.md",
+   "sha256": "0ef9e5773fbe87cf44f814ea7e582fa51245e6756b5c4705eae7b6b45b797e2a",
+   "line": 167,
+   "heading": [
+    165,
+    "## Next experiment"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> **Define `⪰` (the epistemic-status ordering) and `Contr` (the contradiction predicate).**"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/I-zero-lens-and-gita-candidates.md",
+   "sha256": "d4172c4fa53df5122e66ba3aae53caa53ac01c2397cc2a746193b5b06a5ae3f1",
+   "line": 186,
+   "heading": [
+    179,
+    "## 7. Next"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Do not** promote `Zero` to a primitive, adopt a contradiction model, or treat the two-lane agreement"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/K-typed-facet-vocabulary.md",
+   "sha256": "c8b9c56d5ee2a3cc59c6ef98f14c9524fc8675cb52a313dfa47514cedddf7c62",
+   "line": 162,
+   "heading": [
+    150,
+    "## 6. Next"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Do not** promote `Zero`, adopt a contradiction model (§4 shows closure does not need one), or treat"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/S-frozen-results-register.md",
+   "sha256": "0310effb8775e4f1b09cd49f889e92d2832a2038eb93f5b46acc8189fbf0eb01",
+   "line": 142,
+   "heading": [
+    132,
+    "## Adjudicated results — `KR-CONTR-FDE-2026-09` *(authoritative, 2026-09-02)*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "the empty frame qualifier **over-generates** contradiction"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/S-frozen-results-register.md",
+   "sha256": "0310effb8775e4f1b09cd49f889e92d2832a2038eb93f5b46acc8189fbf0eb01",
+   "line": 143,
+   "heading": [
+    132,
+    "## Adjudicated results — `KR-CONTR-FDE-2026-09` *(authoritative, 2026-09-02)*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**composition and frame qualification are COUPLED** for the tested contradiction/supersession witnesses"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/V-contr-experiment.md",
+   "sha256": "f319e3772e3ff3621268b28ab3203200c53d4c520625fbe4f4f075cdb64e41dc",
+   "line": 26,
+   "heading": [
+    1,
+    "# V — Separating the Three Contradiction Models · `KR-CONTR-MODELS-2026-09`"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**No contradiction model is adopted here.**"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/V-contr-experiment.md",
+   "sha256": "f319e3772e3ff3621268b28ab3203200c53d4c520625fbe4f4f075cdb64e41dc",
+   "line": 269,
+   "heading": [
+    267,
+    "## 9.3 NOT settled — and not to be inferred"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "- **No contradiction model is adopted.** Eliminating `MD` leaves **one** model (`M3 ≅ M4`) — but"
+  },
+  {
+   "path": "docs/knowledgeos/research/theory-v1.2-simulation/V-contr-experiment.md",
+   "sha256": "f319e3772e3ff3621268b28ab3203200c53d4c520625fbe4f4f075cdb64e41dc",
+   "line": 329,
+   "heading": [
+    327,
+    "# 12. Standing constraints, honoured"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Not done, deliberately:** no contradiction model adopted"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-001-phase-a-v1.1-correction-verification.md",
+   "sha256": "f73d503ecc0bde5a1ae8912863b0ddfd532c2f0c4b3416dba50516b860a07768",
+   "line": 143,
+   "heading": [
+    141,
+    "## 8 · What the PO/ARB decision should weigh — **recommendation, not decision**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Do not accept v1.1 as it stands.** Not because the analysis is unsound — it is sound, and this report confirms it — but because **a canonical baseline whose title disagrees with its own version banner would enter the canon carrying a visible self-contradiction**, which is the precise outcome verif"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md",
+   "sha256": "6a100292b5d807f8ba0d435be6cb106d10d75a7de85f1c4352873e2f78d180d0",
+   "line": 85,
+   "heading": [
+    85,
+    "### 🔴 **V-2 · `C-14`'s status \"absent / NO OWNER\" is falsified.**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "`C-14`'s status \"absent / NO OWNER\" is falsified.**"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md",
+   "sha256": "6a100292b5d807f8ba0d435be6cb106d10d75a7de85f1c4352873e2f78d180d0",
+   "line": 177,
+   "heading": [
+    172,
+    "# 10 · Overall verdict"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`V-2`** — `C-14`'s \"absent\" status is falsified by an adopted Tier-1 **blocking** gate."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md",
+   "sha256": "6a100292b5d807f8ba0d435be6cb106d10d75a7de85f1c4352873e2f78d180d0",
+   "line": 179,
+   "heading": [
+    172,
+    "# 10 · Overall verdict"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ⚠️ **This is NOT a rejection of the thesis.** The four-unowned-capability framing, the DDD discipline, the mechanism evidence and the refusal to promote `C-19` are strong and survive independent falsification."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md",
+   "sha256": "07343ad329a65f7d678ad02d371ad0e9ebd6764723bdc189f43df8afae361b4e",
+   "line": 109,
+   "heading": [
+    107,
+    "## A1.3 · ⚠️ One caution on Decision 3, from evidence — reuse before creation"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**A hypothesis was tested and falsified, and is reported rather than left standing:** this process suspected the recommended owner named a body the estate has not declared."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-amd2-verification.md",
+   "sha256": "2d781ae91826c5f99754db4daa945d6221eb95f7f6faeedcece761bed98822df",
+   "line": 90,
+   "heading": [
+    79,
+    "## 2 · Existence vs category (`AMD2` refinement 1)"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "✅ **The forbidden collapse is absent.** §A1.2 states the required distinction exactly — *\"the absence of a C-5-owned authoritative state is evidence AGAINST a separate C-5 BOUNDED CONTEXT… NOT evidence against the EXISTENCE of separation attestation as a capability\"* — and holds existence `YES` with"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-c10-d4-decision-prep.md",
+   "sha256": "8f38ee3554d9c706a1d35532b41571bc56cff2109611745edfcff182289c05b0",
+   "line": 63,
+   "heading": [
+    63,
+    "## 5 · Why E is not merely \"too weak\" — it is the falsified status quo"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Why E is not merely \"too weak\" — it is the falsified status quo"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md",
+   "sha256": "a0234d3e7fb57480cae6a8e29451a473d8691d31c8aeb0bc67f38a41a5b906d1",
+   "line": 125,
+   "heading": [
+    118,
+    "## 5.2 🔴 **`W-2` — the correction did not reach the place a reader will read it**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "absent` ← 🔴 **no pointer at all: the falsified status stands unqualified**"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md",
+   "sha256": "a0234d3e7fb57480cae6a8e29451a473d8691d31c8aeb0bc67f38a41a5b906d1",
+   "line": 264,
+   "heading": [
+    259,
+    "# 12 · Verdict matrix"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "`W-2` leaves the falsified status displayed"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md",
+   "sha256": "a0234d3e7fb57480cae6a8e29451a473d8691d31c8aeb0bc67f38a41a5b906d1",
+   "line": 295,
+   "heading": [
+    276,
+    "# 13 · Overall verdict"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "`C-14`'s falsified status is unmarked;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-3-correction2.md",
+   "sha256": "cb71891c92493a9517f4751998ea45b5b51301aa1959e076d945a336db962979",
+   "line": 209,
+   "heading": [
+    203,
+    "### 🟡 `X-1b` — §15.1's `SB-3` row still shows only Amendment 1's reduction, which Correction #2 reversed"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Identical to `W-2` and `W-3` — **correct analysis, incomplete propagation.** By the amendment's own stated standard (*\"a reader cannot act on a falsified statement without seeing that it was corrected\"*), **both fail**"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-21-KOS-EP01-P3-aip-reconstruction-hpa-review.md",
+   "sha256": "93647a1eba905bf000fa7faaa0b587165bcb4cf939a03a9dafac46fe11331901",
+   "line": 27,
+   "heading": [
+    21,
+    "## What the review confirms (strengths — carry into P4)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**D1/D2 contradiction preserved, not reconciled** (§6.4, U-3) — both SELECT B′/ADOPT and NOT SELECTED stand with evidence tiers."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-21-track2-phase0-historical-back-test-report.md",
+   "sha256": "1b2025132f1020fe79d769f560d70da68d3800358912cec9d8ee3c2e919aff1f",
+   "line": 24,
+   "heading": [
+    22,
+    "## 2 · FINAL STATUS"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**✅ PASS — for the classes the approved Phase-0 scope authorized the back-test to falsify.**"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-AIP-GOV-STATE-DURABILITY-ADR-session-completion-handoff-protocol-v1.1-independent-review.md",
+   "sha256": "3475422d9cbf3611885d20be424c3f83c8afa4804ab761744e37a67e0081e5a3",
+   "line": 22,
+   "heading": [
+    16,
+    "# 1 · Verification matrix (V1–V6)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The F1 worked example's next-actor list is illustrative, qualified by *\"according to workflow state\"* — no contradiction"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-INDEPENDENT-VERIFICATION.md",
+   "sha256": "ab8bbcd4942f78e265b703b03c17c25dea6ca66097264f85802cf0e84473793b",
+   "line": 8,
+   "heading": [
+    1,
+    "# KOS-OPERATING-MODEL-001 — Independent Verification (FINAL GOVERNANCE + COMMUNICATION OPERATING MODEL)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> **⛔ This document verifies nothing into adoption.** It records what an independent process could and could not falsify across the three implemented layers."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-INDEPENDENT-VERIFICATION.md",
+   "sha256": "9db2e347e1694cae4abfbd1b607aff222e4d7257c598ed55609bbb0d60fc94eb",
+   "line": 4,
+   "heading": [
+    1,
+    "# KOS-SESSION-BOOTSTRAP-001 / AST-017 — Independent Architecture Verification"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Review type:** FALSIFICATION review — independent technical verification, **not** adoption"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-INDEPENDENT-VERIFICATION.md",
+   "sha256": "9db2e347e1694cae4abfbd1b607aff222e4d7257c598ed55609bbb0d60fc94eb",
+   "line": 8,
+   "heading": [
+    1,
+    "# KOS-SESSION-BOOTSTRAP-001 / AST-017 — Independent Architecture Verification"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> **⛔ This document adopts nothing.** It records what an independent process could and could not falsify."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-FAIL-DISPOSITION-AND-REPAIR-PATH.md",
+   "sha256": "c95113a12331d0bb3d96eca61d972b6fa82ec606db11da6ea4f2d797b9be7310",
+   "line": 78,
+   "heading": [
+    72,
+    "## 5 · Architecture-gate determination — **NOT required for `REPAIR-001`**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**The code fails to do what the approved design says.** Restoring conformance introduces no boundary change, no new concept, no ownership change, no context-map change, and no CLI-contract change."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-09-06-KOS-CAPABILITY-BASIS-LEVEL-A-FALSIFICATION.md",
+   "sha256": "a121c161dddacf37c64d07fc1b6ef05930a99219b19bcbc815b9b70c0c4375f9",
+   "line": 172,
+   "heading": [
+    169,
+    "### 8.3 `RejectIllegally`"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "operations lane classifies `Reject` as **CONTRADICTORY** — *a ratified-required state reachable only"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-09-06-KOS-CAPABILITY-BASIS-LEVEL-A-FALSIFICATION.md",
+   "sha256": "a121c161dddacf37c64d07fc1b6ef05930a99219b19bcbc815b9b70c0c4375f9",
+   "line": 306,
+   "heading": [
+    303,
+    "### 18a. ⚠️ A nuance against my carrier finding"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "current standing — reduction outcome, not a proven minimum.\"** That does **not** contradict `C-022`'s"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-09-06-KOS-FIVE-BLOCKER-TRIAGE.md",
+   "sha256": "1fbeb5df4ffbff4c245ee3800aa04c154f521cf0eb1015a75fc97632152e014c",
+   "line": 96,
+   "heading": [
+    94,
+    "### Why item 5 cannot be derived"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> *\"**`Reject` is the one element classified CONTRADICTORY rather than absent** — a ratified-required"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-09-06-KOS-IMPLEMENTATION-READINESS-REVERIFICATION.md",
+   "sha256": "3ecd65e918802d30f5243c3488237699b29e30c4474c616c5c37317eb595c663",
+   "line": 137,
+   "heading": [
+    127,
+    "### The corpus has already ADOPTED non-explosion"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> ### `[NEG]` **\"Two explosion policies, undecided\" is WITHDRAWN.** `GlobalInvalidity` is **refuted by an adoption act.** The corpus adopted **local containment**."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-09-06-KOS-IMPLEMENTATION-READINESS-REVERIFICATION.md",
+   "sha256": "3ecd65e918802d30f5243c3488237699b29e30c4474c616c5c37317eb595c663",
+   "line": 240,
+   "heading": [
+    235,
+    "## 13. Removed blockers"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Refuted by an adoption act"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN-AMD4-ARCHITECTURE-REVIEW.md",
+   "sha256": "3aaa5ce035ce4f0acacf159bb22e86328f230ef75624e32ca591dd3e190d212a",
+   "line": 159,
+   "heading": [
+    148,
+    "## `RC-6` — markers → ⭐ **CLOSED** *(all five asked properties; one NEW gap — `RD-7`)*"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Since the staging store is committed at `2c-commit`, the consequence is durable and versioned: **after the writer switch the AUTHORITATIVE store carries an on-disk NON-AUTHORITATIVE label** — the exact reader-visible contradiction the marker exists to prevent."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN-AMD5-ARCHITECTURE-REVIEW.md",
+   "sha256": "1f787ef2cf4466d947e105dca57af4c00a959b9545a40824cf0d71d4c6ea95c8",
+   "line": 87,
+   "heading": [
+    77,
+    "## 🔴 `RD-7·b` — the closure claim is **stronger than the design it describes**"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⇒ **throughout steps 3→4→5 the store that is already authoritative is on-disk labelled `NON-AUTHORITATIVE`** — the reader-visible contradiction, reduced from *durable and versioned* to a two-step interval, **not eliminated**."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN-AMD5-ARCHITECTURE-REVIEW.md",
+   "sha256": "1f787ef2cf4466d947e105dca57af4c00a959b9545a40824cf0d71d4c6ea95c8",
+   "line": 144,
+   "heading": [
+    138,
+    "## 🔴 `RD-3·c` — §8 still carries the **superseded single-branch disposition, unlabelled**"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ **That is the one-branch-for-both model `RD-3` refuted, standing as CURRENT text in the section a Phase-7 operator consults for what to do**, and it is unlabelled — a direct violation of §0.4.4 (*one canonical current definition per section;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-AIP-GOV-STATE-DURABILITY-MIGRATION-PLAN-AMD5-ARCHITECTURE-REVIEW.md",
+   "sha256": "1f787ef2cf4466d947e105dca57af4c00a959b9545a40824cf0d71d4c6ea95c8",
+   "line": 235,
+   "heading": [
+    231,
+    "## 🔴 `DI-3·b` — two rows were **not updated for AMD5**, while the block above them was"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ **omits AMD5**, contradicting §0.5 and the plan's own status line, which both say `OPEN-M6` **now spans AMD3, AMD4 and AMD5**"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-domain-model-refinement.md",
+   "sha256": "20972461546fc4803087f4a1eceb0ef87fe629e7d5c3ec6bef58abf370fb6c44",
+   "line": 67,
+   "heading": [
+    52,
+    "# 2 · Evidence re-measured this session"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Correcting a false cell: this row previously read \"Non-canonical keys anywhere in the estate — 0\", which Verification #2 falsified.** ⭐ **The correction STRENGTHENS T-1b rather than weakening it:** these 20 are the empirical proof that a non-vocabulary key is *stored and inert* — exactly what T-1b"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-domain-model-refinement.md",
+   "sha256": "20972461546fc4803087f4a1eceb0ef87fe629e7d5c3ec6bef58abf370fb6c44",
+   "line": 231,
+   "heading": [
+    224,
+    "## 5.3 The three registered candidates, tested rather than inherited"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Adopting (B) would create a rule that has never existed and would contradict DP-3 in both observed instances** — the required actor would become a forbidden recorder."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/KOS-ARCH-BASELINE-003-verification-2-report.md",
+   "sha256": "2338dcb9df374cafcd37a4a88687b2602dbe2b8c238473623bbdfb1e2b436413",
+   "line": 10,
+   "heading": [
+    2,
+    "## `KOS-ARCH-BASELINE-003` — BC-7 Domain Model **Refinement** Proposal"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> **But the refinement is not error-free.** One of its own `Observed` measurements is **FALSIFIED** by independent census — *\"non-canonical keys anywhere in the estate: 0\"* is wrong;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session1/S1-F016-aggregate-hypothesis-falsified-atomicity-fails-on-every-pair.md",
+   "sha256": "f6e066d36bc007141ae271f4602767e28b8f9e5fa2a50e7148c929ff6f61175a",
+   "line": 60,
+   "heading": [
+    42,
+    "## Finding 2 · The answer: the smallest domain fact is **a justified claim** ⟦CLAIM⟧"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⚠ **Recorded as a falsification result, not adopted, and not a defect claim against v1.1** — the document"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session1/S1-F017-phase-consolidation-falsification-confirmed-and-the-four-way-non-collapse-pipeline.md",
+   "sha256": "dca44b8f9a00dfac89b4c13739295875c6791f47553e44a170b61e81c0e66c7b",
+   "line": 39,
+   "heading": [
+    25,
+    "## Finding 1 · The falsification is confirmed at phase level ⟦FACT about the corpus⟧"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⟦INFERENCE⟧ This **ratifies `S1-F016`** at phase level and extends it: F016 falsified five *pairs*;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session1/S1-F026-phase-closure-the-books-prove-nothing-they-make-collapses-visible.md",
+   "sha256": "acadce4b628f6ab90d2f6f88c8abe31442c60de31fea2b6d9b1572a734ecde15",
+   "line": 65,
+   "heading": [
+    55,
+    "## Finding 3 · The dossier declares itself non-authoritative, in its own header ⟦FACT⟧"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⟦INFERENCE⟧ **A document engineered to be falsified rather than adopted** — the clearest instance in the"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session1/S1-F033-epistemic-intermediate-representation-and-the-cost-argument-for-a-kernel.md",
+   "sha256": "f96b64f6563de1772720a663257ae996350644569e155caca6311dd0b90933c2",
+   "line": 79,
+   "heading": [
+    70,
+    "## Finding 3 · Two clean distinctions from the statistical families ⟦DISTINCTION⟧"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "`S1-F030`: if acquisition constitutes evidential status, and knowledge changes when evidence changes, then"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session1/S1-F036-minimum-preservation-unit-and-the-assertion-primitive-contested-in-one-document.md",
+   "sha256": "9bd20f0a862b118cdc44b155532851e2eff46dcf6537dc8c5358d71a2cc8c1d7",
+   "line": 132,
+   "heading": [
+    122,
+    "## Classification, confidence, open questions"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "the intra-document contradiction left standing."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-F013-why-what-how-as-one-kernel-hypothesis-descent-declared.md",
+   "sha256": "492e8aec51552b89590fcf057b9bf9c794c479e1a2641099f04d7599cf1793d0",
+   "line": 79,
+   "heading": [
+    69,
+    "## WHY IT MATTERS"
+   ],
+   "class": "DIRECT-CONSEQUENCE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "If it were adopted now, its first act would be to retire `S2-F011` — the one finding that contradicts it — on no evidence beyond its own elegance."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-F018-f009-f010-is-a-scope-difference-not-a-reversal.md",
+   "sha256": "046e10692a43c1ddf0139e47c22a8fc22c60c520b362b2b1f101788c321755d4",
+   "line": 33,
+   "heading": [
+    24,
+    "## ANALYSIS"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The standing rule applies: *nothing is a contradiction until both propositions are shown to sit at the same altitude.* That demonstration is not attempted."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-R-F004-review-of-s1-f004-no-established-kernel-category-determinism.md",
+   "sha256": "cc1f2f1466ccaf7edd1d3f007fad2b3f8468d755174daa9b3e43a5795849cf12",
+   "line": 38,
+   "heading": [
+    37,
+    "## 11 · What is challenged"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Finding 2's contradiction status (`S2-F008`)"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-R-F011-review-of-s1-f011-transformation-boundary-and-sixteen-exclusions.md",
+   "sha256": "946393da176e33ee8cd704ee873d8f769e7fa96501b805e7693a4d6e12242f14",
+   "line": 44,
+   "heading": [
+    41,
+    "### But it converts into something more useful"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⚠ Recorded as **support for a hypothesis, which remains unadopted.** A dissolved contradiction is not a proven provenance defect."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-R-F020-review-of-s1-f020-adr-three-altitudes.md",
+   "sha256": "07b1908def553998650285ebc449f4a1c8eb7dd0d5e4ada52d56d308618458b3",
+   "line": 7,
+   "heading": [
+    6,
+    "## 2 · What Session 1 claims"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "A drafted ADR (**PROPOSED**, never adopted) separates `KnowledgeOS ⊃ KnowledgeCore ⊃ Kernel`, defines the Kernel **by a question and a derivation rule** rather than a member list, carries an anti-absorption **consumption rule**, treats the falsification as settled context, and names a **four-way voc"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-R-F026-review-of-s1-f026-phase-closure.md",
+   "sha256": "5334cfa1ee7339b156f3200af06e69da55f233fe13f046f2b39aa344059c7adf",
+   "line": 17,
+   "heading": [
+    13,
+    "## 4 · Confirmed"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`.2` The self-declared non-authoritative status.** A document *engineered to be falsified rather than adopted* is the clearest research/authority separation in the corpus."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/README.md",
+   "sha256": "3eeeca6ad16c0030d57f7c8c8edce88a87bb4568f08c57dcfab2b8e13a24fe7a",
+   "line": 50,
+   "heading": [
+    47,
+    "## Current state (as of 2026-08-28 — timestamped per GN-03)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**v0.2 = current authorized canonical model** (v0.1 retained as pre-falsification"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/book-edition-2/part-3-architecture/03-04-zero-the-gap-that-drives-inquiry/chapter.md",
+   "sha256": "0fb39e501dd6f89f200d49c8365d540ea7e2e26f58cea61f808129c42f5b5c19",
+   "line": 78,
+   "heading": [
+    65,
+    "## 4 · Zero's inputs — the contract side — *status: source evidence [E] + fact [FA]; PF-5 taught*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Nothing in the ratified model contradicts the pair reading;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/book-edition-2/part-3-architecture/03-08-the-policy-that-governs-itself/chapter.md",
+   "sha256": "eaa69bf48e72738bfb9ff86093b19b0dd799b54c7166816c30dcf1de34dba1d6",
+   "line": 47,
+   "heading": [
+    23,
+    "## 2 · Policy, stratified — the ratified model — *status: definition [FA]*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "recorded in the ratified model itself: I-11 closes the hole the falsification pass found in I-1 —"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/book-edition-2/part-3-architecture/03-09-three-kernels/chapter.md",
+   "sha256": "36e21f23cc88bf5f02966eaafc3a47469e6f79c61c005799fadf28cf9e743757",
+   "line": 127,
+   "heading": [
+    109,
+    "## 8 · What the verification lenses added — the formal kernel's open ledger — *status: findings [taught at fin"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "applicable authorities the ratified model is silent (not contradictory);"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 177,
+   "heading": [
+    162,
+    "### 2.1 The unique-writer cross-check `FORMALLY SHOWN`"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "ev       <- AdmitEvidence, Qualify, Refute"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 284,
+   "heading": [
+    275,
+    "### 4.1 Necessary operations"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "AssertPolicy, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote,"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 316,
+   "heading": [
+    299,
+    "### 4.2 All minimal sufficient registries — **SIX, in every variant**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R3 (|R|=15) = CORE + {DetectContradiction, Promote, Refute}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 317,
+   "heading": [
+    299,
+    "### 4.2 All minimal sufficient registries — **SIX, in every variant**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R4 (|R|=16) = CORE + {Add, DetectContradiction, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 318,
+   "heading": [
+    299,
+    "### 4.2 All minimal sufficient registries — **SIX, in every variant**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R5 (|R|=16) = CORE + {DetectContradiction, Infer, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 319,
+   "heading": [
+    299,
+    "### 4.2 All minimal sufficient registries — **SIX, in every variant**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R6 (|R|=16) = CORE + {DetectContradiction, Promote, Relate, Split}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 354,
+   "heading": [
+    339,
+    "### 4.3 Interaction effects — what single removal misses"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "it would have found `Accept`, `Promote`, `MarkConflict`, `DetectContradiction`, `Refute` and"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/MINIMALITY-RESULT.md",
+   "sha256": "4c203b1368f94a815d599c02974bd7f5cd94a6abb5860e63ff0156e83fde9c32",
+   "line": 417,
+   "heading": [
+    394,
+    "### 5.3 Task 6 — the non-uniqueness, reported and NOT resolved — **and a stronger obstruction**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> order to satisfy a **ratified** capability is an operation whose **specification contradicts two"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-CONTRACTS.md",
+   "sha256": "9e0e1a344c85b105a5ca7dccce3ae9d605b94847ab7038055f665f775b6c66d2",
+   "line": 308,
+   "heading": [
+    293,
+    "### C-07 · `Assess` — recompute the epistemic grade from linked evidence"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**CORPUS-NAMED + SIGNED.** ⚠ **Σ-dependence, surfaced not relied on:** 272A gives `Assess`'s codomain as **Σ**, and Σ is **not ratified and not agreed** — 272B derives four values, `DECISION-SIGMA-EPISTEMIC-STATUS` derives three, 275 derives `(D,S)`, Q14's five-dimensional form was **REFUTED**, and "
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-CONTRACTS.md",
+   "sha256": "9e0e1a344c85b105a5ca7dccce3ae9d605b94847ab7038055f665f775b6c66d2",
+   "line": 418,
+   "heading": [
+    413,
+    "### C-13 · `MarkConflict` — governed suspension"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "reach the ratified `CONFLICTED` state **by a governed act**, as distinct from reaching it by detected contradiction (C-14)"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-CONTRACTS.md",
+   "sha256": "9e0e1a344c85b105a5ca7dccce3ae9d605b94847ab7038055f665f775b6c66d2",
+   "line": 442,
+   "heading": [
+    432,
+    "### C-14 · `DetectContradiction` — reach CONFLICTED from evidence or relation"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`Contradiction ≠ EpistemicStatus`** (272A §272A.8) — **⚠ this contract is in tension with that law**: it writes contradiction **into** the status field."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-CONTRACTS.md",
+   "sha256": "9e0e1a344c85b105a5ca7dccce3ae9d605b94847ab7038055f665f775b6c66d2",
+   "line": 442,
+   "heading": [
+    432,
+    "### C-14 · `DetectContradiction` — reach CONFLICTED from evidence or relation"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "272A's own position is that `DetectContradiction` *\"does not imply `Conflict ∈ Σ` as a primitive field.\"* FA-1, however, **ratifies `CONFLICTED` as a state**."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-REGISTRY-DECISION-PACKAGE.md",
+   "sha256": "9bc698426cc6cda1a2215c75ef90cedb0e3d8401644ff39c2022f75af5183948",
+   "line": 36,
+   "heading": [
+    27,
+    "## 1 · THREE-WAY COMPARISON (GN-85 §1 — the mandated first act; the reports are NOT merged)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**FALSIFIED (IR-F-1).** Step 256.11 says \"**Possible** semantics\" and names `Proposed` — not a ratified status;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-REGISTRY-DERIVATION.md",
+   "sha256": "7fbc2ab2edfa72f95fd685bfdbbf195aae8aac22f33916d16198a7c9a5e33c8c",
+   "line": 135,
+   "heading": [
+    117,
+    "### 1.3 The membership matrix `EMPIRICALLY TESTED`"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "`Accept`, `Apply`, `Commit`, `Contest`, `DetectContradiction`, `Determine`, `Equal`, `ExplainRevision`, `Identity`, `Observe`, `QualifyEvidence`, `Reassess`, `Refine`, `Reintroduce`, `Resolve`, `SupersessionHistory`, `contradicts`, `noop`, `resolve` — plus the five representation names `Delete`, `De"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-REGISTRY-DERIVATION.md",
+   "sha256": "7fbc2ab2edfa72f95fd685bfdbbf195aae8aac22f33916d16198a7c9a5e33c8c",
+   "line": 502,
+   "heading": [
+    493,
+    "### 3.4 Operations whose semantics depend on something UNRATIFIED — surfaced, never relied on"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Σ is not ratified and the corpus does not agree on it**: 272B derives `Σ_min = 𝒫({Support,Refute}) ≅ {0,1}²` — **four** values;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-REGISTRY-INDEPENDENT-REVIEW.md",
+   "sha256": "d88c6374b6db4ab679579e7691f0d949733069b327123ca528306478f20fcfe4",
+   "line": 6,
+   "heading": [
+    1,
+    "# OPERATION REGISTRY — INDEPENDENT FALSIFICATION REVIEW"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "This is an **independent falsification review**, not a ratification, not an"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-REGISTRY-INDEPENDENT-REVIEW.md",
+   "sha256": "d88c6374b6db4ab679579e7691f0d949733069b327123ca528306478f20fcfe4",
+   "line": 408,
+   "heading": [
+    404,
+    "### RED"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "order to satisfy a **ratified** capability is an operation whose **specification** contradicts two"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-inventory.txt",
+   "sha256": "a81d0d78c4a989e18e0272ad54ea8fd1ca9a6237cf0a05f94a5e55fe120be8b1",
+   "line": 261,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Abstain, AcquireEvidence, Act, ApproveDecision, Ask, AssertClaim, CancelAction, Capture, Clarify, CompleteAction, Conflict, Contextualize, Contradict, Corroborate, CreateAssessment, CreateDecision, CreateProposition, Decide, Defer, Downgrade, Execute, Experiment, Introduce, Invalidate, IssueAction, "
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 26,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Act, Add, AdmitEvidence, Approve, AssertPolicy, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, Derive, DetectContradiction, Infer, LinkEvidence, MarkConflict, Merge, Observe, Promote, Propose, Qualify, RecognizeDimension, Refine, Refute, Reintroduce, Reject, Relate, Remove, Re"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 189,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Add, AdmitEvidence, AssertPolicy, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote, RecognizeDimension, Refine, Refute, Reintroduce, Relate, Remove, Revise, Split, Supersede, Withdraw"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 211,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Act, Add, AdmitEvidence, AssertPolicy, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote, RecognizeDimension, Refine, Refute, Reintroduce, Relate, Remove, Replay, Revise, Split, Supersede, Withdraw"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 231,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Act, Add, AdmitEvidence, AssertPolicy, Decide, Derive, DetectContradiction, Infer, MarkConflict, Merge, Promote, RecognizeDimension, Refine, Refute, Reintroduce, Relate, Remove, Replay, Revise, Split, Supersede, Validate, Withdraw"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 252,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "ev                     <- AdmitEvidence, Qualify, Refute"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 256,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "item.status            <- Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Reject, Resolve, Split"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 271,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Act, Add, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, DetectContradiction, Infer, LinkEvidence, MarkConflict, Observe, Promote, Propose, Qualify, Refute, Reject, Relate, Replay, Resolve, Split, Validate"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 273,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Refute, Relate, Split"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 277,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R3 (|R|=19)  = CORE + {DetectContradiction, Promote, Refute}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 278,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R4 (|R|=20)  = CORE + {Add, DetectContradiction, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 279,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R5 (|R|=20)  = CORE + {DetectContradiction, Infer, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 280,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R6 (|R|=20)  = CORE + {DetectContradiction, Promote, Relate, Split}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 292,
+   "heading": null,
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Add, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, Decide, DetectContradiction, Infer, LinkEvidence, MarkConflict, Observe, Promote, Propose, Qualify, Refute, Reject, Relate, Resolve, Split, Validate"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 294,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Refute, Relate, Split"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 298,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R3 (|R|=17)  = CORE + {DetectContradiction, Promote, Refute}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 299,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R4 (|R|=18)  = CORE + {Add, DetectContradiction, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 300,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R5 (|R|=18)  = CORE + {DetectContradiction, Infer, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 301,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R6 (|R|=18)  = CORE + {DetectContradiction, Promote, Relate, Split}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 313,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Add, Approve, Assess, Authorize, ChangePolicy, Commit, ComputeZero, DetectContradiction, Infer, LinkEvidence, MarkConflict, Observe, Promote, Propose, Qualify, Refute, Reject, Relate, Resolve, Split"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 315,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Accept, Add, DetectContradiction, Infer, MarkConflict, Promote, Refute, Relate, Split"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 319,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R3 (|R|=15)  = CORE + {DetectContradiction, Promote, Refute}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 320,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R4 (|R|=16)  = CORE + {Add, DetectContradiction, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 321,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R5 (|R|=16)  = CORE + {DetectContradiction, Infer, Promote, Relate}"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/exec/OUT-mintest.txt",
+   "sha256": "10c29bbff507b11503b00309511d9e18f1b7af456ec138d8db2da143a1616d3c",
+   "line": 322,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "R6 (|R|=16)  = CORE + {DetectContradiction, Promote, Relate, Split}"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/04-SCHEMA-v2-AND-AMENDMENT.md",
+   "sha256": "d2734a1ef456d591d70453119b8de8deb07d81744e32c4b7c4c14577fc1495a8",
+   "line": 35,
+   "heading": [
+    33,
+    "## The governing rule, recorded explicitly"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "it does not ratify the theory.}\\\\ \\textbf{Conversely, STIPULATED code does not refute a theory gap.}\\end{array}}$$"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/05-VALIDATION-REPORT-v2.md",
+   "sha256": "efe577f9ef8e9bcffdccda2a74c6899aa277f77526d5b31ec8b922c2683dd80f",
+   "line": 57,
+   "heading": [
+    42,
+    "## 1. Defect A — implementation provenance, per record"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "directions: none of this code ratifies anything, and none of it refutes `G1`, `CR-3` or `CR-4`.**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/104-READ-RECORD-NINE-F4-FILES-AND-CORRECTIONS-TO-P85.md",
+   "sha256": "714ac559de7f55ae770c73dc953d2c93d848bf5cef8f2fd29812fc954c6c38d6",
+   "line": 213,
+   "heading": [
+    184,
+    "### 10. What I hand to the F4 lane"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "CONTRADICTS ITSELF on J/K: status column PARTIALLY FOUND, its own justification cell \"MD-059 classifies"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/113-P92-THE-R-REQ-DEFINITION-DOCUMENT.md",
+   "sha256": "7c8f540b9f20b9759706286753e5237a1b5e92a767da0d606c5f3e08b617ecc7",
+   "line": 159,
+   "heading": [
+    158,
+    "## 5.2 ⭐ `Zero`, and `Contr`, are conditions on `D-1.1`'s values"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\mathbf 0 \\iff \\forall P: \\big(\\mathrm{Status}(P) \\notin \\{\\textit{Contradictory}, \\textit{Underdetermined}\\} \\wedge \\mathrm{Currency}(P) = \\textit{Current}\\big)$$"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/114-P93-THE-182011-182017-182019-READ.md",
+   "sha256": "9547d81982c510068c9ea7b3490cdf6f93c29f45e202c0277e30e667cf2ea45f",
+   "line": 9,
+   "heading": [
+    7,
+    "# 0. ⭐⭐⭐⭐⭐ The headline"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{\\begin{array}{c}\\textbf{One 27-file batch contains } \\mathbf{FIVE\\ status\\ words}\\textbf{, } \\mathbf{FOUR\\ inventories} \\textbf{ of one object, and}\\\\ \\mathbf{TWO\\ flat\\ contradictions} \\textbf{ in which a register calls an item OPEN while a spec two files away}\\\\ \\textbf{is marked } \\mathb"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/114-P93-THE-182011-182017-182019-READ.md",
+   "sha256": "9547d81982c510068c9ea7b3490cdf6f93c29f45e202c0277e30e667cf2ea45f",
+   "line": 151,
+   "heading": [
+    143,
+    "# 5. Status"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`[DERIVED]`** ⭐⭐⭐ **two flat same-batch contradictions** — `182008` vs `182013` on ratifiability,"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/114-P93-THE-182011-182017-182019-READ.md",
+   "sha256": "9547d81982c510068c9ea7b3490cdf6f93c29f45e202c0277e30e667cf2ea45f",
+   "line": 173,
+   "heading": [
+    165,
+    "### 7. What this changes"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "CONTRADICTIONS in which a register calls an item OPEN while a spec two files away is marked [RATIFIED]"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/117-P96-QUEUE-DRIVEN-CHRONOLOGICAL-READ.md",
+   "sha256": "3ce540692bcb4d8c9c152d84345975107e92e6f524a262e58d900f9e98865e2c",
+   "line": 586,
+   "heading": [
+    577,
+    "### 8.6 ⛔ `272b` misquotes `272a`'s own operation set: 19 → 17, silently"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "O_E = {Support, Refute, Qualify, Assess, DetectContradiction, Resolve}            6"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/17-P07-IDENTITY-ADDRESSING-CONTINUITY-DERIVATION.md",
+   "sha256": "9ba75d91326181b7902a5d902bb78c76f3c92cfe81e3bf914732d429a37cf088",
+   "line": 345,
+   "heading": [
+    340,
+    "## The commissioned question — is the association an Entity, VO, Assertion or Relationship instance?"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "🔴 **refuted** — it is a **standing claim**, not a thing that happened"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/18-P08-MINIMUM-PERSISTENCE-OBLIGATIONS-DERIVATION.md",
+   "sha256": "56b44aec9146ef3484196f8c43dd092041bf93a254b095ddadf21f357c3018cb",
+   "line": 336,
+   "heading": [
+    321,
+    "## ⭐⭐ The monotonicity result"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**status → refuted** (`τ1`)"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/23-P09.3-PERSISTENCE-KERNEL-CLOSURE-DERIVATION.md",
+   "sha256": "3868a577029ea8e4af265a702b59ed1fc0f304f520e15ebf5d838264e38edea2",
+   "line": 92,
+   "heading": [
+    87,
+    "# 6. `K2` — current-state preservation"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "keep the text, lose the status ⇒ **`W3`** — refuted reads as never-live."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/38-P21-WITHDRAWAL-VS-SUPERSESSION-TRANSITION-IDENTITY-AUDIT.md",
+   "sha256": "8aafda509916339b6c8f39fbe0501f05420155480e06deaeab19b4f1adda78b4",
+   "line": 234,
+   "heading": [
+    228,
+    "# 16. Consistency with the earlier transition work"
+   ],
+   "class": "DIRECT-CONSEQUENCE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐⭐ **QUALIFIED BY LEVEL, not refuted.** `P-15`'s `1→0` concerns the **identity population** (candidates), where retirement removes an identity from the live population while retaining it."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/38-P21-WITHDRAWAL-VS-SUPERSESSION-TRANSITION-IDENTITY-AUDIT.md",
+   "sha256": "8aafda509916339b6c8f39fbe0501f05420155480e06deaeab19b4f1adda78b4",
+   "line": 360,
+   "heading": [
+    306,
+    "# 22. Provenance"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "P-15 QUALIFIED BY LEVEL, not refuted: its 1->0 concerns the IDENTITY POPULATION (candidates);"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/39-P22-ASSERTION-SUBJECT-HOLDER-CARDINALITY-AND-SCOPE-AUDIT.md",
+   "sha256": "e41a9427adae64e356b49b712a692213f5652003d17804d49e51a4dfd4d76eaa",
+   "line": 115,
+   "heading": [
+    111,
+    "# PART IV — `K2`'s subject"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ **`[QUALIFIED]`** — `P-21`'s formulation, refuted by set-valuedness"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/39-P22-ASSERTION-SUBJECT-HOLDER-CARDINALITY-AND-SCOPE-AUDIT.md",
+   "sha256": "e41a9427adae64e356b49b712a692213f5652003d17804d49e51a4dfd4d76eaa",
+   "line": 148,
+   "heading": [
+    143,
+    "# PART VI — ⭐⭐⭐ `K4a-ii` and the four histories"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐ **a GLOBAL `Replaces(p₂,p₁)` CONTRADICTS `h₂`'s standing claim** ⇒ **the relation must be holder-indexed**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/39-P22-ASSERTION-SUBJECT-HOLDER-CARDINALITY-AND-SCOPE-AUDIT.md",
+   "sha256": "e41a9427adae64e356b49b712a692213f5652003d17804d49e51a4dfd4d76eaa",
+   "line": 235,
+   "heading": [
+    230,
+    "# PART XII — ⭐⭐⭐ The central adversarial test"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{\\begin{array}{c}\\textbf{Attacked under } H3/H4 \\textbf{ and it does NOT survive unqualified.}\\\\[4pt] \\boxed{\\begin{array}{l}\\mathbf{H\\text{-}S2} \\textbf{ shows a GLOBAL } \\mathit{Replaces}(p_2,p_1) \\textbf{ CONTRADICTS } h_2\\textbf{'s standing claim.}\\\\ \\textbf{So the one datum must be } \\m"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/39-P22-ASSERTION-SUBJECT-HOLDER-CARDINALITY-AND-SCOPE-AUDIT.md",
+   "sha256": "e41a9427adae64e356b49b712a692213f5652003d17804d49e51a4dfd4d76eaa",
+   "line": 238,
+   "heading": [
+    230,
+    "# PART XII — ⭐⭐⭐ The central adversarial test"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "simply has an extra argument.** ⭐⭐ **`P-21`'s conclusion is therefore `[QUALIFIED]`, not `[REFUTED]`.**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/39-P22-ASSERTION-SUBJECT-HOLDER-CARDINALITY-AND-SCOPE-AUDIT.md",
+   "sha256": "e41a9427adae64e356b49b712a692213f5652003d17804d49e51a4dfd4d76eaa",
+   "line": 271,
+   "heading": [
+    255,
+    "# FINAL VERDICT"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "| ⭐⭐ **YES — `H1` single-holder, and `P-21`'s *\"field\"* formulation.** Both `[QUALIFIED]`/`[REFUTED]` as wording, not as structure"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/39-P22-ASSERTION-SUBJECT-HOLDER-CARDINALITY-AND-SCOPE-AUDIT.md",
+   "sha256": "e41a9427adae64e356b49b712a692213f5652003d17804d49e51a4dfd4d76eaa",
+   "line": 326,
+   "heading": [
+    284,
+    "# Provenance"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "supersedes p1 while h2 keeps p1 current) shows a GLOBAL Replaces(p2,p1) CONTRADICTS h2's standing claim."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/40-P23-ESTATE-BOUNDARY-REGISTER-SCOPE-AND-DELETION-INVARIANT-AUDIT.md",
+   "sha256": "176fa1baf45acf5c4749501a237afcb334325e1a6b9e6051bb71574dec4e2355",
+   "line": 232,
+   "heading": [
+    222,
+    "# PART XIII — adversarial attack on `P-22`"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ **Two refuted-or-qualified, three surviving.** ⛔ **And `P-22`'s own claim that *holder* is unattested"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/44-P26.1-PROVENANCE-CHAIN-STRUCTURE-AND-UNBROKENNESS-SEMANTICS-AUDIT.md",
+   "sha256": "c0bb609e1755f31b18d23888ca23e8c5dd83a47143d50d7e7e6d0a3e1ec6f244",
+   "line": 150,
+   "heading": [
+    135,
+    "# `C6` — audit of the completed `P-26`"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{\\textbf{⭐ SIX claims CONFIRMED (two STRENGTHENED), THREE } \\mathbf{[QUALIFIED]}\\textbf{, ZERO refuted."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/45-P27-TG02-INDEPENDENCE-ADMISSIBILITY-VS-PERSISTENCE-AUDIT.md",
+   "sha256": "53b7e45142c5bfe7134c32541965a6849320e29b50eb4ac0ddc71fb7f5212763",
+   "line": 217,
+   "heading": [
+    217,
+    "## Qualified / open / refuted"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "## Qualified / open / refuted"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/47-P29-EFFECTIVE-POLICY-REFERENCE-NECESSITY-AUDIT.md",
+   "sha256": "50fbe06c9d4d9e2c979a702ecc49283fb5c88e89ceb896f2dad8cf98fe35c5ad",
+   "line": 118,
+   "heading": [
+    109,
+    "# 8. ⭐⭐⭐ The `P-13` analogy, attacked — and `P-28`'s hypothesis survives with its SUBJECT corrected"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**The corpus attaches it to TRANSITIONS.** ⚠️ **`[QUALIFIED]`, not refuted.**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/50-P32-GT004-EXPLICIT-UNKNOWN-REASON-AND-K5-SCOPE-AUDIT.md",
+   "sha256": "b1545ef926326c06349efa36e2c096415be2e0e20a1d920aa43530ce0f05637d",
+   "line": 44,
+   "heading": [
+    21,
+    "# 1. ⭐⭐⭐ Status — an earlier lane had already audited `GT-004`, and it fails twice"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{GT\\text{-}004 \\textbf{ is } \\mathbf{[REFUTED]\\ as\\ a\\ standing\\ requirement} \\textbf{ — ill-typed, unfalsifiable, and silently abandoned without supersession.}}$$"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/50-P32-GT004-EXPLICIT-UNKNOWN-REASON-AND-K5-SCOPE-AUDIT.md",
+   "sha256": "b1545ef926326c06349efa36e2c096415be2e0e20a1d920aa43530ce0f05637d",
+   "line": 179,
+   "heading": [
+    163,
+    "## Status register"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`[REFUTED]`** ⭐⭐ **`GT-004` as a standing requirement**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/51-P33-PROPOSITION-WARRANT-BOUNDARY-AND-KERNEL-INDEPENDENCE-AUDIT.md",
+   "sha256": "fc2d1be1fff6fc7de8247ce289d7a6d396556b690d79054f174fa38a9d742330",
+   "line": 222,
+   "heading": [
+    214,
+    "# 20. Status register · ⭐ and an explicit `P-32` correction"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "`𝒪_K = {Introduce, Corroborate, Qualify, Contradict, Supersede,"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/52-P34-ASSERTION-IDENTITY-CORROBORATION-AND-K1-INDEPENDENCE-AUDIT.md",
+   "sha256": "9235e887a9a56dc3b09a96ce358fcb08b752b5cac89d77e733e50a3d718d1e37",
+   "line": 156,
+   "heading": [
+    156,
+    "# 12 · 21. ⭐⭐⭐ `P-33` inference audit — four refuted, one qualified, verdict intact"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐⭐ `P-33` inference audit — four refuted, one qualified, verdict intact"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/52-P34-ASSERTION-IDENTITY-CORROBORATION-AND-K1-INDEPENDENCE-AUDIT.md",
+   "sha256": "9235e887a9a56dc3b09a96ce358fcb08b752b5cac89d77e733e50a3d718d1e37",
+   "line": 289,
+   "heading": [
+    256,
+    "### ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "P-33 INFERENCE AUDIT — FOUR REFUTED, ONE QUALIFIED, VERDICT INTACT."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/59-P41-RECONSTRUCTIBILITY-VS-RETAINED-HISTORY-T9-P08-COMPATIBILITY-AUDIT.md",
+   "sha256": "e006df8cb8e4bb68fe48b85c5b7b49293f8f13644a01f5a17abc416155e73459",
+   "line": 318,
+   "heading": [
+    255,
+    "### ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "NO SCHEMA v3 — NO CELL CHANGE — NO KERNEL MERGE — NO CONTRADICTION RESOLUTION — NO CANONICALIZATION — NO"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/60-P42-LEVEL-S-NORMATIVE-ADOPTION-AND-AUTHORITY-AUDIT.md",
+   "sha256": "5ac893fe737478e01200f6d4310896074327052a97b4ff8125a04a116b1c6fa5",
+   "line": 104,
+   "heading": [
+    99,
+    "# 10. ⭐⭐ Attack on `P-41`"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐⭐ **`[REFUTED]` — they are `[REC]`.** ⭐ **The corpus's own adopted vocabulary distinguishes them: `[DEF]` is *stipulated*, `[REC]` *carries no truth claim***"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/62-P44-R-KERNEL-ADOPTABILITY-AND-ARTIFACT-BOUNDARY-AUDIT.md",
+   "sha256": "1577b810dc933ec215c2ae886701b0f48fe948d89873ec2c104ba2408bb09c67",
+   "line": 132,
+   "heading": [
+    130,
+    "# 10–11. Governance relations and DDD"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{\\begin{array}{ll}\\mathit{Eligible}(a,g,s) & \\textbf{⭐⭐ } \\mathbf{UNDEFINED\\ for\\ } a = \\textbf{a KnowledgeOS mathematical result — no } s \\textbf{ covers it}\\\\ \\mathit{Eligible} \\Rightarrow \\mathit{Reviewed} & \\mathbf{[UNWITNESSED]}\\\\ \\mathit{Reviewed} \\Rightarrow \\mathit{Adopted} & \\textbf"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/62-P44-R-KERNEL-ADOPTABILITY-AND-ARTIFACT-BOUNDARY-AUDIT.md",
+   "sha256": "1577b810dc933ec215c2ae886701b0f48fe948d89873ec2c104ba2408bb09c67",
+   "line": 230,
+   "heading": [
+    187,
+    "### 17. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "TWO IMPLICATIONS ARE ACTIVELY REFUTED, not merely unwitnessed: Reviewed => Adopted fails (the"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/63-P45-KNOWLEDGEOS-THEORY-GOVERNANCE-AUTHORITY-AND-SCOPE-AUDIT.md",
+   "sha256": "5acadab90addb815e38d3bc13be8b669a630041ff615ddfc300954c0d8fb2313",
+   "line": 72,
+   "heading": [
+    68,
+    "# 6. ⭐⭐⭐ The decisive self-scope statements"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐ **§25 confirms `P-44`'s `Reviewed ⇏ Adopted` refutation directly from the primary**, and **§37"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/63-P45-KNOWLEDGEOS-THEORY-GOVERNANCE-AUTHORITY-AND-SCOPE-AUDIT.md",
+   "sha256": "5acadab90addb815e38d3bc13be8b669a630041ff615ddfc300954c0d8fb2313",
+   "line": 180,
+   "heading": [
+    146,
+    "### 16. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "confirming P-44's Reviewed-implies-Adopted refutation from the primary source;"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/64-P46-THEORY-BOUNDARY-INTENTIONAL-DESIGN-OR-GOVERNANCE-GAP-AUDIT.md",
+   "sha256": "c44ad30a6ca39fa9f99c48bd501f5aff890c0e77ebeca8a018af5808879a8597",
+   "line": 119,
+   "heading": [
+    114,
+    "# 11. What the closure does NOT establish"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⛔ It does **not** make `|K| = 11` canonical, binding, or refuted."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/74-P56-LEVEL-S-R-BRIDGE-ARCHAEOLOGY-AND-TYPE-COMPATIBILITY-AUDIT.md",
+   "sha256": "557874faa11fb50c8853c17bf83ea5142dfc4cdc90b218eea3fb416836ea2924",
+   "line": 281,
+   "heading": [
+    253,
+    "### 14. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "EMPTY, zero artifacts qualify, four claimed acts fail the test and contradict their own documents."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/75-P57-BRAINSTORMING-ARCHAEOLOGY-GATE-SCOPE-EXECUTION-AND-SOURCE-OVERLAP-AUDIT.md",
+   "sha256": "f57ffd3637e2fe4dc6f967413b9a2141e3fcc43b0b0fa86be33e4d1a6fc5b141",
+   "line": 169,
+   "heading": [
+    162,
+    "# 10. ⭐⭐ Attack on `P-56` *(§9)*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐⭐⭐ **`[REFUTED]`** — `GN-26` lists *\"promotion of historical material into canonical authority\"* as **NOT authorized**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/76-P58-FA7-CAPABILITY-LEVEL-TRACEABILITY-AUDIT.md",
+   "sha256": "814676fa9337e4b68aea85a41ffb2be18bfc49999a9cb487ac0f8ca149b287c2",
+   "line": 54,
+   "heading": [
+    44,
+    "# 2. ⚠️ Disagreement — one, and it is substantive"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "not formalized, so `⪯_cap` is a *standard*, not a *computation*.** ⭐⭐ **That is enough to REFUTE a"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/76-P58-FA7-CAPABILITY-LEVEL-TRACEABILITY-AUDIT.md",
+   "sha256": "814676fa9337e4b68aea85a41ffb2be18bfc49999a9cb487ac0f8ca149b287c2",
+   "line": 235,
+   "heading": [
+    191,
+    "### 12. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "formalized, so <=cap is a standard, not a computation — enough to REFUTE a T2 claim, not enough to"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/78-P60-RETENTION-OBLIGATION-CAPABILITY-TYPING-AND-REALIZATION-AUDIT.md",
+   "sha256": "0f6ba43936d805d69c6fcbc2ba89991f9b8886a7aafc2891ad95299f6319507e",
+   "line": 256,
+   "heading": [
+    198,
+    "### 15. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "than proved, \"delta_K supplied\" REFUTED by me, \"1 of 5\" QUALIFIED to 0 of 5 formal, and \"|K| = 11"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/80-P62-S3-LINEAGE-SUCCESSION-AND-ABANDONMENT-AUDIT.md",
+   "sha256": "ef1a5b8460c4be8589c5ba3258a3f54d095974cfa0fc9e8aa85382a2d956d537",
+   "line": 216,
+   "heading": [
+    178,
+    "### 14. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "do not share a verdict: succession witnessed, status unrecorded, abandonment refuted, effect nil."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/81-P63-S0-FALSIFICATION-IMPACT-ON-S3-INHERITED-CONTENT-AUDIT.md",
+   "sha256": "75ab3dca08d566908c4c25907249946db929767a94e9e4fe46c797f547b4399c",
+   "line": 90,
+   "heading": [
+    75,
+    "# 5. Inheritance ledger *(§2)* — proposition by proposition"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⚠️ **`[QUALIFIED]`** — survives the falsification, ⛔ **but its antecedent is unavailable**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/83-P65-PSTAR-THEOREM-VS-ANALYTIC-DEFINITION-AUDIT.md",
+   "sha256": "642d36c1842bfbf250cb886b3fdc50381e56744f9bbbf533cbe2a978e3c42bb6",
+   "line": 81,
+   "heading": [
+    72,
+    "# 6. ⭐⭐⭐ Countermodels *(§4)*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{\\textbf{⭐⭐ } \\mathbf{B\\ is\\ decisive.} \\textbf{ The natural-language sentence, as the corpus states it, is } \\mathbf{REFUTED.} \\textbf{ Only the qualified form survives.}}$$"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/83-P65-PSTAR-THEOREM-VS-ANALYTIC-DEFINITION-AUDIT.md",
+   "sha256": "642d36c1842bfbf250cb886b3fdc50381e56744f9bbbf533cbe2a978e3c42bb6",
+   "line": 95,
+   "heading": [
+    83,
+    "# 7. ⭐⭐ Route table *(§5 of the commission)*"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\boxed{\\textbf{⭐⭐ } P\\text{-}64\\textbf{'s \"three routes to } P^*\\textbf{\" is } \\mathbf{[REFUTED]}\\textbf{: one route reaches it, two require its unqualified form to fail.}}$$"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/83-P65-PSTAR-THEOREM-VS-ANALYTIC-DEFINITION-AUDIT.md",
+   "sha256": "642d36c1842bfbf250cb886b3fdc50381e56744f9bbbf533cbe2a978e3c42bb6",
+   "line": 136,
+   "heading": [
+    132,
+    "# 12. Status register"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**`[REFUTED]`** ⭐⭐⭐ **`P*` without the *\"alone\"* qualifier** *(Model B)*"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/86-P68-TK1-TK2-INTAKE-AND-K0-MATHEMATICAL-KERNEL-DISCOVERY.md",
+   "sha256": "d1186238f10c31c582c8b6020e51b2124a7e2638c3ea1c26939d1c031de51165",
+   "line": 81,
+   "heading": [
+    79,
+    "# 5. ⭐⭐⭐ Two consequences that bear directly on this lane"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**5.1 `P-61`/`P-64`'s *\"one distinct theorem, cited not theirs\"* is `[QUALIFIED]`, not refuted.** ⭐ That"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/94-P76-DO-THE-88-TVF-FINDINGS-BEAR-ON-K1-K11.md",
+   "sha256": "fa5c4d284a0f6e3202cbe66ef6ce57ca2dc29e9c407fe2dc8ddf60ba4562f51d",
+   "line": 59,
+   "heading": [
+    49,
+    "# 4. ⭐⭐ The three qualified correspondences"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "answer the shape of `O-P08-1` *(status regression)*: ⭐⭐ **`Supported → Refuted` IS a regression.**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/elements/KOS-T-0004-Qualify.md",
+   "sha256": "3947e725d0fe9d17c3c9081c321f72821f7f097f6cc3a76010cc5414147ae206",
+   "line": 41,
+   "heading": [
+    23,
+    "## 🔴🔴 The headline stress result — `G1` says *\"no body\"*; the code has four bodies"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "not ratify a theory, **and code does not refute a theory gap.**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/elements/KOS-T-0007-Sigma.md",
+   "sha256": "52abd5d965b2c613200090aaab079c5538f07ba6a1d748995fe13fe5c7c3e015",
+   "line": 25,
+   "heading": [
+    17,
+    "## Definitions — enumerated, not merged"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ **the IMPLEMENTED `Σ`** — `(status, strength)`, `status ∈ {Supporting, Refuting, Contested, Neutral}`, `strength ∈ {None, Weak, Moderate, Strong, VeryStrong}`"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/00-PROTOCOL-AND-CHECKPOINT.md",
+   "sha256": "3dc01cbb81253a08e218a1cbf68525255148ae467c4e71a3642ca76c8ecbdcdc",
+   "line": 1146,
+   "heading": [
+    1144,
+    "## What I got wrong, and why"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "My standing `G-19` row said the commissioned falsification *\"is missing, and the unfalsified claim"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/00-PROTOCOL-AND-CHECKPOINT.md",
+   "sha256": "3dc01cbb81253a08e218a1cbf68525255148ae467c4e71a3642ca76c8ecbdcdc",
+   "line": 1168,
+   "heading": [
+    1157,
+    "## Verification performed"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "standing of each refutation"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 555,
+   "heading": [
+    550,
+    "## The commissioning lane never learned"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "two standing refutations"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 556,
+   "heading": [
+    550,
+    "## The commissioning lane never learned"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "two standing refutations"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 578,
+   "heading": [
+    568,
+    "## Disposition summary"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**downgraded to CONTESTED** — two standing executed refutations"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 594,
+   "heading": [
+    590,
+    "## ⭐ The pattern, now at three instances — and the third inverts the first two"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "late** — `step_277` recording *\"not tested\"* over two standing executed refutations."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 1177,
+   "heading": [
+    1172,
+    "## Gap changes"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "No change to the registry's contradiction status;"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 1191,
+   "heading": [
+    1191,
+    "# ⭐⭐ G-12 SEMANTIC — my own headline QUALIFIED, and `G-26` REFUTED"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "# ⭐⭐ G-12 SEMANTIC — my own headline QUALIFIED, and `G-26` REFUTED"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 1495,
+   "heading": [
+    1491,
+    "### ⛔ But §6.3 commits an error the corpus had already REFUTED BY EXECUTION"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**This averages `Supported` and `Refuted`** — elements of a nominal/ordinal status set."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 2457,
+   "heading": [
+    2457,
+    "### They contradict each other on the completion status of the same objects"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "### They contradict each other on the completion status of the same objects"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 3557,
+   "heading": [
+    3543,
+    "## §1 · The fork, measured"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "*\"`CLOSURE-SYNTHESIS-2026-v1.3 — Final Falsification Gate`\"* with status *\"Discovery CLOSED →"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/06-GAP-REGISTER.md",
+   "sha256": "d18b67673645ca6c9dc111232a72a01be13300ea0c8eb45540a8e4adc54e9c29",
+   "line": 4387,
+   "heading": [
+    4385,
+    "## §4 · ⭐⭐⭐ `𝒪_K` — **acht** Operationen, völlig andere Namen"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "$$\\mathcal{O}_K = \\{\\text{Introduce},\\ \\text{Corroborate},\\ \\text{Qualify},\\ \\text{Contradict},\\ \\text{Supersede},\\ \\dots\\}$$"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/07-THEORYSTATE-CHRONICLE.md",
+   "sha256": "12f8ec8bf2ba831de4ab0c550f5f1c2b64ac30b7f0762a15781c55495775a16d",
+   "line": 101,
+   "heading": [
+    93,
+    "## `TheoryState(t₆)` — 2026-08-28 09:44 → 10:13 (`025p`–`025z`) · `READ-STRUCTURAL`"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Not promotable to evidence for a definition, lineage edge or contradiction without a complete read.**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/07-THEORYSTATE-CHRONICLE.md",
+   "sha256": "12f8ec8bf2ba831de4ab0c550f5f1c2b64ac30b7f0762a15781c55495775a16d",
+   "line": 292,
+   "heading": [
+    283,
+    "## What changed in `TheoryState`"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Sufficiency: executed, **2 standing refutations + 1 self-withdrawn**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/07-THEORYSTATE-CHRONICLE.md",
+   "sha256": "12f8ec8bf2ba831de4ab0c550f5f1c2b64ac30b7f0762a15781c55495775a16d",
+   "line": 555,
+   "heading": [
+    544,
+    "## ⭐⭐ And the pattern's final form"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "That is the promoted mechanism at its limit: not merely that lanes fail to enumerate each other, but"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/commission/00-COMMISSION-REGISTER.md",
+   "sha256": "da2657bb6736541a1181a46bd46cc678acf9ca9196942ecb7ded9437294541b7",
+   "line": 396,
+   "heading": [
+    389,
+    "### The graph's five categories, populated"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⭐ **`CANONICAL-KNOWLEDGEOS-THEORY` `THEORY NOT YET COMPLETE 19/24`** — no adjudication located, and Theory v1.0 three days later neither cites nor contradicts it explicitly"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/commission/00-COMMISSION-REGISTER.md",
+   "sha256": "da2657bb6736541a1181a46bd46cc678acf9ca9196942ecb7ded9437294541b7",
+   "line": 773,
+   "heading": [
+    773,
+    "### C · Adoption — one claim, contradicted in 52 minutes, and already adjudicated"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Adoption — one claim, contradicted in 52 minutes, and already adjudicated"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/commission/00-COMMISSION-REGISTER.md",
+   "sha256": "da2657bb6736541a1181a46bd46cc678acf9ca9196942ecb7ded9437294541b7",
+   "line": 999,
+   "heading": [
+    997,
+    "### ⚠️ Correction to my own §M record"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "I wrote that the ratification claim was *\"contradicted 52 minutes later\"*."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/commission/00-COMMISSION-REGISTER.md",
+   "sha256": "da2657bb6736541a1181a46bd46cc678acf9ca9196942ecb7ded9437294541b7",
+   "line": 1265,
+   "heading": [
+    1259,
+    "### Final verdict"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> Proposed instead: **`CLOSURE-SYNTHESIS-2026-v1.3 — Final Falsification Gate`**, status"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/commission/00-COMMISSION-REGISTER.md",
+   "sha256": "da2657bb6736541a1181a46bd46cc678acf9ca9196942ecb7ded9437294541b7",
+   "line": 1619,
+   "heading": [
+    1605,
+    "### The fork, measured"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "— Final Falsification Gate`\"* with status *\"Discovery CLOSED → Constitutional Core CLOSED →"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "line": 53,
+   "heading": [
+    12,
+    "## Rulings (living, append-only)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "RULINGS/ADR",
+   "sentence": "The frozen artifact specifies this implementation rather than contradicting it.** **THREE ITEMS RECORDED, NONE BLOCKING: (a) the catalog records NO PUBLISHED-LANGUAGE STATUS FOR ANY EVENT, so ADR-T21's declaration has no counterpart in the registry — a registry gap across the whole catalog, referred"
+  },
+  {
+   "path": "engineering/architecture/c4/2026-07-08-arb-diagram-draft-superseded.md",
+   "sha256": "0121d6f031ed41fb028e345f28f2158e4d8d7fd4d4c8b6bbb96bd2cac6e4f701",
+   "line": 8,
+   "heading": null,
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "M4[\"Frozen Metric Ledger<br>• Independent Sources<br>• Contradicting Sources<br>• Product Evidence<br>• Promotion Status\"]"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md",
+   "sha256": "013eafa8ba378fcd513a783c596f9aa210a572729b3fc554c9c758ab39527e5d",
+   "line": 672,
+   "heading": [
+    666,
+    "## 17. Architecture Strengths"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The Artifact Promotion plan defines FALSIFIED and INCONCLUSIVE conditions before collecting evidence, and adds EMERGENT as a fourth outcome so surprises cannot silently become architecture."
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Engineering_Theory_Reference.md",
+   "sha256": "85b90209c452f6c4339824f960e4f6f8752c9043ea9689c781afecc5be768c3f",
+   "line": 173,
+   "heading": [
+    171,
+    "### 4.15 Popperian falsifiability — **EXPLICIT in substance (the word appears in 11 files; the author nowhere)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "*Justifies:* FF falsifiability rules, attempt-to-reject, the four-outcome qualification taxonomy (CONFIRMED / FALSIFIED / INCONCLUSIVE / EMERGENT)."
+  },
+  {
+   "path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "line": 7,
+   "heading": [
+    1,
+    "# ES-001 — Engineering Constitution"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "STANDARD/GOVERNANCE",
+   "sentence": "**Qualification Method:** constitution audits (OQ-ENG-002-class: ownership, discoverability, single-home, no-contradiction checks)."
+  },
+  {
+   "path": "engineering/verification/commissions/2026-08-02-issuance-input-ownership-decision-package.md",
+   "sha256": "a9591b612392060ded1b573dcf29dec3505239a3a9e5604623a207b6170686d1",
+   "line": 96,
+   "heading": [
+    89,
+    "### 5.3 `ContestedOutcomeRef`"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "⛔ **contradicts a standing rule**"
+  },
+  {
+   "path": "engineering/verification/qualification/Operational-Validation-Playbook.md",
+   "sha256": "1290e32c3e31d4d25f70ca99f03053977c32e877e06e1e57e4bead3011fe207a",
+   "line": 90,
+   "heading": [
+    85,
+    "# Part III — Templates (standardizes evidence)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "status (UNMEASURED/CONFIRMED/FALSIFIED/INCONCLUSIVE)`"
+  },
+  {
+   "path": "engineering/verification/qualification/Project-State-Synchronization-Observation-Protocol.md",
+   "sha256": "55d0012bb4a13b69c4153a764d77e2f814c8716877f0689d8fd538538a0affcf",
+   "line": 26,
+   "heading": [
+    18,
+    "## What to observe"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "Any status/progress document fails to reflect current execution state"
+  },
+  {
+   "path": "engineering/verification/qualification/Project-State-Synchronization-Observation-Protocol.md",
+   "sha256": "55d0012bb4a13b69c4153a764d77e2f814c8716877f0689d8fd538538a0affcf",
+   "line": 53,
+   "heading": [
+    43,
+    "## After the observation period — the decision"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "This is the same discipline as every other candidate this session (Artifact Promotion, the verification taxonomy, Commission Validation): evidence decides, not architectural elegance, and \"falsified, close it\" is as legitimate an outcome as \"confirmed, propose the amendment.\""
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-11-artifact-promotion-pattern-validation.md",
+   "sha256": "ea0523c089186abe6a198e47854b214fd47a13d179b2571480197cc54ccb10b0",
+   "line": 21,
+   "heading": [
+    19,
+    "## 2. Counterexample search"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "One **pathology** found, zero refuting counterexamples: **R-36 cites `claude/plans/swirling-jingling-blossom.md` (a runtime-named Work Plan) as its full promotion matrix — a governance crossing that happened by citation, with NO promotion event.** This does not refute the pattern;"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-11-platform-readiness-report.md",
+   "sha256": "0c7bde25b38edd4eaa60423df6c220c28877bce1273bde52c015c83b342a9491",
+   "line": 24,
+   "heading": [
+    23,
+    "### 4. Candidate concepts — ✅ READY (nothing over-promoted)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "qualification plan prepared with CONFIRM/FALSIFY/INCONCLUSIVE/EMERGENT outcomes) ✓"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-31-cross-context-contract-strategic-validation.md",
+   "sha256": "c9e590ff7578bb753343c388df3048a25d5d58b0c4fecfec6eae039ec2778526",
+   "line": 43,
+   "heading": [
+    39,
+    "## 2. Counter-example analysis (Phase 2)"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "**No — and this is settled, not open.** The ratified baseline rejects SK *on every edge*, on accountability grounds, and records the falsifiability condition explicitly: *\"should a genuinely co-owned model ever be discovered in later work, admitting it is an ARB-gated architectural change, not a sil"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-placement-policy-assessment.md",
+   "sha256": "dabb7f2a2d6ce62fba6828334517d621a290b8317b4d2e850d47016a2b21a3cf",
+   "line": 47,
+   "heading": [
+    37,
+    "## 2. The interpretive point that matters — ES-005.3 has two clauses, and they can appear to conflict"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "> **Read the other way, the litmus would contradict ES-006.1 entirely**, since a research artifact that is domain-neutral would skip Pilot and Qualification by virtue of its wording."
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-es005-amendment-package.md",
+   "sha256": "e54d541d9641cb82e3816eca6d08b8a16648c9ccb623f5cd8f721572ced3f214",
+   "line": 63,
+   "heading": [
+    57,
+    "### 1.2 ES-005.1 — consequential amendment *(required for internal consistency; not enumerated in the commissi"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "**Flagged for ARB attention: this amendment was not in the commission's five scope items.** It is included because **omitting it leaves a contradiction inside the amended standard.** **If the ARB prefers, it can be split into its own decision — but the two cannot be issued in either order without a "
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-governance-validation-disposition-record.md",
+   "sha256": "13fe7c1d5a4a4965d4e7ed2b2c9d22534a4d504867b5504a291745245ea039c6",
+   "line": 43,
+   "heading": [
+    30,
+    "## 📝 Recording Note — this disposition is itself evidence for the question it defers"
+   ],
+   "class": "GOVERNANCE-PROCEDURE-CANDIDATE",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "**This is not a contradiction, and it does not reopen anything.** R-63 declares what the *canonical model* governs;"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-knowledgeos-maturity-structure-assessment.md",
+   "sha256": "3a35ba711f8d8716e3f25960ec3776b98eba01f230be7406cdc250f15a601bc5",
+   "line": 25,
+   "heading": [
+    17,
+    "## 1. What blocks it"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "**3 is a direct contradiction of an issued standard.**"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-slice-7c-preauthorization-verification.md",
+   "sha256": "4046f233309c7540a152b82f140ca52c07c85abe00f4ed786f9542776dc65436",
+   "line": 122,
+   "heading": [
+    114,
+    "## D. Recommended authorization text"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "> **7C's RED includes amending `tests/Feature/Audit/AuditCleanupTest.php`**, whose current expectations contradict the approved acceptance criterion (F-7C-3)."
+  }
+ ],
+ "target_II": [
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-domain-discovery.md",
+   "sha256": "58b302a3576e9ef66eaa79719f9a1cdce999d8df3f9e634362cb474692923d88",
+   "line": 104,
+   "heading": [
+    95,
+    "## 4. Interpretations *(reasoning from the observations — weaker than the observations)*"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "⚠️ **The commission's §7 (Candidate Context Map) cannot be delivered.** A standing STOP forbids drawing one before C3 + pilot evidence and an ARB ruling"
+  },
+  {
+   "path": "docs/knowledgeos/backlog/EKS-11-sole-writer-environment-override.md",
+   "sha256": "a22770f470207e75f5d9c4390619cf373ec48dd0680a832f1b225339f347f87a",
+   "line": 3,
+   "heading": [
+    1,
+    "# EKS-11 — The \"sole writer\" is redirectable by environment: an asymmetric, unbounded test seam"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "ARCHITECTURE — HELD BY STANDING DECISION** — the hold was recorded 2026-08-23 with the `REPAIR-001` authorization (*\"`F-5` is HELD OUTSIDE this repair, pending a separate Architecture decision\"*);"
+  },
+  {
+   "path": "docs/knowledgeos/governance/2026-08-23-KOS-OPERATING-MODEL-001-AUTHORIZATION-DECISION.md",
+   "sha256": "5b1f1f8ad258a46dae781d61d912d5fa6c3885c7382f60e8e6455b000a2dc21c",
+   "line": 15,
+   "heading": [
+    13,
+    "## 1 · The decision (verbatim)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Keep AST-019 / AMENDMENT-001 not adopted and not authorized pending independent verification.\"**"
+  },
+  {
+   "path": "docs/knowledgeos/governance/2026-08-24-AST-019-ADOPTION-DECISION.md",
+   "sha256": "df2d2bb4b1e03baedd7b3530f44cad089ceeafc350f257b9b0119c2d04ef499f",
+   "line": 29,
+   "heading": [
+    25,
+    "## 3 · The condition precedent, and that it is satisfied"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "> *\"Keep AST-019 / AMENDMENT-001 not adopted and not authorized **pending independent verification**.\"*"
+  },
+  {
+   "path": "docs/knowledgeos/governance/2026-09-23-RESEARCH-GOVERNANCE-GATE-ARCHITECTURE-assessment.md",
+   "sha256": "e2332ed88e60faac51810faa88c7ef9493b1652843cbe36ee76c9ba1e17eed9c",
+   "line": 335,
+   "heading": [
+    319,
+    "## K. REQUIRED ARCHITECTURE CHANGES"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Resolve status contradictions (`P2P` \"not adopted\", `step2_authorized PENDING`, E-*/R-* \"awaiting\")"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-17-KOS-ARCH-BASELINE-003-verification-3-acceptance-registration.md",
+   "sha256": "98625e79b2f65e84fc0a909b88d381eed5f4b4d8f65025fe7853699675a5c0de",
+   "line": 28,
+   "heading": [
+    18,
+    "## 3 · The five acts, recorded"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "it joins the standing EKS backlog subject matter and requires its own commissioning act before any work begins."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-GOVERNANCE-ADOPTION-REVIEW-APPOINTMENT-registration.md",
+   "sha256": "cf3378e9e3789e16cfde4b6adf76064a2decbb62d0a1d2ef0ab9d807c14fc523",
+   "line": 68,
+   "heading": [
+    66,
+    "## 6 · Next actor"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "AST-019 refuses to write it), then starts the fresh Governance adoption reviewer session using the preserved candidate-declaration prompt (`…-KOS-OPERATING-MODEL-001-GOVERNANCE-ADOPTION-REVIEW-CANDIDATE-DECLARATION-prompt.md`)."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-INDEPENDENT-VERIFICATION.md",
+   "sha256": "ab8bbcd4942f78e265b703b03c17c25dea6ca66097264f85802cf0e84473793b",
+   "line": 139,
+   "heading": [
+    137,
+    "## 7 · §38 four-state separation — **PASS (content, not just label)**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The producer's report (`…-session-completion.md`) does so correctly: it reports **IMPLEMENTED** (three layers delivered), **NOT VERIFIED** (producer bar — verification was the next step), **NOT ADOPTED** (governance review pending), **NOT AUTHORIZED** (PO/ARB decision)."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-CORRECTION-001-GOVERNANCE-ADOPTION-REVIEW-START-GATE-REFUSAL-d31ea60f.md",
+   "sha256": "8480c6540c8ee5efa552bb0ca7d74143e4e9564287b67a1065bdffc549bbfb45",
+   "line": 70,
+   "heading": [
+    62,
+    "## 4 · Phase 0 gate — condition-by-condition result"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Determine whether this session is authorized to perform the Governance adoption review"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-INDEPENDENT-VERIFICATION.md",
+   "sha256": "9db2e347e1694cae4abfbd1b607aff222e4d7257c598ed55609bbb0d60fc94eb",
+   "line": 273,
+   "heading": [
+    258,
+    "## 21 · Findings and remaining risks"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Suggested follow-ups (for Governance to schedule, not for this review to authorize):** V-1 and V-3 are the two worth correcting before adoption;"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-PRODUCER-IDENTITY-registration.md",
+   "sha256": "b515009c74862c945337b849f0b2e56ecfe1eb8983e2048dbf6b0b7cd61a1da7",
+   "line": 4,
+   "heading": [
+    1,
+    "# `KOS-OPERATING-MODEL-001-AMENDMENT-001` — **PRODUCER IDENTITY registration** (AST-019) + **verification work"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "**Document type:** Governance **registration** — settles finding **F-3** of the Governance adoption review, the gate the authorization decision named before AST-019's verification may be commissioned"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-REPAIR-001-IMPLEMENTER-SELECTION-DECISION.md",
+   "sha256": "842de4c7b9b6dac5f5fea97532b6287087ba0dd588e44b8b61ef2391d091e2b2",
+   "line": 59,
+   "heading": [
+    54,
+    "## 6 · Decision 5 — the kickoff instrument is **two-phase**, and the existing prompt is amended"
+   ],
+   "class": "DIFFERENT-DOMAIN",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "*Why: `84c0f6f6` was handed the full commission at first start, followed it in order, and read ~120 lines of the subject before declaring — its disclosed §4 ordering deviation, traced to **prompt selection, not process error.* The two-phase pattern is the standing fix, established for verification a"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-24-KOS-OPERATING-MODEL-001-AMENDMENT-001-AST-019-ADOPTION-DECISION-PREPARATION.md",
+   "sha256": "3aeda5b141b09763cedf2d95f3b2cce0a32c094186209b6422566717aef7c454",
+   "line": 47,
+   "heading": [
+    45,
+    "## 4 · Is `AST-019` eligible for adoption? **YES**"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "The condition precedent was the PO/ARB's own §38 act: *\"Keep AST-019 / AMENDMENT-001 not adopted and not authorized **pending independent verification**.\"* **That verification has now occurred, by an independent lane, with a PASS verdict.** The condition is satisfied."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-24-KOS-OPERATING-MODEL-001-AMENDMENT-001-AST-019-ADOPTION-DECISION-PREPARATION.md",
+   "sha256": "3aeda5b141b09763cedf2d95f3b2cce0a32c094186209b6422566717aef7c454",
+   "line": 55,
+   "heading": [
+    49,
+    "## 5 · Two acts, not one — and this is recorded precedent, not caution"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "And it played out exactly that way: the parent was **adopted** (`9502168a`) and then **authorized in a separate later act** (`e89b3b41`)."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-24-KOS-OPERATING-MODEL-001-AMENDMENT-001-REPAIR-001-RE-VERIFICATION-DETERMINATION.md",
+   "sha256": "2d0a12b232390d942837476135c4fc990e800ed392efff50364973fd1df6596e",
+   "line": 41,
+   "heading": [
+    37,
+    "## 3 · Is independent re-verification binding? **YES** — and here is the source, quoted"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "Keep AST-019 / AMENDMENT-001 not adopted and not authorized pending independent verification.\"**"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/book/part-3-architecture/03-01-the-five-layers/chapter.md",
+   "sha256": "c93d170a169e13f82f20ffea9b8590d22fb5c780ad07b3e62f33ddd0e5dd10ed",
+   "line": 38,
+   "heading": [
+    1,
+    "# III.1 · The Five Layers"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "one externally ratified decision) and governance then preserved as a standing rule."
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/60-P42-LEVEL-S-NORMATIVE-ADOPTION-AND-AUTHORITY-AUDIT.md",
+   "sha256": "5ac893fe737478e01200f6d4310896074327052a97b4ff8125a04a116b1c6fa5",
+   "line": 42,
+   "heading": [
+    33,
+    "# 3. ⭐⭐⭐ The adoption mechanism — it exists, and it is rigorous"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "*\"not adopted and not authorized **pending independent verification**\"* — tracked to satisfaction"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-01-AI-Engineering-Platform-Baseline-v1.0.md",
+   "sha256": "a02a4eae839367bf3b58a8f7f53d4245be1a162a56ff939efbccab1da2d1ffca",
+   "line": 71,
+   "heading": [
+    67,
+    "## Addendum — ARB sign-off & Construction Resolution (2026-07-08, appended; original text above unchanged per "
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "RULINGS/ADR",
+   "sentence": "**Baseline qualifier:** the baseline is designated **\"Baseline v1.0 — Reference Implementation Pending.\"** The architecture is approved;"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "line": 72,
+   "heading": [
+    12,
+    "## Rulings (living, append-only)"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "RULINGS/ADR",
+   "sentence": "Engineering is authorized to resume implementation in accordance with the adopted governance."
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "line": 157,
+   "heading": [
+    155,
+    "## 5. Freeze procedure"
+   ],
+   "class": "TWO-PHASE-CANDIDATE",
+   "kind": "OTHER KNOWLEDGEOS DOC",
+   "sentence": "On ARB approval of this document: status → `approved`, then `frozen` via the promotion chain."
+  },
+  {
+   "path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "line": 26,
+   "heading": [
+    22,
+    "## Hosted rules (this document is their canonical home; previously MEMORY-only)"
+   ],
+   "class": "SINGLE-ACT-CANDIDATE",
+   "kind": "STANDARD/GOVERNANCE",
+   "sentence": "Workflow words (*continue, looks good, go ahead*) are permission to proceed — never Approved/Promoted/Retired/Closed."
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-knowledge-lifecycle-assessment.md",
+   "sha256": "ce32560fa0cd678710e316327422d14b67083748b36cccf2cb3830d8be7667a1",
+   "line": 4,
+   "heading": [
+    1,
+    "# Engineering Knowledge Lifecycle — Assessment"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "**Commission:** define the lifecycle of engineering knowledge before canonical adoption."
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-02-wp4-acceptance-review.md",
+   "sha256": "165fa5220603b7e1a6e3c55ba66d8964ab94421774df69a688d61e253ecb5e61",
+   "line": 9,
+   "heading": [
+    1,
+    "# WP-4A — Acceptance Review"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "> **This review exists because `2026-08-02-wp4-state-correction.md` established that WP-4 is not awaiting authorization — it is awaiting acceptance.** **Triple qualification was performed 2026-08-02** (`.claude/plans/WP-4-apm-wiring.md` §Triple Qualification)."
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-02-wp8-definition-finding.md",
+   "sha256": "bb2fad901d5b350b0f5401131cb6e8341b6ed36d624f5ac890ea441a35f2744f",
+   "line": 78,
+   "heading": [
+    70,
+    "## 4. Recommendation"
+   ],
+   "class": "TERMINOLOGY-ONLY",
+   "kind": "VERIFICATION REPORT",
+   "sentence": "**If the ARB nonetheless wants WP-8 opened**, the act needed is **not a definition** but a **dependency ruling** — whether WP-8 may be authorized ahead of WP-4, against the standing *no slice starts before its predecessor's acceptance* rule."
+  }
+ ],
+ "timestamp_utc": "2026-09-27T06:45:27Z",
+ "post_classification_notes": {
+  "T-I direct hits": "both are prior theory-research artefacts (reviews/kernel, theory-extraction) -> candidate mechanisms / brainstorming, not historical evidence; circularity risk",
+  "ES-001 L26": "mechanically SINGLE-ACT by regex; by wording it lists Retired among statuses that workflow words never confer -> strongest DECISIONAL Target-I candidate (explicit act for loss of standing)",
+  "Phase-02.6 L157": "TWO-PHASE-CANDIDATE: approval -> status approved, then frozen via promotion chain (document-freeze domain)"
+ },
+ "absence_rule": "NOT-FOUND-IN-SEARCH, never DOES-NOT-EXIST"
+}

@@ -1,0 +1,403 @@
+{
+ "auditor_model_id": "claude-opus-5-5[1m]",
+ "run_id": "PX0004-A01",
+ "batch_id": "PX0004",
+ "control": {
+  "dispositions": [
+   {
+    "field": "births.lexical",
+    "class": "coarse",
+    "disposition": "DECOMPOSED-UPHELD",
+    "evidence": "Same class ESCALATED[TIMESTAMP-ANOMALY] in both; only the reason text differs. S1020 §120.15 'An architecture decision from: $$2024$$ may not represent the current architecture in: $$2026.$$' and §120.18 '2026-08-01 ... 2026-09-01' are scenario dates, not a file date; the object is first named at §120.66 '# KnowledgeOS Architecture Constitution v0.1'. Decomposed reason (birth row §120.66; date is cited inside example 120.15) is correct and more precise than the baseline's."
+   },
+   {
+    "field": "births.conceptual",
+    "class": "different",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "The candidate conceptual row is S1021 §122.53 ('C1 Provenance PASS ... C7 Feedback FAIL'). S1020 (Step 120, which comes first in the step series) already states the concept in its preamble: 'The objective is to identify the smallest set of invariants whose violation would fundamentally change the nature of KnowledgeOS.' The baseline's MOVED[S1020, quote] meets §11.2 (an earlier row with a verbatim quote). The decomposed ESCALATED[TIMESTAMP-ANOMALY] applies §14.2 rule 2 to the moved-to birth file S1020, whose only EXPLICIT date is the scenario '2024'. That is consistent with the baseline's own ESCALATED lexical, formal and operational births on the same file. Both readings are defensible. The decomposed value names the S1020 preamble row, so nothing is lost. Not wrong."
+   },
+   {
+    "field": "births.formal",
+    "class": "coarse",
+    "disposition": "DECOMPOSED-UPHELD",
+    "evidence": "Same class in both. S1020 §120.33 'KOS\\ Constitution = \\{K1,K2,K3,K4,K5,K6,K7\\}', §120.46 'Constitution \\rightarrow Architecture \\rightarrow Implementation', §120.61 'KnowledgeOSIntegrity = P\\cap A\\cap E\\cap T\\cap V\\cap R\\cap F'. The date anomaly is the same as for the lexical birth."
+   },
+   {
+    "field": "births.operational",
+    "class": "coarse",
+    "disposition": "DECOMPOSED-UPHELD",
+    "evidence": "Same class in both. S1020 §120.4 Experiment K1.1: 'Can the system establish that it is authoritative? $$No.$$ ... K1 VIOLATED'. The date anomaly is the same as for the lexical birth."
+   },
+   {
+    "field": "births.governance",
+    "class": "coarse",
+    "disposition": "DECOMPOSED-UPHELD",
+    "evidence": "Same class in both. S1022 §123.49: 'An approved exception exists until: $$2026-09-15.$$' is the expiry of a hypothetical exception, not a file date (§123.48 'Exception must contain: Authority, Reason, Scope, ValidUntil'). The decomposed value also notes the weak earlier candidate S1020 §120.47 ('Follow KnowledgeOS constitutional constraints.'), which is accurate."
+   },
+   {
+    "field": "secondary_roles",
+    "class": "coarse",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "The decomposed value adds DERIVED, citing S1020 §120.69 'We have reduced the previous architectural reasoning into a small constitutional core' and the preamble 'We now consolidate the previous experiments.' (both verified). The baseline's own status_basis names exactly this reading ('Reading the constitution as derived from the step-101-119 conformance method only (DERIVED)') as its alternative. Both are defensible; this is not a judgment field under the frozen rule."
+   },
+   {
+    "field": "timeline (S1524 change class)",
+    "class": "coarse",
+    "disposition": "DECOMPOSED-UPHELD",
+    "evidence": "S1524 p4 (SPECIAL TASK 2) quotes the object verbatim: 'Step 120 (`20260828-124510`, ...) contains, verbatim at §120.66: `# KnowledgeOS Architecture Constitution v0.1`, with `C1 — Provenance` ... `C7 — Feedback`'. It also glosses it: 'v0.1 is an **epistemic** constitution'. Relative to the previous point (S1484, RESTATES) the text restates the object without changing its definition, so RESTATES is the better descriptive class. The baseline's NOT-COMPARABLE rests on '(a) There is no supersession, so there are two live constitutions.', a claim about how the object relates to another artifact; that is defensible but weaker. Not a judgment field under the frozen rule."
+   },
+   {
+    "field": "escalations",
+    "class": "different",
+    "disposition": "DECOMPOSED-UPHELD",
+    "evidence": "(1) One TIMESTAMP-ANOMALY entry per ESCALATED birth field (5) instead of the baseline's 2 aggregated entries. This is more complete and matches schema E. (2) track_composition OTHER: the control slice's source_tracks has no tag for S1484 or S1524, and 'never invent a value' (§B) supports recording the gap rather than a tag. (3) semantic_status OTHER (VERDICT-EVIDENCE-CONFLICT on RP1172 EXTENSION/INFERRED): §11.5 says 'the label is escalated for H-02 consideration'. S1524 p4 supports the conflict: '(b) v1.0 is not a version of v0.1; it is a different document about a different subject' ... 'Two of seven v0.1 rules have no v1.0 counterpart at all'. The roll-up stays ROW-4 as §11.5 requires."
+   },
+   {
+    "field": "stage2 S1484:ledger:\"120 - Knowled\":3 (informal_meaning)",
+    "class": "different",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "S1484 p2, Step 120 record: 'Reduces the whole prior corpus to **KnowledgeOS Architecture Constitution v0.1 = {C1…C7}**: C1 Provenance, ...'. p3 C4: 'Step 120 produces \"KnowledgeOS Architecture Constitution v0.1\" = seven *semantic* invariants C1-C7.' This is a minimal gloss of what the object is (baseline FOUND). It is also mostly an inventory of names (decomposed UNSUPPLIED-DIMENSION, which is the unit U01 record's disposition). Both are defensible. The absence resolution is unaffected: FOUND via S1020 in both objects."
+   },
+   {
+    "field": "stage2 S1484:raw:22110:3 (informal_meaning)",
+    "class": "different",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "Same file and same Step 120 passage as the ledger key, so the same assessment applies. Hit offset 22110 lies on p2 in the Step 120 record."
+   }
+  ],
+  "counts": {
+   "DECOMPOSED-UPHELD": 6,
+   "JUDGMENT-CALL": 4,
+   "BASELINE-UPHELD": 0,
+   "PROTOCOL-VIOLATION": 0,
+   "non_exact_fields": 10,
+   "exact_fields": 19
+  },
+  "property_b_success": true,
+  "reason": "Frozen rule (pre-registration §5): success iff 0 PROTOCOL-VIOLATION in the decomposed object and no BASELINE-UPHELD on a judgment field. Result: 0 PROTOCOL-VIOLATION and 0 BASELINE-UPHELD. Of the four judgment fields among the 10 differences, births.conceptual and the two S1484 informal_meaning stage-2 keys are JUDGMENT-CALL; the four coarse births are DECOMPOSED-UPHELD. Caveat: the auditor and the agents share the claude-opus-5-5 model family, so agreement is a lower-bound signal."
+ },
+ "target": {
+  "dispositions": [
+   {
+    "record": "object step-verify-programme",
+    "field": "births.lexical",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "The capture candidate is S1513. source_meta gives MTIME only, no explicit dates, mtime_block null, so BIRTH-UNRESOLVED-MTIME-ONLY[S1513] (§14.2 rule 2, v1.6.6). Earlier naming is in non-row files S1413 (SECONDARY-SYNTHESIS, MTIME; verified p1 'Start the **KnowledgeOS Theory Verification Programme** at Level 1.') and S1438/S1439 (SECONDARY-SYNTHESIS). Neither can MOVE the birth (§11.2 needs an earlier row; G-08). This is correctly recorded as register :3 rather than in layer A."
+   },
+   {
+    "record": "object",
+    "field": "births.governance",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "The candidate is S1513, MTIME-only. The same reasoning as lexical applies; no dated PRIMARY row is shown to precede it."
+   },
+   {
+    "record": "object",
+    "field": "births.formal",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "The candidate is S1525, MTIME-only. The rows dated 2026-08-29 (S1526, S1540) are SECONDARY-SYNTHESIS and cannot establish or move a birth (G-08)."
+   },
+   {
+    "record": "object",
+    "field": "births.conceptual",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "The capture candidate is null. The synthesis assigns BIRTH-UNRESOLVED-MTIME-ONLY[S1513] from the unit U03 reading of S1513 and records a P1-gap (STEP-1-READING). §9.8 step 5 lists NOT-EVIDENCED-IN-CAPTURE as the value for no candidate, and the literal reading favours it. A birth identified from whole-file reading, with the gap captured, is also defensible. Not a violation: the value is closed and the §11.2 evidence (row, MTIME basis, NOT-CONFIRMED, no block) is present."
+   },
+   {
+    "record": "object",
+    "field": "births.operational",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "Same situation as births.conceptual. The capture candidate is null; S1513 is assigned from the unit quote ('exactly two fence types ... 62 fences, zero language-tagged')."
+   },
+   {
+    "record": "object",
+    "field": "semantic_status / D4 (ROW-4 IDENTITY-UNWITNESSED)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "I reviewed all 82 CONTRADICTION-type rows in the slice. Every one records a contradiction the programme found in audited steps (e.g. S1513 'Step-027's U(H) 8-vector ... is an uncited FORK against step-020's 8 TYPES'; S1539 'MCS-3: step-138's own §138.49 boxes exactly one authoritative owner ...'). None bears on the programme's identity or meaning, which D4 requires. There are no lineage claims and no D5 evidence. ROW-4 applies because 4 of 7 pairs are UNWITNESSED/NONE. Verified directly against slice rows; no file reading was needed."
+   },
+   {
+    "record": "object",
+    "field": "timeline order (MTIME-day placement; within-day by S-id)",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "MTIME points are placed on the UTC day of the MTIME and ordered within a day by S-id; all are marked ORDERED because no BULK block exists. The synthesis itself flags that within-day order and MTIME positions are provenance only. The protocol does not settle this further."
+   },
+   {
+    "record": "object",
+    "field": "timeline S1531 placement",
+    "disposition": "AUDIT-UPHELD",
+    "evidence": "S1531 p1 front matter: 'artifact: STEP-VERIFY-159-185 ... date: 2026-08-30'. The synthesis places S1538 by its front-matter date ('S1538 by its front-matter date'), yet places S1531 on 2026-08-29 by MTIME (23:46:32Z) even though it too has a front-matter date. The ordering rule is applied inconsistently. The effect is minor: order only, and date_applies_to_file NOT-CONFIRMED for the MTIME basis is correct. Not a protocol violation."
+   },
+   {
+    "record": "object",
+    "field": "timeline change class S1444 CHANGES-DEFINITION",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "S1444 p1 §4 'Important correction to the programme's direction ... The goal is NOT to produce an increasingly large collection of verification registers. ... The ultimate objective is: A coherent, independently reconstructed ... KnowledgeOS theory.' The file redefines the programme's objective. S1444 was read whole by U04 (a whole-file class requires this)."
+   },
+   {
+    "record": "object",
+    "field": "timeline change classes across unit boundaries (e.g. S1513 after S1481; S1516 after S1540)",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "Unit U03 set S1513 NOT-COMPARABLE because the previous state lay outside the unit. The synthesis assigned EXTENDS from record quotes alone ('Verbatim verifier-agent report ...' after S1481 'For every relevant Step/document in the corpus, determine:'). EXTENDS is plausible, and no whole-file-gated class is involved. It was not verified pairwise by reading."
+   },
+   {
+    "record": "object",
+    "field": "date_applies_to_file CONFIRMED for S1518 and S1524",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "S1518 p1 front matter 'date: 2026-08-30'; S1524 p1 front matter 'date: 2026-08-30'. Both dates belong to the files themselves."
+   },
+   {
+    "record": "object",
+    "field": "date_applies_to_file NOT-CONFIRMED for S1526 and S1540 (EXPLICIT 2026-08-29)",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "The unit records show each file carries both 2026-08-29 (consolidation/charter header) and 2026-08-30 material (S1526 timeline facts; S1540 notes 'registers Mandates 15-17 dated 2026-08-30 ... needs synthesis judgment'). NOT-CONFIRMED for the whole file is defensible; CONFIRMED for the header date is also arguable. This does not affect births, because both files are SECONDARY-SYNTHESIS."
+   },
+   {
+    "record": "object",
+    "field": "absences.type_signature resolution GENUINELY-UNDEFINED-AFTER-CENSUS",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "All 33 distinct stage-1 keys (ledger 11 + raw 22, matching the slice LABEL-HITS) carry type_signature UNSUPPLIED-DIMENSION or FALSE-HIT with method WHOLE-FILE. The unit read logs are complete for every file (0 incomplete across U02-U04)."
+   },
+   {
+    "record": "object",
+    "field": "absences.type_signature reason text",
+    "disposition": "AUDIT-UPHELD",
+    "evidence": "The reason states 'UNSUPPLIED-DIMENSION (27) or FALSE-HIT (6)'. The object's own stage2_dispositions give 25 UNSUPPLIED-DIMENSION and 8 FALSE-HIT: S0924, S1938, S2291 x3, S2828, S1860, S1866. This is a factual miscount in free text; the resolution is unaffected."
+   },
+   {
+    "record": "object",
+    "field": "dependency_edges",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "The edge to kt-tuple-spine-wars-steps-26-40 comes from U03's S1513 record. The same co-label occurs in 16 row sources, and U02 explicitly declined it for S1531 ('row co-label kt-tuple-spine-wars-steps-26-40 is co-occurrence only'). The S1541 edges quote only headings ('# INDEPENDENT ADVERSARIAL VERIFICATION — STEPS 208–215'). A VALIDATION reading is defensible (the programme audits those objects), but it is applied inconsistently across units. §9.8 step 8 ('co-occurrence ≠ edge') is not clearly met by a heading quote."
+   },
+   {
+    "record": "PX0004-S02:PX0004:1 (METHODOLOGICAL-DEFICIENCY)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "Checked against the slice LABEL-HITS. Term 6 'tv-f-nnn' raw hits occur only in S1438, S1439, S1441 and S1540. Term 3 'step-verify-nnn-nnn' and term 7 'vc-1..vc-12' have no raw hits. S1521 and S1524 have no hit. S1524 p1 contains 'artifact: STEP-VERIFY-141-158' and '## KnowledgeOS theory-verification programme · end-of-series seam'. The remedy and execution_impact fields are present."
+   },
+   {
+    "record": "PX0004-S02:PX0004:2 (OBSERVATION M1-M7)",
+    "disposition": "AUDIT-UPHELD",
+    "evidence": "The substance holds: S1860 (read whole) uses 'M1 NotAsked' ... 'M7 Orphan' and prints 'RESULT: M1-M7 all distinguishable'; S0924 and S1513 refer to the review gate. However, the statement says 'All 10 stage-2 hit keys on this notation'. The slice has 12 term-0 keys: S0924 1, S1513 4, S1938 1, S2291 3, S2828 1, S1860 1, S1866 1. That is 8 FALSE-HIT plus 4 S1513. Minor miscount."
+   },
+   {
+    "record": "PX0004-S02:PX0004:3 (OBSERVATION earlier programme files)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "S1413 p1 'Start the **KnowledgeOS Theory Verification Programme** at Level 1.' (verified). S1441 and S1439 quotes appear in the unit records. The layer B/C separation is kept: births are not moved."
+   },
+   {
+    "record": "PX0004-S02:PX0004:4 (METHODOLOGICAL-DEFICIENCY lifecycle CONTESTED)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "Consistent with the review of all 82 CONTRADICTION rows (they concern audited steps). The S1513 and S1516 quotes are present in the unit records. execution_impact NONE."
+   },
+   {
+    "record": "PX0004-S02:PX0004:5 (OBSERVATION no-silent-repair rule)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "Verified: S1518 p1 'SOURCE RESULT / VERIFIER OBSERVATION / POSSIBLE REPAIR kept separate throughout. No silent repair applied.'; S1413 p1 'neither Claude session should be allowed to unilaterally change the other'; S1444 p1 'The goal is NOT to produce an increasingly large collection of verification registers.' The S1540, S1566 and S1551 quotes appear in the unit records."
+   },
+   {
+    "record": "PX0004-S02:PX0004:6 (GAP type_signature)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "gap_status NOT-FOUND-AFTER-CENSUS matches the GENUINELY-UNDEFINED-AFTER-CENSUS resolution (33 of 33 keys UNSUPPLIED or FALSE-HIT). The search record, what is missing and the resolving evidence are all stated."
+   },
+   {
+    "record": "stage2 S1531 raw 567 (U02)",
+    "disposition": "JUDGMENT-CALL",
+    "evidence": "S1531 read whole (9/9). informal_meaning FOUND ('authority: verifier session (adversarial, independent)'), invariants FOUND ('No silent repair.'; 'Supervisory corrections recorded explicitly, never applied silently.'), type_signature and assumptions UNSUPPLIED: all upheld. dependencies FOUND is a judgment call. The only candidates are 'Corpus root: ...phase_measure_theory/', transcript provenance, and 'Correction to the brief's expectation'. U02's own absence_evidence finding for dependencies is MENTIONS, and U03 dispositioned the structurally identical front matter of S1518 UNSUPPLIED-DIMENSION. Defensible under the synthesis's own reading (S1537 FOUND for named inputs), but inconsistent across units. absences.dependencies is unaffected (FOUND via S1537)."
+   },
+   {
+    "record": "stage2 S1518 raw 482 (U03)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "S1518 read whole (7/7). The hit is the heading '# PHASE 2C ADVERSARIAL VERIFICATION REPORT — steps 067–082'. informal_meaning FOUND (front matter 'authority: verifier session (adversarial, independent)'). invariants FOUND ('corrections are recorded explicitly, never applied silently.'; 'No silent repair applied.'). type_signature UNSUPPLIED (only audited-step signatures). assumptions UNSUPPLIED ('caveat: prior verifier artifacts are HYPOTHESES, not authorities.' is a stance rule). dependencies UNSUPPLIED is defensible; see the S1531 calibration note."
+   },
+   {
+    "record": "stage2 S1860 raw 2048 (U04)",
+    "disposition": "ORIGINAL-UPHELD",
+    "evidence": "S1860 read whole (1/1). It is a Python script; the hit is 'print(f\"\\n  RESULT: M1-M7 all distinguishable = {allok}\")', and M1-M7 are 'M1 NotAsked' ... 'M7 Orphan' missingness states under RepairB. The referent is not the programme, so FALSE-HIT on all five dimensions."
+   }
+  ],
+  "counts": {
+   "ORIGINAL-UPHELD": 14,
+   "JUDGMENT-CALL": 7,
+   "AUDIT-UPHELD": 3,
+   "PROTOCOL-VIOLATION": 0
+  },
+  "protocol_violations": 0,
+  "note": "The AUDIT-UPHELD findings are minor: two free-text miscounts and one inconsistently applied ordering rule. None changes a resolution, birth, status or whole-file claim. Unit read logs are complete for every file of U01-U04 (pages 1..N all present)."
+ },
+ "information_loss": [
+  {
+   "judgment": "S02 per-file date applicability (S1526, S1540 multi-date; S1531 front-matter vs MTIME; S1538; S1566)",
+   "decomposition_caused": false,
+   "note": "The unit records carry both dates and flag the question to synthesis, so this was verifiable from the records (my S1531 reading only confirmed the note). It is interpretive: one analyst would face the same choice. The S1531/S1538 inconsistency is a synthesis slip, not lost information."
+  },
+  {
+   "judgment": "S02 within-day order and MTIME-based positions",
+   "decomposition_caused": false,
+   "note": "The protocol gives no basis to settle this; a single analyst could not either."
+  },
+  {
+   "judgment": "S02 global change_vs_previous across unit boundaries (from record quotes only)",
+   "decomposition_caused": true,
+   "note": "Units could not compare against a previous point held in another unit (U03 set S1513 NOT-COMPARABLE). The synthesis inferred EXTENDS from one quote per file. A single analyst would have compared the files directly. Low impact: no whole-file-gated class is involved, and within-unit classes such as S1444 CHANGES-DEFINITION were made with full context. I could not verify it from records alone and did not re-read every pair."
+  },
+  {
+   "judgment": "S02 D4 relying on row statements",
+   "decomposition_caused": false,
+   "note": "D4 is defined over the label's rows. I verified it fully from the 82 slice rows without reading any file."
+  },
+  {
+   "judgment": "S02 births from reading when the capture has no candidate (conceptual, operational)",
+   "decomposition_caused": false,
+   "note": "The facts are in the unit birth_candidates. The open point is protocol interpretation (NOT-EVIDENCED-IN-CAPTURE vs a birth from reading), not missing information."
+  },
+  {
+   "judgment": "S02 disposition vs absence-finding conflicts (S1438, S1531, S1541: disposition FOUND, finding MENTIONS)",
+   "decomposition_caused": true,
+   "note": "The synthesis is bound to unit dispositions (pilot contract §2.3) and cannot adjudicate a record's internal conflict without reading. For S1531 I needed the whole file (9 pages) to judge. A single analyst would have reconciled disposition and finding. No resolution changed (absences.dependencies is FOUND via S1537)."
+  },
+  {
+   "judgment": "S02 cross-unit calibration differences (front-matter rules / dependencies FOUND in U02, UNSUPPLIED in U03)",
+   "decomposition_caused": true,
+   "note": "Confirmed by reading both files. S1518 (U03) and S1531 (U02) have structurally identical front matter and stance lines, yet dependencies are dispositioned UNSUPPLIED vs FOUND. One analyst applying one standard would not produce this split. Resolutions are unaffected, but the per-key stage2_dispositions are not calibrated consistently."
+  },
+  {
+   "judgment": "S02 dependency edges from headings/co-labels",
+   "decomposition_caused": true,
+   "note": "U03 made an edge from the kt-tuple-spine-wars co-label (S1513); U02 declined the same co-label for S1531 as co-occurrence; 14 other co-labelled row sources got no edge. The edge set reflects which unit happened to read which file. This is verifiable from records and the slice, but it cannot be made consistent without one standard."
+  },
+  {
+   "judgment": "S02 track composition",
+   "decomposition_caused": false,
+   "note": "This is mechanical from the slice (25 row sources tagged). Untagged non-row sources are not counted. S01 escalated the analogous gap (OTHER) and S02 did not, which is a difference between the two syntheses, not a loss."
+  },
+  {
+   "judgment": "S02 earlier programme files outside the rows (S1413, S1438, S1439, S1441, S1444, S1456, S1481)",
+   "decomposition_caused": false,
+   "note": "These appear in the unit records (U02 and U04 read them whole). Whether they can MOVE a birth is decided by rule (§11.2 needs a row; G-08), not by information. Register :3 handles it correctly."
+  },
+  {
+   "judgment": "S02 counts in free text (type_signature reason 27/6; register :2 '10 keys')",
+   "decomposition_caused": false,
+   "note": "These are synthesis arithmetic errors that could be checked mechanically against the object and slice. They are not caused by reading loss."
+  },
+  {
+   "judgment": "S01 births date anomaly (S1020 '2024', S1022 '2026-09-15')",
+   "decomposition_caused": false,
+   "note": "The U01 records already carry the evidence (S1020 timeline fact: 'the token 2024 occurs only inside example 120.15'; S1022: 'expiry of a hypothetical approved exception'). The synthesis's 3-page re-read of S1020 and S1022 was confirmatory, not necessary."
+  },
+  {
+   "judgment": "S01 stage2 S1484 informal_meaning and S1524 timeline change class",
+   "decomposition_caused": false,
+   "note": "Verifying these needed reading (S1484 3 pages, S1524 9 pages). They are single-reader judgment calls made by U01 with the whole file in view; decomposition did not cause them."
+  }
+ ],
+ "reads": [
+  {
+   "source_id": "S1020",
+   "pages": [
+    1,
+    2
+   ],
+   "label": "knowledgeos-architecture-constitution-v01",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1021",
+   "pages": [
+    1
+   ],
+   "label": "knowledgeos-architecture-constitution-v01",
+   "whole_file": false,
+   "note": "partial; used only to locate the conceptual-birth candidate row §122.53, not as whole-file evidence"
+  },
+  {
+   "source_id": "S1022",
+   "pages": [
+    1
+   ],
+   "label": "knowledgeos-architecture-constitution-v01",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1484",
+   "pages": [
+    1,
+    2,
+    3
+   ],
+   "label": "knowledgeos-architecture-constitution-v01",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1524",
+   "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "label": "knowledgeos-architecture-constitution-v01",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1860",
+   "pages": [
+    1
+   ],
+   "label": "step-verify-programme",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1518",
+   "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "label": "step-verify-programme",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1531",
+   "pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "label": "step-verify-programme",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1413",
+   "pages": [
+    1,
+    2
+   ],
+   "label": "step-verify-programme",
+   "whole_file": true
+  },
+  {
+   "source_id": "S1444",
+   "pages": [
+    1,
+    2
+   ],
+   "label": "step-verify-programme",
+   "whole_file": true
+  }
+ ]
+}

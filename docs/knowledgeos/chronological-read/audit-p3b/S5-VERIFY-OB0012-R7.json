@@ -1,0 +1,151 @@
+{
+ "body": {
+  "acceptance_evidence": true,
+  "alerts": [],
+  "batch_id": "OB0012",
+  "comparison": false,
+  "counts": {
+   "dispositions_per_hit_dimension": {},
+   "objects": 0,
+   "p1_gap_records": 0,
+   "read_log_entries": 0,
+   "records_by_kind": {},
+   "refused_reads": 0,
+   "research_records": 0
+  },
+  "failures": [
+   "G-02 objects.jsonl missing",
+   "G-02 object labels differ from the assignment (missing 5, unknown 0, repeated 0)",
+   "R7-W OB0012-R7-L01 call 46 (Read): W8 read-input _batch_input_r2/s5/rev7/OB0012/inv-kos-pramana-001-means-of-acquisition.view.txt: content_match false (displayed ≠ frozen bytes)",
+   "R7-W OB0012-R7-L01 call 47 (Bash): W4 refused reader call (stop condition): REFUSED: no activated R7 plan for this batch",
+   "R7-W OB0012-R7-L02 call 33 (Bash): W4 refused reader call (stop condition): REFUSED: no activated R7 plan for this batch",
+   "R7-W OB0012-R7-L03 call 33 (Read): W8 read-input _batch_input_r2/s5/rev7/OB0012/knowledgeos-semantic-core-model.view.txt: content_match false (displayed ≠ frozen bytes)",
+   "R7-W OB0012-R7-L03 call 34 (Bash): W4 refused reader call (stop condition): REFUSED: no activated R7 plan for this batch",
+   "R7-W OB0012-R7-L04 call 47 (Read): W8 read-input _batch_input_r2/s5/rev7/OB0012/h-kos-relation-001-epistemic-relations-first-class.view.txt: content_match false (displayed ≠ frozen bytes)",
+   "R7-W OB0012-R7-L04 call 48 (Bash): W4 refused reader call (stop condition): REFUSED: no activated R7 plan for this batch",
+   "R7-W OB0012-R7-L05 call 32 (Bash): W4 refused reader call (stop condition): REFUSED: no activated R7 plan for this batch",
+   "R7-W W5 h-kos-relation-001-epistemic-relations-first-class: the final run has no witnessed output Write",
+   "R7-W W5 inv-kos-pramana-001-means-of-acquisition: the final run has no witnessed output Write",
+   "R7-W W5 knowledgeos-semantic-core-evidence-test-model: the final run has no witnessed output Write",
+   "R7-W W5 knowledgeos-semantic-core-model: the final run has no witnessed output Write",
+   "R7-W W5 batch: ASSEMBLED and FINAL-VALIDATED markers are required",
+   "R7-W W7: the committed WITNESS.jsonl ≠ the witness re-derived from the archive",
+   "R7-W W7: the committed WITNESS-DIGESTS.json ≠ the digests of the archive and extractor",
+   "R7-E W6: refused calls in READ-LOG (0) ≠ witnessed refusals (5)",
+   "R7-R h-kos-relation-001-epistemic-relations-first-class: no object in the assembled batch",
+   "R7-R inv-kos-pramana-001-means-of-acquisition: no object in the assembled batch",
+   "R7-R knowledgeos-actual-graph-extraction-methodology: no object in the assembled batch",
+   "R7-R knowledgeos-semantic-core-evidence-test-model: no object in the assembled batch",
+   "R7-R knowledgeos-semantic-core-model: no object in the assembled batch"
+  ],
+  "gates": {
+   "AUDIT": "PASS",
+   "D-23": "PASS",
+   "F1": "PASS",
+   "F3": "PASS",
+   "G-01": "PASS",
+   "G-02": "FAIL",
+   "G-03": "NOT-SCRIPT-CHECKED (no mechanical duplicate-corroboration field at batch level)",
+   "G-04": "PASS",
+   "G-05": "PASS",
+   "G-06": "AUDIT (§21)",
+   "G-07": "PASS",
+   "G-08": "PASS",
+   "G-09": "PASS",
+   "G-10": "PARTIAL (slice hashes = SLICES)",
+   "G-11": "PASS",
+   "G-12": "PASS",
+   "G-13": "PASS-LEVEL (S5a/S5b)",
+   "HUB": "PASS",
+   "QUARANTINE": "PASS",
+   "R7": "BATCH-FAIL",
+   "SCHEMA": "PASS",
+   "SEMANTIC": "PASS",
+   "SLICES": "PASS"
+  },
+  "labels": [
+   "inv-kos-pramana-001-means-of-acquisition",
+   "knowledgeos-semantic-core-evidence-test-model",
+   "knowledgeos-semantic-core-model",
+   "h-kos-relation-001-epistemic-relations-first-class",
+   "knowledgeos-actual-graph-extraction-methodology"
+  ],
+  "load": {
+   "actual": {
+    "reader_calls": 0,
+    "stage1_bytes": 0,
+    "stage2_bytes": 0,
+    "stage2b_occurrences": 0
+   },
+   "alert_ratio": 1.5,
+   "manifest_predicted_dispositions": 556,
+   "predicted": {
+    "reader_calls": 0,
+    "stage1_bytes": 245153,
+    "stage2_bytes": 808334,
+    "stage2b_occurrences": 0
+   },
+   "ratios": {
+    "reader_calls": null,
+    "stage1_bytes": 0.0,
+    "stage2_bytes": 0.0,
+    "stage2b_occurrences": null
+   }
+  },
+  "manifest_output_sha256": "9bba3155032196de31b3d3025342d4661aaddc3ac2623157c9a5f93a7c5173c1",
+  "notes": [],
+  "predicates": {
+   "E": "F",
+   "R": "F",
+   "U": "F",
+   "W": "F"
+  },
+  "reading_bytes": {},
+  "relative_timing_key_source": "SCHEMA",
+  "research_reads": {
+   "cap": 900000,
+   "cap_reached": false,
+   "repeat_ratio": null,
+   "step10_bytes": 0,
+   "step10_distinct_files": 0,
+   "step10_file_reads": 0
+  },
+  "result": "BATCH-FAIL",
+  "run_id": "OB0012-R7"
+ },
+ "header": {
+  "artifact": "S5-VERIFY-OB0012-R7.json",
+  "input_hashes": {
+   "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+   "P3B-HOLDOUT-SEAL.json": "9b99169d30d57b2ecc1d331838652aa6b765ce722059b30095a03df077d589c0",
+   "P3B-S5-HUBS.jsonl": "e150d7a5ac3c405b6e2226d70323314d23a106bbb3442c0110dcc6ae4d366d91",
+   "_batch_input_r2/s5/rev7/OB0012/h-kos-relation-001-epistemic-relations-first-class.json": "948765b215ef87339db510d20a57eac59524310151082c51429755916242850d",
+   "_batch_input_r2/s5/rev7/OB0012/inv-kos-pramana-001-means-of-acquisition.json": "036b77437081ab2e94b330d835ea50f6dbbc0ec88512d83341c43e57ac4fe39f",
+   "_batch_input_r2/s5/rev7/OB0012/knowledgeos-actual-graph-extraction-methodology.json": "1e26c5f116015c5a21acaf2f4340ac088ff9da14f899ab3b88431bea06cc6efd",
+   "_batch_input_r2/s5/rev7/OB0012/knowledgeos-semantic-core-evidence-test-model.json": "bfbc8d366ac16ff83f60d261fb360b46f72d57615171e87a23fbeeb9eb5541a1",
+   "_batch_input_r2/s5/rev7/OB0012/knowledgeos-semantic-core-model.json": "663266ef4914c48855802c80f6ad43b2768f9f74ffae0a2dbc0b1474ea6deaa0",
+   "_batch_manifest_p3b_r2.jsonl": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+   "audit-p3b/20260925_0106_s5-plan-v2.3.md": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+   "prompts/20260924_2311_p3b-phase1-continuation-protocol-v1.7.md": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12"
+  },
+  "numpy_version": "2.5.0",
+  "output_sha256": "4e866ad0b3d6033dfee9a793fb06b41ddea1db141812d106150e03edc91f510f",
+  "parameters": {
+   "alert_ratio": 1.5,
+   "batch": "OB0012",
+   "root": "C",
+   "run": "OB0012-R7",
+   "step10_cap": 900000
+  },
+  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "protocol_sha256": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12",
+  "python_version": "3.13.2",
+  "result": "BATCH-FAIL",
+  "run_timestamp_utc": "2026-09-30T13:55:48Z",
+  "script_committed_unmodified": true,
+  "script_name": "scripts/p3b_s5_verify.py",
+  "script_version": "f526906d620f1a17efba12295fb70660714029ec"
+ }
+}

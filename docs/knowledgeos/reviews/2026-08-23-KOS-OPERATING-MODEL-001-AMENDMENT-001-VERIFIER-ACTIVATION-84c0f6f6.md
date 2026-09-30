@@ -7,7 +7,7 @@
 **Placement derived:** `php scripts/doc-placement.php --scope=product-specific --domain=knowledgeos` → `docs/knowledgeos` (exit 0)
 
 > ⛔ **This record activates a verification lane. It does NOT verify, adopt, or authorize anything.** `AST-019` remains **IMPLEMENTED · NOT VERIFIED · NOT ADOPTED · NOT AUTHORIZED**. The verdict belongs to `84c0f6f6`; adoption remains the PO/ARB's.
-
+aa
 ---
 
 ## 1 · The human act (G-3), verbatim

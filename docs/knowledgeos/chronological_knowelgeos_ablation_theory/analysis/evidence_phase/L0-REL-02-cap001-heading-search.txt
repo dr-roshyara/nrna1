@@ -1,0 +1,11 @@
+architecture_legacy/ai_architecture/pks/20260802_0928_pks_architecture_idea_brainstorming.md
+docs/implementation/PKS_Phase_III_Capability_Catalog.md
+docs/implementation/PKS_Phase_III_Engineering_Knowledge_Model.md
+docs/knowledgeos/KnowledgeOS_ARB_Decision_Docket.md
+docs/knowledgeos/KnowledgeOS_Independent_Review_Phase_B.md
+docs/knowledgeos/knowledgeos_theory_chronological_extraction/phase2_extraction/CORPUS-THEORY-RECOVERY.md
+docs/knowledge/schema/governed-registers.yaml
+docs/pks/2026-08-02-cap-001-architecture-stabilization-report.md
+docs/pks/2026-08-02-identifier-minting-process-model.md
+docs/pks/2026-08-02-operational-workflow-assessment.md
+scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md

@@ -1,0 +1,419 @@
+{
+  "task": "What determines a standing-raising (RAISE / promotion) outcome? Coded only from SOURCES.md and TASK.md.",
+  "coding_conventions": {
+    "target_type": "The higher-standing home at stake for the item. If the item's own text names a home, that home is used. Otherwise, for R-36 items, the home of the review itself ('AI Architecture Promotion Review' -> AST-013 OPERATING_INSTRUCTIONS) is used, and the item is flagged in notes.",
+    "evidence": "Integer only if the text states an integer (or a number word) for this item. Ranges ('2–3'), approximations ('2-ish') and lists without a count are coded UNK. The stated form is kept in 'stated'.",
+    "ground_for_promoted": "PROMOTED items with ground UNK are eligible as P. Only a CHOICE ground excludes an item. See sensitivity S3 in EXECUTION.md.",
+    "undetermined_pairs": "A (P,Q) pair counts as UNDETERMINED only if an UNK field could make it falsifying. Pairs already non-falsifying on known values (a known parameter mismatch, or known evidence(Q) < evidence(P)) are left out of every list.",
+    "verdict": "FALSIFIED = at least one deciding pair. SURVIVES = no deciding pair and no undetermined pair. UNDETERMINED = no deciding pair, but at least one undetermined pair.",
+    "actor_equality": "Actors are compared as named strings; 'PO/ARB' is not equal to 'ARB'.",
+    "R36_join": "S5 (R-36 decisions) is joined to S4 (promotion matrix) by candidate name. S4 supplies the evidence counts; S5 supplies the outcomes and the actor. The join is an INFERENCE, supported by S5's category counts matching S4 exactly (see EXECUTION.md)."
+  },
+  "events": [
+    {
+      "id": "E01 · ES-004.3 Artifact Lifecycle Consistency · S1 (+S2) · 'adopted as a permanent documentation standard'",
+      "actor": {"value": "PA", "basis": "SOURCE", "quote": "(Principal Architect instruction)"},
+      "target_type": {"text": "permanent documentation standard … hosted ONCE as ES-004.3 (documentation standard, not a new standard document)", "value": "STANDARD-DOC", "basis": "SOURCE", "quote": "Artifact Lifecycle Consistency adopted as a permanent documentation standard"},
+      "evidence": {"value": "UNK", "unit": "instances", "stated": "one provenance instance before adoption; a second found by the first checklist execution the same day", "basis": "UNK", "quote": "Provenance: the WP-1 closure inconsistency … first checklist execution the same day caught a second instance"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "ES-004.3 in force; checklist binds every slice closure"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "Adopted by instruction. No rule is cited as requiring it; 'Parsimony honored' concerns where it is hosted, not whether to promote."},
+      "cluster": {"value": "C-R41", "basis": "SOURCE", "quote": "adopted as ES-004.3 (canonical, hosted once) + register ruling R-41"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E02 · O-2 composite-artifact watch item · S2 · 'single instance, below the evidence bar'",
+      "borderline": "The text does not name the home O-2 would be promoted into; read as not incorporated into ES-004.3.",
+      "actor": {"value": "UNK", "basis": "UNK", "note": "The validation report's author is not named."},
+      "target_type": {"text": "not named (implicitly a refinement of ES-004.3)", "value": "UNK", "basis": "UNK"},
+      "evidence": {"value": 1, "unit": "instances", "basis": "SOURCE", "quote": "O-2 watch item (composite artifact: acceptance record embedded in the closed plan — single instance, below the evidence bar)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Refinement stops until future implementation evidence (O-2 second occurrence or repeated ambiguity)."},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "An 'evidence bar' is mentioned, but no rule is named."},
+      "cluster": {"value": "C-ES0043-VALIDATION", "basis": "SOURCE", "quote": "ES-004.3 VALIDATION EXECUTED — VALIDATED UNCHANGED, DECLARED ARCHITECTURALLY STABLE"},
+      "role_in_falsification": "none (not RULE-grounded)"
+    },
+    {
+      "id": "E03 · Binding two-plane closure vocabulary ruling · S3 · 'applies to ALL future documentation'",
+      "borderline": "This is a ruling made binding on all documentation, not a promotion into a named standard, instructions or methodology document.",
+      "actor": {"value": "PO/ARB", "basis": "SOURCE", "quote": "PO/ARB ACCEPTED the finalization; vocabulary ruling registered and applied"},
+      "target_type": {"text": "BINDING VOCABULARY RULING — applies to ALL future documentation", "value": "OTHER", "basis": "SOURCE", "quote": "BINDING VOCABULARY RULING — applies to ALL future documentation, not just this artifact"},
+      "evidence": {"value": "UNK", "unit": "occurrences", "basis": "UNK", "note": "The triggering formulation is named, but no count is given.", "quote": "My earlier single-line \"is CLOSED\" headline was exactly the formulation the ruling forbids"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "Applied immediately to the closure artifact §5 … CONTEXT.md, and this log's §Eighth heading."},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-S3-NINTH", "basis": "SOURCE", "quote": "Ninth — PO/ARB ACCEPTED the finalization; vocabulary ruling registered and applied"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E04 · Three-state-planes observation (O-CLOSURE-VOCAB framing) · S3 · 'NOT promoted to methodology'",
+      "actor": {"value": "UNK", "basis": "UNK", "note": "The disposition is in the passive voice ('registered as'). It could be the session author (the log uses the first person) or PO/ARB. The text does not settle it."},
+      "target_type": {"text": "methodology", "value": "METHODOLOGY/PRINCIPLES", "basis": "SOURCE", "quote": "NOT promoted to methodology"},
+      "evidence": {"value": 1, "unit": "occurrences", "basis": "SOURCE", "quote": "single occurrence"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "NOT promoted to methodology"},
+      "ground": {"value": "RULE", "basis": "SOURCE", "quote": "ES-006.1 forbids promoting from one"},
+      "cluster": {"value": "C-S3-NINTH", "basis": "SOURCE", "quote": "Disposition: registered as the PO's framing of O-CLOSURE-VOCAB"},
+      "role_in_falsification": "Q"
+    },
+    {
+      "id": "E05 · Ownership determines architectural reuse · S5/S4#3 · 'ownership-determines-architectural-reuse (never precedent)'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "promoted 6 (2 added by ARB at review) … ARB wording refinement at adoption"},
+      "target_type": {"text": "AST-013 (OPERATING_INSTRUCTIONS.md §Promoted Engineering Behaviours)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours)"},
+      "evidence": {"value": 3, "unit": "slices", "basis": "SOURCE", "quote": "3: PB-004 (ownership held stable through implementation, retro §2)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "ownership-determines-architectural-reuse (never precedent)"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "'evidence-based' via the AIP-13 amendment path; no rule is cited as requiring promotion."},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED (evidence-based; PB-004 · PB-005 · PB-006)"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E06 · Reuse before create · S5/S4#2 · 'reuse-before-create'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "promoted 6 (2 added by ARB at review)"},
+      "target_type": {"text": "AST-013 / one line in OPERATING_INSTRUCTIONS", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "PROMOTE — one line in OPERATING_INSTRUCTIONS"},
+      "evidence": {"value": 3, "unit": "slices", "basis": "SOURCE", "quote": "3: PB-004 (\"no new messaging abstraction was required or created\"; `ClockInterface` reuse)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "reuse-before-create"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E07 · Deferred ≠ skipped / surface gaps · S5/S4#9 · 'deferred ≠ skipped'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "promoted 6 (2 added by ARB at review)"},
+      "target_type": {"text": "AST-013 (OPERATING_INSTRUCTIONS.md)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours)"},
+      "evidence": {"value": 3, "unit": "slices", "basis": "SOURCE", "quote": "3: PB-004 (\"Deferred — finding, not silent\" fitness extension)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "deferred ≠ skipped"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E08 · Epistemic labels · S5/S4#10 · 'epistemic labels (Observed·Measured·Derived·Interpreted·Recommended …)'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "promoted 6 (2 added by ARB at review)"},
+      "target_type": {"text": "AST-013 (OPERATING_INSTRUCTIONS.md)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Promoted into AST-013"},
+      "evidence": {"value": "UNK", "unit": "slices", "stated": "2–3", "basis": "UNK", "quote": "2–3: Handover §9 (ARB-adopted Completion-Review discipline)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "epistemic labels (Observed·Measured·Derived·Interpreted·Recommended — broadened to ALL architectural recommendations/reviews)"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "S4 calls it 'relocation, not new governance'."},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E09 · Stop at architectural uncertainty · S5/S4#7 · 'stop-at-architectural-uncertainty'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "promoted 6 (2 added by ARB at review)"},
+      "target_type": {"text": "AST-013 (OPERATING_INSTRUCTIONS.md)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Promoted into AST-013"},
+      "evidence": {"value": 3, "unit": "slices", "basis": "SOURCE", "quote": "3: PB-004 4A.2 (IDD-first stop) · PB-005 (7 open questions → STOP for ARB) · PB-006 (F-PB006-1 STOP before IDD)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "stop-at-architectural-uncertainty (surface, classify, request ARB — never silently invent architecture)"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "notes": "S4 recommended 'No delta … do not duplicate it' (category 'already'). R-36 promoted it anyway, so it is one of the 2 items ARB added (INFERENCE from the counts).",
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E10 · Implementation evidence outweighs unverified theory · S5 · 'implementation-evidence-outweighs-unverified-theory'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "ARB wording refinement at adoption: \"unverified theory\", not \"theoretical elegance\""},
+      "target_type": {"text": "AST-013 (OPERATING_INSTRUCTIONS.md)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Promoted into AST-013"},
+      "evidence": {"value": "UNK", "unit": "UNK", "basis": "UNK", "note": "Not in S4 under this name."},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "implementation-evidence-outweighs-unverified-theory"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E11 · Registration ≠ Delivery · S5/S4#5 · 'stays Messaging-scoped in ADR-MP-06 (1 slice)'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED … ARB … at review"},
+      "target_type": {"text": "(home of the review) AST-013; its disposition home is ADR-MP-06", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Expressly NOT promoted: Registration ≠ Delivery stays Messaging-scoped in ADR-MP-06", "note": "The home is taken from the review, not named for this item."},
+      "evidence": {"value": 1, "unit": "slices", "basis": "SOURCE", "quote": "(1 slice)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Expressly NOT promoted: Registration ≠ Delivery"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "Scope ('Messaging-scoped') and evidence are given; no rule is cited."},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E12 · Generalized 'configuration is not capability' · S4#5 · 'has ONE demonstration → Candidate Pattern'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "candidates (D) 5", "note": "Joined to R-36 through the count; S5 does not name the item."},
+      "target_type": {"text": "(home of the review) AST-013; stays Candidate Pattern", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "A = promote to AI Architecture", "note": "The home is taken from the review."},
+      "evidence": {"value": 1, "unit": "demonstrations", "basis": "SOURCE", "quote": "The generalized form (\"configuration is not capability\") has ONE demonstration → Candidate Pattern"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "has ONE demonstration → Candidate Pattern"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "candidates (D) 5"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E13 · Domain Event ≠ Integration Event · S5/S4#6 · 'Category-B follow-ups (principles doc …)'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "ARB may prefer waiting for a 3rd slice"},
+      "target_type": {"text": "Architecture Principles docs (docs/architecture/principles/), not .claude", "value": "PRINCIPLES-DOC", "basis": "SOURCE", "quote": "PROMOTE to Architecture Principles (e.g. alongside PGP-01..05 in `docs/architecture/principles/`), not into `.claude`"},
+      "evidence": {"value": 2, "unit": "slices", "basis": "SOURCE", "quote": "2: PB-004 (established; schema-v2 enrichment) · PB-005 F-2"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Expressly NOT promoted: … Domain-Event ≠ Integration-Event … are Category-B follow-ups (principles doc / v1.1 ratification — separate slices)", "note": "Deferred to a separate slice. The principles-doc outcome itself is not decided in the text."},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "S4 states '2 slices is the floor', but does not use it as a reason for refusing."},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "Category-B follow-ups 2"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E14 · Discovery→IDD→RED→GREEN→Qualification→Completion chain · S5/S4#11 · 'v1.1 ratification'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED … ARB … at review"},
+      "target_type": {"text": "B (process) — Implementation_Process_v1.1_Draft.md at ratification (its single home)", "value": "METHODOLOGY/PRINCIPLES", "basis": "SOURCE", "quote": "Fold the named chain into `Implementation_Process_v1.1_Draft.md` at ratification (its single home)"},
+      "evidence": {"value": 3, "unit": "slices", "basis": "SOURCE", "quote": "3: executed verbatim in PB-004, PB-005, PB-006"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Expressly NOT promoted: … the Discovery→IDD→RED→GREEN→Qualification→Completion chain are Category-B follow-ups", "note": "Deferred to v1.1 ratification in a separate slice."},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "Category-B follow-ups 2"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E15 · Strangler reconstitution · S5/S4#14 · 'remain Candidates'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "target_type": {"text": "(home of the review) AST-013; remains Candidate", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Expressly NOT promoted: … Strangler reconstitution … remain Candidates", "note": "The home is taken from the review."},
+      "evidence": {"value": 1, "unit": "contexts", "basis": "SOURCE", "quote": "1 context only (Election)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Strangler reconstitution … remain Candidates"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "Evidential reason ('evidence it does not generalize by default'); no rule is cited."},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "candidates (D) 5"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E16 · ChallengeResolvedIntegration carrier · S5/S4#17 · 'temporary carrier, not a pattern'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "target_type": {"text": "(home of the review) AST-013; remains candidate", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "`ChallengeResolvedIntegration` carrier … remain Candidates", "note": "The home is taken from the review. Coding it CANDIDATE-PATTERN instead would remove its M_T/M_AT pairs."},
+      "evidence": {"value": 1, "unit": "slices", "basis": "SOURCE", "quote": "1 — explicitly ruled \"temporary carrier, not a pattern\" (PB-005 Q1)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Remains candidate; replaced only on repeated evidence (ER-02)"},
+      "ground": {"value": "RULE", "basis": "SOURCE", "quote": "explicitly ruled \"temporary carrier, not a pattern\" (PB-005 Q1) … replaced only on repeated evidence (ER-02)"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "candidates (D) 5"},
+      "role_in_falsification": "Q"
+    },
+    {
+      "id": "E17 · PGP-03 'owner-hosts-the-guard' hoist · S5/S4#18 · 'hoist to global rule'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "target_type": {"text": "global rule", "value": "OTHER", "basis": "SOURCE", "quote": "PGP-03 \"owner-hosts-the-guard\" hoist to global rule"},
+      "evidence": {"value": "UNK", "unit": "slices", "stated": "2-ish", "basis": "UNK", "quote": "2-ish: ADR-MP-03 note + AD-M1 fitness relocation"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "PGP-03 hoist … remain Candidates"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "candidates (D) 5"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E18 · Engineering Standards document (R-28/R-32, CMP-009) · S5/S4#19 · 'would violate Documentation Economy'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "AI Architecture Promotion Review ADOPTED"},
+      "target_type": {"text": "Engineering Standards document", "value": "STANDARD-DOC", "basis": "SOURCE", "quote": "Engineering Standards document (R-28/R-32, CMP-009)"},
+      "evidence": {"value": "UNK", "unit": "UNK", "basis": "UNK", "quote": "PB-004 retrospective did NOT trigger R-28 (created no standards)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Engineering Standards (R-28/CMP-009) remain Candidates"},
+      "ground": {"value": "RULE", "basis": "SOURCE", "quote": "Keep deferred — building it now would violate Documentation Economy"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "candidates (D) 5"},
+      "role_in_falsification": "Q"
+    },
+    {
+      "id": "E19 · Trustworthiness Qualification · S4#12 · 'Stays in Handover §9a + process doc'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "platform-doc (C) 4", "note": "Joined through the count."},
+      "target_type": {"text": "(home of the review) AST-013 / .claude", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "No `.claude` delta"},
+      "evidence": {"value": 2, "unit": "slices", "basis": "SOURCE", "quote": "2: PB-005 (retroactive PASS) · PB-006 6C (prescribed)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Stays in Handover §9a + process doc. No `.claude` delta"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "platform-doc (C) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E20 · Inbox-inherited atomicity · S4#15 · 'Not AI guidance'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "platform-doc (C) 4"},
+      "target_type": {"text": "(home of the review) AI guidance / AST-013", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "Not AI guidance"},
+      "evidence": {"value": 2, "unit": "slices", "basis": "SOURCE", "quote": "2: PB-004 (rollback proven) · PB-005 (reused, justified)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Messaging documentation (dev guide; optional future ADR-MP note). Not AI guidance"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "platform-doc (C) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E21 · Messaging routing/isolation bundle · S4#16 · 'Already correctly homed … No move'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "platform-doc (C) 4"},
+      "target_type": {"text": "(home of the review) AST-013", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "C = stays platform documentation (ADR-MP / dev guides)"},
+      "evidence": {"value": "UNK", "unit": "UNK", "stated": "PB-006 / PB-005", "basis": "UNK"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "Already correctly homed in ADR-MP-06 + IDDs + dev guides. No move"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "platform-doc (C) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E22 · Evidence Before Governance (already) · S4#1 · 'No delta — already permanent'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "target_type": {"text": "AI Architecture (re-adding)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "already = permanent guidance today; re-adding = duplication"},
+      "evidence": {"value": "UNK", "unit": "UNK", "stated": "ER-02 · AIP-01 · Governance Economy · demonstrated PB-004, PB-005, PB-006 (no count)", "basis": "UNK"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "No delta — already permanent"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "Duplication is refused; no rule is named."},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E23 · Test Behaviour, Not Transport (already) · S4#4 · 'No `.claude` delta'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "target_type": {"text": ".claude / AI Architecture", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "No `.claude` delta"},
+      "evidence": {"value": 3, "unit": "slices", "basis": "SOURCE", "quote": "3: PB-004 retro §4 · PB-005 5A RED restructure (business vs translation) · PB-006 behavioural RED matrix"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "No `.claude` delta — the pending action is ratifying `Implementation_Process_v1.1_Draft.md`, its single designated home"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E24 · Freeze architecture before implementation (already) · S4#8 · 'No delta'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "target_type": {"text": "AI Architecture (re-adding)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "already = permanent guidance today; re-adding = duplication"},
+      "evidence": {"value": 3, "unit": "tickets", "basis": "SOURCE", "quote": "IDD-FROZEN practice in all three tickets"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "No delta"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E25 · Never silently introduce a new pattern (already) · S4#13 · 'already an executable qualification check'",
+      "actor": {"value": "ARB", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "target_type": {"text": "AI Architecture (re-adding)", "value": "OPERATING-INSTRUCTIONS", "basis": "SOURCE", "quote": "already = permanent guidance today; re-adding = duplication"},
+      "evidence": {"value": "UNK", "unit": "UNK", "basis": "UNK"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "No delta — already an executable qualification check"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R36", "basis": "SOURCE", "quote": "already-permanent (duplication refused) 4"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E26 · DDD Implementation Protocol adopted as operating standard · S6 · 'ADOPTED AS THE OPERATING STANDARD for implementation work'",
+      "actor": {"value": "PA", "basis": "SOURCE", "quote": "Received from the PA as the going-forward protocol. In force from the next work package."},
+      "target_type": {"text": "the operating standard for implementation work (explicitly not a standards document)", "value": "OTHER", "basis": "SOURCE", "quote": "ADOPTED AS THE OPERATING STANDARD for implementation work; NOT self-promoted into a standards document"},
+      "evidence": {"value": 2, "unit": "slices", "basis": "SOURCE", "quote": "Evidence today = two slices (WP-1, WP-2)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "ADOPTED AS THE OPERATING STANDARD for implementation work"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-S6-PROTOCOL", "basis": "SOURCE", "quote": "DDD-Driven Architectural Implementation Protocol received (17 phases)"},
+      "role_in_falsification": "P"
+    },
+    {
+      "id": "E27 · DDD Implementation Protocol not written into a standards document · S6 · 'NOT self-promoted into a standards document'",
+      "actor": {"value": "the session author / engineering", "basis": "SOURCE", "quote": "so I have not created one"},
+      "target_type": {"text": "a governed standards document", "value": "STANDARD-DOC", "basis": "SOURCE", "quote": "Writing it into a governed standards document now"},
+      "evidence": {"value": 2, "unit": "slices", "basis": "SOURCE", "quote": "Evidence today = two slices (WP-1, WP-2)"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "NOT self-promoted into a standards document"},
+      "ground": {"value": "RULE", "basis": "SOURCE", "quote": "would be exactly what the protocol's own Phase 16 forbids — promoting observations into standards without authorization"},
+      "cluster": {"value": "C-S6-PROTOCOL", "basis": "SOURCE", "quote": "GOVERNANCE FLAG — one decision belongs to the DA, not to me."},
+      "role_in_falsification": "Q"
+    },
+    {
+      "id": "E28 · DA decision on early promotion of the protocol · S6 · 'Options for the DA: (a) … (b)'",
+      "actor": {"value": "Decision Authority", "basis": "SOURCE", "quote": "one decision belongs to the DA, not to me"},
+      "target_type": {"text": "governed standards document", "value": "STANDARD-DOC", "basis": "SOURCE", "quote": "Writing it into a governed standards document now"},
+      "evidence": {"value": 2, "unit": "slices", "basis": "SOURCE", "quote": "Evidence today = two slices (WP-1, WP-2)"},
+      "exception": {"value": "UNK", "basis": "UNK", "note": "Option (a) would be 'recorded as an exception'. Nothing has been chosen."},
+      "outcome": {"value": "UNK", "basis": "UNK", "note": "Pending. The author recommends (b)."},
+      "ground": {"value": "CHOICE", "basis": "SOURCE", "quote": "Options for the DA: (a) adopt now as an explicit early promotion … (b) hold to the parked criterion … Recommendation: (b)"},
+      "cluster": {"value": "C-S6-PROTOCOL", "basis": "SOURCE", "quote": "GOVERNANCE FLAG — one decision belongs to the DA"},
+      "role_in_falsification": "excluded (CHOICE; outcome UNK)"
+    },
+    {
+      "id": "E29 · 'Implementation Execution Contract' candidate parked 2026-07-26 · S6 · 'the PA parked … with an explicit promotion criterion'",
+      "actor": {"value": "PA", "basis": "SOURCE", "quote": "the PA parked on 2026-07-26"},
+      "target_type": {"text": "not named ('extract')", "value": "UNK", "basis": "UNK"},
+      "evidence": {"value": "UNK", "unit": "slices", "basis": "UNK", "quote": "extract only after WP-1 plus a few more slices demonstrate the shape is stable"},
+      "exception": {"value": "UNK", "basis": "UNK"},
+      "outcome": {"value": "NOT-PROMOTED", "basis": "SOURCE", "quote": "the \"Implementation Execution Contract\" candidate that the PA parked"},
+      "ground": {"value": "UNK", "basis": "UNK", "note": "The PA sets a criterion; no pre-existing rule is cited."},
+      "cluster": {"value": "C-PARK-2026-07-26", "basis": "SOURCE", "quote": "recorded with the slice-ledger candidate"},
+      "role_in_falsification": "none"
+    },
+    {
+      "id": "E30 · R-39 DA-authorized early promotion · S6 · 'R-39 is the precedent'",
+      "actor": {"value": "Decision Authority", "basis": "SOURCE", "quote": "R-39 is the precedent for DA-authorized early promotion"},
+      "target_type": {"text": "not named", "value": "UNK", "basis": "UNK"},
+      "evidence": {"value": "UNK", "unit": "UNK", "basis": "UNK", "note": "'early' implies below the normal bar; no count is given."},
+      "exception": {"value": "YES", "basis": "SOURCE", "quote": "recorded as an exception so the normal bar stays intact"},
+      "outcome": {"value": "PROMOTED", "basis": "SOURCE", "quote": "DA-authorized early promotion"},
+      "ground": {"value": "UNK", "basis": "UNK"},
+      "cluster": {"value": "C-R39", "basis": "SOURCE", "quote": "R-39 is the precedent"},
+      "role_in_falsification": "P"
+    }
+  ],
+  "eligible_sets": {
+    "P_promoted_not_choice": ["E01", "E03", "E05", "E06", "E07", "E08", "E09", "E10", "E26", "E30"],
+    "Q_not_promoted_rule": ["E04", "E16", "E18", "E27"],
+    "Q_parameters": {
+      "E04": {"actor": "UNK", "target": "METHODOLOGY/PRINCIPLES", "evidence": 1},
+      "E16": {"actor": "ARB", "target": "OPERATING-INSTRUCTIONS", "evidence": 1},
+      "E18": {"actor": "ARB", "target": "STANDARD-DOC", "evidence": "UNK"},
+      "E27": {"actor": "the session author / engineering", "target": "STANDARD-DOC", "evidence": 2}
+    }
+  },
+  "models": {
+    "M_E": {
+      "verdict": "FALSIFIED",
+      "deciding_pairs": [
+        {"P": "E26", "Q": "E27", "why": "evidence(Q)=2 ≥ evidence(P)=2; M_E has no parameters. P = protocol adopted by the PA as operating standard; Q = the same protocol refused a standards document on the Phase 16 RULE."}
+      ],
+      "undetermined_pairs": [
+        ["E01","E04"],["E01","E16"],["E01","E18"],["E01","E27"],
+        ["E03","E04"],["E03","E16"],["E03","E18"],["E03","E27"],
+        ["E08","E04"],["E08","E16"],["E08","E18"],["E08","E27"],
+        ["E10","E04"],["E10","E16"],["E10","E18"],["E10","E27"],
+        ["E30","E04"],["E30","E16"],["E30","E18"],["E30","E27"],
+        ["E05","E18"],["E06","E18"],["E07","E18"],["E09","E18"],["E26","E18"]
+      ],
+      "undetermined_count": 25
+    },
+    "M_A": {
+      "verdict": "UNDETERMINED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        ["E01","E04"],["E03","E04"],["E08","E04"],["E10","E04"],["E30","E04"],
+        ["E08","E16"],["E10","E16"],
+        ["E05","E18"],["E06","E18"],["E07","E18"],["E08","E18"],["E09","E18"],["E10","E18"]
+      ],
+      "undetermined_count": 13,
+      "note": "The M_E deciding pair (E26,E27) is not a pair here: the actors differ (PA vs the session author). E27's actor has no PROMOTED counterpart."
+    },
+    "M_T": {
+      "verdict": "UNDETERMINED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        ["E30","E04"],
+        ["E08","E16"],["E10","E16"],["E30","E16"],
+        ["E01","E18"],["E30","E18"],
+        ["E01","E27"],["E30","E27"]
+      ],
+      "undetermined_count": 8,
+      "note": "(E26,E27) is not a pair here: the targets differ (OTHER vs STANDARD-DOC). (E01,E27) is critical: the text names at most 2 instances for E01, and if E01's evidence were coded 1 or 2, (E01,E27) would falsify M_T."
+    },
+    "M_AT": {
+      "verdict": "UNDETERMINED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        ["E30","E04"],
+        ["E08","E16"],["E10","E16"]
+      ],
+      "undetermined_count": 3
+    }
+  },
+  "M_C": {
+    "needed": false,
+    "statement": "Not needed on the determinate evidence: M_A, M_T and M_AT are each unfalsified. M_C cannot be ruled out, because each of them has undetermined pairs, and M_T would fall under either integer reading of E01's evidence. The one falsification (of M_E) comes from a RULE about authorization (Phase 16), not from an evidence threshold, so a non-evidence mechanism remains an open HYPOTHESIS."
+  },
+  "sensitivity": [
+    {"change": "E26 not counted as a standing-raising event (operating standard is not a higher-standing home)", "effect": "M_E -> UNDETERMINED (no deciding pair remains)."},
+    {"change": "E01 evidence coded 1 (pre-adoption provenance) or 2 (both instances)", "effect": "M_E stays FALSIFIED; M_T -> FALSIFIED via (E01,E27): same target STANDARD-DOC, 2 ≥ 1 or 2 ≥ 2; M_A and M_AT unchanged (PA vs the session author)."},
+    {"change": "E01 target coded OTHER (the text says 'documentation standard, not a new standard document')", "effect": "Removes (E01,E18) and (E01,E27) from M_T."},
+    {"change": "R-36 promoted items (E05–E10) coded CHOICE (the matrix is a selection among categories A–D on evidence)", "effect": "They are excluded as P. M_A undetermined pairs: 3; M_T: 6; M_AT: 1 (E30,E04). M_E's deciding pair is unaffected."},
+    {"change": "E16 target coded CANDIDATE-PATTERN", "effect": "Removes E16's M_T/M_AT pairs except (E30,E16) under M_T."},
+    {"change": "'PO/ARB' treated as equal to 'ARB'", "effect": "Adds undetermined pairs (E03,E16) and (E03,E18) under M_A; no verdict change."},
+    {"change": "E04 actor coded 'the session author / engineering' or 'PO/ARB'", "effect": "No verdict change."}
+  ]
+}

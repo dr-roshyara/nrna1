@@ -1,0 +1,245 @@
+{
+ "coder": "main, record-only under MANUAL-r2 (sealed before the blind run)",
+ "rows": {
+  "R-33": {
+   "V": {
+    "V1": "NOT-MODELLED",
+    "V2": "UNTESTABLE",
+    "V3": "NOT-MODELLED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "PRE-R43",
+    "V7": "AMBIGUOUS"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "DEFINE"
+   ],
+   "note": "'supersedes any file-count framing' \u2014 the superseded object is a framing, not a record",
+   "ops": [
+    "SUPERSEDE"
+   ]
+  },
+  "R-42": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "PRE-R43",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": false,
+   "not_modelled": [
+    "AFFIRM",
+    "REFUTE"
+   ],
+   "note": "vocabulary bar met: 'conflating them caused every earlier mis-mapping'",
+   "ops": [
+    "CREATE-NORM",
+    "RATIFY"
+   ]
+  },
+  "R-48": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "SUPPORTED",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "CLOSE-EVIDENCE-LIMIT"
+   ],
+   "note": "R-62 recording correction = annotation by another ruling",
+   "ops": [
+    "ACCEPT"
+   ]
+  },
+  "R-54": {
+   "V": {
+    "V1": "NOT-MODELLED",
+    "V2": "AMBIGUOUS",
+    "V3": "NOT-MODELLED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "ACTIVATE"
+   ],
+   "note": "'R-51 granted permission' said of an authorization (pre-R-80 term use); keeps AUTHORIZED \u2260 ACTIVE",
+   "ops": []
+  },
+  "R-57": {
+   "V": {
+    "V1": "NOT-MODELLED",
+    "V2": "UNTESTABLE",
+    "V3": "NOT-MODELLED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "AMBIGUOUS"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "CORRECT-PLAN"
+   ],
+   "note": "an approved plan amended in place by a governance act; 'R-44 superseded' a mechanism",
+   "ops": []
+  },
+  "R-59": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "RECORD-DEBT"
+   ],
+   "note": "'acceptance criteria are not redefined retroactively after GREEN'",
+   "ops": [
+    "ACCEPT",
+    "ANNOTATE"
+   ]
+  },
+  "R-60": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "'A recording note cannot open a work package'",
+   "ops": [
+    "ANNOTATE",
+    "OPEN-WORK"
+   ]
+  },
+  "R-69": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "SUPPORTED",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "CORRECT-CONTRACT",
+    "RECORD-ITEMS"
+   ],
+   "note": "",
+   "ops": [
+    "ACCEPT"
+   ]
+  },
+  "R-70": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "readiness review READY on six checks",
+   "ops": [
+    "AUTHORIZE"
+   ]
+  },
+  "R-71": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "SUPPORTED",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "RECORD-ENG-012"
+   ],
+   "note": "'Engineering does not self-certify it' (role separation)",
+   "ops": [
+    "ACCEPT",
+    "ADOPT-DECISION"
+   ]
+  },
+  "R-74": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "'H2/H3 are rejected' 'by implication'",
+   "ops": [
+    "ADOPT-DECISION",
+    "REJECT"
+   ]
+  },
+  "R-76": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "VIOLATED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "headline 'SCOPE CONFIRMED' \u2192 CONFIRM (frame \u2205), yet 'the scope ambiguity \u2026 IS CLOSED' is a direct change: overload of 'confirm'",
+   "ops": [
+    "CONFIRM"
+   ]
+  },
+  "R-95": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "Chief AUTHORIZE (to plan) with no PREPARED marker, unlike R-89",
+   "ops": [
+    "AUTHORIZE"
+   ]
+  }
+ }
+}

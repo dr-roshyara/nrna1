@@ -1,0 +1,43 @@
+{
+  "ordering_A": "SECOND-AFTER-DECISION",
+  "ordering_A_status": "INFERENCE (as labelled by A)",
+  "ordering_reviewer": "SECOND-AFTER-DECISION",
+  "ordering_reviewer_status": "INFERENCE, weaker than A presents. It depends on one load-bearing implicature: the PA instruction preceded the ES-004.3 text, checklist included (\"PA instruction institutionalized: ... adopted as **ES-004.3**\"). Without that link the answer is UNDETERMINED. The narrative order in S2 Completed, the S2 Summary and the G subject is not evidence of time order: R-41 is listed before the run, yet its text reports the run's finding.",
+  "evidence_A": 1,
+  "evidence_reviewer": 1,
+  "evidence_reviewer_status": "FORMAL CONSEQUENCE of the ordering inference plus \"caught\" (first discovery). UNK if the instruction-before-text implicature is rejected. 2 only under the miscoding that treats the register row or commit as the decision act (the R-41 text postdates the run, formally).",
+  "decision_act_A": "PA instruction",
+  "decision_act_reviewer": "PA instruction. The register row, hosting and commit record or carry out the decision. The first checklist run is an application of the rule.",
+  "recomputed_links": [
+    {"relation": "instance-1 correction 307b90e8e < checklist run", "status": "SOURCE FACT + LOGICAL", "quote": "Work Plan ✔ (status line fixed `307b90e8e`)"},
+    {"relation": "instance 1 known < rule formulated", "status": "TEXTUAL", "quote": "the rule generalizes the WP-1 status-line correction into permanent governance"},
+    {"relation": "PA instruction < ES-004.3 text (incl. checklist)", "status": "ASSUMED / implicature (load-bearing)", "quote": "PA instruction institutionalized: **Artifact Lifecycle Consistency** — adopted as **ES-004.3**"},
+    {"relation": "checklist text exists (possibly draft) < first checklist run", "status": "LOGICAL", "quote": "Checklist executed against WP-1 (first application)"},
+    {"relation": "ES-004.3 designation exists < ADR-T22 annotation", "status": "LOGICAL", "quote": "ES-004.3 annotation, decision text unchanged"},
+    {"relation": "checklist run < R-41 text as written, and < G message", "status": "FORMAL CONSEQUENCE", "quote": "first checklist execution the same day caught a second instance"},
+    {"relation": "all recorded content <= 2026-07-30 19:33:58 +0200", "status": "SOURCE FACT (record time only)", "quote": "Date: 2026-07-30 19:33:58 +0200"}
+  ],
+  "strongest_alternative": {
+    "reading": "Ratification: the rule and checklist were drafted and run first, and the PA instruction then adopted a rule whose basis already included both instances (SECOND-BEFORE-DECISION, evidence 2).",
+    "ruled_out": false,
+    "disfavoured_by": [
+      "PA instruction institutionalized: **Artifact Lifecycle Consistency** — adopted as **ES-004.3**",
+      "ES-004.3 adopted by explicit PA instruction (recorded R-41); the rule generalizes the WP-1 status-line correction into permanent governance.",
+      "Checklist executed against WP-1 (first application)"
+    ],
+    "why_not_excluded": "No timestamp separates the instruction from the run. All three sources come from one author in one commit and were written after the run."
+  },
+  "disagreements": [
+    {"id": "D1", "class": "formal reasoning", "topic": "S2 Completed bullet order cited as decisive", "A": "\"ES-004.3 hosted\" → \"R-41 appended\" → \"Checklist executed\" shows the order", "reviewer": "Not chronological: R-41 is listed before the run but its text reports the run's finding. This also contradicts A's own ambiguity #4.", "affects_output": false},
+    {"id": "D2", "class": "source interpretation", "topic": "S2 Summary quote with ellipsis", "A": "adoption stated first, then the checklist run", "reviewer": "The ellipsis drops \"+ register ruling **R-41**\", which shows the same non-chronological narrative order. The quote does not support time order.", "affects_output": false},
+    {"id": "D3", "class": "coding", "topic": "Category confusion in Not-SAME-ACT / Not-UNDETERMINED / 'first application' / 'ES-004.3 annotation'", "A": "treats the R-41 append or the rule text's existence as the adoption", "reviewer": "These order the run against the register row or rule text, not against the PA instruction (the decision act by A's own §1)", "affects_output": false},
+    {"id": "D4", "class": "coding", "topic": "\"PA instruction institutionalized\"", "A": "contrary quote", "reviewer": "The key supporting quote: the only textual link placing the instruction before the rule text", "affects_output": false},
+    {"id": "D5", "class": "formal reasoning", "topic": "R-41 text postdates the run", "A": "conditional on reading the R-41 append as the decision event", "reviewer": "unconditional formal consequence (the text reports the finding)", "affects_output": false},
+    {"id": "D6", "class": "independence", "topic": "corroboration across G/S1/S2", "A": "several converging decisive quotes", "reviewer": "one author ('Co-Authored-By: Claude Fable 5'), one commit, written after the run; not independent", "affects_output": false},
+    {"id": "D7", "class": "coding", "topic": "JSON performed_by", "A": "the session author performed the hosting and the R-41 append (unlabelled)", "reviewer": "UNK. A co-author trailer does not establish who did what, and this contradicts A's ambiguity #6.", "affects_output": false},
+    {"id": "D8", "class": "evidence scope", "topic": "missed quotes", "A": "not used", "reviewer": "G \"register records the decision\"; S2 \"noted in the provenance line\"; \"R-41 text and session history untouched\"; \"with the ADR-T22 first-execution case recorded as the demonstration\"; \"ES-004.3's checklist now binds that closure and every closure after it\"; S1 \"ES-004.3 in force; checklist binds every slice closure\". These mostly support the record-vs-act coding and the reading of provenance as written up afterwards.", "affects_output": false},
+    {"id": "D9", "class": "formal reasoning", "topic": "rejecting UNDETERMINED", "A": "no source puts the run before the instruction", "reviewer": "Argument from silence. The ratification alternative is not excluded, so the verdict holds only as an inference dependent on the instruction-before-text implicature.", "affects_output": false},
+    {"id": "D10", "class": "wording", "topic": "'found ... in the same commit' / 'committed by' labelled SOURCE FACT", "A": "SOURCE FACT", "reviewer": "The annotation is in the commit, but discovery is not a git event. The meaning of the Date: field is not stated.", "affects_output": false}
+  ],
+  "substantive_disagreements": []
+}

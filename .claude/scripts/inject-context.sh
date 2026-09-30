@@ -10,7 +10,7 @@ mkdir -p .claude/sessions .claude/plans
 
 echo "=== AUTO-INJECTED BY SessionStart HOOK (per CLAUDE.md; also read the active plan in .claude/plans/ before working) ==="
 
-for f in .claude/MEMORY.md .claude/CONTEXT.md; do
+for f in .claude/MEMORY.md .claude/CONTEXT.md .claude/CONTEXT-publicdigit.md; do
   if [ -f "$f" ]; then
     echo; echo "--- $f ---"
     cat "$f"
@@ -18,6 +18,11 @@ for f in .claude/MEMORY.md .claude/CONTEXT.md; do
     echo; echo "--- $f MISSING — create it per CLAUDE.md before finishing this session ---"
   fi
 done
+
+if command -v python3 >/dev/null 2>&1 && [ -f .claude/scripts/context-router.py ]; then
+  echo
+  python3 .claude/scripts/context-router.py
+fi
 
 # Active plan: CONTEXT.md is the AUTHORITY. Preferred: the structured
 # "Plan: <path>" line in the Active Work block. Legacy: first plan path in

@@ -1,0 +1,156 @@
+{
+  "items": [
+    {
+      "operation": "ADOPT",
+      "variable": "a",
+      "class": "SYNTHETIC",
+      "basis_quote": "SCHEMA §1: \"`a` actor/authority\"; CODING-LINES semobs.py:20 \"ADOPT R-81..85 by the Chief (declined)\" ... a=\"ARB-CHIEF\" ... \"REFUSED\", \"RULE\"; semobs.py:21 \"ADOPT R-81..85 by the DA (R-86)\" ... a=\"DECISION-AUTHORITY\" ... \"PERFORMED\"",
+      "premise_or_rule": "Allocation rule: a PREPARED ruling is adopted by the DECISION-AUTHORITY, not by the ARB-CHIEF. The values are role identities; the schema defines no value of `a` as carrying or lacking adoption power, so who may adopt is a contingent allocation that could have been otherwise (e.g. the Chief could have held the power).",
+      "premise_status_per_event": "n/a (synthetic)",
+      "refutable_contrast": "YES. R-81..85-annotation (ARB-CHIEF, REFUSED/RULE) vs R-86 (DECISION-AUTHORITY, PERFORMED): same t (same:R-81..85), same s (PREPARED), same r (RULING), and k and c the same by R2 identity (source: k=\"same:R-81..85\", c=\"same:R-81..85\"). Only a differs, so under R2 this is a strict witness, but it is one cluster-pair, so WEAK (R4/R5). Caveats: (i) EVENTS.json replaces the source's identity codes with k=\"ruling\" and c=\"conformant\", and no coding line supports either value; (ii) the Chief refusal is labelled \"declined\", which reads like self-restraint/CHOICE, and a CHOICE refusal would drop out of witnesses under R3; (iii) R-91 has DA plus REFUSED, so a=DA is not sufficient. The guard can only be a necessity claim.",
+      "alternative": "ANALYTIC, because the value name 'DECISION-AUTHORITY' seems to contain the power to decide or adopt. Rejected: SCHEMA gives no definition of the role values, the refused value ('ARB-CHIEF') carries no prohibition in its meaning, and the operation ADOPT is not defined as reserved to any role. The name suggests the rule but does not entail it. If a project glossary defines the DA as 'the only body that may adopt', the item becomes ANALYTIC. That glossary is not among these files."
+    },
+    {
+      "operation": "ADOPT",
+      "variable": "c",
+      "class": "ANALYTIC",
+      "basis_quote": "SCHEMA §1: \"`c` role conformance\"; CODING-LINES semobs.py:22 \"ADOPT R-91 by the DA (held)\" ... c=\"collapsed\" ... \"REFUSED\", \"RULE\"",
+      "premise_or_rule": "Premise: that the roles in the act actually conformed to, or collapsed against, the role requirements for adoption, established before the act. The field is defined as *conformance*, which is a normative relation to the role rule governing the act. So 'non-conformant ⇒ not legally adoptable' holds by the meaning of the coded value. The only empirical content is whether conformance or collapse was fixed independently of the outcome.",
+      "premise_status_per_event": {
+        "ADOPT R-81..85 by the Chief (declined)": "UNCLEAR. Source codes only c=\"same:R-81..85\" (identity, value not established). The value 'conformant' in EVENTS.json has no coding line, so it could be outcome-derived (written in from R-86 PERFORMED).",
+        "ADOPT R-81..85 by the DA (R-86)": "UNCLEAR. Same as above: source c=\"same:R-81..85\", and 'conformant' is unsourced.",
+        "ADOPT R-91 by the DA (held)": "UNCLEAR. Source codes c=\"collapsed\" but gives no quoted basis. The label \"(held)\" states the outcome, not the role facts."
+      },
+      "refutable_contrast": "n/a for an analytic guard. For the record: R-86 (conformant*, PERFORMED) vs R-91 (collapsed, REFUSED) also differs in t (same:R-81..85 vs R-91), and *conformant is unsourced, so there is at most a POSSIBLE witness and no strict one.",
+      "alternative": "SYNTHETIC, if 'collapsed' just describes a fact (e.g. one person held both the preparing and the adopting role) and the ban on collapse is a contingent separation-of-duties rule. Not rejected outright. The field name 'role conformance' makes the ANALYTIC reading stronger, but 'collapsed' is left undefined. If c were recoded as a purely factual 'role-holders identical: yes/no', the guard would be SYNTHETIC."
+    },
+    {
+      "operation": "AUTHORIZE-IMPL",
+      "variable": "a",
+      "class": "SYNTHETIC",
+      "basis_quote": "CODING-LINES semobs.py:23 \"AUTHORIZE-IMPL R-70 (ARB)\" ... \"PERFORMED\" ... a=\"ARB\"; semobs.py:24 \"AUTHORIZE-IMPL R-89 (Chief, PREPARED)\" ... \"NOT-IN-FORCE\", \"RULE\" ... a=\"ARB-CHIEF\"",
+      "premise_or_rule": "Allocation rule: an implementation authorization issued by the ARB is in force, while one issued by the ARB-CHIEF alone is only PREPARED and not in force until adopted (compare ADOPT/a). Which body's act takes effect is a contingent allocation.",
+      "premise_status_per_event": "n/a (synthetic)",
+      "refutable_contrast": "PARTIAL. R-70 vs R-89 differ only in a (k=work, s=guards-met, t=own-slice all known and equal), with one cluster-pair. But (i) the negative outcome is NOT-IN-FORCE, not REFUSED, and R3 speaks of 'opposite RULE-grounded / PERFORMED outcomes' without saying whether NOT-IN-FORCE counts; (ii) t='own-slice' is indexical, so the ARB's own slice and the Chief's own slice may be different targets, and the equality of t is only nominal. At best one strict witness (WEAK); otherwise POSSIBLE.",
+      "alternative": "ANALYTIC via the status word 'PREPARED': a PREPARED ruling is by definition not yet in force. Rejected for the variable a: that definition links the status to NOT-IN-FORCE, not the actor. That the Chief's act yields only PREPARED status is the contingent rule. UNKNOWN is also defensible because of the outcome-category mismatch."
+    },
+    {
+      "operation": "OPEN-WORK",
+      "variable": "k",
+      "class": "SYNTHETIC",
+      "basis_quote": "CODING-LINES semobs.py:28 \"OPEN-WORK by a recording note (R-60)\" ... \"REFUSED\", \"RULE\" ... k=\"recording-note\"; semobs.py:29 \"OPEN-WORK by a ruling (R-60 refiled)\" ... \"PERFORMED\" ... k=\"ruling\"",
+      "premise_or_rule": "Form rule: work is opened only by an instrument of kind 'ruling', not by a 'recording-note'. This is an instrument-form requirement and could have been otherwise (a recording note could have been allowed to open work).",
+      "premise_status_per_event": "n/a (synthetic)",
+      "refutable_contrast": "YES in form. The two events differ only in k (a=ARB, t=WP-7B-R1 equal and known), so this is a strict witness. But both are in cluster R-60 (refusal and refiling of one decision), so it counts once and gives WEAK. Its power to refute is limited: the refiling was presumably made *because of* the rule, so the PERFORMED outcome is not an independent test of it.",
+      "alternative": "ANALYTIC: a 'recording note' by its name only records and is not constitutive, so it cannot open anything. Rejected: SCHEMA does not define k values, and 'recording' limits the note's intended use without making work-opening logically impossible for it. The prohibition sits in a form rule. It becomes ANALYTIC if a definition says 'a recording note has no constitutive effect'."
+    },
+    {
+      "operation": "REGISTER",
+      "variable": "k",
+      "class": "UNKNOWN",
+      "basis_quote": "CODING-LINES semobs.py:26 \"REGISTER operational acceptance (R-90)\", \"S0804-L576\", \"session-log\", \"reported\", \"REFUSED\", \"RULE\" ... k=\"operational-acceptance\"; semobs.py:27 \"REGISTER constitutional decision (rule)\", \"S0804-L576\" ... \"PERFORMED\" ... k=\"constitutional-decision\"",
+      "premise_or_rule": "Candidate A (ANALYTIC): the register is *defined* as the register of constitutional decisions, so REGISTER is available only to that kind. Premise: that the item's kind was fixed independently. Candidate B (SYNTHETIC): a scope policy keeps operational acceptances out of the register, and the policy could have been otherwise. Neither SCHEMA nor the coding lines define the register's scope.",
+      "premise_status_per_event": {
+        "REGISTER operational acceptance (R-90)": "UNCLEAR. The kind comes from the session-log report, and no basis is quoted.",
+        "REGISTER constitutional decision (rule)": "UNCLEAR. The label says \"(rule)\", so this 'event' restates the rule and is not an observed act."
+      },
+      "refutable_contrast": "NO genuine contrast. The PERFORMED side is labelled \"(rule)\", so it was derived from the rule statement and was not observed as a historical act (against SCHEMA §1, 'one historical act'). Both sides sit in one cluster (S0804-L576). a is equal and known, so it is formally strict, but the rule is restated rather than tested.",
+      "alternative": "ANALYTIC (candidate A) is the strongest alternative and is slightly favoured by the fact that the PERFORMED side is the rule itself. That is a sign the coder treated the scope as constitutive. It is not adopted because nothing defines the register."
+    },
+    {
+      "operation": "START",
+      "variable": "s",
+      "class": "ANALYTIC",
+      "basis_quote": "SCHEMA §1: \"`s` state before\"; EVENTS/CODING values s=\"authorized\" / \"not-authorized\" (e.g. semobs_r3.py:19 \"START 7B at R-56 (plan approved, execution not issued)\" ... \"REFUSED\" ... s=\"not-authorized\"; semobs_r3.py:20 \"START 7B at R-58 (execution authorized)\" ... \"PERFORMED\" ... s=\"authorized\"); TASK example: \"a state named 'authorized for this act'\"",
+      "premise_or_rule": "Premise: that an authorization covering this START existed (or did not) before the act, established by a separate authorizing act and not read off the start or refusal. 'authorized ⇒ may START' and 'not-authorized ⇒ may not START' hold by the meaning of the state. The sub-values 'auth-proviso-unmet' (an unmet proviso means the authorization is not in force, which is also definitional) and 'permission-only' (see alternative) fit the same reading.",
+      "premise_status_per_event": {
+        "START WP-4B at R-72 (proviso unmet)": "UNCLEAR. s='auth-proviso-unmet' is coded, but no basis is quoted showing the proviso was checked independently of the refusal.",
+        "START WP-4B 08-03 16:10": "UNCLEAR. The source codes s=\"auth-full\" (semobs.py:31), but EVENTS.json has s=\"UNK\". The premise is unestablished in the analysed file, and the source value has no quoted basis.",
+        "START WP-8 (permission only)": "UNCLEAR. s='permission-only' has no quoted basis.",
+        "START 7A after AUTHORIZE(7A)": "INDEPENDENT. The label cites a prior act, AUTHORIZE(7A). Source s=\"auth-full(7A)\", EVENTS s=\"authorized\".",
+        "START 7B after AUTHORIZE(7A)": "UNCLEAR. Source s=\"auth-full(7A)\" (semobs.py:34), identical to the 7A event. EVENTS.json recodes it to \"not-authorized\". The recoding can be derived from s×t (the authorization's scope excludes 7B) rather than from the outcome, but no rule for the recoding is stated.",
+        "START 7B at R-56 (plan approved, execution not issued)": "INDEPENDENT. The label states a prior fact ('execution not issued').",
+        "START 7B at R-58 (execution authorized)": "INDEPENDENT for the premise: an authorizing act is stated. Caveat: the authorization and the PERFORMED start sit in the same register row, so the *outcome* may be inferred from the premise (the reverse circularity).",
+        "START 7C at R-58 (remains unauthorized)": "INDEPENDENT for the premise (no authorization was issued). Caveat: no attempted start is shown, so REFUSED may be derived from s.",
+        "START 7C at R-65 (authorized)": "INDEPENDENT for the premise (an R-65 authorization is stated). Same caveat as R-58: the outcome may be derived from s.",
+        "START §12 reconcile at R-81 (Batch 7 frozen)": "INDEPENDENT. 'Batch 7 frozen' is a prior state fact.",
+        "START §12 reconcile at R-86 (Batch 7 released)": "INDEPENDENT. 'Batch 7 released' is a prior state fact."
+      },
+      "refutable_contrast": "n/a for an analytic guard. Contrasts exist (e.g. R-56 vs R-58 on 7B, R-58 vs R-65 on 7C, R-81 vs R-86 on §12), but they can only uncover miscoding or outcome-derivation, not a false rule.",
+      "alternative": "SYNTHETIC for the sub-value 'permission-only' (R-79). Why 'permission' is not enough to START while 'authorized' is depends on a contingent distinction between permission and execution authorization (compare R-56 'plan approved, execution not issued'). This is not rejected for that one value: the guard is ANALYTIC for authorized/not-authorized and SYNTHETIC-leaning for permission-only. The overall class stays ANALYTIC because the coded value set is organized around 'authorized'."
+    },
+    {
+      "operation": "START",
+      "variable": "t",
+      "class": "ANALYTIC",
+      "basis_quote": "CODING-LINES semobs.py:33 \"START 7A after AUTHORIZE(7A)\" ... \"PERFORMED\" ... s=\"auth-full(7A)\", t=\"7A\"; semobs.py:34 \"START 7B after AUTHORIZE(7A)\" ... \"REFUSED\", \"RULE\" ... s=\"auth-full(7A)\", t=\"7B\"",
+      "premise_or_rule": "t matters only through the scope-match relation 'target ∈ scope(existing authorization)'. An authorization indexed to 7A ('auth-full(7A)') covers 7A and, by its content, not 7B. Premise: that the authorization's scope was fixed (7A only) before the act and that no other authorization for 7B existed at R-47. As a bare value, t has no link to the outcome: the same target gets both outcomes (7B: REFUSED at R-47 and R-56, PERFORMED at R-58; 7C: REFUSED at R-58, PERFORMED at R-65; WP-4B and §12 both ways).",
+      "premise_status_per_event": {
+        "START 7A after AUTHORIZE(7A)": "INDEPENDENT. The authorization's scope is named in the label ('AUTHORIZE(7A)').",
+        "START 7B after AUTHORIZE(7A)": "INDEPENDENT for the scope (the same 'AUTHORIZE(7A)'). UNCLEAR on 'no other authorization for 7B', which is not stated.",
+        "other START events": "Not probative for t (s differs or is recoded)."
+      },
+      "refutable_contrast": "n/a for an analytic guard. Note: in the source coding (s equal = 'auth-full(7A)'), R-47 7A vs 7B is a strict witness for t. After EVENTS.json recodes 7B's s to 'not-authorized', t is no longer the sole difference and the witness is transferred to s. The same contrast is credited to different variables depending on the recoding.",
+      "alternative": "SYNTHETIC: whether an authorization extends to related or following packages (7A → 7B) is a contingent scoping practice, since batch-level authorization could have covered 7B. Not rejected lightly. It wins if 'AUTHORIZE(7A)' could in principle cover 7B under some rule, but nothing in the files suggests that. A second alternative is 'not a guard at all' (UNKNOWN), because t alone does not determine the outcome."
+    },
+    {
+      "operation": "RAISE",
+      "variable": "e",
+      "class": "SYNTHETIC",
+      "basis_quote": "EVENTS.json R-36 items: e=\"2+\" → \"PERFORMED\" (#2, #3, #9, #10); e=\"1\" → \"REFUSED\", \"RULE\" (#5, #14, #17); SCHEMA §1: \"`e` evidence condition\"; SCHEMA §1: \"the items of one decision (e.g. the R-36 promotion matrix)\" share a cluster; TASK example: \"promotion requires ≥ 2 contexts\"",
+      "premise_or_rule": "Threshold rule: promotion (route PROMOTION) requires evidence from at least 2 contexts. The count of contexts and the permission to raise are logically independent, and the threshold could have been 1 or 3.",
+      "premise_status_per_event": "n/a (synthetic)",
+      "refutable_contrast": "YES in form. Within R-36, the 2+ and 1 items differ only in e (a=ARB, k=engineering-behaviour, s=normal, t=AST-013, x=none-stated), giving 12 strict pairs but one cluster, so WEAK (R4). Caveats: (i) CODING-LINES.txt has *no* lines for the R-36 items (semobs.py lines 25, 35 and 36 are missing), so their e values and outcomes are unsourced in this bundle; (ii) the e value may have been read from the matrix's own stated reason for (non)promotion, which would make it outcome-derived; (iii) x='none-stated' is coded as a known value although it only records an absence. R-41 (e=1, PERFORMED) vs L493-B (e=1, REFUSED) looks like a counterexample to 'e=1 ⇒ REFUSED' but runs via route RULING ('by PA instruction') rather than PROMOTION, so the rule is route-specific and the pair also differs in a, k and t.",
+      "alternative": "ANALYTIC, if 'promoted' is defined as 'observed in ≥ 2 contexts' (a threshold written into the definition of the category). Rejected: the files define e only as an 'evidence condition', not as part of what promotion means, and TASK itself cites this very rule as its SYNTHETIC example."
+    },
+    {
+      "operation": "RAISE",
+      "variable": "t",
+      "class": "UNKNOWN",
+      "basis_quote": "CODING-LINES semobs.py:37 \"RAISE L493-B (single occurrence)\" ... \"REFUSED\", \"RULE\" ... a=\"PO/ARB\", k=\"observation\", s=\"normal\", t=\"methodology\", e=\"1\"; semobs.py:38 \"RAISE P1 / R-41 (by PA instruction)\" ... \"PERFORMED\" ... a=\"PA\", k=U, s=\"normal\", t=\"ES-004.3\", e=\"1\"",
+      "premise_or_rule": "No rule linking target to outcome is stated anywhere. Candidates: a scope rule (e.g. methodology observations are not raised to standard ES-004.3), which would be SYNTHETIC, or a definitional link (e.g. RAISE is defined only for standards targets), which would be ANALYTIC. Neither is attested.",
+      "premise_status_per_event": "n/a",
+      "refutable_contrast": "NO. All R-36 items share t=AST-013 and have both outcomes, so t does not vary there. The only t-varying pair (L493-B vs R-41) also differs in a (PO/ARB in source, UNK in EVENTS, vs PA), k (observation vs UNK), x (UNK) and route (PROMOTION vs RULING), and is at best a POSSIBLE witness confounded by route. The label '(single occurrence)' points to e, not t, as the coder's reason.",
+      "alternative": "SYNTHETIC (a target-scope rule) is the strongest alternative. It is not adopted because no text states such a rule and the data give no t-only contrast."
+    },
+    {
+      "operation": "ASSIGN-ID",
+      "variable": "h",
+      "class": "SYNTHETIC",
+      "basis_quote": "SCHEMA §1: \"`h` history summary\"; CODING-LINES semobs.py:39 \"ASSIGN a never-used number\" ... \"PERFORMED\" ... s=\"no-holder\", h=\"unused\"; semobs.py:40 \"ASSIGN the retired number R-90\" ... \"REFUSED\", \"RULE\" ... s=\"no-holder\", h=\"retired\"",
+      "premise_or_rule": "No-reuse rule: a number that was used once and then retired is not reassigned, even when it has no current holder. The field is defined as a *history summary*, which is descriptive. That a number has a past is logically independent of whether it may be reused, and many numbering schemes do reuse freed numbers.",
+      "premise_status_per_event": "n/a (synthetic)",
+      "refutable_contrast": "YES in form. k=identifier and s=no-holder are equal and known, and only h differs, so this is a strict witness between clusters 'register-numbering' and 'S0804-L576', giving one cluster-pair and WEAK. Caveats: 'ASSIGN a never-used number' (cluster 'register-numbering') looks like a generic numbering practice rather than one dated historical act, and R-90's refusal is 'reported' in the same session-log cluster in which R-90's REGISTER was refused, so the retirement and the refusal may be two sides of one decision.",
+      "alternative": "ANALYTIC: 'retired' could mean 'permanently withdrawn from assignment', as opposed to 'released/free', in which case the ban is part of the value's meaning. This is the strongest alternative and is not decisively rejected. It is set aside because the schema types h as a history summary (descriptive), and 'retired' is not defined in the files."
+    },
+    {
+      "operation": "SUPERSEDE",
+      "variable": "k",
+      "class": "UNKNOWN",
+      "basis_quote": "CODING-LINES semobs.py:41 \"SUPERSEDE ADR-T14 (R-77)\" ... \"REFUSED\", \"RULE\" ... a=\"ARB\", k=\"ADR\", e=\"insufficient\"; semobs.py:42 \"SUPERSEDE §12 (R-83)\" ... \"REFUSED\", \"RULE\" ... a=\"ARB-CHIEF\", k=\"design-rule\", e=\"0\"; semobs.py:43 \"SUPERSEDE D-12 by ADR-MP\", \"ADR-MP\", \"ADR\" ... \"PERFORMED\" ... r=\"ADR-ACCEPTANCE\", a=U, k=\"decision-log-entry\", e=U",
+      "premise_or_rule": "No rule linking the kind of object to whether it can be superseded is stated. The coded refusals give e ('insufficient', '0') as the visible reason, which points to an evidence rule, not a kind rule. Candidates: SYNTHETIC (e.g. decision-log entries can be superseded by ADR acceptance while ADRs and design rules need a ruling with evidence) or ANALYTIC (supersession defined per instrument kind). Neither is attested.",
+      "premise_status_per_event": "n/a",
+      "refutable_contrast": "NO strict contrast. The PERFORMED event differs from both refusals in k, route (ADR-ACCEPTANCE vs RULING), and a and e (UNK on the PERFORMED side, known and different on the refused side), so at best a POSSIBLE witness. R-94 (acceptance-record, e=2+, REFUSED) is CHOICE-grounded and excluded by R3; it is absent from EVENTS.json.",
+      "alternative": "SYNTHETIC (a kind-based supersession rule) is the strongest alternative. It is not adopted: no rule text exists, and the coded evidence field, not k, carries the stated reason for the refusals."
+    }
+  ],
+  "summary": {
+    "ANALYTIC": [
+      "ADOPT/c",
+      "START/s",
+      "START/t"
+    ],
+    "SYNTHETIC": [
+      "ADOPT/a",
+      "AUTHORIZE-IMPL/a",
+      "OPEN-WORK/k",
+      "RAISE/e",
+      "ASSIGN-ID/h"
+    ],
+    "UNKNOWN": [
+      "REGISTER/k",
+      "RAISE/t",
+      "SUPERSEDE/k"
+    ]
+  }
+}

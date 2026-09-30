@@ -1,0 +1,2161 @@
+{
+  "python_version": "3.13.2 (main, Jun 18 2026, 16:43:14) [GCC 16.1.1 20260515 (Red Hat 16.1.1-2)]",
+  "stdlib_root": "/home/nab-raj.roshyara@dg-nexolution.de/.pyenv/versions/3.13.2/lib/python3.13",
+  "file_count": 153,
+  "files": [
+    "__future__.py",
+    "__hello__.py",
+    "_aix_support.py",
+    "_android_support.py",
+    "_apple_support.py",
+    "_collections_abc.py",
+    "_colorize.py",
+    "_compat_pickle.py",
+    "_compression.py",
+    "_ios_support.py",
+    "_markupbase.py",
+    "_opcode_metadata.py",
+    "_osx_support.py",
+    "_py_abc.py",
+    "_pydatetime.py",
+    "_pydecimal.py",
+    "_pyio.py",
+    "_pylong.py",
+    "_sitebuiltins.py",
+    "_strptime.py",
+    "_sysconfigdata__linux_x86_64-linux-gnu.py",
+    "_threading_local.py",
+    "_weakrefset.py",
+    "abc.py",
+    "antigravity.py",
+    "argparse.py",
+    "ast.py",
+    "base64.py",
+    "bdb.py",
+    "bisect.py",
+    "bz2.py",
+    "cProfile.py",
+    "calendar.py",
+    "cmd.py",
+    "code.py",
+    "codecs.py",
+    "codeop.py",
+    "colorsys.py",
+    "compileall.py",
+    "configparser.py",
+    "contextlib.py",
+    "contextvars.py",
+    "copy.py",
+    "copyreg.py",
+    "csv.py",
+    "dataclasses.py",
+    "datetime.py",
+    "decimal.py",
+    "difflib.py",
+    "dis.py",
+    "doctest.py",
+    "enum.py",
+    "filecmp.py",
+    "fileinput.py",
+    "fnmatch.py",
+    "fractions.py",
+    "ftplib.py",
+    "functools.py",
+    "genericpath.py",
+    "getopt.py",
+    "getpass.py",
+    "gettext.py",
+    "glob.py",
+    "graphlib.py",
+    "gzip.py",
+    "hashlib.py",
+    "heapq.py",
+    "hmac.py",
+    "imaplib.py",
+    "inspect.py",
+    "io.py",
+    "ipaddress.py",
+    "keyword.py",
+    "linecache.py",
+    "locale.py",
+    "lzma.py",
+    "mailbox.py",
+    "mimetypes.py",
+    "modulefinder.py",
+    "netrc.py",
+    "ntpath.py",
+    "nturl2path.py",
+    "numbers.py",
+    "opcode.py",
+    "operator.py",
+    "optparse.py",
+    "os.py",
+    "pdb.py",
+    "pickle.py",
+    "pickletools.py",
+    "pkgutil.py",
+    "platform.py",
+    "plistlib.py",
+    "poplib.py",
+    "posixpath.py",
+    "pprint.py",
+    "profile.py",
+    "pstats.py",
+    "pty.py",
+    "py_compile.py",
+    "pyclbr.py",
+    "pydoc.py",
+    "queue.py",
+    "quopri.py",
+    "random.py",
+    "reprlib.py",
+    "rlcompleter.py",
+    "runpy.py",
+    "sched.py",
+    "secrets.py",
+    "selectors.py",
+    "shelve.py",
+    "shlex.py",
+    "shutil.py",
+    "signal.py",
+    "site.py",
+    "smtplib.py",
+    "socket.py",
+    "socketserver.py",
+    "sre_compile.py",
+    "sre_constants.py",
+    "sre_parse.py",
+    "ssl.py",
+    "stat.py",
+    "statistics.py",
+    "string.py",
+    "stringprep.py",
+    "struct.py",
+    "subprocess.py",
+    "symtable.py",
+    "tabnanny.py",
+    "tarfile.py",
+    "tempfile.py",
+    "textwrap.py",
+    "this.py",
+    "threading.py",
+    "timeit.py",
+    "token.py",
+    "tokenize.py",
+    "trace.py",
+    "traceback.py",
+    "tracemalloc.py",
+    "tty.py",
+    "turtle.py",
+    "types.py",
+    "typing.py",
+    "uuid.py",
+    "warnings.py",
+    "wave.py",
+    "weakref.py",
+    "webbrowser.py",
+    "zipapp.py",
+    "zipimport.py"
+  ],
+  "parse_failures": [],
+  "extract_failures": [],
+  "totals": {
+    "ClassDef": {
+      "file_count": 111,
+      "occurrences": 728
+    },
+    "FunctionDef": {
+      "file_count": 139,
+      "occurrences": 6426
+    },
+    "Import": {
+      "file_count": 144,
+      "occurrences": 1181
+    },
+    "With": {
+      "file_count": 66,
+      "occurrences": 270
+    },
+    "DestructuringAssign": {
+      "file_count": 101,
+      "occurrences": 956
+    },
+    "TryExcept": {
+      "file_count": 124,
+      "occurrences": 1303
+    },
+    "Global": {
+      "file_count": 24,
+      "occurrences": 51
+    },
+    "Decorator:property": {
+      "file_count": 36,
+      "occurrences": 252
+    },
+    "AugmentedAssign": {
+      "file_count": 96,
+      "occurrences": 797
+    },
+    "Call:super": {
+      "file_count": 37,
+      "occurrences": 177
+    },
+    "AsyncFunctionDef": {
+      "file_count": 3,
+      "occurrences": 23
+    },
+    "ClassKeywordArgs(metaclass_etc)": {
+      "file_count": 9,
+      "occurrences": 39
+    },
+    "MultipleInheritance": {
+      "file_count": 14,
+      "occurrences": 45
+    },
+    "Decorator:abstractmethod": {
+      "file_count": 4,
+      "occurrences": 107
+    },
+    "Decorator:classmethod": {
+      "file_count": 19,
+      "occurrences": 95
+    },
+    "Yield": {
+      "file_count": 40,
+      "occurrences": 186
+    },
+    "Lambda": {
+      "file_count": 33,
+      "occurrences": 135
+    },
+    "Await": {
+      "file_count": 2,
+      "occurrences": 13
+    },
+    "GeneratorExp": {
+      "file_count": 58,
+      "occurrences": 198
+    },
+    "YieldFrom": {
+      "file_count": 17,
+      "occurrences": 49
+    },
+    "Call:hasattr": {
+      "file_count": 63,
+      "occurrences": 290
+    },
+    "ListComp": {
+      "file_count": 67,
+      "occurrences": 269
+    },
+    "SlotsUsage(textual)": {
+      "file_count": 29,
+      "occurrences": 29
+    },
+    "Call:setattr": {
+      "file_count": 17,
+      "occurrences": 62
+    },
+    "WalrusOperator": {
+      "file_count": 25,
+      "occurrences": 41
+    },
+    "Call:getattr": {
+      "file_count": 64,
+      "occurrences": 367
+    },
+    "MultiTargetAssign": {
+      "file_count": 59,
+      "occurrences": 158
+    },
+    "SetComp": {
+      "file_count": 6,
+      "occurrences": 11
+    },
+    "Decorator:staticmethod": {
+      "file_count": 10,
+      "occurrences": 21
+    },
+    "NestedFunctionOrLambdaInMethod": {
+      "file_count": 35,
+      "occurrences": 99
+    },
+    "MatchStatement": {
+      "file_count": 6,
+      "occurrences": 8
+    },
+    "Nonlocal": {
+      "file_count": 7,
+      "occurrences": 18
+    },
+    "Decorator:contextmanager": {
+      "file_count": 4,
+      "occurrences": 7
+    },
+    "Call:delattr": {
+      "file_count": 5,
+      "occurrences": 11
+    },
+    "NestedClassInClassBody": {
+      "file_count": 4,
+      "occurrences": 8
+    },
+    "ClassDecorator:_simple_enum": {
+      "file_count": 5,
+      "occurrences": 8
+    },
+    "DictComp": {
+      "file_count": 21,
+      "occurrences": 31
+    },
+    "ClassDecorator:global_enum": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "AnnotatedAssign": {
+      "file_count": 4,
+      "occurrences": 20
+    },
+    "Decorator:functools.cached_property": {
+      "file_count": 3,
+      "occurrences": 6
+    },
+    "Decorator:abc.abstractmethod": {
+      "file_count": 2,
+      "occurrences": 3
+    },
+    "Decorator:wraps": {
+      "file_count": 1,
+      "occurrences": 4
+    },
+    "Decorator:fieldnames.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:recursive_repr": {
+      "file_count": 2,
+      "occurrences": 2
+    },
+    "Call:__import__": {
+      "file_count": 9,
+      "occurrences": 11
+    },
+    "Decorator:bltns.property": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:functools.lru_cache": {
+      "file_count": 6,
+      "occurrences": 9
+    },
+    "ClassDecorator:functools.total_ordering": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:functools.wraps": {
+      "file_count": 4,
+      "occurrences": 8
+    },
+    "Decorator:simplegeneric": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "ClassDecorator:dataclass": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:_wraps": {
+      "file_count": 1,
+      "occurrences": 6
+    },
+    "Decorator:options.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:_msg_callback.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:verify_flags.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:verify_mode.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:context.setter": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:session.setter": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:_sslcopydoc": {
+      "file_count": 1,
+      "occurrences": 17
+    },
+    "Decorator:minimum_version.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:maximum_version.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:hostname_checks_common_name.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:stdout.setter": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:universal_newlines.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:contextlib.contextmanager": {
+      "file_count": 2,
+      "occurrences": 2
+    },
+    "Decorator:tarfile.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:path.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:linkpath.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:_functools.wraps": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:name.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "Decorator:daemon.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "ClassDecorator:total_ordering": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:_SpecialForm": {
+      "file_count": 1,
+      "occurrences": 16
+    },
+    "Decorator:_TypedCacheSpecialForm": {
+      "file_count": 1,
+      "occurrences": 2
+    },
+    "Decorator:_tp_cache": {
+      "file_count": 1,
+      "occurrences": 8
+    },
+    "Decorator:functools.cache": {
+      "file_count": 1,
+      "occurrences": 1
+    },
+    "ClassDecorator:runtime_checkable": {
+      "file_count": 1,
+      "occurrences": 7
+    },
+    "Decorator:atexit.setter": {
+      "file_count": 1,
+      "occurrences": 1
+    }
+  },
+  "per_file": [
+    {
+      "file": "__future__.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 4,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 4
+    },
+    {
+      "file": "__hello__.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_aix_support.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_android_support.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 13,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 13
+    },
+    {
+      "file": "_apple_support.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 7,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 7
+    },
+    {
+      "file": "_collections_abc.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 28,
+      "methods": 108,
+      "nested_scope_methods": 0,
+      "adapter_units": 28,
+      "adapter_methods": 103
+    },
+    {
+      "file": "_colorize.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_compat_pickle.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_compression.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 14,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 14
+    },
+    {
+      "file": "_ios_support.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_markupbase.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 14,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 14
+    },
+    {
+      "file": "_opcode_metadata.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_osx_support.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_py_abc.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 7,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 7
+    },
+    {
+      "file": "_pydatetime.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 7,
+      "methods": 158,
+      "nested_scope_methods": 2,
+      "adapter_units": 7,
+      "adapter_methods": 158
+    },
+    {
+      "file": "_pydecimal.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 19,
+      "methods": 213,
+      "nested_scope_methods": 0,
+      "adapter_units": 19,
+      "adapter_methods": 213
+    },
+    {
+      "file": "_pyio.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 14,
+      "methods": 186,
+      "nested_scope_methods": 2,
+      "adapter_units": 14,
+      "adapter_methods": 186
+    },
+    {
+      "file": "_pylong.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_sitebuiltins.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 9,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 9
+    },
+    {
+      "file": "_strptime.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 12,
+      "nested_scope_methods": 2,
+      "adapter_units": 2,
+      "adapter_methods": 12
+    },
+    {
+      "file": "_sysconfigdata__linux_x86_64-linux-gnu.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "_threading_local.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 7,
+      "nested_scope_methods": 1,
+      "adapter_units": 2,
+      "adapter_methods": 7
+    },
+    {
+      "file": "_weakrefset.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 34,
+      "nested_scope_methods": 1,
+      "adapter_units": 2,
+      "adapter_methods": 34
+    },
+    {
+      "file": "abc.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 2,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 2
+    },
+    {
+      "file": "antigravity.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "argparse.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 27,
+      "methods": 128,
+      "nested_scope_methods": 4,
+      "adapter_units": 27,
+      "adapter_methods": 128
+    },
+    {
+      "file": "ast.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 17,
+      "methods": 114,
+      "nested_scope_methods": 21,
+      "adapter_units": 17,
+      "adapter_methods": 114
+    },
+    {
+      "file": "base64.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "bdb.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 62,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 62
+    },
+    {
+      "file": "bisect.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "bz2.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 19,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 19
+    },
+    {
+      "file": "cProfile.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 9,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 9
+    },
+    {
+      "file": "calendar.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 12,
+      "methods": 52,
+      "nested_scope_methods": 0,
+      "adapter_units": 12,
+      "adapter_methods": 52
+    },
+    {
+      "file": "cmd.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 18,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 18
+    },
+    {
+      "file": "code.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 16,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 16
+    },
+    {
+      "file": "codecs.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 10,
+      "methods": 77,
+      "nested_scope_methods": 0,
+      "adapter_units": 10,
+      "adapter_methods": 77
+    },
+    {
+      "file": "codeop.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 4,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 4
+    },
+    {
+      "file": "colorsys.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "compileall.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "configparser.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 22,
+      "methods": 97,
+      "nested_scope_methods": 1,
+      "adapter_units": 22,
+      "adapter_methods": 97
+    },
+    {
+      "file": "contextlib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 18,
+      "methods": 57,
+      "nested_scope_methods": 6,
+      "adapter_units": 18,
+      "adapter_methods": 45
+    },
+    {
+      "file": "contextvars.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "copy.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 0
+    },
+    {
+      "file": "copyreg.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "csv.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 7,
+      "methods": 17,
+      "nested_scope_methods": 1,
+      "adapter_units": 7,
+      "adapter_methods": 17
+    },
+    {
+      "file": "dataclasses.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 9,
+      "methods": 14,
+      "nested_scope_methods": 0,
+      "adapter_units": 9,
+      "adapter_methods": 14
+    },
+    {
+      "file": "datetime.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "decimal.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "difflib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 29,
+      "nested_scope_methods": 1,
+      "adapter_units": 3,
+      "adapter_methods": 29
+    },
+    {
+      "file": "dis.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 6,
+      "methods": 23,
+      "nested_scope_methods": 0,
+      "adapter_units": 6,
+      "adapter_methods": 23
+    },
+    {
+      "file": "doctest.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 17,
+      "methods": 76,
+      "nested_scope_methods": 1,
+      "adapter_units": 17,
+      "adapter_methods": 76
+    },
+    {
+      "file": "enum.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 18,
+      "methods": 74,
+      "nested_scope_methods": 2,
+      "adapter_units": 18,
+      "adapter_methods": 74
+    },
+    {
+      "file": "filecmp.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 11,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 11
+    },
+    {
+      "file": "fileinput.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 16,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 16
+    },
+    {
+      "file": "fnmatch.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "fractions.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 43,
+      "nested_scope_methods": 1,
+      "adapter_units": 1,
+      "adapter_methods": 43
+    },
+    {
+      "file": "ftplib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 6,
+      "methods": 41,
+      "nested_scope_methods": 0,
+      "adapter_units": 6,
+      "adapter_methods": 41
+    },
+    {
+      "file": "functools.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 20,
+      "nested_scope_methods": 2,
+      "adapter_units": 5,
+      "adapter_methods": 20
+    },
+    {
+      "file": "genericpath.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "getopt.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 2,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 2
+    },
+    {
+      "file": "getpass.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 0
+    },
+    {
+      "file": "gettext.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 16,
+      "nested_scope_methods": 1,
+      "adapter_units": 2,
+      "adapter_methods": 16
+    },
+    {
+      "file": "glob.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 11,
+      "nested_scope_methods": 4,
+      "adapter_units": 2,
+      "adapter_methods": 11
+    },
+    {
+      "file": "graphlib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 11,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 11
+    },
+    {
+      "file": "gzip.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 36,
+      "nested_scope_methods": 0,
+      "adapter_units": 5,
+      "adapter_methods": 36
+    },
+    {
+      "file": "hashlib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "heapq.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "hmac.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 9,
+      "nested_scope_methods": 1,
+      "adapter_units": 1,
+      "adapter_methods": 9
+    },
+    {
+      "file": "imaplib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 82,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 82
+    },
+    {
+      "file": "inspect.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 12,
+      "methods": 45,
+      "nested_scope_methods": 0,
+      "adapter_units": 12,
+      "adapter_methods": 45
+    },
+    {
+      "file": "io.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 0
+    },
+    {
+      "file": "ipaddress.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 16,
+      "methods": 133,
+      "nested_scope_methods": 2,
+      "adapter_units": 16,
+      "adapter_methods": 133
+    },
+    {
+      "file": "keyword.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "linecache.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "locale.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "lzma.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 16,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 16
+    },
+    {
+      "file": "mailbox.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 22,
+      "methods": 185,
+      "nested_scope_methods": 0,
+      "adapter_units": 22,
+      "adapter_methods": 185
+    },
+    {
+      "file": "mimetypes.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 11,
+      "nested_scope_methods": 2,
+      "adapter_units": 1,
+      "adapter_methods": 11
+    },
+    {
+      "file": "modulefinder.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 27,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 27
+    },
+    {
+      "file": "netrc.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 11,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 11
+    },
+    {
+      "file": "ntpath.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "nturl2path.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "numbers.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 56,
+      "nested_scope_methods": 0,
+      "adapter_units": 5,
+      "adapter_methods": 56
+    },
+    {
+      "file": "opcode.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "operator.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 12,
+      "nested_scope_methods": 2,
+      "adapter_units": 3,
+      "adapter_methods": 12
+    },
+    {
+      "file": "optparse.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 14,
+      "methods": 114,
+      "nested_scope_methods": 0,
+      "adapter_units": 14,
+      "adapter_methods": 114
+    },
+    {
+      "file": "os.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 14,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 14
+    },
+    {
+      "file": "pdb.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 8,
+      "methods": 110,
+      "nested_scope_methods": 0,
+      "adapter_units": 8,
+      "adapter_methods": 110
+    },
+    {
+      "file": "pickle.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 8,
+      "methods": 117,
+      "nested_scope_methods": 0,
+      "adapter_units": 8,
+      "adapter_methods": 117
+    },
+    {
+      "file": "pickletools.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 5,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 5
+    },
+    {
+      "file": "pkgutil.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "platform.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 11,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 11
+    },
+    {
+      "file": "plistlib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 7,
+      "methods": 50,
+      "nested_scope_methods": 0,
+      "adapter_units": 7,
+      "adapter_methods": 50
+    },
+    {
+      "file": "poplib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 28,
+      "nested_scope_methods": 1,
+      "adapter_units": 2,
+      "adapter_methods": 28
+    },
+    {
+      "file": "posixpath.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "pprint.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 32,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 32
+    },
+    {
+      "file": "profile.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 25,
+      "nested_scope_methods": 2,
+      "adapter_units": 2,
+      "adapter_methods": 25
+    },
+    {
+      "file": "pstats.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 24,
+      "nested_scope_methods": 0,
+      "adapter_units": 5,
+      "adapter_methods": 24
+    },
+    {
+      "file": "pty.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "py_compile.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 2,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 2
+    },
+    {
+      "file": "pyclbr.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 9,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 9
+    },
+    {
+      "file": "pydoc.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 9,
+      "methods": 66,
+      "nested_scope_methods": 4,
+      "adapter_units": 9,
+      "adapter_methods": 66
+    },
+    {
+      "file": "queue.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 6,
+      "methods": 30,
+      "nested_scope_methods": 0,
+      "adapter_units": 6,
+      "adapter_methods": 30
+    },
+    {
+      "file": "quopri.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "random.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 34,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 34
+    },
+    {
+      "file": "reprlib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 15,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 15
+    },
+    {
+      "file": "rlcompleter.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 5,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 5
+    },
+    {
+      "file": "runpy.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 6,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 6
+    },
+    {
+      "file": "sched.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 7,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 7
+    },
+    {
+      "file": "secrets.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "selectors.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 30,
+      "nested_scope_methods": 0,
+      "adapter_units": 5,
+      "adapter_methods": 30
+    },
+    {
+      "file": "shelve.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 23,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 23
+    },
+    {
+      "file": "shlex.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 11,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 11
+    },
+    {
+      "file": "shutil.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 7,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 7,
+      "adapter_methods": 0
+    },
+    {
+      "file": "signal.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "site.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "smtplib.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 12,
+      "methods": 39,
+      "nested_scope_methods": 0,
+      "adapter_units": 12,
+      "adapter_methods": 39
+    },
+    {
+      "file": "socket.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 27,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 27
+    },
+    {
+      "file": "socketserver.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 12,
+      "methods": 50,
+      "nested_scope_methods": 0,
+      "adapter_units": 12,
+      "adapter_methods": 50
+    },
+    {
+      "file": "sre_compile.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "sre_constants.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "sre_parse.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "ssl.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 9,
+      "methods": 89,
+      "nested_scope_methods": 2,
+      "adapter_units": 9,
+      "adapter_methods": 89
+    },
+    {
+      "file": "stat.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "statistics.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 26,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 26
+    },
+    {
+      "file": "string.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 16,
+      "nested_scope_methods": 2,
+      "adapter_units": 2,
+      "adapter_methods": 16
+    },
+    {
+      "file": "stringprep.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "struct.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "subprocess.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 28,
+      "nested_scope_methods": 0,
+      "adapter_units": 5,
+      "adapter_methods": 28
+    },
+    {
+      "file": "symtable.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 6,
+      "methods": 42,
+      "nested_scope_methods": 6,
+      "adapter_units": 6,
+      "adapter_methods": 42
+    },
+    {
+      "file": "tabnanny.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 11,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 11
+    },
+    {
+      "file": "tarfile.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 24,
+      "methods": 121,
+      "nested_scope_methods": 2,
+      "adapter_units": 24,
+      "adapter_methods": 121
+    },
+    {
+      "file": "tempfile.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 52,
+      "nested_scope_methods": 2,
+      "adapter_units": 5,
+      "adapter_methods": 52
+    },
+    {
+      "file": "textwrap.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 9,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 9
+    },
+    {
+      "file": "this.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "threading.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 12,
+      "methods": 82,
+      "nested_scope_methods": 1,
+      "adapter_units": 12,
+      "adapter_methods": 82
+    },
+    {
+      "file": "timeit.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 5,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 5
+    },
+    {
+      "file": "token.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "tokenize.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 8,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 8
+    },
+    {
+      "file": "trace.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 19,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 19
+    },
+    {
+      "file": "traceback.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 31,
+      "nested_scope_methods": 4,
+      "adapter_units": 5,
+      "adapter_methods": 31
+    },
+    {
+      "file": "tracemalloc.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 10,
+      "methods": 64,
+      "nested_scope_methods": 0,
+      "adapter_units": 10,
+      "adapter_methods": 64
+    },
+    {
+      "file": "tty.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 0,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 0,
+      "adapter_methods": 0
+    },
+    {
+      "file": "turtle.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 15,
+      "methods": 201,
+      "nested_scope_methods": 7,
+      "adapter_units": 15,
+      "adapter_methods": 201
+    },
+    {
+      "file": "types.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 3,
+      "methods": 18,
+      "nested_scope_methods": 0,
+      "adapter_units": 3,
+      "adapter_methods": 18
+    },
+    {
+      "file": "typing.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 37,
+      "methods": 133,
+      "nested_scope_methods": 1,
+      "adapter_units": 37,
+      "adapter_methods": 133
+    },
+    {
+      "file": "uuid.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 28,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 28
+    },
+    {
+      "file": "warnings.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 8,
+      "nested_scope_methods": 1,
+      "adapter_units": 4,
+      "adapter_methods": 8
+    },
+    {
+      "file": "wave.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 4,
+      "methods": 56,
+      "nested_scope_methods": 0,
+      "adapter_units": 4,
+      "adapter_methods": 56
+    },
+    {
+      "file": "weakref.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 5,
+      "methods": 62,
+      "nested_scope_methods": 4,
+      "adapter_units": 5,
+      "adapter_methods": 62
+    },
+    {
+      "file": "webbrowser.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 12,
+      "methods": 10,
+      "nested_scope_methods": 0,
+      "adapter_units": 12,
+      "adapter_methods": 10
+    },
+    {
+      "file": "zipapp.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 1,
+      "methods": 0,
+      "nested_scope_methods": 0,
+      "adapter_units": 1,
+      "adapter_methods": 0
+    },
+    {
+      "file": "zipimport.py",
+      "parse_ok": true,
+      "extract_ok": true,
+      "error": null,
+      "classes": 2,
+      "methods": 12,
+      "nested_scope_methods": 0,
+      "adapter_units": 2,
+      "adapter_methods": 12
+    }
+  ]
+}

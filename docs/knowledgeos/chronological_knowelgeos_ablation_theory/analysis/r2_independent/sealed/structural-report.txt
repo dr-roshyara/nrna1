@@ -1,0 +1,1098 @@
+PASS instances present
+PASS chain3: top keys
+PASS chain3: full props
+PASS chain3: full boolean
+PASS chain3: 11 removals
+PASS chain3/A0: props
+PASS chain3/A0/D1: shape
+PASS chain3/A0/D2: shape
+PASS chain3/A0/D3: shape
+PASS chain3/A0/D3+: shape
+PASS chain3/A0/D5: shape
+PASS chain3/A0/D6: shape
+PASS chain3/A0/NV: shape
+PASS chain3/A1: props
+PASS chain3/A1/D1: shape
+PASS chain3/A1/D2: shape
+PASS chain3/A1/D3: shape
+PASS chain3/A1/D3+: shape
+PASS chain3/A1/D5: shape
+PASS chain3/A1/D6: shape
+PASS chain3/A1/NV: shape
+PASS chain3/A2e: props
+PASS chain3/A2e/D1: shape
+PASS chain3/A2e/D2: shape
+PASS chain3/A2e/D3: shape
+PASS chain3/A2e/D3+: shape
+PASS chain3/A2e/D5: shape
+PASS chain3/A2e/D6: shape
+PASS chain3/A2e/NV: shape
+PASS chain3/A3g: props
+PASS chain3/A3g/D1: shape
+PASS chain3/A3g/D2: shape
+PASS chain3/A3g/D3: shape
+PASS chain3/A3g/D3+: shape
+PASS chain3/A3g/D5: shape
+PASS chain3/A3g/D6: shape
+PASS chain3/A3g/NV: shape
+PASS chain3/A3s: props
+PASS chain3/A3s/D1: shape
+PASS chain3/A3s/D2: shape
+PASS chain3/A3s/D3: shape
+PASS chain3/A3s/D3+: shape
+PASS chain3/A3s/D5: shape
+PASS chain3/A3s/D6: shape
+PASS chain3/A3s/NV: shape
+PASS chain3/A3m: props
+PASS chain3/A3m/D1: shape
+PASS chain3/A3m/D2: shape
+PASS chain3/A3m/D3: shape
+PASS chain3/A3m/D3+: shape
+PASS chain3/A3m/D5: shape
+PASS chain3/A3m/D6: shape
+PASS chain3/A3m/NV: shape
+PASS chain3/A4: props
+PASS chain3/A4/D1: shape
+PASS chain3/A4/D2: shape
+PASS chain3/A4/D3: shape
+PASS chain3/A4/D3+: shape
+PASS chain3/A4/D5: shape
+PASS chain3/A4/D6: shape
+PASS chain3/A4/NV: shape
+PASS chain3/A5e: props
+PASS chain3/A5e/D1: shape
+PASS chain3/A5e/D2: shape
+PASS chain3/A5e/D3: shape
+PASS chain3/A5e/D3+: shape
+PASS chain3/A5e/D5: shape
+PASS chain3/A5e/D6: shape
+PASS chain3/A5e/NV: shape
+PASS chain3/A5g: props
+PASS chain3/A5g/D1: shape
+PASS chain3/A5g/D2: shape
+PASS chain3/A5g/D3: shape
+PASS chain3/A5g/D3+: shape
+PASS chain3/A5g/D5: shape
+PASS chain3/A5g/D6: shape
+PASS chain3/A5g/NV: shape
+PASS chain3/A5s: props
+PASS chain3/A5s/D1: shape
+PASS chain3/A5s/D2: shape
+PASS chain3/A5s/D3: shape
+PASS chain3/A5s/D3+: shape
+PASS chain3/A5s/D5: shape
+PASS chain3/A5s/D6: shape
+PASS chain3/A5s/NV: shape
+PASS chain3/A6: props
+PASS chain3/A6/D1: shape
+PASS chain3/A6/D2: shape
+PASS chain3/A6/D3: shape
+PASS chain3/A6/D3+: shape
+PASS chain3/A6/D5: shape
+PASS chain3/A6/D6: shape
+PASS chain3/A6/NV: shape
+PASS chain3: minimal props
+PASS V: top keys
+PASS V: full props
+PASS V: full boolean
+PASS V: 11 removals
+PASS V/A0: props
+PASS V/A0/D1: shape
+PASS V/A0/D2: shape
+PASS V/A0/D3: shape
+PASS V/A0/D3+: shape
+PASS V/A0/D5: shape
+PASS V/A0/D6: shape
+PASS V/A0/NV: shape
+PASS V/A1: props
+PASS V/A1/D1: shape
+PASS V/A1/D2: shape
+PASS V/A1/D3: shape
+PASS V/A1/D3+: shape
+PASS V/A1/D5: shape
+PASS V/A1/D6: shape
+PASS V/A1/NV: shape
+PASS V/A2e: props
+PASS V/A2e/D1: shape
+PASS V/A2e/D2: shape
+PASS V/A2e/D3: shape
+PASS V/A2e/D3+: shape
+PASS V/A2e/D5: shape
+PASS V/A2e/D6: shape
+PASS V/A2e/NV: shape
+PASS V/A3g: props
+PASS V/A3g/D1: shape
+PASS V/A3g/D2: shape
+PASS V/A3g/D3: shape
+PASS V/A3g/D3+: shape
+PASS V/A3g/D5: shape
+PASS V/A3g/D6: shape
+PASS V/A3g/NV: shape
+PASS V/A3s: props
+PASS V/A3s/D1: shape
+PASS V/A3s/D2: shape
+PASS V/A3s/D3: shape
+PASS V/A3s/D3+: shape
+PASS V/A3s/D5: shape
+PASS V/A3s/D6: shape
+PASS V/A3s/NV: shape
+PASS V/A3m: props
+PASS V/A3m/D1: shape
+PASS V/A3m/D2: shape
+PASS V/A3m/D3: shape
+PASS V/A3m/D3+: shape
+PASS V/A3m/D5: shape
+PASS V/A3m/D6: shape
+PASS V/A3m/NV: shape
+PASS V/A4: props
+PASS V/A4/D1: shape
+PASS V/A4/D2: shape
+PASS V/A4/D3: shape
+PASS V/A4/D3+: shape
+PASS V/A4/D5: shape
+PASS V/A4/D6: shape
+PASS V/A4/NV: shape
+PASS V/A5e: props
+PASS V/A5e/D1: shape
+PASS V/A5e/D2: shape
+PASS V/A5e/D3: shape
+PASS V/A5e/D3+: shape
+PASS V/A5e/D5: shape
+PASS V/A5e/D6: shape
+PASS V/A5e/NV: shape
+PASS V/A5g: props
+PASS V/A5g/D1: shape
+PASS V/A5g/D2: shape
+PASS V/A5g/D3: shape
+PASS V/A5g/D3+: shape
+PASS V/A5g/D5: shape
+PASS V/A5g/D6: shape
+PASS V/A5g/NV: shape
+PASS V/A5s: props
+PASS V/A5s/D1: shape
+PASS V/A5s/D2: shape
+PASS V/A5s/D3: shape
+PASS V/A5s/D3+: shape
+PASS V/A5s/D5: shape
+PASS V/A5s/D6: shape
+PASS V/A5s/NV: shape
+PASS V/A6: props
+PASS V/A6/D1: shape
+PASS V/A6/D2: shape
+PASS V/A6/D3: shape
+PASS V/A6/D3+: shape
+PASS V/A6/D5: shape
+PASS V/A6/D6: shape
+PASS V/A6/NV: shape
+PASS V: minimal props
+PASS diamond: top keys
+PASS diamond: full props
+PASS diamond: full boolean
+PASS diamond: 11 removals
+PASS diamond/A0: props
+PASS diamond/A0/D1: shape
+PASS diamond/A0/D2: shape
+PASS diamond/A0/D3: shape
+PASS diamond/A0/D3+: shape
+PASS diamond/A0/D5: shape
+PASS diamond/A0/D6: shape
+PASS diamond/A0/NV: shape
+PASS diamond/A1: props
+PASS diamond/A1/D1: shape
+PASS diamond/A1/D2: shape
+PASS diamond/A1/D3: shape
+PASS diamond/A1/D3+: shape
+PASS diamond/A1/D5: shape
+PASS diamond/A1/D6: shape
+PASS diamond/A1/NV: shape
+PASS diamond/A2e: props
+PASS diamond/A2e/D1: shape
+PASS diamond/A2e/D2: shape
+PASS diamond/A2e/D3: shape
+PASS diamond/A2e/D3+: shape
+PASS diamond/A2e/D5: shape
+PASS diamond/A2e/D6: shape
+PASS diamond/A2e/NV: shape
+PASS diamond/A3g: props
+PASS diamond/A3g/D1: shape
+PASS diamond/A3g/D2: shape
+PASS diamond/A3g/D3: shape
+PASS diamond/A3g/D3+: shape
+PASS diamond/A3g/D5: shape
+PASS diamond/A3g/D6: shape
+PASS diamond/A3g/NV: shape
+PASS diamond/A3s: props
+PASS diamond/A3s/D1: shape
+PASS diamond/A3s/D2: shape
+PASS diamond/A3s/D3: shape
+PASS diamond/A3s/D3+: shape
+PASS diamond/A3s/D5: shape
+PASS diamond/A3s/D6: shape
+PASS diamond/A3s/NV: shape
+PASS diamond/A3m: props
+PASS diamond/A3m/D1: shape
+PASS diamond/A3m/D2: shape
+PASS diamond/A3m/D3: shape
+PASS diamond/A3m/D3+: shape
+PASS diamond/A3m/D5: shape
+PASS diamond/A3m/D6: shape
+PASS diamond/A3m/NV: shape
+PASS diamond/A4: props
+PASS diamond/A4/D1: shape
+PASS diamond/A4/D2: shape
+PASS diamond/A4/D3: shape
+PASS diamond/A4/D3+: shape
+PASS diamond/A4/D5: shape
+PASS diamond/A4/D6: shape
+PASS diamond/A4/NV: shape
+PASS diamond/A5e: props
+PASS diamond/A5e/D1: shape
+PASS diamond/A5e/D2: shape
+PASS diamond/A5e/D3: shape
+PASS diamond/A5e/D3+: shape
+PASS diamond/A5e/D5: shape
+PASS diamond/A5e/D6: shape
+PASS diamond/A5e/NV: shape
+PASS diamond/A5g: props
+PASS diamond/A5g/D1: shape
+PASS diamond/A5g/D2: shape
+PASS diamond/A5g/D3: shape
+PASS diamond/A5g/D3+: shape
+PASS diamond/A5g/D5: shape
+PASS diamond/A5g/D6: shape
+PASS diamond/A5g/NV: shape
+PASS diamond/A5s: props
+PASS diamond/A5s/D1: shape
+PASS diamond/A5s/D2: shape
+PASS diamond/A5s/D3: shape
+PASS diamond/A5s/D3+: shape
+PASS diamond/A5s/D5: shape
+PASS diamond/A5s/D6: shape
+PASS diamond/A5s/NV: shape
+PASS diamond/A6: props
+PASS diamond/A6/D1: shape
+PASS diamond/A6/D2: shape
+PASS diamond/A6/D3: shape
+PASS diamond/A6/D3+: shape
+PASS diamond/A6/D5: shape
+PASS diamond/A6/D6: shape
+PASS diamond/A6/NV: shape
+PASS diamond: minimal props
+PASS antichain2: top keys
+PASS antichain2: full props
+PASS antichain2: full boolean
+PASS antichain2: 11 removals
+PASS antichain2/A0: props
+PASS antichain2/A0/D1: shape
+PASS antichain2/A0/D2: shape
+PASS antichain2/A0/D3: shape
+PASS antichain2/A0/D3+: shape
+PASS antichain2/A0/D5: shape
+PASS antichain2/A0/D6: shape
+PASS antichain2/A0/NV: shape
+PASS antichain2/A1: props
+PASS antichain2/A1/D1: shape
+PASS antichain2/A1/D2: shape
+PASS antichain2/A1/D3: shape
+PASS antichain2/A1/D3+: shape
+PASS antichain2/A1/D5: shape
+PASS antichain2/A1/D6: shape
+PASS antichain2/A1/NV: shape
+PASS antichain2/A2e: props
+PASS antichain2/A2e/D1: shape
+PASS antichain2/A2e/D2: shape
+PASS antichain2/A2e/D3: shape
+PASS antichain2/A2e/D3+: shape
+PASS antichain2/A2e/D5: shape
+PASS antichain2/A2e/D6: shape
+PASS antichain2/A2e/NV: shape
+PASS antichain2/A3g: props
+PASS antichain2/A3g/D1: shape
+PASS antichain2/A3g/D2: shape
+PASS antichain2/A3g/D3: shape
+PASS antichain2/A3g/D3+: shape
+PASS antichain2/A3g/D5: shape
+PASS antichain2/A3g/D6: shape
+PASS antichain2/A3g/NV: shape
+PASS antichain2/A3s: props
+PASS antichain2/A3s/D1: shape
+PASS antichain2/A3s/D2: shape
+PASS antichain2/A3s/D3: shape
+PASS antichain2/A3s/D3+: shape
+PASS antichain2/A3s/D5: shape
+PASS antichain2/A3s/D6: shape
+PASS antichain2/A3s/NV: shape
+PASS antichain2/A3m: props
+PASS antichain2/A3m/D1: shape
+PASS antichain2/A3m/D2: shape
+PASS antichain2/A3m/D3: shape
+PASS antichain2/A3m/D3+: shape
+PASS antichain2/A3m/D5: shape
+PASS antichain2/A3m/D6: shape
+PASS antichain2/A3m/NV: shape
+PASS antichain2/A4: props
+PASS antichain2/A4/D1: shape
+PASS antichain2/A4/D2: shape
+PASS antichain2/A4/D3: shape
+PASS antichain2/A4/D3+: shape
+PASS antichain2/A4/D5: shape
+PASS antichain2/A4/D6: shape
+PASS antichain2/A4/NV: shape
+PASS antichain2/A5e: props
+PASS antichain2/A5e/D1: shape
+PASS antichain2/A5e/D2: shape
+PASS antichain2/A5e/D3: shape
+PASS antichain2/A5e/D3+: shape
+PASS antichain2/A5e/D5: shape
+PASS antichain2/A5e/D6: shape
+PASS antichain2/A5e/NV: shape
+PASS antichain2/A5g: props
+PASS antichain2/A5g/D1: shape
+PASS antichain2/A5g/D2: shape
+PASS antichain2/A5g/D3: shape
+PASS antichain2/A5g/D3+: shape
+PASS antichain2/A5g/D5: shape
+PASS antichain2/A5g/D6: shape
+PASS antichain2/A5g/NV: shape
+PASS antichain2/A5s: props
+PASS antichain2/A5s/D1: shape
+PASS antichain2/A5s/D2: shape
+PASS antichain2/A5s/D3: shape
+PASS antichain2/A5s/D3+: shape
+PASS antichain2/A5s/D5: shape
+PASS antichain2/A5s/D6: shape
+PASS antichain2/A5s/NV: shape
+PASS antichain2/A6: props
+PASS antichain2/A6/D1: shape
+PASS antichain2/A6/D2: shape
+PASS antichain2/A6/D3: shape
+PASS antichain2/A6/D3+: shape
+PASS antichain2/A6/D5: shape
+PASS antichain2/A6/D6: shape
+PASS antichain2/A6/NV: shape
+PASS antichain2: minimal props
+OVERALL: PASS
+
+=== OPERATOR ADDITION (structural only; no numerical interpretation) ===
+PASS exactly four top-level keys, in order chain3,V,diamond,antichain2: ['chain3', 'V', 'diamond', 'antichain2']
+PASS chain3: state_count_with_A0 positive int = 144
+PASS chain3: state_count_without_A0 positive int = 288
+PASS chain3/A0/D1: holds is bool
+PASS chain3/A0/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A0/D2: holds is bool
+PASS chain3/A0/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A0/D3: holds is bool
+PASS chain3/A0/D3: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A0/D3+: holds is bool
+PASS chain3/A0/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS chain3/A0/D5: holds is bool
+PASS chain3/A0/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A0/D6: holds is bool
+PASS chain3/A0/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A0/NV: holds is bool
+PASS chain3/A0/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A1/D1: holds is bool
+PASS chain3/A1/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A1/D2: holds is bool
+PASS chain3/A1/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A1/D3: holds is bool
+PASS chain3/A1/D3: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A1/D3+: holds is bool
+PASS chain3/A1/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A1/D5: holds is bool
+PASS chain3/A1/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A1/D6: holds is bool
+PASS chain3/A1/D6: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A1/NV: holds is bool
+PASS chain3/A1/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A2e/D1: holds is bool
+PASS chain3/A2e/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A2e/D2: holds is bool
+PASS chain3/A2e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A2e/D3: holds is bool
+PASS chain3/A2e/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A2e/D3+: holds is bool
+PASS chain3/A2e/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A2e/D5: holds is bool
+PASS chain3/A2e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A2e/D6: holds is bool
+PASS chain3/A2e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A2e/NV: holds is bool
+PASS chain3/A2e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3g/D1: holds is bool
+PASS chain3/A3g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3g/D2: holds is bool
+PASS chain3/A3g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A3g/D3: holds is bool
+PASS chain3/A3g/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A3g/D3+: holds is bool
+PASS chain3/A3g/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A3g/D5: holds is bool
+PASS chain3/A3g/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A3g/D6: holds is bool
+PASS chain3/A3g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3g/NV: holds is bool
+PASS chain3/A3g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/D1: holds is bool
+PASS chain3/A3s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/D2: holds is bool
+PASS chain3/A3s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/D3: holds is bool
+PASS chain3/A3s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/D3+: holds is bool
+PASS chain3/A3s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/D5: holds is bool
+PASS chain3/A3s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/D6: holds is bool
+PASS chain3/A3s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3s/NV: holds is bool
+PASS chain3/A3s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3m/D1: holds is bool
+PASS chain3/A3m/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3m/D2: holds is bool
+PASS chain3/A3m/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3m/D3: holds is bool
+PASS chain3/A3m/D3: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3m/D3+: holds is bool
+PASS chain3/A3m/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS chain3/A3m/D5: holds is bool
+PASS chain3/A3m/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A3m/D6: holds is bool
+PASS chain3/A3m/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A3m/NV: holds is bool
+PASS chain3/A3m/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A4/D1: holds is bool
+PASS chain3/A4/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A4/D2: holds is bool
+PASS chain3/A4/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A4/D3: holds is bool
+PASS chain3/A4/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A4/D3+: holds is bool
+PASS chain3/A4/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A4/D5: holds is bool
+PASS chain3/A4/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A4/D6: holds is bool
+PASS chain3/A4/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A4/NV: holds is bool
+PASS chain3/A4/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5e/D1: holds is bool
+PASS chain3/A5e/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5e/D2: holds is bool
+PASS chain3/A5e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5e/D3: holds is bool
+PASS chain3/A5e/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS chain3/A5e/D3+: holds is bool
+PASS chain3/A5e/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS chain3/A5e/D5: holds is bool
+PASS chain3/A5e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5e/D6: holds is bool
+PASS chain3/A5e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5e/NV: holds is bool
+PASS chain3/A5e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5g/D1: holds is bool
+PASS chain3/A5g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5g/D2: holds is bool
+PASS chain3/A5g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A5g/D3: holds is bool
+PASS chain3/A5g/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS chain3/A5g/D3+: holds is bool
+PASS chain3/A5g/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS chain3/A5g/D5: holds is bool
+PASS chain3/A5g/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5g/D6: holds is bool
+PASS chain3/A5g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5g/NV: holds is bool
+PASS chain3/A5g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/D1: holds is bool
+PASS chain3/A5s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/D2: holds is bool
+PASS chain3/A5s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/D3: holds is bool
+PASS chain3/A5s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/D3+: holds is bool
+PASS chain3/A5s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/D5: holds is bool
+PASS chain3/A5s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/D6: holds is bool
+PASS chain3/A5s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A5s/NV: holds is bool
+PASS chain3/A5s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A6/D1: holds is bool
+PASS chain3/A6/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A6/D2: holds is bool
+PASS chain3/A6/D2: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A6/D3: holds is bool
+PASS chain3/A6/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A6/D3+: holds is bool
+PASS chain3/A6/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A6/D5: holds is bool
+PASS chain3/A6/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS chain3/A6/D6: holds is bool
+PASS chain3/A6/D6: countermodel null-or-wellformed-trajectory (null)
+PASS chain3/A6/NV: holds is bool
+PASS chain3/A6/NV: countermodel null-or-wellformed-trajectory (null)
+PASS chain3: minimal_sets[D1] non-empty list (1 set(s))
+PASS chain3: minimal_sets[D1] entries drawn from the 11 axioms
+PASS chain3: minimal_sets[D1] entries sorted + duplicate-free
+PASS chain3: minimal_sets[D1] inclusion-minimal (no member is a proper superset of another)
+PASS chain3: minimal_sets[D2] non-empty list (1 set(s))
+PASS chain3: minimal_sets[D2] entries drawn from the 11 axioms
+PASS chain3: minimal_sets[D2] entries sorted + duplicate-free
+PASS chain3: minimal_sets[D2] inclusion-minimal (no member is a proper superset of another)
+PASS chain3: minimal_sets[D3] non-empty list (1 set(s))
+PASS chain3: minimal_sets[D3] entries drawn from the 11 axioms
+PASS chain3: minimal_sets[D3] entries sorted + duplicate-free
+PASS chain3: minimal_sets[D3] inclusion-minimal (no member is a proper superset of another)
+PASS chain3: minimal_sets[D3+] non-empty list (1 set(s))
+PASS chain3: minimal_sets[D3+] entries drawn from the 11 axioms
+PASS chain3: minimal_sets[D3+] entries sorted + duplicate-free
+PASS chain3: minimal_sets[D3+] inclusion-minimal (no member is a proper superset of another)
+PASS chain3: minimal_sets[D5] non-empty list (1 set(s))
+PASS chain3: minimal_sets[D5] entries drawn from the 11 axioms
+PASS chain3: minimal_sets[D5] entries sorted + duplicate-free
+PASS chain3: minimal_sets[D5] inclusion-minimal (no member is a proper superset of another)
+PASS chain3: minimal_sets[D6] non-empty list (1 set(s))
+PASS chain3: minimal_sets[D6] entries drawn from the 11 axioms
+PASS chain3: minimal_sets[D6] entries sorted + duplicate-free
+PASS chain3: minimal_sets[D6] inclusion-minimal (no member is a proper superset of another)
+PASS V: state_count_with_A0 positive int = 180
+PASS V: state_count_without_A0 positive int = 288
+PASS V/A0/D1: holds is bool
+PASS V/A0/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A0/D2: holds is bool
+PASS V/A0/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A0/D3: holds is bool
+PASS V/A0/D3: countermodel null-or-wellformed-trajectory (null)
+PASS V/A0/D3+: holds is bool
+PASS V/A0/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS V/A0/D5: holds is bool
+PASS V/A0/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A0/D6: holds is bool
+PASS V/A0/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A0/NV: holds is bool
+PASS V/A0/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A1/D1: holds is bool
+PASS V/A1/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A1/D2: holds is bool
+PASS V/A1/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A1/D3: holds is bool
+PASS V/A1/D3: countermodel null-or-wellformed-trajectory (null)
+PASS V/A1/D3+: holds is bool
+PASS V/A1/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS V/A1/D5: holds is bool
+PASS V/A1/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A1/D6: holds is bool
+PASS V/A1/D6: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A1/NV: holds is bool
+PASS V/A1/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A2e/D1: holds is bool
+PASS V/A2e/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A2e/D2: holds is bool
+PASS V/A2e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A2e/D3: holds is bool
+PASS V/A2e/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A2e/D3+: holds is bool
+PASS V/A2e/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A2e/D5: holds is bool
+PASS V/A2e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A2e/D6: holds is bool
+PASS V/A2e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A2e/NV: holds is bool
+PASS V/A2e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3g/D1: holds is bool
+PASS V/A3g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3g/D2: holds is bool
+PASS V/A3g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A3g/D3: holds is bool
+PASS V/A3g/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A3g/D3+: holds is bool
+PASS V/A3g/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A3g/D5: holds is bool
+PASS V/A3g/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A3g/D6: holds is bool
+PASS V/A3g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3g/NV: holds is bool
+PASS V/A3g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/D1: holds is bool
+PASS V/A3s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/D2: holds is bool
+PASS V/A3s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/D3: holds is bool
+PASS V/A3s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/D3+: holds is bool
+PASS V/A3s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/D5: holds is bool
+PASS V/A3s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/D6: holds is bool
+PASS V/A3s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3s/NV: holds is bool
+PASS V/A3s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3m/D1: holds is bool
+PASS V/A3m/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3m/D2: holds is bool
+PASS V/A3m/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3m/D3: holds is bool
+PASS V/A3m/D3: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3m/D3+: holds is bool
+PASS V/A3m/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS V/A3m/D5: holds is bool
+PASS V/A3m/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A3m/D6: holds is bool
+PASS V/A3m/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A3m/NV: holds is bool
+PASS V/A3m/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A4/D1: holds is bool
+PASS V/A4/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A4/D2: holds is bool
+PASS V/A4/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A4/D3: holds is bool
+PASS V/A4/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A4/D3+: holds is bool
+PASS V/A4/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A4/D5: holds is bool
+PASS V/A4/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A4/D6: holds is bool
+PASS V/A4/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A4/NV: holds is bool
+PASS V/A4/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5e/D1: holds is bool
+PASS V/A5e/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5e/D2: holds is bool
+PASS V/A5e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5e/D3: holds is bool
+PASS V/A5e/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS V/A5e/D3+: holds is bool
+PASS V/A5e/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS V/A5e/D5: holds is bool
+PASS V/A5e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5e/D6: holds is bool
+PASS V/A5e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5e/NV: holds is bool
+PASS V/A5e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5g/D1: holds is bool
+PASS V/A5g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5g/D2: holds is bool
+PASS V/A5g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A5g/D3: holds is bool
+PASS V/A5g/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS V/A5g/D3+: holds is bool
+PASS V/A5g/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS V/A5g/D5: holds is bool
+PASS V/A5g/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5g/D6: holds is bool
+PASS V/A5g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5g/NV: holds is bool
+PASS V/A5g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/D1: holds is bool
+PASS V/A5s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/D2: holds is bool
+PASS V/A5s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/D3: holds is bool
+PASS V/A5s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/D3+: holds is bool
+PASS V/A5s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/D5: holds is bool
+PASS V/A5s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/D6: holds is bool
+PASS V/A5s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A5s/NV: holds is bool
+PASS V/A5s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V/A6/D1: holds is bool
+PASS V/A6/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A6/D2: holds is bool
+PASS V/A6/D2: countermodel null-or-wellformed-trajectory (null)
+PASS V/A6/D3: holds is bool
+PASS V/A6/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A6/D3+: holds is bool
+PASS V/A6/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A6/D5: holds is bool
+PASS V/A6/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS V/A6/D6: holds is bool
+PASS V/A6/D6: countermodel null-or-wellformed-trajectory (null)
+PASS V/A6/NV: holds is bool
+PASS V/A6/NV: countermodel null-or-wellformed-trajectory (null)
+PASS V: minimal_sets[D1] non-empty list (1 set(s))
+PASS V: minimal_sets[D1] entries drawn from the 11 axioms
+PASS V: minimal_sets[D1] entries sorted + duplicate-free
+PASS V: minimal_sets[D1] inclusion-minimal (no member is a proper superset of another)
+PASS V: minimal_sets[D2] non-empty list (1 set(s))
+PASS V: minimal_sets[D2] entries drawn from the 11 axioms
+PASS V: minimal_sets[D2] entries sorted + duplicate-free
+PASS V: minimal_sets[D2] inclusion-minimal (no member is a proper superset of another)
+PASS V: minimal_sets[D3] non-empty list (1 set(s))
+PASS V: minimal_sets[D3] entries drawn from the 11 axioms
+PASS V: minimal_sets[D3] entries sorted + duplicate-free
+PASS V: minimal_sets[D3] inclusion-minimal (no member is a proper superset of another)
+PASS V: minimal_sets[D3+] non-empty list (1 set(s))
+PASS V: minimal_sets[D3+] entries drawn from the 11 axioms
+PASS V: minimal_sets[D3+] entries sorted + duplicate-free
+PASS V: minimal_sets[D3+] inclusion-minimal (no member is a proper superset of another)
+PASS V: minimal_sets[D5] non-empty list (1 set(s))
+PASS V: minimal_sets[D5] entries drawn from the 11 axioms
+PASS V: minimal_sets[D5] entries sorted + duplicate-free
+PASS V: minimal_sets[D5] inclusion-minimal (no member is a proper superset of another)
+PASS V: minimal_sets[D6] non-empty list (1 set(s))
+PASS V: minimal_sets[D6] entries drawn from the 11 axioms
+PASS V: minimal_sets[D6] entries sorted + duplicate-free
+PASS V: minimal_sets[D6] inclusion-minimal (no member is a proper superset of another)
+PASS diamond: state_count_with_A0 positive int = 288
+PASS diamond: state_count_without_A0 positive int = 768
+PASS diamond/A0/D1: holds is bool
+PASS diamond/A0/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A0/D2: holds is bool
+PASS diamond/A0/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A0/D3: holds is bool
+PASS diamond/A0/D3: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A0/D3+: holds is bool
+PASS diamond/A0/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS diamond/A0/D5: holds is bool
+PASS diamond/A0/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A0/D6: holds is bool
+PASS diamond/A0/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A0/NV: holds is bool
+PASS diamond/A0/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A1/D1: holds is bool
+PASS diamond/A1/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A1/D2: holds is bool
+PASS diamond/A1/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A1/D3: holds is bool
+PASS diamond/A1/D3: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A1/D3+: holds is bool
+PASS diamond/A1/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A1/D5: holds is bool
+PASS diamond/A1/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A1/D6: holds is bool
+PASS diamond/A1/D6: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A1/NV: holds is bool
+PASS diamond/A1/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A2e/D1: holds is bool
+PASS diamond/A2e/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A2e/D2: holds is bool
+PASS diamond/A2e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A2e/D3: holds is bool
+PASS diamond/A2e/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A2e/D3+: holds is bool
+PASS diamond/A2e/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A2e/D5: holds is bool
+PASS diamond/A2e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A2e/D6: holds is bool
+PASS diamond/A2e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A2e/NV: holds is bool
+PASS diamond/A2e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3g/D1: holds is bool
+PASS diamond/A3g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3g/D2: holds is bool
+PASS diamond/A3g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A3g/D3: holds is bool
+PASS diamond/A3g/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A3g/D3+: holds is bool
+PASS diamond/A3g/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A3g/D5: holds is bool
+PASS diamond/A3g/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A3g/D6: holds is bool
+PASS diamond/A3g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3g/NV: holds is bool
+PASS diamond/A3g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/D1: holds is bool
+PASS diamond/A3s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/D2: holds is bool
+PASS diamond/A3s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/D3: holds is bool
+PASS diamond/A3s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/D3+: holds is bool
+PASS diamond/A3s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/D5: holds is bool
+PASS diamond/A3s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/D6: holds is bool
+PASS diamond/A3s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3s/NV: holds is bool
+PASS diamond/A3s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3m/D1: holds is bool
+PASS diamond/A3m/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3m/D2: holds is bool
+PASS diamond/A3m/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3m/D3: holds is bool
+PASS diamond/A3m/D3: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3m/D3+: holds is bool
+PASS diamond/A3m/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS diamond/A3m/D5: holds is bool
+PASS diamond/A3m/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A3m/D6: holds is bool
+PASS diamond/A3m/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A3m/NV: holds is bool
+PASS diamond/A3m/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A4/D1: holds is bool
+PASS diamond/A4/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A4/D2: holds is bool
+PASS diamond/A4/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A4/D3: holds is bool
+PASS diamond/A4/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A4/D3+: holds is bool
+PASS diamond/A4/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A4/D5: holds is bool
+PASS diamond/A4/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A4/D6: holds is bool
+PASS diamond/A4/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A4/NV: holds is bool
+PASS diamond/A4/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5e/D1: holds is bool
+PASS diamond/A5e/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5e/D2: holds is bool
+PASS diamond/A5e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5e/D3: holds is bool
+PASS diamond/A5e/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS diamond/A5e/D3+: holds is bool
+PASS diamond/A5e/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS diamond/A5e/D5: holds is bool
+PASS diamond/A5e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5e/D6: holds is bool
+PASS diamond/A5e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5e/NV: holds is bool
+PASS diamond/A5e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5g/D1: holds is bool
+PASS diamond/A5g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5g/D2: holds is bool
+PASS diamond/A5g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A5g/D3: holds is bool
+PASS diamond/A5g/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS diamond/A5g/D3+: holds is bool
+PASS diamond/A5g/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS diamond/A5g/D5: holds is bool
+PASS diamond/A5g/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5g/D6: holds is bool
+PASS diamond/A5g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5g/NV: holds is bool
+PASS diamond/A5g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/D1: holds is bool
+PASS diamond/A5s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/D2: holds is bool
+PASS diamond/A5s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/D3: holds is bool
+PASS diamond/A5s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/D3+: holds is bool
+PASS diamond/A5s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/D5: holds is bool
+PASS diamond/A5s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/D6: holds is bool
+PASS diamond/A5s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A5s/NV: holds is bool
+PASS diamond/A5s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A6/D1: holds is bool
+PASS diamond/A6/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A6/D2: holds is bool
+PASS diamond/A6/D2: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A6/D3: holds is bool
+PASS diamond/A6/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A6/D3+: holds is bool
+PASS diamond/A6/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A6/D5: holds is bool
+PASS diamond/A6/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS diamond/A6/D6: holds is bool
+PASS diamond/A6/D6: countermodel null-or-wellformed-trajectory (null)
+PASS diamond/A6/NV: holds is bool
+PASS diamond/A6/NV: countermodel null-or-wellformed-trajectory (null)
+PASS diamond: minimal_sets[D1] non-empty list (1 set(s))
+PASS diamond: minimal_sets[D1] entries drawn from the 11 axioms
+PASS diamond: minimal_sets[D1] entries sorted + duplicate-free
+PASS diamond: minimal_sets[D1] inclusion-minimal (no member is a proper superset of another)
+PASS diamond: minimal_sets[D2] non-empty list (1 set(s))
+PASS diamond: minimal_sets[D2] entries drawn from the 11 axioms
+PASS diamond: minimal_sets[D2] entries sorted + duplicate-free
+PASS diamond: minimal_sets[D2] inclusion-minimal (no member is a proper superset of another)
+PASS diamond: minimal_sets[D3] non-empty list (1 set(s))
+PASS diamond: minimal_sets[D3] entries drawn from the 11 axioms
+PASS diamond: minimal_sets[D3] entries sorted + duplicate-free
+PASS diamond: minimal_sets[D3] inclusion-minimal (no member is a proper superset of another)
+PASS diamond: minimal_sets[D3+] non-empty list (1 set(s))
+PASS diamond: minimal_sets[D3+] entries drawn from the 11 axioms
+PASS diamond: minimal_sets[D3+] entries sorted + duplicate-free
+PASS diamond: minimal_sets[D3+] inclusion-minimal (no member is a proper superset of another)
+PASS diamond: minimal_sets[D5] non-empty list (1 set(s))
+PASS diamond: minimal_sets[D5] entries drawn from the 11 axioms
+PASS diamond: minimal_sets[D5] entries sorted + duplicate-free
+PASS diamond: minimal_sets[D5] inclusion-minimal (no member is a proper superset of another)
+PASS diamond: minimal_sets[D6] non-empty list (1 set(s))
+PASS diamond: minimal_sets[D6] entries drawn from the 11 axioms
+PASS diamond: minimal_sets[D6] entries sorted + duplicate-free
+PASS diamond: minimal_sets[D6] inclusion-minimal (no member is a proper superset of another)
+PASS antichain2: state_count_with_A0 positive int = 96
+PASS antichain2: state_count_without_A0 positive int = 96
+PASS antichain2/A0/D1: holds is bool
+PASS antichain2/A0/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A0/D2: holds is bool
+PASS antichain2/A0/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A0/D3: holds is bool
+PASS antichain2/A0/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A0/D3+: holds is bool
+PASS antichain2/A0/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A0/D5: holds is bool
+PASS antichain2/A0/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A0/D6: holds is bool
+PASS antichain2/A0/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A0/NV: holds is bool
+PASS antichain2/A0/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A1/D1: holds is bool
+PASS antichain2/A1/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A1/D2: holds is bool
+PASS antichain2/A1/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A1/D3: holds is bool
+PASS antichain2/A1/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A1/D3+: holds is bool
+PASS antichain2/A1/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A1/D5: holds is bool
+PASS antichain2/A1/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A1/D6: holds is bool
+PASS antichain2/A1/D6: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A1/NV: holds is bool
+PASS antichain2/A1/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A2e/D1: holds is bool
+PASS antichain2/A2e/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A2e/D2: holds is bool
+PASS antichain2/A2e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A2e/D3: holds is bool
+PASS antichain2/A2e/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A2e/D3+: holds is bool
+PASS antichain2/A2e/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A2e/D5: holds is bool
+PASS antichain2/A2e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A2e/D6: holds is bool
+PASS antichain2/A2e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A2e/NV: holds is bool
+PASS antichain2/A2e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3g/D1: holds is bool
+PASS antichain2/A3g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3g/D2: holds is bool
+PASS antichain2/A3g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A3g/D3: holds is bool
+PASS antichain2/A3g/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3g/D3+: holds is bool
+PASS antichain2/A3g/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3g/D5: holds is bool
+PASS antichain2/A3g/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A3g/D6: holds is bool
+PASS antichain2/A3g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3g/NV: holds is bool
+PASS antichain2/A3g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/D1: holds is bool
+PASS antichain2/A3s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/D2: holds is bool
+PASS antichain2/A3s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/D3: holds is bool
+PASS antichain2/A3s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/D3+: holds is bool
+PASS antichain2/A3s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/D5: holds is bool
+PASS antichain2/A3s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/D6: holds is bool
+PASS antichain2/A3s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3s/NV: holds is bool
+PASS antichain2/A3s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3m/D1: holds is bool
+PASS antichain2/A3m/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3m/D2: holds is bool
+PASS antichain2/A3m/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3m/D3: holds is bool
+PASS antichain2/A3m/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3m/D3+: holds is bool
+PASS antichain2/A3m/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS antichain2/A3m/D5: holds is bool
+PASS antichain2/A3m/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A3m/D6: holds is bool
+PASS antichain2/A3m/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A3m/NV: holds is bool
+PASS antichain2/A3m/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A4/D1: holds is bool
+PASS antichain2/A4/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A4/D2: holds is bool
+PASS antichain2/A4/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A4/D3: holds is bool
+PASS antichain2/A4/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A4/D3+: holds is bool
+PASS antichain2/A4/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A4/D5: holds is bool
+PASS antichain2/A4/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A4/D6: holds is bool
+PASS antichain2/A4/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A4/NV: holds is bool
+PASS antichain2/A4/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5e/D1: holds is bool
+PASS antichain2/A5e/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5e/D2: holds is bool
+PASS antichain2/A5e/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5e/D3: holds is bool
+PASS antichain2/A5e/D3: countermodel null-or-wellformed-trajectory (2 steps)
+PASS antichain2/A5e/D3+: holds is bool
+PASS antichain2/A5e/D3+: countermodel null-or-wellformed-trajectory (2 steps)
+PASS antichain2/A5e/D5: holds is bool
+PASS antichain2/A5e/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5e/D6: holds is bool
+PASS antichain2/A5e/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5e/NV: holds is bool
+PASS antichain2/A5e/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5g/D1: holds is bool
+PASS antichain2/A5g/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5g/D2: holds is bool
+PASS antichain2/A5g/D2: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A5g/D3: holds is bool
+PASS antichain2/A5g/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5g/D3+: holds is bool
+PASS antichain2/A5g/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5g/D5: holds is bool
+PASS antichain2/A5g/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5g/D6: holds is bool
+PASS antichain2/A5g/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5g/NV: holds is bool
+PASS antichain2/A5g/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/D1: holds is bool
+PASS antichain2/A5s/D1: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/D2: holds is bool
+PASS antichain2/A5s/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/D3: holds is bool
+PASS antichain2/A5s/D3: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/D3+: holds is bool
+PASS antichain2/A5s/D3+: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/D5: holds is bool
+PASS antichain2/A5s/D5: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/D6: holds is bool
+PASS antichain2/A5s/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A5s/NV: holds is bool
+PASS antichain2/A5s/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A6/D1: holds is bool
+PASS antichain2/A6/D1: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A6/D2: holds is bool
+PASS antichain2/A6/D2: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A6/D3: holds is bool
+PASS antichain2/A6/D3: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A6/D3+: holds is bool
+PASS antichain2/A6/D3+: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A6/D5: holds is bool
+PASS antichain2/A6/D5: countermodel null-or-wellformed-trajectory (1 steps)
+PASS antichain2/A6/D6: holds is bool
+PASS antichain2/A6/D6: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2/A6/NV: holds is bool
+PASS antichain2/A6/NV: countermodel null-or-wellformed-trajectory (null)
+PASS antichain2: minimal_sets[D1] non-empty list (1 set(s))
+PASS antichain2: minimal_sets[D1] entries drawn from the 11 axioms
+PASS antichain2: minimal_sets[D1] entries sorted + duplicate-free
+PASS antichain2: minimal_sets[D1] inclusion-minimal (no member is a proper superset of another)
+PASS antichain2: minimal_sets[D2] non-empty list (1 set(s))
+PASS antichain2: minimal_sets[D2] entries drawn from the 11 axioms
+PASS antichain2: minimal_sets[D2] entries sorted + duplicate-free
+PASS antichain2: minimal_sets[D2] inclusion-minimal (no member is a proper superset of another)
+PASS antichain2: minimal_sets[D3] non-empty list (2 set(s))
+PASS antichain2: minimal_sets[D3] entries drawn from the 11 axioms
+PASS antichain2: minimal_sets[D3] entries sorted + duplicate-free
+PASS antichain2: minimal_sets[D3] inclusion-minimal (no member is a proper superset of another)
+PASS antichain2: minimal_sets[D3+] non-empty list (1 set(s))
+PASS antichain2: minimal_sets[D3+] entries drawn from the 11 axioms
+PASS antichain2: minimal_sets[D3+] entries sorted + duplicate-free
+PASS antichain2: minimal_sets[D3+] inclusion-minimal (no member is a proper superset of another)
+PASS antichain2: minimal_sets[D5] non-empty list (1 set(s))
+PASS antichain2: minimal_sets[D5] entries drawn from the 11 axioms
+PASS antichain2: minimal_sets[D5] entries sorted + duplicate-free
+PASS antichain2: minimal_sets[D5] inclusion-minimal (no member is a proper superset of another)
+PASS antichain2: minimal_sets[D6] non-empty list (1 set(s))
+PASS antichain2: minimal_sets[D6] entries drawn from the 11 axioms
+PASS antichain2: minimal_sets[D6] entries sorted + duplicate-free
+PASS antichain2: minimal_sets[D6] inclusion-minimal (no member is a proper superset of another)
+OVERALL (operator addition): PASS

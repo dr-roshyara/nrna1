@@ -1,0 +1,343 @@
+{
+ "n_rows": 28,
+ "judgements": {
+  "V1": {
+   "agreement": 0.75,
+   "kappa": 0.193,
+   "disagreements": {
+    "R-34": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-40": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-58": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-65": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-73": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-75": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-92": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V2": {
+   "agreement": 0.893,
+   "kappa": 0.785,
+   "disagreements": {
+    "R-46": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-55": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-97": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V3": {
+   "agreement": 0.821,
+   "kappa": 0.227,
+   "disagreements": {
+    "R-38": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-40": [
+     "AMBIGUOUS",
+     "SUPPORTED"
+    ],
+    "R-45": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-61": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-92": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V4": {
+   "agreement": 0.679,
+   "kappa": 0.276,
+   "disagreements": {
+    "R-40": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-49": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-52": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-55": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-56": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-61": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-65": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-67": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-75": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ]
+   }
+  },
+  "V5": {
+   "agreement": 0.857,
+   "kappa": 0.304,
+   "disagreements": {
+    "R-52": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-63": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ],
+    "R-67": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ],
+    "R-75": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V6": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  },
+  "V7": {
+   "agreement": 0.929,
+   "kappa": 0.472,
+   "disagreements": {
+    "R-30": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-97": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  }
+ },
+ "authority_named": {
+  "agreement": 1.0,
+  "kappa": 1.0,
+  "disagreements": []
+ },
+ "ops_jaccard_mean": 0.933,
+ "ops_jaccard_per_row": {
+  "R-30": 1.0,
+  "R-31": 1.0,
+  "R-32": 1.0,
+  "R-34": 0.33,
+  "R-35": 1.0,
+  "R-36": 1.0,
+  "R-38": 1.0,
+  "R-40": 0.8,
+  "R-45": 1.0,
+  "R-46": 1.0,
+  "R-49": 1.0,
+  "R-50": 0.5,
+  "R-52": 1.0,
+  "R-55": 1.0,
+  "R-56": 1.0,
+  "R-58": 1.0,
+  "R-61": 1.0,
+  "R-62": 0.5,
+  "R-63": 1.0,
+  "R-64": 1.0,
+  "R-65": 1.0,
+  "R-67": 1.0,
+  "R-68": 1.0,
+  "R-73": 1.0,
+  "R-75": 1.0,
+  "R-92": 1.0,
+  "R-93": 1.0,
+  "R-97": 1.0
+ },
+ "per_op_presence": {
+  "ACCEPT": {
+   "agreement": 0.964,
+   "kappa": 0.868
+  },
+  "ADOPT-DECISION": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "ANNOTATE": {
+   "agreement": 0.964,
+   "kappa": 0.837
+  },
+  "APPROVE": {
+   "agreement": 0.964,
+   "kappa": 0.868
+  },
+  "AUTHORIZE": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "CORRECT-TEXT": {
+   "agreement": 0.964,
+   "kappa": 0.65
+  },
+  "DEFER": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "WITHDRAW": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  }
+ },
+ "coverage_rowmean": {
+  "main": 0.893,
+  "blind": 0.751
+ },
+ "blind_not_modelled": [
+  [
+   "CLOSED",
+   1
+  ],
+  [
+   "RENAME",
+   1
+  ],
+  [
+   "NOT PROMOTED",
+   1
+  ],
+  [
+   "REFUSED",
+   1
+  ],
+  [
+   "DEPRECATE",
+   1
+  ],
+  [
+   "REMOVE",
+   1
+  ],
+  [
+   "AMENDED",
+   1
+  ],
+  [
+   "CONSOLIDATES",
+   1
+  ],
+  [
+   "PRECEDENT",
+   1
+  ],
+  [
+   "COMMISSIONED",
+   1
+  ],
+  [
+   "NAMED",
+   1
+  ],
+  [
+   "CLARIFIED",
+   1
+  ],
+  [
+   "GATES",
+   1
+  ],
+  [
+   "CREATED (QUEUE ITEMS)",
+   1
+  ],
+  [
+   "BLOCKED",
+   1
+  ],
+  [
+   "FLAGGED",
+   1
+  ],
+  [
+   "ASSESSED",
+   1
+  ],
+  [
+   "RECORDED (QUEUE ITEM)",
+   1
+  ],
+  [
+   "REQUIRED (CORRECTIONS)",
+   1
+  ],
+  [
+   "SETTLED",
+   1
+  ],
+  [
+   "REFERRED",
+   1
+  ],
+  [
+   "RECORDED (ITEMS A-C)",
+   1
+  ],
+  [
+   "STATED (SCOPE STATEMENT, REPLACING ANY BROADER CLAIM)",
+   1
+  ]
+ ],
+ "blind_violations": {
+  "V1": [],
+  "V2": [],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [],
+  "V7": []
+ }
+}

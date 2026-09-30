@@ -1,0 +1,112 @@
+{
+ "pass": 1,
+ "prereg_commit": "c9cfd8f568a250a06563fe9b8c3b6496b4d3ac18",
+ "runs": {
+  "PX0109-U01": {
+   "coverage": {
+    "S1021": 1.0,
+    "S1022": 1.0,
+    "S1484": 1.0
+   },
+   "failures": 1,
+   "model_self_report": "claude-opus-5-5[1m]",
+   "no_substantive": 2,
+   "quote_length": {
+    "max": 164,
+    "median": 45,
+    "min": 6,
+    "n": 550,
+    "p10": 19
+   },
+   "quote_miss_rate": 0.0018181818181818182,
+   "quotes": {
+    "EXACT": 549,
+    "MISS": 1
+   }
+  },
+  "PX0109-U02": {
+   "coverage": {
+    "S1413": 1.0,
+    "S1521": 1.0,
+    "S1541": 1.0
+   },
+   "failures": 0,
+   "model_self_report": "claude-opus-5-5[1m]",
+   "no_substantive": 10,
+   "quote_length": {
+    "max": 160,
+    "median": 50,
+    "min": 14,
+    "n": 334,
+    "p10": 26
+   },
+   "quote_miss_rate": 0.0,
+   "quotes": {
+    "EXACT": 334
+   }
+  },
+  "PX0109-U03": {
+   "failures": 0,
+   "model_self_report": "claude-fable-5-1",
+   "quote_length": {
+    "max": 257,
+    "median": 69,
+    "min": 8,
+    "n": 302,
+    "p10": 32
+   },
+   "quote_miss_rate": 0.0,
+   "quotes": {
+    "EXACT": 302
+   }
+  },
+  "PX0109-U04": {
+   "failures": 0,
+   "model_self_report": "claude-fable-5-1",
+   "quote_length": {
+    "max": 401,
+    "median": 72,
+    "min": 14,
+    "n": 330,
+    "p10": 36
+   },
+   "quote_miss_rate": 0.0,
+   "quotes": {
+    "EXACT": 330
+   }
+  },
+  "PX0109-U05": {
+   "failures": 132,
+   "model_self_report": "claude-haiku-4-5-20251001",
+   "quote_length": {
+    "max": 300,
+    "median": 103,
+    "min": 27,
+    "n": 145,
+    "p10": 56
+   },
+   "quote_miss_rate": 0.9103448275862069,
+   "quotes": {
+    "EXACT": 12,
+    "MISS": 132,
+    "WHITESPACE": 1
+   }
+  },
+  "PX0109-U06": {
+   "failures": 64,
+   "model_self_report": "claude-haiku-4-5-20251001",
+   "quote_length": {
+    "max": 182,
+    "median": 120,
+    "min": 76,
+    "n": 67,
+    "p10": 89
+   },
+   "quote_miss_rate": 0.9552238805970149,
+   "quotes": {
+    "EXACT": 3,
+    "MISS": 64
+   }
+  }
+ }
+}

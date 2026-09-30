@@ -1,0 +1,1684 @@
+{
+ "axioms": {
+  "A0": "admissible bars are up-sets of (E,<=)",
+  "A1": "every step keeps provenance: p'=p",
+  "A2e": "GOV steps keep evidential position: e'=e",
+  "A3g": "EVID/EVIDREF steps keep the grant: g'=g",
+  "A3s": "EVID/EVIDREF steps keep standing: s'=s",
+  "A3m": "EVID steps are monotone (e<=e'); EVIDREF steps only decrease (e'<=e)",
+  "A4": "no atomic COMPOSITE step (composites are sequences of atomic steps)",
+  "A5e": "WORK steps keep e",
+  "A5g": "WORK steps keep g",
+  "A5s": "WORK steps keep s",
+  "A6": "the bar is constant: u'=u"
+ },
+ "posets": {
+  "chain3": {
+   "elements": [
+    "n0",
+    "n1",
+    "n2"
+   ],
+   "leq": [
+    [
+     "n0",
+     "n1"
+    ],
+    [
+     "n0",
+     "n2"
+    ],
+    [
+     "n1",
+     "n2"
+    ]
+   ],
+   "state_count": 288,
+   "full": {
+    "D1": true,
+    "D2": true,
+    "D3": true,
+    "D3+": true,
+    "D5": true,
+    "D6": true,
+    "NONVACUOUS": true
+   },
+   "full_witness_nonvacuous": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n0,g=1,U={n2}) -> [EVID] (p=gen,s=auth,e=n2,g=1,U={n2})",
+   "ablation": {
+    "A0": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n1,g=0,U={n0}) -> [GOV] (p=gen,s=auth,e=n1,g=1,U={n0}) -> [EVIDREF] (p=gen,s=auth,e=n0,g=1,U={n0})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=1,U={n0}) -> [EVID] (p=gen,s=auth,e=n1,g=1,U={n0})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A1": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={}) -> [GOV] (p=der,s=auth,e=n0,g=0,U={})"
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A2e": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n2,g=0,U={n2})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={}) -> [EVID] (p=gen,s=auth,e=n0,g=1,U={})"
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [EVID] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [EVID] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=1,U={n0,n1,n2}) -> [EVID] (p=gen,s=auth,e=n0,g=0,U={n0,n1,n2})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3m": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n0,g=1,U={n2}) -> [EVIDREF] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n1,g=1,U={n1,n2}) -> [EVID] (p=gen,s=auth,e=n0,g=1,U={n1,n2})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A4": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [COMP] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [COMP] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5e": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n0,g=1,U={n2}) -> [WORK] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [GOV] (p=gen,s=auth,e=n0,g=1,U={n2}) -> [WORK] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={}) -> [WORK] (p=gen,s=auth,e=n0,g=1,U={})"
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [EVID] (p=gen,s=auth,e=n2,g=0,U={n2}) -> [WORK] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={n2}) -> [EVID] (p=gen,s=auth,e=n2,g=0,U={n2}) -> [WORK] (p=gen,s=auth,e=n2,g=1,U={n2})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A6": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={}) -> [GOV] (p=gen,s=auth,e=n0,g=0,U={n0,n1,n2})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={}) -> [GOV] (p=gen,s=auth,e=n0,g=1,U={n0,n1,n2})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=0,U={}) -> [GOV] (p=gen,s=auth,e=n0,g=1,U={n0,n1,n2})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=n0,g=1,U={n0,n1,n2}) -> [EVID] (p=gen,s=auth,e=n0,g=1,U={})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    }
+   },
+   "minimal": {
+    "D1": {
+     "necessary": [
+      "A2e",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D2": {
+     "necessary": [
+      "A3g",
+      "A5g"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3": {
+     "necessary": [
+      "A2e",
+      "A3g",
+      "A4",
+      "A5e",
+      "A5g",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3+": {
+     "necessary": [
+      "A0",
+      "A2e",
+      "A3g",
+      "A3m",
+      "A4",
+      "A5e",
+      "A5g",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D5": {
+     "necessary": [
+      "A0",
+      "A3g",
+      "A3m",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D6": {
+     "necessary": [
+      "A1"
+     ],
+     "necessary_set_suffices": true
+    }
+   }
+  },
+  "V": {
+   "elements": [
+    "bot",
+    "a",
+    "b"
+   ],
+   "leq": [
+    [
+     "bot",
+     "a"
+    ],
+    [
+     "bot",
+     "b"
+    ]
+   ],
+   "state_count": 288,
+   "full": {
+    "D1": true,
+    "D2": true,
+    "D3": true,
+    "D3+": true,
+    "D5": true,
+    "D6": true,
+    "NONVACUOUS": true
+   },
+   "full_witness_nonvacuous": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={a})",
+   "ablation": {
+    "A0": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={bot}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={bot}) -> [EVIDREF] (p=gen,s=auth,e=bot,g=1,U={bot})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=1,U={bot}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={bot})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A1": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=der,s=auth,e=bot,g=0,U={})"
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A2e": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=a,g=0,U={a})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [EVID] (p=gen,s=auth,e=bot,g=1,U={})"
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=1,U={a,b,bot}) -> [EVID] (p=gen,s=auth,e=bot,g=0,U={a,b,bot})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3m": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a}) -> [EVIDREF] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=1,U={a}) -> [EVID] (p=gen,s=auth,e=bot,g=1,U={a})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A4": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [COMP] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [COMP] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5e": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a}) -> [WORK] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a}) -> [WORK] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [WORK] (p=gen,s=auth,e=bot,g=1,U={})"
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=0,U={a}) -> [WORK] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=0,U={a}) -> [WORK] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A6": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=gen,s=auth,e=bot,g=0,U={a,b,bot})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a,b,bot})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a,b,bot})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=1,U={a,b,bot}) -> [EVID] (p=gen,s=auth,e=bot,g=1,U={})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    }
+   },
+   "minimal": {
+    "D1": {
+     "necessary": [
+      "A2e",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D2": {
+     "necessary": [
+      "A3g",
+      "A5g"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3": {
+     "necessary": [
+      "A2e",
+      "A3g",
+      "A4",
+      "A5e",
+      "A5g",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3+": {
+     "necessary": [
+      "A0",
+      "A2e",
+      "A3g",
+      "A3m",
+      "A4",
+      "A5e",
+      "A5g",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D5": {
+     "necessary": [
+      "A0",
+      "A3g",
+      "A3m",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D6": {
+     "necessary": [
+      "A1"
+     ],
+     "necessary_set_suffices": true
+    }
+   }
+  },
+  "diamond": {
+   "elements": [
+    "bot",
+    "a",
+    "b",
+    "top"
+   ],
+   "leq": [
+    [
+     "a",
+     "top"
+    ],
+    [
+     "b",
+     "top"
+    ],
+    [
+     "bot",
+     "a"
+    ],
+    [
+     "bot",
+     "b"
+    ],
+    [
+     "bot",
+     "top"
+    ]
+   ],
+   "state_count": 768,
+   "full": {
+    "D1": true,
+    "D2": true,
+    "D3": true,
+    "D3+": true,
+    "D5": true,
+    "D6": true,
+    "NONVACUOUS": true
+   },
+   "full_witness_nonvacuous": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={top}) -> [EVID] (p=gen,s=auth,e=top,g=1,U={top})",
+   "ablation": {
+    "A0": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={bot}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={bot}) -> [EVIDREF] (p=gen,s=auth,e=bot,g=1,U={bot})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=1,U={bot}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={bot})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A1": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=der,s=auth,e=bot,g=0,U={})"
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A2e": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=top,g=0,U={top})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [EVID] (p=gen,s=auth,e=bot,g=1,U={})"
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [EVID] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [EVID] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=1,U={a,b,bot,top}) -> [EVID] (p=gen,s=auth,e=bot,g=0,U={a,b,bot,top})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3m": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={top}) -> [EVIDREF] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=1,U={a,top}) -> [EVID] (p=gen,s=auth,e=bot,g=1,U={a,top})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A4": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [COMP] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [COMP] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5e": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={top}) -> [WORK] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={top}) -> [WORK] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [WORK] (p=gen,s=auth,e=bot,g=1,U={})"
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [EVID] (p=gen,s=auth,e=top,g=0,U={top}) -> [WORK] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={top}) -> [EVID] (p=gen,s=auth,e=top,g=0,U={top}) -> [WORK] (p=gen,s=auth,e=top,g=1,U={top})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A6": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=gen,s=auth,e=bot,g=0,U={a,b,bot,top})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a,b,bot,top})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=0,U={}) -> [GOV] (p=gen,s=auth,e=bot,g=1,U={a,b,bot,top})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=bot,g=1,U={a,b,bot,top}) -> [EVID] (p=gen,s=auth,e=bot,g=1,U={})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    }
+   },
+   "minimal": {
+    "D1": {
+     "necessary": [
+      "A2e",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D2": {
+     "necessary": [
+      "A3g",
+      "A5g"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3": {
+     "necessary": [
+      "A2e",
+      "A3g",
+      "A4",
+      "A5e",
+      "A5g",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3+": {
+     "necessary": [
+      "A0",
+      "A2e",
+      "A3g",
+      "A3m",
+      "A4",
+      "A5e",
+      "A5g",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D5": {
+     "necessary": [
+      "A0",
+      "A3g",
+      "A3m",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D6": {
+     "necessary": [
+      "A1"
+     ],
+     "necessary_set_suffices": true
+    }
+   }
+  },
+  "antichain2": {
+   "elements": [
+    "a",
+    "b"
+   ],
+   "leq": [],
+   "state_count": 96,
+   "full": {
+    "D1": true,
+    "D2": true,
+    "D3": true,
+    "D3+": true,
+    "D5": true,
+    "D6": true,
+    "NONVACUOUS": false
+   },
+   "full_witness_nonvacuous": null,
+   "ablation": {
+    "A0": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": false,
+      "countermodel": null
+     }
+    },
+    "A1": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={}) -> [GOV] (p=der,s=auth,e=a,g=0,U={})"
+     },
+     "NONVACUOUS": {
+      "holds": false,
+      "countermodel": null
+     }
+    },
+    "A2e": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [GOV] (p=gen,s=auth,e=b,g=0,U={b})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [GOV] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [GOV] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A3g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={})"
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=1,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=0,U={a})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": false,
+      "countermodel": null
+     }
+    },
+    "A3s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": false,
+      "countermodel": null
+     }
+    },
+    "A3m": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={b}) -> [EVIDREF] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=1,U={a}) -> [EVID] (p=gen,s=auth,e=b,g=1,U={a})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A4": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [COMP] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [COMP] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5e": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={b}) -> [WORK] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={b}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={b}) -> [WORK] (p=gen,s=auth,e=b,g=1,U={b})"
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    },
+    "A5g": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={}) -> [WORK] (p=gen,s=auth,e=a,g=1,U={})"
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": false,
+      "countermodel": null
+     }
+    },
+    "A5s": {
+     "D1": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3+": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D5": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": false,
+      "countermodel": null
+     }
+    },
+    "A6": {
+     "D1": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={}) -> [GOV] (p=gen,s=auth,e=a,g=0,U={a})"
+     },
+     "D2": {
+      "holds": true,
+      "countermodel": null
+     },
+     "D3": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D3+": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=0,U={}) -> [GOV] (p=gen,s=auth,e=a,g=1,U={a})"
+     },
+     "D5": {
+      "holds": false,
+      "countermodel": "(p=gen,s=auth,e=a,g=1,U={a}) -> [EVID] (p=gen,s=auth,e=a,g=1,U={})"
+     },
+     "D6": {
+      "holds": true,
+      "countermodel": null
+     },
+     "NONVACUOUS": {
+      "holds": true,
+      "countermodel": null
+     }
+    }
+   },
+   "minimal": {
+    "D1": {
+     "necessary": [
+      "A2e",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D2": {
+     "necessary": [
+      "A3g",
+      "A5g"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D3": {
+     "necessary": [
+      "A2e",
+      "A4",
+      "A5e",
+      "A6"
+     ],
+     "necessary_set_suffices": false
+    },
+    "D3+": {
+     "necessary": [
+      "A2e",
+      "A3m",
+      "A4",
+      "A5e",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D5": {
+     "necessary": [
+      "A3g",
+      "A3m",
+      "A6"
+     ],
+     "necessary_set_suffices": true
+    },
+    "D6": {
+     "necessary": [
+      "A1"
+     ],
+     "necessary_set_suffices": true
+    }
+   }
+  }
+ },
+ "d4": {
+  "domain_size": 6,
+  "codomain_size": 5,
+  "maps": 15625,
+  "injective": 0
+ }
+}

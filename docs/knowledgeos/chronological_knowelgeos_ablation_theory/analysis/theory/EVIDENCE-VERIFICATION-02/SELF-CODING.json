@@ -1,0 +1,3 @@
+{"note":"SELF coding sealed BEFORE the blind reader runs. Rule fixed now: for 'is any X recorded' questions NO == NOT-STATED.",
+ "Q1":{"answer":"YES","detail":"adoption (Summary/Completed/Decisions, L3-13) is recorded before 'ES-004.3 VALIDATION EXECUTED' (L32)"},
+ "Q2":{"answer":"NO","detail":"no qualification (or validation) is recorded before the adoption"}}

@@ -1,0 +1,89 @@
+I understand the **overall architecture and the current research position**, but I would **not claim that I have reconstructed the entire EKS architecture from primary EKS documentation yet**.
+
+What I currently understand with reasonable confidence is:
+
+```text
+                    KnowledgeOS
+                         │
+          ┌──────────────┴──────────────┐
+          │                             │
+        EKS                            PKS
+   engineering/semantic          knowledge/governance
+       evidence system              specification system
+          │                             │
+          └──────── empirical evidence ┘
+                         │
+                  Kernel research
+             (separate research track)
+```
+
+For **EKS**, I understand the important empirical pipeline as:
+
+```text
+Source
+  ↓
+language-specific adapter
+  ↓
+L3 semantic facts
+  ↓
+canonical / language-neutral representation
+  ↓
+L4 relationships / graph
+  ↓
+L5 analysis / metrics
+```
+
+And I understand the architectural principle behind the current work:
+
+> **The contract/canonical semantic model is the architectural center; PHP, Python and future languages are adapters.**
+
+The Conformance Oracle then becomes a capability around that boundary:
+
+```text
+       PHP adapter ─────┐
+                       │
+                       ▼
+                 L3 canonical facts
+                       ▲
+                       │
+       Python adapter ─┘
+                       │
+                       ▼
+              Conformance Oracle
+                       │
+              PASS / classified
+                  divergence
+```
+
+I also understand several important constraints:
+
+- EKS capability development should **not wait for the Kₜ/Sat/Zero research**.
+- EKS is currently the **empirical implementation/research laboratory**.
+- PKS is a second knowledge/governance domain, not simply another name for EKS.
+- The Kernel is a **research target**, not something we should prematurely implement into EKS.
+- Existing EKS evidence must distinguish implemented reality from proposed architecture.
+- The canonical representation must be independently specified rather than defined by whichever adapter happens to exist first.
+- The Conformance Oracle should be a **classifier/verifier**, not a fixer.
+- We need RED → GREEN → negative discrimination → real-corpus validation.
+
+But there is one thing I **do need more information for** if you want me to act as the senior architect/reviewer of the EKS implementation rather than just review individual capability proposals:
+
+### I need the actual EKS architecture source set
+
+In particular, I want to see the contents of:
+
+1. `docs/eks/`
+2. the actual EKS architecture/baseline documents
+3. the current EKS capability definitions/catalog, if one exists
+4. the implementation structure around:
+   - `engineering_observations`
+   - `lib`
+   - `scripts/observations`
+   - the PHP/Python adapters
+5. the canonical L3/domain model definitions
+6. the existing fixture/test architecture
+7. the relationship between **EKS → PKS → KnowledgeOS Kernel** as documented by the project itself.
+
+The document you just gave me is enough to understand the **Conformance Oracle proposal**, but it is not enough to claim that I have independently reconstructed the **whole EKS architecture**.
+
+So **yes, give me the EKS architecture material**—preferably the whole `docs/eks/` set or the relevant architecture files. Then I can build a proper architecture map first, and we can decide whether Conformance Oracle is genuinely the first capability or whether the architecture reveals an even more fundamental EKS capability that should come first.

@@ -1,0 +1,163 @@
+{
+ "coder": "main, record-only under MANUAL-r2 (sealed before the blind run)",
+ "rows": {
+  "X1 2026-07-11 L203": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "APPLY-REFINEMENTS"
+   ],
+   "note": "'the ARB's illustrative 90/8/2/0-1 distribution deliberately NOT persisted as a metric'",
+   "ops": [
+    "APPROVE",
+    "CONFIRM"
+   ]
+  },
+  "X2 2026-07-25 L241": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "ADD-RISK-REGISTER"
+   ],
+   "note": "four policies ruled (CREATE-NORM); 'corrections are new publications that supersede, never mutate'; 'detection may be automatic, correction may not'",
+   "ops": [
+    "ACCEPT",
+    "CREATE-NORM"
+   ]
+  },
+  "X3 2026-07-26 L94": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "AMBIGUOUS",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "NOT-NAMED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": false,
+   "not_modelled": [
+    "PRODUCE-ARTIFACT"
+   ],
+   "note": "'DeterminationIssued CONFIRMED \u2026 special standing recorded' = the confirm overload (cf. R-76)",
+   "ops": [
+    "ADOPT-DECISION",
+    "CONFIRM",
+    "DEFER",
+    "FREEZE",
+    "REJECT"
+   ]
+  },
+  "X4 2026-07-28 L511": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "heading only: 'M2 CHECKPOINT DISPOSED \u2014 ACCEPT WITH REFINEMENTS \u2026 M3 AUTHORIZED'",
+   "ops": [
+    "ACCEPT",
+    "AUTHORIZE"
+   ]
+  },
+  "X5 2026-07-30 L193": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "SUPPORTED",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "NOT-SELF-PROMOTED"
+   ],
+   "note": "'evidence + reasoning is not authority; a decision is an explicit act by an authority'; promotion held at 2 slices against a parked '\u22653' criterion; the early-promotion exception route named (R-39)",
+   "ops": [
+    "ADOPT-DECISION"
+   ]
+  },
+  "X6 2026-07-31 L573": {
+   "V": {
+    "V1": "NOT-MODELLED",
+    "V2": "UNTESTABLE",
+    "V3": "NOT-MODELLED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": true,
+   "not_modelled": [
+    "CORRECT-CLAIMS",
+    "END-REVIEW",
+    "VALIDATE-FREEZE"
+   ],
+   "note": "'Taxonomy INFORMS Authority; governance rules mediate'; 'Stating one would generalize a single slice's contingency into a law'",
+   "ops": []
+  },
+  "X7 2026-07-31 L611": {
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "NOT-NAMED",
+    "V7": "UNTESTABLE"
+   },
+   "authority_named": false,
+   "not_modelled": [
+    "DEFINE-PROTOCOL",
+    "OPEN-RECORD"
+   ],
+   "note": "'a recording convention, not a new category'; 'The framework is the measuring instrument, not the subject of measurement'",
+   "ops": [
+    "ADOPT-DECISION",
+    "ANNOTATE"
+   ]
+  },
+  "X8 2026-07-31 L3334": {
+   "V": {
+    "V1": "UNTESTABLE",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "SUPPORTED"
+   },
+   "authority_named": true,
+   "not_modelled": [],
+   "note": "'Superseded, retained' with the old text struck through; a review is evidence it occurred, NOT that its object remains available",
+   "ops": [
+    "SUPERSEDE",
+    "WITHDRAW"
+   ]
+  }
+ }
+}

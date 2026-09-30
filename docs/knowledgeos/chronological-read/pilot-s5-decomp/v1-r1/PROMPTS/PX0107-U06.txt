@@ -1,0 +1,31 @@
+You are an extraction agent in a non-production experiment (run PX0107-U06, batch PX0107, label step-verify-programme).
+Canary: CANARY-760407098E31. Put it in the header line of every file you write.
+Files: S1413 (2 pages), S1521 (2 pages), S1541 (9 pages). Read each file completely, every page, only through the paged reader, by running exactly these
+commands, one call per page:
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 1 S1413
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 2 S1413
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 1 S1521
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 2 S1521
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 1 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 2 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 3 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 4 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 5 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 6 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 7 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 8 S1541
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U06 --batch PX0107 --label step-verify-programme --step 10 --page 9 S1541
+TOOL RULES (mechanically audited from your tool-call record; any other tool call invalidates the run):
+- Bash: only the exact commands listed in this prompt, copied character for character (each is complete and runs from
+  any directory); no pipes, no redirections, no other commands.
+- Read: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/FAILURES-PX0107-U06.json, your own output files, and files the harness itself saved from your own Bash outputs.
+- Write/Edit: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/OUT-PX0107-U06.jsonl, /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/OUT-PX0107-U06.repair.jsonl.
+- No other tools.
+Task: extract every distinct substantive proposition these files contain: what they claim, define, decide, propose,
+question or relate, including small ones. Use your own judgement of what counts; no categories are given.
+Record only propositions supported by a single file; do not combine files.
+Write /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/OUT-PX0107-U06.jsonl: line 1 {"run_id": "PX0107-U06", "model_self_report": "<your exact model id>",
+"canary": "CANARY-760407098E31"}; then one line per proposition {"item_id" (unique), "source_id", "statement" (your words),
+"quote" (verbatim from that file)}. You may check your output's schema with exactly this command:
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_v1_2_2_instrument.py validate --run PX0107-U06
+Finally report pages read and items written.

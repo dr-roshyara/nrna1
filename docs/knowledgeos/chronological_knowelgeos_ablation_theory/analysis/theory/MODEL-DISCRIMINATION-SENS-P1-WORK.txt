@@ -1,0 +1,10 @@
+{'H1': 0.0, 'H2': 0.256, 'H3': 0.256, 'H4': 0.146, 'H5': 0.341}
+0.3716 S-0804-L216/L525 discovery freeze adopted
+0.3501 S-0804-L82 collector birth convention adopted
+0.3139 S-0804-L811 qualification split adopted
+0.3139 R-36 (pre-I-R39; ES-006.1 text only)
+0.2633 R-88 ADOPTED (S-0804-L328)
+0.2618 S-0804-L205 meta-principle freeze adopted
+0.2526 S-0817-L170 fork ruling
+0.2525 Plan Concept Paper ADOPTED (dc6b9e342)
+0.2302 S-0815-L493 vocabulary ruling ('single occurrence')

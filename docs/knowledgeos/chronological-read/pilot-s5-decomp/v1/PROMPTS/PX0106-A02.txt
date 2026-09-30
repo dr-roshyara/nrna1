@@ -1,0 +1,15 @@
+You are an independent second matcher (run PX0106-A02). Canary: CANARY-04688F3734E4. Put it in the header line of your file.
+Input: pilot-s5-decomp/v1/MATCH-LISTS.json, pilot-s5-decomp/v1/CLUSTERS-A01.jsonl (clusters are given; do not
+re-cluster), pilot-s5-decomp/v1/SAMPLE-A02.json (the cluster ids you must decide). You may read the six files via
+the paged reader with --run PX0106-A02.
+TOOL RULES (mechanically audited from your tool-call record; any other tool call invalidates the run):
+- Bash: only `cd <dir>`, the paged reader exactly as shown, and (extractors) the validator exactly as shown;
+  no pipes, no redirections, no other commands.
+- Read: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/MATCH-LISTS.json, /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/CLUSTERS-A01.jsonl, /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/SAMPLE-A02.json, your own output files, and files the harness itself saved from your own Bash outputs.
+- Write/Edit: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/DECISIONS-A02.jsonl.
+- No other tools.
+For every sampled cluster and each of the two other lists: best-matching cluster of the same source_id, and
+MATCH / PARTIAL / NONE as defined: MATCH same proposition; PARTIAL overlapping (narrower, broader, part); NONE.
+Decide every sampled cluster for both other lists. Write pilot-s5-decomp/v1/DECISIONS-A02.jsonl: header line; then
+{"cluster_id","other_list","status","target_cluster","note"}. Optional clustering objections in the note
+("SPLIT" or "MERGE-WITH:<id>").

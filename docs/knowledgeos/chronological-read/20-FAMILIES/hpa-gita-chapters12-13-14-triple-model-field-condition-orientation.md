@@ -1,0 +1,59 @@
+# hpa-gita-chapters12-13-14-triple-model-field-condition-orientation
+
+**Scope(s):** THEORY-LEVEL · **Row count:** 7 ·
+**Lifecycle (candidate):** ACTIVE · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** "B_t(K_t,o_t,G_t,R_t)->d_t", "X_t=(K_t,G_t,R_t)", "delta(K_t,d_t)=K_{t+1}" · **Aliases:** "Field+Condition+Orientation model", "Relationship+Field/Knower+Operating Condition"
+**Candidate group membership (NOT an identity claim):**
+- G0497: [`hpa-gita-chapters12-13-14-triple-model-field-condition-orientation` · `hpa-gita-chapters13-14-composed-field-condition-model`] — explicit agent-stated uncertainty: 'hpa-gita-chapters12-13-14-triple-model-field-condition-orientation' POSSIBLY relates to 'hpa-gita-chapters13-14-composed-field-condition-model' (batch B0054). Note: Extends the Chapter 13+14 field/condition model (S2232) by adding Chapter 12 (Bhakti Yoga) as a third dimension, ORIENTATION R_t (the system's relationship toward the knowing process/objective), giving X_t=(K_t,G_t,R_t). Separates Buddhi (evaluation/discrimination, B_t) from delta (state transition) explicitly: B_t(K_t,o_t,G_t,R_t)->d_t, then delta(K_t,d_t)=K_{t+1}. Proposes candidate Buddhi decision codomain {Accept,Reject,Qualify,Defer,Transform,Escalate}, a closed kernel feedback loop Observe->Represent->Discriminate->Qualify->Decide->Act->Observe, a Delta Knowledge = Delta Dimension + Delta Quality decomposition, and the culminating research question 'can epistemic discrimination itself be formalized as an algebra?' explicitly distinguishing corroboration from Gita-mandated implementation.
+- G0498: [`hpa-gita-chapters11-14-horizon-model` · `hpa-gita-chapters12-13-14-triple-model-field-condition-orientation`] — explicit agent-stated uncertainty: 'hpa-gita-chapters11-14-horizon-model' POSSIBLY relates to 'hpa-gita-chapters12-13-14-triple-model-field-condition-orientation' (batch B0054). Note: Extends the Chapter 12-13-14 (Field/Condition/Orientation) model by adding Chapter 11 as the source of a fourth research concept, Omega = epistemic horizon (explicitly not God, not identical to the Knowledge Space K), giving a four-term separation N != K_t != K != Omega and a five-fold kernel responsibility model (Perceive, Represent, Discriminate, Transform, Orient). Reformulates purification as progressive improvement of the epistemic state relative to its horizon, and poses 14 concrete mathematical research questions culminating in whether Moksha is a fixed point, boundary, quotient, or a change of state space altogether -- explicitly not established as any of these, framed as the strongest emerging research direction if it survives mathematical/DDD testing.
+- G1033: [`hpa-gita-chapters12-13-14-triple-model-field-condition-orientation` · `hpa-gita-chapters13-14-composed-field-condition-model`] — working_label token overlap Jaccard=0.50 (shared tokens: ['condition', 'field', 'gita', 'hpa', 'model'])
+
+## Sources (how this label entered the ledger)
+- PROPOSAL, batch B0054, scope THEORY-LEVEL: "Extends the Chapter 13+14 field/condition model (S2232) by adding Chapter 12 (Bhakti Yoga) as a third dimension, ORIENTATION R_t (the system's relationship toward the knowing process/objective), giving X_t=(K_t,G_t,R_t). Separates Buddhi (evaluation/discrimination, B_t) from delta (state transition) explicitly: B_t(K_t,o_t,G_t,R_t)->d_t, then delta(K_t,d_t)=K_{t+1}. Proposes candidate Buddhi decision codomain {Accept,Reject,Qualify,Defer,Transform,Escalate}, a closed kernel feedback loop Observe->Represent->Discriminate->Qualify->Decide->Act->Observe, a Delta Knowledge = Delta Dimension + Delta Quality decomposition, and the culminating research question 'can epistemic discrimination itself be formalized as an algebra?' explicitly distinguishing corroboration from Gita-mandated implementation."
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S2233 §"X_t=(K_t,G_t,R_t)"]
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S2233 §"X_t=(K_t,G_t,R_t)"]
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: [S2233 §"G_t is independent of \Sigma_t | OPEN ... Buddhi requires its own formal algebra | OPEN"]
+
+## Lifecycle
+last_seen: S2233. Candidate lifecycle: ACTIVE. Evidence: retracted_by and superseded_by are both empty and no row is self-typed as a contradiction; this is a heuristic based on how recently (by source_id order) this label was last used (S2233), not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+
+| Dimension | Status | source_ids |
+|---|---|---|
+| purpose_rationale | PRESENT | S2233 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | PRESENT | S2233, S2233, S2233, S2233 |
+| type_signature | PRESENT | S2233, S2233, S2233 |
+| invariants | NOT-EVIDENCED-IN-CAPTURE | — |
+| dependencies | PRESENT | S2233, S2233, S2233 |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S2233, S2233, S2233 |
+| examples | NOT-EVIDENCED-IN-CAPTURE | — |
+| warnings | NOT-EVIDENCED-IN-CAPTURE | — |
+| experiments | NOT-EVIDENCED-IN-CAPTURE | — |
+| open_questions | PRESENT | S2233, S2233 |
+
+## Rationale
+Chapter 12's outcome-independence (a disciplined actor performs an action without making the desired result the criterion) suggests decision correctness != decision outcome, close to the existing Command != Transformation and Guidance != Authority distinctions -- explicitly framed as Chapter 12 corroborating an existing architectural property rather than creating a new primitive, consistent with the Step 286 corroboration!=derivation methodology. [S2233]
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- [S2233] types=[FORMALIZATION, EXTENSION] scope=THEORY-LEVEL — "Three chapters answer three different questions: Chapter 12 (Bhakti Yoga) -- how does the knower orient itself (epistemic orientation/relationship R_t); Chapter 13 (Kshetra-Kshetrajna) -- what is known and who knows (Knowledge Field K_t + Knower N); Chapter 14 (Guna-traya) -- under what condition does knowing occur (epistemic operating condition G_t). Combined into X_t=(K_t,G_t,R_t), explicitly a research model, not canonical. The Knower is not another item inside the Knowledge Field merely because it operates upon it (Kshetra != Kshetrajna as an architectural boundary), and the field is enumerated over the eight primitives {Entity,State,Event,Observation,Proposition,Relation,Policy,Action}." (anchor: "X_t=(K_t,G_t,R_t)")
+- [S2233] types=[DISTINCTION, FORMALIZATION] scope=THEORY-LEVEL — "Careful mathematical separation: Buddhi != delta. B_t is Evaluation/Discrimination, delta is State Transition. Formalized as B_t(K_t,o_t,G_t,R_t) -> d_t, followed by delta(K_t,d_t)=K_{t+1}. Candidate (non-canonical) Buddhi decision codomain d_t in {Accept, Reject, Qualify, Defer, Transform, Escalate}; notes the philosophical lens does not solve the unresolved Qualify problem but may explain why qualification is a distinct act of discrimination." (anchor: "we should not say Buddhi=\delta ... B_t(K_t,o_t,G_t,R_t) \rightarrow d_t ... \delta(K_t,d_t)=K_{t+1}")
+- [S2233] types=[ARGUMENT, RESTATEMENT] scope=THEORY-LEVEL — "Chapter 12's outcome-independence (a disciplined actor performs an action without making the desired result the criterion) suggests decision correctness != decision outcome, close to the existing Command != Transformation and Guidance != Authority distinctions -- explicitly framed as Chapter 12 corroborating an existing architectural property rather than creating a new primitive, consistent with the Step 286 corroboration!=derivation methodology." (anchor: "decision correctness \neq decision outcome ... corroborate an existing architectural property rather than create a new primitive")
+- [S2233] types=[FORMALIZATION, DISTINCTION] scope=THEORY-LEVEL — "Distinguishes dimension from value: a statement could add a new dimension but have poor epistemic quality, or add no new dimension yet dramatically improve reliability/consistency/provenance/resolution/confidence/contextual understanding -- decomposed (as a research decomposition only) as Delta Knowledge = Delta Dimension + Delta Quality. Argues K_{t+1}>K_t in quantity does not imply K_{t+1} succ K_t epistemically, because more information != better knowledge; the kernel therefore requires Buddhi to discriminate: Knowledge Growth requires Discrimination, not merely ingestion." (anchor: "\Delta\text{Knowledge} = \Delta\text{Dimension} + \Delta\text{Quality} ... Knowledge Growth requires Discrimination")
+- [S2233] types=[FORMALIZATION, HYPOTHESIS] scope=THEORY-LEVEL — "Proposes a closed kernel feedback loop Observe -> Represent -> Discriminate -> Qualify -> Decide -> Act -> Observe, with Buddhi as the discrimination mechanism, G_t as the condition of processing, and R_t as the orientation. Reformulates the dynamic system as X_t=(K_t,G_t,R_t), X_{t+1}=F(X_t,O_t) with F = delta o B, i.e. (K_t,G_t,R_t) --Buddhi--> decision --delta--> (K_{t+1},G_{t+1},R_{t+1}) -- assessed as potentially the first point where the Gita research approaches a mathematical model of the kernel rather than merely vocabulary." (anchor: "Observe \rightarrow Represent \rightarrow Discriminate \rightarrow Qualify \rightarrow Decide \rightarrow Act \rightarrow Observe")
+- [S2233] types=[GOVERNANCE, OPEN-QUESTION] scope=METHODOLOGICAL — "Explicit status classification to avoid premature canonicalization: Field!=Knower and Knowledge State changes with time are already independently established; Buddhi~discrimination is a strong candidate correspondence; Guna~operating condition, Bhakti~epistemic orientation, Purification~trajectory improvement, and Moksha~regime transcendence are research hypotheses; while whether G_t is independent of Sigma_t, whether R_t is a KnowledgeOS state variable, whether Buddhi is a kernel operator, and whether Buddhi requires its own formal algebra are all marked fully OPEN. Revises Moksha again: Moksha != 'almost infinite knowledge'; Moksha ~ a transformation/transcendence of the ordinary conditioned epistemic regime, posing whether a limiting regime exists in which the system is no longer governed by ordinary G_t conditioning." (anchor: "G_t is independent of \Sigma_t | OPEN ... Buddhi requires its own formal algebra | OPEN")
+- [S2233] types=[FUTURE-RESEARCH] scope=METHODOLOGICAL — "Reframes the deepest emerging question from Chapters 12-14 as: what is the minimum formal structure required for a system that continuously discriminates, transforms, and purifies a changing knowledge state? Proposes investigating B:(K_t,O_t,G_t,R_t)->D_t as the formal candidate for Buddhi, decomposable into operators {compare, distinguish, validate, qualify, prioritize, reject, accept, defer}, and determining whether these form an algebra -- framed as a legitimate research programme motivated by an exposed structural question, not because the Gita mandates implementing these operators. Culminating question: can epistemic discrimination itself be formalized as an algebra?" (anchor: "Can epistemic discrimination itself be formalized as an algebra?")
+
+## Notes for P3
+- This label participates in 3 candidate group(s) (listed above) — none decided here; each is a candidate relationship for P3 to adjudicate.
+- family.files_touching lists ['S2234', 'S2238'] in addition to the source_ids that appear in family.rows — no row from ['S2234', 'S2238'] appears in this label's row list. Noted as a data-completeness oddity for P3, consistent with a pattern seen in other labels processed in this batch.
+- Rows for this label were captured under more than one scope tag (['METHODOLOGICAL', 'THEORY-LEVEL']) — this may reflect genuine cross-scope relevance (e.g. an OBJECT used at THEORY-LEVEL) rather than a labeling error, but P3 may want to confirm.

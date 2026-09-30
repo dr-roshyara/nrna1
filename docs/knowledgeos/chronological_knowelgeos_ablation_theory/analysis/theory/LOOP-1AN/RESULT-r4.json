@@ -1,0 +1,5007 @@
+{
+ "labels": "FORMAL / MODEL-RELATIVE generalization measures over strict observations; not empirical proof",
+ "variants": {
+  "BASE": {
+   "operations": {
+    "ADOPT": {
+     "clusters": 3,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 1,
+      "correct": 0,
+      "wrong": 1,
+      "abstentions": 2,
+      "coverage": 0.333,
+      "guard_stability": "1/3"
+     }
+    },
+    "ANNOTATE": {
+     "clusters": 1,
+     "guard": {
+      "status": "UNCONSTRAINED"
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "ASSIGN-ID": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "h": [
+       {
+        "pair": [
+         "ASSIGN a never-used number",
+         "ASSIGN the retired number R-90"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "AUTHORIZE-IMPL R-70 (ARB)",
+         "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "OPEN-WORK": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "OPEN-WORK by a recording note (R-60)",
+         "OPEN-WORK by a ruling (R-60 refiled)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "RAISE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 9,
+      "predictions": 8,
+      "correct": 4,
+      "wrong": 4,
+      "abstentions": 1,
+      "coverage": 0.889,
+      "guard_stability": "1/3"
+     }
+    },
+    "REGISTER": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "REGISTER operational acceptance (R-90)",
+         "REGISTER constitutional decision (rule)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "START": {
+     "clusters": 9,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 9,
+      "held_out": 11,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 9,
+      "coverage": 0.182,
+      "guard_stability": "8/9"
+     }
+    },
+    "SUPERSEDE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {}
+     },
+     "recurrence": {},
+     "recurrence_raw": {},
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "2/3"
+     }
+    }
+   },
+   "disjoint_support": {
+    "a": 2,
+    "h": 1,
+    "k": 2,
+    "e": 1,
+    "s": 2,
+    "t": 1
+   },
+   "operation_test": {
+    "power_comparable_pairs": 145,
+    "decisive_pairs": [],
+    "operation": "MODEL-COND-REDUNDANT under MO"
+   }
+  },
+  "BASE+R44": {
+   "operations": {
+    "ADOPT": {
+     "clusters": 3,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 1,
+      "correct": 0,
+      "wrong": 1,
+      "abstentions": 2,
+      "coverage": 0.333,
+      "guard_stability": "1/3"
+     }
+    },
+    "ANNOTATE": {
+     "clusters": 1,
+     "guard": {
+      "status": "UNCONSTRAINED"
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "ASSIGN-ID": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "h": [
+       {
+        "pair": [
+         "ASSIGN a never-used number",
+         "ASSIGN the retired number R-90"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "AUTHORIZE-IMPL R-70 (ARB)",
+         "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "OPEN-WORK": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "OPEN-WORK by a recording note (R-60)",
+         "OPEN-WORK by a ruling (R-60 refiled)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "RAISE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 9,
+      "predictions": 8,
+      "correct": 4,
+      "wrong": 4,
+      "abstentions": 1,
+      "coverage": 0.889,
+      "guard_stability": "1/3"
+     }
+    },
+    "REGISTER": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "REGISTER operational acceptance (R-90)",
+         "REGISTER constitutional decision (rule)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "START": {
+     "clusters": 9,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 9,
+      "held_out": 11,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 9,
+      "coverage": 0.182,
+      "guard_stability": "8/9"
+     }
+    },
+    "SUPERSEDE": {
+     "clusters": 4,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 4,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-44",
+         "R-77"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "k": [
+       {
+        "pair": [
+         "SUPERSEDE ADR-T14 (R-77)",
+         "SUPERSEDE mechanism by R-44 (reported in R-57)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "SUPERSEDE ADR-T14 (R-77)",
+         "SUPERSEDE mechanism by R-44 (reported in R-57)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 4,
+      "held_out": 4,
+      "predictions": 1,
+      "correct": 0,
+      "wrong": 1,
+      "abstentions": 3,
+      "coverage": 0.25,
+      "guard_stability": "4/4"
+     }
+    }
+   },
+   "disjoint_support": {
+    "a": 2,
+    "h": 1,
+    "k": 3,
+    "e": 1,
+    "s": 2,
+    "t": 1
+   },
+   "operation_test": {
+    "power_comparable_pairs": 155,
+    "decisive_pairs": [],
+    "operation": "MODEL-COND-REDUNDANT under MO"
+   }
+  },
+  "REV": {
+   "operations": {
+    "ADOPT": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 0,
+      "wrong": 2,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "0/3"
+     }
+    },
+    "ANNOTATE": {
+     "clusters": 1,
+     "guard": {
+      "status": "UNCONSTRAINED"
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "ASSIGN-ID": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "h": [
+       {
+        "pair": [
+         "ASSIGN a never-used number",
+         "ASSIGN the retired number R-90"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "AUTHORIZE-IMPL R-70 (ARB)",
+         "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "OPEN-WORK": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "OPEN-WORK by a recording note (R-60)",
+         "OPEN-WORK by a ruling (R-60 refiled)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "RAISE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ],
+       [
+        "a",
+        "e",
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 9,
+      "predictions": 8,
+      "correct": 4,
+      "wrong": 4,
+      "abstentions": 1,
+      "coverage": 0.889,
+      "guard_stability": "1/3"
+     }
+    },
+    "REGISTER": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "REGISTER operational acceptance (R-90)",
+         "REGISTER constitutional decision (rule)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "START": {
+     "clusters": 9,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 9,
+      "held_out": 11,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 9,
+      "coverage": 0.182,
+      "guard_stability": "8/9"
+     }
+    },
+    "SUPERSEDE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {}
+     },
+     "recurrence": {},
+     "recurrence_raw": {},
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "2/3"
+     }
+    }
+   },
+   "disjoint_support": {
+    "a": 2,
+    "c": 1,
+    "h": 1,
+    "k": 2,
+    "e": 1,
+    "s": 2,
+    "t": 1
+   },
+   "operation_test": {
+    "power_comparable_pairs": 142,
+    "decisive_pairs": [],
+    "operation": "MODEL-COND-REDUNDANT under MO"
+   }
+  },
+  "REV+R44": {
+   "operations": {
+    "ADOPT": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 0,
+      "wrong": 2,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "0/3"
+     }
+    },
+    "ANNOTATE": {
+     "clusters": 1,
+     "guard": {
+      "status": "UNCONSTRAINED"
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "ASSIGN-ID": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "h": [
+       {
+        "pair": [
+         "ASSIGN a never-used number",
+         "ASSIGN the retired number R-90"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "AUTHORIZE-IMPL R-70 (ARB)",
+         "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "OPEN-WORK": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "OPEN-WORK by a recording note (R-60)",
+         "OPEN-WORK by a ruling (R-60 refiled)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "RAISE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ],
+       [
+        "a",
+        "e",
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 9,
+      "predictions": 8,
+      "correct": 4,
+      "wrong": 4,
+      "abstentions": 1,
+      "coverage": 0.889,
+      "guard_stability": "1/3"
+     }
+    },
+    "REGISTER": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "REGISTER operational acceptance (R-90)",
+         "REGISTER constitutional decision (rule)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "START": {
+     "clusters": 9,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 9,
+      "held_out": 11,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 9,
+      "coverage": 0.182,
+      "guard_stability": "8/9"
+     }
+    },
+    "SUPERSEDE": {
+     "clusters": 4,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 4,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-44",
+         "R-77"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "k": [
+       {
+        "pair": [
+         "SUPERSEDE ADR-T14 (R-77)",
+         "SUPERSEDE mechanism by R-44 (reported in R-57)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "SUPERSEDE ADR-T14 (R-77)",
+         "SUPERSEDE mechanism by R-44 (reported in R-57)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 4,
+      "held_out": 4,
+      "predictions": 1,
+      "correct": 0,
+      "wrong": 1,
+      "abstentions": 3,
+      "coverage": 0.25,
+      "guard_stability": "4/4"
+     }
+    }
+   },
+   "disjoint_support": {
+    "a": 2,
+    "c": 1,
+    "h": 1,
+    "k": 3,
+    "e": 1,
+    "s": 2,
+    "t": 1
+   },
+   "operation_test": {
+    "power_comparable_pairs": 153,
+    "decisive_pairs": [],
+    "operation": "MODEL-COND-REDUNDANT under MO"
+   }
+  },
+  "REV-TYPE": {
+   "operations": {
+    "ADOPT": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 0,
+      "wrong": 2,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "0/3"
+     }
+    },
+    "ANNOTATE": {
+     "clusters": 1,
+     "guard": {
+      "status": "UNCONSTRAINED"
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "ASSIGN-ID": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "h": [
+       {
+        "pair": [
+         "ASSIGN a never-used number",
+         "ASSIGN the retired number R-90"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "AUTHORIZE-IMPL R-70 (ARB)",
+         "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "OPEN-WORK": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "OPEN-WORK by a recording note (R-60)",
+         "OPEN-WORK by a ruling (R-60 refiled)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "RAISE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ],
+       [
+        "a",
+        "e",
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 9,
+      "predictions": 8,
+      "correct": 4,
+      "wrong": 4,
+      "abstentions": 1,
+      "coverage": 0.889,
+      "guard_stability": "1/3"
+     }
+    },
+    "REGISTER": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "REGISTER operational acceptance (R-90)",
+         "REGISTER constitutional decision (rule)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "START": {
+     "clusters": 9,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 9,
+      "held_out": 11,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 9,
+      "coverage": 0.182,
+      "guard_stability": "8/9"
+     }
+    },
+    "SUPERSEDE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {}
+     },
+     "recurrence": {},
+     "recurrence_raw": {},
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "2/3"
+     }
+    }
+   },
+   "disjoint_support": {
+    "a": 2,
+    "c": 1,
+    "h": 1,
+    "k": 2,
+    "e": 1,
+    "s": 2,
+    "t": 1
+   },
+   "operation_test": {
+    "power_comparable_pairs": 137,
+    "decisive_pairs": [],
+    "operation": "MODEL-COND-REDUNDANT under MO"
+   }
+  },
+  "REV-TYPE+R44": {
+   "operations": {
+    "ADOPT": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the Chief (declined)",
+         "ADOPT R-81..85 by the DA (R-86)"
+        ],
+        "class": "LOOKUP"
+       }
+      ],
+      "c": [
+       {
+        "pair": [
+         "ADOPT R-81..85 by the DA (R-86)",
+         "ADOPT R-91 by the DA (held)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 3,
+      "predictions": 2,
+      "correct": 0,
+      "wrong": 2,
+      "abstentions": 1,
+      "coverage": 0.667,
+      "guard_stability": "0/3"
+     }
+    },
+    "ANNOTATE": {
+     "clusters": 1,
+     "guard": {
+      "status": "UNCONSTRAINED"
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "ASSIGN-ID": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "h": [
+       {
+        "pair": [
+         "ASSIGN a never-used number",
+         "ASSIGN the retired number R-90"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "clusters": 2,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "a": [
+       {
+        "pair": [
+         "AUTHORIZE-IMPL R-70 (ARB)",
+         "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 2
+     }
+    },
+    "OPEN-WORK": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "OPEN-WORK by a recording note (R-60)",
+         "OPEN-WORK by a ruling (R-60 refiled)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "RAISE": {
+     "clusters": 3,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ],
+       [
+        "a",
+        "e",
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "e": [
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #2",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #3",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #9",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #5"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #14"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "RAISE promoted #10",
+         "RAISE not promoted #17"
+        ],
+        "class": "HALF-LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 3,
+      "held_out": 9,
+      "predictions": 8,
+      "correct": 4,
+      "wrong": 4,
+      "abstentions": 1,
+      "coverage": 0.889,
+      "guard_stability": "1/3"
+     }
+    },
+    "REGISTER": {
+     "clusters": 1,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "recurrence": "INSUFFICIENT FOR GENERALIZATION (< 3 clusters)",
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "REGISTER operational acceptance (R-90)",
+         "REGISTER constitutional decision (rule)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "INSUFFICIENT (< 3 clusters)",
+      "clusters": 1
+     }
+    },
+    "START": {
+     "clusters": 9,
+     "guard": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "s": [
+       {
+        "pair": [
+         "START 7B after AUTHORIZE(7A)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7B at R-56 (plan approved, execution not issued)",
+         "START 7B at R-58 (execution authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START 7C at R-58 (remains unauthorized)",
+         "START 7C at R-65 (authorized)"
+        ],
+        "class": "GENERALIZING"
+       },
+       {
+        "pair": [
+         "START §12 reconcile at R-81 (Batch 7 frozen)",
+         "START §12 reconcile at R-86 (Batch 7 released)"
+        ],
+        "class": "GENERALIZING"
+       }
+      ],
+      "t": [
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START WP-8 (permission only)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B after AUTHORIZE(7A)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7B at R-56 (plan approved, execution not issued)"
+        ],
+        "class": "HALF-LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START 7C at R-58 (remains unauthorized)"
+        ],
+        "class": "LOOKUP"
+       },
+       {
+        "pair": [
+         "START WP-4B 08-03 16:10",
+         "START §12 reconcile at R-81 (Batch 7 frozen)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 9,
+      "held_out": 11,
+      "predictions": 2,
+      "correct": 2,
+      "wrong": 0,
+      "abstentions": 9,
+      "coverage": 0.182,
+      "guard_stability": "8/9"
+     }
+    },
+    "SUPERSEDE": {
+     "clusters": 4,
+     "guard": {
+      "status": "SEPARABLE",
+      "n_pairs": 4,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-44",
+         "R-77"
+        ]
+       ]
+      }
+     },
+     "recurrence": {
+      "k": [
+       {
+        "pair": [
+         "SUPERSEDE ADR-T14 (R-77)",
+         "SUPERSEDE mechanism by R-44 (reported in R-57)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "recurrence_raw": {
+      "k": [
+       {
+        "pair": [
+         "SUPERSEDE ADR-T14 (R-77)",
+         "SUPERSEDE mechanism by R-44 (reported in R-57)"
+        ],
+        "class": "LOOKUP"
+       }
+      ]
+     },
+     "loco": {
+      "status": "RUN",
+      "folds": 4,
+      "held_out": 4,
+      "predictions": 1,
+      "correct": 0,
+      "wrong": 1,
+      "abstentions": 3,
+      "coverage": 0.25,
+      "guard_stability": "4/4"
+     }
+    }
+   },
+   "disjoint_support": {
+    "a": 2,
+    "c": 1,
+    "h": 1,
+    "k": 3,
+    "e": 1,
+    "s": 2,
+    "t": 1
+   },
+   "operation_test": {
+    "power_comparable_pairs": 147,
+    "decisive_pairs": [],
+    "operation": "MODEL-COND-REDUNDANT under MO"
+   }
+  }
+ }
+}

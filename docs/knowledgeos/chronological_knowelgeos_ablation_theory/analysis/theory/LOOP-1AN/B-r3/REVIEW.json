@@ -1,0 +1,90 @@
+{
+ "spec_fidelity_ok": false,
+ "spec_fidelity_notes": "Guard analysis (D, hitting sets, classes, identity flags, forced pairs) implements the docstring exactly. One divergence: the operation test labels UNTESTABLE when no pair has all 9 variables known, whereas the docstring says UNTESTABLE iff power==0 (power reported = 248); the power metric counts all cross-op opposite pairs and does not measure decisiveness. Minor wording: PARTIAL used when no pair is separable; model pools intersected with APPL not stated; independence emitted as list not number; legality 'PERFORMED or RULE' coded as ground!=CHOICE (equivalent on data).",
+ "prior_items_fixed": {
+  "D1": "FIXED (residual dual: required-by-ignorance, START t)",
+  "D2": "PARTIAL (label UNTESTABLE correct; test still all-9-known, zero power by construction; power metric uninformative)",
+  "D3": "FIXED (both R-81..85 ADOPT events k=ruling, c=conformant; {c} artefact gone; a FR restored)",
+  "D4": "PARTIAL (flag added but trivial for 2-event ops, fires on NEVER-SEPARATES vars, misses pair-level lookups)",
+  "D5": "FIXED (tokens are UNK; BASE ADOPT k,c,t NEVER-SEPARATES)",
+  "D7": "PARTIAL (distinct cluster pairs reported, not disjoint; within-cluster pairs listed)",
+  "D15": "FIXED (M3 renamed MO)",
+  "open": ["D6", "D8", "D9", "D10 (partly)", "D11", "D12", "D13", "D14", "D16"]
+ },
+ "recomputation_matches": true,
+ "mismatches": [],
+ "identity_flag_assessment": {
+  "informative_with_2_events": false,
+  "reason": "With exactly 2 opposite-outcome legality events, 'known values pairwise distinct' is equivalent to 'v separates the pair', so the flag duplicates FR (AUTHORIZE-IMPL a, OPEN-WORK k, REGISTER k, ASSIGN-ID h). It is also computed without reference to separation (fires on NEVER-SEPARATES SUPERSEDE a, e) and misses pair-level lookups (START t via git WP-4B/PERFORMED singleton; RAISE t in REV via ES-004.3/methodology singletons).",
+  "proposed_criterion": "Cross-cluster value recurrence per forced pair: a separation of (p,q) by v is GENERALIZING only if p[v] recurs with p's outcome in another cluster and q[v] recurs with q's outcome in another cluster; LOOKUP if neither recurs, HALF-LOOKUP if one does. Add leave-one-cluster-out prediction for ops with >=3 clusters; ops with 2 events or 1 cluster reported INSUFFICIENT FOR GENERALIZATION instead of flagged.",
+  "applied": {"START s": "GENERALIZING", "START t": "LOOKUP", "RAISE t (REV)": "LOOKUP", "RAISE e": "SINGLE-CLUSTER", "SUPERSEDE k": "LOOKUP", "ADOPT a": "HALF-LOOKUP", "ADOPT c": "HALF-LOOKUP", "AUTHORIZE-IMPL a": "INSUFFICIENT", "REGISTER k": "INSUFFICIENT", "OPEN-WORK k": "INSUFFICIENT", "ASSIGN-ID h": "INSUFFICIENT"}
+ },
+ "disjoint_support": {
+  "a": 2, "k": 3, "s": 2, "t": 2, "e": 1, "c": 1, "h": 1, "r": 0, "x": 0, "o": 0,
+  "_cross_cluster_only": {"a": 2, "k": 1, "s": 2, "t": 2, "e": 0, "c": 1, "h": 1},
+  "_per_operation_max": {"a": 1, "k": 1, "s": 2, "t": 1, "e": 1, "c": 1, "h": 1},
+  "_method": "maximum matching of forced cluster pairs across all ops/variants/models where v is FR; within-cluster pair counts 1 (SCHEMA R4). START t: 5 distinct pairs, star on git-6a67da5d7 -> 1; START s: 4 distinct, R-58 hub -> 2; SUPERSEDE k: 2 distinct sharing ADR-MP -> 1."
+ },
+ "supersede_scope_issue": {
+  "issue": true,
+  "detail": "RESULT-1AM-SUPERSEDE uses 'SUPERSEDE mechanism by R-44 (reported in R-57)', absent from r4/OBSERVATIONS (only R-77, R-83, D-12 as legality events). With it, {r} and {a} conflict on (R-77, R-44), so r3's MF '{k} or {r}' is inconsistent with 1AM; only {k} can remain. Whether k separates (R-77,R-44) under r3 semantics is undecidable here (1AM used consistency-by-ignorance).",
+  "category": "evidence scope"
+ },
+ "minimality_report": [
+  {"var": "a", "why": "actor/authority", "formal_model": "M0-MF; ADOPT, AUTHORIZE-IMPL", "removal_test": "ADOPT: (E1,E2) unseparated; AUTHORIZE-IMPL: (R-70,R-89) unseparated", "counterexample": ["ADOPT R-81..85 by the Chief (declined) vs ADOPT R-81..85 by the DA (R-86)", "AUTHORIZE-IMPL R-70 (ARB) vs AUTHORIZE-IMPL R-89 (Chief, PREPARED)"], "result": "FR ADOPT (all variants/models), AUTHORIZE-IMPL (all); MCR RAISE; NEVER REGISTER, OPEN-WORK, START, SUPERSEDE", "scope": "AUTHORIZE-IMPL depends on NOT-IN-FORCE as opposite (D6); a proxies PREPARED status", "empirical_status": "SUPPORTED", "independent_support": 2},
+  {"var": "k", "why": "object kind", "formal_model": "M0-MF; all ops", "removal_test": "REGISTER, OPEN-WORK pair unseparated; SUPERSEDE M0-M4 both pairs unseparated", "counterexample": ["REGISTER operational acceptance (R-90) vs REGISTER constitutional decision (rule)", "OPEN-WORK by a recording note (R-60) vs OPEN-WORK by a ruling (R-60 refiled)", "SUPERSEDE ADR-T14 (R-77) / SUPERSEDE §12 (R-83) vs SUPERSEDE D-12 by ADR-MP"], "result": "FR REGISTER, OPEN-WORK, SUPERSEDE M0-M4; MCR SUPERSEDE MF, RAISE; NEVER elsewhere", "scope": "REGISTER/OPEN-WORK within-cluster; SUPERSEDE identity lookup and scope-bound", "empirical_status": "SUPPORTED", "independent_support": 3},
+  {"var": "s", "why": "state before", "formal_model": "M0-MF; START", "removal_test": "4 same-target START pairs unseparated", "counterexample": ["START 7B at R-56 vs START 7B at R-58", "START 7C at R-58 vs START 7C at R-65", "START §12 reconcile at R-81 vs at R-86", "START 7B after AUTHORIZE(7A) vs START 7B at R-58"], "result": "FR START (all); NEVER elsewhere", "scope": "generalizing; (R-72, git) unseparated because git s=UNK", "empirical_status": "SUPPORTED (target-indexed)", "independent_support": 2},
+  {"var": "t", "why": "target/scope", "formal_model": "M0-MF; START, RAISE", "removal_test": "START: 5 git pairs unseparated; RAISE REV M0-M4: (P1/R-41, L493-B) unseparated", "counterexample": ["START WP-4B 08-03 16:10 vs START WP-8 / 7B after AUTHORIZE(7A) / 7B at R-56 / 7C at R-58 / §12 at R-81", "RAISE P1 / R-41 vs RAISE L493-B (REV, REV-TYPE)"], "result": "FR START (all), RAISE REV/REV-TYPE M0-M4; MCR RAISE BASE, RAISE REV MF; NEVER ADOPT, AUTHORIZE-IMPL, OPEN-WORK", "scope": "required-by-ignorance (git s=UNK); RAISE t exists only via C1; both lookups", "empirical_status": "index of s; possible witness only", "independent_support": 2},
+  {"var": "e", "why": "evidence (repetition)", "formal_model": "M1, MF; RAISE", "removal_test": "12 P*/N* RAISE pairs unseparated", "counterexample": ["RAISE promoted #2 vs RAISE not promoted #5 (+11, all R-36)"], "result": "FR RAISE M1/MF (all variants); NEVER SUPERSEDE", "scope": "single decision matrix R-36", "empirical_status": "WEAK (overloaded)", "independent_support": 1},
+  {"var": "c", "why": "role conformance", "formal_model": "M2, MF; ADOPT", "removal_test": "ADOPT REV/REV-TYPE (E2,E3) unseparated", "counterexample": ["ADOPT R-81..85 by the DA (R-86) vs ADOPT R-91 by the DA (held)"], "result": "FR ADOPT REV/REV-TYPE M2/MF; NEVER BASE", "scope": "variant-dependent (C2 coding, F-LOG-0153 unverifiable)", "empirical_status": "WEAK (coarse grain)", "independent_support": 1},
+  {"var": "h", "why": "history unused/retired", "formal_model": "M4, MF; ASSIGN-ID", "removal_test": "ASSIGN-ID pair unseparated", "counterexample": ["ASSIGN a never-used number vs ASSIGN the retired number R-90"], "result": "FR M4/MF (all variants)", "scope": "2-event op; one contrast", "empirical_status": "absorbed into status (formal) [formal statement in empirical slot]", "independent_support": 1},
+  {"var": "r", "why": "route", "formal_model": "MF", "removal_test": "no result changes", "counterexample": [], "result": "MCR SUPERSEDE MF, RAISE MF; NEVER elsewhere", "scope": "SUPERSEDE {r} broken by 1AM's R-44 event", "empirical_status": "NOT DEMONSTRATED", "independent_support": 0},
+  {"var": "x", "why": "exception", "formal_model": "MF; RAISE, SUPERSEDE", "removal_test": "no effect", "counterexample": [], "result": "NEVER-SEPARATES (untested, not redundant)", "scope": "no known contrasting values", "empirical_status": "NOT DEMONSTRATED", "independent_support": 0},
+  {"var": "o", "why": "operation label", "formal_model": "MO", "removal_test": "not performable", "counterexample": [], "result": "UNTESTABLE", "scope": "zero power by construction (all-9-known criterion); 248 is not power", "empirical_status": "NOT DEMONSTRATED", "independent_support": 0}
+ ],
+ "candidate_theory": {
+  "per_operation": {
+   "ADOPT": {"guard": ["a", "c"], "note": "BASE needs only {a}; c variant-dependent; (E2,E3) unseparated in BASE and in M0/M1/M4"},
+   "AUTHORIZE-IMPL": {"guard": ["a"], "note": "depends on NOT-IN-FORCE coding"},
+   "REGISTER": {"guard": ["k"], "note": "within one cluster"},
+   "OPEN-WORK": {"guard": ["k"], "note": "within one cluster"},
+   "START": {"guard": ["s", "t"], "note": "t rests on one event (git s=UNK); (R-72,git) unseparated"},
+   "RAISE": {"guard": ["e", "t"], "note": "unique minimum valid in all variants; {a,e} fails REV; alt {a,e,r}"},
+   "ASSIGN-ID": {"guard": ["h"], "note": "unseparated under M0-M2"},
+   "SUPERSEDE": {"guard": ["k"], "note": "{r} alternative only on r4 data; broken by 1AM scope"},
+   "ANNOTATE": {"guard": [], "note": "unconstrained"}
+  },
+  "variable_union": ["a", "c", "e", "h", "k", "s", "t"],
+  "union_by_variant": {"BASE": ["a", "e", "h", "k", "s", "t"], "REV": ["a", "c", "e", "h", "k", "s", "t"], "REV-TYPE": ["a", "c", "e", "h", "k", "s", "t"]},
+  "robust": ["a (ADOPT, AUTHORIZE-IMPL)", "k (REGISTER, OPEN-WORK, SUPERSEDE)", "s (START)", "t (START)", "e (RAISE)", "h (ASSIGN-ID)"],
+  "variant_dependent": ["c (ADOPT)", "t (RAISE)"],
+  "single_cluster_dependent": ["e (R-36)", "k OPEN-WORK (R-60)", "k REGISTER (S0804-L576)", "k SUPERSEDE (ADR-MP single PERFORMED)", "t START (git-6a67da5d7)", "t RAISE (R-41/S0815-L483)", "h (one pair)", "c (one pair)", "a ADOPT (one pair)", "a AUTHORIZE-IMPL (one pair)"],
+  "not_needed": ["r", "x", "o"],
+  "label": "FORMAL, MODEL-RELATIVE; not empirical"
+ },
+ "equivalences": [
+  {"op": "RAISE", "variant_model": "BASE M0/M2/M4", "guards": [["a"], ["t"]], "separating_observation": "PA-instructed raise on AST-013 (or ARB raise on ES-004.3): PERFORMED favours {a}, REFUSED favours {t}"},
+  {"op": "RAISE", "variant_model": "BASE M1/MF", "guards": [["a", "e"], ["e", "t"]], "separating_observation": "PA-instructed raise on AST-013 with e=1: {a,e} predicts PERFORMED, {e,t} predicts REFUSED; L493-B actor coding (coding, not observation) also decides {a,e}"},
+  {"op": "RAISE", "variant_model": "REV/REV-TYPE MF", "guards": [["e", "t"], ["a", "e", "r"]], "separating_observation": "PA-instructed RULING-route raise on 'methodology' with e=1: {e,t} predicts REFUSED, {a,e,r} predicts PERFORMED"},
+  {"op": "SUPERSEDE", "variant_model": "all MF", "guards": [["k"], ["r"]], "separating_observation": "SUPERSEDE mechanism by R-44 (reported in R-57) (RULING, ARB, PERFORMED; in 1AM, missing from r4) breaks {r}; else a RULING-route supersession of a decision-log-entry or an ADR-ACCEPTANCE supersession of an ADR/design-rule"},
+  {"op": "START", "variant_model": "all", "guards": [["s", "t"], ["s (latent, if git s known)"]], "separating_observation": "source the authorization state of START WP-4B 08-03 16:10: authorized -> {s} suffices; auth-proviso-unmet -> (R-72,git) stays unseparated"},
+  {"op": "ADOPT", "variant_model": "REV M0 vs M2", "guards": [["a"], ["a", "c"]], "separating_observation": "DA adoption of a collapsed-conformance object PERFORMED refutes c; DA adoption REFUSED on a conformant object refutes {a,c}"},
+  {"op": "AUTHORIZE-IMPL", "variant_model": "all", "guards": [["a"], ["status (outside pool)"]], "separating_observation": "Chief authorization issued in force (not PREPARED) or ARB authorization left PREPARED"}
+ ],
+ "disagreements": [
+  {"id": "D-N1", "text": "Required-by-ignorance: START t FR only because git event s=UNK; all 5 forced pairs through one event", "category": "formal reasoning"},
+  {"id": "D-N2", "text": "Operation test still all-9-known (zero power by construction); power=248 equals all cross-op opposite pairs; code's UNTESTABLE rule differs from docstring's power==0 rule", "category": "coding"},
+  {"id": "D-N3", "text": "Identity flag trivial for 2-event ops, fires on NEVER-SEPARATES vars, misses pair-level lookups", "category": "formal reasoning"},
+  {"id": "D-N4", "text": "Forced cluster pairs distinct not disjoint; within-cluster pairs not independent contrasts", "category": "independence"},
+  {"id": "D-N5", "text": "SUPERSEDE {k}|{r}: r4 lacks the R-44 event used in RESULT-1AM that breaks {r} and {a}", "category": "evidence scope"},
+  {"id": "D-N6", "text": "Treating same:R-81..85 as UNK for t discards known target identity (R-81..85 != R-91); turns ADOPT (E2,E3) unseparated", "category": "source interpretation"},
+  {"id": "D-N7", "text": "C1 (L493-B a->UNK) now changes RAISE (t FR in M0-M4 REV; {a,e} fails)", "category": "coding"},
+  {"id": "D6", "text": "NOT-IN-FORCE treated as opposite to PERFORMED; AUTHORIZE-IMPL a FR depends on it", "category": "source interpretation"},
+  {"id": "D-N8", "text": "PARTIAL used when no pair separable; status names undefined; APPL intersection unstated; legality wording vs code", "category": "wording"},
+  {"id": "D-N9", "text": "Independence emitted as list, not a number", "category": "wording"},
+  {"id": "D12", "text": "EMPIRICAL statuses and F-LOG-0153 unverifiable; h entry is formal", "category": "evidence scope"},
+  {"id": "D13", "text": "No global minimum in r3; hand result {a,c,e,h,k,s,t} (BASE {a,e,h,k,s,t})", "category": "evidence scope"},
+  {"id": "D8/D9/D16", "text": "Bisimulation caveats not addressed (not re-run)", "category": "formal reasoning"},
+  {"id": "D14", "text": "UNK vs n/a coding (no effect)", "category": "coding"}
+ ]
+}

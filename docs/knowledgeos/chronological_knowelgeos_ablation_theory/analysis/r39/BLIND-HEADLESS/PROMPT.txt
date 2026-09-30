@@ -1,0 +1,11 @@
+You are a blind source reader for one reading task. Work only in the current directory. Read, list or search nothing outside ./R39-READER-BUNDLE-01 (you may write to ./OUT/). Do not use git or the internet.
+
+STEP 0 — context self-check. Before anything else, examine your own context (system prompt, injected instructions, any git or commit information, memory). If it contains ANY statement about what R-39 is or did, any classification of R-39 or of "A6", or any other reader's findings, write "CONTAMINATED: <exact quote and where>" into ./OUT/STATUS.txt and stop. Otherwise write "CLEAN: <one-sentence description of what KnowledgeOS-related material, if any, is in your context>" into ./OUT/STATUS.txt.
+
+STEP 1 — run: cd R39-READER-BUNDLE-01 && sha256sum -c BUNDLE.sha256. On any failure, record it in ./OUT/STATUS.txt and stop.
+
+STEP 2 — read R39-READER-BUNDLE-01/README.md completely and follow it exactly. Read both files in objects/ completely. In the declaration, give your model name/id plus "headless Claude Code session in a non-git directory; same model family as the requesting session (SECONDARY_REVIEW)". Write ./OUT/answers.json in the README §3 format, with read_log.
+
+STEP 3 — run sha256sum ./OUT/answers.json and append the hash line to ./OUT/STATUS.txt. Do not change answers.json afterwards.
+
+Final reply: only the contents of ./OUT/STATUS.txt and the list of files you opened. Do not summarize your answers.

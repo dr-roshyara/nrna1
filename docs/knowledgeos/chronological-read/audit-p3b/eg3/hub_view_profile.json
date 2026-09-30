@@ -1,0 +1,132 @@
+{
+ "hub_labels": 66,
+ "lines_by_key": {
+  "batch_id": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "bundle": {
+   "max": 706,
+   "median": 91,
+   "p90": 223
+  },
+  "contract_sha256": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "family_md": {
+   "max": 56,
+   "median": 7,
+   "p90": 26
+  },
+  "family_md_sha256": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "family_md_status": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "hub": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "hub_record": {
+   "max": 13,
+   "median": 13,
+   "p90": 13
+  },
+  "in_checklist": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "input_manifest_sha256": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "p3a_pairs": {
+   "max": 79,
+   "median": 10,
+   "p90": 39
+  },
+  "pairs_touching_missing": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "population_basis": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "quarantine": {
+   "max": 3,
+   "median": 3,
+   "p90": 3
+  },
+  "run_id": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "search_records": {
+   "max": 128810,
+   "median": 4894,
+   "p90": 29720
+  },
+  "semantic_status_mechanical": {
+   "max": 3,
+   "median": 3,
+   "p90": 3
+  },
+  "source_meta": {
+   "max": 17372,
+   "median": 3518,
+   "p90": 11456
+  },
+  "source_tracks": {
+   "max": 80,
+   "median": 4,
+   "p90": 22
+  },
+  "stage2_files": {
+   "max": 2441,
+   "median": 484,
+   "p90": 1604
+  },
+  "tier": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  },
+  "working_label": {
+   "max": 1,
+   "median": 1,
+   "p90": 1
+  }
+ },
+ "reads_at_25_lines": {
+  "all_keys": {
+   "max": 5950,
+   "median": 318,
+   "p90": 1735
+  },
+  "without_search_records": {
+   "max": 801,
+   "median": 172,
+   "p90": 528
+  },
+  "without_search_records_and_source_meta": {
+   "max": 108,
+   "median": 29,
+   "p90": 70
+  }
+ }
+}

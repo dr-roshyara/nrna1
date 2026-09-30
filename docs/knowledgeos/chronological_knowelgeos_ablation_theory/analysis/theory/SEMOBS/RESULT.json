@@ -1,0 +1,168 @@
+{
+ "labels": "SEMANTIC OBSERVATIONS re-expressed from already-read sources; results are EMPIRICAL-WITNESS counts under schema v1, not theory",
+ "n_observations": 31,
+ "n_clusters": 20,
+ "genres": [
+  "ADR",
+  "git",
+  "plan",
+  "register-row",
+  "session-log"
+ ],
+ "verdicts": {
+  "operation": {
+   "strict_witnesses": 1,
+   "independent_strict": 1,
+   "independent_clusters": [
+    [
+     "R-89",
+     "R-95"
+    ]
+   ],
+   "possible_witnesses": 0,
+   "verdict": "WEAK"
+  },
+  "route": {
+   "strict_witnesses": 0,
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0,
+   "verdict": "NOT DEMONSTRATED"
+  },
+  "authority": {
+   "strict_witnesses": 2,
+   "independent_strict": 2,
+   "independent_clusters": [
+    [
+     "R-70",
+     "R-89"
+    ],
+    [
+     "R-81..85-annotation",
+     "R-86"
+    ]
+   ],
+   "possible_witnesses": 0,
+   "verdict": "EMPIRICALLY SUPPORTED"
+  },
+  "kind": {
+   "strict_witnesses": 2,
+   "independent_strict": 2,
+   "independent_clusters": [
+    [
+     "R-60"
+    ],
+    [
+     "S0804-L576"
+    ]
+   ],
+   "possible_witnesses": 0,
+   "verdict": "EMPIRICALLY SUPPORTED"
+  },
+  "state": {
+   "strict_witnesses": 1,
+   "independent_strict": 1,
+   "independent_clusters": [
+    [
+     "R-72",
+     "git-6a67da5d7"
+    ]
+   ],
+   "possible_witnesses": 0,
+   "verdict": "WEAK"
+  },
+  "target": {
+   "strict_witnesses": 1,
+   "independent_strict": 1,
+   "independent_clusters": [
+    [
+     "R-47"
+    ]
+   ],
+   "possible_witnesses": 0,
+   "verdict": "WEAK"
+  },
+  "evidence": {
+   "strict_witnesses": 12,
+   "independent_strict": 1,
+   "independent_clusters": [
+    [
+     "R-36"
+    ]
+   ],
+   "possible_witnesses": 0,
+   "verdict": "WEAK"
+  },
+  "exception": {
+   "strict_witnesses": 0,
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0,
+   "verdict": "NOT DEMONSTRATED"
+  },
+  "history": {
+   "strict_witnesses": 0,
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 1,
+   "verdict": "NOT DEMONSTRATED (possible)"
+  },
+  "conformance": {
+   "strict_witnesses": 0,
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0,
+   "verdict": "NOT DEMONSTRATED"
+  }
+ },
+ "next_observation_ranking (fewest independent witnesses first)": [
+  {
+   "variable": "conformance",
+   "independent_strict": 0,
+   "needed_observation": "two adoptions by the Decision Authority of rulings of the same kind, one role-collapsed, one conformant, with the conformance of both stated",
+   "where": "register rows with 'HELD' / 'not eligible' / 'self-certify' + a paired adoption"
+  },
+  {
+   "variable": "history",
+   "independent_strict": 0,
+   "needed_observation": "two acts with equal current state and different histories, opposite outcomes (a reuse / retirement / reopening case)",
+   "where": "register rows 'WITHDRAWN' / 'RETIRED' / 'reopen' / 'recycled'"
+  },
+  {
+   "variable": "route",
+   "independent_strict": 0,
+   "needed_observation": "the same operation by the same authority on the same kind, via two routes, opposite outcomes",
+   "where": "not in this corpus (route ≡ host family); needs a designed record"
+  },
+  {
+   "variable": "exception",
+   "independent_strict": 0,
+   "needed_observation": "the same barred act with and without a recorded exception, opposite outcomes",
+   "where": "rows citing 'exception' (R-39 family)"
+  },
+  {
+   "variable": "evidence",
+   "independent_strict": 1,
+   "needed_observation": "the same operation, authority and kind in a DIFFERENT decision cluster from R-36, differing only in the evidence count",
+   "where": "session-log promotion dispositions; 'promotion criterion' / 'third instance' lines"
+  },
+  {
+   "variable": "operation",
+   "independent_strict": 1,
+   "needed_observation": "the same authority, kind and state, two operations, opposite outcomes, with the rule stated",
+   "where": "Chief acts: implementation vs planning authorization (R-89 / R-95 family)"
+  },
+  {
+   "variable": "state",
+   "independent_strict": 1,
+   "needed_observation": "—",
+   "where": "—"
+  },
+  {
+   "variable": "target",
+   "independent_strict": 1,
+   "needed_observation": "—",
+   "where": "—"
+  }
+ ]
+}

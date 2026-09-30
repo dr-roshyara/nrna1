@@ -1,0 +1,70 @@
+{
+  "component_minimality": {
+    "minimal_S": [
+      "a"
+    ],
+    "size": 1,
+    "expected_S": [
+      "a"
+    ],
+    "matches_ground_truth": true,
+    "n_subsets_tested_before_success": 2
+  },
+  "partition_minimality": {
+    "n_classes": 2,
+    "expected_n_classes": 2,
+    "matches_ground_truth": true,
+    "class_sizes": [
+      4,
+      4
+    ],
+    "expected_class_sizes": [
+      4,
+      4
+    ]
+  },
+  "representation_minimality": {
+    "best": "pi_a",
+    "expected_best": "pi_a",
+    "matches_ground_truth": true,
+    "pi_b_only_correctly_rejected": true,
+    "all_candidates": [
+      {
+        "name": "pi_a",
+        "sufficient": true,
+        "cost": 1,
+        "counterexample": null
+      },
+      {
+        "name": "pi_ab",
+        "sufficient": true,
+        "cost": 2,
+        "counterexample": null
+      },
+      {
+        "name": "pi_full",
+        "sufficient": true,
+        "cost": 3,
+        "counterexample": null
+      },
+      {
+        "name": "pi_b_only",
+        "sufficient": false,
+        "cost": null,
+        "counterexample": {
+          "abstraction": "pi_b_only",
+          "state_x": "(0, 0, 0)",
+          "state_y": "(1, 0, 0)",
+          "abstraction_x": "0",
+          "abstraction_y": "0",
+          "operation_sequence": [],
+          "observation": "observe_a",
+          "output_x": "0",
+          "output_y": "1",
+          "violated_property": "behavioral sufficiency (F(x)=F(y) does not imply x~By)"
+        }
+      }
+    ]
+  },
+  "all_three_notions_validated": true
+}

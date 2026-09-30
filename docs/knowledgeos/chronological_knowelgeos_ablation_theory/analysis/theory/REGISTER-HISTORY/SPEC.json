@@ -1,0 +1,15 @@
+{
+ "test": "L0-REL-30: M3 invariant I-B4 on the git history of the rulings register",
+ "status": "FROZEN BEFORE THE FIRST RUN of register_history_check.py (selftest only may run before freeze)",
+ "source": "git history of engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md, followed across the rename from docs/adr/ (54 commits, locate)",
+ "method": ["for every commit (oldest first) extract each '| R-n | date |' row; column 3 = Ruling cell, column 4 = the remaining cells (Effect)",
+            "compare each row's LAST version with its FIRST version, whitespace-normalized",
+            "classes: UNCHANGED · APPEND-ONLY (first is a prefix of last) · INSERT-ONLY (pure insertions) · MODIFIED (deletions/replacements, similarity >= 0.5) · REPLACED (similarity < 0.5)",
+            "for appended/inserted text: flag whether it carries an annotation label (annotat / recording correction / provenance / adopted|held <date> / withdrawn / superseded)",
+            "also report deleted rows and duplicate IDs per commit"],
+ "output_discipline": "row IDs, commit ids, dates, classes, character counts only; NO ruling text is printed or stored",
+ "prediction_M3_I-B4": "column 3 UNCHANGED for every row; column 4 UNCHANGED or APPEND-ONLY/INSERT-ONLY with labelled additions",
+ "falsifier": "a column-3 MODIFIED or REPLACED, or a column-3 insertion without an annotation label (in-place decision-text edit). Each falsifier candidate is reported by ID only; reading its diff requires a separate L0 release",
+ "known_confound": "the R-89 number collision (F-LOG-0113) and R-90 withdrawal may appear as REPLACED/DELETED; they are reported, not excused",
+ "limits": "last-vs-first comparison can hide an edit that was later reverted; the per-commit trajectory is not computed in this run (disclosed)"
+}

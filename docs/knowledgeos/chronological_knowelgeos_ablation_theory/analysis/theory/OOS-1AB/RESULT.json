@@ -1,0 +1,81 @@
+{
+ "rows": 15,
+ "per_prediction": {
+  "V1": {
+   "NOT-MODELLED": 9,
+   "SUPPORTED": 5,
+   "AMBIGUOUS": 1
+  },
+  "V2": {
+   "UNTESTABLE": 10,
+   "SUPPORTED": 4,
+   "AMBIGUOUS": 1
+  },
+  "V3": {
+   "NOT-MODELLED": 10,
+   "SUPPORTED": 5
+  },
+  "V4": {
+   "UNTESTABLE": 9,
+   "SUPPORTED": 6
+  },
+  "V5": {
+   "UNTESTABLE": 14,
+   "SUPPORTED": 1
+  },
+  "V6": {
+   "VIOLATED": 2,
+   "SUPPORTED": 13
+  },
+  "V7": {
+   "SUPPORTED": 2,
+   "UNTESTABLE": 13
+  }
+ },
+ "violations": {
+  "V1": [],
+  "V2": [],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [
+   "R-30",
+   "R-32"
+  ],
+  "V7": []
+ },
+ "ambiguous": {
+  "V1": [
+   "R-64"
+  ],
+  "V2": [
+   "R-40"
+  ],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [],
+  "V7": []
+ },
+ "coverage": {
+  "acts": 24,
+  "modelled": 7,
+  "share": 0.292
+ },
+ "missing_operations": {
+  "ADOPT-DECISION": 2,
+  "APPROVE": 2,
+  "DEFER": 2,
+  "SEAL-DOCUMENTS": 1,
+  "REDIRECT": 1,
+  "REFINE-CANDIDATE-SPEC": 1,
+  "DEFER-EXECUTION": 1,
+  "MODIFY-SEQUENCE": 1,
+  "RATIFY": 1,
+  "OPEN-WORK": 1,
+  "APPROVE-PLAN": 1,
+  "DECLARE-SCOPE": 1,
+  "RECLASSIFY-RULINGS": 1,
+  "CONFIRM": 1
+ }
+}

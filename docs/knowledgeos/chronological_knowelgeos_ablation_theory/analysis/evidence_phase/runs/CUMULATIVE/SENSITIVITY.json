@@ -1,0 +1,41 @@
+[
+ {
+  "downgraded": [
+   "none"
+  ],
+  "surviving": [
+   "MT2-P1"
+  ]
+ },
+ {
+  "downgraded": [
+   "promotion chain (C1: EP-02a/02c)"
+  ],
+  "surviving": [
+   "MT1-P1",
+   "MT2-P1"
+  ]
+ },
+ {
+  "downgraded": [
+   "ES-001.2 (G1: EP-04a/04b)"
+  ],
+  "surviving": [
+   "MT1-P0",
+   "MT2-P0",
+   "MT2-P1"
+  ]
+ },
+ {
+  "downgraded": [
+   "ES-001.2 (G1: EP-04a/04b)",
+   "promotion chain (C1: EP-02a/02c)"
+  ],
+  "surviving": [
+   "MT1-P0",
+   "MT1-P1",
+   "MT2-P0",
+   "MT2-P1"
+  ]
+ }
+]

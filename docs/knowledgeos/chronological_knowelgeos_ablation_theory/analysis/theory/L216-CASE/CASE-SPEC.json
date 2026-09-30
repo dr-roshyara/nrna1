@@ -1,0 +1,24 @@
+{
+ "case_id": "L0-REL-24 / L216",
+ "status": "FROZEN BEFORE READING. Encoded from heading metadata only; no body line read.",
+ "source": {"path": ".claude/sessions/2026-08-04.md", "sha256": "6309c2e3a2e1f8a59183086c60b7163c9bb5bae080adcef0aa5b827b2846b1ac",
+            "boundary": "L216-L224 (L216 heading 'Phase boundary: Discovery Freeze v1.0 adopted; Evidence Dashboard built'; next heading L225 'Engineering closure — WP-4B')",
+            "excluded": "every other line; L525 (v2) section; any pointer target"},
+ "instrument": "model_discrimination_r2.py (hypotheses H1 H2 H3a H3b H4 H5; norm readings QUAL VAL QUAL_AND_VAL QUAL_OR_VAL)",
+ "attributes_pre_read": {
+   "force": {"value": "AMB", "basis": "SOURCE-FACT default: decisive text ES-006.1 PROPOSED; becomes IN only if the section itself establishes an in-force requirement"},
+   "kind": {"source_fact": "UNKNOWN", "model_assumption": "work (the heading word 'freeze' / 'phase boundary')"},
+   "high": {"source_fact": "UNKNOWN", "model_assumption": "UNKNOWN"}},
+ "outcome_alphabet": {"EV|QUAL|VAL": ["MET", "DEVIATES", "UNKNOWN", "NOT-RECORDED", "OUT-OF-SCOPE"],
+                      "OBL|EXC|AUTH": ["PRESENT", "ABSENT", "UNKNOWN", "NOT-RECORDED"],
+                      "SEM (adoption semantics)": ["EPISTEMIC", "OPERATIONAL", "UNKNOWN", "NOT-RECORDED"]},
+ "coding_rules": ["DEVIATES only if the section records the event AFTER the act or positively states its absence",
+                  "ABSENT only if the section positively states it; silence = NOT-RECORDED",
+                  "kind/high become SOURCE-FACT only if the section states them; otherwise stay UNKNOWN",
+                  "SEM = OPERATIONAL only if the adoption is described as authorizing execution/work; EPISTEMIC only if as standing/qualification of knowledge",
+                  "no inference to repair missing information"],
+ "falsifiers": {"H1": "any requirement DEVIATES (under the norm reading)", "H2": "EV DEVIATES, or QUAL DEVIATES on a high target",
+                "H3a": "knowledge + deviation; or work + EV DEVIATES / AUTH ABSENT", "H3b": "knowledge + SEM OPERATIONAL or deviation; work + SEM EPISTEMIC / AUTH ABSENT",
+                "H4": "a deviation under IN force", "H5": "a deviation with OBL ABSENT and no later validation"},
+ "expected_observables": "an adoption act, its authority, what the freeze commits to, whether evidence/qualification/validation are mentioned and in which order"
+}

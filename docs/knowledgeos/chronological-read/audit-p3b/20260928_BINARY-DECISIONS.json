@@ -1,0 +1,128 @@
+{
+ "artifact": "BINARY-DECISIONS",
+ "authority": "G-LOG-0096",
+ "decisions": [
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "all stage-1 hits VERIFIED (IV-1a) and in NONTEXT bytes",
+   "candidate": "FALSE-HIT",
+   "content_sha256": "8e8927c0c12c0f6b01683fe81752adf01b59ec6d833e32f99359a408e3c43a00",
+   "decision": "FALSE-HIT",
+   "extraction_permitted": false,
+   "format": "SIGNATURE-PNG",
+   "source_id": "S0147"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "all stage-1 hits VERIFIED (IV-1a) and in NONTEXT bytes",
+   "candidate": "FALSE-HIT",
+   "content_sha256": "06aae47693ed6c07df30d3e7be14dbac4ee425c40076231d06da7c396889e0eb",
+   "decision": "FALSE-HIT",
+   "extraction_permitted": false,
+   "format": "SIGNATURE-ZIP",
+   "source_id": "S0423"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "UNVERIFIED: chunk longer than 4096 characters",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "0ede3b12d3952c86490689aef3ab9dc1c73da44c3e94d3a20ac3e65234d3fa6b",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "SIGNATURE-ZIP",
+   "source_id": "S0675"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "all stage-1 hits VERIFIED (IV-1a) and in NONTEXT bytes",
+   "candidate": "FALSE-HIT",
+   "content_sha256": "8a3767da44b06b7d16f595f32af42a52842a50999e083ae57b7cde3938030ede",
+   "decision": "FALSE-HIT",
+   "extraction_permitted": false,
+   "format": "SIGNATURE-ZIP",
+   "source_id": "S0676"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "UNVERIFIED: hit crosses a normalization chunk boundary",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "1fa4ed71c6feb1e9758046d8713239ab7c83eb9b51aec9b4901e686547fec3f9",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1674"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "frozen classifier: a verified hit lies in text or text-like bytes",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "daaf6c0aa43f377c8fe1fd68230473d80ffa047a3aca83a44665795380f5a812",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1757"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "all stage-1 hits VERIFIED (IV-1a) and in NONTEXT bytes",
+   "candidate": "FALSE-HIT",
+   "content_sha256": "1e418cd33d6e691321f5e9546050ccd94e4fd544c0207290e7006f2d88901aa2",
+   "decision": "FALSE-HIT",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1864"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "all stage-1 hits VERIFIED (IV-1a) and in NONTEXT bytes",
+   "candidate": "FALSE-HIT",
+   "content_sha256": "d0b8dd942e80b5d36ba92194515f51654a46fd0eae566b440fbbbc3ac59e8641",
+   "decision": "FALSE-HIT",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1869"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "UNVERIFIED: hit crosses a normalization chunk boundary; frozen classifier: a verified hit lies in text or text-like bytes",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "c1702d52f1fc3b46f5e8299edc21ca90987b6cb147bd85a22766a2d14e21d9eb",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1977"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "UNVERIFIED: hit crosses a normalization chunk boundary; frozen classifier: a verified hit lies in text or text-like bytes",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "590eb00e27d06a476db277719c3818f2d83e4e909dc5af886a5086b1c27be609",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1979"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "UNVERIFIED: hit crosses a normalization chunk boundary; frozen classifier: a verified hit lies in text or text-like bytes",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "65bf333764e64539ef84b3a3cef7226b1c8db402e7d426ddf41c0345f5dccc87",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "NUL-BYTE",
+   "source_id": "S1983"
+  },
+  {
+   "authorized_by": "G-LOG-0096",
+   "basis": "UNVERIFIED: chunk longer than 4096 characters; UNVERIFIED: no prefix-consistent raw start and end for the hit",
+   "candidate": "HUMAN-REVIEW",
+   "content_sha256": "7f5f05aab42b18ad7e6dd366596f40033e7e0c056028df3c05034f52ed7300a5",
+   "decision": "NOT-CONSUMED-ESCALATED",
+   "extraction_permitted": false,
+   "format": "SIGNATURE-PNG",
+   "source_id": "S2276"
+  }
+ ],
+ "extract": [],
+ "preclassification": "audit-p3b/20260928_BINARY-PRECLASSIFICATION.json"
+}

@@ -1,0 +1,19 @@
+1. zero_bound: binomial vs hypergeometric (alpha=0.05)
+   n= 10 N=   50  hyper=0.2200 (D=11, P0|D=0.0619 >= .05, P0|D+1=0.0460 < .05)  binom=0.2589  hyper<=binom:True
+   n= 30 N=  100  hyper=0.0800 (D=8, P0|D=0.0507 >= .05, P0|D+1=0.0342 < .05)  binom=0.0950  hyper<=binom:True
+   n= 59 N= 1975  hyper=0.0486 (D=96, P0|D=0.0505 >= .05, P0|D+1=0.0489 < .05)  binom=0.0495  hyper<=binom:True
+   n=  5 N=    5  hyper=0.0000 (D=0, P0|D=1.0000 >= .05, P0|D+1=0.0000 < .05)  binom=0.4507  hyper<=binom:True
+   n=  1 N=    3  hyper=0.6667 (D=2, P0|D=0.3333 >= .05, P0|D+1=0.0000 < .05)  binom=0.9500  hyper<=binom:True
+   census n=N=5 -> 0.0 (0 discordant in a census => D=0 exactly: bound 0 correct)
+   zero_bound(0) binomial -> ZeroDivisionError (n=0 unguarded)
+   zero_bound(0, N=10) -> 1.0
+2. HT unbiasedness by full enumeration (SRSWOR, N=6, n=2, D={a,b})
+   E[HT total] = 2.0 (true 2)
+3. draw_audit_sample: overlapping strata / missing strata are not rejected
+   accepted; L2 in two strata; returned pi per stratum: {'decomposed-census': 1.0, 'decomposed-other': 0.667, 'single': 0.5} ; true P(L2 in sample) = 1 but a discordant L2 is counted in every stratum it is drawn in:
+   HT total with L2 discordant: 2.5 (true total 1); N summed = 9 (true population 8)
+   EMPTY labels (8) have no stratum in addendum item 17; a label in no stratum is silently outside the frame
+   rate 0.0 still draws n = 1 (max(1, ...)); pi = 0.3333333333333333
+4. seed reproducibility: same seed/strata -> same sample: True ; adding a stratum named 'aaa' changes others: False
+5. wilson(0, n): (0.0, 0.16113012549493322) vs exact one-sided zero_bound(20): 0.1391 (two-sided 95% Wilson upper ~ one-sided 97.5%)
+6. ht_estimate: no variance / CI for the stratified total or share (per-stratum Wilson only)

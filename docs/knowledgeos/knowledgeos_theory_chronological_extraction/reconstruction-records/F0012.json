@@ -1,0 +1,190 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0008-RETROFIT-B2",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 2",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0008-RETROFIT-B2."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0012",
+ "canonical_path": "docs/knowledgeos/2026-08-02-knowledgeos-architecture-consolidation.md",
+ "canonical_sequence_position": 12,
+ "lines_total": 247,
+ "source_self_declared_status": "⚠️ 'Generated — never authoritative without human review' · '⛔ Nothing in this document executes.'",
+ "source_document_kind": "ARCHITECTURE CONSOLIDATION. ⛔ 'Identifies architecture that already exists. Invents none · improves none · redesigns none · renames none.'",
+ "source_research_question": "⭐ 'determine the migration path'",
+ "reconstruction_question": "⛔ DISTINCT: does the migration map invent any trigger, and does it carry an identity mechanism the later research needed?",
+ "source_method_declared": "⭐ 'every row traced to a committed artifact. ⭐ Speculative relationships are marked SPECULATIVE inline.' ⭐ 'Every trigger below is quoted from canon. None is invented.'",
+ "definitions": [
+  {
+   "term": "M-1..M-16",
+   "def": "the migration map — artifact · current home · future home · reason · quoted trigger"
+  },
+  {
+   "term": "G-C1..G-C7",
+   "def": "⚠️ this file's evidence gaps — ⛔ a THIRD G-prefix variant in the corpus"
+  }
+ ],
+ "assumptions": [
+  "a migration trigger must be quoted, never invented",
+  "extraction is by REFERENCE, never by COPY"
+ ],
+ "premises": [
+  "ES-005.1/.3/.4",
+  "BRM-1 (RETAIN MODEL B)",
+  "R-37",
+  "the Phase II freeze",
+  "EAD-1"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. Measured counts: 1,532 app files · 106 verification md · 448 docs/architecture · 195 docs/implementation of which ⭐ 92 are PKS_* · 132 docs/knowledge.",
+ "derivations": [
+  {
+   "id": "DI-F0012-01",
+   "from": [
+    "EAD-1: the methodology trio has zero election terms",
+    "ES-005.1 classifies docs/ as PRODUCT"
+   ],
+   "to": "⭐⭐ domain-free methodology is sitting in a product-classified path",
+   "form": "CLASSIFICATION_MISMATCH",
+   "validity": "⭐ VALID — 'that misplacement, not any missing design, is what the migration must resolve'"
+  },
+  {
+   "id": "DI-F0012-02",
+   "from": [
+    "16 migration rows, each with a quoted trigger"
+   ],
+   "to": "⭐ 9 of 16 need NO MOVE; 7 are blocked, every blocker a recorded governance gate",
+   "form": "EXHAUSTIVE_MAP",
+   "validity": "⭐ VALID"
+  },
+  {
+   "id": "DI-F0012-03",
+   "from": [
+    "CMP-nnn / AST-nnn stable ids: 'Paths change; ids never do. ADRs and reviews reference ids, not paths'"
+   ],
+   "to": "⭐⭐ references survive relocation",
+   "form": "IDENTITY_MECHANISM",
+   "validity": "⭐⭐ VALID — 'the single most important extraction-safety property, already built'"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'the migration path already exists, distributed across four authorities, and had never been assembled in one place'",
+  "⭐ 'KnowledgeOS does not need to be designed. It needs four triggers to fire.'",
+  "⛔ 'Three of the loop's four arrows are unevidenced, and the return arrow is empirically empty.'"
+ ],
+ "dependencies": [
+  "ES-005.1/.2/.3/.4",
+  "BRM-1 / SDM-EXT-1",
+  "R-37",
+  "R-42",
+  "R-30",
+  "the Phase II freeze",
+  "EAD-1",
+  "Runtime Adapter Record",
+  "doc-placement.php --list",
+  "Reference Architecture §1",
+  "OQ-K1..K6 · OQ-C1 · OQ-C2"
+ ],
+ "previous_related_files": "⭐ 'the prior discovery's verdict is restated' = F0009, read in this same batch.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — one of F0001's four source syntheses.",
+ "architectural_role": "⭐ CONSOLIDATION / MIGRATION MAP.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "M-1..M-16",
+   "the five-stage roadmap with quoted entry conditions",
+   "OQ-C1 · OQ-C2",
+   "G-C1..G-C7"
+  ],
+  "⭐ surfaced": [
+   "domain-free methodology in a product path",
+   "BRM-1 already retired extraction-by-materialization",
+   "⭐ CMP/AST stable ids",
+   "the four-layer runtime model"
+  ],
+  "⭐ corrected": [
+   "'sufficient' → 'sufficient for the present maturity level'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0007",
+  "T-0008",
+  "T-0017"
+ ],
+ "sequential_graph_position": "canonical position 12; 2026-08-02. ⭐ BEFORE F0011 (which accepts it as input) and BEFORE F0001 (which synthesizes it).",
+ "file_relationships": [
+  {
+   "to": "F0009",
+   "kind": "CONSUMES",
+   "note": "restates the prior discovery's verdict"
+  },
+  {
+   "to": "F0011",
+   "kind": "⭐ IS_INPUT_TO",
+   "note": "'Accepted input: Architecture Consolidation is COMPLETE'"
+  },
+  {
+   "to": "F0001",
+   "kind": "⭐ IS_SOURCE_OF"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH — every trigger quoted.",
+ "derivation_completeness_audit": "⭐ STRONG — marks speculative arrows inline and refuses to invent a single trigger.",
+ "gaps": [
+  {
+   "id": "G-F0012-A",
+   "⚠️ gap": "uses the prefix G-C1..G-C7 where F0001 and F0011 use G-n",
+   "⭐ significance": "⭐ a THIRD G-variant — feeds the B-12 pointer"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0012-01",
+   "⭐ finding": "⭐⭐ THE CORPUS ALREADY HAD AN IDENTITY MECHANISM FOR THE EXACT FAILURE THIS RESEARCH SUFFERED",
+   "detail": "⭐ `.claude/platform/registry.yaml`: 'components carry stable ids CMP-nnn, assets AST-nnn. ⭐⭐ PATHS CHANGE; IDS NEVER DO. ADRs and reviews reference ids, not paths' — called 'the single most important extraction-safety property, already built'.",
+   "⭐⭐ consequence": "⛔ The F0031–F0040 provenance incident was precisely a path-versus-id failure: research IDs were assigned from a filesystem glob rather than from the canonical registry. ⭐ The corpus had already named the principle that prevents it, in a file at canonical position 12.",
+   "⛔ disposition": "⭐ RECORDED AS A FINDING ABOUT THE CORPUS. ⛔ It makes no claim about the incident's remedy, which is RC-H-04's.",
+   "status": "⭐ RECORDED",
+   "significance": "⭐ HIGH"
+  },
+  {
+   "id": "AUDIT-F0012-02",
+   "⚠️ finding": "a third G-series prefix",
+   "detail": "F0012 uses G-C1..G-C7; F0001 and F0011 use G-1..G-10 with divergent meanings (AUDIT-F0011-01).",
+   "⛔ disposition": "⛔ REFERRED_TO_B-12.",
+   "status": "REFERRED"
+  }
+ ],
+ "provenance_first_hand": [
+  "the measured landscape table",
+  "the 16-row migration map",
+  "the five-stage roadmap",
+  "G-C1..G-C7",
+  "the four-arrow dependency graph"
+ ],
+ "provenance_second_hand": [
+  "⛔ every quoted trigger",
+  "EAD-1 §0",
+  "the Runtime Adapter Record",
+  "SDM-EXT-1's retirement text"
+ ],
+ "negative_evidence": "⭐ The dependency graph marks three of four arrows SPECULATIVE or EMPTY, each with its basis — ⭐ negatives shown as arrow annotations rather than prose.",
+ "multi_dimensional_confidence": {
+  "the migration map": "⭐ HIGH — every trigger quoted",
+  "the measured counts": "⭐ HIGH",
+  "the stable-id property": "⭐ HIGH",
+  "the G-C prefix as a cross-file identifier": "⛔ LOW"
+ },
+ "not_recoverable_without_reread": [
+  "EAD-1",
+  "the Runtime Adapter Record",
+  "registry.yaml",
+  "the Phase-01..03A sealed baseline"
+ ]
+}

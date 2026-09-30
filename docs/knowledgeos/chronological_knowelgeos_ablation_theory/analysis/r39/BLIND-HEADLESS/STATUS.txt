@@ -1,0 +1,2 @@
+CLEAN: My context contains no KnowledgeOS-related material; it has only generic Claude Code harness instructions, a global CLAUDE.md about the Anthropic SDK/model IDs, a user email, and a git-attribution reminder, with no statements about R-39, "A6", or other readers' findings.
+69cb472b2f20cf7a226474ae61e51fab35819547db99d404d92b608111aa226e  ./OUT/answers.json

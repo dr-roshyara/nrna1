@@ -1,0 +1,257 @@
+{
+ "labels": "FORMAL RESULTS over strict EMPIRICAL observations (SEMOBS r4); not theory",
+ "n_events": 36,
+ "guard_signatures": {
+  "ADOPT": {
+   "events": 3,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "c",
+    "k",
+    "r",
+    "s",
+    "t"
+   ],
+   "signatures": [
+    [
+     "a",
+     "c"
+    ],
+    [
+     "a",
+     "k"
+    ],
+    [
+     "a",
+     "t"
+    ]
+   ],
+   "empty_set_conflict": [
+    "ADOPT R-81..85 by the Chief (declined)",
+    "ADOPT R-81..85 by the DA (R-86)"
+   ],
+   "untested": [
+    "r",
+    "s"
+   ]
+  },
+  "ANNOTATE": {
+   "events": 1,
+   "both_outcomes": false,
+   "applicable": [
+    "a",
+    "k",
+    "r"
+   ],
+   "signatures": "UNCONSTRAINED (only one outcome observed)",
+   "untested": [
+    "a",
+    "k",
+    "r"
+   ]
+  },
+  "ASSIGN-ID": {
+   "events": 2,
+   "both_outcomes": true,
+   "applicable": [
+    "h",
+    "k",
+    "r",
+    "s"
+   ],
+   "signatures": [
+    [
+     "h"
+    ],
+    [
+     "r"
+    ]
+   ],
+   "empty_set_conflict": [
+    "ASSIGN a never-used number",
+    "ASSIGN the retired number R-90"
+   ],
+   "untested": [
+    "k",
+    "r",
+    "s"
+   ]
+  },
+  "AUTHORIZE-IMPL": {
+   "events": 2,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "k",
+    "r",
+    "s",
+    "t"
+   ],
+   "signatures": [
+    [
+     "a"
+    ]
+   ],
+   "empty_set_conflict": [
+    "AUTHORIZE-IMPL R-70 (ARB)",
+    "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+   ],
+   "untested": [
+    "k",
+    "r",
+    "s",
+    "t"
+   ]
+  },
+  "OPEN-WORK": {
+   "events": 2,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "k",
+    "r",
+    "t"
+   ],
+   "signatures": [
+    [
+     "k"
+    ]
+   ],
+   "empty_set_conflict": [
+    "OPEN-WORK by a recording note (R-60)",
+    "OPEN-WORK by a ruling (R-60 refiled)"
+   ],
+   "untested": [
+    "a",
+    "r",
+    "t"
+   ]
+  },
+  "RAISE": {
+   "events": 9,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "e",
+    "k",
+    "r",
+    "s",
+    "t",
+    "x"
+   ],
+   "signatures": [
+    [
+     "a",
+     "e"
+    ],
+    [
+     "e",
+     "k"
+    ],
+    [
+     "e",
+     "t"
+    ],
+    [
+     "e",
+     "x"
+    ]
+   ],
+   "empty_set_conflict": [
+    "RAISE promoted #2",
+    "RAISE not promoted #5"
+   ],
+   "untested": [
+    "s",
+    "x"
+   ]
+  },
+  "REGISTER": {
+   "events": 2,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "k",
+    "r"
+   ],
+   "signatures": [
+    [
+     "k"
+    ]
+   ],
+   "empty_set_conflict": [
+    "REGISTER operational acceptance (R-90)",
+    "REGISTER constitutional decision (rule)"
+   ],
+   "untested": [
+    "a",
+    "r"
+   ]
+  },
+  "START": {
+   "events": 11,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "k",
+    "r",
+    "s",
+    "t"
+   ],
+   "signatures": [
+    [
+     "s"
+    ]
+   ],
+   "empty_set_conflict": [
+    "START WP-4B at R-72 (proviso unmet)",
+    "START WP-4B 08-03 16:10"
+   ],
+   "untested": [
+    "a",
+    "k",
+    "r"
+   ]
+  },
+  "SUPERSEDE": {
+   "events": 3,
+   "both_outcomes": true,
+   "applicable": [
+    "a",
+    "e",
+    "k",
+    "r",
+    "x"
+   ],
+   "signatures": [
+    [
+     "a"
+    ],
+    [
+     "e"
+    ],
+    [
+     "k"
+    ],
+    [
+     "r"
+    ],
+    [
+     "x"
+    ]
+   ],
+   "empty_set_conflict": [
+    "SUPERSEDE ADR-T14 (R-77)",
+    "SUPERSEDE D-12 by ADR-MP"
+   ],
+   "untested": [
+    "x"
+   ]
+  }
+ },
+ "ruling_status_bisimulation": {
+  "reachable_states": 250,
+  "bisimulation_classes": 80
+ }
+}

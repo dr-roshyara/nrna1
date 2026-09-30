@@ -1,0 +1,28 @@
+# Batch B0062 — Extraction Summary
+
+**Commit:** 39fdef05dc027c6264b6c349a26362a59191a35f
+**Files processed:** 40 (S2561–S2603, non-contiguous — S2564/S2583/S2590 are gaps in the batch's own numbering, not omissions by this agent)
+**Contributions extracted:** 371
+**New object-index proposals:** 35
+
+## What this batch contains
+
+Two distinct clusters:
+
+1. **S2561–S2591 (30 files) — the "Reiter / KnowledgeOS Reduction" and "R_req / ABK-1 ratification-cascade" saga**, from `docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-292/` and `docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/`. This is a single continuous narrative:
+   - Step-292 tests whether Reiter's situation calculus solves KnowledgeOS's open problems (Observation, Qualify, operation registry, delta). Verdict: REFUTED as a solution; Situation=K_t is refuted by KnowledgeOS's own prior evidence; a few narrow correspondences (regression, persistence-by-construction) transfer, nothing is promoted to canon.
+   - A long escalating chain of documents proposes a Required-Distinction-Universe (R_req), an "Annotated Bilattice Kernel" (ABK-1), a Contradiction spec, an Evaluation spec, a Determination spec, an Operations/Delta spec, and a Composition/Equivalence spec — each self-declaring `[RATIFIED]` — followed almost immediately, repeatedly, by a rigorous mathematical/statistical review that finds specific, real errors (a statistical fallacy equating "6/6 tests passed" with universal adequacy; an injective-vs-existential logic error in a "Non-Collapsing Axiom"; a governance-object (Actionability) leaking into an epistemic object (Determination); a "Monotonic delta" claim that is actually only history-preservation; test harnesses that check a materially weaker property than their stated predicate; a representation-selection circularity in kernel selection). Each correction is absorbed into the next version.
+   - The saga terminates in `THEORY-CLOSURE-GATE-2026-v1.0`: a five-way classification (Theory-critical / Theory-parameterized / Implementation / Empirical / Governance obligation) that lets the theory close **at an explicitly bounded scope**, abandoning the "ABK-1 is uniquely minimal" overclaim in favor of "ABK-1 is a validated candidate for the target problem class." This is the first closure attempt in the whole lineage that a rigorous follow-up review actually accepts, precisely because it stops over-claiming.
+   - One file (S2586) separately audits and refactors an external "Yoni-Zero Lens" proposal, reconnecting to the corpus's much earlier Zero/Lord/Sarathi guidance-cycle concept under renamed roles.
+
+2. **S2592–S2603 (12 files) — three independent external audits of the above cluster**, from `docs/knowledgeos/brainstorming/verification/gap-discovery/` and `docs/knowledgeos/reviews/synthesis/analysis/sync-intake/`. These are the most load-bearing files in the batch:
+   - The verification lane's `gap-update-2026-09-02/` package inventories everything new in the corpus (confirming ~1700 new files and 7384 LOC of genuinely executing code exist elsewhere), tracks nine of its own prior findings against new evidence (several CHARACTERIZED/SHARPENED/SUPERSEDED, none fully CLOSED), corrects six of its own prior claims, and — critically — runs a dedicated **Authority-Claims Audit**: it names `SPEC-DET-2026-v1` by exact filename, quotes its self-declared `[RATIFIED]` status, greps `docs/knowledgeos/governance/` and finds **zero** hits for `R_req`/`SPEC-DET`/`SPEC-RREQ`/`factivity`, with the governance register's latest real act dated 2026-08-24 (predating this entire cluster).
+   - A third, independent lane (`sync-intake/`) reaches the same conclusion via its own separate methodology (a nine-field Authoritative-Act classification, GN-95) and evidence base (the GN ledger in `governance-notes.md`): **zero** artifacts from all of September 2026 qualify as governance acts, and four specifically-named claimed acts are additionally found **internally self-contradictory** (the same document calling something both "Ratified" and "Nothing is adopted"). Its companion audit measures 34 files carrying self-attested HPA authority with no ledger counterpart — 33 of them in this same batch's own source directory — and catches the single most consequential finding in the batch: this batch's own "O_core reduced to 5 primitives" claim matches **none** of the corpus's prior operator-count enumerations, adding a 49th incompatible enumeration to a family of 48 whose intersection is already empty.
+
+## Extraction notes
+
+- Several files in this batch contain severe mechanical duplication (verbatim repeats of whole sections, in one case six times over) — recorded via `in_file_overlap_claim` rather than re-extracted.
+- Two genuine formal/mathematical errors were flagged with `review_flag: MATH-QUESTION` or `STAT-QUESTION` per the mandate (e.g. the "6/6 tests ⇒ Adequacy=1.0" fallacy; the injective vs. existential Non-Collapsing Axiom; the ordinal-scale subtraction problem).
+- One genuine internal count-mismatch was found and recorded (S2578's executive summary claims "4/6/4/2" items while its own body lists "4/3/4/4").
+- All six mandatory self-checks pass: `TOTAL INVALID ROWS: 0`, `TOTAL UNREGISTERED LABELS: 0`, all 371 lines valid JSON, `TOTAL INCONSISTENT ROWS: 0` (five initially-inconsistent unknown_candidate rows were caught and corrected before finalizing), `TOTAL FIELD-SHAPE ERRORS: 0`, `TOTAL SCOPE ERRORS: 0`.
+- `files.jsonl`'s 40 source_ids exactly match the batch's expected set (S2561–S2603, minus the batch's own numbering gaps at S2564/S2583/S2590).

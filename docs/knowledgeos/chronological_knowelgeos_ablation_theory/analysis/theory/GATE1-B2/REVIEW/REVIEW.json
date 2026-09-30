@@ -1,0 +1,209 @@
+{
+ "scoring_fidelity_ok": true,
+ "scoring_fidelity_detail": {
+  "hand_checked": {
+   "GATE1": {
+    "V1": {"M-B1": [0.75, 0.193], "M-B2": [0.286, 0.057], "B1-B2": [0.393, 0.19]},
+    "V3": {"M-B1": [0.821, 0.227], "M-B2": [0.786, 0.184], "B1-B2": [0.964, 0.891]},
+    "V4": {"M-B1": [0.679, 0.276], "M-B2": [0.714, 0.391], "B1-B2": [0.75, 0.246]},
+    "V5_kappa_M-B2": -0.037,
+    "per_op_CORRECT-TEXT_M-B1_kappa": 0.65,
+    "ops_jaccard_rows": {"R-34": 0.33, "R-40": 0.8, "R-50": 0.5, "R-62": 0.5},
+    "ops_jaccard_mean": {"M-B1": 0.933, "M-B2": 0.933, "B1-B2": 1.0},
+    "coverage_main": 0.893
+   },
+   "RESERVE": {
+    "V1": {"M-B1": [0.769, 0.487], "M-B2": [0.692, 0.395], "B1-B2": [0.923, 0.856]},
+    "V3": {"M-B1": [0.923, 0.835], "M-B2": [0.846, 0.644], "B1-B2": [0.923, 0.819]},
+    "V4": {"M-B1": [0.692, 0.35], "M-B2": [0.692, 0.35], "B1-B2": [0.846, 0.717]},
+    "ops_jaccard_rows": {"R-59": {"M-B1": 0.5, "M-B2": 0.33, "B1-B2": 0.5}, "R-60": {"M-B1": 0.5, "M-B2": 0.33, "B1-B2": 0.5}, "R-71": {"M-B1": 1.0, "M-B2": 0.67, "B1-B2": 0.67}, "R-74": {"M-B1": 0.5, "M-B2": 0.5, "B1-B2": 1.0}, "R-42": {"M-B1": 1.0, "M-B2": 0.5, "B1-B2": 0.5}},
+    "ops_jaccard_mean": {"M-B1": 0.846, "M-B2": 0.795, "B1-B2": 0.821},
+    "coverage_main": 0.628
+   }
+  },
+  "all_match": true,
+  "caveats": [
+   "The scorer hard-codes MAIN-CODING-SEALED.json and BLIND-CODING.json. The file renaming and the {rows:} wrapping of B1 for the B1-vs-B2 run are undocumented. The outputs are consistent with it having been done correctly (B1-vs-B2 'main' coverage equals B1's blind coverage).",
+   "In B1-vs-B2 outputs, the labels 'main' and 'blind' mean B1 and B2.",
+   "The ops-Jaccard mean averages per-row values already rounded to 2 dp (effect <= 0.005; no reported value changes)."
+  ]
+ },
+ "normalization_issues": [
+  {"issue": "norm() keeps only the text before the first space or '(' and upper-cases it", "effect_here": "inert: every V value is a single token", "risk": "would collapse 'NOT MODELLED' to 'NOT' and strip qualifiers such as 'AMBIGUOUS (...)'; can hide disagreement"},
+  {"issue": "only the second slot's ops are upper-cased", "effect_here": "inert: all ops are already upper-case", "risk": "a lower-case op in MAIN (or B1 in B1-vs-B2) creates a false disagreement"},
+  {"issue": "not_modelled is never compared between coders; it only lowers coverage", "effect_here": "the GATE1 coverage gap (.893 vs .751/.773) mostly reflects how many items each coder listed (MAIN 8 vs B1 23)", "risk": "coverage cannot be read as coverage of the theory"},
+  {"issue": "empty ops on both sides score Jaccard = 1.0", "effect_here": "GATE1 R-31; RESERVE R-54, R-57", "risk": "creates agreement"},
+  {"issue": "bool(authority_named) maps null to False", "effect_here": "no nulls occur", "risk": "hides an unset field"},
+  {"issue": "kappa = None when pe = 1", "effect_here": "RESERVE V5 M-B2", "risk": "must be reported as not estimable"},
+  {"issue": "per_op_presence keeps only ops appearing >= 3 times in total", "effect_here": "hides the R-34 SUPERSEDE, R-74 REJECT and R-62 APPROVE disagreements", "risk": "hides rare-op disagreement"},
+  {"issue": "exact-match nominal scoring", "effect_here": "RESERVE R-33 NOT-MODELLED vs UNTESTABLE counts as a disagreement although both mean 'no test'", "risk": "creates disagreement; SUPPORTED/UNTESTABLE is weighted the same as SUPPORTED/VIOLATED"},
+  {"issue": "annotations_by_others and note fields are ignored", "effect_here": "the R-59/R-60 attribution split shows up only through ops", "risk": "hides disagreement"},
+  {"issue": "V6 is mechanical (PRE-R43 by row number, plus whether the triple is present)", "effect_here": "1.0 everywhere", "risk": "inflates headline agreement"}
+ ],
+ "main_bias": {
+  "per_judgement": {
+   "GATE1": {
+    "V1": {"holds": false, "values": [0.75, 0.286, 0.393], "note": "driven by B2's vacuous-case convention"},
+    "V2": {"holds": true, "values": [0.893, 0.857, 0.964], "rows": {"R-46": "MAIN right", "R-55": "blind right", "R-97": "blind right"}, "direction": "MAIN under-reads"},
+    "V3": {"holds": true, "values": [0.821, 0.786, 0.964], "rows": {"R-38": "MAIN right", "R-45": "MAIN right", "R-61": "MAIN right", "R-92": "MAIN right (weak)", "R-40": "MAIN defensible"}, "direction": "blind coders inflate AMBIGUOUS"},
+    "V4": {"holds": true, "values": [0.679, 0.714, 0.75], "rows": {"R-49": "MAIN right", "R-75": "MAIN right", "R-56": "MAIN defensible", "R-65": "blind right (MAIN defaults to SUPPORTED without cited evidence)", "R-40": "undecidable under v1"}, "direction": "mixed; manual has no applicability rule"},
+    "V5": {"holds": false, "values": [0.857, 0.893, 0.893], "note": "tie"},
+    "V6": {"holds": null, "values": [1.0, 1.0, 1.0]},
+    "V7": {"holds": true, "values": [0.929, 0.929, 0.964], "rows": {"R-97": "MAIN right"}, "note": "MAIN also codes R-30 V7 SUPPORTED with no SUPERSEDE op (silent default)"},
+    "ops": {"holds": true, "values": [0.933, 0.933, 1.0], "rows": {"R-62 APPROVE": "blind right", "R-34 SUPERSEDE": "blind right", "R-34 ACCEPT": "MAIN right", "R-50 ANNOTATE": "MAIN right", "R-40 CORRECT-TEXT": "blind right (weak)"}},
+    "coverage": {"holds": true, "values": {"main": 0.893, "B1": 0.751, "B2": 0.773}, "note": "enumeration habit, not substantive"}
+   },
+   "RESERVE": {
+    "V1": {"holds": true, "values": [0.769, 0.692, 0.923], "rows": {"R-54": "blind right; MAIN used knowledge of other records ('pre-R-80 term use')", "R-42": "blind right (refusal clause)", "R-33": "blind right (weak; no rule for combining acts)"}},
+    "V2": {"holds": true, "values": [0.615, 0.692, 0.769], "rows": {"R-95": "blind right", "R-71": "MAIN right", "R-69": "blind right (weak)"}},
+    "V3": {"holds": false, "values": [0.923, 0.846, 0.923], "note": "tie; R-76 MAIN VIOLATED vs both blind AMBIGUOUS, blind right"},
+    "V4": {"holds": true, "values": [0.692, 0.692, 0.846], "rows": {"R-57": "blind right", "R-48": "blind (genuinely ambiguous record)", "R-69": "blind (genuinely ambiguous record)"}},
+    "V5": {"holds": false, "values": [0.923, 1.0, 0.923]},
+    "V6": {"holds": null, "values": [1.0, 1.0, 1.0]},
+    "V7": {"holds": false, "values": [0.923, 1.0, 0.923]},
+    "authority_named": {"holds": true, "values": [0.923, 0.923, 1.0], "rows": {"R-33": "blind right; MAIN reads in the deciding authority"}},
+    "ops": {"holds": false, "values": [0.846, 0.795, 0.821], "note": "R-74 REJECT from 'settled by implication': blind right"},
+    "coverage": {"holds": "trivially", "values": {"main": 0.628, "B1": 0.654, "B2": 0.644}}
+   }
+  },
+  "ambiguous_counts": {"GATE1": {"MAIN": 2, "B1": 14, "B2": 14}, "RESERVE": {"MAIN": 3, "B1": 9, "B2": 9}},
+  "violated_counts": {"MAIN": 1, "B1": 0, "B2": 0},
+  "verdict": "Partial and mixed. The pattern holds for GATE1 V2/V3/V4/V7/ops/coverage and for RESERVE V1/V2/V4/authority_named. It fails for GATE1 V1/V5 and RESERVE V3/V5/V7/ops. The main systematic difference is that MAIN resolves toward a determinate code: far fewer AMBIGUOUS, plus SUPPORTED as a silent default. In GATE1 this is more often right, because the blind coders inflate AMBIGUOUS and under-apply V4. In RESERVE (r2 record-only rules), MAIN more often reads beyond the record: knowledge of other records (R-54, R-33), a VIOLATED contradicting the text's 'CONSEQUENCES' label (R-76), and REJECT coded from 'by implication' (R-74). MAIN's GATE1 coding was done partly during manual development, so its agreement with the manual is partly circular."
+ },
+ "correlated_blind_error": [
+  {"row": "GATE1 R-46", "judgement": "V2", "main": "UNTESTABLE", "blind": "SUPPORTED", "who_is_right_under_manual": "MAIN", "quote": "Approval attaches to **the plan**"},
+  {"row": "GATE1 R-55", "judgement": "V2", "main": "UNTESTABLE", "blind": "SUPPORTED", "who_is_right_under_manual": "blind", "quote": "requiring its own authorization if work is desired"},
+  {"row": "GATE1 R-97", "judgement": "V2", "main": "UNTESTABLE", "blind": "SUPPORTED", "who_is_right_under_manual": "blind", "quote": "implementation may proceed only where Execution Governance has explicitly authorized it"},
+  {"row": "GATE1 R-38", "judgement": "V3", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "MAIN", "quote": "R-38 is a **consolidation/assessment ruling, not a sixth freeze**"},
+  {"row": "GATE1 R-45", "judgement": "V3", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "MAIN", "quote": "**no responsibility holder changes.**"},
+  {"row": "GATE1 R-61", "judgement": "V3", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "MAIN", "quote": "accepted as the **authoritative assessment of the current governance model**"},
+  {"row": "GATE1 R-92", "judgement": "V3", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "MAIN (weak)", "quote": "SEAM-WIRING CONSTITUTIONAL REVIEW ADOPTED ... The constitutional review ... is ACCEPTED"},
+  {"row": "GATE1 R-40", "judgement": "V3", "main": "AMBIGUOUS", "blind": "SUPPORTED", "who_is_right_under_manual": "MAIN (weak)", "quote": "A4 candidate + OQ-ENG-004 protocol commissioned"},
+  {"row": "GATE1 R-49", "judgement": "V4", "main": "SUPPORTED", "blind": "UNTESTABLE", "who_is_right_under_manual": "MAIN", "quote": "keeps evidence collection separate from repair"},
+  {"row": "GATE1 R-75", "judgement": "V4", "main": "SUPPORTED", "blind": "UNTESTABLE", "who_is_right_under_manual": "MAIN", "quote": "the DECISION stands as issued"},
+  {"row": "GATE1 R-56", "judgement": "V4", "main": "SUPPORTED", "blind": "UNTESTABLE", "who_is_right_under_manual": "MAIN (weak)", "quote": "Evidence: the Slice 7B Authorization Package"},
+  {"row": "GATE1 R-65", "judgement": "V4", "main": "SUPPORTED", "blind": "UNTESTABLE", "who_is_right_under_manual": "blind", "quote": "Engineering shall implement Slice 7C subject to the Architectural Constraints"},
+  {"row": "GATE1 R-40", "judgement": "V4", "main": "SUPPORTED", "blind": "UNTESTABLE", "who_is_right_under_manual": "undecidable (v1 has no V4 applicability rule)", "quote": "Decision Authority response to the reconstruction cycle"},
+  {"row": "GATE1 R-97", "judgement": "V7", "main": "UNTESTABLE", "blind": "AMBIGUOUS", "who_is_right_under_manual": "MAIN", "quote": "STANDING SCOPE STATEMENT, replacing any broader claim"},
+  {"row": "GATE1 R-62", "judgement": "ops", "main": "ANNOTATE", "blind": "APPROVE+ANNOTATE", "who_is_right_under_manual": "blind", "quote": "RECORDING CORRECTIONS A1 AND A3 APPROVED"},
+  {"row": "GATE1 R-50", "judgement": "ops", "main": "AUTHORIZE", "blind": "AUTHORIZE+ANNOTATE", "who_is_right_under_manual": "MAIN", "quote": "RECORDING CORRECTION A3 (R-62, 2026-08-01 — annotation; decision unchanged)"},
+  {"row": "GATE1 R-34", "judgement": "ops (SUPERSEDE)", "main": "absent", "blind": "SUPERSEDE", "who_is_right_under_manual": "blind", "quote": "Superseded in detail by the A/B/C/D classification"},
+  {"row": "GATE1 R-34", "judgement": "ops (ACCEPT)", "main": "absent", "blind": "ACCEPT", "who_is_right_under_manual": "MAIN", "quote": "R-32/R-33 accepted as grandfathered"},
+  {"row": "GATE1 R-40", "judgement": "ops (CORRECT-TEXT)", "main": "absent", "blind": "CORRECT-TEXT", "who_is_right_under_manual": "blind (weak)", "quote": "Correction note, same edit: this row was momentarily inserted above R-39"},
+  {"row": "RESERVE R-54", "judgement": "V1", "main": "NOT-MODELLED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "blind", "quote": "R-51 granted permission, R-54 starts the clock"},
+  {"row": "RESERVE R-42", "judgement": "V1", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "blind", "quote": "Option C of the ownership investigation is REFUTED"},
+  {"row": "RESERVE R-33", "judgement": "V1", "main": "NOT-MODELLED", "blind": "UNTESTABLE", "who_is_right_under_manual": "blind (weak)", "quote": "supersedes any file-count framing"},
+  {"row": "RESERVE R-95", "judgement": "V2", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "blind", "quote": "implementation proceeds under the normal engineering lifecycle once the plan is reviewed"},
+  {"row": "RESERVE R-71", "judgement": "V2", "main": "UNTESTABLE", "blind": "SUPPORTED", "who_is_right_under_manual": "MAIN", "quote": "Engineering does not self-certify it."},
+  {"row": "RESERVE R-69", "judgement": "V2", "main": "UNTESTABLE", "blind": "SUPPORTED", "who_is_right_under_manual": "blind (weak)", "quote": "WP-4A's AUTHORIZATION is recorded in its plan and session log but NOT IN THIS REGISTER"},
+  {"row": "RESERVE R-76", "judgement": "V3", "main": "VIOLATED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "blind", "quote": "CONSEQUENCES: the scope ambiguity recorded in the WP-4B engineering discovery §2 IS CLOSED"},
+  {"row": "RESERVE R-57", "judgement": "V4", "main": "UNTESTABLE", "blind": "SUPPORTED", "who_is_right_under_manual": "blind", "quote": "deliberately NOT edited by engineering, because amending an approved plan is a governance act"},
+  {"row": "RESERVE R-48", "judgement": "V4", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "blind (genuinely ambiguous record)", "quote": "Also closed by this slice: A-1's one labelled evidence limit"},
+  {"row": "RESERVE R-69", "judgement": "V4", "main": "SUPPORTED", "blind": "AMBIGUOUS", "who_is_right_under_manual": "blind (genuinely ambiguous record)", "quote": "the contract, not the code, is corrected"},
+  {"row": "RESERVE R-33", "judgement": "authority_named", "main": "true", "blind": "false", "who_is_right_under_manual": "blind", "quote": "ARB progress snapshot at definition"},
+  {"row": "RESERVE R-74", "judgement": "ops (REJECT)", "main": "REJECT", "blind": "absent", "who_is_right_under_manual": "blind", "quote": "ALSO SETTLED BY IMPLICATION: H2/H3 are rejected"}
+ ],
+ "correlated_blind_error_summary": {
+  "main_right": 13,
+  "blind_right": 17,
+  "undecidable": 1,
+  "shared_blind_error_patterns": [
+   "AMBIGUOUS when the readings converge (GATE1 V3 R-38, R-45, R-61, R-92)",
+   "V2 applied to records with no permission/authorization/execution content (GATE1 R-46)",
+   "V4 not applied where the evidence is explicitly kept from changing status (GATE1 R-49, R-75)",
+   "literal verb matching on another ruling's annotation (GATE1 R-50)"
+  ],
+  "independence_marker": "B1 and B2 ops are identical on all 28 GATE1 rows, and their not_modelled lists are near-identical"
+ },
+ "v1_v4_causes": {
+  "V1": {
+   "manual_ambiguity": {
+    "vacuous_case_no_guard": ["G R-30", "G R-32", "G R-35", "G R-38", "G R-45", "G R-46", "G R-49", "G R-55", "G R-56", "G R-61", "G R-62", "G R-63", "G R-67", "G R-68", "G R-93"],
+    "adopt_vs_adopt_decision": ["G R-73", "G R-75", "G R-92"],
+    "demonstrated_need_undefined": ["G R-34", "G R-40"],
+    "predecessor_acceptance_or_successor_slice_undefined": ["G R-58", "G R-65", "R R-70"],
+    "refusal_clause_non_C_rule": ["R R-42"],
+    "combining_acts_NM_vs_U": ["R R-33"]
+   },
+   "genuinely_ambiguous_record": ["R R-54", "G R-34", "G R-40"],
+   "coder_error": ["R R-54 (MAIN: knowledge of other records)", "G R-58 and R-65 (B2 SUPPORTED contradicts B2's own stated convention; UNTESTABLE under r2 F1)"],
+   "normalization_artifact": [],
+   "metric_artifact": ["R R-33 (NOT-MODELLED vs UNTESTABLE scored as a full disagreement)"],
+   "dominant_cause": "manual ambiguity: the vacuous case explains 15/20 MAIN-B2 and 15/17 B1-B2 GATE1 V1 disagreements"
+  },
+  "V4": {
+   "manual_ambiguity": ["G R-40", "G R-49", "G R-50", "G R-52", "G R-55", "G R-56", "G R-61", "G R-63", "G R-65", "G R-67", "G R-75", "G R-93"],
+   "genuinely_ambiguous_record": ["R R-48", "R R-69"],
+   "coder_error": ["R R-57 (MAIN: F4 applies)", "R R-76 (MAIN, B2: evidence bears on an existing boundary)", "R R-95 (B2: evidence bears on a new decision, not an existing one)", "G R-50 (B2)"],
+   "normalization_artifact": [],
+   "dominant_cause": "manual ambiguity in GATE1 (no applicability rule); after r2 F4, the unnamed-actor case"
+  }
+ },
+ "manual_clarification_recommendations": [
+  "RECOMMENDATION ONLY. V1 vacuous case: 'If no act of this record is subject to a §C guard and no refusal cites a rule, code V1 UNTESTABLE.'",
+  "RECOMMENDATION ONLY. V1 row value: code per act; VIOLATED > AMBIGUOUS > SUPPORTED (at least one guarded act satisfied, none UNTESTABLE) > UNTESTABLE; NOT-MODELLED only if every act is not modelled.",
+  "RECOMMENDATION ONLY. A refusal citing a rule outside §C does not bear on V1.",
+  "RECOMMENDATION ONLY. 'Demonstrated need' = the record states at least one instance of the problem having occurred (a purpose does not count); 'successor slice' = the record names the predecessor.",
+  "RECOMMENDATION ONLY. V4 actor rule: when a status change and evidence appear together, SUPPORTED if the record attributes the change to an act of an authority, AMBIGUOUS if it names no actor.",
+  "RECOMMENDATION ONLY. All judgements: code AMBIGUOUS only if the competing readings give different codes for that judgement.",
+  "RECOMMENDATION ONLY. V2 applies only if the record mentions permission, authorization, commissioning or execution; separating approval or acceptance from execution is outside V2."
+ ],
+ "kappa_paradox_flags": [
+  {"bundle": "GATE1", "judgement": "V5", "pair": "M-B2", "agreement": 0.893, "kappa": -0.037, "cause": "about 93% UNTESTABLE"},
+  {"bundle": "GATE1", "judgement": "V5", "pair": "M-B1", "agreement": 0.857, "kappa": 0.304, "cause": "prevalence"},
+  {"bundle": "GATE1", "judgement": "V1", "pair": "M-B1", "agreement": 0.75, "kappa": 0.193, "cause": "MAIN 27/28 SUPPORTED"},
+  {"bundle": "GATE1", "judgement": "V3", "pair": "M-B1/M-B2", "agreement": [0.821, 0.786], "kappa": [0.227, 0.184], "cause": "SUPPORTED prevalence"},
+  {"bundle": "GATE1", "judgement": "V7", "pair": "M-B1/M-B2", "agreement": 0.929, "kappa": [0.472, 0.576], "cause": "UNTESTABLE prevalence"},
+  {"bundle": "RESERVE", "judgement": "V5", "pair": "M-B1 and B1-B2", "agreement": 0.923, "kappa": 0.0, "cause": "one minority code in n = 13"},
+  {"bundle": "RESERVE", "judgement": "V5", "pair": "M-B2", "agreement": 1.0, "kappa": null, "cause": "no variation (pe = 1)"},
+  {"bundle": "both", "judgement": "V6", "pair": "all", "agreement": 1.0, "kappa": 1.0, "cause": "mechanical; not informative"}
+ ],
+ "kappa_reporting_recommendation": "Report raw agreement together with the marginals (majority-code share and number of minority codes per coder), n, and a prevalence-robust index (PABAK or Gwet's AC1). Report kappa = null as 'not estimable'. Do not average kappa across judgements. For V5 and V7, list the few non-default rows instead of summarising them with kappa.",
+ "establishes": [
+  "The frozen scorer's outputs follow arithmetically from the three codings (27 kappa/agreement values, 17 Jaccard rows and 2 coverage means checked by hand).",
+  "Two same-family blind runs reproduce each other closely on ops (GATE1 Jaccard 1.0) and on V2, V3, V6 and V7.",
+  "Most V1/V4 instability comes from the instrument (vacuous-case, combining and applicability gaps in the manual), not from coder idiosyncrasy.",
+  "No blind coder coded VIOLATED in 41 rows; MAIN's single VIOLATED (RESERVE R-76) is supported by neither blind coder.",
+  "MAIN differs mainly by resolving ambiguity toward determinate codes, sometimes (RESERVE) using knowledge of other records."
+ ],
+ "does_not_establish": [
+  "Independent confirmation: all coders are the same model family; the identical B1/B2 GATE1 ops show correlated priors; blindness to each other is unverified.",
+  "Gate 1 proper: requires a different-family or human coder, pre-registered thresholds, and a MAIN coding sealed before the manual was finalised (MAIN's GATE1 coding was partly done while developing manual v1.1).",
+  "A held-out test of manual r2: it was revised after Gate 1, RESERVE n = 13, and the rows come from the same log.",
+  "Validity of violation detection: VIOLATED is essentially never used, so detection is untested.",
+  "Precise reliability: n = 28 and n = 13 give wide intervals; kappa is prevalence-distorted.",
+  "That the B1-vs-B2 scorer run (file renaming and wrapping) was done as intended: undocumented, only consistent."
+ ],
+ "disagreements": [
+  {"item": "V1 vacuous-case convention (B2 UNTESTABLE vs MAIN/B1 SUPPORTED)", "rows": "GATE1: 15 rows", "class": "formal reasoning"},
+  {"item": "V1 ADOPT vs ADOPT-DECISION ('prepared package')", "rows": "G R-73, R-75, R-92", "class": "source interpretation"},
+  {"item": "V1 demonstrated need for new categories", "rows": "G R-34, R-40", "class": "evidence scope"},
+  {"item": "V1 predecessor acceptance not stated", "rows": "G R-58, R-65; R R-70", "class": "evidence scope"},
+  {"item": "V1 refusal citing a non-§C rule", "rows": "R R-42", "class": "formal reasoning"},
+  {"item": "V1 NOT-MODELLED vs UNTESTABLE when combining acts", "rows": "R R-33", "class": "coding"},
+  {"item": "V1 permission vs authorization for START; MAIN used knowledge of other records", "rows": "R R-54", "class": "evidence scope"},
+  {"item": "V2 applicability", "rows": "G R-46, R-55, R-97, R-67; R R-69, R-71, R-48, R-59, R-74", "class": "coding"},
+  {"item": "V2 plan review standing in for authorization", "rows": "R R-95", "class": "source interpretation"},
+  {"item": "V3 AMBIGUOUS when the readings converge", "rows": "G R-38, R-45, R-61, R-92", "class": "formal reasoning"},
+  {"item": "V3 'commissioned' fits no frame", "rows": "G R-40", "class": "source interpretation"},
+  {"item": "V3 scope statement under CONFIRM", "rows": "G R-97", "class": "source interpretation"},
+  {"item": "V3 consequence vs direct change; the only VIOLATED", "rows": "R R-76", "class": "substantive"},
+  {"item": "V3 NOT-MODELLED vs SUPPORTED (B2)", "rows": "R R-33", "class": "coding"},
+  {"item": "V4 applicability under v1", "rows": "G R-40, 49, 50, 52, 55, 56, 61, 63, 65, 67, 75, 93", "class": "coding"},
+  {"item": "V4 unnamed actor for an evidence-linked change", "rows": "R R-48, R-69", "class": "source interpretation"},
+  {"item": "V4 applicability under r2 F4", "rows": "R R-57, R-76, R-95", "class": "coding"},
+  {"item": "V5 whether a reopening occurs", "rows": "G R-52, R-63, R-67, R-75, R-97; R R-57", "class": "source interpretation"},
+  {"item": "V7 'becomes' / 'replacing' / 'superseded' of another record", "rows": "G R-30, R-97; R R-57", "class": "wording"},
+  {"item": "ops: annotation attribution (other ruling vs own ANNOTATE vs CORRECT-TEXT)", "rows": "G R-50; R R-59, R-60", "class": "source interpretation"},
+  {"item": "ops: headline APPROVE omitted by MAIN", "rows": "G R-62", "class": "coding"},
+  {"item": "ops: 'accepted as grandfathered' / 'superseded in detail by'", "rows": "G R-34", "class": "wording"},
+  {"item": "ops: same-edit placement correction as CORRECT-TEXT", "rows": "G R-40", "class": "wording"},
+  {"item": "ops: REJECT 'by implication'", "rows": "R R-74", "class": "source interpretation"},
+  {"item": "ops: 'binding' / 'shall' as CREATE-NORM", "rows": "R R-42, R-70", "class": "wording"},
+  {"item": "ops: 'opened' of a non-work-package (ENG-012)", "rows": "R R-71", "class": "wording"},
+  {"item": "authority_named: ARB mentioned as the snapshot source", "rows": "R R-33", "class": "evidence scope"},
+  {"item": "coverage driven by not_modelled enumeration", "rows": "both bundles", "class": "coding"},
+  {"item": "B1 and B2 ops identical on all 28 GATE1 rows", "rows": "GATE1 all", "class": "independence"},
+  {"item": "MAIN's GATE1 coding done during manual v1.1 development", "rows": "GATE1 all", "class": "independence"}
+ ]
+}

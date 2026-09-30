@@ -1,0 +1,71 @@
+{
+ "I-a Promote -> NecessityEvidence before": {
+  "R-39 (DDD principles; ES-006.1)": "HOLDS",
+  "B (Layer Verification Rule)": "VACUOUS (no promotion)",
+  "P1 (R-41 / ES-004.3)": "HOLDS"
+ },
+ "I-b Promote -> Proposal before (E2)": {
+  "R-39 (DDD principles; ES-006.1)": {
+   "NOT-RECORDED (absence is not a violation)": "no proposal recorded before",
+   "shortest_violating_prefix": [
+    "NecessityEvidence",
+    "Promote"
+   ],
+   "depends_on_labels": [
+    "SOURCE"
+   ]
+  },
+  "B (Layer Verification Rule)": "VACUOUS (no promotion)",
+  "P1 (R-41 / ES-004.3)": {
+   "NOT-RECORDED (absence is not a violation)": "no proposal recorded before",
+   "shortest_violating_prefix": [
+    "NecessityEvidence",
+    "Promote"
+   ],
+   "depends_on_labels": [
+    "READING",
+    "SOURCE"
+   ]
+  }
+ },
+ "I-c Promote(>=Engineering Standard) -> Qualification/Validation before (E3)": {
+  "R-39 (DDD principles; ES-006.1)": "HOLDS",
+  "B (Layer Verification Rule)": "VACUOUS (no promotion)",
+  "P1 (R-41 / ES-004.3)": {
+   "VIOLATED": "validation only after",
+   "shortest_violating_prefix": [
+    "NecessityEvidence",
+    "Promote"
+   ],
+   "depends_on_labels": [
+    "READING",
+    "SOURCE"
+   ]
+  }
+ },
+ "I-d Promote -> explicit decision by a named authority": {
+  "R-39 (DDD principles; ES-006.1)": "HOLDS",
+  "B (Layer Verification Rule)": "VACUOUS (no promotion)",
+  "P1 (R-41 / ES-004.3)": "HOLDS"
+ },
+ "I-e FreezeAuthor does not imply Promote (frozen != adopted)": {
+  "R-39 (DDD principles; ES-006.1)": "HOLDS",
+  "B (Layer Verification Rule)": "HOLDS",
+  "P1 (R-41 / ES-004.3)": "HOLDS"
+ },
+ "I-f below-norm Promote -> recorded exception": {
+  "R-39 (DDD principles; ES-006.1)": "HOLDS",
+  "B (Layer Verification Rule)": "VACUOUS (no promotion)",
+  "P1 (R-41 / ES-004.3)": {
+   "VIOLATED": "norm-gap without recorded exception",
+   "shortest_violating_prefix": [
+    "NecessityEvidence",
+    "Promote"
+   ],
+   "depends_on_labels": [
+    "READING",
+    "SOURCE"
+   ]
+  }
+ }
+}

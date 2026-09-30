@@ -1,0 +1,56 @@
+{
+ "n": 36,
+ "missing": [],
+ "type_4class": {
+  "agreement": 1.0,
+  "kappa": 1.0
+ },
+ "type_act_binary": {
+  "agreement": 1.0,
+  "kappa": 1.0
+ },
+ "source_act_operation": {
+  "agreement": 0.972,
+  "kappa": 0.965
+ },
+ "dual_YES": {
+  "P1": 27,
+  "P2": 27,
+  "both": 27
+ },
+ "unknown_share": {
+  "P1": 0.083,
+  "P2": 0.083
+ },
+ "vs_audit": {
+  "P1": {
+   "agreement": 0.972,
+   "kappa": 0.952
+  },
+  "P2": {
+   "agreement": 0.972,
+   "kappa": 0.952
+  }
+ },
+ "type_disagreements": {},
+ "counts": {
+  "P1": {
+   "ACT_OBSERVATION": 20,
+   "UNKNOWN": 3,
+   "NORM_STATEMENT": 12,
+   "GENERIC_PRACTICE": 1
+  },
+  "P2": {
+   "ACT_OBSERVATION": 20,
+   "UNKNOWN": 3,
+   "NORM_STATEMENT": 12,
+   "GENERIC_PRACTICE": 1
+  },
+  "audit": {
+   "ACT_OBSERVATION": 19,
+   "UNKNOWN": 3,
+   "NORM_STATEMENT": 13,
+   "GENERIC_PRACTICE": 1
+  }
+ }
+}

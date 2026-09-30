@@ -1,0 +1,82 @@
+{
+  "conventions": {
+    "pair_rule": "Frozen TASK §3 rule. P = PROMOTED and not CHOICE; Q = NOT-PROMOTED and RULE. A pair is deciding only on known equal parameters and known evidence(Q) >= evidence(P). It is undetermined if some admissible value of an UNK field could make it falsifying. Stated ranges bound the admissible values (E08: 2-3; E01: 1-2).",
+    "unchanged_from_A": "Unless a change is listed, every field keeps A's value and quote (EXECUTION.json)."
+  },
+  "corrected_events": [
+    {"id": "E01", "actor": "PA", "target_type": "STANDARD-DOC", "evidence": {"value": "UNK", "unit": "instances", "admissible": [1, 2]}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R41", "role": "P", "change": "none"},
+    {"id": "E02", "actor": "UNK", "target_type": "UNK", "evidence": {"value": 1, "unit": "instances"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-ES0043-VALIDATION", "role": "none", "change": "none (borderline)"},
+    {"id": "E03", "actor": "PO/ARB", "target_type": "UNK", "evidence": {"value": "UNK", "unit": "UNK"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-S3-RULING", "role": "P", "change": "target OTHER->UNK; outcome quote; cluster split from E04"},
+    {"id": "E04", "actor": "UNK", "target_type": "METHODOLOGY/PRINCIPLES", "evidence": {"value": 1, "unit": "occurrences"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "RULE", "cluster": "C-S3-OBS-DISPOSITION", "role": "Q", "change": "cluster only"},
+    {"id": "E05", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "slices"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "P", "change": "none"},
+    {"id": "E06", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "slices"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "P", "change": "none"},
+    {"id": "E07", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "slices"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "P", "change": "none"},
+    {"id": "E08", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": "UNK", "unit": "slices", "admissible": [2, 3]}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "P", "change": "range used as a bound in pair evaluation"},
+    {"id": "E09", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "slices"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "P", "change": "none"},
+    {"id": "E10", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": "UNK", "unit": "UNK"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "P", "change": "none"},
+    {"id": "E11", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 1, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "actor quote only"},
+    {"id": "E12", "actor": "ARB", "target_type": "CANDIDATE-PATTERN", "evidence": {"value": 1, "unit": "demonstrations"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "target OI->CANDIDATE-PATTERN (a registration, not a promotion)"},
+    {"id": "E13", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 2, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "target PRINCIPLES-DOC->OI for the R-36 non-promotion; PRINCIPLES-DOC follow-up outcome UNK"},
+    {"id": "E14", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "target METHODOLOGY->OI for the R-36 non-promotion; v1.1 follow-up outcome UNK"},
+    {"id": "E15", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 1, "unit": "contexts"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E16", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 1, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "RULE", "cluster": "C-R36", "role": "Q", "change": "target quote only"},
+    {"id": "E17", "actor": "ARB", "target_type": "OTHER", "evidence": {"value": "UNK", "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E18", "status": "EXCLUDED", "reason": "The candidate is the standards document itself (the home), not an item promoted into a home.", "role": "none", "change": "removed as Q"},
+    {"id": "E19", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 2, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E20", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 2, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E21", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": "UNK", "unit": "UNK"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E22", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": "UNK", "unit": "UNK"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E23", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E24", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": 3, "unit": "tickets"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E25", "actor": "ARB", "target_type": "OPERATING-INSTRUCTIONS", "evidence": {"value": "UNK", "unit": "UNK"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-R36", "role": "none", "change": "none"},
+    {"id": "E26", "actor": "PA", "target_type": "OTHER", "evidence": {"value": 2, "unit": "slices"}, "exception": "UNK", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-S6-PROTOCOL", "role": "P", "change": "none"},
+    {"id": "E27", "status": "MERGED_INTO_E28", "reason": "The author only recommends and refrains ('one decision belongs to the DA, not to me'). Whether the protocol goes into a standards document is one decision item, and it is pending.", "role": "none", "change": "outcome NOT-PROMOTED->UNK; actor->Decision Authority; ground RULE->CHOICE; record merged"},
+    {"id": "E28", "actor": "Decision Authority", "recommender": "the session author (recommends (b); did not self-promote, per Phase 16)", "target_type": "STANDARD-DOC", "evidence": {"value": 2, "unit": "slices"}, "exception": "UNK", "outcome": "UNK", "ground": "CHOICE", "cluster": "C-S6-PROTOCOL", "role": "excluded (CHOICE; outcome UNK)", "change": "absorbs E27"},
+    {"id": "E29", "actor": "PA", "target_type": "UNK", "evidence": {"value": "UNK", "unit": "slices"}, "exception": "UNK", "outcome": "NOT-PROMOTED", "ground": "UNK", "cluster": "C-PARK-2026-07-26", "role": "none", "change": "none"},
+    {"id": "E30", "actor": "Decision Authority", "target_type": "UNK", "evidence": {"value": "UNK", "unit": "UNK"}, "exception": "YES", "outcome": "PROMOTED", "ground": "UNK", "cluster": "C-R39", "role": "P", "change": "none"},
+    {"id": "E31", "name": "Governing principle 'evidence + reasoning is not authority' generalised by the PA into the protocol · S6", "actor": {"value": "PA", "quote": "originating in this slice's mapper self-correction, now generalised by the PA"}, "target_type": {"value": "OTHER", "text": "carried at the top of the protocol (the operating standard)", "quote": "Governing principle carried at the top of the protocol"}, "evidence": {"value": 2, "unit": "occurrences", "alt": "1 slice (WP-2)", "quote": "Applied twice in WP-2 — the mapper (roadmap won over my simplification argument) and F-T1"}, "exception": "UNK", "outcome": {"value": "PROMOTED", "quote": "now generalised by the PA"}, "ground": "UNK", "cluster": "C-S6-PROTOCOL", "role": "P", "change": "added (missing event)"}
+  ],
+  "verdicts_A_coding": {
+    "note": "Recomputed by the reviewer from A's own values; all of A's pair lists were reproduced. The counts in brackets apply E08's stated range 2-3.",
+    "M_E": {"verdict": "FALSIFIED", "deciding_pairs": [["E26", "E27"]], "undetermined_count": 25, "undetermined_count_with_E08_range": 23},
+    "M_A": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_count": 13, "undetermined_count_with_E08_range": 11},
+    "M_T": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_count": 8, "undetermined_count_with_E08_range": 7, "note": "(E01,E27) falsifies under every text-admissible value of E01 (1 or 2), but the frozen letter makes it UNDETERMINED."},
+    "M_AT": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_count": 3, "undetermined_count_with_E08_range": 2},
+    "M_C": {"needed": false, "excludable": false}
+  },
+  "verdicts_corrected": {
+    "M_E": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_pairs": [["E01","E04"],["E01","E16"],["E03","E04"],["E03","E16"],["E10","E04"],["E10","E16"],["E30","E04"],["E30","E16"]]},
+    "M_A": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_pairs": [["E01","E04"],["E03","E04"],["E10","E04"],["E30","E04"],["E10","E16"]]},
+    "M_T": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_pairs": [["E03","E04"],["E30","E04"],["E03","E16"],["E10","E16"],["E30","E16"]]},
+    "M_AT": {"verdict": "UNDETERMINED", "deciding_pairs": [], "undetermined_pairs": [["E03","E04"],["E30","E04"],["E10","E16"]]},
+    "M_C": {"needed": false, "excludable": false},
+    "flips": [
+      {"if": "E27 kept as A coded it (decided NOT-PROMOTED, RULE)", "then": "M_E FALSIFIED via (E26,E27)"},
+      {"if": "E01 evidence = 1", "then": "M_E FALSIFIED via (E01,E04), (E01,E16)"},
+      {"if": "E31 evidence = 1 slice", "then": "M_E FALSIFIED via (E31,E16), (E31,E04)"},
+      {"if": "E26 target = STANDARD-DOC, with A's E27", "then": "M_T FALSIFIED via (E26,E27)"},
+      {"if": "E26 actor = session author, with A's E27", "then": "M_A FALSIFIED via (E26,E27)"},
+      {"if": "a P with ground UNK counts as undetermined (strict reading)", "then": "every model UNDETERMINED on both codings"}
+    ]
+  },
+  "disagreements": [
+    {"event": "E27", "field": "outcome", "A_value": "NOT-PROMOTED", "reviewer_value": "UNK (pending DA decision)", "class": "source interpretation", "quote": "GOVERNANCE FLAG — one decision belongs to the DA, not to me."},
+    {"event": "E27", "field": "actor", "A_value": "the session author / engineering", "reviewer_value": "Decision Authority (the author only recommends)", "class": "coding", "quote": "Options for the DA: (a) adopt now … (b) hold to the parked criterion … Recommendation: (b)"},
+    {"event": "E27", "field": "ground", "A_value": "RULE", "reviewer_value": "CHOICE (Phase 16 governs who may promote, not whether)", "class": "coding", "quote": "promoting observations into standards without authorization"},
+    {"event": "E27/E28", "field": "record/cluster", "A_value": "two decision records", "reviewer_value": "one decision item", "class": "independence", "quote": "one decision belongs to the DA, not to me"},
+    {"event": "M_E", "field": "verdict", "A_value": "FALSIFIED", "reviewer_value": "UNDETERMINED", "class": "substantive", "quote": "Evidence today = two slices (WP-1, WP-2)."},
+    {"event": "E18", "field": "inclusion", "A_value": "Q event (NOT-PROMOTED, RULE)", "reviewer_value": "not a standing-raising event (it is the home, not an item)", "class": "evidence scope", "quote": "Engineering Standards document (R-28/R-32, CMP-009) | D | … Keep deferred — building it now would violate Documentation Economy"},
+    {"event": "E31", "field": "inclusion", "A_value": "absent", "reviewer_value": "PROMOTED · PA · OTHER · 2 occurrences", "class": "evidence scope", "quote": "Governing principle carried at the top of the protocol (originating in this slice's mapper self-correction, now generalised by the PA)"},
+    {"event": "E03", "field": "target_type", "A_value": "OTHER", "reviewer_value": "UNK", "class": "coding", "quote": "BINDING VOCABULARY RULING — applies to ALL future documentation, not just this artifact"},
+    {"event": "E03", "field": "outcome quote", "A_value": "Applied immediately to the closure artifact §5 …", "reviewer_value": "BINDING VOCABULARY RULING — applies to ALL future documentation", "class": "wording", "quote": "vocabulary ruling registered and applied"},
+    {"event": "E03/E04", "field": "cluster", "A_value": "C-S3-NINTH (shared)", "reviewer_value": "separate clusters", "class": "independence", "quote": "Disposition: registered as the PO's framing of O-CLOSURE-VOCAB"},
+    {"event": "E13", "field": "target_type/outcome", "A_value": "PRINCIPLES-DOC + NOT-PROMOTED", "reviewer_value": "OPERATING-INSTRUCTIONS + NOT-PROMOTED; PRINCIPLES-DOC outcome UNK", "class": "coding", "quote": "Domain-Event ≠ Integration-Event + the Discovery→IDD→RED→GREEN→Qualification→Completion chain are Category-B follow-ups (principles doc / v1.1 ratification — separate slices)"},
+    {"event": "E14", "field": "target_type/outcome", "A_value": "METHODOLOGY/PRINCIPLES + NOT-PROMOTED", "reviewer_value": "OPERATING-INSTRUCTIONS + NOT-PROMOTED; METHODOLOGY outcome UNK", "class": "coding", "quote": "Category-B follow-ups (principles doc / v1.1 ratification — separate slices)"},
+    {"event": "E12", "field": "target_type", "A_value": "OPERATING-INSTRUCTIONS", "reviewer_value": "CANDIDATE-PATTERN", "class": "coding", "quote": "The generalized form (\"configuration is not capability\") has ONE demonstration → Candidate Pattern"},
+    {"event": "E13", "field": "actor quote", "A_value": "ARB may prefer waiting for a 3rd slice", "reviewer_value": "ARB wording refinement at adoption", "class": "wording", "quote": "ARB wording refinement at adoption: \"unverified theory\", not \"theoretical elegance\""},
+    {"event": "E16", "field": "target_type quote", "A_value": "`ChallengeResolvedIntegration` carrier … remain Candidates", "reviewer_value": "Promoted into AST-013 … Expressly NOT promoted: … carrier", "class": "wording", "quote": "Promoted into AST-013 (`OPERATING_INSTRUCTIONS.md` §Promoted Engineering Behaviours) … Expressly NOT promoted"},
+    {"event": "E11/E12/E15/E19–E25", "field": "actor quote", "A_value": "category counts (e.g. 'candidates (D) 5')", "reviewer_value": "ARB wording refinement at adoption", "class": "wording", "quote": "ARB wording refinement at adoption"},
+    {"event": "E08", "field": "undetermined pairs", "A_value": "(E08,E04), (E08,E16) undetermined", "reviewer_value": "not falsifiable (evidence ≥ 2 stated)", "class": "formal reasoning", "quote": "2–3: Handover §9 (ARB-adopted Completion-Review discipline)"},
+    {"event": "all P (esp. E26)", "field": "sensitivity / eligibility of a P with ground UNK", "A_value": "always eligible; E26-as-CHOICE not tested", "reviewer_value": "agree with the reading, but the strict alternative (every model UNDETERMINED) should be reported", "class": "formal reasoning", "quote": "A pair with UNK on a needed field is UNDETERMINED. CHOICE-grounded items are excluded from falsification."}
+  ]
+}

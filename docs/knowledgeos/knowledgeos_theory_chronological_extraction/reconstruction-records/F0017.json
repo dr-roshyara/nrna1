@@ -1,0 +1,154 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0009-RETROFIT-B3",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 3",
+  "⚠️ prior_read": "YES",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0009-RETROFIT-B3."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0017",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_External_Positioning_Comparison_Matrix.md",
+ "canonical_sequence_position": 17,
+ "lines_total": 71,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED'",
+ "source_document_kind": "⭐ POSITIONING COMPARISON. ⛔ 'Not an evaluation of KnowledgeOS · no architecture change · no new concept · no terminology adopted.'",
+ "source_research_question": "⭐ 'where is KnowledgeOS rediscovering established practice, and where is it genuinely different?'",
+ "reconstruction_question": "⛔ DISTINCT: is the novelty claim held to the evidence?",
+ "source_method_declared": "⭐⭐ 'lawful only in bounded form: built FIRST from already-graded holdings, plus ONE new bounded fetch pass serving the live Tier-1 priority. Remaining areas are QUEUED as named backlog passes, not read today.' ⭐ 'an honesty instrument: novelty claims must never exceed the evidence'",
+ "definitions": [
+  {
+   "term": "Rediscovered",
+   "def": "⭐ established practice — claim no novelty"
+  },
+  {
+   "term": "Extended",
+   "def": "no external instance found — internal until independently validated"
+  },
+  {
+   "term": "Unproven regardless",
+   "def": "⛔ novel AND undemonstrated — 'the two must never be confused'"
+  }
+ ],
+ "assumptions": [
+  "novelty claims must never exceed the evidence",
+  "positioning serves the sponsor; it never gates architecture"
+ ],
+ "premises": [
+  "the retired broad-literature-review ruling",
+  "'measure against reality, not literature'",
+  "the five-question protocol"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⭐ One external survey cited (23 ontologies).",
+ "derivations": [
+  {
+   "id": "DI-F0017-01",
+   "from": [
+    "the provenance-ontology survey: 'no systematic discussion of validation workflows, curation processes, or ⭐ human authority roles'"
+   ],
+   "to": "⭐⭐ GOVERNANCE-OVER-EVIDENCE is the literature's own named blind spot — the layer KnowledgeOS occupies",
+   "form": "⭐ EXTERNAL_GAP_AS_POSITIONING_EVIDENCE",
+   "validity": "⭐⭐ VALID AND STRONG — a survey's own call for what is missing"
+  },
+  {
+   "id": "DI-F0017-02",
+   "from": [
+    "six rediscoveries · six extensions · one unproven"
+   ],
+   "to": "⭐ the honesty table",
+   "form": "⭐ NOVELTY_AUDIT",
+   "validity": "⭐⭐ VALID"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'a governance platform that happens to use ontologies' — three-sided evidence (internal · external-convergent · ⭐ external-gap)",
+  "⭐ 'PROV = map-to-never-reinvent'",
+  "⛔ adoption is the SPONSOR's act"
+ ],
+ "dependencies": [
+  "the PMC provenance-ontology survey",
+  "Jansen & Bosch",
+  "FRBR",
+  "XACML",
+  "TRL/GRADE/PDSA",
+  "Team Topologies",
+  "CQRS",
+  "R-2 · R-5 · R-8",
+  "F0016's holdings",
+  "F0002 / F0026's grading"
+ ],
+ "previous_related_files": "⭐ Built from already-graded holdings — F0002, F0016, F0026.",
+ "knowledgeos_purpose_relevance": "⭐⭐ HIGH — it answers what KnowledgeOS IS relative to its neighbours.",
+ "architectural_role": "⭐ POSITIONING / CONTEXT MAP WITH THE RESEARCH LANDSCAPE.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the six-area comparison",
+   "⭐⭐ the honesty table",
+   "the three queued bounded passes"
+  ],
+  "⭐ confirmed": [
+   "T-0019's positioning verdict, now three-sided"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0019",
+  "T-0014",
+  "T-0015"
+ ],
+ "sequential_graph_position": "canonical position 17; 2026-08-03",
+ "file_relationships": [
+  {
+   "to": "F0016",
+   "kind": "CONSUMES_HOLDINGS"
+  },
+  {
+   "to": "F0019",
+   "kind": "SHARES_OBJECT",
+   "note": "T-0015 the unreachability thesis"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ THE SHARPEST NOVELTY DISCIPLINE IN THE CORPUS.",
+ "gaps": [
+  {
+   "id": "G-F0017-A",
+   "⚠️ gap": "three of six comparison areas rest on prior holdings rather than reading done this pass",
+   "⭐ significance": "⭐ declared per row in an 'Evidence state' column, and the unread areas are QUEUED by name"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0017-01",
+   "⭐ finding": "⭐⭐ A THREE-WAY NOVELTY CLASSIFICATION THAT SEPARATES 'NOVEL' FROM 'DEMONSTRATED'",
+   "detail": "⭐ Rediscovered (6, 'claim no novelty') · ⭐ Extended (6, 'no external instance found — internal until independently validated') · ⛔ Unproven regardless: '`generates → PKS` (n=0) — ⭐ novel AND undemonstrated; **the two must never be confused**'.",
+   "⭐⭐ relevance": "⭐ This is `RA-15`'s separation reached independently by the corpus: being unmatched externally (a search result) and being demonstrated (an evidence result) are different axes.",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE",
+   "significance": "⭐ HIGH"
+  }
+ ],
+ "provenance_first_hand": [
+  "the six-area matrix",
+  "the honesty table",
+  "the queued passes"
+ ],
+ "provenance_second_hand": [
+  "⛔ the survey and every [CANONICAL] source"
+ ],
+ "negative_evidence": "⭐⭐ THE STRONGEST USE OF AN EXTERNAL NEGATIVE IN THE CORPUS: a published survey's own statement that human authority over evidence is unmodelled is used as positive positioning evidence — ⭐ a gap in the literature, not a gap in the corpus.",
+ "multi_dimensional_confidence": {
+  "the positioning verdict": "⭐ HIGH — three-sided",
+  "the honesty table": "⭐⭐ HIGH",
+  "the three unread areas": "⚠️ declared, queued",
+  "adoption": "⛔ NOT TAKEN — sponsor's act"
+ },
+ "not_recoverable_without_reread": [
+  "the PMC survey",
+  "the queued ontology-evolution material"
+ ]
+}

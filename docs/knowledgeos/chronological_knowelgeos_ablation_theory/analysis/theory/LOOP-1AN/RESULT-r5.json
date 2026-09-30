@@ -1,0 +1,455 @@
+{
+ "labels": "SECONDARY FORMAL DIAGNOSTIC on strict START observations; not empirical proof; not a rescue",
+ "variants": {
+  "BASE": {
+   "n_events": 11,
+   "n_clusters": 9,
+   "G={s}": {
+    "held_out": 11,
+    "predicted": 8,
+    "correct": 8,
+    "wrong": 0,
+    "abstain": {
+     "UNK-on-G": 1,
+     "unseen-tuple": 2,
+     "conflicting-tuple": 0
+    },
+    "folds_with_prediction": 6,
+    "baseline_all_correct": 2,
+    "baseline_all_scored": 7,
+    "baseline_on_predicted_correct": 2,
+    "per_fold": [
+     {
+      "cluster": "R-47",
+      "n": 2,
+      "pred": 2,
+      "correct": 2
+     },
+     {
+      "cluster": "R-56",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-58",
+      "n": 2,
+      "pred": 2,
+      "correct": 2
+     },
+     {
+      "cluster": "R-65",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-72",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-79",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-81",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-86",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "git-6a67da5d7",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     }
+    ],
+    "coverage": 0.727,
+    "verdict": "DIAGNOSTICALLY PREDICTIVE"
+   },
+   "G={s,t}": {
+    "held_out": 11,
+    "predicted": 2,
+    "correct": 2,
+    "wrong": 0,
+    "abstain": {
+     "UNK-on-G": 1,
+     "unseen-tuple": 8,
+     "conflicting-tuple": 0
+    },
+    "folds_with_prediction": 2,
+    "baseline_all_correct": 2,
+    "baseline_all_scored": 7,
+    "baseline_on_predicted_correct": 1,
+    "per_fold": [
+     {
+      "cluster": "R-47",
+      "n": 2,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-56",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-58",
+      "n": 2,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-65",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-72",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-79",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-81",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-86",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "git-6a67da5d7",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     }
+    ],
+    "coverage": 0.182,
+    "verdict": "NOT SHOWN"
+   }
+  },
+  "REV": {
+   "n_events": 11,
+   "n_clusters": 9,
+   "G={s}": {
+    "held_out": 11,
+    "predicted": 8,
+    "correct": 8,
+    "wrong": 0,
+    "abstain": {
+     "UNK-on-G": 1,
+     "unseen-tuple": 2,
+     "conflicting-tuple": 0
+    },
+    "folds_with_prediction": 6,
+    "baseline_all_correct": 2,
+    "baseline_all_scored": 7,
+    "baseline_on_predicted_correct": 2,
+    "per_fold": [
+     {
+      "cluster": "R-47",
+      "n": 2,
+      "pred": 2,
+      "correct": 2
+     },
+     {
+      "cluster": "R-56",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-58",
+      "n": 2,
+      "pred": 2,
+      "correct": 2
+     },
+     {
+      "cluster": "R-65",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-72",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-79",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-81",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-86",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "git-6a67da5d7",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     }
+    ],
+    "coverage": 0.727,
+    "verdict": "DIAGNOSTICALLY PREDICTIVE"
+   },
+   "G={s,t}": {
+    "held_out": 11,
+    "predicted": 2,
+    "correct": 2,
+    "wrong": 0,
+    "abstain": {
+     "UNK-on-G": 1,
+     "unseen-tuple": 8,
+     "conflicting-tuple": 0
+    },
+    "folds_with_prediction": 2,
+    "baseline_all_correct": 2,
+    "baseline_all_scored": 7,
+    "baseline_on_predicted_correct": 1,
+    "per_fold": [
+     {
+      "cluster": "R-47",
+      "n": 2,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-56",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-58",
+      "n": 2,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-65",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-72",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-79",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-81",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-86",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "git-6a67da5d7",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     }
+    ],
+    "coverage": 0.182,
+    "verdict": "NOT SHOWN"
+   }
+  },
+  "REV-TYPE": {
+   "n_events": 11,
+   "n_clusters": 9,
+   "G={s}": {
+    "held_out": 11,
+    "predicted": 8,
+    "correct": 8,
+    "wrong": 0,
+    "abstain": {
+     "UNK-on-G": 1,
+     "unseen-tuple": 2,
+     "conflicting-tuple": 0
+    },
+    "folds_with_prediction": 6,
+    "baseline_all_correct": 2,
+    "baseline_all_scored": 7,
+    "baseline_on_predicted_correct": 2,
+    "per_fold": [
+     {
+      "cluster": "R-47",
+      "n": 2,
+      "pred": 2,
+      "correct": 2
+     },
+     {
+      "cluster": "R-56",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-58",
+      "n": 2,
+      "pred": 2,
+      "correct": 2
+     },
+     {
+      "cluster": "R-65",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-72",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-79",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-81",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-86",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "git-6a67da5d7",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     }
+    ],
+    "coverage": 0.727,
+    "verdict": "DIAGNOSTICALLY PREDICTIVE"
+   },
+   "G={s,t}": {
+    "held_out": 11,
+    "predicted": 2,
+    "correct": 2,
+    "wrong": 0,
+    "abstain": {
+     "UNK-on-G": 1,
+     "unseen-tuple": 8,
+     "conflicting-tuple": 0
+    },
+    "folds_with_prediction": 2,
+    "baseline_all_correct": 2,
+    "baseline_all_scored": 7,
+    "baseline_on_predicted_correct": 1,
+    "per_fold": [
+     {
+      "cluster": "R-47",
+      "n": 2,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-56",
+      "n": 1,
+      "pred": 1,
+      "correct": 1
+     },
+     {
+      "cluster": "R-58",
+      "n": 2,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-65",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-72",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-79",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-81",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "R-86",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     },
+     {
+      "cluster": "git-6a67da5d7",
+      "n": 1,
+      "pred": 0,
+      "correct": 0
+     }
+    ],
+    "coverage": 0.182,
+    "verdict": "NOT SHOWN"
+   }
+  }
+ }
+}

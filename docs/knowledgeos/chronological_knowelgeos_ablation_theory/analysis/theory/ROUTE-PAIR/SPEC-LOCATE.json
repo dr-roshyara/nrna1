@@ -1,0 +1,12 @@
+{
+ "test": "1aa(i): locate-only for a route-only minimal pair (G-R vs G-O). Anchor: L493-B = RAISE · PROMOTION · PO/ARB · observation · ε=1 · REFUSED (RULE)",
+ "status": "FROZEN before the locate runs",
+ "needed_partner": "same o (RAISE: an observation/pattern raised to principle/standard/methodology/rule), same a (PO/ARB), same k (observation), ε = 1 (single occurrence), different route (RULING), outcome PERFORMED or RULE-refused",
+ "search_1 (register rows; output ID, date, triple, cue classes only)": {
+   "ONE-OCCURRENCE": "/single occurrence|one occurrence|first occurrence|one instance|single instance|from one\\b|a single case/i",
+   "RAISE-CUE": "/promot|elevat|generaliz|becomes? (a )?(principle|standard|rule)|adopted as (a )?(principle|standard|rule)|methodology/i"},
+ "search_2 (session logs .claude/sessions/*.md; output file:line + matched line truncated to 160 chars)": "lines matching both ONE-OCCURRENCE and RAISE-CUE",
+ "exclusions": ".claude/sessions/2026-08-15.md L483-L495 (L493-B itself); L515/L682 of 2026-08-23 (blanket non-actions, F-LOG-0119)",
+ "output_discipline": "locate level only; no bounded read in this step",
+ "candidate_rule": "a candidate = a register row or log line with both cues; ranked: register first (RULING route by host), then session-log lines naming PO/ARB or ARB within the same line"
+}

@@ -1,0 +1,165 @@
+{
+ "n_rows": 13,
+ "judgements": {
+  "V1": {
+   "agreement": 0.923,
+   "kappa": 0.772,
+   "disagreements": {
+    "R-57": [
+     "NOT-MODELLED",
+     "UNTESTABLE"
+    ]
+   }
+  },
+  "V2": {
+   "agreement": 0.846,
+   "kappa": 0.752,
+   "disagreements": {
+    "R-54": [
+     "AMBIGUOUS",
+     "VIOLATED"
+    ],
+    "R-76": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V3": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  },
+  "V4": {
+   "agreement": 0.769,
+   "kappa": 0.576,
+   "disagreements": {
+    "R-48": [
+     "AMBIGUOUS",
+     "SUPPORTED"
+    ],
+    "R-69": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-70": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V5": {
+   "agreement": 0.923,
+   "kappa": 0.0,
+   "disagreements": {
+    "R-57": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V6": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  },
+  "V7": {
+   "agreement": 0.923,
+   "kappa": 0.0,
+   "disagreements": {
+    "R-33": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  }
+ },
+ "authority_named": {
+  "agreement": 1.0,
+  "kappa": 1.0,
+  "disagreements": []
+ },
+ "ops_jaccard_mean": 1.0,
+ "ops_jaccard_per_row": {
+  "R-33": 1.0,
+  "R-42": 1.0,
+  "R-48": 1.0,
+  "R-54": 1.0,
+  "R-57": 1.0,
+  "R-59": 1.0,
+  "R-60": 1.0,
+  "R-69": 1.0,
+  "R-70": 1.0,
+  "R-71": 1.0,
+  "R-74": 1.0,
+  "R-76": 1.0,
+  "R-95": 1.0
+ },
+ "per_op_presence": {
+  "ACCEPT": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "ADOPT-DECISION": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "AUTHORIZE": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "CORRECT-TEXT": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "OPEN-WORK": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  }
+ },
+ "coverage_rowmean": {
+  "main": 0.705,
+  "blind": 0.705
+ },
+ "blind_not_modelled": [
+  [
+   "DEFINE",
+   1
+  ],
+  [
+   "AFFIRM",
+   1
+  ],
+  [
+   "REFUTE",
+   1
+  ],
+  [
+   "START",
+   1
+  ],
+  [
+   "CORRECT",
+   1
+  ],
+  [
+   "RECORD (CRITERION 5 AS EXPLICIT ARCHITECTURAL DEBT)",
+   1
+  ],
+  [
+   "CORRECT (INTEGRATION CONTRACT §5)",
+   1
+  ]
+ ],
+ "blind_violations": {
+  "V1": [],
+  "V2": [
+   "R-54"
+  ],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [],
+  "V7": []
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "PX0018-S00": {
+  "agent_id": "a9ce3a3c44565ba79",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 123,
+  "transcript_sha256": "606b471e76bb58a7fe9b8a1604ecbb9ee4fe8e480c91895c6461695c8218586f"
+ },
+ "PX0018-S01": {
+  "agent_id": "a8c84313e7dacb32f",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 32,
+  "transcript_sha256": "edf344e52f8102f1c843668eb47273e060609527e8b1a55fb8a1d0a1947e7992"
+ },
+ "PX0018-S02": {
+  "agent_id": "a6872eeb813bd9fe3",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 40,
+  "transcript_sha256": "f4d8b005b12ed603e5dc48411ab8c6aaa758dc5fd6117b4b689ec4e44f01b0a7"
+ },
+ "PX0018-S03": {
+  "agent_id": "aaec19b50024cedfd",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 43,
+  "transcript_sha256": "0fabc1125853c81a1e8ac3545e37103fa03ed99f60494194be4a1a3af2b59406"
+ },
+ "PX0018-U01": {
+  "agent_id": "aa984f7b7a9c966e3",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 35,
+  "transcript_sha256": "615819f92f6fafb5f2e1154e42c82d7caad218017d761cee09116f8aaf07259e"
+ },
+ "PX0018-U02": {
+  "agent_id": "abcaf1bad71040b3c",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [
+   [
+    "toolu_01NL39tbVk5xJbrRFVZayary",
+    "PROTOCOL-VIOLATION",
+    "Bash",
+    "reader call with a foreign --run or --batch"
+   ]
+  ],
+  "parse_errors": [],
+  "tool_calls": 38,
+  "transcript_sha256": "9f3907417a111452769a21b6e3a856c61a5bf0bbb43d1b9ef3dee46dab76bfbb"
+ },
+ "PX0018-U03": {
+  "agent_id": "adecbdb8f9d245e57",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 32,
+  "transcript_sha256": "fbf9416cc5596f183831315fa6e8334099ce9dc2aac0714d3786680cb1403c66"
+ }
+}

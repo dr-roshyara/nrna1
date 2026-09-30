@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace EngineeringKnowledge\Capabilities\Cohesion\Application;
 
+use EngineeringKnowledge\Capabilities\Cohesion\Application\Ports\SemanticFactProvider;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\FactSet;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\GraphBuilder;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\Interpretation;
@@ -35,7 +36,7 @@ final class AnalyseCohesion
      *   metric:string, unit:string, unitKind:string, analysed:bool,
      *   value:?int, interpretation:?string,
      *   nodes:list<string>, edges:list<array{0:string,1:string,2:string}>,
-     *   excluded:list<array{method:string,target:string,reason:string}>
+     *   excluded:list<array{method:string,target:?string,reason:string}>
      * }>
      */
     public static function observe(FactSet $facts): array
@@ -84,5 +85,23 @@ final class AnalyseCohesion
         }
 
         return $observations;
+    }
+
+    /**
+     * Architecture Gate Slice 1 (2026-09-27) — the smallest real composition point: depends
+     * on the port, not on any concrete adapter. A transitional seam, recorded as such rather
+     * than presented as a finished Application use case (Gate §8) — a later authorized
+     * refactor may reshape this if evidence shows a cleaner form.
+     *
+     * @return list<array{
+     *   metric:string, unit:string, unitKind:string, analysed:bool,
+     *   value:?int, interpretation:?string,
+     *   nodes:list<string>, edges:list<array{0:string,1:string,2:string}>,
+     *   excluded:list<array{method:string,target:?string,reason:string}>
+     * }>
+     */
+    public static function observeFromSource(SemanticFactProvider $provider, string $source): array
+    {
+        return self::observe($provider->extract($source));
     }
 }

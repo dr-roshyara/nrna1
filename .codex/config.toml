@@ -1,0 +1,11 @@
+# PublicDigit project defaults for Codex CLI.
+# Repository instructions and safety constraints live in ../AGENTS.md.
+
+# Permit normal repository work while retaining approval for actions that need
+# elevated access or can affect the developer environment.
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+# This is a governance-heavy election platform; favor careful analysis for
+# project work. Users can still override it for a one-off session.
+model_reasoning_effort = "high"

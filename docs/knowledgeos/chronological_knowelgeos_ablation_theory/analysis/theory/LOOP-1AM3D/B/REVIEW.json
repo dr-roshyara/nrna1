@@ -1,0 +1,52 @@
+{
+  "pairs_A": [
+    {"accepted": "A1", "not_accepted": "N1", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A1", "not_accepted": "N2", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A1", "not_accepted": "N3", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A2", "not_accepted": "N1", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A2", "not_accepted": "N2", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A2", "not_accepted": "N3", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A3", "not_accepted": "N1", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A3", "not_accepted": "N2", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A3", "not_accepted": "N3", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A4", "not_accepted": "N1", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A4", "not_accepted": "N2", "witness_conformance": "none", "witness_item_kind": "none"},
+    {"accepted": "A4", "not_accepted": "N3", "witness_conformance": "none", "witness_item_kind": "none"}
+  ],
+  "pairs_reviewer": [
+    {"accepted": "A1", "not_accepted": "N2", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "conformance UNK on both sides; item_kind slice vs WP; state_before completion evidence vs DEFERRED, known and different"},
+    {"accepted": "A1", "not_accepted": "N3", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "actor ARB vs ARB CHIEF, known and different; state_before known and different"},
+    {"accepted": "A2", "not_accepted": "N2", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "item_kind equal (WP)"},
+    {"accepted": "A2", "not_accepted": "N3", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "actor known and different; state_before known and different"},
+    {"accepted": "A3", "not_accepted": "N2", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "conformance UNK on both sides (A3 recoded UNK); item_kind refinement vs WP, known and different; state_before known and different"},
+    {"accepted": "A3", "not_accepted": "N3", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "actor known and different; state_before known and different"},
+    {"accepted": "A4", "not_accepted": "N2", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "state_before offered vs DEFERRED, known and different; actor UNK on the N2 side"},
+    {"accepted": "A4", "not_accepted": "N3", "in_reviewer_act_set": true, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "item_kind equal (D-item); same decision (R-93), not an independent contrast"},
+    {"accepted": "A1", "not_accepted": "N1", "in_reviewer_act_set": false, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "N1 excluded (a condition, not an item); if included, state_before is known and different"},
+    {"accepted": "A2", "not_accepted": "N1", "in_reviewer_act_set": false, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "N1 excluded; same decision as A2; if included, state_before is known and different"},
+    {"accepted": "A3", "not_accepted": "N1", "in_reviewer_act_set": false, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "N1 excluded; if included, state_before is known and different"},
+    {"accepted": "A4", "not_accepted": "N1", "in_reviewer_act_set": false, "witness_conformance": "none", "witness_item_kind": "none", "decisive_fields": "N1 excluded; if included, actor is known and different"}
+  ],
+  "strict_conformance_pairs_reviewer": [],
+  "clusters_reviewer": [
+    {"cluster": "C-R66: Slice 7C acceptance / WP-7 closure", "acts": ["A1"]},
+    {"cluster": "C-R67: WP-3A acceptance with no condition attached (includes the withdrawal of the frozen-catalog condition, which is not coded as a separate act)", "acts": ["A2"], "excluded_component": "N1"},
+    {"cluster": "C-R67-consequence: WP-3B hold restated ('remains DEFERRED'); the original deferral decision is not in the sources", "acts": ["N2"]},
+    {"cluster": "C-R71: WP-7B-R1 acceptance (incl. 'RESPONSIBILITY SPLIT IS ACCEPTED AS DESIGNED', the same decision)", "acts": ["A3"]},
+    {"cluster": "C-R93: WP-4C-1 acceptance, scope D1/D2 accepted, D3/D4 not offered ('untouched by this acceptance')", "acts": ["A4", "N3"]}
+  ],
+  "disagreements": [
+    {"id": 1, "topic": "Headline answer", "A": "No: conformance does not separate the outcomes", "reviewer": "Not established: conformance is never known on a not-accepted act, so the question cannot be tested", "type": "formal reasoning", "changes_classification": false},
+    {"id": 2, "topic": "A3 conformance", "A": "CONFORMANT", "reviewer": "UNK: the R-71 'RECORDING CORRECTION' states a norm, not that separation was kept for WP-7B-R1; triple qualification of WP-7B-R1 is not even reported", "type": "source interpretation", "changes_classification": false},
+    {"id": 3, "topic": "A3 item_kind vs N2", "A": "equal (WP), although A itself codes A3 as 'WP, a refinement'", "reviewer": "different: R-66 'opens as an independent refinement under R-60'", "type": "coding", "changes_classification": false, "note": "Under A's own sensitivity recoding (A1/A3 state_before UNK), A3-N2 would also become POSSIBLE for item_kind: 4 pairs, not 3."},
+    {"id": 4, "topic": "N1 as a not-accepted act", "A": "WITHDRAWN act on the item 'frozen-catalog condition'", "reviewer": "not an acceptance act: the object is a condition on WP-3A's acceptance, and withdrawing it favours the item", "type": "coding", "changes_classification": false},
+    {"id": 5, "topic": "N1 and A2 independence", "A": "treated as separate paired acts (same cluster)", "reviewer": "one decision ('ACCEPTED WITH NO CONDITION ATTACHED')", "type": "independence", "changes_classification": false},
+    {"id": 6, "topic": "A4-N3 as the 'closest to a minimal pair'", "A": "a contrast matching the text's reason", "reviewer": "one decision (a scope split within the R-93 ruling); summary: 'D3/D4 untouched by this acceptance'", "type": "independence", "changes_classification": false},
+    {"id": 7, "topic": "N2 ground quote", "A": "'pending a routing application service' given as the reason", "reviewer": "this is the release condition (a remedy); the ground of the deferral is not stated in the sources", "type": "source interpretation", "changes_classification": false},
+    {"id": 8, "topic": "N3 stated reason", "A": "includes 'remain separately governed (see R-97)'", "reviewer": "that is the later disposition; the ground is 'BECAUSE NOT OFFERED'", "type": "coding", "changes_classification": false},
+    {"id": 9, "topic": "N1 ground category", "A": "UNK", "reviewer": "arguably RULE (the finding rests on 'Round50-05, the authoritative contract'); moot once N1 is excluded", "type": "coding", "changes_classification": false},
+    {"id": 10, "topic": "Object vs act label", "A": "A2 coded by act label (WP), A4 by object (D1/D2)", "reviewer": "should be consistent; either choice leaves every pair at none", "type": "source interpretation", "changes_classification": false},
+    {"id": 11, "topic": "Missed quotes", "A": "not cited", "reviewer": "R-93 'D3/D4 untouched by this acceptance.'; R-71 'dispose of WP-3B'; R-71 'THE RESPONSIBILITY SPLIT IS ACCEPTED AS DESIGNED'; R-93 'Evidence: `2026-08-04-wp4c1-acceptance-evidence.md`'", "type": "evidence scope", "changes_classification": false},
+    {"id": 12, "topic": "Strongest alternative: N2 state_before as UNK (DEFERRED is the outcome, not a work state)", "A": "not considered", "reviewer": "would make A1-N2, A3-N2 and A4-N2 POSSIBLE for item_kind; not adopted, because TASK.md's example 'PREPARED' admits status values as state_before", "type": "coding", "changes_classification": false}
+  ]
+}

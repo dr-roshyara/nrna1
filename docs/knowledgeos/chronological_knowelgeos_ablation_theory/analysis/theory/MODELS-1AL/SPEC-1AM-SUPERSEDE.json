@@ -1,0 +1,12 @@
+{
+ "test": "1am-1: SUPERSEDE equivalence {kind} ≡ {route} (F-LOG-0144)",
+ "status": "FROZEN before encoding; no new corpus read (the rows were read in 1t (R-44) and the reserve (R-57))",
+ "candidate_event": "SUPERSEDE of a mechanism ('consume Adjudication's existing port') by R-44 (route RULING, authority ARB), outcome PERFORMED",
+ "source_basis": ["R-57: 'The approved plan's 7B Objective and Acceptance rows carried a mechanism R-44 superseded' (reported; SOURCE)",
+                  "R-44: \"'consume Adjudication's existing port' was a mechanism, never an architectural decision. The invariant is binding; the mechanism is substitutable. Approved realization: option (d)\" (performed; SOURCE)"],
+ "coding": {"o": "SUPERSEDE", "r": "RULING", "a": "ARB", "k": "mechanism (source-stated category: 'a mechanism, never an architectural decision')", "e": "UNK (a finding G-1 is cited; no count)", "x": "UNK", "outcome": "PERFORMED", "speech_act": "reported (R-57) + performed (R-44)"},
+ "predictions": {"{r} (route decides)": "RULING-route supersessions REFUSED (R-77, R-83) → predicts REFUSED → FALSIFIED if the event holds",
+                 "{k} (kind decides)": "a mechanism is a kind not yet observed → no conflict; consistent. The source itself states that mechanisms are substitutable and invariants/decisions binding"},
+ "decision_rule": "re-run the frozen consistency test (models_1al.conflict) over SUPERSEDE events + this event; a model is FALSIFIED iff a known-value conflict appears",
+ "caveat": "one event; the kind distinction mechanism vs decision is source-stated (R-44), not analyst-invented"
+}

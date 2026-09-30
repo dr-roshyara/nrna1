@@ -1,0 +1,143 @@
+{
+ "labels": "all outputs MODEL-DERIVED; MDS-U is an artificial uniform-model score, NOT empirical information",
+ "by_norm_reading": {
+  "QUAL": {
+   "P1 consistency": {
+    "H1": "CONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H1",
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "planning": {
+    "L216 frozen pre-read (force AMB, kind UNKNOWN, high UNKNOWN)": {
+     "MDS-U": 0.5033,
+     "separable_pairs": 14,
+     "of_pairs": 15
+    },
+    "IN-force knowledge (e.g. L493 under I-R39; assumption)": {
+     "MDS-U": 0.4019,
+     "separable_pairs": 9,
+     "of_pairs": 15
+    },
+    "AMB knowledge (e.g. L82; assumption)": {
+     "MDS-U": 0.5574,
+     "separable_pairs": 12,
+     "of_pairs": 15
+    }
+   }
+  },
+  "VAL": {
+   "P1 consistency": {
+    "H1": "INCONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "planning": {
+    "L216 frozen pre-read (force AMB, kind UNKNOWN, high UNKNOWN)": {
+     "MDS-U": 0.5353,
+     "separable_pairs": 10,
+     "of_pairs": 10
+    },
+    "IN-force knowledge (e.g. L493 under I-R39; assumption)": {
+     "MDS-U": 0.5716,
+     "separable_pairs": 9,
+     "of_pairs": 10
+    },
+    "AMB knowledge (e.g. L82; assumption)": {
+     "MDS-U": 0.6675,
+     "separable_pairs": 10,
+     "of_pairs": 10
+    }
+   }
+  },
+  "QUAL_AND_VAL": {
+   "P1 consistency": {
+    "H1": "INCONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "planning": {
+    "L216 frozen pre-read (force AMB, kind UNKNOWN, high UNKNOWN)": {
+     "MDS-U": 0.5411,
+     "separable_pairs": 10,
+     "of_pairs": 10
+    },
+    "IN-force knowledge (e.g. L493 under I-R39; assumption)": {
+     "MDS-U": 0.5565,
+     "separable_pairs": 9,
+     "of_pairs": 10
+    },
+    "AMB knowledge (e.g. L82; assumption)": {
+     "MDS-U": 0.6768,
+     "separable_pairs": 10,
+     "of_pairs": 10
+    }
+   }
+  },
+  "QUAL_OR_VAL": {
+   "P1 consistency": {
+    "H1": "CONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H1",
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "planning": {
+    "L216 frozen pre-read (force AMB, kind UNKNOWN, high UNKNOWN)": {
+     "MDS-U": 0.4842,
+     "separable_pairs": 15,
+     "of_pairs": 15
+    },
+    "IN-force knowledge (e.g. L493 under I-R39; assumption)": {
+     "MDS-U": 0.4062,
+     "separable_pairs": 12,
+     "of_pairs": 15
+    },
+    "AMB knowledge (e.g. L82; assumption)": {
+     "MDS-U": 0.5387,
+     "separable_pairs": 14,
+     "of_pairs": 15
+    }
+   }
+  }
+ }
+}

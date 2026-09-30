@@ -1,0 +1,73 @@
+{
+ "file_id": "F0012",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "satisfied": true,
+   "evidence": "complete, 247 lines (verified by wc -l)"
+  },
+  {
+   "gate": "EXTRACTION_COMPLETE",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "SEMANTIC_UNDERSTANDING_COMPLETE",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "ARCHITECTURE_ALIGNMENT_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "RELATIONSHIP_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "DERIVATION_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "CONTINUITY_ASSESSED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "GAP_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "satisfied": true,
+   "evidence": "⭐ Establishes T-0053 (stable ids survive relocation), created this unit."
+  },
+  {
+   "gate": "IMPLEMENTATION_IMPLICATIONS_CHECKED",
+   "satisfied": true,
+   "evidence": "⛔ N/A-checked: the file explicitly executes nothing"
+  },
+  {
+   "gate": "PROVENANCE_COMPLETE",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  }
+ ],
+ "satisfied": 12,
+ "total": 12,
+ "dossier_status": "COMPLETE",
+ "⭐ O-1_evaluation": {
+  "authority": "L0-DEC-08 (O-1 = A)",
+  "verdict": "SATISFIED",
+  "evidence": "⭐ Establishes T-0053 (stable ids survive relocation), created this unit."
+ }
+}

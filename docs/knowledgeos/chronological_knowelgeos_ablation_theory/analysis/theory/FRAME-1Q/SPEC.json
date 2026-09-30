@@ -1,0 +1,26 @@
+{
+ "experiment": "1q transition-frame experiment",
+ "status": "FROZEN BEFORE READING ANY SAMPLED ROW. Locate output only (ID, date, phrase classes, length).",
+ "source": {"path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md", "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f"},
+ "locate": {"rows_with_frame_phrase": 51, "classes": ["DOES-NOT-CHANGE", "UNCHANGED", "REMAINS", "IS-NOT", "NEITHER", "NOT-AUTHORIZE", "NOT-RESOLVE", "RETAINED", "WHAT-IT-CHANGES"],
+            "locate_level_fact": "the WHAT-IT-CHANGES / DOES-NOT-CHANGE template occurs in every row R-81..R-91 and in no earlier row"},
+ "excluded_used": ["R-37", "R-39", "R-41", "R-88", "R-90", "R-100"],
+ "sampling_rule": {"template stratum (WHAT-IT-CHANGES)": "earliest unused (R-81) + latest unused (R-91)",
+                   "non-template stratum": "most distinct classes (R-53) + earliest with NOT-AUTHORIZE (R-47) + earliest unused with NEITHER (R-66)",
+                   "rationale": "operation unknown before reading, so diversity is proxied by stratum (template era vs before), date spread and phrase class"},
+ "sample": [{"id": "R-47", "line": 33}, {"id": "R-53", "line": 39}, {"id": "R-66", "line": 52}, {"id": "R-81", "line": 67}, {"id": "R-91", "line": 77}],
+ "encoding_per_case": {
+   "source_facts": ["route", "operation (as the row names it)", "object_kind", "authority", "force", "effect", "evidence", "stated_changed", "stated_preserved", "explicit_non_effects", "observed_transition"],
+   "model_fields": ["m0_operation (or NOT-MODELLED)", "m0_predicted_frame", "m0_guards"],
+   "epistemic_values": ["OBSERVED", "NOT-RECORDED", "UNKNOWN", "OUT-OF-SCOPE", "NOT-MODELLED"],
+   "concept_separation": "route != operation != kind != effect != state coordinate != relation != invariant != guard; each non-effect is tagged as candidate STATE-COORDINATE | RELATION | INVARIANT/GUARD, never decided from one case"},
+ "frame_fit_rule": {"FRAME-FIT": "the row maps to an M0 operation, and every stated change lies in its M0 frame and no stated preserved coordinate is in the frame's forced-change set",
+                    "FRAME-CONTRADICTION": "the row maps to an M0 operation and states a change to an M0 coordinate outside that operation's frame",
+                    "PARTIAL-FIT": "some stated changes fit, others concern coordinates M0 does not have",
+                    "NOT-MODELLED": "the operation has no M0 counterpart (a vocabulary gap, never a contradiction)",
+                    "UNKNOWN": "the operation or its changes are not stated", "OUT-OF-SCOPE": "no transition is performed"},
+ "frame_structure_rule": "a row EXHIBITS FRAME STRUCTURE iff it states >= 1 change AND >= 1 explicit preservation/non-effect about the same act",
+ "precision": "each matched phrase-class occurrence is labelled TRUE-FRAME (states a preservation/non-effect of the act) or FALSE (other use); precision = TRUE/matched per class",
+ "path_dependence": "per case: does the row state that history does/does not alter future permissions?",
+ "no_inference": "silence is NOT-RECORDED; a complete frame is never inferred from silence; M0 unchanged"
+}

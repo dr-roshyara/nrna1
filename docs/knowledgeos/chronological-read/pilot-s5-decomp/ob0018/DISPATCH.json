@@ -1,0 +1,50 @@
+{
+ "PX0018-A01": {
+  "agent_id": "a3e297593d4e0fbc3",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a3e297593d4e0fbc3.jsonl"
+ },
+ "PX0018-S00": {
+  "agent_id": "a9ce3a3c44565ba79",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a9ce3a3c44565ba79.jsonl"
+ },
+ "PX0018-S01": {
+  "agent_id": "a8c84313e7dacb32f",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a8c84313e7dacb32f.jsonl"
+ },
+ "PX0018-S02": {
+  "agent_id": "a6872eeb813bd9fe3",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a6872eeb813bd9fe3.jsonl"
+ },
+ "PX0018-S03": {
+  "agent_id": "aaec19b50024cedfd",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-aaec19b50024cedfd.jsonl"
+ },
+ "PX0018-U01": {
+  "agent_id": "aa984f7b7a9c966e3",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-aa984f7b7a9c966e3.jsonl"
+ },
+ "PX0018-U02": {
+  "agent_id": "abcaf1bad71040b3c",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-abcaf1bad71040b3c.jsonl"
+ },
+ "PX0018-U03": {
+  "agent_id": "adecbdb8f9d245e57",
+  "alias": "opus",
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-adecbdb8f9d245e57.jsonl"
+ }
+}

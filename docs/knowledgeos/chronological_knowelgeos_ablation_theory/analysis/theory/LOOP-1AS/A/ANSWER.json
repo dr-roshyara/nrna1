@@ -1,0 +1,88 @@
+{
+  "acts": [
+    {
+      "id": "A1",
+      "quote": "| R-89 | 2026-08-04 | **WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — Execution Governance · Authorization · ARB CHIEF (PREPARED).**",
+      "classification": "ACT-PERFORMED",
+      "identifier": "R-89",
+      "ruling": "WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT",
+      "actor": "ARB Chief (\"ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED\")",
+      "prior_state": "UNK",
+      "prior_state_quote": null,
+      "prior_state_note": "Neither row states R-89's state before this filing. R-90 only states it was taken afterwards: \"R-89 WAS ALREADY TAKEN — *WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT*, filed 2026-08-04.\" That it was unused before is an inference.",
+      "outcome": "Issued; R-89 held by WP-4C-1 ruling (PREPARED status).",
+      "reason": "UNK",
+      "reason_quote": null
+    },
+    {
+      "id": "A2",
+      "quote": "this ruling was put forward as “R-89”. R-89 WAS ALREADY TAKEN — *WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT*, filed 2026-08-04. Filing a second R-89 would have given one number two decisions and corrupted the register's identity.",
+      "classification": "ACT-REFUSED",
+      "identifier": "R-89",
+      "ruling": "DISCOVERY BOUNDARY CONFIRMATION (WP-4C-2)",
+      "actor": "Proposer: UNK (passive \"was put forward\"). Refusal: UNK by name; recorded \"AT ISSUE\" of a row issued by the ARB Chief, so the ARB Chief is the likely refuser (inference).",
+      "prior_state": "already held by another ruling",
+      "prior_state_quote": "R-89 WAS ALREADY TAKEN — *WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT*, filed 2026-08-04.",
+      "outcome": "Not used; the ruling was issued as R-90 instead; the collision was recorded.",
+      "reason": "Occupancy collision",
+      "reason_quote": "Filing a second R-89 would have given one number two decisions and corrupted the register's identity."
+    },
+    {
+      "id": "A3",
+      "quote": "Issued as R-90; the collision is recorded rather than silently renumbered.",
+      "classification": "ACT-PERFORMED",
+      "identifier": "R-90",
+      "ruling": "DISCOVERY BOUNDARY CONFIRMATION (WP-4C-2)",
+      "actor": "ARB Chief (\"ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED\")",
+      "prior_state": "UNK",
+      "prior_state_quote": null,
+      "prior_state_note": "The text never says R-90 was unused before. That it was free is an inference from its being issued and from nothing contradicting that.",
+      "outcome": "Issued; row later WITHDRAWN BEFORE ADOPTION but retained; number then retired.",
+      "reason": "Substitute for the refused R-89",
+      "reason_quote": "R-89 WAS ALREADY TAKEN ... Issued as R-90"
+    },
+    {
+      "id": "A4",
+      "quote": "⚠️ THE NUMBER R-90 IS RETIRED AND MUST NOT BE REUSED. Recycling it would recreate exactly the one-number-two-decisions defect caught at R-89 hours earlier.",
+      "classification": "NORM-STATEMENT",
+      "identifier": "R-90",
+      "ruling": "none (bars future assignment of R-90 to any ruling)",
+      "actor": "UNK (withdrawal annotation; the withdrawal was ruled by the Decision Authority, but who wrote the annotation and the retirement is not stated)",
+      "prior_state": "held by a withdrawn, retained row",
+      "prior_state_quote": "⛔ WITHDRAWN BEFORE ADOPTION 2026-08-04 ... The row is retained rather than deleted",
+      "outcome": "R-90 retired; future reuse forbidden. No particular assignment was refused.",
+      "reason": "Avoid a repeat of the one-number-two-decisions defect",
+      "reason_quote": "Recycling it would recreate exactly the one-number-two-decisions defect caught at R-89 hours earlier."
+    },
+    {
+      "id": "A5",
+      "quote": "The next ruling is R-91.",
+      "classification": "NORM-STATEMENT",
+      "classification_note": "Forward-looking pointer, with no particular ruling. Could also be read as UNCLEAR (a reservation, not an issuance).",
+      "identifier": "R-91",
+      "ruling": "none yet",
+      "actor": "UNK (same annotation as A4)",
+      "prior_state": "UNK (implicitly never used)",
+      "prior_state_quote": null,
+      "outcome": "No issuance attested in these rows.",
+      "reason": "Follows from R-90's retirement (inference)",
+      "reason_quote": null
+    }
+  ],
+  "pair": {
+    "exists": false,
+    "exists_note": "Not strictly established. The closest candidate is Q=A2 (R-89 refused) and P=A3 (R-90 issued), on the same ruling. It fails the strict 'differs ONLY in prior state' test on three counts: (a) P's prior state is UNK in the text (unused is inferred, not quoted); (b) the proposer of R-89 is UNK, so 'same actor' is inferred, not attested; (c) the two acts come from one correction event, so they are not two independent acts. Under a lenient reading (accept the inferences) the pair exists.",
+    "P": "A3: R-90 issued to DISCOVERY BOUNDARY CONFIRMATION (WP-4C-2)",
+    "Q": "A2: R-89 put forward for the same ruling and refused",
+    "separating_variable": "Occupancy: whether the identifier is already held by another filed ruling. Not retirement. Not the same variable as 'retired, not recycled', though closely related. Both rules are justified by the same defect ('one number two decisions'). Retirement also works as occupancy that outlasts withdrawal, because the withdrawn row is retained. No refusal on retirement grounds is attested.",
+    "quote": "this ruling was put forward as “R-89”. R-89 WAS ALREADY TAKEN — *WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT*, filed 2026-08-04. Filing a second R-89 would have given one number two decisions and corrupted the register's identity. Issued as R-90"
+  },
+  "clusters": 1,
+  "clusters_note": "Both P and Q come from one decision cluster: the single 'NUMBERING CORRECTION RECORDED AT ISSUE' passage in R-90, with one author and one date. The R-89 row (A1) independently backs up Q's prior state (the number was in fact held), but it is not a second decision on the contrast. The retirement norm (A4/A5) is a separate, later cluster (the withdrawal annotation) and is not part of the pair.",
+  "notes": [
+    "References to R-88 and R-79 are citations of existing rulings, not number-assignment acts, so they are excluded.",
+    "The withdrawal of R-90 is a status change of a ruling, not a number assignment. Only the retirement of its number (A4) is counted, as a norm.",
+    "Both rows are PREPARED, not ADOPTED. Whether an 'issued' identifier on a PREPARED ruling counts as final issuance is ambiguous.",
+    "The retirement norm is stated as a rule for one identifier (R-90), which sits between a NORM-STATEMENT and a particular act."
+  ]
+}

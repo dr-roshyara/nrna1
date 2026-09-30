@@ -1,0 +1,116 @@
+{
+  "S1": {
+    "system": "S1 (no aliasing)",
+    "expected_n_classes": 6,
+    "observational_n_classes": 6,
+    "behavioral_n_classes": 6,
+    "observational_matches_ground_truth": true,
+    "behavioral_matches_ground_truth": true,
+    "observational_equals_behavioral": true
+  },
+  "S2_exploratory": {
+    "system": "S2 (candidate observational aliasing)",
+    "structural_classes": 4,
+    "behavioral_n_classes": 2,
+    "behavioral_classes": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "note": "parity is preserved as a STATE property only if the operation doesn't flip it; +1 mod 4 flips parity each step, so this system's true behavioral partition is computed exactly below, not assumed"
+  },
+  "S2b_ground_truth": {
+    "system": "S2b (genuine observational aliasing, no-op transitions)",
+    "behavioral_n_classes": 2,
+    "behavioral_classes": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "expected_classes": [
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "matches_ground_truth": true,
+    "structural_classes": 4,
+    "behavioral_strictly_coarser_than_structural": true
+  },
+  "S3": {
+    "system": "S3 (observational equivalence is NOT a congruence)",
+    "naive_observational_classes": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "C"
+      ],
+      [
+        "D"
+      ]
+    ],
+    "naive_is_congruence": false,
+    "expected_naive_is_congruence": false,
+    "matches_ground_truth_on_congruence": true,
+    "counterexample": {
+      "abstraction": "naive_direct_observation",
+      "state_x": "'A'",
+      "state_y": "'B'",
+      "abstraction_x": "'same'",
+      "abstraction_y": "'same'",
+      "operation_sequence": [
+        "step(None)"
+      ],
+      "observation": "F(post-state)",
+      "output_x": "'X'",
+      "output_y": "'Y'",
+      "violated_property": "congruence"
+    },
+    "true_behavioral_classes": [
+      [
+        "A"
+      ],
+      [
+        "B"
+      ],
+      [
+        "C"
+      ],
+      [
+        "D"
+      ]
+    ],
+    "expected_behavioral_classes": [
+      [
+        "A"
+      ],
+      [
+        "B"
+      ],
+      [
+        "C"
+      ],
+      [
+        "D"
+      ]
+    ],
+    "matches_ground_truth_on_partition": true,
+    "behavioral_strictly_finer_than_naive_observational": true
+  }
+}

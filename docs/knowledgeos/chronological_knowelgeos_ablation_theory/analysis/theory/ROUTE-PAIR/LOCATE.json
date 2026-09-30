@@ -1,0 +1,50 @@
+{
+ "register": [
+  {
+   "row": "R-39",
+   "date": "2026-07-26",
+   "triple": null,
+   "one_cues": [
+    "from one"
+   ],
+   "raise_cues": [
+    "generaliz",
+    "methodology",
+    "promot"
+   ]
+  }
+ ],
+ "session_log_lines": 20,
+ "session_logs_with_authority": [
+  {
+   "at": ".claude/sessions/2026-07-26.md:164",
+   "authority_in_line": true,
+   "line": "Two refinements applied at the freeze: **(1) the ADR-T17 finding recast in the ARB's traceability form** — the ADR REMAINS VALID until a superseding ADR is issu"
+  },
+  {
+   "at": ".claude/sessions/2026-08-21.md:322",
+   "authority_in_line": true,
+   "line": "- ⭐ **Cross-track (`EKS-06`).** `DV-7` is a dangling reference of exactly `S2`'s class that `S2` does not see — `P5·<id>` is outside its implemented token regis"
+  }
+ ],
+ "session_logs_other": [
+  ".claude/sessions/2026-07-28.md:477",
+  ".claude/sessions/2026-07-28.md:478",
+  ".claude/sessions/2026-07-28.md:517",
+  ".claude/sessions/2026-07-28.md:799",
+  ".claude/sessions/2026-07-30.md:595",
+  ".claude/sessions/2026-07-30.md:1776",
+  ".claude/sessions/2026-07-31.md:1327",
+  ".claude/sessions/2026-07-31.md:3264",
+  ".claude/sessions/2026-08-01.md:948",
+  ".claude/sessions/2026-08-01.md:1297",
+  ".claude/sessions/2026-08-04.md:618",
+  ".claude/sessions/2026-08-16.md:1020",
+  ".claude/sessions/2026-08-23.md:105",
+  ".claude/sessions/2026-08-23.md:201",
+  ".claude/sessions/2026-08-23.md:209",
+  ".claude/sessions/2026-08-23.md:249",
+  ".claude/sessions/2026-08-23.md:288",
+  ".claude/sessions/2026-08-23.md:410"
+ ]
+}

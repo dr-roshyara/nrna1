@@ -1,0 +1,401 @@
+[
+ {
+  "gap_ref": "G1@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1020",
+  "what_p1_missed": "P1 captured the row but left completeness.informal_meaning NOT-EVIDENCED-IN-CAPTURE; the file supplies the informal meaning (stage 2 FOUND).",
+  "quote": "If this property is violated, the system no longer has the intended semantic character."
+ },
+ {
+  "gap_ref": "G2@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1020",
+  "what_p1_missed": "completeness.dependencies left NOT-EVIDENCED-IN-CAPTURE although the file states the dependency graph and the dependence on foundation invariant F1 (120.41); row dependencies[] empty.",
+  "quote": "The seven rules are not independent."
+ },
+ {
+  "gap_ref": "G3@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1020",
+  "what_p1_missed": "completeness.assumptions left NOT-EVIDENCED-IN-CAPTURE and row assumptions[] empty although the file states the premise that grounds C5 SHOULD.",
+  "quote": "Not every architectural question can be reduced to code."
+ },
+ {
+  "gap_ref": "G4@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1484",
+  "what_p1_missed": "No P1 row of this label from S1484; the file states the per-rule derivational lineage (dependencies).",
+  "quote": "C1 ← 073/109; C2 ← 077/087; C3 ← 067/068/103; C4 ← 083; C5 ← 091/099/129; C6 ← 072/094/103; C7 ← 080/081/099/118."
+ },
+ {
+  "gap_ref": "G5@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1524",
+  "what_p1_missed": "No P1 row of this label from S1524; the file characterizes the object in plain words (informal meaning).",
+  "quote": "v0.1 is an **epistemic** constitution (what must be true of knowledge: provenance, authority, epistemic separation, temporal validity, feedback)."
+ },
+ {
+  "gap_ref": "G6@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1484",
+  "what_p1_missed": "No P1 row of this label from S1484; the file reports an unreconciled collision between this constitution and a later constitution (contradiction content).",
+  "quote": "C4 — Two constitutions, colliding version numbers."
+ },
+ {
+  "gap_ref": "G7@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1524",
+  "what_p1_missed": "No P1 row of this label from S1524; the file reports a contradiction by omission and two live constitutions without supersession.",
+  "quote": "**CONTRADICTS 120 by omission** on C3 and C7."
+ },
+ {
+  "gap_ref": "G8@S01",
+  "label": "knowledgeos-architecture-constitution-v01",
+  "source_id": "S1020",
+  "what_p1_missed": "Row 120.38 records SHOULD but is not typed CORRECTION, and the K1-K7 → C1-C7 renaming (§120.66) is not captured as a term change; the intra-file revision of K5 from MUST (§120.19) to SHOULD is therefore invisible to the row types.",
+  "quote": "for the deterministic mechanism because some verification domains inherently require judgment."
+ },
+ {
+  "gap_ref": "G1@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1438",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1438 (unit PX0004-U04) found material supplying it (disposition FOUND). S1438 is not among the label's P1 row sources (files_touching).",
+  "quote": "source re-checks of the underlying K/I/X entries folded into the wave that touches them (mandate 1459 §27)"
+ },
+ {
+  "gap_ref": "G2@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1438",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1438 (unit PX0004-U04) found material supplying it (disposition FOUND). S1438 is not among the label's P1 row sources (files_touching).",
+  "quote": "No mass rewriting of registers during waves — findings accrete in `findings/`; registers update only their STATUS columns."
+ },
+ {
+  "gap_ref": "G3@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1513",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1513 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "ADVERSARIAL VERIFICATION REPORT — Phase 2C, Corpus Slice step-026 … step-040 + 2 meta files (17 files, all read in full)"
+ },
+ {
+  "gap_ref": "G4@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1413",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1413 (unit PX0004-U02) found material supplying it (disposition FOUND). S1413 is not among the label's P1 row sources (files_touching).",
+  "quote": "The Verify Session first has to **reconstruct the CKT from the entire relevant corpus**."
+ },
+ {
+  "gap_ref": "G5@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1413",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1413 (unit PX0004-U02) found material supplying it (disposition FOUND). S1413 is not among the label's P1 row sources (files_touching).",
+  "quote": "> **You are not the author of the KnowledgeOS theory. You are its adversary. Your success criterion is finding errors, missing assumptions, invalid derivations, counterexamples and statistical weaknesses—not confirming the theory.**"
+ },
+ {
+  "gap_ref": "G6@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1413",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1413 (unit PX0004-U02) found material supplying it (disposition FOUND). S1413 is not among the label's P1 row sources (files_touching).",
+  "quote": "And **neither Claude session should be allowed to unilaterally change the other.**"
+ },
+ {
+  "gap_ref": "G7@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1439",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1439 (unit PX0004-U04) found material supplying it (disposition FOUND). S1439 is not among the label's P1 row sources (files_touching).",
+  "quote": "Per the 1459 directive the programme **continues into Phase 4** after this report"
+ },
+ {
+  "gap_ref": "G8@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1439",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1439 (unit PX0004-U04) found material supplying it (disposition FOUND). S1439 is not among the label's P1 row sources (files_touching).",
+  "quote": "Everything below is verifier assessment (class C) grounded in the registers; nothing upgrades any corpus claim."
+ },
+ {
+  "gap_ref": "G9@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1441",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1441 (unit PX0004-U04) found material supplying it (disposition FOUND). S1441 is not among the label's P1 row sources (files_touching).",
+  "quote": "Execute the current V3 sequence, but strengthen it as follows."
+ },
+ {
+  "gap_ref": "G10@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1441",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1441 (unit PX0004-U04) found material supplying it (disposition FOUND). S1441 is not among the label's P1 row sources (files_touching).",
+  "quote": "**Independently reconstruct the complete KnowledgeOS theory from the source corpus, while performing Level-1 mathematical/statistical/computational/DDD verification and explicitly documenting every gap, contradiction, assumption, dependency, proof and unresolved question.**"
+ },
+ {
+  "gap_ref": "G11@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1441",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1441 (unit PX0004-U04) found material supplying it (disposition FOUND). S1441 is not among the label's P1 row sources (files_touching).",
+  "quote": "A programme verdict is evidence about the verification process, not a mathematical proof."
+ },
+ {
+  "gap_ref": "G12@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1444",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1444 (unit PX0004-U04) found material supplying it (disposition FOUND). S1444 is not among the label's P1 row sources (files_touching).",
+  "quote": "* TV-F-001 — monotonicity scope\n* TV-F-002 — Zero findings contradiction\n* TV-F-003 — composition-law notation\n* TV-F-004 — replay/human-oracle boundary"
+ },
+ {
+  "gap_ref": "G13@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1444",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1444 (unit PX0004-U04) found material supplying it (disposition FOUND). S1444 is not among the label's P1 row sources (files_touching).",
+  "quote": "**The objective from this point forward is the independent construction of the final KnowledgeOS theory, while verification remains the mechanism used to justify every part of that construction.**"
+ },
+ {
+  "gap_ref": "G14@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1444",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1444 (unit PX0004-U04) found material supplying it (disposition FOUND). S1444 is not among the label's P1 row sources (files_touching).",
+  "quote": "> A verifier must not prove a proposition merely because another KnowledgeOS document calls it an invariant."
+ },
+ {
+  "gap_ref": "G15@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1456",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1456 (unit PX0004-U04) found material supplying it (disposition FOUND). S1456 is not among the label's P1 row sources (files_touching).",
+  "quote": "> **Determine what KnowledgeOS theory can legitimately be claimed, what follows mathematically, what requires assumptions, what is merely architectural design, what is empirically unverified, what is contradictory, and what must be rejected.**"
+ },
+ {
+  "gap_ref": "G16@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1456",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1456 (unit PX0004-U04) found material supplying it (disposition FOUND). S1456 is not among the label's P1 row sources (files_touching).",
+  "quote": "This distinction must survive into the final theory."
+ },
+ {
+  "gap_ref": "G17@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1481",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1481 (unit PX0004-U04) found material supplying it (disposition FOUND). S1481 is not among the label's P1 row sources (files_touching).",
+  "quote": "The objective is to verify the entire evolution of the KnowledgeOS theory from the original research corpus through the latest formalization, and ultimately construct the final verified theory."
+ },
+ {
+  "gap_ref": "G18@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1481",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1481 (unit PX0004-U04) found material supplying it (disposition FOUND). S1481 is not among the label's P1 row sources (files_touching).",
+  "quote": "Never silently discard an idea."
+ },
+ {
+  "gap_ref": "G19@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1518",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1518 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "authority: verifier session (adversarial, independent)"
+ },
+ {
+  "gap_ref": "G20@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1518",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1518 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "SOURCE RESULT / VERIFIER OBSERVATION / POSSIBLE REPAIR kept separate throughout. No silent repair applied."
+ },
+ {
+  "gap_ref": "G21@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1522",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1522 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "No repository inspection performed (per instruction); all statements below record only what each file *claims* and what evidence it *shows*."
+ },
+ {
+  "gap_ref": "G22@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1522",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1522 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "correction; corrections are recorded explicitly in the findings register, never applied silently."
+ },
+ {
+  "gap_ref": "G23@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1531",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1531 (unit PX0004-U02) found material supplying it (disposition FOUND).",
+  "quote": "provenance: |\n  band agent report, recovered verbatim from the agent transcript (JSONL). The notification delivered\n  only the report's TAIL; full text reassembled from the transcript's assistant text blocks."
+ },
+ {
+  "gap_ref": "G24@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1531",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1531 (unit PX0004-U02) found material supplying it (disposition FOUND).",
+  "quote": "authority: verifier session (adversarial, independent)"
+ },
+ {
+  "gap_ref": "G25@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1531",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1531 (unit PX0004-U02) found material supplying it (disposition FOUND).",
+  "quote": "**Verifier posture:** PASS labels in source are CLAIMS. SOURCE RESULT / VERIFIER OBSERVATION / POSSIBLE REPAIR kept separate throughout. No silent repair."
+ },
+ {
+  "gap_ref": "G26@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1536",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1536 (unit PX0004-U04) found material supplying it (disposition FOUND).",
+  "quote": "Continue from the actual checkpoint."
+ },
+ {
+  "gap_ref": "G27@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1536",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1536 (unit PX0004-U04) found material supplying it (disposition FOUND).",
+  "quote": "> **What theory can actually be justified from the complete corpus after every important definition, derivation, computation, empirical claim, statistical assumption and DDD meaning has been independently examined?**"
+ },
+ {
+  "gap_ref": "G28@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1536",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1536 (unit PX0004-U04) found material supplying it (disposition FOUND).",
+  "quote": "Never rewrite an incorrect source definition into a correct one and then mark the original definition VERIFIED."
+ },
+ {
+  "gap_ref": "G29@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1537",
+  "what_p1_missed": "P1 capture records assumptions as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1537 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "older documents raise questions, objections, hypotheses, modelling ideas, or unresolved problems; later documents attempt to answer, refine, replace, reject, or formalize them."
+ },
+ {
+  "gap_ref": "G30@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1537",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1537 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "This directory is the primary historical source for the theory."
+ },
+ {
+  "gap_ref": "G31@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1537",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1537 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "Your task is to determine whether the **entire KnowledgeOS theory, as it evolved through the 216 research steps, is actually mathematically, statistically, computationally, semantically, and architecturally defensible**."
+ },
+ {
+  "gap_ref": "G32@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1537",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1537 (unit PX0004-U03) found material supplying it (disposition FOUND).",
+  "quote": "Never treat \"PASS\" in prose as evidence of execution."
+ },
+ {
+  "gap_ref": "G33@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1540",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1540 (unit PX0004-U04) found material supplying it (disposition FOUND).",
+  "quote": "1. `prompts/# KNOWLEDGEOS THEORY VERIFICATION PROGRA` — **MASTER MANDATE v1.0 (authoritative)**"
+ },
+ {
+  "gap_ref": "G34@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1540",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1540 (unit PX0004-U04) found material supplying it (disposition FOUND).",
+  "quote": "> *\"You are not the author of the KnowledgeOS theory. You are its adversary. Your success criterion is finding errors, missing assumptions, invalid derivations, counterexamples and statistical weaknesses — not confirming the theory.\"*"
+ },
+ {
+  "gap_ref": "G35@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1540",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1540 (unit PX0004-U04) found material supplying it (disposition FOUND).",
+  "quote": "- The strongest statement made must never exceed the strength of the available evidence."
+ },
+ {
+  "gap_ref": "G36@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1541",
+  "what_p1_missed": "P1 capture records dependencies as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1541 (unit PX0004-U02) found material supplying it (disposition FOUND).",
+  "quote": "**This would be the first empirical act in 473 files and would break the pattern this programme has documented since Step 001.**"
+ },
+ {
+  "gap_ref": "G37@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1541",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1541 (unit PX0004-U02) found material supplying it (disposition FOUND).",
+  "quote": "**Verifier stance:** senior mathematician / statistician / measurement theorist / knowledge engineer / DDD architect / independent scientific reviewer. Read-only. No files written to the corpus. All 8 files read in full (11,287 lines total). Every load-bearing claim quoted verbatim."
+ },
+ {
+  "gap_ref": "G38@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1541",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1541 (unit PX0004-U02) found material supplying it (disposition FOUND).",
+  "quote": "caveat: HYPOTHESES, not authority. Supervisory corrections recorded explicitly, never applied silently."
+ },
+ {
+  "gap_ref": "G39@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1566",
+  "what_p1_missed": "P1 capture records informal_meaning as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1566 (unit PX0004-U04) found material supplying it (disposition FOUND). S1566 is not among the label's P1 row sources (files_touching).",
+  "quote": "> **What does the 001–232 corpus actually establish, what does it merely propose, what follows mathematically, what does not follow, what is computable/testable, what is contradicted, and what must remain unresolved?**"
+ },
+ {
+  "gap_ref": "G40@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1566",
+  "what_p1_missed": "P1 capture records invariants as NOT-EVIDENCED-IN-CAPTURE for this label; the whole-file stage-2 reading of S1566 (unit PX0004-U04) found material supplying it (disposition FOUND). S1566 is not among the label's P1 row sources (files_touching).",
+  "quote": "Do not promote candidate theory to verified theory."
+ },
+ {
+  "gap_ref": "G41@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1517",
+  "what_p1_missed": "S1517 is a P1 row source of the label, yet P1 records informal_meaning as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U04) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "> **How much of the theory actually survives independent verification, how the surviving theory evolved from the original 210+ steps, and exactly where the boundary lies between established mathematics, conditional mathematics, empirical evidence, domain modelling, architecture, design choice and unresolved research.**"
+ },
+ {
+  "gap_ref": "G42@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1517",
+  "what_p1_missed": "S1517 is a P1 row source of the label, yet P1 records invariants as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U04) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "**Do not allow Track B or Track C to contaminate Track A.**"
+ },
+ {
+  "gap_ref": "G43@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1525",
+  "what_p1_missed": "S1525 is a P1 row source of the label, yet P1 records informal_meaning as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U04) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "Complete a genuine **start-to-end verification of the KnowledgeOS theory**."
+ },
+ {
+  "gap_ref": "G44@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1525",
+  "what_p1_missed": "S1525 is a P1 row source of the label, yet P1 records invariants as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U04) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "Never silently transform a VERIFIER_RECOMMENDS statement into CORPUS_ESTABLISHES."
+ },
+ {
+  "gap_ref": "G45@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1521",
+  "what_p1_missed": "S1521 is a P1 row source of the label, yet P1 records invariants as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U02) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "NO SILENT REPAIR: no repair is applied to the corpus. Repairs appear only under"
+ },
+ {
+  "gap_ref": "G46@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1529",
+  "what_p1_missed": "S1529 is a P1 row source of the label, yet P1 records informal_meaning as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U03) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "authority: verifier session (adversarial, independent)"
+ },
+ {
+  "gap_ref": "G47@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1529",
+  "what_p1_missed": "S1529 is a P1 row source of the label, yet P1 records invariants as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U03) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "recorded explicitly and never applied silently."
+ },
+ {
+  "gap_ref": "G48@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1551",
+  "what_p1_missed": "S1551 is a P1 row source of the label, yet P1 records invariants as NOT-EVIDENCED-IN-CAPTURE; the step-1 whole-file reading (unit PX0004-U04) found a statement of it. Not a FOUND (the file is not a stage-2 file; the dimension is resolved by stage 2).",
+  "quote": "**The rule this programme applies to the corpus — a claim is indexed to the moment of\nobservation — applies to the programme's own claims, and is applied here.**"
+ },
+ {
+  "gap_ref": "G49@S02",
+  "label": "step-verify-programme",
+  "source_id": "S1513",
+  "what_p1_missed": "P1 records no conceptual birth candidate for the label; the step-1 whole-file reading of S1513 found a conceptual statement of what the programme's report is.",
+  "quote": "ADVERSARIAL VERIFICATION REPORT — Phase 2C, Corpus Slice step-026 … step-040 + 2 meta files (17 files, all read in full)"
+ }
+]

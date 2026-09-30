@@ -1,0 +1,256 @@
+{
+ "events": [
+  {
+   "n": 1,
+   "event_id": "ADOPT R-81..85 by the Chief (declined)",
+   "operation": "ADOPT",
+   "anchor": "R-81..85-annotation",
+   "target": "same:R-81..85"
+  },
+  {
+   "n": 2,
+   "event_id": "ADOPT R-81..85 by the DA (R-86)",
+   "operation": "ADOPT",
+   "anchor": "R-86",
+   "target": "same:R-81..85"
+  },
+  {
+   "n": 3,
+   "event_id": "ADOPT R-91 by the DA (held)",
+   "operation": "ADOPT",
+   "anchor": "R-91",
+   "target": "R-91"
+  },
+  {
+   "n": 4,
+   "event_id": "AUTHORIZE-IMPL R-70 (ARB)",
+   "operation": "AUTHORIZE-IMPL",
+   "anchor": "R-70",
+   "target": "own-slice"
+  },
+  {
+   "n": 5,
+   "event_id": "AUTHORIZE-IMPL R-89 (Chief, PREPARED)",
+   "operation": "AUTHORIZE-IMPL",
+   "anchor": "R-89",
+   "target": "own-slice"
+  },
+  {
+   "n": 6,
+   "event_id": "REGISTER operational acceptance (R-90)",
+   "operation": "REGISTER",
+   "anchor": "S0804-L576",
+   "target": "UNK"
+  },
+  {
+   "n": 7,
+   "event_id": "REGISTER constitutional decision (rule)",
+   "operation": "REGISTER",
+   "anchor": "S0804-L576",
+   "target": "UNK"
+  },
+  {
+   "n": 8,
+   "event_id": "OPEN-WORK by a recording note (R-60)",
+   "operation": "OPEN-WORK",
+   "anchor": "R-60",
+   "target": "WP-7B-R1"
+  },
+  {
+   "n": 9,
+   "event_id": "OPEN-WORK by a ruling (R-60 refiled)",
+   "operation": "OPEN-WORK",
+   "anchor": "R-60",
+   "target": "WP-7B-R1"
+  },
+  {
+   "n": 10,
+   "event_id": "START WP-4B at R-72 (proviso unmet)",
+   "operation": "START",
+   "anchor": "R-72",
+   "target": "WP-4B"
+  },
+  {
+   "n": 11,
+   "event_id": "START WP-4B 08-03 16:10",
+   "operation": "START",
+   "anchor": "git-6a67da5d7",
+   "target": "WP-4B"
+  },
+  {
+   "n": 12,
+   "event_id": "START WP-8 (permission only)",
+   "operation": "START",
+   "anchor": "R-79",
+   "target": "WP-8"
+  },
+  {
+   "n": 13,
+   "event_id": "START 7A after AUTHORIZE(7A)",
+   "operation": "START",
+   "anchor": "R-47",
+   "target": "7A"
+  },
+  {
+   "n": 14,
+   "event_id": "START 7B after AUTHORIZE(7A)",
+   "operation": "START",
+   "anchor": "R-47",
+   "target": "7B"
+  },
+  {
+   "n": 15,
+   "event_id": "RAISE promoted #2",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 16,
+   "event_id": "RAISE promoted #3",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 17,
+   "event_id": "RAISE promoted #9",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 18,
+   "event_id": "RAISE promoted #10",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 19,
+   "event_id": "RAISE not promoted #5",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 20,
+   "event_id": "RAISE not promoted #14",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 21,
+   "event_id": "RAISE not promoted #17",
+   "operation": "RAISE",
+   "anchor": "R-36",
+   "target": "AST-013"
+  },
+  {
+   "n": 22,
+   "event_id": "RAISE L493-B (single occurrence)",
+   "operation": "RAISE",
+   "anchor": "S0815-L483",
+   "target": "methodology"
+  },
+  {
+   "n": 23,
+   "event_id": "RAISE P1 / R-41 (by PA instruction)",
+   "operation": "RAISE",
+   "anchor": "R-41",
+   "target": "ES-004.3"
+  },
+  {
+   "n": 24,
+   "event_id": "ASSIGN a never-used number",
+   "operation": "ASSIGN-ID",
+   "anchor": "register-numbering",
+   "target": "UNK"
+  },
+  {
+   "n": 25,
+   "event_id": "ASSIGN the retired number R-90",
+   "operation": "ASSIGN-ID",
+   "anchor": "S0804-L576",
+   "target": "UNK"
+  },
+  {
+   "n": 26,
+   "event_id": "SUPERSEDE ADR-T14 (R-77)",
+   "operation": "SUPERSEDE",
+   "anchor": "R-77",
+   "target": "UNK"
+  },
+  {
+   "n": 27,
+   "event_id": "SUPERSEDE §12 (R-83)",
+   "operation": "SUPERSEDE",
+   "anchor": "R-83",
+   "target": "UNK"
+  },
+  {
+   "n": 28,
+   "event_id": "SUPERSEDE D-12 by ADR-MP",
+   "operation": "SUPERSEDE",
+   "anchor": "ADR-MP",
+   "target": "UNK"
+  },
+  {
+   "n": 29,
+   "event_id": "SUPERSEDE PB-006 row declined (R-94)",
+   "operation": "SUPERSEDE",
+   "anchor": "R-94",
+   "target": "UNK"
+  },
+  {
+   "n": 30,
+   "event_id": "ANNOTATE PB-006 row chosen (R-94)",
+   "operation": "ANNOTATE",
+   "anchor": "R-94",
+   "target": "UNK"
+  },
+  {
+   "n": 31,
+   "event_id": "START 7B at R-56 (plan approved, execution not issued)",
+   "operation": "START",
+   "anchor": "R-56",
+   "target": "7B"
+  },
+  {
+   "n": 32,
+   "event_id": "START 7B at R-58 (execution authorized)",
+   "operation": "START",
+   "anchor": "R-58",
+   "target": "7B"
+  },
+  {
+   "n": 33,
+   "event_id": "START 7C at R-58 (remains unauthorized)",
+   "operation": "START",
+   "anchor": "R-58",
+   "target": "7C"
+  },
+  {
+   "n": 34,
+   "event_id": "START 7C at R-65 (authorized)",
+   "operation": "START",
+   "anchor": "R-65",
+   "target": "7C"
+  },
+  {
+   "n": 35,
+   "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+   "operation": "START",
+   "anchor": "R-81",
+   "target": "§12-reconcile"
+  },
+  {
+   "n": 36,
+   "event_id": "START §12 reconcile at R-86 (Batch 7 released)",
+   "operation": "START",
+   "anchor": "R-86",
+   "target": "§12-reconcile"
+  }
+ ]
+}

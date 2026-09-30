@@ -1,0 +1,100 @@
+{
+  "items": [
+    {
+      "event_id": "RAISE promoted #2",
+      "matrix_item": "#2 Reuse Before Create (Category A)",
+      "evidence_quote": "3: PB-004 (\"no new messaging abstraction was required or created\"; `ClockInterface` reuse) · PB-005 (carrier ≠ pattern, Q1; idempotency-ledger consciously NOT copied) · PB-006 (new capability built only after a feature demonstrated platform insufficiency, R-29)",
+      "coded_e": "2+",
+      "source_e": "3",
+      "unit": "slices (column header 'Evidence (independent slices)')",
+      "basis": "DERIVED",
+      "basis_how": "Source states 3 slices; '2+' is a threshold bucket (3 >= 2). The value '2+' itself appears nowhere in the sources.",
+      "outcome_source": "Both. R-36: 'Promoted into AST-013 ... reuse-before-create'. Matrix: '**PROMOTE** — one line in OPERATING_INSTRUCTIONS'. R-36 decides (adopted record; it departs from the matrix elsewhere).",
+      "nonpromotion_reason_type": "n/a (promoted)"
+    },
+    {
+      "event_id": "RAISE promoted #3",
+      "matrix_item": "#3 Ownership Drives Reuse (Category A)",
+      "evidence_quote": "3: PB-004 (ownership held stable through implementation, retro §2) · PB-005 (Strangler/ACL NOT transferred because Contestation *owns* the Challenge — Discovery §5) · PB-006 (delivery owned by Messaging, \"Inbox is one consumer\")",
+      "coded_e": "2+",
+      "source_e": "3",
+      "unit": "slices",
+      "basis": "DERIVED",
+      "basis_how": "3 slices, bucketed as >= 2.",
+      "outcome_source": "Both. R-36: 'ownership-determines-architectural-reuse (never precedent)'. Matrix: '**PROMOTE** — one line; the strongest new principle'. R-36 decides. The R-36 wording differs from the matrix title, so the match is an inference.",
+      "nonpromotion_reason_type": "n/a (promoted)"
+    },
+    {
+      "event_id": "RAISE promoted #9",
+      "matrix_item": "#9 Surface gaps / Deferred ≠ skipped (Category A)",
+      "evidence_quote": "3: PB-004 (\"Deferred — finding, not silent\" fitness extension) · PB-005 (F-5 catalog inconsistencies recorded, Deptrac \"deferred, NOT skipped\") · PB-006 (F-PB006-1 surfaced instead of hand-stitching around it)",
+      "coded_e": "2+",
+      "source_e": "3",
+      "unit": "slices",
+      "basis": "DERIVED",
+      "basis_how": "3 slices, bucketed as >= 2.",
+      "outcome_source": "Both. R-36: 'deferred ≠ skipped'. Matrix: '**PROMOTE** — one line: gaps and deferrals are recorded with their resumption trigger'. R-36 decides.",
+      "nonpromotion_reason_type": "n/a (promoted)"
+    },
+    {
+      "event_id": "RAISE promoted #10",
+      "matrix_item": "#10 Epistemic labeling (Observed · Measured · Derived · Interpreted · Recommended) (Category A)",
+      "evidence_quote": "2–3: Handover §9 (ARB-adopted Completion-Review discipline) · PB-006 Discovery (\"Classification (Interpreted): …\") · PB-004/005 EP-02 reviews",
+      "coded_e": "2+",
+      "source_e": "2–3",
+      "unit": "slices (nominally; the entries mix a document (Handover §9) with slices and group PB-004/005 together)",
+      "basis": "DERIVED",
+      "basis_how": "The source gives a range of 2–3; its lower bound is 2, so the item lands in the '2+' bucket. The range is not resolved into a single count, and it is unclear whether Handover §9 counts as a slice.",
+      "outcome_source": "Both. R-36: 'epistemic labels (...— broadened to ALL architectural recommendations/reviews)'. Matrix: '**PROMOTE (relocation, not new governance)**'. R-36 decides; it also widens the scope.",
+      "nonpromotion_reason_type": "n/a (promoted)"
+    },
+    {
+      "event_id": "RAISE not promoted #5",
+      "matrix_item": "#5 Registration ≠ Delivery (Category C (+ generalization → D))",
+      "evidence_quote": "1: PB-006 / ADR-MP-06 (recorded there as \"permanent design principle\")",
+      "coded_e": "1",
+      "source_e": "1",
+      "unit": "slices (matrix column; R-36 also says '(1 slice)')",
+      "basis": "STATED",
+      "outcome_source": "Both. R-36: 'Expressly NOT promoted: Registration ≠ Delivery stays Messaging-scoped in ADR-MP-06 (1 slice)'. Matrix: 'Stays in ADR-MP-06 (Messaging-scoped)'. R-36 decides.",
+      "nonpromotion_reason_type": "SCOPE (primary), with an evidence note. Both sources give 'Messaging-scoped' as the reason and put the item in Category C (platform documentation). The count is mentioned: R-36 '(1 slice)'. The matrix gives an evidence reason only for the generalized form: 'has ONE demonstration → Candidate Pattern'. No bar for Category A is stated; the only stated bar is '2 slices is the floor', and it appears under #6 (Category B)."
+    },
+    {
+      "event_id": "RAISE not promoted #14",
+      "matrix_item": "#14 Strangler reconstitution (Legacy → ACL → Aggregate Reconstruction → …) (Category D)",
+      "evidence_quote": "1 context only (Election). PB-005 deliberately did NOT reuse it — evidence it does not generalize by default",
+      "coded_e": "1",
+      "source_e": "1",
+      "unit": "contexts (not slices, even though the column is headed 'independent slices')",
+      "basis": "STATED",
+      "basis_how": "The number 1 is stated, but its unit is bounded contexts, not slices. The coded e=1 therefore is not the same unit as the other coded values.",
+      "outcome_source": "Both. R-36: 'Strangler reconstitution ... remain Candidates'. Matrix: 'Remains Candidate; documented in PB-004 retro §9 + Handover §8'. R-36 decides. R-36 gives no reason.",
+      "nonpromotion_reason_type": "DOMAIN-SPECIFICITY / non-generalization: 'does not generalize by default', backed by PB-005's deliberate non-reuse. There is a count (1 context), but no bar is stated for it."
+    },
+    {
+      "event_id": "RAISE not promoted #17",
+      "matrix_item": "#17 `ChallengeResolvedIntegration` carrier (Category D)",
+      "evidence_quote": "1 — explicitly ruled \"temporary carrier, not a pattern\" (PB-005 Q1)",
+      "coded_e": "1",
+      "source_e": "1",
+      "unit": "unspecified (a bare '1'; slices only if the column header is assumed to apply; it could be occurrences)",
+      "basis": "STATED",
+      "basis_how": "The number 1 is stated; its unit is not.",
+      "outcome_source": "Both. R-36: '`ChallengeResolvedIntegration` carrier ... remain Candidates'. Matrix: 'Remains candidate; replaced only on repeated evidence (ER-02)'. R-36 decides. R-36 gives no reason.",
+      "nonpromotion_reason_type": "PRIOR RULING: 'explicitly ruled \"temporary carrier, not a pattern\" (PB-005 Q1)'. Evidence comes in only as the condition for revisiting it ('replaced only on repeated evidence')."
+    }
+  ],
+  "evidence_pairs": {
+    "n": 0,
+    "pairs": [],
+    "unit": "independent slices (matrix column header). Only #5 among the non-promoted items has a count in slices (#14 = contexts, #17 = unit unspecified), which makes a matched pair even less possible.",
+    "reasoning": "There are 4 promoted × 3 non-promoted = 12 candidate pairs. Every pair differs in count (3 or 2–3 vs 1), but every pair also differs in other stated properties: category (A vs C or D), destination (AST-013 vs ADR-MP-06 or candidate backlog), and stated non-promotion reason (scope, non-generalization, prior ruling). No pair differs in evidence alone."
+  },
+  "notes": [
+    "In R-36, 'stop-at-architectural-uncertainty' is promoted, yet the matrix lists #7 as 'already' with 'No delta ... do not duplicate it'. R-36 also promotes 'implementation-evidence-outweighs-unverified-theory', which is not in the matrix at all. R-36 says '2 added by ARB at review'. This shows R-36, not the matrix, decides outcomes.",
+    "The coded 'e' conflates units. For promoted items it is a threshold bucket ('2+') derived from slice counts. For non-promoted items it is a raw '1' in slices (#5), contexts (#14), or an unstated unit (#17).",
+    "The coded fields t='AST-013' and k='engineering-behaviour' for the non-promoted items are not stated by the sources. #5 is routed to ADR-MP-06 (C); #14 and #17 go to the candidate backlog (D).",
+    "The coded ground='RULE' for all three refusals is not supported uniformly. #5 is refused on scope, #14 on non-generalization, and only #17 on a prior ruling.",
+    "Under a reading that uses only the coded fields (a, k, t, cluster), all 12 pairs would look matched. Those fields are coder-assigned and not stated by the sources, so they are not counted."
+  ]
+}

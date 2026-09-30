@@ -1,0 +1,1041 @@
+{
+ "total_high_stakes_pairs": 158,
+ "total_agreement": 33,
+ "overall_agreement_pct": 20.9,
+ "table": [
+  {
+   "relationship": "SAME",
+   "n": 45,
+   "agree": 11,
+   "disagree": 34,
+   "agreement_pct": 24.4
+  },
+  {
+   "relationship": "REPLACEMENT",
+   "n": 19,
+   "agree": 4,
+   "disagree": 15,
+   "agreement_pct": 21.1
+  },
+  {
+   "relationship": "DERIVED-FROM",
+   "n": 94,
+   "agree": 18,
+   "disagree": 76,
+   "agreement_pct": 19.1
+  }
+ ],
+ "disagreement_detail": [
+  {
+   "pair_id": "RP0098",
+   "a": "assumption-ledger",
+   "b": "assumption-object",
+   "original_relationship": "SAME",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0271",
+   "a": "causal-cascade-mediation-model",
+   "b": "dynamic-causal-system-model",
+   "original_relationship": "SAME",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0526",
+   "a": "epistemic-sarathi-see-guide-decide",
+   "b": "sarathi-investigation-guide",
+   "original_relationship": "SAME",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0539",
+   "a": "equality-underspecified-not-absent-primitive-verdict",
+   "b": "k-projection-definable-not-computable-result",
+   "original_relationship": "SAME",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0625",
+   "a": "formal-lord-action-selection-algebra",
+   "b": "lord-algebra-025g",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0629",
+   "a": "formal-state-transition-system-K",
+   "b": "knowledge-state-transition-central-equation",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "LOW"
+  },
+  {
+   "pair_id": "RP0647",
+   "a": "fr-004-determination-relational-not-intrinsic-candidate-2026-09",
+   "b": "kr-zoom-out-01-final-status-and-fr-004-candidate",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0654",
+   "a": "g-11-omega-269-291-reconstruction",
+   "b": "g-22-omega-sense-inventory-231-267",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0667",
+   "a": "gap-update-scope-error-correction",
+   "b": "gap-update-scope-error-corrections-2026-09-02",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0755",
+   "a": "gn77-rival-nine-capability-basis",
+   "b": "implementation-specification-source-map",
+   "original_relationship": "SAME",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0757",
+   "a": "gn77-rival-nine-capability-basis",
+   "b": "operations-transformations-contract-gap",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0769",
+   "a": "governance-conflict-algebra-025f",
+   "b": "governance-conflict-resolution-algebra",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0843",
+   "a": "h-kos-hypothesis-series",
+   "b": "inv-kos-candidate-series",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0904",
+   "a": "h-kos-vyapti-001-inference-warranting-relation",
+   "b": "vyapti-inference-warranting-relation",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0906",
+   "a": "h-zero-001-unknown-valid-state",
+   "b": "inv-kos-candidate-series",
+   "original_relationship": "SAME",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0971",
+   "a": "identity-continuity-program",
+   "b": "identity-name-state-representation-distinction",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0982",
+   "a": "independent-k9-verification-script-and-mismatch",
+   "b": "k9-closure-computation-script",
+   "original_relationship": "SAME",
+   "independent_relationship": "DERIVED-FROM",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1026",
+   "a": "inv-kos-001-dimension-independence",
+   "b": "inv-kos-candidate-series",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1032",
+   "a": "inv-kos-candidate-series",
+   "b": "zero-neutral-origin-hypothesis",
+   "original_relationship": "SAME",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1033",
+   "a": "inv-kos-candidate-series",
+   "b": "zero-neutral-state-lens",
+   "original_relationship": "SAME",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1069",
+   "a": "kernel-core-vs-external-regime-boundary",
+   "b": "policy-semantic-minimality-boundary",
+   "original_relationship": "SAME",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1070",
+   "a": "kernel-core-vs-external-regime-boundary",
+   "b": "step-271-policy-semantic-minimality-unclosed",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1111",
+   "a": "knowledge-atma-identity-concept",
+   "b": "persistent-identity-of-observation-hypothesis",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1144",
+   "a": "knowledge-state-eight-primitives-chapter",
+   "b": "oq1-carrier-falsified-k-t-ratified",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1187",
+   "a": "knowledgeos-constitution-v1",
+   "b": "kos-constitution-v1",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1219",
+   "a": "knowledgeos-reference-architecture-v1",
+   "b": "kos-reference-architecture-v1",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1376",
+   "a": "kr-epistemic-agency-2026-09-formal-specification",
+   "b": "next-epistemic-act-function-and-gap-classification",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1432",
+   "a": "minimum-preservation-unit",
+   "b": "minimum-preservation-unit-identity-bearing-assertion",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1482",
+   "a": "policy-change-authorisation-humanActRef",
+   "b": "policy-stratification-invariant",
+   "original_relationship": "SAME",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1496",
+   "a": "proposition-assertion-knowledge-hierarchy",
+   "b": "s1605-question-7-assertion-layer-rediscovery",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1634",
+   "a": "samsaya-structured-doubt-state",
+   "b": "zero-neutral-state-lens",
+   "original_relationship": "SAME",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1657",
+   "a": "situation-state-refutation-result",
+   "b": "state-history-distinction",
+   "original_relationship": "SAME",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1722",
+   "a": "step261-223-corpus-stop-gate-matches-d288",
+   "b": "step261-equality-ambiguity-stop-gate",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1782",
+   "a": "z-kos-001-neutral-reference",
+   "b": "z-kos-001-zero-principle",
+   "original_relationship": "SAME",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0379",
+   "a": "d285-frozen-seven-stage-typing-protocol",
+   "b": "d285x-seven-part-test-template",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "REFINEMENT",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0408",
+   "a": "decision-readiness-stop-condition-model",
+   "b": "investigation-terminal-states",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "REFINEMENT",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0496",
+   "a": "epistemic-closure-event",
+   "b": "epistemic-closure-event-orgasm-metaphor",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1119",
+   "a": "knowledge-claim-root-object-question",
+   "b": "knowledgeos-kernel-concept",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1401",
+   "a": "kr-zoom01-refinement-reduces-determination",
+   "b": "kr-zoom01-reinterpreted-as-restriction-artifact",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "REDEFINITION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1449",
+   "a": "o-core-six-operator-candidate-set",
+   "b": "spec-ops-delta-2026-v1-1-five-primitive-kernel",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1495",
+   "a": "proposition-assertion-knowledge-hierarchy",
+   "b": "proposition-type-EDV-vs-SROG-contest",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1506",
+   "a": "r-req-formal-specification",
+   "b": "r-req-question-relative-correction-package",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "REDEFINITION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1513",
+   "a": "r-req-ratification-edition-spec",
+   "b": "spec-rreq-2026-v1-six-invariant-ratification",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1545",
+   "a": "s1598-k0-construction-and-content-qualification-governance",
+   "b": "s1603-typed-family-refutation-of-k0",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "REFINEMENT",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1560",
+   "a": "s1602-formal-system-reconstruction-mandate",
+   "b": "s1604-theory-discovery-phase-mandate",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1578",
+   "a": "s1606-sigma-three-state-derivation-and-orthogonal-governance",
+   "b": "s1625-sigma-signed-ordinal-refutation-and-evidence-refinement",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "REDEFINITION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1600",
+   "a": "s1613-transformation-system-typed-graph-not-algebra",
+   "b": "step232-knowledge-state-algebra",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1695",
+   "a": "step209-invariant-algebra",
+   "b": "step210-invariant-verification-matrix",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1781",
+   "a": "yoni-zero-lens-proposal-audit",
+   "b": "zero-lord-sarathi-guidance-cycle",
+   "original_relationship": "REPLACEMENT",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0001",
+   "a": "200-step-longitudinal-verification-programme",
+   "b": "invariant-consolidation-satisfiability-plan",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "LOW"
+  },
+  {
+   "pair_id": "RP0059",
+   "a": "anti-reasoner-circularity-constraint",
+   "b": "davidson-interpretation-not-admission-lens",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0107",
+   "a": "assurance-model",
+   "b": "kos-bounded-context-candidates",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0132",
+   "a": "autoepistemic-stable-expansion-formalism",
+   "b": "nonmonotonicity-lifecycle-principle",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0140",
+   "a": "bc7-domain-model",
+   "b": "census-method-defect-pattern",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0148",
+   "a": "bc7-governed-session-orchestration",
+   "b": "six-role-model",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0149",
+   "a": "bc7-governed-session-orchestration",
+   "b": "true-business-capabilities",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0158",
+   "a": "book-edition-2-commissioning-plan",
+   "b": "gn42-book-explains-does-not-decide-architecture",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0164",
+   "a": "book-structure-crosswalk-six-part-proposal",
+   "b": "implementation-specification-source-map",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0169",
+   "a": "bounded-context",
+   "b": "bounded-context-map",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0210",
+   "a": "canonical-construction-decision-register-d0-d4-d5",
+   "b": "sigma-min-powerset-support-refute-four-state",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0212",
+   "a": "canonical-construction-decision-register-d0-d4-d5",
+   "b": "step272a-core-operation-universe-layered-derivation",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0213",
+   "a": "canonical-construction-decision-register-d0-d4-d5",
+   "b": "step277-transformation-inventory-ocore-layered-reduction",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0235",
+   "a": "canonical-policy-model",
+   "b": "theory-to-ekp-conformance-matrix",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0237",
+   "a": "canonical-theory-baseline-classification",
+   "b": "measurement-scale-semantics-VD",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0241",
+   "a": "canonical-transformation-model-T",
+   "b": "proposition-assertion-knowledge-hierarchy",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0314",
+   "a": "computability-audit-step266",
+   "b": "theory-evolution-map-independent-reconstruction",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0328",
+   "a": "congruence-unconstructed-not-undecidable",
+   "b": "k-equality-membership-underdetermination",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "REFINEMENT",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0338",
+   "a": "constitutional-turn-book-chapter",
+   "b": "kos-constitution-v1",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0368",
+   "a": "cross-context-consistency-contradiction-reconciliation-authority-algebra",
+   "b": "epistemic-resource-allocation-attention-scheduling-portfolio-optimization-algebra",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0381",
+   "a": "d285-hypothesis-queue-h1-h5",
+   "b": "step285-over-derivation-retraction-and-must-not-do-list",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0412",
+   "a": "decision-state-presentation-projection-model",
+   "b": "multi-dimensional-epistemic-state-model",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0423",
+   "a": "delta-commit-semantics-gap",
+   "b": "knowledge-state-formalization",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0430",
+   "a": "det-r-evalreq-sat-family-birth-census",
+   "b": "sat-end-to-end-closure-test-v1",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0431",
+   "a": "det-r-evalreq-sat-family-birth-census",
+   "b": "theory-v1-0-def-register-findings-2026-09-10",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0440",
+   "a": "digitalization-robot-concept",
+   "b": "knowledgeos-kernel-concept",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "INDEPENDENT",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0466",
+   "a": "ec-req-eval-sat-det-derivation-chain-2026-09-10",
+   "b": "sat-end-to-end-closure-test-v1",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0582",
+   "a": "executed-test-222-repairs",
+   "b": "step222-falsification-pass-candidate-architecture",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0599",
+   "a": "falsification-pass-under-authority",
+   "b": "gap-formalization",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0603",
+   "a": "feedback-loop-addendum-236-240-report",
+   "b": "step239-claim-registry-kernel-genealogy",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0608",
+   "a": "final-operating-model-kos-operating-model-001",
+   "b": "next-actor-orchestration-ast018",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "INDEPENDENT",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0613",
+   "a": "final-theory-gap-register",
+   "b": "theory-closure-audit-all-gaps-closed",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0651",
+   "a": "frozen-results-register-mechanism",
+   "b": "knowledgeos-abcdefghij-todo-register",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0683",
+   "a": "gita-audit-untested-assumption-study",
+   "b": "kr-rep-reduction-audit-protocol-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0693",
+   "a": "gita-chapter2-atma-identity-foundation-theory",
+   "b": "hpa-self-attested-completion-pattern-gita-lane",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0694",
+   "a": "gita-chapter3-karma-yoga-action-theory",
+   "b": "hpa-self-attested-completion-pattern-gita-lane",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0710",
+   "a": "gita-declared-vs-effective-reads-study",
+   "b": "kr-bridge-02-pi-q-grid-experiment",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0731",
+   "a": "gita-material-write-only-as-research-history-verdict",
+   "b": "gita-no-philosophical-derivation-constraint",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0743",
+   "a": "gita-tripiti-relationship-lens",
+   "b": "h-kos-relationship-001-tripuji",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0744",
+   "a": "gita-tripiti-relationship-lens",
+   "b": "inv-kos-candidate-series",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0765",
+   "a": "gov-state-durability-adr",
+   "b": "gov-state-durability-decision",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP0915",
+   "a": "hetvabhasa-fallacy-invariants",
+   "b": "hetvabhasa-fallacy-taxonomy",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "REFINEMENT",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0954",
+   "a": "human-decision-dossier-d0-d1-d2-d3prime",
+   "b": "o-core-ratification-gap-d0",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP0983",
+   "a": "independent-k9-verification-script-and-mismatch",
+   "b": "k9-guardrail-and-headline-negative",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1047",
+   "a": "k-canonical-decision-governance-boundary",
+   "b": "step254-decision3-provenance-inside-semantic-equality",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "HOMONYM",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1049",
+   "a": "k-instantiated-in-ekp-empirical",
+   "b": "two-rival-k-state-models-vocabulary-disjoint",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1050",
+   "a": "k-min-capability-basis-apparatus",
+   "b": "spec-ops-delta-2026-v1-1-five-primitive-kernel",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1054",
+   "a": "k9-closure-computation-script",
+   "b": "k9-guardrail-and-headline-negative",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1055",
+   "a": "k9-closure-computation-script",
+   "b": "qualify-closure-robustness-answered-no",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1081",
+   "a": "kernel-not-selectable-verdict",
+   "b": "v1-2-sim-factivity-repair-experiment",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1086",
+   "a": "kernel-reconciliation-230-236-report",
+   "b": "theory-gap-map-001-report",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1087",
+   "a": "kernel-reduction-ablation-experiment-protocol",
+   "b": "kernel-reduction-experiment-KR-2026-09-01-executed-results",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1102",
+   "a": "knowledge-admission-ladder",
+   "b": "knowledge-claim-determination-aggregates",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1153",
+   "a": "knowledge-state-model-audit-231-report",
+   "b": "step231-mathematical-space-of-knowledge",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1155",
+   "a": "knowledge-sunya-relational-emptiness-ddd-boundary-2026-09",
+   "b": "signed-contribution-polarity-negative-zero-distinction-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1180",
+   "a": "knowledgeos-character-definition",
+   "b": "p4-constitutional-invariant-map-process",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1196",
+   "a": "knowledgeos-information-transformation-theory-consolidated-draft-2026-09",
+   "b": "kr-rep-reduction-audit-protocol-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1201",
+   "a": "knowledgeos-kernel-boundary-epistemic-infrastructure-synthesis",
+   "b": "knowledgeos-ontology-discovery-multi-agent-review",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1209",
+   "a": "knowledgeos-kernel-concept",
+   "b": "navya-nyaya-relations-lens",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1233",
+   "a": "knowledgeos-theory-v1-1-simulation-executed-results",
+   "b": "knowledgeos-theory-v1-1-simulation-experiment-protocol",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1250",
+   "a": "kos-constitution-v1",
+   "b": "kos-kernel-decision-step5",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1251",
+   "a": "kos-constitution-v1",
+   "b": "kos-kernel-engine-boundary",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "SPECIALIZATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1271",
+   "a": "kos-golden-trace",
+   "b": "kos-vertical-slice-v01",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1357",
+   "a": "kr-bridge-01-zero-preservation-experiment-protocol-2026-09",
+   "b": "kr-rep-reduction-formal-corrections-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1358",
+   "a": "kr-bridge-01-zero-preservation-experiment-protocol-2026-09",
+   "b": "oq4-adequacy-realization-witness-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1361",
+   "a": "kr-bridge-03-generator-regime-2026-09",
+   "b": "theory-doc-series-00-14-information-transformation-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1390",
+   "a": "kr-rep-reduction-executed-results-interpretation-2026-09",
+   "b": "theory-doc-series-00-14-information-transformation-2026-09",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1467",
+   "a": "operation-registry-implementation-candidate",
+   "b": "successor-state-semantics-candidate",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1527",
+   "a": "regression-progression-reasoning-mechanisms",
+   "b": "successor-state-semantics-candidate",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1559",
+   "a": "s1602-formal-system-reconstruction-mandate",
+   "b": "s1603-typed-family-refutation-of-k0",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1580",
+   "a": "s1608-transformation-congruence-and-state-sufficiency",
+   "b": "s1609-state-history-equivalence-class-hypothesis",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1588",
+   "a": "s1612-k-minimality-proof-and-valid-k-computability",
+   "b": "s1617-closure-report-ekp-discovery-and-assurance-blocker",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1683",
+   "a": "step208-215-contradiction-catalogue",
+   "b": "step208-semantic-contract-algebra",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "UNWITNESSED",
+   "independent_confidence": "MEDIUM"
+  },
+  {
+   "pair_id": "RP1688",
+   "a": "step208-215-contradiction-catalogue",
+   "b": "step215-reconstruction-method",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "EXTENSION",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1737",
+   "a": "step288-equality-register-nine-registers-g67",
+   "b": "sufficient-f-o-i-criterion-adoption",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "HOMONYM",
+   "independent_confidence": "HIGH"
+  },
+  {
+   "pair_id": "RP1752",
+   "a": "theory-v1-0-def-register-findings-2026-09-10",
+   "b": "v1-1-sim-factivity-impossibility-finding",
+   "original_relationship": "DERIVED-FROM",
+   "independent_relationship": "CONTINUATION",
+   "independent_confidence": "HIGH"
+  }
+ ],
+ "what_disagreements_became": {
+  "UNWITNESSED": 35,
+  "EXTENSION": 15,
+  "CONTINUATION": 54,
+  "SPECIALIZATION": 8,
+  "DERIVED-FROM": 1,
+  "REFINEMENT": 5,
+  "REDEFINITION": 3,
+  "INDEPENDENT": 2,
+  "HOMONYM": 2
+ }
+}

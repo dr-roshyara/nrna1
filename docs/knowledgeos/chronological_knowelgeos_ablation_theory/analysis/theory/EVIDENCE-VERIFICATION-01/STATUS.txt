@@ -1,0 +1,4 @@
+CLEAN: My context contains no prior analysis, coding, answers or expected results for these fragments or questions — only the task instructions and generic environment/tooling context.
+HASH CHECK: BUNDLE.sha256 all 4 files OK; MANIFEST fragment_sha256 F1–F4 all match.
+ANSWERS.json sha256: dae305be575a2427f0844fb79f1db9eb7194dbbcfcf5ed318724f424dda5ae1f
+DECLARATION: I, Claude Opus 5.5 (claude-opus-5-5), answered from the fragments only, without access to any other analysis of them. headless Claude Code session, non-git directory (SECONDARY_REVIEW)

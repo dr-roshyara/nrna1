@@ -1,0 +1,66 @@
+{
+ "seed": 20260924,
+ "rule": "per batch: 1 object record + 4 research records (up to 2 HYPOTHESIS/STRUCTURE-CANDIDATE), random.Random(seed) consumed in batch order",
+ "sample": [
+  {
+   "batch": "PB01",
+   "object": "approx-x-equivalence-relation-proof-and-32-projections-precision",
+   "research": [
+    "S4-PILOT-R2-001:PB01:8",
+    "S4-PILOT-R2-001:PB01:15",
+    "S4-PILOT-R2-001:PB01:3",
+    "S4-PILOT-R2-001:PB01:4"
+   ]
+  },
+  {
+   "batch": "PB02",
+   "object": "five-blocker-triage-table",
+   "research": [
+    "S4-PILOT-R2-001:PB02:7",
+    "S4-PILOT-R2-001:PB02:24",
+    "S4-PILOT-R2-001:PB02:32",
+    "S4-PILOT-R2-001:PB02:38"
+   ]
+  },
+  {
+   "batch": "PB03",
+   "object": "minimal-adequate-representation-entropy-formalization",
+   "research": [
+    "S4-PILOT-R2-001:PB03:24",
+    "S4-PILOT-R2-001:PB03:14",
+    "S4-PILOT-R2-001:PB03:25",
+    "S4-PILOT-R2-001:PB03:28"
+   ]
+  },
+  {
+   "batch": "PB04",
+   "object": "rejection-produces-hypothesis-space-not-truth",
+   "research": [
+    "S4-PILOT-R2-001:PB04:23",
+    "S4-PILOT-R2-001:PB04:2",
+    "S4-PILOT-R2-001:PB04:17",
+    "S4-PILOT-R2-001:PB04:15"
+   ]
+  },
+  {
+   "batch": "PB05",
+   "object": "step185-differentiated-non-identity-chain",
+   "research": [
+    "S4-PILOT-R2-001:PB05:11",
+    "S4-PILOT-R2-001:PB05:31",
+    "S4-PILOT-R2-001:PB05:33",
+    "S4-PILOT-R2-001:PB05:8"
+   ]
+  },
+  {
+   "batch": "PB06",
+   "object": "vedic-palmistry-structural-reasoning-inventory-2026-09",
+   "research": [
+    "S4-PILOT-R2-001:PB06:19",
+    "S4-PILOT-R2-001:PB06:17",
+    "S4-PILOT-R2-001:PB06:23",
+    "S4-PILOT-R2-001:PB06:16"
+   ]
+  }
+ ]
+}

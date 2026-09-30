@@ -1,0 +1,60 @@
+# yoga-operator-simulation-framework
+
+**Scope(s):** OBJECT, THEORY-LEVEL · **Row count:** 8 ·
+**Lifecycle (candidate):** ACTIVE · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** `Y:(K_t,O,C,G) -> K_{t+1}`, `Y_B, Y_D (Yoga operator family)` · **Aliases:** `Yoga Operator Algebra`, `Yoga as mathematical simulation`
+**Candidate group membership (NOT an identity claim):**
+- **G0010** [`yoga-operator-simulation-framework`] — the identical working_label 'yoga-operator-simulation-framework' was independently registered/proposed 2 times across different batches (['B0054', 'B0055'])
+- **G0491** [`hpa-buddhi-discrimination-second-pass` · `yoga-operator-simulation-framework`] — explicit agent-stated uncertainty: 'yoga-operator-simulation-framework' POSSIBLY relates to 'hpa-buddhi-discrimination-second-pass' (batch B0054). Note: Proposes treating Yoga not as literal software translation but as a family of mathematical simulations/operators over the epistemic state: Y:(K_t,O,C,G)->K_{t+1}, with a correspondence table (Dhyana=iterative computation, Dharana=constraint/focus operator, Buddhi=discrimination function, Manas=candidate generation, Indriya=observations, Karma=state-changing operation, Phala=observed consequence, Vairagya=outcome-independent evaluation, Samadhi=convergence/fixed-point condition, Moksha=limiting/boundary condition). Introduces named simulations Yoga-1 (Discrimination, Y_B=B(K,x)), Yoga-2 (Concentration, Y_D=pi_X(K), linked to Step 287 observational equivalence), Yoga-3 (Iterative contemplation/fixed point Y(K*)=K*), and 8 falsification-style test questions per proposed Yoga operator.
+- **G0530** [`hpa-buddhi-discrimination-second-pass` · `yoga-operator-simulation-framework`] — explicit agent-stated uncertainty: 'yoga-operator-simulation-framework' POSSIBLY relates to 'hpa-buddhi-discrimination-second-pass' (batch B0055). Note: The Yoga-as-family-of-mathematical-transformation-regimes framework, first proposed in B0054 and reused/restated in B0055's synthesis (S2263).
+
+## Sources (how this label entered the ledger)
+- **PROPOSAL** (batch B0054, scope THEORY-LEVEL): Proposes treating Yoga not as literal software translation but as a family of mathematical simulations/operators over the epistemic state: Y:(K_t,O,C,G)->K_{t+1}, with a correspondence table (Dhyana=iterative computation, Dharana=constraint/focus operator, Buddhi=discrimination function, Manas=candidate generation, Indriya=observations, Karma=state-changing operation, Phala=observed consequence, Vairagya=outcome-independent evaluation, Samadhi=convergence/fixed-point condition, Moksha=limiting/boundary condition). Introduces named simulations Yoga-1 (Discrimination, Y_B=B(K,x)), Yoga-2 (Concentration, Y_D=pi_X(K), linked to Step 287 observational equivalence), Yoga-3 (Iterative contemplation/fixed point Y(K*)=K*), and 8 falsification-style test questions per proposed Yoga operator. _(relation_to_existing: POSSIBLY:hpa-buddhi-discrimination-second-pass)_
+- **PROPOSAL** (batch B0055, scope OBJECT): The Yoga-as-family-of-mathematical-transformation-regimes framework, first proposed in B0054 and reused/restated in B0055's synthesis (S2263). _(relation_to_existing: POSSIBLY:hpa-buddhi-discrimination-second-pass)_
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S2225 §"Y:\;(K_t,\mathcal O,\mathcal C,\mathcal G) \longrightarrow K_{t+1}"]
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S2225 §"Y:\;(K_t,\mathcal O,\mathcal C,\mathcal G) \longrightarrow K_{t+1}"]
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: [S2225 §"Does the operator type-check? ... Does it merely provide philosophical interpretation?"]
+
+## Lifecycle
+last_seen: S2265. Candidate lifecycle: ACTIVE.
+Evidence: No retraction/supersession/contradiction lineage found. This lifecycle value is a heuristic based on how recently (by source_id, last_seen=S2265) this label was last used in the ledger, not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source IDs |
+|---|---|---|
+| purpose_rationale | PRESENT | S2225 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | PRESENT | S2225, S2235, S2263, S2265 |
+| type_signature | PRESENT | S2225, S2235 |
+| invariants | NOT-EVIDENCED-IN-CAPTURE | — |
+| dependencies | PRESENT | S2225 |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S2225 |
+| examples | NOT-EVIDENCED-IN-CAPTURE | — |
+| warnings | NOT-EVIDENCED-IN-CAPTURE | — |
+| experiments | NOT-EVIDENCED-IN-CAPTURE | — |
+| open_questions | PRESENT | S2225 |
+
+## Rationale
+Yoga must not be identified with Knowledge or 'more knowledge'; it is a relationship/transformation of epistemic state. Two systems can hold K_1=K_2 while Y(K_1) != Y(K_2), because context, purpose, observations, uncertainty, or operational state differs -- connecting to the Step 287 distinction between structural, semantic and observational equality. Also proposes making Yoga explicitly temporal: K_{t+1}=Y_t(K_t,O_t,C_t), noting dK/dt may not be meaningful as a continuous derivative since KnowledgeOS state may be discrete/event-driven, so K_{t+1}=delta(K_t,o_t) is preferred, with Yoga as a family of possible transition strategies over delta. [S2225]
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+
+- `[S2225]` types=[FORMALIZATION, EXTENSION] scope=THEORY-LEVEL — "Yoga modelled as a mathematical simulation/coupling operator Y:(K_t,O,C,G)->K_{t+1} ('a method of bringing different components into an intended relationship or condition'), with correspondence table: Yoga=transformation/coupling operator (simulate state transformation); Dhyana=iterative focused computation (repeated evaluation of one epistemic object); Dharana=constraint/focus operator (restrict computation to relevant dimensions); Buddhi=discrimination function (classify/distinguish alternatives); Manas=fluctuating working process (candidate generation/attention movement); Indriya=input channels (observations); Karma=action/transition (state-changing operation); Phala=resulting state/effect (observed consequence); Vairagya=independence from result (evaluate without outcome-dependent criteria); Samadhi=convergence/stability condition (investigate whether repeated evaluation converges); Moksha=limiting/transcendent condition (whether an epistemic process reaches a defined boundary). Explicitly analytical correspondences, not literal Gita definitions of these mathematical objects." (anchor: "Y:\;(K_t,\mathcal O,\mathcal C,\mathcal G) \longrightarrow K_{t+1}")
+- `[S2225]` types=[FORMALIZATION, HYPOTHESIS] scope=THEORY-LEVEL — "Three named Yoga simulations: Yoga-1 Discrimination, Y_B(K,x)=B(K,x), testing whether Buddhi can reliably distinguish admissible from inadmissible knowledge; Yoga-2 Concentration, Y_D(K,X)=pi_X(K) (projection onto relevant dimension set X), explicitly resembling the Step 287 result Sigma_1 approx_X Sigma_2 iff pi_X(Sigma_1)=pi_X(Sigma_2) -- focused attention simulated as controlled projection; Yoga-3 Iterative contemplation, K_{t+1}=Y(K_t) iterated as K_0->K_1->K_2->..., asking whether the process reaches a fixed point Y(K*)=K*, giving a rigorous (but non-proving) way to investigate mental stabilization." (anchor: "Y_B(K,x)=B(K,x) ... Y_D(K,X)=\pi_X(K) ... K_{t+1}=Y(K_t) ... Y(K^*)=K^*")
+- `[S2225]` types=[DISTINCTION, ARGUMENT] scope=THEORY-LEVEL — "Yoga must not be identified with Knowledge or 'more knowledge'; it is a relationship/transformation of epistemic state. Two systems can hold K_1=K_2 while Y(K_1) != Y(K_2), because context, purpose, observations, uncertainty, or operational state differs -- connecting to the Step 287 distinction between structural, semantic and observational equality. Also proposes making Yoga explicitly temporal: K_{t+1}=Y_t(K_t,O_t,C_t), noting dK/dt may not be meaningful as a continuous derivative since KnowledgeOS state may be discrete/event-driven, so K_{t+1}=delta(K_t,o_t) is preferred, with Yoga as a family of possible transition strategies over delta." (anchor: "Yoga \neq Knowledge ... K_1=K_2 but Y(K_1)\neq Y(K_2)")
+- `[S2225]` types=[FORMALIZATION] scope=THEORY-LEVEL — "Buddhi modelled as B: E -> D (epistemic alternatives to distinguishable outcomes) with candidate codomain {admissible, inadmissible, unknown, conflicting, requires qualification}; the 'requires qualification' category connects directly to the unresolved Qualify/G1 problem." (anchor: "B(x)= \begin{cases}\text{admissible}\\\text{inadmissible}\\\text{unknown}\\\text{conflicting}\\\text{requires qualification}\end{cases}")
+- `[S2225]` types=[FUTURE-RESEARCH, GOVERNANCE] scope=METHODOLOGICAL — "Reframes the research question from 'What does Yoga mean in KnowledgeOS?' to 'Which mathematically definable transformations of epistemic state can be interpreted through Yoga, and which are independently required by KnowledgeOS?'. Proposes an 8-question falsification protocol per proposed Yoga operator: (1) does it type-check, (2) does KnowledgeOS independently require it, (3) does it operate on existing primitives, (4) does it introduce a new primitive, (5) can it be falsified, (6) does it produce a useful simulation, (7) does it change the Kernel model, (8) does it merely provide philosophical interpretation. Proposes next step: construct a Yoga Operator Algebra (Y_B, Y_D, Y_R, Y_C, ...) tested against K_t, Sigma, delta, Zero, Qualify, A, R. Records provisional (non-canonical) positions: Yoga ~ family of epistemic-state transformation simulations; Buddhi ~ discrimination/evaluation operator; Mind ~ philosophical lens for analysing Kernel behaviour." (anchor: "Does the operator type-check? ... Does it merely provide philosophical interpretation?")
+- `[S2235]` types=[FORMALIZATION, EXTENSION] scope=THEORY-LEVEL — "Refines Yoga from a single operator into a family: Yoga = {Y_1,Y_2,...,Y_m}, where each Y_i is a transformation or discipline applied to an epistemic state, K_{t+1}=Y_i(K_t,O_t). Poses the research question: what transformations are permitted, and what properties must they preserve?" (anchor: "\mathsf{Yoga}=\{\mathcal Y_1,\mathcal Y_2,\ldots,\mathcal Y_m\}")
+- `[S2263]` types=[DEFINITION] scope=OBJECT — "Yoga is treated not as one operation but as a disciplined transformation regime, with different yogas as different transformation classes: Jnana-yoga -> knowledge transformation, Karma-yoga -> action transformation, Buddhi-yoga -> discrimination transformation, consistent with the supplied text's treatment while the KnowledgeOS translation remains interpretive." (anchor: "Yoga ~ a disciplined transformation regime ... Jnana-yoga -> knowledge transformation ... Karma-yoga -> action transformation ... Buddhi-yoga -> discrimination transformation")
+- `[S2265]` types=[HYPOTHESIS, FORMALIZATION] scope=OBJECT — "Interprets Yoga mathematically as a constraint on transformation: Yoga_O(K_t) means transform K_t while preserving a specified discipline/invariant, with different yogic orientations as different transformation-constraint classes (Karma-Yoga: operation without outcome attachment; Jnana-Yoga: discrimination/knowledge transformation; Dhyana-Yoga: concentration/reduction of irrelevant variation; Bhakti-Yoga: orientation toward a declared higher reference/horizon; Sankhya: discrimination of categories/components), explicitly kept as philosophical correspondences, not yet KnowledgeOS primitives." (anchor: "Yoga_O(K_t) means transform K_t while preserving a specified discipline/invariant ... Karma-Yoga -> operation without outcome attachment ... Jnana-Yoga -> discrimination/knowledge transformation ... Dhyana-Yoga -> concentration/reduction of irrelevant variation ... Bhakti-Yoga -> orientation toward a declared higher reference/horizon ... Sankhya -> discrimination of categories/components ... these remain philosophical correspondences, not yet KnowledgeOS primitives.")
+
+## Notes for P3
+NOT-EVIDENCED-IN-CAPTURE — no reviewer-added observation for this label beyond what appears above.

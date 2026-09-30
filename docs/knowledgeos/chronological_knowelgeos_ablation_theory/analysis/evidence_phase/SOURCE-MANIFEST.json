@@ -1,0 +1,116 @@
+{
+ "kind": "source-location manifest (filename match only; NO content read)",
+ "rule": "identity of the released source is designated by L0 in the release act; a candidate is not a source until designated; hashes pin the bytes at designation time",
+ "sources": [
+  {
+   "slot": "S-1",
+   "label": "CAP-001 \u00a79",
+   "status": "UNRESOLVED-IDENTITY",
+   "candidates": [
+    {
+     "path": "docs/pks/2026-08-02-cap-001-architecture-stabilization-report.md",
+     "sha256": "5a25278e45b79dfb00e7ebf21fa78f54b2d549f6657c2729ec2b541f12d1d96c",
+     "bytes": 10298,
+     "git_blob": "225ac91307aa5eb00e9b3475647f3c651b8e3444"
+    }
+   ]
+  },
+  {
+   "slot": "S-2",
+   "label": "EPIC-004 (self-governance source)",
+   "status": "UNRESOLVED-IDENTITY",
+   "candidates": [
+    {
+     "path": "docs/implementation/EPIC-004A_Adjudication_Tactical_Discovery.md",
+     "sha256": "5004554dac8f6d41440a7a7d90565731a9a7e200d429c42b92cd9c83fcd1b384",
+     "bytes": 19427,
+     "git_blob": "46713e7eb1db05b8fe5552b06c4669056f78ef2f"
+    },
+    {
+     "path": "docs/implementation/EPIC-004B_Adjudication_Aggregate_Discovery.md",
+     "sha256": "44701b217c6dd13b9d939a90268884bcf790bf0c6ec2bd86c2d885998306e8dd",
+     "bytes": 7924,
+     "git_blob": "60c28eb81e64e187745a2adb7c4a2db807a7ce5d"
+    },
+    {
+     "path": "docs/implementation/EPIC-004C_Adjudication_Aggregate_Evaluation.md",
+     "sha256": "1d4e96d2d361f0c8878ba31f7b37b54b713e0b862968467a165d883d05cfaabf",
+     "bytes": 18962,
+     "git_blob": "e99dd6e27df2caf48cfbc4ee1eb7ba28ee25673b"
+    },
+    {
+     "path": "docs/implementation/EPIC-004D_Determination_Aggregate_Responsibilities.md",
+     "sha256": "87f2f36bc91203d5e2bdf6211692805c1f33396d7c44bab742de7bf27543fc6f",
+     "bytes": 18128,
+     "git_blob": "947bdf35f351174832d4ee4d6b6674b5bed4f9e6"
+    },
+    {
+     "path": "docs/implementation/EPIC-004E_Determination_Invariants.md",
+     "sha256": "00d82cd6b84ae9996d0093bb42a60b51d655d8a1bac7ece255dfba67c59f9734",
+     "bytes": 12098,
+     "git_blob": "0cc2bc0173c9a57dc115523aa068c231712868f7"
+    },
+    {
+     "path": "docs/implementation/EPIC-004F_Determination_Value_Objects.md",
+     "sha256": "3116b1ac058bbe0cd3fe83d65b59166531942ebdcbf6eb0961c4b242c2cacc81",
+     "bytes": 9181,
+     "git_blob": "6b83e811dbd9c40792b75bf21d93cea42518dded"
+    },
+    {
+     "path": "docs/implementation/EPIC-004G_Determination_Domain_Events.md",
+     "sha256": "2392337855521c696a1d5997b1fffd884869064688fcfee534ce218d218e195f",
+     "bytes": 8585,
+     "git_blob": "79c278a800f2e482fc71358132e0a38b6ba40f73"
+    },
+    {
+     "path": "docs/implementation/EPIC-004H_Determination_Commands.md",
+     "sha256": "b8605a7b346faa52649794cfdd44caf702d3494e95097a5f7d553dfe66b590a9",
+     "bytes": 10901,
+     "git_blob": "d46b3ca853a20f164240df2ab360a85e34d76fde"
+    },
+    {
+     "path": "docs/implementation/EPIC-004I_Determination_Repositories.md",
+     "sha256": "c5dd33d2fad699007811aa2e11ef0f8bfebde7aed695b99c00242a7a1116e13e",
+     "bytes": 6494,
+     "git_blob": "ecf8ae0c1001505235e1b76e73a09cc9996ddd0b"
+    },
+    {
+     "path": "docs/implementation/EPIC-004J_Determination_Domain_Services.md",
+     "sha256": "6604bed4c95cefe75083de14581b013b2ff9cc88b3a2d7aa175e8dadeabe77f9",
+     "bytes": 8259,
+     "git_blob": "9a0e32b1a15a52e5ba6d09356171697e93c20662"
+    },
+    {
+     "path": "docs/implementation/EPIC-004K_Adjudication_Process_Manager_Architecture.md",
+     "sha256": "78392672a1a70cc898725b03ccd6cdb641bb12d47509321f33259e7ad7ff4797",
+     "bytes": 33054,
+     "git_blob": "b7bc19face0b17ceac2e3f7a1712560f299166d7"
+    },
+    {
+     "path": "docs/implementation/EPIC-004_Adjudication_Tactical_Work_Package.md",
+     "sha256": "3b3e6f77c5c6cf66abecb5b59264b5b609df90b8cfcf5f3bcb12da23a6cae9b1",
+     "bytes": 12179,
+     "git_blob": "8a4dfb531415c1a118dd9559ee4406be79f6758b"
+    },
+    {
+     "path": "docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md",
+     "sha256": "46cb929189275222ed14aaf14d96ed6bb4948cc056784b233c84dad8dcd2c8ee",
+     "bytes": 18038,
+     "git_blob": "1b09cc766cd146b0fadbd663d1b1f9515109560a"
+    },
+    {
+     "path": "docs/implementation/EPIC-004_Q1_Authority_Resolution.md",
+     "sha256": "7bfe0afcc9eed6ff98315a1c5bc1546cd810ec198be273bbd866d9f77d4cc72e",
+     "bytes": 5493,
+     "git_blob": "d765302e9579d06aeaff2a5c477a45e907b7fccb"
+    },
+    {
+     "path": "docs/implementation/EPIC-004_Q2_Resolution_Package.md",
+     "sha256": "31c93e46174cd3120afa6958925e60c3aefe29e18ae23c844c6ae8fcc545187a",
+     "bytes": 16565,
+     "git_blob": "c560a2254a4441bf45ffc5eaa0978415d02d5d9c"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "case_id": "L0-REL-25 / 2026-08-15 L493",
+ "status": "FROZEN BEFORE READING. Encoded from heading metadata and the earlier locate hit only; no body line read.",
+ "source": {"path": ".claude/sessions/2026-08-15.md", "sha256": "b5c2487c6c2d0ed74d6feb67448e81c1d97952a18dcb03f1205daf8d343d7b65",
+            "boundary": "L483-L495 (L483 heading 'Ninth — PO/ARB ACCEPTED the finalization; vocabulary ruling registered and applied'; next heading L496 'Tenth — ...')",
+            "note": "L493 (the locate hit 'single occurrence') lies inside this section; the section, not the line, is the unit",
+            "excluded": "every other line; any pointer target (register row, prompt, record)"},
+ "instrument": "model_discrimination_r2.py d14d79af... (H1 H2 H3a H3b H4 H5; norm readings QUAL VAL QUAL_AND_VAL QUAL_OR_VAL); frozen at 181d78e7e",
+ "attributes_pre_read": {
+   "force": {"coded": "UNKNOWN", "model_assumption": "IN via I-R39 (DA, register, 2026-07-26; bar = repeated, >=2 contexts; scope 'methodology principles')",
+             "rule": "IN only if the section shows the ruled object falls under I-R39's scope or itself cites an in-force bar; AMB if only ES-006.1 text applies; otherwise UNKNOWN",
+             "note": "I-ES0013 (ES-001.3, 2026-08-16) postdates the act and cannot judge it"},
+   "kind": {"source_fact": "UNKNOWN", "model_assumption": "knowledge (a vocabulary ruling)"},
+   "high": {"source_fact": "UNKNOWN", "model_assumption": "UNKNOWN"}},
+ "outcome_alphabet": "as L216-CASE/CASE-SPEC.json (EV|QUAL|VAL; OBL|EXC|AUTH; SEM)",
+ "coding_rules": ["as L216-CASE/CASE-SPEC.json",
+                  "EV = DEVIATES only if the section positively records adoption on fewer instances/contexts than the decisive bar demands; a stated 'single occurrence' counts as positive (attr instances=1)",
+                  "if the act is a REJECTION or a deferral, record it as such; Reject acts permit every hypothesis",
+                  "if 'single occurrence' refers to something other than the ruled object's evidence, record that and do not code EV from it"],
+ "falsifiers": "as L216 spec; decisive here: H4 is refuted by an EV/QUAL/VAL DEVIATES under force IN with no exception",
+ "expected_observables": "who accepted/ruled (PO/ARB), what the vocabulary ruling adopts, the evidence basis (occurrence count), any exception or obligation, the order of ruling vs application"
+}

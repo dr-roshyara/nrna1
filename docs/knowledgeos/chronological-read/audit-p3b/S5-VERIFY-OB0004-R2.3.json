@@ -1,0 +1,202 @@
+{
+ "body": {
+  "acceptance_evidence": true,
+  "alerts": [],
+  "batch_id": "OB0004",
+  "comparison": false,
+  "counts": {
+   "dispositions_per_hit_dimension": {
+    "ESCALATED": 105,
+    "FOUND": 146,
+    "UNSUPPLIED-DIMENSION": 74
+   },
+   "objects": 5,
+   "p1_gap_records": 19,
+   "read_log_entries": 80,
+   "records_by_kind": {
+    "GAP": 2,
+    "OBSERVATION": 14,
+    "SCHEMA-LIMITATION": 1
+   },
+   "refused_reads": 1,
+   "research_records": 17
+  },
+  "failures": [
+   "G-05 step-verify-programme: type_status=None (null without a SCHEMA-LIMITATION escalation, G-LOG-0023 b)",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-05 step-verify-programme: method None",
+   "G-04 step-verify-programme: 16 of 22 stage-2 hit files neither read whole nor scanned"
+  ],
+  "gates": {
+   "AUDIT": "PASS",
+   "D-23": "PASS",
+   "F1": "PASS",
+   "F3": "PASS",
+   "G-01": "PASS",
+   "G-02": "PASS",
+   "G-03": "NOT-SCRIPT-CHECKED (no mechanical duplicate-corroboration field at batch level)",
+   "G-04": "FAIL",
+   "G-05": "FAIL",
+   "G-06": "AUDIT (§21)",
+   "G-07": "PASS",
+   "G-08": "PASS",
+   "G-09": "PASS",
+   "G-10": "PARTIAL (slice hashes = SLICES)",
+   "G-11": "PASS",
+   "G-12": "PASS",
+   "G-13": "PASS-LEVEL (S5a/S5b)",
+   "HUB": "PASS",
+   "QUARANTINE": "PASS",
+   "SCHEMA": "PASS",
+   "SEMANTIC": "PASS",
+   "SLICES": "PASS"
+  },
+  "labels": [
+   "step-verify-programme",
+   "strategic-behavior-game-theory-model",
+   "knowledgeos-architecture-constitution-v01",
+   "governance-conformance-model",
+   "architecture-conformance-engineering-model"
+  ],
+  "load": {
+   "actual": {
+    "reader_calls": 79,
+    "stage1_bytes": 621152,
+    "stage2_bytes": 658199,
+    "stage2b_occurrences": 0
+   },
+   "alert_ratio": 1.5,
+   "manifest_predicted_dispositions": 325,
+   "predicted": {
+    "reader_calls": 65,
+    "stage1_bytes": 1767046,
+    "stage2_bytes": 1561963,
+    "stage2b_occurrences": 0
+   },
+   "ratios": {
+    "reader_calls": 1.2154,
+    "stage1_bytes": 0.3515,
+    "stage2_bytes": 0.4214,
+    "stage2b_occurrences": null
+   }
+  },
+  "manifest_output_sha256": "d3e2a29e0895f265944a4e7d95153e88d0824279d2bd1db41d07b50fb7b751f3",
+  "notes": [
+   "step-verify-programme: FOUND source S1513 read whole at step 1, not re-logged at step 7",
+   "step-verify-programme: FOUND source S1518 read whole at step 1, not re-logged at step 7",
+   "step-verify-programme: 4 hit file(s) read whole at step 1, not re-logged at step 7"
+  ],
+  "reading_bytes": {
+   "architecture-conformance-engineering-model": {
+    "file_reads_1_7": 12,
+    "predicted_file_reads": 3,
+    "scanner_calls": 0,
+    "step1": 21741,
+    "step10": 0,
+    "step7": 172244
+   },
+   "governance-conformance-model": {
+    "file_reads_1_7": 4,
+    "predicted_file_reads": 2,
+    "scanner_calls": 0,
+    "step1": 24666,
+    "step10": 0,
+    "step7": 24666
+   },
+   "knowledgeos-architecture-constitution-v01": {
+    "file_reads_1_7": 19,
+    "predicted_file_reads": 7,
+    "scanner_calls": 0,
+    "step1": 58245,
+    "step10": 0,
+    "step7": 249219
+   },
+   "step-verify-programme": {
+    "file_reads_1_7": 31,
+    "predicted_file_reads": 47,
+    "scanner_calls": 0,
+    "step1": 492299,
+    "step10": 0,
+    "step7": 48380
+   },
+   "strategic-behavior-game-theory-model": {
+    "file_reads_1_7": 13,
+    "predicted_file_reads": 6,
+    "scanner_calls": 0,
+    "step1": 24201,
+    "step10": 0,
+    "step7": 163690
+   }
+  },
+  "relative_timing_key_source": "SCHEMA",
+  "research_reads": {
+   "cap": 900000,
+   "cap_reached": false,
+   "repeat_ratio": null,
+   "step10_bytes": 0,
+   "step10_distinct_files": 0,
+   "step10_file_reads": 0
+  },
+  "result": "FAIL",
+  "run_id": "OB0004-R2.3"
+ },
+ "header": {
+  "artifact": "S5-VERIFY-OB0004-R2.3.json",
+  "input_hashes": {
+   "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+   "P3B-HOLDOUT-SEAL.json": "9b99169d30d57b2ecc1d331838652aa6b765ce722059b30095a03df077d589c0",
+   "P3B-S5-HUBS.jsonl": "e150d7a5ac3c405b6e2226d70323314d23a106bbb3442c0110dcc6ae4d366d91",
+   "_batch_input_r2/s5/rev3/OB0004/P3B-BATCH-SNAPSHOT.json": "60cf62713b2d572478d9472520e926e845f9d38c1c88c2a6414ffc1b1364aec2",
+   "_batch_input_r2/s5/rev3/OB0004/architecture-conformance-engineering-model.json": "0f2d310375eac4e14d87c88cba137753515983d44939ce91b142c41026b1792f",
+   "_batch_input_r2/s5/rev3/OB0004/governance-conformance-model.json": "72d80bf487c3e92be20dea94358b1c88afa15cd406e4e2eea1ef59196bd54da0",
+   "_batch_input_r2/s5/rev3/OB0004/knowledgeos-architecture-constitution-v01.json": "53671824d90ebc2825d9e7ac82966f707fc714fba6b484f631a2a4decf0fd8f2",
+   "_batch_input_r2/s5/rev3/OB0004/step-verify-programme.json": "7622242523bc75a601d2f0fadeb6f1298608c5d7922cd801b614048fb2d5d7c6",
+   "_batch_input_r2/s5/rev3/OB0004/strategic-behavior-game-theory-model.json": "1906a8edff053b0a7b2a347d726b09065f438e1ae4d51365c8f201f8f69a8af1",
+   "_batch_manifest_p3b_r2.jsonl": "1b383fbc6ff720ebd2f893a74362ce73745dcf99243bc00ced1bcae3a5475682",
+   "audit-p3b/20260925_0106_s5-plan-v2.3.md": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+   "ledger-p3b-r2/OB0004-R2.3/READ-LOG.jsonl": "887cc0180a18ade8f48e057c6581dc26adf5243bde51f8d8268794fdac16d440",
+   "ledger-p3b-r2/OB0004-R2.3/objects.jsonl": "4c0f01e0fb17d54d676e4caae7d3a915bad391bcabc49569c226c5135a3db9a7",
+   "ledger-p3b-r2/OB0004-R2.3/p1-gap-capture.jsonl": "30d1d725c3e0e833c4a2bf4b7f5f207bc7b1e410fde48d991d88488f9cd5149a",
+   "ledger-p3b-r2/OB0004-R2.3/register.jsonl": "39e6fe17aa8917289c6b61de78a50034259af0aad67ffa6ff4c4467ea46f0f24",
+   "prompts/20260924_2311_p3b-phase1-continuation-protocol-v1.7.md": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12"
+  },
+  "numpy_version": "2.5.0",
+  "output_sha256": "29d6ac75faca25d9b77e929b162dcec3550e0ecd2676d9be40e4c192a0872d7c",
+  "parameters": {
+   "alert_ratio": 1.5,
+   "batch": "OB0004",
+   "root": "C",
+   "run": "OB0004-R2.3",
+   "step10_cap": 900000
+  },
+  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "protocol_sha256": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12",
+  "python_version": "3.13.2",
+  "result": "FAIL",
+  "run_timestamp_utc": "2026-09-25T10:41:04Z",
+  "script_committed_unmodified": true,
+  "script_name": "scripts/p3b_s5_verify.py",
+  "script_version": "e8b84d66cab83568dba68806e319605adfd3755c"
+ }
+}

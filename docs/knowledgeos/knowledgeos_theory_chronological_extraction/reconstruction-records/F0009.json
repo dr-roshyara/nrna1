@@ -1,0 +1,172 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0008-RETROFIT-B2",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 2 of the 31 admissible files",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0008-RETROFIT-B2."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0009",
+ "canonical_path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-domain-discovery.md",
+ "canonical_sequence_position": 9,
+ "lines_total": 233,
+ "source_self_declared_status": "⚠️ 'Generated — never authoritative without human review' · '⛔ Nothing in this document executes.'",
+ "source_document_kind": "STRATEGIC DISCOVERY. ⛔ 'No tactical DDD · no implementation · no capability design · no code.'",
+ "source_research_question": "⭐ 'What is the strategic architecture of KnowledgeOS?' — Q1–Q8",
+ "reconstruction_question": "⛔ DISTINCT: is the epistemic layering (observation/interpretation/candidate/conclusion) genuinely maintained?",
+ "source_method_declared": "⭐⭐ 'Traced from committed artifacts only… Do not answer from opinion. Trace it from the existing documents. Where canon answers, canon is quoted. ⭐ Where it does not, ABSENCE IS RECORDED, NEVER FILLED.'",
+ "definitions": [
+  {
+   "term": "the litmus",
+   "def": "'Would this responsibility still exist if PublicDigit disappeared?' — ⭐ shown to be ES-005.3 already"
+  }
+ ],
+ "assumptions": [
+  "canon answers before opinion does",
+  "absence is recorded, never filled"
+ ],
+ "premises": [
+  "AIP-14 / ADR-AIP-02 / R-23",
+  "DA clarification 2026-07-27",
+  "ES-005.1/.2/.3/.4",
+  "ES-006.1",
+  "Reference Model §7.2/§7.3/§8"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. Counts: 24 observations · 12 interpretations · 6 clusters · 7 candidate aggregates · 3 domain roots.",
+ "derivations": [
+  {
+   "id": "DI-F0009-01",
+   "from": [
+    "the brainstorming premise 'KnowledgeOS is now your Core Domain'",
+    "AIP-14 'exists solely to improve delivery of PublicDigit'",
+    "DA 2026-07-27"
+   ],
+   "to": "⛔ THE BRAINSTORMING PREMISE CONTRADICTS A DECISION-AUTHORITY RULING",
+   "form": "CONTRADICTION_WITH_CANON",
+   "validity": "⭐ VALID AND STRONG"
+  },
+  {
+   "id": "DI-F0009-02",
+   "from": [
+    "five tabulated instances where a hypothesis was raised and canon already answered it"
+   ],
+   "to": "⭐⭐ 'The consistent failure mode is mine and procedural — PROPOSING BEFORE SEARCHING.' Five, now.",
+   "form": "⭐ SELF_DIRECTED_PATTERN_AT_n=5",
+   "validity": "⭐⭐ VALID — instances enumerated, not asserted"
+  },
+  {
+   "id": "DI-F0009-03",
+   "from": [
+    "ES-005.3's text",
+    "the commission's litmus"
+   ],
+   "to": "⭐ they are the SAME test",
+   "form": "EQUIVALENCE",
+   "validity": "⭐ VALID"
+  }
+ ],
+ "conclusions": [
+  "⛔ 'MISSING: nothing at the strategic level.'",
+  "⭐ 'The next legitimate architectural act is a gate opening, not a document.'",
+  "⚠️ wording corrected by the PA: 'sufficient FOR THE PRESENT MATURITY LEVEL', not 'sufficient'"
+ ],
+ "dependencies": [
+  "Reference Model §6/§7.2/§7.3/§8",
+  "ADR-AIP-02",
+  "ES-005",
+  "ES-006.1",
+  "the Product Discovery Charter",
+  "Strategic_DDD_Discovery_Engineering_Governance_Domain",
+  "the product-status finding",
+  "the maturity assessment",
+  "doc-placement.php --list",
+  "Capability Catalog",
+  "CAP-001 README §9"
+ ],
+ "previous_related_files": "⭐ Recommendation 9 names the companion '2026-08-02-knowledgeos-architecture-consolidation.md' = F0012.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — it answers the eight strategic questions and finds nothing missing.",
+ "architectural_role": "⭐ STRATEGIC DISCOVERY — and the origin of OQ-K1..OQ-K6.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "OQ-K1..OQ-K6",
+   "the five-instance propose-before-search table",
+   "the six clusters tested against the litmus",
+   "the Evidence & Learning SPLIT"
+  ],
+  "⭐ corrected": [
+   "'sufficient' → 'sufficient for the present maturity level'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0001",
+  "T-0010",
+  "T-0023"
+ ],
+ "sequential_graph_position": "canonical position 9; 2026-08-02. ⭐ CAP-001 at ZERO executions (O-24) — so BEFORE F0001, which records 1.",
+ "file_relationships": [
+  {
+   "to": "F0012",
+   "kind": "⭐ NAMES_AS_COMPANION"
+  },
+  {
+   "to": "F0001",
+   "kind": "⭐ IS_SOURCE_OF",
+   "note": "OQ-K1..K6 appear in F0001's open-questions table"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ THE STRONGEST EPISTEMIC LAYERING IN THE CORPUS: §3 Observations (24, repository facts, no interpretation) · §4 Interpretations (12, each with an explicit CONFIDENCE and a 'From' column) · §5 Candidates · §6 Supported Conclusions. ⭐ Four tiers, declared and maintained.",
+ "gaps": [
+  {
+   "id": "G-F0009-A",
+   "⚠️ gap": "I-11 'this track is accumulating AIP-14 exposure' is rated Medium with the caveat 'iteration boundaries not audited here'",
+   "⭐ significance": "⭐ the file states the limit of its own weakest interpretation"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0009-01",
+   "⭐ finding": "⭐⭐ THE CORPUS NAMES ITS OWN FAILURE MODE AND COUNTS IT — 'PROPOSING BEFORE SEARCHING', n=5",
+   "detail": "A five-row table: the lifecycle 'missing' (ES-006.1 defines it) · placement policy 'missing' (ES-005.3) · maturity structure 'should exist' (ES-005.2 + R-37) · 'KnowledgeOS is a product so rules must change' (the DA already ruled) · ⭐ 'KnowledgeOS needs a strategic domain model' (§8 + ES-005.1/.3 + §7.2 + ES-006.1 already supply it).",
+   "⭐ consequence": "⭐⭐ This is the same failure this research recorded as C-0014 (P1 proposed beside Round38C-04) and repeated in its own canonical-discovery lapses. ⭐ The corpus diagnosed it at n=5 on 2026-08-02.",
+   "status": "⭐ RECORDED"
+  },
+  {
+   "id": "AUDIT-F0009-02",
+   "⭐ finding": "⭐ CAP-001's COUNTER CONFIRMS THE F0009 → F0001 ORDER",
+   "detail": "O-24: 'CAP-001's Capability Evidence Record holds four rows, ⭐ ZERO tool executions, ZERO decisions changed.' F0001 records 1 execution / 1 decision changed ('was 0/0').",
+   "⭐ consequence": "⭐ A third file joins the monotone-counter ordering: F0009 (0) · F0010 (0) · F0001 (1). ⚠️ NOTE: 'four rows' counts EVIDENCE rows, not executions — the two counters are distinct and must not be conflated.",
+   "status": "⭐ RESOLVED"
+  }
+ ],
+ "provenance_first_hand": [
+  "the 24 observations",
+  "the 12 interpretations with confidence",
+  "the six-cluster litmus test",
+  "OQ-K1..K6",
+  "the nine non-decisions"
+ ],
+ "provenance_second_hand": [
+  "⛔ every cited canon artifact, quoted"
+ ],
+ "negative_evidence": "⭐⭐ 'MISSING: nothing at the strategic level' is reached by answering all eight commission questions from committed canon and recording the ONE structural gap found (cross-product-research = PENDING). ⭐ The method — 'where canon does not answer, absence is recorded, never filled' — is declared up front.",
+ "multi_dimensional_confidence": {
+  "the eight answers": "⭐ HIGH — each cites canon",
+  "the propose-before-search pattern": "⭐ HIGH — 5 enumerated instances",
+  "I-11 AIP-14 exposure": "⚠️ MEDIUM — the file says so",
+  "the six clusters as responsibilities": "MEDIUM — candidates only"
+ },
+ "not_recoverable_without_reread": [
+  "Reference Model §8",
+  "the Product Discovery Charter",
+  "Strategic_DDD_Discovery_Engineering_Governance_Domain",
+  "the three brainstorming documents"
+ ]
+}

@@ -1,0 +1,11 @@
+{"name": "TEST P2 (ES-001.3 Governance Orientation Duty)",
+ "applicability": ["SOURCE-STATED", "SOURCE: ES-001.3 L82 'Companion: ES-006.1 — this is a repeated pattern'; commit 298db4609 'satisfies ES-006.1 as a repeated pattern'"],
+ "target": ["Engineering Standard", "READING: hosted in ES-001 (ES-00x standard series)"],
+ "rule": {"id": "ES-006.1", "prov": ["ARB", "2026-07-11"], "doc_status": "PROPOSED"},
+ "t_promote": "2026-08-16",
+ "trace": [
+  {"e": "NecessityEvidence", "label": "SOURCE", "quote": "adopted on implementation evidence, not on principle"},
+  {"e": "Promote", "label": "SOURCE", "authority": "ARB", "quote": "(ARB 2026-08-16)"},
+  {"e": "Refine", "label": "SOURCE", "authority": "ARB", "quote": "ARB 2026-08-16, same-day refinement"},
+  {"e": "Refine", "label": "SOURCE", "authority": "ARB", "quote": "ARB 2026-08-16, second same-day refinement"},
+  {"e": "Refine", "label": "SOURCE", "authority": "ARB", "quote": "corrected the same day by ARB act"}]}

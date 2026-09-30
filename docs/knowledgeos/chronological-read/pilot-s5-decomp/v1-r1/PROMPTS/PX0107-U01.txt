@@ -1,0 +1,50 @@
+You are an extraction agent in a non-production instrument-validation experiment (run PX0107-U01, batch PX0107, label knowledgeos-architecture-constitution-v01).
+Canary: CANARY-CF1A14EB71A1. Put it in the header line of every file you write.
+Files: S1022 (1 page), S1021 (2 pages), S1484 (3 pages). Read each file completely, every page, only through the paged reader, by running exactly these
+commands, one call per page:
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U01 --batch PX0107 --label knowledgeos-architecture-constitution-v01 --step 10 --page 1 S1022
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U01 --batch PX0107 --label knowledgeos-architecture-constitution-v01 --step 10 --page 1 S1021
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U01 --batch PX0107 --label knowledgeos-architecture-constitution-v01 --step 10 --page 2 S1021
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U01 --batch PX0107 --label knowledgeos-architecture-constitution-v01 --step 10 --page 1 S1484
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U01 --batch PX0107 --label knowledgeos-architecture-constitution-v01 --step 10 --page 2 S1484
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_read_source.py --run PX0107-U01 --batch PX0107 --label knowledgeos-architecture-constitution-v01 --step 10 --page 3 S1484
+You are given /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/SEGMENT-MAP.json (segments of these files; char offsets, pages, open_text).
+TOOL RULES (mechanically audited from your tool-call record; any other tool call invalidates the run):
+- Bash: only the exact commands listed in this prompt, copied character for character (each is complete and runs from
+  any directory); no pipes, no redirections, no other commands.
+- Read: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/SEGMENT-MAP.json, /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/FAILURES-PX0107-U01.json, your own output files, and files the harness itself saved from your own Bash outputs.
+- Write/Edit: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/OUT-PX0107-U01.jsonl, /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/OUT-PX0107-U01.repair.jsonl.
+- No other tools.
+Task: for EVERY segment of your files, write exactly one record to /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1-r1/OUT-PX0107-U01.jsonl:
+  either result PROPOSITIONS with every proposition the segment asserts, defines, exemplifies, hypothesises, asks,
+  corrects, contradicts, relates, cites or decides, or result NO-SUBSTANTIVE-PROPOSITION with a reason.
+Record schema, types, statuses and decline reasons: **Line 1:** header `{run_id, model_self_report, canary}`.
+
+**One record per segment:**
+`{segment_id, source_id, result ∈ {PROPOSITIONS, NO-SUBSTANTIVE-PROPOSITION}, reason (required if NO-SUBSTANTIVE), propositions: [...]}`
+
+**Proposition:**
+- `proposition_id`
+- `proposition_type` ∈ {DEFINITION, NOTATION, CLAIM, RULE, FORMULA, THEOREM-OR-RESULT, ALGORITHM, EXAMPLE, HYPOTHESIS, OPEN-QUESTION, CORRECTION, CONTRADICTION, RELATION, LINEAGE, GOVERNANCE, METHOD, SCOPE}
+- `statement` (own words)
+- `quote` (verbatim, inside the segment)
+- `status` ∈ {ASSERTED, EXAMPLE, HYPOTHETICAL, RETRACTED}
+- `parent_proposition` (id or null)
+- `relation_target` (for RELATION)
+- `explicit` (boolean, required for RELATION)
+- `first_occurrence` (id of an earlier proposition it repeats, or null)
+- `register_decision` ∈ {PROMOTE, DECLINE}
+- `decline_reason` ∈ {RESTATEMENT, EXAMPLE-ONLY, NON-MATERIAL, OUT-OF-LABEL-SCOPE} (required for DECLINE)
+
+There is **no "other" class**: off-scale values are schema violations.
+
+**Open-ended output (E1/E2):** header line as above, then `{item_id, source_id, statement, quote}`.
+
+Additions (V1.1/V1.2.1 §7): (1) every agent-authored file (outputs, repair files, clusters, decisions) starts with the header line {run_id, model_self_report, canary}; (2) duplicate proposition_id or item_id values are schema violations; there is no "other" class and off-scale values are schema violations.
+Rules: quote verbatim from inside the segment; quote formulas and notation exactly; link a repeated definition to its
+first occurrence; express nesting with parent_proposition; an implicit relation only as RELATION with explicit=false
+and the quote that implies it; multi-file claims are out of scope. Proposition ids must be unique.
+Line 1 of the output: {"run_id": "PX0107-U01", "model_self_report": "<your exact model id>", "canary": "CANARY-CF1A14EB71A1"}.
+You may check your output's schema with exactly this command:
+  python3 /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/scripts/p3b_v1_2_2_instrument.py validate --run PX0107-U01
+Finally report: pages read, segments written.

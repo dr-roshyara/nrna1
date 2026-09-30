@@ -1,0 +1,16 @@
+{
+ "prereg_commit": "773a40ffc5a7cf218aeea6f6399ba4636065533c",
+ "prereg_sha256": "279e510a2463ae8a03ba8bce3c4c9cdf0018c0efdf4453187d4719cf94d77df2",
+ "namespace": "PX0018 / pilot-s5-decomp/ob0018/",
+ "authority": "human: 'AUTHORIZE OB0018 PILOT EXECUTION under pre-registration 773a40ffc5a7cf218aeea6f6399ba4636065533c' with the accompanying scope text (2026-09-26); G-LOG-0079",
+ "accepted": [
+  "decomposition-fidelity pilot on one fixed control label / three-unit decomposition",
+  "local pilot evidence only; not population-level validation (FL-0/FL-1 only; FL-2 future)",
+  "the S5 reconstruction floor remains unchanged (R19)",
+  "production batch OB0018 remains PREPARED and is not modified",
+  "independent of Decision A",
+  "same-family auditor limitation; documented partial blindness",
+  "frozen pass/fail rules, provenance rules, integrity checks, stopping rules and statistical scope are not weakened during execution"
+ ],
+ "not_authorized": "S5 authorization, production reconstruction, theory inference, canonicalization, or any change to S5 architecture, binary policy, paging or schema"
+}

@@ -1,0 +1,194 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0007-RETROFIT-B1",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization 2026-09-23 — 31 admissible files, batches of 5",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0007-RETROFIT-B1. ⛔ Does not inherit or rely on the earlier prose-regime reading."
+ },
+ "⛔ theory_object_disposition": "⛔ Under O-1=A this unit touches only objects this file establishes. None are altered in this batch — gate evaluation follows.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0003",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Architecture_Synthesis_Matrix.md",
+ "sha256": "87696996d521",
+ "canonical_sequence_position": 3,
+ "lines_total": 124,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED' · 'Generated — never authoritative without human review'",
+ "source_document_kind": "⭐⭐ 'ARCHITECTURE SYNTHESIS — reconcile and classify EVERYTHING discovered; discover NOTHING.'",
+ "source_research_question": "⭐ 'Discovery creates candidates. Validation removes weak candidates. Reconciliation aligns. Synthesis produces the canonical model.'",
+ "reconstruction_question": "⛔ DISTINCT: does the classification hold, and does its REJECTED register contain findings this research later re-derived independently?",
+ "source_method_declared": "⭐⭐ THE DEFINITIONAL GUARD: \"'Canonical' means ADOPTED, FROZEN, RULED, or ENFORCED BY HUMANS — never 'validated by this programme'\" (R-34 · ES-004.1). ⭐ 'every row has exactly one bucket, one citation, and (where applicable) one gate.'",
+ "definitions": [
+  {
+   "term": "CANONICAL",
+   "def": "⛔ human-adopted only — never programme-validated"
+  },
+  {
+   "term": "CANDIDATE",
+   "def": "evidence-supported, awaiting ruling"
+  },
+  {
+   "term": "HYPOTHESIS",
+   "def": "plausible, insufficient evidence"
+  },
+  {
+   "term": "REJECTED",
+   "def": "falsified, with the falsifying pass cited"
+  }
+ ],
+ "assumptions": [
+  "a claim occupies exactly one bucket",
+  "the programme cannot confer canon on itself"
+ ],
+ "premises": [
+  "R-34",
+  "ES-004.1",
+  "AIP-14",
+  "ES-006.1"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. Counts only: 12 Canonical · 15 Candidate · 9 Hypothesis · 5 registers · 12 Rejected = 53 concerns.",
+ "derivations": [
+  {
+   "id": "DI-F0003-01",
+   "from": [
+    "53 concerns, each with one citation"
+   ],
+   "to": "a five-bucket classification with no stateless and no double-stated row",
+   "form": "⭐ EXHAUSTIVE_CLASSIFICATION",
+   "validity": "⭐ VALID"
+  },
+  {
+   "id": "DI-F0003-02",
+   "from": [
+    "12 rejected vs 15 candidate"
+   ],
+   "to": "⭐ 'the falsification record is as long as the candidate record — the discovery was real, not confirmatory'",
+   "form": "SELF_AUDIT_BY_RATIO",
+   "validity": "⭐ VALID AND NOTABLE"
+  }
+ ],
+ "conclusions": [
+  "⭐ all 12 Canonical rows are human-made — none minted by the programme",
+  "⛔ the programme's entire yield tops out at CANDIDATE",
+  "⭐ 'there is nothing left to discover that is not already a named open question with a named authority'"
+ ],
+ "dependencies": [
+  "AIP-14",
+  "GEP-F1",
+  "PGP-01..05",
+  "MC-01..08",
+  "Round47-00/OP",
+  "I-5 lint",
+  "EDM",
+  "R-1..R-77",
+  "DR-1..DR-8",
+  "Phase-02 six-context map",
+  "ES-006.1",
+  "RQ-002"
+ ],
+ "previous_related_files": "⛔ Cites ~20 commissions by name (Meta-Model Discovery, Ontology Discovery, Relationship Ontology = F0027, Relationship Validation = F0026, Architecture Validation Matrix REV 2 = F0002, MVK Bootstrap Validation, Mission Discovery, Phase B blind review…). ⚠️ Their content NOT_RECOVERABLE_WITHOUT_REREAD except where this file quotes it.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — this is the corpus's own consolidated statement of what it believes and what it has refuted.",
+ "architectural_role": "⭐⭐ KEYSTONE — the classification layer above every discovery commission.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the five-bucket classification",
+   "the definitional guard",
+   "the one-bucket/one-citation/one-gate rule"
+  ],
+  "⭐ corrected": [
+   "'one owner ⇒ one context' weakened to 'evidence against, insufficient alone'",
+   "'the space map is the real ownership map' downgraded finding → HYPOTHESIS (H-1, n=1)"
+  ],
+  "⛔ rejected (12)": [
+   "R-1 flat A–G list",
+   "R-2 Governance/Product as kinds",
+   "R-3 'Domains own Capabilities'",
+   "R-4 the single-stack hierarchy",
+   "R-5 'KnowledgeOS is the Core Domain'",
+   "R-6 the MVK 15-file boundary",
+   "⭐ R-7 'Two missions' / 'mission layer vacant'",
+   "⭐ R-8 '0 of 11 responsibilities enforcing'",
+   "⭐ R-9 '0 traversals' as a generalization (n≈3: R-36·R-41·R-63)",
+   "R-10 I-4 as falsified",
+   "R-11 a second EDM",
+   "R-12 'one owner ⇒ one context'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0026 (via K-4)",
+  "T-0027 (via H-5)",
+  "T-0005",
+  "T-0025"
+ ],
+ "sequential_graph_position": "canonical position 3; 2026-08-03",
+ "file_relationships": [
+  {
+   "to": "F0027",
+   "kind": "⭐ CONSUMES",
+   "note": "K-4 and K-5 cite Relationship Ontology"
+  },
+  {
+   "to": "F0026",
+   "kind": "CONSUMES",
+   "note": "H-5 cites Relationship Validation R-6"
+  },
+  {
+   "to": "F0002",
+   "kind": "CONSUMES",
+   "note": "K-12 cites Architecture Validation Matrix REV 2"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH — every row cites its commission.",
+ "derivation_completeness_audit": "⭐⭐ THE HIGHEST-VALUE FILE OF THE BATCH. Its REJECTED register contains findings this research later re-derived at cost.",
+ "gaps": [
+  {
+   "id": "G-F0003-A",
+   "⚠️ gap": "K-4 restates '11 invariants vs 8 choices' but qualifies it as '10 invariants survived cross-product projection; I-4 corrected to a lifecycle gap' — ⛔ the qualification lives in the CITING file, not in T-0026",
+   "⭐ significance": "⭐⭐ DIRECTLY RELEVANT to RO-0022"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0003-01",
+   "⭐ finding": "⭐⭐ K-4 CORROBORATES THE T-0026 QUALIFICATION — FROM A DIFFERENT FILE",
+   "detail": "K-4 reads: '11 invariant relationships vs 8 implementation choices (⭐ 10 invariants survived cross-product projection; ⭐ I-4 corrected to a lifecycle gap)'. ⭐ This is exactly the qualification C-0013/RO-0022 recorded against T-0026.",
+   "⚠️ RA-15 status, applied honestly": "⭐ SOURCE-SUPPORTED ✅ · RECONSTRUCTION-VALID ✅ · THEORY-CONSISTENT ✅ · ⛔ INDEPENDENTLY CORROBORATED — NO. F0003 cites 'Relationship Ontology' (= F0027) as one of K-4's three sources, so it TRANSMITS F0027 in part. ⚠️ It also cites 'Cross-Product Validation' and 'Lifecycle Gap Analysis', which F0027 does not — so it is MORE than pure transmission, but same programme, next day. ⛔ Not independence.",
+   "status": "RECORDED_NOT_RESOLVED"
+  },
+  {
+   "id": "AUDIT-F0003-02",
+   "⭐ finding": "⭐ THE REJECTED REGISTER CONTAINS THREE FINDINGS THIS RESEARCH LATER RE-DERIVED",
+   "detail": "⛔ R-7 rejects 'Two missions / mission layer vacant' — the v0.8 headline this research built from a withdrawn banner. ⛔ R-8 rejects '0 of 11 responsibilities enforcing'. ⛔ R-9 rejects '0 traversals' as a generalization, citing n≈3 (R-36·R-41·R-63) — this is C-0007.",
+   "⭐ consequence": "⭐⭐ F0003 is canonical position 3 and was read under the prose regime without its REJECTED register being extracted. ⛔ Reading it to §9 standard earlier would have pre-empted at least three later corrections.",
+   "⭐ method significance": "This is ACL-1 in the corpus's own material: a file whose value is a REGISTER OF NEGATIVES, easy to skim past.",
+   "status": "⭐ RECORDED"
+  }
+ ],
+ "provenance_first_hand": [
+  "the five-bucket tables",
+  "the bucket counts",
+  "the definitional guard"
+ ],
+ "provenance_second_hand": [
+  "⛔ every cited commission's content — quoted, not re-derived"
+ ],
+ "negative_evidence": "⭐⭐ THE CORPUS'S OWN NEGATIVE REGISTER — 12 explicitly falsified claims, each with its falsifying pass named. ⭐ This is the strongest form of negative evidence in the corpus: not 'we searched and found nothing' but 'this was believed and is refuted, by that pass'.",
+ "multi_dimensional_confidence": {
+  "the classification as a structure": "⭐ HIGH",
+  "each row's bucket": "MEDIUM — depends on its cited commission",
+  "the REJECTED register": "⭐ HIGH — each names its falsifier",
+  "K-4's '10 survived'": "MEDIUM — partly transmitted from F0027"
+ },
+ "not_recoverable_without_reread": [
+  "Cross-Product Validation",
+  "Lifecycle Gap Analysis",
+  "Meta-Model Discovery",
+  "Ontology Discovery",
+  "the Phase B blind review"
+ ]
+}

@@ -1,0 +1,799 @@
+{
+ "labels": "MODEL-DERIVED; development data only; no EMPIRICAL-RESULT",
+ "P-frame violations": [],
+ "P-frame-fit L205-A1 (FREEZE frame)": {
+  "alternative frame {standing} can express 'discovery stops'": false,
+  "M0 frame {regime} can express it": true
+ },
+ "P-reach / P-planes / P-rev": {
+  "G-R/force-insensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-R/force-sensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-K/force-insensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-K/force-sensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-O/force-insensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-O/force-sensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-E/force-insensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  },
+  "G-E/force-sensitive": {
+   "reachable_states": 288,
+   "adopted & not validated": [
+    "CREATE-NORM"
+   ],
+   "governance closed & execution open": [
+    "GOV-CLOSE"
+   ],
+   "execution closed (item without close transition)": null,
+   "LAPSE enabled from a reachable adopted state (reversibility)": true,
+   "REOPEN enabled from a reachable frozen state without contra": false
+  }
+ },
+ "P-gate-invariance (L205-A3)": {
+  "G-R": "gate invariant under RECLASSIFY",
+  "G-K": "RECLASSIFY CAN change the gate",
+  "G-O": "gate invariant under RECLASSIFY",
+  "G-E": "gate invariant under RECLASSIFY"
+ },
+ "P-markov (R-90 retired identifiers)": {
+  "markov": {
+   "holder only": false,
+   "holder + registry": true
+  },
+  "witness": {
+   "state": "none",
+   "trace_1": [],
+   "enabled_1": [
+    "ASSIGN"
+   ],
+   "trace_2": [
+    "ASSIGN",
+    "WITHDRAW"
+   ],
+   "enabled_2": []
+  }
+ },
+ "P-dev open world": {
+  "G-R/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-R/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-K/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-K/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-O/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-O/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-E/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-E/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  }
+ },
+ "P-dev closed-world sensitivity (unrecorded exception = none)": {
+  "G-R/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-R/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-K/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-K/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-O/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-O/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-E/force-insensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "CONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  },
+  "G-E/force-sensitive": {
+   "L493-A": "CONSISTENT",
+   "L493-B": "REASON-INCONSISTENT",
+   "P1": "CONSISTENT",
+   "R-39": "CONSISTENT",
+   "R-100": "CONSISTENT",
+   "P2": "CONSISTENT"
+  }
+ },
+ "P-dev P1 reading-conditional": {
+  "models REFUTED by P1 under each reading (exception closed to none)": {
+   "op=RAISE identity=observation effect=normative": [
+    "G-K/force-insensitive",
+    "G-O/force-insensitive"
+   ],
+   "op=RAISE identity=observation effect=epistemic": [
+    "G-E/force-insensitive",
+    "G-K/force-insensitive",
+    "G-O/force-insensitive"
+   ],
+   "op=RAISE identity=rule effect=normative": [
+    "G-O/force-insensitive"
+   ],
+   "op=RAISE identity=rule effect=epistemic": [
+    "G-E/force-insensitive",
+    "G-O/force-insensitive"
+   ],
+   "op=CREATE-NORM identity=observation effect=normative": [
+    "G-K/force-insensitive"
+   ],
+   "op=CREATE-NORM identity=observation effect=epistemic": [
+    "G-E/force-insensitive",
+    "G-K/force-insensitive"
+   ],
+   "op=CREATE-NORM identity=rule effect=normative": [],
+   "op=CREATE-NORM identity=rule effect=epistemic": [
+    "G-E/force-insensitive"
+   ]
+  }
+ },
+ "P-dist": {
+  "G-R/force-insensitive | G-R/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "PROMOTION",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "AMB"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-R/force-insensitive | G-K/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-insensitive"
+  },
+  "G-R/force-insensitive | G-K/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-insensitive"
+  },
+  "G-R/force-insensitive | G-O/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-insensitive"
+  },
+  "G-R/force-insensitive | G-O/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-insensitive"
+  },
+  "G-R/force-insensitive | G-E/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "epistemic",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-insensitive"
+  },
+  "G-R/force-insensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "epistemic",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-insensitive"
+  },
+  "G-R/force-sensitive | G-K/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-R/force-sensitive | G-K/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-R/force-sensitive | G-O/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-R/force-sensitive | G-O/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-R/force-sensitive | G-E/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "epistemic",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-R/force-sensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "epistemic",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-R/force-sensitive"
+  },
+  "G-K/force-insensitive | G-K/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "AMB"
+   },
+   "legal_under": "G-K/force-sensitive"
+  },
+  "G-K/force-insensitive | G-O/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "CREATE-NORM",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-O/force-insensitive"
+  },
+  "G-K/force-insensitive | G-O/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "AMB"
+   },
+   "legal_under": "G-O/force-sensitive"
+  },
+  "G-K/force-insensitive | G-E/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-insensitive"
+  },
+  "G-K/force-insensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-sensitive"
+  },
+  "G-K/force-sensitive | G-O/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "AMB"
+   },
+   "legal_under": "G-K/force-sensitive"
+  },
+  "G-K/force-sensitive | G-O/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "CREATE-NORM",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-O/force-sensitive"
+  },
+  "G-K/force-sensitive | G-E/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-insensitive"
+  },
+  "G-K/force-sensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-sensitive"
+  },
+  "G-O/force-insensitive | G-O/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "AMB"
+   },
+   "legal_under": "G-O/force-sensitive"
+  },
+  "G-O/force-insensitive | G-E/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-insensitive"
+  },
+  "G-O/force-insensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-sensitive"
+  },
+  "G-O/force-sensitive | G-E/force-insensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-insensitive"
+  },
+  "G-O/force-sensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "normative",
+    "exc": false,
+    "force": "IN"
+   },
+   "legal_under": "G-E/force-sensitive"
+  },
+  "G-E/force-insensitive | G-E/force-sensitive": {
+   "prefix": [],
+   "state": {
+    "standing": "none",
+    "evidence": 0,
+    "identity": "observation",
+    "regime": "open"
+   },
+   "invocation": {
+    "op": "RAISE",
+    "route": "RULING",
+    "auth": "named",
+    "effect": "epistemic",
+    "exc": false,
+    "force": "AMB"
+   },
+   "legal_under": "G-E/force-sensitive"
+  }
+ }
+}

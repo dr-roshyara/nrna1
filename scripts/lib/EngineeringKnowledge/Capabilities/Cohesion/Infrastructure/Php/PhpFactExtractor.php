@@ -9,7 +9,9 @@ use EngineeringKnowledge\Capabilities\Cohesion\Domain\BehaviourReference;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\DeclaredUnit;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\Determinability;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\FactSet;
+use EngineeringKnowledge\Capabilities\Cohesion\Domain\IndeterminateBehaviourReference;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\MethodFacts;
+use EngineeringKnowledge\Capabilities\Cohesion\Domain\MethodRole;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\QualifierKind;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\ReferenceMode;
 use EngineeringKnowledge\Capabilities\Cohesion\Domain\StateAccess;
@@ -38,6 +40,10 @@ use EngineeringKnowledge\Capabilities\Cohesion\Domain\UnitKind;
  */
 final class PhpFactExtractor
 {
+    /** PHP's own spelling for a lifecycle method. This adapter is the one place permitted
+     *  to know it — `Domain` consumes only the resulting `MethodRole`, never this name. */
+    private const PHP_LIFECYCLE_METHOD_NAMES = ['__construct', '__destruct'];
+
     /** Significant tokens: [kind, text]. */
     private array $sig = [];
 
@@ -277,6 +283,76 @@ final class PhpFactExtractor
         return $count - 1;
     }
 
+    /**
+     * OWD-10, 2026-09-28. `$fnIndex` points at the `T_FN` token itself. Skips the
+     * balanced `(params)` list, then an optional `: ReturnType` (any tokens before the
+     * arrow's own `=>` -- a return-type declaration never itself contains `=>`), then
+     * delegates to `findArrowFunctionBodyEnd()` for the body. Returns null only for
+     * malformed input (defensive; not expected for valid PHP).
+     */
+    private function findArrowFunctionBounds(int $fnIndex): ?int
+    {
+        $count = count($this->sig);
+        $i = $fnIndex + 1;
+        if (($this->sig[$i][0] ?? null) !== '(') {
+            return null;
+        }
+
+        $depth = 0;
+        for (; $i < $count; $i++) {
+            $kind = $this->sig[$i][0];
+            if ($kind === '(') {
+                $depth++;
+            } elseif ($kind === ')') {
+                $depth--;
+                if ($depth === 0) {
+                    $i++;
+                    break;
+                }
+            }
+        }
+
+        for (; $i < $count; $i++) {
+            if ($this->sig[$i][0] === T_DOUBLE_ARROW) {
+                return $this->findArrowFunctionBodyEnd($i);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * `$doubleArrowIndex` points at the arrow's own `=>`. An arrow function's body is a
+     * single EXPRESSION with no matching braces -- unlike `matchBrace()`, there is
+     * nothing to find and close. Instead: track bracket/paren depth from just after the
+     * `=>`; the body ends at the first comma/semicolon at depth 0 (an outer call's
+     * argument separator, or a statement terminator), or at the first closing
+     * `)`/`]`/`}` that would take depth negative (a bracket opened OUTSIDE the arrow
+     * function's own body, e.g. the enclosing call's closing paren) -- exactly where
+     * PHP's own parser considers the expression to end.
+     */
+    private function findArrowFunctionBodyEnd(int $doubleArrowIndex): int
+    {
+        $depth = 0;
+        $count = count($this->sig);
+
+        for ($i = $doubleArrowIndex + 1; $i < $count; $i++) {
+            $kind = $this->sig[$i][0];
+            if ($kind === '(' || $kind === '[' || $kind === '{' || $kind === T_CURLY_OPEN || $kind === T_DOLLAR_OPEN_CURLY_BRACES) {
+                $depth++;
+            } elseif ($kind === ')' || $kind === ']' || $kind === '}') {
+                if ($depth === 0) {
+                    return $i - 1;
+                }
+                $depth--;
+            } elseif ($depth === 0 && ($kind === ',' || $kind === ';')) {
+                return $i - 1;
+            }
+        }
+
+        return $count - 1;
+    }
+
     // -- 4 · identity (OQ-1: deterministic declaration path) ----------------
 
     /**
@@ -362,7 +438,8 @@ final class PhpFactExtractor
                 ? [[], []]
                 : $this->factsIn($brace, $end, $unit, $all);
 
-            $methods[] = new MethodFacts($name, $end !== null, $stateAccesses, $behaviourReferences);
+            $role = in_array($name, self::PHP_LIFECYCLE_METHOD_NAMES, true) ? MethodRole::Lifecycle : MethodRole::Ordinary;
+            $methods[] = new MethodFacts($name, $end !== null, $stateAccesses, $behaviourReferences, $role);
 
             if ($end !== null) {
                 // Skip the whole method body. BOTH its braces are skipped, so the
@@ -406,6 +483,40 @@ final class PhpFactExtractor
 
             [$kind, $text] = $this->sig[$i];
 
+            // A nested closure has its own local scope; its own $this references
+            // belong to it, not to this method (OWD-5, KOS-PYTHON-RULE-VALIDATION,
+            // 2026-09-27; confirmed symmetric with the Python adapter's identical gap,
+            // grounded in the same real-corpus evidence). Skip its entire body range,
+            // mirroring exactly how methodsOf() skips a declared method's own body.
+            if ($kind === T_FUNCTION) {
+                $brace = $this->findBodyBrace($i + 1);
+                if ($brace !== null && $brace <= $to) {
+                    $end = $this->matchBrace($brace);
+                    if ($end <= $to) {
+                        $i = $end;
+                        continue;
+                    }
+                }
+            }
+
+            // An arrow function (`fn(...) => expr`, OWD-10, 2026-09-28) is the SAME
+            // closure semantics OWD-5 already fixed for `function(){}` -- but its body
+            // is a single EXPRESSION with no matching braces, so `findBodyBrace()`/
+            // `matchBrace()` cannot be reused directly. `findArrowFunctionBounds()`
+            // tracks bracket/paren depth from the arrow's own `=>` and stops at the
+            // first comma/semicolon/closing-bracket that belongs to an OUTER context
+            // (an enclosing call's argument separator or closing paren, a statement
+            // terminator) -- exactly where PHP's own parser considers the expression to
+            // end. Grounded in this project's own real code (`app/`): 298 occurrences,
+            // 57 referencing `$this->` on the same line.
+            if ($kind === T_FN) {
+                $end = $this->findArrowFunctionBounds($i);
+                if ($end !== null && $end <= $to) {
+                    $i = $end;
+                    continue;
+                }
+            }
+
             // $this-> / $this?->  — also how interpolation surfaces (NEW-6)
             if ($kind === T_VARIABLE && self::fold($text) === '$this'
                 && isset($this->sig[$i + 1], $this->sig[$i + 2])
@@ -433,6 +544,21 @@ final class PhpFactExtractor
                 continue;
             }
 
+            // $this->$method(...)  — D-1 (2026-09-28): the receiver is known ($this,
+            // denotes the analysed unit) but the method NAME is a variable, not a
+            // literal — the T_STRING guard above cannot match this, and no legal name
+            // exists to record (INV-L3-5/INV-4/INV-L3-7). Confirmed language-general,
+            // identical Python case: `getattr(self, name)()` (extract_facts.py).
+            if ($kind === T_VARIABLE && self::fold($text) === '$this'
+                && isset($this->sig[$i + 1], $this->sig[$i + 2], $this->sig[$i + 3])
+                && in_array($this->sig[$i + 1][0], [T_OBJECT_OPERATOR, T_NULLSAFE_OBJECT_OPERATOR], true)
+                && $this->sig[$i + 2][0] === T_VARIABLE
+                && $this->sig[$i + 3][0] === '(') {
+                $behaviourReferences[] = new IndeterminateBehaviourReference();
+                $i += 2;
+                continue;
+            }
+
             // <qualifier> :: name (  — the same relationship reached through the class
             if (($this->sig[$i + 1][0] ?? null) === T_DOUBLE_COLON
                 && ($this->sig[$i + 2][0] ?? null) === T_STRING
@@ -448,6 +574,32 @@ final class PhpFactExtractor
                         AccessMode::Direct,
                         $determinability,
                     );
+                    $i += 2;
+                }
+            }
+
+            // <qualifier> :: $variable  — a class-level property, not a call (R5,
+            // KOS-PYTHON-RULE-VALIDATION, 2026-09-27). Scope held to exactly what was
+            // measured: self/static/the unit's own unqualified name. Deliberately NOT
+            // extended to `parent::` (out of frame, same policy as parent::method()),
+            // aliased spellings (stated limitation, same policy as aliased method
+            // calls), or qualified/fully-qualified names (untested, not authorized) —
+            // `classifyQualifier()` still computes them, but only three resulting kinds
+            // are honoured here. A `(` after the variable is a DYNAMIC call through a
+            // variable holding a method name (`self::$m()`) — genuinely indeterminate,
+            // matching D-1's existing boundary, not a property read.
+            if (($this->sig[$i + 1][0] ?? null) === T_DOUBLE_COLON
+                && ($this->sig[$i + 2][0] ?? null) === T_VARIABLE
+                && ($this->sig[$i + 3][0] ?? null) !== '(') {
+                $qualifier = $this->classifyQualifier($kind, $text, $unit);
+                if ($qualifier !== null) {
+                    [$qualifierKind, $relation] = $qualifier;
+                    $isOwnState = $qualifierKind === QualifierKind::SelfKeyword
+                        || $qualifierKind === QualifierKind::StaticKeyword
+                        || ($qualifierKind === QualifierKind::UnqualifiedName && $relation === TargetUnitRelation::DenotesAnalysedUnit);
+                    if ($isOwnState) {
+                        $stateAccesses[] = new StateAccess(ltrim($this->sig[$i + 2][1], '$'), AccessMode::Direct);
+                    }
                     $i += 2;
                 }
             }

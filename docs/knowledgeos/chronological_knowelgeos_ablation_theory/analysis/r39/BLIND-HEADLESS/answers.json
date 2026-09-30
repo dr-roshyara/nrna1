@@ -1,0 +1,171 @@
+{
+  "declaration": "I, Claude Opus 5.5 (model id claude-opus-5-5), headless Claude Code session in a non-git directory; same model family as the requesting session (SECONDARY_REVIEW), answered these questions using only the two files in this bundle. Before reading, I had no access to any report, analysis, answer or discussion about R-39 or about the formal model.",
+  "answers": [
+    {
+      "q": 1,
+      "answer": "On 2026-07-26 the Decision Authority approved an early promotion of the DDD Tactical Governance Principles to the Engineering Platform, recorded as ruling R-39, a 'governance exception'. The approval was based on evidence from one bounded context, although the normal promotion rule requires evidence from more than one. The principles were placed in engineering/knowledge/methodology/ with a PublicDigit binding and a runtime hook (AST-014). The rulings log records the effect as 'Early promotion recorded as explicit exception; promotion rule intact'.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "R-39 | 2026-07-26 | **Governance exception — early promotion of the DDD Tactical Governance Principles to the Engineering Platform.**"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "The Decision Authority approved promotion on 2026-07-26 with evidence from ONE context (PublicDigit Adjudication/Determination, EPIC-004D..K)."},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "Early promotion recorded as explicit exception; promotion rule intact"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 4, "quote": "**Status:** ADOPTED (explicit Decision Authority ruling, 2026-07-26). **Early promotion is a recorded governance exception — see ruling R-39**"}
+      ],
+      "ambiguity": null
+    },
+    {
+      "q": 2,
+      "answer": "The normal promotion rule is ES-006.1 together with the EPIC-004 track's own self-governance. That self-governance says principles are promoted only on repeated evidence and are explicitly NOT promoted when the evidence is domain-specific. Per the ruling, the rule requires evidence from more than one bounded context. The text of ES-006.1 itself is not included in the source.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "The normal promotion rule (ES-006.1 + the EPIC-004 track's own self-governance: *\"principles are promoted only on repeated evidence and explicitly NOT promoted when evidence is domain-specific\"*) requires evidence from more than one bounded context."},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 24, "quote": "changes enter only through operational evidence via the ES-006.1 promotion ladder"}
+      ],
+      "ambiguity": "The source does not reproduce ES-006.1. 'More than one bounded context' is how R-39 summarizes the combined rule. It is not stated whether that requirement comes from ES-006.1 itself or only from the EPIC-004 self-governance clause."
+    },
+    {
+      "q": 3,
+      "answer": "Evidence from one bounded context: PublicDigit Adjudication/Determination, EPIC-004D..K. OBJ-2 calls this the 'first adoption evidence'; the demonstrations and per-principle provenance are kept in the PublicDigit binding, which is not in the bundle. The DA's stated reason is an argument about the principles' form, not further evidence: no project-specific term appears in any statement.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "with evidence from ONE context (PublicDigit Adjudication/Determination, EPIC-004D..K)"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "**Reason:** the seven principles are generalized methodology by construction (no project-specific term appears in any statement)"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 63, "quote": "minted in PublicDigit EPIC-004D..K (first adoption evidence — demonstrations and per-principle provenance live in the PublicDigit binding)"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 4, "quote": "rationale, evidence base (one context), and expected validation live there"}
+      ],
+      "ambiguity": "Two readings of the 'generalized by construction' reason: (a) a justification for granting an exception even though the evidence is insufficient; (b) an argument that the evidence is not 'domain-specific' in the sense of the self-governance clause. The source calls the act an exception and says the >1-context requirement was not met, which favours (a). The source does not say whether the stated reason counts as evidence."
+    },
+    {
+      "q": 4,
+      "answer": "The Decision Authority approved the promotion and made the ruling. OBJ-2 also says the ARB ratified the principles as permanent governance on 2026-07-26, and that the Decision Authority promoted them to the Engineering Platform by explicit ruling the same day. The Decision Authority is named as the module's owner. R-39 is entered in the ARB-owned rulings register.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "The Decision Authority approved promotion on 2026-07-26"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "the DA ruled the generalized rule belongs in `engineering/` with a corresponding runtime hook"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 63, "quote": "ratified as permanent governance by the ARB 2026-07-26; promoted to the Engineering Platform by explicit Decision Authority ruling the same day"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 3, "quote": "**Owner:** Decision Authority"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 3, "quote": "**Owner:** Architecture Review Board"}
+      ],
+      "ambiguity": "The source does not define how the Decision Authority relates to the ARB (same body, a member, or a separate role). OBJ-2 names two acts: ARB ratification 'as permanent governance' and a DA promotion ruling. OBJ-1 names only the DA. It is unclear which act granted the exception."
+    },
+    {
+      "q": 5,
+      "answer": "no",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "the multi-context bar continues to apply to FUTURE methodology promotions — this exception does not weaken the rule."},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "Early promotion recorded as explicit exception; promotion rule intact"}
+      ],
+      "ambiguity": "The source explicitly says the rule was not changed. Whether an exception granted under the rule is itself a change to the rule in practice is not discussed beyond the statement 'does not weaken the rule'."
+    },
+    {
+      "q": 6,
+      "answer": "yes. The source calls it a 'governance exception' and an 'explicit exception' for the early promotion of this one module, the DDD Tactical Governance Principles.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "**Governance exception — early promotion of the DDD Tactical Governance Principles to the Engineering Platform.**"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "Early promotion recorded as explicit exception"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 4, "quote": "**Early promotion is a recorded governance exception — see ruling R-39**"}
+      ],
+      "ambiguity": "The source never uses the phrase 'set aside'. It uses 'exception'. The item is one module that contains seven principles, so 'one item' may mean either the module or the seven principles."
+    },
+    {
+      "q": 7,
+      "answer": "yes. The rule requires evidence from more than one bounded context, and promotion was approved with evidence from ONE context.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "requires evidence from more than one bounded context. The Decision Authority approved promotion on 2026-07-26 with evidence from ONE context"}
+      ],
+      "ambiguity": "The source never says in so many words that 'the bar was not satisfied'. That follows from putting the '>1 context' requirement next to the 'ONE context' evidence, and from the word 'exception'. Under reading (b) in q3, someone could argue the domain-specific clause was not triggered. Even so, the source's own summary of the requirement ('more than one bounded context') is still not met."
+    },
+    {
+      "q": 8,
+      "answer": "Unspecified. The source does not call the decision prospective or retroactive. Approval, ruling and register entry all carry the same date (2026-07-26). The only temporal statement is forward-looking and concerns the rule: the multi-context bar continues to apply to FUTURE promotions. Validation is also expected in the future (see q9).",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "| R-39 | 2026-07-26 |"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "The Decision Authority approved promotion on 2026-07-26"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "the multi-context bar continues to apply to FUTURE methodology promotions"}
+      ],
+      "ambiguity": "Possible readings: (a) the exception takes effect from 2026-07-26 for this promotion; (b) it records, the same day, a promotion that had already been decided. OBJ-2 line 63 says 'promoted ... by explicit Decision Authority ruling the same day' as the ARB ratification. The source does not settle which reading is right."
+    },
+    {
+      "q": 9,
+      "answer": "yes. Validation is expected from a future event: the next bounded context that adopts the module will either confirm the principles or produce amendment evidence. The source calls this 'Expected validation'. It does not use the word 'deferred', and it states no consequence if confirmation never comes.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "**Expected validation:** the next bounded context that adopts the module either confirms the principles or produces the amendment evidence"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 4, "quote": "rationale, evidence base (one context), and expected validation live there"}
+      ],
+      "ambiguity": "It is unclear whether the expected validation is a condition of the promotion (conditional or provisional promotion) or just an expectation. The status is 'ADOPTED' (OBJ-2 line 3–4) and no revocation mechanism is stated."
+    },
+    {
+      "q": 10,
+      "answer": "The multi-context bar continues to apply to FUTURE methodology promotions, and this exception does not weaken the rule.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "the multi-context bar continues to apply to FUTURE methodology promotions — this exception does not weaken the rule."}
+      ],
+      "ambiguity": "The statement covers 'methodology promotions'. The source does not say whether it also covers other kinds of promotion (e.g. ES-006.1 promotions in general)."
+    },
+    {
+      "q": 11,
+      "answer": "Governance acts: (i) Decision Authority approval and ruling on the promotion (OBJ-1 l.25; OBJ-2 l.4, l.63); (ii) ARB ratification 'as permanent governance' (OBJ-2 l.63); (iii) recording of the exception in the rulings register (OBJ-1 l.25); (iv) registration in ES-006 (OBJ-2 l.63). Evidential events: (i) the existing evidence from one context, EPIC-004D..K, described as 'first adoption evidence' (OBJ-1 l.25; OBJ-2 l.63). No new evidential event is described as happening at R-39. (ii) A future evidential event is expected: adoption by the next bounded context (OBJ-1 l.25); it has not happened yet. Work: (i) placing the canonical document in engineering/knowledge/methodology/, the PublicDigit binding file, and the runtime hook AST-014 (.claude/scripts/ddd-principles-reminder.sh) (OBJ-1 l.25; OBJ-2 l.7). Other: the DA's reasoning that classifies the principles as 'generalized methodology by construction' (OBJ-1 l.25). This is a stated rationale, not evidence and not work.",
+      "class": "SOURCE FACT",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "The Decision Authority approved promotion on 2026-07-26 with evidence from ONE context (PublicDigit Adjudication/Determination, EPIC-004D..K)."},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "the DA ruled the generalized rule belongs in `engineering/` with a corresponding runtime hook"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "**Expected validation:** the next bounded context that adopts the module either confirms the principles or produces the amendment evidence"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "Canonical home: `engineering/knowledge/methodology/DDD_Tactical_Governance_Principles.md` · PublicDigit binding: `docs/architecture/governance/DDD_PRINCIPLES.md` (binding-only, never a second copy) · runtime: AST-014."},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "**Reason:** the seven principles are generalized methodology by construction (no project-specific term appears in any statement)"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 7, "quote": "Runtime enforcement: `.claude/scripts/ddd-principles-reminder.sh` (AST-014, non-blocking reminder)."},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 63, "quote": "minted in PublicDigit EPIC-004D..K (first adoption evidence — demonstrations and per-principle provenance live in the PublicDigit binding); ratified as permanent governance by the ARB 2026-07-26; promoted to the Engineering Platform by explicit Decision Authority ruling the same day"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 63, "quote": "Registered in ES-006."}
+      ],
+      "ambiguity": "Sorting these into GOV / EVID / WORK kinds is my own classification; the source does not use these labels. The source gives no order among the acts beyond 'the same day'. Minting the principles in EPIC-004D..K could count as work or as evidence generation (or both)."
+    },
+    {
+      "q": 12,
+      "answer": "cannot be determined. Reading A: if u is taken to be the ordinary bar (>1 bounded context), the source explicitly says the rule was not changed ('promotion rule intact', 'does not weaken the rule'). Then u' = u and there is no contradiction with A6. The price is that promotion happened with e ∉ u, which is a mismatch with Promote (see q13). Reading B: if the exception is modelled as a change to the bar for this one item (u extended to admit one-context evidence, then restored), that step has u' ≠ u and contradicts A6. That reading goes against the source's own statement that the rule stayed intact. The source does not fix the modelling, so which reading applies cannot be determined from the source alone.",
+      "class": "FORMAL INTERPRETATION",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "this exception does not weaken the rule."},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "Early promotion recorded as explicit exception; promotion rule intact"}
+      ],
+      "ambiguity": "Two readings as described. On the source's literal wording (bar unchanged), A6 is not contradicted. The contradiction appears only if the exception is modelled as a change to u."
+    },
+    {
+      "q": 13,
+      "answer": "No, not as stated. The source describes promotion granted by a governance act (read as g = 1) while the ordinary bar (>1 bounded context) was not met (read as e ∉ u, where u is the ordinary bar). Promote(x) ⟺ e ∈ u ∧ g = 1 would require e ∈ u, so the historical event (promotion with g = 1 and e ∉ u) does not fit the biconditional. It could be made to fit only by changing something the source does not describe: (a) treating u as including the exception, which would be a per-item change to the bar that conflicts with 'promotion rule intact' and with A6 (q12, Reading B); (b) treating e as satisfying u because of the 'generalized by construction' argument, which conflicts with the source's calling the act an exception; or (c) treating 'promotion' at R-39 as something other than Promote in the model. The source supports none of these, and per the rules I do not adopt any of them.",
+      "class": "FORMAL INTERPRETATION",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "requires evidence from more than one bounded context. The Decision Authority approved promotion on 2026-07-26 with evidence from ONE context"},
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "Early promotion recorded as explicit exception; promotion rule intact"},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 3, "quote": "**Status:** ADOPTED (explicit Decision Authority ruling, 2026-07-26)."}
+      ],
+      "ambiguity": "Mapping 'ordinary promotion rule' to u, 'DA approval' to g = 1, and 'ADOPTED/promoted' to a Promote state is my own interpretation. The source does not define e, g or u."
+    },
+    {
+      "q": 14,
+      "answer": "D1: cannot be determined. On the literal source reading, the event did not reach e ∈ u. It reached promotion while e ∉ u, so it does not show a GOV-only trajectory reaching e ∈ u and does not directly contradict D1. It would bear on D1 (as a counterexample) only if the exception were modelled as putting the item into e ∈ u through a governance act alone. The source does not describe that, and it states no new evidential event at R-39. D3: cannot be determined. D3 is about trajectories that reach a Promote state from e ∉ u, g = 0. The event does include at least one governance act (DA approval, ARB ratification). There is existing evidence (EPIC-004D..K), but the source does not say whether an evidential step happened inside the trajectory or before it, and it gives no step order. And if promotion here happened with e ∉ u (q13), the end state is not a Promote state in the formal sense, so D3's premise is not clearly met.",
+      "class": "FORMAL INTERPRETATION",
+      "anchors": [
+        {"file": "OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "line": 25, "quote": "The Decision Authority approved promotion on 2026-07-26 with evidence from ONE context (PublicDigit Adjudication/Determination, EPIC-004D..K)."},
+        {"file": "OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "line": 63, "quote": "minted in PublicDigit EPIC-004D..K (first adoption evidence — demonstrations and per-principle provenance live in the PublicDigit binding); ratified as permanent governance by the ARB 2026-07-26; promoted to the Engineering Platform by explicit Decision Authority ruling the same day"}
+      ],
+      "ambiguity": "Both answers depend on the unresolved modelling choice from q12/q13, and on the missing order of steps in the source."
+    },
+    {
+      "q": 15,
+      "answer": "q1–q11: SOURCE FACT. They report what the files state; my classification of operation kinds in q11 is noted in its ambiguity field. q12, q13, q14: FORMAL INTERPRETATION, because they map the source onto the §1 definitions.",
+      "class": "FORMAL INTERPRETATION",
+      "anchors": [],
+      "ambiguity": "q15 is a meta-answer about classification, labelled FORMAL INTERPRETATION only because the schema requires a class. q7 and q8 are marked SOURCE FACT but rely on putting stated sentences side by side; this is recorded in their ambiguity fields."
+    }
+  ],
+  "read_log": [
+    {"file": "README.md", "sha256": "verified OK via BUNDLE.sha256", "complete": true},
+    {"file": "objects/OBJ-1_ADR-AIP-LOG-Platform-Rulings_668cc7b22.md", "sha256": "5bb384af65cc5d8b19760ef168e7d5d3a9db9a67e75a148e16ad4445f080b005", "lines": 25, "complete": true},
+    {"file": "objects/OBJ-2_DDD_Tactical_Governance_Principles_668cc7b22.md", "sha256": "45780fd5dfe920a98f7260e94ad5b06e22029b45b0ed3758002c8462c41948b9", "lines": 63, "complete": true}
+  ]
+}

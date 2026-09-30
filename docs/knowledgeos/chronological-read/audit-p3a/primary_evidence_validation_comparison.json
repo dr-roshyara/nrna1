@@ -1,0 +1,124 @@
+{
+ "n": 100,
+ "population": 1104,
+ "fidelity_counts": {
+  "MISREPRESENTED": 1,
+  "FAITHFUL_PARAPHRASE": 31,
+  "VERBATIM": 60,
+  "PARTIAL": 8
+ },
+ "support_counts": {
+  "STRONG_IMPLICIT_RELATIONSHIP": 23,
+  "EXPLICIT_RELATIONSHIP": 63,
+  "WEAK_INFERENCE": 8,
+  "NO_RELATIONSHIP": 6
+ },
+ "strength_counts": {
+  "E2": 21,
+  "E3": 22,
+  "E1": 14,
+  "E4": 43
+ },
+ "type_counts": {
+  "REFINEMENT": 17,
+  "EXTENSION": 31,
+  "INDEPENDENT": 4,
+  "SPECIALIZATION": 2,
+  "ONTOLOGY-GAP": 7,
+  "DERIVED-FROM": 6,
+  "null/none": 14,
+  "CONTINUATION": 18,
+  "SAME": 1
+ },
+ "failure_mode_counts": {
+  "F3": 6,
+  "F5": 14,
+  "F4": 7,
+  "F2": 19,
+  "F1": 2
+ },
+ "provenance_concerns": 0,
+ "already_judged_n": 13,
+ "never_pair_n": 87,
+ "agree": 4,
+ "disagree": 9,
+ "false_unwitnessed": 6,
+ "unwitnessed_judged_n": 6,
+ "ontology_gap_cases": 7,
+ "validated_relationships_n": 86,
+ "misses": 82,
+ "disagreement_detail": [
+  {
+   "pv_id": "PV0007",
+   "p3a_pair_id": "RP1384",
+   "existing_relationship": "EXTENSION",
+   "validated_relationship": "DERIVED-FROM",
+   "validated_support": "STRONG_IMPLICIT_RELATIONSHIP",
+   "validated_strength": "E2"
+  },
+  {
+   "pv_id": "PV0025",
+   "p3a_pair_id": "RP0530",
+   "existing_relationship": "UNWITNESSED",
+   "validated_relationship": "CONTINUATION",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E4"
+  },
+  {
+   "pv_id": "PV0026",
+   "p3a_pair_id": "RP0521",
+   "existing_relationship": "UNWITNESSED",
+   "validated_relationship": "EXTENSION",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E4"
+  },
+  {
+   "pv_id": "PV0033",
+   "p3a_pair_id": "RP0526",
+   "existing_relationship": "SAME",
+   "validated_relationship": "EXTENSION",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E4"
+  },
+  {
+   "pv_id": "PV0049",
+   "p3a_pair_id": "RP0417",
+   "existing_relationship": "UNWITNESSED",
+   "validated_relationship": "EXTENSION",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E3"
+  },
+  {
+   "pv_id": "PV0059",
+   "p3a_pair_id": "RP1337",
+   "existing_relationship": "UNWITNESSED",
+   "validated_relationship": "CONTINUATION",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E4"
+  },
+  {
+   "pv_id": "PV0066",
+   "p3a_pair_id": "RP0532",
+   "existing_relationship": "UNWITNESSED",
+   "validated_relationship": "REFINEMENT",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E4"
+  },
+  {
+   "pv_id": "PV0078",
+   "p3a_pair_id": "RP1109",
+   "existing_relationship": "EXTENSION",
+   "validated_relationship": "DERIVED-FROM",
+   "validated_support": "EXPLICIT_RELATIONSHIP",
+   "validated_strength": "E3"
+  },
+  {
+   "pv_id": "PV0087",
+   "p3a_pair_id": "RP1635",
+   "existing_relationship": "UNWITNESSED",
+   "validated_relationship": "EXTENSION",
+   "validated_support": "STRONG_IMPLICIT_RELATIONSHIP",
+   "validated_strength": "E2"
+  }
+ ]
+}

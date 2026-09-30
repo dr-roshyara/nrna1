@@ -1,0 +1,81 @@
+{
+  "pair_exists_reviewer": false,
+  "pair_exists_note": "The candidate is Q=A2 (R-89 put forward and refused) and P=A3 (R-90 issued), on the same ruling. It is not a strict witness. P's prior state is UNK. Q is a proposal-stage act and P is an issuance-stage act. The proposer of Q is UNK. P causally depends on Q. The actor's knowledge differs between the two. Q is attested only inside P's own row. Only Q has a stated reason.",
+  "separating_variable_reviewer": "Prior registration of the number: whether a filed row already holds it ('R-89 WAS ALREADY TAKEN'). On this evidence it cannot be told apart from 'retired, not recycled'. Both rules predict Q's refusal. No case where they come apart is attested. The source justifies retirement by 'exactly the one-number-two-decisions defect caught at R-89', and a retained withdrawn row still holds its number. The underlying rule is probably 'a filed number is never reused'. A's claim that the two are 'not the same variable' is not established.",
+  "clusters_reviewer": 1,
+  "clusters_note": "P and Q are the two halves of the single 'NUMBERING CORRECTION RECORDED AT ISSUE' decision. The R-89 row corroborates Q's prior state but is not a decision on the contrast. The retirement annotation is later but dependent: it cites 'the one-number-two-decisions defect caught at R-89'.",
+  "verdict": "POSSIBLE",
+  "strongest_alternative": "A clerical self-correction. The ARB Chief drafted the ruling as the assumed next number, R-89, found the collision at filing, and issued it as R-90 with a note. That is one act, not a proposal and a refusal. Retirement then applies the same 'filed number is never reused' rule. Under this reading the verdict would be NONE.",
+  "disagreements": [
+    {
+      "id": "D1",
+      "class": "coding",
+      "point": "Class of A4 (R-90 retired)",
+      "answer": "NORM-STATEMENT",
+      "reviewer": "UNCLEAR, or outside the assignment-act list. A NORM-STATEMENT has 'no particular act', but A4 is a particular act on a named identifier, and it is not an assignment act."
+    },
+    {
+      "id": "D2",
+      "class": "coding",
+      "point": "Class of A5 ('The next ruling is R-91.')",
+      "answer": "NORM-STATEMENT (or UNCLEAR)",
+      "reviewer": "UNCLEAR. It is a pointer or reservation, and it states no rule."
+    },
+    {
+      "id": "D3",
+      "class": "source interpretation",
+      "point": "Whether 'put forward as R-89' is a real proposed act",
+      "answer": "A proposal by an unknown actor, refused (ACT-REFUSED)",
+      "reviewer": "It meets ACT-REFUSED by the letter: put forward, not used, reason stated. But it is a passive, retrospective description inside the issuing row. 'Recorded rather than silently renumbered' points to the issuer correcting their own draft label, not to one party refusing another's proposal."
+    },
+    {
+      "id": "D4",
+      "class": "evidence scope",
+      "point": "Norms about numbering that A left out",
+      "answer": "Withdrawal excluded as a status change; implied norms folded into reasons",
+      "reviewer": "Also record: 'The register holds constitutional decisions, not operational acceptance' (a rule on which rulings get a number, and the ground for withdrawing R-90's assignment); the implied 'one number, one decision' rule; and 'recorded rather than silently renumbered' (a rule on how corrections are made)."
+    },
+    {
+      "id": "D5",
+      "class": "formal reasoning",
+      "point": "Differences between P and Q",
+      "answer": "Unknown P state, unknown actor, one correction event",
+      "reviewer": "Also missed: proposal vs issuance stage; the actor's knowledge of the collision; evidence modality (Q exists only inside P's row); a stated reason only on Q; and later withdrawal of P. Being 'not two independent acts' is an independence criterion, not a confound."
+    },
+    {
+      "id": "D6",
+      "class": "substantive",
+      "point": "Whether the separating variable is distinct from 'retired, not recycled'",
+      "answer": "Occupancy, not the same variable (though related)",
+      "reviewer": "Distinctness is not established. The pair cannot separate occupancy from 'ever filed', and the source ties retirement to 'exactly' the same defect. On these rows they are best read as one rule."
+    },
+    {
+      "id": "D7",
+      "class": "source interpretation",
+      "point": "R-89 described as a 'live' ruling (ANSWER.md)",
+      "answer": "Live ruling vs withdrawn ruling",
+      "reviewer": "R-89 is 'PREPARED, NOT ADOPTED', the same status R-90 had before withdrawal. Only 'not withdrawn in these rows' is supported."
+    },
+    {
+      "id": "D8",
+      "class": "wording",
+      "point": "Elided quotes (A3 reason_quote, A4 prior_state_quote)",
+      "answer": "Parts joined with '...'",
+      "reviewer": "Faithful, not fabricated. The ellipses span several sentences, so they should be marked as elided or quoted separately."
+    },
+    {
+      "id": "D9",
+      "class": "independence",
+      "point": "Status of the retirement annotation",
+      "answer": "A separate, later cluster",
+      "reviewer": "Later but dependent: it explicitly cites the R-89 collision and sits in the same row on the same day. It adds no independent cluster, so the count stays at 1."
+    }
+  ],
+  "agreements": [
+    "All quotes are faithful to SOURCES.md; none are fabricated",
+    "A1 and A3 are ACT-PERFORMED; A2 is ACT-REFUSED by the letter",
+    "Every prior state is correctly marked as stated (A2, A4) or inferred/UNK (A1, A3, A5)",
+    "pair.exists = false under the strict reading",
+    "clusters = 1"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+ "prereg_commit": "c9cfd8f568a250a06563fe9b8c3b6496b4d3ac18",
+ "prereg_sha256": "4d899d867dc762205a7e5eab74ab9d1f534730c772e984416f1010aa33e19650",
+ "namespace": "PX0109 / pilot-s5-decomp/v1-r3/",
+ "authority": "human: 'AUTHORIZE V1.2.4 EXECUTION under pre-registration c9cfd8f568a250a06563fe9b8c3b6496b4d3ac18' with the confirmations below (2026-09-26); G-LOG-0075",
+ "prior_runs": "PX0106 ended RUN-INVALID (G-LOG-0071); PX0107 and PX0108 were prepared only; PX0109 is independent evidence",
+ "f13_conditions": [
+  "the V1.2.4 outcome is an instrument-validation result only",
+  "the proposition taxonomy (pre-registration §7) is experimental vocabulary, not v3.5/P3b types; it does not conform to v3.5 B2 and is not adopted by executing V1.2.4",
+  "no Master Protocol v3.5 or P3b v1.7 obligation changes",
+  "any adoption of the instrument into P3b requires a separate P3b §26 revision"
+ ],
+ "accepted": [
+  "A-2: MATERIAL-UNTESTED / CONSERVATIVE-RUN-INVALID (an unobserved message form makes the run RUN-INVALID)",
+  "the documented conservative false-FAIL exposure (pre-registration §0.0000)",
+  "the residual trust assumptions (pre-registration §21)"
+ ],
+ "execution_constraints": "execute the 13 frozen steps exactly; no redesign, optimization, repair, reinterpretation or re-dispatch during execution; stop immediately on any §18 condition and preserve evidence; classify only by §17; then stop",
+ "not_authorized": "OB0018, S5, P3b changes, production use, theory reconstruction or any subsequent research stage",
+ "independence": "this authorization neither requires nor implies Decision A (S-Series architecture governance)"
+}

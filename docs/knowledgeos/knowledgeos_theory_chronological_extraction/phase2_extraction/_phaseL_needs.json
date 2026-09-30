@@ -1,0 +1,119 @@
+{
+ "iteration": 1,
+ "model_at_start": [],
+ "needs": [
+  {
+   "need": "Source",
+   "why": "every emergent cites files",
+   "from": "READ"
+  },
+  {
+   "need": "Event",
+   "why": "37 own-dated events; 45% of pairs unorderable by date",
+   "from": "Phase A"
+  },
+  {
+   "need": "Evidence",
+   "why": "every emergent carries step1_evidence locators",
+   "from": "Phase B2"
+  },
+  {
+   "need": "TheoryObject",
+   "why": "33 nodes admitted",
+   "from": "Phase B"
+  },
+  {
+   "need": "Relationship",
+   "why": "19 edges; EM-0001/0002/0006 are themselves relations",
+   "from": "Phase D"
+  },
+  {
+   "need": "Derivation (n-ary)",
+   "why": "D-2: 'two of four grounds falsified' \u2014 premises individually addressable",
+   "from": "Phase D"
+  },
+  {
+   "need": "TheoryThread",
+   "why": "8 threads; identity_basis is a recorded judgement",
+   "from": "Phase D"
+  },
+  {
+   "need": "Gap",
+   "why": "11 gaps",
+   "from": "READ"
+  },
+  {
+   "need": "Provenance",
+   "why": "mandatory on all 7 emergents",
+   "from": "Phase B2"
+  },
+  {
+   "need": "TheoryEvolution",
+   "why": "LG-1 superseded; D-2 downgraded",
+   "from": "Phase D"
+  },
+  {
+   "need": "EmergentRecord",
+   "why": "7 constructions with kind + surprise + supersedes",
+   "from": "Phase B2"
+  },
+  {
+   "need": "Structure (staged F0-F3)",
+   "why": "6 structures, each with elements + tests_run",
+   "from": "Phase F"
+  },
+  {
+   "need": "Competition",
+   "why": "5 rival sets, each with discriminator + outcome class",
+   "from": "Phase E"
+  },
+  {
+   "need": "SearchRecord / Event(SEARCH)",
+   "why": "propagation test on C-0007 was a SEARCH with a negative result",
+   "from": "Phase E"
+  },
+  {
+   "need": "ComputedMaturity",
+   "why": "all items M1; must not be writable",
+   "from": "Phase J"
+  },
+  {
+   "need": "OpenTerm",
+   "why": "bar undefined \u2014 an object that BLOCKS a structure's promotion",
+   "from": "Phase F"
+  }
+ ],
+ "gaps": 16,
+ "model_at_end": [
+  "Competition",
+  "ComputedMaturity",
+  "Derivation (n-ary)",
+  "EmergentRecord",
+  "Event",
+  "Evidence",
+  "Gap",
+  "OpenTerm",
+  "Provenance",
+  "Relationship",
+  "SearchRecord / Event(SEARCH)",
+  "Source",
+  "Structure (staged F0-F3)",
+  "TheoryEvolution",
+  "TheoryObject",
+  "TheoryThread"
+ ],
+ "oq_l4_answer": "NO \u2014 list did not survive",
+ "novel_primitives": [
+  "Competition",
+  "ComputedMaturity",
+  "EmergentRecord",
+  "OpenTerm",
+  "SearchRecord",
+  "Structure"
+ ],
+ "unused_from_list": [
+  "Maturity",
+  "Obligation",
+  "Verification"
+ ]
+}

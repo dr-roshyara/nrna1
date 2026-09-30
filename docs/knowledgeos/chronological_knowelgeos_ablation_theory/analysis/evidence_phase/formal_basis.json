@@ -1,0 +1,8 @@
+{
+ "kind": "formal basis stamped on every derived constraint. Changed only by a recorded governance act (F-LOG); re-running the engine after a change re-evaluates every constraint deterministically.",
+ "status": "SECONDARY-REPRODUCED",
+ "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+ "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+ "record": "F-LOG-0075 (Claude-vs-Claude r2-7: REPRODUCED UNDER A DIFFERENT READING)",
+ "on_gate1": "after a non-Claude verification is sealed and classified, set status to INDEPENDENT-REPRODUCED or NOT-REPRODUCED in a new F-LOG entry, then re-run derive_constraints.py"
+}

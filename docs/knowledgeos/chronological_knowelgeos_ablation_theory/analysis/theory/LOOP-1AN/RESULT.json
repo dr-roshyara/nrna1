@@ -1,0 +1,2290 @@
+{
+ "labels": "FORMAL, MODEL-RELATIVE results over strict observations; NOT empirical falsification; empirical status imported read-only",
+ "empirical_status_imported": {
+  "a": "SUPPORTED",
+  "k": "SUPPORTED",
+  "s": "SUPPORTED (target-indexed)",
+  "t": "index of s; possible witness only",
+  "e": "WEAK (overloaded: repetition/breadth)",
+  "c": "WEAK (coarse grain only)",
+  "o": "NOT DEMONSTRATED",
+  "r": "NOT DEMONSTRATED",
+  "x": "NOT DEMONSTRATED",
+  "h": "absorbed into status (formal)"
+ },
+ "variants": {
+  "BASE": {
+   "guards": {
+    "ADOPT": {
+     "events": 3,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "c"
+       ],
+       [
+        "a",
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "c"
+       ],
+       [
+        "a",
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     }
+    },
+    "ANNOTATE": {
+     "events": 1,
+     "both_outcomes": false,
+     "M0": {
+      "status": "UNCONSTRAINED"
+     },
+     "M1": {
+      "status": "UNCONSTRAINED"
+     },
+     "M2": {
+      "status": "UNCONSTRAINED"
+     },
+     "M4": {
+      "status": "UNCONSTRAINED"
+     },
+     "MF": {
+      "status": "UNCONSTRAINED"
+     }
+    },
+    "ASSIGN-ID": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M1": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M2": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "h"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "h": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS"
+      }
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     }
+    },
+    "OPEN-WORK": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "r": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     }
+    },
+    "RAISE": {
+     "events": 9,
+     "both_outcomes": true,
+     "M0": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "k"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "M4": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "k"
+       ],
+       [
+        "e",
+        "t"
+       ],
+       [
+        "e",
+        "x"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "VACUOUS"
+      }
+     }
+    },
+    "REGISTER": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "r": "VACUOUS"
+      }
+     }
+    },
+    "START": {
+     "events": 11,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     }
+    },
+    "SUPERSEDE": {
+     "events": 3,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "e"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "e"
+       ],
+       [
+        "k"
+       ],
+       [
+        "r"
+       ],
+       [
+        "x"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "VACUOUS"
+      }
+     }
+    }
+   },
+   "global_minimum_MF": {
+    "min_union_size": 5,
+    "min_unions": [
+     [
+      "a",
+      "e",
+      "h",
+      "k",
+      "s"
+     ],
+     [
+      "a",
+      "e",
+      "k",
+      "r",
+      "s"
+     ]
+    ]
+   },
+   "M3_operation_test": {
+    "conflict_without_operation_label": null,
+    "operation_status": "MODEL-COND-REDUNDANT under M3 (no cross-operation conflict on the pooled variables)"
+   }
+  },
+  "REV": {
+   "guards": {
+    "ADOPT": {
+     "events": 3,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "FORMAL-REQUIRED"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "FORMAL-REQUIRED"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "c"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "c": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "FORMAL-REQUIRED"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "c"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "c": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     }
+    },
+    "ANNOTATE": {
+     "events": 1,
+     "both_outcomes": false,
+     "M0": {
+      "status": "UNCONSTRAINED"
+     },
+     "M1": {
+      "status": "UNCONSTRAINED"
+     },
+     "M2": {
+      "status": "UNCONSTRAINED"
+     },
+     "M4": {
+      "status": "UNCONSTRAINED"
+     },
+     "MF": {
+      "status": "UNCONSTRAINED"
+     }
+    },
+    "ASSIGN-ID": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M1": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M2": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "h"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "h": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS"
+      }
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     }
+    },
+    "OPEN-WORK": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "r": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     }
+    },
+    "RAISE": {
+     "events": 9,
+     "both_outcomes": true,
+     "M0": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "k"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "M4": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "k"
+       ],
+       [
+        "e",
+        "t"
+       ],
+       [
+        "e",
+        "x"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "VACUOUS"
+      }
+     }
+    },
+    "REGISTER": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "r": "VACUOUS"
+      }
+     }
+    },
+    "START": {
+     "events": 11,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     }
+    },
+    "SUPERSEDE": {
+     "events": 3,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "e"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "e"
+       ],
+       [
+        "k"
+       ],
+       [
+        "r"
+       ],
+       [
+        "x"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "VACUOUS"
+      }
+     }
+    }
+   },
+   "global_minimum_MF": {
+    "min_union_size": 6,
+    "min_unions": [
+     [
+      "a",
+      "c",
+      "e",
+      "h",
+      "k",
+      "s"
+     ],
+     [
+      "a",
+      "c",
+      "e",
+      "k",
+      "r",
+      "s"
+     ],
+     [
+      "a",
+      "e",
+      "h",
+      "k",
+      "s",
+      "t"
+     ],
+     [
+      "a",
+      "e",
+      "k",
+      "r",
+      "s",
+      "t"
+     ]
+    ]
+   },
+   "M3_operation_test": {
+    "conflict_without_operation_label": null,
+    "operation_status": "MODEL-COND-REDUNDANT under M3 (no cross-operation conflict on the pooled variables)"
+   }
+  },
+  "REV-TYPE": {
+   "guards": {
+    "ADOPT": {
+     "events": 3,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "c"
+       ],
+       [
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "c": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "c"
+       ],
+       [
+        "k"
+       ],
+       [
+        "a",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "c": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     }
+    },
+    "ANNOTATE": {
+     "events": 1,
+     "both_outcomes": false,
+     "M0": {
+      "status": "UNCONSTRAINED"
+     },
+     "M1": {
+      "status": "UNCONSTRAINED"
+     },
+     "M2": {
+      "status": "UNCONSTRAINED"
+     },
+     "M4": {
+      "status": "UNCONSTRAINED"
+     },
+     "MF": {
+      "status": "UNCONSTRAINED"
+     }
+    },
+    "ASSIGN-ID": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M1": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M2": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "ASSIGN a never-used number",
+       "ASSIGN the retired number R-90"
+      ]
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "h"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "h": "MODEL-COND-REDUNDANT",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS"
+      }
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     }
+    },
+    "OPEN-WORK": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "t": "VACUOUS"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "r": "VACUOUS",
+       "t": "VACUOUS"
+      }
+     }
+    },
+    "RAISE": {
+     "events": 9,
+     "both_outcomes": true,
+     "M0": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "k"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "M4": {
+      "status": "MODEL-INADEQUATE",
+      "unresolved_conflict": [
+       "RAISE promoted #2",
+       "RAISE not promoted #5"
+      ]
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "k"
+       ],
+       [
+        "e",
+        "t"
+       ],
+       [
+        "e",
+        "x"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "VACUOUS",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "VACUOUS"
+      }
+     }
+    },
+    "REGISTER": {
+     "events": 2,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "FORMAL-REQUIRED",
+       "r": "VACUOUS"
+      }
+     }
+    },
+    "START": {
+     "events": 11,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "s"
+       ]
+      ],
+      "variable_class": {
+       "a": "VACUOUS",
+       "k": "VACUOUS",
+       "r": "VACUOUS",
+       "s": "FORMAL-REQUIRED",
+       "t": "MODEL-COND-REDUNDANT"
+      }
+     }
+    },
+    "SUPERSEDE": {
+     "events": 3,
+     "both_outcomes": true,
+     "M0": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M1": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "e"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M2": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "M4": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT"
+      }
+     },
+     "MF": {
+      "status": "CONSISTENT",
+      "minimal_signatures": [
+       [
+        "a"
+       ],
+       [
+        "e"
+       ],
+       [
+        "k"
+       ],
+       [
+        "r"
+       ],
+       [
+        "x"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "VACUOUS"
+      }
+     }
+    }
+   },
+   "global_minimum_MF": {
+    "min_union_size": 5,
+    "min_unions": [
+     [
+      "a",
+      "e",
+      "h",
+      "k",
+      "s"
+     ],
+     [
+      "a",
+      "e",
+      "k",
+      "r",
+      "s"
+     ]
+    ]
+   },
+   "M3_operation_test": {
+    "conflict_without_operation_label": null,
+    "operation_status": "MODEL-COND-REDUNDANT under M3 (no cross-operation conflict on the pooled variables)"
+   }
+  }
+ },
+ "bisimulation": {
+  "reachable_states": 250,
+  "bisimulation_classes": 80,
+  "families": {
+   "ann": {
+    "class": "BEHAVIOUR-RELEVANT",
+    "counterexample": [
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "A",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     },
+     {
+      "ann.r1": 1,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "A",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     }
+    ]
+   },
+   "by": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "deleg": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "iss": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "reg": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "st": {
+    "class": "BEHAVIOUR-RELEVANT",
+    "counterexample": [
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "-",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "chief",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "P",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     },
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "-",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "chief",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "H",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     }
+    ]
+   },
+   "sup": {
+    "class": "BEHAVIOUR-RELEVANT",
+    "counterexample": [
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "issue",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "human",
+      "reg.r1": "used",
+      "reg.r2": "used",
+      "st.r1": "A",
+      "st.r2": "A",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     },
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "issue",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "human",
+      "reg.r1": "used",
+      "reg.r2": "used",
+      "st.r1": "A",
+      "st.r2": "A",
+      "sup.r1": "r2",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     }
+    ]
+   },
+   "text": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   }
+  }
+ },
+ "bisimulation_variant_full_labels_r1": {
+  "reachable_states": 250,
+  "bisimulation_classes": 151,
+  "families": {
+   "ann": {
+    "class": "BEHAVIOUR-RELEVANT",
+    "counterexample": [
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "A",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     },
+     {
+      "ann.r1": 1,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "A",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     }
+    ]
+   },
+   "by": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "deleg": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "iss": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "reg": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   },
+   "st": {
+    "class": "BEHAVIOUR-RELEVANT",
+    "counterexample": [
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "-",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "chief",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "P",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     },
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "-",
+      "by.r2": "-",
+      "deleg": "none",
+      "iss.r1": "chief",
+      "iss.r2": "-",
+      "reg.r1": "used",
+      "reg.r2": "unused",
+      "st.r1": "H",
+      "st.r2": "none",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     }
+    ]
+   },
+   "sup": {
+    "class": "BEHAVIOUR-RELEVANT",
+    "counterexample": [
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "issue",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "human",
+      "reg.r1": "used",
+      "reg.r2": "used",
+      "st.r1": "A",
+      "st.r2": "A",
+      "sup.r1": "none",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     },
+     {
+      "ann.r1": 0,
+      "ann.r2": 0,
+      "by.r1": "issue",
+      "by.r2": "issue",
+      "deleg": "none",
+      "iss.r1": "human",
+      "iss.r2": "human",
+      "reg.r1": "used",
+      "reg.r2": "used",
+      "st.r1": "A",
+      "st.r2": "A",
+      "sup.r1": "r2",
+      "text.r1": "t0",
+      "text.r2": "t0"
+     }
+    ]
+   },
+   "text": {
+    "class": "MODEL-COND-REDUNDANT",
+    "counterexample": null
+   }
+  }
+ }
+}

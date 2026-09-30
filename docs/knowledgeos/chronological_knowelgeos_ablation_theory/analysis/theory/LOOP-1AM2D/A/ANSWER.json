@@ -1,0 +1,161 @@
+{
+  "events": [
+    {
+      "id": "R38-1",
+      "row": "R-38",
+      "item": "R-38 platform-wide declaration (Conceptual Freeze), as a governance ruling",
+      "actor": {"value": "ARB", "quote": "ARB same-day correction (rule parsimony applied to this ruling itself — Option B)"},
+      "raise_kind": {"value": "NEW", "quote": "This ruling introduces NO new governance"},
+      "target": {"value": "new governance / a sixth freeze", "quote": "R-38 is a consolidation/assessment ruling, not a sixth freeze"},
+      "evidence": {"value": "UNK"},
+      "recorded_exception": {"value": "NO", "quote": "rule parsimony applied to this ruling itself"},
+      "outcome": {"value": "NOT-RAISED", "quote": "This ruling introduces NO new governance."},
+      "ground": {"value": "UNK", "note": "Could be RULE ('rule parsimony applied') or CHOICE ('Option B'; parsimony later called an 'ARB preference'). Not decisive: evidence is UNK either way."}
+    },
+    {
+      "id": "R38-2",
+      "row": "R-38",
+      "item": "Interpret existing rulings rather than add another ruling",
+      "actor": {"value": "ARB", "quote": "Precedent going forward (ARB preference, Option A)"},
+      "raise_kind": {"value": "UNK", "note": "A new standing precedent, or a restatement of existing rule parsimony; the text does not say which."},
+      "target": {"value": "precedent going forward", "quote": "Precedent going forward"},
+      "evidence": {"value": "UNK"},
+      "recorded_exception": {"value": "UNK"},
+      "outcome": {"value": "RAISED", "quote": "Precedent going forward (ARB preference, Option A): where existing rulings already express a constraint, interpret them rather than add another ruling"},
+      "ground": {"value": "CHOICE", "quote": "ARB preference, Option A"}
+    },
+    {
+      "id": "R40-A1",
+      "row": "R-40",
+      "item": "Governed placement rule for knowledge artifacts",
+      "actor": {"value": "DA / Decision Authority", "quote": "Decision Authority response to the reconstruction cycle"},
+      "raise_kind": {"value": "EXTENSION", "quote": "the placement rule's expected end-state is a clarification hosted in ES-005 (candidate ES-005.5), not a new standard", "note": "stated as the 'expected' end-state, not a settled one"},
+      "target": {"value": "ES-005 (candidate ES-005.5)", "quote": "a clarification hosted in ES-005 (candidate ES-005.5)"},
+      "evidence": {"value": "UNK", "note": "Four input documents are named (Phase 1 baseline · Foundations/Theory reference · IA review · Knowledge Domain Model). These are sources, not a count of instances."},
+      "recorded_exception": {"value": "UNK"},
+      "outcome": {"value": "RAISED", "quote": "A1 APPROVED — the platform shall introduce a governed placement rule"},
+      "ground": {"value": "UNK"}
+    },
+    {
+      "id": "R40-A2",
+      "row": "R-40",
+      "item": "Architecture Analysis as a knowledge type",
+      "actor": {"value": "DA / Decision Authority", "quote": "Decision Authority response"},
+      "raise_kind": {"value": "NEW", "quote": "recognized as a distinct descriptive knowledge type"},
+      "target": {"value": "a distinct descriptive knowledge type", "quote": "a distinct **descriptive** knowledge type"},
+      "evidence": {"value": "UNK", "note": "The examples given are kinds of report, not counts."},
+      "recorded_exception": {"value": "UNK"},
+      "outcome": {"value": "RAISED", "quote": "A2 APPROVED — Architecture Analysis is recognized ... recognition only — no folder is created"},
+      "ground": {"value": "UNK"}
+    },
+    {
+      "id": "R40-A4",
+      "row": "R-40",
+      "item": "Engineering Platform Knowledge Metamodel",
+      "actor": {"value": "DA / Decision Authority", "quote": "Decision Authority response"},
+      "raise_kind": {"value": "NEW", "quote": "prepare a candidate governed artifact `Engineering Platform Knowledge Metamodel`"},
+      "target": {"value": "governed artifact (adopted)", "quote": "descriptive until explicitly adopted"},
+      "evidence": {"value": "UNK"},
+      "recorded_exception": {"value": "UNK"},
+      "outcome": {"value": "NOT-RAISED", "quote": "descriptive until explicitly adopted — do not adopt; submit for review"},
+      "ground": {"value": "UNK", "note": "A DA directive that cites no rule. Could be read as CHOICE. Either way it is not RULE, so it cannot be a Q."}
+    },
+    {
+      "id": "R41-1",
+      "row": "R-41",
+      "item": "Artifact Lifecycle Consistency rule",
+      "actor": {"value": "PA / Principal Architect", "quote": "Principal Architect instruction"},
+      "raise_kind": {"value": "EXTENSION", "quote": "rule text hosted ONCE as ES-004.3 (documentation standard, not a new standard document)"},
+      "target": {"value": "ES-004.3 (documentation standard)", "quote": "hosted ONCE as **ES-004.3** (documentation standard, not a new standard document)"},
+      "evidence": {"value": "1 instance", "quote": "Provenance: the WP-1 closure inconsistency", "note": "A 'second instance' was caught by the 'first checklist execution', i.e. by applying the rule after adoption. It is not counted as evidence for the raise. Reading it as pre-raise evidence would give 2 instances."},
+      "recorded_exception": {"value": "UNK", "note": "The text neither records an exception nor applies ES-006.1."},
+      "outcome": {"value": "RAISED", "quote": "adopted as a permanent documentation standard"},
+      "ground": {"value": "UNK"},
+      "same_as": "E01"
+    },
+    {
+      "id": "R90-1",
+      "row": "R-90",
+      "item": "Discovery boundary confirmation (WP-4C-2), as a standing rule or methodology",
+      "actor": {"value": "ARB CHIEF (issuing authority)", "quote": "ARB CHIEF (PREPARED) ... as the issuing authority framed it"},
+      "raise_kind": {"value": "NEW", "quote": "this is NOT a new governance principle"},
+      "target": {"value": "methodology (also: standing rule for other work packages)", "quote": "deliberately not promoted to methodology"},
+      "evidence": {"value": "1 work package", "quote": "one work package is not a standard"},
+      "recorded_exception": {"value": "NO", "quote": "ES-006.1 stands"},
+      "outcome": {"value": "NOT-RAISED", "quote": "deliberately not promoted to methodology ... it creates no standing rule for other work packages"},
+      "ground": {"value": "RULE", "quote": "ES-006.1 stands: one work package is not a standard."}
+    },
+    {
+      "id": "R90-2",
+      "row": "R-90",
+      "item": "R-90 ruling itself, as a constitutional decision in the register",
+      "actor": {"value": "DA / Decision Authority", "quote": "The Decision Authority ruled that this is NOT a constitutional decision"},
+      "raise_kind": {"value": "NEW", "quote": "this ruling was put forward"},
+      "target": {"value": "the register (constitutional decisions)", "quote": "The register holds constitutional decisions, not operational acceptance."},
+      "evidence": {"value": "UNK", "note": "The DA's reason is about category, not about a count."},
+      "recorded_exception": {"value": "NO", "quote": "The register holds constitutional decisions, not operational acceptance."},
+      "outcome": {"value": "NOT-RAISED", "quote": "WITHDRAWN BEFORE ADOPTION 2026-08-04"},
+      "ground": {"value": "RULE", "quote": "The register holds constitutional decisions, not operational acceptance."}
+    }
+  ],
+  "R41_vs_E01_differences": [
+    {"field": "recorded_exception", "E01": "none recorded", "mine": "UNK", "note": "'none recorded' is not one of the allowed values (YES/NO/UNK). The text does not apply the normal rule (ES-006.1), so NO does not fit, and the correct code is UNK. The two agree in substance: this is not YES, so E01/R41-1 is not excluded."},
+    {"field": "evidence", "E01": "1 instance", "mine": "1 instance (ambiguous)", "note": "Same value. The 'second instance' could be read as evidence (giving 2). I read it as caught after adoption."},
+    {"field": "quote", "E01": "\"ES-004.3 … permanent documentation standard (Principal Architect instruction)\"", "mine": "n/a", "note": "The quote is stitched from two places, and in reverse order: the title says 'adopted as a permanent documentation standard (Principal Architect instruction)', and 'ES-004.3' appears later. The substance matches, but it is not a contiguous quote."},
+    {"field": "actor/raise_kind/target/outcome/ground", "note": "No difference."}
+  ],
+  "given_quote_check": {
+    "E01": "Verified in substance (stitched; see above).",
+    "E02": "The quote 'NOT promoted to methodology — single occurrence, and ES-006.1 forbids promoting from one' is NOT found in SOURCES.md. It cannot be verified. The closest text is R-90's 'not promoted to methodology. ES-006.1 stands: one work package is not a standard.' E02 is used as given.",
+    "E20": "The quote 'temporary carrier, not a pattern (PB-005 Q1)' is NOT found in SOURCES.md. It cannot be verified. E20 is used as given."
+  },
+  "models": {
+    "M_A": {
+      "verdict": "NOT FALSIFIED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        {"P": "E01", "Q": "E02", "why": "Q actor UNK; evidence 1 occurrence >= 1 instance would otherwise decide"},
+        {"P": "R40-A1", "Q": "R90-2", "why": "same actor (DA); both evidence UNK"},
+        {"P": "R40-A2", "Q": "R90-2", "why": "same actor (DA); both evidence UNK"},
+        {"P": "R38-2", "Q": "E20", "why": "same actor (ARB); P evidence UNK"},
+        {"P": "R38-2", "Q": "R90-1", "why": "is 'ARB CHIEF' equal to 'ARB'? Not established; P evidence UNK in any case"}
+      ]
+    },
+    "M_T": {
+      "verdict": "NOT FALSIFIED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        {"P": "E01", "Q": "R90-1", "why": "The target class depends on how classes are defined. E01's target is 'documentation standard' and R90-1's is 'methodology', but R-90 justifies the non-promotion with 'one work package is not a standard'. If methodology and standard are one class, this pair decides (1 work package >= 1 instance) and FALSIFIES M_T. The text does not settle class equality."},
+        {"P": "E01", "Q": "E02", "why": "same issue (methodology vs standard); 1 occurrence >= 1 instance"},
+        {"P": "R40-A1", "Q": "R90-1", "why": "ES-005 vs methodology class unsettled; P evidence UNK"},
+        {"P": "R40-A1", "Q": "E02", "why": "class unsettled; P evidence UNK"}
+      ]
+    },
+    "M_K": {
+      "verdict": "NOT FALSIFIED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        {"P": "R40-A2", "Q": "E02", "why": "both NEW; P evidence UNK"},
+        {"P": "R40-A2", "Q": "E20", "why": "both NEW; P evidence UNK"},
+        {"P": "R40-A2", "Q": "R90-1", "why": "both NEW; P evidence UNK"},
+        {"P": "R40-A2", "Q": "R90-2", "why": "both NEW; both evidence UNK"},
+        {"P": "R38-2", "Q": "any Q", "why": "P raise_kind UNK and evidence UNK"}
+      ],
+      "note": "No NOT-RAISED/RULE event is EXTENSION, so the only P with known evidence (E01, EXTENSION) has no same-kind Q."
+    },
+    "M_AT": {
+      "verdict": "NOT FALSIFIED",
+      "deciding_pairs": [],
+      "undetermined_pairs": [
+        {"P": "R40-A1", "Q": "R90-2", "why": "same actor (DA); target ES-005 vs register not shown equal; both evidence UNK"},
+        {"P": "R38-2", "Q": "E20", "why": "same actor (ARB); target class unsettled; P evidence UNK"}
+      ]
+    }
+  },
+  "pooled_model_no_parameter": "FALSIFIED by E01 vs E02, E20 and R90-1: each is RAISED at 1 against NOT-RAISED on RULE at 1, in comparable repetition counts. Some parameter is therefore needed; the four candidates cannot be told apart.",
+  "confound_broken": {
+    "value": "NONE",
+    "reason": "The only P with known evidence is E01/R41-1 (PA, EXTENSION, documentation standard). Every Q with known evidence (E02, E20, R90-1) differs from it on actor, raise_kind, and (on a strict reading) target class at the same time. No pair separates M_A, M_T, M_K or M_AT.",
+    "would_break": "R40-A1 (DA, EXTENSION) vs R90-2 (DA, NEW, RULE): if both evidence counts were known and evidence(R90-2) >= evidence(R40-A1), M_A would be falsified and M_K would not. A class ruling that methodology equals standard would falsify M_T through E01 vs R90-1/E02, while leaving M_A and M_K standing."
+  }
+}

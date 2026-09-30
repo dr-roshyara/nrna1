@@ -1,0 +1,22 @@
+{
+ "_note": "orchestrator counts-only computation over production manifest/plans/slices (metadata; no content printed), 2026-09-29",
+ "char_share_basis": "sum over the 66 hub slices of len(json.dumps(value)) per top-level key / sum of slice file lengths",
+ "hub_char_share_by_key": {
+  "bundle": 0.056,
+  "family_md": 0.019,
+  "p3a_pairs": 0.004,
+  "search_records": 0.669,
+  "source_meta": 0.285,
+  "stage2_files": 0.012
+ },
+ "hub_labels_by_plan_path": {
+  "DECOMPOSED": 1,
+  "EMPTY": 1,
+  "SINGLE": 64
+ },
+ "hub_runs_by_role": {
+  "SINGLE": 64,
+  "SYNTHESIS": 1,
+  "UNIT": 2
+ }
+}

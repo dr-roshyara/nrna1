@@ -21,8 +21,14 @@ final class EdgeRules
     {
     }
 
-    public static function verdict(BehaviourReference $ref): EdgeVerdict
+    public static function verdict(BehaviourReference|IndeterminateBehaviourReference $ref): EdgeVerdict
     {
+        // 0 — D-1: the target could not be named at all. Fixed by construction — this
+        // fact kind exists only for the not-determinable case, so no field is read.
+        if ($ref instanceof IndeterminateBehaviourReference) {
+            return EdgeVerdict::exclude(ExclusionReason::NotDeterminable);
+        }
+
         // 1 — a first-class callable REFERENCES a behaviour rather than invoking it.
         if ($ref->referenceMode === ReferenceMode::CallableReference) {
             return EdgeVerdict::exclude(ExclusionReason::CallableNotInvocation);

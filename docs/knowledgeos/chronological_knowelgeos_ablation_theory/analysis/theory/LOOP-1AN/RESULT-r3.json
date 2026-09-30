@@ -1,0 +1,5017 @@
+{
+ "labels": "FORMAL, MODEL-RELATIVE (separating semantics r3); NOT empirical falsification",
+ "empirical_status_imported": {
+  "a": "SUPPORTED",
+  "k": "SUPPORTED",
+  "s": "SUPPORTED (target-indexed)",
+  "t": "index of s; possible witness only",
+  "e": "WEAK (overloaded)",
+  "c": "WEAK (coarse grain)",
+  "o": "NOT DEMONSTRATED",
+  "r": "NOT DEMONSTRATED",
+  "x": "NOT DEMONSTRATED",
+  "h": "absorbed into status (formal)"
+ },
+ "variants": {
+  "BASE": {
+   "guards": {
+    "ADOPT": {
+     "events": 3,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     }
+    },
+    "ANNOTATE": {
+     "events": 1,
+     "M0": {
+      "status": "UNCONSTRAINED"
+     },
+     "M1": {
+      "status": "UNCONSTRAINED"
+     },
+     "M2": {
+      "status": "UNCONSTRAINED"
+     },
+     "M4": {
+      "status": "UNCONSTRAINED"
+     },
+     "MF": {
+      "status": "UNCONSTRAINED"
+     }
+    },
+    "ASSIGN-ID": {
+     "events": 2,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     }
+    },
+    "OPEN-WORK": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     }
+    },
+    "RAISE": {
+     "events": 9,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ],
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ],
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ],
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ],
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ],
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ],
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "e"
+       ],
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     }
+    },
+    "REGISTER": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     }
+    },
+    "START": {
+     "events": 11,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     }
+    },
+    "SUPERSEDE": {
+     "events": 3,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {}
+     }
+    }
+   },
+   "operation_test": {
+    "cross_op_pairs_with_comparable_vars": 248,
+    "fully_comparable_equal_pairs": [],
+    "operation": "UNTESTABLE (no cross-operation pair is fully comparable)"
+   }
+  },
+  "REV": {
+   "guards": {
+    "ADOPT": {
+     "events": 3,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     }
+    },
+    "ANNOTATE": {
+     "events": 1,
+     "M0": {
+      "status": "UNCONSTRAINED"
+     },
+     "M1": {
+      "status": "UNCONSTRAINED"
+     },
+     "M2": {
+      "status": "UNCONSTRAINED"
+     },
+     "M4": {
+      "status": "UNCONSTRAINED"
+     },
+     "MF": {
+      "status": "UNCONSTRAINED"
+     }
+    },
+    "ASSIGN-ID": {
+     "events": 2,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     }
+    },
+    "OPEN-WORK": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     }
+    },
+    "RAISE": {
+     "events": 9,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ],
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ],
+       [
+        "a",
+        "e",
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     }
+    },
+    "REGISTER": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     }
+    },
+    "START": {
+     "events": 11,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     }
+    },
+    "SUPERSEDE": {
+     "events": 3,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {}
+     }
+    }
+   },
+   "operation_test": {
+    "cross_op_pairs_with_comparable_vars": 248,
+    "fully_comparable_equal_pairs": [],
+    "operation": "UNTESTABLE (no cross-operation pair is fully comparable)"
+   }
+  },
+  "REV-TYPE": {
+   "guards": {
+    "ADOPT": {
+     "events": 3,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 2,
+      "unseparated_pairs": [
+       [
+        "ADOPT R-81..85 by the DA (R-86)",
+        "ADOPT R-91 by the DA (held)"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a",
+        "c"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "c": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-81..85-annotation",
+         "R-86"
+        ]
+       ],
+       "c": [
+        [
+         "R-86",
+         "R-91"
+        ]
+       ]
+      }
+     }
+    },
+    "ANNOTATE": {
+     "events": 1,
+     "M0": {
+      "status": "UNCONSTRAINED"
+     },
+     "M1": {
+      "status": "UNCONSTRAINED"
+     },
+     "M2": {
+      "status": "UNCONSTRAINED"
+     },
+     "M4": {
+      "status": "UNCONSTRAINED"
+     },
+     "MF": {
+      "status": "UNCONSTRAINED"
+     }
+    },
+    "ASSIGN-ID": {
+     "events": 2,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 1,
+      "unseparated_pairs": [
+       [
+        "ASSIGN a never-used number",
+        "ASSIGN the retired number R-90"
+       ]
+      ],
+      "minimal_guards": [],
+      "minimum_guards": [],
+      "variable_class": {
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {}
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "h"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "h"
+       ]
+      ],
+      "variable_class": {
+       "h": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "h"
+      ],
+      "forced_cluster_pairs": {
+       "h": [
+        [
+         "S0804-L576",
+         "register-numbering"
+        ]
+       ]
+      }
+     }
+    },
+    "AUTHORIZE-IMPL": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "a"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "a"
+       ]
+      ],
+      "variable_class": {
+       "a": "FORMAL-REQUIRED",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a"
+      ],
+      "forced_cluster_pairs": {
+       "a": [
+        [
+         "R-70",
+         "R-89"
+        ]
+       ]
+      }
+     }
+    },
+    "OPEN-WORK": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES",
+       "t": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "R-60",
+         "R-60"
+        ]
+       ]
+      }
+     }
+    },
+    "RAISE": {
+     "events": 9,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ],
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 20,
+      "unseparated_pairs": [
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #2",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #3",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #9",
+        "RAISE not promoted #17"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #5"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #14"
+       ],
+       [
+        "RAISE promoted #10",
+        "RAISE not promoted #17"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "k": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "t": [
+        [
+         "R-41",
+         "S0815-L483"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 20,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "e",
+        "t"
+       ],
+       [
+        "a",
+        "e",
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "e",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "MODEL-COND-REDUNDANT",
+       "e": "FORMAL-REQUIRED",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "s": "NEVER-SEPARATES",
+       "t": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "e": [
+        [
+         "R-36",
+         "R-36"
+        ]
+       ]
+      }
+     }
+    },
+    "REGISTER": {
+     "events": 2,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 1,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED",
+       "r": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "S0804-L576",
+         "S0804-L576"
+        ]
+       ]
+      }
+     }
+    },
+    "START": {
+     "events": 11,
+     "M0": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "PARTIAL",
+      "n_pairs": 30,
+      "unseparated_pairs": [
+       [
+        "START WP-4B at R-72 (proviso unmet)",
+        "START WP-4B 08-03 16:10"
+       ]
+      ],
+      "minimal_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "s",
+        "t"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "NEVER-SEPARATES",
+       "r": "NEVER-SEPARATES",
+       "s": "FORMAL-REQUIRED",
+       "t": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [],
+      "forced_cluster_pairs": {
+       "s": [
+        [
+         "R-47",
+         "R-58"
+        ],
+        [
+         "R-56",
+         "R-58"
+        ],
+        [
+         "R-58",
+         "R-65"
+        ],
+        [
+         "R-81",
+         "R-86"
+        ]
+       ],
+       "t": [
+        [
+         "R-47",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-56",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-58",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-79",
+         "git-6a67da5d7"
+        ],
+        [
+         "R-81",
+         "git-6a67da5d7"
+        ]
+       ]
+      }
+     }
+    },
+    "SUPERSEDE": {
+     "events": 3,
+     "M0": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M1": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M2": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "M4": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "k": "FORMAL-REQUIRED"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "k"
+      ],
+      "forced_cluster_pairs": {
+       "k": [
+        [
+         "ADR-MP",
+         "R-77"
+        ],
+        [
+         "ADR-MP",
+         "R-83"
+        ]
+       ]
+      }
+     },
+     "MF": {
+      "status": "SEPARABLE",
+      "n_pairs": 2,
+      "unseparated_pairs": [],
+      "minimal_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "minimum_guards": [
+       [
+        "k"
+       ],
+       [
+        "r"
+       ]
+      ],
+      "variable_class": {
+       "a": "NEVER-SEPARATES",
+       "e": "NEVER-SEPARATES",
+       "k": "MODEL-COND-REDUNDANT",
+       "r": "MODEL-COND-REDUNDANT",
+       "x": "NEVER-SEPARATES"
+      },
+      "identity_lookup_flags": [
+       "a",
+       "e",
+       "k"
+      ],
+      "forced_cluster_pairs": {}
+     }
+    }
+   },
+   "operation_test": {
+    "cross_op_pairs_with_comparable_vars": 248,
+    "fully_comparable_equal_pairs": [],
+    "operation": "UNTESTABLE (no cross-operation pair is fully comparable)"
+   }
+  }
+ }
+}

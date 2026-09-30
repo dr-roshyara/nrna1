@@ -59,10 +59,14 @@ def main(batch_id):
         if r.get("status") not in ALLOWED_FILE_STATUS:
             fail(f"{r['source_id']}: invalid status {r.get('status')!r}")
         if r["status"] == "CONTENT":
-            if not r.get("summary", "").strip():
-                fail(f"{r['source_id']}: empty summary")
-            if not r.get("contribution_assessment", "").strip():
-                fail(f"{r['source_id']}: empty contribution_assessment")
+            if not isinstance(r.get("summary"), str) or not r.get("summary").strip():
+                fail(f"{r['source_id']}: summary missing, empty, or wrong type ({type(r.get('summary')).__name__})")
+            if not isinstance(r.get("contribution_assessment"), str) or not r.get("contribution_assessment").strip():
+                fail(f"{r['source_id']}: contribution_assessment missing, empty, or wrong type ({type(r.get('contribution_assessment')).__name__})")
+            if not isinstance(r.get("objects_touched"), list):
+                fail(f"{r['source_id']}: objects_touched must be a list, got {type(r.get('objects_touched')).__name__}")
+            if r.get("provenance") not in ("PRIMARY", "SECONDARY-SYNTHESIS", "PROVENANCE-UNRESOLVED"):
+                fail(f"{r['source_id']}: invalid provenance {r.get('provenance')!r}")
 
     proposed_labels = set()
     if os.path.isfile(proposals_path):
@@ -90,6 +94,10 @@ def main(batch_id):
         types = c.get("types") or []
         if not types or not set(types) <= TYPES:
             fail(f"contribution in {c['source_id']} has invalid types {types}")
+        if c.get("scope") not in ("OBJECT", "CROSS-OBJECT", "THEORY-LEVEL", "METHODOLOGICAL"):
+            fail(f"contribution in {c['source_id']} has invalid scope {c.get('scope')!r}")
+        if not isinstance(c.get("labels"), list):
+            fail(f"contribution in {c['source_id']} has non-list labels {c.get('labels')!r}")
         for lbl in c.get("labels") or []:
             if lbl not in allowed_labels and lbl != "UNKNOWN-OBJECT-CANDIDATE":
                 fail(f"contribution in {c['source_id']} uses unregistered label {lbl!r}")

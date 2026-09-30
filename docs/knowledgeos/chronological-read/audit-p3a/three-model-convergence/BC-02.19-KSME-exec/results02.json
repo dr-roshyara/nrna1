@@ -1,0 +1,175 @@
+{
+  "code_version": "ksme02-0.1.0",
+  "sub_experiment_1": {
+    "domain": {
+      "status_values": [
+        "Satisfied",
+        "Unsatisfied",
+        "Unknown",
+        "Conflicted",
+        "NotApplicable"
+      ],
+      "n_requirements": 3,
+      "total_status_vectors": 125,
+      "hard_requirement_index": 0,
+      "critical_requirement_index": 1
+    },
+    "oracle_minimal_quotient": {
+      "num_true_classes": 27,
+      "num_raw_states": 125
+    },
+    "representation_evaluation": [
+      {
+        "representation": "pi_1 (S2377 binary Sat collapse, per-requirement)",
+        "sufficiency(no_false_equivalence)": false,
+        "false_equivalence_count": 117,
+        "num_rho_classes": 8,
+        "num_true_classes": 27,
+        "note": "SOURCE-CLAIMED projection direction; reused unchanged from BC-02.6/7"
+      },
+      {
+        "representation": "3-valued collapse (OK/SOFT/HARD_FAIL)",
+        "sufficiency(no_false_equivalence)": false,
+        "false_equivalence_count": 84,
+        "num_rho_classes": 27,
+        "num_true_classes": 27,
+        "note": "CANDIDATE, this experiment's own proposal, not source-attested"
+      },
+      {
+        "representation": "full Status_5 vector (baseline)",
+        "sufficiency(no_false_equivalence)": true,
+        "false_equivalence_count": 0,
+        "num_rho_classes": 125,
+        "num_true_classes": 27,
+        "note": "retains everything"
+      }
+    ],
+    "per_behavior_sufficiency_of_pi1": {
+      "Coverage": {
+        "sufficient_for_this_behavior_alone": true,
+        "false_equivalence_count": 0
+      },
+      "EpistemicDebt_set": {
+        "sufficient_for_this_behavior_alone": false,
+        "false_equivalence_count": 117
+      },
+      "Ready": {
+        "sufficient_for_this_behavior_alone": false,
+        "false_equivalence_count": 21
+      },
+      "CriticalGaps_set": {
+        "sufficient_for_this_behavior_alone": false,
+        "false_equivalence_count": 114
+      }
+    },
+    "per_behavior_sufficiency_of_3valued": {
+      "Coverage": {
+        "sufficient_for_this_behavior_alone": true,
+        "false_equivalence_count": 0
+      },
+      "EpistemicDebt_set": {
+        "sufficient_for_this_behavior_alone": false,
+        "false_equivalence_count": 79
+      },
+      "Ready": {
+        "sufficient_for_this_behavior_alone": false,
+        "false_equivalence_count": 15
+      },
+      "CriticalGaps_set": {
+        "sufficient_for_this_behavior_alone": false,
+        "false_equivalence_count": 65
+      }
+    }
+  },
+  "sub_experiment_2_canonical_construction": {
+    "per_component_necessity": {
+      "A": {
+        "ops_broken_if_removed": 16,
+        "forced_ops_broken": 12,
+        "verdict": "REQUIRED"
+      },
+      "Dt": {
+        "ops_broken_if_removed": 1,
+        "forced_ops_broken": 1,
+        "verdict": "REQUIRED"
+      },
+      "EL": {
+        "ops_broken_if_removed": 5,
+        "forced_ops_broken": 4,
+        "verdict": "REQUIRED"
+      },
+      "H": {
+        "ops_broken_if_removed": 1,
+        "forced_ops_broken": 1,
+        "verdict": "REQUIRED"
+      },
+      "PI": {
+        "ops_broken_if_removed": 6,
+        "forced_ops_broken": 3,
+        "verdict": "REQUIRED"
+      },
+      "R": {
+        "ops_broken_if_removed": 6,
+        "forced_ops_broken": 3,
+        "verdict": "REQUIRED"
+      },
+      "S": {
+        "ops_broken_if_removed": 7,
+        "forced_ops_broken": 6,
+        "verdict": "REQUIRED"
+      },
+      "T": {
+        "ops_broken_if_removed": 4,
+        "forced_ops_broken": 2,
+        "verdict": "REQUIRED"
+      }
+    },
+    "note": "INTENSIONAL test (static dependency lookup), not extensional/behavioral -- honestly labeled per BC-02.17, no joint-interaction claim made here.",
+    "K_AR_representation_information_loss": {
+      "dropped_components": [
+        "Dt",
+        "EL",
+        "H",
+        "PI",
+        "S",
+        "T"
+      ],
+      "operations_losing_a_well-definedness_requirement": [
+        "Add",
+        "Assess",
+        "Authorize",
+        "Derive",
+        "Determine",
+        "Merge",
+        "Promote",
+        "Qualify",
+        "Reintroduce",
+        "Reject",
+        "Replay",
+        "Revise",
+        "Split",
+        "Supersede",
+        "Transform",
+        "Validate",
+        "Withdraw"
+      ],
+      "of_which_forced(14)": [
+        "Add",
+        "Assess",
+        "Authorize",
+        "Derive",
+        "Determine",
+        "Promote",
+        "Qualify",
+        "Reject",
+        "Replay",
+        "Revise",
+        "Supersede",
+        "Validate",
+        "Withdraw"
+      ],
+      "count_forced_affected": 13,
+      "count_total_affected": 17
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+ "file_id": "F0032",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "status": "SATISFIED",
+   "evidence": "complete read, 96 lines; receipt F0032 sha 05d8b444…"
+  },
+  {
+   "gate": "EXTRACTION_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "3 definitions · 4 premises · 6 claims · 2 derivations"
+  },
+  {
+   "gate": "SEMANTIC_UNDERSTANDING_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "purpose, source_research_question (EXPLICITLY_STATED_BY_SOURCE) and reconstruction_question recorded separately, not merged"
+  },
+  {
+   "gate": "ARCHITECTURE_ALIGNMENT_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "architectural role: operational-validation instrument reporting to the DA; declares 'nothing executes'"
+  },
+  {
+   "gate": "RELATIONSHIP_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "5 relationships: 4 CORROBORATES + 1 EXTENDS"
+  },
+  {
+   "gate": "DERIVATION_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "D1 enumeration; D2 impossibility argument — both assessed valid as stated"
+  },
+  {
+   "gate": "CONTINUITY_ASSESSED",
+   "status": "SATISFIED",
+   "evidence": "4 continuity dimensions recorded; statistical_continuity graded WEAK rather than passed"
+  },
+  {
+   "gate": "GAP_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "U-1..U-11 captured verbatim from the source's own enumeration"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "status": "NOT_SATISFIED",
+   "evidence": "⛔ HELD under O-1=A (L0-DEC-08). ⛔ Establishes no objects — integration was deliberately withheld (GVR-F0032 V-6, confirmed correct). GVR-F0032 U-4 — whether the controlled test is itself part of RC-H-04 — remains OPEN."
+  },
+  {
+   "gate": "IMPLEMENTATION_IMPLICATIONS_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "NOT_APPLICABLE recorded with reason, not left blank"
+  },
+  {
+   "gate": "PROVENANCE_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "canonical id from manifest · sha verified pre-read · receipt post-read · manifest_hash bound · authorization recorded"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "status": "SATISFIED",
+   "evidence": "40/40 required fields present; references resolvable"
+  }
+ ],
+ "satisfied": 11,
+ "total": 12,
+ "dossier_status": "INCOMPLETE_BY_DESIGN",
+ "blocking_gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+ "why_blocked": "Integration is withheld pending governance verification of the controlled test. ⭐ This is the protocol working as written: §9A says a file may not be marked COMPLETE until every gate is satisfied, and one is deliberately open. ⛔ Marking it COMPLETE would be the false-pass the gate exists to prevent.",
+ "⭐ O-1_evaluation": {
+  "date": "2026-09-23",
+  "authority": "L0-DEC-08 (O-1 = interpretation A)",
+  "own_objects": [],
+  "verdict": "HELD",
+  "objects_needing_5A_revision": [],
+  "basis": "⛔ Establishes no objects — integration was deliberately withheld (GVR-F0032 V-6, confirmed correct).",
+  "blocker": "GVR-F0032 U-4 — whether the controlled test is itself part of RC-H-04 — remains OPEN."
+ }
+}

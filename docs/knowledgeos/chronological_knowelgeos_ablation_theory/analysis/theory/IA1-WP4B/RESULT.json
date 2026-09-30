@@ -1,0 +1,108 @@
+{
+ "bounds": {
+  "R-72": {
+   "time": "2026-08-02T15:02:50+02:00",
+   "commit": "123c23e35"
+  },
+  "R-77": {
+   "time": "2026-08-03T15:28:34+02:00",
+   "commit": "fa9817444"
+  },
+  "R-86": {
+   "time": "2026-08-04T00:29:26+02:00",
+   "commit": "7fce534ee"
+  }
+ },
+ "implementation_commits": 8,
+ "first_impl": {
+  "hash": "6a67da5d7",
+  "time": "2026-08-03T16:10:37+02:00",
+  "subject": "test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive",
+  "batch7": true,
+  "paths": [
+   "tests/Feature"
+  ]
+ },
+ "last_impl": {
+  "hash": "041628007",
+  "time": "2026-08-04T20:47:09+02:00",
+  "subject": "test(adjudication): cover CoordinatorIssuanceRequest -- the one WP-4B class no t",
+  "batch7": false,
+  "paths": [
+   "tests/Unit"
+  ]
+ },
+ "batch7_commits": 2,
+ "P-a": "SUPPORTED",
+ "P-b": "SUPPORTED",
+ "P-c": {
+  "VIOLATED": [
+   [
+    "6a67da5d7",
+    "2026-08-03T16:10:37+02:00",
+    "test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive"
+   ],
+   [
+    "f2ac054c8",
+    "2026-08-03T18:32:15+02:00",
+    "feat(adjudication): WP-4B batch 6 -- the conclude->issue seam (K1, K3, K4 green;"
+   ]
+  ]
+ },
+ "secondary: rows first recorded between T_R77 and first impl": [
+  "R-77",
+  "R-78",
+  "R-79",
+  "R-80"
+ ],
+ "all_impl": [
+  [
+   "6a67da5d7",
+   "2026-08-03T16:10:37+02:00",
+   true,
+   "test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive"
+  ],
+  [
+   "51fdbfb8b",
+   "2026-08-03T16:22:14+02:00",
+   false,
+   "test(adjudication): WP-4B RED ratchet -- port introduced, harness corrected, nex"
+  ],
+  [
+   "8e78bcdc2",
+   "2026-08-03T16:38:43+02:00",
+   false,
+   "feat(adjudication): WP-4B GREEN step 1 -- RED is now discriminating"
+  ],
+  [
+   "fdd09babf",
+   "2026-08-03T17:22:42+02:00",
+   false,
+   "feat(adjudication): WP-4B batch 1 -- jurisdiction and issuanceRequestedAt retent"
+  ],
+  [
+   "1a6f3c4d3",
+   "2026-08-03T17:33:14+02:00",
+   false,
+   "feat(adjudication): WP-4B batches 2+3 -- concludedAwaitingIssuance() and both st"
+  ],
+  [
+   "c3409d69f",
+   "2026-08-03T18:06:24+02:00",
+   false,
+   "feat(adjudication): WP-4B batch 4 -- persistence for the six retained issuance f"
+  ],
+  [
+   "f2ac054c8",
+   "2026-08-03T18:32:15+02:00",
+   true,
+   "feat(adjudication): WP-4B batch 6 -- the conclude->issue seam (K1, K3, K4 green;"
+  ],
+  [
+   "041628007",
+   "2026-08-04T20:47:09+02:00",
+   false,
+   "test(adjudication): cover CoordinatorIssuanceRequest -- the one WP-4B class no t"
+  ]
+ ]
+}

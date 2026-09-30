@@ -1,0 +1,7 @@
+Work only in the current directory. Read nothing outside ./F-EVIDENCE-VERIFIER-BUNDLE-01 and write only ./ANSWERS.json and ./STATUS.txt. Do not use git or the internet, and do not look for any other documents, analyses or results.
+
+STEP 0 — context self-check. If your context contains any prior analysis, coding, answer or expected result for these fragments or questions, write "CONTAMINATED: <exact quote and where>" into ./STATUS.txt and stop. Otherwise write "CLEAN: <one sentence>" into ./STATUS.txt.
+
+STEP 1 — Verify the hashes, then follow README.md exactly (in ./F-EVIDENCE-VERIFIER-BUNDLE-01). Write your answers to ./ANSWERS.json (same structure as ANSWERS.template.json), then append the sha256 of ./ANSWERS.json and your declaration (model name/id + "headless Claude Code session, non-git directory (SECONDARY_REVIEW)") to ./STATUS.txt.
+
+Final reply: only the contents of ./STATUS.txt.

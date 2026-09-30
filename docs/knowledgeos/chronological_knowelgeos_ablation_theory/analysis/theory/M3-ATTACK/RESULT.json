@@ -1,0 +1,175 @@
+{
+ "labels": "MODEL-DERIVED; development-data basis; relaxation counterexamples are observation templates, not observations",
+ "A_work": {
+  "reachable_states": 84,
+  "frame_violations": [],
+  "I-A1": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "START(4B)"
+   ],
+   "template": "an implementation start/commit for item X dated before X's full authorization (proviso satisfied)",
+   "observable_in": "git history (mechanical timestamps) × rulings register",
+   "observability_rank": 1
+  },
+  "I-A2": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "PERMIT(8)",
+    "START(8)"
+   ],
+   "template": "WP-8 implementation work recorded while only planning permission existed",
+   "observable_in": "git history × register (R-79)",
+   "observability_rank": 1
+  },
+  "I-A3": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "CLOSE(4B)"
+   ],
+   "template": "a work item recorded CLOSED with no acceptance act",
+   "observable_in": "register / session logs",
+   "observability_rank": 2
+  },
+  "I-A4": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "BOARD-ACTS",
+    "AUTHORIZE-COND(4B)",
+    "SATISFY-PROVISO(4B)",
+    "START(4B)",
+    "FINISH(4B)",
+    "ACCEPT(4B)"
+   ],
+   "template": "a parent (§WP-4) recorded accepted upon a child's acceptance alone",
+   "observable_in": "register",
+   "observability_rank": 2
+  },
+  "I-A5": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "BOARD-ACTS",
+    "AUTHORIZE-COND(4B)",
+    "SATISFY-PROVISO(4B)",
+    "START(4B)",
+    "FINISH(4B)",
+    "ACCEPT(4B)",
+    "AUTHORIZE(4C)"
+   ],
+   "template": "an authorization act recorded as also accepting or closing work",
+   "observable_in": "register",
+   "observability_rank": 2
+  }
+ },
+ "B_rulings": {
+  "reachable_states": 250,
+  "frame_violations": [],
+  "I-B1": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "ISSUE(r1,chief)",
+    "ADOPT(r1,Chief)"
+   ],
+   "template": "a Chief-issued ruling adopted by the Chief's own act",
+   "observable_in": "register annotations",
+   "observability_rank": 2
+  },
+  "I-B2": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "ISSUE(r1,chief)",
+    "ADOPT(r1,Authority)",
+    "ISSUE(r2,chief)"
+   ],
+   "template": "after an adoption, a Chief-issued ruling recorded governing at issue",
+   "observable_in": "register",
+   "observability_rank": 2
+  },
+  "I-B3": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "ISSUE(r2,human)",
+    "INFER-SUPERSEDED(r1)"
+   ],
+   "template": "a ruling treated as superseded with no supersession act",
+   "observable_in": "register / session logs",
+   "observability_rank": 3
+  },
+  "I-B4": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "ISSUE(r1,human)",
+    "AMEND-TEXT(r1)"
+   ],
+   "template": "a ruling's decision text edited in place after first record",
+   "observable_in": "git history of the register file (mechanical diff)",
+   "observability_rank": 1
+  },
+  "I-B5": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "ISSUE(r1,chief)",
+    "WITHDRAW(r1)"
+   ],
+   "template": "a withdrawn identifier reissued",
+   "observable_in": "register + git history",
+   "observability_rank": 1
+  },
+  "I-B6": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "ISSUE(r1,human)"
+   ],
+   "template": "a human-issued ruling recorded PREPARED",
+   "observable_in": "register",
+   "observability_rank": 2
+  }
+ },
+ "C_evidence": {
+  "reachable_states": 9,
+  "frame_violations": [],
+  "I-C1": {
+   "holds_in_M3": true,
+   "relaxation_counterexample": [
+    "INTAKE-CONTRA(imp)"
+   ],
+   "template": "a decision's standing lowered on implementation-level evidence alone",
+   "observable_in": "register / reviews",
+   "observability_rank": 3
+  }
+ },
+ "liveness": {
+  "START(8) reachable": true,
+  "ACCEPT(§4) reachable": true,
+  "permission-without-authorization state reachable (I-A2 witness)": true
+ },
+ "R-79 sequence check": {
+  "shortest_path_to_START(8)": [
+   "BOARD-ACTS",
+   "AUTHORIZE-COND(4B)",
+   "SATISFY-PROVISO(4B)",
+   "START(4B)",
+   "FINISH(4B)",
+   "ACCEPT(4B)",
+   "AUTHORIZE(4C)",
+   "START(4C)",
+   "FINISH(4C)",
+   "ACCEPT(4C)",
+   "AUTHORIZE(4D)",
+   "START(4D)",
+   "FINISH(4D)",
+   "ACCEPT(4D)",
+   "ACCEPT(§4)",
+   "AUTHORIZE(8)",
+   "START(8)"
+  ],
+  "R-79 order restricted to shared steps": true,
+  "every START(8)-state has board acts + 4B,4C,4D,§4 accepted (sequence forced by guards)": true
+ },
+ "next_read_ranking (rank 1 = mechanical, cross-source)": [
+  "I-A1",
+  "I-A2",
+  "I-B4",
+  "I-B5"
+ ]
+}

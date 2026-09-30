@@ -1,0 +1,4 @@
+CLEAN: My context contains no prior analysis, coding, answers or expected results for these fragments or questions; only the task instructions and generic global CLAUDE.md content.
+HASHES: BUNDLE.sha256 all OK; fragment F1 sha256 530298e94cbb56af4ebb32ac2b918a950d5035ce1a5e01b1e5dc0bac48fcb918 matches MANIFEST.json (41 lines).
+ANSWERS.json sha256: 7494a0cff938139258533b0c6fe8d2fc84a9554111de8df773ada80c8a537152
+DECLARATION: I, Claude Opus 5.5 (claude-opus-5-5), answered from the fragment only, without access to any other analysis of it. headless Claude Code session, non-git directory (SECONDARY_REVIEW)

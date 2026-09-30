@@ -1,0 +1,238 @@
+{
+ "labels": "MODEL-DERIVED; coded events (analyst-coded source facts); deterministic legality, nondeterministic choice",
+ "n_events": 27,
+ "n_legality_events": 26,
+ "single_field_ablation": {
+  "o": {
+   "representable_without": false,
+   "special_cases_if_removed": 1,
+   "counterexamples": [
+    [
+     "AUTHORIZE-IMPL not in force (R-89, Chief, PREPARED)",
+     "AUTHORIZE-PLAN in force (R-95, Chief)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": false,
+    "2": false
+   }
+  },
+  "r": {
+   "representable_without": true,
+   "special_cases_if_removed": 0,
+   "counterexamples": [],
+   "keep_at_lambda": {
+    "0.5": false,
+    "1": false,
+    "2": false
+   }
+  },
+  "a": {
+   "representable_without": false,
+   "special_cases_if_removed": 2,
+   "counterexamples": [
+    [
+     "ADOPT by Chief (R-81..85)",
+     "ADOPT by DA (R-86)"
+    ],
+    [
+     "AUTHORIZE-IMPL in force (R-70, ARB)",
+     "AUTHORIZE-IMPL not in force (R-89, Chief, PREPARED)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": true,
+    "2": false
+   }
+  },
+  "k": {
+   "representable_without": false,
+   "special_cases_if_removed": 2,
+   "counterexamples": [
+    [
+     "REGISTER operational acceptance (R-90)",
+     "REGISTER constitutional decision"
+    ],
+    [
+     "OPEN-WORK by recording note (R-60)",
+     "OPEN-WORK by ruling (R-60 refiled / R-52)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": true,
+    "2": false
+   }
+  },
+  "s": {
+   "representable_without": false,
+   "special_cases_if_removed": 1,
+   "counterexamples": [
+    [
+     "START WP-4B proviso unmet (R-72)",
+     "START WP-4B proviso discharged (git 08-03)"
+    ],
+    [
+     "START WP-4B proviso unmet (R-72)",
+     "START 7A after AUTHORIZE(7A) (R-47)"
+    ],
+    [
+     "START WP-4B proviso discharged (git 08-03)",
+     "START WP-8 permission only (R-79)"
+    ],
+    [
+     "START WP-8 permission only (R-79)",
+     "START 7A after AUTHORIZE(7A) (R-47)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": false,
+    "2": false
+   }
+  },
+  "t": {
+   "representable_without": false,
+   "special_cases_if_removed": 1,
+   "counterexamples": [
+    [
+     "START WP-4B proviso discharged (git 08-03)",
+     "START 7B after AUTHORIZE(7A) (R-47)"
+    ],
+    [
+     "START WP-4B proviso discharged (git 08-03)",
+     "START 4C-2 after AUTHORIZE(4C-1) (R-89)"
+    ],
+    [
+     "START 7A after AUTHORIZE(7A) (R-47)",
+     "START 7B after AUTHORIZE(7A) (R-47)"
+    ],
+    [
+     "START 7A after AUTHORIZE(7A) (R-47)",
+     "START 4C-2 after AUTHORIZE(4C-1) (R-89)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": false,
+    "2": false
+   }
+  },
+  "e": {
+   "representable_without": false,
+   "special_cases_if_removed": 1,
+   "counterexamples": [
+    [
+     "RAISE promoted #2 (matrix)",
+     "RAISE not promoted #5 (matrix)"
+    ],
+    [
+     "RAISE promoted #2 (matrix)",
+     "RAISE not promoted #14 (matrix)"
+    ],
+    [
+     "RAISE promoted #2 (matrix)",
+     "RAISE not promoted #17 (matrix)"
+    ],
+    [
+     "RAISE promoted #3 (matrix)",
+     "RAISE not promoted #5 (matrix)"
+    ],
+    [
+     "RAISE promoted #3 (matrix)",
+     "RAISE not promoted #14 (matrix)"
+    ],
+    [
+     "RAISE promoted #3 (matrix)",
+     "RAISE not promoted #17 (matrix)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": false,
+    "2": false
+   }
+  },
+  "x": {
+   "representable_without": true,
+   "special_cases_if_removed": 0,
+   "counterexamples": [],
+   "keep_at_lambda": {
+    "0.5": false,
+    "1": false,
+    "2": false
+   }
+  },
+  "h": {
+   "representable_without": false,
+   "special_cases_if_removed": 1,
+   "counterexamples": [
+    [
+     "ASSIGN a never-used number",
+     "ASSIGN the retired number R-90"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": false,
+    "2": false
+   }
+  },
+  "c": {
+   "representable_without": false,
+   "special_cases_if_removed": 1,
+   "counterexamples": [
+    [
+     "ADOPT by DA (R-86)",
+     "ADOPT by DA (R-91)"
+    ]
+   ],
+   "keep_at_lambda": {
+    "0.5": true,
+    "1": false,
+    "2": false
+   }
+  }
+ },
+ "minimal_representable_field_sets": [
+  [
+   "a",
+   "c",
+   "e",
+   "h",
+   "k",
+   "o",
+   "s",
+   "t"
+  ]
+ ],
+ "complexity_optimum": {
+  "0.5": {
+   "best_fields": [
+    "e"
+   ],
+   "score": 1.5
+  },
+  "1": {
+   "best_fields": [
+    "e"
+   ],
+   "score": 2
+  },
+  "2": {
+   "best_fields": [
+    "e"
+   ],
+   "score": 3
+  }
+ },
+ "choice_layer": {
+  "representationally_necessary": false,
+  "reason": "a nondeterministic legal set represents R-94; the choice layer only EXPLAINS the selection",
+  "explained_only_with_choice_layer": [
+   "SUPERSEDE declined (R-94)"
+  ]
+ }
+}

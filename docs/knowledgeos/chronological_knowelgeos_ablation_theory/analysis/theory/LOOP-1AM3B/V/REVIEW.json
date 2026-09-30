@@ -1,0 +1,53 @@
+{
+  "headers": [
+    {"row": "R-81", "X": "Execution", "Y": "Authorization", "authority": "ARB", "class": "SOURCE FACT"},
+    {"row": "R-82", "X": "Architecture", "Y": "Adoption", "authority": "ARB", "class": "SOURCE FACT"},
+    {"row": "R-83", "X": "Architecture", "Y": "Adoption", "authority": "ARB", "class": "SOURCE FACT"},
+    {"row": "R-84", "X": "Execution", "Y": "Adoption", "authority": "ARB", "class": "SOURCE FACT"},
+    {"row": "R-85", "X": "Delivery", "Y": "Adjudication", "authority": "ARB", "class": "SOURCE FACT"},
+    {"row": "R-91", "X": "Architecture", "Y": "Determination on submitted evidence", "authority": "ARB CHIEF (PREPARED)", "class": "SOURCE FACT"},
+    {"row": "R-86", "X": "UNK", "Y": "UNK", "authority": "UNK", "class": "UNKNOWN", "note": "R-86 row absent from SOURCES.md; mentioned only in R-91: \"R-86/R-87 created no standing delegation\""}
+  ],
+  "Y_equal": false,
+  "separation_scope": {
+    "answer": "UNK",
+    "class": "SOURCE FACT (scoped to Event D) + UNKNOWN (type or general scope)",
+    "detail": "The requirement is attributed to Event D, which appears in R-91's TITLE, not its Y field. It is not stated for the type 'Determination on submitted evidence', and not stated generally.",
+    "quotes": [
+      "Event D SEPARATES evidence submission from constitutional review, and this ruling collapsed the two",
+      "engineering submitted evidence and then wrote the governance outcome — “no architecture-governance action required” — which belongs to the ARB review step.",
+      "A PREPARED ruling was still engineering deciding the outcome, in softer wording.",
+      "The engineering artefact must end at evidence validated."
+    ]
+  },
+  "coarse_grain_witness": {
+    "pair": "R-86/R-91",
+    "strict": false,
+    "class": "FORMAL CONSEQUENCE",
+    "reason": "All R-86 fields, including kind, are UNK, so the 'known' condition fails.",
+    "also": "R-8x/R-91 (x=1..5) is also not STRICT: authority is known and unequal ('ARB' vs 'ARB CHIEF (PREPARED)'). Kind 'ruling' is self-stated only by R-81, R-82, R-85 and R-91."
+  },
+  "type_grain_witness": {
+    "R-86/R-91": "POSSIBLE",
+    "R-81..R-85/R-91": "NONE",
+    "class": "FORMAL CONSEQUENCE",
+    "reason": "R-86's Y and authority are UNK, so no known field differs. For R-81..R-85, Y is known and unequal to R-91's, and authority also differs.",
+    "definitions_assumed": "POSSIBLE = not STRICT only because a field is UNK; NONE = a known compared field differs (INFERENCE, since the frozen rule defines only STRICT)"
+  },
+  "alternative": {
+    "reading": "Y names the act the row performs (authorize / adopt / adjudicate / determine on submitted evidence), and X names the governance branch performing it; Y does not name the kind of object adopted.",
+    "support_quotes": [
+      "a separate EXECUTION-governance authorization is required for any repair — a different act, by a different branch of the same authority",
+      "one engineering slice is authorized inside the seam",
+      "K2's RECORDED INTENT IS UPHELD; ITS MECHANISM IS NOT.",
+      "The determination is therefore: ..."
+    ],
+    "effect_on_answers": "None: R-91's Y still differs from every R-81..R-85 Y. On this reading, R-91's act label names both of the collapsed steps.",
+    "class": "INFERENCE"
+  },
+  "alternative_ruled_out": false,
+  "unverified_premises": [
+    "R-81, R-83, R-84 and R-85 being 'adopted, performed' is not stated in the provided segments (R-82 only: 'ADOPTED WITH THE RULING')",
+    "R-86 content is entirely absent from the sources"
+  ]
+}

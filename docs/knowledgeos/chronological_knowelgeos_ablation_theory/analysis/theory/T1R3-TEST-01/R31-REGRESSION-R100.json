@@ -1,0 +1,75 @@
+[
+ {
+  "case": "TEST R-100 (new-commission rule)",
+  "instrument": "r3.1",
+  "force": "AMBIGUOUS",
+  "text_level": {
+   "ev": "NOT-RECORDED",
+   "q": "UNKNOWN",
+   "dec": "MET"
+  },
+  "text_aggregate": "UNDETERMINABLE",
+  "interpretations": [
+   {
+    "id": "I-R39",
+    "eligible": true,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges": "YES",
+    "level": {
+     "bar": "NOT-RECORDED"
+    },
+    "aggregate": "UNDETERMINABLE"
+   },
+   {
+    "id": "I-MEMORY",
+    "eligible": false,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges": "YES",
+    "level": {
+     "bar": "NOT-RECORDED"
+    },
+    "aggregate": "UNDETERMINABLE"
+   },
+   {
+    "id": "I-CLAUDE",
+    "eligible": false,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges": "YES",
+    "level": {
+     "bar": "NOT-RECORDED"
+    },
+    "aggregate": "UNDETERMINABLE"
+   },
+   {
+    "id": "I-ES0013",
+    "eligible": true,
+    "relation_to_text": {
+     "bar": "ADDS"
+    },
+    "judges": "NO (postdates)"
+   }
+  ],
+  "claims": {
+   "C1": "SUPPORTED",
+   "C2": "NOT-TRIGGERED",
+   "C3": "UNDETERMINABLE",
+   "C4": "SUPPORTED"
+  },
+  "observations": {
+   "NEW-AUTHORITY": [
+    "ARB CHIEF"
+   ]
+  },
+  "pattern": {
+   "T=I": false,
+   "O|=T": "UNDETERMINED",
+   "O|=I": "UNDETERMINED"
+  }
+ }
+]

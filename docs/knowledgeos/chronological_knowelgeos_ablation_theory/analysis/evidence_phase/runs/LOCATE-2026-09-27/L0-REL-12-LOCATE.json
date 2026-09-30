@@ -1,0 +1,1330 @@
+{
+ "record": "L0-REL-12 locate-only: 'the promotion chain'",
+ "include": [
+  "docs/knowledgeos/",
+  "docs/knowledge/",
+  "engineering/",
+  "docs/pks/",
+  "docs/implementation/",
+  "docs/architecture/",
+  "docs/adr/"
+ ],
+ "exclude": [
+  "docs/knowledgeos/chronological_knowelgeos_ablation_theory/",
+  "docs/knowledgeos/knowledgeos_theory_chronological_extraction/",
+  "docs/knowledgeos/chronological-read/",
+  "/brainstorming/",
+  "/analysis/",
+  "/evidence_phase/",
+  "/prompts/",
+  "/comparison",
+  "/tests/",
+  "test-output",
+  "/_generated/"
+ ],
+ "files": 1896,
+ "patterns": {
+  "PC": "promotion[ -]chain|promotion[ -]path|promotion[ -]pipeline|promotion[ -]ladder",
+  "DEF": "(promotion[ -](chain|path|pipeline|ladder))\\s*(is|=|:|means|consists|comprises|runs)|^#+.*promotion[ -](chain|path|pipeline|ladder)|\\*\\*[^*]*promotion[ -](chain|path|pipeline|ladder)[^*]*\\*\\*",
+  "SEP": "\\bbefore\\b|prior to|\\bthen\\b|subsequent\\w*|\\bpending\\b|after (?:approval|authori[sz]ation|decision)|authori[sz]ed to|commissioned to|awaiting|\\bstage\\b|\\bstep\\b"
+ },
+ "hits": [
+  {
+   "path": "docs/implementation/EPIC-001_Retrospective.md",
+   "sha256": "e76ebe826dbe3da47cad8d988d1b91e5551be6f25ddb4fc7c67d210c3ce7a963",
+   "line": 4,
+   "heading": [
+    1,
+    "# EPIC-001 Retrospective — Record of Rulings (2026-07-11)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "Promotion ladder enforced throughout: *observation → repeated observation → practice → candidate standard → approved standard* — insufficient evidence ⇒ explicit deferral, never approval-by-momentum."
+  },
+  {
+   "path": "docs/implementation/KnowledgeOS_Development_Constitution.md",
+   "sha256": "4ccf2215ebfaf47b2b04bcb2d6ff82e2ffa9ab7583f4477b34ed0b1b747642fc",
+   "line": 151,
+   "heading": [
+    139,
+    "# Annex — Lineage (this binding restates; canonical homes govern on any conflict)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "UL Promotion Chain"
+  },
+  {
+   "path": "docs/implementation/Knowledge_Boundary_Charter.md",
+   "sha256": "3f2bd17a7ee3f085a4c49abc3f3799861de59cb16fbcf9f834e39c814d00b729",
+   "line": 23,
+   "heading": [
+    7,
+    "## 1. The two bounded contexts"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "the promotion ladder"
+  },
+  {
+   "path": "docs/implementation/Knowledge_Boundary_Charter.md",
+   "sha256": "3f2bd17a7ee3f085a4c49abc3f3799861de59cb16fbcf9f834e39c814d00b729",
+   "line": 25,
+   "heading": [
+    7,
+    "## 1. The two bounded contexts"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion-ladder audits (ES-006 method)"
+  },
+  {
+   "path": "docs/implementation/Knowledge_Boundary_Charter.md",
+   "sha256": "3f2bd17a7ee3f085a4c49abc3f3799861de59cb16fbcf9f834e39c814d00b729",
+   "line": 37,
+   "heading": [
+    37,
+    "## 3. The promotion path"
+   ],
+   "term": "promotion path",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "The promotion path"
+  },
+  {
+   "path": "docs/implementation/Knowledge_Boundary_Charter.md",
+   "sha256": "3f2bd17a7ee3f085a4c49abc3f3799861de59cb16fbcf9f834e39c814d00b729",
+   "line": 51,
+   "heading": [
+    47,
+    "## 5. Open questions (pilot-gated — cannot be answered by more design)"
+   ],
+   "term": "promotion path",
+   "class": "MENTION",
+   "sentence": "Does the promotion path hold under real traffic?"
+  },
+  {
+   "path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "line": 216,
+   "heading": [
+    216,
+    "### The promotion chain, with owners *(Authority, 2026-07-30 — codifies the sequence the program has enforced "
+   ],
+   "term": "promotion chain",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "### The promotion chain, with owners *(Authority, 2026-07-30 — codifies the sequence the program has enforced throughout;"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_CON1_Consolidation_Integrity_Review.md",
+   "sha256": "68f05457d73808669a7cdf17513a57c0da73efdda18fe07c72947e3312104f1f",
+   "line": 268,
+   "heading": [
+    262,
+    "## 14. CON-1 **CLOSED as a review** (Authority direction, 2026-07-31) — findings remain OPEN"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "**The promotion chain already distinguishes *Review Complete* from *Findings Dispositioned*.** ***A review that could not close until its findings were disposed would make every review hostage to a decision that is not its to take***"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_CON1_Consolidation_Integrity_Review.md",
+   "sha256": "68f05457d73808669a7cdf17513a57c0da73efdda18fe07c72947e3312104f1f",
+   "line": 293,
+   "heading": [
+    273,
+    "## 15. The methodological lesson — **stronger evidence than the defect itself**"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "OBS-CON-1 remain OPEN** — lawful under the promotion chain's own distinction between *Review Complete* and *Findings Dispositioned*"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_Execution_Record.md",
+   "sha256": "f937e713aee860c5d1dfb3c73acf54fdc64aefb2e61dcf0f5f297c06914975f2",
+   "line": 389,
+   "heading": [
+    387,
+    "## 3. Scope of this act"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "*Promoting the ready set because it happens to be ready would substitute readiness for decision, which is the conflation the promotion chain exists to prevent.*"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_Execution_Record.md",
+   "sha256": "f937e713aee860c5d1dfb3c73acf54fdc64aefb2e61dcf0f5f297c06914975f2",
+   "line": 395,
+   "heading": [
+    387,
+    "## 3. Scope of this act"
+   ],
+   "term": "promotion chain",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "the full promotion chain discharged with each step separately owned, and *promotion-ready* recorded as a **derived state** rather than a decision"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M1_Concept_Register.md",
+   "sha256": "95ff1564172cfde91078a35d99c58e89a8b8b5243bd8f89d83ad5501596611ad",
+   "line": 80,
+   "heading": [
+    76,
+    "## Part D — Surfacing Register (governance questions encountered; none resolved)"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "**OQ-PKS-11** — is \"Qualification\" one concept or two (verification instrument vs promotion-ladder stage)?"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M5_Strategic_Domain_Classification.md",
+   "sha256": "da18a7515166680c6be45ff9151214474f5bcd0f763240a7ed3134e13f2916fe",
+   "line": 54,
+   "heading": [
+    37,
+    "## 4. Concept-by-Concept Classification"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "Supporting — rejected: the promotion ladder is among the most differentiating observed behaviors"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M6_Bounded_Context_Discovery.md",
+   "sha256": "71df3252590e0a822b0ee6674c0e95918543574c7358d18d773e06ba5d3fad33",
+   "line": 107,
+   "heading": [
+    102,
+    "### 2.2 L2 — UL-shift inventory (where the same term changes meaning, or distinct vocabularies operate)"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "\"**Qualification**\" carries **two senses**: (a) the verification activity/instrument, (b) a promotion-ladder stage — flagged by the corpus's own UL audit"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M6_Bounded_Context_Discovery.md",
+   "sha256": "71df3252590e0a822b0ee6674c0e95918543574c7358d18d773e06ba5d3fad33",
+   "line": 339,
+   "heading": [
+    334,
+    "### 6.1 CBC-1 Knowledge Assessment"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "**Qualification** shifts across this exact line: *verification instrument* (inside) vs *promotion-ladder stage* (outside, in the candidate/promotion vocabulary) — OQ-PKS-11, a collision the corpus itself recorded before this discovery."
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M6_Bounded_Context_Discovery.md",
+   "sha256": "71df3252590e0a822b0ee6674c0e95918543574c7358d18d773e06ba5d3fad33",
+   "line": 420,
+   "heading": [
+    417,
+    "### 7.4 Recommended boundaries (hypotheses until the Authority disposes, per candidate, at G-M6-3)"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**\"Qualification\" here means the verification instrument, never the promotion-ladder stage** (the second sense belongs outside this context;"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M8_Strategic_Modeling_Report.md",
+   "sha256": "1fdaab2538185bf0c0116168ea15cd5d4889da53f95be16ca6f3b9c26f627974",
+   "line": 86,
+   "heading": [
+    77,
+    "## 4. Ubiquitous Language"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**\"Qualification\" here means the verification instrument, never the promotion-ladder stage** — the canonicalization is OQ-PKS-11's, not this model's."
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_Retrospective_Review.md",
+   "sha256": "d6233fec81235089b9bb8057e4387b27c9175e477c3ec5956a28b90ba5d474fe",
+   "line": 311,
+   "heading": [
+    311,
+    "## 13.2 — The promotion chain, with owners *(Authority's sequence, adopted)*"
+   ],
+   "term": "promotion chain",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "## 13.2 — The promotion chain, with owners *(Authority's sequence, adopted)*"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_Retrospective_Review.md",
+   "sha256": "d6233fec81235089b9bb8057e4387b27c9175e477c3ec5956a28b90ba5d474fe",
+   "line": 337,
+   "heading": [
+    329,
+    "## 13.3 — Post-closure status"
+   ],
+   "term": "promotion chain",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "the six-stage promotion chain with owners recorded, with *promotion-ready* marked as a **derived state rather than a decision**"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_I_ARB_Review_Dossier.md",
+   "sha256": "6e0ccafbe2cc5c53963075cbf33c21cdbb21dd29ef7e1aae229ac9cc7df33df8",
+   "line": 37,
+   "heading": [
+    28,
+    "## 2. Package Map"
+   ],
+   "term": "promotion pipeline",
+   "class": "MENTION",
+   "sentence": "Captures the discovery method (promotion pipeline, three orthogonal tests, five claim classes, claim-level confidence) as a learning input"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_I_ARB_Review_Dossier.md",
+   "sha256": "6e0ccafbe2cc5c53963075cbf33c21cdbb21dd29ef7e1aae229ac9cc7df33df8",
+   "line": 37,
+   "heading": [
+    28,
+    "## 2. Package Map"
+   ],
+   "term": "promotion path",
+   "class": "MENTION",
+   "sentence": "**Separable.** Different scope, promotion path, and evidence bar (one operational instance;"
+  },
+  {
+   "path": "docs/implementation/PKS_Strategic_Modeling_Readiness_Assessment.md",
+   "sha256": "cffea456c4c6ed74a9d637b01c1b519d1ccb3c76fe5d355fd6703dd70fa37cc7",
+   "line": 26,
+   "heading": [
+    17,
+    "## 1. Ubiquitous Language readiness"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "V-2 **\"Qualification\" carries two meanings** (verification instrument vs promotion-ladder stage) — flagged by the corpus's own UL audit"
+  },
+  {
+   "path": "docs/implementation/RQ-002_General_Knowledge_Architecture_Constitutional_Model.md",
+   "sha256": "869d06fe3389976823a228173a381aea980f0451099bdd2479657a4544db4a00",
+   "line": 96,
+   "heading": [
+    90,
+    "## Appendix A — Specializations (EXAMPLES, derived from the evidence base — not part of the constitution)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Execution + instrument runs + promotion chain"
+  },
+  {
+   "path": "docs/implementation/RQ-002_Knowledge_Taxonomy.md",
+   "sha256": "90d2b7f1235adfd462628b9cf6bb3e5d2faffd4f29aae27fcee710eb168a1534",
+   "line": 72,
+   "heading": [
+    69,
+    "### Knowledge Type 5: Experiential / Research Knowledge"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "- **Consumer:** Future deciders — via the promotion chain, never directly as authority."
+  },
+  {
+   "path": "docs/implementation/Strategic_DDD_Discovery_Engineering_Governance_Domain.md",
+   "sha256": "f9b958014b42574650cbdd85bc69e69b76bb3cb7b8b865c4c5e181b08c85f79a",
+   "line": 14,
+   "heading": [
+    8,
+    "## Exercise 1 — Domain Inventory"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "Promotion Ladder (ES-006.1)"
+  },
+  {
+   "path": "docs/implementation/Strategic_DDD_Discovery_Engineering_Governance_Domain.md",
+   "sha256": "f9b958014b42574650cbdd85bc69e69b76bb3cb7b8b865c4c5e181b08c85f79a",
+   "line": 50,
+   "heading": [
+    41,
+    "## Exercise 3 — Ubiquitous-Language Audit"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "(b) a promotion-ladder *stage* (ES-006.1: Research → Pilot → **Qualification** → Standard)."
+  },
+  {
+   "path": "docs/implementation/Strategic_DDD_Discovery_Product_Knowledge_System_Converged_Review_Synthesis.md",
+   "sha256": "ad79d878da875db397cecaf786a68674d19ef29b8044aebdcb0783cfa9824161",
+   "line": 113,
+   "heading": [
+    103,
+    "## 6. Potential ARB agenda items identified during review"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "ES-006.1 promotion ladder)"
+  },
+  {
+   "path": "docs/implementation/Strategic_DDD_Discovery_Product_Knowledge_System_Domain.md",
+   "sha256": "d2cb04b786323a42a55439812849357956c0a299a2ec2c496d25bc70bf1c1fe5",
+   "line": 76,
+   "heading": [
+    59,
+    "### 1.2 Knowledge concepts discovered (with sub-document evidence)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "**Candidate** (promotion-ladder resident: pattern, principle, practice)"
+  },
+  {
+   "path": "docs/implementation/Strategic_DDD_Discovery_Product_Knowledge_System_Domain.md",
+   "sha256": "d2cb04b786323a42a55439812849357956c0a299a2ec2c496d25bc70bf1c1fe5",
+   "line": 329,
+   "heading": [
+    315,
+    "## Q9 — Open Questions (cannot be answered from repository evidence)"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "(b) a promotion-ladder stage … Candidate for a future UL ruling — not resolved here\""
+  },
+  {
+   "path": "docs/implementation/Strategic_Discovery_Methodology_Candidate.md",
+   "sha256": "0ecf3c1b3b948a257e6e6534cb0e60a9d1efcafec6d21cf3d2332ca3ec6eb46e",
+   "line": 13,
+   "heading": [
+    13,
+    "## 1. The promotion pipeline (as operated, once)"
+   ],
+   "term": "promotion pipeline",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "The promotion pipeline (as operated, once)"
+  },
+  {
+   "path": "docs/implementation/Strategic_Discovery_Methodology_Candidate.md",
+   "sha256": "0ecf3c1b3b948a257e6e6534cb0e60a9d1efcafec6d21cf3d2332ca3ec6eb46e",
+   "line": 58,
+   "heading": [
+    56,
+    "## 6. What this methodology is assembled from"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion ladder with human gates (ES-006.1;"
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-product-boundary-discovery.md",
+   "sha256": "1a05e686a49162eef3b6703f021a487a8c7549726ebd73b723cd7ce0f3e2825a",
+   "line": 90,
+   "heading": [
+    80,
+    "### SP-5 · Operational Learning — ⚠️ **NOT MISSING. DISPERSED, NAMED, AND NEVER ONCE EXERCISED**"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**The promotion ladder** — research → pilot → qualification → standard"
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-product-boundary-discovery.md",
+   "sha256": "1a05e686a49162eef3b6703f021a487a8c7549726ebd73b723cd7ce0f3e2825a",
+   "line": 245,
+   "heading": [
+    238,
+    "## 7. Operational Learning Boundary"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "the **promotion ladder**"
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-domain-discovery.md",
+   "sha256": "58b302a3576e9ef66eaa79719f9a1cdce999d8df3f9e634362cb474692923d88",
+   "line": 120,
+   "heading": [
+    112,
+    "## 5. Candidate Strategic Responsibilities"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion ladder"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Architecture_Synthesis_Matrix.md",
+   "sha256": "87696996d521481bdfc6d91ce8ad3e345fd5fe9c57e0b34b64c18a5349e191d7",
+   "line": 17,
+   "heading": [
+    1,
+    "# KnowledgeOS — Architecture Synthesis Matrix"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "⛔ **Check-before note recorded now: any such lifecycle must RECONCILE WITH ES-006.1, which already owns the promotion ladder — and the reviewer's sketch orders Candidate before Hypothesis, the reverse of this corpus's usage."
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Architecture_Validation_Matrix.md",
+   "sha256": "bfe12cfe76abee569aeb5f0be167c67f13a37aeeee8dd2e6d627b9e7b22cd4ec",
+   "line": 28,
+   "heading": [
+    15,
+    "## 1. The Validation Matrix"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion ladders**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Decision_Model_Discovery.md",
+   "sha256": "d95edaed870da51b19f41b5923318fdd502687186ed5a21d26ca039b062d2c39",
+   "line": 100,
+   "heading": [
+    94,
+    "## 6. The review's recommendations — routed, not adopted"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "*\"the promotion ladder should govern the ontology itself\"*"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "sha256": "7f7cb94d5881931cae03f7f665adb8ae4349cf7f14a013a9791c4d044b231db5",
+   "line": 53,
+   "heading": [
+    45,
+    "### ⭐⭐ Therefore the landscape's central finding, stated before any inventory"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**ES-006.1 promotion ladder**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+   "sha256": "b685f5991338f24df135a50bd7d004999d62401bdac10f9c0ef8241ecbbed7bc",
+   "line": 17,
+   "heading": [
+    1,
+    "# KnowledgeOS — Engineering Knowledge Progression Model"
+   ],
+   "term": "promotion ladder",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "⚠️ It even has a **recorded UL collision on the word** (the Engineering Governance Domain discovery: \"Qualification\" = verification activity vs promotion-ladder stage, \"candidate for a future UL ruling\")*"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+   "sha256": "b685f5991338f24df135a50bd7d004999d62401bdac10f9c0ef8241ecbbed7bc",
+   "line": 29,
+   "heading": [
+    21,
+    "## 1. The progression mechanisms — inventoried as evidence"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**ES-006.1 promotion ladder**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_External_Positioning_Comparison_Matrix.md",
+   "sha256": "481d74de002e538b411187b89716bf7f654ed2b214e21cd0788c4ee9934a743f",
+   "line": 31,
+   "heading": [
+    26,
+    "## 2. The six-area comparison — holdings first, reading queued honestly"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "⭐ our ontologies are **CANDIDATE knowledge under a promotion ladder, not the platform itself** — the reviewer's own question (*\"ontologies or viewpoints over a larger system?\"*) was already answered: **viewpoints/projections;"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Lifecycle_Gap_Analysis.md",
+   "sha256": "9d46279a12fb70b56c471c990d9c5e15693aac2075ce78bb83bcf04e95cab2c4",
+   "line": 53,
+   "heading": [
+    35,
+    "## 1. ⭐ What already exists — checked before analysing gaps"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**ES-006.1 promotion ladder**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Lifecycle_Gap_Analysis.md",
+   "sha256": "9d46279a12fb70b56c471c990d9c5e15693aac2075ce78bb83bcf04e95cab2c4",
+   "line": 134,
+   "heading": [
+    127,
+    "### ⚠️ 5.2 Five lifecycle vocabularies — and only some multiplicity is healthy"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "⚠️ **possible duplication** — *both are promotion ladders*"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Operational_Validation_Report.md",
+   "sha256": "05d8b4442d2500e5f298b59d2d499b75ce390bc85c6a17d451c82d3ff02f142f",
+   "line": 41,
+   "heading": [
+    27,
+    "## 2. Evidence Coverage Matrix"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**Promotion ladder (end-to-end from operational evidence)**"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Viewpoint_Ownership_Discovery.md",
+   "sha256": "019ac5b8b7e826d669d56403fe5c21226879c4541de92ed3d9839c771ce023d3",
+   "line": 40,
+   "heading": [
+    33,
+    "## 3. ⭐ Finding 2 — there are TWO kinds of \"unowned\", and only one is a defect"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "Candidate-unowned is the promotion ladder behaving correctly;"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Vision_Mission_Clarification.md",
+   "sha256": "2f105ce243d31d85ebd38365873290bafdc2d842b9e69376c31a020131c0c22b",
+   "line": 81,
+   "heading": [
+    73,
+    "### ⭐⭐ 2.1 The implicit mission — eight artifacts, none PublicDigit-specific"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "⭐ **ES-006.1's promotion ladder** — research → pilot → qualification → standard"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2140-EKS-Current-Architecture-Baseline-Stage-1.md",
+   "sha256": "d97908885460a6141c3b555ffda01556448ad8bcc2878263202cb6fe2586ede0",
+   "line": 930,
+   "heading": [
+    917,
+    "### 16.6 Executable vs documented-only governance (special question 12) — class **A/G**"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**Promotion ladder** (ES-006.1)"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2140-EKS-Current-Architecture-Baseline-Stage-1.md",
+   "sha256": "d97908885460a6141c3b555ffda01556448ad8bcc2878263202cb6fe2586ede0",
+   "line": 1218,
+   "heading": [
+    1216,
+    "### 21.6 SQ12 — Executable vs documented-only governance (§16.6) — class **A/G**"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "Everything else — the registry-first workflow, **ES-001…ES-006 (all PROPOSED)**, the promotion ladder, the 14-phase Operating Loop, EP-01/02/03, the six-role operating model, work-item acceptance/closure — is **documented only**."
+  },
+  {
+   "path": "docs/knowledgeos/backlog/EKS-12-theory-governance-scope-gap.md",
+   "sha256": "3c174382b32e8e306db5f9bafd017cdf4b1205fdd916b0c65f9eaf4ea88b4070",
+   "line": 67,
+   "heading": [
+    58,
+    "## 1 · The observation"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "`ES-006.1`'s promotion ladder exists but `ES-006` is **`Status: PROPOSED`** and scoped *\"engineering knowledge only … explicitly OUT of scope: Project Knowledge\"*"
+  },
+  {
+   "path": "docs/knowledgeos/governance/EPISTEMIC-STATUS-VOCABULARY.md",
+   "sha256": "835dee89bf078eb4b147dcb889cdc292c7ba62ce2023e61e7309c1d80a9a9966",
+   "line": 86,
+   "heading": [
+    86,
+    "### The promotion ladder is one-directional and gated"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "### The promotion ladder is one-directional and gated"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-17-KOS-ATTR-ARCH-001-stage2-bounded-context-confirmation.md",
+   "sha256": "6c3533c08784882580fd31891506b44f823556d37bb62b2b896194881c51c99d",
+   "line": 38,
+   "heading": [
+    36,
+    "### 2a · Reasoning that the table compresses"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "**But the baseline records two knowledge tiers with different constitutions** (`docs/knowledge/` EKP vs `docs/pks/` under `ES-006`'s promotion ladder) and cannot say whether they are one system (U-4, `Unknown`)."
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-19-KOS-AIP-GOV-STATE-DURABILITY-po-arb-position-registration.md",
+   "sha256": "07343ad329a65f7d678ad02d371ad0e9ebd6764723bdc189f43df8afae361b4e",
+   "line": 188,
+   "heading": [
+    181,
+    "## D · Governance's advisory recommendations — **ADVISORY ONLY, they decide nothing**"
+   ],
+   "term": "promotion path",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "⚠️ **And adoption is the legitimate promotion path — an explicit act, not accretion** (`ES-006.1`), which is why Governance recorded these four as *evidence* and declined to promote them itself"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/62-P44-R-KERNEL-ADOPTABILITY-AND-ARTIFACT-BOUNDARY-AUDIT.md",
+   "sha256": "1577b810dc933ec215c2ae886701b0f48fe948d89873ec2c104ba2408bb09c67",
+   "line": 14,
+   "heading": [
+    5,
+    "# 1. Executive verdict"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "⭐⭐ **(ii)** `ES-006.1` — **The Promotion Ladder**"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/62-P44-R-KERNEL-ADOPTABILITY-AND-ARTIFACT-BOUNDARY-AUDIT.md",
+   "sha256": "1577b810dc933ec215c2ae886701b0f48fe948d89873ec2c104ba2408bb09c67",
+   "line": 68,
+   "heading": [
+    66,
+    "# 6. ⭐⭐⭐ The pathway search — and the scope finding"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "⭐ **`ES-006.1 — The Promotion Ladder`** *(ARB, refined 2026-07-11)* is a genuine, named pathway:"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/62-P44-R-KERNEL-ADOPTABILITY-AND-ARTIFACT-BOUNDARY-AUDIT.md",
+   "sha256": "1577b810dc933ec215c2ae886701b0f48fe948d89873ec2c104ba2408bb09c67",
+   "line": 208,
+   "heading": [
+    187,
+    "### 17. ONE NEXT UNRESOLVED QUESTION"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "(ii) ES-006.1, \"The Promotion Ladder\" (ARB, refined 2026-07-11), IS a genuine named pathway —"
+  },
+  {
+   "path": "docs/pks/2026-08-02-triple-qualification-timing-observation.md",
+   "sha256": "21e521244f334b8a3d773284f13de1c9d172368fceb928bc87fb17582e25c328",
+   "line": 70,
+   "heading": [
+    62,
+    "## Promotion condition"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "**ES-006.1** (promotion ladder)"
+  },
+  {
+   "path": "docs/pks/2026-08-05-knowledgeos-distillation-principle-candidate.md",
+   "sha256": "d00493b6047a385c4878317ada136d0f054072466dd90ed6b0ce82f83fe8023c",
+   "line": 45,
+   "heading": [
+    39,
+    "## Relationship to existing governance (this candidate largely CONFIRMS, it does not replace)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "- ES-006.1 promotion ladder — observation → repeated observation → practice → candidate standard → approved standard"
+  },
+  {
+   "path": "docs/pks/2026-08-05-knowledgeos-distillation-principle-candidate.md",
+   "sha256": "d00493b6047a385c4878317ada136d0f054072466dd90ed6b0ce82f83fe8023c",
+   "line": 97,
+   "heading": [
+    93,
+    "## Two corrections recorded at filing (both narrow the candidate)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Similarly the promotion chain restates **ES-006.1**, and \"no layer bypasses the one above\" restates **ES-006.3** (*research dossiers are input-only;"
+  },
+  {
+   "path": "docs/pks/2026-08-05-manual-code-editing-observation.md",
+   "sha256": "264276360b1ecc9279168cd4dff2b217498eca6da8a33de041fec1d5c4be19b2",
+   "line": 43,
+   "heading": [
+    43,
+    "## Maturity and promotion path (ES-006.1)"
+   ],
+   "term": "promotion path",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "## Maturity and promotion path (ES-006.1)"
+  },
+  {
+   "path": "docs/pks/2026-08-06-consistency-boundary-before-transaction-boundary-candidate.md",
+   "sha256": "28574141680762439f3bca1482b4c1837a9a681cd43a86de0ea8f80abe28d3c8",
+   "line": 88,
+   "heading": [
+    88,
+    "## Promotion path"
+   ],
+   "term": "promotion path",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "## Promotion path"
+  },
+  {
+   "path": "docs/pks/2026-08-06-discovery-does-not-design-candidate.md",
+   "sha256": "16bacdaccbf96bb783542fd22f976f4d8d8bf757d52cf9ccc1fb4b8d8b214fe4",
+   "line": 76,
+   "heading": [
+    76,
+    "## Promotion path"
+   ],
+   "term": "promotion path",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "## Promotion path"
+  },
+  {
+   "path": "docs/pks/2026-08-06-legacy-consumer-migration-pattern-candidate.md",
+   "sha256": "61fce7ff1f6845ac1b73b00f8eeb5d8331c28188fcd2a523e7b8fa8b16f76669",
+   "line": 193,
+   "heading": [
+    193,
+    "## Promotion path"
+   ],
+   "term": "promotion path",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "## Promotion path"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-01-AI-Engineering-Platform-Baseline-v1.0.md",
+   "sha256": "a02a4eae839367bf3b58a8f7f53d4245be1a162a56ff939efbccab1da2d1ffca",
+   "line": 48,
+   "heading": [
+    44,
+    "## Rationale"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "- The platform's governance (promotion chain, Authority Boundary, honesty invariant, separation of duties) is defined tightly enough that realization can be objectively checked against it (FF-1..16, PD enforcement mapping)."
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-01-AI-Engineering-Platform-Baseline-v1.0.md",
+   "sha256": "a02a4eae839367bf3b58a8f7f53d4245be1a162a56ff939efbccab1da2d1ffca",
+   "line": 49,
+   "heading": [
+    44,
+    "## Rationale"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "- A formal baseline decision was the one missing artifact: the promotion chain requires a Human Decision Event to move the corpus beyond `generated/draft` — this ADR is that event's record."
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "line": 24,
+   "heading": [
+    12,
+    "## Rulings (living, append-only)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "knowledge research frozen) into **one platform-wide declaration: no new concepts, standards, decisions, or architectural subsystems** — changes enter only through operational evidence via the ES-006.1 promotion ladder."
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.5-Certification-Plan.md",
+   "sha256": "eef98516193a121eae8c2fac929fec778155a5f496adc9cfc108ba94f396bd39",
+   "line": 26,
+   "heading": [
+    22,
+    "## 1. Domain classification (ARB-decided)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "**Architecture Governance** — Design & Decision Support plus the governance model itself (promotion chain, ownership matrices, AIP principles)"
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.5-Certification-Plan.md",
+   "sha256": "eef98516193a121eae8c2fac929fec778155a5f496adc9cfc108ba94f396bd39",
+   "line": 40,
+   "heading": [
+    32,
+    "## 2. Capability catalog"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Register every AI-produced governed artifact as `authority: generated`, correctly carded, entering the promotion chain."
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.5-Certification-Plan.md",
+   "sha256": "eef98516193a121eae8c2fac929fec778155a5f496adc9cfc108ba94f396bd39",
+   "line": 63,
+   "heading": [
+    56,
+    "## 3. Platform principles (AIP) — each with guard host (PGP-03)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Promotion chain;"
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "line": 24,
+   "heading": [
+    19,
+    "### 1.1 Authority & governance"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Reachable only through the Promotion Chain."
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "line": 32,
+   "heading": [
+    19,
+    "### 1.1 Authority & governance"
+   ],
+   "term": "promotion chain",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**Promotion / Promotion Chain**"
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "line": 157,
+   "heading": [
+    155,
+    "## 5. Freeze procedure"
+   ],
+   "term": "promotion chain",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "On ARB approval of this document: status → `approved`, then `frozen` via the promotion chain."
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02.7-Platform-Decisions.md",
+   "sha256": "0135e69eabba8cdbc90a97c2249d2af37a2b4376dfa96f2552eeb48c57b6a05d",
+   "line": 49,
+   "heading": [
+    45,
+    "### 2.2 What the AI MAY do"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Always entering as `generated`, correctly carded, into the promotion chain"
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-03A-Reference-Architecture.md",
+   "sha256": "e69dc102b894cceef8a9d1c26996e83534b8e498c64dbd009030fa395c79c160",
+   "line": 59,
+   "heading": [
+    55,
+    "## 4. Persistence model"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "Promotion chain only;"
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-03A-Reference-Architecture.md",
+   "sha256": "e69dc102b894cceef8a9d1c26996e83534b8e498c64dbd009030fa395c79c160",
+   "line": 80,
+   "heading": [
+    76,
+    "## 6. Governance enforcement mapping (PD → component)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "promotion chain"
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Decision_Model.md",
+   "sha256": "c19339d3d570aae3ad86cae3a86c74c2542dedebcb8a323df0b5a55ed117d9a5",
+   "line": 107,
+   "heading": [
+    105,
+    "### DeterminePromotionPath"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "- **Authority:** ES-006.1 (Promotion Ladder)"
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Decision_Model.md",
+   "sha256": "c19339d3d570aae3ad86cae3a86c74c2542dedebcb8a323df0b5a55ed117d9a5",
+   "line": 109,
+   "heading": [
+    105,
+    "### DeterminePromotionPath"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "- **Qualification method:** promotion-ladder audits"
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Decision_Model.md",
+   "sha256": "c19339d3d570aae3ad86cae3a86c74c2542dedebcb8a323df0b5a55ed117d9a5",
+   "line": 129,
+   "heading": [
+    127,
+    "## The automation stance"
+   ],
+   "term": "promotion path",
+   "class": "MENTION",
+   "sentence": "Per the ARB (2026-07-11), it follows the same promotion path as everything else: Research → Use → Qualification → Adoption."
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Decision_Model.md",
+   "sha256": "c19339d3d570aae3ad86cae3a86c74c2542dedebcb8a323df0b5a55ed117d9a5",
+   "line": 131,
+   "heading": [
+    127,
+    "## The automation stance"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "a decision procedure earns software implementation only through the promotion ladder, with evidence that reasoning-over-standards fails."
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "line": 53,
+   "heading": [
+    49,
+    "## 4. Knowledge Object Catalog (type · identity · canonical serialization)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "**Extension rule (DA review correction, 2026-07-27):** the catalog is **governably extensible, never permanently closed** — a new kind enters through the promotion ladder (ES-006.1) with a Decision Authority act, exactly as any other vocabulary change;"
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "line": 126,
+   "heading": [
+    106,
+    "## 7. Illustrative metamodel schema (documents intent — **not a canonical contract**; no runtime validates it,"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "No validator exists and none is proposed — per the automation stance, a validator earns existence through the promotion ladder with evidence that reasoning-over-this-document fails."
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md",
+   "sha256": "013eafa8ba378fcd513a783c596f9aa210a572729b3fc554c9c758ab39527e5d",
+   "line": 115,
+   "heading": [
+    99,
+    "## 4. Architecture Layers"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "L7 -->|promotion ladder, retrospective only| L1"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md",
+   "sha256": "013eafa8ba378fcd513a783c596f9aa210a572729b3fc554c9c758ab39527e5d",
+   "line": 127,
+   "heading": [
+    99,
+    "## 4. Architecture Layers"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "Promotion ladder (ES-006.1);"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md",
+   "sha256": "013eafa8ba378fcd513a783c596f9aa210a572729b3fc554c9c758ab39527e5d",
+   "line": 372,
+   "heading": [
+    372,
+    "### 9.2 Evolution — the promotion ladder"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "### 9.2 Evolution — the promotion ladder"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md",
+   "sha256": "013eafa8ba378fcd513a783c596f9aa210a572729b3fc554c9c758ab39527e5d",
+   "line": 789,
+   "heading": [
+    783,
+    "### Maturity assessment (evidence-supported; no scores)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "Promotion ladder defined and applied;"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Engineering_Theory_Reference.md",
+   "sha256": "85b90209c452f6c4339824f960e4f6f8752c9043ea9689c781afecc5be768c3f",
+   "line": 84,
+   "heading": [
+    77,
+    "### 4.1 Gall's Law — *\"A complex system that works is invariably found to have evolved from a simple system th"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "The promotion ladder itself: Research → Pilot → Qualification → Standard — nothing arrives complex"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Engineering_Theory_Reference.md",
+   "sha256": "85b90209c452f6c4339824f960e4f6f8752c9043ea9689c781afecc5be768c3f",
+   "line": 282,
+   "heading": [
+    275,
+    "## 8. The reserved slot — where a theory layer would sit, per the platform's own record"
+   ],
+   "term": "promotion path",
+   "class": "MENTION",
+   "sentence": "If the Decision Authority ever resolves it affirmatively, the promotion path already exists (ES-006.1), the evidence schema already exists (the register), and the placement question (knowledge tier vs architecture tier) is a DeterminePlacement resolution like "
+  },
+  {
+   "path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "line": 7,
+   "heading": [
+    1,
+    "# ES-006 — Engineering Knowledge Governance"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "**Qualification Method:** promotion-ladder audits (does every promoted item carry qualification evidence?) + evidence-register integrity checks."
+  },
+  {
+   "path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "line": 14,
+   "heading": [
+    12,
+    "## Hosted rules (canonical here; previously MEMORY-only or board-resident)"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "**ES-006.1 — The Promotion Ladder** *(ARB, refined 2026-07-11)*:"
+  },
+  {
+   "path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "line": 45,
+   "heading": [
+    12,
+    "## Hosted rules (canonical here; previously MEMORY-only or board-resident)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "ES-006.1 Promotion Ladder → Qualification → Engineering"
+  },
+  {
+   "path": "engineering/governance/STANDARDS_INDEX.md",
+   "sha256": "8bacdd75a07f8e881ae1b2e9d6e0546d995aef983e17a31c28b3acbb7189698f",
+   "line": 16,
+   "heading": [
+    1,
+    "# Engineering Standards — Index (ES-001..ES-006)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion ladder"
+  },
+  {
+   "path": "engineering/governance/STANDARDS_INDEX.md",
+   "sha256": "8bacdd75a07f8e881ae1b2e9d6e0546d995aef983e17a31c28b3acbb7189698f",
+   "line": 57,
+   "heading": [
+    38,
+    "## Decision Authority & Verification Matrix (ARB-commissioned 2026-07-11; refined per review — three dimension"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "ES-006.1 Promotion ladder"
+  },
+  {
+   "path": "engineering/governance/STANDARDS_INDEX.md",
+   "sha256": "8bacdd75a07f8e881ae1b2e9d6e0546d995aef983e17a31c28b3acbb7189698f",
+   "line": 57,
+   "heading": [
+    38,
+    "## Decision Authority & Verification Matrix (ARB-commissioned 2026-07-11; refined per review — three dimension"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion-ladder audits"
+  },
+  {
+   "path": "engineering/governance/STANDARDS_INDEX.md",
+   "sha256": "8bacdd75a07f8e881ae1b2e9d6e0546d995aef983e17a31c28b3acbb7189698f",
+   "line": 62,
+   "heading": [
+    38,
+    "## Decision Authority & Verification Matrix (ARB-commissioned 2026-07-11; refined per review — three dimension"
+   ],
+   "term": "promotion path",
+   "class": "MENTION",
+   "sentence": "*Automation is an implementation of governance, never governance itself* (an architectural statement following the normal promotion path — see the Decision Model)."
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-08-1027-architecture-review.md",
+   "sha256": "7ce340a10a17533bb71708b1dc6a46b9e5c25710a2e42d8942a865c072753a54",
+   "line": 157,
+   "heading": [
+    155,
+    "## A3. Engineering Standards Readiness"
+   ],
+   "term": "promotion pipeline",
+   "class": "MENTION",
+   "sentence": "Supporting inputs at R-32 execution: AIP-01..14 as principle seed, F4 log-rule sweep list, EPC promotion pipeline."
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-08-architecture-review.md",
+   "sha256": "4a4e30d4dc5697bd429ea0423f3965fc873c78020b34ec5ae96da0ea7e68cc8f",
+   "line": 221,
+   "heading": [
+    207,
+    "### 2.5 Knowledge & Evidence System"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "promotion chain incomplete;"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-08-architecture-review.md",
+   "sha256": "4a4e30d4dc5697bd429ea0423f3965fc873c78020b34ec5ae96da0ea7e68cc8f",
+   "line": 344,
+   "heading": [
+    340,
+    "#### Critical (2) — Must resolve"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "AIP-02 promotion chain terminal gap"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-11-artifact-promotion-pattern-validation.md",
+   "sha256": "ea0523c089186abe6a198e47854b214fd47a13d179b2571480197cc54ccb10b0",
+   "line": 14,
+   "heading": [
+    7,
+    "## 1. Census — artifacts that cross (or touch) a governance boundary"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion-ladder audits"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-11-constitutional-role-matrix.md",
+   "sha256": "2e2c2f00e086f0c09d0475d85bd5dfea6309521c52548f8d27b2458ab83f2f3b",
+   "line": 15,
+   "heading": [
+    7,
+    "## Role: Specification"
+   ],
+   "term": "promotion path",
+   "class": "MENTION",
+   "sentence": "promotion-path holding"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-27-knowledge-domain-model.md",
+   "sha256": "25035fe156458a2c60b4324fad497efd86a9d1d67ec50e7ba93083746a49f77e",
+   "line": 237,
+   "heading": [
+    227,
+    "## 5. Evolution Rules (consolidated — the domain's own answers to \"when may X become Y?\")"
+   ],
+   "term": "promotion chain",
+   "class": "SEPARATION-CANDIDATE",
+   "sentence": "promotion chain, one Human Decision Event per stage, \"stages are never skipped\""
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-27-knowledge-domain-model.md",
+   "sha256": "25035fe156458a2c60b4324fad497efd86a9d1d67ec50e7ba93083746a49f77e",
+   "line": 237,
+   "heading": [
+    227,
+    "## 5. Evolution Rules (consolidated — the domain's own answers to \"when may X become Y?\")"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "UL §Promotion Chain"
+  },
+  {
+   "path": "engineering/verification/reports/2026-07-27-knowledge-domain-model.md",
+   "sha256": "25035fe156458a2c60b4324fad497efd86a9d1d67ec50e7ba93083746a49f77e",
+   "line": 263,
+   "heading": [
+    245,
+    "## 6. Deliverable 3 — Repository Invariants (18, each with status and enforcement)"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "promotion-ladder audits (defined);"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-authority-lifecycle-commission.md",
+   "sha256": "e4cfdbe0f122a4c7fd828ae4c5d7b07c156d4f36105357250d6ba7af0ee2c1de",
+   "line": 8,
+   "heading": [
+    1,
+    "# Authority Lifecycle Commission"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "> **The project has a rich, largely documented authority lifecycle — richer than the previous commissions assumed.** Succession, append-only history, status annotation, promotion ladders and a classification rule for *how something becomes a ruling* all exist "
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-knowledge-lifecycle-assessment.md",
+   "sha256": "ce32560fa0cd678710e316327422d14b67083748b36cccf2cb3830d8be7667a1",
+   "line": 11,
+   "heading": [
+    1,
+    "# Engineering Knowledge Lifecycle — Assessment"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "> **`ES-006.1 — The Promotion Ladder`:**"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-knowledge-lifecycle-assessment.md",
+   "sha256": "ce32560fa0cd678710e316327422d14b67083748b36cccf2cb3830d8be7667a1",
+   "line": 73,
+   "heading": [
+    65,
+    "## 3. What ES-006 already answers — cited, not restated"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "the ladder is audited by **promotion-ladder audits** (ES-006's own qualification method)"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-placement-policy-assessment.md",
+   "sha256": "dabb7f2a2d6ce62fba6828334517d621a290b8317b4d2e850d47016a2b21a3cf",
+   "line": 31,
+   "heading": [
+    24,
+    "## 1. Every deliverable, already canonical"
+   ],
+   "term": "promotion ladder",
+   "class": "MENTION",
+   "sentence": "audited by promotion-ladder audits"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-es-amendment-authority-determination.md",
+   "sha256": "6d7762393214662bbe7ebadfb1d418d1e8f923354e4cfc4e2dc9d2f762b0fe9b",
+   "line": 44,
+   "heading": [
+    38,
+    "### 1.1 What the freeze actually constrains"
+   ],
+   "term": "promotion ladder",
+   "class": "DEFINITION-CANDIDATE",
+   "sentence": "*\"**no new** concepts, **standards**, decisions, or architectural subsystems — changes enter **only through operational evidence via the ES-006.1 promotion ladder**\"*"
+  },
+  {
+   "path": "engineering/verification/reports/knowledge_architecture_validation.md",
+   "sha256": "63ca8f411c342810626bacbe098dee9a5890eae008a800af486f887064d48400",
+   "line": 18,
+   "heading": [
+    6,
+    "## 1. Knowledge-flow audit (original scope)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "promotion chain)"
+  },
+  {
+   "path": "engineering/verification/reports/knowledge_architecture_validation.md",
+   "sha256": "63ca8f411c342810626bacbe098dee9a5890eae008a800af486f887064d48400",
+   "line": 24,
+   "heading": [
+    6,
+    "## 1. Knowledge-flow audit (original scope)"
+   ],
+   "term": "promotion chain",
+   "class": "MENTION",
+   "sentence": "align with the AIP-02 promotion chain (pattern→Standard = ADR-AIP entry or Standards amendment under ADR authority)."
+  }
+ ],
+ "timestamp_utc": "2026-09-27T06:52:17Z"
+}

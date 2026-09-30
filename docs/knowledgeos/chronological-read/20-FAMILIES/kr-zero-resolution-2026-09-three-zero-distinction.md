@@ -1,0 +1,62 @@
+# kr-zero-resolution-2026-09-three-zero-distinction
+
+**Scope(s):** OBJECT · **Row count:** 13 · **Lifecycle (candidate):** ACTIVE · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** 0_i in D_i, x (+)_i 0_i = x, HZ1..HZ6, KR-ZERO-RESOLUTION-2026-09, P_S^0(K), P_S^restrict(K) · **Aliases:** Algebraic Zero vs Representational Omission vs Preservation Zero
+**Candidate group membership (NOT an identity claim):**
+- **G1885** [`kr-zero-resolution-2026-09-three-zero-distinction` · `recursive-epistemic-zoom-resolution-relative-atomicity-2026-09`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus
+- **G1886** [`ext-biocomm-lens-2026-09` · `kr-zero-resolution-2026-09-three-zero-distinction`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus
+
+
+## Sources (how this label entered the ledger)
+- **OBJECT-INDEX**, batch `B0068`, scope `OBJECT`: A new research artifact distinguishing three notions of 'zero' (algebraic zero element 0_i in a domain D_i; representational omission/restriction P_S^restrict; preservation-relative Zero_{T,Pi}) and specifying six hypotheses HZ1-HZ6 to test whether/how they relate, with HZ4 (observational equivalence of zero-projection and restriction) as the gate experiment. The initial draft reused the ID 'KR-ZOOM-01' for this different experiment, colliding with the pre-existing KR-ZOOM-01 (recursive-epistemic-zoom-resolution-relative-atomicity-2026-09, B0065); the immediate follow-up renames it KR-ZERO-RESOLUTION-2026-09 to avoid the collision. Connects Zero Algebra, Zoom/Resolution, and Biological Communication as three feeding research programmes.
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S2831] §"0_i != empty != Zero_{T,Pi}(S;D) unless a later experiment establishes a structure-preserving correspondence."
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S2831] §"P_S^restrict(K): a dimension-truncating operation ... P_S^0(K): an ambient-preserving projection mapping ... k_i -> 0_i for i not in S."
+- CANDIDATE-OPERATIONAL-BIRTH: [S2831] §"HZ_1 (Identity Law) ... HZ_2 (Projection Idempotence) ... HZ_3 (Projection Intersection) ... HZ_4 (Restriction Equivalence) ... HZ_5 (Resolution Atomicity) ... HZ_6 (Emergent Observational Relevance)"
+- CANDIDATE-GOVERNANCE-BIRTH: [S2832] §"HZ1-HZ6 should be treated as candidate hypotheses, not as a package whose truth is expected to converge toward an algebra. ... HZ4 should be the first experiment"
+
+## Lifecycle
+last_seen: S2832. Candidate lifecycle: ACTIVE.
+Evidence: No retraction/supersession/contradiction evidence recorded. The ACTIVE classification is a heuristic based on how recently (by source_id) this label was last used (S2832), not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source IDs |
+|---|---|---|
+| purpose_rationale | PRESENT | S2831 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | PRESENT | S2831, S2831, S2832 |
+| type_signature | PRESENT | S2831 |
+| invariants | NOT-EVIDENCED-IN-CAPTURE | — |
+| dependencies | PRESENT | S2831 |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S2831, S2831, S2831 |
+| examples | PRESENT | S2832 |
+| warnings | PRESENT | S2831 |
+| experiments | PRESENT | S2831, S2832 |
+| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |
+
+## Rationale
+- [S2831] (ANALYSIS) Identifies a triangle of three mutually-informing but non-dictating research programmes: Zero Algebra (eliminability tests), Zoom/Resolution (resolution changes), and Biological Reciprocal Communication (relational sequences), all evaluated through Knowledge Theory's epistemic semantics and contracts, with none entitled to define the KnowledgeOS kernel.
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- [S2831] types=[DISTINCTION, PRINCIPLE] scope=OBJECT — "Establishes that algebraic zero (0_i in D_i with x (+)_i 0_i = x), epistemic absence/omission (k_i=empty or not represented), and preservation-relative Zero (Zero_{T,Pi}(S;D) iff Pi(T(D))=Pi(T(E_S(D)))) are three distinct notions that must not be identified unless a structure-preserving correspondence is demonstrated." (anchor: "0_i != empty != Zero_{T,Pi}(S;D) unless a later experiment establishes a structure-preserving correspondence.")
+- [S2831] types=[FORMALIZATION, DISTINCTION] scope=OBJECT — "Distinguishes restriction P_S^restrict(K): product_i D_i -> product_{i in S} D_i (changes ambient dimensionality) from zero projection P_S^0(K): product_i D_i -> product_i D_i (ambient-preserving, mapping k_i to 0_i for i not in S); testing whether P_S^restrict(K) equiv P_S^0(K) under an observational query Q determines whether epistemic silence can be faithfully modeled by an algebraic zero element." (anchor: "P_S^restrict(K): a dimension-truncating operation ... P_S^0(K): an ambient-preserving projection mapping ... k_i -> 0_i for i not in S.")
+- [S2831] types=[HYPOTHESIS, EXPERIMENT] scope=OBJECT — "Specifies the original six hypotheses for the initial 'KR-ZOOM-01 (Algebraic Zero & Recursive Zoom)' protocol: HZ1 identity law x(+)_i 0_i=x; HZ2 idempotence P_S^0(P_S^0(K))=P_S^0(K); HZ3 intersection P_S^0(P_T^0(K))=P_{S∩T}^0(K); HZ4 restriction equivalence Obs_Q(P_S^0(K)) equiv Obs_Q(P_S^restrict(K)); HZ5 resolution atomicity (an irreducible x_r expands to a nested space with k>1 dimensions on zoom); HZ6 emergent observational relevance (a dimension Zero under query Q_r maps to a nested dimension non-Zero under Q_{r+1})." (anchor: "HZ_1 (Identity Law) ... HZ_2 (Projection Idempotence) ... HZ_3 (Projection Intersection) ... HZ_4 (Restriction Equivalence) ... HZ_5 (Resolution Atomicity) ... HZ_6 (Emergent Observational Relevance)")
+- [S2831] types=[CORRECTION] scope=OBJECT — "Corrects HZ1 from an assumed identity law x(+)_i0_i=x to an open existence question: does a tested knowledge-domain representation admit a composition operation and distinguished element satisfying an empirically and semantically justified identity law, since algebra must be discovered from behaviour, not imposed on the problem." (anchor: "HZ1 should become: HZ1 -- Domain Algebra Existence ... Does a tested knowledge-domain representation admit a composition operation (+)_i and distinguished element 0_i satisfying an empirically and semantically justified identity law?")
+- [S2831] types=[CORRECTION, WARNING] scope=OBJECT — "HZ2/HZ3 are corrected to be recognized as properties of a specific constructed coordinate-zeroing operator rather than discovered KnowledgeOS properties (risk of circularity), and the intersection test HZ3 must also explicitly test order (P_S^0 P_T^0 =? P_T^0 P_S^0) rather than assuming commutativity from notation, especially given the corpus's existing order-sensitivity findings." (anchor: "P_S^0P_T^0 =? P_T^0P_S^0. Do not assume commutativity merely because the notation suggests it.")
+- [S2831] types=[CORRECTION, DISTINCTION] scope=OBJECT — "Corrects HZ5 to avoid conflating atomicity of representation with atomicity of knowledge: x_r is representation-atomic under the current resolution, while a refinement map Z_r:D^(r)->K^(r+1) may expose a richer structure, giving Atomic_r(x) does not imply Atomic_{r+1}(Z_r(x))." (anchor: "Atomic_r(x) does not imply Atomic_{r+1}(Z_r(x)). ... x_r in D^(r) is representation-atomic under the current resolution, while a refinement map Z_r ... may expose a richer structure.")
+- [S2831] types=[CORRECTION, DEFINITION] scope=OBJECT — "Renames HZ6's phenomenon from 'Zero alteration' to 'resolution-relative eliminability': Zero itself is unchanged, only the carrier and inquiry have changed ((D^(r),Q_r,Pi_r) -> (D^(r+1),Q_{r+1},Pi_{r+1})), giving Zero_r(x) does not imply Zero_{r+1}(x')." (anchor: "I would call this: Resolution-relative eliminability rather than "Zero alteration." Because nothing has changed about Zero itself. The carrier and inquiry have changed")
+- [S2831] types=[ANALYSIS] scope=CROSS-OBJECT — "Identifies a triangle of three mutually-informing but non-dictating research programmes: Zero Algebra (eliminability tests), Zoom/Resolution (resolution changes), and Biological Reciprocal Communication (relational sequences), all evaluated through Knowledge Theory's epistemic semantics and contracts, with none entitled to define the KnowledgeOS kernel." (anchor: "Zero Algebra <-> Zoom/Resolution <-> Biological Reciprocal Communication ... none of the three gets to dictate the others.")
+- [S2832] types=[GOVERNANCE, CORRECTION] scope=METHODOLOGICAL — "Corrects the framing of HZ1-HZ6: they are candidate hypotheses, not a package expected to converge toward a proven algebra; HZ4 (does P_S^0 faithfully mimic P_S^restrict under O_{Q,Pi}) is designated the first, gating experiment because it tests the bridge between representational omission and algebraic zeroing -- if it fails, HZ1-HZ3 may still hold for some domain but cannot model KnowledgeOS omission without additional structure." (anchor: "HZ1-HZ6 should be treated as candidate hypotheses, not as a package whose truth is expected to converge toward an algebra. ... HZ4 should be the first experiment")
+- [S2832] types=[GOVERNANCE, FORMALIZATION] scope=OBJECT — "Names the artifact KR-ZERO-RESOLUTION-2026-09 (status [PROP][OPEN][RESEARCH ARTIFACT], Theory v1.2 frozen, kernel untouched, no new algebraic axioms), replacing the earlier draft's reuse of the 'KR-ZOOM-01' ID which collided with the pre-existing distinct KR-ZOOM-01 experiment; its objective is to test whether AlgebraicZero, RepresentationalOmission, and PreservationZero can be related without assuming their equivalence." (anchor: "KR-ZERO-RESOLUTION-2026-09 ... Status [PROP][OPEN][RESEARCH ARTIFACT] ... Objective: Test whether three notions can be related: AlgebraicZero <-> RepresentationalOmission <-> PreservationZero without assuming their equivalence.")
+- [S2832] types=[EXPERIMENT, GOVERNANCE] scope=OBJECT — "Lays out a four-phase execution architecture: Phase 1 tests HZ4 (O_{Q,Pi}(P_S^0(K)) =? O_{Q,Pi}(P_S^restr(K))), proceeding to Phase 2 (HZ2 idempotence, HZ3 intersection AND order P_S^0 P_T^0 =? P_T^0 P_S^0) only if Phase 1 survives; Phase 3 tests HZ1 domain-algebra existence as a control independent of KnowledgeOS (could show domain algebra valid while Algebraic Zero != KnowledgeOS Zero); Phase 4 tests the recursive Zoom hypothesis x^(r) -Z-> K_x^(r+1), asking whether Zero_r(x)=1 can coexist with exists x' in K_x^(r+1): Zero_{r+1}(x')=0, correctly interpreted as 'a preservation judgment at resolution r does not necessarily determine preservation judgments over the refined carrier at resolution r+1', not 'Zero becoming non-Zero.'" (anchor: "Phase 1 -- HZ4 first ... Phase 2 -- test the projection algebra ... Phase 3 -- domain algebra ... Phase 4 -- recursive resolution")
+- [S2832] types=[EXAMPLE, HYPOTHESIS] scope=OBJECT — "Applies the resolution-relative-eliminability idea to a concrete courtship-sequence example: at coarse resolution the sequence [sigma1,rho1,sigma2,rho2] might be eliminable with respect to a terminal-state inquiry, while a finer resolution exposing orientation/distance/timing/repeated-approach/avoidance can reveal distinctions invisible at the coarse level, giving both Zero^(r)(C)=1 does not imply Zero^(r+1)(C)=1 and its converse Zero^(r)(C)=0 does not imply Zero^(r+1)(C)=0." (anchor: "At coarse resolution C^(r)=[sigma_1,rho_1,sigma_2,rho_2] might be eliminable ... Zooming in ... can expose distinctions that were invisible at the coarse level. Therefore Zero^(r)(C)=1 does not imply Zero^(r+1)(C)=1")
+- [S2832] types=[CORRECTION] scope=METHODOLOGICAL — "Corrects the document's assertive framing ('HZ6 proves eliminability changes with carrier & contract scale') to a testable, falsifiable framing ('HZ6 tests whether eliminability changes across resolution levels under explicitly paired carriers and preservation contracts'), and similarly corrects HZ4's framing from a universal determination claim to a claim relative to the tested carrier/transformation/observation/inquiry/contract." (anchor: "HZ6 tests whether eliminability changes across resolution levels under explicitly paired carriers and preservation contracts. Because the experiment can falsify HZ6. It cannot start by saying it proves it.")
+
+## Notes for P3
+- No unusual internal tensions or notable evidentiary anomalies observed while compiling this file.

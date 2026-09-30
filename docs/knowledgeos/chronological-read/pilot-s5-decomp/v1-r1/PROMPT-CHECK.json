@@ -1,0 +1,46 @@
+{
+ "passed": true,
+ "prereg_commit": "e5fe2ed60c96a0020baab5540915bcca1d9875c6",
+ "prompts": {
+  "PX0107-A01": {
+   "commands": 19,
+   "sha256": "399b21b93e8d8181beaaa74c7fe96bea7853f143b5396dbdf34af701197b1ba0",
+   "violations": []
+  },
+  "PX0107-A02": {
+   "commands": 19,
+   "sha256": "bfd994f4f6a59f14412add04f8228c130898a2773c84273488f908ee615260df",
+   "violations": []
+  },
+  "PX0107-U01": {
+   "commands": 7,
+   "sha256": "a118462b9afe7039149505b5241a5d431333af990ddfcc92835196f6d6c3b11d",
+   "violations": []
+  },
+  "PX0107-U02": {
+   "commands": 14,
+   "sha256": "1b0cf0bf3d1ee948e9a5ac6617e6f38559061e20194984bce2fbdbc5c4b4e4c0",
+   "violations": []
+  },
+  "PX0107-U03": {
+   "commands": 7,
+   "sha256": "ea1e178e3969d4d20562a50ba622d214fc091103559f39be08ba03a03fc9b627",
+   "violations": []
+  },
+  "PX0107-U04": {
+   "commands": 14,
+   "sha256": "da84f988361445e036ca15606e2361ddd0508c51be15fb83dddb768ae77e5296",
+   "violations": []
+  },
+  "PX0107-U05": {
+   "commands": 7,
+   "sha256": "8905e1c86879ce0fec45b33cf7697a581ee41cde52b38203123b1836600e6b7c",
+   "violations": []
+  },
+  "PX0107-U06": {
+   "commands": 14,
+   "sha256": "97ab9d9742ad66876d40252b2635238ea71e7eb911aafac4c9afb8f43ee4d1ab",
+   "violations": []
+  }
+ }
+}

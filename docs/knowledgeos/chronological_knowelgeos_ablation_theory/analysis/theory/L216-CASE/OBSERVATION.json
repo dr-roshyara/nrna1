@@ -1,0 +1,24 @@
+{
+ "name": "L216 Discovery Freeze v1.0",
+ "read": ".claude/sessions/2026-08-04.md L216-L224 (6309c2e3...), after freeze commit 181d78e7e",
+ "obs": {"EV": "NOT-RECORDED", "QUAL": "NOT-RECORDED", "VAL": "NOT-RECORDED", "OBL": "NOT-RECORDED", "EXC": "NOT-RECORDED", "AUTH": "NOT-RECORDED", "SEM": "UNKNOWN"},
+ "attrs": {"force": "AMB", "kind": "UNKNOWN", "high": "UNKNOWN"},
+ "coding": {
+  "act": "SOURCE-FACT L218: 'Architecture Discovery Freeze v1.0 adopted' (passive; no adopter named)",
+  "EV": "NOT-RECORDED: no necessity evidence for the freeze itself is recorded (the evidence clause concerns FUTURE reopening)",
+  "QUAL/VAL": "NOT-RECORDED: neither mentioned",
+  "OBL": "NOT-RECORDED: the reopening condition is a revocation criterion, not a validation obligation (not coded as OBL)",
+  "EXC": "NOT-RECORDED for this act: 'refinements/exceptions of existing principles are expected and are not discovery' classifies FUTURE exceptions; it records none for this adoption",
+  "AUTH": "NOT-RECORDED: no authority named in the section",
+  "SEM": "UNKNOWN: the freeze restricts discovery (epistemic) and precedes 'Phase 3 begins: execute the loop' (operational); the section does not describe the adoption as either -> borderline, coded UNKNOWN per the frozen rule",
+  "kind": "UNKNOWN: the object is a regime rule on a process (a discovery moratorium) - neither a knowledge item on the ladder nor governed work as stated",
+  "high": "UNKNOWN: the object is not placed on the promotion ladder",
+  "force": "AMB: the section establishes no in-force requirement"},
+ "outside_alphabet_source_facts": [
+  "REOPEN condition (L218): 'nothing architectural gets discovered unless months of engineering produce evidence the existing model CANNOT EXPLAIN (reopening bound to the explanatory-precision heuristic)'",
+  "REFINEMENT != DISCOVERY (L218): refinements/exceptions of existing principles are 'expected and are not discovery'",
+  "ORDERING between freezes (L218): 'stronger than the meta-principle freeze'",
+  "OPEN-WORLD in the corpus itself (L219): outcome questions 'render as honest empty cells each naming its filling source'; 'Verdict-free pinned by test'",
+  "CHECK-BEFORE (L220): existing Health Dashboard consulted; 'complementary, not duplicate'",
+  "PHASE TRANSITION (L221): 'Phase 3 begins: execute the loop hundreds of times; don't redesign it'"]
+}

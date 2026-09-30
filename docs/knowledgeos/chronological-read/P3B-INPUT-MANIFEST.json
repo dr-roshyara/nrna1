@@ -1,0 +1,52 @@
+{
+ "body": {
+  "inputs": {
+   "31-RECONCILIATION-PAIRS.jsonl": {
+    "sha256": "d8ec552766c6d4852e407d459f71f01a58e1561c25de27d116b1a6ab445a748d"
+   },
+   "P3B-PREFLIGHT.json": {
+    "sha256": "01baee40a4fe21737bf0168013cb8c3649a077e7ea3cf4643950e16a010be453"
+   },
+   "audit-p3a/KSME-21-EVIDENCE-REPAIR-REPORT.md": {
+    "sha256": "56b6a1dbe7b5f6dd79154355a52594596bab602851b2eaa1b4dbb9eda3a8ea5b"
+   },
+   "audit-p3a/P3A-UNDEFINED-RELATIONSHIP-PROVENANCE.jsonl": {
+    "sha256": "e5ce0fb3310bf26b25c2dcf73e80257cd3eb03ff61e51feee5c91986c134fb77"
+   }
+  },
+  "outputs": {
+   "AFFECTED.jsonl": {
+    "output_sha256": "7fe62247c7fa239e0378c692ab678bbb47e6694a77237f90566369c3d4d4015a",
+    "records": 391
+   }
+  },
+  "result": "PASS",
+  "s0_link": {
+   "preflight_output_sha256": "b3f621484c24c986586fbbe7cd7d643cc8c68ce398a2313f533c5876c07fe7b4",
+   "preflight_result": "PASS"
+  },
+  "step": "S1 INPUT FREEZE"
+ },
+ "header": {
+  "artifact": "P3B-INPUT-MANIFEST.json",
+  "input_hashes": {
+   "31-RECONCILIATION-PAIRS.jsonl": "d8ec552766c6d4852e407d459f71f01a58e1561c25de27d116b1a6ab445a748d",
+   "P3B-PREFLIGHT.json": "01baee40a4fe21737bf0168013cb8c3649a077e7ea3cf4643950e16a010be453",
+   "audit-p3a/KSME-21-EVIDENCE-REPAIR-REPORT.md": "56b6a1dbe7b5f6dd79154355a52594596bab602851b2eaa1b4dbb9eda3a8ea5b",
+   "audit-p3a/P3A-UNDEFINED-RELATIONSHIP-PROVENANCE.jsonl": "e5ce0fb3310bf26b25c2dcf73e80257cd3eb03ff61e51feee5c91986c134fb77"
+  },
+  "output_sha256": "a6308ad4df573ac4f3eb4819654c76d90eaf7c3da4618693ac080a00a088b97b",
+  "parameters": {
+   "h13_decision": "i"
+  },
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "protocol": "prompts/20260924_1242_p3b-phase1-continuation-protocol-v1.6.4.md",
+  "protocol_sha256_observed": "08f10e74d9bb1820ef986390475c40fa0fff7634dd052d737e81c8eefa1dec06",
+  "python_version": "3.13.2",
+  "run_timestamp_utc": "2026-09-24T11:35:49Z",
+  "script_committed_unmodified": true,
+  "script_name": "p3b_s1_input_freeze.py",
+  "script_version": "60134b2168b9330073b36aff427b7ba5373e6a53",
+  "seed": null
+ }
+}

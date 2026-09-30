@@ -1,0 +1,104 @@
+{
+ "scope": "5 rows, pre-template human-authority regime (R-42..R-80); selected by a frozen category-diversity rule; not IID",
+ "ledger": {
+  "P1 record": {
+   "R-43": "SUPPORTED",
+   "R-44": "SUPPORTED",
+   "R-72": "SUPPORTED",
+   "R-77": "SUPPORTED",
+   "R-79": "SUPPORTED"
+  },
+  "P1-R43 cross-row": {
+   "R-43": "SUPPORTED",
+   "R-44": "UNTESTABLE",
+   "R-72": "UNTESTABLE",
+   "R-77": "UNTESTABLE",
+   "R-79": "UNTESTABLE"
+  },
+  "P2 scope": {
+   "R-43": "UNTESTABLE",
+   "R-44": "UNTESTABLE",
+   "R-72": "SUPPORTED",
+   "R-77": "UNTESTABLE",
+   "R-79": "UNTESTABLE"
+  },
+  "P3′ no PREPARED phase": {
+   "R-43": "SUPPORTED",
+   "R-44": "SUPPORTED",
+   "R-72": "SUPPORTED",
+   "R-77": "SUPPORTED",
+   "R-79": "SUPPORTED"
+  },
+  "P4 operations/frames (M2)": {
+   "R-43": "VIOLATED: VIOLATED(classification ∉ Frame+(ACCEPT)); VIOLATED(work-lifecycle ∉ Frame+(ACCEPT))",
+   "R-44": "NOT-MODELLED (partial)",
+   "R-72": "SUPPORTED",
+   "R-77": "SUPPORTED",
+   "R-79": "NOT-MODELLED (partial)"
+  },
+  "P5 target": {
+   "R-43": "SUPPORTED",
+   "R-44": "SUPPORTED",
+   "R-72": "SUPPORTED",
+   "R-77": "SUPPORTED",
+   "R-79": "UNTESTABLE"
+  },
+  "P6 frame generality": {
+   "R-43": "SUPPORTED",
+   "R-44": "SUPPORTED",
+   "R-72": "SUPPORTED",
+   "R-77": "SUPPORTED",
+   "R-79": "SUPPORTED"
+  }
+ },
+ "summary": {
+  "P1 record": {
+   "supported": 5,
+   "violated": 0,
+   "untestable": 0,
+   "not_modelled": 0
+  },
+  "P1-R43 cross-row": {
+   "supported": 1,
+   "violated": 0,
+   "untestable": 4,
+   "not_modelled": 0
+  },
+  "P2 scope": {
+   "supported": 1,
+   "violated": 0,
+   "untestable": 4,
+   "not_modelled": 0
+  },
+  "P3′ no PREPARED phase": {
+   "supported": 5,
+   "violated": 0,
+   "untestable": 0,
+   "not_modelled": 0
+  },
+  "P4 operations/frames (M2)": {
+   "supported": 2,
+   "violated": 1,
+   "untestable": 0,
+   "not_modelled": 2
+  },
+  "P5 target": {
+   "supported": 4,
+   "violated": 0,
+   "untestable": 1,
+   "not_modelled": 0
+  },
+  "P6 frame generality": {
+   "supported": 5,
+   "violated": 0,
+   "untestable": 0,
+   "not_modelled": 0
+  }
+ },
+ "reading_notes": {
+  "R-77": "'Characterization rejected' coded as the act's outcome, not a coordinate change; under the reading 'the characterization acquires status REJECTED', P4 would be VIOLATED (Frame+(REJECT) = ∅)"
+ },
+ "guard_observations": {
+  "R-72": "authorization in principle; its EFFECT waits on a proviso (three ARB decisions + one scope ruling)"
+ }
+}

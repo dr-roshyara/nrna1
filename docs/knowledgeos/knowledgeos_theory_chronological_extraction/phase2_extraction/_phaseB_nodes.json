@@ -1,0 +1,171 @@
+{
+ "iteration": 1,
+ "phase": "B",
+ "nodes": [
+  {
+   "id": "T-0001",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0002",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0003",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0004",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0005",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0007",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0012",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0013",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0014",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0015",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0016",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0017",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0018",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0019",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0020",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0021",
+   "kind": "THEORY_OBJECT",
+   "grouped": true
+  },
+  {
+   "id": "T-0022",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0023",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0006",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0008",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0009",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0010",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "T-0011",
+   "kind": "THEORY_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0001",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0002",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0003",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0004",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0005",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0006",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0007",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0008",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0009",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  },
+  {
+   "id": "HA-0010",
+   "kind": "ARCHITECTURE_OBJECT",
+   "grouped": false
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+strata sizes: {'HUB': 2, 'EMPTY': 1, 'MULTIROW': 1, 'DECOMPOSED': 4, 'SINGLE': 12}
+ST1    expected: overlap refused
+       observed: ValueError: strata not mutually exclusive
+       => OK  # overlapping strata attack on draw_sample_v6
+ST2    expected: missing label refused
+       observed: ValueError: strata not collectively exhaustive over the population
+       => OK  # a label with no stratum
+ST3    expected: frame of N=20; an unsampled stratum must be refused or reported; share = 3/20 = 0.150
+       observed: validate_strata -> []; sample covers N=14; 'TIER-X' in sample: False; share 0.214, CI (0.214, 0.214)
+       => DEFECT  # missing-stratum attack: 6 of 20 labels silently leave the frame; an apparently exact census estimate results
+ST4    expected: SINGLE (N=12) unobserved: overall share bound must reflect up to 12/20 = 0.60 (or be declared unestimable)
+       observed: share 0.0, ci95 (0.0, 0.0), per-stratum SINGLE zero_bound 1.0
+       => DEFECT  # rate missing -> n=0: stated per stratum as 'no information', but the combined estimate/CI treats it as exactly 0
+ST5    expected: n_SINGLE=1 < N: variance reported as unestimable (spec 'Variance / CI')
+       observed: n=1 N=12 var=0.0 ht_total=12.0; overall ci95 (0.6, 0.6); keys ['N', 'discordant', 'ht_total', 'n', 'var', 'zero_bound_share']
+       => DEFECT  # a single draw with d=1 yields HT total 12 with variance 0.0: a point 'estimate' with a zero-width stratum CI
+ST6    expected: a sample that is not the frozen one (and an ML-injected discordant label) is refused
+       observed: with frozen_sha==sample_sha (caller-supplied): ACCEPTED; without shas: ACCEPTED; HT total 4.00 (true sampled total 0)
+       => DEFECT  # the guard compares two caller-supplied strings; it never hashes the sample argument
+ST7    expected: estimator refuses a label present in two strata
+       observed: ACCEPTED; HT total 6.00 for one discordant label
+       => DEFECT  # overlapping-strata attack on ht_with_variance
+ST8    expected: n=0 -> 1.0; census -> 0; hypergeometric = largest D with P(0|D) >= a; binomial w/o N
+       observed: [(0, 50, 1.0, 1.0), (50, 50, 0.0, 0.0), (10, 50, 0.22, 0.22), (25, 200, 0.105, 0.105), (30, None, 0.095034, 0.095034)]
+       => OK  # 
+ST9    expected: E[HT]=|D|=3; E[var-hat]=Var(HT)=3.5714
+       observed: E[HT]=3.0000; E[var-hat]=3.5714
+       => OK  # estimator and SRSWOR variance are correct
+ST10   expected: MULTIROW = DECOMPOSED with row sources over > 1 unit (derived); hub precedence
+       observed: {'HUB': ['e1'], 'EMPTY': [], 'MULTIROW': ['s1'], 'DECOMPOSED': [], 'SINGLE': []}
+       => DEFECT  # a SINGLE label with a declared multirow flag lands in MULTIROW (attribute not derived)
+ST11   expected: same seed -> same sample; frozen record carries seed, labels, spec sha, python version (+ rates/frame?)
+       observed: reproducible=True; record keys ['python', 'sample', 'sample_sha256', 'seed', 'spec_sha256']
+       => OK  # the record freezes drawn labels and N_h but not the strata membership, rates or a population hash
+ST12   expected: rate 0 -> n=0 (stated); rate > 1 refused or capped
+       observed: n(rate 0)=0; n(rate 1.7)=12 of N=12
+       => OK  # rate > 1 is silently capped to a census (not refused)
+
+== SUMMARY {'OK': 6, 'DEFECT': 6}
+DEFECTS: ['ST3', 'ST4', 'ST5', 'ST6', 'ST7', 'ST10']

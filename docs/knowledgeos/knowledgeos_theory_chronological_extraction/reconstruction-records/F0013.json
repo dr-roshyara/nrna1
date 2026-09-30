@@ -1,0 +1,195 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0008-RETROFIT-B2",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 2",
+  "⚠️ prior_read": "YES",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0008-RETROFIT-B2."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0013",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Meta_Model.md",
+ "canonical_sequence_position": 13,
+ "lines_total": 177,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED' · 'Generated — never authoritative without human review'",
+ "source_document_kind": "⭐ STRATEGIC DDD SEMANTIC MODEL. ⛔ 'No new principle · no new document class · no repository redesign · no implementation · no tooling · no ADR.'",
+ "source_research_question": "⭐ 'derive the canonical meta-model all future artifacts must conform to'",
+ "reconstruction_question": "⛔ DISTINCT: is the admission test applied symmetrically, to the reviewer's proposal as well as the author's?",
+ "source_method_declared": "⭐⭐ 'DERIVED from, not invented' — RQ-002 · the Engineering_Platform_Knowledge_Metamodel · the executable L-A schema. ⭐ Success criterion: 'every existing document classifiable WITHOUT CHANGING THE MODEL' — ⭐ tested in §4.",
+ "definitions": [
+  {
+   "term": "D-I..D-VI",
+   "def": "NATURE · REPRESENTATION · GOVERNANCE-STATUS · AUTHORITY-SCOPE · ⭐ EVIDENCE-STATUS (new) · ⭐ OPERATIONAL-STATE (new)"
+  },
+  {
+   "term": "the admission test",
+   "def": "⭐ orthogonal · necessary · sufficient — all three, from CLAUDE.md"
+  },
+  {
+   "term": "derived, never axes",
+   "def": "lifecycle regime = f(NATURE) · validation method = f(REPRESENTATION, NATURE) · ⭐ intent = f(GOVERNANCE-STATUS, OWNER)"
+  }
+ ],
+ "assumptions": [
+  "a dimension must be orthogonal AND necessary AND sufficient",
+  "documents are the LOWEST layer of the model, never its centre"
+ ],
+ "premises": [
+  "RQ-002 (COMPLETE, unadopted)",
+  "statuses.yaml (8 values, executable)",
+  "authorities.yaml",
+  "ES-005.1",
+  "CLAUDE.md's dimension rule"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE — but ⭐ a structural orthogonality claim PROVEN BY USE: see below.",
+ "derivations": [
+  {
+   "id": "DI-F0013-01",
+   "from": [
+    "the reviewer's INTENT-STATUS proposal",
+    "statuses.yaml already runs draft→…→archived",
+    "owner is already a field"
+   ],
+   "to": "⛔ INTENT-STATUS REJECTED — it decomposes into f(governance-status, owner)",
+   "form": "⭐⭐ SYMMETRIC_APPLICATION_OF_THE_ADMISSION_TEST",
+   "validity": "⭐⭐ VALID AND EXEMPLARY",
+   "⭐ note": "'The reviewer rightly rejected INTENDED for overloading the evidence dimension. INTENT-STATUS overloads the governance dimension in exactly the same way. ⭐ Applying the rule to my error and not to the proposal would be selective.'"
+  },
+  {
+   "id": "DI-F0013-02",
+   "from": [
+    "six real artifacts classified against the model"
+   ],
+   "to": "⭐ all six classify without altering the model — AND the test independently produced a finding",
+   "form": "⭐ SUCCESS_CRITERION_EXECUTED",
+   "validity": "⭐⭐ VALID",
+   "⭐⭐ the finding": "Round39-MC is `frozen` yet ENFORCED; CAP-001 is `realized` yet only advisory → ⭐ GOVERNANCE-STATUS ⟂ OPERATIONAL-STATE, 'obtained by USING the model rather than by arguing for it'"
+  },
+  {
+   "id": "DI-F0013-03",
+   "from": [
+    "ENGINEERING KNOWLEDGE ≠ ENGINEERING ARTIFACT"
+   ],
+   "to": "⭐⭐⭐ the three-times-repeated error becomes UNSTATABLE",
+   "form": "⭐ EXPRESSIVENESS_CONSTRAINT",
+   "validity": "⭐⭐ VALID",
+   "⭐ note": "'you can only say NO ARTIFACT CARRIES IT, which is a REPRESENTATION claim, not a NATURE claim'"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'The meta-model's job is not to describe KnowledgeOS. It is to make certain mistakes impossible to say.'",
+  "⭐ six dimensions: 4 existing + 2 new, ⛔ 1 rejected",
+  "⛔ 'INTENDED' withdrawn — intent is not evidence"
+ ],
+ "dependencies": [
+  "RQ-002",
+  "Engineering_Platform_Knowledge_Metamodel (gate OQ-ENG-004)",
+  "the L-A schema",
+  "statuses.yaml",
+  "authorities.yaml",
+  "⭐ CLAUDE.md's orthogonal/necessary/sufficient rule",
+  "KnowledgeOS_Relationship_Ontology.md (= F0027)"
+ ],
+ "previous_related_files": "⭐ The three-correction annotation cites `KnowledgeOS_Relationship_Ontology.md` = F0027 (already retrofitted).",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — the semantic model all artifacts are to conform to.",
+ "architectural_role": "⭐ META-MODEL + ONTOLOGY (⚠️ and it says so: §1 is a meta-model, §2 an ontology — 'both are named rather than the whole renamed').",
+ "new_missing_changed": {
+  "⭐ new": [
+   "D-V EVIDENCE-STATUS",
+   "D-VI OPERATIONAL-STATE",
+   "intent = f(governance-status, owner)",
+   "the six-concept ontology",
+   "the hierarchy with ARTIFACT as the lowest reusable layer"
+  ],
+  "⛔ rejected": [
+   "INTENT-STATUS — by the same rule that condemned the author's own INTENDED"
+  ],
+  "⛔ withdrawn": [
+   "INTENDED as a fourth evidence grade"
+  ],
+  "⭐ corrected (annotation)": [
+   "⛔ LEVEL MIXING — 'my THIRD instance of that error class'",
+   "PKS is a CONTAINER, not a layer below ARTIFACT",
+   "the chain is incomplete without ⭐ DP-n"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0043 (the meta-model)",
+  "T-0041 (artifact absence ≠ concept absence)",
+  "T-0024",
+  "T-0025"
+ ],
+ "sequential_graph_position": "canonical position 13; 2026-08-02, annotated 2026-08-02 by F0027.",
+ "file_relationships": [
+  {
+   "to": "F0027",
+   "kind": "⭐ IS_ANNOTATED_BY",
+   "note": "three corrections carried in from the Relationship Ontology"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ THE MOST RIGOROUS ADMISSION DISCIPLINE IN THE CORPUS: a declared three-part test, applied to six candidates, ⭐ rejecting one — and the rejected one is the REVIEWER'S, not the author's.",
+ "gaps": [
+  {
+   "id": "G-F0013-A",
+   "⚠️ gap": "D-V and D-VI are admitted as dimensions but are 'NOT a field anywhere' / 'never formalized'",
+   "⭐ significance": "⭐ the file states this and routes it to MM-2 — admitted in the model, absent from the schema"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0013-01",
+   "⭐ finding": "⭐⭐⭐ THE MODEL'S VALUE IS STATED AS MAKING AN ERROR CLASS UNSTATABLE — AND THE ERROR CLASS IS T-0041",
+   "detail": "⭐ 'ENGINEERING KNOWLEDGE ≠ ENGINEERING ARTIFACT… ⭐⭐ This single distinction makes my recurring error UNSTATABLE.' The three instances listed — 'no strategic-DDD method', 'no capability pattern', 'the mission layer is vacant' — ⭐ are exactly T-0041's three recorded instances ('ARTIFACT ABSENCE ≠ CONCEPT ABSENCE — the corpus counts three instances', source F0036).",
+   "⭐⭐ consequence": "⭐ T-0041 names the ERROR; F0013 supplies the REMEDY, at canonical position 13 versus F0036. ⛔ T-0041 is F0036's object under O-1=A, so this is recorded, not written.",
+   "⭐ relevance to this research": "⭐ The architecture's own `ACL-4` ('artifact absence ≠ concept absence') is the same principle. The corpus had both the error class and its remedy before the research restated it.",
+   "status": "⭐ RECORDED",
+   "significance": "⭐ HIGH"
+  },
+  {
+   "id": "AUDIT-F0013-02",
+   "⚠️ finding": "T-0043 records EVIDENCE-STATUS and OPERATIONAL-STATE as CANDIDATES; F0013 ADMITS them",
+   "detail": "T-0043 (source F0039): '(+ EVIDENCE-STATUS, OPERATIONAL-STATE as candidates)'. ⭐ F0013 §1 marks both '⭐ ADMIT — NEW', each passing orthogonal · necessary · sufficient, and §4 PROVES the orthogonality of the second by use.",
+   "⛔ disposition": "⛔ T-0043 is F0039's object. RECORDED as a provenance and status pointer.",
+   "status": "OPEN"
+  },
+  {
+   "id": "AUDIT-F0013-03",
+   "⭐ finding": "⭐ THE ADMISSION TEST IS APPLIED TO THE REVIEWER, NOT ONLY TO THE AUTHOR",
+   "detail": "INTENDED (the author's) withdrawn; INTENT-STATUS (the reviewer's) rejected, with the reason stated: '⭐ Applying the rule to my error and not to the proposal would be selective.'",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the six-dimension table with verdicts",
+  "the six-concept ontology",
+  "the §4 six-artifact classification",
+  "MM-1..MM-4"
+ ],
+ "provenance_second_hand": [
+  "⛔ RQ-002's smoking guns, quoted",
+  "statuses.yaml's 8 values",
+  "F0027's three corrections"
+ ],
+ "negative_evidence": "⭐⭐ A REJECTION WITH A STATED RULE AND A DECOMPOSITION: INTENT-STATUS is not merely declined but shown to reduce to f(governance-status, owner). ⭐ And the §4 test is a genuine success criterion — 'if any row required changing the model, the model would be wrong'.",
+ "multi_dimensional_confidence": {
+  "the four existing dimensions": "⭐ HIGH — derived from RQ-002",
+  "D-V / D-VI as dimensions": "⭐ HIGH — each passes the stated test",
+  "D-V / D-VI as implemented": "⛔ NONE — 'not a field anywhere'",
+  "GOVERNANCE ⟂ OPERATIONAL": "⭐⭐ HIGH — proven by use",
+  "the model as adopted": "⛔ LOW — CANDIDATE, depends on unadopted RQ-002 (MM-1)"
+ },
+ "not_recoverable_without_reread": [
+  "RQ-002",
+  "the Engineering_Platform_Knowledge_Metamodel",
+  "the L-A schema",
+  "statuses.yaml",
+  "authorities.yaml"
+ ]
+}

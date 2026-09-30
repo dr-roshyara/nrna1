@@ -1,0 +1,115 @@
+{
+ "scope": "7 prospective hold-out rows within ONE template regime (R-81..R-91); not IID",
+ "ledger": {
+  "P1 record": {
+   "R-82": "SUPPORTED",
+   "R-83": "SUPPORTED",
+   "R-84": "SUPPORTED",
+   "R-85": "SUPPORTED",
+   "R-86": "SUPPORTED",
+   "R-87": "SUPPORTED",
+   "R-89": "SUPPORTED"
+  },
+  "P2 scope": {
+   "R-82": "UNTESTABLE",
+   "R-83": "UNTESTABLE",
+   "R-84": "SUPPORTED",
+   "R-85": "SUPPORTED",
+   "R-86": "SUPPORTED",
+   "R-87": "SUPPORTED",
+   "R-89": "SUPPORTED"
+  },
+  "P3a status-vocabulary": {
+   "R-82": "SUPPORTED",
+   "R-83": "SUPPORTED",
+   "R-84": "SUPPORTED",
+   "R-85": "SUPPORTED",
+   "R-86": "SUPPORTED",
+   "R-87": "UNTESTABLE",
+   "R-89": "SUPPORTED"
+  },
+  "P3b status-semantics": {
+   "R-82": "SUPPORTED",
+   "R-83": "SUPPORTED",
+   "R-84": "SUPPORTED",
+   "R-85": "SUPPORTED",
+   "R-86": "SUPPORTED",
+   "R-87": "SUPPORTED",
+   "R-89": "SUPPORTED"
+  },
+  "P4 operations/frames": {
+   "R-82": "VIOLATED: VIOLATED(annotation ∉ Frame+(ADOPT))",
+   "R-83": "VIOLATED: VIOLATED(annotation ∉ Frame+(ADOPT))",
+   "R-84": "VIOLATED: VIOLATED(annotation ∉ Frame+(ADOPT))",
+   "R-85": "VIOLATED: VIOLATED(annotation ∉ Frame+(ADOPT))",
+   "R-86": "VIOLATED: VIOLATED(annotation ∉ Frame+(ADOPT/AUTHORIZE/LIFT))",
+   "R-87": "NOT-MODELLED (partial)",
+   "R-89": "SUPPORTED"
+  },
+  "P5 target": {
+   "R-82": "SUPPORTED",
+   "R-83": "SUPPORTED",
+   "R-84": "SUPPORTED",
+   "R-85": "SUPPORTED",
+   "R-86": "SUPPORTED",
+   "R-87": "SUPPORTED",
+   "R-89": "SUPPORTED"
+  }
+ },
+ "summary": {
+  "P1 record": {
+   "supported": 7,
+   "violated": 0,
+   "untestable": 0,
+   "not_modelled": 0
+  },
+  "P2 scope": {
+   "supported": 5,
+   "violated": 0,
+   "untestable": 2,
+   "not_modelled": 0
+  },
+  "P3a status-vocabulary": {
+   "supported": 6,
+   "violated": 0,
+   "untestable": 1,
+   "not_modelled": 0
+  },
+  "P3b status-semantics": {
+   "supported": 7,
+   "violated": 0,
+   "untestable": 0,
+   "not_modelled": 0
+  },
+  "P4 operations/frames": {
+   "supported": 1,
+   "violated": 5,
+   "untestable": 0,
+   "not_modelled": 1
+  },
+  "P5 target": {
+   "supported": 7,
+   "violated": 0,
+   "untestable": 0,
+   "not_modelled": 0
+  }
+ },
+ "frame_minus_consistency": {
+  "R-82": "CONSISTENT",
+  "R-83": "CONSISTENT",
+  "R-84": "CONSISTENT",
+  "R-85": "CONSISTENT",
+  "R-86": "CONSISTENT",
+  "R-87": "CONSISTENT",
+  "R-89": "CONSISTENT"
+ },
+ "frame_minus_counts": {
+  "R-82": 2,
+  "R-83": 3,
+  "R-84": 3,
+  "R-85": 4,
+  "R-86": 6,
+  "R-87": 8,
+  "R-89": 8
+ }
+}

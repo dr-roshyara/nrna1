@@ -1,0 +1,3010 @@
+{
+ "record": "L0-REL-05 EQ3-EQ4-LOCATE (EPIC-004 universe only)",
+ "timestamp_utc": "2026-09-27T05:24:44Z",
+ "components": {
+  "c1_lifecycle_revocation": "revo[ck]\\w*|invalidat\\w*|withdr[ae]w\\w*|rescind\\w*|demot\\w*|supersed\\w*|expir\\w*|\\blaps\\w*|finality|lifecycle|life-cycle|Widerruf|Aufhebung|Ungültig\\w*|ungültig|Rücknahme|Zurücknahme|Aberkennung|Herabstufung|Endgültigkeit|Lebenszyklus",
+  "c2_status_transition": "status (change|transition)|state transition|Statusänderung|(adopted|validated|issued|determination|ruling)\\s*(→|->)\\s*\\w+",
+  "c3_post_issuance_context": "post-issuance|after issuance|once issued|after (adoption|promotion|it is issued)|already[- ]issued|issued record|previously issued",
+  "c4_governance_action": "\\bARB\\b|\\bruling\\b|\\bL0\\b|governance|authori[sz]\\w*|jurisdiction",
+  "c5_evidence_reassessment": "reassess\\w*|re-assess\\w*|revalidat\\w*|re-validat\\w*|re-evaluat\\w*|re-examin\\w*|new evidence|evidence (weaken|lapse|withdrawn)|Neubewertung|Überprüfung|Revalidierung"
+ },
+ "eq3_pattern": "finality|lifecycle|life-cycle|expir\\w*|\\blaps\\w*|persist\\w*|permanen\\w*|remain\\w* valid|Endgültigkeit|Lebenszyklus",
+ "eq4_pattern": "revo[ck]\\w*|invalidat\\w*|withdr[ae]w\\w*|rescind\\w*|demot\\w*|supersed\\w*|Widerruf|Aufhebung|ungültig|Rücknahme|Zurücknahme|Aberkennung|Herabstufung",
+ "class_rule": "EXACT-TARGET = heading with c1 term; STRONG = body line with >=2 components; WEAK = body line with 1 component; lines with only c3/c4 are not targets; OUR-OWN-ARTIFACT/IRRELEVANT not assignable mechanically in this universe (none)",
+ "results": [
+  {
+   "path": "docs/implementation/EPIC-004A_Adjudication_Tactical_Discovery.md",
+   "sha256": "5004554dac8f6d41440a7a7d90565731a9a7e200d429c42b92cd9c83fcd1b384",
+   "n_matches": 15,
+   "matches": [
+    {
+     "line": 19,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 1. Business Vocabulary Inventory"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "revoked"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "authorized",
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "| **Legitimacy** | **THREE distinct senses coexist — a semantic collision, discovered, not resolved:** (a) Adjudication's enum — is the *contested outcome* Legitimate/Illegitimate (command input; rule"
+    },
+    {
+     "line": 25,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 1. Business Vocabulary Inventory"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "supersedes",
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| **Publication / Superseding Constitutional Publication** | Legacy: a terminal act (two parallel paths, chief-gated, no re-open). Policy 1: a chain of publications where a later one *supersedes* — ne"
+    },
+    {
+     "line": 45,
+     "is_heading": false,
+     "heading_context": [
+      43,
+      "## 3. Invariant Candidates (collected, not validated)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expires",
+       "rescind",
+       "supersede"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "BOTH",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "One determination per challenge (implemented) · determination content fixed once at issue, `Final` emits nothing (ADR-T19) · **detection may be automatic; correction may not** (Policy 4) · a published"
+    },
+    {
+     "line": 47,
+     "is_heading": true,
+     "heading_context": [
+      47,
+      "## 4. Lifecycle Inventory (lifecycles named; no state machines produced)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "EXACT-TARGET",
+     "matched_line": "## 4. Lifecycle Inventory (lifecycles named; no state machines produced)"
+    },
+    {
+     "line": 49,
+     "is_heading": false,
+     "heading_context": [
+      47,
+      "## 4. Lifecycle Inventory (lifecycles named; no state machines produced)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "issued → finalized"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Determination:** prepared → issued → finalized; terminal and silent at the end. *(Implemented.)*"
+    },
+    {
+     "line": 50,
+     "is_heading": false,
+     "heading_context": [
+      47,
+      "## 4. Lifecycle Inventory (lifecycles named; no state machines produced)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lapsed"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Challenge:** raised → admitted → (investigating) → routed → adjudicated → resolved; alternates dismissed, lapsed. *(States exist; the raising end has no production trigger.)*"
+    },
+    {
+     "line": 52,
+     "is_heading": false,
+     "heading_context": [
+      47,
+      "## 4. Lifecycle Inventory (lifecycles named; no state machines produced)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "determination → released"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Integrity Quarantine (policy-born, unbuilt):** detected → quarantined → authority determination → released, corrected, or rejected."
+    },
+    {
+     "line": 53,
+     "is_heading": false,
+     "heading_context": [
+      47,
+      "## 4. Lifecycle Inventory (lifecycles named; no state machines produced)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle",
+       "superseding"
+      ],
+      "c2_status_transition": [
+       "determination → superseding"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Publication:** legacy single terminal act today; Policy 1 implies a supersession chain (publication v1 → determination → superseding publication v2 → …) whose lifecycle terms are undiscovered."
+    },
+    {
+     "line": 64,
+     "is_heading": false,
+     "heading_context": [
+      56,
+      "## 5. Responsibility Inventory (who knows / decides / owns / observes — no software objects assigned)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Owns the publication act:** legacy: the chief role, via the management controller. The superseding publication's owner is undiscovered — hotspot."
+    },
+    {
+     "line": 82,
+     "is_heading": false,
+     "heading_context": [
+      78,
+      "## 7. Existing Code Evidence (per discovered responsibility)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "| Ruling recording, uniqueness, lifecycle | `app/Contexts/Adjudication` — complete, tested, qualified | — | — |"
+    },
+    {
+     "line": 89,
+     "is_heading": false,
+     "heading_context": [
+      78,
+      "## 7. Existing Code Evidence (per discovered responsibility)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| Publication supersession | Legacy terminal publication exists | The superseding chain (Policy 1) | **Yes — terminal `results_published` with no outgoing transitions cannot express supersession** (ru"
+    },
+    {
+     "line": 98,
+     "is_heading": false,
+     "heading_context": [
+      92,
+      "## 8. Candidate Modeling Hotspots (areas Tactical DDD must resolve — no solutions offered)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "5. **The superseding publication contract** — Adjudication's output side of Policy 1 (consumer-facing, business-level)."
+    },
+    {
+     "line": 107,
+     "is_heading": false,
+     "heading_context": [
+      103,
+      "## 9. Tactical Discovery Findings"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle",
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "jurisdiction"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Remains uncertain (preserved, not resolved):** the business content of sufficiency standards (the strategic record's differentiated-scrutiny echo suggests the *kind* of answer, not the answer); `Jur"
+    },
+    {
+     "line": 116,
+     "is_heading": false,
+     "heading_context": [
+      103,
+      "## 9. Tactical Discovery Findings"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Self-review (per instruction):** every conclusion above cites its evidence (inventory reports, policies, ADRs, strategic artifacts) ✅ · no tactical model exists — no aggregate boundaries invented, n"
+    },
+    {
+     "line": 126,
+     "is_heading": false,
+     "heading_context": [
+      124,
+      "## ACCEPTED WITH RULINGS (ARB, 2026-07-25 — 7.8/10; the LAST preparatory document)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Accepted as sufficient evidence.** With a recorded criticism: §§5 (Responsibility Inventory), 6 (Information Ownership), and 8 (Modeling Hotspots) drifted from *\"what must the Tactical Model expla"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004B_Adjudication_Aggregate_Discovery.md",
+   "sha256": "44701b217c6dd13b9d939a90268884bcf790bf0c6ec2bd86c2d885998306e8dd",
+   "n_matches": 6,
+   "matches": [
+    {
+     "line": 12,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## Discovery rule (corrected per ARB)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "> **An aggregate exists where the business requires one consistency boundary that must be protected atomically.** Lifecycle, ownership, and volatility are *evidence*; the consistency boundary is the *"
+    },
+    {
+     "line": 19,
+     "is_heading": false,
+     "heading_context": [
+      16,
+      "## Candidate 1 — Determination"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [
+       "issued→final"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Evidence:** operates as an aggregate in production-grade code today — Draft→Issued→Final lifecycle, one-determination-per-challenge enforced at service and database level, ruling content fixed onc"
+    },
+    {
+     "line": 26,
+     "is_heading": false,
+     "heading_context": [
+      23,
+      "## Candidate 2 — AdjudicationProceeding *(working name; review-open)*"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Evidence:** the judgment process demonstrably has its own lifecycle, distinct from the ruling record's — a proceeding is open long before any ruling exists and may end *without* one; it changes at"
+    },
+    {
+     "line": 28,
+     "is_heading": false,
+     "heading_context": [
+      23,
+      "## Candidate 2 — AdjudicationProceeding *(working name; review-open)*"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Open questions (for Evaluation & Selection — explicitly undecided):** whether this concern is an **aggregate at all** — it could instead prove to be a Policy, a Process Manager, a Saga, a Domain S"
+    },
+    {
+     "line": 39,
+     "is_heading": false,
+     "heading_context": [
+      31,
+      "## Further candidates — deferred for evaluation (NOT rejected; evidence recorded, verdicts withheld)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Superseding Constitutional Publication** — current evidence places it as a consumer of this context's output; Evaluation may confirm or complicate that."
+    },
+    {
+     "line": 56,
+     "is_heading": false,
+     "heading_context": [
+      41,
+      "## What this discovery hands to artifact №2 (Aggregate Evaluation & Selection)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "demoted",
+       "lifecycle",
+       "withdrawn"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Self-review (post-refinement):** no aggregate is declared anywhere — every concept is a candidate ✅ · no candidate is rejected — the five deferred items carry evidence, not verdicts ✅ · no collabora"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004C_Adjudication_Aggregate_Evaluation.md",
+   "sha256": "1d4e96d2d361f0c8878ba31f7b37b54b713e0b862968467a165d883d05cfaabf",
+   "n_matches": 10,
+   "matches": [
+    {
+     "line": 6,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004C Adjudication Aggregate Evaluation"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": [
+       "re-evaluated"
+      ]
+     },
+     "n_components": 2,
+     "eq_target": "NEITHER",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Refinement (ARB review, 2026-07-25):** **Criterion 7 — Business Decision Authority** *(renamed per ARB second review: \"ownership\" is overloaded in software architecture — aggregate/data/code/context"
+    },
+    {
+     "line": 15,
+     "is_heading": false,
+     "heading_context": [
+      13,
+      "### A. Tentative Boundary Sketch *(hypothesis)*"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [
+       "issued → final"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "jurisdiction",
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Inside:** determination identity · lifecycle state (Draft → Issued → Final) · the opaque references the ruling attaches to (challenge, evidence envelope, contested outcome, issuing authority, jurisd"
+    },
+    {
+     "line": 16,
+     "is_heading": false,
+     "heading_context": [
+      13,
+      "### A. Tentative Boundary Sketch *(hypothesis)*"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "**Outside:** challenge lifecycle (Contestation's) · evidence content (upstream) · authority validity (Q-1) · the correction and its publication (downstream consumers)."
+    },
+    {
+     "line": 22,
+     "is_heading": false,
+     "heading_context": [
+      18,
+      "### B. Evaluation"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "| 1 | What consistency does it protect? | The ruling record's integrity: exactly-once issuance per challenge; content fixed at the instant of issue; lawful lifecycle transitions only |"
+    },
+    {
+     "line": 26,
+     "is_heading": false,
+     "heading_context": [
+      18,
+      "### B. Evaluation"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "state transition"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "| 5 | Must it commit atomically? | Yes — the state transition and the ruling-bearing outbox event commit in one transaction (implemented; ADR-T1/T14) |"
+    },
+    {
+     "line": 37,
+     "is_heading": false,
+     "heading_context": [
+      34,
+      "### A. Tentative Boundary Sketch *(hypothesis — explicitly a sketch)*"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Outside:** evidence content and its custody (upstream, COL-1/COL-3a) · the ruling record itself (Candidate 1) · challenge lifecycle (Contestation) · authority validity and appointment (Q-1) · scruti"
+    },
+    {
+     "line": 46,
+     "is_heading": false,
+     "heading_context": [
+      39,
+      "### B. Evaluation"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lapse"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| 4 | Can it fail independently? | Yes — a proceeding can conclude in declare-failure, or lapse, with no determination ever existing |"
+    },
+    {
+     "line": 59,
+     "is_heading": false,
+     "heading_context": [
+      53,
+      "## Deferred candidates — sketched and evaluated *(none silently dropped)*"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Superseding Constitutional Publication.** *Sketch:* a consumer of this context's output on the publication side. *Evaluation:* no Adjudication-owned consistency. *C7:* a genuinely named business c"
+    },
+    {
+     "line": 72,
+     "is_heading": false,
+     "heading_context": [
+      61,
+      "## Recommendation summary (for ARB decision — nothing here is decided)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| Superseding Publication | Not an Adjudication aggregate | High | Consumer; first-class on the publication side, later |"
+    },
+    {
+     "line": 116,
+     "is_heading": false,
+     "heading_context": [
+      102,
+      "## CANDIDATE 2 — RESOLVED (ARB, 2026-07-26, on the resolved discriminator; the reopening this freeze itself sanctioned)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| Declare-failure · Evidence body · Quarantine · Superseding Publication | Not Adjudication aggregates | High |"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004D_Determination_Aggregate_Responsibilities.md",
+   "sha256": "87f2f36bc91203d5e2bdf6211692805c1f33396d7c44bab742de7bf27543fc6f",
+   "n_matches": 13,
+   "matches": [
+    {
+     "line": 4,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004D Determination Aggregate Responsibilities"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Constitutional baseline (frozen — not reopened here):** Determination is the only accepted aggregate in this scope, existing implementation confirmed · Governance owns constitutional authority, dele"
+    },
+    {
+     "line": 6,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004D Determination Aggregate Responsibilities"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Acceptance chain (canonical form per ARB, 2026-07-26 — every step must hold):** **Business evidence** *(renamed from \"traceable\" — traceability is the mechanism; evidence is the reason)* → business "
+    },
+    {
+     "line": 8,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004D Determination Aggregate Responsibilities"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [
+       "state transition"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Classification scheme (per responsibility):** Decision (makes a business decision) · Consistency (maintains an invariant) · Lifecycle (owns state transitions) · Recording (records business facts) · "
+    },
+    {
+     "line": 14,
+     "is_heading": true,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "EXACT-TARGET",
+     "matched_line": "### R-1 — Lawful lifecycle of the ruling record"
+    },
+    {
+     "line": 16,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [
+       "issued → final"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **A:** guard the record's lifecycle: Draft → Issued → Final; refuse every illegal transition without mutation and without emission; emit nothing after Final."
+    },
+    {
+     "line": 18,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **C:** lifecycle legality of a record is the textbook obligation of the record's own guardian — no service or process manager can enforce it without the aggregate's cooperation, and splitting it out"
+    },
+    {
+     "line": 20,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **F (why nobody else):** *Governance* — owns authority, not record lifecycles. *Process Manager* — can request transitions but cannot prevent illegal ones without the aggregate's own guard; a PM-enf"
+    },
+    {
+     "line": 21,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Classification:** Lifecycle."
+    },
+    {
+     "line": 22,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Removal test:** *\"A binding ruling, once final, can never change\"* becomes false — the constitutional finality of determinations would be unenforced."
+    },
+    {
+     "line": 23,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "### R-1 — Lawful lifecycle of the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Protects:** the lawfulness of the ruling record's history and the absoluteness of its finality."
+    },
+    {
+     "line": 51,
+     "is_heading": false,
+     "heading_context": [
+      48,
+      "### R-4 — Fix the ruling's content and evidence basis once, at issuance (act-time record-fixing)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **B:** implemented (issue-time event carries all ruling content; aggregate retains lifecycle + refs only); Constitutional Policy alignment: this is Contemporaneous Record-Fixing's discipline (P3) ap"
+    },
+    {
+     "line": 53,
+     "is_heading": false,
+     "heading_context": [
+      48,
+      "### R-4 — Fix the ruling's content and evidence basis once, at issuance (act-time record-fixing)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "state transition"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **D:** **Yes** — content-fixation and state transition commit as one (with the outbox row, per ADR-T1 — the transactional obligation the aggregate's transaction discharges)."
+    },
+    {
+     "line": 98,
+     "is_heading": false,
+     "heading_context": [
+      96,
+      "## Accepted responsibility list"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**R-1** lawful lifecycle · **R-2** exactly-once issuance (instance) · **R-4** act-time fixation of ruling content + basis (current form) · **R-5** refusal absent required assertions (presence only) · "
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004E_Determination_Invariants.md",
+   "sha256": "00d82cd6b84ae9996d0093bb42a60b51d655d8a1bac7ece255dfba67c59f9734",
+   "n_matches": 5,
+   "matches": [
+    {
+     "line": 7,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004E Determination Invariants"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Aggregate Protection Principle (APP — adopted as permanent governance, recorded in MEMORY):** *an aggregate exists to protect domain properties (finality, uniqueness, attribution, authenticity, inte"
+    },
+    {
+     "line": 16,
+     "is_heading": false,
+     "heading_context": [
+      12,
+      "## Truth → Invariant map"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| T-1 | The record's history is lawful; its finality is absolute | INV-1, INV-2 |"
+    },
+    {
+     "line": 28,
+     "is_heading": false,
+     "heading_context": [
+      26,
+      "### INV-1 — Lawful progression only"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "issued → final"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Enforcement seat:** the aggregate's transition guards over its Draft → Issued → Final states (the state machine is the mechanism, not the rule)."
+    },
+    {
+     "line": 79,
+     "is_heading": false,
+     "heading_context": [
+      75,
+      "## Explicitly not invariants of this aggregate (with grounds)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "supersedes"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **\"The correction supersedes rather than replaces\"** — Constitutional Policy 1's invariant, seated on the publication side."
+    },
+    {
+     "line": 85,
+     "is_heading": false,
+     "heading_context": [
+      83,
+      "## Self-review"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "demoted"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**The litmus test discriminated on first application (Methodological Fitness Rule satisfied for it immediately):** INV-1's and INV-4's original propositions carried implementation vocabulary (state-ma"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004F_Determination_Value_Objects.md",
+   "sha256": "3116b1ac058bbe0cd3fe83d65b59166531942ebdcbf6eb0961c4b242c2cacc81",
+   "n_matches": 2,
+   "matches": [
+    {
+     "line": 15,
+     "is_heading": false,
+     "heading_context": [
+      11,
+      "## 1. Derivation: concepts each invariant needs"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality",
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| INV-1/INV-2 (lawful progression; absolute finality) | the record's lifecycle position |"
+    },
+    {
+     "line": 29,
+     "is_heading": false,
+     "heading_context": [
+      23,
+      "## 2. Reconciliation: the existing inventory against the entry condition"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| `DeterminationState` (enum) | INV-1, INV-2 | Lawful progression becomes unexpressible — no lifecycle position to guard | **CONFIRMED** |"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004G_Determination_Domain_Events.md",
+   "sha256": "2392337855521c696a1d5997b1fffd884869064688fcfee534ce218d218e195f",
+   "n_matches": 2,
+   "matches": [
+    {
+     "line": 17,
+     "is_heading": false,
+     "heading_context": [
+      11,
+      "## 1. Derivation: business-significant occurrences the truths imply"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| T-1/INV-2 (finality) | \"The determination became final\" | **Borderline** — finality is a business concept, but see §3 |"
+    },
+    {
+     "line": 33,
+     "is_heading": false,
+     "heading_context": [
+      30,
+      "## 3. Rejected and deferred — the deliberate silences, defended"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [
+       "issued→final"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb",
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **`DeterminationFinalized` — REJECTED, with a recorded reversal condition.** Finality is a real business concept (INV-2), but the entry condition asks what *communication* weakens if absent: today, "
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004H_Determination_Commands.md",
+   "sha256": "b8605a7b346faa52649794cfdd44caf702d3494e95097a5f7d553dfe66b590a9",
+   "n_matches": 9,
+   "matches": [
+    {
+     "line": 16,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 1. Derivation: intentions expressible toward the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| INV-2 (finality) | \"Close/finalize the record\" | **Not today** — no one expresses it (see §3) |"
+    },
+    {
+     "line": 19,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 1. Derivation: intentions expressible toward the ruling record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "revoke"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "| Policy 1 / forward-only | \"Revoke / amend the ruling\" | **Constitutionally forbidden as an intention toward this record** (see §3) |"
+    },
+    {
+     "line": 35,
+     "is_heading": false,
+     "heading_context": [
+      30,
+      "## 3. Rejected and deferred — command silences, defended (ASP)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "2. *Dead code / obsolete capability?* — also no: INV-2 and T-1 make finality a **business concept** (\"finality is absolute\"); the state is constitutionally meaningful."
+    },
+    {
+     "line": 36,
+     "is_heading": false,
+     "heading_context": [
+      30,
+      "## 3. Rejected and deferred — command silences, defended (ASP)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "3. *A missing business intention never explicitly modeled?* — **the evidence leans here.** The Final state exists for a business reason, but *who* closes the record, *when*, and *on what trigger* has "
+    },
+    {
+     "line": 37,
+     "is_heading": false,
+     "heading_context": [
+      30,
+      "## 3. Rejected and deferred — command silences, defended (ASP)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Recorded finding for the ARB:** the dormant mechanism is most plausibly a missing business intention whose definition is entangled with Q-2. **Refined per ARB review — the intention may not be a com"
+    },
+    {
+     "line": 38,
+     "is_heading": false,
+     "heading_context": [
+      30,
+      "## 3. Rejected and deferred — command silences, defended (ASP)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality",
+       "revocation",
+       "revokedeterminationcommand",
+       "superseding"
+      ],
+      "c2_status_transition": [
+       "determination → superseding"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **`RevokeDeterminationCommand` / `AmendDeterminationCommand` — REJECTED constitutionally.** The intention \"change the ruling\" is real in the business — but it is **never expressible toward the exist"
+    },
+    {
+     "line": 50,
+     "is_heading": false,
+     "heading_context": [
+      44,
+      "### Emergent Design Cluster (formal record, per ARB format)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- Additional cluster-adjacent finding (this artifact): the dormant `finalize()` trichotomy leans toward a missing intention **entangled with Q-2**, not with the PM — a second, distinct gravitational c"
+    },
+    {
+     "line": 51,
+     "is_heading": false,
+     "heading_context": [
+      44,
+      "### Emergent Design Cluster (formal record, per ARB format)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- The paired finality reversal condition (event + command travel together)."
+    },
+    {
+     "line": 56,
+     "is_heading": false,
+     "heading_context": [
+      54,
+      "## Self-review"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "revocation"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "Exactly one command confirmed, with full ADP lineage and its removal test ✅ · every candidate faced the intention litmus; no candidate was derived from a method's existence — and the one place that te"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004I_Determination_Repositories.md",
+   "sha256": "c5dd33d2fad699007811aa2e11ef0f8bfebde7aed695b99c00242a7a1116e13e",
+   "n_matches": 3,
+   "matches": [
+    {
+     "line": 13,
+     "is_heading": false,
+     "heading_context": [
+      9,
+      "## 1. Confirmed: `DeterminationRepository` (domain interface) — operation audit"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| `save(Determination)` | Persistence of the guarded state — INV-1..INV-3's lifecycle position and the refs INV-5/INV-6 fixed | The aggregate's protected state would not survive the request; every tru"
+    },
+    {
+     "line": 22,
+     "is_heading": false,
+     "heading_context": [
+      20,
+      "## 2. Repository silences, defended (ASP)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality",
+       "revoke",
+       "supersede"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "BOTH",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **No `delete`/`remove` — CONFIRMED as constitutional silence.** A determination is never deleted: forward-only (ADR-T8), absolute finality (INV-1/2), Policy 1 (supersede, never remove). The absence "
+    },
+    {
+     "line": 23,
+     "is_heading": false,
+     "heading_context": [
+      20,
+      "## 2. Repository silences, defended (ASP)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [
+       "state transition"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **No `update`-style partial mutation — CONFIRMED as designed absence.** ADR-T19 Model B leaves almost nothing mutable to update: ruling content lives in the immutable event; the row carries lifecycl"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004J_Determination_Domain_Services.md",
+   "sha256": "6604bed4c95cefe75083de14581b013b2ff9cc88b3a2d7aa175e8dadeabe77f9",
+   "n_matches": 5,
+   "matches": [
+    {
+     "line": 18,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "## 2. Candidates evaluated (each against the litmus)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb",
+       "governance",
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **`LegitimacyDecision` / sufficiency policy — DEFERRED, with a genuine finding (this artifact's contribution).** ADR-T17 recorded, pre-Q-1, that the legitimacy rules would eventually live as an **\"A"
+    },
+    {
+     "line": 21,
+     "is_heading": false,
+     "heading_context": [
+      14,
+      "## 2. Candidates evaluated (each against the litmus)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Finalization policy (window-closure → finalize) — DEFERRED → the Q-2/finality center.** If №7's temporal-policy hypothesis proves out, the *policy* realization could be domain-service-shaped — but"
+    },
+    {
+     "line": 26,
+     "is_heading": false,
+     "heading_context": [
+      23,
+      "## 3. Open items carried (the chain's complete residue)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **The Q-2/finality center:** retention arithmetic · finality's trigger · the realization shape (command vs. temporal policy vs. PM reaction) — cross-referenced with the cluster, never merged."
+    },
+    {
+     "line": 38,
+     "is_heading": false,
+     "heading_context": [
+      29,
+      "## Self-review"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "BOTH",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "*Frozen inputs: `EPIC-004I` (repositories; RMSP adopted at its freeze) · the full frozen chain №2–№8 · `EPIC-004_Q1_Authority_Resolution.md` (binding constraint) · ADR-T17 (remains valid; superseding "
+    },
+    {
+     "line": 44,
+     "is_heading": false,
+     "heading_context": [
+      42,
+      "## FROZEN (ARB, 2026-07-26) — CHAIN COMPLETE"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb",
+       "jurisdiction"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Artifact №9 is accepted and FROZEN. The nine-artifact tactical chain for the Determination aggregate is COMPLETE.** The ARB's recorded verdict: the zero-confirmed-services result is the series' most"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004K_Adjudication_Process_Manager_Architecture.md",
+   "sha256": "78392672a1a70cc898725b03ccd6cdb641bb12d47509321f33259e7ad7ff4797",
+   "n_matches": 27,
+   "matches": [
+    {
+     "line": 4,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004K Adjudication Process Manager Architecture"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb",
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Role:** Chief Domain Architect under ARB governance. Nothing frozen is reopened; where this design's conclusions press on a frozen decision, the pressure is expressed as a **recommended superseding "
+    },
+    {
+     "line": 5,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004K Adjudication Process Manager Architecture"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "jurisdiction"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Opening agenda (per the frozen cluster rule — \"opened together\"):** the seven-member Emergent Design Cluster · the Q-2/finality center (cross-referenced, never merged) · jurisdiction semantics (only"
+    },
+    {
+     "line": 46,
+     "is_heading": false,
+     "heading_context": [
+      43,
+      "## 4. Process boundaries"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality",
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "governance",
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Outside — explicit:** the challenge lifecycle (Contestation's) · evidence content/custody (upstream) · authority validity (Governance, sole owner — the APM consumes an assertion/decision, per Q-1's "
+    },
+    {
+     "line": 57,
+     "is_heading": false,
+     "heading_context": [
+      48,
+      "## 5. States (business-derived, minimal)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| **Expired** | The adjudication horizon elapsed without a conclusion — a distinct terminal fact, never a silent disappearance |"
+    },
+    {
+     "line": 61,
+     "is_heading": true,
+     "heading_context": [
+      61,
+      "## 6. State transitions"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "state transition"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "## 6. State transitions"
+    },
+    {
+     "line": 72,
+     "is_heading": false,
+     "heading_context": [
+      61,
+      "## 6. State transitions"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| any non-terminal → Expired | Adjudication-horizon timer fires | Conclusion has not occurred |"
+    },
+    {
+     "line": 74,
+     "is_heading": false,
+     "heading_context": [
+      61,
+      "## 6. State transitions"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "Terminal states: the two Concluded kinds and Expired. **Exactly one conclusion, of exactly one kind, or an expiry — never more than one, never a mix** (the №2 sketch's invariant, now seated)."
+    },
+    {
+     "line": 81,
+     "is_heading": false,
+     "heading_context": [
+      76,
+      "## 7. Timers"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| Adjudication horizon (per process) | Bounds the whole conduct; firing yields Expired | **Q-2's Maximum Adjudication Duration** — definition is Q-2's; the APM is its *enforcer*, not its owner |"
+    },
+    {
+     "line": 83,
+     "is_heading": false,
+     "heading_context": [
+      76,
+      "## 7. Timers"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "**What is deliberately NOT here: the determination-finality timer.** See §Q-2 — finality attaches to the *determination* after this process has already concluded; giving it to the APM instance would k"
+    },
+    {
+     "line": 111,
+     "is_heading": false,
+     "heading_context": [
+      104,
+      "## 10. Messages produced"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| Expiry announcement (kind: to be ruled with Q-2's horizon policy) | TBD by the horizon's business policy | An expired adjudication is business-significant; its consumer set is Q-2-adjacent — flagged"
+    },
+    {
+     "line": 126,
+     "is_heading": false,
+     "heading_context": [
+      123,
+      "## 12. Failure handling"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "determination → permanentfailure"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "BOTH",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Issuance request meets INV-B1 refusal** (a determination already exists for the challenge): not an error to escalate blindly — **reconcile**: if this process itself concluded-and-requested earlier"
+    },
+    {
+     "line": 128,
+     "is_heading": false,
+     "heading_context": [
+      123,
+      "## 12. Failure handling"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Authority decision arrives for an Expired process:** a genuine business question (late ruling on an expired adjudication) — **parked to Q-2's horizon policy** (§15); the mechanism (park/dead-lette"
+    },
+    {
+     "line": 136,
+     "is_heading": false,
+     "heading_context": [
+      131,
+      "## 13. Relationship with the frozen Determination aggregate (and the rest of the frozen world)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseded",
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **ADR-T17 superseding recommendation (the cluster's member №7 — the expected successor decision, drafted for ARB issuance):** *ADR-T17's anticipated \"legitimacy rules as an Adjudication DOMAIN SERVI"
+    },
+    {
+     "line": 138,
+     "is_heading": true,
+     "heading_context": [
+      138,
+      "## Q-2 — the finality center, resolved to the commission's three questions (recommendations; ARB decides)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "EXACT-TARGET",
+     "matched_line": "## Q-2 — the finality center, resolved to the commission's three questions (recommendations; ARB decides)"
+    },
+    {
+     "line": 142,
+     "is_heading": false,
+     "heading_context": [
+      138,
+      "## Q-2 — the finality center, resolved to the commission's three questions (recommendations; ARB decides)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "1. **Retention arithmetic (shape, with ARB-owned parameters):** per Constitutional Policy 2, *Evidence Preservation Window(election) = Contestation Window + Maximum Adjudication Duration + Legal Safet"
+    },
+    {
+     "line": 143,
+     "is_heading": false,
+     "heading_context": [
+      138,
+      "## Q-2 — the finality center, resolved to the commission's three questions (recommendations; ARB decides)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "2. **Finality trigger:** **the closure of the challenge window over the determination, with no open challenge** — exactly the DMT finding's lean (№7): the dormant `finalize()` is the mechanism of a mi"
+    },
+    {
+     "line": 144,
+     "is_heading": false,
+     "heading_context": [
+      138,
+      "## Q-2 — the finality center, resolved to the commission's three questions (recommendations; ARB decides)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "3. **Realization shape: a TEMPORAL BUSINESS POLICY, executed by a scheduled policy evaluator — deliberately NOT this PM's instance, and NOT a public command.** Grounds: the APM instance concludes at i"
+    },
+    {
+     "line": 151,
+     "is_heading": false,
+     "heading_context": [
+      146,
+      "## 14. Architectural silences (ASP — every absence a decision)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **No finality timer in the APM** — assigned to the temporal-policy executor; grounds in §Q-2."
+    },
+    {
+     "line": 153,
+     "is_heading": false,
+     "heading_context": [
+      146,
+      "## 14. Architectural silences (ASP — every absence a decision)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lapse"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": [
+       "new evidence"
+      ]
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **No challenge-disposition rule on failure-declared** — Contestation's reaction to `AdjudicationFailureDeclared` (does the challenge return to Routed? lapse? await new evidence?) is Contestation's d"
+    },
+    {
+     "line": 161,
+     "is_heading": false,
+     "heading_context": [
+      158,
+      "## 15. Open questions (carried forward, named owners)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "2. **Horizon-expiry policy** — what an Expired adjudication means for the challenge and whether a late authority decision can ever be honored: Q-2-adjacent business policy."
+    },
+    {
+     "line": 169,
+     "is_heading": false,
+     "heading_context": [
+      167,
+      "## 16. Self-review against the governance principles"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Methodological Fitness Rule:** the entry condition discriminated — the finality concern was *refused* a PM realization (§Q-2), the loop-head command alternative was rejected, and the demand transp"
+    },
+    {
+     "line": 176,
+     "is_heading": false,
+     "heading_context": [
+      167,
+      "## 16. Self-review against the governance principles"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Succession, never editing:** three recommended successor decisions (ChallengeRouted publication · DeterminationIssued additive schema evolution · the ADR-T17 superseding text) — all drafted for AR"
+    },
+    {
+     "line": 177,
+     "is_heading": false,
+     "heading_context": [
+      167,
+      "## 16. Self-review against the governance principles"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Evidence:** every responsibility, state, message, and refusal carries its frozen grounds inline ✅ · **Removal tests:** §2 (the PM), §9 (the loop-head shape), §Q-2 (the non-command finality) ✅ · **"
+    },
+    {
+     "line": 187,
+     "is_heading": false,
+     "heading_context": [
+      183,
+      "## APPROVED (ARB, 2026-07-26)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Status ledger at approval:** the architecture — APPROVED · the three successor decisions — **RECOGNIZED, awaiting explicit ARB issuance** (recognition is not issuance; nothing is issued by this appr"
+    },
+    {
+     "line": 193,
+     "is_heading": false,
+     "heading_context": [
+      191,
+      "## DECISION AGENDA RESOLVED (ARB, 2026-07-26, explicit per-item)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseded",
+       "supersedes"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb",
+       "authorized"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**1. All three successor decisions ISSUED together** — the ARB's recorded ground: they are not independent implementation choices but architectural consequences of the approved design (without Challen"
+    },
+    {
+     "line": 197,
+     "is_heading": false,
+     "heading_context": [
+      191,
+      "## DECISION AGENDA RESOLVED (ARB, 2026-07-26, explicit per-item)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "**3. Horizon-expiry policy RULED: return to Contestation; late decisions never honored.** Expiry announces the failure-to-conclude; the challenge's disposition is Contestation's per its own rules; a p"
+    },
+    {
+     "line": 204,
+     "is_heading": false,
+     "heading_context": [
+      191,
+      "## DECISION AGENDA RESOLVED (ARB, 2026-07-26, explicit per-item)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseded"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "*Immutable inputs: the frozen nine-artifact chain (`EPIC-004B`..`EPIC-004J`) · `EPIC-004_Q1_Authority_Resolution.md` · the four Constitutional Policies (EPIC-003 §THE FOUR DECISIONS) · ADR-T1/T8/T11/T"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004_Adjudication_Tactical_Work_Package.md",
+   "sha256": "3b3e6f77c5c6cf66abecb5b59264b5b609df90b8cfcf5f3bcb12da23a6cae9b1",
+   "n_matches": 5,
+   "matches": [
+    {
+     "line": 13,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 1. Context Confirmation"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "issued→final"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Current implementation nucleus (per the Entry Assessment, evidence-based):** `app/Contexts/Adjudication` — complete hexagonal shape, thoroughly tested; the `Determination` aggregate records a bind"
+    },
+    {
+     "line": 15,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 1. Context Confirmation"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Constitutional constraints in direct force:** all four policies — Superseding Constitutional Publication (Adjudication's corrections land as superseding publications, never mutations) · Evidence P"
+    },
+    {
+     "line": 25,
+     "is_heading": false,
+     "heading_context": [
+      19,
+      "## 2. Tactical Objectives"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **T-3 — Define aggregate boundaries** within the extended context (what belongs to the existing Determination lifecycle, what belongs to the judgment process, and how they relate) — *the defining ha"
+    },
+    {
+     "line": 29,
+     "is_heading": false,
+     "heading_context": [
+      19,
+      "## 2. Tactical Objectives"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **T-7 — Define how determinations reach the Superseding Constitutional Publication mechanism** (Constitutional Policy 1) at the business level — the correction's landing point as a consumer of this "
+    },
+    {
+     "line": 49,
+     "is_heading": false,
+     "heading_context": [
+      46,
+      "## 5. Known Risks (acknowledged, not solved)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "superseding"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **R-2 (Critical, decision made / realization pending):** corrections land via Superseding Constitutional Publication — the mechanism is ruled but unbuilt; T-7 defines the business-level contract onl"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004_Architecture_to_Implementation_Roadmap.md",
+   "sha256": "46cb929189275222ed14aaf14d96ed6bb4948cc056784b233c84dad8dcd2c8ee",
+   "n_matches": 7,
+   "matches": [
+    {
+     "line": 12,
+     "is_heading": false,
+     "heading_context": [
+      10,
+      "## 0. Scope inventory — what the approved architecture actually requires building"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [
+       "issued record"
+      ],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "From the issued record, exhaustively: **(a)** `EvidenceSet` VO + `IssueDeterminationCommand`/`DeterminationIssued` additive schema v3 (ADR-T22) · **(b)** the APM itself — durable process store, state "
+    },
+    {
+     "line": 23,
+     "is_heading": false,
+     "heading_context": [
+      18,
+      "## 1. Work-package decomposition"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| **WP-2** | APM core: process-store migration + model (+`BelongsToTenant`) + mapper · state machine (Opened→Assembling⇄AwaitingDecision→Concluded×2 \\| Expired) · **conclude-time atomic fixation** (co"
+    },
+    {
+     "line": 30,
+     "is_heading": false,
+     "heading_context": [
+      18,
+      "## 1. Work-package decomposition"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "expiry",
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "| **WP-6** | Temporal machinery: bootstrap-parameter config (per-election-type, org-overridable; INTERIM-marked) · adjudication-horizon timer → Expired (+ its announced fact; late decisions dead-lette"
+    },
+    {
+     "line": 44,
+     "is_heading": false,
+     "heading_context": [
+      34,
+      "## 2. Dependency graph"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "WP-6 (temporal machinery) ── after WP-2 (timers act on the store); finality evaluator"
+    },
+    {
+     "line": 72,
+     "is_heading": false,
+     "heading_context": [
+      70,
+      "## 6. Testing strategy"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lapse"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **TDD RED-first, literally, every class** (house rule; the one recorded historical lapse is the cautionary precedent)."
+    },
+    {
+     "line": 73,
+     "is_heading": false,
+     "heading_context": [
+      70,
+      "## 6. Testing strategy"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "expiry",
+       "finality"
+      ],
+      "c2_status_transition": [
+       "issued → redrive"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Per-WP keystone tests (acceptance criteria in test form):** WP-1 — v3 round-trip + v2 tolerance + v1 rejection; the set is fixed in the event and immutable. WP-2 — exactly-once conclusion under co"
+    },
+    {
+     "line": 78,
+     "is_heading": false,
+     "heading_context": [
+      76,
+      "## 7. Rollback / rollout order"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "Rollout follows the implementation order; each WP is dark until its consumer exists (publishing `ChallengeRouted` with no registered consumer is safe by design — events without consumers are the platf"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004_Q1_Authority_Resolution.md",
+   "sha256": "7bfe0afcc9eed6ff98315a1c5bc1546cd810ec198be273bbd866d9f77d4cc72e",
+   "n_matches": 2,
+   "matches": [
+    {
+     "line": 12,
+     "is_heading": false,
+     "heading_context": [
+      9,
+      "## The five answers"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle",
+       "revocable"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "BOTH",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "2. **Is authority delegated?** **Yes** — through constitutional delegation, with lifecycle (granted, scoped, revocable), as the business already practices it."
+    },
+    {
+     "line": 13,
+     "is_heading": false,
+     "heading_context": [
+      9,
+      "## The five answers"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lifecycle",
+       "revoked"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "3. **Is authority itself modeled?** **Yes — but not here.** Authority delegation is already a modeled, implemented domain: Governance's `AuthorityAssignment` / `AuthorityResolver` / `AuthorityChain` /"
+    }
+   ]
+  },
+  {
+   "path": "docs/implementation/EPIC-004_Q2_Resolution_Package.md",
+   "sha256": "31c93e46174cd3120afa6958925e60c3aefe29e18ae23c844c6ae8fcc545187a",
+   "n_matches": 18,
+   "matches": [
+    {
+     "line": 5,
+     "is_heading": false,
+     "heading_context": [
+      1,
+      "# EPIC-004 Q-2 Resolution Package — Business Policy for the Contestation Window Family"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "**Immutable inputs:** the frozen chain (EPIC-004B..J) · EPIC-004K (APPROVED, agenda resolved) · ADR-T21/T22/T23 (issued) · the four Constitutional Policies (EPIC-003) · the ruled horizon-expiry policy"
+    },
+    {
+     "line": 22,
+     "is_heading": false,
+     "heading_context": [
+      18,
+      "## 2. Maximum Adjudication Duration (MAD)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Rationale — flagged as this package's weakest number:** **no implemented business evidence exists for MAD anywhere in the record** (the transport park-deadline is 60 *minutes* and is not business "
+    },
+    {
+     "line": 23,
+     "is_heading": false,
+     "heading_context": [
+      18,
+      "## 2. Maximum Adjudication Duration (MAD)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired",
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "- **Operational consequences:** *PM horizon* — a process not concluded within 60 days transitions to Expired (ruled policy, §6). *Evidence retention* — MAD is the middle term of the EPW sum; lengtheni"
+    },
+    {
+     "line": 43,
+     "is_heading": false,
+     "heading_context": [
+      31,
+      "## 4. Retention arithmetic — formal derivation (additive, per the approved form)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expires"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "2. That adjudication may lawfully run to the horizon — +60 days (MAD). Its evidence must exist throughout (Retention Invariant: evidence for a permissible challenge never expires while the challenge c"
+    },
+    {
+     "line": 45,
+     "is_heading": false,
+     "heading_context": [
+      31,
+      "## 4. Retention arithmetic — formal derivation (additive, per the approved form)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "4. **Derived determination-finality term:** finality(determination) = issued-at + CW(determination) = issued-at + 30 days, **provided no challenge against the determination is open at closure** — a ch"
+    },
+    {
+     "line": 46,
+     "is_heading": false,
+     "heading_context": [
+      31,
+      "## 4. Retention arithmetic — formal derivation (additive, per the approved form)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "supersedes"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "5. **Consistency check against the old contradiction:** legacy per-voter records at 30 days vs. security events at 730 — the interim EPW (120 days) supersedes the 30-day deletion for everything the Re"
+    },
+    {
+     "line": 48,
+     "is_heading": true,
+     "heading_context": [
+      48,
+      "## 5. Finality policy — confirmed, validated against the issued record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [
+       "issued record"
+      ],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "EXACT-TARGET",
+     "matched_line": "## 5. Finality policy — confirmed, validated against the issued record"
+    },
+    {
+     "line": 51,
+     "is_heading": false,
+     "heading_context": [
+      48,
+      "## 5. Finality policy — confirmed, validated against the issued record"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [
+       "state transition"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "ruling"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "BOTH",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "- **Consistency validation:** **ADR-T8** ✅ — the evaluator coordinates nothing across contexts; it is a scheduled policy over one aggregate's records, not loop coordination or compensation. **ADR-T21*"
+    },
+    {
+     "line": 53,
+     "is_heading": true,
+     "heading_context": [
+      53,
+      "## 6. Horizon expiry — formalized (no redesign; the ruled policy, stated operationally)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "EXACT-TARGET",
+     "matched_line": "## 6. Horizon expiry — formalized (no redesign; the ruled policy, stated operationally)"
+    },
+    {
+     "line": 55,
+     "is_heading": false,
+     "heading_context": [
+      53,
+      "## 6. Horizon expiry — formalized (no redesign; the ruled policy, stated operationally)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "1. A process reaching MAD without conclusion transitions to **Expired** — a recorded terminal fact, never a silent disappearance."
+    },
+    {
+     "line": 56,
+     "is_heading": false,
+     "heading_context": [
+      53,
+      "## 6. Horizon expiry — formalized (no redesign; the ruled policy, stated operationally)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "lapse"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "2. The challenge **returns to Contestation** for disposition under Contestation's own rules (its lapse/re-route vocabulary; the disposition is not Adjudication's to define)."
+    },
+    {
+     "line": 57,
+     "is_heading": false,
+     "heading_context": [
+      53,
+      "## 6. Horizon expiry — formalized (no redesign; the ruled policy, stated operationally)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expired"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "3. **A late authority decision is never honored** — a decision arriving for an Expired process dead-letters as a conflict via the existing translation discipline (`PermanentFailure` family); no reviva"
+    },
+    {
+     "line": 58,
+     "is_heading": false,
+     "heading_context": [
+      53,
+      "## 6. Horizon expiry — formalized (no redesign; the ruled policy, stated operationally)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "4. Expiry within a still-open contestation window does not consume the window: a timely re-raise (if Contestation's rules permit) opens a **new** process with a fresh horizon — the EPW arithmetic alre"
+    },
+    {
+     "line": 62,
+     "is_heading": false,
+     "heading_context": [
+      60,
+      "## 7. `DeterminationFinalized` — armed, not activated (confirmed)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "The reversal condition **remains armed and is not activated by this package**. **Evidence required before activation (recorded):** a *designed* consumer that must observe finality — the concrete candi"
+    },
+    {
+     "line": 79,
+     "is_heading": false,
+     "heading_context": [
+      77,
+      "## Traceability"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 1,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "WEAK-LEXICAL-CANDIDATE",
+     "matched_line": "Every section traces to: EPIC-004K §7/§Q-2/§15 (the three load-bearing consumers) · Constitutional Policy 2 and its Retention Invariant (EPIC-003 §THE FOUR DECISIONS) · the ruled horizon-expiry policy"
+    },
+    {
+     "line": 83,
+     "is_heading": false,
+     "heading_context": [
+      81,
+      "## Self-review"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry",
+       "finality"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [
+       "issued record"
+      ],
+      "c4_governance_action": [
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 3,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "Interim values proposed, never asserted as permanent — each with rationale, evidence grade, and a mandatory stakeholder review flag; the weakest number (MAD) is named as such rather than dressed up ✅ "
+    },
+    {
+     "line": 91,
+     "is_heading": false,
+     "heading_context": [
+      87,
+      "## Implementation Authorization Recommendation (exactly one, as commissioned)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [
+       "expiry"
+      ],
+      "c2_status_transition": [],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "authorization"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-3 PERSISTENCE",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "**Evidence:** every architectural gate is closed (chain frozen · EPIC-004K approved · ADR-T21/T22/T23 issued · horizon-expiry ruled · reversal condition disposed); this package supplies the last missi"
+    },
+    {
+     "line": 101,
+     "is_heading": false,
+     "heading_context": [
+      97,
+      "## RATIFIED · AUTHORIZED · TRANSITION RECOGNIZED (ARB, 2026-07-26 — three explicit per-item rulings)"
+     ],
+     "components": {
+      "c1_lifecycle_revocation": [],
+      "c2_status_transition": [
+       "issued → q"
+      ],
+      "c3_post_issuance_context": [],
+      "c4_governance_action": [
+       "arb",
+       "authorization",
+       "governance"
+      ],
+      "c5_evidence_reassessment": []
+     },
+     "n_components": 2,
+     "eq_target": "EQ-4 REVOCATION",
+     "class": "STRONG-SEMANTIC-CANDIDATE",
+     "matched_line": "3. **The governance transition is FORMALLY RECOGNIZED:** architecture governance for this scope is **complete**; implementation governance is the next discipline. No further architecture documents on "
+    }
+   ]
+  }
+ ],
+ "scope_check_headings": {
+  "product_terms_in_headings": {
+   "EPIC-004B": [
+    "election",
+    "candidate(s)"
+   ],
+   "EPIC-004_Q2": [
+    "contestation"
+   ]
+  },
+  "note": "heading-only signal that EPIC-004 may be the product Adjudication/Contestation domain; not a conclusion"
+ },
+ "epistemic_rule": "absence of revocation evidence is not evidence for persistence; not(E(revocation)) does not imply P0; only source-described positive mechanisms constrain"
+}

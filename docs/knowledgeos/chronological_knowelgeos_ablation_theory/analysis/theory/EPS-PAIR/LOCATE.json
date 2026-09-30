@@ -1,0 +1,30 @@
+{
+ "rows_with_supersede_terms": [
+  {
+   "row": "R-33",
+   "date": "2026-07-08",
+   "triple": null,
+   "POS": 1,
+   "NEG": 0,
+   "authority_cue": null,
+   "kind_cue": false
+  },
+  {
+   "row": "R-94",
+   "date": "2026-08-04",
+   "triple": [
+    "Delivery Governance",
+    "Disposition",
+    "ARB CHIEF"
+   ],
+   "POS": 1,
+   "NEG": 0,
+   "authority_cue": "ARB CHIEF",
+   "kind_cue": false
+  }
+ ],
+ "ranked_candidates": [
+  "R-94",
+  "R-33"
+ ]
+}

@@ -1,0 +1,80 @@
+{
+  "verdicts_A": {
+    "M_issuer": "FALSIFIED",
+    "M_status": "UNDETERMINED",
+    "M_adopter": "FALSIFIED",
+    "M_chain": "UNDETERMINED (fails survival condition because M_status is UNDETERMINED; attribution condition met)"
+  },
+  "verdicts_reviewer": {
+    "M_issuer": {
+      "verdict": "FALSIFIED",
+      "deciding_pairs": [
+        {"a": "R-81 before R-86 (ARB Chief, NOT-IN-FORCE, derived non-circularly)", "b": "R-81 after R-86 (ARB Chief, IN-FORCE, stated: \"THIS RULING IS GOVERNING.\")"},
+        {"a": "R-82..R-85 before R-86 (ARB Chief, NOT-IN-FORCE, derived non-circularly)", "b": "R-82..R-85 after R-86 (ARB Chief, IN-FORCE, stated: \"These become governing rulings effective immediately.\")"}
+      ],
+      "dropped_pairs_from_A": ["R-89 at issue vs R-82..R-85 after R-86 (R-89 in_force is circular, recoded UNK)"],
+      "undetermined_pairs": ["R-89 / R-95 / R-81 as-filed (ARB Chief, in_force UNK) vs any ARB Chief state", "R-70 (issuer human authority = Decision Authority, in_force UNK) vs R-86", "R-88 (issuer UNK)"]
+    },
+    "M_status": {
+      "verdict": "UNDETERMINED",
+      "deciding_pairs": [],
+      "consistent_known_pairs": ["PREPARED: R-81..R-85 before R-86, all NOT-IN-FORCE (non-circular)", "ADOPTED: R-81..R-85 after R-86, all IN-FORCE (stated)"],
+      "undetermined_pairs": ["R-86 (none stated, IN-FORCE derived) vs R-70 (none stated, UNK)", "R-86 vs R-95 (none stated, UNK)", "R-86 vs R-81 as-filed (none stated, UNK)", "R-89 (PREPARED, UNK after recode) vs R-81..R-85 before R-86", "R-88 (status UNK)"]
+    },
+    "M_adopter": {
+      "verdict": "FALSIFIED (fragile: rests on R-86 adopter = 'none')",
+      "deciding_pairs": [
+        {"a": "R-81..R-85 before R-86 (adopter none: \"AWAITING ADOPTION\", NOT-IN-FORCE)", "b": "R-86 at issue (adopter none, IN-FORCE derived from recorded operation)"}
+      ],
+      "dropped_pairs_from_A": ["R-89 at issue vs R-86 (R-89 in_force circular, recoded UNK)"],
+      "undetermined_pairs": ["R-70 / R-95 / R-89 / R-81 as-filed (adopter none, in_force UNK)", "R-88 (adopter UNK)"]
+    },
+    "M_chain": {
+      "verdict": "DOES NOT SURVIVE (M_status is UNDETERMINED, not SURVIVES); attribution condition met",
+      "status_changes": [
+        {"ruling": "R-81..R-85", "from": "PREPARED", "to": "ADOPTED", "by_actor": "Decision Authority (act: R-86)", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment."},
+        {"ruling": "R-81", "from": "none stated (as filed)", "to": "PREPARED", "by_actor": "ARB Chief (provenance annotation)", "quote": "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION", "note": "A mentions this change in a note but omits it from status_changes although M_chain requires every change to be attributed; it is attributable, so the condition still holds"}
+      ]
+    }
+  },
+  "circular_values": [
+    {
+      "ruling_state": "R-89 at issue",
+      "A_value": "NOT-IN-FORCE (derived)",
+      "derivation": "from R-89's PREPARED marker plus R-86's rule 'Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it' plus the precedent that a PREPARED ruling's effect does not hold",
+      "why_circular": "force derived from status (and status from issuer), then used to test M_status (consistent pair), M_issuer (deciding pair) and M_adopter (deciding pair). No row states R-89's force; 'WP-4C-1 ... is AUTHORIZED' is authorization of a slice, not force.",
+      "recoded": "UNK"
+    },
+    {
+      "ruling_state": "R-95 at issue (hypothetical only)",
+      "A_value": "UNK (A correctly declined the derivation)",
+      "derivation": "R-86 issuer rule -> PREPARED -> NOT-IN-FORCE",
+      "why_circular": "issuer -> status -> force; using it would test M_issuer / M_status on a value built from those variables",
+      "recoded": "UNK (unchanged)"
+    }
+  ],
+  "non_circular_checked": [
+    {"ruling_state": "R-81..R-85 before R-86", "value": "NOT-IN-FORCE", "basis": "force language, not the marker: R-86 \"These become governing rulings effective immediately.\" (not governing before) and R-81 \"“BATCH 7 IS RELEASED” DOES NOT HOLD\""},
+    {"ruling_state": "R-86 at issue", "value": "IN-FORCE", "basis": "R-86 has no marker and its value is not derived from its issuer; R-81 records that R-86's act operated: \"(adoption act: R-86). THIS RULING IS GOVERNING.\" (operative = force per TASK)"}
+  ],
+  "unsupported_values": [
+    {"ruling_state": "R-88 as cited by R-89", "A_value": "IN-FORCE (derived)", "problem": "rests on citation by R-89, itself PREPARED with no established force, and on 'left the PREPARED→ADOPTED mechanism in force', where 'in force' describes the mechanism, not R-88. A excludes R-60/R-66/R-72/R-76/R-79 as 'force presupposed, not stated'; R-88 is in the same position. If read as 'R-88 was adopted -> in force', the value is status-derived (circular).", "recoded": "UNK"}
+  ],
+  "disagreements": [
+    {"id": "D1", "class": "coding", "item": "R-89 in_force", "A": "NOT-IN-FORCE (derived)", "reviewer": "UNK (circular)", "verdict_impact": "none; removes one deciding pair each from M_issuer and M_adopter, both still decided by other pairs"},
+    {"id": "D2", "class": "formal reasoning", "item": "use of circular value in the test", "A": "notes flag R-89 as 'partly circular' but still use it in the M_issuer and M_adopter deciding pairs and in 'PREPARED is never in force'", "reviewer": "circular values must be recoded UNK before testing; 'PREPARED is never in force' holds only on R-81..R-85", "verdict_impact": "none"},
+    {"id": "D3", "class": "source interpretation", "item": "R-88 in_force", "A": "IN-FORCE (derived from R-89's reliance and 'mechanism in force')", "reviewer": "UNK; 'in force' there modifies the mechanism, and the citing ruling is itself PREPARED; inconsistent with A's own exclusion rule", "verdict_impact": "none (R-88 has UNK issuer/status/adopter)"},
+    {"id": "D4", "class": "source interpretation", "item": "R-70 issuer", "A": "\"ARB\" (header), with conflict noted", "reviewer": "human authority = Decision Authority: R-81 \"Every prior ruling R-1..R-80 was issued by the human authority\" and \"THE DECISION AUTHORITY IS THE HUMAN AUTHORITY, NOT THE CHIEF\". The header label 'ARB' is a governance track, not the issuer (R-81 carries the same 'ARB' header but was issued by the Chief)", "verdict_impact": "none (R-70 in_force UNK); adds an undetermined M_issuer pair with R-86"},
+    {"id": "D5", "class": "coding", "item": "R-81 as-filed state", "A": "described in a note, not coded; its none->PREPARED change is left out of M_chain.status_changes", "reviewer": "code it: issuer ARB Chief, status none stated, adopter none, in_force UNK (self-claim \"isolation repair ACTIVE\" vs later \"“BATCH 7 IS RELEASED” DOES NOT HOLD\"); list the change, attributed to the ARB Chief", "verdict_impact": "none under UNK; see alternative reading A-1"},
+    {"id": "D6", "class": "formal reasoning", "item": "M_chain label", "A": "UNDETERMINED", "reviewer": "TASK defines M_chain by 'survives iff', so the result is binary: DOES NOT SURVIVE (M_status UNDETERMINED). Same substance, different label", "verdict_impact": "label only"},
+    {"id": "D7", "class": "wording", "item": "quotes offered for 'none stated' statuses", "A": "R-70: \"WP-7B-R1 **authorized to implement**\"; R-95: \"EP-01 plans may be prepared. Code may not yet be written.\"", "reviewer": "coding is correct, but these quotes show the authorization of a slice, not a status marker; R-95's 'prepared' refers to plans, not PREPARED status. The evidence for 'none stated' is that no marker appears (compare R-89's header 'ARB CHIEF (PREPARED)' with R-95's 'ARB CHIEF.')", "verdict_impact": "none"},
+    {"id": "D8", "class": "evidence scope", "item": "support for R-82..R-85 PREPARED (A2)", "A": "treats 'these five' = R-81..R-85 as an inference from R-86's count", "reviewer": "a quote A did not use supports it further: R-86 grounds \"the rulings explicitly marked PREPARED rather than implicitly adopted\"", "verdict_impact": "none (strengthens A)"},
+    {"id": "D9", "class": "source interpretation", "item": "R-95 UNK basis", "A": "partly rests on 'RULING AS REFINED AT ISSUE' implying an unnamed actor's act", "reviewer": "speculative; UNK is correct because the only available derivation (R-86 issuer rule) is circular and no row states R-95's force", "verdict_impact": "none"}
+  ],
+  "strongest_alternative_readings": [
+    {"id": "A-1", "model": "M_status", "reading": "R-81 as filed (status none stated) was NOT-IN-FORCE from the outset, because the Chief's determination is about authority that was lacking all along. Paired with R-86 (none stated, IN-FORCE) this would FALSIFY M_status.", "ruled_out": "partly. R-81's final annotation says the ruling 'passed through a PREPARED state', and R-86 lists 'provenance corrected'. Both frame the unmarked filing as mis-recorded provenance of one PREPARED state, not as a separate 'none stated' state. The present-tense 'DOES NOT HOLD' does not state the as-filed force. Not ruled out beyond doubt."},
+    {"id": "A-2", "model": "M_adopter", "reading": "Issuance by the Decision Authority is itself adoption: R-81 says the Session-1 mandate delegated 'CHAIRING AND PREPARATION, not adoption'. On this reading R-86's adopter is the Decision Authority, or UNK. Every known pair is then consistent and M_adopter is UNDETERMINED.", "ruled_out": "no. The text never names an adopter of R-86, and R-81 shows that the register records adoptions in the adopted ruling's own row, which supports 'none'. But nothing excludes the merged reading."},
+    {"id": "A-3", "model": "M_adopter", "reading": "R-86's force is the force of an adoption act, not a ruling's force, so its in_force is UNK. Then M_adopter is UNDETERMINED.", "ruled_out": "largely. TASK counts 'operative' as force, and R-81 records R-86's act as having taken effect."},
+    {"id": "A-4", "model": "M_status", "reading": "Use the rule-assigned status for R-95 (PREPARED) and derive NOT-IN-FORCE.", "ruled_out": "procedurally yes. Both the status and the force would come from the issuer, which is circular, so this reading is inadmissible for testing."}
+  ]
+}

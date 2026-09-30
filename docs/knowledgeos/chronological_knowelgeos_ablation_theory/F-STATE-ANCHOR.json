@@ -1,0 +1,7 @@
+{
+ "legacy_lines": 4556,
+ "legacy_sha256": "488e66c4f100eed2608ed637d40203951450468beb93d459382d1b530b934f2e",
+ "last_line_hash": "fd506e7951b85a959423e87e7caee9142b94116b1d9f89947d188300e6bd77bf",
+ "sealed_utc": "2026-09-25T12:45:34Z",
+ "note": "pre-v1.2 events (no hash fields); sealed at v1.2 adoption"
+}

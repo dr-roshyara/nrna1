@@ -1,0 +1,64 @@
+{
+ "test": "cross-family test of T-min v1.1 on session-log disposition sections (a different host family and genre)",
+ "status": "FROZEN before any sampled section is read",
+ "population": "headings in .claude/sessions/2026-07-*.md and 2026-08-0*..08-10 containing a disposition verb; headings mentioning KnowledgeOS / KOS / S-series / F-series / lane excluded (F-series scope); sections already read excluded; 91 sections",
+ "seed": "F-xfam-2026-09-28",
+ "sample": [
+  {
+   "file": ".claude/sessions/2026-07-11.md",
+   "start": 203,
+   "end": 209,
+   "sha": "93d094829a90f603"
+  },
+  {
+   "file": ".claude/sessions/2026-07-25.md",
+   "start": 241,
+   "end": 252,
+   "sha": "2565a66c20a8da4b"
+  },
+  {
+   "file": ".claude/sessions/2026-07-31.md",
+   "start": 611,
+   "end": 628,
+   "sha": "08827d65e863c497"
+  },
+  {
+   "file": ".claude/sessions/2026-07-30.md",
+   "start": 193,
+   "end": 204,
+   "sha": "744b7d67c651f766"
+  },
+  {
+   "file": ".claude/sessions/2026-07-26.md",
+   "start": 94,
+   "end": 99,
+   "sha": "5c5796787811c9ab"
+  },
+  {
+   "file": ".claude/sessions/2026-07-31.md",
+   "start": 3334,
+   "end": 3340,
+   "sha": "08827d65e863c497"
+  },
+  {
+   "file": ".claude/sessions/2026-07-28.md",
+   "start": 511,
+   "end": 512,
+   "sha": "adabea4766b8e4cf"
+  },
+  {
+   "file": ".claude/sessions/2026-07-31.md",
+   "start": 573,
+   "end": 588,
+   "sha": "08827d65e863c497"
+  }
+ ],
+ "manual": "RESERVE/MANUAL-r2.md, unchanged (the unit of coding is a section instead of a register row)",
+ "predictions": "V1\u2013V7 under T-min v1.1 (unchanged); coverage reported per coder (no threshold \u2014 a diagnostic); main codes and seals first, then the blind SECONDARY coder",
+ "cross_family_questions": [
+  "do guard violations appear in a different genre?",
+  "do the frames hold?",
+  "does the vocabulary transfer (coverage)?",
+  "do session logs record acts or reports of acts (a genre difference to be classified, not absorbed)?"
+ ]
+}

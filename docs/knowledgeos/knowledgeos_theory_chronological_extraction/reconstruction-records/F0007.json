@@ -1,0 +1,122 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0008-RETROFIT-B2",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 2 of the 31 admissible files",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0008-RETROFIT-B2."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0007",
+ "canonical_path": "docs/knowledgeos/AI_Workflow_Observation_Log.md",
+ "canonical_sequence_position": 7,
+ "lines_total": 33,
+ "source_self_declared_status": "⭐ 'OBSERVATION INSTRUMENT — append-only log' · 'evidence for the Decision Authority; approved for immediate start by both reviews 2026-08-03'",
+ "source_document_kind": "⛔ 'Observations only · no orchestration design · no automation. ⭐ This log EARNS the future orchestrator, or it doesn't.'",
+ "source_research_question": "⭐ 'which orchestration rules would evidence actually support?'",
+ "reconstruction_question": "⛔ DISTINCT: what does an instrument with zero entries establish?",
+ "source_method_declared": "one line per cycle, as it happens · counts carry their enumerations",
+ "definitions": [
+  {
+   "term": "entry",
+   "def": "date · task type · model(s) · outcome · disagreement · escalated · friction"
+  },
+  {
+   "term": "cost signals",
+   "def": "copy/paste count · approvals · review iterations · wrong routing · overrides · AI↔AI disagreement · wait time"
+  }
+ ],
+ "assumptions": [
+  "automation must be earned by recorded evidence, never designed in advance"
+ ],
+ "premises": [
+  "Ref-Arch §1 / N-10",
+  "EDM automation stance",
+  "I-8 governance precedes automation"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⛔⛔ AND NO DATA AT ALL — the log table contains one placeholder row: '(starts with the next real cycle)'.",
+ "derivations": [
+  {
+   "id": "DI-F0007-01",
+   "from": [
+    "existing canon governs until evidence arrives"
+   ],
+   "to": "⭐ 'the log's growth is the ONLY path to an AI-Orchestration ADR'",
+   "form": "EVIDENCE_GATE_ON_AUTOMATION",
+   "validity": "⭐ VALID — a declared, falsifiable gate"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'Until it answers, the workflow stays manual and the manual workflow stays observed.'"
+ ],
+ "dependencies": [
+  "Reference Architecture §1 (N-10)",
+  "EDM automation stance",
+  "I-8"
+ ],
+ "previous_related_files": "⛔ none cited.",
+ "knowledgeos_purpose_relevance": "⚠️ MEDIUM — small, but it is the corpus's only instrument for the human⇄AI workflow itself.",
+ "architectural_role": "⭐ OBSERVATION INSTRUMENT — ⚠️ and, by its own relocation note, ENGINEERING EVIDENCE rather than KnowledgeOS.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the observation-log instrument",
+   "the seven cost signals",
+   "the automation-earning gate"
+  ],
+  "⚠️ flagged": [
+   "⭐ relocation note: 'this log is ENGINEERING EVIDENCE, not KnowledgeOS itself — KnowledgeOS should eventually consume it, never own it'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0017 (the protocol/records boundary)"
+ ],
+ "sequential_graph_position": "canonical position 7; 2026-08-03",
+ "file_relationships": [
+  {
+   "to": "F0004",
+   "kind": "SIBLING_INSTRUMENT",
+   "note": "both are measuring instruments declared in the same window"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "HIGH — short and internally consistent.",
+ "derivation_completeness_audit": "⭐ HONEST: the instrument declares itself empty rather than implying data.",
+ "gaps": [
+  {
+   "id": "G-F0007-A",
+   "⛔ gap": "⛔⛔ ZERO ENTRIES. The instrument has never run.",
+   "⭐ significance": "⭐ Same shape as '0 traversals' and CAP-001's '0 executions' — a third declared-but-unexercised mechanism. ⚠️ The corpus has a pattern of building instruments it does not run."
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0007-01",
+   "⭐ finding": "⭐ AN INSTRUMENT THAT CORRECTLY REFUSES TO BE ARCHITECTURE",
+   "detail": "⭐ The relocation note: 'this log is ENGINEERING EVIDENCE, not KnowledgeOS itself — KnowledgeOS should eventually CONSUME it, never OWN it.' ⭐ And it defers the move: 'moved at repository-separation time, not today (no churn for a file with zero entries).'",
+   "⭐ consequence": "⭐ This is T-0017's protocol/records boundary applied by a file to ITSELF, and the deferral is reasoned from the file's own emptiness.",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the entry schema",
+  "the seven cost signals",
+  "the empty table"
+ ],
+ "provenance_second_hand": [
+  "⛔ Ref-Arch §1, EDM stance, I-8 — cited, not quoted at length"
+ ],
+ "negative_evidence": "⭐⭐ THE FILE IS ITSELF A NEGATIVE: an instrument with n=0 entries, declared as such, with the consequence stated — the orchestrator is not earned.",
+ "multi_dimensional_confidence": {
+  "the instrument's design": "MEDIUM — untested",
+  "the automation gate": "⭐ HIGH — a clear falsifiable condition",
+  "any workflow claim from it": "⛔ NONE — no data"
+ },
+ "not_recoverable_without_reread": [
+  "the two reviews of 2026-08-03 that approved it"
+ ]
+}

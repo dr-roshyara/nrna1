@@ -1,0 +1,233 @@
+{
+ "n_rows": 13,
+ "judgements": {
+  "V1": {
+   "agreement": 0.154,
+   "kappa": 0.083,
+   "disagreements": {
+    "R-33": [
+     "NOT-MODELLED",
+     "UNTESTABLE"
+    ],
+    "R-48": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-54": [
+     "NOT-MODELLED",
+     "AMBIGUOUS"
+    ],
+    "R-59": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-60": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-69": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-70": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-71": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-74": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-76": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-95": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ]
+   }
+  },
+  "V2": {
+   "agreement": 0.615,
+   "kappa": 0.375,
+   "disagreements": {
+    "R-48": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-59": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-69": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-74": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-95": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V3": {
+   "agreement": 0.846,
+   "kappa": 0.644,
+   "disagreements": {
+    "R-33": [
+     "NOT-MODELLED",
+     "SUPPORTED"
+    ],
+    "R-76": [
+     "VIOLATED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V4": {
+   "agreement": 0.538,
+   "kappa": 0.204,
+   "disagreements": {
+    "R-48": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-57": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-59": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-74": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-76": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-95": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V5": {
+   "agreement": 1.0,
+   "kappa": null,
+   "disagreements": {}
+  },
+  "V6": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  },
+  "V7": {
+   "agreement": 0.846,
+   "kappa": 0.0,
+   "disagreements": {
+    "R-33": [
+     "AMBIGUOUS",
+     "UNTESTABLE"
+    ],
+    "R-57": [
+     "AMBIGUOUS",
+     "UNTESTABLE"
+    ]
+   }
+  }
+ },
+ "authority_named": {
+  "agreement": 0.923,
+  "kappa": 0.629,
+  "disagreements": [
+   "R-33"
+  ]
+ },
+ "ops_jaccard_mean": 0.833,
+ "ops_jaccard_per_row": {
+  "R-33": 1.0,
+  "R-42": 1.0,
+  "R-48": 1.0,
+  "R-54": 1.0,
+  "R-57": 1.0,
+  "R-59": 0.33,
+  "R-60": 0.33,
+  "R-69": 1.0,
+  "R-70": 1.0,
+  "R-71": 0.67,
+  "R-74": 0.5,
+  "R-76": 1.0,
+  "R-95": 1.0
+ },
+ "per_op_presence": {
+  "ACCEPT": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "ADOPT-DECISION": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "AUTHORIZE": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "OPEN-WORK": {
+   "agreement": 0.923,
+   "kappa": 0.629
+  }
+ },
+ "coverage_rowmean": {
+  "main": 0.628,
+  "blind": 0.705
+ },
+ "blind_not_modelled": [
+  [
+   "DEFINE",
+   1
+  ],
+  [
+   "AFFIRM",
+   1
+  ],
+  [
+   "REFUTE",
+   1
+  ],
+  [
+   "ACTIVATE (MOVES AUTHORIZED -> ACTIVE; 'STARTS THE CLOCK')",
+   1
+  ],
+  [
+   "CORRECT (AN APPROVED PLAN'S MECHANISM SENTENCE)",
+   1
+  ],
+  [
+   "RECORD (CRITERION 5 AS EXPLICIT ARCHITECTURAL DEBT)",
+   1
+  ],
+  [
+   "CORRECT (INTEGRATION CONTRACT §5, D-1)",
+   1
+  ]
+ ],
+ "blind_violations": {
+  "V1": [],
+  "V2": [],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [],
+  "V7": []
+ }
+}

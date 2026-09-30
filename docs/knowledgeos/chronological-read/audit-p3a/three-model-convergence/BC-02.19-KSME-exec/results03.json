@@ -1,0 +1,117 @@
+{
+  "part1_s0881_KO_reproduction": {
+    "n_states": 125,
+    "n_classes": 27,
+    "matches_ksme02_reported_27": true
+  },
+  "part2_negative_search_result": {
+    "question": "Does the admissible primary corpus define, for ANY real named KnowledgeOS operation, a concrete, source-verbatim, unconditional postcondition/effect T:ExC->E?",
+    "answer": "NO",
+    "evidence": [
+      [
+        "Step 259 (20260830-192058_step_259_congruence-matrix.md, 1054 lines, read in full)",
+        "Provides a CONGRUENCE-TESTING METHODOLOGY, not operation bodies. Section 259.18: 'We cannot perform a valid global congruence proof until the mandatory transformation family is itself sufficiently closed.' Every concrete test in 259.10-259.14 is explicitly marked CONDITIONAL ('we must not upgrade it to PROVEN'). Section 259.23 explicitly lists what is NOT established: K=K_A, K=K_C, K=H/=, provenance-in-K, history-in-K."
+      ],
+      [
+        "S0881 (Step 23, 20260827-162545_..., 2159 lines, read in full per BC-02.4) and S2377 (2762 lines, read in full per BC-02.3)",
+        "Define OBSERVATIONS (Sat, Coverage, CriticalGaps, EpistemicDebt) -- functions FROM a state TO a value. Neither defines an operation that maps a state TO a new state. No update rule."
+      ],
+      [
+        "verification/canonical-construction/exec/bandtest.py",
+        "NEEDS table is a PRECONDITION table (which components an operation requires to be well-defined / applicable). It is intensional, never executed as a state transformation, and never specifies what the operation produces."
+      ],
+      [
+        "verification/canonical-construction/exec/oderive.py",
+        "Derives which operations MUST EXIST (via corpus non-collapse laws, e.g. 'Remove != Withdraw' forces both to exist) -- this is EXISTENCE/necessity, not EFFECT. Its own RESULT 3 explicitly states set-membership itself is 'NOT derivable' from the laws alone; effects are not even attempted."
+      ]
+    ],
+    "conclusion": "Objective 1 of the KSME-03 commission (does a real T:ExC->E exist) resolves to Stop Condition #1 for the SOURCE-ESTABLISHED tier: transformation semantics cannot be established from the admissible corpus as it stands. This is reported, not silently repaired."
+  },
+  "part3_4_hypothesis_model": {
+    "tier": "HYPOTHESIS (operation existence real; effect analyst-chosen)",
+    "n_states": 109,
+    "n_operations": 7,
+    "K_O_class_count": 13,
+    "K_B_class_count": 37,
+    "K_O_strictly_coarser_than_K_B": true,
+    "refinement_rounds_to_fixpoint": 2
+  },
+  "part5_congruence_check": {
+    "K_O_violations": 36,
+    "K_O_sample_violation": {
+      "class_id": 1,
+      "class_repr": [
+        1,
+        "Candidate",
+        0,
+        0,
+        0,
+        "Fail"
+      ],
+      "op": "Validate",
+      "context": 0,
+      "resulting_classes": [
+        1,
+        3
+      ]
+    },
+    "K_B_violations": 0,
+    "K_B_is_congruence": true
+  },
+  "part6_relevance_probe": {
+    "present": {
+      "marginal_drop_alone": "not distinguishable",
+      "classes_without_it": 13
+    },
+    "tier": {
+      "marginal_drop_alone": "distinguishable",
+      "classes_without_it": 7
+    },
+    "withdrawn": {
+      "marginal_drop_alone": "distinguishable",
+      "classes_without_it": 7
+    },
+    "validated": {
+      "marginal_drop_alone": "distinguishable",
+      "classes_without_it": 5
+    },
+    "JOINT(tier,withdrawn)": {
+      "classes_dropping_both": 4,
+      "classes_full": 13
+    }
+  },
+  "counterexample_certificate": {
+    "e1": [
+      1,
+      "Candidate",
+      0,
+      0,
+      0,
+      "Fail"
+    ],
+    "e2": [
+      1,
+      "Candidate",
+      1,
+      0,
+      0,
+      "Fail"
+    ],
+    "K_O_equal": true,
+    "witness_operation": "Validate",
+    "witness_context": 0,
+    "O(T(e1,c))": [
+      1,
+      "Candidate",
+      0,
+      "Pass"
+    ],
+    "O(T(e2,c))": [
+      1,
+      "Candidate",
+      0,
+      "Fail"
+    ],
+    "conclusion": "e1 ~_O e2 holds but e1 ~_B e2 fails"
+  }
+}

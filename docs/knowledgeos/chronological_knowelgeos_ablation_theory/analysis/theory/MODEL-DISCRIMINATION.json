@@ -1,0 +1,135 @@
+{
+ "labels": "all values MODEL-DERIVED; attributes MODEL-ASSUMPTION unless tagged in source comments",
+ "development_update (P1 only)": {
+  "H1": 0.0,
+  "H2": 0.3443,
+  "H3": 0.0,
+  "H4": 0.1967,
+  "H5": 0.459
+ },
+ "P1 permitted_by": {
+  "H1": false,
+  "H2": true,
+  "H3": false,
+  "H4": true,
+  "H5": true
+ },
+ "P1 permitted_by if kind=work": {
+  "H1": false,
+  "H2": true,
+  "H3": true,
+  "H4": true,
+  "H5": true
+ },
+ "separability": {
+  "force IN, knowledge, low": {
+   "H1|H2": "INDISTINGUISHABLE",
+   "H1|H3": "INDISTINGUISHABLE",
+   "H1|H4": "INDISTINGUISHABLE",
+   "H1|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ],
+   "H2|H3": "INDISTINGUISHABLE",
+   "H2|H4": "INDISTINGUISHABLE",
+   "H2|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ],
+   "H3|H4": "INDISTINGUISHABLE",
+   "H3|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ],
+   "H4|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ]
+  },
+  "force AMB, knowledge, low": {
+   "H1|H2": "INDISTINGUISHABLE",
+   "H1|H3": "INDISTINGUISHABLE",
+   "H1|H4": [
+    "('dEv', 'BARE')",
+    "('dEv', 'EXC')",
+    "('dEv', 'OBL')",
+    "('dVal', 'BARE')",
+    "('dVal', 'EXC')",
+    "('dVal', 'OBL')"
+   ],
+   "H1|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ],
+   "H2|H3": "INDISTINGUISHABLE",
+   "H2|H4": [
+    "('dEv', 'BARE')",
+    "('dEv', 'EXC')",
+    "('dEv', 'OBL')",
+    "('dVal', 'BARE')",
+    "('dVal', 'EXC')",
+    "('dVal', 'OBL')"
+   ],
+   "H2|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ],
+   "H3|H4": [
+    "('dEv', 'BARE')",
+    "('dEv', 'EXC')",
+    "('dEv', 'OBL')",
+    "('dVal', 'BARE')",
+    "('dVal', 'EXC')",
+    "('dVal', 'OBL')"
+   ],
+   "H3|H5": [
+    "('dEv', 'OBL')",
+    "('dVal', 'OBL')"
+   ],
+   "H4|H5": [
+    "('dEv', 'BARE')",
+    "('dEv', 'EXC')",
+    "('dVal', 'BARE')",
+    "('dVal', 'EXC')"
+   ]
+  }
+ },
+ "eig_bits": {
+  "u=0.25": {
+   "S-0804-L82 collector birth convention adopted": 0.5102,
+   "S-0804-L216/L525 discovery freeze adopted": 0.5102,
+   "R-88 ADOPTED (S-0804-L328)": 0.3783,
+   "S-0817-L170 fork ruling": 0.3783,
+   "S-0804-L811 qualification split adopted": 0.3588,
+   "Plan Concept Paper ADOPTED (dc6b9e342)": 0.3588,
+   "R-36 (pre-I-R39; ES-006.1 text only)": 0.3588,
+   "S-0815-L493 vocabulary ruling ('single occurrence')": 0.3503,
+   "S-0804-L205 meta-principle freeze adopted": 0.3503
+  },
+  "u=0.5": {
+   "S-0804-L82 collector birth convention adopted": 0.3401,
+   "S-0804-L216/L525 discovery freeze adopted": 0.3401,
+   "R-88 ADOPTED (S-0804-L328)": 0.2522,
+   "S-0817-L170 fork ruling": 0.2522,
+   "S-0804-L811 qualification split adopted": 0.2392,
+   "Plan Concept Paper ADOPTED (dc6b9e342)": 0.2392,
+   "R-36 (pre-I-R39; ES-006.1 text only)": 0.2392,
+   "S-0815-L493 vocabulary ruling ('single occurrence')": 0.2335,
+   "S-0804-L205 meta-principle freeze adopted": 0.2335
+  },
+  "u=0.75": {
+   "S-0804-L82 collector birth convention adopted": 0.1701,
+   "S-0804-L216/L525 discovery freeze adopted": 0.1701,
+   "R-88 ADOPTED (S-0804-L328)": 0.1261,
+   "S-0817-L170 fork ruling": 0.1261,
+   "S-0804-L811 qualification split adopted": 0.1196,
+   "Plan Concept Paper ADOPTED (dc6b9e342)": 0.1196,
+   "R-36 (pre-I-R39; ES-006.1 text only)": 0.1196,
+   "S-0815-L493 vocabulary ruling ('single occurrence')": 0.1168,
+   "S-0804-L205 meta-principle freeze adopted": 0.1168
+  },
+  "reject_only": [
+   "S-0823 non-action 'from a single occurrence' (Reject: every hypothesis permits it -> EIG 0)"
+  ]
+ }
+}

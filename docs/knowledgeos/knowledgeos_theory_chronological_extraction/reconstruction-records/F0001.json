@@ -1,0 +1,275 @@
+{
+ "file_id": "F0001",
+ "canonical_path": "docs/knowledgeos/2026-08-02-knowledgeos-architecture-baseline.md",
+ "sha256": "7a270ebd41a5502314717131bf5814988ee21e25806d4fa5b57eeefb84be7b2f",
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_sequence_position": 1,
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "lines_total": 267,
+ "read_unit": "U-0006-RETROFIT-PILOT",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ reason": "authorized Phase-1 retrofit pilot, file 2 of 3",
+  "prior_read": "⚠️ YES — read under the pre-§9 prose regime; this record is the first §9-schema treatment",
+  "original_read_conformance": "PARTIAL"
+ },
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED. Submitted to the Decision Authority. A baseline becomes a baseline by an adoption event, not by being written' · Authority: 'Generated — never authoritative without human review. On any conflict, the frozen and governed artifacts win'",
+ "⛔ status_upgrade_check": "NOT UPGRADED. The title says 'Architecture Baseline'; the file says it is NOT one yet. ⭐ The title is the aspiration, the status line is the fact — recorded as the status line.",
+ "source_document_kind": "⭐ 'SYNTHESIS / STRATEGIC REFERENCE MODEL' — and an unusually long list of what it is NOT: 'not an implementation plan · not a folder structure · not an extraction schedule · not a new capability or context · not a governance amendment · not an ADR update · not a commitment to build'",
+ "source_research_question": "⭐ 'what are we actually building?' — the commission was 'Stop writing reports. Begin the KnowledgeOS Architecture Baseline'",
+ "reconstruction_question": "⛔ DISTINCT: does the synthesis hold, are its evidence bounds honestly stated, and does it introduce anything not traceable to a prior artifact?",
+ "source_method_declared": "⭐ 'SYNTHESIS, not discovery. Every claim traces to an artifact already produced; nothing new is investigated here'",
+ "definitions": [
+  {
+   "term": "KnowledgeOS",
+   "def": "the reusable engineering platform governing how engineering work is planned, approved, executed, verified and evolved; 'independent of project, programming language, or execution provider'; output is rules and methods, never product knowledge"
+  },
+  {
+   "term": "PKS — Product Knowledge Space",
+   "def": "one product's knowledge, one per product; ⛔ 'Never reusable — an instance'",
+   "⚠️": "'generated' is n=0 — every PKS to date hand-built"
+  },
+  {
+   "term": "Business Product",
+   "def": "the software that delivers business value"
+  },
+  {
+   "term": "Running Software",
+   "def": "the deployed system and the evidence it emits"
+  },
+  {
+   "term": "AI Runtime",
+   "def": "⛔ 'an ADAPTER, not a product. Replaceable — a different property from reusable'"
+  },
+  {
+   "term": "Product Binding",
+   "def": "⭐ 'the product-specific input contract a reusable method requires' — declared as 'the concept this baseline contributes'"
+  }
+ ],
+ "assumptions": [
+  "⭐ the generative relation is `creates`, not `contains` — 'A compiler is not a program; it produces one'",
+  "subsystems are INTERNAL and must not become repository roots",
+  "product ownership is the stable axis for repository roots",
+  "⚠️ ES-006.1 governs: n=1 admits a CANDIDATE, never a rule"
+ ],
+ "premises": [
+  "ES-006.1 evidence ladder",
+  "ES-005.2 'a directory exists only when its first artifact arrives'",
+  "the standing ARB ruling: 'the strategic relationship is the conclusion, not the starting point'",
+  "AIP-14: the platform is a Supporting Subdomain of PublicDigit"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⚠️ P2 is written as 'Extraction readiness = f(domain-free, binding-free, evidence-free)' — ⛔ function NOTATION, not a function: no domain, codomain or evaluation rule is given. Recorded as a rhetorical form, not a mathematical claim.",
+ "derivations": [
+  {
+   "id": "DI-F0001-01",
+   "from": [
+    "SD-1 diagnosis: 'Strategic DDD = Engineering Method + Product Binding'"
+   ],
+   "to": "P1 · method/binding/evidence decomposition",
+   "form": "GENERALIZATION_FROM_ONE_DIAGNOSIS",
+   "validity": "VALID_AS_CANDIDATE",
+   "⚠️": "n=1, and the file says so"
+  },
+  {
+   "id": "DI-F0001-02",
+   "from": [
+    "Round47-OP decomposes into 4 components on 3 layers"
+   ],
+   "to": "the extraction boundary is a decomposition, not a file list",
+   "form": "REFUTATION_BY_COUNTEREXAMPLE",
+   "validity": "⭐ VALID — this refutes the file's own predecessor (§6 of the Product Boundary Discovery, 'refuted at n=1')"
+  },
+  {
+   "id": "DI-F0001-03",
+   "from": [
+    "EAD-1's zero-election-terms test found neither Tier-2 nor Tier-3 blockage"
+   ],
+   "to": "⭐ 'A three-question test is required, not a grep'",
+   "form": "NEGATIVE_RESULT_OF_AN_INSTRUMENT",
+   "validity": "⭐ VALID AND STRONG — this is a negative finding about a TOOL, which is the rare kind that does not need a large n"
+  },
+  {
+   "id": "DI-F0001-04",
+   "from": [
+    "an architect does read KnowledgeOS and produce a PKS",
+    "no automation, no repeatable pattern"
+   ],
+   "to": "the RESPONSIBILITY exists, the COMPONENT does not; today's implementation is 'a Human-in-the-Loop Adapter'",
+   "form": "RESPONSIBILITY_COMPONENT_SPLIT",
+   "validity": "⭐ VALID — and explicitly labelled an 'Accepted refinement' of the cruder earlier claim 'PKS Generator doesn't exist'"
+  },
+  {
+   "id": "DI-F0001-05",
+   "from": [
+    "CAP-001 returned INCONCLUSIVE on KP-1",
+    "hand check found no KP-n",
+    "a fourth ungoverned series would worsen G-1"
+   ],
+   "to": "nothing minted; P1–P5 are document-local labels",
+   "form": "TOOL_VERDICT_CHANGED_THE_ACTION",
+   "validity": "⭐ VALID — and this is the file's own headline evidence event (G-6)"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'The work of extraction is not moving files: it is decomposing each artifact into method, binding and evidence'",
+  "six subsystems: three operating · one untested at n=1 · one governed but never run · one a responsibility with a human adapter",
+  "six lifecycle transitions: one evidenced, one EMPTY — and the empty one (L-6) closes the loop",
+  "⭐ 'All five principles here rest on n=1 and are therefore candidates'",
+  "⭐ 'the platform changed an engineering decision rather than merely describing one' — first time"
+ ],
+ "dependencies": [
+  "Round47-OP",
+  "Round47-00 SD-1..SD-7",
+  "Round38C-04 Principle_Form_Classification_Framework",
+  "CAP-001 / CAP-004 / CAP-006",
+  "ES-001..006 (esp. ES-003.3, ES-004.2/.3, ES-005.1/.2/.3, ES-006.1, ES-006.4)",
+  "EAD-1",
+  "AIP-14",
+  "BRM-1",
+  "R-37",
+  "DDD_Tactical_Governance_Principles",
+  "Engineering_Execution_Protocol",
+  "PMR-9 · PMR-10",
+  "PKS_Knowledge_Integrity_Model",
+  "PKS_Phase_II_Methodology_Baseline_v1_2",
+  "the Product Discovery Charter",
+  "KnowledgeOS_Engineering_Knowledge_Landscape.md §0"
+ ],
+ "previous_related_files": "⛔ NOT_RECOVERABLE_WITHOUT_REREAD for the four named syntheses — 'SYNTHESIS of the Architecture Consolidation · Product Boundary Discovery · MVK Bootstrap Validation · Strategic Boundary Consolidation'. ⭐ ONE of these is F0010 (Strategic Boundary Consolidation), read next in this pilot; the other three would require reopening files.",
+ "knowledgeos_purpose_relevance": "⭐ MAXIMAL. This is the file that states what KnowledgeOS IS, in a five-tier product architecture, with per-item evidence status.",
+ "architectural_role": "⭐ REFERENCE MODEL — the synthesis layer above the discovery files.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "Product Binding as a named concept",
+   "the five-tier T1–T5 architecture",
+   "the four-tier Portability Ladder ('four tiers, not three')",
+   "the RESPONSIBILITY vs COMPONENT distinction",
+   "the Human-in-the-Loop Adapter framing",
+   "'the platform governs change; it does not govern genesis'"
+  ],
+  "⭐ corrected": [
+   "'PKS Generator doesn't exist' → imprecise; the responsibility exists",
+   "the extraction boundary is NOT a file list (refutes its own predecessor)",
+   "the Addendum's 6-vs-3 subsystem discrepancy — resolved by marking each, not dropping any"
+  ],
+  "⛔ withdrawn_or_qualified": [
+   "⭐ P1 itself — see the intra-file annotation below"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0001",
+  "T-0002",
+  "T-0003",
+  "T-0004",
+  "T-0005",
+  "T-0006",
+  "T-0007",
+  "T-0008"
+ ],
+ "⛔ theory_object_disposition": "⛔ NONE UPGRADED OR DOWNGRADED. Authorization rule 6 forbids it. Findings recorded as obligations.",
+ "sequential_graph_position": "⭐ canonical position 1 — the FIRST file of the corpus. ⚠️ Its own date (2026-08-02) is the same as F0010's; the canonical order places it first but the file itself cites F0010's subject matter as an INPUT ('SYNTHESIS of … Strategic Boundary Consolidation'). ⛔ Recorded as an ordering tension, not resolved.",
+ "file_relationships": [
+  {
+   "to": "F0010",
+   "kind": "⛔ CITES_AS_INPUT",
+   "note": "F0001 is canonical position 1 yet names the Strategic Boundary Consolidation among its four sources"
+  },
+  {
+   "to": "F0005",
+   "kind": "SHARES_OBJECTS",
+   "note": "T-0002..T-0005, T-0007"
+  },
+  {
+   "to": "F0009",
+   "kind": "SHARES_OBJECTS",
+   "note": "T-0001, T-0010"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH internally — every principle carries an evidence bound and a candidate marker.",
+ "derivation_completeness_audit": "⭐ UNUSUALLY GOOD. Five principles, five evidence bounds, all n=1, all marked CANDIDATE. ⛔ Two method gaps found below that the file does not record.",
+ "gaps": [
+  {
+   "id": "G-F0001-A",
+   "⛔ gap": "the 'hand check found no KP-n in the corpus' has NO STATED SCOPE",
+   "⭐ significance": "THIRD independent instance of the unstated-negative-search-scope weakness (RO-0019 on F0026, RO-0020 on F0027). ⚠️ At n=3 this is a pattern in the corpus's method, not an isolated lapse — but ⛔ this record states the count and does not promote it."
+  },
+  {
+   "id": "G-F0001-B",
+   "⛔ gap": "P2's four-tier ladder is applied to an author-chosen table of 11 artifacts with no sampling frame",
+   "⭐ significance": "same shape as RO-0021 on F0027 — the tier distribution is not a population estimate"
+  },
+  {
+   "id": "G-F0001-C",
+   "⚠️ gap": "§2 marks Runtime Integration 'EVIDENCED at n=1 runtime. Untested against a second' and §7 G-4 says 'No second runtime adapter'",
+   "note": "⭐ internally CONSISTENT — recorded as a correctly-tracked gap, not a defect"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0001-01",
+   "⛔ finding": "⭐⭐ P1 — THE FILE'S FIRST PRINCIPLE — CARRIES AN IN-FILE ANNOTATION SAYING IT WAS RE-DERIVED, NOT DISCOVERED",
+   "verbatim": "'⛔⛔ ANNOTATED 2026-08-02 — P1 WAS RE-DERIVED, NOT DISCOVERED.' Round38C-04 Principle_Form_Classification_Framework (34.5 KB, ARB-authorized under 38C03-CON-01) already classifies elements as 'Principle, Form, or Ambiguous'.",
+   "⭐ the sharpest part": "'P1 lacks something that framework has: an explicit Ambiguous class. The Capability Model had to invent \"UNCLASSIFIED\" ad hoc for check_roles.php — a class the existing framework already carries as first-class.' Verdict: '⛔ P1 should be derived from K-07, not proposed beside it.'",
+   "⭐ consequence": "T-0002 is sourced to P1. ⛔ P1's own file says P1 was proposed beside an existing ARB-authorized framework instead of derived from it — a canonical-discovery failure recorded BY THE SOURCE.",
+   "⭐ method significance": "This is the corpus documenting, in its own first file, the exact failure mode the Master Protocol's §Canonical Discovery exists to prevent: 'If one exists, consume or extend it — never create a second.'",
+   "status": "RECORDED_NOT_RESOLVED"
+  },
+  {
+   "id": "AUDIT-F0001-02",
+   "⛔ finding": "⭐ IDENTIFIER COLLISION — 'G-4' in F0001 means 'No second runtime adapter'",
+   "detail": "F0001 §7 mints G-1..G-10 as EVIDENCE GAPS. ⛔ Its G-4 = 'No second runtime adapter · trigger: the reserved registry/ namespace'. This is a DIFFERENT referent from the 'G-4' that F0014 invokes in 'H-3 resolved — spaces NEST — closed by G-4'.",
+   "⛔ disposition": "⭐ FACTUAL POINTER ONLY. Enumerating and adjudicating G-4 is B-12, assigned to an independent session. ⛔ This record does not resolve it, does not claim which is 'the real' G-4, and does not claim the collision affects a derivation.",
+   "status": "REFERRED_TO_B-12"
+  },
+  {
+   "id": "AUDIT-F0001-03",
+   "⚠️ finding": "the Addendum's pattern reading 'Separate Ways with a Shared Kernel' is internally tense in Evans' taxonomy",
+   "detail": "⭐ The FILE ITSELF catches this: 'Separate Ways means no integration, which a Shared Kernel contradicts.' Recorded as needing ARB resolution; not asserted.",
+   "⭐ assessment": "⭐ This is a CORRECTLY HANDLED contradiction — detected, named, referred, not asserted. Recorded as positive method evidence.",
+   "status": "RESOLVED_BY_SOURCE_VIA_REFERRAL"
+  }
+ ],
+ "provenance_first_hand": [
+  "the file's own five principles, six subsystems, six lifecycle transitions, thirteen open questions, ten gaps, six roadmap stages",
+  "the CAP-001 run and its INCONCLUSIVE verdict"
+ ],
+ "provenance_second_hand": [
+  "⛔ the four source syntheses — cited as inputs, their content quoted not re-derived",
+  "⛔ Round38C-04's content, described in the annotation",
+  "EAD-1's test result"
+ ],
+ "provenance_this_reconstruction": [
+  "manifest id F0001",
+  "sha verified pre-read",
+  "receipt U-0006-RETROFIT-PILOT post-read"
+ ],
+ "negative_evidence": "⭐ TWO distinct negative results, of very different quality. ⭐ STRONG: 'EAD-1's zero-election-terms test found neither' Tier-2 nor Tier-3 blockage — a negative about an INSTRUMENT, sound at n=1. ⚠️ WEAK: 'a hand check found no KP-n in the corpus' — scope unstated (G-F0001-A).",
+ "multi_dimensional_confidence": {
+  "the five-tier architecture": "MEDIUM — synthesis, coherent, unadopted",
+  "P1 as an original principle": "⛔ LOW — the file itself says it was re-derived",
+  "P2's ladder as a classification": "MEDIUM",
+  "P2's instrument finding (grep insufficient)": "⭐ HIGH",
+  "P3 responsibility/component": "⭐ HIGH — a distinction, not an empirical claim",
+  "the G-6 CAP-001 event": "⭐ HIGH — a dated, specific, falsifiable event",
+  "the negative search behind KP-n": "⛔ LOW"
+ },
+ "dossier_status": "INCOMPLETE_BY_DESIGN",
+ "dossier_status_reason": "⛔ Gate 9 (THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED) intentionally NOT satisfied — authorization rule 6.",
+ "not_recoverable_without_reread": [
+  "previous_related_files (3 of the 4 source syntheses)",
+  "Round38C-04's actual content — only the annotation's description is available",
+  "whether T-0002's wording already accounts for the P1 re-derivation annotation"
+ ],
+ "⚠️ erratum_E-01": {
+  "corrected": "lines_total",
+  "basis": "wc -l on the canonical file, 2026-09-23",
+  "⛔ class": "N-2 recurrence — the same off-by-one governance recorded for F0026 ('101 lines' vs 100)",
+  "⭐ root cause": "the number was written without being checked against the file. ⛔ NOT a trailing-newline artifact — all three pilot files end in a newline; that hypothesis was tested and refuted.",
+  "⛔ effect on evidence": "NONE. sha256 and the read receipt bind the content; only the descriptive count was wrong.",
+  "authority": "L0 2026-09-23 — corrections unblocked once O-1 and the authorization question were answered",
+  "was": 268,
+  "now": 267
+ }
+}

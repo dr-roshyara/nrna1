@@ -1,0 +1,330 @@
+{
+ "analysis_date": "2026-09-24",
+ "batch_id": "PB05",
+ "births_corrected": {
+  "conceptual": {
+   "anti_projection": "P1's CANDIDATE-CONCEPTUAL-BIRTH is null, and the audit's correction (NOT-EVIDENCED-IN-CAPTURE, S1441 remaining a P1 gap) is kept. The 12 files carry conceptual statements about the programme under confirmed 2026-08-30 dates, but none can be shown to be the first such row: the dated rows themselves point to earlier, undated programme artifacts (the quotes above), so no ESTABLISHED-CONCEPTUAL-BIRTH is available (§11.2 requires that no earlier row matches). The value depends on no later source.",
+   "basis": [
+    {
+     "provenance": "PRIMARY; best_historical_date_basis EXPLICIT (2026-08-30); explicit_dates ['2026-08-30']; file_mtime 1788046057; mtime_block None (02-FILES via source_meta)",
+     "quote": "## Findings arising (TV-F-040, TV-F-041)",
+     "source_id": "S1516"
+    },
+    {
+     "provenance": "SECONDARY-SYNTHESIS; best_historical_date_basis EXPLICIT (2026-08-30); explicit_dates ['2026-08-30']; file_mtime 1788047555; mtime_block None (02-FILES via source_meta); SECONDARY-SYNTHESIS, cited only to show that dated rows are preceded by earlier programme artifacts, never as a birth basis",
+     "quote": "| 026–040 · 041–055 · 056–066 | `STEP-VERIFY-026-040` … `-056-066` | DELIVERED |",
+     "source_id": "S1535"
+    }
+   ],
+   "value": "NOT-EVIDENCED-IN-CAPTURE"
+  },
+  "formal": {
+   "anti_projection": "Rests on the P1 CANDIDATE-FORMAL-BIRTH row S1525 alone (MTIME-only, NOT-CONFIRMED, mtime_block null, so §14.2 rule 2). Among the 12 files, S1539 (PRIMARY, confirmed 2026-08-30) decides the same object ('`V = {x | I₁(x) ∧ … ∧ Iₙ(x)}` is **empty** on this core'), but it is later by content: its frontmatter cites mandates 20260830_0150 §19 and 20260830_0157 §15.G, and S1535 records 'Joint satisfiability (§11) NOT YET INVESTIGATED.' against the 0139 mandate (S1525). A later dated file cannot be a MOVED target (MOVED needs an earlier row). Same result if only sources up to S1525 existed.",
+   "basis": [
+    {
+     "provenance": "PRIMARY; best_historical_date_basis MTIME (1788046813); explicit_dates []; file_mtime 1788046813; mtime_block None (02-FILES via source_meta)",
+     "quote": "V = { x | I1(x) ∧ I2(x) ∧ ... ∧ In(x) }",
+     "source_id": "S1525"
+    },
+    {
+     "provenance": "PRIMARY; best_historical_date_basis MTIME (1788046813); explicit_dates []; file_mtime 1788046813; mtime_block None (02-FILES via source_meta)",
+     "quote": "If the invariant system is unsatisfiable, the theory cannot simply be declared valid.",
+     "source_id": "S1525"
+    }
+   ],
+   "value": "BIRTH-UNRESOLVED-MTIME-ONLY[S1525]"
+  },
+  "governance": {
+   "anti_projection": "Rests on the P1 CANDIDATE-GOVERNANCE-BIRTH row S1513 alone (MTIME-only, NOT-CONFIRMED, mtime_block null, so §14.2 rule 2). None of the 12 files supplies an earlier dated governance row; all follow S1513 by content. Same result if only sources up to S1513 existed.",
+   "basis": [
+    {
+     "provenance": "PRIMARY; best_historical_date_basis MTIME (1788045877); explicit_dates []; file_mtime 1788045877; mtime_block None (02-FILES via source_meta)",
+     "quote": "step-031, which is explicitly commissioned to be this gate (§19), never once references M1–M7 by name.",
+     "source_id": "S1513"
+    }
+   ],
+   "value": "BIRTH-UNRESOLVED-MTIME-ONLY[S1513]"
+  },
+  "lexical": {
+   "anti_projection": "Would this be the same if only sources up to S1513 existed? Yes: the value rests on S1513 alone (the P1 CANDIDATE-LEXICAL-BIRTH row; its alias 'Phase 2C adversarial verification report' is in the file's heading). S1513's only date basis is MTIME, date_applies_to_file NOT-CONFIRMED, mtime_block null, so §14.2 rule 2 (v1.6.6) gives BIRTH-UNRESOLVED-MTIME-ONLY; MTIME is kept as provenance and selects nothing (the audit-upheld point: S1441's earlier mtime cannot displace the P1 candidate; S1441 stays a P1 gap). None of the 12 files read here supplies a dated position for S1513 or an earlier dated row: every confirmed date among them is 2026-08-30 at day granularity, and by content they follow S1513 (S1535's band register lists STEP-VERIFY-026-040 as already DELIVERED; S1516 issues TV-F-040/041, which presuppose TV-F-001..039). A date one file cites for another never positions that other file (§14.2 rule 1).",
+   "basis": [
+    {
+     "provenance": "PRIMARY; best_historical_date_basis MTIME (1788045877); explicit_dates []; file_mtime 1788045877; mtime_block None (02-FILES via source_meta)",
+     "quote": "ADVERSARIAL VERIFICATION REPORT — Phase 2C, Corpus Slice step-026 … step-040 + 2 meta files (17 files, all read in full)",
+     "source_id": "S1513"
+    },
+    {
+     "provenance": "PRIMARY; best_historical_date_basis MTIME (1788045877); explicit_dates []; file_mtime 1788045877; mtime_block None (02-FILES via source_meta)",
+     "quote": "over all 17 files returns **exactly two fence types: bare ``` and ```text — 62 fences, zero language-tagged**",
+     "source_id": "S1513"
+    }
+   ],
+   "value": "BIRTH-UNRESOLVED-MTIME-ONLY[S1513]"
+  },
+  "operational": {
+   "anti_projection": "P1's CANDIDATE-OPERATIONAL-BIRTH is null and the accepted value is kept. The 12 files show the programme performing operations under confirmed dates (S1539's exhaustive enumeration), but an operational act already appears in the undated, content-earlier row S1513, so no dated row can be shown first. No birth is written from outside P1's candidates; the observation is reported in notes only. The value depends on no later source.",
+   "basis": [
+    {
+     "provenance": "PRIMARY; best_historical_date_basis EXPLICIT (2026-08-30); explicit_dates ['2026-08-30']; file_mtime 1788048114; mtime_block None (02-FILES via source_meta)",
+     "quote": "method: propositional abstraction + exhaustive model enumeration (2^14 = 16,384 models — a decision",
+     "source_id": "S1539"
+    },
+    {
+     "provenance": "PRIMARY; best_historical_date_basis MTIME (1788045877); explicit_dates []; file_mtime 1788045877; mtime_block None (02-FILES via source_meta)",
+     "quote": "`grep -oE '^```[a-zA-Z0-9_-]*'` over all 17 files returns",
+     "source_id": "S1513"
+    }
+   ],
+   "value": "NOT-EVIDENCED-IN-CAPTURE"
+  }
+ },
+ "births_previous": {
+  "conceptual": "BIRTH-UNRESOLVED-MTIME-ONLY[S1441]",
+  "formal": "BIRTH-UNRESOLVED-MTIME-ONLY[S1525]",
+  "governance": "BIRTH-UNRESOLVED-MTIME-ONLY[S1513]",
+  "lexical": "BIRTH-UNRESOLVED-MTIME-ONLY[S1441]",
+  "operational": "NOT-EVIDENCED-IN-CAPTURE"
+ },
+ "changes": {
+  "absences": {
+   "changed": false,
+   "explanation": "No file read here supplies informal_meaning, invariants or dependencies earlier than or against S1441, and none gives a typed signature of the programme. One possible bearing on assumptions (S1544) is reported as an ESCALATED note, not applied."
+  },
+  "births": {
+   "changed_vs_R22": true,
+   "changed_vs_audit_correction": false,
+   "explanation": "lexical BIRTH-UNRESOLVED-MTIME-ONLY[S1441] becomes BIRTH-UNRESOLVED-MTIME-ONLY[S1513], and conceptual BIRTH-UNRESOLVED-MTIME-ONLY[S1441] becomes NOT-EVIDENCED-IN-CAPTURE: the audit's pending correction, which no file read here contradicts. formal, operational and governance are unchanged. None of the 12 files supplies dated evidence that would move any birth."
+  },
+  "statuses": {
+   "changed": false,
+   "explanation": "type_status UNTYPED: none of the 12 gives inputs, outputs or a verdict codomain as a type for the programme. mathematical_status NOT-APPLICABLE: S1539's formal result concerns the invariant system under verification, not the programme itself. primary_layer META-THEORETICAL: S1535 and S1544 confirm verification-of-theory work. None is contradicted."
+  },
+  "timeline_order": {
+   "changed": false,
+   "explanation": "The 12 points interleave with the 22 accepted points; no accepted point changes position relative to another, the first point stays S1413 (FIRST), and no new point is earlier than S1513. Merged sequence (the accepted record's MTIME-then-date ordering, used as provenance only): S1413, S1438, S1439, S1441, S1444, S1456, S1481, S1513, S1516*, S1517, S1518, S1519, S1529, S1520*, S1521, S1522, S1525, S1526, S1524*, S1528*, S1532*, S1531, S1533*, S1535*, S1536, S1537, S1538*, S1539*, S1540, S1541, S1543*, S1544*, S1566, S1551* (* = new). The 10 new CONFIRMED points share the day 2026-08-30; at day granularity their order among themselves and against the other 2026-08-30 points is not date-established, and the within-day order shown rests on mtime (provenance only). S1538 and S1544 are NOT-CONFIRMED and, under G-LOG-0027 F1, are not ordered by date whatever their order value."
+  },
+  "timeline_summary_observation": "Not rewritten (quarantined field). The new points would enter later_support/later_refinement only; first_* entries would follow the corrected births."
+ },
+ "contract_sha256": "336eb3f98d4ec27f6c339f5cc85e9682ca62dddaea229dd0bf1ae173182d54b5",
+ "escalations": [
+  {
+   "anchor": "# 1. AUTHORITATIVE SOURCE CORPUS",
+   "field": "absences.assumptions",
+   "quote": "The fundamental historical hypothesis is:",
+   "quote_2": "> **Older documents raise questions, objections, or hypotheses; newer documents may answer, refine, reject, replace, or leave those questions unresolved.**",
+   "reason": "Step-1 whole-file reading of S1544 (PRIMARY, MTIME-only, not a stage-1 hit file) found a stated working premise of the programme's method, which may supply the assumptions dimension. The accepted resolution is GENUINELY-UNDEFINED-AFTER-CENSUS (every stage-1 hit FALSE-HIT or UNSUPPLIED-DIMENSION). The §11.4 census–reading disagreement rule covers NEGATIVE-CENSUS dimensions only, and this dimension had hits, so no contract rule resolves the case. Not rewritten; FOUND is not claimed (FOUND is a stage-2 disposition only). Whether a methodological hypothesis counts as an assumption of the label is a judgment for the audit (the accepted record's own what_would_make_this_wrong names the same reading question for the mandates' lists).",
+   "source_id": "S1544"
+  }
+ ],
+ "files_read": [
+  "S1516",
+  "S1520",
+  "S1524",
+  "S1528",
+  "S1532",
+  "S1533",
+  "S1535",
+  "S1538",
+  "S1539",
+  "S1543",
+  "S1544",
+  "S1551"
+ ],
+ "model_id": "claude-opus-5-5[1m]",
+ "notes": [
+  "Scope arithmetic: the label's 25 row files (bundle sources_verbatim) are 14 already read whole in R2.2 (S1513, S1517, S1518, S1519, S1521, S1522, S1525, S1526, S1529, S1531, S1536, S1537, S1540, S1541) plus 11 read here. S1544 appears in files_touching but carries no row. The accepted timeline's 22 points include 8 non-row stage-2 files (S1413, S1438, S1439, S1441, S1444, S1456, S1481, S1566).",
+  "Reads: all under run S4-PILOT-R2-003, batch PB05, step 1, none refused (ledger-p3b-r2/S4-PILOT-R2-003/READ-LOG.jsonl). S1520 was fetched five times and S1516 twice, to page and verify. S1513 and S1525 were re-read to take verbatim birth-basis quotes, as the commission allows. Every quote in this file was checked mechanically as an exact substring of the reader's output.",
+  "No new hypotheses or structure candidates. Nothing promoted. No existing file modified.",
+  "Observation for the audit, not a record: operational content (verifier greps and enumeration) appears in the row files, starting with the content-earliest row S1513, while P1's operational candidate is null. This may be a P1 capture gap. No P1-gap record is written, because the commission authorizes only this correction file.",
+  "S1543 and S1535 are SECONDARY-SYNTHESIS. They appear as timeline points only and are never used as a birth basis (G-08). S1535 is cited once in conceptual.basis as evidence of precedence, marked as such.",
+  "The quarantine lift condition in QUARANTINE.jsonl names a supplementary read plus a correction record. Lifting it remains a human act after audit."
+ ],
+ "read_proofs": {
+  "S1516": {
+   "quote": "**Not survivors:** the boundary score `B(i,j)` and `d_sem` (scale unestablished); `Contract = Minimal sufficient semantic projection` (measure undefined)."
+  },
+  "S1520": {
+   "quote": "before Step 121 attempts the constitution-to-implementation matrix, the band needs (i) a single registered epistemic-status scale replacing the 49 catalogued here, with explicit mappings for any retained alias"
+  },
+  "S1524": {
+   "quote": "the architecture is internally elaborate, locally well-reasoned in five files, and entirely unverified. Every PASS in the band is a CLAIM."
+  },
+  "S1528": {
+   "quote": "band is a claim. The step that would have converted claims into evidence was specified by 157, deferred twice"
+  },
+  "S1532": {
+   "quote": "no loss function, no propagation rule; the *tests* are narrated rather than run; and the *vocabulary"
+  },
+  "S1533": {
+   "quote": "of `K`, eight meanings of `I`, and one unlicensed Candidate→Confirmed promotion committed one section after"
+  },
+  "S1535": {
+   "quote": "Track B (reconstruction) and Track C (documentation) remain closed. No final theory has been written, and"
+  },
+  "S1538": {
+   "quote": "foundation and the Q-series formal core. Coverage stated over \"steps\" is not coverage over the corpus."
+  },
+  "S1539": {
+   "quote": "The theory cannot be declared valid on the strength of its invariants, and this is not a matter of"
+  },
+  "S1543": {
+   "quote": "Overall characterization, and it is the fair one: the band has learned not to fabricate. It has not yet"
+  },
+  "S1544": {
+   "quote": "The objective of this phase is to make the reconstructed theory **auditable from Step 001 → Step 218**."
+  },
+  "S1551": {
+   "quote": "exactly what evidence would be required and exactly how not to overclaim in its absence. It has not gathered"
+  }
+ },
+ "run_id": "S4-PILOT-R2-003",
+ "s1538_date_observation": "S1538's frontmatter reads \"date: 2026-08-30\" and the text says \"**this inventory, 2026-08-30**\", listing newest-file timestamps up to 2026-08-30 01:51. 02-FILES (source_meta) records best_historical_date 2026-08-25 (EXPLICIT), the minimum of explicit_dates [2026-08-30, 2026-08-25, 2026-08-26, 2026-08-27, 2026-08-28]. The 08-25 to 08-28 dates are dates the file cites for other artifacts (the pre-step research cluster \"2026-08-25 20:42 – 23:39\", the Q-series, the closure series, and the ERA 0–3 chronology). Under §14.2 rule 1 they do not position the file. The 02-FILES basis date therefore does not apply to the file itself: date_applies_to_file NOT-CONFIRMED. The file's own date, 2026-08-30, is consistent with its mtime (2026-08-30T00:00:45Z) and with its mandate reference 20260830_0157 (S1537). 02-FILES is not corrected here. This is the same failure the F-lane measured for P3A's minimum-explicit-date rule (§14.2 rule 1 evidence).",
+ "supplements_run": "S4-PILOT-R2-002",
+ "timeline_supplement": [
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); in-text \"VERIFY SESSION · 2026-08-30\"; mtime 2026-08-29T23:27Z (UTC, provenance only); merged position after S1513, before S1517",
+   "order": "ORDERED",
+   "source_id": "S1516",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "**VERIFY SESSION · 2026-08-30.** Both files **read in full by the lead verifier** (not delegated)."
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; mtime 2026-08-29T23:32Z; merged position after S1529, before S1521",
+   "order": "ORDERED",
+   "source_id": "S1520",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "caveat: prior verifier artifacts are HYPOTHESES, not authorities. Band claims are subject to supervisory"
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; mtime 2026-08-29T23:40:48Z; merged position after S1526, before S1528",
+   "order": "ORDERED",
+   "source_id": "S1524",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "KnowledgeOS theory-verification programme · end-of-series seam"
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; mtime 2026-08-29T23:42Z; merged position after S1524, before S1532",
+   "order": "ORDERED",
+   "source_id": "S1528",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "SOURCE RESULT / VERIFIER OBSERVATION / POSSIBLE REPAIR kept separate. NO SILENT REPAIR."
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; mtime 2026-08-29T23:46:16Z; merged position after S1528, before S1531",
+   "order": "ORDERED",
+   "source_id": "S1532",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "This continues the corpus-wide pattern without exception: across the ~120 documents deep-verified so far,"
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; mtime 2026-08-29T23:48Z; merged position after S1531, before S1535",
+   "order": "ORDERED",
+   "source_id": "S1533",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "SUPERVISORY NOTE — the band agent corrected its own brief, and the correction is sound."
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\" and heading \"Phase 2C Checkpoint — 2026-08-30\"; mtime 2026-08-29T23:52Z; SECONDARY-SYNTHESIS; merged position after S1533, before S1536",
+   "order": "ORDERED",
+   "source_id": "S1535",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "Headline: the deep verification of Steps 001–207 is complete. Steps 208–215 are in flight."
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "NOT-CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "02-FILES records EXPLICIT 2026-08-25, the minimum of explicit_dates [2026-08-30, 2026-08-25, 2026-08-26, 2026-08-27, 2026-08-28]; the 08-25..08-28 dates are dates the file cites for the pre-step clusters and eras (§6, §9), not for itself; the file's own frontmatter reads \"date: 2026-08-30\"; mtime 2026-08-30T00:00:45Z; merged position after S1537, before S1539",
+   "order": "ORDERED",
+   "source_id": "S1538",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "The count is not 216. It is 218 numbered steps, and the discrepancy is documented below rather than"
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; mtime 2026-08-30T00:01:54Z; merged position after S1538, before S1540",
+   "order": "ORDERED",
+   "source_id": "S1539",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "Answer: NO for the formalizable core. The invariant system is INCONSISTENT"
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; file_mtime not recorded; mtime_block \"2026-08-30\" (a date string, not a BULK block, A.10); SECONDARY-SYNTHESIS; merged position after S1541 (its source spec/STEP-VERIFY-208-215.md), before S1544",
+   "order": "ORDERED",
+   "source_id": "S1543",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "This is the first material improvement the verification programme has found"
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "NOT-CONFIRMED",
+   "date_basis": "MTIME",
+   "historical_position": "MTIME 1788074052 (best_historical_date; 2026-08-30T07:14:12Z; not a dated position); file_mtime not recorded; mtime_block \"2026-08-30\" (a date string, not a BULK block); no in-text date found on reading; content presupposes S1538's 218-step inventory; merged position after S1543, before S1566",
+   "order": "ORDERED",
+   "source_id": "S1544",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "You are continuing the **KnowledgeOS Theory Verification Session**."
+   }
+  },
+  {
+   "change_vs_previous": "EXTENDS",
+   "date_applies_to_file": "CONFIRMED",
+   "date_basis": "EXPLICIT",
+   "historical_position": "2026-08-30 (EXPLICIT); frontmatter \"date: 2026-08-30\"; file_mtime not recorded; mtime_block \"2026-08-30\" (date string, not a BULK block); in-text: Steps 219/220 \"written 2026-08-30 09:17:28\" / \"09:18:49\", so the file postdates them; merged position last (after S1566)",
+   "order": "ORDERED",
+   "source_id": "S1551",
+   "states": {
+    "epistemic_class": "SOURCE",
+    "quote": "The rule this programme applies to the corpus — a claim is indexed to the moment of"
+   }
+  }
+ ],
+ "working_label": "step-verify-programme"
+}

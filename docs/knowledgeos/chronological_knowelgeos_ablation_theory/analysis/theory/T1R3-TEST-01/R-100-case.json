@@ -1,0 +1,136 @@
+{
+ "name": "TEST R-100 (new-commission rule)",
+ "rule": {
+  "id": "ES-006.1",
+  "prov": [
+   "ARB",
+   "2026-07-11"
+  ],
+  "doc_status": "PROPOSED",
+  "applicability": [
+   "SOURCE-DERIVED",
+   "SOURCE: ENGINEERING GOVERNANCE PRINCIPLE + it is adopted as a rule, not as a WP-4 disposition"
+  ],
+  "text_requirements": [
+   {
+    "key": "ev",
+    "type": "before",
+    "event": "NecessityEvidence"
+   },
+   {
+    "key": "q",
+    "type": "before_if_high",
+    "event": "Qualification|Validation"
+   },
+   {
+    "key": "dec",
+    "type": "decision"
+   }
+  ]
+ },
+ "target": [
+  "UNKNOWN",
+  ""
+ ],
+ "t_act": "2026-08-04",
+ "interpretations": [
+  {
+   "id": "I-R39",
+   "t": "2026-07-26",
+   "source": "rulings L25",
+   "authority": "DA",
+   "host_adm": "NORMATIVE",
+   "applicability": [
+    "SOURCE-DERIVED",
+    "R-100 is classified an ENGINEERING GOVERNANCE PRINCIPLE; R-39's reading concerns principles"
+   ],
+   "requirements": [
+    {
+     "key": "bar",
+     "type": "attr_min",
+     "event": "NecessityEvidence",
+     "attr": "contexts",
+     "min": 2,
+     "strength": 3
+    }
+   ]
+  },
+  {
+   "id": "I-MEMORY",
+   "t": "2026-08-01",
+   "source": ".claude/MEMORY.md L389",
+   "authority": "none",
+   "host_adm": "NON-NORMATIVE",
+   "applicability": [
+    "SOURCE-DERIVED",
+    "R-100 is an engineering principle recorded in engineering/"
+   ],
+   "requirements": [
+    {
+     "key": "bar",
+     "type": "attr_min",
+     "event": "NecessityEvidence",
+     "attr": "contexts",
+     "min": 2,
+     "strength": 3
+    }
+   ]
+  },
+  {
+   "id": "I-CLAUDE",
+   "t": "2026-08-01",
+   "source": ".claude/CLAUDE.md L581",
+   "authority": "none",
+   "host_adm": "NON-NORMATIVE",
+   "applicability": [
+    "SOURCE-DERIVED",
+    "a methodology/engineering-procedure principle"
+   ],
+   "requirements": [
+    {
+     "key": "bar",
+     "type": "attr_min",
+     "event": "NecessityEvidence",
+     "attr": "instances",
+     "min": 2,
+     "strength": 1
+    }
+   ]
+  },
+  {
+   "id": "I-ES0013",
+   "t": "2026-08-16",
+   "source": "ES-001 L82",
+   "authority": "ARB",
+   "host_adm": "NORMATIVE",
+   "applicability": [
+    "SOURCE-STATED",
+    "ES-001.3 itself"
+   ],
+   "requirements": [
+    {
+     "key": "bar",
+     "type": "attr_min",
+     "event": "NecessityEvidence",
+     "attr": "instances",
+     "min": 2,
+     "strength": 1
+    }
+   ]
+  }
+ ],
+ "trace": [
+  {
+   "e": "Promote",
+   "label": "SOURCE",
+   "authority": "ARB CHIEF",
+   "quote": "Programme Governance · Adoption · ARB CHIEF."
+  },
+  {
+   "e": "PriorApplication",
+   "label": "SOURCE",
+   "contexts": 1,
+   "quote": "`R-98`'s WP-4-specific instruction becomes its first application"
+  }
+ ]
+}

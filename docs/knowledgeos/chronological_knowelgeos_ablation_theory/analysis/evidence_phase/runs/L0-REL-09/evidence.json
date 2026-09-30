@@ -1,0 +1,133 @@
+{
+ "release": "L0-REL-09",
+ "source": {
+  "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+  "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+  "lines": [
+   23,
+   23
+  ]
+ },
+ "cells": [
+  {
+   "id": "R37-c1",
+   "claim_id": "R37-burden",
+   "proposition": "EP-02a",
+   "source_slot": "S-7",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "any proposal for architectural expansion before the retrospective must include evidence that the existing architecture was insufficient",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "source_claim": "the evidence burden attaches to the proposal (decision act)",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-09",
+   "context": {
+    "scope": "architectural expansion during a structural freeze (R-37); applied to promotion only via ES-006.1 L20"
+   },
+   "notes": "Locates the burden at the proposal/decision; no re-check at execution is stated, and no separate authorization step is described. Cannot decide the event-time floor. See H3 (decision = promotion?)."
+  },
+  {
+   "id": "R37-c2",
+   "claim_id": "R37-burden",
+   "proposition": "EP-13a",
+   "source_slot": "S-7",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "any proposal for architectural expansion before the retrospective must include evidence that the existing architecture was insufficient",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "source_claim": "expansion before the freeze gate is met requires evidence of insufficiency",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-09",
+   "context": {
+    "scope": "architectural expansion during a structural freeze (R-37); applied to promotion only via ES-006.1 L20"
+   },
+   "notes": "Structurally 'a below-gate action requires evidence', but its scope is architectural expansion; the link to promotion exceptions is a cross-source inference (ES-006.1), not stated here."
+  },
+  {
+   "id": "R37-c3",
+   "claim_id": "R37-notprohib",
+   "proposition": "EP-13c",
+   "source_slot": "S-7",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "burden of proof, not prohibition",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "source_claim": "the freeze is a burden of proof, not a prohibition",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-09",
+   "context": {
+    "scope": "architectural expansion during a structural freeze (R-37); applied to promotion only via ES-006.1 L20"
+   },
+   "notes": "On its own scope it contradicts a prohibition reading (below-gate action can be valid with evidence); for promotion exceptions the link is inferential only."
+  }
+ ],
+ "events": [
+  {
+   "id": "R37-e1",
+   "type": "BAR_CHANGE",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "Architecture Freeze 2.0 (structural).",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-09",
+   "notes": "structural freeze issued at EM-001 closure"
+  },
+  {
+   "id": "R37-e2",
+   "type": "BAR_CHANGE",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "ARB extension (same-day, one sentence — burden of proof, not prohibition):",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-09",
+   "notes": "burden of proof reversed (same day)"
+  }
+ ]
+}

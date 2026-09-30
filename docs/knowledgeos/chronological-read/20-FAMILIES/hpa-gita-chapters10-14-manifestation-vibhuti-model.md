@@ -1,0 +1,53 @@
+# hpa-gita-chapters10-14-manifestation-vibhuti-model
+
+**Scope(s):** THEORY-LEVEL · **Row count:** 6 · **Lifecycle (candidate):** ACTIVE · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** `K = D_1 x D_2 x ... x D_n`, `K_{t+1}=Y(Buddhi(K_t,O_t,C_t))`, `Yoga={Y_1,...,Y_m}` · **Aliases:** `Chapters 10-14 combined model`, `Vibhuti manifestation lens`
+**Candidate group membership (NOT an identity claim):**
+- **G0499**: [`hpa-gita-chapters10-14-manifestation-vibhuti-model` · `hpa-gita-chapters11-14-horizon-model`] — explicit agent-stated uncertainty: 'hpa-gita-chapters10-14-manifestation-vibhuti-model' POSSIBLY relates to 'hpa-gita-chapters11-14-horizon-model' (batch B0054). Note: Adds Chapter 10 (Vibhuti, manifestations) beneath the Chapters 11-14 model, giving a five-chapter research model: manifestation(Ch10) -> observation(Ch11) -> Yoga-as-operator-family(Ch12) -> Ksetra/Ksetrajna field-knower(Ch13) -> guna state dynamics(Ch14). Proposes K != all individual knowledge statements but K -> {manifestations/dimensions/forms}, structuring K as a dimension product D_1 x ... x D_n; refines Sentence!=Dimension (sentence instantiates dimensions, e.g. Entity+Time, rather than being one); reinterprets Zero via local projection pi_X(K) so absence means 'not represented in the currently observed projection' rather than 'does not exist'; models Yoga as an operator family {Y_1,...,Y_m} rather than one operator; and argues Buddhi must not be unrestricted inference, requiring Governance as structurally distinct from the kernel to prevent self-reinforcing errors, circular reasoning, confirmation loops, and contradiction propagation.
+- **G0501**: [`hpa-gita-chapter15-tree-topology-memory-lifecycle-theory` · `hpa-gita-chapters10-14-manifestation-vibhuti-model`] — explicit agent-stated uncertainty: 'hpa-gita-chapter15-tree-topology-memory-lifecycle-theory' POSSIBLY relates to 'hpa-gita-chapters10-14-manifestation-vibhuti-model' (batch B0054). Note: Disciplined hpa reading of Gita Chapter 15 (the inverted asvattha tree) for KnowledgeOS, distinct from the external_research Chapter 15 formalization that artifact 19 found T0 (falsely claiming to solve the open knowledge-identity/equality question) -- this file makes no such claim. Interprets the tree as a knowledge dependency topology (root/branch/leaf/fruit), giving K_t=pi(K) (state as lossy projection of the larger space, corroborating Step 285), a three-way Zero taxonomy Z1=Unknown/Z2=Unobserved/Z3=Non-existent-refuted that must never be collapsed, a persistent Knower-identity vs changing-state distinction (A_K(t)=A_K(t+1) despite K_t!=K_{t+1}), Remember and Forget as first-class epistemic operations (Forget(x)!=Delete(x)), a Kshara(mutable)/Akshara(invariant) epistemic-stability classification, and a reformulated Zero(K_t,H_t) = detectable discrepancy between represented knowledge and the current epistemic horizon H_t, proposing a new 'Knowledge State Lifecycle' research axis: Observe->Know->Remember->Discriminate->Transform->Forget.
+
+## Sources (how this label entered the ledger)
+- **PROPOSAL** batch `B0054`, scope `THEORY-LEVEL`: Adds Chapter 10 (Vibhuti, manifestations) beneath the Chapters 11-14 model, giving a five-chapter research model: manifestation(Ch10) -> observation(Ch11) -> Yoga-as-operator-family(Ch12) -> Ksetra/Ksetrajna field-knower(Ch13) -> guna state dynamics(Ch14). Proposes K != all individual knowledge statements but K -> {manifestations/dimensions/forms}, structuring K as a dimension product D_1 x ... x D_n; refines Sentence!=Dimension (sentence instantiates dimensions, e.g. Entity+Time, rather than being one); reinterprets Zero via local projection pi_X(K) so absence means 'not represented in the currently observed projection' rather than 'does not exist'; models Yoga as an operator family {Y_1,...,Y_m} rather than one operator; and argues Buddhi must not be unrestricted inference, requiring Governance as structurally distinct from the kernel to prevent self-reinforcing errors, circular reasoning, confirmation loops, and contradiction propagation.
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S2235 §"\mathcal K \neq \text{all individual knowledge statements} ... \mathcal K = D_1\times D_2\times \cdots \times D_n"]
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S2235 §"\mathcal K \neq \text{all individual knowledge statements} ... \mathcal K = D_1\times D_2\times \cdots \times D_n"]
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+
+## Lifecycle
+last_seen: S2235. Candidate lifecycle: **ACTIVE**. Evidence: no retraction/supersession/contradiction evidence recorded; the ACTIVE classification is a heuristic based on how recently (by source_id ordering) this label was last used, not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source(s) |
+|---|---|---|
+| purpose_rationale | PRESENT | S2235 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | PRESENT | S2235, S2235 |
+| type_signature | PRESENT | S2235, S2235, S2235 |
+| invariants | PRESENT | S2235 |
+| dependencies | PRESENT | S2235, S2235, S2235, S2235 |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | NOT-EVIDENCED-IN-CAPTURE | — |
+| examples | PRESENT | S2235 |
+| warnings | NOT-EVIDENCED-IN-CAPTURE | — |
+| experiments | NOT-EVIDENCED-IN-CAPTURE | — |
+| open_questions | PRESENT | S2235 |
+
+## Rationale
+Explains the 'kernel can become its own enemy' worry: if the kernel transforms its own state without constraints (K_t ->F-> K_{t+1} ->F-> K_{t+2}...), it can create self-reinforcing errors, circular reasoning, confirmation loops, unjustified certainty, loss of provenance, and contradiction propagation. Therefore Buddhi != unrestricted inference; it needs constraints, and this is where Governance becomes structurally distinct from the kernel. Also refines Buddhi's codomain away from TRUE/FALSE toward {supported, contradicted, unknown, insufficient evidence, conflicting}, framed as more compatible with the Zero/uncertainty/qualification theory. [S2235]
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- [S2235] types=['HYPOTHESIS', 'FORMALIZATION'] scope=THEORY-LEVEL — "From Gita Chapter 10 (vibhutis, manifestations through which underlying reality is recognized): K (Knowledge Space) is not all individual knowledge statements but manifests through {manifestations/dimensions/forms}, motivating a structural question 'what are the fundamental dimensions through which knowledge manifests?' and a candidate structuring K = D_1 x D_2 x ... x D_n (each D_i a knowledge dimension), with K_t subset K, or equivalently the existing five-axis Sigma_t=(A_t,S_t,R_t,V_t,C_t) -- explicitly not claiming the answer is exactly five dimensions; that remains open." (anchor: "\mathcal K \neq \text{all individual knowledge statements} ... \mathcal K = D_1\times D_2\times \cdots \times D_n")
+- [S2235] types=['CORRECTION', 'EXAMPLE'] scope=THEORY-LEVEL — "Refines the earlier 'can one sentence be a dimension of knowledge' question: a sentence is not necessarily a dimension; Sentence -> Observation/Proposition, while Dimension -> an independent axis along which propositions can vary. Worked example: 'System X runs on Tuesday' is a Proposition instantiating the dimensions Entity (X) and Time (Tuesday) -- the sentence instantiates dimensions, it does not itself constitute one." (anchor: "Sentence \rightarrow \text{Observation/Proposition} ... Dimension \rightarrow \text{independent axis along which propositions can vary}")
+- [S2235] types=['HYPOTHESIS', 'CORRECTION'] scope=THEORY-LEVEL — "From Chapter 11's Visvarupa (universal form): a kernel may see only a local projection pi_X(K) while the theoretical whole is K, giving local knowledge != knowledge space as a whole. Reinterprets Zero accordingly: rather than meaning 'nothing exists', a Zero detection may mean 'nothing is represented in the currently observed projection' -- proposed as a much stronger formal interpretation, potentially important for the Zero theory." (anchor: "A Zero does not necessarily mean "Nothing exists." It may mean "Nothing is represented in the currently observed projection."")
+- [S2235] types=['FORMALIZATION', 'EXTENSION'] scope=THEORY-LEVEL — "Refines Yoga from a single operator into a family: Yoga = {Y_1,Y_2,...,Y_m}, where each Y_i is a transformation or discipline applied to an epistemic state, K_{t+1}=Y_i(K_t,O_t). Poses the research question: what transformations are permitted, and what properties must they preserve?" (anchor: "\mathsf{Yoga}=\{\mathcal Y_1,\mathcal Y_2,\ldots,\mathcal Y_m\}")
+- [S2235] types=['ARGUMENT', 'CONSTRAINT'] scope=THEORY-LEVEL — "Explains the 'kernel can become its own enemy' worry: if the kernel transforms its own state without constraints (K_t ->F-> K_{t+1} ->F-> K_{t+2}...), it can create self-reinforcing errors, circular reasoning, confirmation loops, unjustified certainty, loss of provenance, and contradiction propagation. Therefore Buddhi != unrestricted inference; it needs constraints, and this is where Governance becomes structurally distinct from the kernel. Also refines Buddhi's codomain away from TRUE/FALSE toward {supported, contradicted, unknown, insufficient evidence, conflicting}, framed as more compatible with the Zero/uncertainty/qualification theory." (anchor: "Buddhi \neq unrestricted inference ... Governance becomes structurally distinct from the kernel")
+- [S2235] types=['OPEN-QUESTION', 'HYPOTHESIS'] scope=THEORY-LEVEL — "Poses the culminating research question of Chapters 10-14: is the KnowledgeOS kernel fundamentally a storage mechanism, or a discriminative epistemic machine operating on changing knowledge states -- the Gita lens strongly points toward the latter. Formalized: Kernel != K_t; instead Kernel:(K_t,O_t,C_t)->K_{t+1}, with Buddhi subset-of Kernel capability and K_t = state operated upon. Connects this to Step 285's finding that the kernel itself is still not formally selected, keeping this as a new Gita-derived research hypothesis, not canonical. Proposes next step: derive a candidate formal algebra of the Kernel from Chapters 10-14 together, identifying which operations belong to Buddhi vs Mind/Kernel vs transform K_t vs must remain outside the kernel (Governance, authority, provenance)." (anchor: "Is the KnowledgeOS kernel fundamentally a knowledge-storage mechanism, or is it a discriminative epistemic machine operating on changing knowledge states? ... Kernel \neq K_t")
+
+## Notes for P3
+(none beyond what is noted above)

@@ -1,0 +1,208 @@
+{
+ "body": {
+  "acceptance_evidence": true,
+  "alerts": [
+   "CONTRACT-DEVIATION architecture-conformance-engineering-model: step-10 read of 1 file(s) outside the label's slice ['S1484'] (plan §C.1 item 1; §22: for the auditor; label does not carry a CONTRACT-DEVIATION escalation)",
+   "CONTRACT-DEVIATION governance-conformance-model: step-10 read of 1 file(s) outside the label's slice ['S1520'] (plan §C.1 item 1; §22: for the auditor; label does not carry a CONTRACT-DEVIATION escalation)",
+   "CONTRACT-DEVIATION knowledgeos-architecture-constitution-v01: step-10 read of 1 file(s) outside the label's slice ['S1520'] (plan §C.1 item 1; §22: for the auditor; label does not carry a CONTRACT-DEVIATION escalation)"
+  ],
+  "batch_id": "OB0004",
+  "comparison": false,
+  "counts": {
+   "dispositions_per_hit_dimension": {
+    "ESCALATED": 6,
+    "FALSE-HIT": 40,
+    "FOUND": 151,
+    "UNSUPPLIED-DIMENSION": 128
+   },
+   "objects": 5,
+   "p1_gap_records": 19,
+   "read_log_entries": 58,
+   "records_by_kind": {
+    "GAP": 5,
+    "METHODOLOGICAL-DEFICIENCY": 2,
+    "OBSERVATION": 27,
+    "STRUCTURE-CANDIDATE": 1,
+    "SUGGESTION-RESEARCH": 1
+   },
+   "refused_reads": 0,
+   "research_records": 36
+  },
+  "failures": [
+   "G-04 architecture-conformance-engineering-model: dispositions cover 3 of 4 distinct hit keys (missing 1, extra 1, repeated 0)",
+   "G-12 knowledgeos-architecture-constitution-v01: register id or pointer in layer A ('See the register')",
+   "G-04 knowledgeos-architecture-constitution-v01: dispositions cover 3 of 7 distinct hit keys (missing 4, extra 4, repeated 0)",
+   "G-12 step-verify-programme: register id or pointer in layer A ('see the register')",
+   "G-04 step-verify-programme: dispositions cover 11 of 33 distinct hit keys (missing 22, extra 22, repeated 0)",
+   "G-12 strategic-behavior-game-theory-model: register id or pointer in layer A ('see the register')",
+   "G-04 strategic-behavior-game-theory-model: dispositions cover 14 of 34 distinct hit keys (missing 20, extra 20, repeated 0)",
+   "SCHEMA OB0004-R2:OB0004:G1: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G2: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G3: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G4: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G5: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G6: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G7: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G8: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G9: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G10: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G11: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G12: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G13: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G14: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G15: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G16: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G17: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G18: keys differ from the schema (missing [], extra ['generation_parameters'])",
+   "SCHEMA OB0004-R2:OB0004:G19: keys differ from the schema (missing [], extra ['generation_parameters'])"
+  ],
+  "gates": {
+   "AUDIT": "PASS",
+   "D-23": "PASS",
+   "F1": "PASS",
+   "F3": "PASS",
+   "G-01": "PASS",
+   "G-02": "PASS",
+   "G-03": "NOT-SCRIPT-CHECKED (no mechanical duplicate-corroboration field at batch level)",
+   "G-04": "FAIL",
+   "G-05": "PASS",
+   "G-06": "AUDIT (§21)",
+   "G-07": "PASS",
+   "G-08": "PASS",
+   "G-09": "PASS",
+   "G-10": "PARTIAL (slice hashes = SLICES)",
+   "G-11": "PASS",
+   "G-12": "FAIL",
+   "G-13": "PASS-LEVEL (S5a/S5b)",
+   "HUB": "PASS",
+   "QUARANTINE": "PASS",
+   "SCHEMA": "FAIL",
+   "SEMANTIC": "PASS",
+   "SLICES": "PASS"
+  },
+  "labels": [
+   "step-verify-programme",
+   "strategic-behavior-game-theory-model",
+   "knowledgeos-architecture-constitution-v01",
+   "governance-conformance-model",
+   "architecture-conformance-engineering-model"
+  ],
+  "load": {
+   "actual": {
+    "reader_calls": 55,
+    "stage1_bytes": 1036954,
+    "stage2_bytes": 1561963,
+    "stage2b_occurrences": 0
+   },
+   "alert_ratio": 1.5,
+   "manifest_predicted_dispositions": 325,
+   "predicted": {
+    "reader_calls": 65,
+    "stage1_bytes": 1767046,
+    "stage2_bytes": 1561963,
+    "stage2b_occurrences": 0
+   },
+   "ratios": {
+    "reader_calls": 0.8462,
+    "stage1_bytes": 0.5868,
+    "stage2_bytes": 1.0,
+    "stage2b_occurrences": null
+   }
+  },
+  "manifest_output_sha256": "97dd221067044cb9493c8ae8bc2357d50f6c9248f541a340740e409173aa457d",
+  "notes": [],
+  "reading_bytes": {
+   "architecture-conformance-engineering-model": {
+    "file_reads_1_7": 3,
+    "predicted_file_reads": 3,
+    "scanner_calls": 0,
+    "step1": 21741,
+    "step10": 60681,
+    "step7": 131671
+   },
+   "governance-conformance-model": {
+    "file_reads_1_7": 2,
+    "predicted_file_reads": 2,
+    "scanner_calls": 0,
+    "step1": 24666,
+    "step10": 109930,
+    "step7": 24666
+   },
+   "knowledgeos-architecture-constitution-v01": {
+    "file_reads_1_7": 7,
+    "predicted_file_reads": 7,
+    "scanner_calls": 0,
+    "step1": 77366,
+    "step10": 109930,
+    "step7": 249219
+   },
+   "step-verify-programme": {
+    "file_reads_1_7": 37,
+    "predicted_file_reads": 47,
+    "scanner_calls": 0,
+    "step1": 862920,
+    "step10": 0,
+    "step7": 996766
+   },
+   "strategic-behavior-game-theory-model": {
+    "file_reads_1_7": 6,
+    "predicted_file_reads": 6,
+    "scanner_calls": 0,
+    "step1": 50261,
+    "step10": 0,
+    "step7": 159641
+   }
+  },
+  "relative_timing_key_source": "SCHEMA",
+  "research_reads": {
+   "cap": 900000,
+   "cap_reached": false,
+   "repeat_ratio": 1.5,
+   "step10_bytes": 280541,
+   "step10_distinct_files": 2,
+   "step10_file_reads": 3
+  },
+  "result": "FAIL",
+  "run_id": "OB0004-R2"
+ },
+ "header": {
+  "artifact": "S5-VERIFY-OB0004.json",
+  "input_hashes": {
+   "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+   "P3B-HOLDOUT-SEAL.json": "9b99169d30d57b2ecc1d331838652aa6b765ce722059b30095a03df077d589c0",
+   "P3B-S5-HUBS.jsonl": "e150d7a5ac3c405b6e2226d70323314d23a106bbb3442c0110dcc6ae4d366d91",
+   "_batch_input_r2/s5/OB0004/P3B-BATCH-SNAPSHOT.json": "1a7152e202fa3abaa7565973e5fd0725443f2500ebad043c17f7ca3fbde83c5f",
+   "_batch_input_r2/s5/OB0004/architecture-conformance-engineering-model.json": "947c8c0c5af054295ab36dfb9a85a95289f99d06585e9aab58873290363b112b",
+   "_batch_input_r2/s5/OB0004/governance-conformance-model.json": "069298f72a30ca8741d47ab7310ca3dc82c43aee210b87ebf1641e4c172b10a8",
+   "_batch_input_r2/s5/OB0004/knowledgeos-architecture-constitution-v01.json": "3650212de89f71780cd8471f1a9bd9ea2e591f1bf8d11b7abb15a439682d5742",
+   "_batch_input_r2/s5/OB0004/step-verify-programme.json": "508ccbb9c3ecf0bea7f3abe7dd445e8717370607c6e338ce0966cc106c784d65",
+   "_batch_input_r2/s5/OB0004/strategic-behavior-game-theory-model.json": "1603ad7ff7133dc81b34cbaa48d589fde3caa526a300f7e134fbdbb46503dbd0",
+   "_batch_manifest_p3b_r2.jsonl": "0c5e95e23e2c4de7d1c93c572dab8c0e9b14df896ba64d9cf3ae4c5b82aa603d",
+   "audit-p3b/20260925_0106_s5-plan-v2.3.md": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+   "ledger-p3b-r2/OB0004-R2/READ-LOG.jsonl": "ec4f58b833a0fd1a1f9beb49d736e20b19ddee1c598f2dbd4fe581755d0bf370",
+   "ledger-p3b-r2/OB0004-R2/objects.jsonl": "cb6e3c48d69a0075d86779ef7af81d02e3032b0c68402d2a40867a37354fe6ad",
+   "ledger-p3b-r2/OB0004-R2/p1-gap-capture.jsonl": "60446528c2c5d4ed97a520903b59c2f99472111cc7a462b5ca928fc40253c8b1",
+   "ledger-p3b-r2/OB0004-R2/register.jsonl": "5e9948afc09d7864edbf84a1d5e0e76cd4a8445eee32f543227c1719ac557b24",
+   "prompts/20260924_2311_p3b-phase1-continuation-protocol-v1.7.md": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12"
+  },
+  "numpy_version": "2.5.0",
+  "output_sha256": "2e05caf2e514c80029a5c2f383320c11492e25c6d8b4ef051bacbd4299037714",
+  "parameters": {
+   "alert_ratio": 1.5,
+   "batch": "OB0004",
+   "root": "C",
+   "run": "OB0004-R2",
+   "step10_cap": 900000
+  },
+  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "protocol_sha256": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12",
+  "python_version": "3.13.2",
+  "result": "FAIL",
+  "run_timestamp_utc": "2026-09-25T08:25:49Z",
+  "script_committed_unmodified": true,
+  "script_name": "scripts/p3b_s5_verify.py",
+  "script_version": "13d7ce62d7b40157a1e81f3784f6deb57b8181b3"
+ }
+}

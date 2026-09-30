@@ -1,0 +1,73 @@
+{
+ "spec_fidelity_ok": true,
+ "spec_fidelity_notes": "The code implements the fixed guard, LOCO folds, tables, the abstention reasons in order, the majority baseline with tie abstention, and the literal verdict conjunction. Minor gap: baseline (ii) has no denominator (6 of 8 scored for {s}), and tie-abstentions count as baseline failures. Unverifiable: r3.legal, r3.variant, r3.isknown, models_1al, and the claim 'committed before first run'.",
+ "faithful_to_prior_proposal": true,
+ "faithful_notes": "Implements PRIOR-REVIEW-r4 §4(b): {s} alone, table consistency (git with s = UNK is excluded), R72 and R79 abstain as foreseen. The {s,t} comparator, baseline and verdict rule are additions. Per-tuple rather than whole-table consistency makes no difference on this data.",
+ "recomputation_matches": true,
+ "mismatches": [],
+ "recomputation": {
+  "G={s}": {"held_out": 11, "predicted": 8, "correct": 8, "wrong": 0, "abstain": {"UNK-on-G": 1, "unseen-tuple": 2, "conflicting-tuple": 0}, "folds_with_prediction": 6, "coverage": 0.727, "baseline_all": "2/7", "baseline_on_predicted_correct": 2, "baseline_on_predicted_scored": 6, "verdict": "DIAGNOSTICALLY PREDICTIVE"},
+  "G={s,t}": {"held_out": 11, "predicted": 2, "correct": 2, "wrong": 0, "abstain": {"UNK-on-G": 1, "unseen-tuple": 8, "conflicting-tuple": 0}, "folds_with_prediction": 2, "coverage": 0.182, "baseline_all": "2/7", "baseline_on_predicted_correct": 1, "verdict": "NOT SHOWN"},
+  "variants_note": "Recomputed from the BASE START events. REV and REV-TYPE START events are not in the provided files; RESULT-r5 reports identical numbers and PRIOR-REVIEW-r4 states the START events are identical."
+ },
+ "circularity": [
+  {"event": "START WP-4B at R-72 (proviso unmet)", "class": "INDEPENDENT", "quote": "START WP-4B at R-72 (proviso unmet)", "note": "Names a proviso on the authorization, unmet before the act. Abstains anyway (unseen)."},
+  {"event": "START WP-4B 08-03 16:10", "class": "N/A (s = UNK)", "quote": "state 'auth-full' rested on an INTERPRETATION of R-78 (F-LOG-0129: I-A1 UNDETERMINED) → s = UNK", "note": "Not coded. Never in the table; affects only the baseline."},
+  {"event": "START WP-8 (permission only)", "class": "INDEPENDENT", "quote": "START WP-8 (permission only)", "note": "Names the authorization level held before the act. Abstains anyway."},
+  {"event": "START 7A after AUTHORIZE(7A)", "class": "INDEPENDENT", "quote": "START 7A after AUTHORIZE(7A)", "note": "A prior AUTHORIZE act targeting 7A."},
+  {"event": "START 7B after AUTHORIZE(7A)", "class": "INDEPENDENT", "quote": "START 7B after AUTHORIZE(7A); semobs_r3: for START, `s` = the authorization state OF THE ACT'S TARGET", "note": "Derived from AUTHORIZE(7A), whose scope excludes 7B; corroborated by R-56. Recoded post hoc in r3 from 'auth-full(7A)', the same value as R47a (D-6)."},
+  {"event": "START 7B at R-56 (plan approved, execution not issued)", "class": "INDEPENDENT", "quote": "START 7B at R-56 (plan approved, execution not issued)", "note": "Separates plan approval from execution authorization; a pre-act state."},
+  {"event": "START 7B at R-58 (execution authorized)", "class": "INDEPENDENT", "quote": "START 7B at R-58 (execution authorized)", "note": "Weak: names the instrument, but it is in the same ruling as the start and no separate AUTHORIZE observation appears in these files."},
+  {"event": "START 7C at R-58 (remains unauthorized)", "class": "UNCLEAR", "quote": "START 7C at R-58 (remains unauthorized)", "note": "Restates the value; no instrument or scope is named."},
+  {"event": "START 7C at R-65 (authorized)", "class": "UNCLEAR", "quote": "START 7C at R-65 (authorized)", "note": "Bare restatement of the value; no prior authorization act is named. Cannot be told apart from coding from the outcome."},
+  {"event": "START §12 reconcile at R-81 (Batch 7 frozen)", "class": "UNCLEAR", "quote": "START §12 reconcile at R-81 (Batch 7 frozen)", "note": "A batch state is mapped by interpretation onto the target's authorization, the same kind of interpretation that made git UNK."},
+  {"event": "START §12 reconcile at R-86 (Batch 7 released)", "class": "UNCLEAR", "quote": "START §12 reconcile at R-86 (Batch 7 released)", "note": "'released' is mapped to 'authorized' by interpretation."}
+ ],
+ "circularity_summary": "0 OUTCOME-DERIVED, 6 INDEPENDENT, 4 UNCLEAR, 1 N/A. Every basis is a coder paraphrase in the event_id, with no source anchors. Possible reverse circularity: the REFUSED outcomes of R56, R58b and R81 may be inferred from the stated state.",
+ "verdict_excluding_circular": {
+  "excluded": ["START 7C at R-58 (remains unauthorized)", "START 7C at R-65 (authorized)", "START §12 reconcile at R-81 (Batch 7 frozen)", "START §12 reconcile at R-86 (Batch 7 released)"],
+  "remaining_events": 7,
+  "remaining_clusters": 6,
+  "G={s}": {"predicted": 4, "correct": 4, "wrong": 0, "abstain": {"UNK-on-G": 1, "unseen-tuple": 2, "conflicting-tuple": 0}, "folds_with_prediction": 3, "baseline_all": "1/4", "baseline_on_predicted_correct": 1, "baseline_on_predicted_scored": 3, "verdict": "DIAGNOSTICALLY PREDICTIVE (exactly at threshold)"},
+  "G={s,t}": {"predicted": 2, "correct": 2, "verdict": "NOT SHOWN"},
+  "sensitivity": {
+   "also_exclude_R47b": "NOT SHOWN (2 predictions)",
+   "also_exclude_R58a_or_R47a_or_R56": "NOT SHOWN (2 predictions)",
+   "R58b_reclassified_INDEPENDENT": "PREDICTIVE (5 correct, 3 folds, baseline (ii) 3)",
+   "also_drop_git": "PREDICTIVE (4 correct, 3 folds, baseline (ii) 2)"
+  },
+  "assessment": "Survives, but knife-edge: it rests on 2 mutually supporting pairs, {R47a, R58a} and {R47b, R56}, from one decision episode (the 7-series)."
+ },
+ "independent_clusters_behind_correct": 6,
+ "independence_detail": "The 8 correct predictions are held out from 6 clusters (R-47 x2, R-56, R-58 x2, R-65, R-81, R-86). Their training support is the same 8 events and 6 clusters, a closed, mutually supporting set of 2 value classes. The 6 clusters form 2 decision episodes (the 7A/7B/7C execution authorizations; the Batch 7 freeze/release), all register rows from one project. Strict set: 4 predictions, 3 clusters, 1 episode.",
+ "baseline_assessment": "Inadequate. On 5P/6N data the LOCO majority baseline is anti-correlated with the held-out event: it is wrong on every single-P fold, ties on every single-N fold, and can be right only on the N event of the mixed clusters R-47 and R-58, so its maximum is 2. 'correct > baseline' is therefore met by any predictor with at least 3 correct predictions. On the predicted subset, the full-data majority scores 4/8 and chance scores 4/8. The trivial rule 's = authorized => PERFORMED, else REFUSED' scores 10/10 on the events with s known, with no training. It is not a logical tautology, since no s is shown to be outcome-derived, but it is definitionally close: s is coded as target authorization state, which is the premise of the rule under test. So the result shows coding consistency, not discovery.",
+ "strongest_supported_claim": "On the strict START observations as coded (11 events, 9 clusters; reported identical across BASE, REV and REV-TYPE), the fixed guard {s} used as a lookup predicts 8/11 held-out events across 6 held-out clusters with 0 errors, because 'authorized' and 'not-authorized' each co-occur with a single outcome across 4 clusters. This is a formal consistency property of the coded data, DIAGNOSTICALLY PREDICTIVE under the frozen rule. Restricted to events with an independent pre-act authorization basis, it holds only at the threshold (4 predictions, 3 folds, 1 decision episode).",
+ "unsupported_claims": [
+  "Authorization state is empirically necessary or sufficient for START (no empirical replication).",
+  "Independent confirmation: same corpus and coders, a post-hoc r3 recode (R47b), and a diagnostic proposed after seeing r4.",
+  "Generalization beyond this project's ruling register or beyond 2 decision episodes.",
+  "{s} beats a meaningful baseline: the frozen baseline is structurally capped at 2.",
+  "t is unnecessary, or r4's {s,t} was wrong: {s} abstains on 3/11 and git x R72 remains unseparated.",
+  "Robustness to coding choices: one reclassification flips the strict verdict.",
+  "The result rescues or overturns r4's verdicts.",
+  "Any statistical or causal claim."
+ ],
+ "disagreements": [
+  {"id": "D-1", "text": "The LOCO majority baseline is structurally anti-correlated on 5P/6N data (max 2), so 'correct > baseline' is nearly automatic.", "category": "formal reasoning"},
+  {"id": "D-2", "text": "Baseline (ii) has no denominator (6/8 scored), and tie-abstentions count as baseline failures, so the 'same predicted subset' is not truly the same.", "category": "coding"},
+  {"id": "D-3", "text": "R81/R86: 'Batch 7 frozen/released' is mapped to the authorization of §12 reconcile by interpretation (the standard that made git UNK). UNCLEAR.", "category": "source interpretation"},
+  {"id": "D-4", "text": "R65: the basis '(authorized)' only restates the value. UNCLEAR.", "category": "source interpretation"},
+  {"id": "D-5", "text": "R58b: '(remains unauthorized)' names no instrument or scope. UNCLEAR.", "category": "source interpretation"},
+  {"id": "D-6", "text": "R47b's s was recoded in r3 from 'auth-full(7A)' (non-separating) to 'not-authorized' (separating), after the data was seen. The strict verdict depends on it.", "category": "coding"},
+  {"id": "D-7", "text": "Possible reverse circularity: the REFUSED outcomes of R56, R58b and R81 may be inferred from the state; no attempted act is visible.", "category": "evidence scope"},
+  {"id": "D-8", "text": "Every 'quoted basis' is a coder paraphrase in the event_id; no source anchors are in the provided files.", "category": "evidence scope"},
+  {"id": "D-9", "text": "The 8 correct predictions come from 6 clusters and 2 decision episodes, a closed, mutually supporting set of 2 value classes.", "category": "independence"},
+  {"id": "D-10", "text": "The trivial rule 'authorized => P' scores 10/10 without training; the guard is the coding's own premise (consistency, not discovery).", "category": "formal reasoning"},
+  {"id": "D-11", "text": "Excluding the UNCLEAR events leaves the verdict exactly at the threshold; excluding any one of R47a, R47b, R56 or R58a gives NOT SHOWN.", "category": "formal reasoning"},
+  {"id": "D-12", "text": "The r3/m1 dependencies, the legality filter and the REV/REV-TYPE START data are unverifiable from the provided files.", "category": "evidence scope"},
+  {"id": "D-13", "text": "'Committed before its first run' is unverifiable.", "category": "evidence scope"},
+  {"id": "D-14", "text": "{s,t} NOT SHOWN does not show that t is unnecessary; D-N1 (git's s = UNK) is not addressed.", "category": "formal reasoning"},
+  {"id": "D-15", "text": "The label 'DIAGNOSTICALLY PREDICTIVE' may be read as predictive validity; it means lookup consistency under a weak baseline.", "category": "wording"},
+  {"id": "D-16", "text": "'authorized' pools target execution authorization (the 7-series) and batch release (§12); the apparent spread across 4 clusters partly comes from this pooling.", "category": "substantive"}
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "norm": {
+  "id": "ES-006.1",
+  "status": "PROPOSED",
+  "status_label": "SOURCE (ES-006 L3; all 7 versions 2026-07-11..07-26, L0-REL-18)",
+  "rule_provenance": "ARB, refined 2026-07-11",
+  "rule_provenance_label": "SOURCE (ES-006.1 L14)"
+ },
+ "results": {
+  "R-39": {
+   "class": "UNDETERMINED (rung) — exception recorded",
+   "depends_on": [
+    "SOURCE",
+    "SOURCE: 'the normal promotion rule (ES-006.1 …)'"
+   ],
+   "shortest_trace": [
+    "NecessityEvidence",
+    "Promote"
+   ]
+  },
+  "B (Layer Verification Rule)": {
+   "class": "VACUOUS (no promotion)",
+   "depends_on": [],
+   "shortest_trace": []
+  },
+  "P1 (R-41 / ES-004.3)": {
+   "class": "DEVIATES — explanation UNDETERMINED (norm force AMBIGUOUS: document PROPOSED, rule ARB-dated)",
+   "depends_on": [
+    "READING (MEDIUM): ES-006 L5 scope covers 'standards candidates'",
+    "READING: ES-00x standard series",
+    "SOURCE",
+    "SOURCE (ES-006 L3; all 7 versions 2026-07-11..07-26, L0-REL-18)",
+    "SOURCE (ES-006.1 L14)"
+   ],
+   "shortest_trace": [
+    "NecessityEvidence",
+    "Promote"
+   ]
+  }
+ }
+}

@@ -1,0 +1,88 @@
+{
+  "status": "draft decision package; nothing adopted, nothing recoded",
+  "affected_counts": {
+    "n": 36,
+    "by_class_reconciled": {"ACT": 19, "NORM_STATEMENT": 13, "GENERIC_PRACTICE": 1, "UNCLEAR": 3},
+    "by_class_worker_A": {"ACT-PERFORMED": 10, "ACT-REFUSED": 9, "PERMISSION-STATEMENT": 13, "GENERIC-PRACTICE": 1, "UNCLEAR": 3},
+    "by_class_reviewer": {"ACT-PERFORMED": 11, "ACT-REFUSED": 8, "PERMISSION-STATEMENT": 13, "GENERIC-PRACTICE": 1, "UNCLEAR": 3},
+    "by_operation": {
+      "ADOPT": {"n": 3, "ACT": 3},
+      "AUTHORIZE-IMPL": {"n": 2, "ACT": 2},
+      "REGISTER": {"n": 2, "ACT": 1, "GENERIC_PRACTICE": 1},
+      "OPEN-WORK": {"n": 2, "ACT": 1, "NORM_STATEMENT": 1},
+      "START": {"n": 11, "ACT": 1, "NORM_STATEMENT": 10},
+      "RAISE": {"n": 9, "ACT": 8, "UNCLEAR": 1},
+      "ASSIGN-ID": {"n": 2, "NORM_STATEMENT": 1, "UNCLEAR": 1},
+      "SUPERSEDE": {"n": 4, "ACT": 2, "NORM_STATEMENT": 1, "UNCLEAR": 1},
+      "ANNOTATE": {"n": 1, "ACT": 1}
+    },
+    "tiers": {
+      "definition": "T1 certain = both coders same class, no recorded ambiguity; T2 = same class but ambiguity flagged by A, disputed in an earlier audit, or item mapping UNKNOWN; T3 = class disputed between coders; T4 = UNCLEAR for both",
+      "T1_certain": {"n": 21, "ACT": 10, "NORM_STATEMENT": 10, "GENERIC_PRACTICE": 1},
+      "T2_agreed_flagged": {"n": 11, "ACT": 8, "NORM_STATEMENT": 3, "records": [
+        "ADOPT R-81..85 by the Chief (declined)",
+        "OPEN-WORK by a recording note (R-60)",
+        "START WP-4B at R-72 (proviso unmet)",
+        "SUPERSEDE §12 (R-83)",
+        "RAISE promoted #2", "RAISE promoted #3", "RAISE promoted #9", "RAISE promoted #10",
+        "RAISE not promoted #5", "RAISE not promoted #14", "RAISE not promoted #17"]},
+      "T3_disputed": {"n": 1, "records": ["AUTHORIZE-IMPL R-89 (Chief, PREPARED)"], "note": "A: ACT-REFUSED; reviewer: ACT-PERFORMED (D2); type ACT is certain, outcome disputed"},
+      "T4_unclear": {"n": 3, "records": ["RAISE L493-B (single occurrence)", "ASSIGN a never-used number", "SUPERSEDE D-12 by ADR-MP"]}
+    },
+    "non_class_disputes": ["START WP-4B 08-03 16:10: s value (D8)", "START §12 reconcile at R-81: §12 membership from later rows (1aq D6)"]
+  },
+  "proposal": {
+    "label": "PROPOSAL",
+    "field": "observation_type ∈ {ACT_OBSERVATION, NORM_STATEMENT, GENERIC_PRACTICE, UNKNOWN}, with epistemic basis and quote",
+    "witness_rule": "R3/R4/R5 apply to ACT_OBSERVATION records only",
+    "not_applicable_rule": "outcome and ground are NOT_APPLICABLE for NORM_STATEMENT and GENERIC_PRACTICE; distinct from R1 n/a (per operation) and UNK (applies, not established); never used for 'not stated'",
+    "deferred_optional": ["deontic ∈ {PERMITTED, FORBIDDEN, UNK} for NORM_STATEMENT", "stated_by: link to the norm-making act"],
+    "ambiguity_rule": "UNKNOWN if no anchored source text, excerpt lacks the item, text equally reads as attempted act or statement with no independent record, or blind coders still disagree; missing type is a validation error; no default to ACT or NORM; UNKNOWN counted but excluded from all witness counts",
+    "migration": {
+      "automatic": "T1 (21) from agreed audit class; v1 outcome kept as v1_outcome",
+      "blind_recode": "T2 (11), type only, without v1 coding or audit class",
+      "human": "T3 (R-89 outcome)",
+      "unknown_pending_sources": "T4 (3)",
+      "lineage": "no v1 field overwritten; v1_record, r2_type_source, quote retained; v1 verdicts archived",
+      "not_done": "no new AUTHORIZE records created for the rulings behind START statements; that is recoding and needs separate authorization (UNKNOWN whether wanted)"
+    },
+    "expected_impact": {
+      "act_dataset": {"a": "2, SUPPORTED (caveats: same Chief-vs-DA rule; R-89 pair uses NOT-IN-FORCE)", "k": "0, NOT DEMONSTRATED", "t": "0", "s": "0, NOT DEMONSTRATED", "e": "1 cluster, WEAK, half-attested (D7)", "c": "0 strict, 1 coarse", "h": "0 (D10 candidate outside frozen 36)", "x": "0", "o": "19 records / 8 ops; START 1, ASSIGN-ID 0", "r": "no witnesses"},
+      "norm_dataset": {"a": "0", "k": "1 statement, no contrast", "t": "0 single-field contrasts", "s": "2 deontic contrasts, circular (D9)", "e": "1 statement (R-83), no contrast", "c": "0", "h": "1 statement (R-90 retired), no contrast", "x": "0", "o": "13 records / 4 ops", "r": "UNKNOWN which route a norm record carries"},
+      "v1": {"a": "2, SUPPORTED", "k": "2, SUPPORTED", "t": "0", "s": "2 recorded (A: 5), SUPPORTED", "e": "1 cluster, WEAK", "c": "0 strict, 1 coarse", "h": "1, WEAK", "x": "0"}
+    }
+  },
+  "alternatives": [
+    {"id": "B-overlay", "description": "Keep v1; external attestation overlay (event_id → class, coder, quote); R3 on ACT-labelled records only; enforce v1 §1 in coding guide", "assessment": "information-equivalent to r2; label lives outside the frozen instrument"},
+    {"id": "B-outcome-extension", "description": "Add PERMITTED/FORBIDDEN to outcome", "assessment": "smaller but overloads outcome with two meanings; cannot express GENERIC_PRACTICE or UNKNOWN"},
+    {"id": "B-guide-only", "description": "Stricter coding guide enforcing v1 §1 'one historical act'", "assessment": "drops norm statements instead of keeping them; compliance stays uncheckable (13/36 violated the existing rule)"},
+    {"id": "B-operation-filter", "description": "Analysis-time filter dropping START", "assessment": "rejected: drops the only attested START, keeps 3 non-START norm statements; k stays SUPPORTED and h WEAK, both wrong on audited classes"}
+  ],
+  "necessity_argument": {
+    "label": "INFERENCE",
+    "claim": "Recording the distinction is necessary; placing it in the schema rather than an overlay is a governance choice",
+    "verdict_dependence": "k SUPPORTED→0, s SUPPORTED→0, h WEAK→0 once the distinction is applied",
+    "not_implicit_in_v1": [
+      "genre/speech_act: ADOPT R-91 (act) and START 7C R-58 (norm) both register-row/performed",
+      "speech_act: REGISTER R-90 (act) and ASSIGN retired R-90 (norm) both session-log/reported, same cluster",
+      "outcome+ground: ADOPT R-91 and START 7C R-58 both REFUSED+RULE",
+      "o=START: git 6a67da5d7 (act) vs R-58 (norm)",
+      "s predicts START outcome only by construction (D9)"
+    ],
+    "filter_argument": "a v1 analysis-time filter equals r2 only if it consumes a per-record label that v1 lacks, i.e. the audit classes = the r2 field stored elsewhere",
+    "counter_argument": "v1 §1 already says 'one historical act (never one textual mention)'; the defect may be enforcement, not schema — tested by falsification criterion F1"
+  },
+  "falsification_criteria": [
+    {"id": "F1", "shows": "r2 unnecessary", "observation": "a blind coder using v1 §1 alone codes (almost) no norm statements as acts"},
+    {"id": "F2", "shows": "r2 unnecessary", "observation": "a rule over v1 fields reproduces the audit classes on all 36 records (current candidates all have counterexamples)"},
+    {"id": "F3", "shows": "r2 wrong", "observation": "blind inter-coder agreement on observation_type below a threshold preset by the human"},
+    {"id": "F4", "shows": "r2 wrong", "observation": "rows that are both norm and act are frequent enough that a single type misrepresents them"},
+    {"id": "F5", "shows": "r2 wrong", "observation": "UNKNOWN takes a large share of records on new sources"},
+    {"id": "F6", "shows": "r2 unnecessary for inference", "observation": "new execution records match permissions record-by-record (norms a valid proxy); the one attested START so far points the other way (WP-4B blocked per R-77; intra-day order UNKNOWN)"}
+  ],
+  "options": [
+    {"id": "A", "name": "Adopt minimal r2", "consequence": "schema version bump; 21 auto / 11 blind / 1 human / 3 UNKNOWN; core a SUPPORTED (caveated), e WEAK, c coarse, k/s/h NOT DEMONSTRATED on acts; NORM dataset kept and reported separately; conflation cannot recur silently"},
+    {"id": "B", "name": "Smaller: v1 + attestation overlay", "consequence": "same verdicts, no schema change; coders using SCHEMA-v1 alone will reproduce the error; norm records keep a misleading outcome value"},
+    {"id": "C", "name": "Do not adopt", "consequence": "k and s stay SUPPORTED on permission statements against both reconciled audits; D9 circularity remains; every result needs a caveat; later data not comparable with audited counts"}
+  ]
+}

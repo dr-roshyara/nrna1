@@ -1,0 +1,59 @@
+{
+ "collision_groups": [
+  {
+   "fields": [
+    "REGISTER",
+    "S0804-L576",
+    "UNK"
+   ],
+   "ids": [
+    "E06",
+    "E07"
+   ],
+   "cued_descriptions": [
+    "REGISTER operational acceptance (R-90)",
+    "REGISTER constitutional decision (rule)"
+   ]
+  },
+  {
+   "fields": [
+    "OPEN-WORK",
+    "R-60",
+    "WP-7B-R1"
+   ],
+   "ids": [
+    "E08",
+    "E09"
+   ],
+   "cued_descriptions": [
+    "OPEN-WORK by a recording note (R-60)",
+    "OPEN-WORK by a ruling (R-60 refiled)"
+   ]
+  },
+  {
+   "fields": [
+    "RAISE",
+    "R-36",
+    "AST-013"
+   ],
+   "ids": [
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19",
+    "E20",
+    "E21"
+   ],
+   "cued_descriptions": [
+    "RAISE promoted #2",
+    "RAISE promoted #3",
+    "RAISE promoted #9",
+    "RAISE promoted #10",
+    "RAISE not promoted #5",
+    "RAISE not promoted #14",
+    "RAISE not promoted #17"
+   ]
+  }
+ ]
+}

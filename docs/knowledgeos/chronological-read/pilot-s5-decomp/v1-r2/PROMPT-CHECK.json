@@ -1,0 +1,46 @@
+{
+ "passed": true,
+ "prereg_commit": "2ffa374a286d329b1cc78aad9006e263cb706c2f",
+ "prompts": {
+  "PX0108-A01": {
+   "commands": 19,
+   "sha256": "4ce8b2b74cf0032048260b2d97672abecf9809bddd1e99f55a46215ec7d1ebe4",
+   "violations": []
+  },
+  "PX0108-A02": {
+   "commands": 19,
+   "sha256": "9d4ce4533bcb39215738acb5bf84b369514453186b062fc3c76cdb20b82034f3",
+   "violations": []
+  },
+  "PX0108-U01": {
+   "commands": 7,
+   "sha256": "9d778e309840f84dac70fcbfe0bb60a3e8e04f87ca9de0a6abfc9b28f906c86f",
+   "violations": []
+  },
+  "PX0108-U02": {
+   "commands": 14,
+   "sha256": "583d0e38e5ba4c4447618057a5123fb2f0ac03d47a367475d357896e017952a0",
+   "violations": []
+  },
+  "PX0108-U03": {
+   "commands": 7,
+   "sha256": "12e193101f0cc1acd2c2c6bed2ee1ab0abac55b6925fcd085b12731754e4bd5d",
+   "violations": []
+  },
+  "PX0108-U04": {
+   "commands": 14,
+   "sha256": "d80a32cad33ca695054c784dfe4282755bd773805c4d3532814504a7c0fdb0ac",
+   "violations": []
+  },
+  "PX0108-U05": {
+   "commands": 7,
+   "sha256": "ac979590526eaf884e14b135728a3c361f19de633005003fd0d12dea96e42fe2",
+   "violations": []
+  },
+  "PX0108-U06": {
+   "commands": 14,
+   "sha256": "dd9b127a1250de7ebf2c04ab61dea61afd1d1c4ac55c242137231d2db5594b39",
+   "violations": []
+  }
+ }
+}

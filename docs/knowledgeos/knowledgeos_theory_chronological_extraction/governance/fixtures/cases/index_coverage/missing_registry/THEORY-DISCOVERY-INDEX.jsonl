@@ -1,0 +1,2 @@
+{"file_id":"F0001","candidate_theory_bearing":true,"signals_found":["definition"]}
+{"file_id":"F0002","candidate_theory_bearing":false,"why":"contains only a build log of timestamps with no propositional content","confidence":"HIGH"}

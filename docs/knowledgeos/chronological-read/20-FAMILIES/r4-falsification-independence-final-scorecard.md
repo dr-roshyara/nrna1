@@ -1,0 +1,56 @@
+# r4-falsification-independence-final-scorecard
+
+**Scope(s):** THEORY-LEVEL · **Row count:** 7 ·
+**Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** "4 destroyed, 2 partial, 6 survive"; "4 of 5 survivors independent"
+**Aliases:** "R4 deliverable"
+**Candidate group membership (NOT an identity claim):**
+- G0448: explicit agent-stated uncertainty that this label POSSIBLY relates to `gita-lens-final-scorecard-five-of-seven-corrected` (batch B0050). The normalization note describes this label as the R4 deliverable mandated by the Step 286 programme — a completed falsification matrix over 12 hypotheses (4 destroyed including one mis-mapping, 2 partial, 6 survive) and an independence test over the 5 clean survivors (4 of 5 independently re-derivable from KnowledgeOS alone; only kshetra/kshetra-jna and Sanjaya are not independent, both because they pre-date this research programme), closing with final verdicts for 14 total hypotheses and the explicit statement that no R7 was awarded and nothing is promoted to canon. Relationship not yet decided (P3).
+
+## Sources (how this label entered the ledger)
+- PROPOSAL, batch B0050, scope THEORY-LEVEL: "The R4 deliverable mandated by the Step 286 programme (S2062/S2066): a completed falsification matrix over 12 hypotheses (score: 4 destroyed including one mis-mapping, 2 partial, 6 survive) and an independence test over the 5 clean survivors (4 of 5 independently re-derivable from KnowledgeOS alone; only kshetra/kshetra-jna and Sanjaya are NOT independent, both because they were already present in the corpus/architecture before this research programme began), closing with final verdicts (R2/R4/R5/R6/RX) for 14 total hypotheses and the explicit statement that no R7 was awarded and nothing is promoted to canon (R6/R7 != Canon)." (relation_to_existing: POSSIBLY:gita-lens-final-scorecard-five-of-seven-corrected)
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S2069 §"Score: 4 destroyed (incl. one MIS-MAPPING) · 2 partial · 6 survive."]
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: [S2069 §"Final verdicts: H-K03 R5; H-K06 R6; H-K11 R6; H-K08 R6; H-K09 R4; H-K10 R4; H-K06f R4; H-K16 Sañjaya R5 (closes the (W,Ω) structural gap); H-K13 R4; H-K12 yoga/iteration R2; GK-01 Kṛṣṇa→Ω R2 (NO, E-10 blocks); H-K04b universal knower RX; H-K05 Ātman RX; Θ-algebra RX. R6≠Canon and R7≠Canon. Nothing above is promoted. No R7 was awarded."]
+
+## Lifecycle
+last_seen: S2084. Candidate lifecycle: DORMANT. Evidence: no retraction, no superseding row, no self-contradiction flag; DORMANT here is a heuristic based on how long ago (by source_id ordering) this label was last touched, not a confirmed retirement — the rows themselves describe this as the deliberate, definitive close-out of the programme, so DORMANT is consistent with (though not proof of) that closure.
+
+## Completeness roll-up
+
+| Dimension | Status | Source IDs |
+|---|---|---|
+| purpose_rationale | PRESENT | S2069, S2077 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | NOT-EVIDENCED-IN-CAPTURE | — |
+| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |
+| invariants | NOT-EVIDENCED-IN-CAPTURE | — |
+| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S2069, S2076, S2084 |
+| examples | NOT-EVIDENCED-IN-CAPTURE | — |
+| warnings | NOT-EVIDENCED-IN-CAPTURE | — |
+| experiments | PRESENT | S2069 |
+| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |
+
+## Rationale
+This label's central interpretive conclusion is that the overwhelming majority of surviving Gita–KnowledgeOS correspondences are independently re-derivable corroborations, not foundational contributions: four of the five clean survivors are cases of the Gita corroborating what KnowledgeOS had already derived on its own, which the report itself judges (per its own §18) "a stronger scientific result than claiming that KnowledgeOS was derived from the Gita." The two apparent exceptions — kṣetra/kṣetra-jña and Sañjaya — are found NOT independent, but specifically because both constructs were already present in the corpus/architecture *before* this research programme began, meaning the single genuine philosophical contribution to KnowledgeOS predates the programme and had already been carrying an [E] grade in FA-4 the whole time [S2069]. A companion synthesis row organizes the accumulated R1–R5 findings into a four-category taxonomy — independent convergence, existing-construct-with-correspondence, useful correction, and rejected metaphysical projection — judged "a much stronger scientific position than trying to force a complete Gita ontology into KnowledgeOS" [S2077]. The programme closes with an explicit statement that nothing is promoted to canon and no R7 (governance-candidate tier) was awarded [S2069].
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE.
+
+## All rows (source_id order)
+- [S2069] types=[RESTATEMENT] scope=THEORY-LEVEL — "States the top-line quantitative falsification-matrix score across all 12 tested hypotheses/mappings: 4 destroyed (incl. one MIS-MAPPING), 2 partial, 6 survive." (anchor: "Score: 4 destroyed (incl. one MIS-MAPPING) · 2 partial · 6 survive.")
+- [S2069] types=[EXPERIMENTAL-RESULT] scope=OBJECT — "Runs the independence test on all 5 clean survivors: field/knower is found NOT independent because it entered the architecture through the very same Sanskrit lineage being tested (a genuine, singular exception, not corroboration); the remaining four (action/result, non-attachment, Sarathi guidance-vs-authority, and the 4-stage buddhi model) are all found independently derivable from KnowledgeOS's own prior formal/architectural results (typing rules, admissibility law, the AP-1 authority principle with its 132/132 humanActRef evidence, and existing observation/decision distinctions)." (anchor: "H-K03: [S] Ch.13 field/knower; KnowledgeOS→H: FA-4 records Kṣetrajña with the SAME Sanskrit lineage on both sides, grade [E] — NOT INDEPENDENT ... H-K06/H-K11/H-K08/H-K09: all INDEPENDENT ...")
+- [S2069] types=[ANALYSIS] scope=THEORY-LEVEL (co-labeled with `gita-lens-final-scorecard-five-of-seven-corrected`) — "The report's central interpretive conclusion: the overwhelming majority of surviving Gita-KnowledgeOS correspondences are independently re-derivable corroborations, not foundational contributions, and even the two apparent exceptions (field/knower, Sanjaya/observation-layer) turn out to have entered the corpus/architecture BEFORE this specific research programme began — meaning this entire multi-document Step-285/286 research effort discovered essentially zero genuinely new philosophically-sourced KnowledgeOS content, only recovering/re-confirming what was already there." (anchor: "Four of five survivors are cases of the Gītā CORROBORATING what KnowledgeOS derived on its own. ...")
+- [S2069] types=[GOVERNANCE] scope=THEORY-LEVEL (co-labeled with `r0-rx-research-verdict-scale`) — "Delivers the final closed-form verdict table across 14 hypotheses/mappings using the previously-defined R0-RX scale, explicitly reiterating that even the highest awarded grades (R5, R6) do not constitute canonization and that no hypothesis reached the R7 governance-candidate tier — the definitive close-out of the entire Gita-to-KnowledgeOS research programme within this batch." (anchor: "Final verdicts: H-K03 R5; H-K06 R6; H-K11 R6; H-K08 R6; H-K09 R4; H-K10 R4; H-K06f R4; H-K16 Sañjaya R5 ...; H-K13 R4; H-K12 yoga/iteration R2; GK-01 Kṛṣṇa→Ω R2 (NO, E-10 blocks); H-K04b universal knower RX; H-K05 Ātman RX; Θ-algebra RX. R6≠Canon and R7≠Canon. Nothing above is promoted. No R7 was awarded.")
+- [S2076] types=[RESTATEMENT] scope=THEORY-LEVEL — "Restates the programme's governing independence question as now answered, per-hypothesis, across the accumulated research: 4 hypotheses corroborated, 2 found to be corpus-native (not actually philosophically sourced), and 3 destroyed (RX) — a slightly different tally cut than the R4 report's 4-destroyed/2-partial/6-survive breakdown (S2069), since it groups by the independence-test outcome rather than the falsification-test outcome." (anchor: "'Does the Gītā distinction correspond to a property KnowledgeOS independently requires?' — the governing question — ANSWERED per hypothesis: 4 yes (corroboration) · 2 no (both corpus-native, not philosophical) · 3 RX.")
+- [S2077] types=[ANALYSIS] scope=THEORY-LEVEL — "Synthesizes the accumulated R1-R5 findings into a clean four-category taxonomy (independent convergence / existing-construct-with-correspondence / useful correction / rejected metaphysical projection), judged 'a much stronger scientific position than trying to force a complete Gita ontology into KnowledgeOS.'" (anchor: "Independent convergence: Action/result, outcome independence, guidance/authority — Gītā corroborates KOS. Existing KOS construct with Gītā correspondence: Kṣetra/Kṣetrajña, Sañjaya/Ω — Not independently derived from Gītā. Useful correction: Jñāna — Mapping to Knowledge destroyed. Rejected metaphysical projection: Kṛṣṇa=Ω, Knowledge Ātma, universal Kṛṣṇa-like knower — Must not enter architecture.")
+- [S2084] types=[RESTATEMENT] scope=THEORY-LEVEL — "States the dossier's final compliance-summary tally across all tested hypotheses, and closes with the observation that the single remaining open governance item is unrelated to the Gita research thread — the definitive numeric closure of the whole hypothesis-testing programme, consistent with but presented as a slightly different cut than the R4 report's 4-destroyed/2-partial/6-survive tally (S2069)." (anchor: "Result: 2 at R5 with genuine contribution (H-K03, H-K16 — both corpus-native) · 3 corroborations (H-K06/07, H-K11, H-K08) · 1 correction (H-K13) · 3 RX (universal knower, 𝒜_ātma, Θ_total). No canon touched. One governance question standing, and it is not a Gītā question.")
+
+## Notes for P3
+Seven rows across four documents, all dated 2026-08-31 and all belonging to the "Step 285/286" Gita-KnowledgeOS research programme's closing phase: S2069 (`R4-FALSIFICATION-INDEPENDENCE-REPORT.md`, 4 rows), S2076 (`02-GAP-UPDATE-FROM-HPA-REVIEW-D285-5.md`), S2077 (`20260831-190025_..._reviewer-a-senior-review...md`), S2084 (`03-D285-PROTOCOL-CONFORMANT-HYPOTHESIS-DOSSIER.md`). The three closing-tally rows (S2069/S2076/S2084) give three *different* numeric cuts of what is described as the same underlying result set (4-destroyed/2-partial/6-survive vs. 4-yes/2-no/3-RX vs. 2-R5/3-corroborations/1-correction/3-RX) — each source explicitly acknowledges it is a different grouping (falsification-outcome vs. independence-outcome vs. compliance-summary) of the same hypothesis set, not a contradiction; still, P3 may want to verify the three tallies are reconcilable line-by-line rather than merely narratively consistent. Two rows in this label (S2069's third and fourth rows) are cross-labeled with `gita-lens-final-scorecard-five-of-seven-corrected` and `r0-rx-research-verdict-scale` respectively — those are other labels' territory, not claimed here, just noted since the same row appears under multiple working_labels.

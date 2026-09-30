@@ -1,0 +1,645 @@
+{
+ "record": "R39-POINTER-LOCATE",
+ "pattern_exact": "R-39 is the precedent",
+ "pattern_equivalent": "R-39[^|\\n]{0,40}precedent|precedent[^|\\n]{0,40}R-39",
+ "files_considered": 20924,
+ "hits": [
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 7945,
+   "heading": [
+    7939,
+    "## Active Work (structured — hooks parse these `Key:` lines; keep the format)"
+   ],
+   "match": "R-39 precedent",
+   "exact": false,
+   "sha256": "a732b2e7c9ff97d28c673a15ae8d6423d05f0c15b63cca30d4eb628ec5e1e489",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": ".claude/MEMORY.md",
+   "line": 323,
+   "heading": [
+    317,
+    "## ✅ APPROVED (Chair disposition 2026-08-01, NOT yet minted as R-nn) + the STEWARDSHIP rou"
+   ],
+   "match": "PRECEDENT THAT SETTLES IT — R-39",
+   "exact": false,
+   "sha256": "8b52a42b44950508300dcde73aba6fb47b2edc1908f858094472019384b45db8",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": ".claude/MEMORY.md",
+   "line": 393,
+   "heading": [
+    387,
+    "## Engineering promotion rule (adopted 2026-08-01)"
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "8b52a42b44950508300dcde73aba6fb47b2edc1908f858094472019384b45db8",
+   "line_names_R69": false,
+   "class": "AMBIGUOUS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-11.md",
+   "line": 226,
+   "heading": [
+    222,
+    "### ARB approvals + two corrections: OQ-ENG-003 reframed; R-38 downgraded to consolidation"
+   ],
+   "match": "precedent — corrected within the row, no R-39",
+   "exact": false,
+   "sha256": "93d094829a90f603d6e022152c7d1b7b01ab76ce3c7c10a72a50de266953f430",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": ".claude/sessions/2026-07-26.md",
+   "line": 330,
+   "heading": [
+    327,
+    "## ARB final verdict on the consolidation: APPROVED — three forward observations recorded,"
+   ],
+   "match": "precedent):** R-39",
+   "exact": false,
+   "sha256": "5c5796787811c9abb5ede56ff079fb90695189e68ea7b5482e9d034e8c3957b1",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": ".claude/sessions/2026-07-28.md",
+   "line": 799,
+   "heading": [
+    797,
+    "### Method-stabilization direction AGREED (PA) — with one placement reconciliation recorde"
+   ],
+   "match": "R-39 normal bar · DR-4 precedent",
+   "exact": false,
+   "sha256": "adabea4766b8e4cf03995825918ddd6bceeb373c045d7ace5b2bc39652da8951",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": ".claude/sessions/2026-07-30.md",
+   "line": 201,
+   "heading": [
+    193,
+    "## DDD-Driven Architectural Implementation Protocol received (17 phases) — ADOPTED AS THE "
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "744b7d67c651f766c0a7bdad99af1cd015bb60cea31a75b8e6f92a4e8c7d7fff",
+   "line_names_R69": false,
+   "class": "AMBIGUOUS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-01.md",
+   "line": 678,
+   "heading": [
+    662,
+    "### ⚖️ Chair disposition — five approved, three held, and my strongest framing withdrawn"
+   ],
+   "match": "precedent I missed, and it is squarely on point: R-39",
+   "exact": false,
+   "sha256": "c487a68671dc16291ec94101709a5b3e68a647bb6875e741e7b00d5b4985c1f1",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": ".claude/sessions/2026-08-01.md",
+   "line": 690,
+   "heading": [
+    686,
+    "### 🧩 Classification ≠ placement — adopted, and both halves are already in the repository"
+   ],
+   "match": "R-39 as the governing precedent",
+   "exact": false,
+   "sha256": "c487a68671dc16291ec94101709a5b3e68a647bb6875e741e7b00d5b4985c1f1",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/pks/20260801_2231_pks_development_proposal.md",
+   "line": 597,
+   "heading": [
+    582,
+    "### Stage 1 — ⭐ The thinnest consuming slice: make PMR-10 executable *(days)*"
+   ],
+   "match": "R-39-is-the-precedent",
+   "exact": false,
+   "sha256": "c399b25e1037d47d83ea7199977dade12c06941e5713c33fc7fb1c87960cb1d9",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260801_2141_akt_part5_major_adrs_and_decisions.md",
+   "line": 59,
+   "heading": [
+    53,
+    "### 1.3 ⛔ LIVE DEFECT — the R-number range R-65..R-71 is double-spoken-for"
+   ],
+   "match": "R-39 is the governing precedent",
+   "exact": false,
+   "sha256": "963f06acadc53126c2d561d16e9ae29b012caab34769fe7515ec4cc8a07a6641",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260801_2210_akt_part8_current_programme_state.md",
+   "line": 216,
+   "heading": [
+    210,
+    "### 7.2 ⛔ Two live identifier collisions"
+   ],
+   "match": "R-39 is the governing precedent",
+   "exact": false,
+   "sha256": "5d774883c013eff8633c0ec55374d7f710bed5ce209536c5263add2f6b309984",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260801_2215_akt_part9_immediate_next_steps.md",
+   "line": 95,
+   "heading": [
+    88,
+    "### 3.2 ⛔ The R-number collision must reach C-4"
+   ],
+   "match": "R-39-is-the-precedent",
+   "exact": false,
+   "sha256": "fe4f792ebfe6ab8160b226c5121cf205f00875af0fbe1119fe6eb0cdaf3d3086",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "docs/implementation/KnowledgeOS_Development_Constitution.md",
+   "line": 156,
+   "heading": [
+    139,
+    "# Annex — Lineage (this binding restates; canonical homes govern on any conflict)"
+   ],
+   "match": "R-39 · AST-014 precedent",
+   "exact": false,
+   "sha256": "4ccf2215ebfaf47b2b04bcb2d6ff82e2ffa9ab7583f4477b34ed0b1b747642fc",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_III_Capability_Catalog.md",
+   "line": 41,
+   "heading": [
+    33,
+    "## 0A. ⛔ THE THIRD PMR-10 ESCAPE HAS OCCURRED — recorded 2026-08-02"
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "9020aad05430b577319f0ee621e20db36ab33d686aba2ac66c1fe7dabaecbbce",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_I_ARB_Review_Dossier.md",
+   "line": 95,
+   "heading": [
+    88,
+    "### DR-4 — Methodology Candidate standing (item 4)"
+   ],
+   "match": "R-39 single-context-exception precedent",
+   "exact": false,
+   "sha256": "6e0ccafbe2cc5c53963075cbf33c21cdbb21dd29ef7e1aae229ac9cc7df33df8",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_I_ARB_Rulings_Authority_Fidelity_Review.md",
+   "line": 114,
+   "heading": [
+    108,
+    "## 6. AF-4 — MINOR · Consequence Fidelity · an inference imported from a REJECTED option"
+   ],
+   "match": "R-39 single-context-exception precedent",
+   "exact": false,
+   "sha256": "f469a328c5fcafb389880bceb70e521a4b529cf50ac95d1977eb89f3f85599b2",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_I_ARB_Rulings_Authority_Fidelity_Review.md",
+   "line": 208,
+   "heading": [
+    201,
+    "## 11. Recommended dispositions — ACCEPT / REJECT / DEFER *(advisory; the Authority dispos"
+   ],
+   "match": "R-39's exception is *available* or merely *precedent",
+   "exact": false,
+   "sha256": "f469a328c5fcafb389880bceb70e521a4b529cf50ac95d1977eb89f3f85599b2",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "docs/implementation/Strategic_Discovery_Methodology_Candidate.md",
+   "line": 66,
+   "heading": [
+    60,
+    "## 7. Qualifying evidence required before candidacy"
+   ],
+   "match": "R-39 (single-context exception precedent",
+   "exact": false,
+   "sha256": "0ecf3c1b3b948a257e6e6534cb0e60a9d1efcafec6d21cf3d2332ca3ec6eb46e",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/F-GOVERNANCE-LOG.md",
+   "line": 1140,
+   "heading": [
+    1134,
+    "## F-LOG-0082 — L0-REL-03 executed: CAP-001 §9 (IdentifierIntegrity README L170–232) read "
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "1f301f69ed0b15ff0b84e3fa298b222aa1559f9f841400f9f607a58f33f19c9e",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/REPORT.md",
+   "line": 28,
+   "heading": [
+    15,
+    "## Evidence graph"
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "b790a8f32428c612c03157233536c3b01f7e58fd72d514454c9745c6759361b4",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/REPORT.md",
+   "line": 28,
+   "heading": [
+    15,
+    "## Evidence graph"
+   ],
+   "match": "R-39 is a precedent",
+   "exact": false,
+   "sha256": "b790a8f32428c612c03157233536c3b01f7e58fd72d514454c9745c6759361b4",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/REPORT.md",
+   "line": 46,
+   "heading": [
+    45,
+    "## Closed and not done"
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "b790a8f32428c612c03157233536c3b01f7e58fd72d514454c9745c6759361b4",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.json",
+   "line": 74,
+   "heading": null,
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "75b1cf5bfe8c4de73105e8ca9934d180446154b0b27cb7ed68fe02571fa33cf8",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.json",
+   "line": 80,
+   "heading": null,
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "75b1cf5bfe8c4de73105e8ca9934d180446154b0b27cb7ed68fe02571fa33cf8",
+   "line_names_R69": true,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.json",
+   "line": 86,
+   "heading": null,
+   "match": "R-39 is cited as a precedent",
+   "exact": false,
+   "sha256": "75b1cf5bfe8c4de73105e8ca9934d180446154b0b27cb7ed68fe02571fa33cf8",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.json",
+   "line": 86,
+   "heading": null,
+   "match": "R-39 as a precedent",
+   "exact": false,
+   "sha256": "75b1cf5bfe8c4de73105e8ca9934d180446154b0b27cb7ed68fe02571fa33cf8",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.json",
+   "line": 86,
+   "heading": null,
+   "match": "R-39 is a precedent",
+   "exact": false,
+   "sha256": "75b1cf5bfe8c4de73105e8ca9934d180446154b0b27cb7ed68fe02571fa33cf8",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.reject-1.json",
+   "line": 74,
+   "heading": null,
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "cc69bcece882d7bae5c05059bb250557f56bd1a563f2c91824cdd3c441ddc645",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.reject-1.json",
+   "line": 80,
+   "heading": null,
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "cc69bcece882d7bae5c05059bb250557f56bd1a563f2c91824cdd3c441ddc645",
+   "line_names_R69": true,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.reject-1.json",
+   "line": 86,
+   "heading": null,
+   "match": "R-39 is cited as a precedent",
+   "exact": false,
+   "sha256": "cc69bcece882d7bae5c05059bb250557f56bd1a563f2c91824cdd3c441ddc645",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.reject-1.json",
+   "line": 86,
+   "heading": null,
+   "match": "R-39 as a precedent",
+   "exact": false,
+   "sha256": "cc69bcece882d7bae5c05059bb250557f56bd1a563f2c91824cdd3c441ddc645",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/evidence_phase/runs/L0-REL-03/evidence.reject-1.json",
+   "line": 86,
+   "heading": null,
+   "match": "R-39 is a precedent",
+   "exact": false,
+   "sha256": "cc69bcece882d7bae5c05059bb250557f56bd1a563f2c91824cdd3c441ddc645",
+   "line_names_R69": false,
+   "class": "OUR OWN RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/pks/2026-08-02-operational-workflow-assessment.md",
+   "line": 80,
+   "heading": [
+    64,
+    "## 3. Observed usage during real PublicDigit work"
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "c07a8c663be2c0e46f0149ed15fd7e0d141365261e523b75c5b762c27dcb09ad",
+   "line_names_R69": false,
+   "class": "AMBIGUOUS"
+  },
+  {
+   "path": "engineering/knowledge/methodology/Layer_Verification_Rule.md",
+   "line": 182,
+   "heading": [
+    170,
+    "## 6. Adoption"
+   ],
+   "match": "R-39** (precedent",
+   "exact": false,
+   "sha256": "8acc1f0a830fb9455573c1cd015cabc135972edfb3d9c16e9eafd8e207240270",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-arb-session-decision-pack.md",
+   "line": 88,
+   "heading": [
+    69,
+    "### ARB Transition Authorization — [DATE]"
+   ],
+   "match": "precedent set by R-39",
+   "exact": false,
+   "sha256": "75506ce3abe4af6611ac26a96d8a0901d9f51735ab770ac79d478984d71215ec",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-arb-session-decision-pack.md",
+   "line": 137,
+   "heading": [
+    119,
+    "## Completion criteria — self-assessed"
+   ],
+   "match": "R-39** (rulings-register precedent",
+   "exact": false,
+   "sha256": "75506ce3abe4af6611ac26a96d8a0901d9f51735ab770ac79d478984d71215ec",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-arb-transition-authorization-package.md",
+   "line": 231,
+   "heading": [
+    226,
+    "## Handover"
+   ],
+   "match": "R-39 precedent",
+   "exact": false,
+   "sha256": "51fde8c619aeba69d01570d454166e5f767043037118e8950d3defa74a53fc08",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-arb-transition-authorization-package.md",
+   "line": 256,
+   "heading": [
+    236,
+    "## Package completion status"
+   ],
+   "match": "R-39** (rulings-register precedent",
+   "exact": false,
+   "sha256": "51fde8c619aeba69d01570d454166e5f767043037118e8950d3defa74a53fc08",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-arb-transition-authorization-record.md",
+   "line": 134,
+   "heading": [
+    119,
+    "## 6. Filing"
+   ],
+   "match": "R-39** (rulings-register precedent",
+   "exact": false,
+   "sha256": "a55d5fb59faba8aec07fc12c8d144f3c474685a67b1e5e0a810af311633e713a",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-classification-model-approval-record.md",
+   "line": 99,
+   "heading": [
+    93,
+    "## 4. Draft ruling text — ready to append on the word \"issue\""
+   ],
+   "match": "R-39 as governing precedent",
+   "exact": false,
+   "sha256": "729f7bbeb63d126652f972570a77ecc15a3ddad80728fd91b65c40fb6ffd38c0",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-classification-model-approval-record.md",
+   "line": 113,
+   "heading": [
+    101,
+    "## 5. Deliverables authorized on approval — prepared, not started"
+   ],
+   "match": "R-39 / proposed R-69** (precedent",
+   "exact": false,
+   "sha256": "729f7bbeb63d126652f972570a77ecc15a3ddad80728fd91b65c40fb6ffd38c0",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "line": 17,
+   "heading": [
+    8,
+    "## 1. Six approvals — recorded, with ruling text drafted so issuance is one word"
+   ],
+   "match": "R-39 is the governing precedent",
+   "exact": false,
+   "sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "line": 27,
+   "heading": [
+    8,
+    "## 1. Six approvals — recorded, with ruling text drafted so issuance is one word"
+   ],
+   "match": "R-39 is the governing precedent",
+   "exact": false,
+   "sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "line": 111,
+   "heading": [
+    103,
+    "## 6. One observation about this whole exchange"
+   ],
+   "match": "R-39 / proposed R-69** (precedent",
+   "exact": false,
+   "sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "line_names_R69": true,
+   "class": "PRIMARY SOURCE CANDIDATE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-knowledge-lifecycle-assessment.md",
+   "line": 108,
+   "heading": [
+    96,
+    "## 5. Recommendation — one narrow thing, and the ARB's to take"
+   ],
+   "match": "R-39 remains the honest precedent",
+   "exact": false,
+   "sha256": "ce32560fa0cd678710e316327422d14b67083748b36cccf2cb3830d8be7667a1",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-placement-policy-assessment.md",
+   "line": 84,
+   "heading": [
+    70,
+    "## 5. Recommendation"
+   ],
+   "match": "R-39** (the recorded exception precedent",
+   "exact": false,
+   "sha256": "dabb7f2a2d6ce62fba6828334517d621a290b8317b4d2e850d47016a2b21a3cf",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-promotion-review.md",
+   "line": 45,
+   "heading": [
+    36,
+    "## ⚠️ The placement question — for the ARB, not for me"
+   ],
+   "match": "R-39**. That is the honest precedent",
+   "exact": false,
+   "sha256": "abd7b8d6855b3be20bcde76e0c503c80db962bab347e53df83efc517d68d418d",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-promotion-review.md",
+   "line": 72,
+   "heading": [
+    66,
+    "## What I did not do"
+   ],
+   "match": "R-39** (the early-promotion precedent",
+   "exact": false,
+   "sha256": "abd7b8d6855b3be20bcde76e0c503c80db962bab347e53df83efc517d68d418d",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-es-amendment-authority-determination.md",
+   "line": 160,
+   "heading": [
+    134,
+    "## 5. Deliverable 5 — Required Authorization"
+   ],
+   "match": "precedent**) · **R-39",
+   "exact": false,
+   "sha256": "6d7762393214662bbe7ebadfb1d418d1e8f923354e4cfc4e2dc9d2f762b0fe9b",
+   "line_names_R69": false,
+   "class": "SECONDARY REFERENCE"
+  },
+  {
+   "path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "line": 191,
+   "heading": [
+    170,
+    "## 9. Capability Evidence Record"
+   ],
+   "match": "R-39 is the precedent",
+   "exact": true,
+   "sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "line_names_R69": true,
+   "class": "ORIGIN (the pointer itself; read under L0-REL-03)"
+  }
+ ],
+ "classification_rule": "OUR OWN RESEARCH ARTIFACT = path under the F-lane dir; PRIMARY SOURCE CANDIDATE = matching line also names R-69 (the identifier whose 'old sense' the CAP-001 §9 pointer quotes); AMBIGUOUS = exact phrase without R-69; SECONDARY REFERENCE = equivalent phrasing without R-69",
+ "declared_exception": "IdentifierIntegrity/README.md L191 is the originating pointer, reclassified ORIGIN",
+ "timestamp_utc": "2026-09-27T05:09:03Z",
+ "method": "git ls-files; binary skipped; regex over each line; only the matched phrase (<=120 chars) and the nearest preceding heading are recorded"
+}

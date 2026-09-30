@@ -1,0 +1,698 @@
+{
+ "batch_id": "PV_batch3",
+ "pairs": [
+  {
+   "pv_id": "PV0051",
+   "object_a": "step178-decision-as-constrained-optimization",
+   "object_b": "step178-epistemic-vs-governance-functions",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014843_step_178_the-what-should-we-do-experiment.md",
+     "source_id": "S1371",
+     "row_label": "step178-decision-as-constrained-optimization",
+     "original_text": "Models governance as constrained optimization a*=argmax_{a in A} U(a|K,C,P) subject to Constraints(a)=true, not claiming real governance literally optimizes but demonstrating why K alone cannot fix the action (different utility functions over the same K yield different optima). Formalizes A_allowed={a in A | Constraints(a)=true} with Authority itself as a constraint (Authority(a,Action)=false excludes Action from A_allowed, so Capability alone is insufficient), yielding a richer governance pipeline Knowledge->ApplicablePolicies->Constraints->Alternatives->Evaluation->Decision->Authorization. Notes real organizations do not always maximize a single utility (politics, strategic commitments, fairness, legal/ethical obligations, risk appetite), so the true architectural invariant is 'a legitimate decision must be explainable against its applicable governance context', not mathematical optimality.",
+     "dependency_value": "step178-epistemic-vs-governance-functions",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "step178-epistemic-vs-governance-functions",
+     "target_source_id": "S1371",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260829-014843_step_178_the-what-should-we-do-experiment.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0052",
+   "object_a": "kos-emergence-systemic-risk-collective-correctness",
+   "object_b": "kos-organizational-agency-multi-agent-boundary",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121113_step-078-organizational-agency-and-the-multi-agent-boundary.md",
+     "source_id": "S0977",
+     "row_label": "kos-organizational-agency-multi-agent-boundary",
+     "original_text": "Models multi-agent coordination as a game where each A_i optimizes U_i(a_1,...,a_n), so a locally optimal action may produce a globally poor result. Experiment 21: Agent A optimizes DeploymentSpeed, Agent B optimizes TestingThoroughness, both independently, and SystemPerformance decreases because they interfere -- expected CoordinationFailure -- PASS. Introduces organizational utility U_org(a_1,...,a_n) distinct from individual U_i, evaluated by governance, without requiring every agent to share the same objective. Experiment 22: Agent A maximizes local utility U_A=100 but U_org becomes 20; expected governance should prioritize the authorized organizational objective over the agent's private objective -- PASS. Gives a nested governance-scope goal hierarchy AgentGoal ⊆ DomainGoal ⊆ OrganizationGoal (nested scope, not necessarily nested utility values). Experiment 23: agent goal conflicts with organizational policy -- expected Policy wins within the governed scope -- PASS.",
+     "dependency_value": "kos-emergence-systemic-risk-collective-correctness",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "kos-emergence-systemic-risk-collective-correctness",
+     "target_source_id": "S0976",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-121150_step-079-emergence-systemic-risk-and-collective-correctness.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0053",
+   "object_a": "KnowledgeOS",
+   "object_b": "epistemic-vs-practical-decision-separation",
+   "signals": [
+    {
+     "signal_type": "LINEAGE_CLAIM",
+     "source_file": "docs/knowledgeos/brainstorming/kernel/20260824-115021-ammerman-singer-belief-knowledge-and-truth-anthology-extraction.md",
+     "source_id": "S0462",
+     "row_label": "epistemic-vs-practical-decision-separation",
+     "original_text": "Sharpens the previous KnowledgeOS definition to explicitly include questions/beliefs/inquiry/action and the non-collapse of epistemic status into practical decision or representation.",
+     "dependency_value": null,
+     "lineage_claim_kind": "SOURCE-CLAIMED-REFINEMENT",
+     "lineage_claim_target": "the prior KnowledgeOS working definition",
+     "lineage_claim_quote": "Our previous definition was approximately... I would now sharpen it",
+     "target_label": "KnowledgeOS",
+     "target_source_id": "S0001",
+     "target_file": "docs/knowledgeos/KnowledgeOS_Viewpoint_Ownership_Discovery.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0054",
+   "object_a": "decision-readiness-stop-condition-model",
+   "object_b": "decision-state-presentation-projection-model",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185755_question-24-presenting-the-decision-ready-state-to-the-knower.md",
+     "source_id": "S0805",
+     "row_label": "decision-state-presentation-projection-model",
+     "original_text": "Original Q24 definition (later corrected): a decision-ready state IS the Knowledge State presented to the Knower in comprehensible, actionable, faithful form. Key boxed claims: Presentation ≠ Dump of Raw Data; Presentation = Structured, Epistemically Qualified, Purpose-Tailored View; Presentation must preserve the epistemic status of each assertion.",
+     "dependency_value": "decision-readiness-stop-condition-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "decision-readiness-stop-condition-model",
+     "target_source_id": "S0804",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185636_question-23-when-to-stop-investigating-and-present-a-decision.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185755_question-24-presenting-the-decision-ready-state-to-the-knower.md",
+     "source_id": "S0805",
+     "row_label": "decision-state-presentation-projection-model",
+     "original_text": "Fundamental correction: presentation must not become part of the epistemic state itself; it is a projection for a Knower/purpose/decision/format. Pipeline corrected to S_t --evaluate--> D_t --project--> P_t, where S_t is the complete internal state, D_t the decision-ready assessment/posture, P_t the human-facing projection. Establishes P_t ≠ D_t and P_t ≠ S_t: presentation is a view/projection, not another knowledge object.",
+     "dependency_value": "decision-readiness-stop-condition-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "decision-readiness-stop-condition-model",
+     "target_source_id": "S0804",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185636_question-23-when-to-stop-investigating-and-present-a-decision.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185755_question-24-presenting-the-decision-ready-state-to-the-knower.md",
+     "source_id": "S0805",
+     "row_label": "decision-state-presentation-projection-model",
+     "original_text": "Corrected definition: 'A decision-ready state is an evaluated system state in which the knowledge relevant to a specific decision satisfies the applicable decision criteria. Presentation is the projection of that state into a form usable by the Knower.' Formalized as DecisionReady(S_t,D,P,C) followed by P_t = Present(DecisionReadyState, Knower, Format), preserving the Q23 distinction.",
+     "dependency_value": "decision-readiness-stop-condition-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "decision-readiness-stop-condition-model",
+     "target_source_id": "S0804",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185636_question-23-when-to-stop-investigating-and-present-a-decision.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185755_question-24-presenting-the-decision-ready-state-to-the-knower.md",
+     "source_id": "S0805",
+     "row_label": "decision-state-presentation-projection-model",
+     "original_text": "Revised mathematical model: D_t = Evaluate(S_t,P,D,C,Policy); P_t = Π(S_t,D_t,N,F); with P_t ≢ S_t and P_t ≢ D_t, and P_t defined as 'human-oriented projection of S_t under D_t'.",
+     "dependency_value": "decision-readiness-stop-condition-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "decision-readiness-stop-condition-model",
+     "target_source_id": "S0804",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-185636_question-23-when-to-stop-investigating-and-present-a-decision.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0055",
+   "object_a": "step185-assertion-tuple-and-two-time-dimensions",
+   "object_b": "step188-four-time-dimensions-and-bitemporal-core",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260829-082439_step_188_the-hindsight-contamination-test.md",
+     "source_id": "S1388",
+     "row_label": "step188-four-time-dimensions-and-bitemporal-core",
+     "original_text": "Refines the temporal model to four timestamps per evidence item -- T_valid, T_observed, T_known, T_recorded -- worked through a four-date security-compromise example, noting a conventional created_at field loses this distinction. Concludes the semantic core only needs to be bitemporal (ValidTime, KnowledgeTime), with the other two timestamps potentially treated as provenance metadata rather than domain-model core -- 'we shouldn't put every timestamp into the domain model merely because mathematics allows it.'",
+     "dependency_value": "step185-assertion-tuple-and-two-time-dimensions",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "step185-assertion-tuple-and-two-time-dimensions",
+     "target_source_id": "S1379",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260829-020511_step_185_change-correction-refinement-or-recontextualization.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0056",
+   "object_a": "sigma-derivation-from-step272-six-sources",
+   "object_b": "step-271-policy-semantic-minimality-unclosed",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/step-272/04-ARCHITECT-ASSESSMENT-OF-THE-MANDATE.md",
+     "source_id": "S1798",
+     "row_label": "step-271-policy-semantic-minimality-unclosed",
+     "original_text": "Verdict on the Step-272 mandate: methodologically excellent (its freeze/verify-premise gates, refusal of vocabulary-first design, axis-necessity-by-removal method, and 'no new theory unless forced' discipline are all correct), but strategically stale (its premise that Sigma is the frontier is falsified by Step 275 already having performed the Sigma derivation) and structurally over-scoped (would add a 13th ~12-document package to a tree already holding 238 verification documents).",
+     "dependency_value": "sigma-derivation-from-step272-six-sources",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "sigma-derivation-from-step272-six-sources",
+     "target_source_id": "S1798",
+     "target_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/step-272/04-ARCHITECT-ASSESSMENT-OF-THE-MANDATE.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0057",
+   "object_a": "KnowledgeOS",
+   "object_b": "knowledgeos-final-definition",
+   "signals": [
+    {
+     "signal_type": "LINEAGE_CLAIM",
+     "source_file": "docs/knowledgeos/brainstorming/20260822-0302-knowledgeos-final-character-synthesis.md",
+     "source_id": "S0232",
+     "row_label": "knowledgeos-final-definition",
+     "original_text": "Gives a two-tier final definition: a first-pass definition ('KnowledgeOS is an epistemic reasoning substrate that preserves, evaluates, evolves, and governs the conditions required for trustworthy knowledge discovery') and a deeper restatement (the anchor); framed as a refinement of prior definitions from earlier documents (e.g. S0226's 'constitutional epistemic type system' definition).",
+     "dependency_value": null,
+     "lineage_claim_kind": "SOURCE-CLAIMED-REFINEMENT",
+     "lineage_claim_target": "prior KnowledgeOS definitions from earlier documents in the extraction series (unnamed within this file)",
+     "lineage_claim_quote": "# The Essence of KnowledgeOS ## Final Definition",
+     "target_label": "KnowledgeOS",
+     "target_source_id": "S0001",
+     "target_file": "docs/knowledgeos/KnowledgeOS_Viewpoint_Ownership_Discovery.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0058",
+   "object_a": "adaptive-inference-fabric-egaif",
+   "object_b": "progressive-epistemic-computation-principle",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/kernel/20260824-141231-bishop-prml-adaptive-inference-fabric-beyond-hmm-hsmm-hybrid.md",
+     "source_id": "S0471",
+     "row_label": "adaptive-inference-fabric-egaif",
+     "original_text": "Variational inference's monitorable lower bound makes approximation itself auditable (worked YAML: method, approximation family, lower_bound value, convergence iterations/delta, monotonic_bound validation flag), strengthening the prior 'optimization may not erase uncertainty' principle into an explicit bound-monitor-validate pipeline.",
+     "dependency_value": "progressive-epistemic-computation-principle",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "progressive-epistemic-computation-principle",
+     "target_source_id": "S0467",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260824-131125-hybrid-evidence-gated-temporal-inference-architecture.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0059",
+   "object_a": "kos-model-breaking-adversarial-audit",
+   "object_b": "kos-reference-state-machine",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-113826_step-056-build-and-execute-the-knowledgeos-reference-machine.md",
+     "source_id": "S0951",
+     "row_label": "kos-reference-state-machine",
+     "original_text": "Experiment 2 unsupported AI claim (Provenance(C_AI)=empty): ValidateClaim(C_AI)=Rejected -- PASS. Experiment 3 AI hallucination with fake confidence (P(C)=0.99, no admissible evidence): 0.99 does not imply Validated -- PASS, 'one of the strongest properties of the architecture'. Experiment 4 contradictory evidence (E1|=C, E2|=not-C): represented as Conflict(C), not silently resolved -- PASS. Experiment 5 stale knowledge (D1 created with K_t1, knowledge later updated to K_t2): Basis(D1) remains K_t1 -- PASS, 'confirms historical decision integrity'. Experiment 6 unauthorized execution (Authorized(D2)=False): Execute(D2) rejected, no action recorded as executed -- PASS. Experiment 7 unknown authorization (Authorization(D3)=Unknown): execution rejected/blocked, and Unknown != Denied -- PASS. Experiment 8 duplicate action (same ActionId=x submitted twice): EffectiveExecution(x)=1, provided the action contract is declared idempotent -- PASS. Experiment 9 out-of-order events (E2 before E1 when E1≺E2 required): system must not blindly apply E2 (buffer/reject/reconcile) -- PASS, 'invalid order cannot silently corrupt state'. Experiment 10 partial failure (action affects System_A successfully, System_B fails): Outcome=Partial, not Success -- PASS. Experiment 11 unknown outcome (response lost after action transmitted): Outcome=Unknown, not Failure -- PASS. Experiment 12 historical replay (Replay(H)=X_n for deterministic domain state) -- PASS. Experiment 13 replay must not repeat side effects (ReplayState != ReplaySideEffects; no resending email/payment) -- PASS. Experiment 14 future-knowledge contamination (E_future at t2>t1 must not enter Basis(D1) created at t1) -- PASS.",
+     "dependency_value": "kos-model-breaking-adversarial-audit",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "kos-model-breaking-adversarial-audit",
+     "target_source_id": "S0946",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-113416_step-050-formal-consistency-audit-attempting-to-break-the-knowledgeos-model.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-113826_step-056-build-and-execute-the-knowledgeos-reference-machine.md",
+     "source_id": "S0951",
+     "row_label": "kos-reference-state-machine",
+     "original_text": "Experiment 15 model version change: D1 retains ModelRef(D1)=M1 even after M2 becomes active -- PASS. Experiment 16 policy version change: D1 retains PolicyRef(D1)=P1 even after P2 becomes active -- PASS. Experiment 17 semantic collision (Approved_A vs Approved_B, no mapping): automatic conversion rejected -- PASS. Experiment 18 false causality (A precedes B only, attempted Causes(A,B) without causal evidence/model): rejected -- PASS. Experiment 19 statistical uncertainty (x-hat=12.4, CI95%=[11.7,13.1]): the interval is preserved, not collapsed into a falsely exact value -- PASS. Experiment 20 computation timeout: Status=Unresolved, never inferred as False -- PASS. Experiment 21 concurrent decisions (D1,D2 both use Version(S)=10; D1 commits first to 11; D2's commit attempt at version 10 detects 10!=11 and is sent to Revalidation) -- PASS. Experiment 22 invalid state transition (ProposedDecision->Completed skipping required Authorized/Executed states): rejected -- PASS. Experiment 23 destructive history mutation (attempt to change ClaimVersion_1 after ClaimVersion_2 exists): rejected -- PASS. Experiment 24 AI tries to bypass Governance (ExecuteAction proposed without Authorization): blocked -- PASS. Experiment 25 AI proposes a legitimate action (Proposal->Validation->Decision->Authorization->Action all pass): PASS, demonstrating 'the architecture does not prohibit AI. It controls AI.' Experiment 26 knowledge revision (validated C1 contradicted by new evidence, Revise(C1) performed): C1 remains historically valid, C2 is the updated state -- PASS. Experiment 27 provenance traversal (C2->E2->O2->Source reconstructable) -- PASS. Experiment 28 provenance cycle (attempted C1->C2->C1 as derivation provenance): rejected -- PASS. Experiment 29 causal cycle (A->B and B->A as causal feedback): NOT rejected merely for being cyclic -- PASS, confirming ProvenanceGraph != CausalGraph. Experiment 30 complete adversarial lifecycle combining ten prior attack classes in sequence (valid evidence, contradictory evidence, AI hallucination, stale evidence, revised knowledge, concurrent decisions, authorization change, action retry, partial outcome, learning update), with I(X_t)=True holding after every transition -- PASS.",
+     "dependency_value": "kos-model-breaking-adversarial-audit",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "kos-model-breaking-adversarial-audit",
+     "target_source_id": "S0946",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-113416_step-050-formal-consistency-audit-attempting-to-break-the-knowledgeos-model.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0060",
+   "object_a": "dimension-discovery-capability",
+   "object_b": "dimension-semantic-axis-model",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-171411_mathematical-redefinition-dimension-discovery-and-natural-language-parsing.md",
+     "source_id": "S0771",
+     "row_label": "dimension-semantic-axis-model",
+     "original_text": "Establishes a five-way non-collapse chain distinguishing SemanticRole (parser output, e.g. Agent), CandidateDimension (e.g. Actor), accepted Dimension (Actor once assessed relevant), Value (e.g. Arjuna), and Statement (Actor=Arjuna) as five distinct epistemic layers that must not be conflated.",
+     "dependency_value": "dimension-discovery-capability",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dimension-discovery-capability",
+     "target_source_id": "S0806",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-221512_reality-observation-representation-and-knowledge-missing-distinction.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-170313_observer-asks-knowledgeos-reconstructs-the-dimensions.md",
+     "source_id": "S0769",
+     "row_label": "dimension-discovery-capability",
+     "original_text": "Establishes that the Knower's natural-language intent is not itself a dimension specification; KnowledgeOS/Sarathi performs Analyze(Q0,CurrentState,Context) -> CandidateDimensions, so the observer expresses need while the system reconstructs the dimensional schema.",
+     "dependency_value": "dimension-semantic-axis-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dimension-semantic-axis-model",
+     "target_source_id": "S0806",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-221512_reality-observation-representation-and-knowledge-missing-distinction.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0061",
+   "object_a": "next-actor-orchestration-ast018",
+   "object_b": "start-gate-refusal-precedent",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/reviews/2026-08-22-KOS-NEXT-ACTOR-ORCHESTRATION-001-AST-018-INDEPENDENT-VERIFICATION-START-GATE-REFUSAL-7c2690ae.md",
+     "source_id": "S0342",
+     "row_label": "next-actor-orchestration-ast018",
+     "original_text": "Beyond the missing verification lane, a second and independent gate failure is identified: the predecessor implementation lane was never explicitly STOPPED per its own recorded declared sequence, so appointing a verifier while that lane still holds mutationOwner would leave the record internally inconsistent — two separately-necessary facts are missing, not one.",
+     "dependency_value": "start-gate-refusal-precedent",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "start-gate-refusal-precedent",
+     "target_source_id": "S0323",
+     "target_file": "docs/knowledgeos/reviews/2026-08-22-KOS-SESSION-BOOTSTRAP-001-CORRECTION-001-APPOINTMENT-b51dba91-registration.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0062",
+   "object_a": "master-gap-register-53-gaps",
+   "object_b": "sufficient-f-o-i-criterion-adoption",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/step-272/12-SUFFICIENCY-DEFINITION.md",
+     "source_id": "S1912",
+     "row_label": "sufficient-f-o-i-criterion-adoption",
+     "original_text": "Formal definition proposed for adoption: for a state abstraction F with s1~F s2 iff F(s1)=F(s2), Congruent(F,O) requires every state-transforming operation in O to respect F-indistinguishability, Expressive(F,I) requires every mandated predicate/invariant in I to respect F-indistinguishability (i.e. Expressive is Congruence for the 0-ary/predicate case), and Sufficient(F,O,I) is their conjunction. Closes G-56 (previously open since the second-order pass, at 0 adoption).",
+     "dependency_value": "master-gap-register-53-gaps",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "master-gap-register-53-gaps",
+     "target_source_id": "S1889",
+     "target_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/step-272/10-GAP-UPDATE-STEPS-281-282.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0063",
+   "object_a": "step188-filtration-model-and-verdict",
+   "object_b": "step188-i29-i32-invariants",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260829-082439_step_188_the-hindsight-contamination-test.md",
+     "source_id": "S1388",
+     "row_label": "step188-filtration-model-and-verdict",
+     "original_text": "Models organizational knowledge as a stochastic-process-style filtration F_t0 subseteq F_t1 subseteq ... subseteq F_tn (information sets accumulate monotonically even as individual propositions' status can change), giving the rigorous decision constraint D_t=f(F_t,R_t,A_t), never f(F_{t+1},...) unless explicitly counterfactual -- 'a very strong mathematical foundation for our architecture.' States the Step-188 verdict: Decision_t=f(F_t,R_t,A_t) and F_t subseteq F_{t+1} as a useful information-theoretic abstraction, plus CurrentState!=HistoricalTrajectory and HistoricalDecision!=CounterfactualDecision, consolidating I29-I32 alongside I21-I28 into 'a surprisingly coherent mathematical constitution.'",
+     "dependency_value": "step188-i29-i32-invariants",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "step188-i29-i32-invariants",
+     "target_source_id": "S1388",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260829-082439_step_188_the-hindsight-contamination-test.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0064",
+   "object_a": "dretske-information-flow-knowledge-lens",
+   "object_b": "knowledgeos-kernel-boundary-epistemic-infrastructure-synthesis",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/kernel/20260825-155510-knowledge-as-capacity-distinguished-from-information.md",
+     "source_id": "S0535",
+     "row_label": "knowledgeos-kernel-boundary-epistemic-infrastructure-synthesis",
+     "original_text": "Ties the Knowledge Capacity construct back to all four prior book-lenses: Floridi's Level-of-Abstraction/observables defines what portion of a system can be represented; Gärdenfors' epistemic state contains commitments and changes through inputs/expansion/revision/contraction; Dretske separates information from its physical/linguistic encoding, so the capacity to 'write' information is not identical to the information itself; Searle adds that some information participates in institutional structures where context determines what something counts as.",
+     "dependency_value": "dretske-information-flow-knowledge-lens",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dretske-information-flow-knowledge-lens",
+     "target_source_id": "S0522",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260825-124325-dretske-knowledge-and-the-flow-of-information-initial-reading.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0065",
+   "object_a": "formal-sarathi-decision-algebra",
+   "object_b": "model-hypothesis-prediction-revision-algebra",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-100603_step-025q-models-hypotheses-prediction-model-selection-and-scientific-revision.md",
+     "source_id": "S0909",
+     "row_label": "model-hypothesis-prediction-revision-algebra",
+     "original_text": "Defines calibration (repeated 0.8 predictions should be right ~80% of the time) as distinct from accuracy, flagged as mattering for Sarathi's decisions.",
+     "dependency_value": "formal-sarathi-decision-algebra",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "formal-sarathi-decision-algebra",
+     "target_source_id": "S0900",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260828-092308_step-025h-formal-sa-rathi-algebra-decision-utility-risk-and-authorization.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0066",
+   "object_a": "epistemic-value-anthology-lens-2026-09",
+   "object_b": "kr-epistemic-agency-2026-09-formal-specification",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132737_ledger-governance-corrections-theory-hierarchy-and-omitted-equations.md",
+     "source_id": "S2846",
+     "row_label": "epistemic-value-anthology-lens-2026-09",
+     "original_text": "Extracts from the anthology's curiosity/attention and pragmatic-encroachment chapters the candidate distinctions Attention != Value != Truth and Epistemic Value != Practical Utility, warning that the existing Epistemic Agency dimension-selection formula must not silently optimize practical utility as if it were epistemic value, and connecting this to the already-established EU != EpistemicQuality caution in the Expected Utility work.",
+     "dependency_value": "kr-epistemic-agency-2026-09-formal-specification",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "kr-epistemic-agency-2026-09-formal-specification",
+     "target_source_id": "S2835",
+     "target_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132034_metro-encounter-operational-loop-and-the-k-entails-q-correction.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132808_epistemic-value-second-pass-value-of-state-vs-value-of-process.md",
+     "source_id": "S2847",
+     "row_label": "epistemic-value-anthology-lens-2026-09",
+     "original_text": "Extracts Grimm's argument that epistemic normativity is not reducible to teleological goal-promotion, giving Epistemic Norm != Utility Function and Epistemic 'Should' != Practical 'Should', requiring KR-EXPECTED-UTILITY to remain downstream of epistemic assessment rather than silently defining epistemic rationality.",
+     "dependency_value": "kr-epistemic-agency-2026-09-formal-specification",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "kr-epistemic-agency-2026-09-formal-specification",
+     "target_source_id": "S2835",
+     "target_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132034_metro-encounter-operational-loop-and-the-k-entails-q-correction.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132940_epistemic-value-volume-read-whole-achievement-and-value-lens-ledger.md",
+     "source_id": "S2849",
+     "row_label": "epistemic-value-anthology-lens-2026-09",
+     "original_text": "Extracts Brady's curiosity-as-selective-attention chapter to propose a prior stage AttentionSelection != DimensionDiscovery != FactFinding, asking why a dimension becomes worthy of investigation before the existing dimension-selection argmax formula applies, relevant to Epistemic Agency.",
+     "dependency_value": "kr-epistemic-agency-2026-09-formal-specification",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "kr-epistemic-agency-2026-09-formal-specification",
+     "target_source_id": "S2835",
+     "target_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260907-132034_metro-encounter-operational-loop-and-the-k-entails-q-correction.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0067",
+   "object_a": "sigma-five-axis-epistemic-state-q4a",
+   "object_b": "step261-equality-ambiguity-stop-gate",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/05-STEP-261-GATE-AUDIT.md",
+     "source_id": "S2143",
+     "row_label": "sigma-five-axis-epistemic-state-q4a",
+     "original_text": "Re-evaluates 261.29's fourteen-row overall theory-readiness gate (operation set closed, operation signatures typed, state semantics defined, assertion type defined, status algebra defined, equality defined, identity defined, congruence proven, minimality proven, provenance placement resolved, computability established, implementation correspondence, empirical validation, remaining normative decisions), finding most rows unchanged from 261's own status, with a few genuinely improved from red to yellow (status algebra: Sigma axes enumerated and counted at 2240, though 0/5 orders established; equality and identity: qualitatively deepened by register reconciliation and I_48, though not defined), and one row actively worsened by execution (congruence: '=' is now disproven as a congruence, not merely unproven).",
+     "dependency_value": "step261-equality-ambiguity-stop-gate",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "step261-equality-ambiguity-stop-gate",
+     "target_source_id": "S2136",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-222300_step_288_reviewer-b-step-288-equality-reconciliation-execution-mandate-post-287-baseline.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/research/step-288/05-STEP-261-GATE-AUDIT.md",
+     "source_id": "S2143",
+     "row_label": "step261-equality-ambiguity-stop-gate",
+     "original_text": "Re-evaluates 261.29's fourteen-row overall theory-readiness gate (operation set closed, operation signatures typed, state semantics defined, assertion type defined, status algebra defined, equality defined, identity defined, congruence proven, minimality proven, provenance placement resolved, computability established, implementation correspondence, empirical validation, remaining normative decisions), finding most rows unchanged from 261's own status, with a few genuinely improved from red to yellow (status algebra: Sigma axes enumerated and counted at 2240, though 0/5 orders established; equality and identity: qualitatively deepened by register reconciliation and I_48, though not defined), and one row actively worsened by execution (congruence: '=' is now disproven as a congruence, not merely unproven).",
+     "dependency_value": "sigma-five-axis-epistemic-state-q4a",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "sigma-five-axis-epistemic-state-q4a",
+     "target_source_id": "S2136",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/knowledgeos_kernel/prompts/20260831-222300_step_288_reviewer-b-step-288-equality-reconciliation-execution-mandate-post-287-baseline.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0068",
+   "object_a": "belief-revision-theory-compatibility-analysis",
+   "object_b": "gardenfors-knowledge-in-flux-lens",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/theory-compatibility/02-BELIEF-REVISION.md",
+     "source_id": "S2313",
+     "row_label": "belief-revision-theory-compatibility-analysis",
+     "original_text": "Finds RevisionType::Evolution (the corpus's 'the system really changed from 3.69 to 3.70', boxed 'Evolution is not an error') is exactly Katsuno-Mendelzon's motivating case for UPDATE (the world changed, the old belief was correct then), while Correction/Refutation match AGM REVISION (new information about a static world); notes AGM is mentioned only 5 times across 564 corpus files and the KM revision/update distinction appears nowhere, so the corpus independently re-derived, from a version-number example, a distinction belief-revision literature has held since 1991 -- and split it six ways where KM splits two.",
+     "dependency_value": "gardenfors-knowledge-in-flux-lens",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "gardenfors-knowledge-in-flux-lens",
+     "target_source_id": "S0528",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260825-133456-gardenfors-knowledge-in-flux-epistemic-state-as-primary-model.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/theory-compatibility/02-BELIEF-REVISION.md",
+     "source_id": "S2313",
+     "row_label": "belief-revision-theory-compatibility-analysis",
+     "original_text": "Final verdict: belief revision is 'the closest of the five' external theories compared in this series, with four exact correspondences (more than any other), a resolvable carrier mismatch (move from AGM to base revision), and one axis (Reinterpretation/ModelRevision) where KnowledgeOS is ahead of the external framework rather than under-formalized; endorses and sharpens the corpus's own Gardenfors-derived self-description ('epistemic states and their dynamics as the primary modelling problem', Kernel=preservation substrate) into 'the substrate the corpus describes is a justification store, and that is a JTMS.'",
+     "dependency_value": "gardenfors-knowledge-in-flux-lens",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "gardenfors-knowledge-in-flux-lens",
+     "target_source_id": "S0528",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260825-133456-gardenfors-knowledge-in-flux-epistemic-state-as-primary-model.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0069",
+   "object_a": "activate-commissioned-fresh-session-ast019",
+   "object_b": "unified-runtime-human-binding-invariant",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-AMENDMENT-001-ActivateCommissionedFreshSession.md",
+     "source_id": "S0353",
+     "row_label": "activate-commissioned-fresh-session-ast019",
+     "original_text": "AST-019's constrained contract: given current runtime identity, commissioned work item, commissioned role, a valid fresh-session declaration, passed eligibility/independence checks, and no existing conflicting assignment, the ONLY allowed write is REGISTER{session=own identity, role=commissioned role}, followed by governed HANDOFF and human START; it never writes CONTINUATION, never calls AST-018's appoint, and never writes the raw record directly.",
+     "dependency_value": "unified-runtime-human-binding-invariant",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "unified-runtime-human-binding-invariant",
+     "target_source_id": "S0349",
+     "target_file": "docs/knowledgeos/reviews/2026-08-22-KOS-OPERATING-MODEL-001-FOLLOW-UP-continuation-capability-observation.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0070",
+   "object_a": "spec-amend-2026-v1-demotion-and-ea-definition",
+   "object_b": "spec-det-2026-v1-threshold-determination",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/gap-update-2026-09-02/06-AUTHORITY-CLAIMS-AUDIT.md",
+     "source_id": "S2596",
+     "row_label": "spec-det-2026-v1-threshold-determination",
+     "original_text": "Tabulates seven specific claims audited against the governance register: SPEC-DET-2026-v1 (self-declared [RATIFIED] under 'Authority: HPA Supervisory / KnowledgeOS Architecture Board'), SPEC-RREQ-2026-V1-RATIFIED ([PROPOSED RATIFICATION]), 'GAP CLOSURE STRATEGY' (contains [RATIFIED]), the 'Final Structural Audit & Re-Specification' document (contains [RATIFIED]), DECISION-01 ([DECIDED], explicitly self-attributed to governance rather than the reporting lane), and factivity claim R1 (DECIDED, governance, 2026-09-02) -- none of these six are found in governance/; the seventh, DECISION-02, is correctly still marked [DECISION REQUIRED] and open.",
+     "dependency_value": "spec-amend-2026-v1-demotion-and-ea-definition",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "spec-amend-2026-v1-demotion-and-ea-definition",
+     "target_source_id": "S2579",
+     "target_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-182006_final-structural-audit-and-re-specification-protocol.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/verification/gap-discovery/gap-update-2026-09-02/06-AUTHORITY-CLAIMS-AUDIT.md",
+     "source_id": "S2596",
+     "row_label": "spec-amend-2026-v1-demotion-and-ea-definition",
+     "original_text": "Tabulates seven specific claims audited against the governance register: SPEC-DET-2026-v1 (self-declared [RATIFIED] under 'Authority: HPA Supervisory / KnowledgeOS Architecture Board'), SPEC-RREQ-2026-V1-RATIFIED ([PROPOSED RATIFICATION]), 'GAP CLOSURE STRATEGY' (contains [RATIFIED]), the 'Final Structural Audit & Re-Specification' document (contains [RATIFIED]), DECISION-01 ([DECIDED], explicitly self-attributed to governance rather than the reporting lane), and factivity claim R1 (DECIDED, governance, 2026-09-02) -- none of these six are found in governance/; the seventh, DECISION-02, is correctly still marked [DECISION REQUIRED] and open.",
+     "dependency_value": "spec-det-2026-v1-threshold-determination",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "spec-det-2026-v1-threshold-determination",
+     "target_source_id": "S2577",
+     "target_file": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/20260902-182022_review-document-to-the-end.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0071",
+   "object_a": "dimension-discovery-capability",
+   "object_b": "proposition-assertion-knowledge-hierarchy",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-172732_the-knowledgeos-knowledge-atom.md",
+     "source_id": "S0775",
+     "row_label": "proposition-assertion-knowledge-hierarchy",
+     "original_text": "Corrects 'Observe -> Proposition' to 'Observation -> Candidate Proposition(s)', since one observation (e.g. a host responding on a port) can support multiple distinct, non-exclusive candidate propositions requiring Zero/Lord/Semantic-Reconstruction to disambiguate.",
+     "dependency_value": "dimension-discovery-capability",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dimension-discovery-capability",
+     "target_source_id": "S0806",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-221512_reality-observation-representation-and-knowledge-missing-distinction.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0072",
+   "object_a": "evidence-graph-model",
+   "object_b": "knowledgeos-platform",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/20260822-0249-knowledgeos-tarka-sangraha-ontology-pramana-reasoning.md",
+     "source_id": "S0227",
+     "row_label": "knowledgeos-platform",
+     "original_text": "Presents a 'KnowledgeOS Constitutional Model' as a seven-layer stack combining the file's own extracted lenses (Truth Constitution -> Ontology -> Pramana -> Reasoning -> Semantic -> Evidence Graph -> Revision Engine), and a summary table of the seven new H-KOS-* invariants extracted from Tarka-Sangraha.",
+     "dependency_value": "evidence-graph-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "evidence-graph-model",
+     "target_source_id": "S0227",
+     "target_file": "docs/knowledgeos/brainstorming/20260822-0249-knowledgeos-tarka-sangraha-ontology-pramana-reasoning.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0073",
+   "object_a": "comparison-challenge-operations",
+   "object_b": "proposition-assertion-knowledge-hierarchy",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-173337_review-comparison-should-compare-propositions-first.md",
+     "source_id": "S0779",
+     "row_label": "comparison-challenge-operations",
+     "original_text": "Corrects the Question 5 Compare function to operate at two separate levels: semantic comparison of Propositions (Compare_P: are these the same/compatible/contradictory/unrelated proposition?) versus epistemic comparison of Assertions (Compare_A: how do evidence/provenance/temporal-validity/epistemic-assessment differ?) -- since two assertions can share an identical proposition while differing purely in epistemic status.",
+     "dependency_value": "proposition-assertion-knowledge-hierarchy",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "proposition-assertion-knowledge-hierarchy",
+     "target_source_id": "S0806",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-221512_reality-observation-representation-and-knowledge-missing-distinction.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0074",
+   "object_a": "comparison-challenge-operations",
+   "object_b": "dimension-semantic-axis-model",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-173337_review-comparison-should-compare-propositions-first.md",
+     "source_id": "S0779",
+     "row_label": "comparison-challenge-operations",
+     "original_text": "Corrects the earlier context-free value-compatibility rule (e.g. 'different versions are always compatible') to be explicitly parameterized by dimension, context, and time: Compatible(V1,V2|D,C,tau), reinforcing that a dimension carries semantics/constraints rather than being a bare label.",
+     "dependency_value": "dimension-semantic-axis-model",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dimension-semantic-axis-model",
+     "target_source_id": "S0806",
+     "target_file": "docs/knowledgeos/brainstorming/phase_measure_theory/20260826-221512_reality-observation-representation-and-knowledge-missing-distinction.md"
+    }
+   ]
+  },
+  {
+   "pv_id": "PV0075",
+   "object_a": "dhatu-extraction-pipeline-research-design",
+   "object_b": "knowledge-vector-measurement-framework",
+   "signals": [
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/kernel/20260824-160023-knowledge-as-measurable-construct-not-true-information.md",
+     "source_id": "S0488",
+     "row_label": "knowledge-vector-measurement-framework",
+     "original_text": "Establishes Knowledge != Language via the bicycle-riding example and Pollock & Cruz's competence/performance distinction (procedural knowledge governs action, not merely verbal description); language is characterized as one representation channel for knowledge, explicitly flagged as relevant to the batch's Zero/Dhatu research.",
+     "dependency_value": "dhatu-extraction-pipeline-research-design",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dhatu-extraction-pipeline-research-design",
+     "target_source_id": "S0480",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260824-152254-swar-gyan-orthographic-decomposition-pipeline-for-dhatu-extraction.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/kernel/20260824-160023-knowledge-as-measurable-construct-not-true-information.md",
+     "source_id": "S0488",
+     "row_label": "knowledge-vector-measurement-framework",
+     "original_text": "Reframes knowledge as a transformation process rather than a static object: Observation -interpret-> Representation -reason-> Hypothesis -test-> Justified Claim -defeater-testing-> Knowledge; explicitly claims this strengthens the batch's earlier Dhatu hypothesis.",
+     "dependency_value": "dhatu-extraction-pipeline-research-design",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dhatu-extraction-pipeline-research-design",
+     "target_source_id": "S0480",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260824-152254-swar-gyan-orthographic-decomposition-pipeline-for-dhatu-extraction.md"
+    },
+    {
+     "signal_type": "DEPENDENCY",
+     "source_file": "docs/knowledgeos/brainstorming/kernel/20260824-160023-knowledge-as-measurable-construct-not-true-information.md",
+     "source_id": "S0488",
+     "row_label": "knowledge-vector-measurement-framework",
+     "original_text": "Recommends building a formal 'Knowledge Ontology & Measurement Framework v1.0' as the next research deliverable, with 15 named components (knowledge/non-knowledge taxonomy, knowledge lifecycle, knowledge vector, evidence model, reliability model, defeater model, anti-luck/counterfactual model, knowledge coverage, knowledge depth, knowledge transfer, knowledge decay, a mathematically defined Knowledge Index, falsifying experiments, mapping to Zero/Dhatu, and mapping into KnowledgeOS), while explicitly keeping the epistemic core secular and testable despite structural parallels to the Sri Vidya source's remembered-knowledge/wisdom distinction.",
+     "dependency_value": "dhatu-extraction-pipeline-research-design",
+     "lineage_claim_kind": null,
+     "lineage_claim_target": null,
+     "lineage_claim_quote": null,
+     "target_label": "dhatu-extraction-pipeline-research-design",
+     "target_source_id": "S0480",
+     "target_file": "docs/knowledgeos/brainstorming/kernel/20260824-152254-swar-gyan-orthographic-decomposition-pipeline-for-dhatu-extraction.md"
+    }
+   ]
+  }
+ ]
+}

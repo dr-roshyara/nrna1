@@ -1,0 +1,3 @@
+{"theory_object_id":"T-0001","name":"x","depends_on":["T-9999"]}
+{"theory_object_id":"T-0001","name":"duplicate"}
+{"theory_object_id":"T-0002","name":"unrelated"}

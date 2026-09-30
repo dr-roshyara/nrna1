@@ -1,0 +1,80 @@
+{
+ "file_id": "F0010",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "satisfied": true,
+   "evidence": "complete, 292 lines (⚠️ erratum E-01: recorded 293, corrected 292)"
+  },
+  {
+   "gate": "IDENTITY_ADMITTED",
+   "satisfied": true,
+   "evidence": "ADMIT + receipt"
+  },
+  {
+   "gate": "SELF_DECLARED_STATUS_CAPTURED",
+   "satisfied": true,
+   "evidence": "verbatim — discovery report, nothing executes"
+  },
+  {
+   "gate": "QUESTIONS_SEPARATED",
+   "satisfied": true,
+   "evidence": "⭐ source question quoted verbatim; reconstruction question distinct"
+  },
+  {
+   "gate": "DEFINITIONS_EXTRACTED",
+   "satisfied": true,
+   "evidence": "8"
+  },
+  {
+   "gate": "ASSUMPTIONS_EXTRACTED",
+   "satisfied": true,
+   "evidence": "4 + 5 premises"
+  },
+  {
+   "gate": "DERIVATIONS_RECONSTRUCTED",
+   "satisfied": true,
+   "evidence": "5"
+  },
+  {
+   "gate": "GAPS_RECORDED",
+   "satisfied": true,
+   "evidence": "3"
+  },
+  {
+   "gate": "CONTRADICTIONS_RECORDED",
+   "satisfied": true,
+   "evidence": "⭐ 3 — incl. the non-independence of F0001/F0010"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "satisfied": true,
+   "evidence": "⭐ SATISFIED under O-1=A (L0-DEC-08). Own objects ['T-0006'] verified current; ⛔ no write required. ⭐ T-0006 already records its own weakness verbatim: name = 'UNDETERMINED - an object F0001 synthesizes from F0010 alongside T-0007', statement null, recovery_confidence LOW, evidence_strength NONE_RECORDED. ⭐⭐ That IS the transmission finding (AUDIT-F0010-01) — the object never claimed two-source support."
+  },
+  {
+   "gate": "PROVENANCE_RECORDED",
+   "satisfied": true,
+   "evidence": "3 layers"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "satisfied": true,
+   "evidence": "complete"
+  }
+ ],
+ "satisfied": 12,
+ "total": 12,
+ "dossier_status": "COMPLETE",
+ "⭐ O-1_evaluation": {
+  "date": "2026-09-23",
+  "authority": "L0-DEC-08 (O-1 = interpretation A)",
+  "own_objects": [
+   "T-0006"
+  ],
+  "verdict": "SATISFIED",
+  "objects_needing_5A_revision": [],
+  "basis": "⭐ T-0006 already records its own weakness verbatim: name = 'UNDETERMINED - an object F0001 synthesizes from F0010 alongside T-0007', statement null, recovery_confidence LOW, evidence_strength NONE_RECORDED. ⭐⭐ That IS the transmission finding (AUDIT-F0010-01) — the object never claimed two-source support.",
+  "blocker": null
+ },
+ "⭐ dossier_status_note": "⭐ FIRST file to reach COMPLETE. All 12 §9A gates satisfied; gate 9 by verification under O-1=A, with no write to any Theory Object."
+}

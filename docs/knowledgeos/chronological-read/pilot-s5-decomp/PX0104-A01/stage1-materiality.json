@@ -1,0 +1,322 @@
+[
+  {
+    "materiality_id": "M-001",
+    "class": "MATERIAL",
+    "reason": "Would change a lifecycle status (DORMANT vs uptake/abandonment) and asserts a verdict-evidence conflict with R1 hits."
+  },
+  {
+    "materiality_id": "M-002",
+    "class": "MATERIAL",
+    "reason": "Asserts a structural relation (C2-C5 as dimensions of one product) and a definitional deficiency in K3's vocabulary."
+  },
+  {
+    "materiality_id": "M-003",
+    "class": "MATERIAL",
+    "reason": "Definition/attribution gap: label notation has two referents neither denoting the label; changes downstream search/matching decisions."
+  },
+  {
+    "materiality_id": "M-004",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence conflict on the birth anchor (fabricated table, tables disagree, differing scales); bears on a birth."
+  },
+  {
+    "materiality_id": "M-005",
+    "class": "MINOR",
+    "reason": "Restatement of distinctions the programme itself endorses; no new tension, gap or status consequence asserted."
+  },
+  {
+    "materiality_id": "M-006",
+    "class": "MATERIAL",
+    "reason": "Asserts tensions (K8.1 after K8 declined; subset relation applied to a sum) and a two-tier structure between rule sets."
+  },
+  {
+    "materiality_id": "M-007",
+    "class": "MATERIAL",
+    "reason": "Methodological deficiency: minimality argued on 6 of 21 pairs, no sufficiency argument."
+  },
+  {
+    "materiality_id": "M-008",
+    "class": "MINOR",
+    "reason": "Bookkeeping confirmation that verifier arithmetic is consistent; no relation, gap or consequence."
+  },
+  {
+    "materiality_id": "M-009",
+    "class": "MATERIAL",
+    "reason": "Definition gaps (undefined universe, SHOULD-membership) and diagram/rule mismatch (Evidence node) \u2014 tension."
+  },
+  {
+    "materiality_id": "M-010",
+    "class": "MATERIAL",
+    "reason": "Asserts a vocabulary mismatch between health states and state-machine states (definition gap)."
+  },
+  {
+    "materiality_id": "M-011",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence conflict between extraction characterization and verifier assessment of step-120."
+  },
+  {
+    "materiality_id": "M-012",
+    "class": "MATERIAL",
+    "reason": "Asserts a relation between the two labels (shared distinctions, no citation) \u2014 a cross-label structure question."
+  },
+  {
+    "materiality_id": "M-013",
+    "class": "MATERIAL",
+    "reason": "Methodological tension: whether the programme meets its own ACTUALLY_EXECUTED standard."
+  },
+  {
+    "materiality_id": "M-014",
+    "class": "MATERIAL",
+    "reason": "Contradiction: MUST vs SHOULD for K5 leaves the integrity predicate undefined for C5 (definition gap)."
+  },
+  {
+    "materiality_id": "M-015",
+    "class": "MINOR",
+    "reason": "Restatement of verifier-integrity rules from the source; no tension, gap or consequence."
+  },
+  {
+    "materiality_id": "M-016",
+    "class": "MATERIAL",
+    "reason": "Bears on pair verdicts/dependency edges (sampled verdicts, UNWITNESSED, positive evidence of continuation relation)."
+  },
+  {
+    "materiality_id": "M-017",
+    "class": "MATERIAL",
+    "reason": "Substrate defects (mis-dated file, identifiers rendered as step numbers, inconsistent track tags) would change birth/dependency computation."
+  },
+  {
+    "materiality_id": "M-018",
+    "class": "MATERIAL",
+    "reason": "Methodological deficiency: scale proliferation without mappings inside the programme itself."
+  },
+  {
+    "materiality_id": "M-019",
+    "class": "MATERIAL",
+    "reason": "Structural finding (citation topology) producing systematic uncited re-derivation \u2014 methodological deficiency."
+  },
+  {
+    "materiality_id": "M-020",
+    "class": "MATERIAL",
+    "reason": "Tension: successor capture without adjudication, freeze dropping live-required terms; changes status of 201-B."
+  },
+  {
+    "materiality_id": "M-021",
+    "class": "MATERIAL",
+    "reason": "Asserts a formal contradiction (A1 & A2 vs A3) in the corpus."
+  },
+  {
+    "materiality_id": "M-022",
+    "class": "MATERIAL",
+    "reason": "Contradiction between provenance accounts (extension vs independent derivation); bears on a dependency edge."
+  },
+  {
+    "materiality_id": "M-023",
+    "class": "MATERIAL",
+    "reason": "Absence gap (no governing invariant for demotion) with structural explanation of term-drops."
+  },
+  {
+    "materiality_id": "M-024",
+    "class": "MATERIAL",
+    "reason": "Contradictory counts coexist in R1 \u2014 measurement instability (contradiction)."
+  },
+  {
+    "materiality_id": "M-025",
+    "class": "MATERIAL",
+    "reason": "Structural relation across labels: abandonment-without-supersession pattern; bears on statuses."
+  },
+  {
+    "materiality_id": "M-026",
+    "class": "MATERIAL",
+    "reason": "Cross-label evidence siloing changes the family composition \u2014 downstream research decision."
+  },
+  {
+    "materiality_id": "M-027",
+    "class": "MATERIAL",
+    "reason": "Would change a lifecycle status (CONTESTED wrongly derived)."
+  },
+  {
+    "materiality_id": "M-028",
+    "class": "MINOR",
+    "reason": "Restatement of the source's failure chains and designations; no tension or consequence asserted."
+  },
+  {
+    "materiality_id": "M-029",
+    "class": "MATERIAL",
+    "reason": "Asserts a contradiction (0 satisfying models) that determines the theory's status; downstream decision."
+  },
+  {
+    "materiality_id": "M-030",
+    "class": "MATERIAL",
+    "reason": "Type/absence gap: no typed signature for the constitution."
+  },
+  {
+    "materiality_id": "M-031",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence conflict on the EXTENSION edge; two live constitutions \u2014 dependency edge/status."
+  },
+  {
+    "materiality_id": "M-032",
+    "class": "MINOR",
+    "reason": "Restatement of the programme's anti-date-inference rules; no gap or consequence."
+  },
+  {
+    "materiality_id": "M-033",
+    "class": "MATERIAL",
+    "reason": "Absence gap (measure theory absent from numbered steps) determining theory status."
+  },
+  {
+    "materiality_id": "M-034",
+    "class": "MATERIAL",
+    "reason": "Lineage relation with status consequence (never versioned, functionally replaced)."
+  },
+  {
+    "materiality_id": "M-035",
+    "class": "MATERIAL",
+    "reason": "Asserts relation (I1-I7 as uncited re-derivation of C1-C7) plus a date anomaly bearing on birth."
+  },
+  {
+    "materiality_id": "M-036",
+    "class": "MATERIAL",
+    "reason": "Contradiction: dependency edges refuted by the file's own independence arguments; undefined node."
+  },
+  {
+    "materiality_id": "M-037",
+    "class": "MATERIAL",
+    "reason": "Definition gap: 0 of 7 invariants operationally defined."
+  },
+  {
+    "materiality_id": "M-038",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence conflict: layers disagree on what the step-120 verdicts are."
+  },
+  {
+    "materiality_id": "M-039",
+    "class": "MATERIAL",
+    "reason": "Relation between labels (later uncited recurrence) affecting what later labels denote."
+  },
+  {
+    "materiality_id": "M-040",
+    "class": "MATERIAL",
+    "reason": "Methodological deficiency recurring across bands, against the corpus's own rules."
+  },
+  {
+    "materiality_id": "M-041",
+    "class": "MATERIAL",
+    "reason": "Asserts a cross-label relation (programme rules = K4 applied) and a self-violation."
+  },
+  {
+    "materiality_id": "M-042",
+    "class": "MATERIAL",
+    "reason": "Asserts a tension (colliding constitutions, no lineage edge, omissions) between two artifacts."
+  },
+  {
+    "materiality_id": "M-043",
+    "class": "MATERIAL",
+    "reason": "Asserts a reflexive violation: the constitution's FAIL scenario holds of its own host repository."
+  },
+  {
+    "materiality_id": "M-044",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence conflict on RP1172; escalated for H-02 \u2014 dependency edge."
+  },
+  {
+    "materiality_id": "M-045",
+    "class": "MATERIAL",
+    "reason": "Date-extraction defect would change births (example dates taken as historical dates)."
+  },
+  {
+    "materiality_id": "M-046",
+    "class": "MATERIAL",
+    "reason": "Attribution/relation defect between notations and labels; co-label used generically \u2014 downstream matching."
+  },
+  {
+    "materiality_id": "M-047",
+    "class": "MATERIAL",
+    "reason": "Concerns admission of a dependency edge and its evidentiary basis (P2 note vs source row)."
+  },
+  {
+    "materiality_id": "M-048",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence conflict: 'empirically derived' vs zero empirical acts; bears on RP1170."
+  },
+  {
+    "materiality_id": "M-049",
+    "class": "MATERIAL",
+    "reason": "Internal contradiction: corrected and uncorrected claims coexist in the label rows."
+  },
+  {
+    "materiality_id": "M-050",
+    "class": "MINOR",
+    "reason": "Restatement of the constitutionality meta-criterion; no tension or consequence."
+  },
+  {
+    "materiality_id": "M-051",
+    "class": "MATERIAL",
+    "reason": "Bears on births (earlier proposal/plan files) and the origin characterisation of the label."
+  },
+  {
+    "materiality_id": "M-052",
+    "class": "MATERIAL",
+    "reason": "Type/absence gap: no typed signature for the programme."
+  },
+  {
+    "materiality_id": "M-053",
+    "class": "MATERIAL",
+    "reason": "Asserts a token collision (A1/A2 reused) and an ill-typed formula \u2014 tension/type gap."
+  },
+  {
+    "materiality_id": "M-054",
+    "class": "MATERIAL",
+    "reason": "Verdict lacking source evidence (HOMONYM source-claimed only) \u2014 verdict-evidence gap on a relation."
+  },
+  {
+    "materiality_id": "M-055",
+    "class": "MATERIAL",
+    "reason": "Internal contradiction in the programme on joint satisfiability."
+  },
+  {
+    "materiality_id": "M-056",
+    "class": "MATERIAL",
+    "reason": "Verdict-evidence tension: MCS-5 interpretation-dependent, claim stronger than evidence."
+  },
+  {
+    "materiality_id": "M-057",
+    "class": "MINOR",
+    "reason": "Restatement of the step-121 method and results as reported; no new tension or consequence."
+  },
+  {
+    "materiality_id": "M-058",
+    "class": "MATERIAL",
+    "reason": "Methodological deficiency in the census (template literals) \u2014 a false-negative mechanism."
+  },
+  {
+    "materiality_id": "M-059",
+    "class": "MATERIAL",
+    "reason": "Type gap: intersection formula ill-typed, letter bound twice."
+  },
+  {
+    "materiality_id": "M-060",
+    "class": "MATERIAL",
+    "reason": "Untyped term/modality change would change row typing (CORRECTION) and thus label status."
+  },
+  {
+    "materiality_id": "M-061",
+    "class": "MATERIAL",
+    "reason": "Methodological deficiency: self-confirming suite with zero executions."
+  },
+  {
+    "materiality_id": "M-062",
+    "class": "MATERIAL",
+    "reason": "Absence gap in the family (Step-121 content missing, heading misapplied) \u2014 changes family composition."
+  },
+  {
+    "materiality_id": "M-063",
+    "class": "MATERIAL",
+    "reason": "Asserts a definition change of the programme's objective (CHANGES-DEFINITION) alongside a stable rule."
+  },
+  {
+    "materiality_id": "M-064",
+    "class": "MATERIAL",
+    "reason": "Would change a lifecycle status (CONTESTED mis-set)."
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "C6_order_invariance": {
+    "per_rule_outputs": {
+      "union": {
+        "W2": "conflicting",
+        "W4": "conflicting"
+      },
+      "majority": {
+        "W2": "positive-support",
+        "W4": "positive-support"
+      },
+      "last-wins": {
+        "W2": "negative-support",
+        "W4": "positive-support"
+      },
+      "strict": {
+        "W2": "unsupported",
+        "W4": "unsupported"
+      },
+      "intraframe-only": {
+        "W2": "unsupported",
+        "W4": "unsupported"
+      }
+    },
+    "order_dependent_rules": [
+      "last-wins"
+    ],
+    "expected_order_dependent": [
+      "last-wins"
+    ],
+    "matches_laneb_own_SEP2_finding": true,
+    "observational_partition_n_classes": 2,
+    "W2_and_W4_in_same_class": false
+  },
+  "C7_frame_refinement_invariance": {
+    "per_rule_outputs": {
+      "union": {
+        "coarse": "conflicting",
+        "fine": "conflicting"
+      },
+      "majority": {
+        "coarse": "unsupported",
+        "fine": "positive-support"
+      },
+      "last-wins": {
+        "coarse": "negative-support",
+        "fine": "negative-support"
+      },
+      "strict": {
+        "coarse": "unsupported",
+        "fine": "unsupported"
+      },
+      "intraframe-only": {
+        "coarse": "unsupported",
+        "fine": "unsupported"
+      }
+    },
+    "refinement_dependent_rules": [
+      "majority"
+    ],
+    "expected_refinement_dependent": [
+      "majority"
+    ],
+    "matches_laneb_own_SEP4_finding": true,
+    "observational_partition_n_classes": 2
+  },
+  "verdict": {
+    "BSE_independently_reproduces_C6_via_generic_observational_partition": true,
+    "BSE_independently_reproduces_C7_via_generic_observational_partition": true,
+    "note": "BSE used ONLY its own generic observational_partition() machinery, fed Lane-B's real agg_* functions as observations -- it did not call comp.compose(), comp.SEP2_order_invariance(), or comp.SEP4_frame_refinement_invariance() directly. This is independent reproduction through different code, not re-execution of the same code."
+  }
+}

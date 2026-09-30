@@ -1,0 +1,105 @@
+{
+ "decision": "UNDETERMINED",
+ "detail": {
+  "A": {
+   "counts": {
+    "coarse": 1,
+    "different": 24,
+    "exact": 300
+   },
+   "edges": {
+    "endpoint_valid": 2,
+    "endpoint_validity": 1.0,
+    "jaccard_R1": 0.5,
+    "jaccard_R2": 1.0,
+    "n": 2
+   },
+   "letter": "P",
+   "level2": {
+    "quote_misses": 0,
+    "verifier_pass": false
+   },
+   "metrics": {
+    "adjacency_baseline_upheld": 0,
+    "endpoint_validity": 1.0,
+    "residual_calibration": 0,
+    "residual_conflicts": 0
+   },
+   "reasons": [
+    "level 1: a unit is incomplete, has hash failures or NOT-CONSUMED files"
+   ]
+  },
+  "B": {
+   "counts": {
+    "coarse": 2,
+    "different": 24,
+    "exact": 299
+   },
+   "edges": {
+    "endpoint_valid": 2,
+    "endpoint_validity": 1.0,
+    "jaccard_R1": 0.5,
+    "jaccard_R2": 1.0,
+    "n": 2
+   },
+   "letter": "Q",
+   "level2": {
+    "quote_misses": 0,
+    "verifier_pass": true
+   },
+   "metrics": {
+    "adjacency_baseline_upheld": 0,
+    "endpoint_validity": 1.0,
+    "residual_calibration": 0,
+    "residual_conflicts": 0
+   },
+   "reasons": [
+    "level 1: a unit is incomplete, has hash failures or NOT-CONSUMED files"
+   ]
+  },
+  "C": {
+   "counts": {
+    "coarse": 1,
+    "different": 25,
+    "exact": 299
+   },
+   "edges": {
+    "endpoint_valid": 2,
+    "endpoint_validity": 1.0,
+    "jaccard_R1": 0.5,
+    "jaccard_R2": 1.0,
+    "n": 2
+   },
+   "letter": "R",
+   "level2": {
+    "quote_misses": 0,
+    "verifier_pass": false
+   },
+   "metrics": {
+    "adjacency_baseline_upheld": 0,
+    "endpoint_validity": 1.0,
+    "residual_calibration": 0,
+    "residual_conflicts": 0
+   },
+   "reasons": [
+    "level 1: a unit is incomplete, has hash failures or NOT-CONSUMED files"
+   ]
+  }
+ },
+ "feasibility": {
+  "ok": false,
+  "reasons": [
+   "level 1: a unit is incomplete, has hash failures or NOT-CONSUMED files"
+  ]
+ },
+ "outcomes": {
+  "A": "UNDETERMINED",
+  "B": "UNDETERMINED",
+  "C": "UNDETERMINED"
+ },
+ "scope": "n_labels = 1, n_units = 3: evidence about decomposition fidelity on this few-unit control label only; no population claim; the S5 floor is not affected (R19)",
+ "scope_statements": [
+  "OB0018 can provide evidence about decomposition fidelity on the selected few-unit control label. It does not by itself establish population-wide equivalence of decomposition and single-context analysis.",
+  "A successful OB0018 result does not eliminate the need for the S5 reconstruction floor."
+ ]
+}

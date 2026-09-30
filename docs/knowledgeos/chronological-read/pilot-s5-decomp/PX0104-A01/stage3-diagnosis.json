@@ -1,0 +1,630 @@
+{
+  "run_id": "PX0104-A01",
+  "stage": 3,
+  "auditor_model_id": "claude-fable-5-1",
+  "inputs_opened_in_stage3": [
+    "preregistration §1-§9",
+    "AUDIT-ARM-KEY.json",
+    "R1-PACKAGE-* (structure, targeted searches)",
+    "R1-CANDIDATES.jsonl",
+    "R1-TRIGGERS.jsonl",
+    "R1-FREEZE.json",
+    "R3-VERIFICATION-U01/U02.jsonl",
+    "AUDIT-SECONDARY-P1GAP.json",
+    "PX0104-U01/READ-LOG.jsonl",
+    "PX0104-U02/READ-LOG.jsonl"
+  ],
+  "a_only_diagnosis": [
+    {
+      "a_item": "LIST-1-03",
+      "scope": "whole item (LIST-1-ONLY)",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 package (step-verify) stage1_search_records[LABEL-HITS].terms contains the literal templates 'step-verify-nnn-nnn', 'tv-f-nnn', 'vc-1..vc-12'; its raw-hit source list (S1413,S1438,S1439,S1441,S1444,S1540,S1566,S1866) omits the row sources S1521/S1524 that carry concrete instances. Everything the A finding rests on was visible in R1; R1 produced no candidate about census recall. Files that would have been needed for evidence: S1521, S1524, S1540 — S1524 was triggered (for label 1 only), S1521/S1540 were not."
+    },
+    {
+      "a_item": "LIST-1-09",
+      "scope": "whole item (LIST-1-ONLY)",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 package (step-verify) p3a_reconciliation_object.completeness_absences = [informal_meaning, type_signature, invariants, dependencies, assumptions] and every P1 row has type_signature null. The absence signal was in R1; no candidate was generated for it (B-SVP-08 on scale proliferation is adjacent but different). No file read would have been needed to register the gap; a census (S1537/S1441 whole-file) would have been needed only to upgrade it to GENUINELY-UNDEFINED-AFTER-CENSUS."
+    },
+    {
+      "a_item": "LIST-1-10",
+      "scope": "whole item (LIST-1-ONLY)",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 (step-verify) exposed candidate_births.conceptual = null, formal birth anchored in S1525 and governance/lexical births in S1513, while stage2_files and source_meta_02_files list S1413 (MTIME, SECONDARY-SYNTHESIS), S1438/S1439 (EXPLICIT 2026-08-29), S1441/S1444/S1456/S1481 (PRIMARY, MTIME) with raw stage-1 hits in S1413/S1438/S1439/S1441/S1444/S1566. A birth/origin question was derivable from R1 and no candidate or trigger was registered. The substantive content (S1413 proposing the programme; S1438/S1439 as Level-1 plan/checkpoint; S1441 phase prompt) is NOT in R1 (only identities and dates), so recovering it required triggering S1413/S1438/S1439/S1441 — none triggered. Secondary cause: not-represented-in-R1 (content)."
+    },
+    {
+      "a_item": "LIST-1-02",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-38",
+      "cause": "matching-failed",
+      "evidence": "The residual (S1484/S1524 are not rows of this label, so their claims do not enter the D4 roll-up) is the same fact B-KAC-19 / LIST-2-37 registers (stage2_files S1484/S1524 contribute no label-1 rows). The auditor should have recorded a second PARTIAL pair L1-02 <-> L2-37; corrected below."
+    },
+    {
+      "a_item": "LIST-1-04",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-07 (K->C rename as term change; rows not typed CORRECTION)",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 (constitution) P1 rows [10] 120.19 (DEFINITION), [26] 120.33 'KOS Constitution={K1..K7}' (RESTATEMENT), [31] 120.38 (DEFINITION, PRINCIPLE), [62] 120.66 v0.1 C1-C7 (DEFINITION, RESTATEMENT) all carry their row types in R1, so the absence of a CORRECTION/term-change type was observable. B-KAC-03 registered the modality change but not the row-typing consequence; B-SVP-11 carries the three naming systems only as the verifier's claim. Secondary set G8@S01 records the same gap."
+    },
+    {
+      "a_item": "LIST-1-05",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-39",
+      "cause": "none",
+      "evidence": "No content of L1-05 is missing from B-SVP-21 (B is broader: it adds the kt-tuple co-label artefact). The PARTIAL class in stage 2 reflected B's extra claim, not a missing A part; corrected to FOUND-BOTH below. Evidence strength is weaker in B only because B-SVP-21 had no trigger (S0924/S1513/S2291/S1866 not read), a trigger-policy choice for pipeline-layer candidates, not a content loss."
+    },
+    {
+      "a_item": "LIST-1-06",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-17 (edge not admitted; only S1484 arrow and P2 note)",
+      "cause": "A-finding-questionable",
+      "evidence": "A's non-admission rests on R1 rows only (S1018 is not a required file of the label). B-KAC-08 triggered and read S1018 (U01 reading_state COMPLETE) and found the K1-K7 candidate at 119.64 and the exact seven-item preview that step-120 opens with (VERIFIED). The derivational relation A declined is therefore supported by the primary source; A's record is accurate about R1 but conservative about the relation."
+    },
+    {
+      "a_item": "LIST-1-07",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-33 (156A revival; 'later labels may denote this object')",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 (step-verify) P1 rows carry 155A/156A material (10 occurrences of '156A'), and S1524 was triggered and read whole by U01 (p3 l.23 'REVIVES provenance/authority material from Step 120's K1-K7 without citing it' is in the read file). B used the 143 (B-KAC-12) and 155A (B-KAC-17) revivals as evidence for other candidates; no candidate on uncited later recurrence as such, and the 156A instance was not surfaced. Evidence was in hand; the candidate was not formed."
+    },
+    {
+      "a_item": "LIST-1-08",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-36 (rule extended reflexively in S1551; objective change in S1444; S1413/S1566 instances)",
+      "cause": "not-represented-in-R1",
+      "evidence": "S1551's three P1 rows [335]-[337] concern steps 219-220, not the reflexive rule (secondary G48@S02 confirms P1 missed it); S1444, S1413 and S1566 appear in R1 only as source ids with MTIME/EXPLICIT dates and as stage-1 hit ids, with no text (G6/G13/G40@S02). Files needed: S1444, S1551, S1413, S1566 — none triggered. B-SVP-09 states the no-silent-repair rule from S1525/S1540 rows only."
+    },
+    {
+      "a_item": "LIST-1-11",
+      "scope": "residual of PARTIAL-MATCH with LIST-2-31 (absence-procedure result type_signature GENUINELY-UNDEFINED-AFTER-CENSUS)",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 (constitution) completeness_absences = [informal_meaning, type_signature, dependencies, assumptions]; all 86 rows have type_signature null. B-KAC-23 registered the neighbouring '0 of 7 operational definitions' (verifier claim, VERIFIED) but no candidate on the pipeline absence itself."
+    },
+    {
+      "a_item": "LIST-1-13",
+      "scope": "residual (a) of PARTIAL-MATCH with LIST-2-32: membership in V under a SHOULD rule",
+      "cause": "matching-failed",
+      "evidence": "B-KAC-03 / LIST-2-07 states exactly that a SHOULD-conjunct inside an intersection of MUSTs leaves the integrity predicate undefined for C5 (VERIFIED). The auditor paired L2-07 with L1-04 only; a second PARTIAL pair L1-13 <-> L2-07 is added below."
+    },
+    {
+      "a_item": "LIST-1-13",
+      "scope": "residual (b) of PARTIAL-MATCH with LIST-2-51: if rules depend on predecessors the intersection is partly redundant",
+      "cause": "candidate-generation-failed",
+      "evidence": "R1 rows [48] (120.53 graph, FORMALIZATION) and [57] (120.61 intersection) are both in the package; B-KAC-04 examined the graph edges and B-KAC-02 the operand types but neither drew the redundancy consequence. Minor inferential residual."
+    }
+  ],
+  "a_only_cause_counts": {
+    "candidate-generation-failed": 7,
+    "matching-failed": 2,
+    "none": 1,
+    "A-finding-questionable": 1,
+    "not-represented-in-R1": 1
+  },
+  "b_only_classification": [
+    {
+      "item_id": "LIST-2-01",
+      "candidate_id": "B-SVP-14",
+      "r3_verdict": "UNRESOLVED",
+      "class": "Strategy-A-omission",
+      "reason": "Inconsistent step/file/duplicate counts across S1516/S1532/S1535/S1538/S1540/S1541 — all A-read files; the inconsistency is documented in R1 rows; B UNRESOLVED only on cause (scope vs error)."
+    },
+    {
+      "item_id": "LIST-2-02",
+      "candidate_id": "B-SVP-02",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Checkpoint 'ill-posed' vs report 'inconsistent': S1535/S1539/S1540, all A-read; PARTIALLY-VERIFIED (ordering not established)."
+    },
+    {
+      "item_id": "LIST-2-03",
+      "candidate_id": "B-SVP-17",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Measure-theory absence (TV-F-062) with B's disconfirming Step 186/188 evidence: S1532/S1529, A-read; PARTIALLY-VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-04",
+      "candidate_id": "B-SVP-08",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Scale proliferation inside the programme: S1517/S1525/S1513/S1536/S1540, all A-read; VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-05",
+      "candidate_id": "B-KAC-10",
+      "r3_verdict": "UNRESOLVED",
+      "class": "unresolved",
+      "reason": "HOMONYM RP1170 unverifiable: 11-law map files absent from the substrate (B-KAC-10 UNRESOLVED). Pipeline observation from A's inputs, but not decidable either way."
+    },
+    {
+      "item_id": "LIST-2-06",
+      "candidate_id": "B-KAC-14",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "State machine/health vocabulary mismatch in S1022, a required A file; B VERIFIED by whole-file read; A registered nothing on it."
+    },
+    {
+      "item_id": "LIST-2-08",
+      "candidate_id": "B-KAC-16",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "duplicate-or-re-expression",
+      "reason": "MINOR restatement of S1023's verifier-integrity rules (object-level content), not a research finding."
+    },
+    {
+      "item_id": "LIST-2-09",
+      "candidate_id": "B-KAC-15",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "A1/A2 token collision and unscaled ActionRisk: S1023 (A required file) plus S1522 (A step-verify unit read it); B VERIFIED; not in A's register."
+    },
+    {
+      "item_id": "LIST-2-10",
+      "candidate_id": "B-KAC-25",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Pointer-layer architecture (S1020) plus verifier's live-repository claim (S1520 row, in A's inputs); OBSERVED-ONLY; the live-repo claim is reported, not verified by B."
+    },
+    {
+      "item_id": "LIST-2-11",
+      "candidate_id": "B-SVP-18",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Citation topology / uncited re-derivation: S1535/S1529/S1541/S1518/S1531/S1524, A-read; OBSERVED-ONLY-CONFIRMED."
+    },
+    {
+      "item_id": "LIST-2-12",
+      "candidate_id": "B-SVP-15",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Unscaled-product metrics across three bands: S1533/S1535/S1516/S1518/S1517, A-read; OBSERVED-ONLY-CONFIRMED."
+    },
+    {
+      "item_id": "LIST-2-13",
+      "candidate_id": "B-SVP-06",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Self-confirming experiment pattern with zero executions: S1518-S1521/S1533/S1535, A-read; OBSERVED-ONLY-CONFIRMED."
+    },
+    {
+      "item_id": "LIST-2-14",
+      "candidate_id": "B-KAC-26",
+      "r3_verdict": "UNRESOLVED",
+      "class": "unresolved",
+      "reason": "Research question on reflexive application of C5; B UNRESOLVED; not a finding either arm could settle from these files."
+    },
+    {
+      "item_id": "LIST-2-15",
+      "candidate_id": "B-SVP-19",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "duplicate-or-re-expression",
+      "reason": "MINOR restatement of the programme's survivor-distinction list (S1535 §8 etc.)."
+    },
+    {
+      "item_id": "LIST-2-16",
+      "candidate_id": "B-KAC-01",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "duplicate-or-re-expression",
+      "reason": "MINOR restatement of the 120.1 meta-criterion; B's 'iff' overstates the one-directional source (B's own verification notes this)."
+    },
+    {
+      "item_id": "LIST-2-18",
+      "candidate_id": "B-SVP-05",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Structural-asymmetry hypothesis (SemanticDemotionGoverned) and its over-reach: S1539/S1532/S1535/S1529, A-read; VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-19",
+      "candidate_id": "B-KAC-09",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "'Empirically derived' (P2/P3a note, A's inputs) vs zero empirical acts (S1520/S1521/S1484/S1522, all in A's inputs); OBSERVED-ONLY-CONFIRMED; A did not register the conflict."
+    },
+    {
+      "item_id": "LIST-2-20",
+      "candidate_id": "B-KAC-27",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "K3 vocabulary mixing dimensions: S1020 120.13/120.36 and S1524's 155A model, both A inputs; PARTIALLY-VERIFIED (the product-of-dimensions conclusion remains inference)."
+    },
+    {
+      "item_id": "LIST-2-21",
+      "candidate_id": "B-SVP-11",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Verifier vs P2 characterization of step-120 (with B's finding that S1520's 'three edges refuted' exceeds its own itemization): S1520 + P2 note, A inputs; PARTIALLY-VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-22",
+      "candidate_id": "B-KAC-13",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Birth anchor is an unmarked health table; tables disagree: S1021/S1022/S1522 and P3a births, all A inputs; PARTIALLY-VERIFIED (B corrects the verifier's 'no hypothetical marker' for 123.40)."
+    },
+    {
+      "item_id": "LIST-2-23",
+      "candidate_id": "B-SVP-13",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Supervisory corrections coexist with uncorrected band claims: S1521/S1528/S1524/S1519/S1535, A-read; OBSERVED-ONLY-CONFIRMED."
+    },
+    {
+      "item_id": "LIST-2-24",
+      "candidate_id": "B-KAC-24",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "duplicate-or-re-expression",
+      "reason": "MINOR restatement of the seven failure-propagation chains (S1020 120.54-120.60); B adds only an analysis-layer miscount note."
+    },
+    {
+      "item_id": "LIST-2-25",
+      "candidate_id": "B-KAC-05",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Minimality on 6 of 21 pairs, no sufficiency argument: S1020 whole-file census; VERIFIED; A had S1020 and registered nothing on it."
+    },
+    {
+      "item_id": "LIST-2-26",
+      "candidate_id": "B-KAC-11",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "potentially-new-finding",
+      "reason": "I1-I7 as partial uncited re-derivation of C1-C7 requires S1030 whole-file, which A did not read (P3a sampled one row); PARTIALLY-VERIFIED (4-5 of 7 mirror; no citation of 120)."
+    },
+    {
+      "item_id": "LIST-2-27",
+      "candidate_id": "B-KAC-22",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "02-FILES picks in-content example dates as best_historical_date (S1020 '2024', S1022 '2026-09-15'): checkable from A's inputs (02-FILES + S1020/S1022); OBSERVED-ONLY-CONFIRMED; A registered date defects only for label 2 (L1-10)."
+    },
+    {
+      "item_id": "LIST-2-28",
+      "candidate_id": "B-KAC-07",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Layers disagree on what the step-120 verdicts are: S1020 + S1484 + S1520/S1521, all A inputs; VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-29",
+      "candidate_id": "B-SVP-04",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "MCS-5 interpretation-dependence vs 'not a matter of interpretation': S1539/S1529/S1532, A-read; VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-30",
+      "candidate_id": "B-SVP-23",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "duplicate-or-re-expression",
+      "reason": "MINOR bookkeeping: verifier arithmetic recomputed and consistent; no research content."
+    },
+    {
+      "item_id": "LIST-2-35",
+      "candidate_id": "B-SVP-10",
+      "r3_verdict": "UNRESOLVED",
+      "class": "unresolved",
+      "reason": "Cross-label K4 correspondence is interpretive; B UNRESOLVED (S1020/S1524/S1528 not read in U02)."
+    },
+    {
+      "item_id": "LIST-2-37",
+      "candidate_id": "B-KAC-19",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "duplicate-or-re-expression",
+      "reason": "Cross-label siloing (S1484/S1524 contribute no label-1 rows) restates the residual fact in A's L1-02; recorded as a stage-2 correction (new PARTIAL pair), so it leaves B-ONLY."
+    },
+    {
+      "item_id": "LIST-2-40",
+      "candidate_id": "B-KAC-18",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Constitution lineage 121->140 as reported in S1522 (read by A's step-verify unit) with S1019 confirmation (S1019 not an A file); VERIFIED; the S1522 content was in A's inputs (decomposition loss across units)."
+    },
+    {
+      "item_id": "LIST-2-41",
+      "candidate_id": "B-SVP-24",
+      "r3_verdict": "UNRESOLVED",
+      "class": "unresolved",
+      "reason": "P3a sample-based verdicts and STEP-TRACE continuation need files outside the substrate; B UNRESOLVED."
+    },
+    {
+      "item_id": "LIST-2-42",
+      "candidate_id": "B-SVP-16",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Step-201 fork / successor capture / freeze drops three live-required terms: S1529/S1532/S1536, A-read; VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-43",
+      "candidate_id": "B-SVP-22",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Substrate anomalies (S1544 in files_touching, track tags, identifiers rendered as step numbers): P3a/R1/02-FILES, A inputs; OBSERVED-ONLY-CONFIRMED; A registered only the MTIME/SECONDARY-SYNTHESIS aspect (L1-10)."
+    },
+    {
+      "item_id": "LIST-2-44",
+      "candidate_id": "B-KAC-06",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "K8.1 numbering anomaly and F2 subset-of-sum notation: S1020; VERIFIED; A had S1020."
+    },
+    {
+      "item_id": "LIST-2-45",
+      "candidate_id": "B-SVP-07",
+      "r3_verdict": "VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Reflexive gap: the programme's own computations carry no command/output evidence: S1535/S1539/S1529, A-read; VERIFIED. Distinct from A's L1-08 (rule reflexivity)."
+    },
+    {
+      "item_id": "LIST-2-46",
+      "candidate_id": "B-SVP-01",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "Joint-satisfiability test: B's verification establishes that the clause encoding is never written down and two atoms lack verbatim sources (S1539, A-read); PARTIALLY-VERIFIED; the statement's 'each traced' clause is contradicted by B's own disconfirming evidence."
+    },
+    {
+      "item_id": "LIST-2-47",
+      "candidate_id": "B-KAC-21",
+      "r3_verdict": "VERIFIED",
+      "class": "duplicate-or-re-expression",
+      "reason": "MINOR restatement of the step-121 method and 0/7 table; B's S1019 read adds a detail ('To verify' is not one of the table's declared verdicts) but the item is object-level."
+    },
+    {
+      "item_id": "LIST-2-48",
+      "candidate_id": "B-SVP-03",
+      "r3_verdict": "PARTIALLY-VERIFIED",
+      "class": "Strategy-A-omission",
+      "reason": "MCS-2 derivation needs an unstated premise; repair confirmed: S1539/S1519, A-read; PARTIALLY-VERIFIED."
+    },
+    {
+      "item_id": "LIST-2-49",
+      "candidate_id": "B-KAC-20",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "P2 heading 'Step 121' over step-122 rows: P2 document + file titles, all A inputs (A's L1-02 even cites 'S1019, per the G0268 note'); OBSERVED-ONLY-CONFIRMED."
+    },
+    {
+      "item_id": "LIST-2-50",
+      "candidate_id": "B-SVP-12",
+      "r3_verdict": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+      "class": "Strategy-A-omission",
+      "reason": "Abandonment-without-supersession pattern: S1522/S1528/S1532/S1529/S1524, A-read; OBSERVED-ONLY-CONFIRMED."
+    }
+  ],
+  "b_only_class_counts": {
+    "Strategy-A-omission": 29,
+    "unresolved": 4,
+    "duplicate-or-re-expression": 7,
+    "potentially-new-finding": 1
+  },
+  "b_only_class_by_verdict": {
+    "Strategy-A-omission": {
+      "UNRESOLVED": 1,
+      "PARTIALLY-VERIFIED": 7,
+      "VERIFIED": 11,
+      "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE": 10
+    },
+    "duplicate-or-re-expression": {
+      "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE": 6,
+      "VERIFIED": 1
+    },
+    "potentially-new-finding": {
+      "PARTIALLY-VERIFIED": 1
+    },
+    "unresolved": {
+      "UNRESOLVED": 4
+    }
+  },
+  "secondary_p1gap": {
+    "total": 57,
+    "recovered_content_level": [
+      "G19@S02",
+      "G1@S01",
+      "G20@S02",
+      "G22@S02",
+      "G24@S02",
+      "G25@S02",
+      "G28@S02",
+      "G2@S01",
+      "G32@S02",
+      "G38@S02",
+      "G3@S01",
+      "G42@S02",
+      "G44@S02",
+      "G45@S02",
+      "G46@S02",
+      "G47@S02",
+      "G5@S01",
+      "G6@S01",
+      "G7@S01"
+    ],
+    "recovered_content_level_n": 19,
+    "recovered_strict_same_file_in_B_evidence": [
+      "G1@S01",
+      "G2@S01",
+      "G42@S02",
+      "G44@S02",
+      "G5@S01",
+      "G6@S01",
+      "G7@S01"
+    ],
+    "recovered_strict_n": 7,
+    "recovery_notes": {
+      "G1@S01": "B-KAC-01 (LIST-2-16) confirming quote 120.1 — same file, same sentence.",
+      "G2@S01": "B-KAC-04 (LIST-2-51) confirming quote 120.53 'The seven rules are not independent'; F1 dependence at 120.41 quoted by B-KAC-06 — same file.",
+      "G3@S01": "B-KAC-03 (LIST-2-07) quotes 120.38's reason ('some verification domains inherently require judgment') — same premise, same file, different sentence than the gap quote.",
+      "G5@S01": "B-KAC-12 (LIST-2-38) disconfirming quote and interpretation: v0.1 epistemic vs v1.0 implementation — same file S1524.",
+      "G6@S01": "B-KAC-12 confirming quote S1484 'C4 — Two constitutions, colliding version numbers' — same file, same sentence.",
+      "G7@S01": "B-KAC-12 / B-KAC-17 quotes from S1524 (mapping with C3/C7 absent; two live constitutions; four live namespaces) — same file.",
+      "G19@S02": "content-level only: B-KAC-17 disconfirming quote 'authority: verifier session (adversarial, independent)' from S1522, not S1518.",
+      "G20@S02": "content-level only: no-silent-repair rule stated in B-SVP-09 (LIST-2-36) from S1525/S1540 rows; S1518 not read.",
+      "G22@S02": "content-level only: B-SVP-13 quotes S1535 'five supervisory corrections recorded openly'; B-SVP-09 no-silent-repair; S1522's own line not surfaced although S1522 was read (label 1).",
+      "G24@S02": "content-level only: same self-description quoted by B-KAC-17 from S1522.",
+      "G25@S02": "content-level only: 'PASS labels are claims' in B-SVP-06/07 and no-silent-repair in B-SVP-09; S1531 not read.",
+      "G28@S02": "content-level only: no-silent-repair variant covered by B-SVP-09; S1536 not read.",
+      "G32@S02": "content-level only: 'never treat PASS as execution' is the substance of B-SVP-06/B-SVP-07 (S1535 '0 command lines with output'); S1537 not read.",
+      "G38@S02": "content-level only: hypotheses-not-authority / corrections explicit covered by B-SVP-13 and B-SVP-09; S1541 not read.",
+      "G42@S02": "B-SVP-09 statement includes 'Track A must not be contaminated by Track B or C' (R1 row S1517 [54]) — same file via R1 row, not via a read.",
+      "G44@S02": "B-SVP-09 r1 anchor S1525 [199] no-silent-repair; S1525 was read whole by U02 but this line was not quoted — same file.",
+      "G45@S02": "content-level only: NO SILENT REPAIR (S1521) covered by B-SVP-09; S1521 not read.",
+      "G46@S02": "content-level only: same self-description quoted by B-KAC-17 from S1522; S1529 read whole but this line not surfaced.",
+      "G47@S02": "content-level only: no-silent-repair variant covered by B-SVP-09; S1529 read whole but this line not surfaced."
+    },
+    "unrecovered": {
+      "file_not_triggered": {
+        "S1438": [
+          "G1@S02",
+          "G2@S02"
+        ],
+        "S1413": [
+          "G4@S02",
+          "G5@S02",
+          "G6@S02"
+        ],
+        "S1439": [
+          "G7@S02",
+          "G8@S02"
+        ],
+        "S1441": [
+          "G9@S02",
+          "G10@S02",
+          "G11@S02"
+        ],
+        "S1444": [
+          "G12@S02",
+          "G13@S02",
+          "G14@S02"
+        ],
+        "S1456": [
+          "G15@S02",
+          "G16@S02"
+        ],
+        "S1481": [
+          "G17@S02",
+          "G18@S02"
+        ],
+        "S1531": [
+          "G23@S02"
+        ],
+        "S1536": [
+          "G26@S02",
+          "G27@S02"
+        ],
+        "S1537": [
+          "G29@S02",
+          "G30@S02",
+          "G31@S02"
+        ],
+        "S1540": [
+          "G33@S02",
+          "G34@S02",
+          "G35@S02"
+        ],
+        "S1541": [
+          "G36@S02",
+          "G37@S02"
+        ],
+        "S1566": [
+          "G39@S02",
+          "G40@S02"
+        ],
+        "S1517": [
+          "G41@S02"
+        ],
+        "S1551": [
+          "G48@S02"
+        ],
+        "S1513": [
+          "G3@S02",
+          "G49@S02"
+        ]
+      },
+      "file_not_triggered_n": 34,
+      "file_triggered_but_content_not_surfaced": {
+        "S1484": [
+          "G4@S01 (per-rule derivational lineage C1<-073/109 ...; S1484 read whole by U01, not quoted)"
+        ],
+        "S1522": [
+          "G21@S02 ('No repository inspection performed'; S1522 read whole by U01 for label 1 only)"
+        ],
+        "S1525": [
+          "G43@S02 ('Complete a genuine start-to-end verification'; S1525 read whole by U02, informal meaning not surfaced)"
+        ]
+      },
+      "file_triggered_but_content_not_surfaced_n": 3,
+      "other": {
+        "G8@S01": "pipeline row-typing gap (120.38 not typed CORRECTION; K->C rename not a term change) — B-KAC-03 captured the modality but the typing gap is a P1-layer observation B did not make."
+      },
+      "other_n": 1
+    },
+    "note": "'content-level' = a B item or its evidence states the same substantive content, possibly from a different file (typically the no-silent-repair rule or the adversarial-verifier self-description); 'strict' = the same file appears in B's evidence with that content. Thirteen of the 19 content-level recoveries are variants of two programme rules (no silent repair; adversarial independent verifier), so the recovery is thin in substance. The gap set is by construction outside R1; 34 of 38 unrecovered records sit in files B never triggered (S1413, S1438, S1439, S1441, S1444, S1456, S1481, S1513, S1517, S1531, S1536, S1537, S1540, S1541, S1551, S1566)."
+  },
+  "m6": {
+    "r2_reads_of_untriggered_sids": 0,
+    "triggers_created_or_changed_after_freeze": 0,
+    "b_access_to_a_outputs": 0,
+    "selective_evidence_flagged": 0,
+    "m6_total": 0,
+    "evidence": [
+      "R1-CANDIDATES.jsonl / R1-TRIGGERS.jsonl sha256 recomputed = frozen values (22c70a8f…, 6a7ac1e3…); freeze note utc 2026-09-25T12:20:53Z; freeze commit 8f6b8b461 at 12:20:54Z.",
+      "PX0104-U01 READ-LOG: 29 page reads, 488,029 bytes, 10 sources, all in the U01 frozen set, full page coverage for every file, 0 refused, first read 12:21:40Z, last 12:25:43Z. PX0104-U02: 19 page reads, 342,159 bytes, 6 sources, all in the U02 frozen set, full coverage, 0 refused, 12:22:00Z-12:24:43Z. No read precedes the freeze; no triggered file was left unread.",
+      "R3 rows carry 'untriggered_observations' for files that looked relevant (step-152, step-155A, step-125/129, S1540, S1517, S1536, S1538, S1524-for-label-2, prompt files) and record them as not read; reading_state marks NOT-READ explicitly for candidate-cited files outside the trigger set.",
+      "No occurrence of 'PX0004' or 'register.jsonl' in R1-CANDIDATES, R1-TRIGGERS or R3 files; B statements reference only P1/P2/P3a/02-FILES layers and S-ids.",
+      "Disconfirming evidence is recorded where found (B-KAC-13 'For example' marker; B-SVP-01 missing encoding; B-SVP-17 Step 186/188; B-SVP-11 two vs three edges); no sign of one-sided quoting."
+    ],
+    "observations_not_counted_in_m6": [
+      "Verdict-scale drift: R3 uses 'OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE' (19 of 51 candidates) which is not in the pre-registered set VERIFIED/PARTIALLY-VERIFIED/NOT-VERIFIED/CONTRADICTED/UNRESOLVED (§4.4). These are untriggered candidates whose verdict 'rests on the R1 package' with incidental confirmation; for M2/M3 they should be treated as neither VERIFIED nor NOT-VERIFIED.",
+      "No candidate received NOT-VERIFIED or CONTRADICTED (0 of 51) although several carry disconfirming evidence against a clause of the statement (B-KAC-13, B-SVP-01, B-SVP-17, B-KAC-16's 'iff'). The verifier resolved these as PARTIALLY-VERIFIED; this is lenient self-grading rather than selective evidence, but it drives M3 toward 0 and should be read with that in mind.",
+      "Reading-rate note (informational): U01 consumed 488 KB in ~4 minutes and U02 342 KB in <3 minutes; consistent with an agent, not evidence of anything improper."
+    ]
+  },
+  "stage2_corrections": [
+    {
+      "change": "ADD pair",
+      "list1_item": "LIST-1-02",
+      "list2_item": "LIST-2-37",
+      "class": "PARTIAL-MATCH",
+      "evidence_strength": "EQUAL",
+      "reason": "Both record that S1484/S1524 are stage-2 files contributing no label-1 rows (A: hence no D4 roll-up effect; B: cross-label siloing). One-to-many for L1-02 (already PARTIAL with L2-38). L2-37 leaves B-ONLY; B-ONLY count becomes 40 for metric purposes (the 41-item classification above still lists it as duplicate-or-re-expression)."
+    },
+    {
+      "change": "ADD pair",
+      "list1_item": "LIST-1-13",
+      "list2_item": "LIST-2-07",
+      "class": "PARTIAL-MATCH",
+      "evidence_strength": "LIST-2-STRONGER",
+      "reason": "L1-13(a) 'how membership in V is decided when C5 is a SHOULD rule' is L2-07's central claim (VERIFIED, anchored 120.66/120.38/120.61). One-to-many for L1-13; no change to L1-13's PARTIAL status."
+    },
+    {
+      "change": "RECLASSIFY pair",
+      "list1_item": "LIST-1-05",
+      "list2_item": "LIST-2-39",
+      "from": "PARTIAL-MATCH",
+      "to": "FOUND-BOTH",
+      "evidence_strength": "LIST-1-STRONGER (unchanged)",
+      "reason": "Every claim in L1-05 (M1-M7 denotes the audited gate in S0924/S1513 and Step-281 missingness states; not the label) is present in B-SVP-21; B's extra kt-tuple claim is additional B content, not a partial correspondence of the A finding. Stage-2 class was too strict for recall purposes."
+    },
+    {
+      "change": "NO CHANGE",
+      "items": "materiality (stage 1)",
+      "reason": "Seeing the B inputs does not alter any §5 classification."
+    },
+    {
+      "change": "NO CHANGE",
+      "items": "UNSUPPLIED-BY-OWN-EVIDENCE remains 0",
+      "reason": "B-KAC-16 ('iff') and B-SVP-01 ('each traced') carry an overstated clause but the items' core content is supported and the R3 rows record the disconfirmation."
+    }
+  ],
+  "m1_view": {
+    "material_primary_findings": 13,
+    "stage2_as_filed": {
+      "FOUND-BOTH": 2,
+      "PARTIAL": 8,
+      "M1": 0.462
+    },
+    "with_corrections": {
+      "FOUND-BOTH": 3,
+      "PARTIAL": 7,
+      "M1": 0.5
+    },
+    "note": "M1 is the orchestrator's to compute; this is the auditor's arithmetic on its own matching. As filed, M1 = 0.462 (< 0.50, H0 range); with the L1-05 reclassification M1 = 0.500 (exactly the H0 boundary; H1 requires >= 0.80). Either way the pre-registered H1 condition is not met on the MATERIAL primary set. Over the P1-gap secondary set: 19/57 = 0.333 content-level, 7/57 = 0.123 strict."
+  },
+  "caveats": [
+    "'Strategy-A-omission' is applied as instructed (B finding whose content lay in A's inputs but was not registered). A's 13-item research register is not A's only output (§7 mentions object records as a by-product, which this auditor cannot see under the PX0004-* rule); some B-ONLY items may sit in A's object records rather than being true omissions.",
+    "A's inputs are taken as the union of the S01 and S02 units; the pre-registration notes 4 cross-unit losses, and several 'omissions' (L2-09, L2-40, L2-19, L2-28) involve S1520/S1521/S1522 content read by A's step-verify unit but not surfaced in A's constitution register — decomposition loss, not necessarily reading loss.",
+    "Missed A content clusters in two places: births/origin and programme-level self-description (S1413, S1438-S1444, S1551, S1566), and pipeline-defect findings that R1 exposed but R1 did not turn into candidates (type-signature absences, census template terms, row typing). The latter is a candidate-generation weakness, not a substrate blind spot."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+ "decued_scores": {
+  "n": 36,
+  "missing": [],
+  "type_4class": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "type_act_binary": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "source_act_operation": {
+   "agreement": 0.833,
+   "kappa": 0.796
+  },
+  "dual_YES": {
+   "P1": 27,
+   "P2": 27,
+   "both": 27
+  },
+  "unknown_share": {
+   "P1": 0.056,
+   "P2": 0.056
+  },
+  "vs_audit": {
+   "P1": {
+    "agreement": 0.889,
+    "kappa": 0.797
+   },
+   "P2": {
+    "agreement": 0.889,
+    "kappa": 0.797
+   }
+  },
+  "type_disagreements": {},
+  "counts": {
+   "P1": {
+    "ACT_OBSERVATION": 23,
+    "UNKNOWN": 2,
+    "NORM_STATEMENT": 11
+   },
+   "P2": {
+    "ACT_OBSERVATION": 23,
+    "UNKNOWN": 2,
+    "NORM_STATEMENT": 11
+   },
+   "audit": {
+    "ACT_OBSERVATION": 19,
+    "UNKNOWN": 3,
+    "NORM_STATEMENT": 13,
+    "GENERIC_PRACTICE": 1
+   }
+  }
+ },
+ "cue_sensitivity_agreement": {
+  "P3~P1": 0.917,
+  "P3~P2": 0.917,
+  "P4~P1": 0.917,
+  "P4~P2": 0.917
+ },
+ "labels_changed_vs_cued": {
+  "ASSIGN the retired number R-90": {
+   "cued_P1": "NORM_STATEMENT",
+   "decued_P3": "ACT_OBSERVATION",
+   "decued_P4": "ACT_OBSERVATION"
+  },
+  "RAISE L493-B (single occurrence)": {
+   "cued_P1": "UNKNOWN",
+   "decued_P3": "ACT_OBSERVATION",
+   "decued_P4": "ACT_OBSERVATION"
+  },
+  "REGISTER constitutional decision (rule)": {
+   "cued_P1": "GENERIC_PRACTICE",
+   "decued_P3": "ACT_OBSERVATION",
+   "decued_P4": "ACT_OBSERVATION"
+  }
+ }
+}

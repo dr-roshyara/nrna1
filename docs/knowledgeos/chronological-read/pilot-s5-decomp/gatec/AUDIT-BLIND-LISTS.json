@@ -1,0 +1,3409 @@
+{
+ "LIST-1": [
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "OBSERVATION",
+   "statement": "Frozen pair verdict RP1172 (knowledgeos-architecture-constitution-v01 / kos-implementation-constitution: EXTENSION, basis INFERRED, \"downstream of\") is consumed unchanged by the roll-up. Evidence visible here bears partly against it: S1524 reports v1.0 contradicting this constitution by omission and two live constitutions without supersession, while also reporting a partial mapping of the v0.1 rules onto v1.0. The label is escalated for H-02 consideration; no status is altered.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "**CONTRADICTS 120 by omission** on C3 and C7.",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "There is no supersession, so there are two live constitutions.",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "Mapping the seven v0.1 rules onto v1.0: C1→(partially C-013, C-029)",
+     "source_id": "S1524"
+    }
+   ],
+   "item_id": "LIST-1-01"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "OBSERVATION",
+   "statement": "Two later reports (S1484, S1524) state that this constitution and the Step 152 Implementation Architecture Constitution v1.0 coexist with colliding names and version/ID namespaces and no supersession or lineage edge, and S1524 states that v1.0 omits C3 and C7. These are claims of later sources about the relation between two constitutional artifacts; they do not change what S1020 states and they are not rows of this label, so they do not enter the semantic_status roll-up (D4 is evaluated on the label rows).",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "C4 — Two constitutions, colliding version numbers.",
+     "source_id": "S1484"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "No document in the batch reconciles them",
+     "source_id": "S1484"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "**CONTRADICTS 120 by omission** on C3 and C7.",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "There is no supersession, so there are two live constitutions.",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "Four live constitutional namespaces at end of band; none cross-references any other.",
+     "source_id": "S1524"
+    }
+   ],
+   "item_id": "LIST-1-02"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "METHODOLOGICAL-DEFICIENCY",
+   "statement": "The stage-1 term list for this label contains notation templates (\"step-verify-nnn-nnn\", \"tv-f-nnn\", \"vc-1..vc-12\") that appear to be searched as literal strings: every raw hit with term_index 6 is the literal \"TV-F-nnn\" (S1438, S1439, S1441, S1540), and the templates step-verify-nnn-nnn and vc-1..vc-12 produced no raw hit. Row sources whose text carries concrete instances (S1521 \"artifact: TV-F-042 … TV-F-055\"; S1524 \"STEP-VERIFY-141-158\" and \"## KnowledgeOS theory-verification programme · end-of-series seam\") have no stage-1 hit for this label. Stage-1 recall for labels whose notations are templates is therefore bounded by literal template occurrence, a false-negative mechanism in the census. For this label the effect on resolutions is nil (all row sources were read whole at step 1 and none supplies a type signature), but a GENUINELY-UNDEFINED-AFTER-CENSUS elsewhere could rest on it.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "artifact: TV-F-042 … TV-F-055",
+     "source_id": "S1521"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "## KnowledgeOS theory-verification programme · end-of-series seam",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "Finding IDs: **TV-F-nnn**",
+     "source_id": "S1540"
+    }
+   ],
+   "item_id": "LIST-1-03"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "OBSERVATION",
+   "statement": "Inside S1020 the object changes term and one rule changes modality before it is frozen: the candidate set \"KOS Constitution={K1..K7}\" (§120.33) becomes \"KnowledgeOS Architecture Constitution v0.1\" with rules renamed C1-C7 (§120.66), and K5 is stated with MUST as a candidate (§120.19) but as SHOULD in the constitutional rule (§120.38) and in C5, with a stated reason. The P1 rows record both states but type neither as CORRECTION or term change, so the label carries no CONTRADICTION/CORRECTION row type.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "Where a claim is deterministically testable, authoritative assurance MUST be based on reproducible verification evidence.",
+     "source_id": "S1020"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "for the deterministic mechanism because some verification domains inherently require judgment.",
+     "source_id": "S1020"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "# KnowledgeOS Architecture Constitution v0.1",
+     "source_id": "S1020"
+    }
+   ],
+   "item_id": "LIST-1-04"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "OBSERVATION",
+   "statement": "The label's notation \"M1-M7\" does not denote the programme. In S0924 and in the audit S1513 it denotes the seven properties of a proposed Mathematical Review Gate (M1 Type correctness … M7 Computational feasibility), an object the programme audits; in S1860, S1866, S1938, S2291 and S2828 it denotes seven missingness states of Step 281 (M1 NotAsked … M7 Orphan). All 10 stage-2 hit keys on this notation are FALSE-HIT on every dimension except the four S1513 keys, whose file is itself a programme report. The notation was attached to the label because the programme names the audited gate; it carries two referents, neither being the label.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "We should test the architecture against seven properties.",
+     "source_id": "S0924"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "RESULT: M1-M7 all distinguishable = True",
+     "source_id": "S1866"
+    },
+    {
+     "anchor": "page 2, file 6 section: the M1–M7 review gate of the audited meta file (unit PX0004-U03 hit context)",
+     "evidence_kind": "CORPUS",
+     "source_id": "S1513"
+    }
+   ],
+   "item_id": "LIST-1-05"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "OBSERVATION",
+   "statement": "A candidate derivational edge to knowledgeos-control-loop-evidence-test-model (Step 119) was not admitted as a dependency edge: the only source text is the S1484 step-trace sequence arrow after the Step 119 record, and mapping Step 119 to that label rests on the family_md (P2) note, not on a source row stating the dependency. S1020 itself says only that it consolidates previous experiments. The relation is carried by pair RP1168 (REFINEMENT, SOURCE-CLAIMED-ONLY).",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "V: `CONTROL-LOOP MODEL: PASS`. CLASS: CONCEPTUAL_ONLY. → 120.",
+     "source_id": "S1484"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "We now consolidate the previous experiments.",
+     "source_id": "S1020"
+    }
+   ],
+   "item_id": "LIST-1-06"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "OBSERVATION",
+   "statement": "S1524 (2026-08-30) reports that the content of this constitution recurs later in the corpus without citation: Step 143 rules near-verbatim, 156A and 155A reviving it under other ID namespaces. If so, later labels may denote this object or parts of it; this is a later report and does not alter the Step 120 state.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "near-verbatim the C1–C7 of Step 120's already-existing \\\"KnowledgeOS Architecture Constitution v0.1\\\"",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "REVIVES provenance/authority material from Step 120's K1–K7 without citing it",
+     "source_id": "S1524"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "REVIVES Step 120's epistemic constitution under a third ID namespace",
+     "source_id": "S1524"
+    }
+   ],
+   "item_id": "LIST-1-07"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "OBSERVATION",
+   "statement": "A no-silent-repair rule recurs across the programme's artifacts from its proposal to its latest mandate (S1413 \"neither Claude session should be allowed to unilaterally change the other\"; S1518 \"No silent repair applied.\"; S1540 \"No silent repair (absolute)\"; S1566 \"Do not promote candidate theory to verified theory.\"). In S1551 the programme extends the rule to its own claims (\"a claim is indexed to the moment of observation — applies to the programme's own claims\"), and in S1444 it changes its objective from producing registers to constructing the final theory, with verification as the justification mechanism (timeline CHANGES-DEFINITION). The rule stays stable while the objective changes.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "SOURCE RESULT / VERIFIER OBSERVATION / POSSIBLE REPAIR kept separate throughout. No silent repair applied.",
+     "source_id": "S1518"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "**The rule this programme applies to the corpus — a claim is indexed to the moment of\nobservation — applies to the programme's own claims, and is applied here.**",
+     "source_id": "S1551"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "The goal is NOT to produce an increasingly large collection of verification registers.\n\nThe registers are intermediate research instruments.",
+     "source_id": "S1444"
+    }
+   ],
+   "item_id": "LIST-1-08"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "GAP",
+   "statement": "No type or signature of the programme object is given anywhere in the capture or in the 39 whole-file readings: absences.type_signature = GENUINELY-UNDEFINED-AFTER-CENSUS (stage-1 search DISCOVERY-POPULATION, 2734 files, 12 firewalled skipped; 33 hit keys all UNSUPPLIED-DIMENSION or FALSE-HIT). What is missing: a typed description of the programme (its inputs, outputs such as TV-F findings and verdict vocabularies, and its state). Resolving evidence: a corpus source defining the programme's artifacts as typed objects. This is a finite-capture statement, not a claim that none exists.",
+   "evidence": [
+    {
+     "anchor": "whole file; stage-2 disposition type_signature UNSUPPLIED-DIMENSION (unit PX0004-U03)",
+     "evidence_kind": "CORPUS",
+     "source_id": "S1537"
+    },
+    {
+     "anchor": "whole file; stage-2 disposition type_signature UNSUPPLIED-DIMENSION (unit PX0004-U04)",
+     "evidence_kind": "CORPUS",
+     "source_id": "S1441"
+    }
+   ],
+   "item_id": "LIST-1-09"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "OBSERVATION",
+   "statement": "The label's P1 rows begin with the Phase 2C band reports (S1513 onward), but whole-file readings of stage-2 files that are not row sources show the programme earlier: S1413 proposes it (\"Start the **KnowledgeOS Theory Verification Programme** at Level 1.\"), S1438 and S1439 (EXPLICIT 2026-08-29, SECONDARY-SYNTHESIS) are its Level-1 plan and checkpoint, and S1441, S1444, S1456, S1481 (PRIMARY, MTIME-only) are its phase prompts. None can move a birth (not rows; MTIME or SECONDARY-SYNTHESIS), so all five births remain BIRTH-UNRESOLVED-MTIME-ONLY. Treating S1513 as the label's beginning would describe a later phase (step-by-step deep verification, Phase 2C) as the programme's origin.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "Start the **KnowledgeOS Theory Verification Programme** at Level 1.",
+     "source_id": "S1413"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "**VERIFY SESSION · 2026-08-29 · report structure per supervisory instruction §21 (A–L)**",
+     "source_id": "S1439"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "You are conducting the next phase of the **KnowledgeOS Theory Verification Programme**.",
+     "source_id": "S1441"
+    }
+   ],
+   "item_id": "LIST-1-10"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "GAP",
+   "statement": "No typed signature for the constitution or its seven properties is found: the absence procedure resolves type_signature GENUINELY-UNDEFINED-AFTER-CENSUS (object record absences.type_signature). This gap record references that result rather than duplicating it.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "\\{K1,K2,K3,K4,K5,K6,K7\\}",
+     "source_id": "S1020"
+    }
+   ],
+   "item_id": "LIST-1-11"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "METHODOLOGICAL-DEFICIENCY",
+   "statement": "The capture sets lifecycle_candidate CONTESTED for this label from contested_by_own_contradiction_type, but the label's 82 CONTRADICTION-type rows record contradictions the programme found in the audited corpus steps (e.g. S1513 \"VC-1 — `U(H)` type contradiction (027 §13 vs 031 §24).\"; S1516 TV-F-040). For a verification or audit label, a row's type describes the finding's object, not the label. The lifecycle rule transfers the audited object's contradictions to the auditor; D4 for semantic_status is correctly not met here, but the lifecycle field disagrees with it.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "VC-1 — `U(H)` type contradiction (027 §13 vs 031 §24).",
+     "source_id": "S1513"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "**Under mandate §6 this is `UNRESOLVED / NO SUPERSESSION EVIDENCE`, not supersession.**",
+     "source_id": "S1516"
+    }
+   ],
+   "item_id": "LIST-1-12"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "OBSERVATION",
+   "statement": "S1020 defines integrity as an intersection of seven properties (§120.61) and states that the rules are not independent, with a dependency diagram (§120.53). Two points are open in the source: (a) the universe of which P..F are subsets, and how membership in V is decided when C5 is a SHOULD rule, are not defined; (b) the diagram meant to show the dependence of the seven rules has nodes that do not coincide with the seven rules (it contains Evidence, which is not one of C1-C7). If each rule depends on its predecessors in the diagram, the intersection is partly redundant, which the source does not discuss.",
+   "evidence": [
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "KnowledgeOSIntegrity\n=\nP\\cap A\\cap E\\cap T\\cap V\\cap R\\cap F",
+     "source_id": "S1020"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "The seven rules are not independent.",
+     "source_id": "S1020"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "Traceability  Evidence",
+     "source_id": "S1020"
+    },
+    {
+     "evidence_kind": "CORPUS",
+     "quote": "A platform satisfying six of seven is not necessarily constitutionally sound.",
+     "source_id": "S1020"
+    }
+   ],
+   "item_id": "LIST-1-13"
+  }
+ ],
+ "LIST-2": [
+  {
+   "label": "step-verify-programme",
+   "kind": "METHOD-ISSUE",
+   "statement": "Live-corpus measurement instability: step and file counts change within the session (205 -> 207 -> 215 -> 216 -> 218 steps; 465 -> 472/473 files; Step 208 recorded NON-EXISTENT, then written at 01:18 and retained as a time-indexed observation). Inconsistent counts coexist in R1: 472 files (S1538, S1540) vs 473 (S1532, S1535); 13 byte-identical duplicate groups (S1538) vs 28 duplicate hash groups 'in the phase_measure_theory directory' (S1541) vs 4-5 pairs earlier (S1528); 'six total files' containing measure vocabulary (S1538) vs four pre-step files plus one orphan (S1532).",
+   "verification": "UNRESOLVED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§1",
+      "quote": "465 → 473 files; 205 → 215 steps.",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§3",
+      "quote": "**208 = NON-EXISTENT / NO SOURCE FOUND**",
+      "source_id": "S1525"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[26]",
+      "source_id": "S1516",
+      "what": "207 steps, Step 208 NON-EXISTENT, 465 files"
+     },
+     {
+      "anchor": "p1_rows[320], [324]",
+      "source_id": "S1540",
+      "what": "Step 208 written at 01:18 kept as time-indexed; 472 files, 218 steps"
+     },
+     {
+      "anchor": "p1_rows[293], [296], [302]",
+      "source_id": "S1538",
+      "what": "13 duplicate groups; four of six measure-vocabulary files; count 218"
+     },
+     {
+      "anchor": "p1_rows[329]",
+      "source_id": "S1541",
+      "what": "28 duplicate hash groups elsewhere in directory"
+     },
+     {
+      "anchor": "p1_rows[261]",
+      "source_id": "S1532",
+      "what": "473 files; four pre-step files plus the orphan"
+     }
+    ]
+   },
+   "interpretation": "No trigger (R1 status NOT-ESTABLISHED). The files read report 473 files / 215 steps (S1532, S1535) and growth 465→473 / 205→215 (S1535). S1525 records 208 as a forward reference without a source. Whether the discrepant counts in S1538/S1540/S1541 are scope differences or errors cannot be decided without those files. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-01"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "CONTRADICTION",
+   "statement": "Internal disagreement in the programme on joint satisfiability: the checkpoint says it is 'NOT YET INVESTIGATED' and reclassifies it as 'currently ill-posed' (only 1 of ~500 invariants decidable); the Joint Satisfiability Report explicitly rejects that framing and answers NO (inconsistent); the charter records the report as delivered ahead of schedule. Both S1535 and S1539 carry explicit date 2026-08-30; S1540's best date is 2026-08-29 although it records the 2026-08-30 report.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§6",
+      "quote": "Joint satisfiability (§11) NOT YET INVESTIGATED.",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§6",
+      "quote": "The question is not open — it is currently **ill-posed**, and saying\n  so is the honest result.",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§9 Stage J",
+      "quote": "J — invariant joint satisfiability | **blocked — currently ill-posed** (§6)",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "front-matter",
+      "quote": "mandate: prompts/20260830_0139_prompt §19 (checkpoint after each major band)",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§1",
+      "quote": "**A naive reading concludes the satisfiability question is ill-posed.** That reading is too weak, and I\nreject it.",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "front-matter",
+      "quote": "phase: mandate 20260830_0150 §19 · 20260830_0157 §15.G",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§11 / §19",
+      "quote": "# 11. JOINT SATISFIABILITY",
+      "source_id": "S1525"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "front-matter",
+      "quote": "date: 2026-08-30",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "front-matter",
+      "quote": "date: 2026-08-30",
+      "source_id": "S1539"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[274]",
+      "source_id": "S1535",
+      "what": "'Joint satisfiability NOT YET INVESTIGATED ... currently ill-posed, and saying so is the honest result'"
+     },
+     {
+      "anchor": "p1_rows[304]",
+      "source_id": "S1539",
+      "what": "'A naive reading concludes the satisfiability question is ill-posed. That reading is too weak, and I reject it'"
+     },
+     {
+      "anchor": "p1_rows[318]",
+      "source_id": "S1540",
+      "what": "report delivered ahead of scheduled position"
+     },
+     {
+      "anchor": "source_meta S1535, S1539, S1540",
+      "source_id": "02-FILES",
+      "what": "S1535 2026-08-30 SECONDARY-SYNTHESIS; S1539 2026-08-30 PRIMARY; S1540 best 2026-08-29 SECONDARY-SYNTHESIS"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: the disagreement exists verbatim — S1535 calls joint satisfiability 'ill-posed' and 'blocked'; S1539 names that reading and rejects it. S1535 contains no annotation, forward pointer or supersession note referring to a Joint Satisfiability Report (whole file read). Both files carry date 2026-08-30 with no time of day. ORDERING, NOT ESTABLISHED: S1535 answers mandate 20260830_0139 (whose §11 = joint satisfiability and §19 = checkpoint, which matches S1525's section numbering), while S1539 answers mandates 20260830_0150/0157. Reading the mandate IDs as timestamps suggests S1535 was written under the earlier mandate. That is an inference from identifiers; neither file states which was written first. S1539 does not mention S1535 by name, so the 'naive reading' it rejects is not explicitly attributed. The S1540 part of the candidate ('delivered ahead of schedule') is NOT-READ, because S1540 is not triggered. Disconfirmation ('S1535 post-dates S1539 and still calls it ill-posed') cannot be decided from whole-file evidence, and 'already references the report' is NOT met.",
+   "item_id": "LIST-2-02"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "CONCEPT",
+   "statement": "Measure-theory absence: no numbered step (0 of 215) contains σ-algebra, measurable space, measure space or Lebesgue; occurrences sit in four pre-Step-001 research files (Era 0, 2026-08-25) and one unnumbered orphan whose evidence measure μ_E is reportedly a measure on the time index, not on the evidence set; Dempster-Shafer appears only through step-027; the directory is named phase_measure_theory; 'Phase' itself may never be defined. Ranked first among the findings that determine the theory's status.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "TV-F-062",
+      "quote": "**VERIFIER MEASUREMENT (first-hand, corpus-wide grep over all 473 files):**",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "TV-F-062 table",
+      "quote": "| `σ-algebra` | **1** |",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "TV-F-062",
+      "quote": "**And the decisive result: of the numbered steps 001–215, NOT ONE contains `σ-algebra`, `measurable space`,\n`measure space`, or `Lebesgue`.**",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "TV-F-062",
+      "quote": "Every occurrence sits in four pre-step research files dated 2026-08-25\n(before Step 001 existed) plus the unnumbered orphan `Yes. This is the point where I would mov` and one\nprompt file.",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "TV-F-062",
+      "quote": "Dempster–Shafer belief functions appear in\n22 files, but among *numbered steps* only in **003, 004, 005, 01x, 025-series, and 027**",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "FILE 1 DERIVATION VERDICT",
+      "quote": "`μ_E=Σα_iδ_{t_i}` is a measure on the *time* line, not on the *evidence set* `E`",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "§5 item 1",
+      "quote": "1. **TV-F-062 (CRITICAL) — the phase is named after mathematics no numbered step contains.**",
+      "source_id": "S1535"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "FILE 2 FORMAL OBJECTS",
+      "quote": "`μ_O = Σ w_i δ_{t_i}` — the sole measure-theoretic import, immediately quarantined",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "TV-F-062 table",
+      "quote": "| `filtration` | 4 |",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "TV-F-062",
+      "quote": "among *numbered steps* only in **003, 004, 005, 01x, 025-series, and 027**",
+      "source_id": "S1532"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[261] (TV-F-062)",
+      "source_id": "S1532",
+      "what": "0 of 215 steps; 'the single most consequential finding'"
+     },
+     {
+      "anchor": "p1_rows[295], [296]",
+      "source_id": "S1538",
+      "what": "four-era chronology; measure theory only in Era 0"
+     },
+     {
+      "anchor": "p1_rows[235]",
+      "source_id": "S1529",
+      "what": "orphan file measure-theoretic apparatus, μ_E ill-typed"
+     },
+     {
+      "anchor": "p1_rows[179]",
+      "source_id": "S1524",
+      "what": "zero tuple/sigma/measure/probability hits in 141-158"
+     },
+     {
+      "anchor": "p1_rows[61]",
+      "source_id": "S1517",
+      "what": "'Phase' may never have been formally defined"
+     },
+     {
+      "anchor": "p1_rows[277]",
+      "source_id": "S1535",
+      "what": "TV-F-062 ranked first"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: S1532 records the terms (σ-algebra, sigma-algebra ASCII, measurable space, measure space, Lebesgue, Radon, filtration), the scope (all 473 files) and per-term file counts. It locates occurrences in four pre-step files, the orphan and one prompt file, and gives the D-S analysis (22 files; numbered occurrences end at step 027). NOT RECORDED: per-file hit lists (only an aggregate description), and any search for the synonyms or notation named in the trigger ('measure' alone, μ, 'probability space', 'Borel', 'measurable function'). D-S step list includes an imprecise '01x'. DISCONFIRMING (cross-file): S1529 shows numbered Step 186 containing a Dirac measure μ_O = Σ w_i δ_{t_i}, a measure-theoretic object in μ-notation that the four-term search does not capture. The same S1532 table counts 'filtration' in 4 files, and S1529 quotes a filtration at Step 188.30, so at least one measure-theoretic concept (filtrations are σ-algebra sequences) appears in a numbered step. INTERPRETATION: the narrow claim (no numbered step contains the four named terms) is consistent with every file read. The broader phrasing ('measure theory never enters the numbered corpus at all', S1539 §5; 'no numbered step contains any of it', S1535 row 15) is contradicted in its strong form by Step 186's μ_O and Step 188's filtration as reported by S1529. The disconfirmation criterion 'search omits obvious synonyms or notation' is met. 'Ranked first' is confirmed (S1535 §5 item 1). The 'Phase may never be defined' part rests on S1517 — NOT-READ.",
+   "item_id": "LIST-2-03"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "CONTRADICTION",
+   "statement": "The programme's own classification scales multiply without explicit mappings in R1: a 9-rung computability ladder (S1517) vs a 7-rung ladder (S1525) vs the 5-level ladder applied in S1513; an 8-value evidence classification (S1517); an 8-value derivation status (S1517); an 8-category statement classification (S1525); a 12-category final-theory classification (S1536); a 4-layer and a 5-tier lettered evidence hierarchy and a 5-value proposition status (S1540); a 7-value question-evolution status (S1517). This is the scale-proliferation defect (e.g. '49 distinct scales ... zero explicit mappings' in 101-120) the programme charges the corpus with.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§7",
+      "quote": "DEFINED\n↓\nINPUTS KNOWN\n↓\nCONSTRUCTIBLE\n↓\nCOMPUTABLE\n↓\nACTUALLY COMPUTED\n↓\nTESTABLE\n↓\nACTUALLY TESTED",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§7",
+      "quote": "Do not collapse these levels.",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§12",
+      "quote": "Every final statement must belong to one of these categories:",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§16",
+      "quote": "1. ACTUALLY_EXECUTED\n2. REPRODUCIBLY_EXECUTED\n3. EXECUTED_BUT_LIMITED",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§4",
+      "quote": "* RESOLVED\n* PARTIALLY_RESOLVED\n* REFRAMED\n* UNRESOLVED\n* CONTRADICTED\n* SUPERSEDED",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "FILE 1 COMPUTABILITY",
+      "quote": "**COMPUTABILITY:** DEFINED ONLY. (`μ_O` is CONSTRUCTIBLE given `{(t_i,w_i)}`; `Φ`, `D_ij`, `Bel/Pl` are NOT COMPUTABLE AS CLAIMED",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "(f) category counts",
+      "quote": "`ACTUALLY_EXECUTED` 0 · `EXECUTED_PARTIAL` 0 · `REPRODUCIBLE_WITNESS` 0 · `CONCEPTUAL-ONLY` 17 · `PROCESS-STATUS-ONLY` 0 · `NOT_EXECUTED` 5",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "(a)",
+      "quote": "**Does any file map one scale onto another? No — zero explicit mappings exist in the 20 files.**",
+      "source_id": "S1520"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[37], [41], [48], [50]",
+      "source_id": "S1517",
+      "what": "evidence, computability (9 rungs), derivation, question-status scales"
+     },
+     {
+      "anchor": "p1_rows[191], [193]",
+      "source_id": "S1525",
+      "what": "8-category statement classification; 7-rung ladder 'Do not collapse these levels'"
+     },
+     {
+      "anchor": "p1_rows[3]",
+      "source_id": "S1513",
+      "what": "ladder used: DEFINED / INPUTS_KNOWN / CONSTRUCTIBLE / COMPUTABLE / TESTABLE"
+     },
+     {
+      "anchor": "p1_rows[288]",
+      "source_id": "S1536",
+      "what": "twelve-category final-theory classification"
+     },
+     {
+      "anchor": "p1_rows[316], [323], [325]",
+      "source_id": "S1540",
+      "what": "4-layer hierarchy, A-E evidence tiers, 5-value proposition status"
+     },
+     {
+      "anchor": "p1_rows[139] (TV-F-053)",
+      "source_id": "S1521",
+      "what": "'49 distinct scales across the 101-120 band with zero explicit mappings'"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED (whole-file census of S1525): S1525 introduces at least five scales. These are the 6-value resolution status (§4), the 10-way derivation-outcome list (§6), the 7-rung computability ladder (§7), the 8-category statement classification (§12) and the 7-value test classification (§16), plus the D1-D10 definition tests (§5). No statement anywhere in S1525 maps any of these onto, or declares them superseding, an earlier scale, and S1525 names no earlier scale. So the disconfirmation criterion is NOT met. S1525 also carries unmapped overlap internally: ACTUALLY_EXECUTED and AUTHOR_ASSERTION-type values occur in both §12 and §16. ADDITIONAL CROSS-FILE EVIDENCE (files read): S1529, working under this programme, applies scales that match neither S1525 §7 nor §16: computability 'DEFINED ONLY / INPUTS NOT KNOWN / CONSTRUCTIBLE / COMPUTABLE UNDER RESTRICTIONS / NOT COMPUTABLE AS CLAIMED / NOT REALIZED / TESTABLE'; test verdicts 'ACTUALLY_EXECUTED / EXECUTED_PARTIAL / REPRODUCIBLE_WITNESS / CONCEPTUAL-ONLY / PROCESS-STATUS-ONLY / NOT_EXECUTED'; evolution 'RESOLVES / PARTIALLY_RESOLVES / REFRAMES / UNRESOLVED / SUPERSEDES / REVIVES / CONTRADICTS', with REVIVES having no S1525 counterpart. This is the scale-proliferation defect the programme charges the corpus with (S1520 (a)). NOT-READ: the S1517, S1513, S1536 and S1540 scales in the candidate statement remain R1-only. That S1525 is 'later' than S1517 is not established from whole-file evidence; S1525 carries no date.",
+   "item_id": "LIST-2-04"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RELATIONSHIP",
+   "statement": "HOMONYM verdict against kos-constitutional-invariant-map (B0006, '11-law core', 'philosophically-derived'): the separation is source-claimed only through the extraction agent's why_grouped note; no file of the 11-law map is present in the R1 source metadata, so the relationship cannot be checked from R1.",
+   "verification": "UNRESOLVED",
+   "evidence": {
+    "confirming": [],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "RP1170",
+      "source_id": "P3a",
+      "what": "HOMONYM, basis CORROBORATED, type PARTIALLY-COMPATIBLE"
+     },
+     {
+      "anchor": "G0268, G0300",
+      "source_id": "P2a",
+      "what": "POSSIBLY-RELATION groups"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, and the 11-law kos-constitutional-invariant-map (B0006) files are outside this substrate. The HOMONYM verdict cannot be checked. Not-found is not non-existence.",
+   "item_id": "LIST-2-05"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "MECHANISM",
+   "statement": "Constitutional state machine and exception mechanism: UNKNOWN -> TESTED -> {PASS -> VERIFIED; FAIL -> REMEDIATING -> TESTED; FAIL -> EXCEPTION -> EXPIRED -> TESTED}, with a governed Exception object (Authority, Reason, Scope, ValidUntil) so that a violation under exception reads 'C7=ExceptionActive' not 'PASS'; Regression(Ci) on PASS->FAIL; recursive control cycle Constitution -> Check -> Finding -> Governance -> Remediation -> Check; health is time-indexed Health(Ci,t). In R1 the health vocabulary (VERIFIED/WARNING/PARTIAL) and the state-machine vocabulary (UNKNOWN/TESTED/PASS/FAIL/REMEDIATING/EXCEPTION/EXPIRED/VERIFIED) do not coincide.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "123.51",
+      "quote": "UNKNOWN ... TESTED ... PASS      FAIL ... REMEDIATING ... VERIFIED ... FAIL ──► EXCEPTION ──► EXPIRED ──► TESTED",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "123.51",
+      "quote": "This is a candidate lifecycle.",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "123.48",
+      "quote": "Exception must contain: Authority Reason Scope ValidUntil.",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "123.49",
+      "quote": "Expected: C7=ExceptionActive. Not: C7=PASS.",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "123.40",
+      "quote": "C1 Provenance       VERIFIED ... C4 Temporal         WARNING ... C7 Feedback         PARTIAL",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "123.41",
+      "quote": "Health(C_i,t_1) may differ from: Health(C_i,t_2).",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "123.53",
+      "quote": "Constitution \\rightarrow Check \\rightarrow Finding \\rightarrow Governance \\rightarrow Remediation \\rightarrow Check.",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "122.56",
+      "quote": "C_1: PASS\\rightarrow FAIL. This is: ConstitutionalDrift.",
+      "source_id": "S1021"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[78]",
+      "source_id": "S1022",
+      "what": "state machine and 'PASS or FAIL or EXCEPTION or UNKNOWN'"
+     },
+     {
+      "anchor": "p1_rows[77]",
+      "source_id": "S1022",
+      "what": "Exception(Authority, Reason, Scope, ValidUntil); C7=ExceptionActive"
+     },
+     {
+      "anchor": "p1_rows[79], [80]",
+      "source_id": "S1022",
+      "what": "Regression(Ci); SV01 -> Finding(C1Violation); recursive cycle"
+     },
+     {
+      "anchor": "p1_rows[76]",
+      "source_id": "S1022",
+      "what": "Health(Ci,t) with VERIFIED/WARNING/PARTIAL"
+     },
+     {
+      "anchor": "p1_rows[73]",
+      "source_id": "S1021",
+      "what": "ConstitutionalDrift PASS->FAIL as observable event"
+     }
+    ]
+   },
+   "interpretation": "The mechanism is confirmed in full: state machine, Exception tuple, ExceptionActive, Regression(C_1) at 123.42, recursive loop, and time-indexed Health. A whole-file read of S1022 found no mapping between health values (VERIFIED/WARNING/PARTIAL; and PASS/WARN/PARTIAL at 123.46) and machine states (UNKNOWN/TESTED/PASS/FAIL/REMEDIATING/EXCEPTION/EXPIRED/VERIFIED). Only VERIFIED is shared. WARNING and PARTIAL have no machine state, and 'ExceptionActive' is a third form of EXCEPTION. The disconfirmation needs both a mapping and illustrative marking. The 123.40 table is marked 'For example', but no mapping exists, so disconfirmation fails. There are two unreconciled vocabularies, confirmed.",
+   "item_id": "LIST-2-06"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "CONTRADICTION",
+   "statement": "Modal inhomogeneity of the constitution: candidate K5 is stated with MUST (120.19) but Constitutional Rule K5 deliberately uses SHOULD (120.38); the conjunctive integrity formula (120.61) and the constitutionality criterion (violation changes semantic character, 120.1) both presuppose invariants that cannot be legitimately violated. A SHOULD-conjunct inside an intersection of MUSTs leaves the integrity predicate's semantics undefined for C5.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.66 C5",
+      "quote": "Deterministically testable claims should be established through reproducible evidence.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.38",
+      "quote": "We deliberately use: SHOULD rather than: MUST for the deterministic mechanism because some verification domains inherently require judgment.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.19",
+      "quote": "Where a claim is deterministically testable, authoritative assurance MUST be based on reproducible verification evidence.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.61",
+      "quote": "The intersection matters.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "record 120",
+      "quote": "C5 Deterministic Assurance (deliberately SHOULD, not MUST)",
+      "source_id": "S1484"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.19 (p1_rows[10])",
+      "source_id": "S1020",
+      "what": "K5 candidate: 'authoritative assurance MUST be based on reproducible verification evidence'"
+     },
+     {
+      "anchor": "120.38 (p1_rows[31])",
+      "source_id": "S1020",
+      "what": "Rule K5: 'SHOULD rather than MUST because some verification domains inherently require judgment'"
+     },
+     {
+      "anchor": "120.21 (p1_rows[13])",
+      "source_id": "S1020",
+      "what": "K5 scoped DeterministicWherePossible"
+     },
+     {
+      "anchor": "G0268 note",
+      "source_id": "P2",
+      "what": "'C5 Deterministic Assurance [SHOULD not MUST]'"
+     },
+     {
+      "anchor": "p1_rows[124]",
+      "source_id": "S1520",
+      "what": "'mixing a SHOULD-modal conjunct with six MUSTs'"
+     }
+    ]
+   },
+   "interpretation": "The frozen C5 at 120.66 uses 'should'. The other six frozen rules use 'must'. A whole-file read of S1020 found no passage relating C5's modality to 120.1 (the constitutionality criterion) or to 120.61 (the intersection). The inhomogeneity is therefore unreconciled in the source. Interpretation: 120.19's MUST is itself conditional ('Where a claim is deterministically testable'), and 120.21 scopes K5 as 'DeterministicWherePossible'. A scoped MUST would have been an available reconciliation, but the frozen text did not adopt it. The disconfirmation condition (C5 as MUST, or the intersection scoped to MUST-rules) is not met.",
+   "item_id": "LIST-2-07"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RULE",
+   "statement": "Verifier-integrity rules: the mechanism verifying a constitutional rule must not be able to silently disable it (agent rewriting a failing check to always PASS must be detected as VerifierIntegrity=FAIL); TestResult must be traceable to ExecutionContext and source version; assurance chain RuleVersion -> SourceVersion -> CheckerVersion -> Execution -> Result; stale-snapshot PASS = EvidenceContextMismatch.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "124.44",
+      "quote": "The mechanism responsible for verifying a constitutional rule must not be able to silently disable that rule.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.45",
+      "quote": "Instead of fixing the underlying issue, it modifies the check to always return PASS. Expected: VerifierIntegrity=FAIL.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.47",
+      "quote": "TestResult \\rightarrow ExecutionContext.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.48",
+      "quote": "EvidenceContextMismatch.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.49",
+      "quote": "RuleVersion \\rightarrow SourceVersion \\rightarrow CheckerVersion \\rightarrow Execution \\rightarrow Result",
+      "source_id": "S1023"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[85]",
+      "source_id": "S1023",
+      "what": "constitutional self-protection, Experiment 9"
+     },
+     {
+      "anchor": "p1_rows[84]",
+      "source_id": "S1023",
+      "what": "test integrity, Experiment 10, assurance chain"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. All the observed elements are confirmed verbatim by incidental whole-file reading of S1023, which was read for T-14.",
+   "item_id": "LIST-2-08"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RULE",
+   "statement": "Agent-governance rules attached to C2: A2 'technical capability MUST NOT be interpreted as organizational authority'; the boxed central invariant 'No agent may convert its own observation, inference, or recommendation into authoritative organizational knowledge without the required validation and authority'; and the corollary 'governance must be enforced below the LLM instruction layer'. The verification layer reports that step-124's A0-A6 autonomy-class ladder reuses the tokens A1/A2 already bound as invariant names, and that step-124 also contains an ill-typed ActionRisk = Impact x Irreversibility x Scope (not visible in label-1 rows).",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "124.7",
+      "quote": "A2: Technical capability MUST NOT be interpreted as organizational authority.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.10",
+      "quote": "### A0 — Read ... ### A1 — Analyze ... ### A2 — Verify ... ### A6 — Change organizational authority",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.12",
+      "quote": "Experiment A2 ... Agent runs architecture tests. A2.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.51",
+      "quote": "No agent may convert its own observation, inference, or recommendation into authoritative organizational knowledge without the required validation and authority.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.52",
+      "quote": "Governance must be enforced below the LLM instruction layer.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "124.32",
+      "quote": "A useful conceptual dimension is: ActionRisk= Impact \\times Irreversibility \\times Scope.",
+      "source_id": "S1023"
+     },
+     {
+      "anchor": "121.37",
+      "quote": "A1: Agent-local operating artifacts MUST NOT silently become an alternative authority for organizational knowledge.",
+      "source_id": "S1019"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[82]",
+      "source_id": "S1023",
+      "what": "A2 rule; autonomy action-specific"
+     },
+     {
+      "anchor": "p1_rows[83]",
+      "source_id": "S1023",
+      "what": "boxed central AI-governance invariant; enforcement below instruction layer"
+     },
+     {
+      "anchor": "p1_rows[152]",
+      "source_id": "S1522",
+      "what": "'A0-A6 autonomy-class ladder reuses letter-number tokens already bound as invariant names A1/A2'; ActionRisk ill-typed"
+     },
+     {
+      "anchor": "p1_rows[272] (TV-F-072)",
+      "source_id": "S1533",
+      "what": "ActionRisk one of three independent products of unscaled quantities"
+     }
+    ]
+   },
+   "interpretation": "A-token census for S1023: invariant A2 (124.7), autonomy classes A0-A6 (124.10, with A2 = Verify), and experiments numbered A1-A5 (124.11-124.15). That is a third use: 'Experiment A1' is class A0, 'Experiment A2' is class A2, 'Experiment A5' is class A6. No namespace is declared. Invariant A1 is defined in S1019 (121.37), so A1 and A2 each carry at least two meanings across adjacent files, and a citation of 'A2' is ambiguous. ActionRisk appears once, as 'a useful conceptual dimension', with no scale, unit or ordering. It is an unscaled product, as the verifier claims. The disconfirmation condition (disambiguated namespaces, or scaled operands) is not met. The A3 collision reported by S1522 (step-125) is outside this read set.",
+   "item_id": "LIST-2-09"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "DDD-STRUCTURE",
+   "statement": "Pointer-layer architecture: Constitution -> Architecture -> Implementation layering extended to agent instructions (AGENTS.md -> Operating contract -> KnowledgeOS -> Authoritative knowledge); .claude/ owns AgentBehavior, not AuthoritativeEngineeringKnowledge; .codex/ symmetric; KnowledgeOS > LocalMemory absent explicit override authority; AgentCache must preserve Source/Version/Freshness and Cache != Authority. The verification layer reports that the step-105 FAIL scenario (.claude/ containing authoritative architecture knowledge) is true of the repository hosting the corpus.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.46",
+      "quote": "Constitution \\rightarrow Architecture \\rightarrow Implementation.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.48",
+      "quote": "It owns: AgentBehavior. It should not become: AuthoritativeEngineeringKnowledge.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.49",
+      "quote": "This preserves the pointer-layer architecture.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.51",
+      "quote": "Cache \\neq Authority.",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.46-120.51 (p1_rows[40]-[47])",
+      "source_id": "S1020",
+      "what": "layering, .claude/.codex symmetry, K8.1, Cache != Authority"
+     },
+     {
+      "anchor": "p1_rows[123]",
+      "source_id": "S1520",
+      "what": "verifier: .claude/CLAUDE.md (36KB) contains authoritative architecture knowledge; step never inspected the directory"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. The corpus-side elements are confirmed in S1020. The verifier's claim about the live repository (S1520) is out of scope for corpus-file verification and is not assessed.",
+   "item_id": "LIST-2-10"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "PATTERN",
+   "statement": "Citation topology: steps cite almost exclusively their immediate predecessor (steps 208-215: 7 individual citations in 11,287 lines, 6 of 7 to the preceding step; steps 067-082 cite nothing below step 66; step 097 cites no step), which yields systematic uncited re-derivation (Unknown != False seven times, Capability != Authority four times; one authorization rule minted seven times under seven IDs; ≈169 invariant IDs across 15 families in 141-158 with zero cross-family references; ≈500 invariants in ≈25 registries, one decidable).",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§6",
+      "quote": "No file in 067–082 cites below\n  step 66; step-097 cites no step at all; step-205 cites only step-204.",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "(g) item 5",
+      "quote": "**Each of 202–205 cites `n−1` and nothing it displaces.**",
+      "source_id": "S1529"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[328]",
+      "source_id": "S1541",
+      "what": "'the band is a chain, not a network'"
+     },
+     {
+      "anchor": "p1_rows[78]",
+      "source_id": "S1518",
+      "what": "'sliding 1-3-step memory window'"
+     },
+     {
+      "anchor": "p1_rows[240]",
+      "source_id": "S1531",
+      "what": "repeated independent re-derivations"
+     },
+     {
+      "anchor": "p1_rows[175] (VJ-9)",
+      "source_id": "S1524",
+      "what": "one rule minted seven times"
+     },
+     {
+      "anchor": "p1_rows[275]",
+      "source_id": "S1535",
+      "what": "~500 invariant IDs, ~25 registries, I_Dependency the only decidable predicate"
+     }
+    ]
+   },
+   "interpretation": "No trigger. The chain-like citation pattern is corroborated for 202-205 and at checkpoint level. The S1541 quantitative claim (7 citations in 11,287 lines) is not read. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-11"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "PATTERN",
+   "statement": "Recurrent measurement-theory defect: headline metrics formed as products or weighted sums of quantities with no declared scale, estimand or admissible transformation (step-124 ActionRisk = Impact x Irreversibility x Scope; step-184 EpistemicDebt = Importance x Recoverability x Missingness; step-206 B(i,j) = Σ w_i D_i), committed independently in three bands, each unaware of the others, against the corpus's own rejection of scalar aggregation (step-003, step-019, step-025c-1) and its explicit refusals to fabricate aggregate metrics (steps 080, 081, 114).",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§9 Stage G",
+      "quote": "**Three products over unscaled quantities found in three separate bands** (124 `ActionRisk`, 184 `EpistemicDebt`, 206 `B(i,j)`), none aware of the others",
+      "source_id": "S1535"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[272] (TV-F-072)",
+      "source_id": "S1533",
+      "what": "three products over unscaled quantities"
+     },
+     {
+      "anchor": "p1_rows[279]",
+      "source_id": "S1535",
+      "what": "confirmed at checkpoint level"
+     },
+     {
+      "anchor": "p1_rows[24], [32]",
+      "source_id": "S1516",
+      "what": "B(i,j) not established; self-catch 'one level short'"
+     },
+     {
+      "anchor": "p1_rows[73]",
+      "source_id": "S1518",
+      "what": "step-080 'a number does not become mathematically meaningful merely because it is precise'"
+     },
+     {
+      "anchor": "p1_rows[57]",
+      "source_id": "S1517",
+      "what": "measurement-theory checklist"
+     }
+    ]
+   },
+   "interpretation": "No trigger. Corroborated at checkpoint level; the step files are not read. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-12"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "PATTERN",
+   "statement": "Self-confirming experiment pattern: per-band tallies (≈350 boxed verdicts in 067-082 with 0 Expected/Result divergences, VF-14; 636 experiments / 100% PASS in 083-100; 126/126 in 101-104; ≈470 per-experiment PASS tokens in 101-120; ≈1,490 / ≈1,433 PASS in 067-120; ≈1,600 then ≈1,900 corpus-wide at ≈99% PASS) with zero executions. Inference drawn: a suite with a near-100% pass rate, no negative control and no experiment able to diverge from its own Expected is 'evidence the suite cannot fail, not evidence of correctness'. Four genuine falsification passes are identified (steps 169, 175, 178, 181).",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "VERIFIER SUMMARY",
+      "quote": "Steps 101–104 record **126 experiments, 126 PASS, 0 FAIL**.",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "§2",
+      "quote": "**Four genuine falsification passes exist:** steps **169, 175, 178, 181**.",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§2",
+      "quote": "a ~1,900-experiment suite with a ~99% pass rate, no negative control, and no\nexperiment whose observed value can differ from its stated expectation is not evidence of correctness.",
+      "source_id": "S1535"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[75]",
+      "source_id": "S1518",
+      "what": "VF-14 100% expectation-confirmation"
+     },
+     {
+      "anchor": "p1_rows[83]",
+      "source_id": "S1519",
+      "what": "636-experiment suite, FAIL 0 times"
+     },
+     {
+      "anchor": "p1_rows[103]",
+      "source_id": "S1520",
+      "what": "126 experiments, 126 PASS"
+     },
+     {
+      "anchor": "p1_rows[127]",
+      "source_id": "S1521",
+      "what": "~1,490 experiments, ~1,433 PASS, 0 executed"
+     },
+     {
+      "anchor": "p1_rows[282]",
+      "source_id": "S1535",
+      "what": "~1,900 experiments, ~99% pass, nine fabricated result artifacts"
+     },
+     {
+      "anchor": "p1_rows[266] (TV-F-077)",
+      "source_id": "S1533",
+      "what": "only four genuine adversarial falsification passes"
+     }
+    ]
+   },
+   "interpretation": "No trigger. The band tallies are R1 observations. The inference 'cannot fail' is abductive and remains a methodological hypothesis. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-13"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RESEARCH-QUESTION",
+   "statement": "Is the step-verify-programme's evidence discipline (ACTUALLY_EXECUTED vs AUTHOR_ASSERTION, PASS != Proof, execution-context provenance) a reflexive application of the constitution's C5 / test-integrity rules to the corpus itself? R1 shows the same distinctions in both labels but no row in which the programme cites C1-C7 as its own standard.",
+   "verification": "UNRESOLVED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "3. BAND VERDICT",
+      "quote": "The band's own §121.53 (`ArchitectureClaim ≠ ImplementationFact`), §128.30 (`AFR-10 ...`) ... constitute a correct and unusually well-articulated epistemic discipline.",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "6. VERIFIER SUMMARY",
+      "quote": "The corpus violates its own rules on itself.",
+      "source_id": "S1524"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[84], [85]",
+      "source_id": "S1023",
+      "what": "test integrity and verifier integrity in label 1"
+     },
+     {
+      "anchor": "p1_rows[198]",
+      "source_id": "S1525",
+      "what": "'PASS != PROOF ... Test-specified != Test-executed' in label 2"
+     },
+     {
+      "anchor": "p1_rows[43]",
+      "source_id": "S1517",
+      "what": "Claim -> Required computation -> Existing implementation -> Execution evidence -> Result -> Scope"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered; this is a research question. Incidental reading shows S1522 and S1524 judging the corpus by the corpus's own rules (121.53, AFR-10, H-PROV-001, KOS-EPI-*). In the two files read, neither cites C1-C7 as the verifier's own standard. With no census of the verification programme, the norm/application relationship stays unresolved.",
+   "item_id": "LIST-2-14"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "DISTINCTION",
+   "statement": "Recurring surviving distinctions the programme endorses across bands: Conformance != GovernanceApproval (step-155, the only 141-158 file with no invalid inference); TechnicalVerification != GovernanceConformance (step-117); SelfVerification != SelfGovernance with Cap/Perm/Auth/Resp as four non-interchangeable relations (steps 124, 187); Instruction != Enforcement (step-150); NotFound != DoesNotExist (step-109); AuthorityType = f(Context, ClaimType) (step-143); history not identifiable from current state (step-175 witness 100->80 vs 120->80).",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§8",
+      "quote": "step-155 §155.7 `Conformance ≠ GovernanceApproval`",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§8",
+      "quote": "step-109 §109.70 `NotFound ≠ DoesNotExist`",
+      "source_id": "S1535"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[167], [171], [190]",
+      "source_id": "S1524",
+      "what": "155, 150, 143"
+     },
+     {
+      "anchor": "p1_rows[110], [121]",
+      "source_id": "S1520",
+      "what": "109 NotFound != DoesNotExist; 117 technical vs organizational correctness"
+     },
+     {
+      "anchor": "p1_rows[152]",
+      "source_id": "S1522",
+      "what": "124 self-verification vs self-governance"
+     },
+     {
+      "anchor": "p1_rows[218]",
+      "source_id": "S1529",
+      "what": "187 Cap/Perm/Auth/Resp"
+     },
+     {
+      "anchor": "p1_rows[245]",
+      "source_id": "S1531",
+      "what": "175 identifiability witness"
+     },
+     {
+      "anchor": "p1_rows[136]",
+      "source_id": "S1521",
+      "what": "survivor list across 067-120"
+     }
+    ]
+   },
+   "interpretation": "No trigger. The survivor list is corroborated in the checkpoint; the underlying step files are not read. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-15"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "DEFINITION",
+   "statement": "Meta-criterion for constitutionality: an invariant is constitutional iff its violation changes the system's intended semantic character (ConstitutionalInvariant != CodingConvention), paired with a technology-substitution test (VectorDB->GraphDB, Claude->AnotherAgent, Podman->Kubernetes leave the constitution unchanged) and an explicit exclusion list of eleven technologies.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.1",
+      "quote": "If this property is violated, the system no longer has the intended semantic character.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.1",
+      "quote": "Use PostgreSQL ... is not necessarily constitutional.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.67",
+      "quote": "use a graph database; use PostgreSQL; use vector embeddings; use RAG; use Kafka; use MCP; use Claude; use Codex; use a specific framework; use a specific UI; use a specific API.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.68",
+      "quote": "Therefore the rules are genuinely semantic rather than technological.",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.1 (p1_rows[0])",
+      "source_id": "S1020",
+      "what": "definition ConstitutionalInvariant != CodingConvention, 'Use PostgreSQL' vs provenance requirement"
+     },
+     {
+      "anchor": "120.67 (p1_rows[63])",
+      "source_id": "S1020",
+      "what": "eleven deliberately excluded technology/tool choices"
+     },
+     {
+      "anchor": "120.68 (p1_rows[64])",
+      "source_id": "S1020",
+      "what": "three substitution tests, each 'No' change -> rules 'genuinely semantic'"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. The observed anchors are confirmed by incidental whole-file reading of S1020, which was read for T-01..T-08: eleven exclusions and three substitution tests (VectorDB->GraphDB, Claude->AnotherAgent, Podman->Kubernetes). The candidate's 'iff' strengthens the source. The source gives only one direction: violation implies a loss of semantic character. It never states the converse as a criterion. The three substitutions are narrated instances, not a general procedure.",
+   "item_id": "LIST-2-16"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RELATIONSHIP",
+   "statement": "Origin of K1-K7: P1 records a source-claimed extension of a 'Step 119 K1-K7 candidate'; P3a RP1168 (basis SOURCE-CLAIMED-ONLY) says the constitution extends knowledgeos-control-loop-evidence-test-model (S1018) K1-K7; P2 simultaneously describes the constitution as 'independently and empirically derived from the Steps 101-119 architecture-conformance arc'. The verifier describes step-119 as the 'control-loop evidence test' that rebinds C0-C6 to control-loop stages. R1 contains no row from S1018 itself.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "119.64",
+      "quote": "K1 — Provenance ... K2 — Authority ... K3 — Verification ... K4 — Temporal validity ... K5 — Epistemic separation ... K6 — Agent boundary ... K7 — Traceability ... These are candidate constitutional invariants.",
+      "source_id": "S1018"
+     },
+     {
+      "anchor": "119.66",
+      "quote": "Again, this is the architectural test model, not yet a claim that every stage exists today.",
+      "source_id": "S1018"
+     },
+     {
+      "anchor": "Step 120 preview",
+      "quote": "Provenance + Authority + EpistemicStatus + TemporalValidity + DeterministicVerification + Traceability + Feedback",
+      "source_id": "S1018"
+     },
+     {
+      "anchor": "119.38",
+      "quote": "C0 — Observe ... C1 — Detect ... C6 — Learn",
+      "source_id": "S1018"
+     },
+     {
+      "anchor": "120.33",
+      "quote": "KOS\\ Constitution = \\{K1,K2,K3,K4,K5,K6,K7\\}",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "119.1",
+      "quote": "The next step is to test whether the actual KnowledgeOS/EKS ecosystem closes the loop in practice.",
+      "source_id": "S1018"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "framing anchor (p1_rows[70])",
+      "source_id": "S1020",
+      "what": "lineage_claims: SOURCE-CLAIMED-EXTENSION of 'Step 119 K1-K7 candidate'"
+     },
+     {
+      "anchor": "RP1168",
+      "source_id": "P3a",
+      "what": "REFINEMENT, basis SOURCE-CLAIMED-ONLY, both notations list 'K1..K7'"
+     },
+     {
+      "anchor": "G0268/G0269 note",
+      "source_id": "P2",
+      "what": "'independently and empirically derived from the Steps 101-119 ... arc'; 'Extends ... (S1018) K1-K7'"
+     },
+     {
+      "anchor": "p1_rows[106]",
+      "source_id": "S1520",
+      "what": "step-119 (control-loop evidence test) rebinds C0-C6"
+     },
+     {
+      "anchor": "source_meta S1018",
+      "source_id": "02-FILES",
+      "what": "explicit date 2026-08-28, PRIMARY"
+     }
+    ]
+   },
+   "interpretation": "S1018 does contain a K1-K7 candidate constitution (119.64). Item by item against step-120's K1-K7: K1 Provenance = K1. K2 Authority = K2. S1018 K3 Verification ≈ step-120 K5. K4 Temporal = K4. S1018 K5 Epistemic ≈ step-120 K3. S1018 K6 Agent boundary has no step-120 counterpart (partly absorbed into 120.35's K2 gloss, later reappearing as A2 in S1023). S1018 K7 Traceability ≈ step-120 K6. Step-120 K7 Feedback is new as a K-rule, but S1018's closing preview already names Feedback, and that preview is the exact seven-item working set step-120 opens with. So step-120 is a refinement/renumbering of S1018's list (SOURCE-CLAIMED-EXTENSION and the RP1168 REFINEMENT are supported), not an independent derivation. The derivation method is scenario/design reasoning: 'Suppose...', and 119.66 disclaims existence. P2's 'independently and empirically derived' is contradicted on both words. The opening sentence of 119.1 announces an empirical test that the file does not perform. S1018 also binds C0-C6 to control-loop stages, which collides with C1-C7 and corroborates the verifier's 'rebinds C0-C6' note.",
+   "item_id": "LIST-2-17"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "HYPOTHESIS",
+   "statement": "Structural-asymmetry hypothesis: the invariant registry governs only implicit semantic elevation (I_73 / 196.54) and nothing governs implicit semantic demotion, and this 'single missing dual invariant explains every silent term-drop / abandonment': 201-A freeze deletions (Determination, Witness, Conflict-as-object), Zero at 186->187, Ambiguous/Candidate, the Golden Trace apparatus, the C1-C7 constitution, Dempster-Shafer, measure theory. The atom SemanticDemotionGoverned is 'the only atom in the core with no corpus source'.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§5",
+      "quote": "`SemanticDemotionGoverned` is the only atom in the core with **no corpus source**.",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§5",
+      "quote": "This is not an inconsistency — it is a **gap that makes every silent deletion in the corpus formally\npermissible**",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§5",
+      "quote": "**One missing dual invariant explains every abandonment this programme has found.**",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§7 repair 6",
+      "quote": "This is the single highest-leverage repair available, because it converts every\n   silent abandonment from permissible to detectable.",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "TV-F-065",
+      "quote": "One missing dual invariant explains all of them.",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "§6",
+      "quote": "**Structural asymmetry (root cause of every silent deletion):**",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "Special Task 2 (iii) item 4",
+      "quote": "**Semantic *demotion* by silence is the exact dual and is not excluded by the rule as written — a genuine gap in the constitution.**",
+      "source_id": "S1529"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "§2 / §3",
+      "quote": "atoms: 14   models enumerated: 16,384",
+      "source_id": "S1539"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[225]",
+      "source_id": "S1529",
+      "what": "freeze audit; elevation governed, demotion ungoverned"
+     },
+     {
+      "anchor": "p1_rows[257] (TV-F-065)",
+      "source_id": "S1532",
+      "what": "'One missing dual invariant explains all of them'"
+     },
+     {
+      "anchor": "p1_rows[314]",
+      "source_id": "S1539",
+      "what": "unifies seven abandonment incidents incl. C1-C7; SemanticDemotionGoverned has no corpus source"
+     },
+     {
+      "anchor": "p1_rows[313]",
+      "source_id": "S1539",
+      "what": "highest-leverage repair: demotion dual to I_73"
+     },
+     {
+      "anchor": "p1_rows[276]",
+      "source_id": "S1535",
+      "what": "restated as corpus-wide root cause"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: SemanticDemotionGoverned is one of the 14 atoms of the enumerated core (§2 table), but it belongs to none of the five MCS (§3/§4). The report presents it as a separate 'sixth finding', not a conflict. The argument given is permissibility: absence of a demotion invariant makes silent deletions 'formally permissible'. The report then escalates this to 'explains every abandonment', and S1535 escalates it to 'root cause'. No causal argument beyond permissibility appears in S1539, S1532, S1535 or S1529. INTERPRETATION: the candidate's concern is confirmed in both directions. (1) The verifier-constructed atom does enter the enumerated core, but because it is in no MCS it cannot contribute to the 0-model result, so the satisfiability verdict does not rest on it. (2) The explanatory wording ('explains', 'root cause') exceeds the supporting argument (a missing prohibition permits deletion; it does not explain why deletions happened). Disconfirmation: the atom is in no MCS (not met); the report uses causal-sounding language, but its only argument is permissibility.",
+   "item_id": "LIST-2-18"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "METHOD-ISSUE",
+   "statement": "The P2/P3a characterization 'empirically derived' (used as positive homonym evidence in RP1170) conflicts with the verification layer's finding that steps 101-120 contain zero empirical acts (no commit SHAs, shell invocations, real repository paths or test output across all 20 files). The descriptor appears to originate in an extraction-agent note, not in a quoted source statement.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "119.66",
+      "quote": "Again, this is the architectural test model, not yet a claim that every stage exists today.",
+      "source_id": "S1018"
+     },
+     {
+      "anchor": "SECTION 2",
+      "quote": "Files containing executed-tool output, command transcripts, real file listings, commit hashes, or test runs | **0**",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "record 109",
+      "quote": "all 34 \"experiments\" are hypothetical vignettes ... No directory was listed, no file read, no command run.",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "(e) EXECUTION-EVIDENCE TABLE",
+      "quote": "ZERO EMPIRICAL ACTS",
+      "source_id": "S1522"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "RP1170 homonym_positive_evidence",
+      "source_id": "P3a",
+      "what": "'different derivation method (empirical Steps-101-119 conformance arc vs earlier philosophical derivation)'"
+     },
+     {
+      "anchor": "p1_rows[117]",
+      "source_id": "S1520",
+      "what": "'Zero empirical acts occur in any of the 20 files'"
+     },
+     {
+      "anchor": "p1_rows[134] (TV-F-055)",
+      "source_id": "S1521",
+      "what": "'Steps 101-120 announce the transition to empirical work twenty times and perform zero empirical acts'"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. Incidental whole-file readings of triggered files confirm the substrate half of the conflict. S1484 is a batch trace over steps 067-158, including the 101-119 arc, and reports zero executed PASSes and zero files with command/test output. S1018 (step 119) disclaims existence itself. Whether the 'empirically derived' descriptor originates in an extraction-agent note and not in a source statement is a pipeline-provenance question. P2/P3a are not substrate files, so that part is not checkable here.",
+   "item_id": "LIST-2-19"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "HYPOTHESIS",
+   "statement": "K3's candidate epistemic vocabulary (Observed, Imported, Asserted, Inferred, Proposed, Verified, Approved, Superseded) mixes several orthogonal dimensions (epistemic origin, authority 'Approved', verification 'Verified', temporal 'Superseded'); the later step-155A four-orthogonal-dimension claim model (TruthStatus / EpistemicStatus / AuthorityStatus / VerificationStatus), which the verifier rates the best formal object in the corpus, would decompose it. So C3, C2, C4 and C5 may be dimensions of one claim-status product rather than independent invariants.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.13",
+      "quote": "A practical vocabulary could be: Observed Imported Asserted Inferred Proposed Verified Approved Superseded.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.13",
+      "quote": "But we should only implement states that have real semantic value.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.36",
+      "quote": "Inference,\\ observation,\\ verification,\\ proposal,\\ and\\ authority\\ MUST\\ remain\\ distinguishable.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "Step 155A FORMAL OBJECT",
+      "quote": "**Four orthogonal dimensions** per claim: `TruthStatus / EpistemicStatus / AuthorityStatus / VerificationStatus`.",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "Step 155A DEFINITION",
+      "quote": "§155A.8's four-dimension model is the single best formal object in the corpus",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "119.55",
+      "quote": "Potential states: Observed Verified Asserted Inferred Proposed Authoritative.",
+      "source_id": "S1018"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.13 (p1_rows[4])",
+      "source_id": "S1020",
+      "what": "eight-value candidate epistemic vocabulary"
+     },
+     {
+      "anchor": "120.10, 120.36 (p1_rows[1],[29])",
+      "source_id": "S1020",
+      "what": "K3 distinguishes observed/verified/inferred/proposed/authoritative"
+     },
+     {
+      "anchor": "p1_rows[189]",
+      "source_id": "S1524",
+      "what": "step-155A four-orthogonal-dimension claim model; refusal of a linear 'truth ladder'"
+     }
+    ]
+   },
+   "interpretation": "The expected claim is confirmed. The eight states are one flat list, with no statement of ordering or axes. K3's own rule (120.36) lists five states that mix epistemic origin (observed, inferred), a verification status (verification) and an authority status (authority). A dimension assignment is interpretation, not stated in the source: Observed/Imported/Asserted/Inferred/Proposed -> epistemic origin; Verified -> verification; Approved -> authority; Superseded -> temporal validity. S1524 confirms (as verifier-reported) that step-155A introduces four orthogonal dimensions and bans a linear truth ladder. The step-155A file was not read. The conclusion that C2/C3/C4/C5 are dimensions of one claim-status product, not independent invariants, remains an inference and is not established by any source read.",
+   "item_id": "LIST-2-20"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "CONTRADICTION",
+   "statement": "Verifier assessment of step-120 conflicts with the label-1 extraction's characterization: the P2 note calls the reduction 'rigorous non-redundancy reduction analysis'; the verifier calls step-120 'the band's most valuable structural act' but lists three unreconciled naming systems (K1-K7, P/A/E/T/V/R/F, C1-C7), an ill-typed intersection formula, three dependency edges refuted by the file's own independence arguments, six fabricated VIOLATION verdicts, and 0 of 7 operational definitions.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "STEP 120 EVOLUTION",
+      "quote": "RESOLVES the invariant-proliferation problem structurally (≈50 → 7) — the band's most valuable act.",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 DEFINITION VERDICT",
+      "quote": "**three naming systems for one object set inside one file** — K1–K7 (§120.2–120.40), P/A/E/T/V/R/F (§120.61), C1–C7 (§120.66) — with no stated bijection",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 graph item 2",
+      "quote": "**Provenance → Epistemic contradicts §120.30.**",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 graph item 3",
+      "quote": "**Provenance → Validity contradicts §120.29.**",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 intersection formula",
+      "quote": "**Type analysis — the formula does not type-check.**",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 DERIVATION VERDICT",
+      "quote": "This file issues **six VIOLATION verdicts against the constitution** (K1 VIOLATED, K2 VIOLATION if promoted, K3 VIOLATION, K4 VIOLATION, K6 VIOLATION, K7 VIOLATION)",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 operational definitions",
+      "quote": "**Count: 0 of 7 receive a formal operational definition",
+      "source_id": "S1520"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "STEP 120 graph item 4",
+      "quote": "**Provenance → Authority is at best half-supported.**",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 graph item 5",
+      "quote": "so this edge is merely unjustified, not contradicted",
+      "source_id": "S1520"
+     },
+     {
+      "anchor": "STEP 120 graph heading",
+      "quote": "three of them are refuted by this file's own reduction argument, four sections earlier",
+      "source_id": "S1520"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[124]",
+      "source_id": "S1520",
+      "what": "step-120 verdict"
+     },
+     {
+      "anchor": "p1_rows[132] (TV-F-054)",
+      "source_id": "S1521",
+      "what": "dependency graph, ill-typed formula, 0 of 7"
+     },
+     {
+      "anchor": "G0268 note (label 1)",
+      "source_id": "P2",
+      "what": "'rigorous non-redundancy reduction analysis (each candidate tested against absorption into another)'"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: S1520's step-120 section gives specific, section-anchored reasons. The three naming systems (K1-K7 §120.2-120.40, P/A/E/T/V/R/F §120.61, C1-C7 §120.66), the ill-typed §120.61 intersection, the six VIOLATION verdicts (the first anchored at §120.4, the others listed by K-id) and 0 of 7 operational definitions are all confirmed. So the disconfirmation criterion ('no specific edges or references') is NOT met. DISCREPANCY INSIDE S1520: the heading says three dependency edges are 'refuted' by the file's own reduction. The itemized list shows only two contradicted edges (Provenance→Epistemic vs §120.30, Provenance→Validity vs §120.29). A third edge is 'at best half-supported' (§120.28), a fourth is 'merely unjustified, not contradicted', and there is also an extra node (Evidence). VH-4 in the same file likewise lists only two. So 'three edges refuted' in R1 and in S1520's headline exceeds S1520's own itemized evidence. INTERPRETATION on the cross-layer contradiction: S1520 does not simply oppose a 'rigorous reduction' judgment. It also credits the ≈50→7 reduction as 'the band's most valuable act', and it locates its criticism in the naming, graph and formula layers. The 'opposite quality judgments' framing is therefore partly overstated. The P2 label-1 note and S1020 are outside this scope and not read.",
+   "item_id": "LIST-2-21"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "METHOD-ISSUE",
+   "statement": "The label's CANDIDATE-CONCEPTUAL-BIRTH anchor ('C1 Provenance PASS ... C7 Feedback FAIL', S1021) is a constitutional health table that the verification layer classifies as a fabricated result table without hypothetical marker. The step-122 and step-123 tables disagree with each other (label-1 anchors show C7 FAIL in S1021 vs C7 PARTIAL in S1022; verifier: C6 = WARN/VERIFIED/PASS across three tables) and use different scales (PASS/WARN/FAIL vs VERIFIED/WARNING/PARTIAL).",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "122.53",
+      "quote": "We can therefore define a periodic: ConstitutionalHealthCheck. It evaluates: C_1\\ldots C_7. Output:",
+      "source_id": "S1021"
+     },
+     {
+      "anchor": "122.53",
+      "quote": "C1 Provenance          PASS ... C4 Temporal            WARN ... C6 Traceability        WARN / C7 Feedback            FAIL",
+      "source_id": "S1021"
+     },
+     {
+      "anchor": "122.55",
+      "quote": "We should **not** reduce the constitution to a single score.",
+      "source_id": "S1021"
+     },
+     {
+      "anchor": "123.46",
+      "quote": "Claude and Codex can then execute: ... and receive: ... C6 PASS / C7 PARTIAL",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "step 122 DERIVATION",
+      "quote": "It carries no \"suppose\", no \"hypothetically\", no \"for example\".",
+      "source_id": "S1522"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "123.40",
+      "quote": "The platform can maintain: Health(C_i). For example:",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "step 123 DERIVATION",
+      "quote": "Under heading \"Constitutional health state\" and the words \"For example:\", the file emits",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "step 123 DERIVATION",
+      "quote": "Three fabricated tables, three different scales, mutually inconsistent, none marked hypothetical",
+      "source_id": "S1522"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "candidate_births.conceptual",
+      "source_id": "P3a",
+      "what": "anchor 'C1 Provenance PASS ... C7 Feedback FAIL' (S1021)"
+     },
+     {
+      "anchor": "p1_rows[72]",
+      "source_id": "S1021",
+      "what": "ConstitutionalHealthCheck PASS/WARN/FAIL dashboard"
+     },
+     {
+      "anchor": "p1_rows[76]",
+      "source_id": "S1022",
+      "what": "Health(Ci) table 'C1 Provenance VERIFIED ... C7 Feedback PARTIAL'"
+     },
+     {
+      "anchor": "p1_rows[156]",
+      "source_id": "S1522",
+      "what": "step-122 'fabricates a concrete seven-row PASS/WARN/FAIL result table with no hypothetical marker'"
+     },
+     {
+      "anchor": "p1_rows[154]",
+      "source_id": "S1522",
+      "what": "step-123 'two more fabricated constitutional health tables ... C6 = WARN/VERIFIED/PASS; C7 = FAIL/PARTIAL/PARTIAL'"
+     }
+    ]
+   },
+   "interpretation": "S1021 table (the conceptual-birth anchor): no explicit hypothetical marker is present, and it sits next to the 122.55 warning against a single score, so the expected claim is confirmed. Its framing is 'We can therefore define a periodic ConstitutionalHealthCheck ... Output:'. That presents it as the output format of a check being defined, and nowhere claims the check was run. 'Fabricated result' is therefore stronger than the text supports; 'unmarked illustration' fits better. S1022 first table (123.40) is explicitly marked 'For example:', which disconfirms 'no hypothetical marker' for that table. S1022 second table (123.46) sits under conditional framing ('can then execute ... and receive'). Cell values confirmed across the three tables: C6 = WARN/VERIFIED/PASS and C7 = FAIL/PARTIAL/PARTIAL, on different scales. S1522 itself quotes 'For example:' at 123.40 and still says none were marked hypothetical, which is internally inconsistent. The lifecycle layer does date the label's birth to an illustrative artefact, but that artefact is unmarked rather than fabricated.",
+   "item_id": "LIST-2-22"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "METHOD-ISSUE",
+   "statement": "The verification layer corrects itself in R1, and uncorrected band claims coexist with the corrections: VF-1 (phantom I_Causal) corrected by TV-F-042 as a scope artefact; the band claim 'Step 158 never executed' (S1524 [173], [178], [180]) corrected by TV-F-056 (Step 158 exists and performs no act on reality); S1519's 'four negative controls scored PASS' for step-100 refined by TV-F-045 (Expected and Result are consistent; the defect is scope substitution); the Step-172 brief reclassification. Band-file rows (S1513-S1531) therefore carry claims later revised by supervisory TV-F rows.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§4",
+      "quote": "**Five supervisory corrections of subagent claims recorded openly** (TV-F-042, TV-F-045, TV-F-056, TV-F-077,\nand the step-060 antisymmetry correction).",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§4 row 18",
+      "quote": "byte-identical duplicate pairs; **Step 158 EXISTS** ⇒ band claim CORRECTED",
+      "source_id": "S1535"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[135] (TV-F-042)",
+      "source_id": "S1521",
+      "what": "'THE BAND CLAIM IS PARTLY WRONG AND IS CORRECTED HERE'"
+     },
+     {
+      "anchor": "p1_rows[212] (TV-F-056)",
+      "source_id": "S1528",
+      "what": "'VERIFIER OBSERVATION — THE BAND CLAIM IS FACTUALLY WRONG'"
+     },
+     {
+      "anchor": "p1_rows[173], [178], [180]",
+      "source_id": "S1524",
+      "what": "'Step 158 ... never executed'"
+     },
+     {
+      "anchor": "p1_rows[93]",
+      "source_id": "S1519",
+      "what": "negative controls scored as confirmations"
+     },
+     {
+      "anchor": "p1_rows[137] (TV-F-045)",
+      "source_id": "S1521",
+      "what": "supervisory refinement: scope substitution"
+     },
+     {
+      "anchor": "p1_rows[281]",
+      "source_id": "S1535",
+      "what": "five supervisory corrections recorded openly"
+     }
+    ]
+   },
+   "interpretation": "No trigger. That the corrections occur is corroborated. The absence claim ('R1 records no supersession link') has no census and stays unresolved within this candidate. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-23"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "MECHANISM",
+   "statement": "Seven named failure-propagation chains, one per invariant (e.g. NoProvenance -> EvidenceTrust↓ -> VerificationTrust↓ -> DecisionTrust↓; Inference=Authority -> AIOutput -> OrganizationalTruth, called 'the fundamental AI governance failure'; SupersededKnowledge=CurrentKnowledge -> RetrievalAccuracy != KnowledgeCorrectness; Runtime-not->Knowledge -> KnowledgeDecay), plus four domain-relative 'most important invariant' designations (EpistemicStatus for AI, Authority for governance, Evidence+DeterministicVerification for assurance, Feedback for the OS concept).",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.56",
+      "quote": "That is the fundamental AI governance failure.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.57",
+      "quote": "RetrievalAccuracy \\neq KnowledgeCorrectness.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.64",
+      "quote": "Evidence+DeterministicVerification",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.65",
+      "quote": "For the \"OS\" concept: Feedback is fundamental.",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "record 120",
+      "quote": "five failure-propagation chains",
+      "source_id": "S1484"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "120.54-120.60 (p1_rows[49]-[56])",
+      "source_id": "S1020",
+      "what": "seven propagation chains"
+     },
+     {
+      "anchor": "120.62-120.65 (p1_rows[58]-[61])",
+      "source_id": "S1020",
+      "what": "most-important-invariant per lens"
+     },
+     {
+      "anchor": "aliases",
+      "source_id": "P2a",
+      "what": "'seven constitutional-failure-propagation chains'"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. Incidental whole-file reading of S1020 confirms seven propagation sections (120.54-120.60, one per invariant) and four domain-relative 'most important' designations, including the non-C node Evidence. S1484 counts 'five' chains, which conflicts with the seven in the source, a miscount in the analysis layer.",
+   "item_id": "LIST-2-24"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "LOGIC-STRUCTURE",
+   "statement": "Minimality of C1-C7 rests on six pairwise absorption tests (Provenance/Traceability, Authority/Provenance, TemporalValidity/Provenance, EpistemicStatus/Provenance, DeterministicVerification/Evidence, Feedback/Traceability) out of 21 possible pairs, and on an objective of finding 'the smallest set whose violation would fundamentally change KnowledgeOS'. R1 shows no argument for sufficiency (that the seven cover everything constitutional) and no test of absorption into combinations of other invariants.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "preamble",
+      "quote": "The objective is to identify the smallest set of invariants whose violation would fundamentally change the nature of KnowledgeOS.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.33",
+      "quote": "After reduction, the seven candidates remain justified.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "preamble",
+      "quote": "The working candidate is: ... Provenance + Authority + EpistemicStatus + TemporalValidity + DeterministicVerification + Traceability + Feedback",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "Step 120 preview",
+      "quote": "We have now accumulated many candidate rules. The danger is creating another enormous rule catalog.",
+      "source_id": "S1018"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "120.43",
+      "quote": "Rather than adding another constitutional rule: F2 \\subset K1+K4.",
+      "source_id": "S1020"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "framing anchor (p1_rows[70])",
+      "source_id": "S1020",
+      "what": "'identify the smallest set of invariants whose violation would fundamentally change the nature of KnowledgeOS'"
+     },
+     {
+      "anchor": "120.27-120.33 (p1_rows[19]-[26])",
+      "source_id": "S1020",
+      "what": "six absorption tests then 'After reduction, the seven candidates remain justified'"
+     },
+     {
+      "anchor": "p1_rows[140] (TV-F-043, about step-070)",
+      "source_id": "S1521",
+      "what": "analogous verifier principle: 'Removal tests establish necessity of each element individually. They never establish sufficiency of the set'"
+     },
+     {
+      "anchor": "p1_rows[124]",
+      "source_id": "S1520",
+      "what": "verifier credits step-120 with 'reducing ~50 candidate invariants to seven'"
+     }
+    ]
+   },
+   "interpretation": "Whole-file census of S1020: exactly six reduction tests (120.27-120.32), all pairwise (Prov/Trace, Auth/Prov, Temp/Prov, Epist/Prov, DetVer/Evidence, Feedback/Trace), covering 6 of the 21 pairs of C_i. No sufficiency or completeness argument appears, and no C_i is tested for absorption into a combination of the others. The only absorption into a combination is F2 into K1+K4. F2 is a non-C candidate being excluded, so that does not bear on C1-C7 minimality. The '~50 candidates' figure does not occur in S1020. The file starts from seven named working candidates, the same list previewed at the end of S1018, so step-120 does not itself perform a ~50 -> 7 reduction. That figure comes from the verifier row (S1520, not triggered) and is not supported by S1020. Minimality is a partial pairwise check plus a design choice, not a proven property.",
+   "item_id": "LIST-2-25"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RELATIONSHIP",
+   "statement": "Graph-integrity invariants I1-I7 (Step 130, Assurance Graph: I1 AuthoritativeKnowledge=>Provenance ... I7 CurrentKnowledge=>Validity) are said to 'closely mirror' C1-C7, while the verification layer reports C1-C7 tokens collapse to zero from step 130 onward. If both hold, I1-I7 is a renamed, uncited re-derivation of the constitution at graph level rather than a declared refinement. Only one I-row (S1030) was sampled; S1030's best_historical_date is 2025-06-01, before the corpus began.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "130.25",
+      "quote": "I_1: AuthoritativeKnowledge\\Rightarrow Provenance ... I_2: AuthoritativeDecision\\Rightarrow Authority ... I_5: MaterialAction\\Rightarrow Authorization ... I_7: CurrentKnowledge\\Rightarrow Validity.",
+      "source_id": "S1030"
+     },
+     {
+      "anchor": "130.25",
+      "quote": "These become graph-level fitness rules.",
+      "source_id": "S1030"
+     },
+     {
+      "anchor": "130.42",
+      "quote": "Traverse(G,t=2025-06-01).",
+      "source_id": "S1030"
+     },
+     {
+      "anchor": "step 121 §121.47",
+      "quote": "**130–140: 0**",
+      "source_id": "S1522"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "130.25",
+      "quote": "I_3: Verification\\Rightarrow Rule ... I_4: Verification\\Rightarrow Evidence ... I_6: MaterialAction\\Rightarrow Actor",
+      "source_id": "S1030"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "RP1171",
+      "source_id": "P3a",
+      "what": "REFINEMENT, PARTIALLY-COMPATIBLE; notes_for_p3b: only S1030 sampled, 1-1 correspondence not checked"
+     },
+     {
+      "anchor": "G0279 note",
+      "source_id": "P2",
+      "what": "I1-I7 'distinct from but closely mirroring the C1-C7 constitution'"
+     },
+     {
+      "anchor": "p1_rows[146] and [159]",
+      "source_id": "S1522",
+      "what": "'C1-C7 token counts collapse to zero from step 130 onward'; 'referenced zero times across eleven consecutive files (130-140)'"
+     },
+     {
+      "anchor": "p1_rows[147]",
+      "source_id": "S1522",
+      "what": "step-130 assigns epistemic status to edges, 'semantic backbone' claim later reversed by step-138"
+     },
+     {
+      "anchor": "source_meta S1030",
+      "source_id": "02-FILES",
+      "what": "best_historical_date 2025-06-01 EXPLICIT, explicit_dates ['2026-08-28','2025-06-01']"
+     }
+    ]
+   },
+   "interpretation": "Mapping from a whole-file read of S1030: I1 -> C1, I2 -> C2, I5 -> C6, I7 -> C4 map cleanly. I3/I4 split C5 (verification must reference a rule and evidence). I6 (Actor) has no C counterpart; it is nearer identity/F1. C3 (Epistemic Separation) and C7 (Feedback) have no I-counterpart. Epistemic status of edges is discussed separately (130.52-130.55), and the feedback loop is in the graph narrative (130.2), but neither is an I-invariant. Citations: no occurrence of C1-C7, 'constitution', 'Step 120' or K1-K7 was seen in the whole-file read. The file cites only 'Steps 122–129'. So the 'silent/uncited' part is confirmed, consistent with S1522's zero-token count for step 130. 'Closely mirroring' holds for 4-5 of 7 items only. It is a partial, uncited re-derivation rather than a declared refinement. The 2025-06-01 best_historical_date comes from an in-content example query date (130.42). 2026-08-28 comes from the illustrative 'Verified: 2026-08-28' (130.53).",
+   "item_id": "LIST-2-26"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "METHOD-ISSUE",
+   "statement": "02-FILES date extraction picks example dates from content as best_historical_date: S1020 = '2024' (from the 120.15 example 'a decision from 2024'), S1022 = '2026-09-15' (the ValidUntil of Experiment 3), which is later than S1022's own mtime (2026-08-28), and S1030 = '2025-06-01'. The verification layer separately reports that filename timestamps in this corpus are export events, not authoring events.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.15",
+      "quote": "An architecture decision from: 2024 may not represent the current architecture in: 2026.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "123.49",
+      "quote": "An approved exception exists until: 2026-09-15.",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "130.42",
+      "quote": "Traverse(G,t=2025-06-01).",
+      "source_id": "S1030"
+     },
+     {
+      "anchor": "0. CORPUS INTEGRITY",
+      "quote": "filename timestamps in the 13:37–13:50 window cannot be treated as authoring times.",
+      "source_id": "S1524"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "source_meta S1020, S1022, S1030",
+      "source_id": "02-FILES",
+      "what": "best_historical_date '2024', '2026-09-15', '2025-06-01' (basis EXPLICIT)"
+     },
+     {
+      "anchor": "120.15 (p1_rows[6])",
+      "source_id": "S1020",
+      "what": "'An architecture decision from 2024 may not represent the current architecture in 2026'"
+     },
+     {
+      "anchor": "p1_rows[77]",
+      "source_id": "S1022",
+      "what": "'approved exception until 2026-09-15'"
+     },
+     {
+      "anchor": "p1_rows[165]",
+      "source_id": "S1524",
+      "what": "'filename timestamps in this corpus are export events, not authoring events'"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. Incidental reading confirms that each claimed best_historical_date is an example or valid-time date inside the content ('2024', '2026-09-15', '2025-06-01'). S1524's export-event observation is confirmed verbatim. The 02-FILES date assignments are pipeline artefacts and are not re-checked here.",
+   "item_id": "LIST-2-27"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "CONTRADICTION",
+   "statement": "Status of the step-120 'experiments': label-1 anchors present them as scenario specifications with an 'Expected:' clause (e.g. 'Expected: K3 VIOLATION', 'Verdict: K2 VIOLATION if promoted'), i.e. test-case definitions of what would count as a violation; the verification layer counts them as 'six fabricated constitutional VIOLATION verdicts issued without ever inspecting KnowledgeOS'. The counts agree across layers (six VIOLATION-type verdicts K1.1, K2.1, K3.1, K4.1, K6.1, K7.1; two PASS K5.1, K8.1; one PARTIAL K4.2; S1484 notes 'Only 2 boxed PASS'). The layers disagree on what the verdicts are.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.4",
+      "quote": "KnowledgeOS contains: ... No source, author, decision, timestamp or provenance exists. Can the system establish that it is authoritative? No. ... K1 VIOLATED",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.8",
+      "quote": "Agent generates: > \"Architecture standard changed to X.\" No authorized decision exists. Expected: Status=Proposed. ... K2 VIOLATION if promoted",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.23",
+      "quote": "Agent changes production architecture. No decision, authorization or change record can be identified. Expected: TraceabilityGap. ... K6 VIOLATION",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "Step 121 preview",
+      "quote": "Where in the actual KnowledgeOS implementation is each constitutional rule enforced?",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "record 120",
+      "quote": "K1, K2-if-promoted, K3, K4, K6, K7 all shown violated in illustrative scenarios; K4 PARTIAL; K5 PASS",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "record 120",
+      "quote": "Only 2 boxed PASS — the file runs on `VIOLATION` verdicts",
+      "source_id": "S1484"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "step 121 TEST VERDICT",
+      "quote": "every one is a hypothetical of the form \"Suppose X. Expected: Y.\" Zero executions.",
+      "source_id": "S1522"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "120.4, 120.8, 120.12, 120.16, 120.18, 120.20, 120.23, 120.26, 120.50 (p1_rows[33],[67],[3],[7],[9],[12],[15],[18],[45])",
+      "source_id": "S1020",
+      "what": "experiments with Expected/Verdict wording"
+     },
+     {
+      "anchor": "stage1 ledger_hit",
+      "source_id": "S1484",
+      "what": "'Only 2 boxed PASS -- the file runs on VIOLATION verdicts'"
+     },
+     {
+      "anchor": "p1_rows[124]",
+      "source_id": "S1520",
+      "what": "'six fabricated constitutional VIOLATION verdicts ... KnowledgeOS was not inspected'"
+     },
+     {
+      "anchor": "p1_rows[134] (TV-F-055)",
+      "source_id": "S1521",
+      "what": "'six constitutional VIOLATION verdicts on an unopened system'"
+     }
+    ]
+   },
+   "interpretation": "Census of the nine experiments: K1.1, K2.1, K3.1, K4.1, K4.2, K5.1, K6.1, K7.1, K8.1. Every one is a constructed scenario ('KnowledgeOS contains', 'Agent generates', 'LLM generates', 'Two decisions exist', 'Runtime violates'), and most carry an 'Expected:' clause. None claims the actual system was inspected. The 120 -> 121 handover shows the real system has not yet been looked at. None is explicitly labelled 'hypothetical' either, and K1.1/K4.1 issue declarative boxed verdicts. Counts confirmed: six VIOLATION-type (K2's is conditional, 'if promoted'), two PASS (K5.1, K8.1), one PARTIAL (K4.2). The text supports the test-case/specification reading. The verifier's factual point that nothing was inspected is true. Reading the verdicts as 'fabricated' claims about a real system is a category error relative to the framing. S1484, another analysis-layer document, already calls them 'illustrative scenarios'. The candidate's description of the inter-layer disagreement is accurate.",
+   "item_id": "LIST-2-28"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "CONTRADICTION",
+   "statement": "MCS-5 (filtration vs entropy growth) is counted as one of the five conflicts making the core inconsistent, yet the same report states a consistent reading exists (if H(K_t) is the entropy of a growing state description rather than uncertainty conditional on the filtration) and that the corpus never says which quantity is meant. So at least one MCS depends on interpretation, and 'inconsistent ... not a matter of interpretation' is stronger than the stated evidence for that subset.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§3",
+      "quote": "MCS-5  Entropy (188.30 vs 188.31)                         UNSATISFIABLE",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§4 MCS-5",
+      "quote": "A consistent reading\nexists — if `H(K_t)` measured the entropy of a *growing state description* rather than uncertainty *conditional\non* the filtration, growth would be unobjectionable",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§4 MCS-5",
+      "quote": "**the corpus never states which quantity it means**",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§8",
+      "quote": "this is not a matter of\ninterpretation: it is an exhaustive enumeration over the corpus's own boxed commitments.",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§7 repair 5",
+      "quote": "if it is the entropy of the\n   state description, `I_32` survives",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "FILE 4 UNDEFINED SYMBOLS",
+      "quote": "`H(K_t)` applies Shannon entropy to a *knowledge state* `K_t` which is a set of evidence items, not a random variable — **type error**.",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FILE 4 DERIVATION VERDICT",
+      "quote": "The two boxed results are **mathematically incompatible as stated**.",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FILE 4 DERIVATION VERDICT",
+      "quote": "The text gestures at a reconciliation (\"the information set grows while epistemic status can change\") but that resolves the *status* claim, not the *entropy* claim, and no conditioning variable `X` is ever named.",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "TV-F-067",
+      "quote": "The four with genuine mathematical content:",
+      "source_id": "S1532"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "§3",
+      "quote": "All five are independently unsatisfiable",
+      "source_id": "S1539"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[311]",
+      "source_id": "S1539",
+      "what": "MCS-5; 'a consistent reading exists only if H(K_t) means the entropy of a growing state description'"
+     },
+     {
+      "anchor": "p1_rows[315]",
+      "source_id": "S1539",
+      "what": "'this is not a matter of interpretation: it is an exhaustive enumeration'"
+     },
+     {
+      "anchor": "p1_rows[220]",
+      "source_id": "S1529",
+      "what": "step-188 filtration vs H(K_t+1)>H(K_t); tower property"
+     },
+     {
+      "anchor": "p1_rows[262] (TV-F-067)",
+      "source_id": "S1532",
+      "what": "filtration-vs-entropy conflict listed as mathematical"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: S1539 counts MCS-5 as UNSATISFIABLE in the 0-model result, states in the same section that a consistent reading exists, and in §8 asserts the verdict is 'not a matter of interpretation'. The report never qualifies the headline verdict for MCS-5, and never states that the verdict depends on MCS-5. The disconfirmation criterion is not met: four other MCS are claimed independently unsatisfiable, so the INCONSISTENT verdict does not rest on MCS-5 alone, provided those four hold (their encoding is unstated; see B-SVP-01). S1529 (the originating band) presents the conflict as mathematical ('mathematically incompatible as stated') and argues via the tower property. It does not present the state-description reading. It does, however, classify H(K_t) as ILL-TYPED ('type error'). INTERPRETATION: a term the originating analysis itself calls ill-typed has no determinate content, so treating EntropyNonIncreasing ∧ EntropyGrows as a contradiction depends on choosing a reading. This supports the candidate: 'not a matter of interpretation' is stronger than the evidence for MCS-5. The robust claim is 'at least four interpretation-independent MCS, conditional on their unstated encoding'. Note that MCS-4 ('illustrative' hedge) and MCS-2 (§88.26 replacement criteria) also carry hedges that the report records and overrides.",
+   "item_id": "LIST-2-29"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "MATH-STRUCTURE",
+   "statement": "Several verifier arithmetic claims can be checked from R1 alone and are consistent: (A∨B)∧(¬A∨C) has 4 satisfying assignments (A=1 forces C=1 with B free; A=0 forces B=1 with C free); 10x8x6x7x5 = 16,800 and 16,800/720 ≈ 23.3 ('factor of about 23'); step-087's profile (two voters A>B>C, one C>A...) gives a transitive majority with A as Condorcet winner if the third voter ranks C>A>B; 2^14 = 16,384.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "FILE 20",
+      "quote": "**Verifier arithmetic check: 10·8=80; 80·6=480; 480·7=3,360; 3,360·5=16,800. CORRECT.**",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FILE 20 UNDEFINED SYMBOLS",
+      "quote": "**The file's own enums give `4×5×4×3×3 = 720`, not 16,800.**",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "§4 row 11",
+      "quote": "majority is `A≻B, B≻C, A≻C`, transitive, A wins. No cycle",
+      "source_id": "S1535"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[0]",
+      "source_id": "S1513",
+      "what": "SAT example, 4 models"
+     },
+     {
+      "anchor": "p1_rows[221]",
+      "source_id": "S1529",
+      "what": "16,800 vs ≈720"
+     },
+     {
+      "anchor": "p1_rows[262]",
+      "source_id": "S1532",
+      "what": "factor of ~23"
+     },
+     {
+      "anchor": "p1_rows[138] (TV-F-044)",
+      "source_id": "S1521",
+      "what": "Condorcet non-cycle"
+     },
+     {
+      "anchor": "p1_rows[303]",
+      "source_id": "S1539",
+      "what": "16,384"
+     }
+    ]
+   },
+   "interpretation": "No trigger. The verifier recomputed the arithmetic independently: 2^14 = 16,384; 10×8×6×7×5 = 16,800; 4×5×4×3×3 = 720 and 16,800/720 = 23.33; (A∨B)∧(¬A∨C) has exactly 4 satisfying assignments (A=1 → C=1, B free: 2; A=0 → B=1, C free: 2); with voters A>B>C, A>B>C, C>A>B the pairwise majorities are A>B 3-0, B>C 2-1, A>C 2-1 — transitive, A is the Condorcet winner. All consistent. This confirms arithmetic only, not fidelity to corpus inputs. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-30"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "PATTERN",
+   "statement": "The constitution is carried mainly by negative separations (Source != CompleteProvenance, Actor != Authority, CreatedAt != ValidFrom, Cache != Authority, Provenance != EpistemicStatus, RetrievalAccuracy != KnowledgeCorrectness, HistoricalTruth != CurrentTruth) plus 'minimum meaning' glosses; the verification layer concludes 0 of 7 constitutional invariants receive a full operational definition, and elsewhere notes that 'a separation is not a construction'.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.34",
+      "quote": "Minimum meaning: > Every authoritative knowledge object must be traceable to an identifiable source/process and origin context.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.35",
+      "quote": "A recommendation, inference, or agent output cannot become organizationally authoritative merely because it exists.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.40",
+      "quote": "This does not mean every deviation must automatically change knowledge. It means the architecture must provide the pathway.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.9",
+      "quote": "Actor \\neq Authority.",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "120.2",
+      "quote": "Provenance should answer at least: * where did it originate? * when? * through which process? * who/what produced it? * from which source material?",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.14",
+      "quote": "At minimum: Current versus: Superseded.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "123.4",
+      "quote": "Q_1= \\{k\\mid k.authoritative=True \\land k.provenance=null \\} ... Expected: |Q_1|=0.",
+      "source_id": "S1022"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "120.5, 120.9, 120.17, 120.30, 120.51, 120.57 (p1_rows[44],[68],[8],[23],[46],[52])",
+      "source_id": "S1020",
+      "what": "negative separations"
+     },
+     {
+      "anchor": "120.34-120.40 (p1_rows[27]-[34])",
+      "source_id": "S1020",
+      "what": "Rules K1-K7 with minimum-meaning glosses"
+     },
+     {
+      "anchor": "p1_rows[132] (TV-F-054)",
+      "source_id": "S1521",
+      "what": "'Operational definitions delivered: 0 of 7'"
+     },
+     {
+      "anchor": "p1_rows[13]",
+      "source_id": "S1513",
+      "what": "'a separation is not a construction'"
+     }
+    ]
+   },
+   "interpretation": "Per-rule classification within S1020. Partially operational: C1 (a five-question checklist, 120.2), C4 (a minimum Current/Superseded distinction plus CreatedAt/ValidFrom/ValidUntil, 120.17), and C6 (RequiredTraceability as a function of Risk+Scope+GovernanceClass, 120.24, which is itself undefined). Not operational: C2, C3, C5, C7, which have natural-language glosses and negative separations only. No C_i is given as a decidable predicate over named system objects, so '0 of 7 full operational definitions' holds for step-120. Outside step-120, S1022 123.4 gives a well-formed set-builder check for C1 at presence level. Checkability is therefore first supplied in step-123, not step-120. That qualifies, but does not refute, the claim that the constitution as stated is not checkable.",
+   "item_id": "LIST-2-31"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "MATH-STRUCTURE",
+   "statement": "Non-compensatory (conjunctive) aggregation: KnowledgeOSIntegrity = P∩A∩E∩T∩V∩R∩F, with the stated consequence that satisfying six of seven invariants does not yield constitutional soundness; later reinforced by the warning (S1021) against a single aggregate score (e.g. 87%) and by P2's note that it extends 'Vector>Scalar' from S1013. The verification layer calls the formula ill-typed (set intersection applied to named properties) and notes the letter F is bound twice in the file. The exact letter-to-invariant binding and the type of the operands cannot be read from R1.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.61",
+      "quote": "KnowledgeOSIntegrity = P\\cap A\\cap E\\cap T\\cap V\\cap R\\cap F",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.61",
+      "quote": "\\(P\\) = provenance; \\(A\\) = authority; \\(E\\) = epistemic separation; \\(T\\) = temporal validity; \\(V\\) = deterministic verification; \\(R\\) = traceability; \\(F\\) = feedback.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.61",
+      "quote": "A platform satisfying six of seven is not necessarily constitutionally sound.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.42-120.44",
+      "quote": "F1: Semantically significant objects MUST have stable identity. / F2 \\subset K1+K4. / Foundation invariant F3: Versioning",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "record 120",
+      "quote": "intersection, not sum — \"six of seven is not constitutionally sound\"",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "121.50",
+      "quote": "Conformance(C_i)= Architecture \\cap Implementation \\cap Verification \\cap Evidence.",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "step 121 DEFINITION VERDICT",
+      "quote": "set-theoretic notation applied to non-sets — ill-typed as written.",
+      "source_id": "S1522"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.61 (p1_rows[57])",
+      "source_id": "S1020",
+      "what": "intersection formula; 'six of seven is not necessarily constitutionally sound'"
+     },
+     {
+      "anchor": "p1_rows[72]",
+      "source_id": "S1021",
+      "what": "ConstitutionalHealthCheck; warns aggregate score can conceal catastrophic single-invariant failure"
+     },
+     {
+      "anchor": "stage1 ledger_hit",
+      "source_id": "S1484",
+      "what": "paraphrase: 'intersection, not sum -- six of seven is not constitutionally sound' (without 'necessarily')"
+     },
+     {
+      "anchor": "p1_rows[124] (label step-verify-programme)",
+      "source_id": "S1520",
+      "what": "'ill-typed intersection formula (set-intersection applied to named properties ...)'; 'F is bound twice inside this file'"
+     },
+     {
+      "anchor": "G0268 note",
+      "source_id": "P2",
+      "what": "'intersection not average, extending Vector>Scalar from S1013'"
+     }
+    ]
+   },
+   "interpretation": "Observed: all seven letters are bound explicitly and one-to-one, and they map onto C1-C7 in order (P=C1, A=C2, E=C3, T=C4, V=C5, R=C6, F=C7). The operands are never defined as sets over a common universe. They stay property names, so the intersection is notation over named properties, not a lattice meet over state sets. The source says 'not necessarily'. S1484 drops 'necessarily', which makes its paraphrase stronger than the source. On 'F bound twice': the bare letter F is bound once (feedback). The same file also uses F1/F2/F3 for foundation invariants, so the F-prefix is overloaded. The double binding is a namespace collision, not a literal re-binding of F. The disconfirmation condition (operands defined as sets and no double use of F) is not met. The same intersection-over-properties pattern recurs at S1019 121.50.",
+   "item_id": "LIST-2-32"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "METHOD-ISSUE",
+   "statement": "Lifecycle heuristic mismatch: P3a assigns DORMANT because last_seen = S1023 by source_id order, with no retraction/supersession recorded. Other R1 evidence points to continued uptake or abandonment rather than dormancy: stage-1 hits in S1484 (2026-08-28, 'Reduces the whole prior corpus to ... C1...C7') and S1524 (2026-08-30); the verifier's verdict 'UNRESOLVED -> ABANDONED' for C1-C7 across steps 130-140 with AFR-01..36 as de facto successor; step-143 re-derivation; step-152 rival constitution.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "record 120",
+      "quote": "Reduces the whole prior corpus to **KnowledgeOS Architecture Constitution v0.1 = {C1…C7}**",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "record 120",
+      "quote": "V: constitution frozen as candidate baseline. Only 2 boxed PASS — the file runs on `VIOLATION` verdicts",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "(b)",
+      "quote": "**Verdict: UNRESOLVED → ABANDONED.** ... AFR-01…36 is a *de facto* successor that no file names as such.",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "VJ-2",
+      "quote": "Four live constitutional namespaces at end of band; none cross-references any other.",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "Step 155A EVOLUTION",
+      "quote": "**REVIVES Step 120's epistemic constitution under a third ID namespace**",
+      "source_id": "S1524"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "header",
+      "quote": "Verbatim batch-agent report (Phase-2 Stage 1, mandate 20260829_1612).",
+      "source_id": "S1484"
+     },
+     {
+      "anchor": "header",
+      "quote": "authority: verifier session (adversarial, independent)",
+      "source_id": "S1522"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "lifecycle_candidate / lifecycle_evidence",
+      "source_id": "P3a",
+      "what": "DORMANT; retracted_by [], superseded_by []"
+     },
+     {
+      "anchor": "stage1 ledger_hit",
+      "source_id": "S1484",
+      "what": "KNOWN MAP reducing prior corpus to C1..C7"
+     },
+     {
+      "anchor": "p1_rows[159]",
+      "source_id": "S1522",
+      "what": "'Verdict: UNRESOLVED -> ABANDONED ... AFR-01...36 is a de facto successor that no file names as such'"
+     },
+     {
+      "anchor": "p1_rows[215] (TV-F-059)",
+      "source_id": "S1528",
+      "what": "same abandonment pattern as C-094 (C1-C7 abandoned across steps 130-140)"
+     }
+    ]
+   },
+   "interpretation": "S1484's 'Reduces the whole prior corpus to C1..C7' describes step-120's own act, inside a record about step 120 marked 'KNOWN MAP'. S1484 is a later batch-trace report (mandate 20260829), not authorial uptake. It records the verdict pattern and the two-constitution contradiction (C4) and says nothing of abandonment. So the expected claim holds only in part: S1484 does not take C1-C7 up as a new reduction target. Its post-S1023 hits (and S1524's) are assessments of the label, not continued use of it. The DORMANT heuristic is still inaccurate. S1522 reports abandonment (token counts falling to zero across steps 130-140). Spot checks agree with that: S1023 contains 4 C-tokens (124.3 C5, 124.7 C2, 124.44 C1 twice), matching S1522's 124:4, and S1030 contains none. S1524 reports rival constitutions and an uncited revival (155A, 156A). The label's fate is therefore abandonment plus rival and revived namespaces, not dormancy. That rests partly on verifier reports whose primary step files (125-129, 131-140, 152, 155A) were not read.",
+   "item_id": "LIST-2-33"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "METHOD-ISSUE",
+   "statement": "Lifecycle CONTESTED is computed from 'contested_by_own_contradiction_type: true', but the label's CONTRADICTION-typed rows (82 of 338) are findings about the audited corpus, not contradictions of or within the programme; P3a RP1040 notes say as much. The programme's actual internal disagreements (B-SVP-02, B-SVP-13) are not what triggered the status.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "lifecycle_evidence",
+      "source_id": "P3a",
+      "what": "contested_by_own_contradiction_type true -> CONTESTED"
+     },
+     {
+      "anchor": "RP1040 notes_for_p3b",
+      "source_id": "P3a",
+      "what": "'these are internal corpus-consistency findings, not about the a-b relationship itself'"
+     },
+     {
+      "anchor": "p1 type counts (label 2)",
+      "source_id": "R1",
+      "what": "CONTRADICTION 82, CORRECTION 155 of 338 rows"
+     }
+    ]
+   },
+   "interpretation": "No trigger. This is a pipeline-layer observation (P3a lifecycle rule vs R1 row types). The P3a data are outside the isolation boundary, so the observation is not re-verified here and rests on the R1 package.",
+   "item_id": "LIST-2-34"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "RELATIONSHIP",
+   "statement": "Cross-label correspondence: the programme's 'chronology != supersession' and valid-time/recording-time rules are the constitution's K4 distinction (CreatedAt != ValidFrom, HistoricalTruth != CurrentTruth) applied to the corpus's own artefacts; the programme reports that the corpus violates its own valid-time/recording-time separation through filename timestamps that record export, not authoring (S1524, S1528).",
+   "verification": "UNRESOLVED",
+   "evidence": {
+    "confirming": [],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.17, 120.29 (p1_rows[8],[21])",
+      "source_id": "S1020",
+      "what": "CreatedAt != ValidFrom; CreatedAt != Validity"
+     },
+     {
+      "anchor": "p1_rows[39]",
+      "source_id": "S1517",
+      "what": "chronology not evidence of supersession"
+     },
+     {
+      "anchor": "p1_rows[213], [214]",
+      "source_id": "S1528",
+      "what": "filename-timestamps-are-export-events violates the corpus's valid-time/recording-time separation rules"
+     },
+     {
+      "anchor": "p1_rows[165]",
+      "source_id": "S1524",
+      "what": "authoring order reconstructed from content self-positioning"
+     }
+    ]
+   },
+   "interpretation": "No trigger. This is a cross-label correspondence that rests on S1020/S1528/S1524, none of which is read here. The mapping is an R1 interpretation, not a substrate fact. S1525 §2 'LATER ≠ SUPERSEDING' (read) is consistent with it but does not establish the K4 correspondence.",
+   "item_id": "LIST-2-35"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "RULE",
+   "statement": "Anti-date-inference and non-canonicalization rules: chronology is evidence of evolution, never of correctness or supersession; a later formulation supersedes only with explicit evidence (replacement, rejection, correction, withdrawal, authority statement, or a derivation the earlier cannot survive); otherwise both are preserved as UNRESOLVED / UNRECONCILED ALTERNATIVES; 'NO CANONICAL FORM ESTABLISHED' is a valid result; terms merge only after proven equivalence; 'addressed is not equivalent to answered'; no silent repair; Track A (verification) must not be contaminated by Track B (reconstruction) or Track C (documentation).",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§2",
+      "quote": "**LATER ≠ SUPERSEDING**",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§4",
+      "quote": "Do not infer SUPERSEDED merely because another document is newer.",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§15",
+      "quote": "declare later documents authoritative.",
+      "source_id": "S1525"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[36], [39], [45], [50], [54]",
+      "source_id": "S1517",
+      "what": "anti-date-inference, chronology principle, anti-forced-canonicalization, question status, tracks A/B/C"
+     },
+     {
+      "anchor": "p1_rows[194], [198], [199]",
+      "source_id": "S1525",
+      "what": "UL merging, non-equivalence chain 'LATER != SUPERSEDING', no-silent-repair"
+     },
+     {
+      "anchor": "p1_rows[322], [323]",
+      "source_id": "S1540",
+      "what": "difference-vs-contradiction classification; absolute no-silent-repair"
+     }
+    ]
+   },
+   "interpretation": "No trigger. The rule set is confirmed at least in part in S1525 (read for T-27). S1517/S1540 anchors not read. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-36"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "METHOD-ISSUE",
+   "statement": "Cross-label evidence siloing: the label-1 family (86 rows) contains no row from the verification programme even though at least eight step-verify-programme rows evaluate step-120 or its descendants directly (S1520 p1_rows[124]; S1521 [132], [134]; S1522 [146], [154], [156], [159]; S1524 [177], [190]). Stage-2 files S1484 and S1524 contribute no label-1 rows, and step-121's own file (S1019, per the G0268 note) contributes none.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "step 121",
+      "quote": "step-120 produced C1–C7 as a candidate constitution and left its conformance matrix entirely populated with `?`",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "Step 152 SPECIAL TASK 2",
+      "quote": "THE TWO CONSTITUTIONS",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "record 121",
+      "quote": "**zero of seven constitutional invariants confirmed conformant.**",
+      "source_id": "S1484"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "stage2_files (label 1)",
+      "source_id": "R1",
+      "what": "['S1020','S1484','S1524']"
+     },
+     {
+      "anchor": "p1_contribution_rows (label 1)",
+      "source_id": "R1",
+      "what": "source_ids limited to S1020, S1021, S1022, S1023"
+     },
+     {
+      "anchor": "p1_rows[124] labels",
+      "source_id": "S1520",
+      "what": "labelled step-verify-programme only"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. Incidental reading confirms that S1522, S1524 and S1484 contain substantive evaluations of step-120 and its descendants, and that S1019 contains step-121's own content. What the R1 label family actually contains (which rows are attached to which label) is a pipeline fact and cannot be checked from the sources.",
+   "item_id": "LIST-2-37"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "CONTRADICTION",
+   "statement": "P3a classifies kos-implementation-constitution (Step 152, C-001..C-040) as an EXTENSION 'downstream of' C1-C7 (basis INFERRED); the verification layer reports that Step 152 cites, compares or supersedes nothing from step-120, that Epistemic Separation and Feedback have no v1.0 counterpart, and that two constitutions remain live, i.e. a regression presented through a version bump. Separately, step-143 is said to restate C1-C7 near-verbatim as future work without citing step-120.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "Step 152 SOURCE RESULT",
+      "quote": "It does **not** cite Step 120. It does **not** cite \"Architecture Constitution v0.1\". It does **not** claim supersession.",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "Step 152 VERIFIER OBSERVATION",
+      "quote": "Step 120 (`20260828-124510`, 30 minutes earlier in the same corpus)",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "Step 152 (b)",
+      "quote": "C1→(partially C-013, C-029) · C2→(partially C-019, C-031) · C3→(**absent**) · C4→(partially C-021) · C5→C-016 · C6→C-022 · C7→(**absent**",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "Step 152 (b)",
+      "quote": "A v1.0 that drops C3 (Epistemic Separation) and C7 (Feedback) without a word is a regression, not a release",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "Step 143 DERIVATION",
+      "quote": "these seven rules are near-verbatim the C1–C7 of Step 120's already-existing \"KnowledgeOS Architecture Constitution v0.1\" ... re-derived under different wording without citing 120.",
+      "source_id": "S1524"
+     },
+     {
+      "anchor": "SECTION 4 C4",
+      "quote": "Two constitutions, colliding version numbers. ... No document in the batch reconciles them",
+      "source_id": "S1484"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "Step 152 (b)",
+      "quote": "v1.0 is not a version of v0.1; it is a different document about a different subject.",
+      "source_id": "S1524"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "RP1172",
+      "source_id": "P3a",
+      "what": "EXTENSION, basis INFERRED, type UNKNOWN; 'No formally tagged SOURCE-CLAIMED-EXTENSION row'"
+     },
+     {
+      "anchor": "p1_rows[177]",
+      "source_id": "S1524",
+      "what": "'no citation of, comparison to, or supersession claim over step-120 ... Two of seven v0.1 rules have no v1.0 counterpart ... a regression, not a release'"
+     },
+     {
+      "anchor": "p1_rows[190]",
+      "source_id": "S1524",
+      "what": "step-143 WP-20 Rules 1-7 'near-verbatim the C1-C7 of Step 120 ... without citing 120'"
+     },
+     {
+      "anchor": "p1_rows[214] (TV-F-060)",
+      "source_id": "S1528",
+      "what": "'two unmarked live constitutions'"
+     }
+    ]
+   },
+   "interpretation": "Located: the mapping table (two v0.1 rules with no v1.0 counterpart, C3 and C7), the exhaustive-occurrence citation evidence ('Step 120' zero times, 'supersede' zero times), the '30 minutes earlier' timing, and the step-143 WP-20 near-verbatim finding. S1484 independently records two unreconciled constitutions. This confirms that the verification layer's findings contradict P3a's INFERRED EXTENSION. The step-152 primary file itself was not triggered and not read, so the mapping stays verifier-reported. Interpretation: S1524 partly undercuts its own 'regression' framing when it concedes that v1.0 concerns a different subject (implementation, not epistemics). Its evidence then fits 'rival/lossy replacement under a colliding name' better than 'successor'. It also calls step-143's rules both 'near-verbatim' and 're-derived under different wording', a mild internal tension.",
+   "item_id": "LIST-2-38"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "METHOD-ISSUE",
+   "statement": "Notation attribution and co-labelling artefacts: 'M1-M7' is registered as a step-verify-programme notation, but the stage-1 hit shows the identical gate list in S0924 (a corpus file audited by the programme; S1513 attributes the gate to the step-030-analysis meta file), and S2291 shows Step 281's unrelated M1-M7 missingness categories, consistent with RP1682. The kt-tuple-spine-wars-steps-26-40 label co-occurs 49 times, including rows about steps 101-220 registries and scales, i.e. it is used as a generic tuple/registry-collision tag rather than a steps-26-40 scope.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "stage1 ledger_hit",
+      "source_id": "S0924",
+      "what": "'M1 Type correctness ... M7 Computational feasibility'"
+     },
+     {
+      "anchor": "p1_rows[8]",
+      "source_id": "S1513",
+      "what": "M1-M7 gate of the step-030-analysis meta file, never applied by step-031 (VC-10)"
+     },
+     {
+      "anchor": "stage1 ledger_hit",
+      "source_id": "S2291",
+      "what": "Step 281's M1-M7 (notin D_t vs in D_t Unknown)"
+     },
+     {
+      "anchor": "RP1682",
+      "source_id": "P3a",
+      "what": "UNWITNESSED; shared-notation false positive"
+     },
+     {
+      "anchor": "G1524",
+      "source_id": "P2a",
+      "what": "co-occurrence 49 times"
+     },
+     {
+      "anchor": "p1_rows[104], [105], [118]",
+      "source_id": "S1520",
+      "what": "rows about steps 101-116 carry the kt-tuple label"
+     }
+    ]
+   },
+   "interpretation": "No trigger. This is a notation/co-label artefact in the stage-1 ledger and P2a/P3a layers, which are outside the isolation boundary. It rests on the R1 package.",
+   "item_id": "LIST-2-39"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "RELATIONSHIP",
+   "statement": "Constitution lineage as reported by the verification layer: interrogated honestly at step-121 (0 of 7 rules confirmed conformant, 7 of 7 unresolved), instrumented and then fabricated against at steps 122-123, demoted at 124-125, functionally replaced by AFR-01..36 at 128-129 (one unremarked succession note AFR-02 <- C1+C2), then unreferenced across 130-140 and never versioned. The step-121 remedy (versioning v0.1/v0.2) is reported never implemented.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "step 121 §121.51",
+      "quote": "**CONFIRMED CONFORMANT: 0 of 7. UNRESOLVED: 7 of 7**",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "(b)",
+      "quote": "`C1–C7` token counts per step: **121:48 → 122:32 → 123:29 → 124:4 → 125:0 → 126:0 → 127:0 → 128:0 → 129:7 → 130:0",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "(b) phase 4",
+      "quote": "§129.4 makes the succession explicit and unremarked: `AFR-02 → Constitutional Principle C1 → Architecture Constitution → Approved Decision`. AFR-02 ... **is C1+C2 renumbered.**",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "step 121 §121.47",
+      "quote": "**IS IT IMPLEMENTED ANYWHERE IN SCOPE? NO.**",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "121.51",
+      "quote": "C1 Provenance              | source + lineage + enforcement                  | **To verify**",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "121.51",
+      "quote": "C5 Deterministic assurance | reproducible checks + evidence                  | **Strong conceptual evidence; implementation to verify**",
+      "source_id": "S1019"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "(b) phase 2",
+      "quote": "§122.53, §123.40 and §123.46 emit **three mutually inconsistent fabricated health tables**",
+      "source_id": "S1522"
+     },
+     {
+      "anchor": "123.40",
+      "quote": "For example:",
+      "source_id": "S1022"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[159]",
+      "source_id": "S1522",
+      "what": "batch-level constitution-lineage finding"
+     },
+     {
+      "anchor": "p1_rows[146]",
+      "source_id": "S1522",
+      "what": "step-121: 'CONFIRMED CONFORMANT: 0 of 7. UNRESOLVED: 7 of 7'; bootstrap-paradox strengthening; versioning remedy never implemented"
+     },
+     {
+      "anchor": "p1_rows[144]",
+      "source_id": "S1522",
+      "what": "AFR-01..AFR-36 clean identifier series"
+     }
+    ]
+   },
+   "interpretation": "Located: the counting method (per-step C1-C7 token counts; the pattern is not stated beyond 'token counts'), the succession note (quoted from 129.4 as AFR-02 -> C1), and the step-121 table (confirmed against S1019 121.51 by a primary whole-file read). Independent spot checks agree with the counts: S1023 = 4 and S1030 = 0. Caveats: the primary note reads AFR-02 -> C1, and 'C1+C2' is S1522's interpretation of AFR-02's content. The 'fabricated against at 122-123' phase is overstated, because 123.40 is marked 'For example' (see B-KAC-13). The primary files for steps 125-129 and 131-140 were not read. The disconfirmation condition (C1-C7 references in 130-140, a versioning act, or step-121 confirming rules) is not met in anything read.",
+   "item_id": "LIST-2-40"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "RELATIONSHIP",
+   "statement": "P3a pair verdicts for this label were made on samples (b truncated 318/338); RP1040 (EXTENSION with invariant-consolidation-satisfiability-plan) needed a full-family lookup, and three UNWITNESSED verdicts (RP1672, RP1676, RP1678) rest on the extraction note 'relationship ... not reconciled in this batch'. R1 rows show the programme treating prior verification artefacts (A1-A9, AM, AC register, TV-F-001.., K0, V2, V3, STEP-TRACEABILITY-REGISTER, B1-B7 traces) as 'provisional verifier hypotheses' to be rechecked, which is positive evidence of a continuation / re-verification relation with the STEP-TRACE series.",
+   "verification": "UNRESOLVED",
+   "evidence": {
+    "confirming": [],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "RP1040, RP1672, RP1676, RP1678",
+      "source_id": "P3a",
+      "what": "verdicts and truncation notes"
+     },
+     {
+      "anchor": "p1_rows[55]",
+      "source_id": "S1517",
+      "what": "prior artefacts incl. 'B1-B7 traces' treated as provisional hypotheses"
+     },
+     {
+      "anchor": "p1_rows[326]",
+      "source_id": "S1540",
+      "what": "V0-V3 delivered 2026-08-29"
+     }
+    ]
+   },
+   "interpretation": "No trigger. Settling the continuation/re-verification relation with the STEP-TRACE series needs files that are not in this substrate. The P3a verdicts are outside the isolation boundary.",
+   "item_id": "LIST-2-41"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "CONTRADICTION",
+   "statement": "The Step-201 fork: 201-A performs an immediate 16-term vocabulary freeze; 201-B refuses the freeze and proposes an 80-step, ten-phase adversarial / statistical / formal-assurance programme (Phases A-J, steps 201-280) with Freeze last and a seven-question burden-of-proof gate. Steps 202-205 cite 201-A only, so 201-A 'wins' by successor capture without adjudication, and the only branch that would have produced executable falsification evidence is orphaned. The freeze drops three terms still required by live invariants.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "FORK ADJUDICATION",
+      "quote": "Grep across 202/203/204/205 for `Phase [A-J]`, `refinement program`, `refinement principle`, `second-order`, `Steps 201–280`, `burden of proof`, `review instrument`, `Review_2`: **0 hits in all four files.**",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FORK ADJUDICATION",
+      "quote": "**202** → `Step 200`×1, **`Step 201`×2**, `frozen vocabulary`×2, `Step 203`×2.",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FORK ADJUDICATION",
+      "quote": "**Conclusion: 202→203→204→205 is a strict linear chain rooted exclusively in 201-A. 201-B is a complete orphan — it has zero successors in scope.**",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FILE 17",
+      "quote": "**★ WHAT 201-A FREEZES — the §201.40 \"Frozen\" list, verbatim and complete, in document order (16 terms):**",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FILE 18",
+      "quote": "**Its objective (boxed, §201 line 9):** `Discover → Formalize → Challenge → Refine → Verify → Freeze` — note **Freeze is last, not first**.",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "FILE 18 Phase table",
+      "quote": "| **J — Formal assurance** | **271–280** |",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "Special Task 2 (i)",
+      "quote": "`Determination`, `Witness`, and `Conflict`-as-a-concept were dropped at the 201-A freeze.",
+      "source_id": "S1529"
+     },
+     {
+      "anchor": "TV-F-064",
+      "quote": "**201-B has zero successors.** Grep-verified",
+      "source_id": "S1532"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "FORK ADJUDICATION",
+      "quote": "**203** → `Step 202`×2, `Step 204`×3.",
+      "source_id": "S1529"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[226]",
+      "source_id": "S1529",
+      "what": "the fork described"
+     },
+     {
+      "anchor": "p1_rows[233]",
+      "source_id": "S1529",
+      "what": "grep: 202-205 cite 201-A exclusively"
+     },
+     {
+      "anchor": "p1_rows[225]",
+      "source_id": "S1529",
+      "what": "freeze drops Determination, Witness, Conflict-as-object"
+     },
+     {
+      "anchor": "p1_rows[260] (TV-F-064)",
+      "source_id": "S1532",
+      "what": "fork resolved by silence against the testing half"
+     },
+     {
+      "anchor": "p1_rows[286]",
+      "source_id": "S1536",
+      "what": "mandate commissions fork investigation, forbids deciding by lateness"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: S1529 records the search terms, scope (202/203/204/205), a zero-hit result and positive citation counts per file, and summarizes both branches with section anchors (201-A §201.1, §201.25, §201.35, §201.40; 201-B §201.1-§201.30, Phase A-J table §201.26). It also establishes that the freeze drops Determination, Witness and Conflict-as-object, which live invariants/axioms depend on (I_34, M6, M7). The disconfirmation criterion is NOT met: no 202-205 reference to 201-B's phases or gate is shown, and search evidence is given. CAVEATS (interpretation): the search terms target 201-B's vocabulary. A reference to 201-B by title string or filename is not among the listed patterns, although the positive citations quoted for 202 ('frozen vocabulary', 'Step 201 deliberately exposed an omission') are unambiguously 201-A. 203-205 cite Step 201 zero times, so the '201-A exclusively' conclusion rests on 202 alone plus the 203→204→205 chain. The grep was reported, not shown with output.",
+   "item_id": "LIST-2-42"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "METHOD-ISSUE",
+   "statement": "Substrate integrity anomalies: files_touching lists S1544, which contributes no P1 row and has no source_track; source_tracks carry d23_track 'B' with track_tag 'TRACK-A-VERIFICATION-CLUSTER-UNCONFIRMED'; verification spec files (S1513-S1531) are provenance PRIMARY while checkpoints/charter/register (S1526, S1535, S1540, S1543) are SECONDARY-SYNTHESIS; S1538's best_historical_date 2026-08-25 is Era-0 content, not authoring date; P1 statements render the file identifiers '140338' and '135842' as step numbers ('steps 158 and 140338'); S1524 feeds both labels' stage-1 searches but carries rows only for label 2.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "files_touching (label 2)",
+      "source_id": "P3a",
+      "what": "includes S1544"
+     },
+     {
+      "anchor": "source_tracks (label 2)",
+      "source_id": "R1",
+      "what": "d23_track 'B', track_tag 'TRACK-A-...-UNCONFIRMED'"
+     },
+     {
+      "anchor": "source_meta S1538",
+      "source_id": "02-FILES",
+      "what": "best_historical_date 2026-08-25 EXPLICIT"
+     },
+     {
+      "anchor": "p1_rows[31]",
+      "source_id": "S1516",
+      "what": "'steps 158 and 140338'"
+     },
+     {
+      "anchor": "p1_rows[169]",
+      "source_id": "S1524",
+      "what": "files '135842' and '140338' listed as the fourth and final files"
+     },
+     {
+      "anchor": "p1_rows[332]",
+      "source_id": "S1543",
+      "what": "'steps 158 and 140338'"
+     }
+    ]
+   },
+   "interpretation": "No trigger. These are substrate-integrity anomalies in pre-S5 layers (files_touching, source_tracks, 02-FILES dates), outside the isolation boundary. They rest on the R1 package.",
+   "item_id": "LIST-2-43"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "DISTINCTION",
+   "statement": "Two-tier invariant structure: constitutional rules (K1-K7) versus foundation invariants (F1 stable identity; F2 immutability/history with F2 ⊂ K1+K4; F3 versioning as an implementation mechanism of K4); Identity declined as K8. Yet an experiment numbered 'K8.1' (KnowledgeOS > LocalMemory) appears after K8 was declined, and the notation 'F2 ⊂ K1+K4' applies a subset relation to a sum of rules.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.41",
+      "quote": "perhaps identity is foundational infrastructure rather than a KnowledgeOS-specific constitutional principle.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.43",
+      "quote": "Historical authoritative records must not silently disappear. This follows from provenance and temporal validity. Rather than adding another constitutional rule: F2 \\subset K1+K4.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.44",
+      "quote": "is an implementation mechanism supporting: TemporalValidity. No need to elevate it separately.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.50",
+      "quote": "Experiment K8.1 ... Claude local memory contains: > \"Architecture Board approved X.\" ... KnowledgeOS > LocalMemory. ... PASS",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "120.41-120.44 (p1_rows[35]-[38])",
+      "source_id": "S1020",
+      "what": "K8 Identity declined; F1-F3 defined; F2⊂K1+K4"
+     },
+     {
+      "anchor": "120.50 (p1_rows[45])",
+      "source_id": "S1020",
+      "what": "'Experiment K8.1 ... Verdict: PASS'"
+     }
+    ]
+   },
+   "interpretation": "In 120.43, '⊂' and '+' express an entailment claim ('This follows from provenance and temporal validity'). The claim is asserted, not derived, and the notation applies a subset relation to a sum of rules, so it is loose notation for 'F2 is entailed by K1 ∧ K4'. Experiment K8.1 tests pointer-layer authority (local memory vs KnowledgeOS). It has nothing to do with the declined Identity invariant, and no K8 rule is ever declared, so the numbering is a naming anomaly. The disconfirmation condition (an explicit derivation, and K8.1 tied to a declared K8) is not met.",
+   "item_id": "LIST-2-44"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "RESEARCH-QUESTION",
+   "statement": "Reflexivity of the programme's evidence standard: it classifies the corpus's ~1,900 PASS labels as AUTHOR_ASSERTION because no execution trace exists, and itself reports 'twenty first-hand verifier computations', an md5 sweep, grep censuses and an exhaustive 2^14 enumeration. Do its own computations meet ACTUALLY_EXECUTED / REPRODUCIBLE_WITNESS (command, output, inputs), or are they hand derivations reported in prose?",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§4",
+      "quote": "**Verifier computations executed this session (all by me, first-hand):**",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§4 row 1-9",
+      "quote": "Earlier bands (Bayes/Beta-Bernoulli, EVSI, delta method, Shannon, strong-Kleene, Merkle, G-Set, partial orders, scale types) | all pass",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§4 row 15",
+      "quote": "`σ-algebra` in **1 of 473 files**; `Lebesgue` **0**",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§2",
+      "quote": "**Corpus-wide: 0 interpreter invocations · 0 command lines with output · 0 test-runner output",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§3",
+      "quote": "atoms: 14   models enumerated: 16,384\nSATISFYING MODELS: 0",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "FILE 1 LATER RESPONSE",
+      "quote": "Grep across 187–205 for `dirac|delta_{t|dempster|shafer|\\mu_O|\\mu_E|measure space|Sigma_E|Bel(|Pl(|belief function|Reconstruction Theorem|sigma-algebra` returns hits in **exactly one file: Step 186**",
+      "source_id": "S1529"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "§4 row 10",
+      "quote": "product 81 vs true 8.1, **10× overstatement**; posterior 0.988 vs 0.890",
+      "source_id": "S1535"
+     },
+     {
+      "anchor": "§4 row 11",
+      "quote": "majority is `A≻B, B≻C, A≻C`, transitive, A wins. No cycle",
+      "source_id": "S1535"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[281]",
+      "source_id": "S1535",
+      "what": "'Verifier computations executed this session (all by me, first-hand)'"
+     },
+     {
+      "anchor": "p1_rows[12]",
+      "source_id": "S1513",
+      "what": "grep method with experiment block and stated limitation"
+     },
+     {
+      "anchor": "p1_rows[37]",
+      "source_id": "S1517",
+      "what": "eight-value empirical-evidence classification"
+     },
+     {
+      "anchor": "p1_rows[303]",
+      "source_id": "S1539",
+      "what": "'models enumerated: 16,384 SATISFYING MODELS: 0'"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: S1535's 20-row table gives each computation as a check name plus a result. Rows 1-9 are collapsed into one row reading 'all pass'. No row carries a command line, script, tool output, input file or trace. S1539's enumeration is a result block with no code. S1529 is the partial exception: it states its grep patterns verbatim but reports only hit counts, not output listings. INTERPRETATION, using the programme's own evidence categories as they appear in the files read (S1525 §12/§16: ACTUALLY_EXECUTED, REPRODUCIBLY_EXECUTED, CONCEPTUAL_CHECK, AUTHOR_ASSERTION ...; S1529's execution table: ACTUALLY_EXECUTED / REPRODUCIBLE_WITNESS / CONCEPTUAL-ONLY / NOT_EXECUTED): (a) rows 1-9 cannot be assessed and are at best AUTHOR_ASSERTION; (b) rows 12-18 (occurrence and grep counts) are reproducible in principle because the terms are named, but carry no command or output and so fail the programme's own 'command lines with output' test; (c) rows 10, 11 and 19 state enough numbers to be independently rechecked, which puts them close to REPRODUCIBLE_WITNESS for the arithmetic but not for the corpus inputs; (d) the 2^14 enumeration is AUTHOR_ASSERTION as delivered. None meets ACTUALLY_EXECUTED as the programme applies it to the corpus. So the disconfirmation criterion ('most computations include command lines/outputs') is NOT met. This is a reflexive gap. The eight-value scale of S1517 is not read; the classification uses scales visible in the files that were read.",
+   "item_id": "LIST-2-45"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "ALGORITHM",
+   "statement": "Joint-satisfiability test by propositional abstraction: 14 atoms, each traced to a verbatim corpus commitment (e.g. UnknownRepresentable, DiscardPermitted, OneOwnerPerConcept, EpistemicPartialOrder/EpistemicTotalChain, EntropyNonIncreasing/EntropyGrows, SemanticElevationGoverned/SemanticDemotionGoverned, FreezeDeletesTerms), exhaustive enumeration of 2^14 = 16,384 assignments, 0 satisfying models, five independent minimal conflicting subsets (MCS-1..5). Claimed to be a sound lower bound on inconsistency, because conflicts hidden inside undefined predicates cannot be found.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "front-matter method",
+      "quote": "exhaustive model enumeration (2^14 = 16,384 models — a decision\n  procedure at this size, not a heuristic)",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§2 table",
+      "quote": "The formalizable core — 14 atoms, each with a verbatim source",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§3",
+      "quote": "atoms: 14   models enumerated: 16,384\nSATISFYING MODELS: 0",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§3",
+      "quote": "All five are independently unsatisfiable",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§1",
+      "quote": "This yields a sound *lower bound* on inconsistency",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§11",
+      "quote": "V = { x | I1(x) ∧ I2(x) ∧ ... ∧ In(x) }",
+      "source_id": "S1525"
+     },
+     {
+      "anchor": "§11",
+      "quote": "If the invariant system is unsatisfiable, the theory cannot simply be declared valid.",
+      "source_id": "S1525"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "§2 table, SemanticDemotionGoverned row",
+      "quote": "**no corpus source — no invariant anywhere asserts this**",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "front-matter method",
+      "quote": "Every atom is traceable to a verbatim corpus source.",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§2 table, RuntimeSurfaceHasUnknown row",
+      "quote": "whether the runtime verification surface can express Unknown",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§6",
+      "quote": "Every one of the ten conflicting commitments is\n*individually reasonable*",
+      "source_id": "S1539"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[303]",
+      "source_id": "S1539",
+      "what": "14 atoms, 16,384 models enumerated, 0 satisfying"
+     },
+     {
+      "anchor": "p1_rows[304]",
+      "source_id": "S1539",
+      "what": "rejects 'ill-posed' framing; sound lower bound"
+     },
+     {
+      "anchor": "p1_rows[305]",
+      "source_id": "S1539",
+      "what": "'NO ... INCONSISTENT ... FIVE INDEPENDENT minimal conflicting subsets'"
+     },
+     {
+      "anchor": "p1_rows[318]",
+      "source_id": "S1540",
+      "what": "report delivered ahead of schedule, 0 of 16,384"
+     },
+     {
+      "anchor": "p1_rows[200]",
+      "source_id": "S1525",
+      "what": "mandate V = {x | I1(x) ∧ ... ∧ In(x)}; unsatisfiable system blocks validity"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: S1539 lists 14 atoms with section-anchored sources, reports a result block (16,384 enumerated / 0 satisfying) and names five MCS, each labelled UNSATISFIABLE. NOT OBSERVED anywhere in the file: (a) the constraint/clause set linking atoms (e.g. the polarity or exclusion clause that makes EntropyNonIncreasing and EntropyGrows jointly unsatisfiable) — the encoding is never written down; (b) any command, code or tool output for the enumeration — only a result block; (c) any per-MCS minimality argument. The disconfirmation criterion 'constraints are not stated / the enumeration is only asserted' is therefore MET; 'an MCS depends on SemanticDemotionGoverned' is NOT met (that atom is in no MCS). Internal inconsistency: the front matter claims every atom has a verbatim source, while the table records SemanticDemotionGoverned as having none and RuntimeSurfaceHasUnknown carries a description, not a quote. INTERPRETATION: the five MCS are pairwise atom-disjoint (2+3+2+2+2 = 11 atoms), so 'independent' follows from disjointness if each set is unsatisfiable; 3 atoms (SemanticElevationGoverned, SemanticDemotionGoverned, FreezeDeletesTerms) are in no MCS and cannot contribute to the 0-model result. If the commitments are asserted as unit clauses plus pairwise exclusions, unsatisfiability is fixed by how the encoding was built and the 2^14 enumeration adds no evidential weight; this cannot be checked because the encoding is absent. 'Ten conflicting commitments' against 11 MCS atoms is consistent only if RuntimeSurfaceHasUnknown counts as an observed fact, not a commitment.",
+   "item_id": "LIST-2-46"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "CONCEPT",
+   "statement": "Step-121 conformance method ConstitutionalRule -> ArchitectureMechanism -> Code -> Test -> RuntimeEvidence per C1-C7, previewed in S1020, reportedly executed at step-121 as a verdict table with 0 of 7 confirmed conformant, plus a 'bootstrap paradox' about who authorizes changes to the constitution itself.",
+   "verification": "VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "121.51",
+      "quote": "Without inventing repository facts, our current reconstruction status is:",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "121.51",
+      "quote": "This is deliberately conservative.",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "121.45",
+      "quote": "If the constitution is itself mutable without authority, then: Authority can be bypassed by simply changing the rule. Therefore: ConstitutionChange \\rightarrow HigherOrderAuthority.",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "121.47",
+      "quote": "A new version: v0.2 must have: * change rationale; * authority; * effective date; * superseded version; * verification.",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "Step 121 preview",
+      "quote": "ConstitutionalRule \\rightarrow ArchitectureMechanism \\rightarrow Code \\rightarrow Test \\rightarrow RuntimeEvidence",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "record 121",
+      "quote": "Remedy sketched but not built: constitutional versioning",
+      "source_id": "S1484"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "Step 121 preview (p1_rows[69])",
+      "source_id": "S1020",
+      "what": "ConstitutionalRule->ArchitectureMechanism->Code->Test->RuntimeEvidence"
+     },
+     {
+      "anchor": "p1_rows[146]",
+      "source_id": "S1522",
+      "what": "step-121 0/7 table; bootstrap paradox; 'HigherOrderAuthority ... appears in no premise'"
+     },
+     {
+      "anchor": "source_meta S1019",
+      "source_id": "02-FILES",
+      "what": "PRIMARY, mtime-dated"
+     }
+    ]
+   },
+   "interpretation": "A primary whole-file read of S1019 confirms the verdict table: six 'To verify', and C5 'Strong conceptual evidence; implementation to verify'. None is Conformant. '0 of 7 confirmed / 7 of 7 unresolved' is the verifiers' tally of that table (S1522, S1484), not the source's wording. The table uses 'To verify', which is not one of its own five declared verdicts (Conformant/Partial/Declared/Absent/Unknown). Bootstrap paradox confirmed (121.45). 'HigherOrder' appears only in the conclusion, never in the premise, which confirms the verifier's 'unlicensed strengthening' observation. Versioning remedy confirmed (121.47). S1019 also contains experiments C8.1/C9.1, which extend C-numbering past C7. The disconfirmation condition (some rule confirmed, or no table) is not met.",
+   "item_id": "LIST-2-47"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "LOGIC-STRUCTURE",
+   "statement": "MCS-2 retention conflict as a three-axiom derivation: A1 (discard requires provable universal non-necessity across all protected future questions), A2 (future questions are generally unknowable), A3 (some discarding is required or storage grows unboundedly); A1 ∧ A2 ⊢ ¬∃X Discard(X), contradicting A3. A1 and A2 are reported two sections apart in step-088, with step-100 declaring both 088 and 098 closed. Proposed repair: bound the proof obligation to a declared enumerable question class.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "§4 MCS-2",
+      "quote": "A1  (088 §88.24)  Discard(X) → Provable( ∀q∈Q : ¬Necessary(X,q) )",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§4 MCS-2",
+      "quote": "A2  (088 §88.26)  ¬Knowable(Q)          \"KnowledgeOS generally cannot know every future question\"",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§4 MCS-2",
+      "quote": "A3  (098 §98.58)  ∃X : Discard(X)        required, else Storage(t) → ∞",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§4 MCS-2",
+      "quote": "So `A1 ∧ A2 ⊢ ¬∃X : Discard(X)`, contradicting **A3**.",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§7 repair 2",
+      "quote": "amend §88.24's gate to quantify over a *declared, enumerable* protected-question class",
+      "source_id": "S1539"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "§4 MCS-2",
+      "quote": "the proof is therefore undischargeable for every `X`",
+      "source_id": "S1539"
+     },
+     {
+      "anchor": "§4 MCS-2 fair note",
+      "quote": "§88.26 does offer replacement criteria (*\"retention policy; domain constraints; legal\nrequirements; governance rules; reversibility; risk assessment\"*)",
+      "source_id": "S1539"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "p1_rows[308]",
+      "source_id": "S1539",
+      "what": "MCS-2 derivation"
+     },
+     {
+      "anchor": "p1_rows[313]",
+      "source_id": "S1539",
+      "what": "repair: 'bound the retention proof obligation to a declared enumerable question class'"
+     },
+     {
+      "anchor": "p1_rows[95]",
+      "source_id": "S1519",
+      "what": "step-098 retention mandate conflicts with step-088's undischargeable deletion-safety gate (VG-3)"
+     }
+    ]
+   },
+   "interpretation": "OBSERVED: A1-A3 are given as formal renderings with corpus section anchors and short verbatim fragments. The derivation's key step ('From A2, the universal ... quantifies over a class the system cannot enumerate; the proof is therefore undischargeable for every X') is asserted in one sentence, not derived. INTERPRETATION: A1 ∧ A2 ⊢ ¬∃X Discard(X) is valid only under an extra, unstated premise: that proving ∀q∈Q ¬Necessary(X,q) requires enumerating or knowing Q. A universally quantified non-necessity can in principle be proved structurally without enumerating Q, for example for a byte-identical duplicate whose content is retained elsewhere. The quoted A2 is also hedged ('generally cannot know'), which is weaker than ¬Knowable(Q). So A2 as quoted does not by itself block every proof of non-necessity, and the trigger's disconfirmation criterion is partly met on the validity question. A1-A3 are not free paraphrases: each carries a corpus anchor. Their fidelity to steps 088/098 is not checked, because those files are not triggered. The report itself records the §88.26 replacement criteria but maintains the conflict 'as written'. The proposed repair (a declared, enumerable question class) is confirmed verbatim.",
+   "item_id": "LIST-2-48"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "METHOD-ISSUE",
+   "statement": "P2 theme heading 'Step 121: Constitution-to-Implementation Conformance Test (4 rows)' groups S1021 rows, but S1021's path is the step-122 evidence-execution-protocol file; the P2 group note places Step 121 in S1019; S1022 is step-123 and S1023 step-124. Step-121's own content (0/7 conformant table) is therefore absent from the label family while its heading is reused for step-122 material.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "title",
+      "quote": "# Step 121 — Constitution-to-Implementation Conformance Test",
+      "source_id": "S1019"
+     },
+     {
+      "anchor": "title",
+      "quote": "# Step 122 — KnowledgeOS Evidence Execution Protocol",
+      "source_id": "S1021"
+     },
+     {
+      "anchor": "title",
+      "quote": "# Step 123 — Self-Verification of KnowledgeOS",
+      "source_id": "S1022"
+     },
+     {
+      "anchor": "title",
+      "quote": "# Step 124 — KnowledgeOS Self-Verification vs. Self-Governance",
+      "source_id": "S1023"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "theme '### Step 121: Constitution-to-Implementation Conformance Test (4 rows)'",
+      "source_id": "P2",
+      "what": "lists four S1021 rows"
+     },
+     {
+      "anchor": "p1_rows[71]-[74] path",
+      "source_id": "S1021",
+      "what": "20260828-124629_step-122-knowledgeos-evidence-execution-protocol.md"
+     },
+     {
+      "anchor": "G0268 note",
+      "source_id": "P2",
+      "what": "'immediately consumed by knowledgeos-constitution-implementation-conformance-test-model (S1019/Step 121)'"
+     }
+    ]
+   },
+   "interpretation": "No trigger was registered, so the verdict comes from the package. The substrate confirms that S1021 is step-122 and S1019 is step-121, so a P2 'Step 121' heading over S1021 rows is a misattribution. The P2 heading itself is not a substrate file.",
+   "item_id": "LIST-2-49"
+  },
+  {
+   "label": "step-verify-programme",
+   "kind": "PATTERN",
+   "statement": "Abandonment-without-supersession recurs at growing scale according to the programme: C1-C7 constitution dropped across 130-140 (C-094); Golden Trace / Registry / 28-invariant apparatus of 144-154 dropped from 155A onward (TV-F-059); Step-201-B's adversarial testing programme orphaned by successor capture; the step-146 aggregate map replaced wholesale by step-157, orphaning twelve invariants; Dempster-Shafer after step-027; measure theory before step-001; ~93% of the I_21-I_75 registry write-only.",
+   "verification": "OBSERVED-ONLY-CONFIRMED-IN-SUBSTRATE",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "TV-F-062",
+      "quote": "**After step 027 of 215,\nthe belief-function apparatus disappears from the numbered corpus entirely.**",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "TV-F-066",
+      "quote": "**≈93% of the registry is never cited again.**",
+      "source_id": "S1532"
+     },
+     {
+      "anchor": "FORK ADJUDICATION",
+      "quote": "201-B is a complete orphan — it has zero successors in scope.",
+      "source_id": "S1529"
+     }
+    ],
+    "disconfirming": [],
+    "r1": [
+     {
+      "anchor": "p1_rows[159]",
+      "source_id": "S1522",
+      "what": "C1-C7 'UNRESOLVED -> ABANDONED'"
+     },
+     {
+      "anchor": "p1_rows[215] (TV-F-059)",
+      "source_id": "S1528",
+      "what": "Golden Trace abandonment, 'same abandonment pattern as ... C-094 ... recurring one band later at larger scale'"
+     },
+     {
+      "anchor": "p1_rows[260] (TV-F-064)",
+      "source_id": "S1532",
+      "what": "201-B orphaned"
+     },
+     {
+      "anchor": "p1_rows[180]",
+      "source_id": "S1524",
+      "what": "step-157 deletes 8 aggregates, orphans twelve invariants"
+     },
+     {
+      "anchor": "p1_rows[255] (TV-F-066)",
+      "source_id": "S1532",
+      "what": "93% of registry write-only"
+     },
+     {
+      "anchor": "p1_rows[261] (TV-F-062)",
+      "source_id": "S1532",
+      "what": "D-S disappears after step-027 with no recorded rejection"
+     }
+    ]
+   },
+   "interpretation": "No trigger. The pattern is an R1 aggregation across band files. Several components are corroborated in triggered files; S1522/S1528/S1524 anchors not read. Incidental whole-file evidence from triggered files is listed in 'confirming'; the candidate itself has no trigger, so no targeted reading was done and the verdict rests on the R1 package.",
+   "item_id": "LIST-2-50"
+  },
+  {
+   "label": "knowledgeos-architecture-constitution-v01",
+   "kind": "CONTRADICTION",
+   "statement": "The constitutional dependency graph (Provenance -> {Authority, Epistemic, Validity} -> {Traceability, Evidence} -> Deterministic Verification -> Feedback) introduces 'Evidence', which is not one of the seven invariants, and asserts dependency edges between invariants that the reduction analysis (120.27-120.32) argued are distinct / not absorbable. The verification layer states three edges are refuted by the file's own independence arguments and that a second incompatible topology exists; R1 shows neither the full edge list nor a second topology.",
+   "verification": "PARTIALLY-VERIFIED",
+   "evidence": {
+    "confirming": [
+     {
+      "anchor": "120.53",
+      "quote": "The seven rules are not independent.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.53 diagram",
+      "quote": "Provenance ... Authority   Epistemic   Validity ... Traceability  Evidence ... Deterministic Verification ... Feedback",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.52",
+      "quote": "For an authorized action: Action \\rightarrow Decision \\rightarrow Authority.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.54",
+      "quote": "NoProvenance causes: EvidenceTrust\\downarrow which causes: VerificationTrust\\downarrow which causes: DecisionTrust\\downarrow.",
+      "source_id": "S1020"
+     }
+    ],
+    "disconfirming": [
+     {
+      "anchor": "120.27",
+      "quote": "They are related but distinct.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.28",
+      "quote": "Could authority be part of provenance? Partially.",
+      "source_id": "S1020"
+     },
+     {
+      "anchor": "120.29",
+      "quote": "Could temporal validity be part of provenance? Again, partially.",
+      "source_id": "S1020"
+     }
+    ],
+    "r1": [
+     {
+      "anchor": "120.53 (p1_rows[48])",
+      "source_id": "S1020",
+      "what": "dependency graph with node 'Evidence'"
+     },
+     {
+      "anchor": "120.27-120.32 (p1_rows[19]-[25])",
+      "source_id": "S1020",
+      "what": "pairwise non-absorption arguments"
+     },
+     {
+      "anchor": "p1_rows[124]",
+      "source_id": "S1520",
+      "what": "'a dependency graph three of whose edges are directly refuted by the file's own independence arguments'"
+     },
+     {
+      "anchor": "p1_rows[132] (TV-F-054)",
+      "source_id": "S1521",
+      "what": "'three edges refuted ..., an extra unlicensed node, a second incompatible topology'"
+     }
+    ]
+   },
+   "interpretation": "Observed edge list: Provenance -> {Authority, Epistemic, Validity}; {Authority, Epistemic, Validity} -> {Traceability, Evidence} (the box-drawing merge does not say which middle node feeds which lower node); Traceability -> Deterministic Verification; Evidence -> Deterministic Verification; Deterministic Verification -> Feedback. 'Evidence' is an eighth node, not one of C1-C7, and is not marked as non-constitutional. No edge semantics are given; the only gloss is 'not independent'. Confirmed: the extra node and the absence of edge meaning. Not confirmed: the verifier's claim that three edges are 'directly refuted' by the independence arguments. 120.27-120.32 argue non-absorption ('part of?'), and 120.28/120.29 answer 'Partially'. Non-absorption is compatible with dependency, so no edge is strictly refuted unless an edge is read as absorption. Second topology: 120.52 orders Action -> Decision -> Authority, which runs opposite to the graph's Authority -> Traceability direction, and 120.54 chains Evidence -> Verification -> Decision trust. These are chains over claim/action objects rather than a rival invariant graph, so 'second incompatible topology' is plausible but interpretation-dependent. The verifier files S1520/S1521 were not triggered and were not read.",
+   "item_id": "LIST-2-51"
+  }
+ ]
+}

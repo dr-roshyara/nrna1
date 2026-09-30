@@ -1,0 +1,69 @@
+{
+ "release": "L0-REL-21",
+ "read": {
+  "session_2026-07-26": {
+   "path": ".claude/sessions/2026-07-26.md",
+   "sha256": "5c5796787811c9abb5ede56ff079fb90695189e68ea7b5482e9d034e8c3957b1",
+   "lines": [
+    173,
+    180
+   ]
+  },
+  "MEMORY": {
+   "path": ".claude/MEMORY.md",
+   "sha256": "d80abcbde4f40d0585305dde244d6dbcde652ff4d934469ca4e8bd4bbf90c1d7",
+   "lines": [
+    387,
+    395
+   ]
+  },
+  "commit": "5af8111cf message"
+ },
+ "confirmed_genealogy": [
+  {
+   "step": 1,
+   "date": "2026-07-26",
+   "kind": "descriptive, track-local (EPIC-004 method's self-restraint)",
+   "quote": "principles promoted only on repeated evidence — and explicitly NOT promoted when evidence is domain-specific"
+  },
+  {
+   "step": 2,
+   "date": "2026-07-26",
+   "kind": "R-39 sharpens to bounded-context count and conjoins with ES-006.1",
+   "quote": "requires evidence from more than one bounded context (R-39 L25, read under L0-REL-14)"
+  },
+  {
+   "step": 3,
+   "date": "2026-08-01",
+   "kind": "MEMORY states a different ladder + five criteria, headed 'adopted'",
+   "quote": "Observation -> Candidate -> Repeated Evidence -> Operational Validation -> ARB Approval -> Engineering Canon",
+   "criterion": "across contexts, not merely across instances"
+  },
+  {
+   "step": 3.1,
+   "kind": "its commit records NO adopting act",
+   "quotes": [
+    "No promotion was performed",
+    "MEMORY gains the promotion rule",
+    "The placement question is referred rather than decided"
+   ]
+  },
+  {
+   "step": 4,
+   "date": "2026-08-01",
+   "kind": "CLAUDE.md attributes to ES-006.1 alone (locate L0-REL-20)"
+  },
+  {
+   "step": 5,
+   "date": "2026-08-16",
+   "kind": "ES-001.3 L82 cites ES-006.1 as requiring a repeated pattern"
+  }
+ ],
+ "findings": {
+  "citation_drift_with_sharpening": "Interpretation(ES-006.1,t) strengthened monotonically while Text(ES-006.1) unchanged",
+  "normative_pluralism": "two competing ladders for the same kind: ES-006.1 vs the MEMORY 'engineering promotion rule' (validation before ARB approval in the latter)",
+  "host_legitimacy": "the bar's only full text host is a layer the corpus declares non-authoritative ('MEMORY carries hints; the ES documents are the truth')",
+  "candidate_C1_issue": "MEMORY heading '(adopted 2026-08-01)' asserts adoption; no adopting act in the released material; register adoption NOT-FOUND-IN-SEARCH -> NOT a proven violation"
+ },
+ "theory_decision": "r3 justified (HYP): norm = Text · Force(provenance) · Interpretation · HostLegitimacy; plural competing norms per kind"
+}

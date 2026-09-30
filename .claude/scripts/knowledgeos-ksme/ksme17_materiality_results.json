@@ -1,0 +1,67 @@
+[
+  {
+    "experiment": "G1a_EvidenceAdded_C1_vs_C2",
+    "note": "Does deterministically resolving 'may be updated' as ALWAYS-update vs NEVER-update produce a behaviorally observable difference under downstream evidence-adding/revision ops?",
+    "manifest_valid": true,
+    "manifest_problems": [],
+    "behaviorally_material": true,
+    "counterexample": {
+      "abstraction": "(identity -- raw state comparison)",
+      "state_x": "K(A=frozenset({Assertion(id=2766460281, P='Nexus=3.70', Sigma='Weak', E=frozenset({'e1', 'e0'}), tau=1, Pi='src1', retired=False)}), R=frozenset(), rollback_marker=())",
+      "state_y": "K(A=frozenset({Assertion(id=2766460281, P='Nexus=3.70', Sigma='Strong', E=frozenset({'e1', 'e0'}), tau=1, Pi='src1', retired=False)}), R=frozenset(), rollback_marker=())",
+      "abstraction_x": "K(A=frozenset({Assertion(id=2766460281, P='Nexus=3.70', Sigma='Weak', E=frozenset({'e1', 'e0'}), tau=1, Pi='src1', retired=False)}), R=frozenset(), rollback_marker=())",
+      "abstraction_y": "K(A=frozenset({Assertion(id=2766460281, P='Nexus=3.70', Sigma='Strong', E=frozenset({'e1', 'e0'}), tau=1, Pi='src1', retired=False)}), R=frozenset(), rollback_marker=())",
+      "operation_sequence": [],
+      "observation": "assertion_values",
+      "output_x": "((2766460281, 'Nexus=3.70', 'Weak', False),)",
+      "output_y": "((2766460281, 'Nexus=3.70', 'Strong', False),)",
+      "violated_property": "behavioral equivalence"
+    }
+  },
+  {
+    "experiment": "G1b_ConflictResolved_C1_vs_C2",
+    "note": "Does 'record only' vs 'evidence-based strategy retracts the loser' produce an observable difference?",
+    "manifest_valid": true,
+    "manifest_problems": [],
+    "behaviorally_material": true,
+    "counterexample": {
+      "abstraction": "(identity -- raw state comparison)",
+      "state_x": "K(A=frozenset({Assertion(id=338135093, P='notX', Sigma='Weak', E=frozenset({'e1', 'e0'}), tau=1, Pi='s2', retired=False), Assertion(id=3722854033, P='X', Sigma='Weak', E=frozenset({'e0'}), tau=1, Pi='s1', retired=False)}), R=frozenset({(3722854033, 338135093, 'conflict-resolved:evidence-based')}), rollback_marker=())",
+      "state_y": "K(A=frozenset({Assertion(id=3722854033, P='X', Sigma='Retracted', E=frozenset({'e0'}), tau=1, Pi='s1', retired=False), Assertion(id=338135093, P='notX', Sigma='Weak', E=frozenset({'e1', 'e0'}), tau=1, Pi='s2', retired=False)}), R=frozenset({(3722854033, 338135093, 'conflict-resolved:evidence-based')}), rollback_marker=())",
+      "abstraction_x": "K(A=frozenset({Assertion(id=338135093, P='notX', Sigma='Weak', E=frozenset({'e1', 'e0'}), tau=1, Pi='s2', retired=False), Assertion(id=3722854033, P='X', Sigma='Weak', E=frozenset({'e0'}), tau=1, Pi='s1', retired=False)}), R=frozenset({(3722854033, 338135093, 'conflict-resolved:evidence-based')}), rollback_marker=())",
+      "abstraction_y": "K(A=frozenset({Assertion(id=3722854033, P='X', Sigma='Retracted', E=frozenset({'e0'}), tau=1, Pi='s1', retired=False), Assertion(id=338135093, P='notX', Sigma='Weak', E=frozenset({'e1', 'e0'}), tau=1, Pi='s2', retired=False)}), R=frozenset({(3722854033, 338135093, 'conflict-resolved:evidence-based')}), rollback_marker=())",
+      "operation_sequence": [],
+      "observation": "assertion_values",
+      "output_x": "((338135093, 'notX', 'Weak', False), (3722854033, 'X', 'Weak', False))",
+      "output_y": "((338135093, 'notX', 'Weak', False), (3722854033, 'X', 'Retracted', False))",
+      "violated_property": "behavioral equivalence"
+    }
+  },
+  {
+    "experiment": "G3_Rollback_C1_vs_C2_under_O_BASE (marker-blind observations)",
+    "note": "Under observations that never inspect rollback_marker: is the source's 'different provenance' claim behaviorally witnessed at all?",
+    "manifest_valid": true,
+    "manifest_problems": [],
+    "behaviorally_material": false,
+    "counterexample": null
+  },
+  {
+    "experiment": "G3_Rollback_C1_vs_C2_under_O_WITH_MARKER",
+    "note": "Under observations that DO inspect rollback_marker: does the constructed marker make the distinction observable?",
+    "manifest_valid": true,
+    "manifest_problems": [],
+    "behaviorally_material": true,
+    "counterexample": {
+      "abstraction": "(identity -- raw state comparison)",
+      "state_x": "K(A=frozenset({Assertion(id=1124162741, P='Y', Sigma='Strong', E=frozenset({'e0'}), tau=1, Pi='s3', retired=False)}), R=frozenset(), rollback_marker=())",
+      "state_y": "K(A=frozenset({Assertion(id=1124162741, P='Y', Sigma='Strong', E=frozenset({'e0'}), tau=1, Pi='s3', retired=False)}), R=frozenset(), rollback_marker=('rollback:user-requested',))",
+      "abstraction_x": "K(A=frozenset({Assertion(id=1124162741, P='Y', Sigma='Strong', E=frozenset({'e0'}), tau=1, Pi='s3', retired=False)}), R=frozenset(), rollback_marker=())",
+      "abstraction_y": "K(A=frozenset({Assertion(id=1124162741, P='Y', Sigma='Strong', E=frozenset({'e0'}), tau=1, Pi='s3', retired=False)}), R=frozenset(), rollback_marker=('rollback:user-requested',))",
+      "operation_sequence": [],
+      "observation": "rollback_marker",
+      "output_x": "()",
+      "output_y": "('rollback:user-requested',)",
+      "violated_property": "behavioral equivalence"
+    }
+  }
+]

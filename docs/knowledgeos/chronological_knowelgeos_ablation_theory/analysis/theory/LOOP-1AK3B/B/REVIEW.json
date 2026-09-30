@@ -1,0 +1,23 @@
+{
+  "U_A": [],
+  "U_reviewer": ["E1"],
+  "X_A": [{"event": "E4", "class": "X-consistent", "exception": "YES", "actor_DA": "INFERENCE"}],
+  "X_reviewer": [{"event": "E4", "class": "X-consistent", "exception": "YES", "actor_DA": "not named; formal consequence of \"`R-nn` identifiers belong to the Decision Authority\""}],
+  "disagreements": [
+    {"id": "D1", "class": "formal reasoning", "event": "E1", "affects": "U", "A": "E1 excluded partly because it is an assessment and because stability ❌ independently blocks promotion", "reviewer": "Neither is a §3 condition; §3 is purely conjunctive and does not require a DECISION or sole causation"},
+    {"id": "D2", "class": "coding", "event": "E1", "affects": "U", "A": "\"many instances\" is not a count, so ≥2 is not met", "reviewer": "\"many\" lexically entails ≥2; §3 needs only ≥2, not an exact count"},
+    {"id": "D3", "class": "coding", "event": "E1/E3", "affects": "U", "A": "E3 threshold = \"Under a strict reading, no insight from a single-context programme can ever be promoted\" (unit contexts, stated); E1 unit contexts = INFERENCE", "reviewer": "The same stated sentence governs E1, reinforced by \"What is missing is a second context\"; code E1 unit = contexts consistently"},
+    {"id": "D4", "class": "substantive", "event": "E1", "affects": "U", "A": "U_witnesses: none", "reviewer": "U_witnesses: [E1]"},
+    {"id": "D5", "class": "wording", "event": "E1", "affects": "none", "A": "ANSWER.md gives two failure reasons; ANSWER.json gives four", "reviewer": "Internal inconsistency between the two outputs"},
+    {"id": "D6", "class": "wording", "event": "E3", "affects": "none", "A": "\"'That' refers to the single-context restriction\" labelled SOURCE FACT", "reviewer": "The referent resolution is an INFERENCE (an easy one) and should be labelled as such"},
+    {"id": "D7", "class": "coding", "event": "E7", "affects": "none", "A": "One HELD event bundling staging root, file relocation and the 'undefined cell' conclusion", "reviewer": "Relocating the file moves it out of canon (not standing-raising); the staging root is structural; only the 'undefined cell' conclusion is arguably an item being raised"},
+    {"id": "D8", "class": "coding", "event": "missed", "affects": "none", "A": "Not mentioned", "reviewer": "\"rejected AP-1 and AP-2 retrospectively and accepted G-1 prospectively\" (Q1 l.17) should be coded (target/counts/threshold UNK) or explicitly excluded"},
+    {"id": "D9", "class": "coding", "event": "E3", "affects": "none", "A": "actor UNK", "reviewer": "actor \"I\" (the author), consistent with E1 in the same report"},
+    {"id": "D10", "class": "formal reasoning", "event": "E4", "affects": "none", "A": "DA by INFERENCE", "reviewer": "Formal consequence of the stated general rule on R-nn identifiers; still not named for R-39"},
+    {"id": "D11", "class": "source interpretation", "event": "E4", "affects": "none", "A": "below-threshold is INFERENCE", "reviewer": "Stated: \"early promotion\", \"exception\", \"not-fully-qualified material\""}
+  ],
+  "notes": [
+    "No evidence-scope or independence disagreements found; all A quotes verified verbatim (modulo markdown emphasis / marked ellipsis).",
+    "U_reviewer = [E1] depends on accepting the source's own context-counting statements as the stated threshold (the rule's verbatim text is absent) and on an assessment-level NOT-RAISED outcome; the strongest alternative (threshold = author's hedged reading only) would yield U = [], but would also strip E3's threshold, which A did not do."
+  ]
+}

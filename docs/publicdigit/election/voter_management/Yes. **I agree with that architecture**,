@@ -1,0 +1,215 @@
+Yes. **I agree with that architecture**, with one small wording refinement: the first machine should be called **Voting Engine Allowance State Machine**, and the second **Election Membership State Machine**.
+
+### State Machine 1 — Voting Engine Allowance
+
+This is the **existing state machine**.
+
+```text
+VotingEngineAllowance
+---------------------
+
+ACTIVE
+INACTIVE
+```
+
+Its responsibility is only:
+
+> **Can this election membership pass the existing Voting Engine membership gate?**
+
+We **do not change it initially**.
+
+Existing behavior remains:
+
+```text
+Allowance = ACTIVE
+        ↓
+   Voting Engine
+```
+
+```text
+Allowance = INACTIVE
+        ↓
+   blocked
+```
+
+This preserves the existing voting architecture.
+
+---
+
+### State Machine 2 — Election Membership
+
+This is the **new lifecycle state machine**:
+
+```text
+ElectionMembershipState
+
+INVITED
+   │
+   │ approve
+   ▼
+ACTIVE
+  │  │
+  │  └──────── remove ───────→ REMOVED
+  │
+  └──── suspend ──────────────→ SUSPENDED
+                                  │
+                                  │ reinstate
+                                  ▼
+                                ACTIVE
+```
+
+Its responsibility is:
+
+> **What is the current lifecycle state of this voter within the election?**
+
+---
+
+## The cross-machine invariant
+
+This is the most important rule:
+
+> **Only `ACTIVE` in the Election Membership State Machine may have `ACTIVE` in the Voting Engine Allowance State Machine.**
+
+Formally:
+
+```text
+ElectionMembershipState != ACTIVE
+        ⇒
+VotingEngineAllowance != ACTIVE
+```
+
+Equivalently:
+
+```text
+VotingEngineAllowance == ACTIVE
+        ⇒
+ElectionMembershipState == ACTIVE
+```
+
+Therefore:
+
+| Election Membership | Voting Allowance | Voting Engine |
+| ------------------- | ---------------- | ------------- |
+| `INVITED`           | `INACTIVE`       | ❌             |
+| `ACTIVE`            | `ACTIVE`*        | ✅ potentially |
+| `SUSPENDED`         | `INACTIVE`       | ❌             |
+| `REMOVED`           | `INACTIVE`       | ❌             |
+
+`*` Election Membership `ACTIVE` is a **necessary membership condition**, not necessarily sufficient for voting. Election lifecycle and the existing voting/code safeguards can still prevent voting.
+
+---
+
+## Transition rules for Machine 2
+
+Exactly as you stated:
+
+### Allowed
+
+```text
+INVITED → ACTIVE       ✅
+SUSPENDED → ACTIVE     ✅
+ACTIVE → SUSPENDED     ✅
+ACTIVE → REMOVED       ✅
+```
+
+### Forbidden
+
+```text
+REMOVED → ACTIVE       ❌
+REMOVED → SUSPENDED    ❌
+```
+
+And importantly:
+
+```text
+SUSPENDED → ACTIVE
+```
+
+must happen through an explicit **reinstatement** operation, not through generic `approve()`.
+
+Likewise:
+
+```text
+REMOVED → ACTIVE
+```
+
+must have **no reactivation path**.
+
+---
+
+# Why this is better than Claude's latest proposal
+
+Claude's latest proposal tried to use:
+
+```text
+status = active/inactive/removed
++
+suspension_status
+```
+
+to reconstruct the lifecycle state.
+
+Your model is conceptually stronger because it explicitly says:
+
+```text
+Machine 1
+"What may enter Voting Engine?"
+        ↓
+ACTIVE / INACTIVE
+
+Machine 2
+"What is this voter's membership lifecycle?"
+        ↓
+INVITED / ACTIVE / SUSPENDED / REMOVED
+```
+
+We don't force one field to answer two different domain questions.
+
+And we don't need:
+
+```text
+COMPLETED
+```
+
+in the Election Membership state machine. `Code.has_voted` remains an independent voting safety mechanism, as Claude verified. 
+
+---
+
+## One architectural point we should make explicit
+
+We should **not necessarily persist Machine 1 and Machine 2 as two database columns**.
+
+The conceptual model is two state machines.
+
+The implementation question is:
+
+> What is the minimum existing/new persistence representation needed to faithfully implement Machine 2 while leaving Machine 1 untouched?
+
+That's what Claude should determine before coding.
+
+So I would now consider the **architecture itself frozen for the next TDD planning step**:
+
+```text
+                 Election Membership
+                         │
+              ┌──────────┴──────────┐
+              │                     │
+              ▼                     ▼
+       MACHINE 2                MACHINE 1
+   Election Membership       Voting Engine
+        Lifecycle              Allowance
+              │                     │
+   INVITED / ACTIVE /         ACTIVE / INACTIVE
+   SUSPENDED / REMOVED
+              │                     │
+              └──────────┬──────────┘
+                         │
+             Cross-machine invariant:
+             only Machine-2 ACTIVE
+             may have Machine-1 ACTIVE
+                         │
+                         ▼
+                  Voting Engine
+```
+
+**Yes — this is the direction I would proceed with.** The next Claude task should therefore be **TDD implementation planning against this frozen architecture**, not another conceptual redesign.

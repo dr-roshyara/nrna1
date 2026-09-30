@@ -1,0 +1,841 @@
+Yes. Given that the 3,000 files are AI-generated, I recommend a **provenance-aware theory reconstruction process**, not ordinary summarization.
+
+The process should reconstruct:
+
+1. the source and generation lineage of each file;
+2. the concepts and their competing definitions;
+3. the claims and their evidence status;
+4. the processes and alternative solutions;
+5. the contradictions and boundary conditions;
+6. the most coherent theory that can be justified by the corpus.
+
+The central rule is:
+
+> Do not treat files as evidence units. Treat claims, source lineages, and theoretical propositions as evidence units.
+
+## 1. Define the reconstruction objective
+
+Before Claude Code examines the files, create a short research protocol.
+
+```yaml
+project:
+  name: "Theory Reconstruction Project"
+  objective: >
+    Reconstruct the strongest coherent theory contained in the corpus,
+    preserve competing interpretations and alternative solutions,
+    and distinguish supported claims from generated speculation.
+
+scope:
+  included_material:
+    - concepts
+    - definitions
+    - propositions
+    - mechanisms
+    - processes
+    - trials
+    - alternatives
+    - limitations
+  excluded_material:
+    - stylistic variation
+    - repeated summaries without new information
+    - unsupported rhetorical conclusions
+
+outputs:
+  - corpus_inventory
+  - provenance_graph
+  - concept_registry
+  - claim_registry
+  - process_catalog
+  - trial_catalog
+  - contradiction_registry
+  - theory_model
+  - evidence_audit
+  - unresolved_questions
+```
+
+Also define what “complete” means:
+
+- all meaningful concepts identified;
+- all materially different definitions preserved;
+- all major propositions represented;
+- all process variants documented;
+- all trials connected to claims;
+- contradictions made explicit;
+- unsupported claims marked;
+- source lineage preserved;
+- no important synthesis statement lacks provenance.
+
+If this protocol is not fixed first, the AI will gradually redefine the theory while processing the corpus.
+
+## 2. Preserve the raw corpus
+
+Never allow Claude Code to modify or overwrite the original files.
+
+```text
+corpus/
+├── raw/
+├── normalized/
+├── extracted/
+├── validated/
+├── synthesis/
+└── audit/
+```
+
+For every file, create an immutable record:
+
+```yaml
+file_id: FILE-000001
+path: corpus/raw/file_000001.md
+sha256: "..."
+created_at: "..."
+modified_at: "..."
+format: markdown
+language: en
+parent_files: []
+generation_stage: unknown
+status: unprocessed
+```
+
+The hash is important because AI-generated corpora are often regenerated, renamed, copied, or lightly modified.
+
+## 3. Reconstruct document lineage
+
+This is the first major difference from a normal literature review.
+
+Claude Code should identify whether each file is:
+
+- an original generated analysis;
+- a summary of another generated file;
+- a critique;
+- a refinement;
+- a reformulation;
+- a synthesis;
+- a proposed solution;
+- a rejected or superseded version;
+- a duplicate;
+- an apparently independent document.
+
+Create a lineage graph:
+
+```text
+FILE-000001 ──summarized_by──> FILE-000034
+FILE-000034 ──criticized_by──> FILE-000089
+FILE-000089 ──reformulated_by──> FILE-000122
+FILE-000122 ──synthesized_into──> FILE-000311
+```
+
+Use evidence such as:
+
+- explicit file references;
+- shared quotations;
+- repeated unusual phrases;
+- common section structures;
+- generation timestamps;
+- prompt identifiers;
+- version numbers;
+- identical examples;
+- semantic similarity;
+- claims carried forward with altered wording.
+
+A lineage relation should have a confidence value:
+
+```yaml
+relation_id: REL-00077
+from: FILE-000034
+to: FILE-000089
+relation: criticized_by
+evidence:
+  - "FILE-000089 explicitly names FILE-000034"
+confidence: high
+```
+
+Do not assume chronological order alone proves dependency. It is only a clue.
+
+## 4. Deduplicate without destroying evolution
+
+Use three levels of deduplication:
+
+### Exact duplication
+
+Hash normalized file contents.
+
+### Near duplication
+
+Detect small textual modifications, reordered sections, or template reuse.
+
+### Semantic duplication
+
+Group documents that express essentially the same claims in different language.
+
+The purpose is not simply to delete files. The purpose is to distinguish:
+
+```text
+independent reasoning
+from
+repeated reasoning
+from
+corrective evolution
+```
+
+Represent clusters like this:
+
+```yaml
+cluster_id: CLUSTER-00019
+canonical_file: FILE-000034
+members:
+  - FILE-000034
+  - FILE-000089
+  - FILE-000122
+classification:
+  - FILE-000034: initial_formulation
+  - FILE-000089: critique
+  - FILE-000122: revised_formulation
+independent_evidence_count: 1
+new_information:
+  - "added boundary condition"
+  - "changed definition of stability"
+```
+
+Semantic and near-duplicate detection are standard corpus-curation operations; exact hashing, fuzzy matching, and embedding-based matching can be combined for this purpose. [docs.nvidia](https://docs.nvidia.com/nemo/curator/curate-text/process-data/deduplication)
+
+## 5. Separate evidence layers
+
+Every statement extracted from a generated file must be assigned an epistemic type.
+
+```yaml
+statement_id: STMT-000441
+file_id: FILE-000122
+location: "section 4, paragraph 3"
+text: "..."
+type: interpretation
+evidence_status: unsupported
+lineage_status: derived_from_existing_files
+```
+
+Use these categories:
+
+| Category | Interpretation |
+|---|---|
+| `source_fact` | Directly preserved from a primary source |
+| `corpus_fact` | A pattern objectively observed in the generated corpus |
+| `interpretation` | Meaning assigned to material |
+| `hypothesis` | Possible explanation not established |
+| `proposition` | Theoretical statement to be evaluated |
+| `process_solution` | Proposed way to perform an activity |
+| `trial_result` | Reported result of a test or experiment |
+| `critique` | Objection or limitation |
+| `synthesis` | New conclusion formed across records |
+| `unsupported` | Statement without traceable support |
+
+This prevents the following invalid transformation:
+
+```text
+AI-generated speculation
+    → repeated by 50 files
+    → treated as established theory
+```
+
+Repetition increases prevalence in the corpus, not truth.
+
+## 6. Extract atomic claims
+
+Do not start by asking Claude Code for summaries. Ask it to extract atomic claims.
+
+An atomic claim should express one proposition:
+
+```yaml
+claim_id: CLM-000721
+statement: "Process A improves outcome B under condition C."
+subject: "Process A"
+predicate: "improves"
+object: "outcome B"
+conditions:
+  - "condition C"
+claim_type: causal
+source_file: FILE-000122
+source_location: "section 5.2, paragraph 4"
+evidence_excerpt: "..."
+explicit_or_inferred: inferred
+lineage:
+  immediate_source: FILE-000122
+  original_source: unknown
+independent_support:
+  - LINEAGE-00017
+support_level: provisional
+counterclaims: []
+```
+
+This format enables cross-document comparison.
+
+The extraction agent must not decide whether a claim is true. It should record:
+
+- what is said;
+- where it is said;
+- whether it is explicit or inferred;
+- where it came from;
+- what supports it;
+- what contradicts it.
+
+## 7. Reconstruct the conceptual system
+
+Build a concept registry rather than a flat glossary.
+
+```yaml
+concept_id: CON-00031
+canonical_label: "adaptive stability"
+aliases:
+  - "dynamic stability"
+  - "stabilizing adaptation"
+definitions:
+  - definition_id: DEF-00031-A
+    text: "..."
+    source: FILE-000034
+    context: "general theoretical discussion"
+  - definition_id: DEF-00031-B
+    text: "..."
+    source: FILE-000122
+    context: "process optimization"
+relations:
+  - type: narrower_than
+    target: CON-00044
+  - type: potentially_conflicting_with
+    target: CON-00063
+status: contested
+```
+
+For every concept, determine:
+
+- labels and aliases;
+- definitions;
+- scope;
+- assumptions;
+- examples;
+- exclusions;
+- related concepts;
+- process usage;
+- historical or generational changes;
+- unresolved conflicts.
+
+Use a definition relation taxonomy:
+
+```text
+equivalent
+broader_than
+narrower_than
+contextual_variant
+historical_variant
+operational_variant
+competing_definition
+incompatible
+unclear
+```
+
+Do not force a single canonical definition when the corpus does not justify one.
+
+## 8. Build the proposition system
+
+Concepts are not yet theory. Theory requires propositions and relationships.
+
+Create a proposition registry:
+
+```yaml
+proposition_id: PROP-00018
+statement: >
+  Adaptive stability is maintained through repeated adjustment
+  of the system's internal control variables.
+terms:
+  - CON-00031
+  - CON-00052
+assumptions:
+  - ASM-00007
+supporting_claims:
+  - CLM-000721
+  - CLM-000839
+counterclaims:
+  - CLM-001102
+applicable_contexts:
+  - CTX-00004
+boundary_conditions:
+  - "only when feedback is available"
+status: contested
+support_level: medium
+```
+
+Classify propositions as:
+
+- definitional;
+- descriptive;
+- causal;
+- mechanistic;
+- procedural;
+- predictive;
+- normative;
+- ontological;
+- methodological.
+
+This helps prevent different types of statements from being incorrectly compared.
+
+## 9. Extract processes as state-transition models
+
+For every process, reconstruct:
+
+```text
+purpose
+inputs
+preconditions
+actors
+states
+actions
+transitions
+outputs
+invariants
+failure modes
+feedback loops
+alternatives
+selection criteria
+```
+
+Represent it formally:
+
+```yaml
+process_id: PROC-00012
+name: "Adaptive adjustment"
+purpose: "..."
+inputs:
+  - "..."
+preconditions:
+  - "..."
+states:
+  - initial
+  - diagnosis
+  - adjustment
+  - evaluation
+  - stabilized
+transitions:
+  - from: initial
+    action: diagnose
+    to: diagnosis
+  - from: diagnosis
+    action: adjust
+    to: adjustment
+invariants:
+  - "the target condition must remain defined"
+failure_modes:
+  - "feedback unavailable"
+  - "adjustment overshoots target"
+variants:
+  - PROC-00012-A
+  - PROC-00012-B
+```
+
+This is particularly compatible with your interest in formal models and invariants.
+
+## 10. Preserve multiple solutions explicitly
+
+Do not create one merged process if the corpus contains different solutions.
+
+```yaml
+variant_id: PROC-00012-A
+name: "Sequential adjustment"
+strategy: sequential
+applicable_when:
+  - "changes are expensive"
+strengths:
+  - "lower coordination complexity"
+weaknesses:
+  - "slower convergence"
+assumptions:
+  - "the environment remains stable"
+evidence:
+  - CLM-000721
+status: supported_in_context
+
+variant_id: PROC-00012-B
+name: "Parallel adjustment"
+strategy: parallel
+applicable_when:
+  - "independent variables can be changed safely"
+strengths:
+  - "faster exploration"
+weaknesses:
+  - "interaction effects may be missed"
+assumptions:
+  - "variables are sufficiently decoupled"
+evidence:
+  - CLM-000839
+status: supported_in_context
+```
+
+Then derive a selection rule:
+
+```text
+Choose sequential adjustment when coupling is high or change is costly.
+Choose parallel adjustment when variables are sufficiently independent
+and exploration speed is the dominant objective.
+```
+
+This produces a conditional theory rather than an artificial universal answer.
+
+## 11. Reconstruct trials and tests
+
+Because the files contain different trials, create a trial model:
+
+```yaml
+trial_id: TRIAL-00008
+name: "Trial name"
+hypothesis:
+  - PROP-00018
+method:
+  inputs: ["..."]
+  intervention: "..."
+  comparison: "..."
+  duration: "..."
+observations:
+  - "..."
+outcomes:
+  - "..."
+limitations:
+  - "..."
+supports:
+  - PROP-00018
+weakens:
+  - PROP-00027
+source_lineage:
+  - LINEAGE-00004
+independence:
+  status: derived
+  reason: "same generated scenario as TRIAL-00003"
+```
+
+Distinguish carefully between:
+
+- a genuine trial;
+- a hypothetical example;
+- a simulated result;
+- an AI-generated thought experiment;
+- an alleged empirical result;
+- a copied result from another file.
+
+If the corpus does not contain real-world validation, the final theory must say so.
+
+## 12. Detect contradictions by type
+
+Create a contradiction registry:
+
+```yaml
+contradiction_id: CONTR-00014
+claim_a: CLM-000721
+claim_b: CLM-001102
+type: boundary_condition_conflict
+description: >
+  Claim A assumes stable feedback, while Claim B assumes delayed feedback.
+resolution: conditional_reconciliation
+result:
+  - "A applies when feedback latency is low."
+  - "B applies when feedback latency is high."
+status: resolved_conditionally
+```
+
+Useful contradiction types:
+
+- lexical: same word, different meaning;
+- scope: claims apply to different populations or contexts;
+- assumption: different preconditions;
+- temporal: different theory versions;
+- level: individual versus system level;
+- methodological: different measurement procedures;
+- empirical: incompatible observations;
+- logical: cannot both be true under the same conditions;
+- normative: different objectives or values.
+
+The goal is not to eliminate contradictions. The goal is to determine whether they can be explained, conditioned, or must remain unresolved.
+
+## 13. Use a theory reconstruction loop
+
+The core reconstruction loop should be:
+
+```text
+Extract
+  ↓
+Compare
+  ↓
+Code
+  ↓
+Relate
+  ↓
+Challenge
+  ↓
+Revisit source material
+  ↓
+Refine concepts
+  ↓
+Refine propositions
+  ↓
+Test boundary conditions
+  ↓
+Synthesize theory
+```
+
+This resembles interpretive and grounded theory synthesis: first-order concepts are extracted, second-order categories are developed, and higher-order theoretical relationships are constructed through constant comparison and iterative refinement. [sciepublish](https://www.sciepublish.com/article/pii/888)
+
+For an AI-generated corpus, add two additional loops:
+
+```text
+lineage validation
+and
+independence validation
+```
+
+Without these, repeated generated material can create false confidence.
+
+## 14. The complete artifact model
+
+Your project should produce these durable artifacts:
+
+```text
+01-corpus/
+  manifest.jsonl
+  normalized-files/
+  quality-report.jsonl
+
+02-lineage/
+  duplicate-clusters.yaml
+  semantic-clusters.yaml
+  lineage-graph.json
+  generation-stages.yaml
+
+03-extraction/
+  statements.jsonl
+  claims.jsonl
+  definitions.jsonl
+  assumptions.jsonl
+  trials.jsonl
+  processes.jsonl
+  alternatives.jsonl
+
+04-knowledge-model/
+  concepts.yaml
+  propositions.yaml
+  relationships.yaml
+  contradictions.yaml
+  open-questions.yaml
+
+05-synthesis/
+  concept-model.md
+  proposition-model.md
+  process-model.md
+  theory-draft.md
+  alternatives.md
+  boundary-conditions.md
+
+06-validation/
+  coverage-report.md
+  provenance-audit.md
+  contradiction-audit.md
+  terminology-audit.md
+  unsupported-claims.md
+  reviewer-reports/
+
+07-publication/
+  final-theory.md
+  formal-model.md
+  evidence-matrix.md
+  provenance-appendix.md
+```
+
+## 15. Claude Code agent architecture
+
+Use specialized agents with narrow contracts. Claude Code supports isolated subagents and parallel execution; its SDK documentation explicitly describes subagents as a way to isolate context and run independent tasks concurrently.  For larger workloads, dynamic workflows can orchestrate many parallel subagents and check results before returning them. [code.claude](https://code.claude.com/docs/en/sub-agents)
+
+Recommended agents:
+
+| Agent | Task |
+|---|---|
+| `inventory-agent` | Manifest, hashing, file quality |
+| `lineage-agent` | Parent/child and generation relationships |
+| `dedup-agent` | Exact, near, and semantic clusters |
+| `claim-agent` | Atomic claim extraction |
+| `definition-agent` | Definitions and terminology variants |
+| `process-agent` | Processes, states, variants, invariants |
+| `trial-agent` | Trials, tests, hypothetical examples |
+| `contradiction-agent` | Conflicts and conditional reconciliation |
+| `coverage-agent` | Missing files, missing sections, extraction gaps |
+| `synthesis-agent` | Concept and proposition integration |
+| `critic-agent` | Adversarial review of theory |
+| `audit-agent` | Provenance and citation verification |
+
+Do not let all agents edit the same synthesis file. They should produce separate artifacts, which are then merged by controlled scripts or a lead synthesizer.
+
+## 16. Claude Code project rules
+
+Create a `CLAUDE.md` file with rules such as:
+
+```markdown
+# Theory Reconstruction Rules
+
+1. Never treat repeated AI-generated text as independent evidence.
+2. Preserve all raw files.
+3. Preserve all materially distinct interpretations.
+4. Every claim requires a source file and location.
+5. Separate explicit statements from inference.
+6. Never merge definitions without recording the merge decision.
+7. Never remove a process variant because it is less frequent.
+8. Mark hypothetical trials separately from empirical trials.
+9. Mark unsupported claims explicitly.
+10. Do not resolve contradictions silently.
+11. Do not write final synthesis from raw files alone.
+12. Use only validated intermediate artifacts for theory synthesis.
+13. Every final proposition must link to claims.
+14. Every claim must link to a source lineage.
+15. Keep unresolved questions visible.
+```
+
+## 17. Validation gates
+
+Use gates between each phase.
+
+### Gate 1: corpus integrity
+
+Pass only if:
+
+- every file has an ID;
+- every file has a hash;
+- unreadable files are listed;
+- normalization did not alter meaning;
+- raw files remain untouched.
+
+### Gate 2: lineage quality
+
+Pass only if:
+
+- duplicate clusters are recorded;
+- probable parent files are identified;
+- independent lineages are estimated;
+- uncertain relationships are marked uncertain.
+
+### Gate 3: extraction quality
+
+Pass only if:
+
+- records validate against schemas;
+- source locations exist;
+- inferred claims are labeled;
+- empty or malformed outputs are rejected.
+
+### Gate 4: conceptual quality
+
+Pass only if:
+
+- definitions are not silently merged;
+- concepts have scope;
+- aliases are separated from semantic equivalence;
+- unresolved terms are recorded.
+
+### Gate 5: theory quality
+
+Pass only if:
+
+- propositions link to claims;
+- claims link to source lineages;
+- alternatives are retained;
+- contradictions are classified;
+- unsupported conclusions are marked.
+
+### Gate 6: publication quality
+
+Pass only if:
+
+- an independent critic reviews the theory;
+- citation audit passes;
+- coverage report is included;
+- limitations and open questions are visible.
+
+Provenance should be cumulative across deduplication, screening, extraction, and synthesis. This principle is also emphasized in recent guidance for AI-assisted evidence synthesis. [arxiv](https://arxiv.org/pdf/2608.25050v1.pdf)
+
+## 18. Final theory structure
+
+The final theory should not be a long narrative alone. Use this structure:
+
+```text
+1. Research question and scope
+2. Corpus composition and generation history
+3. Reconstruction method
+4. Conceptual vocabulary
+5. Competing definitions
+6. Core assumptions
+7. Fundamental propositions
+8. Mechanisms and relationships
+9. Process models
+10. Alternative solutions
+11. Trials and outcomes
+12. Boundary conditions
+13. Contradictions
+14. Evidence strength
+15. Formal model or state-space representation
+16. Limitations
+17. Open questions
+18. Provenance and evidence appendix
+```
+
+For each major proposition, include an evidence table:
+
+| Proposition | Supporting lineages | Counter-lineages | Conditions | Status |
+|---|---|---|---|---|
+| P1 | L1, L4 | L7 | Feedback available | Supported conditionally |
+| P2 | L2 | L3, L5 | High coupling | Contested |
+| P3 | L1 | None | Hypothetical setting | Unverified |
+
+## 19. The recommended order of work
+
+Do not begin with full corpus synthesis. Use this order:
+
+```text
+Step 1: Freeze the corpus
+Step 2: Inventory and hash files
+Step 3: Reconstruct generation lineage
+Step 4: Deduplicate and cluster
+Step 5: Extract statements and claims
+Step 6: Extract definitions and concepts
+Step 7: Extract trials
+Step 8: Extract processes and alternatives
+Step 9: Detect contradictions
+Step 10: Build the proposition graph
+Step 11: Construct the theory model
+Step 12: Run adversarial review
+Step 13: Correct and version
+Step 14: Publish theory plus evidence appendix
+```
+
+The most important sequencing decision is to place **lineage reconstruction before theory extraction**. Otherwise, derivative AI outputs will be mistaken for independent support.
+
+## 20. Recommended first implementation
+
+Start with a pilot of 100–150 files and produce only these artifacts:
+
+```text
+manifest.jsonl
+lineage-graph.json
+semantic-clusters.yaml
+claims.jsonl
+definitions.jsonl
+processes.jsonl
+contradictions.yaml
+provisional-theory.md
+pilot-quality-report.md
+```
+
+Use the pilot to determine:
+
+- how many independent lineages exist;
+- how much duplication is present;
+- how many unique concepts exist;
+- how many definitions conflict;
+- how many process variants exist;
+- how many claims have no source support;
+- how many files require reprocessing.
+
+Then scale the exact same pipeline to the full corpus.
+
+## Recommended method in one sentence
+
+Use Claude Code to perform **lineage reconstruction → deduplication → atomic extraction → concept and proposition modeling → process-variant reconstruction → contradiction analysis → evidence-weighted synthesis → adversarial audit**, while preserving every intermediate artifact and never treating repeated AI-generated text as independent evidence.

@@ -1,0 +1,122 @@
+{
+ "X1 2026-07-11 L203": {
+  "ops": ["APPROVE", "CONFIRM"],
+  "not_modelled": ["APPLIED (refinements)", "UPDATED (flow diagram)", "ADDED (No-as-health-indicator)", "NOT PERSISTED (distribution as metric)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X2 2026-07-25 L241": {
+  "ops": ["ACCEPT", "CREATE-NORM"],
+  "not_modelled": ["RULED", "APPLIED (refinements)", "SOFTENED (finding)", "ADDED (risk register; MEMORY.md summary)", "ACCEPTED (a consequence, not completed work)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X3 2026-07-26 L94": {
+  "ops": ["FREEZE", "ADOPT-DECISION", "CONFIRM", "REJECT", "DEFER"],
+  "not_modelled": ["PRODUCED", "STOP", "RECORDED (special standing)", "RECORDED (reversal condition)", "NOTED (to audit concerns)", "SURFACED (finding)"],
+  "annotations_by_others": [],
+  "authority_named": false,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "VIOLATED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X4 2026-07-28 L511": {
+  "ops": ["ACCEPT", "AUTHORIZE"],
+  "not_modelled": ["DISPOSED"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "SUPPORTED",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X5 2026-07-30 L193": {
+  "ops": ["ADOPT-DECISION", "CONFIRM"],
+  "not_modelled": ["RECEIVED", "NOT SELF-PROMOTED (standards document not created)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X6 2026-07-31 L573": {
+  "ops": ["DETERMINE"],
+  "not_modelled": ["VALIDATION", "CORRECTED", "ENDS (framework review)"],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "AMBIGUOUS",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X7 2026-07-31 L611": {
+  "ops": ["ADOPT-DECISION", "CONFIRM", "CREATE-NORM", "DEFER", "ANNOTATE"],
+  "not_modelled": ["DEFINED (protocol + template)", "OPENED (WP-6's outcome record, not a work package)"],
+  "annotations_by_others": [],
+  "authority_named": false,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "VIOLATED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "X8 2026-07-31 L3334": {
+  "ops": ["WITHDRAW", "SUPERSEDE"],
+  "not_modelled": [],
+  "annotations_by_others": [],
+  "authority_named": true,
+  "V": {
+   "V1": "SUPPORTED",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "AMBIGUOUS",
+   "V6": "AMBIGUOUS",
+   "V7": "SUPPORTED"
+  }
+ }
+}

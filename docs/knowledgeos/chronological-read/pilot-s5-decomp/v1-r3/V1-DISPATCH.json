@@ -1,0 +1,58 @@
+{
+ "PX0109-A01": {
+  "agent_id": "aec27663ebb8eca09",
+  "alias": "sonnet",
+  "failure_evidence": "stopped by the orchestrator under pre-registration \u00a718: tool call outside the \u00a715 allowlist in PX0109-A01 (Bash 'wc -l' on MATCH-LISTS.json, its second tool call); no CLUSTERS/DECISIONS output written; the agent's own final message acknowledges the deviation",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-aec27663ebb8eca09.jsonl"
+ },
+ "PX0109-U01": {
+  "agent_id": "a4b6315612c7d1f07",
+  "alias": "opus",
+  "failure_evidence": null,
+  "failure_reason": null,
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a4b6315612c7d1f07.jsonl"
+ },
+ "PX0109-U02": {
+  "agent_id": "a1629498c79491dd6",
+  "alias": "opus",
+  "failure_evidence": null,
+  "failure_reason": null,
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a1629498c79491dd6.jsonl"
+ },
+ "PX0109-U03": {
+  "agent_id": "a9e331d6406120d90",
+  "alias": "fable",
+  "failure_evidence": null,
+  "failure_reason": null,
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a9e331d6406120d90.jsonl"
+ },
+ "PX0109-U04": {
+  "agent_id": "a2febf3cc7e996f99",
+  "alias": "fable",
+  "failure_evidence": null,
+  "failure_reason": null,
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a2febf3cc7e996f99.jsonl"
+ },
+ "PX0109-U05": {
+  "agent_id": "a66404e4fb98c7446",
+  "alias": "haiku",
+  "failure_evidence": null,
+  "failure_reason": null,
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a66404e4fb98c7446.jsonl"
+ },
+ "PX0109-U06": {
+  "agent_id": "a4db4ae4194382104",
+  "alias": "haiku",
+  "failure_evidence": null,
+  "failure_reason": null,
+  "status": "COMPLETED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a4db4ae4194382104.jsonl"
+ }
+}

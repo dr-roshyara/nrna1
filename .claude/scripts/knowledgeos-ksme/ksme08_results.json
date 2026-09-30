@@ -1,0 +1,210 @@
+{
+  "tier": "SYNTHETIC",
+  "models": [
+    {
+      "id": "M1_pure_equivalence",
+      "E": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "behavioral_equivalence": {
+        "name": "~B",
+        "size": 8,
+        "reflexive": true,
+        "symmetric": true,
+        "transitive": true,
+        "antisymmetric": false,
+        "classification": "equivalence"
+      },
+      "order_relation": null,
+      "note": "No order relation defined. Baseline: ~B is a genuine equivalence relation (reflexive/symmetric/transitive), classes = {a,b},{c,d}."
+    },
+    {
+      "id": "M2_total_order_discrete_equivalence",
+      "E": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "order_relation": {
+        "name": "<=",
+        "size": 10,
+        "reflexive": true,
+        "symmetric": false,
+        "transitive": true,
+        "antisymmetric": true,
+        "classification": "partial_order"
+      },
+      "behavioral_equivalence": {
+        "name": "~B",
+        "size": 4,
+        "reflexive": true,
+        "symmetric": true,
+        "transitive": true,
+        "antisymmetric": true,
+        "classification": "equivalence"
+      },
+      "order_descends_to_quotient": true,
+      "note": "Total order <= coexists with a fully-discrete ~B (identity observation). Order trivially descends since ~B is equality."
+    },
+    {
+      "id": "M3_partial_order_compatible",
+      "E": [
+        "(0, 'A')",
+        "(0, 'B')",
+        "(1, 'A')",
+        "(1, 'B')",
+        "(2, 'A')",
+        "(2, 'B')"
+      ],
+      "order_relation": {
+        "name": "<=_x",
+        "size": 24,
+        "reflexive": true,
+        "symmetric": false,
+        "transitive": true,
+        "antisymmetric": false,
+        "classification": "preorder"
+      },
+      "behavioral_equivalence": {
+        "name": "~B",
+        "size": 12,
+        "reflexive": true,
+        "symmetric": true,
+        "transitive": true,
+        "antisymmetric": false,
+        "classification": "equivalence"
+      },
+      "order_descends_to_quotient": true,
+      "violations": [],
+      "note": "Order and ~B both depend only on the x-component (tag is behaviorally and order-wise invisible) -> CASE A, clean separation, order descends."
+    },
+    {
+      "id": "M4_preorder_compatible",
+      "E": [
+        "x0",
+        "x1",
+        "x1b",
+        "x2"
+      ],
+      "order_relation": {
+        "name": "<=_rank",
+        "size": 11,
+        "reflexive": true,
+        "symmetric": false,
+        "transitive": true,
+        "antisymmetric": false,
+        "classification": "preorder"
+      },
+      "behavioral_equivalence": {
+        "name": "~B",
+        "size": 6,
+        "reflexive": true,
+        "symmetric": true,
+        "transitive": true,
+        "antisymmetric": false,
+        "classification": "equivalence"
+      },
+      "order_descends_to_quotient": true,
+      "violations": [],
+      "note": "Preorder (x1<=x1b and x1b<=x1, i.e. NOT antisymmetric) whose ties coincide exactly with ~B's ties -> still CASE A, descends cleanly, even though the order relation itself is not a partial order."
+    },
+    {
+      "id": "M5_partial_order_incompatible",
+      "E": [
+        "(0, 'A')",
+        "(0, 'B')",
+        "(1, 'A')",
+        "(1, 'B')"
+      ],
+      "order_relation": {
+        "name": "<=_tagged",
+        "size": 5,
+        "reflexive": true,
+        "symmetric": false,
+        "transitive": true,
+        "antisymmetric": true,
+        "classification": "partial_order"
+      },
+      "behavioral_equivalence": {
+        "name": "~B",
+        "size": 8,
+        "reflexive": true,
+        "symmetric": true,
+        "transitive": true,
+        "antisymmetric": false,
+        "classification": "equivalence"
+      },
+      "order_descends_to_quotient": false,
+      "violations": [
+        {
+          "witness_pair": [
+            [
+              1,
+              "A"
+            ],
+            [
+              1,
+              "A"
+            ]
+          ],
+          "x_prime": [
+            1,
+            "A"
+          ],
+          "y_prime": [
+            1,
+            "B"
+          ],
+          "reason": "(1, 'A')~B(1, 'A') and (1, 'A')~B(1, 'B') and (1, 'A')<=(1, 'A') but NOT (1, 'A')<=(1, 'B')"
+        },
+        {
+          "witness_pair": [
+            [
+              1,
+              "A"
+            ],
+            [
+              1,
+              "A"
+            ]
+          ],
+          "x_prime": [
+            1,
+            "B"
+          ],
+          "y_prime": [
+            1,
+            "A"
+          ],
+          "reason": "(1, 'A')~B(1, 'B') and (1, 'A')~B(1, 'A') and (1, 'A')<=(1, 'A') but NOT (1, 'B')<=(1, 'A')"
+        },
+        {
+          "witness_pair": [
+            [
+              0,
+              "B"
+            ],
+            [
+              0,
+              "B"
+            ]
+          ],
+          "x_prime": [
+            0,
+            "A"
+          ],
+          "y_prime": [
+            0,
+            "B"
+          ],
+          "reason": "(0, 'B')~B(0, 'A') and (0, 'B')~B(0, 'B') and (0, 'B')<=(0, 'B') but NOT (0, 'A')<=(0, 'B')"
+        }
+      ],
+      "note": "(0,A)<=(1,B) holds but (0,B)<=(1,A) does not, even though (0,A)~B(0,B) and (1,A)~B(1,B) (observations only see x). This is the compatibility FAILURE case: the order relation does not descend to E/~B -- CASE C for this model."
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+ "H-F2-1a": "INCONCLUSIVE",
+ "axioms_counterexampled": [],
+ "propositions": {},
+ "questions": {
+  "F-A0": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 0,
+    "S": 0,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 0,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {},
+   "run": true,
+   "verdict": "NOT_EVIDENCED"
+  },
+  "F-A2e": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 3,
+    "S": 3,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 3,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "\"GOVERNANCE-ACT progression\" (a 'decree') against the evidential engine (F0018 section 6)": "SUPPORTED",
+    "\"GOVERNANCE-ACT progression\" over \"EVIDENTIAL progression\" (F0018 section 3, source's own kind names); instance P-4 maturity": "SUPPORTED",
+    "P-4 maturity (source's own mechanism id); \"the evidence itself — governance only records it\"": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A3g": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 1,
+    "S": 1,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 1,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "\"GOVERNANCE-ACT progression\" / \"EVIDENTIAL progression\" (F0018 section 3, source's own kind names)": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A3m": {
+   "counts": {
+    "A": 1,
+    "C": 0,
+    "N": 2,
+    "S": 1,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 2,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": false,
+   "per_mechanism": {
+    "\"EVIDENTIAL progression\" (F0018 section 3, source's own kind name); instances P-4 maturity and P-10 evidence n": "INCONCLUSIVE",
+    "P-10 evidence n (source's own mechanism id; kind: PURELY EVIDENTIAL — monotonic counter)": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "INCONCLUSIVE"
+  },
+  "F-A4": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 2,
+    "S": 2,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 2,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": false,
+   "per_mechanism": {
+    "P-3 ES-006.1 promotion ladder and P-6 capability (F0018 section 2 kind column: P-3 'EVIDENTIAL + governance gate'; P-6 'COMPOSITE')": "SUPPORTED",
+    "P-6 capability (F0018 section 2, source's own mechanism id and kind)": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A5e": {
+   "counts": {
+    "A": 1,
+    "C": 0,
+    "N": 2,
+    "S": 1,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 2,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "\"WORK-EXECUTION progression\" (F0018 section 3, source's own kind name); instances P-7, P-8": "SUPPORTED",
+    "P-7 EEP (source kind: WORK-EXECUTION) producing P-10 evidence n (source kind: PURELY EVIDENTIAL)": "INCONCLUSIVE"
+   },
+   "run": true,
+   "verdict": "INCONCLUSIVE"
+  },
+  "F-A5g": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 2,
+    "S": 2,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 2,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": false,
+   "per_mechanism": {
+    "GEP-F1 (Reference Model section 6, cited as existing canon in F0018 section 1)": "SUPPORTED",
+    "P-7 EEP (source kind: WORK-EXECUTION, temporal); GEP-F1": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A6": {
+   "counts": {
+    "A": 2,
+    "C": 0,
+    "N": 5,
+    "S": 3,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 5,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "ES-006.1 promotion ladder / the bar (source's own rule name); F0018 P-3 and P-10": "SUPPORTED",
+    "ES-006.1 promotion ladder / the bar; the registered pointer 'methodology module'": "INCONCLUSIVE",
+    "ES-006.2 knowledge research freeze (source's own rule name); the RQ-002 canon": "SUPPORTED",
+    "ES-006.3 harvest discipline; ES-006.1 promotion ladder": "SUPPORTED",
+    "ES-006.4 harvest question (source's own rule name); the canon's text": "INCONCLUSIVE"
+   },
+   "run": true,
+   "verdict": "INCONCLUSIVE"
+  },
+  "Q-D4": {
+   "counts": null,
+   "readings": [],
+   "run": false
+  },
+  "Q-GS": {
+   "counts": null,
+   "readings": [],
+   "run": false
+  },
+  "Q-H6": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 1,
+    "S": 1,
+    "U": 0
+   },
+   "readings": [
+    "Both. The source describes promotion as a ladder — a standing the knowledge holds ('knowledge's reusability standing'; 'monotonic, no return edges except demotion-by-decision') — and at the same time as gated by a governance act ('EVIDENTIAL + governance gate'; owner DA). Material note: the M-3 item (statuses.yaml) required by Q-H6 was not released, so this reading rests on M-1 alone; no verdict is claimed and the interpretive questions take no verdict under section 5.0."
+   ],
+   "run": true
+  }
+ },
+ "released": [
+  "M-1",
+  "M-4"
+ ],
+ "scope": "UNIVERSAL",
+ "stability_extension": "NOT_REFUTED_IN_T-A",
+ "valid": true
+}

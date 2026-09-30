@@ -1,0 +1,142 @@
+{
+  "classes_A": {
+    "ADOPT/a": "SYNTHETIC",
+    "ADOPT/c": "ANALYTIC",
+    "AUTHORIZE-IMPL/a": "SYNTHETIC",
+    "OPEN-WORK/k": "SYNTHETIC",
+    "REGISTER/k": "UNKNOWN",
+    "START/s": "ANALYTIC",
+    "START/t": "ANALYTIC",
+    "RAISE/e": "SYNTHETIC",
+    "RAISE/t": "UNKNOWN",
+    "ASSIGN-ID/h": "SYNTHETIC",
+    "SUPERSEDE/k": "UNKNOWN"
+  },
+  "classes_reviewer": {
+    "ADOPT/a": "SYNTHETIC",
+    "ADOPT/c": "ANALYTIC",
+    "AUTHORIZE-IMPL/a": "SYNTHETIC",
+    "OPEN-WORK/k": "SYNTHETIC",
+    "REGISTER/k": "SYNTHETIC",
+    "START/s": "ANALYTIC",
+    "START/t": "ANALYTIC",
+    "RAISE/e": "SYNTHETIC",
+    "RAISE/t": "UNKNOWN",
+    "ASSIGN-ID/h": "SYNTHETIC",
+    "SUPERSEDE/k": "UNKNOWN"
+  },
+  "class_notes_reviewer": {
+    "ADOPT/c": "Weakest ANALYTIC. It rests only on the SCHEMA field definition 'role conformance'. The value 'collapsed' names a fact, so it flips to SYNTHETIC if the ban on collapse is read as a separation-of-duties rule.",
+    "START/s": "ANALYTIC for authorized/not-authorized. The sub-value 'permission-only' (R-79) is a synthetic link. Several 'not-authorized' values were produced by applying unstated synthetic rules during coding (R-81 freeze).",
+    "START/t": "Derivative of s, not an independent guard. t alone never decides the outcome (the same target gets both outcomes), and in EVENTS.json t never varies alone.",
+    "REGISTER/k": "SYNTHETIC but untested. The only contrast has a PERFORMED side that is the rule statement '(rule)', not an observed act."
+  },
+  "disagreements": [
+    {
+      "id": "D1",
+      "item": "REGISTER/k",
+      "A": "UNKNOWN, leaning ANALYTIC because the coder treated the register scope as constitutive and the PERFORMED side is the rule itself",
+      "reviewer": "SYNTHETIC. The field ('object kind') and values are descriptive and REGISTER is not defined as reserved, which is the same position as OPEN-WORK/k (A: SYNTHETIC). A binding or constitutive scope rule is not a definition. The '(rule)' pseudo-event bears on testability, not on class.",
+      "type": "formal reasoning",
+      "flips_class": true
+    },
+    {
+      "id": "D2",
+      "item": "START/s premise_status_per_event",
+      "A": "7 INDEPENDENT (7A, R-56, R-58 7B, R-58 7C, R-65, R-81, R-86), 4 UNCLEAR",
+      "reviewer": "2 INDEPENDENT (R-47 7A, R-56), 9 UNCLEAR. There is no quoted basis, only the coder's labels. At R-58 and R-65 the outcome is read off the premise in the same row, with no separately observed act. At R-81, s='not-authorized' is derived from 'Batch 7 frozen' by an unstated (synthetic) freeze rule, although SCHEMA allows DERIVED only 'by an explicit rule'. At R-86, 'released' does not mean 'authorized'.",
+      "type": "independence",
+      "flips_class": false
+    },
+    {
+      "id": "D3",
+      "item": "START/s tally in ANSWER.md",
+      "A": "'6 INDEPENDENT, 5 UNCLEAR'",
+      "reviewer": "ANSWER.json itself contains 7 INDEPENDENT and 4 UNCLEAR, so the summary miscounts.",
+      "type": "wording",
+      "flips_class": false
+    },
+    {
+      "id": "D4",
+      "item": "RAISE/e",
+      "A": "The rule is 'promotion requires >= 2 contexts', citing the TASK example",
+      "reviewer": "The permitted files show only e='2+'/'1' and '(single occurrence)'. The wording of the threshold and the word 'contexts' are imported from TASK's illustration. The class SYNTHETIC still holds on the data pattern.",
+      "type": "evidence scope",
+      "flips_class": false
+    },
+    {
+      "id": "D5",
+      "item": "ASSIGN-ID/h refutable_contrast",
+      "A": "YES in form, strict, 1 cluster-pair, WEAK",
+      "reviewer": "The PERFORMED side 'ASSIGN a never-used number' (cluster 'register-numbering') is a generic practice, not an anchored act. That is the same defect A used to deny REGISTER/k a genuine contrast, so treated consistently there is no genuine refuting contrast. It is formally WEAK only.",
+      "type": "coding",
+      "flips_class": false
+    },
+    {
+      "id": "D6",
+      "item": "ASSIGN-ID/h rejection of ANALYTIC",
+      "A": "Rejects ANALYTIC partly because 'many numbering schemes do reuse freed numbers'",
+      "reviewer": "The contingency of the background rule does not decide analyticity, because every ANALYTIC item also rests on a contingent rule. The class rests only on the field type 'history summary'. The reading 'retired = withdrawn from assignment' is not ruled out by the text.",
+      "type": "formal reasoning",
+      "flips_class": false
+    },
+    {
+      "id": "D7",
+      "item": "Classification criterion",
+      "A": "'I classified by field type (descriptive vs normative)'",
+      "reviewer": "START/s was classified by value (the field 'state before' is neutral). The criterion A actually applied is: field definition if it is typed, otherwise the value's meaning. Under that criterion A is consistent across s, a, h and c, except for REGISTER/k (D1).",
+      "type": "wording",
+      "flips_class": false
+    },
+    {
+      "id": "D8",
+      "item": "START/t",
+      "A": "A separate ANALYTIC guard. The SYNTHETIC alternative is rejected because 'nothing in the files suggests' batch-level authorization",
+      "reviewer": "ANALYTIC only as a derivative of the act-indexed s, not an independent guard. Batch-level states governing START are attested (R-81/R-86 'Batch 7 frozen/released'), which weakens the rejection. The class does not flip because 'AUTHORIZE(7A)' is target-indexed.",
+      "type": "source interpretation",
+      "flips_class": false
+    },
+    {
+      "id": "D9",
+      "item": "ADOPT/a",
+      "A": "Strict witness under R2 (k and c shared by identity)",
+      "reviewer": "An alternative A did not consider: role conformance of an adoption may depend on the adopter. If the Chief adopting what the Chief prepared is a 'collapse' like R-91, the pair differs in a and c, is not strict, and the Chief's refusal is the ADOPT/c guard. R2 formally excludes this; the substance is open.",
+      "type": "source interpretation",
+      "flips_class": false
+    },
+    {
+      "id": "D10",
+      "item": "AUTHORIZE-IMPL/a",
+      "A": "Differs only in a. The alternative (ANALYTIC via PREPARED) is rejected",
+      "reviewer": "Agree SYNTHETIC: a =>(rule) PREPARED =>(definition) NOT-IN-FORCE. But the operative status PREPARED is uncoded (s='guards-met' on both sides), so the witness credited to a runs through a hidden variable. This is the same witness-transfer pattern A found for t -> s at R-47.",
+      "type": "coding",
+      "flips_class": false
+    },
+    {
+      "id": "D11",
+      "item": "Quotes (ADOPT/a, RAISE/e)",
+      "A": "Presented as verbatim quotes",
+      "reviewer": "ADOPT/a reorders the positional arguments across elisions. The RAISE/e 'quote' of EVENTS.json is a paraphrase. The content is not distorted.",
+      "type": "wording",
+      "flips_class": false
+    }
+  ],
+  "prediction_testable_reviewer": [
+    "ADOPT/a (contrast present, WEAK; 'declined' may be CHOICE)",
+    "AUTHORIZE-IMPL/a (contrast present, WEAK at best; the outcome is NOT-IN-FORCE)",
+    "OPEN-WORK/k (within-cluster contrast, WEAK, not an independent test)",
+    "RAISE/e (within-cluster contrast, WEAK; the items have no coding lines)",
+    "ASSIGN-ID/h (in principle only; pseudo-contrast)",
+    "REGISTER/k (in principle only; pseudo-contrast)",
+    "START/s[permission-only] (synthetic sub-link; no contrast)"
+  ],
+  "premise_testable_reviewer": [
+    "START/s (2 INDEPENDENT, 9 UNCLEAR)",
+    "START/t (only via the scope of s; 7A INDEPENDENT, 7B partly UNCLEAR)",
+    "ADOPT/c (all UNCLEAR; 'conformant' is unsourced)"
+  ],
+  "neither_until_defined_reviewer": [
+    "RAISE/t",
+    "SUPERSEDE/k"
+  ]
+}

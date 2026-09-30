@@ -1,0 +1,47 @@
+{
+  "basis_reviewer": {
+    "RAISE promoted #2": {"matrix_item": "#2 Reuse Before Create (A)", "coded_e": "2+", "source_e": "3", "unit": "slices (= tickets PB-004/005/006)", "basis": "DERIVED", "agrees_with_A": true, "outcome_decided_by": "R-36"},
+    "RAISE promoted #3": {"matrix_item": "#3 Ownership Drives Reuse (A)", "coded_e": "2+", "source_e": "3", "unit": "slices (= tickets)", "basis": "DERIVED", "agrees_with_A": true, "outcome_decided_by": "R-36", "note": "mapping anchored by matrix wording 'never by precedent' = R-36 '(never precedent)'"},
+    "RAISE promoted #9": {"matrix_item": "#9 Surface gaps / Deferred ≠ skipped (A)", "coded_e": "2+", "source_e": "3", "unit": "slices (= tickets)", "basis": "DERIVED", "agrees_with_A": true, "outcome_decided_by": "R-36"},
+    "RAISE promoted #10": {"matrix_item": "#10 Epistemic labeling (A)", "coded_e": "2+", "source_e": "2–3", "unit": "slices nominally; 3 tickets + 1 document (Handover §9)", "basis": "DERIVED (weak, but bucket robust: every reading >= 2)", "agrees_with_A": true, "outcome_decided_by": "R-36"},
+    "RAISE not promoted #5": {"matrix_item": "#5 Registration ≠ Delivery (C, +generalization → D)", "coded_e": "1", "source_e": "1", "unit": "slices (R-36 '(1 slice)')", "basis": "STATED", "agrees_with_A": true, "outcome_decided_by": "R-36", "nonpromotion_reason_type": "SCOPE ('Messaging-scoped'); reason adopted in R-36"},
+    "RAISE not promoted #14": {"matrix_item": "#14 Strangler reconstitution (D)", "coded_e": "1", "source_e": "1", "unit": "contexts", "basis": "STATED in contexts; DERIVED if read as slices (PB-004 only)", "agrees_with_A": false, "outcome_decided_by": "R-36", "nonpromotion_reason_type": "MIXED evidential/domain-specificity (inseparable: '1 context only (Election)' + 'evidence it does not generalize'); reason from matrix only"},
+    "RAISE not promoted #17": {"matrix_item": "#17 ChallengeResolvedIntegration carrier (D)", "coded_e": "1", "source_e": "1", "unit": "slices by column header / single ticket PB-005 (A: unspecified)", "basis": "STATED", "agrees_with_A": "basis yes, unit no", "outcome_decided_by": "R-36", "nonpromotion_reason_type": "PRIOR RULING (PB-005 Q1); reason from matrix only"}
+  },
+  "evidence_pairs_reviewer": {
+    "n": 0,
+    "unit": "slices",
+    "cluster": "R-36 (all 12 candidate pairs are within one cluster)",
+    "alternative_upper_bound": 4,
+    "alternative_pairs": ["#2–#14", "#3–#14", "#9–#14", "#10–#14"],
+    "why_alternative_rejected": "#14 count is in contexts (non-comparable unit), its evidence is a domain restriction by construction, and R-36 adopts no reason for it",
+    "agrees_with_A_on_n": true,
+    "differs_from_A_on_rationale": "category and destination are outcome-circular, not valid confounders; the confounds are the stated reasons"
+  },
+  "confounded_pairs": [
+    {"pair": ["#2", "#5"], "confound": "scope (Messaging-scoped)"},
+    {"pair": ["#3", "#5"], "confound": "scope (Messaging-scoped)"},
+    {"pair": ["#9", "#5"], "confound": "scope (Messaging-scoped)"},
+    {"pair": ["#10", "#5"], "confound": "scope (Messaging-scoped); #10 range/mixed unit"},
+    {"pair": ["#2", "#14"], "confound": "domain-specificity (1 context, Election); unit contexts vs slices; counter-evidence"},
+    {"pair": ["#3", "#14"], "confound": "domain-specificity; unit contexts vs slices; counter-evidence"},
+    {"pair": ["#9", "#14"], "confound": "domain-specificity; unit contexts vs slices; counter-evidence"},
+    {"pair": ["#10", "#14"], "confound": "domain-specificity; unit mismatch; #10 range/mixed unit"},
+    {"pair": ["#2", "#17"], "confound": "prior ruling (PB-005 Q1)"},
+    {"pair": ["#3", "#17"], "confound": "prior ruling (PB-005 Q1)"},
+    {"pair": ["#9", "#17"], "confound": "prior ruling (PB-005 Q1)"},
+    {"pair": ["#10", "#17"], "confound": "prior ruling (PB-005 Q1); #10 range/mixed unit"}
+  ],
+  "verdict": "e_CONFOUNDED",
+  "disagreements": [
+    {"id": "D1", "topic": "#14 e=1 is stated only in contexts; in slices it is derived", "class": "coding", "severity": "medium"},
+    {"id": "D2", "topic": "#17 unit is slices/tickets (header + single PB-005 citation), not 'unspecified'", "class": "source interpretation", "severity": "low"},
+    {"id": "D3", "topic": "#3 mapping is anchored by matrix wording 'never by precedent', not a mere inference", "class": "wording", "severity": "low"},
+    {"id": "D4", "topic": "Category/destination are outcome-circular and not valid pair confounders; only stated reasons are", "class": "formal reasoning", "severity": "medium"},
+    {"id": "D5", "topic": "#14 reason is mixed evidential/domain (source calls it 'evidence'), not pure domain-specificity", "class": "source interpretation", "severity": "low-medium"},
+    {"id": "D6", "topic": "#14 and #17 reasons come from the matrix (recommendation); R-36 adopts none", "class": "evidence scope", "severity": "low"},
+    {"id": "D7", "topic": "Coded outcome REFUSED does not match 'remain Candidates' (deferred pending evidence)", "class": "coding", "severity": "low"},
+    {"id": "D8", "topic": "t=AST-013 for non-promoted items is a defensible inference (R-36 is the AST-013 promotion review), not simply unstated", "class": "source interpretation", "severity": "low"},
+    {"id": "D9", "topic": "Coded sample omits R-36 non-promoted items with >=2 evidence (#18 '2-ish', #6 2, #11 3, #4 3); e is keyed to outcome, so the evidence–outcome split comes from sample selection", "class": "independence", "severity": "high"}
+  ]
+}

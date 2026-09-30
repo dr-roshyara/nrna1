@@ -1,0 +1,194 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0009-RETROFIT-B3",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 3",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0009-RETROFIT-B3."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0015",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Independent_Review_Phase_B.md",
+ "canonical_sequence_position": 15,
+ "lines_total": 136,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED' · 'Generated — never authoritative without human review'",
+ "source_document_kind": "⭐ INDEPENDENT REVIEW RECORD + COMPARISON. ⛔ 'No document of the frozen corpus was modified.'",
+ "source_research_question": "⭐ VERBATIM: 'Ignore our conclusions. Rediscover the architecture from the evidence.'",
+ "reconstruction_question": "⛔ DISTINCT: is this the corpus's only genuine independence instrument, and what did it correct?",
+ "source_method_declared": "⭐⭐ 'an ISOLATED session (no conversation context) performed a first-principles Strategic DDD review with the conclusion corpus BLOCKED: docs/knowledgeos/** · docs/pks/** · .claude/CONTEXT.md / MEMORY.md / sessions/** · architecture_legacy/**'. ⭐ Reason: '⛔ I could not be the reviewer — I authored every conclusion under test.'",
+ "definitions": [
+  {
+   "term": "blind review",
+   "def": "an isolated session with the conclusion corpus blocked at the path level"
+  }
+ ],
+ "assumptions": [
+  "an author cannot review their own conclusions",
+  "blocked paths make independence checkable"
+ ],
+ "premises": [
+  "the MVK bootstrap's contamination logic",
+  "ADR-AIP-02",
+  "the Phase A freeze"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⭐ The scoreboard is a count: 12 reproduced · 4 sharpened · 3 corrected · 2 new.",
+ "derivations": [
+  {
+   "id": "DI-F0015-01",
+   "from": [
+    "12 conclusions reproduced by a reviewer who could not see them"
+   ],
+   "to": "⭐⭐ 'These now carry double, independent derivation — the strongest confidence this programme can produce without a second product'",
+   "form": "⭐⭐ BLIND_REPLICATION",
+   "validity": "⭐⭐ VALID — the only genuine independence in the corpus"
+  },
+  {
+   "id": "DI-F0015-02",
+   "from": [
+    "R-36 · R-41/ES-004.3 · R-63"
+   ],
+   "to": "⛔⛔ '0 traversals' is FALSIFIED as stated — the back-edge has run, n≈3",
+   "form": "COUNTEREXAMPLE",
+   "validity": "⭐⭐ VALID",
+   "⭐ reconciliation": "'EAD-1's original claim was NARROW — no evidence has flowed from PublicDigit to PKS. ⛔ We generalized it to the whole return arrow, and the generalization is wrong.'"
+  },
+  {
+   "id": "DI-F0015-03",
+   "from": [
+    "the blind reviewer used the frozen Phase-02 six-context map as its baseline",
+    "the entire D-1..D-7 / PD-1..PD-6 track never consulted it"
+   ],
+   "to": "⛔⛔ occurrence #11 of proposing-before-searching",
+   "form": "EXTERNAL_DETECTION_OF_AN_OMISSION",
+   "validity": "⭐⭐ VALID AND SELF-INDICTING"
+  },
+  {
+   "id": "DI-F0015-04",
+   "from": [
+    "the reviewer prescribed a cheap greenfield bootstrap trial as the missing evidence",
+    "that experiment had already been run, blocked from their view"
+   ],
+   "to": "⭐⭐ method cross-validation — 'their proposed test and our executed test are the same test'",
+   "form": "⭐ CONVERGENT_EXPERIMENT_DESIGN",
+   "validity": "⭐⭐ VALID — 'the strongest methodological corroboration Phase B could have produced'"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'the architecture substantially SURVIVES independent rediscovery — 12 conclusions reproduced blind — and the track is corrected in three places, two of them our own repeated claims'",
+  "⛔ '\"The flywheel has never turned\" must be retired; \"the flywheel turns rarely and informally\" is what the evidence supports'"
+ ],
+ "dependencies": [
+  "the frozen Phase-02 six-context map (BC-1..BC-6)",
+  "ADR-AIP-02",
+  "EAD-1",
+  "R-36 · R-41/ES-004.3 · R-63",
+  "ES-006's E-1 register",
+  "the rulings register R-43..R-72",
+  "the MVK bootstrap validation report",
+  "AIP-13"
+ ],
+ "previous_related_files": "⛔ The blind reviewer's own record and the frozen Phase-02 map are NOT_RECOVERABLE_WITHOUT_REREAD.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — the corpus's only independence instrument.",
+ "architectural_role": "⭐⭐ INDEPENDENT REVIEW — and the record of the Phase A freeze.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the blind-review instrument itself",
+   "the 12/4/3/2 scoreboard",
+   "IR-1..IR-5",
+   "the Phase A freeze record"
+  ],
+  "⛔ corrected": [
+   "⭐⭐ '0 traversals' FALSIFIED as generalized",
+   "⭐⭐ the unconsulted frozen six-context map — occurrence #11",
+   "⭐ I-8's over-grant: 'governance precedes automation' is DELIBERATELY UNNUMBERED, 'an invariant-in-waiting the corpus is honest enough not to promote'"
+  ],
+  "⭐ new findings missed by the track": [
+   "E-1 / the EKP consumption model falsified, disposition PENDING",
+   "CAP-001's authorization absent from the register"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0023",
+  "T-0032",
+  "T-0033",
+  "T-0034",
+  "T-0038"
+ ],
+ "sequential_graph_position": "canonical position 15; executed 2026-08-02/03",
+ "file_relationships": [
+  {
+   "to": "F0011",
+   "kind": "CORROBORATES",
+   "note": "the reviewer independently prescribed the MVK bootstrap F0011 had executed"
+  },
+  {
+   "to": "F0003",
+   "kind": "⭐ IS_SOURCE_OF",
+   "note": "F0003's R-9 rejects '0 traversals' citing n≈3 — this is where that comes from"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐⭐ THE STRONGEST EVIDENTIAL DESIGN IN THE CORPUS — and the only one that can support a claim of INDEPENDENCE. ⭐ It also flags an integrity problem in its OWN reviewer: a quoted prompt sentence the prompt never contained, recorded even though 'the conclusion is unaffected'.",
+ "gaps": [
+  {
+   "id": "G-F0015-A",
+   "⚠️ gap": "the reviewer's independence note misquotes the commission prompt ('PublicDigit is only the first laboratory')",
+   "⭐ significance": "⭐ FLAGGED BY THE FILE ITSELF, with its materiality assessed: 'the reviewer's handling was nonetheless correct… the misattribution is recorded'"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0015-01",
+   "⭐ finding": "⭐⭐⭐ THE CORPUS HAS EXACTLY ONE INSTRUMENT THAT CAN ESTABLISH INDEPENDENCE — AND IT IS THIS ONE",
+   "detail": "⭐ An isolated session, conclusion corpus blocked at the path level, reproduced 12 conclusions blind. ⭐ 'These now carry double, independent derivation — the strongest confidence this programme can produce without a second product.'",
+   "⭐⭐ relevance": "⭐⭐ Directly answers the research architecture's `RA-15` status D (INDEPENDENTLY CORROBORATED). ⛔ Same-programme agreement is not independence; ⭐ a blind pass with blocked paths is. **Of everything audited so far, only F0015's twelve convergences meet status D.**",
+   "status": "⭐ RECORDED",
+   "significance": "⭐ HIGH"
+  },
+  {
+   "id": "AUDIT-F0015-02",
+   "⭐ finding": "⭐⭐ F0015 IS AN EARLIER SOURCE FOR THREE OBJECTS ATTRIBUTED TO F0034",
+   "detail": "⭐ T-0033 ('I-8 is NOT an invariant') · T-0034 ('model amnesia at n=11') · T-0038 ('role separation is session-simulated') all list F0034 as sole source. ⭐ F0015, at canonical position 15, states all three: convergence #11 downgrades I-8; D-2 is the eleventh occurrence; reviewer gap #5 is the session-simulated finding.",
+   "⛔ disposition": "⛔ All three are F0034's objects under O-1=A. RECORDED as provenance pointers, not written.",
+   "⭐ pattern": "⭐ Third, fourth and fifth instances of the batch-2 pattern: retrofitting in canonical order surfaces earlier provenance than the research first recorded.",
+   "status": "OPEN"
+  },
+  {
+   "id": "AUDIT-F0015-03",
+   "⭐ finding": "⭐ THE FILE FLAGS AN EVIDENCE-INTEGRITY DEFECT IN ITS OWN REVIEWER",
+   "detail": "'The reviewer's independence note quotes the commission prompt as asserting \"PublicDigit is only the first laboratory.\" ⛔ The prompt contained no such sentence.'",
+   "⭐ assessment": "⭐ CORRECTLY HANDLED — flagged, materiality assessed, conclusion preserved. ⭐ An independence instrument that audits its own independent reviewer.",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the 12 convergences",
+  "the 5 divergences",
+  "the scoreboard",
+  "IR-1..IR-5",
+  "the Phase A freeze record"
+ ],
+ "provenance_second_hand": [
+  "⛔ the blind reviewer's own report, quoted",
+  "the frozen Phase-02 map, described not read here"
+ ],
+ "negative_evidence": "⭐⭐ A FALSIFICATION OF THE TRACK'S OWN MOST-REPEATED NUMBER: '0 traversals', asserted in at least six documents, refuted by three named instances. ⭐ And the reconciliation states precisely where the generalization went wrong.",
+ "multi_dimensional_confidence": {
+  "the 12 blind convergences": "⭐⭐ HIGH — the only genuine independence",
+  "the '0 traversals' falsification": "⭐ HIGH — three named instances",
+  "occurrence #11": "⭐ HIGH",
+  "the reviewer's misquote": "⛔ recorded, immaterial"
+ },
+ "not_recoverable_without_reread": [
+  "the blind reviewer's full report",
+  "the frozen Phase-02 Domain Model",
+  "E-1",
+  "the rulings register"
+ ]
+}

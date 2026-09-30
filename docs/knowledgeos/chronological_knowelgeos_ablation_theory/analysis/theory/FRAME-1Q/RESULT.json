@@ -1,0 +1,59 @@
+{
+ "labels": "SOURCE-FACT encodings; M0 mappings INTERPRETATION; computed values MODEL-DERIVED; sample selected on frame phrases (not representative)",
+ "frame_structure": {
+  "R-47": true,
+  "R-53": true,
+  "R-66": true,
+  "R-81": true,
+  "R-91": true
+ },
+ "m0_fit": {
+  "R-47": "NOT-MODELLED",
+  "R-53": "PARTIAL-FIT (non-M0 coordinates also change)",
+  "R-66": "PARTIAL-FIT (non-M0 coordinates also change)",
+  "R-81": "PARTIAL-FIT (M0 coordinate is global; the source changes it for one scope only)",
+  "R-91": "NOT-MODELLED"
+ },
+ "stated_guards": {
+  "R-47": "WP-6 ACCEPTED ∧ WP-7 PLAN APPROVED, satisfied by R-43 ∧ R-46",
+  "R-53": "annotation permitted where decision text and history are not (ES-004.3)",
+  "R-66": "all eight R-65 requirements satisfied",
+  "R-81": "evidence: defect under crash models A, B and C alike",
+  "R-91": "Event D separates evidence submission from constitutional review"
+ },
+ "non_effect_types (candidate, not decided)": {
+  "RELATION": 6,
+  "INVARIANT": 10,
+  "STATE-COORDINATE": 2,
+  "GUARD": 1
+ },
+ "decision_text_immutability_occurrences": [
+  "R-53",
+  "R-81",
+  "R-91"
+ ],
+ "authorization_scope_bounded": [
+  "R-47",
+  "R-66",
+  "R-91"
+ ],
+ "status_markov (R-90/R-91)": {
+  "adopted? only": false,
+  "5-valued status": true
+ },
+ "lexical_precision": {
+  "overall": "19/20",
+  "per_class": {
+   "DOES-NOT-CHANGE": "2/2",
+   "IS-NOT": "3/3",
+   "NEITHER": "0/1",
+   "NOT-AUTHORIZE": "2/2",
+   "NOT-RESOLVE": "1/1",
+   "REMAINS": "3/3",
+   "RETAINED": "2/2",
+   "UNCHANGED": "4/4",
+   "WHAT-IT-CHANGES": "2/2"
+  },
+  "contrast": "count-term locate (F-LOG-0120) 0/1 on R-88"
+ }
+}

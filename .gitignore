@@ -35,3 +35,5 @@ storage/framework/
 # Python bytecode from research experiment code
 __pycache__/
 *.pyc
+docs/knowledgeos/chronological-read/20-FAMILIES/_derived.json
+docs/knowledgeos/chronological-read/P3B-ABSENCE-SEARCH.jsonl

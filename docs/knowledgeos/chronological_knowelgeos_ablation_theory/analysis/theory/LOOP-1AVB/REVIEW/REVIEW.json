@@ -1,0 +1,72 @@
+{
+  "inputs_read": ["REVIEW-TASK.md", "TASK.md", "EVENTS-decued.json", "SOURCES.md", "ID-KEY.json", "SCORE.json", "COLLISIONS.json", "CODING-P1-cued.json", "AUDIT-1AR-REVIEW.json", "CODING-P3-decued.json", "CODING-P4-decued.json"],
+  "not_available": ["CODING-P2-cued.json (P3~P2, P4~P2 unverifiable)", "definitions of schema A and schema B", "R-36 item matrix claude/plans/swirling-jingling-blossom.md"],
+  "recomputation_matches": {
+    "overall": true,
+    "type_agreement_P3_P4": {"claimed": 1.0, "recomputed": "36/36 = 1.000", "match": true, "counts_each": {"ACT_OBSERVATION": 23, "NORM_STATEMENT": 11, "UNKNOWN": 2}},
+    "source_act_P3_P4": {"claimed": 0.833, "recomputed": "30/36 = 0.833", "match": true, "disagreements": {"E06": "OTHER:REPORT vs NONE", "E07": "OTHER:REPORT vs NONE", "E22": "OTHER:REPORT vs NONE", "E25": "OTHER:REPORT vs NONE", "E29": "ADOPT vs OTHER:DISPOSE", "E30": "ADOPT vs OTHER:DISPOSE"}},
+    "dual_YES": {"claimed": "27/27/27", "recomputed": "27/27/27", "match": true},
+    "vs_audit": {"claimed": 0.889, "recomputed": "32/36 = 0.889", "match": true, "misses": ["E07", "E08", "E22", "E25"], "cued_P1_vs_audit_recomputed": "35/36 = 0.972 (miss E08)"},
+    "P3_P1": {"claimed": 0.917, "recomputed": "33/36", "match": true},
+    "changed_labels": {"claimed": 3, "recomputed": ["E07 GENERIC_PRACTICE->ACT_OBSERVATION", "E22 UNKNOWN->ACT_OBSERVATION", "E25 NORM_STATEMENT->ACT_OBSERVATION"], "match": true},
+    "collision_groups": {"claimed": "3 groups / 11 events", "recomputed": [["E06", "E07"], ["E08", "E09"], ["E15", "E16", "E17", "E18", "E19", "E20", "E21"]], "match": true, "near_collision": "E25 shares anchor S0804-L576 and target UNK with E06/E07; differs only in operation"},
+    "unreported": ["E27 deontic P3 UNK vs P4 REQUIRED (SCORE reports no deontic agreement)", "SCORE.decued_scores labels the de-cued coders P1/P2"]
+  },
+  "changed_labels": [
+    {"event": "E07 (REGISTER constitutional decision (rule))", "class": "COLLISION",
+     "quote": "S0804: \"the Authority ruled it was operational acceptance rather than a constitutional decision — *the register holds constitutional decisions*\". De-cued E06 and E07 both received the identical quote \"a ruling was put forward under a number already holding WP-4C-1's authorization; filed as R-90 with the collision recorded.\"",
+     "more_faithful": "cued (GENERIC_PRACTICE)"},
+    {"event": "E22 (RAISE L493-B (single occurrence))", "class": "CUE-DRIVEN JUDGEMENT",
+     "quote": "SOURCES: \"S0815-L483: session log 2026-08-15, lines 480-490\"; de-cued quote: \"BINDING VOCABULARY RULING — applies to ALL future documentation, not just this artifact\"",
+     "note": "The cue was a locator: the cued id points to L493, outside the excerpt, which the de-cued anchor dropped. The de-cued span raises nothing into 'methodology', and both coders' source_act (OTHER:REPORT/NONE) contradicts ACT.",
+     "more_faithful": "cued (UNKNOWN); agrees with audit UNCLEAR"},
+    {"event": "E25 (ASSIGN the retired number R-90)", "class": "CUE-DRIVEN JUDGEMENT",
+     "quote": "S0804: \"The number R-90 is RETIRED, not recycled, or the withdrawal would recreate the very defect R-89's collision exposed.\" vs de-cued span \"filed as R-90 with the collision recorded\"; R-90: \"THE NUMBER R-90 IS RETIRED AND MUST NOT BE REUSED.\"",
+     "note": "A latent span collision: the anchor holds one ASSIGN-ID act (the original filing) and one ASSIGN-ID norm (no re-use), and target UNK cannot select between them. The de-cued coders coded a different event.",
+     "more_faithful": "cued (NORM_STATEMENT / FORBIDDEN)"}
+  ],
+  "label_preserving_evidence_shifts": [
+    {"event": "E01", "detail": "Both de-cued coders quote \"✅ ADOPTED 2026-08-04 BY THE DECISION AUTHORITY … (adoption act: R-86)\", which is E02's act, instead of the Chief's declined adoption. This weakens the a-witness (E01/E02)."},
+    {"event": "E19-E21", "detail": "The not-promoted items are quoted with \"Promoted into AST-013 … 6 one-line behaviours\"; cued P1 used \"Expressly NOT promoted:\"."}
+  ],
+  "individuation": {
+    "collision_groups_confirmed": true,
+    "description_only_individuation": "11/36 events at record level (plus latent span collisions E01, E25; E22 anchor does not cover the described line)",
+    "kind_contrast_in_source": "YES, but as a stated distinction within a single sentence per pair, with one side being the negative side of a norm. It is not two attested occurrences. At record level the 'strict' kind pairs differ in zero fields.",
+    "span": {
+      "REGISTER (E06/E07)": "S0804: \"Then R-90 itself withdrawn before adoption, because the Authority ruled it was operational acceptance rather than a constitutional decision — *the register holds constitutional decisions*.\" More explicit, but anchored by neither event: R-90 annotation \"The register holds constitutional decisions, not operational acceptance.\" The two events are the act clause and the rule clause of one dual record.",
+      "OPEN-WORK (E08/E09)": "R-60 recording note: \"the issuing text placed this motion under a heading reading \\\"Recording Notes -- Not Part of Ruling\\\" … A recording note cannot open a work package — that is the ruling/note distinction this register enforces — so it is filed as a ruling in line with the operative text.\" There is one opening. The note member is what the norm says cannot happen; the ruling member is the act.",
+      "RAISE R-36 (E15-E21, e-witness)": "The item numbers refer to an unprovided matrix, so no item-level span is available. e's remaining cluster pair is also individuated only by description."
+    }
+  },
+  "agreement_assessment": {
+    "still_degenerate": true,
+    "quote_overlap": {"identical": 13, "overlapping_or_nested": 17, "disjoint": 6, "identical_ids": ["E01", "E06", "E07", "E12", "E15", "E16", "E17", "E18", "E19", "E20", "E21", "E22", "E33"], "disjoint_ids": ["E04", "E05", "E09", "E26", "E35", "E36"]},
+    "identical_on_hard_cases": ["E06/E07 same quote+label", "E08/E09", "E15-E21 incl. promoted quote for not-promoted items", "E22 ACT with source_act REPORT/NONE", "E25 ACT on the original-filing span", "E27 NORM", "E35 FORBIDDEN quoting 'freeze is lifted'", "coined verbs OTHER:DETERMINE (E03), OTHER:ADJUDICATE (E26), OTHER:DEFER (E12); the last two also match cued P1"],
+    "only_divergences": ["REPORT vs NONE (4)", "ADOPT vs OTHER:DISPOSE (2)", "E27 deontic UNK vs REQUIRED"],
+    "what_decueing_changes": "It removes the description as a shared cause, yet both coders shift the same 3 labels, so cue sensitivity belongs to the input, not the coder. On collision groups agreement is guaranteed, since identical inputs give identical outputs, leaving at most 28 distinct records. vs-audit cannot adjudicate cue effects because the audit was itself cued, and all 3 changes move away from it."
+  },
+  "schema_implication": {
+    "span_level_anchor_required": true,
+    "required_under_A": true,
+    "required_under_B": true,
+    "conditional_on": "A/B definitions not provided. The claim rests on individuation preceding classification: neither a two-level label schema nor minimal rules can repair a record that denotes more than one event.",
+    "spec": "A verbatim individuating span, separate from type_quote, which together with operation and target must be unique across records. Two events resolving to the same span must be merged into one record (dual if act + norm). R-36 item events need the item-level source or must be merged to cluster level."
+  },
+  "disagreements": [
+    {"id": "D1", "type": "wording", "item": "SCORE.json coder labels", "claim": "decued_scores reports P1/P2", "reviewer": "These are the de-cued coders P3/P4; the cued coders are also named P1/P2. The numbers are correct, the labels ambiguous.", "changes_result": false},
+    {"id": "D2", "type": "wording", "item": "TASK.md / SOURCES.md vocabulary", "claim": "TASK names EVENTS.json and the label UNKNOWN", "reviewer": "The provided file is EVENTS-decued.json. SOURCES says 'if undecidable, UNCLEAR' and refers to 'the coding lines', which the de-cued coders did not have.", "changes_result": false},
+    {"id": "D3", "type": "evidence scope", "item": "'3 labels changed'", "claim": "3 changes vs cued", "reviewer": "Type labels only. Quote/evidence shifts in E01 and E19-E21 are uncounted. E01's shift touches the only clean surviving variable a.", "changes_result": true},
+    {"id": "D4", "type": "coding", "item": "E22", "claim": "de-cued ACT_OBSERVATION", "reviewer": "Not supported. The anchor was reduced from L493 to L483, the span raises nothing to methodology, and source_act REPORT/NONE contradicts ACT. It should be UNKNOWN.", "changes_result": true},
+    {"id": "D5", "type": "coding", "item": "E25", "claim": "de-cued ACT_OBSERVATION", "reviewer": "The coders coded the original filing of R-90, not the re-use of the retired number, for which the source states only a prohibition.", "changes_result": true},
+    {"id": "D6", "type": "coding", "item": "E07", "claim": "de-cued ACT_OBSERVATION", "reviewer": "Forced by the collision with E06; the rule span is not reachable without the description.", "changes_result": true},
+    {"id": "D7", "type": "coding", "item": "E19-E21 quotes", "claim": "label ACT unchanged", "reviewer": "The quote is the promoted clause for not-promoted items. The label survives only because refusal is also ACT.", "changes_result": false},
+    {"id": "D8", "type": "coding", "item": "E27 deontic", "claim": "not reported", "reviewer": "P3 UNK vs P4 REQUIRED: the only substantive P3~P4 divergence, and SCORE does not measure it.", "changes_result": false},
+    {"id": "D9", "type": "independence", "item": "P3~P4 = 1.000", "claim": "type agreement 1.000", "reviewer": "Degenerate: 13 identical quotes, identical hard-case choices, identical coined OTHER: verbs shared with P1. Agreement on 11 collision events is guaranteed; at most 28 distinct records.", "changes_result": false},
+    {"id": "D10", "type": "evidence scope", "item": "vs audit 0.889", "claim": "agreement with the audit", "reviewer": "The audit was cued. Cued P1 vs audit is 35/36; all 3 de-cued changes move away from the audit, so the audit cannot adjudicate cue effects.", "changes_result": false},
+    {"id": "D11", "type": "source interpretation", "item": "kind pairs E06/E07, E08/E09", "claim": "strict witness pairs for kind", "reviewer": "The contrast is in the source but within one sentence per pair; one member is the negative side of a norm ('cannot open', 'holds constitutional decisions'), not an occurrence. REGISTER is one dual record.", "changes_result": true},
+    {"id": "D12", "type": "formal reasoning", "item": "strictness of kind pairs", "claim": "only k differs", "reviewer": "k is not a recorded field; the pairs differ in zero record fields, so strictness was supplied by the description.", "changes_result": true},
+    {"id": "D13", "type": "substantive", "item": "e cluster pair (R-36)", "claim": "e keeps 1 cluster pair", "reviewer": "It lies inside collision group 3; the item numbers refer to an unprovided matrix, so e's support is also individuated only by description.", "changes_result": true},
+    {"id": "D14", "type": "evidence scope", "item": "schema A/B", "claim": "choice between A and B", "reviewer": "Definitions not provided; 'required under both' is argued from individuation preceding classification, not from the schema texts. P3~P2/P4~P2 also unverifiable (no CODING-P2-cued.json).", "changes_result": false}
+  ]
+}

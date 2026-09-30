@@ -1,0 +1,85 @@
+{
+ "P-COV (threshold 0.70)": {
+  "v1.1": "17/24",
+  "estimate": [
+   0.708,
+   0.508,
+   0.851
+  ],
+  "verdict": "SUPPORTED (point estimate >= 0.70)"
+ },
+ "v1 baseline coverage": {
+  "v1": "11/24",
+  "estimate": [
+   0.458,
+   0.279,
+   0.649
+  ]
+ },
+ "predictions": {
+  "V1' legality": [
+   "12/12",
+   [
+    1.0,
+    0.757,
+    1.0
+   ]
+  ],
+  "V2' four-act": [
+   "4/4",
+   [
+    1.0,
+    0.51,
+    1.0
+   ]
+  ],
+  "V3' frames": [
+   "12/12",
+   [
+    1.0,
+    0.757,
+    1.0
+   ]
+  ],
+  "V4' evidence persistence": [
+   "6/6",
+   [
+    1.0,
+    0.61,
+    1.0
+   ]
+  ],
+  "V5' reopening": [
+   "0/0",
+   "UNTESTABLE"
+  ],
+  "V6' authority named (R-43+)": [
+   "10/10",
+   [
+    1.0,
+    0.722,
+    1.0
+   ]
+  ],
+  "V7' supersession": [
+   "0/0",
+   "UNTESTABLE"
+  ]
+ },
+ "violations": "none",
+ "pre-R-43 authority named (descriptive)": "2/3 (R-31 none; R-36, R-38 ARB in text)",
+ "still_not_modelled": [
+  "ASSESS",
+  "CREATE-QUEUE-ITEM",
+  "CREATE-QUEUE-ITEMS",
+  "DEPRECATE",
+  "NOT-PROMOTED",
+  "RECORD-ITEMS",
+  "RENAME"
+ ],
+ "secondary (not pre-registered): T-min legality with the R-36 pair added": {
+  "eps": "NECESSARY [('RAISE promoted (R-36)', \"RAISE not promoted '(1 slice)' (R-36)\")]",
+  "o": false,
+  "r": false
+ }
+}

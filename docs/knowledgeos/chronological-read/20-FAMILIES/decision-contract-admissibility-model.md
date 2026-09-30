@@ -1,0 +1,62 @@
+# decision-contract-admissibility-model
+
+**Scope(s):** OBJECT · **Row count:** 10 · **Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** `Admissible(d,K,t)`, `DC(d)=(Pre,Inv,Auth,Post,Temporal,Evidence)`, `DC(d)=<P,I,A,E,Q,T,O>` · **Aliases:** `Decision Admissibility`, `Formal Decision Contract`
+**Candidate group membership (NOT an identity claim):**
+- **G0192**: [`decision-contract-admissibility-model` · `decision-model`] — explicit agent-stated uncertainty: 'decision-contract-admissibility-model' POSSIBLY relates to 'decision-model' (batch B0023). Note: Step 42's formal Decision Contract DC(d) and Admissible(d,K,t) predicate (Pre/Inv/Auth/Post/Temporal/Evidence, refined to P/I/A/E/Q/T/O), distinct from decision-model (the Engineering Decision Model catalog) and from decision-docket/decision-authority (ARB governance objects).
+- **G0198**: [`decision-contract-admissibility-model` · `reachability-safety-horizon-model`] — explicit agent-stated uncertainty: 'reachability-safety-horizon-model' POSSIBLY relates to 'decision-contract-admissibility-model' (batch B0023). Note: Step 44's formalization of safety as horizon-relative reachability-set exclusion of unsafe states, extending (not replacing) the Step 42 decision-contract/safety-gate model with an explicit time horizon H and the second-order decision contract DC(d)=(Pre,Inv,Auth,Evidence,Post,Effects).
+- **G0209**: [`decision-contract-admissibility-model` · `kos-decision-theory-model`] — explicit agent-stated uncertainty: 'kos-decision-theory-model' POSSIBLY relates to 'decision-contract-admissibility-model' (batch B0023). Note: Step 62's decision-theoretic layer: the decision problem tuple, expected utility with non-universal decision-rule caveat, hard-constraint-vs-preference, risk-sensitive/robust (minimax) policies, aleatoric-vs-epistemic uncertainty, EVSI-governed information acquisition, Selected≠Authorized, objective/utility-weight governance, decision reproducibility, sensitivity/robustness analysis, and outcome-vs-decision-quality calibration; four new named invariants (I_DecisionAuthority, I_DecisionBasis, I_ActionBoundary, I_ObjectiveIntegrity). Builds directly on decision-contract-admissibility-model (Step 42) and decision-experiment-object (VOI, earlier batch).
+- **G0796**: [`admissibility-law-duplicate-contradiction` · `decision-contract-admissibility-model`] — labels share the notation 'Admissible(d,K,t)'
+- **G1075**: [`decision-contract-admissibility` · `decision-contract-admissibility-model`] — working_label token overlap Jaccard=0.75 (shared tokens: ['admissibility', 'contract', 'decision'])
+- **G1450**: [`assurance-composition-tree` · `decision-contract-admissibility-model`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus
+- **G1452**: [`decision-contract-admissibility-model` · `safety-invariant-taxonomy-and-gate`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus
+
+## Sources (how this label entered the ledger)
+- **PROPOSAL** batch `B0023`, scope `OBJECT`: Step 42's formal Decision Contract DC(d) and Admissible(d,K,t) predicate (Pre/Inv/Auth/Post/Temporal/Evidence, refined to P/I/A/E/Q/T/O), distinct from decision-model (the Engineering Decision Model catalog) and from decision-docket/decision-authority (ARB governance objects).
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S0937 §"How do we ensure that a KnowledgeOS decision gate can never authorize a state that violates a mandatory invariant?"]
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S0937 §"DC(d)=(Pre,Inv,Auth,Post,Temporal,Evidence)"]
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+
+## Lifecycle
+last_seen: S0939. Candidate lifecycle: **DORMANT**. Evidence: no retraction/supersession/contradiction evidence recorded; the DORMANT classification is a heuristic based on how recently (by source_id ordering) this label was last used, not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source(s) |
+|---|---|---|
+| purpose_rationale | NOT-EVIDENCED-IN-CAPTURE | — |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | PRESENT | S0937, S0937, S0937, S0937, S0937, S0939 |
+| type_signature | PRESENT | S0937 |
+| invariants | PRESENT | S0937, S0937 |
+| dependencies | PRESENT | S0937, S0937, S0937 |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S0937, S0937, S0937, S0937, S0937 |
+| examples | NOT-EVIDENCED-IN-CAPTURE | — |
+| warnings | NOT-EVIDENCED-IN-CAPTURE | — |
+| experiments | PRESENT | S0937 |
+| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |
+
+## Rationale
+NOT-EVIDENCED-IN-CAPTURE
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- [S0937] types=['DISTINCTION', 'PRINCIPLE'] scope=THEORY-LEVEL — "Three distinct questions must be separated: Question 1 (Epistemic) 'Do we have sufficient knowledge?'; Question 2 (Logical) 'Are the decision conditions internally consistent?'; Question 3 (Governance/safety) 'Is the resulting action permitted?'. Therefore SufficientKnowledge != ValidDecision != AuthorizedAction. This distinction is stated as fundamental, moving the investigation from 'do we know enough' to 'is the decision formally admissible'." (anchor: "How do we ensure that a KnowledgeOS decision gate can never authorize a state that violates a mandatory invariant?")
+- [S0937] types=['FORMALIZATION'] scope=OBJECT — "Defines a first-version Decision Contract DC(d) = (Pre, Inv, Auth, Post, Temporal, Evidence): preconditions (what must already be true, e.g. IdentityConfirmed=True), invariants (what must never be violated, e.g. ProductionChange=>Approved, VoteCount<=MaximumAllowed, explicitly a domain constraint not merely evidence), authorization requirements, required postconditions, timing constraints, and assurance requirements. Preconditions and invariants are kept strictly separate: a precondition asks whether the world is ready for the operation; an invariant asks whether the operation is allowed to produce a state violating a protected property." (anchor: "DC(d)=(Pre,Inv,Auth,Post,Temporal,Evidence)")
+- [S0937] types=['FORMALIZATION', 'EXTENSION'] scope=CROSS-OBJECT — "Borrows Hoare-logic style {P} d {Q} (if precondition P holds, execution of d should produce a state satisfying Q) and applies it as {Pre(d)} d {Post(d)}. Immediately argues ordinary Hoare logic is insufficient for KnowledgeOS because it additionally needs Evidence, Uncertainty, Authority, TemporalValidity and Provenance -- so the KnowledgeOS decision contract must extend the classical Hoare form." (anchor: "{Pre(d)} d {Post(d)}")
+- [S0937] types=['FORMALIZATION', 'PRINCIPLE'] scope=OBJECT — "Defines Admissible(d,K,t) iff Pre(d,K,t) and Invariant(d,K,t) and Assurance(d,K,t) and Authorization(d,K,t) -- a strict conjunction. Worked example: if Pre=True, Assurance=True, Authorization=True but Invariant=False, then Admissible=False regardless; 'there must be no averaging' across the conjuncts (i.e. no compensable weighted-sum scoring of admissibility conditions)." (anchor: "Admissible = Pre and Invariant and Assurance and Authorization")
+- [S0937] types=['FORMALIZATION', 'EXTENSION'] scope=OBJECT — "Restates and extends the Decision Contract as DC(d) = <P,I,A,E,Q,T,O> where P=preconditions, I=invariants, A=authorization, E=evidence requirements, Q=epistemic sufficiency, T=temporal constraints, O=postconditions; and Admissible(d,K,t) iff P(K,t) and I(K,t) and A(K,t) and E(K,t) and Q(K,t) and T(K,t), with Execute(d) only then permitted." (anchor: "DC(d)=<P,I,A,E,Q,T,O>; Admissible as six-way conjunction")
+- [S0937] types=['PRINCIPLE', 'EXTENSION'] scope=OBJECT — "States that KnowledgeOS should conceptually perform Evaluate(d) before Execute(d), so Decision evaluation != Decision execution. The architecture should support Evaluate(d,K) without actually executing d, enabling simulation, review, what-if analysis, governance checks and AI planning; extends to a counterfactual decision WhatIf(Execute(d)) with estimated PostState(d), flagged as important for the later causal-reasoning formalization." (anchor: "Decision evaluation != decision execution; dry-run capability")
+- [S0937] types=['FORMALIZATION', 'PRINCIPLE'] scope=OBJECT — "For consequential operations, depicts a pipeline Plan -> Evaluate -> Validate -> Authorize -> Safety Gate -> Execute -> Observe Outcome, with the rule that the side effect must occur after the gate. Applies this to bound AI agents: an AI agent may propose d but should not automatically bypass Admissibility, so AIProposal -> DecisionEvaluation -> PolicyGate; states the architecture rule 'AI may propose; the governed system decides whether the proposal is admissible', and explicitly rejects Trust(AI)=True in favor of Capability(AI) constrained by Policy -- an AI agent's authority is explicitly bounded." (anchor: "Safety gate pipeline: Plan->Evaluate->Validate->Authorize->Safety Gate->Execute->Observe Outcome")
+- [S0937] types=['EXPERIMENTAL-RESULT'] scope=THEORY-LEVEL — "Runs twelve falsification tests against the Step 42 model, all recorded PASS: (1) epistemic requirements pass but authorization fails => Admissible=False; (2) authorization passes but a hard invariant fails => Block; (3) all conditions known except a safety-critical invariant => Block/Unknown per policy, never automatic authorization; (4) a valid transition from a valid state preserves the invariant; (5) a transition that would violate a domain invariant is rejected; (6) a required approval expires before execution => decision becomes inadmissible; (7) evidence used by a decision is revoked => dependency closure identifies affected assurance and decisions; (8) an AI proposes an action violating a governance rule => proposal may be recorded but execution is blocked; (9) new evidence disproves an earlier assumption => existing assurance can be downgraded/revoked; (10) a decision is evaluated without execution => dry-run result has no side effect; (11) an invariant belongs to bounded context BC_A => KnowledgeOS does not silently redefine it from BC_B; (12) a decision passes technical assurance but lacks governance authorization => TechnicallySupported=True, Authorized=False, therefore Execute=False." (anchor: "Twelve falsification experiments for Step 42 (all PASS)")
+- [S0937] types=['RESTATEMENT', 'PRINCIPLE'] scope=THEORY-LEVEL — "Declares STEP 42 -- PASS and restates seven principles as the step's headline results: (1) Sufficient Knowledge != Valid Decision; (2) Valid Decision != Authorized Action; (3) Unknown safety state must not silently become safe; (4) Hard invariants are non-negotiable; (5) AI proposal != authorized execution; (6) Every consequential decision should have an explicit contract; (7) Evidence invalidation must propagate through decision dependencies." (anchor: "Step 42 verdict and seven closing principles")
+- [S0939] types=['FORMALIZATION', 'EXTENSION'] scope=CROSS-OBJECT — "Extends the Step 42 decision contract to DC(d) = (Pre, Inv, Auth, Evidence, Post, Effects), where Effects(A) = {E_1,...,E_n} covers both ExpectedEffect and PotentialSideEffects, so the system should evaluate not only the immediate postcondition but what important downstream states an action could create. Defines horizon-dependent reachability safety: an action A is safe only if Reach_H(S,A) intersect S_unsafe = empty for horizon H -- safety cannot usually be proven for t->infinity, so a finite horizon (e.g. 24h or 30 days) must be chosen, making Safety(d,H) horizon-specific (an action safe for H=1 day may be unsafe for H=2 years). Some actions have Lag(A,Y)>0 (e.g. ArchitectureChange -> MaintenanceCost manifesting months later); represents delayed causality as Y_{t+tau}=f(A_t,...) with delay tau as part of the causal model; warns that a controller reacting before a previous action's effects become visible (A_t -> S_{t+tau} -> Decision_{t+tau+1}) can overcorrect, producing oscillation (Increase->Decrease->Increase->Decrease) even when each local decision appears rational -- 'the problem lies in the dynamic system', so the decision engine should consider EffectDelay, not merely EffectExists." (anchor: "Second-order decision contract DC(d)=(Pre,Inv,Auth,Evidence,Post,Effects); horizon-dependent reachability safety; delayed effects")
+
+## Notes for P3
+(none beyond what is noted above)

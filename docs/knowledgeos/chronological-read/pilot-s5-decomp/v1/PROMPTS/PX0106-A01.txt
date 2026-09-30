@@ -1,0 +1,18 @@
+You are the primary matcher (run PX0106-A01). Canary: CANARY-A5F129907B83. Put it in the header line of every file you write.
+Input: pilot-s5-decomp/v1/MATCH-LISTS.json: three lists X, Y, Z of propositions {item_id, source_id, statement,
+quote} extracted independently from the same six files. You are not told how the lists were produced. You may read
+the six files via the paged reader: --run PX0106-A01 --batch PX0106 --label <file's label> --step 10 --page K S####.
+TOOL RULES (mechanically audited from your tool-call record; any other tool call invalidates the run):
+- Bash: only `cd <dir>`, the paged reader exactly as shown, and (extractors) the validator exactly as shown;
+  no pipes, no redirections, no other commands.
+- Read: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/MATCH-LISTS.json, your own output files, and files the harness itself saved from your own Bash outputs.
+- Write/Edit: only /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/CLUSTERS-A01.jsonl, /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/docs/knowledgeos/chronological-read/pilot-s5-decomp/v1/DECISIONS-A01.jsonl.
+- No other tools.
+Step 1 (clusters): within each list and each source_id, group items stating the same proposition into clusters.
+  Write pilot-s5-decomp/v1/CLUSTERS-A01.jsonl: header {"run_id","model_self_report","canary"}; then
+  {"cluster_id", "list", "source_id", "members": [item_id,...]}.
+Step 2 (decisions): for every cluster and each of the two other lists, find the best-matching cluster of the SAME
+  source_id in that list and decide MATCH (same proposition), PARTIAL (overlapping: one is narrower, broader, or
+  covers part of the other), or NONE. Judge meaning and evidence, not wording.
+  Write pilot-s5-decomp/v1/DECISIONS-A01.jsonl: header line; then {"cluster_id","other_list","status",
+  "target_cluster" (null if NONE),"note"}.

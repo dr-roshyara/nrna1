@@ -1,0 +1,103 @@
+{
+ "artifact": "S5-CANARY-PRECHECK-v2.8b",
+ "authority_context": "G-LOG-0107 (canary authorized); re-run after commit 1bbf97e33 (prompt wording fix) to re-freeze the tools (H-3)",
+ "checker": "audit-p3b/impl/canary_precheck_v28.py",
+ "checker_sha256": "de083f75c4a58c1143296981dee77cdf898db1f433b496cf5479cc026573cd5b",
+ "kind": "engineering evidence (authority: generated); read-only",
+ "note": "OB0012 may_start_attempt = false because step 1 (prepare) already created ledger-p3b-r2/OB0012-R7/ for attempt 1; the guard gates NEW attempts only",
+ "result": {
+  "activation_commit_exists": true,
+  "addendum_file_matches_frozen": true,
+  "batches": {
+   "OB0012": {
+    "empty_labels": 0,
+    "empty_objects_self_check_ok": 0,
+    "hub_batch": false,
+    "labels": 5,
+    "manifest_violations": 0,
+    "may_start_attempt": false,
+    "prompt_bundle_sha256": "3856358e80d0c918e904928c15da67917982206e5dc4792f51fb4ac4ff4c1f01",
+    "prompts_record_ids_ok": 5,
+    "prompts_with_hub_required_lines": 0,
+    "reading_manifests": 5,
+    "runs": 5,
+    "runs_by_role": {
+     "SINGLE": 5
+    },
+    "state": [
+     "PREPARED",
+     "OB0012-R7",
+     7,
+     1
+    ],
+    "view_violations": 0
+   },
+   "OB0114": {
+    "empty_labels": 1,
+    "empty_objects_self_check_ok": 1,
+    "hub_batch": false,
+    "labels": 5,
+    "manifest_violations": 0,
+    "may_start_attempt": true,
+    "prompt_bundle_sha256": "5525bb5e862824a7fdb454df7a2a1cccd7353210f574a19e11fa15cfcf044bd3",
+    "prompts_record_ids_ok": 6,
+    "prompts_with_hub_required_lines": 0,
+    "reading_manifests": 5,
+    "runs": 6,
+    "runs_by_role": {
+     "SINGLE": 3,
+     "SYNTHESIS": 1,
+     "UNIT": 2
+    },
+    "state": [
+     "PREPARED",
+     "OB0114-R7",
+     7,
+     1
+    ],
+    "view_violations": 0
+   }
+  },
+  "contract": {
+   "path": "prompts/20260926_2400_p3b-agent-contract-r7-addendum.md",
+   "revision": 7,
+   "sha256": "4d4dac6b5684a6ca60384d6654d50d798273e39ac487e5966329ac8926f0cb87"
+  },
+  "manifest_sha256": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+  "prompt_sha256": {
+   "OB0012-R7-L01": "452b5adb68f65fbb52cde121da1381581ee9874ba2231ff95fe79d8c30db836f",
+   "OB0012-R7-L02": "7fd9cee375d1ed9e0235fa5f2596c2e81aa6aa7967a139cdf116fff67b486be2",
+   "OB0012-R7-L03": "7af2515c5c73d2863a4db2240988df8165215527183ec0975eea9b4834d6dbf7",
+   "OB0012-R7-L04": "2af1ceea791c12c7c648ce19c64e93f7b33f254144da1bc4326e251066c113bd",
+   "OB0012-R7-L05": "d6b476f7b2395d8ebffb7c4c7f9a5d050bc423eff7bad57783da7cf6290ac6e4",
+   "OB0114-R7-L01": "ad721101c16ca32b118bfc7dd0a5c5ab71fc3360db633051480d51041235344c",
+   "OB0114-R7-L02": "58d147eea4ac0a5ec5d75947cfa140d8bc82856f876f4b0d0dbad9ab66331fa4",
+   "OB0114-R7-L03S": "19b6c895712376f956a1e1f37874e84ff7e7675c1e64410a06f428137244f84e",
+   "OB0114-R7-L03U01": "a0ec7c912ea3e6fb45b4ca652525f6e83acac46ea453345b24601557c56fa033",
+   "OB0114-R7-L03U02": "b21bd100ee0925b02393449ea544ece6bd7a93d882f562c79f1eaf388d86f694",
+   "OB0114-R7-L05": "c12237d38250729042565539a7ad35bed4c3a4cadfc7b3128152b626a111030c"
+  },
+  "reader_is_repo_reader": true,
+  "revision_violations": [],
+  "state_bound": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+  "tool_sha256_frozen_for_canary": {
+   "p3b_read_source.py": "f4be32e51389d16e76ab1402b39c04653d2ddab1eb51d7ccc0a0114b7c3546eb",
+   "p3b_s5_accept.py": "6d2c6a49b35a3a951f0c9b4d94e72a1b919591973a5ec3406a3f52b46b4e4109",
+   "p3b_s5_audit_record.py": "a9a0f68a45cd8acf3a6b0d3b6423e2141318a443d14673f0799d72190c03b920",
+   "p3b_s5_common.py": "57d6f3850c17774f76456e7d0f7064a608f8959c530122a28bf36b79c7d5f2cb",
+   "p3b_s5_r7_orchestrate.py": "8147c5dec00a0c2d3536cce351526e68c062a8dba65c93fa4dc380078196c8ef",
+   "p3b_s5_r7_universe.py": "126dd1d8d2b9e0e9e5550d0da029f51ccfd0c7f9c1bc98b56cb5c0da8520f150",
+   "p3b_s5_r7_verify.py": "47e1cbb7a27802004361b206247e6091dd40c83387f79737e0983ed3e5c7b740",
+   "p3b_s5_r7_witness.py": "833c44dcdf54c18d2565af6142ce7b208d6cbc998fb30f4c7acf4dbc315e2c9f",
+   "p3b_s5_state.py": "7aea0addab9253b722b646b9c0f7d45202e286e59470b2358f300571262733f5",
+   "p3b_s5_verify.py": "0d9e7c6c767e26b927aa76ec6426d123a238339c8572432f408f92e76b32350b"
+  },
+  "total_runs": 11,
+  "wsys": {
+   "f": 0,
+   "n": 0,
+   "stop": false
+  }
+ },
+ "supersedes": "audit-p3b/20260930_S5-CANARY-PRECHECK-v28.json (tool shas before the prompt fix)"
+}

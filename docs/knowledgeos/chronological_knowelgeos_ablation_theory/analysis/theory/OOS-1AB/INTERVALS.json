@@ -1,0 +1,45 @@
+{
+ "method": "Wilson 95% intervals; sample = 15 of 41 uncoded register rows by seeded hash (pseudo-random); finite-population correction would narrow them (n/N = 0.37); rows are not independent across regimes; acts are clustered within rows (coverage CI is optimistic)",
+ "estimates [p, lo, hi]": {
+  "V1 legality (applicable, excl. ambiguous)": [
+   1.0,
+   0.566,
+   1.0
+  ],
+  "V2 four-act (applicable, excl. ambiguous)": [
+   1.0,
+   0.51,
+   1.0
+  ],
+  "V3 frames (applicable)": [
+   1.0,
+   0.566,
+   1.0
+  ],
+  "V4 evidence persistence": [
+   1.0,
+   0.61,
+   1.0
+  ],
+  "V5 reopening": [
+   1.0,
+   0.207,
+   1.0
+  ],
+  "V6 authority named": [
+   0.867,
+   0.621,
+   0.963
+  ],
+  "V7 supersession": [
+   1.0,
+   0.342,
+   1.0
+  ],
+  "coverage (acts modelled)": [
+   0.292,
+   0.149,
+   0.492
+  ]
+ }
+}

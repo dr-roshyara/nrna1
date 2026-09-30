@@ -1,0 +1,11 @@
+{
+ "test": "L0-REL-32: does R-80 (Directive, first recorded 2026-08-03 15:53) change the gate on WP-4B RED before RED began (16:10)?",
+ "status": "FROZEN BEFORE reading R-80 / R-78",
+ "read": "register (7795c14b...) rows R-80 (L66) and R-78 (L64) only; their current text; nothing else",
+ "predictions": {
+   "H-resequenced": "R-80 (or R-78) states that WP-4B execution/RED does not wait on the PROMOTION/ALLOCATION acts, OR that the WP-4B proviso is satisfied, OR re-orders the R-79 sequence",
+   "H-deviation": "neither row licenses WP-4B RED before PROMOTION/ALLOCATION; the gate stated in R-79 stays in force at 16:10"},
+ "result_classes": ["SUPPORT(H-resequenced)", "SUPPORT(H-deviation)", "UNDETERMINED (rows silent or ambiguous on WP-4B's gate)", "OUT-OF-SCOPE"],
+ "I-A1_consequence": "I-A1 is called VIOLATED only if the source establishes the required authorization/guard was absent at 16:10; silence gives UNDETERMINED",
+ "caveat": "the current row text may include same-day edits (drafting window, F-LOG-0127); if R-80's text changed after 16:10 that is reported (row first-recorded vs last-changed times from the register history)"
+}

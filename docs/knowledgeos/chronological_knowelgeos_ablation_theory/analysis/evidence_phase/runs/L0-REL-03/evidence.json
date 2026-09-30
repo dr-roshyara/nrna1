@@ -1,0 +1,184 @@
+{
+ "release": "L0-REL-03",
+ "source": {
+  "path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+  "sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+  "section": "## 9. Capability Evidence Record",
+  "lines": [
+   170,
+   232
+  ]
+ },
+ "cells": [
+  {
+   "id": "S1-c1",
+   "claim_id": "S1-L188",
+   "proposition": "EP-01",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 188,
+    "end_line": 188
+   },
+   "exact_wording": "Reservation for WP-4 authorization had lapsed and was recorded as lapsed.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "source_claim": "an identifier reservation made for a WP-4 authorization lapsed and the lapse was recorded",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "The passage concerns the lifecycle of an identifier RESERVATION (identifier integrity), not the scope/authority of a knowledge-promotion authorization. Any reading of 'reservation lapse' as 'authorization expiry' would be an analogy (INFERENCE), not evidence."
+  },
+  {
+   "id": "S1-c2",
+   "claim_id": "S1-L232",
+   "proposition": "EP-02a",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 232,
+    "end_line": 232
+   },
+   "exact_wording": "The hazard is created at RESERVATION, not at minting.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "for identifiers, the citation hazard arises when an identifier is reserved, so a check only at mint time is too late",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "Structurally parallel to the check-time question (check at an earlier act vs at the executing act), but its subject is identifier minting, not promotion of knowledge. Parallel recorded here only; not evidence for EP-02a."
+  },
+  {
+   "id": "S1-c3",
+   "claim_id": "S1-L191",
+   "proposition": "EP-13c",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 191,
+    "end_line": 191
+   },
+   "exact_wording": "old sense *R-39 is the precedent*",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "source_claim": "the identifier R-69 collided with a pre-existing record sense stating that R-39 is the precedent",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "LOW",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "Second-hand: it reports the wording of another (unreleased) record in which R-39 is cited as a precedent. Treating R-39 as a precedent would bear against EP-13c ('no below-bar authorization is valid'), but the passage does not state what R-39 is a precedent FOR, and the cited record is not released. Not followed."
+  },
+  {
+   "id": "S1-c4",
+   "claim_id": "S1-L209",
+   "proposition": "EP-02b",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 209,
+    "end_line": 209
+   },
+   "exact_wording": "No CAP-002. No new capability. No architectural analysis — until this record holds roughly 20–30 rows.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "creating a new capability (and architectural analysis) is gated on an evidence record of roughly 20-30 rows",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "An evidence-count threshold gating capability CREATION, not a bar on promoting a knowledge item; its magnitude (20-30 rows) is not an n>=2 promotion bar."
+  }
+ ],
+ "events": [
+  {
+   "id": "S1-e1",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 188,
+    "end_line": 188
+   },
+   "exact_wording": "Reservation for WP-4 authorization had lapsed and was recorded as lapsed.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "identifier reservation lapse (recorded)"
+  },
+  {
+   "id": "S1-e2",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 190,
+    "end_line": 190
+   },
+   "exact_wording": "COLLISION OCCURRED.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "R-68 minted for a new subject without the tool being run"
+  },
+  {
+   "id": "S1-e3",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 191,
+    "end_line": 191
+   },
+   "exact_wording": "COLLISION OCCURRED.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "R-69 minted for a new subject without the tool being run"
+  },
+  {
+   "id": "S1-e4",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 193,
+    "end_line": 193
+   },
+   "exact_wording": "RUN BEFORE MINTING",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "tool run before minting KP-1..KP-5; nothing minted"
+  }
+ ]
+}

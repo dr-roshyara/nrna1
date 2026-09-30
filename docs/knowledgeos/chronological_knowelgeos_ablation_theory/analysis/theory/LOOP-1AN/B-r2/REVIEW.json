@@ -1,0 +1,106 @@
+{
+ "reviewer_basis": "Only the six supplied files; no code run; all values recomputed by hand. models_1al.py, 1al and F-LOG not supplied: claims depending on them are marked unverifiable.",
+ "spec_fidelity_ok": true,
+ "spec_fidelity_note": "Every computation matches the docstring. The non-numeric divergences are listed in spec_divergences; none changes a number.",
+ "spec_divergences": [
+  "D-a: class precedence undefined; code gives VACUOUS precedence, so VACUOUS variables appear inside minimal signatures (k REV-TYPE ADOPT; x RAISE/SUPERSEDE MF; r ASSIGN-ID MF)",
+  "D-b: MODEL-INADEQUATE/UNCONSTRAINED are listed as per-variable classes but emitted only as op-level statuses",
+  "D-c: 'minimal distinguishing situation' not implemented; the first non-bisimilar pair in BFS order is returned (here de facto the shallowest)",
+  "D-d: output uses the shorthand FORMAL-REQUIRED / MODEL-COND-REDUNDANT instead of the mandated 'under model M and the tested transition semantics' phrasing; BEHAVIOUR-RELEVANT is undefined in the docstring",
+  "D-e: 'opposite outcomes' undefined for the 3-valued outcome; NOT-IN-FORCE is treated as not-performed",
+  "D-f: r2 is a post-freeze change (disclosed); its basis in 1al is unverifiable",
+  "D-g: the name M3 is used both for the global operation model and for the m3_check LTS"
+ ],
+ "r2_fix_faithful": true,
+ "r2_fix_note": "Conditional: faithful only if 1al used operation-name labels, which is unverifiable here. The refinement logic is correct. PROVEN not to change any family class: op-name labels are a relabelling, so the full-label partition refines the op-name one (151 >= 80). The BEHAVIOUR-RELEVANT counterexamples are distinguished under the coarser labels, and the MODEL-COND-REDUNDANT verdicts are vacuous (no pair exists) regardless of labels. Guard sections of r1 and r2 are identical; the r1 variant is reproduced exactly.",
+ "r2_fix_changes_family_class": false,
+ "recomputation_matches": true,
+ "mismatches": [],
+ "recomputation": {
+  "ADOPT": {
+   "BASE": {"M0": [["a","k"],["a","t"]], "MF": [["a","c"],["a","k"],["a","t"]], "inadequate": null},
+   "REV": {"M0": [["a","t"]], "MF": [["c"],["a","t"]], "inadequate": null},
+   "REV-TYPE": {"M0": [["k"],["a","t"]], "MF": [["c"],["k"],["a","t"]], "inadequate": null}
+  },
+  "ANNOTATE": {"all_variants": "UNCONSTRAINED"},
+  "ASSIGN-ID": {"all_variants": {"M0": "MODEL-INADEQUATE", "MF": [["h"],["r"]], "inadequate": {"models": ["M0","M1","M2"], "pair": ["ASSIGN a never-used number","ASSIGN the retired number R-90"]}}},
+  "AUTHORIZE-IMPL": {"all_variants": {"M0": [["a"]], "MF": [["a"]], "inadequate": null}},
+  "OPEN-WORK": {"all_variants": {"M0": [["k"]], "MF": [["k"]], "inadequate": null}},
+  "RAISE": {"all_variants": {"M0": "MODEL-INADEQUATE", "MF": [["a","e"],["e","k"],["e","t"],["e","x"]], "inadequate": {"models": ["M0","M2","M4"], "pair": ["RAISE promoted #2","RAISE not promoted #5"]}}},
+  "REGISTER": {"all_variants": {"M0": [["k"]], "MF": [["k"]], "inadequate": null}},
+  "START": {"all_variants": {"M0": [["s"]], "MF": [["s"]], "inadequate": null}},
+  "SUPERSEDE": {"all_variants": {"M0": [["a"],["k"]], "MF": [["a"],["e"],["k"],["r"],["x"]], "inadequate": null}},
+  "global_minimum_MF": {"BASE": 5, "REV": 6, "REV-TYPE": 5, "matches": true},
+  "M3": {"conflict": null, "matches": true, "note": "null by construction (see D2)"},
+  "bisim_counts": {"reachable": 250, "classes_r2_opname": 80, "classes_r1_full": 151, "matches": true}
+ },
+ "degenerate_variables": [
+  {"variable": "t", "operation": "ADOPT", "kind": "object-identity lookup", "detail": "Values are same:R-81..85 vs R-91, one per object. FORMAL-REQUIRED in REV M0/M1/M4 only because E2 and E3 are different objects; the 'requirement' memorizes the data."},
+  {"variable": "t", "operation": "RAISE", "kind": "object-identity lookup", "detail": "{e,t} works only because P1/R-41 (the only e=1 PERFORMED event) has the unique target ES-004.3."},
+  {"variable": "k,c,t", "operation": "ADOPT (BASE)", "kind": "identity token as value", "detail": "All three induce the same partition {E1,E2}|{E3} via the same:R-81..85 token; one signature written three ways."},
+  {"variable": "c", "operation": "ADOPT (REV, REV-TYPE)", "kind": "coding artifact / per-event lookup", "detail": "3 events, 3 values; {c} exists only because C2 was half-applied, contradicting schema R2."},
+  {"variable": "k", "operation": "SUPERSEDE", "kind": "object-identity lookup", "detail": "3 events, 3 distinct kinds."},
+  {"variable": "r", "operation": "ASSIGN-ID", "kind": "consistency by ignorance (not a lookup)", "detail": "UNK in both events; VACUOUS yet a minimal signature {r}; demotes h from FR (M4) to MCR (MF) and creates the global-minimum tie {a,e,k,r,s}."},
+  {"variable": "x", "operation": "RAISE, SUPERSEDE", "kind": "consistency by ignorance", "detail": "VACUOUS yet in {e,x} and {x}; consistent only through UNK on P1/R-41 and D-12."},
+  {"variable": "k", "operation": "ADOPT (REV-TYPE)", "kind": "consistency by ignorance", "detail": "UNK on both R-81..85 events; VACUOUS yet a sole signature; demotes a and t to MCR."},
+  {"variable": "a,e", "operation": "SUPERSEDE", "kind": "consistency by ignorance", "detail": "The only PERFORMED event (D-12) has a=UNK and e=UNK."},
+  {"variable": "k", "operation": "RAISE", "kind": "consistency by ignorance", "detail": "The alternative {e,k} rests on P1/R-41 k=UNK."}
+ ],
+ "minimality_report": [
+  {"variable": "a", "why_it_appeared": "actor/authority", "formal_model": "M0-MF", "removal_test": "pool minus a", "counterexample": "ADOPT: 'ADOPT R-81..85 by the Chief (declined)' vs 'ADOPT R-81..85 by the DA (R-86)'; AUTHORIZE-IMPL: 'R-70 (ARB)' vs 'R-89 (Chief, PREPARED)'", "result": "FR in ADOPT (BASE all models; REV M0/M1/M4) and AUTHORIZE-IMPL; MCR in RAISE, SUPERSEDE, REV ADOPT M2/MF, REV-TYPE ADOPT; VACUOUS in REGISTER, OPEN-WORK, START", "scope": "Each FR rests on a single contrast; REV/REV-TYPE demotions are artifacts (D3, D1); AUTHORIZE-IMPL FR is conditional on NOT-IN-FORCE counting as opposite (D6). Model-relative; not empirical falsification.", "empirical_status": "SUPPORTED"},
+  {"variable": "k", "why_it_appeared": "object kind", "formal_model": "M0-MF", "removal_test": "pool minus k", "counterexample": "REGISTER: 'operational acceptance (R-90)' vs 'constitutional decision (rule)'; OPEN-WORK: 'by a recording note (R-60)' vs 'by a ruling (R-60 refiled)'", "result": "FR in REGISTER, OPEN-WORK; MCR in BASE ADOPT (token), RAISE (UNK), SUPERSEDE (lookup); VACUOUS in START, AUTHORIZE-IMPL, ASSIGN-ID, REV/REV-TYPE ADOPT", "scope": "FR from one within-cluster contrast each. Model-relative; not empirical falsification.", "empirical_status": "SUPPORTED"},
+  {"variable": "s", "why_it_appeared": "state before the act", "formal_model": "M0-MF", "removal_test": "pool minus s", "counterexample": "START 7B at R-56 vs 7B at R-58; 7C at R-58 vs 7C at R-65; §12 at R-81 vs R-86 (the first-found pair, WP-4B R-72 vs WP-4B 08-03 16:10, uses an event with s=UNK)", "result": "FR in START (all models and variants); VACUOUS in ADOPT, RAISE, AUTHORIZE-IMPL, ASSIGN-ID", "scope": "Several independent cluster pairs; same-target contrasts; not a lookup. Model-relative; not empirical falsification.", "empirical_status": "SUPPORTED (target-indexed)"},
+  {"variable": "t", "why_it_appeared": "target/scope", "formal_model": "M0-MF", "removal_test": "pool minus t", "counterexample": "REV ADOPT: 'ADOPT R-81..85 by the DA (R-86)' vs 'ADOPT R-91 by the DA (held)'", "result": "FR in REV ADOPT M0/M1/M4; MCR elsewhere where constrained; VACUOUS in AUTHORIZE-IMPL, OPEN-WORK", "scope": "Object-identity lookup; the FR memorizes which object. Model-relative; not empirical falsification.", "empirical_status": "index of s; possible witness only"},
+  {"variable": "e", "why_it_appeared": "evidence condition", "formal_model": "M1, MF", "removal_test": "pool minus e", "counterexample": "RAISE promoted #2 vs RAISE not promoted #5", "result": "FR in RAISE (M1, MF); MCR in SUPERSEDE (via D-12 e=UNK)", "scope": "Single cluster R-36. Model-relative; not empirical falsification.", "empirical_status": "WEAK (overloaded: repetition/breadth)"},
+  {"variable": "c", "why_it_appeared": "role conformance", "formal_model": "M2, MF (ADOPT only)", "removal_test": "pool minus c", "counterexample": null, "result": "MCR in all variants; never FR", "scope": "BASE: token lookup; REV/REV-TYPE: singleton {c} is a C2 coding artifact. Model-relative; not empirical falsification.", "empirical_status": "WEAK (coarse grain only)"},
+  {"variable": "o", "why_it_appeared": "operation label", "formal_model": "M3 (all ops pooled)", "removal_test": "9-variable pool, o removed", "counterexample": null, "result": "reported MCR under M3; should be UNTESTABLE", "scope": "Zero-power test: every event has at least one UNK among the 9 vars, so no conflict is possible. Not evidence of redundancy.", "empirical_status": "NOT DEMONSTRATED"},
+  {"variable": "r", "why_it_appeared": "route", "formal_model": "MF", "removal_test": "pool minus r", "counterexample": null, "result": "Never FR; MCR in SUPERSEDE (genuine singleton) and RAISE (in no minimal signature); VACUOUS in ASSIGN-ID (yet a sole signature) and elsewhere", "scope": "The ASSIGN-ID {r} and the global-minimum tie are UNK artifacts. Model-relative; not empirical falsification.", "empirical_status": "NOT DEMONSTRATED"},
+  {"variable": "x", "why_it_appeared": "exception", "formal_model": "MF (RAISE, SUPERSEDE)", "removal_test": "pool minus x", "counterexample": null, "result": "VACUOUS in both, yet in minimal signatures {e,x} and {x}", "scope": "Consistent only through UNK. Model-relative; not empirical falsification.", "empirical_status": "NOT DEMONSTRATED"},
+  {"variable": "h", "why_it_appeared": "history summary", "formal_model": "M4, MF (ASSIGN-ID)", "removal_test": "pool minus h", "counterexample": "ASSIGN a never-used number vs ASSIGN the retired number R-90", "result": "FR under M4; MCR under MF only because the all-UNK {r} is consistent", "scope": "Single contrast; the MF demotion is an artifact. Model-relative; not empirical falsification.", "empirical_status": "absorbed into status (formal)"}
+ ],
+ "model_equivalences": [
+  {"operation": "ADOPT", "variant": "BASE", "signatures": [["a","c"],["a","k"],["a","t"]], "equivalent_on_data": true, "note": "identical partitions via identity tokens", "separating_observation": "Resolve R-81..85's kind or conformance: equal to R-91's value breaks {a,k} or {a,c}. A repeat ADOPT of the same object with a different outcome breaks {a,t}. A PERFORMED DA adoption of a new ruling/collapsed object breaks {a,k} and {a,c} only."},
+  {"operation": "ADOPT", "variant": "REV", "signatures": [["c"],["a","t"]], "equivalent_on_data": true, "separating_observation": "R-91 re-submitted with repaired conformance and adopted by the DA breaks {a,t}; a REFUSED DA adoption of a conformant new object breaks {c}. Applying R2 removes {c} by coding, not by observation."},
+  {"operation": "ADOPT", "variant": "REV-TYPE", "signatures": [["c"],["k"],["a","t"]], "equivalent_on_data": true, "note": "{k} is consistent only by UNK", "separating_observation": "Typed-header kind of R-81..85; if E2's kind equals R-91's, {k} breaks."},
+  {"operation": "RAISE", "variant": "all", "signatures": [["a","e"],["e","k"],["e","t"],["e","x"]], "equivalent_on_data": true, "note": "{e,k} and {e,x} rest on P1/R-41 UNKs", "separating_observation": "Code P1's k and x. A PERFORMED PA-instructed raise on AST-013 with e=1 breaks {e,t}, not {a,e}. A PERFORMED ARB raise with e=1 on a new target breaks {a,e}, not {e,t}."},
+  {"operation": "SUPERSEDE", "variant": "all", "signatures": [["a"],["e"],["k"],["r"],["x"]], "equivalent_on_data": true, "note": "{a},{e},{x} rest on D-12 UNKs", "separating_observation": "Code D-12's a, e and x. A REFUSED ADR-ACCEPTANCE supersession breaks {r}. A PERFORMED supersession of an ADR-kind object breaks {k}."},
+  {"operation": "ASSIGN-ID", "variant": "all", "signatures": [["h"],["r"]], "equivalent_on_data": true, "note": "{r} rests on r=UNK in both events", "separating_observation": "Code the route of either assignment; the same route in both breaks {r}."},
+  {"operation": "GLOBAL_MIN", "variant": "BASE/REV-TYPE", "signatures": [["a","e","h","k","s"],["a","e","k","r","s"]], "equivalent_on_data": true, "separating_observation": "ASSIGN-ID route coding."},
+  {"operation": "GLOBAL_MIN", "variant": "REV", "signatures": [["a","c","e","h","k","s"],["a","c","e","k","r","s"],["a","e","h","k","s","t"],["a","e","k","r","s","t"]], "equivalent_on_data": true, "separating_observation": "ASSIGN-ID route coding plus the ADOPT c-vs-t separators."}
+ ],
+ "bisim_audit_ok": true,
+ "bisim_audit": {
+  "refinement_logic_correct": true,
+  "counts_verified_by_hand": {"reachable": 250, "r2": 80, "r1": 151},
+  "counterexamples_differ_only_in_family": {"st": true, "sup": true, "ann": true},
+  "distinguishing_behaviour": {
+   "st": "P vs H: HOLD/WITHDRAW enabled only in P; <HOLD>T (round 0)",
+   "sup": "sup none vs r2: SUPERSEDE enabled only with sup none; <SUPERSEDE>T (round 0)",
+   "ann": "ann.r1 0 vs 1 (r1 human A, r2 none): both enable {ANNOTATE, ISSUE}; after ANNOTATE, s1 enables {ANNOTATE, ISSUE} while s2 (ann=2) enables only {ISSUE}; <ANNOTATE><ANNOTATE>T (round 1), under both labelings"
+  },
+  "caveats": [
+   "MCR families are vacuous: text and deleg are constant; iss, by and reg are determined by the others; no pair was tested",
+   "joint removal of families is untested",
+   "ann relevance rests on the ann<=2 cap",
+   "actions only (no state propositions); sub-model B only"
+  ]
+ },
+ "disagreements": [
+  {"id": "D1", "category": "substantive", "summary": "VACUOUS variables consistent by UNK (r ASSIGN-ID, x RAISE/SUPERSEDE, k REV-TYPE ADOPT) are minimal signatures and demote h (MF) and a, t (REV-TYPE) to MCR; they also create global-minimum ties."},
+  {"id": "D2", "category": "formal reasoning", "summary": "The M3 operation test has zero power (every event has at least one UNK among the 9 pooled vars); o's MCR should read UNTESTABLE."},
+  {"id": "D3", "category": "coding", "summary": "REV C2 half-applied: c=conformant only on E2 while E1 keeps same:R-81..85, contradicting schema R2. Consistent coding gives REV MF {a,c},{a,t} with a FR."},
+  {"id": "D4", "category": "formal reasoning", "summary": "t (ADOPT, RAISE), k (SUPERSEDE) and the BASE ADOPT tokens are object-identity lookups; t's FR in REV memorizes the object."},
+  {"id": "D5", "category": "coding", "summary": "same: tokens are counted as known values in the VACUOUS test; BASE ADOPT k and c would be VACUOUS under R2."},
+  {"id": "D6", "category": "source interpretation", "summary": "NOT-IN-FORCE treated as opposite of PERFORMED; AUTHORIZE-IMPL a FR depends on it, and the R-89 status difference is carried by a."},
+  {"id": "D7", "category": "independence", "summary": "Clusters ignored; e, k and a FRs rest on single decisions; only s has several cluster pairs."},
+  {"id": "D8", "category": "formal reasoning", "summary": "Bisimulation MCR families pass vacuously (constant or determined); joint removal untested."},
+  {"id": "D9", "category": "formal reasoning", "summary": "ann BEHAVIOUR-RELEVANT rests on the state-space cap ann<=2 (PLAUSIBLE artifact)."},
+  {"id": "D10", "category": "wording", "summary": "Class precedence undefined; 'minimal' counterexample not implemented (de facto shallowest); BEHAVIOUR-RELEVANT undefined; FR/MCR shorthand; INADEQUATE/UNCONSTRAINED only as op-level statuses."},
+  {"id": "D11", "category": "evidence scope", "summary": "r2 basis (1al labels) unverifiable; post-freeze change; proven to change no family class (only 151 -> 80)."},
+  {"id": "D12", "category": "evidence scope", "summary": "F-LOG citations and EMPIRICAL statuses unverifiable; C1 changes no output; h's 'empirical status' is a formal statement."},
+  {"id": "D13", "category": "evidence scope", "summary": "Global minimum covers constrained ops only; the r tie is an UNK artifact; REV-TYPE's size 5 comes from k=UNK."},
+  {"id": "D14", "category": "coding", "summary": "Non-applicable fields coded UNK instead of n/a (R1); no computational effect."},
+  {"id": "D15", "category": "wording", "summary": "The name M3 is used for two different models."},
+  {"id": "D16", "category": "evidence scope", "summary": "Action-only bisimulation over sub-model B; invariant relevance of iss and by (I-B1, I-B2) cannot appear."}
+ ]
+}

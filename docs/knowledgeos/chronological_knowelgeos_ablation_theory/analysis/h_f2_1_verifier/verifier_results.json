@@ -1,0 +1,3671 @@
+{
+  "method": "Explicit enumeration. For each instance and axiom set Sigma, the state space is P x S x E x G x U(Sigma) (U = up-sets iff A0 in Sigma). The maximal step relation R_max(Sigma) = all (x, kind, x') with x, x' admissible states and the step satisfying every axiom of Sigma (COMP steps absent iff A4 in Sigma) is built exactly as bitsets. Exactness: D1, D2, D3, D3+ are 'no finite chained trajectory of R with property Bad', D5, D6 are 'no step (resp. trajectory) of R with property Bad'. Any R satisfying Sigma is a subset of R_max, so a bad trajectory of R is one of R_max; conversely a bad trajectory of R_max is a bad trajectory of the relation R consisting of exactly its steps, which satisfies Sigma. Hence 'for every R' <=> 'for R_max', decided by reachability: D1 = no GOV-path from {e notin u} to {e in u}; D2 = no {EVID,EVIDREF,WORK}-path from {g=0} to {g=1}; D3 fails iff Promote is reachable from {e notin u, g=0} using only kinds without EVID/EVIDREF, or only kinds without GOV (a trajectory missing one class lies in one of these two sub-relations, and vice versa); D3+ likewise with 'without EVID'; D5 = every EVID edge of R_max from a Promote state ends in a Promote state; D6 = no edge of R_max changes p (every state is a start, so trajectories = edges for this purpose); NV = Promote reachable from {e notin u, g=0} in R_max (witness R = that trajectory's steps). Reachability is a fixed-point over a finite graph, so each decision is exact. Memoization keys use only the axioms that syntactically affect the kinds involved (an exact projection: the relation is identical). Minimal sets: brute force over all 2^11 subsets; a set is minimal iff it holds and no proper subset holds (upward closure is checked and reported, not assumed). Shortest countermodels by BFS in fixed order.",
+  "interpretations": [
+    "A trajectory is a finite chained sequence x0 ->k1 x1 ->k2 ... ; the empty trajectory is allowed (it never violates any proposition since start and target sets are disjoint).",
+    "'From any state' ranges over ALL admissible states of the state space, not only states reachable from some initial state.",
+    "A0 changes the state space itself: without A0 bars range over all 2^|E| subsets; with A0 only up-sets; steps must stay within admissible states.",
+    "Each kind's step relation under Sigma is the product of per-component constraints stated by the axioms; components not constrained for that kind may change arbitrarily (including staying the same).",
+    "COMP is a kind like any other when A4 is absent; it is neither GOV nor EVID/EVIDREF, so a COMP step does not count toward D3/D3+'s required step classes; with A4 there are no COMP steps.",
+    "D3/D3+ quantify over trajectories starting in a state with e notin u and g = 0 and reaching a Promote state at any point (the first Promote hit suffices; prefixes are trajectories).",
+    "D5 is read as a single-step property over every EVID step of R from any Promote state; D6 as 'no trajectory ever changes p', equivalently no step changes p.",
+    "'State counts under the full axiom set' = |P|*|S|*|E|*|G|*|up-sets| (A0 in force); 'without A0' = same with all subsets. Other axioms constrain steps, not states.",
+    "NV is existential; when NV fails no countermodel trajectory exists, so null is reported. When NV holds a shortest witness is reported. NV is not included in the minimal-set computation (the SPEC lists only D1..D6 there).",
+    "Shortest countermodel = fewest atomic steps; ties broken deterministically by state-index BFS order (state index order: p, s, e, g, bar-index lexicographic; kind order GOV, EVID, EVIDREF, WORK, COMP)."
+  ],
+  "instances": {
+    "chain3": {
+      "elements": [
+        "n0",
+        "n1",
+        "n2"
+      ],
+      "strict_order": [
+        [
+          "n0",
+          "n1"
+        ],
+        [
+          "n1",
+          "n2"
+        ]
+      ],
+      "state_count_full_axioms_A0": 144,
+      "state_count_without_A0": 288,
+      "admissible_bars_A0": [
+        [],
+        [
+          "n2"
+        ],
+        [
+          "n1",
+          "n2"
+        ],
+        [
+          "n0",
+          "n1",
+          "n2"
+        ]
+      ],
+      "full_axiom_set": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true,
+        "NV": true
+      },
+      "full_axiom_set_NV_witness": {
+        "start": {
+          "p": "gen",
+          "s": "auth",
+          "e": "n0",
+          "g": 0,
+          "u": [
+            "n2"
+          ]
+        },
+        "steps": [
+          {
+            "kind": "GOV",
+            "to": {
+              "p": "gen",
+              "s": "auth",
+              "e": "n0",
+              "g": 1,
+              "u": [
+                "n2"
+              ]
+            }
+          },
+          {
+            "kind": "EVID",
+            "to": {
+              "p": "gen",
+              "s": "auth",
+              "e": "n2",
+              "g": 1,
+              "u": [
+                "n2"
+              ]
+            }
+          }
+        ]
+      },
+      "single_removal": {
+        "without_A0": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 0,
+                "u": [
+                  "n0"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 0,
+                    "u": [
+                      "n0"
+                    ]
+                  }
+                },
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n0"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n1",
+                    "g": 1,
+                    "u": [
+                      "n0"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A1": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": false,
+            "NV": true
+          },
+          "failing": [
+            "D6"
+          ],
+          "shortest_countermodels": {
+            "D6": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "der",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 0,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A2e": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 0,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D2",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 0,
+                    "u": [
+                      "n0",
+                      "n1",
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [],
+          "shortest_countermodels": {}
+        },
+        "without_A3m": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 1,
+                "u": [
+                  "n1",
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n1",
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A4": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5e": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                },
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                },
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D2",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n2",
+                    "g": 1,
+                    "u": [
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [],
+          "shortest_countermodels": {}
+        },
+        "without_A6": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 0,
+                    "u": [
+                      "n0",
+                      "n1",
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n0",
+                      "n1",
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": [
+                      "n0",
+                      "n1",
+                      "n2"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "n0",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "minimal_axiom_sets": {
+        "D1": [
+          [
+            "A2e",
+            "A6"
+          ]
+        ],
+        "D2": [
+          [
+            "A3g",
+            "A5g"
+          ]
+        ],
+        "D3": [
+          [
+            "A2e",
+            "A3g",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D3+": [
+          [
+            "A0",
+            "A2e",
+            "A3g",
+            "A3m",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D5": [
+          [
+            "A0",
+            "A3g",
+            "A3m",
+            "A6"
+          ]
+        ],
+        "D6": [
+          [
+            "A1"
+          ]
+        ]
+      },
+      "upward_closed_check": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true
+      },
+      "NV_true_subset_count": 2048
+    },
+    "V": {
+      "elements": [
+        "bot",
+        "a",
+        "b"
+      ],
+      "strict_order": [
+        [
+          "bot",
+          "a"
+        ],
+        [
+          "bot",
+          "b"
+        ]
+      ],
+      "state_count_full_axioms_A0": 180,
+      "state_count_without_A0": 288,
+      "admissible_bars_A0": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "b"
+        ],
+        [
+          "a",
+          "b"
+        ],
+        [
+          "bot",
+          "a",
+          "b"
+        ]
+      ],
+      "full_axiom_set": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true,
+        "NV": true
+      },
+      "full_axiom_set_NV_witness": {
+        "start": {
+          "p": "gen",
+          "s": "auth",
+          "e": "bot",
+          "g": 0,
+          "u": [
+            "a"
+          ]
+        },
+        "steps": [
+          {
+            "kind": "GOV",
+            "to": {
+              "p": "gen",
+              "s": "auth",
+              "e": "bot",
+              "g": 1,
+              "u": [
+                "a"
+              ]
+            }
+          },
+          {
+            "kind": "EVID",
+            "to": {
+              "p": "gen",
+              "s": "auth",
+              "e": "a",
+              "g": 1,
+              "u": [
+                "a"
+              ]
+            }
+          }
+        ]
+      },
+      "single_removal": {
+        "without_A0": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "bot"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": [
+                      "bot"
+                    ]
+                  }
+                },
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "bot"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "bot"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A1": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": false,
+            "NV": true
+          },
+          "failing": [
+            "D6"
+          ],
+          "shortest_countermodels": {
+            "D6": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "der",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A2e": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D2",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot",
+                  "a",
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [],
+          "shortest_countermodels": {}
+        },
+        "without_A3m": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A4": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5e": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D2",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [],
+          "shortest_countermodels": {}
+        },
+        "without_A6": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot",
+                  "a",
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "minimal_axiom_sets": {
+        "D1": [
+          [
+            "A2e",
+            "A6"
+          ]
+        ],
+        "D2": [
+          [
+            "A3g",
+            "A5g"
+          ]
+        ],
+        "D3": [
+          [
+            "A2e",
+            "A3g",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D3+": [
+          [
+            "A0",
+            "A2e",
+            "A3g",
+            "A3m",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D5": [
+          [
+            "A0",
+            "A3g",
+            "A3m",
+            "A6"
+          ]
+        ],
+        "D6": [
+          [
+            "A1"
+          ]
+        ]
+      },
+      "upward_closed_check": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true
+      },
+      "NV_true_subset_count": 2048
+    },
+    "diamond": {
+      "elements": [
+        "bot",
+        "a",
+        "b",
+        "top"
+      ],
+      "strict_order": [
+        [
+          "bot",
+          "a"
+        ],
+        [
+          "a",
+          "top"
+        ],
+        [
+          "bot",
+          "b"
+        ],
+        [
+          "b",
+          "top"
+        ]
+      ],
+      "state_count_full_axioms_A0": 288,
+      "state_count_without_A0": 768,
+      "admissible_bars_A0": [
+        [],
+        [
+          "top"
+        ],
+        [
+          "a",
+          "top"
+        ],
+        [
+          "b",
+          "top"
+        ],
+        [
+          "a",
+          "b",
+          "top"
+        ],
+        [
+          "bot",
+          "a",
+          "b",
+          "top"
+        ]
+      ],
+      "full_axiom_set": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true,
+        "NV": true
+      },
+      "full_axiom_set_NV_witness": {
+        "start": {
+          "p": "gen",
+          "s": "auth",
+          "e": "bot",
+          "g": 0,
+          "u": [
+            "top"
+          ]
+        },
+        "steps": [
+          {
+            "kind": "GOV",
+            "to": {
+              "p": "gen",
+              "s": "auth",
+              "e": "bot",
+              "g": 1,
+              "u": [
+                "top"
+              ]
+            }
+          },
+          {
+            "kind": "EVID",
+            "to": {
+              "p": "gen",
+              "s": "auth",
+              "e": "top",
+              "g": 1,
+              "u": [
+                "top"
+              ]
+            }
+          }
+        ]
+      },
+      "single_removal": {
+        "without_A0": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "bot"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": [
+                      "bot"
+                    ]
+                  }
+                },
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "bot"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "bot"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A1": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": false,
+            "NV": true
+          },
+          "failing": [
+            "D6"
+          ],
+          "shortest_countermodels": {
+            "D6": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "der",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A2e": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 0,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D2",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot",
+                  "a",
+                  "b",
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b",
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [],
+          "shortest_countermodels": {}
+        },
+        "without_A3m": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a",
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "a",
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A4": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5e": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                },
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                },
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D2",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                },
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "top",
+                    "g": 1,
+                    "u": [
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [],
+          "shortest_countermodels": {}
+        },
+        "without_A6": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 0,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b",
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b",
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": [
+                      "bot",
+                      "a",
+                      "b",
+                      "top"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot",
+                  "a",
+                  "b",
+                  "top"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "bot",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "minimal_axiom_sets": {
+        "D1": [
+          [
+            "A2e",
+            "A6"
+          ]
+        ],
+        "D2": [
+          [
+            "A3g",
+            "A5g"
+          ]
+        ],
+        "D3": [
+          [
+            "A2e",
+            "A3g",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D3+": [
+          [
+            "A0",
+            "A2e",
+            "A3g",
+            "A3m",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D5": [
+          [
+            "A0",
+            "A3g",
+            "A3m",
+            "A6"
+          ]
+        ],
+        "D6": [
+          [
+            "A1"
+          ]
+        ]
+      },
+      "upward_closed_check": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true
+      },
+      "NV_true_subset_count": 2048
+    },
+    "antichain2": {
+      "elements": [
+        "a",
+        "b"
+      ],
+      "strict_order": [],
+      "state_count_full_axioms_A0": 96,
+      "state_count_without_A0": 96,
+      "admissible_bars_A0": [
+        [],
+        [
+          "a"
+        ],
+        [
+          "b"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "full_axiom_set": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true,
+        "NV": false
+      },
+      "full_axiom_set_NV_witness": null,
+      "single_removal": {
+        "without_A0": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": false
+          },
+          "failing": [
+            "NV"
+          ],
+          "shortest_countermodels": {
+            "NV": null
+          }
+        },
+        "without_A1": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": false,
+            "NV": false
+          },
+          "failing": [
+            "D6",
+            "NV"
+          ],
+          "shortest_countermodels": {
+            "D6": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "der",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "NV": null
+          }
+        },
+        "without_A2e": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "b",
+                    "g": 0,
+                    "u": [
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "b",
+                    "g": 1,
+                    "u": [
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "b",
+                    "g": 1,
+                    "u": [
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A3g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": true,
+            "D3+": true,
+            "D5": false,
+            "D6": true,
+            "NV": false
+          },
+          "failing": [
+            "D2",
+            "D5",
+            "NV"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "NV": null
+          }
+        },
+        "without_A3s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": false
+          },
+          "failing": [
+            "NV"
+          ],
+          "shortest_countermodels": {
+            "NV": null
+          }
+        },
+        "without_A3m": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVIDREF",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "b",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A4": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "b",
+                    "g": 1,
+                    "u": [
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "COMP",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "b",
+                    "g": 1,
+                    "u": [
+                      "b"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5e": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": true,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D3",
+            "D3+"
+          ],
+          "shortest_countermodels": {
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                },
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "without_A5g": {
+          "truth": {
+            "D1": true,
+            "D2": false,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": false
+          },
+          "failing": [
+            "D2",
+            "NV"
+          ],
+          "shortest_countermodels": {
+            "D2": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "WORK",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            },
+            "NV": null
+          }
+        },
+        "without_A5s": {
+          "truth": {
+            "D1": true,
+            "D2": true,
+            "D3": true,
+            "D3+": true,
+            "D5": true,
+            "D6": true,
+            "NV": false
+          },
+          "failing": [
+            "NV"
+          ],
+          "shortest_countermodels": {
+            "NV": null
+          }
+        },
+        "without_A6": {
+          "truth": {
+            "D1": false,
+            "D2": true,
+            "D3": false,
+            "D3+": false,
+            "D5": false,
+            "D6": true,
+            "NV": true
+          },
+          "failing": [
+            "D1",
+            "D3",
+            "D3+",
+            "D5"
+          ],
+          "shortest_countermodels": {
+            "D1": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 0,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D3+": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "steps": [
+                {
+                  "kind": "GOV",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": [
+                      "a"
+                    ]
+                  }
+                }
+              ]
+            },
+            "D5": {
+              "start": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "steps": [
+                {
+                  "kind": "EVID",
+                  "to": {
+                    "p": "gen",
+                    "s": "auth",
+                    "e": "a",
+                    "g": 1,
+                    "u": []
+                  }
+                }
+              ]
+            }
+          }
+        }
+      },
+      "minimal_axiom_sets": {
+        "D1": [
+          [
+            "A2e",
+            "A6"
+          ]
+        ],
+        "D2": [
+          [
+            "A3g",
+            "A5g"
+          ]
+        ],
+        "D3": [
+          [
+            "A2e",
+            "A3m",
+            "A4",
+            "A5e",
+            "A6"
+          ],
+          [
+            "A2e",
+            "A3g",
+            "A4",
+            "A5e",
+            "A5g",
+            "A6"
+          ]
+        ],
+        "D3+": [
+          [
+            "A2e",
+            "A3m",
+            "A4",
+            "A5e",
+            "A6"
+          ]
+        ],
+        "D5": [
+          [
+            "A3g",
+            "A3m",
+            "A6"
+          ]
+        ],
+        "D6": [
+          [
+            "A1"
+          ]
+        ]
+      },
+      "upward_closed_check": {
+        "D1": true,
+        "D2": true,
+        "D3": true,
+        "D3+": true,
+        "D5": true,
+        "D6": true
+      },
+      "NV_true_subset_count": 1984
+    }
+  },
+  "files_read": [
+    "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/h_f2_1_verifier/SPEC.md"
+  ]
+}

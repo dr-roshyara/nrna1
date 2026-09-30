@@ -1,0 +1,57 @@
+# step286-gita-hypothesis-falsification-research-programme
+
+**Scope(s):** METHODOLOGICAL · **Row count:** 8 ·
+**Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** H-K01..H-K12, [S][C][P][R][H] evidence chain · **Aliases:** Step 286 as hypothesis programme, not dictionary
+**Candidate group membership (NOT an identity claim):**
+- G0446: links `step286-gita-hypothesis-falsification-research-programme` with `gita-kos-translation-register-gk01-gk19` — explicit agent-stated uncertainty: 'step286-gita-hypothesis-falsification-research-programme' POSSIBLY relates to 'gita-kos-translation-register-gk01-gk19' (batch B0050). Note: Rewrites Step 286 from a 'beautiful dictionary' exercise into a hypothesis-testing research programme: mandates a 5-stage source-before-KnowledgeOS evidence chain ([S]ource text -> [C]ommentary -> [P]hilosophical interpretation -> [R]esearch analogy -> [H]ypothesis, never silently collapsed), a priority-ranked research queue (Priority 1 kernel/epistemology: Kshetra/Kshetra-jna/Karma/Karma-phala/Buddhi; Priority 2 governance/AI: Sarathi/Dharma/non-attachment; Priority 3 exploratory: Gunas/Maya/Moksha/Yoga/Zero/Omega), twelve individually worked hypotheses (H-K01..H-K12) each with its own falsification framing, a 10-row falsification matrix, and five required output artifacts (R1 Source Evidence Register, R2 Translation Register, R3 Hypothesis Register, R4 Falsification & Independence Report, R5 Research-to-Architecture Report).
+
+## Sources (how this label entered the ledger)
+- **PROPOSAL** (batch B0050, scope METHODOLOGICAL): Rewrites Step 286 from a 'beautiful dictionary' exercise into a hypothesis-testing research programme: mandates a 5-stage source-before-KnowledgeOS evidence chain ([S]ource text -> [C]ommentary -> [P]hilosophical interpretation -> [R]esearch analogy -> [H]ypothesis, never silently collapsed), a priority-ranked research queue (Priority 1 kernel/epistemology: Kshetra/Kshetra-jna/Karma/Karma-phala/Buddhi; Priority 2 governance/AI: Sarathi/Dharma/non-attachment; Priority 3 exploratory: Gunas/Maya/Moksha/Yoga/Zero/Omega), twelve individually worked hypotheses (H-K01..H-K12) each with its own falsification framing, a 10-row falsification matrix, and five required output artifacts (R1 Source Evidence Register, R2 Translation Register, R3 Hypothesis Register, R4 Falsification & Independence Report, R5 Research-to-Architecture Report).
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S2062] §"The objective of Step 286 should not be to produce a beautiful Gītā–KnowledgeOS dictionary. The dictionary is only the input layer. The actual research programme should determine whether any of those proposed correspondences survive scrutiny."
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-OPERATIONAL-BIRTH: [S2062] §"Falsification matrix: Field/Knower - Can K and Knower be collapsed without loss? Action/Result - Can operation and resulting state be represented as one object? Persistence - Is ordinary provenance sufficient? Non-attachment - Does outcome necessarily determine validity? Equanimity - Does equal treatment produce epistemic errors? Negative knowledge - Does failure always create information? Knowledge/action loop - Does DDD require separation instead? Sārathi - Can guidance exist without authority? Ω - Can the model work without Ω? Θ model - Are the operators actually independent?"
+- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+
+## Lifecycle
+last_seen: S2068. Candidate lifecycle: DORMANT.
+Evidence: No retraction/supersession/contradiction evidence recorded. The DORMANT label is a heuristic based on how recently (by source_id) this label was last used, not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source(s) |
+|---|---|---|
+| purpose_rationale | PRESENT | S2062 |
+| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| formal_definition | NOT-EVIDENCED-IN-CAPTURE | — |
+| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |
+| invariants | NOT-EVIDENCED-IN-CAPTURE | — |
+| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |
+| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| semantics | PRESENT | S2062 |
+| examples | NOT-EVIDENCED-IN-CAPTURE | — |
+| warnings | PRESENT | S2068 |
+| experiments | PRESENT | S2062, S2066 |
+| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |
+
+## Rationale
+- [S2062] (EXPLANATION) Establishes a three-tier research priority ranking so that kernel-relevant hypotheses (field/knower, action/result, persistence, discrimination) are investigated before governance/AI hypotheses, with exploratory vocabulary (Gunas, Maya, Moksha, Omega, Zero, tree) deliberately deprioritized.
+- [S2062] (EXPLANATION) Specifies five required deliverables for the Step 286 programme in sequence, with the final artifact (R5) explicitly gated on hypotheses surviving all prior tests, and requiring each surviving hypothesis to be traced through formal, DDD, architectural, and governance consequences before any architecture claim is made.
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- `[S2062]` types=[CORRECTION] scope=METHODOLOGICAL — "Redefines Step 286's objective away from vocabulary-building toward falsification-driven hypothesis testing, demoting the translation register (S2061) to a mere input/evidence layer rather than a deliverable in itself." (anchor: "The objective of Step 286 should not be to produce a beautiful Gītā–KnowledgeOS dictionary. The dictionary is only the input layer. The actual research programme should determine whether any of those proposed correspondences survive scrutiny.")
+- `[S2062]` types=[CONSTRAINT] scope=METHODOLOGICAL — "Mandates a mandatory five-stage provenance chain for every Gita-derived claim (source text, its commentary, philosophical interpretation, research analogy, KnowledgeOS hypothesis) with an explicit prohibition on silently promoting a later-stage item (interpretation or analogy) to look like a textual fact — directly naming Krishna->Omega as an example that must never be presented as textual." (anchor: "[S] Source text → [C] Commentary → [P] Philosophical interpretation → [R] Research analogy → [H] KnowledgeOS hypothesis. A [P] or [R] statement must never silently become [S]. ... Kṛṣṇa → Ω can only be a KnowledgeOS research abstraction, never a textual definition.")
+- `[S2062]` types=[EXPLANATION] scope=METHODOLOGICAL — "Establishes a three-tier research priority ranking so that kernel-relevant hypotheses (field/knower, action/result, persistence, discrimination) are investigated before governance/AI hypotheses, with exploratory vocabulary (Gunas, Maya, Moksha, Omega, Zero, tree) deliberately deprioritized." (anchor: "Priority 1 — Kernel/epistemology: Kṣetra, Kṣetra-jña, Knowledge, Ātman/persistence, Karma, Karma-phala, Buddhi ... Priority 2 — Governance/AI: Sārathi, Dharma, non-attachment, authority, guidance, decision ... Priority 3 — exploratory: Gunas, Māyā, Mokṣa, Bhakti, Yoga, Zero, tree, dimensions, Ω. These may be interesting, but they should not consume the programme before the core hypotheses are resolved.")
+- `[S2062]` types=[EXPERIMENT] scope=METHODOLOGICAL — "Provides a 10-row falsification matrix pairing each major candidate hypothesis with a specific, named attempt to refute it — explicitly framing the researcher's role as trying to destroy the hypothesis rather than rescue it." (anchor: "Falsification matrix: Field/Knower - Can K and Knower be collapsed without loss? Action/Result - Can operation and resulting state be represented as one object? Persistence - Is ordinary provenance sufficient? Non-attachment - Does outcome necessarily determine validity? Equanimity - Does equal treatment produce epistemic errors? Negative knowledge - Does failure always create information? Knowledge/action loop - Does DDD require separation instead? Sārathi - Can guidance exist without authority? Ω - Can the model work without Ω? Θ model - Are the operators actually independent?")
+- `[S2062]` types=[EXPLANATION] scope=METHODOLOGICAL — "Specifies five required deliverables for the Step 286 programme in sequence, with the final artifact (R5) explicitly gated on hypotheses surviving all prior tests, and requiring each surviving hypothesis to be traced through formal, DDD, architectural, and governance consequences before any architecture claim is made." (anchor: "Required final output: R1 Source Evidence Register; R2 Translation Register; R3 Hypothesis Register; R4 Falsification & Independence Report; R5 Research-to-Architecture Report (only for hypotheses that survive: Hypothesis -> formal consequence -> DDD consequence -> architecture consequence -> governance question).")
+- `[S2062]` types=[PRINCIPLE] scope=METHODOLOGICAL — "States the programme's central governing principle in its clearest form across the entire Gita sub-series: success is not proving the Gita explains KnowledgeOS, but finding correspondences that survive rigorous testing without distorting either source — the sharpest formulation of the discipline that the per-chapter HPA analyses (S2046-S2053) and the 'source code' synthesis (S2059) violate." (anchor: "The objective is not to prove that the Bhagavad Gītā explains KnowledgeOS. The objective is to determine whether any Gītā-derived conceptual correspondence survives independent philosophical, mathematical, epistemic, DDD, architectural, and falsification tests. ... A correspondence becomes interesting precisely when it survives without requiring us to distort either the Gītā or KnowledgeOS.")
+- `[S2066]` types=[EXPERIMENT] scope=METHODOLOGICAL — "Specifies a concrete, fill-in-the-blank falsification protocol table (test/result/verdict columns, all initially TBD/OPEN) for each of the four priority-1 hypotheses (field/knower, action/result, non-attachment, persistence) -- the template that the companion executed research (t285_reconcile.py S2063, R1-SOURCE-EVIDENCE-REGISTER S2064, D285-8 S2065) appears to have subsequently completed." (anchor: "Falsification Protocol — H-K03: Can K be defined without reference to Knower? TBD. Can Knower persist while K changes? TBD. Does 13.3 force multiple Knower levels? TBD. Is this distinction independently required by KnowledgeOS? TBD. Verdict: OPEN. (similarly tabulated for H-K06/H-K07, H-K11, H-K05)")
+- `[S2068]` types=[WARNING] scope=METHODOLOGICAL — "Identifies a genuine defect in the revised Step 286 prompt document: the identifiers H-K04 and H-K06 are each silently reused for two entirely different hypotheses in different Parts of the same document, making any falsification verdict keyed on those bare identifiers ambiguous; records a locally-applied disambiguation scheme (H-K04e, H-K06f) rather than silently resolving the collision as if it were not a defect." (anchor: "H-K04: register says GK-04 Kṣetra-jña (Part 3), a later Part says Equanimity (Part 15). H-K06: register says GK-06 Karma (Part 6), a later Part says Failed Action/Negative Knowledge (Part 14). ... a falsification protocol keyed on H-K04/H-K06 is ambiguous as written... Disambiguation used in this package: H-K04=Kṣetra-jña, H-K04e=Equanimity, H-K06=Karma/Phala, H-K06f=Failed action, H-K13=Jñāna.")
+
+## Notes for P3
+- No unusual internal tension observed across this label's 8 captured row(s); evidentiary base is proportionate to row count.

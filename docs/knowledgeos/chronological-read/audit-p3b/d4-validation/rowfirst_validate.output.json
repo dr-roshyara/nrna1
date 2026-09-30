@@ -1,0 +1,286 @@
+{
+ "shared_row_sources": {
+  "files": 928,
+  "labels_affected": 1736,
+  "max_labels_per_file": 35
+ },
+ "chronology_proxy": {
+  "row_sources_without_iso_date": 965,
+  "row_source_pairs_compared": 5683,
+  "sid_order_vs_date_inversions": 634,
+  "labels_with_inversion": 85
+ },
+ "row_bytes": {
+  "median": 25385,
+  "p90": 91078,
+  "p99": 369202,
+  "max": 1593012
+ },
+ "300000": {
+  "A": {
+   "units": 2938,
+   "labels_multi_unit": 357,
+   "unit_boundaries": 971,
+   "row_adjacencies": 529,
+   "labels_with_row_adjacency": 161,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 237,
+   "pair_splits_new_vs_FFD": 0,
+   "labels_row_unit_order_nonmonotone": 130
+  },
+  "B": {
+   "units": 3752,
+   "labels_multi_unit": 922,
+   "unit_boundaries": 1785,
+   "row_adjacencies": 42,
+   "labels_with_row_adjacency": 28,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 167,
+   "pair_splits_new_vs_FFD": 78,
+   "labels_row_unit_order_nonmonotone": 0
+  },
+  "C": {
+   "units": 2938,
+   "labels_multi_unit": 357,
+   "unit_boundaries": 971,
+   "row_adjacencies": 42,
+   "labels_with_row_adjacency": 28,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 109,
+   "pair_splits_new_vs_FFD": 28,
+   "labels_row_unit_order_nonmonotone": 0
+  },
+  "D": {
+   "units": 3065,
+   "labels_multi_unit": 357,
+   "unit_boundaries": 1098,
+   "row_adjacencies": 124,
+   "labels_with_row_adjacency": 83,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 89,
+   "pair_splits_new_vs_FFD": 9,
+   "labels_row_unit_order_nonmonotone": 0
+  },
+  "row_adjacency_lower_bound": 38,
+  "labels_row_sources_fit_one_unit": 1916,
+  "labels_needing_multiple_row_units": 28,
+  "C_residual_labels": [
+   [
+    "step-verify-programme",
+    25,
+    1593012
+   ],
+   [
+    "kt-tuple-spine-wars-steps-26-40",
+    16,
+    1268320
+   ],
+   [
+    "capability-c10-knowledge-distribution",
+    19,
+    715734
+   ],
+   [
+    "capability-c5-separation-attestation",
+    15,
+    644236
+   ],
+   [
+    "mandatory-operation-set-gap",
+    40,
+    634152
+   ],
+   [
+    "kos-theory-v2-rewrite-parts-i-xvii-2026-09",
+    17,
+    587998
+   ],
+   [
+    "kos-invariant-family-taxonomy",
+    24,
+    575127
+   ],
+   [
+    "step-trace-b5-pass-inflation-and-8-primitive-kernel",
+    17,
+    564030
+   ],
+   [
+    "r-conflict-invariant",
+    13,
+    503820
+   ],
+   [
+    "knowledgeos-c4-architecture-diagrams",
+    9,
+    493793
+   ],
+   [
+    "epistemic-purification-operator-algebra",
+    30,
+    493299
+   ],
+   [
+    "sanskrit-grammar-lens",
+    9,
+    454866
+   ],
+   [
+    "hpa-buddhi-discrimination-second-pass",
+    26,
+    418626
+   ],
+   [
+    "knowledge-flow",
+    25,
+    410353
+   ],
+   [
+    "kos-aip-gov-state-durability-program",
+    12,
+    408516
+   ],
+   [
+    "knowledge-space-kernel-research-roadmap",
+    18,
+    406479
+   ],
+   [
+    "adr-aip-04",
+    15,
+    395556
+   ],
+   [
+    "decision-model",
+    17,
+    393500
+   ],
+   [
+    "grant-record",
+    8,
+    375473
+   ],
+   [
+    "evidence",
+    12,
+    369202
+   ],
+   [
+    "invariant-catalog",
+    8,
+    361184
+   ],
+   [
+    "kos-architecture-fitness-rules",
+    15,
+    350359
+   ],
+   [
+    "evidence-assessment-algebra-steps-001-008",
+    10,
+    337175
+   ],
+   [
+    "capability",
+    19,
+    324345
+   ],
+   [
+    "step291-kernel-operation-algebra-proposal",
+    20,
+    323192
+   ],
+   [
+    "epistemic-contract-EC-and-eta-totality",
+    14,
+    315174
+   ],
+   [
+    "capability-c19-communication-composition",
+    5,
+    312095
+   ],
+   [
+    "oq-5-role-model-ownership",
+    2,
+    310066
+   ]
+  ]
+ },
+ "600000": {
+  "A": {
+   "units": 2333,
+   "labels_multi_unit": 177,
+   "unit_boundaries": 366,
+   "row_adjacencies": 253,
+   "labels_with_row_adjacency": 82,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 101,
+   "pair_splits_new_vs_FFD": 0,
+   "labels_row_unit_order_nonmonotone": 69
+  },
+  "B": {
+   "units": 3213,
+   "labels_multi_unit": 911,
+   "unit_boundaries": 1246,
+   "row_adjacencies": 7,
+   "labels_with_row_adjacency": 5,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 153,
+   "pair_splits_new_vs_FFD": 101,
+   "labels_row_unit_order_nonmonotone": 0
+  },
+  "C": {
+   "units": 2333,
+   "labels_multi_unit": 177,
+   "unit_boundaries": 366,
+   "row_adjacencies": 7,
+   "labels_with_row_adjacency": 5,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 72,
+   "pair_splits_new_vs_FFD": 28,
+   "labels_row_unit_order_nonmonotone": 0
+  },
+  "D": {
+   "units": 2362,
+   "labels_multi_unit": 177,
+   "unit_boundaries": 395,
+   "row_adjacencies": 40,
+   "labels_with_row_adjacency": 31,
+   "max_unit_bytes": 1516994,
+   "pair_evidence_split": 43,
+   "pair_splits_new_vs_FFD": 10,
+   "labels_row_unit_order_nonmonotone": 0
+  },
+  "row_adjacency_lower_bound": 7,
+  "labels_row_sources_fit_one_unit": 1939,
+  "labels_needing_multiple_row_units": 5,
+  "C_residual_labels": [
+   [
+    "step-verify-programme",
+    25,
+    1593012
+   ],
+   [
+    "kt-tuple-spine-wars-steps-26-40",
+    16,
+    1268320
+   ],
+   [
+    "capability-c10-knowledge-distribution",
+    19,
+    715734
+   ],
+   [
+    "capability-c5-separation-attestation",
+    15,
+    644236
+   ],
+   [
+    "mandatory-operation-set-gap",
+    40,
+    634152
+   ]
+  ]
+ }
+}

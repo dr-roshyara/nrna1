@@ -1,0 +1,15 @@
+{
+ "name": "L205-A1 meta-principle freeze",
+ "read": ".claude/sessions/2026-08-04.md L205-L215 (6309c2e3...), after freeze commit d0daa60c6",
+ "obs": {"EV": "NOT-RECORDED", "QUAL": "NOT-RECORDED", "VAL": "NOT-RECORDED", "OBL": "NOT-RECORDED", "EXC": "NOT-RECORDED", "AUTH": "NOT-RECORDED", "SEM": "UNKNOWN"},
+ "attrs": {"force": "UNKNOWN", "kind": "UNKNOWN", "high": "UNKNOWN"},
+ "force_basis": "UNKNOWN kept: the section concerns meta-principles but neither cites nor applies an R-39-form bar -> Applicability(I-R39) not source-supported",
+ "acts": {
+  "A1 L208 META-PRINCIPLE FREEZE": {"source": "'The era-closing directive executed'; 'no new meta-principles/heuristics/watches minted from here - the existing set must survive months of real engineering. Counting and evidence intake continue; discovery of meta-things stops. Same logic as every prior freeze.'",
+     "authority": "NOT-RECORDED (a 'directive', issuer unnamed)", "route": "INTERPRETATION: directive (RULING-like)", "operation": "FREEZE (a moratorium on future minting)", "effect": "normative (restricts future RAISE-STANDING)", "kind": "INTERPRETATION: a rule about the promotion process (meta-rule)",
+     "evidence": "no evidence basis for the freeze recorded"},
+  "A2 L209 protected sentence": {"source": "'preserved verbatim: KnowledgeOS is measured by changes in engineering behavior, not by its own activity' + six evaluation questions", "operation": "other: PROTECT-TEXT (immutability of a norm text)", "effect": "normative (an evaluation criterion)"},
+  "A3 L210 reclassification": {"source": "'Candidate schema reclassified as a KNOWLEDGE LIFECYCLE (not watch tooling) - identity upgrade, same gate.'", "operation": "other: RECLASSIFY (identity/kind change)", "effect": "identity", "gate": "SOURCE-FACT: unchanged ('same gate')"},
+  "A4 L211 reversibility": {"source": "'the fourth making architectural evolution REVERSIBLE (precision earns; lapse removes)'", "operation": "INTERPRETATION: declares standing reversible", "persistence": "SOURCE-FACT: standing earned by precision, removed by lapse"},
+  "A5 L212-L213 maturity": {"source": "'the learning loop ... designed, not exercised'; 'The review era is complete. The engineering era owns the answers.'", "operation": "INTERPRETATION: phase transition statement"}}
+}

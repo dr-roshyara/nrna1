@@ -1,0 +1,148 @@
+{
+ "key": [
+  {
+   "id": "E01",
+   "event_id": "ADOPT R-81..85 by the Chief (declined)"
+  },
+  {
+   "id": "E02",
+   "event_id": "ADOPT R-81..85 by the DA (R-86)"
+  },
+  {
+   "id": "E03",
+   "event_id": "ADOPT R-91 by the DA (held)"
+  },
+  {
+   "id": "E04",
+   "event_id": "AUTHORIZE-IMPL R-70 (ARB)"
+  },
+  {
+   "id": "E05",
+   "event_id": "AUTHORIZE-IMPL R-89 (Chief, PREPARED)"
+  },
+  {
+   "id": "E06",
+   "event_id": "REGISTER operational acceptance (R-90)"
+  },
+  {
+   "id": "E07",
+   "event_id": "REGISTER constitutional decision (rule)"
+  },
+  {
+   "id": "E08",
+   "event_id": "OPEN-WORK by a recording note (R-60)"
+  },
+  {
+   "id": "E09",
+   "event_id": "OPEN-WORK by a ruling (R-60 refiled)"
+  },
+  {
+   "id": "E10",
+   "event_id": "START WP-4B at R-72 (proviso unmet)"
+  },
+  {
+   "id": "E11",
+   "event_id": "START WP-4B 08-03 16:10"
+  },
+  {
+   "id": "E12",
+   "event_id": "START WP-8 (permission only)"
+  },
+  {
+   "id": "E13",
+   "event_id": "START 7A after AUTHORIZE(7A)"
+  },
+  {
+   "id": "E14",
+   "event_id": "START 7B after AUTHORIZE(7A)"
+  },
+  {
+   "id": "E15",
+   "event_id": "RAISE promoted #2"
+  },
+  {
+   "id": "E16",
+   "event_id": "RAISE promoted #3"
+  },
+  {
+   "id": "E17",
+   "event_id": "RAISE promoted #9"
+  },
+  {
+   "id": "E18",
+   "event_id": "RAISE promoted #10"
+  },
+  {
+   "id": "E19",
+   "event_id": "RAISE not promoted #5"
+  },
+  {
+   "id": "E20",
+   "event_id": "RAISE not promoted #14"
+  },
+  {
+   "id": "E21",
+   "event_id": "RAISE not promoted #17"
+  },
+  {
+   "id": "E22",
+   "event_id": "RAISE L493-B (single occurrence)"
+  },
+  {
+   "id": "E23",
+   "event_id": "RAISE P1 / R-41 (by PA instruction)"
+  },
+  {
+   "id": "E24",
+   "event_id": "ASSIGN a never-used number"
+  },
+  {
+   "id": "E25",
+   "event_id": "ASSIGN the retired number R-90"
+  },
+  {
+   "id": "E26",
+   "event_id": "SUPERSEDE ADR-T14 (R-77)"
+  },
+  {
+   "id": "E27",
+   "event_id": "SUPERSEDE §12 (R-83)"
+  },
+  {
+   "id": "E28",
+   "event_id": "SUPERSEDE D-12 by ADR-MP"
+  },
+  {
+   "id": "E29",
+   "event_id": "SUPERSEDE PB-006 row declined (R-94)"
+  },
+  {
+   "id": "E30",
+   "event_id": "ANNOTATE PB-006 row chosen (R-94)"
+  },
+  {
+   "id": "E31",
+   "event_id": "START 7B at R-56 (plan approved, execution not issued)"
+  },
+  {
+   "id": "E32",
+   "event_id": "START 7B at R-58 (execution authorized)"
+  },
+  {
+   "id": "E33",
+   "event_id": "START 7C at R-58 (remains unauthorized)"
+  },
+  {
+   "id": "E34",
+   "event_id": "START 7C at R-65 (authorized)"
+  },
+  {
+   "id": "E35",
+   "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)"
+  },
+  {
+   "id": "E36",
+   "event_id": "START §12 reconcile at R-86 (Batch 7 released)"
+  }
+ ]
+}

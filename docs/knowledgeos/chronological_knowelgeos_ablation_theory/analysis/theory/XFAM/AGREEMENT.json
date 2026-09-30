@@ -1,0 +1,192 @@
+{
+ "judgements": {
+  "V1": {
+   "agreement": 0.125,
+   "kappa": -0.191,
+   "disagreements": {
+    "X1 2026-07-11 L203": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "X2 2026-07-25 L241": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "X3 2026-07-26 L94": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "X5 2026-07-30 L193": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "X6 2026-07-31 L573": [
+     "NOT-MODELLED",
+     "UNTESTABLE"
+    ],
+    "X7 2026-07-31 L611": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "X8 2026-07-31 L3334": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V2": {
+   "agreement": 0.75,
+   "kappa": 0.385,
+   "disagreements": {
+    "X2 2026-07-25 L241": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "X5 2026-07-30 L193": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V3": {
+   "agreement": 0.75,
+   "kappa": 0.0,
+   "disagreements": {
+    "X3 2026-07-26 L94": [
+     "AMBIGUOUS",
+     "SUPPORTED"
+    ],
+    "X6 2026-07-31 L573": [
+     "NOT-MODELLED",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V4": {
+   "agreement": 0.5,
+   "kappa": 0.158,
+   "disagreements": {
+    "X3 2026-07-26 L94": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "X6 2026-07-31 L573": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "X7 2026-07-31 L611": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "X8 2026-07-31 L3334": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V5": {
+   "agreement": 0.75,
+   "kappa": 0.0,
+   "disagreements": {
+    "X6 2026-07-31 L573": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ],
+    "X8 2026-07-31 L3334": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V6": {
+   "agreement": 0.625,
+   "kappa": 0.294,
+   "disagreements": {
+    "X3 2026-07-26 L94": [
+     "NOT-NAMED",
+     "VIOLATED"
+    ],
+    "X7 2026-07-31 L611": [
+     "NOT-NAMED",
+     "VIOLATED"
+    ],
+    "X8 2026-07-31 L3334": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V7": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  }
+ },
+ "ops_jaccard_mean": 0.738,
+ "coverage": {
+  "main": [
+   16,
+   25,
+   [
+    0.64,
+    0.445,
+    0.798
+   ]
+  ],
+  "blind": [
+   21,
+   44,
+   [
+    0.477,
+    0.338,
+    0.621
+   ]
+  ]
+ },
+ "blind_violations": {
+  "V1": [],
+  "V2": [],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [
+   "X3 2026-07-26 L94",
+   "X7 2026-07-31 L611"
+  ],
+  "V7": []
+ },
+ "blind_not_modelled": [
+  [
+   "APPLIED (REFINEMENTS)",
+   2
+  ],
+  [
+   "UPDATED (FLOW DIAGRAM)",
+   1
+  ],
+  [
+   "ADDED (NO-AS-HEALTH-INDICATOR)",
+   1
+  ],
+  [
+   "NOT PERSISTED (DISTRIBUTION AS METRIC)",
+   1
+  ],
+  [
+   "RULED",
+   1
+  ],
+  [
+   "SOFTENED (FINDING)",
+   1
+  ],
+  [
+   "ADDED (RISK REGISTER; MEMORY.MD SUMMARY)",
+   1
+  ],
+  [
+   "ACCEPTED (A CONSEQUENCE, NOT COMPLETED WORK)",
+   1
+  ]
+ ]
+}

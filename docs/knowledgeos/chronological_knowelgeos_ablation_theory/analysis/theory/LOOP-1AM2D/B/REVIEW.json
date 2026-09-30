@@ -1,0 +1,40 @@
+{
+  "verdicts_A": {
+    "M_A": "NOT FALSIFIED",
+    "M_T": "NOT FALSIFIED",
+    "M_K": "NOT FALSIFIED",
+    "M_AT": "NOT FALSIFIED"
+  },
+  "verdicts_reviewer": {
+    "M_A": "NOT FALSIFIED",
+    "M_T": "NOT FALSIFIED",
+    "M_K": "NOT FALSIFIED",
+    "M_AT": "NOT FALSIFIED"
+  },
+  "confound_broken_A": "NONE",
+  "confound_broken_reviewer": {
+    "value": "NONE",
+    "strongest_alternative": "If the R41-2 ground ('Parsimony honored') is read as RULE, then E01 (P: PA, EXTENSION, 1 instance) vs R41-2 (Q: PA, NEW, 'not a new standard document', 1 instance) falsifies M_A only (M_K, M_T and M_AT survive on a strict target reading). That breaks the confound. The text does not establish RULE: parsimony is elsewhere an 'ARB preference' or 'DA guidance', and no rule ID is cited. It also does not rule RULE out."
+  },
+  "disagreements": [
+    {"id": "D1", "item": "Missed event R41-2: 'hosted ONCE as ES-004.3 (documentation standard, not a new standard document)' / 'Parsimony honored'", "A": "not coded", "reviewer": "PA · NEW · 'a new standard document' · 1 instance · exception NO · NOT-RAISED · ground UNK", "class": "coding", "verdict_impact": "none under reviewer coding; falsifies M_A (only) if ground = RULE"},
+    {"id": "D2", "item": "R40-A4 outcome", "A": "NOT-RAISED", "reviewer": "deferred candidate ('descriptive until explicitly adopted — do not adopt; submit for review'); excluded", "class": "source interpretation", "verdict_impact": "none"},
+    {"id": "D3", "item": "R40-A1 raise_kind", "A": "EXTENSION", "reviewer": "UNK: rests on a 'Parsimony note (DA guidance …)' about an 'expected' end-state and a 'candidate ES-005.5'", "class": "source interpretation", "verdict_impact": "none (evidence UNK)"},
+    {"id": "D4", "item": "R38-2 status", "A": "RAISED, CHOICE", "reviewer": "'ARB preference' is a recommendation or precedent, not a standing-raising decision; the same correction says 'This ruling introduces NO new governance'; excluded", "class": "source interpretation", "verdict_impact": "none (evidence UNK)"},
+    {"id": "D5", "item": "R90-1 standing and actor", "A": "decided non-raise by the ARB CHIEF on a RULE ground", "reviewer": "a proposal in a row that is 'PREPARED, NOT ADOPTED' and 'WITHDRAWN BEFORE ADOPTION'; kept as Q because the non-raise stands and it cites an existing rule, but the ARB CHIEF is the proposer, not the decider", "class": "source interpretation", "verdict_impact": "none"},
+    {"id": "D6", "item": "R41-1 recorded_exception", "A": "UNK", "reviewer": "NO ('Parsimony honored' applies the normal rule)", "class": "coding", "verdict_impact": "none (not YES either way)"},
+    {"id": "D7", "item": "R90-2 raise_kind", "A": "NEW (quote: 'this ruling was put forward')", "reviewer": "UNK: the quote does not support NEW", "class": "coding", "verdict_impact": "none"},
+    {"id": "D8", "item": "Missed event R40-A1b: 'not a new standard' (parsimony note)", "A": "folded into A1 as raise_kind support", "reviewer": "separate NOT-RAISED · DA · NEW · evidence UNK · ground UNK (guidance)", "class": "coding", "verdict_impact": "none"},
+    {"id": "D9", "item": "R-41 evidence", "A": "1 instance (second instance inferred to be after adoption)", "reviewer": "1 as given in E01; 2 not excluded, because the second instance is listed under 'Provenance:'", "class": "evidence scope", "verdict_impact": "none on the four models"},
+    {"id": "D10", "item": "Pooled 'no parameter' model falsified", "A": "FALSIFIED (E01 vs E02, E20, R90-1)", "reviewer": "holds only if E01's given evidence of 1 is correct; not certain from R-41's own text", "class": "formal reasoning", "verdict_impact": "outside the frozen test"},
+    {"id": "D11", "item": "ANSWER.md ambiguity 3 sentence", "A": "'Either way it is ≤ 1 only under the first reading'", "reviewer": "garbled; the intended meaning is '= 1 only under the first reading'", "class": "wording", "verdict_impact": "none"}
+  ],
+  "agreements": [
+    "Only permitted evidence was used.",
+    "The E02 and E20 quotes are not in SOURCES.md and cannot be verified; using them as given is correct.",
+    "The E01 quote is stitched together in reverse order.",
+    "No actor was inferred from the register's host; every coded actor is named in the text.",
+    "Target class (methodology vs standard) is unsettled; merging the classes would falsify M_T.",
+    "M_AT not falsified follows from M_A not falsified."
+  ]
+}

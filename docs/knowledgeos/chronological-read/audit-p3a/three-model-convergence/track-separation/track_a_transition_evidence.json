@@ -1,0 +1,125 @@
+{
+  "source_track": "TRACK-A-PHASE-MEASURE",
+  "input_artifacts": ["BC-02.20-KSME03", "verification/canonical-construction", "verification/consolidation", "verification/handoff", "verification/witnesses"],
+  "derived_from": ["phase_measure_theory Step series (260+ swept this pass)", "verification/canonical-construction/exec", "verification/consolidation/exec", "verification/witnesses"],
+  "cross_track_dependency": "none",
+  "sweep_summary": {
+    "phase_measure_theory_step_260_plus_files_swept": 45,
+    "concrete_effect_syntax_hits": 0,
+    "canonical_construction_consolidation_handoff_md_files_rescanned": true,
+    "new_hits_in_md_rescan": 0,
+    "new_executable_files_read_this_pass": [
+      "verification/consolidation/exec/sigma.py",
+      "verification/witnesses/reverify_construct.py",
+      "verification/witnesses/reverify_kaudit.py"
+    ]
+  },
+  "entries": [
+    {
+      "operation": "delta (commit)",
+      "source_file": "docs/knowledgeos/brainstorming/verification/witnesses/reverify_construct.py",
+      "source_location": "lines 104-112",
+      "evidence_type": "E4_EXISTENCE_ONLY",
+      "input_state": "K = (A, R)",
+      "preconditions": "Pre(K, ev) = ev['target'] in K['A']",
+      "explicit_effect": null,
+      "output_state": "unchanged (K1 is K0)",
+      "changed_fields": [],
+      "determinism": "N/A",
+      "branching": "N/A",
+      "confidence": "HIGH",
+      "status": "NO_EFFECT_FOUND"
+    },
+    {
+      "operation": "Authorize",
+      "source_file": "docs/knowledgeos/brainstorming/verification/witnesses/reverify_construct.py",
+      "source_location": "lines 89-98",
+      "evidence_type": "E4_EXISTENCE_ONLY",
+      "explicit_effect": null,
+      "confidence": "HIGH",
+      "status": "NO_EFFECT_FOUND"
+    },
+    {
+      "operation": "Sarathi",
+      "source_file": "docs/knowledgeos/brainstorming/verification/witnesses/reverify_construct.py",
+      "source_location": "line 88",
+      "evidence_type": "E4_EXISTENCE_ONLY",
+      "explicit_effect": null,
+      "confidence": "HIGH",
+      "status": "NO_EFFECT_FOUND"
+    },
+    {
+      "operation": "merge (Sigma-component only)",
+      "source_file": "docs/knowledgeos/brainstorming/verification/consolidation/exec/sigma.py",
+      "source_location": "line 42",
+      "evidence_type": "E1_EFFECT_EXPLICIT",
+      "explicit_effect": "merge(a,b) = a | b",
+      "scope": "Sigma component only, not full E",
+      "determinism": "deterministic, total",
+      "confidence": "HIGH",
+      "status": "EFFECT_EXPLICIT_COMPONENT_SCOPED"
+    },
+    {
+      "operation": "retract (Sigma-component only)",
+      "source_file": "docs/knowledgeos/brainstorming/verification/consolidation/exec/sigma.py",
+      "source_location": "lines 45-51",
+      "evidence_type": "E2_EFFECT_PARTIAL",
+      "explicit_effect": "set difference on evidence-polarity set (one worked example, no general function)",
+      "scope": "Sigma component only, not full E",
+      "confidence": "MEDIUM",
+      "status": "EFFECT_PARTIAL_COMPONENT_SCOPED"
+    },
+    {
+      "operation": "gate / Apply",
+      "source_file": "docs/knowledgeos/brainstorming/verification/witnesses/reverify_construct.py",
+      "source_location": "lines 75-83",
+      "evidence_type": "E1_EFFECT_EXPLICIT",
+      "explicit_effect": "value-producing (verdict), not a K state transition",
+      "determinism": "deterministic, total",
+      "confidence": "HIGH",
+      "status": "EFFECT_EXPLICIT_BUT_NOT_A_TRANSITION_CANDIDATE"
+    },
+    {
+      "operation": "Add/Assess/Authorize/Derive/Determine/Promote/Qualify/Reject/Remove/Replay/Revise/Supersede/Validate/Withdraw/Transform/Merge/Split/Reintroduce",
+      "source_file": "verification/canonical-construction/exec/{bandtest.py,oderive.py}",
+      "evidence_type": "E3_PRECONDITION_ONLY / E4_EXISTENCE_ONLY",
+      "explicit_effect": null,
+      "confidence": "HIGH (restated from KSME-03, reconfirmed by zero new hits this pass)",
+      "status": "NO_EFFECT_FOUND"
+    }
+  ],
+  "structural_falsifications": [
+    {
+      "id": "id-hash-over-mutable-field",
+      "source_file": "verification/witnesses/reverify_kaudit.py",
+      "source_location": "PROBE 1",
+      "finding": "mutating evidence state re-keys the assertion id, dangling every R edge into it"
+    },
+    {
+      "id": "merge-cannot-dedup",
+      "source_file": "verification/witnesses/reverify_kaudit.py",
+      "source_location": "PROBE 2",
+      "finding": "corroboration from two sources is indistinguishable from duplication; no dedup operator defined"
+    },
+    {
+      "id": "sigma-blind-to-R",
+      "source_file": "verification/witnesses/reverify_kaudit.py",
+      "source_location": "PROBE 3",
+      "finding": "two assertions in an explicit contradicts edge can both compute Sigma=Supporting"
+    },
+    {
+      "id": "history-external-to-K",
+      "source_file": "verification/witnesses/reverify_kaudit.py",
+      "source_location": "PROBE 4",
+      "finding": "states with different histories are structurally equal; governance validity needs history, so it is not a predicate over K alone"
+    }
+  ],
+  "scope_correction": {
+    "gap_found_via": "user query, not the original bounded search plan",
+    "missed_folder": "docs/knowledgeos/brainstorming/mathematical_ideas_that_can_be_implemented/",
+    "admissibility": "legitimately Track-A-admissible (primary brainstorming/ corpus, not gap-discovery/, not a permanent firewall) -- added to this ledger after the fact",
+    "finding": "a third, independent, chronologically-latest (2026-09-11) confirmation: the corpus's own 27-step derivation programme places delta at step D14, and the programme's own follow-on files (D1/D2/D3) confirm it stopped at D3, thirteen steps before reaching delta"
+  },
+  "final_classification": "C_NO_SOURCE_ESTABLISHED_TRANSITION_SEMANTICS_FOUND",
+  "note": "One exception at component (not state) scope: Sigma's merge is E1, retract is E2 -- both operate on the evidence-polarity subcomponent, not on the full K=(A,R) carrier, and Sigma itself is proven DERIVED not STORED (sigma.py A4), so neither constitutes a K state transition."
+}

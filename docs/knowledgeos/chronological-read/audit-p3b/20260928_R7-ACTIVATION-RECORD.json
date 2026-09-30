@@ -1,0 +1,32 @@
+{
+ "activation_commit": "66065984a3a234be1d8d9686f7676a2f5ccefd86",
+ "artifact": "R7-ACTIVATION-RECORD",
+ "authority": "G-LOG-0102",
+ "checks": {
+  "h19": "SEALED, 0 violations",
+  "prepare_check": "IDENTICAL (revision-3 base; R7 entries consistent)",
+  "staging": "batches, labels, strata, frame, binary decisions, revision binding, base consistency: all true",
+  "state": "396 PREPARED at R7; OB0004 R2 runs (3 FAILED) preserved; hash chain valid"
+ },
+ "frame_sha256": "d0c972bf53207dc581cf094298d273209e833ca009351af5f083912329857d0d",
+ "manifest_sha256": "c7f3b2574ba49daade87507eede1a9c658fb76a62a1683be0af70e589ebfa437",
+ "not_performed": [
+  "seed",
+  "sampling",
+  "canary",
+  "S5 dispatch"
+ ],
+ "plans_sha256_of_all": "9239ccad4284082bbe6d76200309a2e236826cf9295046e593a9df9fafa1a9ca",
+ "previous_manifest_sha256": "1b383fbc6ff720ebd2f893a74362ce73745dcf99243bc00ced1bcae3a5475682",
+ "previous_state_sha256": "db52ac7a6fc5e653fd87d1b4bca900c69ba1c8a4fa45fc448835792ec134c21a",
+ "slice_root": "_batch_input_r2/s5/rev7",
+ "state_sha256": "df591d84a6211894efb1da0b48a9021fa5362cca189cd21eca5a583bd01c1727",
+ "strata": {
+  "DECOMPOSED": 173,
+  "EMPTY": 7,
+  "HUB": 66,
+  "MULTIROW": 4,
+  "SINGLE": 1725
+ },
+ "utc_date": "2026-09-28"
+}

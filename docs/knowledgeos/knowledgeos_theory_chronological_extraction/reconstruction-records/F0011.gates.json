@@ -1,0 +1,73 @@
+{
+ "file_id": "F0011",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "satisfied": true,
+   "evidence": "complete, 332 lines (verified by wc -l)"
+  },
+  {
+   "gate": "EXTRACTION_COMPLETE",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "SEMANTIC_UNDERSTANDING_COMPLETE",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "ARCHITECTURE_ALIGNMENT_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "RELATIONSHIP_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "DERIVATION_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "CONTINUITY_ASSESSED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "GAP_CHECKED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "satisfied": true,
+   "evidence": "⭐ Own content carried by T-0029 (survival ≠ sufficiency) and T-0003 — canonical discovery found both; ⛔ no duplicate (ES-005.4). The G-n divergence is a contradiction, referred to B-12, not an object."
+  },
+  {
+   "gate": "IMPLEMENTATION_IMPLICATIONS_CHECKED",
+   "satisfied": true,
+   "evidence": "⛔ N/A-checked: the file explicitly executes nothing"
+  },
+  {
+   "gate": "PROVENANCE_COMPLETE",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "satisfied": true,
+   "evidence": "recorded in the File Reconstruction Record"
+  }
+ ],
+ "satisfied": 12,
+ "total": 12,
+ "dossier_status": "COMPLETE",
+ "⭐ O-1_evaluation": {
+  "authority": "L0-DEC-08 (O-1 = A)",
+  "verdict": "SATISFIED",
+  "evidence": "⭐ Own content carried by T-0029 (survival ≠ sufficiency) and T-0003 — canonical discovery found both; ⛔ no duplicate (ES-005.4). The G-n divergence is a contradiction, referred to B-12, not an object."
+ }
+}

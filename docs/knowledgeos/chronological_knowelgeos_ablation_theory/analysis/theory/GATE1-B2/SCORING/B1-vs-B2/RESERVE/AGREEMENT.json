@@ -1,0 +1,180 @@
+{
+ "n_rows": 13,
+ "judgements": {
+  "V1": {
+   "agreement": 0.923,
+   "kappa": 0.856,
+   "disagreements": {
+    "R-70": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ]
+   }
+  },
+  "V2": {
+   "agreement": 0.769,
+   "kappa": 0.629,
+   "disagreements": {
+    "R-48": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-59": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-74": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V3": {
+   "agreement": 0.923,
+   "kappa": 0.819,
+   "disagreements": {
+    "R-33": [
+     "NOT-MODELLED",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V4": {
+   "agreement": 0.846,
+   "kappa": 0.717,
+   "disagreements": {
+    "R-76": [
+     "SUPPORTED",
+     "UNTESTABLE"
+    ],
+    "R-95": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V5": {
+   "agreement": 0.923,
+   "kappa": 0.0,
+   "disagreements": {
+    "R-57": [
+     "AMBIGUOUS",
+     "UNTESTABLE"
+    ]
+   }
+  },
+  "V6": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  },
+  "V7": {
+   "agreement": 0.923,
+   "kappa": 0.629,
+   "disagreements": {
+    "R-57": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  }
+ },
+ "authority_named": {
+  "agreement": 1.0,
+  "kappa": 1.0,
+  "disagreements": []
+ },
+ "ops_jaccard_mean": 0.821,
+ "ops_jaccard_per_row": {
+  "R-33": 1.0,
+  "R-42": 0.5,
+  "R-48": 1.0,
+  "R-54": 1.0,
+  "R-57": 1.0,
+  "R-59": 0.5,
+  "R-60": 0.5,
+  "R-69": 1.0,
+  "R-70": 0.5,
+  "R-71": 0.67,
+  "R-74": 1.0,
+  "R-76": 1.0,
+  "R-95": 1.0
+ },
+ "per_op_presence": {
+  "ACCEPT": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "ADOPT-DECISION": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "AUTHORIZE": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "OPEN-WORK": {
+   "agreement": 0.923,
+   "kappa": 0.629
+  }
+ },
+ "coverage_rowmean": {
+  "main": 0.654,
+  "blind": 0.644
+ },
+ "blind_not_modelled": [
+  [
+   "DEFINE",
+   1
+  ],
+  [
+   "REFUTE",
+   1
+  ],
+  [
+   "AFFIRM",
+   1
+  ],
+  [
+   "FIX",
+   1
+  ],
+  [
+   "BINDING",
+   1
+  ],
+  [
+   "ACTIVE (MOVES AUTHORIZED -> ACTIVE; 'STARTS THE CLOCK')",
+   1
+  ],
+  [
+   "CORRECTED (THE APPROVED PLAN'S MECHANISM SENTENCE)",
+   1
+  ],
+  [
+   "RECORDED (CRITERION 5 AS EXPLICIT ARCHITECTURAL DEBT, OWNER Q-2)",
+   1
+  ],
+  [
+   "RECORDED (QUEUE ITEM 12)",
+   1
+  ],
+  [
+   "RECORDED (FOUR NON-BLOCKING ITEMS)",
+   1
+  ],
+  [
+   "CORRECTED (THE INTEGRATION CONTRACT, ITEM D-1)",
+   1
+  ]
+ ],
+ "blind_violations": {
+  "V1": [],
+  "V2": [],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [],
+  "V7": []
+ }
+}

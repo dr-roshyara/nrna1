@@ -1,0 +1,262 @@
+{
+ "batches": {
+  "PB02": {
+   "failures": [],
+   "objects": 5,
+   "p1_gap_records": 18,
+   "reading_bytes": {
+    "five-blocker-triage-table": {
+     "scanner_calls": 0,
+     "step1": 8900,
+     "step10": 0,
+     "step7": 0
+    },
+    "gita-hypothesis-architecture-consequence-pipeline": {
+     "scanner_calls": 0,
+     "step1": 5192,
+     "step10": 0,
+     "step7": 6427
+    },
+    "glyph-register-v3-collision-inventory-2026-09": {
+     "scanner_calls": 4,
+     "step1": 43672,
+     "step10": 0,
+     "step7": 10457353
+    },
+    "h-kos-lifecycle-reasoning-001": {
+     "scanner_calls": 0,
+     "step1": 88313,
+     "step10": 0,
+     "step7": 207226
+    },
+    "hpa-gita-chapter18-synthesis-determination-mode-model": {
+     "scanner_calls": 0,
+     "step1": 21125,
+     "step10": 0,
+     "step7": 0
+    }
+   },
+   "records_by_kind": {
+    "HYPOTHESIS": 4,
+    "METHODOLOGICAL-DEFICIENCY": 1,
+    "OBSERVATION": 11,
+    "SCHEMA-LIMITATION": 3
+   },
+   "research_records": 19,
+   "result": "PASS"
+  },
+  "PB03": {
+   "failures": [],
+   "objects": 5,
+   "p1_gap_records": 26,
+   "reading_bytes": {
+    "invariant-universe-not-one-mathematical-object": {
+     "scanner_calls": 0,
+     "step1": 11851,
+     "step10": 22488,
+     "step7": 0
+    },
+    "knowledge-graph-not-equal-knowledge-state": {
+     "scanner_calls": 0,
+     "step1": 25727,
+     "step10": 0,
+     "step7": 0
+    },
+    "knowledgeos-type-system": {
+     "scanner_calls": 0,
+     "step1": 119870,
+     "step10": 0,
+     "step7": 491315
+    },
+    "linga-yoni-projection-transformation-experiment": {
+     "scanner_calls": 0,
+     "step1": 57320,
+     "step10": 0,
+     "step7": 11524
+    },
+    "minimal-adequate-representation-entropy-formalization": {
+     "scanner_calls": 0,
+     "step1": 11747,
+     "step10": 0,
+     "step7": 137444
+    }
+   },
+   "records_by_kind": {
+    "GAP": 1,
+    "METHODOLOGICAL-DEFICIENCY": 2,
+    "OBSERVATION": 12,
+    "SCHEMA-LIMITATION": 1,
+    "STRUCTURE-CANDIDATE": 1,
+    "SUGGESTION-RESEARCH": 2
+   },
+   "research_records": 19,
+   "result": "PASS"
+  },
+  "PB04": {
+   "failures": [],
+   "objects": 5,
+   "p1_gap_records": 19,
+   "reading_bytes": {
+    "nyaya-sutra-kernel-falsification-lens": {
+     "scanner_calls": 0,
+     "step1": 25063,
+     "step10": 0,
+     "step7": 780864
+    },
+    "rejection-produces-hypothesis-space-not-truth": {
+     "scanner_calls": 0,
+     "step1": 40821,
+     "step10": 0,
+     "step7": 0
+    },
+    "relation-8-tuple-vs-triple-reduction": {
+     "scanner_calls": 0,
+     "step1": 52774,
+     "step10": 0,
+     "step7": 202012
+    },
+    "reverification-updated-dependency-chain-and-matrix": {
+     "scanner_calls": 0,
+     "step1": 38221,
+     "step10": 0,
+     "step7": 22865
+    },
+    "session-completion-handoff-protocol": {
+     "scanner_calls": 0,
+     "step1": 76561,
+     "step10": 0,
+     "step7": 143571
+    }
+   },
+   "records_by_kind": {
+    "GAP": 2,
+    "METHODOLOGICAL-DEFICIENCY": 2,
+    "OBSERVATION": 18,
+    "SCHEMA-LIMITATION": 1
+   },
+   "research_records": 23,
+   "result": "PASS"
+  },
+  "PB05": {
+   "failures": [],
+   "objects": 5,
+   "p1_gap_records": 24,
+   "reading_bytes": {
+    "shannon-weaver-information-theory-lens": {
+     "scanner_calls": 0,
+     "step1": 94216,
+     "step10": 0,
+     "step7": 1134467
+    },
+    "step-verify-programme": {
+     "scanner_calls": 0,
+     "step1": 1593012,
+     "step10": 0,
+     "step7": 996766
+    },
+    "step185-differentiated-non-identity-chain": {
+     "scanner_calls": 0,
+     "step1": 12629,
+     "step10": 0,
+     "step7": 0
+    },
+    "step291-n4-leverage-not-earliest": {
+     "scanner_calls": 0,
+     "step1": 65809,
+     "step10": 0,
+     "step7": 37916
+    },
+    "sufficient-state-control-theory-lens": {
+     "scanner_calls": 0,
+     "step1": 35799,
+     "step10": 0,
+     "step7": 8841
+    }
+   },
+   "records_by_kind": {
+    "GAP": 4,
+    "METHODOLOGICAL-DEFICIENCY": 2,
+    "OBSERVATION": 14,
+    "SCHEMA-LIMITATION": 5,
+    "STRUCTURE-CANDIDATE": 1
+   },
+   "research_records": 26,
+   "result": "PASS"
+  }
+ },
+ "run_id": "S4-PILOT-R2-002",
+ "totals": {
+  "batches_pass": 4,
+  "census_reading_disagreements": 14,
+  "dispositions_per_hit_dimension": {
+   "ESCALATED": 45,
+   "FALSE-HIT": 4859,
+   "FOUND": 294,
+   "UNSUPPLIED-DIMENSION": 883
+  },
+  "r1_r2_agreement": {
+   "births.conceptual": {
+    "agree": 17,
+    "n": 20,
+    "rate": 0.85
+   },
+   "births.formal": {
+    "agree": 12,
+    "n": 20,
+    "rate": 0.6
+   },
+   "births.governance": {
+    "agree": 11,
+    "n": 20,
+    "rate": 0.55
+   },
+   "births.lexical": {
+    "agree": 6,
+    "n": 20,
+    "rate": 0.3
+   },
+   "births.operational": {
+    "agree": 19,
+    "n": 20,
+    "rate": 0.95
+   },
+   "mathematical_status": {
+    "agree": 9,
+    "n": 20,
+    "rate": 0.45
+   },
+   "primary_layer": {
+    "agree": 12,
+    "n": 20,
+    "rate": 0.6
+   },
+   "type_status": {
+    "agree": 12,
+    "n": 20,
+    "rate": 0.6
+   }
+  },
+  "rates": {
+   "ESCALATED": 0.0074,
+   "FALSE-HIT": 0.799,
+   "FOUND": 0.0483,
+   "UNSUPPLIED-DIMENSION": 0.1452
+  },
+  "read_log_entries": 203,
+  "refused": 0,
+  "repeated_ledger_occurrences_collapsed": 74,
+  "step_label_notes": [
+   "glyph-register-v3-collision-inventory-2026-09: FOUND source S2875 read whole at step 1, not re-logged at step 7",
+   "glyph-register-v3-collision-inventory-2026-09: FOUND source S2875 read whole at step 1, not re-logged at step 7",
+   "hpa-gita-chapter18-synthesis-determination-mode-model: FOUND source S2249 read whole at step 1, not re-logged at step 7",
+   "hpa-gita-chapter18-synthesis-determination-mode-model: FOUND source S2249 read whole at step 1, not re-logged at step 7",
+   "h-kos-lifecycle-reasoning-001: 2 hit file(s) read whole at step 1, not re-logged at step 7",
+   "hpa-gita-chapter18-synthesis-determination-mode-model: 1 hit file(s) read whole at step 1, not re-logged at step 7",
+   "invariant-universe-not-one-mathematical-object: FOUND source S2131 read whole at step 1, not re-logged at step 7",
+   "invariant-universe-not-one-mathematical-object: FOUND source S2131 read whole at step 1, not re-logged at step 7",
+   "invariant-universe-not-one-mathematical-object: FOUND source S2131 read whole at step 1, not re-logged at step 7",
+   "invariant-universe-not-one-mathematical-object: FOUND source S2131 read whole at step 1, not re-logged at step 7",
+   "invariant-universe-not-one-mathematical-object: 1 hit file(s) read whole at step 1, not re-logged at step 7"
+  ]
+ }
+}

@@ -1,0 +1,431 @@
+{
+ "labels": "MODEL-DERIVED from established observations (F-LOG-0115…0138); requirement tags are the analyst's, each with its witness",
+ "nested_ablation": {
+  "K0": {
+   "components": [
+    "S"
+   ],
+   "fails": [
+    "L-authority",
+    "L-kind",
+    "L-state-proviso",
+    "L-state-4act",
+    "L-evidence",
+    "F-accept-vs-authorize",
+    "F-freeze",
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 13
+  },
+  "K1": {
+   "components": [
+    "O",
+    "S"
+   ],
+   "fails": [
+    "L-authority",
+    "L-kind",
+    "L-state-proviso",
+    "L-state-4act",
+    "L-evidence",
+    "F-accept-vs-authorize",
+    "F-freeze",
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 13
+  },
+  "K2": {
+   "components": [
+    "G",
+    "O",
+    "S"
+   ],
+   "fails": [
+    "L-authority",
+    "L-kind",
+    "L-evidence",
+    "F-accept-vs-authorize",
+    "F-freeze",
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 11
+  },
+  "K3": {
+   "components": [
+    "F",
+    "G",
+    "O",
+    "S"
+   ],
+   "fails": [
+    "L-authority",
+    "L-kind",
+    "L-evidence",
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 9
+  },
+  "K4": {
+   "components": [
+    "E",
+    "F",
+    "G",
+    "O",
+    "S"
+   ],
+   "fails": [
+    "L-authority",
+    "L-kind",
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 8
+  },
+  "K5": {
+   "components": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "O",
+    "S"
+   ],
+   "fails": [
+    "L-kind",
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 7
+  },
+  "K6": {
+   "components": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "K",
+    "O",
+    "S"
+   ],
+   "fails": [
+    "T-scope",
+    "T-evidence-target",
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 6
+  },
+  "K7": {
+   "components": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "K",
+    "O",
+    "S",
+    "T"
+   ],
+   "fails": [
+    "H-registry",
+    "H-drafting-window",
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 4
+  },
+  "K8": {
+   "components": [
+    "A",
+    "E",
+    "F",
+    "G",
+    "H",
+    "K",
+    "O",
+    "S",
+    "T"
+   ],
+   "fails": [
+    "Ch-choice",
+    "C-conformance"
+   ],
+   "n_fail": 2
+  }
+ },
+ "first_adequate_nested_model": "NONE (K8 still fails the choice and conformance observations)",
+ "single_component_ablation_from_full": {
+  "A": {
+   "fails_when_removed": [
+    "L-authority"
+   ],
+   "status": "NECESSARY"
+  },
+  "C": {
+   "fails_when_removed": [
+    "C-conformance"
+   ],
+   "status": "NECESSARY"
+  },
+  "Ch": {
+   "fails_when_removed": [
+    "Ch-choice"
+   ],
+   "status": "NECESSARY"
+  },
+  "E": {
+   "fails_when_removed": [
+    "L-evidence",
+    "T-evidence-target"
+   ],
+   "status": "NECESSARY"
+  },
+  "F": {
+   "fails_when_removed": [
+    "F-accept-vs-authorize",
+    "F-freeze"
+   ],
+   "status": "NECESSARY"
+  },
+  "G": {
+   "fails_when_removed": [
+    "L-authority",
+    "L-kind",
+    "L-state-proviso",
+    "L-state-4act",
+    "L-evidence"
+   ],
+   "status": "NECESSARY"
+  },
+  "H": {
+   "fails_when_removed": [
+    "H-registry",
+    "H-drafting-window"
+   ],
+   "status": "NECESSARY"
+  },
+  "K": {
+   "fails_when_removed": [
+    "L-kind"
+   ],
+   "status": "NECESSARY"
+  },
+  "O": {
+   "fails_when_removed": [
+    "L-authority",
+    "L-kind",
+    "L-state-proviso",
+    "L-state-4act",
+    "L-evidence",
+    "F-accept-vs-authorize",
+    "F-freeze"
+   ],
+   "status": "NECESSARY"
+  },
+  "S": {
+   "fails_when_removed": [
+    "L-state-proviso",
+    "L-state-4act",
+    "S-multi-coordinate",
+    "F-freeze"
+   ],
+   "status": "NECESSARY"
+  },
+  "T": {
+   "fails_when_removed": [
+    "T-scope",
+    "T-evidence-target"
+   ],
+   "status": "NECESSARY"
+  }
+ },
+ "unwitnessed_components": {
+  "R (route)": "route ≡ host family in this corpus (F-LOG-0133): no route-only pair can exist",
+  "X (exception)": "no exception-only pair observed"
+ },
+ "minimal_adequate_structure": [
+  "A",
+  "C",
+  "Ch",
+  "E",
+  "F",
+  "G",
+  "H",
+  "K",
+  "O",
+  "S",
+  "T"
+ ],
+ "observations": [
+  {
+   "id": "L-authority",
+   "type": "legality",
+   "needs": [
+    "A",
+    "G",
+    "O"
+   ],
+   "witness": "ADOPT by the ARB Chief (refused: 'declines … in the Chief's own favour') vs by the Decision Authority (R-86, performed)",
+   "strength": "minimal pair"
+  },
+  {
+   "id": "L-kind",
+   "type": "legality",
+   "needs": [
+    "G",
+    "K",
+    "O"
+   ],
+   "witness": "register entry: operational acceptance withdrawn (R-90) vs constitutional decision admitted",
+   "strength": "minimal pair"
+  },
+  {
+   "id": "L-state-proviso",
+   "type": "legality",
+   "needs": [
+    "G",
+    "O",
+    "S"
+   ],
+   "witness": "START(WP-4B) refused at R-72 ('implementation does not begin') vs performed 08-03 16:10",
+   "strength": "minimal pair (σ coding includes an interpretation of R-78)"
+  },
+  {
+   "id": "L-state-4act",
+   "type": "legality",
+   "needs": [
+    "G",
+    "O",
+    "S"
+   ],
+   "witness": "START(WP-8) refused under permission only (R-79) vs START(WP-4B) with authorization",
+   "strength": "minimal pair"
+  },
+  {
+   "id": "L-evidence",
+   "type": "legality",
+   "needs": [
+    "E",
+    "G",
+    "O"
+   ],
+   "witness": "R-36: RAISE 'evidence-based (PB-004·005·006)' performed vs 'NOT promoted … (1 slice)'",
+   "strength": "minimal pair (partly a scope reason)"
+  },
+  {
+   "id": "S-multi-coordinate",
+   "type": "state",
+   "needs": [
+    "S"
+   ],
+   "witness": "L493: the same item documentary CLOSED and machine OPEN",
+   "strength": "source-stated"
+  },
+  {
+   "id": "F-accept-vs-authorize",
+   "type": "effect",
+   "needs": [
+    "F",
+    "O"
+   ],
+   "witness": "'closure is an ACCEPTANCE OUTCOME, NOT AN AUTHORIZATION DECISION' (R-72); acceptance closes (R-43/R-62, R-55, R-67, R-93)",
+   "strength": "source-stated contrast + recurrent"
+  },
+  {
+   "id": "F-freeze",
+   "type": "effect",
+   "needs": [
+    "F",
+    "O",
+    "S"
+   ],
+   "witness": "L205: the freeze blocks new minting while the existing set's standing is unchanged (frame {regime}, not {standing})",
+   "strength": "source-stated + M0 expressiveness check"
+  },
+  {
+   "id": "T-scope",
+   "type": "scope",
+   "needs": [
+    "T"
+   ],
+   "witness": "'WP-4C-2 is NOT authorized, not implicitly and not by adjacency' (R-89); 'FOR THIS REPAIR ONLY' (R-81); '7B and 7C are NOT authorized' (R-47)",
+   "strength": "source-stated, recurrent (5 rows)"
+  },
+  {
+   "id": "T-evidence-target",
+   "type": "scope",
+   "needs": [
+    "E",
+    "T"
+   ],
+   "witness": "'evidence about the IMPLEMENTATION, not about the decision' (R-91); intent vs mechanism (R-85); invariant vs mechanism (R-44)",
+   "strength": "source-stated, 3 rows"
+  },
+  {
+   "id": "H-registry",
+   "type": "history",
+   "needs": [
+    "H"
+   ],
+   "witness": "R-90 WITHDRAWN, number RETIRED vs a never-used number: same current holder state, different futures (M0 P-markov BFS)",
+   "strength": "source-stated + BFS witness"
+  },
+  {
+   "id": "H-drafting-window",
+   "type": "history",
+   "needs": [
+    "H"
+   ],
+   "witness": "in-place correction licensed 'SAME DAY, BEFORE ANY ENTRY WAS CREATED' (R-96); census: 0/71 later-day decision edits",
+   "strength": "source-stated rule + census"
+  },
+  {
+   "id": "Ch-choice",
+   "type": "choice",
+   "needs": [
+    "Ch"
+   ],
+   "witness": "R-94: retain · annotate · supersede — SUPERSEDE declined ('would blur chronology'), ANNOTATE chosen",
+   "strength": "source-stated (1 row)"
+  },
+  {
+   "id": "C-conformance",
+   "type": "conformance",
+   "needs": [
+    "C"
+   ],
+   "witness": "R-86 vs R-91: ADOPT by the Decision Authority, equal on all coded variables, R-91 HELD for collapsing evidence submission and review; 'Engineering does not self-certify it' (R-71)",
+   "strength": "fitted (R-86/R-91) + 1 supporting statement"
+  }
+ ]
+}

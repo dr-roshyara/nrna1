@@ -1,0 +1,119 @@
+{
+  "P": {
+    "event": "Decision Authority's adoption of R-81..R-85, recorded in R-86",
+    "object": {
+      "value": "R-81 through R-85 (five rulings)",
+      "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment. (R-86)"
+    },
+    "kind": {
+      "value": "ruling (prepared ruling)",
+      "quote": [
+        "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION (R-81 annotation)",
+        "These become governing rulings effective immediately. (R-86)",
+        "This act adopts FIVE NAMED RULINGS ONCE (R-86)"
+      ],
+      "note": "Finer governance domain known only for R-81 ('Execution Governance · Authorization · ARB'); R-82..R-85 texts not supplied, so the finer kind of the whole object is UNK."
+    },
+    "actor": {
+      "value": "Decision Authority",
+      "quote": "R-81 THROUGH R-85 ADOPTED WITHOUT AMENDMENT — Programme Governance · Adoption · DECISION AUTHORITY. (R-86)"
+    },
+    "state_before": {
+      "value": "PREPARED",
+      "quote": [
+        "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION (R-81)",
+        "the rulings explicitly marked PREPARED rather than implicitly adopted (R-86)"
+      ]
+    },
+    "conformance": {
+      "value": "CONFORMANT",
+      "quote": [
+        "the Session-1 mandate delegated CHAIRING AND PREPARATION, not adoption (R-81)",
+        "The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour (R-81)",
+        "GROUNDS RECORDED BY THE AUTHORITY: architecture already deliberated · evidence packages prepared and frozen · independent review completed · provenance corrected (R-86)"
+      ],
+      "note": "Stated as kept for preparation (ARB Chief) / review (independent) / decision (Decision Authority). Who submitted the evidence, and that evidence submission was separated from review, is NOT stated. A strict reader may code UNK."
+    },
+    "outcome": "PERFORMED",
+    "ground": {
+      "value": "CHOICE",
+      "quote": [
+        "GROUNDS RECORDED BY THE AUTHORITY: architecture already deliberated · evidence packages prepared and frozen · independent review completed · provenance corrected · the rulings explicitly marked PREPARED rather than implicitly adopted · engineering waiting solely on a constitutional act.",
+        "Option B declined ... “amending simply because we could would reopen a governance cycle without new evidence.”",
+        "Option C declined ... “constitutional changes deserve their own deliberation”"
+      ],
+      "note": "Adoption selected among options A/B/C with reasons; no rule is cited as compelling adoption. Not used by the comparison rule (only Q's ground matters)."
+    }
+  },
+  "Q": {
+    "event": "Decision Authority's adoption of R-91 — held, not performed",
+    "object": {
+      "value": "R-91 (Event D review ruling)",
+      "quote": "R-91 ... EVENT D REVIEW — THE DECISION IS SOUND; THE IMPLEMENTATION DOES NOT REALIZE IT ON ONE PATH"
+    },
+    "kind": {
+      "value": "ruling (prepared ruling)",
+      "quote": [
+        "Architecture Governance · Determination on submitted evidence · ARB CHIEF (PREPARED)",
+        "A PREPARED ruling was still engineering deciding the outcome, in softer wording.",
+        "this ruling collapsed the two"
+      ],
+      "note": "The hold also calls it 'The engineering artefact' that 'must end at evidence validated' — i.e. what it should have been (an evidence record) differs from what it is (a ruling). Finer domain: Architecture Governance · Determination on submitted evidence."
+    },
+    "actor": {
+      "value": "Decision Authority",
+      "quote": "The Decision Authority held it on the ground that ..."
+    },
+    "state_before": {
+      "value": "PREPARED",
+      "quote": "PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED"
+    },
+    "conformance": {
+      "value": "COLLAPSED",
+      "quote": "Event D SEPARATES evidence submission from constitutional review, and this ruling collapsed the two: engineering submitted evidence and then wrote the governance outcome — “no architecture-governance action required” — which belongs to the ARB review step."
+    },
+    "outcome": "REFUSED/HELD",
+    "ground": {
+      "value": "RULE",
+      "quote": [
+        "HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED",
+        "held it on the ground that Event D SEPARATES evidence submission from constitutional review, and this ruling collapsed the two"
+      ]
+    }
+  },
+  "witness_conformance": "STRICT",
+  "witness_kind": "NONE",
+  "decisive_fields": ["conformance"],
+  "stated_reason_for_Q": {
+    "reading": "conformance (role separation collapsed: evidence submission and constitutional review done by the same party)",
+    "quote": "The Decision Authority held it on the ground that Event D SEPARATES evidence submission from constitutional review, and this ruling collapsed the two",
+    "not_stated_as_reason": "kind is not given as the reason; the 'routing error' correction is recorded as an additional substantive correction ('AND A SUBSTANTIVE CORRECTION TO ITS OWN FINDING'), not as the ground of the hold"
+  },
+  "R71_use": "Not cited by R-86 or R-91 and concerns WP-7B-R1, not P or Q. Bears only by analogy: it records the same principle ('engineering PRODUCES THE EVIDENCE ... THE QUALIFICATION ITSELF BELONGS TO THE ACCEPTANCE PACKAGE. Engineering does not self-certify it.') that Q's hold applies. It establishes nothing about P's or Q's coded fields.",
+  "alternatives": [
+    {
+      "if": "P.conformance coded UNK (evidence-submission role not stated for P)",
+      "witness_conformance": "NONE",
+      "witness_kind": "NONE",
+      "reason": "A STRICT/POSSIBLE witness for X requires X known in both; conformance would be UNK in P. Kind stays equal (ruling=ruling), so still not a witness."
+    },
+    {
+      "if": "kind coded at finer grain (governance domain)",
+      "witness_conformance": "POSSIBLE",
+      "witness_kind": "NONE",
+      "reason": "P's finer kind is UNK (R-82..R-85 domains not supplied), so kind is not known for P → not a witness for kind; for conformance another compared field (kind) is UNK and none is known-and-different → POSSIBLE."
+    },
+    {
+      "if": "kind coded finer AND only R-81's domain taken as P's kind ('Execution Governance · Authorization' vs 'Architecture Governance · Determination on submitted evidence')",
+      "witness_conformance": "NONE",
+      "witness_kind": "NONE",
+      "reason": "kind and conformance both known and different → each fails the 'every other compared field equal' condition."
+    },
+    {
+      "if": "Q.kind coded as 'engineering artefact / evidence record' from the hold's wording",
+      "witness_conformance": "NONE",
+      "witness_kind": "NONE",
+      "reason": "kind and conformance both differ; neither is an isolated witness."
+    }
+  ]
+}

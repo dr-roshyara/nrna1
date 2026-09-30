@@ -1,0 +1,85 @@
+{
+ "labels": "Independent review of 1an r4. Hand recomputation; formal / model-relative; generalization measured on strict observations only; not empirical proof.",
+ "spec_fidelity_ok": true,
+ "spec_fidelity_notes": [
+  "Recurrence, INSUFFICIENT, LOCO train/table/predict/abstain, coverage, disjoint support and the operation test are implemented exactly as the docstring states.",
+  "Spec gap: how votes from several minimum guards are combined is not specified. The code takes the union of votes from the guards that can vote and predicts iff that union is a single outcome. This is decisive for RAISE and SUPERSEDE BASE.",
+  "Ambiguity: 'include the full-data minimum guard' when there are several full-data minima. The code uses any. No numeric effect on this data.",
+  "The R-44 event matches the docstring coding (the extra fields s=t='n/a', h=c=UNK have no effect). Agreement with SPEC-1AM-SUPERSEDE.json is unverifiable."
+ ],
+ "criterion_faithful": false,
+ "criterion_divergences": [
+  "Recurrence: faithful to PRIOR-REVIEW-r3 section 4a. The prior review's own application table (ADOPT a and c HALF) was inconsistent with its criterion; r4's LOOKUP is correct.",
+  "LOCO is scored per operation. The prior criterion's per-variable verdict is not derivable, and predictions are not attributed to guards.",
+  "The INSUFFICIENT threshold is '< 3 clusters' rather than '2 events or 1 cluster'. No effect on this data.",
+  "Disjoint support reports only the pooled R4 count. The prior's cross-cluster-only and per-operation counts are dropped.",
+  "The operation test is a new design, not a prior proposal. Its MCR verdict changes the meaning of MCR relative to r3.",
+  "D-N1 (START t required by ignorance) is not addressed."
+ ],
+ "recomputation_matches": true,
+ "mismatches": [],
+ "recomputation_detail": {
+  "START_recurrence": "s: 4/4 GENERALIZING. t: (git,R79) LOOKUP, (git,R47b) HALF, (git,R56) HALF, (git,R58b) LOOKUP, (git,R81) LOOKUP. All match, in all variants.",
+  "LOCO": {
+   "START": "Folds R-47 and R-56 predict (not-authorized, 7B) -> N, both correct. Fold git has train guard {s} (unstable) and abstains because s is UNK. All other folds abstain on unseen (s,t) tuples. 2/0/9 correct/wrong/abstain, coverage 0.182, stability 8/9. Match.",
+   "RAISE_BASE": "Fold R-36: train minima {a},{t},{r}; only {r} (RULING->P) votes; 4 correct, 3 wrong. Fold L493-B: {a,e},{e,t}, stable, abstain. Fold R-41: {e}, e=1 -> N, wrong. 4/4/1, coverage 0.889, stability 1/3. Match.",
+   "RAISE_REV+R44": "Fold R-36: {t},{r}; {r} votes; 4 correct, 3 wrong. Fold L: stable, abstain. Fold R-41: {e}, wrong. 4/4/1, stability 1/3. Match.",
+   "ADOPT_BASE": "Folds E1 and E2 have no train guards and abstain. Fold E3: {a}, DA -> P, wrong. 0/1/2, coverage 0.333, stability 1/3. Match.",
+   "ADOPT_REV+R44": "Fold E1: {c}, conformant -> P, wrong. Fold E2: UNCONSTRAINED, abstain. Fold E3: {a}, DA -> P, wrong. 0/2/1, coverage 0.667, stability 0/3. Match.",
+   "SUPERSEDE_BASE": "Folds R-77 and R-83: {k},{r}; {r} RULING -> N, both correct. Fold ADR-MP: UNCONSTRAINED, abstain. 2/0/1, coverage 0.667, stability 2/3. Match.",
+   "SUPERSEDE_+R44": "Fold R-44: {k},{r}; {r} -> N, wrong. Folds R-77, R-83 and ADR-MP: {k}, unseen k values, abstain. 0/1/3, coverage 0.25, stability 4/4. Match."
+  },
+  "disjoint_support": "BASE: a 2, k 2, s 2 (from {47,58},{56,58},{58,65},{81,86}), t 1, e 1, h 1. REV+R44: a 2, c 1, h 1, k 3, e 1, s 2, t 1. Cross-cluster-only (not reported by r4): k 1 (+R44) or 0, e 0. Match.",
+  "operation_test": "Comparable pairs: BASE 145 = 15 (AI70) + 15 (RG2) + 15 (OW2) + 4 (git) + 40 (4 START P) + 40 (4 RAISE P) + 16 (ANNOTATE). BASE+R44 155 (+10); REV 142 (+3 E2, +2 E1, -8 L493-B); REV+R44 153 (+11); REV-TYPE 137; REV-TYPE+R44 147. 0 decisive in every variant. Spot-checked pairs: AI70xR72, OW2xE3, gitxOW1, P2xAI89, ANNOTATExR83 (k only), ANNOTATExAI89 (k only), R44xOW1 (k only), REV E1xANNOTATE (k only), REV E2xRG1. All match."
+ },
+ "loco_validity": "Holding out whole clusters is the right unit, but on this data the method tests the refit procedure rather than the guard. Tiny training sets yield unrelated singleton guards: {a}/{t}/{r} in RAISE fold R-36 from 2 events, {e} in fold R-41, {s} in START fold git. Abstention is structural when the held-out outcome class is absent from training, or when guard values are identity-like. The unspecified voting rule is decisive. RAISE 4/8: the 8 predicted events are 5 P / 3 N, so always-PERFORMED would score 5/8 and a coin 4/8 in expectation. All 4 correct predictions come from the {r} route rule fitted on one pair; the same rule is wrong on R-36's 3 refusals; e's single prediction was wrong. The score is at chance and below the majority rule, and uninformative about e (e=2+ never occurs outside R-36).",
+ "start_coverage_assessment": "The 2/11 coverage makes LOCO uninformative about s. The fitted guard {s,t} requires the exact (s,t) tuple to recur, and t is a near-unique target identifier, so LOCO amounts to a lookup on (s, target). Both predictions are the one recurring tuple (not-authorized, 7B). t is in the guard only because git's s is UNK (D-N1); the one fold without git in training fits {s}. 's generalizes' rests on recurrence (4 GENERALIZING pairs) and disjoint support 2, not on LOCO. A guard-restricted {s}-only LOCO, with consistency defined as table consistency among s-known training events, would be more informative: authorized always co-occurs with P and not-authorized with N, each across 4 clusters. It would be a new, post-hoc instrument and must be frozen before it is run. Under r3 separating semantics {s} does not separate folds that contain git.",
+ "operation_test_assessment": "Comparability is not trivially broken (145/248 in BASE), but decisiveness is structurally near-impossible: o co-varies with k, a and r (START is the only EXECUTION operation, L493-B the only PROMOTION event), and several comparable pairs differ only in k. '0 decisive' shows only that o is never the sole difference on a comparable pair; o is confounded with k/a/r. It does not support MODEL-COND-REDUNDANT. Reasons: 103 BASE pairs are untested; ADOPT Chief-declined x ANNOTATE (BASE, REV-TYPE) has no known separator other than o; the only structurally decisive candidate (ANNOTATE x SUPERSEDE R-94) is CHOICE-excluded; and r3's MCR is a hitting-set notion that r4 does not compute. Suggested label: 'o NOT FORCED on comparable pairs; UNDETERMINED'.",
+ "r44_effects": {
+  "SUPERSEDE": "Guard {k}|{r} -> {k}. k becomes FR; a goes NEVER -> MCR; r stays MCR. Flags [a,e,k] -> [e,k]. LOCO 2/0/1 -> 0/1/3; stability 2/3 -> 4/4. R-44 refutes {r}'s correct predictions. k recurrence LOOKUP.",
+  "other_operations": "No change to ADOPT, RAISE, START, ASSIGN-ID, AUTHORIZE-IMPL, OPEN-WORK, REGISTER or ANNOTATE.",
+  "operation_test": "Power +10 (BASE, REV-TYPE) or +11 (REV); still 0 decisive. R-44 x OW1 differs only in k.",
+  "disjoint_support": "k 2 -> 3 in every variant. The added contrast (R-44, R-77) is an identity lookup: all SUPERSEDE k values are distinct."
+ },
+ "overreach_flags": [
+  "The 'MODEL-COND-REDUNDANT under MO' operation verdict reads as 'o is redundant'. It only means no decisive pair among comparable pairs.",
+  "Guard stability 8/9 (START) and 4/4 (SUPERSEDE+R44) read as robustness. Stability is guard persistence, not predictive success (SUPERSEDE+R44 has 0 correct).",
+  "RAISE correct 4 / coverage 0.889 reads as partial generalization of e. The correct predictions all come from {r}, and e's one prediction was wrong.",
+  "SUPERSEDE BASE 2/0 reads as generalization. It is the {r} route rule, refuted by R-44.",
+  "START s GENERALIZING is formal recurrence on 4 pairs (2 disjoint), target-indexed. It is not empirical confirmation.",
+  "disjoint_support k=3 pools two within-cluster contrasts from INSUFFICIENT operations and one identity lookup. The cross-cluster-only count is 1.",
+  "recurrence_raw for INSUFFICIENT operations can be cited as a result.",
+  "RAISE e HALF-LOOKUP hides the contrary recurrence (e=1 with P in R-41).",
+  "RESULT-r4 has no per-operation verdicts, so readers will supply their own. The file-level 'not empirical proof' label is correct."
+ ],
+ "summary": [
+  {"operation": "ADOPT", "guard": "{a} [REV/REV-TYPE: {a,c}]", "recurrence": "a LOOKUP [c LOOKUP]", "loco_correct_wrong_abstain": "0/1/2 [REV: 0/2/1]", "stability": "1/3 [0/3]", "disjoint_support": "a 2 pooled (1 in op) [c 1]", "verdict": "DOES NOT GENERALIZE"},
+  {"operation": "ANNOTATE", "guard": "UNCONSTRAINED", "recurrence": "-", "loco_correct_wrong_abstain": "INSUFFICIENT", "stability": "-", "disjoint_support": "-", "verdict": "INSUFFICIENT"},
+  {"operation": "ASSIGN-ID", "guard": "{h}", "recurrence": "INSUFFICIENT (2 clusters)", "loco_correct_wrong_abstain": "INSUFFICIENT", "stability": "-", "disjoint_support": "h 1", "verdict": "INSUFFICIENT"},
+  {"operation": "AUTHORIZE-IMPL", "guard": "{a}", "recurrence": "INSUFFICIENT (2 clusters)", "loco_correct_wrong_abstain": "INSUFFICIENT", "stability": "-", "disjoint_support": "a 2 pooled (1 in op)", "verdict": "INSUFFICIENT"},
+  {"operation": "OPEN-WORK", "guard": "{k}", "recurrence": "INSUFFICIENT (1 cluster)", "loco_correct_wrong_abstain": "INSUFFICIENT", "stability": "-", "disjoint_support": "k within-cluster 1", "verdict": "INSUFFICIENT"},
+  {"operation": "REGISTER", "guard": "{k}", "recurrence": "INSUFFICIENT (1 cluster)", "loco_correct_wrong_abstain": "INSUFFICIENT", "stability": "-", "disjoint_support": "k within-cluster 1", "verdict": "INSUFFICIENT"},
+  {"operation": "RAISE", "guard": "{a,e}|{e,t} [REV: {e,t}]", "recurrence": "e 12x HALF-LOOKUP", "loco_correct_wrong_abstain": "4/4/1 (from {r}; e's one prediction wrong)", "stability": "1/3", "disjoint_support": "e 1 (within R-36)", "verdict": "DOES NOT GENERALIZE"},
+  {"operation": "START", "guard": "{s,t} (PARTIAL: R72 x git unseparated)", "recurrence": "s 4x GENERALIZING; t 3 LOOKUP + 2 HALF", "loco_correct_wrong_abstain": "2/0/9", "stability": "8/9", "disjoint_support": "s 2, t 1", "verdict": "UNCLEAR", "verdict_note": "s: GENERALIZES (recurrence + 2 disjoint; LOCO uninformative). t: DOES NOT GENERALIZE (required by ignorance)."},
+  {"operation": "SUPERSEDE", "guard": "{k}|{r} [+R44: {k}]", "recurrence": "none FR [+R44: k LOOKUP]", "loco_correct_wrong_abstain": "2/0/1 via {r} [+R44: 0/1/3]", "stability": "2/3 [4/4]", "disjoint_support": "- [+R44: k 3 pooled, 1 cross-cluster]", "verdict": "DOES NOT GENERALIZE"},
+  {"operation": "o (MO operation test)", "guard": "-", "recurrence": "-", "loco_correct_wrong_abstain": "-", "stability": "-", "disjoint_support": "-", "verdict": "UNCLEAR", "verdict_note": "power 145/155/142/153/137/147, 0 decisive; o confounded with k/a/r; not 'redundant'."}
+ ],
+ "disagreements": [
+  {"id": "D-1", "text": "The voting rule across several minimum guards is unspecified. The code's union-of-voters rule drives RAISE (4 correct, 3 wrong from {r}) and SUPERSEDE BASE (2 correct from {r}).", "category": "coding"},
+  {"id": "D-2", "text": "Stability is ambiguous with several full-data minima (the code uses any). No numeric effect.", "category": "wording"},
+  {"id": "D-3", "text": "LOCO is per operation; the prior per-variable verdict cannot be derived, and there is no guard attribution.", "category": "formal reasoning"},
+  {"id": "D-4", "text": "INSUFFICIENT is '< 3 clusters' vs the prior '2 events or 1 cluster'. No effect.", "category": "wording"},
+  {"id": "D-5", "text": "Disjoint support is pooled R4 only; the cross-cluster and per-operation counts are dropped. k=3 is two within-cluster contrasts plus one lookup.", "category": "independence"},
+  {"id": "D-6", "text": "The MO verdict MCR overreaches: o is confounded with k/a/r, 103 pairs are untested (including E1 x ANNOTATE, where o is the only known separator), and r3's MCR is a hitting-set notion that is not computed.", "category": "formal reasoning"},
+  {"id": "D-7", "text": "'Power' = comparable pairs is not power to detect a decisive pair. The only structural candidate (ANNOTATE x SUPERSEDE R-94) is CHOICE-excluded.", "category": "evidence scope"},
+  {"id": "D-8", "text": "Recurrence ignores contrary recurrence (RAISE e=1 occurs with both outcomes out of cluster).", "category": "formal reasoning"},
+  {"id": "D-9", "text": "The prior review's application table (ADOPT a/c HALF, e 'single-cluster') is inconsistent with its own criterion; r4 is faithful.", "category": "formal reasoning"},
+  {"id": "D-10", "text": "D-N1 is still open: START t is FR only because git's s is UNK. This causes the {s,t} lookup and the 9/11 abstentions.", "category": "formal reasoning"},
+  {"id": "D-11", "text": "R-44 coding: s/t 'n/a' vs UNK (no effect); cluster R-44 vs R-57; SPEC-1AM agreement unverifiable.", "category": "source interpretation"},
+  {"id": "D-12", "text": "recurrence_raw is emitted for INSUFFICIENT operations.", "category": "wording"},
+  {"id": "D-13", "text": "RAISE LOCO 4/8 is at chance and below always-P (5/8). The correct predictions come from a route guard fitted on 2 events; this says nothing about e.", "category": "formal reasoning"},
+  {"id": "D-14", "text": "Stability is uninformative for identity-valued guards (SUPERSEDE+R44: 4/4 stable, 0 correct).", "category": "formal reasoning"},
+  {"id": "D-15", "text": "Data provenance through models_1al.r4_observations() and SPEC-1AM is unverifiable; OBSERVATIONS.json was taken as exact.", "category": "evidence scope"},
+  {"id": "D-16", "text": "'s generalizes' is formal recurrence on strict observations (4 pairs, 2 disjoint, target-indexed), not empirical confirmation.", "category": "evidence scope"}
+ ]
+}

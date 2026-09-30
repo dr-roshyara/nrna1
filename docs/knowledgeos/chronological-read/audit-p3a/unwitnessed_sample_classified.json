@@ -1,0 +1,625 @@
+{
+  "classifications": [
+    {
+      "pair_id": "RP0013",
+      "category": "A",
+      "reasoning": "Genuinely engages the POSSIBLY-RELATION note as P2a uncertainty (not a source claim), reads both families' specific content (structural-comparison matrix vs Zero!=CWA thread) and correctly finds neither row names the other label."
+    },
+    {
+      "pair_id": "RP0024",
+      "category": "F",
+      "reasoning": "Real, specific evidence is found (A is a meta-finding commenting ON part of B's own lineage/versions), but this reviewer-of-a-lineage relationship isn't one of the 11 taxonomy values -- a taxonomy-coverage gap, not an absence of evidence."
+    },
+    {
+      "pair_id": "RP0026",
+      "category": "A",
+      "reasoning": "Explicitly states 'Full row list for adr-aip-04 (27 rows) shows 0 dual-labeled rows' and that its 2 lineage_claims target other ADRs -- a genuine, verified full-family check despite b_rows_truncated=7."
+    },
+    {
+      "pair_id": "RP0028",
+      "category": "F",
+      "reasoning": "A real relationship is found and explicitly named ('governs/adopts... genuine content overlap, not coincidental catalog co-listing') but the notes explicitly say this expresses a relationship 'outside the closed taxonomy' -- evidence exists, taxonomy has no slot for it."
+    },
+    {
+      "pair_id": "RP0044",
+      "category": "A",
+      "reasoning": "Specific, engaged comparison of two distinct formulas with different type signatures and domains, both independently refuted; correctly distinguishes registry co-listing from a real relationship."
+    },
+    {
+      "pair_id": "RP0053",
+      "category": "B",
+      "reasoning": "b_rows_truncated=25/45 and notes explicitly say 'the 20-row sample already shows...so the missing rows are unlikely to add a formal claim' -- an explicit, admitted decision NOT to do the full lookup despite the sizeable truncation."
+    },
+    {
+      "pair_id": "RP0072",
+      "category": "A",
+      "reasoning": "Explicit 'Full-row scan of both families (45 and 60 rows) finds zero source_ids shared other than S1541' -- a genuine, stated full-family check despite heavy truncation on both sides."
+    },
+    {
+      "pair_id": "RP0073",
+      "category": "A",
+      "reasoning": "Content check reads the actual S1541 collision-census text and shows A is one of many colliding glyph-bindings, a structural (not row-count-dependent) argument about the nature of the connecting document, which is itself fully sampled (b_rows_truncated=0)."
+    },
+    {
+      "pair_id": "RP0097",
+      "category": "A",
+      "reasoning": "Reads the shared source's own explicit rejection list ('these remain separate concepts') and correctly treats the two sibling epistemic-limit sections as non-evidence for a claimed relation."
+    },
+    {
+      "pair_id": "RP0114",
+      "category": "A",
+      "reasoning": "Specifically distinguishes the two families' different sub-topics within a shared source and correctly notes no row claims derivation between them."
+    },
+    {
+      "pair_id": "RP0130",
+      "category": "A",
+      "reasoning": "Explicit 'Full-row scan: A (44 rows, all S0876/S0877-ish...)' with detailed content description on both sides plus honest scoping note that the search was pair-bounded, not corpus-wide."
+    },
+    {
+      "pair_id": "RP0134",
+      "category": "A",
+      "reasoning": "Correctly applies the 'string-similarity alone is insufficient' rule and states no shared source_id was found between the families."
+    },
+    {
+      "pair_id": "RP0143",
+      "category": "A",
+      "reasoning": "Compares the two families' candidate-object lists in detail (disjoint object names) and explicitly notes the extraction-time flag 'does not survive closer reading.'"
+    },
+    {
+      "pair_id": "RP0151",
+      "category": "A",
+      "reasoning": "Identifies the sibling gap-discovery-series pattern with specific formal apparatus differences (AGM vs Shannon/Dretske/Floridi) and correctly applies the STRING-SIMILARITY-insufficient rule."
+    },
+    {
+      "pair_id": "RP0161",
+      "category": "A",
+      "reasoning": "Explicit 'Checked full b-family rows (b_rows_truncated=2) for any explicit reference to IV.5/book-evidence-reading-contract -- none found' -- a stated, complete check."
+    },
+    {
+      "pair_id": "RP0162",
+      "category": "A",
+      "reasoning": "Shows the shared D-1..D-4 notation is coincidental reuse by reading both families' actual content and confirming no cross-mentions."
+    },
+    {
+      "pair_id": "RP0167",
+      "category": "A",
+      "reasoning": "Reads all six UNKNOWN-CANDIDATE-GROUP rows and compares the two families' actual distinct subject matter (governance taxonomy vs kernel-transition filter)."
+    },
+    {
+      "pair_id": "RP0175",
+      "category": "A",
+      "reasoning": "Substantively distinguishes A's accepted strategic-DDD bounded-context work from B's later, explicitly-unaccepted 'epistemic' bounded-context proposal, citing specific source ranges for each."
+    },
+    {
+      "pair_id": "RP0181",
+      "category": "B",
+      "reasoning": "a_rows_truncated=52/72 (72%); notes_for_p3b explicitly admits the 3 co-labeled rows 'were not distinguishable from ordinary CO-OCCURRENCE noise in the ledger excerpts available here' -- a direct admission of relying on limited excerpts rather than a full-family lookup, despite the plausible dependency (translation provenance) flagged in the same text."
+    },
+    {
+      "pair_id": "RP0185",
+      "category": "A",
+      "reasoning": "Engages with the specific FR.1-FR.4 formalization content and correctly identifies the two labels as parallel (not derivative) findings from one session's verdict table."
+    },
+    {
+      "pair_id": "RP0189",
+      "category": "A",
+      "reasoning": "Content check reveals the structural nature of the shared rows (B is a meta-level 141-257-document census; A is simply one of many cataloged clusters) -- a structural argument about the nature of the connecting document that survives b's 37.5% truncation."
+    },
+    {
+      "pair_id": "RP0242",
+      "category": "F",
+      "reasoning": "b's own D-5 decision explicitly classifies capability as an object ('Engineering Capability, not a context') -- a genuine decision-model-applies-to-capability relationship that is found and quoted, but doesn't fit any of the 11 lineage/identity relationship values."
+    },
+    {
+      "pair_id": "RP0282",
+      "category": "A",
+      "reasoning": "Terse but states an explicit full-family lineage_claims scan was performed with no connecting rows found; both families are small and fully sampled."
+    },
+    {
+      "pair_id": "RP0288",
+      "category": "B",
+      "reasoning": "The cited group_evidence why_grouped text literally states B 'Extends champion-challenger-model-promotion-lifecycle (Step 45)...into a full temporal-validity/drift/governance framework' -- an explicit EXTENSION claim -- yet recorded_what_says_this ignores this and dismisses the note as mere 'topical uncertainty.' This looks like an incomplete reading of the very evidence being cited."
+    },
+    {
+      "pair_id": "RP0299",
+      "category": "B",
+      "reasoning": "b_rows_truncated=30/50 (60%); the conclusion ('no row states Clarify() is built on top of...the pipeline') is an absence claim with no stated full-row lookup to back it given the scale of the hidden portion."
+    },
+    {
+      "pair_id": "RP0341",
+      "category": "D",
+      "reasoning": "The extraction agent's own POSSIBLY-RELATION note explicitly declines to resolve the question ('though both concern KnowledgeOS context mapping -- relationship unresolved') -- an admitted, unresolved tension in the corpus's own evidence, not a case of nothing being there."
+    },
+    {
+      "pair_id": "RP0359",
+      "category": "A",
+      "reasoning": "Quotes B's specific content (S2472) and correctly identifies the plausible general-mechanism-vs-instance relationship as inferred from shared subject matter only, which the protocol treats as insufficient without a direct claim."
+    },
+    {
+      "pair_id": "RP0377",
+      "category": "A",
+      "reasoning": "Engages with A's specific self-correction content and honestly flags the conceptual resemblance to B's principle as 'plausible but not corpus-stated.'"
+    },
+    {
+      "pair_id": "RP0436",
+      "category": "D",
+      "reasoning": "why_grouped explicitly states the corpus has NOT resolved this ('flagged, not confirmed identical') and notes_for_p3b calls it 'an actively contested identity question, not a settled non-relationship' -- both families fully sampled (0 truncation), so this is a genuine open tension, not insufficient search."
+    },
+    {
+      "pair_id": "RP0474",
+      "category": "A",
+      "reasoning": "Correctly distinguishes administrative cross-referencing (shared OQ-11 tag under a book-wide allocation rule) from real conceptual lineage between the two chapters' actual subject matter."
+    },
+    {
+      "pair_id": "RP0476",
+      "category": "A",
+      "reasoning": "Compares the two independently-executed empirical test reports' specific findings and confirms neither's lineage_claims cite the other."
+    },
+    {
+      "pair_id": "RP0488",
+      "category": "A",
+      "reasoning": "Traces each family's own lineage_claims to confirm they are self-referential to their own prior content, not to each other -- correctly identifying the 'epistemic' word-overlap as a false positive."
+    },
+    {
+      "pair_id": "RP0489",
+      "category": "A",
+      "reasoning": "Distinguishes two non-adjacent numbered Steps on related but distinct concerns with no dual-labeled rows or lineage_claims connecting them."
+    },
+    {
+      "pair_id": "RP0507",
+      "category": "A",
+      "reasoning": "Correctly identifies the sibling-sections-of-one-proposal pattern (EL.2/EL.3 of the same 8-section theory addition)."
+    },
+    {
+      "pair_id": "RP0511",
+      "category": "A",
+      "reasoning": "Small, fully-sampled families; states no lineage_claims found in either family's full rows -- appropriately concise given family sizes of 1 and 2 rows."
+    },
+    {
+      "pair_id": "RP0529",
+      "category": "B",
+      "reasoning": "b_rows_truncated=53/73 (73%); the conclusion ('no row explicitly cites the vocabulary document as governing this specific theory series') is an absence claim over a heavily-truncated family with no stated full-row check."
+    },
+    {
+      "pair_id": "RP0549",
+      "category": "A",
+      "reasoning": "Explicit 'full-row inspection shows this is b's own internal self-correction' of a prior overgeneralized claim, correctly distinguishing it from a cross-reference to the 'evidence' family; group's own framing already flags the candidate as unconfirmed."
+    },
+    {
+      "pair_id": "RP0605",
+      "category": "A",
+      "reasoning": "Quotes the group_evidence note's own explicit distinction and B's specific lineage_claims (S1016) that positively redirect to other Steps (117, 107) rather than to A -- a decisive positive-redirect finding, not silence."
+    },
+    {
+      "pair_id": "RP0618",
+      "category": "A",
+      "reasoning": "Correctly identifies the UNKNOWN-CANDIDATE-GROUP link as an unrelated third-party analogy rather than a direct claim between the two sibling EKS components."
+    },
+    {
+      "pair_id": "RP0624",
+      "category": "F",
+      "reasoning": "B's S0900 explicitly quotes a real, positive architectural feedback relationship between Lord and Sarathi ('Sarathi -> KnowledgeGap -> Lord'); notes explicitly identify this as a recurring pattern (same as RP0003, RP0257) of real cross-references that the 11-value enum simply has no slot for."
+    },
+    {
+      "pair_id": "RP0630",
+      "category": "B",
+      "reasoning": "Generic/perfunctory reasoning ('No lineage_claims, no dual-label rows found on inspection of B's fuller row set') with no specific description of either family's actual content, unlike the great majority of other records in this sample."
+    },
+    {
+      "pair_id": "RP0675",
+      "category": "A",
+      "reasoning": "Names the specific, different content of each source (correspondence-table synthesis vs 'deepest result' claim) and correctly discounts the token-overlap grouping."
+    },
+    {
+      "pair_id": "RP0707",
+      "category": "A",
+      "reasoning": "Recognizes K_t as a ubiquitous generic symbol appearing in many unrelated documents and confirms the two families' content is unrelated (rejected Gita derivation thread vs unrelated verification-planning document)."
+    },
+    {
+      "pair_id": "RP0735",
+      "category": "A",
+      "reasoning": "Reads the full shared source S1482 directly and shows both labels are separate, individually-flagged items within the same contradiction census -- a thorough, source-level check, correctly distinguished from the contradiction (category-C) pattern."
+    },
+    {
+      "pair_id": "RP0746",
+      "category": "F",
+      "reasoning": "G0641 documents an explicit, measured 29% notation overlap between the two families -- a genuine, quantified relation that fails both the positive-relationship bar and the INDEPENDENT/null-result bar, i.e. real evidence with no taxonomy slot."
+    },
+    {
+      "pair_id": "RP0767",
+      "category": "A",
+      "reasoning": "Distinguishes the hedged POSSIBLY-RELATION note (which names other artifacts, not A) from A and B's actual, differently-scoped governance content; honestly flags the lower sampling fraction as a limitation."
+    },
+    {
+      "pair_id": "RP0784",
+      "category": "A",
+      "reasoning": "Names the actual specific content of both concepts (delimiting conditions vs no implicit dimension transitions) and correctly applies the sibling-hypothesis-registry pattern."
+    },
+    {
+      "pair_id": "RP0792",
+      "category": "A",
+      "reasoning": "Identifies the shared rows as large multi-item registry tables and correctly treats catalog inclusion as insufficient evidence of a specific relationship."
+    },
+    {
+      "pair_id": "RP0793",
+      "category": "A",
+      "reasoning": "Cites A's own specific merge ruling (S0240, Decision 2b) which connects A only to a different label, not to B -- a decisive, specific check."
+    },
+    {
+      "pair_id": "RP0796",
+      "category": "A",
+      "reasoning": "Names the specific families (Contradiction vs Agent) each label belongs to within the shared registry and correctly finds no cross-relating row."
+    },
+    {
+      "pair_id": "RP0801",
+      "category": "A",
+      "reasoning": "Quotes the census's own explicit descriptions of each label (COMPLEMENTARY-to-a-different-item; transition-form-of-a-different-item) showing neither points at the other."
+    },
+    {
+      "pair_id": "RP0805",
+      "category": "A",
+      "reasoning": "Names the actual content of both hypotheses (structured opposition/debate vs inference-warranting relation) as differently-numbered sibling registry entries."
+    },
+    {
+      "pair_id": "RP0806",
+      "category": "A",
+      "reasoning": "Identifies both shared rows as distinct census/table entries and states the specific unrelated content topics of each label."
+    },
+    {
+      "pair_id": "RP0819",
+      "category": "A",
+      "reasoning": "Names the specific concepts (Failed-Reasoning-Preservation vs Generate-vs-Evaluate) and confirms no connecting row in the sibling-registry pattern."
+    },
+    {
+      "pair_id": "RP0821",
+      "category": "E",
+      "reasoning": "b_rows_truncated=0 (all 7 rows visible) yet notes_for_p3b explicitly admits 'b's own specific defining content...is not visible in this pair's row sample...all 7 rows are broad census sweep rows' -- the family's actual defining content is effectively unavailable despite a nonzero, untruncated row count."
+    },
+    {
+      "pair_id": "RP0829",
+      "category": "A",
+      "reasoning": "Very detailed: cites the compression-test rulings and the two labels' different, specific validation dispositions (STRONG/SURVIVES vs MODERATE/DEFERRED), correctly identifying the shared-registry false positive."
+    },
+    {
+      "pair_id": "RP0830",
+      "category": "A",
+      "reasoning": "Cites B's own explicit merge ruling (S0240) which targets a different label (INV-KOS-001), not A -- a decisive, specific check."
+    },
+    {
+      "pair_id": "RP0836",
+      "category": "A",
+      "reasoning": "Names the specific families (Reasoning vs Zero/Unknown-state) each label belongs to and correctly finds no direct relating row."
+    },
+    {
+      "pair_id": "RP0838",
+      "category": "A",
+      "reasoning": "Names the specific families (Reasoning vs Agent) and confirms the census-cluster pattern with no cross-family claim."
+    },
+    {
+      "pair_id": "RP0852",
+      "category": "B",
+      "reasoning": "Purely generic template answer ('Same S0237/S0239 catalog-table co-listing pattern -- both appear as separate rows in the same registry table') with no description of either label's actual content, unlike the majority of comparable sibling-registry records in this batch."
+    },
+    {
+      "pair_id": "RP0853",
+      "category": "B",
+      "reasoning": "Identical generic template text as RP0852, with no specific engagement with what h-kos-intent-001 or inv-kos-pramana-001 actually assert."
+    },
+    {
+      "pair_id": "RP0859",
+      "category": "B",
+      "reasoning": "Minimal, generic answer ('CO-OCCURRENCE only, no lineage_claims found') with zero description of either family's content."
+    },
+    {
+      "pair_id": "RP0878",
+      "category": "B",
+      "reasoning": "Generic template answer with no specific content description of either label, despite the family being small enough for one."
+    },
+    {
+      "pair_id": "RP0879",
+      "category": "A",
+      "reasoning": "States an actual full-row scan was performed ('No lineage_claims found in either direction via full-row scan') for small, fully-sampled families."
+    },
+    {
+      "pair_id": "RP0888",
+      "category": "A",
+      "reasoning": "Cites the specific consolidation decision (S0240) that merges a different pair (Context-001/Context-002, not Relation-001/INV-KOS-002) and checks B's own correction row (S2306) for any mention of A -- none found."
+    },
+    {
+      "pair_id": "RP0889",
+      "category": "A",
+      "reasoning": "Very thorough: identifies a near-miss compression-test entry, honestly flags the naming ambiguity (Relationship-001 vs Relation-001) it could not resolve, and explicitly recommends P3b verify whether the verdict should actually be SEPARATION rather than UNWITNESSED -- a genuine, self-aware investigation rather than a rubber stamp."
+    },
+    {
+      "pair_id": "RP0899",
+      "category": "B",
+      "reasoning": "Generic template answer naming only the registry ('siblings in the same 25-row Candidate register...co-listed but no row relates them') without describing either concept's actual assertions, unlike the more thorough sibling-registry entries elsewhere in this batch."
+    },
+    {
+      "pair_id": "RP0901",
+      "category": "A",
+      "reasoning": "Engages substantively with the plausible SPECIALIZATION relationship (Vyapti as general law vs Observation!=Inference as instance), honestly noting it is 'philosophically suggestive but not corpus-witnessed.'"
+    },
+    {
+      "pair_id": "RP0909",
+      "category": "A",
+      "reasoning": "Explicit 'a fully sampled (6 of 6); b_rows_truncated=4 of 24' plus a stated content verification that a superficially-matching row (S1433) is from a different, unrelated registry -- a genuine anti-false-cognate check."
+    },
+    {
+      "pair_id": "RP0924",
+      "category": "F",
+      "reasoning": "A real, well-evidenced co-integrative relationship is found and quoted (both are sibling 'lenses' feeding one shared KS_t formalism) but notes explicitly call it 'a real but symmetric/co-integrative relationship, not a directional extension' -- evidence exists, taxonomy has no directional-sibling slot."
+    },
+    {
+      "pair_id": "RP0957",
+      "category": "B",
+      "reasoning": "b_rows_truncated=209/229 (91%); the conclusion ('no row states the kernel-reduction experiment was designed using...Good's framework') is a strong absence claim over an almost-entirely-hidden family with no stated full-row lookup."
+    },
+    {
+      "pair_id": "RP0986",
+      "category": "A",
+      "reasoning": "Explicit 'filtered full-row search over both 38-row and 34-row families returned zero relevant-type rows and zero cross-mentions' -- a genuine, stated full-family check despite the step-sequence adjacency temptation."
+    },
+    {
+      "pair_id": "RP1015",
+      "category": "A",
+      "reasoning": "Names the specific shared table text (Family 4 TRANSFORMATION, INV-002/INV-004/INV-KOS-001) and confirms no row specifically addresses the pair's relationship beyond registry membership."
+    },
+    {
+      "pair_id": "RP1030",
+      "category": "A",
+      "reasoning": "Names the specific, structurally unrelated families (Agent vs Evidence) each label belongs to within the shared census."
+    },
+    {
+      "pair_id": "RP1037",
+      "category": "A",
+      "reasoning": "Very thorough: contrasts A's concrete BC-7 invariant catalog (specific I-1..I-10 items) against B's abstract six-kind taxonomy and Gate(d,K,t) formalism, honestly flagging a plausible-but-unevidenced future object-level mapping."
+    },
+    {
+      "pair_id": "RP1097",
+      "category": "F",
+      "reasoning": "A (a 264-row review/audit session) is explicitly found to have B's kernel-concept as its entire subject matter across 15 co-occurrences -- a real, substantial critique-of relationship the notes say 'the current 11-value relationship enum does not cleanly represent.' (Also note: both families are 92%/95% truncated, so this pair separately deserves a P3b deep-dive as flagged.)"
+    },
+    {
+      "pair_id": "RP1100",
+      "category": "A",
+      "reasoning": "Explicit 'no cross-reference in either family's full row list' plus specific content comparison (kernel-word collision vs Zero/Neutrality principle) showing entirely different subject matter."
+    },
+    {
+      "pair_id": "RP1113",
+      "category": "B",
+      "reasoning": "Notes explicitly qualify the suggestive notational-convergence finding (A_K=Invariant(S_t) vs Z=Invariant(...)) as found only 'in the sampled rows,' admitting reliance on the sample despite a=66%/b=46% truncation and recommending a follow-up provenance check that was not performed here."
+    },
+    {
+      "pair_id": "RP1122",
+      "category": "B",
+      "reasoning": "Explicitly says 'none of B's sampled/lineage-tagged rows...mention A' -- an admitted sample-based (not full-family) check with b_rows_truncated=28/48 (58%)."
+    },
+    {
+      "pair_id": "RP1129",
+      "category": "A",
+      "reasoning": "Explicit 'filtered search over B's 21 rows' (b_rows_truncated=1, i.e. essentially the whole family) found zero relevant or A-mentioning rows -- a near-complete, genuine check."
+    },
+    {
+      "pair_id": "RP1142",
+      "category": "A",
+      "reasoning": "Specifically compares A's eight-primitive tuple content against B's differently-scoped restated content and correctly discounts the shared K_t notation as ubiquitous."
+    },
+    {
+      "pair_id": "RP1143",
+      "category": "B",
+      "reasoning": "notes_for_p3b explicitly recommends 'a targeted look at kos-theory-v2-rewrite's full 82-row content (62 truncated)...if P3b needs to resolve this' -- an explicit admission the full lookup was not done, despite the label itself ('v2 rewrite') strongly suggesting a real REPLACEMENT relationship."
+    },
+    {
+      "pair_id": "RP1151",
+      "category": "B",
+      "reasoning": "Both families are heavily truncated (51%/47%); the conclusion ('0 dual-labeled rows...No lineage_claim in either family names the other') is a bare absence claim with no stated full-row check given the scale of hidden content."
+    },
+    {
+      "pair_id": "RP1163",
+      "category": "B",
+      "reasoning": "Both families are heavily truncated (73%/71%); the conclusion ('No SOURCE-CLAIMED row or dual-label row was found') is an absence claim with no stated full-row lookup despite the pair being flagged as large companion methodologies for the same reconstruction effort."
+    },
+    {
+      "pair_id": "RP1181",
+      "category": "A",
+      "reasoning": "B is fully sampled (0 truncation) and its closing line is quoted directly ('almost a blueprint...but does not claim to extend, refine, or restate the Character Manifesto specifically') -- a decisive quote from complete content, not silence."
+    },
+    {
+      "pair_id": "RP1242",
+      "category": "A",
+      "reasoning": "Cites both families' complete lineage_claims sets (a's four rows, b's seven rows) all targeting other documents -- a decisive positive-redirect finding -- plus the source's own explicit hedge that it 'could not resolve the relationship.'"
+    },
+    {
+      "pair_id": "RP1255",
+      "category": "A",
+      "reasoning": "Thorough and self-aware: notes the near-one-to-one thematic mapping between B's 12 informal principles and the eventual 11 adopted laws but correctly keeps UNWITNESSED 'pending direct textual confirmation' since no row actually cites the connection."
+    },
+    {
+      "pair_id": "RP1265",
+      "category": "A",
+      "reasoning": "Explicit 'Checked full row sets (24 for a, 40 for b)...full-row lookup performed but found no additional connecting evidence beyond what the sample already suggested was absent' -- genuinely stated full-family check despite b's 50% truncation."
+    },
+    {
+      "pair_id": "RP1274",
+      "category": "B",
+      "reasoning": "notes_for_p3b explicitly states a full lookup of b's rows against a's invariant families 'is the natural next step -- not done here given the weak CO-OCCURRENCE-only signal' -- an explicit admission the full check was skipped, with b 75% truncated."
+    },
+    {
+      "pair_id": "RP1275",
+      "category": "B",
+      "reasoning": "b_rows_truncated=63/83 (76%); the conclusion ('Different source clusters, different subject matter...no connecting claim') is a generic domain-disjointness claim with no stated full-row check given the scale of hidden content."
+    },
+    {
+      "pair_id": "RP1279",
+      "category": "A",
+      "reasoning": "Names the specific ratified 11-law constitution and the two distinct, independently-tested clauses (Identity vs Failure-State), correctly applying the sibling-constitutional-articles pattern."
+    },
+    {
+      "pair_id": "RP1283",
+      "category": "A",
+      "reasoning": "Same sibling-constitutional-articles pattern with specific article content (Identity vs Failure-State/circular-reasoning clauses) named."
+    },
+    {
+      "pair_id": "RP1284",
+      "category": "A",
+      "reasoning": "Names the two specific articles (1 and 8) and their distinct rendering/failure-signature rows in the P5 Decision Matrix."
+    },
+    {
+      "pair_id": "RP1291",
+      "category": "A",
+      "reasoning": "Explicit 'Full-row check confirms a and b are two of the eleven sibling Articles' with the specific divergence point (S0241, Dimension vs Projection Law text) named."
+    },
+    {
+      "pair_id": "RP1294",
+      "category": "A",
+      "reasoning": "States neither family is truncated, performs a full lineage_claims check on every row of both, and names the two distinct articles' specific clause content (Dimension vs Contradiction)."
+    },
+    {
+      "pair_id": "RP1297",
+      "category": "A",
+      "reasoning": "Names the two specific sibling articles (Dimension Law vs History Law) and correctly applies the ratified-constitution sibling pattern."
+    },
+    {
+      "pair_id": "RP1309",
+      "category": "A",
+      "reasoning": "Names the two specific articles' distinct content (Decision: 2 clauses vs Contradiction: 3 clauses, renders H-KOS-Contradiction-001/Dialogue-001) with no cross-referencing clause."
+    },
+    {
+      "pair_id": "RP1319",
+      "category": "A",
+      "reasoning": "Names the two specific articles' distinct clause counts and content (Verification: justification-path, 5 clauses vs Failure-State: 2 clauses)."
+    },
+    {
+      "pair_id": "RP1320",
+      "category": "A",
+      "reasoning": "Names the two specific articles (Verification vs Contradiction) and their distinct clause content."
+    },
+    {
+      "pair_id": "RP1321",
+      "category": "A",
+      "reasoning": "Names the specific divergence point (Article 6/Verification vs Article 9/Unknown-Law, H-ZERO-001/Abhava) within the shared 11-law enumeration."
+    },
+    {
+      "pair_id": "RP1330",
+      "category": "A",
+      "reasoning": "Names the two specific articles' substantively distinct content (Contradiction: CONFLICTED coexistence vs History: non-deletion/Revisability) with no cross-reference."
+    },
+    {
+      "pair_id": "RP1351",
+      "category": "A",
+      "reasoning": "Names the actual unrelated topics of A's and B's specific rows (Accessibility/Unknowability ordering vs nine open items list), correctly discounting the generic 'KR-*' naming-prefix overlap."
+    },
+    {
+      "pair_id": "RP1372",
+      "category": "A",
+      "reasoning": "Names the two sibling artifacts' distinct scopes (three-category DL import classification vs seven planned KRR experiments) from the same governance review session."
+    },
+    {
+      "pair_id": "RP1373",
+      "category": "A",
+      "reasoning": "Very thorough: identifies both fully-sampled (4/4 each) threads' distinct source literatures and a specific naming overlap (KR-DELTA-2026-09 vs KR-DELTA) worth checking further, honestly flagging this for P3b rather than assuming a relation."
+    },
+    {
+      "pair_id": "RP1392",
+      "category": "A",
+      "reasoning": "Cites b's only lineage_claims row (S2683) as targeting a different, unnamed document -- a decisive positive-redirect finding, not mere silence, despite b's 60% truncation."
+    },
+    {
+      "pair_id": "RP1395",
+      "category": "F",
+      "reasoning": "A dual-labeled row (S2831) explicitly and positively characterizes the two as part of 'a triangle of three mutually-informing but non-dictating research programmes' -- a real, corpus-stated relationship that fits neither a positive relationship value nor the INDEPENDENT bar."
+    },
+    {
+      "pair_id": "RP1409",
+      "category": "F",
+      "reasoning": "B's S0900-equivalent content documents 'a genuine boundary-design decision partitioning responsibility' between Lord and Zero (Zero's scope explicitly narrowed to hand unknown-dimension discovery to Lord) -- notes explicitly call this 'a genuine, well-evidenced COMPLEMENTARY relationship...rather than a true absence of relationship.'"
+    },
+    {
+      "pair_id": "RP1419",
+      "category": "A",
+      "reasoning": "Cites the shared document's own explicit rejection list treating the two sub-sections as fully separate, correctly identifying the sibling-section false-positive pattern."
+    },
+    {
+      "pair_id": "RP1428",
+      "category": "F",
+      "reasoning": "S0137 shows r-conflict-invariant is a specific named invariant defined and analyzed WITHIN the broader migration-plan-amendment-chain -- a real component-of relationship found via a decisive shared row, but not one of SAME/REFINEMENT/EXTENSION etc."
+    },
+    {
+      "pair_id": "RP1437",
+      "category": "A",
+      "reasoning": "Names each family's specific, distinct formal content (Bayesian model averaging vs non-identifiability reporting) and correctly applies the same-batch/complementary-topic insufficiency pattern."
+    },
+    {
+      "pair_id": "RP1444",
+      "category": "A",
+      "reasoning": "Correctly identifies 'abhava' as common classical vocabulary independently used by two different underlying classical-source extractions."
+    },
+    {
+      "pair_id": "RP1445",
+      "category": "A",
+      "reasoning": "Names each family's distinct source text (Keith's Nyaya-Vaisesika vs Shieber's Western epistemology) and their independently-produced but unrelated knower/knowing/known separations."
+    },
+    {
+      "pair_id": "RP1460",
+      "category": "F",
+      "reasoning": "A's own rows explicitly state 'Only-Knowing != Zero' while acknowledging a weak 'contributory' role -- notes explicitly flag this as 'stronger than plain absence-of-evidence UNWITNESSED, but no enum value captures partial/contributory-but-not-defining support.'"
+    },
+    {
+      "pair_id": "RP1465",
+      "category": "A",
+      "reasoning": "Explicit '0 dual-labeled rows, 0 lineage_claims in...full row list' plus identification of three specific relation-tagged rows that do not cite the other label."
+    },
+    {
+      "pair_id": "RP1503",
+      "category": "A",
+      "reasoning": "Correctly applies the protocol's stricter bar for INDEPENDENT (no corpus-wide search performed) versus the note's own within-pair distinction between two different Quine works used as adversarial lenses."
+    },
+    {
+      "pair_id": "RP1528",
+      "category": "B",
+      "reasoning": "b_rows_truncated=91/111 (82%); the conclusion ('no row connects them, lineage_claims empty both directions') is a bare absence claim over an almost-entirely-hidden family with no stated full-row lookup."
+    },
+    {
+      "pair_id": "RP1642",
+      "category": "A",
+      "reasoning": "Names each family's specific, distinct content (Navya-Nyaya word-ambiguity warning vs temporal-precision invariant family I_41-I_44) and correctly discounts the shared-token grouping."
+    },
+    {
+      "pair_id": "RP1664",
+      "category": "F",
+      "reasoning": "A genuine functional/architectural dependency is found and quoted (SPEC-CONTR's predicate consumes SPEC-EVAL's Standing definition; SPEC-EVAL's matrix triggers SPEC-CONTR isolation) -- real evidence of a compositional dependency that the closed relationship vocabulary has no slot for."
+    },
+    {
+      "pair_id": "RP1697",
+      "category": "A",
+      "reasoning": "Cites the shared meta-audit document's own explicit finding ('Step 213 cites zero individual prior steps by number') -- a decisive quote from the source itself, not silence-based inference, despite the pair's own truncation."
+    },
+    {
+      "pair_id": "RP1786",
+      "category": "A",
+      "reasoning": "Cites the one lineage_claim found (S0749) as targeting a different document (S0748), not B -- a decisive positive-redirect finding despite b's 67% truncation."
+    }
+  ],
+  "summary": {
+    "A": 85,
+    "B": 20,
+    "D": 2,
+    "E": 1,
+    "F": 12
+  },
+  "truncation_compliance": {
+    "applicable_count": 47,
+    "compliant_count": 11,
+    "noncompliant_examples": [
+      "RP0053",
+      "RP0181",
+      "RP1113",
+      "RP1143",
+      "RP1274",
+      "RP0957",
+      "RP1097",
+      "RP1528"
+    ]
+  }
+}

@@ -1,0 +1,1188 @@
+{
+ "rule": "F-LOG-0048",
+ "pairs": {
+  "SELF|BLIND-SECONDARY": {
+   "summary": {
+    "EQUIVALENT_WORDING": 11,
+    "TYPING_DISAGREEMENT": 4,
+    "AMBIGUITY_DISAGREEMENT": 1,
+    "EFFECT_INTERPRETATION_DISAGREEMENT": 3,
+    "EVIDENCE_ANCHOR_DISAGREEMENT": 20
+   },
+   "rows": [
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A2e",
+     "a": 0,
+     "b": 1,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A2e",
+     "a": 1,
+     "b": 0,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A2e",
+     "a": 2,
+     "b": 2,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A3g",
+     "a": 4,
+     "b": 6,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVID",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A3g",
+     "a": 5,
+     "b": 7,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVID",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A4",
+     "a": 6,
+     "b": 9,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "COMP",
+     "b_kind": "COMP"
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A4",
+     "a": 8,
+     "b": 10,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "COMP"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A5e",
+     "a": 9,
+     "b": 12,
+     "sim": 1.0,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "DIRECT_COUNTEREXAMPLE",
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A5e",
+     "a": 10,
+     "b": 13,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "AMBIGUITY_DISAGREEMENT",
+     "test": "F-A5e",
+     "a": 11,
+     "b": 17,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "NOT_BEARING",
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A5e",
+     "a": 12,
+     "b": 15,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A5g",
+     "a": 13,
+     "b": 14,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A5g",
+     "a": 14,
+     "b": 16,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A6",
+     "a": 16,
+     "b": 23,
+     "sim": 1.0,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "b_cls": "NOT_EVIDENCED",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A0",
+     "a": 20,
+     "b": 21,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVID",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A0",
+     "a": 21,
+     "b": 22,
+     "sim": 1.0,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "b_cls": "NOT_EVIDENCED",
+     "b_comp": null,
+     "a_kind": "UNKNOWN",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A3m",
+     "a": 22,
+     "b": 19,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVIDREF",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A3m",
+     "a": 23,
+     "b": 20,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVID",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "Q-H6",
+     "a": 24,
+     "b": 27,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": null,
+     "b_kind": null
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A2e",
+     "a": 3,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "`DERIVED → REVIEWED → ATTESTED → RELEASED` describes a document becoming **more trustworthy**"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A4",
+     "a": 7,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "NOT_BEARING",
+     "wording": "COMPOSITE trajectory | crossing the above | — | several | P-3 · P-6"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5g",
+     "a": 15,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "plan → review → approval → implement → verify → report → decide | no stage skipped; human approval"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 17,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "**Qualification Method:** promotion-ladder audits (does every promoted item carry qualification evid"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 18,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "Project Outcome (implementation · verification · qualification · retrospective — the ONLY legitimate"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 19,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "a ladder — monotonic, no return edges except demotion-by-decision"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "Q-H6",
+     "a": 25,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "a ladder — monotonic, no return edges except demotion-by-decision"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A2e",
+     "b": 3,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "**P-10 evidence n** | **how much evidence exists** | ... | the producing track | ⛔ cannot be decreed"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A2e",
+     "b": 4,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "⭐⭐ **A single unified lifecycle would force one engine onto all four — requiring either that evidenc"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A2e",
+     "b": 5,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "wording": "⚠️ *a **ladder** — monotonic, no return edges except demotion-by-decision*"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A3g",
+     "b": 8,
+     "b_cls": "NOT_EVIDENCED",
+     "b_comp": null,
+     "wording": "### **Authority = an immutable PROVENANCE fact × a mutable STANDING judgment. Attestation changes st"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A4",
+     "b": 11,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "⭐ **status ← authority, at one point** | **a GUARD**: `baseline` requires `authority ∈ {authoritativ"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A5e",
+     "b": 18,
+     "b_cls": "NOT_EVIDENCED",
+     "b_comp": null,
+     "wording": "⭐ **WORK-EXECUTION progression** | **time and effort; has a clock** | ⛔ no — work concludes | the ex"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 24,
+     "b_cls": "NOT_EVIDENCED",
+     "b_comp": null,
+     "wording": "nothing is promoted because it is a good idea; everything is promoted because operational evidence d"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 25,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "NOT_BEARING",
+     "wording": "**ES-006.2 — The Knowledge Research Freeze** *(ARB 2026-07-11 — a milestone, not a rule)*. The RQ-00"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 26,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "wording": "| DDD Tactical Governance Principles (methodology module — ADOPTED via explicit DA early-promotion e"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "Q-H6",
+     "b": 28,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "⭐ **EVIDENTIAL + governance gate**"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "Q-H6",
+     "b": 29,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "nothing is promoted because it is a good idea; everything is promoted because operational evidence d"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "Q-H6",
+     "b": 30,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "the project **reveals** knowledge · the engineer **captures** it · the platform **governs** it · eng"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "Q-H6",
+     "b": 31,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "ADOPTED via explicit DA early-promotion exception R-39"
+    }
+   ]
+  },
+  "SELF|INDEPENDENT": {
+   "summary": {
+    "EFFECT_INTERPRETATION_DISAGREEMENT": 3,
+    "EQUIVALENT_WORDING": 3,
+    "TYPING_DISAGREEMENT": 3,
+    "SUBSTANTIVE_CLASSIFICATION_DISAGREEMENT": 1,
+    "AMBIGUITY_DISAGREEMENT": 1,
+    "EVIDENCE_ANCHOR_DISAGREEMENT": 22
+   },
+   "rows": [
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A2e",
+     "a": 0,
+     "b": 0,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A2e",
+     "a": 2,
+     "b": 1,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A4",
+     "a": 6,
+     "b": 5,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "COMP",
+     "b_kind": "COMP"
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A4",
+     "a": 8,
+     "b": 4,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "COMP"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A5e",
+     "a": 9,
+     "b": 6,
+     "sim": 1.0,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "DIRECT_COUNTEREXAMPLE",
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A5g",
+     "a": 13,
+     "b": 8,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "SUBSTANTIVE_CLASSIFICATION_DISAGREEMENT",
+     "test": "F-A6",
+     "a": 16,
+     "b": 10,
+     "sim": 1.0,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "AMBIGUITY_DISAGREEMENT",
+     "test": "F-A3m",
+     "a": 22,
+     "b": 15,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "a_kind": "EVIDREF",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A3m",
+     "a": 23,
+     "b": 16,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVID",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "Q-H6",
+     "a": 25,
+     "b": 17,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": null,
+     "b_kind": null
+    },
+    {
+     "class": "TYPING_DISAGREEMENT",
+     "test": "F-A5e",
+     "a": 12,
+     "b": 7,
+     "sim": 0.33,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A2e",
+     "a": 1,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "accumulating evidence — nobody can decree it | only by refutation, never by decision"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A2e",
+     "a": 3,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "`DERIVED → REVIEWED → ATTESTED → RELEASED` describes a document becoming **more trustworthy**"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A3g",
+     "a": 4,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "No amount of evidence can make a document `frozen`."
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A3g",
+     "a": 5,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "promotion = evidential standing crossing a bar + a governance act recognizing it … evidence EARNS; g"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A4",
+     "a": 7,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "NOT_BEARING",
+     "wording": "COMPOSITE trajectory | crossing the above | — | several | P-3 · P-6"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5e",
+     "a": 10,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "✅ yes — of work, not of knowledge"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5e",
+     "a": 11,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "an experiment's run state"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5g",
+     "a": 14,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "its governance position | acts | per decision | named roles … the work around it | time | per sessio"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5g",
+     "a": 15,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "plan → review → approval → implement → verify → report → decide | no stage skipped; human approval"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 17,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "**Qualification Method:** promotion-ladder audits (does every promoted item carry qualification evid"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 18,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "Project Outcome (implementation · verification · qualification · retrospective — the ONLY legitimate"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 19,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "a ladder — monotonic, no return edges except demotion-by-decision"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A0",
+     "a": 20,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "n=0 → n=1 → n≥2 → *(operationally validated)* | ES-006.1's bar · CAP-001 §9"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A0",
+     "a": 21,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "nothing is promoted because it is a good idea; everything is promoted because operational evidence d"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "Q-H6",
+     "a": 24,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "promotion = evidential standing crossing a bar + a governance act recognizing it"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A2e",
+     "b": 2,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "A single unified lifecycle would force one engine onto all four — requiring either that evidence be "
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A3g",
+     "b": 3,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "a GOVERNANCE-ACT progression can be granted. An EVIDENTIAL progression can only be earned."
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A5g",
+     "b": 9,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "Reference Model §6 — **\"two lifecycles, never conflated (GEP-F1)\"**: the GOVERNANCE-ARTIFACT lifecyc"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 11,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "**ES-006.2 — The Knowledge Research Freeze** *(ARB 2026-07-11 — a milestone, not a rule)*. The RQ-00"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 12,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "Research dossiers are input-only: never architecture until promoted through ES-006.1."
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 13,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "NOT_BEARING",
+     "wording": "'Did this work produce reusable engineering knowledge?' → 'Did this work REVEAL reusable engineering"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 14,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "wording": "DDD Tactical Governance Principles (methodology module — ADOPTED via explicit DA early-promotion exc"
+    }
+   ]
+  },
+  "BLIND-SECONDARY|INDEPENDENT": {
+   "summary": {
+    "EFFECT_INTERPRETATION_DISAGREEMENT": 7,
+    "EXACT_AGREEMENT": 1,
+    "SUBSTANTIVE_CLASSIFICATION_DISAGREEMENT": 2,
+    "AMBIGUITY_DISAGREEMENT": 2,
+    "EQUIVALENT_WORDING": 2,
+    "EVIDENCE_ANCHOR_DISAGREEMENT": 22
+   },
+   "rows": [
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A2e",
+     "a": 1,
+     "b": 0,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A2e",
+     "a": 4,
+     "b": 2,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A3g",
+     "a": 6,
+     "b": 3,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "EVID",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A4",
+     "a": 10,
+     "b": 4,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "COMP",
+     "b_kind": "COMP"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A5e",
+     "a": 12,
+     "b": 6,
+     "sim": 1.0,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "DIRECT_COUNTEREXAMPLE",
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "EXACT_AGREEMENT",
+     "test": "F-A5g",
+     "a": 14,
+     "b": 8,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "SUBSTANTIVE_CLASSIFICATION_DISAGREEMENT",
+     "test": "F-A5e",
+     "a": 18,
+     "b": 7,
+     "sim": 1.0,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "WORK",
+     "b_kind": "WORK"
+    },
+    {
+     "class": "AMBIGUITY_DISAGREEMENT",
+     "test": "F-A3m",
+     "a": 19,
+     "b": 15,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "a_kind": "EVID",
+     "b_kind": "EVID"
+    },
+    {
+     "class": "SUBSTANTIVE_CLASSIFICATION_DISAGREEMENT",
+     "test": "F-A6",
+     "a": 23,
+     "b": 10,
+     "sim": 1.0,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "AMBIGUITY_DISAGREEMENT",
+     "test": "F-A6",
+     "a": 25,
+     "b": 11,
+     "sim": 1.0,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "NOT_BEARING",
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A6",
+     "a": 26,
+     "b": 14,
+     "sim": 1.0,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "DIRECT_COUNTEREXAMPLE",
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "DIRECT_COUNTEREXAMPLE",
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "Q-H6",
+     "a": 28,
+     "b": 17,
+     "sim": 1.0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": null,
+     "b_kind": null
+    },
+    {
+     "class": "EQUIVALENT_WORDING",
+     "test": "F-A4",
+     "a": 9,
+     "b": 5,
+     "sim": 0.56,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "COMP",
+     "b_kind": "COMP"
+    },
+    {
+     "class": "EFFECT_INTERPRETATION_DISAGREEMENT",
+     "test": "F-A2e",
+     "a": 2,
+     "b": 1,
+     "sim": 0.38,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "a_kind": "GOV",
+     "b_kind": "GOV"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A2e",
+     "a": 0,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "⭐⭐ **EVIDENTIAL progression** | ⭐ **accumulating evidence — nobody can decree it** | ⛔ **only by ref"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A2e",
+     "a": 3,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "**P-10 evidence n** | **how much evidence exists** | ... | the producing track | ⛔ cannot be decreed"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A2e",
+     "a": 5,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "DIRECT_COUNTEREXAMPLE",
+     "wording": "⚠️ *a **ladder** — monotonic, no return edges except demotion-by-decision*"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A3g",
+     "a": 7,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "**promotion = evidential standing crossing a bar + a governance act recognizing it** | ⭐ **this is t"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A3g",
+     "a": 8,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "### **Authority = an immutable PROVENANCE fact × a mutable STANDING judgment. Attestation changes st"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A4",
+     "a": 11,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "⭐ **status ← authority, at one point** | **a GUARD**: `baseline` requires `authority ∈ {authoritativ"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5e",
+     "a": 13,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "**P-7 EEP** | the **work's** stage | no stage skipped; human approval | DA | ⭐ **mandatory once begu"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5e",
+     "a": 15,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "| its **governance position** | acts | per decision | named roles |\n| its **evidential standing** | "
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5g",
+     "a": 16,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "| its **governance position** | acts | per decision | named roles |\n| its **evidential standing** | "
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A5e",
+     "a": 17,
+     "a_cls": "AMBIGUOUS",
+     "a_comp": "NOT_BEARING",
+     "wording": "**P-8** | **Observation Protocol** | ACTIVE → CONCLUDED *(confirmed \\| falsified \\| inconclusive)* —"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A3m",
+     "a": 20,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "**P-10** | **Evidence accumulation** | n=0 → n=1 → n≥2 → *(operationally validated)* ... ⭐⭐ **PURELY"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A0",
+     "a": 21,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "**P-10** | **Evidence accumulation** | n=0 → n=1 → n≥2 → *(operationally validated)* | ES-006.1's ba"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A0",
+     "a": 22,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "Qualification sits between research and engineering — nothing is promoted because it is a good idea;"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "F-A6",
+     "a": 24,
+     "a_cls": "NOT_EVIDENCED",
+     "a_comp": null,
+     "wording": "nothing is promoted because it is a good idea; everything is promoted because operational evidence d"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "Q-H6",
+     "a": 27,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "**promotion = evidential standing crossing a bar + a governance act recognizing it** | ... ***eviden"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "Q-H6",
+     "a": 29,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "nothing is promoted because it is a good idea; everything is promoted because operational evidence d"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "Q-H6",
+     "a": 30,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "the project **reveals** knowledge · the engineer **captures** it · the platform **governs** it · eng"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "a-only",
+     "test": "Q-H6",
+     "a": 31,
+     "a_cls": "DIRECT_SUPPORT",
+     "a_comp": null,
+     "wording": "ADOPTED via explicit DA early-promotion exception R-39"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A5g",
+     "b": 9,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "Reference Model §6 — **\"two lifecycles, never conflated (GEP-F1)\"**: the GOVERNANCE-ARTIFACT lifecyc"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 12,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "Research dossiers are input-only: never architecture until promoted through ES-006.1."
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A6",
+     "b": 13,
+     "b_cls": "AMBIGUOUS",
+     "b_comp": "NOT_BEARING",
+     "wording": "'Did this work produce reusable engineering knowledge?' → 'Did this work REVEAL reusable engineering"
+    },
+    {
+     "class": "EVIDENCE_ANCHOR_DISAGREEMENT",
+     "side": "b-only",
+     "test": "F-A3m",
+     "b": 16,
+     "b_cls": "DIRECT_SUPPORT",
+     "b_comp": null,
+     "wording": "**P-10 evidence n** | **how much evidence exists** | detection ≠ prevention; *\"never add these two l"
+    }
+   ]
+  }
+ }
+}

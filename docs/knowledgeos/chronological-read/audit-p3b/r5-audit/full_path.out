@@ -1,0 +1,11 @@
+BASE  expected PASS observed PASS R5-gate PASS
+labels: 5
+FP-1 point: S2315 (records carry only reading_state/ack_tokens/pair checks)
+FP-1  expected FAIL observed PASS R5-gate PASS  <-- FALSE PASS
+FP-2: no target found in this fixture
+FP-4  expected FAIL observed PASS R5-gate PASS  <-- FALSE PASS
+      alert: READ-LOG 1 entries name another batch or run (ignored)
+labels with S1 checks: 3
+FP-5  expected FAIL observed PASS R5-gate PASS  <-- FALSE PASS
+FP-6 label #1: 39 files, real bytes 117000, declared 11700000; units 20
+FP-6  expected FAIL observed PASS R5-gate PASS  <-- FALSE PASS

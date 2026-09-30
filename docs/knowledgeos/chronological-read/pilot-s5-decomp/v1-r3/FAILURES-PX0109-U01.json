@@ -1,0 +1,11 @@
+{
+ "failures": [
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-g034",
+   "proposition_id": "S1021-g034-p1"
+  }
+ ],
+ "original_sha256": "409496d0f52ae33fed13dfa648d6e0b31652eaf66c10d41b910f827f0d2b64c7",
+ "run": "PX0109-U01"
+}

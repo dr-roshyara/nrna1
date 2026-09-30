@@ -1,0 +1,183 @@
+{
+ "release": "L0-REL-06",
+ "source": {
+  "path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+  "sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+  "section": "## 6. Lifecycle semantics — four orthogonal axes",
+  "lines": [
+   102,
+   105
+  ]
+ },
+ "cells": [
+  {
+   "id": "M6-c1",
+   "claim_id": "M6-L104-evolution",
+   "proposition": "EP-03a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "Evolution rules (when may X become Y) remain hosted where they live",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "evolution (transition) rules are hosted elsewhere; this metamodel indexes and never restates them",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "The section expressly does not state transition rules; it names their hosts (ES-006.1, the Plan Concept, R-39's multi-context bar). SILENT by the source's own declaration, not by absence of reading."
+  },
+  {
+   "id": "M6-c2",
+   "claim_id": "M6-L104-evolution",
+   "proposition": "EP-04a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "Evolution rules (when may X become Y) remain hosted where they live",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "The section expressly does not state transition rules; it names their hosts (ES-006.1, the Plan Concept, R-39's multi-context bar). SILENT by the source's own declaration, not by absence of reading."
+  },
+  {
+   "id": "M6-c3",
+   "claim_id": "M6-L104-evolution",
+   "proposition": "EP-04b",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "Evolution rules (when may X become Y) remain hosted where they live",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "The section expressly does not state transition rules; it names their hosts (ES-006.1, the Plan Concept, R-39's multi-context bar). SILENT by the source's own declaration, not by absence of reading."
+  },
+  {
+   "id": "M6-c4",
+   "claim_id": "M6-L104-expiry",
+   "proposition": "EP-03a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "no research-expiry rule",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "an expiry rule for research is recorded as absent",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "Expiry is time-based, not evidence-based (expiry != evidence failure); it cannot bear on persistence after evidence loss. An explicit absence of one rule is not evidence of persistence."
+  },
+  {
+   "id": "M6-c5",
+   "claim_id": "M6-L104-adoption",
+   "proposition": "EP-04a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "`adoption` (planned → adopted → deprecated → removed — Runtime only)",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "the adoption axis (incl. deprecated/removed) applies to Runtime only",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "runtime adoption axis (not knowledge promotion)"
+   },
+   "notes": "The metamodel's 'adoption' lifecycle is a runtime/software axis, not knowledge promotion; the word 'adopted' here must not be read as knowledge adoption."
+  },
+  {
+   "id": "M6-c6",
+   "claim_id": "M6-L104-r39bar",
+   "proposition": "EP-13c",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "R-39's multi-context bar",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "R-39 is named as the host of a multi-context bar (an evolution rule)",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "Names R-39 as hosting a bar (bearing on the R-39 signature, dimension B: bar-defining), but says nothing about the validity of below-bar authorization; cannot decide EP-13c. R-39 thread is off the critical path."
+  }
+ ],
+ "events": []
+}

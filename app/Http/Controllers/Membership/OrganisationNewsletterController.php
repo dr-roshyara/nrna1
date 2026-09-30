@@ -180,9 +180,18 @@ class OrganisationNewsletterController extends Controller
             ->with('attachments')
             ->findOrFail($id);
 
+        // No status predicate: nothing ever writes elections.status='deleted', and
+        // deletion is SoftDeletes' concern (deleted_at global scope), not a lifecycle
+        // value. The retained `status` column is display-only. (PBDIGIT-48)
+        $elections = Election::where('organisation_id', $org->id)
+            ->select('id', 'name', 'status')
+            ->get();
+
         return Inertia::render('Organisations/Membership/Newsletter/Edit', [
-            'organisation' => $org,
-            'newsletter'   => $newsletter,
+            'organisation'  => $org,
+            'newsletter'    => $newsletter,
+            'elections'     => $elections,
+            'audienceTypes' => NewsletterService::AUDIENCE_TYPES,
         ]);
     }
 
@@ -199,12 +208,21 @@ class OrganisationNewsletterController extends Controller
             'subject'      => ['required', 'string', 'max:255'],
             'html_content' => ['required', 'string'],
             'plain_text'   => ['nullable', 'string'],
+            'audience_type' => ['required', 'string', 'in:' . implode(',', NewsletterService::AUDIENCE_TYPES)],
+            'audience_meta.election_id' => [
+                'required_if:audience_type,election_voters,election_not_voted,election_voted,election_candidates,election_observers,election_committee,election_all',
+                'nullable',
+                'uuid',
+                'exists:elections,id',
+            ],
         ]);
 
         $newsletter->update([
-            'subject'      => $data['subject'],
-            'html_content' => $this->service->sanitiseHtml($data['html_content']),
-            'plain_text'   => $data['plain_text'] ?? null,
+            'subject'       => $data['subject'],
+            'html_content'  => $this->service->sanitiseHtml($data['html_content']),
+            'plain_text'    => $data['plain_text'] ?? null,
+            'audience_type' => $data['audience_type'],
+            'audience_meta' => ['election_id' => $data['audience_meta']['election_id'] ?? null],
         ]);
 
         return redirect()->route('organisations.membership.newsletters.show', [$org, $newsletter->id])

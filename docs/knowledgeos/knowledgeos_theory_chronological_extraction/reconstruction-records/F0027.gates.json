@@ -1,0 +1,85 @@
+{
+ "file_id": "F0027",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "status": "SATISFIED",
+   "evidence": "192 lines, complete"
+  },
+  {
+   "gate": "EXTRACTION_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "4 def · 4 premises · 5 claims · 3 derivations"
+  },
+  {
+   "gate": "SEMANTIC_UNDERSTANDING_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "source vs reconstruction question separated"
+  },
+  {
+   "gate": "ARCHITECTURE_ALIGNMENT_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "relationship model; architecture not redesigned"
+  },
+  {
+   "gate": "RELATIONSHIP_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "5 incl. 1 DEPENDS_ON_HELD_FILE"
+  },
+  {
+   "gate": "DERIVATION_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "D1-D3, limits declared"
+  },
+  {
+   "gate": "CONTINUITY_ASSESSED",
+   "status": "SATISFIED",
+   "evidence": "4 dimensions"
+  },
+  {
+   "gate": "GAP_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "6 gaps, 2 found by this reconstruction"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "status": "NOT_SATISFIED",
+   "evidence": "⛔ BLOCKED under O-1=A (L0-DEC-08). ⛔ C-0013: T-0026 records I-7 breached but NOT I-4 underspecified/withdrawn, I-11 restated, or F0027's header verdict '10/11 held; I-4 FALSIFIED' — while carrying recovery_confidence HIGH and evidence_strength DIRECT_QUOTED. ⭐ T-0024 and T-0025 are DIRECT_QUOTED with no finding against them. same (m1)/(m2). ⛔ AND the I-8 part is §5A case 2 (cross-file, research 'F0034' = canonical F0031, incident range) — outside O-1=A and inside RC-H-04."
+  },
+  {
+   "gate": "IMPLEMENTATION_IMPLICATIONS_CHECKED",
+   "status": "SATISFIED",
+   "evidence": "NOT_APPLICABLE with reason"
+  },
+  {
+   "gate": "PROVENANCE_COMPLETE",
+   "status": "SATISFIED",
+   "evidence": "full chain"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "status": "SATISFIED",
+   "evidence": "40/40 fields"
+  }
+ ],
+ "satisfied": 11,
+ "total": 12,
+ "dossier_status": "INCOMPLETE_BY_DESIGN",
+ "blocking_gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+ "why_blocked": "⛔ Rule 6 of the authorized batch.",
+ "⭐ O-1_evaluation": {
+  "date": "2026-09-23",
+  "authority": "L0-DEC-08 (O-1 = interpretation A)",
+  "own_objects": [
+   "T-0024",
+   "T-0025",
+   "T-0026"
+  ],
+  "verdict": "BLOCKED",
+  "objects_needing_5A_revision": [
+   "T-0026"
+  ],
+  "basis": "⛔ C-0013: T-0026 records I-7 breached but NOT I-4 underspecified/withdrawn, I-11 restated, or F0027's header verdict '10/11 held; I-4 FALSIFIED' — while carrying recovery_confidence HIGH and evidence_strength DIRECT_QUOTED. ⭐ T-0024 and T-0025 are DIRECT_QUOTED with no finding against them.",
+  "blocker": "same (m1)/(m2). ⛔ AND the I-8 part is §5A case 2 (cross-file, research 'F0034' = canonical F0031, incident range) — outside O-1=A and inside RC-H-04."
+ }
+}

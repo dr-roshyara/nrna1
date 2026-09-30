@@ -18,7 +18,7 @@ final readonly class CohesionGraph
     /**
      * @param list<string>                                            $nodes
      * @param list<array{0:string,1:string,2:string}>                 $edges  [from, to, kind]
-     * @param list<array{method:string,target:string,reason:ExclusionReason}> $excluded
+     * @param list<array{method:string,target:?string,reason:ExclusionReason}> $excluded
      */
     public function __construct(
         private array $nodes,
@@ -39,7 +39,7 @@ final readonly class CohesionGraph
         return $this->edges;
     }
 
-    /** @return list<array{method:string,target:string,reason:ExclusionReason}> */
+    /** @return list<array{method:string,target:?string,reason:ExclusionReason}> */
     public function excludedReferences(): array
     {
         return $this->excluded;

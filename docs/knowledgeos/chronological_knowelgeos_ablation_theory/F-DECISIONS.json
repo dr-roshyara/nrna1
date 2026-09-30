@@ -1,0 +1,7 @@
+{
+ "note": "Human-decision switches (f_integrity.decision). A null value BLOCKS everything that depends on it. Changed only together with an F-GOVERNANCE-LOG entry that records the human decision.",
+ "temporal_semantics": null,
+ "temporal_semantics_decided_in": null,
+ "multiplicity_rules": null,
+ "multiplicity_rules_decided_in": null
+}

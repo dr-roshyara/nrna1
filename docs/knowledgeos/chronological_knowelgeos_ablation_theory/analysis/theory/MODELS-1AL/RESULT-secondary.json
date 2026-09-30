@@ -1,0 +1,55 @@
+{
+ "labels": "SECONDARY / POST-HOC; FORMAL",
+ "non_vacuous_signatures": {
+  "ADOPT": {
+   "a+c": true,
+   "a+k": true,
+   "a+t": true
+  },
+  "ASSIGN-ID": {
+   "h": true,
+   "r": false
+  },
+  "AUTHORIZE-IMPL": {
+   "a": true
+  },
+  "OPEN-WORK": {
+   "k": true
+  },
+  "RAISE": {
+   "a+e": true,
+   "e+k": false,
+   "e+t": true,
+   "e+x": false
+  },
+  "REGISTER": {
+   "k": true
+  },
+  "START": {
+   "s": false
+  },
+  "SUPERSEDE": {
+   "a": false,
+   "e": false,
+   "k": true,
+   "r": true,
+   "x": false
+  }
+ },
+ "ruling_LTS_coordinate_relevance": {
+  "ann.r1": "RELEVANT",
+  "ann.r2": "RELEVANT",
+  "by.r1": "CONSTANT (never varies)",
+  "by.r2": "CONSTANT (never varies)",
+  "deleg": "CONSTANT (never varies)",
+  "iss.r1": "CONSTANT (never varies)",
+  "iss.r2": "CONSTANT (never varies)",
+  "reg.r1": "CONSTANT (never varies)",
+  "reg.r2": "CONSTANT (never varies)",
+  "st.r1": "RELEVANT",
+  "st.r2": "RELEVANT",
+  "sup.r1": "RELEVANT",
+  "text.r1": "CONSTANT (never varies)",
+  "text.r2": "CONSTANT (never varies)"
+ }
+}

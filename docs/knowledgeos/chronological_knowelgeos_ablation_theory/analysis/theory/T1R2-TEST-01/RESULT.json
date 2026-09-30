@@ -1,0 +1,25 @@
+[
+ {
+  "case": "TEST P2 (ES-001.3 Governance Orientation Duty)",
+  "applicability": "SOURCE-STATED",
+  "reading_dependencies": [
+   "READING: hosted in ES-001 (ES-00x standard series)"
+  ],
+  "force": "AMBIGUOUS",
+  "doc_status": "PROPOSED",
+  "provisional_promote": false,
+  "requirements": {
+   "R-ev": "CONFORMS",
+   "R-q": "NOT-RECORDED",
+   "R-dec": "CONFORMS",
+   "R-prop": "NOT-RECORDED"
+  },
+  "explanations": {},
+  "claims": {
+   "C1": "NOT-TRIGGERED",
+   "C2": "NOT-TRIGGERED",
+   "C3": "NOT-TRIGGERED",
+   "C4": "NOT-TRIGGERED"
+  }
+ }
+]

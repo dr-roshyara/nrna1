@@ -1,0 +1,379 @@
+{
+ "file_id": "F0026",
+ "sequence": 26,
+ "timestamp": "Aug 5 15:44",
+ "date_events": [
+  {
+   "date_value": "2026-08-03",
+   "date_type": "COMMISSION",
+   "date_source": "'Stream 2 of the four-stream roadmap, 2026-08-03'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE"
+  },
+  {
+   "date_value": "2026-08-03",
+   "date_type": "REVISION",
+   "date_source": "'REV 2 — R-6 BROADENED per review'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE"
+  },
+  {
+   "date_value": "2026-08-03",
+   "date_type": "REVISION",
+   "date_source": "'REV 3 CLOSES THE LOOP and NAMES THE ACTOR'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE"
+  },
+  {
+   "date_value": "2026-08-03",
+   "date_type": "REVISION",
+   "date_source": "'REV 4 — governed-retrieval external input (2026-08-03)'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE"
+  },
+  {
+   "date_value": "2026-08-03",
+   "date_type": "REVISION",
+   "date_source": "'REV 5 (2026-08-03): first FORMAL behavioural record — OE-KOS-1'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE",
+   "evidence": "⭐ FIVE in-place revisions, all same-date. The file is a living matrix, not a snapshot."
+  }
+ ],
+ "historical_sequence_date": "2026-08-03",
+ "historical_sequence_date_basis": "EXPLICIT_COMMISSION_DATE",
+ "historical_sequence_date_confidence": "HIGH",
+ "path": "docs/knowledgeos/KnowledgeOS_Relationship_Validation_Matrix.md",
+ "purpose": "Validate the architecture's EDGES (not nodes) against external literature and practice; determine which relationships are externally supported, which are medium, and which are unique.",
+ "source_self_declared_status": {
+  "declared_kind": "RELATIONSHIP VALIDATION — external validation of edges, not nodes",
+  "declared_status": "CANDIDATE — NOT ADOPTED",
+  "declared_authority": "Generated — never authoritative without human review",
+  "declared_execution_effect": "Nothing in this document executes. The docket remains the agenda.",
+  "declared_placement": "NONE_DECLARED",
+  "declared_constraints": "No new concept · no redesign · no ADR · architecture held fixed",
+  "declared_admission_rule": "⭐ a source enters only if it materially changes the confidence of a concept/relationship or identifies a genuinely new gap",
+  "declared_provenance_marking": "[FETCHED] read via web this session · [CANONICAL] established literature, core thesis only"
+ },
+ "source_research_question": "EXPLICITLY_STATED_BY_SOURCE",
+ "source_research_question_text": "Which architectural RELATIONSHIP does this source support, challenge, or leave untouched?",
+ "reconstruction_question": "Which edges of the platform graph carry external support, and where is the uniqueness located? ⛔ Distinct from the source's per-source question; this one is about the RESULTING distribution across edges.",
+ "definitions": [
+  {
+   "term": "R-1..R-10",
+   "definition": "ten named architectural relationships under validation",
+   "status": "LOCAL_TO_FILE"
+  },
+  {
+   "term": "[FETCHED] vs [CANONICAL]",
+   "definition": "provenance markers — web-read this session vs established literature cited for core thesis only",
+   "status": "NEW_IN_THIS_FILE"
+  },
+  {
+   "term": "admission rule",
+   "definition": "a source enters only if it materially changes a confidence or identifies a genuinely new gap",
+   "status": "ADOPTED_AS_STANDING_HEADER_RULE"
+  }
+ ],
+ "assumptions": [
+  {
+   "id": "A1",
+   "assumption": "External practice in an adjacent field can raise confidence in an internal architectural edge",
+   "status": "IMPLICITLY_REQUIRED",
+   "note": "⚠️ The file qualifies this itself on R-1: 'analogical, not identical'."
+  },
+  {
+   "id": "A2",
+   "assumption": "Absence of an external instance is evidence of uniqueness",
+   "status": "EXPLICITLY_USED",
+   "note": "⭐ Drives the R-6 verdict. ⚠️ Absence of a FOUND instance, not absence of instances — the file does not claim an exhaustive search."
+  }
+ ],
+ "premises": [
+  {
+   "id": "P1",
+   "premise": "XACML PAP/PDP/PEP separation is a standard",
+   "evidence_grade": "FETCHED",
+   "sources_cited": 4
+  },
+  {
+   "id": "P2",
+   "premise": "FRBR chains work→expression→manifestation",
+   "evidence_grade": "CANONICAL"
+  },
+  {
+   "id": "P3",
+   "premise": "No external instance found of generating a governed knowledge space",
+   "evidence_grade": "SEARCH_RESULT_NEGATIVE"
+  },
+  {
+   "id": "P4",
+   "premise": "Internally, generates has n=0",
+   "evidence_grade": "OBSERVED"
+  },
+  {
+   "id": "P5",
+   "premise": "Team Topologies: platform teams serve stream-aligned teams",
+   "evidence_grade": "CANONICAL"
+  }
+ ],
+ "claims": [
+  {
+   "id": "C1",
+   "claim": "6 relationships externally supported at ≥HIGH (R-2 separation, R-3, R-4, R-5, R-8, R-10)",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C2",
+   "claim": "3 medium (R-1, R-7, R-9)",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C3",
+   "claim": "⭐ R-6 creates→PKS is UNIQUE — unproven inside (n=0) and outside (no instance found)",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C4",
+   "claim": "⭐⭐ The platform's edges are almost all standard engineering; what is uniquely unproven is ONE edge and ONE layer name",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C5",
+   "claim": "⭐ REV 3: the loop's TAIL is demonstrated and its HEAD is not; broken at exactly ONE place",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C6",
+   "claim": "⭐ R-7 inversion: externally standard, internally unlinked (SC-6)",
+   "standing": "CANDIDATE"
+  }
+ ],
+ "mathematical_objects": [],
+ "statistical_objects": [],
+ "derivations": [
+  {
+   "id": "D1",
+   "from": [
+    "P1"
+   ],
+   "to": "R-2 separation upgraded to HIGH",
+   "form": "MAPPING_TO_STANDARD",
+   "valid": "YES_AS_STATED",
+   "⚠️ note": "The LAYER (DP-n) is explicitly excluded from the upgrade — the file separates what the standard covers from what stays its own."
+  },
+  {
+   "id": "D2",
+   "from": [
+    "P3",
+    "P4"
+   ],
+   "to": "C3 R-6 is unique",
+   "form": "CONJUNCTION_OF_TWO_NEGATIVES",
+   "valid": "YES_AS_STATED",
+   "⚠️ limit": "rests on A2; a negative search result, not an exhaustive proof"
+  },
+  {
+   "id": "D3",
+   "from": [
+    "C1",
+    "C2",
+    "C3"
+   ],
+   "to": "C4 uniqueness is precisely locatable",
+   "form": "ELIMINATION_ACROSS_THE_EDGE_SET",
+   "valid": "YES",
+   "⭐ note": "The elimination is what makes the locatability claim strong — every other edge was checked and found standard."
+  },
+  {
+   "id": "D4",
+   "from": [
+    "the REV-3 composite chain"
+   ],
+   "to": "C5 the loop breaks at one place",
+   "form": "EDGE_BY_EDGE_STATUS_AUDIT",
+   "valid": "YES",
+   "⭐ note": "tail OBSERVED, head n=0"
+  }
+ ],
+ "conclusions": [
+  {
+   "conclusion": "⭐⭐ The distinctive bet of KnowledgeOS is precisely locatable: it is R-6",
+   "standing": "CANDIDATE"
+  },
+  {
+   "conclusion": "⭐ The uniqueness RELOCATES under the composite: no external instance of ONE platform owning the whole governed lifecycle of product knowledge",
+   "standing": "CANDIDATE"
+  },
+  {
+   "conclusion": "⚠️ Broadening the bet makes it HARDER to prove, not easier",
+   "standing": "CANDIDATE",
+   "⭐ note": "recorded as an honesty cost by the file itself"
+  }
+ ],
+ "dependencies": [
+  "XACML/OPA (FETCHED)",
+  "FRBR",
+  "CQRS",
+  "PDSA/Deming · TRL · GRADE",
+  "Team Topologies",
+  "Argyris & Schön theory-in-use",
+  "Meyer design-by-contract",
+  "Jansen & Bosch",
+  "OE-KOS-1",
+  "B-1's n≈3 fact",
+  "SC-6",
+  "Rounds 16-31",
+  "KnowledgeOS_Governed_Retrieval_Positioning_Validation.md"
+ ],
+ "previous_related_files": [
+  {
+   "file_id": "F0026",
+   "relation": "SELF",
+   "note": "the concept-matrix pass it sharpens is referenced but not resolved to a canonical id here — ⛔ NOT_RECOVERABLE_WITHOUT_REREAD of that file"
+  }
+ ],
+ "successor_candidates": [
+  {
+   "candidate": "Stream 3 Platform Architecture",
+   "basis": "§4 roadmap position, stated by the file",
+   "found_in_corpus": "NOT_YET_SEARCHED"
+  },
+  {
+   "candidate": "Stream 4 MVP",
+   "basis": "'its core is R-6, the unproven edge'",
+   "found_in_corpus": "NOT_YET_SEARCHED"
+  }
+ ],
+ "relationships": [
+  {
+   "type": "ESTABLISHES",
+   "target": "T-0027",
+   "basis": "⭐ this file IS T-0027's source — 'the distinctive bet is now precisely locatable: it is R-6'",
+   "strength": "DIRECT"
+  },
+  {
+   "type": "CONTRIBUTES_TO",
+   "target": "T-0035",
+   "basis": "REV 5 records OE-KOS-1 as the first formal behavioural record of the guides edge",
+   "strength": "PARTIAL",
+   "⚠️ note": "n=1 here; the n=3 count comes from a HELD file"
+  },
+  {
+   "type": "REFERENCES",
+   "target": "R-9 nesting",
+   "basis": "'nesting is less standardized than bounding' — MEDIUM",
+   "strength": "WEAK",
+   "⚠️ bears_on": "the B-7 nesting question"
+  }
+ ],
+ "continuity_assessment": "CONTINUOUS_WITH_PRIOR_RECONSTRUCTION",
+ "mathematical_continuity": "NOT_APPLICABLE",
+ "statistical_continuity": "NOT_APPLICABLE",
+ "logical_continuity": "CONTINUOUS — D2's conjunction-of-negatives is valid as stated with its limit declared",
+ "semantic_continuity": "CONTINUOUS",
+ "reasoning_documentation_quality": [
+  {
+   "dimension": "provenance_marking",
+   "quality": "HIGH",
+   "note": "⭐ every source marked [FETCHED] or [CANONICAL]; 4 URLs given"
+  },
+  {
+   "dimension": "limitation_disclosure",
+   "quality": "HIGH",
+   "note": "⭐ records its own honesty cost: broadening makes the bet harder to prove"
+  },
+  {
+   "dimension": "revision_transparency",
+   "quality": "HIGH",
+   "note": "5 REVs recorded in place, none rewriting the body"
+  },
+  {
+   "dimension": "search_exhaustiveness",
+   "quality": "LOW",
+   "note": "⚠️ 'no external instance found' is not qualified by a stated search scope"
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "R-6 generates — n=0 inside and outside",
+   "kind": "THE_CENTRAL_GAP"
+  },
+  {
+   "gap": "DP-n as a named layer — no external equivalent",
+   "kind": "NAMING_UNIQUENESS"
+  },
+  {
+   "gap": "SC-6 — capability↔AST link undeclared internally",
+   "kind": "INTERNAL_LINK_MISSING"
+  },
+  {
+   "gap": "R-9 nesting less standardized than bounding",
+   "kind": "PARTIAL_EXTERNAL_SUPPORT"
+  },
+  {
+   "gap": "the search scope behind 'no external instance found' is unstated",
+   "kind": "METHOD_GAP",
+   "⭐ found_by": "this reconstruction, not the file"
+  }
+ ],
+ "contradictions": [],
+ "corrections": [
+  {
+   "correction": "'PKS = Context Engineering' SOFTENED to 'addresses the same problem space and EXTENDS it with governance, lifecycle, authority and engineering semantics'",
+   "type": "CLAIM_WEAKENED"
+  },
+  {
+   "correction": "Jansen & Bosch elevated to PRIMARY validation — problem validation over solution fashion",
+   "type": "EVIDENCE_REPRIORITIZED"
+  }
+ ],
+ "scope_changes": [
+  {
+   "change": "REV 2/3 broaden R-6 from one edge to the composite lifecycle, then close the loop and name the actor",
+   "effect": "⭐ widens the claim and, by the file's own statement, makes it harder to prove"
+  }
+ ],
+ "definition_changes": [],
+ "theory_state": "⭐ ESTABLISHES T-0027. Contributes partially to T-0035. ⛔ No Candidate Theory change — v0.9 frozen; and rule 8 forbids using this retrofit to upgrade any other Theory Object.",
+ "implementation_state": "NOT_APPLICABLE — 'nothing in this document executes'",
+ "evidence": [
+  {
+   "kind": "FETCHED_WEB_SOURCES",
+   "n": 4
+  },
+  {
+   "kind": "CANONICAL_LITERATURE",
+   "n": 7
+  },
+  {
+   "kind": "INTERNAL_RECORDS",
+   "n": 3
+  }
+ ],
+ "confidence": [
+  {
+   "scope": "the edge classification as recorded",
+   "level": "HIGH"
+  },
+  {
+   "scope": "R-6's external uniqueness",
+   "level": "MEDIUM",
+   "reason": "⚠️ negative search result with unstated scope"
+  },
+  {
+   "scope": "that external practice validates internal edges",
+   "level": "MEDIUM",
+   "reason": "analogical, as the file itself notes on R-1"
+  }
+ ],
+ "validation_status": "RECONSTRUCTION_RECORD_VALIDATED",
+ "mathematical_validation_status": "NOT_APPLICABLE",
+ "statistical_validation_status": "NOT_APPLICABLE",
+ "retrofit_note": "⭐ Produced 2026-09-23 under U-0005. §9 step 2 (READ COMPLETE FILE) was executed — F0026 is ADMISSIBLE and rule 5 permits a read that §9 explicitly requires. ⛔ No other file read; no held file touched; no other Theory Object upgraded."
+}

@@ -1,0 +1,66 @@
+{
+ "02-FILES.jsonl": "6a804918dd5b1a0f0fb6d585b5f5c618de6420fc9380dcee8cce5fd09a4f675c",
+ "batches": {
+  "PB01": {
+   "slices": {
+    "approx-x-equivalence-relation-proof-and-32-projections-precision": "27cd30af2c9e938be084f59870afdfefa461a1a97c1ae96b9444c0d383a7e3e9",
+    "boring-kernel-purpose-vs-extent-dissolution": "ed63577f8f855b410bd2a924474498aeedf2558a609cd13af0c1bc59be1ace6a",
+    "capability-existence-vs-category-distinction": "298335a08869ec9d2ad17587f187c0649be8816bc1e6ba2bbc4ad222d6c64d25",
+    "composition-root-di-principle": "e1817f73817274c3b0d449abcd1fc0b7865b39c076b6ef70026ed98bffa204ff",
+    "discovery-derivation-architecture-ratification-implementation-stage-separation-principle": "c0c23b5402efa16f25f77802aac98f6fb630b4c9718354dd0550fb4c0616cc10"
+   }
+  },
+  "PB02": {
+   "slices": {
+    "five-blocker-triage-table": "9601611154edae3a38c73d4c0be2534e994eaabc0cb49a362f572d25d57506be",
+    "gita-hypothesis-architecture-consequence-pipeline": "4587e1b1518dca70afe6d236491d386067ee0cfd35c048b57e277edc609b436a",
+    "glyph-register-v3-collision-inventory-2026-09": "569784478942c7007be9c061a0ff743764c99639d5c1aff5aca4aae11bc5779a",
+    "h-kos-lifecycle-reasoning-001": "8aef1ec586c429d5d2a4c4ae7d44f9ad7d499a269868ccaf2b35c6c3406b0d51",
+    "hpa-gita-chapter18-synthesis-determination-mode-model": "bab8ad80a8318ae7ffa23e0b875fc4d3d1288de652e5b437cd5ea72f267e624b"
+   }
+  },
+  "PB03": {
+   "slices": {
+    "invariant-universe-not-one-mathematical-object": "92405ac51c3fe500a1e48149ea47e83492b103f351db6dfb5875f2cf27fba3bd",
+    "knowledge-graph-not-equal-knowledge-state": "6f1e267e38c65fdd75a21052878a314adefd0d2a913707b2f1c79eef65ab2873",
+    "knowledgeos-type-system": "42c50f47dfb02ac2f0b9a4def329122822da32bf71de65cbdb5bc34b367bf82b",
+    "linga-yoni-projection-transformation-experiment": "5746d5039f798c3589ee949d793439fccbb1660128fe9735bd1c72af69648938",
+    "minimal-adequate-representation-entropy-formalization": "fee0a67da252b3507fe2e7e2fff9be68d2528e8f6f956b41e14d18c509d92bfa"
+   }
+  },
+  "PB04": {
+   "slices": {
+    "nyaya-sutra-kernel-falsification-lens": "5bc05421524c497fb48ae58f5b7d21ca9d937c76c8351c696a74a8315c0cf007",
+    "rejection-produces-hypothesis-space-not-truth": "4a53cc966852557335cd7f2357004634b726dd1d414537638ba57831473ecc2d",
+    "relation-8-tuple-vs-triple-reduction": "68147a23dd68baf8b6b71c8d416ae1f687ec61976e7115713f034ab7a80dcd16",
+    "reverification-updated-dependency-chain-and-matrix": "23e0a2780c3240d227d6d61f070a7b259f522c9b031f7819992cd7781ca206ad",
+    "session-completion-handoff-protocol": "6894a39434ec1b5f2f34d8d34b196cbf38c78a7bcfa85eac267a1537737510bf"
+   }
+  },
+  "PB05": {
+   "slices": {
+    "shannon-weaver-information-theory-lens": "e7a017ea4a04238328a00402364e0055f7ccc62ef1c1fa922f0273ab8ac2dcda",
+    "step-verify-programme": "7eca019939c602f8a4be6b86f4aaeac58bb709db4981bf9c2057bbcabfe90970",
+    "step185-differentiated-non-identity-chain": "7b5a4771e2d22589b9ab31112b492c55e327368c0e80d133608d95e37e03abb1",
+    "step291-n4-leverage-not-earliest": "e46ebb78bddf82d3e75ff159e5e1e082be8e4073ed3585b65f2513767a75ae0b",
+    "sufficient-state-control-theory-lens": "fb4206f2d26b3fc8fb834c2617fb878af7936a9a0c7989216f5781407a9c1377"
+   }
+  },
+  "PB06": {
+   "slices": {
+    "uncertainty-statistical-model-based-reasoning-part21": "1d33c29c1cb8dd365a7d446454cc7d9251f798e00dcca58ced3361e0275ffdfa",
+    "v1-1-sim-kernel-capability-set": "beee779b9093c64dd7eb6b51bf4767c92785c69035340912c04c07bfbbd01a8a",
+    "vedic-palmistry-structural-reasoning-inventory-2026-09": "a00395482c0a8917549928a3b38ea20b5ec11d25bc65ced1587ee339f35b6ab7",
+    "verification-pipeline-and-reasoning-failure-not-falsehood": "c084ea1a29c0d36bf2650b1bfe118d8b753416905f1b1bbe08dac99a99ec6b9d",
+    "verification-reconciliation-gate-directive": "0d98b368e38bfc682568a9efb18286281a2419a17508aa762c86b87f584594ca"
+   }
+  }
+ },
+ "contract_sha256": "3dbce7d750a4a61934a524d62abc41358c0b1c51cd3fe219516bcaf636c06613",
+ "enforcement_blobs": {
+  "scripts/p3b_discovery_io.py": "e4df3151f07cf3033422fb5d95263a3c09642e51",
+  "scripts/p3b_read_source.py": "051b7136bfdc646b2d3cde4e69e8c2c1ae111fb8",
+  "scripts/p3b_s3_mechanical_prep.py": "95017f1230a73ff67f89b38c0e7b084a3149655d"
+ },
+ "run_id": "S4-PILOT-R2-001"
+}

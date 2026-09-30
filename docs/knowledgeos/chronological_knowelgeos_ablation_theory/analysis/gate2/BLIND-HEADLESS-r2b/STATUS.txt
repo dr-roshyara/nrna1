@@ -1,0 +1,5 @@
+CLEAN: My context contains only the task instructions and generic global CLAUDE.md notes about the Anthropic SDK, with no results, predictions, implementations, or property evaluations of models M0, M0b, M1, M2, M3a or M3b.
+BUNDLE: sha256sum -c BUNDLE.sha256 -> SPEC-G2-r2.md: OK, README.md: OK
+1e466068ea9c36d0aed541009d6bc16399a9e6737fc95a7931fd4af723039de4  results.json
+7ef3962a0dcd207d58a38b693ea43e20bf9da14c6d2071f43f3987befcab9e26  METHOD.md
+4ef0231fa543ca83d94c88c99c38b336cf1f33d117bbb5045dc1897eab28ff66  verifier_g2.py

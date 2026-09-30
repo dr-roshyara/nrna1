@@ -1,0 +1,91 @@
+{
+  "witness_conformance_A": "STRICT",
+  "witness_conformance_reviewer": "STRICT",
+  "witness_kind_A": "NONE",
+  "witness_kind_reviewer": "NONE",
+  "disagreements": [
+    {
+      "id": "D1",
+      "field": "P.conformance (support)",
+      "class": "coding",
+      "A": "CONFORMANT; quotes centre on preparation vs adoption",
+      "reviewer": "CONFORMANT (partial, fragile); load-bearing quote is 'independent review completed' (R-86); evidence-submission role for P is not stated",
+      "changes_classification": false,
+      "note": "If coded UNK instead, witness_conformance becomes NONE; the text does not rule this out"
+    },
+    {
+      "id": "D2",
+      "field": "P.conformance quote 'The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour'",
+      "class": "independence",
+      "A": "Used as support for CONFORMANT",
+      "reviewer": "The preparer is speaking about itself; the independent support is the Decision Authority's grounds ('provenance corrected', 'independent review completed')",
+      "changes_classification": false
+    },
+    {
+      "id": "D3",
+      "field": "P.kind, Q.kind (value)",
+      "class": "coding",
+      "A": "ruling (prepared ruling)",
+      "reviewer": "ruling; 'prepared' belongs to state_before, not kind",
+      "changes_classification": false
+    },
+    {
+      "id": "D4",
+      "field": "Q.kind (quotes)",
+      "class": "coding",
+      "A": "Header 'Architecture Governance · Determination on submitted evidence · ARB CHIEF (PREPARED)' + 'this ruling collapsed the two' + 'A PREPARED ruling was still engineering deciding the outcome, in softer wording.'",
+      "reviewer": "The header does not state 'ruling' (it supports the finer grain only); the other two mainly support conformance; the value 'ruling' is still stated ('this ruling', 'A PREPARED ruling')",
+      "changes_classification": false
+    },
+    {
+      "id": "D5",
+      "field": "P.outcome, Q.outcome",
+      "class": "coding",
+      "A": "Values not quoted",
+      "reviewer": "Quote required: '✅ ADOPTED 2026-08-04 BY THE DECISION AUTHORITY, WITHOUT AMENDMENT (adoption act: R-86)'; '⛔ HELD 2026-08-04 — NOT ADOPTED'",
+      "changes_classification": false
+    },
+    {
+      "id": "D6",
+      "field": "ANSWER.md label: 'This is why R-91 was in the PREPARED state'",
+      "class": "wording",
+      "A": "SOURCE FACT",
+      "reviewer": "INFERENCE, supported by R-91's '(R-86/R-87 created no standing delegation; R-88 was a single act)'",
+      "changes_classification": false
+    },
+    {
+      "id": "D7",
+      "field": "R-71 use",
+      "class": "evidence scope",
+      "A": "Supports reading Q's ground as RULE by analogy",
+      "reviewer": "Bears on no coded value; not cited by R-86 or R-91; Q's RULE rests on R-91 alone",
+      "changes_classification": false
+    },
+    {
+      "id": "D8",
+      "field": "Missed quotes (P.conformance; COLLAPSED alternative for P)",
+      "class": "evidence scope",
+      "A": "Not cited",
+      "reviewer": "R-86 'the five rulings' own recorded evidence, unaltered by this act'; R-86 'reinterprets no evidence'; R-81 'the ARB authorizes the slice, engineering selects the construct'; R-81 'self-issued rulings must meet the identical test'; R-81 'these five were filed by the Chief acting on a delegated session mandate' / '“BATCH 7 IS RELEASED” DOES NOT HOLD', corrected per R-86 'provenance corrected' and R-81 'the condition it imposed is discharged'",
+      "changes_classification": false,
+      "note": "They strengthen partial CONFORMANT and rule out COLLAPSED for P"
+    },
+    {
+      "id": "D9",
+      "field": "kind (grain)",
+      "class": "source interpretation",
+      "A": "Coarse grain primary; finer grain as alternative A2",
+      "reviewer": "Agree on coarse primary (task taxonomy; both explicitly called rulings), but the finer grain is the register's own typed header and decides STRICT vs POSSIBLE vs NONE; it should be flagged as the second-strongest alternative",
+      "changes_classification": false
+    },
+    {
+      "id": "D10",
+      "field": "P.ground",
+      "class": "source interpretation",
+      "A": "CHOICE",
+      "reviewer": "CHOICE, with rule-type elements ('Option B declined: it is appropriate only if a ruling is incorrect or insufficiently supported')",
+      "changes_classification": false,
+      "note": "P's ground is not used by the §2 rule"
+    }
+  ]
+}

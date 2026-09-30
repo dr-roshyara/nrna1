@@ -1,0 +1,58 @@
+{
+ "rule_fidelity_ok": true,
+ "rule_fidelity_notes": [
+  "bound is honoured only when value == UNK; bound with an integer value silently ignored (docstring silent; no event affected)",
+  "input path LOOP-1AM2/R2/B/REVIEW.json vs supplied EVENTS.json: identity not verifiable",
+  "RESULT.json emits non-standard JSON Infinity",
+  "no unit string in EVENTS.json mishandled ('tickets (= the column's slices)' -> slices; E13 bound '2-3' parsed; E21 '2-ish' is a note -> UNK)"
+ ],
+ "recomputation_matches": true,
+ "recomputation_mismatches": [],
+ "bounds": {
+  "one_context_premise_sourced": false,
+  "slice_may_span_contexts": true,
+  "r36_slice_may_count_as_multiple_contexts": true,
+  "only_result_relevant_bound": "E01 br.hi (instances)",
+  "if_bound_fails_for_slices_only": "no pair changes",
+  "if_bound_fails_for_E01": {
+   "V0": {"M_rep": [["E01","E02"],["E01","E20"],["E01","E25"],["E24","E25"]], "M_br": [["E27","E02"],["E27","E20"],["E27","E25"]], "M_vec": []},
+   "VX": {"M_rep": [["E01","E02"],["E01","E20"],["E01","E25"],["E24","E25"]], "M_br": [], "M_vec": []},
+   "VE25": {"M_rep": [["E01","E02"],["E01","E20"]], "M_br": [["E27","E02"],["E27","E20"]], "M_vec": []},
+   "VX+VE25": {"M_rep": [["E01","E02"],["E01","E20"]], "M_br": [], "M_vec": []}
+  }
+ },
+ "critical_events": ["E01"],
+ "critical_event_detail": {
+  "E01": {
+   "coded": {"value": 1, "unit": "instances", "ground": "UNK", "exception": "UNK"},
+   "source_establishes_coded_value": false,
+   "source_supports": "provenance count 1 established; decision-time evidence 1-2 (R-41 itself cites the second instance) -> value UNK, bound 1-2",
+   "quote": "Provenance: the WP-1 closure inconsistency ... corrected 2026-07-30; first checklist execution the same day caught a second instance (ADR-T22 row's ...)"
+  },
+  "E02": {"in_every_pair": false, "source_establishes_coded_value": true, "strict_if_UNK": "FALSIFIED (E01,E20 remains)"},
+  "E20": {"in_every_pair": false, "source_establishes_coded_value": true, "ground_RULE_contestable": true, "strict_if_UNK": "FALSIFIED (E01,E02 remains)"}
+ },
+ "strict_variant_if_critical_UNK": {
+  "label": "POST HOC",
+  "variant": "VX+VE25",
+  "E01_set_to": "UNK",
+  "M_rep": {"verdict": "NOT FALSIFIED", "pairs": []},
+  "M_br": {"verdict": "NOT FALSIFIED", "pairs": []},
+  "M_vec": {"verdict": "NOT FALSIFIED", "pairs": []},
+  "also_not_falsified_with": ["E01 bound 1-2", "E01 ground CHOICE"]
+ },
+ "disagreements": [
+  {"id": "D1", "item": "E01 value 1 vs sourced 1-2", "class": "source interpretation", "effect": "critical: strict variant NOT FALSIFIED"},
+  {"id": "D2", "item": "E01 ground UNK though adopted by Principal Architect instruction (authority)", "class": "coding", "effect": "critical if CHOICE"},
+  {"id": "D3", "item": "one-context-per-instance/slice premise not sourced", "class": "evidence scope", "effect": "via E01 breadth: M_br/M_vec lose all E01 pairs"},
+  {"id": "D4", "item": "R-36 slices (PB-005, PB-006) plausibly span several contexts", "class": "source interpretation", "effect": "none on pairs"},
+  {"id": "D5", "item": "instances/occurrences/slices pooled on one repetition axis", "class": "substantive", "effect": "underpins every pair"},
+  {"id": "D6", "item": "equal point vectors refute any function of the vector, not only monotone models", "class": "formal reasoning", "effect": "strengthens conditional claim"},
+  {"id": "D7", "item": "E20 ground RULE vs 'not a pattern' kind ruling", "class": "source interpretation", "effect": "non-critical"},
+  {"id": "D8", "item": "E24/E25 same protocol and evidence, not independent", "class": "independence", "effect": "V0/VX M_rep pair (E24,E25) only"},
+  {"id": "D9", "item": "E01 exception UNK; possibly unrecorded authority exception", "class": "source interpretation", "effect": "under H-X removes all strict pairs"},
+  {"id": "D10", "item": "declared input REVIEW.json vs supplied EVENTS.json", "class": "evidence scope", "effect": "none known"},
+  {"id": "D11", "item": "bound ignored when value is an integer; docstring silent", "class": "wording", "effect": "no event affected"},
+  {"id": "D12", "item": "RESULT.json contains Infinity (non-standard JSON)", "class": "wording", "effect": "none"}
+ ]
+}

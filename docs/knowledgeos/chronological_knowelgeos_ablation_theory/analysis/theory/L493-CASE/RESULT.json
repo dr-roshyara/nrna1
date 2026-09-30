@@ -1,0 +1,149 @@
+{
+ "labels": "all outputs MODEL-DERIVED; MDS-U is an artificial uniform-model score, NOT empirical information",
+ "by_norm_reading": {
+  "QUAL": {
+   "P1 consistency": {
+    "H1": "CONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H1",
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "L493-A binding vocabulary ruling": {
+    "consistency": {
+     "H1": "CONSISTENT",
+     "H2": "CONSISTENT",
+     "H3a": "CONSISTENT",
+     "H3b": "CONSISTENT",
+     "H4": "CONSISTENT",
+     "H5": "CONSISTENT"
+    },
+    "alive_after": [
+     "H1",
+     "H2",
+     "H3a",
+     "H3b",
+     "H4",
+     "H5"
+    ],
+    "still_indistinguishable_pairs": [
+     "H1|H2"
+    ]
+   }
+  },
+  "VAL": {
+   "P1 consistency": {
+    "H1": "INCONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "L493-A binding vocabulary ruling": {
+    "consistency": {
+     "H2": "CONSISTENT",
+     "H3a": "CONSISTENT",
+     "H3b": "CONSISTENT",
+     "H4": "CONSISTENT",
+     "H5": "CONSISTENT"
+    },
+    "alive_after": [
+     "H2",
+     "H3a",
+     "H3b",
+     "H4",
+     "H5"
+    ],
+    "still_indistinguishable_pairs": []
+   }
+  },
+  "QUAL_AND_VAL": {
+   "P1 consistency": {
+    "H1": "INCONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "L493-A binding vocabulary ruling": {
+    "consistency": {
+     "H2": "CONSISTENT",
+     "H3a": "CONSISTENT",
+     "H3b": "CONSISTENT",
+     "H4": "CONSISTENT",
+     "H5": "CONSISTENT"
+    },
+    "alive_after": [
+     "H2",
+     "H3a",
+     "H3b",
+     "H4",
+     "H5"
+    ],
+    "still_indistinguishable_pairs": []
+   }
+  },
+  "QUAL_OR_VAL": {
+   "P1 consistency": {
+    "H1": "CONSISTENT",
+    "H2": "CONSISTENT",
+    "H3a": "CONSISTENT",
+    "H3b": "CONSISTENT",
+    "H4": "CONSISTENT",
+    "H5": "CONSISTENT"
+   },
+   "alive_after_dev": [
+    "H1",
+    "H2",
+    "H3a",
+    "H3b",
+    "H4",
+    "H5"
+   ],
+   "L493-A binding vocabulary ruling": {
+    "consistency": {
+     "H1": "CONSISTENT",
+     "H2": "CONSISTENT",
+     "H3a": "CONSISTENT",
+     "H3b": "CONSISTENT",
+     "H4": "CONSISTENT",
+     "H5": "CONSISTENT"
+    },
+    "alive_after": [
+     "H1",
+     "H2",
+     "H3a",
+     "H3b",
+     "H4",
+     "H5"
+    ],
+    "still_indistinguishable_pairs": []
+   }
+  }
+ }
+}

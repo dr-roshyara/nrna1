@@ -1,0 +1,702 @@
+{
+ "PV0001": {
+  "candidate_pair_id": "formal-verification-strategy-model__kos-computability-and-execution-boundary",
+  "stratum": "BOTH_DEP_AND_LINEAGE",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0002": {
+  "candidate_pair_id": "step174-required-traceability-is-policy-driven__step175-multiple-old-states-and-selective-anchoring",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0003": {
+  "candidate_pair_id": "topology-invariant-lens__vedanta-pramana-epistemic-pipeline",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0004": {
+  "candidate_pair_id": "kos-global-invariant-set-20__update-preserve-assertion-lifecycle",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0005": {
+  "candidate_pair_id": "state-transition-formalization__update-preserve-assertion-lifecycle",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0006": {
+  "candidate_pair_id": "concept-drift-taxonomy__kos-seven-context-ddd-mapping",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0007": {
+  "candidate_pair_id": "kr-kernel-minimality-2026-09__vedic-math-genius-structural-algebra-discovery-2026-09",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": "RP1384",
+  "existing_p3a_relationship": "EXTENSION",
+  "existing_p3a_basis": "CORROBORATED"
+ },
+ "PV0008": {
+  "candidate_pair_id": "inference-object__knowledgeos-platform",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0009": {
+  "candidate_pair_id": "conflict-taxonomy-vs-contradiction__knowledge-state-formalization",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0010": {
+  "candidate_pair_id": "corpus-four-equality-relations-step246__step290-n1-verdict-candidate-not-contradiction",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0011": {
+  "candidate_pair_id": "step180-unknown-vs-contradictory-state-space__step181-conflict-is-epistemic-fact-not-error",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0012": {
+  "candidate_pair_id": "computability-audit-step266__proposition-assertion-knowledge-hierarchy",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0013": {
+  "candidate_pair_id": "gita-chapter3-validation-exercise__state-transition-formalization",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0014": {
+  "candidate_pair_id": "causal-cascade-mediation-model__concurrency-idempotency-replay-model",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0015": {
+  "candidate_pair_id": "critical-thinking-epistemic-state-extraction__not-knowledge-inverse-definition-approach",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0016": {
+  "candidate_pair_id": "evidence-aggregation-algebra__semantic-equivalence-refinement-contradiction-merge-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0017": {
+  "candidate_pair_id": "basic-action-theory-structure__successor-state-semantics-candidate",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0018": {
+  "candidate_pair_id": "decision-contract-admissibility-model__kos-seven-context-ddd-mapping",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0019": {
+  "candidate_pair_id": "refined-step-287-invariants-register__spec-det-2026-v1-threshold-determination",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0020": {
+  "candidate_pair_id": "lineage-47-tests-inflation__provenance",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0021": {
+  "candidate_pair_id": "knowledgeos-model-mathematical-review-gaps__zero-lens-gap-detection-formalization",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0022": {
+  "candidate_pair_id": "epistemic-calibration-reality-alignment-validation-algebra__semantic-interoperability-bounded-context-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0023": {
+  "candidate_pair_id": "step289-dependency-graph-bootstrap-cut__step290-n1-equality-observational-adjudication-mandate",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0024": {
+  "candidate_pair_id": "dhatu-extraction-pipeline-research-design__topological-knowledge-state-lens",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0025": {
+  "candidate_pair_id": "epistemic-sufficiency-decision-preconditions-assurance-composition-algebra__information-acquisition-value-of-information-active-learning-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP0530",
+  "existing_p3a_relationship": "UNWITNESSED",
+  "existing_p3a_basis": "NONE"
+ },
+ "PV0026": {
+  "candidate_pair_id": "epistemic-resource-allocation-attention-scheduling-portfolio-optimization-algebra__epistemic-sufficiency-decision-preconditions-assurance-composition-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP0521",
+  "existing_p3a_relationship": "UNWITNESSED",
+  "existing_p3a_basis": "NONE"
+ },
+ "PV0027": {
+  "candidate_pair_id": "formal-zero-algebra__semantic-interoperability-bounded-context-algebra",
+  "stratum": "BOTH_DEP_AND_LINEAGE",
+  "existing_p3a_pair_id": "RP0637",
+  "existing_p3a_relationship": "EXTENSION",
+  "existing_p3a_basis": "CORROBORATED"
+ },
+ "PV0028": {
+  "candidate_pair_id": "action-rationale-and-why-act-factfinding__minica-del-questions-inquiry-lens-2026-09",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0029": {
+  "candidate_pair_id": "knowledge-state-equality-relation-family__measurement-scale-semantics-VD",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0030": {
+  "candidate_pair_id": "gardenfors-knowledge-in-flux-lens__knowledgeos-kernel-boundary-epistemic-infrastructure-synthesis",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP0669",
+  "existing_p3a_relationship": "EXTENSION",
+  "existing_p3a_basis": "INFERRED"
+ },
+ "PV0031": {
+  "candidate_pair_id": "kos-computability-and-execution-boundary__kos-domain-type-system",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0032": {
+  "candidate_pair_id": "step178-facts-vs-norms-and-three-valid-predicates__step182-question-decomposition-and-truth-layering",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0033": {
+  "candidate_pair_id": "epistemic-sarathi-see-guide-decide__sarathi-investigation-guide",
+  "stratum": "LINEAGE_SOURCEID_ONLY",
+  "existing_p3a_pair_id": "RP0526",
+  "existing_p3a_relationship": "SAME",
+  "existing_p3a_basis": "CORROBORATED"
+ },
+ "PV0034": {
+  "candidate_pair_id": "leonardo-context-completeness-lens__statistical-learning-method-catalogue",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0035": {
+  "candidate_pair_id": "compositional-correctness-and-proof-boundaries__concurrency-interleaving-calculus",
+  "stratum": "BOTH_DEP_AND_LINEAGE",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0036": {
+  "candidate_pair_id": "decision-experiment-object__epistemic-exploration-safety-policy",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0037": {
+  "candidate_pair_id": "gita-tripiti-relationship-lens__knowledgeos-tripurti-three-entities",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0038": {
+  "candidate_pair_id": "action-disposition-model__wisdom-engineering-narrow-definition",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0039": {
+  "candidate_pair_id": "step162-bc-candidate-derivation__step173-merge-experiment-and-ddd-score",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0040": {
+  "candidate_pair_id": "capability__oq-h-c14-home-question",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0041": {
+  "candidate_pair_id": "step261-equality-ambiguity-stop-gate__step288-mathematical-audits-thirteen-falsifications",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0042": {
+  "candidate_pair_id": "chakra-manifestation-pipeline__transformation-layer-skip-degradation-law",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0043": {
+  "candidate_pair_id": "KnowledgeOS__historical-continuity-vs-accessible-memory",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0044": {
+  "candidate_pair_id": "concurrency-interleaving-calculus__kos-minimal-kernel",
+  "stratum": "BOTH_DEP_AND_LINEAGE",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0045": {
+  "candidate_pair_id": "sigma-five-axis-epistemic-state-q4a__step288-equality-register-nine-registers-g67",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0046": {
+  "candidate_pair_id": "evidence-aggregation-heterogeneous-algebra__formal-sarathi-decision-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0047": {
+  "candidate_pair_id": "seam-identity-continuity-012-038-195__step288-decision-procedure-completeness-matrix",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0048": {
+  "candidate_pair_id": "knowledgeos-evidence-measure-and-independence__step186-math-vs-domain-model-and-parallel-inference",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0049": {
+  "candidate_pair_id": "decision-theory-value-of-information-algebra__information-acquisition-value-of-information-active-learning-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP0417",
+  "existing_p3a_relationship": "UNWITNESSED",
+  "existing_p3a_basis": "NONE"
+ },
+ "PV0050": {
+  "candidate_pair_id": "lord-omega-infinite-knowledge-space-lens__zero-lens-non-collapse-discipline",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP1412",
+  "existing_p3a_relationship": "EXTENSION",
+  "existing_p3a_basis": "INFERRED"
+ },
+ "PV0051": {
+  "candidate_pair_id": "step178-decision-as-constrained-optimization__step178-epistemic-vs-governance-functions",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0052": {
+  "candidate_pair_id": "kos-emergence-systemic-risk-collective-correctness__kos-organizational-agency-multi-agent-boundary",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0053": {
+  "candidate_pair_id": "KnowledgeOS__epistemic-vs-practical-decision-separation",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0054": {
+  "candidate_pair_id": "decision-readiness-stop-condition-model__decision-state-presentation-projection-model",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP0406",
+  "existing_p3a_relationship": "EXTENSION",
+  "existing_p3a_basis": "CORROBORATED"
+ },
+ "PV0055": {
+  "candidate_pair_id": "step185-assertion-tuple-and-two-time-dimensions__step188-four-time-dimensions-and-bitemporal-core",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0056": {
+  "candidate_pair_id": "sigma-derivation-from-step272-six-sources__step-271-policy-semantic-minimality-unclosed",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0057": {
+  "candidate_pair_id": "KnowledgeOS__knowledgeos-final-definition",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0058": {
+  "candidate_pair_id": "adaptive-inference-fabric-egaif__progressive-epistemic-computation-principle",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0059": {
+  "candidate_pair_id": "kos-model-breaking-adversarial-audit__kos-reference-state-machine",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP1337",
+  "existing_p3a_relationship": "UNWITNESSED",
+  "existing_p3a_basis": "NONE"
+ },
+ "PV0060": {
+  "candidate_pair_id": "dimension-discovery-capability__dimension-semantic-axis-model",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0061": {
+  "candidate_pair_id": "next-actor-orchestration-ast018__start-gate-refusal-precedent",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0062": {
+  "candidate_pair_id": "master-gap-register-53-gaps__sufficient-f-o-i-criterion-adoption",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0063": {
+  "candidate_pair_id": "step188-filtration-model-and-verdict__step188-i29-i32-invariants",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0064": {
+  "candidate_pair_id": "dretske-information-flow-knowledge-lens__knowledgeos-kernel-boundary-epistemic-infrastructure-synthesis",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0065": {
+  "candidate_pair_id": "formal-sarathi-decision-algebra__model-hypothesis-prediction-revision-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0066": {
+  "candidate_pair_id": "epistemic-value-anthology-lens-2026-09__kr-epistemic-agency-2026-09-formal-specification",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP0532",
+  "existing_p3a_relationship": "UNWITNESSED",
+  "existing_p3a_basis": "NONE"
+ },
+ "PV0067": {
+  "candidate_pair_id": "sigma-five-axis-epistemic-state-q4a__step261-equality-ambiguity-stop-gate",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0068": {
+  "candidate_pair_id": "belief-revision-theory-compatibility-analysis__gardenfors-knowledge-in-flux-lens",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0069": {
+  "candidate_pair_id": "activate-commissioned-fresh-session-ast019__unified-runtime-human-binding-invariant",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0070": {
+  "candidate_pair_id": "spec-amend-2026-v1-demotion-and-ea-definition__spec-det-2026-v1-threshold-determination",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0071": {
+  "candidate_pair_id": "dimension-discovery-capability__proposition-assertion-knowledge-hierarchy",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0072": {
+  "candidate_pair_id": "evidence-graph-model__knowledgeos-platform",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0073": {
+  "candidate_pair_id": "comparison-challenge-operations__proposition-assertion-knowledge-hierarchy",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0074": {
+  "candidate_pair_id": "comparison-challenge-operations__dimension-semantic-axis-model",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0075": {
+  "candidate_pair_id": "dhatu-extraction-pipeline-research-design__knowledge-vector-measurement-framework",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0076": {
+  "candidate_pair_id": "formal-lord-action-selection-algebra__information-gain-value-of-evidence",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0077": {
+  "candidate_pair_id": "o-core-ratification-gap-d0__step283-governance-ratification-protocol",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0078": {
+  "candidate_pair_id": "knowledge-atma-identity-concept__knowledgeos-kernel-concept",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": "RP1109",
+  "existing_p3a_relationship": "EXTENSION",
+  "existing_p3a_basis": "CORROBORATED"
+ },
+ "PV0079": {
+  "candidate_pair_id": "publication-gate-trusted-advancement__topology-invariant-lens",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0080": {
+  "candidate_pair_id": "step166-current-state-not-superset-of-history__step167-state-projection-information-loss",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0081": {
+  "candidate_pair_id": "kos-decision-theory-model__kos-domain-type-system",
+  "stratum": "BOTH_DEP_AND_LINEAGE",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0082": {
+  "candidate_pair_id": "knowledgeos-model-mathematical-review-gaps__sarathi-investigation-guide",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0083": {
+  "candidate_pair_id": "gn-95-authoritative-act-intake-register__hilbert-space-representation-experiment",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0084": {
+  "candidate_pair_id": "vedanta-pramana-epistemic-pipeline__zero-neutral-state-lens",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0085": {
+  "candidate_pair_id": "KnowledgeOS__reasoning-integrity-kernel",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0086": {
+  "candidate_pair_id": "proposition-assertion-knowledge-hierarchy__update-preserve-assertion-lifecycle",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0087": {
+  "candidate_pair_id": "sarathi-investigation-guide__zero-lens-bayesian-gaps",
+  "stratum": "LINEAGE_SOURCEID_ONLY",
+  "existing_p3a_pair_id": "RP1635",
+  "existing_p3a_relationship": "UNWITNESSED",
+  "existing_p3a_basis": "NONE"
+ },
+ "PV0088": {
+  "candidate_pair_id": "book-full-depth-assessment-audit__production-findings-pf-register",
+  "stratum": "LINEAGE_SUBSTRING_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0089": {
+  "candidate_pair_id": "step173-knowledgeos-name-danger__step177-truth-rejected-as-single-predicate",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0090": {
+  "candidate_pair_id": "knowledgeos-information-theory-and-hallucination-bound__step177-belief-and-ai-hallucination-prevention",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0091": {
+  "candidate_pair_id": "kos-domain-type-system__kos-epistemic-algebra",
+  "stratum": "BOTH_DEP_AND_LINEAGE",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0092": {
+  "candidate_pair_id": "causal-counterfactual-rootcause-algebra__model-hypothesis-prediction-revision-algebra",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0093": {
+  "candidate_pair_id": "step183-preserve-absence-and-uncertainty-transitions__step184-established-inferable-unknown",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0094": {
+  "candidate_pair_id": "seam-025-algebra-knowledge-identity__step288-equality-register-nine-registers-g67",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0095": {
+  "candidate_pair_id": "evidence-inquiry-object__evidence-need-object",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0096": {
+  "candidate_pair_id": "step260-behavioural-equivalence-history-quotient__step289-dependency-graph-bootstrap-cut",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0097": {
+  "candidate_pair_id": "step288-decision-procedure-completeness-matrix__step288-mathematical-audits-thirteen-falsifications",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0098": {
+  "candidate_pair_id": "compositional-correctness-and-proof-boundaries__kos-minimal-kernel",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0099": {
+  "candidate_pair_id": "b-prime-relocation-decision__event-driven-domain-loop",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ },
+ "PV0100": {
+  "candidate_pair_id": "paninian-semantic-transformation-lens__topological-knowledge-state-lens",
+  "stratum": "DEP_ONLY",
+  "existing_p3a_pair_id": null,
+  "existing_p3a_relationship": null,
+  "existing_p3a_basis": null
+ }
+}

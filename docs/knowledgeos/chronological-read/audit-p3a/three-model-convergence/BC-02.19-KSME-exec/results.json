@@ -1,0 +1,339 @@
+{
+  "code_version": "ksme-0.1.0",
+  "seed": 20260921,
+  "state_space": {
+    "num_worlds": 256,
+    "num_reachable_epistemic_states": 128,
+    "properties": [
+      "p1",
+      "p2",
+      "p3",
+      "p4",
+      "p5",
+      "p6",
+      "p7",
+      "p8"
+    ],
+    "ground_truth_roles": {
+      "p1": "RELEVANT-GLOBAL",
+      "p2": "IRRELEVANT",
+      "p3": "REDUNDANT-PAIR",
+      "p4": "REDUNDANT-PAIR",
+      "p5": "CONTEXTUAL",
+      "p6": "OP-DEPENDENT(Qualify only)",
+      "p7": "UNOBSERVABLE(world-level, hidden by Omega)",
+      "p8": "FUTURE-RELEVANT(regime-dependent: irrelevant under T_req^(1), relevant under T_req^(2))"
+    }
+  },
+  "KSME_01A_identifiability_from_Omega": {
+    "p1": true,
+    "p2": true,
+    "p3": true,
+    "p4": true,
+    "p5": true,
+    "p6": true,
+    "p7": false,
+    "p8": true
+  },
+  "KSME_01B_01C_detected_relevance_v1": {
+    "p1": true,
+    "p2": false,
+    "p3": true,
+    "p4": true,
+    "p5": false,
+    "p6": true,
+    "p7": false,
+    "p8": false
+  },
+  "KSME_01D_congruence_violations_v1": [],
+  "equivalence_relation_properties_v1": {
+    "reflexive": true,
+    "symmetric": true,
+    "symmetry_failures": [],
+    "transitive": true,
+    "transitivity_failures": []
+  },
+  "KSME_01E_minimality": {
+    "ground_truth_relevant_(by_construction)": {
+      "p1": true,
+      "p2": false,
+      "p3": true,
+      "p4": true,
+      "p5": true,
+      "p6": true,
+      "p7": true,
+      "p8": true
+    },
+    "detected_relevant_(sensitivity_test)": {
+      "p1": true,
+      "p2": false,
+      "p3": true,
+      "p4": true,
+      "p5": false,
+      "p6": true,
+      "p7": false,
+      "p8": false
+    },
+    "agreement": {
+      "p1": true,
+      "p2": true,
+      "p3": true,
+      "p4": true,
+      "p5": false,
+      "p6": true,
+      "p7": false,
+      "p8": false
+    }
+  },
+  "KSME_01F_context_p5": {
+    "state_copy_of_p5_affects_behavior": false,
+    "conclusion": "REMOVABLE FROM STATE, MUST REMAIN AVAILABLE AS CONTEXT"
+  },
+  "KSME_01G_adversarial_regime_dependence": {
+    "hidden_operation_findings": [
+      {
+        "v1_class_repr": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      },
+      {
+        "v1_class_repr": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0
+        ],
+        "v1_class_size": 16,
+        "v2_subpartitions": 2
+      }
+    ],
+    "p8_detected_relevant_under_v1": false,
+    "p8_detected_relevant_under_v2": true
+  },
+  "World_B_C5_observation_loss": {
+    "pairs_differing_only_in_p7": 256,
+    "pairs_collapsed_by_Omega": 256,
+    "identifiable_p7": false
+  },
+  "C7_naive_representation_congruence_break": {
+    "violation_count": 32,
+    "sample": [
+      {
+        "naive_class_repr": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "naive_class_size": 4,
+        "true_subpartitions": 2
+      },
+      {
+        "naive_class_repr": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "naive_class_size": 4,
+        "true_subpartitions": 2
+      },
+      {
+        "naive_class_repr": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "naive_class_size": 4,
+        "true_subpartitions": 2
+      },
+      {
+        "naive_class_repr": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        "naive_class_size": 4,
+        "true_subpartitions": 2
+      },
+      {
+        "naive_class_repr": [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "naive_class_size": 4,
+        "true_subpartitions": 2
+      }
+    ]
+  },
+  "KSME_01H_candidate_evaluation": [
+    {
+      "candidate": "K=(A,R) [ANALYST-CONSTRUCTED mapping, NOT source-derived]",
+      "status": "TESTED",
+      "sufficiency (no false equivalence)": true,
+      "false_equivalence_count": 0,
+      "false_distinction_count": 8,
+      "num_rho_classes": 16,
+      "num_true_classes": 8,
+      "note": "Interpretation: A~p1 (asserted value), relation-support/refute~p3,p4 kept RAW (not XOR-reduced), R~p6. This is ONE analyst-chosen interpretation among many possible ones; a different, equally defensible interpretation could yield a different verdict. Reported as HYPOTHESIS-level evidence about this specific interpretation, not as a verdict on the historical object itself."
+    },
+    {
+      "candidate": "K_t^11",
+      "status": "NOT COMPARABLE UNDER CURRENT FORMALIZATION",
+      "reason": "BC-02.11/16: 11 fields have no stated type, no construction rule, no consuming computation anywhere in the corpus -- no non-arbitrary rho exists."
+    },
+    {
+      "candidate": "K_min^4",
+      "status": "NOT COMPARABLE UNDER CURRENT FORMALIZATION",
+      "reason": "BC-02.16: fields never individually typed; O_core itself downgraded to 'candidate, not proven minimal' by its own primary source (S1792 Pass 2)."
+    },
+    {
+      "candidate": "canonical-construction K",
+      "status": "NOT COMPARABLE UNDER CURRENT FORMALIZATION",
+      "reason": "BC-02.16/17: tested only against ITS OWN 18-operation NEEDS table, a different, non-overlapping-except-for-2-ops universe from this experiment's T_req; translating one universe into the other is itself an unproven, arbitrary research act, not a formalization."
+    },
+    {
+      "candidate": "ratified 8-primitive K_t",
+      "status": "NOT COMPARABLE UNDER CURRENT FORMALIZATION",
+      "reason": "BC-02.13/16: self-described as a primitive VOCABULARY/ontology underlying state construction, not a state instance -- categorically not a rho:E->R in this experiment's sense."
+    }
+  ],
+  "oracle_minimal_representation": {
+    "num_classes": 8,
+    "num_reachable_states": 128,
+    "cardinality_reduction_vs_full_state": "128 states -> 8 classes"
+  },
+  "baselines": {
+    "full_state": {
+      "candidate": "FULL-STATE baseline",
+      "status": "TESTED",
+      "sufficiency (no false equivalence)": true,
+      "false_equivalence_count": 0,
+      "false_distinction_count": 120,
+      "num_rho_classes": 128,
+      "num_true_classes": 8,
+      "note": "retains everything"
+    },
+    "empty_state": {
+      "candidate": "EMPTY-STATE baseline",
+      "status": "TESTED",
+      "sufficiency (no false equivalence)": false,
+      "false_equivalence_count": 127,
+      "false_distinction_count": 0,
+      "num_rho_classes": 1,
+      "num_true_classes": 8,
+      "note": "retains nothing"
+    }
+  }
+}

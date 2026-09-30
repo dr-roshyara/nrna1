@@ -1,0 +1,182 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0009-RETROFIT-B3",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 3",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0009-RETROFIT-B3."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0014",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Lifecycle_Gap_Analysis.md",
+ "canonical_sequence_position": 14,
+ "lines_total": 180,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED' · 'Generated — never authoritative without human review'",
+ "source_document_kind": "⭐ LIFECYCLE GAP ANALYSIS. ⛔ 'THE ONTOLOGY IS FROZEN. Nothing added, removed or renamed.'",
+ "source_research_question": "⛔ 'not repairing anything' — ⭐ 'identifying which failures belong to ONTOLOGY, which to LIFECYCLE, and which to GOVERNANCE'",
+ "reconstruction_question": "⛔ DISTINCT: what exactly does this file's `G-4` refer to, and where does I-4's withdrawal originate?",
+ "source_method_declared": "⭐ Three categories: Structural (what exists) · Behavioral (what acts) · Evolutionary (how things change). ⭐⭐ And: check what exists BEFORE analysing gaps.",
+ "definitions": [
+  {
+   "term": "STRUCTURAL / BEHAVIORAL / EVOLUTIONARY",
+   "def": "the three gap categories"
+  },
+  {
+   "term": "the attestation chain",
+   "def": "DERIVED → REVIEWED → ATTESTED → RELEASED — ⭐ 'Governance created the authority, not the derivation'"
+  }
+ ],
+ "assumptions": [
+  "the ontology is frozen",
+  "existing mechanisms are checked before a gap is claimed"
+ ],
+ "premises": [
+  "docs/knowledge/_meta/lifecycle.md (status: baseline, authority: authoritative)",
+  "statuses.yaml",
+  "authorities.yaml",
+  "ES-006.1",
+  "GEP-F1"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. Counts: 9 lifecycles · 5 gaps classified · 1 lifecycle + 1 ontology (+1 dissolved) + 1 governance + 1 non-failure.",
+ "derivations": [
+  {
+   "id": "DI-F0014-01",
+   "from": [
+    "statuses.yaml has order · settled · a role table · lint-checkable guards",
+    "authorities.yaml has NONE of these"
+   ],
+   "to": "⭐⭐ STATUS HAS A GOVERNED STATE MACHINE; AUTHORITY DOES NOT — and that asymmetry makes 'attested' inexpressible",
+   "form": "⭐ MECHANICAL_LOCALIZATION",
+   "validity": "⭐⭐ VALID — 'a mechanical cause rather than an intuition'"
+  },
+  {
+   "id": "DI-F0014-02",
+   "from": [
+    "a deployment has its own bindings and a declared boundary",
+    "the ontology already permits Knowledge Spaces to contain Knowledge Spaces"
+   ],
+   "to": "⭐ PRODUCT vs DEPLOYMENT DISSOLVES — a deployment IS a nested Knowledge Space",
+   "form": "⭐ RESOLUTION_WITHOUT_ADDITION",
+   "validity": "⭐ VALID — 'no concept introduced; the ontology explained the evidence'"
+  },
+  {
+   "id": "DI-F0014-03",
+   "from": [
+    "the attestation chain DERIVED → REVIEWED → ATTESTED → RELEASED"
+   ],
+   "to": "⛔ I-4 is NOT falsified — 'I misdiagnosed a LIFECYCLE gap as an ONTOLOGY falsification'",
+   "form": "⭐ SELF_CORRECTION",
+   "validity": "⭐⭐ VALID"
+  }
+ ],
+ "conclusions": [
+  "⭐⭐ 'ONLY ONE OF THE FOUR IS GENUINELY ONTOLOGICAL'",
+  "⭐ 'The projection did not find a broken ontology. It found a missing state machine — for authority'",
+  "⛔ I-4 is UNDERSPECIFIED, not false"
+ ],
+ "dependencies": [
+  "_meta/lifecycle.md v1.1",
+  "statuses.yaml",
+  "authorities.yaml",
+  "knowledge-types.yaml",
+  "ES-006.1",
+  "EEP",
+  "GEP-F1",
+  "the Capability lifecycle",
+  "the Observation Protocol",
+  "KnowledgeOS_Engineering_Progression_Model.md (= F0018)"
+ ],
+ "previous_related_files": "⭐ LG-1's withdrawal cites `KnowledgeOS_Engineering_Progression_Model.md` §4 = F0018, read in this same batch.",
+ "knowledgeos_purpose_relevance": "⭐⭐ HIGH — it is where I-4's falsification is withdrawn.",
+ "architectural_role": "⭐ GAP CLASSIFICATION.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the three gap categories",
+   "the nine-lifecycle inventory",
+   "the status/authority asymmetry",
+   "LG-1..LG-6"
+  ],
+  "⛔ withdrawn": [
+   "⭐⭐ I-4's falsification — 'my FOURTH instance of level confusion'",
+   "LG-1, later, as ill-posed"
+  ],
+  "⭐ dissolved": [
+   "PRODUCT vs DEPLOYMENT — a deployment IS a nested Knowledge Space"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0022 (deployment as nested Knowledge Space)",
+  "T-0014 (authority = provenance × standing)",
+  "T-0026 (I-4)"
+ ],
+ "sequential_graph_position": "canonical position 14; 2026-08-02",
+ "file_relationships": [
+  {
+   "to": "F0018",
+   "kind": "⭐ SUPERSEDED_BY",
+   "note": "LG-1 withdrawn as ill-posed, record = F0018 §4"
+  },
+  {
+   "to": "F0027",
+   "kind": "⭐ IS_SOURCE_OF",
+   "note": "F0027 records I-4 as '(UNDERSPECIFIED — falsification WITHDRAWN 2026-08-02)' — this is that withdrawal"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ EXEMPLARY CHECK-FIRST DISCIPLINE: '⭐ A fifth [error] was avoided by checking: I was about to report \"there is no lifecycle.\" There is — see §1.' ⭐ Nine lifecycles found before any gap was claimed.",
+ "gaps": [
+  {
+   "id": "G-F0014-A",
+   "⚠️ gap": "§5.1 — the authoritative lifecycle document's diagram shows `idea`/`research` as statuses while `statuses.yaml` defines them as TYPES",
+   "⭐ significance": "⭐⭐ 'a type/status conflation inside the very document whose §1 warns \"most projects wrongly conflate them\"' — ⭐ recorded as an observation, not a defect claim"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0014-01",
+   "⭐ finding": "⭐⭐ THIS FILE'S `G-4` IS FILE-LOCAL, AND IT IS THE `G-4` IN 'H-3 resolved — spaces NEST — closed by G-4'",
+   "detail": "F0014 §3 classifies five gaps `G-1`…`G-5`. ⭐ Its `G-4` = 'PRODUCT vs DEPLOYMENT / INSTANTIATES', which DISSOLVES. §7 then records: '**H-3 (resolved) — ⭐ Knowledge Spaces NEST — closed by G-4**', and §3 says '⭐ G-4 answers H-3 … using evidence rather than preference'.",
+   "⭐⭐ consequence": "⭐ The `G-4` in that sentence is defined **in the same document, four sections earlier**. ⛔ It is NOT F0001's `G-4` ('no second runtime adapter') and NOT F0011's `G-4` ('no second adopting product').",
+   "⛔ disposition": "⭐⭐ FACTUAL POINTER FOR B-12 ONLY. ⛔ B-12 owns the enumeration and the adjudication; this record asserts no resolution and claims no effect on any derivation.",
+   "status": "⛔ REFERRED_TO_B-12",
+   "significance": "⭐ HIGH"
+  },
+  {
+   "id": "AUDIT-F0014-02",
+   "⭐ finding": "⭐ THE ORIGIN OF I-4's WITHDRAWAL",
+   "detail": "⛔ 'I-4 is NOT falsified. I misdiagnosed a LIFECYCLE gap as an ONTOLOGY falsification' — the fourth of four enumerated level confusions.",
+   "⭐ consequence": "⭐ F0027 records I-4 as '(UNDERSPECIFIED — falsification WITHDRAWN 2026-08-02)'; F0014 is where that withdrawal happens, with its mechanical cause. ⭐ Feeds C-0013 / RO-0022 (T-0026).",
+   "⛔ disposition": "⛔ T-0026 is F0027's object and is HELD on §5A m1/m2. Recorded, not written.",
+   "status": "OPEN"
+  }
+ ],
+ "provenance_first_hand": [
+  "the nine-lifecycle inventory",
+  "the statuses/authorities comparison",
+  "the five-gap classification",
+  "LG-1..LG-6"
+ ],
+ "provenance_second_hand": [
+  "⛔ _meta/lifecycle.md §§1–4, quoted",
+  "the two YAML schemas"
+ ],
+ "negative_evidence": "⭐⭐ THE FILE'S BEST MOVE IS A NEGATIVE IT DID NOT MAKE: it checked before claiming 'there is no lifecycle', found nine, and recorded the avoided error.",
+ "multi_dimensional_confidence": {
+  "the status/authority asymmetry": "⭐ HIGH — mechanical, two YAML files",
+  "the 1-of-4 classification": "⭐ HIGH",
+  "the deployment-nesting dissolution": "⭐ HIGH",
+  "the type/status conflation observation": "⚠️ MEDIUM — 'the diagram may be aspirational'"
+ },
+ "not_recoverable_without_reread": [
+  "_meta/lifecycle.md",
+  "statuses.yaml",
+  "authorities.yaml",
+  "knowledge-types.yaml"
+ ]
+}

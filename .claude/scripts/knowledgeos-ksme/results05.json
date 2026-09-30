@@ -1,0 +1,756 @@
+{
+  "code_version": "ksme05-0.1.0",
+  "reused_from": {
+    "ksme04.py": "post-sort-fix version (this session)"
+  },
+  "model_space_reduction_proof": {
+    "nominal_M_T_size": 256,
+    "true_distinct_M_T_size": 16,
+    "variant_sensitive_ops": [
+      "Revise",
+      "Transform",
+      "Supersede",
+      "Merge"
+    ],
+    "variant_invariant_ops": [
+      "Add",
+      "Remove",
+      "Withdraw",
+      "Reject"
+    ],
+    "per_op_verification": {
+      "Add": {
+        "checked": 208,
+        "mismatches": 0,
+        "variant_sensitive": false
+      },
+      "Remove": {
+        "checked": 400,
+        "mismatches": 0,
+        "variant_sensitive": false
+      },
+      "Revise": {
+        "checked": 400,
+        "mismatches": 200,
+        "variant_sensitive": true
+      },
+      "Transform": {
+        "checked": 400,
+        "mismatches": 100,
+        "variant_sensitive": true
+      },
+      "Supersede": {
+        "checked": 400,
+        "mismatches": 400,
+        "variant_sensitive": true
+      },
+      "Merge": {
+        "checked": 192,
+        "mismatches": 192,
+        "variant_sensitive": true
+      },
+      "Withdraw": {
+        "checked": 400,
+        "mismatches": 0,
+        "variant_sensitive": false
+      },
+      "Reject": {
+        "checked": 400,
+        "mismatches": 0,
+        "variant_sensitive": false
+      }
+    },
+    "note": "Empirically verified (not assumed): every blind/sensitive pair for Add/Remove/Withdraw/Reject produced IDENTICAL results over all 208 seed states and every generated argument (0 mismatches each); Revise/Transform/Supersede/Merge each showed >0 mismatches. So the 256 nominal model assignments collapse to exactly 16 behaviorally distinct ones -- computing 'all 256' means computing these 16."
+  },
+  "closure": {
+    "seed_space_size": 208,
+    "reachable_closure_size": 41820
+  },
+  "models_tested": {
+    "count": 16,
+    "exact_not_sampled": true
+  },
+  "per_observation_result": {
+    "F2 content+status (thin)": {
+      "K_O_classes": 1486,
+      "per_model_class_counts": {
+        "('blind', 'blind', 'blind', 'blind')": 2836,
+        "('blind', 'blind', 'blind', 'sensitive')": 2836,
+        "('blind', 'blind', 'sensitive', 'blind')": 4501,
+        "('blind', 'blind', 'sensitive', 'sensitive')": 4501,
+        "('blind', 'sensitive', 'blind', 'blind')": 3722,
+        "('blind', 'sensitive', 'blind', 'sensitive')": 3722,
+        "('blind', 'sensitive', 'sensitive', 'blind')": 5990,
+        "('blind', 'sensitive', 'sensitive', 'sensitive')": 5990,
+        "('sensitive', 'blind', 'blind', 'blind')": 10469,
+        "('sensitive', 'blind', 'blind', 'sensitive')": 10469,
+        "('sensitive', 'blind', 'sensitive', 'blind')": 17129,
+        "('sensitive', 'blind', 'sensitive', 'sensitive')": 17129,
+        "('sensitive', 'sensitive', 'blind', 'blind')": 10469,
+        "('sensitive', 'sensitive', 'blind', 'sensitive')": 10469,
+        "('sensitive', 'sensitive', 'sensitive', 'blind')": 17129,
+        "('sensitive', 'sensitive', 'sensitive', 'sensitive')": 17129
+      },
+      "K_R_exact_classes": 17129,
+      "K_R_strictly_finer_than_K_O": true,
+      "sensitivity_curve": [
+        {
+          "step": 1,
+          "model_key": [
+            "blind",
+            "blind",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 2836,
+          "running_K_R_class_count": 2836,
+          "rounds": 2
+        },
+        {
+          "step": 2,
+          "model_key": [
+            "blind",
+            "blind",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 2836,
+          "running_K_R_class_count": 2836,
+          "rounds": 2
+        },
+        {
+          "step": 3,
+          "model_key": [
+            "blind",
+            "blind",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 4501,
+          "running_K_R_class_count": 4501,
+          "rounds": 3
+        },
+        {
+          "step": 4,
+          "model_key": [
+            "blind",
+            "blind",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 4501,
+          "running_K_R_class_count": 4501,
+          "rounds": 3
+        },
+        {
+          "step": 5,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 3722,
+          "running_K_R_class_count": 5990,
+          "rounds": 2
+        },
+        {
+          "step": 6,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 3722,
+          "running_K_R_class_count": 5990,
+          "rounds": 2
+        },
+        {
+          "step": 7,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 5990,
+          "running_K_R_class_count": 5990,
+          "rounds": 3
+        },
+        {
+          "step": 8,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 5990,
+          "running_K_R_class_count": 5990,
+          "rounds": 3
+        },
+        {
+          "step": 9,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 10,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 11,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        },
+        {
+          "step": 12,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        },
+        {
+          "step": 13,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 14,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 15,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        },
+        {
+          "step": 16,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        }
+      ],
+      "model_dependence_certificate": {
+        "s1": "['a:q@forum/Superseded', 'b:q@forum/Accepted', 'z:r@vendor/Withdrawn']",
+        "s2": "['a:q@forum/Superseded', 'b:q@vendor/Accepted', 'z:r@vendor/Withdrawn']",
+        "agrees_under_n_of_16_models": 4,
+        "conclusion": "model-dependent: some admissible models merge this pair, others split it"
+      },
+      "robust_necessary_certificate": {
+        "s1": "['a:q@forum/Superseded', 'b:q@forum/Accepted', 'z:r@vendor/Withdrawn']",
+        "s2": "['a:q@vendor/Accepted', 'b:q@forum/Superseded', 'z:r@vendor/Withdrawn']",
+        "conclusion": "robustly distinguished: EVERY admissible model splits this O-equal pair"
+      },
+      "wall_time_seconds": 337.8
+    },
+    "F3 id+content+status (no prov)": {
+      "K_O_classes": 2836,
+      "per_model_class_counts": {
+        "('blind', 'blind', 'blind', 'blind')": 2836,
+        "('blind', 'blind', 'blind', 'sensitive')": 2836,
+        "('blind', 'blind', 'sensitive', 'blind')": 4501,
+        "('blind', 'blind', 'sensitive', 'sensitive')": 4501,
+        "('blind', 'sensitive', 'blind', 'blind')": 3722,
+        "('blind', 'sensitive', 'blind', 'sensitive')": 3722,
+        "('blind', 'sensitive', 'sensitive', 'blind')": 5990,
+        "('blind', 'sensitive', 'sensitive', 'sensitive')": 5990,
+        "('sensitive', 'blind', 'blind', 'blind')": 10469,
+        "('sensitive', 'blind', 'blind', 'sensitive')": 10469,
+        "('sensitive', 'blind', 'sensitive', 'blind')": 17129,
+        "('sensitive', 'blind', 'sensitive', 'sensitive')": 17129,
+        "('sensitive', 'sensitive', 'blind', 'blind')": 10469,
+        "('sensitive', 'sensitive', 'blind', 'sensitive')": 10469,
+        "('sensitive', 'sensitive', 'sensitive', 'blind')": 17129,
+        "('sensitive', 'sensitive', 'sensitive', 'sensitive')": 17129
+      },
+      "K_R_exact_classes": 17129,
+      "K_R_strictly_finer_than_K_O": true,
+      "sensitivity_curve": [
+        {
+          "step": 1,
+          "model_key": [
+            "blind",
+            "blind",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 2836,
+          "running_K_R_class_count": 2836,
+          "rounds": 1
+        },
+        {
+          "step": 2,
+          "model_key": [
+            "blind",
+            "blind",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 2836,
+          "running_K_R_class_count": 2836,
+          "rounds": 1
+        },
+        {
+          "step": 3,
+          "model_key": [
+            "blind",
+            "blind",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 4501,
+          "running_K_R_class_count": 4501,
+          "rounds": 3
+        },
+        {
+          "step": 4,
+          "model_key": [
+            "blind",
+            "blind",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 4501,
+          "running_K_R_class_count": 4501,
+          "rounds": 3
+        },
+        {
+          "step": 5,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 3722,
+          "running_K_R_class_count": 5990,
+          "rounds": 2
+        },
+        {
+          "step": 6,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 3722,
+          "running_K_R_class_count": 5990,
+          "rounds": 2
+        },
+        {
+          "step": 7,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 5990,
+          "running_K_R_class_count": 5990,
+          "rounds": 3
+        },
+        {
+          "step": 8,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 5990,
+          "running_K_R_class_count": 5990,
+          "rounds": 3
+        },
+        {
+          "step": 9,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 10,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 11,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        },
+        {
+          "step": 12,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        },
+        {
+          "step": 13,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 14,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 10469,
+          "running_K_R_class_count": 17129,
+          "rounds": 2
+        },
+        {
+          "step": 15,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        },
+        {
+          "step": 16,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 17129,
+          "running_K_R_class_count": 17129,
+          "rounds": 3
+        }
+      ],
+      "model_dependence_certificate": {
+        "s1": "['a:q@forum/Superseded', 'b:q@forum/Accepted', 'z:r@vendor/Withdrawn']",
+        "s2": "['a:q@forum/Superseded', 'b:q@vendor/Accepted', 'z:r@vendor/Withdrawn']",
+        "agrees_under_n_of_16_models": 4,
+        "conclusion": "model-dependent: some admissible models merge this pair, others split it"
+      },
+      "robust_necessary_certificate": null,
+      "wall_time_seconds": 341.4
+    },
+    "F4 K=(A,R) [TERMINAL]": {
+      "K_O_classes": 27398,
+      "per_model_class_counts": {
+        "('blind', 'blind', 'blind', 'blind')": 27398,
+        "('blind', 'blind', 'blind', 'sensitive')": 27398,
+        "('blind', 'blind', 'sensitive', 'blind')": 27398,
+        "('blind', 'blind', 'sensitive', 'sensitive')": 27398,
+        "('blind', 'sensitive', 'blind', 'blind')": 27398,
+        "('blind', 'sensitive', 'blind', 'sensitive')": 27398,
+        "('blind', 'sensitive', 'sensitive', 'blind')": 27398,
+        "('blind', 'sensitive', 'sensitive', 'sensitive')": 27398,
+        "('sensitive', 'blind', 'blind', 'blind')": 27398,
+        "('sensitive', 'blind', 'blind', 'sensitive')": 27398,
+        "('sensitive', 'blind', 'sensitive', 'blind')": 27398,
+        "('sensitive', 'blind', 'sensitive', 'sensitive')": 27398,
+        "('sensitive', 'sensitive', 'blind', 'blind')": 27398,
+        "('sensitive', 'sensitive', 'blind', 'sensitive')": 27398,
+        "('sensitive', 'sensitive', 'sensitive', 'blind')": 27398,
+        "('sensitive', 'sensitive', 'sensitive', 'sensitive')": 27398
+      },
+      "K_R_exact_classes": 27398,
+      "K_R_strictly_finer_than_K_O": false,
+      "sensitivity_curve": [
+        {
+          "step": 1,
+          "model_key": [
+            "blind",
+            "blind",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 2,
+          "model_key": [
+            "blind",
+            "blind",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 3,
+          "model_key": [
+            "blind",
+            "blind",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 4,
+          "model_key": [
+            "blind",
+            "blind",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 5,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 6,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 7,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 8,
+          "model_key": [
+            "blind",
+            "sensitive",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 9,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 10,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 11,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 12,
+          "model_key": [
+            "sensitive",
+            "blind",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 13,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "blind",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 14,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "blind",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 15,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "sensitive",
+            "blind"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        },
+        {
+          "step": 16,
+          "model_key": [
+            "sensitive",
+            "sensitive",
+            "sensitive",
+            "sensitive"
+          ],
+          "this_model_class_count": 27398,
+          "running_K_R_class_count": 27398,
+          "rounds": 1
+        }
+      ],
+      "model_dependence_certificate": null,
+      "robust_necessary_certificate": null,
+      "wall_time_seconds": 142.3
+    }
+  },
+  "F4_representation_test": {
+    "K_O(F4)_classes": 27398,
+    "K_R(F4)_classes": 27398,
+    "disposition": "ISOMORPHIC (F4 already robust)",
+    "note": "F4 is so_model.py's own 'K=(A,R) [TERMINAL]' abstraction -- the same notation already registered as KO-007b/KO-009 in BC-02.14's K-object registry (non-arbitrary correspondence, established prior to this run)."
+  },
+  "total_wall_time_seconds": 832.6
+}

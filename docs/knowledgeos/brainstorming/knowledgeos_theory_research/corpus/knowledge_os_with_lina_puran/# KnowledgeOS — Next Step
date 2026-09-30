@@ -1,0 +1,528 @@
+# KnowledgeOS — Next Step
+
+## P3a Semantic Adjudication + Controlled P3b Continuation
+
+### Role
+
+Continue as a senior:
+
+* mathematician
+* statistician
+* knowledge-representation researcher
+* DDD architect
+* computer-logic / formal-logic expert
+* ML/empirical-methodology expert
+* research-quality auditor
+
+You are working on **KnowledgeOS**.
+
+The objective is not merely to process files. The objective is to establish a **reliable, reproducible and empirically defensible knowledge structure** from the corpus.
+
+---
+
+# 1. Current State — DO NOT RESTART
+
+The previous P3a reconciliation is mechanically complete:
+
+* 1,793 / 1,793 pairs processed
+* 30 / 30 batches covered
+* no missing records
+* no duplicates
+* schema/enums mechanically valid
+
+However, the semantic audit identified important reliability problems:
+
+* only 20.9% exact agreement in the blind high-stakes review
+* 75.3% agreement on the coarser question "is there a relationship?"
+* UNWITNESSED is currently overloaded
+* corpus-wide search was not consistently performed before UNWITNESSED
+* INDEPENDENT is demonstrably under-used
+* SAME and DERIVED-FROM show substantial disagreement
+* 158 pairs are classified as high-stakes:
+
+  * SAME
+  * REPLACEMENT
+  * DERIVED-FROM
+* 260 P3b labels depend on those 158 high-stakes pairs
+* 2,237 P3b labels do not depend on those high-stakes pairs
+
+P3b batches OB0001–OB0003 were generated but intentionally remain **unverified/provisional**.
+
+Do not erase, regenerate, overwrite, or silently modify existing production results.
+
+---
+
+# 2. Primary Objective of This Step
+
+The immediate objective is:
+
+> Establish whether the P3a ontology and adjudication procedure are sufficiently well-defined to support reliable P3b roll-up.
+
+This is **not** primarily a data-processing task.
+
+It is a methodological validation task.
+
+We need to determine:
+
+1. Which disagreements are genuine evidence disagreements?
+2. Which are caused by ambiguous ontology definitions?
+3. Which are caused by insufficient evidence/search?
+4. Which are caused by source truncation or unavailable content?
+5. Which represent genuine P3a classification errors?
+6. Whether the current ontology is expressive enough for the corpus.
+7. Whether the disagreement changes downstream P3b conclusions.
+
+---
+
+# 3. ABSOLUTE SAFETY RULE
+
+Do NOT modify the production P3a ledger yet.
+
+Do NOT:
+
+* change RP0526
+* change RP0288
+* change any SAME/DERIVED-FROM/REPLACEMENT verdict
+* change UNWITNESSED records
+* rewrite historical decisions
+* regenerate the master ledger
+* declare P3a semantically PASS
+
+unless this instruction explicitly reaches a later adjudication gate.
+
+Create separate artifacts for proposed corrections.
+
+The production ledger remains the historical baseline.
+
+---
+
+# 4. Create an Adjudication Dataset
+
+Create a separate artifact:
+
+`P3A-ADJUDICATION-CANDIDATES`
+
+Start with the following cases.
+
+## Mandatory cases
+
+### A. RP0526
+
+Original:
+
+`SAME`
+
+Independent blind reviews:
+
+`UNWITNESSED`
+
+Investigate it carefully.
+
+Determine whether the evidence supports:
+
+* SAME
+* CONTINUATION
+* another existing relation
+* UNWITNESSED
+* or whether the ontology lacks the correct relation
+
+Do not choose a result merely because two reviewers agreed.
+
+Use the actual evidence.
+
+---
+
+### B. RP0288
+
+Audit identified a likely concrete misclassification.
+
+The group evidence explicitly contains language indicating:
+
+> "Extends..."
+
+but the production verdict is:
+
+`UNWITNESSED`
+
+Investigate the underlying evidence.
+
+Determine whether the evidence actually satisfies the formal definition of EXTENSION.
+
+---
+
+### C. Additional UNWITNESSED cases
+
+Select a stratified sample covering at least:
+
+* cases where sufficient corpus search was performed
+* cases where search appears insufficient
+* cases with contradictory evidence
+* cases with real relationship evidence but no ontology slot
+* cases where source content is unavailable
+* cases with potentially obvious relationship language
+
+Do not select only easy examples.
+
+The sample must test the methodology.
+
+---
+
+### D. High-stakes disagreements
+
+Select representative cases from:
+
+* SAME
+* DERIVED-FROM
+* REPLACEMENT
+
+especially where blind reviewers strongly disagreed.
+
+Ensure that the sample contains both:
+
+* cases where reviewers converge on the original verdict
+* cases where reviewers systematically downgrade the original verdict
+
+---
+
+# 5. Blind Review Protocol
+
+Where technically possible, perform a fresh review without exposing:
+
+* the production verdict
+* previous reviewers' verdicts
+* previous adjudication
+* downstream P3b result
+
+The reviewer should see only the evidence required to classify the pair.
+
+For every case record:
+
+```text
+pair_id
+evidence_available
+search_performed
+search_scope
+candidate_relationship
+confidence
+reasoning
+evidence_citations
+alternative_relationships_considered
+ontology_gap
+```
+
+The reviewer must explicitly distinguish:
+
+### A. No relationship established
+
+from
+
+### B. Relationship exists but evidence is insufficient
+
+from
+
+### C. Relationship is plausible but unresolved
+
+from
+
+### D. Relationship established but current ontology has no suitable relation
+
+from
+
+### E. Relationship established
+
+These must not automatically collapse into UNWITNESSED.
+
+---
+
+# 6. Formalize UNWITNESSED
+
+Before changing any production data, determine whether UNWITNESSED should remain a relationship type or become an evidence/status state.
+
+Investigate the distinction between:
+
+```text
+RELATIONSHIP
+```
+
+and
+
+```text
+EVIDENCE STATUS
+```
+
+For example:
+
+```text
+Relationship:
+    SAME
+    EXTENSION
+    CONTINUATION
+    REFINEMENT
+    DERIVED-FROM
+    SPECIALIZATION
+    HOMONYM
+    REPLACEMENT
+    REDEFINITION
+    INDEPENDENT
+
+Evidence status:
+    ESTABLISHED
+    INSUFFICIENT
+    UNRESOLVED
+    SOURCE_UNAVAILABLE
+    ONTOLOGY_GAP
+```
+
+Do NOT adopt this model automatically.
+
+Evaluate it against the actual corpus and report whether it is mathematically and operationally superior.
+
+This is an architectural hypothesis to test.
+
+---
+
+# 7. Formalize the Relationship Definitions
+
+For every P3a relationship currently in the ontology, write a precise operational definition.
+
+At minimum:
+
+```text
+SAME
+CONTINUATION
+EXTENSION
+REFINEMENT
+DERIVED-FROM
+SPECIALIZATION
+HOMONYM
+REPLACEMENT
+REDEFINITION
+INDEPENDENT
+UNWITNESSED
+```
+
+For each relation define:
+
+1. Necessary conditions
+2. Sufficient conditions, if possible
+3. Evidence required
+4. Evidence that is insufficient
+5. Typical counterexample
+6. Closest competing relation
+7. Whether corpus-wide search is required
+8. Whether temporal information matters
+9. Whether provenance matters
+10. Whether semantic similarity alone is sufficient
+
+Do not use vague definitions such as:
+
+> "looks like the same idea"
+
+or
+
+> "appears related".
+
+Definitions must be operationalizable by another independent reviewer.
+
+---
+
+# 8. Investigate Directional Bias
+
+The audit showed substantial movement from:
+
+`SAME → CONTINUATION`
+
+and substantial uncertainty around:
+
+`DERIVED-FROM`.
+
+Investigate whether this indicates:
+
+### Hypothesis H1
+
+The original adjudication systematically overstates strong relationships.
+
+### Hypothesis H2
+
+The independent reviewers systematically prefer weaker relationships.
+
+### Hypothesis H3
+
+The ontology boundary between SAME / CONTINUATION / DERIVED-FROM is insufficiently precise.
+
+### Hypothesis H4
+
+The available evidence is insufficient to distinguish the relations.
+
+Do not assume any hypothesis is true.
+
+Use evidence from the adjudication sample.
+
+---
+
+# 9. Measure Inter-Rater Reliability Properly
+
+Do not report only raw exact agreement.
+
+Calculate, where applicable:
+
+* exact agreement
+* pairwise agreement
+* Cohen's kappa for two raters
+* Fleiss' kappa for multiple raters
+* Krippendorff's alpha if the data structure permits
+* agreement after collapsing relations into meaningful coarse categories
+
+Also report confidence intervals where statistically appropriate.
+
+Because some categories are rare, explicitly discuss:
+
+* class imbalance
+* prevalence effects
+* whether kappa is informative
+* whether alternative agreement statistics are needed
+
+Do not manufacture statistical significance from a small sample.
+
+---
+
+# 10. Evaluate Ontology Confusion
+
+Construct a confusion matrix such as:
+
+| Original     | Independent  | Count |
+| ------------ | ------------ | ----: |
+| SAME         | CONTINUATION |   ... |
+| SAME         | UNWITNESSED  |   ... |
+| DERIVED-FROM | CONTINUATION |   ... |
+| DERIVED-FROM | UNWITNESSED  |   ... |
+| ...          | ...          |   ... |
+
+Then determine whether disagreement is:
+
+* random
+* concentrated between specific neighboring concepts
+* caused by insufficient evidence
+* caused by ontology ambiguity
+* caused by procedural weakness
+
+This is critical.
+
+A high disagreement rate does not automatically mean the entire P3a model is wrong.
+
+---
+
+# 11. Build a Relationship Decision Procedure
+
+Create a formal decision tree for future P3a adjudication.
+
+Example structure:
+
+```text
+Q1: Is the underlying object identity established?
+    |
+    +-- YES → SAME candidate
+    |
+    +-- NO
+         |
+         Q2: Is there explicit lineage?
+             |
+             +-- YES → continue lineage analysis
+             |
+             +-- NO
+                  |
+                  Q3: Is there semantic/structural transformation?
+```
+
+Do not simply use this example.
+
+Derive the actual decision procedure from the evidence.
+
+The final procedure must be independently executable.
+
+---
+
+# 12. Re-Test on a Fresh Holdout Set
+
+After definitions and decision rules are formulated:
+
+Create a fresh holdout sample that was not used to design the rules.
+
+The purpose is to prevent circular validation.
+
+Compare:
+
+```text
+Original P3a
+vs
+Independent adjudication
+vs
+Revised decision procedure
+```
+
+Measure:
+
+* agreement
+* disagreement
+* confidence
+* ontology gaps
+* evidence sufficiency
+* false strong-relation rate
+* false weak-relation rate
+
+The holdout set is essential.
+
+---
+
+# 13. P3b Must Proceed in Two Tracks
+
+Do not completely stop P3b.
+
+Split the P3b population into:
+
+## Track A — Unaffected
+
+The 2,237 labels that do not depend on the 158 high-stakes P3a relationships.
+
+These may proceed through P3b.
+
+But mark them:
+
+`P3B-PROVISIONAL`
+
+until the general P3a semantic gate is passed.
+
+---
+
+## Track B — High-Stakes Dependent
+
+The 260 labels affected by the 158 high-stakes relationships.
+
+Keep these blocked from finalization.
+
+Do not allow disputed P3a classifications to silently become authoritative P3b knowledge.
+
+---
+
+# 14. Perform Impact Analysis
+
+For every disputed high-stakes P3a relationship, calculate:
+
+```text
+Original P3a verdict
+Independent/revised verdict
+Affected P3b objects
+Original P3b interpretation
+Alternative P3b interpretation
+Does the object-level conclusion change?
+```
+
+This gives us the crucial distinction between:
+
+> classification disagreement
+
+and
+
+> knowledge-conclusion disagreement.
+
+If 20 classifications differ but no downstream knowledge changes, the practical impact is different from a case where one disagreement changes the final obje

@@ -1,0 +1,15 @@
+[MT0/chain3] {'states': 1152, 'reachable': 864, 'reachable_ad1': 288}
+[MT0/V] {'states': 1440, 'reachable': 1080, 'reachable_ad1': 360}
+[MT0/diamond] {'states': 2304, 'reachable': 1728, 'reachable_ad1': 576}
+[MT1-P0/chain3] {'states': 1152, 'reachable': 396, 'reachable_ad1': 108}
+[MT1-P0/V] {'states': 1440, 'reachable': 492, 'reachable_ad1': 132}
+[MT1-P0/diamond] {'states': 2304, 'reachable': 804, 'reachable_ad1': 228}
+[MT1-P1/chain3] {'states': 1152, 'reachable': 720, 'reachable_ad1': 288}
+[MT1-P1/V] {'states': 1440, 'reachable': 900, 'reachable_ad1': 360}
+[MT1-P1/diamond] {'states': 2304, 'reachable': 1440, 'reachable_ad1': 576}
+[MT2-P0/chain3] {'states': 1152, 'reachable': 396, 'reachable_ad1': 108}
+[MT2-P0/V] {'states': 1440, 'reachable': 492, 'reachable_ad1': 132}
+[MT2-P0/diamond] {'states': 2304, 'reachable': 804, 'reachable_ad1': 228}
+[MT2-P1/chain3] {'states': 1152, 'reachable': 720, 'reachable_ad1': 288}
+[MT2-P1/V] {'states': 1440, 'reachable': 900, 'reachable_ad1': 360}
+[MT2-P1/diamond] {'states': 2304, 'reachable': 1440, 'reachable_ad1': 576}

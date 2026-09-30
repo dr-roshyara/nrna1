@@ -1,0 +1,205 @@
+{
+ "H-F2-1a": "INCONCLUSIVE",
+ "axioms_counterexampled": [],
+ "propositions": {},
+ "questions": {
+  "F-A0": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 2,
+    "S": 1,
+    "U": 1
+   },
+   "coverage": {
+    "N_typed": 1,
+    "N_unknown": 1
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "ES-006.1": "NOT_EVIDENCED",
+    "P-10 / ES-006.1's bar": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A2e": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 4,
+    "S": 3,
+    "U": 1
+   },
+   "coverage": {
+    "N_typed": 4,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "EVIDENTIAL progression (P-4, P-10)": "SUPPORTED",
+    "GOVERNANCE-ACT vs P-4 maturity": "SUPPORTED",
+    "P-4": "SUPPORTED",
+    "standing-assignment chain (PM-4)": "NOT_EVIDENCED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A3g": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 2,
+    "S": 2,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 2,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "EVIDENTIAL vs P-1 status": "SUPPORTED",
+    "P-3 / P-6 consuming P-10": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A3m": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 2,
+    "S": 2,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 2,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "EVIDENTIAL (P-4, P-10)": "SUPPORTED",
+    "P-10": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A4": {
+   "counts": {
+    "A": 1,
+    "C": 0,
+    "N": 3,
+    "S": 2,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 3,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": false,
+   "per_mechanism": {
+    "COMPOSITE (P-3, P-6)": "INCONCLUSIVE",
+    "P-3 / P-6": "SUPPORTED",
+    "P-6": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A5e": {
+   "counts": {
+    "A": 1,
+    "C": 0,
+    "N": 4,
+    "S": 3,
+    "U": 0
+   },
+   "coverage": {
+    "N_typed": 4,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": true,
+   "per_mechanism": {
+    "P-7": "SUPPORTED",
+    "P-7 → P-10": "INCONCLUSIVE",
+    "P-8": "SUPPORTED",
+    "WORK-EXECUTION": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "INCONCLUSIVE"
+  },
+  "F-A5g": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 3,
+    "S": 2,
+    "U": 1
+   },
+   "coverage": {
+    "N_typed": 3,
+    "N_unknown": 0
+   },
+   "expected_finding_matched": false,
+   "per_mechanism": {
+    "P-7": "SUPPORTED",
+    "WORK-EXECUTION vs GOVERNANCE-ACT": "SUPPORTED"
+   },
+   "run": true,
+   "verdict": "SUPPORTED"
+  },
+  "F-A6": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 4,
+    "S": 0,
+    "U": 4
+   },
+   "coverage": {
+    "N_typed": 3,
+    "N_unknown": 1
+   },
+   "expected_finding_matched": false,
+   "per_mechanism": {
+    "ES-006 qualification method": "NOT_EVIDENCED",
+    "ES-006.1": "NOT_EVIDENCED",
+    "ES-006.4": "NOT_EVIDENCED",
+    "P-3": "NOT_EVIDENCED"
+   },
+   "run": true,
+   "verdict": "NOT_EVIDENCED"
+  },
+  "Q-D4": {
+   "counts": null,
+   "readings": [],
+   "run": false
+  },
+  "Q-GS": {
+   "counts": null,
+   "readings": [],
+   "run": false
+  },
+  "Q-H6": {
+   "counts": {
+    "A": 0,
+    "C": 0,
+    "N": 2,
+    "S": 2,
+    "U": 0
+   },
+   "readings": [
+    "BOTH: a state condition (bar crossed) plus a governance event (act recognizing it)",
+    "STATE: promotion as a position (rung) on a ladder"
+   ],
+   "run": true
+  }
+ },
+ "released": [
+  "M-1",
+  "M-4"
+ ],
+ "scope": "UNIVERSAL",
+ "stability_extension": "NOT_REFUTED_IN_T-A",
+ "valid": true
+}

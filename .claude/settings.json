@@ -29,6 +29,10 @@
           {
             "type": "command",
             "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/engineering-placement-guard.sh \"$CLAUDE_TOOL_INPUT\""
+          },
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/context-route-reminder.sh \"$CLAUDE_TOOL_INPUT\""
           }
         ]
       }
@@ -132,6 +136,7 @@
     ],
     "allow": [
       "Edit(.claude/CONTEXT.md)",
+      "Edit(.claude/CONTEXT-publicdigit.md)",
       "Edit(.claude/sessions/*.md)",
       "Edit(.claude/plans/*.md)",
       "Edit(docs/plans/*.md)",

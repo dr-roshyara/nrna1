@@ -1,0 +1,139 @@
+{
+  "events": [
+    {
+      "id": "E1",
+      "source": "Q1 lines 5-25 (engineering promotion review)",
+      "cited": false,
+      "item": "\"a module straight into `engineering/knowledge/methodology/`\" (§1–2; identified in Q1 lifecycle section as the \"PROPOSED Layer module\" / `Layer_Verification_Rule.md`)",
+      "target": "canon — \"Outcome B, not yet canon\"; location \"`engineering/knowledge/methodology/`\"",
+      "actor": "\"I\" (the session author writing the review; \"Referred\" onward, addressee UNK)",
+      "act_type": "ASSESSMENT/RECOMMENDATION",
+      "evidence_instances": "\"many instances\" (no number stated)",
+      "evidence_contexts": "\"one context\" (= 1)",
+      "evidence_other": "\"one work package's evidence\"; stability: \"four post-freeze amendments in a single day\"",
+      "threshold_stated": {
+        "verbatim": "UNK — no rule text quoted; nearest: criterion \"repeated evidence\" and \"What is missing is a second context\"; \"Under a strict reading, no insight from a single-context programme can ever be promoted\"",
+        "unit": "contexts (INFERENCE from \"second context\" / \"single-context\"; not stated as the rule's wording)"
+      },
+      "exception": "NO — \"Applying the promotion criteria retroactively\"; no exception recorded for this module (the R-39 route is raised only as an open question)",
+      "outcome": "NOT-RAISED/HELD — \"Outcome B, not yet canon\"; status \"PROPOSED — NOT ADOPTED\" (file nonetheless physically in the canonical tree: \"I did not move the file\")",
+      "ground": "RULE — outcome derived from the promotion criteria (repeated evidence ⚠️, \"stability ❌\"); note: multi-criterion, not contexts alone"
+    },
+    {
+      "id": "E2",
+      "source": "Q1 lines 44-51 (knowledge lifecycle assessment)",
+      "cited": false,
+      "item": "\"the PROPOSED Layer module\" / \"`Layer_Verification_Rule.md`\"",
+      "target": "ES-006.1 ladder: \"Pilot ❌ · Qualification ❌ · Standard ❌\" (Engineering Standard)",
+      "actor": "\"I\" (session author)",
+      "act_type": "ASSESSMENT/RECOMMENDATION",
+      "evidence_instances": "UNK",
+      "evidence_contexts": "UNK",
+      "evidence_other": "UNK",
+      "threshold_stated": {
+        "verbatim": "\"research dossiers are input-only, never architecture until promoted through ES-006.1\" (ES-006.3); ladder \"Research -> Pilot -> Qualification -> Engineering Standard -> Stable Engineering Capability\"",
+        "unit": "UNK (stage-based, not a count)"
+      },
+      "exception": "NO — \"ES-006.3 already forbids that shape\"; none recorded",
+      "outcome": "NOT-RAISED/HELD — \"Where the module actually sits: `Research`\"; \"it never entered it\"",
+      "ground": "RULE — ES-006.1 / ES-006.3"
+    },
+    {
+      "id": "E3",
+      "source": "Q1 line 23",
+      "cited": false,
+      "item": "\"Candidates 2–5\"",
+      "target": "UNK (context implies `engineering/` / canon: \"`engineering/` stays closed\")",
+      "actor": "UNK (assessed in the review written by \"I\")",
+      "act_type": "ASSESSMENT/RECOMMENDATION",
+      "evidence_instances": "UNK",
+      "evidence_contexts": "\"EPIC-004 is the only context this programme has run\" (= 1)",
+      "evidence_other": "UNK",
+      "threshold_stated": {
+        "verbatim": "\"Under a strict reading, no insight from a single-context programme can ever be promoted\"",
+        "unit": "contexts"
+      },
+      "exception": "NO — none recorded; exception mechanism posed as open question",
+      "outcome": "NOT-RAISED/HELD — \"all fail on exactly that, not on merit\"",
+      "ground": "RULE — \"under a strict reading\""
+    },
+    {
+      "id": "E4",
+      "source": "Q1 line 25, line 45; Q2 line 72",
+      "cited": true,
+      "item": "\"`DDD_Tactical_Governance_Principles.md`\" (\"DDD module\")",
+      "target": "\"`engineering/`\" / \"`engineering/knowledge/methodology/`\" (ADOPTED)",
+      "actor": "UNK as named for R-39 itself; Q2: \"`R-nn` identifiers belong to the Decision Authority\" (so DA by INFERENCE)",
+      "act_type": "REPORT-OF-PRIOR-DECISION",
+      "evidence_instances": "UNK",
+      "evidence_contexts": "\"one context\" (= 1)",
+      "evidence_other": "UNK",
+      "threshold_stated": {
+        "verbatim": "UNK — no rule text; described only as \"early promotion\" of \"not-fully-qualified material\"",
+        "unit": "UNK (contexts by INFERENCE from Q1 line 23)"
+      },
+      "exception": "YES — \"early promotion permitted as an explicit, recorded exception with a stated validation expectation\"; \"early promotion under a recorded governance exception\"",
+      "outcome": "RAISED — \"holds the ADOPTED DDD module (via the R-39 exception)\"",
+      "ground": "UNK (a ruling: \"ruled, not merely written into the tree\"; RULE vs CHOICE not stated)"
+    },
+    {
+      "id": "E5",
+      "source": "Q2 lines 60-62",
+      "cited": false,
+      "item": "five positions: \"repository = workspace/container, not a domain\" · \"contains documentation for multiple domains\" · \"organization unit = domain, not bounded context\" · \"`engineering/` = the result of the cross-product Scope decision\" · \"ES-005 stays generic\"",
+      "target": "\"the Chair's position\" (disposition); NOT rulings register",
+      "actor": "\"Chair\"",
+      "act_type": "DECISION",
+      "evidence_instances": "UNK",
+      "evidence_contexts": "UNK",
+      "evidence_other": "UNK",
+      "threshold_stated": {"verbatim": "UNK", "unit": "UNK"},
+      "exception": "UNK",
+      "outcome": "RAISED — \"Approved as the Chair's position\"",
+      "ground": "UNK"
+    },
+    {
+      "id": "E6",
+      "source": "Q2 line 62",
+      "cited": false,
+      "item": "the same five approved positions",
+      "target": "rulings register (\"`R-nn` identifiers\")",
+      "actor": "\"Chair\" (declining to mint); issuing authority = \"the Decision Authority\"",
+      "act_type": "DECISION",
+      "evidence_instances": "UNK",
+      "evidence_contexts": "UNK",
+      "evidence_other": "UNK",
+      "threshold_stated": {"verbatim": "\"R-34: authority is created only by explicit issuance.\"", "unit": "UNK (not a count)"},
+      "exception": "NO — normal rule R-34 applied",
+      "outcome": "NOT-RAISED/HELD — \"Recorded as disposition, not minted as rulings\"; \"Nothing appended to the register\"",
+      "ground": "RULE — R-34"
+    },
+    {
+      "id": "E7",
+      "source": "Q2 lines 64-68",
+      "cited": false,
+      "item": "\"a new staging root · relocating the file · and my 'undefined cell' conclusion\"",
+      "target": "UNK (implied: Chair's position)",
+      "actor": "\"Chair\"",
+      "act_type": "DECISION",
+      "evidence_instances": "UNK",
+      "evidence_contexts": "UNK",
+      "evidence_other": "\"n = 1 is exact\" — \"One unqualified cross-product artifact\"",
+      "threshold_stated": {"verbatim": "\"don't generalize until evidence requires it\"", "unit": "UNK (counts artifacts, if anything)"},
+      "exception": "UNK",
+      "outcome": "NOT-RAISED/HELD — \"Held\"",
+      "ground": "UNK (the author judges \"the Chair's route is better supported\"; not stated as rule or choice)"
+    }
+  ],
+  "U_witnesses": [],
+  "X_events": [
+    {"event": "E4", "class": "X-consistent", "basis": "exception YES; below-threshold is INFERENCE from \"early promotion\" / \"not-fully-qualified\" with evidence \"one context\" (threshold not stated verbatim); actor DA by INFERENCE only"}
+  ],
+  "notes": [
+    "U: no formal witness. E1 is the nearest candidate (\"many instances\", \"one context\", NOT-RAISED, RULE) but fails strict coding: instances not stated as a count, threshold unit 'contexts' not stated verbatim as rule text, act is an assessment, and stability ❌ independently blocks promotion so the outcome is not attributable to the context unit alone. E3 has contexts = 1 and a context-counting threshold but instances UNK.",
+    "X: only E4 is RAISED with evidence plausibly below threshold. E5 is RAISED but has no stated threshold or evidence, so it is not an X event.",
+    "No X-counter exists in the sources.",
+    "Excluded as not standing-raising: ES-006.1 being canonical \"since 2026-07-11\" (no promotion event described); the referral of the file move (\"Referred\", addressee UNK); the ARB question on a \"standing exception mechanism\" (PENDING, a rule question not an item); the open question whether `knowledge/methodology/` is reserved for adopted modules; the Q2 stewardship/clause-2 discussion.",
+    "E1 and E2 concern the same artifact assessed in two reports against different frameworks (promotion criteria vs ES-006.1 ladder); coded separately."
+  ]
+}

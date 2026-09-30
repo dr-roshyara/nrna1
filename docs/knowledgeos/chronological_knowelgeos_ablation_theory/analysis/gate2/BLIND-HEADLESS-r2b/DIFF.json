@@ -1,0 +1,3297 @@
+{
+ "differences": [
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0b|V|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0b|antichain2|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0b|chain3|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0b|diamond|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0|V|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0|antichain2|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0|chain3|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M0|diamond|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M1|V|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M1|chain3|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M1|diamond|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M2|V|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M2|chain3|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M2|diamond|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3a|V|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3a|antichain2|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3a|chain3|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3a|diamond|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3b|V|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3b|chain3|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "RUN",
+   "key": "C-1|M3b|diamond|applicability",
+   "ref": "APPLICABLE"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0b|V|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M0b|antichain2|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M0b|antichain2|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M0b|antichain2|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0b|antichain2|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0b|chain3|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0b|diamond|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0|V|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M0|antichain2|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M0|antichain2|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M0|antichain2|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0|antichain2|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0|chain3|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-2|M0|diamond|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D1",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D2",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3+[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3-history[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3-history[PS]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3-state-bar-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3-state-bar-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D5[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|D6",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|NV[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|P-GUARD",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M1|antichain2|P-PERSIST",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D1",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D2",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3+[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3-history[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3-history[PS]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3-state-bar-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3-state-bar-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D5[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|D6",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|NV[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|P-GUARD",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M2|antichain2|P-PERSIST",
+   "ref": null
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-2|M3a|antichain2|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D1",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D2",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3+[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3-history[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3-history[PS]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3-state-bar-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3-state-bar-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D5[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|D6",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|NV[N]",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|P-GUARD",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_APPLICABLE",
+   "key": "C-2|M3b|antichain2|P-PERSIST",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_RUN",
+   "key": "C-3|M1|chain3|S4-T",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_RUN",
+   "key": "C-3|M2|chain3|S4-T",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_RUN",
+   "key": "C-3|M3a|chain3|S4-T",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "NOT_RUN",
+   "key": "C-3|M3b|chain3|S4-T",
+   "ref": null
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|V|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A0|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A0|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A0|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A1|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A1|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A1|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A3g|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A3g|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A3g|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A3s|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A3s|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A3s|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A5g|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A5g|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A5g|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A5s|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A5s|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A5s|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|antichain2|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A6|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-A6|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0b|antichain2|-B6|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|chain3|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0b|diamond|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|V|-A6|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A0|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A0|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A0|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A1|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A1|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A1|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A3g|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A3g|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A3g|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A3s|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A3s|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A3s|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A5g|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A5g|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A5g|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A5s|D3+[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A5s|D3-history[N]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M0|antichain2|-A5s|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|antichain2|-A6|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|chain3|-A6|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A0|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A1|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A2e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A3g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A3m|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A3s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A4|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A5e|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A5g|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A5s|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "HOLDS",
+   "key": "C-4|M0|diamond|-A6|P-BAR",
+   "note": {
+    "both_true": true
+   },
+   "ref": "VACUOUS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-A0|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-A1|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-A3g|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-A3s|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-A5g|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-A5s|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-W1|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-W3|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "SEMANTIC-MISMATCH",
+   "ind": "VACUOUS",
+   "key": "C-4|M3a|antichain2|-W4|D3-history[PS]",
+   "note": {
+    "both_true": true
+   },
+   "ref": "HOLDS"
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|V|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|V|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|V|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0b|antichain2|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0b|antichain2|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|antichain2|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0b|antichain2|minimal|P-GUARD",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|chain3|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|chain3|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|chain3|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|diamond|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|diamond|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    [
+     "B6"
+    ]
+   ],
+   "key": "C-5|M0b|diamond|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|V|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|V|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|V|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|antichain2|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|antichain2|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|antichain2|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|antichain2|minimal|P-GUARD",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|chain3|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|chain3|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|chain3|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|diamond|minimal|D3-state-floor-event",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|diamond|minimal|D3-state-floor-inv",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M0|diamond|minimal|P-BAR",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": [
+    []
+   ],
+   "key": "C-5|M3a|antichain2|minimal|P-GUARD",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|NV[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|antichain2|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0b|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|NV[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|antichain2|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3+[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3-history[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3-state-bar-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3-state-bar-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M0|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|P-BAR|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M1|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|V|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|chain3|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M2|diamond|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|V|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|V|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|V|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D3-state-floor-event|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D3-state-floor-inv|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|antichain2|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|chain3|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|chain3|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|chain3|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|diamond|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|diamond|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3a|diamond|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|V|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|chain3|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|D3-history[PS]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|D5[N]|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|M3b|diamond|P-PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.ablation.*.reachable_N_states",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.ablation.*.reachable_states",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.ablation.*.state_count",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.added_axiom_subsets_truth",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.bottom",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.full_axiom_set",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.properties.*.holds",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.properties.*.note",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.scenarios.*.axiom_set",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.*.scenarios.*.witness",
+   "ref": null
+  }
+ ],
+ "schema": "CANONICAL-SCHEMA.md",
+ "tally": {
+  "C-1": {
+   "EXACT": 66,
+   "EXTRA": 0,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 21,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-2": {
+   "EXACT": 300,
+   "EXTRA": 45,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 15,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-3": {
+   "EXACT": 51,
+   "EXTRA": 4,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-4": {
+   "EXACT": 4158,
+   "EXTRA": 0,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 132,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-5": {
+   "EXACT": 209,
+   "EXTRA": 27,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-6": {
+   "EXACT": 117,
+   "EXTRA": 0,
+   "MISSING": 198,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "unmapped": {
+   "EXACT": 0,
+   "EXTRA": 10,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  }
+ }
+}

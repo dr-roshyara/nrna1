@@ -1,0 +1,885 @@
+# SLICE-VIEW v1 (R7 v2.7): one line per JSON leaf of the frozen slice — <path> TAB <kind> TAB <payload>; path = JSON array of keys/indices; kinds: N scalar, E empty container, S k/n string chunk (JSON)
+["batch_id"]	S 1/1	"OB0012"
+["bundle","reconciliation_object","aliases",0]	S 1/1	"Means of acquisition (Pramana source-role separation)"
+["bundle","reconciliation_object","assumption_register"]	E	[]
+["bundle","reconciliation_object","candidate_births","conceptual","anchor"]	S 1/1	"Deferred Mechanisms -- useful but not constitutional"
+["bundle","reconciliation_object","candidate_births","conceptual","source_id"]	S 1/1	"S0239"
+["bundle","reconciliation_object","candidate_births","formal","anchor"]	S 1/1	"Family 2 -- EVIDENCE (Why should we believe this?)"
+["bundle","reconciliation_object","candidate_births","formal","source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","candidate_births","governance"]	N	null
+["bundle","reconciliation_object","candidate_births","lexical","anchor"]	S 1/1	"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)"
+["bundle","reconciliation_object","candidate_births","lexical","source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","candidate_births","operational"]	N	null
+["bundle","reconciliation_object","completeness","assumptions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","assumptions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","dependencies","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","dependencies","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","examples","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","examples","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","experiments","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","experiments","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids",0]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids",1]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","formal_definition","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","informal_meaning","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","informal_meaning","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","invariants","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","invariants","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","open_questions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","open_questions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",0]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",1]	S 1/1	"S0237"
+["bundle","reconciliation_object","completeness","purpose_rationale","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","semantics","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","semantics","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","type_signature","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","type_signature","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","warnings","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","warnings","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness_absences",0]	S 1/1	"informal_meaning"
+["bundle","reconciliation_object","completeness_absences",1]	S 1/1	"type_signature"
+["bundle","reconciliation_object","completeness_absences",2]	S 1/1	"invariants"
+["bundle","reconciliation_object","completeness_absences",3]	S 1/1	"dependencies"
+["bundle","reconciliation_object","completeness_absences",4]	S 1/1	"assumptions"
+["bundle","reconciliation_object","completeness_absences",5]	S 1/1	"semantics"
+["bundle","reconciliation_object","completeness_absences",6]	S 1/1	"examples"
+["bundle","reconciliation_object","completeness_absences",7]	S 1/1	"warnings"
+["bundle","reconciliation_object","completeness_absences",8]	S 1/1	"experiments"
+["bundle","reconciliation_object","completeness_absences",9]	S 1/1	"open_questions"
+["bundle","reconciliation_object","files_touching"]	E	[]
+["bundle","reconciliation_object","group_ids",0]	S 1/1	"G1191"
+["bundle","reconciliation_object","group_ids",1]	S 1/1	"G1206"
+["bundle","reconciliation_object","group_ids",2]	S 1/1	"G1209"
+["bundle","reconciliation_object","group_ids",3]	S 1/1	"G1223"
+["bundle","reconciliation_object","group_ids",4]	S 1/1	"G1237"
+["bundle","reconciliation_object","group_ids",5]	S 1/1	"G1246"
+["bundle","reconciliation_object","group_ids",6]	S 1/1	"G1254"
+["bundle","reconciliation_object","group_ids",7]	S 1/1	"G1261"
+["bundle","reconciliation_object","group_ids",8]	S 1/1	"G1272"
+["bundle","reconciliation_object","group_ids",9]	S 1/1	"G1281"
+["bundle","reconciliation_object","group_ids",10]	S 1/1	"G1287"
+["bundle","reconciliation_object","group_ids",11]	S 1/1	"G1292"
+["bundle","reconciliation_object","group_ids",12]	S 1/1	"G1293"
+["bundle","reconciliation_object","group_ids",13]	S 1/1	"G1297"
+["bundle","reconciliation_object","group_ids",14]	S 1/1	"G1299"
+["bundle","reconciliation_object","group_ids",15]	S 1/1	"G1302"
+["bundle","reconciliation_object","group_ids",16]	S 1/1	"G1306"
+["bundle","reconciliation_object","last_seen"]	S 1/1	"S0239"
+["bundle","reconciliation_object","lifecycle_candidate"]	S 1/1	"DORMANT"
+["bundle","reconciliation_object","lifecycle_evidence","contested_by_own_contradiction_type"]	N	false
+["bundle","reconciliation_object","lifecycle_evidence","retracted_by"]	E	[]
+["bundle","reconciliation_object","lifecycle_evidence","superseded_by"]	E	[]
+["bundle","reconciliation_object","notations",0]	S 1/1	"INV-KOS-Pramana-001"
+["bundle","reconciliation_object","pair_count"]	N	17
+["bundle","reconciliation_object","pairs_touching",0,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",0,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"notes_for_p3b"]	S 1/1	"Pattern repeats across RP0811/RP0860/RP0861/RP0893 in this batch -- all draw from the same S0237/S0239 register-census pair, each a coincidental co-listing case."
+["bundle","reconciliation_object","pairs_touching",0,"pair_id"]	S 1/1	"RP0794"
+["bundle","reconciliation_object","pairs_touching",0,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",0,"what_says_this"]	S 1/1	"CO-OCCURRENCE only. All cross-ref/keyword hits trace to the same two documents (S0237 register census of a 25-row candidate table, S0239 validation decisions) in which A (Family 1, IDENTITY: Avacchedaka/delimiting conditions) and B (Family 2, EVIDENCE: Pramana source-role separation) are merely adjacent, independently-defined, independently-validated rows in a large shared registry -- a coincidental co-listing, not a substantive relation between the two specific candidates."
+["bundle","reconciliation_object","pairs_touching",0,"what_would_make_this_wrong"]	S 1/1	"A row directly relating Avacchedaka (delimiting conditions) to Pramana (means of acquisition) as one building on or subsuming the other, rather than each being validated independently under different families (1 vs 2) of the same register."
+["bundle","reconciliation_object","pairs_touching",0,"with_label"]	S 1/1	"h-kos-context-002-avacchedaka"
+["bundle","reconciliation_object","pairs_touching",1,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",1,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",1,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",1,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",1,"pair_id"]	S 1/1	"RP0809"
+["bundle","reconciliation_object","pairs_touching",1,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",1,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",1,"what_says_this"]	S 1/1	"Both are entries in the same 25-row Candidate register (S0237), in different families (H-KOS-Dialogue-001 in Family 7 CONTRADICTION; INV-KOS-Pramana-001 in Family 2 EVIDENCE). S0239's validation decisions treat them separately (Dialogue-001 -> ENGINE/DEFERRED under law 8; Pramana-001 not shown resolved in this excerpt). CO-OCCURRENCE only; no claim links them beyond shared census/compression-test-cluster membership."
+["bundle","reconciliation_object","pairs_touching",1,"what_would_make_this_wrong"]	S 1/1	"A row placing both under the same compression-test cluster with a stated SUBSUMES/merge verdict (rather than each independently resolved) would establish a real relationship."
+["bundle","reconciliation_object","pairs_touching",1,"with_label"]	S 1/1	"h-kos-dialogue-001-structured-opposition"
+["bundle","reconciliation_object","pairs_touching",2,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",2,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",2,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",2,"notes_for_p3b"]	S 1/1	"Same shared-registry-co-occurrence pattern as RP0803: both are independent candidate invariants tracked in the same master census/validation pass, occupying the same EVIDENCE family but explicitly NOT merged or derived from each other."
+["bundle","reconciliation_object","pairs_touching",2,"pair_id"]	S 1/1	"RP0813"
+["bundle","reconciliation_object","pairs_touching",2,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",2,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",2,"what_says_this"]	S 1/1	"Both complete families (3 and 6 rows) share the same governance census sources (S0237, S0239). The full Family-2 (EVIDENCE) table row explicitly lists both as SEPARATE, independently-surviving candidates: 'INV-KOS-Pramana-001 Means of Acquisition (forbids the Source-role collapse ...)' and 'H-KOS-EvidenceAuthenticity-001 Evidence vs Pseudo-Evidence (forbids Pseudo-evidence->Evidence, anti-hallucination)' -- each assigned its own validation status and law (Pramana: STRONG, laws 3+6; EvidenceAuthenticity: STRONG anti-hallucination C-9, law 6) with no compression ruling merging them (the only compression ruling in this row merges a different pair, H-KOS-Abhava-001 into Uncertainty-001)."
+["bundle","reconciliation_object","pairs_touching",2,"what_would_make_this_wrong"]	S 1/1	"A compression-test ruling or later governance note merging or deriving one of these two candidates from the other -- explicitly absent from the full Family 2 table and its validation-decision row."
+["bundle","reconciliation_object","pairs_touching",2,"with_label"]	S 1/1	"h-kos-evidenceauthenticity-001"
+["bundle","reconciliation_object","pairs_touching",3,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",3,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",3,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",3,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",3,"pair_id"]	S 1/1	"RP0827"
+["bundle","reconciliation_object","pairs_touching",3,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",3,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",3,"what_says_this"]	S 1/1	"Both A (h-kos-failure-001-failed-reasoning-preservation) and B (inv-kos-pramana-001-means-of-acquisition) are siblings in the same 25-row Candidate register (S0237/S0239) -- co-listed but no row connects them to each other specifically."
+["bundle","reconciliation_object","pairs_touching",3,"what_would_make_this_wrong"]	S 1/1	"If a row explicitly cross-referenced or merged these two specific candidates."
+["bundle","reconciliation_object","pairs_touching",3,"with_label"]	S 1/1	"h-kos-failure-001-failed-reasoning-preservation"
+["bundle","reconciliation_object","pairs_touching",4,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",4,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",4,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",4,"notes_for_p3b"]	S 1/1	"Same H-KOS/INV-KOS register cluster as RP0825/RP0832/RP0872/RP0891; note A and B belong to different named families (REASONING vs EVIDENCE) within the same register, reinforcing that they are distinct by design."
+["bundle","reconciliation_object","pairs_touching",4,"pair_id"]	S 1/1	"RP0841"
+["bundle","reconciliation_object","pairs_touching",4,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",4,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",4,"what_says_this"]	S 1/1	"Group evidence is CO-OCCURRENCE only (3 times). The full compression-test list's item (4) compares Pramana-001 to Reasoning-Separation-001/Agent-001/INV-001 (-> DISTINCT) and item (5) resolves Pramana's source-role-separation naming internally (-> RESOLVED, no new row) -- neither names Fallacy-001. Item (7) separately resolves Fallacy-001<->Failure-001 (-> COMPLEMENTARY), not involving Pramana-001. A (Fallacy, Family 6 REASONING) and B (Pramana, Family 2 EVIDENCE) belong to different named families in the register and are never directly cross-tested in the retrieved compression list."
+["bundle","reconciliation_object","pairs_touching",4,"what_would_make_this_wrong"]	S 1/1	"A compression-test entry directly naming both Fallacy-001 and Pramana-001 (not retrieved in this extraction) would override this default."
+["bundle","reconciliation_object","pairs_touching",4,"with_label"]	S 1/1	"h-kos-fallacy-001-invalid-reasoning-detection"
+["bundle","reconciliation_object","pairs_touching",5,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",5,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",5,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",5,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",5,"pair_id"]	S 1/1	"RP0853"
+["bundle","reconciliation_object","pairs_touching",5,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",5,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",5,"what_says_this"]	S 1/1	"Same S0237/S0239 catalog-table co-listing pattern -- both appear as separate rows in the same registry table."
+["bundle","reconciliation_object","pairs_touching",5,"what_would_make_this_wrong"]	S 1/1	"A row deriving the Pramana source-role separation from the purpose-of-reasoning hypothesis (or vice versa) would justify a stronger verdict."
+["bundle","reconciliation_object","pairs_touching",5,"with_label"]	S 1/1	"h-kos-intent-001-purpose-of-reasoning"
+["bundle","reconciliation_object","pairs_touching",6,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",6,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",6,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",6,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",6,"pair_id"]	S 1/1	"RP0861"
+["bundle","reconciliation_object","pairs_touching",6,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",6,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",6,"what_says_this"]	S 1/1	"CO-occurrence only, same coincidental co-listing pattern: A belongs to Family 6 (REASONING) and B to Family 2 (EVIDENCE) of the same S0237/S0239 register; both independently validated STRONG->KERNEL. No row substantively connects the epistemic-inquiry-lifecycle hypothesis to the Pramana source-role-separation invariant beyond shared registry membership."
+["bundle","reconciliation_object","pairs_touching",6,"what_would_make_this_wrong"]	S 1/1	"A row deriving one from the other rather than both being independent register entries."
+["bundle","reconciliation_object","pairs_touching",6,"with_label"]	S 1/1	"h-kos-lifecycle-reasoning-001"
+["bundle","reconciliation_object","pairs_touching",7,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",7,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",7,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",7,"notes_for_p3b"]	S 1/1	"Fourth same-census-only UNWITNESSED pair in this batch (see RP0797, RP0846, RP0848) -- confirms the register-census document (S0237/S0239, the 25-candidate table) generates many CO-OCCURRENCE groupings among unrelated candidate rows; likely a recurring pattern across other RP batches too."
+["bundle","reconciliation_object","pairs_touching",7,"pair_id"]	S 1/1	"RP0870"
+["bundle","reconciliation_object","pairs_touching",7,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",7,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",7,"what_says_this"]	S 1/1	"Both co-occur only via the same 25-row register census (S0237/S0239); a's actual formal connection (confirmed by its own lineage_claims row at S0240: 'H-KOS-NonInterference-001 is the transition-form of INV-KOS-001 (Dimension Independence). They render as one law.') is to INV-KOS-001/kos-law-02-dimension, not to b. b (Pramana-001) is in its own compression-test clusters (4) 'Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT' and (5) 'Pramana source-role separation naming -> RESOLVED', neither mentioning a. a is Family 4 TRANSFORMATION; b's subject (means of epistemic acquisition / source-role separation) belongs to the EVIDENCE family. No lineage_claims or dual-labeled rows connect a and b directly."
+["bundle","reconciliation_object","pairs_touching",7,"what_would_make_this_wrong"]	S 1/1	"If a future document showed dimension-transition non-interference specifically depends on or conflicts with the Pramana source-role separation (e.g. a dimension transition that silently changes which means-of-acquisition applies), that would establish real continuity currently absent."
+["bundle","reconciliation_object","pairs_touching",7,"with_label"]	S 1/1	"h-kos-noninterference-001"
+["bundle","reconciliation_object","pairs_touching",8,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",8,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",8,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",8,"notes_for_p3b"]	S 1/1	"Thematic adjacency (both are role-separation principles) noted but insufficient alone per protocol's negative-verdict bar."
+["bundle","reconciliation_object","pairs_touching",8,"pair_id"]	S 1/1	"RP0881"
+["bundle","reconciliation_object","pairs_touching",8,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",8,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",8,"what_says_this"]	S 1/1	"group_evidence is CO-OCCURRENCE only (3 co-occurrences); H-KOS-Reasoning-Separation-001 (generate vs evaluate) and INV-KOS-Pramana-001 (means-of-acquisition/source-role separation) are differently-prefixed (H- vs INV-KOS-) registry entries with no specific cross-reference in the sampled evidence, though both concern separating epistemic roles."
+["bundle","reconciliation_object","pairs_touching",8,"what_would_make_this_wrong"]	S 1/1	"A row showing the generate/evaluate separation is derived from or specializes the Pramana source-role separation invariant would establish a real relationship."
+["bundle","reconciliation_object","pairs_touching",8,"with_label"]	S 1/1	"h-kos-reasoning-separation-001-generate-vs-evaluate"
+["bundle","reconciliation_object","pairs_touching",9,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",9,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",9,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",9,"notes_for_p3b"]	S 1/1	"Same shared-registry-row false-positive pattern as RP0829: two sibling entries in the same 25-item candidate census, different families (IDENTITY vs EVIDENCE), no direct compression-test link."
+["bundle","reconciliation_object","pairs_touching",9,"pair_id"]	S 1/1	"RP0890"
+["bundle","reconciliation_object","pairs_touching",9,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",9,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",9,"what_says_this"]	S 1/1	"Both share the same S0237/S0239 candidate-register census rows (the same 25-item table and its validation results) -- the coincidental co-listing pattern flagged by the task brief. They belong to DIFFERENT families in the census: a (H-KOS-Relation-001) is Family 1 IDENTITY ('the general principle UNDER the separation family, with INV-001..004 + Expression!=Meaning + Observation!=Inference as its instances'); b (INV-KOS-Pramana-001) is Family 2 EVIDENCE ('Means of Acquisition -- forbids the Source-role collapse'). The compression-test rulings (S0237, ten named clusters) never pair Relation-001 with Pramana-001 -- cluster 3 relates Relation-001 to the INV-001..004 principle family, and cluster 4 finds Pramana-001 DISTINCT from Reasoning-Separation-001/Agent-001/INV-001. They receive different SURVIVES dispositions in S0239 (Relation-001: KERNEL(principle)+REPRESENTATION(graph), laws unspecified; Pramana-001: KERNEL(principle)+REPRESENTATION(evidence-record schema), laws 3+6)."
+["bundle","reconciliation_object","pairs_touching",9,"what_would_make_this_wrong"]	S 1/1	"If a later compression-test explicitly paired Relation-001 and Pramana-001 for subsumption/overlap testing (as was done for other specific pairs in this same table), a positive relationship might be warranted -- but no such row exists in the captured evidence."
+["bundle","reconciliation_object","pairs_touching",9,"with_label"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["bundle","reconciliation_object","pairs_touching",10,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",10,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",10,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",10,"notes_for_p3b"]	S 1/1	"Same shared-census-table artifact as the other Constitutional-Invariant-Map pairs in this batch (RP0787/RP0799/RP0850/RP0851/RP0876/RP0900/RP1014/RP1035); correctly UNWITNESSED."
+["bundle","reconciliation_object","pairs_touching",10,"pair_id"]	S 1/1	"RP0898"
+["bundle","reconciliation_object","pairs_touching",10,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",10,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",10,"what_says_this"]	S 1/1	"Grouped by CO-OCCURRENCE (4x) via the same Constitutional Invariant Map census/Family-2-EVIDENCE/validation tables. No compression-test cluster pairs Uncertainty-001 with Pramana-001 directly: cluster (9) 'Uncertainty-001<->Abhava-001 -> SUBSUMES' does not involve Pramana-001, and cluster (5) (Pramana source-role separation naming, RESOLVED as row content) does not involve Uncertainty-001. A (structured doubt/Samsaya, consolidated with H-ZERO-001 into law 9) and B (means-of-acquisition/source-role separation, laws 3+6) are validated into different laws with no direct ruling connecting them."
+["bundle","reconciliation_object","pairs_touching",10,"what_would_make_this_wrong"]	S 1/1	"A compression-test row explicitly pairing Uncertainty-001 and Pramana-001 would supply direct evidence; none exists in the captured rows."
+["bundle","reconciliation_object","pairs_touching",10,"with_label"]	S 1/1	"h-kos-uncertainty-001-structured-doubt"
+["bundle","reconciliation_object","pairs_touching",11,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",11,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",11,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",11,"notes_for_p3b"]	S 1/1	"Third instance in this batch of the same shared-registry-row false-positive pattern (see also RP0829, RP0890) -- all involve the S0237/S0239 25-item candidate census."
+["bundle","reconciliation_object","pairs_touching",11,"pair_id"]	S 1/1	"RP0903"
+["bundle","reconciliation_object","pairs_touching",11,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",11,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",11,"what_says_this"]	S 1/1	"Same shared S0237/S0239 candidate-register census pattern as RP0829/RP0890. a (H-KOS-Vyapti-001, Family 6 REASONING: 'Inference-Warranting Relation ... subsumes proposed Reasoning-001/002 and the upadhi/defeaters facet') and b (INV-KOS-Pramana-001, Family 2 EVIDENCE: 'Means of Acquisition -- forbids the Source-role collapse') sit in different families of the same 25-item table. The compression-test rulings test each against different partners: cluster 4 tests Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; cluster 6 tests Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES. Neither cluster pairs Vyapti-001 with Pramana-001. Both survive independently with different law assignments (S0239: Vyapti-001 -> KERNEL, law 6; Pramana-001 -> KERNEL(principle)+REPRESENTATION(evidence-record schema), laws 3+6)."
+["bundle","reconciliation_object","pairs_touching",11,"what_would_make_this_wrong"]	S 1/1	"If a later compression-test explicitly paired Vyapti-001 and Pramana-001 (e.g. testing whether an inference-warranting rule and a source-acquisition-means rule overlap), a positive relationship might be warranted -- no such row exists in the captured evidence."
+["bundle","reconciliation_object","pairs_touching",11,"with_label"]	S 1/1	"h-kos-vyapti-001-inference-warranting-relation"
+["bundle","reconciliation_object","pairs_touching",12,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",12,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",12,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",12,"notes_for_p3b"]	S 1/1	"Third instance of the same S0237/S0239 registry-census pattern in this batch (RP0847/RP0902/RP0907) -- confirms the batch instructions' warning that shared large-registry rows require checking the registry's own explicit pairwise tests before concluding a relationship."
+["bundle","reconciliation_object","pairs_touching",12,"pair_id"]	S 1/1	"RP0907"
+["bundle","reconciliation_object","pairs_touching",12,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",12,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",12,"what_says_this"]	S 1/1	"Both are Family 2 (EVIDENCE) register members, but the register's own compression-test cluster 4 tests Pramana-001 specifically against Reasoning-Separation-001/Agent-001/INV-001 with verdict DISTINCT -- not against H-Zero-001. The two resolve to different laws in the same validation pass (S0239: Pramana-001 -> KERNEL(principle)+REPRESENTATION, laws 3+6; H-Zero-001 -> KERNEL, law 9, later consolidated with Uncertainty-001 specifically, not Pramana-001). No cluster or ruling connects H-Zero-001 and Pramana-001 to each other."
+["bundle","reconciliation_object","pairs_touching",12,"what_would_make_this_wrong"]	S 1/1	"If a ruling explicitly grounds H-Zero-001's 'Unknown is valid' status IN Pramana-001's source-role separation (e.g. 'Unknown arises specifically from an unavailable Pramana'), this would upgrade to a positive relationship."
+["bundle","reconciliation_object","pairs_touching",12,"with_label"]	S 1/1	"h-zero-001-unknown-valid-state"
+["bundle","reconciliation_object","pairs_touching",13,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",13,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",13,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",13,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",13,"pair_id"]	S 1/1	"RP1004"
+["bundle","reconciliation_object","pairs_touching",13,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",13,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",13,"what_says_this"]	S 1/1	"CO-OCCURRENCE only (2 co-occurrences). No lineage_claims found in either direction via full-row scan."
+["bundle","reconciliation_object","pairs_touching",13,"what_would_make_this_wrong"]	S 1/1	"A row relating the Evidence!=Authority invariant to the Pramana means-of-acquisition invariant (e.g. one specializing or requiring the other) would establish a claim."
+["bundle","reconciliation_object","pairs_touching",13,"with_label"]	S 1/1	"inv-001-evidence-ne-authority"
+["bundle","reconciliation_object","pairs_touching",14,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",14,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",14,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",14,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",14,"pair_id"]	S 1/1	"RP1028"
+["bundle","reconciliation_object","pairs_touching",14,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",14,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",14,"what_says_this"]	S 1/1	"Only evidence is CO-OCCURRENCE (2 times) within the same INV-KOS-* numbered invariant catalogue -- sibling-registry-entries pattern. No row connects Dimension-Independence to the Pramana source-role-separation invariant specifically."
+["bundle","reconciliation_object","pairs_touching",14,"what_would_make_this_wrong"]	S 1/1	"Would be wrong if a later row explicitly derives Pramana source-role separation as a specific application of the general dimension-independence invariant."
+["bundle","reconciliation_object","pairs_touching",14,"with_label"]	S 1/1	"inv-kos-001-dimension-independence"
+["bundle","reconciliation_object","pairs_touching",15,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",15,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",15,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",15,"notes_for_p3b"]	S 1/1	"Same census-registry coincidental co-listing pattern as RP0782/RP0816/RP1003."
+["bundle","reconciliation_object","pairs_touching",15,"pair_id"]	S 1/1	"RP1030"
+["bundle","reconciliation_object","pairs_touching",15,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",15,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",15,"what_says_this"]	S 1/1	"group_evidence CO-OCCURRENCE (2 co-listings). Both are sibling entries in the same 25-row candidate-invariant census (S0237/S0239) already seen in RP0782/RP0816/RP1003 -- Agent-001 belongs to Family 8 (AGENT), Pramana-001 to Family 2 (EVIDENCE), two structurally unrelated families co-listed only by virtue of the shared census pass."
+["bundle","reconciliation_object","pairs_touching",15,"what_would_make_this_wrong"]	S 1/1	"Wrong if a row is found stating epistemic agency (who has standpoint/angle-of-observation) is a precondition for, or determines, which Pramana (means-of-acquisition) categories are available to that agent."
+["bundle","reconciliation_object","pairs_touching",15,"with_label"]	S 1/1	"inv-kos-agent-001-epistemic-agency"
+["bundle","reconciliation_object","pairs_touching",16,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",16,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",16,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",16,"notes_for_p3b"]	N	null
+["bundle","reconciliation_object","pairs_touching",16,"pair_id"]	S 1/1	"RP1036"
+["bundle","reconciliation_object","pairs_touching",16,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",16,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",16,"what_says_this"]	S 1/1	"Classic shared-candidate-register pattern (S0237/S0239): Pramana-001 belongs to the EVIDENCE family, Revisability-001 to the TEMPORAL family, of the same 25-row constitutional census. No compression-test cluster or lineage_claim pairs them; co-occurrence is coincidental co-listing in the large registry."
+["bundle","reconciliation_object","pairs_touching",16,"what_would_make_this_wrong"]	S 1/1	"A row explicitly testing Pramana-001 (source-role separation) against Revisability-001 (revision!=deletion) for overlap/redundancy would establish a relation; none of the ten named compression clusters covers this pair."
+["bundle","reconciliation_object","pairs_touching",16,"with_label"]	S 1/1	"inv-kos-revisability-001-revision-ne-deletion"
+["bundle","reconciliation_object","primary_layer_provisional"]	S 1/1	"LAYER-UNRESOLVED"
+["bundle","reconciliation_object","rationale_evidence",0,"anchor"]	S 1/1	"Compression-test rulings (Filter . Separate . Test -- UM-22 protocol)"
+["bundle","reconciliation_object","rationale_evidence",0,"source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","rationale_evidence",0,"statement"]	S 1/1	"Ten named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-002<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here."
+["bundle","reconciliation_object","rationale_evidence",0,"types",0]	S 1/1	"ANALYSIS"
+["bundle","reconciliation_object","rationale_evidence",1,"anchor"]	S 1/1	"Landscape integration -- which EKS/PKS/AIP responsibilities already exist, and where their boundaries lie"
+["bundle","reconciliation_object","rationale_evidence",1,"source_id"]	S 1/1	"S0237"
+["bundle","reconciliation_object","rationale_evidence",1,"statement"]	S 1/2	"Nine landscape findings (C-1..C-10 evidence) mapped onto the register, with F2/F3/F4 carry-forwards honored (implemented mechanism != domain ownership; evidence is current-state-scoped not universal; consumption != ownership != KnowledgeOS): state-as-fold/append-only log (C-2, SAME as Revisability-001's enforcement, mechanism layer); forward-only supersession (C-5, SAME as Revisability-001, asymmetric ownership PKS-governance/EKS-mechanism/AIP-declared-only); closed-verdict vocabulary (C-3, SAME as the Validation Layer, a published-language boundary); assessment-conferring-no-authority (C-4, SAME as INV-003 Established); epistemic-class discipline (C-8, SAME as Pramana-001's source-role separation, PKS-owned, asymmetric F3); regenerable non-authoritative projection (C-7, SAME as INV-004 Established); honest-UNKNOWN (C-10, SAME as H-ZERO-001, 'discipline, not mechanism'); authority-as-recorded-reference (C-1, SAME as the Authority family's core, X-02 SAME-vs-RELATED across systems UNKNO"
+["bundle","reconciliation_object","rationale_evidence",1,"statement"]	S 2/2	"WN/U-02); the F4 relationship question (AIP is DISTINCT -- a consumer/runtime, not the owner, not the KnowledgeOS layer itself)."
+["bundle","reconciliation_object","rationale_evidence",1,"types",0]	S 1/1	"ANALYSIS"
+["bundle","reconciliation_object","row_count"]	N	6
+["bundle","reconciliation_object","secondary_roles_provisional"]	E	[]
+["bundle","reconciliation_object","working_label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["bundle","rows_verbatim",0]	S 1/4	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)\", \"explicit_date\": \"2026-08-22\", \"scope\": \"OBJECT\", \"labels\": [\"inv-kos-001-dimension-independence\", \"inv-kos-002-semantic-continuity\", \"h-kos-context-001-semantic-frame-preservation\", \"h-kos-noninterference-001\", \"h-kos-contradiction-001-conflict-preservation\", \"h-kos-relationship-001-tripuji\", \"h-zero-001-unknown-valid-state\", \"inv-kos-inference-001-observation-ne-inference\", \"inv-kos-justification-001\", \"inv-kos-revisability-001-revision-ne-deletion\", \"inv-kos-decision-001-decision-relationship\", \"inv-kos-agent-001-epistemic-agency\", \"h-kos-reasoning-separation-001-generate-vs-evaluate\", \"h-kos-reasoning-provenance-001\", \"h-kos-vyapti-001-inference-warranting"
+["bundle","rows_verbatim",0]	S 2/4	"-relation\", \"h-kos-uncertainty-001-structured-doubt\", \"h-kos-fallacy-001-invalid-reasoning-detection\", \"h-kos-relation-001-epistemic-relations-first-class\", \"h-kos-context-002-avacchedaka\", \"h-kos-lifecycle-reasoning-001\", \"h-kos-intent-001-purpose-of-reasoning\", \"h-kos-failure-001-failed-reasoning-preservation\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-dialogue-001-structured-opposition\", \"h-kos-evidenceauthenticity-001\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"DEFINITION\"], \"statement\": \"Register census, the full 25-row Candidate table, each fixed to ID/original registration/lineage: (1) INV-KOS-001 Dimension Independence; (2) INV-KOS-002 Semantic Continuity; (3) H-KOS-Context-001 Semantic Frame Preservation; (4) H-KOS-NonInterference-001 No implicit dimension transitions; (5) H-KOS-Contradiction-001 Conflict Preservation; (6) H-KOS-Relationship-001 Knowledge Relationship Integrity (Tripuji, 'the genuinely NEW relationship candidate'); (7) H-ZERO-"
+["bundle","rows_verbatim",0]	S 3/4	"001 UNKNOWN is a valid epistemic state; (8) INV-KOS-Inference-001 Observation != Inference; (9) INV-KOS-Justification-001 Nature of justification; (10) INV-KOS-Revisability-001 Revision != Deletion; (11) INV-KOS-Decision-001 Decision Relationship; (12) INV-KOS-Agent-001 Epistemic Agency (supersedes H-KOS-Agent-001, UM-29); (13) H-KOS-Reasoning-Separation-001 Generate vs Evaluate; (14) H-KOS-Reasoning-Provenance-001 Reasoning path preservation; (15) H-KOS-Vyapti-001 Inference-warranting relation; (16) H-KOS-Uncertainty-001 Structured doubt (Samsaya); (17) H-KOS-Fallacy-001 Invalid-reasoning detection; (18) H-KOS-Relation-001 Epistemic relations as first-class (HPA: 'one of the strongest kernel candidates'); (19) H-KOS-Context-002 Avacchedaka -- delimiting conditions (SAME-ID reproduced SS33); (20) H-KOS-Lifecycle-Reasoning-001 Epistemic inquiry lifecycle; (21) H-KOS-Intent-001 Purpose/intent of reasoning ('genuinely novel content'); (22) H-KOS-Failure-001 Failed-reasoning preservation; "
+["bundle","rows_verbatim",0]	S 4/4	"(23) INV-KOS-Pramana-001 Means of acquisition; (24) H-KOS-Dialogue-001 Structured opposition; (25) H-KOS-EvidenceAuthenticity-001 Evidence vs pseudo-evidence.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",1]	S 1/3	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Compression-test rulings (Filter . Separate . Test -- UM-22 protocol)\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"h-kos-context-002-avacchedaka\", \"inv-kos-agent-001-epistemic-agency\", \"h-kos-relation-001-epistemic-relations-first-class\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-vyapti-001-inference-warranting-relation\", \"h-kos-fallacy-001-invalid-reasoning-detection\", \"h-kos-failure-001-failed-reasoning-preservation\", \"h-kos-dialogue-001-structured-opposition\", \"h-kos-uncertainty-001-structured-doubt\", \"inv-kos-001-dimension-independence\", \"h-kos-noninterference-001\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"ANALYSIS\"], \"statement\": \"Ten named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-00"
+["bundle","rows_verbatim",1]	S 2/3	"2<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment"
+["bundle","rows_verbatim",1]	S 3/3	"\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",2]	S 1/2	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Family 2 -- EVIDENCE (Why should we believe this?)\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"inv-001-evidence-ne-authority\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-evidenceauthenticity-001\", \"h-zero-001-unknown-valid-state\", \"h-kos-uncertainty-001-structured-doubt\", \"kos-invariant-family-taxonomy\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"FORMALIZATION\"], \"statement\": \"Family 2 (EVIDENCE) table: INV-001 Evidence != Authority (ESTABLISHED); INV-KOS-Pramana-001 Means of Acquisition (forbids the 'Source-role collapse' -- flattening sensor=expert statement=AI inference=historical document; the designation ruling names the Pramana source-role separation AS this row's Forbidden-Collapse content, not a separate row); H-KOS-EvidenceAuthenticity-001 Evidence vs Pseudo-Evidence (forbids Pseudo-e"
+["bundle","rows_verbatim",2]	S 2/2	"vidence->Evidence, anti-hallucination); H-ZERO-001 UNKNOWN is a Valid Epistemic State (forbids Unknown->False / Unknown->Missing, i.e. Unknown != Absent != False); H-KOS-Uncertainty-001 Structured Doubt/Samsaya (forbids Doubt->Missing data; compression ruling: a proposed H-KOS-Abhava-001 compresses INTO Uncertainty-001).\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",3]	S 1/3	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"anchor\": \"Landscape integration -- which EKS/PKS/AIP responsibilities already exist, and where their boundaries lie\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"inv-kos-revisability-001-revision-ne-deletion\", \"h-kos-reasoning-separation-001-generate-vs-evaluate\", \"inv-003-assessment-ne-authority\", \"inv-kos-pramana-001-means-of-acquisition\", \"inv-004-projection-ne-source\", \"h-zero-001-unknown-valid-state\", \"human-act\", \"aip-platform\", \"pks\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"ANALYSIS\"], \"statement\": \"Nine landscape findings (C-1..C-10 evidence) mapped onto the register, with F2/F3/F4 carry-forwards honored (implemented mechanism != domain ownership; evidence is current-state-scoped not universal; consumption != ownership != KnowledgeOS): state-as-fold/append-only log (C-2, SAME as Revisability-001's enfo"
+["bundle","rows_verbatim",3]	S 2/3	"rcement, mechanism layer); forward-only supersession (C-5, SAME as Revisability-001, asymmetric ownership PKS-governance/EKS-mechanism/AIP-declared-only); closed-verdict vocabulary (C-3, SAME as the Validation Layer, a published-language boundary); assessment-conferring-no-authority (C-4, SAME as INV-003 Established); epistemic-class discipline (C-8, SAME as Pramana-001's source-role separation, PKS-owned, asymmetric F3); regenerable non-authoritative projection (C-7, SAME as INV-004 Established); honest-UNKNOWN (C-10, SAME as H-ZERO-001, 'discipline, not mechanism'); authority-as-recorded-reference (C-1, SAME as the Authority family's core, X-02 SAME-vs-RELATED across systems UNKNOWN/U-02); the F4 relationship question (AIP is DISTINCT -- a consumer/runtime, not the owner, not the KnowledgeOS layer itself).\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"exper"
+["bundle","rows_verbatim",3]	S 3/3	"iment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",4]	S 1/2	"{\"source_id\": \"S0239\", \"path\": \"docs/knowledgeos/architecture/20260822-0927-KOS-EP01-P5-Constitutional-Invariant-Decision-Matrix-v1.0.md\", \"anchor\": \"Deferred Mechanisms -- useful but not constitutional\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"h-kos-reasoning-separation-001-generate-vs-evaluate\", \"h-kos-fallacy-001-invalid-reasoning-detection\", \"h-kos-dialogue-001-structured-opposition\", \"h-kos-lifecycle-reasoning-001\", \"h-kos-intent-001-purpose-of-reasoning\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-context-002-avacchedaka\", \"h-zero-001-unknown-valid-state\", \"h-kos-relation-001-epistemic-relations-first-class\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"CONCEPT\"], \"statement\": \"11 deferred mechanisms/representations, each tagged to the law it serves: Validation Layer verdict vocabulary (ENGINE, law 6); fallacy detection machinery (ENGINE, law 7); structured-opposition/debate pipeline (ENGINE, law 8); epistemic-inquiry life"
+["bundle","rows_verbatim",4]	S 2/2	"cycle stages (MECHANISM, law 6); intent preservation/Vada-Jalpa-Vitanda classification (ENGINE, law 6); evidence record schema (REPRESENTATION, laws 3+6); context-boundary tuple (REPRESENTATION, law 1); epistemic state model (REPRESENTATION, law 9); Abhava four-fold absence taxonomy+classifier (REPRESENTATION/ENGINE, law 9); epistemic graph/hypergraph (REPRESENTATION, law 1); TMS/AGM/type theory/topology (MECHANISM/lenses, explanatory only).\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","rows_verbatim",5]	S 1/2	"{\"source_id\": \"S0239\", \"path\": \"docs/knowledgeos/architecture/20260822-0927-KOS-EP01-P5-Constitutional-Invariant-Decision-Matrix-v1.0.md\", \"anchor\": \"Family 2.2 Evidence family\", \"explicit_date\": \"2026-08-22\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"inv-001-evidence-ne-authority\", \"inv-kos-pramana-001-means-of-acquisition\", \"h-kos-evidenceauthenticity-001\", \"h-zero-001-unknown-valid-state\", \"h-kos-uncertainty-001-structured-doubt\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"VALIDATION\"], \"statement\": \"Evidence-family validation decisions: INV-001 STRONG (C-1, ESTABLISHED) -> KERNEL(established), SURVIVES (law 3); INV-KOS-Pramana-001 STRONG (reproduced 3x, C-8 PKS-owned) -> KERNEL(principle)+REPRESENTATION(evidence-record schema), SURVIVES (laws 3+6); H-KOS-EvidenceAuthenticity-001 STRONG (anti-hallucination, C-9) -> KERNEL, SURVIVES (law 6); H-ZERO-001 STRONG-EKS (C-10) -> KERNEL, SURVIVES (law 9); H-KOS-Uncertainty-001 MODERATE (compresses Abhava-001) -> KERNEL, S"
+["bundle","rows_verbatim",5]	S 2/2	"URVIVES/CONSOLIDATE with H-ZERO-001 into law 9 (see Special Area B).\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0006\"}"
+["bundle","sources_verbatim",0]	S 1/3	"{\"source_id\": \"S0237\", \"path\": \"docs/knowledgeos/architecture/20260822-0915-KOS-EP01-P4-Constitutional-Invariant-Map-v1.0.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"1787383067\", \"mtime_block\": null, \"explicit_dates\": [\"2026-08-22\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"The P4 deliverable: consolidates a 29-row register (25 candidates + 4 Established) into an 8-family Constitutional Invariant Map (Identity/Evidence/Authority/Transformation/Temporal/Reasoning/Contradiction/Agent), a 5 non-identity negative boundary, a kernel/engine/representation 3-layer boundary, a mathematical-lens consolidation, an LLM-comparison table, ten compression-test rulings, and landscape integration (C-1..C-10) against EKS/PKS/AIP -- explicitly NOT a kernel decision.\", \"objects_touched\": [\"kos-constitutional-invariant-map\", \"kos-canonical-essence\", \"kos-negative-boundary-non-identities\", \"kos-invariant-family-taxonomy\", \"kos-kernel-engine-boundary\", "
+["bundle","sources_verbatim",0]	S 2/3	"\"human-act\", \"grant-record\", \"capability\", \"provenance\", \"pks\", \"knowledgeos-platform\"], \"contribution_assessment\": \"Registers a full census fixing each of 29 rows to ID/original-registration/lineage/validation-state (Rule 2 identity discipline); resolves ten named compression-test clusters (SUBSUMES/DISTINCT/RELATED/COMPLEMENTARY/OVERLAPPING) by ID rather than resemblance; and cross-maps the register onto ten current-architecture landscape findings (C-1..C-10) from EKS/PKS/AIP, explicitly distinguishing implemented mechanism from domain ownership.\", \"provenance\": \"SECONDARY-SYNTHESIS\", \"in_file_overlap_claim\": {\"kind\": \"EXTENDS\", \"target\": \"the register distributed across KnowledgeOS_Character_Definition.md SS14-33 and KnowledgeOS_Conceptual_Foundation.md SS16/20 (not in this file group), and the C-1..C-10 landscape evidence in 20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md (not in this file group)\"}, \"_batch_id\": \"B0006\", \"best_historical_date\": \"2026-08-22\", \"best"
+["bundle","sources_verbatim",0]	S 3/3	"_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",1]	S 1/2	"{\"source_id\": \"S0239\", \"path\": \"docs/knowledgeos/architecture/20260822-0927-KOS-EP01-P5-Constitutional-Invariant-Decision-Matrix-v1.0.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"1787383792\", \"mtime_block\": null, \"explicit_dates\": [\"2026-08-22\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"The P5 deliverable: validates all 29 register rows against the Evidence/Domain-Independence/Necessity/Failure test, classifying 26 as KERNEL/SURVIVES (4 CONSOLIDATE), 2 as ENGINE/DEFERRED, 1 as MECHANISM/DEFERRED, 0 REJECTED/DOMAIN-SPECIFIC; compresses the 22 surviving candidates into an 11-law 'Adopted Constitutional Core'; rules on three Navya-Nyaya special areas (Avacchedaka, Abhava, Coextension) and validates the LLM-comparison claim to exactly two fundamental absences.\", \"objects_touched\": [\"kos-constitutional-invariant-decision-matrix\", \"kos-constitutional-invariant-map\", \"kos-negative-boundary-non-identities\"], \"contribution_assessment\": \"Prod"
+["bundle","sources_verbatim",1]	S 2/2	"uces the load-bearing 11-law Adopted Core table (each law independently failure-tested), a Deferred-Mechanisms table, a Rejected-Concepts table, and the 'Final Kernel Boundary' statement; explicitly frames its own classifications as validation outcomes, not adoptions, leaving the step-5 kernel decision to a separate ruling.\", \"provenance\": \"SECONDARY-SYNTHESIS\", \"in_file_overlap_claim\": {\"kind\": \"EXTENDS\", \"target\": \"the P4 Constitutional Invariant Map v1.0 register census (S3.0), compression-test rulings (S3.9) and landscape evidence C-1..C-10 (S3.10)\"}, \"_batch_id\": \"B0006\", \"best_historical_date\": \"2026-08-22\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","working_label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["contract_sha256"]	S 1/1	"b8eef043f3b2ea4bbeb8be03fb1487787c6b1b6712455eaf15286299393809da"
+["family_md"]	S 1/15	"# inv-kos-pramana-001-means-of-acquisition\n\n**Scope(s):** OBJECT · **Row count:** 6 · **Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED\n**Notations:** INV-KOS-Pramana-001 · **Aliases:** Means of acquisition (Pramana source-role separation)\n\n**Candidate group membership (NOT an identity claim):**\n- **G1191** [`h-kos-context-002-avacchedaka` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- **G1206** [`h-kos-dialogue-001-structured-opposition` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- **G1209** [`h-kos-evidenceauthenticity-001` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- **G1223** [`h-kos-failure-001-failed-reasoning-preservation` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-o"
+["family_md"]	S 2/15	"ccur in the same contribution's labels[] 2 separate times across the corpus\n- **G1237** [`h-kos-fallacy-001-invalid-reasoning-detection` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- **G1246** [`h-kos-intent-001-purpose-of-reasoning` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1254** [`h-kos-lifecycle-reasoning-001` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1261** [`h-kos-noninterference-001` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1272** [`h-kos-reasoning-separation-001-generate-vs-evaluate` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 3 separate times "
+["family_md"]	S 3/15	"across the corpus\n- **G1281** [`h-kos-relation-001-epistemic-relations-first-class` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 3 separate times across the corpus\n- **G1287** [`h-kos-uncertainty-001-structured-doubt` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 4 separate times across the corpus\n- **G1292** [`h-kos-vyapti-001-inference-warranting-relation` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1293** [`h-zero-001-unknown-valid-state` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 5 separate times across the corpus\n- **G1297** [`inv-kos-001-dimension-independence` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1299** [`inv-kos-agent-0"
+["family_md"]	S 4/15	"01-epistemic-agency` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1302** [`inv-kos-pramana-001-means-of-acquisition` · `inv-kos-revisability-001-revision-ne-deletion`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n- **G1306** [`inv-001-evidence-ne-authority` · `inv-kos-pramana-001-means-of-acquisition`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus\n\n## Sources (how this label entered the ledger)\n\n- **OBJECT-INDEX**, batch B0006, scope OBJECT: One of the 25 'Candidate' constitutional-invariant register rows (Means of acquisition (Pramana source-role separation)), fixed by ID/original-registration/lineage/validation-state (P4 SS3.0); classified in the P5 Decision Matrix and (where it survives) rendered into one of the 11 kernel laws.\n\n## Candidate births\n\n- CANDIDATE-LEXICAL-BIRTH: [S0237 §\"Candidates (25) -- "
+["family_md"]	S 5/15	"count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)\"]\n- CANDIDATE-CONCEPTUAL-BIRTH: [S0239 §\"Deferred Mechanisms -- useful but not constitutional\"]\n- CANDIDATE-FORMAL-BIRTH: [S0237 §\"Family 2 -- EVIDENCE (Why should we believe this?)\"]\n- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n\n## Lifecycle\n\nlast_seen: S0239. Candidate lifecycle: DORMANT.\nEvidence: none recorded (no retraction/supersession/contradiction rows found). This DORMANT classification is a heuristic based on how recently (by source_id, last_seen=S0239) this label was last used in the captured contribution set, not a confirmed retirement or a confirmed ongoing status.\n\n## Completeness roll-up\n\n| Dimension | Status | Source IDs |\n|---|---|---|\n| purpose_rationale | PRESENT | S0237 |\n| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |\n| formal"
+["family_md"]	S 6/15	"_definition | PRESENT | S0237 |\n| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |\n| invariants | NOT-EVIDENCED-IN-CAPTURE | — |\n| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |\n| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |\n| semantics | NOT-EVIDENCED-IN-CAPTURE | — |\n| examples | NOT-EVIDENCED-IN-CAPTURE | — |\n| warnings | NOT-EVIDENCED-IN-CAPTURE | — |\n| experiments | NOT-EVIDENCED-IN-CAPTURE | — |\n| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |\n\n## Rationale\n\nTen named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-002<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role "
+["family_md"]	S 7/15	"separation naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here [S0237]. Nine landscape findings (C-1..C-10 evidence) mapped onto the register, with F2/F3/F4 carry-forwards honored (implemented mechanism != domain ownership; evidence is current-state-scoped not universal; consumption != ownership != KnowledgeOS): state-as-fold/append-only log (C-2, SAME as Revisability-001's enforcement, mechanism layer); forward-only supersession (C-5, SAME as Revisability-001, asymmetric ownership PKS-governance/EKS-mechanism/AIP-declared-only); closed-verdict vocabulary (C-3, SAME as the Validation Layer, a published-language boun"
+["family_md"]	S 8/15	"dary); assessment-conferring-no-authority (C-4, SAME as INV-003 Established); epistemic-class discipline (C-8, SAME as Pramana-001's source-role separation, PKS-owned, asymmetric F3); regenerable non-authoritative projection (C-7, SAME as INV-004 Established); honest-UNKNOWN (C-10, SAME as H-ZERO-001, 'discipline, not mechanism'); authority-as-recorded-reference (C-1, SAME as the Authority family's core, X-02 SAME-vs-RELATED across systems UNKNOWN/U-02); the F4 relationship question (AIP is DISTINCT -- a consumer/runtime, not the owner, not the KnowledgeOS layer itself) [S0237].\n\n## Assumption register\n\nNOT-EVIDENCED-IN-CAPTURE\n\n## All rows (source_id order)\n\n- `[S0237]` types=[DEFINITION] scope=OBJECT — \"Register census, the full 25-row Candidate table, each fixed to ID/original registration/lineage: (1) INV-KOS-001 Dimension Independence; (2) INV-KOS-002 Semantic Continuity; (3) H-KOS-Context-001 Semantic Frame Preservation; (4) H-KOS-NonInterference-001 No implicit dimension transit"
+["family_md"]	S 9/15	"ions; (5) H-KOS-Contradiction-001 Conflict Preservation; (6) H-KOS-Relationship-001 Knowledge Relationship Integrity (Tripuji, 'the genuinely NEW relationship candidate'); (7) H-ZERO-001 UNKNOWN is a valid epistemic state; (8) INV-KOS-Inference-001 Observation != Inference; (9) INV-KOS-Justification-001 Nature of justification; (10) INV-KOS-Revisability-001 Revision != Deletion; (11) INV-KOS-Decision-001 Decision Relationship; (12) INV-KOS-Agent-001 Epistemic Agency (supersedes H-KOS-Agent-001, UM-29); (13) H-KOS-Reasoning-Separation-001 Generate vs Evaluate; (14) H-KOS-Reasoning-Provenance-001 Reasoning path preservation; (15) H-KOS-Vyapti-001 Inference-warranting relation; (16) H-KOS-Uncertainty-001 Structured doubt (Samsaya); (17) H-KOS-Fallacy-001 Invalid-reasoning detection; (18) H-KOS-Relation-001 Epistemic relations as first-class (HPA: 'one of the strongest kernel candidates'); (19) H-KOS-Context-002 Avacchedaka -- delimiting conditions (SAME-ID reproduced SS33); (20) H-KOS-Lif"
+["family_md"]	S 10/15	"ecycle-Reasoning-001 Epistemic inquiry lifecycle; (21) H-KOS-Intent-001 Purpose/intent of reasoning ('genuinely novel content'); (22) H-KOS-Failure-001 Failed-reasoning preservation; (23) INV-KOS-Pramana-001 Means of acquisition; (24) H-KOS-Dialogue-001 Structured opposition; (25) H-KOS-EvidenceAuthenticity-001 Evidence vs pseudo-evidence.\" (anchor: \"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)\")\n- `[S0237]` types=[FORMALIZATION] scope=CROSS-OBJECT — \"Family 2 (EVIDENCE) table: INV-001 Evidence != Authority (ESTABLISHED); INV-KOS-Pramana-001 Means of Acquisition (forbids the 'Source-role collapse' -- flattening sensor=expert statement=AI inference=historical document; the designation ruling names the Pramana source-role separation AS this row's Forbidden-Collapse content, not a separate row); H-KOS-EvidenceAuthenticity-001 Evidence vs Pseudo"
+["family_md"]	S 11/15	"-Evidence (forbids Pseudo-evidence->Evidence, anti-hallucination); H-ZERO-001 UNKNOWN is a Valid Epistemic State (forbids Unknown->False / Unknown->Missing, i.e. Unknown != Absent != False); H-KOS-Uncertainty-001 Structured Doubt/Samsaya (forbids Doubt->Missing data; compression ruling: a proposed H-KOS-Abhava-001 compresses INTO Uncertainty-001).\" (anchor: \"Family 2 -- EVIDENCE (Why should we believe this?)\")\n- `[S0237]` types=[ANALYSIS] scope=CROSS-OBJECT — \"Ten named compression-test clusters, each resolved by ID/registration/validation-state (never resemblance), with no row added/removed/promoted: (1) Context-002<->SemanticBoundary<->Ontology-001<->type-model<->Abhava-Boundary -> SUBSUMES (one row + facets); (2) H-KOS-Agent-001 vs INV-KOS-Agent-001 vs Justification-001 vs Relationship-001 -> DISTINCT/SUPERSEDED; (3) Relation-001 subsumption test -> RELATED (principle/instance); (4) Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; (5) Pramana source-role sep"
+["family_md"]	S 12/15	"aration naming -> RESOLVED (row content, not a new row); (6) Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES; (7) Fallacy-001<->Failure-001 -> COMPLEMENTARY; (8) Dialogue-001<->Contradiction-001<->Revisability-001<->Intent-001 -> COMPLEMENTARY; (9) Uncertainty-001<->Abhava-001 -> SUBSUMES; (10) Dimension Independence<->NonInterference-001 -> OVERLAPPING, carried to P5 as a possible consolidation pair, NOT resolved here.\" (anchor: \"Compression-test rulings (Filter . Separate . Test -- UM-22 protocol)\")\n- `[S0237]` types=[ANALYSIS] scope=CROSS-OBJECT — \"Nine landscape findings (C-1..C-10 evidence) mapped onto the register, with F2/F3/F4 carry-forwards honored (implemented mechanism != domain ownership; evidence is current-state-scoped not universal; consumption != ownership != KnowledgeOS): state-as-fold/append-only log (C-2, SAME as Revisability-001's enforcement, mechanism layer); forward-only supersession (C-5, SAME as Revisability-001, asymmetric ownership PKS-governanc"
+["family_md"]	S 13/15	"e/EKS-mechanism/AIP-declared-only); closed-verdict vocabulary (C-3, SAME as the Validation Layer, a published-language boundary); assessment-conferring-no-authority (C-4, SAME as INV-003 Established); epistemic-class discipline (C-8, SAME as Pramana-001's source-role separation, PKS-owned, asymmetric F3); regenerable non-authoritative projection (C-7, SAME as INV-004 Established); honest-UNKNOWN (C-10, SAME as H-ZERO-001, 'discipline, not mechanism'); authority-as-recorded-reference (C-1, SAME as the Authority family's core, X-02 SAME-vs-RELATED across systems UNKNOWN/U-02); the F4 relationship question (AIP is DISTINCT -- a consumer/runtime, not the owner, not the KnowledgeOS layer itself).\" (anchor: \"Landscape integration -- which EKS/PKS/AIP responsibilities already exist, and where their boundaries lie\")\n- `[S0239]` types=[VALIDATION] scope=CROSS-OBJECT — \"Evidence-family validation decisions: INV-001 STRONG (C-1, ESTABLISHED) -> KERNEL(established), SURVIVES (law 3); INV-KOS-Prama"
+["family_md"]	S 14/15	"na-001 STRONG (reproduced 3x, C-8 PKS-owned) -> KERNEL(principle)+REPRESENTATION(evidence-record schema), SURVIVES (laws 3+6); H-KOS-EvidenceAuthenticity-001 STRONG (anti-hallucination, C-9) -> KERNEL, SURVIVES (law 6); H-ZERO-001 STRONG-EKS (C-10) -> KERNEL, SURVIVES (law 9); H-KOS-Uncertainty-001 MODERATE (compresses Abhava-001) -> KERNEL, SURVIVES/CONSOLIDATE with H-ZERO-001 into law 9 (see Special Area B).\" (anchor: \"Family 2.2 Evidence family\")\n- `[S0239]` types=[CONCEPT] scope=CROSS-OBJECT — \"11 deferred mechanisms/representations, each tagged to the law it serves: Validation Layer verdict vocabulary (ENGINE, law 6); fallacy detection machinery (ENGINE, law 7); structured-opposition/debate pipeline (ENGINE, law 8); epistemic-inquiry lifecycle stages (MECHANISM, law 6); intent preservation/Vada-Jalpa-Vitanda classification (ENGINE, law 6); evidence record schema (REPRESENTATION, laws 3+6); context-boundary tuple (REPRESENTATION, law 1); epistemic state model (REPRESENTATION, law 9"
+["family_md"]	S 15/15	"); Abhava four-fold absence taxonomy+classifier (REPRESENTATION/ENGINE, law 9); epistemic graph/hypergraph (REPRESENTATION, law 1); TMS/AGM/type theory/topology (MECHANISM/lenses, explanatory only).\" (anchor: \"Deferred Mechanisms -- useful but not constitutional\")\n\n## Notes for P3\n\nThis label sits in 17 candidate groups (G1191, G1206, G1209, G1223, G1237, G1246, G1254, G1261, G1272, G1281, G1287, G1292, G1293, G1297, G1299, G1302, G1306) — a busy grouping signal. Per the P2a preface this can reflect genuine relatedness or just a heavily-reused naming/notation convention; worth a priority look in P3 rather than assuming either reading.\n"
+["family_md_sha256"]	S 1/1	"6983b3148deae44fff3b7dd9431532bdbb04aba781a171634c94c941d576d356"
+["family_md_status"]	S 1/1	"PRESENT"
+["hub"]	N	false
+["hub_record"]	N	null
+["in_checklist"]	N	true
+["input_manifest_sha256"]	S 1/1	"a20cf3a3e2fc9e1fc9c38919838c9edb3a0d901577a060d5804dc1e899a150b6"
+["p3a_pairs",0,"_batch_id"]	S 1/1	"RP0013"
+["p3a_pairs",0,"a"]	S 1/1	"h-kos-context-002-avacchedaka"
+["p3a_pairs",0,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",0,"basis"]	S 1/1	"NONE"
+["p3a_pairs",0,"notes_for_p3b"]	S 1/1	"Pattern repeats across RP0811/RP0860/RP0861/RP0893 in this batch -- all draw from the same S0237/S0239 register-census pair, each a coincidental co-listing case."
+["p3a_pairs",0,"pair_id"]	S 1/1	"RP0794"
+["p3a_pairs",0,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",0,"what_says_this"]	S 1/1	"CO-OCCURRENCE only. All cross-ref/keyword hits trace to the same two documents (S0237 register census of a 25-row candidate table, S0239 validation decisions) in which A (Family 1, IDENTITY: Avacchedaka/delimiting conditions) and B (Family 2, EVIDENCE: Pramana source-role separation) are merely adjacent, independently-defined, independently-validated rows in a large shared registry -- a coincidental co-listing, not a substantive relation between the two specific candidates."
+["p3a_pairs",0,"what_would_make_this_wrong"]	S 1/1	"A row directly relating Avacchedaka (delimiting conditions) to Pramana (means of acquisition) as one building on or subsuming the other, rather than each being validated independently under different families (1 vs 2) of the same register."
+["p3a_pairs",1,"_batch_id"]	S 1/1	"RP0002"
+["p3a_pairs",1,"a"]	S 1/1	"h-kos-dialogue-001-structured-opposition"
+["p3a_pairs",1,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",1,"basis"]	S 1/1	"NONE"
+["p3a_pairs",1,"pair_id"]	S 1/1	"RP0809"
+["p3a_pairs",1,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",1,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",1,"what_says_this"]	S 1/1	"Both are entries in the same 25-row Candidate register (S0237), in different families (H-KOS-Dialogue-001 in Family 7 CONTRADICTION; INV-KOS-Pramana-001 in Family 2 EVIDENCE). S0239's validation decisions treat them separately (Dialogue-001 -> ENGINE/DEFERRED under law 8; Pramana-001 not shown resolved in this excerpt). CO-OCCURRENCE only; no claim links them beyond shared census/compression-test-cluster membership."
+["p3a_pairs",1,"what_would_make_this_wrong"]	S 1/1	"A row placing both under the same compression-test cluster with a stated SUBSUMES/merge verdict (rather than each independently resolved) would establish a real relationship."
+["p3a_pairs",2,"_batch_id"]	S 1/1	"RP0014"
+["p3a_pairs",2,"a"]	S 1/1	"h-kos-evidenceauthenticity-001"
+["p3a_pairs",2,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",2,"basis"]	S 1/1	"NONE"
+["p3a_pairs",2,"notes_for_p3b"]	S 1/1	"Same shared-registry-co-occurrence pattern as RP0803: both are independent candidate invariants tracked in the same master census/validation pass, occupying the same EVIDENCE family but explicitly NOT merged or derived from each other."
+["p3a_pairs",2,"pair_id"]	S 1/1	"RP0813"
+["p3a_pairs",2,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",2,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",2,"what_says_this"]	S 1/1	"Both complete families (3 and 6 rows) share the same governance census sources (S0237, S0239). The full Family-2 (EVIDENCE) table row explicitly lists both as SEPARATE, independently-surviving candidates: 'INV-KOS-Pramana-001 Means of Acquisition (forbids the Source-role collapse ...)' and 'H-KOS-EvidenceAuthenticity-001 Evidence vs Pseudo-Evidence (forbids Pseudo-evidence->Evidence, anti-hallucination)' -- each assigned its own validation status and law (Pramana: STRONG, laws 3+6; EvidenceAuthenticity: STRONG anti-hallucination C-9, law 6) with no compression ruling merging them (the only compression ruling in this row merges a different pair, H-KOS-Abhava-001 into Uncertainty-001)."
+["p3a_pairs",2,"what_would_make_this_wrong"]	S 1/1	"A compression-test ruling or later governance note merging or deriving one of these two candidates from the other -- explicitly absent from the full Family 2 table and its validation-decision row."
+["p3a_pairs",3,"_batch_id"]	S 1/1	"RP0004"
+["p3a_pairs",3,"a"]	S 1/1	"h-kos-failure-001-failed-reasoning-preservation"
+["p3a_pairs",3,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",3,"basis"]	S 1/1	"NONE"
+["p3a_pairs",3,"pair_id"]	S 1/1	"RP0827"
+["p3a_pairs",3,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",3,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",3,"what_says_this"]	S 1/1	"Both A (h-kos-failure-001-failed-reasoning-preservation) and B (inv-kos-pramana-001-means-of-acquisition) are siblings in the same 25-row Candidate register (S0237/S0239) -- co-listed but no row connects them to each other specifically."
+["p3a_pairs",3,"what_would_make_this_wrong"]	S 1/1	"If a row explicitly cross-referenced or merged these two specific candidates."
+["p3a_pairs",4,"_batch_id"]	S 1/1	"RP0006"
+["p3a_pairs",4,"a"]	S 1/1	"h-kos-fallacy-001-invalid-reasoning-detection"
+["p3a_pairs",4,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",4,"basis"]	S 1/1	"NONE"
+["p3a_pairs",4,"notes_for_p3b"]	S 1/1	"Same H-KOS/INV-KOS register cluster as RP0825/RP0832/RP0872/RP0891; note A and B belong to different named families (REASONING vs EVIDENCE) within the same register, reinforcing that they are distinct by design."
+["p3a_pairs",4,"pair_id"]	S 1/1	"RP0841"
+["p3a_pairs",4,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",4,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",4,"what_says_this"]	S 1/1	"Group evidence is CO-OCCURRENCE only (3 times). The full compression-test list's item (4) compares Pramana-001 to Reasoning-Separation-001/Agent-001/INV-001 (-> DISTINCT) and item (5) resolves Pramana's source-role-separation naming internally (-> RESOLVED, no new row) -- neither names Fallacy-001. Item (7) separately resolves Fallacy-001<->Failure-001 (-> COMPLEMENTARY), not involving Pramana-001. A (Fallacy, Family 6 REASONING) and B (Pramana, Family 2 EVIDENCE) belong to different named families in the register and are never directly cross-tested in the retrieved compression list."
+["p3a_pairs",4,"what_would_make_this_wrong"]	S 1/1	"A compression-test entry directly naming both Fallacy-001 and Pramana-001 (not retrieved in this extraction) would override this default."
+["p3a_pairs",5,"_batch_id"]	S 1/1	"RP0010"
+["p3a_pairs",5,"a"]	S 1/1	"h-kos-intent-001-purpose-of-reasoning"
+["p3a_pairs",5,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",5,"basis"]	S 1/1	"NONE"
+["p3a_pairs",5,"pair_id"]	S 1/1	"RP0853"
+["p3a_pairs",5,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",5,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",5,"what_says_this"]	S 1/1	"Same S0237/S0239 catalog-table co-listing pattern -- both appear as separate rows in the same registry table."
+["p3a_pairs",5,"what_would_make_this_wrong"]	S 1/1	"A row deriving the Pramana source-role separation from the purpose-of-reasoning hypothesis (or vice versa) would justify a stronger verdict."
+["p3a_pairs",6,"_batch_id"]	S 1/1	"RP0013"
+["p3a_pairs",6,"a"]	S 1/1	"h-kos-lifecycle-reasoning-001"
+["p3a_pairs",6,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",6,"basis"]	S 1/1	"NONE"
+["p3a_pairs",6,"notes_for_p3b"]	N	null
+["p3a_pairs",6,"pair_id"]	S 1/1	"RP0861"
+["p3a_pairs",6,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",6,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",6,"what_says_this"]	S 1/1	"CO-occurrence only, same coincidental co-listing pattern: A belongs to Family 6 (REASONING) and B to Family 2 (EVIDENCE) of the same S0237/S0239 register; both independently validated STRONG->KERNEL. No row substantively connects the epistemic-inquiry-lifecycle hypothesis to the Pramana source-role-separation invariant beyond shared registry membership."
+["p3a_pairs",6,"what_would_make_this_wrong"]	S 1/1	"A row deriving one from the other rather than both being independent register entries."
+["p3a_pairs",7,"_batch_id"]	S 1/1	"RP0008"
+["p3a_pairs",7,"a"]	S 1/1	"h-kos-noninterference-001"
+["p3a_pairs",7,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",7,"basis"]	S 1/1	"NONE"
+["p3a_pairs",7,"notes_for_p3b"]	S 1/1	"Fourth same-census-only UNWITNESSED pair in this batch (see RP0797, RP0846, RP0848) -- confirms the register-census document (S0237/S0239, the 25-candidate table) generates many CO-OCCURRENCE groupings among unrelated candidate rows; likely a recurring pattern across other RP batches too."
+["p3a_pairs",7,"pair_id"]	S 1/1	"RP0870"
+["p3a_pairs",7,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",7,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",7,"what_says_this"]	S 1/1	"Both co-occur only via the same 25-row register census (S0237/S0239); a's actual formal connection (confirmed by its own lineage_claims row at S0240: 'H-KOS-NonInterference-001 is the transition-form of INV-KOS-001 (Dimension Independence). They render as one law.') is to INV-KOS-001/kos-law-02-dimension, not to b. b (Pramana-001) is in its own compression-test clusters (4) 'Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT' and (5) 'Pramana source-role separation naming -> RESOLVED', neither mentioning a. a is Family 4 TRANSFORMATION; b's subject (means of epistemic acquisition / source-role separation) belongs to the EVIDENCE family. No lineage_claims or dual-labeled rows connect a and b directly."
+["p3a_pairs",7,"what_would_make_this_wrong"]	S 1/1	"If a future document showed dimension-transition non-interference specifically depends on or conflicts with the Pramana source-role separation (e.g. a dimension transition that silently changes which means-of-acquisition applies), that would establish real continuity currently absent."
+["p3a_pairs",8,"_batch_id"]	S 1/1	"RP0011"
+["p3a_pairs",8,"a"]	S 1/1	"h-kos-reasoning-separation-001-generate-vs-evaluate"
+["p3a_pairs",8,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",8,"basis"]	S 1/1	"NONE"
+["p3a_pairs",8,"notes_for_p3b"]	S 1/1	"Thematic adjacency (both are role-separation principles) noted but insufficient alone per protocol's negative-verdict bar."
+["p3a_pairs",8,"pair_id"]	S 1/1	"RP0881"
+["p3a_pairs",8,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",8,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",8,"what_says_this"]	S 1/1	"group_evidence is CO-OCCURRENCE only (3 co-occurrences); H-KOS-Reasoning-Separation-001 (generate vs evaluate) and INV-KOS-Pramana-001 (means-of-acquisition/source-role separation) are differently-prefixed (H- vs INV-KOS-) registry entries with no specific cross-reference in the sampled evidence, though both concern separating epistemic roles."
+["p3a_pairs",8,"what_would_make_this_wrong"]	S 1/1	"A row showing the generate/evaluate separation is derived from or specializes the Pramana source-role separation invariant would establish a real relationship."
+["p3a_pairs",9,"_batch_id"]	S 1/1	"RP0020"
+["p3a_pairs",9,"a"]	S 1/1	"h-kos-relation-001-epistemic-relations-first-class"
+["p3a_pairs",9,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",9,"basis"]	S 1/1	"NONE"
+["p3a_pairs",9,"notes_for_p3b"]	S 1/1	"Same shared-registry-row false-positive pattern as RP0829: two sibling entries in the same 25-item candidate census, different families (IDENTITY vs EVIDENCE), no direct compression-test link."
+["p3a_pairs",9,"pair_id"]	S 1/1	"RP0890"
+["p3a_pairs",9,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",9,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",9,"what_says_this"]	S 1/1	"Both share the same S0237/S0239 candidate-register census rows (the same 25-item table and its validation results) -- the coincidental co-listing pattern flagged by the task brief. They belong to DIFFERENT families in the census: a (H-KOS-Relation-001) is Family 1 IDENTITY ('the general principle UNDER the separation family, with INV-001..004 + Expression!=Meaning + Observation!=Inference as its instances'); b (INV-KOS-Pramana-001) is Family 2 EVIDENCE ('Means of Acquisition -- forbids the Source-role collapse'). The compression-test rulings (S0237, ten named clusters) never pair Relation-001 with Pramana-001 -- cluster 3 relates Relation-001 to the INV-001..004 principle family, and cluster 4 finds Pramana-001 DISTINCT from Reasoning-Separation-001/Agent-001/INV-001. They receive different SURVIVES dispositions in S0239 (Relation-001: KERNEL(principle)+REPRESENTATION(graph), laws unspecified; Pramana-001: KERNEL(principle)+REPRESENTATION(evidence-record schema), laws 3+6)."
+["p3a_pairs",9,"what_would_make_this_wrong"]	S 1/1	"If a later compression-test explicitly paired Relation-001 and Pramana-001 for subsumption/overlap testing (as was done for other specific pairs in this same table), a positive relationship might be warranted -- but no such row exists in the captured evidence."
+["p3a_pairs",10,"_batch_id"]	S 1/1	"RP0009"
+["p3a_pairs",10,"a"]	S 1/1	"h-kos-uncertainty-001-structured-doubt"
+["p3a_pairs",10,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",10,"basis"]	S 1/1	"NONE"
+["p3a_pairs",10,"notes_for_p3b"]	S 1/1	"Same shared-census-table artifact as the other Constitutional-Invariant-Map pairs in this batch (RP0787/RP0799/RP0850/RP0851/RP0876/RP0900/RP1014/RP1035); correctly UNWITNESSED."
+["p3a_pairs",10,"pair_id"]	S 1/1	"RP0898"
+["p3a_pairs",10,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",10,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",10,"what_says_this"]	S 1/1	"Grouped by CO-OCCURRENCE (4x) via the same Constitutional Invariant Map census/Family-2-EVIDENCE/validation tables. No compression-test cluster pairs Uncertainty-001 with Pramana-001 directly: cluster (9) 'Uncertainty-001<->Abhava-001 -> SUBSUMES' does not involve Pramana-001, and cluster (5) (Pramana source-role separation naming, RESOLVED as row content) does not involve Uncertainty-001. A (structured doubt/Samsaya, consolidated with H-ZERO-001 into law 9) and B (means-of-acquisition/source-role separation, laws 3+6) are validated into different laws with no direct ruling connecting them."
+["p3a_pairs",10,"what_would_make_this_wrong"]	S 1/1	"A compression-test row explicitly pairing Uncertainty-001 and Pramana-001 would supply direct evidence; none exists in the captured rows."
+["p3a_pairs",11,"_batch_id"]	S 1/1	"RP0020"
+["p3a_pairs",11,"a"]	S 1/1	"h-kos-vyapti-001-inference-warranting-relation"
+["p3a_pairs",11,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",11,"basis"]	S 1/1	"NONE"
+["p3a_pairs",11,"notes_for_p3b"]	S 1/1	"Third instance in this batch of the same shared-registry-row false-positive pattern (see also RP0829, RP0890) -- all involve the S0237/S0239 25-item candidate census."
+["p3a_pairs",11,"pair_id"]	S 1/1	"RP0903"
+["p3a_pairs",11,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",11,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",11,"what_says_this"]	S 1/1	"Same shared S0237/S0239 candidate-register census pattern as RP0829/RP0890. a (H-KOS-Vyapti-001, Family 6 REASONING: 'Inference-Warranting Relation ... subsumes proposed Reasoning-001/002 and the upadhi/defeaters facet') and b (INV-KOS-Pramana-001, Family 2 EVIDENCE: 'Means of Acquisition -- forbids the Source-role collapse') sit in different families of the same 25-item table. The compression-test rulings test each against different partners: cluster 4 tests Pramana-001<->Reasoning-Separation-001<->Agent-001<->INV-001 -> DISTINCT; cluster 6 tests Vyapti-001<->Reasoning-001/002<->upadhi/defeaters -> SUBSUMES. Neither cluster pairs Vyapti-001 with Pramana-001. Both survive independently with different law assignments (S0239: Vyapti-001 -> KERNEL, law 6; Pramana-001 -> KERNEL(principle)+REPRESENTATION(evidence-record schema), laws 3+6)."
+["p3a_pairs",11,"what_would_make_this_wrong"]	S 1/1	"If a later compression-test explicitly paired Vyapti-001 and Pramana-001 (e.g. testing whether an inference-warranting rule and a source-acquisition-means rule overlap), a positive relationship might be warranted -- no such row exists in the captured evidence."
+["p3a_pairs",12,"_batch_id"]	S 1/1	"RP0023"
+["p3a_pairs",12,"a"]	S 1/1	"h-zero-001-unknown-valid-state"
+["p3a_pairs",12,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",12,"basis"]	S 1/1	"NONE"
+["p3a_pairs",12,"notes_for_p3b"]	S 1/1	"Third instance of the same S0237/S0239 registry-census pattern in this batch (RP0847/RP0902/RP0907) -- confirms the batch instructions' warning that shared large-registry rows require checking the registry's own explicit pairwise tests before concluding a relationship."
+["p3a_pairs",12,"pair_id"]	S 1/1	"RP0907"
+["p3a_pairs",12,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",12,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",12,"what_says_this"]	S 1/1	"Both are Family 2 (EVIDENCE) register members, but the register's own compression-test cluster 4 tests Pramana-001 specifically against Reasoning-Separation-001/Agent-001/INV-001 with verdict DISTINCT -- not against H-Zero-001. The two resolve to different laws in the same validation pass (S0239: Pramana-001 -> KERNEL(principle)+REPRESENTATION, laws 3+6; H-Zero-001 -> KERNEL, law 9, later consolidated with Uncertainty-001 specifically, not Pramana-001). No cluster or ruling connects H-Zero-001 and Pramana-001 to each other."
+["p3a_pairs",12,"what_would_make_this_wrong"]	S 1/1	"If a ruling explicitly grounds H-Zero-001's 'Unknown is valid' status IN Pramana-001's source-role separation (e.g. 'Unknown arises specifically from an unavailable Pramana'), this would upgrade to a positive relationship."
+["p3a_pairs",13,"_batch_id"]	S 1/1	"RP0007"
+["p3a_pairs",13,"a"]	S 1/1	"inv-001-evidence-ne-authority"
+["p3a_pairs",13,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",13,"basis"]	S 1/1	"NONE"
+["p3a_pairs",13,"pair_id"]	S 1/1	"RP1004"
+["p3a_pairs",13,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",13,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",13,"what_says_this"]	S 1/1	"CO-OCCURRENCE only (2 co-occurrences). No lineage_claims found in either direction via full-row scan."
+["p3a_pairs",13,"what_would_make_this_wrong"]	S 1/1	"A row relating the Evidence!=Authority invariant to the Pramana means-of-acquisition invariant (e.g. one specializing or requiring the other) would establish a claim."
+["p3a_pairs",14,"_batch_id"]	S 1/1	"RP0017"
+["p3a_pairs",14,"a"]	S 1/1	"inv-kos-001-dimension-independence"
+["p3a_pairs",14,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",14,"basis"]	S 1/1	"NONE"
+["p3a_pairs",14,"pair_id"]	S 1/1	"RP1028"
+["p3a_pairs",14,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",14,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",14,"what_says_this"]	S 1/1	"Only evidence is CO-OCCURRENCE (2 times) within the same INV-KOS-* numbered invariant catalogue -- sibling-registry-entries pattern. No row connects Dimension-Independence to the Pramana source-role-separation invariant specifically."
+["p3a_pairs",14,"what_would_make_this_wrong"]	S 1/1	"Would be wrong if a later row explicitly derives Pramana source-role separation as a specific application of the general dimension-independence invariant."
+["p3a_pairs",15,"_batch_id"]	S 1/1	"RP0025"
+["p3a_pairs",15,"a"]	S 1/1	"inv-kos-agent-001-epistemic-agency"
+["p3a_pairs",15,"b"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",15,"basis"]	S 1/1	"NONE"
+["p3a_pairs",15,"notes_for_p3b"]	S 1/1	"Same census-registry coincidental co-listing pattern as RP0782/RP0816/RP1003."
+["p3a_pairs",15,"pair_id"]	S 1/1	"RP1030"
+["p3a_pairs",15,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",15,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",15,"what_says_this"]	S 1/1	"group_evidence CO-OCCURRENCE (2 co-listings). Both are sibling entries in the same 25-row candidate-invariant census (S0237/S0239) already seen in RP0782/RP0816/RP1003 -- Agent-001 belongs to Family 8 (AGENT), Pramana-001 to Family 2 (EVIDENCE), two structurally unrelated families co-listed only by virtue of the shared census pass."
+["p3a_pairs",15,"what_would_make_this_wrong"]	S 1/1	"Wrong if a row is found stating epistemic agency (who has standpoint/angle-of-observation) is a precondition for, or determines, which Pramana (means-of-acquisition) categories are available to that agent."
+["p3a_pairs",16,"_batch_id"]	S 1/1	"RP0018"
+["p3a_pairs",16,"a"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["p3a_pairs",16,"b"]	S 1/1	"inv-kos-revisability-001-revision-ne-deletion"
+["p3a_pairs",16,"basis"]	S 1/1	"NONE"
+["p3a_pairs",16,"pair_id"]	S 1/1	"RP1036"
+["p3a_pairs",16,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",16,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",16,"what_says_this"]	S 1/1	"Classic shared-candidate-register pattern (S0237/S0239): Pramana-001 belongs to the EVIDENCE family, Revisability-001 to the TEMPORAL family, of the same 25-row constitutional census. No compression-test cluster or lineage_claim pairs them; co-occurrence is coincidental co-listing in the large registry."
+["p3a_pairs",16,"what_would_make_this_wrong"]	S 1/1	"A row explicitly testing Pramana-001 (source-role separation) against Revisability-001 (revision!=deletion) for overlap/redundancy would establish a relation; none of the ten named compression clusters covers this pair."
+["pairs_touching_missing"]	E	[]
+["population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["quarantine","p3a_pairs_withheld"]	N	0
+["quarantine","reconciliation_pairs_withheld"]	N	0
+["quarantine","sources_withheld"]	N	0
+["run_id"]	S 1/1	"OB0012-R7"
+["search_records",0,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",0,"ledger_hits","S0222",0,0]	S 1/1	"Sensor reading != Expert assessment != Logical inference != Historical document ... INV-KOS-Pramana-001: KnowledgeOS SHALL preserve the means by which knowledge was acquired because validity depends on the epistemic method of acquisition."
+["search_records",0,"ledger_hits","S0222",0,1]	N	1
+["search_records",0,"ledger_hits","S0237",0,0]	S 1/1	"Candidates (25) -- count chain: 7 (UM-24) -> 11 (UM-26) -> 12 (UM-29) -> 17 (UM-32) -> 22 (UM-33) -> 23 (UM-34) -> 25 (UM-35) -- unchanged through UM-46 (ten consecutive zero-new-row results)"
+["search_records",0,"ledger_hits","S0237",0,1]	N	1
+["search_records",0,"ledger_hits","S0237",1,0]	S 1/1	"Family 2 -- EVIDENCE (Why should we believe this?)"
+["search_records",0,"ledger_hits","S0237",1,1]	N	1
+["search_records",0,"ledger_hits","S0239",0,0]	S 1/1	"Family 2.2 Evidence family"
+["search_records",0,"ledger_hits","S0239",0,1]	N	1
+["search_records",0,"ledger_hits","S0241",0,0]	S 1/1	"Article 3 -- Authority: 1. Evidence SHALL NOT constitute authority ... 2. Authority SHALL be assigned ... 3. Sources SHALL NOT be interchangeable"
+["search_records",0,"ledger_hits","S0241",0,1]	N	1
+["search_records",0,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",0,"raw_hits","S0222",0,0]	N	3390
+["search_records",0,"raw_hits","S0222",0,1]	N	1
+["search_records",0,"raw_hits","S0237",0,0]	N	8919
+["search_records",0,"raw_hits","S0237",0,1]	N	1
+["search_records",0,"raw_hits","S0237",1,0]	N	14617
+["search_records",0,"raw_hits","S0237",1,1]	N	1
+["search_records",0,"raw_hits","S0237",2,0]	N	19054
+["search_records",0,"raw_hits","S0237",2,1]	N	1
+["search_records",0,"raw_hits","S0237",3,0]	N	38610
+["search_records",0,"raw_hits","S0237",3,1]	N	1
+["search_records",0,"raw_hits","S0239",0,0]	N	7689
+["search_records",0,"raw_hits","S0239",0,1]	N	1
+["search_records",0,"raw_hits","S0239",1,0]	N	18838
+["search_records",0,"raw_hits","S0239",1,1]	N	1
+["search_records",0,"raw_hits","S0241",0,0]	N	5228
+["search_records",0,"raw_hits","S0241",0,1]	N	1
+["search_records",0,"raw_hits","S0241",1,0]	N	6903
+["search_records",0,"raw_hits","S0241",1,1]	N	1
+["search_records",0,"raw_hits","S0294",0,0]	N	29484
+["search_records",0,"raw_hits","S0294",0,1]	N	1
+["search_records",0,"raw_hits","S0294",1,0]	N	29945
+["search_records",0,"raw_hits","S0294",1,1]	N	1
+["search_records",0,"raw_hits","S0294",2,0]	N	37624
+["search_records",0,"raw_hits","S0294",2,1]	N	1
+["search_records",0,"raw_hits","S0294",3,0]	N	38448
+["search_records",0,"raw_hits","S0294",3,1]	N	1
+["search_records",0,"raw_hits","S0294",4,0]	N	38581
+["search_records",0,"raw_hits","S0294",4,1]	N	1
+["search_records",0,"raw_hits","S0294",5,0]	N	47414
+["search_records",0,"raw_hits","S0294",5,1]	N	1
+["search_records",0,"raw_hits","S0294",6,0]	N	53372
+["search_records",0,"raw_hits","S0294",6,1]	N	1
+["search_records",0,"raw_hits","S0294",7,0]	N	64438
+["search_records",0,"raw_hits","S0294",7,1]	N	1
+["search_records",0,"raw_hits","S0294",8,0]	N	83589
+["search_records",0,"raw_hits","S0294",8,1]	N	1
+["search_records",0,"raw_hits","S0294",9,0]	N	101268
+["search_records",0,"raw_hits","S0294",9,1]	N	1
+["search_records",0,"record"]	S 1/1	"LABEL-HITS"
+["search_records",0,"terms",0]	S 1/1	"inv kos pramana 001 means of acquisition"
+["search_records",0,"terms",1]	S 1/1	"inv-kos-pramana-001"
+["search_records",0,"terms",2]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",0,"terms",3]	S 1/1	"means of acquisition (pramana source-role separation)"
+["search_records",1,"dimension"]	S 1/1	"informal_meaning"
+["search_records",1,"files_searched"]	N	2734
+["search_records",1,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",1,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",1,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",1,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",1,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",1,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",1,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",1,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",1,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",1,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",1,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",1,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",1,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",1,"identity_summary","p0_row_exception"]	N	3
+["search_records",1,"identity_summary","stasis_unobservable"]	N	1
+["search_records",1,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",1,"negative_label"]	N	null
+["search_records",1,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",1,"record"]	S 1/1	"DIMENSION"
+["search_records",1,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",2,"dimension"]	S 1/1	"type_signature"
+["search_records",2,"files_searched"]	N	2734
+["search_records",2,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",2,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",2,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",2,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",2,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",2,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",2,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",2,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",2,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",2,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",2,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",2,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",2,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",2,"identity_summary","p0_row_exception"]	N	3
+["search_records",2,"identity_summary","stasis_unobservable"]	N	1
+["search_records",2,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",2,"negative_label"]	N	null
+["search_records",2,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",2,"record"]	S 1/1	"DIMENSION"
+["search_records",2,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",3,"dimension"]	S 1/1	"invariants"
+["search_records",3,"files_searched"]	N	2734
+["search_records",3,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",3,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",3,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",3,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",3,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",3,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",3,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",3,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",3,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",3,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",3,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",3,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",3,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",3,"identity_summary","p0_row_exception"]	N	3
+["search_records",3,"identity_summary","stasis_unobservable"]	N	1
+["search_records",3,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",3,"negative_label"]	N	null
+["search_records",3,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",3,"record"]	S 1/1	"DIMENSION"
+["search_records",3,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",4,"dimension"]	S 1/1	"dependencies"
+["search_records",4,"files_searched"]	N	2734
+["search_records",4,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",4,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",4,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",4,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",4,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",4,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",4,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",4,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",4,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",4,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",4,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",4,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",4,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",4,"identity_summary","p0_row_exception"]	N	3
+["search_records",4,"identity_summary","stasis_unobservable"]	N	1
+["search_records",4,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",4,"negative_label"]	N	null
+["search_records",4,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",4,"record"]	S 1/1	"DIMENSION"
+["search_records",4,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",5,"dimension"]	S 1/1	"assumptions"
+["search_records",5,"files_searched"]	N	2734
+["search_records",5,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",5,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",5,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",5,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",5,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",5,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",5,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",5,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",5,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",5,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",5,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",5,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",5,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",5,"identity_summary","p0_row_exception"]	N	3
+["search_records",5,"identity_summary","stasis_unobservable"]	N	1
+["search_records",5,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",5,"negative_label"]	N	null
+["search_records",5,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",5,"record"]	S 1/1	"DIMENSION"
+["search_records",5,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",6,"dimension"]	S 1/1	"semantics"
+["search_records",6,"files_searched"]	N	2734
+["search_records",6,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",6,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",6,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",6,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",6,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",6,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",6,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",6,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",6,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",6,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",6,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",6,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",6,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",6,"identity_summary","p0_row_exception"]	N	3
+["search_records",6,"identity_summary","stasis_unobservable"]	N	1
+["search_records",6,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",6,"negative_label"]	N	null
+["search_records",6,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",6,"record"]	S 1/1	"DIMENSION"
+["search_records",6,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",7,"dimension"]	S 1/1	"examples"
+["search_records",7,"files_searched"]	N	2734
+["search_records",7,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",7,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",7,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",7,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",7,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",7,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",7,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",7,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",7,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",7,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",7,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",7,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",7,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",7,"identity_summary","p0_row_exception"]	N	3
+["search_records",7,"identity_summary","stasis_unobservable"]	N	1
+["search_records",7,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",7,"negative_label"]	N	null
+["search_records",7,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",7,"record"]	S 1/1	"DIMENSION"
+["search_records",7,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",8,"dimension"]	S 1/1	"warnings"
+["search_records",8,"files_searched"]	N	2734
+["search_records",8,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",8,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",8,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",8,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",8,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",8,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",8,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",8,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",8,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",8,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",8,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",8,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",8,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",8,"identity_summary","p0_row_exception"]	N	3
+["search_records",8,"identity_summary","stasis_unobservable"]	N	1
+["search_records",8,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",8,"negative_label"]	N	null
+["search_records",8,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",8,"record"]	S 1/1	"DIMENSION"
+["search_records",8,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",9,"dimension"]	S 1/1	"experiments"
+["search_records",9,"files_searched"]	N	2734
+["search_records",9,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",9,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",9,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",9,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",9,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",9,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",9,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",9,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",9,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",9,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",9,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",9,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",9,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",9,"identity_summary","p0_row_exception"]	N	3
+["search_records",9,"identity_summary","stasis_unobservable"]	N	1
+["search_records",9,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",9,"negative_label"]	N	null
+["search_records",9,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",9,"record"]	S 1/1	"DIMENSION"
+["search_records",9,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",10,"dimension"]	S 1/1	"open_questions"
+["search_records",10,"files_searched"]	N	2734
+["search_records",10,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",10,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",10,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",10,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",10,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",10,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",10,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",10,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",10,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",10,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",10,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",10,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",10,"hits_ref"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",10,"identity_summary","p0_row_exception"]	N	3
+["search_records",10,"identity_summary","stasis_unobservable"]	N	1
+["search_records",10,"label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"
+["search_records",10,"negative_label"]	N	null
+["search_records",10,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",10,"record"]	S 1/1	"DIMENSION"
+["search_records",10,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["semantic_status_mechanical","note"]	N	null
+["semantic_status_mechanical","rule"]	S 1/1	"ROW-4"
+["semantic_status_mechanical","value"]	S 1/1	"IDENTITY-UNWITNESSED"
+["source_meta","S0222","best_historical_date"]	S 1/1	"1787358734"
+["source_meta","S0222","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0222","explicit_dates"]	E	[]
+["source_meta","S0222","file_mtime"]	S 1/1	"1787358734"
+["source_meta","S0222","mtime_block"]	N	null
+["source_meta","S0222","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0222","status"]	S 1/1	"CONTENT"
+["source_meta","S0237","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0237","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0237","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0237","file_mtime"]	S 1/1	"1787383067"
+["source_meta","S0237","mtime_block"]	N	null
+["source_meta","S0237","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0237","status"]	S 1/1	"CONTENT"
+["source_meta","S0239","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0239","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0239","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0239","file_mtime"]	S 1/1	"1787383792"
+["source_meta","S0239","mtime_block"]	N	null
+["source_meta","S0239","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0239","status"]	S 1/1	"CONTENT"
+["source_meta","S0240","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0240","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0240","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0240","file_mtime"]	S 1/1	"1787384408"
+["source_meta","S0240","mtime_block"]	N	null
+["source_meta","S0240","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0240","status"]	S 1/1	"CONTENT"
+["source_meta","S0241","best_historical_date"]	S 1/1	"2026-08-22"
+["source_meta","S0241","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0241","explicit_dates",0]	S 1/1	"2026-08-22"
+["source_meta","S0241","file_mtime"]	S 1/1	"1787385112"
+["source_meta","S0241","mtime_block"]	N	null
+["source_meta","S0241","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0241","status"]	S 1/1	"CONTENT"
+["source_meta","S0294","best_historical_date"]	S 1/1	"1787395731"
+["source_meta","S0294","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0294","explicit_dates"]	E	[]
+["source_meta","S0294","file_mtime"]	S 1/1	"1787395731"
+["source_meta","S0294","mtime_block"]	N	null
+["source_meta","S0294","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0294","status"]	S 1/1	"CONTENT"
+["source_meta","S1752","best_historical_date"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1752","explicit_dates"]	E	[]
+["source_meta","S1752","file_mtime"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","mtime_block"]	N	null
+["source_meta","S1752","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1752","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1821","best_historical_date"]	S 1/1	"1788124763"
+["source_meta","S1821","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1821","explicit_dates"]	E	[]
+["source_meta","S1821","file_mtime"]	S 1/1	"1788124763"
+["source_meta","S1821","mtime_block"]	N	null
+["source_meta","S1821","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1821","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1824","best_historical_date"]	S 1/1	"1788124863"
+["source_meta","S1824","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1824","explicit_dates"]	E	[]
+["source_meta","S1824","file_mtime"]	S 1/1	"1788124863"
+["source_meta","S1824","mtime_block"]	N	null
+["source_meta","S1824","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1824","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1895","best_historical_date"]	S 1/1	"1788128669"
+["source_meta","S1895","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1895","explicit_dates"]	E	[]
+["source_meta","S1895","file_mtime"]	S 1/1	"1788128669"
+["source_meta","S1895","mtime_block"]	N	null
+["source_meta","S1895","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1895","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1899","best_historical_date"]	S 1/1	"1788128726"
+["source_meta","S1899","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1899","explicit_dates"]	E	[]
+["source_meta","S1899","file_mtime"]	S 1/1	"1788128726"
+["source_meta","S1899","mtime_block"]	N	null
+["source_meta","S1899","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1899","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1909","best_historical_date"]	S 1/1	"1788128760"
+["source_meta","S1909","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1909","explicit_dates"]	E	[]
+["source_meta","S1909","file_mtime"]	S 1/1	"1788128760"
+["source_meta","S1909","mtime_block"]	N	null
+["source_meta","S1909","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1909","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1928","best_historical_date"]	S 1/1	"1788129394"
+["source_meta","S1928","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1928","explicit_dates"]	E	[]
+["source_meta","S1928","file_mtime"]	S 1/1	"1788129394"
+["source_meta","S1928","mtime_block"]	N	null
+["source_meta","S1928","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1928","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1929","best_historical_date"]	S 1/1	"1788129395"
+["source_meta","S1929","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1929","explicit_dates"]	E	[]
+["source_meta","S1929","file_mtime"]	S 1/1	"1788129395"
+["source_meta","S1929","mtime_block"]	N	null
+["source_meta","S1929","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1929","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1930","best_historical_date"]	S 1/1	"1788129397"
+["source_meta","S1930","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1930","explicit_dates"]	E	[]
+["source_meta","S1930","file_mtime"]	S 1/1	"1788129397"
+["source_meta","S1930","mtime_block"]	N	null
+["source_meta","S1930","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1930","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2791","best_historical_date"]	S 1/1	"1788679896"
+["source_meta","S2791","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2791","explicit_dates"]	E	[]
+["source_meta","S2791","file_mtime"]	S 1/1	"1788679896"
+["source_meta","S2791","mtime_block"]	N	null
+["source_meta","S2791","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2791","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2795","best_historical_date"]	S 1/1	"1788679967"
+["source_meta","S2795","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2795","explicit_dates"]	E	[]
+["source_meta","S2795","file_mtime"]	S 1/1	"1788679967"
+["source_meta","S2795","mtime_block"]	N	null
+["source_meta","S2795","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2795","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2798","best_historical_date"]	S 1/1	"1788680353"
+["source_meta","S2798","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2798","explicit_dates"]	E	[]
+["source_meta","S2798","file_mtime"]	S 1/1	"1788680353"
+["source_meta","S2798","mtime_block"]	N	null
+["source_meta","S2798","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2798","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_tracks","S0237","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0237","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0239","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0239","track_tag"]	S 1/1	"UNCLASSIFIED"
+["stage2_files",0]	S 1/1	"S0222"
+["stage2_files",1]	S 1/1	"S0237"
+["stage2_files",2]	S 1/1	"S0239"
+["stage2_files",3]	S 1/1	"S0241"
+["stage2_files",4]	S 1/1	"S0294"
+["tier"]	S 1/1	"U"
+["working_label"]	S 1/1	"inv-kos-pramana-001-means-of-acquisition"

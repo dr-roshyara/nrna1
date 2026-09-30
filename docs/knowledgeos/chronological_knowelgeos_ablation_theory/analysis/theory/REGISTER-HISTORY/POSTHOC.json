@@ -1,0 +1,101 @@
+{
+ "labels": "POST-HOC secondary analysis (not in the frozen spec); does not change the primary classification; no text printed",
+ "R-37": {
+  "first": [
+   "ddc3e8e44",
+   "2026-07-10"
+  ],
+  "first_col3_change": [
+   "a26ae7fb3",
+   "2026-07-10"
+  ],
+  "col3_change_commits": 1,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "INSERT-ONLY",
+  "added_part_has_register_marker": true
+ },
+ "R-38": {
+  "first": [
+   "447db121a",
+   "2026-07-11"
+  ],
+  "first_col3_change": [
+   "9c31c8e54",
+   "2026-07-11"
+  ],
+  "col3_change_commits": 1,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "MODIFIED",
+  "added_part_has_register_marker": true
+ },
+ "R-51": {
+  "first": [
+   "055254364",
+   "2026-08-01"
+  ],
+  "first_col3_change": [
+   "3be1e088e",
+   "2026-08-01"
+  ],
+  "col3_change_commits": 1,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "INSERT-ONLY",
+  "added_part_has_register_marker": null
+ },
+ "R-96": {
+  "first": [
+   "e6a6aaf9e",
+   "2026-08-04"
+  ],
+  "first_col3_change": [
+   "562492d2b",
+   "2026-08-04"
+  ],
+  "col3_change_commits": 1,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "REPLACED",
+  "added_part_has_register_marker": null
+ },
+ "R-98": {
+  "first": [
+   "f4e0cdc37",
+   "2026-08-04"
+  ],
+  "first_col3_change": [
+   "6c6d5866c",
+   "2026-08-04"
+  ],
+  "col3_change_commits": 2,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "MODIFIED",
+  "added_part_has_register_marker": null
+ },
+ "R-99": {
+  "first": [
+   "f4e0cdc37",
+   "2026-08-04"
+  ],
+  "first_col3_change": [
+   "6c6d5866c",
+   "2026-08-04"
+  ],
+  "col3_change_commits": 3,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "MODIFIED",
+  "added_part_has_register_marker": null
+ },
+ "R-100": {
+  "first": [
+   "6c6d5866c",
+   "2026-08-04"
+  ],
+  "first_col3_change": [
+   "2f804b81e",
+   "2026-08-04"
+  ],
+  "col3_change_commits": 1,
+  "same_day_as_first_record": true,
+  "concatenated_col3+col4": "INSERT-ONLY",
+  "added_part_has_register_marker": true
+ }
+}

@@ -1,0 +1,18 @@
+{
+ "test": "1w: M3 invariant I-A1 (no execution without full authorization) on WP-4B, git timestamps x rulings register",
+ "status": "FROZEN BEFORE any commit list, date or subject for WP-4B is looked at",
+ "bounds (SOURCE facts from rows already read; time = committer time of the first commit containing the row)": {
+   "T_R72": "R-72 'WP-4B AUTHORIZED … SUBJECT TO A PROVISO THAT IS NOT YET SATISFIED' — 'SO IMPLEMENTATION DOES NOT BEGIN'; 'no RED begins'",
+   "T_R77": "R-77 '⚠️ AND WP-4B REMAINS BLOCKED' (on transport for ContestedOutcomeRef)",
+   "T_R86": "R-86 'WP-4B BATCH 7 IS RELEASED'; engineering AUTHORIZED to execute R-81 per-process isolation, R-84 §12 reconcile, R-85 K2 setup amendment + model-B keystone"},
+ "implementation_commit": "a commit (current branch history) that touches app/ or tests/ AND whose subject matches /wp-?4b/i. RED (test-only) commits count as execution ('no RED begins')",
+ "batch7_commit": "an implementation_commit whose subject also matches /isolat|reconcil|K2|keystone|model[- ]B|redrive/i",
+ "predictions (I-A1)": {
+   "P-a": "no implementation_commit before T_R72 (no authorization at all)",
+   "P-b": "no implementation_commit before T_R77 (the source states WP-4B is still blocked at T_R77)",
+   "P-c": "no batch7_commit before T_R86"},
+ "classification": "each P: SUPPORTED (0 violating commits) · VIOLATED (>=1, listed by hash/time/subject-prefix) · UNTESTABLE (no implementation commits at all)",
+ "secondary (reported, not decisive)": "first and last implementation_commit times; whether any register row first recorded between T_R77 and the first implementation_commit matches /WP-4B/ and /proviso|RED|unblock|may begin|released|resume/i (IDs only)",
+ "exposure": "hashes, timestamps, subject lines (first 80 chars) and file-path prefixes only; no diffs",
+ "known_limits": "commit time is not necessarily the time work began; subjects may not name WP-4B; only current-branch history; the register-row time is the time it was recorded, not necessarily the time of the act"
+}

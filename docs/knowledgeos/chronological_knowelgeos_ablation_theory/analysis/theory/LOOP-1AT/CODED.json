@@ -1,0 +1,74 @@
+{
+ "coded_RAISE_events_R36": [
+  {
+   "event_id": "RAISE promoted #2",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "2+",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "RAISE promoted #3",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "2+",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "RAISE promoted #9",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "2+",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "RAISE promoted #10",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "2+",
+   "outcome": "PERFORMED",
+   "ground": "n/a"
+  },
+  {
+   "event_id": "RAISE not promoted #5",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "1",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "RAISE not promoted #14",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "1",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  },
+  {
+   "event_id": "RAISE not promoted #17",
+   "cluster": "R-36",
+   "a": "ARB",
+   "k": "engineering-behaviour",
+   "t": "AST-013",
+   "e": "1",
+   "outcome": "REFUSED",
+   "ground": "RULE"
+  }
+ ]
+}

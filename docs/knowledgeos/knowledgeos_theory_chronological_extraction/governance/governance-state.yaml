@@ -1,0 +1,66 @@
+# governance-state.yaml — ACTIVATION RECORDS. The human authority owns this file.
+#
+# A gate blocks only when BOTH hold:
+#   1. gates.yaml gives it status: active     (Governance proposes)
+#   2. its id appears under `activated` below (the human activates)
+#
+# Condition 2 is why activation is an ACT and not a file edit by whoever is
+# doing the research. Research Claude may READ this file. It must not add
+# entries here, and must not edit gates.yaml's status field or the hook.
+#
+# ─────────────────────────────────────────────────────────────────────────
+# HOW TO ACTIVATE
+#   Add the gate id to `activated`, with who activated it and the date.
+#   To activate everything currently eligible:
+#       python3 governance/gate-runner.py --list-eligible
+#   and paste the ids it prints.
+# ─────────────────────────────────────────────────────────────────────────
+
+state:
+  version: 1
+  scope: knowledgeos_theory_chronological_extraction
+  temporary: true
+
+# Accepted shapes — a bare id, or a mapping carrying who and when:
+#
+#   activated:
+#     - KOS-G-001
+#     - id: KOS-G-010
+#       by: <name or role>
+#       date: 2026-09-23
+#
+# ⛔ NOTHING MAY BE ADDED BELOW BY THE RESEARCH SESSION.
+# An author who activates the gates that judge their own work has produced an
+# approval, not an acceptance (KOS-G-060). The runner MEASURES regardless of
+# what is here; activation governs BLOCKING, not measurement.
+#
+# ── ACTIVATION LIST · keep this key LAST in the file ─────────────────────
+#activated:
+#  - KOS-G-001      # artifacts-parse
+#  - KOS-G-002      # no-duplicate-ids
+#  - KOS-G-003      # no-dangling-references
+#  - KOS-G-010      # theory-discovery-index-coverage  
+#  - KOS-G-022      # theory-document-completeness
+activated:
+  - {id: KOS-G-001, pin: "485a327da2ca8f9e", by: "Dr. Nab Raj Roshyara", date: 2026-09-23}
+  - {id: KOS-G-002, pin: "7084bc523256ccb3", by: "Dr. Nab Raj Roshyara", date: 2026-09-23}
+  - {id: KOS-G-003, pin: "9327509ad713a267", by: "Dr. Nab Raj Roshyara", date: 2026-09-23}
+  - {id: KOS-G-010, pin: "45e060f20216d64d", by: "Dr. Nab Raj Roshyara", date: 2026-09-23}
+  - {id: KOS-G-022, pin: "9c5d3802a2ff6942", by: "Dr. Nab Raj Roshyara", date: 2026-09-23}
+
+# ── ACTIVATION RECORD ────────────────────────────────────────────────────
+# 2026-09-23 · human · the five-gate first group.
+#
+# ⚠️ TRANSCRIPTION NOTE, recorded because it must not be invisible:
+# the five ids were entered by the human but landed after the commented
+# example block, orphaned at the wrong indent, leaving `activated: []` empty
+# and the file unparseable. Research Claude repaired the SYNTAX so the human's
+# act would take effect, and chose none of the ids. The governance-file digest
+# changes as a result; that change is expected and this note is its record.
+#
+# ⛔ The layout that caused it was Research Claude's error: a commented example
+# placed AFTER the live key. The live key is now last, so a paste at the end of
+# the file lands inside it.
+#
+# ⛔ KOS-G-027 (gaps-dispositioned) is deliberately NOT activated: its check is
+# weaker than its stated rule (B-8), so activating it would bank a false pass.

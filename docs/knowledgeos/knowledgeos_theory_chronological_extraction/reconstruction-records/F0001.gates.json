@@ -1,0 +1,84 @@
+{
+ "file_id": "F0001",
+ "gates": [
+  {
+   "gate": "FILE_READ",
+   "satisfied": true,
+   "evidence": "complete, 267 lines (⚠️ erratum E-01: recorded 268, corrected 267)"
+  },
+  {
+   "gate": "IDENTITY_ADMITTED",
+   "satisfied": true,
+   "evidence": "ADMIT + receipt"
+  },
+  {
+   "gate": "SELF_DECLARED_STATUS_CAPTURED",
+   "satisfied": true,
+   "evidence": "⭐ verbatim; title 'Baseline' NOT allowed to upgrade status 'CANDIDATE — NOT ADOPTED'"
+  },
+  {
+   "gate": "QUESTIONS_SEPARATED",
+   "satisfied": true,
+   "evidence": "source ≠ reconstruction"
+  },
+  {
+   "gate": "DEFINITIONS_EXTRACTED",
+   "satisfied": true,
+   "evidence": "6"
+  },
+  {
+   "gate": "ASSUMPTIONS_EXTRACTED",
+   "satisfied": true,
+   "evidence": "4 + 4 premises"
+  },
+  {
+   "gate": "DERIVATIONS_RECONSTRUCTED",
+   "satisfied": true,
+   "evidence": "5"
+  },
+  {
+   "gate": "GAPS_RECORDED",
+   "satisfied": true,
+   "evidence": "3"
+  },
+  {
+   "gate": "CONTRADICTIONS_RECORDED",
+   "satisfied": true,
+   "evidence": "⭐ 3 — incl. the P1 re-derivation annotation"
+  },
+  {
+   "gate": "THEORY_AND_ARCHITECTURE_OBJECTS_UPDATED",
+   "satisfied": true,
+   "evidence": "⭐ SATISFIED under O-1=A (L0-DEC-08). Own objects ['T-0001', 'T-0002', 'T-0003', 'T-0004', 'T-0008'] verified current; ⛔ no write required. ⭐ Every own object already records the qualification this file's audit produced. T-0002 carries `alternatives: Round38C-04` and `open_questions: \"whether P1 should be derived FROM Round38C-04 rather than proposed beside it — F0001 says it should\"`, and its `evolution` names the self-annotation. ⭐ RO-0025 is therefore already discharged in the record. T-0001/0003/0004/0008 carry evolution chains no F0001 finding contradicts."
+  },
+  {
+   "gate": "PROVENANCE_RECORDED",
+   "satisfied": true,
+   "evidence": "3 layers"
+  },
+  {
+   "gate": "RECONSTRUCTION_RECORD_VALIDATED",
+   "satisfied": true,
+   "evidence": "40/40"
+  }
+ ],
+ "satisfied": 12,
+ "total": 12,
+ "dossier_status": "COMPLETE",
+ "⭐ O-1_evaluation": {
+  "date": "2026-09-23",
+  "authority": "L0-DEC-08 (O-1 = interpretation A)",
+  "own_objects": [
+   "T-0001",
+   "T-0002",
+   "T-0003",
+   "T-0004",
+   "T-0008"
+  ],
+  "verdict": "SATISFIED",
+  "objects_needing_5A_revision": [],
+  "basis": "⭐ Every own object already records the qualification this file's audit produced. T-0002 carries `alternatives: Round38C-04` and `open_questions: \"whether P1 should be derived FROM Round38C-04 rather than proposed beside it — F0001 says it should\"`, and its `evolution` names the self-annotation. ⭐ RO-0025 is therefore already discharged in the record. T-0001/0003/0004/0008 carry evolution chains no F0001 finding contradicts.",
+  "blocker": null
+ },
+ "⭐ dossier_status_note": "⭐ FIRST file to reach COMPLETE. All 12 §9A gates satisfied; gate 9 by verification under O-1=A, with no write to any Theory Object."
+}

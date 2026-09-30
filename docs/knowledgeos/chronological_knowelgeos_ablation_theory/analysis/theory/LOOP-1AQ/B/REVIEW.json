@@ -1,0 +1,147 @@
+{
+  "classes_A": {
+    "START WP-4B at R-72 (proviso unmet)": "SAME-STATEMENT",
+    "START WP-4B 08-03 16:10": "UNCLEAR",
+    "START WP-8 (permission only)": "ACT-NOT-ATTESTED",
+    "START 7A after AUTHORIZE(7A)": "ACT-NOT-ATTESTED",
+    "START 7B after AUTHORIZE(7A)": "ACT-NOT-ATTESTED",
+    "START 7B at R-56 (plan approved, execution not issued)": "ACT-NOT-ATTESTED",
+    "START 7B at R-58 (execution authorized)": "ACT-NOT-ATTESTED",
+    "START 7C at R-58 (remains unauthorized)": "ACT-NOT-ATTESTED",
+    "START 7C at R-65 (authorized)": "ACT-NOT-ATTESTED",
+    "START §12 reconcile at R-81 (Batch 7 frozen)": "ACT-NOT-ATTESTED",
+    "START §12 reconcile at R-86 (Batch 7 released)": "ACT-NOT-ATTESTED"
+  },
+  "classes_reviewer": {
+    "START WP-4B at R-72 (proviso unmet)": "ACT-NOT-ATTESTED",
+    "START WP-4B 08-03 16:10": "UNCLEAR",
+    "START WP-8 (permission only)": "ACT-NOT-ATTESTED",
+    "START 7A after AUTHORIZE(7A)": "ACT-NOT-ATTESTED",
+    "START 7B after AUTHORIZE(7A)": "ACT-NOT-ATTESTED",
+    "START 7B at R-56 (plan approved, execution not issued)": "ACT-NOT-ATTESTED",
+    "START 7B at R-58 (execution authorized)": "ACT-NOT-ATTESTED",
+    "START 7C at R-58 (remains unauthorized)": "ACT-NOT-ATTESTED",
+    "START 7C at R-65 (authorized)": "ACT-NOT-ATTESTED",
+    "START §12 reconcile at R-81 (Batch 7 frozen)": "ACT-NOT-ATTESTED",
+    "START §12 reconcile at R-86 (Batch 7 released)": "ACT-NOT-ATTESTED"
+  },
+  "counts_reviewer": {
+    "INDEPENDENT": 0,
+    "SAME-STATEMENT": 0,
+    "OUTCOME-DERIVED": 0,
+    "ACT-NOT-ATTESTED": 10,
+    "UNCLEAR": 1
+  },
+  "coded_s_mismatches_reviewer": [
+    {
+      "event_id": "START WP-8 (permission only)",
+      "coded_s": "permission-only",
+      "source_s": "deferred / not authorized; implementation 'NOT PERMITTED' (the permission covers planning only)",
+      "agrees_with_A": true
+    },
+    {
+      "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+      "coded_s": "not-authorized",
+      "source_s": "not stated at R-81 for §12; reconstructed from later rows (R-86 citing R-84). R-81's own status was recoded after the fact to PREPARED by the 2026-08-04 annotation",
+      "agrees_with_A": false,
+      "severity": "partial"
+    }
+  ],
+  "non_circular_contrast_reviewer": {
+    "exists": false,
+    "pairs": [],
+    "reason": "0 INDEPENDENT events. The only attested act is commit 6a67da5d7 (UNCLEAR). The nearest pair, R-72 vs the commit, rests on one decision episode (R-72). Under the reading that makes both events INDEPENDENT, both carry the same state (proviso unmet), so the pair does not exercise the claim. R-78 also shows intervening rulings, so 'never discharged' cannot be established.",
+    "strongest_alternative": "Read R-72's 'does not begin' as an outcome, with the heading and effect column as a separate state, which makes event 1 INDEPENDENT. Take R-72 as the undischarged prior state for the commit, which makes event 2 INDEPENDENT. The literal criterion is then met (different clusters, opposite outcomes). It still fails: both states rest on the same episode, both events have the same state, and R-78 shows possible discharge. Using R-81's 'seam already authorized by R-72' to set s=authorized relies on a later, retroactive statement that was only PREPARED when written, so it is barred."
+  },
+  "disagreements": [
+    {
+      "id": "D1",
+      "event_id": "START WP-4B at R-72 (proviso unmet)",
+      "type": "source interpretation",
+      "A": "SAME-STATEMENT",
+      "reviewer": "ACT-NOT-ATTESTED. 'does not begin' is a ruling consequence with no attempt described, which is how A treats R-79. If it were read as an outcome, the heading 'SUBJECT TO A PROVISO THAT IS NOT YET SATISFIED' and the effect column 'the contingency is unmet' would make the event INDEPENDENT. SAME-STATEMENT fails under both readings.",
+      "changes_verdict": false
+    },
+    {
+      "id": "D2",
+      "event_id": "counts",
+      "type": "coding",
+      "A": "SAME-STATEMENT 1, ACT-NOT-ATTESTED 9",
+      "reviewer": "SAME-STATEMENT 0, ACT-NOT-ATTESTED 10",
+      "changes_verdict": false
+    },
+    {
+      "id": "D3",
+      "event_id": "START WP-4B 08-03 16:10",
+      "type": "evidence scope",
+      "A": "R-78 used only as context; R-73..R-77 described as not in the sources",
+      "reviewer": "R-78 (08-03) records that R-75 selected the path and R-77 closed the architecture, which bears on whether R-72's blockers (a) and (b) were discharged. The class stays UNCLEAR.",
+      "changes_verdict": false
+    },
+    {
+      "id": "D4",
+      "event_id": "START WP-4B 08-03 16:10",
+      "type": "source interpretation",
+      "A": "the commit's 'the two Board acts are outstanding' is cited against RED authorization",
+      "reviewer": "the commit links the outstanding Board acts to GREEN ('GREEN not attempted: ...'); only R-79's sequence places them before RED",
+      "changes_verdict": false
+    },
+    {
+      "id": "D5",
+      "event_id": "START 7B at R-56 (plan approved, execution not issued)",
+      "type": "source interpretation",
+      "A": "'TWO CORRECTIONS REQUIRED BEFORE RED' is filed as the nearest act; the state is said to rest on a recording note",
+      "reviewer": "it is a ruling provision that establishes the state (RED gated) and is stronger than the note. The class is unchanged.",
+      "changes_verdict": false
+    },
+    {
+      "id": "D6",
+      "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+      "type": "coding",
+      "A": "coded_s_matches: true",
+      "reviewer": "partial. R-81 never names §12; its batch-7 membership and frozen state come from later rows (R-84 via R-86). The annotation later recoded R-81 itself as PREPARED.",
+      "changes_verdict": false
+    },
+    {
+      "id": "D7",
+      "event_id": "verdict",
+      "type": "formal reasoning",
+      "A": "the R-72/commit pair is a 'possible counterexample' to 'START legal ⇔ target authorized'",
+      "reviewer": "a performed unauthorized START is an illegal START, not a counterexample to a definition. It would only count against the coding assumption that outcome tracks state.",
+      "changes_verdict": false
+    },
+    {
+      "id": "D8",
+      "event_id": "pairs",
+      "type": "independence",
+      "A": "not assessed",
+      "reviewer": "the R-72/commit pair rests on one decision episode (R-72), and so does the R-81/R-86 pair (the adoption episode). This strengthens exists=false.",
+      "changes_verdict": false
+    },
+    {
+      "id": "D9",
+      "event_id": "START §12 reconcile at R-81 / R-86",
+      "type": "evidence scope",
+      "A": "R-86's 'engineering waiting solely on a constitutional act' is not cited",
+      "reviewer": "later text describing the hold after the fact; it is not an attested refused attempt, so the class is unchanged",
+      "changes_verdict": false
+    },
+    {
+      "id": "D10",
+      "event_id": "ANSWER.md contrast section",
+      "type": "wording",
+      "A": "'eight of the nine authorization rows (all except R-72)' state the state separately",
+      "reviewer": "R-78 has no START event, and R-72 does state the state separately (heading and effect column)",
+      "changes_verdict": false
+    },
+    {
+      "id": "D11",
+      "event_id": "START WP-4B 08-03 16:10; START §12 reconcile at R-81",
+      "type": "wording",
+      "A": "the state_quote fields mix verbatim quotes with commentary ('vs.', '[the actor's own claim]', 'plus annotation:')",
+      "reviewer": "the quotes are verbatim, but the field should hold only the quote",
+      "changes_verdict": false
+    }
+  ],
+  "substantive_disagreements": 0
+}

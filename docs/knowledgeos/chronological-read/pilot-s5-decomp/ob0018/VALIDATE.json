@@ -1,0 +1,55 @@
+{
+ "PX0018-S00": {
+  "failures": [],
+  "quote_misses": 0,
+  "quotes": {
+   "exact": 71,
+   "miss": [],
+   "no_source_id": 0,
+   "refused": 0,
+   "whitespace": 0
+  },
+  "result": "PASS"
+ },
+ "PX0018-S01": {
+  "failures": [
+   "G-12 s1620-removal-test-provenance-base-case-and-user-decisions: register id or pointer in layer A ('register record')",
+   "QUARANTINE outputs carry 0 hold-out label name(s) and 1 hold-out file id(s); 0 non-refused read(s) of hold-out files: seal breach → P3B-ESC (counts only)"
+  ],
+  "quote_misses": 0,
+  "quotes": {
+   "exact": 80,
+   "miss": [],
+   "no_source_id": 0,
+   "refused": 0,
+   "whitespace": 0
+  },
+  "result": "FAIL"
+ },
+ "PX0018-S02": {
+  "failures": [],
+  "quote_misses": 0,
+  "quotes": {
+   "exact": 75,
+   "miss": [],
+   "no_source_id": 0,
+   "refused": 0,
+   "whitespace": 1
+  },
+  "result": "PASS"
+ },
+ "PX0018-S03": {
+  "failures": [
+   "QUARANTINE outputs carry 0 hold-out label name(s) and 6 hold-out file id(s); 0 non-refused read(s) of hold-out files: seal breach → P3B-ESC (counts only)"
+  ],
+  "quote_misses": 0,
+  "quotes": {
+   "exact": 80,
+   "miss": [],
+   "no_source_id": 0,
+   "refused": 0,
+   "whitespace": 0
+  },
+  "result": "FAIL"
+ }
+}

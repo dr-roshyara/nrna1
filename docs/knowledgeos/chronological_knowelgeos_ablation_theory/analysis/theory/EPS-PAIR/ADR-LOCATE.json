@@ -1,0 +1,15 @@
+{
+ "files": 21,
+ "counts": {
+  "NO-STATUS-LINE": 9,
+  "OTHER": 11,
+  "SUPERSEDED": 1
+ },
+ "superseded": [
+  {
+   "file": "docs/adr/ADR-MP-Messaging-Platform.md",
+   "status": "**Status:** Accepted · **2026-07-07** · supersedes the bundled Decision-Log entry D-12 (now a pointer).",
+   "class": "SUPERSEDED"
+  }
+ ]
+}

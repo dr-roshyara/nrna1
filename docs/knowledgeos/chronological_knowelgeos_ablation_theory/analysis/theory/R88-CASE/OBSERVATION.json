@@ -1,0 +1,24 @@
+{
+ "name": "R-88 (register L74)",
+ "read": "ADR-AIP-LOG-Platform-Rulings.md 7795c14b... L74 only, after freeze commit a5bbdf83c",
+ "fields": {
+  "route": "RULING (SOURCE-DERIVED host; SOURCE: issued by the ARB CHIEF as PREPARED, then ADOPTED by the Decision Authority)",
+  "operation": "SOURCE: SUBDIVIDE a work package ('WP-4C is subdivided into WP-4C-1 and WP-4C-2') + ADOPT-STATUS annotation (PREPARED -> ADOPTED). Neither RAISE nor CREATE-NORM ('No new principle is introduced'; precedent R-68 applied)",
+  "object_kind": "SOURCE: governed work (work packages)",
+  "effect": "SOURCE: structural/operational (package structure; WP-4C-1 'candidate for authorization')",
+  "force": "not applicable to the bar question", "authority": "SOURCE: ARB CHIEF (prepared) -> Decision Authority (adopted, single act, no delegation created)",
+  "evidence_count": "NOT-CODED: count words were false positives ('single act', 'second consumer'); an evidence basis IS stated but it is grep/EP-03 facts, not an occurrence count",
+  "qualification": "NOT-RECORDED", "validation": "NOT-RECORDED", "exception": "NOT-RECORDED",
+  "stated_reason": "SOURCE: 'DDD GROUNDS — the decisive one is OWNERSHIP, not convenience: a work package must have one primary bounded-context owner'",
+  "observed_transition": "WP-4C -> WP-4C-1 (candidate) + WP-4C-2 (blocked on §15.3); status PREPARED -> ADOPTED"},
+ "m0_result": "OUT-OF-SCOPE for all 8 guard models (operation is neither RAISE nor CREATE-NORM) -> G-R vs G-O NOT discriminated; no model falsified or reason-inconsistent",
+ "frame_facts (SOURCE, explicit)": [
+  "ADOPT changes status only: 'annotation; the DECISION TEXT above is unchanged'; the provenance annotation 'retained as HISTORICAL RECORD, not deleted'",
+  "SUBDIVIDE does not change authorization: 'Neither is authorized by this ruling'; 'subdivision is not authorization (R-80)'",
+  "ADOPT does not change delegation: 'SINGLE ACT, NO DELEGATION CREATED'; 'the no-standing-delegation position of R-86 and R-87 REMAINS INTACT'",
+  "recording ownership != resolving: '§15.3 is NOT answered — this ruling records its ownership, it does not resolve it'",
+  "a 'WHAT IT DELIBERATELY DOES NOT CHANGE' clause lists preserved coordinates (roadmap, §WP-4, WP-8, catalog, COL-5a)"],
+ "history_fact (SOURCE)": "'CONSEQUENCE, recorded so no later session infers otherwise: ... a future ruling issued by the ARB Chief is again PREPARED, NOT ADOPTED, until the Authority acts' -> the source explicitly blocks a history-induced change of future permissions (no path dependence of adoption authority)",
+ "ambiguity_fact (SOURCE)": "an ambiguous reviewer message ('Accept ...' alongside conditional 'I would issue ...') was NOT treated as adoption: 'The Chief declines to resolve that ambiguity in favour of its own act'",
+ "retrieval_fact": "the F-LOG-0120 term-class locate ranked R-88 first on count words that are false positives here (1 of 1 inspected) -> lexical count-term retrieval has low precision for 'evidence basis'"
+}

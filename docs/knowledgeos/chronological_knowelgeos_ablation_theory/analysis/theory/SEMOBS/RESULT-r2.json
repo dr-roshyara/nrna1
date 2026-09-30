@@ -1,0 +1,89 @@
+{
+ "n_observations": 30,
+ "verdicts": {
+  "operation": {
+   "verdict": "NOT DEMONSTRATED",
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0
+  },
+  "route": {
+   "verdict": "NOT DEMONSTRATED",
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0
+  },
+  "authority": {
+   "verdict": "EMPIRICALLY SUPPORTED",
+   "independent_strict": 2,
+   "independent_clusters": [
+    [
+     "R-70",
+     "R-89"
+    ],
+    [
+     "R-81..85-annotation",
+     "R-86"
+    ]
+   ],
+   "possible_witnesses": 0
+  },
+  "kind": {
+   "verdict": "EMPIRICALLY SUPPORTED",
+   "independent_strict": 2,
+   "independent_clusters": [
+    [
+     "R-60"
+    ],
+    [
+     "S0804-L576"
+    ]
+   ],
+   "possible_witnesses": 0
+  },
+  "state": {
+   "verdict": "NOT DEMONSTRATED",
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0
+  },
+  "target": {
+   "verdict": "WEAK",
+   "independent_strict": 1,
+   "independent_clusters": [
+    [
+     "R-47"
+    ]
+   ],
+   "possible_witnesses": 2
+  },
+  "evidence": {
+   "verdict": "WEAK",
+   "independent_strict": 1,
+   "independent_clusters": [
+    [
+     "R-36"
+    ]
+   ],
+   "possible_witnesses": 0
+  },
+  "exception": {
+   "verdict": "NOT DEMONSTRATED",
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0
+  },
+  "history": {
+   "verdict": "NOT DEMONSTRATED (possible)",
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 1
+  },
+  "conformance": {
+   "verdict": "NOT DEMONSTRATED",
+   "independent_strict": 0,
+   "independent_clusters": [],
+   "possible_witnesses": 0
+  }
+ }
+}

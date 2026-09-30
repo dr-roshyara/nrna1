@@ -25,6 +25,17 @@ def append_jsonl(path, rows):
 
 
 def main(batch_id):
+    manifest_path = os.path.join(CR, "01-BATCH-MANIFEST.jsonl")
+    manifest_rows = load_jsonl(manifest_path)
+    current = next((r for r in manifest_rows if r["batch_id"] == batch_id), None)
+    if current is None:
+        print(f"FAIL: {batch_id} not found in manifest")
+        sys.exit(1)
+    if current.get("status") == "DONE":
+        print(f"SKIP: {batch_id} is already marked DONE — refusing to merge again "
+              f"(would duplicate unresolved-candidates rows). No changes made.")
+        sys.exit(0)
+
     ledger_dir = os.path.join(CR, "ledger", batch_id)
     proposals = load_jsonl(os.path.join(ledger_dir, "index-proposals.jsonl"))
     contributions = load_jsonl(os.path.join(ledger_dir, "contributions.jsonl"))
@@ -33,6 +44,23 @@ def main(batch_id):
     index_path = os.path.join(CR, "11-OBJECT-INDEX.jsonl")
     unresolved_path = os.path.join(CR, "11-UNRESOLVED-CANDIDATES.jsonl")
     status_path = os.path.join(CR, "09-READ-STATUS.jsonl")
+
+    # Compute everything that can fail BEFORE any file is written, so a crash never
+    # leaves a partial merge (this bit us once: scope was a list, unhashable, and the
+    # crash happened after index/unresolved appends had already landed).
+    type_counts = {}
+    scope_counts = {}
+    for c in contributions:
+        for t in c.get("types") or []:
+            type_counts[t] = type_counts.get(t, 0) + 1
+        scope = c.get("scope")
+        if not isinstance(scope, str):
+            print(f"FAIL: {batch_id} source_id={c.get('source_id')} has non-string scope "
+                  f"{scope!r} — fix the ledger before merging. No changes made.")
+            sys.exit(1)
+        scope_counts[scope] = scope_counts.get(scope, 0) + 1
+    review_flags = sum(1 for c in contributions if c.get("review_flag"))
+    lineage_claims = sum(len(c.get("lineage_claims") or []) for c in contributions)
 
     existing_labels = {r["working_label"] for r in load_jsonl(index_path)}
 
@@ -62,15 +90,6 @@ def main(batch_id):
     append_jsonl(index_path, new_index_rows)
     append_jsonl(unresolved_path, new_unresolved_rows)
 
-    type_counts = {}
-    scope_counts = {}
-    for c in contributions:
-        for t in c.get("types") or []:
-            type_counts[t] = type_counts.get(t, 0) + 1
-        scope_counts[c.get("scope")] = scope_counts.get(c.get("scope"), 0) + 1
-    review_flags = sum(1 for c in contributions if c.get("review_flag"))
-    lineage_claims = sum(len(c.get("lineage_claims") or []) for c in contributions)
-
     append_jsonl(status_path, [{
         "batch_id": batch_id,
         "files": len(files),
@@ -84,14 +103,12 @@ def main(batch_id):
     }])
 
     # mark DONE in manifest
-    manifest_path = os.path.join(CR, "01-BATCH-MANIFEST.jsonl")
-    rows = load_jsonl(manifest_path)
-    for r in rows:
+    for r in manifest_rows:
         if r["batch_id"] == batch_id:
             r["status"] = "DONE"
             r["verified"] = True
     with open(manifest_path, "w", encoding="utf-8") as f:
-        for r in rows:
+        for r in manifest_rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
     print(f"MERGED {batch_id}: +{len(new_index_rows)} labels, +{len(new_unresolved_rows)} unresolved, "

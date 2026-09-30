@@ -1,0 +1,58 @@
+# epistemic-anchor-redundancy-model
+
+**Scope(s):** OBJECT · **Row count:** 9 · **Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED
+**Notations:** `Anchor(A)`, `AnchorSet={A1,...,An}`, `RealityGap_t=Distance(Prediction_t,Observation_t)` · **Aliases:** `Common-mode epistemic failure`, `Independent epistemic anchors`
+**Candidate group membership (NOT an identity claim):**
+- **G0213** [`epistemic-anchor-redundancy-model` · `kos-multi-agent-epistemic-independence`] — explicit agent-stated uncertainty: 'kos-multi-agent-epistemic-independence' POSSIBLY relates to 'epistemic-anchor-redundancy-model' (batch B0023). Note: Step 65's formal treatment of multi-agent epistemic independence: the agent dependency graph, multi-dimensional dependency vector, circular-citation detection, the caught self-amplification failure and its correction (I_EpistemicIndependence), causal-vs-surface evidence diversity, contextual agent-capability profiles (AgentCapability≠AgentAuthority), the error-amplification coefficient, and the independent-source-count governance policy; extends epistemic-anchor-redundancy-model's (Step 47) common-mode-failure principle into a full agent/evidence dependency-graph formalism.
+- **G0218** [`epistemic-anchor-redundancy-model` · `kos-identity-trust-cryptographic-provenance`] — explicit agent-stated uncertainty: 'kos-identity-trust-cryptographic-provenance' POSSIBLY relates to 'epistemic-anchor-redundancy-model' (batch B0023). Note: Step 73's identity/trust/cryptographic-provenance layer: the six-concept separation (Identity/Authenticity/Integrity/Authority/Trust/Provenance), signature/key-revocation/temporal-validity, Merkle tamper evidence with an explicit no-blockchain-required principle, the unified multi-dimensional TrustAssessment function, capability-based least-privilege authorization for humans and AI, trust non-transitivity, the multi-graph non-collapse requirement extended with a Trust graph G_T, and VerifiableEpistemicProvenance/SemanticTrustBoundary. Complements epistemic-anchor-redundancy-model (Step 47, which addresses independence of validation sources) with the cryptographic/identity dimension of trust.
+- **G1459** [`epistemic-anchor-redundancy-model` · `epistemic-self-confirmation-loop`] — labels co-occur in the same contribution's labels[] 2 separate times across the corpus
+
+## Sources (how this label entered the ledger)
+- **OBJECT-INDEX** (batch B0023, scope OBJECT): Step 47's requirement that critical knowledge have independent validation anchors genuinely diverse in source/method/model/measurement/reasoning-path (not merely numerous), extended to champion/challenger adversarial review with a falsification budget, a safe-learning-architecture diagram (Support and Falsify must coexist), reality-gap monitoring against the world, and the no-self-certification principle.
+
+## Candidate births
+- CANDIDATE-LEXICAL-BIRTH: [S0942] §"Independent epistemic anchors; real independence (Human->SourceEvidence, not AI->Human)"
+- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-FORMAL-BIRTH: [S0942] §"Safe learning architecture diagram: Support and Falsify must coexist"
+- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE
+
+## Lifecycle
+last_seen: S0961. Candidate lifecycle: DORMANT.
+Evidence: none recorded (no retraction/supersession/contradiction signal) — this lifecycle label is a heuristic based on how recently (by source_id) this label was last used, not a confirmed retirement or a confirmed ongoing status.
+
+## Completeness roll-up
+| Dimension | Status | Source ids |
+|---|---|---|
+| Purpose / rationale | NOT-EVIDENCED-IN-CAPTURE | — |
+| Informal meaning | NOT-EVIDENCED-IN-CAPTURE | — |
+| Formal definition | PRESENT | S0942 |
+| Type signature | NOT-EVIDENCED-IN-CAPTURE | — |
+| Invariants | PRESENT | S0942, S0957, S0961 |
+| Dependencies | PRESENT | S0957, S0961 |
+| Assumptions | NOT-EVIDENCED-IN-CAPTURE | — |
+| Semantics | PRESENT | S0942, S0957 |
+| Examples | NOT-EVIDENCED-IN-CAPTURE | — |
+| Warnings | PRESENT | S0942, S0957, S0961 |
+| Experiments | PRESENT | S0942, S0961 |
+| Open questions | NOT-EVIDENCED-IN-CAPTURE | — |
+
+## Rationale
+NOT-EVIDENCED-IN-CAPTURE
+
+## Assumption register
+NOT-EVIDENCED-IN-CAPTURE
+
+## All rows (source_id order)
+- [S0942] types=[DEFINITION, PRINCIPLE] scope=OBJECT — "To prevent epistemic self-sealing, defines potential anchors: ExternalEvidence, HumanReview, IndependentTest, GroundTruth, ControlledExperiment -- but independence must be real: HumanReview of only the AI's conclusion (AI->Human) creates dependency, whereas Human->SourceEvidence independently is a stronger anchor. Defines Anchor(A) as evidence/validation whose epistemic generation is sufficiently independent of the system's current belief/policy, to be operationalized per domain." (anchor: "Independent epistemic anchors; real independence (Human->SourceEvidence, not AI->Human)")
+- [S0942] types=[PRINCIPLE, WARNING] scope=OBJECT — "Since one anchor may itself be wrong, high-criticality knowledge should use an AnchorSet={A1,...,An} whose members must not share the same hidden source -- if A1,A2,A3 all derive from the same database they are not three independent confirmations ('common-mode failure' analog for epistemics). True redundancy requires diversity of source, method, model, measurement, and reasoning path, so EpistemicRedundancy != NumberOfOpinions." (anchor: "Anchor diversity, common-mode epistemic failure, and epistemic redundancy != number of opinions")
+- [S0942] types=[EXTENSION, PRINCIPLE] scope=CROSS-OBJECT — "Extends champion/challenger to epistemic control: an independent M_challenger should ideally use different assumptions, independent evidence, and different methodology; the challenger asks 'what would falsify the current conclusion' rather than 'can I support it', creating FalsificationPressure. Proposes a deliberate Budget_falsification: for critical decisions, resources should be reserved specifically to try disproving the preferred hypothesis, since a system optimized only for DecisionSuccess may stop searching once it finds supporting evidence, while one optimized partly for Falsification actively searches for failure modes." (anchor: "Champion/challenger adversarial review and a falsification budget")
+- [S0942] types=[FORMALIZATION] scope=OBJECT — "Depicts a safe-learning pipeline: Experience -> Evaluation -> Learning Candidate -> {Support, Falsify} -> Validation -> Independent Check -> Promotion -> New Knowledge, with the key point that Support and Falsify must coexist as parallel branches feeding validation." (anchor: "Safe learning architecture diagram: Support and Falsify must coexist")
+- [S0942] types=[FORMALIZATION, PRINCIPLE] scope=OBJECT — "Defines the strongest anchor against self-deception as Reality: KnowledgeOS must periodically compare ModelPrediction against ObservedWorldOutcome, formalized as RealityGap_t = Distance(Prediction_t, Observation_t), with repeated RealityGap growth triggering investigation. States one of Step 47's strongest principles: KnowledgeOS must not be the sole authority for validating its own critical knowledge -- for critical knowledge an external or independent validation path should exist, though independence need not mean humans everywhere (another measurement system, independent test, formal proof, external source, controlled experiment, or a separately designed model all qualify)." (anchor: "Reality-based evaluation: RealityGap_t = Distance(Prediction_t, Observation_t); no-self-certification principle")
+- [S0942] types=[EXPERIMENTAL-RESULT] scope=THEORY-LEVEL — "Runs twelve falsification tests, all PASS: (1) KnowledgeOS strengthens a belief using evidence generated by its own previous policy => evidence dependency recognized; (2) the system converges on a stable but incorrect model => stability not interpreted as correctness; (3) a challenger model contradicts the champion => disagreement preserved and investigated; (4) new evidence reduces confidence => confidence can decrease; (5) a trusted claim becomes invalid => demoted without deleting its history; (6) an AI-generated hypothesis has no independent evidence => cannot automatically become operational knowledge; (7) a candidate learning policy would improve information gain but violate a safety constraint => safety blocks the exploration; (8) a model update improves average accuracy but violates a critical invariant => promotion rejected; (9) multiple validation results share the same underlying source => not counted as independent confirmation; (10) a historical interpretation is later disproven => historical decision remains reproducible using its original knowledge state; (11) the system's own policy changes the population from which evidence is collected => policy-induced distribution shift represented; (12) the model becomes increasingly confident while prediction error simultaneously increases => calibration/reality-gap mechanism flags epistemic instability or model failure." (anchor: "Twelve falsification experiments for Step 47 epistemic-control model (all PASS)")
+- [S0942] types=[RESTATEMENT, PRINCIPLE] scope=THEORY-LEVEL — "Declares STEP 47 -- PASS ('a formal foundation for epistemic control... the system must be able to determine whether its own learning process remains trustworthy') and restates seven core principles: self-generated evidence is not automatically independent evidence; stable knowledge is not necessarily correct knowledge; confidence must be allowed to decrease; critical knowledge requires independent epistemic anchors; learning must be governed; falsification must be a first-class operation; KnowledgeOS may learn from outcomes but must not use its own conclusions as unquestionable proof of those conclusions." (anchor: "Step 47 verdict and seven core principles of epistemic control")
+- [S0957] types=[WARNING, PRINCIPLE] scope=OBJECT — "Warns an AI model must not determine its own calibration using only its own generated outcomes -- externally grounded outcomes are needed, else AI -> AI evaluation -> AI confidence becomes circular; prefers Prediction -> ExternalOutcome -> Evaluation, described as 'another epistemic firewall'." (anchor: "Non-circular calibration: an AI must not validate itself using only its own generated outcomes (another epistemic firewall)")
+- [S0961] types=[WARNING, EXPERIMENTAL-RESULT] scope=OBJECT — "Identifies the self-validation problem: Model_A evaluating Model_A with the same assumptions/outputs creates circular validation (A->A). Experiment 6: an AI asserting its own prediction is reliable with no independent outcome yields NotValidated -- PASS. Prefers Prediction -> ExternalOutcome -> Evaluation (evaluator: separate model, deterministic rules, measured outcome, human assessment, or independent statistical process). Warns two models trained on the same data sharing the same failure mechanism are not necessarily independent validators: DifferentModel ⇏ IndependentEvidence. Experiment 7: Model_B evaluating Model_A using the same generated predictions without independent outcomes yields validation strength not equivalent to independent validation -- PASS. Extends the provenance graph to a model dependency graph G_M=(Models,Dependencies) (M_A -> M_B if M_B's evaluation depends on M_A's outputs), preventing false claims of independent validation." (anchor: "Self-certification rejected as circular validation; DifferentModel⇏IndependentEvidence; model dependency graph G_M")
+
+## Notes for P3
+None — this label's evidence is internally consistent within the rows captured for this batch.

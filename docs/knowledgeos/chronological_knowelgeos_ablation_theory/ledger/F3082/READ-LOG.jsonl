@@ -1,0 +1,5 @@
+{"content_sha256":"1e6ff51114f175df6b9d4c00e9f57803623375ba8862932fa6a099dddfb48cf7","f_id":"F3082","info":true,"n_pages":2,"refused":false,"run_id":"FR-F3082-001","stdout":"file","utc":"2026-09-25T11:03:26Z"}
+{"f_id":"F3082","refusal":"STDOUT-REDIRECTED-TO-FILE","refused":true,"run_id":"FR-F3082-001","stdout":"file","utc":"2026-09-25T11:03:32Z"}
+{"f_id":"F3082","page":{"char_end":20000,"char_start":0,"content_sha256":"1e6ff51114f175df6b9d4c00e9f57803623375ba8862932fa6a099dddfb48cf7","f_id":"F3082","n_pages":2,"page":1,"page_sha256":"cafed0dbfbd388bc05d5a9381da1c6bb3a6e7597e69ce2e3d699f9327109465c"},"refused":false,"run_id":"FR-F3082-001","stdout":"pipe","utc":"2026-09-25T11:03:40Z"}
+{"f_id":"F3082","page":{"char_end":34502,"char_start":20000,"content_sha256":"1e6ff51114f175df6b9d4c00e9f57803623375ba8862932fa6a099dddfb48cf7","f_id":"F3082","n_pages":2,"page":2,"page_sha256":"eee7ff38edca646088e0883bd0007e3cdf76ccf4c590727b348f0162e3f858aa"},"refused":false,"run_id":"FR-F3082-001","stdout":"pipe","utc":"2026-09-25T11:03:50Z"}
+{"f_id":"F3082","refusal":"PROTOCOL-NOT-APPROVED","refused":true,"run_id":"FR-F3082-002","stdout":"pipe","utc":"2026-09-25T12:56:33Z"}

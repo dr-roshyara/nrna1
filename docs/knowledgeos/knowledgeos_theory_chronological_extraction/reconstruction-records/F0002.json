@@ -1,0 +1,207 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0007-RETROFIT-B1",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization 2026-09-23 — 31 admissible NON_CONFORMANT files, batches of 5",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "This record is NEW §9/§9A evidence from a complete re-read under receipt U-0007-RETROFIT-B1. ⛔ It does not inherit, quote or rely on the earlier prose-regime reading."
+ },
+ "file_id": "F0002",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Architecture_Validation_Matrix.md",
+ "sha256": "bfe12cfe76ab",
+ "canonical_sequence_position": 2,
+ "lines_total": 68,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED' · 'Generated — never authoritative without human review' · '⛔ Submitted to the Decision Authority. Nothing in this document executes.'",
+ "⛔ status_upgrade_check": "NOT UPGRADED.",
+ "source_document_kind": "⭐ ARCHITECTURE VALIDATION against external literature. ⛔ 'Not discovery · no new platform concept · no redesign · no ADR. The candidate architecture is HELD FIXED.'",
+ "source_research_question": "⭐ VERBATIM: 'does the outside world support what we discovered?'",
+ "reconstruction_question": "⛔ DISTINCT: is the external validation honestly graded, and is its negative evidence scoped?",
+ "source_method_declared": "⭐⭐ A GRADED PROVENANCE DISCIPLINE: '[FETCHED] (searched and read via web this session — cited)' vs '[CANONICAL] (established literature, held to its core well-known thesis; not re-read here)'. ⛔ 'No source is cited beyond what its grade supports.' ⭐ Plus an ADMISSION RULE (REV 2): 'a source enters only if it materially changes a confidence or identifies a new gap'.",
+ "definitions": [
+  {
+   "term": "[FETCHED]",
+   "def": "searched and read via web this session, cited"
+  },
+  {
+   "term": "[CANONICAL]",
+   "def": "established literature held to its core thesis, not re-read"
+  },
+  {
+   "term": "knowledge vaporization",
+   "def": "Jansen & Bosch WICSA 2005 — design knowledge 'implicitly embedded… lacking first-class representation'"
+  },
+  {
+   "term": "context engineering",
+   "def": "'governed, machine-readable context any AI agent can use reliably'"
+  }
+ ],
+ "assumptions": [
+  "external convergence on a PROBLEM validates problem selection, not the solution",
+  "a source's citation may not exceed its provenance grade"
+ ],
+ "premises": [
+  "the candidate architecture is held fixed",
+  "R-34 / ES-004.1 — the programme cannot confer canon on itself"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⚠️ Two survey percentages quoted second-hand ('86% … no governance', '89% say governance critical, ~50% have it') with ⛔ no sample, frame or method — an industry claim repeated, not measured.",
+ "derivations": [
+  {
+   "id": "DI-F0002-01",
+   "from": [
+    "Jansen & Bosch 2005 'vaporization'",
+    "C-1 model amnesia n=11"
+   ],
+   "to": "⭐ 'our defect, named 20 years ago'",
+   "form": "EXTERNAL_PRIOR_ART_MATCH",
+   "validity": "⭐ VALID AND STRONG — a 20-year-old independent naming of the same defect"
+  },
+  {
+   "id": "DI-F0002-02",
+   "from": [
+    "Gartner/industry context-engineering material"
+   ],
+   "to": "the PKS concept independently converged upon by industry",
+   "form": "CONVERGENCE",
+   "validity": "⚠️ VALID FOR THE NEED",
+   "⛔ limit": "the file itself qualifies it: 'the GOVERNANCE framing remains rarer — partially ours'"
+  },
+  {
+   "id": "DI-F0002-03",
+   "from": [
+    "SPL domain testing",
+    "the reuse rule of three (Tracz/Glass)"
+   ],
+   "to": "designed ≠ demonstrated; a second product is required",
+   "form": "EXTERNAL_PRINCIPLE",
+   "validity": "⭐ VALID",
+   "⭐ note": "the external bar (three) is STRICTER than the programme's n≥2"
+  },
+  {
+   "id": "DI-F0002-04",
+   "from": [
+    "no external counterpart found for DP-n as a LAYER"
+   ],
+   "to": "⛔ DP-n is a UNIQUE HYPOTHESIS needing operational proof",
+   "form": "⭐ NEGATIVE_SEARCH_WITH_STATED_SCOPE",
+   "validity": "⭐ VALID — and the scope IS stated: '3 web clusters read this session'"
+  }
+ ],
+ "conclusions": [
+  "11 concepts TRIPLE-SUPPORTED (internal + blind review + external literature)",
+  "3 PARTIALLY SUPPORTED",
+  "⛔ 5 UNIQUE HYPOTHESES — DP-n · PKS generation · kernel set-sufficiency · the enacted mission text · the governance-grade PKS framing",
+  "⭐⭐ 'the industry independently converged on the PROBLEM … at almost exactly the moment this programme converged on it internally — and the literature's oldest finding (vaporization, 2005) is this programme's newest defect (C-1, n=11)'"
+ ],
+ "dependencies": [
+  "Jansen & Bosch WICSA 2005",
+  "Walsh & Ungson",
+  "Nygard ADR",
+  "ISO/IEC/IEEE 42010",
+  "W3C PROV",
+  "CQRS/event sourcing",
+  "TRL",
+  "GRADE",
+  "CMMI",
+  "Polanyi/Nonaka",
+  "FRBR",
+  "Cockburn hexagonal",
+  "Evans bounded contexts",
+  "SKOS",
+  "Argyris & Schön",
+  "Hansen et al.",
+  "Tracz/Glass rule of three",
+  "KnowledgeOS_Relationship_Validation_Matrix.md (= F0026)"
+ ],
+ "previous_related_files": "⭐ NAMES F0026 EXPLICITLY: 'relationship-level validation continues in KnowledgeOS_Relationship_Validation_Matrix.md'. ⛔ Other inputs NOT_RECOVERABLE_WITHOUT_REREAD.",
+ "knowledgeos_purpose_relevance": "⭐ HIGH — the only file so far that tests the architecture against the OUTSIDE world.",
+ "architectural_role": "⭐ EXTERNAL VALIDATION LAYER.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the [FETCHED]/[CANONICAL] grading discipline",
+   "the source admission rule",
+   "the triple-supported / partial / unique-hypothesis trichotomy",
+   "X-1..X-5 external challenges"
+  ],
+  "⭐ corrected": [
+   "REV 2: the PKS-identity claim SOFTENED from an identity to 'addresses the same problem space and EXTENDS it'",
+   "Jansen & Bosch elevated to PRIMARY validation"
+  ],
+  "⛔ withdrawn": [
+   "the absolutism of 'the track is done producing' — conceded: 'architecture is paused; learning is not'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0008 (PKS)",
+  "T-0025 (DP-n)"
+ ],
+ "⛔ theory_object_disposition": "⛔ Establishes none of its own. ⭐ Under O-1=A this unit may not touch T-0008 or T-0025 — they belong to F0001 and F0027.",
+ "sequential_graph_position": "canonical position 2; dated 2026-08-03, ⭐ one day AFTER F0001/F0010 (2026-08-02)",
+ "file_relationships": [
+  {
+   "to": "F0026",
+   "kind": "⭐ DELEGATES_TO",
+   "note": "relationship-level validation explicitly continued in F0026"
+  },
+  {
+   "to": "F0003",
+   "kind": "IS_INPUT_TO",
+   "note": "F0003 K-12 cites 'Architecture Validation Matrix REV 2'"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH — every row carries source, role and confidence, and every confidence carries its grade.",
+ "derivation_completeness_audit": "⭐⭐ THE STRONGEST PROVENANCE DISCIPLINE IN THE ELEVEN FILES AUDITED. It grades every source, refuses citation beyond grade, states its search scope, and declares an admission rule.",
+ "gaps": [
+  {
+   "id": "G-F0002-A",
+   "⚠️ gap": "two industry survey percentages (86% / 89% / ~50%) are quoted with no sample, frame or method",
+   "⭐ significance": "they carry real weight for 'the enforcement finding' yet are second-hand statistics"
+  },
+  {
+   "id": "G-F0002-B",
+   "⚠️ gap": "'3 web clusters' states a scope but not a search STRATEGY (queries, inclusion criteria)",
+   "⭐ significance": "⭐ far better than RO-0019/0020/0023, which state no scope at all — recorded as a PARTIAL scope statement, not a defect of the same class"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0002-01",
+   "⭐ finding": "⭐ THIS FILE STATES ITS NEGATIVE-SEARCH SCOPE — the weakness recorded four times elsewhere is NOT uniform across the corpus",
+   "detail": "⛔ 'the specific \"two products rule\" phrasing was NOT found in the fetched sources — the general principle is supported; the precise bar is ours', and 'as an architectural LAYER it has no direct external counterpart found', both against a declared corpus of '3 web clusters read this session'.",
+   "⭐ consequence": "⭐ RO-0019/0020/0023/0030 recorded unstated negative scope in F0026/F0027/F0001/F0010. F0002 does state it. ⛔ The pattern is therefore NOT a uniform corpus method defect — it varies by commission.",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the 17-concept matrix",
+  "X-1..X-5",
+  "the success-criterion trichotomy",
+  "the 7 [FETCHED] URLs"
+ ],
+ "provenance_second_hand": [
+  "⛔ every [CANONICAL] work — explicitly 'not re-read here'",
+  "⛔ the industry survey percentages"
+ ],
+ "provenance_this_reconstruction": [
+  "manifest id F0002",
+  "sha verified pre-read",
+  "receipt U-0007-RETROFIT-B1 post-read"
+ ],
+ "negative_evidence": "⭐ WELL-HANDLED. Two explicit negatives, each with a declared corpus and each converted into a UNIQUE HYPOTHESIS rather than into a claim of absence.",
+ "multi_dimensional_confidence": {
+  "the vaporization match": "⭐ HIGH",
+  "the context-engineering convergence (need)": "HIGH",
+  "the GOVERNANCE framing as ours": "MEDIUM — the file says 'partially ours'",
+  "the industry percentages": "⛔ LOW — second-hand, unmethodated",
+  "DP-n as unique": "MEDIUM — negative over 3 web clusters only"
+ },
+ "dossier_status": "PENDING_GATE_EVAL",
+ "not_recoverable_without_reread": [
+  "every [CANONICAL] source's actual content",
+  "the blind review referenced by 'triple-supported'"
+ ]
+}

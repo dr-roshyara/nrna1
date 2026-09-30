@@ -1,0 +1,222 @@
+{
+ "file_id": "F0026",
+ "steps": [
+  {
+   "step": 1,
+   "name": "IDENTIFY",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "canonical F0026 from manifest"
+  },
+  {
+   "step": 2,
+   "name": "READ COMPLETE FILE",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "101 lines, whole file"
+  },
+  {
+   "step": 3,
+   "name": "EXTRACT THEORY",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "R-1..R-10 + the locatability conclusion"
+  },
+  {
+   "step": 4,
+   "name": "IDENTIFY DEFINITIONS",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "3"
+  },
+  {
+   "step": 5,
+   "name": "IDENTIFY ASSUMPTIONS",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "2, both with the file's own qualifications"
+  },
+  {
+   "step": 6,
+   "name": "IDENTIFY PREMISES",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "5"
+  },
+  {
+   "step": 7,
+   "name": "IDENTIFY MATHEMATICAL / STATISTICAL CLAIMS",
+   "layer": 1,
+   "status": "NOT_APPLICABLE",
+   "evidence": "⛔ none present — empty is a valid result"
+  },
+  {
+   "step": 8,
+   "name": "IDENTIFY DERIVATIONS",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "4"
+  },
+  {
+   "step": 9,
+   "name": "IDENTIFY CONCLUSIONS",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "3"
+  },
+  {
+   "step": 10,
+   "name": "IDENTIFY DEPENDENCIES",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "10 external + 5 internal"
+  },
+  {
+   "step": 11,
+   "name": "IDENTIFY KNOWLEDGEOS PURPOSE RELEVANCE",
+   "layer": 2,
+   "status": "DONE",
+   "evidence": "locates the platform's uniqueness"
+  },
+  {
+   "step": 12,
+   "name": "MAP FILE TO REFERENCE ARCHITECTURE",
+   "layer": 2,
+   "status": "PARTIAL",
+   "evidence": "⚠️ role mapped; ⛔ §0C reference architecture not consulted as an artifact"
+  },
+  {
+   "step": 13,
+   "name": "IDENTIFY ARCHITECTURAL ROLE",
+   "layer": 2,
+   "status": "DONE",
+   "evidence": "edge-validation instrument; architecture held fixed"
+  },
+  {
+   "step": 14,
+   "name": "DETECT NEW / MISSING / CHANGED COMPONENTS",
+   "layer": 2,
+   "status": "DONE",
+   "evidence": "new: admission rule, standing distribution. missing: DP-n external equivalent"
+  },
+  {
+   "step": 15,
+   "name": "COMPARE DEFINITIONS / ASSUMPTIONS / SEMANTICS",
+   "layer": 2,
+   "status": "DONE",
+   "evidence": "vocabulary continuous"
+  },
+  {
+   "step": 16,
+   "name": "IDENTIFY THEORY OBJECTS",
+   "layer": 2,
+   "status": "DONE",
+   "evidence": "⭐ ESTABLISHES T-0027 — identified, ⛔ not upgraded (rule 8)"
+  },
+  {
+   "step": 17,
+   "name": "BUILD / UPDATE SEQUENTIAL GRAPH",
+   "layer": 3,
+   "status": "DONE",
+   "evidence": "OC-0013 written"
+  },
+  {
+   "step": 18,
+   "name": "DETERMINE FILE & THEORY RELATIONSHIPS",
+   "layer": 3,
+   "status": "DONE",
+   "evidence": "3 recorded"
+  },
+  {
+   "step": 19,
+   "name": "RECONSTRUCT DERIVATION CHAIN",
+   "layer": 3,
+   "status": "DONE",
+   "evidence": "DI-F0026-01..04 written"
+  },
+  {
+   "step": 20,
+   "name": "ASSESS CONTINUITY",
+   "layer": 3,
+   "status": "DONE",
+   "evidence": "4 dimensions"
+  },
+  {
+   "step": 21,
+   "name": "AUDIT DERIVATION COMPLETENESS",
+   "layer": 4,
+   "status": "DONE",
+   "evidence": "⭐ D2 rests on a negative search with UNSTATED SCOPE — recorded as a gap, not passed"
+  },
+  {
+   "step": 22,
+   "name": "RECORD EVERY GAP",
+   "layer": 4,
+   "status": "DONE",
+   "evidence": "5 gaps"
+  },
+  {
+   "step": 23,
+   "name": "RECORD CONTRADICTIONS",
+   "layer": 4,
+   "status": "DONE",
+   "evidence": "C-0012 NOT_APPLICABLE recorded explicitly"
+  },
+  {
+   "step": 24,
+   "name": "UPDATE THEORY MODEL",
+   "layer": 5,
+   "status": "BLOCKED",
+   "evidence": "⛔ rule 8"
+  },
+  {
+   "step": 25,
+   "name": "BUILD / UPDATE CANDIDATE THEORY OBJECTS",
+   "layer": 5,
+   "status": "BLOCKED",
+   "evidence": "⛔ rule 8"
+  },
+  {
+   "step": 26,
+   "name": "BUILD / UPDATE CANDIDATE THEORY RELATIONSHIPS",
+   "layer": 5,
+   "status": "BLOCKED",
+   "evidence": "⛔ rule 8"
+  },
+  {
+   "step": 27,
+   "name": "UPDATE ARCHITECTURE OBJECT REGISTRY",
+   "layer": 5,
+   "status": "BLOCKED",
+   "evidence": "⛔ rule 8"
+  },
+  {
+   "step": 28,
+   "name": "UPDATE IMPLEMENTATION MODEL",
+   "layer": 5,
+   "status": "NOT_APPLICABLE",
+   "evidence": "nothing executes"
+  },
+  {
+   "step": 29,
+   "name": "RECORD PROVENANCE",
+   "layer": 5,
+   "status": "DONE",
+   "evidence": "full chain"
+  },
+  {
+   "step": 30,
+   "name": "VALIDATE THE FILE DOSSIER",
+   "layer": 5,
+   "status": "DONE",
+   "evidence": "DOSSIERS/F0026.md"
+  }
+ ],
+ "summary": {
+  "DONE": 23,
+  "NOT_APPLICABLE": 2,
+  "PARTIAL": 1,
+  "BLOCKED": 4
+ },
+ "layer_order_respected": true
+}

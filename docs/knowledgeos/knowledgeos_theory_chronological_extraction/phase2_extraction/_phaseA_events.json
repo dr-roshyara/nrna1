@@ -1,0 +1,230 @@
+{
+ "iteration": 1,
+ "phase": "A",
+ "events": [
+  {
+   "event_id": "F0001:COMMISSION:0",
+   "file": "F0001",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0002:COMMISSION:0",
+   "file": "F0002",
+   "date": "2026-08-03",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0002:REVISION:1",
+   "file": "F0002",
+   "date": "2026-08-03",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0003:COMMISSION:0",
+   "file": "F0003",
+   "date": "2026-08-03",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0003:REVISION:1",
+   "file": "F0003",
+   "date": "2026-08-03",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0004:DERIVATION:0",
+   "file": "F0004",
+   "date": "2026-08-03",
+   "type": "DERIVATION"
+  },
+  {
+   "event_id": "F0004:VALIDATION:1",
+   "file": "F0004",
+   "date": "2026-08-03",
+   "type": "VALIDATION"
+  },
+  {
+   "event_id": "F0005:COMMISSION:0",
+   "file": "F0005",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0005:REVISION:1",
+   "file": "F0005",
+   "date": "2026-08-02",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0006:AUTHORSHIP:0",
+   "file": "F0006",
+   "date": "2026-08-03",
+   "type": "AUTHORSHIP"
+  },
+  {
+   "event_id": "F0006:REVISION:1",
+   "file": "F0006",
+   "date": "2026-08-03",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0007:ADOPTION:0",
+   "file": "F0007",
+   "date": "2026-08-03",
+   "type": "ADOPTION"
+  },
+  {
+   "event_id": "F0007:REVISION:1",
+   "file": "F0007",
+   "date": "2026-08-03",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0008:COMMISSION:0",
+   "file": "F0008",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0008:REVISION:1",
+   "file": "F0008",
+   "date": "2026-08-02",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0009:COMMISSION:0",
+   "file": "F0009",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0010:COMMISSION:0",
+   "file": "F0010",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0010:REVISION:1",
+   "file": "F0010",
+   "date": "2026-08-02",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0011:COMMISSION:0",
+   "file": "F0011",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0012:COMMISSION:0",
+   "file": "F0012",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0013:COMMISSION:0",
+   "file": "F0013",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0014:COMMISSION:0",
+   "file": "F0014",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0014:REVISION:1",
+   "file": "F0014",
+   "date": "2026-08-02",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0015:COMMISSION:0",
+   "file": "F0015",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0016:COMMISSION:0",
+   "file": "F0016",
+   "date": "2026-08-03",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0017:COMMISSION:0",
+   "file": "F0017",
+   "date": "2026-08-03",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0018:COMMISSION:0",
+   "file": "F0018",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0019:COMMISSION:0",
+   "file": "F0019",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0019:REVISION:1",
+   "file": "F0019",
+   "date": "2026-08-02",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0020:COMMISSION:0",
+   "file": "F0020",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0020:REVISION:1",
+   "file": "F0020",
+   "date": "2026-08-02",
+   "type": "REVISION"
+  },
+  {
+   "event_id": "F0020:VALIDATION:2",
+   "file": "F0020",
+   "date": "2026-08-02",
+   "type": "VALIDATION"
+  },
+  {
+   "event_id": "F0021:COMMISSION:0",
+   "file": "F0021",
+   "date": "2026-08-04",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0022:COMMISSION:0",
+   "file": "F0022",
+   "date": "2026-08-03",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0023:COMMISSION:0",
+   "file": "F0023",
+   "date": "2026-08-03",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0024:COMMISSION:0",
+   "file": "F0024",
+   "date": "2026-08-02",
+   "type": "COMMISSION"
+  },
+  {
+   "event_id": "F0025:COMMISSION:0",
+   "file": "F0025",
+   "date": "2026-08-04",
+   "type": "COMMISSION"
+  }
+ ],
+ "constraints": 8,
+ "unorderable_by_date_pct": 45.3
+}

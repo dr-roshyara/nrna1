@@ -1,0 +1,217 @@
+{
+ "release": "L0-REL-08(C)",
+ "source": {
+  "path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+  "sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+  "lines": [
+   22,
+   49
+  ]
+ },
+ "cells": [
+  {
+   "id": "E7-c1",
+   "claim_id": "E7-L30-roles",
+   "proposition": "EP-01",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 30,
+    "end_line": 30
+   },
+   "exact_wording": "engineering **promotes** it",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion is an act of the engineering role (project reveals, engineer captures, platform governs, engineering promotes)",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Names the promoting role, but states no scope or limit on what an authorization permits."
+  },
+  {
+   "id": "E7-c2",
+   "claim_id": "E7-L30-roles",
+   "proposition": "EP-12",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 30,
+    "end_line": 30
+   },
+   "exact_wording": "engineering **promotes** it",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion is an act performed by a role",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Promotion stated as an act (event); with S7-c3 (promotion status tracked as a register metric) the event/state separation is attested. Structural proposition: no model elimination possible."
+  },
+  {
+   "id": "E7-c3",
+   "claim_id": "E7-L24-metrics",
+   "proposition": "EP-12",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 24,
+    "end_line": 24
+   },
+   "exact_wording": "independent sources · contradictions · implementation evidence · promotion status",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "the Pattern Evidence Register tracks promotion status as a metric alongside evidence metrics",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Promotion status is a recorded state distinct from the evidence metrics."
+  },
+  {
+   "id": "E7-c4",
+   "claim_id": "E7-L24-metrics",
+   "proposition": "EP-11",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 24,
+    "end_line": 24
+   },
+   "exact_wording": "independent sources · contradictions · implementation evidence · promotion status",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "contradictions are tracked as a metric beside promotion status",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Counter-evidence is recorded, but no act or consequence (overturn, demotion, reassessment) is stated."
+  },
+  {
+   "id": "E7-c5",
+   "claim_id": "E7-L22-freeze",
+   "proposition": "EP-04b",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 22,
+    "end_line": 22
+   },
+   "exact_wording": "changes only from pilot/operational evidence",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "a frozen knowledge theory may change only from pilot/operational evidence",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Evidence-gated AMENDMENT of a frozen object; says nothing about losing standing when evidence weakens. Self-declared 'a milestone, not a rule'. amendment != invalidation."
+  },
+  {
+   "id": "E7-c6",
+   "claim_id": "E7-L45-ladder",
+   "proposition": "EP-05a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 45,
+    "end_line": 45
+   },
+   "exact_wording": "ES-006.1 Promotion Ladder → Qualification → Engineering",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "after artifact typing, the path runs through the ladder and qualification to engineering",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Qualification precedes engineering status on the path; whether qualification IS validation is not stated (validated != promoted, qualification != validation unless stated)."
+  }
+ ],
+ "events": [
+  {
+   "id": "E7-e1",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 22,
+    "end_line": 22
+   },
+   "exact_wording": "a milestone, not a rule",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-08",
+   "notes": "knowledge-research freeze milestone (ARB)"
+  },
+  {
+   "id": "E7-e2",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "ARB 2026-07-11 — the objective is knowledge discovery, never rule extraction",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-08",
+   "notes": "harvest question adopted (ARB)"
+  }
+ ]
+}

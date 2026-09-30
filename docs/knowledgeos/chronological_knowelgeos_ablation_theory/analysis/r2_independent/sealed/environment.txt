@@ -1,0 +1,5 @@
+date_utc: 2026-09-26T10:42:36Z
+python: Python 3.13.2
+python_path: /home/nab-raj.roshyara@dg-nexolution.de/.pyenv/shims/python
+uname: Linux NB-A20200184.internal.dg-nexolution.de 7.1.5-200.fc44.x86_64 #1 SMP PREEMPT_DYNAMIC Fri Jul 24 20:44:56 UTC 2026 x86_64 GNU/Linux
+r2dir: /tmp/r2-exec-5Inpft

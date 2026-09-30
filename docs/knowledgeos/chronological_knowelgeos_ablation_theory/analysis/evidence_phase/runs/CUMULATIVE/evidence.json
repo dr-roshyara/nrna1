@@ -1,0 +1,1177 @@
+{
+ "releases": [
+  "L0-REL-03",
+  "L0-REL-04",
+  "L0-REL-06",
+  "L0-REL-07(a)",
+  "L0-REL-08(C)",
+  "L0-REL-09",
+  "L0-REL-11",
+  "L0-REL-13"
+ ],
+ "cells": [
+  {
+   "id": "S1-c1",
+   "claim_id": "S1-L188",
+   "proposition": "EP-01",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 188,
+    "end_line": 188
+   },
+   "exact_wording": "Reservation for WP-4 authorization had lapsed and was recorded as lapsed.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "source_claim": "an identifier reservation made for a WP-4 authorization lapsed and the lapse was recorded",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "The passage concerns the lifecycle of an identifier RESERVATION (identifier integrity), not the scope/authority of a knowledge-promotion authorization. Any reading of 'reservation lapse' as 'authorization expiry' would be an analogy (INFERENCE), not evidence."
+  },
+  {
+   "id": "S1-c2",
+   "claim_id": "S1-L232",
+   "proposition": "EP-02a",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 232,
+    "end_line": 232
+   },
+   "exact_wording": "The hazard is created at RESERVATION, not at minting.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "for identifiers, the citation hazard arises when an identifier is reserved, so a check only at mint time is too late",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "Structurally parallel to the check-time question (check at an earlier act vs at the executing act), but its subject is identifier minting, not promotion of knowledge. Parallel recorded here only; not evidence for EP-02a."
+  },
+  {
+   "id": "S1-c3",
+   "claim_id": "S1-L191",
+   "proposition": "EP-13c",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 191,
+    "end_line": 191
+   },
+   "exact_wording": "old sense *R-39 is the precedent*",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "source_claim": "the identifier R-69 collided with a pre-existing record sense stating that R-39 is the precedent",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "LOW",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "Second-hand: it reports the wording of another (unreleased) record in which R-39 is cited as a precedent. Treating R-39 as a precedent would bear against EP-13c ('no below-bar authorization is valid'), but the passage does not state what R-39 is a precedent FOR, and the cited record is not released. Not followed."
+  },
+  {
+   "id": "S1-c4",
+   "claim_id": "S1-L209",
+   "proposition": "EP-02b",
+   "source_slot": "S-1",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 209,
+    "end_line": 209
+   },
+   "exact_wording": "No CAP-002. No new capability. No architectural analysis — until this record holds roughly 20–30 rows.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "creating a new capability (and architectural analysis) is gated on an evidence record of roughly 20-30 rows",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "notes": "An evidence-count threshold gating capability CREATION, not a bar on promoting a knowledge item; its magnitude (20-30 rows) is not an n>=2 promotion bar."
+  },
+  {
+   "id": "S3-c1",
+   "claim_id": "S-3-L113",
+   "proposition": "EP-13c",
+   "source_slot": "S-3",
+   "source_path": "engineering/verification/reports/2026-08-01-classification-model-approval-record.md",
+   "source_sha256": "729f7bbeb63d126652f972570a77ecc15a3ddad80728fd91b65c40fb6ffd38c0",
+   "anchor": {
+    "start_line": 113,
+    "end_line": 113
+   },
+   "exact_wording": "**R-39 / proposed R-69** (precedent before structure)",
+   "historical_date": {
+    "value": "2026-08-01 (from the file name; not stated in the section)",
+    "precision": "DAY"
+   },
+   "source_claim": "R-39 together with the proposed R-69 is cited as precedent for 'precedent before structure'",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-04",
+   "context": {
+    "scope": "document classification / placement governance (traceability footer)",
+    "source_fidelity": "SECONDARY REFERENCE"
+   },
+   "notes": "Cites R-39 (paired with the then-proposed R-69) as precedent for the principle 'precedent before structure' in a classification/placement decision. It does not state what R-39 decided: no operation, evidence state, bar, authority, ordering, persistence or validation of R-39 is given. So it cannot decide EP-13c ('no below-bar authorization is valid'). Reader prior knowledge of R-39 (F-LOG-0053) is NOT used as evidence."
+  },
+  {
+   "id": "S4-c1",
+   "claim_id": "S-4-L111",
+   "proposition": "EP-13c",
+   "source_slot": "S-4",
+   "source_path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "source_sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "anchor": {
+    "start_line": 111,
+    "end_line": 111
+   },
+   "exact_wording": "**R-39 / proposed R-69** (precedent before structure)",
+   "historical_date": {
+    "value": "2026-08-01 (from the file name; not stated in the section)",
+    "precision": "DAY"
+   },
+   "source_claim": "same citation in the companion finding",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-04",
+   "context": {
+    "scope": "document classification / placement governance (traceability footer)",
+    "source_fidelity": "SECONDARY REFERENCE"
+   },
+   "notes": "Cites R-39 (paired with the then-proposed R-69) as precedent for the principle 'precedent before structure' in a classification/placement decision. It does not state what R-39 decided: no operation, evidence state, bar, authority, ordering, persistence or validation of R-39 is given. So it cannot decide EP-13c ('no below-bar authorization is valid'). Reader prior knowledge of R-39 (F-LOG-0053) is NOT used as evidence."
+  },
+  {
+   "id": "S4-c2",
+   "claim_id": "S-4-L105",
+   "proposition": "EP-13c",
+   "source_slot": "S-4",
+   "source_path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "source_sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "anchor": {
+    "start_line": 105,
+    "end_line": 105
+   },
+   "exact_wording": "the DA's product clarification, R-39,",
+   "historical_date": {
+    "value": "2026-08-01 (from the file name; not stated in the section)",
+    "precision": "DAY"
+   },
+   "source_claim": "R-39 is listed among mechanisms that were 'already in the repository'",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-04",
+   "context": {
+    "scope": "document classification / placement governance (traceability footer)",
+    "source_fidelity": "SECONDARY REFERENCE"
+   },
+   "notes": "States that R-39 is an existing mechanism. It does not state its semantics; it cannot decide EP-13c."
+  },
+  {
+   "id": "M6-c1",
+   "claim_id": "M6-L104-evolution",
+   "proposition": "EP-03a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "Evolution rules (when may X become Y) remain hosted where they live",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "evolution (transition) rules are hosted elsewhere; this metamodel indexes and never restates them",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "The section expressly does not state transition rules; it names their hosts (ES-006.1, the Plan Concept, R-39's multi-context bar). SILENT by the source's own declaration, not by absence of reading."
+  },
+  {
+   "id": "M6-c2",
+   "claim_id": "M6-L104-evolution",
+   "proposition": "EP-04a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "Evolution rules (when may X become Y) remain hosted where they live",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "The section expressly does not state transition rules; it names their hosts (ES-006.1, the Plan Concept, R-39's multi-context bar). SILENT by the source's own declaration, not by absence of reading."
+  },
+  {
+   "id": "M6-c3",
+   "claim_id": "M6-L104-evolution",
+   "proposition": "EP-04b",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "Evolution rules (when may X become Y) remain hosted where they live",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "The section expressly does not state transition rules; it names their hosts (ES-006.1, the Plan Concept, R-39's multi-context bar). SILENT by the source's own declaration, not by absence of reading."
+  },
+  {
+   "id": "M6-c4",
+   "claim_id": "M6-L104-expiry",
+   "proposition": "EP-03a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "no research-expiry rule",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "an expiry rule for research is recorded as absent",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "Expiry is time-based, not evidence-based (expiry != evidence failure); it cannot bear on persistence after evidence loss. An explicit absence of one rule is not evidence of persistence."
+  },
+  {
+   "id": "M6-c5",
+   "claim_id": "M6-L104-adoption",
+   "proposition": "EP-04a",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "`adoption` (planned → adopted → deprecated → removed — Runtime only)",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "the adoption axis (incl. deprecated/removed) applies to Runtime only",
+   "assessment": "OUT-OF-SCOPE",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "runtime adoption axis (not knowledge promotion)"
+   },
+   "notes": "The metamodel's 'adoption' lifecycle is a runtime/software axis, not knowledge promotion; the word 'adopted' here must not be read as knowledge adoption."
+  },
+  {
+   "id": "M6-c6",
+   "claim_id": "M6-L104-r39bar",
+   "proposition": "EP-13c",
+   "source_slot": "S-5",
+   "source_path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "source_sha256": "a5c88e9bdbc5a40fe38304fc728508340a69b53788f42adac90c20996b9c2b44",
+   "anchor": {
+    "start_line": 104,
+    "end_line": 104
+   },
+   "exact_wording": "R-39's multi-context bar",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "R-39 is named as the host of a multi-context bar (an evolution rule)",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-06",
+   "context": {
+    "scope": "knowledge-governance metamodel (reference design)"
+   },
+   "notes": "Names R-39 as hosting a bar (bearing on the R-39 signature, dimension B: bar-defining), but says nothing about the validity of below-bar authorization; cannot decide EP-13c. R-39 thread is off the critical path."
+  },
+  {
+   "id": "E6-c1",
+   "claim_id": "E6-L20-grounding",
+   "proposition": "EP-02a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 20,
+    "end_line": 20
+   },
+   "exact_wording": "everything is promoted because operational evidence demonstrated necessity",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion occurs only on demonstrated operational evidence",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Universal rule: promotion is grounded in demonstrated operational evidence. It does NOT state when the condition is checked (at authorization t_a vs at the promotion event t_p), nor that the bar is re-met at the event; so it cannot decide the event-time propositions. Coding it SUPPORTED would eliminate MT1-P1 (EP-02a) or the whole family (EP-02b) on unstated timing — ambiguity kept explicit."
+  },
+  {
+   "id": "E6-c2",
+   "claim_id": "E6-L20-grounding",
+   "proposition": "EP-02b",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 20,
+    "end_line": 20
+   },
+   "exact_wording": "everything is promoted because operational evidence demonstrated necessity",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Universal rule: promotion is grounded in demonstrated operational evidence. It does NOT state when the condition is checked (at authorization t_a vs at the promotion event t_p), nor that the bar is re-met at the event; so it cannot decide the event-time propositions. Coding it SUPPORTED would eliminate MT1-P1 (EP-02a) or the whole family (EP-02b) on unstated timing — ambiguity kept explicit."
+  },
+  {
+   "id": "E6-c3",
+   "claim_id": "E6-L17-ladder",
+   "proposition": "EP-03a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 17,
+    "end_line": 17
+   },
+   "exact_wording": "Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "the promotion ladder, stated forward only",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Forward-only ladder; the entry states no reverse transition (no demotion, revocation, invalidation, reassessment). SILENT on post-promotion loss — and absence is not persistence (¬E(revocation) ⇏ P0)."
+  },
+  {
+   "id": "E6-c4",
+   "claim_id": "E6-L17-ladder",
+   "proposition": "EP-04a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 17,
+    "end_line": 17
+   },
+   "exact_wording": "Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Forward-only ladder; the entry states no reverse transition (no demotion, revocation, invalidation, reassessment). SILENT on post-promotion loss — and absence is not persistence (¬E(revocation) ⇏ P0)."
+  },
+  {
+   "id": "E6-c5",
+   "claim_id": "E6-L17-ladder",
+   "proposition": "EP-04b",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 17,
+    "end_line": 17
+   },
+   "exact_wording": "Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Forward-only ladder; the entry states no reverse transition (no demotion, revocation, invalidation, reassessment). SILENT on post-promotion loss — and absence is not persistence (¬E(revocation) ⇏ P0)."
+  },
+  {
+   "id": "E7-c1",
+   "claim_id": "E7-L30-roles",
+   "proposition": "EP-01",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 30,
+    "end_line": 30
+   },
+   "exact_wording": "engineering **promotes** it",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion is an act of the engineering role (project reveals, engineer captures, platform governs, engineering promotes)",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Names the promoting role, but states no scope or limit on what an authorization permits."
+  },
+  {
+   "id": "E7-c2",
+   "claim_id": "E7-L30-roles",
+   "proposition": "EP-12",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 30,
+    "end_line": 30
+   },
+   "exact_wording": "engineering **promotes** it",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion is an act performed by a role",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Promotion stated as an act (event); with S7-c3 (promotion status tracked as a register metric) the event/state separation is attested. Structural proposition: no model elimination possible."
+  },
+  {
+   "id": "E7-c3",
+   "claim_id": "E7-L24-metrics",
+   "proposition": "EP-12",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 24,
+    "end_line": 24
+   },
+   "exact_wording": "independent sources · contradictions · implementation evidence · promotion status",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "the Pattern Evidence Register tracks promotion status as a metric alongside evidence metrics",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Promotion status is a recorded state distinct from the evidence metrics."
+  },
+  {
+   "id": "E7-c4",
+   "claim_id": "E7-L24-metrics",
+   "proposition": "EP-11",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 24,
+    "end_line": 24
+   },
+   "exact_wording": "independent sources · contradictions · implementation evidence · promotion status",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "contradictions are tracked as a metric beside promotion status",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Counter-evidence is recorded, but no act or consequence (overturn, demotion, reassessment) is stated."
+  },
+  {
+   "id": "E7-c5",
+   "claim_id": "E7-L22-freeze",
+   "proposition": "EP-04b",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 22,
+    "end_line": 22
+   },
+   "exact_wording": "changes only from pilot/operational evidence",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "a frozen knowledge theory may change only from pilot/operational evidence",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Evidence-gated AMENDMENT of a frozen object; says nothing about losing standing when evidence weakens. Self-declared 'a milestone, not a rule'. amendment != invalidation."
+  },
+  {
+   "id": "E7-c6",
+   "claim_id": "E7-L45-ladder",
+   "proposition": "EP-05a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 45,
+    "end_line": 45
+   },
+   "exact_wording": "ES-006.1 Promotion Ladder → Qualification → Engineering",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "after artifact typing, the path runs through the ladder and qualification to engineering",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-08",
+   "context": {
+    "scope": "engineering-knowledge harvest/promotion (ES-006.2-.4)"
+   },
+   "notes": "Qualification precedes engineering status on the path; whether qualification IS validation is not stated (validated != promoted, qualification != validation unless stated)."
+  },
+  {
+   "id": "R37-c1",
+   "claim_id": "R37-burden",
+   "proposition": "EP-02a",
+   "source_slot": "S-7",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "any proposal for architectural expansion before the retrospective must include evidence that the existing architecture was insufficient",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "source_claim": "the evidence burden attaches to the proposal (decision act)",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-09",
+   "context": {
+    "scope": "architectural expansion during a structural freeze (R-37); applied to promotion only via ES-006.1 L20"
+   },
+   "notes": "Locates the burden at the proposal/decision; no re-check at execution is stated, and no separate authorization step is described. Cannot decide the event-time floor. See H3 (decision = promotion?)."
+  },
+  {
+   "id": "R37-c2",
+   "claim_id": "R37-burden",
+   "proposition": "EP-13a",
+   "source_slot": "S-7",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "any proposal for architectural expansion before the retrospective must include evidence that the existing architecture was insufficient",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "source_claim": "expansion before the freeze gate is met requires evidence of insufficiency",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-09",
+   "context": {
+    "scope": "architectural expansion during a structural freeze (R-37); applied to promotion only via ES-006.1 L20"
+   },
+   "notes": "Structurally 'a below-gate action requires evidence', but its scope is architectural expansion; the link to promotion exceptions is a cross-source inference (ES-006.1), not stated here."
+  },
+  {
+   "id": "R37-c3",
+   "claim_id": "R37-notprohib",
+   "proposition": "EP-13c",
+   "source_slot": "S-7",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "burden of proof, not prohibition",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "source_claim": "the freeze is a burden of proof, not a prohibition",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-09",
+   "context": {
+    "scope": "architectural expansion during a structural freeze (R-37); applied to promotion only via ES-006.1 L20"
+   },
+   "notes": "On its own scope it contradicts a prohibition reading (below-gate action can be valid with evidence); for promotion exceptions the link is inferential only."
+  },
+  {
+   "id": "G1-c1",
+   "claim_id": "G1-L26-explicit",
+   "proposition": "EP-04a",
+   "source_slot": "S-8",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "never Approved/Promoted/Retired/Closed",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "Retired (loss of standing) is never conferred by workflow words; only explicit ARB decisions create governance",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "governance status of engineering artifacts (ES-001.2, ARB rule)"
+   },
+   "notes": "ES-001.2 makes every governance status, including Promoted and Retired, performative: created only by an explicit ARB decision; records do not create it. Mapping governance status onto MT 'ad' is an interpretation (hence MEDIUM)."
+  },
+  {
+   "id": "G1-c2",
+   "claim_id": "G1-L26-explicit",
+   "proposition": "EP-04b",
+   "source_slot": "S-8",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "never Approved/Promoted/Retired/Closed",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same: no status change without an explicit decision",
+   "assessment": "REFUTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "governance status of engineering artifacts (ES-001.2, ARB rule)"
+   },
+   "notes": "ES-001.2 makes every governance status, including Promoted and Retired, performative: created only by an explicit ARB decision; records do not create it. Mapping governance status onto MT 'ad' is an interpretation (hence MEDIUM). Automatic loss on evidence change would be a status change without a decision."
+  },
+  {
+   "id": "G1-c3",
+   "claim_id": "G1-L26-roles",
+   "proposition": "EP-01",
+   "source_slot": "S-8",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "Authors propose; the authority adopts",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "a named authority adopts; decisions are per item (Approve / Reject / Defer)",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "governance status of engineering artifacts (ES-001.2, ARB rule)"
+   },
+   "notes": "Names the adopting authority and per-item granularity. MT has no authority/scope variable, so this is CANNOT-EXPRESS for the family."
+  },
+  {
+   "id": "G2-c1",
+   "claim_id": "G2-L157-supersede",
+   "proposition": "EP-11",
+   "source_slot": "S-9",
+   "source_path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "source_sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "anchor": {
+    "start_line": 157,
+    "end_line": 157
+   },
+   "exact_wording": "produces a superseding version of this dictionary",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "a changed definition requires an ADR and produces a superseding version; never silent redefinition",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-11",
+   "context": {
+    "scope": "frozen ubiquitous-language dictionary (Phase-02.6 §5)"
+   },
+   "notes": "A defined act (ADR, then supersession) changes a frozen artifact, but no evidence trigger is stated; it cannot decide 'later evidence overturns adoption'."
+  },
+  {
+   "id": "C1-c1",
+   "claim_id": "C1-L218-ready",
+   "proposition": "EP-02a",
+   "source_slot": "S-10",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 218,
+    "end_line": 218
+   },
+   "exact_wording": "a state DERIVED BY VERIFICATION, not a decision by anyone",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion readiness is a verification-derived state immediately preceding the promotion act",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "PKS baseline promotion chain (Authority, 2026-07-30)"
+   },
+   "notes": "The promotion act (Authority Promotion Decision) is taken from the Promotion Ready state, which is DERIVED by verification, not granted; no durable authorization grant exists that could license promotion after readiness is lost. So the evidence condition holds at the event. Mapping 'derived readiness' onto MT's floor EF is an interpretation (MEDIUM)."
+  },
+  {
+   "id": "C1-c2",
+   "claim_id": "C1-L218-ready",
+   "proposition": "EP-02c",
+   "source_slot": "S-10",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 218,
+    "end_line": 218
+   },
+   "exact_wording": "a state DERIVED BY VERIFICATION, not a decision by anyone",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "REFUTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "PKS baseline promotion chain (Authority, 2026-07-30)"
+   },
+   "notes": "The promotion act (Authority Promotion Decision) is taken from the Promotion Ready state, which is DERIVED by verification, not granted; no durable authorization grant exists that could license promotion after readiness is lost. So the evidence condition holds at the event. Mapping 'derived readiness' onto MT's floor EF is an interpretation (MEDIUM). EP-02c (promotion may proceed on an earlier authorization without the floor) has no counterpart: there is no granted authorization."
+  },
+  {
+   "id": "C1-c3",
+   "claim_id": "C1-L218-ready",
+   "proposition": "EP-02b",
+   "source_slot": "S-10",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 218,
+    "end_line": 218
+   },
+   "exact_wording": "a state DERIVED BY VERIFICATION, not a decision by anyone",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "PKS baseline promotion chain (Authority, 2026-07-30)"
+   },
+   "notes": "Whether 'ready' means the bar (EB) is met, not merely the floor, is not stated; the EB reading is in tension with the historical R-39 exception."
+  },
+  {
+   "id": "C2-c1",
+   "claim_id": "C2-L32-chain",
+   "proposition": "EP-12",
+   "source_slot": "S-9",
+   "source_path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "source_sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "anchor": {
+    "start_line": 32,
+    "end_line": 32
+   },
+   "exact_wording": "Each stage requires its own Human Decision Event.",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "each stage of the promotion chain is its own human decision event",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "platform-artifact authority chain (UL definition)"
+   },
+   "notes": "Promotion stages are discrete events with states between them."
+  }
+ ],
+ "events": [
+  {
+   "id": "S1-e1",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 188,
+    "end_line": 188
+   },
+   "exact_wording": "Reservation for WP-4 authorization had lapsed and was recorded as lapsed.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "identifier reservation lapse (recorded)"
+  },
+  {
+   "id": "S1-e2",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 190,
+    "end_line": 190
+   },
+   "exact_wording": "COLLISION OCCURRED.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "R-68 minted for a new subject without the tool being run"
+  },
+  {
+   "id": "S1-e3",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 191,
+    "end_line": 191
+   },
+   "exact_wording": "COLLISION OCCURRED.",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "R-69 minted for a new subject without the tool being run"
+  },
+  {
+   "id": "S1-e4",
+   "type": "OTHER",
+   "source_path": "scripts/lib/EngineeringKnowledge/Capabilities/IdentifierIntegrity/README.md",
+   "source_sha256": "485983411fc3cf30bc3c40da6c1be8b97c9d2b5f82b7ed4bf6657f38e2f0abcb",
+   "anchor": {
+    "start_line": 193,
+    "end_line": 193
+   },
+   "exact_wording": "RUN BEFORE MINTING",
+   "l0_release_id": "L0-REL-03",
+   "historical_date": {
+    "value": "2026-08-02",
+    "precision": "DAY"
+   },
+   "notes": "tool run before minting KP-1..KP-5; nothing minted"
+  },
+  {
+   "id": "E6-e1",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 14,
+    "end_line": 14
+   },
+   "exact_wording": "refined 2026-07-11",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "ES-006.1 rule refinement by the ARB"
+   },
+   "notes": "rule refinement event (ARB)"
+  },
+  {
+   "id": "E7-e1",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 22,
+    "end_line": 22
+   },
+   "exact_wording": "a milestone, not a rule",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-08",
+   "notes": "knowledge-research freeze milestone (ARB)"
+  },
+  {
+   "id": "E7-e2",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "ARB 2026-07-11 — the objective is knowledge discovery, never rule extraction",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-08",
+   "notes": "harvest question adopted (ARB)"
+  },
+  {
+   "id": "R37-e1",
+   "type": "BAR_CHANGE",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "Architecture Freeze 2.0 (structural).",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-09",
+   "notes": "structural freeze issued at EM-001 closure"
+  },
+  {
+   "id": "R37-e2",
+   "type": "BAR_CHANGE",
+   "source_path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "source_sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "anchor": {
+    "start_line": 23,
+    "end_line": 23
+   },
+   "exact_wording": "ARB extension (same-day, one sentence — burden of proof, not prohibition):",
+   "historical_date": {
+    "value": "2026-07-10",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-09",
+   "notes": "burden of proof reversed (same day)"
+  },
+  {
+   "id": "G1-e1",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "source_sha256": "59df3c64740e901f45091a8f7daddc685493cb26fc1ccf2851bf7ade1eff9163",
+   "anchor": {
+    "start_line": 26,
+    "end_line": 26
+   },
+   "exact_wording": "(ARB 2026-07-11)",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-11",
+   "notes": "ES-001.2 rule adopted by the ARB"
+  },
+  {
+   "id": "C1-e1",
+   "type": "OTHER",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 216,
+    "end_line": 216
+   },
+   "exact_wording": "Authority, 2026-07-30 — codifies the sequence the program has enforced throughout; no new mechanism",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-13",
+   "notes": "promotion chain codified"
+  }
+ ]
+}

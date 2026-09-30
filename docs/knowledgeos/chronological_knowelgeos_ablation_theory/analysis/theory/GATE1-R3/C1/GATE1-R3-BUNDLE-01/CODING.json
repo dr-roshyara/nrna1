@@ -1,0 +1,394 @@
+{
+ "R-30": {
+  "ops": ["SEAL", "ANNOTATE"],
+  "not_modelled": ["CLOSED"],
+  "authority_named": false,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-31": {
+  "ops": [],
+  "not_modelled": ["RENAME"],
+  "authority_named": false,
+  "V": {
+   "V1": "NOT-MODELLED",
+   "V2": "UNTESTABLE",
+   "V3": "NOT-MODELLED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-32": {
+  "ops": ["REFINE-CANDIDATE"],
+  "not_modelled": [],
+  "authority_named": false,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-34": {
+  "ops": ["CREATE-NORM", "SUPERSEDE"],
+  "not_modelled": ["ACCEPTED AS GRANDFATHERED"],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "SUPPORTED"
+  }
+ },
+ "R-35": {
+  "ops": ["ADOPT-DECISION", "DEFER"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-36": {
+  "ops": ["ADOPT-DECISION", "RAISE"],
+  "not_modelled": ["NOT PROMOTED", "REFUSED (duplication)", "DEPRECATE", "REMOVE (scheduled)", "AMENDED"],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "UNTESTABLE",
+   "V3": "AMBIGUOUS",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-38": {
+  "ops": ["FREEZE", "CORRECT-TEXT"],
+  "not_modelled": ["CONSOLIDATE", "RECORD (assessment/verdict)", "PREFERENCE (precedent)"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-40": {
+  "ops": ["APPROVE", "DEFER", "AUTHORIZE", "MODIFY-SEQUENCE", "CORRECT-TEXT"],
+  "not_modelled": ["COMMISSIONED"],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "AMBIGUOUS",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "PRE-R43",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-45": {
+  "ops": ["RATIFY"],
+  "not_modelled": ["NAMED", "CLARIFIED"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-46": {
+  "ops": ["APPROVE"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-49": {
+  "ops": ["APPROVE", "DEFER"],
+  "not_modelled": ["CREATED (queue items)", "BLOCKED"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-50": {
+  "ops": ["AUTHORIZE", "ANNOTATE"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-52": {
+  "ops": ["OPEN-WORK"],
+  "not_modelled": ["FLAGGED"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-55": {
+  "ops": ["ACCEPT"],
+  "not_modelled": ["ASSESSED (separately)", "RECORDED (queue item)"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-56": {
+  "ops": ["APPROVE"],
+  "not_modelled": ["REQUIRED (corrections)"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-58": {
+  "ops": ["AUTHORIZE", "WITHDRAW"],
+  "not_modelled": ["VERIFIED (guards)", "SETTLED"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-61": {
+  "ops": ["ACCEPT"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-62": {
+  "ops": ["APPROVE", "ANNOTATE"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-63": {
+  "ops": ["DECLARE-SCOPE", "RECLASSIFY"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-64": {
+  "ops": ["DEFER"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-65": {
+  "ops": ["AUTHORIZE"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-67": {
+  "ops": ["ACCEPT", "WITHDRAW"],
+  "not_modelled": ["RECORDED (three items)", "REFERRED"],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-68": {
+  "ops": ["SUBDIVIDE"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-73": {
+  "ops": ["ADOPT-DECISION"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-75": {
+  "ops": ["ADOPT-DECISION", "ANNOTATE"],
+  "not_modelled": ["CREATED (unallocated work)"],
+  "authority_named": true,
+  "V": {
+   "V1": "AMBIGUOUS",
+   "V2": "UNTESTABLE",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "AMBIGUOUS",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-92": {
+  "ops": ["ADOPT-DECISION"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-93": {
+  "ops": ["ACCEPT"],
+  "not_modelled": [],
+  "authority_named": true,
+  "V": {
+   "V1": "UNTESTABLE",
+   "V2": "SUPPORTED",
+   "V3": "SUPPORTED",
+   "V4": "SUPPORTED",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "UNTESTABLE"
+  }
+ },
+ "R-97": {
+  "ops": ["CONFIRM"],
+  "not_modelled": ["REPLACING (scope statement)"],
+  "authority_named": true,
+  "V": {
+   "V1": "SUPPORTED",
+   "V2": "SUPPORTED",
+   "V3": "AMBIGUOUS",
+   "V4": "UNTESTABLE",
+   "V5": "UNTESTABLE",
+   "V6": "SUPPORTED",
+   "V7": "AMBIGUOUS"
+  }
+ }
+}

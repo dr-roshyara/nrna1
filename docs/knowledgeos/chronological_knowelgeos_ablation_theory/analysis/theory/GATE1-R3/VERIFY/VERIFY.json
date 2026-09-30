@@ -1,0 +1,101 @@
+{
+  "fidelity_ok": true,
+  "other_differences": [
+    "Both r3 manuals: two blank lines (not one) precede '## G' (Gate 1 lines 96-97; reserve lines 117-118) - whitespace only.",
+    "Section G header is new framing text not in RECOMMENDATIONS.md: 'r3 rules (authorized by the human act of 2026-09-30; they override anything above that is looser)'.",
+    "Recommendation numbering '1.'-'7.' rendered as bullets '- **G1.**'-'- **G7.**'.",
+    "Titles not updated (not a change, but inconsistent): Gate 1 title unversioned; reserve title still 'Coding manual r2' while containing r3 rules.",
+    "Not verifiable with the permitted tools: trailing whitespace, invisible characters, final newline."
+  ],
+  "verbatim_ok": true,
+  "conflicts": [
+    {
+      "rule": "G1 vs D-V1 (vacuous case)",
+      "existing_quote": "every act the record performs is permitted by §C",
+      "g_quote": "If no act of this record is subject to a §C guard and no refusal cites a rule, code V1 UNTESTABLE.",
+      "prevails": "G1 (vacuous SUPPORTED is the looser reading); changes vacuous records from SUPPORTED to UNTESTABLE."
+    },
+    {
+      "rule": "G2 vs D-V1 (aggregation)",
+      "existing_quote": "every act the record performs is permitted by §C",
+      "g_quote": "SUPPORTED (at least one guarded act satisfied, none UNTESTABLE)",
+      "prevails": "G2 (stricter). Silently flips SUPPORTED to UNTESTABLE for records mixing a satisfied guarded act with unguarded acts, if unguarded acts are coded UNTESTABLE per act (unspecified)."
+    },
+    {
+      "rule": "G2 vs D values (NOT-MODELLED)",
+      "existing_quote": "NOT-MODELLED (the relevant act is not in the table)",
+      "g_quote": "NOT-MODELLED only if every act is not modelled",
+      "prevails": "G2 (narrower). 'Only if' is necessary, not sufficient; with G1, NOT-MODELLED is reachable only when all acts are unmodelled and at least one is §C-guarded."
+    },
+    {
+      "rule": "G2 vs F3 (reserve only)",
+      "existing_quote": "If unclear, list both and set V1 AMBIGUOUS.",
+      "g_quote": "VIOLATED > AMBIGUOUS > SUPPORTED (...) > UNTESTABLE",
+      "prevails": "G2 by intent (F3's AMBIGUOUS treated per act, outranked by VIOLATED); override clause does not decide it literally (neither is clearly looser)."
+    },
+    {
+      "rule": "G6 vs F3 (reserve only)",
+      "existing_quote": "If unclear, list both and set V1 AMBIGUOUS.",
+      "g_quote": "code AMBIGUOUS only if the competing readings give different codes for that judgement.",
+      "prevails": "G6 (F3's unconditional AMBIGUOUS is looser). Real divergence when both ADOPT and ADOPT-DECISION readings yield UNTESTABLE."
+    },
+    {
+      "rule": "G6 vs D values (AMBIGUOUS)",
+      "existing_quote": "AMBIGUOUS (the text allows two readings)",
+      "g_quote": "All judgements: code AMBIGUOUS only if the competing readings give different codes for that judgement.",
+      "prevails": "G6 (stricter, explicit narrowing)."
+    },
+    {
+      "rule": "G3 vs D-V1 (refusals)",
+      "existing_quote": "every refusal that cites a rule concerns an act §C forbids",
+      "g_quote": "A refusal citing a rule outside §C does not bear on V1.",
+      "prevails": "G3 by intent; literally unresolved - G3 is the looser rule and the clause only overrides looser rules above."
+    },
+    {
+      "rule": "G5 vs E (silence)",
+      "existing_quote": "Silence is not evidence: if the record does not say it, the judgement is UNTESTABLE, not VIOLATED.",
+      "g_quote": "AMBIGUOUS if it names no actor.",
+      "prevails": "G5 as the specific rule; override clause does not decide (neither clearly looser)."
+    },
+    {
+      "rule": "G5 vs F4 (reserve only)",
+      "existing_quote": "It applies only if the record cites evidence (a finding, counter-evidence, a reproduced result) that bears on an existing decision or standing. Otherwise V4 is UNTESTABLE.",
+      "g_quote": "when a status change and evidence appear together, SUPPORTED if the record attributes the change to an act of an authority, AMBIGUOUS if it names no actor.",
+      "prevails": "Unresolved by the clause; F4 should gate G5 but the text does not say so."
+    },
+    {
+      "rule": "G7 vs D-V2",
+      "existing_quote": "the record keeps them apart. VIOLATED if it treats one as the other without a separate act",
+      "g_quote": "V2 applies only if the record mentions permission, authorization, commissioning or execution; separating approval or acceptance from execution is outside V2.",
+      "prevails": "G7 by intent. Consistent with V2's four terms; silently removes approval-treated-as-authorization cases from V2. G7 is looser, so the clause does not literally cover it."
+    }
+  ],
+  "undefined_terms": [
+    "'§C guard' / 'subject to a §C guard' (G1, G2): §C lists guards but START/execution, reopening and vocabulary creation have no §A operation; no act-to-guard mapping",
+    "'guarded act satisfied' (G2): not defined; unstated satisfaction handled only by F1 (reserve), absent in Gate 1",
+    "per-act code of an unguarded act (G2 'none UNTESTABLE'): not defined",
+    "'act' (G1, G2): defined in F2 (reserve only); Gate 1 has only §A's loose description",
+    "'refusal' / 'cites a rule' (G1, G3, D-V1): not defined; relation to REJECT and to per-act coding unclear",
+    "'the problem' in G4's definition of 'demonstrated need'",
+    "'slice' / 'successor slice' (G4 gives a trigger, not a definition)",
+    "'authority' / 'act of an authority' / 'actor' (G5): not defined; no code for a named non-authority actor",
+    "'evidence' (G5): examples only in F4 (reserve)",
+    "'status change' (G5): unclear whether 'standing' is included",
+    "'competing readings' (G6)",
+    "'mentions' (G7): keyword or concept",
+    "'commissioning' (D-V2, G7): no §A operation",
+    "'looser' (G and F override clauses): no ordering defined"
+  ],
+  "f_dependency": "Implicit, not explicit: no G rule cites §F, but G2 relies on F1 (per-act UNTESTABLE when guard satisfaction unstated), G1/G2 rely on F2 (definition of act), G5 relies on F4 (evidence bearing on a decision). In the Gate 1 manual G is applicable but less determinate, and the same record can code differently under the two r3 manuals.",
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "defects": [
+    "LIMITATION: override clause is one-directional and 'looser' is undefined; G3, G5, G7 precedence not literally established",
+    "LIMITATION: G2 does not specify whether unguarded acts count as UNTESTABLE for 'none UNTESTABLE'",
+    "LIMITATION: G6 conflicts with F3's unconditional V1 AMBIGUOUS (reserve); G2 precedence vs F3 row-level AMBIGUOUS",
+    "LIMITATION: G5 applicability vs F4 unordered; no code for named non-authority actor",
+    "LIMITATION: undefined terms listed in undefined_terms",
+    "LIMITATION: implicit dependency on F1/F2/F4 absent from Gate 1 manual; the two r3 manuals are not equivalent",
+    "COSMETIC: titles not updated to r3; double blank line before section G",
+    "UNVERIFIED: trailing whitespace / invisible characters / final newline"
+  ]
+}

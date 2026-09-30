@@ -1,0 +1,246 @@
+{
+ "rows": {
+  "R-33": {
+   "ops": [
+    "SUPERSEDE"
+   ],
+   "not_modelled": [
+    "DEFINE"
+   ],
+   "annotations_by_others": [],
+   "authority_named": false,
+   "V": {
+    "V1": "UNTESTABLE",
+    "V2": "UNTESTABLE",
+    "V3": "NOT-MODELLED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "PRE-R43",
+    "V7": "AMBIGUOUS"
+   }
+  },
+  "R-42": {
+   "ops": [
+    "RATIFY",
+    "CREATE-NORM"
+   ],
+   "not_modelled": [
+    "AFFIRM",
+    "REFUTE"
+   ],
+   "annotations_by_others": [],
+   "authority_named": false,
+   "V": {
+    "V1": "AMBIGUOUS",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "PRE-R43",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-48": {
+   "ops": [
+    "ACCEPT"
+   ],
+   "not_modelled": [],
+   "annotations_by_others": [
+    "RECORDING CORRECTION A1 (R-62, 2026-08-01): transition type reads ACCEPTANCE, not Approval; decision unchanged"
+   ],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "AMBIGUOUS",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-54": {
+   "ops": [],
+   "not_modelled": [
+    "START"
+   ],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "AMBIGUOUS",
+    "V2": "AMBIGUOUS",
+    "V3": "NOT-MODELLED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-57": {
+   "ops": [],
+   "not_modelled": [
+    "CORRECT"
+   ],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "NOT-MODELLED",
+    "V2": "UNTESTABLE",
+    "V3": "NOT-MODELLED",
+    "V4": "SUPPORTED",
+    "V5": "AMBIGUOUS",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-59": {
+   "ops": [
+    "ACCEPT"
+   ],
+   "not_modelled": [
+    "RECORD"
+   ],
+   "annotations_by_others": [
+    "WORDING CORRECTED 2026-08-01 by the issuing authority (annotation; decision unchanged): read 'accepted IMPLEMENTATION baseline', not 'accepted ARCHITECTURE baseline'"
+   ],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-60": {
+   "ops": [
+    "OPEN-WORK"
+   ],
+   "not_modelled": [],
+   "annotations_by_others": [
+    "CLASSIFICATION CORRECTED 2026-08-01 by the issuing authority (annotation; decision unchanged): category is PLANNING GOVERNANCE, not Delivery"
+   ],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-69": {
+   "ops": [
+    "ACCEPT"
+   ],
+   "not_modelled": [
+    "RECORD",
+    "CORRECT"
+   ],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "AMBIGUOUS",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-70": {
+   "ops": [
+    "AUTHORIZE",
+    "CREATE-NORM"
+   ],
+   "not_modelled": [],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-71": {
+   "ops": [
+    "ACCEPT",
+    "ADOPT-DECISION"
+   ],
+   "not_modelled": [
+    "OPEN (ENG-012; not stated to be a work package)"
+   ],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "SUPPORTED",
+    "V3": "SUPPORTED",
+    "V4": "SUPPORTED",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-74": {
+   "ops": [
+    "ADOPT-DECISION"
+   ],
+   "not_modelled": [],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-76": {
+   "ops": [
+    "CONFIRM"
+   ],
+   "not_modelled": [],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "UNTESTABLE",
+    "V3": "AMBIGUOUS",
+    "V4": "SUPPORTED",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  },
+  "R-95": {
+   "ops": [
+    "AUTHORIZE"
+   ],
+   "not_modelled": [],
+   "annotations_by_others": [],
+   "authority_named": true,
+   "V": {
+    "V1": "SUPPORTED",
+    "V2": "AMBIGUOUS",
+    "V3": "SUPPORTED",
+    "V4": "UNTESTABLE",
+    "V5": "UNTESTABLE",
+    "V6": "SUPPORTED",
+    "V7": "UNTESTABLE"
+   }
+  }
+ }
+}

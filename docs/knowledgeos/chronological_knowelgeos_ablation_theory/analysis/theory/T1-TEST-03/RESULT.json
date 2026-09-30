@@ -1,0 +1,79 @@
+{
+ "test": "T1 r1 necessity test on P1 = R-41 / ES-004.3 (L0-REL-16)",
+ "prereg": "KNOWLEDGEOS-T1-R1-PREREGISTRATION.md frozen at 136706d79 (unchanged)",
+ "sources": {
+  "R-41": {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+   "line": 27
+  },
+  "ES-004.3": {
+   "path": "engineering/governance/ES-004-Documentation.md",
+   "sha256": "4d500f417c970d003e9fa4911ec632a2247785cbbd114d86d326d16b5e526486",
+   "lines": [
+    29,
+    64
+   ]
+  }
+ },
+ "classification": {
+  "kind": "engineering-knowledge -> Engineering Standard (in scope)",
+  "start_rung": "UNKNOWN",
+  "target_rung": "Engineering Standard (source-derived)",
+  "E1": {
+   "result": "YES",
+   "quote": "provenance: the WP-1 closure inconsistency"
+  },
+  "E2": {
+   "result": "UNKNOWN",
+   "quote": "Principal Architect instruction",
+   "note": "origin stated as an authority instruction; no proposal mentioned; absence is not non-existence"
+  },
+  "E3": {
+   "result": "UNKNOWN",
+   "quote": "Refined ROLE-BASED the same day per ARB review",
+   "note": "no Pilot/Qualification stated; same-day chronology"
+  },
+  "decision": {
+   "result": "YES (Principal Architect instruction; then ARB review)"
+  },
+  "PROMOTE": {
+   "result": "YES",
+   "quote": "ES-004.3 in force"
+  },
+  "READY_E": "UNKNOWN"
+ },
+ "outcome": "N2 CONDITIONAL: a direct counterexample to T1 r1 necessity (PROMOTE and not READY_E) under two MEDIUM readings: (i) E3 = NO; (ii) the ES-006.1 ladder governs a documentation standard (R-41 never cites ES-006.1). If either is downgraded -> N3 or OUT-OF-SCOPE",
+ "near_counterexample": "if E2 = NO (authority-initiated, no proposal) and E3 = NO (no qualification stage), this is N2 (PROMOTE and not READY_E)",
+ "minimum_missing_evidence": [
+  "was there a proposal before the PA instruction? (E2)",
+  "any Pilot/Qualification stage before adoption? (E3)",
+  "locations: commit 7632b5685 message; the 2026-07-30 session log section on R-41"
+ ],
+ "ontology_findings": {
+  "authority_initiated_adoption": "origin = PA instruction; several adopting authorities (PA, ARB, DA): authority is a parameter; tension with ES-001.2 'only explicit ARB decisions'",
+  "kind_dependent_two_phase": "Draft → Authorized → Executing → Accepted → **Closed (historical record)**",
+  "two_layer_record": "Decision text immutable; status annotations may evolve",
+  "state_uniqueness": "one authoritative lifecycle state at any moment"
+ },
+ "computer_logic": "not run: the decisive predicates (Promotion->Proposal, Promotion->Qualification) are UNKNOWN in every in-scope case; a verifier would only restate the unknowns",
+ "not_done": "T1 r1 unmodified; no r2; no MT interpretation; no MK; no ML",
+ "L0-REL-17_update": {
+  "read": [
+   "commit 7632b5685 message",
+   "'.claude/sessions/2026-07-30.md' L1-41 (sha256 744b7d67...)"
+  ],
+  "E2": {
+   "result": "UNKNOWN",
+   "basis": "origin positively recorded as a PA instruction (not a proposal) in all four contemporaneous records; no proposal recorded; absence is not non-existence"
+  },
+  "E3": {
+   "result": "NO (MEDIUM)",
+   "basis": "the only recorded validation ('ES-004.3 VALIDATION EXECUTED — VALIDATED UNCHANGED') is recorded AFTER adoption in an append-only log whose sequence is source-authoritative (ES-004.2 as quoted in R-41); rule genesis on the same day ('generalizes the WP-1 status-line correction'); READINGS: validation ~ qualification; recorded order"
+  },
+  "READY_E": "NO (E3 = NO in the conjunction)",
+  "PROMOTE": "YES",
+  "outcome": "N2 CONDITIONAL: a direct counterexample to T1 r1 necessity (PROMOTE and not READY_E) under two MEDIUM readings: (i) E3 = NO; (ii) the ES-006.1 ladder governs a documentation standard (R-41 never cites ES-006.1). If either is downgraded -> N3 or OUT-OF-SCOPE",
+  "theory_signal": "R-39 (validation expected after) and R-41 (validation executed after) both show adopt-then-validate; R-39 recorded an exception, R-41 did not -> either a scope boundary of ES-006.1, or norm/practice divergence without an exception; HYP for r2: separate norm and practice layers; 'provisional adoption with validation obligation' as a transition type"
+ }
+}

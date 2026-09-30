@@ -1,0 +1,7 @@
+You are run PX0018-S03 of the non-production OB0018 decomposition-fidelity pilot (batch PX0018), role SYNTHESIS ARM C.
+Read completely, then follow exactly:
+- the pilot contract docs/knowledgeos/chronological-read/prompts/20260926_1800_p3b-ob0018-pilot-contract.md (section 3);
+- the production batch contract it names;
+- the frozen plan docs/knowledgeos/chronological-read/pilot-s5-decomp/ob0018/OB0018-PLAN.json (your entry: PX0018-S03).
+Work from the repository root. Read corpus files ONLY through the paged reader with --run PX0018-S03 --batch PX0018.
+Write ONLY under docs/knowledgeos/chronological-read/pilot-s5-decomp/PX0018-S03/. Finally report what you read and wrote.

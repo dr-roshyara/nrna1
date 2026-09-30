@@ -1,0 +1,7 @@
+{
+ "test": "1y″(a): bounded read of docs/adr/ADR-MP-Messaging-Platform.md (8a63c7a5...) L1-L9 (header) and L80-L81 (Relationship to the Decision Log) only",
+ "status": "FROZEN before reading",
+ "code": ["o (SUPERSEDE performed?)", "a (who accepted / authority)", "k (kind of the superseded object: Decision-Log entry D-12)", "σ", "ε (evidence stated as the basis: 0 / 1 / 2+ / NR)", "x", "grounding (RULE / CHOICE)", "what happens to the superseded text (deleted / pointer / annotated)"],
+ "pair_rule": "ε-pair iff PERFORMED supersession with a, k and σ equal to a REFUSED supersession already coded (R-77: ARB, ADR, ε insufficient; R-83: ARB-CHIEF, design-rule, ε 0; R-94: ARB-CHIEF, acceptance-record, ε 2+) and ε known and different; otherwise NO-PAIR naming the breaking field",
+ "record_prediction (I-B4′ / two-layer)": "the superseded D-12 text is retained (pointer or annotation), not deleted"
+}

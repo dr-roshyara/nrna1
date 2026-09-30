@@ -1,0 +1,204 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0008-RETROFIT-B2",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 2",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0008-RETROFIT-B2."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0011",
+ "canonical_path": "docs/knowledgeos/2026-08-02-knowledgeos-product-boundary-discovery.md",
+ "canonical_sequence_position": 11,
+ "lines_total": 332,
+ "source_self_declared_status": "⚠️ 'Generated — never authoritative without human review' · '⛔ Nothing in this document executes.'",
+ "source_document_kind": "STRATEGIC DDD — PRODUCT BOUNDARY DISCOVERY.",
+ "source_research_question": "⭐ VERBATIM: 'What are we actually building?'",
+ "reconstruction_question": "⛔ DISTINCT: does its G-series match F0001's, and is the MVK refutation correctly scoped?",
+ "source_method_declared": "⭐ 'a pattern is NAMED only where canon already states the relationship. Everywhere else it is marked HYPOTHESIS and no pattern is assigned.'",
+ "definitions": [
+  {
+   "term": "SP-1..SP-5",
+   "def": "KnowledgeOS · PKS · AI Runtime (⛔ reclassified ADAPTER) · Business Product · Operational Learning"
+  },
+  {
+   "term": "MVK",
+   "def": "Minimum Viable KnowledgeOS — the smallest set that could bootstrap a different product"
+  },
+  {
+   "term": "X-1..X-11",
+   "def": "extraction classification: PERMANENT KnowledgeOS · PRODUCT TEMPLATE · PRODUCT INSTANCE · RUNTIME ADAPTER"
+  }
+ ],
+ "assumptions": [
+  "the relationship is the conclusion, not the starting point (ARB 2026-07-12)",
+  "⭐ portability is a property of PARTS; sufficiency is a property of the WHOLE"
+ ],
+ "premises": [
+  "ARB ruling 2026-07-12",
+  "ES-005.1/.3/.4",
+  "BRM-1",
+  "EAD-1",
+  "AIP-14",
+  "R-37"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. Counts: 5 strategic products · 1 evidenced relationship · 5 candidates · 0 assigned patterns · 6 lifecycle transitions · 11 extraction rows · 10 gaps · 8 risks.",
+ "derivations": [
+  {
+   "id": "DI-F0011-01",
+   "from": [
+    "EAD-1: zero election terms in the methodology trio",
+    "the trio is ~73% of the MVK by volume and mostly one project's case law"
+   ],
+   "to": "⭐⭐ 'DOMAIN-FREE IS NOT THE SAME AS PORTABLE'",
+   "form": "⭐ SELF_NAMED_ERROR",
+   "validity": "⭐⭐ VALID AND STRONG — the author names it as 'My own error, named'"
+  },
+  {
+   "id": "DI-F0011-02",
+   "from": [
+    "the §6 MVK set given to an isolated session",
+    "it could not bootstrap"
+   ],
+   "to": "⛔ the set is INSUFFICIENT — verdict FAIL; AR-1 REALIZED",
+   "form": "EXECUTED_EXPERIMENT",
+   "validity": "⭐ VALID — n=1, and labelled n=1"
+  },
+  {
+   "id": "DI-F0011-03",
+   "from": [
+    "ES-005.3 tests each element for portability"
+   ],
+   "to": "⭐ it does NOT test the set for completeness",
+   "form": "⭐ SCOPE_OF_A_TEST",
+   "validity": "⭐⭐ VALID — the distinction that made the FAIL predictable"
+  },
+  {
+   "id": "DI-F0011-04",
+   "from": [
+    "SP-1 supplies rules downstream to SP-4",
+    "AIP-14 gives SP-4 authority over SP-1's evolution"
+   ],
+   "to": "⭐ the knowledge flow and the authority flow run in OPPOSITE directions",
+   "form": "DEPENDENCY_INVERSION",
+   "validity": "⭐ VALID"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'A reusable engineering platform whose reusability has never been exercised.'",
+  "⭐ '1 evidenced relationship, 5 candidates, 0 assigned patterns… A context map with one edge is not a failure of this discovery — it is the measurement.'",
+  "⛔ 'Two of six transitions are evidenced. One is empty… without L-6 this is a pipeline, not a flywheel.'"
+ ],
+ "dependencies": [
+  "the Architecture Consolidation (= F0012), accepted as input",
+  "EAD-1",
+  "BRM-1 / SDM-EXT-1",
+  "ES-005.1/.2/.3/.4",
+  "ES-006.1/.4",
+  "AIP-14",
+  "the MVK Bootstrap Validation Report",
+  "Reference Model §8",
+  "Runtime Adapter Record",
+  "Capability Catalog H-CAT-1"
+ ],
+ "previous_related_files": "⭐ 'Accepted input: Architecture Consolidation is COMPLETE' = F0012, read in this same batch.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — one of F0001's four source syntheses.",
+ "architectural_role": "⭐ PRODUCT BOUNDARY DISCOVERY.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "SP-1..SP-5",
+   "the MVK §6 set",
+   "X-1..X-11",
+   "PR-1..PR-5",
+   "AR-1..AR-8",
+   "the opposite-direction dependency inversion"
+  ],
+  "⭐ corrected": [
+   "SP-3 reclassified from product to ADAPTER BOUNDARY",
+   "SP-5 refined from 'missing' to 'dispersed, governed in six places, never once traversed'",
+   "§6 REFUTED IN PART by the executed bootstrap"
+  ],
+  "⛔ withdrawn": [
+   "the MVK as a boundary — 'read the list as the TESTED HYPOTHESIS it turned out to be'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0029 (survival ≠ sufficiency)",
+  "T-0003 (P2)",
+  "T-0005",
+  "T-0007"
+ ],
+ "sequential_graph_position": "canonical position 11; 2026-08-02. ⭐ AFTER F0012 (accepted as input), BEFORE F0001 (which synthesizes it).",
+ "file_relationships": [
+  {
+   "to": "F0012",
+   "kind": "⭐ CONSUMES_AS_INPUT"
+  },
+  {
+   "to": "F0001",
+   "kind": "⭐ IS_SOURCE_OF",
+   "note": "named in F0001's traceability as one of four syntheses"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐ STRONG — an executed falsification of its own central section, with the refutation banner placed ABOVE the refuted list.",
+ "gaps": [
+  {
+   "id": "G-F0011-A",
+   "⚠️ gap": "the MVK's §6 list remains printed in full beneath its own refutation banner",
+   "⭐ significance": "⭐ deliberate and stated — 'read the list below as the TESTED HYPOTHESIS it turned out to be, not as the boundary'. ⚠️ But a reader who skips the banner reads a refuted list as current — ⭐ THE C-0009 EXTRACTION HAZARD, present here too"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0011-01",
+   "⛔ finding": "⭐⭐ THE `G-n` SERIES SHIFTED BY ONE BETWEEN F0011 AND F0001 — SAME LABEL, DIFFERENT GAP",
+   "detail": "⛔ F0011: G-3 = no PKS generated · ⭐ G-4 = NO SECOND ADOPTING PRODUCT · G-5 = no second runtime adapter. ⛔ F0001: G-2 = no PKS generated · G-3 = no second adopting product · ⭐ G-4 = NO SECOND RUNTIME ADAPTER · G-5 = zero market data.",
+   "⭐ cause": "⭐ F0011's G-2 ('is the MVK sufficient?') was CLOSED on 2026-08-02 by the bootstrap test. F0001 dropped the closed row, and everything below it MOVED UP ONE.",
+   "⭐⭐ consequence": "⛔ 'G-4' names a DIFFERENT GAP in each file, and the divergence has a fully traceable cause. ⚠️ A third variant exists: F0012 uses the prefix G-C1..G-C7.",
+   "⛔ disposition": "⭐⭐ FACTUAL POINTER FOR B-12 ONLY. ⛔ Enumerating and adjudicating G-4 is B-12, assigned to an independent session. ⛔ This record does not claim which G-4 any later citation meant, and does not claim the collision affects a derivation.",
+   "status": "⛔ REFERRED_TO_B-12",
+   "significance": "⭐ HIGH"
+  },
+  {
+   "id": "AUDIT-F0011-02",
+   "⭐ finding": "⭐ F0011 IS AN EARLIER SOURCE FOR T-0029 THAN THE FILE T-0029 CITES",
+   "detail": "T-0029 'Survival does not entail sufficiency' lists F0029 as its sole source. ⭐ F0011 §6 states the same proposition — 'portability is a property of parts and sufficiency is a property of the whole' — at canonical position 11.",
+   "⛔ disposition": "⛔ T-0029 is F0029's object under O-1=A. RECORDED as a provenance pointer, not written.",
+   "status": "OPEN"
+  }
+ ],
+ "provenance_first_hand": [
+  "SP-1..SP-5",
+  "the context map",
+  "PR-1..PR-5",
+  "X-1..X-11",
+  "L-1..L-6",
+  "G-1..G-10",
+  "AR-1..AR-8"
+ ],
+ "provenance_second_hand": [
+  "⛔ the MVK Bootstrap Validation Report's verdict, quoted",
+  "EAD-1's zero-terms finding",
+  "BRM-1's retirement text"
+ ],
+ "negative_evidence": "⭐⭐ AN EXECUTED NEGATIVE: the MVK was not merely doubted, it was GIVEN to an isolated session which could not bootstrap with it. ⭐ 'if the rehearsal cannot proceed without reaching outside the boundary, the MVK is refuted' — the falsification condition was declared BEFORE the run.",
+ "multi_dimensional_confidence": {
+  "the MVK refutation": "⭐ HIGH — executed, n=1, labelled n=1",
+  "'domain-free ≠ portable'": "⭐ HIGH",
+  "the 5 unassigned relationships": "⭐ HIGH — deliberately unassigned",
+  "SP-5's six homes": "HIGH — enumerated",
+  "the G-n labels": "⛔ LOW as cross-file identifiers"
+ },
+ "not_recoverable_without_reread": [
+  "the MVK Bootstrap Validation Report",
+  "EAD-1",
+  "the Runtime Adapter Record"
+ ]
+}

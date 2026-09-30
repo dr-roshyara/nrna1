@@ -1,0 +1,10 @@
+{
+ "bundle": "~/F-EVIDENCE-VERIFIER-BUNDLE-01.tar",
+ "sha256": "c8bb0ae835293211246ac65e503eb6a0099813ab2b19b207e0f2bf8095f64824",
+ "status": "COMPLETED \u2014 SECONDARY_REVIEW (headless Claude agent), accepted as sufficient by L0 ('use a agent to authorize verification. that is enough')",
+ "reason": "no permitted non-Claude mechanism here (Codex disallowed by the human, F-LOG-0072); no Claude substitute",
+ "answers": null,
+ "answers_sha256": "dae305be575a2427f0844fb79f1db9eb7194dbbcfcf5ed318724f424dda5ae1f",
+ "self_coding_sealed_first": "EVIDENCE-VERIFICATION-01/SELF-CODING.json",
+ "result": "7/8 agree (6 EXACT + Q6 EQUIVALENT NO==NOT-STATED); Q5 DISAGREE (object kind not stated per fragment)"
+}

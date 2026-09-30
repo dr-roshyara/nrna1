@@ -1,0 +1,326 @@
+{
+ "failures": [
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P001",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P002",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P003",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P004",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P005",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P006",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P008",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1413_P009",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P001",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P002",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P003",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P004",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P005",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P006",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P007",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P008",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P009",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P010",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P011",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P012",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P013",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P014",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P015",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P016",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P017",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P018",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P019",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P020",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P021",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P022",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1521_P023",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P001",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P002",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P003",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P004",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P005",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P006",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P007",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P008",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P009",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P010",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P011",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P012",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P014",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P015",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P016",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P017",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P018",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P019",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P020",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P021",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P022",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P023",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P024",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P025",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P026",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P027",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P028",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P029",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P030",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P031",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P032",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P034",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1541_P035",
+   "proposition_id": null
+  }
+ ],
+ "original_sha256": "d0e0154481ec13af9ad86e3408019ab3a024372c1df2abf8faee65693b365c74",
+ "run": "PX0109-U06"
+}

@@ -1,0 +1,12 @@
+{
+ "prereg_commit": "51e04f8cb621cee1b8083245d8068418ac80b6c5",
+ "prereg_sha256": "34d53cef385975ef1f2ec2fe75fc5277f4396f126fa418a18d745b2aa6c2e70e",
+ "authority": "human: 'Authorize V1.2.1 execution under pre-registration 51e04f8cb' (2026-09-25); G-LOG-0070",
+ "f13_conditions": [
+  "the V1.2.1 outcome is an instrument-validation result only",
+  "the V1.2.1 proposition taxonomy (pre-registration \u00a77) is experimental vocabulary, not v3.5/P3b types; it does not conform to v3.5 B2 and is not adopted by executing V1.2.1",
+  "no Master Protocol v3.5 or P3b v1.7 obligation changes",
+  "any adoption of the instrument into P3b requires a P3b \u00a726 revision mapping its types to v3.5 B2 or restricting it to non-contribution use"
+ ],
+ "independence": "this authorization neither requires nor implies Decision A (S-Series architecture governance)"
+}

@@ -1,0 +1,148 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0009-RETROFIT-B3",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 3",
+  "⚠️ prior_read": "YES",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0009-RETROFIT-B3."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0016",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Governed_Retrieval_Positioning_Validation.md",
+ "canonical_sequence_position": 16,
+ "lines_total": 103,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED' · '⛔ Lawful under the freeze: this is the machinery running, not discovery reopening.'",
+ "source_document_kind": "⭐ EXTERNAL VALIDATION RECONCILIATION — one industry input processed under standing research governance.",
+ "source_research_question": "⭐ 'what is KnowledgeOS's relationship to retrieval technology?' and 'what do we call things, and who decides?'",
+ "reconstruction_question": "⛔ DISTINCT: does the check-before-recording habit change the proposal's shape?",
+ "source_method_declared": "⭐ the five-question review protocol + the admission rule (matrices change only on material confidence change or a genuinely new gap).",
+ "definitions": [
+  {
+   "term": "the four-category sort",
+   "def": "Established by industry · Strong external validation · ⭐ Novel KnowledgeOS contributions · ⛔ Implementation-specific (refused for phase)"
+  }
+ ],
+ "assumptions": [
+  "internal models stay internal until independently validated",
+  "a check precedes a recording"
+ ],
+ "premises": [
+  "the freeze",
+  "R-2 / R-7",
+  "the Boundaries≠Triggers correction",
+  "the second-adopter gate"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE.",
+ "derivations": [
+  {
+   "id": "DI-F0016-01",
+   "from": [
+    "the reviewer proposes a 'Provenance Domain'",
+    "a check finds provenance already dispersed across five homes"
+   ],
+   "to": "⭐ PROVENANCE is not a missing domain — it is DISPERSED, NAMED, PARTLY-GOVERNED",
+   "form": "⭐ CHECK_BEFORE_RECORDING",
+   "validity": "⭐⭐ VALID — 'the SP-5 pattern, recognized a third time'"
+  },
+  {
+   "id": "DI-F0016-02",
+   "from": [
+    "five proposed research streams tested row by row against the existing Tier-1 backlog"
+   ],
+   "to": "⭐⭐ the reviewer independently re-derived the existing backlog, FIVE FOR FIVE",
+   "form": "CONVERGENCE",
+   "validity": "⭐ VALID — 'that convergence is itself validation of the backlog's shape'"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'KnowledgeOS governs retrieval architecture — and COMPETES WITH NONE OF IT'",
+  "⛔ the entire implementation half is REFUSED for this phase",
+  "⭐ 'No stream is created; one row is enriched.'"
+ ],
+ "dependencies": [
+  "R-2 · R-7",
+  "the Boundaries≠Triggers correction",
+  "PM-1",
+  "F0018 (authority = provenance × standing)",
+  "CAP-001 identifier integrity",
+  "the Research Backlog Tier-1",
+  "Package 11 DEFER"
+ ],
+ "previous_related_files": "⭐ Cites the Engineering Progression Model (= F0018) for provenance × standing; both validation matrices (F0002 and F0026) for the grading practice.",
+ "knowledgeos_purpose_relevance": "⭐ HIGH — it fixes the relationship to retrieval technology.",
+ "architectural_role": "⭐ EXTERNAL-INPUT RECONCILIATION.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the context-map statement (governs retrieval, competes with none)",
+   "the candidate positioning sentence",
+   "U-GR-1..U-GR-3"
+  ],
+  "⛔ refused": [
+   "all schemas, audit events, pipeline shapes — implementation material for a phase that is not open"
+  ],
+  "⛔ not adopted": [
+   "'Governed Retrieval' and 'Retrieval Boundary' as terms — the freeze forbids new terminology"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0014",
+  "T-0019"
+ ],
+ "sequential_graph_position": "canonical position 16; 2026-08-03",
+ "file_relationships": [
+  {
+   "to": "F0018",
+   "kind": "CONSUMES"
+  },
+  {
+   "to": "F0017",
+   "kind": "SIBLING",
+   "note": "both are positioning passes; F0017 cites this one's holdings"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐ STRONG — the admission rule is stated and enforced, and the implementation half is refused explicitly rather than ignored.",
+ "gaps": [
+  {
+   "id": "G-F0016-A",
+   "⚠️ gap": "the source is a single Perplexity research pass",
+   "⭐ significance": "⭐ its grade is declared and its implementation half refused — the weakness is bounded by the protocol"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0016-01",
+   "⭐ finding": "⭐⭐ THE CHECK CHANGED THE PROPOSAL'S SHAPE — a third recognition of one pattern",
+   "detail": "⭐ 'The reviewer proposes a \"Provenance Domain\"… the check comes first — ⭐ and it changes the proposal's shape.' Provenance was found already living in five places. Verdict: '⭐ the SP-5 pattern, recognized a third time.'",
+   "⭐ consequence": "⭐ SP-5 (Operational Learning), PROVENANCE, and — per F0009 — the strategic domain model: three times a proposed new domain turned out to be dispersed and already named.",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the five-question answers",
+  "the four-category sort",
+  "the backlog row-by-row test",
+  "U-GR-1..3"
+ ],
+ "provenance_second_hand": [
+  "⛔ the Perplexity pass, quoted",
+  "the industry sources"
+ ],
+ "negative_evidence": "⭐ 'Method/Binding/Evidence · P4 · Portability Ladder — ⭐ explicitly NOT FOUND outside' → ⭐ PROTECT, do not rename. ⭐ A negative that produces protection rather than a claim of novelty.",
+ "multi_dimensional_confidence": {
+  "the context-map statement": "⭐ HIGH",
+  "provenance-as-dispersed": "⭐ HIGH — five homes enumerated",
+  "the positioning sentence": "⚠️ CANDIDATE — routed to sponsor, D-5 first",
+  "the single-source input": "⚠️ MEDIUM — bounded by protocol"
+ },
+ "not_recoverable_without_reread": [
+  "20260803_1426_perplexity_view.md",
+  "the Research Backlog"
+ ]
+}

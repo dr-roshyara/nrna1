@@ -1,0 +1,5 @@
+CLEAN: My context contains only generic harness/user instructions and the task prompt, with no results, predictions, implementations, or property evaluations of models M0, M0b, M1, M2, M3a, M3b.
+BUNDLE CHECK: SPEC-G2-r2.md: OK; README.md: OK
+071cec0a7ec65af8fecb3a0eba0b9ec02cb723a41f2aa6eb41f5ea3799145d34  results.json
+ff70c3e78c49946595d8202de5c129da54f9870a9a1aea8bad765af2aad613e8  METHOD.md
+e27583b27a900fe92fc1d17c48b30837f3f8ca76496614e633fb13b8705de9f5  verifier_g2.py

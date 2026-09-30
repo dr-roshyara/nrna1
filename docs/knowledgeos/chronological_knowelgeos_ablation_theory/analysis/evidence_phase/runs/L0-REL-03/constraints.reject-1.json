@@ -1,0 +1,9 @@
+{
+ "status": "REJECT",
+ "violations": [
+  "S1-e1: unknown keys",
+  "S1-e2: unknown keys",
+  "S1-e3: unknown keys",
+  "S1-e4: unknown keys"
+ ]
+}

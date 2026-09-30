@@ -1,0 +1,58 @@
+{
+ "reserve": [
+  {
+   "id": "R-33",
+   "line": 19
+  },
+  {
+   "id": "R-42",
+   "line": 28
+  },
+  {
+   "id": "R-48",
+   "line": 34
+  },
+  {
+   "id": "R-54",
+   "line": 40
+  },
+  {
+   "id": "R-57",
+   "line": 43
+  },
+  {
+   "id": "R-59",
+   "line": 45
+  },
+  {
+   "id": "R-60",
+   "line": 46
+  },
+  {
+   "id": "R-69",
+   "line": 55
+  },
+  {
+   "id": "R-70",
+   "line": 56
+  },
+  {
+   "id": "R-71",
+   "line": 57
+  },
+  {
+   "id": "R-74",
+   "line": 60
+  },
+  {
+   "id": "R-76",
+   "line": 62
+  },
+  {
+   "id": "R-95",
+   "line": 81
+  }
+ ],
+ "predictions": "V1\u2013V7 under T-min v1.1 (unchanged); P-COV >= 0.70 per coder under manual r2 segmentation; inter-coder agreement reported",
+ "coding_order": "main codes and seals first; blind coder second; comparison after both are sealed"
+}

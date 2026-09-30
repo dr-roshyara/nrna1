@@ -1,0 +1,31 @@
+{
+  "classification_A": "NOT A WITNESS",
+  "classification_reviewer": "NOT A WITNESS",
+  "decisive_fields_A": ["kind", "target", "state_before"],
+  "decisive_fields_reviewer": ["kind", "target"],
+  "decisive_note_reviewer": "kind (reusable document vs protocol) and target (reusable doc future WPs reference vs operating standard, standards doc explicitly not created) are each known and different, and either one alone is sufficient. state_before differs literally (candidate vs parked candidate), but that difference exists by construction in any parking-then-revisit pair, so it is not relied on. Under the reviewer's coding, evidence is known to differ (0 vs 2), P1's ground is RULE and the outcomes differ, so the failure lies only in the compared fields. Independently, P1 shows the operating contract was already in force ('SessionStart injects the WP-1 contract'), so pairing the same facet gives matching outcomes.",
+  "reviewer_coding_changes": {
+    "P1.evidence": {"value": "0 slices", "basis": "SOURCE", "quote": "further contract polish would not produce proportionate value vs. starting WP-1", "note": "'WP-1 OPENED' follows the parking; the criterion counts from WP-1, and P2 uses the same unit."},
+    "P1.exception": {"value": "NO", "basis": "SOURCE", "quote": "Extract only after WP-1 + a few more slices demonstrate the shape is stable — not now", "note": "The normal bar is applied. P2 shows that exceptions are explicitly 'recorded as an exception so the normal bar stays intact'."},
+    "P2.kind": {"value": "protocol", "basis": "SOURCE", "quote": "DDD-Driven Architectural Implementation Protocol received (17 phases)"},
+    "P2.actor": {"value": "PA", "basis": "SOURCE", "quote": "Received from the PA as the going-forward protocol."}
+  },
+  "strongest_alternative": {
+    "reading": "Code both dispositions at the level of the abstract execution discipline (kind and target equal), and normalise state_before to 'unpromoted candidate'. This gives a POSSIBLE WITNESS with actor UNK.",
+    "ruled_out": true,
+    "why": "P1 fixes the kind as 'reusable doc'. P2 says 'NOT self-promoted into a standards document'. P2 leaves promotion to the DA and recommends (b), holding to the parked criterion. P1 shows the operating contract was already in force for WP-1."
+  },
+  "disagreements": [
+    {"id": 1, "field": "P1.evidence", "A": "UNK (inferred 0)", "reviewer": "0 slices, SOURCE", "type": "coding", "changes_classification": false},
+    {"id": 2, "field": "P1.exception", "A": "UNK", "reviewer": "NO, SOURCE", "type": "source interpretation", "changes_classification": false},
+    {"id": 3, "field": "P2.kind", "A": "protocol / operating standard", "reviewer": "protocol; 'operating standard' is the target", "type": "coding", "changes_classification": false},
+    {"id": 4, "field": "P1.state_before quote", "A": "'one candidate parked'", "reviewer": "The quote describes the post-disposition state and does not support the 'before' value", "type": "wording", "changes_classification": false},
+    {"id": 5, "field": "state_before as decisive", "A": "decisive", "reviewer": "different by construction; parking leaves the standing unchanged; not relied on", "type": "source interpretation", "changes_classification": false},
+    {"id": 6, "field": "P1.target quote", "A": "criterion quote ('Extract only after ...')", "reviewer": "The target's words are 'reusable doc ... that future WPs reference instead of repeating'", "type": "wording", "changes_classification": false},
+    {"id": 7, "field": "P2.exception quote", "A": "'(R-39 ...) recorded as an exception'", "reviewer": "In the source, the clause sits inside the R-39 parenthesis; the elision moves it", "type": "wording", "changes_classification": false},
+    {"id": 8, "field": "P2.actor", "A": "PA issuer; adopter unnamed", "reviewer": "PA gives the standing; implementer is the recipient; DA only for the pending promotion", "type": "coding", "changes_classification": false},
+    {"id": 9, "field": "P1.ground (strength of CHOICE alternative)", "A": "RULE, with a live CHOICE alternative", "reviewer": "RULE; 'proportionate value' concerns the chapter closure; P2 corroborates an 'explicit promotion criterion' / 'normal bar'", "type": "source interpretation", "changes_classification": false},
+    {"id": 10, "field": "operating contract already in force at P1", "A": "not used", "reviewer": "'SessionStart injects the WP-1 contract'; 'as the WP-1 plan carried the execution contract'. The facets match across P1 and P2.", "type": "evidence scope", "changes_classification": false},
+    {"id": 11, "field": "same_object", "A": "YES (asserted, qualified 'in substance')", "reviewer": "Same candidate idea, different artifact. The paired dispositions act on different facets (document promotion vs operating adoption).", "type": "source interpretation", "changes_classification": false}
+  ]
+}

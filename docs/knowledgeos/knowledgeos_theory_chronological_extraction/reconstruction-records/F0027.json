@@ -1,0 +1,386 @@
+{
+ "file_id": "F0027",
+ "sequence": 27,
+ "timestamp": "Aug 5 15:44",
+ "date_events": [
+  {
+   "date_value": "2026-08-02",
+   "date_type": "COMMISSION",
+   "date_source": "'Principal Knowledge Engineer / Strategic DDD Architect / Enterprise Software Architect, 2026-08-02'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE"
+  },
+  {
+   "date_value": "2026-08-02",
+   "date_type": "STATUS_CHANGE",
+   "date_source": "'STRATEGIC ONTOLOGY CANDIDATE — status adopted per review, 2026-08-02'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "THIS_FILE"
+  },
+  {
+   "date_value": "2026-08-02",
+   "date_type": "REVISION",
+   "date_source": "'I-4 (UNDERSPECIFIED — falsification WITHDRAWN 2026-08-02)'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "INVARIANT_I4"
+  },
+  {
+   "date_value": "2026-08-02",
+   "date_type": "REVISION",
+   "date_source": "'I-11 (RESTATED 2026-08-02)'",
+   "date_basis": "EXPLICIT",
+   "date_confidence": "HIGH",
+   "applies_to": "INVARIANT_I11"
+  }
+ ],
+ "historical_sequence_date": "2026-08-02",
+ "historical_sequence_date_basis": "EXPLICIT_COMMISSION_DATE",
+ "historical_sequence_date_confidence": "HIGH",
+ "path": "docs/knowledgeos/KnowledgeOS_Relationship_Ontology.md",
+ "purpose": "Establish a RELATIONSHIP model (what may contain/reference/generate/depend-on what), test it against real artifacts, and separate invariant relationships from implementation choices.",
+ "source_self_declared_status": {
+  "declared_kind": "RELATIONSHIP MODEL",
+  "declared_status": "⭐ STRATEGIC ONTOLOGY CANDIDATE (status adopted per review 2026-08-02)",
+  "declared_authority": "Generated — never authoritative without human review",
+  "declared_execution_effect": "Nothing in this document executes.",
+  "declared_placement": "NONE_DECLARED",
+  "declared_constraints": "Not another taxonomy · no repository redesign · no implementation · no tooling · no ADR",
+  "declared_rule": "No new concept unless the current model cannot explain existing evidence",
+  "⚠️ declared_external_validation": "⛔ 'SURVIVES, BUT NOT UNCHANGED — 8/12 concepts and 10/11 invariants held; I-4 FALSIFIED; one-PKS-per-product FAILED' (cross-product validation, a DIFFERENT file)"
+ },
+ "source_research_question": "EXPLICITLY_STATED_BY_SOURCE",
+ "source_research_question_text": "What may contain, reference, generate or depend on what — and which of those relationships are invariant versus implementation choices?",
+ "reconstruction_question": "What is the ACTUAL status of the eleven invariants this file is cited for, and does the set survive its own qualifications?",
+ "definitions": [
+  {
+   "term": "contains / references / generates / depends-on",
+   "definition": "the four relation verbs of the model",
+   "status": "NEW_IN_THIS_FILE"
+  },
+  {
+   "term": "DESIGN POLICY (DP-n)",
+   "definition": "⭐ the anchor between principle and capability; owner of capabilities",
+   "status": "DISCOVERED_IN_THIS_FILE"
+  },
+  {
+   "term": "KNOWLEDGE SPACE",
+   "definition": "⭐ a DECLARED SCOPE with an owner and a governing constitution — not a folder",
+   "status": "ADMITTED_IN_THIS_FILE"
+  },
+  {
+   "term": "invariant vs implementation choice",
+   "definition": "what a project may never change vs may change freely",
+   "status": "NEW_IN_THIS_FILE"
+  }
+ ],
+ "assumptions": [
+  {
+   "id": "A1",
+   "assumption": "Observability in one table suffices to establish ownership (CAP→DP 1:1)",
+   "status": "EXPLICITLY_USED",
+   "⚠️ note": "single-table evidence; the file treats it as decisive"
+  },
+  {
+   "id": "A2",
+   "assumption": "A concept is admitted only if the current model cannot explain existing evidence",
+   "status": "EXPLICITLY_STATED",
+   "⭐ note": "applied symmetrically — one admitted (C-9), one rejected (H-2)"
+  }
+ ],
+ "premises": [
+  {
+   "id": "P1",
+   "premise": "The Capability Catalog binds every capability to a DP 1:1",
+   "evidence_grade": "OBSERVED"
+  },
+  {
+   "id": "P2",
+   "premise": "No artifact links any CAP-n to a PD-n",
+   "evidence_grade": "SEARCH_RESULT_NEGATIVE"
+  },
+  {
+   "id": "P3",
+   "premise": "knowledge-schema.yaml declares scope.include",
+   "evidence_grade": "OBSERVED"
+  },
+  {
+   "id": "P4",
+   "premise": "12+ charter artifacts and six principle registers exist",
+   "evidence_grade": "OBSERVED"
+  }
+ ],
+ "claims": [
+  {
+   "id": "C1",
+   "claim": "⭐ DP-n is the anchor; capabilities are owned by design policies, not domains",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C2",
+   "claim": "⭐ A Knowledge Space is a declared scope with owner and constitution",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C3",
+   "claim": "⭐⭐ 11 invariants vs 8 implementation choices",
+   "standing": "CANDIDATE",
+   "⛔ AUDIT_FINDING": "see contradictions[] — the set is NOT clean"
+  },
+  {
+   "id": "C4",
+   "claim": "All eleven test artifacts place with no additional top-level concept",
+   "standing": "CANDIDATE"
+  },
+  {
+   "id": "C5",
+   "claim": "Level mixing is conceded as the THIRD instance of that error class",
+   "standing": "OBSERVED"
+  }
+ ],
+ "mathematical_objects": [],
+ "statistical_objects": [],
+ "derivations": [
+  {
+   "id": "D1",
+   "from": [
+    "P1",
+    "P2"
+   ],
+   "to": "C1 DP-n owns capabilities",
+   "form": "POSITIVE_BINDING_PLUS_NEGATIVE_SEARCH",
+   "validity": "VALID_AS_STATED",
+   "⚠️ limit": "P2 is a negative search with unstated scope — the SAME weakness recorded as RO-0019 on F0026"
+  },
+  {
+   "id": "D2",
+   "from": [
+    "P3"
+   ],
+   "to": "C2 declared boundary",
+   "form": "DIRECT_FROM_SCHEMA",
+   "validity": "VALID"
+  },
+  {
+   "id": "D3",
+   "from": [
+    "11 test rows all placing"
+   ],
+   "to": "C4 model completeness",
+   "form": "EXHAUSTIVE_TEST_OF_A_CHOSEN_SET",
+   "validity": "VALID_FOR_THE_SET",
+   "⚠️ limit": "the 11 test artifacts were chosen by the author; no sampling frame stated"
+  }
+ ],
+ "conclusions": [
+  {
+   "conclusion": "DP-n discovered as the capability anchor",
+   "standing": "CANDIDATE"
+  },
+  {
+   "conclusion": "Knowledge Space admitted as a container",
+   "standing": "CANDIDATE"
+  },
+  {
+   "conclusion": "11 invariants vs 8 choices is 'the durable output'",
+   "standing": "CANDIDATE",
+   "⛔ qualified_by": "the audit below"
+  }
+ ],
+ "dependencies": [
+  "Capability Catalog",
+  "knowledge-schema.yaml",
+  "ES-005.1/.2",
+  "RQ-002",
+  "Round39-MC",
+  "Round47-00",
+  "CAP-001",
+  "EAD-1",
+  "statuses.yaml",
+  "KnowledgeOS_Ontology_Cross_Product_Validation.md (HELD-adjacent? — see relationships)",
+  "KnowledgeOS_Lifecycle_Gap_Analysis.md"
+ ],
+ "previous_related_files": [
+  {
+   "file_id": "NOT_RECOVERABLE_WITHOUT_REREAD",
+   "relation": "CROSS_PRODUCT_VALIDATION",
+   "note": "⛔ The header cites KnowledgeOS_Ontology_Cross_Product_Validation.md as having FALSIFIED I-4. Resolving that file's canonical id and content would require reopening it — out of scope."
+  }
+ ],
+ "successor_candidates": [
+  {
+   "candidate": "KnowledgeOS_Meta_Model_Discovery",
+   "basis": "§6 H-3/H-4 feed MM-1..MM-4",
+   "found_in_corpus": "NOT_RESOLVED_IN_SCOPE"
+  }
+ ],
+ "relationships": [
+  {
+   "type": "ESTABLISHES",
+   "target": "T-0024",
+   "basis": "C-9 Knowledge Space definition",
+   "strength": "DIRECT"
+  },
+  {
+   "type": "ESTABLISHES",
+   "target": "T-0025",
+   "basis": "DP-n discovered as capability owner",
+   "strength": "DIRECT"
+  },
+  {
+   "type": "ESTABLISHES",
+   "target": "T-0026",
+   "basis": "the 11-vs-8 table",
+   "strength": "DIRECT",
+   "⛔ qualified": "see contradictions[]"
+  },
+  {
+   "type": "SOURCES",
+   "target": "T-0044",
+   "basis": "H-3 'containment vs adjacency unevidenced' — the F0027 position in the nesting contradiction",
+   "strength": "DIRECT"
+  },
+  {
+   "type": "DEPENDS_ON_HELD_FILE",
+   "target": "KnowledgeOS_Ontology_Cross_Product_Validation.md",
+   "basis": "⛔ that file's I-4 FALSIFIED verdict is quoted in this file's header",
+   "strength": "RECORDED_NOT_RESOLVED"
+  }
+ ],
+ "continuity_assessment": "CONTINUOUS_WITH_PRIOR_RECONSTRUCTION",
+ "mathematical_continuity": "NOT_APPLICABLE",
+ "statistical_continuity": "NOT_APPLICABLE",
+ "logical_continuity": "CONTINUOUS",
+ "semantic_continuity": "CONTINUOUS",
+ "reasoning_documentation_quality": [
+  {
+   "dimension": "error_disclosure",
+   "quality": "HIGH",
+   "note": "⭐ concedes level mixing as its own THIRD instance"
+  },
+  {
+   "dimension": "invariant_status_marking",
+   "quality": "HIGH",
+   "note": "⭐ marks I-4 UNDERSPECIFIED and I-11 RESTATED inline rather than silently fixing"
+  },
+  {
+   "dimension": "negative_search_scope",
+   "quality": "LOW",
+   "note": "⚠️ P2 'no artifact links CAP to PD' — scope unstated, same weakness as RO-0019"
+  },
+  {
+   "dimension": "test_set_selection",
+   "quality": "LOW",
+   "note": "⚠️ the 11 success-criterion artifacts are author-chosen; no frame"
+  }
+ ],
+ "gaps": [
+  {
+   "gap": "H-1 / I-12 read-across-boundary — n=1 capability",
+   "kind": "INSUFFICIENT_N"
+  },
+  {
+   "gap": "H-3 Knowledge Space nesting — containment vs adjacency UNEVIDENCED",
+   "kind": "CENTRAL_OPEN_QUESTION"
+  },
+  {
+   "gap": "H-4 does OPERATIONAL-STATE attach to Artifact or Knowledge (MM-4)",
+   "kind": "GRANULARITY"
+  },
+  {
+   "gap": "RO-4 Runtime Adapter has no declared owner",
+   "kind": "OWNERSHIP"
+  },
+  {
+   "gap": "⭐ P2's negative-search scope is unstated",
+   "kind": "METHOD_GAP",
+   "found_by": "THIS_RECONSTRUCTION"
+  },
+  {
+   "gap": "⭐ the success-criterion test set has no stated sampling frame",
+   "kind": "METHOD_GAP",
+   "found_by": "THIS_RECONSTRUCTION"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0027-01",
+   "⛔ finding": "⭐⭐ THE '11 INVARIANTS' SET IS NOT CLEAN, AND THE FILE SAYS SO ITSELF",
+   "detail": {
+    "I-4": "UNDERSPECIFIED — falsification WITHDRAWN; reclassified as a LIFECYCLE gap, not an ontology invariant",
+    "I-7": "⛔ 'stated and BREACHED' (EAD-1)",
+    "I-11": "RESTATED — the original wording was 'too strong' and would have FAILED cross-product projection"
+   },
+   "⚠️ plus_external": "the header quotes a cross-product validation: '10/11 invariants held; I-4 FALSIFIED'",
+   "⭐ consequence": "⛔ Of 11, FOUR carry qualifications at source (I-4, I-7, I-11, and I-8 by a later file). Only SEVEN are unqualified.",
+   "status": "RECORDED_NOT_RESOLVED"
+  }
+ ],
+ "corrections": [
+  {
+   "correction": "PKS CONTAINS artifacts (was: below them)",
+   "type": "MODEL_ERROR_FIXED"
+  },
+  {
+   "correction": "I-11 restated — knowledge does not EXECUTE (was: never generative)",
+   "type": "OVERSTATEMENT_WEAKENED"
+  },
+  {
+   "correction": "I-4 falsification WITHDRAWN and reclassified",
+   "type": "VERDICT_REVERSED"
+  },
+  {
+   "correction": "level mixing conceded — 3rd instance",
+   "type": "ERROR_CLASS_COUNTED"
+  }
+ ],
+ "scope_changes": [
+  {
+   "change": "STRATEGY and PRINCIPLE admitted as real layers between Mission and Capability",
+   "effect": "lengthens the governance chain"
+  }
+ ],
+ "definition_changes": [
+  {
+   "term": "I-11",
+   "from": "Knowledge is never generative",
+   "to": "⭐ Knowledge does not EXECUTE; capabilities execute; knowledge constrains and informs"
+  }
+ ],
+ "theory_state": "⭐ ESTABLISHES T-0024, T-0025, T-0026, and sources T-0044. ⛔ AUDIT FINDING recorded against T-0026. ⛔ No Theory Object upgraded or downgraded — rule 6.",
+ "implementation_state": "NOT_APPLICABLE — 'nothing executes'",
+ "evidence": [
+  {
+   "kind": "OBSERVED_ARTIFACT_TABLES",
+   "n": 4
+  },
+  {
+   "kind": "SUCCESS_CRITERION_TEST_ROWS",
+   "n": 11
+  },
+  {
+   "kind": "PRINCIPLE_REGISTERS_CITED",
+   "n": 6
+  }
+ ],
+ "confidence": [
+  {
+   "scope": "DP-n discovery",
+   "level": "HIGH"
+  },
+  {
+   "scope": "Knowledge Space definition",
+   "level": "HIGH"
+  },
+  {
+   "scope": "the 11-invariant set as a CLEAN set",
+   "level": "⛔ LOW — four members qualified at source"
+  }
+ ],
+ "validation_status": "RECONSTRUCTION_RECORD_VALIDATED",
+ "mathematical_validation_status": "NOT_APPLICABLE",
+ "statistical_validation_status": "NOT_APPLICABLE",
+ "retrofit_note": "Produced 2026-09-23 under U-0006. Complete read performed per §9 step 2. No other file opened; no held file touched; no Theory Object upgraded or downgraded."
+}

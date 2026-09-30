@@ -1,0 +1,103 @@
+{
+ "artifact": "S5-CANARY-PRECHECK-v2.8",
+ "authority_context": "G-LOG-0106 (v2.8 approved; implementation + one rebind); the canary itself is NOT authorized",
+ "checker": "audit-p3b/impl/canary_precheck_v28.py",
+ "checker_sha256": "de083f75c4a58c1143296981dee77cdf898db1f433b496cf5479cc026573cd5b",
+ "kind": "engineering evidence (authority: generated); read-only; nothing dispatched; no sampled content read",
+ "operational_rule_H3": "the tool files are frozen at tool_sha256_frozen_for_canary; the EMPTY object's producer_sha256 = the orchestrator tool sha; any tool change before the canary ASSEMBLED step invalidates this pre-check",
+ "result": {
+  "activation_commit_exists": true,
+  "addendum_file_matches_frozen": true,
+  "batches": {
+   "OB0012": {
+    "empty_labels": 0,
+    "empty_objects_self_check_ok": 0,
+    "hub_batch": false,
+    "labels": 5,
+    "manifest_violations": 0,
+    "may_start_attempt": true,
+    "prompt_bundle_sha256": "f18cb7b201ed13315a6519b4ee27df211f0eb4e64988cae7a5beb36f776cf6bf",
+    "prompts_record_ids_ok": 5,
+    "prompts_with_hub_required_lines": 0,
+    "reading_manifests": 5,
+    "runs": 5,
+    "runs_by_role": {
+     "SINGLE": 5
+    },
+    "state": [
+     "PREPARED",
+     "OB0012-R7",
+     7,
+     1
+    ],
+    "view_violations": 0
+   },
+   "OB0114": {
+    "empty_labels": 1,
+    "empty_objects_self_check_ok": 1,
+    "hub_batch": false,
+    "labels": 5,
+    "manifest_violations": 0,
+    "may_start_attempt": true,
+    "prompt_bundle_sha256": "7649c7e4b585d9cf64d5311530a694e682374e3510f2d572f55347ed288d0175",
+    "prompts_record_ids_ok": 6,
+    "prompts_with_hub_required_lines": 0,
+    "reading_manifests": 5,
+    "runs": 6,
+    "runs_by_role": {
+     "SINGLE": 3,
+     "SYNTHESIS": 1,
+     "UNIT": 2
+    },
+    "state": [
+     "PREPARED",
+     "OB0114-R7",
+     7,
+     1
+    ],
+    "view_violations": 0
+   }
+  },
+  "contract": {
+   "path": "prompts/20260926_2400_p3b-agent-contract-r7-addendum.md",
+   "revision": 7,
+   "sha256": "4d4dac6b5684a6ca60384d6654d50d798273e39ac487e5966329ac8926f0cb87"
+  },
+  "manifest_sha256": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+  "prompt_sha256": {
+   "OB0012-R7-L01": "188a22c8053eac5a3858b154a0fc3e75ab8a114f91496021830d3a448b62cb0b",
+   "OB0012-R7-L02": "2f2f023b7107fa08266444290ae25c4736f3b3a1b083a3ff62e9a57f1244b21d",
+   "OB0012-R7-L03": "0f6efe57ee23a1c45feacfd6f16c021d4b18c25eed81b4d1fafce324e5bbff77",
+   "OB0012-R7-L04": "e1767b325e02989ebb96f1177afd28d86ee0e19cb91608cd45d34fb717163804",
+   "OB0012-R7-L05": "5ef252f600ba1aa807e82a99e57cdaaa7e65996c6a320648b540edeef14a77f5",
+   "OB0114-R7-L01": "1eec1b02ff3ec707fe3bf3aaff41c21a2c3b7e235d38583e2b63d61f01c79eeb",
+   "OB0114-R7-L02": "5a89e686de1dc3519ca8a4ed94ca3e4d19fa2bb76688cc67bb52201ab1e130bd",
+   "OB0114-R7-L03S": "aaa0410d4025bfce157d8f7722ac46430e7ce90fa26108c7057a8316c2c97308",
+   "OB0114-R7-L03U01": "69b98e2707b75d9aa49221efaa039214adb4d11a140ab857b7cbe83682259fef",
+   "OB0114-R7-L03U02": "e9c6787776e25e1b0886e7462dbc7f9d0d533021bed5e37ccb09634bb2d0a59d",
+   "OB0114-R7-L05": "1cdf9ab123c949c666b33deee7b46f7fe83e07c8c764b29d15153a52eb8e88e5"
+  },
+  "reader_is_repo_reader": true,
+  "revision_violations": [],
+  "state_bound": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+  "tool_sha256_frozen_for_canary": {
+   "p3b_read_source.py": "f4be32e51389d16e76ab1402b39c04653d2ddab1eb51d7ccc0a0114b7c3546eb",
+   "p3b_s5_accept.py": "6d2c6a49b35a3a951f0c9b4d94e72a1b919591973a5ec3406a3f52b46b4e4109",
+   "p3b_s5_audit_record.py": "a9a0f68a45cd8acf3a6b0d3b6423e2141318a443d14673f0799d72190c03b920",
+   "p3b_s5_common.py": "57d6f3850c17774f76456e7d0f7064a608f8959c530122a28bf36b79c7d5f2cb",
+   "p3b_s5_r7_orchestrate.py": "703d730792c7c37a389739cab66b26727d9c36faa19f97e13dc073fb4f4a37c2",
+   "p3b_s5_r7_universe.py": "126dd1d8d2b9e0e9e5550d0da029f51ccfd0c7f9c1bc98b56cb5c0da8520f150",
+   "p3b_s5_r7_verify.py": "47e1cbb7a27802004361b206247e6091dd40c83387f79737e0983ed3e5c7b740",
+   "p3b_s5_r7_witness.py": "833c44dcdf54c18d2565af6142ce7b208d6cbc998fb30f4c7acf4dbc315e2c9f",
+   "p3b_s5_state.py": "7aea0addab9253b722b646b9c0f7d45202e286e59470b2358f300571262733f5",
+   "p3b_s5_verify.py": "0d9e7c6c767e26b927aa76ec6426d123a238339c8572432f408f92e76b32350b"
+  },
+  "total_runs": 11,
+  "wsys": {
+   "f": 0,
+   "n": 0,
+   "stop": false
+  }
+ },
+ "supersedes": "audit-p3b/20260929_S5-CANARY-PRECHECK.json (v2.7; finding EG-5 now closed)"
+}

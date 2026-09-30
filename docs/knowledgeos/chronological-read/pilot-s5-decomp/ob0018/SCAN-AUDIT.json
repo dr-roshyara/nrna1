@@ -1,0 +1,12 @@
+{
+ "PX0018-A01": {
+  "agent_id": "a3e297593d4e0fbc3",
+  "api_models": [
+   "claude-opus-5-5"
+  ],
+  "findings": [],
+  "parse_errors": [],
+  "tool_calls": 30,
+  "transcript_sha256": "2cd66f810da08b03adde55a7c8783e96fadcd4de80799a389b46c2078911ac05"
+ }
+}

@@ -1,0 +1,111 @@
+{
+ "release": "L0-REL-04",
+ "sources": {
+  "S-3": {
+   "path": "engineering/verification/reports/2026-08-01-classification-model-approval-record.md",
+   "sha256": "729f7bbeb63d126652f972570a77ecc15a3ddad80728fd91b65c40fb6ffd38c0",
+   "lines": [
+    101,
+    113
+   ]
+  },
+  "S-4": {
+   "path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "lines": [
+    103,
+    111
+   ]
+  }
+ },
+ "cells": [
+  {
+   "id": "S3-c1",
+   "claim_id": "S-3-L113",
+   "proposition": "EP-13c",
+   "source_slot": "S-3",
+   "source_path": "engineering/verification/reports/2026-08-01-classification-model-approval-record.md",
+   "source_sha256": "729f7bbeb63d126652f972570a77ecc15a3ddad80728fd91b65c40fb6ffd38c0",
+   "anchor": {
+    "start_line": 113,
+    "end_line": 113
+   },
+   "exact_wording": "**R-39 / proposed R-69** (precedent before structure)",
+   "historical_date": {
+    "value": "2026-08-01 (from the file name; not stated in the section)",
+    "precision": "DAY"
+   },
+   "source_claim": "R-39 together with the proposed R-69 is cited as precedent for 'precedent before structure'",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-04",
+   "context": {
+    "scope": "document classification / placement governance (traceability footer)",
+    "source_fidelity": "SECONDARY REFERENCE"
+   },
+   "notes": "Cites R-39 (paired with the then-proposed R-69) as precedent for the principle 'precedent before structure' in a classification/placement decision. It does not state what R-39 decided: no operation, evidence state, bar, authority, ordering, persistence or validation of R-39 is given. So it cannot decide EP-13c ('no below-bar authorization is valid'). Reader prior knowledge of R-39 (F-LOG-0053) is NOT used as evidence."
+  },
+  {
+   "id": "S4-c1",
+   "claim_id": "S-4-L111",
+   "proposition": "EP-13c",
+   "source_slot": "S-4",
+   "source_path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "source_sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "anchor": {
+    "start_line": 111,
+    "end_line": 111
+   },
+   "exact_wording": "**R-39 / proposed R-69** (precedent before structure)",
+   "historical_date": {
+    "value": "2026-08-01 (from the file name; not stated in the section)",
+    "precision": "DAY"
+   },
+   "source_claim": "same citation in the companion finding",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-04",
+   "context": {
+    "scope": "document classification / placement governance (traceability footer)",
+    "source_fidelity": "SECONDARY REFERENCE"
+   },
+   "notes": "Cites R-39 (paired with the then-proposed R-69) as precedent for the principle 'precedent before structure' in a classification/placement decision. It does not state what R-39 decided: no operation, evidence state, bar, authority, ordering, persistence or validation of R-39 is given. So it cannot decide EP-13c ('no below-bar authorization is valid'). Reader prior knowledge of R-39 (F-LOG-0053) is NOT used as evidence."
+  },
+  {
+   "id": "S4-c2",
+   "claim_id": "S-4-L105",
+   "proposition": "EP-13c",
+   "source_slot": "S-4",
+   "source_path": "engineering/verification/reports/2026-08-01-classification-placement-separation-finding.md",
+   "source_sha256": "cd19b98c62011c6aa0d5b101a3163db53299256a16d600b38eef374a512f45f5",
+   "anchor": {
+    "start_line": 105,
+    "end_line": 105
+   },
+   "exact_wording": "the DA's product clarification, R-39,",
+   "historical_date": {
+    "value": "2026-08-01 (from the file name; not stated in the section)",
+    "precision": "DAY"
+   },
+   "source_claim": "R-39 is listed among mechanisms that were 'already in the repository'",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-04",
+   "context": {
+    "scope": "document classification / placement governance (traceability footer)",
+    "source_fidelity": "SECONDARY REFERENCE"
+   },
+   "notes": "States that R-39 is an existing mechanism. It does not state its semantics; it cannot decide EP-13c."
+  }
+ ],
+ "events": []
+}

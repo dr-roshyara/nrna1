@@ -1,0 +1,50 @@
+{
+ "PX0106-U01": {
+  "agent_id": "a14b9207751589f94",
+  "alias": "opus",
+  "failure_evidence": "stopped by the orchestrator under pre-registration \u00a718 (tool call outside the allowlist in PX0106-U06); no output written; 0 allowlist breaches in its own record",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-a14b9207751589f94.jsonl"
+ },
+ "PX0106-U02": {
+  "agent_id": "addf2632c17a2287d",
+  "alias": "opus",
+  "failure_evidence": "stopped by the orchestrator under pre-registration \u00a718 (tool call outside the allowlist in PX0106-U06); no output written; 0 allowlist breaches in its own record",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-addf2632c17a2287d.jsonl"
+ },
+ "PX0106-U03": {
+  "agent_id": "ab3400c7c3202c55c",
+  "alias": "fable",
+  "failure_evidence": "stopped by the orchestrator under pre-registration \u00a718 (tool call outside the allowlist in PX0106-U06); no output written; 0 allowlist breaches in its own record",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-ab3400c7c3202c55c.jsonl"
+ },
+ "PX0106-U04": {
+  "agent_id": "aceec110a0879a1a4",
+  "alias": "fable",
+  "failure_evidence": "stopped by the orchestrator under pre-registration \u00a718 (tool call outside the allowlist in PX0106-U06); no output written; 0 allowlist breaches in its own record",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-aceec110a0879a1a4.jsonl"
+ },
+ "PX0106-U05": {
+  "agent_id": "add62dba947475837",
+  "alias": "haiku",
+  "failure_evidence": "stopped by the orchestrator under pre-registration \u00a718 after the U06 allowlist breach; own record: 14 Bash calls outside the allowlist (literal '--page K' placeholder; '--help | head'); 0 pages read",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-add62dba947475837.jsonl"
+ },
+ "PX0106-U06": {
+  "agent_id": "ab65fc2e679460427",
+  "alias": "haiku",
+  "failure_evidence": "agent self-report: paged reader not found (ran from the repository root); 11 tool calls outside the allowlist (ls/find/grep, Read of V1-DISPATCH/SEGMENT-MAP/PROVENANCE, Write of FAILURES-PX0106-U06.json); 0 pages read",
+  "failure_reason": "OTHER",
+  "status": "FAILED",
+  "transcript": "/home/nab-raj.roshyara@dg-nexolution.de/.claude/projects/-home-d0f38614-c3a6-41d3-9952-7f59ad699b2d-roshyara-personal-nrna1/0d960477-0e02-4543-b54c-09bd6efa1d6f/subagents/agent-ab65fc2e679460427.jsonl"
+ }
+}

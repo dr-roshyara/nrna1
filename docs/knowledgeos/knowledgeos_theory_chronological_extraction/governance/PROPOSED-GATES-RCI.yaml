@@ -1,0 +1,125 @@
+# PROPOSED-GATES-RCI.yaml — ⛔ A PROPOSAL. NOT ACTIVE. NOT IN gates.yaml.
+#
+# ⛔⛔ STATUS: RESEARCH-PRODUCED PROPOSAL — NOT AUTHORITATIVE GOVERNANCE.
+#     Produced by the research session; the governance plan assigns this
+#     work to the governance session. Preserved as evidence, not adopted.
+#     See SESSION-RECORD-RCI.md §6 / B-15.
+#
+# Research Claude may not modify active gate definitions. These four entries
+# are written here for Governance to review, move into gates.yaml, and — as a
+# separate human act — activate in governance-state.yaml.
+#
+# WHY THESE ARE NEEDED, in one line:
+#   the five activated gates check INTERNAL CONSISTENCY
+#   (F0035 -> object -> seed -> theory);
+#   nothing checked CORPUS CORRESPONDENCE
+#   (F0035 -> manifest -> file -> sha -> passage -> extraction).
+#   Both chains can be perfect independently. The first was. The second was
+#   never built, which is why every gate said CLEAR while provenance was
+#   broken from F0031 onward (ID-ROOTCAUSE-01).
+#
+# ⚠️ ACTIVATION WARNING, stated plainly because it would otherwise be a
+#    surprise: KOS-G-070 FAILS TODAY, by design. 9 file_ids diverge and are
+#    deliberately unrepaired. Activating it BLOCKS all research until the
+#    remedy is authorized and carried out. That may be exactly what is wanted
+#    — it is not mine to decide.
+
+proposed_gates:
+
+  - id: KOS-G-070
+    name: registry-matches-canonical-manifest
+    stage: PHASE_1
+    timing: POST
+    class: AUT
+    tier: A
+    status: proposed
+    purpose: >
+      Every file_id in FILE-REGISTRY.jsonl resolves to the same canonical_path
+      as the corpus manifest. This is the check whose absence allowed the
+      F0031 divergence to pass ten times.
+    source: {protocol: knowledge_os_protocoll.md, rule: "§1123 · §1225 · §4509"}
+    inputs: [FILE-REGISTRY.jsonl, evidence/CORPUS-MANIFEST.jsonl]
+    pass_condition:
+      type: deterministic
+      check: registry_matches_manifest
+      rule: no file_id maps to a path different from the manifest's.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+    note: ⛔ FAILS TODAY — 9 divergent ids, unrepaired by instruction.
+
+  - id: KOS-G-071
+    name: manifest-is-current
+    stage: CHECKPOINT
+    timing: PRE
+    class: AUT
+    tier: A
+    status: proposed
+    purpose: >
+      The stored corpus_manifest_hash matches a fresh build. A manifest that
+      has silently drifted from the corpus binds research to a version that
+      no longer exists.
+    source: {protocol: knowledge_os_protocoll.md, rule: "§3955"}
+    pass_condition:
+      type: deterministic
+      check: manifest_is_current
+      rule: build-manifest.py --verify exits 0.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+
+  - id: KOS-G-072
+    name: every-read-has-a-receipt
+    stage: PHASE_1
+    timing: POST
+    class: AUT
+    tier: A
+    status: proposed
+    purpose: >
+      Every file recorded as READ_COMPLETE has a read receipt binding it to a
+      file_id, a sha256 at read time, and a manifest hash.
+      ⛔ A manifest hash proves only "I worked against this corpus version".
+      It does NOT prove a particular file was read. Neither control
+      substitutes for the other.
+    source: {protocol: none, rule: "RCI-005"}
+    pass_condition:
+      type: deterministic
+      check: every_read_has_receipt
+      rule: registry READ_COMPLETE set is a subset of the receipt set.
+    failure: {effect: BLOCK}
+    human_decision_required: false
+    note: ⚠️ FAILS TODAY for all 40 files — receipts did not exist when they
+          were read. Retro-issuing receipts would fabricate evidence of a
+          binding that never happened; they must NOT be backfilled.
+
+  - id: KOS-G-073
+    name: no-source-drift-since-reading
+    stage: CHECKPOINT
+    timing: POST
+    class: AUT
+    tier: B
+    status: proposed
+    purpose: >
+      No file changed between being read and being cited. A claim sourced to
+      bytes that no longer exist is unverifiable even when its file_id is
+      correct.
+    source: {protocol: none, rule: "RCI-006"}
+    pass_condition:
+      type: deterministic
+      check: no_source_drift
+      rule: every receipt's sha256_at_read equals the manifest's sha256.
+    failure: {effect: WARN}
+    human_decision_required: false
+
+# ⛔ NOT PROPOSED, deliberately.
+#
+# The review sketched a richer evidence model — SourceIdentity, SourceLocation,
+# ReferencedIdentifier with UNIQUE/AMBIGUOUS/UNRESOLVED resolution — to address
+# Boundary C (does "G-4" in a source resolve to one concept?).
+#
+# It is NOT proposed here, on the review's own instruction: "do not implement
+# this yet just because I proposed it. First establish whether the G-4
+# collision actually affects a substantive derivation." That is B-12, a
+# separate narrow forensic audit that has NOT been started.
+#
+# Building a referential-identity model before knowing whether referential
+# identity is broken would be the programme's own recorded failure mode:
+# proposing before searching.

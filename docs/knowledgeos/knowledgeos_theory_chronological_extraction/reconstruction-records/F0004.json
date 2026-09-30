@@ -1,0 +1,153 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0007-RETROFIT-B1",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization 2026-09-23 — 31 admissible files, batches of 5",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0007-RETROFIT-B1. ⛔ Does not inherit or rely on the earlier prose-regime reading."
+ },
+ "⛔ theory_object_disposition": "⛔ Under O-1=A this unit touches only objects this file establishes. None are altered in this batch — gate evaluation follows.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0004",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Architecture_Health_Dashboard.md",
+ "sha256": "6be293ac7538",
+ "canonical_sequence_position": 4,
+ "lines_total": 58,
+ "source_self_declared_status": "⭐ 'PROJECTION — derived from the Synthesis Matrix and the commission records · ⛔ non-authoritative until attested (corrected I-4) · regenerable at will' · 'derived — on conflict, the sources win'",
+ "source_document_kind": "⭐ OPERATIONAL MONITORING PROJECTION. ⛔ 'NOT a design document'. ⛔ 'This projection decides nothing and is authoritative for nothing'.",
+ "source_research_question": "⭐ 'what is being tested and what would count as a result'",
+ "reconstruction_question": "⛔ DISTINCT: do its counters agree with the other files, and does any counter contradict a claim built elsewhere?",
+ "source_method_declared": "⭐⭐ THE UPDATE RULE: '⛔ rows change only when EVIDENCE lands or an AUTHORITY rules — never on a schedule, never by re-reasoning. Every count below exists in a cited record.'",
+ "definitions": [
+  {
+   "term": "PROJECTION",
+   "def": "derived, non-authoritative until attested, regenerable"
+  },
+  {
+   "term": "BOUNDARY / TRIGGER / ADVISORY",
+   "def": "deny (19) · ask (22) · advisory (16)"
+  }
+ ],
+ "assumptions": [
+  "a derived artifact never outranks its source",
+  "counters change only on evidence or a ruling"
+ ],
+ "premises": [
+  "the corrected I-4 (projections non-authoritative until attested)",
+  "the Synthesis Matrix as source"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⭐ Pure counters, each with a cited source: CAP-001 1/1 · R-1..R-77 · 106 reports · 18 lint rules · deny19/ask22/advisory16 · 0 of 11 docket packages ruled · 4 OE entries · 1 operating-unowned asset · 0 second adopters.",
+ "derivations": [
+  {
+   "id": "DI-F0004-01",
+   "from": [
+    "OE-KOS-1 · OE-KOS-2 · OE-KOS-4 enumerated"
+   ],
+   "to": "⭐ R-6 'guides product engineering' is n=3 FORMAL",
+   "form": "ENUMERATION",
+   "validity": "⭐ VALID — the instances are named",
+   "⚠️ note": "'Evidenced, UNMEASURED (no unguided baseline)' — the file states its own limit"
+  },
+  {
+   "id": "DI-F0004-02",
+   "from": [
+    "R-36·R-41·R-63 informal",
+    "OE-KOS-3 formal at instrumentation level"
+   ],
+   "to": "⭐⭐ a THREE-LEVEL back-edge statement: informal n≈3 · instrumentation-formal n=1 · ⛔ canon-formal n=0",
+   "form": "⭐ LEVEL_SEPARATION",
+   "validity": "⭐ VALID AND UNUSUALLY PRECISE"
+  }
+ ],
+ "conclusions": [
+  "⭐ the back-edge is neither 'traversed' nor 'never traversed' — it is traversed at instrumentation level and not at canon level",
+  "⛔ 0 of 11 docket packages ruled",
+  "⛔ second adopting product: none"
+ ],
+ "dependencies": [
+  "F0003 (the Synthesis Matrix — its declared source)",
+  "the Operational Evidence Register",
+  "the Rulings log",
+  "Capability Evidence Record §9",
+  "Operational Knowledge Principles",
+  "Viewpoint Ownership",
+  "the ARB Decision Docket (= F0006)"
+ ],
+ "previous_related_files": "⭐ DECLARES ITS SOURCE: 'Derived 2026-08-03 from KnowledgeOS_Architecture_Synthesis_Matrix.md (= F0003) + cited commissions.'",
+ "knowledgeos_purpose_relevance": "⭐ HIGH — the programme's own instrument panel.",
+ "architectural_role": "⭐ PROJECTION / MONITORING — explicitly Layer-4-adjacent, authoritative for nothing.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the three-level back-edge separation",
+   "the deny/ask/advisory triple as counters",
+   "OE-KOS-4 ('discovery refused to legislate')"
+  ],
+  "⭐ corrected": [
+   "R-6 guides raised to n=3 formal"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0027 (R-6)",
+  "T-0042 (enforcement counters)"
+ ],
+ "sequential_graph_position": "canonical position 4; 2026-08-03, ⭐ DERIVED FROM F0003 — so strictly after it",
+ "file_relationships": [
+  {
+   "to": "F0003",
+   "kind": "⭐ IS_PROJECTION_OF",
+   "note": "declared in its own footer"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH — every counter cites a record.",
+ "derivation_completeness_audit": "⭐ EXCELLENT. A derived artifact that declares its source, its non-authority, and its update rule.",
+ "gaps": [
+  {
+   "id": "G-F0004-A",
+   "⚠️ gap": "'Evidenced, unmeasured (no unguided baseline)' for R-6 guides",
+   "⭐ significance": "⭐ the file names its own confound — n=3 instances with no control"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0004-01",
+   "⛔ finding": "⭐⭐ R-6 'guides' COUNT DISAGREES WITH F0032",
+   "detail": "F0004 records R-6 guides = n=3 FORMAL, enumerated (OE-KOS-1 · OE-KOS-2 · OE-KOS-4). ⭐ T-0035 (sources F0035, F0026) ALREADY states 'n=3 enumerated formal records (planning OE-KOS-1, RED implementation OE-KOS-2, discovery-refusing-to-legislate OE-KOS-4)' — the SAME three.",
+   "⭐ consequence": "⭐ F0004 CORROBORATES T-0035 exactly. ⚠️ The outlier is F0032's reconstruction ('R-6 guides = 2'), which GVR-F0032 V-4 confirmed while ALSO stating it 'agrees with T-0035's count'. ⛔ T-0035's count is 3, not 2.",
+   "⛔ disposition": "⛔ RECORDED AS A FACTUAL POINTER ONLY. T-0035 is not this file's object (O-1=A), F0032's objects are HELD (U-4), and a governance verification record is not this session's to amend.",
+   "status": "⛔ REFERRED — F0032 disposition",
+   "⭐ finding": "⭐ R-6 'guides' COUNT — F0004 and T-0035 BOTH say n=3; F0032's reconstruction says 2",
+   "⚠️ self_correction": "⭐ This record originally framed the discrepancy as F0004-vs-F0032. Canonical discovery against T-0035 showed F0004 AGREES with the registry and F0032 is the outlier."
+  },
+  {
+   "id": "AUDIT-F0004-02",
+   "⭐ finding": "⭐ THE BACK-EDGE IS RESOLVED HERE INTO THREE LEVELS, WHICH DISSOLVES AN EARLIER DISPUTE",
+   "detail": "'n≈3 informal (R-36·R-41·R-63) · ⭐ FORMAL n=1 at the INSTRUMENTATION level: OE-KOS-3 · ⛔ canon-level formal traversal still n=0'.",
+   "⭐ consequence": "⭐ GVR-F0032 P-2 rejected a '0 → 1, one day apart' date test as unverified. ⭐ F0004 shows why the flat framing was wrong: there is no single 0→1 event — there are three different counters at three levels.",
+   "status": "⭐ RESOLVED_BY_SOURCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the hypothesis table",
+  "the counter table",
+  "the Phase-V watch signals"
+ ],
+ "provenance_second_hand": [
+  "⛔ every counter's underlying record"
+ ],
+ "negative_evidence": "⭐ PRECISE: 'n=0 inside AND outside' for generates→PKS; '0 of 11' packages ruled; 'none' for the second adopter. ⭐ Each negative is a COUNTER with a named source, not an unscoped search.",
+ "multi_dimensional_confidence": {
+  "the counters": "⭐ HIGH — each cites a record",
+  "R-6 guides n=3": "⚠️ MEDIUM — conflicts with F0032's 2",
+  "the three-level back-edge": "⭐ HIGH"
+ },
+ "not_recoverable_without_reread": [
+  "the Operational Evidence Register",
+  "Operational Knowledge Principles",
+  "Viewpoint Ownership"
+ ]
+}

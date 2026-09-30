@@ -1,0 +1,55 @@
+{
+ "iteration": 1,
+ "status": "COMPLETE",
+ "phases_run": [
+  "0",
+  "A",
+  "B",
+  "C",
+  "D",
+  "B2",
+  "E",
+  "F",
+  "G",
+  "L",
+  "H0",
+  "J",
+  "K"
+ ],
+ "phases_deferred": {
+  "H": "verification \u2014 SELF framing recorded; INDEPENDENT requires a separate reader (\u00a711.0)",
+  "I": "agenda written"
+ },
+ "counts": {
+  "nodes_admitted": 33,
+  "events": 37,
+  "emergents": 7,
+  "structures": 6,
+  "structures_at_F2": 0,
+  "competitions": 5,
+  "representational_gaps": 7,
+  "seed_items": 11,
+  "evolution_records": 5
+ },
+ "maturity": "all M1 \u2014 M2 unreachable without an independent reader",
+ "oq_l4": "ANSWERED: NO \u2014 the iteration-1 primitive list did not survive construction",
+ "model_at_end": [
+  "Competition",
+  "ComputedMaturity",
+  "Derivation (n-ary)",
+  "EmergentRecord",
+  "Event",
+  "Evidence",
+  "Gap",
+  "OpenTerm",
+  "Provenance",
+  "Relationship",
+  "SearchRecord / Event(SEARCH)",
+  "Source",
+  "Structure (staged F0-F3)",
+  "TheoryEvolution",
+  "TheoryObject",
+  "TheoryThread"
+ ],
+ "freeze": "NOT MET \u2014 iteration 2 required; second run must reproduce the methodology"
+}

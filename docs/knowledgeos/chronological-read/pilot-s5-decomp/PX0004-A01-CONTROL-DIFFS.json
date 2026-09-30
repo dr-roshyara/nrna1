@@ -1,0 +1,100 @@
+[
+ [
+  "births.lexical",
+  "coarse",
+  "ESCALATED[TIMESTAMP-ANOMALY: S1020's recorded EXPLICIT date ",
+  "ESCALATED[TIMESTAMP-ANOMALY: birth row S1020 (\u00a7120.66 names "
+ ],
+ [
+  "births.conceptual",
+  "different",
+  "MOVED[S1020, The objective is to identify the smallest set o",
+  "ESCALATED[TIMESTAMP-ANOMALY: candidate S1021 (Step 122) is p"
+ ],
+ [
+  "births.formal",
+  "coarse",
+  "ESCALATED[TIMESTAMP-ANOMALY: S1020's recorded EXPLICIT date ",
+  "ESCALATED[TIMESTAMP-ANOMALY: birth row S1020 (\u00a7120.46; see a"
+ ],
+ [
+  "births.operational",
+  "coarse",
+  "ESCALATED[TIMESTAMP-ANOMALY: S1020's recorded EXPLICIT date ",
+  "ESCALATED[TIMESTAMP-ANOMALY: birth row S1020 (\u00a7120.4 Experim"
+ ],
+ [
+  "births.governance",
+  "coarse",
+  "ESCALATED[TIMESTAMP-ANOMALY: S1022's only recorded explicit ",
+  "ESCALATED[TIMESTAMP-ANOMALY: candidate S1022 (\u00a7123.48) best_"
+ ],
+ [
+  "secondary_roles",
+  "coarse",
+  [
+   "OPERATIONAL"
+  ],
+  [
+   "DERIVED",
+   "OPERATIONAL"
+  ]
+ ],
+ [
+  "timeline",
+  "coarse",
+  {
+   "S1020": "FIRST",
+   "S1021": "EXTENDS",
+   "S1022": "EXTENDS",
+   "S1023": "EXTENDS",
+   "S1484": "RESTATES",
+   "S1524": "NOT-COMPARABLE"
+  },
+  {
+   "S1020": "FIRST",
+   "S1021": "EXTENDS",
+   "S1022": "EXTENDS",
+   "S1023": "EXTENDS",
+   "S1484": "RESTATES",
+   "S1524": "RESTATES"
+  }
+ ],
+ [
+  "escalations",
+  "different",
+  [
+   "TIMESTAMP-ANOMALY",
+   "TIMESTAMP-ANOMALY"
+  ],
+  [
+   "OTHER",
+   "OTHER",
+   "TIMESTAMP-ANOMALY",
+   "TIMESTAMP-ANOMALY",
+   "TIMESTAMP-ANOMALY",
+   "TIMESTAMP-ANOMALY",
+   "TIMESTAMP-ANOMALY"
+  ]
+ ],
+ [
+  "stage2 S1484:ledger:\"120 - Knowled:3",
+  "different",
+  {
+   "informal_meaning": "FOUND"
+  },
+  {
+   "informal_meaning": "UNSUPPLIED-DIMENSION"
+  }
+ ],
+ [
+  "stage2 S1484:raw:22110:3",
+  "different",
+  {
+   "informal_meaning": "FOUND"
+  },
+  {
+   "informal_meaning": "UNSUPPLIED-DIMENSION"
+  }
+ ]
+]

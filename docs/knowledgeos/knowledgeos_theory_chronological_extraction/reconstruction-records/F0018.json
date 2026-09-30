@@ -1,0 +1,196 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0009-RETROFIT-B3",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization — batch 3",
+  "⚠️ prior_read": "YES",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0009-RETROFIT-B3."
+ },
+ "⛔ theory_object_disposition": "⛔ O-1=A: own-file objects only. ⛔ 0 existing rows modified.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0018",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+ "canonical_sequence_position": 18,
+ "lines_total": 157,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — NOT ADOPTED'",
+ "source_document_kind": "⭐ PURE DISCOVERY. ⛔ 'No lifecycle extended · no Authority State Machine designed · no YAML modified · no new concept · no new relationship · no ADR · no implementation.'",
+ "source_research_question": "⛔ 'not \"should authority become a state machine?\"' — ⭐ 'what independent dimensions describe the evolution of engineering knowledge?'",
+ "reconstruction_question": "⛔ DISTINCT: does the reframing dissolve LG-1 or merely defer it?",
+ "source_method_declared": "⭐ Ten mechanisms inventoried as OBSERVATIONS, 'not assumed to be lifecycles', then answered against seven commissioned questions.",
+ "definitions": [
+  {
+   "term": "GOVERNANCE-ACT progression",
+   "def": "moved by a decision by a named role"
+  },
+  {
+   "term": "EVIDENTIAL progression",
+   "def": "⭐ moved by accumulating evidence — nobody can decree it; reversible only by refutation"
+  },
+  {
+   "term": "WORK-EXECUTION progression",
+   "def": "moved by time and effort; has a clock"
+  },
+  {
+   "term": "COMPOSITE trajectory",
+   "def": "crossing the above"
+  },
+  {
+   "term": "⛔ PROVENANCE",
+   "def": "⭐⭐ NON-PROGRESSION — an immutable fact of origin; 'facts do not have lifecycles'"
+  }
+ ],
+ "assumptions": [
+  "a mechanism is an observation until shown to be a lifecycle",
+  "provenance cannot progress"
+ ],
+ "premises": [
+  "statuses.yaml · authorities.yaml",
+  "ES-006.1 · ES-003",
+  "GEP-F1",
+  "the two declared orthogonalities",
+  "Round39-D6"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⭐ P-10 is named as a monotonic counter: n=0 → n=1 → n≥2.",
+ "derivations": [
+  {
+   "id": "DI-F0018-01",
+   "from": [
+    "authorities.yaml's own header asks 'how much should I trust this AND where did it come from?'",
+    "its five values answer different questions"
+   ],
+   "to": "⭐⭐⭐ authority = immutable PROVENANCE × act-changed STANDING",
+   "form": "⭐ TWO_QUESTIONS_IN_ONE_FIELD",
+   "validity": "⭐⭐ VALID — the file's own header is the evidence"
+  },
+  {
+   "id": "DI-F0018-02",
+   "from": [
+    "provenance cannot change",
+    "standing changes by acts, recorded as act-logs not workflows"
+   ],
+   "to": "⭐⭐ LG-1 DISSOLVES rather than being answered — 'the question is ill-posed'",
+   "form": "⭐ DISSOLUTION",
+   "validity": "⭐⭐ VALID"
+  },
+  {
+   "id": "DI-F0018-03",
+   "from": [
+    "ten mechanisms × seven questions"
+   ],
+   "to": "⭐ four KINDS of change plus one non-progression",
+   "form": "TAXONOMY_FROM_INVENTORY",
+   "validity": "⭐ VALID"
+  },
+  {
+   "id": "DI-F0018-04",
+   "from": [
+    "P-3 and P-6 consume P-10"
+   ],
+   "to": "⭐⭐ 'evidence EARNS; governance GRANTS; promotion requires BOTH'",
+   "form": "CENTRAL_MECHANISM_NAMED",
+   "validity": "⭐⭐ VALID"
+  }
+ ],
+ "conclusions": [
+  "⭐ 'The repository does not have ten lifecycles. It has four kinds of change and one immutable fact, wearing ten mechanisms.'",
+  "⭐⭐ 'a GOVERNANCE-ACT progression can be GRANTED. An EVIDENTIAL progression can only be EARNED.'",
+  "⭐ 'half of authority is a fact and facts do not have lifecycles'"
+ ],
+ "dependencies": [
+  "statuses.yaml",
+  "authorities.yaml",
+  "ES-006.1 · ES-003",
+  "EEP",
+  "Capability Catalog",
+  "Round39-D6 / P2-SYN-01 §6",
+  "Project-State-Sync",
+  "GEP-F1",
+  "Reference Model §6",
+  "the 'Qualification' UL collision record"
+ ],
+ "previous_related_files": "⭐ Supersedes F0014's LG-1.",
+ "knowledgeos_purpose_relevance": "⭐⭐ MAXIMAL — it names the platform's central mechanism.",
+ "architectural_role": "⭐ PURE DISCOVERY / PROGRESSION TAXONOMY.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the four progression kinds + PROVENANCE non-progression",
+   "PM-1..PM-5"
+  ],
+  "⛔ withdrawn": [
+   "⭐ LG-1 — conceded as solution design and withdrawn as ill-posed"
+  ],
+  "⭐ confirmed": [
+   "the reviewer's 'that chain is QUALIFICATION, not authority'"
+  ]
+ },
+ "theory_objects_touched": [
+  "T-0013",
+  "T-0014"
+ ],
+ "sequential_graph_position": "canonical position 18; 2026-08-02",
+ "file_relationships": [
+  {
+   "to": "F0014",
+   "kind": "⭐ SUPERSEDES",
+   "note": "LG-1 withdrawn here"
+  },
+  {
+   "to": "F0016",
+   "kind": "IS_SOURCE_OF",
+   "note": "F0016 cites provenance × standing"
+  },
+  {
+   "to": "F0017",
+   "kind": "IS_SOURCE_OF"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ EXEMPLARY: it concedes that its own predecessor question was solution design ('I located an asymmetry and immediately proposed its repair — ⛔ exactly what DDD forbids'), and honours prior art explicitly: '⭐ This discovery extends canon; it does not found it.'",
+ "gaps": [
+  {
+   "id": "G-F0018-A",
+   "⚠️ gap": "PM-2 (should standing-changes get role/guard treatment?) is left open",
+   "⭐ significance": "⭐ deliberately — 'an act-governance question, not a state-machine question'"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0018-01",
+   "⭐ finding": "⭐⭐ A QUESTION DISSOLVED RATHER THAN ANSWERED — AND THE PRIOR QUESTION CONCEDED AS SOLUTION DESIGN",
+   "detail": "⛔ 'LG-1 was solution design, conceded. \"Missing transitions → need state machine\" is an inference from a missing implementation to a model — ⛔ exactly what DDD forbids.' ⭐ Then: 'THIS DISSOLVES LG-1 RATHER THAN ANSWERING IT.'",
+   "⭐ consequence": "⭐ It also explains a persistent confusion: '`derived` (provenance) was read as if it entailed low standing — but a signed financial statement is `derived` in provenance and `authoritative` in standing, ⭐ simultaneously and without contradiction.'",
+   "status": "⭐ POSITIVE_METHOD_EVIDENCE",
+   "significance": "⭐ HIGH"
+  }
+ ],
+ "provenance_first_hand": [
+  "the ten-mechanism inventory",
+  "the seven-question table",
+  "the four kinds",
+  "the authority decomposition",
+  "PM-1..PM-5"
+ ],
+ "provenance_second_hand": [
+  "⛔ both YAML schemas, quoted",
+  "GEP-F1",
+  "Round39-D6"
+ ],
+ "negative_evidence": "⭐ A NEGATIVE ABOUT A QUESTION RATHER THAN A CLAIM: LG-1 is not answered NO, it is shown to be ill-posed — ⭐ 'no mechanism needs redesign on this evidence'.",
+ "multi_dimensional_confidence": {
+  "authority = provenance × standing": "⭐⭐ HIGH — the field's own header",
+  "the four kinds": "⭐ HIGH",
+  "evidence EARNS / governance GRANTS": "⭐⭐ HIGH",
+  "PM-1's disposition": "⛔ NOT TAKEN — ARB's"
+ },
+ "not_recoverable_without_reread": [
+  "statuses.yaml",
+  "authorities.yaml",
+  "Round39-D6",
+  "the Qualification UL collision record"
+ ]
+}

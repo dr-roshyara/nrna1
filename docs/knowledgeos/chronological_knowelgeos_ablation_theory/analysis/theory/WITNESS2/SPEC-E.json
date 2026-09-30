@@ -1,0 +1,9 @@
+{
+ "test": "second witness(es) for evidence E: the R-36 promotion matrix",
+ "status": "FROZEN before reading",
+ "source": "claude/plans/swirling-jingling-blossom.md (fde5ccf2...) L23-L50 'Deliverable 1 — Promotion Matrix' only (a plan document: a different source family from the register)",
+ "code_per_item": ["evidence count (PB / slice / instance count as stated)", "outcome (promoted = RAISE performed; otherwise not promoted, with its class)", "stated ground of non-promotion: EVIDENCE (too few instances) / SCOPE / DUPLICATION / OTHER / NR"],
+ "E_pair_rule": "an E-witness = an item promoted with count >= 2 and an item not promoted on an EVIDENCE ground with count < 2; same authority and same kind (engineering behaviour candidate) by construction of the matrix",
+ "falsifier_of_the_RAISE_bar": "an item promoted with a stated count of 1 and no exception, OR an item not promoted on an EVIDENCE ground despite count >= 2",
+ "not_evidence": "SCOPE / DUPLICATION / OTHER grounds do not count toward E"
+}

@@ -1,0 +1,176 @@
+{
+ "release": "L0-REL-07(a)",
+ "source": {
+  "path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+  "sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+  "unit": "entry **ES-006.1 (L14) bounded by next sibling **ES-006.2 (L22)",
+  "lines": [
+   14,
+   21
+  ]
+ },
+ "cells": [
+  {
+   "id": "E6-c1",
+   "claim_id": "E6-L20-grounding",
+   "proposition": "EP-02a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 20,
+    "end_line": 20
+   },
+   "exact_wording": "everything is promoted because operational evidence demonstrated necessity",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion occurs only on demonstrated operational evidence",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Universal rule: promotion is grounded in demonstrated operational evidence. It does NOT state when the condition is checked (at authorization t_a vs at the promotion event t_p), nor that the bar is re-met at the event; so it cannot decide the event-time propositions. Coding it SUPPORTED would eliminate MT1-P1 (EP-02a) or the whole family (EP-02b) on unstated timing — ambiguity kept explicit."
+  },
+  {
+   "id": "E6-c2",
+   "claim_id": "E6-L20-grounding",
+   "proposition": "EP-02b",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 20,
+    "end_line": 20
+   },
+   "exact_wording": "everything is promoted because operational evidence demonstrated necessity",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Universal rule: promotion is grounded in demonstrated operational evidence. It does NOT state when the condition is checked (at authorization t_a vs at the promotion event t_p), nor that the bar is re-met at the event; so it cannot decide the event-time propositions. Coding it SUPPORTED would eliminate MT1-P1 (EP-02a) or the whole family (EP-02b) on unstated timing — ambiguity kept explicit."
+  },
+  {
+   "id": "E6-c3",
+   "claim_id": "E6-L17-ladder",
+   "proposition": "EP-03a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 17,
+    "end_line": 17
+   },
+   "exact_wording": "Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "the promotion ladder, stated forward only",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Forward-only ladder; the entry states no reverse transition (no demotion, revocation, invalidation, reassessment). SILENT on post-promotion loss — and absence is not persistence (¬E(revocation) ⇏ P0)."
+  },
+  {
+   "id": "E6-c4",
+   "claim_id": "E6-L17-ladder",
+   "proposition": "EP-04a",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 17,
+    "end_line": 17
+   },
+   "exact_wording": "Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Forward-only ladder; the entry states no reverse transition (no demotion, revocation, invalidation, reassessment). SILENT on post-promotion loss — and absence is not persistence (¬E(revocation) ⇏ P0)."
+  },
+  {
+   "id": "E6-c5",
+   "claim_id": "E6-L17-ladder",
+   "proposition": "EP-04b",
+   "source_slot": "S-6",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 17,
+    "end_line": 17
+   },
+   "exact_wording": "Research → Pilot → Qualification → Engineering Standard → Stable Engineering Capability",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "SILENT",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "engineering-knowledge promotion (ES-006.1, ARB rule)"
+   },
+   "notes": "Forward-only ladder; the entry states no reverse transition (no demotion, revocation, invalidation, reassessment). SILENT on post-promotion loss — and absence is not persistence (¬E(revocation) ⇏ P0)."
+  }
+ ],
+ "events": [
+  {
+   "id": "E6-e1",
+   "type": "OTHER",
+   "source_path": "engineering/governance/ES-006-Engineering-Knowledge-Governance.md",
+   "source_sha256": "349b7d5d5e2df4ffea052c06c35e2c2d5503c22ffd79654946ad671d2f0c42a0",
+   "anchor": {
+    "start_line": 14,
+    "end_line": 14
+   },
+   "exact_wording": "refined 2026-07-11",
+   "historical_date": {
+    "value": "2026-07-11",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-07",
+   "context": {
+    "scope": "ES-006.1 rule refinement by the ARB"
+   },
+   "notes": "rule refinement event (ARB)"
+  }
+ ]
+}

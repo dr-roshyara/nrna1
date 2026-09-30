@@ -1,0 +1,310 @@
+{
+ "events": [],
+ "family_flags": [],
+ "formal_basis": {
+  "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+  "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+  "status": "SECONDARY-REPRODUCED"
+ },
+ "models": {
+  "MT0": {
+   "cannot_express": [],
+   "conditionally_inconsistent_with": [],
+   "inconsistent_with": [],
+   "role": "control (never a candidate)",
+   "status": "NOT-ELIMINATED"
+  },
+  "MT1-P0": {
+   "cannot_express": [],
+   "conditionally_inconsistent_with": [],
+   "inconsistent_with": [],
+   "role": "primary",
+   "status": "NOT-ELIMINATED"
+  },
+  "MT1-P1": {
+   "cannot_express": [],
+   "conditionally_inconsistent_with": [],
+   "inconsistent_with": [],
+   "role": "primary",
+   "status": "NOT-ELIMINATED"
+  },
+  "MT2-P0": {
+   "cannot_express": [],
+   "conditionally_inconsistent_with": [],
+   "inconsistent_with": [],
+   "role": "primary",
+   "status": "NOT-ELIMINATED"
+  },
+  "MT2-P1": {
+   "cannot_express": [],
+   "conditionally_inconsistent_with": [],
+   "inconsistent_with": [],
+   "role": "primary",
+   "status": "NOT-ELIMINATED"
+  }
+ },
+ "open": [
+  "EP-13c"
+ ],
+ "propositions": {
+  "EP-01": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-1",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-02a": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-2",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-02b": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-2",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-02c": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-2",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-03a": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-3",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-04a": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-4",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-04b": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-4",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-05a": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-5",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-05b": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-5",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-06": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-6",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-07": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-7",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-08": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-8",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-09": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-9",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-10": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-10",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-11": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-11",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-12": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-12",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-13a": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-13",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-13b": {
+   "annotations": [],
+   "cells": [],
+   "claims": [],
+   "diagnostics": [],
+   "eq": "EQ-13",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "SILENT"
+  },
+  "EP-13c": {
+   "annotations": [],
+   "cells": [
+    "S3-c1",
+    "S4-c1",
+    "S4-c2"
+   ],
+   "claims": [
+    "S-3-L113",
+    "S-4-L105",
+    "S-4-L111"
+   ],
+   "diagnostics": [
+    "SEMANTIC-AMBIGUITY"
+   ],
+   "eq": "EQ-13",
+   "formal_basis": {
+    "results_path": "docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/gate25/results_ref.json",
+    "results_sha256": "1771c79a092cf025a5e5a1e108686b6666cb751c4eac6685b0045533fa424895",
+    "status": "SECONDARY-REPRODUCED"
+   },
+   "outcome": "AMBIGUOUS"
+  }
+ },
+ "rule": "constraints only; no model is selected; NOT-ELIMINATED != supported; SILENT constrains nothing; CONFLICTING keeps both directions unresolved; every constraint carries the formal basis",
+ "status": "DERIVED"
+}

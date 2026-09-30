@@ -1,0 +1,170 @@
+{
+ "artifact": "S5-CANARY-PRECHECK",
+ "authority_context": "G-LOG-0104 (package approved), G-LOG-0105 (EG-4); the canary itself is NOT authorized",
+ "checker_sha256": "75e7bab55dac22c21511ae71b1651e9b45a5c3bc8484a8a8ebd0e4a42d626cd3",
+ "findings": [
+  {
+   "classification": "Engineering + contract gap; BLOCKS the canary (OB0114) and step 6 of every batch",
+   "consequence": "a hand-assembled batch would be an unwitnessed, unspecified write between the ASSEMBLED and FINAL-VALIDATED markers",
+   "finding": "Runbook step 6 (assemble ledger-p3b-r2/<B>-R7/{objects,register,p1-gap-capture}.jsonl) has no tool and no contract rule. The verifier needs one object per planned label; an EMPTY label (OB0114: 1; frame: 7) has no run, so its object (R17: births NOT-EVIDENCED-IN-CAPTURE, EMPTY-REQUIRED-SET escalation, full schema/typing/S3 validity, run_id = the assembly) has no defined producer. Final runs write p1-gap.jsonl; the assembly reads p1-gap-capture.jsonl (a rename rule is also unstated).",
+   "id": "EG-5",
+   "proposed_resolution": "human decision on the EMPTY-object rule (deterministic, from the frozen slice only), then `orchestrate assemble B` tests first (mechanical concatenation of final-run records + the derived EMPTY objects); no change to plans, frame or sample"
+  }
+ ],
+ "kind": "engineering evidence (authority: generated); read-only; nothing dispatched; no sampled content read",
+ "method": "orchestrate.prepare on a temporary copy of the bound files (no production view or I(run) written); production prompts rendered against the repository root; counts only",
+ "result": {
+  "activation_commit_exists": true,
+  "archive_root": "/home/nab-raj.roshyara@dg-nexolution.de/knowledgeos-witness-archive",
+  "batches": {
+   "OB0012": {
+    "archive_dir_exists": false,
+    "decided_binaries_in_plan": 0,
+    "decomposed_labels_needing_freeze_units": 0,
+    "empty_labels_needing_assembly_object": 0,
+    "hub_batch": false,
+    "label_paths": {
+     "SINGLE": 5
+    },
+    "labels": 5,
+    "ledger_R7_dirs_existing": 0,
+    "manifest_categories": [
+     "ADDENDUM",
+     "CONTRACT",
+     "PLAN",
+     "SLICE",
+     "SLICE-VIEW"
+    ],
+    "manifest_violations": 0,
+    "namespace_violations_now": 0,
+    "plan_sha_bound": true,
+    "production_views_present": 0,
+    "prompt_bundle_sha256": "b6d1193e87782cca5c65dd18a104dd2bb9a176968806b51879c0d687195ba805",
+    "prompt_checks": {
+     "binding_first": 5,
+     "canary_ok": 5,
+     "no_other_bash_rule": 5,
+     "one_binding": 5,
+     "quarantine_hits": 0,
+     "reader_form_ok": 5,
+     "view_listed": 5,
+     "writes_exact": 5
+    },
+    "prompts": 5,
+    "reading_manifests": 5,
+    "runs": 5,
+    "runs_by_role": {
+     "SINGLE": 5
+    },
+    "slices_bound": true,
+    "state": [
+     "PREPARED",
+     "OB0012-R7",
+     7
+    ],
+    "synthesis_input_categories": {},
+    "view_violations": 0,
+    "views_written_in_copy": 5
+   },
+   "OB0114": {
+    "archive_dir_exists": false,
+    "decided_binaries_in_plan": 0,
+    "decomposed_labels_needing_freeze_units": 1,
+    "empty_labels_needing_assembly_object": 1,
+    "hub_batch": false,
+    "label_paths": {
+     "DECOMPOSED": 1,
+     "EMPTY": 1,
+     "SINGLE": 3
+    },
+    "labels": 5,
+    "ledger_R7_dirs_existing": 0,
+    "manifest_categories": [
+     "ADDENDUM",
+     "CONTRACT",
+     "PLAN",
+     "SLICE",
+     "SLICE-VIEW"
+    ],
+    "manifest_violations": 0,
+    "namespace_violations_now": 0,
+    "plan_sha_bound": true,
+    "production_views_present": 0,
+    "prompt_bundle_sha256": "4471937274d1f856fbd392684dc0d358b82880740d5547d4c32a195b34bf39f4",
+    "prompt_checks": {
+     "binding_first": 6,
+     "canary_ok": 6,
+     "no_other_bash_rule": 6,
+     "one_binding": 6,
+     "quarantine_hits": 0,
+     "reader_form_ok": 6,
+     "view_listed": 6,
+     "writes_exact": 6
+    },
+    "prompts": 6,
+    "reading_manifests": 5,
+    "runs": 6,
+    "runs_by_role": {
+     "SINGLE": 3,
+     "SYNTHESIS": 1,
+     "UNIT": 2
+    },
+    "slices_bound": true,
+    "state": [
+     "PREPARED",
+     "OB0114-R7",
+     7
+    ],
+    "synthesis_input_categories": {
+     "OB0114-R7-L03S": [
+      "ADDENDUM",
+      "CONTRACT",
+      "PLAN",
+      "SLICE",
+      "SLICE-VIEW",
+      "UNIT-RECORDS"
+     ]
+    },
+    "view_violations": 0,
+    "views_written_in_copy": 5
+   }
+  },
+  "contract": {
+   "path": "prompts/20260926_2400_p3b-agent-contract-r7-addendum.md",
+   "revision": 7,
+   "sha256": "9523c712efd8c0e67d701b7e0003b85bf3f683e457d2b15aa2d6e1a3b854b367"
+  },
+  "manifest_sha256": "9b172123d1dc274c310d9c43698e3f9c6eb067277fbe5c85893c96a95266171c",
+  "prompt_sha256": {
+   "OB0012-R7-L01": "4ad255fec3c74c48e1a99146397b10a2c0fd9d7d75057d2dde35fe17f849be66",
+   "OB0012-R7-L02": "9f125e664cd3ada9f66898a6e5d608f89fd6e4bc08ea77fd640cb6346c4e6ca3",
+   "OB0012-R7-L03": "b6ec302a5eafceb2625eb781952dc5fb243f122a77ed53650df2f1c6f4108fb8",
+   "OB0012-R7-L04": "1bd5fd31c9e2dd365a5a9f626849fb729312bb9fe12617a77c7d7826c1f88e03",
+   "OB0012-R7-L05": "11475e42a71299272354ffb26029e0930e36c03bd6751b38322d8cad6b4f362d",
+   "OB0114-R7-L01": "692273b250148bd74a5084c8f1d91718cd4562edd7d6894d2a408830724400bf",
+   "OB0114-R7-L02": "63ce2604fbf550ba8cdf37b91a06ca101e06cd328e855ce3f32ae54303c1690f",
+   "OB0114-R7-L03S": "1142a20196f6a88abf450c198c47bb7e7d17273ce3039eec0f5e4ce380683cb5",
+   "OB0114-R7-L03U01": "69b98e2707b75d9aa49221efaa039214adb4d11a140ab857b7cbe83682259fef",
+   "OB0114-R7-L03U02": "e9c6787776e25e1b0886e7462dbc7f9d0d533021bed5e37ccb09634bb2d0a59d",
+   "OB0114-R7-L05": "f097f0e362d78ffffff7bceecafe7b2e109fb22bda46bd5614a756072987a127"
+  },
+  "reader_abs_exists": true,
+  "reader_is_repo_reader": true,
+  "revision_violations": [],
+  "state_bound": "9b172123d1dc274c310d9c43698e3f9c6eb067277fbe5c85893c96a95266171c",
+  "stop_rule": {
+   "package_committed_clean": true,
+   "package_sha256": "f8e581aebbcb45a1039aa912ebac6d8c45326474c13093082d893bf14394bb31",
+   "text_present": true
+  },
+  "tool_sha256": {
+   "p3b_read_source.py": "f4be32e51389d16e76ab1402b39c04653d2ddab1eb51d7ccc0a0114b7c3546eb",
+   "p3b_s5_r7_orchestrate.py": "f9c21f68df1016fa22bd5bff5f6c9a062408a7bd18f26599e1ba934f27a98195",
+   "p3b_s5_r7_universe.py": "1a9ff865a47ce69895731d1b63163f4fc9e930bd4c1481f92102cdff672b1a32",
+   "p3b_s5_r7_verify.py": "47e1cbb7a27802004361b206247e6091dd40c83387f79737e0983ed3e5c7b740",
+   "p3b_s5_r7_witness.py": "833c44dcdf54c18d2565af6142ce7b208d6cbc998fb30f4c7acf4dbc315e2c9f",
+   "p3b_s5_verify.py": "0d9e7c6c767e26b927aa76ec6426d123a238339c8572432f408f92e76b32350b"
+  },
+  "total_runs": 11
+ }
+}

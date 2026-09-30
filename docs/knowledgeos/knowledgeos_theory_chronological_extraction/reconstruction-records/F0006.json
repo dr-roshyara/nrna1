@@ -1,0 +1,151 @@
+{
+ "corpus_manifest_hash": "54977c6e1213028db7bd05cc37911801a080dd3e517102a53c079c696fe049fa",
+ "canonical_timestamp": "Aug 5 15:44",
+ "read_mode": "COMPLETE_FILE",
+ "read_unit": "U-0007-RETROFIT-B1",
+ "read_date": "2026-09-23",
+ "retrofit": {
+  "⭐ authority": "L0 standing authorization 2026-09-23 — 31 admissible files, batches of 5",
+  "⚠️ prior_read": "YES — pre-§9 prose regime",
+  "original_read_conformance": "NON_CONFORMANT",
+  "⭐ provenance_separation": "NEW §9/§9A evidence from a complete re-read under receipt U-0007-RETROFIT-B1."
+ },
+ "⛔ theory_object_disposition": "⛔ Under O-1=A only own-file objects are in scope; none altered in this batch.",
+ "dossier_status": "PENDING_GATE_EVAL",
+ "file_id": "F0006",
+ "canonical_path": "docs/knowledgeos/KnowledgeOS_ARB_Decision_Docket.md",
+ "sha256": "52b2ad804d69",
+ "canonical_sequence_position": 6,
+ "lines_total": 198,
+ "source_self_declared_status": "⚠️ 'CANDIDATE — the agenda, not the outcome' · 'Generated — never authoritative without human review. Per EEP: the platform does not approve itself' · '⛔ Nothing in this docket executes. It is an agenda.'",
+ "source_document_kind": "⭐ DECISION PREPARATION. ⛔ 'Recommendations only — every decision is the named authority's.'",
+ "source_research_question": "⭐ 'The bottleneck has shifted from finding answers to deciding which validated answers become canonical.'",
+ "reconstruction_question": "⛔ DISTINCT: is the docket's own evidence held to the standard it demands of others?",
+ "source_method_declared": "⭐ Ten one-page packages, each with decision / rationale / supporting / ⭐ OPPOSING / risks BOTH WAYS / downstream / authority / recommendation, ⭐ ordered by gating effect.",
+ "definitions": [
+  {
+   "term": "Platform Cost metric",
+   "def": "the AIP-14 over-evolution measure — ⛔ basis undecided"
+  },
+  {
+   "term": "D-9a / D-9b",
+   "def": "⭐ DEFINE the measurement basis, then RUN the check"
+  }
+ ],
+ "assumptions": [
+  "a recommendation is not a decision",
+  "the tripwire cannot fire if the metric is never computed"
+ ],
+ "premises": [
+  "AIP-14",
+  "EEP ('the platform does not approve itself')",
+  "R-34",
+  "N-10 / Reference Architecture §1"
+ ],
+ "mathematical_statistical_claims": "⛔ NONE. ⚠️ One count used as evidence and then DOWNGRADED — see the contradiction below.",
+ "derivations": [
+  {
+   "id": "DI-F0006-01",
+   "from": [
+    "AIP-14: two consecutive platform-only iterations trigger review",
+    "the metric has never been computed"
+   ],
+   "to": "⭐ D-9 gates the whole docket",
+   "form": "GATING_ORDER",
+   "validity": "⭐ VALID"
+  },
+  {
+   "id": "DI-F0006-02",
+   "from": [
+    "'should AIP-14 measure by document count, effort, elapsed time, or delivered capability?'"
+   ],
+   "to": "⭐⭐ D-9 SPLITS: define the basis (D-9a) before running the check (D-9b)",
+   "form": "⭐ SELF_DEFECT_CORRECTION",
+   "validity": "⭐⭐ VALID AND EXEMPLARY"
+  }
+ ],
+ "conclusions": [
+  "⭐ D-9a first — 'the gate must be built before it can be closed'",
+  "⛔ Package 11 DEFERRED — launching another platform workstream while D-9 is unresolved is the exact AIP-14 exposure under examination",
+  "⭐ D-10: admit C-1 model amnesia (n=11) as a requirement CANDIDATE, ⛔ no remedy designed"
+ ],
+ "dependencies": [
+  "AIP-14 · ADR-AIP-02",
+  "ES-006's E-1 register",
+  "RQ-002 · the Metamodel · L-A",
+  "Phase-02 frozen map · R-63/R-64 · AIP-13",
+  "CAP-001 · PMR-10",
+  "the ES set · the Reference Architecture",
+  "N-10",
+  "the blind review",
+  "F0003 (the Synthesis Matrix supplies the buckets)"
+ ],
+ "previous_related_files": "⛔ Cites the D-item series from Phase B.5 and ~10 commissions. NOT_RECOVERABLE_WITHOUT_REREAD.",
+ "knowledgeos_purpose_relevance": "⭐ HIGH — the agenda that gates whether anything becomes canonical.",
+ "architectural_role": "⭐ DECISION PREPARATION / AGENDA.",
+ "new_missing_changed": {
+  "⭐ new": [
+   "the 11 packages",
+   "the D-9a/D-9b split",
+   "the opposing-evidence-per-package form"
+  ],
+  "⭐ corrected": [
+   "⛔⛔ Package 1's own supporting evidence DOWNGRADED from trigger evidence to illustration"
+  ],
+  "⛔ deferred": [
+   "Package 11 — the Platform Architecture workstream, 'packaged, deliberately NOT launched'"
+  ]
+ },
+ "theory_objects_touched": [],
+ "sequential_graph_position": "canonical position 6; 2026-08-03 REV 2",
+ "file_relationships": [
+  {
+   "to": "F0003",
+   "kind": "CONSUMES",
+   "note": "the docket is the 'Open' register F0003 §4 points to"
+  },
+  {
+   "to": "F0004",
+   "kind": "IS_COUNTED_BY",
+   "note": "F0004 records '0 of 11 docket packages ruled'"
+  }
+ ],
+ "derivation_chain_reconstructed": true,
+ "continuity": "⭐ HIGH.",
+ "derivation_completeness_audit": "⭐⭐ Every package carries OPPOSING evidence and risks in BOTH directions — the only file in the eleven audited that systematically argues against its own recommendations.",
+ "gaps": [
+  {
+   "id": "G-F0006-A",
+   "⚠️ gap": "recommendations are given for 10 of 11 packages before D-9a (which gates whether any are worked) is decided",
+   "⭐ significance": "the file names this itself by putting D-9a first"
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "AUDIT-F0006-01",
+   "⭐ finding": "⭐⭐ THE DOCKET CORRECTS ITS OWN EVIDENCE USING ITS OWN UNDECIDED QUESTION",
+   "detail": "REV 2: 'Package 1's supporting-evidence line — \"~20+ platform-only documents in 48h\" — ⛔ PRESUPPOSED DOCUMENT COUNT AS THE METRIC, which is exactly the undecided question.' ⭐ 'That line is DOWNGRADED from trigger evidence to illustration pending metric definition.'",
+   "⭐ method significance": "⭐⭐ THE CLEANEST INSTANCE IN THE CORPUS of a document detecting that its own evidence assumes the answer to its own open question — and demoting the evidence rather than the question.",
+   "status": "⭐ RESOLVED_BY_SOURCE · POSITIVE_METHOD_EVIDENCE"
+  }
+ ],
+ "provenance_first_hand": [
+  "the 11 packages",
+  "the one-view table",
+  "the annex inventory"
+ ],
+ "provenance_second_hand": [
+  "⛔ every cited commission and register"
+ ],
+ "negative_evidence": "⭐ Package 8: 'Opposing: ⭐ none found — cost is one list.' ⭐ An explicit statement that the search for opposing evidence returned empty, rather than silence.",
+ "multi_dimensional_confidence": {
+  "the gating order": "⭐ HIGH",
+  "each recommendation": "⚠️ MEDIUM — they are the secretary's, explicitly",
+  "the downgraded 20+ count": "⛔ LOW — demoted by the file itself"
+ },
+ "not_recoverable_without_reread": [
+  "the Phase B.5 D-item definitions",
+  "the blind review",
+  "the carried OQ registers PM/SC/LG/MQ"
+ ]
+}

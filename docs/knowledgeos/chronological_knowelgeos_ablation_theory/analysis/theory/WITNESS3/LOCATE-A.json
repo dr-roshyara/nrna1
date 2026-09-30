@@ -1,0 +1,35 @@
+{
+ "hits": 7,
+ "qualifying": 5,
+ "qualifying_hits": [
+  {
+   "at": ".claude/sessions/2026-07-26.md:323",
+   "outcome_cue": true,
+   "line": "**Precision refinement applied (chair-endorsed):** \"implementation program underway\" is a governance statement, not an engineering one — the exact standing is: "
+  },
+  {
+   "at": ".claude/sessions/2026-07-28.md:496",
+   "outcome_cue": true,
+   "line": "- **Harvest capture #12 (retrospective inbox; observed once; NOT promoted):** **\"Verify the verifier\"** — an instrument's findings are trusted only after the in"
+  },
+  {
+   "at": ".claude/sessions/2026-07-28.md:582",
+   "outcome_cue": true,
+   "line": "Five observations recorded as **candidate methodology observations, NOT promoted** — chair's explicit ruling: all five demonstrated operational value but within"
+  },
+  {
+   "at": ".claude/sessions/2026-07-30.md:1215",
+   "outcome_cue": true,
+   "line": "**Adopted for the transformation-fidelity emphasis, as the Authority scoped it. But I disclosed that the evidence supports a WIDER form — and that the second in"
+  },
+  {
+   "at": ".claude/sessions/2026-07-31.md:185",
+   "outcome_cue": true,
+   "line": "**Governance Verification Drift deliberately NOT promoted to doctrine** — three occurrences in one subsystem recognize a pattern; they do not constitutionalize "
+  }
+ ],
+ "other": [
+  ".claude/sessions/2026-08-02.md:138",
+  ".claude/sessions/2026-08-02.md:140"
+ ]
+}

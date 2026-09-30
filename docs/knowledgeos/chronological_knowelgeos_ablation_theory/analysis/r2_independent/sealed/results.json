@@ -1,0 +1,3880 @@
+{
+  "chain3": {
+    "state_count_with_A0": 144,
+    "state_count_without_A0": 288,
+    "full": {
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "D3+": true,
+      "D5": true,
+      "D6": true,
+      "NV": true
+    },
+    "single_removal": {
+      "A0": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 0,
+                "u": [
+                  "n0"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 1,
+                "u": [
+                  "n0"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 1,
+                "u": [
+                  "n0"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 1,
+                "u": [
+                  "n0"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A1": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "der",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              }
+            }
+          ]
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A2e": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3m": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n1",
+                "g": 1,
+                "u": [
+                  "n1",
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n1",
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A4": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5e": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 0,
+                "u": [
+                  "n2"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n2",
+                "g": 1,
+                "u": [
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A6": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": [
+                  "n0",
+                  "n1",
+                  "n2"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "n0",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      }
+    },
+    "minimal_sets": {
+      "D1": [
+        [
+          "A2e",
+          "A6"
+        ]
+      ],
+      "D2": [
+        [
+          "A3g",
+          "A5g"
+        ]
+      ],
+      "D3": [
+        [
+          "A2e",
+          "A3g",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D3+": [
+        [
+          "A0",
+          "A2e",
+          "A3g",
+          "A3m",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D5": [
+        [
+          "A0",
+          "A3g",
+          "A3m",
+          "A6"
+        ]
+      ],
+      "D6": [
+        [
+          "A1"
+        ]
+      ]
+    }
+  },
+  "V": {
+    "state_count_with_A0": 180,
+    "state_count_without_A0": 288,
+    "full": {
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "D3+": true,
+      "D5": true,
+      "D6": true,
+      "NV": true
+    },
+    "single_removal": {
+      "A0": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "bot"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A1": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "der",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              }
+            }
+          ]
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A2e": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a",
+                  "b",
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3m": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A4": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5e": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A6": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a",
+                  "b",
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      }
+    },
+    "minimal_sets": {
+      "D1": [
+        [
+          "A2e",
+          "A6"
+        ]
+      ],
+      "D2": [
+        [
+          "A3g",
+          "A5g"
+        ]
+      ],
+      "D3": [
+        [
+          "A2e",
+          "A3g",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D3+": [
+        [
+          "A0",
+          "A2e",
+          "A3g",
+          "A3m",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D5": [
+        [
+          "A0",
+          "A3g",
+          "A3m",
+          "A6"
+        ]
+      ],
+      "D6": [
+        [
+          "A1"
+        ]
+      ]
+    }
+  },
+  "diamond": {
+    "state_count_with_A0": 288,
+    "state_count_without_A0": 768,
+    "full": {
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "D3+": true,
+      "D5": true,
+      "D6": true,
+      "NV": true
+    },
+    "single_removal": {
+      "A0": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "bot"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "bot"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A1": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "der",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              }
+            }
+          ]
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A2e": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot",
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a",
+                  "b",
+                  "bot",
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3m": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a",
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A4": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5e": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 0,
+                "u": [
+                  "top"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "top",
+                "g": 1,
+                "u": [
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A6": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": [
+                  "a",
+                  "b",
+                  "bot",
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot",
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot",
+                  "top"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": [
+                  "a",
+                  "b",
+                  "bot",
+                  "top"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "bot",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      }
+    },
+    "minimal_sets": {
+      "D1": [
+        [
+          "A2e",
+          "A6"
+        ]
+      ],
+      "D2": [
+        [
+          "A3g",
+          "A5g"
+        ]
+      ],
+      "D3": [
+        [
+          "A2e",
+          "A3g",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D3+": [
+        [
+          "A0",
+          "A2e",
+          "A3g",
+          "A3m",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D5": [
+        [
+          "A0",
+          "A3g",
+          "A3m",
+          "A6"
+        ]
+      ],
+      "D6": [
+        [
+          "A1"
+        ]
+      ]
+    }
+  },
+  "antichain2": {
+    "state_count_with_A0": 96,
+    "state_count_without_A0": 96,
+    "full": {
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "D3+": true,
+      "D5": true,
+      "D6": true,
+      "NV": false
+    },
+    "single_removal": {
+      "A0": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": false,
+          "countermodel": null
+        }
+      },
+      "A1": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "der",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              }
+            }
+          ]
+        },
+        "NV": {
+          "holds": false,
+          "countermodel": null
+        }
+      },
+      "A2e": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A3g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": false,
+          "countermodel": null
+        }
+      },
+      "A3s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": false,
+          "countermodel": null
+        }
+      },
+      "A3m": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "EVIDREF",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A4": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "COMP",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5e": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            },
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "b",
+                "g": 1,
+                "u": [
+                  "b"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      },
+      "A5g": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "kind": "WORK",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": false,
+          "countermodel": null
+        }
+      },
+      "A5s": {
+        "D1": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3+": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D5": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": false,
+          "countermodel": null
+        }
+      },
+      "A6": {
+        "D1": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D2": {
+          "holds": true,
+          "countermodel": null
+        },
+        "D3": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D3+": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 0,
+                "u": []
+              },
+              "kind": "GOV",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              }
+            }
+          ]
+        },
+        "D5": {
+          "holds": false,
+          "countermodel": [
+            {
+              "from": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": [
+                  "a"
+                ]
+              },
+              "kind": "EVID",
+              "to": {
+                "p": "gen",
+                "s": "auth",
+                "e": "a",
+                "g": 1,
+                "u": []
+              }
+            }
+          ]
+        },
+        "D6": {
+          "holds": true,
+          "countermodel": null
+        },
+        "NV": {
+          "holds": true,
+          "countermodel": null
+        }
+      }
+    },
+    "minimal_sets": {
+      "D1": [
+        [
+          "A2e",
+          "A6"
+        ]
+      ],
+      "D2": [
+        [
+          "A3g",
+          "A5g"
+        ]
+      ],
+      "D3": [
+        [
+          "A2e",
+          "A3m",
+          "A4",
+          "A5e",
+          "A6"
+        ],
+        [
+          "A2e",
+          "A3g",
+          "A4",
+          "A5e",
+          "A5g",
+          "A6"
+        ]
+      ],
+      "D3+": [
+        [
+          "A2e",
+          "A3m",
+          "A4",
+          "A5e",
+          "A6"
+        ]
+      ],
+      "D5": [
+        [
+          "A3g",
+          "A3m",
+          "A6"
+        ]
+      ],
+      "D6": [
+        [
+          "A1"
+        ]
+      ]
+    }
+  }
+}

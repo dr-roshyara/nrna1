@@ -1,0 +1,9 @@
+{
+ "test": "1y′: locate-only over ADR Status lines for PERFORMED supersessions (a structured source family)",
+ "status": "FROZEN before the locate runs",
+ "files": "tracked *.md under docs/adr/ and engineering/architecture/adr/ (git ls-files), excluding the rulings register ADR-AIP-LOG-Platform-Rulings.md",
+ "status_line": "the first line in the first 40 lines of a file matching /^\\s*(\\*\\*|\\||-|#+)?\\s*\\**Status\\**\\s*[:|]/i",
+ "classes": {"SUPERSEDED": "status line matches /supersed/i", "OTHER": "any other status value"},
+ "output": "file path, the status line truncated to 120 chars (locate-level matched line), class; counts per class",
+ "next": "only if >= 1 SUPERSEDED: pair criteria frozen, then a bounded read of the superseding act's recorded basis (the status line's pointer target section or the superseding ADR's context section), one file at a time"
+}

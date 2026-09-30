@@ -1,0 +1,2494 @@
+{
+ "differences": [
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|V|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT0|chain3|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT0|diamond|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-T-P0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|V|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-T-P0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P0|chain3|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-T-P0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P0|diamond|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-T-P1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|V|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-T-P1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT1-P1|chain3|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-T-P1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT1-P1|diamond|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-T-EVENT|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-T-P0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|V|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-T-EVENT|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-T-P0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P0|chain3|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-T-EVENT|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-T-P0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P0|diamond|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-T-EVENT|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-T-P1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|V|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-T-EVENT|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-T-P1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": true,
+   "key": "C-4|MT2-P1|chain3|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A0|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A2e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A3g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A3m|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A3s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A4|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A5e|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A5g|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A5s|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-A6|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-T-AM|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-T-AUTH|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-T-EVENT|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-T-G1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-T-P1|REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": "N/A",
+   "key": "C-4|MT2-P1|diamond|-T-PROM|REP",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 2,
+   "key": "C-6|MT0|V|REVAL-a|len",
+   "ref": 1
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 2,
+   "key": "C-6|MT0|V|REVAL-b|len",
+   "ref": 1
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 2,
+   "key": "C-6|MT0|chain3|REVAL-a|len",
+   "ref": 1
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 2,
+   "key": "C-6|MT0|chain3|REVAL-b|len",
+   "ref": 1
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT0|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 2,
+   "key": "C-6|MT0|diamond|REVAL-a|len",
+   "ref": 1
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 2,
+   "key": "C-6|MT0|diamond|REVAL-b|len",
+   "ref": 1
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|AUTO-INVAL|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|V|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT1-P0|V|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|AUTO-INVAL|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|chain3|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT1-P0|chain3|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|AUTO-INVAL|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P0|diamond|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT1-P0|diamond|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 3,
+   "key": "C-6|MT1-P1|V|REVAL-a|len",
+   "ref": 1
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 3,
+   "key": "C-6|MT1-P1|V|REVAL-b|len",
+   "ref": 1
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|V|REVOC-EXPLICIT|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 3,
+   "key": "C-6|MT1-P1|chain3|REVAL-a|len",
+   "ref": 1
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 3,
+   "key": "C-6|MT1-P1|chain3|REVAL-b|len",
+   "ref": 1
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|chain3|REVOC-EXPLICIT|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 3,
+   "key": "C-6|MT1-P1|diamond|REVAL-a|len",
+   "ref": 1
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 3,
+   "key": "C-6|MT1-P1|diamond|REVAL-b|len",
+   "ref": 1
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT1-P1|diamond|REVOC-EXPLICIT|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|AUTO-INVAL|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|V|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT2-P0|V|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|AUTO-INVAL|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|chain3|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT2-P0|chain3|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|AUTO-INVAL|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|PERSIST|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P0|diamond|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT2-P0|diamond|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT2-P1|V|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|V|REVOC-EXPLICIT|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT2-P1|chain3|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|chain3|REVOC-EXPLICIT|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|AUTH-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|AUTH-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|D1|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|D2|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|D6|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|EVENT-EVIDENCE-SAFETY-scoped|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|EVENT-FLOOR-SAFETY|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|P-GUARD|len",
+   "ref": null
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|REVAL-a|len",
+   "ref": null
+  },
+  {
+   "cat": "NUMERIC-MISMATCH",
+   "ind": 4,
+   "key": "C-6|MT2-P1|diamond|REVAL-b|len",
+   "ref": 2
+  },
+  {
+   "cat": "MISSING",
+   "ind": null,
+   "key": "C-6|MT2-P1|diamond|REVOC-EXPLICIT|len",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.added_axioms",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.instances.*.minimal_sets_existential_not_reachable_supplementary",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.instances.*.redundant_added_axioms_including_supplementary",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.instances.*.scenarios.*.axioms_removed",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.instances.*.scenarios.*.same_step_allowed",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.instances.*.scenarios.*.strict_order.events.*.EF",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.*.instances.*.scenarios.*.strict_order.events.*.step_index",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT0.instances.*.ablation.*.counts",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT0.instances.*.properties.REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT1-P0.instances.*.ablation.*.counts",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT1-P0.instances.*.properties.REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT1-P1.instances.*.ablation.*.counts",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT1-P1.instances.*.properties.REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT2-P0.instances.*.ablation.*.counts",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT2-P0.instances.*.properties.REP",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT2-P1.instances.*.ablation.*.counts",
+   "ref": null
+  },
+  {
+   "cat": "EXTRA",
+   "ind": null,
+   "key": "unmapped|.models.MT2-P1.instances.*.properties.REP",
+   "ref": null
+  }
+ ],
+ "schema": "CANONICAL-SCHEMA.md",
+ "tally": {
+  "C-1": {
+   "EXACT": 45,
+   "EXTRA": 0,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-2": {
+   "EXACT": 270,
+   "EXTRA": 0,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-3": {
+   "EXACT": 305,
+   "EXTRA": 0,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-4": {
+   "EXACT": 4320,
+   "EXTRA": 240,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-5": {
+   "EXACT": 126,
+   "EXTRA": 0,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "C-6": {
+   "EXACT": 123,
+   "EXTRA": 0,
+   "MISSING": 126,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 21,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  },
+  "unmapped": {
+   "EXACT": 0,
+   "EXTRA": 17,
+   "MISSING": 0,
+   "NOT-COMPARED(parent)": 0,
+   "NUMERIC-MISMATCH": 0,
+   "SEMANTIC-MISMATCH": 0,
+   "STRUCTURAL-MISMATCH": 0
+  }
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "questions": [
+  {
+   "id": "Q1",
+   "question": "Does any fragment state that a change of status, standing or authority requires an explicit decision? If yes, which kinds of change are covered (gaining it, losing it, or both)?",
+   "answer": "YES",
+   "quote": "Only explicit ARB decisions create governance. Workflow words (*continue, looks good, go ahead*) are permission to proceed — never Approved/Promoted/Retired/Closed.",
+   "fragment": "F1",
+   "reason": "F1 requires an explicit ARB decision and lists both gaining statuses (Approved/Promoted) and losing statuses (Retired/Closed), so both are covered, though the losing side is covered only through that list (F3 also requires a Human Decision Event per stage for gaining authority)."
+  },
+  {
+   "id": "Q2",
+   "question": "How does the text describe the state called 'Promotion Ready': as a decision, or as something else? (YES = described as a decision; NO = described as not a decision.)",
+   "answer": "NO",
+   "quote": "**Promotion Ready** *(**a state DERIVED BY VERIFICATION, not a decision by anyone**)*",
+   "fragment": "F2",
+   "reason": "F2 explicitly describes Promotion Ready as a state derived by verification and not a decision."
+  },
+  {
+   "id": "Q3",
+   "question": "Does the text state that the promotion decision takes place after, or from, the 'Promotion Ready' state?",
+   "answer": "YES",
+   "quote": "**Promotion Ready** *(**a state DERIVED BY VERIFICATION, not a decision by anyone**)* → **Authority Promotion Decision** *(the act)*",
+   "fragment": "F2",
+   "reason": "In F2's ordered chain the Authority Promotion Decision is the step directly after Promotion Ready."
+  },
+  {
+   "id": "Q4",
+   "question": "Does any fragment allow stages of a promotion sequence to be skipped?",
+   "answer": "NO",
+   "quote": "Each stage requires its own Human Decision Event. Stages are never skipped.",
+   "fragment": "F3",
+   "reason": "F3 forbids skipping stages, and F2 adds that no step may absorb the one after it; no fragment allows skipping."
+  },
+  {
+   "id": "Q5",
+   "question": "Does each fragment state which kind of object it applies to? Name the object kind per fragment.",
+   "answer": "NO",
+   "quote": "The only path by which a platform artifact gains authority",
+   "fragment": "F3",
+   "reason": "Not every fragment names its object kind: F3 names 'platform artifact', F4 names 'this document'/'this dictionary' (and Phase 3 artifacts), F1 speaks of governance, items and 'artifact' only in its corollary, and F2 never explicitly names the kind of object it applies to."
+  },
+  {
+   "id": "Q6",
+   "question": "Does any fragment describe a separate authorization (a grant) that persists and later permits a promotion to be carried out?",
+   "answer": "NOT-STATED",
+   "quote": "",
+   "fragment": "F1",
+   "reason": "No fragment describes a separate, persisting authorization or grant that later permits a promotion to be carried out; F1's 'permission to proceed' refers to workflow words and is explicitly not a status change."
+  },
+  {
+   "id": "Q7",
+   "question": "Does any fragment state how a frozen item may be changed, and whether a change produces a new version?",
+   "answer": "YES",
+   "quote": "any new term or changed definition requires an ADR and produces a superseding version of this dictionary (AIP-11). Terms may be **added** by supersession; they may never be silently redefined.",
+   "fragment": "F4",
+   "reason": "F4 states that after freezing, changes require an ADR and produce a superseding version, though only for this dictionary."
+  },
+  {
+   "id": "Q8",
+   "question": "Does any fragment state that the evidence needed for promotion is checked again at the moment of the promotion decision?",
+   "answer": "NOT-STATED",
+   "quote": "",
+   "fragment": "F2",
+   "reason": "F2 places Remediation Verified before Promotion Ready and the decision, but no fragment says evidence is re-checked at the moment of the promotion decision."
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "case_id": "L0-REL-29 / R-88",
+ "status": "FROZEN BEFORE READING. Only row ID, date and matched term classes known (F-LOG-0120).",
+ "source": {"path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md", "sha256": "7795c14bf2551ce176d34f41fbb57e9fb418bcd27f49c66d74f3535a9541454f",
+            "boundary": "L74 only (one table row: # | Date | Ruling | Effect)", "excluded": "every other row; pointer targets"},
+ "instrument": "m0_check.py 42cfef42... (frozen M0); a minimal reason-level evaluator may be added (with selftest) without changing guards",
+ "fields_pre_read": {"route": "RULING (SOURCE-DERIVED: the host records rulings)", "operation": "UNKNOWN", "object_kind": "UNKNOWN", "effect": "UNKNOWN",
+   "force": "UNKNOWN", "authority": "UNKNOWN", "evidence_count": "UNKNOWN", "qualification": "UNKNOWN", "validation": "UNKNOWN",
+   "exception": "UNKNOWN (NOT-RECORDED if unmentioned: the register has no exception field, F-LOG-0118)", "stated_reason": "UNKNOWN", "observed_transition": "UNKNOWN"},
+ "coding_rules": ["operation from the row text only (RAISE = standing of an existing observation/principle/pattern raised; CREATE-NORM = a new rule decided); never from the word 'principle'",
+                  "evidence_count only if the row states a count as the ruling's basis; count words about something else are not coded",
+                  "stated_reason only if the row gives it as the ground of the ruling",
+                  "no inference: route != operation != kind != effect != force"],
+ "outcome_classes": {
+   "CONSISTENT": "the model's guard permits the recorded act (or its stated reason is the model's reason)",
+   "REASON-INCONSISTENT": "the act occurred but its stated basis contradicts the model's reason (e.g. G-O: RAISE on < 2 instances with the count stated as basis and no exception mentioned)",
+   "FALSIFIED": "the frozen guard makes the act impossible AND every field the guard reads is SOURCE-grounded, incl. exception positively absent (not available in this register -> not expected)",
+   "UNKNOWN": "a field the model's guard reads is UNKNOWN",
+   "OUT-OF-SCOPE": "the act is neither RAISE nor CREATE-NORM"},
+ "predictions": {"G-R": "RULING -> no bar: permits RAISE/CREATE-NORM at any count", "G-O": "RAISE -> bar (>=2 or exception); CREATE-NORM -> no bar",
+                 "G-K": "observation object -> bar", "G-E": "epistemic effect -> bar",
+                 "force-sensitive variants": "bar lifted when force AMB", "discriminates G-R vs G-O": "only if operation = RAISE (source-grounded) and count < 2 stated as basis"}
+}

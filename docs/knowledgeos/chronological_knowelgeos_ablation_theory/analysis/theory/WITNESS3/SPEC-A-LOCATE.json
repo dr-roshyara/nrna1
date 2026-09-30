@@ -1,0 +1,9 @@
+{
+ "test": "1ak-A: locate candidates for a strict evidence witness OUTSIDE the R-36 cluster",
+ "status": "FROZEN before the locate runs",
+ "question": "which unread record can discriminate 'evidence changes legality' from 'the R-36 contrast was a scope artefact'?",
+ "search": "lines in .claude/sessions/*.md and the rulings register matching BOTH a raise/promotion cue (/promot|extract(ed)? (only )?after|promotion criterion|became a (principle|standard|rule)/i) AND a count cue (/(first|second|third|fourth) (instance|slice|occurrence|demonstration)|\\b[1-5] slices?\\b|\\b(one|two|three) (slices|instances|occurrences)\\b/i)",
+ "exclusions": "lines mentioning KnowledgeOS / KOS / S-series / F-series / lane (F-series scope); rows R-36 and any line citing R-36 or swirling-jingling-blossom; lines already read (2026-07-30 L193-204; 2026-08-15 L483-495; 2026-08-23 L515/L682)",
+ "output": "file:line + matched line truncated to 160 chars (locate level); no section is read in this step",
+ "selection": "a candidate qualifies for a bounded read only if the matched line names a promotion OUTCOME (promoted / not promoted / extracted / held) together with a count"
+}

@@ -1,0 +1,1217 @@
+{
+ "commits": 54,
+ "paths": [
+  "docs/adr/ADR-AIP-LOG-Platform-Rulings.md",
+  "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md"
+ ],
+ "rows": {
+  "R-30": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-31": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-32": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-33": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-34": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-35": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-36": {
+   "first": [
+    "3c7bb2873",
+    "2026-07-09"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-37": {
+   "first": [
+    "ddc3e8e44",
+    "2026-07-10"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 738,
+    "appended_labelled": false
+   },
+   "col4": {
+    "class": "INSERT-ONLY",
+    "inserted_chars": 26,
+    "inserted_labelled": false
+   }
+  },
+  "R-38": {
+   "first": [
+    "447db121a",
+    "2026-07-11"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 680,
+    "appended_labelled": false
+   },
+   "col4": {
+    "class": "REPLACED",
+    "ratio": 0.329,
+    "deleted_chars": 34,
+    "replaced_chars": 14,
+    "inserted_chars": 43
+   }
+  },
+  "R-39": {
+   "first": [
+    "668cc7b22",
+    "2026-07-26"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-40": {
+   "first": [
+    "3bdcc3dba",
+    "2026-07-28"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-41": {
+   "first": [
+    "7632b5685",
+    "2026-07-30"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-42": {
+   "first": [
+    "f5bafd95b",
+    "2026-07-30"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-43": {
+   "first": [
+    "06fdd3ef3",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 889,
+    "appended_labelled": true
+   }
+  },
+  "R-44": {
+   "first": [
+    "06fdd3ef3",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-45": {
+   "first": [
+    "06fdd3ef3",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-46": {
+   "first": [
+    "06fdd3ef3",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-47": {
+   "first": [
+    "06fdd3ef3",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-48": {
+   "first": [
+    "055254364",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 384,
+    "appended_labelled": true
+   }
+  },
+  "R-49": {
+   "first": [
+    "055254364",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-50": {
+   "first": [
+    "055254364",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 377,
+    "appended_labelled": true
+   }
+  },
+  "R-51": {
+   "first": [
+    "055254364",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "INSERT-ONLY",
+    "inserted_chars": 12,
+    "inserted_labelled": false
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-52": {
+   "first": [
+    "2d62417f9",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 415,
+    "appended_labelled": false
+   }
+  },
+  "R-53": {
+   "first": [
+    "2d62417f9",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-54": {
+   "first": [
+    "2d62417f9",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-55": {
+   "first": [
+    "97ac97999",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-56": {
+   "first": [
+    "6910aa14f",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-57": {
+   "first": [
+    "216bc6e93",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-58": {
+   "first": [
+    "216bc6e93",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-59": {
+   "first": [
+    "efd19e7c4",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 385,
+    "appended_labelled": true
+   }
+  },
+  "R-60": {
+   "first": [
+    "efd19e7c4",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 352,
+    "appended_labelled": true
+   }
+  },
+  "R-61": {
+   "first": [
+    "ffe895f9f",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-62": {
+   "first": [
+    "ffe895f9f",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-63": {
+   "first": [
+    "ffe895f9f",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-64": {
+   "first": [
+    "ffe895f9f",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-65": {
+   "first": [
+    "75ce93bdd",
+    "2026-08-01"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-66": {
+   "first": [
+    "96eda6a4b",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-67": {
+   "first": [
+    "828cf88d8",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-68": {
+   "first": [
+    "c19ece6ad",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-69": {
+   "first": [
+    "c19ece6ad",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-70": {
+   "first": [
+    "77cf113a9",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-71": {
+   "first": [
+    "9d93cee1c",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-72": {
+   "first": [
+    "123c23e35",
+    "2026-08-02"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-73": {
+   "first": [
+    "4a5880db7",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-74": {
+   "first": [
+    "4a5880db7",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-75": {
+   "first": [
+    "4a5880db7",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 789,
+    "appended_labelled": true
+   }
+  },
+  "R-76": {
+   "first": [
+    "4a5880db7",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-77": {
+   "first": [
+    "fa9817444",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-78": {
+   "first": [
+    "35839e7e8",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-79": {
+   "first": [
+    "b3678e1e1",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 599,
+    "appended_labelled": true
+   }
+  },
+  "R-80": {
+   "first": [
+    "f5d84b67e",
+    "2026-08-03"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 549,
+    "appended_labelled": true
+   }
+  },
+  "R-81": {
+   "first": [
+    "93555043a",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1596,
+    "appended_labelled": true
+   }
+  },
+  "R-82": {
+   "first": [
+    "93555043a",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1596,
+    "appended_labelled": true
+   }
+  },
+  "R-83": {
+   "first": [
+    "93555043a",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1596,
+    "appended_labelled": true
+   }
+  },
+  "R-84": {
+   "first": [
+    "93555043a",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1596,
+    "appended_labelled": true
+   }
+  },
+  "R-85": {
+   "first": [
+    "93555043a",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1596,
+    "appended_labelled": true
+   }
+  },
+  "R-86": {
+   "first": [
+    "7fce534ee",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-87": {
+   "first": [
+    "b89bc260d",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-88": {
+   "first": [
+    "79a1ad3b3",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 767,
+    "appended_labelled": true
+   }
+  },
+  "R-89": {
+   "first": [
+    "3900b8238",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-90": {
+   "first": [
+    "9c07afe7e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1022,
+    "appended_labelled": true
+   }
+  },
+  "R-91": {
+   "first": [
+    "d80c66b2d",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 1982,
+    "appended_labelled": true
+   }
+  },
+  "R-92": {
+   "first": [
+    "e6a6aaf9e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-93": {
+   "first": [
+    "e6a6aaf9e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-94": {
+   "first": [
+    "e6a6aaf9e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-95": {
+   "first": [
+    "e6a6aaf9e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-96": {
+   "first": [
+    "e6a6aaf9e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "REPLACED",
+    "ratio": 0.428,
+    "deleted_chars": 0,
+    "replaced_chars": 181,
+    "inserted_chars": 1261
+   },
+   "col4": {
+    "class": "REPLACED",
+    "ratio": 0.174,
+    "deleted_chars": 0,
+    "replaced_chars": 66,
+    "inserted_chars": 87
+   }
+  },
+  "R-97": {
+   "first": [
+    "e6a6aaf9e",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "UNCHANGED"
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  },
+  "R-98": {
+   "first": [
+    "f4e0cdc37",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "MODIFIED",
+    "ratio": 0.71,
+    "deleted_chars": 37,
+    "replaced_chars": 66,
+    "inserted_chars": 634
+   },
+   "col4": {
+    "class": "INSERT-ONLY",
+    "inserted_chars": 13,
+    "inserted_labelled": false
+   }
+  },
+  "R-99": {
+   "first": [
+    "f4e0cdc37",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "MODIFIED",
+    "ratio": 0.545,
+    "deleted_chars": 37,
+    "replaced_chars": 229,
+    "inserted_chars": 2376
+   },
+   "col4": {
+    "class": "REPLACED",
+    "ratio": 0.21,
+    "deleted_chars": 57,
+    "replaced_chars": 22,
+    "inserted_chars": 89
+   }
+  },
+  "R-100": {
+   "first": [
+    "6c6d5866c",
+    "2026-08-04"
+   ],
+   "last": [
+    "8388ce911",
+    "2026-08-04"
+   ],
+   "col3": {
+    "class": "APPEND-ONLY",
+    "appended_chars": 335,
+    "appended_labelled": false
+   },
+   "col4": {
+    "class": "UNCHANGED"
+   }
+  }
+ },
+ "deleted_events": [],
+ "duplicate_ids": {}
+}

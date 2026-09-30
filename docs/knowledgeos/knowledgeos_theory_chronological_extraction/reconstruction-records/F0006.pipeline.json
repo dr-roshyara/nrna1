@@ -1,0 +1,192 @@
+{
+ "file_id": "F0006",
+ "steps": [
+  {
+   "step": 1,
+   "name": "IDENTIFY",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 2,
+   "name": "READ COMPLETE FILE",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 3,
+   "name": "EXTRACT THEORY",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 4,
+   "name": "IDENTIFY DEFINITIONS",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 5,
+   "name": "IDENTIFY ASSUMPTIONS",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 6,
+   "name": "IDENTIFY PREMISES",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 7,
+   "name": "IDENTIFY MATHEMATICAL / STATISTICAL CLAIMS",
+   "layer": 1,
+   "status": "DONE",
+   "evidence": "⭐ DONE with a reasoned negative — counters only"
+  },
+  {
+   "step": 8,
+   "name": "IDENTIFY DERIVATIONS",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 9,
+   "name": "IDENTIFY CONCLUSIONS",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 10,
+   "name": "IDENTIFY DEPENDENCIES",
+   "layer": 1,
+   "status": "DONE"
+  },
+  {
+   "step": 11,
+   "name": "IDENTIFY KNOWLEDGEOS PURPOSE RELEVANCE",
+   "layer": 2,
+   "status": "DONE"
+  },
+  {
+   "step": 12,
+   "name": "MAP FILE TO REFERENCE ARCHITECTURE",
+   "layer": 2,
+   "status": "DONE"
+  },
+  {
+   "step": 13,
+   "name": "IDENTIFY ARCHITECTURAL ROLE",
+   "layer": 2,
+   "status": "DONE"
+  },
+  {
+   "step": 14,
+   "name": "DETECT NEW / MISSING / CHANGED COMPONENTS",
+   "layer": 2,
+   "status": "DONE"
+  },
+  {
+   "step": 15,
+   "name": "COMPARE DEFINITIONS / ASSUMPTIONS / SEMANTICS",
+   "layer": 2,
+   "status": "DONE"
+  },
+  {
+   "step": 16,
+   "name": "IDENTIFY THEORY OBJECTS",
+   "layer": 2,
+   "status": "DONE"
+  },
+  {
+   "step": 17,
+   "name": "BUILD / UPDATE SEQUENTIAL GRAPH",
+   "layer": 3,
+   "status": "DONE"
+  },
+  {
+   "step": 18,
+   "name": "DETERMINE FILE & THEORY RELATIONSHIPS",
+   "layer": 3,
+   "status": "DONE"
+  },
+  {
+   "step": 19,
+   "name": "RECONSTRUCT DERIVATION CHAIN",
+   "layer": 3,
+   "status": "DONE"
+  },
+  {
+   "step": 20,
+   "name": "ASSESS CONTINUITY",
+   "layer": 3,
+   "status": "DONE"
+  },
+  {
+   "step": 21,
+   "name": "AUDIT DERIVATION COMPLETENESS",
+   "layer": 4,
+   "status": "DONE"
+  },
+  {
+   "step": 22,
+   "name": "RECORD EVERY GAP",
+   "layer": 4,
+   "status": "DONE"
+  },
+  {
+   "step": 23,
+   "name": "RECORD CONTRADICTIONS",
+   "layer": 4,
+   "status": "DONE"
+  },
+  {
+   "step": 24,
+   "name": "UPDATE THEORY MODEL",
+   "layer": 5,
+   "status": "DONE"
+  },
+  {
+   "step": 25,
+   "name": "BUILD / UPDATE CANDIDATE THEORY OBJECTS",
+   "layer": 5,
+   "status": "DONE"
+  },
+  {
+   "step": 26,
+   "name": "BUILD / UPDATE CANDIDATE THEORY RELATIONSHIPS",
+   "layer": 5,
+   "status": "DONE"
+  },
+  {
+   "step": 27,
+   "name": "UPDATE ARCHITECTURE OBJECT REGISTRY",
+   "layer": 5,
+   "status": "DONE"
+  },
+  {
+   "step": 28,
+   "name": "UPDATE IMPLEMENTATION MODEL",
+   "layer": 5,
+   "status": "NOT_APPLICABLE",
+   "evidence": "the file executes nothing"
+  },
+  {
+   "step": 29,
+   "name": "RECORD PROVENANCE",
+   "layer": 5,
+   "status": "DONE"
+  },
+  {
+   "step": 30,
+   "name": "VALIDATE THE FILE DOSSIER",
+   "layer": 5,
+   "status": "DONE"
+  }
+ ],
+ "summary": {
+  "DONE": 29,
+  "NOT_APPLICABLE": 1
+ },
+ "layer_order_respected": true
+}

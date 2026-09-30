@@ -1,0 +1,154 @@
+{
+ "release": "L0-REL-13",
+ "sources": {
+  "S-9": {
+   "path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "lines": [
+    32,
+    32
+   ]
+  },
+  "S-10": {
+   "path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "lines": [
+    216,
+    221
+   ]
+  }
+ },
+ "cells": [
+  {
+   "id": "C1-c1",
+   "claim_id": "C1-L218-ready",
+   "proposition": "EP-02a",
+   "source_slot": "S-10",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 218,
+    "end_line": 218
+   },
+   "exact_wording": "a state DERIVED BY VERIFICATION, not a decision by anyone",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "source_claim": "promotion readiness is a verification-derived state immediately preceding the promotion act",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "PKS baseline promotion chain (Authority, 2026-07-30)"
+   },
+   "notes": "The promotion act (Authority Promotion Decision) is taken from the Promotion Ready state, which is DERIVED by verification, not granted; no durable authorization grant exists that could license promotion after readiness is lost. So the evidence condition holds at the event. Mapping 'derived readiness' onto MT's floor EF is an interpretation (MEDIUM)."
+  },
+  {
+   "id": "C1-c2",
+   "claim_id": "C1-L218-ready",
+   "proposition": "EP-02c",
+   "source_slot": "S-10",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 218,
+    "end_line": 218
+   },
+   "exact_wording": "a state DERIVED BY VERIFICATION, not a decision by anyone",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "REFUTED",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "PKS baseline promotion chain (Authority, 2026-07-30)"
+   },
+   "notes": "The promotion act (Authority Promotion Decision) is taken from the Promotion Ready state, which is DERIVED by verification, not granted; no durable authorization grant exists that could license promotion after readiness is lost. So the evidence condition holds at the event. Mapping 'derived readiness' onto MT's floor EF is an interpretation (MEDIUM). EP-02c (promotion may proceed on an earlier authorization without the floor) has no counterpart: there is no granted authorization."
+  },
+  {
+   "id": "C1-c3",
+   "claim_id": "C1-L218-ready",
+   "proposition": "EP-02b",
+   "source_slot": "S-10",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 218,
+    "end_line": 218
+   },
+   "exact_wording": "a state DERIVED BY VERIFICATION, not a decision by anyone",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "source_claim": "same",
+   "assessment": "AMBIGUOUS",
+   "interpretation_confidence": "MEDIUM",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "PKS baseline promotion chain (Authority, 2026-07-30)"
+   },
+   "notes": "Whether 'ready' means the bar (EB) is met, not merely the floor, is not stated; the EB reading is in tension with the historical R-39 exception."
+  },
+  {
+   "id": "C2-c1",
+   "claim_id": "C2-L32-chain",
+   "proposition": "EP-12",
+   "source_slot": "S-9",
+   "source_path": "engineering/architecture/baseline/Phase-02.6-Ubiquitous-Language.md",
+   "source_sha256": "baaf69aaa55f2f3d070adc8e0f4373415a32b175167ed69bc0d538221d40f6a2",
+   "anchor": {
+    "start_line": 32,
+    "end_line": 32
+   },
+   "exact_wording": "Each stage requires its own Human Decision Event.",
+   "historical_date": {
+    "value": "undated in released span",
+    "precision": "UNKNOWN"
+   },
+   "source_claim": "each stage of the promotion chain is its own human decision event",
+   "assessment": "SUPPORTED",
+   "interpretation_confidence": "HIGH",
+   "layer": "HISTORICAL-EVIDENCE",
+   "reader_class": "SELF",
+   "reader_id": "claude-opus-5-5-F-lane",
+   "l0_release_id": "L0-REL-13",
+   "context": {
+    "scope": "platform-artifact authority chain (UL definition)"
+   },
+   "notes": "Promotion stages are discrete events with states between them."
+  }
+ ],
+ "events": [
+  {
+   "id": "C1-e1",
+   "type": "OTHER",
+   "source_path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "source_sha256": "e42ef5d99aa5f6e9913c47b08983c4c4e4dfaf35cebd9a14109e4a0f8e1d9ad5",
+   "anchor": {
+    "start_line": 216,
+    "end_line": 216
+   },
+   "exact_wording": "Authority, 2026-07-30 — codifies the sequence the program has enforced throughout; no new mechanism",
+   "historical_date": {
+    "value": "2026-07-30",
+    "precision": "DAY"
+   },
+   "l0_release_id": "L0-REL-13",
+   "notes": "promotion chain codified"
+  }
+ ]
+}

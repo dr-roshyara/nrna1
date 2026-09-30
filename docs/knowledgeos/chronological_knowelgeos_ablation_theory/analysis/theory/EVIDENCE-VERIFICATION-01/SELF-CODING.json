@@ -1,0 +1,9 @@
+{"note":"SELF (claude-opus-5-5 F-lane) coding of the 8 bundle questions, derived from notes 04-07, sealed BEFORE opening the agent's ANSWERS.json. Equivalence rule fixed now: for 'does any fragment state/describe X' questions (Q1,Q3,Q4,Q6,Q7,Q8) NO == NOT-STATED.",
+ "Q1":{"answer":"YES","detail":"both gaining and losing (Approved/Promoted and Retired/Closed); F1"},
+ "Q2":{"answer":"NO","detail":"Promotion Ready described as derived by verification, not a decision; F2"},
+ "Q3":{"answer":"YES","detail":"chain order Promotion Ready -> Authority Promotion Decision; F2"},
+ "Q4":{"answer":"NO","detail":"stages are never skipped (F3); no step may absorb the next (F2)"},
+ "Q5":{"answer":"YES","detail":"F1 governance/artifacts (ARB governance), F2 artifact under review -> Promoted Baseline, F3 platform artifact, F4 this dictionary"},
+ "Q6":{"answer":"NO","detail":"no separate persistent authorization grant is described (NO == NOT-STATED)"},
+ "Q7":{"answer":"YES","detail":"F4: change requires an ADR and produces a superseding version"},
+ "Q8":{"answer":"NOT-STATED","detail":"no re-check at the decision moment is stated"}}

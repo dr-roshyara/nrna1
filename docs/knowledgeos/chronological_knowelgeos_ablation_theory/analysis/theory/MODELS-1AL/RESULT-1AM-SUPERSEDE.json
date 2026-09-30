@@ -1,0 +1,41 @@
+{
+ "events": [
+  "SUPERSEDE ADR-T14 (R-77)",
+  "SUPERSEDE \u00a712 (R-83)",
+  "SUPERSEDE D-12 by ADR-MP",
+  "SUPERSEDE mechanism by R-44 (reported in R-57)"
+ ],
+ "models": {
+  "{k}": {
+   "consistent_before": true,
+   "consistent_after": true,
+   "conflict_after": null
+  },
+  "{r}": {
+   "consistent_before": true,
+   "consistent_after": false,
+   "conflict_after": [
+    "SUPERSEDE ADR-T14 (R-77)",
+    "SUPERSEDE mechanism by R-44 (reported in R-57)"
+   ]
+  },
+  "{a}": {
+   "consistent_before": true,
+   "consistent_after": false,
+   "conflict_after": [
+    "SUPERSEDE ADR-T14 (R-77)",
+    "SUPERSEDE mechanism by R-44 (reported in R-57)"
+   ]
+  },
+  "{e}": {
+   "consistent_before": true,
+   "consistent_after": true,
+   "conflict_after": null
+  },
+  "{x}": {
+   "consistent_before": true,
+   "consistent_after": true,
+   "conflict_after": null
+  }
+ }
+}

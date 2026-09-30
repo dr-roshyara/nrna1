@@ -1,0 +1,1641 @@
+{
+ "record": "L0-REL-20 (b) locate-only: textual host of the 'repeated evidence / single occurrence' bar",
+ "timestamp_utc": "2026-09-27T08:08:49Z",
+ "method": "all tracked .md/.yaml + .claude/CLAUDE.md + CLAUDE.md; F-lane, F-extraction, S-series, brainstorming excluded; matched phrase + heading only; genealogy by git log -S (metadata)",
+ "hits": [
+  {
+   "path": ".claude/CLAUDE.md",
+   "line": 581,
+   "heading": "## The Operating Loop (runtime binding of the rule above — POINTERS, n",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CLAUDE.md",
+   "line": 581,
+   "heading": "## The Operating Loop (runtime binding of the rule above — POINTERS, n",
+   "phrase": "Never promote methodology from a single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 5634,
+   "heading": "## 📍 UPDATE (2026-08-23, **`AST-019` INDEPENDENT VERIFICATION DELIVERE",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 6498,
+   "heading": "## 📍 UPDATE (2026-08-22, **COEXTENSION WITHOUT IDENTITY → KNOWLEDGEOS ",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 7842,
+   "heading": "## 🔀 TWO CONCURRENT WORKSTREAMS — read this before assuming what \"curr",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 8466,
+   "heading": "### KnowledgeOS track — SYNTHESIS COMPLETE (2026-08-02)",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 9078,
+   "heading": "### ⭐⭐ VALIDATION PHASE OPENED — external literature check; \"done prod",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 9385,
+   "heading": "### OE-KOS-2 recorded (2026-08-03) — state + pointers only",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/CONTEXT.md",
+   "line": 9951,
+   "heading": "### OE-KOS-4 review dispositions executed (2026-08-04)",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/F-series-todos.md",
+   "line": 115,
+   "heading": "### Next (ordered)",
+   "phrase": "repeated pattern",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/F-series-todos.md",
+   "line": 172,
+   "heading": "## CURRENT STATE (2026-09-26, after T-A closure and the R-39 SELF read",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/F-series-todos.md",
+   "line": 181,
+   "heading": "## CURRENT STATE (2026-09-26, after T-A closure and the R-39 SELF read",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/F-series-todos.md",
+   "line": 197,
+   "heading": "## CURRENT STATE (2026-09-26, after the blind secondary comparison, F-",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/MEMORY.md",
+   "line": 369,
+   "heading": "## `engineering/` means the PLATFORM, not \"canon\" — and its structure ",
+   "phrase": "two bounded contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/MEMORY.md",
+   "line": 389,
+   "heading": "## Engineering promotion rule (adopted 2026-08-01)",
+   "phrase": "Repeated Evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/MEMORY.md",
+   "line": 402,
+   "heading": "## Architecture–Enforcement Alignment Gap (named 2026-08-01, ARB recla",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/MEMORY.md",
+   "line": 485,
+   "heading": "## Constraints that bite (learned, verified)",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/plans/WP-6-temporal-machinery.md",
+   "line": 375,
+   "heading": "### Scope of this rule — accepted as reasoning, NOT promoted to a stan",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/plans/WP-6-temporal-machinery.md",
+   "line": 439,
+   "heading": "### Recommendation: **Option A**, on FOUR DDD grounds rather than conv",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/plans/WP-6-temporal-machinery.md",
+   "line": 555,
+   "heading": "## Why N-3's split matters, in DDD terms",
+   "phrase": "two bounded contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/plans/WP-7-retention-alignment.md",
+   "line": 228,
+   "heading": "### ⚖️ ARCHITECTURE–ENFORCEMENT ALIGNMENT COMMISSION (2026-08-01) — G-",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-09.md",
+   "line": 32,
+   "heading": "### Two ARB questions answered (documented in 04_messaging.md)",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-26.md",
+   "line": 175,
+   "heading": "## ARB CLOSING ASSESSMENT — the chain accepted as the TACTICAL GOVERNA",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-26.md",
+   "line": 310,
+   "heading": "## DA placement ruling executed — canonical to engineering/, binding-o",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-27.md",
+   "line": 290,
+   "heading": "# Session 2026-07-27 — final DA extension (last capture)",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-28.md",
+   "line": 806,
+   "heading": "### Execution Operating Procedure (EOP) direction AGREED — recorded as",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-30.md",
+   "line": 468,
+   "heading": "## FOUR REFINEMENTS to the framework — rename · Context Integrity · li",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-30.md",
+   "line": 775,
+   "heading": "## GOVERNANCE-STATE VOCABULARY STANDARDIZED + COHERENCE PASS — framewo",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-30.md",
+   "line": 1768,
+   "heading": "## KBI-R1 DISPOSED — ACCEPT as historical currency annotation (Authori",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-30.md",
+   "line": 1836,
+   "heading": "## MCA-R1 CONVENED AND ASSESSED — all seven candidates (2026-07-30)",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-31.md",
+   "line": 388,
+   "heading": "### WP-6 Decision A — necessity constraint added; rule accepted as rea",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-31.md",
+   "line": 422,
+   "heading": "### Decision C reframed as an IMPLEMENTATION BOUNDARY decision; cardin",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-31.md",
+   "line": 757,
+   "heading": "### CDR-R1 decisions (`PKS_Phase_II_CDR_R1_Decision.md`) — 1 adopt · 2",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-31.md",
+   "line": 2694,
+   "heading": "### CDR-R1 decisions (`PKS_Phase_II_CDR_R1_Decision.md`) — 1 adopt · 2",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-07-31.md",
+   "line": 4725,
+   "heading": "### Charter §6.1/§6.2 — the three assets, and why the loop does NOT de",
+   "phrase": "REPEATED evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-01.md",
+   "line": 448,
+   "heading": "### 📋 ENGINEERING PROMOTION REVIEW — and the rule's first catch is our",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-01.md",
+   "line": 566,
+   "heading": "### 📋 KnowledgeOS maturity structure — reframe confirmed, structure bl",
+   "phrase": "two bounded contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-01.md",
+   "line": 1297,
+   "heading": "### ⚖️ Slice 7C acceptance review — recommend R-66, not issued here",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-02.md",
+   "line": 110,
+   "heading": "### 📌 PKS observation recorded — the Triple Qualification timing varia",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-04.md",
+   "line": 544,
+   "heading": "## ARB closing resolution: architecture phase ends; validation phase i",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-15.md",
+   "line": 493,
+   "heading": "### Ninth — PO/ARB ACCEPTED the finalization; vocabulary ruling regist",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-16.md",
+   "line": 1020,
+   "heading": "### Twenty-first — **`ES-001.3` Governance Orientation Duty ADOPTED** ",
+   "phrase": "repeated pattern",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-16.md",
+   "line": 1020,
+   "heading": "### Twenty-first — **`ES-001.3` Governance Orientation Duty ADOPTED** ",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-17.md",
+   "line": 170,
+   "heading": "### Thirty-second — senior-architect recommendation on the fork ruling",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-17.md",
+   "line": 331,
+   "heading": "### Forty-seventh — `EM-ARCH-002` BOUNDARY AUTHORIZED (act verbatim) ·",
+   "phrase": "repeated evidence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-18.md",
+   "line": 9,
+   "heading": "### First — **ADR-2 Principal review REGISTERED; the \"one final recomm",
+   "phrase": "two contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-18.md",
+   "line": 543,
+   "heading": "### Fourteenth — **Track-1 reconciliation delivered: AD-1…AD-5 resolve",
+   "phrase": "TWO bounded contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-22.md",
+   "line": 1401,
+   "heading": "## §AS — UM-46 · COEXTENSION WITHOUT IDENTITY → KNOWLEDGEOS SEMANTIC I",
+   "phrase": "two bounded contexts",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-23.md",
+   "line": 410,
+   "heading": "## Open items (recorded, NOT decided)",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-23.md",
+   "line": 515,
+   "heading": "### Next Steps",
+   "phrase": "single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-08-23.md",
+   "line": 682,
+   "heading": "## Non-actions",
+   "phrase": "from a single occurrence",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-09-08.md",
+   "line": 513,
+   "heading": "### P-20 — ground stratification & kernel cardinality → **OUTCOME C**",
+   "phrase": "n ≥ 2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-09-08.md",
+   "line": 535,
+   "heading": "### P-20 — ground stratification & kernel cardinality → **OUTCOME C**",
+   "phrase": "n≥2",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": ".claude/sessions/2026-09-26.md",
+   "line": 340,
+   "heading": "## S-Series: Revision-6 repair slice (G-LOG-0083) — implemented, NOT a",
+   "phrase": "multi-context bar",
+   "kind": "MEMORY/INSTRUCTIONS"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/20260809_0804_0how_to_develop_knowledgeos_further.md",
+   "line": 103,
+   "heading": "# 3. The Engineering Promotion prompt",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/20260809_0804_0how_to_develop_knowledgeos_further.md",
+   "line": 289,
+   "heading": "# 8. The \"KnowledgeOS must learn from operations\" prompt",
+   "phrase": "repeated pattern",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/20260809_0804_0how_to_develop_knowledgeos_further.md",
+   "line": 405,
+   "heading": "### Automated",
+   "phrase": "repeated pattern",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/20260809_0804_0how_to_develop_knowledgeos_further.md",
+   "line": 552,
+   "heading": "# 15. The prompt I recommend we use as the foundation for Session 3",
+   "phrase": "Repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/20260809_0804_0how_to_develop_knowledgeos_further.md",
+   "line": 574,
+   "heading": "# 15. The prompt I recommend we use as the foundation for Session 3",
+   "phrase": "repeated pattern",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/documentation/pks/20260801_2231_pks_development_proposal.md",
+   "line": 727,
+   "heading": "## 6. What I would NOT do, and why",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1156_pks_prompt_architecture_idea_brainstorming.md",
+   "line": 380,
+   "heading": "### Principle 3: Responsibility vs. Component (The Genesis Gap)",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1156_pks_prompt_architecture_idea_brainstorming.md",
+   "line": 381,
+   "heading": "### Principle 3: Responsibility vs. Component (The Genesis Gap)",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1156_pks_prompt_architecture_idea_brainstorming.md",
+   "line": 411,
+   "heading": "### Principle 4: The Evidence Harvest (The Loop-Closing Pattern)",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1158_pks_prompt_architecture_idea_brainstorming.md",
+   "line": 447,
+   "heading": "### 2. The Capability Classification Framework",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1212_pks_prompt_architecture_brainstorming.md",
+   "line": 369,
+   "heading": "## What I Add to Your Prompt",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1212_pks_prompt_architecture_brainstorming.md",
+   "line": 373,
+   "heading": "## What I Add to Your Prompt",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1212_pks_prompt_architecture_brainstorming.md",
+   "line": 397,
+   "heading": "## The Knowledge Engineering Discipline",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1212_pks_prompt_architecture_brainstorming.md",
+   "line": 418,
+   "heading": "## The Next Step (ARB Endorsed)",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260802_1247_pks_prompt_ontology_architecture_brainstorming.md",
+   "line": 603,
+   "heading": "### The PKS Projection Insight (CAP-002)",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/ai_architecture/pks/20260803_1145_knowledgeos_disovery.md",
+   "line": 176,
+   "heading": "### Candidate Category G",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/committee/geo_committe_formation/why_read_and_write_commitee_contexts.md",
+   "line": 7,
+   "heading": "## What Are the Two Contexts?",
+   "phrase": "Two Contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/frontend/discoveries/20260613-election-management-analysis.md",
+   "line": 92,
+   "heading": "## 7. Repeated Pattern — Duplicated Orchestration",
+   "phrase": "Repeated Pattern",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260706_1726_Part1_Architecture Knowledge Transfer.md",
+   "line": 303,
+   "heading": "# 7. Greenfield Core",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260706_1726_Part1_Architecture Knowledge Transfer.md",
+   "line": 351,
+   "heading": "## Adjudication",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260706_1738_part3_Architecture Knowledge Transfer.md",
+   "line": 62,
+   "heading": "# 2. What Has Actually Been Built",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260801_2135_akt_part4_ddd_and_architectural_principles.md",
+   "line": 131,
+   "heading": "### 2.6 Generalize only after operational evidence",
+   "phrase": "more than one bounded context",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/knowledge_transfer/20260801_2135_akt_part4_ddd_and_architectural_principles.md",
+   "line": 155,
+   "heading": "### 2.9 `OBSERVATION` — \"constitutional\" is the most overloaded word i",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "architecture_legacy/membership/20260513_1954_membership_ddd_context.md",
+   "line": 5,
+   "heading": "# 🧠 1. Core Correction: You are mixing two bounded contexts",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "claude/audits/ContextRelationshipMatrix.md",
+   "line": 18,
+   "heading": "## Relationship Type Reference",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "claude/audits/EvaluationAutonomyAssessment.md",
+   "line": 261,
+   "heading": "### Risk of the Alternative (Evaluation as Independent BC)",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "claude/plans/fancy-tinkering-newell.md",
+   "line": 1045,
+   "heading": "### Artifact 5: ContextRelationshipMatrix.md (P2a)",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "claude/plans/swirling-jingling-blossom.md",
+   "line": 45,
+   "heading": "## Deliverable 1 — Promotion Matrix",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "developer_guide/audit_system/why_inbox.md",
+   "line": 9,
+   "heading": "## What That Means",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "developer_guide/audit_system/why_inbox.md",
+   "line": 14,
+   "heading": "## What That Means",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "developer_guide/committee_contexts/README.md",
+   "line": 5,
+   "heading": "## Overview",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "developer_guide/contestation/04_messaging.md",
+   "line": 43,
+   "heading": "## Why `ChallengeResolvedIntegration` is a carrier, not a pattern (ARB",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "developer_guide/contestation/06_raise_path_and_conversation_origin.md",
+   "line": 52,
+   "heading": "## Why Contestation has its own copies of two ports",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/contexts/EvidenceContextVerificationStressTest.md",
+   "line": 43,
+   "heading": "## Test Scenario 1: Simple Election (Election-Only Mode)",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/contexts/Round7_GovernanceReview_ARB.md",
+   "line": 492,
+   "heading": "### Map C: Distributed Verification (4 contexts + distributed capabili",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/design/Round36B-02_Auditability_Concept_Catalog.md",
+   "line": 192,
+   "heading": "### Hypothesis RH-B1: Governance Audit and Evidence Integrity Audit Ar",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/design/Round36E-01_Constitutional_Discovery_to_Architectural_Constraint_Mapping.md",
+   "line": 294,
+   "heading": "### 6.3 Architectural Risks from OBS-36D-02-1",
+   "phrase": "Two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/design/Round38D-01_Governance_Capability_Architecture_Discovery.md",
+   "line": 78,
+   "heading": "### C.1 — Realizing S-1 (Amendment Protection)",
+   "phrase": "n ≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/design/Round48-00_Architectural_Decision_Quality_Criteria.md",
+   "line": 57,
+   "heading": "## Q10 / Q11 rationale (the new criteria)",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/architecture/discovery/Round31A_ARB_Design_Authorization_Decision.md",
+   "line": 84,
+   "heading": "## 3. Governance Risk Assessment",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/Context_Assembly_Research_Report.md",
+   "line": 36,
+   "heading": "## 2. Concept-to-coordinate mapping",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/EPIC-002_Concept_Register.md",
+   "line": 109,
+   "heading": "## Repeated cross-disciplinary phenomena — recurrence tracking (ARB re",
+   "phrase": "n ≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/EPIC-002_Problem_Statement.md",
+   "line": 42,
+   "heading": "## Candidate bounded context",
+   "phrase": "two or more contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/EPIC-002_Relationship_Pattern_Selection.md",
+   "line": 140,
+   "heading": "## Decision Summary",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/Event_Registry.md",
+   "line": 36,
+   "heading": "## Duplicate registration",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/Knowledge_Boundary_Charter.md",
+   "line": 7,
+   "heading": "## 1. The two bounded contexts",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/Knowledge_Boundary_Charter.md",
+   "line": 53,
+   "heading": "## 5. Open questions (pilot-gated — cannot be answered by more design)",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PB-004_Retrospective.md",
+   "line": 50,
+   "heading": "## 10. Architectural Confidence Delta",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "line": 136,
+   "heading": "## Admission ladder *(ARB refinement, 2026-07-30 — derived from this p",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "line": 138,
+   "heading": "## Admission ladder *(ARB refinement, 2026-07-30 — derived from this p",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "line": 188,
+   "heading": "### The reconciliation that had to happen first",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_ARB_Review_Discipline.md",
+   "line": 196,
+   "heading": "### Axis A — CONTROL ADMISSION *(subject: a rule · quality · objective",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Knowledge_Contract_Review_Method.md",
+   "line": 365,
+   "heading": "### The currency discriminator *(CON-1, 2026-07-31 — complements the l",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Knowledge_Integrity_Model.md",
+   "line": 773,
+   "heading": "### F. Context Integrity — **NEW quality, admitted with evidence** *(A",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Methodology_Refinement_Candidates.md",
+   "line": 269,
+   "heading": "## Register act — **MCA-R1 ASSESSED all seven candidates** (2026-07-30",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_III_EAD_1_Ecosystem_Architecture_Discovery.md",
+   "line": 77,
+   "heading": "## D. Required Future Decisions — **five, each standing independently*",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_III_Operational_Validation_Charter.md",
+   "line": 150,
+   "heading": "## 7. Operating Rules",
+   "phrase": "REPEATED evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_III_Operational_Validation_Charter.md",
+   "line": 162,
+   "heading": "## 8. Next Steps",
+   "phrase": "REPEATED evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_CDR_R1_Decision.md",
+   "line": 97,
+   "heading": "### 2.5 PMR-3 — Permanent capabilities vs situational controls → **DEF",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_ER1_Execution_Integrity_Review.md",
+   "line": 212,
+   "heading": "## 13. The principle under test — **CONFIRMED, with two lawful variati",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_KBI1_Baseline_Integrity_Review.md",
+   "line": 201,
+   "heading": "### 11.3 Epistemic status of the two stabilizers — **Authority correct",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_KBI1_Baseline_Integrity_Review.md",
+   "line": 238,
+   "heading": "### 12.1 Rule derived — recorded, not adopted as methodology",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M6_Bounded_Context_Discovery.md",
+   "line": 196,
+   "heading": "### 3.2 L2 characterization",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M6_Bounded_Context_Discovery.md",
+   "line": 201,
+   "heading": "### 3.2 L2 characterization",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M7_Relationship_Validation_Review.md",
+   "line": 101,
+   "heading": "### R-3b — the authority direction of R-3 · labeled **\"Separate Ways i",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M8_Strategic_Modeling_Report.md",
+   "line": 28,
+   "heading": "## 1. Executive Summary",
+   "phrase": "Two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_M8_Strategic_Modeling_Report.md",
+   "line": 35,
+   "heading": "## 1. Executive Summary",
+   "phrase": "Two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_MCA_R1_Assessment.md",
+   "line": 74,
+   "heading": "### 2.3 PMR-3 — Permanent governance capabilities vs situational execu",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/PKS_Phase_II_MCA_R1_Assessment.md",
+   "line": 196,
+   "heading": "## 4. Assessment summary",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/Program_Progress_Five_Track_Assessment.md",
+   "line": 107,
+   "heading": "# 4. Greenfield Core",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/implementation/backlog/BACKLOG.md",
+   "line": 23,
+   "heading": "## Epics",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_0841_target_architecture_v3.md",
+   "line": 529,
+   "heading": "## 15.4 ⛔ The boundary",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 53,
+   "heading": "# 1 · Corpus inventory — measured",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 128,
+   "heading": "# 3 · Concern separation",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 193,
+   "heading": "# 5 · Reconciling the 38 open questions",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 203,
+   "heading": "# 5 · Reconciling the 38 open questions",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 267,
+   "heading": "## 6.3 Tactical DDD — the layer `knowledgeos` deliberately declined",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 401,
+   "heading": "## 8.2 The four load-bearing invariants of this architecture",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1108_architecture_gap_analysis_knowledgeos.md",
+   "line": 420,
+   "heading": "## 9.2 Disposition, item by item",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1129_arb_evidence_package_01_v3.md",
+   "line": 168,
+   "heading": "## 4.1 Genuinely new — `INFERRED`, four items",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledge_tranfer/20260816_1129_arb_evidence_package_01_v3.md",
+   "line": 259,
+   "heading": "# 7 · On the Authority model — the ARB's warning, extended",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-architecture-baseline.md",
+   "line": 193,
+   "heading": "## 6. The Open Questions",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/2026-08-02-knowledgeos-strategic-domain-discovery.md",
+   "line": 78,
+   "heading": "## 3. Observations *(repository facts — no interpretation)*",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Architecture_Fitness_Assessment.md",
+   "line": 38,
+   "heading": "## 1. Can today's architecture support `knowledgeos init`?",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Architecture_Validation_Matrix.md",
+   "line": 25,
+   "heading": "## 1. The Validation Matrix",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Character_Definition.md",
+   "line": 1057,
+   "heading": "# §33 COEXTENSION WITHOUT IDENTITY → SEMANTIC IDENTITY PRINCIPLE — ext",
+   "phrase": "two bounded contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 63,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 64,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 65,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 67,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 68,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 69,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 70,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 73,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 74,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 77,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 78,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 79,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 82,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 83,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 85,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 86,
+   "heading": "## 1–2. Knowledge asset inventory",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 215,
+   "heading": "## 10. Final assessment",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Knowledge_Landscape.md",
+   "line": 253,
+   "heading": "## ⭐ Closing",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+   "line": 36,
+   "heading": "## 1. The progression mechanisms — inventoried as evidence",
+   "phrase": "n≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Engineering_Progression_Model.md",
+   "line": 46,
+   "heading": "## 2. The seven commissioned questions, per mechanism",
+   "phrase": "never promote from a single occurrence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Operational_Evidence_Register.md",
+   "line": 40,
+   "heading": "### ⚠️ Candidate methodology observation *(n=1 — recorded, NOT promote",
+   "phrase": "from a single occurrence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Operational_Evidence_Register.md",
+   "line": 189,
+   "heading": "### ⚠️ MO-2 STAGED — ownership-before-state *(candidate modelling heur",
+   "phrase": "single occurrence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/KnowledgeOS_Platform_Capability_Model.md",
+   "line": 239,
+   "heading": "## 10. Bootstrap Readiness",
+   "phrase": "n ≥ 2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md",
+   "line": 104,
+   "heading": "## 4 · Capability boundaries — the eleven findings",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md",
+   "line": 33,
+   "heading": "## 01 · Executive Summary",
+   "phrase": "n ≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/20260821-2344-KnowledgeOS-Epistemic-Architecture-Investigation.md",
+   "line": 437,
+   "heading": "## 15 · Candidate Cross-System Kernel Concepts",
+   "phrase": "n ≥2",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/architecture/KOS-AIP04-DISCOVERY-001-capability-architecture-analysis.md",
+   "line": 172,
+   "heading": "### 5.2 ⭐ The smallest coherent capability boundary",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/backlog/EKS-06-reference-register-identifier-families.md",
+   "line": 34,
+   "heading": "## 2 · Candidate requirement — ⛔ **a candidate, not a decision**",
+   "phrase": "single occurrence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/backlog/EKS-17-duplicate-research-roots-split-one-programme.md",
+   "line": 93,
+   "heading": "## 6 · Urgency",
+   "phrase": "single occurrence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-21-cost-optimization-governance-assurance-review.md",
+   "line": 67,
+   "heading": "## 3.2 ⭐ The cost the document under-states: **amendment-cycle amplifi",
+   "phrase": "from a single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-21-cost-optimization-governance-assurance-review.md",
+   "line": 203,
+   "heading": "# 8 · The authority boundary — what must never be automated",
+   "phrase": "from a single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-APPOINTMENT-SEQUENCING-DEFECT-001.md",
+   "line": 135,
+   "heading": "## 6 · Process rule — established and preserved (`§5` of the order)",
+   "phrase": "single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-OBSERVATION-O-5-process-identity-continuity.md",
+   "line": 5,
+   "heading": "# Observation `O-5` — **process context continuity ≠ workflow session ",
+   "phrase": "single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-OBSERVATION-O-5-process-identity-continuity.md",
+   "line": 74,
+   "heading": "## 7 · Lifecycle",
+   "phrase": "Never promote methodology from a single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-REPAIR-001-AUTHORIZATION.md",
+   "line": 32,
+   "heading": "## 3 · Decision 2 — `CONTINUATION` recorded (`seq 5`)",
+   "phrase": "single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/2026-08-23-KOS-OPERATING-MODEL-001-AMENDMENT-001-VERIFIER-ACTIVATION-84c0f6f6.md",
+   "line": 42,
+   "heading": "## 2 · DECISION 1 — the architecture question: no new concept is creat",
+   "phrase": "single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/20260822-1400-KOS-EP01-Sanskrit-Grammar-V2-Vedic-Paninian-Generative-System.md",
+   "line": 33,
+   "heading": "## 1 · The closure routing — ten-for-ten",
+   "phrase": "two contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/kernel/session2/S2-R-F002-review-of-s1-f002-ubiquitous-language-instability.md",
+   "line": 34,
+   "heading": "## 11 · What is challenged",
+   "phrase": "two contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/analysis/TRANSFORMATION-CONTRACT-GAP.md",
+   "line": 21,
+   "heading": "## A · The five elements, on the mandate's ladder",
+   "phrase": "single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/reviews/synthesis/commission-operation-registry/OPERATION-CONTRACTS.md",
+   "line": 216,
+   "heading": "### C-03 · `Authorize` — record an authority act",
+   "phrase": "single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/101-P83-CORRECTION-VS-REGRESSION-DISCRIMINATOR-AUDIT.md",
+   "line": 181,
+   "heading": "# 11. Backlog",
+   "phrase": "never promote from a single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/112-P91-R-REQ-HISTORICAL-RECONSTRUCTION.md",
+   "line": 126,
+   "heading": "# 5. ⭐⭐⭐⭐⭐ Part IX — the Requirement–Evaluation boundary, and why it i",
+   "phrase": "two bounded contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/37-P20-GROUND-STRATIFICATION-AND-KERNEL-CARDINALITY-AUDIT.md",
+   "line": 99,
+   "heading": "## The inference `P-18` made, and the assumption hidden in it",
+   "phrase": "n ≥ 2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/37-P20-GROUND-STRATIFICATION-AND-KERNEL-CARDINALITY-AUDIT.md",
+   "line": 224,
+   "heading": "# 15. Kernel cardinality table",
+   "phrase": "n≥2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/37-P20-GROUND-STRATIFICATION-AND-KERNEL-CARDINALITY-AUDIT.md",
+   "line": 224,
+   "heading": "# 15. Kernel cardinality table",
+   "phrase": "n≥2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/37-P20-GROUND-STRATIFICATION-AND-KERNEL-CARDINALITY-AUDIT.md",
+   "line": 245,
+   "heading": "# 16. Verdict",
+   "phrase": "n≥2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/37-P20-GROUND-STRATIFICATION-AND-KERNEL-CARDINALITY-AUDIT.md",
+   "line": 303,
+   "heading": "# 18. ⭐ P-20 VERDICT",
+   "phrase": "n >= 2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/37-P20-GROUND-STRATIFICATION-AND-KERNEL-CARDINALITY-AUDIT.md",
+   "line": 328,
+   "heading": "# 18. ⭐ P-20 VERDICT",
+   "phrase": "n>=2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/38-P21-WITHDRAWAL-VS-SUPERSESSION-TRANSITION-IDENTITY-AUDIT.md",
+   "line": 14,
+   "heading": "# 1. Starting state — frozen",
+   "phrase": "n ≥ 2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/71-P53-MINKER-SEMANTIC-TRANSFER-AND-ADMISSIBILITY-AUDIT.md",
+   "line": 101,
+   "heading": "# 9. DDD",
+   "phrase": "Two bounded contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/09-EVIDENCE-LOG.md",
+   "line": 319,
+   "heading": "## CHRONICLE-014 · distributed knowledge, merge and convergence — `025",
+   "phrase": "two bounded contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/knowledgeos/theory-extraction/reconstruction/resolution/11-CYCLE-REAUDIT.md",
+   "line": 13,
+   "heading": "## 0 · ⛔ WIDERRUF 5 — es gibt **keinen** elfgliedrigen Zyklus",
+   "phrase": "n ≥ 2",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/pks/2026-08-01-documentation-classification-gap-observation.md",
+   "line": 72,
+   "heading": "## 5. Why this is not promoted",
+   "phrase": "Repeated pattern",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/pks/2026-08-02-triple-qualification-timing-observation.md",
+   "line": 41,
+   "heading": "## Classification",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/pks/2026-08-04-discovery-commission-three-phase-observation.md",
+   "line": 26,
+   "heading": "## Why it is NOT promoted",
+   "phrase": "never promote methodology from a single occurrence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/publicdigit/adr/ADR_20260806_1520_Demo_And_Production_Policy_Contexts.md",
+   "line": 15,
+   "heading": "## 1 · The principle",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/publicdigit/adr/ADR_20260817_2300_Recovery_Origin_Provenance_Ownership.md",
+   "line": 251,
+   "heading": "### Final architectural principle",
+   "phrase": "Two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-14-KOS-AI-ORCH-001-role-scoped-session-records-architecture-proposal.md",
+   "line": 184,
+   "heading": "## 13 · Alternatives considered",
+   "phrase": "repeated evidence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-16-record-repairs-adoption-registration.md",
+   "line": 29,
+   "heading": "## 4 · The forward sequence, registered as the PO set it (nothing belo",
+   "phrase": "never promote from a single occurrence",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-18-ADR-2-principal-review-registration.md",
+   "line": 21,
+   "heading": "## 2 · The two additions the review singled out",
+   "phrase": "two contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-18-ADR-2-principal-review-registration.md",
+   "line": 21,
+   "heading": "## 2 · The two additions the review singled out",
+   "phrase": "two contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-18-EM-DOM-001-architecture-review.md",
+   "line": 94,
+   "heading": "# Section 3 — `BND-1` ruling · lifecycle ownership",
+   "phrase": "two contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-18-KOS-CONTRACT-NEUTRALITY-001-track1-final-implementation-architecture.md",
+   "line": 110,
+   "heading": "## 3.1 🔴 The risk this exception creates, named because the evidence a",
+   "phrase": "two bounded contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-18-KOS-CONTRACT-NEUTRALITY-001-track1-final-implementation-architecture.md",
+   "line": 227,
+   "heading": "## 11.4 The context map, stated in DDD terms — **unchanged by the exce",
+   "phrase": "Two bounded contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "docs/publicdigit/reviews/2026-08-18-KOS-CONTRACT-NEUTRALITY-001-track1-final-implementation-architecture.md",
+   "line": 227,
+   "heading": "## 11.4 The context map, stated in DDD terms — **unchanged by the exce",
+   "phrase": "two bounded contexts",
+   "kind": "RESEARCH ARTIFACT"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "line": 25,
+   "heading": "## Rulings (living, append-only)",
+   "phrase": "repeated evidence",
+   "kind": "RULE TEXT (standard / ruling)"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "line": 25,
+   "heading": "## Rulings (living, append-only)",
+   "phrase": "evidence from more than one bounded context",
+   "kind": "RULE TEXT (standard / ruling)"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "line": 25,
+   "heading": "## Rulings (living, append-only)",
+   "phrase": "evidence from ONE context",
+   "kind": "RULE TEXT (standard / ruling)"
+  },
+  {
+   "path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md",
+   "line": 25,
+   "heading": "## Rulings (living, append-only)",
+   "phrase": "multi-context bar",
+   "kind": "RULE TEXT (standard / ruling)"
+  },
+  {
+   "path": "engineering/architecture/baseline/Phase-02-Domain-Model.md",
+   "line": 117,
+   "heading": "### BC-5 Adversarial Review Support",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "engineering/architecture/c4/Engineering_Knowledge_System_Reference_Model.md",
+   "line": 25,
+   "heading": "## 2. Guiding Principles — the foundation, not a layer",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "engineering/architecture/c4/Engineering_Knowledge_System_Reference_Model.md",
+   "line": 110,
+   "heading": "## 7. Current operating models (descriptive — observed, not mandated)",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "engineering/architecture/c4/Engineering_Knowledge_System_Reference_Model.md",
+   "line": 110,
+   "heading": "## 7. Current operating models (descriptive — observed, not mandated)",
+   "phrase": "repeated evidence",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "engineering/architecture/reference/Engineering_Platform_Knowledge_Metamodel.md",
+   "line": 104,
+   "heading": "## 6. Lifecycle semantics — four orthogonal axes (conflation is the po",
+   "phrase": "multi-context bar",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "engineering/developer_guide/AI_Engineering_Platform_Architecture_Baseline_Current_State.md",
+   "line": 577,
+   "heading": "### 14.4 One recorded exception to the human governance rules",
+   "phrase": "multi-context bar",
+   "kind": "OTHER DOC"
+  },
+  {
+   "path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "line": 82,
+   "heading": "## Hosted rules (this document is their canonical home; previously MEM",
+   "phrase": "repeated pattern",
+   "kind": "RULE TEXT (standard / ruling)"
+  },
+  {
+   "path": "engineering/governance/ES-001-Engineering-Constitution.md",
+   "line": 82,
+   "heading": "## Hosted rules (this document is their canonical home; previously MEM",
+   "phrase": "single occurrence",
+   "kind": "RULE TEXT (standard / ruling)"
+  },
+  {
+   "path": "engineering/verification/commissions/2026-08-02-wp4-authorization-commission.md",
+   "line": 137,
+   "heading": "## 8. Operational Evidence Review → PKS Classification *(if applicable",
+   "phrase": "single occurrence",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/commissions/2026-08-03-arb-session-agenda.md",
+   "line": 129,
+   "heading": "## 5. B-6 (R-77) — the one item whose evidence status changed",
+   "phrase": "from a single occurrence",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-authority-lifecycle-commission.md",
+   "line": 55,
+   "heading": "## 3. Authority evolution matrix",
+   "phrase": "multi-context bar",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-promotion-review.md",
+   "line": 3,
+   "heading": "# Engineering Rule Promotion Review",
+   "phrase": "Repeated Evidence",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-engineering-promotion-review.md",
+   "line": 72,
+   "heading": "## What I did not do",
+   "phrase": "repeated evidence",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-knowledgeos-maturity-structure-assessment.md",
+   "line": 75,
+   "heading": "## 5. Recommendation",
+   "phrase": "two bounded contexts",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-slice-7c-acceptance-review.md",
+   "line": 56,
+   "heading": "## 5. Classification",
+   "phrase": "single occurrence",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-wp7-architecture-enforcement-alignment-commission.md",
+   "line": 89,
+   "heading": "### Why this is not a disguised context crossing",
+   "phrase": "Two contexts",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-01-wp7-architecture-enforcement-alignment-commission.md",
+   "line": 93,
+   "heading": "### The honest cost — and its mitigation",
+   "phrase": "two contexts",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "engineering/verification/reports/2026-08-02-wp4b-issuance-input-ownership-investigation.md",
+   "line": 139,
+   "heading": "### 5.3 `ContestedOutcomeRef`",
+   "phrase": "two contexts",
+   "kind": "VERIFICATION REPORT"
+  },
+  {
+   "path": "review/2026-08-05-programme-state-assessment.md",
+   "line": 64,
+   "heading": "## 3. What remains — classification (each item exactly one class)",
+   "phrase": "two contexts",
+   "kind": "OTHER DOC"
+  }
+ ],
+ "genealogy": [
+  {
+   "date": "2026-07-26",
+   "host": ".claude/sessions/2026-07-26.md L175 (chair's closing verdict)",
+   "commit": "82805689b ARB closing assessment -- chain accepted as tactical governance baseline",
+   "kind": "track-local ARB verdict (EPIC-004 self-governance)"
+  },
+  {
+   "date": "2026-07-26",
+   "host": "ADR-AIP-LOG-Platform-Rulings.md L25 (R-39)",
+   "kind": "ruling; composite 'ES-006.1 + the EPIC-004 track's own self-governance'"
+  },
+  {
+   "date": "2026-08-01",
+   "host": ".claude/MEMORY.md L389 'Engineering promotion rule (adopted 2026-08-01)'",
+   "commit": "5af8111cf",
+   "kind": "memory; register adoption NOT-FOUND-IN-SEARCH"
+  },
+  {
+   "date": "2026-08-01",
+   "host": ".claude/CLAUDE.md L581",
+   "commit": "15468d825",
+   "kind": "runtime instructions; attributed to ES-006.1 alone"
+  },
+  {
+   "date": "2026-08-16",
+   "host": "ES-001-Engineering-Constitution.md L82 (ES-001.3)",
+   "kind": "rule text citing ES-006.1 as requiring a repeated pattern"
+  },
+  {
+   "date": "—",
+   "host": "ES-006.1 L14-21",
+   "kind": "the cited rule text: bar ABSENT (read under L0-REL-07)"
+  }
+ ],
+ "finding": "CITATION DRIFT (locate-level): a track-local ARB principle -> conjoined with ES-006.1 (R-39) -> attributed to ES-006.1 alone (memory/instructions) -> cited as ES-006.1's requirement (ES-001.3); ES-006.1 text unchanged. Explains OBS-SF-1.",
+ "hypothesis_r3": "norm = Text(rho,t) + Force(rho,t) + Interpretation(rho,t); conformance may be tested against text or interpretation and can differ",
+ "not_done": "no body read (matched lines + commit metadata only)"
+}

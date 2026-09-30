@@ -1,0 +1,74 @@
+# Sources (verbatim). Use ONLY these.
+
+## G — git commit record (subject, date, files changed)
+
+commit 7632b5685
+Date: 2026-07-30 19:33:58 +0200
+Subject: docs(governance): ES-004.3 Artifact Lifecycle Consistency adopted (PA instruction, R-41); ADR-T22 status annotated per first checklist run
+
+Rule hosted once in ES-004; register records the decision; runtime
+pointer + MEMORY hint point, never restate. First execution of the
+slice-closure synchronization checklist caught ADR-T22's stale
+issuance-time 'Implementation NOT yet authorized' clause -- annotated
+with realization status, decision text unchanged; ADR-T21's identical
+clause verified still accurate and left untouched. Session logs remain
+append-only history per ES-004.2.
+
+Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+
+ .claude/CLAUDE.md                                        |  1 +
+ .claude/MEMORY.md                                        |  2 +-
+ .claude/sessions/2026-07-30.md                           | 16 ++++++++++++++++
+ docs/adr/ADR-T-LOG-Tactical-Implementation.md            |  2 +-
+ .../architecture/adr/ADR-AIP-LOG-Platform-Rulings.md     |  1 +
+ engineering/governance/ES-004-Documentation.md           | 10 ++++++++++
+ 6 files changed, 30 insertions(+), 2 deletions(-)
+
+## S1 — rulings register row R-41
+
+| R-41 | 2026-07-30 | **Artifact Lifecycle Consistency adopted as a permanent documentation standard (Principal Architect instruction).** An artifact has one authoritative lifecycle state at any moment; when work crosses a lifecycle boundary (authorization → execution → acceptance → closure), every authoritative artifact transitions with it. Work plans state the PRESENT state; session logs preserve the SEQUENCE of past states (append-only, ES-004.2); history is never rewritten to manufacture consistency. Minimum synchronization checklist at slice closure: Work Plan · CONTEXT.md · Session Log · Developer Guide · Acceptance Record · ADR references. Provenance: the WP-1 closure inconsistency (a CLOSED plan whose header still read "AUTHORIZED — execution begins…"), corrected 2026-07-30; first checklist execution the same day caught a second instance (ADR-T22 row's issuance-time "Implementation NOT yet authorized" clause, annotated). Parsimony honored: rule text hosted ONCE as **ES-004.3** (documentation standard, not a new standard document); runtime pointers only. | ES-004.3 in force; checklist binds every slice closure |
+
+## S2 — session log 2026-07-30, lines 1-41
+
+# Session Log — 2026-07-30
+
+## Summary
+PA instruction institutionalized: **Artifact Lifecycle Consistency** — adopted as **ES-004.3** (canonical, hosted once) + register ruling **R-41**; runtime pointer in `.claude/CLAUDE.md`; MEMORY hint extended. First checklist execution against WP-1's closure caught a second real instance.
+
+## Completed
+- **ES-004.3 hosted** in `engineering/governance/ES-004-Documentation.md`: one authoritative lifecycle state per artifact · Draft→Authorized→Executing→Accepted→Closed · Historical Record Rule · plan-states-present vs log-keeps-history separation · slice-closure synchronization checklist (Work Plan · CONTEXT · Log · Guide · Acceptance · ADR refs) · consistency-review questions · Historical Integrity (never rewrite history to fake consistency) · expected AI behavior at closure.
+- **R-41 appended** to the platform rulings register (chronological, after the parallel session's R-40). Parsimony honored: rule text lives once in ES-004.3; the register records the decision event.
+- **Checklist executed against WP-1 (first application):** Work Plan ✔ (status line fixed `307b90e8e`) · CONTEXT ✔ · Session Log ✔ (history intact) · Dev Guide ✔ · Acceptance Record ✔ · **ADR references ✘→✔**: ADR-T22's row still carried the issuance-time "Implementation NOT yet authorized" — annotated *(status at issuance — since REALIZED by WP-1, ARB-accepted 2026-07-27; ES-004.3 annotation, decision text unchanged)*. ADR-T21's identical clause verified still ACCURATE (WP-3 not yet authorized) — untouched.
+- Pointers: `.claude/CLAUDE.md` (one line, points not restates) · MEMORY ES-004 hint extended.
+
+## Decisions
+- ES-004.3 adopted by explicit PA instruction (recorded R-41); the rule generalizes the WP-1 status-line correction into permanent governance.
+
+## Next Steps
+**WP-2 (APM core), fresh session** — unchanged single next action: work plan from roadmap §WP-2 → RED keystones → GREEN → gates → slice acceptance. ES-004.3's checklist now binds that closure and every closure after it.
+
+---
+
+## ES-004.3 REFINED ROLE-BASED (ARB review adopted; structure/clarity only, substance unchanged)
+
+- **Artifact Roles added** (the architectural rationale the file-list lacked): **Runtime** (CONTEXT · active plan — describes today) · **Historical** (session logs · git — never rewritten) · **Reference** (dev guides · governance — tracks knowledge) · **Decision** (ADR logs · rulings · acceptance — text immutable, status annotations evolve).
+- **Governing distinction added:** *synchronization updates only the MUTABLE portion of an artifact; immutable historical or decision content is never rewritten* — with the ADR-T22 first-execution case recorded as the demonstration and the forbidden misreading named.
+- **Checklist rewritten role-based** (Role · Check · Purpose), replacing the bare file list. Pointers updated in `.claude/CLAUDE.md` + MEMORY hint (point, never restate). **No new register row** — R-41 remains the decision record; this is refinement of the same rule, noted in the provenance line.
+- **Self-review passed:** roles non-overlapping · distinction explicit · checklist role-based · no immutable content touched (R-41 text and session history untouched; ES-004.3 itself is a Reference artifact legitimately updated on a knowledge change).
+
+## Next Steps (single action — unchanged)
+**WP-2 (APM core), fresh session, RED first.** ES-004.3 (role-based) binds its closure.
+
+---
+
+## ES-004.3 VALIDATION EXECUTED — VALIDATED UNCHANGED, DECLARED ARCHITECTURALLY STABLE
+
+- **Report:** `engineering/verification/reports/2026-07-30-es-004-3-artifact-lifecycle-validation.md` — 9 real artifacts classified across all four roles; every one fits exactly one primary role at any moment; all five completeness concepts COMPLETE; boundary clean (no creep into workflow/ADR-methodology/promotion/structure).
+- **Negative validation:** no simultaneous multi-role artifacts · no divergent sync behavior · no mutable/immutable violations at rule level · no missing lifecycle state. Register: **O-1** (plans change role at closure — already covered by the Historical Record Rule) · **O-2 watch item** (composite artifact: acceptance record embedded in the closed plan — single instance, below the evidence bar) · **F-2 repository finding, referred out** (CONTEXT.md violates its own Runtime role: 2 superseded blocks + 53 completed-history entries / 160 lines — the rule DETECTING this is evidence it works; prune = separate authorized housekeeping) · **E-1** (chair's noted lifecycle duplication no longer exists — consolidated in the role-based rewrite; verified one occurrence).
+- **Recommendation issued (exactly one): ES-004.3 validated unchanged → architecturally stable.** Refinement stops until future implementation evidence (O-2 second occurrence or repeated ambiguity).
+
+## Next Steps (single action — unchanged)
+**WP-2 (APM core), fresh session, RED first.** Separately awaiting chair disposition: the F-2 CONTEXT.md prune commission (optional housekeeping, not blocking).
+
+---

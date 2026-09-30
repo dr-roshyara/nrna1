@@ -1,0 +1,773 @@
+{
+ "batches": {
+  "PB01": {
+   "failures": [],
+   "notes": [],
+   "objects": 5,
+   "p1_gap_records": 28,
+   "reading_cost": {
+    "approx-x-equivalence-relation-proof-and-32-projections-precision": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 12912,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 19456,
+      "calls": 1
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "boring-kernel-purpose-vs-extent-dissolution": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 6608,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 38728,
+      "calls": 1
+     }
+    },
+    "capability-existence-vs-category-distinction": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 76834,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 37241,
+      "calls": 1
+     }
+    },
+    "composition-root-di-principle": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 35449,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 461718,
+      "calls": 18
+     }
+    },
+    "discovery-derivation-architecture-ratification-implementation-stage-separation-principle": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 22693,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 22693,
+      "calls": 1
+     }
+    }
+   },
+   "records_by_label_kind": {
+    "approx-x-equivalence-relation-proof-and-32-projections-precision|GAP": 1,
+    "approx-x-equivalence-relation-proof-and-32-projections-precision|METHODOLOGICAL-DEFICIENCY": 2,
+    "approx-x-equivalence-relation-proof-and-32-projections-precision|OBSERVATION": 2,
+    "approx-x-equivalence-relation-proof-and-32-projections-precision|SCHEMA-LIMITATION": 1,
+    "approx-x-equivalence-relation-proof-and-32-projections-precision|STRUCTURE-CANDIDATE": 1,
+    "boring-kernel-purpose-vs-extent-dissolution|HYPOTHESIS": 1,
+    "boring-kernel-purpose-vs-extent-dissolution|METHODOLOGICAL-DEFICIENCY": 1,
+    "boring-kernel-purpose-vs-extent-dissolution|OBSERVATION": 4,
+    "boring-kernel-purpose-vs-extent-dissolution|SCHEMA-LIMITATION": 1,
+    "capability-existence-vs-category-distinction|OBSERVATION": 3,
+    "capability-existence-vs-category-distinction|STRUCTURE-CANDIDATE": 1,
+    "composition-root-di-principle|GAP": 1,
+    "composition-root-di-principle|HYPOTHESIS": 1,
+    "composition-root-di-principle|OBSERVATION": 5,
+    "discovery-derivation-architecture-ratification-implementation-stage-separation-principle|OBSERVATION": 2,
+    "discovery-derivation-architecture-ratification-implementation-stage-separation-principle|STRUCTURE-CANDIDATE": 1
+   },
+   "research_records": 28,
+   "result": "PASS"
+  },
+  "PB02": {
+   "failures": [],
+   "notes": [],
+   "objects": 5,
+   "p1_gap_records": 22,
+   "reading_cost": {
+    "five-blocker-triage-table": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 8900,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "gita-hypothesis-architecture-consequence-pipeline": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 5192,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 6427,
+      "calls": 1
+     }
+    },
+    "glyph-register-v3-collision-inventory-2026-09": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 8382320,
+      "calls": 253
+     }
+    },
+    "h-kos-lifecycle-reasoning-001": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 331875,
+      "calls": 5
+     }
+    },
+    "hpa-gita-chapter18-synthesis-determination-mode-model": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 21125,
+      "calls": 1
+     }
+    }
+   },
+   "records_by_label_kind": {
+    "five-blocker-triage-table|METHODOLOGICAL-DEFICIENCY": 2,
+    "five-blocker-triage-table|OBSERVATION": 3,
+    "gita-hypothesis-architecture-consequence-pipeline|HYPOTHESIS": 1,
+    "gita-hypothesis-architecture-consequence-pipeline|METHODOLOGICAL-DEFICIENCY": 1,
+    "gita-hypothesis-architecture-consequence-pipeline|OBSERVATION": 3,
+    "glyph-register-v3-collision-inventory-2026-09|GAP": 1,
+    "glyph-register-v3-collision-inventory-2026-09|HYPOTHESIS": 1,
+    "glyph-register-v3-collision-inventory-2026-09|METHODOLOGICAL-DEFICIENCY": 1,
+    "glyph-register-v3-collision-inventory-2026-09|OBSERVATION": 8,
+    "glyph-register-v3-collision-inventory-2026-09|SCHEMA-LIMITATION": 1,
+    "h-kos-lifecycle-reasoning-001|GAP": 1,
+    "h-kos-lifecycle-reasoning-001|HYPOTHESIS": 1,
+    "h-kos-lifecycle-reasoning-001|METHODOLOGICAL-DEFICIENCY": 1,
+    "h-kos-lifecycle-reasoning-001|OBSERVATION": 4,
+    "h-kos-lifecycle-reasoning-001|SCHEMA-LIMITATION": 1,
+    "h-kos-lifecycle-reasoning-001|SUGGESTION-RESEARCH": 1,
+    "hpa-gita-chapter18-synthesis-determination-mode-model|GAP": 1,
+    "hpa-gita-chapter18-synthesis-determination-mode-model|OBSERVATION": 5,
+    "hpa-gita-chapter18-synthesis-determination-mode-model|STRUCTURE-CANDIDATE": 1
+   },
+   "research_records": 38,
+   "result": "PASS"
+  },
+  "PB03": {
+   "failures": [
+    "G-12 invariant-universe-not-one-mathematical-object: object record contains a research-record id",
+    "G-12 knowledge-graph-not-equal-knowledge-state: object record contains a research-record id",
+    "G-12 knowledgeos-type-system: object record contains a research-record id",
+    "G-12 linga-yoni-projection-transformation-experiment: object record contains a research-record id",
+    "G-12 minimal-adequate-representation-entropy-formalization: object record contains a research-record id"
+   ],
+   "notes": [
+    "G-01 FIREWALL-LIMITED ids cited: ['S1752', 'S1821', 'S1824', 'S1895', 'S1899', 'S1909', 'S1928', 'S1929', 'S1930', 'S2791', 'S2795', 'S2798']"
+   ],
+   "objects": 5,
+   "p1_gap_records": 32,
+   "reading_cost": {
+    "invariant-universe-not-one-mathematical-object": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 11851,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 30485,
+      "calls": 1
+     },
+     "step7": {
+      "bytes": 11851,
+      "calls": 1
+     }
+    },
+    "knowledge-graph-not-equal-knowledge-state": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 25727,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "knowledgeos-type-system": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 119870,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 491315,
+      "calls": 8
+     }
+    },
+    "linga-yoni-projection-transformation-experiment": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 57320,
+      "calls": 6
+     },
+     "step10": {
+      "bytes": 46588,
+      "calls": 2
+     },
+     "step7": {
+      "bytes": 11524,
+      "calls": 1
+     }
+    },
+    "minimal-adequate-representation-entropy-formalization": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 11747,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 137444,
+      "calls": 5
+     }
+    }
+   },
+   "records_by_label_kind": {
+    "invariant-universe-not-one-mathematical-object|HYPOTHESIS": 1,
+    "invariant-universe-not-one-mathematical-object|METHODOLOGICAL-DEFICIENCY": 3,
+    "invariant-universe-not-one-mathematical-object|OBSERVATION": 4,
+    "knowledge-graph-not-equal-knowledge-state|METHODOLOGICAL-DEFICIENCY": 1,
+    "knowledge-graph-not-equal-knowledge-state|OBSERVATION": 2,
+    "knowledge-graph-not-equal-knowledge-state|STRUCTURE-CANDIDATE": 1,
+    "knowledgeos-type-system|OBSERVATION": 6,
+    "knowledgeos-type-system|STRUCTURE-CANDIDATE": 1,
+    "linga-yoni-projection-transformation-experiment|HYPOTHESIS": 1,
+    "linga-yoni-projection-transformation-experiment|OBSERVATION": 6,
+    "linga-yoni-projection-transformation-experiment|SCHEMA-LIMITATION": 1,
+    "minimal-adequate-representation-entropy-formalization|METHODOLOGICAL-DEFICIENCY": 1,
+    "minimal-adequate-representation-entropy-formalization|OBSERVATION": 4
+   },
+   "research_records": 32,
+   "result": "FAIL"
+  },
+  "PB04": {
+   "failures": [],
+   "notes": [],
+   "objects": 5,
+   "p1_gap_records": 20,
+   "reading_cost": {
+    "nyaya-sutra-kernel-falsification-lens": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 25063,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 780864,
+      "calls": 22
+     }
+    },
+    "rejection-produces-hypothesis-space-not-truth": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 40821,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "relation-8-tuple-vs-triple-reduction": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 42814,
+      "calls": 6
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 202012,
+      "calls": 11
+     }
+    },
+    "reverification-updated-dependency-chain-and-matrix": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step10": {
+      "bytes": 15356,
+      "calls": 1
+     },
+     "step7": {
+      "bytes": 22865,
+      "calls": 1
+     }
+    },
+    "session-completion-handoff-protocol": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 143571,
+      "calls": 11
+     }
+    }
+   },
+   "records_by_label_kind": {
+    "nyaya-sutra-kernel-falsification-lens|GAP": 1,
+    "nyaya-sutra-kernel-falsification-lens|HYPOTHESIS": 1,
+    "nyaya-sutra-kernel-falsification-lens|METHODOLOGICAL-DEFICIENCY": 1,
+    "nyaya-sutra-kernel-falsification-lens|OBSERVATION": 3,
+    "nyaya-sutra-kernel-falsification-lens|SCHEMA-LIMITATION": 1,
+    "rejection-produces-hypothesis-space-not-truth|METHODOLOGICAL-DEFICIENCY": 1,
+    "rejection-produces-hypothesis-space-not-truth|OBSERVATION": 3,
+    "relation-8-tuple-vs-triple-reduction|OBSERVATION": 7,
+    "relation-8-tuple-vs-triple-reduction|SCHEMA-LIMITATION": 1,
+    "reverification-updated-dependency-chain-and-matrix|HYPOTHESIS": 1,
+    "reverification-updated-dependency-chain-and-matrix|OBSERVATION": 2,
+    "session-completion-handoff-protocol|HYPOTHESIS": 1,
+    "session-completion-handoff-protocol|OBSERVATION": 5,
+    "session-completion-handoff-protocol|SCHEMA-LIMITATION": 2
+   },
+   "research_records": 30,
+   "result": "PASS"
+  },
+  "PB05": {
+   "failures": [
+    "G-07 shannon-weaver-information-theory-lens: missing ['secondary_roles']",
+    "G-07 step-verify-programme: missing ['secondary_roles']",
+    "G-07 step185-differentiated-non-identity-chain: missing ['secondary_roles']",
+    "G-07 step291-n4-leverage-not-earliest: missing ['secondary_roles']",
+    "G-07 sufficient-state-control-theory-lens: missing ['secondary_roles']",
+    "STAGE-2 sufficient-state-control-theory-lens: 1 of 1 hit files not read at step 7"
+   ],
+   "notes": [],
+   "objects": 5,
+   "p1_gap_records": 27,
+   "reading_cost": {
+    "shannon-weaver-information-theory-lens": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 94216,
+      "calls": 2
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 1174904,
+      "calls": 36
+     }
+    },
+    "step-verify-programme": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 1593012,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 996766,
+      "calls": 1
+     }
+    },
+    "step185-differentiated-non-identity-chain": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 12629,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "step291-n4-leverage-not-earliest": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 86217,
+      "calls": 5
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 37916,
+      "calls": 2
+     }
+    },
+    "sufficient-state-control-theory-lens": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 35799,
+      "calls": 2
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    }
+   },
+   "records_by_label_kind": {
+    "shannon-weaver-information-theory-lens|GAP": 1,
+    "shannon-weaver-information-theory-lens|OBSERVATION": 5,
+    "shannon-weaver-information-theory-lens|SUGGESTION-METHOD": 1,
+    "step-verify-programme|GAP": 1,
+    "step-verify-programme|HYPOTHESIS": 1,
+    "step-verify-programme|METHODOLOGICAL-DEFICIENCY": 1,
+    "step-verify-programme|OBSERVATION": 7,
+    "step-verify-programme|SUGGESTION-METHOD": 1,
+    "step185-differentiated-non-identity-chain|METHODOLOGICAL-DEFICIENCY": 2,
+    "step185-differentiated-non-identity-chain|OBSERVATION": 2,
+    "step185-differentiated-non-identity-chain|STRUCTURE-CANDIDATE": 1,
+    "step291-n4-leverage-not-earliest|GAP": 1,
+    "step291-n4-leverage-not-earliest|METHODOLOGICAL-DEFICIENCY": 1,
+    "step291-n4-leverage-not-earliest|OBSERVATION": 3,
+    "step291-n4-leverage-not-earliest|SCHEMA-LIMITATION": 2,
+    "sufficient-state-control-theory-lens|GAP": 1,
+    "sufficient-state-control-theory-lens|HYPOTHESIS": 1,
+    "sufficient-state-control-theory-lens|OBSERVATION": 3
+   },
+   "research_records": 35,
+   "result": "FAIL"
+  },
+  "PB06": {
+   "failures": [],
+   "notes": [],
+   "objects": 5,
+   "p1_gap_records": 31,
+   "reading_cost": {
+    "uncertainty-statistical-model-based-reasoning-part21": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 52145,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "v1-1-sim-kernel-capability-set": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 2319,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 3781,
+      "calls": 1
+     }
+    },
+    "vedic-palmistry-structural-reasoning-inventory-2026-09": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 20131,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "verification-pipeline-and-reasoning-failure-not-falsehood": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 52145,
+      "calls": 1
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 0,
+      "calls": 0
+     }
+    },
+    "verification-reconciliation-gate-directive": {
+     "refused_calls": 0,
+     "step1": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step10": {
+      "bytes": 0,
+      "calls": 0
+     },
+     "step7": {
+      "bytes": 14216,
+      "calls": 1
+     }
+    }
+   },
+   "records_by_label_kind": {
+    "uncertainty-statistical-model-based-reasoning-part21|GAP": 2,
+    "uncertainty-statistical-model-based-reasoning-part21|METHODOLOGICAL-DEFICIENCY": 2,
+    "uncertainty-statistical-model-based-reasoning-part21|OBSERVATION": 1,
+    "uncertainty-statistical-model-based-reasoning-part21|SCHEMA-LIMITATION": 1,
+    "v1-1-sim-kernel-capability-set|GAP": 1,
+    "v1-1-sim-kernel-capability-set|METHODOLOGICAL-DEFICIENCY": 1,
+    "v1-1-sim-kernel-capability-set|OBSERVATION": 3,
+    "vedic-palmistry-structural-reasoning-inventory-2026-09|OBSERVATION": 4,
+    "verification-pipeline-and-reasoning-failure-not-falsehood|OBSERVATION": 3,
+    "verification-reconciliation-gate-directive|GAP": 2,
+    "verification-reconciliation-gate-directive|METHODOLOGICAL-DEFICIENCY": 1,
+    "verification-reconciliation-gate-directive|OBSERVATION": 3,
+    "verification-reconciliation-gate-directive|STRUCTURE-CANDIDATE": 1,
+    "verification-reconciliation-gate-directive|SUGGESTION-METHOD": 1
+   },
+   "research_records": 26,
+   "result": "PASS"
+  }
+ },
+ "run_id": "S4-PILOT-R2-001",
+ "totals": {
+  "batches_pass": 4,
+  "disposition_extraction": "structural: dicts with disposition + source_id at any depth, de-duplicated per (source_id, hit key, disposition); agents used heterogeneous layouts",
+  "dispositions": {
+   "ESCALATED": 36,
+   "FALSE-HIT": 394,
+   "FOUND": 104
+  },
+  "dispositions_per_label": {
+   "approx-x-equivalence-relation-proof-and-32-projections-precision": {},
+   "boring-kernel-purpose-vs-extent-dissolution": {
+    "ESCALATED": 4
+   },
+   "capability-existence-vs-category-distinction": {
+    "FOUND": 2
+   },
+   "composition-root-di-principle": {
+    "ESCALATED": 3,
+    "FALSE-HIT": 23,
+    "FOUND": 37
+   },
+   "discovery-derivation-architecture-ratification-implementation-stage-separation-principle": {
+    "FOUND": 1
+   },
+   "five-blocker-triage-table": {},
+   "gita-hypothesis-architecture-consequence-pipeline": {
+    "FOUND": 1
+   },
+   "glyph-register-v3-collision-inventory-2026-09": {
+    "ESCALATED": 5,
+    "FALSE-HIT": 248,
+    "FOUND": 1
+   },
+   "h-kos-lifecycle-reasoning-001": {
+    "ESCALATED": 2,
+    "FOUND": 2
+   },
+   "hpa-gita-chapter18-synthesis-determination-mode-model": {
+    "FOUND": 1
+   },
+   "invariant-universe-not-one-mathematical-object": {
+    "ESCALATED": 1,
+    "FOUND": 1
+   },
+   "knowledge-graph-not-equal-knowledge-state": {},
+   "knowledgeos-type-system": {
+    "ESCALATED": 13,
+    "FALSE-HIT": 3,
+    "FOUND": 12
+   },
+   "linga-yoni-projection-transformation-experiment": {},
+   "minimal-adequate-representation-entropy-formalization": {
+    "ESCALATED": 4,
+    "FALSE-HIT": 1,
+    "FOUND": 5
+   },
+   "nyaya-sutra-kernel-falsification-lens": {},
+   "rejection-produces-hypothesis-space-not-truth": {},
+   "relation-8-tuple-vs-triple-reduction": {},
+   "reverification-updated-dependency-chain-and-matrix": {},
+   "session-completion-handoff-protocol": {},
+   "shannon-weaver-information-theory-lens": {
+    "ESCALATED": 2,
+    "FALSE-HIT": 107,
+    "FOUND": 13
+   },
+   "step-verify-programme": {
+    "FALSE-HIT": 12,
+    "FOUND": 21
+   },
+   "step185-differentiated-non-identity-chain": {},
+   "step291-n4-leverage-not-earliest": {
+    "FOUND": 3
+   },
+   "sufficient-state-control-theory-lens": {
+    "FOUND": 2
+   },
+   "uncertainty-statistical-model-based-reasoning-part21": {},
+   "v1-1-sim-kernel-capability-set": {
+    "ESCALATED": 1,
+    "FOUND": 1
+   },
+   "vedic-palmistry-structural-reasoning-inventory-2026-09": {},
+   "verification-pipeline-and-reasoning-failure-not-falsehood": {},
+   "verification-reconciliation-gate-directive": {
+    "ESCALATED": 1,
+    "FOUND": 1
+   }
+  },
+  "false_hit_rate": 0.7378,
+  "found_rate": 0.1948,
+  "r1_r2_agreement": {
+   "births.conceptual": {
+    "agree": 14,
+    "n": 30,
+    "rate": 0.467
+   },
+   "births.formal": {
+    "agree": 8,
+    "n": 30,
+    "rate": 0.267
+   },
+   "births.governance": {
+    "agree": 7,
+    "n": 30,
+    "rate": 0.233
+   },
+   "births.lexical": {
+    "agree": 7,
+    "n": 30,
+    "rate": 0.233
+   },
+   "births.operational": {
+    "agree": 14,
+    "n": 30,
+    "rate": 0.467
+   },
+   "mathematical_status": {
+    "agree": 6,
+    "n": 30,
+    "rate": 0.2
+   },
+   "primary_layer": {
+    "agree": 0,
+    "n": 30,
+    "rate": 0.0
+   },
+   "type_status": {
+    "agree": 0,
+    "n": 30,
+    "rate": 0.0
+   }
+  },
+  "read_log_entries": 427,
+  "refused_reads": 0,
+  "research_records_total": 189
+ }
+}

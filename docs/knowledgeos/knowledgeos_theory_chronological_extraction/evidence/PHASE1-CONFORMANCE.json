@@ -1,0 +1,628 @@
+[
+ {
+  "file_id": "F0001",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false,
+   "why_stale": "written 03:54 (f81e1b3e7), before the §9/§9A retrofits landed"
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ corrected": {
+   "date": "2026-09-23",
+   "by": "research session",
+   "ref": "GVR-F0026 X-1 · GVR-F0032",
+   "authority": "L0 2026-09-23 — authorization confirmed, corrections unblocked",
+   "⛔ note": "append-only correction: the prior classification is preserved verbatim in ⚠️ prior, not overwritten"
+  },
+  "⭐ O-1_eval": "SATISFIED"
+ },
+ {
+  "file_id": "F0002",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0007-RETROFIT-B1",
+   "batch": 1,
+   "authority": "L0 standing authorization 2026-09-23"
+  }
+ },
+ {
+  "file_id": "F0003",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0007-RETROFIT-B1",
+   "batch": 1,
+   "authority": "L0 standing authorization 2026-09-23"
+  }
+ },
+ {
+  "file_id": "F0004",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0007-RETROFIT-B1",
+   "batch": 1,
+   "authority": "L0 standing authorization 2026-09-23"
+  }
+ },
+ {
+  "file_id": "F0005",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0007-RETROFIT-B1",
+   "batch": 1,
+   "authority": "L0 standing authorization 2026-09-23"
+  }
+ },
+ {
+  "file_id": "F0006",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0007-RETROFIT-B1",
+   "batch": 1,
+   "authority": "L0 standing authorization 2026-09-23"
+  }
+ },
+ {
+  "file_id": "F0007",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0008-RETROFIT-B2",
+   "batch": 2
+  }
+ },
+ {
+  "file_id": "F0008",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "DOSSIER_ONLY",
+  "dossier": true,
+  "record": false
+ },
+ {
+  "file_id": "F0009",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0008-RETROFIT-B2",
+   "batch": 2
+  }
+ },
+ {
+  "file_id": "F0010",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false,
+   "why_stale": "written 03:54 (f81e1b3e7), before the §9/§9A retrofits landed"
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ corrected": {
+   "date": "2026-09-23",
+   "by": "research session",
+   "ref": "GVR-F0026 X-1 · GVR-F0032",
+   "authority": "L0 2026-09-23 — authorization confirmed, corrections unblocked",
+   "⛔ note": "append-only correction: the prior classification is preserved verbatim in ⚠️ prior, not overwritten"
+  },
+  "⭐ O-1_eval": "SATISFIED"
+ },
+ {
+  "file_id": "F0011",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0008-RETROFIT-B2",
+   "batch": 2
+  }
+ },
+ {
+  "file_id": "F0012",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0008-RETROFIT-B2",
+   "batch": 2
+  }
+ },
+ {
+  "file_id": "F0013",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0008-RETROFIT-B2",
+   "batch": 2
+  }
+ },
+ {
+  "file_id": "F0014",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0009-RETROFIT-B3",
+   "batch": 3
+  }
+ },
+ {
+  "file_id": "F0015",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0009-RETROFIT-B3",
+   "batch": 3
+  }
+ },
+ {
+  "file_id": "F0016",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0009-RETROFIT-B3",
+   "batch": 3
+  }
+ },
+ {
+  "file_id": "F0017",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0009-RETROFIT-B3",
+   "batch": 3
+  }
+ },
+ {
+  "file_id": "F0018",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "COMPLETE",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false
+  },
+  "s9a_gates": "12/12",
+  "dossier_status": "COMPLETE",
+  "⭐ retrofit": {
+   "unit": "U-0009-RETROFIT-B3",
+   "batch": 3
+  }
+ },
+ {
+  "file_id": "F0019",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0020",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0021",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0022",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0023",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0024",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0025",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0026",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "RETROFITTED_S9_S9A",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false,
+   "why_stale": "written 03:54 (f81e1b3e7), before the §9/§9A retrofits landed"
+  },
+  "s9a_gates": "11/12",
+  "dossier_status": "INCOMPLETE_BY_DESIGN",
+  "⭐ corrected": {
+   "date": "2026-09-23",
+   "by": "research session",
+   "ref": "GVR-F0026 X-1 · GVR-F0032",
+   "authority": "L0 2026-09-23 — authorization confirmed, corrections unblocked",
+   "⛔ note": "append-only correction: the prior classification is preserved verbatim in ⚠️ prior, not overwritten"
+  },
+  "⭐ O-1_eval": "BLOCKED"
+ },
+ {
+  "file_id": "F0027",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "RETROFITTED_S9_S9A",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "NON_CONFORMANT",
+   "dossier": false,
+   "record": false,
+   "why_stale": "written 03:54 (f81e1b3e7), before the §9/§9A retrofits landed"
+  },
+  "s9a_gates": "11/12",
+  "dossier_status": "INCOMPLETE_BY_DESIGN",
+  "⭐ corrected": {
+   "date": "2026-09-23",
+   "by": "research session",
+   "ref": "GVR-F0026 X-1 · GVR-F0032",
+   "authority": "L0 2026-09-23 — authorization confirmed, corrections unblocked",
+   "⛔ note": "append-only correction: the prior classification is preserved verbatim in ⚠️ prior, not overwritten"
+  },
+  "⭐ O-1_eval": "BLOCKED"
+ },
+ {
+  "file_id": "F0028",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0029",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0030",
+  "how_read": "IN_CANONICAL_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0031",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0033",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0034",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0037",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0038",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0039",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0042",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0045",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F2837",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F2838",
+  "how_read": "WRONG_RESEARCH_ID",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0041",
+  "how_read": "OUT_OF_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0043",
+  "how_read": "OUT_OF_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0044",
+  "how_read": "OUT_OF_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0046",
+  "how_read": "OUT_OF_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F2839",
+  "how_read": "OUT_OF_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F2847",
+  "how_read": "OUT_OF_ORDER",
+  "governance": "ADMISSIBLE",
+  "s9_status": "NON_CONFORMANT",
+  "dossier": false,
+  "record": false
+ },
+ {
+  "file_id": "F0032",
+  "how_read": "CONTROLLED_TEST",
+  "governance": "RC-H-04 HELD",
+  "s9_status": "RETROFITTED_S9_S9A",
+  "dossier": true,
+  "record": true,
+  "⚠️ prior": {
+   "s9_status": "COMPLETE",
+   "dossier": true,
+   "record": true,
+   "why_stale": "written 03:54 (f81e1b3e7), before the §9/§9A retrofits landed"
+  },
+  "s9a_gates": "11/12",
+  "dossier_status": "INCOMPLETE_BY_DESIGN",
+  "⭐ corrected": {
+   "date": "2026-09-23",
+   "by": "research session",
+   "ref": "GVR-F0026 X-1 · GVR-F0032",
+   "authority": "L0 2026-09-23 — authorization confirmed, corrections unblocked",
+   "⛔ note": "append-only correction: the prior classification is preserved verbatim in ⚠️ prior, not overwritten"
+  },
+  "⭐ O-1_eval": "HELD"
+ }
+]

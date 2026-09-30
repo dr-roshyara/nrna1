@@ -1,0 +1,66 @@
+[
+ {
+  "q": "Q1",
+  "self": "YES",
+  "agent": "YES",
+  "match": "EXACT",
+  "agent_quote": "Only explicit ARB decisions create governance. Workflow words (*continue, looks good, go ahead*) are permission to proceed — never Approved/",
+  "agent_reason": "F1 requires an explicit ARB decision and lists both gaining statuses (Approved/Promoted) and losing statuses (Retired/Closed), so both are covered, though the l"
+ },
+ {
+  "q": "Q2",
+  "self": "NO",
+  "agent": "NO",
+  "match": "EXACT",
+  "agent_quote": "**Promotion Ready** *(**a state DERIVED BY VERIFICATION, not a decision by anyone**)*",
+  "agent_reason": "F2 explicitly describes Promotion Ready as a state derived by verification and not a decision."
+ },
+ {
+  "q": "Q3",
+  "self": "YES",
+  "agent": "YES",
+  "match": "EXACT",
+  "agent_quote": "**Promotion Ready** *(**a state DERIVED BY VERIFICATION, not a decision by anyone**)* → **Authority Promotion Decision** *(the act)*",
+  "agent_reason": "In F2's ordered chain the Authority Promotion Decision is the step directly after Promotion Ready."
+ },
+ {
+  "q": "Q4",
+  "self": "NO",
+  "agent": "NO",
+  "match": "EXACT",
+  "agent_quote": "Each stage requires its own Human Decision Event. Stages are never skipped.",
+  "agent_reason": "F3 forbids skipping stages, and F2 adds that no step may absorb the one after it; no fragment allows skipping."
+ },
+ {
+  "q": "Q5",
+  "self": "YES",
+  "agent": "NO",
+  "match": "DISAGREE",
+  "agent_quote": "The only path by which a platform artifact gains authority",
+  "agent_reason": "Not every fragment names its object kind: F3 names 'platform artifact', F4 names 'this document'/'this dictionary' (and Phase 3 artifacts), F1 speaks of governa"
+ },
+ {
+  "q": "Q6",
+  "self": "NO",
+  "agent": "NOT-STATED",
+  "match": "EQUIVALENT (NO≡NOT-STATED)",
+  "agent_quote": "",
+  "agent_reason": "No fragment describes a separate, persisting authorization or grant that later permits a promotion to be carried out; F1's 'permission to proceed' refers to wor"
+ },
+ {
+  "q": "Q7",
+  "self": "YES",
+  "agent": "YES",
+  "match": "EXACT",
+  "agent_quote": "any new term or changed definition requires an ADR and produces a superseding version of this dictionary (AIP-11). Terms may be **added** by",
+  "agent_reason": "F4 states that after freezing, changes require an ADR and produce a superseding version, though only for this dictionary."
+ },
+ {
+  "q": "Q8",
+  "self": "NOT-STATED",
+  "agent": "NOT-STATED",
+  "match": "EXACT",
+  "agent_quote": "",
+  "agent_reason": "F2 places Remediation Verified before Promotion Ready and the decision, but no fragment says evidence is re-checked at the moment of the promotion decision."
+ }
+]

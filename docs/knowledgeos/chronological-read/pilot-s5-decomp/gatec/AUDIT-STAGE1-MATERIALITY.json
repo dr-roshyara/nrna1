@@ -1,0 +1,322 @@
+[
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Lifecycle heuristic mismatch: P3a assigns DORMANT because last_seen = S1023 by source_id order, with no retraction/supersession recorded. Other R1 evidence points to continued uptake or abandonment rather than dormancy: stage-1 hits in S1484 (2026-08-28, 'Reduces the whole prior corpus to ... C1...C7') and S1524 (2026-08-30); the verifier's verdict 'UNRESOLVED -> ABANDONED' for C1-C7 across steps 130-140 with AFR-01..36 as de facto successor; step-143 re-derivation; step-152 rival constitution.",
+  "materiality_id": "M-001"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "K3's candidate epistemic vocabulary (Observed, Imported, Asserted, Inferred, Proposed, Verified, Approved, Superseded) mixes several orthogonal dimensions (epistemic origin, authority 'Approved', verification 'Verified', temporal 'Superseded'); the later step-155A four-orthogonal-dimension claim model (TruthStatus / EpistemicStatus / AuthorityStatus / VerificationStatus), which the verifier rates the best formal object in the corpus, would decompose it. So C3, C2, C4 and C5 may be dimensions of one claim-status product rather than independent invariants.",
+  "materiality_id": "M-002"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The label's notation \"M1-M7\" does not denote the programme. In S0924 and in the audit S1513 it denotes the seven properties of a proposed Mathematical Review Gate (M1 Type correctness … M7 Computational feasibility), an object the programme audits; in S1860, S1866, S1938, S2291 and S2828 it denotes seven missingness states of Step 281 (M1 NotAsked … M7 Orphan). All 10 stage-2 hit keys on this notation are FALSE-HIT on every dimension except the four S1513 keys, whose file is itself a programme report. The notation was attached to the label because the programme names the audited gate; it carries two referents, neither being the label.",
+  "materiality_id": "M-003"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "The label's CANDIDATE-CONCEPTUAL-BIRTH anchor ('C1 Provenance PASS ... C7 Feedback FAIL', S1021) is a constitutional health table that the verification layer classifies as a fabricated result table without hypothetical marker. The step-122 and step-123 tables disagree with each other (label-1 anchors show C7 FAIL in S1021 vs C7 PARTIAL in S1022; verifier: C6 = WARN/VERIFIED/PASS across three tables) and use different scales (PASS/WARN/FAIL vs VERIFIED/WARNING/PARTIAL).",
+  "materiality_id": "M-004"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Recurring surviving distinctions the programme endorses across bands: Conformance != GovernanceApproval (step-155, the only 141-158 file with no invalid inference); TechnicalVerification != GovernanceConformance (step-117); SelfVerification != SelfGovernance with Cap/Perm/Auth/Resp as four non-interchangeable relations (steps 124, 187); Instruction != Enforcement (step-150); NotFound != DoesNotExist (step-109); AuthorityType = f(Context, ClaimType) (step-143); history not identifiable from current state (step-175 witness 100->80 vs 120->80).",
+  "materiality_id": "M-005"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Two-tier invariant structure: constitutional rules (K1-K7) versus foundation invariants (F1 stable identity; F2 immutability/history with F2 ⊂ K1+K4; F3 versioning as an implementation mechanism of K4); Identity declined as K8. Yet an experiment numbered 'K8.1' (KnowledgeOS > LocalMemory) appears after K8 was declined, and the notation 'F2 ⊂ K1+K4' applies a subset relation to a sum of rules.",
+  "materiality_id": "M-006"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Minimality of C1-C7 rests on six pairwise absorption tests (Provenance/Traceability, Authority/Provenance, TemporalValidity/Provenance, EpistemicStatus/Provenance, DeterministicVerification/Evidence, Feedback/Traceability) out of 21 possible pairs, and on an objective of finding 'the smallest set whose violation would fundamentally change KnowledgeOS'. R1 shows no argument for sufficiency (that the seven cover everything constitutional) and no test of absorption into combinations of other invariants.",
+  "materiality_id": "M-007"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Several verifier arithmetic claims can be checked from R1 alone and are consistent: (A∨B)∧(¬A∨C) has 4 satisfying assignments (A=1 forces C=1 with B free; A=0 forces B=1 with C free); 10x8x6x7x5 = 16,800 and 16,800/720 ≈ 23.3 ('factor of about 23'); step-087's profile (two voters A>B>C, one C>A...) gives a transitive majority with A as Condorcet winner if the third voter ranks C>A>B; 2^14 = 16,384.",
+  "materiality_id": "M-008"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "S1020 defines integrity as an intersection of seven properties (§120.61) and states that the rules are not independent, with a dependency diagram (§120.53). Two points are open in the source: (a) the universe of which P..F are subsets, and how membership in V is decided when C5 is a SHOULD rule, are not defined; (b) the diagram meant to show the dependence of the seven rules has nodes that do not coincide with the seven rules (it contains Evidence, which is not one of C1-C7). If each rule depends on its predecessors in the diagram, the intersection is partly redundant, which the source does not discuss.",
+  "materiality_id": "M-009"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Constitutional state machine and exception mechanism: UNKNOWN -> TESTED -> {PASS -> VERIFIED; FAIL -> REMEDIATING -> TESTED; FAIL -> EXCEPTION -> EXPIRED -> TESTED}, with a governed Exception object (Authority, Reason, Scope, ValidUntil) so that a violation under exception reads 'C7=ExceptionActive' not 'PASS'; Regression(Ci) on PASS->FAIL; recursive control cycle Constitution -> Check -> Finding -> Governance -> Remediation -> Check; health is time-indexed Health(Ci,t). In R1 the health vocabulary (VERIFIED/WARNING/PARTIAL) and the state-machine vocabulary (UNKNOWN/TESTED/PASS/FAIL/REMEDIATING/EXCEPTION/EXPIRED/VERIFIED) do not coincide.",
+  "materiality_id": "M-010"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Verifier assessment of step-120 conflicts with the label-1 extraction's characterization: the P2 note calls the reduction 'rigorous non-redundancy reduction analysis'; the verifier calls step-120 'the band's most valuable structural act' but lists three unreconciled naming systems (K1-K7, P/A/E/T/V/R/F, C1-C7), an ill-typed intersection formula, three dependency edges refuted by the file's own independence arguments, six fabricated VIOLATION verdicts, and 0 of 7 operational definitions.",
+  "materiality_id": "M-011"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Is the step-verify-programme's evidence discipline (ACTUALLY_EXECUTED vs AUTHOR_ASSERTION, PASS != Proof, execution-context provenance) a reflexive application of the constitution's C5 / test-integrity rules to the corpus itself? R1 shows the same distinctions in both labels but no row in which the programme cites C1-C7 as its own standard.",
+  "materiality_id": "M-012"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Reflexivity of the programme's evidence standard: it classifies the corpus's ~1,900 PASS labels as AUTHOR_ASSERTION because no execution trace exists, and itself reports 'twenty first-hand verifier computations', an md5 sweep, grep censuses and an exhaustive 2^14 enumeration. Do its own computations meet ACTUALLY_EXECUTED / REPRODUCIBLE_WITNESS (command, output, inputs), or are they hand derivations reported in prose?",
+  "materiality_id": "M-013"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Modal inhomogeneity of the constitution: candidate K5 is stated with MUST (120.19) but Constitutional Rule K5 deliberately uses SHOULD (120.38); the conjunctive integrity formula (120.61) and the constitutionality criterion (violation changes semantic character, 120.1) both presuppose invariants that cannot be legitimately violated. A SHOULD-conjunct inside an intersection of MUSTs leaves the integrity predicate's semantics undefined for C5.",
+  "materiality_id": "M-014"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Verifier-integrity rules: the mechanism verifying a constitutional rule must not be able to silently disable it (agent rewriting a failing check to always PASS must be detected as VerifierIntegrity=FAIL); TestResult must be traceable to ExecutionContext and source version; assurance chain RuleVersion -> SourceVersion -> CheckerVersion -> Execution -> Result; stale-snapshot PASS = EvidenceContextMismatch.",
+  "materiality_id": "M-015"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "P3a pair verdicts for this label were made on samples (b truncated 318/338); RP1040 (EXTENSION with invariant-consolidation-satisfiability-plan) needed a full-family lookup, and three UNWITNESSED verdicts (RP1672, RP1676, RP1678) rest on the extraction note 'relationship ... not reconciled in this batch'. R1 rows show the programme treating prior verification artefacts (A1-A9, AM, AC register, TV-F-001.., K0, V2, V3, STEP-TRACEABILITY-REGISTER, B1-B7 traces) as 'provisional verifier hypotheses' to be rechecked, which is positive evidence of a continuation / re-verification relation with the STEP-TRACE series.",
+  "materiality_id": "M-016"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Substrate integrity anomalies: files_touching lists S1544, which contributes no P1 row and has no source_track; source_tracks carry d23_track 'B' with track_tag 'TRACK-A-VERIFICATION-CLUSTER-UNCONFIRMED'; verification spec files (S1513-S1531) are provenance PRIMARY while checkpoints/charter/register (S1526, S1535, S1540, S1543) are SECONDARY-SYNTHESIS; S1538's best_historical_date 2026-08-25 is Era-0 content, not authoring date; P1 statements render the file identifiers '140338' and '135842' as step numbers ('steps 158 and 140338'); S1524 feeds both labels' stage-1 searches but carries rows only for label 2.",
+  "materiality_id": "M-017"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The programme's own classification scales multiply without explicit mappings in R1: a 9-rung computability ladder (S1517) vs a 7-rung ladder (S1525) vs the 5-level ladder applied in S1513; an 8-value evidence classification (S1517); an 8-value derivation status (S1517); an 8-category statement classification (S1525); a 12-category final-theory classification (S1536); a 4-layer and a 5-tier lettered evidence hierarchy and a 5-value proposition status (S1540); a 7-value question-evolution status (S1517). This is the scale-proliferation defect (e.g. '49 distinct scales ... zero explicit mappings' in 101-120) the programme charges the corpus with.",
+  "materiality_id": "M-018"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Citation topology: steps cite almost exclusively their immediate predecessor (steps 208-215: 7 individual citations in 11,287 lines, 6 of 7 to the preceding step; steps 067-082 cite nothing below step 66; step 097 cites no step), which yields systematic uncited re-derivation (Unknown != False seven times, Capability != Authority four times; one authorization rule minted seven times under seven IDs; ≈169 invariant IDs across 15 families in 141-158 with zero cross-family references; ≈500 invariants in ≈25 registries, one decidable).",
+  "materiality_id": "M-019"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The Step-201 fork: 201-A performs an immediate 16-term vocabulary freeze; 201-B refuses the freeze and proposes an 80-step, ten-phase adversarial / statistical / formal-assurance programme (Phases A-J, steps 201-280) with Freeze last and a seven-question burden-of-proof gate. Steps 202-205 cite 201-A only, so 201-A 'wins' by successor capture without adjudication, and the only branch that would have produced executable falsification evidence is orphaned. The freeze drops three terms still required by live invariants.",
+  "materiality_id": "M-020"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "MCS-2 retention conflict as a three-axiom derivation: A1 (discard requires provable universal non-necessity across all protected future questions), A2 (future questions are generally unknowable), A3 (some discarding is required or storage grows unboundedly); A1 ∧ A2 ⊢ ¬∃X Discard(X), contradicting A3. A1 and A2 are reported two sections apart in step-088, with step-100 declaring both 088 and 098 closed. Proposed repair: bound the proof obligation to a declared enumerable question class.",
+  "materiality_id": "M-021"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Origin of K1-K7: P1 records a source-claimed extension of a 'Step 119 K1-K7 candidate'; P3a RP1168 (basis SOURCE-CLAIMED-ONLY) says the constitution extends knowledgeos-control-loop-evidence-test-model (S1018) K1-K7; P2 simultaneously describes the constitution as 'independently and empirically derived from the Steps 101-119 architecture-conformance arc'. The verifier describes step-119 as the 'control-loop evidence test' that rebinds C0-C6 to control-loop stages. R1 contains no row from S1018 itself.",
+  "materiality_id": "M-022"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Structural-asymmetry hypothesis: the invariant registry governs only implicit semantic elevation (I_73 / 196.54) and nothing governs implicit semantic demotion, and this 'single missing dual invariant explains every silent term-drop / abandonment': 201-A freeze deletions (Determination, Witness, Conflict-as-object), Zero at 186->187, Ambiguous/Candidate, the Golden Trace apparatus, the C1-C7 constitution, Dempster-Shafer, measure theory. The atom SemanticDemotionGoverned is 'the only atom in the core with no corpus source'.",
+  "materiality_id": "M-023"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Live-corpus measurement instability: step and file counts change within the session (205 -> 207 -> 215 -> 216 -> 218 steps; 465 -> 472/473 files; Step 208 recorded NON-EXISTENT, then written at 01:18 and retained as a time-indexed observation). Inconsistent counts coexist in R1: 472 files (S1538, S1540) vs 473 (S1532, S1535); 13 byte-identical duplicate groups (S1538) vs 28 duplicate hash groups 'in the phase_measure_theory directory' (S1541) vs 4-5 pairs earlier (S1528); 'six total files' containing measure vocabulary (S1538) vs four pre-step files plus one orphan (S1532).",
+  "materiality_id": "M-024"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Abandonment-without-supersession recurs at growing scale according to the programme: C1-C7 constitution dropped across 130-140 (C-094); Golden Trace / Registry / 28-invariant apparatus of 144-154 dropped from 155A onward (TV-F-059); Step-201-B's adversarial testing programme orphaned by successor capture; the step-146 aggregate map replaced wholesale by step-157, orphaning twelve invariants; Dempster-Shafer after step-027; measure theory before step-001; ~93% of the I_21-I_75 registry write-only.",
+  "materiality_id": "M-025"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Cross-label evidence siloing: the label-1 family (86 rows) contains no row from the verification programme even though at least eight step-verify-programme rows evaluate step-120 or its descendants directly (S1520 p1_rows[124]; S1521 [132], [134]; S1522 [146], [154], [156], [159]; S1524 [177], [190]). Stage-2 files S1484 and S1524 contribute no label-1 rows, and step-121's own file (S1019, per the G0268 note) contributes none.",
+  "materiality_id": "M-026"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Lifecycle CONTESTED is computed from 'contested_by_own_contradiction_type: true', but the label's CONTRADICTION-typed rows (82 of 338) are findings about the audited corpus, not contradictions of or within the programme; P3a RP1040 notes say as much. The programme's actual internal disagreements (B-SVP-02, B-SVP-13) are not what triggered the status.",
+  "materiality_id": "M-027"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Seven named failure-propagation chains, one per invariant (e.g. NoProvenance -> EvidenceTrust↓ -> VerificationTrust↓ -> DecisionTrust↓; Inference=Authority -> AIOutput -> OrganizationalTruth, called 'the fundamental AI governance failure'; SupersededKnowledge=CurrentKnowledge -> RetrievalAccuracy != KnowledgeCorrectness; Runtime-not->Knowledge -> KnowledgeDecay), plus four domain-relative 'most important invariant' designations (EpistemicStatus for AI, Authority for governance, Evidence+DeterministicVerification for assurance, Feedback for the OS concept).",
+  "materiality_id": "M-028"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Joint-satisfiability test by propositional abstraction: 14 atoms, each traced to a verbatim corpus commitment (e.g. UnknownRepresentable, DiscardPermitted, OneOwnerPerConcept, EpistemicPartialOrder/EpistemicTotalChain, EntropyNonIncreasing/EntropyGrows, SemanticElevationGoverned/SemanticDemotionGoverned, FreezeDeletesTerms), exhaustive enumeration of 2^14 = 16,384 assignments, 0 satisfying models, five independent minimal conflicting subsets (MCS-1..5). Claimed to be a sound lower bound on inconsistency, because conflicts hidden inside undefined predicates cannot be found.",
+  "materiality_id": "M-029"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "No typed signature for the constitution or its seven properties is found: the absence procedure resolves type_signature GENUINELY-UNDEFINED-AFTER-CENSUS (object record absences.type_signature). This gap record references that result rather than duplicating it.",
+  "materiality_id": "M-030"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "P3a classifies kos-implementation-constitution (Step 152, C-001..C-040) as an EXTENSION 'downstream of' C1-C7 (basis INFERRED); the verification layer reports that Step 152 cites, compares or supersedes nothing from step-120, that Epistemic Separation and Feedback have no v1.0 counterpart, and that two constitutions remain live, i.e. a regression presented through a version bump. Separately, step-143 is said to restate C1-C7 near-verbatim as future work without citing step-120.",
+  "materiality_id": "M-031"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Anti-date-inference and non-canonicalization rules: chronology is evidence of evolution, never of correctness or supersession; a later formulation supersedes only with explicit evidence (replacement, rejection, correction, withdrawal, authority statement, or a derivation the earlier cannot survive); otherwise both are preserved as UNRESOLVED / UNRECONCILED ALTERNATIVES; 'NO CANONICAL FORM ESTABLISHED' is a valid result; terms merge only after proven equivalence; 'addressed is not equivalent to answered'; no silent repair; Track A (verification) must not be contaminated by Track B (reconstruction) or Track C (documentation).",
+  "materiality_id": "M-032"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Measure-theory absence: no numbered step (0 of 215) contains σ-algebra, measurable space, measure space or Lebesgue; occurrences sit in four pre-Step-001 research files (Era 0, 2026-08-25) and one unnumbered orphan whose evidence measure μ_E is reportedly a measure on the time index, not on the evidence set; Dempster-Shafer appears only through step-027; the directory is named phase_measure_theory; 'Phase' itself may never be defined. Ranked first among the findings that determine the theory's status.",
+  "materiality_id": "M-033"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Constitution lineage as reported by the verification layer: interrogated honestly at step-121 (0 of 7 rules confirmed conformant, 7 of 7 unresolved), instrumented and then fabricated against at steps 122-123, demoted at 124-125, functionally replaced by AFR-01..36 at 128-129 (one unremarked succession note AFR-02 <- C1+C2), then unreferenced across 130-140 and never versioned. The step-121 remedy (versioning v0.1/v0.2) is reported never implemented.",
+  "materiality_id": "M-034"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Graph-integrity invariants I1-I7 (Step 130, Assurance Graph: I1 AuthoritativeKnowledge=>Provenance ... I7 CurrentKnowledge=>Validity) are said to 'closely mirror' C1-C7, while the verification layer reports C1-C7 tokens collapse to zero from step 130 onward. If both hold, I1-I7 is a renamed, uncited re-derivation of the constitution at graph level rather than a declared refinement. Only one I-row (S1030) was sampled; S1030's best_historical_date is 2025-06-01, before the corpus began.",
+  "materiality_id": "M-035"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "The constitutional dependency graph (Provenance -> {Authority, Epistemic, Validity} -> {Traceability, Evidence} -> Deterministic Verification -> Feedback) introduces 'Evidence', which is not one of the seven invariants, and asserts dependency edges between invariants that the reduction analysis (120.27-120.32) argued are distinct / not absorbable. The verification layer states three edges are refuted by the file's own independence arguments and that a second incompatible topology exists; R1 shows neither the full edge list nor a second topology.",
+  "materiality_id": "M-036"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "The constitution is carried mainly by negative separations (Source != CompleteProvenance, Actor != Authority, CreatedAt != ValidFrom, Cache != Authority, Provenance != EpistemicStatus, RetrievalAccuracy != KnowledgeCorrectness, HistoricalTruth != CurrentTruth) plus 'minimum meaning' glosses; the verification layer concludes 0 of 7 constitutional invariants receive a full operational definition, and elsewhere notes that 'a separation is not a construction'.",
+  "materiality_id": "M-037"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Status of the step-120 'experiments': label-1 anchors present them as scenario specifications with an 'Expected:' clause (e.g. 'Expected: K3 VIOLATION', 'Verdict: K2 VIOLATION if promoted'), i.e. test-case definitions of what would count as a violation; the verification layer counts them as 'six fabricated constitutional VIOLATION verdicts issued without ever inspecting KnowledgeOS'. The counts agree across layers (six VIOLATION-type verdicts K1.1, K2.1, K3.1, K4.1, K6.1, K7.1; two PASS K5.1, K8.1; one PARTIAL K4.2; S1484 notes 'Only 2 boxed PASS'). The layers disagree on what the verdicts are.",
+  "materiality_id": "M-038"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "S1524 (2026-08-30) reports that the content of this constitution recurs later in the corpus without citation: Step 143 rules near-verbatim, 156A and 155A reviving it under other ID namespaces. If so, later labels may denote this object or parts of it; this is a later report and does not alter the Step 120 state.",
+  "materiality_id": "M-039"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Recurrent measurement-theory defect: headline metrics formed as products or weighted sums of quantities with no declared scale, estimand or admissible transformation (step-124 ActionRisk = Impact x Irreversibility x Scope; step-184 EpistemicDebt = Importance x Recoverability x Missingness; step-206 B(i,j) = Σ w_i D_i), committed independently in three bands, each unaware of the others, against the corpus's own rejection of scalar aggregation (step-003, step-019, step-025c-1) and its explicit refusals to fabricate aggregate metrics (steps 080, 081, 114).",
+  "materiality_id": "M-040"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Cross-label correspondence: the programme's 'chronology != supersession' and valid-time/recording-time rules are the constitution's K4 distinction (CreatedAt != ValidFrom, HistoricalTruth != CurrentTruth) applied to the corpus's own artefacts; the programme reports that the corpus violates its own valid-time/recording-time separation through filename timestamps that record export, not authoring (S1524, S1528).",
+  "materiality_id": "M-041"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Two later reports (S1484, S1524) state that this constitution and the Step 152 Implementation Architecture Constitution v1.0 coexist with colliding names and version/ID namespaces and no supersession or lineage edge, and S1524 states that v1.0 omits C3 and C7. These are claims of later sources about the relation between two constitutional artifacts; they do not change what S1020 states and they are not rows of this label, so they do not enter the semantic_status roll-up (D4 is evaluated on the label rows).",
+  "materiality_id": "M-042"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Pointer-layer architecture: Constitution -> Architecture -> Implementation layering extended to agent instructions (AGENTS.md -> Operating contract -> KnowledgeOS -> Authoritative knowledge); .claude/ owns AgentBehavior, not AuthoritativeEngineeringKnowledge; .codex/ symmetric; KnowledgeOS > LocalMemory absent explicit override authority; AgentCache must preserve Source/Version/Freshness and Cache != Authority. The verification layer reports that the step-105 FAIL scenario (.claude/ containing authoritative architecture knowledge) is true of the repository hosting the corpus.",
+  "materiality_id": "M-043"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Frozen pair verdict RP1172 (knowledgeos-architecture-constitution-v01 / kos-implementation-constitution: EXTENSION, basis INFERRED, \"downstream of\") is consumed unchanged by the roll-up. Evidence visible here bears partly against it: S1524 reports v1.0 contradicting this constitution by omission and two live constitutions without supersession, while also reporting a partial mapping of the v0.1 rules onto v1.0. The label is escalated for H-02 consideration; no status is altered.",
+  "materiality_id": "M-044"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "02-FILES date extraction picks example dates from content as best_historical_date: S1020 = '2024' (from the 120.15 example 'a decision from 2024'), S1022 = '2026-09-15' (the ValidUntil of Experiment 3), which is later than S1022's own mtime (2026-08-28), and S1030 = '2025-06-01'. The verification layer separately reports that filename timestamps in this corpus are export events, not authoring events.",
+  "materiality_id": "M-045"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Notation attribution and co-labelling artefacts: 'M1-M7' is registered as a step-verify-programme notation, but the stage-1 hit shows the identical gate list in S0924 (a corpus file audited by the programme; S1513 attributes the gate to the step-030-analysis meta file), and S2291 shows Step 281's unrelated M1-M7 missingness categories, consistent with RP1682. The kt-tuple-spine-wars-steps-26-40 label co-occurs 49 times, including rows about steps 101-220 registries and scales, i.e. it is used as a generic tuple/registry-collision tag rather than a steps-26-40 scope.",
+  "materiality_id": "M-046"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "A candidate derivational edge to knowledgeos-control-loop-evidence-test-model (Step 119) was not admitted as a dependency edge: the only source text is the S1484 step-trace sequence arrow after the Step 119 record, and mapping Step 119 to that label rests on the family_md (P2) note, not on a source row stating the dependency. S1020 itself says only that it consolidates previous experiments. The relation is carried by pair RP1168 (REFINEMENT, SOURCE-CLAIMED-ONLY).",
+  "materiality_id": "M-047"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "The P2/P3a characterization 'empirically derived' (used as positive homonym evidence in RP1170) conflicts with the verification layer's finding that steps 101-120 contain zero empirical acts (no commit SHAs, shell invocations, real repository paths or test output across all 20 files). The descriptor appears to originate in an extraction-agent note, not in a quoted source statement.",
+  "materiality_id": "M-048"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The verification layer corrects itself in R1, and uncorrected band claims coexist with the corrections: VF-1 (phantom I_Causal) corrected by TV-F-042 as a scope artefact; the band claim 'Step 158 never executed' (S1524 [173], [178], [180]) corrected by TV-F-056 (Step 158 exists and performs no act on reality); S1519's 'four negative controls scored PASS' for step-100 refined by TV-F-045 (Expected and Result are consistent; the defect is scope substitution); the Step-172 brief reclassification. Band-file rows (S1513-S1531) therefore carry claims later revised by supervisory TV-F rows.",
+  "materiality_id": "M-049"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Meta-criterion for constitutionality: an invariant is constitutional iff its violation changes the system's intended semantic character (ConstitutionalInvariant != CodingConvention), paired with a technology-substitution test (VectorDB->GraphDB, Claude->AnotherAgent, Podman->Kubernetes leave the constitution unchanged) and an explicit exclusion list of eleven technologies.",
+  "materiality_id": "M-050"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The label's P1 rows begin with the Phase 2C band reports (S1513 onward), but whole-file readings of stage-2 files that are not row sources show the programme earlier: S1413 proposes it (\"Start the **KnowledgeOS Theory Verification Programme** at Level 1.\"), S1438 and S1439 (EXPLICIT 2026-08-29, SECONDARY-SYNTHESIS) are its Level-1 plan and checkpoint, and S1441, S1444, S1456, S1481 (PRIMARY, MTIME-only) are its phase prompts. None can move a birth (not rows; MTIME or SECONDARY-SYNTHESIS), so all five births remain BIRTH-UNRESOLVED-MTIME-ONLY. Treating S1513 as the label's beginning would describe a later phase (step-by-step deep verification, Phase 2C) as the programme's origin.",
+  "materiality_id": "M-051"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "No type or signature of the programme object is given anywhere in the capture or in the 39 whole-file readings: absences.type_signature = GENUINELY-UNDEFINED-AFTER-CENSUS (stage-1 search DISCOVERY-POPULATION, 2734 files, 12 firewalled skipped; 33 hit keys all UNSUPPLIED-DIMENSION or FALSE-HIT). What is missing: a typed description of the programme (its inputs, outputs such as TV-F findings and verdict vocabularies, and its state). Resolving evidence: a corpus source defining the programme's artifacts as typed objects. This is a finite-capture statement, not a claim that none exists.",
+  "materiality_id": "M-052"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Agent-governance rules attached to C2: A2 'technical capability MUST NOT be interpreted as organizational authority'; the boxed central invariant 'No agent may convert its own observation, inference, or recommendation into authoritative organizational knowledge without the required validation and authority'; and the corollary 'governance must be enforced below the LLM instruction layer'. The verification layer reports that step-124's A0-A6 autonomy-class ladder reuses the tokens A1/A2 already bound as invariant names, and that step-124 also contains an ill-typed ActionRisk = Impact x Irreversibility x Scope (not visible in label-1 rows).",
+  "materiality_id": "M-053"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "HOMONYM verdict against kos-constitutional-invariant-map (B0006, '11-law core', 'philosophically-derived'): the separation is source-claimed only through the extraction agent's why_grouped note; no file of the 11-law map is present in the R1 source metadata, so the relationship cannot be checked from R1.",
+  "materiality_id": "M-054"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Internal disagreement in the programme on joint satisfiability: the checkpoint says it is 'NOT YET INVESTIGATED' and reclassifies it as 'currently ill-posed' (only 1 of ~500 invariants decidable); the Joint Satisfiability Report explicitly rejects that framing and answers NO (inconsistent); the charter records the report as delivered ahead of schedule. Both S1535 and S1539 carry explicit date 2026-08-30; S1540's best date is 2026-08-29 although it records the 2026-08-30 report.",
+  "materiality_id": "M-055"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "MCS-5 (filtration vs entropy growth) is counted as one of the five conflicts making the core inconsistent, yet the same report states a consistent reading exists (if H(K_t) is the entropy of a growing state description rather than uncertainty conditional on the filtration) and that the corpus never says which quantity is meant. So at least one MCS depends on interpretation, and 'inconsistent ... not a matter of interpretation' is stronger than the stated evidence for that subset.",
+  "materiality_id": "M-056"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Step-121 conformance method ConstitutionalRule -> ArchitectureMechanism -> Code -> Test -> RuntimeEvidence per C1-C7, previewed in S1020, reportedly executed at step-121 as a verdict table with 0 of 7 confirmed conformant, plus a 'bootstrap paradox' about who authorizes changes to the constitution itself.",
+  "materiality_id": "M-057"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The stage-1 term list for this label contains notation templates (\"step-verify-nnn-nnn\", \"tv-f-nnn\", \"vc-1..vc-12\") that appear to be searched as literal strings: every raw hit with term_index 6 is the literal \"TV-F-nnn\" (S1438, S1439, S1441, S1540), and the templates step-verify-nnn-nnn and vc-1..vc-12 produced no raw hit. Row sources whose text carries concrete instances (S1521 \"artifact: TV-F-042 … TV-F-055\"; S1524 \"STEP-VERIFY-141-158\" and \"## KnowledgeOS theory-verification programme · end-of-series seam\") have no stage-1 hit for this label. Stage-1 recall for labels whose notations are templates is therefore bounded by literal template occurrence, a false-negative mechanism in the census. For this label the effect on resolutions is nil (all row sources were read whole at step 1 and none supplies a type signature), but a GENUINELY-UNDEFINED-AFTER-CENSUS elsewhere could rest on it.",
+  "materiality_id": "M-058"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Non-compensatory (conjunctive) aggregation: KnowledgeOSIntegrity = P∩A∩E∩T∩V∩R∩F, with the stated consequence that satisfying six of seven invariants does not yield constitutional soundness; later reinforced by the warning (S1021) against a single aggregate score (e.g. 87%) and by P2's note that it extends 'Vector>Scalar' from S1013. The verification layer calls the formula ill-typed (set intersection applied to named properties) and notes the letter F is bound twice in the file. The exact letter-to-invariant binding and the type of the operands cannot be read from R1.",
+  "materiality_id": "M-059"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "Inside S1020 the object changes term and one rule changes modality before it is frozen: the candidate set \"KOS Constitution={K1..K7}\" (§120.33) becomes \"KnowledgeOS Architecture Constitution v0.1\" with rules renamed C1-C7 (§120.66), and K5 is stated with MUST as a candidate (§120.19) but as SHOULD in the constitutional rule (§120.38) and in C5, with a stated reason. The P1 rows record both states but type neither as CORRECTION or term change, so the label carries no CONTRADICTION/CORRECTION row type.",
+  "materiality_id": "M-060"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "Self-confirming experiment pattern: per-band tallies (≈350 boxed verdicts in 067-082 with 0 Expected/Result divergences, VF-14; 636 experiments / 100% PASS in 083-100; 126/126 in 101-104; ≈470 per-experiment PASS tokens in 101-120; ≈1,490 / ≈1,433 PASS in 067-120; ≈1,600 then ≈1,900 corpus-wide at ≈99% PASS) with zero executions. Inference drawn: a suite with a near-100% pass rate, no negative control and no experiment able to diverge from its own Expected is 'evidence the suite cannot fail, not evidence of correctness'. Four genuine falsification passes are identified (steps 169, 175, 178, 181).",
+  "materiality_id": "M-061"
+ },
+ {
+  "label": "knowledgeos-architecture-constitution-v01",
+  "statement": "P2 theme heading 'Step 121: Constitution-to-Implementation Conformance Test (4 rows)' groups S1021 rows, but S1021's path is the step-122 evidence-execution-protocol file; the P2 group note places Step 121 in S1019; S1022 is step-123 and S1023 step-124. Step-121's own content (0/7 conformant table) is therefore absent from the label family while its heading is reused for step-122 material.",
+  "materiality_id": "M-062"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "A no-silent-repair rule recurs across the programme's artifacts from its proposal to its latest mandate (S1413 \"neither Claude session should be allowed to unilaterally change the other\"; S1518 \"No silent repair applied.\"; S1540 \"No silent repair (absolute)\"; S1566 \"Do not promote candidate theory to verified theory.\"). In S1551 the programme extends the rule to its own claims (\"a claim is indexed to the moment of observation — applies to the programme's own claims\"), and in S1444 it changes its objective from producing registers to constructing the final theory, with verification as the justification mechanism (timeline CHANGES-DEFINITION). The rule stays stable while the objective changes.",
+  "materiality_id": "M-063"
+ },
+ {
+  "label": "step-verify-programme",
+  "statement": "The capture sets lifecycle_candidate CONTESTED for this label from contested_by_own_contradiction_type, but the label's 82 CONTRADICTION-type rows record contradictions the programme found in the audited corpus steps (e.g. S1513 \"VC-1 — `U(H)` type contradiction (027 §13 vs 031 §24).\"; S1516 TV-F-040). For a verification or audit label, a row's type describes the finding's object, not the label. The lifecycle rule transfers the audited object's contradictions to the auditor; D4 for semantic_status is correctly not met here, but the lifecycle field disagrees with it.",
+  "materiality_id": "M-064"
+ }
+]

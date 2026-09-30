@@ -1,0 +1,124 @@
+{
+  "events": [
+    {
+      "event_id": "START WP-4B at R-72 (proviso unmet)",
+      "act_quote": "THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN ... CONSEQUENCE: no RED begins.",
+      "state_quote": "WP-4B ... is authorized as the next executable slice of §WP-4, provided its authorization package demonstrates executable scope and no unresolved governance blockers remain. THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN",
+      "state_row": "R-72",
+      "class": "SAME-STATEMENT",
+      "coded_s_matches": true,
+      "source_s": "authorized in principle; proviso unmet (execution contingent, contingency unmet)",
+      "note": "The unmet-proviso state and the non-start are joined in one sentence by 'SO'. The three blockers listed after the colon belong to that same sentence. No attempted START is described: 'does not begin' is a consequence the ruling states, not a refusal of an attempt, so the coded outcome REFUSED is a reading of it."
+    },
+    {
+      "event_id": "START WP-4B 08-03 16:10",
+      "act_quote": "test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive / Four keystones written; 4 failed (0 assertions). STOP at the RED boundary.",
+      "state_quote": "approved decision (R-72 authorization, R-76 scope). [the actor's own claim, same commit] -- vs. R-72: \"THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN\" -- vs. R-79 SEQUENCE: \"(1) the two remaining Board acts ... (2) WP-4B RED\" and the commit: \"the two Board acts are outstanding\"",
+      "state_row": "git 6a67da5d7 (self-claim); R-72 (last prior external state, 2026-08-02); R-79 (same day, time-order unknown)",
+      "class": "UNCLEAR",
+      "coded_s_matches": true,
+      "source_s": "UNK. The commit claims R-72 authorization. By its own text R-72 did not permit implementation as of 08-02. Whether the proviso was discharged by 08-03 16:10 depends on R-73..R-77, which are not in the sources. R-79's sequence puts the two Board acts before WP-4B RED, and the commit says those acts are still outstanding.",
+      "note": "This is the only event whose START is actually attested as performed. Its state is established only by the actor's own claim in the same artifact, or by later retrospective text (R-81 on 08-04: 'inside the seam already authorized by R-72'; R-86: 'authorized to resume implementation'). Neither is prior and independent."
+    },
+    {
+      "event_id": "START WP-8 (permission only)",
+      "act_quote": "NO IMPLEMENTATION WORK FOR WP-8 SHALL COMMENCE until the two remaining governance acts are completed ... NOT PERMITTED: any implementation work for WP-8.",
+      "state_quote": "WP-8 remains deferred pending closure of §WP-4 ... R-79 grants PERMISSION for WP-8 planning activities only. It does NOT COMMISSION, AUTHORIZE, or REQUIRE such activities.",
+      "state_row": "R-79 (decision + scope annotation)",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": false,
+      "source_s": "For implementation START: deferred, not authorized, and expressly NOT PERMITTED. 'Permission-only' applies only to PLANNING, which is a different act from START. R-72 adds an independent precondition: 'MANDATORY BEFORE WP-8'.",
+      "note": "This is a prohibition directive. It describes no attempted WP-8 implementation and no refusal."
+    },
+    {
+      "event_id": "START 7A after AUTHORIZE(7A)",
+      "act_quote": "NONE describing a performed 7A START. Nearest: \"First authorized activity: RED at 7A\" / \"WP-7 opens at slice 7A; ... execution responsibility transfers to engineering\"",
+      "state_quote": "SLICE 7A EXECUTION AUTHORIZED ... Scope is slice-granular: 7A ONLY",
+      "state_row": "R-47",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "authorized",
+      "note": "No source (no commit, no row) describes 7A RED actually being begun. The coded outcome PERFORMED has no source."
+    },
+    {
+      "event_id": "START 7B after AUTHORIZE(7A)",
+      "act_quote": "NONE describing an attempted or refused 7B START.",
+      "state_quote": "7B and 7C are NOT authorized and follow their own gates.",
+      "state_row": "R-47",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "not-authorized"
+    },
+    {
+      "event_id": "START 7B at R-56 (plan approved, execution not issued)",
+      "act_quote": "NONE describing an attempted or refused 7B START. Nearest: \"TWO CORRECTIONS REQUIRED BEFORE RED\"",
+      "state_quote": "Execution of 7B is a SEPARATE act and has NOT been issued ... | ... execution still NOT authorized",
+      "state_row": "R-56 (recording note, 'not part of this ruling', and the effect column)",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "not-authorized (plan approved; execution not issued)",
+      "note": "The state sentence is labelled a recording note, not part of the ruling."
+    },
+    {
+      "event_id": "START 7B at R-58 (execution authorized)",
+      "act_quote": "NONE describing a performed 7B START. Nearest: \"Engineering is authorized to begin Slice 7B RED\"",
+      "state_quote": "SLICE 7B EXECUTION AUTHORIZED ... Engineering is authorized to begin Slice 7B RED on keystones K1–K10, with K9 inside 7B. No additional governance act is required before RED. | Slice 7B: planned -> RED AUTHORIZED",
+      "state_row": "R-58",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "authorized",
+      "note": "The coded outcome PERFORMED has no source."
+    },
+    {
+      "event_id": "START 7C at R-58 (remains unauthorized)",
+      "act_quote": "NONE describing an attempted or refused 7C START.",
+      "state_quote": "Slice 7C remains unauthorized",
+      "state_row": "R-58 (also R-47: '7B and 7C are NOT authorized')",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "not-authorized"
+    },
+    {
+      "event_id": "START 7C at R-65 (authorized)",
+      "act_quote": "NONE describing a performed 7C START. Nearest: \"Engineering shall implement Slice 7C\" (a directive) / \"engineering may begin RED\"",
+      "state_quote": "SLICE 7C AUTHORIZED ... | Slice 7C AUTHORIZED; engineering may begin RED",
+      "state_row": "R-65",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "authorized (implementation and acceptance; release additionally requires an announcement owner)",
+      "note": "The coded outcome PERFORMED has no source."
+    },
+    {
+      "event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+      "act_quote": "NONE describing an attempted or refused §12 reconcile START. R-81 does not mention §12.",
+      "state_quote": "Batch 7's freeze is lifted FOR THIS REPAIR ONLY ... | ... all other Batch-7 work still frozen; plus annotation: THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND \"BATCH 7 IS RELEASED\" DOES NOT HOLD.",
+      "state_row": "R-81 (and R-86 to link §12 reconcile to batch 7: 'WP-4B BATCH 7 IS RELEASED · engineering is AUTHORIZED to execute ... R-84's §12 reconcile')",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "not-authorized (frozen). R-81 does not name it; that it is frozen batch-7 work is inferred from R-86. Under the provenance annotation even R-81's own repair was only PREPARED at that point."
+    },
+    {
+      "event_id": "START §12 reconcile at R-86 (Batch 7 released)",
+      "act_quote": "NONE describing a performed §12 reconcile START. Nearest: \"Engineering is authorized to resume implementation in accordance with the adopted governance.\"",
+      "state_quote": "WP-4B BATCH 7 IS RELEASED · engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile (ack on self-redelivery; dead-letter + escalate otherwise)",
+      "state_row": "R-86",
+      "class": "ACT-NOT-ATTESTED",
+      "coded_s_matches": true,
+      "source_s": "authorized",
+      "note": "The coded outcome PERFORMED has no source."
+    }
+  ],
+  "counts": {
+    "INDEPENDENT": 0,
+    "SAME-STATEMENT": 1,
+    "OUTCOME-DERIVED": 0,
+    "ACT-NOT-ATTESTED": 9,
+    "UNCLEAR": 1
+  },
+  "coded_s_mismatches": 1,
+  "non_circular_contrast": {
+    "exists": false,
+    "pairs": [],
+    "reason": "Zero events are INDEPENDENT, so no pair can satisfy 'two INDEPENDENT events from different clusters with opposite outcomes'. The closest candidate is R-72 (not begun) vs git 6a67da5d7 (performed): same target WP-4B, different clusters, opposite outcomes. It fails because R-72 is SAME-STATEMENT and the commit's state is UNCLEAR. Unresolved, that pair is a possible counterexample: a performed START whose last independently recorded state is 'proviso unmet'."
+  }
+}

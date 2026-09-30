@@ -1,0 +1,6923 @@
+{
+ "generated_utc": "2026-09-26T00:28:03.581567Z",
+ "items": {
+  "I0031e75e10": {
+   "orig_id": "S1413-g050-p1",
+   "source": "SEG"
+  },
+  "I007199c1dd": {
+   "orig_id": "U03-S1484-141",
+   "source": "E1"
+  },
+  "I007da0494e": {
+   "orig_id": "S1521-g019-p3",
+   "source": "SEG"
+  },
+  "I00f108c0d2": {
+   "orig_id": "U03-S1022-021",
+   "source": "E1"
+  },
+  "I0109929de1": {
+   "orig_id": "S1022-g048-p1",
+   "source": "SEG"
+  },
+  "I0134e45320": {
+   "orig_id": "U03-S1484-067",
+   "source": "E1"
+  },
+  "I016ddf5418": {
+   "orig_id": "S1541-g041-p2",
+   "source": "SEG"
+  },
+  "I018d02feac": {
+   "orig_id": "S1413-g041-p1",
+   "source": "SEG"
+  },
+  "I01bb4aa49d": {
+   "orig_id": "S1484-g022-p2",
+   "source": "SEG"
+  },
+  "I01d2bb6886": {
+   "orig_id": "S1521-g011-p3",
+   "source": "SEG"
+  },
+  "I01e0f23dc8": {
+   "orig_id": "U04-020",
+   "source": "E1"
+  },
+  "I0213552b5f": {
+   "orig_id": "S1484-g004-p2",
+   "source": "SEG"
+  },
+  "I0243c61478": {
+   "orig_id": "S1541-g077-p1",
+   "source": "SEG"
+  },
+  "I02447285b0": {
+   "orig_id": "U03-S1484-026",
+   "source": "E1"
+  },
+  "I027d9e8fd4": {
+   "orig_id": "S1022-g025-p1",
+   "source": "SEG"
+  },
+  "I02cd84c6d2": {
+   "orig_id": "U04-226",
+   "source": "E1"
+  },
+  "I02d03f03f2": {
+   "orig_id": "U04-203",
+   "source": "E1"
+  },
+  "I032831eca6": {
+   "orig_id": "S1022-g066-p1",
+   "source": "SEG"
+  },
+  "I03c480bf05": {
+   "orig_id": "U04-160",
+   "source": "E1"
+  },
+  "I03c78317c0": {
+   "orig_id": "U04-290",
+   "source": "E1"
+  },
+  "I03cbfb80de": {
+   "orig_id": "S1484-016",
+   "source": "E2"
+  },
+  "I03f269aeff": {
+   "orig_id": "S1484-g048-p8",
+   "source": "SEG"
+  },
+  "I043e5a8f3b": {
+   "orig_id": "S1021-049",
+   "source": "E2"
+  },
+  "I045e94748e": {
+   "orig_id": "U04-223",
+   "source": "E1"
+  },
+  "I04969f7a30": {
+   "orig_id": "S1541-g057-p1",
+   "source": "SEG"
+  },
+  "I050b44e4b1": {
+   "orig_id": "S1541-g044-p3",
+   "source": "SEG"
+  },
+  "I0517b96f43": {
+   "orig_id": "U04-315",
+   "source": "E1"
+  },
+  "I054d3d691d": {
+   "orig_id": "S1541-g050-p2",
+   "source": "SEG"
+  },
+  "I05622f4b81": {
+   "orig_id": "S1484-g097-p1",
+   "source": "SEG"
+  },
+  "I056799e2cd": {
+   "orig_id": "S1022-g058-p2",
+   "source": "SEG"
+  },
+  "I0569dde7db": {
+   "orig_id": "S1541_P002",
+   "source": "E2"
+  },
+  "I05bca09faa": {
+   "orig_id": "U03-S1021-064",
+   "source": "E1"
+  },
+  "I05d33d10a1": {
+   "orig_id": "U03-S1484-139",
+   "source": "E1"
+  },
+  "I05dd0ddae0": {
+   "orig_id": "U03-S1022-014",
+   "source": "E1"
+  },
+  "I05fdc23c31": {
+   "orig_id": "U04-111",
+   "source": "E1"
+  },
+  "I0642d985c4": {
+   "orig_id": "U03-S1021-049",
+   "source": "E1"
+  },
+  "I06729aab8a": {
+   "orig_id": "S1413-g003-p2",
+   "source": "SEG"
+  },
+  "I06b28837ee": {
+   "orig_id": "S1022-g003-p3",
+   "source": "SEG"
+  },
+  "I06b3f56fb5": {
+   "orig_id": "S1484-g017-p2",
+   "source": "SEG"
+  },
+  "I079def3fcc": {
+   "orig_id": "S1541-g058-p1",
+   "source": "SEG"
+  },
+  "I07e96f6237": {
+   "orig_id": "U04-119",
+   "source": "E1"
+  },
+  "I0837feccce": {
+   "orig_id": "U03-S1022-002",
+   "source": "E1"
+  },
+  "I085ed3f635": {
+   "orig_id": "S1022-g049-p1",
+   "source": "SEG"
+  },
+  "I086f394f09": {
+   "orig_id": "S1541_P019",
+   "source": "E2"
+  },
+  "I0874a38f8e": {
+   "orig_id": "U03-S1484-146",
+   "source": "E1"
+  },
+  "I087f0afe4e": {
+   "orig_id": "U03-S1484-109",
+   "source": "E1"
+  },
+  "I08806b776a": {
+   "orig_id": "S1541-g043-p1",
+   "source": "SEG"
+  },
+  "I08d7648ad4": {
+   "orig_id": "U04-299",
+   "source": "E1"
+  },
+  "I08de5132fa": {
+   "orig_id": "U03-S1021-006",
+   "source": "E1"
+  },
+  "I08efe0003a": {
+   "orig_id": "S1541_P011",
+   "source": "E2"
+  },
+  "I0907f32267": {
+   "orig_id": "U04-070",
+   "source": "E1"
+  },
+  "I0921e7df72": {
+   "orig_id": "S1484-g004-p1",
+   "source": "SEG"
+  },
+  "I092bded0ca": {
+   "orig_id": "U03-S1022-022",
+   "source": "E1"
+  },
+  "I09c0d7bd9f": {
+   "orig_id": "U04-019",
+   "source": "E1"
+  },
+  "I09c15db87f": {
+   "orig_id": "S1021-048",
+   "source": "E2"
+  },
+  "I09ebbb04b2": {
+   "orig_id": "S1541-g009-p2",
+   "source": "SEG"
+  },
+  "I0a49b0ae94": {
+   "orig_id": "U03-S1022-001",
+   "source": "E1"
+  },
+  "I0a60c26947": {
+   "orig_id": "S1541_P006",
+   "source": "E2"
+  },
+  "I0a6f1881c2": {
+   "orig_id": "S1541-g020-p2",
+   "source": "SEG"
+  },
+  "I0aa54b0aec": {
+   "orig_id": "S1484-g105-p3",
+   "source": "SEG"
+  },
+  "I0aacbcb034": {
+   "orig_id": "U03-S1021-048",
+   "source": "E1"
+  },
+  "I0acd0d78d7": {
+   "orig_id": "U04-162",
+   "source": "E1"
+  },
+  "I0acdf0d9a0": {
+   "orig_id": "S1413_P001",
+   "source": "E2"
+  },
+  "I0ae482eb0b": {
+   "orig_id": "U03-S1484-108",
+   "source": "E1"
+  },
+  "I0af0411d99": {
+   "orig_id": "S1484-036",
+   "source": "E2"
+  },
+  "I0b40b2bec6": {
+   "orig_id": "S1521-g013-p2",
+   "source": "SEG"
+  },
+  "I0b4d0ec994": {
+   "orig_id": "S1521-g010-p4",
+   "source": "SEG"
+  },
+  "I0b803ceafc": {
+   "orig_id": "U04-045",
+   "source": "E1"
+  },
+  "I0b8077de71": {
+   "orig_id": "U04-135",
+   "source": "E1"
+  },
+  "I0b8095c57b": {
+   "orig_id": "S1541-g018-p3",
+   "source": "SEG"
+  },
+  "I0b85758141": {
+   "orig_id": "U04-307",
+   "source": "E1"
+  },
+  "I0b8d836ec2": {
+   "orig_id": "S1022-g014-p1",
+   "source": "SEG"
+  },
+  "I0b9a5c48f1": {
+   "orig_id": "S1521-g003-p1",
+   "source": "SEG"
+  },
+  "I0bd2fc4e59": {
+   "orig_id": "U03-S1021-007",
+   "source": "E1"
+  },
+  "I0bd86a7711": {
+   "orig_id": "S1413_P009",
+   "source": "E2"
+  },
+  "I0bfcd40db0": {
+   "orig_id": "S1484-g086-p2",
+   "source": "SEG"
+  },
+  "I0bff7887cc": {
+   "orig_id": "S1541-g030-p1",
+   "source": "SEG"
+  },
+  "I0c26506b1a": {
+   "orig_id": "U04-133",
+   "source": "E1"
+  },
+  "I0c9e22c4b9": {
+   "orig_id": "S1484-g082-p1",
+   "source": "SEG"
+  },
+  "I0cb5681bf0": {
+   "orig_id": "U03-S1484-058",
+   "source": "E1"
+  },
+  "I0cd3f4148a": {
+   "orig_id": "S1541-g077-p2",
+   "source": "SEG"
+  },
+  "I0ce563ddb8": {
+   "orig_id": "S1484-g093-p4",
+   "source": "SEG"
+  },
+  "I0cf6b42700": {
+   "orig_id": "S1021-g077-p1",
+   "source": "SEG"
+  },
+  "I0d3d3b182e": {
+   "orig_id": "S1021-g001-p3",
+   "source": "SEG"
+  },
+  "I0d480593fb": {
+   "orig_id": "U03-S1021-027",
+   "source": "E1"
+  },
+  "I0d4ce9e3b8": {
+   "orig_id": "U04-025",
+   "source": "E1"
+  },
+  "I0d7454f584": {
+   "orig_id": "S1541_P023",
+   "source": "E2"
+  },
+  "I0dc58ae0c3": {
+   "orig_id": "S1021-g053-p1",
+   "source": "SEG"
+  },
+  "I0ddb9a1e82": {
+   "orig_id": "U04-185",
+   "source": "E1"
+  },
+  "I0de45e30ec": {
+   "orig_id": "U03-S1022-023",
+   "source": "E1"
+  },
+  "I0e0e63922f": {
+   "orig_id": "S1521-g021-p4",
+   "source": "SEG"
+  },
+  "I0e223b049c": {
+   "orig_id": "S1521-g003-p2",
+   "source": "SEG"
+  },
+  "I0e27d81ec0": {
+   "orig_id": "S1541-g076-p2",
+   "source": "SEG"
+  },
+  "I0e97292865": {
+   "orig_id": "S1541-g039-p2",
+   "source": "SEG"
+  },
+  "I0ea26371c5": {
+   "orig_id": "U04-005",
+   "source": "E1"
+  },
+  "I0eca751a8e": {
+   "orig_id": "U03-S1484-143",
+   "source": "E1"
+  },
+  "I0edd521d71": {
+   "orig_id": "S1022-g031-p1",
+   "source": "SEG"
+  },
+  "I0ef5684bdf": {
+   "orig_id": "S1413-g009-p1",
+   "source": "SEG"
+  },
+  "I0f1f9677d5": {
+   "orig_id": "S1484-g012-p1",
+   "source": "SEG"
+  },
+  "I0f3f342b8e": {
+   "orig_id": "S1484-g111-p6",
+   "source": "SEG"
+  },
+  "I0f7778ec5d": {
+   "orig_id": "U03-S1484-075",
+   "source": "E1"
+  },
+  "I0f988b3da8": {
+   "orig_id": "U04-323",
+   "source": "E1"
+  },
+  "I0f9c98caca": {
+   "orig_id": "S1413-g007-p2",
+   "source": "SEG"
+  },
+  "I0fb698febb": {
+   "orig_id": "S1022-g054-p1",
+   "source": "SEG"
+  },
+  "I0fcd0f69ba": {
+   "orig_id": "U03-S1022-035",
+   "source": "E1"
+  },
+  "I0fced89801": {
+   "orig_id": "U04-235",
+   "source": "E1"
+  },
+  "I0fe3ac6393": {
+   "orig_id": "S1484-g070-p1",
+   "source": "SEG"
+  },
+  "I10021e3c09": {
+   "orig_id": "S1484-015",
+   "source": "E2"
+  },
+  "I10339dcaf4": {
+   "orig_id": "S1521-g020-p1",
+   "source": "SEG"
+  },
+  "I10d23c0c01": {
+   "orig_id": "U03-S1484-032",
+   "source": "E1"
+  },
+  "I10e986cd50": {
+   "orig_id": "S1022-g067-p1",
+   "source": "SEG"
+  },
+  "I11541ac80c": {
+   "orig_id": "S1521_P004",
+   "source": "E2"
+  },
+  "I116778a071": {
+   "orig_id": "S1021-g043-p1",
+   "source": "SEG"
+  },
+  "I118487af3b": {
+   "orig_id": "S1413-g047-p1",
+   "source": "SEG"
+  },
+  "I11c3517f70": {
+   "orig_id": "S1484-g090-p2",
+   "source": "SEG"
+  },
+  "I122791969e": {
+   "orig_id": "S1484-g063-p1",
+   "source": "SEG"
+  },
+  "I1265a54720": {
+   "orig_id": "S1484-g052-p2",
+   "source": "SEG"
+  },
+  "I12a0fdac09": {
+   "orig_id": "S1541_P027",
+   "source": "E2"
+  },
+  "I12d1574748": {
+   "orig_id": "S1541-g078-p4",
+   "source": "SEG"
+  },
+  "I12dc8a3d21": {
+   "orig_id": "S1521-g006-p3",
+   "source": "SEG"
+  },
+  "I12ea96122f": {
+   "orig_id": "S1484-012",
+   "source": "E2"
+  },
+  "I130158c288": {
+   "orig_id": "S1413-g053-p1",
+   "source": "SEG"
+  },
+  "I130fce5bd4": {
+   "orig_id": "U04-007",
+   "source": "E1"
+  },
+  "I131247ad91": {
+   "orig_id": "U03-S1022-043",
+   "source": "E1"
+  },
+  "I1339f31224": {
+   "orig_id": "S1021-053",
+   "source": "E2"
+  },
+  "I134217087c": {
+   "orig_id": "S1413-g016-p1",
+   "source": "SEG"
+  },
+  "I1345579fb7": {
+   "orig_id": "S1484-020",
+   "source": "E2"
+  },
+  "I134d58bce1": {
+   "orig_id": "U04-126",
+   "source": "E1"
+  },
+  "I13532826fe": {
+   "orig_id": "S1541-g014-p2",
+   "source": "SEG"
+  },
+  "I137fd20f7a": {
+   "orig_id": "U04-316",
+   "source": "E1"
+  },
+  "I13843451cd": {
+   "orig_id": "S1541_P004",
+   "source": "E2"
+  },
+  "I13955c981c": {
+   "orig_id": "S1021-g015-p1",
+   "source": "SEG"
+  },
+  "I1397b036a8": {
+   "orig_id": "S1484-g104-p1",
+   "source": "SEG"
+  },
+  "I13a24ae06a": {
+   "orig_id": "S1413-g003-p1",
+   "source": "SEG"
+  },
+  "I13a62266df": {
+   "orig_id": "U04-136",
+   "source": "E1"
+  },
+  "I13d3827ba7": {
+   "orig_id": "U04-024",
+   "source": "E1"
+  },
+  "I13db5fe977": {
+   "orig_id": "S1021-g071-p2",
+   "source": "SEG"
+  },
+  "I13e8e99871": {
+   "orig_id": "S1484-g110-p10",
+   "source": "SEG"
+  },
+  "I143786bc8f": {
+   "orig_id": "S1021-g052-p2",
+   "source": "SEG"
+  },
+  "I144769adc6": {
+   "orig_id": "S1021-g042-p1",
+   "source": "SEG"
+  },
+  "I145d0af7c7": {
+   "orig_id": "U04-029",
+   "source": "E1"
+  },
+  "I14621d865e": {
+   "orig_id": "S1413-g044-p1",
+   "source": "SEG"
+  },
+  "I14686ac8e4": {
+   "orig_id": "S1021-g025-p2",
+   "source": "SEG"
+  },
+  "I146d0985ea": {
+   "orig_id": "U04-103",
+   "source": "E1"
+  },
+  "I1495af6cf9": {
+   "orig_id": "S1541-g006-p1",
+   "source": "SEG"
+  },
+  "I149ee6d2f0": {
+   "orig_id": "S1022-g042-p1",
+   "source": "SEG"
+  },
+  "I14abd3d0d7": {
+   "orig_id": "S1484-g069-p2",
+   "source": "SEG"
+  },
+  "I14ac3e85a8": {
+   "orig_id": "S1521-g021-p3",
+   "source": "SEG"
+  },
+  "I14f3a73852": {
+   "orig_id": "S1484-g035-p1",
+   "source": "SEG"
+  },
+  "I15a47d3f7c": {
+   "orig_id": "U04-167",
+   "source": "E1"
+  },
+  "I15b61f7e18": {
+   "orig_id": "U04-276",
+   "source": "E1"
+  },
+  "I15c2c1bc3c": {
+   "orig_id": "U03-S1022-010",
+   "source": "E1"
+  },
+  "I15cafba273": {
+   "orig_id": "S1541_P022",
+   "source": "E2"
+  },
+  "I15eac7caf0": {
+   "orig_id": "S1521-g005-p3",
+   "source": "SEG"
+  },
+  "I15eb2b3862": {
+   "orig_id": "S1022-022",
+   "source": "E2"
+  },
+  "I15f4e89678": {
+   "orig_id": "U04-080",
+   "source": "E1"
+  },
+  "I1616c06dc6": {
+   "orig_id": "S1021-052",
+   "source": "E2"
+  },
+  "I1624374d77": {
+   "orig_id": "U03-S1484-133",
+   "source": "E1"
+  },
+  "I167c084df7": {
+   "orig_id": "U03-S1022-030",
+   "source": "E1"
+  },
+  "I16860b06cd": {
+   "orig_id": "U03-S1484-118",
+   "source": "E1"
+  },
+  "I16a1dec958": {
+   "orig_id": "S1521-g006-p1",
+   "source": "SEG"
+  },
+  "I16bb1bdc57": {
+   "orig_id": "S1484-g021-p1",
+   "source": "SEG"
+  },
+  "I16bd4c4d83": {
+   "orig_id": "U03-S1022-051",
+   "source": "E1"
+  },
+  "I16da606b05": {
+   "orig_id": "U04-048",
+   "source": "E1"
+  },
+  "I16f100abf3": {
+   "orig_id": "U03-S1022-005",
+   "source": "E1"
+  },
+  "I170680e85f": {
+   "orig_id": "S1541-g035-p4",
+   "source": "SEG"
+  },
+  "I170da511f2": {
+   "orig_id": "U04-047",
+   "source": "E1"
+  },
+  "I174a944a89": {
+   "orig_id": "S1541-g075-p1",
+   "source": "SEG"
+  },
+  "I176c01511d": {
+   "orig_id": "S1413-g018-p3",
+   "source": "SEG"
+  },
+  "I177393b00f": {
+   "orig_id": "S1484-g087-p4",
+   "source": "SEG"
+  },
+  "I179579256a": {
+   "orig_id": "U04-143",
+   "source": "E1"
+  },
+  "I17da9f7ec9": {
+   "orig_id": "S1541-g076-p5",
+   "source": "SEG"
+  },
+  "I185b55b083": {
+   "orig_id": "U04-220",
+   "source": "E1"
+  },
+  "I1861a1db36": {
+   "orig_id": "S1484-g103-p1",
+   "source": "SEG"
+  },
+  "I1885d8af3c": {
+   "orig_id": "U03-S1021-036",
+   "source": "E1"
+  },
+  "I1892b57c47": {
+   "orig_id": "S1021-g057-p2",
+   "source": "SEG"
+  },
+  "I18a1c7a480": {
+   "orig_id": "S1021-045",
+   "source": "E2"
+  },
+  "I18b71071f6": {
+   "orig_id": "S1413-g024-p3",
+   "source": "SEG"
+  },
+  "I18e3c14282": {
+   "orig_id": "S1021-016",
+   "source": "E2"
+  },
+  "I18f12b8bb8": {
+   "orig_id": "U04-191",
+   "source": "E1"
+  },
+  "I190f27655e": {
+   "orig_id": "S1021-017",
+   "source": "E2"
+  },
+  "I193f6fbd60": {
+   "orig_id": "U04-110",
+   "source": "E1"
+  },
+  "I194eb55a21": {
+   "orig_id": "S1541-g038-p2",
+   "source": "SEG"
+  },
+  "I1999547597": {
+   "orig_id": "S1021-015",
+   "source": "E2"
+  },
+  "I19fadd28d1": {
+   "orig_id": "U04-208",
+   "source": "E1"
+  },
+  "I1a57a78ee7": {
+   "orig_id": "S1484-g060-p6",
+   "source": "SEG"
+  },
+  "I1a79fb3a47": {
+   "orig_id": "U03-S1484-024",
+   "source": "E1"
+  },
+  "I1b0a4ce737": {
+   "orig_id": "S1021-g056-p8",
+   "source": "SEG"
+  },
+  "I1b212cd38b": {
+   "orig_id": "U03-S1484-151",
+   "source": "E1"
+  },
+  "I1b28d1432a": {
+   "orig_id": "S1484-001",
+   "source": "E2"
+  },
+  "I1b29681be0": {
+   "orig_id": "S1484-g060-p4",
+   "source": "SEG"
+  },
+  "I1b4f19fdd5": {
+   "orig_id": "S1021-g069-p1",
+   "source": "SEG"
+  },
+  "I1b5ae9897b": {
+   "orig_id": "S1021-040",
+   "source": "E2"
+  },
+  "I1b786f08f2": {
+   "orig_id": "S1022-g010-p1",
+   "source": "SEG"
+  },
+  "I1b810b5991": {
+   "orig_id": "U04-190",
+   "source": "E1"
+  },
+  "I1b9333cf67": {
+   "orig_id": "S1022-g046-p1",
+   "source": "SEG"
+  },
+  "I1ba4752bd6": {
+   "orig_id": "S1022-g009-p1",
+   "source": "SEG"
+  },
+  "I1bb420ee42": {
+   "orig_id": "S1021-009",
+   "source": "E2"
+  },
+  "I1c03c10e7e": {
+   "orig_id": "S1022-g024-p3",
+   "source": "SEG"
+  },
+  "I1c09002ca3": {
+   "orig_id": "U03-S1484-059",
+   "source": "E1"
+  },
+  "I1c31e5a64c": {
+   "orig_id": "U04-059",
+   "source": "E1"
+  },
+  "I1c8ea74523": {
+   "orig_id": "U04-078",
+   "source": "E1"
+  },
+  "I1ca677dc26": {
+   "orig_id": "S1413-g036-p1",
+   "source": "SEG"
+  },
+  "I1cd9b5ed96": {
+   "orig_id": "S1022-g027-p2",
+   "source": "SEG"
+  },
+  "I1d1d71bc52": {
+   "orig_id": "U04-021",
+   "source": "E1"
+  },
+  "I1d29d399dc": {
+   "orig_id": "S1541-g046-p1",
+   "source": "SEG"
+  },
+  "I1d55b0ef04": {
+   "orig_id": "U04-217",
+   "source": "E1"
+  },
+  "I1ddc389888": {
+   "orig_id": "U03-S1484-037",
+   "source": "E1"
+  },
+  "I1ddc519b7f": {
+   "orig_id": "U03-S1484-071",
+   "source": "E1"
+  },
+  "I1e1294b537": {
+   "orig_id": "S1521_P023",
+   "source": "E2"
+  },
+  "I1e2a52b08f": {
+   "orig_id": "S1413-g028-p1",
+   "source": "SEG"
+  },
+  "I1e3210256e": {
+   "orig_id": "S1484-014",
+   "source": "E2"
+  },
+  "I1e6e8ca979": {
+   "orig_id": "S1484-029",
+   "source": "E2"
+  },
+  "I1e8cc1a0bc": {
+   "orig_id": "S1484-g111-p4",
+   "source": "SEG"
+  },
+  "I1ebf63d857": {
+   "orig_id": "U04-067",
+   "source": "E1"
+  },
+  "I1ec61be748": {
+   "orig_id": "S1484-g108-p3",
+   "source": "SEG"
+  },
+  "I1ed7bb32bc": {
+   "orig_id": "S1521_P016",
+   "source": "E2"
+  },
+  "I1f01eeb2aa": {
+   "orig_id": "U04-271",
+   "source": "E1"
+  },
+  "I1f1a3f3bf6": {
+   "orig_id": "S1413-g035-p2",
+   "source": "SEG"
+  },
+  "I1f5a8d763f": {
+   "orig_id": "U03-S1021-061",
+   "source": "E1"
+  },
+  "I1f69c4ef01": {
+   "orig_id": "S1541-g042-p4",
+   "source": "SEG"
+  },
+  "I1f6a877dfb": {
+   "orig_id": "U04-181",
+   "source": "E1"
+  },
+  "I1f77661928": {
+   "orig_id": "U04-237",
+   "source": "E1"
+  },
+  "I1f7b65477e": {
+   "orig_id": "S1541-g013-p2",
+   "source": "SEG"
+  },
+  "I1f93ec26ae": {
+   "orig_id": "U04-051",
+   "source": "E1"
+  },
+  "I1fc025b680": {
+   "orig_id": "S1021-g032-p2",
+   "source": "SEG"
+  },
+  "I1fcebb5c8f": {
+   "orig_id": "U03-S1022-013",
+   "source": "E1"
+  },
+  "I1fd7271110": {
+   "orig_id": "U04-312",
+   "source": "E1"
+  },
+  "I1fda8a9726": {
+   "orig_id": "S1484-g108-p5",
+   "source": "SEG"
+  },
+  "I1feaf7814f": {
+   "orig_id": "U04-270",
+   "source": "E1"
+  },
+  "I1feb14e423": {
+   "orig_id": "U04-091",
+   "source": "E1"
+  },
+  "I201625aaf2": {
+   "orig_id": "U04-083",
+   "source": "E1"
+  },
+  "I201c5177a2": {
+   "orig_id": "U03-S1021-011",
+   "source": "E1"
+  },
+  "I202fe25cfb": {
+   "orig_id": "S1021-g060-p2",
+   "source": "SEG"
+  },
+  "I203b208fa7": {
+   "orig_id": "S1413-g009-p2",
+   "source": "SEG"
+  },
+  "I203f7271cf": {
+   "orig_id": "U04-294",
+   "source": "E1"
+  },
+  "I204a57e4bb": {
+   "orig_id": "U03-S1484-068",
+   "source": "E1"
+  },
+  "I208dd928e7": {
+   "orig_id": "S1484-g063-p2",
+   "source": "SEG"
+  },
+  "I20a3c422e6": {
+   "orig_id": "S1413-g008-p1",
+   "source": "SEG"
+  },
+  "I20b2e9d0ac": {
+   "orig_id": "S1021-g035-p1",
+   "source": "SEG"
+  },
+  "I20e263b333": {
+   "orig_id": "S1022-g056-p2",
+   "source": "SEG"
+  },
+  "I20ec0638bb": {
+   "orig_id": "S1484-g026-p1",
+   "source": "SEG"
+  },
+  "I2130cf1e06": {
+   "orig_id": "S1021-g030-p1",
+   "source": "SEG"
+  },
+  "I2135c1c180": {
+   "orig_id": "U04-221",
+   "source": "E1"
+  },
+  "I213b943557": {
+   "orig_id": "S1541-g006-p2",
+   "source": "SEG"
+  },
+  "I2181d7f1e2": {
+   "orig_id": "U04-073",
+   "source": "E1"
+  },
+  "I218e3ee971": {
+   "orig_id": "S1521-g019-p2",
+   "source": "SEG"
+  },
+  "I219d9b3d49": {
+   "orig_id": "S1541-g028-p3",
+   "source": "SEG"
+  },
+  "I21d767e291": {
+   "orig_id": "S1484-g017-p1",
+   "source": "SEG"
+  },
+  "I21e3af0cba": {
+   "orig_id": "U04-060",
+   "source": "E1"
+  },
+  "I21fadbe3a3": {
+   "orig_id": "U04-184",
+   "source": "E1"
+  },
+  "I2217aba850": {
+   "orig_id": "U03-S1021-058",
+   "source": "E1"
+  },
+  "I2220573a54": {
+   "orig_id": "U04-309",
+   "source": "E1"
+  },
+  "I223bc8fbe9": {
+   "orig_id": "S1413-g018-p1",
+   "source": "SEG"
+  },
+  "I223eaa4575": {
+   "orig_id": "S1484-g111-p3",
+   "source": "SEG"
+  },
+  "I2243eb27c9": {
+   "orig_id": "U04-128",
+   "source": "E1"
+  },
+  "I226d441145": {
+   "orig_id": "S1022-g040-p2",
+   "source": "SEG"
+  },
+  "I2273189e3a": {
+   "orig_id": "U04-304",
+   "source": "E1"
+  },
+  "I227d6da6a2": {
+   "orig_id": "U04-277",
+   "source": "E1"
+  },
+  "I22a27cad35": {
+   "orig_id": "U03-S1484-048",
+   "source": "E1"
+  },
+  "I22a768296f": {
+   "orig_id": "S1413-g001-p1",
+   "source": "SEG"
+  },
+  "I22dd35e049": {
+   "orig_id": "S1022-g021-p1",
+   "source": "SEG"
+  },
+  "I22ddb8cd53": {
+   "orig_id": "S1484-g016-p2",
+   "source": "SEG"
+  },
+  "I2303893d1f": {
+   "orig_id": "U03-S1484-087",
+   "source": "E1"
+  },
+  "I230e591bc8": {
+   "orig_id": "S1541-g017-p1",
+   "source": "SEG"
+  },
+  "I23130fc02a": {
+   "orig_id": "S1413-g003-p4",
+   "source": "SEG"
+  },
+  "I231f943de5": {
+   "orig_id": "S1021-047",
+   "source": "E2"
+  },
+  "I2326d3b779": {
+   "orig_id": "U04-058",
+   "source": "E1"
+  },
+  "I235cb3b0b0": {
+   "orig_id": "S1021-g046-p1",
+   "source": "SEG"
+  },
+  "I23b47fdaec": {
+   "orig_id": "S1521_P009",
+   "source": "E2"
+  },
+  "I23b940a93c": {
+   "orig_id": "U04-144",
+   "source": "E1"
+  },
+  "I23d7e01d8c": {
+   "orig_id": "U03-S1484-057",
+   "source": "E1"
+  },
+  "I24020a0c59": {
+   "orig_id": "U04-132",
+   "source": "E1"
+  },
+  "I24582b94e2": {
+   "orig_id": "S1021-g059-p2",
+   "source": "SEG"
+  },
+  "I2465f4212e": {
+   "orig_id": "S1022-g016-p2",
+   "source": "SEG"
+  },
+  "I24663d5fe8": {
+   "orig_id": "S1413-g060-p1",
+   "source": "SEG"
+  },
+  "I24798a182d": {
+   "orig_id": "S1413-g004-p3",
+   "source": "SEG"
+  },
+  "I247fe04930": {
+   "orig_id": "U03-S1484-129",
+   "source": "E1"
+  },
+  "I24b2636911": {
+   "orig_id": "S1484-g060-p8",
+   "source": "SEG"
+  },
+  "I24b2c6c935": {
+   "orig_id": "S1541-g033-p5",
+   "source": "SEG"
+  },
+  "I24ce16b446": {
+   "orig_id": "S1022-g001-p2",
+   "source": "SEG"
+  },
+  "I24d9522ae0": {
+   "orig_id": "S1484-g107-p1",
+   "source": "SEG"
+  },
+  "I24ed08d225": {
+   "orig_id": "U03-S1484-081",
+   "source": "E1"
+  },
+  "I24ef3eae74": {
+   "orig_id": "S1541-g024-p1",
+   "source": "SEG"
+  },
+  "I24ffd7d318": {
+   "orig_id": "U04-116",
+   "source": "E1"
+  },
+  "I25501cb972": {
+   "orig_id": "S1022-g002-p1",
+   "source": "SEG"
+  },
+  "I25707d2286": {
+   "orig_id": "S1484-g090-p1",
+   "source": "SEG"
+  },
+  "I263be2865e": {
+   "orig_id": "S1521-g005-p4",
+   "source": "SEG"
+  },
+  "I265b37d927": {
+   "orig_id": "S1484-g010-p1",
+   "source": "SEG"
+  },
+  "I26899ad0e9": {
+   "orig_id": "U04-054",
+   "source": "E1"
+  },
+  "I26dca29e6c": {
+   "orig_id": "S1021-g054-p1",
+   "source": "SEG"
+  },
+  "I277b69e9a2": {
+   "orig_id": "S1022-g022-p3",
+   "source": "SEG"
+  },
+  "I2781ba34a0": {
+   "orig_id": "S1484-g064-p2",
+   "source": "SEG"
+  },
+  "I279f1334f0": {
+   "orig_id": "S1021-g067-p2",
+   "source": "SEG"
+  },
+  "I27b56ce6b5": {
+   "orig_id": "S1413_P003",
+   "source": "E2"
+  },
+  "I27bfc81b69": {
+   "orig_id": "U03-S1484-091",
+   "source": "E1"
+  },
+  "I27c3a49846": {
+   "orig_id": "S1484-003",
+   "source": "E2"
+  },
+  "I27de77c75e": {
+   "orig_id": "S1022-018",
+   "source": "E2"
+  },
+  "I27defdd931": {
+   "orig_id": "S1541-g021-p3",
+   "source": "SEG"
+  },
+  "I27df0f819e": {
+   "orig_id": "U03-S1484-111",
+   "source": "E1"
+  },
+  "I27fa44dca5": {
+   "orig_id": "U03-S1021-003",
+   "source": "E1"
+  },
+  "I283d9e4b09": {
+   "orig_id": "U03-S1484-009",
+   "source": "E1"
+  },
+  "I2842b21272": {
+   "orig_id": "U03-S1484-161",
+   "source": "E1"
+  },
+  "I285de011ef": {
+   "orig_id": "S1021-g029-p1",
+   "source": "SEG"
+  },
+  "I2864932dcb": {
+   "orig_id": "S1021-g041-p3",
+   "source": "SEG"
+  },
+  "I28ebb3f4c2": {
+   "orig_id": "S1484-g064-p1",
+   "source": "SEG"
+  },
+  "I29064d9605": {
+   "orig_id": "U03-S1021-070",
+   "source": "E1"
+  },
+  "I29089d3ea5": {
+   "orig_id": "U04-231",
+   "source": "E1"
+  },
+  "I293abbf983": {
+   "orig_id": "U04-225",
+   "source": "E1"
+  },
+  "I29463dbac5": {
+   "orig_id": "S1541-g063-p1",
+   "source": "SEG"
+  },
+  "I2966c59cbb": {
+   "orig_id": "S1022-g064-p2",
+   "source": "SEG"
+  },
+  "I299caa1537": {
+   "orig_id": "S1521-g010-p3",
+   "source": "SEG"
+  },
+  "I29b8f79c5c": {
+   "orig_id": "U03-S1021-045",
+   "source": "E1"
+  },
+  "I29c11eef79": {
+   "orig_id": "U03-S1484-083",
+   "source": "E1"
+  },
+  "I29cc58743a": {
+   "orig_id": "U03-S1022-032",
+   "source": "E1"
+  },
+  "I2a0a45929a": {
+   "orig_id": "S1022-g064-p3",
+   "source": "SEG"
+  },
+  "I2a5825274a": {
+   "orig_id": "S1541-g042-p3",
+   "source": "SEG"
+  },
+  "I2b2dc82eed": {
+   "orig_id": "S1484-g069-p3",
+   "source": "SEG"
+  },
+  "I2b3dfe104b": {
+   "orig_id": "S1021-g002-p2",
+   "source": "SEG"
+  },
+  "I2b7bfec6be": {
+   "orig_id": "U03-S1484-135",
+   "source": "E1"
+  },
+  "I2b7da83381": {
+   "orig_id": "S1484-g074-p1",
+   "source": "SEG"
+  },
+  "I2bbb9f286f": {
+   "orig_id": "S1541_P001",
+   "source": "E2"
+  },
+  "I2bceb2fe19": {
+   "orig_id": "S1021-g056-p3",
+   "source": "SEG"
+  },
+  "I2bf0de0d46": {
+   "orig_id": "U03-S1484-137",
+   "source": "E1"
+  },
+  "I2c51023c4d": {
+   "orig_id": "S1541-g015-p3",
+   "source": "SEG"
+  },
+  "I2ca9ef0fc8": {
+   "orig_id": "S1484-g009-p1",
+   "source": "SEG"
+  },
+  "I2caebaa934": {
+   "orig_id": "S1541-g023-p3",
+   "source": "SEG"
+  },
+  "I2cccc6a508": {
+   "orig_id": "U04-180",
+   "source": "E1"
+  },
+  "I2cedad874f": {
+   "orig_id": "S1021-g001-p1",
+   "source": "SEG"
+  },
+  "I2cf6101481": {
+   "orig_id": "U04-218",
+   "source": "E1"
+  },
+  "I2d2404e6ee": {
+   "orig_id": "S1541-g048-p1",
+   "source": "SEG"
+  },
+  "I2d272b6b2a": {
+   "orig_id": "S1022-017",
+   "source": "E2"
+  },
+  "I2d7a82da96": {
+   "orig_id": "S1021-013",
+   "source": "E2"
+  },
+  "I2da5f6657b": {
+   "orig_id": "S1521_P013",
+   "source": "E2"
+  },
+  "I2dcbb58389": {
+   "orig_id": "S1484-004",
+   "source": "E2"
+  },
+  "I2de4cd318b": {
+   "orig_id": "S1021-003",
+   "source": "E2"
+  },
+  "I2e0d5b51d9": {
+   "orig_id": "U03-S1022-057",
+   "source": "E1"
+  },
+  "I2e6767b366": {
+   "orig_id": "S1521-g012-p1",
+   "source": "SEG"
+  },
+  "I2e718fb7e4": {
+   "orig_id": "S1484-g073-p2",
+   "source": "SEG"
+  },
+  "I2e958573f8": {
+   "orig_id": "S1541_P010",
+   "source": "E2"
+  },
+  "I2ec902db83": {
+   "orig_id": "S1541-g001-p2",
+   "source": "SEG"
+  },
+  "I2ef12fc596": {
+   "orig_id": "U04-283",
+   "source": "E1"
+  },
+  "I2ef1d888ea": {
+   "orig_id": "U03-S1022-041",
+   "source": "E1"
+  },
+  "I2efca6c570": {
+   "orig_id": "S1484-g085-p2",
+   "source": "SEG"
+  },
+  "I2f149aef58": {
+   "orig_id": "U03-S1484-095",
+   "source": "E1"
+  },
+  "I2f2de692fe": {
+   "orig_id": "S1484-g075-p1",
+   "source": "SEG"
+  },
+  "I2f50cfddbe": {
+   "orig_id": "S1021-g023-p2",
+   "source": "SEG"
+  },
+  "I2f55105e7e": {
+   "orig_id": "U04-101",
+   "source": "E1"
+  },
+  "I2f5a0e9d5a": {
+   "orig_id": "S1021-g076-p1",
+   "source": "SEG"
+  },
+  "I2f963f70a8": {
+   "orig_id": "S1021-g037-p1",
+   "source": "SEG"
+  },
+  "I2fdbcd3906": {
+   "orig_id": "S1413-g002-p1",
+   "source": "SEG"
+  },
+  "I2feb420d55": {
+   "orig_id": "S1521-g009-p3",
+   "source": "SEG"
+  },
+  "I3040c6e878": {
+   "orig_id": "U03-S1484-027",
+   "source": "E1"
+  },
+  "I307ab9fdf3": {
+   "orig_id": "S1021-g040-p1",
+   "source": "SEG"
+  },
+  "I30bb3c6831": {
+   "orig_id": "S1021-g068-p1",
+   "source": "SEG"
+  },
+  "I30f78da8d1": {
+   "orig_id": "S1021-g026-p3",
+   "source": "SEG"
+  },
+  "I310336f725": {
+   "orig_id": "U04-173",
+   "source": "E1"
+  },
+  "I312632cab2": {
+   "orig_id": "U04-196",
+   "source": "E1"
+  },
+  "I3149802d34": {
+   "orig_id": "S1541-g044-p1",
+   "source": "SEG"
+  },
+  "I315b8d19a0": {
+   "orig_id": "U04-204",
+   "source": "E1"
+  },
+  "I31805b34dc": {
+   "orig_id": "S1484-g048-p5",
+   "source": "SEG"
+  },
+  "I31903122d0": {
+   "orig_id": "S1521_P018",
+   "source": "E2"
+  },
+  "I31afc38ad5": {
+   "orig_id": "S1541-g029-p1",
+   "source": "SEG"
+  },
+  "I31b475ce0a": {
+   "orig_id": "S1541_P034",
+   "source": "E2"
+  },
+  "I31be05f753": {
+   "orig_id": "U04-202",
+   "source": "E1"
+  },
+  "I3234949aef": {
+   "orig_id": "U03-S1484-052",
+   "source": "E1"
+  },
+  "I32560b3328": {
+   "orig_id": "S1022-g043-p2",
+   "source": "SEG"
+  },
+  "I325782605a": {
+   "orig_id": "S1484-g071-p1",
+   "source": "SEG"
+  },
+  "I32886c315a": {
+   "orig_id": "S1021-012",
+   "source": "E2"
+  },
+  "I3296d8d6de": {
+   "orig_id": "S1484-g060-p11",
+   "source": "SEG"
+  },
+  "I32b959ad4f": {
+   "orig_id": "U04-069",
+   "source": "E1"
+  },
+  "I32ba944ab8": {
+   "orig_id": "U03-S1484-045",
+   "source": "E1"
+  },
+  "I32db96e546": {
+   "orig_id": "U04-072",
+   "source": "E1"
+  },
+  "I3324811b17": {
+   "orig_id": "S1022-g001-p3",
+   "source": "SEG"
+  },
+  "I33250ab842": {
+   "orig_id": "S1484-g075-p2",
+   "source": "SEG"
+  },
+  "I3335ab8162": {
+   "orig_id": "S1021-033",
+   "source": "E2"
+  },
+  "I337ea49045": {
+   "orig_id": "U04-174",
+   "source": "E1"
+  },
+  "I338f36007d": {
+   "orig_id": "U04-272",
+   "source": "E1"
+  },
+  "I339e0fbbeb": {
+   "orig_id": "S1022-g033-p1",
+   "source": "SEG"
+  },
+  "I33ac091c6d": {
+   "orig_id": "S1484-g108-p6",
+   "source": "SEG"
+  },
+  "I33bbcc119b": {
+   "orig_id": "S1413-g035-p3",
+   "source": "SEG"
+  },
+  "I33c7b1c513": {
+   "orig_id": "S1484-g079-p3",
+   "source": "SEG"
+  },
+  "I340b5a10a9": {
+   "orig_id": "U04-305",
+   "source": "E1"
+  },
+  "I343ba3a933": {
+   "orig_id": "S1021-044",
+   "source": "E2"
+  },
+  "I346b44efbd": {
+   "orig_id": "S1521-g007-p3",
+   "source": "SEG"
+  },
+  "I3485cba185": {
+   "orig_id": "S1541_P024",
+   "source": "E2"
+  },
+  "I34c7cb1fe8": {
+   "orig_id": "S1021-008",
+   "source": "E2"
+  },
+  "I34cc3e54ab": {
+   "orig_id": "S1021-g020-p2",
+   "source": "SEG"
+  },
+  "I3539a0a78a": {
+   "orig_id": "U03-S1484-090",
+   "source": "E1"
+  },
+  "I35427860cf": {
+   "orig_id": "U03-S1021-028",
+   "source": "E1"
+  },
+  "I3544a2b714": {
+   "orig_id": "S1484-g071-p2",
+   "source": "SEG"
+  },
+  "I35660a06b1": {
+   "orig_id": "S1484-037",
+   "source": "E2"
+  },
+  "I358e5e6525": {
+   "orig_id": "U04-087",
+   "source": "E1"
+  },
+  "I35aafdca90": {
+   "orig_id": "S1413-g019-p2",
+   "source": "SEG"
+  },
+  "I35b2d1d347": {
+   "orig_id": "S1022-001",
+   "source": "E2"
+  },
+  "I35b65c67df": {
+   "orig_id": "S1413-g021-p1",
+   "source": "SEG"
+  },
+  "I35bef665c2": {
+   "orig_id": "S1484-g087-p2",
+   "source": "SEG"
+  },
+  "I35d73cbce7": {
+   "orig_id": "S1484-g081-p2",
+   "source": "SEG"
+  },
+  "I35d75c8b66": {
+   "orig_id": "S1484-g105-p2",
+   "source": "SEG"
+  },
+  "I35ea84f45b": {
+   "orig_id": "U04-121",
+   "source": "E1"
+  },
+  "I35ed2fb329": {
+   "orig_id": "S1484-g038-p1",
+   "source": "SEG"
+  },
+  "I35f56d2685": {
+   "orig_id": "S1413-g026-p1",
+   "source": "SEG"
+  },
+  "I35f87bc669": {
+   "orig_id": "S1541-g041-p4",
+   "source": "SEG"
+  },
+  "I36009e0e9d": {
+   "orig_id": "S1484-g107-p2",
+   "source": "SEG"
+  },
+  "I3609b7f57d": {
+   "orig_id": "U03-S1021-063",
+   "source": "E1"
+  },
+  "I3627344b43": {
+   "orig_id": "U03-S1484-156",
+   "source": "E1"
+  },
+  "I3627c48612": {
+   "orig_id": "U04-178",
+   "source": "E1"
+  },
+  "I364065e06c": {
+   "orig_id": "S1413-g051-p1",
+   "source": "SEG"
+  },
+  "I3648ec2cab": {
+   "orig_id": "S1022-g012-p2",
+   "source": "SEG"
+  },
+  "I369053d6ef": {
+   "orig_id": "U03-S1484-131",
+   "source": "E1"
+  },
+  "I36d5969811": {
+   "orig_id": "U03-S1021-060",
+   "source": "E1"
+  },
+  "I36e18d54ed": {
+   "orig_id": "U03-S1484-001",
+   "source": "E1"
+  },
+  "I3745dce620": {
+   "orig_id": "S1021-g004-p1",
+   "source": "SEG"
+  },
+  "I37536863ae": {
+   "orig_id": "U03-S1021-047",
+   "source": "E1"
+  },
+  "I376f18d844": {
+   "orig_id": "S1521-g008-p2",
+   "source": "SEG"
+  },
+  "I378dd4aa86": {
+   "orig_id": "S1541-g036-p3",
+   "source": "SEG"
+  },
+  "I37b953be5d": {
+   "orig_id": "U03-S1021-032",
+   "source": "E1"
+  },
+  "I37e75d9f8c": {
+   "orig_id": "S1022-g005-p2",
+   "source": "SEG"
+  },
+  "I37eb13dacb": {
+   "orig_id": "U04-151",
+   "source": "E1"
+  },
+  "I3809a6b726": {
+   "orig_id": "U04-105",
+   "source": "E1"
+  },
+  "I381b59165b": {
+   "orig_id": "U04-222",
+   "source": "E1"
+  },
+  "I382437eaf2": {
+   "orig_id": "S1021-023",
+   "source": "E2"
+  },
+  "I38485ea4b9": {
+   "orig_id": "S1021-g051-p2",
+   "source": "SEG"
+  },
+  "I389ee4b488": {
+   "orig_id": "U04-032",
+   "source": "E1"
+  },
+  "I38f7dfcb8b": {
+   "orig_id": "U04-206",
+   "source": "E1"
+  },
+  "I39177da397": {
+   "orig_id": "S1541_P017",
+   "source": "E2"
+  },
+  "I39353a9845": {
+   "orig_id": "S1541-g047-p1",
+   "source": "SEG"
+  },
+  "I3974e3649d": {
+   "orig_id": "U04-038",
+   "source": "E1"
+  },
+  "I39a619ef19": {
+   "orig_id": "S1021-g061-p2",
+   "source": "SEG"
+  },
+  "I39e9d1eabe": {
+   "orig_id": "U04-212",
+   "source": "E1"
+  },
+  "I3a7debc7aa": {
+   "orig_id": "U04-296",
+   "source": "E1"
+  },
+  "I3ab5b80fe2": {
+   "orig_id": "S1541-g009-p1",
+   "source": "SEG"
+  },
+  "I3abbf6f57d": {
+   "orig_id": "U03-S1021-046",
+   "source": "E1"
+  },
+  "I3adf7069a3": {
+   "orig_id": "S1484-g072-p1",
+   "source": "SEG"
+  },
+  "I3af44b70cf": {
+   "orig_id": "U04-261",
+   "source": "E1"
+  },
+  "I3af60b6b61": {
+   "orig_id": "S1413-g030-p1",
+   "source": "SEG"
+  },
+  "I3b399b4349": {
+   "orig_id": "U03-S1022-015",
+   "source": "E1"
+  },
+  "I3b46fd7caf": {
+   "orig_id": "S1413-g038-p1",
+   "source": "SEG"
+  },
+  "I3b8836e27a": {
+   "orig_id": "S1541-g026-p2",
+   "source": "SEG"
+  },
+  "I3b9f53b72b": {
+   "orig_id": "S1484-g044-p2",
+   "source": "SEG"
+  },
+  "I3bf5cb580b": {
+   "orig_id": "U03-S1021-009",
+   "source": "E1"
+  },
+  "I3c3ff269f2": {
+   "orig_id": "S1022-g039-p2",
+   "source": "SEG"
+  },
+  "I3cc3eaa98c": {
+   "orig_id": "U03-S1484-004",
+   "source": "E1"
+  },
+  "I3cda73c15e": {
+   "orig_id": "U04-171",
+   "source": "E1"
+  },
+  "I3ce789b21f": {
+   "orig_id": "U03-S1021-010",
+   "source": "E1"
+  },
+  "I3d4760a007": {
+   "orig_id": "S1022-g006-p3",
+   "source": "SEG"
+  },
+  "I3dbe582f32": {
+   "orig_id": "S1021-g024-p3",
+   "source": "SEG"
+  },
+  "I3de6696b09": {
+   "orig_id": "S1484-049",
+   "source": "E2"
+  },
+  "I3e2e8ebec1": {
+   "orig_id": "S1541-g007-p1",
+   "source": "SEG"
+  },
+  "I3e3a062717": {
+   "orig_id": "U03-S1021-015",
+   "source": "E1"
+  },
+  "I3e6aecebf1": {
+   "orig_id": "U03-S1484-016",
+   "source": "E1"
+  },
+  "I3e6c9bf263": {
+   "orig_id": "S1541-g031-p2",
+   "source": "SEG"
+  },
+  "I3e74655bb5": {
+   "orig_id": "S1021-g070-p2",
+   "source": "SEG"
+  },
+  "I3e903d4b50": {
+   "orig_id": "U03-S1021-050",
+   "source": "E1"
+  },
+  "I3ee511e0a1": {
+   "orig_id": "U03-S1021-056",
+   "source": "E1"
+  },
+  "I3eef2278f7": {
+   "orig_id": "S1484-g031-p1",
+   "source": "SEG"
+  },
+  "I3f435386e2": {
+   "orig_id": "S1484-g048-p7",
+   "source": "SEG"
+  },
+  "I3f4d79a6d7": {
+   "orig_id": "U04-049",
+   "source": "E1"
+  },
+  "I3f6910b561": {
+   "orig_id": "U03-S1022-016",
+   "source": "E1"
+  },
+  "I3f81116f56": {
+   "orig_id": "S1484-g106-p1",
+   "source": "SEG"
+  },
+  "I3f904a0c6d": {
+   "orig_id": "S1484-g067-p1",
+   "source": "SEG"
+  },
+  "I3f987ee13f": {
+   "orig_id": "U04-319",
+   "source": "E1"
+  },
+  "I3faa66f830": {
+   "orig_id": "S1484-006",
+   "source": "E2"
+  },
+  "I3fcad85657": {
+   "orig_id": "U03-S1484-008",
+   "source": "E1"
+  },
+  "I4019d19344": {
+   "orig_id": "S1484-g105-p1",
+   "source": "SEG"
+  },
+  "I406c0f0006": {
+   "orig_id": "S1021-g021-p1",
+   "source": "SEG"
+  },
+  "I40d8ef7234": {
+   "orig_id": "U03-S1022-011",
+   "source": "E1"
+  },
+  "I410173ce49": {
+   "orig_id": "S1021-g079-p4",
+   "source": "SEG"
+  },
+  "I410408e5e2": {
+   "orig_id": "S1484-g112-p1",
+   "source": "SEG"
+  },
+  "I4110257362": {
+   "orig_id": "S1022-g041-p1",
+   "source": "SEG"
+  },
+  "I41372ee618": {
+   "orig_id": "S1021-025",
+   "source": "E2"
+  },
+  "I41691a85ec": {
+   "orig_id": "U04-233",
+   "source": "E1"
+  },
+  "I4177be02dd": {
+   "orig_id": "U03-S1484-072",
+   "source": "E1"
+  },
+  "I418316eb18": {
+   "orig_id": "U03-S1484-100",
+   "source": "E1"
+  },
+  "I41b117ac5a": {
+   "orig_id": "S1413-g010-p1",
+   "source": "SEG"
+  },
+  "I41c0848b46": {
+   "orig_id": "S1541-g011-p1",
+   "source": "SEG"
+  },
+  "I421088b84a": {
+   "orig_id": "U04-194",
+   "source": "E1"
+  },
+  "I4237ada879": {
+   "orig_id": "S1413-g035-p1",
+   "source": "SEG"
+  },
+  "I4250f7ca06": {
+   "orig_id": "U03-S1022-007",
+   "source": "E1"
+  },
+  "I425d228810": {
+   "orig_id": "S1413-g059-p1",
+   "source": "SEG"
+  },
+  "I426dbc61a5": {
+   "orig_id": "U03-S1484-042",
+   "source": "E1"
+  },
+  "I42d0acd0e9": {
+   "orig_id": "S1021-g012-p1",
+   "source": "SEG"
+  },
+  "I42f0aa12ed": {
+   "orig_id": "U03-S1484-006",
+   "source": "E1"
+  },
+  "I42fb74bc79": {
+   "orig_id": "S1541-g033-p4",
+   "source": "SEG"
+  },
+  "I43320f0ab4": {
+   "orig_id": "S1484-052",
+   "source": "E2"
+  },
+  "I4354fe1fcd": {
+   "orig_id": "S1021-g026-p1",
+   "source": "SEG"
+  },
+  "I4356481c37": {
+   "orig_id": "S1021-034",
+   "source": "E2"
+  },
+  "I437e5c0a23": {
+   "orig_id": "S1521_P012",
+   "source": "E2"
+  },
+  "I43f0f41bc2": {
+   "orig_id": "S1413_P006",
+   "source": "E2"
+  },
+  "I43fdc6b353": {
+   "orig_id": "S1021-g006-p1",
+   "source": "SEG"
+  },
+  "I443e737b05": {
+   "orig_id": "S1021-g012-p3",
+   "source": "SEG"
+  },
+  "I44570957b3": {
+   "orig_id": "S1021-g032-p1",
+   "source": "SEG"
+  },
+  "I44ef872678": {
+   "orig_id": "U04-326",
+   "source": "E1"
+  },
+  "I45000bebde": {
+   "orig_id": "S1021-046",
+   "source": "E2"
+  },
+  "I450e2679eb": {
+   "orig_id": "U03-S1484-134",
+   "source": "E1"
+  },
+  "I451120fcc3": {
+   "orig_id": "S1541-g025-p1",
+   "source": "SEG"
+  },
+  "I4547d63fe0": {
+   "orig_id": "S1521_P011",
+   "source": "E2"
+  },
+  "I45b22270cc": {
+   "orig_id": "U03-S1484-097",
+   "source": "E1"
+  },
+  "I45bc8195a4": {
+   "orig_id": "U04-227",
+   "source": "E1"
+  },
+  "I45c1e2a32e": {
+   "orig_id": "S1484-g050-p1",
+   "source": "SEG"
+  },
+  "I45c9676590": {
+   "orig_id": "S1021-g034-p1",
+   "source": "SEG"
+  },
+  "I4615910b26": {
+   "orig_id": "S1413-g024-p1",
+   "source": "SEG"
+  },
+  "I461613630b": {
+   "orig_id": "S1541-g061-p1",
+   "source": "SEG"
+  },
+  "I461c4840d4": {
+   "orig_id": "S1484-g108-p4",
+   "source": "SEG"
+  },
+  "I4652d77a65": {
+   "orig_id": "S1541-g020-p1",
+   "source": "SEG"
+  },
+  "I465d78128b": {
+   "orig_id": "U03-S1022-045",
+   "source": "E1"
+  },
+  "I465e07daed": {
+   "orig_id": "S1521-g006-p4",
+   "source": "SEG"
+  },
+  "I46692d4a5c": {
+   "orig_id": "U04-090",
+   "source": "E1"
+  },
+  "I46cb9b409b": {
+   "orig_id": "U03-S1022-059",
+   "source": "E1"
+  },
+  "I46ef8e764a": {
+   "orig_id": "U04-251",
+   "source": "E1"
+  },
+  "I46f56ac417": {
+   "orig_id": "S1413-g027-p2",
+   "source": "SEG"
+  },
+  "I473790298f": {
+   "orig_id": "S1541-g017-p2",
+   "source": "SEG"
+  },
+  "I475032b20c": {
+   "orig_id": "S1021-g074-p1",
+   "source": "SEG"
+  },
+  "I4788136a14": {
+   "orig_id": "U03-S1484-038",
+   "source": "E1"
+  },
+  "I4800d73fe9": {
+   "orig_id": "S1021-g014-p1",
+   "source": "SEG"
+  },
+  "I4801a38c40": {
+   "orig_id": "S1484-g100-p1",
+   "source": "SEG"
+  },
+  "I48038e292f": {
+   "orig_id": "S1022-g028-p1",
+   "source": "SEG"
+  },
+  "I4856955f2d": {
+   "orig_id": "U04-285",
+   "source": "E1"
+  },
+  "I48ad10e5ac": {
+   "orig_id": "U04-245",
+   "source": "E1"
+  },
+  "I48c490df5d": {
+   "orig_id": "U03-S1022-012",
+   "source": "E1"
+  },
+  "I4901d563d0": {
+   "orig_id": "U04-320",
+   "source": "E1"
+  },
+  "I4926035691": {
+   "orig_id": "S1521_P010",
+   "source": "E2"
+  },
+  "I49294b14b9": {
+   "orig_id": "U04-254",
+   "source": "E1"
+  },
+  "I493a963efe": {
+   "orig_id": "S1484-g033-p1",
+   "source": "SEG"
+  },
+  "I497be45985": {
+   "orig_id": "S1484-g066-p1",
+   "source": "SEG"
+  },
+  "I49930f24a5": {
+   "orig_id": "S1021-g022-p1",
+   "source": "SEG"
+  },
+  "I499b4507c9": {
+   "orig_id": "U03-S1484-148",
+   "source": "E1"
+  },
+  "I49b16135a8": {
+   "orig_id": "S1021-026",
+   "source": "E2"
+  },
+  "I49dab85d29": {
+   "orig_id": "U04-210",
+   "source": "E1"
+  },
+  "I49f7612f63": {
+   "orig_id": "U03-S1021-037",
+   "source": "E1"
+  },
+  "I4a15c6dd2b": {
+   "orig_id": "S1541-g037-p3",
+   "source": "SEG"
+  },
+  "I4a715bf1a8": {
+   "orig_id": "U04-238",
+   "source": "E1"
+  },
+  "I4a7b0702c3": {
+   "orig_id": "S1521-g016-p4",
+   "source": "SEG"
+  },
+  "I4a91dbf9de": {
+   "orig_id": "S1022-g030-p1",
+   "source": "SEG"
+  },
+  "I4a9f196d2f": {
+   "orig_id": "S1484-g111-p1",
+   "source": "SEG"
+  },
+  "I4afe057941": {
+   "orig_id": "S1484-g107-p4",
+   "source": "SEG"
+  },
+  "I4b1a336713": {
+   "orig_id": "U03-S1484-104",
+   "source": "E1"
+  },
+  "I4bb7993b36": {
+   "orig_id": "U03-S1484-120",
+   "source": "E1"
+  },
+  "I4bf694b89a": {
+   "orig_id": "U04-004",
+   "source": "E1"
+  },
+  "I4bfdf709c8": {
+   "orig_id": "S1484-g112-p3",
+   "source": "SEG"
+  },
+  "I4bff511d55": {
+   "orig_id": "S1413-g011-p3",
+   "source": "SEG"
+  },
+  "I4cd4ee8aff": {
+   "orig_id": "S1021-g021-p2",
+   "source": "SEG"
+  },
+  "I4cd5408e76": {
+   "orig_id": "S1021-g030-p2",
+   "source": "SEG"
+  },
+  "I4d3fd08ab8": {
+   "orig_id": "S1484-g095-p2",
+   "source": "SEG"
+  },
+  "I4d8ebf55c7": {
+   "orig_id": "S1484-g040-p2",
+   "source": "SEG"
+  },
+  "I4d9d0c4c02": {
+   "orig_id": "S1521_P001",
+   "source": "E2"
+  },
+  "I4ddc7db772": {
+   "orig_id": "S1484-g084-p1",
+   "source": "SEG"
+  },
+  "I4e7abe14c5": {
+   "orig_id": "S1541-g033-p2",
+   "source": "SEG"
+  },
+  "I4e7e26b2bf": {
+   "orig_id": "S1521-g005-p1",
+   "source": "SEG"
+  },
+  "I4ec69d9b97": {
+   "orig_id": "U04-330",
+   "source": "E1"
+  },
+  "I4eeb1d6282": {
+   "orig_id": "S1541-g008-p4",
+   "source": "SEG"
+  },
+  "I4eeb1fe814": {
+   "orig_id": "S1484-g020-p1",
+   "source": "SEG"
+  },
+  "I4efafff562": {
+   "orig_id": "S1484-g090-p4",
+   "source": "SEG"
+  },
+  "I4f3673bfa8": {
+   "orig_id": "U03-S1484-103",
+   "source": "E1"
+  },
+  "I4f37b6556d": {
+   "orig_id": "S1022-g045-p1",
+   "source": "SEG"
+  },
+  "I4f73990090": {
+   "orig_id": "U04-040",
+   "source": "E1"
+  },
+  "I4f8b759915": {
+   "orig_id": "S1022-g020-p1",
+   "source": "SEG"
+  },
+  "I4fbca80b2b": {
+   "orig_id": "S1021-g044-p1",
+   "source": "SEG"
+  },
+  "I4fe4283ba2": {
+   "orig_id": "U04-044",
+   "source": "E1"
+  },
+  "I500bc09e6e": {
+   "orig_id": "U04-293",
+   "source": "E1"
+  },
+  "I500e40e8f1": {
+   "orig_id": "S1022-020",
+   "source": "E2"
+  },
+  "I5045480577": {
+   "orig_id": "U03-S1484-018",
+   "source": "E1"
+  },
+  "I506057656e": {
+   "orig_id": "S1541_P021",
+   "source": "E2"
+  },
+  "I506e00d712": {
+   "orig_id": "U03-S1022-062",
+   "source": "E1"
+  },
+  "I50745ffed3": {
+   "orig_id": "S1022-g038-p1",
+   "source": "SEG"
+  },
+  "I50a21518bf": {
+   "orig_id": "U04-003",
+   "source": "E1"
+  },
+  "I50c30eb666": {
+   "orig_id": "S1021-g042-p3",
+   "source": "SEG"
+  },
+  "I50ca7f8845": {
+   "orig_id": "S1021-g034-p2",
+   "source": "SEG"
+  },
+  "I50eeaf8386": {
+   "orig_id": "S1021-g068-p2",
+   "source": "SEG"
+  },
+  "I5127f30d61": {
+   "orig_id": "S1022-g062-p2",
+   "source": "SEG"
+  },
+  "I5129747c92": {
+   "orig_id": "S1021-g056-p4",
+   "source": "SEG"
+  },
+  "I513d06b8bc": {
+   "orig_id": "S1021-010",
+   "source": "E2"
+  },
+  "I5199d6ea57": {
+   "orig_id": "S1021-035",
+   "source": "E2"
+  },
+  "I520a995152": {
+   "orig_id": "U04-109",
+   "source": "E1"
+  },
+  "I528ddc1f95": {
+   "orig_id": "S1484-048",
+   "source": "E2"
+  },
+  "I52a248ecbf": {
+   "orig_id": "S1521-g010-p2",
+   "source": "SEG"
+  },
+  "I52a79e5f15": {
+   "orig_id": "U03-S1484-136",
+   "source": "E1"
+  },
+  "I52d7db7f08": {
+   "orig_id": "U04-258",
+   "source": "E1"
+  },
+  "I52dc4061d3": {
+   "orig_id": "S1021-g010-p1",
+   "source": "SEG"
+  },
+  "I52e0047bfd": {
+   "orig_id": "S1541-g015-p2",
+   "source": "SEG"
+  },
+  "I52f10d7d28": {
+   "orig_id": "S1521-g004-p2",
+   "source": "SEG"
+  },
+  "I5384c74e33": {
+   "orig_id": "S1484-g078-p1",
+   "source": "SEG"
+  },
+  "I538ec90495": {
+   "orig_id": "U04-281",
+   "source": "E1"
+  },
+  "I539330c1ea": {
+   "orig_id": "S1021-g063-p2",
+   "source": "SEG"
+  },
+  "I53f4e5057a": {
+   "orig_id": "U04-198",
+   "source": "E1"
+  },
+  "I540fcff57a": {
+   "orig_id": "S1021-g073-p1",
+   "source": "SEG"
+  },
+  "I54588e9ef6": {
+   "orig_id": "S1541-g017-p3",
+   "source": "SEG"
+  },
+  "I5491d900df": {
+   "orig_id": "U04-317",
+   "source": "E1"
+  },
+  "I549d18b29f": {
+   "orig_id": "S1022-g036-p1",
+   "source": "SEG"
+  },
+  "I54ce72bfb2": {
+   "orig_id": "S1021-g059-p1",
+   "source": "SEG"
+  },
+  "I54e248f616": {
+   "orig_id": "S1484-g047-p2",
+   "source": "SEG"
+  },
+  "I555dbb2a36": {
+   "orig_id": "U03-S1484-054",
+   "source": "E1"
+  },
+  "I5560d2f7f9": {
+   "orig_id": "S1021-g053-p2",
+   "source": "SEG"
+  },
+  "I55c2507e75": {
+   "orig_id": "U04-306",
+   "source": "E1"
+  },
+  "I56012ce691": {
+   "orig_id": "S1413-g059-p2",
+   "source": "SEG"
+  },
+  "I561b1e4e0d": {
+   "orig_id": "U03-S1484-162",
+   "source": "E1"
+  },
+  "I5657a98921": {
+   "orig_id": "S1541-g038-p3",
+   "source": "SEG"
+  },
+  "I568e3e2e88": {
+   "orig_id": "U03-S1022-034",
+   "source": "E1"
+  },
+  "I56a785b75d": {
+   "orig_id": "U03-S1021-068",
+   "source": "E1"
+  },
+  "I56fed6e4ca": {
+   "orig_id": "S1484-g022-p1",
+   "source": "SEG"
+  },
+  "I5726c0f4af": {
+   "orig_id": "S1022-g055-p1",
+   "source": "SEG"
+  },
+  "I5739e436d7": {
+   "orig_id": "U04-199",
+   "source": "E1"
+  },
+  "I5768837f98": {
+   "orig_id": "U04-288",
+   "source": "E1"
+  },
+  "I57d0cfa359": {
+   "orig_id": "U03-S1484-152",
+   "source": "E1"
+  },
+  "I58282f6234": {
+   "orig_id": "S1484-g028-p1",
+   "source": "SEG"
+  },
+  "I582dc1f660": {
+   "orig_id": "U04-257",
+   "source": "E1"
+  },
+  "I58460f0b78": {
+   "orig_id": "U03-S1021-041",
+   "source": "E1"
+  },
+  "I5884f8c33d": {
+   "orig_id": "S1541_P031",
+   "source": "E2"
+  },
+  "I58ef56503c": {
+   "orig_id": "S1022-g006-p1",
+   "source": "SEG"
+  },
+  "I5913684efa": {
+   "orig_id": "S1022-024",
+   "source": "E2"
+  },
+  "I5913e0be74": {
+   "orig_id": "U03-S1022-056",
+   "source": "E1"
+  },
+  "I59a41ea3c6": {
+   "orig_id": "S1021-g061-p1",
+   "source": "SEG"
+  },
+  "I59c219b9ca": {
+   "orig_id": "S1541_P020",
+   "source": "E2"
+  },
+  "I59d40b5a06": {
+   "orig_id": "S1541-g039-p1",
+   "source": "SEG"
+  },
+  "I5a0628723a": {
+   "orig_id": "S1541-g039-p4",
+   "source": "SEG"
+  },
+  "I5a28373420": {
+   "orig_id": "S1484-g048-p2",
+   "source": "SEG"
+  },
+  "I5a4fd10da0": {
+   "orig_id": "S1541-g028-p4",
+   "source": "SEG"
+  },
+  "I5a73469b4f": {
+   "orig_id": "S1413_P005",
+   "source": "E2"
+  },
+  "I5a9407545e": {
+   "orig_id": "S1022-g021-p2",
+   "source": "SEG"
+  },
+  "I5abdc707ea": {
+   "orig_id": "U04-302",
+   "source": "E1"
+  },
+  "I5ac4b0757b": {
+   "orig_id": "S1021-g069-p2",
+   "source": "SEG"
+  },
+  "I5ac8ec5df1": {
+   "orig_id": "U04-200",
+   "source": "E1"
+  },
+  "I5ac9e4f7b8": {
+   "orig_id": "U04-314",
+   "source": "E1"
+  },
+  "I5af06e862b": {
+   "orig_id": "S1541-g026-p3",
+   "source": "SEG"
+  },
+  "I5b074425a7": {
+   "orig_id": "S1021-g035-p2",
+   "source": "SEG"
+  },
+  "I5b0853258d": {
+   "orig_id": "S1021-037",
+   "source": "E2"
+  },
+  "I5b109ea67c": {
+   "orig_id": "U03-S1484-093",
+   "source": "E1"
+  },
+  "I5b657d0396": {
+   "orig_id": "S1541_P026",
+   "source": "E2"
+  },
+  "I5b6a679058": {
+   "orig_id": "S1521-g006-p2",
+   "source": "SEG"
+  },
+  "I5b7d780f99": {
+   "orig_id": "U04-055",
+   "source": "E1"
+  },
+  "I5b86504c3f": {
+   "orig_id": "S1484-g099-p4",
+   "source": "SEG"
+  },
+  "I5b99d4f68b": {
+   "orig_id": "U04-236",
+   "source": "E1"
+  },
+  "I5c1cb95f84": {
+   "orig_id": "S1484-g068-p1",
+   "source": "SEG"
+  },
+  "I5c2a3f808f": {
+   "orig_id": "U03-S1021-052",
+   "source": "E1"
+  },
+  "I5c52b40568": {
+   "orig_id": "S1521-g016-p3",
+   "source": "SEG"
+  },
+  "I5c7253c712": {
+   "orig_id": "U04-250",
+   "source": "E1"
+  },
+  "I5c9b942d4f": {
+   "orig_id": "S1021-g005-p1",
+   "source": "SEG"
+  },
+  "I5cbb58554f": {
+   "orig_id": "U04-295",
+   "source": "E1"
+  },
+  "I5ccbc382b9": {
+   "orig_id": "U03-S1484-149",
+   "source": "E1"
+  },
+  "I5cf50a0fa2": {
+   "orig_id": "U04-146",
+   "source": "E1"
+  },
+  "I5cf933e0bb": {
+   "orig_id": "S1484-g039-p2",
+   "source": "SEG"
+  },
+  "I5d129d31b5": {
+   "orig_id": "S1484-030",
+   "source": "E2"
+  },
+  "I5d185b75d2": {
+   "orig_id": "U04-292",
+   "source": "E1"
+  },
+  "I5d36a73e9b": {
+   "orig_id": "U03-S1484-127",
+   "source": "E1"
+  },
+  "I5d6e4a3d1c": {
+   "orig_id": "S1484-g020-p2",
+   "source": "SEG"
+  },
+  "I5d8602fbdb": {
+   "orig_id": "S1484-g059-p2",
+   "source": "SEG"
+  },
+  "I5da811d645": {
+   "orig_id": "S1021-g060-p3",
+   "source": "SEG"
+  },
+  "I5db8b7e3dc": {
+   "orig_id": "U04-213",
+   "source": "E1"
+  },
+  "I5dd7ea97c0": {
+   "orig_id": "S1021-g027-p1",
+   "source": "SEG"
+  },
+  "I5dda7758ce": {
+   "orig_id": "U03-S1484-099",
+   "source": "E1"
+  },
+  "I5e0e75279d": {
+   "orig_id": "S1484-g112-p2",
+   "source": "SEG"
+  },
+  "I5e22abfc7b": {
+   "orig_id": "S1413-g039-p2",
+   "source": "SEG"
+  },
+  "I5e42bef379": {
+   "orig_id": "S1484-g104-p3",
+   "source": "SEG"
+  },
+  "I5e48c3dfda": {
+   "orig_id": "S1541-g042-p1",
+   "source": "SEG"
+  },
+  "I5e4f887521": {
+   "orig_id": "U04-026",
+   "source": "E1"
+  },
+  "I5e5c3cbd5b": {
+   "orig_id": "U04-224",
+   "source": "E1"
+  },
+  "I5e60d2f330": {
+   "orig_id": "S1484-054",
+   "source": "E2"
+  },
+  "I5ef1fe4e11": {
+   "orig_id": "S1021-g064-p1",
+   "source": "SEG"
+  },
+  "I5f5aeeea03": {
+   "orig_id": "S1484-g101-p1",
+   "source": "SEG"
+  },
+  "I5f631a4e18": {
+   "orig_id": "S1484-g046-p1",
+   "source": "SEG"
+  },
+  "I5fc78ef539": {
+   "orig_id": "U03-S1484-138",
+   "source": "E1"
+  },
+  "I5fdcd53594": {
+   "orig_id": "S1484-017",
+   "source": "E2"
+  },
+  "I60038776c6": {
+   "orig_id": "S1021-042",
+   "source": "E2"
+  },
+  "I6030937bb4": {
+   "orig_id": "S1484-g060-p9",
+   "source": "SEG"
+  },
+  "I6036fe800e": {
+   "orig_id": "S1484-g048-p9",
+   "source": "SEG"
+  },
+  "I6039e69208": {
+   "orig_id": "U03-S1022-060",
+   "source": "E1"
+  },
+  "I606c708c8f": {
+   "orig_id": "S1021-g033-p2",
+   "source": "SEG"
+  },
+  "I609e123237": {
+   "orig_id": "S1541-g078-p1",
+   "source": "SEG"
+  },
+  "I60a877a941": {
+   "orig_id": "S1022-g035-p1",
+   "source": "SEG"
+  },
+  "I60b9c4d572": {
+   "orig_id": "S1484-g023-p1",
+   "source": "SEG"
+  },
+  "I60bf018183": {
+   "orig_id": "S1484-g089-p2",
+   "source": "SEG"
+  },
+  "I60c81d6b1b": {
+   "orig_id": "S1484-032",
+   "source": "E2"
+  },
+  "I60f071b9ed": {
+   "orig_id": "U03-S1022-065",
+   "source": "E1"
+  },
+  "I60f2e3364f": {
+   "orig_id": "S1541_P014",
+   "source": "E2"
+  },
+  "I61015718e0": {
+   "orig_id": "S1541-g019-p1",
+   "source": "SEG"
+  },
+  "I615d79c8d4": {
+   "orig_id": "S1541-g044-p2",
+   "source": "SEG"
+  },
+  "I61615f09e4": {
+   "orig_id": "S1541_P003",
+   "source": "E2"
+  },
+  "I61c8c1a134": {
+   "orig_id": "S1413-g011-p1",
+   "source": "SEG"
+  },
+  "I61fd39c1d9": {
+   "orig_id": "U04-169",
+   "source": "E1"
+  },
+  "I62082fe462": {
+   "orig_id": "S1022-014",
+   "source": "E2"
+  },
+  "I62c5ae8c1d": {
+   "orig_id": "S1021-020",
+   "source": "E2"
+  },
+  "I62ccfe6e10": {
+   "orig_id": "S1541-g029-p3",
+   "source": "SEG"
+  },
+  "I62e77a7dab": {
+   "orig_id": "S1413-g004-p2",
+   "source": "SEG"
+  },
+  "I62eaa4488e": {
+   "orig_id": "U04-081",
+   "source": "E1"
+  },
+  "I63260fe0bb": {
+   "orig_id": "S1022-031",
+   "source": "E2"
+  },
+  "I633126f495": {
+   "orig_id": "S1541-g030-p2",
+   "source": "SEG"
+  },
+  "I634b0636f0": {
+   "orig_id": "S1021-g041-p1",
+   "source": "SEG"
+  },
+  "I6386d581ee": {
+   "orig_id": "S1521-g011-p1",
+   "source": "SEG"
+  },
+  "I638b865eb0": {
+   "orig_id": "U03-S1484-132",
+   "source": "E1"
+  },
+  "I63b2ccde0e": {
+   "orig_id": "U03-S1484-147",
+   "source": "E1"
+  },
+  "I63ebf26bd8": {
+   "orig_id": "U03-S1484-051",
+   "source": "E1"
+  },
+  "I63f2a91f00": {
+   "orig_id": "U03-S1484-022",
+   "source": "E1"
+  },
+  "I640a549225": {
+   "orig_id": "U03-S1022-025",
+   "source": "E1"
+  },
+  "I6441f6958f": {
+   "orig_id": "S1484-041",
+   "source": "E2"
+  },
+  "I644763bf35": {
+   "orig_id": "S1022-g056-p1",
+   "source": "SEG"
+  },
+  "I6473c03e8b": {
+   "orig_id": "S1413-g023-p1",
+   "source": "SEG"
+  },
+  "I648fa885ae": {
+   "orig_id": "S1022-g013-p1",
+   "source": "SEG"
+  },
+  "I64f0f56689": {
+   "orig_id": "U04-310",
+   "source": "E1"
+  },
+  "I650e257941": {
+   "orig_id": "S1541_P007",
+   "source": "E2"
+  },
+  "I651b3119b7": {
+   "orig_id": "U04-325",
+   "source": "E1"
+  },
+  "I652dece23c": {
+   "orig_id": "S1022-g053-p2",
+   "source": "SEG"
+  },
+  "I6537839b4f": {
+   "orig_id": "U04-268",
+   "source": "E1"
+  },
+  "I653d38d153": {
+   "orig_id": "S1541-g040-p3",
+   "source": "SEG"
+  },
+  "I6547ac186d": {
+   "orig_id": "U03-S1484-130",
+   "source": "E1"
+  },
+  "I657ff370d2": {
+   "orig_id": "U03-S1484-157",
+   "source": "E1"
+  },
+  "I65e41a5c5c": {
+   "orig_id": "S1484-g055-p1",
+   "source": "SEG"
+  },
+  "I65e59ff00b": {
+   "orig_id": "U03-S1484-107",
+   "source": "E1"
+  },
+  "I65fe4f3d24": {
+   "orig_id": "S1541_P032",
+   "source": "E2"
+  },
+  "I6619fc916b": {
+   "orig_id": "U03-S1021-025",
+   "source": "E1"
+  },
+  "I6627cb2082": {
+   "orig_id": "S1022-g066-p2",
+   "source": "SEG"
+  },
+  "I665149beac": {
+   "orig_id": "U04-153",
+   "source": "E1"
+  },
+  "I667c6cd520": {
+   "orig_id": "U04-062",
+   "source": "E1"
+  },
+  "I669f621bac": {
+   "orig_id": "U03-S1484-164",
+   "source": "E1"
+  },
+  "I66ec299542": {
+   "orig_id": "U03-S1484-049",
+   "source": "E1"
+  },
+  "I66fa09bd39": {
+   "orig_id": "U04-050",
+   "source": "E1"
+  },
+  "I6708190546": {
+   "orig_id": "S1484-g044-p3",
+   "source": "SEG"
+  },
+  "I6735011d70": {
+   "orig_id": "S1021-g066-p1",
+   "source": "SEG"
+  },
+  "I682e5fafd4": {
+   "orig_id": "S1541-g040-p4",
+   "source": "SEG"
+  },
+  "I685468f8db": {
+   "orig_id": "S1413-g027-p3",
+   "source": "SEG"
+  },
+  "I68b9ce4485": {
+   "orig_id": "S1541-g040-p2",
+   "source": "SEG"
+  },
+  "I68c6d290b1": {
+   "orig_id": "S1541-g023-p5",
+   "source": "SEG"
+  },
+  "I68e7338eed": {
+   "orig_id": "S1541_P012",
+   "source": "E2"
+  },
+  "I6908dc3a6d": {
+   "orig_id": "S1484-g060-p1",
+   "source": "SEG"
+  },
+  "I691627a37b": {
+   "orig_id": "U03-S1484-041",
+   "source": "E1"
+  },
+  "I6927373432": {
+   "orig_id": "S1022-g039-p3",
+   "source": "SEG"
+  },
+  "I6927ec8bc3": {
+   "orig_id": "S1484-g093-p2",
+   "source": "SEG"
+  },
+  "I698143b9d2": {
+   "orig_id": "S1484-g058-p2",
+   "source": "SEG"
+  },
+  "I6aa7097c45": {
+   "orig_id": "S1022-002",
+   "source": "E2"
+  },
+  "I6acaf7a183": {
+   "orig_id": "S1541-g041-p1",
+   "source": "SEG"
+  },
+  "I6ade507ef0": {
+   "orig_id": "S1484-g098-p1",
+   "source": "SEG"
+  },
+  "I6ae0c86a68": {
+   "orig_id": "S1022-034",
+   "source": "E2"
+  },
+  "I6b1814a410": {
+   "orig_id": "U03-S1022-031",
+   "source": "E1"
+  },
+  "I6b2161911d": {
+   "orig_id": "U03-S1022-004",
+   "source": "E1"
+  },
+  "I6b34a20246": {
+   "orig_id": "S1484-046",
+   "source": "E2"
+  },
+  "I6b95f1d140": {
+   "orig_id": "U04-232",
+   "source": "E1"
+  },
+  "I6bd0cf426a": {
+   "orig_id": "S1541-g029-p4",
+   "source": "SEG"
+  },
+  "I6c09364266": {
+   "orig_id": "S1413-g049-p1",
+   "source": "SEG"
+  },
+  "I6c3d338999": {
+   "orig_id": "S1021-g079-p2",
+   "source": "SEG"
+  },
+  "I6c83e89718": {
+   "orig_id": "U04-260",
+   "source": "E1"
+  },
+  "I6ca370e61c": {
+   "orig_id": "U03-S1484-086",
+   "source": "E1"
+  },
+  "I6ca82f6211": {
+   "orig_id": "S1022-g054-p2",
+   "source": "SEG"
+  },
+  "I6cada6e7f3": {
+   "orig_id": "U04-168",
+   "source": "E1"
+  },
+  "I6cc144b0c6": {
+   "orig_id": "S1022-g061-p1",
+   "source": "SEG"
+  },
+  "I6d00791090": {
+   "orig_id": "S1022-g058-p1",
+   "source": "SEG"
+  },
+  "I6d145574ad": {
+   "orig_id": "S1541-g064-p1",
+   "source": "SEG"
+  },
+  "I6d37f40f86": {
+   "orig_id": "S1484-g015-p1",
+   "source": "SEG"
+  },
+  "I6d39e58260": {
+   "orig_id": "U03-S1022-047",
+   "source": "E1"
+  },
+  "I6d834b0508": {
+   "orig_id": "S1541-g030-p4",
+   "source": "SEG"
+  },
+  "I6d9e67536a": {
+   "orig_id": "S1541_P008",
+   "source": "E2"
+  },
+  "I6da8869617": {
+   "orig_id": "U03-S1022-026",
+   "source": "E1"
+  },
+  "I6df18971ea": {
+   "orig_id": "S1541-g021-p4",
+   "source": "SEG"
+  },
+  "I6df8c99cab": {
+   "orig_id": "S1021-g011-p2",
+   "source": "SEG"
+  },
+  "I6e0356d414": {
+   "orig_id": "U03-S1484-122",
+   "source": "E1"
+  },
+  "I6e059ca7e1": {
+   "orig_id": "S1521-g016-p2",
+   "source": "SEG"
+  },
+  "I6e3cc8a586": {
+   "orig_id": "S1413-g032-p1",
+   "source": "SEG"
+  },
+  "I6e509bb939": {
+   "orig_id": "S1484-g109-p1",
+   "source": "SEG"
+  },
+  "I6e654c94f4": {
+   "orig_id": "S1484-g104-p2",
+   "source": "SEG"
+  },
+  "I6e71f7f69d": {
+   "orig_id": "S1021-g040-p2",
+   "source": "SEG"
+  },
+  "I6e7372461b": {
+   "orig_id": "S1022-g042-p2",
+   "source": "SEG"
+  },
+  "I6ed455ac94": {
+   "orig_id": "S1484-g087-p5",
+   "source": "SEG"
+  },
+  "I6f365ecfce": {
+   "orig_id": "U03-S1484-028",
+   "source": "E1"
+  },
+  "I6f471d79f0": {
+   "orig_id": "S1021-014",
+   "source": "E2"
+  },
+  "I6f66072f35": {
+   "orig_id": "S1541_P028",
+   "source": "E2"
+  },
+  "I6facaf144f": {
+   "orig_id": "U04-076",
+   "source": "E1"
+  },
+  "I6fb4ab9186": {
+   "orig_id": "S1484-g072-p3",
+   "source": "SEG"
+  },
+  "I6fbe8c3b09": {
+   "orig_id": "U03-S1484-050",
+   "source": "E1"
+  },
+  "I6fee85d600": {
+   "orig_id": "S1484-g109-p3",
+   "source": "SEG"
+  },
+  "I6fff278c16": {
+   "orig_id": "S1541-g022-p1",
+   "source": "SEG"
+  },
+  "I700f2407c2": {
+   "orig_id": "U03-S1484-066",
+   "source": "E1"
+  },
+  "I7052237c9e": {
+   "orig_id": "U04-172",
+   "source": "E1"
+  },
+  "I705237f280": {
+   "orig_id": "U03-S1484-011",
+   "source": "E1"
+  },
+  "I706f629bf4": {
+   "orig_id": "S1541-g005-p1",
+   "source": "SEG"
+  },
+  "I70e5e36395": {
+   "orig_id": "U04-234",
+   "source": "E1"
+  },
+  "I713abe6121": {
+   "orig_id": "S1541-g008-p1",
+   "source": "SEG"
+  },
+  "I713c9b3fc7": {
+   "orig_id": "U04-253",
+   "source": "E1"
+  },
+  "I71841bf024": {
+   "orig_id": "S1541-g068-p1",
+   "source": "SEG"
+  },
+  "I71d7f979d2": {
+   "orig_id": "U04-028",
+   "source": "E1"
+  },
+  "I722f018ac3": {
+   "orig_id": "U04-228",
+   "source": "E1"
+  },
+  "I724e8c077d": {
+   "orig_id": "S1484-g087-p1",
+   "source": "SEG"
+  },
+  "I7260f8cb6d": {
+   "orig_id": "U03-S1484-061",
+   "source": "E1"
+  },
+  "I726b153818": {
+   "orig_id": "S1484-g093-p3",
+   "source": "SEG"
+  },
+  "I7291f6740e": {
+   "orig_id": "S1521-g017-p4",
+   "source": "SEG"
+  },
+  "I729ee54aa4": {
+   "orig_id": "U03-S1484-140",
+   "source": "E1"
+  },
+  "I72e89e5c2f": {
+   "orig_id": "S1021-028",
+   "source": "E2"
+  },
+  "I731d5e59d0": {
+   "orig_id": "U04-243",
+   "source": "E1"
+  },
+  "I734652d187": {
+   "orig_id": "S1484-g059-p4",
+   "source": "SEG"
+  },
+  "I7347ccdf16": {
+   "orig_id": "S1022-006",
+   "source": "E2"
+  },
+  "I7366f7e1c9": {
+   "orig_id": "U04-084",
+   "source": "E1"
+  },
+  "I7394bc929f": {
+   "orig_id": "S1022-012",
+   "source": "E2"
+  },
+  "I73a79cb167": {
+   "orig_id": "S1484-g027-p1",
+   "source": "SEG"
+  },
+  "I7427c176ad": {
+   "orig_id": "S1541-g023-p2",
+   "source": "SEG"
+  },
+  "I7438e7262c": {
+   "orig_id": "S1484-g038-p2",
+   "source": "SEG"
+  },
+  "I743d318f7c": {
+   "orig_id": "S1021-029",
+   "source": "E2"
+  },
+  "I7496a16cf4": {
+   "orig_id": "S1022-g067-p3",
+   "source": "SEG"
+  },
+  "I74eb3ecdfe": {
+   "orig_id": "S1484-044",
+   "source": "E2"
+  },
+  "I74f899fe36": {
+   "orig_id": "S1541-g006-p4",
+   "source": "SEG"
+  },
+  "I754f355d77": {
+   "orig_id": "S1022-g016-p1",
+   "source": "SEG"
+  },
+  "I7555f253be": {
+   "orig_id": "U03-S1484-101",
+   "source": "E1"
+  },
+  "I758f0b7b6a": {
+   "orig_id": "U03-S1021-067",
+   "source": "E1"
+  },
+  "I75a863cfb7": {
+   "orig_id": "S1541-g010-p1",
+   "source": "SEG"
+  },
+  "I75b7fadd7b": {
+   "orig_id": "S1021-g017-p1",
+   "source": "SEG"
+  },
+  "I75c997cee1": {
+   "orig_id": "U04-108",
+   "source": "E1"
+  },
+  "I75efb5032a": {
+   "orig_id": "U04-141",
+   "source": "E1"
+  },
+  "I7604c3b501": {
+   "orig_id": "S1021-g070-p1",
+   "source": "SEG"
+  },
+  "I7617c71b9d": {
+   "orig_id": "S1484-g047-p1",
+   "source": "SEG"
+  },
+  "I7630870860": {
+   "orig_id": "U04-321",
+   "source": "E1"
+  },
+  "I764f00bdfa": {
+   "orig_id": "S1541-g072-p2",
+   "source": "SEG"
+  },
+  "I767a2d8f0a": {
+   "orig_id": "S1022-g012-p1",
+   "source": "SEG"
+  },
+  "I76b1a9919a": {
+   "orig_id": "S1484-g029-p1",
+   "source": "SEG"
+  },
+  "I76cbe462bb": {
+   "orig_id": "U04-033",
+   "source": "E1"
+  },
+  "I770136ecbd": {
+   "orig_id": "U04-247",
+   "source": "E1"
+  },
+  "I7724f1371b": {
+   "orig_id": "S1484-g049-p2",
+   "source": "SEG"
+  },
+  "I773b62956c": {
+   "orig_id": "U03-S1484-023",
+   "source": "E1"
+  },
+  "I7751ef878b": {
+   "orig_id": "U04-300",
+   "source": "E1"
+  },
+  "I778fd40ff7": {
+   "orig_id": "S1021-043",
+   "source": "E2"
+  },
+  "I77d27bf2cc": {
+   "orig_id": "U04-115",
+   "source": "E1"
+  },
+  "I77e2628a8c": {
+   "orig_id": "S1541-g060-p1",
+   "source": "SEG"
+  },
+  "I7887b22396": {
+   "orig_id": "U04-006",
+   "source": "E1"
+  },
+  "I78d74ac60d": {
+   "orig_id": "S1022-g059-p1",
+   "source": "SEG"
+  },
+  "I78eb726fad": {
+   "orig_id": "U04-063",
+   "source": "E1"
+  },
+  "I78f2001272": {
+   "orig_id": "S1022-023",
+   "source": "E2"
+  },
+  "I79593c2502": {
+   "orig_id": "S1484-050",
+   "source": "E2"
+  },
+  "I7983e753b2": {
+   "orig_id": "S1021-g065-p2",
+   "source": "SEG"
+  },
+  "I79a0908726": {
+   "orig_id": "S1022-g068-p2",
+   "source": "SEG"
+  },
+  "I79b0bac1f9": {
+   "orig_id": "U03-S1022-036",
+   "source": "E1"
+  },
+  "I79dc83c091": {
+   "orig_id": "U04-035",
+   "source": "E1"
+  },
+  "I79f8a11d21": {
+   "orig_id": "U03-S1021-013",
+   "source": "E1"
+  },
+  "I79fc704361": {
+   "orig_id": "U04-150",
+   "source": "E1"
+  },
+  "I7a0078cb2b": {
+   "orig_id": "U04-291",
+   "source": "E1"
+  },
+  "I7a023b6679": {
+   "orig_id": "S1021-g039-p2",
+   "source": "SEG"
+  },
+  "I7a3e57e930": {
+   "orig_id": "S1521_P008",
+   "source": "E2"
+  },
+  "I7a3e8f54d3": {
+   "orig_id": "S1484-g016-p1",
+   "source": "SEG"
+  },
+  "I7a661c9fa3": {
+   "orig_id": "S1484-g061-p2",
+   "source": "SEG"
+  },
+  "I7a92da12ed": {
+   "orig_id": "S1022-g068-p1",
+   "source": "SEG"
+  },
+  "I7ab4148a18": {
+   "orig_id": "S1541-g031-p3",
+   "source": "SEG"
+  },
+  "I7ac3cd1932": {
+   "orig_id": "S1484-021",
+   "source": "E2"
+  },
+  "I7af926a6c3": {
+   "orig_id": "S1541-g078-p2",
+   "source": "SEG"
+  },
+  "I7b509ccfd7": {
+   "orig_id": "U04-241",
+   "source": "E1"
+  },
+  "I7b50f09426": {
+   "orig_id": "U04-011",
+   "source": "E1"
+  },
+  "I7b703e7f0a": {
+   "orig_id": "S1021-g028-p1",
+   "source": "SEG"
+  },
+  "I7b92812ff5": {
+   "orig_id": "U03-S1022-039",
+   "source": "E1"
+  },
+  "I7ba34d04f6": {
+   "orig_id": "U04-148",
+   "source": "E1"
+  },
+  "I7bbfa82848": {
+   "orig_id": "S1484-g045-p1",
+   "source": "SEG"
+  },
+  "I7c0a1fb054": {
+   "orig_id": "S1484-g036-p1",
+   "source": "SEG"
+  },
+  "I7c5bb009c0": {
+   "orig_id": "S1021-g036-p2",
+   "source": "SEG"
+  },
+  "I7c5dc7c424": {
+   "orig_id": "S1541-g035-p2",
+   "source": "SEG"
+  },
+  "I7c812a96eb": {
+   "orig_id": "S1413-g058-p1",
+   "source": "SEG"
+  },
+  "I7c92c5cf82": {
+   "orig_id": "S1541-g042-p2",
+   "source": "SEG"
+  },
+  "I7cb9299c01": {
+   "orig_id": "S1484-g032-p1",
+   "source": "SEG"
+  },
+  "I7cec9b8153": {
+   "orig_id": "U04-161",
+   "source": "E1"
+  },
+  "I7cf00e635b": {
+   "orig_id": "S1521-g016-p5",
+   "source": "SEG"
+  },
+  "I7d027e9330": {
+   "orig_id": "S1413-g006-p1",
+   "source": "SEG"
+  },
+  "I7d3d2a4dbf": {
+   "orig_id": "S1021-g008-p1",
+   "source": "SEG"
+  },
+  "I7d49ba63b4": {
+   "orig_id": "S1484-g037-p1",
+   "source": "SEG"
+  },
+  "I7d542c29b2": {
+   "orig_id": "S1541-g067-p1",
+   "source": "SEG"
+  },
+  "I7db2eab878": {
+   "orig_id": "U04-152",
+   "source": "E1"
+  },
+  "I7dff6a5de6": {
+   "orig_id": "S1484-g086-p1",
+   "source": "SEG"
+  },
+  "I7e0d0fd368": {
+   "orig_id": "S1022-g051-p1",
+   "source": "SEG"
+  },
+  "I7e4bc95c0d": {
+   "orig_id": "U03-S1021-008",
+   "source": "E1"
+  },
+  "I7e535b417b": {
+   "orig_id": "U03-S1484-106",
+   "source": "E1"
+  },
+  "I7ea86f8e50": {
+   "orig_id": "U03-S1484-033",
+   "source": "E1"
+  },
+  "I7f42536dbe": {
+   "orig_id": "S1484-g054-p1",
+   "source": "SEG"
+  },
+  "I806fa98916": {
+   "orig_id": "S1021-g074-p2",
+   "source": "SEG"
+  },
+  "I80ad27640a": {
+   "orig_id": "S1541-g028-p5",
+   "source": "SEG"
+  },
+  "I80c88a91fb": {
+   "orig_id": "S1021-g051-p1",
+   "source": "SEG"
+  },
+  "I80fa445e46": {
+   "orig_id": "S1541-g035-p1",
+   "source": "SEG"
+  },
+  "I8125aad595": {
+   "orig_id": "U03-S1021-044",
+   "source": "E1"
+  },
+  "I81813e6607": {
+   "orig_id": "S1022-007",
+   "source": "E2"
+  },
+  "I82c20fcc34": {
+   "orig_id": "U03-S1022-024",
+   "source": "E1"
+  },
+  "I82ce08848c": {
+   "orig_id": "S1022-g060-p2",
+   "source": "SEG"
+  },
+  "I82fe4e4015": {
+   "orig_id": "S1022-g067-p2",
+   "source": "SEG"
+  },
+  "I831b77934b": {
+   "orig_id": "S1021-g050-p2",
+   "source": "SEG"
+  },
+  "I835e5bb497": {
+   "orig_id": "U04-219",
+   "source": "E1"
+  },
+  "I839818dcdf": {
+   "orig_id": "S1484-g041-p1",
+   "source": "SEG"
+  },
+  "I839c9bc872": {
+   "orig_id": "S1413-g003-p3",
+   "source": "SEG"
+  },
+  "I83bf9fffeb": {
+   "orig_id": "S1022-g038-p2",
+   "source": "SEG"
+  },
+  "I83c4753d7f": {
+   "orig_id": "S1521-g004-p4",
+   "source": "SEG"
+  },
+  "I83e18cf08d": {
+   "orig_id": "S1521-g019-p1",
+   "source": "SEG"
+  },
+  "I83e4cb87ed": {
+   "orig_id": "U03-S1021-019",
+   "source": "E1"
+  },
+  "I8411cdd085": {
+   "orig_id": "S1541_P005",
+   "source": "E2"
+  },
+  "I844b020d27": {
+   "orig_id": "S1413-g015-p1",
+   "source": "SEG"
+  },
+  "I848b67ac54": {
+   "orig_id": "S1413-g046-p2",
+   "source": "SEG"
+  },
+  "I8492bacccb": {
+   "orig_id": "S1484-g092-p1",
+   "source": "SEG"
+  },
+  "I85169fb7da": {
+   "orig_id": "U04-189",
+   "source": "E1"
+  },
+  "I85a39e4b4a": {
+   "orig_id": "S1021-g067-p1",
+   "source": "SEG"
+  },
+  "I8627614e32": {
+   "orig_id": "S1021-g002-p1",
+   "source": "SEG"
+  },
+  "I862d1ec8a9": {
+   "orig_id": "S1484-g110-p3",
+   "source": "SEG"
+  },
+  "I8631b5d864": {
+   "orig_id": "S1484-011",
+   "source": "E2"
+  },
+  "I8639ca02e8": {
+   "orig_id": "U03-S1022-020",
+   "source": "E1"
+  },
+  "I864261d45a": {
+   "orig_id": "U03-S1484-078",
+   "source": "E1"
+  },
+  "I8653099f83": {
+   "orig_id": "U04-195",
+   "source": "E1"
+  },
+  "I867033f025": {
+   "orig_id": "U03-S1022-029",
+   "source": "E1"
+  },
+  "I86cb75a06a": {
+   "orig_id": "U03-S1484-124",
+   "source": "E1"
+  },
+  "I86ef3570b0": {
+   "orig_id": "S1541-g026-p1",
+   "source": "SEG"
+  },
+  "I86ff699961": {
+   "orig_id": "U04-034",
+   "source": "E1"
+  },
+  "I8725c0fc16": {
+   "orig_id": "S1484-g007-p1",
+   "source": "SEG"
+  },
+  "I875bbb0c95": {
+   "orig_id": "S1021-g019-p1",
+   "source": "SEG"
+  },
+  "I876bf45e1b": {
+   "orig_id": "S1022-g045-p2",
+   "source": "SEG"
+  },
+  "I8789af803c": {
+   "orig_id": "U03-S1484-119",
+   "source": "E1"
+  },
+  "I878d935bfe": {
+   "orig_id": "U03-S1022-042",
+   "source": "E1"
+  },
+  "I87e12b4b7c": {
+   "orig_id": "S1413-g045-p1",
+   "source": "SEG"
+  },
+  "I87f57d63b3": {
+   "orig_id": "S1484-g108-p1",
+   "source": "SEG"
+  },
+  "I882f567f2e": {
+   "orig_id": "U04-134",
+   "source": "E1"
+  },
+  "I8856f08e49": {
+   "orig_id": "S1021-032",
+   "source": "E2"
+  },
+  "I88583e70f6": {
+   "orig_id": "S1021-g074-p4",
+   "source": "SEG"
+  },
+  "I886aa708d3": {
+   "orig_id": "S1484-022",
+   "source": "E2"
+  },
+  "I8898305713": {
+   "orig_id": "S1021-019",
+   "source": "E2"
+  },
+  "I891670bff9": {
+   "orig_id": "S1413-g024-p2",
+   "source": "SEG"
+  },
+  "I893021c766": {
+   "orig_id": "U04-286",
+   "source": "E1"
+  },
+  "I893bc3d6ad": {
+   "orig_id": "U04-102",
+   "source": "E1"
+  },
+  "I899f6c24e3": {
+   "orig_id": "S1413-g004-p4",
+   "source": "SEG"
+  },
+  "I8a1ad17428": {
+   "orig_id": "S1413-g031-p2",
+   "source": "SEG"
+  },
+  "I8a6193612f": {
+   "orig_id": "S1021-g011-p3",
+   "source": "SEG"
+  },
+  "I8a87a5593f": {
+   "orig_id": "U04-131",
+   "source": "E1"
+  },
+  "I8add8f6ffb": {
+   "orig_id": "S1021-g012-p2",
+   "source": "SEG"
+  },
+  "I8b278ec037": {
+   "orig_id": "S1484-g060-p3",
+   "source": "SEG"
+  },
+  "I8b5cbd65a7": {
+   "orig_id": "S1541-g021-p1",
+   "source": "SEG"
+  },
+  "I8b5d17f313": {
+   "orig_id": "S1022-g059-p2",
+   "source": "SEG"
+  },
+  "I8b7a0cfe94": {
+   "orig_id": "S1484-g079-p2",
+   "source": "SEG"
+  },
+  "I8bab48a6aa": {
+   "orig_id": "U04-066",
+   "source": "E1"
+  },
+  "I8be670ebd0": {
+   "orig_id": "S1484-g062-p1",
+   "source": "SEG"
+  },
+  "I8bfd5d1fac": {
+   "orig_id": "U04-165",
+   "source": "E1"
+  },
+  "I8c2a9ca02d": {
+   "orig_id": "U04-027",
+   "source": "E1"
+  },
+  "I8c68ffb9af": {
+   "orig_id": "U04-043",
+   "source": "E1"
+  },
+  "I8c85b73783": {
+   "orig_id": "S1484-g018-p2",
+   "source": "SEG"
+  },
+  "I8cf2785582": {
+   "orig_id": "U03-S1484-142",
+   "source": "E1"
+  },
+  "I8d2c26886b": {
+   "orig_id": "S1021-g036-p1",
+   "source": "SEG"
+  },
+  "I8d3680e345": {
+   "orig_id": "U04-065",
+   "source": "E1"
+  },
+  "I8d573b4163": {
+   "orig_id": "S1541-g029-p2",
+   "source": "SEG"
+  },
+  "I8d5e06a39a": {
+   "orig_id": "S1022-g026-p1",
+   "source": "SEG"
+  },
+  "I8d62d2be7e": {
+   "orig_id": "S1541-g066-p1",
+   "source": "SEG"
+  },
+  "I8d6f82ef1e": {
+   "orig_id": "S1021-004",
+   "source": "E2"
+  },
+  "I8e285dd409": {
+   "orig_id": "U04-156",
+   "source": "E1"
+  },
+  "I8e63090ff4": {
+   "orig_id": "S1541-g007-p2",
+   "source": "SEG"
+  },
+  "I8e7b2de373": {
+   "orig_id": "U03-S1021-062",
+   "source": "E1"
+  },
+  "I8e8afe1183": {
+   "orig_id": "S1484-g048-p6",
+   "source": "SEG"
+  },
+  "I8ea3d9d7d5": {
+   "orig_id": "S1021-g058-p1",
+   "source": "SEG"
+  },
+  "I8f3173fb31": {
+   "orig_id": "S1521_P021",
+   "source": "E2"
+  },
+  "I8f6a5fa28c": {
+   "orig_id": "S1413-g014-p3",
+   "source": "SEG"
+  },
+  "I8f6f674ab4": {
+   "orig_id": "S1521-g015-p2",
+   "source": "SEG"
+  },
+  "I8f8f268d3d": {
+   "orig_id": "U04-187",
+   "source": "E1"
+  },
+  "I8f929b8707": {
+   "orig_id": "S1022-g004-p1",
+   "source": "SEG"
+  },
+  "I8f982d4c2d": {
+   "orig_id": "U04-114",
+   "source": "E1"
+  },
+  "I8fffbd651d": {
+   "orig_id": "S1484-g110-p8",
+   "source": "SEG"
+  },
+  "I905203abfa": {
+   "orig_id": "S1484-039",
+   "source": "E2"
+  },
+  "I906a8d02bd": {
+   "orig_id": "U04-197",
+   "source": "E1"
+  },
+  "I9084041e83": {
+   "orig_id": "U04-284",
+   "source": "E1"
+  },
+  "I90bda5558c": {
+   "orig_id": "U04-303",
+   "source": "E1"
+  },
+  "I90c4e9f7af": {
+   "orig_id": "S1541-g008-p3",
+   "source": "SEG"
+  },
+  "I90fef9e29e": {
+   "orig_id": "S1021-g042-p2",
+   "source": "SEG"
+  },
+  "I91483128e9": {
+   "orig_id": "S1541-g011-p3",
+   "source": "SEG"
+  },
+  "I915c06fa39": {
+   "orig_id": "S1484-g039-p3",
+   "source": "SEG"
+  },
+  "I916a5ed246": {
+   "orig_id": "S1021-g023-p1",
+   "source": "SEG"
+  },
+  "I91eac4a1a6": {
+   "orig_id": "U03-S1022-033",
+   "source": "E1"
+  },
+  "I91ef2eec9f": {
+   "orig_id": "U04-088",
+   "source": "E1"
+  },
+  "I92123e4e77": {
+   "orig_id": "S1484-g011-p1",
+   "source": "SEG"
+  },
+  "I921b250c8b": {
+   "orig_id": "S1021-g014-p3",
+   "source": "SEG"
+  },
+  "I92303d59b8": {
+   "orig_id": "U04-041",
+   "source": "E1"
+  },
+  "I92470115b0": {
+   "orig_id": "U03-S1484-105",
+   "source": "E1"
+  },
+  "I92a1a53dd4": {
+   "orig_id": "U04-192",
+   "source": "E1"
+  },
+  "I92b6528120": {
+   "orig_id": "S1541-g073-p1",
+   "source": "SEG"
+  },
+  "I92c5f10177": {
+   "orig_id": "S1021-022",
+   "source": "E2"
+  },
+  "I92e952c23a": {
+   "orig_id": "S1484-g080-p1",
+   "source": "SEG"
+  },
+  "I9321a40e30": {
+   "orig_id": "S1022-011",
+   "source": "E2"
+  },
+  "I9373935c31": {
+   "orig_id": "U03-S1484-084",
+   "source": "E1"
+  },
+  "I93a8cc252e": {
+   "orig_id": "U03-S1484-019",
+   "source": "E1"
+  },
+  "I941ac2dd62": {
+   "orig_id": "S1021-g048-p1",
+   "source": "SEG"
+  },
+  "I941ed0c58f": {
+   "orig_id": "S1484-g011-p2",
+   "source": "SEG"
+  },
+  "I94414df60e": {
+   "orig_id": "U03-S1484-036",
+   "source": "E1"
+  },
+  "I944bbf2b7b": {
+   "orig_id": "S1413-g061-p1",
+   "source": "SEG"
+  },
+  "I946493ecf3": {
+   "orig_id": "U04-149",
+   "source": "E1"
+  },
+  "I94771b0a56": {
+   "orig_id": "S1484-g058-p1",
+   "source": "SEG"
+  },
+  "I94811f2a9e": {
+   "orig_id": "U04-138",
+   "source": "E1"
+  },
+  "I9503eca47b": {
+   "orig_id": "S1484-g012-p2",
+   "source": "SEG"
+  },
+  "I952ce1a75d": {
+   "orig_id": "U03-S1021-023",
+   "source": "E1"
+  },
+  "I9549436d9c": {
+   "orig_id": "S1022-g055-p2",
+   "source": "SEG"
+  },
+  "I95dd769d96": {
+   "orig_id": "U04-248",
+   "source": "E1"
+  },
+  "I95e132c2a6": {
+   "orig_id": "U03-S1484-046",
+   "source": "E1"
+  },
+  "I95e3af2ca4": {
+   "orig_id": "S1022-g017-p2",
+   "source": "SEG"
+  },
+  "I95f5ef1e5b": {
+   "orig_id": "U03-S1484-053",
+   "source": "E1"
+  },
+  "I9643d6027a": {
+   "orig_id": "S1022-g001-p4",
+   "source": "SEG"
+  },
+  "I9644db7906": {
+   "orig_id": "S1021-g052-p1",
+   "source": "SEG"
+  },
+  "I96452175ec": {
+   "orig_id": "S1022-g011-p1",
+   "source": "SEG"
+  },
+  "I965ce7ddd1": {
+   "orig_id": "S1541-g072-p1",
+   "source": "SEG"
+  },
+  "I9690c5a801": {
+   "orig_id": "U03-S1022-055",
+   "source": "E1"
+  },
+  "I96a9ade53d": {
+   "orig_id": "S1541-g052-p1",
+   "source": "SEG"
+  },
+  "I96a9dccecf": {
+   "orig_id": "U04-242",
+   "source": "E1"
+  },
+  "I96aadb20aa": {
+   "orig_id": "U03-S1484-110",
+   "source": "E1"
+  },
+  "I9731eb3945": {
+   "orig_id": "S1022-g014-p2",
+   "source": "SEG"
+  },
+  "I975ab293c1": {
+   "orig_id": "U04-287",
+   "source": "E1"
+  },
+  "I9762a54f07": {
+   "orig_id": "S1021-g038-p1",
+   "source": "SEG"
+  },
+  "I976dd57971": {
+   "orig_id": "U03-S1484-070",
+   "source": "E1"
+  },
+  "I97c58e9d4a": {
+   "orig_id": "S1484-g090-p3",
+   "source": "SEG"
+  },
+  "I9819bb723a": {
+   "orig_id": "S1021-g023-p3",
+   "source": "SEG"
+  },
+  "I9832e882c5": {
+   "orig_id": "S1541-g043-p3",
+   "source": "SEG"
+  },
+  "I984fa180c8": {
+   "orig_id": "U03-S1022-053",
+   "source": "E1"
+  },
+  "I98605f42fe": {
+   "orig_id": "S1021-g016-p1",
+   "source": "SEG"
+  },
+  "I987a7b1924": {
+   "orig_id": "S1484-033",
+   "source": "E2"
+  },
+  "I989039a236": {
+   "orig_id": "S1521-g017-p1",
+   "source": "SEG"
+  },
+  "I98d8d09935": {
+   "orig_id": "U03-S1484-153",
+   "source": "E1"
+  },
+  "I98fb7f1bae": {
+   "orig_id": "U03-S1484-060",
+   "source": "E1"
+  },
+  "I9914d72784": {
+   "orig_id": "U04-328",
+   "source": "E1"
+  },
+  "I99351cc392": {
+   "orig_id": "U04-061",
+   "source": "E1"
+  },
+  "I99441690e6": {
+   "orig_id": "S1484-g024-p1",
+   "source": "SEG"
+  },
+  "I9951af8f5f": {
+   "orig_id": "U04-106",
+   "source": "E1"
+  },
+  "I9978824b87": {
+   "orig_id": "S1484-g111-p5",
+   "source": "SEG"
+  },
+  "I999193879e": {
+   "orig_id": "S1484-g056-p1",
+   "source": "SEG"
+  },
+  "I999ebb90ab": {
+   "orig_id": "S1541_P016",
+   "source": "E2"
+  },
+  "I99e47a9175": {
+   "orig_id": "S1541-g024-p2",
+   "source": "SEG"
+  },
+  "I99ea0e3863": {
+   "orig_id": "U04-018",
+   "source": "E1"
+  },
+  "I99ed4e7a4a": {
+   "orig_id": "S1484-g034-p1",
+   "source": "SEG"
+  },
+  "I9a1c4bac2b": {
+   "orig_id": "S1022-g061-p2",
+   "source": "SEG"
+  },
+  "I9a3598b6d4": {
+   "orig_id": "U04-280",
+   "source": "E1"
+  },
+  "I9a37bf3115": {
+   "orig_id": "U03-S1484-056",
+   "source": "E1"
+  },
+  "I9a3ef69ac1": {
+   "orig_id": "S1541_P015",
+   "source": "E2"
+  },
+  "I9a57b17220": {
+   "orig_id": "S1021-g056-p2",
+   "source": "SEG"
+  },
+  "I9a6ac17b16": {
+   "orig_id": "S1413-g034-p1",
+   "source": "SEG"
+  },
+  "I9a96569e83": {
+   "orig_id": "S1021-g067-p3",
+   "source": "SEG"
+  },
+  "I9aeb04ca5c": {
+   "orig_id": "S1022-g043-p1",
+   "source": "SEG"
+  },
+  "I9af7590210": {
+   "orig_id": "S1484-g048-p3",
+   "source": "SEG"
+  },
+  "I9b5959460e": {
+   "orig_id": "S1541-g031-p4",
+   "source": "SEG"
+  },
+  "I9b6ab343c8": {
+   "orig_id": "S1022-029",
+   "source": "E2"
+  },
+  "I9b85ec5f7b": {
+   "orig_id": "S1541-g071-p1",
+   "source": "SEG"
+  },
+  "I9b92995c58": {
+   "orig_id": "S1021-g078-p1",
+   "source": "SEG"
+  },
+  "I9b9994444e": {
+   "orig_id": "S1484-g086-p3",
+   "source": "SEG"
+  },
+  "I9baffef662": {
+   "orig_id": "U04-023",
+   "source": "E1"
+  },
+  "I9bc533f274": {
+   "orig_id": "S1021-g003-p3",
+   "source": "SEG"
+  },
+  "I9c046ead62": {
+   "orig_id": "S1484-g091-p2",
+   "source": "SEG"
+  },
+  "I9c06cc8a2a": {
+   "orig_id": "S1413-g013-p1",
+   "source": "SEG"
+  },
+  "I9ca2831ee3": {
+   "orig_id": "S1413-g012-p1",
+   "source": "SEG"
+  },
+  "I9ca609e042": {
+   "orig_id": "S1022-g055-p3",
+   "source": "SEG"
+  },
+  "I9cb44b468f": {
+   "orig_id": "S1484-g069-p1",
+   "source": "SEG"
+  },
+  "I9cfec2264a": {
+   "orig_id": "S1541-g033-p1",
+   "source": "SEG"
+  },
+  "I9d4c5f51b1": {
+   "orig_id": "U03-S1021-018",
+   "source": "E1"
+  },
+  "I9d5dec005b": {
+   "orig_id": "U04-313",
+   "source": "E1"
+  },
+  "I9d84abc6d0": {
+   "orig_id": "S1022-g068-p4",
+   "source": "SEG"
+  },
+  "I9d8c6d09d6": {
+   "orig_id": "U04-229",
+   "source": "E1"
+  },
+  "I9da90b05e4": {
+   "orig_id": "S1021-024",
+   "source": "E2"
+  },
+  "I9dac17dbea": {
+   "orig_id": "S1021-g061-p3",
+   "source": "SEG"
+  },
+  "I9e1235d776": {
+   "orig_id": "U04-170",
+   "source": "E1"
+  },
+  "I9e1253260f": {
+   "orig_id": "S1021-011",
+   "source": "E2"
+  },
+  "I9e454076a8": {
+   "orig_id": "S1021-054",
+   "source": "E2"
+  },
+  "I9e4bd1735c": {
+   "orig_id": "S1413-g043-p1",
+   "source": "SEG"
+  },
+  "I9e57faf471": {
+   "orig_id": "U04-142",
+   "source": "E1"
+  },
+  "I9ea3934d33": {
+   "orig_id": "U04-216",
+   "source": "E1"
+  },
+  "I9edeea4ed4": {
+   "orig_id": "S1484-g010-p2",
+   "source": "SEG"
+  },
+  "I9f0c80e8ea": {
+   "orig_id": "S1021-007",
+   "source": "E2"
+  },
+  "I9f1efe08b6": {
+   "orig_id": "U03-S1484-098",
+   "source": "E1"
+  },
+  "I9f21322ae2": {
+   "orig_id": "S1021-g001-p2",
+   "source": "SEG"
+  },
+  "I9fd65adb72": {
+   "orig_id": "S1413-g056-p1",
+   "source": "SEG"
+  },
+  "Ia077dd5103": {
+   "orig_id": "S1022-036",
+   "source": "E2"
+  },
+  "Ia0924d0dc9": {
+   "orig_id": "S1521_P022",
+   "source": "E2"
+  },
+  "Ia09c8a4a86": {
+   "orig_id": "S1521-g017-p3",
+   "source": "SEG"
+  },
+  "Ia0a89a737f": {
+   "orig_id": "S1022-g062-p1",
+   "source": "SEG"
+  },
+  "Ia0c33d37ab": {
+   "orig_id": "U04-311",
+   "source": "E1"
+  },
+  "Ia0d6ff3422": {
+   "orig_id": "S1541-g032-p3",
+   "source": "SEG"
+  },
+  "Ia0d779f9af": {
+   "orig_id": "S1021-g066-p2",
+   "source": "SEG"
+  },
+  "Ia1098bafab": {
+   "orig_id": "S1484-040",
+   "source": "E2"
+  },
+  "Ia158e7f83b": {
+   "orig_id": "S1413-g039-p1",
+   "source": "SEG"
+  },
+  "Ia15fffb6df": {
+   "orig_id": "S1021-039",
+   "source": "E2"
+  },
+  "Ia16df10aa7": {
+   "orig_id": "S1022-g020-p2",
+   "source": "SEG"
+  },
+  "Ia199b066d4": {
+   "orig_id": "U04-289",
+   "source": "E1"
+  },
+  "Ia1b9b8218c": {
+   "orig_id": "S1541-g034-p1",
+   "source": "SEG"
+  },
+  "Ia28a634735": {
+   "orig_id": "S1484-g044-p1",
+   "source": "SEG"
+  },
+  "Ia2b31de688": {
+   "orig_id": "U03-S1484-150",
+   "source": "E1"
+  },
+  "Ia2dafedd9c": {
+   "orig_id": "S1022-010",
+   "source": "E2"
+  },
+  "Ia2f1b06f8b": {
+   "orig_id": "U04-046",
+   "source": "E1"
+  },
+  "Ia31dc84f9c": {
+   "orig_id": "S1022-g068-p3",
+   "source": "SEG"
+  },
+  "Ia34556af09": {
+   "orig_id": "U03-S1484-063",
+   "source": "E1"
+  },
+  "Ia3475356e2": {
+   "orig_id": "U03-S1484-040",
+   "source": "E1"
+  },
+  "Ia3822a572d": {
+   "orig_id": "U04-129",
+   "source": "E1"
+  },
+  "Ia38d0c57d5": {
+   "orig_id": "U03-S1484-160",
+   "source": "E1"
+  },
+  "Ia3b614d945": {
+   "orig_id": "S1021-g025-p1",
+   "source": "SEG"
+  },
+  "Ia3d3bde905": {
+   "orig_id": "S1021-g003-p2",
+   "source": "SEG"
+  },
+  "Ia3d654de20": {
+   "orig_id": "S1022-g057-p1",
+   "source": "SEG"
+  },
+  "Ia3f2253066": {
+   "orig_id": "S1484-g085-p1",
+   "source": "SEG"
+  },
+  "Ia40260dc13": {
+   "orig_id": "S1484-028",
+   "source": "E2"
+  },
+  "Ia40f13321c": {
+   "orig_id": "S1484-g096-p3",
+   "source": "SEG"
+  },
+  "Ia42a08ab5c": {
+   "orig_id": "S1484-g110-p5",
+   "source": "SEG"
+  },
+  "Ia43716c089": {
+   "orig_id": "S1021-g072-p3",
+   "source": "SEG"
+  },
+  "Ia440ecb7a9": {
+   "orig_id": "S1022-g037-p1",
+   "source": "SEG"
+  },
+  "Ia48feb1c72": {
+   "orig_id": "U04-001",
+   "source": "E1"
+  },
+  "Ia4981bb1ec": {
+   "orig_id": "U04-265",
+   "source": "E1"
+  },
+  "Ia4bfbd8437": {
+   "orig_id": "U04-318",
+   "source": "E1"
+  },
+  "Ia4f4157e63": {
+   "orig_id": "S1521-g001-p3",
+   "source": "SEG"
+  },
+  "Ia57e4623cc": {
+   "orig_id": "U03-S1021-069",
+   "source": "E1"
+  },
+  "Ia5b43fcda6": {
+   "orig_id": "U03-S1022-017",
+   "source": "E1"
+  },
+  "Ia5c67adafc": {
+   "orig_id": "S1021-g039-p1",
+   "source": "SEG"
+  },
+  "Ia621f77b2b": {
+   "orig_id": "U04-279",
+   "source": "E1"
+  },
+  "Ia64cfef29c": {
+   "orig_id": "U04-175",
+   "source": "E1"
+  },
+  "Ia666d02faa": {
+   "orig_id": "S1021-g038-p2",
+   "source": "SEG"
+  },
+  "Ia6b68cb785": {
+   "orig_id": "S1484-g066-p2",
+   "source": "SEG"
+  },
+  "Ia6cbfc9b59": {
+   "orig_id": "U03-S1021-012",
+   "source": "E1"
+  },
+  "Ia732d81e8d": {
+   "orig_id": "S1541-g070-p1",
+   "source": "SEG"
+  },
+  "Ia73dbda053": {
+   "orig_id": "S1541-g031-p1",
+   "source": "SEG"
+  },
+  "Ia7857cc2ae": {
+   "orig_id": "U04-002",
+   "source": "E1"
+  },
+  "Ia79fd0c9fb": {
+   "orig_id": "U04-120",
+   "source": "E1"
+  },
+  "Ia7dc95bb2b": {
+   "orig_id": "S1484-g111-p2",
+   "source": "SEG"
+  },
+  "Ia7ebea5e40": {
+   "orig_id": "S1484-g024-p2",
+   "source": "SEG"
+  },
+  "Ia84dfcb1e7": {
+   "orig_id": "S1541-g035-p3",
+   "source": "SEG"
+  },
+  "Ia8780316e6": {
+   "orig_id": "S1521_P020",
+   "source": "E2"
+  },
+  "Ia8952c3799": {
+   "orig_id": "S1484-g043-p1",
+   "source": "SEG"
+  },
+  "Ia89adef2af": {
+   "orig_id": "U04-240",
+   "source": "E1"
+  },
+  "Ia8a550d651": {
+   "orig_id": "S1021-031",
+   "source": "E2"
+  },
+  "Ia8ba082de2": {
+   "orig_id": "S1541-g012-p1",
+   "source": "SEG"
+  },
+  "Ia8ed9069fb": {
+   "orig_id": "S1521-g021-p2",
+   "source": "SEG"
+  },
+  "Ia9037bf868": {
+   "orig_id": "U03-S1021-065",
+   "source": "E1"
+  },
+  "Ia9204ae5ff": {
+   "orig_id": "S1484-g057-p1",
+   "source": "SEG"
+  },
+  "Ia9346e49db": {
+   "orig_id": "S1541-g030-p3",
+   "source": "SEG"
+  },
+  "Ia95d3d5241": {
+   "orig_id": "S1484-g072-p2",
+   "source": "SEG"
+  },
+  "Ia9851a53a9": {
+   "orig_id": "S1484-g106-p3",
+   "source": "SEG"
+  },
+  "Ia98d1efb47": {
+   "orig_id": "U03-S1021-066",
+   "source": "E1"
+  },
+  "Ia98e2a6756": {
+   "orig_id": "S1541-g004-p1",
+   "source": "SEG"
+  },
+  "Ia9c0e9c965": {
+   "orig_id": "S1022-g040-p1",
+   "source": "SEG"
+  },
+  "Ia9f30578b3": {
+   "orig_id": "S1022-g003-p1",
+   "source": "SEG"
+  },
+  "Iaa13ddcdf8": {
+   "orig_id": "S1521-g014-p2",
+   "source": "SEG"
+  },
+  "Iaa4a6b0ebc": {
+   "orig_id": "U04-264",
+   "source": "E1"
+  },
+  "Iaa60812330": {
+   "orig_id": "S1022-g024-p2",
+   "source": "SEG"
+  },
+  "Iaa8b460aa5": {
+   "orig_id": "U04-122",
+   "source": "E1"
+  },
+  "Iaac114daa1": {
+   "orig_id": "U03-S1484-155",
+   "source": "E1"
+  },
+  "Iaae6f88253": {
+   "orig_id": "S1484-053",
+   "source": "E2"
+  },
+  "Iaaf727295e": {
+   "orig_id": "U03-S1484-163",
+   "source": "E1"
+  },
+  "Iab2bcf21ce": {
+   "orig_id": "S1484-g039-p1",
+   "source": "SEG"
+  },
+  "Iab5c0e43be": {
+   "orig_id": "U04-193",
+   "source": "E1"
+  },
+  "Iab91c60888": {
+   "orig_id": "U04-266",
+   "source": "E1"
+  },
+  "Iaba099fd4d": {
+   "orig_id": "U04-125",
+   "source": "E1"
+  },
+  "Iabdda41f51": {
+   "orig_id": "S1022-g034-p1",
+   "source": "SEG"
+  },
+  "Iac13a8595a": {
+   "orig_id": "S1484-g108-p2",
+   "source": "SEG"
+  },
+  "Iac26bc7bde": {
+   "orig_id": "U03-S1021-072",
+   "source": "E1"
+  },
+  "Iac41f16d0f": {
+   "orig_id": "S1413-g014-p1",
+   "source": "SEG"
+  },
+  "Iac4958385e": {
+   "orig_id": "S1022-g017-p1",
+   "source": "SEG"
+  },
+  "Iac56f5eec2": {
+   "orig_id": "S1484-g030-p2",
+   "source": "SEG"
+  },
+  "Iaca9db0064": {
+   "orig_id": "S1021-051",
+   "source": "E2"
+  },
+  "Iacc556c19e": {
+   "orig_id": "U04-099",
+   "source": "E1"
+  },
+  "Iacd126c247": {
+   "orig_id": "S1021-g055-p1",
+   "source": "SEG"
+  },
+  "Iacdf732fd8": {
+   "orig_id": "U03-S1484-113",
+   "source": "E1"
+  },
+  "Iacef17cf9e": {
+   "orig_id": "S1521-g011-p2",
+   "source": "SEG"
+  },
+  "Iacf7c8a65e": {
+   "orig_id": "S1022-g037-p2",
+   "source": "SEG"
+  },
+  "Iad0be95cb6": {
+   "orig_id": "S1021-g075-p2",
+   "source": "SEG"
+  },
+  "Iad2fceaa76": {
+   "orig_id": "U03-S1021-071",
+   "source": "E1"
+  },
+  "Iad3aec9b41": {
+   "orig_id": "S1021-g033-p1",
+   "source": "SEG"
+  },
+  "Iad5994f2e6": {
+   "orig_id": "S1413-g022-p2",
+   "source": "SEG"
+  },
+  "Iad915cde06": {
+   "orig_id": "S1521-g007-p2",
+   "source": "SEG"
+  },
+  "Iad9738ddf7": {
+   "orig_id": "S1413-g013-p2",
+   "source": "SEG"
+  },
+  "Iada6f7bf04": {
+   "orig_id": "S1541_P033",
+   "source": "E2"
+  },
+  "Iae0eaee0e2": {
+   "orig_id": "S1413-g025-p1",
+   "source": "SEG"
+  },
+  "Iae52e9a183": {
+   "orig_id": "S1521-g007-p6",
+   "source": "SEG"
+  },
+  "Iae7ed964b6": {
+   "orig_id": "U03-S1021-020",
+   "source": "E1"
+  },
+  "Iaec496d540": {
+   "orig_id": "U04-209",
+   "source": "E1"
+  },
+  "Iaec7c935d5": {
+   "orig_id": "S1484-047",
+   "source": "E2"
+  },
+  "Iaedb966943": {
+   "orig_id": "U03-S1021-057",
+   "source": "E1"
+  },
+  "Iaeea605fc7": {
+   "orig_id": "S1484-013",
+   "source": "E2"
+  },
+  "Iaf019f1cf3": {
+   "orig_id": "S1021-g029-p2",
+   "source": "SEG"
+  },
+  "Iaf24a00d0a": {
+   "orig_id": "U04-259",
+   "source": "E1"
+  },
+  "Iafc703b148": {
+   "orig_id": "S1541_P035",
+   "source": "E2"
+  },
+  "Iafdda6b233": {
+   "orig_id": "S1484-g048-p1",
+   "source": "SEG"
+  },
+  "Iafded0c439": {
+   "orig_id": "S1484-g094-p1",
+   "source": "SEG"
+  },
+  "Ib00e42406f": {
+   "orig_id": "S1484-g086-p5",
+   "source": "SEG"
+  },
+  "Ib03772c1ee": {
+   "orig_id": "S1021-g078-p3",
+   "source": "SEG"
+  },
+  "Ib04d657124": {
+   "orig_id": "U03-S1021-002",
+   "source": "E1"
+  },
+  "Ib08ad8b4cb": {
+   "orig_id": "U04-064",
+   "source": "E1"
+  },
+  "Ib0af9a03c8": {
+   "orig_id": "S1484-g086-p4",
+   "source": "SEG"
+  },
+  "Ib0d3f1a11c": {
+   "orig_id": "U04-098",
+   "source": "E1"
+  },
+  "Ib1048e4187": {
+   "orig_id": "S1021-g024-p1",
+   "source": "SEG"
+  },
+  "Ib1231dd784": {
+   "orig_id": "U04-031",
+   "source": "E1"
+  },
+  "Ib152162b7a": {
+   "orig_id": "U04-263",
+   "source": "E1"
+  },
+  "Ib156b0203e": {
+   "orig_id": "S1484-g107-p3",
+   "source": "SEG"
+  },
+  "Ib1a681fa64": {
+   "orig_id": "S1541-g076-p3",
+   "source": "SEG"
+  },
+  "Ib1d112addc": {
+   "orig_id": "U04-057",
+   "source": "E1"
+  },
+  "Ib2278a2e18": {
+   "orig_id": "U03-S1484-025",
+   "source": "E1"
+  },
+  "Ib25c2abf93": {
+   "orig_id": "S1022-g022-p2",
+   "source": "SEG"
+  },
+  "Ib27233e14c": {
+   "orig_id": "U03-S1484-145",
+   "source": "E1"
+  },
+  "Ib2e5162481": {
+   "orig_id": "U03-S1484-076",
+   "source": "E1"
+  },
+  "Ib2fcc22fde": {
+   "orig_id": "S1484-009",
+   "source": "E2"
+  },
+  "Ib30875191d": {
+   "orig_id": "U04-013",
+   "source": "E1"
+  },
+  "Ib30ea95ba4": {
+   "orig_id": "S1021-038",
+   "source": "E2"
+  },
+  "Ib328ab9364": {
+   "orig_id": "U03-S1021-024",
+   "source": "E1"
+  },
+  "Ib32d98f0c4": {
+   "orig_id": "S1541-g018-p2",
+   "source": "SEG"
+  },
+  "Ib37988d29c": {
+   "orig_id": "S1484-g025-p1",
+   "source": "SEG"
+  },
+  "Ib39ebea91f": {
+   "orig_id": "U03-S1484-030",
+   "source": "E1"
+  },
+  "Ib3c20e92a4": {
+   "orig_id": "U04-183",
+   "source": "E1"
+  },
+  "Ib3dd83662e": {
+   "orig_id": "S1484-g059-p1",
+   "source": "SEG"
+  },
+  "Ib3f10c1c9d": {
+   "orig_id": "S1484-018",
+   "source": "E2"
+  },
+  "Ib41551134f": {
+   "orig_id": "S1021-g022-p2",
+   "source": "SEG"
+  },
+  "Ib42d72ea99": {
+   "orig_id": "S1541-g068-p2",
+   "source": "SEG"
+  },
+  "Ib440877dc2": {
+   "orig_id": "S1541-g025-p2",
+   "source": "SEG"
+  },
+  "Ib45cca3f1a": {
+   "orig_id": "U03-S1484-002",
+   "source": "E1"
+  },
+  "Ib4680426d0": {
+   "orig_id": "S1484-038",
+   "source": "E2"
+  },
+  "Ib48ed980cd": {
+   "orig_id": "U04-052",
+   "source": "E1"
+  },
+  "Ib496aacab4": {
+   "orig_id": "S1484-035",
+   "source": "E2"
+  },
+  "Ib4a94c246a": {
+   "orig_id": "U03-S1484-055",
+   "source": "E1"
+  },
+  "Ib4b072b35d": {
+   "orig_id": "S1413-g052-p1",
+   "source": "SEG"
+  },
+  "Ib4ea2aad21": {
+   "orig_id": "S1541-g078-p3",
+   "source": "SEG"
+  },
+  "Ib4edd8e39e": {
+   "orig_id": "S1521-g016-p1",
+   "source": "SEG"
+  },
+  "Ib504acd6cd": {
+   "orig_id": "S1541-g036-p1",
+   "source": "SEG"
+  },
+  "Ib533ff20d5": {
+   "orig_id": "S1521_P019",
+   "source": "E2"
+  },
+  "Ib5676c3f2a": {
+   "orig_id": "U03-S1021-029",
+   "source": "E1"
+  },
+  "Ib574c9d1b4": {
+   "orig_id": "U03-S1022-044",
+   "source": "E1"
+  },
+  "Ib58ee89046": {
+   "orig_id": "S1022-g052-p2",
+   "source": "SEG"
+  },
+  "Ib5d1192482": {
+   "orig_id": "S1541-g003-p1",
+   "source": "SEG"
+  },
+  "Ib607379647": {
+   "orig_id": "U04-074",
+   "source": "E1"
+  },
+  "Ib63b916c39": {
+   "orig_id": "U03-S1484-116",
+   "source": "E1"
+  },
+  "Ib63f63bca0": {
+   "orig_id": "S1484-g091-p1",
+   "source": "SEG"
+  },
+  "Ib664d39f41": {
+   "orig_id": "U04-273",
+   "source": "E1"
+  },
+  "Ib6708609b5": {
+   "orig_id": "U03-S1484-034",
+   "source": "E1"
+  },
+  "Ib67caa6eb9": {
+   "orig_id": "S1484-g049-p1",
+   "source": "SEG"
+  },
+  "Ib687fcf847": {
+   "orig_id": "U03-S1484-017",
+   "source": "E1"
+  },
+  "Ib68ab095d1": {
+   "orig_id": "U04-036",
+   "source": "E1"
+  },
+  "Ib68d1ed202": {
+   "orig_id": "S1413-g017-p1",
+   "source": "SEG"
+  },
+  "Ib6ad6d9d49": {
+   "orig_id": "U04-139",
+   "source": "E1"
+  },
+  "Ib6c83132c6": {
+   "orig_id": "S1521_P005",
+   "source": "E2"
+  },
+  "Ib6dc29fd4c": {
+   "orig_id": "U03-S1484-021",
+   "source": "E1"
+  },
+  "Ib6fb8f0c47": {
+   "orig_id": "U03-S1021-042",
+   "source": "E1"
+  },
+  "Ib6ff8db1ad": {
+   "orig_id": "S1021-g038-p3",
+   "source": "SEG"
+  },
+  "Ib6ff95ab7b": {
+   "orig_id": "S1413-g048-p1",
+   "source": "SEG"
+  },
+  "Ib707e8533c": {
+   "orig_id": "U04-182",
+   "source": "E1"
+  },
+  "Ib70f5b43ef": {
+   "orig_id": "U03-S1484-010",
+   "source": "E1"
+  },
+  "Ib7390263d8": {
+   "orig_id": "S1521-g009-p1",
+   "source": "SEG"
+  },
+  "Ib7635b7abe": {
+   "orig_id": "S1021-g020-p1",
+   "source": "SEG"
+  },
+  "Ib767307ac3": {
+   "orig_id": "S1484-g005-p1",
+   "source": "SEG"
+  },
+  "Ib87c6b246f": {
+   "orig_id": "U04-308",
+   "source": "E1"
+  },
+  "Ib888ea19bd": {
+   "orig_id": "U03-S1484-062",
+   "source": "E1"
+  },
+  "Ib894b43655": {
+   "orig_id": "S1484-g051-p1",
+   "source": "SEG"
+  },
+  "Ib8a2b71eb4": {
+   "orig_id": "S1484-g053-p1",
+   "source": "SEG"
+  },
+  "Ib8fa6e9960": {
+   "orig_id": "S1413-g007-p1",
+   "source": "SEG"
+  },
+  "Ib9105789fd": {
+   "orig_id": "S1484-g030-p1",
+   "source": "SEG"
+  },
+  "Ib960138736": {
+   "orig_id": "S1021-g009-p1",
+   "source": "SEG"
+  },
+  "Ib975b54b74": {
+   "orig_id": "S1541-g037-p2",
+   "source": "SEG"
+  },
+  "Ib9949062b4": {
+   "orig_id": "U03-S1022-018",
+   "source": "E1"
+  },
+  "Iba2fec666c": {
+   "orig_id": "S1484-031",
+   "source": "E2"
+  },
+  "Iba7e3b2cb8": {
+   "orig_id": "U03-S1021-051",
+   "source": "E1"
+  },
+  "Iba8a2931a3": {
+   "orig_id": "S1022-g015-p1",
+   "source": "SEG"
+  },
+  "Iba92eb194c": {
+   "orig_id": "U03-S1484-014",
+   "source": "E1"
+  },
+  "Ibaaed3df5d": {
+   "orig_id": "S1541-g013-p3",
+   "source": "SEG"
+  },
+  "Ibaaee17694": {
+   "orig_id": "S1541-g054-p1",
+   "source": "SEG"
+  },
+  "Ibad73ecede": {
+   "orig_id": "S1022-g018-p1",
+   "source": "SEG"
+  },
+  "Ibae25a43fb": {
+   "orig_id": "U03-S1022-008",
+   "source": "E1"
+  },
+  "Ibb14a25019": {
+   "orig_id": "S1541-g044-p4",
+   "source": "SEG"
+  },
+  "Ibb5ee7e596": {
+   "orig_id": "U04-071",
+   "source": "E1"
+  },
+  "Ibb7912c4ab": {
+   "orig_id": "S1022-g003-p2",
+   "source": "SEG"
+  },
+  "Ibb85bbde1a": {
+   "orig_id": "S1541-g023-p4",
+   "source": "SEG"
+  },
+  "Ibb86c2242e": {
+   "orig_id": "U04-094",
+   "source": "E1"
+  },
+  "Ibbbf663e32": {
+   "orig_id": "S1022-g029-p1",
+   "source": "SEG"
+  },
+  "Ibbd2b8533a": {
+   "orig_id": "S1541_P030",
+   "source": "E2"
+  },
+  "Ibbd9203128": {
+   "orig_id": "U04-230",
+   "source": "E1"
+  },
+  "Ibbe64d8441": {
+   "orig_id": "S1541-g037-p1",
+   "source": "SEG"
+  },
+  "Ibbf754bc60": {
+   "orig_id": "S1022-026",
+   "source": "E2"
+  },
+  "Ibc2946b532": {
+   "orig_id": "U04-154",
+   "source": "E1"
+  },
+  "Ibc4243a446": {
+   "orig_id": "U03-S1484-031",
+   "source": "E1"
+  },
+  "Ibc452b338d": {
+   "orig_id": "U03-S1484-043",
+   "source": "E1"
+  },
+  "Ibc519b69f6": {
+   "orig_id": "S1484-g096-p1",
+   "source": "SEG"
+  },
+  "Ibc62806f0d": {
+   "orig_id": "S1413-g037-p1",
+   "source": "SEG"
+  },
+  "Ibc7fb744cf": {
+   "orig_id": "S1541-g014-p1",
+   "source": "SEG"
+  },
+  "Ibc834d88eb": {
+   "orig_id": "S1521-g005-p5",
+   "source": "SEG"
+  },
+  "Ibc892fee78": {
+   "orig_id": "S1541-g077-p3",
+   "source": "SEG"
+  },
+  "Ibc99086180": {
+   "orig_id": "S1021-g060-p1",
+   "source": "SEG"
+  },
+  "Ibca88b8c1f": {
+   "orig_id": "S1484-g110-p4",
+   "source": "SEG"
+  },
+  "Ibcc6655153": {
+   "orig_id": "S1484-g052-p1",
+   "source": "SEG"
+  },
+  "Ibce688f4ad": {
+   "orig_id": "S1484-g013-p1",
+   "source": "SEG"
+  },
+  "Ibcee7d2c1a": {
+   "orig_id": "U03-S1484-088",
+   "source": "E1"
+  },
+  "Ibcf6b5e49a": {
+   "orig_id": "U03-S1484-035",
+   "source": "E1"
+  },
+  "Ibdb300a430": {
+   "orig_id": "U04-177",
+   "source": "E1"
+  },
+  "Ibdc1ea66a3": {
+   "orig_id": "S1022-g052-p1",
+   "source": "SEG"
+  },
+  "Ibe03556403": {
+   "orig_id": "S1521-g010-p1",
+   "source": "SEG"
+  },
+  "Ibe092a3077": {
+   "orig_id": "S1484-g014-p1",
+   "source": "SEG"
+  },
+  "Ibe10509d55": {
+   "orig_id": "S1484-g040-p1",
+   "source": "SEG"
+  },
+  "Ibe3991dea8": {
+   "orig_id": "S1021-g056-p1",
+   "source": "SEG"
+  },
+  "Ibe5724edb1": {
+   "orig_id": "S1021-g049-p1",
+   "source": "SEG"
+  },
+  "Ibe7ffdf1c7": {
+   "orig_id": "S1541-g041-p3",
+   "source": "SEG"
+  },
+  "Ibeb0fc5f4b": {
+   "orig_id": "S1413-g019-p1",
+   "source": "SEG"
+  },
+  "Ibed8f20bd4": {
+   "orig_id": "S1022-g065-p1",
+   "source": "SEG"
+  },
+  "Ibf49a17c4d": {
+   "orig_id": "U04-022",
+   "source": "E1"
+  },
+  "Ibf5fe95fb5": {
+   "orig_id": "S1413-g004-p1",
+   "source": "SEG"
+  },
+  "Ibfcc0393d2": {
+   "orig_id": "S1541_P013",
+   "source": "E2"
+  },
+  "Ibfec7f6cee": {
+   "orig_id": "S1484-g079-p1",
+   "source": "SEG"
+  },
+  "Ic021f851da": {
+   "orig_id": "U03-S1021-034",
+   "source": "E1"
+  },
+  "Ic03c193284": {
+   "orig_id": "S1521-g020-p2",
+   "source": "SEG"
+  },
+  "Ic0814f683e": {
+   "orig_id": "U04-085",
+   "source": "E1"
+  },
+  "Ic086b78206": {
+   "orig_id": "S1484-g008-p1",
+   "source": "SEG"
+  },
+  "Ic0b4a2824e": {
+   "orig_id": "U03-S1021-040",
+   "source": "E1"
+  },
+  "Ic0b831b485": {
+   "orig_id": "U04-205",
+   "source": "E1"
+  },
+  "Ic0ea2fac07": {
+   "orig_id": "S1484-g001-p1",
+   "source": "SEG"
+  },
+  "Ic119556ee7": {
+   "orig_id": "S1021-g072-p2",
+   "source": "SEG"
+  },
+  "Ic1236e17af": {
+   "orig_id": "S1541-g018-p1",
+   "source": "SEG"
+  },
+  "Ic13a14d83c": {
+   "orig_id": "S1021-g054-p2",
+   "source": "SEG"
+  },
+  "Ic14db3f0da": {
+   "orig_id": "U03-S1022-054",
+   "source": "E1"
+  },
+  "Ic159247832": {
+   "orig_id": "S1484-g018-p1",
+   "source": "SEG"
+  },
+  "Ic1626e32e3": {
+   "orig_id": "S1484-g099-p1",
+   "source": "SEG"
+  },
+  "Ic190f72e71": {
+   "orig_id": "S1541-g004-p2",
+   "source": "SEG"
+  },
+  "Ic195fb5cd3": {
+   "orig_id": "S1484-034",
+   "source": "E2"
+  },
+  "Ic1a2aa807e": {
+   "orig_id": "S1521-g004-p1",
+   "source": "SEG"
+  },
+  "Ic1b6182593": {
+   "orig_id": "S1521-g001-p2",
+   "source": "SEG"
+  },
+  "Ic1d5671dd4": {
+   "orig_id": "U03-S1022-003",
+   "source": "E1"
+  },
+  "Ic1d84e796b": {
+   "orig_id": "S1484-g002-p2",
+   "source": "SEG"
+  },
+  "Ic21d26e7d7": {
+   "orig_id": "S1484-g062-p2",
+   "source": "SEG"
+  },
+  "Ic221a1b662": {
+   "orig_id": "S1022-033",
+   "source": "E2"
+  },
+  "Ic2743e23fa": {
+   "orig_id": "U04-252",
+   "source": "E1"
+  },
+  "Ic291298b5e": {
+   "orig_id": "U04-118",
+   "source": "E1"
+  },
+  "Ic29dfe38f8": {
+   "orig_id": "S1021-g070-p3",
+   "source": "SEG"
+  },
+  "Ic2c08f7edf": {
+   "orig_id": "S1484-002",
+   "source": "E2"
+  },
+  "Ic2c7256fa9": {
+   "orig_id": "S1484-g099-p3",
+   "source": "SEG"
+  },
+  "Ic2dd2d3840": {
+   "orig_id": "S1413-g001-p2",
+   "source": "SEG"
+  },
+  "Ic2df3856f7": {
+   "orig_id": "S1484-g109-p2",
+   "source": "SEG"
+  },
+  "Ic2e484d19e": {
+   "orig_id": "U03-S1021-039",
+   "source": "E1"
+  },
+  "Ic2f3e87a89": {
+   "orig_id": "S1521-g013-p1",
+   "source": "SEG"
+  },
+  "Ic375bc8e4c": {
+   "orig_id": "S1484-g092-p2",
+   "source": "SEG"
+  },
+  "Ic3e1896b21": {
+   "orig_id": "S1021-g031-p3",
+   "source": "SEG"
+  },
+  "Ic3eb5f040c": {
+   "orig_id": "U04-095",
+   "source": "E1"
+  },
+  "Ic3f51f9650": {
+   "orig_id": "U03-S1484-096",
+   "source": "E1"
+  },
+  "Ic42a079502": {
+   "orig_id": "S1021-g013-p1",
+   "source": "SEG"
+  },
+  "Ic43f7e7740": {
+   "orig_id": "U04-112",
+   "source": "E1"
+  },
+  "Ic471bb2b35": {
+   "orig_id": "S1413-g025-p2",
+   "source": "SEG"
+  },
+  "Ic4c9012480": {
+   "orig_id": "S1484-g095-p1",
+   "source": "SEG"
+  },
+  "Ic4c96fe833": {
+   "orig_id": "S1022-g043-p3",
+   "source": "SEG"
+  },
+  "Ic4dd30f40f": {
+   "orig_id": "S1484-g006-p2",
+   "source": "SEG"
+  },
+  "Ic4ea249d9b": {
+   "orig_id": "S1541-g011-p2",
+   "source": "SEG"
+  },
+  "Ic5361346f7": {
+   "orig_id": "U04-075",
+   "source": "E1"
+  },
+  "Ic5665d4138": {
+   "orig_id": "U04-012",
+   "source": "E1"
+  },
+  "Ic56f9787a3": {
+   "orig_id": "S1021-g014-p2",
+   "source": "SEG"
+  },
+  "Ic57b2b9812": {
+   "orig_id": "U03-S1022-063",
+   "source": "E1"
+  },
+  "Ic5a8a134e0": {
+   "orig_id": "S1484-g110-p1",
+   "source": "SEG"
+  },
+  "Ic5bd582f01": {
+   "orig_id": "S1022-015",
+   "source": "E2"
+  },
+  "Ic5cb575b86": {
+   "orig_id": "S1484-g098-p2",
+   "source": "SEG"
+  },
+  "Ic5e6fdc4d5": {
+   "orig_id": "S1484-g106-p2",
+   "source": "SEG"
+  },
+  "Ic5ec0422ba": {
+   "orig_id": "U03-S1484-123",
+   "source": "E1"
+  },
+  "Ic5fb8cff50": {
+   "orig_id": "S1022-025",
+   "source": "E2"
+  },
+  "Ic61238a91b": {
+   "orig_id": "S1521-g009-p2",
+   "source": "SEG"
+  },
+  "Ic6182ecb4e": {
+   "orig_id": "U03-S1484-144",
+   "source": "E1"
+  },
+  "Ic61b3a31e3": {
+   "orig_id": "S1484-045",
+   "source": "E2"
+  },
+  "Ic630fd740a": {
+   "orig_id": "S1484-025",
+   "source": "E2"
+  },
+  "Ic651227af7": {
+   "orig_id": "U04-097",
+   "source": "E1"
+  },
+  "Ic68c90b2a1": {
+   "orig_id": "S1021-g047-p1",
+   "source": "SEG"
+  },
+  "Ic69a5c99f7": {
+   "orig_id": "S1541-g013-p1",
+   "source": "SEG"
+  },
+  "Ic6ac3ccfe1": {
+   "orig_id": "U03-S1022-048",
+   "source": "E1"
+  },
+  "Ic6d80e5945": {
+   "orig_id": "S1484-g061-p1",
+   "source": "SEG"
+  },
+  "Ic70c89a332": {
+   "orig_id": "S1541-g037-p4",
+   "source": "SEG"
+  },
+  "Ic729bfa08b": {
+   "orig_id": "S1541-g036-p2",
+   "source": "SEG"
+  },
+  "Ic74caf4489": {
+   "orig_id": "S1021-g062-p2",
+   "source": "SEG"
+  },
+  "Ic765b51d56": {
+   "orig_id": "S1484-g042-p1",
+   "source": "SEG"
+  },
+  "Ic77c0a8efa": {
+   "orig_id": "S1521_P007",
+   "source": "E2"
+  },
+  "Ic7da5ab292": {
+   "orig_id": "S1521-g014-p1",
+   "source": "SEG"
+  },
+  "Ic7f1d4b4a0": {
+   "orig_id": "U04-324",
+   "source": "E1"
+  },
+  "Ic7fc7e5db0": {
+   "orig_id": "U03-S1022-038",
+   "source": "E1"
+  },
+  "Ic7feab664a": {
+   "orig_id": "S1484-g095-p3",
+   "source": "SEG"
+  },
+  "Ic805d46a18": {
+   "orig_id": "U03-S1021-055",
+   "source": "E1"
+  },
+  "Ic80eb35692": {
+   "orig_id": "S1021-g074-p3",
+   "source": "SEG"
+  },
+  "Ic847d54546": {
+   "orig_id": "U04-269",
+   "source": "E1"
+  },
+  "Ic854efe870": {
+   "orig_id": "U04-010",
+   "source": "E1"
+  },
+  "Ic85e65c387": {
+   "orig_id": "U04-079",
+   "source": "E1"
+  },
+  "Ic86062fd8d": {
+   "orig_id": "S1021-g065-p1",
+   "source": "SEG"
+  },
+  "Ic86152f066": {
+   "orig_id": "S1021-g056-p6",
+   "source": "SEG"
+  },
+  "Ic89a1a0035": {
+   "orig_id": "S1541-g004-p3",
+   "source": "SEG"
+  },
+  "Ic8ea7543d6": {
+   "orig_id": "S1021-g057-p1",
+   "source": "SEG"
+  },
+  "Ic914f5afa4": {
+   "orig_id": "U03-S1022-049",
+   "source": "E1"
+  },
+  "Ic959f09146": {
+   "orig_id": "U03-S1021-038",
+   "source": "E1"
+  },
+  "Ic98075a1f8": {
+   "orig_id": "U04-188",
+   "source": "E1"
+  },
+  "Ic981c731c1": {
+   "orig_id": "S1521_P003",
+   "source": "E2"
+  },
+  "Ic98a958c59": {
+   "orig_id": "S1021-005",
+   "source": "E2"
+  },
+  "Ic991158a31": {
+   "orig_id": "U04-068",
+   "source": "E1"
+  },
+  "Ic9cdce63d2": {
+   "orig_id": "S1021-g028-p2",
+   "source": "SEG"
+  },
+  "Ica2ca899d5": {
+   "orig_id": "S1021-g031-p2",
+   "source": "SEG"
+  },
+  "Ica6dfe6528": {
+   "orig_id": "S1021-041",
+   "source": "E2"
+  },
+  "Ica766b97b3": {
+   "orig_id": "S1413_P004",
+   "source": "E2"
+  },
+  "Ica7dae28d3": {
+   "orig_id": "S1521_P002",
+   "source": "E2"
+  },
+  "Ica851c6126": {
+   "orig_id": "S1022-013",
+   "source": "E2"
+  },
+  "Ica993ec1d8": {
+   "orig_id": "S1484-g004-p3",
+   "source": "SEG"
+  },
+  "Icacc817af9": {
+   "orig_id": "U04-124",
+   "source": "E1"
+  },
+  "Icacf439dff": {
+   "orig_id": "S1021-001",
+   "source": "E2"
+  },
+  "Icae84f222e": {
+   "orig_id": "U04-327",
+   "source": "E1"
+  },
+  "Icb02ceb920": {
+   "orig_id": "S1413-g005-p1",
+   "source": "SEG"
+  },
+  "Icb1cec9dcf": {
+   "orig_id": "S1484-g021-p2",
+   "source": "SEG"
+  },
+  "Icb2eead151": {
+   "orig_id": "S1541-g010-p2",
+   "source": "SEG"
+  },
+  "Icb3ee0b2a8": {
+   "orig_id": "U04-155",
+   "source": "E1"
+  },
+  "Icb66efa1f0": {
+   "orig_id": "S1021-g059-p3",
+   "source": "SEG"
+  },
+  "Icb6a521e1f": {
+   "orig_id": "U03-S1484-165",
+   "source": "E1"
+  },
+  "Icb8156f594": {
+   "orig_id": "U04-207",
+   "source": "E1"
+  },
+  "Icb86611417": {
+   "orig_id": "S1484-g077-p1",
+   "source": "SEG"
+  },
+  "Icba6250aa5": {
+   "orig_id": "S1021-021",
+   "source": "E2"
+  },
+  "Icbd9e252c5": {
+   "orig_id": "S1484-g096-p2",
+   "source": "SEG"
+  },
+  "Icc303bad24": {
+   "orig_id": "U04-163",
+   "source": "E1"
+  },
+  "Icc66abfc2e": {
+   "orig_id": "S1484-g110-p9",
+   "source": "SEG"
+  },
+  "Icca4d804de": {
+   "orig_id": "U03-S1484-125",
+   "source": "E1"
+  },
+  "Iccd772d049": {
+   "orig_id": "S1022-g008-p1",
+   "source": "SEG"
+  },
+  "Iccf298f8dd": {
+   "orig_id": "S1021-g027-p2",
+   "source": "SEG"
+  },
+  "Icd17a447ae": {
+   "orig_id": "S1484-g083-p1",
+   "source": "SEG"
+  },
+  "Icd6fd3c061": {
+   "orig_id": "S1541-g031-p5",
+   "source": "SEG"
+  },
+  "Icd71eb950f": {
+   "orig_id": "S1484-g027-p2",
+   "source": "SEG"
+  },
+  "Icdaa11b80f": {
+   "orig_id": "S1022-g004-p2",
+   "source": "SEG"
+  },
+  "Icded8beb24": {
+   "orig_id": "U03-S1484-102",
+   "source": "E1"
+  },
+  "Iceb31ef8dc": {
+   "orig_id": "S1413-g009-p3",
+   "source": "SEG"
+  },
+  "Iceb90201e5": {
+   "orig_id": "S1022-g002-p2",
+   "source": "SEG"
+  },
+  "Icec3048c62": {
+   "orig_id": "S1022-g023-p1",
+   "source": "SEG"
+  },
+  "Iced266d339": {
+   "orig_id": "S1022-016",
+   "source": "E2"
+  },
+  "Icedbd5c84f": {
+   "orig_id": "S1021-g013-p3",
+   "source": "SEG"
+  },
+  "Icedf8ef6a3": {
+   "orig_id": "U04-014",
+   "source": "E1"
+  },
+  "Iceeec116d1": {
+   "orig_id": "U04-086",
+   "source": "E1"
+  },
+  "Icf16dfd45f": {
+   "orig_id": "S1021-g075-p1",
+   "source": "SEG"
+  },
+  "Icf45cf93ff": {
+   "orig_id": "S1484-g060-p2",
+   "source": "SEG"
+  },
+  "Icf5d6ef445": {
+   "orig_id": "S1484-g089-p1",
+   "source": "SEG"
+  },
+  "Icf8b9cea45": {
+   "orig_id": "S1022-g053-p1",
+   "source": "SEG"
+  },
+  "Icf98b9c14d": {
+   "orig_id": "U03-S1022-040",
+   "source": "E1"
+  },
+  "Icfa3b077cc": {
+   "orig_id": "S1521-g021-p5",
+   "source": "SEG"
+  },
+  "Icfc48a6660": {
+   "orig_id": "U04-246",
+   "source": "E1"
+  },
+  "Id03f2e79e3": {
+   "orig_id": "U04-297",
+   "source": "E1"
+  },
+  "Id091f294f6": {
+   "orig_id": "S1541-g071-p2",
+   "source": "SEG"
+  },
+  "Id09f6c405e": {
+   "orig_id": "S1413-g020-p1",
+   "source": "SEG"
+  },
+  "Id0df1347ee": {
+   "orig_id": "S1484-g060-p10",
+   "source": "SEG"
+  },
+  "Id1245aa1a3": {
+   "orig_id": "U04-056",
+   "source": "E1"
+  },
+  "Id187fdc83a": {
+   "orig_id": "U03-S1021-005",
+   "source": "E1"
+  },
+  "Id1a6107acb": {
+   "orig_id": "U03-S1484-012",
+   "source": "E1"
+  },
+  "Id1b629b382": {
+   "orig_id": "U03-S1484-020",
+   "source": "E1"
+  },
+  "Id1c01313ac": {
+   "orig_id": "S1022-g024-p1",
+   "source": "SEG"
+  },
+  "Id1efd46a51": {
+   "orig_id": "U04-016",
+   "source": "E1"
+  },
+  "Id262cc8dbb": {
+   "orig_id": "S1484-g059-p3",
+   "source": "SEG"
+  },
+  "Id2bbc2b17a": {
+   "orig_id": "U04-093",
+   "source": "E1"
+  },
+  "Id320733070": {
+   "orig_id": "S1022-009",
+   "source": "E2"
+  },
+  "Id327b5c017": {
+   "orig_id": "S1484-g111-p7",
+   "source": "SEG"
+  },
+  "Id329cad5fa": {
+   "orig_id": "S1021-g043-p2",
+   "source": "SEG"
+  },
+  "Id33d409e15": {
+   "orig_id": "S1021-g071-p1",
+   "source": "SEG"
+  },
+  "Id348f7d040": {
+   "orig_id": "S1021-g018-p1",
+   "source": "SEG"
+  },
+  "Id373cf6c78": {
+   "orig_id": "U04-249",
+   "source": "E1"
+  },
+  "Id38406cffc": {
+   "orig_id": "U04-159",
+   "source": "E1"
+  },
+  "Id3a32e38c3": {
+   "orig_id": "S1484-g110-p7",
+   "source": "SEG"
+  },
+  "Id3fc220d15": {
+   "orig_id": "S1021-g079-p1",
+   "source": "SEG"
+  },
+  "Id4208e6296": {
+   "orig_id": "S1521-g017-p2",
+   "source": "SEG"
+  },
+  "Id4309b1c80": {
+   "orig_id": "U03-S1484-082",
+   "source": "E1"
+  },
+  "Id472af9ca2": {
+   "orig_id": "S1484-g002-p1",
+   "source": "SEG"
+  },
+  "Id524c0a2d7": {
+   "orig_id": "S1484-042",
+   "source": "E2"
+  },
+  "Id5653a0864": {
+   "orig_id": "U04-322",
+   "source": "E1"
+  },
+  "Id58ddec583": {
+   "orig_id": "S1541-g033-p3",
+   "source": "SEG"
+  },
+  "Id5957e8812": {
+   "orig_id": "S1022-g051-p2",
+   "source": "SEG"
+  },
+  "Id5d6961866": {
+   "orig_id": "U04-147",
+   "source": "E1"
+  },
+  "Id5ddaecddd": {
+   "orig_id": "S1484-g060-p7",
+   "source": "SEG"
+  },
+  "Id5e999a69d": {
+   "orig_id": "S1022-g001-p1",
+   "source": "SEG"
+  },
+  "Id5fa0be9d0": {
+   "orig_id": "S1021-006",
+   "source": "E2"
+  },
+  "Id60271011c": {
+   "orig_id": "U03-S1021-031",
+   "source": "E1"
+  },
+  "Id61c63a7aa": {
+   "orig_id": "S1413-g014-p2",
+   "source": "SEG"
+  },
+  "Id6387171aa": {
+   "orig_id": "S1022-028",
+   "source": "E2"
+  },
+  "Id6566c1fd0": {
+   "orig_id": "S1022-g068-p5",
+   "source": "SEG"
+  },
+  "Id66cbef388": {
+   "orig_id": "S1541-g039-p3",
+   "source": "SEG"
+  },
+  "Id67f9f035b": {
+   "orig_id": "U04-053",
+   "source": "E1"
+  },
+  "Id69b208481": {
+   "orig_id": "S1022-g041-p2",
+   "source": "SEG"
+  },
+  "Id6cd44376d": {
+   "orig_id": "U04-107",
+   "source": "E1"
+  },
+  "Id6e043ce47": {
+   "orig_id": "S1021-002",
+   "source": "E2"
+  },
+  "Id6f6fdea2b": {
+   "orig_id": "S1484-g059-p7",
+   "source": "SEG"
+  },
+  "Id7151b5d30": {
+   "orig_id": "S1541-g056-p1",
+   "source": "SEG"
+  },
+  "Id74360b365": {
+   "orig_id": "U03-S1484-121",
+   "source": "E1"
+  },
+  "Id74e088f19": {
+   "orig_id": "U04-008",
+   "source": "E1"
+  },
+  "Id76c0e3c3f": {
+   "orig_id": "S1484-g008-p3",
+   "source": "SEG"
+  },
+  "Id7873ad560": {
+   "orig_id": "U03-S1022-046",
+   "source": "E1"
+  },
+  "Id78c95a88f": {
+   "orig_id": "U04-082",
+   "source": "E1"
+  },
+  "Id7cbc1339d": {
+   "orig_id": "S1022-g064-p1",
+   "source": "SEG"
+  },
+  "Id85245a0f6": {
+   "orig_id": "S1022-g063-p2",
+   "source": "SEG"
+  },
+  "Id8705cc1ab": {
+   "orig_id": "U04-214",
+   "source": "E1"
+  },
+  "Id8867fdcc5": {
+   "orig_id": "S1521-g020-p3",
+   "source": "SEG"
+  },
+  "Id888e1d024": {
+   "orig_id": "S1021-g072-p1",
+   "source": "SEG"
+  },
+  "Id8adc92151": {
+   "orig_id": "S1021-g013-p2",
+   "source": "SEG"
+  },
+  "Id8b1aaa4ee": {
+   "orig_id": "S1484-007",
+   "source": "E2"
+  },
+  "Id90040c951": {
+   "orig_id": "U03-S1484-044",
+   "source": "E1"
+  },
+  "Id9113c669b": {
+   "orig_id": "U03-S1484-077",
+   "source": "E1"
+  },
+  "Id92906a66b": {
+   "orig_id": "U03-S1022-028",
+   "source": "E1"
+  },
+  "Id95cdf0e9f": {
+   "orig_id": "S1484-g048-p4",
+   "source": "SEG"
+  },
+  "Id9922d6356": {
+   "orig_id": "S1484-g059-p5",
+   "source": "SEG"
+  },
+  "Id99f7add9d": {
+   "orig_id": "U03-S1484-065",
+   "source": "E1"
+  },
+  "Ida4ae716b7": {
+   "orig_id": "S1021-027",
+   "source": "E2"
+  },
+  "Idaab3a19c4": {
+   "orig_id": "S1021-g078-p2",
+   "source": "SEG"
+  },
+  "Idaf11c51f5": {
+   "orig_id": "S1021-g056-p5",
+   "source": "SEG"
+  },
+  "Idaf1d44f0e": {
+   "orig_id": "S1484-g060-p5",
+   "source": "SEG"
+  },
+  "Idb5cd377d9": {
+   "orig_id": "U03-S1484-007",
+   "source": "E1"
+  },
+  "Idb9cee50ca": {
+   "orig_id": "U04-239",
+   "source": "E1"
+  },
+  "Idba5a6cdbf": {
+   "orig_id": "S1484-g073-p1",
+   "source": "SEG"
+  },
+  "Idbb5f0be41": {
+   "orig_id": "U04-215",
+   "source": "E1"
+  },
+  "Idbd978d787": {
+   "orig_id": "U04-282",
+   "source": "E1"
+  },
+  "Idc175b25db": {
+   "orig_id": "U03-S1484-013",
+   "source": "E1"
+  },
+  "Idc309ba384": {
+   "orig_id": "U03-S1484-092",
+   "source": "E1"
+  },
+  "Idc36a4a938": {
+   "orig_id": "S1541-g032-p2",
+   "source": "SEG"
+  },
+  "Idc442dcdc6": {
+   "orig_id": "U04-037",
+   "source": "E1"
+  },
+  "Idc446c5a29": {
+   "orig_id": "S1021-g029-p3",
+   "source": "SEG"
+  },
+  "Idc5eae38a3": {
+   "orig_id": "U03-S1484-094",
+   "source": "E1"
+  },
+  "Idc6e3730b3": {
+   "orig_id": "U04-039",
+   "source": "E1"
+  },
+  "Idc7974ddc4": {
+   "orig_id": "U04-274",
+   "source": "E1"
+  },
+  "Idc8233c0e2": {
+   "orig_id": "U03-S1022-006",
+   "source": "E1"
+  },
+  "Idc9e15cdab": {
+   "orig_id": "S1484-008",
+   "source": "E2"
+  },
+  "Idca360722d": {
+   "orig_id": "U03-S1484-114",
+   "source": "E1"
+  },
+  "Idca6829c80": {
+   "orig_id": "S1022-g060-p1",
+   "source": "SEG"
+  },
+  "Idcfff4c060": {
+   "orig_id": "U03-S1484-003",
+   "source": "E1"
+  },
+  "Idd2827ff71": {
+   "orig_id": "U04-262",
+   "source": "E1"
+  },
+  "Iddb9af9e0b": {
+   "orig_id": "S1413-g022-p1",
+   "source": "SEG"
+  },
+  "Iddd0e8bd5b": {
+   "orig_id": "S1413-g011-p2",
+   "source": "SEG"
+  },
+  "Iddd1fd3a16": {
+   "orig_id": "U03-S1484-015",
+   "source": "E1"
+  },
+  "Iddd54624df": {
+   "orig_id": "S1021-050",
+   "source": "E2"
+  },
+  "Iddee88e395": {
+   "orig_id": "S1484-005",
+   "source": "E2"
+  },
+  "Ide08ec42f0": {
+   "orig_id": "S1521-g007-p4",
+   "source": "SEG"
+  },
+  "Ide4b0b83f6": {
+   "orig_id": "S1541-g015-p1",
+   "source": "SEG"
+  },
+  "Ide8c49b937": {
+   "orig_id": "S1484-g059-p6",
+   "source": "SEG"
+  },
+  "Ideda8a5dbc": {
+   "orig_id": "S1541-g038-p1",
+   "source": "SEG"
+  },
+  "Idee45cde60": {
+   "orig_id": "S1484-g105-p4",
+   "source": "SEG"
+  },
+  "Idef7f57008": {
+   "orig_id": "U04-130",
+   "source": "E1"
+  },
+  "Idf0b20f2ea": {
+   "orig_id": "S1484-023",
+   "source": "E2"
+  },
+  "Idf1088796f": {
+   "orig_id": "S1541-g014-p3",
+   "source": "SEG"
+  },
+  "Idf2aaca603": {
+   "orig_id": "U03-S1021-053",
+   "source": "E1"
+  },
+  "Idf801240ab": {
+   "orig_id": "S1521-g015-p4",
+   "source": "SEG"
+  },
+  "Idf99ca9c77": {
+   "orig_id": "S1484-g078-p2",
+   "source": "SEG"
+  },
+  "Idfb3a0da86": {
+   "orig_id": "U04-123",
+   "source": "E1"
+  },
+  "Idfd10ec925": {
+   "orig_id": "S1521_P014",
+   "source": "E2"
+  },
+  "Ie0318bcb1d": {
+   "orig_id": "S1022-g039-p1",
+   "source": "SEG"
+  },
+  "Ie049e9c5e9": {
+   "orig_id": "U03-S1022-019",
+   "source": "E1"
+  },
+  "Ie0ac7ba99e": {
+   "orig_id": "S1541-g029-p5",
+   "source": "SEG"
+  },
+  "Ie0c1fd9440": {
+   "orig_id": "S1022-g005-p1",
+   "source": "SEG"
+  },
+  "Ie16c215c07": {
+   "orig_id": "U03-S1484-073",
+   "source": "E1"
+  },
+  "Ie185ea428d": {
+   "orig_id": "S1022-g038-p3",
+   "source": "SEG"
+  },
+  "Ie19a32837d": {
+   "orig_id": "S1484-027",
+   "source": "E2"
+  },
+  "Ie19af132a8": {
+   "orig_id": "U03-S1022-037",
+   "source": "E1"
+  },
+  "Ie1ef084c03": {
+   "orig_id": "U03-S1484-085",
+   "source": "E1"
+  },
+  "Ie210346ad3": {
+   "orig_id": "U04-211",
+   "source": "E1"
+  },
+  "Ie248efe3fb": {
+   "orig_id": "S1484-051",
+   "source": "E2"
+  },
+  "Ie284bbf644": {
+   "orig_id": "S1021-g026-p2",
+   "source": "SEG"
+  },
+  "Ie32dc4c49c": {
+   "orig_id": "S1022-g047-p1",
+   "source": "SEG"
+  },
+  "Ie35fafe58f": {
+   "orig_id": "S1021-g050-p1",
+   "source": "SEG"
+  },
+  "Ie38e8aa428": {
+   "orig_id": "S1021-g073-p2",
+   "source": "SEG"
+  },
+  "Ie3b92c3eaf": {
+   "orig_id": "S1484-g093-p1",
+   "source": "SEG"
+  },
+  "Ie3c7487334": {
+   "orig_id": "S1484-g110-p6",
+   "source": "SEG"
+  },
+  "Ie3f06f8db6": {
+   "orig_id": "U04-096",
+   "source": "E1"
+  },
+  "Ie427ec7ab8": {
+   "orig_id": "S1413-g031-p1",
+   "source": "SEG"
+  },
+  "Ie45ea80cb0": {
+   "orig_id": "S1541_P025",
+   "source": "E2"
+  },
+  "Ie47079c0b9": {
+   "orig_id": "S1022-g026-p2",
+   "source": "SEG"
+  },
+  "Ie49b75c45d": {
+   "orig_id": "U03-S1484-039",
+   "source": "E1"
+  },
+  "Ie4aa7e0e9a": {
+   "orig_id": "U03-S1021-004",
+   "source": "E1"
+  },
+  "Ie4b13ccb6a": {
+   "orig_id": "S1021-055",
+   "source": "E2"
+  },
+  "Ie4d0397306": {
+   "orig_id": "S1413-g027-p1",
+   "source": "SEG"
+  },
+  "Ie513093fcb": {
+   "orig_id": "S1022-g063-p1",
+   "source": "SEG"
+  },
+  "Ie51bf91714": {
+   "orig_id": "U03-S1021-059",
+   "source": "E1"
+  },
+  "Ie52b954aab": {
+   "orig_id": "S1021-g024-p2",
+   "source": "SEG"
+  },
+  "Ie52ebd25aa": {
+   "orig_id": "U04-100",
+   "source": "E1"
+  },
+  "Ie5458fdebd": {
+   "orig_id": "S1541-g032-p4",
+   "source": "SEG"
+  },
+  "Ie56b7c17a2": {
+   "orig_id": "S1541-g079-p1",
+   "source": "SEG"
+  },
+  "Ie56df2856c": {
+   "orig_id": "S1021-g058-p2",
+   "source": "SEG"
+  },
+  "Ie58179f330": {
+   "orig_id": "S1484-g006-p1",
+   "source": "SEG"
+  },
+  "Ie5826e5339": {
+   "orig_id": "S1021-g001-p4",
+   "source": "SEG"
+  },
+  "Ie593d7b5b4": {
+   "orig_id": "S1541-g077-p4",
+   "source": "SEG"
+  },
+  "Ie59d9cda94": {
+   "orig_id": "U04-145",
+   "source": "E1"
+  },
+  "Ie5e9b41e1b": {
+   "orig_id": "S1541-g040-p1",
+   "source": "SEG"
+  },
+  "Ie5f47dd83f": {
+   "orig_id": "S1022-019",
+   "source": "E2"
+  },
+  "Ie5fcbb3a53": {
+   "orig_id": "S1022-g030-p2",
+   "source": "SEG"
+  },
+  "Ie651811404": {
+   "orig_id": "S1022-g019-p1",
+   "source": "SEG"
+  },
+  "Ie6c451b4e9": {
+   "orig_id": "U04-117",
+   "source": "E1"
+  },
+  "Ie6fa877743": {
+   "orig_id": "S1541-g006-p3",
+   "source": "SEG"
+  },
+  "Ie72cf81405": {
+   "orig_id": "U03-S1484-080",
+   "source": "E1"
+  },
+  "Ie73526748f": {
+   "orig_id": "U04-015",
+   "source": "E1"
+  },
+  "Ie73db4f8d2": {
+   "orig_id": "S1484-010",
+   "source": "E2"
+  },
+  "Ie748e1abf8": {
+   "orig_id": "S1022-g065-p2",
+   "source": "SEG"
+  },
+  "Ie75ec3668f": {
+   "orig_id": "U04-166",
+   "source": "E1"
+  },
+  "Ie761d37e38": {
+   "orig_id": "S1484-g112-p5",
+   "source": "SEG"
+  },
+  "Ie772fcd76d": {
+   "orig_id": "S1022-005",
+   "source": "E2"
+  },
+  "Ie78c038b6e": {
+   "orig_id": "S1021-g041-p2",
+   "source": "SEG"
+  },
+  "Ie7a546a216": {
+   "orig_id": "S1541-g032-p1",
+   "source": "SEG"
+  },
+  "Ie7a9a4fd51": {
+   "orig_id": "U04-255",
+   "source": "E1"
+  },
+  "Ie825e70de1": {
+   "orig_id": "U03-S1021-022",
+   "source": "E1"
+  },
+  "Ie82b27f7b7": {
+   "orig_id": "S1521_P006",
+   "source": "E2"
+  },
+  "Ie84ecba5e2": {
+   "orig_id": "S1413-g057-p1",
+   "source": "SEG"
+  },
+  "Ie867f6d1b7": {
+   "orig_id": "U04-298",
+   "source": "E1"
+  },
+  "Ie8880343d6": {
+   "orig_id": "U03-S1484-115",
+   "source": "E1"
+  },
+  "Ie897e18ee3": {
+   "orig_id": "S1521-g007-p5",
+   "source": "SEG"
+  },
+  "Ie8a3d0ec6a": {
+   "orig_id": "U03-S1484-047",
+   "source": "E1"
+  },
+  "Ie8af5ee168": {
+   "orig_id": "S1484-g015-p2",
+   "source": "SEG"
+  },
+  "Ie8c210c050": {
+   "orig_id": "S1022-g027-p1",
+   "source": "SEG"
+  },
+  "Ie8d10fa8d1": {
+   "orig_id": "S1484-g053-p2",
+   "source": "SEG"
+  },
+  "Ie8ddf93a8b": {
+   "orig_id": "S1021-g079-p3",
+   "source": "SEG"
+  },
+  "Ie8e5ead52c": {
+   "orig_id": "S1022-021",
+   "source": "E2"
+  },
+  "Ie8e938a057": {
+   "orig_id": "S1541-g023-p1",
+   "source": "SEG"
+  },
+  "Ie901476082": {
+   "orig_id": "S1521-g015-p1",
+   "source": "SEG"
+  },
+  "Ie909202ff1": {
+   "orig_id": "S1413_P007",
+   "source": "E2"
+  },
+  "Ie9149a9852": {
+   "orig_id": "S1022-g029-p2",
+   "source": "SEG"
+  },
+  "Ie91a50a7c4": {
+   "orig_id": "U03-S1484-128",
+   "source": "E1"
+  },
+  "Ie92e33896b": {
+   "orig_id": "S1484-g019-p1",
+   "source": "SEG"
+  },
+  "Ie99b74a3a3": {
+   "orig_id": "S1521-g012-p2",
+   "source": "SEG"
+  },
+  "Ie9a2d9aa68": {
+   "orig_id": "S1484-g075-p3",
+   "source": "SEG"
+  },
+  "Ie9fd218201": {
+   "orig_id": "U03-S1021-026",
+   "source": "E1"
+  },
+  "Iea1a62de62": {
+   "orig_id": "S1521_P017",
+   "source": "E2"
+  },
+  "Iea28b69513": {
+   "orig_id": "U03-S1484-112",
+   "source": "E1"
+  },
+  "Iea6b9fd7e1": {
+   "orig_id": "U03-S1484-064",
+   "source": "E1"
+  },
+  "Ieb91a4a38a": {
+   "orig_id": "U03-S1021-001",
+   "source": "E1"
+  },
+  "Iebae47bb8e": {
+   "orig_id": "S1022-g018-p2",
+   "source": "SEG"
+  },
+  "Iebf6f390ce": {
+   "orig_id": "S1484-019",
+   "source": "E2"
+  },
+  "Iec1902647d": {
+   "orig_id": "U03-S1484-089",
+   "source": "E1"
+  },
+  "Iec1c48d378": {
+   "orig_id": "U04-278",
+   "source": "E1"
+  },
+  "Iec4ac1beb9": {
+   "orig_id": "S1413-g040-p1",
+   "source": "SEG"
+  },
+  "Iec6800e8ad": {
+   "orig_id": "U03-S1484-069",
+   "source": "E1"
+  },
+  "Iec8a4b6afe": {
+   "orig_id": "U03-S1484-074",
+   "source": "E1"
+  },
+  "Ieca01b3166": {
+   "orig_id": "U03-S1022-050",
+   "source": "E1"
+  },
+  "Iecaea135e8": {
+   "orig_id": "S1021-g007-p1",
+   "source": "SEG"
+  },
+  "Iecbdc8481d": {
+   "orig_id": "U04-201",
+   "source": "E1"
+  },
+  "Iecd680d52b": {
+   "orig_id": "U04-256",
+   "source": "E1"
+  },
+  "Iecd8d1d8a7": {
+   "orig_id": "S1022-003",
+   "source": "E2"
+  },
+  "Iecdff7b9ec": {
+   "orig_id": "S1541-g001-p1",
+   "source": "SEG"
+  },
+  "Iece913e4b0": {
+   "orig_id": "S1521-g008-p1",
+   "source": "SEG"
+  },
+  "Iecf2dda496": {
+   "orig_id": "U04-186",
+   "source": "E1"
+  },
+  "Ied219abf7b": {
+   "orig_id": "S1022-g056-p3",
+   "source": "SEG"
+  },
+  "Ied2b8249cc": {
+   "orig_id": "U04-009",
+   "source": "E1"
+  },
+  "Ied41137452": {
+   "orig_id": "S1413_P002",
+   "source": "E2"
+  },
+  "Ied621dba04": {
+   "orig_id": "S1541-g076-p4",
+   "source": "SEG"
+  },
+  "Ied740d5e61": {
+   "orig_id": "U03-S1021-035",
+   "source": "E1"
+  },
+  "Ied8a34998e": {
+   "orig_id": "S1022-030",
+   "source": "E2"
+  },
+  "Iedebb55e5d": {
+   "orig_id": "U04-164",
+   "source": "E1"
+  },
+  "Iee12f81874": {
+   "orig_id": "S1521-g001-p1",
+   "source": "SEG"
+  },
+  "Iee2d47779a": {
+   "orig_id": "U04-077",
+   "source": "E1"
+  },
+  "Iee4b9eac8b": {
+   "orig_id": "S1413-g033-p1",
+   "source": "SEG"
+  },
+  "Iee72aaabd3": {
+   "orig_id": "S1021-g011-p1",
+   "source": "SEG"
+  },
+  "Ieec720f843": {
+   "orig_id": "S1484-g056-p2",
+   "source": "SEG"
+  },
+  "Ieee5a3604a": {
+   "orig_id": "U03-S1484-159",
+   "source": "E1"
+  },
+  "Ieeee0737da": {
+   "orig_id": "S1413-g018-p2",
+   "source": "SEG"
+  },
+  "Ieefb71af7d": {
+   "orig_id": "S1021-018",
+   "source": "E2"
+  },
+  "Ief6eb8283d": {
+   "orig_id": "S1521_P015",
+   "source": "E2"
+  },
+  "Ief6ef8d50a": {
+   "orig_id": "S1521-g021-p1",
+   "source": "SEG"
+  },
+  "Ief80955cd2": {
+   "orig_id": "S1541-g055-p1",
+   "source": "SEG"
+  },
+  "Iefd2101851": {
+   "orig_id": "U03-S1484-117",
+   "source": "E1"
+  },
+  "If02fc463b5": {
+   "orig_id": "S1022-004",
+   "source": "E2"
+  },
+  "If0307333a2": {
+   "orig_id": "S1021-g045-p1",
+   "source": "SEG"
+  },
+  "If05e6831f7": {
+   "orig_id": "S1022-g057-p2",
+   "source": "SEG"
+  },
+  "If06582d57e": {
+   "orig_id": "S1022-g032-p1",
+   "source": "SEG"
+  },
+  "If068b42a8f": {
+   "orig_id": "U03-S1022-061",
+   "source": "E1"
+  },
+  "If075f529aa": {
+   "orig_id": "U03-S1021-043",
+   "source": "E1"
+  },
+  "If080f65719": {
+   "orig_id": "S1021-g076-p2",
+   "source": "SEG"
+  },
+  "If0ac7355ac": {
+   "orig_id": "U03-S1021-033",
+   "source": "E1"
+  },
+  "If0acb54f17": {
+   "orig_id": "S1022-g005-p3",
+   "source": "SEG"
+  },
+  "If0d480005a": {
+   "orig_id": "S1484-g102-p1",
+   "source": "SEG"
+  },
+  "If10c38ea95": {
+   "orig_id": "U04-275",
+   "source": "E1"
+  },
+  "If1162a6ff2": {
+   "orig_id": "U04-179",
+   "source": "E1"
+  },
+  "If1393d5210": {
+   "orig_id": "U04-301",
+   "source": "E1"
+  },
+  "If159844f25": {
+   "orig_id": "S1541-g053-p1",
+   "source": "SEG"
+  },
+  "If16d294a8f": {
+   "orig_id": "S1021-g063-p1",
+   "source": "SEG"
+  },
+  "If19bebf7b7": {
+   "orig_id": "S1413-g029-p1",
+   "source": "SEG"
+  },
+  "If1c4acc546": {
+   "orig_id": "U03-S1021-054",
+   "source": "E1"
+  },
+  "If1c9763cda": {
+   "orig_id": "S1484-g041-p2",
+   "source": "SEG"
+  },
+  "If1dbb35f0d": {
+   "orig_id": "U04-157",
+   "source": "E1"
+  },
+  "If1f4f76857": {
+   "orig_id": "S1521-g007-p1",
+   "source": "SEG"
+  },
+  "If20117f3f3": {
+   "orig_id": "S1021-g031-p1",
+   "source": "SEG"
+  },
+  "If2ad45d03e": {
+   "orig_id": "S1022-g022-p1",
+   "source": "SEG"
+  },
+  "If2bfe84a8b": {
+   "orig_id": "S1021-g062-p1",
+   "source": "SEG"
+  },
+  "If2d36b66b9": {
+   "orig_id": "S1541-g028-p1",
+   "source": "SEG"
+  },
+  "If2db4f9354": {
+   "orig_id": "U04-104",
+   "source": "E1"
+  },
+  "If2eee77b6b": {
+   "orig_id": "U04-030",
+   "source": "E1"
+  },
+  "If367a3fd14": {
+   "orig_id": "U04-137",
+   "source": "E1"
+  },
+  "If377d94e63": {
+   "orig_id": "S1541-g065-p1",
+   "source": "SEG"
+  },
+  "If3832ba9cb": {
+   "orig_id": "U04-113",
+   "source": "E1"
+  },
+  "If395d08ad0": {
+   "orig_id": "S1484-g009-p2",
+   "source": "SEG"
+  },
+  "If3a0110f7a": {
+   "orig_id": "S1541_P018",
+   "source": "E2"
+  },
+  "If3e95795d0": {
+   "orig_id": "U03-S1484-079",
+   "source": "E1"
+  },
+  "If4315de3c9": {
+   "orig_id": "S1541-g050-p1",
+   "source": "SEG"
+  },
+  "If44ccd57c0": {
+   "orig_id": "S1484-g076-p1",
+   "source": "SEG"
+  },
+  "If47b83689d": {
+   "orig_id": "U04-017",
+   "source": "E1"
+  },
+  "If48fb61ebe": {
+   "orig_id": "U03-S1022-058",
+   "source": "E1"
+  },
+  "If4d6eb8c5c": {
+   "orig_id": "S1484-g081-p1",
+   "source": "SEG"
+  },
+  "If540efebad": {
+   "orig_id": "S1413-g054-p1",
+   "source": "SEG"
+  },
+  "If546760875": {
+   "orig_id": "S1541_P029",
+   "source": "E2"
+  },
+  "If5638c15b0": {
+   "orig_id": "U04-329",
+   "source": "E1"
+  },
+  "If5bf72a758": {
+   "orig_id": "S1541-g043-p2",
+   "source": "SEG"
+  },
+  "If5d2334f1c": {
+   "orig_id": "S1484-g105-p5",
+   "source": "SEG"
+  },
+  "If66d134077": {
+   "orig_id": "S1484-g007-p2",
+   "source": "SEG"
+  },
+  "If6a4393ecc": {
+   "orig_id": "U04-158",
+   "source": "E1"
+  },
+  "If6b0722381": {
+   "orig_id": "S1484-g065-p1",
+   "source": "SEG"
+  },
+  "If6b08089a0": {
+   "orig_id": "S1022-g013-p2",
+   "source": "SEG"
+  },
+  "If6c49c693a": {
+   "orig_id": "S1541-g013-p4",
+   "source": "SEG"
+  },
+  "If6d2c8479f": {
+   "orig_id": "S1541-g049-p1",
+   "source": "SEG"
+  },
+  "If6e6922350": {
+   "orig_id": "U04-176",
+   "source": "E1"
+  },
+  "If70c984fc8": {
+   "orig_id": "U03-S1021-030",
+   "source": "E1"
+  },
+  "If713855e9e": {
+   "orig_id": "U03-S1022-027",
+   "source": "E1"
+  },
+  "If7224291f1": {
+   "orig_id": "U04-042",
+   "source": "E1"
+  },
+  "If727539fbe": {
+   "orig_id": "S1521-g005-p2",
+   "source": "SEG"
+  },
+  "If72c49147d": {
+   "orig_id": "U03-S1484-158",
+   "source": "E1"
+  },
+  "If72ca384a3": {
+   "orig_id": "S1541-g013-p5",
+   "source": "SEG"
+  },
+  "If7411af9f5": {
+   "orig_id": "U03-S1484-126",
+   "source": "E1"
+  },
+  "If77f661fc0": {
+   "orig_id": "U03-S1021-014",
+   "source": "E1"
+  },
+  "If7914534e4": {
+   "orig_id": "S1022-035",
+   "source": "E2"
+  },
+  "If7971a2594": {
+   "orig_id": "S1021-g003-p1",
+   "source": "SEG"
+  },
+  "If7b53ffb19": {
+   "orig_id": "S1022-032",
+   "source": "E2"
+  },
+  "If7bfe61a5f": {
+   "orig_id": "S1521-g004-p3",
+   "source": "SEG"
+  },
+  "If7cf231c60": {
+   "orig_id": "S1541-g028-p2",
+   "source": "SEG"
+  },
+  "If7ed1ab3eb": {
+   "orig_id": "S1541-g038-p4",
+   "source": "SEG"
+  },
+  "If8572f85b7": {
+   "orig_id": "S1541-g021-p2",
+   "source": "SEG"
+  },
+  "If86f20b50b": {
+   "orig_id": "U03-S1022-052",
+   "source": "E1"
+  },
+  "If8894ebea0": {
+   "orig_id": "S1541-g076-p1",
+   "source": "SEG"
+  },
+  "If911016fa7": {
+   "orig_id": "U04-140",
+   "source": "E1"
+  },
+  "If94bf9e0f4": {
+   "orig_id": "S1484-g110-p2",
+   "source": "SEG"
+  },
+  "If9520a2355": {
+   "orig_id": "S1413-g014-p4",
+   "source": "SEG"
+  },
+  "If980d911b3": {
+   "orig_id": "S1021-g003-p4",
+   "source": "SEG"
+  },
+  "Ifa509b59f4": {
+   "orig_id": "S1413_P008",
+   "source": "E2"
+  },
+  "Ifa7c266153": {
+   "orig_id": "U03-S1021-021",
+   "source": "E1"
+  },
+  "Ifaa50bfa06": {
+   "orig_id": "U03-S1022-064",
+   "source": "E1"
+  },
+  "Ifafffaf4d5": {
+   "orig_id": "U03-S1021-017",
+   "source": "E1"
+  },
+  "Ifb0e847921": {
+   "orig_id": "S1021-g056-p7",
+   "source": "SEG"
+  },
+  "Ifb3f525df2": {
+   "orig_id": "S1021-036",
+   "source": "E2"
+  },
+  "Ifb4ef01af3": {
+   "orig_id": "S1413-g042-p1",
+   "source": "SEG"
+  },
+  "Ifb6018c50a": {
+   "orig_id": "S1521-g015-p3",
+   "source": "SEG"
+  },
+  "Ifb99f22946": {
+   "orig_id": "U03-S1484-154",
+   "source": "E1"
+  },
+  "Ifc3e73eb8e": {
+   "orig_id": "U04-089",
+   "source": "E1"
+  },
+  "Ifc498abb1b": {
+   "orig_id": "S1413-g046-p1",
+   "source": "SEG"
+  },
+  "Ifc8879ad83": {
+   "orig_id": "U04-244",
+   "source": "E1"
+  },
+  "Ifc901b9887": {
+   "orig_id": "S1484-g059-p8",
+   "source": "SEG"
+  },
+  "Ifca20f2583": {
+   "orig_id": "S1484-g112-p4",
+   "source": "SEG"
+  },
+  "Ifcb2f4666e": {
+   "orig_id": "S1484-024",
+   "source": "E2"
+  },
+  "Ifd3d33e196": {
+   "orig_id": "S1413-g061-p2",
+   "source": "SEG"
+  },
+  "Ifd404ac7dd": {
+   "orig_id": "S1484-g094-p2",
+   "source": "SEG"
+  },
+  "Ifd629742c4": {
+   "orig_id": "U03-S1484-005",
+   "source": "E1"
+  },
+  "Ifd769a4f9c": {
+   "orig_id": "S1484-g088-p1",
+   "source": "SEG"
+  },
+  "Ifd7dd0078f": {
+   "orig_id": "S1484-026",
+   "source": "E2"
+  },
+  "Ifd89a04927": {
+   "orig_id": "S1484-g099-p2",
+   "source": "SEG"
+  },
+  "Ifdaacb94ad": {
+   "orig_id": "U03-S1022-009",
+   "source": "E1"
+  },
+  "Ifdccd68ff4": {
+   "orig_id": "S1484-043",
+   "source": "E2"
+  },
+  "Ifdd04d386d": {
+   "orig_id": "S1484-g087-p3",
+   "source": "SEG"
+  },
+  "Ifdf22db68c": {
+   "orig_id": "S1022-008",
+   "source": "E2"
+  },
+  "Ife1daf15ca": {
+   "orig_id": "U04-092",
+   "source": "E1"
+  },
+  "Ife346463c1": {
+   "orig_id": "U04-267",
+   "source": "E1"
+  },
+  "Ife3587284c": {
+   "orig_id": "S1541-g059-p1",
+   "source": "SEG"
+  },
+  "Ife38892d57": {
+   "orig_id": "U04-127",
+   "source": "E1"
+  },
+  "Ife516a331e": {
+   "orig_id": "S1484-g008-p2",
+   "source": "SEG"
+  },
+  "Ife60fd69f2": {
+   "orig_id": "U03-S1021-016",
+   "source": "E1"
+  },
+  "Ife69977bc3": {
+   "orig_id": "S1022-027",
+   "source": "E2"
+  },
+  "Ife7f5c90bc": {
+   "orig_id": "U03-S1484-029",
+   "source": "E1"
+  },
+  "Ifeaf730cdb": {
+   "orig_id": "S1541-g036-p4",
+   "source": "SEG"
+  },
+  "Ifed45cd3bc": {
+   "orig_id": "S1413-g055-p1",
+   "source": "SEG"
+  },
+  "Ifeea6e4ea5": {
+   "orig_id": "S1021-030",
+   "source": "E2"
+  },
+  "Ifeed70298c": {
+   "orig_id": "S1022-g006-p2",
+   "source": "SEG"
+  },
+  "Iff18b90fc3": {
+   "orig_id": "S1541_P009",
+   "source": "E2"
+  },
+  "Iff1b4111d2": {
+   "orig_id": "S1541-g072-p3",
+   "source": "SEG"
+  },
+  "Iff4e7356b6": {
+   "orig_id": "S1022-g050-p1",
+   "source": "SEG"
+  },
+  "Iffcd03392f": {
+   "orig_id": "S1022-g044-p1",
+   "source": "SEG"
+  },
+  "Iffdae42486": {
+   "orig_id": "S1541-g008-p2",
+   "source": "SEG"
+  }
+ },
+ "letter_of_source": {
+  "E1": "Z",
+  "E2": "X",
+  "SEG": "Y"
+ },
+ "nonce": "6d8da739c819c5a6b2f4a8ccfa3c61d4"
+}

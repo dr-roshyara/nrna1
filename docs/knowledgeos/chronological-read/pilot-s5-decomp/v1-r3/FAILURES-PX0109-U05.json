@@ -1,0 +1,666 @@
+{
+ "failures": [
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-002",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-003",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-004",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-005",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-006",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-007",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-008",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-010",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-011",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-012",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-014",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-015",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-016",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-017",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-018",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-019",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-020",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-021",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-022",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-023",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-024",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-025",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-026",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-027",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-028",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-029",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-030",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-031",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-032",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-033",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-034",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-035",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1022-036",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-002",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-003",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-004",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-005",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-006",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-007",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-009",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-011",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-012",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-013",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-014",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-015",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-016",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-017",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-018",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-019",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-020",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-021",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-022",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-023",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-024",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-025",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-026",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-028",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-029",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-031",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-032",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-033",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-035",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-036",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-037",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-039",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-040",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-042",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-043",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-044",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-045",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-046",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-047",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-048",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-049",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-050",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-051",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-052",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-053",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-054",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1021-055",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-001",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-002",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-003",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-004",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-005",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-006",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-007",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-008",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-009",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-010",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-011",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-012",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-013",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-014",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-015",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-016",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-017",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-018",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-019",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-020",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-021",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-022",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-023",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-024",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-025",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-026",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-027",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-028",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-030",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-031",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-032",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-033",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-034",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-035",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-036",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-037",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-038",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-039",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-040",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-042",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-043",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-044",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-045",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-046",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-047",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-048",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-049",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-050",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-051",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-052",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-053",
+   "proposition_id": null
+  },
+  {
+   "class": "QUOTE-MISS",
+   "key": "S1484-054",
+   "proposition_id": null
+  }
+ ],
+ "original_sha256": "54101f05c35c4e3631393324c744b3040536567e91f1b0ac1f47f2feceefc69a",
+ "run": "PX0109-U05"
+}

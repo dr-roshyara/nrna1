@@ -1,0 +1,112 @@
+{
+ "labels": "SECONDARY r2 / POST-HOC; FORMAL",
+ "signature_determination": {
+  "ADOPT": {
+   "a+c": {
+    "separated_known": 1,
+    "undetermined": 1,
+    "status": "PARTIAL"
+   },
+   "a+k": {
+    "separated_known": 1,
+    "undetermined": 1,
+    "status": "PARTIAL"
+   },
+   "a+t": {
+    "separated_known": 1,
+    "undetermined": 1,
+    "status": "PARTIAL"
+   }
+  },
+  "ANNOTATE": "UNCONSTRAINED (only one outcome observed)",
+  "ASSIGN-ID": {
+   "h": {
+    "separated_known": 1,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   },
+   "r": {
+    "separated_known": 0,
+    "undetermined": 1,
+    "status": "VACUOUS"
+   }
+  },
+  "AUTHORIZE-IMPL": {
+   "a": {
+    "separated_known": 1,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   }
+  },
+  "OPEN-WORK": {
+   "k": {
+    "separated_known": 1,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   }
+  },
+  "RAISE": {
+   "a+e": {
+    "separated_known": 20,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   },
+   "e+k": {
+    "separated_known": 16,
+    "undetermined": 4,
+    "status": "PARTIAL"
+   },
+   "e+t": {
+    "separated_known": 20,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   },
+   "e+x": {
+    "separated_known": 16,
+    "undetermined": 4,
+    "status": "PARTIAL"
+   }
+  },
+  "REGISTER": {
+   "k": {
+    "separated_known": 1,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   }
+  },
+  "START": {
+   "s": {
+    "separated_known": 24,
+    "undetermined": 6,
+    "status": "PARTIAL"
+   }
+  },
+  "SUPERSEDE": {
+   "a": {
+    "separated_known": 0,
+    "undetermined": 2,
+    "status": "VACUOUS"
+   },
+   "e": {
+    "separated_known": 0,
+    "undetermined": 2,
+    "status": "VACUOUS"
+   },
+   "k": {
+    "separated_known": 2,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   },
+   "r": {
+    "separated_known": 2,
+    "undetermined": 0,
+    "status": "DETERMINED"
+   },
+   "x": {
+    "separated_known": 0,
+    "undetermined": 2,
+    "status": "VACUOUS"
+   }
+  }
+ }
+}

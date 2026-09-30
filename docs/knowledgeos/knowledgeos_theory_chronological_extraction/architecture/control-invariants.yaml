@@ -1,0 +1,256 @@
+# control-invariants.yaml — Research Control Invariants (RCI), machine-readable.
+#
+# STATUS: PROPOSED — authority: generated. Not authoritative without human review.
+# SCOPE:  the KnowledgeOS Theory Reconstruction and Theory Construction programme
+#         in this directory only.
+# LEVEL:  L3 (control registry). Subordinate to ARCH v1.1 (L1) and the protocols (L2).
+# PROSE:  architecture/research-control-architecture.md is the explanation;
+#         this file is the index. Neither restates a research rule — `protects`
+#         points at where the rule lives.
+#
+# Field meanings
+#   family        EVIDENCE | DERIVATION | EPISTEMIC | CONTROL
+#   new           NO | MECHANISM | RULE   (RULE would need an L0 act under ARCH §9)
+#   correspondence C0 internal | C1 identity | C2 substance | C3 trace
+#   check_class   AUT | AUT_FORM+AUDIT | REVIEW | AUDIT | HUMAN
+#   timing        PRE | POST | BOUNDARY | CONTINUOUS
+#   stop_code     reason code raised on violation (research-control-architecture.md §7)
+
+schema_version: 1
+namespace: RCI
+status: proposed
+
+invariants:
+
+  - id: RCI-001
+    name: canonical-identity
+    family: EVIDENCE
+    statement: One canonical file_id identifies exactly one corpus artifact for the life of the corpus baseline.
+    protects: ["P1P §4"]
+    evidence: ["E-1"]
+    new: NO
+    correspondence: C1
+    check_class: AUT
+    timing: POST
+    stop_code: IDENTITY_CONFLICT
+
+  - id: RCI-002
+    name: no-research-id-assignment
+    family: EVIDENCE
+    statement: >
+      Research references canonical IDs and never creates, renumbers, reassigns or
+      regenerates them. Every FILE-REGISTRY row's path equals the canonical path for
+      its file_id.
+    protects: ["P1P §4", "P1P §5 (copied verbatim, not regenerated)"]
+    evidence: ["E-1", "R-4"]
+    new: NO
+    correspondence: C1
+    check_class: AUT
+    timing: POST
+    stop_code: IDENTITY_CONFLICT
+
+  - id: RCI-003
+    name: corpus-read-only
+    family: EVIDENCE
+    statement: No research unit changes a corpus file.
+    protects: ["ARCH RA-1"]
+    evidence: ["E-8"]
+    new: NO
+    correspondence: C1
+    check_class: AUT
+    timing: POST
+    stop_code: CORPUS_MODIFIED
+
+  - id: RCI-004
+    name: identity-verified-before-admission
+    family: EVIDENCE
+    statement: >
+      A source enters reading only after its canonical ID, path and sha256 match the
+      approved canonical manifest.
+    protects: ["P1P §45 Gate 3", "P1P §36A"]
+    evidence: ["E-1", "E-8"]
+    new: MECHANISM
+    correspondence: C1
+    check_class: AUT
+    timing: PRE
+    timing_conflict: "P2P v3.2 limits mandatory checks to the two phase boundaries (decision RC-H-01)"
+    stop_code: HASH_MISMATCH | MISSING_CANONICAL_SOURCE | IDENTITY_CONFLICT
+
+  - id: RCI-005
+    name: read-receipt
+    family: EVIDENCE
+    statement: >
+      A source counts as read only if a receipt binds {file_id, path, sha256_at_read,
+      bytes_read, unit_id} and the runner verifies it against the manifest.
+    protects: ["P1P §9A FILE_READ"]
+    evidence: ["E-1"]
+    new: MECHANISM
+    correspondence: C1
+    check_class: AUT
+    timing: POST
+    proves: binding of declared bytes to a canonical ID
+    does_not_prove: that the file was read or understood (C2, audit)
+    stop_code: IDENTITY_CONFLICT
+
+  - id: RCI-006
+    name: position-and-coverage-in-canonical-ids
+    family: EVIDENCE
+    statement: >
+      Every coverage claim, window claim and next target in the research state names
+      canonical IDs or an ID-resolvable set; a description is not a position.
+    protects: ["P2P Q58", "ARCH RA-11", "ARCH RA-12"]
+    evidence: ["E-1", "R-2"]
+    new: NO
+    correspondence: C1
+    check_class: AUT
+    timing: POST
+    stop_code: IDENTITY_CONFLICT
+
+  - id: RCI-007
+    name: passage-level-traceability
+    family: DERIVATION
+    statement: >
+      Every substantive research claim has a provenance path to a source location in
+      one or more canonical files, not only to a file ID.
+    protects: ["P2P Q15", "P2P I-3", "P2P I-10", "P2P §5A.7"]
+    evidence: ["E-2"]
+    new: MECHANISM
+    correspondence: C2
+    check_class: AUT_FORM+AUDIT
+    timing: POST
+    stop_code: UNRESOLVED_PROVENANCE
+
+  - id: RCI-008
+    name: no-silent-exclusion
+    family: EPISTEMIC
+    statement: >
+      Every theory-bearing contribution of a read file is represented, excluded with a
+      reason, or marked unresolved.
+    protects: ["P2P Q45", "P2P Q46", "P2P Q54", "ARCH ACL-1"]
+    evidence: ["E-4"]
+    new: NO
+    not_yet_defined: granularity of a "contribution" / substantive unit
+    correspondence: C2
+    check_class: AUT_FORM+AUDIT
+    timing: POST
+    stop_code: null   # audit finding, not a stop
+
+  - id: RCI-009
+    name: epistemic-preservation
+    family: EPISTEMIC
+    statement: >
+      A transformation never silently raises the epistemic status of, or strips a
+      qualification from, a source statement.
+    protects: ["P2P Q3", "P2P Q22", "P2P Q50", "P2P I-14"]
+    evidence: ["E-4"]
+    new: NO
+    correspondence: C2
+    check_class: AUDIT
+    timing: CONTINUOUS
+    stop_code: null
+
+  - id: RCI-010
+    name: revisions-and-withdrawals-preserved
+    family: DERIVATION
+    statement: >
+      An in-file withdrawal, supersession or banner that modifies the body is recorded
+      as an intra-file revision.
+    protects: ["P1P §5A", "INTRA-FILE-REVISIONS"]
+    evidence: ["audit §3 (F0036)", "audit §1 (F0028)", "C-0009"]
+    new: NO
+    correspondence: C2
+    check_class: AUDIT
+    timing: POST
+    stop_code: null
+
+  - id: RCI-011
+    name: governance-separation
+    family: CONTROL
+    statement: >
+      Research execution never activates, deactivates, redefines, waives or repairs its
+      own controls.
+    protects: ["governance/README.md §5", "P2P §0.3 forbidden actions"]
+    evidence: ["E-5"]
+    new: NO
+    correspondence: C0
+    check_class: AUT_FORM+AUDIT   # runner digests make breach visible, not impossible
+    timing: PRE
+    stop_code: GOVERNANCE_INOPERATIVE
+
+  - id: RCI-012
+    name: acceptance-separation
+    family: CONTROL
+    statement: The producer of a result is never its sole acceptor.
+    protects: ["KOS-G-060", "ES-001 authority chain"]
+    evidence: ["governance/README.md §7"]
+    new: NO
+    correspondence: null
+    check_class: HUMAN
+    timing: BOUNDARY
+    stop_code: null
+
+  - id: RCI-013
+    name: machine-proposal-no-authority
+    family: EPISTEMIC
+    statement: >
+      Every Phase-2 statement carries asserted_by; a MACHINE_PROPOSAL above L2 requires
+      a referencing HUMAN_ASSERTION or VALIDATED_FINDING.
+    protects: ["P2P I-14", "P2P §3B.6"]
+    evidence: ["E-6"]
+    new: NO
+    correspondence: C3
+    check_class: AUT_FORM+AUDIT
+    timing: POST
+    attestation_limit: HUMAN_ASSERTION records are AI-transcribed until an attested channel exists
+    stop_code: null
+
+  - id: RCI-014
+    name: instrument-validity
+    family: CONTROL
+    statement: >
+      Every AUT check has pass and fail fixtures; a missing or empty input is never
+      PASS; a failing self-test makes every verdict of that runner version
+      INCONCLUSIVE; every gate declares scope_class INTERNAL_CONSISTENCY or
+      CORPUS_CORRESPONDENCE.
+    protects: ["assessment §I", "specification §7"]
+    evidence: ["E-2", "E-3"]
+    new: MECHANISM
+    correspondence: C0
+    check_class: AUT
+    timing: PRE
+    stop_code: GOVERNANCE_INOPERATIVE
+
+  - id: RCI-015
+    name: non-destructive-derivation-evolution
+    family: DERIVATION
+    statement: >
+      A recorded derivation, interpretation, hypothesis, relationship or theory object
+      is never silently deleted, overwritten or semantically replaced. A change of
+      position is an explicit additional record — derivation, qualification,
+      contradiction, refinement, supersession, split, merge, replacement proposal,
+      withdrawal or unresolved conflict — and the prior state stays recoverable.
+      Audits record findings; corrections produce new versions.
+    protects:
+      - "P1P §5A"
+      - "P1P §19B (append-only thread events)"
+      - "P1P candidate-theory checkpointing (never overwritten in place)"
+      - "P2P I-11, I-12, Q12, Q23, Q24, Q25"
+      - "P2P iteration rule (a later iteration supersedes, never overwrites)"
+      - "P2P §3B.8 replacement / split / merge tests"
+      - "ARCH RA-2, RA-5"
+    evidence: ["IFR-0010 (unrecoverable original, recorded in P2P)"]
+    new: NO   # elevation of an existing rule into the architecture
+    correspondence: C3
+    check_class: AUT_FORM+AUDIT   # machine detects that a record changed; audit judges semantic replacement
+    timing: POST
+    stop_code: FROZEN_ARTIFACT_MODIFICATION
+
+stop_codes:
+  - IDENTITY_CONFLICT
+  - MISSING_CANONICAL_SOURCE
+  - HASH_MISMATCH
+  - CORPUS_MODIFIED
+  - GOVERNANCE_INOPERATIVE
+  - PROTOCOL_CONFLICT
+  - FROZEN_ARTIFACT_MODIFICATION
+  - UNRESOLVED_PROVENANCE

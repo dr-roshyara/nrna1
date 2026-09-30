@@ -1,0 +1,190 @@
+{
+ "n_rows": 13,
+ "judgements": {
+  "V1": {
+   "agreement": 0.769,
+   "kappa": 0.487,
+   "disagreements": {
+    "R-33": [
+     "NOT-MODELLED",
+     "UNTESTABLE"
+    ],
+    "R-42": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-54": [
+     "NOT-MODELLED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V2": {
+   "agreement": 0.615,
+   "kappa": 0.375,
+   "disagreements": {
+    "R-48": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-59": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-69": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-71": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-95": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V3": {
+   "agreement": 0.923,
+   "kappa": 0.835,
+   "disagreements": {
+    "R-76": [
+     "VIOLATED",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V4": {
+   "agreement": 0.692,
+   "kappa": 0.35,
+   "disagreements": {
+    "R-48": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-57": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ],
+    "R-69": [
+     "SUPPORTED",
+     "AMBIGUOUS"
+    ],
+    "R-76": [
+     "UNTESTABLE",
+     "SUPPORTED"
+    ]
+   }
+  },
+  "V5": {
+   "agreement": 0.923,
+   "kappa": 0.0,
+   "disagreements": {
+    "R-57": [
+     "UNTESTABLE",
+     "AMBIGUOUS"
+    ]
+   }
+  },
+  "V6": {
+   "agreement": 1.0,
+   "kappa": 1.0,
+   "disagreements": {}
+  },
+  "V7": {
+   "agreement": 0.923,
+   "kappa": 0.629,
+   "disagreements": {
+    "R-57": [
+     "AMBIGUOUS",
+     "UNTESTABLE"
+    ]
+   }
+  }
+ },
+ "authority_named": {
+  "agreement": 0.923,
+  "kappa": 0.629,
+  "disagreements": [
+   "R-33"
+  ]
+ },
+ "ops_jaccard_mean": 0.846,
+ "ops_jaccard_per_row": {
+  "R-33": 1.0,
+  "R-42": 1.0,
+  "R-48": 1.0,
+  "R-54": 1.0,
+  "R-57": 1.0,
+  "R-59": 0.5,
+  "R-60": 0.5,
+  "R-69": 1.0,
+  "R-70": 0.5,
+  "R-71": 1.0,
+  "R-74": 0.5,
+  "R-76": 1.0,
+  "R-95": 1.0
+ },
+ "per_op_presence": {
+  "ACCEPT": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "ADOPT-DECISION": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "AUTHORIZE": {
+   "agreement": 1.0,
+   "kappa": 1.0
+  },
+  "CREATE-NORM": {
+   "agreement": 0.923,
+   "kappa": 0.629
+  }
+ },
+ "coverage_rowmean": {
+  "main": 0.628,
+  "blind": 0.654
+ },
+ "blind_not_modelled": [
+  [
+   "CORRECT",
+   2
+  ],
+  [
+   "RECORD",
+   2
+  ],
+  [
+   "DEFINE",
+   1
+  ],
+  [
+   "AFFIRM",
+   1
+  ],
+  [
+   "REFUTE",
+   1
+  ],
+  [
+   "START",
+   1
+  ],
+  [
+   "OPEN (ENG-012; NOT STATED TO BE A WORK PACKAGE)",
+   1
+  ]
+ ],
+ "blind_violations": {
+  "V1": [],
+  "V2": [],
+  "V3": [],
+  "V4": [],
+  "V5": [],
+  "V6": [],
+  "V7": []
+ }
+}

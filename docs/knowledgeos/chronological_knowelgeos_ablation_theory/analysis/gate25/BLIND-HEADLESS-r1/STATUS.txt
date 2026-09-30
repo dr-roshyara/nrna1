@@ -1,0 +1,5 @@
+CLEAN: No results, predictions, or implementations of the G25 specification's models or property/scenario outcomes are present in my context at session start.
+sha256sum -c BUNDLE.sha256: SPEC-G25-r1.md: OK; README.md: OK
+52b6ab6a44c49e52afe3637d4f8f526e4956c1bb5e6f58c5fd2d055c9f78da9c  OUT/results.json
+d75c6c4c49b080f192c49e232454a25401f17bf235cab094f1206d670464ecff  OUT/METHOD.md
+59c072837202ee5ce35d6cac36daa4726ec7c8eb37e588bbdb02418e5f4531b6  OUT/verifier_g25.py

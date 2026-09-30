@@ -1,0 +1,360 @@
+{
+ "body": {
+  "caps_from_anchors": {
+   "checklist": 4,
+   "disp": 4306,
+   "labels": 5,
+   "s1": 1801465,
+   "s2": 8633127
+  },
+  "degree_discovery_2452": {
+   "above": {
+    "10": 50,
+    "14": 22,
+    "15": 15,
+    "5": 274,
+    "8": 94
+   },
+   "files": 2649,
+   "files_above_10": [
+    "S0007",
+    "S0008",
+    "S0041",
+    "S0091",
+    "S0164",
+    "S0206",
+    "S0234",
+    "S0237",
+    "S0239",
+    "S0240",
+    "S0241",
+    "S0446",
+    "S0806",
+    "S0807",
+    "S1390",
+    "S1395",
+    "S1541",
+    "S1631",
+    "S1720",
+    "S2055",
+    "S2058",
+    "S2263",
+    "S2265",
+    "S2305",
+    "S2520",
+    "S2521",
+    "S2522",
+    "S2523",
+    "S2526",
+    "S2528",
+    "S2531",
+    "S2577",
+    "S2781",
+    "S2782",
+    "S2783",
+    "S2784",
+    "S2785",
+    "S2786",
+    "S2787",
+    "S2797",
+    "S2807",
+    "S2808",
+    "S2809",
+    "S2810",
+    "S2813",
+    "S2816",
+    "S2817",
+    "S2818",
+    "S2819",
+    "S2820"
+   ],
+   "files_at_10": [
+    "S0021",
+    "S0168",
+    "S0210",
+    "S0453",
+    "S0456",
+    "S0808",
+    "S1218",
+    "S1392",
+    "S1418",
+    "S1664",
+    "S1718",
+    "S2086",
+    "S2310",
+    "S2524",
+    "S2534",
+    "S2806",
+    "S2811"
+   ],
+   "max": 42,
+   "named": {
+    "S0237": 37,
+    "S0239": 42,
+    "S0240": 19,
+    "S0241": 15,
+    "S2523": 11,
+    "S2524": 10,
+    "S2528": 11,
+    "S2819": 18
+   },
+   "p90": 6.0,
+   "p95": 8.0,
+   "p99": 14.0
+  },
+  "degree_s5_1975": {
+   "above": {
+    "10": 29,
+    "14": 12,
+    "15": 10,
+    "5": 126,
+    "8": 50
+   },
+   "files": 1935,
+   "files_above_10": [
+    "S0234",
+    "S0237",
+    "S0239",
+    "S0240",
+    "S0241",
+    "S0806",
+    "S1390",
+    "S1395",
+    "S2305",
+    "S2521",
+    "S2522",
+    "S2531",
+    "S2781",
+    "S2782",
+    "S2783",
+    "S2784",
+    "S2785",
+    "S2786",
+    "S2787",
+    "S2807",
+    "S2808",
+    "S2809",
+    "S2810",
+    "S2813",
+    "S2816",
+    "S2817",
+    "S2818",
+    "S2819",
+    "S2820"
+   ],
+   "files_at_10": [
+    "S0041",
+    "S0091",
+    "S0164",
+    "S0206",
+    "S1392",
+    "S1418",
+    "S2520",
+    "S2523",
+    "S2797",
+    "S2811"
+   ],
+   "max": 35,
+   "named": {
+    "S0237": 28,
+    "S0239": 35,
+    "S0240": 14,
+    "S0241": 13,
+    "S2523": 10,
+    "S2524": 9,
+    "S2528": 9,
+    "S2819": 18
+   },
+   "p90": 4.0,
+   "p95": 6.0,
+   "p99": 13.0
+  },
+  "generator_preview_s5_1975": {
+   "G-NOTATION": {
+    "k2": 72,
+    "k3": 9,
+    "label_disjoint_family": 53
+   },
+   "G-SHARED-GROUP": {
+    "k2": 709,
+    "k3": 10,
+    "label_disjoint_family": 295
+   }
+  },
+  "identity_cells_p2a": {
+   "G-NOTATION": {
+    "identity_state_conflation_cell": "REGISTERED",
+    "sets": 81,
+    "unjudged_sets": 1
+   },
+   "G-SHARED-GROUP": {
+    "identity_state_conflation_cell": "NOT-REGISTERED (empty after RC-13)",
+    "sets": 719,
+    "unjudged_sets": 0
+   }
+  },
+  "nonhub_labels_over_step1_cap_alone": 0,
+  "packing_projection": {
+   "10": {
+    "binding": {
+     "labels": 188,
+     "load_or_checklist": 5
+    },
+    "hub_batches": 8,
+    "nonhub_batches": 193
+   },
+   "5": {
+    "binding": {
+     "labels": 381,
+     "load_or_checklist": 1
+    },
+    "hub_batches": 14,
+    "nonhub_batches": 382
+   },
+   "8": {
+    "binding": {
+     "labels": 238,
+     "load_or_checklist": 2
+    },
+    "hub_batches": 10,
+    "nonhub_batches": 240
+   }
+  },
+  "r22_anchors": {
+   "PB02": {
+    "actual_reads": {
+     "step1": 167202,
+     "step7": 10671006
+    },
+    "checklist": 2,
+    "disp": 4306,
+    "labels": 5,
+    "s1": 196112,
+    "s2": 8633127
+   },
+   "PB03": {
+    "actual_reads": {
+     "step1": 226515,
+     "step10": 22488,
+     "step7": 640283
+    },
+    "checklist": 2,
+    "disp": 210,
+    "labels": 5,
+    "s1": 226515,
+    "s2": 652134
+   },
+   "PB04": {
+    "actual_reads": {
+     "step1": 233440,
+     "step7": 1149312
+    },
+    "checklist": 0,
+    "disp": 758,
+    "labels": 5,
+    "s1": 222077,
+    "s2": 1149312
+   },
+   "PB05": {
+    "actual_reads": {
+     "step1": 1801465,
+     "step7": 2177990
+    },
+    "checklist": 4,
+    "disp": 807,
+    "labels": 5,
+    "s1": 1801465,
+    "s2": 2177990
+   }
+  },
+  "r22_object_record_bytes": {
+   "max": 417380,
+   "mean": 40757
+  },
+  "r22_register": {
+   "labels": 20,
+   "mandatory_audit_kinds": 23,
+   "records": 87
+  },
+  "rerun_frame": {
+   "alloc_5pct": 97,
+   "groups": 25,
+   "nonhub": 1909,
+   "purposive_nonhub": 348,
+   "stratified_nonhub": 1561
+  },
+  "timeline_sim_r22": {
+   "drop_first=False,min_bigrams=1": {
+    "eligible": 14,
+    "labels": 20,
+    "pairs": 91,
+    "share_J_ge_0.5": 0.22,
+    "share_J_ge_0.8": 0.055
+   },
+   "drop_first=True,min_bigrams=3": {
+    "eligible": 6,
+    "labels": 20,
+    "pairs": 15,
+    "share_J_ge_0.5": 0.2,
+    "share_J_ge_0.8": 0.2
+   }
+  },
+  "tracks_s5_1975": {
+   "labels_touching": {
+    "TRACK-A-PHASE-MEASURE": 791,
+    "TRACK-A-VERIFICATION-CLUSTER-UNCONFIRMED": 138,
+    "TRACK-B-GAP-DISCOVERY": 122,
+    "UNCLASSIFIED": 1029
+   },
+   "mixed_if_only_phase_measure_is_A": 17,
+   "mixed_if_unconfirmed_is_A": 31,
+   "mixed_if_unconfirmed_is_B (mapping 2)": 47
+  }
+ },
+ "header": {
+  "input_hashes": {
+   "20-FAMILIES/_derived.json": "131a55ffd92794d462e24f1a1fc49c569b9abe5cd8641b45e0830ba66b60f059",
+   "31-RECONCILIATION-PAIRS.jsonl": "d8ec552766c6d4852e407d459f71f01a58e1561c25de27d116b1a6ab445a748d",
+   "P3B-DISCOVERY-SEARCH.jsonl": "3dc5a5a18f29ecc96f90524fc55002cebc7e1bbee68c6db3decd4f2509a52c2d",
+   "P3B-IDENTITY-MANIFEST.jsonl": "74cb210bb63d1956647186a53f2f54119fd6a219fb6b23795ad9b6fe3ea0d042",
+   "P3B-S5-HUBS.jsonl": "e150d7a5ac3c405b6e2226d70323314d23a106bbb3442c0110dcc6ae4d366d91",
+   "P3B-SAMPLE-PLAN.jsonl": "0cc706f40b7f92eebbc75eb07bb34ef1eff3bcf3515371c35674244d355cee80",
+   "_batch_input_r2/bundle_index_discovery.jsonl": "00b5d51435f7f49bba35702171a1afa92469caabf5d6cefdaf1a2fda67a78b12",
+   "_batch_input_r2/s4-pilot-r22/five-blocker-triage-table.json": "b3c82f9fa6844c3a62c4490783be2758887567b4e6d93d0eb9a89d38ce890122",
+   "_batch_input_r2/s4-pilot-r22/gita-hypothesis-architecture-consequence-pipeline.json": "2afc99651ef6a4d54d1daf4569a962aa1c11d3cd063ebe248b4d9db8c3b51ff7",
+   "_batch_input_r2/s4-pilot-r22/glyph-register-v3-collision-inventory-2026-09.json": "4629fc7a3edcf92c968d291136b00abf743ddaffd31e7d428f671d6cb02f8931",
+   "_batch_input_r2/s4-pilot-r22/h-kos-lifecycle-reasoning-001.json": "ad29e80cd3ed277d5189e0d40965a0ccca66a967df34f800cc70d3c23fdc1c8a",
+   "_batch_input_r2/s4-pilot-r22/hpa-gita-chapter18-synthesis-determination-mode-model.json": "eeb5cb4cdd00eb02025c3bafa99b4d304e498d0309e091ffc87f8ed8781dd88e",
+   "_batch_input_r2/s4-pilot-r22/invariant-universe-not-one-mathematical-object.json": "942943fe977dfde21fce57f79129b333312b17d1260ffbbdcfca32b310bfa71e",
+   "_batch_input_r2/s4-pilot-r22/knowledge-graph-not-equal-knowledge-state.json": "c3df45630a809b8d15fe97d8f97c4f84da7f83c23ec1576500dfe17067a4429f",
+   "_batch_input_r2/s4-pilot-r22/knowledgeos-type-system.json": "3116d1738141750ee95a0102bdb4d380324e7b9afff6569fec3d5a11650bdad4",
+   "_batch_input_r2/s4-pilot-r22/linga-yoni-projection-transformation-experiment.json": "7c8991f4f2a3529a0b5bc69a21febf42df7869bde2ee85a10b7bfd43ee9ba4aa",
+   "_batch_input_r2/s4-pilot-r22/minimal-adequate-representation-entropy-formalization.json": "037170967000ae391a1406debdeb8710316c822999b4f41312f235057d77ed0a",
+   "_batch_input_r2/s4-pilot-r22/nyaya-sutra-kernel-falsification-lens.json": "15afae5c2f4c7e6b7c0ccdc71c9850a19e83c737c7331a3c50290c4ea0c73b50",
+   "_batch_input_r2/s4-pilot-r22/rejection-produces-hypothesis-space-not-truth.json": "c289aba6512a727446dbfefbbc9b542f135328c196ccb2c40b3195c0b58bb0b1",
+   "_batch_input_r2/s4-pilot-r22/relation-8-tuple-vs-triple-reduction.json": "47a8a347bfebbda4a5b3dfe2ba80c6d1c645d5c82bd478d7b19efd6b2ca0e79a",
+   "_batch_input_r2/s4-pilot-r22/reverification-updated-dependency-chain-and-matrix.json": "d95c0f3ecd9c9358aedc57875dbbe0dedebdb3cc684bc936d92181e6fbb81747",
+   "_batch_input_r2/s4-pilot-r22/session-completion-handoff-protocol.json": "407973fffc4e86bc6cb1e72a647280c9fc8a70b09ac73bc27f0fd404743a3691",
+   "_batch_input_r2/s4-pilot-r22/shannon-weaver-information-theory-lens.json": "db3ab170dda13151f23d66a75aa97ba4d4fd37d3208d832be9fa08c2997a8fcc",
+   "_batch_input_r2/s4-pilot-r22/step-verify-programme.json": "e13d0dd21473442ea020cdfbeca65cca874560349efa602b81853be7a96af134",
+   "_batch_input_r2/s4-pilot-r22/step185-differentiated-non-identity-chain.json": "7129bec2ff23b844a6336c75bdb3e491262f58dd68e6bbab5a6e4e9143f8a499",
+   "_batch_input_r2/s4-pilot-r22/step291-n4-leverage-not-earliest.json": "5bb4ec3442ba264d6c263d6dbb44d07c1450b17e6f62a3474220aedd72d13633",
+   "_batch_input_r2/s4-pilot-r22/sufficient-state-control-theory-lens.json": "6229d17f53b4fb568c0e7ca5d6f9f74f0bf81d78a2a340228edc9fc8dc159a90",
+   "ledger-p3b-r2/S4-PILOT-R2-002/READ-LOG.jsonl": "83abbcdee9649975858895dbcfe578e2fc3fe85eee4e231f6b073d428391c4fc",
+   "ledger-p3b-r2/S4-R22/PB02/objects.jsonl": "cdbe2d442db744e10a4b2f5aefaad68990dd56c513e0e5cd5ad8a47ca3e59119",
+   "ledger-p3b-r2/S4-R22/PB02/register.jsonl": "18db3236df929c17debbb4c857686afa6a1a63525926093de1d0aa94cd69a3e8",
+   "ledger-p3b-r2/S4-R22/PB03/objects.jsonl": "65e5e549853d171796a465539dd6b33c85ae7cbc24a4a1273a2d6249b44a3543",
+   "ledger-p3b-r2/S4-R22/PB03/register.jsonl": "587a4d4206ae4e2610331db1281621bc59d7121557acb2d13a6ef5217735ff34",
+   "ledger-p3b-r2/S4-R22/PB04/objects.jsonl": "5c73c055236b1ca081d9b921c925f8396320a69ae45a0be80e3190d373e6fb9a",
+   "ledger-p3b-r2/S4-R22/PB04/register.jsonl": "e63a5a9d9409602c4119de41b1dba82276e23c85734436e074a5402e6129f1ee",
+   "ledger-p3b-r2/S4-R22/PB05/objects.jsonl": "66f4a4f868a4e8aa659dd61cc3f11340558a6aa4755705f0c1346f6495fa66b8",
+   "ledger-p3b-r2/S4-R22/PB05/register.jsonl": "9fd3abc3ed935deccbb1d20829d13b675c130c3486f50720f88ca61fbd24ac36"
+  },
+  "note": "planning analysis for the S5 plan; not S5 execution code; output_sha256 covers 'body'",
+  "output_sha256": "fe75ad33cd6514e129f508c3f9aaae97a27244d67d8bb94412109cb3c8b940e5",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "python_version": "3.13.2",
+  "script_name": "scripts/p3b_s5_plan_measures.py",
+  "script_version": "5a1459335e3acd6de9d8d19ca3dfbfb616f4c19f"
+ }
+}

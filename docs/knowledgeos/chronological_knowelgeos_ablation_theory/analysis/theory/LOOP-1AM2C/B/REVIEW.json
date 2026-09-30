@@ -1,0 +1,63 @@
+{
+  "actor_reviewer": "UNK",
+  "act_type_reviewer": "UNK",
+  "agree_with_A": true,
+  "disagreements": [
+    {
+      "id": "D1",
+      "class": "source interpretation",
+      "issue": "Using the ## Decisions section as evidence",
+      "A": "Line 41 has no actor prefix and is not listed under ## Decisions, which counts against an authority decision",
+      "reviewer": "The Decisions section (lines 20-24) belongs to the earlier part of the log. The Ninth entry (line 31+) has no Decisions section, so the absence tells us little."
+    },
+    {
+      "id": "D2",
+      "class": "coding",
+      "issue": "Coding of line 23, 'Governance (Session 2)'",
+      "A": "Grouped under authority-decision prefixes",
+      "reviewer": "It is a recommendation: 'recommendation A — QUALIFY' and 'Governance chose no remedy and issued no grant.'"
+    },
+    {
+      "id": "D3",
+      "class": "source interpretation",
+      "issue": "Weight of line 39 ('Applied immediately … corrected, not defended')",
+      "A": "Supports SESSION-AUTHOR acting on their own",
+      "reviewer": "Mixed: the writer is carrying out a PO/ARB ruling (line 31 'vocabulary ruling registered and applied'). This fits the REPORT reading as much as self-restraint."
+    },
+    {
+      "id": "D4",
+      "class": "coding",
+      "issue": "Lines 41 and 42 listed as quotes for SESSION-AUTHOR",
+      "A": "Supporting quotes",
+      "reviewer": "Line 41 is neutral (no agent named). Line 42 is a state report and does not bear on the question."
+    },
+    {
+      "id": "D5",
+      "class": "evidence scope",
+      "issue": "Missed quotes",
+      "A": "Not cited",
+      "reviewer": "For SESSION-AUTHOR: lines 12, 16 ('STOP deliberately NOT misused'), 18 ('deliberately NOT folded into this closure'), 29 ('all deliberately kept separate'), and the contrast that PO/ARB rulings are labelled and quoted verbatim (lines 33-38, 40) while line 41 is not. For REPORT: the verb 'registered' used for authority input (lines 22, 31). For the unit: line 28 '(2nd occurrence)'."
+    },
+    {
+      "id": "D6",
+      "class": "source interpretation",
+      "issue": "Split-actor reading of line 41",
+      "A": "Not raised",
+      "reviewer": "The placement (PO's framing -> O-CLOSURE-VOCAB) and the non-promotion (ES-006.1) may have different actors."
+    },
+    {
+      "id": "D7",
+      "class": "formal reasoning",
+      "issue": "Deriving act type from actor",
+      "A": "Because the actor is UNK, the act type is also UNK",
+      "reviewer": "Valid here only because act type depends on the actor in this passage (writer -> SELF-RESTRAINT, PO/ARB -> REPORT). That premise should be stated. The task's categories also do not separate rule compliance from self-restraint."
+    },
+    {
+      "id": "D8",
+      "class": "wording",
+      "issue": "Elision in ANSWER.md line 13",
+      "A": "'PO/ARB ACCEPTED … vocabulary ruling registered'",
+      "reviewer": "Dropping 'and applied' can make it read as if the PO/ARB did the registering; those are the writer's acts."
+    }
+  ]
+}

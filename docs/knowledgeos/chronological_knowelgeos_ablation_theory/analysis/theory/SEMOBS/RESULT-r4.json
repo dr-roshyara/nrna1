@@ -1,0 +1,104 @@
+{
+ "n_observations": 36,
+ "verdicts": {
+  "operation": {
+   "verdict_R4": "NOT DEMONSTRATED",
+   "independent_strict_R4": 0,
+   "disjoint_strict": 0,
+   "disjoint_set": [],
+   "verdict_disjoint": "NOT DEMONSTRATED"
+  },
+  "route": {
+   "verdict_R4": "NOT DEMONSTRATED",
+   "independent_strict_R4": 0,
+   "disjoint_strict": 0,
+   "disjoint_set": [],
+   "verdict_disjoint": "NOT DEMONSTRATED"
+  },
+  "authority": {
+   "verdict_R4": "EMPIRICALLY SUPPORTED",
+   "independent_strict_R4": 2,
+   "disjoint_strict": 2,
+   "disjoint_set": [
+    [
+     "R-81..85-annotation",
+     "R-86"
+    ],
+    [
+     "R-70",
+     "R-89"
+    ]
+   ],
+   "verdict_disjoint": "EMPIRICALLY SUPPORTED"
+  },
+  "kind": {
+   "verdict_R4": "EMPIRICALLY SUPPORTED",
+   "independent_strict_R4": 2,
+   "disjoint_strict": 2,
+   "disjoint_set": [
+    [
+     "S0804-L576"
+    ],
+    [
+     "R-60"
+    ]
+   ],
+   "verdict_disjoint": "EMPIRICALLY SUPPORTED"
+  },
+  "state": {
+   "verdict_R4": "EMPIRICALLY SUPPORTED",
+   "independent_strict_R4": 4,
+   "disjoint_strict": 2,
+   "disjoint_set": [
+    [
+     "R-58",
+     "R-65"
+    ],
+    [
+     "R-81",
+     "R-86"
+    ]
+   ],
+   "verdict_disjoint": "EMPIRICALLY SUPPORTED"
+  },
+  "target": {
+   "verdict_R4": "NOT DEMONSTRATED (possible)",
+   "independent_strict_R4": 0,
+   "disjoint_strict": 0,
+   "disjoint_set": [],
+   "verdict_disjoint": "NOT DEMONSTRATED (possible)"
+  },
+  "evidence": {
+   "verdict_R4": "WEAK",
+   "independent_strict_R4": 1,
+   "disjoint_strict": 1,
+   "disjoint_set": [
+    [
+     "R-36"
+    ]
+   ],
+   "verdict_disjoint": "WEAK"
+  },
+  "exception": {
+   "verdict_R4": "NOT DEMONSTRATED",
+   "independent_strict_R4": 0,
+   "disjoint_strict": 0,
+   "disjoint_set": [],
+   "verdict_disjoint": "NOT DEMONSTRATED"
+  },
+  "history": {
+   "verdict_R4": "NOT DEMONSTRATED (possible)",
+   "independent_strict_R4": 0,
+   "disjoint_strict": 0,
+   "disjoint_set": [],
+   "verdict_disjoint": "NOT DEMONSTRATED (possible)"
+  },
+  "conformance": {
+   "verdict_R4": "NOT DEMONSTRATED",
+   "independent_strict_R4": 0,
+   "disjoint_strict": 0,
+   "disjoint_set": [],
+   "verdict_disjoint": "NOT DEMONSTRATED"
+  }
+ }
+}

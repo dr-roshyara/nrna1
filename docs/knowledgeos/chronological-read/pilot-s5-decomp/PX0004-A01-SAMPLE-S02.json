@@ -1,0 +1,66 @@
+{
+ "body": {
+  "audit_group": {
+   "cross_batch_audit_due_after_this": false,
+   "first_index": 0,
+   "group": 0,
+   "last_index": 4
+  },
+  "batch_id": "PX0004",
+  "batch_seed": 1897904471,
+  "f3_stage2b": {},
+  "mandatory_contested_or_homonym_split": [],
+  "mandatory_register": [
+   "PX0004-S02:PX0004:1",
+   "PX0004-S02:PX0004:4"
+  ],
+  "manifest_index": 0,
+  "n_batches": 396,
+  "other_register_sample": [
+   "PX0004-S02:PX0004:5",
+   "PX0004-S02:PX0004:6"
+  ],
+  "records_in_batch": {
+   "objects": 1,
+   "register": 6,
+   "total": 7
+  },
+  "seed_root": 20261100,
+  "seeded_records": {
+   "n": 3,
+   "object_available": true,
+   "object_included": true,
+   "objects": [
+    "step-verify-programme"
+   ],
+   "register": [
+    "PX0004-S02:PX0004:2",
+    "PX0004-S02:PX0004:3"
+   ],
+   "target": 5
+  }
+ },
+ "header": {
+  "input_hashes": {
+   "pilot-s5-decomp/PX0004-S02/objects.jsonl": "7cf0e3453a2e1bba653d9423713d4580a94bd8b89fc0d08fa5dd4674afeec0f9",
+   "pilot-s5-decomp/PX0004-S02/register.jsonl": "7d71c77eb044d39c4d96dfa693afd8dc1cae2ddebdacebbf7aff02c3301b4017"
+  },
+  "numpy_version": "2.5.0",
+  "output_sha256": "4907f12cfc549f983bb1e124f155671f5020c3312196373a2abe2c5fa8a02176",
+  "parameters": {
+   "index": 0,
+   "n_batches": 396,
+   "seed_root": 20261100
+  },
+  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
+  "platform": "Linux-7.1.5-200.fc44.x86_64-x86_64-with-glibc2.43",
+  "population_basis": "DISCOVERY-POPULATION (HS-3d32dd44d162)",
+  "protocol_sha256": "38021aa4328c1fae23edf2eeab068d1a8d446d6197aac6567681a72687502d12",
+  "python_version": "3.13.2",
+  "run_timestamp_utc": "2026-09-25T11:24:49Z",
+  "script_committed_unmodified": true,
+  "script_name": "scripts/p3b_s5_audit_sample.py",
+  "script_version": "44852dbdde1144f8cb3dc810deb73a76cbafe591",
+  "seed": 1897904471
+ }
+}

@@ -1,0 +1,204 @@
+# control-coverage-matrix.yaml — for each Research Control Invariant: where it is
+# stated, what enforces it TODAY, what audit covers it, and what was OBSERVED.
+#
+# STATUS: PROPOSED — authority: generated. Evidence snapshot, not a verdict.
+# AS OF:  HEAD da9a5beec (2026-09-23). Gate facts from governance/gates.yaml and
+#         governance/governance-state.yaml at that commit.
+#
+# coverage (what enforces the invariant)
+#   ENFORCED            an ACTIVATED AUT gate checks the invariant's correspondence
+#   MEASURED            an AUT gate exists and runs, but is NOT activated
+#   PARTIAL             a gate checks part of it (e.g. form only, or C0 instead of C1)
+#   REVIEW_ONLY         only a REVIEW-class gate (reported REVIEW_REQUIRED, never passed)
+#   HUMAN_ONLY          only a HUMAN-class gate (never evaluated by the runner)
+#   PROSE_ONLY          stated in architecture/protocol; nothing checks it
+#   NONE                not even stated as an operative rule
+#
+# observed (what the evidence shows, separate from coverage)
+#   HOLDS · PARTIAL · VIOLATED · AUDIT_FINDING · BREACHED_RECORDED · OPEN · UNVERIFIED
+#
+# Gate ids are governance/gates.yaml ids (the only gate namespace). New
+# enforcement is named `PROPOSED:<name>`; an id is allocated only on
+# registration in gates.yaml (research-control-architecture.md §10).
+
+activated_gates: [KOS-G-001, KOS-G-002, KOS-G-003, KOS-G-010, KOS-G-022]
+runner_self_test: "30/31 (theory_doc_exists MISMEASURED) — RCI-014 ⇒ verdicts of this version are INCONCLUSIVE by the proposed rule"
+
+matrix:
+
+  - control: RCI-001 canonical-identity
+    architecture: "RCA §3"
+    protocol: ["P1P §4"]
+    enforcement: []
+    note_existing: "KOS-G-002 checks theory-object and relation ids only; FILE-REGISTRY file_id uniqueness holds (40/40) but is unchecked"
+    coverage: NONE_FOR_C1
+    audit: ["audit 2026-09-23 §0"]
+    observed: VIOLATED   # ids unique, but bound to the wrong artifacts (see RCI-002)
+    increment: 1
+    proposed_enforcement: ["PROPOSED:canonical-manifest-binding"]
+
+  - control: RCI-002 no-research-id-assignment
+    architecture: "RCA §3"
+    protocol: ["P1P §4", "P1P §5"]
+    enforcement: []
+    coverage: PROSE_ONLY      # stated only in P1P; absent from ARCH and P2P (RCA §0A R-1)
+    audit: ["audit 2026-09-23 §0"]
+    observed: VIOLATED        # 9 of 10 rows F0031–F0040; rows from F0031 lack the imported timestamp field
+    increment: 1
+    proposed_enforcement: ["PROPOSED:registry-path-equals-canonical-path"]
+
+  - control: RCI-003 corpus-read-only
+    architecture: "ARCH RA-1"
+    protocol: ["P1P §45 Gate 3"]
+    enforcement: []
+    coverage: PROSE_ONLY
+    audit: ["audit 2026-09-23 (4 files unchanged since 2026-08-04)"]
+    observed: UNVERIFIED      # holds for the 4 sampled files; corpus-wide never measured (hash NOT_COMPUTED)
+    increment: 1
+    proposed_enforcement: ["PROPOSED:corpus-manifest-hash-unchanged"]
+
+  - control: RCI-004 identity-verified-before-admission
+    architecture: "RCA §5, §6"
+    protocol: ["P1P §45 Gate 3", "P1P §36A"]
+    enforcement: []
+    coverage: NONE
+    audit: []
+    observed: VIOLATED        # Gate 3 never executed; RECONSTRUCTION-STATE corpus_registry_hash NOT_COMPUTED
+    increment: 1
+    blocked_by: ["RC-H-01 (per-source timing vs P2P v3.2)", "RC-H-02 (manifest baseline)"]
+    proposed_enforcement: ["PROPOSED:pre-admission-identity-check"]
+
+  - control: RCI-005 read-receipt
+    architecture: "RCA §5"
+    protocol: ["P1P §9A FILE_READ"]
+    enforcement: []
+    coverage: NONE
+    audit: []
+    observed: OPEN            # no receipts exist; read_status values inconsistent (F0028 READ vs READ_COMPLETE)
+    increment: 1
+    proposed_enforcement: ["PROPOSED:read-receipt-verified"]
+
+  - control: RCI-006 position-and-coverage-in-canonical-ids
+    architecture: "RCA §3"
+    protocol: ["P2P Q58", "ARCH RA-11/RA-12"]
+    enforcement: []
+    coverage: PROSE_ONLY
+    audit: ["audit 2026-09-23 §0", "RCA §0A R-2"]
+    observed: VIOLATED        # state next target became "the next five unread top-level files"; "40/3,081" not the first 40
+    increment: 1
+    proposed_enforcement: ["PROPOSED:state-next-target-resolves-to-canonical-ids", "PROPOSED:coverage-from-receipts"]
+
+  - control: RCI-007 passage-level-traceability
+    architecture: "RCA §3, §4"
+    protocol: ["P2P Q15", "P2P I-3", "P2P I-10", "P2P §5A.7"]
+    enforcement: [KOS-G-022, KOS-G-023, KOS-G-020]
+    enforcement_state: {KOS-G-022: activated, KOS-G-023: measured, KOS-G-020: measured}
+    coverage: PARTIAL         # C3 form only (seed → theory appendix; object → relation); no source-location check (C2)
+    audit: ["audit 2026-09-23 §6"]
+    observed: AUDIT_FINDING
+    known_defect: "KOS-G-022 reports 0/0 PASS when the seed file is missing (E-3)"
+    increment: 2
+    proposed_enforcement: ["PROPOSED:source-location-present"]
+
+  - control: RCI-008 no-silent-exclusion
+    architecture: "RCA §3"
+    protocol: ["P2P Q45", "P2P Q46", "P2P Q54", "ARCH ACL-1"]
+    enforcement: [KOS-G-012, KOS-G-042]
+    enforcement_state: {KOS-G-012: measured, KOS-G-042: review}
+    coverage: PARTIAL         # kind-based exclusion only; Q45/Q46 dispositions have no gate
+    audit: ["audit 2026-09-23 §1 (F0028: 10/18 units lost, 0 recorded exclusions)"]
+    observed: AUDIT_FINDING
+    not_yet_defined: "granularity of a contribution / substantive unit"
+    increment: 2
+    proposed_enforcement: ["PROPOSED:contribution-disposition-present"]
+
+  - control: RCI-009 epistemic-preservation
+    architecture: "RCA §3"
+    protocol: ["P2P Q3", "P2P Q22", "P2P Q50", "P2P I-14"]
+    enforcement: [KOS-G-045]
+    enforcement_state: {KOS-G-045: review}
+    coverage: REVIEW_ONLY
+    audit: ["audit 2026-09-23 §1.3 (F0028 C05 qualification upgraded; C18 meaning changed)"]
+    observed: AUDIT_FINDING
+    increment: 2
+    automation_limit: "semantic — stays with independent audit (RCA §9)"
+
+  - control: RCI-010 revisions-and-withdrawals-preserved
+    architecture: "RCA §3"
+    protocol: ["P1P §5A", "INTRA-FILE-REVISIONS"]
+    enforcement: []
+    coverage: PROSE_ONLY
+    audit: ["audit 2026-09-23 §1.1 (F0028 header/body)", "§3 (F0036 withdrawal vs verdict — file unread)"]
+    observed: AUDIT_FINDING   # also self-recorded by research: C-0009 (banner read, body used)
+    increment: 2
+
+  - control: RCI-011 governance-separation
+    architecture: "RCA §8"
+    protocol: ["governance/README.md §5", "P2P §0.3"]
+    enforcement: [KOS-G-061]
+    enforcement_state: {KOS-G-061: human, runner_integrity_digests: tamper_evident}
+    coverage: PARTIAL         # breach is visible via digests, not prevented; preflight not wired into settings
+    audit: []
+    observed: BREACHED_RECORDED   # research session repaired governance-state.yaml syntax (recorded in the file)
+    increment: 3
+    proposed_enforcement: ["PROPOSED:stop-on-governance-inoperative (no self-repair)", "CODEOWNERS on governance/, architecture/, prompts/"]
+
+  - control: RCI-012 acceptance-separation
+    architecture: "RCA §8"
+    protocol: ["KOS-G-060", "ES-001"]
+    enforcement: [KOS-G-060]
+    enforcement_state: {KOS-G-060: human}
+    coverage: HUMAN_ONLY
+    audit: []
+    observed: OPEN            # governance/README.md §7: every acceptance so far has been the author's
+    increment: 3
+
+  - control: RCI-013 machine-proposal-no-authority
+    architecture: "RCA §3"
+    protocol: ["P2P I-14", "P2P §3B.6"]
+    enforcement: [KOS-G-044]
+    enforcement_state: {KOS-G-044: review}
+    coverage: REVIEW_ONLY     # KOS-G-044 reviews origin labels, not asserted_by
+    audit: ["gate specification v0.1 G-052"]
+    observed: VIOLATED        # asserted_by occurs 0 times in committed data
+    increment: 2
+    proposed_enforcement: ["PROPOSED:asserted-by-present"]
+
+  - control: RCI-014 instrument-validity
+    architecture: "RCA §3"
+    protocol: ["assessment §I"]
+    enforcement: ["gate-runner.py --self-test with fixtures/pass and fixtures/fail"]
+    coverage: PARTIAL         # fixtures exist (good); missing input ⇒ PASS (E-3); no scope_class field
+    audit: ["RCA §0 E-3 probe"]
+    observed: VIOLATED        # KOS-G-010 and KOS-G-022 report 0/0 PASS on deleted inputs; self-test 30/31
+    increment: 1
+    proposed_enforcement: ["PROPOSED:missing-input-is-inconclusive", "PROPOSED:scope-class-declared"]
+
+  - control: RCI-015 non-destructive-derivation-evolution
+    architecture: "RCA §3.0, §3"
+    protocol: ["P1P §5A", "P1P §19B", "P2P I-11", "P2P I-12", "P2P Q12", "P2P Q23", "P2P Q24", "P2P Q25", "ARCH RA-2", "ARCH RA-5"]
+    enforcement: [KOS-G-061]
+    enforcement_state: {KOS-G-061: human}
+    coverage: HUMAN_ONLY      # no AUT check that a recorded row / derivation was changed in place
+    audit: []
+    observed: PARTIAL
+    observed_detail:
+      - "HOLDS in the seed: retractions are additive (SI-0032/SI-0033 RETRACT SI-0022)"
+      - "HOLDS for Step-1 JSONL since the first commit: every change a pure append (git --numstat)"
+      - "NOT RECORDED: THEORY-EVOLUTION.jsonl has 5 entries (iteration 1, one commit) while the theory document changed in 6 commits incl. v0.9's retraction of v0.8's headline (Q24 requires old text verbatim)"
+      - "CANDIDATE-THEORY-SNAPSHOTS/ is empty; prior theory versions recoverable only through git history"
+      - "PRE-GIT VIOLATION: RO-0014 rewrote 25 FILE-REGISTRY rows in place before the first commit"
+    increment: 2
+    proposed_enforcement: ["PROPOSED:no-destructive-mutation (changed row without revision/supersession record ⇒ FAIL)", "PROPOSED:theory-change-has-evolution-entry"]
+
+summary:
+  invariants: 15
+  enforced_by_activated_gate: 0      # none of the 15 is checked in its correspondence by an activated gate
+  partial: 4                          # RCI-007, 008, 011, 014
+  review_or_human_only: 4             # RCI-009, 012, 013, 015
+  prose_only_or_none: 7               # RCI-001 (none at C1), 002, 003, 004, 005, 006, 010
+  observed_violated: 6                # RCI-001/002 (one defect), 004, 006, 013, 014
+  reading: >
+    The five activated gates protect internal consistency (C0). None of the fifteen
+    control invariants is enforced at its correspondence level by an activated gate.
+    This is a coverage statement about controls, not a judgement of the research.

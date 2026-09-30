@@ -1,0 +1,30 @@
+{
+ "case_id": "L0-REL-26 / 2026-08-04 L205",
+ "status": "FROZEN BEFORE READING. Heading metadata only; no body line read.",
+ "source": {"path": ".claude/sessions/2026-08-04.md", "sha256": "6309c2e3a2e1f8a59183086c60b7163c9bb5bae080adcef0aa5b827b2846b1ac",
+            "boundary": "L205-L215 (L205 heading 'Meta-principle freeze adopted; the protected sentence recorded'; next heading L216, already read under L0-REL-24)",
+            "excluded": "every other line; pointer targets"},
+ "instrument": "model_discrimination_r2.py d14d79af... (unchanged) for H1 H2 H3a H3b H4 H5; H6-family and H-PLANES coded by the table below (no new code before the read)",
+ "attributes_pre_read": {
+   "force": {"coded": "UNKNOWN", "rule": "IN only if the section itself supports Applicability(I-R39, object) (e.g. it names the object a methodology principle AND cites or applies a repeated-evidence bar of R-39 form); never assumed from the word 'principle' in the heading"},
+   "kind": {"source_fact": "UNKNOWN", "model_assumption": "none"},
+   "high": {"source_fact": "UNKNOWN"}},
+ "capture_fields": {
+   "object": ["kind", "identity", "target/rung"],
+   "act": ["authority", "route (RULING|PROMOTION|ADOPTION|FREEZE|CERTIFICATION|REJECTION|other, as stated)", "semantic operation (CREATE-NORM|RAISE-STANDING|AUTHORIZE|VALIDATE|FREEZE|SUPERSEDE|HISTORICIZE|REJECT|other)", "intended effect (normative|epistemic|operational|other)"],
+   "norm": ["text", "force", "applicability", "interpretation cited"],
+   "evidence": ["EV", "QUAL", "VAL", "EXC", "OBL"],
+   "order": "only what the source supports; Qual and Val never collapsed",
+   "planes": "which state plane(s) the act changes (execution / governance lifecycle / findings / other), and whether another plane is stated as unchanged"},
+ "label_every_field": ["SOURCE-FACT", "INTERPRETATION", "MODEL-ASSUMPTION", "UNKNOWN"],
+ "requirement_classes": ["MET", "DEVIATES", "UNKNOWN", "NOT-RECORDED", "OUT-OF-SCOPE"],
+ "case_level": "CONFORMS iff all applicable MET; DEVIATES iff one explicitly violated; else UNDETERMINABLE",
+ "predictions": {
+   "H4": "refuted iff force IN (source-supported) and a requirement DEVIATES with no exception",
+   "H6-R route": "PROMOTION route -> bar MET or EXC PRESENT; RULING route -> no bar needed",
+   "H6-K kind": "observation/knowledge object -> bar; rule object -> direct",
+   "H6-O operation": "RAISE-STANDING -> bar; CREATE-NORM / FREEZE -> no bar",
+   "H6-E effect": "epistemic effect -> bar; normative effect -> no bar",
+   "discriminates H6 family": "only if route, kind, operation, effect come apart in this case; if they coincide, record as confounded again",
+   "H-PLANES": "supported by an act that changes one plane with another stated unchanged; silent otherwise"}
+}

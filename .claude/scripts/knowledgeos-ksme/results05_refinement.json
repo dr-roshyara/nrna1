@@ -1,0 +1,8 @@
+{
+  "K_R_F2_classes": 17129,
+  "F4_K_O_classes": 27398,
+  "F4_refines_KR_F2_cleanly": true,
+  "violations": 0,
+  "disposition": "F4 REFINES K_R(F2): every F4 class sits inside one K_R(F2) class -- F4 draws AT LEAST all robustly-necessary distinctions, PLUS extra ones",
+  "wall_time_seconds": 345.8
+}
