@@ -1694,3 +1694,12 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | AM-1 (later phase only) | one worker per task; parallel tasks only with disjoint write sets and no task consuming another's unreviewed output; production mutation through a single writer; never alters the runbook, `batch_order`, the retry policy, W-SYS or the firewalls. It takes effect only in the later, separately authorized phase |
 | AM-2 (later phase only) | a label is **measured** iff its batch attempt reached BATCH-PASS and was ACCEPTED (VERIFIED → §21 AUDITED → H-06 ACCEPTED); failed or retired attempts are never measured; labels of unaccepted batches are NOT-ASSESSABLE (worst-cased, EP-01 §7). 0 labels are measured today |
 | Not authorized | anything beyond G-LOG-0108's canary scope |
+
+### Erratum to G-LOG-0108 / G-LOG-0109 (orchestrator documentation error, 2026-09-30; the entries above are not rewritten)
+
+| Field | Value |
+|---|---|
+| Error | G-LOG-0108 ("R-3 executed"), the operator brief and the fresh-session prompt name the manifest `93b78526…`. That is the value **after the v2.8.1 rebind but before the R-4 retirement**. The retirement re-froze OB0012's Legacy(B) fields and wrote a new manifest |
+| Correct current manifest | **`963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c`**: the chained MANIFEST-REVISION `93b78526…` → `963ba6ad…` (reason "G-LOG-0108 canary restart (R-4)"); `RETIREMENT-INTENT.json` manifest_before = `93b78526…`; header `r7_legacy_refreezes` = [(OB0012, attempt 1)]; bound by P3B-STATE and by the pre-check v2.8.1. Verified independently by the orchestrator |
+| Detected by | the fresh orchestrator session's precondition 3, which correctly stopped and asked instead of substituting the value |
+| Effect | documentation only; no state, contract or scientific change. Whether the canary continues against `963ba6ad…` is the human's decision in that session |
