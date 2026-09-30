@@ -1,0 +1,39 @@
+{
+  "verdict": "FAIL",
+  "verdict_basis": "NOT_REVIEWED_INPUT_MISSING: SPEC-r2.md, SPEC-r2.json and CHANGELOG-r2.md do not exist in the review directory. FAIL is the only verdict that does not authorise running scripts nobody has seen. It is not a merits finding against the repair.",
+  "inputs_read": ["REVIEW-TASK.md", "TASK.md", "ENVIRONMENT.md", "REVIEW-r1.md", "REVIEW-r1.json", "STATE.md", "SPEC-r1.md (partial)"],
+  "inputs_missing": ["SPEC-r2.md", "SPEC-r2.json", "CHANGELOG-r2.md"],
+  "review_limits": ["No directory-listing tool was available. Only exact paths and the variants SPEC-1bb-r2.md, spec-r2.md, ../SPEC-r2.md and ../A/SPEC-r2.md were tried. No command was run."],
+  "repair_status": {
+    "D1": "NOT_FIXED (not assessable: no r2 artefact; r1 PARTIAL stands)",
+    "D2": "NOT_FIXED (not assessable: no r2 artefact; r1 PARTIAL stands)",
+    "D5": "NOT_FIXED (not assessable: no r2 artefact; r1 PARTIAL stands)",
+    "D8": "NOT_FIXED (not assessable: no r2 artefact; r1 PARTIAL stands)",
+    "D9": "NOT_FIXED (not assessable: no r2 artefact; r1 PARTIAL stands)",
+    "N1": "NOT_FIXED (not assessable: no r2 artefact)",
+    "N2": "NOT_FIXED (not assessable: no r2 artefact)",
+    "N3": "NOT_FIXED (not assessable: no r2 artefact)",
+    "N4": "NOT_FIXED (not assessable: no r2 artefact)"
+  },
+  "symmetry_violations": [
+    "No r2 symmetry table exists, so it cannot be checked. The r1 violations remain open:",
+    "N1: NIF-B (behaviour explained by both hypotheses) fires P4-HD",
+    "N2: 'no permitting act => not permitted' presupposes H-D P1 and is used against H-B (P2, C1, O5)",
+    "N3: the maker's-records fallback is admitted against H-B only",
+    "N4: 'R-89 already governs' is frozen as non-adoption, with no scored sensitivity result"
+  ],
+  "rank0": {
+    "executable": false,
+    "blocking": ["B-0: no r2 rank-0 script is present. Environment fit, exit handling, determinism/hashing, matching, trace vs mention, M-TIME and the absence rule cannot be verified. The r1 prohibition (R0-1, R0-2) stands."],
+    "nonblocking": []
+  },
+  "scoping": {
+    "executable": false,
+    "blocking": ["B-0: no r2 scoping script is present. Boundedness, reachable or NOT_DETERMINABLE outcomes, history paths and identity-free output cannot be verified. The r1 permission to run does not extend to an unseen r2 script."],
+    "nonblocking": []
+  },
+  "out_of_scope_changes": ["NOT_ASSESSABLE: no r2 text to compare with r1"],
+  "new_defects": [
+    {"id": "B-0", "class": "input missing", "blocking": true, "defect": "The repair output SPEC-r2.md / SPEC-r2.json / CHANGELOG-r2.md is absent from the review directory.", "fix": "Place the r2 files in the directory and rerun the review."}
+  ]
+}
