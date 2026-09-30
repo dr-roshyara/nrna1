@@ -1668,3 +1668,13 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | Declared deviation | the runbook says "a dedicated orchestrator session". The canary is dispatched from the current orchestrator session. Its transcript was verified with the production decoder before dispatch (25,089 records; 0 parse errors; 0 missing parents; 0 duplicate uuids). The witness counts only Agent calls whose first line is an `S5-RUN-BINDING`, so earlier builder/reviewer dispatches are ignored. Any witness failure attributable to this is class X (the retry runs in a fresh session) |
 | Frozen tools | the 10 tool files equal `audit-p3b/20260930_S5-CANARY-PRECHECK-v28.json` `tool_sha256_frozen_for_canary` (H-3), verified before dispatch |
 | Not authorized | any batch beyond the canary; any §21 audit or H-06 act; any freeze change |
+
+## G-LOG-0108 — Human act: the S5 canary restart approved (package `5db61896e`; R-3 and R-4 only)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-09-30: "APPROVED — execute the S5 canary restart decision package 5db61896e exactly as specified. This approval authorizes R-3 and R-4 only and does not authorize full S5 measurement. Stop at the canary-evaluation gate for the next human decision." |
+| R-3 | addendum status-text correction (v2.8.1: the stale "not activated / NOT AUTHORIZED" lines replaced by the factual status; no rule change) + one production rebind (EG-4 procedure) |
+| R-4 | retire OB0012 attempt 1 (class X; preserved as Legacy(B), never estimated) → new attempt 2; then, in a fresh orchestrator session rooted in nrna1 (operator brief), OB0012 attempt 2 and OB0114 attempt 1 under the frozen stop rule |
+| Not authorized | full S5 measurement or any batch beyond the canary; R-5 (the stray logs in the ansible repository: separate); any freeze, frame, sample or estimand change |
+| Next gate | the canary evaluation (human) |
