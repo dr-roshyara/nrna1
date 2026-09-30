@@ -1,0 +1,64 @@
+{
+  "c1": {
+    "norms": [
+      {
+        "ruling": "R-72",
+        "date": "2026-08-02",
+        "kind": "conditional (authorized in principle, proviso unmet => prohibited for now)",
+        "quote": "WP-4B ... is authorized as the next executable slice of §WP-4, provided its authorization package demonstrates executable scope and no unresolved governance blockers remain. THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN ... CONSEQUENCE: no RED begins. The next acts are the three decisions and the scope ruling; when they land, engineering proceeds RED → GREEN → VERIFY → acceptance evidence"
+      },
+      {
+        "ruling": "R-76",
+        "date": "2026-08-03",
+        "kind": "satisfies proviso item (c) only; describes RED content, does not permit start",
+        "quote": "the scope ambiguity recorded in the WP-4B engineering discovery §2 IS CLOSED. RED carries the roadmap keystone — CONCLUDED-BUT-UNISSUED → REDRIVE → EXACTLY ONE DETERMINATION — and not the confirmation half."
+      },
+      {
+        "ruling": "R-77",
+        "date": "2026-08-03",
+        "kind": "prohibited (block restated)",
+        "quote": "CONSEQUENCES: R-73–R-76 stand · WP-4B's authorization (R-72) stands · ... ⚠️ AND WP-4B REMAINS BLOCKED: \"implementation continues under the currently adopted tactical architecture\" SETTLES WHICH ARCHITECTURE PRACTICE FOLLOWS; IT DOES NOT GIVE `ContestedOutcomeRef` AN INBOUND PATH. R-75's adopted path remains prohibited by ADR-UL-01, ADR-PL-01, WP-5's accepted keystone and a live test."
+      },
+      {
+        "ruling": "R-79",
+        "date": "2026-08-03",
+        "kind": "sequence / gate (Board acts before WP-4B RED)",
+        "quote": "ENGINEERING IS READY AND NOT EXECUTABLE ... SEQUENCE AFFIRMED: (1) the two remaining Board acts — PROMOTION (permission) and ALLOCATION (ownership), independent of each other · (2) WP-4B RED → GREEN → VERIFY → ACCEPT ... It authorizes nothing ... the two Board acts remain the gate."
+      },
+      {
+        "ruling": "R-80",
+        "date": "2026-08-03",
+        "kind": "descriptive reference to the unmet proviso (not itself a norm on WP-4B)",
+        "quote": "the programme conflated three of them in practice: ... authorized read as executable (R-72's unmet proviso)."
+      },
+      {
+        "ruling": "R-86",
+        "date": "2026-08-04",
+        "kind": "permitted (after the commit)",
+        "quote": "Batch 7 is released under those rulings. Engineering is authorized to resume implementation in accordance with the adopted governance. ... `ChallengeRaised` PROMOTION and ALLOCATION remain OPEN ... they bear on the production producer path and §WP-4 closure, not on batch 7's execution"
+      }
+    ],
+    "in_force_at_commit": "R-72's proviso-gated authorization with the proviso still unmet, as restated by R-77 ('WP-4B REMAINS BLOCKED') and R-79 ('READY AND NOT EXECUTABLE'; Board acts before RED). R-76 had closed only item (c). No permitting norm was in force: R-86 (the first text authorizing implementation) is dated 2026-08-04, and R-81..R-85 became governing only through R-86 ('effective immediately').",
+    "order_basis": "MIXED",
+    "verdict": "NON-CONFORMS",
+    "decisive_quotes": [
+      "R-72: \"THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN ... CONSEQUENCE: no RED begins.\"",
+      "R-77: \"WP-4B's authorization (R-72) stands · ... AND WP-4B REMAINS BLOCKED\"",
+      "R-79: \"ENGINEERING IS READY AND NOT EXECUTABLE ... SEQUENCE AFFIRMED: (1) the two remaining Board acts ... (2) WP-4B RED → GREEN → VERIFY → ACCEPT\"",
+      "Commit 6a67da5d7: \"GREEN not attempted: three producers are absent and the two Board acts are outstanding.\"",
+      "R-86 (2026-08-04): \"Engineering is authorized to resume implementation\""
+    ],
+    "missing": "Text of R-73..R-75 and R-81..R-85 (not in SOURCES); the hour of decision of R-77/R-79 (only dates are in text; placing them before 16:10 rests on recording time as an upper bound of decision time); any unrecorded Board act between 15:47 and 16:10. None of these is likely to flip the verdict: R-77 says R-73..R-76 stand and WP-4B is still blocked, and R-81..R-85 were not governing until R-86."
+  },
+  "c2": {
+    "gate_quote": "R-72: \"WP-4C AND WP-4D ARE EXPRESSLY NOT AUTHORIZED. Each is to be authorized from IMPLEMENTATION EVIDENCE rather than roadmap intent, after its predecessor is accepted.\" ... \"WP-4C is considered only after WP-4B is accepted.\"",
+    "accepted_before": "YES. Text: R-88 cites R-87 ('Per R-86 and R-87, no standing delegation'), R-89 cites R-88 and its adoption ('single owner — Adjudication (R-88)'; 'R-88's adoption was a SINGLE ACT'), so R-87 < R-88 < R-89 by text. Timeline corroborates: R-87 01:47:00, R-88 01:54:24, R-89 02:08:48 on 2026-08-04.",
+    "r89_status": "PREPARED, NOT ADOPTED: \"⚠️ PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED. ... this ruling awaits the Decision Authority. One sentence of confirmation converts it to ADOPTED.\" No adoption annotation appears (contrast R-88). Per R-86: \"Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it.\" So R-89 is not in force.",
+    "verdict": "CONFORMS",
+    "reason": "Against R-72's gate, R-89 comes after WP-4B's acceptance (R-87), by text and by timeline, and bases its authorization on engineering evidence (EP-03 readiness review, existing code), not on roadmap intent. Caveat: R-89 is only PREPARED, so it is a conforming draft act with no force. It authorizes nothing yet, and no execution under it is recorded."
+  },
+  "bearing": {
+    "c1": "AGAINST: one case, one episode (a single RED commit at a single boundary). It is enough to refute a universal claim that all recorded work conforms, but it says nothing about how often non-conformance happens. It is mitigated, not cured: the commit disclosed the outstanding Board acts, wrote no production code, and WP-4B was later accepted (R-87). Acceptance does not ratify the start.",
+    "c2": "NEITHER: R-89 is a governance act, not recorded work, and it is PREPARED rather than in force. That it conforms to the gate shows the governance sequencing was respected in one episode. It is not evidence that work conforms to norms in force."
+  }
+}

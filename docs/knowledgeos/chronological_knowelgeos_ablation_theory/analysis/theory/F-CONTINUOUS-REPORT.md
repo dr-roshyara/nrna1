@@ -193,3 +193,9 @@
 - **CI1:** the A′ R-A3 convention builds H-D into the observations.
 - **Status mediation:** 2 self-reported episodes.
 - **Next:** 1ba, resolving the non-conformance candidates in-corpus.
+
+## 1ba (F-LOG-0173)
+- **Q:** did recorded work conform to the norm in force?
+- **C1** (WP-4B RED commit): NON-CONFORMS (moderate, contested) → **the first discriminating observation**, weakly against H-B's conformance clause.
+- **C2:** conforms (qualified), bears on neither.
+- **Next:** the minimum execution-evidence spec.

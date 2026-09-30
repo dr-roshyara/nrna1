@@ -2123,3 +2123,11 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Freeze | `edf732ed8` |
 | Records | `analysis/theory/LOOP-1AZ/` |
 | Next | 1ba: resolve the non-conformance candidates from the uncoded register rows (R-73..R-80, R-87, R-88, R-89 status) |
+
+## F-LOG-0173 — 1ba: **C1, the WP-4B RED commit, NON-CONFORMS to the norm in force** (moderate, text-robust; the strongest alternative reading is not ruled out): the **first discriminating observation**. It weighs against H-B's conformance clause **weakly** (one contested case; RED test code only). C2 (R-89) CONFORMS, qualified, and bears on neither hypothesis. The sealed expectation failed. Recording time ≠ entry into force
+
+| Field | Value |
+|---|---|
+| Freeze | `51be577df` |
+| Records | `analysis/theory/LOOP-1BA/` |
+| Next | a minimum execution-evidence spec (reviewed); then STOP for the human (non-Claude coder; evidence acquisition) |
