@@ -1,0 +1,31 @@
+=== ACT: 24 polar records; same-op opposite-polarity pairs = 0
+  per operation [+,-]: {'DECLINE-INTERPRETATION': [1, 0], 'ADOPT': [2, 0], 'HOLD': [1, 0], 'AUTHORIZE-IMPL': [4, 0], 'PREPARE-ISSUE': [1, 0], 'CLASSIFY': [9, 0], 'START-EXECUTION': [1, 0], 'OTHER:RETIRE': [1, 0], 'OTHER:ADJUDICATE': [1, 0], 'OTHER:APPLY': [1, 0], '': [0, 1], 'ANNOTATE': [1, 0]}
+  confounding degree (n differing known fields -> n pairs): {}
+=== NORM: 21 polar records; same-op opposite-polarity pairs = 25
+  per operation [+,-]: {'OTHER:INTERPRET': [0, 1], 'ADOPT': [0, 1], 'START-EXECUTION': [5, 5], '': [1, 0], 'OTHER:REUSE': [1, 0], 'OTHER:JUSTIFY': [1, 0], 'OTHER:RECORD': [1, 0], 'OTHER:LABEL': [1, 0], 'RAISE': [0, 1], 'OTHER:SYNCHRONIZE': [1, 0], 'REUSE-ID': [0, 1], 'ANNOTATE': [1, 0]}
+   R04~R10 op=START-EXECUTION: differ=['target', 'v1_a', 'v1_s', 'v1_t', 'v1_r'] unknown_on=4
+   R04~R12 op=START-EXECUTION: differ=['target', 'v1_a', 'v1_s', 'v1_t', 'v1_r'] unknown_on=5
+   R04~R14 op=START-EXECUTION: differ=['target', 'v1_a', 'v1_s', 'v1_t', 'v1_r'] unknown_on=5
+   R04~R31 op=START-EXECUTION: differ=['target', 'v1_a', 'v1_s', 'v1_t', 'v1_r'] unknown_on=6
+   R04~R33 op=START-EXECUTION: differ=['target', 'v1_a', 'v1_s', 'v1_t', 'v1_r'] unknown_on=5
+   R10~R13 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=4
+   R10~R32 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=4
+   R10~R34 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=4
+   R10~R36 op=START-EXECUTION: differ=['target', 'stated_by', 'v1_s', 'v1_t'] unknown_on=4
+   R12~R13 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R12~R32 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R12~R34 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R12~R36 op=START-EXECUTION: differ=['target', 'stated_by', 'v1_s', 'v1_t'] unknown_on=5
+   R13~R14 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R13~R31 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=6
+   R13~R33 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R14~R32 op=START-EXECUTION: differ=['target', 'v1_s'] unknown_on=5
+   R14~R34 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R14~R36 op=START-EXECUTION: differ=['target', 'stated_by', 'v1_s', 'v1_t'] unknown_on=5
+   R31~R32 op=START-EXECUTION: differ=['v1_s'] unknown_on=6
+   R31~R34 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=6
+   R31~R36 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=6
+   R32~R33 op=START-EXECUTION: differ=['target', 'v1_s', 'v1_t'] unknown_on=5
+   R33~R34 op=START-EXECUTION: differ=['v1_s'] unknown_on=5
+   R33~R36 op=START-EXECUTION: differ=['target', 'stated_by', 'v1_s', 'v1_t'] unknown_on=5
+  confounding degree (n differing known fields -> n pairs): {1: 2, 2: 1, 3: 13, 4: 4, 5: 5}

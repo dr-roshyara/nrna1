@@ -1,0 +1,48 @@
+{
+ "n_items": 180,
+ "n_disagreements": 16,
+ "corrected": [
+  {"record_id": "R08", "field": "act.target", "worker": "WP-7B-R1", "reviewer": "UNMAPPABLE", "class": "coding", "why": "The value is about the motion (R-60), not the work package it opens. WP-7B-R1 is a different entity: it is R04's target (ARB authorizes its implementation). R-60 does not appear in this value, so using it would invent an identifier. The worker's own R01 rule applies: the target is the thing named, not what that thing concerns."},
+  {"record_id": "R08", "field": "norm.about_target", "worker": "WP-7B-R1", "reviewer": "UNMAPPABLE", "class": "coding", "why": "Same referent as act.target: the motion. Coding it WP-7B-R1 would pair it with R04's norm (ENGINEERING START-EXECUTION WP-7B-R1), which is about something else."},
+  {"record_id": "R09", "field": "norm.about_target", "worker": "WP-7B-R1", "reviewer": "UNMAPPABLE", "class": "coding", "why": "In the same record, act.target codes this motion as R-60 and norm.about_target codes it as WP-7B-R1. The value names the motion without its identifier, so the target is UNMAPPABLE, not the work package."},
+  {"record_id": "R22", "field": "act.target", "worker": "O-CLOSURE-VOCAB", "reviewer": "UNMAPPABLE", "class": "coding", "why": "The target is the PO's 'three state planes' framing of O-CLOSURE-VOCAB, not O-CLOSURE-VOCAB itself. A framing is a view of the thing, not a part of it. This is the same situation as R01, where the worker coded 'the ambiguity over ... R-81..R-85' as UNMAPPABLE."},
+  {"record_id": "R22", "field": "act.operation", "worker": "RAISE", "reviewer": "UNMAPPABLE", "class": "formal reasoning", "why": "The value says the promotion '(did not occur)', and the span says 'NOT promoted'. Coding RAISE records a promotion that never happened; the vocabulary has no code for an act that did not occur. The operation is still recorded in norm.about_operation (RAISE)."},
+  {"record_id": "R29", "field": "act.operation", "worker": "SUPERSEDE", "reviewer": "UNMAPPABLE", "class": "formal reasoning", "why": "The span ('superseding would blur chronology') gives the reason supersession was rejected; R-94 chose ANNOTATE instead (R30). In R26 the worker refused SUPERSEDE because it 'would reverse the meaning', and the same reasoning applies here. As coded, R29 and R30 read as the Chief both superseding and annotating PB-006."},
+  {"record_id": "R31", "field": "act.operation", "worker": "AUTHORIZE-IMPL", "reviewer": "UNMAPPABLE", "class": "formal reasoning", "why": "The value says '(not occurred)', and the span says the act 'has NOT been issued'. AUTHORIZE-IMPL puts this non-act in the same code as the real authorizations in R04, R32, R34 and R36; R31 and R32 both target Slice 7B. The norm field (START-EXECUTION, Slice 7B) keeps the content."},
+  {"record_id": "R30", "field": "act.operation", "worker": "ADOPT", "reviewer": "ANNOTATE", "class": "source interpretation", "why": "'ANNOTATE is adopted' means the Chief chose the ANNOTATE disposition inside R-94. It is not the adoption of a ruling. In R01 the worker separated ADOPT (adopting a ruling) from other kinds of 'adopt'. Coding ADOPT here creates an 'ARB-CHIEF ADOPT' act, which conflicts with R01 and R02, where only the Decision Authority adopts rulings. That conflict is manufactured."},
+  {"record_id": "R30", "field": "norm.about_target", "worker": "IMPLEMENTATION_PROGRESS.md:58", "reviewer": "PB-006", "class": "coding", "why": "This is the same programme-reporting row that R29 act.target and R30 act.target code as PB-006. A file:line location is not a canonical governance identifier, and coding the row two ways splits one referent."},
+  {"record_id": "R15", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "The matrix stated the norm; ARB only adopted it via R-36. In R27 the worker coded the issuer rather than the later adopter, and in R22 a document as stater became UNMAPPABLE. The matrix's author is not named, so crediting ARB counts it as a separate ARB statement."},
+  {"record_id": "R16", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "Same as R15: ARB adopted the matrix but did not state it, and the matrix's author is unnamed."},
+  {"record_id": "R17", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "Same as R15."},
+  {"record_id": "R18", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "Same as R15. The Handover §9 mention is also an adoption, not a statement by ARB."},
+  {"record_id": "R19", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "Same as R15."},
+  {"record_id": "R20", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "Same as R15."},
+  {"record_id": "R21", "field": "norm.stated_by", "worker": "ARB", "reviewer": "UNMAPPABLE", "class": "independence", "why": "Same as R15. The worker correctly treats ER-02 as a source of the condition, not a stater, and should treat ARB the same way (adopter, not stater)."}
+ ],
+ "over_merges": [
+  "Motion vs work package: 'the motion opening WP-7B-R1' (R08 act.target, R08 and R09 norm.about_target) was coded WP-7B-R1. That merges R-60's motion with the work package that R04 authorizes, and pairs the non-ruling classification (R08) with ARB's implementation authorization (R04).",
+  "Framing vs object: the PO's framing of O-CLOSURE-VOCAB (R22 act.target) was coded as O-CLOSURE-VOCAB.",
+  "Occurred vs not occurred: act.operation for acts that did not happen (R22 RAISE, R29 SUPERSEDE, R31 AUTHORIZE-IMPL) shares codes with acts that did. R31 and R32 both become 'AUTHORIZE-IMPL Slice 7B'. This is inconsistent with the worker's own handling of R26 and R27.",
+  "Choosing a disposition vs adopting a ruling: the Chief's choice of ANNOTATE (R30) was coded ADOPT, the same code as the Decision Authority adopting R-81..R-85 (R02) and the PA adopting ES-004.3 (R23). That manufactures a 'Chief adopts' act.",
+  "Matrix author vs ARB: seven matrix norms (R15–R21 norm.stated_by) were credited to ARB, the adopter, which merges them with norms ARB itself issued (R04, R10, R12–R14, R26, R32–R34)."
+ ],
+ "under_merges": [
+  "PB-006 reporting row: one referent coded two ways, PB-006 (R29 and R30 act.target) and IMPLEMENTATION_PROGRESS.md:58 (R30 norm.about_target).",
+  "R-60 motion: coded WP-7B-R1 in R08 act.target but R-60 in R09 act.target, and within R09 coded R-60 (act) and WP-7B-R1 (norm). The correction removes the wrong codes, but R08 cannot be linked to R-60 without inventing an identifier, so the R08/R09 contrast must be paired through the shared record section (## R-60), not the target code.",
+  "Residual, not corrected: the composite targets 'R-81 through R-85' (R02 ×2), 'Slices 7B and 7C' (R14) and 'R-81 and R-84' (R36 ×2) cannot match their member identifiers (e.g. R14 vs R32/R34 Slice 7B/7C). This loses matches but does not create false ones."
+ ],
+ "usable_for_pairing": true,
+ "caveats": [
+  "Usable only with conditions: after the 16 corrections, no pairing on these codes creates a false match or contrast, provided the consumer (a) carries norm modality/polarity separately, (b) expands composite targets into their members, and (c) orders records in time.",
+  "The worker codes norm.about_operation without its modality (permitted / forbidden / not authorized): R12, R14, R20–R22, R26, R27, R31, R33. That is fine for a vocabulary, but pairing on operation alone would treat real time sequences as contradictions (R14 or R31 'not authorized' vs R32 or R34 'authorized'; R10 'does not begin' vs the R11 WP-4B RED commit).",
+  "Composite targets (R02, R14, R36) break the 'one canonical identifier' rule. There is no single right member to choose, so they are left as is. Note that 'R-81 and R-84' (R36) is a conjunction the worker built; the identifiers are in the value but the string is not.",
+  "UNMAPPABLE is used honestly throughout. R05 norm.about_operation ('plan and implement') is correctly UNMAPPABLE because PLAN and START-EXECUTION must not be merged, but R05 therefore drops out of plan/execute pairings with R12.",
+  "The R06 justification claims R-90 'was never entered in the register'. Neither span supports this, and R25 ('register number R-90', section ## R-90) suggests it was numbered. The code (PREPARE-ISSUE) still stands.",
+  "R21 target 'ChallengeResolvedIntegration' drops 'carrier'. This is accepted because the code identifier is canonical, but the candidate is the carrier role.",
+  "Candidate names (R15–R21) are used as target identifiers. The matrix row numbers ('matrix item #N') appear only in the spans, not the values, so using the names is correct under the literal-from-value rule.",
+  "'§12' (R27) is a bare section reference that is only unique in context. R36 also mentions R-84's §12 reconcile. Confirm they are the same §12 before pairing.",
+  "R25's 'R-90' (the register number) and R06/R07's 'R-90' (the ruling) share a string but are different kinds of referent. Pairing them links one lineage and does not create a contrast.",
+  "Records R24, R28 and R35 have no span and no values. Nothing was mapped for them, which is correct.",
+  "The review used only TASK.md, VALUES.json, RECORDS.json and MAPPING.json. The other 164 mappings were checked and accepted."
+ ]
+}
