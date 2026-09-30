@@ -1,0 +1,106 @@
+{
+ "artifact": "S5-CANARY-PRECHECK-v2.8.1",
+ "authority_context": "G-LOG-0108 (canary restart: R-3 + R-4); after the v2.8.1 rebind, the rebind-precondition fix and the OB0012 retirement",
+ "checker": "audit-p3b/impl/canary_precheck_v28.py",
+ "checker_sha256": "9650cf9f64255c9461931879f4cd583effb3b3255249667060cf323da0899450",
+ "kind": "engineering evidence (authority: generated); read-only",
+ "result": {
+  "activation_commit_exists": true,
+  "addendum_file_matches_frozen": true,
+  "batches": {
+   "OB0012": {
+    "empty_labels": 0,
+    "empty_objects_self_check_ok": 0,
+    "hub_batch": false,
+    "labels": 5,
+    "manifest_violations": 0,
+    "may_start_attempt": true,
+    "prompt_bundle_sha256": "433fa3f16c5a7e4d8c9dba033da641a5533685581319ad6a878a7aa8ea1ada8d",
+    "prompts_record_ids_ok": 5,
+    "prompts_with_hub_required_lines": 0,
+    "reading_manifests": 5,
+    "runs": 5,
+    "runs_by_role": {
+     "SINGLE": 5
+    },
+    "state": [
+     "PREPARED",
+     "OB0012-R7",
+     7,
+     2
+    ],
+    "view_violations": 0
+   },
+   "OB0114": {
+    "empty_labels": 1,
+    "empty_objects_self_check_ok": 1,
+    "hub_batch": false,
+    "labels": 5,
+    "manifest_violations": 0,
+    "may_start_attempt": true,
+    "prompt_bundle_sha256": "6aa328fcc689cb5de8b2dc69be4f36269d1651f7a928c82b8441aa6cafe1f352",
+    "prompts_record_ids_ok": 6,
+    "prompts_with_hub_required_lines": 0,
+    "reading_manifests": 5,
+    "runs": 6,
+    "runs_by_role": {
+     "SINGLE": 3,
+     "SYNTHESIS": 1,
+     "UNIT": 2
+    },
+    "state": [
+     "PREPARED",
+     "OB0114-R7",
+     7,
+     1
+    ],
+    "view_violations": 0
+   }
+  },
+  "contract": {
+   "path": "prompts/20260926_2400_p3b-agent-contract-r7-addendum.md",
+   "revision": 7,
+   "sha256": "7b68cbc914b9af9edce100b116864aee2f137cd511f2c816a532ec52eebd6d79"
+  },
+  "dispatch_root_check_production": {
+   "from_other_directory": false,
+   "from_repository": true
+  },
+  "manifest_sha256": "963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c",
+  "prompt_sha256": {
+   "OB0012-R7-L01": "d3d942f6d9003fef22861c906a818893ba975ce50f24df198184f837b3548167",
+   "OB0012-R7-L02": "7571ac48121b8d93f328155ca9fc9e02606c0961a1eb792186b98f7672d4f80c",
+   "OB0012-R7-L03": "32d4fc8dda79f2ac000c70177a7256794e44fc778842637296e210577b7b87a9",
+   "OB0012-R7-L04": "69f56ff2873da425dc6e6d87df01cd5f205d765338953b78b1f3315ce0f5dc27",
+   "OB0012-R7-L05": "e9fbda6245bcf93a872eeaa841ae6ce7c46ba478a708c8d1ea2a6f63d407f4b6",
+   "OB0114-R7-L01": "8d73f76562b28a23c6abc60dfbe9a9036af016d294d46ab7df0a85151e7a9627",
+   "OB0114-R7-L02": "e2a5f84069d420d52e5115a041578e7465efb2f999ffd1c1b3af1674e6e7bc88",
+   "OB0114-R7-L03S": "80cfbc8b1c0acc84b9b7daff07ec824907f751d3b055e7f217336808a4180e41",
+   "OB0114-R7-L03U01": "45440e6a38198848b8e5d6ee201715dfba28d7f4f2c6ce94a50cc85cba137dc0",
+   "OB0114-R7-L03U02": "46b1c88501f0ecd1a8182f1849d99fdb7777fb6f27c1c9e90039acb7b4e22415",
+   "OB0114-R7-L05": "7e7610e739217e23cbba90cdc1d43c11dca8524d5599b6d6c6b827b3f8b2de69"
+  },
+  "reader_is_repo_reader": true,
+  "revision_violations": [],
+  "state_bound": "963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c",
+  "tool_sha256_frozen_for_canary": {
+   "p3b_read_source.py": "f4be32e51389d16e76ab1402b39c04653d2ddab1eb51d7ccc0a0114b7c3546eb",
+   "p3b_s5_accept.py": "6d2c6a49b35a3a951f0c9b4d94e72a1b919591973a5ec3406a3f52b46b4e4109",
+   "p3b_s5_audit_record.py": "a9a0f68a45cd8acf3a6b0d3b6423e2141318a443d14673f0799d72190c03b920",
+   "p3b_s5_common.py": "57d6f3850c17774f76456e7d0f7064a608f8959c530122a28bf36b79c7d5f2cb",
+   "p3b_s5_r7_orchestrate.py": "456fd8b03d2a344d4b04c13f727727eb9294bd7427c9059d9c486c410af806bf",
+   "p3b_s5_r7_universe.py": "4b0769ec9118e81e833095ea4732878ec364f3bc83c60be0e62ce59926623141",
+   "p3b_s5_r7_verify.py": "47e1cbb7a27802004361b206247e6091dd40c83387f79737e0983ed3e5c7b740",
+   "p3b_s5_r7_witness.py": "833c44dcdf54c18d2565af6142ce7b208d6cbc998fb30f4c7acf4dbc315e2c9f",
+   "p3b_s5_state.py": "7aea0addab9253b722b646b9c0f7d45202e286e59470b2358f300571262733f5",
+   "p3b_s5_verify.py": "0d9e7c6c767e26b927aa76ec6426d123a238339c8572432f408f92e76b32350b"
+  },
+  "total_runs": 11,
+  "wsys": {
+   "f": 0,
+   "n": 0,
+   "stop": false
+  }
+ },
+ "supersedes": "audit-p3b/20260930_S5-CANARY-PRECHECK-v28b.json"
+}

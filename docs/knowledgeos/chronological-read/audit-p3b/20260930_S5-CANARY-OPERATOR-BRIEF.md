@@ -11,7 +11,7 @@
   - Every `prepare` passes `--dispatch-cwd <the session's primary working directory>`.
   - Before every dispatch, run `pwd -P` in a Bash call **without** `cd`. Its output is the directory the agents inherit, and it must equal `--dispatch-cwd` exactly; otherwise STOP. This closes the residual in R-C1: the tool can check only the directory it is given.
 - **Scope.** Work only on the S-Series; ignore other lanes.
-- **Governance.** G-LOG shows the restart approval; the contract rebind (v2.8.1) is committed; the latest canary pre-check record's `tool_sha256_frozen_for_canary` equals the current tool files (H-3).
+- **Governance.** G-LOG-0108 approved the restart. The contract is rebound to v2.8.1 (`7b68cbc9…`; manifest `93b78526…`). The pre-check record is `audit-p3b/20260930_S5-CANARY-PRECHECK-v281.json`: its `tool_sha256_frozen_for_canary` must equal the current tool files (H-3); verify this first, and stop if they differ.
 - **State.**
   - OB0012 is PREPARED at attempt 2: attempt 1 was retired into `ledger-p3b-r2/OB0012-R7.A1/`, and `new-attempt` was recorded.
   - OB0114 is PREPARED at attempt 1.

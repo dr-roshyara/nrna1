@@ -40,8 +40,12 @@ for B in CANARY:
             [f"{sr}/{B}/{lab}.json" for lab in e["labels"]]:
         os.makedirs(os.path.dirname(os.path.join(root, rel)), exist_ok=True)
         shutil.copyfile(os.path.join(O.CR, rel), os.path.join(root, rel))
+    repo = tempfile.mkdtemp(prefix=f"canary28-repo-{B}-", dir=SP)      # F-1/F-5: the copy is reached through a
+    subprocess.run(["git", "init", "-q", repo], check=True)                # git repo whose CR path links to it, as
+    os.makedirs(os.path.join(repo, "docs", "knowledgeos"))                 # an agent started there would resolve it
+    os.symlink(root, os.path.join(repo, "docs", "knowledgeos", "chronological-read"))
     r = O.prepare(B, root=root, emit=tempfile.mkdtemp(prefix=f"emit28-{B}-", dir=SP),
-                  state_path=os.path.join(O.CR, "P3B-STATE.json"))
+                  state_path=os.path.join(O.CR, "P3B-STATE.json"), cwd=repo)
     ctx = O._context(B, root)
     plan, owners = ctx["plan"], ctx["owners"]
     ms = json.load(open(os.path.join(ctx["adir"], "INPUT-MANIFESTS.json")))
@@ -76,6 +80,11 @@ for B in CANARY:
         "may_start_attempt": O.may_start_attempt(B)[0],
         "prompt_bundle_sha256": U.sha(U.canon({k: v for k, v in sorted(prompt_sha.items()) if k.startswith(B)}))}
 out["total_runs"] = total_runs
+NRNA1 = os.path.dirname(os.path.dirname(os.path.dirname(O.CR)))                 # the repository holding CR
+OTHER = os.environ.get("CANARY_OTHER_CWD")                                      # e.g. the attempt-1 working directory
+out["dispatch_root_check_production"] = {
+    "from_repository": O.dispatch_root_check(CANARY[0], root=O.CR, cwd=NRNA1)[0],
+    "from_other_directory": (O.dispatch_root_check(CANARY[0], root=O.CR, cwd=OTHER)[0] if OTHER else None)}
 out["tool_sha256_frozen_for_canary"] = {n: U.fsha(os.path.join(O.CR, "scripts", n)) for n in (
     "p3b_s5_r7_orchestrate.py", "p3b_s5_r7_witness.py", "p3b_s5_r7_verify.py", "p3b_s5_verify.py", "p3b_read_source.py",
     "p3b_s5_r7_universe.py", "p3b_s5_state.py", "p3b_s5_audit_record.py", "p3b_s5_accept.py", "p3b_s5_common.py")}

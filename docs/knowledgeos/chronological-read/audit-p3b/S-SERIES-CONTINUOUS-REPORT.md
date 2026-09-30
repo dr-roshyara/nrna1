@@ -494,3 +494,10 @@ Under B2 re-review.
   - R-2: prompt line counts. The rule N = count("\n") + 1 was verified independently on the harness.
   - Full suite 1,419 OK.
 - **Next human gate:** the canary restart decision (`audit-p3b/20260930_S5-CANARY-RESTART-DECISION.md`) and the operator brief for a fresh session.
+
+**2026-09-30 — the canary restart prepared (G-LOG-0108).**
+- R-3: v2.8.1 is rebound.
+- An ordering deadlock between two safety checks was resolved by a reviewed precondition fix, not by bypassing either check.
+- OB0012 attempt 1 is retired (preserved; class X; never estimated), and attempt 2 is PREPARED.
+- The pre-check v2.8.1 is all green, including the live dispatch-cwd guard.
+- **Next:** a fresh session rooted in nrna1 runs the operator brief, then STOP at the canary evaluation.

@@ -555,9 +555,15 @@
      "revision": 7,
      "run_id": "OB0012-R7",
      "state": "FAILED"
+    },
+    {
+     "attempt": 2,
+     "revision": 7,
+     "run_id": "OB0012-R7",
+     "state": "PREPARED"
     }
    ],
-   "state": "FAILED"
+   "state": "PREPARED"
   },
   "OB0013": {
    "ordinal": 1,
@@ -17692,9 +17698,54 @@
    "seq": 810,
    "to": "FAILED",
    "utc": "2026-09-30T13:57:21Z"
+  },
+  {
+   "actor": "orchestrator",
+   "batch_id": "*",
+   "entry_sha256": "74642ff5abb07b78859279fb2bb9431c8a429feb99bd6fbbb0d113cb1d88a672",
+   "from": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+   "prev_sha256": "724f1b43290aa10bd581342d008332e0ac9e81cfd0b6ff2bd287567ecdf33a4c",
+   "reason": "manifest rebind: G-LOG-0108",
+   "run_id": null,
+   "run_kind": "MANIFEST-REVISION",
+   "seq": 811,
+   "to": "93b785263f8a84e85f856e6d88ccbb9a8018ab55634f0416bcdc276c187b0b1b",
+   "utc": "2026-09-30T17:55:06Z"
+  },
+  {
+   "actor": "orchestrator",
+   "batch_id": "*",
+   "entry_sha256": "0222e24e0003caed09b63d62f69fc4ba953b352d976c36030bcc1d2877931bb4",
+   "from": "93b785263f8a84e85f856e6d88ccbb9a8018ab55634f0416bcdc276c187b0b1b",
+   "prev_sha256": "74642ff5abb07b78859279fb2bb9431c8a429feb99bd6fbbb0d113cb1d88a672",
+   "reason": "manifest rebind: G-LOG-0108 canary restart (R-4): attempt 1 class X environment (F-1)",
+   "run_id": null,
+   "run_kind": "MANIFEST-REVISION",
+   "seq": 812,
+   "to": "963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c",
+   "utc": "2026-09-30T17:55:35Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 2,
+   "batch_id": "OB0012",
+   "cause_class": "X",
+   "entry_sha256": "602e0f5dc2be03873954be283fa74f6efb86ec43e7821909397efe20dd47e964",
+   "from": "FAILED",
+   "prev_sha256": "0222e24e0003caed09b63d62f69fc4ba953b352d976c36030bcc1d2877931bb4",
+   "reason": "new attempt 2: attempt 1 retired (class X)",
+   "retirement": {
+    "path": "ledger-p3b-r2/OB0012-R7.A1/RETIREMENT-COMPLETE.json",
+    "sha256": "40fdc7815cddf9b60c096c2ba60426088ee8b972a218d6a02b4692fe689ee23a"
+   },
+   "run_id": "OB0012-R7",
+   "run_kind": "NEW-ATTEMPT",
+   "seq": 813,
+   "to": "PREPARED",
+   "utc": "2026-09-30T17:55:46Z"
   }
  ],
- "history_head_sha256": "724f1b43290aa10bd581342d008332e0ac9e81cfd0b6ff2bd287567ecdf33a4c",
+ "history_head_sha256": "602e0f5dc2be03873954be283fa74f6efb86ec43e7821909397efe20dd47e964",
  "manifest": "_batch_manifest_p3b_r2.jsonl",
  "manifest_revisions": [
   {
@@ -17727,9 +17778,21 @@
    "reason": "G-LOG-0106",
    "to_sha256": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
    "utc": "2026-09-30T06:08:17Z"
+  },
+  {
+   "from_sha256": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+   "reason": "G-LOG-0108",
+   "to_sha256": "93b785263f8a84e85f856e6d88ccbb9a8018ab55634f0416bcdc276c187b0b1b",
+   "utc": "2026-09-30T17:55:06Z"
+  },
+  {
+   "from_sha256": "93b785263f8a84e85f856e6d88ccbb9a8018ab55634f0416bcdc276c187b0b1b",
+   "reason": "G-LOG-0108 canary restart (R-4): attempt 1 class X environment (F-1)",
+   "to_sha256": "963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c",
+   "utc": "2026-09-30T17:55:35Z"
   }
  ],
- "manifest_sha256": "5978fbf5d9b72fed27142d9110e1c1bf32d401ca87c5eca1d8e92dbf13c0c650",
+ "manifest_sha256": "963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c",
  "plan_sha256": "f89a16824efaeea08d54fbc857b4cf36184cb698deb482550026fe194b3c7de1",
  "schema": "P3B-STATE/S5 v1",
  "seal_id": "HS-3d32dd44d162"

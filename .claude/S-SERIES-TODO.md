@@ -115,7 +115,8 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 - [x] **v2.8 approved (G-LOG-0106, R-I), implemented (5 A/B-reviewed slices), rebound** (contract `4d4dac6b…`, manifest `5978fbf5…`); full suite 1,400 OK; canary pre-check v2.8 all green (`audit-p3b/20260930_S5-CANARY-PRECHECK-v28.json`); EP-01 committed + sha-bound
 - [ ] backlog: hash-chain P3B-GOVERNANCE-LOG.md (governance integrity) · `add_comparison` R2S naming under R7 · orchestrator prompt 'whole file' sentence has no contract anchor
 - [x] **S5 canary attempt 1** (G-LOG-0107): STOPPED — class X environment (reader resolves root from cwd); findings F-1..F-5; repairs R-1/R-2 committed
-- [ ] **NEXT (HUMAN): canary restart decision** `audit-p3b/20260930_S5-CANARY-RESTART-DECISION.md` (v2.8.1 status text + rebind; OB0012 attempt 2; fresh session in nrna1 via the operator brief; the 5 stray logs in the ansible repo) → canary OB0012 + OB0114 (stop: ≥ 6/11 runs failed) → S5 (396 / 1,975)
+- [x] **Canary restart approved (G-LOG-0108)**: v2.8.1 rebound; OB0012 attempt 1 retired → attempt 2 PREPARED; pre-check v2.8.1 green
+- [ ] **NEXT (HUMAN): start a fresh Claude Code session in nrna1** → execute `audit-p3b/20260930_S5-CANARY-OPERATOR-BRIEF.md` → STOP at canary evaluation
 
 **Critical path from here (in order; researcher's rule: the corpus is brainstorming material; derive a ROBUST theory or report none):**
 - [x] **A1** Focused independent re-check: **ACCEPTABLE**. F-01 CLOSED (6 shipped + 6 new adversarial reproducers); I1: 16,000 seeded trials, 0 findings; I7: no MATERIAL counterexample. 0 MATERIAL; 2 MINOR (RC-02 empty persisted file → false FAIL; RC-03 missing manifest-entry file skips its hash check, `p3b_s5_r7_verify.py:100`, not exploitable per ADR-R7-01). Report `audit-p3b/20260927_R7-FOCUSED-RECHECK.md`
