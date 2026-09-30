@@ -282,3 +282,105 @@ So under Option A, a UC-4 implementation faces this, derived from the pin's and 
 ### The decision question is unchanged
 
 §3 stands exactly as written. **What changed is its character** (`M-1`) and **two feasibility facts Option A must be chosen with** (`M-2`, `M-3`). ⛔ **Still no option selected, no ranking, no recommendation.**
+
+---
+
+## 12 · ⚠️ `M-7` — the decision question maps onto only PART of UC-4 (new evidence, 2026-09-30)
+
+**Two different "gate" facts are in play, and conflating them has been distorting the question.**
+
+| Fact | What it is | Obtainable today? |
+|---|---|---|
+| **`AcceptanceGateDecision`** (AG-2) | the established constitutional decision | ✅ **yes** — held in AG-2, seeded by `seedGate()`. **This is the subject of §3's question.** |
+| **`HaltedAtGate`** | the *halt* fact | ⛔ **no** — *"NO port in the authorized six-port universe can supply one"* (`FillCommitteeSeatHandler.php:77-82`) |
+
+**Where the gate decision actually enters UC-4 — verified chain:**
+
+```
+onHaltedRecoveryExpiry(…, OperationalCondition $operational)   refuses if Inoperative
+        ← $committee->unableToFunction(RequiredVotes $required)      (ElectionCommittee.php:125)
+              ← $required = $decision->requiredVotes()               (AcceptanceGateDecision.php:117)
+                    ← thresholdRule->requiredVotesFor($constitutedSize)
+```
+
+⇒ **The `AcceptanceGateDecision` is needed for the `¬Inoperative` precondition, which the authorized flow scopes to the HALTED branch only.** `§8d` of the authorized proposal shows the handler reading **`find(AG-3)`** and applying *"preconditions: kind · **¬Inoperative (halted branch)** · ¬recoverySucceeded · isExpiredAt"* — **no AG-2 lookup appears in the authorized flow at all.**
+
+**And the restoration branch needs neither fact.** `ExpiryConsequence::onRestorationExpiry()` takes only `ElectionId`, `RecoveryProcess`, `RecordedInstant` (`:73-90`) — no gate decision, no halt.
+
+### Consequence, stated as evidence
+
+| UC-4 branch | Needs `AcceptanceGateDecision`? | Needs `HaltedAtGate`? |
+|---|---|---|
+| **Restoration expiry** (RED test 2) | **No** | **No** |
+| **Halted-recovery expiry** (RED test 1) | **Yes** — via `¬Inoperative` | **Yes** — and it is unobtainable |
+| **Refusal paths** (RED tests 3, 4) | test 4 is the halted branch ⇒ yes; test 3 depends on whether the handler pre-checks `isExpiredAt` before calling P-6, which `§8d` places on the handler side | ⚠️ **undetermined** — the handler is unimplemented, so this is design detail for the UC-4 slice, not established here |
+
+> ### 🔴 **A scoping option neither this record nor the brief contained**
+> **An Option-A slice bounded to the RESTORATION branch would require neither the `AcceptanceGateDecision` nor the `HaltedAtGate`** — it sidesteps `M-3` entirely and most of §3's question.
+>
+> ⛔ **This is offered as evidence, not as a recommendation, and not as a third option.** The preparing process does **not** propose it, rank it, or suggest the slice be scoped that way. **Whether UC-4 is commissioned whole, bounded to a branch, or not at all is the PO/ARB's to decide** — and bounding a slice by branch is itself a scoping act requiring its own authorization.
+
+### Effect on §3
+
+**§3's question is unchanged in wording but narrower in reach than it appears:** it governs the **halted branch's `¬Inoperative` precondition**, not UC-4 as a whole. A PO/ARB answer of *"yes, assume present"* would not make the halted branch implementable (`M-3`: the halt fact is still unobtainable), and a *"no"* would not block the restoration branch (which needs no gate).
+
+⛔ **No option selected. No ranking. No recommendation.**
+
+---
+
+## 13 · ⚠️ AUDIT CORRECTIONS to §11 and §12 — separate-session audit of `M-1`, `M-2`, `M-3`, `M-7` (`ES-004.3`, additive)
+
+**Provenance, stated plainly.** Recorded 2026-09-30 by `claude-code-session:42e0287e-e0e2-4638-8165-cd5d5862c578`, a **separate session the human started** (not the preparing process `84c0f6f6…`, not a subagent of it). ⚠️ **Self-declared, not attestable** (`INV-ATTR-1/2`, `G-2`) — §9's independence bar is met in *mechanism* only as far as this declaration can be trusted. The audit read the repository and governing documents directly. It **implemented nothing, changed no test, and decided nothing**. **Nothing above is deleted or rewritten**; this section corrects by addition.
+
+**Test state, run by this audit (read-only):** `AbsentAggregateReferenceRedTest` **FAILS** — exactly `FillCommitteeSeatHandler.php: $committee` and `$decision`. `ReportPeriodExpiryHandlerRedTest` — **4 errors**, all `BadMethodCallException` (`ReportPeriodExpiryHandler.php:33`). UC-4 handler exercises suite-wide: **7** (4 + 2 + 1) — ✅ `m-4` confirmed.
+
+### `A-1` · `M-1` — **confirmed, with one uncited source**
+
+✅ Confirmed: the grant (`…boundary-authorization-registration.md:19`, signed §3b) · UC-4 named in the bounding proposal (`:61`, `:114`, `:251`, `:281`) · the hold (`architecture-hold.md:3`) · *"NOT YET"* (`red-amendment-approval.md:10`) · the *"a clarification, not an amendment"* precedent (`rule8-gate-post-decisions.md:30`).
+
+⚠️ **Not cited in §11:** the hold's own ordered steps end *"→ **only then GREEN-5 authorization.**"* (`architecture-hold.md:34`). The hold record therefore itself anticipates a further **authorization act** for GREEN-5. This is evidence bearing on the *amendment* vs *hold-release* classification; it does **not** settle it. It is consistent with §7 (separate authorization required).
+
+### `A-2` · `M-2` — **mechanics confirmed; the table attributes ADR prohibitions to the pin**
+
+✅ Confirmed: `HANDLER_DIR` (`AbsentAggregateReferenceRedTest.php:54`) · glob over every handler file (`:99`) · the pin is currently RED.
+
+⚠️ **Overstated:**
+- The pin **mechanically passes** both `?? throw` and an early return; it fails **only on silence** (docblock `:28-36`; `absenceIsDecidedExplicitly()` `:165-188`). Rows 2 and 3 of §11's `M-2` table are prohibitions from **`ADR-1` §6(b) / `6-guard`**, not failures of the pin. The pin is a fifth binding test; the ADR is what forbids the shapes that would satisfy it.
+- `ADR-1` §6(b)'s prohibition is **conditional** — *"when the `null` itself is being used by the Application layer to conclude that the caller violated a business invariant."* The characterisation of `?? throw` as *"expressly"* prohibited rests on the Rule-8 gate (`rule8-gate-adr1.md:27`), not on the ADR's literal text.
+
+⚠️ **Omitted:**
+- The **only** lookup the authorized flow names (`§8d`: `find(AG-3)`, `RecoveryProcess`) has a **sanctioned** absence answer — an early return is conformant (Rule-8 gate Q4 `:18`; `ADR-1` §6(c); constraint ⑦). §11's "early return" row holds only for AG-1/AG-2 lookups.
+- The committed GREEN-1 handler surface already **injects** `ElectionCommitteeRepository` and `AcceptanceGateDecisionRepository` (`ReportPeriodExpiryHandler.php:23-24`), although `§8d` shows no AG-1/AG-2 read.
+
+### `A-3` · `M-3` — **conclusion holds; its evidence predates Act B, and one attribution is wrong**
+
+✅ Confirmed: test 1 requires `RecoveryPeriodExpired` · produced only by `onHaltedRecoveryExpiry(…, HaltedAtGate $halt, …)` (`ExpiryConsequence.php:38-45`) · **no production code constructs a `HaltedAtGate`** (the only construction path is the `ElectionOperationalStatus::operativeHalted()` factory, `:27`, which nothing calls) · the UC-4 handler's collaborators cannot supply one. *(Fact, no inference drawn: `$halt` is required by the signature and is not read in the method body, `:46-65`.)*
+
+🔴 **Material omission.** §11 relies on the UC-3 docblock (`FillCommitteeSeatHandler.php:77-82`, authored 2026-08-17). **Since then a domain retrieval contract has landed:** `Domain/OperatingCore/Port/RecordedOperationalStatus` (`216552aa7`, 2026-08-19, `(PBDIGIT-68)` EM-DOM-001 Act B GREEN), returning `ElectionOperationalStatus` — which carries `?HaltedAtGate` and `OperationalCondition`. **Neither this record nor the brief mentions it.**
+- Its docblock: *"NO ADAPTER AND NO CALLER IS AUTHORIZED by this declaration"* (`:56-58`).
+- Design map `V-9` (`…act-b-domain-design-map.md:71`, `:197`): the "six-port universe" is the Application's **injected collaborator set**; Act B *"wires it nowhere … Act D will enlarge it to seven and therefore needs its own authorization."*
+- ⇒ The quoted sentence remains **true today** (the port is outside the six), and *"unobtainable today"* stands — **but the reason is no longer "no contract exists"; it is "the contract exists and is not wired, recorded or persisted (Acts C/D unauthorized)".** `PBDIGIT-72:29-30` had already framed Act B this way (*nameable, not retrievable*; still needs a caller).
+
+🔴 **Contradiction.** §11 `M-3` calls the `HaltedAtGate` producer gap *"`PBDIGIT-72`'s **second**, independent cause."* `PBDIGIT-72:44-45` lists it as cause **1**; cause **2** is *"UC-4 is itself unimplemented."*
+
+### `A-4` · `M-7` — **partly confirmed; its central claim exceeds the evidence**
+
+✅ Confirmed: `onRestorationExpiry()` takes only `ElectionId`, `RecoveryProcess`, `RecordedInstant` (`ExpiryConsequence.php:73-77`) · `§8d` shows only `find(AG-3)` and *"¬Inoperative (halted branch)"* · chain line references `ElectionCommittee.php:125`, `AcceptanceGateDecision.php:117/119`.
+
+⚠️ **Not established by the evidence:**
+1. **That AG-2 enters the halted branch *only* via `¬Inoperative`.** P-6 also takes `bool $recoverySucceeded`. Tests 1 and 3 seed AG-2 positions annotated *"halt by decision — recovery never succeeded"* (`ReportPeriodExpiryHandlerRedTest.php:45`), which indicates the fixture expects that flag to derive from AG-2 as well. The handler is unimplemented, so this is **undetermined**, not settled either way.
+2. **That AG-2 is *the* source of `¬Inoperative`.** Deriving it via `unableToFunction($decision->requiredVotes())` is **UC-3's pattern** (`FillCommitteeSeatHandler.php:106-112`), not the only conceivable source: `ElectionOperationalStatus::condition()` exists (unwired, see `A-3`).
+3. **That the restoration branch needs no gate.** True of P-6's **signature**; but P-6's docblock reads *"Restoration-period expiry **while Inoperative**"* (`:69`) without checking it, and test 2 seeds a gate **and** an Inoperative committee (`:66-68`). Whether the handler must itself guard Inoperative on that branch is **undetermined**; no RED pins it either way.
+
+🔴 **Contradiction with governing text.** §12's *"a 'no' would not block the restoration branch"* speaks to **technical need**. The governing records block GREEN-5 **as a whole**, not per branch: design map `:276` (*"GREEN-5 — 🔴 blocked by `BND-1`"*, gate `G-6`) and the Rule-8 consequent sequence (`rule8-gate-adr1.md:35-43`, GREEN-5 last). §12 does not distinguish technical dependency from governance status.
+
+### `A-5` · Record integrity
+
+- §12 (`M-7`) exists **only in the working tree** at the time of this audit — uncommitted.
+- The only commit touching this file is **`a72528b29`**, subject *"docs: exclude large derived files from history"* — a subject that does not describe this record (traceability gap; not repaired here).
+
+### Overall assessment (evidence, not a decision)
+
+§11/§12 move the record toward the evidence and their central findings survive. They are **inaccurate or incomplete** in four respects: the omitted `RecordedOperationalStatus` contract (`A-3`, bearing on `A-4`) · the `PBDIGIT-72` cause numbering (`A-3`) · pin verdicts attributed to shapes the ADR forbids (`A-2`) · `M-7`'s "only `¬Inoperative`" and "restoration unblocked" claims (`A-4`). **§3's question stands as written.** Decision Blocks **A, B and State C remain BLANK.**
+
+⛔ **No option selected. No ranking. No recommendation. No implementation. `app/` and `tests/` byte-untouched by this audit.**
