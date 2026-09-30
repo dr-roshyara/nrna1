@@ -560,10 +560,10 @@
      "attempt": 2,
      "revision": 7,
      "run_id": "OB0012-R7",
-     "state": "PREPARED"
+     "state": "FAILED"
     }
    ],
-   "state": "PREPARED"
+   "state": "FAILED"
   },
   "OB0013": {
    "ordinal": 1,
@@ -17743,9 +17743,53 @@
    "seq": 813,
    "to": "PREPARED",
    "utc": "2026-09-30T17:55:46Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 2,
+   "batch_id": "OB0012",
+   "entry_sha256": "0db0c9390cd416aa032e6d5120f0cd6c53831cfe41312f1fa5089f6addc393c7",
+   "from": "PREPARED",
+   "prev_sha256": "602e0f5dc2be03873954be283fa74f6efb86ec43e7821909397efe20dd47e964",
+   "reason": "G-LOG-0108",
+   "run_id": "OB0012-R7",
+   "run_kind": "PRIMARY",
+   "seq": 814,
+   "to": "DISPATCHED",
+   "utc": "2026-09-30T18:54:14Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 2,
+   "batch_id": "OB0012",
+   "entry_sha256": "dbc16d65a641ae345cfad9cd5ec5f923c46237666531e877a3c16e4479ca4e6a",
+   "from": "DISPATCHED",
+   "prev_sha256": "0db0c9390cd416aa032e6d5120f0cd6c53831cfe41312f1fa5089f6addc393c7",
+   "reason": "assembly + freeze-final complete; WITNESS-DIGESTS.json sha256 1fd75cef550cd47903025f4d6d7800469d386b56d44caaf54a9bf8a40f1adbd4",
+   "run_id": "OB0012-R7",
+   "run_kind": "PRIMARY",
+   "seq": 815,
+   "to": "PROPOSED",
+   "utc": "2026-09-30T19:11:31Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 2,
+   "batch_id": "OB0012",
+   "entry_sha256": "078198044bcbcdc3f79bcf571a86ee04b4f77f7565022920d2fc77468804ff45",
+   "failure_class": "A1",
+   "failure_signature": "3357786973937f64bd5af6b7587eba59795849cb0737e70c105eb675bf125323",
+   "from": "PROPOSED",
+   "prev_sha256": "dbc16d65a641ae345cfad9cd5ec5f923c46237666531e877a3c16e4479ca4e6a",
+   "reason": "G-LOG-0108 canary restart, attempt 2: verify BATCH-FAIL (audit-p3b/S5-VERIFY-OB0012-R7.A2.json, 195 failures). Class A1 by the frozen EG-6 mapping (highest: R7-W W8 and R7-W W5 <run>, L03; no S/D/H/X strings; rest A2).",
+   "run_id": "OB0012-R7",
+   "run_kind": "PRIMARY",
+   "seq": 816,
+   "to": "FAILED",
+   "utc": "2026-09-30T19:14:32Z"
   }
  ],
- "history_head_sha256": "602e0f5dc2be03873954be283fa74f6efb86ec43e7821909397efe20dd47e964",
+ "history_head_sha256": "078198044bcbcdc3f79bcf571a86ee04b4f77f7565022920d2fc77468804ff45",
  "manifest": "_batch_manifest_p3b_r2.jsonl",
  "manifest_revisions": [
   {
