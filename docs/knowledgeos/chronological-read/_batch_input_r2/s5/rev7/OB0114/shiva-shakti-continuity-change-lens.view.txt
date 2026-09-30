@@ -1,0 +1,498 @@
+# SLICE-VIEW v1 (R7 v2.7): one line per JSON leaf of the frozen slice — <path> TAB <kind> TAB <payload>; path = JSON array of keys/indices; kinds: N scalar, E empty container, S k/n string chunk (JSON)
+["batch_id"]	S 1/1	"OB0114"
+["bundle","reconciliation_object","aliases"]	E	[]
+["bundle","reconciliation_object","assumption_register"]	E	[]
+["bundle","reconciliation_object","candidate_births","conceptual"]	N	null
+["bundle","reconciliation_object","candidate_births","formal"]	N	null
+["bundle","reconciliation_object","candidate_births","governance"]	N	null
+["bundle","reconciliation_object","candidate_births","lexical"]	N	null
+["bundle","reconciliation_object","candidate_births","operational"]	N	null
+["bundle","reconciliation_object","completeness","assumptions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","assumptions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","dependencies","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","dependencies","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","examples","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","examples","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","experiments","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","experiments","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","formal_definition","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","informal_meaning","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","informal_meaning","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","invariants","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","invariants","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","open_questions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","open_questions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","purpose_rationale","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","semantics","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","semantics","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","type_signature","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","type_signature","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","warnings","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","warnings","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness_absences",0]	S 1/1	"purpose_rationale"
+["bundle","reconciliation_object","completeness_absences",1]	S 1/1	"informal_meaning"
+["bundle","reconciliation_object","completeness_absences",2]	S 1/1	"formal_definition"
+["bundle","reconciliation_object","completeness_absences",3]	S 1/1	"type_signature"
+["bundle","reconciliation_object","completeness_absences",4]	S 1/1	"invariants"
+["bundle","reconciliation_object","completeness_absences",5]	S 1/1	"dependencies"
+["bundle","reconciliation_object","completeness_absences",6]	S 1/1	"assumptions"
+["bundle","reconciliation_object","completeness_absences",7]	S 1/1	"semantics"
+["bundle","reconciliation_object","completeness_absences",8]	S 1/1	"examples"
+["bundle","reconciliation_object","completeness_absences",9]	S 1/1	"warnings"
+["bundle","reconciliation_object","completeness_absences",10]	S 1/1	"experiments"
+["bundle","reconciliation_object","completeness_absences",11]	S 1/1	"open_questions"
+["bundle","reconciliation_object","files_touching"]	E	[]
+["bundle","reconciliation_object","group_ids",0]	S 1/1	"G0063"
+["bundle","reconciliation_object","last_seen"]	N	null
+["bundle","reconciliation_object","lifecycle_candidate"]	S 1/1	"DORMANT"
+["bundle","reconciliation_object","lifecycle_evidence","contested_by_own_contradiction_type"]	N	false
+["bundle","reconciliation_object","lifecycle_evidence","retracted_by"]	E	[]
+["bundle","reconciliation_object","lifecycle_evidence","superseded_by"]	E	[]
+["bundle","reconciliation_object","notations",0]	S 1/1	"Shakti = manifestation/change"
+["bundle","reconciliation_object","notations",1]	S 1/1	"Shiva = invariant/continuity"
+["bundle","reconciliation_object","pair_count"]	N	1
+["bundle","reconciliation_object","pairs_touching",0,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",0,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"notes_for_p3b"]	S 1/1	"b_row_count=0 despite the label appearing in S0366/S0367/S0370-372/S0383 per the grouping note's own description -- likely a Phase-1 extraction gap worth flagging to governance. a_rows_truncated=365 of 385 -- the family is enormous and only lightly sampled; a targeted search for 'Shiva'/'Shakti' within a's full family would be the natural next step if this pair is escalated."
+["bundle","reconciliation_object","pairs_touching",0,"pair_id"]	S 1/1	"RP1212"
+["bundle","reconciliation_object","pairs_touching",0,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",0,"what_says_this"]	S 1/1	"b has zero rows in the ledger (b_row_count=0) -- no content at all is captured for this label, despite a POSSIBLY-RELATION note describing b's content (a Shiva=invariant/continuity vs Shakti=manifestation/change lens introduced in S0366 and reused in S0367/S0370-S0372/S0383). a's massive 385-row family (checked for lineage_claims in _derived.json, 35 rows carry them, none targeting b or naming Shiva/Shakti) discusses the Kernel concept extensively but the specific Shiva/Shakti lens content is not independently verifiable from either family's captured rows."
+["bundle","reconciliation_object","pairs_touching",0,"what_would_make_this_wrong"]	S 1/1	"If b's rows exist in the source corpus but were simply not captured by Phase-1 extraction (a genuine gap), a re-extraction could surface real content and lineage; nothing in the current ledger supports any relationship."
+["bundle","reconciliation_object","pairs_touching",0,"with_label"]	S 1/1	"knowledgeos-kernel-concept"
+["bundle","reconciliation_object","primary_layer_provisional"]	S 1/1	"LAYER-UNRESOLVED"
+["bundle","reconciliation_object","rationale_evidence"]	E	[]
+["bundle","reconciliation_object","row_count"]	N	0
+["bundle","reconciliation_object","secondary_roles_provisional"]	E	[]
+["bundle","reconciliation_object","working_label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["bundle","rows_verbatim"]	E	[]
+["bundle","sources_verbatim"]	E	[]
+["bundle","working_label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["contract_sha256"]	S 1/1	"b8eef043f3b2ea4bbeb8be03fb1487787c6b1b6712455eaf15286299393809da"
+["family_md"]	S 1/3	"# shiva-shakti-continuity-change-lens\n\n**Scope(s):** METHODOLOGICAL · **Row count:** 0 · **Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED\n**Notations:** `Shakti = manifestation/change`, `Shiva = invariant/continuity` · **Aliases:** none recorded\n**Candidate group membership (NOT an identity claim):**\n- **G0063**: candidate group with `knowledgeos-kernel-concept` — explicit agent-stated uncertainty: 'shiva-shakti-continuity-change-lens' POSSIBLY relates to 'knowledgeos-kernel-concept' (batch B0010). Note: A structural (not literal-theological) lens distinguishing what remains invariant (Shiva) from what legitimately transforms (Shakti), introduced in S0366 and reused in S0367, S0370-S0372, S0383. (mechanical signal only; relationship not yet decided, P3).\n\n\n\n## Sources (how this label entered the ledger)\n- **PROPOSAL** (batch B0010, scope METHODOLOGICAL): A structural (not literal-theological) lens distinguishing what remains invariant (Shiva) from what leg"
+["family_md"]	S 2/3	"itimately transforms (Shakti), introduced in S0366 and reused in S0367, S0370-S0372, S0383.\n\n## Candidate births\n- CANDIDATE-LEXICAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-FORMAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n\n## Lifecycle\nlast_seen: none. Candidate lifecycle: DORMANT. Evidence: none recorded (no retraction/supersession/contradiction signal) — this lifecycle label is a heuristic based on how recently (by source_id) this label was last used, not a confirmed retirement or a confirmed ongoing status.\n\n## Completeness roll-up\n| Dimension | Status | Source ids |\n|---|---|---|\n| Purpose / rationale | NOT-EVIDENCED-IN-CAPTURE | — |\n| Informal meaning | NOT-EVIDENCED-IN-CAPTURE | — |\n| Formal definition | NOT-EVIDENCED-IN-CAPTURE | — |\n| Type signature | NOT-EVIDENCED-IN-CAPTURE | — |\n| Invariants | NOT-EVIDENCED-IN-CAPTURE"
+["family_md"]	S 3/3	" | — |\n| Dependencies | NOT-EVIDENCED-IN-CAPTURE | — |\n| Assumptions | NOT-EVIDENCED-IN-CAPTURE | — |\n| Semantics | NOT-EVIDENCED-IN-CAPTURE | — |\n| Examples | NOT-EVIDENCED-IN-CAPTURE | — |\n| Warnings | NOT-EVIDENCED-IN-CAPTURE | — |\n| Experiments | NOT-EVIDENCED-IN-CAPTURE | — |\n| Open questions | NOT-EVIDENCED-IN-CAPTURE | — |\n\n## Rationale\nNOT-EVIDENCED-IN-CAPTURE\n\n## Assumption register\nNOT-EVIDENCED-IN-CAPTURE\n\n## All rows (source_id order)\nNo rows captured for this label in this batch — the label entered the ledger via an OBJECT-INDEX/PROPOSAL registration (see Sources) but no contribution row in 03-CONTRIBUTIONS.jsonl was tagged with it in this capture.\n\n## Notes for P3\nNone — this label's evidence is internally consistent within the rows captured for this batch.\n"
+["family_md_sha256"]	S 1/1	"d625af150739ce6fd66ebd7d50595980a706ae12c23b10f6b7dc2a41861f4424"
+["family_md_status"]	S 1/1	"PRESENT"
+["hub"]	N	false
+["hub_record"]	N	null
+["in_checklist"]	N	false
+["input_manifest_sha256"]	S 1/1	"a20cf3a3e2fc9e1fc9c38919838c9edb3a0d901577a060d5804dc1e899a150b6"
+["p3a_pairs",0,"_batch_id"]	S 1/1	"RP0027"
+["p3a_pairs",0,"a"]	S 1/1	"knowledgeos-kernel-concept"
+["p3a_pairs",0,"b"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["p3a_pairs",0,"basis"]	S 1/1	"NONE"
+["p3a_pairs",0,"notes_for_p3b"]	S 1/1	"b_row_count=0 despite the label appearing in S0366/S0367/S0370-372/S0383 per the grouping note's own description -- likely a Phase-1 extraction gap worth flagging to governance. a_rows_truncated=365 of 385 -- the family is enormous and only lightly sampled; a targeted search for 'Shiva'/'Shakti' within a's full family would be the natural next step if this pair is escalated."
+["p3a_pairs",0,"pair_id"]	S 1/1	"RP1212"
+["p3a_pairs",0,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",0,"what_says_this"]	S 1/1	"b has zero rows in the ledger (b_row_count=0) -- no content at all is captured for this label, despite a POSSIBLY-RELATION note describing b's content (a Shiva=invariant/continuity vs Shakti=manifestation/change lens introduced in S0366 and reused in S0367/S0370-S0372/S0383). a's massive 385-row family (checked for lineage_claims in _derived.json, 35 rows carry them, none targeting b or naming Shiva/Shakti) discusses the Kernel concept extensively but the specific Shiva/Shakti lens content is not independently verifiable from either family's captured rows."
+["p3a_pairs",0,"what_would_make_this_wrong"]	S 1/1	"If b's rows exist in the source corpus but were simply not captured by Phase-1 extraction (a genuine gap), a re-extraction could surface real content and lineage; nothing in the current ledger supports any relationship."
+["pairs_touching_missing"]	E	[]
+["population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["quarantine","p3a_pairs_withheld"]	N	0
+["quarantine","reconciliation_pairs_withheld"]	N	0
+["quarantine","sources_withheld"]	N	0
+["run_id"]	S 1/1	"OB0114-R7"
+["search_records",0,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",0,"ledger_hits"]	E	{}
+["search_records",0,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",0,"raw_hits"]	E	{}
+["search_records",0,"record"]	S 1/1	"LABEL-HITS"
+["search_records",0,"terms",0]	S 1/1	"shakti = manifestation/change"
+["search_records",0,"terms",1]	S 1/1	"shiva = invariant/continuity"
+["search_records",0,"terms",2]	S 1/1	"shiva shakti continuity change lens"
+["search_records",0,"terms",3]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",1,"dimension"]	S 1/1	"purpose_rationale"
+["search_records",1,"files_searched"]	N	2734
+["search_records",1,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",1,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",1,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",1,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",1,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",1,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",1,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",1,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",1,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",1,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",1,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",1,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",1,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",1,"identity_summary","p0_row_exception"]	N	3
+["search_records",1,"identity_summary","stasis_unobservable"]	N	1
+["search_records",1,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",1,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",1,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",1,"record"]	S 1/1	"DIMENSION"
+["search_records",1,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",2,"dimension"]	S 1/1	"informal_meaning"
+["search_records",2,"files_searched"]	N	2734
+["search_records",2,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",2,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",2,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",2,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",2,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",2,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",2,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",2,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",2,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",2,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",2,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",2,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",2,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",2,"identity_summary","p0_row_exception"]	N	3
+["search_records",2,"identity_summary","stasis_unobservable"]	N	1
+["search_records",2,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",2,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",2,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",2,"record"]	S 1/1	"DIMENSION"
+["search_records",2,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",3,"dimension"]	S 1/1	"formal_definition"
+["search_records",3,"files_searched"]	N	2734
+["search_records",3,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",3,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",3,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",3,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",3,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",3,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",3,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",3,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",3,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",3,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",3,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",3,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",3,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",3,"identity_summary","p0_row_exception"]	N	3
+["search_records",3,"identity_summary","stasis_unobservable"]	N	1
+["search_records",3,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",3,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",3,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",3,"record"]	S 1/1	"DIMENSION"
+["search_records",3,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",4,"dimension"]	S 1/1	"type_signature"
+["search_records",4,"files_searched"]	N	2734
+["search_records",4,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",4,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",4,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",4,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",4,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",4,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",4,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",4,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",4,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",4,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",4,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",4,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",4,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",4,"identity_summary","p0_row_exception"]	N	3
+["search_records",4,"identity_summary","stasis_unobservable"]	N	1
+["search_records",4,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",4,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",4,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",4,"record"]	S 1/1	"DIMENSION"
+["search_records",4,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",5,"dimension"]	S 1/1	"invariants"
+["search_records",5,"files_searched"]	N	2734
+["search_records",5,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",5,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",5,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",5,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",5,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",5,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",5,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",5,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",5,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",5,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",5,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",5,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",5,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",5,"identity_summary","p0_row_exception"]	N	3
+["search_records",5,"identity_summary","stasis_unobservable"]	N	1
+["search_records",5,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",5,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",5,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",5,"record"]	S 1/1	"DIMENSION"
+["search_records",5,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",6,"dimension"]	S 1/1	"dependencies"
+["search_records",6,"files_searched"]	N	2734
+["search_records",6,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",6,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",6,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",6,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",6,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",6,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",6,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",6,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",6,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",6,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",6,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",6,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",6,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",6,"identity_summary","p0_row_exception"]	N	3
+["search_records",6,"identity_summary","stasis_unobservable"]	N	1
+["search_records",6,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",6,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",6,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",6,"record"]	S 1/1	"DIMENSION"
+["search_records",6,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",7,"dimension"]	S 1/1	"assumptions"
+["search_records",7,"files_searched"]	N	2734
+["search_records",7,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",7,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",7,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",7,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",7,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",7,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",7,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",7,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",7,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",7,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",7,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",7,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",7,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",7,"identity_summary","p0_row_exception"]	N	3
+["search_records",7,"identity_summary","stasis_unobservable"]	N	1
+["search_records",7,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",7,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",7,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",7,"record"]	S 1/1	"DIMENSION"
+["search_records",7,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",8,"dimension"]	S 1/1	"semantics"
+["search_records",8,"files_searched"]	N	2734
+["search_records",8,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",8,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",8,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",8,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",8,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",8,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",8,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",8,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",8,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",8,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",8,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",8,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",8,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",8,"identity_summary","p0_row_exception"]	N	3
+["search_records",8,"identity_summary","stasis_unobservable"]	N	1
+["search_records",8,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",8,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",8,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",8,"record"]	S 1/1	"DIMENSION"
+["search_records",8,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",9,"dimension"]	S 1/1	"examples"
+["search_records",9,"files_searched"]	N	2734
+["search_records",9,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",9,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",9,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",9,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",9,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",9,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",9,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",9,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",9,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",9,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",9,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",9,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",9,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",9,"identity_summary","p0_row_exception"]	N	3
+["search_records",9,"identity_summary","stasis_unobservable"]	N	1
+["search_records",9,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",9,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",9,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",9,"record"]	S 1/1	"DIMENSION"
+["search_records",9,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",10,"dimension"]	S 1/1	"warnings"
+["search_records",10,"files_searched"]	N	2734
+["search_records",10,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",10,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",10,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",10,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",10,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",10,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",10,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",10,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",10,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",10,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",10,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",10,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",10,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",10,"identity_summary","p0_row_exception"]	N	3
+["search_records",10,"identity_summary","stasis_unobservable"]	N	1
+["search_records",10,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",10,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",10,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",10,"record"]	S 1/1	"DIMENSION"
+["search_records",10,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",11,"dimension"]	S 1/1	"experiments"
+["search_records",11,"files_searched"]	N	2734
+["search_records",11,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",11,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",11,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",11,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",11,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",11,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",11,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",11,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",11,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",11,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",11,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",11,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",11,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",11,"identity_summary","p0_row_exception"]	N	3
+["search_records",11,"identity_summary","stasis_unobservable"]	N	1
+["search_records",11,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",11,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",11,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",11,"record"]	S 1/1	"DIMENSION"
+["search_records",11,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",12,"dimension"]	S 1/1	"open_questions"
+["search_records",12,"files_searched"]	N	2734
+["search_records",12,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",12,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",12,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",12,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",12,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",12,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",12,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",12,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",12,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",12,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",12,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",12,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",12,"hits_ref"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",12,"identity_summary","p0_row_exception"]	N	3
+["search_records",12,"identity_summary","stasis_unobservable"]	N	1
+["search_records",12,"label"]	S 1/1	"shiva-shakti-continuity-change-lens"
+["search_records",12,"negative_label"]	S 1/1	"NEGATIVE-CENSUS"
+["search_records",12,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",12,"record"]	S 1/1	"DIMENSION"
+["search_records",12,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["semantic_status_mechanical","note"]	N	null
+["semantic_status_mechanical","rule"]	S 1/1	"ROW-4"
+["semantic_status_mechanical","value"]	S 1/1	"IDENTITY-UNWITNESSED"
+["source_meta","S0366","best_historical_date"]	S 1/1	"2026-08-23T09:28:55Z"
+["source_meta","S0366","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0366","explicit_dates"]	E	[]
+["source_meta","S0366","file_mtime"]	S 1/1	"2026-08-23T09:28:55Z"
+["source_meta","S0366","mtime_block"]	N	null
+["source_meta","S0366","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0366","status"]	S 1/1	"CONTENT"
+["source_meta","S0367","best_historical_date"]	S 1/1	"August 23, 2026"
+["source_meta","S0367","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0367","explicit_dates",0]	S 1/1	"August 23, 2026"
+["source_meta","S0367","file_mtime"]	S 1/1	"2026-08-23T09:34:10Z"
+["source_meta","S0367","mtime_block"]	N	null
+["source_meta","S0367","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0367","status"]	S 1/1	"CONTENT"
+["source_meta","S0370","best_historical_date"]	S 1/1	"2026-08-23T09:45:30Z"
+["source_meta","S0370","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0370","explicit_dates"]	E	[]
+["source_meta","S0370","file_mtime"]	S 1/1	"2026-08-23T09:45:30Z"
+["source_meta","S0370","mtime_block"]	N	null
+["source_meta","S0370","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0370","status"]	S 1/1	"CONTENT"
+["source_meta","S0372","best_historical_date"]	S 1/1	"2026-08-23T10:36:19Z"
+["source_meta","S0372","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0372","explicit_dates"]	E	[]
+["source_meta","S0372","file_mtime"]	S 1/1	"2026-08-23T10:36:19Z"
+["source_meta","S0372","mtime_block"]	N	null
+["source_meta","S0372","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0372","status"]	S 1/1	"CONTENT"
+["source_meta","S0383","best_historical_date"]	S 1/1	"2026-08-23T18:57:35Z"
+["source_meta","S0383","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0383","explicit_dates"]	E	[]
+["source_meta","S0383","file_mtime"]	S 1/1	"2026-08-23T18:57:35Z"
+["source_meta","S0383","mtime_block"]	N	null
+["source_meta","S0383","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0383","status"]	S 1/1	"CONTENT"
+["source_meta","S1752","best_historical_date"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1752","explicit_dates"]	E	[]
+["source_meta","S1752","file_mtime"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","mtime_block"]	N	null
+["source_meta","S1752","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1752","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1821","best_historical_date"]	S 1/1	"1788124763"
+["source_meta","S1821","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1821","explicit_dates"]	E	[]
+["source_meta","S1821","file_mtime"]	S 1/1	"1788124763"
+["source_meta","S1821","mtime_block"]	N	null
+["source_meta","S1821","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1821","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1824","best_historical_date"]	S 1/1	"1788124863"
+["source_meta","S1824","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1824","explicit_dates"]	E	[]
+["source_meta","S1824","file_mtime"]	S 1/1	"1788124863"
+["source_meta","S1824","mtime_block"]	N	null
+["source_meta","S1824","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1824","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1895","best_historical_date"]	S 1/1	"1788128669"
+["source_meta","S1895","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1895","explicit_dates"]	E	[]
+["source_meta","S1895","file_mtime"]	S 1/1	"1788128669"
+["source_meta","S1895","mtime_block"]	N	null
+["source_meta","S1895","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1895","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1899","best_historical_date"]	S 1/1	"1788128726"
+["source_meta","S1899","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1899","explicit_dates"]	E	[]
+["source_meta","S1899","file_mtime"]	S 1/1	"1788128726"
+["source_meta","S1899","mtime_block"]	N	null
+["source_meta","S1899","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1899","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1909","best_historical_date"]	S 1/1	"1788128760"
+["source_meta","S1909","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1909","explicit_dates"]	E	[]
+["source_meta","S1909","file_mtime"]	S 1/1	"1788128760"
+["source_meta","S1909","mtime_block"]	N	null
+["source_meta","S1909","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1909","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1928","best_historical_date"]	S 1/1	"1788129394"
+["source_meta","S1928","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1928","explicit_dates"]	E	[]
+["source_meta","S1928","file_mtime"]	S 1/1	"1788129394"
+["source_meta","S1928","mtime_block"]	N	null
+["source_meta","S1928","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1928","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1929","best_historical_date"]	S 1/1	"1788129395"
+["source_meta","S1929","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1929","explicit_dates"]	E	[]
+["source_meta","S1929","file_mtime"]	S 1/1	"1788129395"
+["source_meta","S1929","mtime_block"]	N	null
+["source_meta","S1929","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1929","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1930","best_historical_date"]	S 1/1	"1788129397"
+["source_meta","S1930","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1930","explicit_dates"]	E	[]
+["source_meta","S1930","file_mtime"]	S 1/1	"1788129397"
+["source_meta","S1930","mtime_block"]	N	null
+["source_meta","S1930","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1930","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2791","best_historical_date"]	S 1/1	"1788679896"
+["source_meta","S2791","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2791","explicit_dates"]	E	[]
+["source_meta","S2791","file_mtime"]	S 1/1	"1788679896"
+["source_meta","S2791","mtime_block"]	N	null
+["source_meta","S2791","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2791","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2795","best_historical_date"]	S 1/1	"1788679967"
+["source_meta","S2795","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2795","explicit_dates"]	E	[]
+["source_meta","S2795","file_mtime"]	S 1/1	"1788679967"
+["source_meta","S2795","mtime_block"]	N	null
+["source_meta","S2795","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2795","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2798","best_historical_date"]	S 1/1	"1788680353"
+["source_meta","S2798","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2798","explicit_dates"]	E	[]
+["source_meta","S2798","file_mtime"]	S 1/1	"1788680353"
+["source_meta","S2798","mtime_block"]	N	null
+["source_meta","S2798","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2798","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_tracks"]	E	{}
+["stage2_files"]	E	[]
+["tier"]	S 1/1	"U"
+["working_label"]	S 1/1	"shiva-shakti-continuity-change-lens"

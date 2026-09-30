@@ -1,0 +1,1 @@
+{"batch_id":"OB0114","checks":{"files":["objects.jsonl","register.jsonl","p1-gap.jsonl"],"sid_ranges_written":0,"sids_cited_individually":true},"declared_by":"agent (untrusted self-check; the verifier recomputes S3)","label":"sb-1-conformance-authority","result":"NO-SID-RANGE-WRITTEN","run":"OB0114-R7-L03S"}

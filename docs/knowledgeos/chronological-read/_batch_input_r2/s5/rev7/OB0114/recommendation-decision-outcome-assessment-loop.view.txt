@@ -1,0 +1,517 @@
+# SLICE-VIEW v1 (R7 v2.7): one line per JSON leaf of the frozen slice — <path> TAB <kind> TAB <payload>; path = JSON array of keys/indices; kinds: N scalar, E empty container, S k/n string chunk (JSON)
+["batch_id"]	S 1/1	"OB0114"
+["bundle","reconciliation_object","aliases"]	E	[]
+["bundle","reconciliation_object","assumption_register"]	E	[]
+["bundle","reconciliation_object","candidate_births","conceptual"]	N	null
+["bundle","reconciliation_object","candidate_births","formal"]	N	null
+["bundle","reconciliation_object","candidate_births","governance"]	N	null
+["bundle","reconciliation_object","candidate_births","lexical","anchor"]	S 1/1	"Measurement is not knowledge ... It becomes knowledge only after engineering history provides contextual meaning."
+["bundle","reconciliation_object","candidate_births","lexical","source_id"]	S 1/1	"S0189"
+["bundle","reconciliation_object","candidate_births","operational"]	N	null
+["bundle","reconciliation_object","completeness","assumptions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","assumptions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","dependencies","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","dependencies","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","examples","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","examples","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","experiments","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","experiments","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","formal_definition","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","informal_meaning","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","informal_meaning","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","invariants","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","invariants","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","open_questions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","open_questions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","purpose_rationale","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","semantics","source_ids",0]	S 1/1	"S0189"
+["bundle","reconciliation_object","completeness","semantics","source_ids",1]	S 1/1	"S0189"
+["bundle","reconciliation_object","completeness","semantics","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","type_signature","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","type_signature","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","warnings","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","warnings","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness_absences",0]	S 1/1	"purpose_rationale"
+["bundle","reconciliation_object","completeness_absences",1]	S 1/1	"informal_meaning"
+["bundle","reconciliation_object","completeness_absences",2]	S 1/1	"formal_definition"
+["bundle","reconciliation_object","completeness_absences",3]	S 1/1	"type_signature"
+["bundle","reconciliation_object","completeness_absences",4]	S 1/1	"invariants"
+["bundle","reconciliation_object","completeness_absences",5]	S 1/1	"dependencies"
+["bundle","reconciliation_object","completeness_absences",6]	S 1/1	"assumptions"
+["bundle","reconciliation_object","completeness_absences",7]	S 1/1	"examples"
+["bundle","reconciliation_object","completeness_absences",8]	S 1/1	"warnings"
+["bundle","reconciliation_object","completeness_absences",9]	S 1/1	"experiments"
+["bundle","reconciliation_object","completeness_absences",10]	S 1/1	"open_questions"
+["bundle","reconciliation_object","files_touching",0]	S 1/1	"S0189"
+["bundle","reconciliation_object","group_ids",0]	S 1/1	"G0043"
+["bundle","reconciliation_object","last_seen"]	S 1/1	"S0189"
+["bundle","reconciliation_object","lifecycle_candidate"]	S 1/1	"DORMANT"
+["bundle","reconciliation_object","lifecycle_evidence","contested_by_own_contradiction_type"]	N	false
+["bundle","reconciliation_object","lifecycle_evidence","retracted_by"]	E	[]
+["bundle","reconciliation_object","lifecycle_evidence","superseded_by"]	E	[]
+["bundle","reconciliation_object","notations",0]	S 1/1	"Recommendation→Decision→Outcome→Assessment"
+["bundle","reconciliation_object","pair_count"]	N	1
+["bundle","reconciliation_object","pairs_touching",0,"basis"]	S 1/1	"INFERRED"
+["bundle","reconciliation_object","pairs_touching",0,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"notes_for_p3b"]	S 1/1	"The corpus's own hedge ('possibly the same lifecycle... from a later batch') means this could also collapse to SAME if a firmer temporal/textual link is found; flag for re-check once batch ordering is available to P3b."
+["bundle","reconciliation_object","pairs_touching",0,"pair_id"]	S 1/1	"RP1522"
+["bundle","reconciliation_object","pairs_touching",0,"relationship"]	S 1/1	"EXTENSION"
+["bundle","reconciliation_object","pairs_touching",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",0,"what_says_this"]	S 1/1	"Group evidence G0043 (POSSIBLY-RELATION) flags a's abstract 4-stage EKS loop (observation->recommendation->decision->outcome->assessment, S0189) as 'possibly the same lifecycle already tracked by the existing recommendation-lifecycle object from a later batch'. b's own rows (S0044) show a much more operationally detailed model of the same 'Recommendation' entity: immutability once issued, identity as the pair (rule,subject), a staged hypothesis about a future three-layer (Definition/Instance/Revision) identity model, decision-age computability, and an actor-field ambiguity concern -- substantially more mechanism than a's brief 2-row sketch, consistent with b elaborating/operationalizing a's abstract loop rather than merely repeating it."
+["bundle","reconciliation_object","pairs_touching",0,"what_would_make_this_wrong"]	S 1/1	"If b's detailed Recommendation-record mechanics were shown to predate a's abstract loop description and to have been built without reference to it, the direction (or the relationship itself) would need revisiting -- the corpus's own note leaves this genuinely unresolved."
+["bundle","reconciliation_object","pairs_touching",0,"with_label"]	S 1/1	"recommendation-lifecycle"
+["bundle","reconciliation_object","primary_layer_provisional"]	S 1/1	"LAYER-UNRESOLVED"
+["bundle","reconciliation_object","rationale_evidence"]	E	[]
+["bundle","reconciliation_object","row_count"]	N	2
+["bundle","reconciliation_object","secondary_roles_provisional"]	E	[]
+["bundle","reconciliation_object","working_label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["bundle","rows_verbatim",0]	S 1/2	"{\"source_id\": \"S0189\", \"path\": \"docs/knowledgeos/brainstorming/20260801-1231-eks-current-architecture-baseline.md\", \"anchor\": \"EKS turns engineering activity into evidence, evidence into bounded recommendations and decisions, and decisions into durable engineering knowledge — while keeping architectural authority with humans and keeping future architectural evolution evidence-gated.\", \"explicit_date\": \"2026-08-01\", \"scope\": \"THEORY-LEVEL\", \"labels\": [\"eks-current-architecture-baseline\", \"recommendation-decision-outcome-assessment-loop\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"RESTATEMENT\"], \"statement\": \"States the single strongest coherent description of the current EKS architecture that this document's evidence supports, offered as the closing summary of a 60-section baseline.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experime"
+["bundle","rows_verbatim",0]	S 2/2	"nt\": null, \"review_flag\": null, \"_batch_id\": \"B0005\"}"
+["bundle","rows_verbatim",1]	S 1/1	"{\"source_id\": \"S0189\", \"path\": \"docs/knowledgeos/brainstorming/20260801-1231-eks-current-architecture-baseline.md\", \"anchor\": \"Measurement is not knowledge ... It becomes knowledge only after engineering history provides contextual meaning.\", \"explicit_date\": \"2026-08-01\", \"scope\": \"THEORY-LEVEL\", \"labels\": [\"recommendation-decision-outcome-assessment-loop\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"PRINCIPLE\", \"DISTINCTION\"], \"statement\": \"States the strongest cross-cutting EKS principle: a raw metric (e.g. LCOM4=29) is measurement, not knowledge; it becomes knowledge only through the recommendation→decision→outcome→assessment→pattern chain.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0005\"}"
+["bundle","sources_verbatim",0]	S 1/2	"{\"source_id\": \"S0189\", \"path\": \"docs/knowledgeos/brainstorming/20260801-1231-eks-current-architecture-baseline.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"1787338293\", \"mtime_block\": null, \"explicit_dates\": [\"2026-08-01\"], \"order_evidence\": \"FILENAME-DATESTAMP\", \"status\": \"CONTENT\", \"summary\": \"An earlier (2026-08-01), much more detailed EKS Current Architecture Baseline (2098 lines, 60 sections): reconstructs EKS as an engineering knowledge and assurance ecosystem with a demonstrated observation/recommendation runtime, a Recommendation-Decision-Outcome-Assessment loop, a Deferred Architecture Register mechanism, and eight named architectural invariants.\", \"objects_touched\": [\"eks-current-architecture-baseline\", \"observation-runtime-changeset-pipeline\", \"recommendation-decision-outcome-assessment-loop\", \"deferred-architecture-register-mechanism\", \"architecture-baseline-001\"], \"contribution_assessment\": \"States 'measurement is not knowledge' and 'determinis"
+["bundle","sources_verbatim",0]	S 2/2	"tic does not mean demanded' (three-question staging), and gives an extensive current-vs-future classification table excluding event buses, Kafka, microservices, Rust, Spring Boot, and full autonomous learning.\", \"provenance\": \"PRIMARY\", \"in_file_overlap_claim\": null, \"_batch_id\": \"B0005\", \"best_historical_date\": \"2026-08-01\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","working_label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["contract_sha256"]	S 1/1	"b8eef043f3b2ea4bbeb8be03fb1487787c6b1b6712455eaf15286299393809da"
+["family_md"]	S 1/4	"# recommendation-decision-outcome-assessment-loop\n\n**Scope(s):** OBJECT · **Row count:** 2 ·\n**Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED\n**Notations:** `Recommendation→Decision→Outcome→Assessment` · **Aliases:** none recorded\n**Candidate group membership (NOT an identity claim):**\n- **G0043**: [`recommendation-decision-outcome-assessment-loop` · `recommendation-lifecycle`] — explicit agent-stated uncertainty: 'recommendation-decision-outcome-assessment-loop' POSSIBLY relates to 'recommendation-lifecycle' (batch B0005). Note: The EKS knowledge-learning workflow chain distinguishing measurement from knowledge: an observation becomes a recommendation, a human decision follows, an outcome results, and an assessment evaluates effectiveness, feeding back into knowledge. Possibly the same lifecycle already tracked by the existing recommendation-lifecycle object from a later batch.\n\n## Sources (how this label entered the ledger)\n- PROPOSAL, batch B0005, scope"
+["family_md"]	S 2/4	" OBJECT: \"The EKS knowledge-learning workflow chain distinguishing measurement from knowledge: an observation becomes a recommendation, a human decision follows, an outcome results, and an assessment evaluates effectiveness, feeding back into knowledge. Possibly the same lifecycle already tracked by the existing recommendation-lifecycle object from a later batch.\"\n\n## Candidate births\n- CANDIDATE-LEXICAL-BIRTH: [S0189 §\"Measurement is not knowledge ... It becomes knowledge only after engineering history provides contextual meaning.\"]\n- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-FORMAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n\n## Lifecycle\nlast_seen: S0189. Candidate lifecycle: DORMANT. Evidence: retracted_by and superseded_by are both empty and no own-row contradiction trigger fired; the DORMANT classification is a heuristic based on how recently (by source_id ord"
+["family_md"]	S 3/4	"er) this label was last used, not a confirmed retirement or a confirmed ongoing status.\n\n## Completeness roll-up\n| Dimension | Status | source_ids |\n|---|---|---|\n| purpose_rationale | NOT-EVIDENCED-IN-CAPTURE | — |\n| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |\n| formal_definition | NOT-EVIDENCED-IN-CAPTURE | — |\n| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |\n| invariants | NOT-EVIDENCED-IN-CAPTURE | — |\n| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |\n| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |\n| semantics | PRESENT | S0189 |\n| examples | NOT-EVIDENCED-IN-CAPTURE | — |\n| warnings | NOT-EVIDENCED-IN-CAPTURE | — |\n| experiments | NOT-EVIDENCED-IN-CAPTURE | — |\n| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |\n\n## Rationale\nNOT-EVIDENCED-IN-CAPTURE\n\n## Assumption register\nNOT-EVIDENCED-IN-CAPTURE\n\n## All rows (source_id order)\n- [S0189] types=[PRINCIPLE, DISTINCTION] scope=THEORY-LEVEL — \"States the strongest cross-cutting EKS principle: a raw metric (e.g. LCOM4=29) is measure"
+["family_md"]	S 4/4	"ment, not knowledge; it becomes knowledge only through the recommendation→decision→outcome→assessment→pattern chain.\" (anchor: \"Measurement is not knowledge ... It becomes knowledge only after engineering history provides contextual meaning.\")\n- [S0189] types=[RESTATEMENT] scope=THEORY-LEVEL — \"States the single strongest coherent description of the current EKS architecture that this document's evidence supports, offered as the closing summary of a 60-section baseline.\" (anchor: \"EKS turns engineering activity into evidence, evidence into bounded recommendations and decisions, and decisions into durable engineering knowledge — while keeping architectural authority with humans …\")\n\n## Notes for P3\n- No additional tension, oddity, or priority flag observed while compiling this file beyond what is already recorded above.\n"
+["family_md_sha256"]	S 1/1	"68ac70c82b7b9e610533244f0bc47bb1e7fcbfd30c8c254bd63e240e2961d222"
+["family_md_status"]	S 1/1	"PRESENT"
+["hub"]	N	false
+["hub_record"]	N	null
+["in_checklist"]	N	false
+["input_manifest_sha256"]	S 1/1	"a20cf3a3e2fc9e1fc9c38919838c9edb3a0d901577a060d5804dc1e899a150b6"
+["p3a_pairs",0,"_batch_id"]	S 1/1	"RP0003"
+["p3a_pairs",0,"a"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["p3a_pairs",0,"b"]	S 1/1	"recommendation-lifecycle"
+["p3a_pairs",0,"basis"]	S 1/1	"INFERRED"
+["p3a_pairs",0,"notes_for_p3b"]	S 1/1	"The corpus's own hedge ('possibly the same lifecycle... from a later batch') means this could also collapse to SAME if a firmer temporal/textual link is found; flag for re-check once batch ordering is available to P3b."
+["p3a_pairs",0,"pair_id"]	S 1/1	"RP1522"
+["p3a_pairs",0,"relationship"]	S 1/1	"EXTENSION"
+["p3a_pairs",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",0,"what_says_this"]	S 1/1	"Group evidence G0043 (POSSIBLY-RELATION) flags a's abstract 4-stage EKS loop (observation->recommendation->decision->outcome->assessment, S0189) as 'possibly the same lifecycle already tracked by the existing recommendation-lifecycle object from a later batch'. b's own rows (S0044) show a much more operationally detailed model of the same 'Recommendation' entity: immutability once issued, identity as the pair (rule,subject), a staged hypothesis about a future three-layer (Definition/Instance/Revision) identity model, decision-age computability, and an actor-field ambiguity concern -- substantially more mechanism than a's brief 2-row sketch, consistent with b elaborating/operationalizing a's abstract loop rather than merely repeating it."
+["p3a_pairs",0,"what_would_make_this_wrong"]	S 1/1	"If b's detailed Recommendation-record mechanics were shown to predate a's abstract loop description and to have been built without reference to it, the direction (or the relationship itself) would need revisiting -- the corpus's own note leaves this genuinely unresolved."
+["pairs_touching_missing"]	E	[]
+["population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["quarantine","p3a_pairs_withheld"]	N	0
+["quarantine","reconciliation_pairs_withheld"]	N	0
+["quarantine","sources_withheld"]	N	0
+["run_id"]	S 1/1	"OB0114-R7"
+["search_records",0,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",0,"ledger_hits","S0189",0,0]	S 1/1	"Measurement is not knowledge ... It becomes knowledge only after engineering history provides contextual meaning."
+["search_records",0,"ledger_hits","S0189",0,1]	N	3
+["search_records",0,"ledger_hits","S0206",0,0]	S 1/1	"Recommendation lifecycle — class A, exercised once ... 8 recommendations remain open since 2026-08-04. The single closed loop returned INCONCLUSIVE ... the same recommendation was decided twice ... with near-identical rationales"
+["search_records",0,"ledger_hits","S0206",0,1]	N	1
+["search_records",0,"ledger_hits","S0580",0,0]	S 1/1	"Observation ──► Recommendation ──► Decision ──► Outcome ──► Assessment ──► KNOWLEDGE ... Knowledge = durable understanding derived from accumulated decisions and outcomes — and explicitly NOT an observation"
+["search_records",0,"ledger_hits","S0580",0,1]	N	1
+["search_records",0,"ledger_hits","S0582",0,0]	S 1/1	"Session 1 correctly classified this as: **M2 — EXTEND** rather than pretending that the new material was already contained in K-M0. That is exactly the behavior we wanted."
+["search_records",0,"ledger_hits","S0582",0,1]	N	1
+["search_records",0,"ledger_hits","S0602",0,0]	S 1/1	"Same endpoints, **different middle terms and different order**"
+["search_records",0,"ledger_hits","S0602",0,1]	N	1
+["search_records",0,"ledger_hits","S0667",0,0]	S 1/1	"Assessment is not the same thing as Observation, Evidence, Recommendation, or Decision."
+["search_records",0,"ledger_hits","S0667",0,1]	N	1
+["search_records",0,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",0,"raw_hits","S0206",0,0]	N	7060
+["search_records",0,"raw_hits","S0206",0,1]	N	3
+["search_records",0,"raw_hits","S0206",1,0]	N	43293
+["search_records",0,"raw_hits","S0206",1,1]	N	3
+["search_records",0,"raw_hits","S0206",2,0]	N	106023
+["search_records",0,"raw_hits","S0206",2,1]	N	3
+["search_records",0,"record"]	S 1/1	"LABEL-HITS"
+["search_records",0,"terms",0]	S 1/1	"recommendation decision outcome assessment loop"
+["search_records",0,"terms",1]	S 1/1	"recommendation->decision->outcome->assessment"
+["search_records",0,"terms",2]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",0,"terms",3]	S 1/1	"recommendation→decision→outcome→assessment"
+["search_records",1,"dimension"]	S 1/1	"purpose_rationale"
+["search_records",1,"files_searched"]	N	2734
+["search_records",1,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",1,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",1,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",1,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",1,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",1,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",1,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",1,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",1,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",1,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",1,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",1,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",1,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",1,"identity_summary","p0_row_exception"]	N	3
+["search_records",1,"identity_summary","stasis_unobservable"]	N	1
+["search_records",1,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",1,"negative_label"]	N	null
+["search_records",1,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",1,"record"]	S 1/1	"DIMENSION"
+["search_records",1,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",2,"dimension"]	S 1/1	"informal_meaning"
+["search_records",2,"files_searched"]	N	2734
+["search_records",2,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",2,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",2,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",2,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",2,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",2,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",2,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",2,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",2,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",2,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",2,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",2,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",2,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",2,"identity_summary","p0_row_exception"]	N	3
+["search_records",2,"identity_summary","stasis_unobservable"]	N	1
+["search_records",2,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",2,"negative_label"]	N	null
+["search_records",2,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",2,"record"]	S 1/1	"DIMENSION"
+["search_records",2,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",3,"dimension"]	S 1/1	"formal_definition"
+["search_records",3,"files_searched"]	N	2734
+["search_records",3,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",3,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",3,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",3,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",3,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",3,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",3,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",3,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",3,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",3,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",3,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",3,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",3,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",3,"identity_summary","p0_row_exception"]	N	3
+["search_records",3,"identity_summary","stasis_unobservable"]	N	1
+["search_records",3,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",3,"negative_label"]	N	null
+["search_records",3,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",3,"record"]	S 1/1	"DIMENSION"
+["search_records",3,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",4,"dimension"]	S 1/1	"type_signature"
+["search_records",4,"files_searched"]	N	2734
+["search_records",4,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",4,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",4,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",4,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",4,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",4,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",4,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",4,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",4,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",4,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",4,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",4,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",4,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",4,"identity_summary","p0_row_exception"]	N	3
+["search_records",4,"identity_summary","stasis_unobservable"]	N	1
+["search_records",4,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",4,"negative_label"]	N	null
+["search_records",4,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",4,"record"]	S 1/1	"DIMENSION"
+["search_records",4,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",5,"dimension"]	S 1/1	"invariants"
+["search_records",5,"files_searched"]	N	2734
+["search_records",5,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",5,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",5,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",5,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",5,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",5,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",5,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",5,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",5,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",5,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",5,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",5,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",5,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",5,"identity_summary","p0_row_exception"]	N	3
+["search_records",5,"identity_summary","stasis_unobservable"]	N	1
+["search_records",5,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",5,"negative_label"]	N	null
+["search_records",5,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",5,"record"]	S 1/1	"DIMENSION"
+["search_records",5,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",6,"dimension"]	S 1/1	"dependencies"
+["search_records",6,"files_searched"]	N	2734
+["search_records",6,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",6,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",6,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",6,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",6,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",6,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",6,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",6,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",6,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",6,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",6,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",6,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",6,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",6,"identity_summary","p0_row_exception"]	N	3
+["search_records",6,"identity_summary","stasis_unobservable"]	N	1
+["search_records",6,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",6,"negative_label"]	N	null
+["search_records",6,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",6,"record"]	S 1/1	"DIMENSION"
+["search_records",6,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",7,"dimension"]	S 1/1	"assumptions"
+["search_records",7,"files_searched"]	N	2734
+["search_records",7,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",7,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",7,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",7,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",7,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",7,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",7,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",7,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",7,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",7,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",7,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",7,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",7,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",7,"identity_summary","p0_row_exception"]	N	3
+["search_records",7,"identity_summary","stasis_unobservable"]	N	1
+["search_records",7,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",7,"negative_label"]	N	null
+["search_records",7,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",7,"record"]	S 1/1	"DIMENSION"
+["search_records",7,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",8,"dimension"]	S 1/1	"examples"
+["search_records",8,"files_searched"]	N	2734
+["search_records",8,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",8,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",8,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",8,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",8,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",8,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",8,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",8,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",8,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",8,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",8,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",8,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",8,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",8,"identity_summary","p0_row_exception"]	N	3
+["search_records",8,"identity_summary","stasis_unobservable"]	N	1
+["search_records",8,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",8,"negative_label"]	N	null
+["search_records",8,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",8,"record"]	S 1/1	"DIMENSION"
+["search_records",8,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",9,"dimension"]	S 1/1	"warnings"
+["search_records",9,"files_searched"]	N	2734
+["search_records",9,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",9,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",9,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",9,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",9,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",9,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",9,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",9,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",9,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",9,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",9,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",9,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",9,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",9,"identity_summary","p0_row_exception"]	N	3
+["search_records",9,"identity_summary","stasis_unobservable"]	N	1
+["search_records",9,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",9,"negative_label"]	N	null
+["search_records",9,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",9,"record"]	S 1/1	"DIMENSION"
+["search_records",9,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",10,"dimension"]	S 1/1	"experiments"
+["search_records",10,"files_searched"]	N	2734
+["search_records",10,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",10,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",10,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",10,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",10,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",10,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",10,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",10,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",10,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",10,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",10,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",10,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",10,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",10,"identity_summary","p0_row_exception"]	N	3
+["search_records",10,"identity_summary","stasis_unobservable"]	N	1
+["search_records",10,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",10,"negative_label"]	N	null
+["search_records",10,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",10,"record"]	S 1/1	"DIMENSION"
+["search_records",10,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",11,"dimension"]	S 1/1	"open_questions"
+["search_records",11,"files_searched"]	N	2734
+["search_records",11,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",11,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",11,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",11,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",11,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",11,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",11,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",11,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",11,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",11,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",11,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",11,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",11,"hits_ref"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",11,"identity_summary","p0_row_exception"]	N	3
+["search_records",11,"identity_summary","stasis_unobservable"]	N	1
+["search_records",11,"label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"
+["search_records",11,"negative_label"]	N	null
+["search_records",11,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",11,"record"]	S 1/1	"DIMENSION"
+["search_records",11,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["semantic_status_mechanical","note"]	N	null
+["semantic_status_mechanical","rule"]	S 1/1	"ROW-3"
+["semantic_status_mechanical","value"]	S 1/1	"RECONCILED(EXTENSION/INFERRED, type UNKNOWN)"
+["source_meta","S0044","best_historical_date"]	S 1/1	"2026-08-04"
+["source_meta","S0044","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0044","explicit_dates",0]	S 1/1	"2026-08-04"
+["source_meta","S0044","file_mtime"]	S 1/1	"1785937493"
+["source_meta","S0044","mtime_block"]	S 1/1	"BULK-01"
+["source_meta","S0044","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0044","status"]	S 1/1	"CONTENT"
+["source_meta","S0189","best_historical_date"]	S 1/1	"2026-08-01"
+["source_meta","S0189","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0189","explicit_dates",0]	S 1/1	"2026-08-01"
+["source_meta","S0189","file_mtime"]	S 1/1	"1787338293"
+["source_meta","S0189","mtime_block"]	N	null
+["source_meta","S0189","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0189","status"]	S 1/1	"CONTENT"
+["source_meta","S0206","best_historical_date"]	S 1/1	"2026-08-21"
+["source_meta","S0206","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0206","explicit_dates",0]	S 1/1	"2026-08-21"
+["source_meta","S0206","explicit_dates",1]	S 1/1	"2026-08-22"
+["source_meta","S0206","file_mtime"]	S 1/1	"1787352070"
+["source_meta","S0206","mtime_block"]	N	null
+["source_meta","S0206","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0206","status"]	S 1/1	"CONTENT"
+["source_meta","S0580","best_historical_date"]	S 1/1	"2026-08-01"
+["source_meta","S0580","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0580","explicit_dates",0]	S 1/1	"2026-08-01"
+["source_meta","S0580","file_mtime"]	S 1/1	"1787678478"
+["source_meta","S0580","mtime_block"]	N	null
+["source_meta","S0580","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0580","status"]	S 1/1	"CONTENT"
+["source_meta","S0582","best_historical_date"]	S 1/1	"1787678749"
+["source_meta","S0582","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0582","explicit_dates"]	E	[]
+["source_meta","S0582","file_mtime"]	S 1/1	"1787678749"
+["source_meta","S0582","mtime_block"]	N	null
+["source_meta","S0582","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0582","status"]	S 1/1	"CONTENT"
+["source_meta","S0602","best_historical_date"]	S 1/1	"2026-08-25"
+["source_meta","S0602","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0602","explicit_dates",0]	S 1/1	"2026-08-25"
+["source_meta","S0602","file_mtime"]	S 1/1	"1787681337"
+["source_meta","S0602","mtime_block"]	N	null
+["source_meta","S0602","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0602","status"]	S 1/1	"CONTENT"
+["source_meta","S0667","best_historical_date"]	S 1/1	"2026-08-24"
+["source_meta","S0667","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0667","explicit_dates",0]	S 1/1	"2026-08-24"
+["source_meta","S0667","file_mtime"]	S 1/1	"2026-08-25T21:19"
+["source_meta","S0667","mtime_block"]	N	null
+["source_meta","S0667","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0667","status"]	S 1/1	"CONTENT"
+["source_meta","S1752","best_historical_date"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1752","explicit_dates"]	E	[]
+["source_meta","S1752","file_mtime"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","mtime_block"]	N	null
+["source_meta","S1752","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1752","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1821","best_historical_date"]	S 1/1	"1788124763"
+["source_meta","S1821","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1821","explicit_dates"]	E	[]
+["source_meta","S1821","file_mtime"]	S 1/1	"1788124763"
+["source_meta","S1821","mtime_block"]	N	null
+["source_meta","S1821","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1821","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1824","best_historical_date"]	S 1/1	"1788124863"
+["source_meta","S1824","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1824","explicit_dates"]	E	[]
+["source_meta","S1824","file_mtime"]	S 1/1	"1788124863"
+["source_meta","S1824","mtime_block"]	N	null
+["source_meta","S1824","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1824","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1895","best_historical_date"]	S 1/1	"1788128669"
+["source_meta","S1895","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1895","explicit_dates"]	E	[]
+["source_meta","S1895","file_mtime"]	S 1/1	"1788128669"
+["source_meta","S1895","mtime_block"]	N	null
+["source_meta","S1895","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1895","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1899","best_historical_date"]	S 1/1	"1788128726"
+["source_meta","S1899","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1899","explicit_dates"]	E	[]
+["source_meta","S1899","file_mtime"]	S 1/1	"1788128726"
+["source_meta","S1899","mtime_block"]	N	null
+["source_meta","S1899","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1899","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1909","best_historical_date"]	S 1/1	"1788128760"
+["source_meta","S1909","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1909","explicit_dates"]	E	[]
+["source_meta","S1909","file_mtime"]	S 1/1	"1788128760"
+["source_meta","S1909","mtime_block"]	N	null
+["source_meta","S1909","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1909","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1928","best_historical_date"]	S 1/1	"1788129394"
+["source_meta","S1928","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1928","explicit_dates"]	E	[]
+["source_meta","S1928","file_mtime"]	S 1/1	"1788129394"
+["source_meta","S1928","mtime_block"]	N	null
+["source_meta","S1928","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1928","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1929","best_historical_date"]	S 1/1	"1788129395"
+["source_meta","S1929","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1929","explicit_dates"]	E	[]
+["source_meta","S1929","file_mtime"]	S 1/1	"1788129395"
+["source_meta","S1929","mtime_block"]	N	null
+["source_meta","S1929","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1929","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1930","best_historical_date"]	S 1/1	"1788129397"
+["source_meta","S1930","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1930","explicit_dates"]	E	[]
+["source_meta","S1930","file_mtime"]	S 1/1	"1788129397"
+["source_meta","S1930","mtime_block"]	N	null
+["source_meta","S1930","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1930","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2791","best_historical_date"]	S 1/1	"1788679896"
+["source_meta","S2791","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2791","explicit_dates"]	E	[]
+["source_meta","S2791","file_mtime"]	S 1/1	"1788679896"
+["source_meta","S2791","mtime_block"]	N	null
+["source_meta","S2791","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2791","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2795","best_historical_date"]	S 1/1	"1788679967"
+["source_meta","S2795","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2795","explicit_dates"]	E	[]
+["source_meta","S2795","file_mtime"]	S 1/1	"1788679967"
+["source_meta","S2795","mtime_block"]	N	null
+["source_meta","S2795","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2795","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2798","best_historical_date"]	S 1/1	"1788680353"
+["source_meta","S2798","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2798","explicit_dates"]	E	[]
+["source_meta","S2798","file_mtime"]	S 1/1	"1788680353"
+["source_meta","S2798","mtime_block"]	N	null
+["source_meta","S2798","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2798","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_tracks","S0189","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0189","track_tag"]	S 1/1	"UNCLASSIFIED"
+["stage2_files",0]	S 1/1	"S0189"
+["stage2_files",1]	S 1/1	"S0206"
+["stage2_files",2]	S 1/1	"S0580"
+["stage2_files",3]	S 1/1	"S0582"
+["stage2_files",4]	S 1/1	"S0602"
+["stage2_files",5]	S 1/1	"S0667"
+["tier"]	S 1/1	"U"
+["working_label"]	S 1/1	"recommendation-decision-outcome-assessment-loop"

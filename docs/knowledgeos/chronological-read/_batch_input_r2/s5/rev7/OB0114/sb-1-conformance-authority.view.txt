@@ -1,0 +1,787 @@
+# SLICE-VIEW v1 (R7 v2.7): one line per JSON leaf of the frozen slice — <path> TAB <kind> TAB <payload>; path = JSON array of keys/indices; kinds: N scalar, E empty container, S k/n string chunk (JSON)
+["batch_id"]	S 1/1	"OB0114"
+["bundle","reconciliation_object","aliases",0]	S 1/1	"conformance authority shared-boundary risk"
+["bundle","reconciliation_object","assumption_register"]	E	[]
+["bundle","reconciliation_object","candidate_births","conceptual"]	N	null
+["bundle","reconciliation_object","candidate_births","formal"]	N	null
+["bundle","reconciliation_object","candidate_births","governance"]	N	null
+["bundle","reconciliation_object","candidate_births","lexical","anchor"]	S 1/1	"I am the Track-1 implementation engineer (4c6c1dac) ... SB-1 exists to stop ADR-AIP-04 relocating Track-1 conformance authority. I therefore do not treat my SB-1 verdict as independent."
+["bundle","reconciliation_object","candidate_births","lexical","source_id"]	S 1/1	"S0089"
+["bundle","reconciliation_object","candidate_births","operational"]	N	null
+["bundle","reconciliation_object","completeness","assumptions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","assumptions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","dependencies","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","dependencies","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","examples","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","examples","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","experiments","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","experiments","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","formal_definition","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","informal_meaning","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","informal_meaning","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","invariants","source_ids",0]	S 1/1	"S0094"
+["bundle","reconciliation_object","completeness","invariants","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","open_questions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","open_questions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",0]	S 1/1	"S0090"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",1]	S 1/1	"S0092"
+["bundle","reconciliation_object","completeness","purpose_rationale","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","semantics","source_ids",0]	S 1/1	"S0089"
+["bundle","reconciliation_object","completeness","semantics","source_ids",1]	S 1/1	"S0091"
+["bundle","reconciliation_object","completeness","semantics","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","type_signature","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","type_signature","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","warnings","source_ids",0]	S 1/1	"S0089"
+["bundle","reconciliation_object","completeness","warnings","source_ids",1]	S 1/1	"S0091"
+["bundle","reconciliation_object","completeness","warnings","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness_absences",0]	S 1/1	"informal_meaning"
+["bundle","reconciliation_object","completeness_absences",1]	S 1/1	"formal_definition"
+["bundle","reconciliation_object","completeness_absences",2]	S 1/1	"type_signature"
+["bundle","reconciliation_object","completeness_absences",3]	S 1/1	"dependencies"
+["bundle","reconciliation_object","completeness_absences",4]	S 1/1	"assumptions"
+["bundle","reconciliation_object","completeness_absences",5]	S 1/1	"examples"
+["bundle","reconciliation_object","completeness_absences",6]	S 1/1	"experiments"
+["bundle","reconciliation_object","completeness_absences",7]	S 1/1	"open_questions"
+["bundle","reconciliation_object","files_touching",0]	S 1/1	"S0089"
+["bundle","reconciliation_object","files_touching",1]	S 1/1	"S0090"
+["bundle","reconciliation_object","files_touching",2]	S 1/1	"S0091"
+["bundle","reconciliation_object","files_touching",3]	S 1/1	"S0092"
+["bundle","reconciliation_object","files_touching",4]	S 1/1	"S0094"
+["bundle","reconciliation_object","files_touching",5]	S 1/1	"S0100"
+["bundle","reconciliation_object","files_touching",6]	S 1/1	"S1109"
+["bundle","reconciliation_object","group_ids",0]	S 1/1	"G0188"
+["bundle","reconciliation_object","last_seen"]	S 1/1	"S1109"
+["bundle","reconciliation_object","lifecycle_candidate"]	S 1/1	"DORMANT"
+["bundle","reconciliation_object","lifecycle_evidence","contested_by_own_contradiction_type"]	N	false
+["bundle","reconciliation_object","lifecycle_evidence","retracted_by"]	E	[]
+["bundle","reconciliation_object","lifecycle_evidence","superseded_by"]	E	[]
+["bundle","reconciliation_object","notations",0]	S 1/1	"SB-1"
+["bundle","reconciliation_object","pair_count"]	N	1
+["bundle","reconciliation_object","pairs_touching"]	E	[]
+["bundle","reconciliation_object","primary_layer_provisional"]	S 1/1	"LAYER-UNRESOLVED"
+["bundle","reconciliation_object","rationale_evidence",0,"anchor"]	S 1/1	"two consecutive verifications have now been unable to clear SB-1 -- the first because it produced Track 1, the second because it verified Track 1."
+["bundle","reconciliation_object","rationale_evidence",0,"source_id"]	S 1/1	"S0090"
+["bundle","reconciliation_object","rationale_evidence",0,"statement"]	S 1/1	"A governance-capacity fact is recorded: two consecutive verifiers have each been structurally unable to clear SB-1 (conformance authority relocation risk) because both hold some form of Track-1 authorship, and the pool of eligible verifiers shrinks each time Track 1 is touched."
+["bundle","reconciliation_object","rationale_evidence",0,"types",0]	S 1/1	"ANALYSIS"
+["bundle","reconciliation_object","rationale_evidence",0,"types",1]	S 1/1	"LIMITATION"
+["bundle","reconciliation_object","rationale_evidence",1,"anchor"]	S 1/1	"50d55d26 is not a session identifier at all. It is a git commit hash. ... Authorship of a commit is established by provenance, not by a self-declaration the artifact was never asked to carry."
+["bundle","reconciliation_object","rationale_evidence",1,"source_id"]	S 1/1	"S0092"
+["bundle","reconciliation_object","rationale_evidence",1,"statement"]	S 1/1	"The prior registration's premise that a Track-1 report's author had 'no identifier to exclude' was itself falsified: the cited string was a git commit hash, not a session identifier, and its true producer is discoverable via write-class provenance -- a process already named in the exclusion list."
+["bundle","reconciliation_object","rationale_evidence",1,"types",0]	S 1/1	"CORRECTION"
+["bundle","reconciliation_object","rationale_evidence",1,"types",1]	S 1/1	"ANALYSIS"
+["bundle","reconciliation_object","row_count"]	N	8
+["bundle","reconciliation_object","secondary_roles_provisional"]	E	[]
+["bundle","reconciliation_object","working_label"]	S 1/1	"sb-1-conformance-authority"
+["bundle","rows_verbatim",0]	S 1/1	"{\"source_id\": \"S0089\", \"path\": \"docs/knowledgeos/reviews/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md\", \"anchor\": \"I am the Track-1 implementation engineer (4c6c1dac) ... SB-1 exists to stop ADR-AIP-04 relocating Track-1 conformance authority. I therefore do not treat my SB-1 verdict as independent.\", \"explicit_date\": \"2026-08-18\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"sb-1-conformance-authority\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"WARNING\", \"DISTINCTION\"], \"statement\": \"The verifier discloses being the Track-1 implementation engineer and therefore recuses from independently verifying SB-1 (conformance-authority relocation risk), recommending a re-verification by a process with no Track-1 authorship.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0003\"}"
+["bundle","rows_verbatim",1]	S 1/2	"{\"source_id\": \"S0090\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md\", \"anchor\": \"two consecutive verifications have now been unable to clear SB-1 -- the first because it produced Track 1, the second because it verified Track 1.\", \"explicit_date\": \"2026-08-19\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"sb-1-conformance-authority\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"ANALYSIS\", \"LIMITATION\"], \"statement\": \"A governance-capacity fact is recorded: two consecutive verifiers have each been structurally unable to clear SB-1 (conformance authority relocation risk) because both hold some form of Track-1 authorship, and the pool of eligible verifiers shrinks each time Track 1 is touched.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch"
+["bundle","rows_verbatim",1]	S 2/2	"_id\": \"B0003\"}"
+["bundle","rows_verbatim",2]	S 1/2	"{\"source_id\": \"S0091\", \"path\": \"docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md\", \"anchor\": \"SB-1 ... Track 1 has live, accepted decisions about conformance ... Assigning \\\"conformance evidence\\\" to a Verification capability in ADR-AIP-04 could RELOCATE conformance authority that Track 1 currently exercises\", \"explicit_date\": \"2026-08-18\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"sb-1-conformance-authority\", \"track-1-track-2-parallel-authorization\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"WARNING\", \"CONSTRAINT\"], \"statement\": \"Shared-boundary risk SB-1: because conformance evidence is shared between BC-1 and BC-3, and Track 1 already exercises live accepted conformance decisions, ADR-AIP-04 must not assign conformance authority -- the question is returned to Architecture/PO-ARB as a separate act rather than decided within the discovery.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": []"
+["bundle","rows_verbatim",2]	S 2/2	", \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0003\"}"
+["bundle","rows_verbatim",3]	S 1/1	"{\"source_id\": \"S0091\", \"path\": \"docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md\", \"anchor\": \"SB-1 REMAINS CONFLICTED / REQUIRES RE-VERIFICATION. It is NOT resolved by this amendment and NOT resolved by the verification.\", \"explicit_date\": \"2026-08-18\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"sb-1-conformance-authority\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"LIMITATION\", \"RESTATEMENT\"], \"statement\": \"Amendment 1 confirms SB-1 remains unresolved, because the verifier who assessed it is the Track-1 implementation engineer; the halt on assigning conformance authority is preserved but the clearance risk is only mitigated, not cured.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0003\"}"
+["bundle","rows_verbatim",4]	S 1/2	"{\"source_id\": \"S0092\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-3-correction2.md\", \"anchor\": \"50d55d26 is not a session identifier at all. It is a git commit hash. ... Authorship of a commit is established by provenance, not by a self-declaration the artifact was never asked to carry.\", \"explicit_date\": \"2026-08-19\", \"scope\": \"METHODOLOGICAL\", \"labels\": [\"sb-1-conformance-authority\", \"provenance-write-class-tool-use-method\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"CORRECTION\", \"ANALYSIS\"], \"statement\": \"The prior registration's premise that a Track-1 report's author had 'no identifier to exclude' was itself falsified: the cited string was a git commit hash, not a session identifier, and its true producer is discoverable via write-class provenance -- a process already named in the exclusion list.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assum"
+["bundle","rows_verbatim",4]	S 2/2	"ptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0003\"}"
+["bundle","rows_verbatim",5]	S 1/1	"{\"source_id\": \"S0092\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-3-correction2.md\", \"anchor\": \"SB-1 IS CLEARED -- for the first time in this work item.\", \"explicit_date\": \"2026-08-19\", \"scope\": \"CROSS-OBJECT\", \"labels\": [\"sb-1-conformance-authority\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"VALIDATION\"], \"statement\": \"SB-1's independence precondition is cleared for the first time via write-class tool_use provenance; explicitly this clears only the independence precondition, not SB-1's substantive disposition (whether ADR-AIP-04 may ever assign conformance authority), which remains a PO/ARB decision.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0003\"}"
+["bundle","rows_verbatim",6]	S 1/2	"{\"source_id\": \"S0094\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-verification-3-registration.md\", \"anchor\": \"One of the seven excluded roles has no process identifier anywhere in the estate. ... the bar cannot be enforced by process hash alone.\", \"explicit_date\": \"2026-08-19\", \"scope\": \"OBJECT\", \"labels\": [\"sb-1-conformance-authority\", \"session-identity-attestation-mechanism\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"LIMITATION\", \"CONSTRAINT\"], \"statement\": \"Governance registers that the independence bar for Verification #3 cannot be checked by session-identifier comparison alone, because the Track-1 report discloses its overlap only in role terms and declares no session identifier; the candidate verifier must self-check by artifact authorship instead, and if it cannot answer, SB-1 is not cleared.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [\"do not infer clearance from an un"
+["bundle","rows_verbatim",6]	S 2/2	"answerable identity check\"], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0003\"}"
+["bundle","rows_verbatim",7]	S 1/2	"{\"source_id\": \"S1109\", \"path\": \"docs/knowledgeos/reviews/synthesis/analysis/phase-3c-conformance-findings.md\", \"anchor\": \"CF-007 · Authority boundary (A6) — conformant, multiply evidenced\", \"explicit_date\": \"2026-08-28\", \"scope\": \"OBJECT\", \"labels\": [\"sb-1-conformance-authority\"], \"label_confidence\": \"UNCERTAIN\", \"unknown_candidate\": null, \"types\": [\"VALIDATION\"], \"statement\": \"Constitution Art. 3 requires authority to be assigned via a recorded reference to a human act, never intrinsic or emergent; adoption vs authorization are decided by separate human acts; session-bootstrap.php enforces IDENTITY != ROLE != ELIGIBILITY != AUTHORIZATION != OWNERSHIP != CONTINUATION with identity reported never granted and G-3 requiring a human START act — this is v0.2's A6 and decision-boundary re-typing (R-3) operating in practice.\", \"type_signature\": null, \"completeness\": \"COMPLETE\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"cross-"
+["bundle","rows_verbatim",7]	S 2/2	"version\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0027\"}"
+["bundle","sources_verbatim",0]	S 1/2	"{\"source_id\": \"S0089\", \"path\": \"docs/knowledgeos/reviews/2026-08-18-KOS-AIP04-DISCOVERY-001-independent-verification.md\", \"file_mtime\": \"1787089444\", \"explicit_dates\": [\"2026-08-18\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"Independent Verification #1 of the ADR-AIP-04 discovery proposal: falsifies two material claims (F-3 six-role 'nowhere', C-14 'absent') using the untracked 01-system-context.puml and registry.yaml AST-007, and returns the proposal for material correction.\", \"objects_touched\": [\"adr-aip-04\", \"six-role-model\", \"capability-c14-policy-enforcement\", \"knowledgeos-c4-architecture-diagrams\", \"sb-1-conformance-authority\", \"oq-5-role-model-ownership\"], \"contribution_assessment\": \"Introduces the falsification method used throughout the batch, discovers the discovery proposal's evidence-search was truncated (a recurring root-cause pattern), distinguishes non-registration from non-existence, and records a self-declared conflict on SB-1 because the verif"
+["bundle","sources_verbatim",0]	S 2/2	"ier is Track-1's own implementation engineer.\", \"provenance\": \"PRIMARY\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"mtime_block\": null, \"in_file_overlap_claim\": null, \"_batch_id\": \"B0003\", \"best_historical_date\": \"2026-08-18\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",1]	S 1/2	"{\"source_id\": \"S0090\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-2-amendment1.md\", \"file_mtime\": \"1787091476\", \"explicit_dates\": [\"2026-08-19\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"Independent Verification #2, checking Amendment 1's corrections: confirms the withdrawal of F-3 but falsifies Amendment 1's own supporting claim (W-1) that untracked material depicts only a 'five-actor sketch' -- a 925-line brainstorming document actually sets out all six roles and pre-frames ADR-AIP-04's own options.\", \"objects_touched\": [\"adr-aip-04\", \"six-role-model\", \"six-role-brainstorming-document\", \"sb-1-conformance-authority\", \"oq-i-untracked-material-disposition\", \"governance-communication-candidate\"], \"contribution_assessment\": \"Discovers the same truncated-search failure mode recurring at a wider scope; establishes that SB-1 has now been left uncleared by two consecutive verifications for the same structural reason ("
+["bundle","sources_verbatim",1]	S 2/2	"both verifiers hold Track-1 authorship); records provenance defects (Amendment 1 declares no producing process) and a lifecycle-record anomaly (the architecture lane handed off but never returned to ACTIVE).\", \"provenance\": \"PRIMARY\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"mtime_block\": null, \"in_file_overlap_claim\": null, \"_batch_id\": \"B0003\", \"best_historical_date\": \"2026-08-19\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",2]	S 1/3	"{\"source_id\": \"S0091\", \"path\": \"docs/knowledgeos/architecture/2026-08-18-KOS-AIP04-DISCOVERY-001-adr-aip-04-capability-discovery-proposal.md\", \"file_mtime\": \"1787092089\", \"explicit_dates\": [\"2026-08-18\", \"2026-08-19\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"The core ADR-AIP-04 Capability Discovery Proposal (875 lines): a 20-capability inventory, 11 findings (F-1..F-11), an ownership map, ubiquitous-language collisions, an invariant map showing BC-7's invariants are mechanically enforced while nearly everything else is declared-only, a role/stewardship analysis of the six hypotheses, and shared-boundary risks (SB-1/2/3) -- followed by Amendment 1 (material corrections after Verification #1) and Correction #2 (further corrections after Verification #2).\", \"objects_touched\": [\"adr-aip-04\", \"six-role-model\", \"capability-c5-separation-attestation\", \"capability-c10-knowledge-distribution\", \"capability-c14-policy-enforcement\", \"capability-c19-communication-compositi"
+["bundle","sources_verbatim",2]	S 2/3	"on\", \"inv-attr-1\", \"inv-attr-2\", \"sb-1-conformance-authority\", \"sb-2-evidence-chain-location-coupling\", \"sb-3-enforcement-posture\", \"oq-5-role-model-ownership\", \"governance-communication-candidate\", \"ekp-eks-01-knowledge-distribution-failure\", \"ekp-eks-02-policy-enforcement-gap\", \"ekp-eks-03-evidence-chain-path-coupling\", \"six-role-brainstorming-document\"], \"contribution_assessment\": \"This is the single richest theoretical artifact in the batch: it identifies four unowned capabilities (C-5, C-10, C-14, C-19) as ADR-AIP-04's real substance rather than the six roles; states the core structural finding that BC-7's invariants are mechanically enforced while everything outside BC-7 is declared-only; proposes (then twice corrects) the six-role finding; and undergoes two rounds of self-correction (Amendment 1, Correction #2) driven by the same root-cause failure mode -- absence-in-a-truncated-search read as absence-of-existence -- recurring three times.\", \"provenance\": \"PRIMARY\", \"in_file_ove"
+["bundle","sources_verbatim",2]	S 3/3	"rlap_claim\": {\"kind\": \"EXTENDS\", \"target\": \"Amendment 1 explicitly extends/corrects the original proposal; Correction #2 explicitly extends/corrects Amendment 1; both state 'nothing above is rewritten'.\"}, \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"mtime_block\": null, \"_batch_id\": \"B0003\", \"best_historical_date\": \"2026-08-18\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",3]	S 1/2	"{\"source_id\": \"S0092\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-independent-verification-3-correction2.md\", \"file_mtime\": \"1787093844\", \"explicit_dates\": [\"2026-08-19\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"Independent Verification #3 clears SB-1 for the first time by resolving a Track-1 verification report's authorship via write-class tool_use provenance rather than self-declaration, and declares the discovery/Amendment/Correction package READY FOR PO/ARB DECISION with two low-severity residuals.\", \"objects_touched\": [\"adr-aip-04\", \"sb-1-conformance-authority\", \"six-role-model\", \"provenance-write-class-tool-use-method\", \"session-identity-attestation-mechanism\"], \"contribution_assessment\": \"Introduces the write-class tool_use provenance method as a materially stronger evidence class than self-declaration, uses it to establish that a commit hash previously treated as an unnameable exclusion is actually a process already barred, an"
+["bundle","sources_verbatim",3]	S 2/2	"d demonstrates the observation-point mechanism (replacing fixed counts with a stated measurement time) working correctly on first independent test.\", \"provenance\": \"PRIMARY\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"mtime_block\": null, \"in_file_overlap_claim\": null, \"_batch_id\": \"B0003\", \"best_historical_date\": \"2026-08-19\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",4]	S 1/2	"{\"source_id\": \"S0094\", \"path\": \"docs/knowledgeos/reviews/2026-08-19-KOS-AIP04-DISCOVERY-001-verification-3-registration.md\", \"file_mtime\": \"1787123633\", \"explicit_dates\": [\"2026-08-19\"], \"order_evidence\": \"STEP-NUMBER\", \"status\": \"CONTENT\", \"summary\": \"Governance registration of Verification #3's assignment, disclosing that one of the seven barred roles has no session identifier and can only be checked by artifact self-authorship, followed by an appended amendment re-scoping the verification charge after the six-role adoption decision.\", \"objects_touched\": [\"adr-aip-04\", \"sb-1-conformance-authority\", \"session-identity-attestation-mechanism\"], \"contribution_assessment\": \"Documents the delivery/record gap pattern (a lane completes work but its lane never hands off on the record) recurring, and formalises the requirement that the SB-1 independence bar be checked by artifact authorship rather than process hash where an identifier is absent.\", \"provenance\": \"SECONDARY-SYNTHESIS\", \"commit\": "
+["bundle","sources_verbatim",4]	S 2/2	"\"39fdef05dc027c6264b6c349a26362a59191a35f\", \"mtime_block\": null, \"in_file_overlap_claim\": null, \"_batch_id\": \"B0003\", \"best_historical_date\": \"2026-08-19\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",5]	S 1/2	"{\"source_id\": \"S1109\", \"path\": \"docs/knowledgeos/reviews/synthesis/analysis/phase-3c-conformance-findings.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": \"2026-08-28T15:39:30Z\", \"mtime_block\": null, \"explicit_dates\": [\"2026-08-28\"], \"order_evidence\": \"FILENAME-DATESTAMP\", \"status\": \"CONTENT\", \"summary\": \"Phase 3C Conformance Findings Registry (D-2), 16 findings (CF-001..CF-016) comparing v0.2's formal vocabulary against the actual repository (constitution, reference architecture, code), under Authority GN-22/GN-21; some findings later disposed by GN-24/27.\", \"objects_touched\": [\"kos-constitution-v1\", \"kos-reference-architecture-v1\", \"zero-neutral-state-lens\", \"sb-1-conformance-authority\"], \"contribution_assessment\": \"Establishes conceptual-correspondence-not-shared-vocabulary between v0.2's formal model and the actual KnowledgeOS repository across 16 dimensions: worktree/RA-v1.1 ambiguity, docs/eks triage, constitution in-force ambiguity, vocabulary disjunction"
+["bundle","sources_verbatim",5]	S 2/2	", Zero naming collision, status-ladder correspondence, authority boundary conformance, no-skip practice, richer repository state model, EXP-01 CSV discrepancy, policy stratification conformance, Knower partial conformance, admission-gate conformance, decision-boundary conformance with DC absent, minimal executable footprint, and independently-converging no-scalar prohibition.\", \"provenance\": \"SECONDARY-SYNTHESIS\", \"in_file_overlap_claim\": null, \"_batch_id\": \"B0027\", \"best_historical_date\": \"2026-08-28\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","working_label"]	S 1/1	"sb-1-conformance-authority"
+["contract_sha256"]	S 1/1	"b8eef043f3b2ea4bbeb8be03fb1487787c6b1b6712455eaf15286299393809da"
+["family_md"]	S 1/8	"# sb-1-conformance-authority\n\n**Scope(s):** CROSS-OBJECT · **Row count:** 8 ·\n**Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED\n**Notations:** SB-1 · **Aliases:** conformance authority shared-boundary risk\n**Candidate group membership (NOT an identity claim):**\n- **G0188** [`authority-trust-source-reliability-knowledge-commitment` · `sb-1-conformance-authority`] — explicit agent-stated uncertainty: 'authority-trust-source-reliability-knowledge-commitment' POSSIBLY relates to 'sb-1-conformance-authority' (batch B0022). Note: Used in S0897/S0898 for the context-dependent, partial-order authority-precedence model (Law > CorporatePolicy > ArchitectureConstitution > ADR > LocalInstruction, later refined to a partial order s1 succeq_C s2); flagged with unknown_candidate against this same label in several rows since it may be identical to B0021/Step 19's Source/Authority/Reliability object, not yet confirmed. Added here to satisfy the batch's own label-registratio"
+["family_md"]	S 2/8	"n requirement for the one row where it is used as a plain (non-unknown-candidate) label.\n\n## Sources (how this label entered the ledger)\n- **OBJECT-INDEX**, batch B0003, scope CROSS-OBJECT: Shared-boundary risk between ADR-AIP-04 and Track 1: ADR-AIP-04 must not assign conformance authority. Uncleared through two verifications; independence precondition finally cleared by Verification #3 via write-class provenance.\n\n## Candidate births\n- CANDIDATE-LEXICAL-BIRTH: [S0089 §\"I am the Track-1 implementation engineer (4c6c1dac) ... SB-1 exists to stop ADR-AIP-04 relocating Track-1 conformance authority. I therefore do not treat my SB-1 verdict as independent.\"]\n- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-FORMAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-GOVERNANCE-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n\n## Lifecycle\nlast_seen: S1109. Candidate lifecycle: DORMANT.\nEvidence: no retraction/supersession/contradiction eviden"
+["family_md"]	S 3/8	"ce recorded — the DORMANT classification is a heuristic based on how recently (by source_id) this label was last used, not a confirmed ongoing status or a confirmed retirement.\n\n## Completeness roll-up\n| Dimension | Status | Source IDs |\n|---|---|---|\n| purpose_rationale | PRESENT | S0090, S0092 |\n| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |\n| formal_definition | NOT-EVIDENCED-IN-CAPTURE | — |\n| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |\n| invariants | PRESENT | S0094 |\n| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |\n| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |\n| semantics | PRESENT | S0089, S0091 |\n| examples | NOT-EVIDENCED-IN-CAPTURE | — |\n| warnings | PRESENT | S0089, S0091 |\n| experiments | NOT-EVIDENCED-IN-CAPTURE | — |\n| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |\n\n## Rationale\n- [S0090] (ANALYSIS/LIMITATION) A governance-capacity fact is recorded: two consecutive verifiers have each been structurally unable to clear SB-1 (conformance authority relocation risk)"
+["family_md"]	S 4/8	" because both hold some form of Track-1 authorship, and the pool of eligible verifiers shrinks each time Track 1 is touched.\n- [S0092] (CORRECTION/ANALYSIS) The prior registration's premise that a Track-1 report's author had 'no identifier to exclude' was itself falsified: the cited string was a git commit hash, not a session identifier, and its true producer is discoverable via write-class provenance -- a process already named in the exclusion list.\n\n## Assumption register\nNOT-EVIDENCED-IN-CAPTURE\n\n## All rows\n- [S0089] types=['WARNING', 'DISTINCTION'] scope=CROSS-OBJECT — \"The verifier discloses being the Track-1 implementation engineer and therefore recuses from independently verifying SB-1 (conformance-authority relocation risk), recommending a re-verification by a process with no Track-1 authorship.\" (anchor: \"I am the Track-1 implementation engineer (4c6c1dac) ... SB-1 exists to stop ADR-AIP-04 relocating Track-1 conformance authority. I therefore do not treat my SB-1 verdict as "
+["family_md"]	S 5/8	"independent.\")\n- [S0090] types=['ANALYSIS', 'LIMITATION'] scope=CROSS-OBJECT — \"A governance-capacity fact is recorded: two consecutive verifiers have each been structurally unable to clear SB-1 (conformance authority relocation risk) because both hold some form of Track-1 authorship, and the pool of eligible verifiers shrinks each time Track 1 is touched.\" (anchor: \"two consecutive verifications have now been unable to clear SB-1 -- the first because it produced Track 1, the second because it verified Track 1.\")\n- [S0091] types=['WARNING', 'CONSTRAINT'] scope=CROSS-OBJECT — \"Shared-boundary risk SB-1: because conformance evidence is shared between BC-1 and BC-3, and Track 1 already exercises live accepted conformance decisions, ADR-AIP-04 must not assign conformance authority -- the question is returned to Architecture/PO-ARB as a separate act rather than decided within the discovery.\" (anchor: \"SB-1 ... Track 1 has live, accepted decisions about conformance ... Assigning \"conformance"
+["family_md"]	S 6/8	" evidence\" to a Verification capability in ADR-AIP-04 could RELOCATE conformance authority that Track 1 currently exercises\")\n- [S0091] types=['LIMITATION', 'RESTATEMENT'] scope=CROSS-OBJECT — \"Amendment 1 confirms SB-1 remains unresolved, because the verifier who assessed it is the Track-1 implementation engineer; the halt on assigning conformance authority is preserved but the clearance risk is only mitigated, not cured.\" (anchor: \"SB-1 REMAINS CONFLICTED / REQUIRES RE-VERIFICATION. It is NOT resolved by this amendment and NOT resolved by the verification.\")\n- [S0092] types=['CORRECTION', 'ANALYSIS'] scope=METHODOLOGICAL — \"The prior registration's premise that a Track-1 report's author had 'no identifier to exclude' was itself falsified: the cited string was a git commit hash, not a session identifier, and its true producer is discoverable via write-class provenance -- a process already named in the exclusion list.\" (anchor: \"50d55d26 is not a session identifier at all. It is a git "
+["family_md"]	S 7/8	"commit hash. ... Authorship of a commit is established by provenance, not by a self-declaration the artifact was never asked to carry.\")\n- [S0092] types=['VALIDATION'] scope=CROSS-OBJECT — \"SB-1's independence precondition is cleared for the first time via write-class tool_use provenance; explicitly this clears only the independence precondition, not SB-1's substantive disposition (whether ADR-AIP-04 may ever assign conformance authority), which remains a PO/ARB decision.\" (anchor: \"SB-1 IS CLEARED -- for the first time in this work item.\")\n- [S0094] types=['LIMITATION', 'CONSTRAINT'] scope=OBJECT — \"Governance registers that the independence bar for Verification #3 cannot be checked by session-identifier comparison alone, because the Track-1 report discloses its overlap only in role terms and declares no session identifier; the candidate verifier must self-check by artifact authorship instead, and if it cannot answer, SB-1 is not cleared.\" (anchor: \"One of the seven excluded roles has"
+["family_md"]	S 8/8	" no process identifier anywhere in the estate. ... the bar cannot be enforced by process hash alone.\")\n- [S1109] types=['VALIDATION'] scope=OBJECT — \"Constitution Art. 3 requires authority to be assigned via a recorded reference to a human act, never intrinsic or emergent; adoption vs authorization are decided by separate human acts; session-bootstrap.php enforces IDENTITY != ROLE != ELIGIBILITY != AUTHORIZATION != OWNERSHIP != CONTINUATION with identity reported never granted and G-3 requiring a human START act — this is v0.2's A6 and decision-boundary re-typing (R-3) operating in practice.\" (anchor: \"CF-007 · Authority boundary (A6) — conformant, multiply evidenced\")\n\n## Notes for P3\nNone beyond what is recorded above.\n"
+["family_md_sha256"]	S 1/1	"30fcc8c049c3da4d7c19c0b1c34f00b43bf66366780c8d351e794e5a18ede60a"
+["family_md_status"]	S 1/1	"PRESENT"
+["hub"]	N	false
+["hub_record"]	N	null
+["in_checklist"]	N	false
+["input_manifest_sha256"]	S 1/1	"a20cf3a3e2fc9e1fc9c38919838c9edb3a0d901577a060d5804dc1e899a150b6"
+["p3a_pairs"]	E	[]
+["pairs_touching_missing"]	E	[]
+["population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["quarantine","p3a_pairs_withheld"]	N	1
+["quarantine","reconciliation_pairs_withheld"]	N	1
+["quarantine","sources_withheld"]	N	0
+["run_id"]	S 1/1	"OB0114-R7"
+["search_records",0,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",0,"ledger_hits","S0089",0,0]	S 1/1	"I am the Track-1 implementation engineer (4c6c1dac) ... SB-1 exists to stop ADR-AIP-04 relocating Track-1 conformance authority. I therefore do not treat my SB-1 verdict as independent."
+["search_records",0,"ledger_hits","S0089",0,1]	N	2
+["search_records",0,"ledger_hits","S0090",0,0]	S 1/1	"two consecutive verifications have now been unable to clear SB-1 -- the first because it produced Track 1, the second because it verified Track 1."
+["search_records",0,"ledger_hits","S0090",0,1]	N	2
+["search_records",0,"ledger_hits","S0091",0,0]	S 1/1	"SB-1 ... Track 1 has live, accepted decisions about conformance ... Assigning \"conformance evidence\" to a Verification capability in ADR-AIP-04 could RELOCATE conformance authority that Track 1 currently exercises"
+["search_records",0,"ledger_hits","S0091",0,1]	N	2
+["search_records",0,"ledger_hits","S0091",1,0]	S 1/1	"SB-1 REMAINS CONFLICTED / REQUIRES RE-VERIFICATION. It is NOT resolved by this amendment and NOT resolved by the verification."
+["search_records",0,"ledger_hits","S0091",1,1]	N	2
+["search_records",0,"ledger_hits","S0092",0,0]	S 1/1	"SB-1 IS CLEARED -- for the first time in this work item."
+["search_records",0,"ledger_hits","S0092",0,1]	N	2
+["search_records",0,"ledger_hits","S0092",1,0]	S 1/1	"SB-1 IS CLEARED -- for the first time in this work item."
+["search_records",0,"ledger_hits","S0092",1,1]	N	2
+["search_records",0,"ledger_hits","S0094",0,0]	S 1/1	"One of the seven excluded roles has no process identifier anywhere in the estate. ... the bar cannot be enforced by process hash alone."
+["search_records",0,"ledger_hits","S0094",0,1]	N	2
+["search_records",0,"ledger_hits","S0102",0,0]	S 1/1	"intra-platform third-party != external attestation ... A different process under the same operator, on the same filesystem -- that is evidence of process separation, not of externality."
+["search_records",0,"ledger_hits","S0102",0,1]	N	2
+["search_records",0,"ledger_hits","S0102",1,0]	S 1/1	"two independent grounds: an ADOPTED invariant (INV-ATTR-2) that presupposes the capability, and the capability has been PERFORMED. C-10 satisfies neither limb."
+["search_records",0,"ledger_hits","S0102",1,1]	N	2
+["search_records",0,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",0,"raw_hits","S0089",0,0]	N	1520
+["search_records",0,"raw_hits","S0089",0,1]	N	2
+["search_records",0,"raw_hits","S0089",1,0]	N	2528
+["search_records",0,"raw_hits","S0089",1,1]	N	2
+["search_records",0,"raw_hits","S0089",2,0]	N	2686
+["search_records",0,"raw_hits","S0089",2,1]	N	2
+["search_records",0,"raw_hits","S0089",3,0]	N	2797
+["search_records",0,"raw_hits","S0089",3,1]	N	2
+["search_records",0,"raw_hits","S0089",4,0]	N	2902
+["search_records",0,"raw_hits","S0089",4,1]	N	2
+["search_records",0,"raw_hits","S0089",5,0]	N	3029
+["search_records",0,"raw_hits","S0089",5,1]	N	2
+["search_records",0,"raw_hits","S0089",6,0]	N	13025
+["search_records",0,"raw_hits","S0089",6,1]	N	2
+["search_records",0,"raw_hits","S0089",7,0]	N	14730
+["search_records",0,"raw_hits","S0089",7,1]	N	2
+["search_records",0,"raw_hits","S0089",8,0]	N	15031
+["search_records",0,"raw_hits","S0089",8,1]	N	2
+["search_records",0,"raw_hits","S0089",9,0]	N	16565
+["search_records",0,"raw_hits","S0089",9,1]	N	2
+["search_records",0,"raw_hits","S0089",10,0]	N	16920
+["search_records",0,"raw_hits","S0089",10,1]	N	2
+["search_records",0,"raw_hits","S0090",0,0]	N	1279
+["search_records",0,"raw_hits","S0090",0,1]	N	2
+["search_records",0,"raw_hits","S0090",1,0]	N	1341
+["search_records",0,"raw_hits","S0090",1,1]	N	2
+["search_records",0,"raw_hits","S0090",2,0]	N	2099
+["search_records",0,"raw_hits","S0090",2,1]	N	2
+["search_records",0,"raw_hits","S0090",3,0]	N	2138
+["search_records",0,"raw_hits","S0090",3,1]	N	2
+["search_records",0,"raw_hits","S0090",4,0]	N	2294
+["search_records",0,"raw_hits","S0090",4,1]	N	2
+["search_records",0,"raw_hits","S0090",5,0]	N	2354
+["search_records",0,"raw_hits","S0090",5,1]	N	2
+["search_records",0,"raw_hits","S0090",6,0]	N	2529
+["search_records",0,"raw_hits","S0090",6,1]	N	2
+["search_records",0,"raw_hits","S0090",7,0]	N	2621
+["search_records",0,"raw_hits","S0090",7,1]	N	2
+["search_records",0,"raw_hits","S0090",8,0]	N	18073
+["search_records",0,"raw_hits","S0090",8,1]	N	2
+["search_records",0,"raw_hits","S0090",9,0]	N	18762
+["search_records",0,"raw_hits","S0090",9,1]	N	2
+["search_records",0,"raw_hits","S0090",10,0]	N	19070
+["search_records",0,"raw_hits","S0090",10,1]	N	2
+["search_records",0,"raw_hits","S0090",11,0]	N	19181
+["search_records",0,"raw_hits","S0090",11,1]	N	2
+["search_records",0,"raw_hits","S0090",12,0]	N	19298
+["search_records",0,"raw_hits","S0090",12,1]	N	2
+["search_records",0,"raw_hits","S0090",13,0]	N	19444
+["search_records",0,"raw_hits","S0090",13,1]	N	2
+["search_records",0,"raw_hits","S0090",14,0]	N	24622
+["search_records",0,"raw_hits","S0090",14,1]	N	2
+["search_records",0,"raw_hits","S0090",15,0]	N	26525
+["search_records",0,"raw_hits","S0090",15,1]	N	2
+["search_records",0,"raw_hits","S0090",16,0]	N	28191
+["search_records",0,"raw_hits","S0090",16,1]	N	2
+["search_records",0,"raw_hits","S0091",0,0]	N	35317
+["search_records",0,"raw_hits","S0091",0,1]	N	2
+["search_records",0,"raw_hits","S0091",1,0]	N	37951
+["search_records",0,"raw_hits","S0091",1,1]	N	2
+["search_records",0,"raw_hits","S0091",2,0]	N	38927
+["search_records",0,"raw_hits","S0091",2,1]	N	2
+["search_records",0,"raw_hits","S0091",3,0]	N	40331
+["search_records",0,"raw_hits","S0091",3,1]	N	2
+["search_records",0,"raw_hits","S0091",4,0]	N	41115
+["search_records",0,"raw_hits","S0091",4,1]	N	2
+["search_records",0,"raw_hits","S0091",5,0]	N	54375
+["search_records",0,"raw_hits","S0091",5,1]	N	2
+["search_records",0,"raw_hits","S0091",6,0]	N	54419
+["search_records",0,"raw_hits","S0091",6,1]	N	2
+["search_records",0,"raw_hits","S0091",7,0]	N	54756
+["search_records",0,"raw_hits","S0091",7,1]	N	2
+["search_records",0,"raw_hits","S0091",8,0]	N	54841
+["search_records",0,"raw_hits","S0091",8,1]	N	2
+["search_records",0,"raw_hits","S0091",9,0]	N	54855
+["search_records",0,"raw_hits","S0091",9,1]	N	2
+["search_records",0,"raw_hits","S0091",10,0]	N	54904
+["search_records",0,"raw_hits","S0091",10,1]	N	2
+["search_records",0,"raw_hits","S0091",11,0]	N	55280
+["search_records",0,"raw_hits","S0091",11,1]	N	2
+["search_records",0,"raw_hits","S0091",12,0]	N	59748
+["search_records",0,"raw_hits","S0091",12,1]	N	2
+["search_records",0,"raw_hits","S0091",13,0]	N	59829
+["search_records",0,"raw_hits","S0091",13,1]	N	2
+["search_records",0,"raw_hits","S0091",14,0]	N	60071
+["search_records",0,"raw_hits","S0091",14,1]	N	2
+["search_records",0,"raw_hits","S0091",15,0]	N	61164
+["search_records",0,"raw_hits","S0091",15,1]	N	2
+["search_records",0,"raw_hits","S0091",16,0]	N	77301
+["search_records",0,"raw_hits","S0091",16,1]	N	2
+["search_records",0,"raw_hits","S0091",17,0]	N	77371
+["search_records",0,"raw_hits","S0091",17,1]	N	2
+["search_records",0,"raw_hits","S0091",18,0]	N	77593
+["search_records",0,"raw_hits","S0091",18,1]	N	2
+["search_records",0,"raw_hits","S0091",19,0]	N	77816
+["search_records",0,"raw_hits","S0091",19,1]	N	2
+["search_records",0,"raw_hits","S0091",20,0]	N	77960
+["search_records",0,"raw_hits","S0091",20,1]	N	2
+["search_records",0,"raw_hits","S0091",21,0]	N	78126
+["search_records",0,"raw_hits","S0091",21,1]	N	2
+["search_records",0,"raw_hits","S0091",22,0]	N	78375
+["search_records",0,"raw_hits","S0091",22,1]	N	2
+["search_records",0,"raw_hits","S0091",23,0]	N	82024
+["search_records",0,"raw_hits","S0091",23,1]	N	2
+["search_records",0,"raw_hits","S0091",24,0]	N	83573
+["search_records",0,"raw_hits","S0091",24,1]	N	2
+["search_records",0,"raw_hits","S0092",0,0]	N	3441
+["search_records",0,"raw_hits","S0092",0,1]	N	2
+["search_records",0,"raw_hits","S0092",1,0]	N	6482
+["search_records",0,"raw_hits","S0092",1,1]	N	2
+["search_records",0,"raw_hits","S0092",2,0]	N	7272
+["search_records",0,"raw_hits","S0092",2,1]	N	2
+["search_records",0,"raw_hits","S0092",3,0]	N	7384
+["search_records",0,"raw_hits","S0092",3,1]	N	2
+["search_records",0,"raw_hits","S0092",4,0]	N	7453
+["search_records",0,"raw_hits","S0092",4,1]	N	2
+["search_records",0,"raw_hits","S0092",5,0]	N	7857
+["search_records",0,"raw_hits","S0092",5,1]	N	2
+["search_records",0,"raw_hits","S0092",6,0]	N	8045
+["search_records",0,"raw_hits","S0092",6,1]	N	2
+["search_records",0,"raw_hits","S0092",7,0]	N	8402
+["search_records",0,"raw_hits","S0092",7,1]	N	2
+["search_records",0,"raw_hits","S0092",8,0]	N	14058
+["search_records",0,"raw_hits","S0092",8,1]	N	2
+["search_records",0,"raw_hits","S0092",9,0]	N	27645
+["search_records",0,"raw_hits","S0092",9,1]	N	2
+["search_records",0,"raw_hits","S0092",10,0]	N	31263
+["search_records",0,"raw_hits","S0092",10,1]	N	2
+["search_records",0,"raw_hits","S0092",11,0]	N	34835
+["search_records",0,"raw_hits","S0092",11,1]	N	2
+["search_records",0,"raw_hits","S0092",12,0]	N	36523
+["search_records",0,"raw_hits","S0092",12,1]	N	2
+["search_records",0,"raw_hits","S0092",13,0]	N	40906
+["search_records",0,"raw_hits","S0092",13,1]	N	2
+["search_records",0,"raw_hits","S0092",14,0]	N	41177
+["search_records",0,"raw_hits","S0092",14,1]	N	2
+["search_records",0,"raw_hits","S0093",0,0]	N	4169
+["search_records",0,"raw_hits","S0093",0,1]	N	2
+["search_records",0,"raw_hits","S0094",0,0]	N	4078
+["search_records",0,"raw_hits","S0094",0,1]	N	2
+["search_records",0,"raw_hits","S0094",1,0]	N	4200
+["search_records",0,"raw_hits","S0094",1,1]	N	2
+["search_records",0,"raw_hits","S0094",2,0]	N	4384
+["search_records",0,"raw_hits","S0094",2,1]	N	2
+["search_records",0,"raw_hits","S0094",3,0]	N	4588
+["search_records",0,"raw_hits","S0094",3,1]	N	2
+["search_records",0,"raw_hits","S0094",4,0]	N	5781
+["search_records",0,"raw_hits","S0094",4,1]	N	2
+["search_records",0,"raw_hits","S0094",5,0]	N	8921
+["search_records",0,"raw_hits","S0094",5,1]	N	2
+["search_records",0,"raw_hits","S0100",0,0]	N	5034
+["search_records",0,"raw_hits","S0100",0,1]	N	2
+["search_records",0,"raw_hits","S0101",0,0]	N	6804
+["search_records",0,"raw_hits","S0101",0,1]	N	2
+["search_records",0,"raw_hits","S0101",1,0]	N	6889
+["search_records",0,"raw_hits","S0101",1,1]	N	2
+["search_records",0,"raw_hits","S0101",2,0]	N	26350
+["search_records",0,"raw_hits","S0101",2,1]	N	2
+["search_records",0,"raw_hits","S0101",3,0]	N	27400
+["search_records",0,"raw_hits","S0101",3,1]	N	2
+["search_records",0,"raw_hits","S0102",0,0]	N	7246
+["search_records",0,"raw_hits","S0102",0,1]	N	2
+["search_records",0,"raw_hits","S0102",1,0]	N	7518
+["search_records",0,"raw_hits","S0102",1,1]	N	2
+["search_records",0,"raw_hits","S0102",2,0]	N	10082
+["search_records",0,"raw_hits","S0102",2,1]	N	2
+["search_records",0,"raw_hits","S0102",3,0]	N	12396
+["search_records",0,"raw_hits","S0102",3,1]	N	2
+["search_records",0,"raw_hits","S0102",4,0]	N	14000
+["search_records",0,"raw_hits","S0102",4,1]	N	2
+["search_records",0,"raw_hits","S0102",5,0]	N	15241
+["search_records",0,"raw_hits","S0102",5,1]	N	2
+["search_records",0,"raw_hits","S0102",6,0]	N	16185
+["search_records",0,"raw_hits","S0102",6,1]	N	2
+["search_records",0,"raw_hits","S0102",7,0]	N	35155
+["search_records",0,"raw_hits","S0102",7,1]	N	2
+["search_records",0,"raw_hits","S0102",8,0]	N	38650
+["search_records",0,"raw_hits","S0102",8,1]	N	2
+["search_records",0,"raw_hits","S0102",9,0]	N	43517
+["search_records",0,"raw_hits","S0102",9,1]	N	2
+["search_records",0,"raw_hits","S0102",10,0]	N	44190
+["search_records",0,"raw_hits","S0102",10,1]	N	2
+["search_records",0,"raw_hits","S0102",11,0]	N	51015
+["search_records",0,"raw_hits","S0102",11,1]	N	2
+["search_records",0,"raw_hits","S0102",12,0]	N	54518
+["search_records",0,"raw_hits","S0102",12,1]	N	2
+["search_records",0,"raw_hits","S0102",13,0]	N	72304
+["search_records",0,"raw_hits","S0102",13,1]	N	2
+["search_records",0,"raw_hits","S0102",14,0]	N	82474
+["search_records",0,"raw_hits","S0102",14,1]	N	2
+["search_records",0,"raw_hits","S0102",15,0]	N	89793
+["search_records",0,"raw_hits","S0102",15,1]	N	2
+["search_records",0,"raw_hits","S0104",0,0]	N	7525
+["search_records",0,"raw_hits","S0104",0,1]	N	2
+["search_records",0,"raw_hits","S0164",0,0]	N	106457
+["search_records",0,"raw_hits","S0164",0,1]	N	2
+["search_records",0,"raw_hits","S0164",1,0]	N	107273
+["search_records",0,"raw_hits","S0164",1,1]	N	2
+["search_records",0,"raw_hits","S0164",2,0]	N	113988
+["search_records",0,"raw_hits","S0164",2,1]	N	2
+["search_records",0,"raw_hits","S0164",3,0]	N	118269
+["search_records",0,"raw_hits","S0164",3,1]	N	2
+["search_records",0,"raw_hits","S0164",4,0]	N	118790
+["search_records",0,"raw_hits","S0164",4,1]	N	2
+["search_records",0,"raw_hits","S0164",5,0]	N	119059
+["search_records",0,"raw_hits","S0164",5,1]	N	2
+["search_records",0,"raw_hits","S0164",6,0]	N	119710
+["search_records",0,"raw_hits","S0164",6,1]	N	2
+["search_records",0,"raw_hits","S0164",7,0]	N	121769
+["search_records",0,"raw_hits","S0164",7,1]	N	2
+["search_records",0,"raw_hits","S0164",8,0]	N	121906
+["search_records",0,"raw_hits","S0164",8,1]	N	2
+["search_records",0,"raw_hits","S0164",9,0]	N	122493
+["search_records",0,"raw_hits","S0164",9,1]	N	2
+["search_records",0,"raw_hits","S0164",10,0]	N	122510
+["search_records",0,"raw_hits","S0164",10,1]	N	2
+["search_records",0,"raw_hits","S0168",0,0]	N	27902
+["search_records",0,"raw_hits","S0168",0,1]	N	2
+["search_records",0,"raw_hits","S0196",0,0]	N	23707
+["search_records",0,"raw_hits","S0196",0,1]	N	2
+["search_records",0,"raw_hits","S0196",1,0]	N	33531
+["search_records",0,"raw_hits","S0196",1,1]	N	2
+["search_records",0,"raw_hits","S0196",2,0]	N	41602
+["search_records",0,"raw_hits","S0196",2,1]	N	2
+["search_records",0,"raw_hits","S0196",3,0]	N	45790
+["search_records",0,"raw_hits","S0196",3,1]	N	2
+["search_records",0,"raw_hits","S0196",4,0]	N	53473
+["search_records",0,"raw_hits","S0196",4,1]	N	2
+["search_records",0,"record"]	S 1/1	"LABEL-HITS"
+["search_records",0,"terms",0]	S 1/1	"conformance authority shared-boundary risk"
+["search_records",0,"terms",1]	S 1/1	"sb 1 conformance authority"
+["search_records",0,"terms",2]	S 1/1	"sb-1"
+["search_records",0,"terms",3]	S 1/1	"sb-1-conformance-authority"
+["search_records",1,"dimension"]	S 1/1	"informal_meaning"
+["search_records",1,"files_searched"]	N	2734
+["search_records",1,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",1,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",1,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",1,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",1,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",1,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",1,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",1,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",1,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",1,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",1,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",1,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",1,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",1,"identity_summary","p0_row_exception"]	N	3
+["search_records",1,"identity_summary","stasis_unobservable"]	N	1
+["search_records",1,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",1,"negative_label"]	N	null
+["search_records",1,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",1,"record"]	S 1/1	"DIMENSION"
+["search_records",1,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",2,"dimension"]	S 1/1	"formal_definition"
+["search_records",2,"files_searched"]	N	2734
+["search_records",2,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",2,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",2,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",2,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",2,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",2,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",2,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",2,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",2,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",2,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",2,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",2,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",2,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",2,"identity_summary","p0_row_exception"]	N	3
+["search_records",2,"identity_summary","stasis_unobservable"]	N	1
+["search_records",2,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",2,"negative_label"]	N	null
+["search_records",2,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",2,"record"]	S 1/1	"DIMENSION"
+["search_records",2,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",3,"dimension"]	S 1/1	"type_signature"
+["search_records",3,"files_searched"]	N	2734
+["search_records",3,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",3,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",3,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",3,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",3,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",3,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",3,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",3,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",3,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",3,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",3,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",3,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",3,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",3,"identity_summary","p0_row_exception"]	N	3
+["search_records",3,"identity_summary","stasis_unobservable"]	N	1
+["search_records",3,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",3,"negative_label"]	N	null
+["search_records",3,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",3,"record"]	S 1/1	"DIMENSION"
+["search_records",3,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",4,"dimension"]	S 1/1	"dependencies"
+["search_records",4,"files_searched"]	N	2734
+["search_records",4,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",4,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",4,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",4,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",4,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",4,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",4,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",4,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",4,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",4,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",4,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",4,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",4,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",4,"identity_summary","p0_row_exception"]	N	3
+["search_records",4,"identity_summary","stasis_unobservable"]	N	1
+["search_records",4,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",4,"negative_label"]	N	null
+["search_records",4,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",4,"record"]	S 1/1	"DIMENSION"
+["search_records",4,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",5,"dimension"]	S 1/1	"assumptions"
+["search_records",5,"files_searched"]	N	2734
+["search_records",5,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",5,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",5,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",5,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",5,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",5,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",5,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",5,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",5,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",5,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",5,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",5,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",5,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",5,"identity_summary","p0_row_exception"]	N	3
+["search_records",5,"identity_summary","stasis_unobservable"]	N	1
+["search_records",5,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",5,"negative_label"]	N	null
+["search_records",5,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",5,"record"]	S 1/1	"DIMENSION"
+["search_records",5,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",6,"dimension"]	S 1/1	"examples"
+["search_records",6,"files_searched"]	N	2734
+["search_records",6,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",6,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",6,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",6,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",6,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",6,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",6,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",6,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",6,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",6,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",6,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",6,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",6,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",6,"identity_summary","p0_row_exception"]	N	3
+["search_records",6,"identity_summary","stasis_unobservable"]	N	1
+["search_records",6,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",6,"negative_label"]	N	null
+["search_records",6,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",6,"record"]	S 1/1	"DIMENSION"
+["search_records",6,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",7,"dimension"]	S 1/1	"experiments"
+["search_records",7,"files_searched"]	N	2734
+["search_records",7,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",7,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",7,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",7,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",7,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",7,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",7,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",7,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",7,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",7,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",7,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",7,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",7,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",7,"identity_summary","p0_row_exception"]	N	3
+["search_records",7,"identity_summary","stasis_unobservable"]	N	1
+["search_records",7,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",7,"negative_label"]	N	null
+["search_records",7,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",7,"record"]	S 1/1	"DIMENSION"
+["search_records",7,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",8,"dimension"]	S 1/1	"open_questions"
+["search_records",8,"files_searched"]	N	2734
+["search_records",8,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",8,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",8,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",8,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",8,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",8,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",8,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",8,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",8,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",8,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",8,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",8,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",8,"hits_ref"]	S 1/1	"sb-1-conformance-authority"
+["search_records",8,"identity_summary","p0_row_exception"]	N	3
+["search_records",8,"identity_summary","stasis_unobservable"]	N	1
+["search_records",8,"label"]	S 1/1	"sb-1-conformance-authority"
+["search_records",8,"negative_label"]	N	null
+["search_records",8,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",8,"record"]	S 1/1	"DIMENSION"
+["search_records",8,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["semantic_status_mechanical","note"]	S 1/1	"NO-PAIR-EVIDENCE — out of domain (H-11a option iii)"
+["semantic_status_mechanical","rule"]	S 1/1	"ROW-0"
+["semantic_status_mechanical","value"]	N	null
+["source_meta","S0089","best_historical_date"]	S 1/1	"2026-08-18"
+["source_meta","S0089","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0089","explicit_dates",0]	S 1/1	"2026-08-18"
+["source_meta","S0089","file_mtime"]	S 1/1	"1787089444"
+["source_meta","S0089","mtime_block"]	N	null
+["source_meta","S0089","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0089","status"]	S 1/1	"CONTENT"
+["source_meta","S0090","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0090","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0090","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0090","file_mtime"]	S 1/1	"1787091476"
+["source_meta","S0090","mtime_block"]	N	null
+["source_meta","S0090","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0090","status"]	S 1/1	"CONTENT"
+["source_meta","S0091","best_historical_date"]	S 1/1	"2026-08-18"
+["source_meta","S0091","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0091","explicit_dates",0]	S 1/1	"2026-08-18"
+["source_meta","S0091","explicit_dates",1]	S 1/1	"2026-08-19"
+["source_meta","S0091","file_mtime"]	S 1/1	"1787092089"
+["source_meta","S0091","mtime_block"]	N	null
+["source_meta","S0091","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0091","status"]	S 1/1	"CONTENT"
+["source_meta","S0092","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0092","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0092","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0092","file_mtime"]	S 1/1	"1787093844"
+["source_meta","S0092","mtime_block"]	N	null
+["source_meta","S0092","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0092","status"]	S 1/1	"CONTENT"
+["source_meta","S0093","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0093","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0093","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0093","file_mtime"]	S 1/1	"1787123119"
+["source_meta","S0093","mtime_block"]	N	null
+["source_meta","S0093","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0093","status"]	S 1/1	"CONTENT"
+["source_meta","S0094","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0094","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0094","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0094","file_mtime"]	S 1/1	"1787123633"
+["source_meta","S0094","mtime_block"]	N	null
+["source_meta","S0094","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S0094","status"]	S 1/1	"CONTENT"
+["source_meta","S0100","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0100","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0100","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0100","file_mtime"]	S 1/1	"1787138906"
+["source_meta","S0100","mtime_block"]	N	null
+["source_meta","S0100","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0100","status"]	S 1/1	"CONTENT"
+["source_meta","S0101","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0101","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0101","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0101","file_mtime"]	S 1/1	"1787138906"
+["source_meta","S0101","mtime_block"]	N	null
+["source_meta","S0101","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0101","status"]	S 1/1	"CONTENT"
+["source_meta","S0102","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0102","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0102","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0102","file_mtime"]	S 1/1	"1787138906"
+["source_meta","S0102","mtime_block"]	N	null
+["source_meta","S0102","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0102","status"]	S 1/1	"CONTENT"
+["source_meta","S0104","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0104","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0104","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0104","file_mtime"]	S 1/1	"1787145086"
+["source_meta","S0104","mtime_block"]	N	null
+["source_meta","S0104","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0104","status"]	S 1/1	"CONTENT"
+["source_meta","S0164","best_historical_date"]	S 1/1	"2026-08-14"
+["source_meta","S0164","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0164","explicit_dates",0]	S 1/1	"2026-08-14"
+["source_meta","S0164","explicit_dates",1]	S 1/1	"2026-08-15"
+["source_meta","S0164","explicit_dates",2]	S 1/1	"2026-08-16"
+["source_meta","S0164","explicit_dates",3]	S 1/1	"2026-08-17"
+["source_meta","S0164","explicit_dates",4]	S 1/1	"2026-08-18"
+["source_meta","S0164","explicit_dates",5]	S 1/1	"2026-08-19"
+["source_meta","S0164","explicit_dates",6]	S 1/1	"2026-08-20"
+["source_meta","S0164","explicit_dates",7]	S 1/1	"2026-08-21"
+["source_meta","S0164","file_mtime"]	S 1/1	"1787326445"
+["source_meta","S0164","mtime_block"]	S 1/1	"BULK-02"
+["source_meta","S0164","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0164","status"]	S 1/1	"CONTENT"
+["source_meta","S0168","best_historical_date"]	S 1/1	"2026-08-19"
+["source_meta","S0168","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0168","explicit_dates",0]	S 1/1	"2026-08-19"
+["source_meta","S0168","file_mtime"]	S 1/1	"1787326445"
+["source_meta","S0168","mtime_block"]	S 1/1	"BULK-02"
+["source_meta","S0168","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0168","status"]	S 1/1	"CONTENT"
+["source_meta","S0196","best_historical_date"]	S 1/1	"2026-08-21"
+["source_meta","S0196","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S0196","explicit_dates",0]	S 1/1	"2026-08-21"
+["source_meta","S0196","file_mtime"]	S 1/1	"1787345126"
+["source_meta","S0196","mtime_block"]	N	null
+["source_meta","S0196","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0196","status"]	S 1/1	"CONTENT"
+["source_meta","S0897","best_historical_date"]	S 1/1	"1787848400"
+["source_meta","S0897","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0897","explicit_dates"]	E	[]
+["source_meta","S0897","file_mtime"]	S 1/1	"1787848400"
+["source_meta","S0897","mtime_block"]	N	null
+["source_meta","S0897","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0897","status"]	S 1/1	"CONTENT"
+["source_meta","S0898","best_historical_date"]	S 1/1	"1787848529"
+["source_meta","S0898","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S0898","explicit_dates"]	E	[]
+["source_meta","S0898","file_mtime"]	S 1/1	"1787848529"
+["source_meta","S0898","mtime_block"]	N	null
+["source_meta","S0898","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S0898","status"]	S 1/1	"CONTENT"
+["source_meta","S1109","best_historical_date"]	S 1/1	"2026-08-28"
+["source_meta","S1109","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S1109","explicit_dates",0]	S 1/1	"2026-08-28"
+["source_meta","S1109","file_mtime"]	S 1/1	"2026-08-28T15:39:30Z"
+["source_meta","S1109","mtime_block"]	N	null
+["source_meta","S1109","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1109","status"]	S 1/1	"CONTENT"
+["source_meta","S1752","best_historical_date"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1752","explicit_dates"]	E	[]
+["source_meta","S1752","file_mtime"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","mtime_block"]	N	null
+["source_meta","S1752","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1752","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1821","best_historical_date"]	S 1/1	"1788124763"
+["source_meta","S1821","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1821","explicit_dates"]	E	[]
+["source_meta","S1821","file_mtime"]	S 1/1	"1788124763"
+["source_meta","S1821","mtime_block"]	N	null
+["source_meta","S1821","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1821","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1824","best_historical_date"]	S 1/1	"1788124863"
+["source_meta","S1824","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1824","explicit_dates"]	E	[]
+["source_meta","S1824","file_mtime"]	S 1/1	"1788124863"
+["source_meta","S1824","mtime_block"]	N	null
+["source_meta","S1824","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1824","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1895","best_historical_date"]	S 1/1	"1788128669"
+["source_meta","S1895","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1895","explicit_dates"]	E	[]
+["source_meta","S1895","file_mtime"]	S 1/1	"1788128669"
+["source_meta","S1895","mtime_block"]	N	null
+["source_meta","S1895","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1895","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1899","best_historical_date"]	S 1/1	"1788128726"
+["source_meta","S1899","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1899","explicit_dates"]	E	[]
+["source_meta","S1899","file_mtime"]	S 1/1	"1788128726"
+["source_meta","S1899","mtime_block"]	N	null
+["source_meta","S1899","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1899","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1909","best_historical_date"]	S 1/1	"1788128760"
+["source_meta","S1909","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1909","explicit_dates"]	E	[]
+["source_meta","S1909","file_mtime"]	S 1/1	"1788128760"
+["source_meta","S1909","mtime_block"]	N	null
+["source_meta","S1909","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1909","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1928","best_historical_date"]	S 1/1	"1788129394"
+["source_meta","S1928","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1928","explicit_dates"]	E	[]
+["source_meta","S1928","file_mtime"]	S 1/1	"1788129394"
+["source_meta","S1928","mtime_block"]	N	null
+["source_meta","S1928","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1928","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1929","best_historical_date"]	S 1/1	"1788129395"
+["source_meta","S1929","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1929","explicit_dates"]	E	[]
+["source_meta","S1929","file_mtime"]	S 1/1	"1788129395"
+["source_meta","S1929","mtime_block"]	N	null
+["source_meta","S1929","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1929","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1930","best_historical_date"]	S 1/1	"1788129397"
+["source_meta","S1930","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1930","explicit_dates"]	E	[]
+["source_meta","S1930","file_mtime"]	S 1/1	"1788129397"
+["source_meta","S1930","mtime_block"]	N	null
+["source_meta","S1930","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1930","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2791","best_historical_date"]	S 1/1	"1788679896"
+["source_meta","S2791","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2791","explicit_dates"]	E	[]
+["source_meta","S2791","file_mtime"]	S 1/1	"1788679896"
+["source_meta","S2791","mtime_block"]	N	null
+["source_meta","S2791","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2791","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2795","best_historical_date"]	S 1/1	"1788679967"
+["source_meta","S2795","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2795","explicit_dates"]	E	[]
+["source_meta","S2795","file_mtime"]	S 1/1	"1788679967"
+["source_meta","S2795","mtime_block"]	N	null
+["source_meta","S2795","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2795","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2798","best_historical_date"]	S 1/1	"1788680353"
+["source_meta","S2798","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2798","explicit_dates"]	E	[]
+["source_meta","S2798","file_mtime"]	S 1/1	"1788680353"
+["source_meta","S2798","mtime_block"]	N	null
+["source_meta","S2798","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2798","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_tracks","S0089","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0089","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0090","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0090","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0091","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0091","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0092","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0092","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0094","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S0094","track_tag"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S1109","d23_track"]	S 1/1	"UNCLASSIFIED"
+["source_tracks","S1109","track_tag"]	S 1/1	"UNCLASSIFIED"
+["stage2_files",0]	S 1/1	"S0089"
+["stage2_files",1]	S 1/1	"S0090"
+["stage2_files",2]	S 1/1	"S0091"
+["stage2_files",3]	S 1/1	"S0092"
+["stage2_files",4]	S 1/1	"S0093"
+["stage2_files",5]	S 1/1	"S0094"
+["stage2_files",6]	S 1/1	"S0100"
+["stage2_files",7]	S 1/1	"S0101"
+["stage2_files",8]	S 1/1	"S0102"
+["stage2_files",9]	S 1/1	"S0104"
+["stage2_files",10]	S 1/1	"S0164"
+["stage2_files",11]	S 1/1	"S0168"
+["stage2_files",12]	S 1/1	"S0196"
+["tier"]	S 1/1	"U"
+["working_label"]	S 1/1	"sb-1-conformance-authority"

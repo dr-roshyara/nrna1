@@ -1,0 +1,464 @@
+# SLICE-VIEW v1 (R7 v2.7): one line per JSON leaf of the frozen slice — <path> TAB <kind> TAB <payload>; path = JSON array of keys/indices; kinds: N scalar, E empty container, S k/n string chunk (JSON)
+["batch_id"]	S 1/1	"OB0114"
+["bundle","reconciliation_object","aliases",0]	S 1/1	"closure register consolidation"
+["bundle","reconciliation_object","aliases",1]	S 1/1	"construction gate verdict"
+["bundle","reconciliation_object","assumption_register"]	E	[]
+["bundle","reconciliation_object","candidate_births","conceptual"]	N	null
+["bundle","reconciliation_object","candidate_births","formal"]	N	null
+["bundle","reconciliation_object","candidate_births","governance","anchor"]	S 1/1	"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory."
+["bundle","reconciliation_object","candidate_births","governance","source_id"]	S 1/1	"S1851"
+["bundle","reconciliation_object","candidate_births","lexical","anchor"]	S 1/1	"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory."
+["bundle","reconciliation_object","candidate_births","lexical","source_id"]	S 1/1	"S1851"
+["bundle","reconciliation_object","candidate_births","operational"]	N	null
+["bundle","reconciliation_object","completeness","assumptions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","assumptions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","dependencies","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","dependencies","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","examples","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","examples","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","experiments","source_ids",0]	S 1/1	"S1851"
+["bundle","reconciliation_object","completeness","experiments","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","formal_definition","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","formal_definition","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","informal_meaning","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","informal_meaning","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","invariants","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","invariants","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","open_questions","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","open_questions","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",0]	S 1/1	"S1851"
+["bundle","reconciliation_object","completeness","purpose_rationale","source_ids",1]	S 1/1	"S1853"
+["bundle","reconciliation_object","completeness","purpose_rationale","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","semantics","source_ids",0]	S 1/1	"S1853"
+["bundle","reconciliation_object","completeness","semantics","status"]	S 1/1	"PRESENT"
+["bundle","reconciliation_object","completeness","type_signature","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","type_signature","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness","warnings","source_ids"]	E	[]
+["bundle","reconciliation_object","completeness","warnings","status"]	S 1/1	"NOT-EVIDENCED-IN-CAPTURE"
+["bundle","reconciliation_object","completeness_absences",0]	S 1/1	"informal_meaning"
+["bundle","reconciliation_object","completeness_absences",1]	S 1/1	"formal_definition"
+["bundle","reconciliation_object","completeness_absences",2]	S 1/1	"type_signature"
+["bundle","reconciliation_object","completeness_absences",3]	S 1/1	"invariants"
+["bundle","reconciliation_object","completeness_absences",4]	S 1/1	"dependencies"
+["bundle","reconciliation_object","completeness_absences",5]	S 1/1	"assumptions"
+["bundle","reconciliation_object","completeness_absences",6]	S 1/1	"examples"
+["bundle","reconciliation_object","completeness_absences",7]	S 1/1	"warnings"
+["bundle","reconciliation_object","completeness_absences",8]	S 1/1	"open_questions"
+["bundle","reconciliation_object","files_touching",0]	S 1/1	"S1851"
+["bundle","reconciliation_object","files_touching",1]	S 1/1	"S1853"
+["bundle","reconciliation_object","group_ids",0]	S 1/1	"G0428"
+["bundle","reconciliation_object","last_seen"]	S 1/1	"S1853"
+["bundle","reconciliation_object","lifecycle_candidate"]	S 1/1	"DORMANT"
+["bundle","reconciliation_object","lifecycle_evidence","contested_by_own_contradiction_type"]	N	false
+["bundle","reconciliation_object","lifecycle_evidence","retracted_by"]	E	[]
+["bundle","reconciliation_object","lifecycle_evidence","superseded_by"]	E	[]
+["bundle","reconciliation_object","notations",0]	S 1/1	"07-RECONCILED-CLOSURE-REGISTER"
+["bundle","reconciliation_object","notations",1]	S 1/1	"09-NEXT-CONSTRUCTION-GATE"
+["bundle","reconciliation_object","notations",2]	S 1/1	"YES WITH CONDITIONS"
+["bundle","reconciliation_object","pair_count"]	N	1
+["bundle","reconciliation_object","pairs_touching",0,"basis"]	S 1/1	"NONE"
+["bundle","reconciliation_object","pairs_touching",0,"corpus_wide_search_note"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"homonym_positive_evidence"]	N	null
+["bundle","reconciliation_object","pairs_touching",0,"notes_for_p3b"]	S 1/1	"Both are companion deliverables of the same theory-closure/construction-gate handoff session (a: 4/25 constructs clear in every lane; b: gate verdict YES WITH CONDITIONS) -- worth noting for roll-up as sibling artifacts of one package, not a lineage pair."
+["bundle","reconciliation_object","pairs_touching",0,"pair_id"]	S 1/1	"RP0206"
+["bundle","reconciliation_object","pairs_touching",0,"relationship"]	S 1/1	"UNWITNESSED"
+["bundle","reconciliation_object","pairs_touching",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["bundle","reconciliation_object","pairs_touching",0,"what_says_this"]	S 1/1	"group_evidence POSSIBLY-RELATION note explicitly frames the two as distinct-but-complementary artifacts from the same handoff package: a registers CONSTRUCTS (25 items x 9 fields, formal-def/test/observability/evidence-class/governance/blocker lanes) while b is the reconciled GAPS closure register and construction-gate verdict; the note explicitly says a is 'distinct from ... because it registers CONSTRUCTS ... rather than GAPS' and 'explicitly complementary to (not competing with)' the separate theory-gap-register. No SOURCE-CLAIMED row and no lineage_claims either direction connect them beyond this co-package framing."
+["bundle","reconciliation_object","pairs_touching",0,"what_would_make_this_wrong"]	S 1/1	"A source row stating the construct registry was derived from, or supersedes, the closure register (or vice versa) would upgrade this beyond UNWITNESSED; likewise a stated identity between 'construct' rows and 'gap' rows would change the picture."
+["bundle","reconciliation_object","pairs_touching",0,"with_label"]	S 1/1	"canonical-construct-registry-25-item-lane-audit"
+["bundle","reconciliation_object","primary_layer_provisional"]	S 1/1	"LAYER-UNRESOLVED"
+["bundle","reconciliation_object","rationale_evidence",0,"anchor"]	S 1/1	"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory."
+["bundle","reconciliation_object","rationale_evidence",0,"source_id"]	S 1/1	"S1851"
+["bundle","reconciliation_object","rationale_evidence",0,"statement"]	S 1/1	"Summary conclusion of the reconciled closure register: every blocking item traces back to the single unratified O_core premise; Sigma (space and storage) closed itself by derivation this pass, missingness/Determination/AuthorityAct are recoveries not inventions, one new defect (Sigma0-perp-R) surfaced, and no item in the register requires genuinely new theory."
+["bundle","reconciliation_object","rationale_evidence",0,"types",0]	S 1/1	"GOVERNANCE"
+["bundle","reconciliation_object","rationale_evidence",0,"types",1]	S 1/1	"ANALYSIS"
+["bundle","reconciliation_object","rationale_evidence",1,"anchor"]	S 1/1	"YES, WITH EXPLICIT CONDITIONS. Not YES — one premise is unratified and one defect is new. Not NO — because the single blocker is provably confined, and construction of everything else is invariant across it."
+["bundle","reconciliation_object","rationale_evidence",1,"source_id"]	S 1/1	"S1853"
+["bundle","reconciliation_object","rationale_evidence",1,"statement"]	S 1/1	"The gate verdict: canonical construction may begin, WITH EXPLICIT CONDITIONS -- not an unconditional YES because O_core is unratified and a new defect (Sigma0-perp-R) exists, but not a NO because the single blocker (O_core) is provably confined to congruence and global minimality claims, with everything else invariant across it."
+["bundle","reconciliation_object","rationale_evidence",1,"types",0]	S 1/1	"GOVERNANCE"
+["bundle","reconciliation_object","rationale_evidence",1,"types",1]	S 1/1	"ARGUMENT"
+["bundle","reconciliation_object","row_count"]	N	6
+["bundle","reconciliation_object","secondary_roles_provisional"]	E	[]
+["bundle","reconciliation_object","working_label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["bundle","rows_verbatim",0]	S 1/2	"{\"source_id\": \"S1851\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/07-RECONCILED-CLOSURE-REGISTER.md\", \"anchor\": \"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory.\", \"explicit_date\": \"2026-08-30\", \"scope\": \"THEORY-LEVEL\", \"labels\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"GOVERNANCE\", \"ANALYSIS\"], \"statement\": \"Summary conclusion of the reconciled closure register: every blocking item traces back to the single unratified O_core premise; Sigma (space and storage) closed itself by derivation this pass, missingness/Determination/AuthorityAct are recoveries not inventions, one new defect (Sigma0-perp-R) surfaced, and no item in the register requires genuinely new theory.\", \"type_signature\": null, \"completeness\": \"N/A\", \"miss"
+["bundle","rows_verbatim",0]	S 2/2	"ing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0045\"}"
+["bundle","rows_verbatim",1]	S 1/2	"{\"source_id\": \"S1851\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/07-RECONCILED-CLOSURE-REGISTER.md\", \"anchor\": \"K | \\\"K=(𝒜,ℛ)\\\" | 273 tests (A,R,Σ,E_L) by deletion; my removal test yields 𝒦=(K,H), K=(D_t,𝒜,ℛ,Σ_c,E_L); band-invariant across all 16 𝒪 resolutions. But §273.31: semantic ≠ representation necessity | SUBSTANTIALLY DERIVED\", \"explicit_date\": \"2026-08-30\", \"scope\": \"OBJECT\", \"labels\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"EXPERIMENTAL-RESULT\"], \"statement\": \"K's candidate representation is refined by a removal test to K_full=(D_t, assertions, relations, Sigma_c, E_L) nested in a pair with history K=(K_full,H), and this decomposition is shown band-invariant across all 16 tested O resolutions, though Step 273.31's semantic-necessity-vs-representation-necessity distinction keeps K's exact representation formally open.\", \"type_signature\": null, \"completeness\": \"N/A\","
+["bundle","rows_verbatim",1]	S 2/2	" \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0045\"}"
+["bundle","rows_verbatim",2]	S 1/2	"{\"source_id\": \"S1853\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/09-NEXT-CONSTRUCTION-GATE.md\", \"anchor\": \"1. AuthorityAct is not innovation — Grant is corpus-defined and implemented 132/132. My prior pass searched for a string and concluded the concept was absent. 2. D-4 is not normative — it is derivable from OR-merge ⊥ retract. 3. The second-order Determination count is 836, not ~1 165, and the struct\", \"explicit_date\": \"2026-08-30\", \"scope\": \"METHODOLOGICAL\", \"labels\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"RETRACTION\", \"CORRECTION\"], \"statement\": \"Three self-corrections are logged as made during this pass: (1) AuthorityAct is not innovation, it is Grant under another name; (2) D-4 (Sigma storage) is not normative, it is mathematically derivable; (3) the Determination occurrence count and step attribution from an earlier second-order pass were numerically wrong (836/St"
+["bundle","rows_verbatim",2]	S 2/2	"ep157 not ~1165/Step165) though the underlying substance survives.\", \"type_signature\": null, \"completeness\": \"N/A\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0045\"}"
+["bundle","rows_verbatim",3]	S 1/2	"{\"source_id\": \"S1853\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/09-NEXT-CONSTRUCTION-GATE.md\", \"anchor\": \"CONDITION 1 — 𝒪_core must be ratified or explicitly marked HYPOTHESIS (D-0) ... CONDITION 2 — the self-attested authority strings must be adjudicated ... CONDITION 3 — Σ₀ ⊥ ℛ must be recorded before Σ₀ is built on (new this pass)\", \"explicit_date\": \"2026-08-30\", \"scope\": \"THEORY-LEVEL\", \"labels\": [\"reconciled-closure-register-and-construction-gate-verdict\", \"o-core-ratification-gap-d0\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"CONSTRAINT\"], \"statement\": \"Three explicit conditions gate unconditional construction: (1) O_core must be ratified or explicitly marked HYPOTHESIS, blocking only operation congruence and global Minimality(K|T); (2) the self-attested HPA authority strings across 13+9+5+7 files must be adjudicated before every downstream artifact inherits an unknown authority status; (3) the newly found Sigma0-perp-R defect mu"
+["bundle","rows_verbatim",3]	S 2/2	"st be recorded before further construction is built on Sigma0, to avoid re-burying a known defect for a third time.\", \"type_signature\": null, \"completeness\": \"N/A\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0045\"}"
+["bundle","rows_verbatim",4]	S 1/2	"{\"source_id\": \"S1853\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/09-NEXT-CONSTRUCTION-GATE.md\", \"anchor\": \"STOPPED here as mandated. No canonical theory, K, Σ architecture, operation algebra, authority ontology or policy model was written. Nothing was ratified, promoted or adopted. 𝒪_core was not silently ratified, Σ storage was derived and not chosen, and AuthorityAct was not introduced — it was found a\", \"explicit_date\": \"2026-08-30\", \"scope\": \"METHODOLOGICAL\", \"labels\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"RESTATEMENT\", \"GOVERNANCE\"], \"statement\": \"Closing discipline statement: the pass stopped exactly where mandated, wrote no canonical theory/K/Sigma-architecture/operation-algebra/authority-ontology/policy-model, ratified/promoted/adopted nothing, did not silently ratify O_core, derived (rather than chose) Sigma's storage, and did not introduce AuthorityAct as new bu"
+["bundle","rows_verbatim",4]	S 2/2	"t found it already present as Grant.\", \"type_signature\": null, \"completeness\": \"N/A\", \"missing\": [], \"dependencies\": [], \"invariants\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0045\"}"
+["bundle","rows_verbatim",5]	S 1/2	"{\"source_id\": \"S1853\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/09-NEXT-CONSTRUCTION-GATE.md\", \"anchor\": \"YES, WITH EXPLICIT CONDITIONS. Not YES — one premise is unratified and one defect is new. Not NO — because the single blocker is provably confined, and construction of everything else is invariant across it.\", \"explicit_date\": \"2026-08-30\", \"scope\": \"THEORY-LEVEL\", \"labels\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"label_confidence\": \"SURE\", \"unknown_candidate\": null, \"types\": [\"GOVERNANCE\", \"ARGUMENT\"], \"statement\": \"The gate verdict: canonical construction may begin, WITH EXPLICIT CONDITIONS -- not an unconditional YES because O_core is unratified and a new defect (Sigma0-perp-R) exists, but not a NO because the single blocker (O_core) is provably confined to congruence and global minimality claims, with everything else invariant across it.\", \"type_signature\": null, \"completeness\": \"N/A\", \"missing\": [], \"dependencies\": [], \"invaria"
+["bundle","rows_verbatim",5]	S 2/2	"nts\": [], \"assumptions\": [], \"lineage_claims\": [], \"version_ref\": \"unknown\", \"experiment\": null, \"review_flag\": null, \"_batch_id\": \"B0045\"}"
+["bundle","sources_verbatim",0]	S 1/2	"{\"source_id\": \"S1851\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/07-RECONCILED-CLOSURE-REGISTER.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": 1788125409, \"mtime_block\": null, \"explicit_dates\": [\"2026-08-30\"], \"order_evidence\": \"INTERNAL-TIMESTAMP\", \"status\": \"CONTENT\", \"summary\": \"Replaces an earlier 53-gap framing with an 8-item reconciled closure register: O_core NOT RATIFIED (blocking), Sigma CLOSED, Sigma0-perp-R OPEN/NEW, missingness RECONSTRUCTION, Determination RECONSTRUCTION, AuthorityAct RECONSTRUCTION+REFINEMENT, K SUBSTANTIALLY DERIVED, congruence BLOCKED, minimality PARTIAL.\", \"objects_touched\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"contribution_assessment\": \"The single consolidated register feeding the construction-gate verdict; states that everything blocking reduces to one item (O_core ratification).\", \"provenance\": \"PRIMARY\", \"in_file_overlap_claim\": null, \"_batch_id\": \"B0045\", \"best_historica"
+["bundle","sources_verbatim",0]	S 2/2	"l_date\": \"2026-08-30\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","sources_verbatim",1]	S 1/2	"{\"source_id\": \"S1853\", \"path\": \"docs/knowledgeos/brainstorming/verification/consolidation/09-NEXT-CONSTRUCTION-GATE.md\", \"commit\": \"39fdef05dc027c6264b6c349a26362a59191a35f\", \"file_mtime\": 1788125480, \"mtime_block\": null, \"explicit_dates\": [\"2026-08-30\"], \"order_evidence\": \"INTERNAL-TIMESTAMP\", \"status\": \"CONTENT\", \"summary\": \"Verdict on whether canonical construction may begin: YES, WITH EXPLICIT CONDITIONS. Six of seven original blockers are dissolved (Sigma space/storage closed, Determination/missingness/AuthorityAct recoverable, K's O-dependence eliminated); three conditions remain (ratify or mark O_core HYPOTHESIS; adjudicate self-attested HPA strings; record Sigma0-perp-R); lists exactly what may be constructed now vs what must wait; records three self-corrections made this pass.\", \"objects_touched\": [\"reconciled-closure-register-and-construction-gate-verdict\"], \"contribution_assessment\": \"The terminal verdict document of the consolidation package, explicitly stating that no cano"
+["bundle","sources_verbatim",1]	S 2/2	"nical theory, K, Sigma architecture, operation algebra, authority ontology or policy model was written, ratified, promoted or adopted during this pass.\", \"provenance\": \"PRIMARY\", \"in_file_overlap_claim\": null, \"_batch_id\": \"B0045\", \"best_historical_date\": \"2026-08-30\", \"best_historical_date_basis\": \"EXPLICIT\"}"
+["bundle","working_label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["contract_sha256"]	S 1/1	"b8eef043f3b2ea4bbeb8be03fb1487787c6b1b6712455eaf15286299393809da"
+["family_md"]	S 1/10	"# reconciled-closure-register-and-construction-gate-verdict\n\n**Scope(s):** OBJECT · **Row count:** 6 · **Lifecycle (candidate):** DORMANT · **Layer (provisional):** LAYER-UNRESOLVED\n**Notations:** 07-RECONCILED-CLOSURE-REGISTER, 09-NEXT-CONSTRUCTION-GATE, YES WITH CONDITIONS · **Aliases:** closure register consolidation, construction gate verdict\n**Candidate group membership (NOT an identity claim):**\n- **G0428** [`canonical-construct-registry-25-item-lane-audit` · `reconciled-closure-register-and-construction-gate-verdict`] — explicit agent-stated uncertainty: 'canonical-construct-registry-25-item-lane-audit' POSSIBLY relates to 'reconciled-closure-register-and-construction-gate-verdict' (batch B0047). Note: A 25-row, 9-field-per-construct registry (formal definition, required operations, implementation status, executable test, real-environment observability level L1-L5, evidence class, governance dependency, remaining blocker) built as part of the handoff package, explicitly compleme"
+["family_md"]	S 2/10	"ntary to (not competing with) verification/THEORY-GAP-REGISTER.md; distinct from the B0045 8-item reconciled-closure-register because it registers CONSTRUCTS (with a stated no-cross-lane-upgrade rule) rather than GAPS, and totals only 4/25 constructs clear in every lane, 9/25 with real-environment (L5) evidence.\n\n## Sources (how this label entered the ledger)\n- **OBJECT-INDEX** (batch B0045, scope OBJECT): The consolidation pass's reconciled 8-item closure register (replacing an earlier 53-gap framing) -- O_core NOT RATIFIED/blocking, Sigma CLOSED, Sigma0-blind-to-R OPEN/NEW, missingness RECONSTRUCTION, Determination RECONSTRUCTION, AuthorityAct RECONSTRUCTION+REFINEMENT, K SUBSTANTIALLY DERIVED, congruence BLOCKED, minimality PARTIAL -- feeding a 'YES, WITH EXPLICIT CONDITIONS' verdict on whether canonical construction may begin, gated on three named conditions (ratify or mark-HYPOTHESIS O_core; adjudicate the self-attested HPA authority strings; record the new Sigma0-blind-to-R defec"
+["family_md"]	S 3/10	"t) while six other blockers are declared dissolved and construction of K's ontology, Sigma0, Determination, missingness carriers, provenance and Grant-refinement may proceed unconditionally.\n\n## Candidate births\n- CANDIDATE-LEXICAL-BIRTH: [S1851 §\"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory.\"]\n- CANDIDATE-CONCEPTUAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-FORMAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-OPERATIONAL-BIRTH: NOT-EVIDENCED-IN-CAPTURE\n- CANDIDATE-GOVERNANCE-BIRTH: [S1851 §\"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory.\"]\n\n## Lifecycle\nlast_seen: S1853. Candidate lifecycle: DORMANT.\nEvidence: No retraction/supersession/contradiction evidence recorde"
+["family_md"]	S 4/10	"d. This is a heuristic based on how recently (by source_id) this label was last used, not a confirmed retirement or a confirmed ongoing status.\n\n## Completeness roll-up\n| Dimension | Status | Source IDs |\n|---|---|---|\n| purpose_rationale | PRESENT | S1851, S1853 |\n| informal_meaning | NOT-EVIDENCED-IN-CAPTURE | — |\n| formal_definition | NOT-EVIDENCED-IN-CAPTURE | — |\n| type_signature | NOT-EVIDENCED-IN-CAPTURE | — |\n| invariants | NOT-EVIDENCED-IN-CAPTURE | — |\n| dependencies | NOT-EVIDENCED-IN-CAPTURE | — |\n| assumptions | NOT-EVIDENCED-IN-CAPTURE | — |\n| semantics | PRESENT | S1853 |\n| examples | NOT-EVIDENCED-IN-CAPTURE | — |\n| warnings | NOT-EVIDENCED-IN-CAPTURE | — |\n| experiments | PRESENT | S1851 |\n| open_questions | NOT-EVIDENCED-IN-CAPTURE | — |\n\n## Rationale\n- **[GOVERNANCE/ANALYSIS]** [S1851]: Summary conclusion of the reconciled closure register: every blocking item traces back to the single unratified O_core premise; Sigma (space and storage) closed itself by derivation t"
+["family_md"]	S 5/10	"his pass, missingness/Determination/AuthorityAct are recoveries not inventions, one new defect (Sigma0-perp-R) surfaced, and no item in the register requires genuinely new theory.\n- **[GOVERNANCE/ARGUMENT]** [S1853]: The gate verdict: canonical construction may begin, WITH EXPLICIT CONDITIONS -- not an unconditional YES because O_core is unratified and a new defect (Sigma0-perp-R) exists, but not a NO because the single blocker (O_core) is provably confined to congruence and global minimality claims, with everything else invariant across it.\n\n## Assumption register\nNOT-EVIDENCED-IN-CAPTURE\n\n## All rows (source_id order)\n- **[S1851]** types=[GOVERNANCE, ANALYSIS] scope=THEORY-LEVEL — \"Summary conclusion of the reconciled closure register: every blocking item traces back to the single unratified O_core premise; Sigma (space and storage) closed itself by derivation this pass, missingness/Determination/AuthorityAct are recoveries not inventions, one new defect (Sigma0-perp-R) surfaced, and"
+["family_md"]	S 6/10	" no item in the register requires genuinely new theory.\" (anchor: \"Everything blocking reduces to ONE item: 𝒪_core is not ratified. Two derivations closed themselves this pass; three items are recoveries; one new defect surfaced. No item in this register requires new theory.\")\n- **[S1851]** types=[EXPERIMENTAL-RESULT] scope=OBJECT — \"K's candidate representation is refined by a removal test to K_full=(D_t, assertions, relations, Sigma_c, E_L) nested in a pair with history K=(K_full,H), and this decomposition is shown band-invariant across all 16 tested O resolutions, though Step 273.31's semantic-necessity-vs-representation-necessity distinction keeps K's exact representation formally open.\" (anchor: \"K | \"K=(𝒜,ℛ)\" | 273 tests (A,R,Σ,E_L) by deletion; my removal test yields 𝒦=(K,H), K=(D_t,𝒜,ℛ,Σ_c,E_L); band-invariant across all 16 𝒪 resolutions. But §273.31: semantic ≠ representation necessity | SUBSTANTIALLY DERIVED\")\n- **[S1853]** types=[GOVERNANCE, ARGUMENT] scope=THEORY-LEVEL — \"T"
+["family_md"]	S 7/10	"he gate verdict: canonical construction may begin, WITH EXPLICIT CONDITIONS -- not an unconditional YES because O_core is unratified and a new defect (Sigma0-perp-R) exists, but not a NO because the single blocker (O_core) is provably confined to congruence and global minimality claims, with everything else invariant across it.\" (anchor: \"YES, WITH EXPLICIT CONDITIONS. Not YES — one premise is unratified and one defect is new. Not NO — because the single blocker is provably confined, and construction of everything else is invariant across it.\")\n- **[S1853]** types=[CONSTRAINT] scope=THEORY-LEVEL — \"Three explicit conditions gate unconditional construction: (1) O_core must be ratified or explicitly marked HYPOTHESIS, blocking only operation congruence and global Minimality(K|T); (2) the self-attested HPA authority strings across 13+9+5+7 files must be adjudicated before every downstream artifact inherits an unknown authority status; (3) the newly found Sigma0-perp-R defect must be recor"
+["family_md"]	S 8/10	"ded before further construction is built on Sigma0, to avoid re-burying a known defect for a third time.\" (anchor: \"CONDITION 1 — 𝒪_core must be ratified or explicitly marked HYPOTHESIS (D-0) ... CONDITION 2 — the self-attested authority strings must be adjudicated ... CONDITION 3 — Σ₀ ⊥ ℛ must be recorded before Σ₀ is built on (new this pass)\")\n- **[S1853]** types=[RETRACTION, CORRECTION] scope=METHODOLOGICAL — \"Three self-corrections are logged as made during this pass: (1) AuthorityAct is not innovation, it is Grant under another name; (2) D-4 (Sigma storage) is not normative, it is mathematically derivable; (3) the Determination occurrence count and step attribution from an earlier second-order pass were numerically wrong (836/Step157 not ~1165/Step165) though the underlying substance survives.\" (anchor: \"1. AuthorityAct is not innovation — Grant is corpus-defined and implemented 132/132. My prior pass searched for a string and concluded the concept was absent. 2. D-4 is not normat"
+["family_md"]	S 9/10	"ive — it is derivable from OR-merge ⊥ retract. 3. The second-order Determination count is 836, not ~1 165, and the struct\")\n- **[S1853]** types=[RESTATEMENT, GOVERNANCE] scope=METHODOLOGICAL — \"Closing discipline statement: the pass stopped exactly where mandated, wrote no canonical theory/K/Sigma-architecture/operation-algebra/authority-ontology/policy-model, ratified/promoted/adopted nothing, did not silently ratify O_core, derived (rather than chose) Sigma's storage, and did not introduce AuthorityAct as new but found it already present as Grant.\" (anchor: \"STOPPED here as mandated. No canonical theory, K, Σ architecture, operation algebra, authority ontology or policy model was written. Nothing was ratified, promoted or adopted. 𝒪_core was not silently ratified, Σ storage was derived and not chosen, and AuthorityAct was not introduced — it was found a\")\n\n## Notes for P3\n- Own observation: completeness is thin — only purpose_rationale, semantics, experiments is PRESENT; most dimensi"
+["family_md"]	S 10/10	"ons are NOT-EVIDENCED-IN-CAPTURE, consistent with a thin or narrowly-scoped source base rather than a claim that the object lacks these properties.\n"
+["family_md_sha256"]	S 1/1	"c1152c80b033c00a49f12fe3f66fd0f6632f8f49750d07fa2ef72e3318f5d10c"
+["family_md_status"]	S 1/1	"PRESENT"
+["hub"]	N	false
+["hub_record"]	N	null
+["in_checklist"]	N	false
+["input_manifest_sha256"]	S 1/1	"a20cf3a3e2fc9e1fc9c38919838c9edb3a0d901577a060d5804dc1e899a150b6"
+["p3a_pairs",0,"_batch_id"]	S 1/1	"RP0022"
+["p3a_pairs",0,"a"]	S 1/1	"canonical-construct-registry-25-item-lane-audit"
+["p3a_pairs",0,"b"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["p3a_pairs",0,"basis"]	S 1/1	"NONE"
+["p3a_pairs",0,"notes_for_p3b"]	S 1/1	"Both are companion deliverables of the same theory-closure/construction-gate handoff session (a: 4/25 constructs clear in every lane; b: gate verdict YES WITH CONDITIONS) -- worth noting for roll-up as sibling artifacts of one package, not a lineage pair."
+["p3a_pairs",0,"pair_id"]	S 1/1	"RP0206"
+["p3a_pairs",0,"relationship"]	S 1/1	"UNWITNESSED"
+["p3a_pairs",0,"type_compatibility"]	S 1/1	"UNKNOWN"
+["p3a_pairs",0,"what_says_this"]	S 1/1	"group_evidence POSSIBLY-RELATION note explicitly frames the two as distinct-but-complementary artifacts from the same handoff package: a registers CONSTRUCTS (25 items x 9 fields, formal-def/test/observability/evidence-class/governance/blocker lanes) while b is the reconciled GAPS closure register and construction-gate verdict; the note explicitly says a is 'distinct from ... because it registers CONSTRUCTS ... rather than GAPS' and 'explicitly complementary to (not competing with)' the separate theory-gap-register. No SOURCE-CLAIMED row and no lineage_claims either direction connect them beyond this co-package framing."
+["p3a_pairs",0,"what_would_make_this_wrong"]	S 1/1	"A source row stating the construct registry was derived from, or supersedes, the closure register (or vice versa) would upgrade this beyond UNWITNESSED; likewise a stated identity between 'construct' rows and 'gap' rows would change the picture."
+["pairs_touching_missing"]	E	[]
+["population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["quarantine","p3a_pairs_withheld"]	N	0
+["quarantine","reconciliation_pairs_withheld"]	N	0
+["quarantine","sources_withheld"]	N	0
+["run_id"]	S 1/1	"OB0114-R7"
+["search_records",0,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",0,"ledger_hits"]	E	{}
+["search_records",0,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",0,"raw_hits","S1851",0,0]	N	14
+["search_records",0,"raw_hits","S1851",0,1]	N	0
+["search_records",0,"raw_hits","S1853",0,0]	N	14
+["search_records",0,"raw_hits","S1853",0,1]	N	1
+["search_records",0,"raw_hits","S1925",0,0]	N	5635
+["search_records",0,"raw_hits","S1925",0,1]	N	1
+["search_records",0,"record"]	S 1/1	"LABEL-HITS"
+["search_records",0,"terms",0]	S 1/1	"07-reconciled-closure-register"
+["search_records",0,"terms",1]	S 1/1	"09-next-construction-gate"
+["search_records",0,"terms",2]	S 1/1	"closure register consolidation"
+["search_records",0,"terms",3]	S 1/1	"construction gate verdict"
+["search_records",0,"terms",4]	S 1/1	"reconciled closure register and construction gate verdict"
+["search_records",0,"terms",5]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",0,"terms",6]	S 1/1	"yes with conditions"
+["search_records",1,"dimension"]	S 1/1	"informal_meaning"
+["search_records",1,"files_searched"]	N	2734
+["search_records",1,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",1,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",1,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",1,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",1,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",1,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",1,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",1,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",1,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",1,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",1,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",1,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",1,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",1,"identity_summary","p0_row_exception"]	N	3
+["search_records",1,"identity_summary","stasis_unobservable"]	N	1
+["search_records",1,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",1,"negative_label"]	N	null
+["search_records",1,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",1,"record"]	S 1/1	"DIMENSION"
+["search_records",1,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",2,"dimension"]	S 1/1	"formal_definition"
+["search_records",2,"files_searched"]	N	2734
+["search_records",2,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",2,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",2,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",2,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",2,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",2,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",2,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",2,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",2,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",2,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",2,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",2,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",2,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",2,"identity_summary","p0_row_exception"]	N	3
+["search_records",2,"identity_summary","stasis_unobservable"]	N	1
+["search_records",2,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",2,"negative_label"]	N	null
+["search_records",2,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",2,"record"]	S 1/1	"DIMENSION"
+["search_records",2,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",3,"dimension"]	S 1/1	"type_signature"
+["search_records",3,"files_searched"]	N	2734
+["search_records",3,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",3,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",3,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",3,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",3,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",3,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",3,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",3,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",3,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",3,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",3,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",3,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",3,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",3,"identity_summary","p0_row_exception"]	N	3
+["search_records",3,"identity_summary","stasis_unobservable"]	N	1
+["search_records",3,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",3,"negative_label"]	N	null
+["search_records",3,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",3,"record"]	S 1/1	"DIMENSION"
+["search_records",3,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",4,"dimension"]	S 1/1	"invariants"
+["search_records",4,"files_searched"]	N	2734
+["search_records",4,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",4,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",4,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",4,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",4,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",4,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",4,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",4,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",4,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",4,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",4,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",4,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",4,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",4,"identity_summary","p0_row_exception"]	N	3
+["search_records",4,"identity_summary","stasis_unobservable"]	N	1
+["search_records",4,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",4,"negative_label"]	N	null
+["search_records",4,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",4,"record"]	S 1/1	"DIMENSION"
+["search_records",4,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",5,"dimension"]	S 1/1	"dependencies"
+["search_records",5,"files_searched"]	N	2734
+["search_records",5,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",5,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",5,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",5,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",5,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",5,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",5,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",5,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",5,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",5,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",5,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",5,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",5,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",5,"identity_summary","p0_row_exception"]	N	3
+["search_records",5,"identity_summary","stasis_unobservable"]	N	1
+["search_records",5,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",5,"negative_label"]	N	null
+["search_records",5,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",5,"record"]	S 1/1	"DIMENSION"
+["search_records",5,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",6,"dimension"]	S 1/1	"assumptions"
+["search_records",6,"files_searched"]	N	2734
+["search_records",6,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",6,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",6,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",6,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",6,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",6,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",6,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",6,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",6,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",6,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",6,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",6,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",6,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",6,"identity_summary","p0_row_exception"]	N	3
+["search_records",6,"identity_summary","stasis_unobservable"]	N	1
+["search_records",6,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",6,"negative_label"]	N	null
+["search_records",6,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",6,"record"]	S 1/1	"DIMENSION"
+["search_records",6,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",7,"dimension"]	S 1/1	"examples"
+["search_records",7,"files_searched"]	N	2734
+["search_records",7,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",7,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",7,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",7,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",7,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",7,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",7,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",7,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",7,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",7,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",7,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",7,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",7,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",7,"identity_summary","p0_row_exception"]	N	3
+["search_records",7,"identity_summary","stasis_unobservable"]	N	1
+["search_records",7,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",7,"negative_label"]	N	null
+["search_records",7,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",7,"record"]	S 1/1	"DIMENSION"
+["search_records",7,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",8,"dimension"]	S 1/1	"warnings"
+["search_records",8,"files_searched"]	N	2734
+["search_records",8,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",8,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",8,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",8,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",8,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",8,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",8,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",8,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",8,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",8,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",8,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",8,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",8,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",8,"identity_summary","p0_row_exception"]	N	3
+["search_records",8,"identity_summary","stasis_unobservable"]	N	1
+["search_records",8,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",8,"negative_label"]	N	null
+["search_records",8,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",8,"record"]	S 1/1	"DIMENSION"
+["search_records",8,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["search_records",9,"dimension"]	S 1/1	"open_questions"
+["search_records",9,"files_searched"]	N	2734
+["search_records",9,"firewall_skipped",0]	S 1/1	"S1752"
+["search_records",9,"firewall_skipped",1]	S 1/1	"S1821"
+["search_records",9,"firewall_skipped",2]	S 1/1	"S1824"
+["search_records",9,"firewall_skipped",3]	S 1/1	"S1895"
+["search_records",9,"firewall_skipped",4]	S 1/1	"S1899"
+["search_records",9,"firewall_skipped",5]	S 1/1	"S1909"
+["search_records",9,"firewall_skipped",6]	S 1/1	"S1928"
+["search_records",9,"firewall_skipped",7]	S 1/1	"S1929"
+["search_records",9,"firewall_skipped",8]	S 1/1	"S1930"
+["search_records",9,"firewall_skipped",9]	S 1/1	"S2791"
+["search_records",9,"firewall_skipped",10]	S 1/1	"S2795"
+["search_records",9,"firewall_skipped",11]	S 1/1	"S2798"
+["search_records",9,"hits_ref"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",9,"identity_summary","p0_row_exception"]	N	3
+["search_records",9,"identity_summary","stasis_unobservable"]	N	1
+["search_records",9,"label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"
+["search_records",9,"negative_label"]	N	null
+["search_records",9,"population_basis"]	S 1/1	"DISCOVERY-POPULATION (HS-3d32dd44d162)"
+["search_records",9,"record"]	S 1/1	"DIMENSION"
+["search_records",9,"scope"]	S 1/1	"DISCOVERY-POPULATION"
+["semantic_status_mechanical","note"]	N	null
+["semantic_status_mechanical","rule"]	S 1/1	"ROW-4"
+["semantic_status_mechanical","value"]	S 1/1	"IDENTITY-UNWITNESSED"
+["source_meta","S1752","best_historical_date"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1752","explicit_dates"]	E	[]
+["source_meta","S1752","file_mtime"]	S 1/1	"2026-08-30T19:24:08Z"
+["source_meta","S1752","mtime_block"]	N	null
+["source_meta","S1752","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1752","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1821","best_historical_date"]	S 1/1	"1788124763"
+["source_meta","S1821","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1821","explicit_dates"]	E	[]
+["source_meta","S1821","file_mtime"]	S 1/1	"1788124763"
+["source_meta","S1821","mtime_block"]	N	null
+["source_meta","S1821","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1821","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1824","best_historical_date"]	S 1/1	"1788124863"
+["source_meta","S1824","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1824","explicit_dates"]	E	[]
+["source_meta","S1824","file_mtime"]	S 1/1	"1788124863"
+["source_meta","S1824","mtime_block"]	N	null
+["source_meta","S1824","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1824","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1851","best_historical_date"]	S 1/1	"2026-08-30"
+["source_meta","S1851","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S1851","explicit_dates",0]	S 1/1	"2026-08-30"
+["source_meta","S1851","file_mtime"]	N	1788125409
+["source_meta","S1851","mtime_block"]	N	null
+["source_meta","S1851","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S1851","status"]	S 1/1	"CONTENT"
+["source_meta","S1853","best_historical_date"]	S 1/1	"2026-08-30"
+["source_meta","S1853","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S1853","explicit_dates",0]	S 1/1	"2026-08-30"
+["source_meta","S1853","file_mtime"]	N	1788125480
+["source_meta","S1853","mtime_block"]	N	null
+["source_meta","S1853","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S1853","status"]	S 1/1	"CONTENT"
+["source_meta","S1895","best_historical_date"]	S 1/1	"1788128669"
+["source_meta","S1895","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1895","explicit_dates"]	E	[]
+["source_meta","S1895","file_mtime"]	S 1/1	"1788128669"
+["source_meta","S1895","mtime_block"]	N	null
+["source_meta","S1895","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S1895","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1899","best_historical_date"]	S 1/1	"1788128726"
+["source_meta","S1899","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1899","explicit_dates"]	E	[]
+["source_meta","S1899","file_mtime"]	S 1/1	"1788128726"
+["source_meta","S1899","mtime_block"]	N	null
+["source_meta","S1899","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1899","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1909","best_historical_date"]	S 1/1	"1788128760"
+["source_meta","S1909","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1909","explicit_dates"]	E	[]
+["source_meta","S1909","file_mtime"]	S 1/1	"1788128760"
+["source_meta","S1909","mtime_block"]	N	null
+["source_meta","S1909","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1909","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1925","best_historical_date"]	S 1/1	"2026-08-31"
+["source_meta","S1925","best_historical_date_basis"]	S 1/1	"EXPLICIT"
+["source_meta","S1925","explicit_dates",0]	S 1/1	"2026-08-31"
+["source_meta","S1925","file_mtime"]	S 1/1	"1788128910"
+["source_meta","S1925","mtime_block"]	N	null
+["source_meta","S1925","provenance"]	S 1/1	"PRIMARY"
+["source_meta","S1925","status"]	S 1/1	"CONTENT"
+["source_meta","S1928","best_historical_date"]	S 1/1	"1788129394"
+["source_meta","S1928","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1928","explicit_dates"]	E	[]
+["source_meta","S1928","file_mtime"]	S 1/1	"1788129394"
+["source_meta","S1928","mtime_block"]	N	null
+["source_meta","S1928","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1928","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1929","best_historical_date"]	S 1/1	"1788129395"
+["source_meta","S1929","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1929","explicit_dates"]	E	[]
+["source_meta","S1929","file_mtime"]	S 1/1	"1788129395"
+["source_meta","S1929","mtime_block"]	N	null
+["source_meta","S1929","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1929","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S1930","best_historical_date"]	S 1/1	"1788129397"
+["source_meta","S1930","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S1930","explicit_dates"]	E	[]
+["source_meta","S1930","file_mtime"]	S 1/1	"1788129397"
+["source_meta","S1930","mtime_block"]	N	null
+["source_meta","S1930","provenance"]	S 1/1	"PROVENANCE-UNRESOLVED"
+["source_meta","S1930","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2791","best_historical_date"]	S 1/1	"1788679896"
+["source_meta","S2791","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2791","explicit_dates"]	E	[]
+["source_meta","S2791","file_mtime"]	S 1/1	"1788679896"
+["source_meta","S2791","mtime_block"]	N	null
+["source_meta","S2791","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2791","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2795","best_historical_date"]	S 1/1	"1788679967"
+["source_meta","S2795","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2795","explicit_dates"]	E	[]
+["source_meta","S2795","file_mtime"]	S 1/1	"1788679967"
+["source_meta","S2795","mtime_block"]	N	null
+["source_meta","S2795","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2795","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_meta","S2798","best_historical_date"]	S 1/1	"1788680353"
+["source_meta","S2798","best_historical_date_basis"]	S 1/1	"MTIME"
+["source_meta","S2798","explicit_dates"]	E	[]
+["source_meta","S2798","file_mtime"]	S 1/1	"1788680353"
+["source_meta","S2798","mtime_block"]	N	null
+["source_meta","S2798","provenance"]	S 1/1	"SECONDARY-SYNTHESIS"
+["source_meta","S2798","status"]	S 1/1	"FIREWALL-LIMITED"
+["source_tracks","S1851","d23_track"]	S 1/1	"B"
+["source_tracks","S1851","track_tag"]	S 1/1	"TRACK-A-VERIFICATION-CLUSTER-UNCONFIRMED"
+["source_tracks","S1853","d23_track"]	S 1/1	"B"
+["source_tracks","S1853","track_tag"]	S 1/1	"TRACK-A-VERIFICATION-CLUSTER-UNCONFIRMED"
+["stage2_files",0]	S 1/1	"S1851"
+["stage2_files",1]	S 1/1	"S1853"
+["stage2_files",2]	S 1/1	"S1925"
+["tier"]	S 1/1	"U"
+["working_label"]	S 1/1	"reconciled-closure-register-and-construction-gate-verdict"

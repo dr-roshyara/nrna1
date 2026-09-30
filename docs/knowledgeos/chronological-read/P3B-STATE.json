@@ -2294,10 +2294,10 @@
     {
      "revision": 7,
      "run_id": "OB0114-R7",
-     "state": "PREPARED"
+     "state": "FAILED"
     }
    ],
-   "state": "PREPARED"
+   "state": "FAILED"
   },
   "OB0115": {
    "ordinal": 1,
@@ -17787,9 +17787,53 @@
    "seq": 816,
    "to": "FAILED",
    "utc": "2026-09-30T19:14:32Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 1,
+   "batch_id": "OB0114",
+   "entry_sha256": "1171e0193aaaa7345cfbde560959b112318bf8fb0de4f4dffdafdcb2dfbaff78",
+   "from": "PREPARED",
+   "prev_sha256": "078198044bcbcdc3f79bcf571a86ee04b4f77f7565022920d2fc77468804ff45",
+   "reason": "G-LOG-0108",
+   "run_id": "OB0114-R7",
+   "run_kind": "PRIMARY",
+   "seq": 817,
+   "to": "DISPATCHED",
+   "utc": "2026-09-30T19:15:07Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 1,
+   "batch_id": "OB0114",
+   "entry_sha256": "798da275d9d135e41192188934593a8f27a113cc24f84cc0e8dacbefe94bf060",
+   "from": "DISPATCHED",
+   "prev_sha256": "1171e0193aaaa7345cfbde560959b112318bf8fb0de4f4dffdafdcb2dfbaff78",
+   "reason": "assembly + freeze-final complete; WITNESS-DIGESTS.json sha256 7fa07445ed566c279e5891128465254e605cecd4774ba974759a44726c82d132",
+   "run_id": "OB0114-R7",
+   "run_kind": "PRIMARY",
+   "seq": 818,
+   "to": "PROPOSED",
+   "utc": "2026-09-30T19:38:42Z"
+  },
+  {
+   "actor": "orchestrator",
+   "attempt": 1,
+   "batch_id": "OB0114",
+   "entry_sha256": "c83ba0fe8b56bd76addd66556f133964d6f28a1fea029c617dff2b4f09d444ab",
+   "failure_class": "A2",
+   "failure_signature": "f0ae8edd51bbae3e2cf63a674f4034439b36f0034149497a9cbdec63bdf4722c",
+   "from": "PROPOSED",
+   "prev_sha256": "798da275d9d135e41192188934593a8f27a113cc24f84cc0e8dacbefe94bf060",
+   "reason": "G-LOG-0108 canary restart, OB0114 attempt 1: verify BATCH-FAIL (audit-p3b/S5-VERIFY-OB0114-R7.json, 145 failures). Class A2 by the frozen EG-6 mapping (only R7-E/R7-U <label>/R7-R/G-05/G-09/G-12/SCHEMA; no S/D/H/X/A1 strings). Canary stop rule triggered: 11/11 runs failed.",
+   "run_id": "OB0114-R7",
+   "run_kind": "PRIMARY",
+   "seq": 819,
+   "to": "FAILED",
+   "utc": "2026-09-30T19:39:15Z"
   }
  ],
- "history_head_sha256": "078198044bcbcdc3f79bcf571a86ee04b4f77f7565022920d2fc77468804ff45",
+ "history_head_sha256": "c83ba0fe8b56bd76addd66556f133964d6f28a1fea029c617dff2b4f09d444ab",
  "manifest": "_batch_manifest_p3b_r2.jsonl",
  "manifest_revisions": [
   {
