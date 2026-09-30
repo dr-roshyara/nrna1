@@ -2115,3 +2115,11 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Freezes | `a1025894a` (A′ + 1ax) · `8cd1048b8` (1ay) · `5ae27773d` · `204e96195` (r2) · `2c37510f8` (r3) · `9897ae90e` |
 | Records | `analysis/theory/SEMOBS-R2`, `LOOP-1AX`, `LOOP-1AYN`, `LOOP-1AY` |
 | Next | 1az: H-D vs H-B identifiability on norm-dynamics sequences |
+
+## F-LOG-0172 — 1az: **H-D and H-B are observationally equivalent on the coded corpus** (no prediction IDENTIFIED; neither favoured). The hypotheses are nearly nested; the only discriminators are (i) a norm change without an act (no case) and (ii) verified non-conformance of work to the norm in force (**2 confounded candidates: R11 vs R-72/77/79; R-89 vs R-72**). A′ R-A3 builds H-D's structure into the observations (CI1). Status mediation: 2 episodes, self-reported → underidentified. H-DEONTIC is neither strengthened nor weakened
+
+| Field | Value |
+|---|---|
+| Freeze | `edf732ed8` |
+| Records | `analysis/theory/LOOP-1AZ/` |
+| Next | 1ba: resolve the non-conformance candidates from the uncoded register rows (R-73..R-80, R-87, R-88, R-89 status) |

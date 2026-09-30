@@ -1,0 +1,429 @@
+{
+ "meta": {
+  "inputs_used": ["HYPOTHESES.md", "RECORDS.json", "CODING.json", "CODING-REVIEW.json", "SOURCES.md"],
+  "review_corrections_applied": [
+   "R04 norm.about_actor -> null (NOT_EVIDENCED; R-70 names no implementer)",
+   "R06 norm.stated_by -> 'the Authority' (SOURCE_FACT)",
+   "R07 act.actor -> 'the Authority' (SOURCE_FACT); R07 norm.stated_by -> 'the Authority' (SOURCE_FACT)",
+   "R10, R12, R13, R14 norm.status.stated_by -> INFERENCE (from row headings)",
+   "R12 norm.status.about_operation -> INFERENCE",
+   "R01 norm.status.about_actor split (SOURCE_FACT / INFERENCE)",
+   "R18 norm.about_target -> 'all AI findings, not only Completion Reviews'",
+   "R15-R21 act.quote -> verbatim recommendation cell; premises re-based on in-section heading"
+  ],
+  "norm_record_set": "reviewer norm_ids (31): R01 R02 R03 R04 R05 R06 R07 R08 R09 R10 R12 R13 R14 R15 R16 R17 R18 R19 R20 R21 R22 R23 R25 R26 R27 R30 R31 R32 R33 R34 R36",
+  "execution_record_set": "R11 only (act ACT_OCCURRED, norm NONE, git commit of RED tests). No other record codes an act of doing the governed work.",
+  "no_span_records": ["R24", "R28", "R35"],
+  "ordering_rule": "Primary: register date column. Ties (same date): register number order, which is an INFERENCE that numbers are assigned in filing order (supported by R-90: 'The next ruling is R-91' and the R-89 collision note). Within one row: textual order. Only R11 carries a time of day (16:10:37 +0200); register rows carry dates only.",
+  "quote_convention": "Quotes are verbatim from SOURCES.md/RECORDS.json with markdown emphasis markers (** and *) removed."
+ },
+
+ "sequences": [
+  {
+   "id": "S1",
+   "target": "Slice 7B execution",
+   "norm_records": ["R14", "R31", "R32"],
+   "ordering": "all dated 2026-08-01; ordered by register number R-47 < R-56 < R-58",
+   "steps": [
+    {"norm_state": "UNAUTHORIZED", "record": "R14", "row": "R-47", "date": "2026-08-01", "stated_by": "ARB (INFERENCE from heading)", "quote": "7B and 7C are NOT authorized and follow their own gates"},
+    {"intervening_act": {"record": null, "row": "R-56", "actor": "ARB", "operation": "approve 7B PLAN (planning governance, not execution)", "quote": "SLICE 7B PLANNING APPROVED WITH REQUIRED CORRECTIONS — Planning Governance · Approval · ARB (EP-01 review).", "note": "norm-making act on the planning target; does not change execution polarity. Not a coded record."}},
+    {"norm_state": "UNAUTHORIZED", "record": "R31", "row": "R-56", "date": "2026-08-01", "stated_by": "recording note to R-56 ('not part of this ruling'); consequence column concurs", "quote": "Execution of 7B is a SEPARATE act and has NOT been issued", "supporting_quote": "execution still NOT authorized"},
+    {"intervening_act": {"record": "R32", "row": "R-58", "actor": "ARB", "operation": "authorize (execution, RED on K1–K10)", "quote": "SLICE 7B EXECUTION AUTHORIZED — Execution Governance · Authorization · ARB"}},
+    {"norm_state": "AUTHORIZED", "record": "R32", "row": "R-58", "date": "2026-08-01", "stated_by": "ARB", "quote": "Engineering is authorized to begin Slice 7B RED on keystones K1–K10, with K9 inside 7B."}
+   ],
+   "polarity_changes": ["PC1"],
+   "execution_records_between_or_after": [],
+   "execution_note": "No execution record for 7B in the corpus (corpus limitation). R32 notes (R-A1): authorization is not evidence RED began."
+  },
+  {
+   "id": "S2",
+   "target": "Slice 7C execution",
+   "norm_records": ["R14", "R33", "R34"],
+   "ordering": "all dated 2026-08-01; ordered by register number R-47 < R-58 < R-65",
+   "steps": [
+    {"norm_state": "UNAUTHORIZED", "record": "R14", "row": "R-47", "date": "2026-08-01", "stated_by": "ARB (INFERENCE from heading)", "quote": "7B and 7C are NOT authorized and follow their own gates"},
+    {"norm_state": "UNAUTHORIZED", "record": "R33", "row": "R-58", "date": "2026-08-01", "stated_by": "ARB (INFERENCE from heading)", "quote": "Slice 7C remains unauthorized", "note": "restatement; no change"},
+    {"intervening_act": {"record": "R34", "row": "R-65", "actor": "ARB", "operation": "authorize (implement decision service; RED)", "quote": "SLICE 7C AUTHORIZED — Execution Governance · Authorization · ARB."}},
+    {"norm_state": "AUTHORIZED", "record": "R34", "row": "R-65", "date": "2026-08-01", "stated_by": "ARB", "quote": "Slice 7C AUTHORIZED; engineering may begin RED"}
+   ],
+   "polarity_changes": ["PC2"],
+   "execution_records_between_or_after": [],
+   "execution_note": "No execution record for 7C in the corpus. R14 is shared with S1 (one span, two targets)."
+  },
+  {
+   "id": "S3",
+   "target": "WP-7B-R1 (opening motion and implementation)",
+   "norm_records": ["R08", "R09", "R04"],
+   "ordering": "R08, R09 same row R-60 (2026-08-01), textual order; R04 = R-70 (2026-08-02)",
+   "steps": [
+    {"norm_state": "STATUS_CONSTRAINT: non-ruling (recording note)", "record": "R08", "row": "R-60", "date": "2026-08-01", "stated_by": "the issuing text (heading)", "quote": "the issuing text placed this motion under a heading reading \"Recording Notes -- Not Part of Ruling\""},
+    {"intervening_act": {"record": "R09", "row": "R-60", "actor": "the register's recorder (INFERENCE; passive voice)", "operation": "file as ruling (reclassification)", "quote": "A recording note cannot open a work package — that is the ruling/note distinction this register enforces — so it is filed as a ruling in line with the operative text."}},
+    {"norm_state": "STATUS_CONSTRAINT: ruling (package OPEN, not started)", "record": "R09", "row": "R-60", "date": "2026-08-01", "stated_by": "register's recorder", "quote": "so it is filed as a ruling in line with the operative text", "supporting_quote": "WP-7B-R1 OPEN (not started)"},
+    {"intervening_act": {"record": "R04", "row": "R-70", "actor": "ARB", "operation": "authorize (implement)", "quote": "WP-7B-R1 AUTHORIZED TO IMPLEMENT — Execution Governance · Authorization · ARB."}},
+    {"norm_state": "AUTHORIZED", "record": "R04", "row": "R-70", "date": "2026-08-02", "stated_by": "ARB", "about_actor": null, "quote": "WP-7B-R1 AUTHORIZED TO IMPLEMENT"}
+   ],
+   "polarity_changes": ["PC4 (implicit, not coded)"],
+   "status_changes": ["R08 -> R09: non-ruling -> ruling (classification flip, not deontic polarity)"],
+   "execution_records_between_or_after": [],
+   "execution_note": "No execution record for WP-7B-R1. R-60 itself says 'Opened, not delivered.'"
+  },
+  {
+   "id": "S4",
+   "target": "WP-4B implementation (R10: WP-4B as a whole; R36: the batch-7 items inside WP-4B)",
+   "norm_records": ["R10", "R36"],
+   "ordering": "by date: R-72 2026-08-02 < git 6a67da5d7 2026-08-03 16:10 < R-77 2026-08-03 (time unknown) < R-81/R-83 2026-08-04 < R-86 2026-08-04",
+   "target_merge": "INFERENCE: R36's target is a sub-scope of R10's target; treated as one target at WP-4B granularity",
+   "steps": [
+    {"norm_state": "PROHIBITED (contingent on unmet proviso)", "record": "R10", "row": "R-72", "date": "2026-08-02", "stated_by": "ARB (INFERENCE from heading, per review)", "quote": "THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN", "supporting_quote": "CONSEQUENCE: no RED begins."},
+    {"unobserved_acts": "R-73..R-76, R-78, R-80, R-82, R-84, R-85 are referenced but not in SOURCES. R-72 names 'three ARB decisions and one scope ambiguity' as the next acts; whether R-73..R-76 performed them is UNKNOWN."},
+    {"execution_record": {"record": "R11", "date": "2026-08-03 16:10:37 +0200", "actor": null, "operation": "commit RED tests", "quote": "Subject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive", "supporting_quote": "Four keystones written; 4 failed (0 assertions). STOP at the RED boundary."}},
+    {"source_only_state": {"row": "R-77", "date": "2026-08-03", "quote": "AND WP-4B REMAINS BLOCKED", "note": "not a coded NORM record for WP-4B; time of day unknown, so order relative to R11 is UNKNOWN"}},
+    {"source_only_state": {"row": "R-81", "date": "2026-08-04", "quote": "Batch 7's freeze is lifted FOR THIS REPAIR ONLY.", "note": "issued PREPARED by the ARB Chief; not in force until R-86 (see status_mediation E1). Implies a 'Batch 7 freeze' state whose creating act is not in the corpus."}},
+    {"intervening_act": {"record": "R02 / R36", "row": "R-86", "actor": "Decision Authority", "operation": "adopt R-81..R-85 and authorize execution", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment. These become governing rulings effective immediately."}},
+    {"norm_state": "AUTHORIZED (batch-7 items)", "record": "R36", "row": "R-86", "date": "2026-08-04", "stated_by": "Decision Authority", "quote": "engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile (ack on self-redelivery; dead-letter + escalate otherwise)", "supporting_quote": "Engineering is authorized to resume implementation in accordance with the adopted governance."}
+   ],
+   "polarity_changes": ["PC3"],
+   "execution_records_between_or_after": [
+    {"record": "R11", "position": "between R10 (PROHIBITED, 08-02) and R36 (AUTHORIZED, 08-04)", "quote": "Date: 2026-08-03 16:10:37 +0200\nSubject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive"}
+   ],
+   "execution_note": "The only execution record in the corpus. No execution record after R36."
+  },
+  {
+   "id": "S5",
+   "target": "the register (admissible content: constitutional decisions only)",
+   "norm_records": ["R06", "R07"],
+   "ordering": "not orderable: identical span (S0804-L576 session log, 2026-08-04); R06 and R07 are the same sentence split by operation",
+   "steps": [
+    {"norm_state": "STATUS_CONSTRAINT", "record": "R06", "stated_by": "the Authority", "quote": "the register holds constitutional decisions"},
+    {"norm_state": "STATUS_CONSTRAINT (same)", "record": "R07", "stated_by": "the Authority", "quote": "the register holds constitutional decisions"}
+   ],
+   "polarity_changes": [],
+   "execution_records_between_or_after": [],
+   "execution_note": "Degenerate sequence: duplicate coding of one norm; no change. Listed only because the target has two NORM records."
+  }
+ ],
+
+ "single_norm_targets_not_sequenced": {
+  "R-81..R-85 adoption status": ["R02"],
+  "ambiguity about issuer's own authority": ["R01"],
+  "R-91 adoption eligibility": ["R03"],
+  "WP-4C-1": ["R05"],
+  "WP-8": ["R12"],
+  "Slice 7A": ["R13"],
+  "R-36 matrix candidates (each a distinct target)": ["R15", "R16", "R17", "R18", "R19", "R20", "R21"],
+  "promotion from single occurrence (ES-006.1)": ["R22"],
+  "artifact lifecycle consistency (ES-004.3)": ["R23"],
+  "register number R-90": ["R25"],
+  "ADR-T14": ["R26"],
+  "§12": ["R27"],
+  "PB-006 programme reporting row": ["R30"]
+ },
+
+ "polarity_changes": [
+  {
+   "id": "PC1",
+   "sequence": "S1",
+   "target": "Slice 7B execution",
+   "from": "UNAUTHORIZED (R14, R31)",
+   "to": "AUTHORIZED (R32)",
+   "intervening_norm_making_act_attested": true,
+   "act": {"record": "R32", "row": "R-58", "actor": "ARB", "operation": "authorize", "quote": "SLICE 7B EXECUTION AUTHORIZED — Execution Governance · Authorization · ARB"},
+   "enabling_acts_referenced_not_in_corpus": ["R-57 (plan corrected)", "R-55 (merge gate green)"],
+   "execution_record_between_or_after": null
+  },
+  {
+   "id": "PC2",
+   "sequence": "S2",
+   "target": "Slice 7C execution",
+   "from": "UNAUTHORIZED (R14, R33)",
+   "to": "AUTHORIZED (R34)",
+   "intervening_norm_making_act_attested": true,
+   "act": {"record": "R34", "row": "R-65", "actor": "ARB", "operation": "authorize", "quote": "SLICE 7C AUTHORIZED — Execution Governance · Authorization · ARB."},
+   "execution_record_between_or_after": null
+  },
+  {
+   "id": "PC3",
+   "sequence": "S4",
+   "target": "WP-4B implementation (batch-7 items)",
+   "from": "PROHIBITED, contingent (R10, 2026-08-02)",
+   "to": "AUTHORIZED (R36, 2026-08-04)",
+   "intervening_norm_making_act_attested": "PARTIAL",
+   "act": {"record": "R02 / R36", "row": "R-86", "actor": "Decision Authority", "operation": "adopt R-81..R-85; authorize execution", "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment. These become governing rulings effective immediately."},
+   "caveat": "The act producing the end state is attested. The path is not: 'resume implementation' and 'Batch 7's freeze' imply intermediate states (proviso lifted? batches 1–6 executed? freeze imposed?) whose acts (R-73..R-76, R-78, R-80, R-82, R-84, R-85) are not in SOURCES. So whether the R-72 prohibition was first lifted by some other act is UNKNOWN.",
+   "execution_record_between_or_after": {"record": "R11", "quote": "Subject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive", "date": "2026-08-03 16:10:37 +0200"}
+  },
+  {
+   "id": "PC4",
+   "sequence": "S3",
+   "target": "WP-7B-R1 implementation",
+   "from": "OPEN, not started (R-60 consequence column; not coded as UNAUTHORIZED)",
+   "to": "AUTHORIZED (R04)",
+   "coded_polarity_change": false,
+   "note": "INFERENCE only: no NORM record codes WP-7B-R1 implementation as UNAUTHORIZED. The coded change R08 -> R09 is a status (note -> ruling) flip, not a deontic one.",
+   "intervening_norm_making_act_attested": true,
+   "act": {"record": "R04", "row": "R-70", "actor": "ARB", "operation": "authorize", "quote": "WP-7B-R1 AUTHORIZED TO IMPLEMENT — Execution Governance · Authorization · ARB."},
+   "execution_record_between_or_after": null
+  }
+ ],
+
+ "status_mediation": {
+  "episodes": [
+   {
+    "id": "E1",
+    "decision": "adoption of R-81..R-85 by R-86",
+    "date": "2026-08-04",
+    "status_change": "PREPARED (issued by ARB Chief) -> ADOPTED (Decision Authority)",
+    "force_change": "not governing -> governing",
+    "records": ["R01", "R02", "R27", "R36"],
+    "quotes": [
+     "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND “BATCH 7 IS RELEASED” DOES NOT HOLD. (R-81 / R-83 provenance annotation)",
+     "Decision Authority confirms and adopts R-81 through R-85 without amendment. These become governing rulings effective immediately. (R-86; R02)",
+     "✅ ADOPTED 2026-08-04 BY THE DECISION AUTHORITY, WITHOUT AMENDMENT (adoption act: R-86). THIS RULING IS GOVERNING. (R-81, R-83)"
+    ],
+    "counts_as_force_change": true,
+    "independent": true,
+    "note": "The R-81 and R-83 annotations are repetitions of one decision (same text, same adoption act); they are not separate episodes."
+   },
+   {
+    "id": "E2",
+    "decision": "R-60 motion opening WP-7B-R1: recording note -> ruling",
+    "date": "2026-08-01",
+    "status_change": "placed under 'Recording Notes -- Not Part of Ruling' -> filed as a ruling",
+    "force_change": "cannot open a work package -> opens WP-7B-R1",
+    "records": ["R08", "R09"],
+    "quotes": [
+     "the issuing text placed this motion under a heading reading \"Recording Notes -- Not Part of Ruling\"",
+     "A recording note cannot open a work package — that is the ruling/note distinction this register enforces — so it is filed as a ruling in line with the operative text."
+    ],
+    "counts_as_force_change": "only under a broad reading",
+    "independent": true,
+    "note": "The status dimension here is the text's category (note vs ruling), not prepared vs adopted, and the change is made by the recorder, not by an adopting authority. It is included under the broad reading only."
+   }
+  ],
+  "status_changes_without_force_change": [
+   {"row": "R-90", "status_change": "PREPARED -> WITHDRAWN before adoption", "force": "never in force, stays not in force", "records": ["R06", "R07", "R25"], "quote": "Nothing depended on this ruling: it was never adopted, and no artefact cites it as authority."},
+   {"row": "R-91", "status_change": "PREPARED -> HELD, not eligible for adoption as issued", "force": "never in force, stays not in force", "records": ["R03"], "quote": "HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED"},
+   {"row": "R-47 (Layer Verification Rule module)", "status_change": "none (remains PROPOSED)", "force": "non-binding", "records": [], "quote": "no ruling was issued, so it remains PROPOSED and non-binding — silence is not adoption (R-34)."}
+  ],
+  "anomalies": [
+   {"row": "R-89", "records": ["R05"], "issue": "Issued PREPARED; no adoption act in corpus; yet the Authority is quoted treating it as governing.", "quotes": ["⚠️ PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED.", "“R-89 already governs authorization · the discovery report concludes · the ARB accepts the report · governance stops.”"], "status": "UNKNOWN: either an adoption act outside the corpus, or force without adoption"},
+   {"row": "R-94", "records": ["R29", "R30"], "issue": "An ARB Chief disposition with no PREPARED tag, recorded as executed, although R-86 says any future Chief ruling stays PREPARED until the Decision Authority acts.", "quotes": ["PB-006 PROGRAMME REPORTING — ANNOTATE — Delivery Governance · Disposition · ARB CHIEF.", "Executed at `IMPLEMENTATION_PROGRESS.md:58`.", "Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it"], "status": "UNKNOWN: it may not be a 'ruling' in R-86's sense (it is a delivery-governance disposition)"},
+   {"rows": ["R-87", "R-88"], "issue": "Referenced as adoption acts ('R-88's adoption was a SINGLE ACT'; 'R-86/R-87 created no standing delegation') but their text is not in SOURCES. They may be further status-mediation episodes.", "status": "NOT OBSERVED"}
+  ],
+  "independent_n": 1,
+  "independent_n_broad": 2,
+  "independent_n_note": "Strict reading (force changes because a prepared act is adopted): 1 (E1). Broad reading (any status change of the making act, including note -> ruling): 2 (E1, E2)."
+ },
+
+ "predictions": [
+  {
+   "id": "P1",
+   "question": "Do norm polarity changes need an intervening norm-making act?",
+   "HD": "Yes: every polarity change is produced by a norm-making act by a capable actor ('only through such acts').",
+   "HB": "Not necessarily: norms also change 'in response to work'. HB does not deny acts; what sets it apart is allowing changes triggered by work (e.g. a proviso or gate satisfied by a work outcome) without a further act.",
+   "observable_in_corpus": "Partly. Every observed polarity change (PC1–PC3, and implicit PC4) has an attested act. But the corpus is mostly register rows, and the register is by its own statement a record of decisions. A change without an act would not be written into it. For PC3 the act log for the interval is incomplete. The conditional norms where a change without an act could happen (R-72 proviso, R-79 gate) are never seen with their condition met.",
+   "status": "NON-IDENTIFIABLE",
+   "status_note": "Both hypotheses fit acts that are present. The corpus is selected for acts, which confounds any claim that no change happens without one. 'No act-less change is recorded' is a limitation of the corpus. It does not show that act-less changes do not happen.",
+   "quotes": [
+    "SLICE 7B EXECUTION AUTHORIZED — Execution Governance · Authorization · ARB",
+    "SLICE 7C AUTHORIZED — Execution Governance · Authorization · ARB.",
+    "Decision Authority confirms and adopts R-81 through R-85 without amendment.",
+    "The register holds constitutional decisions, not operational acceptance.",
+    "authorized as the next executable slice of §WP-4, provided its authorization package demonstrates executable scope and no unresolved governance blockers remain",
+    "(5) §WP-4 CLOSES BY ACCEPTANCE · (6) THEN WP-8 is authorized and started.",
+    "supersession requires an EXPLICIT ACT, NEVER INFERENCE"
+   ],
+   "domain_vs_corpus": "The R-77 clause is a norm the domain states about itself. It shows the actors endorse H-D's rule. It does not show that the rule holds."
+  },
+  {
+   "id": "P2",
+   "question": "Does execution conform to the norm in force?",
+   "HD": "No prediction. Work is outside what the record needs to contain, so H-D predicts neither conformance nor non-conformance.",
+   "HB": "Yes: execution begins only when permitted.",
+   "observable_in_corpus": "Barely. There is one execution record (R11, 2026-08-03 16:10). The last observed WP-4B norm before it is PROHIBITED (R10, 08-02), and R-77 (08-03, time unknown) says WP-4B 'REMAINS BLOCKED'. But the commit cites R-73..R-75 as already decided. Those rulings may have met R-72's proviso, and their text is not in the corpus. The order of R11 and R-77 within 08-03 is unknown. So the norm in force at 16:10 cannot be determined.",
+   "status": "CONFOUNDED",
+   "status_note": "The apparent non-conformance (R-72 says 'no RED begins'; RED tests were committed next day) is confounded by acts that are unobserved but referenced (R-73..R-76) and by unknown time-of-day ordering. n=1. This does not falsify H-B. It cannot falsify H-D, which makes no prediction here.",
+   "quotes": [
+    "THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN",
+    "CONSEQUENCE: no RED begins.",
+    "Date: 2026-08-03 16:10:37 +0200\nSubject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive",
+    "a test that coupled the seam to a producer's identity would silently re-decide R-73, R-74 or R-75.",
+    "R-73–R-76 stand",
+    "AND WP-4B REMAINS BLOCKED",
+    "Engineering is authorized to resume implementation in accordance with the adopted governance."
+   ]
+  },
+  {
+   "id": "P3",
+   "question": "Do execution outcomes feed back into norm changes?",
+   "HD": "No prediction required. Norm changes are made by acts, and the record need not contain the work that motivated them. H-D is not contradicted if acts cite work evidence.",
+   "HB": "Yes: acceptance after evidence, remediation after failure. The norm change follows, and depends on, a work outcome.",
+   "observable_in_corpus": "Only at the level of source text. Several norm-making acts cite work or code evidence as their grounds: R-81 cites a redrive defect, R-83 a grep result, R-58 a merge gate, R-41 a closure inconsistency. R-72 makes future authorization depend on implementation evidence. In every case the feedback runs through an act, which both hypotheses allow. At the level of coded records, no execution record (R11) is followed by a norm change that cites it.",
+   "status": "PARTIALLY IDENTIFIED",
+   "status_note": "The pattern H-B predicts (outcome, then act, then norm change) is present in the source text: R-81 cites a defect and authorizes its repair. It does not discriminate, because H-D accommodates acts that cite evidence. The one coded execution outcome (R11: 'failures are NOT yet discriminating') has no observed consequence for any norm.",
+   "quotes": [
+    "one throwing process aborts the entire pass",
+    "REDRIVE FAILURE ISOLATION AUTHORIZED (Q4) — Execution Governance · Authorization · ARB.",
+    "`grep -rn \"catch (DeterminationAlreadyIssued\" app/` returns nothing",
+    "merge gate green (R-55)",
+    "Each is to be authorized from IMPLEMENTATION EVIDENCE rather than roadmap intent, after its predecessor is accepted.",
+    "Provenance: the WP-1 closure inconsistency (a CLOSED plan whose header still read \"AUTHORIZED — execution begins…\"), corrected 2026-07-30"
+   ]
+  },
+  {
+   "id": "P4",
+   "question": "Is the force of a norm status-mediated?",
+   "HD": "Yes: force depends on the status of the making act (prepared rulings do not govern, adopted ones do).",
+   "HB": "No explicit prediction. H-B neither asserts nor denies status mediation.",
+   "observable_in_corpus": "Yes for H-D's positive claim, n=1 (E1). There are two unresolved anomalies: R-89 is PREPARED yet quoted as governing, and R-94 is a Chief disposition executed with no adoption. Both are UNKNOWN because acts outside the corpus (R-87, R-88) may explain them.",
+   "status": "PARTIALLY IDENTIFIED",
+   "status_note": "H-D's prediction is observed in one independent episode and not refuted. It does not discriminate H-D from H-B, because H-B makes no contrary prediction. The anomalies are INSUFFICIENT EVIDENCE against H-D.",
+   "quotes": [
+    "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND “BATCH 7 IS RELEASED” DOES NOT HOLD.",
+    "Decision Authority confirms and adopts R-81 through R-85 without amendment. These become governing rulings effective immediately.",
+    "⚠️ PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED.",
+    "“R-89 already governs authorization · the discovery report concludes · the ARB accepts the report · governance stops.”",
+    "Executed at `IMPLEMENTATION_PROGRESS.md:58`."
+   ]
+  },
+  {
+   "id": "P5",
+   "question": "Do norms change only through acts by actors holding the capability (adoption authority)?",
+   "HD": "Yes (explicit clause: 'by actors holding the capability to perform them').",
+   "HB": "No explicit prediction on capability.",
+   "observable_in_corpus": "Partly. The capability rule is stated and applied: the Chief declines to adopt, adoption is not delegated, and R-81..R-85 wait for the Decision Authority. R-89 and R-94 are the same possible exceptions as in P4.",
+   "status": "PARTIALLY IDENTIFIED",
+   "status_note": "The rule is observed being applied once (E1). The exceptions cannot be resolved because the adoption log (R-87, R-88) and R-94's norm type are missing. This does not discriminate the hypotheses, because H-B is silent.",
+   "quotes": [
+    "The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour — that is the one reading no self-issued act may adopt.",
+    "ADOPTION AUTHORITY IS NOT DELEGATED.",
+    "Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it"
+   ]
+  },
+  {
+   "id": "P6",
+   "question": "Does the governance record carry or reference governed work?",
+   "HD": "It need not. Work is outside the record's necessary content, and a pure norm register is sufficient.",
+   "HB": "It is expected to carry, or reference, both norms and work.",
+   "observable_in_corpus": "The register declares its own scope as decisions only. Operational acceptance is filed elsewhere, 'in the commission's own artefacts'. Yet its rows reference work artefacts heavily (test names, commits, merge gates), and the assembled corpus also includes a git commit and session logs. The answer depends on which artefacts count as 'the governance record', and neither hypothesis defines that.",
+   "status": "CONFOUNDED",
+   "status_note": "The result is confounded by where the record's boundary is drawn and by how this corpus was assembled. Draw the boundary at the register and it matches H-D's self-description. Draw it at register plus logs plus git and it carries both, as H-B expects.",
+   "quotes": [
+    "The register holds constitutional decisions, not operational acceptance.",
+    "Recorded instead as COMMISSION ACCEPTED · DISCOVERY CLOSED · Phase C handed to the domain owner, in the commission's own artefacts.",
+    "Acceptance requires the existing Evidence Preservation test suite and `AuditCleanupTest` to remain GREEN WITHOUT MODIFICATION."
+   ]
+  },
+  {
+   "id": "P7",
+   "question": "Is authorization of a successor package gated by acceptance of its predecessor (a work outcome)?",
+   "HD": "The gate operates only as a stated norm. It changes nothing until some act records that it is met.",
+   "HB": "Authorization follows the predecessor's actual acceptance (work outcome feeds forward).",
+   "observable_in_corpus": "No. R-72 requires WP-4C to be 'considered only after WP-4B is accepted'. R-89 (PREPARED, 2026-08-04) authorizes WP-4C-1 on the same day R-86 releases WP-4B batch 7. No WP-4B acceptance appears in the corpus, and R-87/R-88 are absent.",
+   "status": "INSUFFICIENT EVIDENCE",
+   "status_note": "The apparent sequencing tension cannot be judged without the WP-4B acceptance record and timestamp. Nothing is observed about whether WP-4B was accepted by that date.",
+   "quotes": [
+    "WP-4C AND WP-4D ARE EXPRESSLY NOT AUTHORIZED. Each is to be authorized from IMPLEMENTATION EVIDENCE rather than roadmap intent, after its predecessor is accepted.",
+    "WP-4C is considered only after WP-4B is accepted.",
+    "WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — Execution Governance · Authorization · ARB CHIEF (PREPARED)."
+   ]
+  },
+  {
+   "id": "P8",
+   "question": "Does a work failure (implementation deviation) produce a remediation norm?",
+   "HD": "Only if an act authorizes the remediation. Absent the act, the failure changes no norm.",
+   "HB": "Remediation after a failure is expected.",
+   "observable_in_corpus": "Two source-level cases pull in opposite directions. In R-81, a defect led to an authorized repair, adopted via R-86. In R-91, an implementation deviation was found, a repair was said to require a separate authorization 'NOT granted here', and the ruling was then HELD. Both are act-mediated. Neither is an execution record in the coded set.",
+   "status": "NON-IDENTIFIABLE",
+   "status_note": "Act-mediated remediation fits H-D and H-B equally. The R-91 case (failure found, no remediation norm in the corpus) does not falsify H-B. The corpus ends on 2026-08-04, and later remediation is NOT OBSERVED.",
+   "quotes": [
+    "one engineering slice is authorized inside the seam already authorized by R-72; Batch 7's freeze is lifted FOR THIS REPAIR ONLY.",
+    "a separate EXECUTION-governance authorization is required for any repair — a different act, by a different branch of the same authority, and NOT granted here.",
+    "no repair is authorized"
+   ]
+  }
+ ],
+
+ "min_evidence": [
+  {
+   "prediction": "P1",
+   "target_hypothesis": "H-D ('only through acts')",
+   "required_observation": {"fields": ["target", "norm_state_before (deontic, timestamp)", "norm_state_after (deontic, timestamp)", "complete act log for that target over the interval (all acts by all actors, including unregistered ones), each with actor and timestamp", "work events in the interval (execution/acceptance/failure, timestamp)", "the source that attests the after-state"], "key": "the after-state must be attested by a source other than the register, e.g. a queue, CONTEXT.md, or work plan, so that a change without an act could show up at all"},
+   "min_independent_episodes": 1,
+   "min_note": "One verified act-less change falsifies H-D's universal 'only'. At least 3 are needed to support H-B's positive claim that work triggers changes.",
+   "independence_requirement": "different targets and different conditional norms. Not two readings of one proviso, and not rows from the same ruling batch.",
+   "falsifier_HD": "A polarity change on a target, with a complete act log for the interval showing no norm-making act, where the change follows a work event (for example a gate like R-79's '§WP-4 CLOSES BY ACCEPTANCE · THEN WP-8 is authorized' treated as authorized with no act).",
+   "falsifier_HB": "Across ≥3 independent conditional norms whose work condition was verifiably met, the norm state does not change until a separate act occurs, and actors act on the unchanged state. This falsifies H-B's 'in response to work' as a mechanism distinct from acts."
+  },
+  {
+   "prediction": "P2",
+   "target_hypothesis": "H-B (conformance)",
+   "required_observation": {"fields": ["execution event (target, actor, timestamp with time of day)", "full text and timestamps of every act on that target up to the event (for the existing case: R-73, R-74, R-75, R-76, R-77 with time of day)", "whether the operation performed (e.g. RED test commit) falls under the governed operation ('implementation', 'RED')"]},
+   "min_independent_episodes": 1,
+   "min_note": "The cheapest discriminating step is to resolve R11: obtain R-73..R-76 and the time of R-77. For a pattern rather than a single case, ≥3 execution events on different targets.",
+   "independence_requirement": "different work packages and different authorizing rulings, and each execution event must be a separate commit or session, not successive commits of one batch",
+   "falsifier_HD": "None from P2 alone. H-D makes no conformance prediction. H-D is strained only if norm states cannot be read without execution records (see P6).",
+   "falsifier_HB": "An execution event on a target whose norm in force at that moment, fully determined, is PROHIBITED or UNAUTHORIZED, with no later sanction or remediation. For example, R11 if R-73..R-76 did not satisfy R-72's proviso and R-77 preceded 16:10 on 2026-08-03."
+  },
+  {
+   "prediction": "P3",
+   "target_hypothesis": "H-B (feedback)",
+   "required_observation": {"fields": ["work outcome record (id, type: acceptance evidence / failure / completion, timestamp)", "subsequent norm change (act id, timestamp, target)", "the act's cited grounds, including an explicit reference to the outcome id", "control: norm changes on comparable targets where no outcome occurred"]},
+   "min_independent_episodes": 2,
+   "min_note": "At least one acceptance-after-evidence and one remediation-after-failure, each linked by explicit citation from an execution record to a norm-change act.",
+   "independence_requirement": "different work packages, different outcomes, and different deciding acts, not the R-81..R-85 batch counted per ruling",
+   "falsifier_HD": "A norm change whose only recorded proximate cause is a work outcome, with no act (this overlaps with P1).",
+   "falsifier_HB": "In ≥3 independent cases norm changes contradict available outcomes, for example a successor authorized before the predecessor is accepted, or no remediation after a verified failure while the target stays active. Actors must treat these as normal, not as defects."
+  },
+  {
+   "prediction": "P4",
+   "target_hypothesis": "H-D (status mediation)",
+   "required_observation": {"fields": ["making act id", "status sequence with timestamps (issued/prepared, adopted/withdrawn/held)", "adopting actor", "force indicators between the status changes: work executed under it, other acts citing it as authority"], "specific": "the adoption record (or its absence) for R-89, plus R-87 and R-88 text"},
+   "min_independent_episodes": 3,
+   "min_note": "Three different decisions. Rulings adopted together in one act count as one. The first to obtain is the resolution of R-89.",
+   "independence_requirement": "different adoption acts and different issuers or dates. Not several rulings covered by one adoption such as R-86.",
+   "falsifier_HD": "A ruling that stays PREPARED, with a complete adoption log showing no adoption, yet is cited as governing authority or has work executed under it (R-89 is the candidate).",
+   "falsifier_HB": "None. H-B makes no status-mediation prediction."
+  },
+  {
+   "prediction": "P5",
+   "target_hypothesis": "H-D (capability)",
+   "required_observation": {"fields": ["capability register (who may adopt, authorize, or dispose, by norm type)", "acts by actors outside that capability", "the effect of those acts on force"], "specific": "whether R-94-type delivery dispositions need Decision Authority adoption"},
+   "min_independent_episodes": 1,
+   "min_note": "One verified effective act by a non-capable actor falsifies H-D's clause.",
+   "independence_requirement": "different acts, not repetitions of one delegation",
+   "falsifier_HD": "A norm made effective by an actor without the capability, where the capability register confirms that actor lacked it (R-94 would qualify if dispositions need adoption).",
+   "falsifier_HB": "None (H-B is silent)."
+  },
+  {
+   "prediction": "P6",
+   "target_hypothesis": "both",
+   "required_observation": {"fields": ["a fixed, a-priori definition of 'the governance record' (for example the complete register R-1..R-94)", "census of its entries: norm-making act, execution record, or reference to work", "for each norm row, whether its meaning or force can be settled without consulting a work artefact"]},
+   "min_independent_episodes": 1,
+   "min_note": "One full census of a record whose boundary is fixed in advance, rather than a selected sample of 36 spans.",
+   "independence_requirement": "the boundary must be fixed before looking at the content",
+   "falsifier_HD": "Norm rows whose force cannot be determined without work records. For example, acceptance-conditioned norms like R-70 ('Acceptance requires ... GREEN') whose state changes only in work artefacts.",
+   "falsifier_HB": "A complete, fixed-boundary governance record that neither contains nor references any governed work, while the norms still function."
+  },
+  {
+   "prediction": "P7",
+   "target_hypothesis": "H-B (outcome-gated authorization)",
+   "required_observation": {"fields": ["WP-4B acceptance record (act, timestamp) or evidence of its absence as of 2026-08-04", "R-89 issue time", "R-87 and R-88 text"]},
+   "min_independent_episodes": 2,
+   "min_note": "Two successor authorizations, each with its predecessor's acceptance timestamp known.",
+   "independence_requirement": "different predecessor–successor pairs",
+   "falsifier_HD": "Successor authorization treated as effective because the predecessor was accepted, with no authorizing act.",
+   "falsifier_HB": "Successor authorized, and work begun, before the predecessor's acceptance, with the gate in force and no waiver act."
+  },
+  {
+   "prediction": "P8",
+   "target_hypothesis": "H-B (remediation after failure)",
+   "required_observation": {"fields": ["verified failure/deviation record (id, timestamp)", "follow-up window of fixed length", "any remediation authorization or execution in that window and whether it cites the failure"], "specific": "records after 2026-08-04 on the R-91 deviation (the Constitutional Review and any execution-governance repair authorization)"},
+   "min_independent_episodes": 2,
+   "min_note": "Two independent failures, each followed over a stated window.",
+   "independence_requirement": "different failures on different targets",
+   "falsifier_HD": "A remediation that takes effect with no authorizing act (this overlaps with P1).",
+   "falsifier_HB": "Verified failures on active targets that get no remediation norm within the window and are not deliberately deferred with a trigger."
+  }
+ ]
+}

@@ -186,3 +186,10 @@
 - **Established:** ACT 23+/1− as coded; NORM START 5+/5−; **the same target flips polarity across rulings**.
 - **Impact:** the strict pair-witness method is inadequate; the information is in **norm dynamics**.
 - **Next:** 1az on norm-change sequences.
+
+## 1az (F-LOG-0172)
+- **Q:** can H-D and H-B be told apart on this corpus?
+- **Result:** no; they are nearly nested. The only discriminators are a norm change without an act (none) and verified non-conformance of work (2 confounded candidates).
+- **CI1:** the A′ R-A3 convention builds H-D into the observations.
+- **Status mediation:** 2 self-reported episodes.
+- **Next:** 1ba, resolving the non-conformance candidates in-corpus.

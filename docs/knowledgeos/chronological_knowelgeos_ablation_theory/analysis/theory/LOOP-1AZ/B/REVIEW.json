@@ -1,0 +1,314 @@
+{
+ "meta": {
+  "inputs_used": ["REVIEW-TASK.md", "HYPOTHESES.md", "TASK.md", "RECORDS.json", "CODING.json", "CODING-REVIEW.json", "SOURCES.md", "ANSWER.json", "ANSWER.md"],
+  "classes": ["wording", "source interpretation", "coding", "evidence scope", "independence", "formal reasoning", "substantive"],
+  "quote_convention": "Verbatim from SOURCES.md / RECORDS.json with markdown ** and * removed (same convention as the answer).",
+  "bottom_line": "The answer's headline holds: nothing is IDENTIFIED and nothing is FALSIFIED. Several findings behind it are wrong, and they are wrong in both directions. Three labels overstate identification (P3, P4 and P5 should be NON-IDENTIFIABLE). Two sequences mix different targets (S3; S4/PC3). The answer misses source-level evidence that bears on P2, P4, P7 and P8. It states the corpus end date wrongly. And it misses a circularity built into the coding: rule R-A3 makes each norm record its own act."
+ },
+
+ "sequence_issues": [
+  {
+   "id": "SQ1",
+   "sequence": "S3 (WP-7B-R1)",
+   "class": "coding",
+   "issue": "Two different targets are merged into one sequence. R08 and R09 are about 'the motion opening WP-7B-R1', which is its classification as note or ruling. R04 is about 'WP-7B-R1 implementation', which is an authorization. The target that has two or more NORM records is the motion (R08, R09). WP-7B-R1 implementation has only one NORM record (R04), so it should be a single-record target, not part of a sequence. The answer then treats the note-to-ruling flip and the implementation authorization as steps along one line.",
+   "evidence": ["R08 norm.about_target: 'the motion opening WP-7B-R1'", "R04 norm.about_target: 'WP-7B-R1'", "R-60: 'Opened, not delivered.'"],
+   "effect": "PC4 is an artifact of this merge. The answer admits PC4 is uncoded, yet still cites it in P1 ('and implicit PC4')."
+  },
+  {
+   "id": "SQ2",
+   "sequence": "S3 (R08 -> R09)",
+   "class": "source interpretation",
+   "issue": "The step from R08 (non-ruling) to R09 (ruling) is not a real change of a norm in force. R-60 says the operative text already declared the package OPEN ('its own handover statement and governance queue both declare the package OPEN'). The recorder aligned the filing with that text. The same row says 'the DECISION is unchanged'. The heading placement recorded in R08 is a drafting discrepancy that the register reports, not a norm state that was ever in force. The coder notes NONE would also be defensible for R08's norm.",
+   "evidence": ["while its own handover statement and governance queue both declare the package OPEN", "The discrepancy is recorded rather than silently resolved.", "CLASSIFICATION CORRECTED 2026-08-01 by the issuing authority (annotation; the DECISION is unchanged)"],
+   "effect": "E2 should not count as status mediation, even on the broad reading (see status_mediation_reviewer). The answer also misses a second annotation on the same row, where the category was corrected from Delivery to Planning governance. That was also a status change with no change in force."
+  },
+  {
+   "id": "SQ3",
+   "sequence": "S4 / PC3 (WP-4B)",
+   "class": "substantive",
+   "issue": "PC3 (PROHIBITED to AUTHORIZED) compares two different scopes, so it is not a polarity change on one target. R10 prohibits beginning WP-4B implementation. R36 authorizes three batch-7 items, and it does so by lifting a batch-7 freeze. Both R-81 ('the seam already authorized by R-72') and R-86 ('resume implementation') presuppose that WP-4B implementation had already been authorized and had started before R-86. So R-86 ends a freeze. It does not lift R10's prohibition. The act that lifted R10's prohibition (or its proviso), if one exists, is not in the corpus. The answer flags that 'the path is not attested', but it still lists PC3 as a polarity change whose act is PARTIAL.",
+   "evidence": ["one engineering slice is authorized inside the seam already authorized by R-72; Batch 7's freeze is lifted FOR THIS REPAIR ONLY.", "Engineering is authorized to resume implementation in accordance with the adopted governance.", "WP-4B authorized in principle; execution contingent and the contingency is unmet"],
+   "effect": "Two changes are hidden inside PC3, and both are unobserved: (a) the proviso contingency to operative authorization, and (b) operative authorization to batch-7 freeze. Only the last step, freeze to released, is observed. It should be recorded as a separate target, 'WP-4B batch 7', with an attested act (R-86) and a from-state whose creating act is absent."
+  },
+  {
+   "id": "SQ4",
+   "sequence": "S4 (R10 deontic)",
+   "class": "coding",
+   "issue": "R10 is coded PROHIBITED. But R-72 is an authorization with an unmet proviso ('WP-4B AUTHORIZED ... SUBJECT TO A PROVISO THAT IS NOT YET SATISFIED'), and the coder admits STATUS_CONSTRAINT 'would fit equally well'. The answer carries PROHIBITED forward as the from-state without flagging this. The distinction matters for P1. A contingent authorization can become operative when its condition is met, with no further act: 'when they land, engineering proceeds RED'. That is exactly where a change without an act, or triggered by work, would appear, and the answer's frame hides it.",
+   "evidence": ["WP-4B AUTHORIZED — Execution Governance · Authorization · ARB — SUBJECT TO A PROVISO THAT IS NOT YET SATISFIED.", "when they land, engineering proceeds RED → GREEN → VERIFY → acceptance evidence"]
+  },
+  {
+   "id": "SQ5",
+   "sequence": "S4 ordering (R11 relative to the WP-4B norm)",
+   "class": "source interpretation",
+   "issue": "The answer says the norm in force at R11 (08-03 16:10) 'cannot be determined' because the time of day of R-77 is unknown. That overstates the uncertainty. R11 cites R-73, R-74 and R-75 as already decided, so they came before it. R-77 (08-03) says 'R-73–R-76 stand' and 'WP-4B REMAINS BLOCKED'. 'Remains' asserts that the block continued through R-73..R-76, whichever side of 16:10 R-77 falls. R-79 (08-03) says WP-4B RED comes after 'the two remaining Board acts', and R-86 (08-04) confirms those acts were still OPEN. The answer ignores R-79's sequence completely. The remaining uncertainty is about what the block covers, not when it applied: R11 deliberately leaves producers unnamed.",
+   "evidence": ["R-73–R-76 stand · WP-4B's authorization (R-72) stands · no ADR is amended, withdrawn or annotated as superseded · ⚠️ AND WP-4B REMAINS BLOCKED", "SEQUENCE AFFIRMED: (1) the two remaining Board acts — PROMOTION (permission) and ALLOCATION (ownership), independent of each other · (2) WP-4B RED → GREEN → VERIFY → ACCEPT", "ChallengeRaised PROMOTION and ALLOCATION remain OPEN and are not adopted by this act", "The surface the tests name is the minimum the governing model implies, with producers deliberately unnamed"]
+  },
+  {
+   "id": "SQ6",
+   "sequence": "S1, S2 (7B, 7C)",
+   "class": "formal reasoning",
+   "issue": "The UNAUTHORIZED from-states (R14, R31, R33) record that no authorization exists. None of them is a prohibition. R14 limits the scope of R-47 ('7A ONLY'), and R31 comes from a recording note that is 'not part of this ruling'. By R-60's own rule, such a note carries no ruling force. So UNAUTHORIZED to AUTHORIZED is the creation of a norm, not the reversal of one, and the target must go through an authorizing act by definition. These are real polarity changes, but they are trivial ones, and they carry no information for P1.",
+   "evidence": ["Scope is slice-granular: 7A ONLY — 7B and 7C are NOT authorized and follow their own gates.", "(Recording note, not part of this ruling: ...)", "A recording note cannot open a work package — that is the ruling/note distinction this register enforces"]
+  },
+  {
+   "id": "SQ7",
+   "sequence": "S1, S2 (R14)",
+   "class": "coding",
+   "issue": "R14's target ('Slices 7B and 7C') is composite. The answer splits it correctly and discloses the split (ambiguity 2). No error, but one span is used as the start state of two sequences, so S1 and S2 are not independent at their origin.",
+   "evidence": ["R14 norm.about_target: 'Slices 7B and 7C'"]
+  },
+  {
+   "id": "SQ8",
+   "sequence": "register-order tiebreak",
+   "class": "source interpretation",
+   "issue": "Using register number to order same-day rows is a supported INFERENCE ('The next ruling is R-91'). No error. But nothing in the corpus places the git commit R11 in that ordering, and nothing places the session logs in it either.",
+   "evidence": ["The next ruling is R-91."]
+  }
+ ],
+
+ "act_issues": [
+  {
+   "id": "AC1",
+   "where": "PC1, PC2, PC4",
+   "class": "formal reasoning",
+   "issue": "The 'intervening act' and the after-state are the same coded record: R32 for PC1, R34 for PC2, R04 for PC4. Rule R-A3 says the register row itself performs the act. So the act is not observed independently of the norm state; it is the same span read twice. 'Every polarity change has an attested act' therefore follows from the coding convention, not from any observation.",
+   "evidence": ["R32 act.status.state: 'a register row that itself performs the authorization (R-A3)'", "R34 act.status.state: '... a register row that itself performs the authorization (R-A3 ...)'", "R04 act.status.state: '... which itself performs the authorization (R-A3)'"]
+  },
+  {
+   "id": "AC2",
+   "where": "PC1, PC2 actor",
+   "class": "coding",
+   "issue": "The answer reports the ARB as the actor of PC1 and PC2 without a label. It quotes the row headings as the act ('SLICE 7B EXECUTION AUTHORIZED — ... · ARB'). But those headings are not the coded spans, and the coder marks R32's and R34's actor as INFERENCE from the heading. CODING-REVIEW downgraded exactly this kind of heading-based attribution to INFERENCE for R10, R12, R13 and R14, and the answer applies that downgrade to the from-states (R14 'INFERENCE from heading') but not to the acts. That is inconsistent.",
+   "evidence": ["R32 act.status.actor: 'INFERENCE: R-58 heading 'Authorization · ARB''", "R34 act.status.actor: 'INFERENCE: R-65 heading'", "CODING-REVIEW R14: 'INFERENCE (R-47 heading)'"]
+  },
+  {
+   "id": "AC3",
+   "where": "S3 R09 'file as ruling'",
+   "class": "source interpretation",
+   "issue": "The recorder's filing is a record-keeping act that brings the classification into line with operative text that already opened the package. It is not norm-making. Its actor is inferred from a passive verb ('is filed'). Calling it the 'intervening act' of a norm change overstates it.",
+   "evidence": ["so it is filed as a ruling in line with the operative text", "R09 act.status.actor: 'INFERENCE: the passive 'is filed' names no one'"]
+  },
+  {
+   "id": "AC4",
+   "where": "PC3 / R-86",
+   "class": "evidence scope",
+   "issue": "The act that produces the end state (R-86) is attested, but it acts on a different transition, the batch-7 freeze (see SQ3). For the R10 prohibition itself, the lifting act is NOT ATTESTED, not 'PARTIAL'. The act that created the freeze is not attested either.",
+   "evidence": ["Batch 7's freeze is lifted FOR THIS REPAIR ONLY.", "WP-4B BATCH 7 IS RELEASED"]
+  },
+  {
+   "id": "AC5",
+   "where": "E1 records",
+   "class": "coding",
+   "issue": "R27 ('it APPLIES §12 rather than superseding it') is listed as a record of E1, but it has nothing to do with the prepared-to-adopted change. It says what R-83 does to §12. Including it pads the evidence for the episode.",
+   "evidence": ["it APPLIES §12 rather than superseding it"]
+  },
+  {
+   "id": "AC6",
+   "where": "E1 internal steps",
+   "class": "source interpretation",
+   "issue": "The answer misses a step inside E1. As issued, R-81 claimed force ('Batch 7 partially released: isolation repair ACTIVE'). The Chief's provenance annotation then withdrew that claim ('\"BATCH 7 IS RELEASED\" DOES NOT HOLD') before R-86 adopted it. So E1 runs claimed-in-force, then PREPARED (by an annotation), then ADOPTED. It is still one decision and counts once. But the first step is itself a change in force caused by status, and it was made by the issuer, not the adopter.",
+   "evidence": ["Batch 7 partially released: isolation repair ACTIVE, all other Batch-7 work still frozen", "THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND “BATCH 7 IS RELEASED” DOES NOT HOLD."]
+  },
+  {
+   "id": "AC7",
+   "where": "meta.review_corrections_applied",
+   "class": "wording",
+   "issue": "The answer's list of applied corrections leaves out the CODING-REVIEW correction to R06 act.status.operation (the premise was re-based on the in-section proposal). It has no effect on the analysis.",
+   "evidence": ["CODING-REVIEW corrected R06 act.status.operation"]
+  }
+ ],
+
+ "status_mediation_reviewer": {
+  "independent_n": 2,
+  "independent_n_note": "One episode is certain (E1). A second is probable (E3), and the answer missed it. E2 is rejected even on the broad reading. The answer counted 1 on the strict reading and 2 on the broad one, but its second episode was E2, the wrong one.",
+  "episodes": [
+   {
+    "id": "E1",
+    "verdict": "ACCEPTED (1 episode)",
+    "decision": "R-81..R-85 issued by the ARB Chief, then PREPARED, then ADOPTED by R-86 (2026-08-04)",
+    "quotes": ["THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION, AND “BATCH 7 IS RELEASED” DOES NOT HOLD.", "Decision Authority confirms and adopts R-81 through R-85 without amendment. These become governing rulings effective immediately."],
+    "independence_note": "The annotations on R-81 and R-83 are identical and belong to one adoption act, so they count once. The answer got this right. The claimed-in-force step before PREPARED (AC6) is part of the same decision."
+   },
+   {
+    "id": "E3",
+    "verdict": "ACCEPTED, PROBABLE (missed by the answer)",
+    "decision": "R-36 (2026-07-09) adopts the Promotion Review. The matrix rows are 'Recommendation' cells, and they become binding AST-013 behaviours only through the adoption. The ARB changed the content at adoption.",
+    "quotes": ["AI Architecture Promotion Review ADOPTED (evidence-based; PB-004 · PB-005 · PB-006).", "ARB wording refinement at adoption: \"unverified theory\", not \"theoretical elegance\"", "promoted 6 (2 added by ARB at review)", "R-36 promotion matrix (adopted by R-36)"],
+    "support_for_force_change": "CODING R15 note: 'The span alone is only a recommendation. It becomes a binding norm only through R-36.' The domain rule that proposals are not binding appears in R-47: 'remains PROPOSED and non-binding — silence is not adoption (R-34).'",
+    "caveat": "No quote says in so many words that the matrix was not in force before R-36. That premise is an INFERENCE from the recommendation/adoption structure.",
+    "independence_note": "Different decision, different date (07-09 against 08-04), a different adopting actor (the ARB, not the Decision Authority), and a different regime (before the Session-1 mandate)."
+   },
+   {
+    "id": "E2",
+    "verdict": "REJECTED",
+    "decision": "R-60 motion: filed as a recording note, then as a ruling",
+    "reason": "No change in force is observed. The operative text declared the package OPEN throughout, and 'the DECISION is unchanged'. The change concerns how the text is classified, not the status of the act that made it. It was made by the recorder (INFERENCE). See SQ2."
+   },
+   {
+    "id": "C1",
+    "verdict": "CANDIDATE, NOT COUNTED",
+    "decision": "AST-016 went from QUALIFIED to ADOPTED (S0815, 2026-08-15)",
+    "quotes": ["`AST-016` QUALIFIED then ADOPTED.", "Adoption registered — adoption: adopted, with the comment stating adoption does not resolve V-3."],
+    "reason": "A status change is attested, but no change in force is stated."
+   },
+   {
+    "id": "C2",
+    "verdict": "NOT OBSERVED",
+    "decision": "R-87 and R-88 adoption acts",
+    "reason": "Other rows refer to them, but their text is not in the corpus. The answer handled this correctly."
+   }
+  ],
+  "non_episodes_confirmed": ["R-90 PREPARED then WITHDRAWN (never in force)", "R-91 PREPARED then HELD (never in force)", "R-47 Layer Verification Rule (remains PROPOSED)", "S0815 'Tenth' operating model (PROPOSED, 'not adopted/mandatory/binding')"]
+ },
+
+ "predictions_reviewer": [
+  {
+   "id": "P1",
+   "answer_status": "NON-IDENTIFIABLE",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "I agree with the label, but the answer gives the weaker reason. It relies on selection: the register records decisions. There are two stronger reasons. (a) Every observed change starts from no authorization and ends in an authorization, and creating an authorization needs an authorizing act on either hypothesis (SQ6). (b) Under R-A3 the act and the after-state are the same record (AC1). There is also the hypothesis reading. If H-B's 'in response to work' can mean acts that work triggers, H-B predicts exactly what H-D predicts, and P1 cannot discriminate even in principle. The only place in the corpus where a change without an act could appear is the contingent authorization in R-72 becoming operative. That transition is not observed (SQ4)."
+  },
+  {
+   "id": "P2",
+   "answer_status": "CONFOUNDED",
+   "status": "CONFOUNDED (a candidate anomaly against H-B, n=1)",
+   "favours": "neither; weakly against H-B if the confound resolves toward non-conformance",
+   "reason": "This is a one-sided test. H-D makes no prediction, so only H-B is at risk. The answer overstates the timing confound (SQ5): R-77 ('REMAINS BLOCKED', after 'R-73–R-76 stand') and R-79 (RED only after the two Board acts, which were still OPEN on 08-04) make it likely that the norm in force at R11 was 'blocked'. What remains confounded is (i) whether RED tests that leave producers 'deliberately unnamed' fall under what is blocked, and (ii) the unobserved acts R-76, R-78 and R-80. The answer also leaves out execution-side observations from the source text: R-94 'Executed at IMPLEMENTATION_PROGRESS.md:58' (a Chief disposition carried out with no adoption by the Decision Authority), R-86 'engineering waiting solely on a constitutional act' (which reads as conformance), and S0804 'Nothing implemented this turn by the review's own instruction' (also conformance). None of these is coded as an execution record."
+  },
+  {
+   "id": "P3",
+   "answer_status": "PARTIALLY IDENTIFIED",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "The answer itself says the observed feedback 'does not discriminate, because H-D accommodates acts that cite evidence'. A prediction on which the two hypotheses are observationally equivalent is NON-IDENTIFIABLE. Calling it PARTIALLY IDENTIFIED is a labelling error. The answer also misses more act-mediated feedback cases: R-41, where the WP-1 closure inconsistency leads to ES-004.3 and 'first checklist execution ... caught a second instance ... annotated', and S0815, where O-CLOSURE-VOCAB leads to the 'BINDING VOCABULARY RULING' and then 'Applied immediately'. These add to the count but do not change the verdict."
+  },
+  {
+   "id": "P4",
+   "answer_status": "PARTIALLY IDENTIFIED",
+   "status": "NON-IDENTIFIABLE (as a discriminator); H-D's clause is corroborated, n=2, by self-report",
+   "favours": "neither",
+   "reason": "H-B does not deny status mediation, so observing it cannot tell the hypotheses apart. The answer admits this and still gives the label PARTIALLY IDENTIFIED. The count is 2 (E1 and E3), not 1. In both, force is 'observed' only through declarations inside the norm-making acts ('These become governing rulings effective immediately'). That is the same kind of evidence the answer rejects for P1, where it says R-77's clause 'shows the actors endorse H-D's rule. It does not show that the rule holds' (CI2). R-89 remains an unresolved possible falsifier of H-D."
+  },
+  {
+   "id": "P5",
+   "answer_status": "PARTIALLY IDENTIFIED",
+   "status": "NON-IDENTIFIABLE (as a discriminator)",
+   "favours": "neither",
+   "reason": "H-B is silent, so P5 cannot discriminate. The same labelling error applies as for P4. R-94 remains open as a candidate falsifier of H-D. But the domain itself offers a reading under which R-94 is no exception: the Decision Authority held that operational acceptance is not a constitutional decision (R-90). That points to a scope question, not a capability breach."
+  },
+  {
+   "id": "P6",
+   "answer_status": "CONFOUNDED",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "The answer says the result depends on where the record's boundary is drawn. It does not. H-B predicts that the record carries OR references work, and even the narrowest boundary (register rows only) references and reports work: 'Executed at IMPLEMENTATION_PROGRESS.md:58', 'Container resolution executed and reproduced', the grep in R-83, 'first checklist execution the same day caught a second instance'. So H-B's prediction is met at every boundary. H-D says work 'need not' be in the record, which permits its presence. The two are observationally equivalent on what is present. The answer's line 'draw the boundary at the register and it matches H-D's self-description' is wrong (LP1)."
+  },
+  {
+   "id": "P7",
+   "answer_status": "INSUFFICIENT EVIDENCE",
+   "status": "CONFOUNDED (with the R-89 status question); on act versus no act it reduces to P1",
+   "favours": "neither",
+   "reason": "The answer says 'nothing is observed about whether WP-4B was accepted' by R-89. That is too strong. There is positive indirect evidence, not merely an absence. The same day, R-86 authorizes batch-7 execution, and acceptance comes after RED → GREEN → VERIFY (R-72, R-79). R-89 itself says '§WP-4 remains OPEN'. So R-89 very probably authorized WP-4C-1 before WP-4B was accepted, against R-72's gate (INFERENCE, strongly supported). Whether that counts against H-B depends on whether R-89 ever took force. It is PREPARED, yet the Decision Authority says 'R-89 already governs authorization'. That is the confound."
+  },
+  {
+   "id": "P8",
+   "answer_status": "NON-IDENTIFIABLE",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "I agree with the label. But the answer says 'the corpus ends on 2026-08-04', which is false: S0815 is a session log dated 2026-08-15. The absence of any later R-91 remediation is still a limitation of the corpus, but the window is misstated. S0815 contains further failure-and-remediation pairs that the answer does not use: O-CLOSURE-VOCAB is found and 'Recommended as its own work item', 'E-2 is CORRECTED (seq 18)', and a forbidden headline is 'corrected, not defended'. All of these go through an act, so they fit both hypotheses."
+  }
+ ],
+
+ "limitation_vs_property_errors": [
+  {
+   "id": "LP0",
+   "verdict": "NO TRUE INSTANCE FOUND",
+   "note": "No prediction is scored as supporting H-D because execution records are missing. The answer keeps corpus limitation and domain property apart in P1, in P8 and in the ANSWER.md section on this. The items below are near-misses and related scope errors."
+  },
+  {
+   "id": "LP1",
+   "verdict": "NEAR-MISS",
+   "class": "formal reasoning",
+   "where": "P6 status_note",
+   "text": "Draw the boundary at the register and it matches H-D's self-description.",
+   "problem": "This treats the register's filing convention ('not operational acceptance'), which is a fact about how the main source was compiled, as agreement with H-D. The register rows reference and report work in any case (see P6). No H-D score follows from it, but the sentence presents a limitation of the corpus as if it were a finding about the domain."
+  },
+  {
+   "id": "LP2",
+   "verdict": "SCOPE ERROR (a false limitation claim, not a property inference)",
+   "class": "evidence scope",
+   "where": "S4 execution_note; ANSWER.md S4",
+   "text": "The only execution record in the corpus.",
+   "problem": "It is the only execution record among the coded records. The source text contains other execution reports: R-94 'Executed at ...', R-91 'Container resolution executed and reproduced', R-41 'first checklist execution', and S0815 'Exactly ONE transition appended'. Understating the work evidence in the corpus is the precondition for the corpus-limitation-to-H-D error, although the answer does not go on to make it."
+  },
+  {
+   "id": "LP3",
+   "verdict": "SCOPE ERROR (a false limitation claim)",
+   "class": "evidence scope",
+   "where": "P8 status_note",
+   "text": "The corpus ends on 2026-08-04, and later remediation is NOT OBSERVED.",
+   "problem": "The corpus runs to 2026-08-15 (S0815). The conclusion (NOT OBSERVED for R-91) still holds, but the limitation is described wrongly."
+  }
+ ],
+
+ "circularity": [
+  {
+   "id": "CI0",
+   "verdict": "NO INSTANCE of the exact chain 'few execution records → the corpus is about rules → H-D'",
+   "note": "The answer never concludes for H-D on these grounds. The two circularities below are related and weaker."
+  },
+  {
+   "id": "CI1",
+   "class": "coding",
+   "where": "P1, PC1, PC2, PC4",
+   "chain": "R-A3 (a register row performs its own act) → every coded norm state comes with an act → 'every polarity change has an attested act'.",
+   "problem": "H-D's structure (norm only through act) is built into the coding convention, and then the coding appears to confirm it. The answer notices that the register was selected for acts, but not that the coding makes the act and the norm record the same thing (AC1). It does not reach a conclusion for H-D, but the observation it reports has no independent content."
+  },
+  {
+   "id": "CI2",
+   "class": "formal reasoning",
+   "where": "P4, P5",
+   "chain": "A norm-making text declares that adoption confers force → force is observed to change on adoption → H-D's clause is corroborated.",
+   "problem": "The force change is evidenced only by the adopting act's own declaration. The answer applies the right standard to P1 ('shows the actors endorse H-D's rule. It does not show that the rule holds') but not to P4 or P5. The nearest thing to an independent indicator, R-86's 'engineering waiting solely on a constitutional act', is still the Authority's own statement."
+  }
+ ],
+
+ "min_evidence_assessment": {
+  "overall": "The specifications are useful, and they name the right missing records (R-73..R-80 text, R-87/R-88, R-89's adoption status). Four of them fail the test of sufficient and minimal. (1) The P4 and P5 specifications cannot discriminate, because H-B has no falsifier; asking for 3 episodes only corroborates H-D. (2) The H-D falsifier for P1 requires a 'complete act log ... including unregistered ones', and absence of an unregistered act can never be shown. (3) Several H-B falsifiers have no time window ('no later sanction') or rely on attitudes ('actors must treat these as normal'). (4) Episode minimums of 3 are set without a stated reason.",
+  "items": [
+   {"prediction": "P1", "class": "formal reasoning", "sufficient": "only under reading 1 of H-B", "minimal": "1 episode for H-D is right; H-B's '≥3' is arbitrary", "untestable_falsifier": "falsifier_HD: 'complete act log ... including unregistered ones' cannot be verified", "fix": "Use a closed-world capability register: all actors able to act on the target, with every act of theirs logged (R-86 names the Decision Authority as the only adopter). The after-state must be attested outside the register and acted on by engineering. First fix which reading of 'in response to work' is meant. Under reading 2, H-B has no P1 falsifier."},
+   {"prediction": "P2", "class": "evidence scope", "sufficient": "yes, if the text of R-76, R-78 and R-80 is added, plus times of day for R-77 and R-79, plus a ruling on whether RED tests with unnamed producers count as 'implementation' under R-72 and R-77", "minimal": "1 episode (R11) suffices to settle the case", "untestable_falsifier": "falsifier_HB 'with no later sanction or remediation' has no time window", "fix": "Set a follow-up window, as the answer does for P8. Also code R-94 and the R-86 'waiting' statement as execution or non-execution observations."},
+   {"prediction": "P3", "class": "formal reasoning", "sufficient": "no. Any feedback through an act fits H-D, so the specification cannot discriminate unless it requires feedback without an act, which is P1 again", "minimal": "n/a", "untestable_falsifier": "falsifier_HB 'Actors must treat these as normal' is attitudinal", "fix": "Merge the discriminating part into P1, or define H-B's feedback so that it excludes act mediation."},
+   {"prediction": "P4", "class": "formal reasoning", "sufficient": "no. H-B has no falsifier, so no number of episodes discriminates", "minimal": "for falsifying H-D, 1 counterexample suffices; the '3' serves only to corroborate", "untestable_falsifier": "falsifier_HD 'cited as governing' is ambiguous. A citation by the adopting authority itself, such as the Decision Authority's 'R-89 already governs authorization', may itself be the adoption", "fix": "Require the citation to come from an actor other than the adopting authority, or require work executed under the ruling. Record separately that P4 is a test of H-D only."},
+   {"prediction": "P5", "class": "formal reasoning", "sufficient": "no (H-B is silent)", "minimal": "1 episode for H-D is right", "untestable_falsifier": "none", "fix": "Add a norm-type classification (constitutional or operational, per R-90's withdrawal) so that R-94 can be resolved."},
+   {"prediction": "P6", "class": "formal reasoning", "sufficient": "no. The census has already been answered in H-B's favour at every boundary, and H-D permits that result", "minimal": "n/a", "untestable_falsifier": "falsifier_HB 'while the norms still function' cannot be observed without observations of work", "fix": "Drop P6 as a discriminator."},
+   {"prediction": "P7", "class": "formal reasoning", "sufficient": "only after R-89's status is resolved", "minimal": "the request for 2 pairs is fine", "untestable_falsifier": "none", "fix": "Put R-89's adoption record or DA statement and the WP-4B acceptance timestamp first. Record separately that the act-versus-no-act question here is P1."},
+   {"prediction": "P8", "class": "wording", "sufficient": "yes (it has a window)", "minimal": "yes", "untestable_falsifier": "none", "fix": "Correct the corpus end date to 2026-08-15."}
+  ]
+ },
+
+ "verdict": {
+  "identified": [],
+  "favours": "neither",
+  "overall": "No prediction is IDENTIFIED on this corpus, and neither hypothesis is favoured. The reason is structural. H-D makes no prediction about work (P2, P3, P6), and H-B, read as allowing acts triggered by work, is compatible with every act-based claim of H-D (P1, P4, P5, P8). So the hypotheses come close to being nested, and only two kinds of observation could separate them: (i) a verified norm change with no act, which would falsify H-D's 'only'; or (ii) verified non-conformance, or verified absence of feedback, which would count against H-B. The corpus has no case of (i). It has candidates for (ii): R11 against R-72, R-77 and R-79, and R-89 against R-72's acceptance gate. Both are confounded, the first by what the block covers and by unobserved acts, the second by R-89's PREPARED status. Neither is resolved. The answer reaches the same bottom line, but it rates P3, P4 and P5 too high and P2 and P7 too low."
+ },
+
+ "disagreements": [
+  {"id": "D1", "topic": "P3 status", "answer": "PARTIALLY IDENTIFIED", "reviewer": "NON-IDENTIFIABLE", "class": "formal reasoning"},
+  {"id": "D2", "topic": "P4 status and n", "answer": "PARTIALLY IDENTIFIED, n=1", "reviewer": "NON-IDENTIFIABLE as a discriminator; H-D's clause is corroborated, n=2 (E1 and E3), by self-report", "class": "formal reasoning"},
+  {"id": "D3", "topic": "P5 status", "answer": "PARTIALLY IDENTIFIED", "reviewer": "NON-IDENTIFIABLE as a discriminator", "class": "formal reasoning"},
+  {"id": "D4", "topic": "P6 status", "answer": "CONFOUNDED by where the record's boundary is drawn", "reviewer": "NON-IDENTIFIABLE: H-B's 'or reference' is met at every boundary, and H-D permits it", "class": "formal reasoning"},
+  {"id": "D5", "topic": "P2 strength", "answer": "the norm in force at 16:10 cannot be determined", "reviewer": "likely 'blocked' (R-77 'remains', R-79 sequence); the confound is what the block covers, not when it applied", "class": "source interpretation"},
+  {"id": "D6", "topic": "P7 status", "answer": "INSUFFICIENT EVIDENCE; nothing is observed about WP-4B acceptance", "reviewer": "CONFOUNDED; strong indirect evidence that WP-4B was not accepted, confounded by R-89's status", "class": "source interpretation"},
+  {"id": "D7", "topic": "PC3", "answer": "a polarity change whose act is partly attested", "reviewer": "an artifact of different scopes; the prohibition-lifting act is NOT ATTESTED", "class": "substantive"},
+  {"id": "D8", "topic": "S3 / PC4", "answer": "one sequence on WP-7B-R1", "reviewer": "two targets merged; WP-7B-R1 implementation is a single-record target", "class": "coding"},
+  {"id": "D9", "topic": "status mediation count", "answer": "strict 1, broad 2 (E2)", "reviewer": "2 (E1, plus E3 from R-36, which the answer missed); E2 rejected", "class": "independence"},
+  {"id": "D10", "topic": "execution evidence scope", "answer": "R11 is the only execution record in the corpus", "reviewer": "R11 is the only coded one; the source text reports others (R-94, R-91, R-41, S0815)", "class": "evidence scope"},
+  {"id": "D11", "topic": "corpus end date", "answer": "2026-08-04", "reviewer": "2026-08-15 (S0815)", "class": "wording"},
+  {"id": "D12", "topic": "why P1 fails", "answer": "the register was selected for acts", "reviewer": "also: every observed change is the creation of an authorization, and R-A3 makes the act and the after-state one record", "class": "formal reasoning"},
+  {"id": "D13", "topic": "act attribution", "answer": "ARB given as the actor of PC1 and PC2 without a label", "reviewer": "INFERENCE from the row heading, consistent with CODING-REVIEW", "class": "coding"}
+ ]
+}
