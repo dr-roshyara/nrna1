@@ -1683,3 +1683,14 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | R-4 executed (orchestrator part) | OB0012 attempt 1 retired: ledger → `ledger-p3b-r2/OB0012-R7.A1/`, archive → `~/knowledgeos-witness-archive/OB0012.A1/`, 404 files verified, legacy digest re-frozen `73d46f0b…`, COMPLETE record `40fdc781…`; `new-attempt` recorded (OB0012 PREPARED, attempt 2, class X) |
 | Verification | full suite 1,423 OK; `prepare --check` IDENTICAL; H-19 SEALED; canary pre-check v2.8.1 (`audit-p3b/20260930_S5-CANARY-PRECHECK-v281.json`): 11 runs, 0 violations; the dispatch-cwd guard is True from nrna1 and False from the ansible directory; tool files frozen (H-3) |
 | Remaining (R-4, fresh session) | a fresh Claude Code session rooted in nrna1 executes `audit-p3b/20260930_S5-CANARY-OPERATOR-BRIEF.md` (OB0012 attempt 2, OB0114 attempt 1) and stops at the canary evaluation |
+
+## G-LOG-0109 — Human act: the independent review of the fresh-session canary prompt accepted
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-09-30: "ask a independent subagent for the review . i accept it ." |
+| Review | `audit-p3b/impl/R-FRESH-SESSION-PROMPT-REVIEW.md` (independent reviewer, a different model): PROMPT-ACCEPTABLE-WITH-EDITS; 10 required edits applied in the final prompt `audit-p3b/20260930_S5-CANARY-FRESH-SESSION-PROMPT.md` |
+| Stop-rule tally (confirmed) | the canary stop rule counts only this restart's 11 runs (OB0012 attempt 2 + OB0114 attempt 1); attempt 1's retired runs are not counted |
+| AM-1 (later phase only) | one worker per task; parallel tasks only with disjoint write sets and no task consuming another's unreviewed output; production mutation through a single writer; never alters the runbook, `batch_order`, the retry policy, W-SYS or the firewalls. It takes effect only in the later, separately authorized phase |
+| AM-2 (later phase only) | a label is **measured** iff its batch attempt reached BATCH-PASS and was ACCEPTED (VERIFIED → §21 AUDITED → H-06 ACCEPTED); failed or retired attempts are never measured; labels of unaccepted batches are NOT-ASSESSABLE (worst-cased, EP-01 §7). 0 labels are measured today |
+| Not authorized | anything beyond G-LOG-0108's canary scope |
