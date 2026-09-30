@@ -82,6 +82,47 @@ class ContractRebind(unittest.TestCase):
         stm.save(st, st_path)
         self.assertRefusedUnchanged(man, st_path)
 
+    def test_a_terminally_failed_attempt_does_not_block(self):
+        """Canary restart (G-LOG-0108): a batch whose attempt ended FAILED (terminal, verified, recorded) is not in
+        flight, so it must not block a contract rebind; the batch record is unchanged by the rebind."""
+        d, man, st_path = r7_setup()
+        st = stm.load(st_path)
+        stm.transition(st, TS.BIDS[1], "DISPATCHED")
+        stm.transition(st, TS.BIDS[1], "FAILED", reason="class X", failure_class="X", failure_signature="a" * 64)
+        stm.save(st, st_path)
+        before = stm.load(st_path)["batches"][TS.BIDS[1]]
+        self.rebind(man, st_path)
+        after = stm.load(st_path)
+        self.assertEqual(after["batches"][TS.BIDS[1]], before)
+        self.assertEqual(after["manifest_sha256"], U.fsha(man))
+
+    def test_an_incomplete_attempt_does_not_block(self):
+        d, man, st_path = r7_setup()
+        st = stm.load(st_path)
+        stm.transition(st, TS.BIDS[1], "DISPATCHED")
+        stm.transition(st, TS.BIDS[1], "INCOMPLETE", reason="interrupted dispatch", failure_class="A1")
+        stm.save(st, st_path)
+        before = stm.load(st_path)["batches"][TS.BIDS[1]]
+        self.rebind(man, st_path)
+        self.assertEqual(stm.load(st_path)["batches"][TS.BIDS[1]], before)
+
+    def test_an_in_flight_or_verified_batch_still_refuses(self):
+        for path in (["DISPATCHED", "PROPOSED"], ["DISPATCHED", "PROPOSED", "VERIFIED"]):
+            d, man, st_path = r7_setup()
+            st = stm.load(st_path)
+            for to in path:
+                if to == "VERIFIED":
+                    st["batches"][TS.BIDS[1]]["state"] = "VERIFIED"      # the state shape only; evidence is not the subject
+                else:
+                    stm.transition(st, TS.BIDS[1], to)
+            if path[-1] != "VERIFIED":
+                stm.save(st, st_path)
+            else:
+                with open(st_path, "w", encoding="utf-8") as f:
+                    f.write(json.dumps(st))
+            with self.subTest(path=path[-1]):
+                self.assertRefusedUnchanged(man, st_path)
+
     def test_already_bound_is_refused(self):
         d, man, st_path = r7_setup(old_sha=U.ADDENDUM_SHA256)
         self.assertRefusedUnchanged(man, st_path)

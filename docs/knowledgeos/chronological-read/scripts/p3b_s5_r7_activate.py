@@ -228,9 +228,12 @@ def rebind_contract(reason, staging, man_path=None, state_path=None, new_sha=Non
     st = st_mod.load(state_path)
     if st["manifest_sha256"] != U.sha(raw):
         raise SystemExit("REFUSED: P3B-STATE is not bound to the current manifest")
-    bad = sorted(b for b, v in st["batches"].items() if v["state"] != "PREPARED" or v.get("revision") != 7)
+    # G-LOG-0108: no batch may be IN FLIGHT or past verification; a terminally FAILED/INCOMPLETE attempt (verified and
+    # recorded under the previous contract) is not in flight and does not block the rebind.
+    bad = sorted(b for b, v in st["batches"].items()
+                 if v["state"] not in ("PREPARED", "FAILED", "INCOMPLETE") or v.get("revision") != 7)
     if bad:
-        raise SystemExit(f"REFUSED: {len(bad)} batch(es) not PREPARED at revision 7")
+        raise SystemExit(f"REFUSED: {len(bad)} batch(es) not PREPARED/FAILED/INCOMPLETE at revision 7 (in flight or verified)")
     new_hdr = dict(hdr, contract=dict(con, sha256=new_sha),
                    r7_contract_rebinds=list(hdr.get("r7_contract_rebinds") or []) +
                    [{"from_sha256": con.get("sha256"), "to_sha256": new_sha, "authority": reason}])
