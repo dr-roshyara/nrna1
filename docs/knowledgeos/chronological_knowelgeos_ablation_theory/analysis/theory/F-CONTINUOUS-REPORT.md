@@ -179,3 +179,10 @@
 - **Q:** are the events source-individuated; does authority survive at span level?
 - **Result:** 31/36 anchored; authority pair (a) FAILS, (b) WEAK → **authority NOT DEMONSTRATED; the empirical act core is empty**.
 - **Impact:** the corpus identifies norm content and status structure, not act-level guards; A′ is favoured; new execution evidence is needed.
+
+## 1ax / 1ay-n / 1ay (F-LOG-0171)
+- **A′ coding:** 0 rule violations.
+- **Support:** no strict witness, but by construction (an instrument defect); the pipeline removed negatives; r3 exploratory.
+- **Established:** ACT 23+/1− as coded; NORM START 5+/5−; **the same target flips polarity across rulings**.
+- **Impact:** the strict pair-witness method is inadequate; the information is in **norm dynamics**.
+- **Next:** 1az on norm-change sequences.

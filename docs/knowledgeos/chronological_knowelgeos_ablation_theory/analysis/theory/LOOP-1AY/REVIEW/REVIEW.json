@@ -1,0 +1,86 @@
+{
+ "fidelity": {
+  "r1": "FAITHFUL with minor deviations: (i) 7 unparseable 1ax corrections ('norm.status (…)') are applied to junk keys and listed as applied, contrary to 'REPORTED, never applied'; (ii) correction values are inserted verbatim incl. annotations ('null (NOT_EVIDENCED)' counts as a KNOWN actor); (iii) possible_pairs silently truncated to 12; (iv) a within-section pair counts as a one-cluster set in disjoint(). None changes an r1 verdict.",
+  "r2": "FAITHFUL to its declared changes. The exec composition really re-binds coding (same dict object, mutated in place), sect, lin (mutated in ns) and rows (ns globals). The mapping keys match MAPPING/REVIEW-1ayn, and UNMAPPABLE/missing becomes UNKNOWN. The R06/R07 merge is as specified. Undeclared side effects: the mapping overwrites 1ax reviewer corrections (R04 about_actor NOT_EVIDENCED -> ENGINEERING, KNOWN); the unmapped counter is never reported; v1 fields are not normalized; the merged record takes R06's lineage/v1 values only (R07's v1 event differs). The merge deletes the only ACT_WITHDRAWN.",
+  "r3": "FAITHFUL. The split at 'rest = open' is correct; the rows wrapper pops v1_t in both datasets and v1_s in NORM only; the r1 tail is executed in ns. All non-target NORM verdicts equal r2's minus the dropped fields."
+ },
+ "fixes_justified": "Largely yes on the merits, but post hoc. F2 is strongly justified: NORM v1_s = the deontic polarity, and r2's only POSSIBLE pairs were v1_s. F1 is justified: A' target = v1_t on START events, though not for R04/R05 ('own-slice'). However, the fixes were specified after the sealed expectation (NORM target strict) failed, from a diagnostic that prints the blocking fields per pair. They removed only POSSIBLE-blockers for the expected variable, and left the STRICT-blockers shown on every line (unknown_on>=4). Against a tuning charge: they did not also drop v1_a/v1_r, which would have yielded 19 POSSIBLE. r3 should be labelled exploratory.",
+ "remaining_duplicates_or_circular": [
+  {"field": "v1_a", "kind": "duplicate + level mismatch", "detail": "Same concept as A' actor in ACT. In NORM it equals about_actor for START-lineage events but equals the norm-maker (≈ stated_by) where the lineage points to the authorizing act (R04: ARB). It blocks R04 × {R10,R12,R14,R31,R33}. It is not normalized (AUTHORITY vs DECISION-AUTHORITY)."},
+  {"field": "v1_r", "kind": "duplicate of operation", "detail": "START implies EXECUTION. It differs within same-operation pairs only through the lineage level mismatch (R04: RULING). It co-blocks the R04 pairs."},
+  {"field": "v1_k", "kind": "derived from target", "detail": "Coarse target kind (work/ruling/operational-acceptance/'same:' tokens). For a target contrast it is an attribute of the variable under test. It is constant on START and blocks R05~R06 in ACT."},
+  {"field": "v1_s (ACT)", "kind": "possible outcome-conditioning", "detail": "'guards-met' on R04/R05 looks coded from the outcome; check for circularity with act.state before treating it as a guard."},
+  {"field": "v1_e, v1_x, v1_h, v1_c", "kind": "structurally unknown (not duplicate)", "detail": "UNK on every START event. v1_h is known only on R25 and v1_c only on R03, so STRICT is unsatisfiable for every variable in every version."}
+ ],
+ "act_polarity_recount": {
+  "r2_r3": {"total": 24, "positive": 23, "negative": 1,
+   "per_operation": {"CLASSIFY": [9, 0], "AUTHORIZE-IMPL": [4, 0], "ADOPT": [2, 0], "DECLINE-INTERPRETATION": [1, 0], "HOLD": [1, 0], "PREPARE-ISSUE": [1, 0], "START-EXECUTION": [1, 0], "OTHER:RETIRE": [1, 0], "OTHER:ADJUDICATE": [1, 0], "OTHER:APPLY": [1, 0], "ANNOTATE": [1, 0], "(unmapped: R29)": [0, 1]},
+   "same_op_opposite_pairs": 0, "matches_diag": true},
+  "pre_merge_with_mapping": {"total": 26, "positive": 24, "negative": 2, "extra": "R07 CLASSIFY +, R06 PREPARE-ISSUE - (ACT_WITHDRAWN)", "same_op_opposite_pairs": 1, "pair": "R05~R06 PREPARE-ISSUE; differs on target, v1_a, v1_k; R06 actor unknown -> neither POSSIBLE nor STRICT"},
+  "coding_sensitivity": "R03 coded ACT_REFUSED of ADOPT (flagged uncertain by the 1ax reviewer) would give R02~R03 as POSSIBLE for target (actor, v1_a, v1_s, v1_r equal).",
+  "conclusion": "'No same-operation opposite-polarity pair' holds only after the R06/R07 merge. It is a merge artifact descriptively, though it does not change the verdicts."
+ },
+ "norm_possible_pairs": {
+  "n": 14,
+  "start_execution": {"positive": ["R04", "R13", "R32", "R34", "R36"], "negative": ["R10", "R12", "R14", "R31", "R33"], "pairs": 25, "matches_diag": true, "lost_positive": "R05 (about_operation UNMAPPABLE)"},
+  "list": ["R10~R13", "R10~R32", "R10~R34", "R12~R13", "R12~R32", "R12~R34", "R13~R14", "R13~R31", "R13~R33", "R14~R32", "R14~R34", "R31~R34", "R31~R36", "R32~R33"],
+  "not_in_output_due_to_truncation": ["R31~R36", "R32~R33"],
+  "composite_target_artifacts": ["R14~R32", "R14~R34"],
+  "within_ruling_pairs": ["R13~R14 (R-47)", "R32~R33 (R-58)"],
+  "blocking_unknowns": {
+   "all_14": ["v1_e", "v1_x", "v1_h", "v1_c"],
+   "R10~R13, R10~R32, R10~R34": [],
+   "R12~R13, R12~R32, R12~R34": ["about_actor(R12)"],
+   "R13~R14, R14~R32, R14~R34": ["about_actor(R14)"],
+   "R13~R33, R32~R33": ["about_actor(R33)"],
+   "R13~R31, R31~R34, R31~R36": ["about_actor(R31)", "stated_by(R31)"]
+  },
+  "fillable_from_sources": {
+   "v1_e/x/h/c": "No. They are v1-coded, v1 is frozen, and they are likely inapplicable to execution norms ('n/a' is UNKNOWN). They need an instrument change (drop structurally inapplicable fields), not filling.",
+   "about_actor R14, R33": "Not as SOURCE_FACT from the span. Only as in-section INFERENCE (R-47 'execution responsibility transfers to engineering'; R-58 sibling span 'Engineering is authorized to begin…'), the same grade already accepted for R10/R13.",
+   "about_actor R12, R31; stated_by R31": "Not feasible from the quoted material (R-79 directive names no actor; the R-56 note's author is unnamed). Filling R31 stated_by=ARB would eliminate R31~R36.",
+   "overall": "The A' blockers are partly fillable at INFERENCE grade. The STRICT-blockers (v1_e/x/h/c) are not fillable."
+  }
+ },
+ "interpretation": {
+  "act_nonidentifiable": "PARTLY. 'Not falsified' is correct; the claim is vacuous because STRICT is unreachable. 'Non-identifiable in this corpus' is overstated: it holds under this coding/instrument. The only same-op negative (R06) was deleted by the merge. The 1ayn rule makes negative operations UNMAPPABLE (R29). A' R-A2/R-A3 plus coder choices (R01, R03, R26, R27, R29) converted most v1 REFUSED outcomes (18 of 36 v1 events, many norm-level) into ACT_OCCURRED of other operations.",
+  "norm_target_possible": "PARTLY. POSSIBLE is correct in the instrument's sense, but at most 12 of 14 are genuine (composite artifacts R14~R32, R14~R34), records recur, and cross-section pairs are confounded with time/authorizing ruling. 'Not strict' is by construction, not a finding. The same-target flips R31~R32 and R33~R34 show that target alone does not index polarity.",
+  "hidden_by_defect": [
+   {"defect": "STRICT requires all other fields known, while v1_h/v1_c are each known on one record and v1_e/v1_x are UNK on all START events", "class": "formal reasoning", "effect": "No STRICT is possible for any variable in r1-r3; 4 disjoint target pairs would exist otherwise."},
+   {"defect": "Lineage level mismatch: NORM records whose v1 event is the norm-making act (R04) carry act-level v1_a/v1_r", "class": "coding", "effect": "Hides R04 × 5 target pairs."},
+   {"defect": "v1 values not normalized (AUTHORITY vs DECISION-AUTHORITY, PO/ARB)", "class": "coding", "effect": "Spurious v1 differences, e.g. in R02~R06 / R05~R06-type ACT pairs."},
+   {"defect": "R06/R07 merge rule excludes a record when polarities differ", "class": "formal reasoning", "effect": "Deletes the only ACT_WITHDRAWN and the only same-op ACT contrast (R05~R06)."},
+   {"defect": "1ayn reviewer maps the operation of non-occurred/refused acts to UNMAPPABLE (R29)", "class": "coding", "effect": "Systematically removes ACT negatives from pairing."},
+   {"defect": "ACT coding choices (R03 HOLD vs refused ADOPT; R01)", "class": "source interpretation", "effect": "Could hide an R02~R03 ADOPT target contrast."},
+   {"defect": "about_actor NOT_EVIDENCED on R14, R33 despite in-section premises", "class": "evidence scope", "effect": "Blocks the two within-ruling pairs from being A'-complete."},
+   {"defect": "possible_pairs truncated to 12", "class": "wording", "effect": "Hides R32~R33 (the best within-ruling pair) and R31~R36 from readers."},
+   {"defect": "Time / authorizing act not a compared field; composite targets not expanded", "class": "formal reasoning", "effect": "Does not hide STRICT but inflates and confounds POSSIBLE (listed for completeness)."}
+  ]
+ },
+ "establishes": [
+  "r1-r3 are correctly composed; r2/r3 change only what they declare, apart from the listed undeclared side effects.",
+  "Under A' coding and 1ay-n normalization the ACT dataset is 23+/1-, so act-level guard contrasts cannot be tested on it.",
+  "NORM START-EXECUTION has 5+/5- and up to 12 genuine same-operation, same-actor/stated_by, opposite-polarity pairs that differ in target; 2 of them lie within a single ruling (R13~R14, R32~R33).",
+  "The same target flips polarity across successive rulings with all coded fields equal (R31→R32, R33→R34)."
+ ],
+ "does_not_establish": [
+  "Any STRICT witness or EMPIRICALLY-SUPPORTED/WEAK verdict, or its absence as evidence: STRICT is unreachable by construction.",
+  "That act-level guards are absent or non-identifiable in the corpus (as opposed to this coding and merge).",
+  "Independence beyond 1-2 clusters for the target pairs.",
+  "Any discrimination between rule-making and broad-governance hypotheses: both predict target-specific authorizations; stated_by has 0 POSSIBLE pairs; the discriminating signal (polarity changed by an intervening act/ruling) is not a variable.",
+  "Anything resting on v1 fields beyond V1-CODED weight."
+ ],
+ "disagreements": [
+  {"claim": "r1-r3 give no STRICT witness (presented as a result)", "position": "It is forced by v1_h/v1_c/v1_e/v1_x unknowns and carries no evidential weight.", "class": "formal reasoning"},
+  {"claim": "ACT: no same-operation opposite-polarity pair", "position": "Holds only after the R06/R07 merge; pre-merge PREPARE-ISSUE is [1,1].", "class": "coding"},
+  {"claim": "Act-level guards are NON-IDENTIFIABLE in this corpus", "position": "Only under this coding/instrument; the negatives were removed by the merge, the UNMAPPABLE rule and R-A2 choices.", "class": "evidence scope"},
+  {"claim": "r3 fixes specified from the diagnostic, not from any verdict", "position": "The diagnostic is verdict-proximal and the fixes move toward the sealed expectation; label r3 exploratory.", "class": "independence"},
+  {"claim": "14 POSSIBLE pairs for NORM target", "position": "At most 12 are genuine: the R14 composite target is not expanded, although the 1ayn reviewer made expansion a condition.", "class": "coding"},
+  {"claim": "r2 instrument logic unchanged; reviewer corrections from 1ax applied (PREREG / RESULT-NOTE)", "position": "The mapping silently overwrites 1ax corrections (R04 about_actor becomes KNOWN).", "class": "coding"},
+  {"claim": "r1: unparseable corrections are REPORTED, never applied", "position": "7 'norm.status (…)' entries are applied to junk keys and listed as applied.", "class": "wording"},
+  {"claim": "1ayn review: non-occurred acts get operation UNMAPPABLE (R29, R31, R22)", "position": "This conflates polarity with operation, which the instrument carries separately; it biases ACT against negatives.", "class": "formal reasoning"},
+  {"claim": "Schema §1 requires merging R06/R07", "position": "§1 is internally ambiguous ((span, operation, target) uniqueness allows two records); the chosen merge rule discards both acts.", "class": "formal reasoning"},
+  {"claim": "F1: A' target and v1_t denote the same concept", "position": "True for START events, not for R04/R05 ('own-slice'); v1_a has the same duplicate status and was not dropped.", "class": "coding"},
+  {"claim": "NORM target-indexing", "position": "Cross-section pairs are confounded with time/ruling; the same-target flips show that target does not index polarity by itself.", "class": "substantive"}
+ ]
+}

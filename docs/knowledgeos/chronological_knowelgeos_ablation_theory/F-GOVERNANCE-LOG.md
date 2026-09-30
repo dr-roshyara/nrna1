@@ -2107,3 +2107,11 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Freeze | `8804e4ee9` |
 | Records | `analysis/theory/LOOP-1AW/` |
 | Next | a human decision: A′ vs B′ (evidence now favours A′); new execution evidence needed for any act-level guard |
+
+## F-LOG-0171 — 1ax (A′ coding, 0 rule violations) + 1ay-n (normalization) + 1ay r1–r3: **no strict witness, but non-evidential**. STRICT is unreachable by construction (structurally inapplicable v1 fields); the pipeline removed the ACT negatives (a merge; UNMAPPABLE conflating polarity with operation); r3 is exploratory. **Established descriptively:** ACT 23+/1− (untestable as coded); NORM START 5+/5−, ≤ 12 genuine target pairs confounded with time; **the same target flips polarity across successive rulings** → the information is in **norm dynamics (polarity changed by an intervening act)**, not in static pair contrasts. The strict pair-witness method is **inadequate for this corpus**
+
+| Field | Value |
+|---|---|
+| Freezes | `a1025894a` (A′ + 1ax) · `8cd1048b8` (1ay) · `5ae27773d` · `204e96195` (r2) · `2c37510f8` (r3) · `9897ae90e` |
+| Records | `analysis/theory/SEMOBS-R2`, `LOOP-1AX`, `LOOP-1AYN`, `LOOP-1AY` |
+| Next | 1az: H-D vs H-B identifiability on norm-dynamics sequences |
