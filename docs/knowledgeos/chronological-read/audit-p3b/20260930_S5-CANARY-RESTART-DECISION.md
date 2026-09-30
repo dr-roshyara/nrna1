@@ -18,7 +18,13 @@
 | R-2 | **F-3 line counts.** Every input line in a prompt states its harness line count (N = bytes.count("\n") + 1, as measured on the harness), plus "Stop paging at the stated line count" | orchestrator tool (prompt facts, no rule) | implemented tests-first; the count rule was verified independently on the harness (a 4-line and a 3-line file); committed |
 | R-3 | **F-2 addendum status text (v2.8.1).** Replace the stale line "**Not frozen, not implemented, not activated.** S5 execution, dispatch and corpus reading are **NOT AUTHORIZED**." and the stale "NOT ACTIVATED" in the status sentence with: "**Activated (G-LOG-0102); bound as v2.8 (G-LOG-0106).** Execution is governed only by the recorded human acts (G-LOG-0107 onward); this status line authorizes nothing by itself." No rule text changes | contract text → one rebind (EG-4 procedure) | proposed |
 | R-4 | **OB0012 attempt 2.** `retire OB0012 --cause-class X`, then `state new-attempt`, then the unchanged runbook in the fresh session. It is within the pre-registered policy (class X, attempt 2 of M = 4, repairs admissible at the canary gate, RR-6). After that, OB0114 attempt 1 | runbook | ready |
-| R-5 | **The 5 stray READ-LOG files** that the misrouted reader wrote into the ansible repository (`docs/knowledgeos/…/READ-LOG.jsonl`, untracked; copies preserved in the witness archive): remove them, or authorize the orchestrator to remove them | housekeeping in another repository | human choice |
+
+## Outside this decision: repository hygiene (separate authorization)
+
+**R-5.** The misrouted reader (F-1b) wrote 5 refusal logs into the unrelated ansible repository (`docs/knowledgeos/chronological-read/ledger-p3b-r2/OB0012-R7-L0{1..5}/READ-LOG.jsonl`, untracked).
+- The evidence is already preserved in `~/knowledgeos-witness-archive/OB0012/misrouted-reader-logs/`.
+- Their removal is **not a condition of the S5 restart**. It is decoupled from this decision, on review advice of 2026-09-30.
+- They are removed only by the human, or by the orchestrator on a separate, explicit instruction.
 
 ## Considered and not proposed now
 - **Making the reader resolve its root from its own file location.** That would change the audited reader. R-1 closes the failure operationally without touching it. Proposed only if R-1 proves insufficient.
@@ -34,3 +40,5 @@
 3. It retires OB0012 attempt 1 and records the new attempt.
 4. **The human starts a fresh Claude Code session in** `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1`, with the instruction "execute audit-p3b/20260930_S5-CANARY-OPERATOR-BRIEF.md".
 5. That session runs OB0012 attempt 2 and OB0114 attempt 1 under the frozen stop rule, and stops at canary evaluation.
+
+**Not covered by this approval:** any S5 batch beyond the canary. The full S5 measurement needs a separate human act after the canary evaluation.
