@@ -1,0 +1,24 @@
+{
+ "c1_non_conformance": {
+  "verdict": "NON-CONFORMS",
+  "confidence": "moderate",
+  "basis": "Text alone suffices, and the conclusion holds whatever the decision times were. R-72 (dated 2026-08-02) authorizes WP-4B only 'provided ... no unresolved governance blockers remain'. The proviso was unmet at 16:10: R-77 says 'WP-4B REMAINS BLOCKED ... IT DOES NOT GIVE `ContestedOutcomeRef` AN INBOUND PATH', which describes a continuing condition, and R-75's path 'remains prohibited by ADR-UL-01, ADR-PL-01...'. No permitting text precedes R-86 (dated 2026-08-04; R-81..R-85 are governing only via R-86, 'effective immediately'). The commit concedes 'the two Board acts are outstanding'. R-79's sequence and R-80's 'conflation' are corroboration only. R-79 is a WP-8 directive, and R-80's timing relative to the commit is unknown.",
+  "alternative": "R-72 names exactly what stands 'between this ruling and a drawable RED boundary' (three ARB decisions and one scope ruling) and says 'when they land, engineering proceeds RED'. R-73..R-76 had landed (R-77: 'R-73–R-76 stand'). R-78 reframes the remaining transport question as an 'IMPLEMENTATION-DELIVERY' question rather than a governance blocker. The RED is producer-agnostic. R-86 says promotion/allocation 'bear on the production producer path ... not on batch 7's execution'. R-86 'resume implementation' and 'Batch 7' imply that earlier WP-4B batches were treated as legitimate, and R-87 accepted WP-4B without flagging the start. On this reading the verdict is CONFORMS for RED, or UNDETERMINED because the texts of R-73..R-75 are missing. It is rejected because R-77 blocks 'WP-4B', not 'GREEN', and R-78 'decides no transport ... and no implementation'."
+ },
+ "c2": {
+  "verdict": "CONFORMS",
+  "confidence": "moderate-high (qualified)",
+  "basis": "The gate is R-72: 'Each is to be authorized from IMPLEMENTATION EVIDENCE rather than roadmap intent, after its predecessor is accepted'. The text orders R-87 before R-88 before R-89: R-88 cites 'Per R-86 and R-87'; R-89 cites '(R-88)' and 'R-88's adoption was a SINGLE ACT'. The timeline corroborates this. R-89 relies on code-level evidence (existing classes, hydrator precedent), not on roadmap intent. R-89 is 'PREPARED, NOT ADOPTED' and carries no adoption annotation, so it is not in force. It conforms as drafted, and any later adoption would also come after R-87.",
+  "alternative": "Strict reading of 'IMPLEMENTATION EVIDENCE': R-72's grounds refer to evidence produced by '4B's implementation'. R-89 cites a readiness review, a grep and WP-2/WP-6 precedents, and nothing produced by WP-4B's implementation. On that reading the evidence limb is unshown, giving UNDETERMINED or NON-CONFORMS. A further coding alternative: 'not applicable', because an act not in force authorizes nothing."
+ },
+ "timeline_lesson": [
+  "C1: the answer states 'A ruling cannot be recorded before it is decided, so recording time is an upper bound on decision time'. The register contradicts this: R-88 and R-89 were written while PREPARED, NOT ADOPTED, and adoption and scope annotations came later. Recording time bounds drafting, not entry into force. ANSWER.md ambiguity 4 only half-concedes this.",
+  "C1: the timeline was used to place R-77 and R-79 before 16:10 when the text already made the verdict robust to decision times (R-72's conditional from 08-02; 'REMAINS BLOCKED' as a continuing state; the first permitting text is dated 08-04; the commit's own admission). order_basis 'MIXED' understates what the text supports. TEXT with timeline corroboration would be more accurate.",
+  "C1: 'any Board act between 15:47 and 16:10 that was never recorded' sets the window for unseen acts by R-79's recording time. The real gap is any act decided before 16:10 and absent from SOURCES, including R-80, which has no timeline entry.",
+  "C2: no misuse. The timeline is used only as corroboration of an order established by the text."
+ ],
+ "bearing": {
+  "c1": "AGAINST, weak: one case, one episode, and the verdict rests on a contested reading of the proviso. The violation is limited to disclosed RED test code, with no production code written. I agree with the answer, but the strength should be discounted for the contested reading.",
+  "c2": "NEITHER: R-89 is a governance act, not work, and it is not in force. At most it is weak evidence that governance sequencing was respected, which is a different claim from work conformance. I agree with the answer."
+ }
+}

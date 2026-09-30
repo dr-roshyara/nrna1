@@ -1,0 +1,273 @@
+{
+ "predictions_reviewed": [
+  {
+   "id": "P1",
+   "answer_status": "NON-IDENTIFIABLE",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "I agree with the label, but the answer gives the weaker reason. It relies on selection: the register records decisions. There are two stronger reasons. (a) Every observed change starts from no authorization and ends in an authorization, and creating an authorization needs an authorizing act on either hypothesis (SQ6). (b) Under R-A3 the act and the after-state are the same record (AC1). There is also the hypothesis reading. If H-B's 'in response to work' can mean acts that work triggers, H-B predicts exactly what H-D predicts, and P1 cannot discriminate even in principle. The only place in the corpus where a change without an act could appear is the contingent authorization in R-72 becoming operative. That transition is not observed (SQ4)."
+  },
+  {
+   "id": "P2",
+   "answer_status": "CONFOUNDED",
+   "status": "CONFOUNDED (a candidate anomaly against H-B, n=1)",
+   "favours": "neither; weakly against H-B if the confound resolves toward non-conformance",
+   "reason": "This is a one-sided test. H-D makes no prediction, so only H-B is at risk. The answer overstates the timing confound (SQ5): R-77 ('REMAINS BLOCKED', after 'R-73–R-76 stand') and R-79 (RED only after the two Board acts, which were still OPEN on 08-04) make it likely that the norm in force at R11 was 'blocked'. What remains confounded is (i) whether RED tests that leave producers 'deliberately unnamed' fall under what is blocked, and (ii) the unobserved acts R-76, R-78 and R-80. The answer also leaves out execution-side observations from the source text: R-94 'Executed at IMPLEMENTATION_PROGRESS.md:58' (a Chief disposition carried out with no adoption by the Decision Authority), R-86 'engineering waiting solely on a constitutional act' (which reads as conformance), and S0804 'Nothing implemented this turn by the review's own instruction' (also conformance). None of these is coded as an execution record."
+  },
+  {
+   "id": "P3",
+   "answer_status": "PARTIALLY IDENTIFIED",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "The answer itself says the observed feedback 'does not discriminate, because H-D accommodates acts that cite evidence'. A prediction on which the two hypotheses are observationally equivalent is NON-IDENTIFIABLE. Calling it PARTIALLY IDENTIFIED is a labelling error. The answer also misses more act-mediated feedback cases: R-41, where the WP-1 closure inconsistency leads to ES-004.3 and 'first checklist execution ... caught a second instance ... annotated', and S0815, where O-CLOSURE-VOCAB leads to the 'BINDING VOCABULARY RULING' and then 'Applied immediately'. These add to the count but do not change the verdict."
+  },
+  {
+   "id": "P4",
+   "answer_status": "PARTIALLY IDENTIFIED",
+   "status": "NON-IDENTIFIABLE (as a discriminator); H-D's clause is corroborated, n=2, by self-report",
+   "favours": "neither",
+   "reason": "H-B does not deny status mediation, so observing it cannot tell the hypotheses apart. The answer admits this and still gives the label PARTIALLY IDENTIFIED. The count is 2 (E1 and E3), not 1. In both, force is 'observed' only through declarations inside the norm-making acts ('These become governing rulings effective immediately'). That is the same kind of evidence the answer rejects for P1, where it says R-77's clause 'shows the actors endorse H-D's rule. It does not show that the rule holds' (CI2). R-89 remains an unresolved possible falsifier of H-D."
+  },
+  {
+   "id": "P5",
+   "answer_status": "PARTIALLY IDENTIFIED",
+   "status": "NON-IDENTIFIABLE (as a discriminator)",
+   "favours": "neither",
+   "reason": "H-B is silent, so P5 cannot discriminate. The same labelling error applies as for P4. R-94 remains open as a candidate falsifier of H-D. But the domain itself offers a reading under which R-94 is no exception: the Decision Authority held that operational acceptance is not a constitutional decision (R-90). That points to a scope question, not a capability breach."
+  },
+  {
+   "id": "P6",
+   "answer_status": "CONFOUNDED",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "The answer says the result depends on where the record's boundary is drawn. It does not. H-B predicts that the record carries OR references work, and even the narrowest boundary (register rows only) references and reports work: 'Executed at IMPLEMENTATION_PROGRESS.md:58', 'Container resolution executed and reproduced', the grep in R-83, 'first checklist execution the same day caught a second instance'. So H-B's prediction is met at every boundary. H-D says work 'need not' be in the record, which permits its presence. The two are observationally equivalent on what is present. The answer's line 'draw the boundary at the register and it matches H-D's self-description' is wrong (LP1)."
+  },
+  {
+   "id": "P7",
+   "answer_status": "INSUFFICIENT EVIDENCE",
+   "status": "CONFOUNDED (with the R-89 status question); on act versus no act it reduces to P1",
+   "favours": "neither",
+   "reason": "The answer says 'nothing is observed about whether WP-4B was accepted' by R-89. That is too strong. There is positive indirect evidence, not merely an absence. The same day, R-86 authorizes batch-7 execution, and acceptance comes after RED → GREEN → VERIFY (R-72, R-79). R-89 itself says '§WP-4 remains OPEN'. So R-89 very probably authorized WP-4C-1 before WP-4B was accepted, against R-72's gate (INFERENCE, strongly supported). Whether that counts against H-B depends on whether R-89 ever took force. It is PREPARED, yet the Decision Authority says 'R-89 already governs authorization'. That is the confound."
+  },
+  {
+   "id": "P8",
+   "answer_status": "NON-IDENTIFIABLE",
+   "status": "NON-IDENTIFIABLE",
+   "favours": "neither",
+   "reason": "I agree with the label. But the answer says 'the corpus ends on 2026-08-04', which is false: S0815 is a session log dated 2026-08-15. The absence of any later R-91 remediation is still a limitation of the corpus, but the window is misstated. S0815 contains further failure-and-remediation pairs that the answer does not use: O-CLOSURE-VOCAB is found and 'Recommended as its own work item', 'E-2 is CORRECTED (seq 18)', and a forbidden headline is 'corrected, not defended'. All of these go through an act, so they fit both hypotheses."
+  }
+ ],
+ "discriminating_observation_types": {
+  "identified": [],
+  "favours": "neither",
+  "overall": "No prediction is IDENTIFIED on this corpus, and neither hypothesis is favoured. The reason is structural. H-D makes no prediction about work (P2, P3, P6), and H-B, read as allowing acts triggered by work, is compatible with every act-based claim of H-D (P1, P4, P5, P8). So the hypotheses come close to being nested, and only two kinds of observation could separate them: (i) a verified norm change with no act, which would falsify H-D's 'only'; or (ii) verified non-conformance, or verified absence of feedback, which would count against H-B. The corpus has no case of (i). It has candidates for (ii): R11 against R-72, R-77 and R-79, and R-89 against R-72's acceptance gate. Both are confounded, the first by what the block covers and by unobserved acts, the second by R-89's PREPARED status. Neither is resolved. The answer reaches the same bottom line, but it rates P3, P4 and P5 too high and P2 and P7 too low."
+ },
+ "draft_min_evidence": [
+  {
+   "prediction": "P1",
+   "target_hypothesis": "H-D ('only through acts')",
+   "required_observation": {
+    "fields": [
+     "target",
+     "norm_state_before (deontic, timestamp)",
+     "norm_state_after (deontic, timestamp)",
+     "complete act log for that target over the interval (all acts by all actors, including unregistered ones), each with actor and timestamp",
+     "work events in the interval (execution/acceptance/failure, timestamp)",
+     "the source that attests the after-state"
+    ],
+    "key": "the after-state must be attested by a source other than the register, e.g. a queue, CONTEXT.md, or work plan, so that a change without an act could show up at all"
+   },
+   "min_independent_episodes": 1,
+   "min_note": "One verified act-less change falsifies H-D's universal 'only'. At least 3 are needed to support H-B's positive claim that work triggers changes.",
+   "independence_requirement": "different targets and different conditional norms. Not two readings of one proviso, and not rows from the same ruling batch.",
+   "falsifier_HD": "A polarity change on a target, with a complete act log for the interval showing no norm-making act, where the change follows a work event (for example a gate like R-79's '§WP-4 CLOSES BY ACCEPTANCE · THEN WP-8 is authorized' treated as authorized with no act).",
+   "falsifier_HB": "Across ≥3 independent conditional norms whose work condition was verifiably met, the norm state does not change until a separate act occurs, and actors act on the unchanged state. This falsifies H-B's 'in response to work' as a mechanism distinct from acts."
+  },
+  {
+   "prediction": "P2",
+   "target_hypothesis": "H-B (conformance)",
+   "required_observation": {
+    "fields": [
+     "execution event (target, actor, timestamp with time of day)",
+     "full text and timestamps of every act on that target up to the event (for the existing case: R-73, R-74, R-75, R-76, R-77 with time of day)",
+     "whether the operation performed (e.g. RED test commit) falls under the governed operation ('implementation', 'RED')"
+    ]
+   },
+   "min_independent_episodes": 1,
+   "min_note": "The cheapest discriminating step is to resolve R11: obtain R-73..R-76 and the time of R-77. For a pattern rather than a single case, ≥3 execution events on different targets.",
+   "independence_requirement": "different work packages and different authorizing rulings, and each execution event must be a separate commit or session, not successive commits of one batch",
+   "falsifier_HD": "None from P2 alone. H-D makes no conformance prediction. H-D is strained only if norm states cannot be read without execution records (see P6).",
+   "falsifier_HB": "An execution event on a target whose norm in force at that moment, fully determined, is PROHIBITED or UNAUTHORIZED, with no later sanction or remediation. For example, R11 if R-73..R-76 did not satisfy R-72's proviso and R-77 preceded 16:10 on 2026-08-03."
+  },
+  {
+   "prediction": "P3",
+   "target_hypothesis": "H-B (feedback)",
+   "required_observation": {
+    "fields": [
+     "work outcome record (id, type: acceptance evidence / failure / completion, timestamp)",
+     "subsequent norm change (act id, timestamp, target)",
+     "the act's cited grounds, including an explicit reference to the outcome id",
+     "control: norm changes on comparable targets where no outcome occurred"
+    ]
+   },
+   "min_independent_episodes": 2,
+   "min_note": "At least one acceptance-after-evidence and one remediation-after-failure, each linked by explicit citation from an execution record to a norm-change act.",
+   "independence_requirement": "different work packages, different outcomes, and different deciding acts, not the R-81..R-85 batch counted per ruling",
+   "falsifier_HD": "A norm change whose only recorded proximate cause is a work outcome, with no act (this overlaps with P1).",
+   "falsifier_HB": "In ≥3 independent cases norm changes contradict available outcomes, for example a successor authorized before the predecessor is accepted, or no remediation after a verified failure while the target stays active. Actors must treat these as normal, not as defects."
+  },
+  {
+   "prediction": "P4",
+   "target_hypothesis": "H-D (status mediation)",
+   "required_observation": {
+    "fields": [
+     "making act id",
+     "status sequence with timestamps (issued/prepared, adopted/withdrawn/held)",
+     "adopting actor",
+     "force indicators between the status changes: work executed under it, other acts citing it as authority"
+    ],
+    "specific": "the adoption record (or its absence) for R-89, plus R-87 and R-88 text"
+   },
+   "min_independent_episodes": 3,
+   "min_note": "Three different decisions. Rulings adopted together in one act count as one. The first to obtain is the resolution of R-89.",
+   "independence_requirement": "different adoption acts and different issuers or dates. Not several rulings covered by one adoption such as R-86.",
+   "falsifier_HD": "A ruling that stays PREPARED, with a complete adoption log showing no adoption, yet is cited as governing authority or has work executed under it (R-89 is the candidate).",
+   "falsifier_HB": "None. H-B makes no status-mediation prediction."
+  },
+  {
+   "prediction": "P5",
+   "target_hypothesis": "H-D (capability)",
+   "required_observation": {
+    "fields": [
+     "capability register (who may adopt, authorize, or dispose, by norm type)",
+     "acts by actors outside that capability",
+     "the effect of those acts on force"
+    ],
+    "specific": "whether R-94-type delivery dispositions need Decision Authority adoption"
+   },
+   "min_independent_episodes": 1,
+   "min_note": "One verified effective act by a non-capable actor falsifies H-D's clause.",
+   "independence_requirement": "different acts, not repetitions of one delegation",
+   "falsifier_HD": "A norm made effective by an actor without the capability, where the capability register confirms that actor lacked it (R-94 would qualify if dispositions need adoption).",
+   "falsifier_HB": "None (H-B is silent)."
+  },
+  {
+   "prediction": "P6",
+   "target_hypothesis": "both",
+   "required_observation": {
+    "fields": [
+     "a fixed, a-priori definition of 'the governance record' (for example the complete register R-1..R-94)",
+     "census of its entries: norm-making act, execution record, or reference to work",
+     "for each norm row, whether its meaning or force can be settled without consulting a work artefact"
+    ]
+   },
+   "min_independent_episodes": 1,
+   "min_note": "One full census of a record whose boundary is fixed in advance, rather than a selected sample of 36 spans.",
+   "independence_requirement": "the boundary must be fixed before looking at the content",
+   "falsifier_HD": "Norm rows whose force cannot be determined without work records. For example, acceptance-conditioned norms like R-70 ('Acceptance requires ... GREEN') whose state changes only in work artefacts.",
+   "falsifier_HB": "A complete, fixed-boundary governance record that neither contains nor references any governed work, while the norms still function."
+  },
+  {
+   "prediction": "P7",
+   "target_hypothesis": "H-B (outcome-gated authorization)",
+   "required_observation": {
+    "fields": [
+     "WP-4B acceptance record (act, timestamp) or evidence of its absence as of 2026-08-04",
+     "R-89 issue time",
+     "R-87 and R-88 text"
+    ]
+   },
+   "min_independent_episodes": 2,
+   "min_note": "Two successor authorizations, each with its predecessor's acceptance timestamp known.",
+   "independence_requirement": "different predecessor–successor pairs",
+   "falsifier_HD": "Successor authorization treated as effective because the predecessor was accepted, with no authorizing act.",
+   "falsifier_HB": "Successor authorized, and work begun, before the predecessor's acceptance, with the gate in force and no waiver act."
+  },
+  {
+   "prediction": "P8",
+   "target_hypothesis": "H-B (remediation after failure)",
+   "required_observation": {
+    "fields": [
+     "verified failure/deviation record (id, timestamp)",
+     "follow-up window of fixed length",
+     "any remediation authorization or execution in that window and whether it cites the failure"
+    ],
+    "specific": "records after 2026-08-04 on the R-91 deviation (the Constitutional Review and any execution-governance repair authorization)"
+   },
+   "min_independent_episodes": 2,
+   "min_note": "Two independent failures, each followed over a stated window.",
+   "independence_requirement": "different failures on different targets",
+   "falsifier_HD": "A remediation that takes effect with no authorizing act (this overlaps with P1).",
+   "falsifier_HB": "Verified failures on active targets that get no remediation norm within the window and are not deliberately deferred with a trigger."
+  }
+ ],
+ "critique_of_draft": {
+  "overall": "The specifications are useful, and they name the right missing records (R-73..R-80 text, R-87/R-88, R-89's adoption status). Four of them fail the test of sufficient and minimal. (1) The P4 and P5 specifications cannot discriminate, because H-B has no falsifier; asking for 3 episodes only corroborates H-D. (2) The H-D falsifier for P1 requires a 'complete act log ... including unregistered ones', and absence of an unregistered act can never be shown. (3) Several H-B falsifiers have no time window ('no later sanction') or rely on attitudes ('actors must treat these as normal'). (4) Episode minimums of 3 are set without a stated reason.",
+  "items": [
+   {
+    "prediction": "P1",
+    "class": "formal reasoning",
+    "sufficient": "only under reading 1 of H-B",
+    "minimal": "1 episode for H-D is right; H-B's '≥3' is arbitrary",
+    "untestable_falsifier": "falsifier_HD: 'complete act log ... including unregistered ones' cannot be verified",
+    "fix": "Use a closed-world capability register: all actors able to act on the target, with every act of theirs logged (R-86 names the Decision Authority as the only adopter). The after-state must be attested outside the register and acted on by engineering. First fix which reading of 'in response to work' is meant. Under reading 2, H-B has no P1 falsifier."
+   },
+   {
+    "prediction": "P2",
+    "class": "evidence scope",
+    "sufficient": "yes, if the text of R-76, R-78 and R-80 is added, plus times of day for R-77 and R-79, plus a ruling on whether RED tests with unnamed producers count as 'implementation' under R-72 and R-77",
+    "minimal": "1 episode (R11) suffices to settle the case",
+    "untestable_falsifier": "falsifier_HB 'with no later sanction or remediation' has no time window",
+    "fix": "Set a follow-up window, as the answer does for P8. Also code R-94 and the R-86 'waiting' statement as execution or non-execution observations."
+   },
+   {
+    "prediction": "P3",
+    "class": "formal reasoning",
+    "sufficient": "no. Any feedback through an act fits H-D, so the specification cannot discriminate unless it requires feedback without an act, which is P1 again",
+    "minimal": "n/a",
+    "untestable_falsifier": "falsifier_HB 'Actors must treat these as normal' is attitudinal",
+    "fix": "Merge the discriminating part into P1, or define H-B's feedback so that it excludes act mediation."
+   },
+   {
+    "prediction": "P4",
+    "class": "formal reasoning",
+    "sufficient": "no. H-B has no falsifier, so no number of episodes discriminates",
+    "minimal": "for falsifying H-D, 1 counterexample suffices; the '3' serves only to corroborate",
+    "untestable_falsifier": "falsifier_HD 'cited as governing' is ambiguous. A citation by the adopting authority itself, such as the Decision Authority's 'R-89 already governs authorization', may itself be the adoption",
+    "fix": "Require the citation to come from an actor other than the adopting authority, or require work executed under the ruling. Record separately that P4 is a test of H-D only."
+   },
+   {
+    "prediction": "P5",
+    "class": "formal reasoning",
+    "sufficient": "no (H-B is silent)",
+    "minimal": "1 episode for H-D is right",
+    "untestable_falsifier": "none",
+    "fix": "Add a norm-type classification (constitutional or operational, per R-90's withdrawal) so that R-94 can be resolved."
+   },
+   {
+    "prediction": "P6",
+    "class": "formal reasoning",
+    "sufficient": "no. The census has already been answered in H-B's favour at every boundary, and H-D permits that result",
+    "minimal": "n/a",
+    "untestable_falsifier": "falsifier_HB 'while the norms still function' cannot be observed without observations of work",
+    "fix": "Drop P6 as a discriminator."
+   },
+   {
+    "prediction": "P7",
+    "class": "formal reasoning",
+    "sufficient": "only after R-89's status is resolved",
+    "minimal": "the request for 2 pairs is fine",
+    "untestable_falsifier": "none",
+    "fix": "Put R-89's adoption record or DA statement and the WP-4B acceptance timestamp first. Record separately that the act-versus-no-act question here is P1."
+   },
+   {
+    "prediction": "P8",
+    "class": "wording",
+    "sufficient": "yes (it has a window)",
+    "minimal": "yes",
+    "untestable_falsifier": "none",
+    "fix": "Correct the corpus end date to 2026-08-15."
+   }
+  ]
+ }
+}
