@@ -1,0 +1,53 @@
+{
+  "verbatim_failures": [
+    {"kind": "character (strict reading only; zero under A's declared marker-stripping convention)", "events": [3, 6, 7, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 27, 36], "note": "Emphasis markers ** or * sit inside these spans in SOURCES.md; each span matches exactly once markers are stripped. Disclosed by A."},
+    {"kind": "heading", "events": [15, 16, 17, 18, 19, 20, 21], "stated": "## R-36 promotion matrix (adopted by R-36): ...", "actual_nearest": "## Deliverable 1 — Promotion Matrix (inside that excerpt)"},
+    {"kind": "heading", "events": [22], "stated": "## S0815-L483: session log 2026-08-15, lines 455-500", "actual_nearest": "## Problems > ### Ninth — PO/ARB ACCEPTED the finalization; ... (inside that excerpt; SOURCES.md line 149 = L493)"}
+  ],
+  "status_disagreements": [
+    {"event": 1, "answer": "ANCHORED", "reviewer": "ANCHORED only on inference; strict reading UNANCHORED as an ADOPT act", "reason": "Span refuses a self-favouring authority reading, not adoption; non-adoption is carried by a rule ('mandate delegated CHAIRING AND PREPARATION, not adoption') and a determination.", "class": "source interpretation"},
+    {"events": [6, 7], "answer": "SHARED / DUAL-SPAN", "reviewer": "DUAL-SPAN correct if SHARED; smallest-span rule permits disjoint sub-spans split at the dash, which would make both ANCHORED", "class": "coding"},
+    {"events": [20, 21], "answer": "ANCHORED (matrix rows)", "reviewer": "ANCHORED holds on matrix rows; anchored to the stated anchor R-36 they share one clause ('... remain Candidates') and would be SHARED / DUAL-SPAN", "class": "coding / evidence scope"},
+    {"event": 24, "answer": "UNANCHORED", "reviewer": "UNANCHORED retained; live alternative anchor '## R-90: Issued as R-90; the collision is recorded rather than silently renumbered.'", "class": "source interpretation"},
+    {"events": [29, 30], "answer": "both ANCHORED to separate spans", "reviewer": "29's span is a ground not an act; the act sentence 'Of the three engineering-presented outcomes (retain · annotate · supersede), ANNOTATE is adopted.' carries both (DUAL-SPAN alternative)", "class": "coding"},
+    {"event": 31, "answer": "ANCHORED to recording note", "reviewer": "ANCHORED; better span is the ruling's outcome column 'execution still NOT authorized'", "class": "coding"}
+  ],
+  "distinct_records_reviewer": 36,
+  "unanchored_reviewer": 3,
+  "authority_pairs_reviewer": {
+    "a": {
+      "verdict": "FAILS",
+      "quotes": {
+        "1": "## R-81 (and verbatim ## R-83): \"The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour — that is the one reading no self-issued act may adopt.\"",
+        "1_context": "## R-81: \"the Session-1 mandate delegated CHAIRING AND PREPARATION, not adoption.\" / \"THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION\"",
+        "2": "## R-86: \"Decision Authority confirms and adopts R-81 through R-85 without amendment.\""
+      },
+      "reason": "Distinct spans, but they differ in verb, object, polarity and target naming, not only actor. Member 2 is an attested performed adoption; member 1 is an attested refusal of an interpretation, not of adoption. The Chief's non-adoption is stated only as a rule about who may adopt (plus a determination), never as a refused adoption act.",
+      "strongest_alternative": "WEAK: read with 'BATCH 7 IS RELEASED DOES NOT HOLD', the annotation is the Chief refusing to let its own issuance count as adoption of the same five rulings: a performed refusal contrasted with the DA's performed adoption."
+    },
+    "b": {
+      "verdict": "WEAK",
+      "quotes": {
+        "4": "## R-70: \"WP-7B-R1 AUTHORIZED TO IMPLEMENT — Execution Governance · Authorization · ARB.\"",
+        "5": "## R-89: \"WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — Execution Governance · Authorization · ARB CHIEF (PREPARED).\" and \"PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED.\""
+      },
+      "reason": "Distinct spans, same register template, both attested issued authorizations, actor contrast explicit in-span. But target (WP-7B-R1 vs WP-4C-1) and scope ('PLAN AND') also differ, so not STRICT.",
+      "strongest_alternative": "FAILS: R-89 is PREPARED, NOT ADOPTED and no adoption appears in the sources, so member 5 may not be an effective authorization; three factors vary."
+    }
+  },
+  "disagreements": [
+    {"id": 1, "topic": "Pair (a): A 'no' with both_anchored true; reviewer FAILS (member 1 is rule/determination, not refused ADOPT)", "class": "source interpretation"},
+    {"id": 2, "topic": "Pair (b): A ungraded 'no'; reviewer WEAK", "class": "formal reasoning"},
+    {"id": 3, "topic": "Event 22: A says L493-B uncheckable; excerpt line counts match ranges, so L493 = SOURCES.md line 149, the span's line", "class": "evidence scope"},
+    {"id": 4, "topic": "Heading nesting disclosed for 6/7 but not for 15-22", "class": "wording"},
+    {"id": 5, "topic": "15 spans not literal character-for-character (markers stripped; convention disclosed)", "class": "wording"},
+    {"id": 6, "topic": "description_adds for 26, 27 omit refused polarity (flagged for 14, 25)", "class": "coding"},
+    {"id": 7, "topic": "description_adds for 17, 18 omit AST-013 target absent from rows", "class": "coding"},
+    {"id": 8, "topic": "15-21 anchored to matrix rather than stated anchor R-36", "class": "coding"},
+    {"id": 9, "topic": "6/7 smallest-span split possible", "class": "coding"},
+    {"id": 10, "topic": "29 span is a ground, not an act", "class": "coding"},
+    {"id": 11, "topic": "31 recording-note span preferred over ruling outcome column", "class": "coding"},
+    {"id": 12, "topic": "24 alternative anchor 'Issued as R-90'", "class": "source interpretation"},
+    {"id": 13, "topic": "1 ANCHORED only on inference", "class": "source interpretation"}
+  ]
+}

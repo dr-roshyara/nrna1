@@ -2098,3 +2098,12 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Freezes | `5e1dde247` · `43c4eab4e` · `13539bdf0` |
 | Records | `analysis/theory/LOOP-1AVB/` |
 | Next | a human decision on the schema, now including span-level individuation |
+
+## F-LOG-0170 — 1aw span individuation: 31/36 events anchor to distinct spans (3 unanchored; the REGISTER pair is one dual-span sentence; 36 distinct records). **Authority re-verified at span level: pair (a) FAILS (the Chief's span refuses an interpretation; non-adoption is only a rule), pair (b) WEAK (it also differs in target, scope, status and date) → by the frozen rule, authority NOT DEMONSTRATED. The empirical core on individuated, attested acts is EMPTY.** The norm-level content and the status-mediation structure remain; H-DEONTIC gains weight; A′ is favoured over B′
+
+| Field | Value |
+|---|---|
+| Human act | "E: span individuation first" |
+| Freeze | `8804e4ee9` |
+| Records | `analysis/theory/LOOP-1AW/` |
+| Next | a human decision: A′ vs B′ (evidence now favours A′); new execution evidence needed for any act-level guard |

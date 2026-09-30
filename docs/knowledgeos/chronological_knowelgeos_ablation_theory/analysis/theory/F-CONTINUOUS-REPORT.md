@@ -174,3 +174,8 @@
 - **Q:** does norm/act coding survive cue removal?
 - **Result:** P3~P4 is still 1.000 (degenerate); **11/36 events are individuated only by description**; kind's pairs differ in zero fields; e's pair is description-individuated; authority must be re-verified.
 - **Impact:** span-level individuation is required under A or B; the measurement problem is two layers deep.
+
+## 1aw span individuation (F-LOG-0170)
+- **Q:** are the events source-individuated; does authority survive at span level?
+- **Result:** 31/36 anchored; authority pair (a) FAILS, (b) WEAK → **authority NOT DEMONSTRATED; the empirical act core is empty**.
+- **Impact:** the corpus identifies norm content and status structure, not act-level guards; A′ is favoured; new execution evidence is needed.
