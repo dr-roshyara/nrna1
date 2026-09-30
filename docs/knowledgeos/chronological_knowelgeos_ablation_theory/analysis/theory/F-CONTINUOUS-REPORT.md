@@ -199,3 +199,7 @@
 - **C1** (WP-4B RED commit): NON-CONFORMS (moderate, contested) → **the first discriminating observation**, weakly against H-B's conformance clause.
 - **C2:** conforms (qualified), bears on neither.
 - **Next:** the minimum execution-evidence spec.
+
+## F-LOG-0174: wording + rule M-TIME
+- **1ba C1 restated:** NON-CONFORMS under the primary text-based reading (moderate); the alternative is viable; **not a falsification of H-B**.
+- **Standing rule:** recording time ≠ decision time ≠ entry into force.

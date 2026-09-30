@@ -2131,3 +2131,12 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Freeze | `51be577df` |
 | Records | `analysis/theory/LOOP-1BA/` |
 | Next | a minimum execution-evidence spec (reviewed); then STOP for the human (non-Claude coder; evidence acquisition) |
+
+## F-LOG-0174 — wording correction to F-LOG-0173 (append-only; 0173 is not rewritten) and a **standing methodological rule M-TIME**
+
+| Field | Value |
+|---|---|
+| Human act | review of 2026-09-30: "tighten that" / "make this a permanent methodological rule" |
+| **Corrected statement of the 1ba C1 result** | "**Under the primary text-based reading, the WP-4B RED commit is classified NON-CONFORMS, with moderate confidence. An alternative reading remains viable, so the result is not a definitive falsification of H-B.**" Status: **candidate execution-side counter-instance to H-B's conformance clause, n = 1, contested.** |
+| **Rule M-TIME (standing, F-series)** | **Recording time ≠ decision time ≠ entry into force.** Git or register chronology establishes `RECORDING_ORDER` only. A decision or effectiveness order is `SOURCE_STATED_ORDER` only when the source text states it, and otherwise `INFERRED_ORDER` (always labelled) or `NOT_IDENTIFIABLE`. **Never substitute recording chronology for entry into force.** Evidence: PREPARED rulings (R-88, R-89) are recorded before adoption (1ba review) |
+| Applies from | now; existing records are unaffected (1ba's verdict was already text-robust) |
