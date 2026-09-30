@@ -1,0 +1,715 @@
+{
+ "meta": {
+  "id": "1bb-r1",
+  "status": "specification only; nothing collected; no command run",
+  "inputs": ["SPEC-1bb.md", "SPEC-1bb.json", "REVIEW-1bb.md", "HYPOTHESES.md", "IDENTIFIABILITY.json", "CONFORMANCE-CASE.json", "STATE.md", "HUMAN-DECISIONS.md"],
+  "labels": ["SOURCE FACT", "INFERENCE", "PROPOSAL", "UNKNOWN"],
+  "change_marks": ["UNCHANGED", "CHANGED Dn", "NEW Dn", "REMOVED Dn", "RELABELLED D14"],
+  "note": "REVIEW-1bb.md refers to a review JSON (missing_fields, self_report_residue) that is not among the inputs; only the fields and residue named in REVIEW-1bb.md are addressed. The human-readable version is SPEC-r1.md; every change is in CHANGELOG.md."
+ },
+ "defects": [
+  {
+   "id": "D1",
+   "defect": "The same observation serves both sides. 'R-89 not adopted, but work ran under it' is read as H-D's status clause failing. But the spec's own P2 and P7 falsifiers read the same observation as non-conformance: execution under an act that is not in force, before WP-4B's acceptance and with no waiver. That falsifies H-B. H-D can say 'R-89 had no force; engineering broke the norm'. H-B can say 'work changed the norm'. Behavioural uptake cannot tell the norm changed without an act from work violated an unchanged norm. The same confound affects P5's 'not in force' branch and P1's H-D falsifier, which requires only that the after-state is 'acted on by engineering'.",
+   "correction": "Record the six distinctions separately (spec.shared_rules.six_distinctions). Define independent observables of the norm in force: NIF-A (an independent norm-status record), NIF-B (application of the norm as binding by an actor who is neither the maker/adopter nor the executor), and NIF-C (citation by such an actor, which is recorded only). Executor work is never NIF; it is recorded as ACT-CONF or ACT-CONTRA. Add rule G-D1: a premise about force that is established only by executor behaviour, or by applying H-D's status rule to the maker's records, grades any falsifier as DISJUNCTIVE {H-D clause, H-B clause}. Give each prediction a NIF requirement (spec.nif_matrix), or declare it NON-DISCRIMINATING or DISJUNCTIVE without one. Split the headline test into an H-D force limb (NIF-A or NIF-B, with no adoption form) and an H-B conformance limb (an execution trace, plus non-permission at t- by NIF or the graded fallback). This narrows the reviewer's fix: bare third-party citation only establishes that the norm is known to be in force, so it cannot fire a falsifier.",
+   "sufficiency": "D1 is an identification failure: observation O is predicted both by (H-D status holds and H-B conformance fails) and by (H-D status fails and H-B conformance holds). After the correction, the two limbs use disjoint observables. The H-D limb uses NIF-A or NIF-B, which are not executor acts, so H-B's conformance clause is silent about them. The H-B limb uses non-permission established without H-D's status rule, because G-D1 downgrades any premise that uses it. Executor behaviour enters only as ACT-CONF or ACT-CONTRA, never as N-FORCE or N-CHANGE-NOACT, so no single observation can count for both sides. When only O is present, DISJUNCTIVE is the strongest conclusion that logically follows.",
+   "prediction_change": "Yes, operationally; the hypothesis-level claims are unchanged. The P4-HD falsifier now needs NIF-A or NIF-B, and work citing R-89 no longer suffices. The P1-HD after-state needs NIF, and engineering uptake no longer suffices. Both P5 branches need NIF, or the result is DISJUNCTIVE. The P2 and P7 H-B falsifiers become DISJUNCTIVE when non-permission rests on the status rule. The first 1bb section-5 branch becomes DISJUNCTIVE unless NIF is present.",
+   "frozen_rule": "FR-D1: Executor behaviour establishes at most ACT-CONF or ACT-CONTRA, never N-FORCE or N-CHANGE-NOACT. A premise 'N (not) in force at t' counts toward a falsifier only via NIF-A or NIF-B; NIF-C, maker statements, ruling self-assertions and recording times never count. G-D1: a premise established only by executor behaviour, or by applying H-D's status rule to the maker's records, makes the falsifier DISJUNCTIVE {H-D clause, H-B clause}. Each prediction carries the NIF requirement in spec.nif_matrix; without it, it is scored as that table's 'without' column."
+  },
+  {
+   "id": "D2",
+   "defect": "The three items are not sufficient. The spec's own P4 and P7 falsifiers also need: (a) a link showing that the WP-4C-1 work was done under R-89 or cites it; (b) the closed-channel history of waivers and responses up to WP-4C-1's acceptance; (c) R-72's gate being in force at t_first_work; (d) citations by non-adopting actors. Also, 'no adoption up to 2026-08-15' needs the whole write history over the window, so 'about 3 records' understates the effort. The outcome list also leaves out 'no WP-4C-1 work by 2026-08-15'. That outcome is plausible for a PREPARED, NOT ADOPTED ruling, and in it neither falsifier can fire, so the acquisition discriminates nothing.",
+   "correction": "Use a two-stage acquisition. Stage 0 consists of the rank-0 check (Part B) and the scoping search (Part C). Stage 1 runs only if Stage 0 finds a trace, and acquires items S1-a to S1-g, covering (a)-(d), R-89's text (does it waive the gate?), and the whole DCS v1 history over the P7 window. The effort is restated. An outcome table O0-O8, including O0 'no trace', is frozen before acquisition.",
+   "sufficiency": "Every premise of P4-HD and P7-HB now maps to an acquisition item: work under R-89 to S1-g; no adoption and no waiver to S1-b plus the completeness rule; gate in force to S1-d; force without adoption to S1-e or S1-f. The outcome table is exhaustive over trace present or absent, adoption yes/no/not identifiable, NIF present or absent, and acceptance before or after the work. O0 makes the case where nothing is discriminated explicit in advance.",
+   "prediction_change": "No. It changes the acquisition, the effort estimate and the outcome table. O0 predicts nothing for either hypothesis.",
+   "frozen_rule": "FR-D2: The acquisition has two stages. Stage 0 (Part B and Part C) comes before any Stage 1 item. Stage 1 runs only if Stage 0 returns at least one ET-1 or ET-2. Outcomes are scored only against spec.smallest_acquisition.outcome_table (O0-O8). O0 means P4 and P7 discriminate nothing, and P2 moves to rank 1."
+  },
+  {
+   "id": "D3",
+   "defect": "The spec calls P5 'low effort and two-sided'. It then says P4+P7 is 'the only acquisition this small that puts both hypotheses at risk'. These cannot both be true.",
+   "correction": "Delete the 'only' claim. Compare P4+P7 with P5 on their likely outcomes and on their NIF requirements.",
+   "sufficiency": "The contradiction needs both statements; deleting the universal one removes it. The replacement uses only claims made elsewhere (P5's likely outcome is operational scope; P4+P7 depends on O0), so it cannot contradict any other entry.",
+   "prediction_change": "No; only the ranking text changes.",
+   "frozen_rule": "FR-D3: No acquisition is called the 'only' one with a property. Candidates are ranked by (i) the probability that the outcome is not NON-DISCRIMINATING, given the Stage 0 result and NIF availability, then (ii) effort. The ranking is a PROPOSAL."
+  },
+  {
+   "id": "D4",
+   "defect": "The P7 window starts at R-89's recording time. WP-4C-1 work that began before R-89 was recorded is the strongest possible case against H-B, and this window excludes it. P4 and P5 also start at recording times, although STATE says recording time != decision time != entry into force. The section-5 item 'first WP-4C-1 commit' has no window at all.",
+   "correction": "The P7 window starts at min(earliest recorded trace of R-72, earliest WP-4C-1 execution trace). The P4 and P5 windows start at the earliest recorded trace of the ruling in any DCS channel. The rank-0 search has no lower bound. The first WP-4C-1 commit gets its window from Part B.",
+   "sufficiency": "The new P7 start is less than or equal to any time at which a WP-4C-1 trace in the capture could exist, because it takes the minimum with the earliest trace, and the unbounded search that produces that trace. The P4 and P5 starts are, by construction, no later than the register row. Recording times are used only as bounds on existence.",
+   "prediction_change": "Yes. P7-HB can be fired by WP-4C-1 work that began before R-89's recording, or even before R-72's trace, in which case the norm is 'no authorization'. P4 and P5 bring earlier traces into scope.",
+   "frozen_rule": "FR-D4: Every window starts at or before the earliest recorded trace of its object in DCS v1; the rank-0 search has no lower bound. P7 = [min(trace R-72, earliest WP-4C-1 ET), min(WP-4C-1 acceptance in force, 2026-08-15)]. P4 = [earliest trace R-89, min(first adoption or withdrawal form, 2026-08-15)]. P5 = [earliest trace R-94, attested execution], then the P8 window. A recording time is used only as a bound on existence."
+  },
+  {
+   "id": "D5",
+   "defect": "Not well defined. (a) R-86 names the adopter; the single channel is the spec's own assumption. The Chief's operational dispositions (R-94, and R-90's operational/constitutional split) and the DA's 'R-89 already governs' may sit in other channels, such as session logs or progress files. An act made there would show up as an 'act-less change'. (b) Late recording: an act decided in the window but recorded afterwards looks like 'no entry in window'. The spec has no rule for this, although recording != decision is a SOURCE FACT. (c) There is no rule, fixed in advance, for what form counts as an adoption. The spec says the DA's statement 'may itself be the adoption' and leaves it there, so the outcome can be decided after the fact. (d) Actor identity rests on git author/committer names, which the actor sets. (e) There is no closed world for work, yet P1-HB ('executed nothing'), P7 ('first work event') and the status-mediation contrast ('no execution') all need an absence of work. (f) 'Fixed before looking at the data' is impossible: R-86 and R-90 have already been read.",
+   "correction": "(a) A declared channel set DCS v0 = {K-REG, K-SESS, K-PROG}, extended by Part C and closed as DCS v1 before Stage 1. A find outside it is labelled OUT_OF_CHANNEL_ACT, which makes the premise UNDETERMINED. (b) An act recorded after window W that claims an effect inside W makes both 'no act' and 'act in force' NOT_IDENTIFIABLE. (c) The adoption forms AF-1, AF-2 and AF-3 are exhaustive. Descriptive force assertions by the maker ('already governs') are MAKER_FORCE_ASSERTION, not adoption; a sensitivity result is reported but never scored. (d) AUTH_ID (a verified signature or a hosting-server account record) versus ACTOR_SET_ID; ACTOR_SET_ID caps the grade at FIRED-CONDITIONAL. (e) An execution-channel register EC; an absence of work needs a complete EC. (f) Rules are fixed before acquisition, not before reading; the non-blindness toward R-86 and R-90 is disclosed; operational capability is UNKNOWN.",
+   "sufficiency": "Each sub-defect is a path by which a 'no act' or 'no work' premise could come out true when an act or work in fact existed, or be decided after the fact. Each fix blocks that path: an out-of-channel act blocks the premise; late recording makes it NOT_IDENTIFIABLE; the adoption verdict is fixed by a prior rule; identities set by actors cannot support a clean grade; an absence of work needs completeness; and the freeze is verifiable because it precedes acquisition. No falsifier is removed; only its missing premises are added.",
+   "prediction_change": "Yes, operationally. P1-HD, P4-HD and P5-HD now need a complete DCS v1 and the adoption-form rule; a late-recorded act gives UNDETERMINED. P1-HB, P7-HB and the status contrast need EC completeness. Under the frozen form rule, 'R-89 already governs' is not an adoption.",
+   "frozen_rule": "FR-D5: (a) Norm-making acts are sought only in DCS v1; OUT_OF_CHANNEL_ACT makes the premise UNDETERMINED. (b) A late-recorded act claiming an effect in W makes the premises NOT_IDENTIFIABLE. (c) Adoption = AF-1, AF-2 or AF-3 only. (d) A clean grade on an identity premise needs AUTH_ID; otherwise the grade is at most FIRED-CONDITIONAL. (e) An absence of work needs a complete EC. (f) All rules are frozen before any Stage 0 command runs."
+  },
+  {
+   "id": "D6",
+   "defect": "HYPOTHESES says only that work 'is expected to conform'. The spec's P2 claim adds that 'the system responds (sanction, remediation or waiver) before acceptance'. That makes H-B harder to falsify, overlaps P8, and makes C1's bearing depend on R-87. The window end ('acceptance takes force') is not justified. A later execution-governance repair (R-91 deviation -> R-94 Constitutional Review, listed by the spec under P8) might be a response to R11, and this window would ignore it.",
+   "correction": "P2 (and P7-HB) test conformance as stated: one non-permitted execution with no ex-ante waiver in force. Responses, including retroactive waivers, are scored under P8, which is extended to deviations of non-conformance. P8 has its own window, and late responses are recorded as LATE_RESPONSE. Stage 1 checks whether R-91 or R-94 refer to R11. The C1 bearing no longer depends on R-87.",
+   "sufficiency": "Removing the response disjunct makes the tested clause identical to the stated one. The response clause is still tested, as H-B's feedback clause (P8), so nothing is lost. The unjustified window end disappears with the clause. R-91 and R-94 are captured because P8 records every response that cites R11, whenever it occurs.",
+   "prediction_change": "Yes. P2 and P7-HB become easier to falsify. The C1 bearing changes from 'NON-CONFORMS and no response before R-87' to 'NON-CONFORMS'. P8's domain now includes non-conformance deviations.",
+   "frozen_rule": "FR-D6: A conformance falsifier = an execution whose operation class is not permitted by the norm in force at t_exec-, with no waiver in force at t_exec-. Later responses are scored only under P8. P8 covers verified failures and deviations, including non-conformance. Its window runs from the deviation's recording time to the next execution trace on the same target. All citing responses are recorded, and those outside the window are LATE_RESPONSE."
+  },
+  {
+   "id": "D7",
+   "defect": "The attestation rule contradicts itself. Condition (i) requires an author or process different from the norm-making record, but entry into force is taken from the adoption record written by the adopter, which is the status-conferring act. Condition (ii) excludes artefacts that are 'citing that record', but P4 needs uptake artefacts that cite R-89.",
+   "correction": "Separate being the observation from attesting a field of it. An act's own record is the observation of the act. It attests only its writer (AUTH_ID or ACTOR_SET_ID) and its recording time, never its stated effective date or the norm's force. Conditions (i)-(iii) apply only to attesting fields of other observations. Citing artefacts are admissible as observations of uptake (NIF-B, NIF-C, ACT); only copying self-statements to attest a field is excluded.",
+   "sufficiency": "Both contradictions came from applying one rule to two roles. With the roles separated, the adoption record and the uptake artefacts each satisfy the rule in the role they play. No field is attested by self-report, because effective dates and force are never self-attested.",
+   "prediction_change": "No. It narrows what an adoption record can establish (never the effective date), which matters for the time premises of P4 and P7.",
+   "frozen_rule": "FR-D7: A record of an act attests only (i) its writer (AUTH_ID or ACTOR_SET_ID) and (ii) its recording time. A field of any other observation is independently attested only if the attesting artefact (i) has a writer that is not the maker, adopter or executor, (ii) does not copy the ruling's self-statements, and (iii) carries a system-generated time. Citing artefacts are admissible as observations of uptake."
+  },
+  {
+   "id": "D8",
+   "defect": "Missing fields, see JSON missing_fields. The chief ones: the norm in force at the time of the act is missing for P7 (R-72's gate) and for P5 (the capability norm in force when R-94 was made); P1 has no response/legitimation field (needed for D1) and no attested eligibility criterion for the census; P8 does not define or attest an 'active target'.",
+   "correction": "Add: P7 r72_gate_in_force_at_t_w; P5 capability_norm_in_force_at_t_R94; P1 response_or_legitimation and eligibility_criterion; P8 active_target; and NIF fields throughout. The review JSON is not in the inputs, so only these named fields are added.",
+   "sufficiency": "Each field is a premise of an existing falsifier that was not being acquired: 'gate in force' in P7-HB; the capability norm at the time of the act in P5-HD; the census domain and the D1 split in P1; 'active target' in P8-HB. Adding each premise as a field makes each falsifier condition checkable.",
+   "prediction_change": "Yes, operationally. P7-HB cannot fire unless the gate is in force at t_w. P5-HD is judged against the capability norm at t_R94. The P1 census is limited to eligible targets, and legitimated cases are scored LEGITIMATED. P8-HB is limited to active targets.",
+   "frozen_rule": "FR-D8: P7-HB requires r72_gate_in_force_at_t_w = IN_FORCE. P5-HD requires capability_norm_in_force_at_t_R94. A P1 target is eligible iff an act recorded before t1 made its state conditional on a stated work condition, and a system-recorded artefact inside W shows that condition met under a per-clause satisfaction rule written before Stage 1. P1 records response_or_legitimation. A P8 target is active at t iff an authorization on it is in force at t and no closure, acceptance, withdrawal or hold on it is in force at t."
+  },
+  {
+   "id": "D9",
+   "defect": "The C1 rule will probably return UNDETERMINED, and it is asymmetric. If R-72's proviso was unmet but no blocking text covers RED, the rule says UNDETERMINED. By R-72's own logic the conditional authorization never became operative, so the result should be NON-CONFORMS by default. No default reading of 'WP-4B REMAINS BLOCKED' is fixed for the likely case where no scoping text exists. Entry-into-force times for R-77 to R-80 are to come 'from adoption records', but these rulings may not be status-mediated at all, and no fallback is given. The MD and the JSON also scope the 'and' in the CONFORMS branch differently.",
+   "correction": "Default state: unauthorized unless the proviso is shown met. Default scope: 'WP-4B REMAINS BLOCKED' covers all WP-4B work, including producer-agnostic RED. Fallback for rulings that are not status-mediated: 'not earlier than recording time'; stated dates are SOURCE_STATED. One structure: CONFORMS iff P and not B (the MD version). UNDETERMINED only for unobtainable texts, or a NOT_IDENTIFIABLE entry into force relative to 16:10. G-D1 applies if 'no permitting text' relies on status mediation.",
+   "sufficiency": "The default follows R-72's own conditional form, which removes the asymmetry. The default scope settles the case with no scoping text. The fallback gives every ruling a time premise. A single boolean structure makes the MD and JSON identical. UNDETERMINED is kept only where a premise really cannot be observed, so the default is never applied to evidence that has not been seen.",
+   "prediction_change": "Yes. The likely C1/P2 verdict moves from UNDETERMINED to NON-CONFORMS if R-73..R-76 are obtained and do not show the proviso met. The bearing no longer requires 'no response before R-87' (D6). The result is DISJUNCTIVE if the verdict relies on R-81..R-85 lacking force until R-86.",
+   "frozen_rule": "FR-D9: P = R-72's RED condition and proviso shown met by texts in force before 16:10. B = a text in force before 16:10 blocks WP-4B, read by default as covering all WP-4B work including RED, with no narrowing text in force before 16:10. CONFORMS iff P and not B. NON-CONFORMS iff the texts R-72..R-80 were obtained and not (P and not B). UNDETERMINED iff a required text is unobtainable, or the entry into force of a text that decides P or B is NOT_IDENTIFIABLE relative to 16:10. Entry into force comes from an adoption form if the ruling is status-mediated; otherwise it is not earlier than its recording time. 16:10 is SOURCE_STATED."
+  },
+  {
+   "id": "D10",
+   "defect": "The P1-HB census refutes only H-B restricted to window W, and the spec does not say so. Reading H-B's clause as existential is also an interpretive choice that is not labelled UNKNOWN. Under the other reading ('when the work condition is met, the state changes'), one clean counter-instance would be enough. The P8 'tendency => census' option gives no threshold, so it cannot be tested.",
+   "correction": "Label the P1-HB quantifier reading UNKNOWN and score both readings. 1a (existential): the census over W, whose negative result is stated only as 'not instantiated in W'. 1b (conditional-universal): one eligible counter-instance, with NIF. Drop the P8 tendency reading (NOT_TESTABLE_AS_SPECIFIED); P8 is universal only.",
+   "sufficiency": "The logical force of each test now matches its quantifier: an existential claim is refuted only over the domain exhausted; a conditional-universal claim is refuted by one instance. Reporting both readings stops the interpretation from being chosen after the fact. Dropping the tendency reading removes the only unfalsifiable option.",
+   "prediction_change": "Yes. The P1-HB conclusion is scoped to W, and test 1b is added. P8-HB keeps only its universal reading.",
+   "frozen_rule": "FR-D10: P1-HB is scored under 1a ('not instantiated in W' or 'instantiated') and under 1b (FIRED on at least one eligible counter-instance, with NIF). Neither is generalized beyond W. P8 is universal; the tendency reading is NOT_TESTABLE_AS_SPECIFIED."
+  },
+  {
+   "id": "D11",
+   "defect": "The feasibility section is hedged, but the attestation fields assume artefacts that no input establishes: CI runs with CI start times; 'server push time' (git history does not record it); 'adopted' R-86 and R-90 (R-90 appears in the inputs in a withdrawal context); adoption records for R-77, R-79 and R-80; 'DA session logs'; version control of IMPLEMENTATION_PROGRESS.md; a register kept as a git file. STATE lists only a register, a few session logs and one commit.",
+   "correction": "Every such field is phrased 'if it exists', with a fallback and a grade (spec.shared_rules.artefact_fallbacks). R-90's status is UNKNOWN. Git dates, including R11's 16:10, are client-set and therefore SOURCE_STATED.",
+   "sufficiency": "Every field is now defined whether or not its preferred artefact exists: either the fallback applies with a stated grade, or the field is UNDETERMINED. So no result depends silently on an artefact whose existence is unshown.",
+   "prediction_change": "No. Outcomes may be downgraded to FIRED-CONDITIONAL or UNDETERMINED.",
+   "frozen_rule": "FR-D11: Each attestation names a preferred artefact ('if it exists'), a fallback, and the fallback's grade. If both are missing, the field is UNDETERMINED. The capture reports which artefacts exist."
+  },
+  {
+   "id": "D12",
+   "defect": "P7's H-D falsifier ('treated as authorized because the predecessor was accepted') depends on motive and cannot be observed as behaviour. It also cannot fire in the R-89 episode, because an authorizing act (R-89) exists. P8's H-D falsifier just repeats P1.",
+   "correction": "P7-HD is NOT_APPLICABLE to the R-89 episode. Elsewhere it is restated behaviourally (NIF shows the successor authorized, and a complete DCS v1 shows no act producing the authorization), which is P1 on the gate, and it is scored only under P1. P8-HD points to P1.",
+   "sufficiency": "The motive clause is removed, so all remaining conditions are observable. In the R-89 episode the premise 'no authorizing act' is false by construction, so NOT_APPLICABLE is exact. Scoring P7-HD and P8-HD only under P1 removes the double counting.",
+   "prediction_change": "Yes. P7-HD is dropped for the R-89 episode and merged into P1 elsewhere; P8-HD is merged into P1. H-D's operational predictions are tested only via P1, P4 and P5.",
+   "frozen_rule": "FR-D12: P7-HD is NOT_APPLICABLE when any norm-making act authorizing the successor exists in DCS v1, whatever its status. Otherwise P7-HD and P8-HD are instances of P1-HD and are scored only there."
+  },
+  {
+   "id": "D13",
+   "defect": "Item 1 (an adoption entry written by the adopter) is still the norm-maker's own act; only its system time and authenticated identity are independent. The behavioural contrast (item 3) is empty unless work was ready and waiting during the prepared interval. As written, the upgrade moves status mediation only part of the way to independent observation.",
+   "correction": "Relabel item 1 as the maker's own act; only its recording time and AUTH_ID are independent. Add item 0: NIF-A for the status transition. Restrict item 2 to NIF-B. Give item 3 an eligibility condition: pending dependent work (preconditions met, queued or planned, attested with a system-recorded time) during the prepared interval, and a complete EC. A contrast without pending work is VACUOUS.",
+   "sufficiency": "The upgrade was partial because its first item was not independent and its contrast could be vacuous. The correction claims only what is independent, adds the only fully independent source (NIF-A), and makes the contrast informative: work was ready, so its absence is a behavioural difference and not a lack of opportunity.",
+   "prediction_change": "Yes, for H-D's status clause (P4): only eligible contrasts count. H-B is not affected (it is silent).",
+   "frozen_rule": "FR-D13: Status mediation is independently observed iff (0) NIF-A records the transition, or (1) an adoption form has a recording time and AUTH_ID, and (2) NIF-B uptake follows adoption, and (3) there is an eligible contrast (pending dependent work in the prepared interval; a complete EC shows no execution on it and no NIF-B before adoption). Otherwise it is SELF_REPORTED or PARTIALLY_INDEPENDENT."
+  },
+  {
+   "id": "D14",
+   "defect": "The ranking is labelled INFERENCE but is a judgement (PROPOSAL). The R-86 'waiting' quote is a SOURCE FACT; reading it as a behavioural instance is INFERENCE. P4 lists R-88's text, which only orders the rulings and says nothing about force. P7's GREEN/VERIFY CI run serves C2's evidence limb, not the gate falsifier. The 'input conflict' may be only apparent: 'section WP-4 remains OPEN' may refer to WP-4 as a whole, not WP-4B, and C2's textual order does not establish the order of entry into force.",
+   "correction": "Relabel the ranking as PROPOSAL. The R-86 quote is SOURCE FACT, and reading it as behaviour is INFERENCE. The R-88 text and the GREEN/VERIFY run are OPTIONAL. The conflict is described as 'possibly only apparent', and textual order is labelled SOURCE_STATED_ORDER.",
+   "sufficiency": "Each item is a mislabel or a wrongly required field. Relabelling or marking the field OPTIONAL fixes each one completely, and none of them is a falsifier premise.",
+   "prediction_change": "No.",
+   "frozen_rule": "FR-D14: Judgements are PROPOSAL. Readings of quotes are INFERENCE. Fields that are premises of no falsifier are OPTIONAL. Textual order is SOURCE_STATED_ORDER and never establishes the order of entry into force."
+  }
+ ],
+ "spec": {
+  "scope": {
+   "mark": "UNCHANGED (+ NEW D1)",
+   "text": "SOURCE FACT: IDENTIFIABILITY identified: []. PROPOSAL: in scope are P1 (only under H-B reading 1), P2, P4, P5, P7 and P8. P3 is excluded (act-mediated feedback fits both hypotheses; its act-less part is P1). P6 is excluded (both hypotheses are met at every boundary). NEW D1: being in scope is necessary but not sufficient; discrimination also depends on NIF (nif_matrix)."
+  },
+  "shared_rules": {
+   "six_distinctions": {
+    "mark": "NEW D1",
+    "N-EXISTS": {"meaning": "the norm exists (a text is recorded, PREPARED included)", "established_by": "the record's text; its time is a recording time", "never_by": "-"},
+    "N-FORCE": {"meaning": "the norm is in force at t", "established_by": "NIF-A, or NIF-B (N-FORCE[OPERATIONAL]); the graded fallback gives at most FIRED-CONDITIONAL", "never_by": "self-assertion, maker statements, recording time, executor behaviour, N-EXISTS alone"},
+    "N-KNOWN": {"meaning": "the norm is known or claimed to be in force by actor X", "established_by": "X's statement: NIF-C (third party), MAKER_FORCE_ASSERTION (maker), SELF_ASSERTION (in the ruling)", "never_by": "it never establishes N-FORCE"},
+    "ACT-CONF": {"meaning": "an act according to a norm: an execution at t permitted by the norms in force at t-", "established_by": "an execution trace plus N-FORCE of a permitting norm at t-", "never_by": "an execution trace alone"},
+    "ACT-CONTRA": {"meaning": "an act contrary to a norm: an execution at t not permitted at t-", "established_by": "an execution trace plus N-FORCE of a prohibition at t-, or the absence of any permitting norm in force at t- (needs a complete DCS)", "never_by": "an execution trace alone"},
+    "N-CHANGE-NOACT": {"meaning": "a norm changes without a norm-making act", "established_by": "N-FORCE at t1 != N-FORCE at t2 (both by NIF); a complete DCS with no act in [t1,t2], no prior conditional act, and no late-recorded act claiming effect in [t1,t2]", "never_by": "a work event alone; a ruling asserting its own adoption"}
+   },
+   "nif": {
+    "mark": "NEW D1",
+    "NIF-A": "An entry in a channel meeting I1-I4 (scoping_protocol.criteria) that records the normative state at t with a system time. Its availability comes from Part C.",
+    "NIF-B": "An act by an actor who is not the maker/adopter of the norm and not the executor of the work under test, applying the norm as binding (grant, refuse, accept, block), with AUTH_ID and a recording time. It establishes N-FORCE[OPERATIONAL] (PROPOSAL). If later expressly voided as erroneous, it is downgraded to FIRED-CONDITIONAL.",
+    "NIF-C": "A citation by such an actor, without application. It establishes N-KNOWN only, and never fires a falsifier.",
+    "not_nif": ["executor work under the norm (ACT)", "ruling self-assertion ('effective immediately')", "maker/adopter statements ('R-89 already governs authorization')", "register recording times"],
+    "graded_fallback": "Where nif_matrix permits it: the maker's records (text, adoption forms, recording times) in a DCS shown complete. The falsifier is at most FIRED-CONDITIONAL('maker's records state force accurately').",
+    "G-D1": "A premise 'N (not) in force at t' established only by (a) executor behaviour or (b) applying H-D's status rule to the maker's records makes every falsifier that uses it DISJUNCTIVE {H-D clause, H-B clause}."
+   },
+   "attestation": {
+    "mark": "CHANGED D7, D11",
+    "rule": "FR-D7. A record of an act attests only its writer (AUTH_ID or ACTOR_SET_ID) and its recording time, never its stated effective date or force. A field of any other observation is independently attested iff the attesting artefact (i) has a writer that is not the maker, adopter or executor, (ii) does not copy the ruling's self-statements (citing artefacts are admissible as observations of uptake), and (iii) carries a system-generated time. Git author and committer dates are client-set, i.e. SOURCE_STATED. Anything a ruling says about itself is self-report (UNCHANGED). SOURCE FACT: recording != decision != entry into force (UNCHANGED). Entry into force comes from an adoption form if the ruling is status-mediated; otherwise it is not earlier than the recording time."
+   },
+   "capability_register_v0": {
+    "mark": "CHANGED D5(f)",
+    "text": "Frozen before acquisition, not before reading. SOURCE FACT: R-86 names the DA as the only adopter. SOURCE FACT (STATE): Chief-prepared rulings gain force on DA adoption. UNKNOWN: the capability for operational (R-94-type) dispositions. R-90 is known only via IDENTIFIABILITY and appears in a withdrawal context; it is resolved only by R-90's text and status in Stage 1. If unresolved, P5 is NON-DISCRIMINATING."
+   },
+   "declared_channel_set": {
+    "mark": "CHANGED D5(a)",
+    "DCS_v0": ["K-REG: register of rulings (and its write history if versioned)", "K-SESS: session logs S0804, S0815, later", "K-PROG: IMPLEMENTATION_PROGRESS.md"],
+    "DCS_v1": "DCS_v0 plus every Part C channel with Q1 = YES and Q2 containing ADOPTION_EVENT, APPROVAL_EVENT or NORM_STATE; closed before Stage 1.",
+    "no_act": "No norm-making act in DCS v1 in the window, with DCS v1 shown complete. It is never a claim about unrecorded acts anywhere (UNCHANGED intent).",
+    "OUT_OF_CHANNEL_ACT": "A norm-making act found outside DCS v1. It makes the 'no act' premise UNDETERMINED and is never scored as N-CHANGE-NOACT.",
+    "adoption_forms": {
+     "mark": "NEW D5(c)",
+     "AF-1": "The ruling row's status annotation changes to ADOPTED, written under the DA's identity.",
+     "AF-2": "A separate DA entry naming the ruling id(s), with an adoption performative ('adopt', 'adopted', 'hereby adopts').",
+     "AF-3": "A DA ruling declaring named prepared rulings governing, in performative form (the R-86 pattern: 'These become governing rulings effective immediately').",
+     "not_adoption": "A descriptive assertion by the maker of existing force, e.g. 'R-89 already governs authorization' = MAKER_FORCE_ASSERTION.",
+     "sensitivity": "The outcome under the opposite classification is reported and never scored."
+    },
+    "identity": {
+     "mark": "NEW D5(d)",
+     "AUTH_ID": "A signature verified against a key list fixed before Stage 1, or an account-bound hosting-server record (approval, merge, audit event).",
+     "ACTOR_SET_ID": "Git author/committer fields; names in text. It caps the grade at FIRED-CONDITIONAL."
+    }
+   },
+   "execution_channel_register": {
+    "mark": "NEW D5(e)",
+    "EC_v0": ["the git repositories named by the human before Part B", "CI run records, if Part C finds them"],
+    "rule": "Absence of work on X is admissible only if EC is complete for X; otherwise it is NOT-EVIDENCED-IN-CAPTURE."
+   },
+   "absence_and_completeness": {
+    "mark": "NEW D2, D5",
+    "rule": "An absence premise (no act, adoption, waiver, work or response) counts only if the channel is complete over the window: (1) coverage: the channel is required for that event type by a rule in force (NIF-A or host-enforced configuration); (2) capture: not shallow or partial, and refs equal the server's; (3) retention: records cover the window; (4) integrity: no undetected deletion or rewrite. Otherwise the absence is NOT-EVIDENCED-IN-CAPTURE and the falsifier is UNDETERMINED."
+   },
+   "m_time": {
+    "mark": "NEW D4, D5, D11",
+    "order_labels": {
+     "RECORDING_ORDER": "An order of recording established by the recording system's structure (e.g. git ancestry).",
+     "SOURCE_STATED_ORDER": "An order stated by a source or by metadata set by an actor (git author/committer dates, dates in texts, textual citation order).",
+     "INFERRED_ORDER": "An order derived by combining two or more premises of different kinds (e.g. ancestry plus a stated date); the chain is written out.",
+     "NOT_IDENTIFIABLE": "None of the above holds, or the premises contradict each other (e.g. a clock anomaly)."
+    },
+    "caveat": "No order label establishes a decision time or entry into force; an order relative to entry into force needs N-FORCE.",
+    "late_recording": "An act recorded after W whose text states an effect in W makes 'no act in W' and 'act in force in W' NOT_IDENTIFIABLE for that target.",
+    "grades": {
+     "FIRED": "All premises by NIF-A or NIF-B, with AUTH_ID; absences complete.",
+     "FIRED-CONDITIONAL": "Fires given listed weaker premises (SOURCE_STATED times, ACTOR_SET_ID, the maker's records).",
+     "DISJUNCTIVE": "Per G-D1.",
+     "NOT-FIRED": "Premises established; the falsifier condition is false.",
+     "UNDETERMINED": "A premise is NOT_IDENTIFIABLE, or an absence is NOT-EVIDENCED-IN-CAPTURE.",
+     "NOT_APPLICABLE": "The falsifier's precondition cannot hold in the episode."
+    }
+   },
+   "episode_independence": {
+    "mark": "UNCHANGED",
+    "rule": "Two episodes are independent iff: different targets or work packages; different governing acts; different adoption acts; separate execution artefacts (not successive commits of one batch or session); and attestation sources that are not copies of each other."
+   },
+   "artefact_fallbacks": {
+    "mark": "NEW D11",
+    "rows": [
+     {"assumed": "CI start time", "preferred": "CI run record", "fallback": "commit dates + ancestry", "grade": "SOURCE_STATED / RECORDING_ORDER"},
+     {"assumed": "server push time", "preferred": "hosting audit/event record", "fallback": "none in git", "grade": "UNDETERMINED"},
+     {"assumed": "adopted R-86", "preferred": "AF-1/2/3 for R-86 with recording time", "fallback": "R-86 text as quoted (SOURCE FACT: DA is sole adopter)", "grade": "FIRED-CONDITIONAL premise"},
+     {"assumed": "adopted R-90", "preferred": "R-90 text + status", "fallback": "UNKNOWN (withdrawal context)", "grade": "P5 NON-DISCRIMINATING while unresolved"},
+     {"assumed": "adoption records R-77, R-79, R-80", "preferred": "AF-1/2/3", "fallback": "recording time as 'not earlier than'", "grade": "SOURCE_STATED unless versioned"},
+     {"assumed": "DA session logs", "preferred": "session logs with system time", "fallback": "S0804, S0815", "grade": "SOURCE_STATED"},
+     {"assumed": "IMPLEMENTATION_PROGRESS.md versioned", "preferred": "revision introducing line 58", "fallback": "line-58 text as a report", "grade": "MENTION/REPORT; P5 UNDETERMINED"},
+     {"assumed": "register as a git file", "preferred": "register-file write history", "fallback": "register text with stated dates", "grade": "'no act' absences NOT-EVIDENCED-IN-CAPTURE"},
+     {"assumed": "R11 time 16:10", "preferred": "CI or server record", "fallback": "git author/committer dates", "grade": "SOURCE_STATED"}
+    ]
+   }
+  },
+  "predictions": [
+   {
+    "id": "P1",
+    "mark": "CHANGED D1, D5, D8, D10",
+    "hypothesis": "H-D 'only through acts' vs H-B reading 1 (work changes a norm with no act). UNKNOWN: which H-B reading is intended; under reading 2, P1 cannot discriminate (UNCHANGED).",
+    "claim": "Every change in a target's deontic state is preceded by a DCS act whose content produces it; conditional content counts if stated in advance (UNCHANGED).",
+    "fields": [
+     {"name": "target", "mark": "UNCHANGED"},
+     {"name": "norm_state_before", "mark": "CHANGED D1", "attestation": "N-FORCE at t1 by NIF-A/NIF-B; the last execution or refusal is recorded as ACT only"},
+     {"name": "norm_state_after", "mark": "CHANGED D1", "attestation": "N-FORCE at t2 by NIF-A/NIF-B; the first execution on the new state is recorded as ACT only"},
+     {"name": "acts_in_DCS", "mark": "CHANGED D5", "attestation": "writer (AUTH_ID/ACTOR_SET_ID), id, content, recording time, adoption form, late-recording flag"},
+     {"name": "DCS_completeness", "mark": "NEW D5"},
+     {"name": "prior_conditional_clauses", "mark": "UNCHANGED"},
+     {"name": "work_event", "mark": "CHANGED D5(e)", "attestation": "an execution trace (rank0_protocol.execution_trace) in EC"},
+     {"name": "capability_register", "mark": "CHANGED D5(f)", "attestation": "capability_register_v0"},
+     {"name": "eligibility_criterion", "mark": "NEW D8", "attestation": "FR-D8"},
+     {"name": "response_or_legitimation", "mark": "NEW D8", "attestation": "any later act that ratifies, sanctions or reverses the change, with its time"}
+    ],
+    "nif_requirement": "NIF-A or NIF-B for both before- and after-state; without it, NON-DISCRIMINATING.",
+    "min_episodes": "H-D: 1 (UNCHANGED). H-B: reading 1a = census of eligible targets in W, with at least 1 eligible; reading 1b = 1 (CHANGED D10).",
+    "falsifiers": {
+     "HD": "NIF shows S1 at t1 and S2 != S1 at t2 after an execution trace; complete DCS v1 shows no act producing S2; no prior conditional act; no late-recorded act claiming effect in [t1,t2]; no OUT_OF_CHANNEL_ACT; no legitimating act (otherwise LEGITIMATED).",
+     "HB": "1a: the census over W finds every eligible, condition-met target changed N-FORCE only at or after a separate DCS act; conclusion 'H-B 1a not instantiated in W', never generalized. 1b: one eligible, condition-met target whose NIF state is unchanged until a separate act. 'Engineering executed nothing' is corroborating and needs a complete EC. SOURCE FACT: R-86 'engineering waiting solely on a constitutional act'; reading it as behaviour is INFERENCE (RELABELLED D14)."
+    },
+    "window": "Per episode: from the earliest recorded trace of the work event to the first NIF state change or the next DCS act, whichever is earlier. Census W: from the earliest corpus record to 2026-08-15; fixed before Stage 1 (CHANGED D5(f)).",
+    "discrimination_status": "DISCRIMINATING only under H-B reading 1 and with NIF; otherwise NON-DISCRIMINATING.",
+    "ig_per_effort": "LOW (PROPOSAL)"
+   },
+   {
+    "id": "P2",
+    "mark": "CHANGED D1, D6, D9, D11",
+    "hypothesis": "H-B, one-sided (UNCHANGED).",
+    "claim": "Every execution event occurs when the norm in force at t_exec- permits that operation on that target (CHANGED D6; the response clause is removed and moved to P8).",
+    "fields": [
+     {"name": "execution_event", "mark": "CHANGED D11", "attestation": "actor (AUTH_ID/ACTOR_SET_ID), diff, time (git dates SOURCE_STATED; CI record if it exists)"},
+     {"name": "operation_class", "mark": "UNCHANGED", "attestation": "diff classified by a rule fixed before inspection"},
+     {"name": "norm_in_force_at_t_exec-", "mark": "CHANGED D1", "attestation": "NIF-A/NIF-B, or the graded fallback (texts R-72..R-80 in a complete DCS)"},
+     {"name": "status_rule_dependence", "mark": "NEW D1", "attestation": "does non-permission rely on a prepared, non-adopted permitting text lacking force (e.g. R-81..R-85 before R-86)? If yes, DISJUNCTIVE"},
+     {"name": "scope_determination", "mark": "CHANGED D9", "attestation": "default reading per FR-D9; later interpretations recorded as post hoc"},
+     {"name": "waiver_in_force_at_t_exec-", "mark": "NEW D6"},
+     {"name": "response", "mark": "REMOVED D6 (moved to P8)"}
+    ],
+    "nif_requirement": "Non-permission at t_exec- by NIF-A, NIF-B or the graded fallback. DISJUNCTIVE {HD status, HB conformance} if it depends on the status rule; UNDETERMINED if there is no source.",
+    "min_episodes": "1 (UNCHANGED)",
+    "falsifiers": {
+     "HD": "None; one-sided (UNCHANGED).",
+     "HB": "An execution whose operation class is not permitted by the norm in force at t_exec-, with no waiver in force at t_exec-. Later responses are scored under P8 (CHANGED D6)."
+    },
+    "window": "The norm-in-force interval, from the earliest trace of the relevant norms to t_exec; no response window (CHANGED D6). R11: norms up to 2026-08-03 16:10 (SOURCE_STATED, CHANGED D11).",
+    "discrimination_status": "ONE-SIDED (H-B).",
+    "ig_per_effort": "HIGH (PROPOSAL)"
+   },
+   {
+    "id": "P4",
+    "mark": "CHANGED D1, D4, D5, D7, D14",
+    "hypothesis": "H-D: a PREPARED ruling has no force until adopted. H-B is silent (UNCHANGED).",
+    "fields": [
+     {"name": "making_act_text", "mark": "CHANGED D14", "attestation": "R-89 required; R-87 for P7; R-88 OPTIONAL"},
+     {"name": "status_sequence", "mark": "CHANGED D5, D7", "attestation": "AF-1/2/3 only; writer and recording time, never a stated effective date; late-recording flags"},
+     {"name": "adopting_actor", "mark": "CHANGED D5(d)", "attestation": "AUTH_ID/ACTOR_SET_ID vs capability_register_v0"},
+     {"name": "force_indicator", "mark": "CHANGED D1", "attestation": "NIF-A/NIF-B for R-89 in the non-adopted interval; NIF-C recorded only"},
+     {"name": "work_citing_R89", "mark": "CHANGED D1", "attestation": "ACT only; not a force indicator"},
+     {"name": "maker_force_assertions", "mark": "NEW D5(c)", "attestation": "e.g. 'R-89 already governs authorization' = MAKER_FORCE_ASSERTION"}
+    ],
+    "nif_requirement": "NIF-A or NIF-B that R-89 was in force; without it, NON-DISCRIMINATING (work alone leads only to outcome O4, DISJUNCTIVE).",
+    "min_episodes": "1 (UNCHANGED)",
+    "falsifiers": {
+     "HD": "Complete DCS v1 shows no adoption form for R-89 up to t; no late-recorded adoption claims an effect <= t; NIF-A/NIF-B shows R-89 in force at t. DA statements never count.",
+     "HB": "None on P4 (UNCHANGED); combined with P7, it is scored only through the outcome table (CHANGED D1)."
+    },
+    "window": "From the earliest recorded trace of R-89 in any DCS channel to min(first adoption or withdrawal form, 2026-08-15) (CHANGED D4).",
+    "discrimination_status": "ONE-SIDED (H-D); requires NIF.",
+    "ig_per_effort": "HIGH if Stage 0 finds a trace and NIF is available; LOW otherwise (PROPOSAL)."
+   },
+   {
+    "id": "P5",
+    "mark": "CHANGED D1, D4, D5, D8, D11",
+    "hypothesis": "H-D capability; R-94 is the candidate; H-B coupled via P2 (UNCHANGED).",
+    "fields": [
+     {"name": "capability_norm_in_force_at_t_R94", "mark": "NEW D8", "attestation": "NIF, or fallback R-86/R-90 text + status; R-90 UNKNOWN (D11)"},
+     {"name": "norm_type_of_R94", "mark": "UNCHANGED", "attestation": "constitutional/operational per R-90 text if obtained"},
+     {"name": "disposing_actor_and_act", "mark": "CHANGED D5(d)", "attestation": "AUTH_ID/ACTOR_SET_ID"},
+     {"name": "execution_under_R94", "mark": "CHANGED D11", "attestation": "the IMPLEMENTATION_PROGRESS.md revision introducing line 58, if versioned; otherwise MENTION/REPORT and P5 UNDETERMINED"},
+     {"name": "R94_effect_NIF", "mark": "NEW D1"},
+     {"name": "adoption_or_absence_in_DCS_v1", "mark": "CHANGED D5"}
+    ],
+    "nif_requirement": "Effective branch: NIF-A/NIF-B that R-94 was applied as binding by a third party. Not-in-force branch: NIF-A or the fallback. Execution only: DISJUNCTIVE {HD capability, HB conformance}. Capability unresolved: NON-DISCRIMINATING.",
+    "min_episodes": "1 (UNCHANGED)",
+    "falsifiers": {
+     "HD": "capability_norm_in_force_at_t_R94 requires DA adoption for R-94-type dispositions; complete DCS v1 shows none; NIF-A/NIF-B shows R-94 in force.",
+     "HB": "Via P2: NIF (or the fallback) shows R-94 not in force at the attested execution; P2 grading applies; the response goes to P8 (CHANGED D1, D6)."
+    },
+    "inference": "The likely outcome is operational scope (R-90), so neither hypothesis is at risk (UNCHANGED).",
+    "window": "From the earliest recorded trace of R-94 to the attested execution, then the P8 window (CHANGED D4).",
+    "ig_per_effort": "MEDIUM in principle; the likely outcome discriminates nothing (PROPOSAL)."
+   },
+   {
+    "id": "P7",
+    "mark": "CHANGED D1, D2, D4, D6, D8, D12, D14",
+    "hypothesis": "H-B: successor work starts only after the predecessor's acceptance takes force (R-72: 'after its predecessor is accepted') (UNCHANGED).",
+    "fields": [
+     {"name": "predecessor_acceptance", "mark": "CHANGED D1, D7", "attestation": "R-87 text; N-FORCE via NIF-A/NIF-B or the fallback (adoption form + recording time); if 'not in force' rests on R-87 not being adopted, G-D1 applies"},
+     {"name": "WP4B_GREEN_VERIFY_run", "mark": "CHANGED D14 (OPTIONAL)", "attestation": "C2 evidence limb only"},
+     {"name": "r72_gate_in_force_at_t_w", "mark": "NEW D8"},
+     {"name": "R89_status_and_text", "mark": "CHANGED D2", "attestation": "including whether R-89 waives or supersedes the gate"},
+     {"name": "first_WP4C1_execution_trace", "mark": "CHANGED D2, D4", "attestation": "rank0_protocol output; time and order labels per m_time"},
+     {"name": "link_work_to_R89", "mark": "NEW D2(a)", "attestation": "CITES_R89 flag (message, trailer, added lines)"},
+     {"name": "waiver_in_force_at_t_w-", "mark": "CHANGED D2(b), D6", "attestation": "the full DCS v1 history over the window"},
+     {"name": "third_party_NIF_B_NIF_C", "mark": "NEW D2(d)"}
+    ],
+    "nif_requirement": "N-FORCE (NIF-A, NIF-B or the fallback) of: WP-4B acceptance not in force at t_w-; R-72 gate in force at t_w-; no waiver in force. DISJUNCTIVE if 'acceptance not in force' rests only on the status rule; UNDETERMINED without a source.",
+    "min_episodes": "1 (UNCHANGED)",
+    "falsifiers": {
+     "HD": "NOT_APPLICABLE to the R-89 episode (an authorizing act exists); elsewhere an instance of P1-HD, scored only there (CHANGED D12).",
+     "HB": "At t_w- (t_w = earliest WP-4C-1 execution trace): WP-4B acceptance not in force; R-72 gate in force; no waiver in force (including R-89, if in force and waiving the gate). The 1bb response clause is REMOVED D6 (moved to P8)."
+    },
+    "window": "[min(earliest recorded trace of R-72, earliest WP-4C-1 ET), min(WP-4C-1 acceptance in force, 2026-08-15)] (CHANGED D4).",
+    "ig_per_effort": "HIGH if Stage 0 finds a trace; LOW if not (PROPOSAL)."
+   },
+   {
+    "id": "P8",
+    "mark": "CHANGED D6, D8, D10, D12",
+    "hypothesis": "H-B remediation (UNCHANGED).",
+    "claim": "After a verified failure or deviation, including non-conformance (e.g. R11 if C1 = NON-CONFORMS), on an active target, a remediation act or an explicit deferral with trigger takes force before work on that target resumes (CHANGED D6; source: the draft P8 'verified failure/deviation record').",
+    "fields": [
+     {"name": "failure_or_deviation_record", "mark": "UNCHANGED", "attestation": "a failing CI run, commit or log entry; not the responding ruling; R-91 is the candidate"},
+     {"name": "active_target", "mark": "NEW D8", "attestation": "FR-D8"},
+     {"name": "next_execution_on_same_target", "mark": "UNCHANGED", "attestation": "an execution trace"},
+     {"name": "remediation_or_deferral_in_force", "mark": "CHANGED D1", "attestation": "NIF, or the fallback in a complete DCS"},
+     {"name": "references_to_R11_by_R91_R94", "mark": "NEW D6"},
+     {"name": "late_responses", "mark": "NEW D6"}
+    ],
+    "nif_requirement": "'No remediation or deferral in force' needs a complete DCS v1 or NIF-A; 'active target' needs N-FORCE of the authorization; otherwise UNDETERMINED.",
+    "min_episodes": "1, universal reading only; the tendency reading is NOT_TESTABLE_AS_SPECIFIED (CHANGED D10).",
+    "falsifiers": {
+     "HD": "This is P1; scored only there (CHANGED D12).",
+     "HB": "A verified failure or deviation on an active target, then a further execution trace on that target, with no remediation or deferral-with-trigger in force in between (UNCHANGED in substance)."
+    },
+    "window": "From the recording time of the failure or deviation to the next execution trace on the same target. No execution means the falsifier is not triggered. Later responses are recorded as LATE_RESPONSE. R11: from 16:10 (SOURCE_STATED) to the next WP-4B trace.",
+    "ig_per_effort": "LOW (PROPOSAL)"
+   }
+  ],
+  "nif_matrix": {
+   "mark": "NEW D1",
+   "rows": [
+    {"prediction": "P1", "limb": "HD", "required": "N-FORCE before and after, by NIF-A/NIF-B", "without": "NON-DISCRIMINATING (uptake is ACT only)"},
+    {"prediction": "P1", "limb": "HB (1a, 1b)", "required": "N-FORCE unchanged until the act, by NIF-A/NIF-B, over eligible targets", "without": "NON-DISCRIMINATING"},
+    {"prediction": "P2", "limb": "HB", "required": "non-permission at t_exec- by NIF-A, NIF-B or the graded fallback, with no status-rule dependence", "without": "DISJUNCTIVE if status-rule-dependent; UNDETERMINED if no source"},
+    {"prediction": "P4", "limb": "HD", "required": "R-89 in force while not adopted, by NIF-A/NIF-B", "without": "NON-DISCRIMINATING (work alone -> O4 DISJUNCTIVE)"},
+    {"prediction": "P5", "limb": "HD", "required": "R-94 applied as binding, by NIF-A/NIF-B, plus the capability norm at t_R94", "without": "DISJUNCTIVE if execution only; NON-DISCRIMINATING if capability unresolved"},
+    {"prediction": "P5", "limb": "HB (via P2)", "required": "R-94 not in force, by NIF-A or the fallback", "without": "DISJUNCTIVE"},
+    {"prediction": "P7", "limb": "HB", "required": "acceptance not in force, gate in force, no waiver, at t_w-, by NIF-A, NIF-B or the fallback", "without": "DISJUNCTIVE if status-rule-dependent; UNDETERMINED otherwise"},
+    {"prediction": "P7", "limb": "HD", "required": "-", "without": "NOT_APPLICABLE (R-89 episode); otherwise -> P1"},
+    {"prediction": "P8", "limb": "HB", "required": "remediation absent (complete DCS or NIF-A); target active", "without": "UNDETERMINED"},
+    {"prediction": "P8", "limb": "HD", "required": "-", "without": "-> P1"}
+   ]
+  },
+  "input_conflict": {
+   "mark": "CHANGED D14",
+   "text": "INFERENCE (IDENTIFIABILITY P7): R-89 very probably authorized WP-4C-1 before WP-4B was accepted. SOURCE FACT (C2): textual order R-87 before R-89. The conflict may be only apparent: 'section WP-4 remains OPEN' may refer to WP-4 as a whole, and C2's order is SOURCE_STATED_ORDER of drafting, not an order of entry into force. Only the N-FORCE of R-87 and R-89 settles it."
+  },
+  "feasibility": {
+   "mark": "UNCHANGED + CHANGED D11",
+   "candidates": ["K-REG write history, if versioned", "commits on WP-4B and WP-4C-1 (EC); CI runs, if they exist", "IMPLEMENTATION_PROGRESS.md revisions, if versioned", "queue, work plan, CONTEXT.md", "session logs S0804, S0815, later", "R-86 and R-90 text and status (R-90 UNKNOWN)", "channels found by Part C (NEW D1, D5)"],
+   "note": "These are candidates; each applies 'if it exists', with the artefact_fallbacks."
+  },
+  "contested_case_C1": {
+   "mark": "CHANGED D6, D9",
+   "acquire": ["full texts of R-73..R-76, R-78, R-80 (UNCHANGED)", "entry into force of R-77..R-80: an adoption form if status-mediated, else not earlier than recording time (CHANGED D9)", "the R11 diff, classified by a prior rule, with its time; git dates SOURCE_STATED; CI/server time if it exists (CHANGED D11)", "any scope text in force before 16:10 (UNCHANGED)", "R-87 text: OPTIONAL for C1, needed only for P8 (CHANGED D6)", "whether any permitting text (e.g. R-81..R-85) was recorded before 16:10 in PREPARED status, which feeds G-D1 (NEW D9, D1)"],
+   "decision_rule": "FR-D9: CONFORMS iff P and not B; NON-CONFORMS iff the texts R-72..R-80 were obtained and not (P and not B); UNDETERMINED iff a required text is unobtainable, or a deciding text's entry into force is NOT_IDENTIFIABLE relative to 16:10. Default: unauthorized unless P is shown; default scope of 'WP-4B REMAINS BLOCKED' = all WP-4B work, including RED.",
+   "bearing": "NON-CONFORMS bears against H-B conformance, regardless of R-87 (CHANGED D6). Grade: FIRED-CONDITIONAL (the maker's texts; SOURCE_STATED 16:10) unless NIF is available. DISJUNCTIVE if 'no permitting text before 16:10' relies on status mediation (R-81..R-85 via R-86). Any response goes to P8."
+  },
+  "status_mediation_upgrade": {
+   "mark": "CHANGED D13",
+   "current": "SOURCE FACT: 2 episodes, both self-declared (UNCHANGED).",
+   "required": ["0 (NEW D13): NIF-A for the status transition, if Part C finds such a channel", "1 (CHANGED D13): an adoption form AF-1/2/3 in DCS v1. This is the maker's own act; only its recording time and AUTH_ID are independent", "2 (CHANGED D1, D13): NIF-B uptake after adoption; NIF-C recorded only; executor work = ACT", "3 (CHANGED D13): an eligible contrast: pending dependent work in the prepared interval (preconditions met, queued or planned, with a system-recorded time); a complete EC shows no execution on it and no NIF-B before adoption. Otherwise VACUOUS."],
+   "rule": "FR-D13: independently observed iff (0), or (1) and (2) and (3). One contrary episode falsifies H-D's status clause; this tests H-D only (UNCHANGED)."
+  },
+  "ranking": {
+   "mark": "RELABELLED D14 (PROPOSAL); CHANGED D2, D3",
+   "items": [
+    {"rank": 0, "spec": "Stage 0: Part B + Part C", "value": "prerequisite; cheap; decides trace existence and NIF-A availability; closes DCS v1 and EC"},
+    {"rank": 1, "spec": "P4+P7 (R-89/R-87)", "value": "HIGH if a trace exists and NIF-A/NIF-B is obtainable; MEDIUM if a trace exists but only the fallback is available (P7-HB at most FIRED-CONDITIONAL, P4 NON-DISCRIMINATING); LOW if O0"},
+    {"rank": 2, "spec": "P2 (R11)", "value": "HIGH; one-sided; moves to rank 1 if O0"},
+    {"rank": 3, "spec": "P5 (R-94)", "value": "MEDIUM; compared on likely outcome (operational scope, neither hypothesis at risk); other branches need NIF or are DISJUNCTIVE. The 'only' claim is REMOVED D3"},
+    {"rank": 4, "spec": "P8 (R-91, R11)", "value": "LOW"},
+    {"rank": 5, "spec": "P1", "value": "LOW"}
+   ]
+  },
+  "smallest_acquisition": {
+   "mark": "CHANGED D1, D2, D3, D4; label PROPOSAL",
+   "stage_0": ["S0-a: Part B (does a WP-4C-1 execution trace exist in the capture; the earliest trace; labels; CITES_R89)", "S0-b: Part C (is there an independent norm-status channel; closes DCS v1 and EC)"],
+   "stage_1_condition": "Runs only if S0-a finds at least one ET-1 or ET-2.",
+   "stage_1": ["S1-a: R-89 text, including whether it waives or supersedes R-72's gate", "S1-b: the full DCS v1 write history over the P7 window: every AF-1/2/3 form, waiver and response entry for R-72, R-87, R-89, WP-4B acceptance and WP-4C-1, with writer and recording time", "S1-c: R-87 text and its N-FORCE (NIF or fallback)", "S1-d: R-72 text and gate N-FORCE at t_w", "S1-e: NIF-A records for R-89 and R-87 at t_w, if Part C found a channel", "S1-f: NIF-B applications and NIF-C citations of R-89 or of WP-4B's acceptance by third parties", "S1-g: the link from the earliest ET to R-89 (from Part B output)"],
+   "effort": "The whole DCS v1 write history over the window plus the NIF channel; not 'about 3 records' (CHANGED D2).",
+   "outcome_table": [
+    {"id": "O0", "observation": "Part B NOT-EVIDENCED-IN-CAPTURE or CAPTURE_INVALID", "scoring": "P4/P7 discriminate nothing; no falsifier can fire; P2 moves to rank 1"},
+    {"id": "O1", "observation": "trace; ACC before t_w; R-89 AD or F89 before t_w", "scoring": "neither falsified; C2's order confirmed as an order of force if NIF-graded, else it stays SOURCE_STATED"},
+    {"id": "O2", "observation": "trace; not ACC; G; not WV (R-89, if in force, does not waive the gate); premises by NIF", "scoring": "P7-HB FIRED (H-B conformance falsified); the response goes to P8"},
+    {"id": "O2c", "observation": "as O2 but premises by the graded fallback, with no status-rule dependence", "scoring": "P7-HB FIRED-CONDITIONAL (the maker's records)"},
+    {"id": "O3", "observation": "not AD (complete DCS v1, no late-recorded adoption); F89 by NIF-A/NIF-B in the non-adopted interval", "scoring": "P4-HD FIRED (H-D status clause falsified), whatever the work was"},
+    {"id": "O4", "observation": "trace cites R-89; not AD; no NIF about R-89 either way; not ACC or ACC unknown", "scoring": "DISJUNCTIVE {H-D status clause, H-B conformance}: at least one fails; which one is not identified"},
+    {"id": "O5", "observation": "not AD (complete); NIF-A shows R-89 not in force at t_w", "scoring": "work unauthorized: P7-HB / P2-type FIRED if G or the no-authorization baseline holds; H-D not at risk"},
+    {"id": "O6", "observation": "a required absence NOT-EVIDENCED-IN-CAPTURE, or a premise NOT_IDENTIFIABLE (late recording, clock anomaly)", "scoring": "UNDETERMINED for the affected falsifier"},
+    {"id": "O7", "observation": "trace does not cite R-89", "scoring": "P4-HD cannot fire through this work; P7-HB scored as O2/O2c/O5/O6"},
+    {"id": "O8", "observation": "only variant or LOCAL_ONLY hits", "scoring": "treated as O0 for scoring; escalated to the human for a protocol r2 decision"}
+   ],
+   "variables": "t_w = earliest ET; ACC = WP-4B acceptance in force at t_w-; G = R-72 gate in force at t_w-; WV = a waiver in force at t_w-; AD = an R-89 adoption form before t_w; F89 = R-89 in force at t_w by NIF-A/NIF-B.",
+   "removed": "The 1bb claim 'the only acquisition this small that puts both hypotheses at risk' (REMOVED D3)."
+  }
+ },
+ "rank0_protocol": {
+  "question": "Did WP-4C-1 work actually occur, and what is its earliest recorded trace? To be executed later by the frozen commands, then reviewed. Nothing has been run.",
+  "channels": {
+   "repository": "REPO = the git repository containing the corpus's R11 commit (message containing 'WP-4B RED'). UNKNOWN from the inputs: its path and URL. The human names REPO (and any further repositories) before the run; that list is the rank-0 execution-channel set; unnamed repositories are out of channel; one run per repository.",
+   "refs": "All refs after the pre-capture fetch (--all: heads, remotes, tags, notes, stash, others). Commits reachable from them are PRIMARY.",
+   "auxiliary_LOCAL_ONLY": ["commits reachable only from reflogs (--reflog)", "unreachable commit objects (git fsck --unreachable --no-reflogs)"],
+   "paths": "All paths; no restriction for message or diff search; each hit's path is recorded and classified; a separate path-name pass.",
+   "commit_parts": ["full message: subject, body, trailers (--grep)", "diff added/removed lines (-G): non-merge commits, plus merges vs first parent", "path names (pathspec)"],
+   "out_of_channel": ["CI run records", "hosting-server audit", "issue trackers", "unnamed repositories"]
+  },
+  "target": {
+   "primary_pattern_ERE": "(^|[^0-9A-Za-z-])WP-4C-1($|[^0-9A-Za-z])",
+   "case": "case-sensitive",
+   "aliases_permitted_by_sources": "none; the inputs use only 'WP-4C-1'",
+   "excluded": ["WP-4C-10, WP-4C-11, WP-4C-1a (right boundary)", "bare WP-4C", "WP-4, section WP-4, WP-4B", "identification via technical content (class names, 'hydrator', topics), which would be an inference"],
+   "variant_pattern_ERE_icase": "w[^0-9a-z]{0,2}p[^0-9a-z]{0,2}4[^0-9a-z]{0,2}c[^0-9a-z]{0,2}1($|[^0-9])",
+   "variant_rule": "VARIANT = VAR hits minus PAT hits; reported, never counted; variant-only results = O8, escalated for a protocol r2 decision; never reclassified ad hoc.",
+   "path_pass_rule": "A path counts as a primary hit only if the path string matches PAT; other path-pass hits go to the variant bucket."
+  },
+  "execution_trace": {
+   "path_classes": {
+    "DOC_GOV": "The path (case-insensitive) matches [.](md|markdown|txt|rst|adoc|org)$, or has a segment matching ^(docs?|governance|rulings?|decisions?|adrs?|sessions?|logs?|notes|plans?|planning|minutes)$.",
+    "NON_DOC": "Every other path (code, tests, build files, configuration, CI definitions)."
+   },
+   "classes": {
+    "ET-1": "PAT in the subject line or a trailer value AND the commit changes (A/M/D/R/C/T) at least one NON_DOC path. For merges: only if the first-parent diff has NON_DOC changes not present in any other hit commit.",
+    "ET-2": "Not ET-1, and one of: PAT only in the body with at least one NON_DOC path changed; PAT on an added line in a NON_DOC path; a NON_DOC path name matching PAT.",
+    "MENTION": "Any other primary hit: all occurrences in DOC_GOV paths, or in the message of a commit changing only DOC_GOV paths, or only on removed lines. Sub-labels (descriptive only): PLAN, RULING, REPORT (text reporting execution is a SOURCE_STATED report, not a trace), DOC, REMOVAL."
+   },
+   "flags": ["MIXED: the subject names another WP id matching WP-[0-9]+[A-Z]?(-[0-9]+)?", "CITES_R89", "LOCAL_ONLY", "SIGNED (gpgsig header present; independent of the keyring)"],
+   "never_traces": "Rulings, plans and documentation, even when they say work was done. CI runs would be traces but are out of channel for rank-0."
+  },
+  "timestamps": [
+   {"name": "author date %aI", "set_by": "git client at first commit; local clock or GIT_AUTHOR_DATE/--date; survives rebase, cherry-pick, amend", "can": "SOURCE_STATED authoring time; SOURCE_STATED_ORDER", "cannot": "real time, push time, decision time, entry into force, order vs norms"},
+   {"name": "committer date %cI", "set_by": "git client when this object was created; reset by rebase, amend, cherry-pick; GIT_COMMITTER_DATE", "can": "SOURCE_STATED creation time of the object", "cannot": "as for author date; not a server time"},
+   {"name": "ancestry", "set_by": "git object model (the parent hash is embedded)", "can": "RECORDING_ORDER: ancestor content existed before descendant creation", "cannot": "absolute time; order across unrelated branches; order vs events outside git"},
+   {"name": "reflog times", "set_by": "the worker's clone", "can": "when this clone's refs moved (LOCAL_ONLY)", "cannot": "anything about other clones or the server; they expire and can be rewritten"},
+   {"name": "signature timestamp", "set_by": "the signer's clock", "can": "a SOURCE_STATED time bound to a key", "cannot": "a server-verified time"},
+   {"name": "server push/receipt", "set_by": "the hosting server", "can": "- (not in git)", "cannot": "unavailable in rank-0; Part C checks existence"}
+  ],
+  "timestamp_rules": ["The earliest trace = the ancestry-minimal ET set; its times are reported as %aI and %cI, both SOURCE_STATED.", "CLOCK_ANOMALY: for an ancestry pair a < b with cI(b) < cI(a), date-based order involving them is NOT_IDENTIFIABLE.", "Order vs the decision or entry into force of any norm is always NOT_IDENTIFIABLE from this channel."],
+  "absence": {
+   "definition": "Positive control non-empty; capture valid; zero ET-1 and ET-2 among PRIMARY hits.",
+   "label": "NOT-EVIDENCED-IN-CAPTURE",
+   "why": ["--all sees only this clone's refs: deleted or force-pushed branches, unfetched refs and other repositories are invisible", "the search is identifier-based: unlabelled work is invisible; sensitivity beyond the positive control is unknown", "work may exist outside git (CI-only, uncommitted, other systems)", "the clone may be shallow or partial"],
+   "completeness_required_for_ABSENT_IN_COMPLETE_CHANNEL": ["C1: not shallow, no partial-clone filter (checked here)", "C2: every ls-remote object present locally (checked here)", "C3: server-side evidence of no ref deletion or force-push over the window (Part C, K-HOST-AUDIT)", "C4: an execution-channel rule, recorded in a channel independent of the executor, making REPO the sole channel for WP-4C-1 work and requiring the identifier in messages, with enforcement records (Part C)"],
+   "CAPTURE_INVALID": "Positive control empty, or C1 or C2 fails. This is not an absence."
+  },
+  "window": {
+   "lower_bound": "none (full history from root commits)",
+   "reason": "FR-D4: work before R-89's recording, or before R-72, is the strongest case against H-B. --since/--until filter on actor-set committer dates, and --since can stop the traversal early on clock skew.",
+   "upper_bound": "the ref snapshot at capture (01_refs.tsv), recorded and hashed",
+   "post_hoc_tags": "Descriptive only, by both SOURCE_STATED dates: PRE_R72_DATE (< 2026-08-02), CORPUS_SPAN (2026-08-02..2026-08-15), POST_CORPUS (> 2026-08-15). The P7 window is applied in Stage 1, not in the search."
+  },
+  "commands": {
+   "prerequisites": "git >= 2.31, bash, GNU coreutils; record git --version",
+   "rank0-fetch.sh": [
+    "#!/usr/bin/env bash",
+    "# rank0-fetch.sh -- frozen by SPEC-r1 Part B. Do not edit. Run from the root of the worker's clone of REPO.",
+    "set -euo pipefail",
+    "export LC_ALL=C TZ=UTC GIT_PAGER=cat",
+    "PRE=\"${PRE:?set PRE to a new empty directory}\"",
+    "mkdir -p \"$PRE\"",
+    "git fetch --all --tags --no-prune > \"$PRE/06_fetch.log\" 2>&1",
+    "for r in $(git remote); do git ls-remote --refs \"$r\" | sed \"s|^|$r |\"; done | sort > \"$PRE/07_ls_remote.txt\"",
+    "awk '{print $2}' \"$PRE/07_ls_remote.txt\" | sort -u | while read -r s; do if git cat-file -e \"$s\" 2>/dev/null; then echo \"present $s\"; else echo \"MISSING $s\"; fi; done > \"$PRE/08_remote_objects.txt\"",
+    "git bundle create \"$PRE/repo.bundle\" --all 2> \"$PRE/09_bundle_create.log\"",
+    "git bundle verify \"$PRE/repo.bundle\" > \"$PRE/09_bundle_verify.txt\" 2>&1",
+    "( cd \"$PRE\" && find . -type f | sort | xargs -r sha256sum ) > \"$PRE.SHA256SUMS\"",
+    "mv \"$PRE.SHA256SUMS\" \"$PRE/SHA256SUMS\""
+   ],
+   "rank0-wp4c1.sh": [
+    "#!/usr/bin/env bash",
+    "# rank0-wp4c1.sh -- frozen by SPEC-r1 Part B. Do not edit. Run from the root of a clone of REPO.",
+    "set -euo pipefail",
+    "export LC_ALL=C TZ=UTC GIT_PAGER=cat GIT_CONFIG_NOSYSTEM=1 GIT_NO_REPLACE_OBJECTS=1",
+    "OUT=\"${OUT:?set OUT to a new empty directory}\"",
+    "mkdir -p \"$OUT\"",
+    "g() { git --no-replace-objects -c core.quotepath=off -c log.showSignature=false -c log.mailmap=false -c diff.renames=false -c color.ui=never \"$@\"; }",
+    "hx() { { grep -hE '^[0-9a-f]{40}' \"$@\" || true; } | cut -f1 | sort -u; }",
+    "PAT='(^|[^0-9A-Za-z-])WP-4C-1($|[^0-9A-Za-z])'",
+    "VAR='w[^0-9a-z]{0,2}p[^0-9a-z]{0,2}4[^0-9a-z]{0,2}c[^0-9a-z]{0,2}1($|[^0-9])'",
+    "R72='(^|[^0-9A-Za-z-])R-72($|[^0-9])'",
+    "R87='(^|[^0-9A-Za-z-])R-87($|[^0-9])'",
+    "R89='(^|[^0-9A-Za-z-])R-89($|[^0-9])'",
+    "CTRL='WP-4B RED'",
+    "FMT='%H%x09%P%x09%an%x09%ae%x09%aI%x09%cn%x09%ce%x09%cI%x09%s'",
+    "# S0 capture identity",
+    "{ git --version; g rev-parse --show-toplevel; g rev-parse --is-shallow-repository; g config --get extensions.partialClone || echo 'partialClone=unset'; g config --get remote.origin.promisor || echo 'promisor=unset'; } > \"$OUT/00_env.txt\"",
+    "g for-each-ref --format='%(objectname)%09%(objecttype)%09%(refname)' | sort > \"$OUT/01_refs.tsv\"",
+    "g rev-list --all --count > \"$OUT/02_commit_count.txt\"",
+    "g replace -l | sort > \"$OUT/03_replace_refs.txt\"",
+    "g remote -v | sort > \"$OUT/04_remotes.txt\"",
+    "# S1 positive control (empty => CAPTURE_INVALID)",
+    "g log --all -F --grep=\"$CTRL\" --format=\"$FMT\" > \"$OUT/05_control.tsv\"",
+    "# S2 primary passes (all refs)",
+    "g log --all -E --grep=\"$PAT\" --format=\"$FMT\" > \"$OUT/10_msg.tsv\"",
+    "g log --all -E --grep=\"$PAT\" --format='%H%x1f%B%x1e' > \"$OUT/11_msg_bodies.txt\"",
+    "g log --all -E --grep=\"$PAT\" --format='%H%x1f%(trailers:unfold)%x1e' > \"$OUT/12_msg_trailers.txt\"",
+    "g log --all -G\"$PAT\" --no-ext-diff --no-textconv --format=\"$FMT\" --name-status > \"$OUT/13_diff.txt\"",
+    "g log --all --merges --diff-merges=first-parent -G\"$PAT\" --no-ext-diff --no-textconv --format=\"$FMT\" --name-status > \"$OUT/14_diff_merges.txt\"",
+    "g log --all --no-ext-diff --format=\"$FMT\" --name-status -- ':(glob,icase)**/*4c-1*' ':(glob,icase)**/*4c1*' ':(glob,icase)**/*4c_1*' > \"$OUT/15_paths.txt\"",
+    "# S3 variant passes (reported separately; never counted as primary)",
+    "g log --all -i -E --grep=\"$VAR\" --format=\"$FMT\" > \"$OUT/20_msg_variant.tsv\"",
+    "g log --all -i -G\"$VAR\" --no-ext-diff --no-textconv --format=\"$FMT\" --name-status > \"$OUT/21_diff_variant.txt\"",
+    "# S4 auxiliary LOCAL_ONLY channels",
+    "g log --reflog -E --grep=\"$PAT\" --format=\"$FMT\" > \"$OUT/30_reflog_msg.tsv\"",
+    "g log --reflog -G\"$PAT\" --no-ext-diff --no-textconv --format=\"$FMT\" --name-status > \"$OUT/31_reflog_diff.txt\"",
+    "{ g fsck --unreachable --no-reflogs --no-progress 2>/dev/null || true; } | { grep -E '^unreachable commit ' || true; } | cut -d' ' -f3 | sort > \"$OUT/32_unreachable.txt\"",
+    "if [ -s \"$OUT/32_unreachable.txt\" ]; then g log --no-walk --stdin -E --grep=\"$PAT\" --format=\"$FMT\" < \"$OUT/32_unreachable.txt\" > \"$OUT/33_unreachable_msg.tsv\"; else : > \"$OUT/33_unreachable_msg.tsv\"; fi",
+    "# S5 anchors: recording of ruling ids in REPO (never evidence of decision or force)",
+    "for id in R72 R87 R89; do",
+    "  p=\"${!id}\"",
+    "  g log --all -E --grep=\"$p\" --format=\"$FMT\" > \"$OUT/40_anchor_${id}_msg.tsv\"",
+    "  g log --all -G\"$p\" --no-ext-diff --no-textconv --format=\"$FMT\" --name-status > \"$OUT/41_anchor_${id}_diff.txt\"",
+    "done",
+    "# S6 hit set, details, matching lines, signatures, ancestry",
+    "hx \"$OUT/10_msg.tsv\" \"$OUT/13_diff.txt\" \"$OUT/14_diff_merges.txt\" > \"$OUT/90_hitset.txt\"",
+    "hx \"$OUT/05_control.tsv\" \"$OUT\"/40_anchor_*_msg.tsv \"$OUT\"/41_anchor_*_diff.txt > \"$OUT/90b_refset.txt\"",
+    "while read -r h; do echo \"== $h\"; g show --no-ext-diff --no-textconv --format=fuller --name-status \"$h\"; done < \"$OUT/90_hitset.txt\" > \"$OUT/93_details.txt\"",
+    "while read -r h; do echo \"== $h\"; g show --no-ext-diff --no-textconv --format= -U0 \"$h\" | awk -v pat=\"$PAT\" '/^[+][+][+] /{f=$2} /^[+-]/ && !/^([+][+][+]|---) / && $0 ~ pat {print f \" \" $0}'; done < \"$OUT/90_hitset.txt\" > \"$OUT/94_matching_lines.txt\"",
+    "while read -r h; do echo \"$h $(g cat-file commit \"$h\" | grep -c '^gpgsig' || true)\"; done < \"$OUT/90_hitset.txt\" > \"$OUT/92_sig_presence.txt\"",
+    "cat \"$OUT/90_hitset.txt\" \"$OUT/90b_refset.txt\" | sort -u > \"$OUT/95a_nodes.txt\"",
+    ": > \"$OUT/95_ancestry.txt\"",
+    "while read -r a; do while read -r b; do if [ \"$a\" != \"$b\" ] && g merge-base --is-ancestor \"$a\" \"$b\"; then echo \"$a $b\" >> \"$OUT/95_ancestry.txt\"; fi; done < \"$OUT/95a_nodes.txt\"; done < \"$OUT/95a_nodes.txt\"",
+    "awk 'NR==FNR{h[$1]=1; next} ($1 in h) && ($2 in h){print $2}' \"$OUT/90_hitset.txt\" \"$OUT/95_ancestry.txt\" | sort -u > \"$OUT/96_hits_with_hit_ancestor.txt\"",
+    "comm -23 \"$OUT/90_hitset.txt\" \"$OUT/96_hits_with_hit_ancestor.txt\" > \"$OUT/97_ancestry_minimal_hits.txt\"",
+    "# S7 hashing",
+    "cat \"$OUT/01_refs.tsv\" \"$OUT/90_hitset.txt\" | sha256sum | cut -d' ' -f1 > \"$OUT/98_canonical_key.txt\"",
+    "( cd \"$OUT\" && find . -type f | sort | xargs -r sha256sum ) > \"$OUT.SHA256SUMS\"",
+    "mv \"$OUT.SHA256SUMS\" \"$OUT/SHA256SUMS\"",
+    "sha256sum \"$OUT/SHA256SUMS\""
+   ],
+   "rank0-order.sh": [
+    "#!/usr/bin/env bash",
+    "# rank0-order.sh -- frozen by SPEC-r1 Part B. Do not edit.",
+    "set -euo pipefail",
+    "export LC_ALL=C",
+    "OUT=\"${OUT:?}\"; ET=\"${ET:?}\"",
+    "awk 'NR==FNR{h[$1]=1; next} ($1 in h) && ($2 in h){print $2}' \"$ET\" \"$OUT/95_ancestry.txt\" | sort -u > \"$OUT/99a_et_with_et_ancestor.txt\"",
+    "comm -23 \"$ET\" \"$OUT/99a_et_with_et_ancestor.txt\" > \"$OUT/99b_et_ancestry_minimal.txt\"",
+    "while read -r h; do git --no-replace-objects log -1 --format='%H%x09%aI%x09%cI' \"$h\"; done < \"$OUT/99b_et_ancestry_minimal.txt\" > \"$OUT/99c_et_minimal_dates.tsv\"",
+    "sha256sum \"$ET\" \"$OUT/99a_et_with_et_ancestor.txt\" \"$OUT/99b_et_ancestry_minimal.txt\" \"$OUT/99c_et_minimal_dates.tsv\" > \"$OUT/99_SHA256SUMS\""
+   ],
+   "hashing": "Every output file is hashed with SHA-256 into SHA256SUMS (and 99_SHA256SUMS); the SHA-256 of SHA256SUMS goes into the report. 98_canonical_key = SHA-256(refs snapshot || sorted hit set); it is independent of the git version, and runs on the same refs must match. repo.bundle is hashed in PRE/SHA256SUMS."
+  },
+  "procedure": {
+   "freeze": "The human names REPO. The reviewer extracts the three scripts verbatim from SPEC-r1.md and records their SHA-256 in FREEZE.txt. No rule changes after this point; a change means protocol r2, refrozen before any rerun.",
+   "worker": ["W1 verify script hashes vs FREEZE.txt; stop on mismatch", "W2 run rank0-fetch.sh in the working clone (PRE)", "W3 Run A: rank0-wp4c1.sh in the working clone (OUT_A), including LOCAL_ONLY channels", "W4 Run B: git clone --mirror PRE/repo.bundle rb; run rank0-wp4c1.sh there (OUT_B). PRIMARY results come from Run B; Run A's primary hit set must be a superset of Run B's; extras are LOCAL_ONLY", "W5 on any command error: stop, keep stderr, report CAPTURE_ERROR; no ad-hoc fixes", "W6 validity: 05_control non-empty; not shallow, no partial clone (C1); no MISSING in 08 (C2); else CAPTURE_INVALID", "W7 classify every hit in 90_hitset per execution_trace; write CLASSIFICATION.tsv (hash, class, flags, rule clause, path classes, %aI, %cI, date tag, signature presence)", "W8 write the ET list; run rank0-order.sh; assign order labels", "W9 write RANK0-REPORT.md: labels, SHA-256 of each SHA256SUMS, canonical key, variant and LOCAL_ONLY counts, date tags; no statement about the hypotheses (the O0-O8 mapping is a separate step after acceptance)"],
+   "reviewer": ["independent: no shared session; does not see the worker's classification before R3", "R1 verify the script hashes, all SHA256SUMS and the bundle hash", "R2 mirror-clone the same bundle, rerun rank0-wp4c1.sh; byte-identical with the same git version, otherwise the same 98_canonical_key", "R3 classify blind, then compare; resolve only by quoting the rule clause; unresolved cases = DISPUTED, passed to the human; never silently choose the worse class", "R4 check the positive control, C1/C2, that variants are not counted, and that the absence wording is exactly NOT-EVIDENCED-IN-CAPTURE unless C3 and C4 are shown", "R5 check that nothing goes beyond the labels and no git time is presented as a decision time or entry into force", "R6 verdict: ACCEPT / ACCEPT_WITH_CORRECTIONS / REJECT"],
+   "constraint": "Neither role widens the search; new ideas are written down as proposals for protocol r2."
+  },
+  "output_labels": {
+   "existence": ["EXECUTION_TRACE_FOUND (ET-1/ET-2 counts)", "MENTION_ONLY", "NOT-EVIDENCED-IN-CAPTURE", "ABSENT_IN_COMPLETE_CHANNEL (only with C1-C4)", "CAPTURE_INVALID", "CAPTURE_ERROR"],
+   "qualifiers": ["VARIANT_HITS_PRESENT(n)", "LOCAL_ONLY_HITS(n)"],
+   "earliest_trace": "The ancestry-minimal ET set (99b), with SOURCE_STATED %aI and %cI.",
+   "order": {
+    "RECORDING_ORDER": "the pair is in 95_ancestry.txt",
+    "SOURCE_STATED_ORDER": "no ancestry; author-date and committer-date orders agree; no CLOCK_ANOMALY. Also textual orders ('after R-87', cherry-pick trailers)",
+    "INFERRED_ORDER": "only via a chain combining RECORDING and SOURCE_STATED links, written out",
+    "NOT_IDENTIFIABLE": "otherwise; dates disagree; CLOCK_ANOMALY; the other event is outside git"
+   },
+   "always_not_identifiable": "The order of any WP-4C-1 trace vs the decision or entry into force of R-72, R-87, R-89 or WP-4B's acceptance. Anchor commits show only when text containing those ids was recorded in REPO."
+  }
+ },
+ "scoping_protocol": {
+  "question": "Does an independent record of the norm in force exist, maintained by someone other than the norm-maker, the executor or the self-asserting ruling? Answer only Q1-Q8. No general archaeology.",
+  "restraint": {
+   "allowed_outputs": ["existence (yes/no/HTTP status)", "path lists", "counts", "earliest/latest timestamps", "access-level categories (roles, not names)", "configuration flags", "CODEOWNERS lines"],
+   "prohibited": ["register or ruling contents", "session-log contents", "commit diffs", "CI job logs", "MR discussions", "issue contents", "following links", "searching WP identifiers (Part B's job)"],
+   "stop_rule": "Stop when all commands have run; any new candidate is recorded as CANDIDATE_NOT_CHECKED for a human decision.",
+   "timing": "Before Stage 1, in parallel with Part B; the result closes DCS v1 and EC."
+  },
+  "candidate_channels": [
+   {"id": "K-REG", "where": "REPO paths matching register/ruling/decision", "why": "Reference channel; the norm-maker's channel, not independent by construction; determines DCS completeness"},
+   {"id": "K-CFG", "where": "CODEOWNERS, .github/CODEOWNERS, .gitlab/CODEOWNERS, docs/CODEOWNERS", "why": "configured control over approval of register changes"},
+   {"id": "K-CI", "where": ".gitlab-ci.yml, .github/workflows/, Jenkinsfile, .circleci/, azure-pipelines.yml, .drone.yml, bitbucket-pipelines.yml, .buildkite/, .woodpecker(.yml|/); server pipelines", "why": "system-timestamped work records; possible policy gates"},
+   {"id": "K-HOOK", "where": ".githooks/, .husky/, .pre-commit-config.yaml, (.)lefthook.yml, core.hooksPath; local .git/hooks (LOCAL_ONLY)", "why": "machine enforcement of message and identity rules (C4)"},
+   {"id": "K-STATUS", "where": "tree paths matching the status regex", "why": "a possible norm-status file; usually maker- or executor-written"},
+   {"id": "K-SIG", "where": "commit/tag signatures; refs/notes", "why": "AUTH_ID; an attestation layer"},
+   {"id": "K-HOST-CFG", "where": "protected branches, push rules, approval rules (server)", "why": "server-enforced coverage (Q6) and control (Q3)"},
+   {"id": "K-HOST-MR", "where": "merge/pull request records (server)", "why": "server-timestamped approval events"},
+   {"id": "K-HOST-AUDIT", "where": "audit and event logs (server)", "why": "server time; independent of the actors; retention; integrity (C3)"},
+   {"id": "K-HOST-MEMBERS", "where": "membership roles (server)", "why": "who can write or alter each channel (Q3, I1, I4)"}
+  ],
+  "commands": {
+   "scope-nsc.sh": [
+    "#!/usr/bin/env bash",
+    "# scope-nsc.sh -- frozen by SPEC-r1 Part C. Existence/metadata only. Do not edit. Run from REPO root.",
+    "set -euo pipefail",
+    "export LC_ALL=C TZ=UTC GIT_PAGER=cat GIT_CONFIG_NOSYSTEM=1",
+    "OUT=\"${OUT:?set OUT to a new empty directory}\"",
+    "mkdir -p \"$OUT\"",
+    "g() { git --no-replace-objects -c core.quotepath=off -c color.ui=never \"$@\"; }",
+    "DEF=\"$(g symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null || g rev-parse --abbrev-ref HEAD)\"",
+    "echo \"$DEF $(g rev-parse \"$DEF\")\" > \"$OUT/50_tree_ref.txt\"",
+    "g ls-tree -r --name-only \"$DEF\" | sort > \"$OUT/51_tree_paths.txt\"",
+    "STATUS_RE='(status|audit|ledger|adopt|in[-_]?force|norm|register|ruling|decision|approval|sign[-_]?off|queue|work[-_]?plan|context|progress)'",
+    "CFG_RE='(^|/)CODEOWNERS$'",
+    "CI_RE='^([.]gitlab-ci[.]yml|[.]github/workflows/|Jenkinsfile$|[.]circleci/|azure-pipelines[.]yml$|[.]drone[.]yml$|bitbucket-pipelines[.]yml$|[.]buildkite/|[.]woodpecker([.]yml$|/))'",
+    "HOOK_RE='^([.]githooks/|[.]husky/|[.]pre-commit-config[.]yaml$|[.]?lefthook[.]yml$)'",
+    "{ grep -iE \"$STATUS_RE\" \"$OUT/51_tree_paths.txt\" || true; } > \"$OUT/52_K-STATUS_paths.txt\"",
+    "{ grep -E \"$CFG_RE\" \"$OUT/51_tree_paths.txt\" || true; } > \"$OUT/53_K-CFG_paths.txt\"",
+    "{ grep -E \"$CI_RE\" \"$OUT/51_tree_paths.txt\" || true; } > \"$OUT/54_K-CI_paths.txt\"",
+    "{ grep -E \"$HOOK_RE\" \"$OUT/51_tree_paths.txt\" || true; } > \"$OUT/55_K-HOOK_paths.txt\"",
+    "while read -r p; do echo \"== $p\"; g show \"$DEF:$p\"; done < \"$OUT/53_K-CFG_paths.txt\" > \"$OUT/56_codeowners_content.txt\"",
+    "{ g config --get core.hooksPath || echo 'hooksPath=unset'; ls -1 .git/hooks 2>/dev/null | { grep -v '[.]sample$' || true; }; } > \"$OUT/57_local_hooks_LOCAL_ONLY.txt\"",
+    "for f in 52_K-STATUS 53_K-CFG 54_K-CI 55_K-HOOK; do",
+    "  while read -r p; do echo \"== $p\"; g log --all --diff-filter=A --format='%H%x09%aI%x09%cI' -- \"$p\" | tail -n 1; g log --all --format='%an%x09%ae' -- \"$p\" | sort | uniq -c | sort -rn; done < \"$OUT/$f\"_paths.txt",
+    "done > \"$OUT/58_path_history_meta.txt\"",
+    "g log --all --format='%H' | while read -r h; do if g cat-file commit \"$h\" | grep -q '^gpgsig'; then echo S; else echo U; fi; done | sort | uniq -c > \"$OUT/59a_commit_sig_counts.txt\"",
+    "g for-each-ref refs/tags --format='%(objecttype) %(refname)' | awk '{print $1}' | sort | uniq -c > \"$OUT/59b_tag_types.txt\"",
+    "g for-each-ref refs/notes --format='%(refname)' > \"$OUT/59c_notes_refs.txt\"",
+    "g remote -v | sort > \"$OUT/59d_remotes.txt\"",
+    "HOST=none",
+    "if grep -qi 'gitlab' \"$OUT/59d_remotes.txt\"; then HOST=gitlab; elif grep -qi 'github[.]com' \"$OUT/59d_remotes.txt\"; then HOST=github; fi",
+    "echo \"$HOST\" > \"$OUT/60_host.txt\"",
+    ": > \"$OUT/61_api_status.txt\"",
+    "api() {",
+    "  if [ \"$HOST\" = gitlab ]; then cmd=(glab api \"$2\"); else cmd=(gh api \"$2\"); fi",
+    "  if \"${cmd[@]}\" > \"$OUT/tmp.json\" 2> \"$OUT/62_$1.err\"; then jq -S \"$3\" \"$OUT/tmp.json\" > \"$OUT/62_$1.json\"; echo \"$1 OK\" >> \"$OUT/61_api_status.txt\"; else echo \"$1 FAIL $(head -c 200 \"$OUT/62_$1.err\" | tr '\\n' ' ')\" >> \"$OUT/61_api_status.txt\"; fi",
+    "  rm -f \"$OUT/tmp.json\"",
+    "}",
+    "if [ \"$HOST\" = gitlab ]; then",
+    "  api project 'projects/:id' '{id, path_with_namespace, default_branch, created_at, merge_requests_enabled, only_allow_merge_if_pipeline_succeeds, merge_method}'",
+    "  api protected_branches 'projects/:id/protected_branches' '[.[] | {name, allow_force_push, code_owner_approval_required, push: [.push_access_levels[]?.access_level_description], merge: [.merge_access_levels[]?.access_level_description]}]'",
+    "  api push_rule 'projects/:id/push_rule' '{commit_message_regex, reject_unsigned_commits, commit_committer_check, member_check}'",
+    "  api approval_rules 'projects/:id/approval_rules' '[.[] | {name, rule_type, approvals_required}]'",
+    "  api audit_before_window 'projects/:id/audit_events?created_before=2026-08-02T00:00:00Z&per_page=1' '[.[] | .created_at]'",
+    "  api audit_in_window 'projects/:id/audit_events?created_after=2026-08-01T00:00:00Z&created_before=2026-08-16T00:00:00Z&per_page=1' '[.[] | .created_at]'",
+    "  api events_before_window 'projects/:id/events?before=2026-08-02&per_page=1' '[.[] | .created_at]'",
+    "  api pipelines_in_window 'projects/:id/pipelines?updated_after=2026-08-01T00:00:00Z&updated_before=2026-08-16T00:00:00Z&per_page=1' '[.[] | {created_at, source}]'",
+    "  api mrs_in_window 'projects/:id/merge_requests?state=all&created_after=2026-08-01T00:00:00Z&created_before=2026-08-16T00:00:00Z&per_page=1' '[.[] | {created_at, merged_at}]'",
+    "  api member_roles 'projects/:id/members/all?per_page=100' '[.[] | .access_level] | group_by(.) | map({level: .[0], n: length})'",
+    "elif [ \"$HOST\" = github ]; then",
+    "  api repo 'repos/{owner}/{repo}' '{full_name, default_branch, created_at, allow_merge_commit, allow_squash_merge, allow_rebase_merge}'",
+    "  api branch_protection \"repos/{owner}/{repo}/branches/${DEF#origin/}/protection\" '{required_signatures: .required_signatures.enabled, enforce_admins: .enforce_admins.enabled, reviews: .required_pull_request_reviews.required_approving_review_count, codeowners: .required_pull_request_reviews.require_code_owner_reviews, allow_force_pushes: .allow_force_pushes.enabled}'",
+    "  api rulesets 'repos/{owner}/{repo}/rulesets' '[.[] | {name, target, enforcement}]'",
+    "  api runs_in_window 'repos/{owner}/{repo}/actions/runs?created=2026-08-01..2026-08-15&per_page=1' '{total_count}'",
+    "  api pulls_first 'repos/{owner}/{repo}/pulls?state=all&per_page=1&direction=asc' '[.[] | .created_at]'",
+    "  api collaborator_roles 'repos/{owner}/{repo}/collaborators?per_page=100' '[.[] | .role_name] | group_by(.) | map({role: .[0], n: length})'",
+    "fi",
+    "( cd \"$OUT\" && find . -type f | sort | xargs -r sha256sum ) > \"$OUT.SHA256SUMS\"",
+    "mv \"$OUT.SHA256SUMS\" \"$OUT/SHA256SUMS\"",
+    "sha256sum \"$OUT/SHA256SUMS\""
+   ],
+   "notes": ["HOST = none: all K-HOST-* channels = SERVER_CHANNELS_UNCHECKED, Q1 = UNKNOWN", "an API FAIL with 401/403/404 = NOT_ACCESSIBLE, never NO", "API projections are hashed; their reproducibility is LIMITED (server data change)"]
+  },
+  "criteria": {
+   "independence": {
+    "I1": "writer: entries written by a process or actor that is not the maker/adopter (DA, Chief), not the executor (engineering), and not the ruling (e.g. hosting server, CI system, independent secretariat)",
+    "I2": "derivation: entries are not copies or summaries of the rulings' self-statements",
+    "I3": "clock: timestamps generated by the channel's system, not by the writer's client",
+    "I4": "integrity: maker and executor cannot silently alter or delete entries (append-only, or audited changes)",
+    "grades": "INDEPENDENT = I1-I4 all hold; PARTIAL(list) = at least one holds; NOT_INDEPENDENT = none holds",
+    "note": "A channel that records a maker's act (e.g. an MR approval by the DA) can be PARTIAL (I3 and I4 for time and identity), but it is not an independent record of the norm in force (FR-D13)."
+   },
+   "completeness": {
+    "window": "2026-08-02..2026-08-15, per event type",
+    "K1": "coverage: the event type is required to pass through the channel (e.g. a protected branch with no direct push; a mandatory MR)",
+    "K2": "retention: records exist from before the window start (before-window queries are non-empty)",
+    "K3": "config stability: coverage configuration unchanged over the window (needs the audit log; the current configuration does not show the configuration then in force, per M-TIME)",
+    "K4": "integrity: I4, or the audit log shows no deletions",
+    "grades": "COMPLETE_SHOWN = K1-K4 all hold; PARTIAL(list); UNKNOWN"
+   }
+  },
+  "questions": [
+   {"q": 1, "text": "Does such a channel exist?", "vocabulary": ["YES", "NO", "NOT_ACCESSIBLE", "UNKNOWN"], "derived_from": "path lists 52-55; API status 61"},
+   {"q": 2, "text": "What does it record?", "vocabulary": ["NORM_STATE", "ADOPTION_EVENT", "APPROVAL_EVENT", "WORK_EVENT", "CONFIG_RULE", "IDENTITY_ATTESTATION", "UNKNOWN_CONTENT"], "derived_from": "the channel type, not its content (K-STATUS = UNKNOWN_CONTENT)"},
+   {"q": 3, "text": "Who controls it?", "vocabulary": ["HOSTING_SYSTEM", "CI_SYSTEM", "NORM_MAKER", "EXECUTOR", "MIXED", "UNKNOWN"], "derived_from": "member roles, protected-branch levels, CODEOWNERS, path-history author metadata (ACTOR_SET_ID; indicative only)"},
+   {"q": 4, "text": "Are its timestamps independently generated?", "vocabulary": ["SYSTEM_GENERATED", "CLIENT_SET", "NONE", "UNKNOWN"], "derived_from": "channel type (git = CLIENT_SET; server API = SYSTEM_GENERATED)"},
+   {"q": 5, "text": "Can it establish the norm in force at time t?", "vocabulary": ["YES", "PARTIAL", "NO"], "derived_from": "YES iff it records NORM_STATE with I3 and K2 covers t; PARTIAL iff only ADOPTION_EVENT or APPROVAL_EVENT times; else NO"},
+   {"q": 6, "text": "How complete is it?", "vocabulary": ["COMPLETE_SHOWN", "PARTIAL(K-list)", "UNKNOWN"], "derived_from": "K1-K4"},
+   {"q": 7, "text": "How independent is it?", "vocabulary": ["INDEPENDENT", "PARTIAL(I-list)", "NOT_INDEPENDENT"], "derived_from": "I1-I4"},
+   {"q": 8, "text": "Can it be reproduced and verified?", "vocabulary": ["YES", "LIMITED", "NO"], "derived_from": "content-addressed, or re-queryable with the stated access = YES; access-restricted, mutable or retention-limited = LIMITED"}
+  ],
+  "overall_result": "NIF_A_CHANNEL_EXISTS iff some channel has Q1 = YES, Q5 = YES, Q7 = INDEPENDENT and Q6 != UNKNOWN; otherwise NO_NIF_A_CHANNEL_IN_CHECKED_SET (noting SERVER_CHANNELS_UNCHECKED where it applies).",
+  "consequences": ["If NO_NIF_A_CHANNEL_IN_CHECKED_SET: predictions whose nif_matrix requirement accepts only NIF-A fall to 'without'; those accepting NIF-B stay open until Stage 1", "DCS v1 += every channel with Q2 containing ADOPTION_EVENT or APPROVAL_EVENT", "EC += CI run history if Q1 = YES", "Part B C3 is satisfied only by K-HOST-AUDIT; C4 only by K-HOOK or K-HOST-CFG with a commit-message rule plus K3"],
+  "procedure": "As in Part B: the script hash is frozen in FREEZE.txt; one run; the reviewer checks that every answer cell cites its output file, that no prohibited content was read, reruns the git part (files 50-59) and compares hashes; the API part is compared by status and projection shape.",
+  "output": "SCOPING-REPORT.md: one row per K-* channel answering Q1-Q8; the overall result; the resulting DCS v1 and EC; the SHA-256 of SHA256SUMS."
+ }
+}

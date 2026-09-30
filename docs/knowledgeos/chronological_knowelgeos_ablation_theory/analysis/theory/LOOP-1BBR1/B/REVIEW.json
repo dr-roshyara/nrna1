@@ -1,0 +1,125 @@
+{
+  "verdict": "FAIL",
+  "verdict_by_component": {
+    "spec_repair": "PASS_WITH_LIMITATIONS",
+    "rank0_protocol": "FAIL (must not be executed)",
+    "scoping_protocol": "PASS_WITH_LIMITATIONS (may be executed; negative overall result must be read as not determinable)"
+  },
+  "review_limits": [
+    "SPEC-1bb, HYPOTHESES, IDENTIFIABILITY, CONFORMANCE-CASE and STATE are not permitted inputs, so UNCHANGED marks, CHANGELOG 'before' entries and source quotes cannot be checked against the originals.",
+    "Statements about git behaviour come from knowledge of git, not from running it; confidence is stated per issue."
+  ],
+  "defects_status": {
+    "D1": "PARTIAL",
+    "D2": "PARTIAL",
+    "D3": "FIXED",
+    "D4": "FIXED",
+    "D5": "PARTIAL",
+    "D6": "FIXED",
+    "D7": "FIXED",
+    "D8": "PARTIAL",
+    "D9": "PARTIAL",
+    "D10": "FIXED",
+    "D11": "FIXED",
+    "D12": "FIXED",
+    "D13": "FIXED",
+    "D14": "FIXED"
+  },
+  "defects_notes": {
+    "D1": "Six distinctions, NIF tiers, G-D1 and the per-prediction matrix are real. But NIF-B is behavioural and both hypotheses explain it (N1); G-D1 misses the act-exclusivity premise (N2); the fallback is applied asymmetrically (N3).",
+    "D2": "The two-stage design and O0 are real. The outcome table is neither exhaustive nor exclusive, and O5 lacks the not-ACC condition (N7). O0 wrongly drops P4 (N8).",
+    "D4": "Fixed. Residual: waivers recorded before the window start are not acquired (N10).",
+    "D5": "(b) late recording is not operational, because S1-b is bounded by the window and acts that do not state an effect date are not covered (N9). (c) The 'already governs' classification is frozen against H-D without a scored sensitivity result (N4).",
+    "D6": "Fixed. The promised check of R-91/R-94 referring to R11 is not a Stage 1 item (N11).",
+    "D8": "Named fields added. The P1 satisfaction rule is deferred, not frozen (N12). The rest of the review JSON cannot be checked because it is not an input.",
+    "D9": "The fallback is only a lower bound and conflicts with M-TIME, and the verdicts are not exclusive (N5). An absence that is not shown gives NON-CONFORMS (N6). The default carries H-D (N2).",
+    "D13": "Fixed as the reviewer asked, but FR-D13(2) relies on NIF-B, so N1 carries over."
+  },
+  "new_defects": [
+    {"id": "N1", "class": "formal reasoning; independence", "where": "SPEC-r1 §0.4 NIF-B; §0.3 N-FORCE; §5 O3; FR-D13(2)", "defect": "Third-party application (NIF-B) is behaviour that both hypotheses explain (H-D: the third party acted contrary to the norm or erred; H-B: practice changed the norm). Yet it establishes N-FORCE[OPERATIONAL] and fires P4-HD in O3. This collapses distinction 4 into distinction 2. Downgrading only when the application is expressly voided makes silence count as force.", "fix": "Extend G-D1 to any behaviour. A force premise that rests only on NIF-B is DISJUNCTIVE. Only NIF-A can give FIRED."},
+    {"id": "N2", "class": "formal reasoning; substantive", "where": "§0.3 ACT-CONTRA; graded fallback; FR-D9 default; O5 baseline", "defect": "G-D1 catches only H-D's status rule. The inference 'no permitting act in a complete DCS => not permitted' presupposes H-D's act-exclusivity clause (P1). Under H-B reading 1, a permission can arise from work without an act. So P2, C1 and O5 falsify H-B on an H-D premise.", "fix": "Add G-D1(c): a non-permission premise derived from the absence of a permitting act grades DISJUNCTIVE {H-D P1, H-B conformance} unless NIF-A shows the state."},
+    {"id": "N3", "class": "formal reasoning", "where": "§1.7 P2, P5-HB and P7 rows vs the P4 row", "defect": "The maker's records are admitted as a FIRED-CONDITIONAL fallback against H-B, but a maker force assertion is barred even conditionally against H-D. TASK requires NIF or NON-DISCRIMINATING; the fallback is neither, and it is offered to one side only.", "fix": "Apply the fallback symmetrically or not at all."},
+    {"id": "N4", "class": "source interpretation", "where": "§0.6 adoption forms; D5(4)", "defect": "The sole adopter's 'R-89 already governs' is frozen as non-adoption, and the sensitivity result is never scored. Together with N1, O3 falsifies H-D in a scenario H-D explains (the DA declares R-89 governing and a third party applies it).", "fix": "Label the classification PROPOSAL/UNKNOWN. Score O3 only if it holds under both classifications; otherwise FIRED-CONDITIONAL."},
+    {"id": "N5", "class": "formal reasoning; M-TIME", "where": "FR-D9 entry-into-force fallback", "defect": "'Not earlier than recording time' is not implied by the inputs (decision and effect can precede recording) and is only a lower bound. So 'in force before 16:10' can never be shown. P is then unshowable, and NON-CONFORMS and UNDETERMINED can hold at once, so the verdict is not a function.", "fix": "Give the verdicts a precedence with UNDETERMINED first. Without an upper bound on entry into force, P and B are NOT_IDENTIFIABLE."},
+    {"id": "N6", "class": "formal reasoning; evidence scope", "where": "FR-D9 P ('no unresolved governance blockers')", "defect": "Showing P requires an absence that §0.8 makes practically unshowable. Failing to show it gives NON-CONFORMS, so an H-B falsifier fires on NOT-EVIDENCED-IN-CAPTURE. This contradicts §0.8, FR-D5(e) and D9's own sufficiency claim.", "fix": "An absence that is not evidenced gives UNDETERMINED."},
+    {"id": "N7", "class": "formal reasoning", "where": "§5 outcome table", "defect": "No row for {trace cites R-89, ACC, not AD, no NIF} or for not-G. MENTION_ONLY and CAPTURE_ERROR are unmapped. O5 lacks not-ACC, so it fires P7-HB/P2 when WP-4B acceptance is in force and the gate is satisfied. The joint firing of O2 and O3, and the precedence of O6, are unstated.", "fix": "Rebuild the table as an ordered decision procedure; add not-ACC to O5."},
+    {"id": "N8", "class": "formal reasoning; evidence scope", "where": "FR-D2; O0; Stage 1 gate", "defect": "After D1, P4-HD (O3) no longer depends on work, but O0 drops P4 and S1-e/S1-f run only if a WP-4C-1 trace exists.", "fix": "Ungate the P4 items."},
+    {"id": "N9", "class": "evidence scope", "where": "FR-D5(b); S1-b", "defect": "Acts recorded after the window are never acquired, so the late-recording rule cannot fire. Late-recorded acts that do not state an effect date are not covered.", "fix": "Read the full DCS history up to capture; treat post-window acts on the target as possibly late."},
+    {"id": "N10", "class": "evidence scope", "where": "S1-b; P7 WV", "defect": "Waivers recorded before the window start are not acquired, although 'no waiver in force at t_w-' needs them.", "fix": "Read the waiver history from the root."},
+    {"id": "N11", "class": "evidence scope", "where": "D6 vs §5", "defect": "The check of R-91/R-94 referring to R11 is promised but appears in no Stage 1 item, and Stage 1 is gated on a WP-4C-1 trace.", "fix": "Add it as a P8 item, not gated."},
+    {"id": "N12", "class": "coding", "where": "FR-D8 P1 eligibility", "defect": "The per-clause satisfaction rule is deferred to 'before Stage 1', so it is not frozen now. The eligibility definition also derives H-B's work condition from the text of acts.", "fix": "Freeze the rules now, or mark P1 NOT_FROZEN."},
+    {"id": "N13", "class": "wording", "where": "§0.9 grades; §0.3 N-KNOWN; §0.6 vs C.5", "defect": "The grade vocabulary omits NON-DISCRIMINATING, LEGITIMATED, VACUOUS, ONE-SIDED and NOT_TESTABLE_AS_SPECIFIED. N-KNOWN is 'known or claimed', which merges factive knowledge with assertion. DCS v1 membership is inconsistent (NORM_STATE).", "fix": "Harmonise."}
+  ],
+  "d1_assessment": {
+    "nif_specified_per_prediction": true,
+    "dual_explainable_observation_still_used_as_discriminator": true,
+    "instances": [
+      "NIF-B (third-party application) fires P4-HD in O3 and establishes N-FORCE elsewhere (N1).",
+      "The absence of a permitting act is used to establish non-permission against H-B (ACT-CONTRA, fallback, C1 default, O5) without G-D1 protection (N2)."
+    ],
+    "fallback_is_independent": false,
+    "fallback_note": "The graded fallback (the maker's records) is not an independent observable. It is offered for the H-B limbs only (N3), which departs from TASK's 'NIF or NON-DISCRIMINATING'.",
+    "six_distinctions": {
+      "norm_exists": "kept",
+      "norm_in_force": "partly collapsed: established by NIF-B (distinction 4 -> 2) and by absence of a text (distinction 1 -> 2 via ACT-CONTRA)",
+      "known_in_force": "wording: 'known or claimed' is non-factive",
+      "act_according_to": "kept for the executor; merged into in-force for third parties",
+      "act_contrary_to": "partly: derivable from 'no permitting act', which presupposes H-D P1",
+      "change_without_act": "mostly kept; with NIF-B, it reduces to a change in third-party behaviour"
+    },
+    "status": "PARTIAL"
+  },
+  "smuggling": {
+    "HD": "PARTIAL: through the act-exclusivity baseline ('no permitting act => not permitted') in ACT-CONTRA, the graded fallback, the FR-D9 default and O5 (N2), and through the asymmetric admission of the maker's records against H-B only (N3).",
+    "HB": "YES (overcorrection in P4/O3): NIF-B treats practice as force (N1), and the sole adopter's 'already governs' is frozen as non-adoption with an unscored sensitivity result (N4). Together they let P4-HD fire in an H-D-consistent scenario."
+  },
+  "rank0_protocol": {
+    "executable": false,
+    "verdict": "FAIL",
+    "m_time_respected": true,
+    "absence_handled_as_not_evidenced_in_capture": true,
+    "target_matching": "Over-inclusive via ET-1/ET-2 mentions and governance data files (R0-5). Under-inclusive via untokened work (disclosed), ref names (R0-8), multibyte hyphens (R0-4) and unfetched MR/PR refs (R0-2). The exclusions are correct.",
+    "trace_vs_mention_operational": "In principle yes (path-class rule plus message position), but miscalibrated (R0-5) and not operational for merges (R0-6).",
+    "issues": [
+      {"id": "R0-1", "class": "coding", "blocking": true, "confidence": "high", "issue": "Run B runs rank0-wp4c1.sh in a bare mirror clone. 'git rev-parse --show-toplevel' dies outside a work tree (git >= 2.25; the prerequisite is >= 2.31), and set -e aborts the script at 00_env.txt.", "failure_scenario": "Every Run B gives CAPTURE_ERROR under W5. PRIMARY results come from Run B, so no valid output is possible; the reviewer's R2 rerun fails the same way. Ad-hoc fixes are forbidden."},
+      {"id": "R0-2", "class": "evidence scope; coding", "blocking": true, "confidence": "high (GitHub refs/pull/*/merge); high (GitLab refs/merge-requests of squash-merged or deleted branches)", "issue": "The C2 check lists all advertised refs with ls-remote, but the fetch uses the default refspecs only.", "failure_scenario": "A hosted repository with PRs or MRs gives MISSING in 08_remote_objects.txt, so C2 fails and the capture is CAPTURE_INVALID. Unmerged or squashed MR work on WP-4C-1 is never searched, although B.1 claims all refs. refs/notes is claimed but not fetched."},
+      {"id": "R0-3", "class": "coding", "blocking": false, "issue": "15_paths.txt hits are not in 90_hitset.txt, so the ET-2 path clause has no details or ancestry. Such ETs would appear ancestry-minimal in rank0-order.sh when they are not."},
+      {"id": "R0-4", "class": "coding", "blocking": false, "issue": "Under LC_ALL=C, VAR's [^0-9a-z]{0,2} counts bytes. U+2010, U+2011 and U+2013 are 3 bytes, so non-ASCII-hyphen variants are missed, contrary to B.2."},
+      {"id": "R0-5", "class": "coding", "blocking": false, "issue": "Over-inclusion: ET-1 fires on a subject mention in another WP's commit (MIXED has no effect on the class), and on governance data files (register.yaml, queue.json) that fall outside DOC_GOV. ET-2 fires on TODO comments. A plan or ruling can become t_w, the premise of P7-HB."},
+      {"id": "R0-6", "class": "coding", "blocking": false, "issue": "Merge ET-1 rule 'NON_DOC changes not present in any other hit commit' has no identity criterion."},
+      {"id": "R0-7", "class": "coding; reproducibility", "blocking": false, "issue": "No script computes CLOCK_ANOMALY. Global git config is not isolated (GIT_CONFIG_GLOBAL). The byte-identity claim is false because 00_env and 04_remotes hold machine-specific paths. W7 classification is manual; this is acceptable only because R3 codes blind."},
+      {"id": "R0-8", "class": "evidence scope", "blocking": false, "issue": "Ref names such as feature/WP-4C-1 are not matched against PAT."},
+      {"id": "R0-9", "class": "coding", "blocking": false, "issue": "Race between fetch and ls-remote. The awk path extraction truncates paths with spaces and maps deleted-file lines to /dev/null."}
+    ]
+  },
+  "scoping_protocol": {
+    "bounded": true,
+    "existence_only": "essentially yes (CODEOWNERS contents are explicitly allowed); 58_path_history_meta outputs names and emails, contrary to C.1",
+    "independence_criteria_explicit": true,
+    "completeness_criteria_explicit": true,
+    "verdict": "PASS_WITH_LIMITATIONS",
+    "issues": [
+      {"id": "SC-1", "class": "formal reasoning", "issue": "NIF_A_CHANNEL_EXISTS is unreachable. Q5 = YES needs NORM_STATE, but Q2 is derived from channel type and K-STATUS is UNKNOWN_CONTENT. I2 needs content, so INDEPENDENT is unreachable. The result is fixed before the run."},
+      {"id": "SC-2", "class": "formal reasoning", "issue": "Q5 has no UNKNOWN, so unread content is forced to NO. 'NO_NIF_A_CHANNEL_IN_CHECKED_SET' reads as a negative finding. Report it as NIF_A_NOT_DETERMINABLE_BY_EXISTENCE_CHECK."},
+      {"id": "SC-3", "class": "evidence scope; M-TIME", "issue": "Only paths in the current default-branch tree are checked. Files that existed during the window and were later deleted are missed; the 'ever-existed' comment is inaccurate."},
+      {"id": "SC-4", "class": "evidence scope", "issue": "K3 and Part B C3 need audit-log content that the script does not fetch. COMPLETE_SHOWN, ABSENT_IN_COMPLETE_CHANNEL and any complete DCS are therefore unreachable, so absence-premised falsifiers will be UNDETERMINED."},
+      {"id": "SC-5", "class": "wording", "issue": "Author names and emails in 58_path_history_meta.txt contradict 'roles, not personal names'."},
+      {"id": "SC-6", "class": "evidence scope", "issue": "The completeness window is hard-coded to 2026-08-02..15, inconsistent with FR-D4 (no lower bound; the P7 window may start before R-72)."},
+      {"id": "SC-7", "class": "coding", "issue": "Host detection by URL substring misses self-hosted GitLab/GHE (disclosed as UNKNOWN). STATUS_RE is over-broad ('norm' matches 'normalize')."}
+    ]
+  },
+  "disagreements": [
+    {"with": "SPEC-r1 D1(3)", "point": "'No single observation can be counted for both sides' is false: NIF-B (N1) and the absence of a permitting act (N2) each serve both sides."},
+    {"with": "SPEC-r1 D2(3)", "point": "The outcome table is not exhaustive (N7)."},
+    {"with": "SPEC-r1 D9(3)", "point": "'The default is never applied to evidence that has not been seen' is false (N6)."},
+    {"with": "REVIEW-1bb D1 fix", "point": "I agree with SPEC-r1 that citation shows only N-KNOWN. But application by a non-executor is equally dual-explainable; only NIF-A separates the limbs."},
+    {"with": "REVIEW-1bb D9 fix", "point": "'NON-CONFORMS by default / unauthorized unless shown' presupposes H-D act-exclusivity and turns an absence that is not shown into a falsification (N2, N6). UNDETERMINED or DISJUNCTIVE is the defensible default."},
+    {"with": "SPEC-r1 B.7/B.8", "point": "The byte-identity and reproducibility claims are unsupported (R0-7). Reproducibility rests only on the canonical key, and only once R0-1 is fixed."},
+    {"with": "SPEC-r1 §4 ranking", "point": "P4+P7 HIGH is optimistic. Given SC-1 and SC-4, NIF-A and complete-channel absences are unobtainable with the frozen tools, so the realistic outcomes are NON-DISCRIMINATING, DISJUNCTIVE or UNDETERMINED."}
+  ],
+  "required_before_execution": {
+    "rank0_r2": ["run Run B in a non-bare clone of the bundle, or guard --show-toplevel", "fetch +refs/*:refs/*, or restrict C2 to the fetched refspec and declare MR/PR refs in or out of channel", "add path-pass hits to the hit set", "make VAR multibyte-aware", "recalibrate ET-1/ET-2 (MIXED, governance data files, comments)", "compute CLOCK_ANOMALY; set GIT_CONFIG_GLOBAL=/dev/null; match PAT against ref names"],
+    "spec": ["N1: demote NIF-B", "N2: extend G-D1 to act-exclusivity", "N3: apply the fallback symmetrically or not at all", "N4: score O3 under both AF readings", "N5/N6: verdict precedence; an absence that is not shown gives UNDETERMINED", "N7/N8: rebuild the outcome table; ungate P4", "N9-N12: full-history S1-b, R-91/R-94 item, freeze the P1 rules"],
+    "scoping": ["add UNKNOWN to Q5; rename the negative overall result", "optional r2: historical paths; drop names and emails from 58"]
+  }
+}

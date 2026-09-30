@@ -2148,3 +2148,10 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Freeze | `92b02ddcc` |
 | Records | `analysis/theory/LOOP-1BB/` |
 | Human decisions | (1) commission the non-Claude coder (Gate 1 proper on the frozen A′ records); (2) authorize the targeted acquisition: start with the rank-0 screen (a git-history search for WP-4C-1 work: a new evidence source); (3) whether to seek an **independent norm-state observable** |
+
+## F-LOG-0176 — 1bb-r1: **FAIL** (9/14 defects fixed, 5 partial; new N1–N4: behaviour used as force; the act-exclusivity premise presupposes H-D; an asymmetric fallback). Rank-0 protocol not executable; scoping protocol's key outcome unreachable by construction. **Neither search executed** (human rule). One targeted repair round (1bb-r2) follows; a further FAIL → STOP for the human
+
+| Field | Value |
+|---|---|
+| Freeze | `f6c7eb1e9` |
+| Records | `analysis/theory/LOOP-1BBR1/` |
