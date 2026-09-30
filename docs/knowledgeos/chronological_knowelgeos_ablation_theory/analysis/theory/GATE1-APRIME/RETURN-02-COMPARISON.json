@@ -1,0 +1,65 @@
+{
+ "labels": "symmetric comparison; Claude references are NOT ground truth",
+ "n_external": 36,
+ "refs": {
+  "REF-C": {
+   "missing_in_external": [],
+   "extra_in_external": [],
+   "act.state": {
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "unknown_share_external": 0.083,
+    "disagreements": {}
+   },
+   "norm.deontic": {
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "unknown_share_external": 0.083,
+    "disagreements": {}
+   },
+   "membership": {
+    "agreement": 1.0,
+    "table": {
+     "ext(True, True)_ref(True, True)": 24,
+     "ext(False, True)_ref(False, True)": 7,
+     "ext(True, False)_ref(True, False)": 2,
+     "ext(False, False)_ref(False, False)": 3
+    }
+   }
+  },
+  "REF-CR": {
+   "missing_in_external": [],
+   "extra_in_external": [],
+   "act.state": {
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "unknown_share_external": 0.083,
+    "disagreements": {}
+   },
+   "norm.deontic": {
+    "agreement": 1.0,
+    "kappa": 1.0,
+    "unknown_share_external": 0.083,
+    "disagreements": {}
+   },
+   "membership": {
+    "agreement": 1.0,
+    "table": {
+     "ext(True, True)_ref(True, True)": 24,
+     "ext(False, True)_ref(False, True)": 7,
+     "ext(True, False)_ref(True, False)": 2,
+     "ext(False, False)_ref(False, False)": 3
+    }
+   }
+  }
+ },
+ "REF-CR_unapplied_corrections": [
+  "act.status.operation",
+  "norm.status.about_actor",
+  "norm.status.stated_by",
+  "norm.status.stated_by",
+  "norm.status.about_operation",
+  "norm.status.stated_by",
+  "norm.status.stated_by"
+ ]
+}
