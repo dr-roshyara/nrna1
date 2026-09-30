@@ -1,0 +1,23 @@
+# NOTES: hard or ambiguous records
+
+- **R01**: I coded "declines" as ACT_OCCURRED: the annotation makes a determination. I did not use ACT_REFUSED, because the thing declined is a reading and nobody had proposed it (R-A2). Norm: PROHIBITED, stated by the Chief, which is inferred because the annotation names no author.
+- **R03**: HOLD coded as ACT_OCCURRED (annotation). ACT_REFUSED of adoption is arguable, since R-91 was a PREPARED proposal, but the source says "HELD, not withdrawn". Norm: INELIGIBLE (as issued).
+- **R05**: R-89 is PREPARED and not adopted. The ACT is coded as a prepared issuance, not an effective authorization. The sources contain no adoption act for R-89, yet the Authority is quoted as saying "R-89 already governs authorization". Whether it took effect is unresolved.
+- **R06/R07**: Same span. I split them by operation: R06 is ACT_WITHDRAWN of the R-90 filing, with the actor UNKNOWN because the span is passive; R07 is ACT_OCCURRED of the Authority's classification ruling. Both carry the same norm, STATUS_CONSTRAINT ("the register holds constitutional decisions").
+- **R08**: Norm coded as STATUS_CONSTRAINT because the quoted heading gives the motion a non-ruling status. NONE is also defensible, since the span only reports the heading. R09 overrides that status.
+- **R09**: "is filed" is passive. I inferred the actor is the register-keeper.
+- **R10**: This is the R-A1 case. Norm is PROHIBITED (STATUS_CONSTRAINT is equally defensible). ACT is NONE, not ACT_REFUSED, because no attempt is recorded.
+- **R11**: The commit is ACT_OCCURRED, but the author is not evidenced. The commit dated 2026-08-03 conflicts with R-72/R-77 ("no RED begins" / WP-4B blocked). I noted the conflict and did not code it.
+- **R12**: The span has two deontics, PERMITTED (plan) and PROHIBITED (start). The field takes one value, so I chose PROHIBITED as primary and recorded the other in about_operation.
+- **R15–R21** (R-36 matrix rows): ACT is the row's own classification and recommendation, with the author not evidenced. The span does not record the promotion itself; R-36 does. Norms are inferred through the "adopted by R-36" heading plus the R-36 row. The embedded past acts (R18 "already ARB-adopted", R20 "deliberately did NOT reuse", R21 "explicitly ruled") are not coded as each record's act.
+- **R19**: I did not use ACT_REFUSED for "not promoted", because a listed candidate is not an identified proposal.
+- **R22**: "NOT promoted" is coded NONE, since no proposal to promote is identified in the section. Norm: PROHIBITED, stated by ES-006.1.
+- **R25**: "IS RETIRED" is coded as an act performed by the annotation, with the actor UNKNOWN. It could instead be read as a status report.
+- **R26**: Coded as ACT_OCCURRED of the ruling. ACT_REFUSED (supersede) is arguable, but no explicit supersession proposal is quoted.
+- **R27**: "Applies §12" is coded as an act, inferred from R-83 plus its adoption by R-86. NONE is defensible, since the span characterizes the ruling rather than recording an act. "§12" is a section whose parent document the span does not name.
+- **R29**: Coded ACT_REFUSED (supersede), inferred from the section: engineering presented three options (retain · annotate · supersede) and ANNOTATE was chosen. If an option that was simply not chosen does not count as "refused", the act is NONE. Norm: NONE.
+- **R30**: R-94 was issued by the ARB Chief without a PREPARED tag and says it was executed. That conflicts with R-86's rule that Chief rulings stay PREPARED until the Decision Authority acts. Coded as recorded.
+- **R31**: A recording note that is explicitly not part of the ruling. ACT is NONE (the authorization was not issued). Norm UNAUTHORIZED is inferred from the consequence column.
+- **R34**: The span is a summary column. ACT_OCCURRED rests on the row performing the authorization.
+- **R36**: The span is truncated and omits R-85's K2 amendment and the model-B keystone.
+- **R24, R28, R35**: No source span, so both components are UNKNOWN.

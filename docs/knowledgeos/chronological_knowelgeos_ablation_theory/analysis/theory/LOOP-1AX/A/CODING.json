@@ -1,0 +1,1189 @@
+{
+ "records": [
+  {
+   "record_id": "R01",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "decline_self_favouring_resolution (provenance determination by annotation)",
+    "actor": "ARB Chief",
+    "target": "the ambiguity over whether the Chief could adopt R-81..R-85 itself",
+    "quote": "The Chief declines to resolve an ambiguity about the Chief's own authority in the Chief's own favour",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "INFERENCE: the span sits in R-81's provenance annotation, which records its determination ('THESE FIVE ARE THEREFORE PREPARED RULINGS AWAITING ADOPTION'); the decline is the annotation's own act (R-A3: annotates)",
+     "actor": "SOURCE_FACT",
+     "target": "INFERENCE: the section names the ambiguity as whether the Session-1 mandate delegated adoption for the five rulings R-81..R-85",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "PROHIBITED",
+    "about_operation": "adopt a reading that resolves an ambiguity about the issuer's own authority in the issuer's favour",
+    "about_actor": "any self-issued act (here, rulings issued by the ARB Chief)",
+    "about_target": "ambiguities about the issuer's own authority",
+    "stated_by": "ARB Chief (provenance annotation on R-81)",
+    "quote": "that is the one reading no self-issued act may adopt",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "SOURCE_FACT",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: the annotation does not name its author; the clause is phrased as the Chief's own declining, and the annotation discusses the Chief's filings",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "Considered ACT_REFUSED. Rejected because R-A2 needs an identified proposal: the thing declined is a reading, and nobody had proposed it. The declining itself is performed by the annotation, so ACT_OCCURRED."
+  },
+  {
+   "record_id": "R02",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "adopt",
+    "actor": "Decision Authority",
+    "target": "R-81 through R-85",
+    "quote": "Decision Authority confirms and adopts R-81 through R-85 without amendment.",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "SOURCE_FACT",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "govern (adopted, unamended status)",
+    "about_actor": null,
+    "about_target": "R-81 through R-85",
+    "stated_by": "Decision Authority (R-86)",
+    "quote": "confirms and adopts R-81 through R-85 without amendment",
+    "status": {
+     "deontic": "INFERENCE: under R-A3 the adoption's content is also a norm. The same verbatim ruling says 'These become governing rulings effective immediately'",
+     "about_operation": "INFERENCE: same premise",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The register row itself performs the adoption, so R-A3 applies."
+  },
+  {
+   "record_id": "R03",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "hold (annotate: not adopted)",
+    "actor": "Decision Authority",
+    "target": "R-91 (prepared ruling, Event D review)",
+    "quote": "HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED (annotation; the text above is unchanged and retained). The Decision Authority held it",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "SOURCE_FACT",
+     "target": "INFERENCE: 'it' refers to the ruling in the R-91 row",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "INELIGIBLE",
+    "about_operation": "adopt",
+    "about_actor": "Decision Authority (the adopting authority)",
+    "about_target": "R-91 as issued",
+    "stated_by": "Decision Authority",
+    "quote": "NOT ELIGIBLE FOR ADOPTION AS ISSUED",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: R-86 names the Decision Authority as the only body that adopts",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "ACT_REFUSED (of adoption) is arguable, because the proposal is identified: R-91 was PREPARED and awaiting confirmation. I coded the operation the register performs, which is HOLD. The source stresses 'HELD, not withdrawn' and that the ruling awaits review, so this is not a final refusal."
+  },
+  {
+   "record_id": "R04",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "authorize",
+    "actor": "ARB",
+    "target": "WP-7B-R1 implementation",
+    "quote": "WP-7B-R1 AUTHORIZED TO IMPLEMENT — Execution Governance · Authorization · ARB.",
+    "status": {
+     "state": "INFERENCE: this is the heading of the R-70 register row, which itself performs the authorization (R-A3)",
+     "operation": "SOURCE_FACT",
+     "actor": "SOURCE_FACT",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "AUTHORIZED",
+    "about_operation": "implement (extract the interim anchor resolution behind EvidenceAnchorResolver port)",
+    "about_actor": "engineering",
+    "about_target": "WP-7B-R1",
+    "stated_by": "ARB (R-70)",
+    "quote": "WP-7B-R1 AUTHORIZED TO IMPLEMENT",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: R-70 names no implementer. Engineering is implied by the 'STOP for ARB slice acceptance' pattern and by R-47/R-65, where engineering executes",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "R-A1: the span does not show that implementation began."
+  },
+  {
+   "record_id": "R05",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "issue authorization ruling as PREPARED (not adopted)",
+    "actor": "ARB Chief",
+    "target": "WP-4C-1 (plan and implement)",
+    "quote": "WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — Execution Governance · Authorization · ARB CHIEF (PREPARED).",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "INFERENCE: '(PREPARED)' in the span, plus the row's provenance note 'ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED ... awaits the Decision Authority'. So the act that occurred is a prepared issuance, not an effective authorization",
+     "actor": "SOURCE_FACT",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "AUTHORIZED",
+    "about_operation": "plan (EP-01) and implement",
+    "about_actor": "engineering",
+    "about_target": "WP-4C-1 (AdjudicationFailureDeclared event, hydrator, catalog deliverable)",
+    "stated_by": "ARB Chief (PREPARED ruling R-89)",
+    "quote": "WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "SOURCE_FACT",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The stated authorization is PREPARED. I found no adoption act for R-89 in the sources, so whether it took effect is UNKNOWN. However, the R-90 withdrawal quotes the Authority saying 'R-89 already governs authorization'. The ACT is coded as a prepared issuance, not as authorize."
+  },
+  {
+   "record_id": "R06",
+   "act": {
+    "state": "ACT_WITHDRAWN",
+    "operation": "file/propose ruling R-90 (Discovery Boundary Confirmation) for adoption",
+    "actor": null,
+    "target": "R-90",
+    "quote": "Then R-90 itself withdrawn before adoption",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "INFERENCE: R-90 was filed as a PREPARED ruling awaiting adoption. That filing is the identified proposal R-A2 requires",
+     "actor": "UNKNOWN",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "enter a decision in the register",
+    "about_actor": null,
+    "about_target": "the register (admissible content: constitutional decisions only)",
+    "stated_by": "Decision Authority",
+    "quote": "the register holds constitutional decisions",
+    "status": {
+     "deontic": "INFERENCE: the clause limits what the register may hold; it is given as the reason for withdrawing an operational-acceptance row",
+     "about_operation": "INFERENCE: same premise",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: the clause follows 'the Authority ruled'. The R-90 row attributes the ruling to 'The Decision Authority'",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "R06 and R07 have the same span. They are separated by operation: R06 is the withdrawal of R-90 and R07 is the Authority's classification ruling. The span uses the passive voice and never names who withdrew the ruling, so the actor is UNKNOWN."
+  },
+  {
+   "record_id": "R07",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "rule / classify (R-90 is operational acceptance, not a constitutional decision)",
+    "actor": "Decision Authority",
+    "target": "R-90",
+    "quote": "because the Authority ruled it was operational acceptance rather than a constitutional decision",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: the span says 'the Authority'. The R-90 row says 'The Decision Authority ruled that this is NOT a constitutional decision'",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "enter a decision in the register",
+    "about_actor": null,
+    "about_target": "the register (admissible content: constitutional decisions only)",
+    "stated_by": "Decision Authority",
+    "quote": "the register holds constitutional decisions",
+    "status": {
+     "deontic": "INFERENCE: the clause limits the register's content and is invoked as the ground of the ruling",
+     "about_operation": "INFERENCE: same premise",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: the clause is part of the Authority's ruling as the R-90 annotation reports it",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "Duplicate span of R06. This record codes the ruling act. The norm is the same as in R06, coded independently."
+  },
+  {
+   "record_id": "R08",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "place motion under a recording-notes heading (issuer's classification)",
+    "actor": "the issuing text / issuing authority of R-60",
+    "target": "the motion opening WP-7B-R1",
+    "quote": "the issuing text placed this motion under a heading reading \"Recording Notes -- Not Part of Ruling\"",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: the span says 'the issuing text'. The R-60 row attributes the text to ARB, but the drafter is not named",
+     "target": "INFERENCE: 'this motion' refers, in R-60, to the opening of WP-7B-R1",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "classify as non-ruling",
+    "about_actor": null,
+    "about_target": "the motion opening WP-7B-R1",
+    "stated_by": "the issuing text (heading)",
+    "quote": "\"Recording Notes -- Not Part of Ruling\"",
+    "status": {
+     "deontic": "INFERENCE: the quoted heading assigns the motion a status (not part of the ruling); the span reports that status rather than endorsing it",
+     "about_operation": "INFERENCE: same premise",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "INFERENCE: same as act.target",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The reported status was overridden by the register (see R09). NONE is also defensible for the norm, because the span only reports a heading placement."
+  },
+  {
+   "record_id": "R09",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "file as ruling (register classification)",
+    "actor": "the register's recorder",
+    "target": "the motion opening WP-7B-R1 (R-60)",
+    "quote": "so it is filed as a ruling in line with the operative text",
+    "status": {
+     "state": "INFERENCE: the register row itself performs the filing (R-A3: registers)",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: the passive 'is filed' names no one. The recording note is the register-keeper's",
+     "target": "INFERENCE: 'it' is the motion in the R-60 recording note",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "open work package (ruling status)",
+    "about_actor": null,
+    "about_target": "the motion opening WP-7B-R1",
+    "stated_by": "the register's recorder (R-60 recording note)",
+    "quote": "filed as a ruling in line with the operative text",
+    "status": {
+     "deontic": "INFERENCE: filing the motion as a ruling gives it ruling status. The section says 'A recording note cannot open a work package'",
+     "about_operation": "INFERENCE: same premise",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "INFERENCE: same as act.target",
+     "stated_by": "INFERENCE: author of the recording note, unnamed",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span starts with 'so', so it depends on the preceding clause in R-60."
+  },
+  {
+   "record_id": "R10",
+   "act": {
+    "state": "NONE",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {
+     "state": "INFERENCE: the span states an unmet proviso and a consequence. R-A1: 'implementation does not begin' is not ACT_REFUSED, and no attempt is recorded in R-72",
+     "operation": "NOT_EVIDENCED",
+     "actor": "NOT_EVIDENCED",
+     "target": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "norm": {
+    "deontic": "PROHIBITED",
+    "about_operation": "begin implementation (RED)",
+    "about_actor": "engineering",
+    "about_target": "WP-4B",
+    "stated_by": "ARB (R-72)",
+    "quote": "THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: R-72 says 'when they land, engineering proceeds RED → GREEN'",
+     "about_target": "INFERENCE: 'implementation' in R-72 refers to WP-4B",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "This is the textbook R-A1 case. STATUS_CONSTRAINT would fit equally well: the prohibition is contingent on an unmet proviso ('execution contingent and the contingency is unmet')."
+  },
+  {
+   "record_id": "R11",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "commit RED tests (write failing keystones)",
+    "actor": null,
+    "target": "WP-4B conclude-to-issue seam and its redrive",
+    "quote": "Subject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "NONE",
+    "about_operation": null,
+    "about_actor": null,
+    "about_target": null,
+    "stated_by": null,
+    "quote": null,
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "NOT_EVIDENCED",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "NOT_EVIDENCED",
+     "stated_by": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "notes": "The span has no Author line, so the actor is not evidenced. Date 2026-08-03. In the sources, WP-4B RED was not yet cleared at that point: R-72 says 'no RED begins', and R-77 (also 08-03) says WP-4B remains blocked. That tension is noted, not coded."
+  },
+  {
+   "record_id": "R12",
+   "act": {
+    "state": "NONE",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {
+     "state": "INFERENCE: the span is one of R-79's 'distinctions recorded', a clarifying restatement. It is not the operative directive clause and records no act",
+     "operation": "NOT_EVIDENCED",
+     "actor": "NOT_EVIDENCED",
+     "target": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "norm": {
+    "deontic": "PROHIBITED",
+    "about_operation": "start (implementation work); co-stated: plan = PERMITTED",
+    "about_actor": null,
+    "about_target": "WP-8",
+    "stated_by": "ARB (R-79 directive)",
+    "quote": "WP-8 MAY BE PLANNED AND MUST NOT BE STARTED",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span has two deontics, PERMITTED (plan) and PROHIBITED (start), but the field takes one value. I chose PROHIBITED as primary because R-79 is a deferral directive. The scope annotation adds that this is permission only, not commissioning, so it gives no evidence that planning occurred."
+  },
+  {
+   "record_id": "R13",
+   "act": {
+    "state": "NONE",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {
+     "state": "INFERENCE: the span defines the scope of an authorization. Under R-A1 it is no evidence that RED at 7A happened",
+     "operation": "NOT_EVIDENCED",
+     "actor": "NOT_EVIDENCED",
+     "target": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "norm": {
+    "deontic": "AUTHORIZED",
+    "about_operation": "RED (first authorized activity)",
+    "about_actor": "engineering",
+    "about_target": "Slice 7A",
+    "stated_by": "ARB (R-47)",
+    "quote": "First authorized activity: RED at 7A",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: R-47 says 'execution responsibility transfers to engineering'",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The R-47 row performs an authorization, but that act belongs to the heading clause. This span is a scope detail, so the ACT is NONE."
+  },
+  {
+   "record_id": "R14",
+   "act": {
+    "state": "NONE",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {
+     "state": "INFERENCE: the span states a non-authorization; no act or attempt is recorded",
+     "operation": "NOT_EVIDENCED",
+     "actor": "NOT_EVIDENCED",
+     "target": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "norm": {
+    "deontic": "UNAUTHORIZED",
+    "about_operation": "execute",
+    "about_actor": null,
+    "about_target": "Slices 7B and 7C",
+    "stated_by": "ARB (R-47)",
+    "quote": "7B and 7C are NOT authorized and follow their own gates",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "INFERENCE: R-47 is an execution authorization ('SLICE 7A EXECUTION AUTHORIZED'), so 'not authorized' concerns execution",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": ""
+  },
+  {
+   "record_id": "R15",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category A) and recommend promotion",
+    "actor": null,
+    "target": "candidate 'Reuse Before Create'",
+    "quote": "| 2 | Reuse Before Create | A | ... | PROMOTE — one line in OPERATING_INSTRUCTIONS |",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification and recommendation of the Promotion Review deliverable",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "REQUIRED",
+    "about_operation": "reuse existing capability before creating a new one",
+    "about_actor": "AI engineering agents governed by AST-013 OPERATING_INSTRUCTIONS",
+    "about_target": "new abstractions / capabilities",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36",
+    "quote": "Reuse Before Create",
+    "status": {
+     "deontic": "INFERENCE: the section heading says the matrix was 'adopted by R-36', and R-36 lists reuse-before-create among the 6 behaviours promoted into AST-013 §Promoted Engineering Behaviours",
+     "about_operation": "INFERENCE: from the principle's name and the PB-006 evidence 'new capability built only after ... platform insufficiency'",
+     "about_actor": "INFERENCE: same premise as deontic",
+     "about_target": "INFERENCE: same premise",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span alone is only a recommendation. It becomes a binding norm only through R-36, which is outside the span. The promotion itself is recorded by R-36, not by this span."
+  },
+  {
+   "record_id": "R16",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category A) and recommend promotion",
+    "actor": null,
+    "target": "candidate 'Ownership Drives Reuse'",
+    "quote": "| 3 | Ownership Drives Reuse | A | ... | PROMOTE — one line; the strongest new principle",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification and recommendation",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "REQUIRED",
+    "about_operation": "justify architectural reuse per-pattern by ownership (never by precedent)",
+    "about_actor": "AI engineering agents governed by AST-013",
+    "about_target": "architectural reuse decisions",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36",
+    "quote": "reuse is justified per-pattern by ownership, never by precedent",
+    "status": {
+     "deontic": "INFERENCE: R-36 promoted 'ownership-determines-architectural-reuse (never precedent)' into AST-013",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: same premise",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span also reports past non-acts ('Strangler/ACL NOT transferred'). These are evidence citations and are not coded."
+  },
+  {
+   "record_id": "R17",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category A) and recommend promotion",
+    "actor": null,
+    "target": "candidate 'Surface gaps / Deferred ≠ skipped'",
+    "quote": "| 9 | Surface gaps / Deferred ≠ skipped | A | ... | PROMOTE — one line",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification and recommendation",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "REQUIRED",
+    "about_operation": "record gaps and deferrals with their resumption trigger (never silently absorb them)",
+    "about_actor": "AI engineering agents governed by AST-013",
+    "about_target": "gaps and deferrals",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36",
+    "quote": "gaps and deferrals are recorded with their resumption trigger, never silently absorbed",
+    "status": {
+     "deontic": "INFERENCE: R-36 lists 'deferred ≠ skipped' among the promoted behaviours",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: same premise",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": ""
+  },
+  {
+   "record_id": "R18",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category A) and recommend promotion (relocation)",
+    "actor": null,
+    "target": "candidate 'Epistemic labeling'",
+    "quote": "PROMOTE (relocation, not new governance) — already ARB-adopted in Handover §9; add one pointer line",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification and recommendation",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "REQUIRED",
+    "about_operation": "label findings epistemically (Observed · Measured · Derived · Interpreted · Recommended)",
+    "about_actor": "AI (all AI findings)",
+    "about_target": "AI findings (R-36 broadened this to all architectural recommendations/reviews)",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36 (and earlier ARB adoption in Handover §9)",
+    "quote": "add one pointer line so it applies to all AI findings, not only Completion Reviews",
+    "status": {
+     "deontic": "INFERENCE: R-36 promoted 'epistemic labels' into AST-013; the span says it is 'already ARB-adopted in Handover §9'",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "SOURCE_FACT",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span also reports a past act: 'already ARB-adopted in Handover §9' (ACT_OCCURRED of adopt by ARB, date unknown). Only one operation is coded per record, and I chose the row's own classification act. The past adoption would be a separate (span, operation, target)."
+  },
+  {
+   "record_id": "R19",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category C; generalization → D) and recommend non-promotion",
+    "actor": null,
+    "target": "candidate 'Registration ≠ Delivery'",
+    "quote": "| 5 | Registration ≠ Delivery | C (+ generalization → D) | ... | Stays in ADR-MP-06 (Messaging-scoped).",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification and recommendation",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "scope of the principle (Messaging-scoped; generalized form = Candidate Pattern)",
+    "about_actor": null,
+    "about_target": "Registration ≠ Delivery (and its generalization 'configuration is not capability')",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36",
+    "quote": "Stays in ADR-MP-06 (Messaging-scoped). The generalized form (\"configuration is not capability\") has ONE demonstration → Candidate Pattern",
+    "status": {
+     "deontic": "INFERENCE: the row fixes the principle's home and status; R-36 confirms 'Registration ≠ Delivery stays Messaging-scoped in ADR-MP-06'",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "Not ACT_REFUSED. R-36 says 'Expressly NOT promoted', but a candidate listed in a review is not an identified promotion proposal (R-A2)."
+  },
+  {
+   "record_id": "R20",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category D) — remains Candidate",
+    "actor": null,
+    "target": "candidate 'Strangler reconstitution'",
+    "quote": "| 14 | Strangler reconstitution (Legacy → ACL → Aggregate Reconstruction → …) | D | ... | Remains Candidate",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "promotion status (Candidate, not promoted)",
+    "about_actor": null,
+    "about_target": "Strangler reconstitution pattern",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36",
+    "quote": "Remains Candidate",
+    "status": {
+     "deontic": "INFERENCE: R-36 states 'Strangler reconstitution ... remain Candidates'",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span also reports that 'PB-005 deliberately did NOT reuse it', which is a past deliberate non-reuse cited as evidence. It is not coded as the record's act."
+  },
+  {
+   "record_id": "R21",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "classify (Category D) — remains candidate",
+    "actor": null,
+    "target": "candidate 'ChallengeResolvedIntegration carrier'",
+    "quote": "| 17 | `ChallengeResolvedIntegration` carrier | D | ... | Remains candidate; replaced only on repeated evidence (ER-02) |",
+    "status": {
+     "state": "INFERENCE: a matrix row is itself the recorded classification",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "promotion status (candidate); replacement only on repeated evidence",
+    "about_actor": null,
+    "about_target": "ChallengeResolvedIntegration carrier",
+    "stated_by": "Promotion Review matrix, adopted by ARB via R-36 (condition from ER-02)",
+    "quote": "Remains candidate; replaced only on repeated evidence (ER-02)",
+    "status": {
+     "deontic": "INFERENCE: R-36 lists the carrier among those that 'remain Candidates'",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: section heading plus R-36",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span also reports a past ruling: 'explicitly ruled \"temporary carrier, not a pattern\" (PB-005 Q1)', whose ruler is unnamed. It is not coded as the record's act."
+  },
+  {
+   "record_id": "R22",
+   "act": {
+    "state": "NONE",
+    "operation": "promote to methodology (did not occur)",
+    "actor": null,
+    "target": "the PO's 'three state planes' framing of O-CLOSURE-VOCAB",
+    "quote": "NOT promoted to methodology",
+    "status": {
+     "state": "INFERENCE: the span records a non-promotion. No proposal or attempt to promote is identified in the section, so R-A2 rules out ACT_REFUSED",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "INFERENCE: the section's 'Disposition' bullet concerns the PO/ARB 'three distinct state planes' observation",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "PROHIBITED",
+    "about_operation": "promote to methodology from a single occurrence",
+    "about_actor": null,
+    "about_target": "single-occurrence observations",
+    "stated_by": "ES-006.1",
+    "quote": "ES-006.1 forbids promoting from one",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The disposition (registering it as the PO's framing) is an act, but it lies outside the span. The span itself records only an absence."
+  },
+  {
+   "record_id": "R23",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "adopt",
+    "actor": "Principal Architect (instructing)",
+    "target": "Artifact Lifecycle Consistency (as permanent documentation standard, ES-004.3)",
+    "quote": "Artifact Lifecycle Consistency adopted as a permanent documentation standard (Principal Architect instruction).",
+    "status": {
+     "state": "INFERENCE: this is the heading of the R-41 register row, which itself performs the adoption (R-A3)",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: 'adopted' is passive, and the parenthetical names the Principal Architect's instruction as its source",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "REQUIRED",
+    "about_operation": "keep artifact lifecycle states consistent (synchronize authoritative artifacts at lifecycle boundaries)",
+    "about_actor": "whoever authors or closes slices and artifacts",
+    "about_target": "authoritative artifacts / slice closures",
+    "stated_by": "Principal Architect instruction (R-41)",
+    "quote": "adopted as a permanent documentation standard",
+    "status": {
+     "deontic": "INFERENCE: a documentation standard adopted as permanent binds documentation work. R-41's consequence column says 'checklist binds every slice closure'",
+     "about_operation": "INFERENCE: from the R-41 row text",
+     "about_actor": "INFERENCE: same premise",
+     "about_target": "INFERENCE: same premise",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": ""
+  },
+  {
+   "record_id": "R24",
+   "act": {
+    "state": "UNKNOWN",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {"state": "UNKNOWN", "operation": "UNKNOWN", "actor": "UNKNOWN", "target": "UNKNOWN", "quote": "UNKNOWN"}
+   },
+   "norm": {
+    "deontic": "UNKNOWN",
+    "about_operation": null,
+    "about_actor": null,
+    "about_target": null,
+    "stated_by": null,
+    "quote": null,
+    "status": {"deontic": "UNKNOWN", "about_operation": "UNKNOWN", "about_actor": "UNKNOWN", "about_target": "UNKNOWN", "stated_by": "UNKNOWN", "quote": "UNKNOWN"}
+   },
+   "notes": "NO SOURCE SPAN AVAILABLE."
+  },
+  {
+   "record_id": "R25",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "retire register number",
+    "actor": null,
+    "target": "register number R-90",
+    "quote": "THE NUMBER R-90 IS RETIRED",
+    "status": {
+     "state": "INFERENCE: the withdrawal annotation on the R-90 row itself performs the retirement (R-A3: annotates). The session log confirms: 'The number R-90 is RETIRED, not recycled'",
+     "operation": "SOURCE_FACT",
+     "actor": "UNKNOWN",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "PROHIBITED",
+    "about_operation": "reuse (assign to another ruling)",
+    "about_actor": "whoever files or numbers register rulings",
+    "about_target": "register number R-90",
+    "stated_by": "R-90 withdrawal annotation (author unnamed)",
+    "quote": "MUST NOT BE REUSED",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "INFERENCE: numbering is done by whoever files rulings; the annotation does not name them",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: the clause appears in the annotation, which names no author",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "Coding 'IS RETIRED' as a performed act rather than a status report is a judgment call. The actor is unknown: it could be the Decision Authority, whose ruling triggered the withdrawal, or the register-keeper."
+  },
+  {
+   "record_id": "R26",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "rule (adjudicate supersession question: not superseded)",
+    "actor": "ARB (the Board)",
+    "target": "ADR-T14",
+    "quote": "ADR-T14 is not superseded.",
+    "status": {
+     "state": "INFERENCE: the span is the operative clause of R-77's decision 'in the Board's own words'. The register row itself performs the ruling (R-A3)",
+     "operation": "INFERENCE: R-77 says 'this ruling adjudicates a CHARACTERIZATION and a supersession question'",
+     "actor": "SOURCE_FACT",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "supersede",
+    "about_actor": null,
+    "about_target": "ADR-T14 (remains accepted / not superseded)",
+    "stated_by": "ARB (R-77)",
+    "quote": "ADR-T14 is not superseded.",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "ACT_REFUSED (supersede) is arguable, because an inconsistency characterization was offered and rejected. However, no identified proposal to supersede is quoted, so R-A2 is not clearly satisfied. I coded the ruling act instead."
+  },
+  {
+   "record_id": "R27",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "apply (not supersede)",
+    "actor": "ARB Chief (issuer of R-83; adopted by the Decision Authority via R-86)",
+    "target": "§12 (reconcile rule for crash model B)",
+    "quote": "it APPLIES §12 rather than superseding it",
+    "status": {
+     "state": "INFERENCE: R-83 was issued, and R-86 adopted it without amendment, so its application of §12 took effect",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: R-83's provenance annotation says it was 'ISSUED BY THE ARB CHIEF'; R-86 adopted it",
+     "target": "INFERENCE: R-83 says 'B's handling is ALREADY RULED by §12 — reconcile'. The parent document is not named in the span (possibly EPIC-004K)",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "STATUS_CONSTRAINT",
+    "about_operation": "supersede",
+    "about_actor": null,
+    "about_target": "§12 (remains in force, applied)",
+    "stated_by": "R-83 (ARB Chief, adopted by Decision Authority)",
+    "quote": "rather than superseding it",
+    "status": {
+     "deontic": "INFERENCE: R-83's consequence column says '§12 applied, not amended'",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "INFERENCE: same premise",
+     "stated_by": "INFERENCE: R-83 provenance plus R-86",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span describes what the ruling does not change. Coding 'applies' as an act rests on R-83 plus R-86. NONE is defensible if the span is read as a pure characterization."
+  },
+  {
+   "record_id": "R28",
+   "act": {
+    "state": "UNKNOWN",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {"state": "UNKNOWN", "operation": "UNKNOWN", "actor": "UNKNOWN", "target": "UNKNOWN", "quote": "UNKNOWN"}
+   },
+   "norm": {
+    "deontic": "UNKNOWN",
+    "about_operation": null,
+    "about_actor": null,
+    "about_target": null,
+    "stated_by": null,
+    "quote": null,
+    "status": {"deontic": "UNKNOWN", "about_operation": "UNKNOWN", "about_actor": "UNKNOWN", "about_target": "UNKNOWN", "stated_by": "UNKNOWN", "quote": "UNKNOWN"}
+   },
+   "notes": "NO SOURCE SPAN AVAILABLE."
+  },
+  {
+   "record_id": "R29",
+   "act": {
+    "state": "ACT_REFUSED",
+    "operation": "supersede (PB-006 programme-reporting acceptance)",
+    "actor": "ARB Chief",
+    "target": "PB-006 programme reporting row",
+    "quote": "superseding would blur chronology",
+    "status": {
+     "state": "INFERENCE: R-94 names 'the three engineering-presented outcomes (retain · annotate · supersede)', which is the identified proposal R-A2 requires. ANNOTATE was adopted, and this clause is issued as the ground against supersede",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: R-94's heading names the ARB CHIEF",
+     "target": "INFERENCE: R-94 heading 'PB-006 PROGRAMME REPORTING'",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "NONE",
+    "about_operation": null,
+    "about_actor": null,
+    "about_target": null,
+    "stated_by": null,
+    "quote": null,
+    "status": {
+     "deontic": "INFERENCE: the span is an evaluative ground with no deontic operator",
+     "about_operation": "NOT_EVIDENCED",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "NOT_EVIDENCED",
+     "stated_by": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "notes": "Hard case. The span alone is a counterfactual reason. The refusal comes from the section: supersede was a presented option, and a different option was chosen. If an unchosen option does not count as refused, the act is NONE."
+  },
+  {
+   "record_id": "R30",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "adopt (disposition: annotate)",
+    "actor": "ARB Chief",
+    "target": "PB-006 programme reporting (ANNOTATE option)",
+    "quote": "ANNOTATE is adopted.",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: the passive 'is adopted' names no one; R-94's heading names the ARB CHIEF as issuer",
+     "target": "INFERENCE: R-94 heading",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "REQUIRED",
+    "about_operation": "annotate (preserve historical acceptance; make current boundary explicit)",
+    "about_actor": null,
+    "about_target": "PB-006 programme reporting row (IMPLEMENTATION_PROGRESS.md:58)",
+    "stated_by": "ARB Chief (R-94)",
+    "quote": "ANNOTATE is adopted.",
+    "status": {
+     "deontic": "INFERENCE: adopting a disposition directs that it be carried out. R-94 records it as 'Executed at IMPLEMENTATION_PROGRESS.md:58'",
+     "about_operation": "INFERENCE: from the R-94 grounds",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "INFERENCE: from R-94",
+     "stated_by": "INFERENCE: R-94 heading",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "There is a tension I did not resolve in the coding. R-86 says any ARB-Chief ruling remains PREPARED until the Decision Authority acts, yet R-94 (ARB CHIEF) carries no PREPARED tag and says it was executed. The act is coded as it is recorded."
+  },
+  {
+   "record_id": "R31",
+   "act": {
+    "state": "NONE",
+    "operation": "issue 7B execution authorization (not occurred)",
+    "actor": null,
+    "target": "Slice 7B execution",
+    "quote": "has NOT been issued",
+    "status": {
+     "state": "SOURCE_FACT",
+     "operation": "SOURCE_FACT",
+     "actor": "NOT_EVIDENCED",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "UNAUTHORIZED",
+    "about_operation": "execute",
+    "about_actor": null,
+    "about_target": "Slice 7B",
+    "stated_by": "recording note to R-56 (explicitly not part of the ruling)",
+    "quote": "Execution of 7B is a SEPARATE act and has NOT been issued",
+    "status": {
+     "deontic": "INFERENCE: the execution authorization has not been issued. R-56's consequence column reads 'execution still NOT authorized'",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span is in a recording note that is marked 'not part of this ruling', so its normative weight is that of a note, not a ruling."
+  },
+  {
+   "record_id": "R32",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "authorize",
+    "actor": "ARB",
+    "target": "Slice 7B RED (keystones K1–K10)",
+    "quote": "Engineering is authorized to begin Slice 7B RED on keystones K1–K10, with K9 inside 7B.",
+    "status": {
+     "state": "INFERENCE: this is the operative clause of R-58 ('SLICE 7B EXECUTION AUTHORIZED'), a register row that itself performs the authorization (R-A3)",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: R-58 heading 'Authorization · ARB'",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "AUTHORIZED",
+    "about_operation": "begin RED",
+    "about_actor": "engineering",
+    "about_target": "Slice 7B, keystones K1–K10 (K9 inside 7B)",
+    "stated_by": "ARB (R-58)",
+    "quote": "Engineering is authorized to begin Slice 7B RED on keystones K1–K10",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "SOURCE_FACT",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: R-58 heading",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "R-A1: the act coded is the authorizing. The span does not show that engineering began RED."
+  },
+  {
+   "record_id": "R33",
+   "act": {
+    "state": "NONE",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {
+     "state": "INFERENCE: the span states a continuing non-authorization; no act or attempt is recorded",
+     "operation": "NOT_EVIDENCED",
+     "actor": "NOT_EVIDENCED",
+     "target": "NOT_EVIDENCED",
+     "quote": "NOT_EVIDENCED"
+    }
+   },
+   "norm": {
+    "deontic": "UNAUTHORIZED",
+    "about_operation": "execute",
+    "about_actor": null,
+    "about_target": "Slice 7C",
+    "stated_by": "ARB (R-58)",
+    "quote": "Slice 7C remains unauthorized",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "INFERENCE: R-58 is an execution authorization for 7B, so the contrast concerns 7C execution",
+     "about_actor": "NOT_EVIDENCED",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: R-58 heading",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": ""
+  },
+  {
+   "record_id": "R34",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "authorize",
+    "actor": "ARB",
+    "target": "Slice 7C",
+    "quote": "Slice 7C AUTHORIZED",
+    "status": {
+     "state": "INFERENCE: the span is the consequence column of R-65, a register row that itself performs the authorization (R-A3: heading 'SLICE 7C AUTHORIZED — ... Authorization · ARB')",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: R-65 heading",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "AUTHORIZED",
+    "about_operation": "begin RED (implement the decision service)",
+    "about_actor": "engineering",
+    "about_target": "Slice 7C",
+    "stated_by": "ARB (R-65)",
+    "quote": "Slice 7C AUTHORIZED; engineering may begin RED",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "SOURCE_FACT",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: R-65 heading",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span is a summary column, not the operative clause. It is still coded ACT_OCCURRED because the row performs the authorization. 'May begin RED' is not evidence that RED began (R-A1)."
+  },
+  {
+   "record_id": "R35",
+   "act": {
+    "state": "UNKNOWN",
+    "operation": null,
+    "actor": null,
+    "target": null,
+    "quote": null,
+    "status": {"state": "UNKNOWN", "operation": "UNKNOWN", "actor": "UNKNOWN", "target": "UNKNOWN", "quote": "UNKNOWN"}
+   },
+   "norm": {
+    "deontic": "UNKNOWN",
+    "about_operation": null,
+    "about_actor": null,
+    "about_target": null,
+    "stated_by": null,
+    "quote": null,
+    "status": {"deontic": "UNKNOWN", "about_operation": "UNKNOWN", "about_actor": "UNKNOWN", "about_target": "UNKNOWN", "stated_by": "UNKNOWN", "quote": "UNKNOWN"}
+   },
+   "notes": "NO SOURCE SPAN AVAILABLE."
+  },
+  {
+   "record_id": "R36",
+   "act": {
+    "state": "ACT_OCCURRED",
+    "operation": "authorize",
+    "actor": "Decision Authority",
+    "target": "execution of R-81's per-process isolation and R-84's §12 reconcile",
+    "quote": "engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile (ack on self-redelivery; dead-letter + escalate otherwise)",
+    "status": {
+     "state": "INFERENCE: the span is in R-86's 'WHAT IT CHANGES', and the R-86 register row itself performs the act (R-A3). The verbatim ruling says 'Engineering is authorized to resume implementation'",
+     "operation": "SOURCE_FACT",
+     "actor": "INFERENCE: R-86 heading '... Adoption · DECISION AUTHORITY'",
+     "target": "SOURCE_FACT",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "norm": {
+    "deontic": "AUTHORIZED",
+    "about_operation": "execute (per-process redrive failure isolation; §12 reconcile)",
+    "about_actor": "engineering",
+    "about_target": "R-81 per-process isolation; R-84 §12 reconcile (WP-4B batch 7)",
+    "stated_by": "Decision Authority (R-86)",
+    "quote": "engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile",
+    "status": {
+     "deontic": "SOURCE_FACT",
+     "about_operation": "SOURCE_FACT",
+     "about_actor": "SOURCE_FACT",
+     "about_target": "SOURCE_FACT",
+     "stated_by": "INFERENCE: R-86 heading",
+     "quote": "SOURCE_FACT"
+    }
+   },
+   "notes": "The span is truncated. The source sentence continues 'and R-85's K2 setup amendment together with the additional model-B keystone', and that third item is outside the span. R-A1: the span is no evidence that execution happened."
+  }
+ ]
+}
