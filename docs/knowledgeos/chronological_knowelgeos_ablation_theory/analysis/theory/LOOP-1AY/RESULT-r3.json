@@ -1,0 +1,378 @@
+{
+ "labels": "r3 (r2 + F1 drop v1_t, F2 drop v1_s in NORM); A' datasets; v1_* fields are V1-CODED (weaker epistemic basis); support never aggregated across datasets",
+ "corrections_applied": [
+  [
+   "R04",
+   "norm.about_actor"
+  ],
+  [
+   "R06",
+   "norm.stated_by"
+  ],
+  [
+   "R07",
+   "act.actor"
+  ],
+  [
+   "R07",
+   "norm.stated_by"
+  ],
+  [
+   "R18",
+   "norm.about_target"
+  ],
+  [
+   "R15",
+   "norm.status (deontic, about_actor, stated_by premises)"
+  ],
+  [
+   "R16",
+   "norm.status (deontic, about_actor, stated_by premises)"
+  ],
+  [
+   "R17",
+   "norm.status (deontic, about_actor, stated_by premises)"
+  ],
+  [
+   "R18",
+   "norm.status (deontic, stated_by premises)"
+  ],
+  [
+   "R19",
+   "norm.status (deontic, stated_by premises)"
+  ],
+  [
+   "R20",
+   "norm.status (deontic, stated_by premises)"
+  ],
+  [
+   "R21",
+   "norm.status (deontic, stated_by premises)"
+  ],
+  [
+   "R15",
+   "act.quote"
+  ],
+  [
+   "R16",
+   "act.quote"
+  ],
+  [
+   "R17",
+   "act.quote"
+  ],
+  [
+   "R19",
+   "act.quote"
+  ],
+  [
+   "R20",
+   "act.quote"
+  ],
+  [
+   "R21",
+   "act.quote"
+  ]
+ ],
+ "corrections_unapplied": [
+  {
+   "record_id": "R06",
+   "field": "act.status.operation",
+   "coder": "INFERENCE: R-90 was filed as a PREPARED ruling awaiting adoption (R-90 section)",
+   "reviewer": "INFERENCE: in-section proposal — ruling put forward and filed as R-90, then withdrawn before adoption",
+   "class": "evidence scope",
+   "quote": "a ruling was put forward under a number already holding WP-4C-1's authorization; filed as R-90 with the collision recorded. Then R-90 itself withdrawn before adoption"
+  },
+  {
+   "record_id": "R01",
+   "field": "norm.status.about_actor",
+   "coder": "SOURCE_FACT",
+   "reviewer": "split: 'any self-issued act' SOURCE_FACT; '(here, rulings issued by the ARB Chief)' INFERENCE",
+   "class": "coding",
+   "quote": "that is the one reading no self-issued act may adopt"
+  },
+  {
+   "record_id": "R10",
+   "field": "norm.status.stated_by",
+   "coder": "SOURCE_FACT",
+   "reviewer": "INFERENCE (R-72 heading)",
+   "class": "coding",
+   "quote": "WP-4B AUTHORIZED — Execution Governance · Authorization · ARB"
+  },
+  {
+   "record_id": "R12",
+   "field": "norm.status.stated_by",
+   "coder": "SOURCE_FACT",
+   "reviewer": "INFERENCE (R-79 heading)",
+   "class": "coding",
+   "quote": "WP-8 DEFERRED PENDING CLOSURE OF §WP-4 — Execution Governance · Directive · ARB"
+  },
+  {
+   "record_id": "R12",
+   "field": "norm.status.about_operation",
+   "coder": "SOURCE_FACT",
+   "reviewer": "INFERENCE",
+   "class": "coding",
+   "quote": "NO IMPLEMENTATION WORK FOR WP-8 SHALL COMMENCE"
+  },
+  {
+   "record_id": "R13",
+   "field": "norm.status.stated_by",
+   "coder": "SOURCE_FACT",
+   "reviewer": "INFERENCE (R-47 heading)",
+   "class": "coding",
+   "quote": "SLICE 7A EXECUTION AUTHORIZED — Execution Governance · Authorization · ARB"
+  },
+  {
+   "record_id": "R14",
+   "field": "norm.status.stated_by",
+   "coder": "SOURCE_FACT",
+   "reviewer": "INFERENCE (R-47 heading)",
+   "class": "coding",
+   "quote": "SLICE 7A EXECUTION AUTHORIZED — Execution Governance · Authorization · ARB"
+  }
+ ],
+ "datasets": {
+  "ACT": {
+   "n_records": 24,
+   "n_clusters": 15,
+   "variables": {
+    "actor": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 5
+    },
+    "target": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 21
+    },
+    "v1_a": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 5
+    },
+    "v1_k": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 8
+    },
+    "v1_s": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 5
+    },
+    "v1_e": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 4
+    },
+    "v1_x": {
+     "verdict": "UNTESTABLE",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 1
+    },
+    "v1_h": {
+     "verdict": "UNTESTABLE",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 1
+    },
+    "v1_c": {
+     "verdict": "UNTESTABLE",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 1
+    },
+    "v1_r": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 2
+    }
+   }
+  },
+  "NORM": {
+   "n_records": 21,
+   "n_clusters": 16,
+   "variables": {
+    "actor": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 7
+    },
+    "target": {
+     "verdict": "NOT-DEMONSTRATED (possible)",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [
+      [
+       "R10",
+       "R13"
+      ],
+      [
+       "R10",
+       "R32"
+      ],
+      [
+       "R10",
+       "R34"
+      ],
+      [
+       "R12",
+       "R13"
+      ],
+      [
+       "R12",
+       "R32"
+      ],
+      [
+       "R12",
+       "R34"
+      ],
+      [
+       "R13",
+       "R14"
+      ],
+      [
+       "R13",
+       "R31"
+      ],
+      [
+       "R13",
+       "R33"
+      ],
+      [
+       "R14",
+       "R32"
+      ],
+      [
+       "R14",
+       "R34"
+      ],
+      [
+       "R31",
+       "R34"
+      ]
+     ],
+     "n_possible": 14,
+     "known_values": 12
+    },
+    "stated_by": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 4
+    },
+    "v1_a": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 6
+    },
+    "v1_k": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 6
+    },
+    "v1_e": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 2
+    },
+    "v1_x": {
+     "verdict": "UNTESTABLE",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 1
+    },
+    "v1_h": {
+     "verdict": "UNTESTABLE",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 1
+    },
+    "v1_c": {
+     "verdict": "UNTESTABLE",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 1
+    },
+    "v1_r": {
+     "verdict": "NOT-DEMONSTRATED",
+     "strict_pairs": [],
+     "disjoint_clusters": 0,
+     "distinct_cluster_pairs": 0,
+     "possible_pairs": [],
+     "n_possible": 0,
+     "known_values": 3
+    }
+   }
+  }
+ }
+}
