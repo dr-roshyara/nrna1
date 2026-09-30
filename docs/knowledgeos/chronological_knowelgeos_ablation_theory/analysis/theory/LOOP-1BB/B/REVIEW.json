@@ -1,0 +1,92 @@
+{
+ "verdict": "PASS_WITH_LIMITATIONS",
+ "non_discriminating_specs": [
+  {"spec": "P4+P7 (smallest acquisition), outcome branch 'R-89 not adopted, but work ran under it'", "issue": "This observation meets the P4 H-D falsifier (force without adoption). By the spec's own P2 and P7 falsifiers it is also non-conformance (execution under an act not in force, before WP-4B's acceptance, with no waiver), which counts against H-B. Behavioural uptake cannot distinguish 'the norm changed without an act' from 'work violated an unchanged norm'.", "class": "formal reasoning", "ref": "D1"},
+  {"spec": "P5, 'not in force' branch", "issue": "The same confound as D1: execution under R-94 with no adoption is read both as an effective act by an actor without the capability (against H-D) and as execution under a norm not in force (against H-B).", "class": "formal reasoning", "ref": "D1"},
+  {"spec": "P1 H-D falsifier", "issue": "It requires only that the after-state is 'acted on by engineering'. It has no response or legitimation criterion, so an act-less change cannot be told apart from non-conformance.", "class": "formal reasoning", "ref": "D1"},
+  {"spec": "P7 H-D falsifier", "issue": "'Treated as authorized because the predecessor was accepted' depends on motive. It cannot fire in the R-89 episode, because an authorizing act (R-89) exists. In practice P7 is one-sided (H-B) in the only episode specified.", "class": "formal reasoning", "ref": "D12"},
+  {"spec": "P8 H-D falsifier", "issue": "It repeats P1 and adds nothing that discriminates.", "class": "formal reasoning", "ref": "D12"},
+  {"spec": "Status-mediation upgrade (b)", "issue": "The spec admits that it tests H-D only. Its behavioural contrast is empty unless work was pending during the prepared interval.", "class": "substantive", "ref": "D13"}
+ ],
+ "missing_fields": [
+  {"spec": "P7", "field": "R-72's gate in force at t_first_work (text and entry into force, from an independent source)", "why": "The H-B falsifier requires 'R-72's gate is in force', but there is no field for it. This is the norm in force at the time of the act.", "class": "evidence scope"},
+  {"spec": "P5", "field": "the capability norm (R-86, R-90) in force at the time R-94 was made, with entry-into-force times", "why": "The capability register is taken from acts whose own force and timing relative to R-94 are not established.", "class": "evidence scope"},
+  {"spec": "P4+P7 / smallest acquisition", "field": "a link from the WP-4C-1 work artefact to R-89 (does it cite R-89 or rely on it as authority?)", "why": "'Work ran under R-89' cannot be established from a commit time alone.", "class": "evidence scope"},
+  {"spec": "P4+P7 / smallest acquisition", "field": "the closed-channel history of waivers and responses from t_first_work to WP-4C-1's acceptance; citations of R-89 by non-adopting actors", "why": "The spec's own P7-HB and P4-HD falsifiers require these, but the 3-item acquisition leaves them out.", "class": "evidence scope"},
+  {"spec": "P1", "field": "a response or legitimation field (was any sanction, remediation or ratification act made on the changed state, and did later acts by capable actors treat it as valid?)", "why": "Needed to separate an act-less change from non-conformance.", "class": "formal reasoning"},
+  {"spec": "P1", "field": "an eligibility criterion for the census ('work condition verifiably met'), with attestation", "why": "Without it the census population is not defined.", "class": "evidence scope"},
+  {"spec": "P8", "field": "'active target' status, with attestation", "why": "The falsifier is restricted to active targets, but 'active' is neither defined nor attested.", "class": "evidence scope"},
+  {"spec": "all (closed world)", "field": "an execution-channel register (which repositories and CI count as all work on a target)", "why": "P1-HB, P7 ('first work event') and the status contrast all need an absence of work. Without this register, those falsifiers require proving that no unrecorded work happened.", "class": "formal reasoning"},
+  {"spec": "all (closed world)", "field": "a rule for which forms count as an adoption, and a rule for acts recorded late or with an earlier effective date", "why": "The DA's 'R-89 already governs' and the fact that recording ≠ decision time leave outcomes to be decided after the data are seen.", "class": "formal reasoning"},
+  {"spec": "all identity fields", "field": "authenticated actor identity (signed commits or a server audit log)", "why": "The actor sets git author and committer names.", "class": "independence"}
+ ],
+ "unnecessary_fields": [
+  {"spec": "P4", "field": "R-88 text", "why": "It only orders the rulings (C2) and says nothing about R-89's force.", "class": "evidence scope"},
+  {"spec": "P7", "field": "WP-4B GREEN/VERIFY CI run", "why": "It serves C2's evidence-limb alternative, not the gate falsifier. It should be optional.", "class": "evidence scope"},
+  {"spec": "Contested case C1", "field": "R-87 text", "why": "It is needed only because of the added response clause (D6).", "class": "source interpretation"}
+ ],
+ "self_report_residue": [
+  {"where": "P4 status sequence; status upgrade item 1; P1 entry into force", "residue": "Entry into force is taken from the adoption record written by the adopter, which is the status-conferring act itself. Only its system write time and authenticated identity are independent. Any effective date the adoption states is self-report. This also contradicts the spec's own attestation rule (i).", "class": "independence"},
+  {"where": "P1 acts, P4 adopting actor, P5 disposing actor", "residue": "Identity comes from the git author or committer name, which the actor sets.", "class": "independence"},
+  {"where": "P1 norm_state_before", "residue": "A 'refusal-to-execute artefact' is in practice a session-log statement, for example S0804 'Nothing implemented this turn'. That is the actor's own report.", "class": "independence"},
+  {"where": "P1 norm_state_after", "residue": "The queue, CONTEXT.md and the work plan are written by the governed actors or the Chief. They describe the norm state from inside the system, and may be acts in an undeclared channel.", "class": "independence"},
+  {"where": "P1-HB candidate instance", "residue": "R-86 'engineering waiting solely on a constitutional act' is a ruling describing engineering's behaviour, not a behavioural observation.", "class": "independence"},
+  {"where": "P5 execution", "residue": "IMPLEMENTATION_PROGRESS.md:58 'Executed at' is the executor's own report. Only the diff or commit it points to is independent, and the spec makes that optional ('any commit it references').", "class": "independence"},
+  {"where": "P8 failure record", "residue": "A 'log entry recording the deviation' is the actor's own report.", "class": "independence"},
+  {"where": "P4, P5, P7 windows", "residue": "The windows start at a ruling's recording time. In P7 this excludes WP-4C-1 work that began before R-89 was recorded.", "class": "evidence scope"},
+  {"where": "global attestation rule (ii)", "residue": "'Not ... citing that record' would disqualify the uptake artefacts that P4 needs. The rule does not separate attesting a field from being the observation.", "class": "wording"}
+ ],
+ "arbitrary_minimums": [
+  {"spec": "none strictly arbitrary", "note": "Every '1' is justified as a counter-instance to a universal clause. Replacing the draft's ≥3, 3 and 2 with reasons is correct.", "class": "formal reasoning"},
+  {"spec": "P1 H-B census (≥1 eligible case)", "note": "The minimum is logically valid as a non-vacuity condition, but it refutes only H-B restricted to window W, and the spec does not say so. Reading the claim as existential is a choice. Under the universal-mechanism reading, one counter-instance would be enough. The reading should be labelled UNKNOWN.", "class": "formal reasoning"},
+  {"spec": "P8 tendency reading (census)", "note": "No threshold is given, so the minimum and the falsifier are undefined rather than arbitrary.", "class": "formal reasoning"}
+ ],
+ "untestable_falsifiers": [
+  {"spec": "P1 HB", "issue": "'Engineering executed nothing on the new state before that act' requires showing that no unrecorded work happened, and there is no closed world for work. 'Work condition verifiably met' is not operationalised.", "class": "formal reasoning"},
+  {"spec": "P1 HD / closed-world register", "issue": "The single channel is assumed, not sourced: R-86 names the adopter, not the channel. Chief operational dispositions and DA statements may be made elsewhere. Acts recorded late look like 'no act'. Identities are set by the actor. 'Fixed before looking at the data' is impossible because R-86 and R-90 have already been read.", "class": "formal reasoning"},
+  {"spec": "P4 HD", "issue": "No rule fixed in advance says whether the DA's 'R-89 already governs' counts as an adoption. The spec says it 'may itself be the adoption', so the outcome can be decided after the fact.", "class": "formal reasoning"},
+  {"spec": "P7 HD", "issue": "The 'because the predecessor was accepted' clause depends on motive and cannot be observed as behaviour.", "class": "formal reasoning"},
+  {"spec": "P8 HB (tendency reading)", "issue": "There is no threshold, and 'active target' is undefined.", "class": "formal reasoning"},
+  {"spec": "P2 HB", "issue": "The window ends at R-87's entry into force, with no calendar fallback. If R-87 never takes force, or its timing is unknown, the window stays open. The end point is also not justified (D6).", "class": "coding"},
+  {"spec": "Status-mediation behavioural contrast", "issue": "'No execution during the prepared interval' requires an absence of work with no closed world for work. It is empty unless dependent work was pending.", "class": "substantive"}
+ ],
+ "feasibility_overclaims": [
+  {"claim": "CI runs with CI start times, used as attestation in P1, P2, P7 and P8", "issue": "No input establishes that CI exists. STATE lists one commit.", "class": "evidence scope"},
+  {"claim": "'server push time'", "issue": "Git history does not record push times. They exist only in host audit logs, if at all.", "class": "evidence scope"},
+  {"claim": "'Adopted acts that assign capability (R-86, R-90)'", "issue": "The adoption of R-86 and R-90 is not established. R-90 appears in the inputs in a withdrawal context and does not clearly assign capability.", "class": "source interpretation"},
+  {"claim": "'adoption records for R-77, R-79 and R-80'", "issue": "These rulings may not be status-mediated. STATE knows of only 2 status-mediation episodes, both self-reported.", "class": "evidence scope"},
+  {"claim": "'DA session logs'", "issue": "No input shows that they exist.", "class": "evidence scope"},
+  {"claim": "'the revision of IMPLEMENTATION_PROGRESS.md that introduced line 58'", "issue": "This presumes the file is under version control and that line numbers are stable.", "class": "evidence scope"},
+  {"claim": "'git write history of the register file' used as the closed channel in §0 and the fields", "issue": "No input shows that the register is a git-tracked file. It is hedged in the feasibility section but assumed in the closed-world definition.", "class": "evidence scope"}
+ ],
+ "smallest_acquisition_assessment": {
+  "verdict": "partially justified",
+  "sound": "It is aimed at the right live confound (R-89's status against R-72's gate) and at the conflict between IDENTIFIABILITY P7 and CONFORMANCE-CASE C2, and it is cheap.",
+  "defects": [
+   "D1: branch 1 ('R-89 not adopted, work ran under it') meets both an H-D falsifier and an H-B falsifier, so it does not separate the hypotheses.",
+   "D2: the three items cannot trigger the spec's own falsifiers. They lack the work-to-R-89 link, the waiver and response history, R-72's gate being in force, and citations by non-adopting actors. Showing that no adoption exists needs the whole write history over the window, not one record.",
+   "D2: the outcome 'no WP-4C-1 work by 2026-08-15' is left out. It is plausible for a PREPARED, NOT ADOPTED ruling, and in it the acquisition discriminates nothing.",
+   "D3: 'the only acquisition this small that puts both hypotheses at risk' contradicts §4, where P5 is described as low effort and two-sided.",
+   "D4: the first WP-4C-1 work event has no window, and the P7 window starts at R-89's recording time."
+  ],
+  "corrected": "Two stages. Stage 0 (screen): the existence and system time of the first WP-4C-1 work artefact up to 2026-08-15, and whether it cites R-89. Stage 1 (only if the screen is positive): the entry into force of R-89 and R-87 from the full closed-channel history, from R-72's entry into force to WP-4C-1's acceptance or 2026-08-15, including waivers and responses; R-72's gate being in force; and citations of R-89 as governing by non-adopting actors. The outcome table is fixed in advance and uses the D1 split. If the screen is negative, the smallest discriminating acquisition becomes the R11 resolution (P2), after the D6 and D9 fixes."
+ },
+ "corrected_ranking": [
+  {"rank": 0, "spec": "Screen: does WP-4C-1 work exist, and when did it start (system time)?", "ig_per_effort": "HIGH (it decides whether P4+P7 can discriminate at all)"},
+  {"rank": 1, "spec": "P4+P7 (R-89 / R-87 / WP-4C-1), with the D1 split and the D2 items", "ig_per_effort": "HIGH if the screen is positive; LOW if not"},
+  {"rank": 2, "spec": "P2 (R11, the contested case)", "ig_per_effort": "HIGH (one-sided, but the execution is known to exist). First place if the screen is negative."},
+  {"rank": 3, "spec": "P5 (R-94)", "ig_per_effort": "MEDIUM (the likely result is operational scope; its 'not in force' branch has the D1 confound)"},
+  {"rank": 4, "spec": "P8 (R-91)", "ig_per_effort": "LOW (needs records after the corpus end; the universal-or-tendency reading is open)"},
+  {"rank": 5, "spec": "P1 (act-less change)", "ig_per_effort": "LOW"}
+ ],
+ "disagreements": [
+  {"with": "SPEC P2 claim", "point": "HYPOTHESES says only that work 'is expected to conform'. The added 'the system responds before acceptance' makes H-B harder to falsify, overlaps P8, and makes C1's bearing depend on R-87. The window end at acceptance is unjustified: a later execution-governance repair (R-91 → R-94 Constitutional Review) could be a response to R11 and would be ignored.", "class": "source interpretation", "ref": "D6"},
+  {"with": "SPEC §2 decision rule", "point": "It is asymmetric. If R-72's proviso was unmet and no blocking text covers RED, the rule gives UNDETERMINED, but R-72's conditional authorization never became operative, so the default should be NON-CONFORMS. No default scope reading of 'WP-4B REMAINS BLOCKED' is fixed, so the likely outcome is UNDETERMINED. There is no fallback when R-77 to R-80 have no adoption records. The MD and the JSON scope the 'and' in the CONFORMS branch differently.", "class": "formal reasoning", "ref": "D9"},
+  {"with": "SPEC global attestation rule", "point": "Rule (i) excludes the adopter's own record, yet entry into force is taken from adoption records. Rule (ii) excludes artefacts that cite the record, yet P4 needs uptake artefacts that cite R-89.", "class": "independence", "ref": "D7"},
+  {"with": "SPEC §3 status mediation", "point": "The proposal moves status mediation only part of the way to independent observation. Item 1 is still the norm-maker's own act, and item 3 needs an eligibility condition (dependent work pending during the prepared interval).", "class": "substantive", "ref": "D13"},
+  {"with": "SPEC 'input conflict' (IDENTIFIABILITY P7 vs CONFORMANCE-CASE C2)", "point": "It may be only apparent. '§WP-4 remains OPEN' may refer to WP-4 as a whole, and C2's textual order (citation order) does not establish the order of entry into force. The spec is right that R-87's adoption time settles it, but calling it a conflict overstates it.", "class": "source interpretation", "ref": "D14"},
+  {"with": "SPEC labels", "point": "The ranking is labelled INFERENCE but is a judgement (PROPOSAL). The R-86 'waiting' quote is a SOURCE FACT, but reading it as a behavioural instance is INFERENCE.", "class": "wording", "ref": "D14"},
+  {"with": "SPEC P1-HB existential reading", "point": "Choosing the existential reading is not labelled UNKNOWN. Under the universal-mechanism reading, one counter-instance falsifies. Either way the census conclusion applies only to window W.", "class": "formal reasoning", "ref": "D10"},
+  {"with": "IDENTIFIABILITY.json scope (agreement noted)", "point": "Including P4 and P5 as one-sided tests is defensible despite their NON-IDENTIFIABLE label: force without adoption, and an effective act by an actor without the capability, are sub-cases of IDENTIFIABILITY's separating type (i). Dropping P3 and P6 matches the critique.", "class": "source interpretation"}
+ ]
+}

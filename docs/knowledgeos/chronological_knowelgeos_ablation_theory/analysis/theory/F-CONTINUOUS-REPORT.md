@@ -203,3 +203,10 @@
 ## F-LOG-0174: wording + rule M-TIME
 - **1ba C1 restated:** NON-CONFORMS under the primary text-based reading (moderate); the alternative is viable; **not a falsification of H-B**.
 - **Standing rule:** recording time ≠ decision time ≠ entry into force.
+
+## 1bb (F-LOG-0175)
+- **Spec:** PASS_WITH_LIMITATIONS.
+- **Key result:** H-D vs H-B is non-identifiable **without an independent observable of the norm in force** (neither acts nor behaviour).
+- The spec partially smuggled in H-D.
+- **Ranking:** screen (WP-4C-1 work?) → P4+P7 → R11.
+- **STOP for the human.**

@@ -338,3 +338,6 @@ Authority review ✅
 
 - Nothing is outstanding. The evidence package is complete for the human review.
 - The lane's own records are current: `F-GOVERNANCE-LOG.md` F-LOG-0014…0017 and the `F-SESSION-LOG.md` catch-up segment (`74b0c83d0`).
+
+| 1ax–1bb | A′ coding; support non-evidential; H-D≈H-B; WP-4B RED candidate non-conformance; D1: need independent norm-state observable (F-LOG-0171..0175) | ✅ | L0 |
+| **HUMAN** | (1) non-Claude coder on frozen A′ records · (2) authorize rank-0 screen (WP-4C-1 work in git) + targeted acquisition · (3) seek independent norm-state observable | ⏳ | L0 |

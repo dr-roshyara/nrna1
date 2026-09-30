@@ -1,0 +1,171 @@
+{
+ "scope": {
+  "basis": "SOURCE FACT: IDENTIFIABILITY.json identifies no prediction on the current corpus (identified: []). PROPOSAL: a prediction is in scope if an observation exists that puts one hypothesis at risk while the other survives it. In scope: P1 (only under H-B reading 1), P2, P4, P5, P7, P8. Excluded: P3, because act-mediated feedback fits both hypotheses and its act-less part is P1 (critique P3); and P6, because both hypotheses are met at every record boundary (critique P6: 'Drop P6 as a discriminator').",
+  "labels": "Each entry is marked SOURCE FACT (stated in the input files), INFERENCE (derived from them), PROPOSAL (a specification choice), or UNKNOWN.",
+  "global_attestation_rule": "PROPOSAL: a field is independently attested only if its value comes from an artefact that (i) has a different author or writer process from the norm-making record, (ii) was not written by copying or citing that record, and (iii) has its timestamp set by a system, not by the actor. A statement made inside a ruling about that ruling (for example 'effective immediately' or 'R-89 already governs') counts as self-report. Such a statement can be recorded, but it cannot attest the field.",
+  "closed_world_capability_register": "PROPOSAL: before looking at the data, fix the list of actors capable of norm-making on each norm type, and the one channel each must use (a register row plus an adoption record). SOURCE FACT: R-86 names the Decision Authority as the only adopter (critique P1). 'No act' then means 'no entry in the closed channel during the window'. This is checkable against the channel's own write history, for example every commit that touches the register file. It is never a claim that no unrecorded act happened anywhere."
+ },
+ "specs": [
+  {
+   "prediction": "P1: norm changes occur only through norm-making acts",
+   "hypothesis": "H-D ('only through such acts') against H-B reading 1 ('in response to work' = work changes a norm state with no act). UNKNOWN: which reading of H-B is intended. Under reading 2 (acts triggered by work), P1 does not discriminate even in principle (IDENTIFIABILITY P1), and H-B has no P1 falsifier.",
+   "claim": "Every change in the deontic state of a target (permitted/blocked/authorized/accepted) is preceded by an act in the closed channel whose content produces that state. The content counts even if conditional, provided the condition was stated in advance by the act. A change caused by work that no prior act made conditional falsifies 'only'.",
+   "fields": [
+    {"name": "target", "why": "A norm change is defined per target. The tested population is fixed per target.", "attestation": "The identifier comes from the work plan or queue that names the work package. It is not taken from the ruling alone."},
+    {"name": "norm_state_before (deontic value, time)", "why": "A change needs a baseline.", "attestation": "The state engineering acted on before the change: the last execution or refusal-to-execute artefact on the target (a commit, CI run or progress entry), with a system timestamp."},
+    {"name": "norm_state_after (deontic value, time)", "why": "This is the changed state. It must be observable outside the register, or an act-less change could never appear (draft P1 'key').", "attestation": "An artefact outside the register, such as a queue, CONTEXT.md, the work plan, or the first execution relying on the new state. Its timestamp must be system-set (a commit, CI run, or push time)."},
+    {"name": "acts_in_closed_channel over [t_before, t_after] (actor, act id, content, entry-into-force time)", "why": "Needed to establish 'no act' as a checkable absence within the closed world.", "attestation": "The write history of the register channel (for example, commits touching the register file, with committer identity and server time). Entry into force comes from the adoption record, not from the time the row was recorded (STATE: recording time ≠ entry into force)."},
+    {"name": "prior_conditional_clauses on the target", "why": "Separates act-made conditionals (for example R-72 'when they land, engineering proceeds RED', or R-79 'CLOSES BY ACCEPTANCE · THEN WP-8 is authorized') from changes with no act.", "attestation": "The full text of every act on the target in force before t_before, with entry-into-force times taken from adoption records."},
+    {"name": "work_event in the interval (type, id, time)", "why": "Under reading 1, H-B's mechanism requires the change to follow a work event.", "attestation": "A CI run result or commit (a system-timestamped artefact). A ruling that describes the work cannot attest it."},
+    {"name": "capability_register snapshot", "why": "Closes the world of possible acts.", "attestation": "Fixed before the data are examined. The source is the act that assigns capabilities (for example R-86 or R-90), cited by id and adopted."}
+   ],
+   "min_episodes": "H-D: 1. H-B (reading 1): a census of every eligible work-gated target in the window, with at least 1 eligible case.",
+   "reason": "H-D's 'only' is a universal clause, so one clean act-less change falsifies it. H-B's reading-1 clause says that such changes occur, which is an existential claim, so no finite sample of act-mediated changes refutes it. Only a census of the whole closed window can. The census is non-vacuous only if it contains at least one case where the work condition was verifiably met. The draft's '≥3' has no stated basis and is dropped (critique P1).",
+   "independence": "Different targets and different conditional norms. Not two readings of one proviso, and not rows from the same ruling batch or covered by the same adoption act. The after-state artefacts must not be copies of each other.",
+   "falsifiers": {
+    "HD": "Within [t_work_event, t_after], a target's after-state is attested outside the register and acted on by engineering. No entry by any capable actor in the closed channel produces it, and no prior act made the state conditional on that work.",
+    "HB": "(Reading 1 only.) Within window W, the census finds that every eligible target whose work condition was verifiably met changed state only at, or after, a separate act in the closed channel, and engineering executed nothing on the new state before that act. The judgement uses behaviour only, not stated attitudes. SOURCE FACT: R-86 'engineering waiting solely on a constitutional act' is a candidate instance."
+   },
+   "window": "Per episode: from the system time of the attested work event to the system time of the first engineering action on the new state, or of the next closed-channel act on the target, whichever is earlier. Census: a fixed calendar interval chosen before the data are examined. PROPOSAL: the corpus span, ending 2026-08-15 (SOURCE FACT: S0815 is the latest record).",
+   "feasibility_candidates": ["git history of the register file (closed channel)", "commits and CI runs on the work package (after-state uptake)", "work plan / queue / CONTEXT.md revisions (after-state)", "IMPLEMENTATION_PROGRESS.md revisions"],
+   "ig_per_effort": "LOW. Information gain is potentially high, because this is the only direct falsifier of H-D's 'only'. But it first needs the reading of H-B fixed, a closed-world register, and after-states attested outside the register, and on the current corpus no candidate act-less change is observed (SQ4)."
+  },
+  {
+   "prediction": "P2: work conforms to the norm in force (execution begins only when permitted)",
+   "hypothesis": "H-B. One-sided: H-D makes no conformance prediction.",
+   "claim": "Every execution event on a target occurs at a time when the norm in force permits that operation on that target. If it does not, the system responds (sanction, remediation, or explicit waiver) before the work on the target is accepted.",
+   "fields": [
+    {"name": "execution event (actor, operation, target, time)", "why": "This is the governed act under test.", "attestation": "A commit or CI run: the author identity, the diff, and a system time (CI start or server push time; a committer date set by the actor is weaker). It must not come from a ruling's description."},
+    {"name": "operation_class (e.g. RED test code only, or production code)", "why": "Whether the operation falls under the norm is part of the contested case (C1 alternative: producer-agnostic RED).", "attestation": "The diff contents, classified by a rule fixed before inspection (for example: test paths only, no production paths)."},
+    {"name": "norm in force at t_exec (text, entry-into-force time, how established)", "why": "Conformance is defined against the norm in force, not against the norm as recorded.", "attestation": "The full texts of every act on the target up to t_exec (for R11: R-72 to R-80). Each entry-into-force time comes from its adoption record or adoption act, not from the recording time."},
+    {"name": "scope determination (does the norm's governed operation cover operation_class?)", "why": "C1 turns on whether 'WP-4B REMAINS BLOCKED' covers producer-agnostic RED.", "attestation": "Text in force before t_exec that defines the scope. A later interpretive ruling is recorded but marked as post hoc."},
+    {"name": "response within window (sanction / remediation / waiver act, or its absence in the closed channel)", "why": "H-B's coupling predicts that the system responds to non-conformance. The draft had no window here (critique P2).", "attestation": "Closed-channel write history over the window. The acceptance act's own text, checked for whether it flags the start."}
+   ],
+   "min_episodes": "1",
+   "reason": "'Execution begins only when permitted' is universal. One clean non-conforming execution with no response before acceptance falsifies it. Further episodes would only show a pattern; they are not needed to discriminate.",
+   "independence": "Different work packages and different authorizing rulings. Each execution must be a separate commit or session, not successive commits of one batch.",
+   "falsifiers": {
+    "HD": "None on P2. H-D makes no conformance prediction. This is stated rather than invented, and P2 is a one-sided test.",
+    "HB": "An execution whose operation_class falls within a norm that is fully determined as not permitting it at t_exec, with no sanction, remediation or waiver act in the closed channel before the acceptance act for that work package takes force."
+   },
+   "window": "From t_exec to the entry into force of the acceptance act for the work package. For R11: from 2026-08-03 16:10 to R-87's entry into force (SOURCE FACT: the C1 alternative says R-87 accepted WP-4B without flagging the start).",
+   "feasibility_candidates": ["the R11 commit and its CI run", "the register rows R-73 to R-80 (full text)", "adoption records for R-77, R-79 and R-80", "session logs S0804 and S0815", "IMPLEMENTATION_PROGRESS.md"],
+   "ig_per_effort": "HIGH. The records are few and named, one episode settles it, and it is the only live candidate against H-B (C1: AGAINST, weak). It is one-sided, so it can falsify H-B but cannot falsify H-D."
+  },
+  {
+   "prediction": "P4: the force of a norm depends on the status of the act that made it",
+   "hypothesis": "H-D. One-sided: H-B does not deny status mediation.",
+   "claim": "A ruling that is PREPARED and not adopted has no force. Force starts at adoption by a capable actor.",
+   "fields": [
+    {"name": "making act id and text (R-89; also R-87 and R-88)", "why": "Identifies the norm and its claimed status.", "attestation": "The register row. It is used only to identify the norm, not to attest force."},
+    {"name": "status sequence (prepared / adopted / withdrawn / held, with times)", "why": "Force is predicted to change at the status transitions.", "attestation": "The adoption record written by the adopting actor in the closed channel, with a system time. A status annotation added to the ruling row is self-report unless the row's write history shows the DA's identity."},
+    {"name": "adopting actor", "why": "Needed to check capability.", "attestation": "The committer or author identity on the adoption record, matched against the capability register."},
+    {"name": "force indicators between transitions", "why": "Force has to be observed through uptake, not through what the ruling says about itself.", "attestation": "Work executed citing the ruling as authority (a commit or CI run with system time), or an act citing it by an actor other than the adopting authority (critique P4)."}
+   ],
+   "min_episodes": "1",
+   "reason": "'Force depends on status' is universal, so one ruling that has force before, or without, adoption falsifies it. The draft asked for 3 episodes, but corroborating episodes cannot discriminate because H-B is silent (critique P4).",
+   "independence": "Different adoption acts and different issuers or dates. Not several rulings covered by one adoption, such as R-86.",
+   "falsifiers": {
+    "HD": "Within the window, R-89 (or another ruling) has no adoption entry in the closed channel, yet work is executed citing it, or a non-adopting actor cites it as governing authority. The DA's own 'R-89 already governs authorization' does not count, because it may itself be the adoption.",
+    "HB": "None on P4 (H-B is silent). When paired with P7, the same acquisition does put H-B at risk; see spec P7."
+   },
+   "window": "From R-89's recording time to 2026-08-15 (corpus end), or to the first adoption or withdrawal entry, whichever is earlier.",
+   "feasibility_candidates": ["git history of the register file (who wrote the adoption annotation, and when)", "DA session logs", "commits or CI runs on WP-4C-1 referencing R-89"],
+   "ig_per_effort": "HIGH when acquired with P7, because it is the same few records. On its own it is MEDIUM, since it is one-sided."
+  },
+  {
+   "prediction": "P5: norms are made by actors holding the capability to make them",
+   "hypothesis": "H-D. One-sided: H-B is silent. R-94 couples it to P2.",
+   "claim": "A disposition takes effect only if its maker holds the capability for that norm type.",
+   "fields": [
+    {"name": "capability register by norm type (constitutional or operational)", "why": "R-94 is an exception only if delivery dispositions are constitutional (R-90 indicates operational acceptance is not; critique P5).", "attestation": "Adopted acts that assign capability (R-86, R-90), fixed before the data are examined."},
+    {"name": "disposing actor and act (R-94)", "why": "This is the act under test.", "attestation": "The write history of the register row, showing the Chief's identity."},
+    {"name": "execution under the disposition (IMPLEMENTATION_PROGRESS.md:58)", "why": "Shows that the disposition had effect (SOURCE FACT: 'Executed at IMPLEMENTATION_PROGRESS.md:58').", "attestation": "The revision of IMPLEMENTATION_PROGRESS.md that introduced line 58, and any commit it references, with system time. It must not come from the R-94 row itself."},
+    {"name": "adoption record, or its absence in the closed channel", "why": "Tells us whether the effect came from an adopted act.", "attestation": "The closed-channel write history over the window."}
+   ],
+   "min_episodes": "1",
+   "reason": "The capability clause is universal, so one effective act by an actor without the capability falsifies it.",
+   "independence": "Different acts, not repetitions of one delegation.",
+   "falsifiers": {
+    "HD": "The capability register classifies R-94-type dispositions as needing DA adoption, there is no DA adoption entry in the window, and execution under R-94 is attested.",
+    "HB": "(Via P2.) If the register shows that R-94 needed adoption and had none, then the attested execution ran under a norm not in force. That puts H-B's conformance clause at risk, subject to the P2 response window. So R-94 is two-sided: if the act was effective, H-D is at risk; if it was not in force, H-B is at risk; if it falls within operational scope, neither is."
+   },
+   "window": "From R-94's recording time to the attested execution time, then the P2 response window.",
+   "feasibility_candidates": ["IMPLEMENTATION_PROGRESS.md revision history", "git history of the register file", "adopted text of R-86 and R-90"],
+   "ig_per_effort": "MEDIUM. It is two-sided and the effort is low, but the likely outcome is the operational-scope branch (R-90), which discriminates nothing (INFERENCE)."
+  },
+  {
+   "prediction": "P7: successor authorization is gated on the predecessor's acceptance",
+   "hypothesis": "H-B (outcome-gated coupling of work and norms)",
+   "claim": "Work on a successor starts only after the predecessor's acceptance has taken force, as R-72 requires: 'after its predecessor is accepted'.",
+   "fields": [
+    {"name": "predecessor acceptance (act, text, entry-into-force time)", "why": "This is the gate. UNKNOWN: the inputs conflict. IDENTIFIABILITY P7 infers that WP-4B was probably not accepted before R-89 ('§WP-4 remains OPEN'), while CONFORMANCE-CASE C2 orders R-87, the WP-4B acceptance, before R-89.", "attestation": "R-87's full text, and its entry into force taken from the adoption record. A CI run showing GREEN/VERIFY for WP-4B supplies the evidence limb."},
+    {"name": "successor authorization (R-89: status, entry into force)", "why": "An act that is not in force authorizes nothing (C2 alternative).", "attestation": "As in P4: the adoption record in the closed channel."},
+    {"name": "first successor work event (WP-4C-1: commit or CI run, time)", "why": "H-B's conformance concerns work, not governance acts (C2 bearing).", "attestation": "The first commit or CI run on WP-4C-1, with system time."},
+    {"name": "waiver act (or its absence)", "why": "A waiver in force would make an early start conforming.", "attestation": "The closed-channel write history."}
+   ],
+   "min_episodes": "1",
+   "reason": "R-72's gate is universal ('Each ... after its predecessor is accepted'). One clean early start with no waiver falsifies H-B's conformance under this gate. The draft's 2 pairs would show a pattern and are not needed to discriminate.",
+   "independence": "Different predecessor–successor pairs, with different acceptance acts.",
+   "falsifiers": {
+    "HD": "The successor is treated as authorized (work executed on it) because the predecessor was accepted, with no authorizing act in the closed channel. This is the P1 test on this gate.",
+    "HB": "The first WP-4C-1 work event is dated before the entry into force of WP-4B's acceptance, while R-72's gate is in force and no waiver act exists, and there is no response before WP-4C-1 is accepted."
+   },
+   "window": "From R-89's recording time to the entry into force of WP-4C-1's acceptance, or to 2026-08-15 if that comes first.",
+   "feasibility_candidates": ["register rows R-87, R-88 and R-89 with write history", "commits and CI runs on WP-4B (GREEN/VERIFY) and WP-4C-1"],
+   "ig_per_effort": "HIGH. It shares its records with P4, it is two-sided in combination with P4, and it resolves an internal conflict in the inputs."
+  },
+  {
+   "prediction": "P8: work failures feed back into remediation norms",
+   "hypothesis": "H-B",
+   "claim": "After a verified failure on an active target, a remediation act, or an explicit deferral with a trigger, takes force before work on that target resumes.",
+   "fields": [
+    {"name": "failure record (id, target, time)", "why": "This is the outcome whose feedback is tested.", "attestation": "A failing CI run, or a commit or log entry recording the deviation, with system time. It must not come from the ruling that responds to it. (R-91 is the candidate deviation.)"},
+    {"name": "next execution on the same target (time)", "why": "Closes the window without an arbitrary length.", "attestation": "A commit or CI run with system time."},
+    {"name": "remediation or deferral act in the window (text citing the failure id, entry into force)", "why": "This is the predicted response.", "attestation": "The closed-channel entry, with entry into force taken from the adoption record."}
+   ],
+   "min_episodes": "1",
+   "reason": "Read as a universal over failures on active targets where work resumes, one failure followed by resumed work with no remediation or deferral falsifies it. UNKNOWN: whether H-B intends a universal or a tendency here. If it is a tendency, no single episode refutes it and a census over a fixed window is needed, as for P1 on the H-B side.",
+   "independence": "Different failures on different targets, each remediated (or not) by a different act.",
+   "falsifiers": {
+    "HD": "A remediation that takes effect with no act in the closed channel. This reduces to P1.",
+    "HB": "A verified failure on an active target, then a further execution on that target, with no remediation or deferral-with-trigger act taking force in between."
+   },
+   "window": "From the failure's system time to the next execution on the same target. If no further execution occurs, the falsifier is not triggered, since deferral is compatible with H-B.",
+   "feasibility_candidates": ["CI run history", "session logs after S0815", "register entries after R-94 (Constitutional Review, execution-governance repair)"],
+   "ig_per_effort": "LOW–MEDIUM. It is one-sided, it may need records after the corpus end (2026-08-15), and every remediation observed so far goes through an act, which fits both hypotheses."
+  }
+ ],
+ "contested_case_resolution": {
+  "case": "C1: the R11 commit 'WP-4B RED' at 2026-08-03 16:10 against R-72's proviso. Currently NON-CONFORMS with moderate confidence; the alternative reading is CONFORMS or UNDETERMINED.",
+  "required": [
+   "the full texts of R-73, R-74, R-75, R-76, R-78 and R-80 (to test whether R-72's proviso 'no unresolved governance blockers' was met)",
+   "entry-into-force times for R-77, R-78, R-79 and R-80 from their adoption records, not from recording time",
+   "the R11 commit diff, classified by a rule fixed in advance (test paths only, or also production paths), and a system time (CI or push)",
+   "any scoping text in force before 16:10 defining whether 'WP-4B REMAINS BLOCKED' covers producer-agnostic RED; later interpretations are marked post hoc",
+   "R-87's full text and its entry into force (did the acceptance flag or waive the start?)"
+  ],
+  "decision_rule": "NON-CONFORMS if a blocking text in force before 16:10 covers the RED operation class. CONFORMS if R-73..R-76 satisfy the proviso and a text in force before 16:10 (for example R-78, if it was in force then) removes the transport question from 'governance blockers', or if the block's scope excludes producer-agnostic RED. Otherwise UNDETERMINED. The result bears against H-B only if it is NON-CONFORMS and no sanction, remediation or waiver takes force before R-87."
+ },
+ "status_mediation_upgrade": {
+  "current": "SOURCE FACT: there are 2 episodes, and both are self-reported by the rulings ('These become governing rulings effective immediately').",
+  "required": [
+   "an adoption event recorded in the closed channel by the adopting actor, with a separate identity and system time, rather than a status clause inside the ruling",
+   "uptake by others: engineering commits or CI runs, or acts by non-adopting actors, that cite the ruling as authority, dated after adoption",
+   "a behavioural contrast: rulings that are PREPARED and not adopted, where the closed channel records no execution or third-party citation during the prepared interval"
+  ],
+  "reason": "Force becomes independently observed when behaviour differs between the prepared interval and the adopted interval, and the timestamps and actors come from artefacts other than the ruling. One episode is enough to falsify H-D's status clause (force without adoption). It still corroborates H-D only and does not discriminate, because H-B is silent."
+ },
+ "ranking": [
+  {"spec": "P4+P7 (R-89 / R-87)", "ig_per_effort": "HIGH"},
+  {"spec": "P2 (R11, i.e. the contested case)", "ig_per_effort": "HIGH"},
+  {"spec": "P5 (R-94)", "ig_per_effort": "MEDIUM"},
+  {"spec": "P8 (R-91)", "ig_per_effort": "LOW–MEDIUM"},
+  {"spec": "P1 (act-less change)", "ig_per_effort": "LOW"}
+ ],
+ "smallest_discriminating_acquisition": {
+  "what": "Three items: R-89's adoption status in the closed channel (write history: who wrote it, and when, or its absence up to 2026-08-15); R-87's text and entry-into-force time; and the system time of the first WP-4C-1 commit or CI run.",
+  "why": "This is 3 records. They resolve the conflict between IDENTIFIABILITY P7 and CONFORMANCE-CASE C2, and the outcomes separate the hypotheses. If R-89 was not adopted but work was executed under it, H-D's status clause is falsified. If R-89 took force and WP-4C-1 work began before WP-4B's acceptance, with no waiver, H-B's gate conformance is falsified. If the order was acceptance, then adoption, then work, neither is falsified, and C2 is confirmed. No other acquisition this small puts both hypotheses at risk. The R11 resolution needs about 8 records and can only put H-B at risk.",
+  "label": "PROPOSAL"
+ }
+}

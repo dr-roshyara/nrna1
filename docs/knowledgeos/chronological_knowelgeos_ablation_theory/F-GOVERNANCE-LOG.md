@@ -2140,3 +2140,11 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | **Corrected statement of the 1ba C1 result** | "**Under the primary text-based reading, the WP-4B RED commit is classified NON-CONFORMS, with moderate confidence. An alternative reading remains viable, so the result is not a definitive falsification of H-B.**" Status: **candidate execution-side counter-instance to H-B's conformance clause, n = 1, contested.** |
 | **Rule M-TIME (standing, F-series)** | **Recording time ≠ decision time ≠ entry into force.** Git or register chronology establishes `RECORDING_ORDER` only. A decision or effectiveness order is `SOURCE_STATED_ORDER` only when the source text states it, and otherwise `INFERRED_ORDER` (always labelled) or `NOT_IDENTIFIABLE`. **Never substitute recording chronology for entry into force.** Evidence: PREPARED rulings (R-88, R-89) are recorded before adoption (1ba review) |
 | Applies from | now; existing records are unaffected (1ba's verdict was already text-robust) |
+
+## F-LOG-0175 — 1bb minimum-evidence spec: PASS_WITH_LIMITATIONS. **Formal identifiability limit (D1):** execution evidence cannot separate "the norm changed without an act" (against H-D) from "work violated an unchanged norm" (against H-B) **unless the norm in force is observable independently of both the act records and the behaviour**. The spec partially smuggles in H-D (entry into force from the adopter's own record). Corrected ranking: a cheap **screen (does WP-4C-1 work exist, and when?)** → P4+P7 → the contested R11 case. **STOP: human decisions required**
+
+| Field | Value |
+|---|---|
+| Freeze | `92b02ddcc` |
+| Records | `analysis/theory/LOOP-1BB/` |
+| Human decisions | (1) commission the non-Claude coder (Gate 1 proper on the frozen A′ records); (2) authorize the targeted acquisition: start with the rank-0 screen (a git-history search for WP-4C-1 work: a new evidence source); (3) whether to seek an **independent norm-state observable** |
