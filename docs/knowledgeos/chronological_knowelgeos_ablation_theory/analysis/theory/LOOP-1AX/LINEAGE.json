@@ -1,0 +1,260 @@
+{
+ "lineage": [
+  {
+   "record_id": "R01",
+   "v1_event_id": "ADOPT R-81..85 by the Chief (declined)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R02",
+   "v1_event_id": "ADOPT R-81..85 by the DA (R-86)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R03",
+   "v1_event_id": "ADOPT R-91 by the DA (held)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R04",
+   "v1_event_id": "AUTHORIZE-IMPL R-70 (ARB)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R05",
+   "v1_event_id": "AUTHORIZE-IMPL R-89 (Chief, PREPARED)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R06",
+   "v1_event_id": "REGISTER operational acceptance (R-90)",
+   "1aw_status": "SHARED",
+   "shared_with": [
+    7
+   ],
+   "merge_or_dual": "DUAL-SPAN"
+  },
+  {
+   "record_id": "R07",
+   "v1_event_id": "REGISTER constitutional decision (rule)",
+   "1aw_status": "SHARED",
+   "shared_with": [
+    6
+   ],
+   "merge_or_dual": "DUAL-SPAN"
+  },
+  {
+   "record_id": "R08",
+   "v1_event_id": "OPEN-WORK by a recording note (R-60)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R09",
+   "v1_event_id": "OPEN-WORK by a ruling (R-60 refiled)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R10",
+   "v1_event_id": "START WP-4B at R-72 (proviso unmet)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R11",
+   "v1_event_id": "START WP-4B 08-03 16:10",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R12",
+   "v1_event_id": "START WP-8 (permission only)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R13",
+   "v1_event_id": "START 7A after AUTHORIZE(7A)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R14",
+   "v1_event_id": "START 7B after AUTHORIZE(7A)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R15",
+   "v1_event_id": "RAISE promoted #2",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R16",
+   "v1_event_id": "RAISE promoted #3",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R17",
+   "v1_event_id": "RAISE promoted #9",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R18",
+   "v1_event_id": "RAISE promoted #10",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R19",
+   "v1_event_id": "RAISE not promoted #5",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R20",
+   "v1_event_id": "RAISE not promoted #14",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R21",
+   "v1_event_id": "RAISE not promoted #17",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R22",
+   "v1_event_id": "RAISE L493-B (single occurrence)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R23",
+   "v1_event_id": "RAISE P1 / R-41 (by PA instruction)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R24",
+   "v1_event_id": "ASSIGN a never-used number",
+   "1aw_status": "UNANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R25",
+   "v1_event_id": "ASSIGN the retired number R-90",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R26",
+   "v1_event_id": "SUPERSEDE ADR-T14 (R-77)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R27",
+   "v1_event_id": "SUPERSEDE §12 (R-83)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R28",
+   "v1_event_id": "SUPERSEDE D-12 by ADR-MP",
+   "1aw_status": "UNANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R29",
+   "v1_event_id": "SUPERSEDE PB-006 row declined (R-94)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R30",
+   "v1_event_id": "ANNOTATE PB-006 row chosen (R-94)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R31",
+   "v1_event_id": "START 7B at R-56 (plan approved, execution not issued)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R32",
+   "v1_event_id": "START 7B at R-58 (execution authorized)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R33",
+   "v1_event_id": "START 7C at R-58 (remains unauthorized)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R34",
+   "v1_event_id": "START 7C at R-65 (authorized)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R35",
+   "v1_event_id": "START §12 reconcile at R-81 (Batch 7 frozen)",
+   "1aw_status": "UNANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  },
+  {
+   "record_id": "R36",
+   "v1_event_id": "START §12 reconcile at R-86 (Batch 7 released)",
+   "1aw_status": "ANCHORED",
+   "shared_with": [],
+   "merge_or_dual": null
+  }
+ ]
+}

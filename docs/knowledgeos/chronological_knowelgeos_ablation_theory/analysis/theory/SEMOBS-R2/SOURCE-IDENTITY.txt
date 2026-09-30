@@ -1,0 +1,5 @@
+397d28349904a0159d51cc597c4808b1fced5f8c  engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md  (git blob @ 3b64de9f0)
+82c6f23cebbf7e0d5999d97448fdc1130200b446  .claude/sessions/2026-08-04.md  (git blob @ 3b64de9f0)
+2cc659698311026dc6f7ec1cf50a903886059ba8  .claude/sessions/2026-08-15.md  (git blob @ 3b64de9f0)
+1992638bb03730414edd52c36a477e8e75c6ce4f  claude/plans/swirling-jingling-blossom.md  (git blob @ 3b64de9f0)
+6a67da5d738331142c409fbad8a3b5617be7383b  git commit 6a67da5d7
