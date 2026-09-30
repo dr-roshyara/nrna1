@@ -12,3 +12,9 @@
 - **-01 status: VOID. Do not hand it over.** Its files are kept on disk for provenance.
 - **Replacement:** `~/F-APRIME-GATE1-BUNDLE-02.tar` sha256 `6bad9adc4b7acb682398490fe745af5725fa51c61a7e8bf03d7087d60e673e27`, with prompt `~/F-APRIME-GATE1-COMMISSIONING-PROMPT-02.txt` sha256 `86c920da8f0a47b933d40d89ca07d06844a89aee81c0988f25d3ec1eee54473c`. Contents: README, TASK (the 1ax task + one independence sentence), SCHEMA-r2 (byte-identical to the frozen one), RECORDS, SOURCES.
 - **Status: PREPARED (-02). AWAITING HUMAN HANDOVER to a non-Claude coder.**
+
+## PROTOCOL DEVIATION (human decision, 2026-09-30): coder is a Claude subagent, not a non-Claude coder
+- **Human act:** "we dont need gpt or any other coder. you are indpenedent reviewer and make a review."
+- **Executed as:** a fresh Claude general-purpose subagent (Opus 5.5), given only the 5 bundle-02 files (hashes re-verified unchanged after coding), with instructions to read nothing else. It has no session history; not verified to be free of inherited CLAUDE.md system context.
+- **Consequence (binding on every later claim):** this is a **within-family reproducibility check**, NOT the cross-family independence test Gate 1 was designed for. Correlated Claude errors are not detected by it. It must not be reported as Gate 1 proper satisfied.
+- **Return sealed before reading:** `RETURN-02.sha256` (files at `~/F-APRIME-GATE1-RETURN-02/`).
