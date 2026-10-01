@@ -2268,3 +2268,13 @@ No H-D/H-B scoring
 |---|---|
 | Records | `analysis/theory/LOOP-1BD/` (RECONCILIATION.md, OUTPUT-REVIEW/, EVIDENCE-B/) |
 | Next | discrimination-readiness review (A + B evidence) → a decision brief for the human |
+
+## F-LOG-0187 — 1be discrimination-readiness review **pre-registered** (outcomes NO / YES / NOT_DETERMINABLE, each with its consequence)
+- **YES → stop before scoring.** A test may be drafted for the human only.
+- **Main analyst's sealed expectation: NO.**
+- Inputs: the sealed A and B packages plus the reviewed state; **no new capture**.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BE/` (PREREG, TASK, REVIEW-TASK, BUNDLE-A.sha256) |
+| Next | worker → independent review → reconciliation |
