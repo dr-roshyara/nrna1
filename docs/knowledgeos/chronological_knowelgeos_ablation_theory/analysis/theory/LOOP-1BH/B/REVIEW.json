@@ -1,0 +1,84 @@
+{
+ "verdict": "PASS_WITH_LIMITATIONS",
+ "verdict_basis": "Frozen audit: no blocking issue. Addendum (RETURN-02): status qualifications required before the record is used for R4. They are not blocking because the record makes no reproducibility claim, every item resting on A′ coding is already tagged R2_DEPENDENT=yes and kept conditional, and RETURN-02 neither discharges nor contradicts any item. The worker is not at fault for the addendum omission.",
+ "items_checked": {
+  "count": 74,
+  "ids": "A01–A12, B01–B07, C00, D01–D14, E01–E04, F01–F13, G01–G06, H01–H17",
+  "continuous_report_sole_source": "none found"
+ },
+ "provenance_errors": [
+  {"id": "P1", "items": ["B01", "F12"], "issue": "'13 records are flagged uncertain': CODING-REVIEW.json 'uncertain' has 13 entries, but entry 'R15-R21' covers 7 records, so 19 records are flagged", "class": "count error"},
+  {"id": "P2", "items": ["A08"], "issue": "The span labelled 'R-90:' ('Then R-90 itself withdrawn before adoption …') is RECORDS.json R06/R07. Its section is 'WP-4C-2 — commission closed … (within ## S0804-L576)', a session log, not the R-90 row. Only R25 is from '## R-90'", "class": "source mislabel"},
+  {"id": "P3", "items": ["A11", "F04"], "issue": "F04 says the H5 §3 uncoded reports are 'in A11'. H5 §3 lists S0815; A11 lists S0804 and R-86, which come from IDENTIFIABILITY P2. The S0815 execution and remediation reports (P8) are in neither A11 nor A12", "class": "partial mismatch"},
+  {"id": "P4", "items": ["A01–A07", "A09", "A11"], "issue": "Labelled L0 'verbatim', but they are verbatim as quoted by 1ba (CONFORMANCE-ANSWER.md, from SOURCES.md) or 1bb (IDENTIFIABILITY.json). The primary texts are not in this directory. A09's 'heading names the ARB CHIEF' is a coder statement (CODING.json R29/R30 status). The record should disclose that these quotes are second-hand", "class": "disclosure"},
+  {"id": "P5", "items": ["E01"], "issue": "'under the primary text reading' reproduces the F-LOG-0174 wording, which appears only in CONTINUOUS-REPORT.md. The substance is in CONFORMANCE-REVIEW §6–7 and CONFORMANCE-CASE.json, so this is not a sole-source violation. Cite CONFORMANCE-REVIEW §7 instead", "class": "note"},
+  {"id": "P6", "items": ["B06"], "issue": "'(L1)' after cc1a3394 means Protocol A limitation L1, but reads as epistemic level L1", "class": "wording"}
+ ],
+ "level_errors": [
+  {"id": "L-1", "items": ["B05"], "issue": "'gains force when the Decision Authority adopts it' is stated flatly at L1. IDENTIFIABILITY P4 says force is 'observed' only through the rulings' own declarations, and the statement is the content of H-D's status clause. It matches STATE.md but is stronger than P4. Reword as 'the rulings themselves declare that …'"},
+  {"id": "L-2", "items": ["D08", "E04"], "issue": "The same P4 content is L2 in D08 and L1 in E04"},
+  {"id": "L-3", "items": ["A01", "E01"], "issue": "R-72's 'IMPLEMENTATION DOES NOT BEGIN' is quoted without the adopted correction that it is a snapshot of 08-02 and the standing norm is the conditional (CONFORMANCE-RECONCILIATION 'Corrections adopted'; CONFORMANCE-REVIEW §2)"}
+ ],
+ "regularity_errors": [],
+ "regularity_check": "C correctly empty (0 clusters). B04's two flips both run through R-58 (R31→R32 via R-58; R33→R34 from R-58), so they are not independent. B05: n=2 versus P4's ≥3 adoption acts. B03 is confounded. Note: R31 is a recording note 'not part of the ruling', so 'successive rulings' is loose.",
+ "symmetry_errors": [
+  {"id": "S-1", "items": ["E02"], "issue": "Direction given only as 'against H-B, if R-89 took force' (copied from H5 §4). IDENTIFIABILITY P4 also names R-89 as an unresolved possible falsifier of H-D's status clause (falsifier_HD: PREPARED yet cited as governing). Record both directions in E02, not only inside E04's alternative reading"},
+  {"id": "S-2", "items": ["E03"], "issue": "E01 states 'H-D makes no prediction', but E03 does not state the mirror fact 'H-B is silent (P5)', which appears in D09 only"}
+ ],
+ "tag_errors": [
+  {"id": "T-1", "items": ["H05"], "issue": "Tagged no, but derived from D01 (yes, reopening condition 3), while H06 (also from D01) is yes. Make it yes or give a reason"},
+  {"id": "T-2", "items": ["D12", "F10"], "issue": "Both rest on IDENTIFIABILITY P8 (a corpus-window limitation), but D12 is yes and F10 is no"},
+  {"id": "T-3", "items": ["D10"], "issue": "P6 rests mainly on uncoded execution reports (A11) and on the hypotheses' text. The reason 'rests on coded records' is doubtful. Keeping yes is conservative, but correct the reason"},
+  {"id": "T-4", "items": ["G02"], "issue": "Under the record's own rule (yes = rests on A′ codings), G02 is a status/provenance statement. Harmless, but it does not fit the rule"},
+  {"id": "T-5", "items": ["all R2_DEPENDENT=yes items"], "issue": "Addendum: no tag may be flipped to no on the basis of RETURN-02, which is within-family and 'not evidence against correlated error'"}
+ ],
+ "section_h_issues": [
+  {"id": "H-1", "items": ["H04"], "issue": "'three distinct times' can be read as saying they always differ. G05 and STATE.md say only that they must not be equated"},
+  {"id": "H-2", "items": ["H02"], "issue": "Carrying A′ forward should attach the R-A3 caveat (D05, G04): act and after-state are the same record, so P1 cannot be tested through A′"},
+  {"id": "H-3", "items": ["H"], "issue": "SCHEMA-r2 §5 'never aggregated' (support per dataset) is not carried into H as a 'may not'"},
+  {"id": "H-4", "items": ["H16"], "issue": "Addendum: add that κ=1.000 (RETURN-02) is not cross-family reliability, not evidence against correlated error, and not Gate 1 closure; and that free-text field reproducibility may not be assumed"},
+  {"id": "H-ok", "issue": "No H-D, H-B, aggregate or axiom is smuggled in. H05 admits the hypotheses only as unresolved alternatives, and H07 forbids using them as axioms"}
+ ],
+ "prohibitions": {
+  "absence_semantics": "respected (D13, F09, F10 NOT-EVIDENCED-IN-CAPTURE; F07, F13 UNKNOWN)",
+  "norm_to_act": "respected (A05, A10, F09, H10)",
+  "M_TIME": "respected (A07, B06, F06, E02, H12). Omitted: Protocol A L3 'file names are not timestamp sources'",
+  "no_DDD_or_formal_model": "respected"
+ },
+ "omissions": [
+  {"id": "O-F1", "source": "SUPPORT-RECONCILIATION.md", "missing": "Defects 3–6 (junk-key corrections; R04 overwrite; composite targets, 2 of 14 POSSIBLE are artifacts; duplicate/level-mismatched fields); 1ay-n normalization (180 values, 16 corrections, 'usable for pairing only under stated conditions'); r3 NORM target 14 POSSIBLE. B02–B04 rest on these"},
+  {"id": "O-F2", "source": "CONFORMANCE-RECONCILIATION.md; READINESS-RECONCILIATION.md", "missing": "Two sealed expectations failed: 1ba bias check (C1 expectation CONFORMS/UNDETERMINED); 1be main-analyst expectation NO not confirmed (prediction miss). Belongs in G"},
+  {"id": "O-F3", "source": "READINESS-RECONCILIATION.md errata", "missing": "E2 (author classes unknown, including S0804); E4 (host membership shows access, not normative capability). E4 should also become an H 'may not'"},
+  {"id": "O-F4", "source": "RECORDS.json R04", "missing": "R-70 'WP-7B-R1 AUTHORIZED TO IMPLEMENT' is cited in F09 but appears in no A item"},
+  {"id": "O-F5", "source": "SUPPORT-RECONCILIATION.md methodological conclusion", "missing": "INFERENCE (reviewer concurs): the strict pair-witness method is inadequate; the information lies in norm dynamics"},
+  {"id": "O-F6", "source": "CONFORMANCE-REVIEW.md §5", "missing": "C2 relies on R-89's self-certified 'seven checks', not independently verified (E02 confound)"},
+  {"id": "O-F7", "source": "PROTOCOL-A-RECONCILIATION.md L3", "missing": "File names are not timestamp sources (M-TIME)"},
+  {"id": "O-R1", "source": "RETURN-02-REVIEW.md header, 'Does not show', 'Open for human decision'", "required_change": "Header, G02 and the H5-derived wording: 'the non-Claude Gate 1 coding (R2) is pending' is outdated. The commissioned non-Claude coder was replaced by human decision with a fresh Claude subagent. Gate 1 proper remains unsatisfied. Whether a non-Claude coder is still commissioned is open human decision 1. Define what 'R2' denotes. Change status to 'PROVISIONAL, pending the Gate 1 decision'. COMMISSIONING.md is not in this directory; cite RETURN-02-REVIEW.md"},
+  {"id": "O-R2", "source": "RETURN-02-COMPARISON.json; RETURN-02-REVIEW.md frozen results", "required_change": "New B item (L1, confidence 'frozen comparator; same-family'): 36/36 ids. act.state agreement 1.000, κ 1.000. norm.deontic 1.000, κ 1.000. Membership 24/7/2/3. UNKNOWN share 0.083 (the 3 no-span records). REF-CR = REF-C because the 7 *.status.* corrections are not applied by the comparator. State verbatim: 'does not show cross-family independence'; perfect agreement 'is not evidence against correlated error'"},
+  {"id": "O-R3", "source": "RETURN-02-REVIEW.md Supplementary", "required_change": "Label NOT frozen, descriptive only: SOURCE_FACT↔INFERENCE status disagreements (act.state 29/36, norm.deontic 35/36; class schema; no category changed); free-text exact match 11–23/36, no semantic comparison, no claim"},
+  {"id": "O-R4", "source": "RETURN-02 vs record items", "required_change": "Qualify the R2_DEPENDENT items by the fields they rest on, and keep every tag at yes. B01 counts: reproduced within family; cross-family untested. B02, B03, B04 and the C00 candidates rest on operation/actor/target fields and the 1ay-n normalization; RETURN-02 gives no reproducibility evidence for these, even within family. B05/D08/E04 rest on R02's categorical act.state (reproduced within family). E02 (R05 operation) and E03 (R29/R30): identical within-family codes do not resolve the uncertainty entries. D01, D03, H02, H03, H06, H15: RETURN-02 does not discharge 'conditional on R2 reproducing the coding' (H5 §5.2); whether a within-family check suffices is human decision 1; the sources do not say whether it bears on reopening condition 3"},
+  {"id": "O-R5", "source": "RETURN-02; CODING-REVIEW.json uncertain", "required_change": "F12: cross-family reproduction unknown (Gate 1 unsatisfied). Within-family reproduction exact on act.state, norm.deontic and membership; free-text fields unassessed. The 13 uncertainty entries (19 records) received identical within-family codes, which does not resolve them"},
+  {"id": "O-R6", "source": "RETURN-02-REVIEW.md 'Open for human decision'", "required_change": "New F items: open decision 1 (basis for Gate 1); open decision 2 (a SCHEMA-r2 §3 SOURCE_FACT/INFERENCE rule; schema change only by human decision). Note that the epistemic-status labels, including most of CODING-REVIEW's 25 corrections, lie on this boundary"},
+  {"id": "O-R7", "source": "RETURN-02-REVIEW.md 'Does not show'", "required_change": "H16 (or a new H item): R4 may not read κ=1.000 as cross-family reliability, as evidence against correlated error, or as Gate 1 closure, and may not assume free-text field reproducibility"},
+  {"id": "O-R8", "source": "RETURN-02-REVIEW.md 'Shows'", "required_change": "The record makes no positive reproducibility claim, so nothing needs to be withdrawn. Any added claim must not exceed 'within-family reproducibility of act.state / norm.deontic / membership on these 36 records is high'"},
+  {"id": "O-R9", "source": "RETURN-02-REVIEW.md header", "required_change": "Add RETURN-02-COMPARISON.json and RETURN-02-REVIEW.md to the sources, with seal 4bd42c3a5 and comparator 178e86214. Both are same-family; G02 still holds"}
+ ],
+ "blocking": [],
+ "required_before_R4_use": ["O-R1", "O-R2", "O-R3", "O-R4", "O-R5", "O-R6", "O-R7", "O-R8", "O-R9"],
+ "nonblocking": [
+  "P1 count error (13 entries = 19 records) in B01/F12",
+  "P2 A08 span mislabelled as R-90 (it is session log S0804-L576)",
+  "P3 A11/F04 S0815 vs S0804 mismatch; S0815 reports missing",
+  "P4 second-hand verbatim quotes labelled L0 without disclosure",
+  "P5 E01 phrase mirrors CONTINUOUS-REPORT wording (substance sourced elsewhere)",
+  "P6 B06 'L1' ambiguity",
+  "L-1 B05 force stated flatly (self-reported only)",
+  "L-2 D08/E04 level mismatch",
+  "L-3 R-72 snapshot correction missing from A01/E01",
+  "S-1 E02 omits the H-D direction (R-89 as possible falsifier of H-D's status clause)",
+  "S-2 E03 omits 'H-B is silent'",
+  "T-1..T-4 tag inconsistencies (H05, D12/F10, D10 reason, G02 rule fit)",
+  "H-1..H-3 Section H wording and missing 'never aggregated'",
+  "O-F1..O-F7 frozen-audit omissions"
+ ]
+}

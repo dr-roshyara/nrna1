@@ -2421,3 +2421,18 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/GATE1-APRIME/` (COMMISSIONING.md §HANDOVER -03, HANDOVER-03-INSTRUCTIONS.md) |
+
+## F-LOG-0200 — 1bh R3 provisional record r0: **review PASS_WITH_LIMITATIONS** (74 items; 0 blocking). Targeted r1 repair frozen
+- **Findings:** about 40 corrections:
+  - 6 provenance errors (e.g. the 13 uncertainty entries cover 19 records; one span mislabelled R-90);
+  - 3 level errors (B05 force stated flatly);
+  - 5 tag inconsistencies;
+  - 4 section-H wording issues;
+  - 16 omissions, including the RETURN-02 within-family results, which go in as L1 same-family with no tag flipped to "no".
+- **Section C (regularities):** 1 candidate; the reviewer found no regularity errors.
+- **Section H:** no H-D, H-B, aggregate or axiom smuggled in.
+- **Rule for r1:** weaken, never strengthen; ids stay stable; the record stays PROVISIONAL.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BH/` (A, B = r0 incl. ADDENDUM; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |
