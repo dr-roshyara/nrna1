@@ -2614,3 +2614,24 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 ## F-LOG-0214 — 1bj core codings **sealed before reading**
 - **Runs:** three isolated coders (opus claude-opus-5-5, sonnet claude-sonnet-5-5, haiku claude-haiku-4-5-20251001), run in parallel 2026-10-01 18:06–18:09Z in `~/gate1-core/<model>/`. Bundle hashes were verified in each folder; one attempt each; all exited 0 with empty stderr.
 - **Seal:** `LOOP-1BJ/RETURNS.sha256` (CODING, NOTES, transcript, err, exit per coder).
+
+## F-LOG-0215 — 1bj frozen comparator run: **pre-registered verdict FAIL (2 of 9 pair × field values pass)**. Pending independent review; no interpretation yet
+
+| pair | ACT_REPORTED κ | ACT_SELF_PERFORMED κ | NORM_STATED κ |
+|---|---|---|---|
+| opus~sonnet | **1.000** | 0.598 | **0.941** |
+| haiku~opus | 0.400 | 0.583 | 0.643 |
+| haiku~sonnet | 0.400 | 0.637 | 0.589 |
+
+**Isolation:**
+- each coder made 5 reads of its own bundle files and 2 writes;
+- model ids confirmed; inputs unchanged; 36/36 ids each.
+
+**Disclosed:**
+- an ancestor `/home/d0f38614-…/.claude/CLAUDE.md` may have loaded. It is the generic Anthropic-SDK guide with **no project content**;
+- each coder started with a fresh, empty project memory;
+- the coder schema is 1,107 words by `wc` (945 by hand) against a ≤ 1,000 target.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BJ/COMPARISON.json` |

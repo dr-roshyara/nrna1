@@ -1,0 +1,387 @@
+{
+ "all_pass": false,
+ "coders": {
+  "haiku": "/home/nab-raj.roshyara@dg-nexolution.de/gate1-core/haiku/CODING.json",
+  "opus": "/home/nab-raj.roshyara@dg-nexolution.de/gate1-core/opus/CODING.json",
+  "sonnet": "/home/nab-raj.roshyara@dg-nexolution.de/gate1-core/sonnet/CODING.json"
+ },
+ "distributions": {
+  "haiku": {
+   "ACT_REPORTED": {
+    "NO": 24,
+    "UNKNOWN": 3,
+    "YES": 9
+   },
+   "ACT_SELF_PERFORMED": {
+    "NO": 26,
+    "UNKNOWN": 3,
+    "YES": 7
+   },
+   "NORM_STATED": {
+    "NO": 14,
+    "UNKNOWN": 3,
+    "YES": 19
+   }
+  },
+  "opus": {
+   "ACT_REPORTED": {
+    "NO": 18,
+    "UNKNOWN": 3,
+    "YES": 15
+   },
+   "ACT_SELF_PERFORMED": {
+    "NO": 24,
+    "UNKNOWN": 4,
+    "YES": 8
+   },
+   "NORM_STATED": {
+    "NO": 9,
+    "UNKNOWN": 3,
+    "YES": 24
+   }
+  },
+  "sonnet": {
+   "ACT_REPORTED": {
+    "NO": 18,
+    "UNKNOWN": 3,
+    "YES": 15
+   },
+   "ACT_SELF_PERFORMED": {
+    "NO": 19,
+    "UNKNOWN": 3,
+    "YES": 14
+   },
+   "NORM_STATED": {
+    "NO": 8,
+    "UNKNOWN": 3,
+    "YES": 25
+   }
+  }
+ },
+ "labels": "symmetric; no ground truth",
+ "missing": {
+  "haiku": [],
+  "opus": [],
+  "sonnet": []
+ },
+ "n_common": 36,
+ "pairs": {
+  "haiku~opus": {
+   "ACT_REPORTED": {
+    "agreement": 0.667,
+    "disagreements": {
+     "R02": {
+      "haiku": "YES",
+      "opus": "NO"
+     },
+     "R09": {
+      "haiku": "YES",
+      "opus": "NO"
+     },
+     "R11": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R15": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R16": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R17": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R18": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R19": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R20": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R21": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R22": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R25": {
+      "haiku": "YES",
+      "opus": "NO"
+     }
+    },
+    "kappa": 0.4,
+    "status": "FAIL"
+   },
+   "ACT_SELF_PERFORMED": {
+    "agreement": 0.806,
+    "disagreements": {
+     "R05": {
+      "haiku": "YES",
+      "opus": "UNKNOWN"
+     },
+     "R09": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R25": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R26": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R27": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R34": {
+      "haiku": "YES",
+      "opus": "NO"
+     },
+     "R36": {
+      "haiku": "YES",
+      "opus": "NO"
+     }
+    },
+    "kappa": 0.583,
+    "status": "FAIL"
+   },
+   "NORM_STATED": {
+    "agreement": 0.806,
+    "disagreements": {
+     "R09": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R16": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R17": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R18": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R19": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R21": {
+      "haiku": "NO",
+      "opus": "YES"
+     },
+     "R30": {
+      "haiku": "YES",
+      "opus": "NO"
+     }
+    },
+    "kappa": 0.643,
+    "status": "FAIL"
+   }
+  },
+  "haiku~sonnet": {
+   "ACT_REPORTED": {
+    "agreement": 0.667,
+    "disagreements": {
+     "R02": {
+      "haiku": "YES",
+      "sonnet": "NO"
+     },
+     "R09": {
+      "haiku": "YES",
+      "sonnet": "NO"
+     },
+     "R11": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R15": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R16": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R17": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R18": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R19": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R20": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R21": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R22": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R25": {
+      "haiku": "YES",
+      "sonnet": "NO"
+     }
+    },
+    "kappa": 0.4,
+    "status": "FAIL"
+   },
+   "ACT_SELF_PERFORMED": {
+    "agreement": 0.806,
+    "disagreements": {
+     "R09": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R10": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R13": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R14": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R23": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R25": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R26": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     }
+    },
+    "kappa": 0.637,
+    "status": "FAIL"
+   },
+   "NORM_STATED": {
+    "agreement": 0.778,
+    "disagreements": {
+     "R09": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R15": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R16": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R17": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R18": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R19": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R21": {
+      "haiku": "NO",
+      "sonnet": "YES"
+     },
+     "R30": {
+      "haiku": "YES",
+      "sonnet": "NO"
+     }
+    },
+    "kappa": 0.589,
+    "status": "FAIL"
+   }
+  },
+  "opus~sonnet": {
+   "ACT_REPORTED": {
+    "agreement": 1.0,
+    "disagreements": {},
+    "kappa": 1.0,
+    "status": "PASS"
+   },
+   "ACT_SELF_PERFORMED": {
+    "agreement": 0.778,
+    "disagreements": {
+     "R05": {
+      "opus": "UNKNOWN",
+      "sonnet": "YES"
+     },
+     "R10": {
+      "opus": "NO",
+      "sonnet": "YES"
+     },
+     "R13": {
+      "opus": "NO",
+      "sonnet": "YES"
+     },
+     "R14": {
+      "opus": "NO",
+      "sonnet": "YES"
+     },
+     "R23": {
+      "opus": "NO",
+      "sonnet": "YES"
+     },
+     "R27": {
+      "opus": "YES",
+      "sonnet": "NO"
+     },
+     "R34": {
+      "opus": "NO",
+      "sonnet": "YES"
+     },
+     "R36": {
+      "opus": "NO",
+      "sonnet": "YES"
+     }
+    },
+    "kappa": 0.598,
+    "status": "FAIL"
+   },
+   "NORM_STATED": {
+    "agreement": 0.972,
+    "disagreements": {
+     "R15": {
+      "opus": "NO",
+      "sonnet": "YES"
+     }
+    },
+    "kappa": 0.941,
+    "status": "PASS"
+   }
+  }
+ },
+ "verdict_rule": "all pair x field kappa >= 0.67"
+}
