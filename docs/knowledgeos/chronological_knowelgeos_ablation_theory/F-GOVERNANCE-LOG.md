@@ -2657,3 +2657,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the identifiability and measurement limits;
   - *performative ambiguity* as an L2 candidate to formalize, not an axiom.
 - **No coding-dependent claim may enter R4.**
+
+## F-LOG-0218 — R4 / 1bk **pre-registered**: a minimal formal theory draft on the coding-independent base
+- **Five parts:**
+  - primitives + the observation function O;
+  - H-D and H-B as model classes;
+  - D1 as an observational-equivalence proposition (proof, countermodels, sufficient conditions);
+  - performative ambiguity (definition + conjecture);
+  - an R5 finite-state spec (no code; an independent verifier implements it).
+- **Review:** a FAIL gets one targeted repair; a second FAIL → human.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BK/` |
