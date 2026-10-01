@@ -1,0 +1,84 @@
+{
+  "verdict": "FAIL",
+  "summary": "The D1 core is valid: Prop 4.1 (i), (i'), (ii) and (iii), Lem 4.2 (main statement), Cor 4.3 (first sentence), Props 3.4, 4.5 and 4.6, and Lems 3.3, 3.5, 3.6, 3.7, 4.7 and 5.2. Neutrality holds. No coding-dependent claim was found and no section-H MAY_NOT is violated. The draft fails because two arguments in section 4.5 are invalid: Lem 4.8, and the unlabelled remark after Prop 4.5.",
+  "base_violations": [
+    {"id": "BV-1", "where": "O6; ledger row IF-obs", "issue": "The support for O6 is IF, which is not an R3 item. B09 reports perfect within-family agreement and supports only the caveat. O6 extends the mode result to Ref, although capable coders reproduced ACT_REPORTED (1.000) and NORM_STATED (0.941). It also drops 'within the Claude family' and omits that IF's consequence is 'stated, not adopted'. No proof is affected, because A3 holds by the definition of O.", "blocking": false},
+    {"id": "BV-2", "where": "O1", "issue": "Overstates what O sees. A07: R-80 has no timeline entry, and the timeline is second-hand. F13: R24, R28 and R35 have no source span.", "blocking": false},
+    {"id": "BV-3", "where": "A5 gloss; Rem 4.10", "issue": "'No corpus record is an attestation of the norm state' is stronger than B07, which concerns only INDEPENDENT norm-in-force records. Rem 4.10 relies on this stronger gloss.", "blocking": false},
+    {"id": "BV-4", "where": "F2 ledger basis", "issue": "F2 cites IF's L2 hypothesis, which IF marks as not established ('the record of an act and the act itself coincide'). F2 does not assume coincidence, so this is not a hypothesis used as an axiom, but the citation is misattributed.", "blocking": false},
+    {"id": "BV-5", "where": "section 8, H01 row", "issue": "'L1 items cited for scope and limits only' is inaccurate. E01 (L1) fixes B-conf's universal reading and is used in Rem 4.10. B06 (L1) supplies a time in Table 4.6. This is not a violation, because H01 is a MAY.", "blocking": false},
+    {"id": "BV-6", "where": "Def 1.9", "issue": "'The frame never equates them' contradicts F2, which sets d(a) = r(rho) under con. This is a tension with H04. H12 is not violated, because con is unobserved, and Prop 5.4(b) is conditional and disclosed.", "blocking": false}
+  ],
+  "neutrality_issues": [
+    {"id": "N-1", "where": "Def 3.1 B-chg", "issue": "The work disjunct accepts work on ANY target at any earlier time, which makes B-chg nearly vacuous once any work comes first. The fact that the work can be on another target is not disclosed.", "blocking": false},
+    {"id": "N-2", "where": "Def 3.1 B-conf", "issue": "The universal reading comes from E01 (L1 data), not from HYP ('expected to conform'). It makes H-B refutable by a single violation, while H-D has no comparable work clause. This choice should be stated as such.", "blocking": false},
+    {"id": "N-3", "where": "Def 3.1 B-fb, D-rec", "issue": "B-fb and 'primarily' are not formalized. Both omissions are disclosed and roughly symmetric, so this is acceptable. Neither class is built into the primitives, the frame or O.", "blocking": false}
+  ],
+  "proof_issues": [
+    {"id": "P-1", "where": "Proofs of 4.1(i), (ii), (iii)", "issue": "'O(h*) = O(h) by A1 and A2' turns separate non-dependence on sigma and on f into joint non-dependence. That needs an intermediate history in the frame (h -> f = inf everywhere -> sigma*), which exists under A5. The step should be stated. The proofs remain valid.", "blocking": false},
+    {"id": "P-2", "where": "Lem 4.2 gloss; Cor 4.3 second sentence", "issue": "'Sees E, W and all their attributes' contradicts 'does not depend on f', because f is an attribute of issue acts (Def 1.4). Read literally, Cor 4.3's second sentence is false: O2 = (O, F^) is computed from the attributes of referenced acts and separates the classes. Write 'all attributes except f'.", "blocking": false},
+    {"id": "P-3", "where": "Prop 5.4(c)", "issue": "'False in h1, so not constant on the fibre' does not follow, because independence can also fail in h2 (for example when k(rho) = alpha(a), which always holds in U). The conclusion that O cannot certify independence still follows.", "blocking": false},
+    {"id": "P-4", "where": "Lem 3.7; Lem 5.2", "issue": "For variant frames, both lemmas need unstated side conditions: no frame axiom on Cap (Lem 3.7); F2 the only axiom on con or d, and no axiom tying c to con (Lem 5.2).", "blocking": false},
+    {"id": "P-5", "where": "Prop 4.1 statement (D1 precision)", "issue": "The proposition is stated for the fixed O and frame, where A1-A5, A7 and A8 are theorems. It should be stated for a generic (O', H'). Part (ii) omits O(h_v) = O(h_c) = O(h), so as written it holds without A1 and A2.", "blocking": false},
+    {"id": "P-6", "where": "Def 1.7 (approx_X); Def 5.1", "issue": "Cross-history identity of acts, work events and records is never defined, but both definitions rely on it.", "blocking": false},
+    {"id": "P-7", "where": "Cor 4.3 label", "issue": "The label 'D1 as necessary condition (H5 section 5.2)' overclaims: the corollary derives neither independence nor the mapping to target and time.", "blocking": false},
+    {"id": "PA-1", "where": "Lem 5.2; Conj 5.5", "issue": "Inside the model, ambiguity is universal, because no axiom ties the text c to con; even R-56 is ambiguous. The relevant condition is an A5-like 'no c-con tie', not A3, so Conj 5.5's phrase 'empirical counterpart of A3' points to the wrong assumption.", "blocking": false},
+    {"id": "PA-2", "where": "Conj 5.5 falsifiers", "issue": "F-a does not name its reliability rule (IF's rule is kappa >= 0.67 per pair x field). F-c needs records 'whose text states its own mode', and selecting them is itself a mode coding; the set should be fixed before any coding. The conjecture is otherwise correctly labelled, falsifiable and separated from the evidence.", "blocking": false},
+    {"id": "P-ref", "where": "Lem 4.8; remark after Prop 4.5", "issue": "Both arguments are invalid. See S-1 and S-2.", "blocking": true}
+  ],
+  "countermodel_issues": [
+    {"id": "C-1", "where": "CM-A2; A2, A4, A8", "issue": "A4 (attributes of E) contains A2 (f) and A8 (d), so no observable can violate A2 without violating A4. O2 exposes act ids, tau and v. This is harmless for (i), which does not assume A4, but 'exactly one assumption' is impossible until A4 is restricted.", "blocking": false},
+    {"id": "C-2", "where": "CM-A7 alternative O4'; R5 O4'", "issue": "'E with attributes' includes f and d, so this observable violates A2, A4 and A8 together. The table row merges A7 and A4.", "blocking": false},
+    {"id": "C-3", "where": "CM-A7 / K8.7", "issue": "Only the literal wording of (iii), 'acts that no record references', breaks. In H7, a REFERENCED added act gives an O-equivalent h' in H-B in which w conforms, because O does not see Ref (A3). The O-level non-separation therefore survives; A7 is needed only for H5's wording 'without a recorded act'.", "blocking": false},
+    {"id": "C-4", "where": "Lem 5.2 countermodels", "issue": "The A3 and A8 countermodels are informal and have no ledger row; the ledger stops at CM-A1..CM-A7.", "blocking": false},
+    {"id": "C-5", "where": "section 4.4 table", "issue": "For (ii) and (iii), the failures under not-A1, not-A2 and not-A5 are shown only through (i). The same instances work. Minor.", "blocking": false}
+  ],
+  "sufficiency_issues": [
+    {"id": "S-1", "where": "Lem 4.8; S3; Table 4.6 'condition 2 is S1-S3'; role of Def 4.9", "issue": "Lem 4.8 does not prove its claim, and its ledger statement ('a Q veridical only within one class does not suffice') is false. The proof of Prop 4.5 applies S1 only to an h' supposed to be in H-B, so S1 on H-B alone suffices. Counterexample: take Q1 = sigma(t(w1)), veridical by frame axiom only on H-B, and h = Lem 3.5(a); then the outcome (o, q) excludes H-B without S3. Q_e (constant p) fails S2, not S3, and is not of Prop 4.5's form. Fix: restate S3 as 'S1 on every h in H-B', and prove necessity with a norm-maker report veridical only on H-D.", "blocking": true},
+    {"id": "S-2", "where": "Unlabelled remark after Prop 4.5", "issue": "'Such a Q only ever excludes H-B; never H-D' is false, and its justification is invalid: the S3 frame axiom breaks A5, so 4.1(i) does not apply, and when |P| >= 2, setting sigma to p everywhere changes Q-values in P \\ {p}. Counterexample: Q*(h) = {(l1, sigma(t(w1)))} U {(l2, sigma(t(w1))) : h not in H-D}, with mu(l1) = mu(l2) = w1. S1-S3 hold, and S2 holds via Lem 3.5(a). The outcome of Lem 3.5(b) is {(l1,p),(l2,p)}, which excludes H-D. Fix: delete the remark, or restrict it to a Q that depends only on sigma at mapped work points and on W (true under A2, A4 and A7, with O and Q independent of Cap, E and f); then label and prove it.", "blocking": true},
+    {"id": "S-3", "where": "S3; S1'", "issue": "S1 already quantifies over every h, so S3 restates it as written. S1' is vacuous, because Q' is defined from coordinates. The real content of both is the external claim that an instrument realizes Q.", "blocking": false},
+    {"id": "S-ok", "where": "Prop 4.5, Prop 4.6", "issue": "None. Both are valid and sufficient, and their realizability witnesses exist: Lem 3.5(a) for S2, Lem 3.5(b) for S2'.", "blocking": false}
+  ],
+  "level_errors": [
+    {"id": "L-1", "where": "A1-A5, A7, A8", "issue": "Labelled Asm, but they are theorems for the base (O, frame) by Lem 1.12 and Def 1.8. They should be relabelled as hypotheses of a generic theorem.", "blocking": false},
+    {"id": "L-2", "where": "Rem 4.10", "issue": "'Lem (remark)' is not one of the declared labels, and there is no proof. The content is interpretive.", "blocking": false},
+    {"id": "L-3", "where": "Table 4.6", "issue": "Labelled Obs, but it contains analysis and applies Cor 4.3 to corpus items under A5.", "blocking": false},
+    {"id": "L-4", "where": "section 8 rows", "issue": "Labelled Lem, but these are compliance assertions without proofs; the H01 row is inaccurate (BV-5). The rows cite K11.1 and K11.2, R5 finite checks that have not been run, as support for properties that follow directly from Def 1.8. No proposition anywhere rests on a finite check.", "blocking": false},
+    {"id": "L-5", "where": "various", "issue": "Statements with no label: the remark after 4.5; the note after 4.6; 'Ad is monotone' (Def 2.2); the F2 claims inside Def 1.9; the 'In words' gloss of 4.1; the Lem 5.2 countermodels; the closing paragraph of Prop 5.4, which applies the model to 'the corpus'.", "blocking": false},
+    {"id": "L-6", "where": "O6; IF-obs", "issue": "O6 overstates its source (BV-1). The ledger row IF-obs has no matching statement in the body.", "blocking": false},
+    {"id": "L-7", "where": "Ledger, Lem 4.8", "issue": "The ledger statement is false. See S-1.", "blocking": true}
+  ],
+  "minimality_issues": [
+    {"id": "M-1", "where": "section 2 (Def 2.1, Def 2.2, Lem 2.3)", "issue": "Used by no proof, no result and no R5 check.", "blocking": false},
+    {"id": "M-2", "where": "F3", "issue": "Repeats the typing already stated in Def 1.4.", "blocking": false},
+    {"id": "M-3", "where": "A4 vs A2, A8", "issue": "A4 contains A2 and A8, so A2 is redundant in (i') and (iii).", "blocking": false},
+    {"id": "M-4", "where": "A5 second sentence", "issue": "Follows from the first sentence.", "blocking": false},
+    {"id": "M-5", "where": "S3, S1'", "issue": "Redundant as written. See S-3.", "blocking": false},
+    {"id": "M-6", "where": "Lem 3.5(b')", "issue": "Adds nothing beyond (b), because B-chg also holds through the work disjunct.", "blocking": false},
+    {"id": "M-7", "where": "'H cap R_B'; Qc / K9.3", "issue": "'H cap R_B' is redundant, since R_B is a subset of H. K9.3 with Qc follows trivially from K4, because Qc is a function of O. All primitives are used.", "blocking": false}
+  ],
+  "r5_spec_issues": [
+    {"id": "R-1", "where": "section 7.2 preamble", "issue": "'First counterexample' does not fix an enumeration order.", "blocking": false},
+    {"id": "R-2", "where": "K8.2", "issue": "Does not say which (r, c) 'the value' has; it should say 'for every (r, c)'. The expected outcome is true.", "blocking": false},
+    {"id": "R-3", "where": "K8.1", "issue": "The exact characterization (the difference is sigma = (q,q)) is true but cannot be derived from the text, because CM-A1 uses T = {0}. The derivation should be added: (q,p) is in O1(H-B) through an act with value p entering into force at 1, and (p,q) through work at 0.", "blocking": false},
+    {"id": "R-4", "where": "K10.1", "issue": "Runs H-D for every h in H-D, while Lem 5.2 states the H-D case only for h in R_B. The outcome is true (only D-rec is needed) but cannot be derived from the lemma as stated.", "blocking": false},
+    {"id": "R-5", "where": "O4', K8.4, K8.7", "issue": "O4' includes f and d (C-2). The failure in U7 comes only from the literal 'unreferenced' clause (C-3).", "blocking": false},
+    {"id": "R-6", "where": "missing checks", "issue": "Missing: veridicality on H-B suffices (S-1); the counterexample Q* (S-2); Prop 4.6 directly. Def 4.9 and Prop 5.4(c) cannot be tested in U, because with A = {x} no record is ever independent; this should be stated.", "blocking": false},
+    {"id": "R-7", "where": "K4, K10.3", "issue": "K10.3's quantifiers (which class, which slots) are unclear. K4's 'run for O and as O_notsigmaf' is ambiguous, because 'differs at most in sigma and f' already implies both.", "blocking": false},
+    {"id": "R-ok", "where": "K1-K11", "issue": "None. Every expected outcome was checked by hand in U and is correct. The raw enumeration size is about 4.5e6, consistent with 'a few million'.", "blocking": false}
+  ],
+  "blocking": [
+    "S-1: Lem 4.8 does not prove that non-circularity (S3) is needed, and its ledger claim is false. S1 on H-B suffices; Q_e fails S2, not S3.",
+    "S-2: The unlabelled remark after Prop 4.5 ('never excludes H-D') is false, and its justification is invalid. Counterexample Q* given."
+  ],
+  "nonblocking": [
+    "BV-1", "BV-2", "BV-3", "BV-4", "BV-5", "BV-6",
+    "N-1", "N-2", "N-3",
+    "P-1", "P-2", "P-3", "P-4", "P-5", "P-6", "P-7", "PA-1", "PA-2",
+    "C-1", "C-2", "C-3", "C-4", "C-5",
+    "S-3",
+    "L-1", "L-2", "L-3", "L-4", "L-5", "L-6",
+    "M-1", "M-2", "M-3", "M-4", "M-5", "M-6", "M-7",
+    "R-1", "R-2", "R-3", "R-4", "R-5", "R-6", "R-7"
+  ]
+}

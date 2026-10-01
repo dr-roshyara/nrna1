@@ -2670,3 +2670,22 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BK/` |
+
+## F-LOG-0219 — R4 / 1bk r0: **FAIL** (2 blocking, 44 non-blocking). Targeted r1 frozen; **stop rule: r1 FAIL → human**
+
+**Blocking:**
+- **S-1:** Lem 4.8 is unproved and its ledger claim is false.
+- **S-2:** the remark "never excludes H-D" is false; the reviewer gives a counterexample, Q*.
+
+**Key non-blocking issue:**
+- **P-1:** a gap in the D1 proof. Joint non-dependence on σ and f needs an intermediate history.
+
+**Sound:**
+- the sufficient conditions, Props 4.5 and 4.6, with their witnesses;
+- every expected R5 outcome, checked by hand by the reviewer.
+
+**Rule for r1:** apply every item; weaken or withdraw, never strengthen; ids stay stable.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BK/` (A, B = r0; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |
