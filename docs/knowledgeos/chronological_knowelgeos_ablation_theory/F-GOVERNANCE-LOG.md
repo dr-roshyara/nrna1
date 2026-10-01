@@ -2184,3 +2184,17 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 |---|---|
 | Records | `analysis/theory/LOOP-1BC/` (A, B = r0; A1, B1 = r1; EVIDENCE-A; OUTPUT-REVIEW; RECONCILIATION) |
 | Next | Protocol B (norm-status channel scoping): design → review → run → review |
+
+## F-LOG-0181 — **Protocol B r0: FAIL** (the independence rule). Blocking defects:
+- **B1:** the writer sets use HEAD only, so the output depends on the checked-out branch.
+- **B2:** N is built from K-STATUS's own paths → a forced NORM_SOURCE_NOT_INDEPENDENT.
+- **B3:** tip-only path exclusion lets historic channel files put the channel's own writers into E (the known defect returns).
+- **B4:** E is not an executor set (committer e-mails, doc paths).
+- **B5:** a K-DEPLOY Q5 = NO without content (a forced negative).
+
+Safety, self-contamination, identity and neutrality: OK. **The research state is not advanced.** A targeted r1 repair was frozen (B1–B5 + N1–N6, N9, N12, N14; the others are disclosed limitations)
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BD/` (A, B = r0; TASK-r1.md, REVIEW-TASK-r1.md, BUNDLE-A1.sha256) |
+| Next | r1 worker (A1) → targeted re-review (B1) |
