@@ -1703,3 +1703,16 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | Correct current manifest | **`963ba6ade8c1002953df4ed126416c8b7db8737cc95c56763234d0df20afcd1c`**: the chained MANIFEST-REVISION `93b78526…` → `963ba6ad…` (reason "G-LOG-0108 canary restart (R-4)"); `RETIREMENT-INTENT.json` manifest_before = `93b78526…`; header `r7_legacy_refreezes` = [(OB0012, attempt 1)]; bound by P3B-STATE and by the pre-check v2.8.1. Verified independently by the orchestrator |
 | Detected by | the fresh orchestrator session's precondition 3, which correctly stopped and asked instead of substituting the value |
 | Effect | documentation only; no state, contract or scientific change. Whether the canary continues against `963ba6ad…` is the human's decision in that session |
+
+## G-LOG-0110 — Human act: G1 of the canary decision package v4.1 approved (fork H; engineering in an isolated worktree only)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-01: "APPROVED — G1 of decision package v4.1 (6c29388be): items (1)–(5), fork H, engineering only in a separate worktree/clone under the §3a constraints. Does not authorize G1.5–G5, production changes, corpus reads or R-5." |
+| Package | `audit-p3b/20260930_S5-CANARY-EVALUATION-DECISION.md` v4.1 (`6c29388be`); reviews in `audit-p3b/canary-diag/` (DIAG-A, B–H, FIELD-INVENTORY) |
+| (1) Adjudication | the canary's dominant failure cause is an instrument/contract defect (X): agent-unreachable R5/R6 schemas under R7's I(run). The recorded mechanical classes (OB0012 attempt 2 A1, OB0114 attempt 1 A2) stay as recorded (append-only) |
+| (2) Fork | **H (hybrid):** derive tool-knowable values; a contract-first annex inside the R7 addendum; the H3 code fixes |
+| (3) Engineering | authorized only in a separate git worktree or clone whose git top level is not the production checkout, under §3a: explicit non-production root, archive and scratch; synthetic data only; no person or agent reads or prints corpus bytes, 02-FILES content or hold-out sets; TDD; open points go to G1.5; the v2.8 verifier commit pinned |
+| (4) | the §4 re-registration text, accepted as a draft for v2.9 |
+| (5) | the W-SYS treatment and the estimation note, accepted as policy in principle, binding only at G3 |
+| Not authorized | G1.5 (adjudication table), G2 (rehearsal dispatch), G3 (v2.9 approval, production rebind), G4 (retire, counted canary), G5 (full S5); any production change; corpus reads; R-5 |
