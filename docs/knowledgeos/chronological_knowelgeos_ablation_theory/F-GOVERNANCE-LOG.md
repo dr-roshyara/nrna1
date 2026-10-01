@@ -2460,3 +2460,27 @@ No H-D/H-B scoring
 |---|---|
 | Records | `analysis/theory/EMPIRICAL-THEORY-RECORD-PROVISIONAL.{md,json}`; `LOOP-1BH/` (A, B, A1, B1, RECONCILIATION.md) |
 | Next | human runs the R2 Claude coding per `HANDOVER-03-CLAUDE-INSTRUCTIONS.md` (or says "run it") |
+
+## F-LOG-0203 — Erratum (ID collision), verification of the R2 result, and an R3 HOLD (no decision taken)
+**E1 ID collision:** two entries carry **F-LOG-0202**. They were written by two concurrent sessions.
+- The **first** (`87a9cde4c`) is the R2 return -03-CLAUDE evidence entry.
+- The **second** (`f01b16761`) is "1bh sealed: R3 PROVISIONAL".
+
+From here on, they are cited as **F-LOG-0202 (R2-evidence)** and **F-LOG-0202 (R3-seal)**. Neither text is rewritten (append-only). References to "F-LOG-0202" in `F-series-todos.md`, CONTEXT.md and `LOOP-1BH/RECONCILIATION.md` mean the **R3-seal** entry.
+
+**E2 Independent verification by this session:**
+- the seal `RETURN-03-CLAUDE.sha256` verifies (5/5 OK);
+- the frozen comparator `compare_gate1_aprime.py` (178e86214) re-run on `~/F-APRIME-GATE1-RETURN-03-CLAUDE/CODING.json` gives output **byte-identical** to `RETURN-03-CLAUDE-COMPARISON.json`: act.state agreement 0.667, κ 0.500; norm.deontic 0.667, κ 0.620; 12 disagreements each.
+
+The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evidence (21 of 24 cells are schema-admits-both; 3 are coder deviations).
+
+**E3 Superseded plan:** the plan stated in this session before the result ("everything through the R3 update is automatic") is **withdrawn**. **No coder re-run** (the one-attempt rule).
+
+**E4 R3 HOLD (a conservative annotation, not a disposition):**
+- `EMPIRICAL-THEORY-RECORD-PROVISIONAL.md` carries a hold banner;
+- every R2_DEPENDENT = yes item (38) is **not to be used downstream** until the human decides.
+
+**Open for the human** (from F-LOG-0202 R2-evidence):
+1. Gate 1 status;
+2. SCHEMA-r3;
+3. the disposition of R2_DEPENDENT items.
