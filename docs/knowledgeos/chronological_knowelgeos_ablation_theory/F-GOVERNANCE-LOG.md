@@ -2209,3 +2209,16 @@ Safety, self-contamination, identity and neutrality: OK. **The research state is
 |---|---|
 | Records | `analysis/theory/LOOP-1BD/` (A1, B1 = r1; TASK-r2.md, REVIEW-TASK-r2.md, BUNDLE-A2.sha256) |
 | Next | r2 worker (A2) → re-review (B2) |
+
+## F-LOG-0183 — **Protocol B r2: FAIL**, one blocking issue (BLK-2)
+- **Fixed:** BLK-1 (a disjoint split; K-STATUS decided by data; SELF_ATTESTED in its own bucket), NB-1, NB-2, NB-3 and NB-10.
+- **BLK-2:** the register regex requires the token at the start of a path segment, so infix names (e.g. `ADR-…-Rulings.md`) match no channel. After the split, K-NORMREG is the **only** norm source, so the result would be a false existence negative or a false no_norm_source label.
+- **Targeted r3 frozen:** a general two-sided token boundary (no repository-specific path), equivalent E globs, NB-11 and NB-12.
+- **Pre-registered stop rule (main analyst, conservative):** if r3 returns FAIL, **stop and escalate to the human**; no r4 without a human decision. This avoids the non-converging repair layering seen in 1bb.
+
+The research state is not advanced
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BD/` (A2, B2 = r2; TASK-r3.md, REVIEW-TASK-r3.md, BUNDLE-A3.sha256) |
+| Next | r3 worker (A3) → re-review (B3) |

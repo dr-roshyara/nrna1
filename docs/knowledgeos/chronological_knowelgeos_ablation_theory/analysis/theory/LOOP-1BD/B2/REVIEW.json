@@ -1,0 +1,53 @@
+{
+  "verdict": "FAIL",
+  "path_tests": [
+    {"path": "docs/implementation/PROGRAM_STATUS.md", "channel": "K-STATUS", "q7": "data-driven: IND[no_norm_source_distinct_from_candidate;...] if no K-NORMREG path exists; otherwise rules 4-6 (IND[empty_set] | NOT_INDEPENDENT[overlap_norm] | NOT_INDEPENDENT[overlap_exec] | INDEPENDENT_AT_IDENTITY_COUNT_LEVEL[aliases_unresolved])"},
+    {"path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md", "channel": "NONE", "q7": "NONE (not a candidate; 'rulings' follows '-', but both regexes require (^|/) before the token; the file is also never in N_c) -> BLK-2"},
+    {"path": "docs/approvals/x.md", "channel": "K-STATUS", "q7": "data-driven, same ladder as PROGRAM_STATUS.md"},
+    {"path": "register.md", "channel": "K-NORMREG", "q7": "SELF_ATTESTED[norm_register;overlap_exec=x] (definitional; nnp=0 by construction)"}
+  ],
+  "fixed": {
+    "BLK1": "PARTIAL: split is correct (disjoint, K-STATUS decided by data, SELF_ATTESTED in its own bucket), but the register regex that now defines the only norm source misses the repo's rulings register (BLK-2)",
+    "NB1": true,
+    "NB2": true,
+    "NB3": true,
+    "NB10": true
+  },
+  "reachability": {
+    "Q1": ["YES_IN_CAPTURE", "NOT_EVIDENCED_AT_TIPS", "YES_LOCAL_ONLY", "NOT_EVIDENCED_LOCALLY", "NOT_CHECKABLE_LOCALLY"],
+    "Q2": ["CONFIG_RULE", "NORM_REGISTER_RECORD", "STATUS_RECORD", "STATE_RECORD_BY_TYPE", "IDENTITY_ATTESTATION", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q3": ["CONTROLLED_BY_WRITERS[n=k]", "ND(keyring not consulted)", "LOCAL_MACHINE", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q4": ["NO_CLIENT_SET", "NONE (K-LOCALHOOK)", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q5": ["ND", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q6": ["ND[COMPLETE_VS_HOST=NOT_SHOWN]", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q7": {
+      "K-STATUS": ["IND[no_norm_source]", "IND[empty_set]", "NOT_INDEPENDENT[overlap_norm]", "NOT_INDEPENDENT[overlap_exec]", "INDEPENDENT_AT_IDENTITY_COUNT_LEVEL[aliases_unresolved]"],
+      "K-DEPLOY": ["IND[no_norm_source]", "IND[empty_set]", "NOT_INDEPENDENT[overlap_norm]", "NOT_INDEPENDENT[overlap_exec]", "INDEPENDENT_AT_IDENTITY_COUNT_LEVEL[aliases_unresolved]"],
+      "K-NORMREG": ["SELF_ATTESTED (definitional, declared)"],
+      "K-CI/K-HOOK/K-CODEOWNERS": ["IND[no_norm_source]", "IND[mechanism_host_enforced_unobservable]"],
+      "K-SIG/K-LOCALHOOK": ["IND"],
+      "all": ["NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY (host)"]
+    },
+    "Q8": ["YES_LOCAL", "NO_LOCAL_ONLY", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "headline_computed_from_data": true,
+    "headline_tokens_reachable": ["LOCAL_INDEPENDENT_CANDIDATE_AT_IDENTITY_COUNT_LEVEL", "LOCAL_INDEPENDENCE_NOT_DETERMINABLE", "LOCAL_NO_INDEPENDENT_CANDIDATE_OBSERVED", "LOCAL_ONLY_SELF_ATTESTED_RECORDS", "LOCAL_NO_CANDIDATE_EVIDENCED"],
+    "k_status_positive_config": "docs/approvals/x.md only by approver@x (K-STATUS); docs/rulings/R-001.md only by chair@x (K-NORMREG); app/Foo.php only by dev@x (E) -> nnp=1, nw=nn=nE=1, on=oe=0 -> INDEPENDENT_AT_IDENTITY_COUNT_LEVEL; headline LOCAL_INDEPENDENT_CANDIDATE_AT_IDENTITY_COUNT_LEVEL",
+    "forced_negative_left": "none in the Q7/headline logic; BLK-2 can make K-NORMREG Q1=NOT_EVIDENCED_AT_TIPS although a rulings register is in the tip trees"
+  },
+  "regressions": [],
+  "blocking": [
+    {
+      "id": "BLK-2",
+      "where": "scope_b.sh l.73 (register regex), l.83-86 (E glob translation); PROTOCOL-B §1 leading (^|/), §3 norm-register paths",
+      "summary": "The register regex needs the token at the start of a path segment, so engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md matches no channel. After the BLK-1 split, K-NORMREG is the only norm source for N_c.",
+      "consequence": "No other register path: K-NORMREG gets NOT_EVIDENCED_AT_TIPS (a false existence negative), K-STATUS and K-DEPLOY get IND[no_norm_source_distinct_from_candidate] (a false label), and the positive cannot be reached. Some other register path exists: the norm-maker's authors are missing from N_c, overlap_norm is undercounted, and a positive that the qualifier does not cover becomes possible.",
+      "fix": "Allow an infix leading boundary for the register tokens, e.g. (^|[/._-]), or add an explicit ADR/rulings rule. Widen the E exclusion globs the same way. Alternatively, declare that infix names are out of scope and qualify the no_norm_source label."
+    }
+  ],
+  "nonblocking": [
+    {"id": "NB-11", "summary": "GIT_LITERAL_PATHSPECS / GIT_ICASE_PATHSPECS / GIT_GLOB_PATHSPECS / GIT_NOGLOB_PATHSPECS and GIT_TRACE* / GIT_TRACE2* are not unset. An inherited GIT_LITERAL_PATHSPECS=1 disables pathspec magic and silently empties E and W. Trace vars can write path pathspecs outside OUT. Existed before r2."},
+    {"id": "NB-12", "summary": "The register and status vocabularies catch data files inside the code roots (e.g. config/decisions.yml -> SELF_ATTESTED 'by definition'; lang/*/status.json -> K-STATUS with developer writers). Not forced, but imprecise. Declare in §6."}
+  ],
+  "independence_rule_ok": true,
+  "identity_ok": true
+}
