@@ -1,4 +1,4 @@
-# S5 canary evaluation gate: diagnosis and decision package (v4)
+# S5 canary evaluation gate: diagnosis and decision package (v4.1)
 
 > **v4 change note.** Review G of v3 (`canary-diag/PKG-REVIEW-G.md`) returned ACCEPT-WITH-FIXES, with 13 MATERIAL findings, all accepted. The orchestrator spot-checked G1 (R7:141), G4 (W:263-266), G7 (R7:186) and G12 (orch:57) against the sources.
 > - **Where the fixes live.** They are applied in place where a statement was wrong (§1, §2, H1, H3, §4, §5, §6). They also appear as binding engineering constraints in **§3a**.
@@ -88,10 +88,10 @@
 | contract/manifest shas (3) | **EXPOSE, not stamped.** Assembly never edits a record (R7:141, orch:622-623). The annex states "copy both values from the slice fields", and fixes the R7:122 wording. Alternative: remove the fields from the exact key set by an annex row (then listed under "Changed", §4) |
 | precedence and `position` (44, 45) | **verifier-side** derivation from `files_meta` (V:310; C:39-59), with no plan or slice change (the rebind requires both byte-identical, act:205-208). **Agent residual, stated in the annex:** `date_applies_to_file` stays attested (C:45); later_* lists are candidates, which the verifier filters by derived precedence |
 | `edge_class` (14) | derived by the verifier from the edge's own quote and source (R2 needs a quote; R1 needs a plan row source) |
-| `test_plan_sha256` (74) | the **verifier hashes the canonical JSON of the test-plan fields already in the register record** (inventory remedy, row 74). No new file and no new permitted write. Disclosed: a post-run hash attests consistency, not pre-registration order |
+| `test_plan_sha256` (74) | the **verifier hashes the canonical JSON of the test-plan fields already in the register record** (inventory remedy, row 74). No new file and no new permitted write. **`test_plan_sha256` leaves the agent's required fields:** an annex row changes the exact key set, and the change is listed under "Changed" (§4) (H-3). Disclosed: a post-run hash attests consistency, not pre-registration order |
 
 **Claim-evidence search (H1, E findings 1–2).**
-- **Deterministic match:** all qualifying facts are counted, and the minimal (run, source, fact_id) is reported under a total order (the canonical-JSON sort key; `fact_id` may be non-string). When candidates fail differently, the reported code follows a fixed precedence. The choice rule is tested (H4).
+- **Deterministic match:** all qualifying facts are counted, and the minimal (run, source, fact_id) is reported under a total order (the canonical-JSON sort key; `fact_id` may be non-string). When candidates fail differently, the reported code follows the fixed precedence RUN-NOT-READING > NO-FACT-OF-KIND > FIELD-MISMATCH > UNANCHORED > NOT-WHOLE, which is the evaluation order of `evidence.py:166-173`. The choice rule is tested (H4).
 - **Per-claim codes, unconditional:** NO-FACT-OF-KIND, FIELD-MISMATCH, UNANCHORED, NOT-WHOLE, RUN-NOT-READING, plus a "candidates examined" count.
 - **Known weak spot, disclosed:** timeline and d4/d5 claims have `fields = {}`, so any fact of that kind at that source qualifies. This existed before; the agent's ref only made it visible.
 - **Consequences, listed:**
@@ -103,7 +103,7 @@
 **H2. Contract-first annex** (E finding 3, a finite procedure):
 
 1. **Draft.** A drafter who has not authored or reviewed the verifier code, and is not the inventory builder, receives the rev3/R5/R6/R7 rule texts plus the inventory's list of row names (keys only, without the code behaviour) and writes the annex.
-2. **Extract.** A static key extraction is run with the inventory's AST tool, **committed as an artifact** and frozen. Its declared inputs add the dynamic key sources (U:76-110, pr:88-158, f-string keys), which the AST alone misses.
+2. **Extract.** A static key extraction is run with the inventory's AST tool, **committed as an artifact** (`canary-diag/tools/extract_keys.py`, `933c97eeb`). Its sha is frozen at G1.5, after it is parameterized to read the worktree's scripts (H-4). Its declared inputs add the dynamic key sources (U:76-110, pr:88-158, f-string keys), which the AST alone misses.
 3. **Diff, both directions:** keys in the code but not the annex (unreachable), and rules in the annex but not the code (unchecked; R-1…R-10).
 4. **Human table.** The human receives **one closed table**: one row per disagreement, giving the contract citation, the code behaviour (file:line) and the options **CONTRACT-WINS** (code changes), **CODE-WINS** (the contract gains the rule) or **DROP**.
    - Where no contract text exists (`ensure_ascii`, `SUPERSEDED`, the pointer phrases), the row is marked "authoring": the human chooses a value, not a reading.
@@ -134,9 +134,18 @@
 ## 3a. Binding engineering constraints for G1 (review G)
 These conditions bind any engineering authorized under G1:
 1. **No production paths.** Every command passes explicit non-production `--root`, `--archive` and scratch paths. `DEFAULT_ARCHIVE` (orch:57) and the fixed `SCRATCH_ROOT` (pr:53) are never used. The production `ADDENDUM_SHA256`, `P3B-STATE.json`, the manifest and the ledger stay untouched.
-2. **Synthetic data only.** Builders and reviewers use synthetic fixtures only. They do not read corpus bytes, 02-FILES or the hold-out sets without a separate human act (protocol §22).
+   - **Isolation by git top level** (review H, H-1). The scripts derive their base directory from the git top level of the current directory (`p3b_s3_mechanical_prep.py:74-76`, `p3b_s5_common.py:32`), and `--root` does not change that. The reader appends its read log under that directory's `ledger-p3b-r2/` (`p3b_read_source.py:102`).
+   - **Where work runs.** All work therefore runs in a **separate git worktree or throw-away clone** whose top level is not the production checkout.
+   - **The check.** A check runs before every command: the current directory's `git rev-parse --show-toplevel` must not be the production checkout (the `dispatch_root_check` pattern, orch:316). The command refuses otherwise.
+   - **Engineering-phase items.** The fixed scratch constant gets a CLI override (H-2). `extract_keys.py` takes the scripts path as a parameter (H-4).
+2. **Synthetic data only.**
+   - Builders and reviewers use synthetic fixtures only.
+   - **No person or agent reads or prints** corpus bytes, 02-FILES content or the hold-out sets without a separate human act (protocol §22).
+   - The tools' own count-only helpers stay permitted: the quarantine scan and `files_meta()` load the hold-out sets internally (review H, H-6).
 3. **H1/H3 as written.** Each item is implemented exactly as specified in v4: no stamping at assembly, no plan or slice change, no new permitted write, and the seal change limited to Write content.
 4. **TDD.** Every H3 item and each new failure code starts with a RED test, and the code's cause class is in the mapping.
+5. **No builder decisions on open points.** Points v4 leaves open go to the G1.5 table as rows. Builders do not settle them (H-7).
+6. **Pin the v2.8 verifier.** Once the addendum sha changes, the current code cannot re-verify a retired canary attempt, so the v2.8 verifier commit is pinned and recorded for re-verification of Legacy attempts (H-8).
 
 ## 4. Attempt semantics: a disclosed re-registration (E finding 4, G finding 8)
 
@@ -191,6 +200,7 @@ These conditions bind any engineering authorized under G1:
 - retire and attempt mechanics on production state;
 - the production golden prompts;
 - the LOAD prediction;
+- the cause mapping on real failure strings;
 - **the residual A rate on real material** (synthetic A rates do not transfer).
 
 **Coverage, frozen before dispatch:**
@@ -225,7 +235,7 @@ These conditions bind any engineering authorized under G1:
 
 | Act | When | Decides |
 |---|---|---|
-| **G1 (now)** | this gate | (1) the X adjudication; (2) **fork P / H / R** (rec. H); (3) authorize design and engineering **on a branch or worktree under the §3a constraints** (the reader seam lives only in the harness copy); (4) the §4 re-registration text as a draft for v2.9; (5) the W-SYS treatment and the estimation note **as policy in principle**, binding only at G3 |
+| **G1 (now)** | this gate | (1) the X adjudication; (2) **fork P / H / R** (rec. H); (3) authorize design and engineering **in a separate git worktree or throw-away clone whose git top level is not the production checkout, under the §3a constraints** (the reader seam lives only in the harness copy); (4) the §4 re-registration text as a draft for v2.9; (5) the W-SYS treatment and the estimation note **as policy in principle**, binding only at G3 |
 | G1.5 | after the annex draft and diff | the human adjudication table (H2) |
 | G2 | after engineering, the A/B review and the **frozen rehearsal brief** | approve the brief **by its sha** (coverage, run count, pass criterion) and dispatch the rehearsal |
 | G3 | after the rehearsal evaluation | approve **exactly the v2.9 text sha and code commit the rehearsal ran**; any later diff requires a re-rehearsal; then the production rebind |
