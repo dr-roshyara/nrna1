@@ -1,5 +1,12 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-01, F-Series) — R1 CLOSED (H5 adopted); R3 PROVISIONAL sealed; R2 awaits a human-run Claude coding
+
+- **R1 closed:** H1 skipped (human); **H5 adopted** → H-D vs H-B **NON-IDENTIFIABLE** on this corpus within the authorized scope (F-LOG-0190 condition knowingly waived; host-side gap disclosed; Protocol C sealed, unexecuted).
+- **R3:** `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/EMPIRICAL-THEORY-RECORD-PROVISIONAL.*` — 89 items, reviewed; **not frozen**.
+- **R2 (human act F-LOG-0201):** within-family coding by an isolated Claude Sonnet 5.5 session; **cross-family requirement waived, not satisfied**. Guide `~/F-APRIME-GATE1-HANDOVER-INSTRUCTIONS-03-CLAUDE.md`; return → `~/F-APRIME-GATE1-RETURN-03-CLAUDE/`.
+- **Next:** human runs the R2 coding (or says "run it") → seal → compare → review → R3 update + freeze (human) → R4 formal theory. Roadmap: `.claude/F-series-todos.md` (R1–R8).
+
 ## 📍 UPDATE (2026-09-29, `KOS-CONTRACT-NEUTRALITY-001`) — Pass-1 containment **VERIFIED: no drift**; one unauthorized act `CV-1`; amendment **drafted, NOT registered**
 
 - **No drift.** Everything past evidence reconciliation (Python implementation, adapter slice, 7 semantic experiments, evidence-precision correction, rule-validation) ran under **11 separate grants, each with a verbatim PO/ARB act** — exactly what the containment rule required. **No second lane or actor**: record unchanged at 45 transitions, S5 sole performer. `KOS-ARCH-BASELINE-001` untouched; **the seven golden fixtures unmodified**.
