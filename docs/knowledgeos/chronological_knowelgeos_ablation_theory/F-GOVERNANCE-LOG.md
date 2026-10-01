@@ -2377,3 +2377,23 @@ No H-D/H-B scoring
 - **No host call was made.**
 - **Context recorded:** before deciding, the human weighed the main analyst's estimate that H1 had a low chance (< 10%) of changing the conclusion, given current-state-only protection, limited event retention and Q2–Q4.
 - **Next:** the H5 proposal is drafted (`LOOP-1BG/H5-PROPOSAL.md`) → independent review → **human adoption of H5** (a separate act; not taken here)
+
+## F-LOG-0197 — **Human act (2026-10-01): H5 ADOPTED, F-LOG-0190 condition waived**
+
+**The adopted result:** on the acquired evidence and within the authorized scope, **H-D vs H-B is NON-IDENTIFIABLE**.
+- **Neither hypothesis is falsified or validated.** Both are retained as unresolved alternatives.
+- Whether an independent norm-state observable exists anywhere: NOT_DETERMINABLE.
+- The host-side channel was not examined, by human decision.
+
+**R1 is closed.**
+- No further evidence hunting on this question, except under the `H5-PROPOSAL.md` §6 reopening conditions.
+- Protocol C stays sealed.
+
+**Carried into R3/R4 as candidates, not axioms:**
+- D1, as a **necessary, not sufficient,** condition for discrimination;
+- the A′ separation, conditional on R2.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BG/H5-PROPOSAL.md` (status ADOPTED), `REVIEW.md` |
+| Next | **R2:** the human hands over Gate 1 bundle -02 → **R3:** Empirical Theory Record |

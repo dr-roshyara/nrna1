@@ -30,7 +30,7 @@
 |---|---|---|---|
 | Historical reconstruction | 🟢 | minor closure only | — |
 | A′ observation schema | 🟢 frozen | none, unless evidence forces a change (human act) | — |
-| **R1 Close the evidence question** | 🟡 Protocol C sealed and SAFE TO RUN; **blocked on auth** | (a) **human: `gh auth login -h github.com`**; (b) run ×2, compare, identity scan, output review, seal; (c) info-gain Q1–Q4 per the frozen `LOOP-1BF/INFOGAIN-PREREG.md` | human → Claude → **human gate: H5** (Q4 NO) **or** a pre-registered experiment (Q4 YES; not run without authorization) |
+| **R1 Close the evidence question** | ✅ **CLOSED 2026-10-01**: H1 skipped (F-LOG-0196); **H5 ADOPTED** (F-LOG-0197): H-D/H-B NON-IDENTIFIABLE on this corpus within the authorized scope; the F-LOG-0190 condition knowingly waived; host-side gap disclosed; Protocol C stays sealed for possible reopening. *Superseded plan:* | (a) **human: `gh auth login -h github.com`**; (b) run ×2, compare, identity scan, output review, seal; (c) info-gain Q1–Q4 per the frozen `LOOP-1BF/INFOGAIN-PREREG.md` | human → Claude → **human gate: H5** (Q4 NO) **or** a pre-registered experiment (Q4 YES; not run without authorization) |
 | **R2 Independent empirical verification** | 🟡 pending | **human: hand Gate 1 bundle -02 (`~/F-APRIME-GATE1-BUNDLE-02.tar`) to a non-Claude coder** → hash seal → `GATE1-APRIME/compare_gate1_aprime.py` → disagreement analysis (coding vs theory) → review → reconcile | human → Claude |
 | **R3 Empirical Theory Record (freeze)** | ⏳ after R1 and R2 | **one record**, levels kept apart: A observed · B reconstructed · C regularities (cluster-recurrent only) · D non-identifiability results · E counterexamples / anomalies (WP-4B RED, R-89, R-94) · F explicit unknowns. No promotion for elegance | Claude → review → human |
 | **R4 Formal theory** | ⏳ | the smallest formal structure explaining R3: definitions → state space → relations → transitions → invariants → propositions → countermodels → minimal assumptions. Earlier formal work (H-F2-1 etc.) counts as **candidate** formalizations only. Keep the levels definition / assumption / lemma / proof / finite check / empirical observation separate | Claude → review |
@@ -46,9 +46,9 @@
 - open-ended evidence hunting after a valid non-identifiability result.
 
 **Immediate next actions:**
-1. **Human:** `gh auth login -h github.com`.
+1. ~~Human: `gh auth login`~~ (not needed: H1 skipped).
 2. **Human:** hand Gate 1 bundle -02 to a non-Claude coder.
-3. **Claude:** finish R1(b)–(c) and stop at the H5 / experiment gate.
+3. ~~Claude: finish R1(b)–(c)~~ (superseded by H5 adoption). **Next: R2** (human hands over Gate 1 bundle -02) **→ R3** Empirical Theory Record.
 
 ---
 

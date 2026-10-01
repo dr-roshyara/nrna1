@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Status | **PROPOSAL, for adoption by a human act.** Not in force until the human adopts it |
+| Status | **ADOPTED by human act, 2026-10-01** (F-LOG-0197): "Adopt H5, waive 0190". The F-LOG-0190 exhaustion condition is **knowingly waived** |
 | Trigger | Human act (2026-10-01): "Skip H1 now" (F-LOG-0196). Protocol C stays sealed and **not executed** |
 | Coder family | Every finding cited here is same-family (Claude). The non-Claude Gate 1 coding (R2) is pending |
 | Review | `kos-theory-reviewer`, PASS_WITH_LIMITATIONS. The 8 corrections are applied in this version (`REVIEW.md`) |
