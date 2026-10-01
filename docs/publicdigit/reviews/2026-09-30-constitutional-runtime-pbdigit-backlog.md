@@ -27,7 +27,11 @@
   - documentation corrections (`130`).
 - **The five security fixes** (`85`–`89`) depend only on their own C-3 pins. They are scheduled by the PO.
 - **Implementation of constitutional law, evidence and evaluators is blocked by the H decisions.** Authority does not move before runtime parity (`116`). Legacy authority is not deleted before the switch (`117`/`118`) and `PBDIGIT-45`.
-- **NEXT IMPLEMENTATION TICKET: `PBDIGIT-76` — C-1: repair voting feature-test fixtures for the current schema.** `PBDIGIT-77` and `PBDIGIT-78` complete C-1 and may run in parallel with it. **Governing rule:** C-1 repairs the test environment's representation of the current production contract. It never repairs, restores, reinterprets or redesigns production voting authority. A discovered production defect becomes a new PBDIGIT ticket.
+- **First implementations, one per track** (none authorised; see §4i and the implementation runbook):
+  - **First Constitutional Governance implementation (Track A1, Admin Constitutional Governance): `PBDIGIT-139` part A.**
+  - **First Voting Participation implementation (Track A2, Voting Participation Governance): `PBDIGIT-76`.** `77` and `78` complete C-1. **C-1 governing rule:** C-1 repairs the test environment's representation of the current production contract. It never repairs, restores, reinterprets or redesigns production voting authority, and a discovered production defect becomes a new PBDIGIT ticket.
+  - **First general repository implementation (Track B, General repository/freeze work): `PBDIGIT-133`.**
+  - There is **no single overall 'first implementation ticket'**. The repository, governance and voting sequences are distinct.
 - **Correction pass (2026-10-01).** An external review of this backlog led to these changes, with no renumbering:
   - the critical path is corrected (§6);
   - the status of `PBDIGIT-45`'s PROPOSED ADR is clarified (§4c);
@@ -256,10 +260,10 @@ Every task identified in the audits, the readiness review or the backlog reviews
 
 | Root ticket | Track | Basis |
 |---|---|---|
-| `76`, `77`, `78` (C-1) | **A2: Constitutional Governance, participation authority (CAST_VOTE)** | They are the characterization prerequisite of the voting-authority migration: `76/77/78 → 79/80 → 101…117` (reality audit and readiness review §11). They are **not** needed by `139`–`152`, and they change no governance semantics (test fixtures only). They are a governance prerequisite, but **not of the admin-capability sub-track**. *(A first reading as "general test modernization" was checked against the edges and rejected.)* |
-| `139` | **A1: Constitutional Governance, admin capability sovereignty** | Its edges are `139 → 140 → 109` (resolver mechanics, shared by both sub-tracks) `→ 144 → 145 …` |
-| `133` | **B: general repository/test** | Test-scanner fix; it blocks only the v1.0 freeze |
-| `122`, `130`, `134` | **B** | Dead code, documentation correction and numbering hygiene; each blocks only the v1.0 freeze |
+| `76`, `77`, `78` (C-1) | **A2 — Voting Participation Governance (CAST_VOTE)** | They are the characterization prerequisite of the voting-authority migration: `76/77/78 → 79/80 → 101…117` (reality audit and readiness review §11). They are **not** needed by `139`–`152`, and they change no governance semantics (test fixtures only). They are a governance prerequisite, but **not of the admin-capability sub-track**. *(A first reading as "general test modernization" was checked against the edges and rejected.)* |
+| `139` | **A1 — Admin Constitutional Governance** | Its edges are `139 → 140 → 109` (resolver mechanics, shared by both sub-tracks) `→ 144 → 145 …` |
+| `133` | **B — General repository/freeze work** | Test-scanner fix; it blocks only the v1.0 freeze |
+| `122`, `130`, `134` | **B — General repository/freeze work** | Dead code, documentation correction and numbering hygiene; each blocks only the v1.0 freeze |
 
 **Edges corrected in this review** (the generated graph had them wrong):
 - `109 → 76/77/78` removed: resolver mechanics touch only the admin path, and their prerequisite is `140`;
@@ -273,7 +277,7 @@ Every task identified in the audits, the readiness review or the backlog reviews
 
 The graph enforces this: `144`/`145`/`146` depend on `140`, which depends on `139`.
 
-### Track A1: admin capability sovereignty (EPIC-03)
+### Track A1 — Admin Constitutional Governance (EPIC-03)
 
 ```
 139 (A: fixtures · B: PO/ARB disposition)
@@ -290,7 +294,7 @@ The graph enforces this: `144`/`145`/`146` depend on `140`, which depends on `13
  → 149 governance E2E (after all of the above) → 132
 ```
 
-### Track A2: participation authority / CAST_VOTE (EPIC-05)
+### Track A2 — Voting Participation Governance (EPIC-05)
 
 ```
 76 · 77 · 78 → 79 · 80 → 81–84 · 135 · 136
@@ -299,7 +303,7 @@ The graph enforces this: `144`/`145`/`146` depend on `140`, which depends on `13
  → 117 [85, PBDIGIT-45, 135] → 118 → 119 · 120 [95] · 121 [PBDIGIT-45] → 131 → 132
 ```
 
-### Track B: general repository / test (independent)
+### Track B — General repository/freeze work (independent)
 
 ```
 133 scanner fix · 134 PBDIGIT-69 collision · 130 claim corrections · 122 dead code
@@ -2018,8 +2022,8 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Architecture gate** | A, E → **ARB architecture approval required in addition to PO authorisation** |
 | **Purpose** | Retire the fifth admin-action authority, discovered in the scope-and-sequencing review. |
 | **Problem** | `EnsureElectionState` (route middleware `election.state:<operation>`, 9 routes in `routes/organisations.php`) aborts with 403 when `OperationCapabilityMapper::isOperationAllowed($operation, $snapshot)` is false. That method is a hard-coded operation→permission matrix: part of it reads the lifecycle engine's flags (`canEdit`, `canManageVoters`, `canVote`), part adds its own state rules (`apply_candidacy` only in SetupNomination, `view_results`/`download_receipt` only in ResultsPublished/Archived, `preview_ballot` only in the voting phase). It is a capability authority independent of the resolver and of `ElectionConstitution::RULES`, and no other ticket retires it. |
-| **Scope** | After the engine matrix is replaced by the resolver projection: `EnsureElectionState` enforces the resolver decision for each operation; operations not yet in the registry are added declaratively (registry ticket) rather than kept as code in the mapper. |
-| **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. The voting-related operations (`cast_vote`, `verify_vote`) follow the CAST_VOTE migration, not this ticket. |
+| **Scope** | **Retires:** the operation→permission matrix in `OperationCapabilityMapper::isOperationAllowed` (and its parallel `denialReasonForOperation` strings) for the **8 admin operations** routed through `election.state:` in `routes/organisations.php`: `manage_posts` (:254), `import_voters` (:261), `apply_candidacy` (:283), `approve_candidacy` (:288), `view_results` (:305), `preview_ballot` (:312), `edit_candidate_photo` (:333), `configure_election` (:341). **Replaced by:** `EnsureElectionState` enforcing the resolver's decision for each operation; operations not yet in the registry are declared there (registry ticket) rather than kept as code in the mapper. **Boundary:** the characterization ticket only pins today's behaviour; the suspend/resume ticket owns the `suspendElection` path; the policy ticket adds the resolver role/precondition policies this ticket relies on; the matrix-removal ticket removes the engine's flags the mapper reads; the registry ticket owns declarations; the frontend ticket owns Vue; the ElectionPolicy ticket owns the Laravel gates and controller inference. This ticket owns only the route middleware and the mapper. |
+| **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. **The 9th route, `verify_vote` (:299), and the mapper's `cast_vote` case belong to Track A2** (CAST_VOTE migration and its entry/ballot switch), not this ticket. |
 | **Architectural layer** | Authority |
 | **Depends on** | PBDIGIT-145 · PBDIGIT-141 · PBDIGIT-146 |
 | **Blocks** | PBDIGIT-132 · PBDIGIT-149 |

@@ -12,12 +12,22 @@
 
 ## 1. Where to start — the short answer
 
+**Three sequences, three first tickets; there is no single overall 'first ticket':**
+
+| Sequence | First implementation |
+|---|---|
+| **Track A1 — Admin Constitutional Governance** | **`PBDIGIT-139` part A** |
+| **Track A2 — Voting Participation Governance** | **`PBDIGIT-76`** |
+| **Track B — General repository/freeze work** | **`PBDIGIT-133`** |
+
+The overall repository sequence (§5 waves) ≠ the Constitutional Governance sequence (A1) ≠ the Voting Participation sequence (A2).
+
 | Step | Do | Why |
 |---|---|---|
 | **0** | Ask the PO/ARB for the **decisions** in §4 now, in parallel. No code. | They gate waves 3–13. Asking now prevents later stalls |
-| **1** | **`PBDIGIT-139` part A**: repair the 4 genuine capability/suspension test failures (fixtures only) | First governance ticket. It gates `140`, which gates the shared resolver mechanics `109` |
-| **2** | **`PBDIGIT-76` → `77` → `78`** (C-1): repair the voting feature-test fixtures | First voting-participation ticket. Together they gate all voting characterization (`79`/`80`) |
-| **2'** | In parallel, any time: **`PBDIGIT-133`** (scanner false positive) | First general-repository ticket; independent |
+| **1** | **`PBDIGIT-139` part A**: repair the 4 genuine capability/suspension test failures (fixtures only) | **First Constitutional Governance implementation (Track A1).** It gates `140`, which gates the shared resolver mechanics `109` |
+| **2** | **`PBDIGIT-76` → `77` → `78`** (C-1): repair the voting feature-test fixtures | **First Voting Participation implementation (Track A2).** Together they gate all voting characterization (`79`/`80`) |
+| **2'** | In parallel, any time: **`PBDIGIT-133`** (scanner false positive) | **First general repository implementation (Track B)**; independent |
 | **3** | **`PBDIGIT-140`** (characterize the five admin authorities) and **`79`/`80`** (characterize the voting gates) | Nothing that changes behaviour starts before its characterization exists |
 
 **Do not start anything in wave 3 or later that changes production behaviour until the characterization it depends on is merged.** The graph enforces this. This runbook only restates it.
@@ -69,9 +79,9 @@
 
 | Track | Covers | Tickets |
 |---|---|---|
-| **A1 — admin capability sovereignty** (EPIC-03) | one capability authority for admin lifecycle actions | `139`–`152` (except decisions `141`, `150`) and `109` |
-| **A2 — voting participation authority** (EPIC-05) | CAST_VOTE: the resolver decides who may vote, from frozen law and recorded evidence | `76`–`84`, `101`–`121`, `135`–`137` |
-| **B — general repository / CI / docs** | hygiene, enforcement, documentation | `122`–`134` (CI, DOC, scanner, collision) |
+| **A1 — Admin Constitutional Governance** (EPIC-03) | one capability authority for admin lifecycle actions | `139`–`152` (except decisions `141`, `150`) and `109` |
+| **A2 — Voting Participation Governance** (EPIC-05) | CAST_VOTE: the resolver decides who may vote, from frozen law and recorded evidence | `76`–`84`, `101`–`121`, `135`–`137` |
+| **B — General repository/freeze work** (CI, docs, hygiene, v1.0 freeze) | hygiene, enforcement, documentation | `122`–`134` (CI, DOC, scanner, collision) |
 | **X — security fixes** | defects under any architecture; PO-scheduled | `85`–`89` (each after its C-3 pin) |
 
 **The tracks meet in two places:** the resolver mechanics `109` (A1 → A2), and the v1.0 freeze `132`.
@@ -107,42 +117,42 @@
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-76` | A2 voting participation | Repair voting feature-test fixtures for current schema (retired columns) | — | — | — |
-| `PBDIGIT-77` | A2 voting participation | Repair voting feature-test tenancy, factory, constructor and route fixtures | — | — | — |
-| `PBDIGIT-78` | A2 voting participation | Repair voting-active lifecycle fixtures to current lifecycle rules | — | — | — |
-| `PBDIGIT-122` | B general | Delete dead legacy code and retire tests of non-existent classes | — | — | — |
-| `PBDIGIT-130` | B general | Correct false completion claims in historical documents | — | — | — |
-| `PBDIGIT-133` | B general | Temporal-determinism audit scanner flags `validate(` as a `date()` call | — | — | — |
-| `PBDIGIT-134` | B general | Resolve the `PBDIGIT-69` numbering collision | — | — | — |
-| `PBDIGIT-139` | A1 admin capability | Repair capability-suite and suspension-suite test drift | — | — | — |
+| `PBDIGIT-76` | A2 Voting Participation Governance | Repair voting feature-test fixtures for current schema (retired columns) | — | — | — |
+| `PBDIGIT-77` | A2 Voting Participation Governance | Repair voting feature-test tenancy, factory, constructor and route fixtures | — | — | — |
+| `PBDIGIT-78` | A2 Voting Participation Governance | Repair voting-active lifecycle fixtures to current lifecycle rules | — | — | — |
+| `PBDIGIT-122` | B General repository/freeze | Delete dead legacy code and retire tests of non-existent classes | — | — | — |
+| `PBDIGIT-130` | B General repository/freeze | Correct false completion claims in historical documents | — | — | — |
+| `PBDIGIT-133` | B General repository/freeze | Temporal-determinism audit scanner flags `validate(` as a `date()` call | — | — | — |
+| `PBDIGIT-134` | B General repository/freeze | Resolve the `PBDIGIT-69` numbering collision | — | — | — |
+| `PBDIGIT-139` | A1 Admin Constitutional Governance | Repair capability-suite and suspension-suite test drift | — | — | — |
 
 #### Wave 2
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-79` | A2 voting participation | Characterize the voting entry path at the HTTP boundary | `76` `77` `78` | — | — |
-| `PBDIGIT-80` | A2 voting participation | Characterize the ballot, verify and store path at the HTTP boundary | `76` `77` `78` | — | — |
-| `PBDIGIT-123` | B general | Bring election security zones under a blocking CI job | `76` `77` `78` `139` | — | — |
-| `PBDIGIT-140` | A1 admin capability | Characterize the admin-action authorities at the HTTP boundary | `139` | — | — |
+| `PBDIGIT-79` | A2 Voting Participation Governance | Characterize the voting entry path at the HTTP boundary | `76` `77` `78` | — | — |
+| `PBDIGIT-80` | A2 Voting Participation Governance | Characterize the ballot, verify and store path at the HTTP boundary | `76` `77` `78` | — | — |
+| `PBDIGIT-123` | B General repository/freeze | Bring election security zones under a blocking CI job | `76` `77` `78` `139` | — | — |
+| `PBDIGIT-140` | A1 Admin Constitutional Governance | Characterize the admin-action authorities at the HTTP boundary | `139` | — | — |
 
 #### Wave 3
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-81` | A2 voting participation | Pin voting-flow control defects X-1, X-2, X-3 | `80` | — | — |
-| `PBDIGIT-82` | A2 voting participation | Pin voting-code secrecy defects X-4, X-5 | `80` | — | — |
-| `PBDIGIT-83` | A2 voting participation | Pin participation-bypass defects X-6, X-7 | `79` | — | — |
-| `PBDIGIT-84` | A2 voting participation | Pin configuration and schema defects X-8…X-12 | `79` `80` | — | — |
-| `PBDIGIT-101` | A2 voting participation | One canonical constitution representation, schema version and hash | `79` `80` | H-1 `PBDIGIT-90`, H-2 `PBDIGIT-91`, H-3 `PBDIGIT-92`, H-4 `PBDIGIT-93` | B |
-| `PBDIGIT-106` | A2 voting participation | Typed evidence: network, device and officer-verification facts with provenance | `79` `80` | H-1 `PBDIGIT-90`, H-2 `PBDIGIT-91`, H-4 `PBDIGIT-93` | C |
-| `PBDIGIT-109` | A1 admin capability | R-1a — resolver mechanics: Resolver evaluates every policy and returns a stateless trace | `140` | — | E |
-| `PBDIGIT-128` | B general | CI rule 7 — Forbidden procedural vocabulary in canonical governance code | `123` | — | — |
-| `PBDIGIT-135` | A2 voting participation | Characterize the non-slug `POST /votes` route and route-file loading | `80` | — | — |
-| `PBDIGIT-136` | A2 voting participation | Characterize `voter_slugs.vote_completed`, which no code writes | `79` | — | — |
-| `PBDIGIT-142` | A1 admin capability | Suspend and resume bypass ConstitutionalTransitionGuard | `140` | H-13 `PBDIGIT-141` | A |
-| `PBDIGIT-143` | A1 admin capability | Resume writes no audit record | `140` | — | G |
-| `PBDIGIT-146` | A1 admin capability | Declare overlay behaviour in the constitution and fix the placeholder resume target | `140` | H-5 `PBDIGIT-94`, H-14 `PBDIGIT-150` | B |
-| `PBDIGIT-148` | A1 admin capability | Lifecycle derivation cannot be recomputed for a given instant | `140` | — | C |
+| `PBDIGIT-81` | A2 Voting Participation Governance | Pin voting-flow control defects X-1, X-2, X-3 | `80` | — | — |
+| `PBDIGIT-82` | A2 Voting Participation Governance | Pin voting-code secrecy defects X-4, X-5 | `80` | — | — |
+| `PBDIGIT-83` | A2 Voting Participation Governance | Pin participation-bypass defects X-6, X-7 | `79` | — | — |
+| `PBDIGIT-84` | A2 Voting Participation Governance | Pin configuration and schema defects X-8…X-12 | `79` `80` | — | — |
+| `PBDIGIT-101` | A2 Voting Participation Governance | One canonical constitution representation, schema version and hash | `79` `80` | H-1 `PBDIGIT-90`, H-2 `PBDIGIT-91`, H-3 `PBDIGIT-92`, H-4 `PBDIGIT-93` | B |
+| `PBDIGIT-106` | A2 Voting Participation Governance | Typed evidence: network, device and officer-verification facts with provenance | `79` `80` | H-1 `PBDIGIT-90`, H-2 `PBDIGIT-91`, H-4 `PBDIGIT-93` | C |
+| `PBDIGIT-109` | A1 Admin Constitutional Governance | R-1a — resolver mechanics: Resolver evaluates every policy and returns a stateless trace | `140` | — | E |
+| `PBDIGIT-128` | B General repository/freeze | CI rule 7 — Forbidden procedural vocabulary in canonical governance code | `123` | — | — |
+| `PBDIGIT-135` | A2 Voting Participation Governance | Characterize the non-slug `POST /votes` route and route-file loading | `80` | — | — |
+| `PBDIGIT-136` | A2 Voting Participation Governance | Characterize `voter_slugs.vote_completed`, which no code writes | `79` | — | — |
+| `PBDIGIT-142` | A1 Admin Constitutional Governance | Suspend and resume bypass ConstitutionalTransitionGuard | `140` | H-13 `PBDIGIT-141` | A |
+| `PBDIGIT-143` | A1 Admin Constitutional Governance | Resume writes no audit record | `140` | — | G |
+| `PBDIGIT-146` | A1 Admin Constitutional Governance | Declare overlay behaviour in the constitution and fix the placeholder resume target | `140` | H-5 `PBDIGIT-94`, H-14 `PBDIGIT-150` | B |
+| `PBDIGIT-148` | A1 Admin Constitutional Governance | Lifecycle derivation cannot be recomputed for a given instant | `140` | — | C |
 
 #### Wave 4
 
@@ -153,106 +163,106 @@
 | `PBDIGIT-87` | X security fix | X-5 — Remove plaintext debug_code exposure outside local environments | `82` | — | F |
 | `PBDIGIT-88` | X security fix | X-6 — Remove the session demo-flag bypass from real-election gates | `83` | — | A |
 | `PBDIGIT-89` | X security fix | X-10 — Fix the two voting-path TypeErrors (whitelist decode, UUID user id) | `84` | — | A, C, F |
-| `PBDIGIT-102` | A2 voting participation | Author constitutional law at election creation and freeze it | `101` | — | B |
-| `PBDIGIT-103` | A2 voting participation | Enforce constitutional immutability and verify the hash on load | `101` | H-10 `PBDIGIT-99` | B, G |
-| `PBDIGIT-104` | A2 voting participation | Establish constitutional law for existing elections | `101` | H-11 `PBDIGIT-100` | B, G |
-| `PBDIGIT-105` | A2 voting participation | Typed evidence: membership, lifecycle and already-voted facts | `79` `80` `136` | H-7 `PBDIGIT-96` | C |
-| `PBDIGIT-107` | A2 voting participation | Typed evidence: ballot/code session facts under the constitutional protocol | `79` `80` `101` | — | C |
-| `PBDIGIT-108` | A2 voting participation | Evaluators: network (composable binding + limit), device comparison, verification | `101` `106` | H-3 `PBDIGIT-92`, H-4 `PBDIGIT-93` | D |
-| `PBDIGIT-144` | A1 admin capability | Resolver role and precondition policies for admin actions | `109` `140` | H-13 `PBDIGIT-141` | A, E |
+| `PBDIGIT-102` | A2 Voting Participation Governance | Author constitutional law at election creation and freeze it | `101` | — | B |
+| `PBDIGIT-103` | A2 Voting Participation Governance | Enforce constitutional immutability and verify the hash on load | `101` | H-10 `PBDIGIT-99` | B, G |
+| `PBDIGIT-104` | A2 Voting Participation Governance | Establish constitutional law for existing elections | `101` | H-11 `PBDIGIT-100` | B, G |
+| `PBDIGIT-105` | A2 Voting Participation Governance | Typed evidence: membership, lifecycle and already-voted facts | `79` `80` `136` | H-7 `PBDIGIT-96` | C |
+| `PBDIGIT-107` | A2 Voting Participation Governance | Typed evidence: ballot/code session facts under the constitutional protocol | `79` `80` `101` | — | C |
+| `PBDIGIT-108` | A2 Voting Participation Governance | Evaluators: network (composable binding + limit), device comparison, verification | `101` `106` | H-3 `PBDIGIT-92`, H-4 `PBDIGIT-93` | D |
+| `PBDIGIT-144` | A1 Admin Constitutional Governance | Resolver role and precondition policies for admin actions | `109` `140` | H-13 `PBDIGIT-141` | A, E |
 
 #### Wave 5
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-110` | A2 voting participation | R-1b — CAST_VOTE integration: Typed CAST_VOTE context and participation action registry | `109` `105` `106` `107` | H-5 `PBDIGIT-94` | E |
-| `PBDIGIT-125` | B general | CI rule 2/4 — Canonical zones cannot import legacy authority; policies cannot consume policy outcomes | `123` `108` | — | — |
-| `PBDIGIT-126` | B general | CI rule 3 — Canonical zones cannot read mutable configuration or live models | `123` `108` | — | — |
-| `PBDIGIT-145` | A1 admin capability | Remove the lifecycle engine's second capability matrix | `144` | — | A, E |
-| `PBDIGIT-151` | A1 admin capability | Align Laravel ElectionPolicy gates and controller state inference with the resolver | `144` | H-13 `PBDIGIT-141` | A, E |
+| `PBDIGIT-110` | A2 Voting Participation Governance | R-1b — CAST_VOTE integration: Typed CAST_VOTE context and participation action registry | `109` `105` `106` `107` | H-5 `PBDIGIT-94` | E |
+| `PBDIGIT-125` | B General repository/freeze | CI rule 2/4 — Canonical zones cannot import legacy authority; policies cannot consume policy outcomes | `123` `108` | — | — |
+| `PBDIGIT-126` | B General repository/freeze | CI rule 3 — Canonical zones cannot read mutable configuration or live models | `123` `108` | — | — |
+| `PBDIGIT-145` | A1 Admin Constitutional Governance | Remove the lifecycle engine's second capability matrix | `144` | — | A, E |
+| `PBDIGIT-151` | A1 Admin Constitutional Governance | Align Laravel ElectionPolicy gates and controller state inference with the resolver | `144` | H-13 `PBDIGIT-141` | A, E |
 
 #### Wave 6
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-111` | A2 voting participation | R-1b — CAST_VOTE integration: Register the CAST_VOTE resolver policy set | `110` `108` | H-8 `PBDIGIT-97`, H-9 `PBDIGIT-98` | A, E |
-| `PBDIGIT-147` | A1 admin capability | Frontend renders governance capabilities only | `145` | — | F |
-| `PBDIGIT-152` | A1 admin capability | Route-level operation capability matrix duplicates the resolver | `145` `146` | H-13 `PBDIGIT-141` | A, E |
+| `PBDIGIT-111` | A2 Voting Participation Governance | R-1b — CAST_VOTE integration: Register the CAST_VOTE resolver policy set | `110` `108` | H-8 `PBDIGIT-97`, H-9 `PBDIGIT-98` | A, E |
+| `PBDIGIT-147` | A1 Admin Constitutional Governance | Frontend renders governance capabilities only | `145` | — | F |
+| `PBDIGIT-152` | A1 Admin Constitutional Governance | Route-level operation capability matrix duplicates the resolver | `145` `146` | H-13 `PBDIGIT-141` | A, E |
 
 #### Wave 7
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-112` | A2 voting participation | Persist a CAST_VOTE decision record for every evaluation | `111` | — | G |
-| `PBDIGIT-124` | B general | CI rule 1 — Only the resolver and registered policies may create CapabilityDecision | `123` `111` | — | — |
-| `PBDIGIT-149` | A1 admin capability | Governance lifecycle end-to-end suite through HTTP | `139` `140` `142` `143` `145` `146` `147` `148` `152` `151` | H-13 `PBDIGIT-141`, H-14 `PBDIGIT-150` | — |
+| `PBDIGIT-112` | A2 Voting Participation Governance | Persist a CAST_VOTE decision record for every evaluation | `111` | — | G |
+| `PBDIGIT-124` | B General repository/freeze | CI rule 1 — Only the resolver and registered policies may create CapabilityDecision | `123` `111` | — | — |
+| `PBDIGIT-149` | A1 Admin Constitutional Governance | Governance lifecycle end-to-end suite through HTTP | `139` `140` `142` `143` `145` `146` `147` `148` `152` `151` | H-13 `PBDIGIT-141`, H-14 `PBDIGIT-150` | — |
 
 #### Wave 8
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-113` | A2 voting participation | Shadow-evaluate CAST_VOTE in the live voting path | `112` | H-9 `PBDIGIT-98` | G |
-| `PBDIGIT-114` | A2 voting participation | Replay harness: reproduce stored decisions with DB access disabled | `112` | — | — |
+| `PBDIGIT-113` | A2 Voting Participation Governance | Shadow-evaluate CAST_VOTE in the live voting path | `112` | H-9 `PBDIGIT-98` | G |
+| `PBDIGIT-114` | A2 Voting Participation Governance | Replay harness: reproduce stored decisions with DB access disabled | `112` | — | — |
 
 #### Wave 9
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-115` | A2 voting participation | Runtime parity harness at the HTTP boundary with persisted divergences | `113` | — | — |
-| `PBDIGIT-129` | B general | CI rule 8 — Constitutional immutability and replay sufficiency run in CI | `123` `103` `114` | — | — |
+| `PBDIGIT-115` | A2 Voting Participation Governance | Runtime parity harness at the HTTP boundary with persisted divergences | `113` | — | — |
+| `PBDIGIT-129` | B General repository/freeze | CI rule 8 — Constitutional immutability and replay sufficiency run in CI | `123` `103` `114` | — | — |
 
 #### Wave 10
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-116` | A2 voting participation | Execute the 14 critical parity paths and obtain approval of expected divergences | `115` | — | — |
+| `PBDIGIT-116` | A2 Voting Participation Governance | Execute the 14 critical parity paths and obtain approval of expected divergences | `115` | — | — |
 
 #### Wave 11
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-117` | A2 voting participation | Switch the vote-submission decision to CAST_VOTE | `116` `85` `135` | `PBDIGIT-45` (ADR acceptance) | A, E |
-| `PBDIGIT-137` | A2 voting participation | Dispose of the unwired divergence-observation infrastructure | `116` | — | — |
+| `PBDIGIT-117` | A2 Voting Participation Governance | Switch the vote-submission decision to CAST_VOTE | `116` `85` `135` | `PBDIGIT-45` (ADR acceptance) | A, E |
+| `PBDIGIT-137` | A2 Voting Participation Governance | Dispose of the unwired divergence-observation infrastructure | `116` | — | — |
 
 #### Wave 12
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-118` | A2 voting participation | Drive the entry and ballot pages from the CAST_VOTE decision | `117` | — | A, E |
+| `PBDIGIT-118` | A2 Voting Participation Governance | Drive the entry and ballot pages from the CAST_VOTE decision | `117` | — | A, E |
 
 #### Wave 13
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-119` | A2 voting participation | Delete the legacy trust-decision pipeline | `118` | — | A |
-| `PBDIGIT-120` | A2 voting participation | Delete legacy participation middleware | `118` | H-6 `PBDIGIT-95` | A, F |
-| `PBDIGIT-121` | A2 voting participation | Delete duplicate controller participation gates and per-IP authorities | `118` | `PBDIGIT-45` (ADR acceptance) | A |
+| `PBDIGIT-119` | A2 Voting Participation Governance | Delete the legacy trust-decision pipeline | `118` | — | A |
+| `PBDIGIT-120` | A2 Voting Participation Governance | Delete legacy participation middleware | `118` | H-6 `PBDIGIT-95` | A, F |
+| `PBDIGIT-121` | A2 Voting Participation Governance | Delete duplicate controller participation gates and per-IP authorities | `118` | `PBDIGIT-45` (ADR acceptance) | A |
 
 #### Wave 14
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-127` | B general | CI rule 5 — Snapshots cannot evaluate; middleware cannot derive participation | `123` `120` | — | — |
-| `PBDIGIT-131` | B general | Consolidated Constitutional Governance Runtime developer guide | `121` `119` `120` | — | — |
+| `PBDIGIT-127` | B General repository/freeze | CI rule 5 — Snapshots cannot evaluate; middleware cannot derive participation | `123` `120` | — | — |
+| `PBDIGIT-131` | B General repository/freeze | Consolidated Constitutional Governance Runtime developer guide | `121` `119` `120` | — | — |
 
 #### Wave 15
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-132` | B general | Constitutional Governance Runtime v1.0 freeze | `131` `124` `125` `126` `127` `128` `129` `104` `102` `86` `87` `88` `89` `122` `130` `152` `151` `133` `134` `137` `142` `143` `146` `147` `148` `149` | H-12 `PBDIGIT-138` | A, B, E |
+| `PBDIGIT-132` | B General repository/freeze | Constitutional Governance Runtime v1.0 freeze | `131` `124` `125` `126` `127` `128` `129` `104` `102` `86` `87` `88` `89` `122` `130` `152` `151` `133` `134` `137` `142` `143` `146` `147` `148` `149` | H-12 `PBDIGIT-138` | A, B, E |
 
 ---
 
 ## 6. Recommended order inside the waves (when one implementer works serially)
 
-**A1 — admin capability**
+**Track A1 — Admin Constitutional Governance**
 
 ```
 139 A → (139 B after disposition) → 140 → 109 → 143 → 148 → 142 [H-13] → 144 [H-13] → 145 → 151 → 146 [H-5, H-14]
       → 152 → 147 → 149 (E2E acceptance)
 ```
 
-**A2 — voting participation**
+**Track A2 — Voting Participation Governance**
 
 ```
 76 → 77 → 78 → 79 → 80 → 81 → 82 → 83 → 84 → 135 → 136
@@ -262,7 +272,7 @@
    → 117 [PBDIGIT-45 accepted, 85, 135] → 118 → 119 → 120 [H-6] → 121 [PBDIGIT-45] → 137
 ```
 
-**B — general (slot in whenever capacity allows)**
+**Track B — General repository/freeze work (slot in whenever capacity allows)**
 
 ```
 133 · 134 · 130 · 122 → 123 (after C-1 + 139) → 128 → 125 · 126 (after 108) → 124 (after 111)
