@@ -1,0 +1,244 @@
+=== e4724a444231681f1a455ffaeea488a554183093
+author_date: 2026-08-04T02:30:25+02:00
+committer_date: 2026-08-04T02:30:25+02:00
+parents: df3464c6b7000f6b1ecbdb88e98fd1c968daa7e2
+subject: test(adjudication): WP-4C-1 batch B1 -- RED for K1..K4, all failing for the intended reasons
+
+RED only. No production classes, no hydrator, no provider change, no catalog work, no enqueue.
+
+  K1 x3  Class "...Events\AdjudicationFailureDeclared" not found        the class is absent
+  K2 x3  Class "...Outbox\AdjudicationFailureDeclaredHydrator" not found the hydrator is absent
+  K3 x5  same                                                           the hydrator is absent
+  K4 x1  ASSERTION failure: "publication without registration is not published language (WP-3A)"
+
+K4's failure is an assertion rather than an error, which is the point: the registry genuinely
+lacks the entry, so the test discriminates a missing registration rather than a missing file. The
+two pre-existing wiring assertions still pass -- no false positives introduced.
+
+THREE DESIGN DECISIONS THE TESTS PIN
+
+K1 asserts NON-NULLABLE constructor parameters by reflection. Three of the four source accessors
+on AdjudicationProcessState are nullable and the type system does not know concludeFailureDeclared()
+sets them together. The invariant is the AGGREGATE's; the event only CARRIES it. So the null case
+is made unrepresentable in the event and the construction SITE fails closed -- responsibilities
+stay split instead of the event defending an invariant it does not own.
+
+K3 is deliberately TWO failures, not one: an unsupported schema version and an incomplete payload
+are different defects with different causes, and a single "invalid input" test would let either
+regress unnoticed.
+
+K4 extends the EXISTING EventHydratorRegistryWiringTest rather than adding a second file. The
+registry's wiring has one home; a second file asserting the same contract would drift from it.
+
+O-1 -- AN AMBIGUITY RETURNED, NOT ABSORBED
+
+OutboxEventAdapter exposes ONE public method, enqueue(), and dispatches to PRIVATE per-event
+writers -- writeAdjudicationExpired() and writeDeterminationIssued(). A new event needs a new
+private writer for its payload to exist at all.
+
+So the payload shape is a contract between two halves -- writer and hydrator -- and only the
+hydrator is in the authorized scope. K2/K3 assert a v1 shape I DEFINED. Until a writer produces
+it, that shape is an engineering proposal, not a verified contract: a hydrator that agrees only
+with itself proves nothing about what will be in the outbox.
+
+Does writeAdjudicationFailureDeclared() belong to D2 (the registration pair) or D4 (publication,
+HELD)? If D2, the shape becomes verifiable here and K2/K3 gain real force. If D4, the hydrator
+ships against an unverified shape and THAT LIMITATION MUST APPEAR IN THE ACCEPTANCE EVIDENCE
+rather than being discovered when D4 lands and the shapes disagree.
+
+Not written, not chosen. Not a stop condition for D1/D2 either -- both remain executable; only
+the strength of K2/K3's evidence depends on the answer.
+
+RECORDED, NOT A DEFECT CLAIM: WP-6's AdjudicationExpiredHydrator has no dedicated unit test and
+no registry-wiring assertion. This batch therefore establishes coverage the accepted precedent
+lacks, which is a reason not to describe WP-4C-1's evidence as parity with it.
+
+Traceability: R-88 - R-89 - EPIC-004K 10 - ADR-T5 - ADR-T11 - AP-1 - AP-2 - WP-3A rule -
+plan sections 11-13, 17
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+
+=== 939e35dcb3af3c19fdbd59eec767461c21349f01
+author_date: 2026-08-04T17:19:21+02:00
+committer_date: 2026-08-04T17:19:21+02:00
+parents: 777bbbb37045b6fdf5a1b9b56b9fcf7b1a21c817
+subject: feat(adjudication): WP-4C-1 B2+B3 -- AdjudicationFailureDeclared, hydrator, writer, registration
+
+GREEN. K1-K4 all pass, plus the writer-hydrator round trip. Merge gate PASS, deprecation-free.
+
+  D1  Domain/Events/AdjudicationFailureDeclared.php
+  D2  Infrastructure/Outbox/AdjudicationFailureDeclaredHydrator.php
+      + private writeAdjudicationFailureDeclared() and its enqueue() dispatch arm
+      + registration in AdjudicationServiceProvider
+
+Implemented on the ARB's O-2 interpretation: FOLLOW THE EXISTING ADAPTER PATTERN. The adapter
+combines dispatch, payload mapping, provenance stamping and persistence; that is recorded as an
+implementation characteristic and a candidate future refactoring, and if it is ever decomposed ALL
+events migrate together, not this one alone.
+
+THE WRITER DECIDES NO PROVENANCE
+
+It stamps whatever EventProvenance its caller supplies, exactly as its two siblings do. So section
+6/E2 -- whether the publication site should start a conversation or continue one -- is untouched
+and unprejudiced. Stated in the method's docblock so a later reader cannot mistake the writer's
+existence for an answer to E2.
+
+THE ROUND TRIP IS WHAT ANSWERS O-1
+
+K2/K3 assert a payload shape against a FIXTURE, which means the hydrator agrees with itself and
+proves nothing about what will be in the outbox. The new Feature test writes through the real
+adapter with real persistence, reads the row back and hydrates it. If writer and hydrator ever
+disagree on a field name, a format or the version, it fails and K2/K3 do not.
+
+AND IT CAUGHT SOMETHING ON ITS FIRST RUN
+
+It failed with "invalid input syntax for type uuid: ch-4c1-rt". outbox_events.aggregate_id is a
+UUID column, ChallengeRef::fromString() does not enforce that shape, and the unit fixtures pass
+happily without a database. Precisely the class of defect a fixture-only hydrator test cannot
+surface -- which is the argument for the round trip, made by the round trip. Fixture corrected to a
+UUID; the finding recorded in the test's docblock. Whether ChallengeRef should validate its own
+shape is a value-object question OUTSIDE this slice, so it is recorded and not repaired.
+
+A DEPRECATION I INTRODUCED AND THEN REMOVED
+
+The first gate run reported "PHPUnit Deprecations: 1" where the baseline had none. It was mine:
+@dataProvider doc-comment metadata, deprecated in PHPUnit 11 and removed in 12. Replaced with the
+#[DataProvider] attribute. The gate is deprecation-free again.
+
+Worth the note because the gate still said PASS with it present. A green gate is not the same as a
+clean one, and the delta from baseline is what makes a new warning visible at all.
+
+  compile          4 production files + 4 test files, no syntax errors
+  static analysis  [OK] No errors
+  K1-K4            14 passed, 37 assertions
+  round trip       2 passed, 10 assertions
+  merge gate       PASS -- 295 tests, 773 assertions (baseline 281 / 729), 0 deprecations
+  risky            108 -> 111. Consistent with ENG-012, cause unestablished, NOT resolved here
+
+STILL HELD, unchanged by this batch: D3 the catalog deliverable (section 6/E1) - D4's publication
+call site and K5 (section 6/E2) - WP-4C-2 (EPIC-004K 15.3, Contestation-side). With those held,
+this slice delivers a registered, hydratable, WRITABLE event that no production path yet enqueues.
+
+=== cc1a3394d3ceed1d7b22c3ea326f5cda657b71a3
+author_date: 2026-08-04T20:38:51+02:00
+committer_date: 2026-08-04T20:38:51+02:00
+parents: 6b2994df10670bef461cabd91d9811cefa1824b0
+subject: test(adjudication): close WP-6's AdjudicationExpiredHydrator coverage gap
+
+Priority-2 engineering quality work, inside existing authority. No behaviour changed, no
+governance touched.
+
+THE GAP, AND WHY IT SAT OPEN
+
+AdjudicationExpiredHydrator shipped with WP-6, is registered at AdjudicationServiceProvider
+line 81, and had NO unit test and NO registry-wiring assertion. I found it while writing
+WP-4C-1's equivalents, recorded it as a coverage observation about accepted work, and then left
+it -- because I had started treating "no governance event" as "no engineering work". That was
+wrong: the event model controls AUTHORITY TRANSITIONS, not engineering productivity.
+
+WHAT WAS ADDED
+
+  8 unit tests   event type - v1 reconstruction - VO type fidelity - the v1-only window
+                 (unsupported version rejected, ABSENT version accepted by design) - missing
+                 required field rejected, one case per field
+  1 wiring test  the registry resolves 'AdjudicationExpired' after the provider boots
+
+Two assertions are worth more than the rest:
+
+THE ABSENT-VERSION TOLERANCE IS NOW PINNED. The shipped hydrator reads
+$payload['schema_version'] ?? 1, so a payload with no version is accepted as v1. That is a
+deliberate tolerance, not an oversight, and it was undocumented and untested -- a future change
+could have narrowed the window silently and broken older rows.
+
+THE ABSENCE OF A VERDICT IS ASSERTED STRUCTURALLY. Constitutional Policy 4: a timer concludes
+nothing. The test reflects over AdjudicationExpired's properties and asserts they are exactly
+[challengeRef, expiredAt], with outcome, legitimacy, reason and concludedByAuthority explicitly
+absent. Expiry announcing a verdict would be a constitutional defect, and now a payload addition
+cannot slip in unnoticed.
+
+RESULT: NO DEFECT FOUND
+
+All 12 pass. The hydrator behaves as documented. So this bought coverage rather than a fix --
+which is the honest outcome to report, and was not knowable in advance. Had any assertion failed
+it would have been implementation evidence about accepted work, reported and not silently
+repaired.
+
+  static analysis  [OK] No errors
+  merge gate       PASS -- 304 tests, 790 assertions (was 295 / 773)
+  risky            111 -> 112. Consistent with ENG-012, cause still unestablished
+
+A COMMAND-CHAINING DEFECT WORTH RECORDING
+
+My first verification used `grep -c ... && grep ...`. grep -c returned 0 matches, exited 1, and
+silently killed the rest of the chain -- so the provider check never ran and I nearly reported an
+unverified state as verified. Zero matches is a RESULT, not an error; chaining verification steps
+with && makes an expected-empty result indistinguishable from a broken command.
+
+Traceability: WP-6 - EPIC-004K §197 - Constitutional Policy 4 - ADR-T5 - ADR-T3 - WP-3A rule -
+coverage observation in 2026-08-04-wp4c1-acceptance-evidence.md §6 - ENG-012
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
+
+=== a72528b29657170fecc416c34dc61b899ba345d1
+author_date: 2026-09-30T18:49:03+02:00
+committer_date: 2026-09-30T18:49:03+02:00
+parents: dd55221ca443d1ca8cc68b07cdf07a2d478d7e4e
+subject: docs: exclude large derived files from history
+
+
+
+ .claude/CLAUDE.md                                  |    11 +
+ .claude/CONTEXT-ARCHIVE-2026-07-08.md              |  5169 +
+ .claude/CONTEXT-publicdigit.md                     |    50 +
+ .claude/CONTEXT.md                                 |  6761 +-
+ .claude/F-series-todos.md                          |   340 +
+ .claude/MEMORY.md                                  |   189 +
+ .claude/S-SERIES-TODO.md                           |   357 +
+ .claude/agents/kos-theory-reviewer.md              |   143 +
+ .claude/plans/encapsulated-hopping-hamster.md      |    87 +-
+ .claude/plans/floating-purring-toucan.md           |   279 +
+ .claude/plans/jiggly-humming-curry.md              |   277 +
+ .claude/plans/replicated-doodling-frog.md          |   131 +
+ ...ential-leaping-koala-agent-ab073664ae161cba9.md |    44 +
+ .claude/plans/smooth-pondering-naur.md             |   128 +
+ .claude/plans/snappy-mapping-creek.md              |   121 +
+ .claude/plans/starry-jumping-tower.md              |   361 +
+ .claude/scripts/context-route-reminder.sh          |    60 +
+ .claude/scripts/context-router.py                  |    97 +
+ .claude/scripts/inject-context.sh                  |     7 +-
+ .claude/scripts/knowledgeos-ksme/bse.py            |   370 +
+ .claude/scripts/knowledgeos-ksme/ess.py            |   175 +
+ .claude/scripts/knowledgeos-ksme/ksme04.py         |   419 +
+ .claude/scripts/knowledgeos-ksme/ksme05.py         |   209 +
+ .../knowledgeos-ksme/ksme05_refinement_check.py    |    71 +
+ .../knowledgeos-ksme/ksme08_relation_separation.py |   265 +
+ .../scripts/knowledgeos-ksme/ksme08_results.json   |   210 +
+ .../knowledgeos-ksme/ksme15_laneb_validation.py    |   114 +
+ .../ksme15_laneb_validation_results.json           |    72 +
+ .../ksme15_minimality_results.json                 |    70 +
+ .../ksme15_minimality_validation.py                |    95 +
+ .../knowledgeos-ksme/ksme15_synthetic_results.json |   116 +
+ .../ksme15_synthetic_validation.py                 |   174 +
+ .../scripts/knowledgeos-ksme/ksme17_materiality.py |   150 +
+ .../ksme17_materiality_results.json                |    67 +
+ .../scripts/knowledgeos-ksme/ksme17_minimality.py  |   192 +
+ .../ksme17_minimality_results.json                 |    96 +
+ .claude/scripts/knowledgeos-ksme/results05.json    |   756 +
+ .../knowledgeos-ksme/results05_refinement.json     |     8 +
+ .claude/sessions/2026-09-13.md                     |    80 +
+ .claude/sessions/2026-09-14.md                     |   217 +
+ .claude/sessions/2026-09-17.md                     |    98 +
+ .claude/sessions/2026-09-18.md                     |   187 +
+ .claude/sessions/2026-09-20.md                     |  1385 +
+ .claude/sessions/2026-09-21.md                     |  2620 +
+ .claude/sessions/2026-09-22.md                     |   635 +
+ .claude/sessions/2026-09-23.md                     |   289 +
+ .claude/sessions/2026-09-24.md                     |   379 +
+ .claude/sessions/2026-09-25.md                     |   492 +
+ .claude/sessions/2026-09-26.md                     |   483 +
+ .claude/sessions/2026-09-27.md                     |   121 +
+ .claude/sessions/2026-09-28.md                     |   142 +
+ .claude/sessions/2026-09-29.md                     |    60 +
+ .claude/sessions/2026-09-30.md                     |   154 +
