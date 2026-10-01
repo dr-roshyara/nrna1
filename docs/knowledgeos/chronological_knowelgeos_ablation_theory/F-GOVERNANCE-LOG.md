@@ -2278,3 +2278,12 @@ No H-D/H-B scoring
 |---|---|
 | Records | `analysis/theory/LOOP-1BE/` (PREREG, TASK, REVIEW-TASK, BUNDLE-A.sha256) |
 | Next | worker → independent review → reconciliation |
+
+## F-LOG-0188 — 1be bundle correction **before any run**
+- **Defect:** the worker bundle's PREREG.md carried the main analyst's sealed expectation (NO), which would bias the worker.
+- **Fix:** the bundle now holds `PREREG-WORKER.md` (outcomes and rules only) under the name PREREG.md, and BUNDLE-A.sha256 is regenerated.
+- The full PREREG.md (with the expectation) stays sealed in the repo. Neither the worker nor the reviewer sees it
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BE/PREREG-WORKER.md`, BUNDLE-A.sha256 |
