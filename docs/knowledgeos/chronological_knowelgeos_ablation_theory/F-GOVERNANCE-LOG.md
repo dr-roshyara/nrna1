@@ -2689,3 +2689,20 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BK/` (A, B = r0; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |
+
+## F-LOG-0220 — R4 / 1bk r1: **FAIL (1 blocking issue) → pre-registered STOP for the human**
+
+**Fixed:**
+- S-1 and S-2: the sufficiency section is valid, including Q*.
+- D1: the base proofs and the P-1 intermediate history are valid.
+- Countermodels: 12/12 each violate exactly one assumption, and the assumptions are independent.
+- The R5 spec is OK.
+
+**Remaining blocker, RG-1:** the generic proofs of Prop 4.1(i′), Prop 4.1(iii) and Lem 5.2 presuppose frame axioms F1/F2 in the starting history.
+- **The statements are true** (reviewer).
+- **The reviewer's fix:** define frames ⊆ H, or add the preliminary h → h[σ, f = ∞] steps. This is a proof repair, not a theory change.
+- **Non-blocking:** NB-1 to NB-6 (Conj 5.5 F-b/F-c pre-fixing; R5 K11.2/K12.1 wording).
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BK/` (A1, B1 = r1) |

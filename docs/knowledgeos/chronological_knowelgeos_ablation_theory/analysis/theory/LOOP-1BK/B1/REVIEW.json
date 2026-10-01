@@ -1,0 +1,72 @@
+{
+  "verdict": "FAIL",
+  "summary": "S-1 and S-2 are resolved, and the whole of section 4.5 (Prop 4.5, Lem 4.8(r1), Ex 4.5a Q*, Prop 4.6, Lem 4.7) is valid. The countermodels are now independent, with exactly one hypothesis violated per countermodel. PA-1 and PA-2 are resolved, coverage is complete, and the R5 spec is precise. One blocking regression remains: the generic (O', H') proofs of Prop 4.1(i'), Prop 4.1(iii) and Lem 5.2 assume that the starting history satisfies F1 or F2, although Def 1.8 lets a frame be any subset of S and A5, A7 and A9 are closure properties only. The statements are true, and the base case is unaffected. Minimal fix: define frames as subsets of the base frame H.",
+  "coverage": {
+    "BV-1": "ok", "BV-2": "ok", "BV-3": "ok", "BV-4": "ok", "BV-5": "ok", "BV-6": "ok",
+    "N-1": "ok", "N-2": "ok", "N-3": "ok",
+    "P-1": "ok", "P-2": "ok", "P-3": "ok", "P-4": "ok", "P-5": "wrong", "P-6": "ok", "P-7": "ok",
+    "PA-1": "ok", "PA-2": "ok", "P-ref": "ok",
+    "C-1": "ok", "C-2": "ok", "C-3": "ok", "C-4": "ok", "C-5": "ok",
+    "S-1": "ok", "S-2": "ok", "S-3": "ok", "S-ok": "ok",
+    "L-1": "ok", "L-2": "ok", "L-3": "ok", "L-4": "ok", "L-5": "ok", "L-6": "ok", "L-7": "ok",
+    "M-1": "ok", "M-2": "ok", "M-3": "ok", "M-4": "ok", "M-5": "ok", "M-6": "ok", "M-7": "ok",
+    "R-1": "ok", "R-2": "ok", "R-3": "ok", "R-4": "ok", "R-5": "ok", "R-6": "ok", "R-7": "ok", "R-8": "ok", "R-ok": "ok"
+  },
+  "proof_check": [
+    {"id": "Lem 4.0b", "status": "valid", "note": "h1 = h[sigma, f=inf] and h2 = h[sigma*, f=inf] satisfy F1 vacuously; h3 satisfies it by assumption. All three are in H' by A5 applied to h. The chain uses A2, A1, A2."},
+    {"id": "Lem 4.0a", "status": "valid"},
+    {"id": "Prop 4.1(i)", "status": "valid", "note": "h[p, inf] satisfies F1 vacuously, so no F1 premise is needed in h."},
+    {"id": "Prop 4.1(ii)", "status": "valid", "note": "The O'-equality is now asserted."},
+    {"id": "Prop 4.1(i')", "status": "invalid step (generic); statement true", "note": "'Each step satisfies F1' presupposes F1 in h, which is not a hypothesis. Repair: first pass to h[sigma, f=inf] (A5, A2)."},
+    {"id": "Prop 4.1(iii)", "status": "invalid step (generic); statement true", "note": "Step 1 uses 'By F1 in h'. Counter-scenario: H' = H u {h0}, where h0 has an issue act b with f(b)=1, v(b)=p, sigma(1)=q. This pair satisfies A1, A2, A4, A5 and A7, but h0[sigma', f'] fails F1, so it is not in H'. Repair: also set f' = inf on every F1-violating act. All other steps check."},
+    {"id": "Cor 4.1b", "status": "valid", "note": "H is a subset of F1 and F2."},
+    {"id": "Lem 4.2 / Cor 4.3", "status": "valid", "note": "P-2 and P-7 fixed."},
+    {"id": "Lem 3.7", "status": "valid", "note": "SC1 and SC2 suffice; no F1 or F2 premise is needed."},
+    {"id": "Lem 5.2", "status": "invalid step (generic); statement true; valid on H", "note": "'F2 still holds' presupposes F2 in h. Repair: drop all con (A9, A3), then set d(a) := r(rho) (A9, A8), then set con(a) := rho."},
+    {"id": "Prop 5.4(c)", "status": "valid", "note": "P-3 fixed."},
+    {"id": "Lem 3.3, Prop 3.4, Lem 3.5, Lem 3.6", "status": "valid"}
+  ],
+  "countermodel_check": [
+    {"id": "CM-A1", "violates_only": "A1", "ok": true},
+    {"id": "CM-A2", "violates_only": "A2", "ok": true, "note": "F-hat-0 covers prep-0 acts only, so A4 holds (C-1 fixed)."},
+    {"id": "CM-A3a", "violates_only": "A3", "ok": true},
+    {"id": "CM-A3b", "violates_only": "A3", "ok": true},
+    {"id": "CM-A4a", "violates_only": "A4", "ok": true},
+    {"id": "CM-A4b", "violates_only": "A4", "ok": true, "note": "No f or d is included (C-2 fixed). The failure comes from the literal form of (iii) only."},
+    {"id": "CM-A5", "violates_only": "A5", "ok": true},
+    {"id": "CM-A6", "violates_only": "A6", "ok": true},
+    {"id": "CM-A7(a)/(b)", "violates_only": "A7", "ok": true, "note": "The proof of (b) is valid: the O-level non-separation survives through referenced added acts."},
+    {"id": "CM-A8", "violates_only": "A8", "ok": true},
+    {"id": "CM-A9", "violates_only": "A9", "ok": true},
+    {"id": "independence", "ok": true, "note": "The A4 restructure removes the containment of A2 and A8 in A4. There is one countermodel per hypothesis, each satisfying all the others."}
+  ],
+  "sufficiency_check": [
+    {"id": "Prop 4.5 (S3 = S1 on every h in H-B)", "status": "valid"},
+    {"id": "Lem 4.8(a) Q_m", "status": "valid", "note": "Veridical on H-D, satisfies S2. h_a and h_b share their outcome, so the outcome does not exclude H-B."},
+    {"id": "Lem 4.8(b) Q_e", "status": "valid", "note": "Fails S2. Satisfies S3 when P = {p}. Non-separation follows from 4.1(i)."},
+    {"id": "Rem 4.5 withdrawn", "status": "correct"},
+    {"id": "Ex 4.5a Q*", "status": "valid", "note": "S1 holds at every h. S2 holds via Lem 3.5(a). Lem 3.5(b)'s outcome excludes H-D. Nit: mu_h(lambda) = w1 is stated even when w1 is not in W_h."},
+    {"id": "Rem 4.5b", "status": "correct"},
+    {"id": "Prop 4.6 (S2')", "status": "valid"},
+    {"id": "Lem 4.7", "status": "valid"},
+    {"id": "Table 4.6 / Rem 4.9a / Rem 4.10", "status": "consistent", "note": "Nit: Rem 4.9a ties Def 4.9 to S2 as well as S3."}
+  ],
+  "regressions": [
+    {"id": "RG-1", "where": "Proofs of Prop 4.1(i'), Prop 4.1(iii), Lem 5.2", "issue": "The generic proofs use F1 or F2 in the starting history. Frames are arbitrary subsets of S (Def 1.8), and A5, A7 and A9 are closure properties only. The statements are true; the proofs are invalid as written.", "blocking": true},
+    {"id": "RG-2", "where": "Ex 4.5a; Lem 4.8(a)", "issue": "mu_h(lambda) = w1 is stated unconditionally; it should hold only when w1 is in W_h.", "blocking": false},
+    {"id": "RG-3", "where": "Rem 4.9a", "issue": "Def 4.9 is called a criterion for S2 and S3; independence bears on S3 (veridicality), not on S2.", "blocking": false}
+  ],
+  "r5_spec_ok": true,
+  "r5_notes": "Checked by hand in U: K8.1, K8.2 (two-act value), K8.4, K8.5, K8.7, K9.1-K9.8, K10.4, K10.5, K10.7, K12.1, K12.2; all correct. Minor: K11.2's 'forced' is undefined, and K12.1 groups Ref and con together. U contains only F1-and-F2 histories, so R5 cannot detect RG-1 (section 7.3 already says the generic statements are untested).",
+  "blocking": [
+    "B-1 (RG-1): The generic proofs of Prop 4.1(i'), Prop 4.1(iii) and Lem 5.2 assume F1 or F2 in h, which is not a hypothesis. Fix: define frames as subsets of H (all countermodel frames already are), or add the preliminary steps h -> h[sigma, f=inf] and drop-all-con."
+  ],
+  "nonblocking": [
+    "NB-1: mu_h is stated outside W_h (Ex 4.5a, Lem 4.8(a)).",
+    "NB-2: Rem 4.9a ties Def 4.9 to S2.",
+    "NB-3: CHANGELOG S-2 row typo 'satisfies S1-S3 and S2'.",
+    "NB-4: Conj 5.5 F-b's decision rule (who reviews, what threshold) is not pre-fixed or sealed.",
+    "NB-5: Conj 5.5's universal scope over register and ruling records conflicts with F-c's S_mode subset. F-c may have no power if S_mode = {R-56}, and R-56's membership in the coded records is not established in the inputs.",
+    "NB-6: R5: K11.2's 'forced' is undefined; K12.1's Ref/con group does not separate O3 from O3'."
+  ]
+}
