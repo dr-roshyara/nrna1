@@ -2582,3 +2582,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BI/` (A4, B4 = r3c-1) |
+
+## F-LOG-0211 — **Human act (2026-10-01): option B, a coarse binary core instrument.** SCHEMA-r3 (fine-grained) is retained as an exploratory, non-authoritative artefact only
+
+**1bj pre-registered** (`LOOP-1BJ/PREREG.md`), before the schema is written:
+- **The core:** ACT_REPORTED / ACT_SELF_PERFORMED / NORM_STATED, each YES / NO / UNKNOWN. TC-1 stays computable.
+- **Drafting:** no record access; ≤ 1,000 words; examples from a neutral domain.
+- **Test:** 3 models; **pass = κ ≥ 0.67 on all 9 pair × field values**.
+- **Outcomes:** FAIL → **option A** (the act/norm layer is not reliably codable at either grain).
+- The main analyst's expectation is sealed in `EXPECTATION-SEALED.md`; no worker sees it.
