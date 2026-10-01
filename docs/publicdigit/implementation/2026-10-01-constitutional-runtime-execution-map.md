@@ -562,13 +562,15 @@ TODO
  ↓  9  REFACTOR: inside Scope only; no "cleanup while here"
  ↓ 10  Targeted verification: the ticket's own suites, exact totals before/after
  ↓ 11  Full suite: php artisan test --no-coverage (nrna_test; never migrate:fresh / migrate:refresh)
- ↓ 12  Review the diff: nothing outside the ticket's files
+ ↓ 12  Review the diff: every changed file is justified by Scope/Acceptance (the Files field is guidance, not permission)
  ↓ 13  Developer guide under developer_guide/<area>/
  ↓ 14  Commit: git commit -- <paths>, subject "(PBDIGIT-nn)"
  ↓ 15  Update the session log, CONTEXT and the ticket status (evidence only; acceptance is the PO/ARB's)
  ↓
 STOP: do not start the next ticket without its own authorisation
 ```
+
+**The Files field is a guidance boundary, not a permission.** It names where a change is *expected*. It does not authorise modifying every listed file. Each actual modification must be justified by the ticket's Scope and Acceptance criteria and shown in the final diff. A file *not* listed may be touched only if the Scope requires it, and the deviation is reported.
 
 The full rules are in the [implementation runbook §2](2026-10-01-constitutional-runtime-implementation-sequence.md).
 
@@ -689,6 +691,8 @@ The full rules are in the [implementation runbook §2](2026-10-01-constitutional
 
 One card per implementation ticket (63). Decision tickets are in §4 and the backlog §7. Every card is derived from the backlog specification.
 
+**The Files field is a guidance boundary, not a permission.** On every card, *Files / components expected to change* says where a change is expected. It does not authorise modifying every listed file. Each actual modification must be justified by the ticket's Scope and Acceptance criteria and shown in the final diff. A file not listed may be touched only if the Scope requires it, and the deviation is reported.
+
 #### `PBDIGIT-76` — Repair voting feature-test fixtures for current schema (retired columns)
 
 | | |
@@ -699,7 +703,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | 109 of 218 failing tests error before asserting: fixtures write `users.is_voter`/`users.can_vote` (no active migration creates them; they exist only in `database/migrations_backup_*`) and `posts.post_id` (the posts table has only `id`). Voter status is now an `election_memberships` row (role voter, status active). |
 | **Scope** | Test code and factories only. Translate each fixture's intent: 'user is a voter' → an active voter `ElectionMembership` for the election (current model); 'not a voter' → no membership. Replace `post_id` fixture keys with the current `posts` columns. |
 | **Explicitly out of scope** | No production code (`app/`, `routes/`, `config/`, `database/migrations/`). No assertion weakened, deleted, skipped or marked incomplete. No change to expected behaviour. No real test converted to demo. No session flags added to pass. Production references to `is_voter` (`User.php:111,415,433,463,723-825`) are `PBDIGIT-35`, not this ticket. **C-1 governing rule:** C-1 repairs the test environment's representation of the CURRENT production contract; it must not repair, restore, reinterpret or redesign production voting authority. A removed production API (e.g. `ElectionMembership::assignVoter()`, removed in `ba4cfa9c1`) is never restored. Each broken fixture is classified as (a) translation to the current contract, (b) obsolete test → recorded disposition, or (c) genuine production defect → a NEW PBDIGIT ticket; C-1 never decides (c) by changing code. |
-| **Files / components expected to change** | tests/Feature/{VoteSubmissionWorkflowTest, RealElection/EndpointRoutingTest, Phase2VoteValidationTest, Phase5ErrorHandlingTest, Phase6EndToEndIntegrationTest, ExistingVotingControllersIntegrationTest, VoterStepWorkflowTest, VoterWorkflowIntegrationTest, MultipleVotePreventionTest, DoubleVoteDebugTest}.php; possibly database/factories (only if a shared fixture is the source) |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/{VoteSubmissionWorkflowTest, RealElection/EndpointRoutingTest, Phase2VoteValidationTest, Phase5ErrorHandlingTest, Phase6EndToEndIntegrationTest, ExistingVotingControllersIntegrationTest, VoterStepWorkflowTest, VoterWorkflowIntegrationTest, MultipleVotePreventionTest, DoubleVoteDebugTest}.php; possibly database/factories (only if a shared fixture is the source) |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -721,7 +725,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | 84 factory/tenancy errors: duplicate `user_organisation_roles` (UserFactory::configure() already creates the row, tests `attach()` again, 42); demo election with `organisation_id = null` against a NOT NULL column (20); memberships/votes created without organisation or tenant session (12); tenant-scoped `find`/`update` returning nothing (10). Plus `ElectionMembership::assignVoter()` removed in `ba4cfa9c1` (VoteControllerTest), `new VoteController()` with 0 of 2 constructor args (4+ sites), stale route name `voter.code.create` and web-group expectation for `TenantContext` (2). |
 | **Scope** | Test code/factories only: set existing pivot roles instead of inserting; give fixtures the organisation and tenant session current tenancy rules require; replace `assignVoter` with an equivalent membership fixture; resolve controllers through the container; use current route names; update the web-group expectation only because `bootstrap/app.php:38-43` documents the intentional move. |
 | **Explicitly out of scope** | No production code (`app/`, `routes/`, `config/`, `database/migrations/`). No assertion weakened, deleted, skipped or marked incomplete. No change to expected behaviour. No real test converted to demo. No session flags added to pass. No weakening of `BelongsToTenant`, `BaseVote` organisation checks or the users↔organisation invariant. **C-1 governing rule:** C-1 repairs the test environment's representation of the CURRENT production contract; it must not repair, restore, reinterpret or redesign production voting authority. A removed production API (e.g. `ElectionMembership::assignVoter()`, removed in `ba4cfa9c1`) is never restored. Each broken fixture is classified as (a) translation to the current contract, (b) obsolete test → recorded disposition, or (c) genuine production defect → a NEW PBDIGIT ticket; C-1 never decides (c) by changing code. |
-| **Files / components expected to change** | tests/Feature/{VoteControllerTest, VoteVerifyTest, Election/ElectionOnlyEntitlementPinTest, Integration/VotingMembershipIntegrationTest, Audit/VoteControllerAuditTest, RealElection/RoutingTest, IpRestriction/ElectionIpRestrictionTest, VoteVerificationTest, RealVoteVerificationTest, VoteSubmissionRedirectTest, VoterStepWorkflowTest, Bootstrap/BootstrapAppConfigurationTest}.php |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/{VoteControllerTest, VoteVerifyTest, Election/ElectionOnlyEntitlementPinTest, Integration/VotingMembershipIntegrationTest, Audit/VoteControllerAuditTest, RealElection/RoutingTest, IpRestriction/ElectionIpRestrictionTest, VoteVerificationTest, RealVoteVerificationTest, VoteSubmissionRedirectTest, VoterStepWorkflowTest, Bootstrap/BootstrapAppConfigurationTest}.php |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -743,7 +747,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | 19 tests assume voting is open with only `status`/`start_date`/`end_date` or `state='voting'`; the engine (`ElectionLifecycleEngineImpl.php:111`) requires `voting_locked` + open window + an approved candidacy (rules from `f2c2cc4ee` PBDIGIT-64 and `606c362aa`). Probe: adding both yields `voting_active`. |
 | **Scope** | Test fixtures/factory states only: construct elections satisfying the current rules through real data (no mocking the engine). |
 | **Explicitly out of scope** | No production code (`app/`, `routes/`, `config/`, `database/migrations/`). No assertion weakened, deleted, skipped or marked incomplete. No change to expected behaviour. No real test converted to demo. No session flags added to pass. No change to the lifecycle engine, `ElectionFactory` semantics used by unrelated tests, or `VotingActive` conditions. **C-1 governing rule:** C-1 repairs the test environment's representation of the CURRENT production contract; it must not repair, restore, reinterpret or redesign production voting authority. A removed production API (e.g. `ElectionMembership::assignVoter()`, removed in `ba4cfa9c1`) is never restored. Each broken fixture is classified as (a) translation to the current contract, (b) obsolete test → recorded disposition, or (c) genuine production defect → a NEW PBDIGIT ticket; C-1 never decides (c) by changing code. |
-| **Files / components expected to change** | tests/Feature/{CodeControllerTest, ExpiredCodeAutoRegenerationTest, Election/ElectionShowControllerTest, Election/VotingEntitlementAmbientInvarianceTest, Vote/VoteControllerConstitutionalTest, VoteSubmissionRedirectTest}.php; possibly a new opt-in `ElectionFactory` state |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/{CodeControllerTest, ExpiredCodeAutoRegenerationTest, Election/ElectionShowControllerTest, Election/VotingEntitlementAmbientInvarianceTest, Vote/VoteControllerConstitutionalTest, VoteSubmissionRedirectTest}.php; possibly a new opt-in `ElectionFactory` state |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -765,7 +769,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | The entry gates (`elections.start` membership/has-voted/canVote/resolveIpBlock; code create/store: membership skip-with-slug, has_voted, `isUserEligible`, code expiry, IP cap `>= config(app.max_use_clientIP)`; agreement: can_vote_now/has_voted; middleware `voter.slug.*`, `ensure.election.voter`, `vote.eligibility`, `validate.voting.ip`, `vote.organisation`) have no HTTP-level test of current accept/reject behaviour. |
 | **Scope** | One `@characterization` HTTP test per gate listed in the readiness review §7/§8 (entry half), asserting today's outcome for its triggering fact. |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | new tests under tests/Feature/Characterization/Voting/ (placement per test conventions) |
+| **Files / components expected to change (guidance, not permission)** | new tests under tests/Feature/Characterization/Voting/ (placement per test conventions) |
 | **Depends on (implementation)** | 76 · 77 · 78 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -787,7 +791,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `VoteController::create/first_submission/verify/store` gates (canVote ×2, membership cached/fresh, `isUserEligibleToVote` via can_vote_now, agreement, `validateVotingIpWithResponse`, has_voted, trust→`ConstitutionalLegitimacyDecision` gate, lock + in-lock has_voted, credential match) and `voting.active` lack current-behaviour HTTP tests. |
 | **Scope** | One `@characterization` HTTP test per gate (readiness review §8, ballot half), including the trust gate's current outcomes for the reachable states. |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/ |
 | **Depends on (implementation)** | 76 · 77 · 78 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -809,7 +813,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | X-1 `store` ignores `$pre_check = vote_post_check(...)` (`VoteController:1726`); X-2 `first_submission` sets `vote_submitted` before `vote_pre_check`, which then returns early (`:538-545`, `:2944-2947`); X-3 the IP-denial branch in `store` returns without `$lock->release()`/`DB::rollBack()` (`:1640-1673`). |
 | **Scope** | One pinning test per defect demonstrating the current behaviour. |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/Defects/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/Defects/ |
 | **Depends on (implementation)** | 80 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -831,7 +835,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | X-4 codes compared in plaintext and expected/submitted codes logged (`VoteController::verify_submitted_code:4087-4150`, `CodeController:881-885`); X-5 `debug_code` exposes the plaintext code whenever the user lacks a valid email (`VoteController:2426,2442`). |
 | **Scope** | Pinning tests: log capture proves codes are logged; Inertia prop assertion proves `debug_code` exposure for a no-email user outside local. |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. Test output must not print real codes beyond the fixture's own. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/Defects/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/Defects/ |
 | **Depends on (implementation)** | 80 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -853,7 +857,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | X-6 session `selected_election_type === 'demo'` bypasses `VoteEligibility` (`:36`) and `CodeController::isUserEligible` (`:683-700`) on real routes; X-7 `EnsureRealVoteOrganisation::handleOrganisationMismatch` is never called — the middleware checks no organisation. |
 | **Scope** | Pins: a real-election request with the demo session flag passes the lifecycle gate it should fail; a cross-organisation request is not rejected by `vote.organisation` (tenant isolation still enforced by `voter.slug.consistency`). |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/Defects/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/Defects/ |
 | **Depends on (implementation)** | 79 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -875,7 +879,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | X-8 `config('voting.two_codes_system')` is a string compared `=== 1`/`=== true`; X-9 `User::is_voter/can_vote` read columns no migration creates (`PBDIGIT-35`); X-10 whitelist `json_decode(array)` TypeError (`TrustPolicyEvaluator:140`) and `trackSovereigntyDivergence(?int $userId)` with UUIDs (`VoteController:1370`); X-11 per-election security law cannot be authored (source columns not fillable, never written); X-12 `users.voting_ip` is read (`ValidateVotingIp`, `VoteController::store`) but no migration creates it. |
 | **Scope** | One pin each (X-10 two). Pins observe current behaviour (e.g. strict mode never activates with env `"1"`; a whitelisted election errors in `store`). |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/Defects/; tests/Unit where a pin is below HTTP |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/Defects/; tests/Unit where a pin is below HTTP |
 | **Depends on (implementation)** | 79 · 80 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -897,7 +901,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Denied `store` requests leave an open transaction and a held 10 s lock (`VoteController:1640-1673`). |
 | **Scope** | RED→GREEN: flip the X-3 pin (the pin's expectation is replaced by the corrected expectation in the same commit, labelled), minimal production change. |
 | **Explicitly out of scope** | Only the named defect. No sovereignty migration, no resolver change, no refactor of neighbouring code. Other X-defects stay pinned. |
-| **Files / components expected to change** | app/Http/Controllers/VoteController.php (store IP-denial branch only) |
+| **Files / components expected to change (guidance, not permission)** | app/Http/Controllers/VoteController.php (store IP-denial branch only) |
 | **Depends on (implementation)** | 81 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -919,7 +923,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Expected and submitted voting codes are written to logs in plaintext (`VoteController:4087-4150`, `CodeController:881-885`). |
 | **Scope** | RED→GREEN: flip the X-4 pin (the pin's expectation is replaced by the corrected expectation in the same commit, labelled), minimal production change. |
 | **Explicitly out of scope** | Only the named defect. No sovereignty migration, no resolver change, no refactor of neighbouring code. Other X-defects stay pinned. |
-| **Files / components expected to change** | VoteController::verify_submitted_code, CodeController::verifyCode (log statements, comparison) |
+| **Files / components expected to change (guidance, not permission)** | VoteController::verify_submitted_code, CodeController::verifyCode (log statements, comparison) |
 | **Depends on (implementation)** | 82 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -941,7 +945,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `debug_code` sends the plaintext code to the UI whenever the user has no valid email (`VoteController:2426,2442`). |
 | **Scope** | RED→GREEN: flip the X-5 pin (the pin's expectation is replaced by the corrected expectation in the same commit, labelled), minimal production change. |
 | **Explicitly out of scope** | Only the named defect. No sovereignty migration, no resolver change, no refactor of neighbouring code. Other X-defects stay pinned. |
-| **Files / components expected to change** | VoteController::verify (debug_code prop) |
+| **Files / components expected to change (guidance, not permission)** | VoteController::verify (debug_code prop) |
 | **Depends on (implementation)** | 82 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -963,7 +967,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | A stale `selected_election_type=demo` session value skips lifecycle/eligibility gates on real routes (`VoteEligibility:36`, `CodeController:683-700`). |
 | **Scope** | RED→GREEN: flip the X-6 pin (the pin's expectation is replaced by the corrected expectation in the same commit, labelled), minimal production change. |
 | **Explicitly out of scope** | Only the named defect. No sovereignty migration, no resolver change, no refactor of neighbouring code. Other X-defects stay pinned. |
-| **Files / components expected to change** | app/Http/Middleware/VoteEligibility.php; CodeController::isUserEligible |
+| **Files / components expected to change (guidance, not permission)** | app/Http/Middleware/VoteEligibility.php; CodeController::isUserEligible |
 | **Depends on (implementation)** | 83 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A) |
@@ -985,7 +989,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | A non-empty whitelist throws in `TrustPolicyEvaluator:140`; `trackSovereigntyDivergence(?int $userId)` throws on UUID users (`VoteController:1370`). |
 | **Scope** | RED→GREEN: flip the X-10 pin (the pin's expectation is replaced by the corrected expectation in the same commit, labelled), minimal production change. |
 | **Explicitly out of scope** | Only the named defect. No sovereignty migration, no resolver change, no refactor of neighbouring code. Other X-defects stay pinned. |
-| **Files / components expected to change** | TrustPolicyEvaluator::buildNetworkEvidence; VoteController::trackSovereigntyDivergence signature |
+| **Files / components expected to change (guidance, not permission)** | TrustPolicyEvaluator::buildNetworkEvidence; VoteController::trackSovereigntyDivergence signature |
 | **Depends on (implementation)** | 84 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, C, F) |
@@ -1007,7 +1011,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ConstitutionalArticlesSnapshot` (persisted, 7 fields, snake_case JSON) and Simplified `ElectionConstitutionSnapshot` (5 fields incl. `verificationRequired`, `ElectionConstitutionHasher` camelCase) produce hashes that can never match; version is the phase label `'D.2.5'`. |
 | **Scope** | Consolidate to one value object + one canonical hash function + a `law_version` for the article schema; articles per readiness review §5 (composable network articles; no `trust_overlay_*`), using the H decisions available; adapters for the second representation's callers. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. No authoring UI, no immutability mechanism, no runtime consumption yet. |
-| **Files / components expected to change** | app/Domain/Election/Constitution/; app/Domain/Election/Security/Simplified/ElectionConstitution*.php |
+| **Files / components expected to change (guidance, not permission)** | app/Domain/Election/Constitution/; app/Domain/Election/Security/Simplified/ElectionConstitution*.php |
 | **Depends on (implementation)** | 79 · 80 |
 | **Human decision dependencies** | H-1 (`PBDIGIT-90`), H-2 (`PBDIGIT-91`), H-3 (`PBDIGIT-92`), H-4 (`PBDIGIT-93`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate B) |
@@ -1029,7 +1033,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | X-11: the source columns are neither fillable nor written anywhere; every election freezes DB defaults. |
 | **Scope** | Creation-time authoring of the articles (validated by the canonical schema) and freeze into the snapshot + hash. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. No post-creation amendment mechanism. |
-| **Files / components expected to change** | election creation request/handler; app/Models/Election.php created hook |
+| **Files / components expected to change (guidance, not permission)** | election creation request/handler; app/Models/Election.php created hook |
 | **Depends on (implementation)** | 101 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate B) |
@@ -1051,7 +1055,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | The Eloquent guard is bypassable by 5 mechanisms; nothing verifies the hash at runtime; the immutability test's name contradicts its body. |
 | **Scope** | The H-10-selected protection; a load-time hash verification that refuses evaluation on mismatch; rename/replace the misleading test. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. |
-| **Files / components expected to change** | database/migrations (if DB-level), app/Models/Election.php, constitution loader |
+| **Files / components expected to change (guidance, not permission)** | database/migrations (if DB-level), app/Models/Election.php, constitution loader |
 | **Depends on (implementation)** | 101 |
 | **Human decision dependencies** | H-10 (`PBDIGIT-99`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate B, G) |
@@ -1073,7 +1077,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | All existing elections froze defaults; the canonical hash change (PBDIGIT-101) invalidates stored hashes. |
 | **Scope** | A migration/command implementing H-11, with an audit record per election. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. No change to votes. |
-| **Files / components expected to change** | database/migrations or app/Console |
+| **Files / components expected to change (guidance, not permission)** | database/migrations or app/Console |
 | **Depends on (implementation)** | 101 |
 | **Human decision dependencies** | H-11 (`PBDIGIT-100`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate B, G) |
@@ -1095,7 +1099,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Membership: 5 sites, 4 predicates; already-voted: 3 stores; lifecycle consumed as a gate in 4+ places. |
 | **Scope** | Evidence builder producing typed facts (`ParticipationEligibilityEvidence`, lifecycle state, already-voted) per H-7, with provenance (source table/column, acquired-at). No interpretation. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. Existing gates untouched. |
-| **Files / components expected to change** | app/Application/Election/ (evidence builder), app/Domain/Election/Security/Simplified/ evidence types |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/ (evidence builder), app/Domain/Election/Security/Simplified/ evidence types |
 | **Depends on (implementation)** | 79 · 80 · 136 |
 | **Human decision dependencies** | H-7 (`PBDIGIT-96`) |
 | **Authorisation needed** | PO authorisation |
@@ -1117,7 +1121,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `TrustPolicyEvaluator` hard-codes `registeredFingerprintHash=null`, `ExactMatch`, `attested=false`, `deviceChanged=false`; no registered-IP source exists (X-12); three prior-vote counters. |
 | **Scope** | Adapt `TrustPolicyEvaluator`'s hashing/acquisition into typed `NetworkEvidence` (current + registered IP hash, one prior-vote counter per H-4), `DeviceEvidence` (current + registered hash per H-2), `VerificationEvidence` from `voter_verifications` (attested, officer, revoked), all with provenance. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. No policy execution inside the builder; legacy evaluator still runs for the live gate. |
-| **Files / components expected to change** | app/Application/Election/Security/TrustPolicyEvaluator.php (adapt), Simplified evidence types |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Security/TrustPolicyEvaluator.php (adapt), Simplified evidence types |
 | **Depends on (implementation)** | 79 · 80 |
 | **Human decision dependencies** | H-1 (`PBDIGIT-90`), H-2 (`PBDIGIT-91`), H-4 (`PBDIGIT-93`) |
 | **Authorisation needed** | PO authorisation |
@@ -1139,7 +1143,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Code protocol comes from global env with broken comparisons (X-8); `can_vote_now` is used as authority; `BallotAuthorizationPolicy` reads an untyped `actionMetadata['ballot_session']`. |
 | **Scope** | Build `BallotSession` from `codes` rows with protocol and session minutes from the constitution; `can_vote_now` becomes the fact 'code 1 verified'. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. |
-| **Files / components expected to change** | app/Domain/Election/Security/BallotAuthorization/; code evidence builder |
+| **Files / components expected to change (guidance, not permission)** | app/Domain/Election/Security/BallotAuthorization/; code evidence builder |
 | **Depends on (implementation)** | 79 · 80 · 101 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1161,7 +1165,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Simplified `NetworkBindingPolicy` allows the (max+1)th vote (`<=` on prior count), compares strict binding against the session-start IP, cannot combine binding and limit, has no `whitelist_only` case; `DeviceBindingPolicy` trusts a precomputed `matchType`. |
 | **Scope** | Adapt the three Simplified evaluators to the canonical law and E-1 evidence per H-1/H-2/H-3/H-4; findings only (`passed`, basis, facts). |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. Evaluators never return `CapabilityDecision`. |
-| **Files / components expected to change** | app/Application/Election/Security/Simplified/Policies/ |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Security/Simplified/Policies/ |
 | **Depends on (implementation)** | 101 · 106 |
 | **Human decision dependencies** | H-3 (`PBDIGIT-92`), H-4 (`PBDIGIT-93`) |
 | **Authorisation needed** | PO authorisation |
@@ -1183,7 +1187,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | The resolver stops at the first deny (`ElectionCapabilityResolver:45-63`; `isShortCircuit()` true for every HardBlock) and stores `lastTrace` on a container singleton (`:22`, `AppServiceProvider:284`), read by `ElectionManagementController:1384`. |
 | **Scope** | Evaluate the complete policy set, derive the decision from all outcomes (deny-monotone), return decision + trace together; adapt the one caller. |
 | **Explicitly out of scope** | No new actions, no policy changes, no voting path change. |
-| **Files / components expected to change** | app/Application/Election/Services/ElectionCapabilityResolver.php; app/Application/Election/Capabilities/Capability{Decision,Trace}.php; ElectionManagementController::resolveCapabilities |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Services/ElectionCapabilityResolver.php; app/Application/Election/Capabilities/Capability{Decision,Trace}.php; ElectionManagementController::resolveCapabilities |
 | **Depends on (implementation)** | 140 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate E) |
@@ -1205,7 +1209,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `CapabilityContext` carries live `Election`/`User` Eloquent models and an untyped `actionMetadata` used for both rules and evidence; no `cast_vote` action exists; denial reasons are too coarse to replay. |
 | **Scope** | Typed context fields per readiness review §10; `cast_vote` in the registry chosen by H-5; denial reasons `NotAMember`, `AlreadyVoted`, `BallotProtocolUnmet`, `NetworkBindingViolated`, `NetworkLimitReached`, `DeviceBindingViolated`, `VerificationMissing`. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. Admin actions keep working (adapter for their context). |
-| **Files / components expected to change** | app/Application/Election/Capabilities/ |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Capabilities/ |
 | **Depends on (implementation)** | 109 · 105 · 106 · 107 |
 | **Human decision dependencies** | H-5 (`PBDIGIT-94`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate E) |
@@ -1227,7 +1231,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `BallotAuthorizationPolicy` and `VoterVerificationPolicy` exist but are unregistered; membership and already-voted have no policy; `EvidenceCapabilityPolicy` maps legacy trust states and has a dormant overlay HardBlock. |
 | **Scope** | Register Lifecycle, Overlay(suspension), Membership, AlreadyVoted, BallotAuthorization, VoterVerification and the findings-interpreting `EvidenceCapabilityPolicy` (redesigned) for `cast_vote`; overlay handling per H-8; demo per H-9. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. |
-| **Files / components expected to change** | app/Application/Election/Capabilities/Policies/, Policy/; AppServiceProvider resolver binding |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Capabilities/Policies/, Policy/; AppServiceProvider resolver binding |
 | **Depends on (implementation)** | 110 · 108 |
 | **Human decision dependencies** | H-8 (`PBDIGIT-97`), H-9 (`PBDIGIT-98`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |
@@ -1249,7 +1253,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Security events are sampled with `rand()` (~90% of allows lost), carry no constitution hash or outcome, and version columns are static defaults. |
 | **Scope** | Decision-record table and writer per readiness review §12 (every decision, constitution hash + law_version, evidence + provenance, findings, observations, decision + trace, evaluator version, decided_at, random decision id). Record also the **serializer version** and the **hash-algorithm version** used for every hash in the record. |
 | **Explicitly out of scope** | No authority switch (legacy path keeps deciding until D-1). No deletion of legacy code. No semantics beyond the recorded human decisions. Never store vote_id, selections, codes, raw IP or raw fingerprint; never joinable to `votes`. |
-| **Files / components expected to change** | database/migrations (new table), app/ persistence adapter |
+| **Files / components expected to change (guidance, not permission)** | database/migrations (new table), app/ persistence adapter |
 | **Depends on (implementation)** | 111 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1271,7 +1275,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | There is no way to observe what the resolver would decide on real traffic. |
 | **Scope** | At each legacy decision point, build the CAST_VOTE context, evaluate, write the decision record; legacy outcome remains authoritative. |
 | **Explicitly out of scope** | No authority change; no user-visible behaviour change (C-2 suite stays green unchanged). |
-| **Files / components expected to change** | VoteController, CodeController, ElectionVotingController (call sites only) |
+| **Files / components expected to change (guidance, not permission)** | VoteController, CodeController, ElectionVotingController (call sites only) |
 | **Depends on (implementation)** | 112 |
 | **Human decision dependencies** | H-9 (`PBDIGIT-98`) |
 | **Authorisation needed** | PO authorisation |
@@ -1293,7 +1297,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ReplayDeterminismAuditTest` re-runs evaluators in memory and never reads stored data. |
 | **Scope** | Load a decision record, rebuild inputs from it alone, evaluate the resolver with DB access blocked, compare. |
 | **Explicitly out of scope** | No change to decision logic. |
-| **Files / components expected to change** | tests/Replay/ (GreenfieldCore already includes tests/Replay) |
+| **Files / components expected to change (guidance, not permission)** | tests/Replay/ (GreenfieldCore already includes tests/Replay) |
 | **Depends on (implementation)** | 112 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1315,7 +1319,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Existing parity is unit-level with test-local re-implementations (`tests/Support/LegacyVotingBehavior.php`); the ledger is in-memory and empty. |
 | **Scope** | HTTP-level fixtures over the readiness-review dimensions; legacy outcome vs decision record; divergence table (path, legacy, resolver, article, approved-by, rationale). |
 | **Explicitly out of scope** | No approvals decided by engineering. |
-| **Files / components expected to change** | tests/Feature/Parity/, divergence persistence |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Parity/, divergence persistence |
 | **Depends on (implementation)** | 113 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1337,7 +1341,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Expected divergences exist by construction (paths 10–14, X-6 cases). |
 | **Scope** | Run paths 1–14 (readiness review §13); present divergences to the PO; record approvals. |
 | **Explicitly out of scope** | Engineering does not approve divergences. |
-| **Files / components expected to change** | parity results document |
+| **Files / components expected to change (guidance, not permission)** | parity results document |
 | **Depends on (implementation)** | 115 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1359,7 +1363,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `VoteController::store` decides via `ConstitutionalLegitimacyDecision` + `canVote()` + membership. |
 | **Scope** | `store` acts on the CAST_VOTE decision only; lock, in-lock has-voted persistence invariant and credential check remain. |
 | **Explicitly out of scope** | Legacy code not yet deleted (D-2). |
-| **Files / components expected to change** | VoteController::store |
+| **Files / components expected to change (guidance, not permission)** | VoteController::store |
 | **Depends on (implementation)** | 116 · 85 · 135 |
 | **Human decision dependencies** | `PBDIGIT-45` ADR acceptance |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |
@@ -1381,7 +1385,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `elections.start`, code create/store, agreement, `create`, `first_submission`, `verify` each decide participation independently. |
 | **Scope** | These sites project/act on the CAST_VOTE decision; transport and flow redirects remain. |
 | **Explicitly out of scope** | No deletion yet. |
-| **Files / components expected to change** | ElectionVotingController, CodeController, VoteController (create, first_submission, verify) |
+| **Files / components expected to change (guidance, not permission)** | ElectionVotingController, CodeController, VoteController (create, first_submission, verify) |
 | **Depends on (implementation)** | 117 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |
@@ -1403,7 +1407,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Readiness review §14: `ConstitutionalLegitimacyDecision`, `PolicySequence`, legacy Verification/Network/Device policies, `SimplifiedPolicySequence`, `TrustSnapshotAssembler`, `NetworkTrustEvidence::effectiveLimit` (unless H-3 keeps it as law) are superseded. |
 | **Scope** | Delete them and their tests; `TrustPolicyEvaluator` remainder stays only as the E-1 builder. |
 | **Explicitly out of scope** | No behaviour change (parity green before and after). |
-| **Files / components expected to change** | app/Application/Election/Security/; app/Domain/Election/Security/ |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Security/; app/Domain/Election/Security/ |
 | **Depends on (implementation)** | 118 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A) |
@@ -1425,7 +1429,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `EnsureElectionVoter`, `VoteEligibility`, `EnsureVotingActive`, `ValidateVotingIp` decide participation; `EnsureRealVoteOrganisation` is a no-op (X-7); `ValidateVoterSlugWindow` also enforces election end_date. |
 | **Scope** | Remove them from routes and code; keep slug, ownership, step order, throttle, CSRF, consistency (one platform-org rule per H-6). |
 | **Explicitly out of scope** | Transport middleware unchanged. |
-| **Files / components expected to change** | app/Http/Middleware/, bootstrap/app.php aliases, routes/election/electionRoutes.php |
+| **Files / components expected to change (guidance, not permission)** | app/Http/Middleware/, bootstrap/app.php aliases, routes/election/electionRoutes.php |
 | **Depends on (implementation)** | 118 |
 | **Human decision dependencies** | H-6 (`PBDIGIT-95`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, F) |
@@ -1447,7 +1451,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ElectionVotingController::resolveIpBlock/evaluateIpCount`, `CodeController` IP cap, `vote_post_check` IP count, controller `canVote()`/membership gates, unrouted `second_submission`/`validateVotingEligibility`/`verifyVoteSubmit`. |
 | **Scope** | Delete them; keep flow redirects, credential check and persistence. |
 | **Explicitly out of scope** | No behaviour change beyond approved divergences. |
-| **Files / components expected to change** | ElectionVotingController, CodeController, VoteController |
+| **Files / components expected to change (guidance, not permission)** | ElectionVotingController, CodeController, VoteController |
 | **Depends on (implementation)** | 118 |
 | **Human decision dependencies** | `PBDIGIT-45` ADR acceptance |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A) |
@@ -1469,7 +1473,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `SnapshotAssembler` (0 callers, broken refs), `TrustCapabilityPolicy` (unregistered, references non-existent `RecommendedProceduralPath`), unused overlay ordering metadata; live tests reference `OverlayInfluenceContext`, `App\Domain\Election\Security\OverlaySignal`, `VotingTrustResult::allow()`. |
 | **Scope** | Delete the dead production classes; for each broken test, a recorded disposition (re-scope to the current class or retire) approved in the ticket. Also the dead `ElectionStateMachine` (a fourth transition matrix; `getStateMachine()` has no caller), the uncalled phase helpers `Election::canEnter{Administration,Nomination,Voting,Counting,Results}Phase()`, `canExtendVoting()`, `canPostpone()`, and the no-op `ElectionSSOTInterceptor` alias (`bootstrap/app.php`, body `return $next($request)`, no route uses it). Also delete `app/Domain/Election/StateMachine/TransitionMatrix.php`: a third transition matrix, self-declared deprecated, with its own role vocabulary (`super_admin`, `admin`, `owner`) and rules contradicting RULES (e.g. `open_voting` chief+deputy); no live caller (only comments and a commented-out `validate()` call at `AppServiceProvider:366`). |
 | **Explicitly out of scope** | No live code path changes. |
-| **Files / components expected to change** | app/Application/Election/Security/SnapshotAssembler.php, Capabilities/Policies/TrustCapabilityPolicy.php, Overlay* metadata; affected unit tests |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Security/SnapshotAssembler.php, Capabilities/Policies/TrustCapabilityPolicy.php, Overlay* metadata; affected unit tests |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1491,7 +1495,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `greenfield-merge-gate` covers only the Architecture suite (3 failing locally) and `app/Contexts/*` tooling; `tests/Unit/{Application,Domain}/Election`, `tests/Unit/Audit` run nowhere; `ConstitutionalSemanticRegressionTests.php` is never collected. |
 | **Scope** | A blocking job running the election security unit/feature/architecture suites; triage of the 3 failing Architecture tests (fix or disposition); collect the misnamed test file. |
 | **Explicitly out of scope** | No new rules yet. |
-| **Files / components expected to change** | .github/workflows/, composer.json scripts, phpunit.xml |
+| **Files / components expected to change (guidance, not permission)** | .github/workflows/, composer.json scripts, phpunit.xml |
 | **Depends on (implementation)** | 76 · 77 · 78 · 139 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1513,7 +1517,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | No mechanical enforcement exists for this rule today (reality audit §14). |
 | **Scope** | PHPStan custom rule on `CapabilityDecision` static factories + registered-set allow-list test (replaces the vacuous `new CapabilityDecision` check) |
 | **Explicitly out of scope** | No production refactor beyond what the rule flags as already-fixed. |
-| **Files / components expected to change** | phpstan config/rules, deptrac.yaml, tests/Architecture |
+| **Files / components expected to change (guidance, not permission)** | phpstan config/rules, deptrac.yaml, tests/Architecture |
 | **Depends on (implementation)** | 123 · 111 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1535,7 +1539,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | No mechanical enforcement exists for this rule today (reality audit §14). |
 | **Scope** | deptrac layers for `app/Domain/Election/Security`, `app/Application/Election/{Security,Capabilities}` (rules 2 and 4) |
 | **Explicitly out of scope** | No production refactor beyond what the rule flags as already-fixed. |
-| **Files / components expected to change** | phpstan config/rules, deptrac.yaml, tests/Architecture |
+| **Files / components expected to change (guidance, not permission)** | phpstan config/rules, deptrac.yaml, tests/Architecture |
 | **Depends on (implementation)** | 123 · 108 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1557,7 +1561,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | No mechanical enforcement exists for this rule today (reality audit §14). |
 | **Scope** | PHPStan rule forbidding `config()`, `env()`, settings services, Eloquent imports in evaluators and resolver policies |
 | **Explicitly out of scope** | No production refactor beyond what the rule flags as already-fixed. |
-| **Files / components expected to change** | phpstan config/rules, deptrac.yaml, tests/Architecture |
+| **Files / components expected to change (guidance, not permission)** | phpstan config/rules, deptrac.yaml, tests/Architecture |
 | **Depends on (implementation)** | 123 · 108 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1579,7 +1583,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | No mechanical enforcement exists for this rule today (reality audit §14). |
 | **Scope** | architecture tests (reflection + call-graph scan) for rules 5 and 6 |
 | **Explicitly out of scope** | No production refactor beyond what the rule flags as already-fixed. |
-| **Files / components expected to change** | phpstan config/rules, deptrac.yaml, tests/Architecture |
+| **Files / components expected to change (guidance, not permission)** | phpstan config/rules, deptrac.yaml, tests/Architecture |
 | **Depends on (implementation)** | 123 · 120 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1601,7 +1605,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | No mechanical enforcement exists for this rule today (reality audit §14). |
 | **Scope** | token-based scanner (`PhpToken`) over canonical zones for priority/strongest/recommend/escalat/influence/elevat identifiers |
 | **Explicitly out of scope** | No production refactor beyond what the rule flags as already-fixed. |
-| **Files / components expected to change** | phpstan config/rules, deptrac.yaml, tests/Architecture |
+| **Files / components expected to change (guidance, not permission)** | phpstan config/rules, deptrac.yaml, tests/Architecture |
 | **Depends on (implementation)** | 123 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1623,7 +1627,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | No mechanical enforcement exists for this rule today (reality audit §14). |
 | **Scope** | DB integration test (all probe write paths) + replay harness in the blocking job (rules 8 and 9) |
 | **Explicitly out of scope** | No production refactor beyond what the rule flags as already-fixed. |
-| **Files / components expected to change** | phpstan config/rules, deptrac.yaml, tests/Architecture |
+| **Files / components expected to change (guidance, not permission)** | phpstan config/rules, deptrac.yaml, tests/Architecture |
 | **Depends on (implementation)** | 123 · 103 · 114 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1645,7 +1649,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Reality audit §16: D.5, D.R.3, D.2.5 'LIVE', 'Phase D complete', 'Parity complete', E.1 'verified', D.5.5 Audit 1's false 'ValidateVotingIp not registered'; CLAUDE.md demo model `organisation_id = NULL` vs NOT NULL schema. |
 | **Scope** | Additive correction notes (ES-004.3) in `claude/audits/*`, `claude/plans/PHASE_1_COMPLETE.md`, `.claude/memory/*`, `developer_guide/election/real_election/security/*`; a flagged note for the CLAUDE.md demo statement (owner decides the edit). |
 | **Explicitly out of scope** | History not rewritten; no code. |
-| **Files / components expected to change** | claude/, .claude/memory/, developer_guide/ |
+| **Files / components expected to change (guidance, not permission)** | claude/, .claude/memory/, developer_guide/ |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1667,7 +1671,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Per-slice guides will exist; no consolidated description of the final architecture. |
 | **Scope** | Guide covering law, evidence, evaluators, resolver, decision record, replay, CI rules. |
 | **Explicitly out of scope** | No code. |
-| **Files / components expected to change** | developer_guide/election/ |
+| **Files / components expected to change (guidance, not permission)** | developer_guide/election/ |
 | **Depends on (implementation)** | 121 · 119 · 120 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1689,7 +1693,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | — |
 | **Scope** | Verify the readiness-review §19 Definition of Done item by item; record the freeze. |
 | **Explicitly out of scope** | No new scope. |
-| **Files / components expected to change** | docs/publicdigit/reviews/ (freeze record) |
+| **Files / components expected to change (guidance, not permission)** | docs/publicdigit/reviews/ (freeze record) |
 | **Depends on (implementation)** | 131 · 124 · 125 · 126 · 127 · 128 · 129 · 104 · 102 · 86 · 87 · 88 · 89 · 122 · 130 · 152 · 151 · 133 · 134 · 137 · 142 · 143 · 146 · 147 · 148 · 149 |
 | **Human decision dependencies** | H-12 (`PBDIGIT-138`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, B, E) |
@@ -1711,7 +1715,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `TemporalDeterminismAuditTest` searches source for the substring `date(` (`:137`), which matches `validate(` in `ElectionConstitutionValidator.php:7`. The validator never reads the clock; the reality audit's §8/§13 claim of a `date()` violation is therefore wrong. |
 | **Scope** | Make the scanner token-based (`PhpToken`: a `T_STRING` named `date` followed by `(`), so it detects real calls only; keep every forbidden function. |
 | **Explicitly out of scope** | No production change. No forbidden function removed from the list. No exemption added for the validator. |
-| **Files / components expected to change** | tests/Unit/Audit/TemporalDeterminismAuditTest.php |
+| **Files / components expected to change (guidance, not permission)** | tests/Unit/Audit/TemporalDeterminismAuditTest.php |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1733,7 +1737,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Two different tickets carry `PBDIGIT-69`: `PBDIGIT-69-operating-core-post-verification-items.md` and `PBDIGIT-69-voter-eligibility-cache-is-tenant-unaware.md` (both `50d1ff1b1`). References to `PBDIGIT-69` are ambiguous. |
 | **Scope** | The PO chooses which keeps `69`; the other gets the next free number; every reference is re-pointed; a note records the old ID. |
 | **Explicitly out of scope** | No content change to either ticket beyond the ID and a renumbering note. |
-| **Files / components expected to change** | docs/publicdigit/backlog/, references across docs/ |
+| **Files / components expected to change (guidance, not permission)** | docs/publicdigit/backlog/, references across docs/ |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1755,7 +1759,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `POST /votes` (`routes/election/electionRoutes.php:168`) reaches `VoteController::store` with only `auth:sanctum, verified, vote.eligibility` — none of the slug, step-order, IP, organisation or `voting.active` middleware — and `getElection` falls back to the first real election (`VoteController:108-110`). Separately, `routes/web.php` may be loaded twice (`bootstrap/app.php:11` and `RouteServiceProvider` `:63-64`); effect UNKNOWN. |
 | **Scope** | HTTP pins of what `POST /votes` does today for a real voter (does it persist a vote? into which election?) and a route-list check of duplicate registration. Findings only. |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. Removing or guarding the route is a separate, authorised ticket if the pin shows a defect. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/Defects/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/Defects/ |
 | **Depends on (implementation)** | 80 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1777,7 +1781,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `VerifyVoterSlugConsistency` redirects when `vote_completed` is set (`:105-115`), but no write of `vote_completed` exists in `app/`; `store` sets `has_voted` and `status='voted'` instead (`VoteController:1794-1797`). Whether the check ever fires is UNKNOWN. |
 | **Scope** | Pin current behaviour after a completed vote (which gate actually stops a second attempt); record the finding as input to H-7. |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | tests/Feature/Characterization/Voting/Defects/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Voting/Defects/ |
 | **Depends on (implementation)** | 79 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1799,7 +1803,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `LogDivergenceObservations` is wired nowhere; its window is never active (`config/constitutional.php` absent); `DivergenceLogger` inserts a null into a NOT NULL FK and queries a non-existent column; its log channel is undefined. `ConstitutionalDivergenceLedger`/`CapabilityParitySnapshot` are in-memory, test-only; `tests/Support/{Legacy,Resolver}VotingBehavior.php` re-implement behaviour instead of calling it. None of it appears in the readiness review's deletion manifest. |
 | **Scope** | After `PBDIGIT-118` proves HTTP-level parity: delete or replace each item, with a recorded disposition; keep the `ValidateVotingIp` JSONL telemetry only until `PBDIGIT-122` removes that middleware. |
 | **Explicitly out of scope** | No behaviour change; no deletion before the replacement parity evidence exists. |
-| **Files / components expected to change** | app/Http/Middleware/LogDivergenceObservations.php, app/Services/Constitutional/, app/Domain/Election/Security/{ConstitutionalDivergence*,CapabilityParitySnapshot}.php, tests/Support/ |
+| **Files / components expected to change (guidance, not permission)** | app/Http/Middleware/LogDivergenceObservations.php, app/Services/Constitutional/, app/Domain/Election/Security/{ConstitutionalDivergence*,CapabilityParitySnapshot}.php, tests/Support/ |
 | **Depends on (implementation)** | 116 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1821,7 +1825,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | **Baseline, re-run 2026-10-01, two suites, 7 failing tests, each listed once.** Suite 1 — capability foundation: `vendor/bin/phpunit --no-coverage tests/Unit/Application/Election/Capabilities tests/Unit/Application/Election/Capability*Test.php tests/Unit/Application/Election/ElectionCapability{Entry,Snapshot,Resolver}Test.php tests/Unit/Application/Election/{LifecycleCapabilityBaseline,OverlayCapability}PolicyTest.php` (14 paths, each once) → **168 tests, 417 assertions, 6 failures, 0 errors, 0 skipped**. Suite 2 — `tests/Feature/Election/ElectionSuspensionTest.php` → **26 tests, 209 assertio… *(full text: backlog)* |
 | **Scope** | **A:** fixture repair only, as in C-1 — assertions unchanged. **B:** a recorded disposition for the three priority tests — update the expected values (production change intentional) OR retire them (if evaluate-every-policy makes layer priority non-semantic); the PO/ARB chooses, this ticket does not. A and B are separate commits with separate evidence. |
 | **Explicitly out of scope** | No production code (`app/`, `routes/`, `config/`, `database/migrations/`). No assertion weakened, deleted, skipped or marked incomplete. No change to expected behaviour. No real test converted to demo. No session flags added to pass. The C-1 governing rule applies (no production API restored; defects → new tickets). |
-| **Files / components expected to change** | tests/Unit/Application/Election/Capabilities/CanEditTimelineCapabilityTest.php, tests/Unit/Application/Election/CapabilityPolicyLayerTest.php, tests/Feature/Election/ElectionSuspensionTest.php |
+| **Files / components expected to change (guidance, not permission)** | tests/Unit/Application/Election/Capabilities/CanEditTimelineCapabilityTest.php, tests/Unit/Application/Election/CapabilityPolicyLayerTest.php, tests/Feature/Election/ElectionSuspensionTest.php |
 | **Depends on (implementation)** | — |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1843,7 +1847,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Five components each decide what an admin may do (the fifth found in the scope-and-sequencing review): (1) `ElectionCapabilityResolver` → the `capabilities` prop (`ElectionManagementController::resolveCapabilities:1288`) — lifecycle state + suspension only; (2) `ConstitutionalTransitionGuard::assertAllowed` — state + roles + preconditions at execution; (3) Laravel `ElectionPolicy` gates (e.g. `suspendElection`, `manageSettings`); (4) `ElectionLifecycleEngineImpl::derivePermissions` + `getAllowedActions` — a hard-coded state matrix. Known divergences: the engine never lists `suspend` (RULES al… *(full text: backlog)* |
 | **Scope** | `@characterization` HTTP tests per action × representative state × role (chief, deputy, ordinary user, platform admin) asserting what each source says today and what the executed request does. **Also pin the suspension deviation:** for a suspended election in each underlying stage, `getState()` returns `Suspended` and no API exposes the underlying stage (input to H-14). |
 | **Explicitly out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
-| **Files / components expected to change** | tests/Feature/Characterization/Governance/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Characterization/Governance/ |
 | **Depends on (implementation)** | 139 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1865,7 +1869,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ElectionStateWriteContext` documents that ONLY `ConstitutionalTransitionGuard` may call `authorize()` (`ElectionStateWriteContext.php:9,21,40`), but `ElectionManagementController::suspend` (`:1022`) and `::resume` (`:1059`) call it directly after a Laravel policy check. Consequences: `RULES['suspend']['allowed_states']` (which excludes `archived`) is never checked — the controller only refuses double suspension — so an archived election can be suspended; and the role rule actually applied is `ElectionPolicy`'s, not RULES'. The other direct callers are console commands (`ActivateElectionComma… *(full text: backlog)* |
 | **Scope** | Route suspend/resume through the guard under the H-13 decision; keep the fact-preserving behaviour (no voting-window mutation; resume re-derives). Disposition for the two console commands recorded. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. |
-| **Files / components expected to change** | app/Http/Controllers/Election/ElectionManagementController.php (suspend, resume) |
+| **Files / components expected to change (guidance, not permission)** | app/Http/Controllers/Election/ElectionManagementController.php (suspend, resume) |
 | **Depends on (implementation)** | 140 |
 | **Human decision dependencies** | H-13 (`PBDIGIT-141`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A) |
@@ -1887,7 +1891,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `suspend` records `ElectionAuditLog::record($election, 'suspend', …)` (`ElectionManagementController:1033-1040`); `resume` (`:1055-1072`) records nothing, so the audit shows a hold that never ended. |
 | **Scope** | Record a `resume` audit entry with actor, time and the re-derived lifecycle state. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. |
-| **Files / components expected to change** | ElectionManagementController::resume |
+| **Files / components expected to change (guidance, not permission)** | ElectionManagementController::resume |
 | **Depends on (implementation)** | 140 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1909,7 +1913,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | The resolver has policies only for suspension and lifecycle state; the `Preconditions` and `Authorization` layers exist in `CapabilityPolicyLayer` but have no admin-action implementation. `RULES` declares `allowed_roles` and `preconditions` for every action, enforced only at execution by the guard. So the snapshot rendered in the UI can show an action as allowed that is then refused (story question 5: another layer reaches a contradictory decision). |
 | **Scope** | Two `CapabilityPolicy` implementations consuming `RULES` roles (per H-13) and preconditions (reusing the guard's predicate set, incl. 'unknown precondition fails visibly'); one shared predicate source for guard and policy. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. The guard keeps enforcing at execution. |
-| **Files / components expected to change** | app/Application/Election/Capabilities/Policy/; app/Application/Election/Services/ConstitutionalTransitionGuard.php (predicate extraction only) |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Capabilities/Policy/; app/Application/Election/Services/ConstitutionalTransitionGuard.php (predicate extraction only) |
 | **Depends on (implementation)** | 109 · 140 |
 | **Human decision dependencies** | H-13 (`PBDIGIT-141`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |
@@ -1931,7 +1935,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ElectionLifecycleEngineImpl::derivePermissions` (`:205`) and `::getAllowedActions` hard-code what is allowed per state into `ElectionLifecycleSnapshot` (`canEdit`, `canManageVoters`, `canPublishResults`, `canEditTimeline`, `canVote`, `allowedActions`). They duplicate `ElectionConstitution::RULES` and disagree with it (no `suspend` in any state; nothing in `submitted_for_approval`, where RULES allows `approve`/`reject`). Frontend pages consume these props (36 uses). |
 | **Scope** | Lifecycle engine derives state only; the snapshot's capability fields become a projection of the resolver (the story's 'LegacyAllowedActionsProjector'), keeping prop names for compatibility until the frontend ticket. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. No voting-path change (`canVote` is owned by the CAST_VOTE migration). |
-| **Files / components expected to change** | app/Application/Election/Services/ElectionLifecycleEngineImpl.php; app/Domain/Election/ValueObjects/ElectionLifecycleSnapshot.php |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Services/ElectionLifecycleEngineImpl.php; app/Domain/Election/ValueObjects/ElectionLifecycleSnapshot.php |
 | **Depends on (implementation)** | 144 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |
@@ -1953,7 +1957,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `OverlayCapabilityPolicy` hard-codes that `resume` alone survives suspension (`:84-88` of the policy); `RULES['resume']['target_state']` is a placeholder `'suspended'` (comment: 'placeholder'); `ElectionConstitutionRegistry` is an 18-line pass-through. The story's registry (role, lifecycle applicability, preconditions, overlay behaviour, metadata) is therefore partial. |
 | **Scope** | Declare per-action overlay behaviour in `RULES` (consumed by `OverlayCapabilityPolicy`), give `resume` a truthful target semantics, keep the registry the only reader. Coordinated with H-5 (the participation-action registry) so admin and participation actions do not get two registries. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. **Declarative and bounded:** the registry declares rules (roles, applicable states, preconditions, overlay behaviour, metadata); policies interpret them. No business logic, callbacks or computed rules in the registry. |
-| **Files / components expected to change** | app/Domain/Election/Constitution/ElectionConstitution.php; app/Application/Election/Capabilities/{ElectionConstitutionRegistry.php, Policy/OverlayCapabilityPolicy.php} |
+| **Files / components expected to change (guidance, not permission)** | app/Domain/Election/Constitution/ElectionConstitution.php; app/Application/Election/Capabilities/{ElectionConstitutionRegistry.php, Policy/OverlayCapabilityPolicy.php} |
 | **Depends on (implementation)** | 140 |
 | **Human decision dependencies** | H-5 (`PBDIGIT-94`), H-14 (`PBDIGIT-150`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate B) |
@@ -1975,7 +1979,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `Management.vue:925,939` branch on `election.state === 'results_published'`; `SubmitForApproval.vue:151` on `state === 'draft'`; Election pages use legacy `can*`/`allowedActions` props 36 times. Only `StateMachinePanel.vue` / `useElectionCapabilities.ts` consume the resolver's `capabilities`. |
 | **Scope** | Replace those checks with `capabilities.<action>.allowed` / denial reason; display-only state labels may remain. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. Follows `.claude/UI_GUIDELINES.md`; `npm run design-check` before/after. |
-| **Files / components expected to change** | resources/js/Pages/Election/{Management,SubmitForApproval}.vue and other Election pages using legacy props |
+| **Files / components expected to change (guidance, not permission)** | resources/js/Pages/Election/{Management,SubmitForApproval}.vue and other Election pages using legacy props |
 | **Depends on (implementation)** | 145 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -1997,7 +2001,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ElectionLifecycleEngineImpl::getState` reads `now()` (`:66`, `:189`) and `ElectionClockService` wraps `now()` (`:27,38,53`); the engine has no clock dependency (`__construct()` takes nothing, `:39`) and also queries candidacies inside derivation (`hasCandidatesApproved`). The story's recomputability invariant therefore cannot be exercised for a past or future instant without global time travel. |
 | **Scope** | Inject `ClockInterface` (exists: `app/Domain/Shared/Clock/`) into the clock service/engine; make the approved-candidate fact an input rather than a query inside derivation. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. No change to lifecycle rules. |
-| **Files / components expected to change** | app/Application/Election/Services/ElectionLifecycleEngineImpl.php; app/Services/ElectionClockService.php |
+| **Files / components expected to change (guidance, not permission)** | app/Application/Election/Services/ElectionLifecycleEngineImpl.php; app/Services/ElectionClockService.php |
 | **Depends on (implementation)** | 140 |
 | **Human decision dependencies** | — |
 | **Authorisation needed** | PO authorisation |
@@ -2019,7 +2023,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | Suspension, role and resume behaviour are tested per unit/model (e.g. the time-passes-during-suspension case is a model-level test, `ElectionSuspensionTest:186-228`); no suite walks Draft → Submitted → Approved → SetupAdministration → SetupNomination → ReadyForVoting → VotingActive → Counting → ResultsPublished → Archived through the real routes, nor suspend-during-voting → window expires → resume → Counting via HTTP, nor the role matrix end to end. `PBDIGIT-36` covers the voting journey only. |
 | **Scope** | HTTP E2E tests for the three scenarios in the story (§15), with role expectations from H-13. |
 | **Explicitly out of scope** | No production change. Expectations follow the consolidated architecture and the H-13/H-14 decisions. |
-| **Files / components expected to change** | tests/Feature/Governance/ |
+| **Files / components expected to change (guidance, not permission)** | tests/Feature/Governance/ |
 | **Depends on (implementation)** | 139 · 140 · 142 · 143 · 145 · 146 · 147 · 148 · 152 · 151 |
 | **Human decision dependencies** | H-13 (`PBDIGIT-141`), H-14 (`PBDIGIT-150`) |
 | **Authorisation needed** | PO authorisation |
@@ -2041,7 +2045,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `ElectionManagementController` calls `$this->authorize(...)` against Laravel `ElectionPolicy` 24 times (`manageSettings`, `publishResults`, `suspendElection`, …); these gates decide who may act independently of `ConstitutionalTransitionGuard` and the resolver. The suspend gate is handled by the suspend/resume ticket and role policies are added to the resolver, but no ticket retires or aligns the remaining gates, so they would survive consolidation as a parallel authority. Separately, `ElectionManagementController::publish` branches on the `state` compatibility column (`:829`) instead of the d… *(full text: backlog)* |
 | **Scope** | Per H-13: each `ElectionPolicy` gate used for a lifecycle action either delegates to the resolver decision or is reduced to identity/membership checks only; controller branches on the `state` column replaced by the derived lifecycle/capability. **Boundary:** characterization is the characterization ticket; the `suspendElection` gate is the suspend/resume ticket; resolver role/precondition policies are the policy ticket; the engine matrix is the matrix-removal ticket; Vue is the frontend ticket; the route-level operation matrix is its own ticket. This ticket covers only the remaining `ElectionPolicy` gates (`manageSettings`, `publishResults`, `manageVoters`, `managePosts`, `manage`, `view`, `viewResults`, `create`) as used for lifecycle actions, the `state`-column branch in `publish()`, and `canUpdatePhaseDates()`. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. Non-election policies untouched. |
-| **Files / components expected to change** | app/Policies/ElectionPolicy.php; app/Http/Controllers/Election/ElectionManagementController.php |
+| **Files / components expected to change (guidance, not permission)** | app/Policies/ElectionPolicy.php; app/Http/Controllers/Election/ElectionManagementController.php |
 | **Depends on (implementation)** | 144 |
 | **Human decision dependencies** | H-13 (`PBDIGIT-141`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |
@@ -2063,7 +2067,7 @@ One card per implementation ticket (63). Decision tickets are in §4 and the bac
 | **Why it exists / current problem** | `EnsureElectionState` (route middleware `election.state:<operation>`, 9 routes in `routes/organisations.php`) aborts with 403 when `OperationCapabilityMapper::isOperationAllowed($operation, $snapshot)` is false. That method is a hard-coded operation→permission matrix: part of it reads the lifecycle engine's flags (`canEdit`, `canManageVoters`, `canVote`), part adds its own state rules (`apply_candidacy` only in SetupNomination, `view_results`/`download_receipt` only in ResultsPublished/Archived, `preview_ballot` only in the voting phase). It is a capability authority independent of the resolv… *(full text: backlog)* |
 | **Scope** | **Retires:** the operation→permission matrix in `OperationCapabilityMapper::isOperationAllowed` (and its parallel `denialReasonForOperation` strings) for the **8 admin operations** routed through `election.state:` in `routes/organisations.php`: `manage_posts` (:254), `import_voters` (:261), `apply_candidacy` (:283), `approve_candidacy` (:288), `view_results` (:305), `preview_ballot` (:312), `edit_candidate_photo` (:333), `configure_election` (:341). **Replaced by:** `EnsureElectionState` enforcing the resolver's decision for each operation; operations not yet in the registry are declared there (registry ticket) rather than kept as code in the mapper. **Boundary:** the characterization ticket only pins today's behaviour; the suspend/resume ticket owns the `suspendElection` path; the policy ticket adds the resolver role/precondition policies this ticket relies on; the matrix-removal ticket removes the engine's flags the mapper reads; the registry ticket owns declarations; the frontend ticket owns Vue; the ElectionPolicy ticket owns the Laravel gates and controller inference. This ticket owns only the route middleware and the mapper. |
 | **Explicitly out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. **The 9th route, `verify_vote` (:299), and the mapper's `cast_vote` case belong to Track A2** (CAST_VOTE migration and its entry/ballot switch), not this ticket. |
-| **Files / components expected to change** | app/Http/Middleware/{EnsureElectionState.php, OperationCapabilityMapper.php}; routes/organisations.php (no route change expected) |
+| **Files / components expected to change (guidance, not permission)** | app/Http/Middleware/{EnsureElectionState.php, OperationCapabilityMapper.php}; routes/organisations.php (no route change expected) |
 | **Depends on (implementation)** | 145 · 146 |
 | **Human decision dependencies** | H-13 (`PBDIGIT-141`) |
 | **Authorisation needed** | PO authorisation **+ ARB architecture approval** (gate A, E) |

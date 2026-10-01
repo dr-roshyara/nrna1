@@ -49,30 +49,31 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 ### 2.2 While implementing
 
 7. **Characterize, then RED, then GREEN.** Characterization tickets pin current behaviour (`@characterization`). Behaviour-changing tickets write the failing test first, as its own commit where production code changes, then the minimal change.
-8. **Stay inside the ticket's Scope.** No "cleanup while here", no opportunistic refactor, no redesign. Production defects found along the way become a **new PBDIGIT ticket** (next free number, checked with `git grep`). They are never fixed silently.
-9. **Never restore a removed production API to satisfy a test** (e.g. `ElectionMembership::assignVoter()`). Classify the case as translation, obsolete test, or genuine defect leading to a new ticket.
-10. **Edit source deliberately** (Read → Edit). No `sed -i` or mass regex rewrites over `app/`, `tests/`, `routes/`, `database/` (CLAUDE.md editing policy).
-11. Respect anonymity: no voter↔vote linkage, no voting codes in logs or test output (ADR-T11).
+8. **The Files field is a guidance boundary, not a permission.** It names where a change is *expected*. It does not authorise modifying every listed file. Each actual modification must be justified by the ticket's Scope and Acceptance criteria and shown in the final diff. A file *not* listed may be touched only if the Scope requires it, and the deviation is reported.
+9. **Stay inside the ticket's Scope.** No "cleanup while here", no opportunistic refactor, no redesign. Production defects found along the way become a **new PBDIGIT ticket** (next free number, checked with `git grep`). They are never fixed silently.
+10. **Never restore a removed production API to satisfy a test** (e.g. `ElectionMembership::assignVoter()`). Classify the case as translation, obsolete test, or genuine defect leading to a new ticket.
+11. **Edit source deliberately** (Read → Edit). No `sed -i` or mass regex rewrites over `app/`, `tests/`, `routes/`, `database/` (CLAUDE.md editing policy).
+12. Respect anonymity: no voter↔vote linkage, no voting codes in logs or test output (ADR-T11).
 
 ### 2.3 Verifying
 
-12. Run the ticket's narrow test command first, then the broader suite:
+13. Run the ticket's narrow test command first, then the broader suite:
     ```bash
     vendor/bin/phpunit --no-coverage <the ticket's files/suites>
     php artisan test --no-coverage
     ```
     Tests run against `nrna_test` (`phpunit.xml`). `RefreshDatabase` is the isolation mechanism.
-13. **Never** run `php artisan migrate:fresh`, `migrate:refresh` or `--seed` against the development database.
-14. Report exact totals (tests / assertions / failures / errors / skipped / risky) **before and after**. Never write "tests pass" without the numbers.
-15. Show `git diff --stat` and confirm nothing outside the ticket's allowed files changed.
+14. **Never** run `php artisan migrate:fresh`, `migrate:refresh` or `--seed` against the development database.
+15. Report exact totals (tests / assertions / failures / errors / skipped / risky) **before and after**. Never write "tests pass" without the numbers.
+16. Show `git diff --stat` and confirm nothing outside the ticket's allowed files changed.
 
 ### 2.4 Finishing
 
-16. Write or update the developer guide for the step under `developer_guide/<area>/` (Definition of Done).
-17. Commit **only the ticket's paths**: `git commit -- <paths>`. The subject carries **`(PBDIGIT-nn)`**, with a RED commit and a GREEN commit where applicable.
-18. Update the session log (`.claude/sessions/YYYY-MM-DD.md`) and the routed CONTEXT file.
-19. **Engineering supplies evidence and never accepts its own work.** The ticket moves to accepted only by the PO/ARB.
-20. **STOP.** Do not start the next ticket without its own authorisation.
+17. Write or update the developer guide for the step under `developer_guide/<area>/` (Definition of Done).
+18. Commit **only the ticket's paths**: `git commit -- <paths>`. The subject carries **`(PBDIGIT-nn)`**, with a RED commit and a GREEN commit where applicable.
+19. Update the session log (`.claude/sessions/YYYY-MM-DD.md`) and the routed CONTEXT file.
+20. **Engineering supplies evidence and never accepts its own work.** The ticket moves to accepted only by the PO/ARB.
+21. **STOP.** Do not start the next ticket without its own authorisation.
 
 ---
 
