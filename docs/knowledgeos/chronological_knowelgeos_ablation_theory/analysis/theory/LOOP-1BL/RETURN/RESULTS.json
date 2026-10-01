@@ -1,0 +1,2132 @@
+{
+ "n_frame_histories": 665920,
+ "checks": {
+  "K1": {
+   "result": "TRUE",
+   "detail": {
+    "parts": {
+     "H-D nonempty": true,
+     "H-B nonempty": true,
+     "H-D∩H-B nonempty": true,
+     "H-D∖H-B nonempty": true,
+     "H-B∖H-D nonempty": true,
+     "Lem 3.6: every h in H-D∪H-B has a present act": true
+    },
+    "sizes": {
+     "H-D": 132040,
+     "H-B": 93888,
+     "H-D∩H-B": 26408,
+     "R_B": 221184
+    }
+   },
+   "witness_or_counterexample": {
+    "least H-D": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "(x,adp)"
+     ],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least H-B": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least H-D∩H-B": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "(x,adp)"
+     ],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least H-D∖H-B": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "(x,adp)"
+     ],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least H-B∖H-D": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "Lem 3.6 first counterexample": null
+   }
+  },
+  "K2": {
+   "result": "TRUE",
+   "detail": {
+    "D-chg ⇒ B-chg (all h)": true,
+    "B-rec ⇒ D-rec (all h)": true,
+    "witness B-chg ∧ ¬D-chg exists": true,
+    "witness D-rec ∧ ¬B-rec exists": true
+   },
+   "witness_or_counterexample": {
+    "first cex D-chg⇒B-chg": null,
+    "first cex B-rec⇒D-rec": null,
+    "least witness B-chg∧¬D-chg": {
+     "sigma": [
+      "p",
+      "q"
+     ],
+     "a1": "absent",
+     "a2": "absent",
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least witness D-rec∧¬B-rec": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   }
+  },
+  "K3": {
+   "result": "TRUE",
+   "detail": {
+    "H-D∩H-B = H-D∩B-conf∩B-recW": true,
+    "H-D∩H-B = H-B∩D-chg∩D-st": true,
+    "|H-D∩H-B|": 26408
+   },
+   "witness_or_counterexample": {
+    "first h in symmetric difference (1st eq)": null,
+    "first h in symmetric difference (2nd eq)": null
+   }
+  },
+  "K4": {
+   "result": "TRUE",
+   "detail": "for every h in R_B (|R_B|=221184) searched h* in H-D∩H-B equal on all enumerated coordinates except sigma and f-values",
+   "witness_or_counterexample": null
+  },
+  "K4b": {
+   "result": "TRUE",
+   "detail": "H-D+ = D-chg ∧ D-st+ ∧ D-rec; for every h in R_B searched h* in H-D+∩H-B with h* ≈_{sigma,f,Cap} h; |H-D+|=84040",
+   "witness_or_counterexample": null
+  },
+  "K5": {
+   "result": "TRUE",
+   "detail": {
+    "O(H-D)": [
+     "(r=0,c1)",
+     "(r=0,c2)",
+     "(r=1,c1)",
+     "(r=1,c2)"
+    ],
+    "O(H-B)": [
+     "(r=0,c1)",
+     "(r=0,c2)",
+     "(r=1,c1)",
+     "(r=1,c2)"
+    ],
+    "O(H-D∩H-B)": [
+     "(r=0,c1)",
+     "(r=0,c2)",
+     "(r=1,c1)",
+     "(r=1,c2)"
+    ]
+   },
+   "witness_or_counterexample": null
+  },
+  "K6": {
+   "result": "TRUE",
+   "detail": {
+    "h_v exists for all h": true,
+    "h_c exists for all h": true,
+    "n_h_checked": 221184
+   },
+   "witness_or_counterexample": {
+    "first counterexample": null,
+    "first lacking h_v": null,
+    "first lacking h_c": null
+   }
+  },
+  "K7": {
+   "result": "TRUE",
+   "detail": "h in H-D∩R_B with a2 absent and w1 violating: 480; h with a valid h': 480",
+   "witness_or_counterexample": null
+  },
+  "K8.1": {
+   "result": "TRUE",
+   "detail": {
+    "O1(H-B) ⊊ O1(H-D∩R_B)": true,
+    "difference sigma values per o": {
+     "(r=0,c1)": [
+      [
+       "q",
+       "q"
+      ]
+     ],
+     "(r=0,c2)": [
+      [
+       "q",
+       "q"
+      ]
+     ],
+     "(r=1,c1)": [
+      [
+       "q",
+       "q"
+      ]
+     ],
+     "(r=1,c2)": [
+      [
+       "q",
+       "q"
+      ]
+     ]
+    },
+    "O1(H-B) sigma values per o": {
+     "(r=0,c1)": [
+      [
+       "p",
+       "p"
+      ],
+      [
+       "p",
+       "q"
+      ],
+      [
+       "q",
+       "p"
+      ]
+     ],
+     "(r=0,c2)": [
+      [
+       "p",
+       "p"
+      ],
+      [
+       "p",
+       "q"
+      ],
+      [
+       "q",
+       "p"
+      ]
+     ],
+     "(r=1,c1)": [
+      [
+       "p",
+       "p"
+      ],
+      [
+       "p",
+       "q"
+      ],
+      [
+       "q",
+       "p"
+      ]
+     ],
+     "(r=1,c2)": [
+      [
+       "p",
+       "p"
+      ],
+      [
+       "p",
+       "q"
+      ],
+      [
+       "q",
+       "p"
+      ]
+     ]
+    }
+   },
+   "witness_or_counterexample": null
+  },
+  "K8.2": {
+   "result": "TRUE",
+   "detail": {
+    "(r=0,c1)": {
+     "in O2(H-D∩R_B)": true,
+     "not in O2(H-B)": true
+    },
+    "(r=0,c2)": {
+     "in O2(H-D∩R_B)": true,
+     "not in O2(H-B)": true
+    },
+    "(r=1,c1)": {
+     "in O2(H-D∩R_B)": true,
+     "not in O2(H-B)": true
+    },
+    "(r=1,c2)": {
+     "in O2(H-D∩R_B)": true,
+     "not in O2(H-B)": true
+    }
+   },
+   "witness_or_counterexample": {
+    "least h in H-D∩R_B with that F̂0": {
+     "sigma": [
+      "q",
+      "q"
+     ],
+     "a1": {
+      "kind": "iss",
+      "d": 0,
+      "v": "q",
+      "prep": 0,
+      "f": 0
+     },
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "q",
+      "prep": 0,
+      "f": 1
+     },
+     "Cap": [
+      "(x,adp)"
+     ],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   }
+  },
+  "K8.3": {
+   "result": "TRUE",
+   "detail": {
+    "value without (rho1,w1) in O3(H-D)∖O3(H-B) exists": true,
+    "(i) for O3: O3(H-D∩R_B)=O3(H-B)=O3(H-D∩H-B)=O3(R_B)": true,
+    "(i) for O3 per-h: implied by K4 (≈_{σ,f} preserves Ref)": "TRUE"
+   },
+   "witness_or_counterexample": {
+    "least h in H-D with such a value": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "(x,adp)"
+     ],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "its O3 value": {
+     "o": "(r=0,c1)",
+     "Ref": [
+      "(rho1,a2)"
+     ]
+    }
+   }
+  },
+  "K8.4": {
+   "result": "TRUE",
+   "detail": {
+    "(o, w1 absent) in O4(H-D)∖O4(H-B) per o": {
+     "(r=0,c1)": true,
+     "(r=0,c2)": true,
+     "(r=1,c1)": true,
+     "(r=1,c2)": true
+    },
+    "(iii) fails at I7 under O4' and only because of the added act": true,
+    "I7 analysis per (r,c)": {
+     "(r=0,c1)": {
+      "(iii) witnesses under O4'": 0,
+      "(iii) witnesses under O": 4,
+      "every O-witness adds a2 (changes O4')": true,
+      "h' in H-B with same O4', w1 conforming, ignoring change-point clause": 0,
+      "least O-witness": {
+       "sigma": [
+        "q",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "q",
+        "prep": 1,
+        "f": 0
+       },
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 1,
+        "f": 1
+       },
+       "Cap": [],
+       "w1": {
+        "t": 1
+       },
+       "Ref": [
+        "(rho1,a1)",
+        "(rho1,w1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     },
+     "(r=0,c2)": {
+      "(iii) witnesses under O4'": 0,
+      "(iii) witnesses under O": 4,
+      "every O-witness adds a2 (changes O4')": true,
+      "h' in H-B with same O4', w1 conforming, ignoring change-point clause": 0,
+      "least O-witness": {
+       "sigma": [
+        "q",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "q",
+        "prep": 1,
+        "f": 0
+       },
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 1,
+        "f": 1
+       },
+       "Cap": [],
+       "w1": {
+        "t": 1
+       },
+       "Ref": [
+        "(rho1,a1)",
+        "(rho1,w1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      }
+     },
+     "(r=1,c1)": {
+      "(iii) witnesses under O4'": 0,
+      "(iii) witnesses under O": 4,
+      "every O-witness adds a2 (changes O4')": true,
+      "h' in H-B with same O4', w1 conforming, ignoring change-point clause": 0,
+      "least O-witness": {
+       "sigma": [
+        "q",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "q",
+        "prep": 1,
+        "f": 0
+       },
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 1,
+        "f": 1
+       },
+       "Cap": [],
+       "w1": {
+        "t": 1
+       },
+       "Ref": [
+        "(rho1,a1)",
+        "(rho1,w1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 1,
+       "c": "c1"
+      }
+     },
+     "(r=1,c2)": {
+      "(iii) witnesses under O4'": 0,
+      "(iii) witnesses under O": 4,
+      "every O-witness adds a2 (changes O4')": true,
+      "h' in H-B with same O4', w1 conforming, ignoring change-point clause": 0,
+      "least O-witness": {
+       "sigma": [
+        "q",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "q",
+        "prep": 1,
+        "f": 0
+       },
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 1,
+        "f": 1
+       },
+       "Cap": [],
+       "w1": {
+        "t": 1
+       },
+       "Ref": [
+        "(rho1,a1)",
+        "(rho1,w1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 1,
+       "c": "c2"
+      }
+     }
+    }
+   },
+   "witness_or_counterexample": null
+  },
+  "K8.5": {
+   "result": "TRUE",
+   "detail": {
+    "per r": {
+     "(r=0,c2)": true,
+     "(r=1,c2)": true
+    },
+    "|U5|": 416200
+   },
+   "witness_or_counterexample": {
+    "(r=0,c2)": {
+     "sigma": [
+      "q",
+      "q"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": "inf"
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c2"
+    },
+    "(r=1,c2)": {
+     "sigma": [
+      "q",
+      "q"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": "inf"
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 1,
+     "c": "c2"
+    }
+   }
+  },
+  "K8.6": {
+   "result": "TRUE",
+   "detail": {
+    "|U6|": 100880,
+    "|R_B6 with w1 referenced|": 33408,
+    "number of candidate h_v in U6 (H-D6∖H-B6, sigma constant, w1 violating)": 0,
+    "(ii) fails (no h_v for any h in R_B6)": true
+   },
+   "witness_or_counterexample": {
+    "first h in R_B6 for which no h_v exists": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   }
+  },
+  "K8.7": {
+   "result": "TRUE",
+   "detail": {
+    "(r=0,c1)": {
+     "(iii) fails at I7 in U7": true,
+     "(iii) holds at I7 in U": true,
+     "every U-witness adds an unreferenced a2 (not in U7)": true,
+     "witnesses in U7 if added a2 is referenced": 4,
+     "CM-A7(b) h' in U7∩H-B, same O, w1 conforms": true,
+     "CM-A7(b) h'": {
+      "sigma": [
+       "q",
+       "p"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 1,
+       "f": "inf"
+      },
+      "a2": {
+       "kind": "iss",
+       "d": 1,
+       "v": "p",
+       "prep": 1,
+       "f": 1
+      },
+      "Cap": [],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(r=0,c2)": {
+     "(iii) fails at I7 in U7": true,
+     "(iii) holds at I7 in U": true,
+     "every U-witness adds an unreferenced a2 (not in U7)": true,
+     "witnesses in U7 if added a2 is referenced": 4,
+     "CM-A7(b) h' in U7∩H-B, same O, w1 conforms": true,
+     "CM-A7(b) h'": {
+      "sigma": [
+       "q",
+       "p"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 1,
+       "f": "inf"
+      },
+      "a2": {
+       "kind": "iss",
+       "d": 1,
+       "v": "p",
+       "prep": 1,
+       "f": 1
+      },
+      "Cap": [],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c2"
+     }
+    },
+    "(r=1,c1)": {
+     "(iii) fails at I7 in U7": true,
+     "(iii) holds at I7 in U": true,
+     "every U-witness adds an unreferenced a2 (not in U7)": true,
+     "witnesses in U7 if added a2 is referenced": 4,
+     "CM-A7(b) h' in U7∩H-B, same O, w1 conforms": true,
+     "CM-A7(b) h'": {
+      "sigma": [
+       "q",
+       "p"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 1,
+       "f": "inf"
+      },
+      "a2": {
+       "kind": "iss",
+       "d": 1,
+       "v": "p",
+       "prep": 1,
+       "f": 1
+      },
+      "Cap": [],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 1,
+      "c": "c1"
+     }
+    },
+    "(r=1,c2)": {
+     "(iii) fails at I7 in U7": true,
+     "(iii) holds at I7 in U": true,
+     "every U-witness adds an unreferenced a2 (not in U7)": true,
+     "witnesses in U7 if added a2 is referenced": 4,
+     "CM-A7(b) h' in U7∩H-B, same O, w1 conforms": true,
+     "CM-A7(b) h'": {
+      "sigma": [
+       "q",
+       "p"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 1,
+       "f": "inf"
+      },
+      "a2": {
+       "kind": "iss",
+       "d": 1,
+       "v": "p",
+       "prep": 1,
+       "f": 1
+      },
+      "Cap": [],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 1,
+      "c": "c2"
+     }
+    }
+   },
+   "witness_or_counterexample": null
+  },
+  "K9.1": {
+   "result": "TRUE",
+   "detail": {
+    "(o,q) in O_Q1(H-D)∖O_Q1(H-B)": {
+     "(r=0,c1)": true,
+     "(r=0,c2)": true,
+     "(r=1,c1)": true,
+     "(r=1,c2)": true
+    },
+    "O_Q1(H-B) ⊆ O_Q1(H-D)": true
+   },
+   "witness_or_counterexample": null
+  },
+  "K9.2": {
+   "result": "TRUE",
+   "detail": {
+    "O_Q0(H-D∩R_B)=O_Q0(H-B)": true,
+    "= all (o,v)": true,
+    "missing from O_Q0(H-D∩R_B)": [],
+    "missing from O_Q0(H-B)": []
+   },
+   "witness_or_counterexample": null
+  },
+  "K9.3": {
+   "result": "TRUE",
+   "detail": {
+    "O_Qe(H-D∩R_B)=O_Qe(H-B)": true,
+    "values of Qe over U": [
+     "p",
+     "⊥"
+    ],
+    "Qe never takes a value in V∖P (over U)": true,
+    "Qe values on H-D∩R_B ∪ H-B": [
+     "p"
+    ]
+   },
+   "witness_or_counterexample": null
+  },
+  "K9.4": {
+   "result": "TRUE",
+   "detail": {
+    "|O_Q2(H-B)∖O_Q2(H-D)|": 7064,
+    "|O_Q2(H-D∩R_B)∖O_Q2(H-B)|": 1160,
+    "named witness sigma=(p,q), F̂=∅ in first difference": true,
+    "named witness sigma=(q,q) in second difference": true
+   },
+   "witness_or_counterexample": {
+    "least h in H-B with value in first difference": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least h in H-D∩R_B with value in second difference": {
+     "sigma": [
+      "q",
+      "q"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": "inf"
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   }
+  },
+  "K9.5": {
+   "result": "TRUE",
+   "detail": {
+    "every O_Q1B(H-B) value has Q1B = p": true,
+    "(o,q) in O_Q1B(H-D)∖O_Q1B(H-B)": {
+     "(r=0,c1)": true,
+     "(r=0,c2)": true,
+     "(r=1,c1)": true,
+     "(r=1,c2)": true
+    }
+   },
+   "witness_or_counterexample": null
+  },
+  "K9.6": {
+   "result": "TRUE",
+   "detail": {
+    "Qm = sigma(t(w1)) on H-D with w1": true,
+    "some h in H-D has Qm=q": true,
+    "(o,q) in O_Qm(H-D)∩O_Qm(H-B)": {
+     "(r=0,c1)": true,
+     "(r=0,c2)": true,
+     "(r=1,c1)": true,
+     "(r=1,c2)": true
+    }
+   },
+   "witness_or_counterexample": {
+    "first cex veridicality": null,
+    "least h in H-D with Qm=q": {
+     "sigma": [
+      "p",
+      "q"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "q",
+      "prep": 0,
+      "f": 1
+     },
+     "Cap": [
+      "(x,iss)",
+      "(x,adp)"
+     ],
+     "w1": {
+      "t": 1
+     },
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   }
+  },
+  "K9.7": {
+   "result": "TRUE",
+   "detail": {
+    "(r=0,c1)": {
+     "(o,{(λ1,q)}) in H-D∖H-B": true,
+     "(o,{(λ1,p),(λ2,p)}) in H-B∖H-D": true
+    },
+    "(r=0,c2)": {
+     "(o,{(λ1,q)}) in H-D∖H-B": true,
+     "(o,{(λ1,p),(λ2,p)}) in H-B∖H-D": true
+    },
+    "(r=1,c1)": {
+     "(o,{(λ1,q)}) in H-D∖H-B": true,
+     "(o,{(λ1,p),(λ2,p)}) in H-B∖H-D": true
+    },
+    "(r=1,c2)": {
+     "(o,{(λ1,q)}) in H-D∖H-B": true,
+     "(o,{(λ1,p),(λ2,p)}) in H-B∖H-D": true
+    }
+   },
+   "witness_or_counterexample": null
+  },
+  "K9.8": {
+   "result": "TRUE",
+   "detail": {
+    "(o,(p,q,0)) in O_Q'(H-B)∖O_Q'(H-D)": {
+     "(r=0,c1)": true,
+     "(r=0,c2)": true,
+     "(r=1,c1)": true,
+     "(r=1,c2)": true
+    },
+    "no H-D value with sigma(0)≠sigma(1), X=0": true
+   },
+   "witness_or_counterexample": null
+  },
+  "K10.1": {
+   "result": "TRUE",
+   "detail": {
+    "C=U, every h": true,
+    "C=H-B, every h": true,
+    "C=H-D, every h in H-D∩R_B": true,
+    "C=H-D∩H-B, every h": true
+   },
+   "witness_or_counterexample": {
+    "C=U, every h": null,
+    "C=H-B, every h": null,
+    "C=H-D, every h in H-D∩R_B": null,
+    "C=H-D∩H-B, every h": null
+   }
+  },
+  "K10.2": {
+   "result": "TRUE",
+   "detail": {
+    "no pair ambiguous in U under O+ (hence in no subclass)": true,
+    "K4 for O+: every h in R_B has h* in H-D∩H-B with O+(h*)=O+(h)": true
+   },
+   "witness_or_counterexample": {
+    "first K4(O+) counterexample": null,
+    "ambiguous O+ pairs (count)": 0
+   }
+  },
+  "K10.3": {
+   "result": "TRUE",
+   "detail": {
+    "(a) every constituted slot has d = r(rho1)": true,
+    "(b) per o": {
+     "(r=0,c1)": true,
+     "(r=0,c2)": true,
+     "(r=1,c1)": true,
+     "(r=1,c2)": true
+    }
+   },
+   "witness_or_counterexample": {
+    "(a) first counterexample": null,
+    "(b) witnesses": {
+     "(r=0,c1)": {
+      "slot": "a1",
+      "h (d=0)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      "h' (d=1)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 1,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     },
+     "(r=0,c2)": {
+      "slot": "a1",
+      "h (d=0)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      },
+      "h' (d=1)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 1,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      }
+     },
+     "(r=1,c1)": {
+      "slot": "a1",
+      "h (d=0)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 1,
+       "c": "c1"
+      },
+      "h' (d=1)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 1,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 1,
+       "c": "c1"
+      }
+     },
+     "(r=1,c2)": {
+      "slot": "a1",
+      "h (d=0)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 1,
+       "c": "c2"
+      },
+      "h' (d=1)": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 1,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 1,
+       "c": "c2"
+      }
+     }
+    }
+   }
+  },
+  "K10.4": {
+   "result": "TRUE",
+   "detail": {
+    "bound holds on all of H-D": true,
+    "some h in H-B violates it": true
+   },
+   "witness_or_counterexample": {
+    "first H-D counterexample": null,
+    "least H-B violator": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 1,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "(rho1,a2)",
+      "(rho1,w1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "rho1"
+     },
+     "r": 1,
+     "c": "c1"
+    }
+   }
+  },
+  "K10.5": {
+   "result": "TRUE",
+   "detail": {
+    "some referenced pair not ambiguous in U under O8": true,
+    "the cited example (a1 iss, prep 0, d=0, r=1, referenced) is non-ambiguous": true
+   },
+   "witness_or_counterexample": {
+    "least (h, slot)": {
+     "h": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [
+       "(rho1,a2)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 1,
+      "c": "c1"
+     },
+     "slot": "a2"
+    },
+    "least h of the cited example form": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "a2": "absent",
+     "Cap": [],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a1)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 1,
+     "c": "c1"
+    }
+   }
+  },
+  "K10.6": {
+   "result": "TRUE",
+   "detail": {
+    "ambiguous (O3' value, slot) pairs in U": 0
+   },
+   "witness_or_counterexample": null
+  },
+  "K10.7": {
+   "result": "TRUE",
+   "detail": {
+    "c2: no referenced pair ambiguous in U9": true,
+    "c1: K10.1 holds in U9": {
+     "C=U, every h": true,
+     "C=H-B, every h": true,
+     "C=H-D, every h in H-D∩R_B": true,
+     "C=H-D∩H-B, every h": true
+    }
+   },
+   "witness_or_counterexample": {
+    "c2 first ambiguous (h, slot)": null,
+    "c1 K10.1 failures": {
+     "C=U, every h": null,
+     "C=H-B, every h": null,
+     "C=H-D, every h in H-D∩R_B": null,
+     "C=H-D∩H-B, every h": null
+    }
+   }
+  },
+  "K11.1": {
+   "result": "TRUE",
+   "detail": {
+    "closed under removing w1": true,
+    "closed under adding unreferenced w1": true
+   },
+   "witness_or_counterexample": {
+    "first removal cex": null,
+    "first addition cex": null
+   }
+  },
+  "K11.2": {
+   "result": "TRUE",
+   "detail": {
+    "referenced forced slot with f > r exists": true,
+    "referenced forced slot with f < r exists": true
+   },
+   "witness_or_counterexample": {
+    "least h with f > r": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 1
+     },
+     "Cap": [],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "least h with f < r": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": "absent",
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": "absent",
+     "Ref": [
+      "(rho1,a2)"
+     ],
+     "con": {
+      "a1": "none",
+      "a2": "none"
+     },
+     "r": 1,
+     "c": "c1"
+    }
+   }
+  },
+  "K12.1": {
+   "result": {
+    "O": [],
+    "O1": [
+     "sigma-only"
+    ],
+    "O2": [
+     "f-only"
+    ],
+    "O3": [
+     "Ref-only"
+    ],
+    "O3'": [
+     "con-only"
+    ],
+    "O4": [
+     "+work additions"
+    ],
+    "O4'": [
+     "+act additions"
+    ],
+    "O8": [
+     "d-only"
+    ]
+   },
+   "detail": "change groups (over U) on which each observation depends; witness pair = least h in order with an h' in its change group differing in the observation",
+   "witness_or_counterexample": {
+    "O": {},
+    "O1": {
+     "sigma-only": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "q"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "O2": {
+     "f-only": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 1
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "O3": {
+     "Ref-only": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": {
+        "t": 0
+       },
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": {
+        "t": 0
+       },
+       "Ref": [
+        "(rho1,w1)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "O3'": {
+     "con-only": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a2)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a2)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "rho1"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "O4": {
+     "+work": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": {
+        "t": 0
+       },
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "O4'": {
+     "+act": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 1,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "O8": {
+     "d-only": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 1,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    }
+   }
+  },
+  "K12.2": {
+   "result": {
+    "U": [],
+    "U5": [
+     "A5"
+    ],
+    "U7": [
+     "A7 +act",
+     "A7 +work"
+    ],
+    "U9": [
+     "A9 (con-only)"
+    ]
+   },
+   "detail": "closure properties failing in each frame; witness = (least h in frame, a related history satisfying F1/F2 outside the frame)",
+   "witness_or_counterexample": {
+    "U": {},
+    "U5": {
+     "A5": [
+      {
+       "sigma": [
+        "q",
+        "q"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      }
+     ]
+    },
+    "U7": {
+     "A7 +act": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 1,
+        "f": 0
+       },
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ],
+     "A7 +work": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": "absent",
+       "Cap": [],
+       "w1": {
+        "t": 0
+       },
+       "Ref": [],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c1"
+      }
+     ]
+    },
+    "U9": {
+     "A9 (con-only)": [
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a2)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      },
+      {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": "absent",
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": "absent",
+       "Ref": [
+        "(rho1,a2)"
+       ],
+       "con": {
+        "a1": "none",
+        "a2": "rho1"
+       },
+       "r": 0,
+       "c": "c2"
+      }
+     ]
+    }
+   }
+  }
+ }
+}

@@ -2737,3 +2737,19 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Disclosed:**
   - the statements themselves still contain their claims (unavoidable; the checks are claims to test);
   - within-family.
+
+## F-LOG-0224 — **R5: the independent finite-state verification agrees with R4 on 33/33 checks** (0 deviations)
+- **Verifier:** an isolated Claude Opus session with no proofs and no expected outcomes; its own enumerator.
+- **Frame:** U has 665,920 histories.
+- **Re-run by the main analyst:** byte-identical.
+- **Checked:** D1 (i), (i′), (ii), (iii); every countermodel; the sufficient conditions; performative ambiguity (Lem 5.2); the closure and dependence structure.
+- **Disclosed:** scratch writes to `/tmp`.
+- **Limits:**
+  - a finite check, not a proof of the generic statements;
+  - within-family;
+  - the §7.3 items are untested.
+- **Pending:** the human spot-check.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BL/` (R5-SPEC, TASK, BUNDLE.sha256, RETURN.sha256, RETURN/, RECONCILIATION.md) |
