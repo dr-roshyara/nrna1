@@ -1,0 +1,32 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "summary": "B-1 is resolved with fix (a): every frame is now a subset of H (Def 1.8), so every member of every frame satisfies F1 and F2. The closure hypotheses A5, A7 and A9 stay consistent with this. The re-proofs of Prop 4.1(i'), Prop 4.1(iii) and Lem 5.2 are valid step by step, and every step rests on a stated hypothesis or on Def 1.8. Every countermodel frame is a subset of H, and each countermodel still violates exactly one hypothesis. NB-1 to NB-6 are fixed (NB-3 by an erratum). No regressions were found. The limitations, all disclosed: R5 has not been run, the generic statements cannot be tested in U, the generic scope is now frames that are subsets of H, F-c may have no power, and F-b may fall back to a within-family reading. The r1 text was not available to diff against, so the regression check relies on CHANGELOG-r2 and REVIEW-r1.",
+  "proof_check": [
+    {"id": "Def 1.8 (fix a) + A5/A7/A9 consistency", "status": "valid", "note": "h[sigma*, f*] keeps F2; fresh additions that satisfy F1 keep F2; changes of only con or only d that satisfy F2 keep F1. So no closure hypothesis forces a history outside H into a frame."},
+    {"id": "Prop 4.1(i')", "status": "valid", "note": "F1 in h holds by Def 1.8. Steps 1-5 preserve F1 (F1 reads E^iss, tau, v, f and sigma; a0 has f = inf). Each result is in H' by A7. O' is unchanged by A4 for steps 1-3 and by A3 for the two Ref steps. h~ is in R_B', then (i) applies (A1, A2, A5). The four-way equality is closed. Nit: step 1 never fires, because R nonempty gives A nonempty through the keepers."},
+    {"id": "Prop 4.1(iii)", "status": "valid", "note": "F1 in h holds by Def 1.8. Step 1's F1 check per act is correct, and Lem 4.0b applies. Step 2: x exists via B-recW; each added prep-1 act satisfies its own F1 condition, is in H' by A7, and leaves O' unchanged by A4. B-chg (act disjunct, no Cap or status condition), B-conf, B-rec and all three bullets of (iii) check."},
+    {"id": "Lem 5.2", "status": "valid", "note": "F2 in h and h0 holds by Def 1.8. In the H-D cases h0 = h[p, inf] is in H-D' and H-B' (Lem 4.0b and (i)). Dropping con(a), then setting d(a) := r(rho), then setting con(a) := rho each preserve F2 act by act. Each is in H' by A9, with O' unchanged by A3, A8 and A3. Class membership checks for all four classes C."},
+    {"id": "Lem 4.0a / Lem 4.0b / Lem 3.7 / Cor 4.3 / CM-A7(b)", "status": "valid (unchanged)", "note": "None of these needs F1 or F2 beyond what Def 1.8 now supplies."}
+  ],
+  "no_non_hypothesis_axiom_used": true,
+  "countermodels_still_ok": true,
+  "countermodel_notes": "The frames are H (CM-A1, A2, A3a, A3b, A4a, A4b, A8), H5, H7 and H9 (each H plus one axiom), the CM-A6 frame (H with V = P = {p}), and the R5 universes U, U5, U6, U7 and U9 (F1 and F2 assignments only). All are subsets of H. No countermodel was edited, and each still violates exactly its one hypothesis.",
+  "fixed": {
+    "B-1": "fixed (fix a)",
+    "NB-1": "fixed",
+    "NB-2": "fixed",
+    "NB-3": "fixed by erratum in CHANGELOG-r2 (CHANGELOG-r1 is not an input)",
+    "NB-4": "fixed",
+    "NB-5": "fixed",
+    "NB-6": "fixed"
+  },
+  "regressions": [],
+  "regression_check_note": "No change found beyond TASK-r2 and no new invalid step. The narrowing of the generic statements to frames that are subsets of H is the intended, disclosed effect of fix (a). There was no line-level diff, because the r1 text is not in this directory.",
+  "blocking": [],
+  "nonblocking": [
+    "N-r2-1: In the proof of Prop 4.1(i'), step 1 (adding an actor) is dead code, because R nonempty implies A nonempty through the keepers k(rho). Harmless.",
+    "N-r2-2: The reopening-conditions row of Table 4.6 still pairs 'an independent record' with 'S2 + S3'. The table was out of scope, and the wording is consistent with the fixed Rem 4.9a.",
+    "N-r2-3: NB-3 is fixed only by an erratum; CHANGELOG-r1 itself still contains the typo.",
+    "N-r2-4: r2 has not been checked by R5. The generic statements, and so B-1, cannot be tested in U (section 7.3)."
+  ]
+}

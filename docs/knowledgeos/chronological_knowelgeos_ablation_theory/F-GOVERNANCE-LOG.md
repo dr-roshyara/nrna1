@@ -2714,3 +2714,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BK/` (TASK-r2, REVIEW-TASK-r2, BUNDLE-A2.sha256) |
+
+## F-LOG-0222 — **R4 1bk sealed: minimal formal theory r2, REVIEWED DRAFT** (PASS_WITH_LIMITATIONS; 0 blocking; countermodels independent)
+
+**Key results:**
+- **D1 is generic:** Prop 4.1.
+- **Lem 4.2:** D1 holds even under perfectly reliable reference and mode coding. **H5 is logically independent of the 1bj instrument failure.**
+- **Cor 4.3:** separation requires dependence on σ or f.
+- **Props 4.5 / 4.6:** symmetric sufficient conditions.
+- **Performative ambiguity:** formalized as Def 5.1; **Conj 5.5 stays a conjecture.**
+
+**Status:** not verified. Next: **R5**.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/FORMAL-THEORY-R4.md`; `LOOP-1BK/` (A–B2, RECONCILIATION.md) |

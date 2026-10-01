@@ -47,6 +47,11 @@
 - R3 holds 38 R2-dependent items that are NOT usable. Its coding-independent items stand; freezing it is a human act.
 - **R4 OPEN on the coding-independent base only:** D1 · Protocol A/B · identifiability and measurement limits · the L2 candidate "performative ambiguity".
 
+
+**State 2026-10-01 (F-LOG-0222):**
+- **R4 reviewed draft sealed:** `analysis/theory/FORMAL-THEORY-R4.md`. It contains D1 as Prop 4.1, the Lem 4.2 robustness result, and the performative-ambiguity Conj 5.5.
+- **Next is R5:** an independent implementation of the §7 finite-state checks. Choosing the verifier is a human gate.
+
 **Dropped (do not resurrect):**
 - H2 signer verification (declined);
 - 1bb-r3 or any patch of the coupled discrimination spec;
