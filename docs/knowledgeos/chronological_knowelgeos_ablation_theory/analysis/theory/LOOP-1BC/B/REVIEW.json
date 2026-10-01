@@ -1,0 +1,70 @@
+{
+  "verdict": "FAIL",
+  "git_subcommands": ["--version", "for-each-ref", "rev-list", "log"],
+  "blocking": [
+    {
+      "id": "B1",
+      "where": "capture_a.sh:54; PROTOCOL-A.md section 2 (P-CODE)",
+      "issue": ".vue is not in P-CODE, so Vue single-file components are P-OTHER. Vue work whose message names the target is classed MENTION-ONLY, or UNCLASSIFIABLE when the lines themselves hit. It is never EXECUTION-TRACE, which can give a false NOT-EVIDENCED-IN-CAPTURE or a wrong earliest trace."
+    },
+    {
+      "id": "B2",
+      "where": "capture_a.sh:50,52; PROTOCOL-A.md section 2 (P-DOC precedence)",
+      "issue": "Generic P-DOC segment words (plans, reports, notes, decisions, registers, evidence) and basenames (plan.*, register.*, decision.*, acceptance.*) match anywhere in the tree and take precedence over TEST and CODE. Ordinary Laravel code becomes DOC, for example app/Models/Plan.php, resources/views/auth/register.blade.php, resources/js/Pages/Auth/Register.vue, app/Http/Controllers/Reports/*.php and tests/Feature/Plans/*Test.php."
+    },
+    {
+      "id": "B3",
+      "where": "capture_a.sh:50-56; PROTOCOL-A.md section 2",
+      "issue": ".claude/, engineering/ and developer_guide/ are not P-DOC; only their .md files count as documentation, through the extension. Scripts or code there (for example .claude/hooks/*.sh|py|js, engineering/tools/*.py, developer_guide/examples/*.php) are P-CODE and can produce an EXECUTION-TRACE from governance or agent tooling. P-CODE and P-TEST are defined by extension only, not by the application roots (app/, routes/, database/, resources/, config/, tests/)."
+    }
+  ],
+  "nonblocking": [
+    {"id": "N1", "issue": "The script does not check that OUT lies outside the work tree and .git. If OUT were under .git/refs, files would be created there before for-each-ref (line 65) runs, corrupting the captured ref set."},
+    {"id": "N2", "issue": "Local .git/config, including include.path, is still read. GIT_CONFIG_PARAMETERS, GIT_CONFIG_COUNT and GIT_CEILING_DIRECTORIES are not unset. diff.algorithm and i18n.logOutputEncoding are not pinned."},
+    {"id": "N3", "issue": "For a path containing a space, git appends a TAB to the +++ header. p (line 96) then has a trailing tab: pclass returns OTHER and 12_line_hits.tsv gains an extra column, which shifts the fields classify reads. Paths with quote or control characters stay C-quoted."},
+    {"id": "N4", "issue": "T2 has no right boundary: wp4c1-2... matches, while the T1 equivalent WP-4C-1-2 is excluded."},
+    {"id": "N5", "issue": "T1 accepts the range or list forms WP-4C-1..3, WP-4C-1/2 and WP-4C-1,2."},
+    {"id": "N6", "issue": "EXECUTION-TRACE does not separate adding from removing. Deletion-only commits, revert commits, and messages that mainly cite a sibling item but also name WP-4C-1 all count."},
+    {"id": "N7", "issue": "Some stages are not checked for errors: lines 68, 74, 89, 104-106 and 138-158, and the final sort in the pipelines at lines 78, 85 and 92. A silent failure there could let absence be asserted on incomplete data."},
+    {"id": "N8", "issue": "Shallow and partial clones, and grafts, are not detected or recorded in the coverage statement."},
+    {"id": "N9", "issue": "refs/stash, if present, is walked. A stash index commit copies the HEAD subject and could become EXECUTION-TRACE with the stash's date."},
+    {"id": "N10", "issue": "Ref names and paths are stored verbatim and may contain personal handles. 00_stderr.log may contain absolute paths."},
+    {"id": "N11", "issue": "js() does not escape control characters or non-UTF-8 bytes, and a ';' inside a path corrupts the matched_paths array."},
+    {"id": "N12", "issue": "In PROTOCOL-A, the C5 example 'P-DOC/P-OTHER mix' only holds when there is a path or line hit. A message-only hit with that mix is C4. The wording should be clarified."},
+    {"id": "N13", "issue": "The hyphen list leaves out U+2043, U+058A, U+1806 and U+2E3A/B. Acceptable because the list is fixed in advance, but the omission should be stated."},
+    {"id": "N14", "issue": "Ref names are not searched. This is consistent with the four places TASK specifies."}
+  ],
+  "matching_tests": [
+    {"string": "WP-4C-1", "expected": "match T1", "script_behaviour": "match T1"},
+    {"string": "WP-4C-10", "expected": "no match", "script_behaviour": "no match (next char alphanumeric)"},
+    {"string": "WP-4C-1.2", "expected": "no match", "script_behaviour": "no match (.<digit>)"},
+    {"string": "WP-4C-2", "expected": "no match", "script_behaviour": "no match"},
+    {"string": "WP-4C", "expected": "no match", "script_behaviour": "no match"},
+    {"string": "WP-4C-1-2", "expected": "no match", "script_behaviour": "no match (-<digit>)"},
+    {"string": "WP-4C-1a", "expected": "no match", "script_behaviour": "no match"},
+    {"string": "xWP-4C-1", "expected": "no match", "script_behaviour": "no match (no left boundary)"},
+    {"string": "(WP-4C-1)", "expected": "match T1", "script_behaviour": "match T1"},
+    {"string": "WP-4C-1.", "expected": "match T1", "script_behaviour": "match T1 (padding space after the dot)"},
+    {"string": "WP-4C-1-acceptance", "expected": "match T1", "script_behaviour": "match T1"},
+    {"string": "wp-4c-1", "expected": "match T1", "script_behaviour": "match T1 (case-insensitive)"},
+    {"string": "WP‐4C‐1 (U+2010)", "expected": "match T1", "script_behaviour": "match T1 (normalised)"},
+    {"string": "WP–4C–1 (U+2013)", "expected": "match T1", "script_behaviour": "match T1 (normalised)"},
+    {"string": "WP−4C−1 (U+2212)", "expected": "match T1", "script_behaviour": "match T1 (normalised)"},
+    {"string": "WP­4C­1 (soft hyphen)", "expected": "match T1", "script_behaviour": "match T1 (normalised)"},
+    {"string": "WP-4C-1–2 (en dash)", "expected": "no match", "script_behaviour": "no match (normalised to -2)"},
+    {"string": "+WP-4C-1\\r (CRLF added line)", "expected": "match T1", "script_behaviour": "match T1"},
+    {"string": "x_wp4c1-evidence.md", "expected": "match T2", "script_behaviour": "match T2"},
+    {"string": "...-wp4c1-acceptance-evidence.md", "expected": "match T2", "script_behaviour": "match T2"},
+    {"string": "WP4C1-", "expected": "match T2", "script_behaviour": "match T2 (case-insensitive)"},
+    {"string": "swp4c1-", "expected": "no match", "script_behaviour": "no match"},
+    {"string": "wp4c1_", "expected": "no match", "script_behaviour": "no match"},
+    {"string": "WP4C1", "expected": "no match", "script_behaviour": "no match"},
+    {"string": "wp4c1-2", "expected": "match per protocol (T2 has no right boundary); arguably should be excluded", "script_behaviour": "match T2 (N4)"},
+    {"string": "WP-4C-1..3", "expected": "unspecified (range form)", "script_behaviour": "match T1 (N5)"},
+    {"string": "path docs/WP-4C-1/plan.md", "expected": "path:T1", "script_behaviour": "path:T1, class DOC"},
+    {"string": "trailer 'Refs: WP-4C-1'", "expected": "trailer:T1 and message:T1", "script_behaviour": "trailer:T1 and message:T1"},
+    {"string": "added line in 'app/foo bar.php'", "expected": "added_line:T1 in a CODE path", "script_behaviour": "path gets a trailing TAB: class OTHER and a shifted TSV column (N3)"}
+  ],
+  "neutrality_ok": true,
+  "identity_ok": true
+}

@@ -2171,3 +2171,9 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | After both | a separate **discrimination-readiness review**: does the acquired evidence contain an independent norm-state observable? If not → H-D vs H-B stays NON-IDENTIFIABLE (a corpus limitation). If yes → stop before scoring; a small pre-registered discrimination protocol, reviewed first |
 | Frozen | H-D and H-B; WP-4B stays a candidate counter-instance only |
 | Gate 1 | human-held (bundle -02; -01 void) |
+
+## F-LOG-0179 — Protocol A r0: review **FAIL** (B1: .vue is not code; B2: generic doc words override code roots; B3: governance-directory code is classed as code). Neutrality and identities OK; matching tests correct. Under the human micro-cycle rule (FAIL → smallest repair → re-review), a **targeted repair r1** (root-first classification + N1–N3)
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BC/` (A, B = r0; TASK-r1, REVIEW-TASK-r1) |
