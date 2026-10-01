@@ -2397,3 +2397,11 @@ No H-D/H-B scoring
 |---|---|
 | Records | `analysis/theory/LOOP-1BG/H5-PROPOSAL.md` (status ADOPTED), `REVIEW.md` |
 | Next | **R2:** the human hands over Gate 1 bundle -02 → **R3:** Empirical Theory Record |
+
+## F-LOG-0198 — Human operating prompt "Autonomous research, theory-construction & validation protocol" **adopted**; 1bh started
+- **Consistency check:** the prompt is consistent with the governance state (R1 closed; R2 next and human-held; R3 partly preparable; R7 and R8 human-gated). No conflict.
+- **Next atomic task (authorized; highest information gain while R2 waits):** **1bh**, the R3 Empirical Theory Record, **PROVISIONAL pending R2**. Every item is tagged R2_DEPENDENT; it consolidates sealed results only.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BH/` (PREREG, TASK, REVIEW-TASK, BUNDLE-A.sha256) |
