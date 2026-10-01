@@ -7,6 +7,7 @@
 | **Source of truth** | [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (77 tickets, `PBDIGIT-76` … `PBDIGIT-152`). If this runbook and the backlog disagree, **the backlog wins**. |
 | **How the sequence was produced** | Computed from the backlog's dependency graph: wave = 1 + highest wave among a ticket's implementation dependencies, with decisions at wave 0. Check: 15 waves, 0 violations (no ticket shares a wave with, or precedes, its dependency). |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0); `implementation/` holds the implementation records |
+| **Companion** | [`2026-10-01-constitutional-runtime-execution-map.md`](2026-10-01-constitutional-runtime-execution-map.md): the Jira-ready execution map (master index, per-ticket execution cards) |
 
 ---
 
