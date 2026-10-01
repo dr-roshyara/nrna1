@@ -2706,3 +2706,11 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BK/` (A1, B1 = r1) |
+
+## F-LOG-0221 — **Human act (2026-10-01): authorize a minimal R4 r2**
+- **Scope:** the reviewer's B-1 fix plus NB-1 to NB-6; nothing else.
+- **r2 FAIL → back to the human.**
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BK/` (TASK-r2, REVIEW-TASK-r2, BUNDLE-A2.sha256) |
