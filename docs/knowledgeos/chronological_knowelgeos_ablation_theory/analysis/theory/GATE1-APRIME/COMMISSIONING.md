@@ -28,3 +28,16 @@
 - **Return:** `~/F-APRIME-GATE1-RETURN-03/` (CODING.json, NOTES.md, TRANSCRIPT.txt, PROVENANCE.txt).
 - **Return-defect rule:** a non-JSON or mis-structured return is **logged as a defect and never repaired** by Claude. The comparator runs only on an as-returned, parseable file; otherwise the defect is reported.
 - **Known limitation:** possible training-data exposure if the repository was ever public (PROVENANCE `repo_public`).
+
+## HUMAN DECISION (2026-10-01): handover -03 uses a Claude session, not a non-Claude coder
+- **Human act:** "Its not necessary to have another coder. Claude independent session can handle it."
+- **Executed as:** a fresh headless session with **Claude Sonnet 5.5** (RETURN-02 used Opus 5.5).
+  - It runs in `~/gate1-r03-claude/` **outside the repository**.
+  - Tools: Read and Write only. It sees the 5 bundle files only.
+  - Guide: `HANDOVER-03-CLAUDE-INSTRUCTIONS.md`.
+  - Return folder: `~/F-APRIME-GATE1-RETURN-03-CLAUDE/`.
+- **Consequence (binding on every later claim):** this is within-family replication with a different model.
+  - **The cross-family requirement of Gate 1 is waived by the human, not satisfied.**
+  - Errors shared by all Claude models are not detectable.
+  - R3 items tagged R2_DEPENDENT stay qualified: "cross-family reproduction untested".
+- The non-Claude guide (`HANDOVER-03-INSTRUCTIONS.md`) is kept, unused, for possible later use.

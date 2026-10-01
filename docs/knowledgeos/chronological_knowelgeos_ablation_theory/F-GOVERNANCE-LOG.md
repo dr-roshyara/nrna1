@@ -2436,3 +2436,11 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BH/` (A, B = r0 incl. ADDENDUM; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |
+
+## F-LOG-0201 — **Human act (2026-10-01): R2 coder = an isolated Claude session; the cross-family requirement of Gate 1 is waived**
+- **Design:** Sonnet 5.5 (a different model from RETURN-02's Opus 5.5); runs outside the repository; Read/Write only on the 5 bundle files. The guide is `GATE1-APRIME/HANDOVER-03-CLAUDE-INSTRUCTIONS.md`.
+- **Consequence, disclosed to the human before acting:**
+  - R2 delivers **within-family** reproducibility only;
+  - Gate 1 proper is **waived, not satisfied**;
+  - correlated Claude-family error is undetectable.
+- **Downstream rule:** no R3/R4 claim may describe A′ coding as cross-family reproducible.
