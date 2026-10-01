@@ -2564,3 +2564,21 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BI/` (A3, B3 = r3c; TASK-r3c1, REVIEW-TASK-r3c1, BUNDLE-A4.sha256) |
+
+## F-LOG-0210 — SCHEMA-r3 coder text r3c-1: **FAIL → pre-registered STOP for the human**
+- **Equivalence:** fixed (12/12 adversarial tests identical).
+- **Anchoring: still blocking.** Examples mirror R10, R12, R05, R30, R18/R20 and R06/R07, although the worker had **no records**. So **the record-derived cases are inside the authoritative SCHEMA-r3.md itself.** Every repair round fitted rules to these 36 records.
+- **Size and gaps:** the coder text is about 10,500 words (codability medium-high risk). The review exposed 12 schema gaps, the largest being the meaning of PERMITTED / AUTHORIZED / DELEGATED (about 8 records).
+
+**Main-analyst reading (an observation, not a decision):** this is the same pattern as 1bb.
+- The fine-grained A′ instrument cannot be made determinate, neutral and codable at once on this corpus by patch rounds.
+- Further rounds would produce a longer, record-fitted instrument. Its κ would then measure fit to these records, not reliability.
+
+**Options for the human (none taken):**
+- (A) Stop and record the instrument limitation.
+- (B) A coarse binary core instrument.
+- (C) Continue patching.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BI/` (A4, B4 = r3c-1) |

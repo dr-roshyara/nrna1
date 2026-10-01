@@ -1,0 +1,68 @@
+{
+  "verdict": "FAIL",
+  "equivalence_ok": true,
+  "equivalence_note": "Every SCHEMA-r3 rule sentence is in the coder file with the same meaning; previous B1 qualifiers all restored. Divergence arises only through examples (T11 SCHEMA-r3 example-borne decision; T12 coder example contradicting a rule line).",
+  "adversarial_tests": [
+    {"id": "T1", "area": "proposal binding / target", "input": "## R-40; section 'Motion: adopt the hedge rule.' span 'The committee declines to adopt the fence rule.'", "schema": "UNKNOWN", "coder": "UNKNOWN", "same": true},
+    {"id": "T2", "area": "proposal binding / none", "input": "## R-40, no motion; same span", "schema": "UNKNOWN", "coder": "UNKNOWN", "same": true},
+    {"id": "T3", "area": "negated X without proposal", "input": "## R-41; 'The fence rule is not superseded.' no motion", "schema": "act NONE (not a disposition); norm STATUS_CONSTRAINT/PERFORMATIVE_ONLY", "coder": "same", "same": true},
+    {"id": "T4", "area": "refusal with noun complement", "input": "## R-42; section 'Motion from plot 7: ban rotavators.' span 'The committee rejects the plot 7 motion.'", "schema": "X=reject, no proposal for reject -> UNKNOWN", "coder": "same", "same": true, "note": "likely unintended SCHEMA-r3 gap"},
+    {"id": "T5", "area": "A3 note: reason + refusal verb", "input": "register row, options stated; 'Option B declined: it would shade the next plot.'", "schema": "rank 1; R-A2 reason->NONE does not apply", "coder": "same (R-A2.5 qualifier kept)", "same": true},
+    {"id": "T6", "area": "A3 note: reason only", "input": "'Fencing would shade the next plot.'", "schema": "NONE", "coder": "NONE", "same": true},
+    {"id": "T7", "area": "mechanism: intended failure", "input": "'Ran the drip-line test; three emitters fail, as expected.'", "schema": "run rank 3 OCCURRED; mechanism_refusal not required", "coder": "same", "same": true},
+    {"id": "T8", "area": "mechanism: empty result", "input": "'Searched the rent ledger -> returns nothing.'", "schema": "not mechanism response; REPORTED OCCURRED", "coder": "same", "same": true},
+    {"id": "T9", "area": "mechanism vs named actor", "input": "'Submitted the plot swap on the booking system -> refused by the secretary.'", "schema": "rank 1 ACT_REFUSED; mechanism_refusal false", "coder": "same", "same": true},
+    {"id": "T10", "area": "mechanism, no attempt", "input": "'Terminal: rejected: card expired.'", "schema": "UNKNOWN; mechanism_refusal true", "coder": "same", "same": true},
+    {"id": "T11", "area": "ground without listed marker (R22 shape)", "input": "session log: 'Not allocated — one season only, and rule 4 forbids allocating to first-season members.'", "schema": "cited_as_ground true (D11 example calls the R22 parallel a ground clause)", "coder": "likely false (no listed cue; E-N17 shows 'since')", "same": false, "severity": "nonblocking (SCHEMA-r3 gap)"},
+    {"id": "T12", "area": "non-commencement with noun subject", "input": "'Fencing does not begin.'", "schema": "about_operation begin, about_target fencing (D13 (iii))", "coder": "rule lines same, but E-N14 teaches 'begin <noun>'", "same": false, "severity": "blocking (A1)"}
+  ],
+  "anchoring_issues": [
+    {"id": "A1", "where": "E-N14", "record": "R10", "issue": "Form copies 'IMPLEMENTATION DOES NOT BEGIN'; codes about_operation 'begin digging', against D13.7", "blocking": true},
+    {"id": "A2a", "where": "D13.6", "record": "R12", "issue": "'may be measured and must not be fenced' = R12 syntax; previous review required breaking it", "blocking": true},
+    {"id": "A2b", "where": "D13.5", "record": "R05", "issue": "'authorized to dig and plant' = 'AUTHORIZED TO PLAN AND IMPLEMENT' syntax", "blocking": true},
+    {"id": "A2c", "where": "D13.8", "record": "R30", "issue": "'FENCING is adopted' = 'ANNOTATE is adopted.' template", "blocking": true},
+    {"id": "A2d", "where": "R-A5.1.11", "record": "R18, R20", "issue": "'documented in … §3', 'already adopted in … §9' keep source wording and '§9'", "blocking": true},
+    {"id": "A2e", "where": "D3.5", "record": "R06, R07", "issue": "'Then the bonfire motion itself withdrawn' = 'Then R-90 itself withdrawn' with the noun swapped", "blocking": true},
+    {"id": "A3", "where": "E-A21, E-A22", "record": "R06, R07", "issue": "Implicit 'lower record id = main/first act' assignment on shared spans; open item (KA A5)", "blocking": true},
+    {"id": "A4", "where": "E-N15, D8.4, D10.4", "record": "R06, R07", "issue": "'<body> found it was <class>, not <class>' / 'withdrawn … because <body> found' frames", "blocking": false},
+    {"id": "A5", "where": "E-N17", "record": "R22", "issue": "same structure and answer; also pushes cited_as_ground false (T11)", "blocking": false},
+    {"id": "A6", "where": "E-N10, E-N09, E-A15", "record": "R34, R32, R05", "issue": "answer-pattern templates of determinate records", "blocking": false},
+    {"id": "A7", "where": "R-A3.6, E-A11, D7.6, R-A5.1.22, D3.17, F-norm.adopted_via.1", "record": "R26, R01, R15-R21", "issue": "tested-form or determinate templates", "blocking": false}
+  ],
+  "contamination_issues": [
+    {"issue": "No mention of hypotheses, study, expected answers, record ids or THEORY-CHOICES", "blocking": false},
+    {"issue": "Revision/earlier-coding mentions: 'r2 meaning/sense', 'as in r2', 'r3 gives no lexicon', 'v1_event_ids (lineage)', 'v1 operation list'", "blocking": false},
+    {"issue": "'G3 and G4' / 'gap list' (R-A5.0.1-.2) is a pointer to a project file, contrary to the file's own reading note; removable without change", "blocking": false}
+  ],
+  "not_in_schema": [
+    {"line": "F-norm.deontic.6, D7.8", "item": "r2 meaning of PERMITTED/AUTHORIZED/UNAUTHORIZED/DELEGATED", "acceptable": true, "schema_gap": true, "impact": "high (R04, R12, R13, R14, R32, R33, R34, R36)"},
+    {"line": "R-A5.0.5, R-A5.3.10", "item": "r2 meaning of reported ACT_OCCURRED and ACT_REVERSED", "acceptable": true, "schema_gap": true, "impact": "low"},
+    {"line": "R-X1.5", "item": "r2 rules on other section uses", "acceptable": true, "schema_gap": true, "impact": "low"},
+    {"line": "F-act.operation.2", "item": "v1 operation list", "acceptable": true, "schema_gap": true, "impact": "low"},
+    {"line": "U-2a", "item": "how lineage is established", "acceptable": true, "schema_gap": true, "impact": "low (RECORDS has no v1_event_ids)"},
+    {"line": "R-A5.0.2", "item": "G3/G4 gap list", "acceptable": true, "schema_gap": false, "impact": "none; content stated in R-A5.0.1"},
+    {"line": "(unmarked)", "item": "rule for no-span records R24/R28/R35", "acceptable": false, "schema_gap": true},
+    {"line": "(unmarked)", "item": "section-text source (SOURCES.md)", "acceptable": false, "schema_gap": true},
+    {"line": "(unmarked)", "item": "'taken' in R-A5.1.8", "acceptable": false, "schema_gap": true},
+    {"line": "(unmarked)", "item": "target matching for D4 'on the target'", "acceptable": false, "schema_gap": true},
+    {"line": "(unmarked)", "item": "cue set for cited_as_ground vs closed D15 list", "acceptable": false, "schema_gap": true},
+    {"line": "(unmarked)", "item": "R-A5.1.23 noun-complement refusal always UNKNOWN", "acceptable": false, "schema_gap": true}
+  ],
+  "codability_risk": "MEDIUM-HIGH",
+  "words": 10500,
+  "words_note": "hand estimate, range ~9,500-12,000; about 3x the previous draft",
+  "blocking": [
+    "A1: E-N14 codes 'begin digging' against D13.7 (noun subject -> about_target) and mirrors R10",
+    "A2: rule-line examples remain one-to-one templates of R12 (D13.6), R05 (D13.5), R30 (D13.8), R18/R20 (R-A5.1.11, incl. 'already … adopted in … §9'), R06/R07 (D3.5 'Then … itself withdrawn')",
+    "A3: E-A21/E-A22 set an unstated 'lower id = main act' shared-span assignment (open R06/R07 item)"
+  ],
+  "nonblocking": [
+    "T11/R22 cited_as_ground decided in SCHEMA-r3 only by an example; add a KNOWN-AMBIGUITIES item or state the cue rule",
+    "Vary surfaces of determinate templates: E-N15/D8.4/D10.4 (R06/R07), E-N17 (R22), E-N10 (R34), E-N09 (R32), E-A15 (R05), R-A3.6/E-A11 (R26), D7.6, R-A5.1.22/D3.17 (R01)",
+    "Remove the 'G3 and G4' mention; r2/v1 mentions are low-grade contamination",
+    "SCHEMA-r3 gap: r2 meaning of PERMITTED/AUTHORIZED/UNAUTHORIZED/DELEGATED (about 8 records)",
+    "Add: no-span rule (or KNOWN-AMBIGUITIES item), section source (SOURCES.md), D4 target matching, R-A5.1.23 noun-complement refusal case",
+    "E-N09 lacks a section; performative_token depends on operative text",
+    "Length about 10,500 words (hand estimate) increases codability risk"
+  ]
+}
