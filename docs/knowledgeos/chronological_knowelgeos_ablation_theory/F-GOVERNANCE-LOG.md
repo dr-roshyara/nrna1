@@ -2355,3 +2355,14 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BF/` (A1, B1 = r1; TASK-r2, HUMAN-SCOPE, REVIEW-TASK-r2, BUNDLE-A2.sha256) |
+
+## F-LOG-0194 — **Protocol C r2: PASS_WITH_LIMITATIONS**; main-analyst safety check **SAFE TO RUN (authenticated only)**
+- **Review result:** SCOPE-1, NB-1 and NB-5 fixed; no regressions; at most 29 calls.
+- **Execution is BLOCKED at the authentication gate.** The gh token is invalid. The unauthenticated curl fallback is **not** used (the human: "do not bypass authentication").
+- **No host call has been made.**
+- **Flag for the human (NB-r2-1):** the branch-rule totals reveal a signature-rule *count*. That is branch configuration, not signer data; accepted as within H2 = NO unless the human objects.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BF/` (A2, B2 = r2; MAIN-ANALYST-SAFETY-CHECK.md) |
+| Next | the human runs `gh auth login -h github.com` → two runs → output review → seal → information-gain review (INFOGAIN-PREREG.md) |
