@@ -2538,3 +2538,17 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BI/` (A1, B1 = r1; TASK-r2, REVIEW-TASK-r2, BUNDLE-A2.sha256) |
+
+## F-LOG-0208 — SCHEMA-r3 r2: **PASS_WITH_LIMITATIONS**
+- **Fixed:** N-a and N-d (symmetric; mechanism refusals tagged as TC-7). R18 and R20 are determinate. The theory choices are complete. No blocking leak.
+- **Codability risk HIGH:** about 6,100 words with markup.
+- **Next:** a **consolidation round r3c**, with no substantive change:
+  - drafting fixes;
+  - `act.ground_candidates`;
+  - a markup-free coder schema of ≤ 3,500 words with invented worked examples, plus an equivalence table;
+  - KNOWN-AMBIGUITIES corrected.
+- Then the **human gate before coding.**
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BI/` (A2, B2 = r2; TASK-r3c, REVIEW-TASK-r3c, BUNDLE-A3.sha256) |

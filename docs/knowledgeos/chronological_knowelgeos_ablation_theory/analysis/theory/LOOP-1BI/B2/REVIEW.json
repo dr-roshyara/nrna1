@@ -1,0 +1,69 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "fixed": {
+    "N-a": {"fixed": true, "note": "Rank 3 = REPORTED or SELF-PERFORMANCE (D3); the gate alone enforces R-A3; state_if_extended is defined for both polarities and never NONE; act.gated_candidates records every gated candidate, step-4 losers included, with ext_rank; default act.state unchanged"},
+    "N-d": {"fixed": true, "disclosed": "both: stated attempts coded ACT_ATTEMPTED / FAILED, and all mechanism responses tagged act.mechanism_refusal (TC-7)", "symmetric": true, "note": "Mechanism and actor refusals both reach a counted state when the attempt or proposal is stated, and both go to UNKNOWN otherwise. Residual: the MECHANISM RESPONSE boundary is too wide ('returns nothing', test output); it is tagged and separable"},
+    "R18_R20": {"fixed": true, "R18": "ACT_OCCURRED adopt, REPORTED (D3 (ii) Handover §9), actor ARB, target Epistemic labeling; SPLIT_REQUIRED classify, recommend; gated_candidates classify + recommend (ext ACT_OCCURRED, rank 3, coded false); norm ELIGIBLE VERDICT promote", "R20": "ACT_OCCURRED document, REPORTED (D3 (ii) PB-004 retro §9 + Handover §8), actor NOT_EVIDENCED, target Strangler reconstitution; SPLIT_REQUIRED classify, recommend; norm STATUS_CONSTRAINT status: category D"},
+    "item4_rank1_proposal_or_attempt": true,
+    "item5_D7_vs_D12": true,
+    "item6_primary_clause": {"fixed": true, "R06_R07": "status: operational acceptance, about_target R-90; 'the register holds ...' in other_clauses"},
+    "item7a_TC2_2c": true,
+    "item7b_TC2_2b_join": {"fixed": true, "note": "norm.adopted_via; the join fails in this dataset (no ## R-36 record); this is disclosed"},
+    "item7c_performative_token": {"fixed": true, "note": "minor: 'normative word' undefined for class-label clauses"},
+    "item7d_missing_choices": {"fixed": true, "note": "none were missing; TC-7 added"}
+  },
+  "gap_tests": [
+    {"gap": "G1", "record": "R15/R16/R17", "answer": "NONE, SELF_PERFORMED_OUTSIDE_RA3, classify (A); SPLIT_REQUIRED recommend; gated_candidates classify (coded), recommend; ext ACT_OCCURRED, rank 3", "determinate": "act.state yes; basis/operation open under KA B1"},
+    {"gap": "G1", "record": "R18", "answer": "ACT_OCCURRED adopt, REPORTED; gated classify, recommend", "determinate": true},
+    {"gap": "G1", "record": "R19", "answer": "NONE, OUTSIDE, classify (C); SPLIT_REQUIRED recommend", "determinate": "yes except KA A6 (c)"},
+    {"gap": "G1", "record": "R20", "answer": "ACT_OCCURRED document, REPORTED; gated classify, recommend", "determinate": true},
+    {"gap": "G1", "record": "R21", "answer": "NONE, OUTSIDE, classify (D); 'explicitly ruled' excluded (D15 (iii))", "determinate": true},
+    {"gap": "G1", "record": "R27", "answer": "NONE, OUTSIDE, apply §12; gated ext ACT_ATTEMPTED / PREPARED, rank 2; later_disposition R-86; norm NONE; indicative 'it APPLIES §12'", "determinate": true},
+    {"gap": "G2", "record": "R15-R18", "answer": "ELIGIBLE, VERDICT, promote; category A in other_clauses", "determinate": "yes (R18 other_clauses: KA A8)"},
+    {"gap": "G2", "record": "R19", "answer": "STATUS_CONSTRAINT, status: category C; other_clauses '-> D', 'Stays in ADR-MP-06', '-> Candidate Pattern', 'permanent design principle' (cited_as_ground true)", "determinate": "value yes; other_clauses membership open at B4"},
+    {"gap": "G2", "record": "R20/R21", "answer": "STATUS_CONSTRAINT, status: category D", "determinate": "yes (R21 other_clauses: KA A7)"},
+    {"gap": "G3", "record": "R01", "answer": "NONE, OUTSIDE, resolve; gated ext UNKNOWN, rank 1; mechanism_refusal false; norm PROHIBITED adopt, OPERATOR", "determinate": "yes except cited_as_ground (KA A3)"},
+    {"gap": "G3", "record": "R26", "answer": "ACT_REFUSED supersede ADR-T14, SELF_PERFORMED; norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY, performative_token true", "determinate": true},
+    {"gap": "G3", "record": "R29", "answer": "NONE / NONE; norm NONE", "determinate": true},
+    {"gap": "G4", "record": "R05", "answer": "ACT_ATTEMPTED / PREPARED authorize WP-4C-1, SELF_PERFORMED; norm AUTHORIZED, OPERATOR, plan + implement, stated_by ARB CHIEF (PREPARED)", "determinate": true},
+    {"gap": "G5", "record": "R10", "answer": "NONE / NONE; norm STATUS_CONSTRAINT (D8 (ii)) begin implementation", "determinate": true},
+    {"gap": "G5", "record": "R23", "answer": "ACT_OCCURRED adopt, SELF_PERFORMED, attributed_to PA; norm STATUS_CONSTRAINT status: permanent documentation standard; 'adopted' in other_clauses", "determinate": true},
+    {"gap": "G6", "record": "R02", "answer": "ACT_OCCURRED adopt R-81..R-85, SELF_PERFORMED; norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY", "determinate": true},
+    {"gap": "G6", "record": "R30", "answer": "ACT_OCCURRED adopt, target ANNOTATE; norm PERFORMATIVE_ONLY, about_operation adopt", "determinate": true},
+    {"gap": "G6", "record": "R06/R07", "answer": "norm status: operational acceptance, target R-90, cited_as_ground true, identical on both; acts ACT_WITHDRAWN withdraw (REPORTED) and ACT_OCCURRED rule (REPORTED)", "determinate": "norm yes; the 'rule' act conflicts between R-A5 step 1 (ground-marked, so not a candidate for any record on the span) and §1 / D10 (DISTINCT, so its own shared-span record); assignment open (KA A5)"}
+  ],
+  "still_ambiguous": [
+    "R06/R07 'rule' record: R-A5 step 1 excludes the 'because' segment's act from every record on the shared span (literal: NONE), while §1 / D10 give ACT_OCCURRED rule. NOT in KA",
+    "D15 (ii) PROVENANCE label vs PV: 'PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED' is ground-marked, but provenance mentions are candidates; 'PROVENANCE ANNOTATION' head word is unclear. No current record affected. NOT in KA",
+    "MECHANISM RESPONSE over-inclusion: 'returns nothing' (a successful empty probe) and intended RED test failures become ACT_ATTEMPTED / FAILED, because the FAILED bullet does not re-check non-effect. No current record affected. NOT in KA (B5 covers governance checks only)",
+    "R-A5 step 2 'record is coded NONE / OUTSIDE' is unconditional, while step 4 / PV give R18 / R20 a REPORTED act. Drafting conflict. NOT in KA",
+    "TC-1 1c: the table is additive ('1a + every gated entry'), but the recipe re-applies step 4 (one act per record; R18 loses its REPORTED adopt to classify). NOT in KA",
+    "KA header lists R15-R17 as determinate in act.basis / act.operation, but KA B1 leaves those open",
+    "KA items confirmed: A1/A2 R22; A3 R01 cited_as_ground; A4 R03; A5 R06/R07 assignment; A6 R19; A7 R21; A8 R18; A9-A15 (R13, R14, R33, R08, R09, R11, R31); A16 R-36; B1-B11"
+  ],
+  "known_ambiguities_complete": false,
+  "known_ambiguities_note": "Honest: every listed item checks out, and the §C predictions hold. Incomplete: it misses the six items above. Only the R06/R07 'rule' conflict is value-level on a current record",
+  "neutrality_issues": [
+    "No blocking leak. Na, Nd and DN remove asymmetries; PV and GM are lexical and apply to governance and work acts alike",
+    "Non-blocking: acts excluded by D15 (grounds / evidence column) are not tagged on the record. In this corpus those segments carry most of the work -> norm coupling evidence H-B needs. Suggest act.ground_candidates",
+    "Non-blocking: the PC class-label scope (kinds of act / decision / ruling / instrument / document, plus legend categories) makes governance-object classifications norms, while work-artefact labels ('temporary carrier, not a pattern') may not be. Disclosed as B4 / A7; affects other_clauses only; no label_kind tag",
+    "Non-blocking: MECHANISM RESPONSE over-inclusion would inflate failure (H-B) observations on future log / commit spans. It is tagged (mechanism_refusal), so separable"
+  ],
+  "theory_choices_complete": true,
+  "theory_choices_note": "TC-1 to TC-7 are listed and computable from the named tags. Specification defect: TC-1 1c's table (additive) and recipe (competitive step 4) disagree; the analysis must state which it uses",
+  "codability_risk": "high",
+  "codability_note": "About 25 fields per record with three nested lists (gated_candidates 7 sub-fields, other_clauses 6, indicative), 15 definitions, a 4-step R-A5 and a 7-step R-N3, four interleaved revision-markup layers, and 27 predicted ambiguities plus 6 found here. Applicable within the bundle, but a consolidated markup-free text with worked examples is recommended before coding",
+  "blocking": [],
+  "nonblocking": [
+    "Reconcile R-A5 step 1 'not a candidate for this record' with §1 / D10 for shared-span ground acts (R06/R07)",
+    "Remove PROVENANCE from D15 (ii) or reconcile it with PV; settle the 'PROVENANCE ANNOTATION' head word",
+    "MECHANISM RESPONSE: require a stated non-effect; drop or qualify 'returns nothing'; say whether intended test failures count",
+    "Make R-A5 step 2's 'record is coded NONE ...' conditional on no ungated candidate winning at step 4",
+    "Align the TC-1 1c table and recipe (e.g. additive per (operation, target))",
+    "Correct the KNOWN-AMBIGUITIES header for R15-R17 and add the missing items",
+    "Add act.ground_candidates so that acts excluded by D15 stay computable",
+    "Consider a label_kind tag on class-label clauses (B4)",
+    "Define the 'normative word' of a class-label clause for performative_token; fill mechanism_refusal on R03 (D5 (i) 'NOT ADOPTED')",
+    "Publish a consolidated, markup-free schema with one worked example per R-A5 path"
+  ]
+}
