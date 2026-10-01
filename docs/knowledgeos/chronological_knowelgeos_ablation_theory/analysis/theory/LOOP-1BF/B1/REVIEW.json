@@ -1,0 +1,178 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "basis": "REVIEW-TASK.md, REVIEW-r0.md, CHANGELOG-C-r1.md, PROTOCOL-C.md, scope_c.sh (read line by line); nothing run",
+  "scenario_assumptions": "repository and commit GET 200; unnamed calls return their own status ('own' = lab(): 200>=1 EXISTS, 200 empty NOT_EVIDENCED_ON_HOST, non-200 NOT_ACCESSIBLE[...]); checks/status/runs/rulesets/events always called once repository is 200",
+  "scenarios": [
+    {
+      "id": "a",
+      "description": "pulls association returns 403",
+      "channel_labels": {
+        "repository": "EXISTS",
+        "commit": "own",
+        "prs": "NOT_ACCESSIBLE (http 403; note 'http 403; n=NA; cap_reached=NA; pr_http=none')",
+        "reviews": "NOT_ACCESSIBLE[dependency_failed] (not called: PR association lookup http 403)",
+        "timeline": "NOT_ACCESSIBLE[dependency_failed] (not called: PR association lookup http 403)",
+        "checks": "own",
+        "status": "own",
+        "runs": "own",
+        "protection": "NOT_ACCESSIBLE[dependency_failed] (not called: base branch not derivable (PR association lookup http 403)); no ch_protection.tsv",
+        "branch_rules": "NOT_ACCESSIBLE[dependency_failed]; no ch_branch_rules.tsv",
+        "rulesets": "own (called)",
+        "events": "own"
+      },
+      "derived_fields": "prs.tsv/timeline.tsv header only; cap_reached=NA; no false/0",
+      "ok": true
+    },
+    {
+      "id": "b",
+      "description": "pulls returns 200 []",
+      "channel_labels": {
+        "repository": "EXISTS",
+        "commit": "own",
+        "prs": "NOT_EVIDENCED_ON_HOST (http 200; n=0; cap_reached=false)",
+        "reviews": "NOT_APPLICABLE[no_associated_pr]",
+        "timeline": "NOT_APPLICABLE[no_associated_pr]",
+        "checks": "own",
+        "status": "own",
+        "runs": "own",
+        "protection": "NOT_APPLICABLE[no_associated_pr] (note: does not show branches unprotected)",
+        "branch_rules": "NOT_APPLICABLE[no_associated_pr]",
+        "rulesets": "own (called)",
+        "events": "own"
+      },
+      "derived_fields": "only 200-derived values (n=0, cap_reached=false); no PR rows",
+      "ok": true
+    },
+    {
+      "id": "c",
+      "description": "pulls 200 with one PR; PR GET 404",
+      "channel_labels": {
+        "repository": "EXISTS",
+        "commit": "own",
+        "prs": "EXISTS (http 200; note pr_http=404)",
+        "reviews": "own from rv{n} (NOT_ACCESSIBLE if 404)",
+        "timeline": "own from tl{n} (NOT_ACCESSIBLE if 404; timeline.tsv NA row)",
+        "checks": "own",
+        "status": "own",
+        "runs": "own",
+        "protection": "NOT_ACCESSIBLE[dependency_failed] (base branch not derivable (lowest PR GET http 404))",
+        "branch_rules": "NOT_ACCESSIBLE[dependency_failed]",
+        "rulesets": "own (called)",
+        "events": "own"
+      },
+      "derived_fields": "prs.tsv pr_http=404; all PR-sourced fields NA incl. base_ref, merged*, relations, n_approvals_by_pr_author; review fields follow reviews_http",
+      "ok": true
+    },
+    {
+      "id": "d",
+      "description": "protection returns 404 (curl mode)",
+      "channel_labels": {
+        "repository": "EXISTS",
+        "commit": "own",
+        "prs": "EXISTS",
+        "reviews": "own",
+        "timeline": "own",
+        "checks": "own",
+        "status": "own",
+        "runs": "own",
+        "protection": "NOT_ACCESSIBLE (http 404; no special case)",
+        "branch_rules": "own (called)",
+        "rulesets": "own (called)",
+        "events": "own"
+      },
+      "derived_fields": "ch_protection.tsv: http=404, scope=CURRENT_STATE_ONLY, n_distinct_bases=<nb>, all seven protection fields NA",
+      "ok": true
+    },
+    {
+      "id": "e",
+      "description": "budget exhausted before events (unreachable as configured: max 29 <= 40)",
+      "channel_labels": {
+        "repository": "own",
+        "commit": "own",
+        "prs": "own",
+        "reviews": "own",
+        "timeline": "own",
+        "checks": "own",
+        "status": "own",
+        "runs": "own",
+        "protection": "own",
+        "branch_rules": "own",
+        "rulesets": "own",
+        "events": "NOT_ACCESSIBLE[not_called_budget] (http 'budget'; note 'not called: call budget reached; ...')"
+      },
+      "derived_fields": "ch_events.tsv http=budget, all values NA; no calls.tsv row; budget_hit=true; exit 4",
+      "ok": true
+    },
+    {
+      "id": "f",
+      "description": "transport failure (000) on reviews",
+      "channel_labels": {
+        "repository": "EXISTS",
+        "commit": "own",
+        "prs": "EXISTS",
+        "reviews": "NOT_ACCESSIBLE[transport] (http 000; note 'transport failure (000); see prs.tsv')",
+        "timeline": "own",
+        "checks": "own",
+        "status": "own",
+        "runs": "own",
+        "protection": "own (base from PR GET)",
+        "branch_rules": "own",
+        "rulesets": "own (called)",
+        "events": "own"
+      },
+      "derived_fields": "prs.tsv reviews_http=000; n_reviews, n_distinct_reviewers, n_approvals*, reviews_truncated all NA",
+      "ok": true
+    }
+  ],
+  "item1_answers": {
+    "non_200_mapped_to_absence": false,
+    "derived_false_or_0_instead_of_NA": false,
+    "rulesets_always_called": true
+  },
+  "fixed": {
+    "B1": "fixed",
+    "B2": "fixed",
+    "B3": "fixed",
+    "N1": "fixed",
+    "N3": "fixed",
+    "N4": "fixed",
+    "N5": "fixed",
+    "N6": "fixed",
+    "N7": "partial (git required + plain mkdir fixed; grep -I binary skip and unchecked stage writes neither fixed nor disclosed)"
+  },
+  "calls": [
+    "GET rate_limit (probe_gh, gh mode)",
+    "GET rate_limit (probe_curl, curl mode)",
+    "GET repos/REPO",
+    "GET repos/REPO/commits/{sha}",
+    "GET repos/REPO/commits/{sha}/pulls?per_page=5",
+    "GET repos/REPO/pulls/{n} (<=5)",
+    "GET repos/REPO/pulls/{n}/reviews?per_page=100 (<=5)",
+    "GET repos/REPO/issues/{n}/timeline?per_page=100 (<=5)",
+    "GET repos/REPO/commits/{sha}/check-runs?per_page=100",
+    "GET repos/REPO/commits/{sha}/status?per_page=100",
+    "GET repos/REPO/actions/runs?head_sha={sha}&per_page=100",
+    "GET repos/REPO/rulesets?per_page=100&includes_parents=true (always)",
+    "GET repos/REPO/branches/{base}/protection",
+    "GET repos/REPO/rules/branches/{base}?per_page=100",
+    "GET repos/REPO/events?per_page=100&page={1..3}"
+  ],
+  "regressions": [
+    {"check": "GET only", "ok": true, "note": "only get() reaches the network: gh api -X GET -i (L38), curl -sS -X GET (L41)"},
+    {"check": "bound", "ok": true, "note": "one commit; PR cap 5 (per_page + slice); one base from lowest PR; window constant filter; budget refusal before N++; max 29 <= 40"},
+    {"check": "identity policy", "ok": true, "note": "OUT gets only derived fields with REPO substituted; raw json/hdr/http and ids.txt in TMP only; guard fails closed on a match and no fixed OUT string trips it; but a grep error makes it fail open (NB-1)"},
+    {"check": "determinism and local safety", "ok": true, "note": "LC_ALL=C, TZ=UTC, sorted jq output; cd only in subshells; work-tree refusal for OUT and TMP; plain mkdir; guarded rm -rf; work-tree check can pass on a git error (NB-5)"},
+    {"check": "M-TIME labels", "ok": true, "note": "per-field labels match §2; observation_time labelled HOST_GENERATED / CLIENT_SUPPLIED"},
+    {"check": "neutrality", "ok": true, "note": "norm state and independence constant; *_le_t recorded, not interpreted"}
+  ],
+  "blocking": [],
+  "nonblocking": [
+    {"id": "NB-1", "where": "scope_c.sh L216, PROTOCOL-C §5", "issue": "'! grep' turns grep exit 2 (error) into success; if ids.txt is missing (its write at L215 is unchecked) or grep has an I/O error, the guard passes. r0 and §5 wrongly call this fail-closed", "fix": "require exit status 1 explicitly and [ -s ids.txt ]"},
+    {"id": "NB-2", "where": "scope_c.sh L113", "issue": "a budget hit after rv{k} of a non-last PR breaks the loop; later PRs are never called but reviews can be labelled from 200s only (possible NOT_EVIDENCED_ON_HOST); prs.tsv rows dropped without a note. Latent: unreachable at 29 <= 40", "fix": "append 'budget' to pst/rv/tl for each skipped PR"},
+    {"id": "NB-3", "where": "scope_c.sh L116, PROTOCOL-C §2", "issue": "prs existence and http reflect only the pulls list; a PR GET failure shows only as pr_http in the note and in prs.tsv; the §2 aggregation sentence does not cover prs", "fix": "state the prs treatment in §2"},
+    {"id": "NB-4", "where": "PROTOCOL-C §5, CHANGELOG N5", "issue": "'cannot be tripped' is overstated: any raw login or name of 3+ characters that equals a whole word in OUT trips the guard (base branch name, '<login>-patch-1', note words); fails safe", "fix": "reword"},
+    {"id": "NB-5", "where": "scope_c.sh L23", "issue": "git rev-parse exits 128 for a distrusted (safe.directory) or ceiling-hidden work tree, so inside() treats it as outside and OUT inside it is accepted", "fix": "treat a git error other than 'not a git repository' as inside"},
+    {"id": "NB-6", "where": "N7 remainder, PROTOCOL-C §6", "issue": "grep -I binary skip and unchecked stage writes are neither fixed nor disclosed"},
+    {"id": "NB-7", "where": "scope_c.sh L136", "issue": "status passes per_page=100 and exposes total_count but has no status_truncated flag (minor)"}
+  ]
+}

@@ -2343,3 +2343,15 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BF/` (A, B = r0; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |
+
+## F-LOG-0193 — **Protocol C r1: PASS_WITH_LIMITATIONS** (B1–B3 fixed; all 6 failure scenarios OK). The main analyst's safety check then **BLOCKED execution** on a defect the reviewer missed
+- **SCOPE-1:** the script reads and outputs the target commit's `verification` fields (`signature_verified`, `verification_reason`). That is **signer verification, which the human declined (H2 = NO)**, and "signer investigation" is excluded from H1.
+- **Minimal r2 frozen:**
+  - remove every signature or verification read;
+  - NB-1: make the identity guard fail closed on grep or `ids.txt` errors;
+  - NB-5: make `inside()` fail closed on git errors.
+- **No host call has been made.** Stop rule: r2 FAIL → STOP for the human
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BF/` (A1, B1 = r1; TASK-r2, HUMAN-SCOPE, REVIEW-TASK-r2, BUNDLE-A2.sha256) |
