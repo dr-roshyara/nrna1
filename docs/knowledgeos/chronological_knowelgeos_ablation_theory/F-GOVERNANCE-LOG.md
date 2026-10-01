@@ -2502,3 +2502,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 **Main-analyst note:** the schema-dependent sub-claims of H5 (e.g. "no act-level contrasts, 23 vs 1") are covered by item 3. D1 is structural and stands.
 
 **Execution guard for r3:** any r3 rule that encodes a substantive choice favouring H-D or H-B (cf. CI1: R-A3 built H-D into the observations) → **STOP for the human** before coding.
+
+## F-LOG-0205 — 1bi SCHEMA-r3 **pre-registered** (draft → review → recode)
+- **Scope:** the six gaps only. Each rule is an operational decision procedure; no rule may be chosen to reproduce an existing coding; theory-laden choices go to THEORY-CHOICES.md, and the human decides them.
+- **Recode prereg, fixed before any r3 coding:**
+  - coders Opus 5.5, Sonnet 5.5 and Haiku 4.5: isolated, outside the repo, one attempt each;
+  - **pass:** pairwise κ ≥ 0.67 on both act.state and norm.deontic for every pair;
+  - the new pairwise comparator is frozen before any return exists;
+  - a pass shows within-family reproducibility only.
+- **Worker bundle:** GAPS.md has coder identities removed; no coding is supplied.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BI/` (PREREG, TASK, REVIEW-TASK, GAPS, BUNDLE-A.sha256) |
