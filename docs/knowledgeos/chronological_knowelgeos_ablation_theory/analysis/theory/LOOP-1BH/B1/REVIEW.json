@@ -1,0 +1,46 @@
+{
+ "verdict": "PASS_WITH_LIMITATIONS",
+ "verdict_basis": "Every REVIEW-r0.json item id is addressed and none is wrong; no R2_DEPENDENT tag is flipped to no; ids are stable (74 -> 89, 15 new, none withdrawn); status remains PROVISIONAL; section H gains only prohibitions. Limitations: changes resting on RETURN-02-REVIEW.md, CODING-REVIEW.json and CONFORMANCE-REVIEW.md (absent from this directory) could be checked only against REVIEW-r0's report of them, which the record discloses; six minor nonblocking points remain.",
+ "inputs_note": "TASK-r1.md named in REVIEW-TASK.md does not exist; TASK.md is the r1 task. The r0 record is not present (overwritten by r1), so tag history was checked against REVIEW-r0 and CHANGELOG-r1.",
+ "coverage": {
+  "P1": "ok", "P2": "ok", "P3": "ok", "P4": "ok", "P5": "ok", "P6": "ok",
+  "L-1": "ok", "L-2": "ok", "L-3": "ok",
+  "S-1": "ok", "S-2": "ok",
+  "T-1": "ok", "T-2": "ok", "T-3": "ok", "T-4": "ok", "T-5": "ok",
+  "H-1": "ok", "H-2": "ok", "H-3": "ok", "H-4": "ok", "H-ok": "ok",
+  "O-F1": "ok", "O-F2": "ok", "O-F3": "ok", "O-F4": "ok", "O-F5": "ok", "O-F6": "ok", "O-F7": "ok",
+  "O-R1": "ok", "O-R2": "ok", "O-R3": "ok", "O-R4": "ok", "O-R5": "ok", "O-R6": "ok", "O-R7": "ok", "O-R8": "ok", "O-R9": "ok"
+ },
+ "coverage_notes": {
+  "O-R1": "Status line follows TASK.md ('PROVISIONAL, pending R2 (cross-family)') rather than O-R1's literal 'pending the Gate 1 decision'; the Gate 1 decision (F15) is named alongside. Conflict not disclosed in CHANGELOG (N1).",
+  "P1": "19-record count verifiable only via REVIEW-r0 (CODING-REVIEW.json absent); disclosed.",
+  "O-R2": "Numbers verified against RETURN-02-COMPARISON.json; verbatim quotes, coder description, seal and comparator only via REVIEW-r0; disclosed."
+ },
+ "strength_errors": [],
+ "strength_check": "RETURN-02 items (B01, B05, B09, B10, C00, D08, E02-E04, F12, H16) stay within 'within-family reproducibility of act.state / norm.deontic / membership on these 36 records'; free-text fields marked unassessed; no cross-family claim. Minor nuances in nonblocking N2, N3.",
+ "tag_flips": [],
+ "tag_changes_observed": [
+  {"item": "H05", "from": "no", "to": "yes", "id": "T-1"},
+  {"item": "F10", "from": "no", "to": "yes", "id": "T-2"}
+ ],
+ "integrity_ok": true,
+ "integrity": {
+  "ids_stable": true,
+  "item_count": 89,
+  "new_ids": ["A13", "A14", "A15", "A16", "B08", "B09", "B10", "D15", "F14", "F15", "F16", "G07", "G08", "H18", "H19"],
+  "withdrawn": [],
+  "withdrawn_with_reason": "n/a (none withdrawn; none required per O-R8)",
+  "status_provisional": true
+ },
+ "regressions": [],
+ "section_h_smuggling": "none (H18 and H19 are MAY_NOT prohibitions; no H-D, H-B, aggregate or axiom added)",
+ "blocking": [],
+ "nonblocking": [
+  "N1 (O-R1): status phrase 'pending R2 (cross-family Gate 1 coding)' follows TASK.md, not O-R1's 'pending the Gate 1 decision'; the paths diverge if decision 1 closes Gate 1 within-family. F15 'Until this is decided, R2 (cross-family) is outstanding' conflates them. CHANGELOG does not disclose the conflict. Suggest 'PROVISIONAL, pending R2 (cross-family) or the Gate 1 decision (F15)'.",
+  "N2: header / R2_definition 'RETURN-02 ... discharges no R2 condition' is flatter than REVIEW-r0 O-R4, which leaves reopening condition 3 unaddressed by the sources and sufficiency to human decision 1. Align with D01's wording.",
+  "N3 (A15): identifying these as 'the S0815 reports referred to in H5 §3 and READINESS E3' is the record's own identification (H5 §3 / E3 do not enumerate them); 'per P8 all go through an act' also covers P3 items; an interpretive sentence sits in an L0 item.",
+  "N4 (F14): '(A4, B1)' are READINESS channel names but read as record ids A04/B01 (same kind of ambiguity as P6).",
+  "N5 (CHANGELOG): lists REVIEW-TASK.md as absent (now present; no effect on record); REVIEW-TASK.md refers to the task file as TASK-r1.md, but it is TASK.md.",
+  "N6 (B04, no review id): REVIEW-r0 regularity_check remark that 'successive rulings' is loose for R31 remains unapplied; exclusion disclosed in CHANGELOG."
+ ]
+}

@@ -2450,3 +2450,13 @@ No H-D/H-B scoring
 - **Review (Claude, read-only):** NOT-REPRODUCED-SCHEMA-UNDERDETERMINED — 21 of 24 disagreeing cells admissible under SCHEMA-r2; 3 coder deviations (R02, R06, R30); cluster R15–R21 = 14 cells.
 - **Consequences recorded, not decided:** RETURN-02 κ 1.0 re-read as same-model only (annotation added to RETURN-02-REVIEW.md); R2_DEPENDENT R3/R4 items carry an additional "schema-underdetermined" qualifier pending human decision.
 - **Open for human:** Gate 1 status (no threshold was pre-registered) · SCHEMA-r3 · downstream handling. Record: `GATE1-APRIME/RETURN-03-CLAUDE-REVIEW.md`.
+
+## F-LOG-0202 — **1bh sealed: R3 Empirical Theory Record, PROVISIONAL** (r1; re-review PASS_WITH_LIMITATIONS)
+- **Review result:** full coverage of the ~40 r0 corrections; 0 strength errors, 0 tag flips, 0 regressions.
+- **The record keeps apart:** observed · reconstructed · regularities (≤ 1 candidate) · non-identifiability (H5, D1 necessary but not sufficient, P1–P8) · anomalies (directions symmetric) · unknowns · scope · R4 may / may not assume.
+- **Not frozen.** It awaits the R2 return (F-LOG-0201: within-family, 2nd model) and N1–N6, then **human adoption to freeze**.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/EMPIRICAL-THEORY-RECORD-PROVISIONAL.{md,json}`; `LOOP-1BH/` (A, B, A1, B1, RECONCILIATION.md) |
+| Next | human runs the R2 Claude coding per `HANDOVER-03-CLAUDE-INSTRUCTIONS.md` (or says "run it") |
