@@ -2552,3 +2552,15 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BI/` (A2, B2 = r2; TASK-r3c, REVIEW-TASK-r3c, BUNDLE-A3.sha256) |
+
+## F-LOG-0209 — SCHEMA-r3 consolidation r3c: **FAIL** (B1 non-equivalence: refusal-to-proposal binding and target dropped; B2 anchoring: examples patterned on real records). **Repair r3c-1 frozen; stop rule: r3c-1 FAIL → human**
+- **Root cause of B2 (the main analyst's bundle design; disclosed):** the r3c worker had RECORDS.json and SOURCES.md.
+- **The r3c-1 worker gets SCHEMA-r3 only:**
+  - examples from one neutral fictional domain (an allotment-garden association);
+  - SCHEMA-r3.md wins on any difference;
+  - one rule per line for line-level equivalence checking.
+- **The reviewer keeps the records** to check anchoring, and runs ≥ 5 adversarial equivalence tests.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BI/` (A3, B3 = r3c; TASK-r3c1, REVIEW-TASK-r3c1, BUNDLE-A4.sha256) |

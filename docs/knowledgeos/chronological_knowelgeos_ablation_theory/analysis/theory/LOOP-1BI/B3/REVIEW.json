@@ -1,0 +1,50 @@
+{
+  "verdict": "FAIL",
+  "drafting_fixed": {
+    "SS_shared_span_ground_acts": true,
+    "PR_provenance_vs_PV": true,
+    "MR_mechanism_response_stated_non_effect_and_intended_failures": true,
+    "S2_step2_conditional": true,
+    "TC1c_table_vs_recipe": "fixed_by_binding_erratum_in_CHANGELOG-r3c_§2; THEORY-CHOICES.md not rewritten and not in bundle (unverifiable here; disclosed as KA B13)",
+    "GC_act_ground_candidates": true,
+    "NW_normative_word_class_label": true,
+    "R03_mechanism_refusal_false": true,
+    "no_substantive_change_beyond_items": true
+  },
+  "equivalence_ok": false,
+  "equivalence_issues": [
+    "BLOCKING rows 43/44/117: CODER D4 drops 'on the target', rank-1 cell drops 'for X', and R-A2's 'refusal expression that disposes of that proposal' is absent for D5 (i). Section 'Motion: supersede ADR-Q1' + span 'declines to supersede ADR-Q2' -> SCHEMA-r3 UNKNOWN, CODER ACT_REFUSED. No current-record value change found.",
+    "Row 46: the A3 note 'A reason against an unchosen option is NONE' drops the qualifier 'with no refusal expression' (rank-1 table still governs; read as harmless).",
+    "Row 127: 'the intended failure is not a non-effect marker' and 'rank 3 if it occurred' are compressed to 'whose run is coded like any act'.",
+    "§7 'none adds a rule' is false: the Shared example's '(by lineage)' adds a record-assignment criterion that SCHEMA-r3 does not state, and it cannot be applied because RECORDS.json has no v1_event_ids.",
+    "Row 138 / §7 'every span is invented' is false: §5 uses the source labels 'a planning act' and 'a ruling' (R-60) and 'RULING AS ISSUED, VERBATIM' (R-86).",
+    "Minor compressions with no plausible value effect: 'guard' dropped from D8's facts sentence; 'no RED begins' form dropped from D8 (ii); D4 question wording shortened.",
+    "Unverifiable in bundle: rows 27 and 110 (need SCHEMA-r2.md); §8 word count (~3,400 claimed vs ~3,600 by this hand estimate)."
+  ],
+  "contamination_issues": [
+    "None: no mention of hypotheses, earlier or expected codings, the reliability study, THEORY-CHOICES or records.",
+    "None: no RECORDS.json span used verbatim.",
+    "BLOCKING: the class-label example 'The panel ruled the memo was a planning act, not a ruling.' reuses R-60 source labels ('a PLANNING act'; 'a ruling' is R09's label, same section) and mirrors R06/R07's structure and answer.",
+    "Source wording in the 'Reproduced' example: 'RULING AS ISSUED, VERBATIM' (R-86, R02's section) and '(Chief Engineer instruction)' patterned on R23.",
+    "Anchoring templates of specific records' answers: R12 ('D MAY BE REVIEWED AND MUST NOT BE SENT'), R05/R04 ('RELEASE 4 AUTHORIZED — Chief Steward (PREPARED)', 'AUTHORIZED TO MIGRATE AND DECOMMISSION'), R01 (Gated negative 'declines to rename', ext UNKNOWN rank 1; 'No contractor may approve'), R26 ('ADR-Q2 is not superseded'), R06/R07 (Shared 'because'), R18/R20 ('already recorded in Charter §4'), R10 ('Rollout … does not begin'), R22 ('forbids approving'), R15–R21 (GRADUATE / 'Stays experimental').",
+    "Examples leaning on open ambiguities: 'Gated: Dataset Q is classified as restricted' (register row, present passive, 'as <NP>') toward KA A13 reading (a) for R09; '(by lineage)' toward KA A5."
+  ],
+  "codability_risk": "MEDIUM-HIGH",
+  "coder_schema_words": "≈3600 (hand estimate, range ~3400–3800; not machine-counted; target ≤3500 possibly exceeded)",
+  "known_ambiguities_ok": true,
+  "blocking": [
+    "B1 Non-equivalence: CODER drops the proposal's target and refusal-to-proposal binding (D4 'on the target', rank 1 'for X', R-A2 'disposes of that proposal'), so ACT_REFUSED vs UNKNOWN can differ on constructible inputs; EQUIVALENCE rows 43/44/117 wrongly say Same.",
+    "B2 Contamination/anchoring: §5 examples are not fully invented ('a planning act, not a ruling' from R-60, the section of R08/R09, mirroring R06/R07; 'RULING AS ISSUED, VERBATIM' from R-86), several are one-to-one templates of R12/R05/R01, and 'Gated' and '(by lineage)' lean on open items A13/A5."
+  ],
+  "nonblocking": [
+    "Row 46: restore 'with no refusal expression' in the A3 note.",
+    "Row 127: restore 'the intended failure is not a non-effect marker; rank 3 if it occurred'.",
+    "Remove '(by lineage)' or state the assignment rule in both texts; it cannot be applied without v1_event_ids.",
+    "Coder word count ≈3600 by hand estimate, possibly over the 3500 target; EQUIVALENCE's ≈3400 is unverified.",
+    "EQUIVALENCE rows 27/110 and the TC-1 1c erratum cannot be verified (SCHEMA-r2.md and THEORY-CHOICES.md absent from bundle).",
+    "KA B5 says no RECORDS span is exposed, but R11's section (git-6a67da5d7: '4 failed', 'Interface … not found', RED boundary) is read under D6 'span or section'; R11 is exposed to B5 (b)/(c), and A14 omits the ATTEMPTED/FAILED reading.",
+    "KA lists R24/R28/R35 (NO SOURCE SPAN AVAILABLE) as determinate, but no rule decides NONE (rank 4) vs UNKNOWN (G2); SOURCES.md's 'UNCLEAR' is not a schema value.",
+    "Coder text is not self-contained: the v1 operation list, section texts (SOURCES.md, incl. the matrix Evidence header) and source/blob/lineage are needed but not supplied.",
+    "Minor compressions: 'guard' (D8), 'no RED begins' (D8 (ii)), D4 question wording."
+  ]
+}
