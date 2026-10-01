@@ -2405,3 +2405,19 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BH/` (PREREG, TASK, REVIEW-TASK, BUNDLE-A.sha256) |
+
+## F-LOG-0199 — R2 handover -03 prepared, plus a **state correction**
+**State correction (main analyst; disclosed):**
+- A within-family Gate 1 check **already exists**. On 2026-09-30, by human act, a Claude subagent coded bundle -02. The return was sealed before reading (`4bd42c3a5`), then compared and reviewed (`b7cc5b7dd`): κ 1.0 on act.state / norm.deontic vs 1ax. The result is **within-family only; Gate 1 proper is unsatisfied** (`GATE1-APRIME/COMMISSIONING.md`, `RETURN-02-*`).
+- These commits were **not logged in F-GOVERNANCE-LOG**, and the main analyst's recent summaries said "pending" without mentioning them.
+- The 1bh (R3) worker bundle omits `RETURN-02-COMPARISON.json`; the R3 review must add it.
+
+**Handover -03:**
+- operator guide `GATE1-APRIME/HANDOVER-03-INSTRUCTIONS.md`, reviewed PASS_WITH_LIMITATIONS, 8 fixes applied (web access off, one attempt, transcript, return-defect rule, Variant B as a deviation, training-contamination limitation);
+- `COMMISSIONING.md` updated.
+
+**Awaiting human handover**
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/GATE1-APRIME/` (COMMISSIONING.md §HANDOVER -03, HANDOVER-03-INSTRUCTIONS.md) |

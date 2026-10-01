@@ -18,3 +18,13 @@
 - **Executed as:** a fresh Claude general-purpose subagent (Opus 5.5), given only the 5 bundle-02 files (hashes re-verified unchanged after coding), with instructions to read nothing else. It has no session history; not verified to be free of inherited CLAUDE.md system context.
 - **Consequence (binding on every later claim):** this is a **within-family reproducibility check**, NOT the cross-family independence test Gate 1 was designed for. Correlated Claude errors are not detected by it. It must not be reported as Gate 1 proper satisfied.
 - **Return sealed before reading:** `RETURN-02.sha256` (files at `~/F-APRIME-GATE1-RETURN-02/`).
+
+## HANDOVER -03 (prepared 2026-10-01): Gate 1 proper, non-Claude coder (R2)
+- **Status: PREPARED. AWAITING HUMAN HANDOVER.** Bundle -02 and prompt -02 are unchanged; both hashes were re-verified on 2026-10-01.
+- **Operator guide:** `HANDOVER-03-INSTRUCTIONS.md` (= `~/F-APRIME-GATE1-HANDOVER-INSTRUCTIONS-03.md`), sha256 `d68525c4e4dabda3a56e725fba8638418d57148eff8094df4705ebb49e6de286`. It was reviewed by `kos-theory-reviewer` (PASS_WITH_LIMITATIONS); all 8 corrections are applied.
+- **Session requirements:** a fresh session; memory, personalization and **web access** off; one attempt; nothing said beyond the frozen prompt.
+- **The operator's current ChatGPT review conversation is excluded**, because it has seen Claude's conclusions.
+- **Variant B** (the operator unpacks; 5 files; a 3-line prompt) is a **recorded deviation**: the coder does not verify the hash.
+- **Return:** `~/F-APRIME-GATE1-RETURN-03/` (CODING.json, NOTES.md, TRANSCRIPT.txt, PROVENANCE.txt).
+- **Return-defect rule:** a non-JSON or mis-structured return is **logged as a defect and never repaired** by Claude. The comparator runs only on an as-returned, parseable file; otherwise the defect is reported.
+- **Known limitation:** possible training-data exposure if the repository was ever public (PROVENANCE `repo_public`).
