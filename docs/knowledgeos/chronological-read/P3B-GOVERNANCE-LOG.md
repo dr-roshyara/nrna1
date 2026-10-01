@@ -1716,3 +1716,14 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | (4) | the §4 re-registration text, accepted as a draft for v2.9 |
 | (5) | the W-SYS treatment and the estimation note, accepted as policy in principle, binding only at G3 |
 | Not authorized | G1.5 (adjudication table), G2 (rehearsal dispatch), G3 (v2.9 approval, production rebind), G4 (retire, counted canary), G5 (full S5); any production change; corpus reads; R-5 |
+
+## G-LOG-0111 — Human act: G1.5 adjudication table v2 approved (all PROPOSAL defaults)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-01: "APPROVED — G1.5: all PROPOSAL defaults of the G1.5 adjudication table v2 (9fcb69389) [except rows …]. Does not authorize G2–G5, production changes, corpus reads or R-5." |
+| Reading | the bracketed placeholder "[except rows …]" was left unfilled; recorded as **no exceptions** — all 64 PROPOSAL defaults of §1 (sub-rows included) are adopted, plus the 14 DECIDED-by-G1 rows of §2 as stated. The owner may still name exceptions; nothing is bound to production before G3 |
+| Table | `audit-p3b/canary-diag/annex/G15-ADJUDICATION-TABLE.md` v2 (branch `s-series/s5-r7-v29-repair`, commit `9fcb69389`; sha256 `7a258d8cf7f29b094c750f7ff94a287eb11f808af8bec5d4ee91ab9b662d2125`); review `G15-REVIEW.md` (READY-WITH-FIXES, applied) |
+| Frozen with this act | the key-extraction tool `audit-p3b/canary-diag/tools/extract_keys.py` sha256 `c6434cdd38491ceb24b7f1dd64428eb0fd9a4b12b6d605d1a708ec2137506492` (package v4.1 H2 step 2) |
+| Effect | the v2.9 annex, the annex loader, the two-way reachability test and the code changes of the adopted rows are engineered under G-LOG-0110's §3a constraints (isolated worktree, synthetic data, TDD, independent review) |
+| Not authorized | G2 (rehearsal dispatch), G3 (v2.9 approval, production rebind), G4, G5; production changes; corpus reads; R-5 |
