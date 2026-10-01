@@ -2325,3 +2325,21 @@ No H-D/H-B scoring
   - Q4 requires D1 to be broken, with the symmetry rule applied.
 - **Mapping:** Q4 YES → Case B (stop; draft an experiment for the human). Otherwise → Case A (prepare H5).
 - **Context:** the latest human operating prompt (post-H1 protocol) is consistent with the plan in force; no protocol change. The Protocol C worker is still running.
+
+## F-LOG-0192 — **Protocol C r0: FAIL** (3 blocking issues; read-only, bound, identity and timestamp labels OK)
+- **B1:** a failed PR-association lookup is treated as "no PR" → absence labels.
+- **B2:** channels that were never called are labelled NOT_EVIDENCED; rulesets is skipped.
+- **B3:** derived fields default to false/0 on non-200 responses.
+
+**All three are forced negatives:** a failure is mislabelled as absence. **No host call has been made.**
+
+**Targeted r1 is frozen:**
+- a single status-gating rule, with NA fields on any non-200 response;
+- rulesets always called;
+- plus N1 (observation time), N3–N7.
+
+**Pre-registered stop rule:** r1 FAIL → one more targeted r2; **r2 FAIL → STOP for the human**
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BF/` (A, B = r0; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |

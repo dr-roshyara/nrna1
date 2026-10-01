@@ -1,0 +1,63 @@
+{
+  "verdict": "FAIL",
+  "calls": [
+    {"line": 38, "method": "GET", "endpoint": "gh api -X GET -i <path> (transport inside get())"},
+    {"line": 40, "method": "GET", "endpoint": "curl -sS -X GET https://api.github.com/<path> (transport inside get())"},
+    {"line": 173, "method": "GET", "endpoint": "rate_limit (gh probe)"},
+    {"line": 174, "method": "GET", "endpoint": "rate_limit (curl probe, curl mode only)"},
+    {"line": 177, "method": "GET", "endpoint": "repos/REPO"},
+    {"line": 62, "method": "GET", "endpoint": "repos/REPO/commits/{sha}"},
+    {"line": 71, "method": "GET", "endpoint": "repos/REPO/commits/{sha}/pulls?per_page=5"},
+    {"line": 78, "method": "GET", "endpoint": "repos/REPO/pulls/{n} (<=5)"},
+    {"line": 79, "method": "GET", "endpoint": "repos/REPO/pulls/{n}/reviews?per_page=100 (<=5)"},
+    {"line": 80, "method": "GET", "endpoint": "repos/REPO/issues/{n}/timeline?per_page=100 (<=5)"},
+    {"line": 105, "method": "GET", "endpoint": "repos/REPO/commits/{sha}/check-runs?per_page=100"},
+    {"line": 115, "method": "GET", "endpoint": "repos/REPO/commits/{sha}/status"},
+    {"line": 121, "method": "GET", "endpoint": "repos/REPO/actions/runs?head_sha={sha}&per_page=100"},
+    {"line": 135, "method": "GET", "endpoint": "repos/REPO/branches/{base}/protection"},
+    {"line": 144, "method": "GET", "endpoint": "repos/REPO/rules/branches/{base}?per_page=100"},
+    {"line": 147, "method": "GET", "endpoint": "repos/REPO/rulesets?per_page=100&includes_parents=true"},
+    {"line": 156, "method": "GET", "endpoint": "repos/REPO/events?per_page=100&page={1..3}"}
+  ],
+  "max_calls": 29,
+  "budget": 40,
+  "bound_ok": true,
+  "identity_ok": true,
+  "readonly_ok": true,
+  "determinism_local_safety_ok": true,
+  "mtime_ok": true,
+  "neutrality_ok": true,
+  "reachability": {
+    "repository":   {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": false, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "note": "NE not applicable by design (200 = exists)"},
+    "commit":       {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": false, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "note": "non-200 -> NOT_ACCESSIBLE (conservative)"},
+    "prs":          {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false},
+    "reviews":      {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B1"},
+    "timeline":     {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B1"},
+    "checks":       {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B3 (derived kv)"},
+    "status":       {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B3 (derived kv)"},
+    "runs":         {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B3 (derived kv)"},
+    "protection":   {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B1, B2, B3"},
+    "branch_rules": {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B1, B2"},
+    "rulesets":     {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": false, "forced_negative": "B1, B2"},
+    "events":       {"EXISTS": true, "NOT_EVIDENCED_ON_HOST": true, "NOT_ACCESSIBLE": true, "NOT_RETAINED": true}
+  },
+  "norm_state_inferred": false,
+  "timestamp_labels_ok": true,
+  "blocking": [
+    {"id": "B1", "lines": "96-98, 129-132", "issue": "A failed PR association (pulls not 200, e.g. a curl-mode 403 rate limit, 404, 422 or 000; or the lowest PR's GET failing so base_ref is empty) is treated as 'no associated PR'. reviews, timeline, protection, branch_rules and rulesets are then labelled NOT_EVIDENCED_ON_HOST, so a 403/404 is mislabelled as absence.", "fix": "Take the no-PR branch only when pulls is 200 and the list is empty, and the no-base branch only when pulls/{n} is 200 and base_ref is empty. Otherwise label NOT_ACCESSIBLE with the upstream status in note."},
+    {"id": "B2", "lines": "132; PROTOCOL-C section 2 special case 2", "issue": "Channels that were never called get NOT_EVIDENCED_ON_HOST, which contradicts the protocol's own rule 'not called -> NOT_ACCESSIBLE'. rulesets is repository-scoped and needs no base branch, so skipping it and asserting absence is a negative by construction. Having no PR does not show that the commit's branch is unprotected.", "fix": "Always call rulesets. When there is no base, label protection and branch_rules NOT_ACCESSIBLE ('not called: no base derivable'). Limit the special case in the protocol to reviews and timeline after a 200 with an empty list."},
+    {"id": "B3", "lines": "82-89, 106-110, 116-118, 122-125, 136-140, 145", "issue": "Derived kv and prs.tsv fields are written whatever the HTTP status, defaulting to false or 0. ch_protection.tsv on the expected curl-mode 401/403/404 reports required_pull_request_reviews/enforce_admins/required_status_checks/required_signatures/push_restrictions/allow_force_pushes=false. A failed pulls/{n} gives merged=false and n_reviews=0. These files carry no http column.", "fix": "Write derived values only when the source status is 200. Otherwise write http=<status> and NOT_DETERMINABLE for every derived field."}
+  ],
+  "nonblocking": [
+    {"id": "N1", "issue": "No observation time is recorded (neither the host Date header nor the client clock), so current-state channels are unanchored in time. Add both, labelled, to summary.json."},
+    {"id": "N2", "issue": "per_page=5 returns the host's first 5 PRs before sorting, so 'lowest numbers first' is not guaranteed. cap_reached flags the possibility."},
+    {"id": "N3", "issue": "WHY is always 'call budget reached' (L181), so a transport failure on ev1 (000, L161) gets the wrong note. The existence value is still correct."},
+    {"id": "N4", "issue": "checks, runs, rulesets and branch_rules have no *_truncated flags. The checks HOST_GENERATED decision covers only the returned page. status is called without per_page."},
+    {"id": "N5", "issue": "The note on L113 contains 'GitHub Actions'. If a raw git user object has the name 'GitHub' (web-flow committer), the whole-word guard fails and the run exits 5 with no output. This fails safe but can waste a run."},
+    {"id": "N6", "issue": "Timeline events without created_at (e.g. line-commented) are counted as outside the window but labelled created_at=HOST_GENERATED."},
+    {"id": "N7", "issue": "If git is absent, the 'any git work tree' refusal is silently skipped. mkdir -p after the existence check is a TOCTOU gap (use mkdir). grep -I can skip NUL-containing files. Stage writes other than summary.json are unchecked."},
+    {"id": "N8", "issue": "Role logins are passed as jq --arg, so they are visible in /proc/*/cmdline, and jq stderr errors can quote raw values. Neither reaches OUT."},
+    {"id": "N9", "issue": "repo_slug_sha256 is an unsalted hash of a known slug: an integrity tag, not anonymisation."},
+    {"id": "N10", "issue": "In curl mode a 200 [] for rulesets can come from hidden entries. It is covered by the declared coverage loss, but the rulesets row note should state it."}
+  ]
+}
