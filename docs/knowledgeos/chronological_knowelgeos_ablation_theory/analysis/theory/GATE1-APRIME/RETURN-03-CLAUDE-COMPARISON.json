@@ -1,0 +1,267 @@
+{
+ "labels": "symmetric comparison; Claude references are NOT ground truth",
+ "n_external": 36,
+ "refs": {
+  "REF-C": {
+   "missing_in_external": [],
+   "extra_in_external": [],
+   "act.state": {
+    "agreement": 0.667,
+    "kappa": 0.5,
+    "unknown_share_external": 0.111,
+    "disagreements": {
+     "R01": {
+      "external": "ACT_REFUSED",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R05": {
+      "external": "ACT_ATTEMPTED",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R15": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R16": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R17": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R18": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R19": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R20": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R21": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R26": {
+      "external": "ACT_REFUSED",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R27": {
+      "external": "NONE",
+      "REF-C": "ACT_OCCURRED"
+     },
+     "R29": {
+      "external": "UNKNOWN",
+      "REF-C": "ACT_REFUSED"
+     }
+    }
+   },
+   "norm.deontic": {
+    "agreement": 0.667,
+    "kappa": 0.62,
+    "unknown_share_external": 0.083,
+    "disagreements": {
+     "R02": {
+      "external": "NONE",
+      "REF-C": "STATUS_CONSTRAINT"
+     },
+     "R06": {
+      "external": "NONE",
+      "REF-C": "STATUS_CONSTRAINT"
+     },
+     "R10": {
+      "external": "STATUS_CONSTRAINT",
+      "REF-C": "PROHIBITED"
+     },
+     "R15": {
+      "external": "ELIGIBLE",
+      "REF-C": "REQUIRED"
+     },
+     "R16": {
+      "external": "ELIGIBLE",
+      "REF-C": "REQUIRED"
+     },
+     "R17": {
+      "external": "ELIGIBLE",
+      "REF-C": "REQUIRED"
+     },
+     "R18": {
+      "external": "ELIGIBLE",
+      "REF-C": "REQUIRED"
+     },
+     "R19": {
+      "external": "INELIGIBLE",
+      "REF-C": "STATUS_CONSTRAINT"
+     },
+     "R20": {
+      "external": "INELIGIBLE",
+      "REF-C": "STATUS_CONSTRAINT"
+     },
+     "R21": {
+      "external": "INELIGIBLE",
+      "REF-C": "STATUS_CONSTRAINT"
+     },
+     "R23": {
+      "external": "STATUS_CONSTRAINT",
+      "REF-C": "REQUIRED"
+     },
+     "R30": {
+      "external": "NONE",
+      "REF-C": "REQUIRED"
+     }
+    }
+   },
+   "membership": {
+    "agreement": 0.667,
+    "table": {
+     "ext(True, True)_ref(True, True)": 13,
+     "ext(True, False)_ref(True, True)": 3,
+     "ext(False, True)_ref(False, True)": 7,
+     "ext(True, False)_ref(True, False)": 1,
+     "ext(False, True)_ref(True, True)": 8,
+     "ext(False, False)_ref(False, False)": 3,
+     "ext(False, False)_ref(True, False)": 1
+    }
+   }
+  },
+  "REF-CR": {
+   "missing_in_external": [],
+   "extra_in_external": [],
+   "act.state": {
+    "agreement": 0.667,
+    "kappa": 0.5,
+    "unknown_share_external": 0.111,
+    "disagreements": {
+     "R01": {
+      "external": "ACT_REFUSED",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R05": {
+      "external": "ACT_ATTEMPTED",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R15": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R16": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R17": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R18": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R19": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R20": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R21": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R26": {
+      "external": "ACT_REFUSED",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R27": {
+      "external": "NONE",
+      "REF-CR": "ACT_OCCURRED"
+     },
+     "R29": {
+      "external": "UNKNOWN",
+      "REF-CR": "ACT_REFUSED"
+     }
+    }
+   },
+   "norm.deontic": {
+    "agreement": 0.667,
+    "kappa": 0.62,
+    "unknown_share_external": 0.083,
+    "disagreements": {
+     "R02": {
+      "external": "NONE",
+      "REF-CR": "STATUS_CONSTRAINT"
+     },
+     "R06": {
+      "external": "NONE",
+      "REF-CR": "STATUS_CONSTRAINT"
+     },
+     "R10": {
+      "external": "STATUS_CONSTRAINT",
+      "REF-CR": "PROHIBITED"
+     },
+     "R15": {
+      "external": "ELIGIBLE",
+      "REF-CR": "REQUIRED"
+     },
+     "R16": {
+      "external": "ELIGIBLE",
+      "REF-CR": "REQUIRED"
+     },
+     "R17": {
+      "external": "ELIGIBLE",
+      "REF-CR": "REQUIRED"
+     },
+     "R18": {
+      "external": "ELIGIBLE",
+      "REF-CR": "REQUIRED"
+     },
+     "R19": {
+      "external": "INELIGIBLE",
+      "REF-CR": "STATUS_CONSTRAINT"
+     },
+     "R20": {
+      "external": "INELIGIBLE",
+      "REF-CR": "STATUS_CONSTRAINT"
+     },
+     "R21": {
+      "external": "INELIGIBLE",
+      "REF-CR": "STATUS_CONSTRAINT"
+     },
+     "R23": {
+      "external": "STATUS_CONSTRAINT",
+      "REF-CR": "REQUIRED"
+     },
+     "R30": {
+      "external": "NONE",
+      "REF-CR": "REQUIRED"
+     }
+    }
+   },
+   "membership": {
+    "agreement": 0.667,
+    "table": {
+     "ext(True, True)_ref(True, True)": 13,
+     "ext(True, False)_ref(True, True)": 3,
+     "ext(False, True)_ref(False, True)": 7,
+     "ext(True, False)_ref(True, False)": 1,
+     "ext(False, True)_ref(True, True)": 8,
+     "ext(False, False)_ref(False, False)": 3,
+     "ext(False, False)_ref(True, False)": 1
+    }
+   }
+  }
+ },
+ "REF-CR_unapplied_corrections": [
+  "act.status.operation",
+  "norm.status.about_actor",
+  "norm.status.stated_by",
+  "norm.status.stated_by",
+  "norm.status.about_operation",
+  "norm.status.stated_by",
+  "norm.status.stated_by"
+ ]
+}

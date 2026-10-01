@@ -1,0 +1,114 @@
+{
+ "label": "SUPPLEMENTARY, not the frozen comparator; RETURN-03-CLAUDE vs RETURN-02; symmetric, no ground truth",
+ "n_common": 36,
+ "only_03": [],
+ "only_02": [],
+ "act.state": {
+  "agreement": 0.667,
+  "kappa": 0.5,
+  "disagreements": {
+   "R01": {
+    "R03C": "ACT_REFUSED",
+    "R02": "ACT_OCCURRED"
+   },
+   "R05": {
+    "R03C": "ACT_ATTEMPTED",
+    "R02": "ACT_OCCURRED"
+   },
+   "R15": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R16": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R17": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R18": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R19": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R20": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R21": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R26": {
+    "R03C": "ACT_REFUSED",
+    "R02": "ACT_OCCURRED"
+   },
+   "R27": {
+    "R03C": "NONE",
+    "R02": "ACT_OCCURRED"
+   },
+   "R29": {
+    "R03C": "UNKNOWN",
+    "R02": "ACT_REFUSED"
+   }
+  }
+ },
+ "norm.deontic": {
+  "agreement": 0.667,
+  "kappa": 0.62,
+  "disagreements": {
+   "R02": {
+    "R03C": "NONE",
+    "R02": "STATUS_CONSTRAINT"
+   },
+   "R06": {
+    "R03C": "NONE",
+    "R02": "STATUS_CONSTRAINT"
+   },
+   "R10": {
+    "R03C": "STATUS_CONSTRAINT",
+    "R02": "PROHIBITED"
+   },
+   "R15": {
+    "R03C": "ELIGIBLE",
+    "R02": "REQUIRED"
+   },
+   "R16": {
+    "R03C": "ELIGIBLE",
+    "R02": "REQUIRED"
+   },
+   "R17": {
+    "R03C": "ELIGIBLE",
+    "R02": "REQUIRED"
+   },
+   "R18": {
+    "R03C": "ELIGIBLE",
+    "R02": "REQUIRED"
+   },
+   "R19": {
+    "R03C": "INELIGIBLE",
+    "R02": "STATUS_CONSTRAINT"
+   },
+   "R20": {
+    "R03C": "INELIGIBLE",
+    "R02": "STATUS_CONSTRAINT"
+   },
+   "R21": {
+    "R03C": "INELIGIBLE",
+    "R02": "STATUS_CONSTRAINT"
+   },
+   "R23": {
+    "R03C": "STATUS_CONSTRAINT",
+    "R02": "REQUIRED"
+   },
+   "R30": {
+    "R03C": "NONE",
+    "R02": "REQUIRED"
+   }
+  }
+ }
+}
