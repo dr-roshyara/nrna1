@@ -1,0 +1,100 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "fidelity_issues": [
+    "Self-performance is not decided as an act (SP only records it). But the convention that a performative span is AR = NO appears only in Example 3 and is never stated as a rule. The spec's 'present event' wording leaves present-tense performatives open.",
+    "Heading rule (bare label = NO on all three, do not use the section) departs from spec rule 2 (UNKNOWN when undecided) and contradicts §1 (section reading allowed) and Example 8 (label coded UNKNOWN/NO/UNKNOWN).",
+    "NS decision test says 'give something a status' where the spec says 'has a normative status'. With Example 3, this frames normative status as the result of an act.",
+    "The status layer (SOURCE_FACT/INFERENCE/UNKNOWN) and NOTES.md are additions not in the spec, defined by the author. The SOURCE_FACT/INFERENCE line for context taken from the section is still undefined.",
+    "Gaps: deliberate non-action (refusal vs absence), the lower bound of 'attempted', recommendations ('PROMOTE'), PREPARED/non-adopted rulings, quoted performatives."
+  ],
+  "anchoring_issues": [
+    "Fixed rule 1's illustration 'X is authorized to begin' matches R32 ('Engineering is authorized to begin ...') and pre-codes it on AR and NS. The wording comes from CORE-SPEC and fidelity requires it. Non-blocking: those R32 fields would be determinate anyway. Flag to the spec owner.",
+    "Example 6 'declined ... request' shares the refusal verb with R01 'declines to resolve'. R01 is present-tense, self-referential and has a normative clause, so the example could mis-steer a coder. Low risk. Use another verb.",
+    "SP cue phrases 'is decided', 'is allocated' match the 'X is ...-ed' pattern of R25, R30, R32. Structural cue only. Low risk.",
+    "Example 8's label shape ('Topic: the new ...') resembles R11, but its premise (a silent section) does not hold for R11. Low risk."
+  ],
+  "neutrality_issues": [
+    "Non-blocking: the 'give something a status' test plus Example 3 push adoptions and classifications toward NS = YES. This raises act-norm co-occurrence, which fits H-D. It is limited by 'carries such consequences'. Fix: 'has, or is stated to have, a status'.",
+    "Non-blocking: the heading rule applied to R11 (git commit subject, the only work-event record) codes a work act NO without the section. This undercounts the work evidence that matters to H-B.",
+    "AR does not depend on governance vocabulary. NS does not depend on an act. The schema is silent on PREPARED-vs-ADOPTED force, which is correct for neutrality but costs codability."
+  ],
+  "dry_run": {
+    "ACT_REPORTED": {
+      "determinate": 23,
+      "debatable": ["R01", "R02", "R09", "R11", "R16", "R19", "R20", "R22", "R23", "R25", "R26", "R27", "R30"],
+      "reasons": {
+        "R01": "present-tense refusal: report or performance?",
+        "R02": "performative span vs verbatim-quotation section",
+        "R09": "'is filed': present event or performative classification?",
+        "R11": "heading rule vs section reading vs Example 8",
+        "R16": "only deliberate non-transfer and states: refusal or absence?",
+        "R19": "'recorded there as': is a location note an act?",
+        "R20": "'deliberately did NOT reuse': refusal or absence?",
+        "R22": "'NOT promoted': deliberate decision or absence?",
+        "R23": "headline past participle: report or performative?",
+        "R25": "'IS RETIRED': present event or performative?",
+        "R26": "'is not superseded': state or the Board's refusal?",
+        "R27": "'it APPLIES': ruling describing its own act",
+        "R30": "'is adopted': present report or performative?"
+      }
+    },
+    "ACT_SELF_PERFORMED": {
+      "determinate": 18,
+      "debatable": ["R01", "R02", "R03", "R04", "R05", "R09", "R10", "R12", "R13", "R14", "R23", "R25", "R26", "R27", "R30", "R32", "R34", "R36"],
+      "reasons": {
+        "R01": "annotation voice: does the recorder perform the act or describe it?",
+        "R02": "quoted performative: quotation rule vs the span read alone",
+        "R03": "annotation 'HELD ... NOT ELIGIBLE': performs or reports?",
+        "R04": "ruling headline: is it the operative act?",
+        "R05": "ruling headline, and PREPARED, not adopted",
+        "R09": "passive 'is filed' by the register",
+        "R10": "ruling determination: is the norm-like sentence performative?",
+        "R12": "norm sentence in a directive: does stating it perform it?",
+        "R13": "norm sentence in an authorization ruling",
+        "R14": "norm sentence in an authorization ruling",
+        "R23": "headline 'adopted': is it the operative act?",
+        "R25": "'IS RETIRED' in an annotation",
+        "R26": "quoted Board decision",
+        "R27": "ruling's self-description",
+        "R30": "'is adopted' in a register disposition",
+        "R32": "'is authorized' in a ruling: performs or states?",
+        "R34": "'AUTHORIZED' in a ruling: performs or states?",
+        "R36": "register summary of the adoption act's effect vs performative"
+      }
+    },
+    "NORM_STATED": {
+      "determinate": 20,
+      "debatable": ["R02", "R05", "R06", "R07", "R09", "R10", "R11", "R15", "R16", "R17", "R18", "R19", "R20", "R26", "R27", "R30"],
+      "reasons": {
+        "R02": "does adoption give a normative status?",
+        "R05": "authorization is PREPARED, not adopted",
+        "R06": "'register holds constitutional decisions': rule or description?",
+        "R07": "identical to R06",
+        "R09": "'filed as a ruling' confers a status",
+        "R10": "'DOES NOT BEGIN': directive or description?",
+        "R11": "label: heading rule vs Example 8",
+        "R15": "recommended principle; no guidance on 'PROMOTE'",
+        "R16": "recommended principle; no guidance on 'PROMOTE'",
+        "R17": "recommended principle; no guidance on 'PROMOTE'",
+        "R18": "recommended pointer plus 'ARB-adopted' status",
+        "R19": "'permanent design principle' / Candidate status",
+        "R20": "is 'Candidate' a normative status?",
+        "R26": "existing norm's continued status implied",
+        "R27": "existing norm's continued status implied",
+        "R30": "does adoption of a disposition give a normative status?"
+      }
+    }
+  },
+  "words": 880,
+  "blocking": [],
+  "nonblocking": [
+    "State the AR convention for performatives as an explicit rule.",
+    "Make the heading rule, §1 section reading and Example 8 agree.",
+    "Change 'give a status' in the NS test to 'has a status'.",
+    "Add guidance for deliberate non-action, recommendations, PREPARED rulings and quoted performatives.",
+    "Replace 'declined' in Example 6 to avoid overlap with R01.",
+    "Flag the overlap between fixed rule 1 (from CORE-SPEC) and R32 to the spec owner.",
+    "R06 and R07 are identical records; check whether a different clause was meant.",
+    "Word count is a hand estimate (about 880, ±5%), within the limit."
+  ]
+}

@@ -2591,3 +2591,11 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Test:** 3 models; **pass = κ ≥ 0.67 on all 9 pair × field values**.
 - **Outcomes:** FAIL → **option A** (the act/norm layer is not reliably codable at either grain).
 - The main analyst's expectation is sealed in `EXPECTATION-SEALED.md`; no worker sees it.
+
+## F-LOG-0212 — 1bj SCHEMA-CORE r0: **PASS_WITH_LIMITATIONS** (0 blocking; ~880 words; no theory decision; anchoring low). Comparator **frozen before any coding**; targeted r1 fix
+- **Dry run (reviewer, codes withheld):** ACT_REPORTED 23 determinate / 13 debatable. The other fields are in REVIEW.json.
+- **Two non-blocking neutrality items fixed in r1:**
+  - "give a status" → "has, or is stated to have" (it had pushed act–norm co-occurrence, toward H-D);
+  - the heading rule (it undercounted R11 work evidence, against H-B).
+- **Plus:** the explicit performative rule, gap guidance, and one example verb.
+- **`LOOP-1BJ/compare_core.py`:** frozen now; it reuses the frozen `kappa` verbatim; self-tested on synthetic data only.
