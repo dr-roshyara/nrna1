@@ -1,0 +1,76 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "integrity": {
+    "sha256sums_files_listed": 9,
+    "sha256sums_covers_all_emitted": true,
+    "sha256sums_self_excluded_by_design": true,
+    "emitted_files_present": ["00_env.tsv", "00_errors.tsv", "00_script.sha256", "56_local_hooks.tsv", "58_signatures.tsv", "60_channel_metrics.tsv", "61_path_ids.tsv", "70_answers.tsv", "71_overall.tsv", "SHA256SUMS"],
+    "hashes_recomputed_by_reviewer": false,
+    "errors_file_empty": true,
+    "errors_hash_equals_empty_sha256": true,
+    "script_sha256": "e9e0975b3ea71eedd84905b4cb837cdf4aa301a434f3c1403841b99127dc37a8",
+    "script_sha256_matches_run_record": true,
+    "runs_identical": "SHA256SUMS-RUN-APP is line-identical to RUN-ROOT/SHA256SUMS (read); diff -r IDENTICAL per RUN-RECORD (not re-executed)",
+    "exit_codes": {"root": 0, "app": 0, "source": "RUN-RECORD; consistent with empty errors file and identity_guard PASS"},
+    "head_record": "9f1bcab508095c56a4dc74471ba4ada6fd5745e5 in RUN-RECORD only; not in any hashed output",
+    "identity_guard": "PASS",
+    "path_id_rows": 394,
+    "path_id_rows_match_metrics": true
+  },
+  "conformance": [
+    {"channel": "K-CI", "expected_q7": "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable;overlap_exec=1;overlap_norm=1]", "observed_q7": "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable;overlap_exec=1;overlap_norm=1]", "ok": true},
+    {"channel": "K-HOOK", "expected_q7": "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable;overlap_exec=1;overlap_norm=1]", "observed_q7": "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable;overlap_exec=1;overlap_norm=1]", "ok": true},
+    {"channel": "K-CODEOWNERS", "expected_q7": "NOT_APPLICABLE(Q1)", "observed_q7": "NOT_APPLICABLE(Q1)", "ok": true},
+    {"channel": "K-NORMREG", "expected_q7": "SELF_ATTESTED[norm_register;overlap_exec=3]", "observed_q7": "SELF_ATTESTED[norm_register;overlap_exec=3]", "ok": true},
+    {"channel": "K-STATUS", "expected_q7": "NOT_INDEPENDENT[overlap_norm=3]", "observed_q7": "NOT_INDEPENDENT[overlap_norm=3]", "ok": true},
+    {"channel": "K-DEPLOY", "expected_q7": "NOT_INDEPENDENT[overlap_norm=3]", "observed_q7": "NOT_INDEPENDENT[overlap_norm=3]", "ok": true},
+    {"channel": "K-SIG", "expected_q7": "INDEPENDENCE_NOT_DETERMINABLE(signatures not verified)", "observed_q7": "INDEPENDENCE_NOT_DETERMINABLE(signatures not verified)", "ok": true},
+    {"channel": "K-LOCALHOOK", "expected_q7": "NOT_APPLICABLE(Q1)", "observed_q7": "NOT_APPLICABLE(Q1)", "ok": true},
+    {"channel": "K-HOST-AUDIT", "expected_q7": "NOT_CHECKABLE_LOCALLY", "observed_q7": "NOT_CHECKABLE_LOCALLY", "ok": true},
+    {"channel": "K-HOST-BRANCHPROT", "expected_q7": "NOT_CHECKABLE_LOCALLY", "observed_q7": "NOT_CHECKABLE_LOCALLY", "ok": true},
+    {"channel": "K-HOST-PR-APPROVALS", "expected_q7": "NOT_CHECKABLE_LOCALLY", "observed_q7": "NOT_CHECKABLE_LOCALLY", "ok": true},
+    {"channel": "K-CI-RUNS", "expected_q7": "NOT_CHECKABLE_LOCALLY", "observed_q7": "NOT_CHECKABLE_LOCALLY", "ok": true},
+    {"channel": "K-HOST-MEMBERS", "expected_q7": "NOT_CHECKABLE_LOCALLY", "observed_q7": "NOT_CHECKABLE_LOCALLY", "ok": true}
+  ],
+  "headline_ok": true,
+  "headline": {"expected": "LOCAL_INDEPENDENCE_NOT_DETERMINABLE", "observed": "LOCAL_INDEPENDENCE_NOT_DETERMINABLE", "counts": {"independent": 0, "ind": 3, "not_independent": 2, "self_attested": 1, "not_evidenced": 2, "host_channels": 5}},
+  "identity_ok": true,
+  "anomalies": [
+    "A1: very small identity sets (|W|<=3, |N_c|=3, |E|>=3 inferred; universe size not emitted) give the count-overlap test almost no discriminating power",
+    "A2: K-NORMREG has 202 tip paths (409 touches, 3 writers) and K-STATUS has 153; the vocabulary probably over-captures data, i18n, config and fixture files (NB-12/NB-13); .claude/ and claude/ are not excluded (N15); all 202 paths feed N_c for K-STATUS and K-DEPLOY; composition not visible in the outputs",
+    "A3: K-SIG has 23/4028 commits with a signature header and 0 signed tags; presence only; merge commits are included in the K-SIG count but excluded from W/E/N_c; 23 is a lower bound (N7/NB-5)",
+    "A4: path id 8984782af5dd32c1 appears under both K-STATUS and K-DEPLOY (allowed, but the two W sets are not disjoint); not cross-checked exhaustively",
+    "A5: |E| is not emitted; the rule-4 condition E != empty is only inferable from overlap_exec > 0",
+    "A6: HEAD, tip count and ref-set identity are only in RUN-RECORD, not in the hashed outputs; the determinism test changed only the cwd",
+    "A7: declared items still in force: Q4 has no content-timestamp qualifier (N13); K-CI and K-HOOK each have one writer who is in both E and N_c (NB-9 possible); repo-local config was readable"
+  ],
+  "power_note": "When |W_c| + |N_c| exceeds the number of distinct author identities, a zero overlap cannot occur. With W and N_c of size 3, E >= 3, and a universe that may be only about 3 identities, the observed overlaps (3/3, 1/1) show that the few identities touched both path sets; they do not discriminate between role arrangements. A zero-overlap positive would be equally fragile at these sizes. Unresolved aliases and possible non-human authors widen the uncertainty further. This is a property of the test, not a reading of the result.",
+  "scoping_questions_for_human": [
+    "What is the total number of distinct author e-mails in the tip set, and |E|? Should these be emitted as counts?",
+    "Of the 202 K-NORMREG and 153 K-STATUS paths, how many are under .claude/, claude/, the code roots, lang/, config/ or tests/? Should .claude/ and claude/ be excluded as programme artefacts, like docs/knowledgeos/ (N15)?",
+    "Which kind of signer is plausible for the 23 signed commits: (a) a developer's local key; (b) a hosting platform's web-UI/API key on merge, squash or edit commits; (c) bots or automation signed by the platform; (d) imported third-party history; (e) an agent or tool session with signing configured; (f) any of these with an invalid or untrusted key; (g) SSH or x509 signatures under the gpgsig header? Are most of them merges? Is verifying them in scope at all?",
+    "Should HEAD, the tip count and the ref-set hash be emitted into the hashed outputs, so that Q8 'same ref set' is pinned?",
+    "Should identity aliases and non-human authors be resolved before any count-overlap result is used?"
+  ],
+  "per_question_answer": {
+    "K-CI": "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable]; Q5 NOT_DETERMINABLE_BY_EXISTENCE_CHECK",
+    "K-HOOK": "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable]; Q5 NOT_DETERMINABLE_BY_EXISTENCE_CHECK",
+    "K-CODEOWNERS": "NOT_EVIDENCED_AT_TIPS -> NOT_APPLICABLE(Q1)",
+    "K-NORMREG": "SELF_ATTESTED[norm_register] (definitional); Q5 NOT_DETERMINABLE_BY_EXISTENCE_CHECK",
+    "K-STATUS": "NOT_INDEPENDENT[overlap_norm=3] (observed, low power); Q5 NOT_DETERMINABLE_BY_EXISTENCE_CHECK",
+    "K-DEPLOY": "NOT_INDEPENDENT[overlap_norm=3] (observed, low power); Q5 NOT_DETERMINABLE_BY_EXISTENCE_CHECK",
+    "K-SIG": "INDEPENDENCE_NOT_DETERMINABLE(signatures not verified); Q5 NOT_DETERMINABLE_BY_EXISTENCE_CHECK",
+    "K-LOCALHOOK": "NOT_EVIDENCED_LOCALLY -> NOT_APPLICABLE(Q1)",
+    "host_channels": "NOT_CHECKABLE_LOCALLY",
+    "overall": "LOCAL_INDEPENDENCE_NOT_DETERMINABLE; no channel reached INDEPENDENT_AT_IDENTITY_COUNT_LEVEL; COMPLETE_VS_HOST=NOT_SHOWN"
+  },
+  "neutrality_ok": true,
+  "limitations": [
+    "No hashes were recomputed (no shell); the local scope_b.sh was not hashed",
+    "The app-run outputs were not available, only their SHA256SUMS",
+    "Duplicate path ids across channels were checked by eye only, not exhaustively",
+    "The directory could not be listed; the file set was established from the protocol and SHA256SUMS",
+    "The HEAD, exit-code and diff -r claims rest on RUN-RECORD",
+    "This review draws no conclusion about H-D, H-B or any other theory"
+  ]
+}

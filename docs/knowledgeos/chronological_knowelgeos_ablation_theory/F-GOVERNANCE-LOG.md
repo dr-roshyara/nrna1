@@ -2248,3 +2248,23 @@ The research state is not advanced
 |---|---|
 | Records | `analysis/theory/LOOP-1BD/EVIDENCE-B/` (RUN-ROOT, SHA256SUMS-RUN-APP, RUN-RECORD.md); OUTPUT-REVIEW-TASK.md |
 | Next | an independent output review |
+
+## F-LOG-0186 — **Protocol B sealed** (design r3 PASS_WITH_LIMITATIONS; execution byte-identical; output review PASS_WITH_LIMITATIONS; hashes re-verified by the main analyst)
+
+**F-B1 — no independent norm-in-force record found:**
+- **No** locally checkable channel qualifies.
+- Q7 outcomes: 3 INDEPENDENCE_NOT_DETERMINABLE, 2 NOT_INDEPENDENT, 1 SELF_ATTESTED, 0 independent.
+- Q5 is not determinable by an existence check anywhere.
+
+**F-B2 — the overlap test has almost no power:** identity sets ≤ 3. NOT_INDEPENDENT means "no evidence of role separation", **not** evidence of role fusion.
+
+**F-B3 — remaining open candidates are all host-side:**
+- host channels and signer verification are outside the local scope;
+- each would be a new evidence channel → a human decision.
+
+No H-D/H-B scoring
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BD/` (RECONCILIATION.md, OUTPUT-REVIEW/, EVIDENCE-B/) |
+| Next | discrimination-readiness review (A + B evidence) → a decision brief for the human |
