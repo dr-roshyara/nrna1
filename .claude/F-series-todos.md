@@ -13,6 +13,45 @@
 
 ---
 
+## CURRENT ROADMAP (2026-10-01; supersedes every ordering table below)
+
+**Position:**
+- **~90%** on the current H-D/H-B question.
+- **~55–60%** of the *scientific* path toward a canonical theory. This is not a share of coding work.
+- **We are closer to a theory than to an implementation.**
+
+**Adopted with four precision corrections (main analyst, 2026-10-01):**
+1. The stages are named **R1–R8**, so they never collide with the existing "Gate 1" (the non-Claude coder bundle).
+2. The independent coder gives **coder** independence, not **source** independence. It tests whether the ACT/NORM coding reproduces; it cannot break D1.
+3. A pattern counts as a "regularity" only if it recurs across **independent decision clusters**. Otherwise it is filed as an observed or reconstructed fact. n is small.
+4. F-series research ends at the **canonical theory, its DDD/architecture derivation and the conformance criterion**. Building the software is a separate, later authorized work stream.
+
+| Stage | Status | Remaining | Owner / gate |
+|---|---|---|---|
+| Historical reconstruction | 🟢 | minor closure only | — |
+| A′ observation schema | 🟢 frozen | none, unless evidence forces a change (human act) | — |
+| **R1 Close the evidence question** | 🟡 Protocol C sealed and SAFE TO RUN; **blocked on auth** | (a) **human: `gh auth login -h github.com`**; (b) run ×2, compare, identity scan, output review, seal; (c) info-gain Q1–Q4 per the frozen `LOOP-1BF/INFOGAIN-PREREG.md` | human → Claude → **human gate: H5** (Q4 NO) **or** a pre-registered experiment (Q4 YES; not run without authorization) |
+| **R2 Independent empirical verification** | 🟡 pending | **human: hand Gate 1 bundle -02 (`~/F-APRIME-GATE1-BUNDLE-02.tar`) to a non-Claude coder** → hash seal → `GATE1-APRIME/compare_gate1_aprime.py` → disagreement analysis (coding vs theory) → review → reconcile | human → Claude |
+| **R3 Empirical Theory Record (freeze)** | ⏳ after R1 and R2 | **one record**, levels kept apart: A observed · B reconstructed · C regularities (cluster-recurrent only) · D non-identifiability results · E counterexamples / anomalies (WP-4B RED, R-89, R-94) · F explicit unknowns. No promotion for elegance | Claude → review → human |
+| **R4 Formal theory** | ⏳ | the smallest formal structure explaining R3: definitions → state space → relations → transitions → invariants → propositions → countermodels → minimal assumptions. Earlier formal work (H-F2-1 etc.) counts as **candidate** formalizations only. Keep the levels definition / assumption / lemma / proof / finite check / empirical observation separate | Claude → review |
+| **R5 Independent formal verification** | ⏳ | spec → reference verifier → **independent (non-Claude) verifier** → comparison → counterexample search. A finite check is never called a general proof | human commissions the verifier |
+| **R6 Validation / generalization** | ⏳ | hold-out → synthetic / adversarial → alternative formulation → generalization test. **Statistics only with a defined population, estimand and dependence model. ML only after a baseline shows a measured deficiency** (none exists now) | Claude → review → human |
+| **R7 DDD derivation** | ⏸ until R6 | validated concepts → ubiquitous language → bounded contexts → aggregates / invariants → services / events. **Derived from the theory, never used to discover it** | human authorizes the transition |
+| **R8 Canonicalization** | ⏸ | canonical theory package (definitions, formal model, invariants, propositions, evidence, validation, counterexamples, identifiability limits, scope, DDD mapping, implementation and conformance constraints) → **human adoption** | human (L0) |
+| *After F-series* | ⏸ | architecture → implementation → tests → **theory-to-implementation conformance gate** | a separate authorized work stream |
+
+**Dropped (do not resurrect):**
+- H2 signer verification (declined);
+- 1bb-r3 or any patch of the coupled discrimination spec;
+- open-ended evidence hunting after a valid non-identifiability result.
+
+**Immediate next actions:**
+1. **Human:** `gh auth login -h github.com`.
+2. **Human:** hand Gate 1 bundle -02 to a non-Claude coder.
+3. **Claude:** finish R1(b)–(c) and stop at the H5 / experiment gate.
+
+---
+
 ## DONE
 
 Each item was an evidence or assessment deliverable. None is a decision.
