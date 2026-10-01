@@ -1,0 +1,19 @@
+refs_total	25
+refs_heads	7
+refs_remotes	16
+refs_tags	1
+refs_other	1
+commits_scanned	4020
+matching_commits	51
+class_EXECUTION-TRACE	3
+class_DOC-OR-GOVERNANCE	47
+class_MENTION-ONLY	0
+class_MERGE	0
+class_UNCLASSIFIABLE	1
+earliest_execution_trace_by_committer_date	e4724a444231681f1a455ffaeea488a554183093	2026-08-04T00:30:25Z	RECORDING_ORDER
+earliest_execution_trace_by_author_date	e4724a444231681f1a455ffaeea488a554183093	2026-08-04T00:30:25Z	RECORDING_ORDER
+time_label	RECORDING_ORDER (M-TIME: recording != decision != entry into force)
+capture	LOCAL_REF_SET
+completeness_vs_host	NOT SHOWN
+capture_errors	0
+result	EXECUTION-TRACE-EVIDENCED-IN-CAPTURE

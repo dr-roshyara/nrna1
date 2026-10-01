@@ -1,0 +1,47 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "path_tests": [
+    {"path": "app/Models/Plan.php", "class": "P-CODE", "step": "R3", "correct": true},
+    {"path": "resources/views/auth/register.blade.php", "class": "P-CODE", "step": "R3", "correct": true},
+    {"path": "resources/js/Pages/Auth/Register.vue", "class": "P-CODE", "step": "R3", "correct": true},
+    {"path": "app/Http/Controllers/Reports/X.php", "class": "P-CODE", "step": "R3", "correct": true},
+    {"path": "tests/Feature/Plans/XTest.php", "class": "P-TEST", "step": "R2", "correct": true},
+    {"path": ".claude/hooks/x.sh", "class": "P-DOC", "step": "R1", "correct": true},
+    {"path": "engineering/tools/x.py", "class": "P-DOC", "step": "R1", "correct": true},
+    {"path": "developer_guide/examples/x.php", "class": "P-DOC", "step": "R1", "correct": true},
+    {"path": "docs/plans/x.md", "class": "P-DOC", "step": "R1", "correct": true},
+    {"path": "README.md", "class": "P-DOC", "step": "R4", "correct": true},
+    {"path": "composer.json", "class": "P-OTHER", "step": "R4", "correct": true},
+    {"path": "package.json", "class": "P-OTHER", "step": "R4", "correct": true},
+    {"path": "routes/web.php", "class": "P-CODE", "step": "R3", "correct": true},
+    {"path": "database/migrations/x.php", "class": "P-CODE", "step": "R3", "correct": true}
+  ],
+  "fixed": {
+    "B1": true,
+    "B2": true,
+    "B3": true,
+    "N1": true,
+    "N2": true,
+    "N3": true
+  },
+  "regressions": [],
+  "regression_checks": {
+    "read_only": "OK - git subcommands still only --version, for-each-ref, rev-list, log; N1 guard uses only realpath/read/dirname/pwd and runs before mkdir",
+    "deterministic": "OK - LC_ALL=C, TZ=UTC, sorted outputs; extra keys pinned; guard only gates start",
+    "target_matching": "unchanged - hit(), hyphen list, four places, +-column logic; N3 strip touches only the path",
+    "m_time": "unchanged - separate author/committer UTC dates, RECORDING_ORDER labels",
+    "absence_semantics": "unchanged - NOT-EVIDENCED-IN-CAPTURE / UNDETERMINED (CAPTURE_ERROR), coverage statement",
+    "hashing": "unchanged - finish() SHA256SUMS, SELF resolved before any cd",
+    "neutrality": "OK",
+    "no_identities": "OK",
+    "method_note": "r0 script not present; regression check by line-by-line reading of r1 against REVIEW-r0 line references (offsets consistent with the changelog's stated edits only)"
+  },
+  "blocking": [],
+  "nonblocking": [
+    {"id": "R1-N1", "summary": "GIT_COMMON_DIR (and legacy GIT_GRAFT_FILE) not unset; git honours GIT_COMMON_DIR without GIT_DIR, which can redirect refs/objects and bypass the N1 guard; PROTOCOL-A section 7 'the other repository-location variables' overstates this.", "where": "capture_a.sh:13-14; PROTOCOL-A section 7"},
+    {"id": "R1-N2", "summary": "N1 guard recognises only .git entries: cwd inside a bare repository or a git directory with no enclosing .git entry is not protected; from a linked worktree OUT may lie in the main work tree (harmless). 'exactly as git discovery does' should be softened.", "where": "capture_a.sh:22-46; PROTOCOL-A section 7"},
+    {"id": "R1-N3", "summary": "Unpinned local config can still change the added-line set (e.g. diff.submodule=diff emits '+' submodule content lines; info/attributes or core.attributesFile can mark files binary). Covered by the general section 7 disclosure; pin -c diff.submodule=short.", "where": "capture_a.sh:56-58"},
+    {"id": "R1-N4", "summary": "Root-first consequences not stated: top-level build config (vite.config.js, tailwind.config.js) is P-OTHER; compiled assets under public/ are P-CODE; manifest-only commits (composer.json/package.json) with a message hit are MENTION-ONLY.", "where": "PROTOCOL-A section 2"},
+    {"id": "N4-N14", "summary": "Open from REVIEW-r0 and explicitly not addressed in r1 (T2 right boundary, T1 range/list forms, removal/revert counted as execution, unchecked pipeline stages, shallow clones, refs/stash, verbatim ref names/paths, JSON escaping, C5 wording, hyphen-list omissions, ref names not searched).", "where": "see REVIEW-r0.md"}
+  ]
+}

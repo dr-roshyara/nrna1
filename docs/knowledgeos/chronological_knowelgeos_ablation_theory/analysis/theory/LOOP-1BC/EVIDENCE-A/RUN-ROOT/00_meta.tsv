@@ -1,0 +1,5 @@
+protocol	A
+script_sha256	6445a82aace227c0371fcb9db95bb2133ebda0141fd09a411255f54d7419c4ff
+git_version	git version 2.55.0
+capture	LOCAL_REF_SET
+completeness_vs_host	NOT SHOWN

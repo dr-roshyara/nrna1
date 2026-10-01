@@ -1,0 +1,25 @@
+refs/heads/election-review	commit	a23d83d1132a428f605e3745fa429817abe1b8dd		
+refs/heads/enhance-election-only	commit	3d295a5902fa40d5cde610b295ff283c0e1822cd		
+refs/heads/knowelegeos-modelling	commit	cf2f6b913a317873dab02ff6e87cf13197490abe		
+refs/heads/kos-v11-ddd-refinement	commit	e68aca8ba51e14b7951f3cba4d5da6a535ca2e46		
+refs/heads/main	commit	e698cfdbb269f1b598815240d62384d32051b5fd		
+refs/heads/pks	commit	1e8eae31b326509a7238410319fed7ea2c54d5a7		
+refs/heads/worktree-agent-a06fb77a90832b56c	commit	5b20253b1d9163aeaf27baad12443f7c1bffa580		
+refs/remotes/origin/HEAD	commit	e698cfdbb269f1b598815240d62384d32051b5fd		
+refs/remotes/origin/election	commit	e9610a5708d2ff1abdfd6ebbc29101efa4a67010		
+refs/remotes/origin/election-audit	commit	89c8f49b36b7706cd394ad738e888a6e1c3274a8		
+refs/remotes/origin/election-review	commit	84100bb076ea20491c7b5ad18c3718eeadcd2a7c		
+refs/remotes/origin/enhance-election-only	commit	3d295a5902fa40d5cde610b295ff283c0e1822cd		
+refs/remotes/origin/geotrack	commit	e981ee73507a72ae8b006775367cec9ec5e6753a		
+refs/remotes/origin/global-voting	commit	80e3d56f50b91462c232175cae65f8bf392330b7		
+refs/remotes/origin/knowelegeos-modelling	commit	a72528b29657170fecc416c34dc61b899ba345d1		
+refs/remotes/origin/kos-v11-ddd-refinement	commit	22e8e1f1bc47ff8440a207d4f0fd07de47809ec3		
+refs/remotes/origin/main	commit	e698cfdbb269f1b598815240d62384d32051b5fd		
+refs/remotes/origin/multitenancy	commit	8e8b133935f5157c71701f40c667c7183dd46309		
+refs/remotes/origin/pks	commit	1e8eae31b326509a7238410319fed7ea2c54d5a7		
+refs/remotes/origin/postgressql	commit	744c7e2a656af1ef2e5d27ee74b2db1c8a659076		
+refs/remotes/origin/public-digit	commit	fc33b156a50f94ff946e087c6677102c11218825		
+refs/remotes/origin/result	commit	73b2a23ba90c197db66adeeaee4805ef9f87cac8		
+refs/remotes/origin/using_slug	commit	5c01c59f71011c089e7aafb3652aa65fa6478aea		
+refs/stash	commit	5ae8350c4d8674130e155e55684a162dc2807bca		
+refs/tags/pb003-certified-baseline	tag	216339e9825368210e4d4b9a89d81ad30be9097b	commit	228740abf9bf17ffce24aeb9f7b1693a32036a02
