@@ -2515,3 +2515,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BI/` (PREREG, TASK, REVIEW-TASK, GAPS, BUNDLE-A.sha256) |
+
+## F-LOG-0206 — SCHEMA-r3 r0: **FAIL** (2 blocking issues); targeted r1 frozen; **pre-registered stop: r1 FAIL → human**
+- **B1 (neutrality leak):** self-performed negative dispositions of any operation count as acts, while positive ones are limited to R-A3's closed list. This re-introduces the H-D-favouring text-as-act convention (CI1).
+- **B2:** G3 is not closed on R01; inferred proposals are allowed.
+- **Also:** 6 non-minimal changes and 8 internal conflicts.
+- **Kept (substantive):** the four theory choices TC-1 to TC-4 are **not decided in the schema**. They are tagged (`act.basis`, `norm.basis`) so every alternative can be computed at analysis time.
+- **Human gate before any coding:** the human approves this tag-and-compute approach.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BI/` (A, B = r0; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |

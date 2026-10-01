@@ -1,0 +1,88 @@
+{
+  "verdict": "FAIL",
+  "gap_tests": [
+    {"gap": "G1", "record": "R15", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); operation recommend vs classify tie unresolved (state unaffected)"},
+    {"gap": "G1", "record": "R16", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); same operation tie"},
+    {"gap": "G1", "record": "R17", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); same operation tie"},
+    {"gap": "G1", "record": "R18", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); same operation tie"},
+    {"gap": "G1", "record": "R19", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); 'Stays in' is continuative, not a disposition"},
+    {"gap": "G1", "record": "R20", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); evidence-column 'did NOT reuse' not a candidate"},
+    {"gap": "G1", "record": "R21", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3 (A7); 'explicitly ruled' is evidence, not a candidate"},
+    {"gap": "G1", "record": "R27", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3, operation apply (A7); 'rather than superseding' is a contrastive, never a disposition"},
+    {"gap": "G2", "record": "R15", "answer": "norm ELIGIBLE, basis VERDICT, about_operation promote, about_target Reuse Before Create"},
+    {"gap": "G2", "record": "R16", "answer": "norm ELIGIBLE, VERDICT, promote, Ownership Drives Reuse (quoted principle is MENTIONED)"},
+    {"gap": "G2", "record": "R17", "answer": "norm ELIGIBLE, VERDICT, promote, Surface gaps / Deferred != skipped (proposed rule line 'never silently absorbed' is MENTIONED)"},
+    {"gap": "G2", "record": "R18", "answer": "norm ELIGIBLE, VERDICT, promote, Epistemic labeling (VERDICT outranks PERFORMATIVE_ONLY 'already ARB-adopted')"},
+    {"gap": "G2", "record": "R19", "answer": "norm INELIGIBLE, VERDICT, promote, Registration != Delivery (D12 'stays in'; step 3 assigns the generalized form to the row subject)"},
+    {"gap": "G2", "record": "R20", "answer": "norm INELIGIBLE, VERDICT, promote, Strangler reconstitution ('Remains Candidate')"},
+    {"gap": "G2", "record": "R21", "answer": "norm INELIGIBLE, VERDICT, promote, ChallengeResolvedIntegration carrier ('replaced only on repeated evidence' loses on priority)"},
+    {"gap": "G3", "record": "R01", "answer": "still ambiguous: UNKNOWN (A2, X=resolve, no D4 proposal in words) vs ACT_REFUSED resolve (proposal inferred per section 3) vs ACT_REFUSED adopt R-81..R-85 (prepared rulings as D4 proposal)"},
+    {"gap": "G3", "record": "R26", "answer": "act ACT_REFUSED, operation supersede, target ADR-T14 (A3: operative decision text, proposal = 'a supersession question'); norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY ('not superseded')"},
+    {"gap": "G3", "record": "R29", "answer": "act NONE, basis NONE (A8; reason against an unchosen option); norm NONE"},
+    {"gap": "G4", "record": "R05", "answer": "act ACT_ATTEMPTED, attempt_kind PREPARED, operation authorize, target WP-4C-1 (A4); later_disposition none; norm AUTHORIZED (OPERATOR), plan and implement, stated_by 'ARB CHIEF (PREPARED)'"},
+    {"gap": "G5", "record": "R10", "answer": "norm STATUS_CONSTRAINT, basis STATUS_PREDICATE (D8(ii)), about_operation begin implementation, target WP-4B; 'proviso not met' is a fact; act NONE"},
+    {"gap": "G5", "record": "R23", "answer": "norm STATUS_CONSTRAINT, basis STATUS_PREDICATE ('permanent documentation standard' outranks PERFORMATIVE_ONLY 'adopted'), about_operation 'status: permanent documentation standard'; not REQUIRED"},
+    {"gap": "G6", "record": "R02", "answer": "act ACT_OCCURRED adopt R-81..R-85 (A6; 'confirms and adopts' one event); norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY, about_operation adopt"},
+    {"gap": "G6", "record": "R30", "answer": "act ACT_OCCURRED adopt (A6; no PREPARED marker in R-94's own section); norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY; about_operation ambiguous (adopt vs annotate)"},
+    {"gap": "G6", "record": "R06/R07", "answer": "act: two DISTINCT records, ACT_WITHDRAWN withdraw R-90 (A1, REPORTED) and ACT_OCCURRED rule/classify R-90 (A5, REPORTED); norm: same on both, shared_with cross-listed, counted once; value STATUS_CONSTRAINT ('the register holds constitutional decisions') if STATED, but presence ambiguous (D11 cited-ground = MENTIONED -> NONE)"}
+  ],
+  "still_ambiguous": [
+    "R01 act: UNKNOWN vs ACT_REFUSED; operation resolve vs adopt (section 3 allows inferred proposals; merge rule leaves X open)",
+    "R06/R07 norm presence: STATUS_CONSTRAINT vs NONE (D11 'cites as evidence' vs R-N1 example 'forbids promoting from one' and D8(i) 'the register holds X')",
+    "R30 norm about_operation: adopt (target ANNOTATE) vs annotate (target PB-006 row); D13 'the operation named in it' names two",
+    "R15-R21, R27 act.operation: same-step (A7) candidate tie with no tie-break; 'highest step' undefined (act.state determinate)"
+  ],
+  "non_minimal_changes": [
+    "D7 turns the whole deontic vocabulary (PERMITTED, AUTHORIZED, ELIGIBLE, DELEGATED, 'remains' rule) into a closed lexicon; G5 needed only REQUIRED/PROHIBITED/STATUS_CONSTRAINT. Side effect: 'no ... may' (R01) is not listed as PROHIBITED",
+    "R-X1 restricts section use for all acts and norms, not only R-A3 performatives and the G5 operator question",
+    "R-A5 codifies all act states, incl. a new UNKNOWN rule for ACT_REVERSED (A1) and A5; G3 needed only REFUSED vs OCCURRED, G4 only A4",
+    "D11 STATED/MENTIONED applies to all norms, incl. those cited as evidence or grounds in session logs and commits; G2 needed it only for matrix rows",
+    "D8(ii) generalises R-A1's single example to every present/future indicative about an operation",
+    "R-S1 counting clause prescribes analysis rather than coding (minor; G6-related)"
+  ],
+  "neutrality_issues": [
+    "BLOCKING N1 (R-A3 scope): self-performed refusals/withdrawals/reversals of ANY operation in ANY section are acts (D3 last bullet; A1-A3 before A7), while positive self-performance is limited to five ops in register rows. E.g. R-36 'Expressly NOT promoted' -> ACT_REFUSED promote, but 'Promoted into AST-013' -> NONE. This is TC-1 alternative 1c applied only to negatives: undisclosed, labelled SELF_PERFORMED (defined in D3 as R-A3 (a)-(c)), and contradicting R-A3's 'any other operation -> NONE'",
+    "N2 (governed-act level): D12 lists 'remains candidate'/'stays in ...' as INELIGIBLE verdicts, and VERDICT > STATUS_PREDICATE lifts literal status labels on the behaviour (R19-R21) to the meta-act promote. This contradicts R-N1's no-re-levelling rule and RATIONALE's rejected 'always meta-act'. Small H-D/H-B effect; status label lost from coded fields",
+    "N3: R-N3 codes the authorize performative as OPERATOR, so bare 'X AUTHORIZED' norms are definitionally paired with their act but cannot be excluded under TC-4 4b",
+    "N4: D8(ii) turns descriptive/predictive indicatives into norms (R27 'APPLIES §12'; R-47 'no observable behaviour changes until 7C'; R-77 'Implementation continues under ...'), inflating norms on work (toward H-B coupling); unlisted theory choice",
+    "N5: D11 'cites as evidence' / 'asserts as its own' can drop every norm reported in session logs or commits, leaving norms only in governance instruments (toward H-D); unlisted",
+    "N6: the REPORTED vs SELF_PERFORMED boundary is undefined for register rows that reproduce another actor's ruling or instruction (R02 'RULING AS ISSUED, VERBATIM'; R23 '(Principal Architect instruction)'); it decides survival under TC-1 1b"
+  ],
+  "theory_choices_assessment": [
+    "TC-1: correctly listed as inherited; incomplete: omits self-performed negative dispositions (B1), so the 1a/1c descriptions are inaccurate",
+    "TC-2: correctly a theory choice; 2b underspecified (no link field to the adopting act beyond parsing the section heading; inferred deontic value open)",
+    "TC-3: appropriate; r3 codes no force, so this is an analysis-time choice and listing it is harmless",
+    "TC-4: appropriate; incomplete for bare authorize performatives coded OPERATOR (N3)",
+    "Missing from THEORY-CHOICES: self-performed refusals/withdrawals as acts; D8(ii) prospective indicatives as norms; D11 treatment of reported/cited norms",
+    "Acceptably decided: 'standard/permanent/binding' never REQUIRED (lexical, recoverable from 'status: <label>')",
+    "Over-listed: none; no listed choice could have been decided neutrally in the schema"
+  ],
+  "conflicts": [
+    "R-A3 G1 bullet ('self-performs any other operation -> NONE') vs D3 last bullet and A1-A3 (self-performed refusals/withdrawals of any operation are acts)",
+    "D3 circular/self-contradicting: R-A3(c) requires SELF_PERFORMED (D3); D3 defines it as 'R-A3 (a)-(c) hold', then also assigns it to refusals failing (a)/(b)",
+    "D11 (cited grounds are MENTIONED) vs R-N1 example 'forbids promoting from one' (R22 ground clause) vs D8(i) 'the register holds X' (R06/R07 ground clause)",
+    "D12 negative-verdict phrases vs D8(i) status labels and R-N1 no-re-levelling; only priority decides",
+    "R-A1 (retained) 'not ACT_REFUSED unless an attempt is recorded' vs A3/R-A2 accepting a proposal",
+    "D4 (issued PREPARED ruling = proposal) vs D6 (a proposal is not ATTEMPTED); consistent only if the proposal (adopt) and attempt (instrument's op) are different operations, which is unstated",
+    "R-A5 merge rule ('coded as X') vs R-A3 closed list: an adoption whose content is promotion (R-36) can be recoded promote -> A7 NONE",
+    "Priority incomplete: NORM has no tie rule for same-class clauses on one target (R12 MAY/MUST NOT; R34 AUTHORIZED + may begin RED) or unclear target splits; step 7 UNKNOWN contradicts R-A4 ('span does not decide'). ACT state order is complete, but operation selection has no same-step tie-break and 'highest step' is undefined"
+  ],
+  "blocking": [
+    "B1: R-A3 scope leak for negative dispositions. Self-performed refusals/withdrawals/reversals of any operation in any section are coded as acts under R-A3's own SELF_PERFORMED label, contradicting R-A3's closed scope and not disclosed in TC-1. This builds the flagged H-D-favouring text-as-act convention into default observations asymmetrically (non-promotions are acts, promotions are not). Fix: separate basis value (e.g. SELF_PERFORMED_DISPOSITION), apply the R-A3 scope test or default NONE, and list in TC-1",
+    "B2: G3 not closed on R01. Section 3 lets a PROPOSAL be an INFERENCE, which reopens coder judgement inside R-A2/A2/A3, and the merge rule leaves X (resolve vs adopt) open. Fix: require a stated (SOURCE_FACT) proposal, else UNKNOWN; fix X as the refusal verb's complement"
+  ],
+  "nonblocking": [
+    "Add a NORM tie rule for same-class clauses and multi-target spans (R12, R34) instead of sending them to UNKNOWN",
+    "Resolve D11 vs R-N1: state whether norms cited as grounds or reported from another actor are STATED (decides R06/R07, R22)",
+    "Restrict D12's negative-verdict list or keep 'status: <label>' for status labels in review sections (N2)",
+    "Tag bare authorize performatives so TC-4 4b can exclude them (N3)",
+    "Narrow D8(ii) to statements that assign a standing; list the broader reading as a theory choice (N4)",
+    "Fix the D3 / R-A3(c) circularity; add an R-A5 same-step operation tie-break and define 'highest step'",
+    "Clarify the D4/D6 split; reconcile R-A1 'attempt' with R-A2/A3 'proposal or attempt'",
+    "Define REPORTED vs SELF_PERFORMED for rows reproducing another actor's ruling or instruction (R02, R23)",
+    "Generalise D7 negation handling ('no ... may'), so R01's norm is not PERMITTED by literal match",
+    "Give D13 a rule for spans naming two operations (R30 'ANNOTATE is adopted'; R05 'PLAN AND IMPLEMENT')",
+    "Disclose the non-minimal extensions (D7, R-X1, A1/A5, D11, D8(ii)) as scope extensions",
+    "D1 depends on how the dataset formats section headings rather than on source text; note as a dataset dependency"
+  ]
+}
