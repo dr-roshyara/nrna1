@@ -1,0 +1,55 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "path_tests": [
+    {"path": "engineering/architecture/adr/ADR-AIP-LOG-Platform-Rulings.md", "channel": "K-NORMREG", "correct": true, "e_consistent": true},
+    {"path": "docs/implementation/PROGRAM_STATUS.md", "channel": "K-STATUS", "correct": true, "e_consistent": true},
+    {"path": "docs/approvals/x.md", "channel": "K-STATUS", "correct": true, "e_consistent": true},
+    {"path": "register.md", "channel": "K-NORMREG", "correct": true, "e_consistent": true},
+    {"path": "docs/decision-log.md", "channel": "K-NORMREG", "correct": true, "e_consistent": true},
+    {"path": "app/Models/Registration.php", "channel": "none (executor path, in E)", "correct": true, "e_consistent": true},
+    {"path": "config/statuses.php", "channel": "none (executor path, in E)", "correct": true, "e_consistent": true},
+    {"path": "resources/js/normalize.js", "channel": "none (executor path, in E)", "correct": true, "e_consistent": true},
+    {"path": "docs/release-notes.md", "channel": "K-DEPLOY", "correct": true, "e_consistent": true},
+    {"path": "deploy/prod.yml", "channel": "K-DEPLOY", "correct": true, "e_consistent": true}
+  ],
+  "regex_glob_equivalence": "holds at pattern level (2 leading x 4 trailing doc cases, 2 x 4 deploy cases incl. path-end, tfstate); regex on tip paths vs globs on history is by design and declared",
+  "repo_specific_path_hardcoded": false,
+  "fixed": {
+    "BLK2": "FIXED",
+    "NB11": "FIXED",
+    "NB12": "DECLARED (PROTOCOL-B §6)"
+  },
+  "reachability": {
+    "Q1": ["YES_IN_CAPTURE", "NOT_EVIDENCED_AT_TIPS", "YES_LOCAL_ONLY", "NOT_EVIDENCED_LOCALLY", "NOT_CHECKABLE_LOCALLY"],
+    "Q2": ["CONFIG_RULE", "NORM_REGISTER_RECORD", "STATUS_RECORD", "STATE_RECORD_BY_TYPE", "IDENTITY_ATTESTATION", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q3": ["CONTROLLED_BY_WRITERS[n=k]", "ND(keyring not consulted)", "LOCAL_MACHINE", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q4": ["NO_CLIENT_SET", "NONE (K-LOCALHOOK, N13)", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q5": ["ND", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q6": ["ND[COMPLETE_VS_HOST=NOT_SHOWN]", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q7": ["INDEPENDENT_AT_IDENTITY_COUNT_LEVEL[aliases_unresolved] (K-STATUS/K-DEPLOY)", "IND[no_norm_source...]", "IND[empty_set...]", "IND[mechanism_host_enforced_unobservable...]", "NOT_INDEPENDENT[overlap_norm]", "NOT_INDEPENDENT[overlap_exec]", "SELF_ATTESTED (K-NORMREG, definitional)", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q8": ["YES_LOCAL", "NO_LOCAL_ONLY", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "headline_computed_from_data": true,
+    "headline_all_five_reachable": true,
+    "forced_negatives": "none (BLK-2 file-name-driven NOT_EVIDENCED_AT_TIPS / IND[no_norm_source] removed)"
+  },
+  "regressions": [],
+  "regression_checks": {
+    "read_only": "OK (only new commands: unset, compgen builtins)",
+    "determinism": "OK (NB-11 residual removed)",
+    "config_isolation": "OK (repo-local config readable, declared)",
+    "B1_B5_BLK1": "intact",
+    "self_path_before_cd": "OK (l.19-21 before the single cd at l.41)",
+    "out_refusal": "OK",
+    "identity_guard_fail_closed": "OK",
+    "boundedness": "OK (E pathspec list doubled; runtime only, NB-8 family)",
+    "knowledgeos_exclusion": "OK",
+    "neutrality": "OK"
+  },
+  "blocking": [],
+  "nonblocking": [
+    {"id": "NB-13", "summary": "Non-register data files caught by the (infix-widened) register vocabulary, e.g. config/decisions.yml, enter npaths and thus N_c for K-STATUS/K-DEPLOY (developer authors counted as norm-makers in overlap_norm) and are excluded from E; observed, not forced, but §6 NB-12 does not state the N_c/E consequence. Suggest a half-sentence in §6."},
+    {"id": "r1/r2 limitations", "summary": "N7, N8, N10, N11, N13, N15, NB-4..NB-9 still disclosed in §6; not re-examined (out of scope)."}
+  ],
+  "independence_rule_ok": true,
+  "identity_ok": true
+}

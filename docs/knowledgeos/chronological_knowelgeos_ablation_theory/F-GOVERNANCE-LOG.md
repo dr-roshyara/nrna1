@@ -2222,3 +2222,15 @@ The research state is not advanced
 |---|---|
 | Records | `analysis/theory/LOOP-1BD/` (A2, B2 = r2; TASK-r3.md, REVIEW-TASK-r3.md, BUNDLE-A3.sha256) |
 | Next | r3 worker (A3) → re-review (B3) |
+
+## F-LOG-0184 — **Protocol B r3: PASS_WITH_LIMITATIONS** (no blocking issue)
+- **Fixed:** BLK-2 (two-sided token boundary; the E globs are equivalent by construction), NB-11; NB-12 declared.
+- **All 10 path tests correct**, including the rulings register → K-NORMREG and PROGRAM_STATUS.md → K-STATUS. The look-alike code paths (Registration.php, statuses.php, normalize.js) → E.
+- **New non-blocking item NB-13:** vocabulary-matched data files inside the code roots enter N_c. It is observed, not forced; to be disclosed in the output review.
+- **Convergence:** blocking issues fell 5 → 1 → 1 → 0. The pre-registered stop rule was not triggered.
+- **Main-analyst read-only safety check: SAFE TO RUN.**
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BD/` (A3, B3 = r3; MAIN-ANALYST-SAFETY-CHECK.md) |
+| Next | verbatim run from the root and from `app/` → compare → output review → seal |
