@@ -2234,3 +2234,17 @@ The research state is not advanced
 |---|---|
 | Records | `analysis/theory/LOOP-1BD/` (A3, B3 = r3; MAIN-ANALYST-SAFETY-CHECK.md) |
 | Next | verbatim run from the root and from `app/` → compare → output review → seal |
+
+## F-LOG-0185 — **Protocol B executed verbatim** (r3 script sha `e9e0975b…`, HEAD `9f1bcab5`). No interpretation
+- **Runs:** from the root and from `app/` → **byte-identical**; exit 0/0; no errors; identity guard PASS.
+- **Recorded outputs (descriptive):**
+  - headline `LOCAL_INDEPENDENCE_NOT_DETERMINABLE`;
+  - Q7: 3 not determinable (K-CI, K-HOOK, K-SIG); 2 NOT_INDEPENDENT[overlap_norm=3] (K-STATUS, K-DEPLOY); 1 SELF_ATTESTED (K-NORMREG); 0 independent;
+  - K-CODEOWNERS and K-LOCALHOOK not evidenced; 5 host channels not checkable locally;
+  - 23 of 4,028 commits carry a signature header (presence only).
+- **Interpretation is deferred** to the output review and the discrimination-readiness review
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BD/EVIDENCE-B/` (RUN-ROOT, SHA256SUMS-RUN-APP, RUN-RECORD.md); OUTPUT-REVIEW-TASK.md |
+| Next | an independent output review |
