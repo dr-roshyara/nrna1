@@ -76,6 +76,70 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-64`](PBDIGIT-64-election-opens-voting-without-any-candidate.md) | 🔴 **An election can enter voting with no candidates** — `complete_nomination` enforces the rule, the automatic window transition does not. Reproduced end to end | `EPIC-03` | `OPEN` — PO-confirmed defect; found by IERVP runtime verification |
 | [`PBDIGIT-63`](PBDIGIT-63-verify-the-organisation-creation-journey-and-its-verification-estate.md) | 🟢 **"Create an organisation → land on its homepage" — RUNTIME-VERIFIED end to end 2026-08-08** (first recorded execution; persisted outcome checked in the database). Six creation assertions still describe a different contract from the controller — **classify before repairing**; corrects rule `O1`'s automated-test *evidence* ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | **Part A ✅ DONE** · Part B unblocked, unauthorised · browser render + `F-5` walk still unverified · `D-1`…`D-6` need business answers |
 
+### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-132`)
+
+**Full specifications, dependency graph and Definition of Done:** [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (from the [reality audit](../reviews/2026-09-30-constitutional-runtime-reality-audit.md) and the [migration readiness review](../reviews/2026-09-30-constitutional-runtime-migration-readiness.md)). **None is authorised.** First implementation ticket: **`PBDIGIT-76`**. Decision tickets (`PBDIGIT-90`…`100`) are the PO/ARB's. Related existing items: `PBDIGIT-35` · `37` · `45` (owns per-IP retirement; gates `117`/`121`) · `49` · `65` · `68` · `69`.
+
+| ID | Story | Epic | Status |
+|---|---|---|---|
+| `PBDIGIT-76` | C-1 — Repair voting feature-test fixtures for current schema (retired columns) | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-77` | C-1 — Repair voting feature-test tenancy, factory, constructor and route fixtures | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-78` | C-1 — Repair voting-active lifecycle fixtures to current lifecycle rules | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-79` | C-2 — Characterize the voting entry path at the HTTP boundary | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-80` | C-2 — Characterize the ballot, verify and store path at the HTTP boundary | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-81` | C-3 — Pin voting-flow control defects X-1, X-2, X-3 | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-82` | C-3 — Pin voting-code secrecy defects X-4, X-5 | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-83` | C-3 — Pin participation-bypass defects X-6, X-7 | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-84` | C-3 — Pin configuration and schema defects X-8…X-12 | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-85` | X — X-3 — Release the vote lock and roll back on the store IP-denial branch | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-86` | X — X-4 — Stop logging voting codes and compare codes in constant time | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-87` | X — X-5 — Remove plaintext debug_code exposure outside local environments | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-88` | X — X-6 — Remove the session demo-flag bypass from real-election gates | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-89` | X — X-10 — Fix the two voting-path TypeErrors (whitelist decode, UUID user id) | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-90` | H — H-1 — Which IP is the canonical 'verified IP' (rules 1 and 4)? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-91` | H — H-2 — What is the registered device fingerprint (rule 5)? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-92` | H — H-3 — Does trust level scale the per-IP vote limit as law, or is the limit exactly N? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-93` | H — H-4 — Rule 7 semantics: which record counts prior votes per IP, and is the N-th or the (N+1)-th vote refused? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-94` | H — H-5 — Where does the participation action registry live? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-95` | H — H-6 — What is the single platform-organisation rule? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-96` | H — H-7 — Which record is the canonical 'already voted' fact, and which membership predicate is canonical? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-97` | H — H-8 — Do overlays ever influence CAST_VOTE, or remain audit-only observations? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-98` | H — H-9 — Is demo voting in scope for CAST_VOTE? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-99` | H — H-10 — Is ORM-level constitutional immutability sufficient, or is DB-level protection required? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-100` | H — H-11 — How are existing elections (frozen with DB-default law) treated? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-101` | L-1 — One canonical constitution representation, schema version and hash | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-102` | L-1 — Author constitutional law at election creation and freeze it | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-103` | L-1 — Enforce constitutional immutability and verify the hash on load | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-104` | L-1 — Establish constitutional law for existing elections | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-105` | E-1 — Typed evidence: membership, lifecycle and already-voted facts | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-106` | E-1 — Typed evidence: network, device and officer-verification facts with provenance | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-107` | E-1 — Typed evidence: ballot/code session facts under the constitutional protocol | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-108` | V-1 — Evaluators: network (composable binding + limit), device comparison, verification | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-109` | R-1 — Resolver evaluates every policy and returns a stateless trace | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-110` | R-1 — Typed CAST_VOTE context and participation action registry | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-111` | R-1 — Register the CAST_VOTE resolver policy set | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-112` | S-1 — Persist a CAST_VOTE decision record for every evaluation | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-113` | S-1 — Shadow-evaluate CAST_VOTE in the live voting path | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-114` | S-1 — Replay harness: reproduce stored decisions with DB access disabled | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-115` | P-1 — Runtime parity harness at the HTTP boundary with persisted divergences | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-116` | P-1 — Execute the 14 critical parity paths and obtain approval of expected divergences | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-117` | D-1 — Switch the vote-submission decision to CAST_VOTE | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-118` | D-1 — Drive the entry and ballot pages from the CAST_VOTE decision | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-119` | D-2 — Delete the legacy trust-decision pipeline | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-120` | D-2 — Delete legacy participation middleware | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-121` | D-2 — Delete duplicate controller participation gates and per-IP authorities | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-122` | D-2 — Delete dead legacy code and retire tests of non-existent classes | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-123` | CI — Bring election security zones under a blocking CI job | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-124` | CI — CI rule 1 — Only the resolver and registered policies may create CapabilityDecision | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-125` | CI — CI rule 2/4 — Canonical zones cannot import legacy authority; policies cannot consume policy outcomes | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-126` | CI — CI rule 3 — Canonical zones cannot read mutable configuration or live models | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-127` | CI — CI rule 5 — Snapshots cannot evaluate; middleware cannot derive participation | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-128` | CI — CI rule 7 — Forbidden procedural vocabulary in canonical governance code | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-129` | CI — CI rule 8 — Constitutional immutability and replay sufficiency run in CI | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-130` | DOC — Correct false completion claims in historical documents | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-131` | DOC — Consolidated Constitutional Governance Runtime developer guide | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-132` | V1 — Constitutional Governance Runtime v1.0 freeze | `EPIC-05` | `TODO — NOT AUTHORISED` |
+
 ---
 
 ## 🚧 [PBDIGIT-00](PBDIGIT-00-verify-the-journey-end-to-end.md) — Verify the journey end-to-end *(gates every epic above)*

@@ -613,3 +613,14 @@ v1.0 is done when each of these is shown by a test that CI runs:
 - Claims: `claude/audits/D_2_5_Phase_Complete.md`, `claude/audits/D_5_5_*`, `claude/PolicyPurityRules.md`, `claude/plans/PHASE_1_COMPLETE.md`, `.claude/memory/architecture_fitness_functions_recommendation.md`, `developer_guide/election/real_election/security/0{1,4}-*.md`, `docs/publicdigit/brainstorming/20260930_0935_current_status.md`.
 - Commits: `11710f39a`, `e697ffac6`, `89914ce3a`, `c0aa62c09`.
 - Test runs: see §13; raw outputs are in the session scratchpad (not in the repository).
+
+---
+
+## Correction (2026-09-30, additive; ES-004.3)
+
+These four statements were overtaken by the follow-up review `2026-09-30-constitutional-runtime-migration-readiness.md` (§11.4 and §1):
+
+- **G-18 and P1-0 are withdrawn.** "`VotingActive` not derived" is a **fixture gap**, not a production defect. The failing fixtures predate the approved-candidate rule (`f2c2cc4ee`, PBDIGIT-64) and the `voting_locked` rule (`606c362aa`). A probe that adds both yields `voting_active`.
+- **Test failures:** all 218 failing real-election voting feature tests (38 files) are test-infrastructure defects; 0 are business-rule failures.
+- **Rule 7:** there are **four** per-IP limits, not three. The fourth is the `CodeController` cap `config('app.max_use_clientIP') ?? 7` (`CodeController.php:39,896-905`).
+- **P0-D:** the sovereignty target is confirmed as "resolver + its registered `CapabilityPolicy` set" (readiness review §3). P0-D is therefore resolved by the architecture already recorded, not left open.
