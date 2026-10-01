@@ -76,9 +76,9 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-64`](PBDIGIT-64-election-opens-voting-without-any-candidate.md) | 🔴 **An election can enter voting with no candidates** — `complete_nomination` enforces the rule, the automatic window transition does not. Reproduced end to end | `EPIC-03` | `OPEN` — PO-confirmed defect; found by IERVP runtime verification |
 | [`PBDIGIT-63`](PBDIGIT-63-verify-the-organisation-creation-journey-and-its-verification-estate.md) | 🟢 **"Create an organisation → land on its homepage" — RUNTIME-VERIFIED end to end 2026-08-08** (first recorded execution; persisted outcome checked in the database). Six creation assertions still describe a different contract from the controller — **classify before repairing**; corrects rule `O1`'s automated-test *evidence* ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | **Part A ✅ DONE** · Part B unblocked, unauthorised · browser render + `F-5` walk still unverified · `D-1`…`D-6` need business answers |
 
-### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-138`)
+### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-149`)
 
-**Full specifications, dependency graph and Definition of Done:** [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (from the [reality audit](../reviews/2026-09-30-constitutional-runtime-reality-audit.md) and the [migration readiness review](../reviews/2026-09-30-constitutional-runtime-migration-readiness.md)). **None is authorised.** First implementation ticket: **`PBDIGIT-76`**. Decision tickets (`PBDIGIT-90`…`100`, `138`) are the PO/ARB's. Related existing items: `PBDIGIT-35` · `37` · `45` (owns per-IP retirement; gates `117`/`121`) · `49` · `65` · `68` · `69`.
+**Full specifications, dependency graph and Definition of Done:** [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (from the [reality audit](../reviews/2026-09-30-constitutional-runtime-reality-audit.md) and the [migration readiness review](../reviews/2026-09-30-constitutional-runtime-migration-readiness.md)). **None is authorised.** First implementation ticket: **`PBDIGIT-76`**. Decision tickets (`PBDIGIT-90`…`100`, `138`, `141`) are the PO/ARB's. Related existing items: `PBDIGIT-35` · `37` · `45` (owns per-IP retirement; gates `117`/`121`) · `49` · `65` · `68` · `69`.
 
 | ID | Story | Epic | Status |
 |---|---|---|---|
@@ -145,6 +145,17 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | `PBDIGIT-136` | C-3 — Characterize `voter_slugs.vote_completed`, which no code writes | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-137` | D-2 — Dispose of the unwired divergence-observation infrastructure | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-138` | H — H-12 — Should voting codes be stored hashed at rest? | `EPIC-05` | **DECISION REQUIRED** |
+| `PBDIGIT-139` | GOV — Repair capability-suite and suspension-suite test drift | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-140` | GOV — Characterize the four admin-action authorities at the HTTP boundary | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-141` | H — H-13 — Who owns governance role authority, and what is the one role vocabulary? | `EPIC-03` | **DECISION REQUIRED** |
+| `PBDIGIT-142` | GOV — Suspend and resume bypass ConstitutionalTransitionGuard | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-143` | GOV — Resume writes no audit record | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-144` | GOV — Resolver role and precondition policies for admin actions | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-145` | GOV — Remove the lifecycle engine's second capability matrix | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-146` | GOV — Declare overlay behaviour in the constitution and fix the placeholder resume target | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-147` | GOV — Frontend renders governance capabilities only | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-148` | GOV — Lifecycle derivation cannot be recomputed for a given instant | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-149` | GOV — Governance lifecycle end-to-end suite through HTTP | `EPIC-03` | `TODO — NOT AUTHORISED` |
 
 ---
 
