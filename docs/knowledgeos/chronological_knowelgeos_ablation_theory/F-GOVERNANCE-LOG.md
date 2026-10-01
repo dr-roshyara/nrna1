@@ -2316,3 +2316,12 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/R-SELF-RULE.md`, `SELF-ROOTS.txt`, `LOOP-1BF/` |
+
+## F-LOG-0191 — 1bf **information-gain decision rules frozen before any host data** (INFOGAIN-PREREG.md)
+- **Q1–Q4 criteria:**
+  - a CLIENT_SUPPLIED commit date is never Q1-YES;
+  - NOT_ACCESSIBLE or NOT_RETAINED gives NOT_DETERMINABLE, never NO;
+  - different logins never establish independence;
+  - Q4 requires D1 to be broken, with the symmetry rule applied.
+- **Mapping:** Q4 YES → Case B (stop; draft an experiment for the human). Otherwise → Case A (prepare H5).
+- **Context:** the latest human operating prompt (post-H1 protocol) is consistent with the plan in force; no protocol change. The Protocol C worker is still running.
