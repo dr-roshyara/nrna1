@@ -2635,3 +2635,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BJ/COMPARISON.json` |
+
+## F-LOG-0216 — 1bj reconciled: **FAIL confirmed by independent review** (κ recomputed and identical; integrity clean)
+- **The FAIL does not depend on Haiku:** opus~sonnet ACT_SELF_PERFORMED = 0.598.
+- **Anatomy (exploratory):** opus~sonnet's 8 SP disagreements are all "schema admits both", **perform-vs-report on register/ruling rows**. About half of Haiku's divergence is coder competence (class a).
+- **Sealed expectation:** confirmed on SP and on the overall result; partly confirmed on NS; not confirmed on AR (bimodal).
+- **Pre-registered consequence:** **option A**, the act/norm observation layer is not reliably codable on this corpus at either grain. **For human acknowledgement.**
+- **New L2 candidate concept, recorded and not established:** *performative ambiguity*. It unifies R-A3/CI1, H5 and this failure; R4 is to formalize it.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BJ/RECONCILIATION.md`, `COMPARISON.json`, `RETURNS.sha256` |
