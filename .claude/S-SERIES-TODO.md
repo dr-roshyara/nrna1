@@ -137,9 +137,9 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
   - Agent errors: 46 lenient / 42 strict, touching 7 / 5 of 11 runs.
 
 **CRITICAL PATH TO A READABLE FINAL REPORT (2026-10-01; supersedes B1–B3 and the older critical paths below; 👤 = human gate):**
-- [ ] 1. Independent check of the field inventory *(running)*
-- [ ] 2. Package v3: review E's fixes + the checked inventory + **strategic fork: patch R7 rule by rule vs redesign the agent output (minimal observation record; tools derive ids, hashes, claims, precedence)**
-- [ ] 3. Independent adversarial review of v3 → revise until accepted
+- [x] 1. Independent check of the field inventory (review F: RELIABLE-WITH-CORRECTIONS; 48/19/10/8)
+- [x] 2. Package v3 `8e095b780` (fork P/H/R, rec. H) → review G (ACCEPT-WITH-FIXES, 13 MATERIAL) → **package v4** (G fixes + §3a binding engineering constraints)
+- [ ] 3. Independent adversarial review of v4 → revise until accepted
 - [ ] 4. 👤 Approve the bounded repair package (incl. the fork)
 - [ ] 5. 👤 Adjudicate the contract-vs-code disagreement table (one row per key)
 - [ ] 6. Build the repair tests-first on a branch (production `ADDENDUM_SHA256` and state untouched); independent review

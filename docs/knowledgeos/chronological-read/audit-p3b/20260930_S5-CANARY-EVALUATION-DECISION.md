@@ -1,4 +1,9 @@
-# S5 canary evaluation gate: diagnosis and decision package (v3)
+# S5 canary evaluation gate: diagnosis and decision package (v4)
+
+> **v4 change note.** Review G of v3 (`canary-diag/PKG-REVIEW-G.md`) returned ACCEPT-WITH-FIXES, with 13 MATERIAL findings, all accepted. The orchestrator spot-checked G1 (R7:141), G4 (W:263-266), G7 (R7:186) and G12 (orch:57) against the sources.
+> - **Where the fixes live.** They are applied in place where a statement was wrong (§1, §2, H1, H3, §4, §5, §6). They also appear as binding engineering constraints in **§3a**.
+> - **Independence caveat.** Review G ran in an existing session, not a fresh one. Its findings were re-derived from the sources, so they are used.
+> - **Read-discipline note.** The §1 figures for rows 41 and 23 and for F3 rest on count-only scans that protocol §22 now forbids. They are **provenance-limited**: usable as orientation, and not to be re-run without a human act.
 
 | | |
 |---|---|
@@ -26,7 +31,7 @@
 
 - **Agent-error spread.** A strings touch 7 of 11 runs (lenient) or 5 of 11 (strict); the stop threshold is 6.
 - **F1 cannot be split further.** One template covers eight conditions (`evidence.py:163-177`).
-- **Ruled out:** line truncation, context pressure, model behaviour as the X cause (D §14).
+- **Not supported by the evidence** (discriminating evidence, not a test; D §14): line truncation, context pressure, and model behaviour as the X cause.
 - **Not yet measured:** contract read coverage (computable from the witness by an authorized session).
 
 **Inventory** (`FIELD-INVENTORY.md`, corrected by F). It covers 85 fields and rules on agent-authored artifacts along the R7 verifier path (call graph confirmed by F). Status: **48 SPECIFIED / 19 NAME-ONLY / 10 ABSENT / 8 CONTRADICTORY**, so **37 not fully specified**. F adds one missing row: the file-reading-records layout as a whole.
@@ -58,14 +63,14 @@
 | Option | What | For | Against |
 |---|---|---|---|
 | **P: patch** | Annex the about 20 EXPOSE rows into R7; keep the agent-attested values | smallest code change; keeps the 130+ R7 acceptance tests | cannot cure the uncomputable values (74, 67), the mislabelled bindings (3), the seal asymmetry, or the typing traps (23); the agent still has to copy and attest tool-known values; the agent-side rule surface grows (rev3 1,358 + R7 954 lines) |
-| **H: hybrid (recommended)** | **Derive** every tool-knowable value; **expose** the remaining rules in a contract-first annex; **fix** the 5 code-level defects | removes the whole "agent attests what a tool knows" class (rows 3, 14, 44, 45, 51, 64–67, 74, about 10 rows); every row text cannot cure gets a code fix; leaves only genuine observation rules for the agent | touches the evidence and witness code paths, so their tests and golden hashes change; needs re-audit |
+| **H: hybrid (recommended)** | **Derive** every tool-knowable value; **expose** the remaining rules in a contract-first annex; **fix** the code-level defects (H3, now 6 items) | removes most of the "agent attests what a tool knows" class (rows 14, 51, 64–67, 74; precedence only in part: `date_applies_to_file` and later_* membership stay agent assertions, see H1); every row text cannot cure gets a code fix | touches the evidence and witness code paths, so their tests and golden hashes change; needs re-audit |
 | **R: redesign** | The agent emits a minimal observation record (quotes, readings, dispositions); tools derive ids, hashes, claims, precedence, typing | removes the cross-artifact rule class at its root (F: comparing visible text with code keeps finding such rules) | reopens witness, evidence and typing code with 130+ numbered tests; the largest re-audit; delays everything most |
 
 **Why H.**
 - About 20 of the 37 rows are plain missing text, which an annex fixes.
 - About 10 rows are values a tool computes better.
 - 5 rows need code under any option.
-- R's extra benefit over H is the residual typing-trap class (rows 18 and 22), and that can be closed within H by registry rows.
+- R's extra benefit over H is the residual typing-trap class (rows 18 and 22). Within H, this needs **code**, not registry rows: row 18 is claim enumeration (U:340-343). It is therefore added as H3 item 6.
 
 ## 3. Repair design under H
 
@@ -78,14 +83,15 @@
 | Item | Change |
 |---|---|
 | ack tokens (51) | drop the equality check (`evidence.py:138-141`); reword R7:630 |
-| S3-LINT (67) | drop the binding (`p3b_s5_r7_verify.py:205-207`; S3 already runs at `:176`); remove the file from `FINAL_WRITES` (`universe.py:55-56`, `:696`), from the prompt (`orchestrate.py:250-251`) and from the golden prompt hash. A residual Write becomes W8 |
+| S3-LINT (67) | drop the binding (`p3b_s5_r7_verify.py:205-207`; S3 already runs at `:176`); remove the file from `FINAL_WRITES` (`universe.py:55-56`, `:696`). The prompt write list (`orchestrate.py:255-256`) is rendered from `permitted_writes`, so the entry and the golden prompt hash follow automatically. A residual Write becomes W8 |
 | claim-evidence (64–66) | the verifier searches the facts for a qualifying fact itself |
-| contract/manifest shas (3) | stamped by the orchestrator at assembly; no longer agent-written |
-| precedence and `position` (44, 45), `edge_class` (14) | derived by the tool from 02-FILES/plan data; the agent no longer writes them, or they are validated as derived |
-| `test_plan_sha256` (74) | the agent writes the test-plan text into a declared file; the tool hashes it |
+| contract/manifest shas (3) | **EXPOSE, not stamped.** Assembly never edits a record (R7:141, orch:622-623). The annex states "copy both values from the slice fields", and fixes the R7:122 wording. Alternative: remove the fields from the exact key set by an annex row (then listed under "Changed", §4) |
+| precedence and `position` (44, 45) | **verifier-side** derivation from `files_meta` (V:310; C:39-59), with no plan or slice change (the rebind requires both byte-identical, act:205-208). **Agent residual, stated in the annex:** `date_applies_to_file` stays attested (C:45); later_* lists are candidates, which the verifier filters by derived precedence |
+| `edge_class` (14) | derived by the verifier from the edge's own quote and source (R2 needs a quote; R1 needs a plan row source) |
+| `test_plan_sha256` (74) | the **verifier hashes the canonical JSON of the test-plan fields already in the register record** (inventory remedy, row 74). No new file and no new permitted write. Disclosed: a post-run hash attests consistency, not pre-registration order |
 
 **Claim-evidence search (H1, E findings 1–2).**
-- **Deterministic match:** all qualifying facts are counted, and the minimal (run, source, fact_id) is reported.
+- **Deterministic match:** all qualifying facts are counted, and the minimal (run, source, fact_id) is reported under a total order (the canonical-JSON sort key; `fact_id` may be non-string). When candidates fail differently, the reported code follows a fixed precedence. The choice rule is tested (H4).
 - **Per-claim codes, unconditional:** NO-FACT-OF-KIND, FIELD-MISMATCH, UNANCHORED, NOT-WHOLE, RUN-NOT-READING, plus a "candidates examined" count.
 - **Known weak spot, disclosed:** timeline and d4/d5 claims have `fields = {}`, so any fact of that kind at that source qualifies. This existed before; the agent's ref only made it visible.
 - **Consequences, listed:**
@@ -96,22 +102,24 @@
 
 **H2. Contract-first annex** (E finding 3, a finite procedure):
 
-1. **Draft.** An independent drafter receives the rev3/R5/R6/R7 rule texts plus the inventory's list of row names (keys only, without the code behaviour) and writes the annex.
-2. **Extract.** A static key extraction from the code (the inventory's AST tool, frozen) is run.
+1. **Draft.** A drafter who has not authored or reviewed the verifier code, and is not the inventory builder, receives the rev3/R5/R6/R7 rule texts plus the inventory's list of row names (keys only, without the code behaviour) and writes the annex.
+2. **Extract.** A static key extraction is run with the inventory's AST tool, **committed as an artifact** and frozen. Its declared inputs add the dynamic key sources (U:76-110, pr:88-158, f-string keys), which the AST alone misses.
 3. **Diff, both directions:** keys in the code but not the annex (unreachable), and rules in the annex but not the code (unchecked; R-1…R-10).
 4. **Human table.** The human receives **one closed table**: one row per disagreement, giving the contract citation, the code behaviour (file:line) and the options **CONTRACT-WINS** (code changes), **CODE-WINS** (the contract gains the rule) or **DROP**.
    - Where no contract text exists (`ensure_ascii`, `SUPERSEDED`, the pointer phrases), the row is marked "authoring": the human chooses a value, not a reading.
 5. **Bounds:** one draft, one diff, one human pass, then the two-way reachability test as the termination check. Rows the human adds go through the same test.
-6. **Format.** The annex is a machine-read table between markers, which the verifier loads like the REGISTRY.
-7. **Predicate effect.** CONTRACT-WINS rows can change the acceptance predicate (for example the two live POINTER regexes, `p3b_s5_verify.py:108` and `p3b_s5_r7_reconstruction.py:34`). These are listed under "changed" (§6).
+6. **Format and location.** The annex is a machine-read table between markers **inside the R7 addendum**, so the existing `ADDENDUM_SHA256` binding covers it (act:218-219). The verifier loads it like the REGISTRY. No new I(run) category is introduced (R7 §5.8 is a closed enum).
+7. **Predicate effect.** CONTRACT-WINS rows can change the acceptance predicate (for example the two live POINTER regexes, `p3b_s5_verify.py:108` and `p3b_s5_r7_reconstruction.py:34`). These are listed under "Changed" (§4).
 
 **H3. Code-level fixes** (curable only in code):
 
 | Defect | Fix |
 |---|---|
-| Seal asymmetry (F3) | W8 SEAL evaluated with the label's allowed-mention list, as S3 is (V:117, W:265 vs C:169-172) |
-| Must-copy anchor typing (23) | a registry row typing `hit_key` as a copy-only META location |
-| Parse robustness (68) | malformed agent JSON → BATCH-FAIL with a code, never an exception (`_jl`/`_js`, VR7:55-66; V:1188) |
+| Seal asymmetry (F3) | W8 SEAL becomes label-aware **only for the content of a Write to a permitted path**. Bash, Read and every other tool input keep `label=None` (W:263-266), and an unknown owner stays strict (W:256). Hold-out label names stay strict everywhere (cm:213-217). RED tests: an allowed token in a Write → no stop; the same token in a reader command → STOP; a non-allowed hold-out S-id or any hold-out label name in a Write → STOP |
+| Must-copy anchor typing (23) | `hit_key` is exempt from typing **iff** it is byte-equal to a stage-1 key of the same label's slice (G-04 equality, V:698-700); otherwise it stays R7-U. The S3 quarantine (VR7:176) and W8 SEAL (W:265) stay untouched. RED test: a non-copied `hit_key` carrying an S-id → R7-U |
+| Parse robustness (68) | malformed **agent-authored** JSON → BATCH-FAIL with a code, never an exception (`_jl`/`_js`, VR7:55-66; V:1188). **Tool artifacts** (plan, INPUT-MANIFESTS, R7-PROVENANCE, WITNESS-DIGESTS, READ-LOG) stay Refused/class S, so tool corruption never becomes a retirable failure |
+| Birth-claim enumeration (18) and untyped free-text fields (22) | claims are enumerated only from `birth_basis()`, not from every S-id token in a births value (U:340-343); META registry rows are added for the row-22 free-text fields |
+| Cause mapping (G7) | every new failure code (per-claim codes, parse code, changed W8 strings) gets a **pre-registered cause class** in the frozen mapping, in the v2.9 text. Otherwise "unrecognized → D" (R7:186) would stop the counted canary |
 | Method enum (28/29) | under R7, `STAGE-2A-2B` is removed from the admissible methods and `NOT-CONSUMED-ESCALATED` is added to the rev3 §D enum by the annex |
 | Synthesis run id (66) | the prompt line at `orchestrate.py:126` is corrected (moot if claim-evidence is removed) |
 
@@ -123,7 +131,20 @@
 
 **H5. Prompt.** Pointer lines only, with each rule in the annex: "Edit/MultiEdit forbidden; re-Write the whole file"; Read only within EOF; no reader call after your last Write (SINGLE).
 
-## 4. Attempt semantics: a disclosed re-registration (E finding 4)
+## 3a. Binding engineering constraints for G1 (review G)
+These conditions bind any engineering authorized under G1:
+1. **No production paths.** Every command passes explicit non-production `--root`, `--archive` and scratch paths. `DEFAULT_ARCHIVE` (orch:57) and the fixed `SCRATCH_ROOT` (pr:53) are never used. The production `ADDENDUM_SHA256`, `P3B-STATE.json`, the manifest and the ledger stay untouched.
+2. **Synthetic data only.** Builders and reviewers use synthetic fixtures only. They do not read corpus bytes, 02-FILES or the hold-out sets without a separate human act (protocol §22).
+3. **H1/H3 as written.** Each item is implemented exactly as specified in v4: no stamping at assembly, no plan or slice change, no new permitted write, and the seal change limited to Write content.
+4. **TDD.** Every H3 item and each new failure code starts with a RED test, and the code's cause class is in the mapping.
+
+## 4. Attempt semantics: a disclosed re-registration (E finding 4, G finding 8)
+
+**Two distinct parts:**
+- **(a) Canary retry exception.** OB0012 and OB0114 only, once.
+- **(b) S5-wide predicate re-registration.** The changed acceptance predicate, the annex and the new cause-mapping entries govern **every** post-canary attempt. q\* (R7:200-201) is **kept**: W-SYS is execution-only (R7:199), so keeping it is defensible. This is stated, not assumed, and it is revisited at G5.
+- **Also amended:** R7:168 ("same … prompts"), for (a).
+- **Annotation:** the exploratory "accepted at attempt 1" domain and the attempt × audit cross-tab are annotated where canary labels were excluded for instrument reasons.
 
 **This is a post-results change to the retry rule** (11 of 11 canary runs failed). It is defensible only because:
 - the canary is the designated repair gate;
@@ -149,7 +170,10 @@
 
 **What it is.** The real code except the content source, through a declared seam.
 - **Why a seam:** the reader hard-codes `dio.discovery_resolver()` (`p3b_read_source.py:130`, `:222`) and cannot serve synthetic sources.
-- **The seam** is an injectable resolver in a harness copy of the reader. A **parity test** shows identical reader output and trailer under both resolvers on one fixture.
+- **The seam** is an injectable resolver in a harness copy of the reader. A one-fixture parity test is **not possible** without a corpus read, so parity is shown in three parts (G finding 9):
+  - (i) a byte diff of the harness copy against `p3b_read_source.py`, limited to the resolver line;
+  - (ii) both resolver code paths exercised over a synthetic store;
+  - (iii) the harness reader path in the prompt (orch:248) and in the witness classifier (W:276-279) declared as **not validated**.
 - **Isolation:** a synthetic manifest and plan (hashing to their own `r7_plan_sha256`), a copied state, its own archive root, a throw-away repository and an isolated root.
 
 **What it validates:**
@@ -162,7 +186,12 @@
 - the identity-manifest pin;
 - the production plan hash;
 - the rebind;
-- behaviour on real texts.
+- behaviour on real texts;
+- the real hold-out sets (the rehearsal uses a synthetic holder, V:115-117);
+- retire and attempt mechanics on production state;
+- the production golden prompts;
+- the LOAD prediction;
+- **the residual A rate on real material** (synthetic A rates do not transfer).
 
 **Coverage, frozen before dispatch:**
 - every canary family, plus BIRTH, CONTRADICTION, LIFECYCLE, d4/d5 and CENSUS claims;
@@ -174,29 +203,36 @@
 - an allowed-mention token;
 - a TEST-DEFINED register record;
 - non-ASCII hit keys and a spread of sizes;
-- a DECOMPOSED label with a SYNTHESIS run.
+- a DECOMPOSED label with a SYNTHESIS run, including `status_basis` (F8);
+- a `hit_key` carrying an S-id (23);
+- NOT-CONSUMED-ESCALATED (28);
+- a file with `order_evidence = SOURCE_ID` (44/45);
+- R1 and R2 edges (14);
+- negative seal controls (H3);
+- an EMPTY label.
 
 **Run count:** derived from that list when the brief is written (not estimated here).
 
-**Pass criterion,** decidable through H4:
-- 0 strings matching the frozen regexes for the unreachable families;
-- every check's evaluated-item count above 0;
-- every residual string carries its sub-cause code.
+**Pass criterion** (pre-registered in the rehearsal brief, decidable through H4 and the cause mapping; G finding 10):
+- **(i) No X failures.** No failure code whose pre-registered class is X. The X families are restated as code sets of the **new** verifier: the old F2/F5 regexes cannot match once their checks are removed.
+- **(ii) Every check exercised:** each check's evaluated-item count is above 0.
+- **(iii) At least one batch passes end to end:** at least one synthetic batch reaches BATCH-PASS, so the pipeline is shown to accept a correct output, not only to reject.
+- **(iv) Residual A disclosed:** residual A strings are reported by code. There is **no A threshold**. The brief states explicitly that **G4 may still fail on A** and spend attempts under M = 4.
 
-**Outcome:** any X means a return to design; A strings are information only.
+**Outcome.** Any X means a return to design under a bounded re-entry: at most one redesign round, then a new G1.5/G2 decision.
 
 ## 6. Staged human acts (E finding 6: rehearsal **before** rebind)
 
 | Act | When | Decides |
 |---|---|---|
-| **G1 (now)** | this gate | (1) the X adjudication; (2) **fork P / H / R** (rec. H); (3) authorize design and engineering **on a branch or worktree** (production `ADDENDUM_SHA256` at `universe.py:25`, `P3B-STATE.json`, manifest and ledger untouched; the reader seam lives only in the harness copy); (4) the §4 re-registration text as a draft for v2.9; (5) the W-SYS canary exception and the estimation note (§4) |
+| **G1 (now)** | this gate | (1) the X adjudication; (2) **fork P / H / R** (rec. H); (3) authorize design and engineering **on a branch or worktree under the §3a constraints** (the reader seam lives only in the harness copy); (4) the §4 re-registration text as a draft for v2.9; (5) the W-SYS treatment and the estimation note **as policy in principle**, binding only at G3 |
 | G1.5 | after the annex draft and diff | the human adjudication table (H2) |
-| G2 | after engineering and the A/B review | dispatch the rehearsal |
-| G3 | after the rehearsal evaluation | approve the **reviewed v2.9 text sha and code commit**; production rebind |
+| G2 | after engineering, the A/B review and the **frozen rehearsal brief** | approve the brief **by its sha** (coverage, run count, pass criterion) and dispatch the rehearsal |
+| G3 | after the rehearsal evaluation | approve **exactly the v2.9 text sha and code commit the rehearsal ran**; any later diff requires a re-rehearsal; then the production rebind |
 | G4 | after G3 | the counted canary under §4: retire; OB0012 attempt 3, OB0114 attempt 2; frozen threshold (≥ 6 of 11 FAILED, or the same W-code in ≥ 2 runs) plus an early stop on any unreachable-family string |
 | G5 | after the canary evaluation | full S5 |
 
-**Risk.** Once the X layers are removed, previously masked checks run for the first time. The rehearsal is the cheap place to measure the residual A rate before G4.
+**Risk.** Once the X layers are removed, previously masked checks run for the first time. The rehearsal shows whether those checks work. It does **not** measure the residual A rate on real material (§5), so G4 may still fail on agent errors.
 
 **Alternative to the whole package:** stop S5 at R7, with no measured labels.
 
