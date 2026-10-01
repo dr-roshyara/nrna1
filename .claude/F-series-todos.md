@@ -40,6 +40,13 @@
 | **R8 Canonicalization** | ⏸ | canonical theory package (definitions, formal model, invariants, propositions, evidence, validation, counterexamples, identifiability limits, scope, DDD mapping, implementation and conformance constraints) → **human adoption** | human (L0) |
 | *After F-series* | ⏸ | architecture → implementation → tests → **theory-to-implementation conformance gate** | a separate authorized work stream |
 
+
+**State 2026-10-01 (F-LOG-0217):**
+- R2 CLOSED, NOT REPRODUCED. Both the fine-grained schema and the coarse core instrument failed (within-family).
+- Option A acknowledged: the act/norm observation layer is not reliably codable on this corpus.
+- R3 holds 38 R2-dependent items that are NOT usable. Its coding-independent items stand; freezing it is a human act.
+- **R4 OPEN on the coding-independent base only:** D1 · Protocol A/B · identifiability and measurement limits · the L2 candidate "performative ambiguity".
+
 **Dropped (do not resurrect):**
 - H2 signer verification (declined);
 - 1bb-r3 or any patch of the coupled discrimination spec;

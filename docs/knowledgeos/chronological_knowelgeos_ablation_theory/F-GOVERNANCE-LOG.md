@@ -2646,3 +2646,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BJ/RECONCILIATION.md`, `COMPARISON.json`, `RETURNS.sha256` |
+
+## F-LOG-0217 — **Human act (2026-10-01): option A acknowledged; R4 opened**
+- **Recorded finding:** the act/norm observation layer is **not reliably codable on this corpus at either grain**. This is within-family evidence (Claude); no ground truth.
+- **R2 closes** as NOT REPRODUCED. R3's R2_DEPENDENT items stay **NOT USABLE BY R4**. R3 freezes on its coding-independent items, which is a later human act.
+- **R4 is authorized on the coding-independent base only:**
+  - D1 (structural);
+  - the Protocol A/B results;
+  - scope and provenance;
+  - the identifiability and measurement limits;
+  - *performative ambiguity* as an L2 candidate to formalize, not an axiom.
+- **No coding-dependent claim may enter R4.**
