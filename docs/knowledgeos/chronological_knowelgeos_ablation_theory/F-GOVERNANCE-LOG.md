@@ -2162,3 +2162,12 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 |---|---|
 | Records | `analysis/theory/LOOP-1BBR2/` (A2 sealed SPEC-r2; B3 review) |
 | Human decision needed | see the decision brief in the session reply |
+
+## F-LOG-0178 — Human decision: **Option A: decouple descriptive evidence acquisition from H-D/H-B scoring**. The 1bb-r2 FAIL is accepted as a **methodological finding**: a coupled discrimination spec became non-convergent, because precedence layering kept contradictory rules active. r1/r2 are preserved as provenance; **no r3** without a new human decision
+
+| Field | Value |
+|---|---|
+| Rule | **capture ≠ interpretation**. Protocol A (WP-4C-1 execution capture) and Protocol B (norm-status channel scoping) are **minimal, neutral, read-only, deterministic** scripts **with no H-D / H-B falsifiers or scoring**. Each: design → review → execution → review → seal, **one at a time** |
+| After both | a separate **discrimination-readiness review**: does the acquired evidence contain an independent norm-state observable? If not → H-D vs H-B stays NON-IDENTIFIABLE (a corpus limitation). If yes → stop before scoring; a small pre-registered discrimination protocol, reviewed first |
+| Frozen | H-D and H-B; WP-4B stays a candidate counter-instance only |
+| Gate 1 | human-held (bundle -02; -01 void) |
