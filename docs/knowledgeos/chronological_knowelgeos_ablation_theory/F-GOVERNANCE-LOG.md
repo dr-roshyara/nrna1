@@ -2366,3 +2366,8 @@ No H-D/H-B scoring
 |---|---|
 | Records | `analysis/theory/LOOP-1BF/` (A2, B2 = r2; MAIN-ANALYST-SAFETY-CHECK.md) |
 | Next | the human runs `gh auth login -h github.com` → two runs → output review → seal → information-gain review (INFOGAIN-PREREG.md) |
+
+## F-LOG-0195 — Human operating prompt "Final evidence gate → theory transition" received; **NB-r2-1 settled**; gate re-checked
+- **NB-r2-1:** the human's text concurs that a branch signature-rule **count** is branch configuration, not signer verification, so it does **not** reopen H2. **Settled; no protocol change.**
+- **Prompt content:** it adds no new authority beyond F-LOG-0190, and it confirms the frozen plan (Protocol C as sealed; info-gain Q1–Q4; then H5 or a pre-registered experiment; then the theory transition).
+- **Gate check (2026-10-01):** `gh auth status` reports the token **still invalid** → **STOP per the human's §4.** No unauthenticated fallback, no new branch. No host call has been made.
