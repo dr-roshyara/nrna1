@@ -2198,3 +2198,14 @@ Safety, self-contamination, identity and neutrality: OK. **The research state is
 |---|---|
 | Records | `analysis/theory/LOOP-1BD/` (A, B = r0; TASK-r1.md, REVIEW-TASK-r1.md, BUNDLE-A1.sha256) |
 | Next | r1 worker (A1) → targeted re-review (B1) |
+
+## F-LOG-0182 — **Protocol B r1: FAIL**, one blocking issue left (r0 had 5)
+- **Fixed:** B1, B3, B4, B5, N1–N4, N6, N9, N12 and N14. Q7 INDEPENDENT is now reachable, and the headline is computed from the data.
+- **BLK-1:** K-STATUS is forced to SELF_ATTESTED by channel id, and the headline counts that as a negative.
+- **Origin of BLK-1: the main analyst's r1 task wording** (a channel-level rule), disclosed.
+- **The loop is converging (5 → 1).** A targeted r2 is frozen: split K-NORMREG (definitional SELF_ATTESTED, own bucket) from a data-evaluated K-STATUS; plus NB-1, NB-2, NB-3 and NB-10. The research state is not advanced
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BD/` (A1, B1 = r1; TASK-r2.md, REVIEW-TASK-r2.md, BUNDLE-A2.sha256) |
+| Next | r2 worker (A2) → re-review (B2) |

@@ -1,0 +1,68 @@
+{
+  "verdict": "FAIL",
+  "fixed": {
+    "B1": {"fixed": true, "note": "One filtered tip set (refs/heads, refs/remotes, refs/tags; tags peeled ^{commit}; commit-only), used by ls-tree, W+commit count, E, N_c, rev-list and tag signatures. No HEAD dependence."},
+    "B2": {"fixed": false, "note": "Own paths never enter N_c (comm -23 npaths cp). But K-STATUS is mapped to SELF_ATTESTED by channel id before any data (l.136). overlap_norm is structurally NA for K-STATUS (npaths is a subset of cp). PROGRAM_STATUS.md, approvals and signoffs are forced SELF_ATTESTED, and the headline counts that as a negative."},
+    "B3": {"fixed": true, "note": "Root-based pathspecs over all history reachable from the tips; the glob exclusion matches the classifier. Remaining leak: a rename from a non-vocabulary name inside a code root (disclosed). Not --full-history (NB-1)."},
+    "B4": {"fixed": true, "note": "%ae only in E, W_c and N_c; doc/governance roots not in E. READMEs inside the code roots still count (NB-4)."},
+    "B5": {"fixed": true, "note": "K-DEPLOY out of cfg; Q2 = STATE_RECORD_BY_TYPE, Q5 = ND."},
+    "N1": {"fixed": true, "note": "Q5 = ND for every evidenced row; NO_BY_TYPE removed."},
+    "N2": {"fixed": true, "note": "INDEPENDENT reachable (K-DEPLOY only); headline computed from Q7 column; Q6 single outcome declared."},
+    "N3": {"fixed": true, "note": "NOT_EVIDENCED_AT_TIPS."},
+    "N4": {"fixed": true, "note": "Unsets and the -c overrides on every call verified. Residual: GIT_CONFIG, GIT_COMMON_DIR, GIT_GRAFT_FILE and info/grafts not neutralized (NB-2)."},
+    "N6": {"fixed": true, "note": "rc1 PASS, rc0 FAIL, rc>=2 FAIL; both FAIL cases exit 1."},
+    "N9": {"fixed": true, "note": "ls-tree -z with \\001 carry, restored before pathspec and hashing; tab-safe splitting."},
+    "N12": {"fixed": true, "note": "for-each-ref limited to heads/remotes/tags."},
+    "N14": {"fixed": true, "note": "Four neutral headline tokens defined in PROTOCOL §5."}
+  },
+  "reachability": {
+    "Q1": ["YES_IN_CAPTURE", "NOT_EVIDENCED_AT_TIPS", "YES_LOCAL_ONLY", "NOT_EVIDENCED_LOCALLY", "NOT_CHECKABLE_LOCALLY"],
+    "Q2": ["CONFIG_RULE", "STATUS/NORM_RECORD", "STATE_RECORD_BY_TYPE", "IDENTITY_ATTESTATION", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q3": ["CONTROLLED_BY_WRITERS[n=k] (k>=0)", "NOT_DETERMINABLE_BY_EXISTENCE_CHECK(keyring not consulted)", "LOCAL_MACHINE", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q4": ["NO_CLIENT_SET", "NONE (K-LOCALHOOK)", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q5": ["NOT_DETERMINABLE_BY_EXISTENCE_CHECK", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q6": ["NOT_DETERMINABLE_BY_EXISTENCE_CHECK[COMPLETE_VS_HOST=NOT_SHOWN]", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "Q7": {
+      "K-STATUS": ["SELF_ATTESTED[norm_register;overlap_exec=x;overlap_norm=NA] (forced)", "NOT_APPLICABLE(Q1)"],
+      "K-CI/K-HOOK/K-CODEOWNERS": ["INDEPENDENCE_NOT_DETERMINABLE[no_norm_source_distinct_from_candidate]", "INDEPENDENCE_NOT_DETERMINABLE[mechanism_host_enforced_unobservable]", "NOT_APPLICABLE(Q1)"],
+      "K-DEPLOY": ["INDEPENDENCE_NOT_DETERMINABLE[no_norm_source_distinct_from_candidate]", "INDEPENDENCE_NOT_DETERMINABLE[empty_set]", "NOT_INDEPENDENT[overlap_norm]", "NOT_INDEPENDENT[overlap_exec]", "INDEPENDENT_AT_IDENTITY_COUNT_LEVEL[aliases_unresolved]", "NOT_APPLICABLE(Q1)"],
+      "K-SIG": ["INDEPENDENCE_NOT_DETERMINABLE(signatures not verified)", "NOT_APPLICABLE(Q1)"],
+      "K-LOCALHOOK": ["INDEPENDENCE_NOT_DETERMINABLE(local, unversioned)", "NOT_APPLICABLE(Q1)"],
+      "host": ["NOT_CHECKABLE_LOCALLY"]
+    },
+    "Q8": ["YES_LOCAL", "NO_LOCAL_ONLY", "NOT_APPLICABLE(Q1)", "NOT_CHECKABLE_LOCALLY"],
+    "independent_reachable": true,
+    "independent_example": "deploy/production.yml written only by ops@x; docs/rulings/R-001.md written only by chair@x; app/Foo.php written only by dev@x. K-DEPLOY: np=1, nnp=1, W={ops}, N_c={chair}, E={dev}, overlaps 0, so Q7=INDEPENDENT_AT_IDENTITY_COUNT_LEVEL and headline=LOCAL_INDEPENDENT_CANDIDATE_AT_IDENTITY_COUNT_LEVEL.",
+    "independent_channels": ["K-DEPLOY"],
+    "headline_computed": true,
+    "forced_negatives": ["K-STATUS Q7 SELF_ATTESTED (data-independent; counted as negative in headline bucket LOCAL_NO_INDEPENDENT_CANDIDATE_OBSERVED)"]
+  },
+  "regressions": [
+    {"item": "read_only_safety", "ok": true},
+    {"item": "determinism", "ok": true, "note": "residual env vars, see NB-2"},
+    {"item": "config_isolation", "ok": true, "note": "repo-local config readable (declared); GIT_CONFIG/GIT_COMMON_DIR/GIT_GRAFT_FILE not unset"},
+    {"item": "self_path_before_cd", "ok": true},
+    {"item": "out_refusal", "ok": true},
+    {"item": "no_identities_guard_fail_closed", "ok": true},
+    {"item": "boundedness", "ok": true, "note": "no blob read; no cap on per-path log / per-commit cat-file (NB-8)"},
+    {"item": "docs_knowledgeos_exclusion", "ok": true},
+    {"item": "neutrality", "ok": true}
+  ],
+  "blocking": [
+    {"id": "BLK-1", "ref": "B2", "where": "scope_b.sh l.136, l.161; PROTOCOL-B §3 rule 1", "summary": "K-STATUS Q7 is SELF_ATTESTED by channel id regardless of data. overlap_norm is structurally NA because npaths is a subset of the K-STATUS paths. Non-register records (PROGRAM_STATUS.md, approvals, signoffs, progress) are forced into it, and the headline counts it as a negative: a forced negative.", "fix": "Split into disjoint K-NORMREG (register subset; SELF_ATTESTED/IND declared) and K-STATUS (other records), run as observable with N_c = K-NORMREG paths minus own paths; count SELF_ATTESTED separately in the headline."}
+  ],
+  "nonblocking": [
+    {"id": "NB-1", "summary": "W/E/N_c git log without --full-history; default simplification can prune commits and undercount overlaps (possible unqualified positive)."},
+    {"id": "NB-2", "summary": "GIT_CONFIG (can hide extensions.partialClone / core.hooksPath), GIT_COMMON_DIR, GIT_GRAFT_FILE and .git/info/grafts not neutralized."},
+    {"id": "NB-3", "summary": "Norm-register regex (l.89) lacks a trailing token boundary (registration, norms, normal...); authoriz alone unreachable."},
+    {"id": "NB-4", "summary": "READMEs/markdown inside code roots count as executor work, contrary to §3."},
+    {"id": "NB-5", "summary": "cat-file|awk early exit under pipefail: signed commits larger than the pipe buffer get SIGPIPE and are counted unsigned (extends N7)."},
+    {"id": "NB-6", "summary": "On identity-guard FAIL the output stays in OUT; only exit 1 and the FAIL line signal it."},
+    {"id": "NB-7", "summary": "K-LOCALHOOK checks per-worktree gitdir hooks, not the common dir (N8 family)."},
+    {"id": "NB-8", "summary": "No cap on per-path full-history log passes or per-commit cat-file spawns."},
+    {"id": "NB-9", "summary": "A single sweeping commit can place one author in W_c, N_c and E; observed, but should be disclosed."},
+    {"id": "NB-10", "summary": "Positive Q7 reachable only for K-DEPLOY; state this in §3. CHANGELOG line count is off by one (170)."}
+  ],
+  "independence_rule_ok": false,
+  "identity_ok": true
+}
