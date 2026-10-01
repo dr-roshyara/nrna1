@@ -624,3 +624,9 @@ These four statements were overtaken by the follow-up review `2026-09-30-constit
 - **Test failures:** all 218 failing real-election voting feature tests (38 files) are test-infrastructure defects; 0 are business-rule failures.
 - **Rule 7:** there are **four** per-IP limits, not three. The fourth is the `CodeController` cap `config('app.max_use_clientIP') ?? 7` (`CodeController.php:39,896-905`).
 - **P0-D:** the sovereignty target is confirmed as "resolver + its registered `CapabilityPolicy` set" (readiness review §3). P0-D is therefore resolved by the architecture already recorded, not left open.
+
+## Correction 2 (2026-10-01, additive; ES-004.3)
+
+- **The `date()` claim is withdrawn.** §8 and §13 report a canonical-zone determinism violation, "`date()` in `Domain/Election/Security/Simplified/ElectionConstitutionValidator.php`", detected by `TemporalDeterminismAuditTest`. **That is a false positive.** The test searches source for the substring `date(` (`TemporalDeterminismAuditTest.php:137`), which matches `validate(` (`ElectionConstitutionValidator.php:7`). The validator never reads the clock.
+- The test defect is tracked as `PBDIGIT-133`.
+- The real ambient-time reads on the live path remain: `TrustPolicyEvaluator:99`, `ElectionLifecycleEngineImpl:66,189`, `SimplifiedPolicySequence:99`. They are addressed by the evidence-builder amendment to `PBDIGIT-105`/`106`.

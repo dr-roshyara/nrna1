@@ -76,9 +76,9 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-64`](PBDIGIT-64-election-opens-voting-without-any-candidate.md) | 🔴 **An election can enter voting with no candidates** — `complete_nomination` enforces the rule, the automatic window transition does not. Reproduced end to end | `EPIC-03` | `OPEN` — PO-confirmed defect; found by IERVP runtime verification |
 | [`PBDIGIT-63`](PBDIGIT-63-verify-the-organisation-creation-journey-and-its-verification-estate.md) | 🟢 **"Create an organisation → land on its homepage" — RUNTIME-VERIFIED end to end 2026-08-08** (first recorded execution; persisted outcome checked in the database). Six creation assertions still describe a different contract from the controller — **classify before repairing**; corrects rule `O1`'s automated-test *evidence* ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | **Part A ✅ DONE** · Part B unblocked, unauthorised · browser render + `F-5` walk still unverified · `D-1`…`D-6` need business answers |
 
-### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-132`)
+### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-138`)
 
-**Full specifications, dependency graph and Definition of Done:** [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (from the [reality audit](../reviews/2026-09-30-constitutional-runtime-reality-audit.md) and the [migration readiness review](../reviews/2026-09-30-constitutional-runtime-migration-readiness.md)). **None is authorised.** First implementation ticket: **`PBDIGIT-76`**. Decision tickets (`PBDIGIT-90`…`100`) are the PO/ARB's. Related existing items: `PBDIGIT-35` · `37` · `45` (owns per-IP retirement; gates `117`/`121`) · `49` · `65` · `68` · `69`.
+**Full specifications, dependency graph and Definition of Done:** [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (from the [reality audit](../reviews/2026-09-30-constitutional-runtime-reality-audit.md) and the [migration readiness review](../reviews/2026-09-30-constitutional-runtime-migration-readiness.md)). **None is authorised.** First implementation ticket: **`PBDIGIT-76`**. Decision tickets (`PBDIGIT-90`…`100`, `138`) are the PO/ARB's. Related existing items: `PBDIGIT-35` · `37` · `45` (owns per-IP retirement; gates `117`/`121`) · `49` · `65` · `68` · `69`.
 
 | ID | Story | Epic | Status |
 |---|---|---|---|
@@ -115,9 +115,9 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | `PBDIGIT-106` | E-1 — Typed evidence: network, device and officer-verification facts with provenance | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-107` | E-1 — Typed evidence: ballot/code session facts under the constitutional protocol | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-108` | V-1 — Evaluators: network (composable binding + limit), device comparison, verification | `EPIC-05` | `TODO — NOT AUTHORISED` |
-| `PBDIGIT-109` | R-1 — Resolver evaluates every policy and returns a stateless trace | `EPIC-05` | `TODO — NOT AUTHORISED` |
-| `PBDIGIT-110` | R-1 — Typed CAST_VOTE context and participation action registry | `EPIC-05` | `TODO — NOT AUTHORISED` |
-| `PBDIGIT-111` | R-1 — Register the CAST_VOTE resolver policy set | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-109` | R-1 — R-1a — resolver mechanics: Resolver evaluates every policy and returns a stateless trace | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-110` | R-1 — R-1b — CAST_VOTE integration: Typed CAST_VOTE context and participation action registry | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-111` | R-1 — R-1b — CAST_VOTE integration: Register the CAST_VOTE resolver policy set | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-112` | S-1 — Persist a CAST_VOTE decision record for every evaluation | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-113` | S-1 — Shadow-evaluate CAST_VOTE in the live voting path | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-114` | S-1 — Replay harness: reproduce stored decisions with DB access disabled | `EPIC-05` | `TODO — NOT AUTHORISED` |
@@ -139,6 +139,12 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | `PBDIGIT-130` | DOC — Correct false completion claims in historical documents | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-131` | DOC — Consolidated Constitutional Governance Runtime developer guide | `EPIC-05` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-132` | V1 — Constitutional Governance Runtime v1.0 freeze | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-133` | CI — Temporal-determinism audit scanner flags `validate(` as a `date()` call | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-134` | DOC — Resolve the `PBDIGIT-69` numbering collision | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-135` | C-3 — Characterize the non-slug `POST /votes` route and route-file loading | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-136` | C-3 — Characterize `voter_slugs.vote_completed`, which no code writes | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-137` | D-2 — Dispose of the unwired divergence-observation infrastructure | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-138` | H — H-12 — Should voting codes be stored hashed at rest? | `EPIC-05` | **DECISION REQUIRED** |
 
 ---
 
