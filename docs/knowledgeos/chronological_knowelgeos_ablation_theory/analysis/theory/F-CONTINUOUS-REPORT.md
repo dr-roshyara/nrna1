@@ -210,3 +210,22 @@
 - The spec partially smuggled in H-D.
 - **Ranking:** screen (WP-4C-1 work?) → P4+P7 → R11.
 - **STOP for the human.**
+
+## 1bb-r1 / r2 → Option A (F-LOG-0176..0178)
+- The repair loop on the discrimination spec **did not converge** (layered precedence kept the contradictions).
+- **Human Option A:** decouple descriptive capture (Protocols A and B) from H-D/H-B scoring.
+
+## 1bc Protocol A (F-LOG-0179..0180)
+- **Capture:** execution traces in local git; r0 FAIL → r1 PASS_WITH_LIMITATIONS.
+- **Result:** 3 execution traces. The earliest is WP-4C-1 `e4724a44` at 2026-08-04T00:30:25Z (RECORDING_ORDER only).
+- **Self-contamination:** 21/51 matches → R-SELF recommended (a human decision).
+
+## 1bd Protocol B (F-LOG-0181..0186)
+- **Design:** norm-status channel scoping. Blocking issues went 5 → 1 → 1 → 0 (r1's defect came from the analyst's task wording).
+- **Execution:** byte-identical from the root and from `app/`.
+- **Result:** **no locally checkable channel is an independent norm-in-force record.** The identity-overlap test is underpowered (≤ 3 identities). The open candidates are host-side only.
+
+## 1be readiness (F-LOG-0187..0189)
+- **Verdict: NOT_DETERMINABLE** (the analyst's sealed expectation, NO, was missed).
+- **On the acquired evidence, H-D vs H-B is NON-IDENTIFIABLE** (D1 holds): a scope limitation, not a falsification.
+- **STOP:** decision brief H1–H5 (rec. H1 bounded host scoping + H4).

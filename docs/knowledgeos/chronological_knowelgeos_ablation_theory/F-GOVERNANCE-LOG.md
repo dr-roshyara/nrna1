@@ -2287,3 +2287,13 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BE/PREREG-WORKER.md`, BUNDLE-A.sha256 |
+
+## F-LOG-0189 — **1be sealed: discrimination readiness = NOT_DETERMINABLE** (review PASS_WITH_LIMITATIONS; errata E1–E5)
+- **On the acquired evidence:** no independent norm-state observable; **D1 holds** → **H-D vs H-B is NON-IDENTIFIABLE on the acquired evidence** (a scope limitation; neither falsified nor validated).
+- **Whether such an observable exists is NOT_DETERMINABLE.** It is decided only by host-held channels (CI/hook enforcement, PR approvals, branch protection, CI runs, audit logs) or by host-tied signatures. **All of these are outside the authorized scope.**
+- **The main analyst's sealed expectation (NO) was not confirmed** → a prediction miss, recorded.
+- **STOP at the human gate:** decision brief `analysis/theory/F-DECISION-BRIEF-20261001.md`
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BE/` (A, B, RECONCILIATION.md) |

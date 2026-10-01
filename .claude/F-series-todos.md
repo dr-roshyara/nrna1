@@ -340,4 +340,8 @@ Authority review ✅
 - The lane's own records are current: `F-GOVERNANCE-LOG.md` F-LOG-0014…0017 and the `F-SESSION-LOG.md` catch-up segment (`74b0c83d0`).
 
 | 1ax–1bb | A′ coding; support non-evidential; H-D≈H-B; WP-4B RED candidate non-conformance; D1: need independent norm-state observable (F-LOG-0171..0175) | ✅ | L0 |
-| **HUMAN** | (1) non-Claude coder on frozen A′ records · (2) authorize rank-0 screen (WP-4C-1 work in git) + targeted acquisition · (3) seek independent norm-state observable | ⏳ | L0 |
+| 1bb-r1/r2 → Option A | the repair loop did not converge → human Option A (decouple capture from scoring) (F-LOG-0176..0178) | ✅ | L0 |
+| 1bc Protocol A | execution traces captured: earliest WP-4C-1 trace `e4724a44` 2026-08-04T00:30:25Z (RECORDING_ORDER); self-contamination 21/51 → R-SELF recommended (F-LOG-0179..0180) | ✅ sealed | — |
+| 1bd Protocol B | norm-status channel scoping r0→r3 (5→1→1→0 blocking); no locally checkable independent channel; the overlap test is underpowered (F-LOG-0181..0186) | ✅ sealed | — |
+| 1be readiness | NOT_DETERMINABLE. On the acquired evidence H-D vs H-B is NON-IDENTIFIABLE (D1 holds); only host-side channels could decide (F-LOG-0187..0189) | ✅ sealed | — |
+| **HUMAN** | decision brief `analysis/theory/F-DECISION-BRIEF-20261001.md`: H1 bounded host-side scoping (rec.) · H2 signer verification · H3 R-SELF · H4 Gate 1 bundle -02 to a non-Claude coder (pending) · H5 close the line as NON-IDENTIFIABLE-on-corpus | ⏳ STOP | L0 |

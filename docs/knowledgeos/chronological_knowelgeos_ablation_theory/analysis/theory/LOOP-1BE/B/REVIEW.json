@@ -1,0 +1,39 @@
+{
+ "verdict": "PASS_WITH_LIMITATIONS",
+ "fidelity_ok": true,
+ "omissions": [
+  {"id": "O1", "item": "A5 (1 UNCLASSIFIABLE) is left as unknown", "detail": "A recon L2: 21/51 matches are programme artefacts, 20 of them DOC-OR-GOVERNANCE (47-27), and the ET set is unchanged. So the remaining artefact is the UNCLASSIFIABLE commit, a SELF-ARTEFACT excluded by QUESTIONS.md. This is an inference from the counts, not stated in the source."},
+  {"id": "O2", "item": "WP-4B RED commit (R11)", "detail": "STATE.md: the corpus's one execution record and one git commit, with a contested non-conformance reading. It bears on work timing and is not listed."},
+  {"id": "O3", "item": "further uncoded execution reports", "detail": "IDENTIFIABILITY P3, P6 and P8 cite 'Container resolution executed and reproduced', the grep in R-83, R-41's 'first checklist execution', and S0815's 'Applied immediately'. Only R-94, R-86 and S0804 are listed."},
+  {"id": "O4", "item": "IMPLEMENTATION_PROGRESS.md:58", "detail": "A work artefact referenced by R-94: not acquired, author unknown. It should be listed as such, not folded into the ruling. D1 applies to it."},
+  {"id": "O5", "item": "over-capture caveat on B1/B2 'Measures'", "detail": "B output review §4.2 (NB-12, NB-13, N15): the path composition is unknown, so 'norm state as asserted' and 'norm status' are unqualified."}
+ ],
+ "misclassifications": [
+  {"id": "M1", "item": "B2/B3 symmetry rationale", "detail": "'The same identities wrote both' and 'Status files are documents written by the norm-maker' read NOT_INDEPENDENT[overlap_norm=3] as role fusion, against F-B2. The conclusion (non-discriminating) holds on other grounds: Q5 ND, content not read, existence fits both."},
+  {"id": "M2", "item": "S0804 author class", "detail": "S0804 is a session log, not a ruling. 'Each was written by the norm-maker or is a ruling that declares its own force' is unsupported for it. Its author class should be unknown; it is still not independent."},
+  {"id": "M3", "item": "A4 and B1 'norm-maker' author class", "detail": "Assigned by path class, not by author data (B1 has overlap_exec=3). The independence result 'No' still holds through SELF_ATTESTED."},
+  {"id": "M4", "item": "A1-A3 rejection reason", "detail": "Labelled executor/not independent. The decisive reason is that they measure work, not norm state (fail Q5). A recon does not emit authors."}
+ ],
+ "d1_ok": true,
+ "symmetry_ok": true,
+ "verdict_supported": true,
+ "overclaims": [
+  {"quote": "Membership data would also give the closed-world capability register that IDENTIFIABILITY.json asks for (P1, P5).", "issue": "Host membership is repository access, not normative capability (who may adopt, authorize or dispose). At most it feeds into such a register."},
+  {"quote": "Q5 ... is NOT_DETERMINABLE_BY_EXISTENCE_CHECK for every channel.", "issue": "This holds for every evidenced channel only. The not-evidenced channels are NOT_APPLICABLE(Q1), and the host channels are NOT_CHECKABLE_LOCALLY."},
+  {"quote": "K-CI, K-HOOK and K-SIG are still INDEPENDENCE_NOT_DETERMINABLE ... NO therefore cannot be asserted either.", "issue": "K-SIG is counted as blocking NO, but S6 and §4 say a signature does not state a norm. Only K-CI and K-HOOK carry the ND, unless a signature is tied to a host record."},
+  {"quote": "No. The same identities wrote both.", "issue": "Identity-overlap counts with no power (F-B2) used as an authorship attribution."},
+  {"quote": "\"d1_broken\": false", "issue": "Drops the MD's qualifier 'not on the acquired evidence'."}
+ ],
+ "blocking": [],
+ "nonblocking": [
+  "M1: base the B2/B3 symmetry rationale on Q5 ND and content not read, not on identity overlap.",
+  "M2: change S0804's author class to unknown and qualify S2.",
+  "O1-O5: classify A5 as SELF-ARTEFACT (inferred); add R11; list the further execution reports and IMPLEMENTATION_PROGRESS.md; qualify what B1 and B2 measure.",
+  "Decisive reason: rest the ND on K-CI and K-HOOK; say how K-SIG contributes only if tied to a host record; change 'every channel' to 'every evidenced channel'.",
+  "Qualify d1_broken in the JSON.",
+  "Correct the membership-to-capability-register overclaim.",
+  "Separate the missing fact (does an independent record exist?) from the conformance instance (was WP-4C-1 authorized at 00:30:25Z?).",
+  "M3/M4: replace author classes assigned by construction with unknown; reject A1-A3 because they do not measure norm state.",
+  "Complete the strength audit. Unquoted inferential sentences include 'Their existence fits both', 'Status files are documents written by the norm-maker', 'It removes contamination but cannot create a norm-state observable', 'H-D predicts nothing about conformance either way', and the Medium info-value claims."
+ ]
+}
