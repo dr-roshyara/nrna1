@@ -2610,3 +2610,7 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Remaining non-blocking items, disclosed as limitations:** who "is stated to have" refers to (R08); the narrower list in 4c; Example 3's framing; R06/R07 being identical records.
 - **Bundle:** `LOOP-1BJ/BUNDLE-CORE/` (README, TASK, SCHEMA-CORE, RECORDS, SOURCES), hashed in `BUNDLE-CORE.sha256`. RECORDS and SOURCES are byte-identical to bundle -02.
 - **Next:** three isolated coders (Opus 5.5, Sonnet 5.5, Haiku 4.5), outside the repo, one attempt each.
+
+## F-LOG-0214 — 1bj core codings **sealed before reading**
+- **Runs:** three isolated coders (opus claude-opus-5-5, sonnet claude-sonnet-5-5, haiku claude-haiku-4-5-20251001), run in parallel 2026-10-01 18:06–18:09Z in `~/gate1-core/<model>/`. Bundle hashes were verified in each folder; one attempt each; all exited 0 with empty stderr.
+- **Seal:** `LOOP-1BJ/RETURNS.sha256` (CODING, NOTES, transcript, err, exit per coder).
