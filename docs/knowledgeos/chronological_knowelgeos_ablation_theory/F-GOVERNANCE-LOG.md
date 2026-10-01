@@ -2297,3 +2297,22 @@ No H-D/H-B scoring
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BE/` (A, B, RECONCILIATION.md) |
+
+## F-LOG-0190 — **Human act (2026-10-01) at the 1be gate: H1 YES · H3 YES · H2 NO · H5 NOT YET**
+**Human's stated conditions, verbatim intent:**
+- H1 must **not** become an open-ended GitHub investigation. It is bounded, read-only, and targets WP-4C-1 only.
+- After H1 is sealed, a small **information-gain review** must answer four questions:
+  1. Did GitHub provide an independent observable?
+  2. Does it map to the specific WP-4C-1 norm or target?
+  3. Are the relevant actors independent of the norm-making authority?
+  4. Does it actually distinguish H-D from H-B?
+- If the answer remains no, **H5 (close as NON-IDENTIFIABLE on this corpus) becomes the next human decision**.
+- "We do not declare non-identifiability until the bounded, genuinely informative evidence channels have been exhausted."
+
+**H3 applied:** `R-SELF-RULE.md` + `SELF-ROOTS.txt` v1. **Disclosed narrowing:** `.claude/` and `claude/` are not excluded wholesale, because they hold corpus sources.
+
+**H1 environment fact:** the local `gh` token is invalid. **Host access needs the human to re-authenticate** before any execution. Design and review proceed now (1bf).
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/R-SELF-RULE.md`, `SELF-ROOTS.txt`, `LOOP-1BF/` |

@@ -1,0 +1,5 @@
+# R-SELF programme-artefact paths (versioned; v1, 2026-10-01; human act H3, F-LOG-0190)
+# One path or prefix per line. A trailing "/" means a directory prefix. Paths are relative to the repo root.
+docs/knowledgeos/
+.claude/F-series-todos.md
+.claude/S-SERIES-TODO.md
