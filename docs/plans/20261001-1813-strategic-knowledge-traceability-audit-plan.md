@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Date** | 2026-10-01 18:13 |
-| **Status** | ✅ **APPROVED by the PO** (2026-10-01 instruction "Proceed with the following human decisions", §2). Execution follows this plan. |
+| **Status** | ✅ **APPROVED by the PO** (2026-10-01 instruction "Proceed with the following human decisions", §2) · **EXECUTED 2026-10-01** (see Progress) |
 | **Kind** | Discovery and traceability **audit**. **Not implementation.** |
 | **Owner process** | `claude-code-session:42e0287e-e0e2-4638-8165-cd5d5862c578` (self-declared) |
 | **Plan convention** | ES-004.2 (`docs/plans/YYYYMMDD-HHMM-<topic>-plan.md`) |
@@ -71,16 +71,17 @@ The delivery inventory closed on 2026-10-01: `2026-10-01-pbdigit-story-integrity
 
 - [x] Freeze recorded (README, final closure audit §0)
 - [x] Plan written (this file)
-- [ ] K1: read the five registers; extract candidate outcomes
-- [ ] Consolidate equivalent outcomes; assign IDs (`SK-nnn`)
-- [ ] Disposition and evidence per outcome; code evidence for IMPLEMENTED; story evidence for B
-- [ ] Inspect underlying documents only for unclear entries; log which ones were opened
-- [ ] Write the matrix and the closure report; run K1–K10
-- [ ] Session log and context updates
+- [x] K1: read the five registers; extract candidate outcomes (246 raw records)
+- [x] Consolidate equivalent outcomes; assign IDs (`SK-nnn`): 215 outcomes
+- [x] Disposition and evidence per outcome; code evidence for IMPLEMENTED; story evidence for B
+- [x] Inspect underlying documents only for unclear entries; log which ones were opened (audit §2)
+- [x] Write the matrix and the closure report; run K1–K10: all PASS
+- [x] Session log and context updates
 
 ## Progress
 
-- 2026-10-01 18:13: plan approved and recorded. Freeze recorded. Execution starts after the authorised commit of the delivery-audit records.
+- 2026-10-01 18:13: plan approved and recorded. Freeze recorded. Execution starts after the authorised commit of the delivery-audit records (`1a2510591`).
+- 2026-10-01: **executed.** Output `docs/publicdigit/reviews/2026-10-01-strategic-knowledge-traceability-audit.md`: 215 outcomes (A 43 · B 35 · C 59 · D 19 · E 14 · F 9 · G 14 · H 22), 2 candidates, no new ID, K1–K10 PASS. **Status: COMPLETE, awaiting PO review.**
 
 ## Risks
 

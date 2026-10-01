@@ -22,7 +22,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | 🔴 **Live defects (runtime-confirmed)** | `201` (`start()` refuses a valid voter: ambient tenant scope) · `202` (Full Membership import → `BadMethodCallException`) · `195` (canonical committee endpoint: 201, nothing persisted) · `203` (import reports success, 0 memberships, errors swallowed) |
 | 🧪 **Test estate** | full `Unit` + `Feature` run: 6,762 tests · **1,965 failing in 335 files**; every file mapped to one owner (76–78 · 139 · 157 · 158 · RED · 165 · 167 · **208**) · 99 status-only write tests → `207` |
 | 🧊 **Frozen (PO, 2026-10-01)** | *Delivery baseline frozen at PBDIGIT-208. New IDs only for a delivery obligation shown not to be covered by PBDIGIT-00…208.* |
-| ▶️ **Track 2 authorised** | Strategic Knowledge Traceability Audit; plan `docs/plans/20261001-1813-strategic-knowledge-traceability-audit-plan.md`; **no PBDIGIT-209+**, candidates only |
+| ✅ **Track 2 executed** | `docs/publicdigit/reviews/2026-10-01-strategic-knowledge-traceability-audit.md`: 215 strategic outcomes dispositioned (A 43 · B 35 · C 59 · D 19 · E 14 · F 9 · G 14 · H 22); **2 candidates** (Evidence-side bounded contexts unbuilt; Q-2 EPW anchor interim); two ratified BC sets unreconciled (H, ARB); **no PBDIGIT-209+**; K1–K10 PASS |
 | ❓ **Next (human)** | **D-1** (do engineering/doc items get PBDIGIT stories?) · ~~whether to commission the traceability audit~~ (commissioned) (the delivery inventory is closed; the knowledge-to-delivery chain is not yet shown closed) · then authorise a first story (candidates: `201`, `202`) |
 
 ---
