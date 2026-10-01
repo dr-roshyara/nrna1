@@ -1,0 +1,80 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "integrity_ok": true,
+  "classification": [
+    {
+      "sha": "e4724a444231681f1a455ffaeea488a554183093",
+      "class": "EXECUTION-TRACE",
+      "correct": true,
+      "why": "C2: K = 3 tests/*.php (P-TEST) with added-line T1/T2 hits (kref) plus message T1. Genuine WP-4C-1 test work: 'WP-4C-1 batch B1 -- RED for K1..K4' adds the target's own failing tests. The plan file under docs/ is P-DOC and not needed for C2."
+    },
+    {
+      "sha": "939e35dcb3af3c19fdbd59eec767461c21349f01",
+      "class": "EXECUTION-TRACE",
+      "correct": true,
+      "why": "C2: K = 4 app/**.php (P-CODE) + 2 tests/**.php (P-TEST); kref in 2 CODE files and 1 TEST file, plus message T1. Genuine WP-4C-1 implementation (event, hydrator, writer, registration, round-trip test). The WP-4C-2 mention is incidental and is not the match basis."
+    },
+    {
+      "sha": "cc1a3394d3ceed1d7b22c3ea326f5cda657b71a3",
+      "class": "EXECUTION-TRACE",
+      "correct": true,
+      "why": "Mechanically correct under C2: K = 2 tests/**.php; kref T1/T2 in AdjudicationExpiredHydratorTest.php plus message T1/T2. Substantively NOT WP-4C-1 execution: the subject is closing WP-6's AdjudicationExpiredHydrator coverage gap, and WP-4C-1 appears only as context and as a traceability pointer. C2 has no subject test, so this is a mention inside a code-bearing commit. It does not affect the earliest trace."
+    },
+    {
+      "sha": "a72528b29657170fecc416c34dc61b899ba345d1",
+      "class": "UNCLASSIFIABLE",
+      "correct": true,
+      "why": "C5: about 8,900 changed paths including P-CODE (app/**), P-TEST (tests/Unit/Cohesion/*) and P-OTHER (.gitignore, .codex/config.toml, scripts/**, storage/**, one C-quoted path). All hits are added lines in P-DOC paths; no message hit and no kref, so C2 fails; not all paths are P-DOC, so C3 fails; no message hit, so C4 fails."
+    }
+  ],
+  "earliest_trace_confirmed": true,
+  "anomalies": [
+    {
+      "id": "a",
+      "sha": "e4724a444231681f1a455ffaeea488a554183093",
+      "description": "The commit changes docs/plans/20260804-1900-wp4c1-adjudicationfailuredeclared-plan.md, whose name prefix reads as 2026-08-04 19:00 (no zone). The commit is recorded at 2026-08-04T00:30:25Z (+02:00 local: 02:30:25). The same path is also recorded in c1479132 (00:16:04Z), df3464c (parent, 00:21:44Z), 777bbbb (15:01:41Z) and c89c043 (15:29:41Z). Every recording precedes 19:00 on that date in UTC or +02:00. Under M-TIME, file names are not timestamp sources and recording != decision != entry into force; no decision or clock fact is inferred."
+    },
+    {
+      "id": "b",
+      "sha": "a72528b29657170fecc416c34dc61b899ba345d1",
+      "description": "Every hit of the UNCLASSIFIABLE commit except .claude/CONTEXT-ARCHIVE-2026-07-08.md is in this research programme's own artefacts (docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/**, docs/knowledgeos/reviews/2026-09-29-...). The pattern is broader: 21 of the 51 matching commits (20 DOC-OR-GOVERNANCE + a72528b), dated 2026-09-30 or 2026-10-01, are programme artefacts. They include cf2f6b9, which commits PROTOCOL-A.md and capture_a.sh themselves, and 0122e0e, which commits the LOOP-1BC task files. The historical DOC-OR-GOVERNANCE count would be 27, not 47. The ET set and the earliest trace are unaffected."
+    }
+  ],
+  "self_contamination_rule_recommendation": "Yes, add an explicit rule fixed in advance (not applied here). R-SELF: before classification, any changed path under a declared programme-artefact root (initially docs/knowledgeos/, listed in a versioned SELF-ROOTS.txt) gets path class P-SELF. P-SELF hits are kept in the raw hit files but ignored by C2-C5, and P-SELF paths are excluded from the C3 all-P-DOC test. A commit whose only hits are in P-SELF paths is classed SELF-ARTEFACT, counted separately in 30_summary.tsv, and never contributes to other classes or to the earliest-trace fields. The rule is path-based, not date-based (dates are unvalidated under M-TIME) and not branch-based. Hypothetical effect: the 20 DOC self-artefact commits become SELF-ARTEFACT; a72528b stays UNCLASSIFIABLE because of its .claude/CONTEXT-ARCHIVE hit; the ET set is unchanged. Also disclose when the captured state contains the protocol's own commit.",
+  "neutrality_ok": true,
+  "coverage_ok": true,
+  "issues": [
+    {
+      "severity": "medium",
+      "issue": "cc1a339 is classed EXECUTION-TRACE although it is WP-6 coverage work that only mentions WP-4C-1; C2 lacks a subject test. No effect on the earliest trace."
+    },
+    {
+      "severity": "medium",
+      "issue": "Self-contamination: 21/51 matching commits are this research programme's own artefacts, including the protocol commit cf2f6b9. This inflates DOC-OR-GOVERNANCE (47 vs 27 historical) and supplies almost all of a72528b's hits. See the R-SELF recommendation."
+    },
+    {
+      "severity": "low",
+      "issue": "TRACE-COMMITS.txt has no --stat block for the 3 ET commits, and the a72528b stat is truncated (53 of about 8,900 paths). Changed paths were cross-checked against PACKAGE/14_changed_paths.tsv."
+    },
+    {
+      "severity": "low",
+      "issue": "The result string EXECUTION-TRACE-EVIDENCED-IN-CAPTURE is emitted by capture_a.sh but not defined in PROTOCOL-A section 5."
+    },
+    {
+      "severity": "info",
+      "issue": "939e35d's message mentions '4 production files + 4 test files' (compile); 14_changed_paths shows 4 P-CODE + 2 P-TEST changed paths. Recorded only."
+    },
+    {
+      "severity": "info",
+      "issue": "a72528b's subject 'docs: exclude large derived files from history' sits alongside about 8,900 changed paths across code, tests, storage and docs. Recorded only."
+    },
+    {
+      "severity": "info",
+      "issue": "SHA256SUMS, script_sha256 and the claim that the subdirectory run was byte-identical cannot be verified without execution."
+    },
+    {
+      "severity": "info",
+      "issue": "refs/stash (local unpublished WIP) is walked as an ordinary ref without specific disclosure; reflog-only commits and worktree detached HEADs are outside the capture. This is consistent with section 4."
+    }
+  ]
+}

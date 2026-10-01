@@ -2177,3 +2177,10 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BC/` (A, B = r0; TASK-r1, REVIEW-TASK-r1) |
+
+## F-LOG-0180 — **Protocol A sealed** (r1 PASS_WITH_LIMITATIONS; executed verbatim, byte-identical from the root and a subdirectory; output review PASS_WITH_LIMITATIONS). **Evidence package:** 51 matching commits; **3 execution traces; the earliest is `e4724a44` "WP-4C-1 batch B1 -- RED", 2026-08-04T00:30:25Z (RECORDING_ORDER only)**. Local refs only; completeness vs the host not shown. Limitations: one ET is substantively WP-6; **self-contamination: 21/51 matches are programme artefacts → R-SELF rule recommended (a human decision; not applied)**. No interpretation
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BC/` (A, B = r0; A1, B1 = r1; EVIDENCE-A; OUTPUT-REVIEW; RECONCILIATION) |
+| Next | Protocol B (norm-status channel scoping): design → review → run → review |
