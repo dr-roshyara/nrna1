@@ -26,3 +26,5 @@
 ## Open for human decision
 1. Accept this as a within-family check and close Gate 1 on that weaker basis, or still commission a non-Claude coder (bundle -02 stays valid).
 2. Whether the SOURCE_FACT/INFERENCE boundary in SCHEMA-r2 §3 needs a rule (schema change → only via your decision).
+
+> **Annotation (2026-10-01, F-LOG-0202):** the "Shows" line above ("within-family reproducibility … is high") is superseded by RETURN-03-CLAUDE (Sonnet 5.5: κ 0.50 / 0.62, schema-underdetermined). Read RETURN-02 as **same-model** (Opus 5.5) reproducibility only. See `RETURN-03-CLAUDE-REVIEW.md`. Original text above unchanged.

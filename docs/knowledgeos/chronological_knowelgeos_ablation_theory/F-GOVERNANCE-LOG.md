@@ -2444,3 +2444,9 @@ No H-D/H-B scoring
   - Gate 1 proper is **waived, not satisfied**;
   - correlated Claude-family error is undetectable.
 - **Downstream rule:** no R3/R4 claim may describe A′ coding as cross-family reproducible.
+
+## F-LOG-0202 — Evidence (2026-10-01): R2 return -03-CLAUDE does not reproduce the A′ coding (no decision taken)
+- **Facts:** isolated Sonnet 5.5 run per F-LOG-0201; clean isolation (Read ×5 bundle files, Write ×2); seal 6cfae2665; frozen comparator 178e86214: act.state κ 0.50, norm.deontic κ 0.62, membership 0.667 vs 1ax (= vs RETURN-02).
+- **Review (Claude, read-only):** NOT-REPRODUCED-SCHEMA-UNDERDETERMINED — 21 of 24 disagreeing cells admissible under SCHEMA-r2; 3 coder deviations (R02, R06, R30); cluster R15–R21 = 14 cells.
+- **Consequences recorded, not decided:** RETURN-02 κ 1.0 re-read as same-model only (annotation added to RETURN-02-REVIEW.md); R2_DEPENDENT R3/R4 items carry an additional "schema-underdetermined" qualifier pending human decision.
+- **Open for human:** Gate 1 status (no threshold was pre-registered) · SCHEMA-r3 · downstream handling. Record: `GATE1-APRIME/RETURN-03-CLAUDE-REVIEW.md`.

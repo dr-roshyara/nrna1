@@ -41,3 +41,7 @@
   - Errors shared by all Claude models are not detectable.
   - R3 items tagged R2_DEPENDENT stay qualified: "cross-family reproduction untested".
 - The non-Claude guide (`HANDOVER-03-INSTRUCTIONS.md`) is kept, unused, for possible later use.
+
+## RESULT (2026-10-01): return -03-CLAUDE received, sealed, compared, reviewed
+- Sonnet 5.5 vs 1ax/RETURN-02: act.state κ 0.50 · norm.deontic κ 0.62 · membership 0.667. Reviewer verdict: **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** (21/24 cells schema-admissible both ways; 3 coder deviations).
+- Record: `RETURN-03-CLAUDE-REVIEW.md` · log F-LOG-0202. Gate 1 status, schema revision and downstream handling are **open for human decision**.
