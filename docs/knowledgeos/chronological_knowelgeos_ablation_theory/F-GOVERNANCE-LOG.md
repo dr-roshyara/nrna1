@@ -2484,3 +2484,21 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 1. Gate 1 status;
 2. SCHEMA-r3;
 3. the disposition of R2_DEPENDENT items.
+
+## F-LOG-0204 — **Human act (2026-10-01): Gate 1 = NOT REPRODUCED; SCHEMA-r3 + re-coding authorized; R2_DEPENDENT items re-qualified**
+
+1. **Gate 1 = NOT REPRODUCED.** This is a descriptive verdict; no threshold is chosen after seeing the data. SCHEMA-r2 does not determine the A′ categorical coding on these records. Within-family reproducibility (Opus vs Sonnet) is moderate. RETURN-02's κ 1.0 was same-model agreement.
+2. **SCHEMA-r3 authorized.** Close the six gaps identified in `RETURN-03-CLAUDE-REVIEW.md`:
+   - R-A3 scope;
+   - the level of the governed act;
+   - REFUSED vs OCCURRED priority;
+   - PREPARED / ATTEMPTED;
+   - REQUIRED vs STATUS_CONSTRAINT;
+   - shared spans.
+
+   Then re-code with **at least two different models**, under a **reliability threshold fixed before coding**. A schema change voids comparability with the three existing codings.
+3. **R2_DEPENDENT items (38) re-qualified.** They are SCHEMA-UNDERDETERMINED and NOT USABLE BY R4; they will be re-derived after the r3 re-coding passes. The R2-independent items stand. Applied as the field `r2_qualifier` plus a banner. The item texts are unchanged.
+
+**Main-analyst note:** the schema-dependent sub-claims of H5 (e.g. "no act-level contrasts, 23 vs 1") are covered by item 3. D1 is structural and stands.
+
+**Execution guard for r3:** any r3 rule that encodes a substantive choice favouring H-D or H-B (cf. CI1: R-A3 built H-D into the observations) → **STOP for the human** before coding.

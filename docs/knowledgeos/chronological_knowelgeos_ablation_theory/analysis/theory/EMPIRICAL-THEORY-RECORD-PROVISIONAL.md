@@ -1,3 +1,5 @@
+> **⛔ RE-QUALIFIED (2026-10-01, F-LOG-0204, human act): all R2_DEPENDENT = yes items are SCHEMA-UNDERDETERMINED and NOT USABLE BY R4 until re-derived under SCHEMA-r3 re-coding; R2-independent items stand. (json: field `r2_qualifier`.)**
+>
 > **⛔ HOLD (2026-10-01, F-LOG-0203; annotation, record text unchanged):** the R2 return -03-CLAUDE did **not** reproduce the A′ coding (κ 0.50 act.state / 0.62 norm.deontic; verdict NOT-REPRODUCED-SCHEMA-UNDERDETERMINED, `GATE1-APRIME/RETURN-03-CLAUDE-REVIEW.md`). **Every item tagged R2_DEPENDENT = yes must not be used downstream (R4) until the human decides** Gate 1 status, SCHEMA-r3 and the disposition of these items. No automatic R3 update.
 
 # Empirical Theory Record (R3), r1: **PROVISIONAL, pending R2 (cross-family)**

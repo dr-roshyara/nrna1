@@ -3,113 +3,1465 @@
  "revision": "r1 (targeted repair of r0 per REVIEW-r0.json; see CHANGELOG-r1.md)",
  "status": "PROVISIONAL, pending R2 (cross-family Gate 1 coding). Gate 1 proper remains unsatisfied; whether a non-Claude coder is still commissioned is open human decision 1 (F15). Consolidation only; no new evidence, codings or interpretations. Same-family (Claude).",
  "R2_definition": "R2 denotes the independent, cross-family (non-Claude) Gate 1 coding as framed by H5-ADOPTED.md (header, §5.2, §5.3, §6 condition 3). Per REVIEW-r0 (citing RETURN-02-REVIEW.md), the commissioned non-Claude coder was replaced by human decision with a fresh Claude subagent; that within-family re-coding is RETURN-02 (B09). RETURN-02 is not R2 and does not discharge any R2 condition.",
- "levels": {"L0": "recorded verbatim by a source text; where the primary text is not in this directory, the quote is marked 'as quoted by <file>'", "L1": "established by a disciplined method (A′ coding, conformance analysis, sealed captures, frozen comparator)", "L2": "derived from L0/L1 by reviewed analysis"},
+ "levels": {
+  "L0": "recorded verbatim by a source text; where the primary text is not in this directory, the quote is marked 'as quoted by <file>'",
+  "L1": "established by a disciplined method (A′ coding, conformance analysis, sealed captures, frozen comparator)",
+  "L2": "derived from L0/L1 by reviewed analysis"
+ },
  "r2_dependent_rule": "yes = rests on A′ codings that a cross-family R2 would re-code; no = rests on verbatim text, a mechanical capture or a human act; n/a = the item is itself a check of the coding. Exceptions to the rule carry their reason. No tag was flipped to 'no' on the basis of RETURN-02 (T-5).",
  "reproducibility_ceiling": "The record makes no positive reproducibility claim. Any reproducibility statement may not exceed: 'within-family reproducibility of act.state / norm.deontic / membership on these 36 records is high' (RETURN-02-REVIEW.md 'Shows', as quoted by REVIEW-r0.json O-R8).",
- "conventions": ["NOT-EVIDENCED-IN-CAPTURE replaces any 'did not occur'", "times are recording times unless the source gives a decision date (M-TIME); file names are not timestamp sources", "no norm → act inference (R-A1)", "CONTINUOUS-REPORT.md not used as a source of facts", "confidence copied from source, never raised; 'not stated' where the source gives none", "item ids are stable; new items get new ids; removed items are marked withdrawn, never deleted (none withdrawn in r1)"],
- "sources_added_r1": [
-  {"file": "RETURN-02-COMPARISON.json", "family": "same-family", "note": "present in this directory; frozen comparator output"},
-  {"file": "RETURN-02-REVIEW.md", "family": "same-family", "note": "NOT present in this directory; its content is used only as quoted or reported by REVIEW-r0.md / REVIEW-r0.json. Seal 4bd42c3a5 and comparator 178e86214 are as reported by REVIEW-r0"}
+ "conventions": [
+  "NOT-EVIDENCED-IN-CAPTURE replaces any 'did not occur'",
+  "times are recording times unless the source gives a decision date (M-TIME); file names are not timestamp sources",
+  "no norm → act inference (R-A1)",
+  "CONTINUOUS-REPORT.md not used as a source of facts",
+  "confidence copied from source, never raised; 'not stated' where the source gives none",
+  "item ids are stable; new items get new ids; removed items are marked withdrawn, never deleted (none withdrawn in r1)"
  ],
- "sources_cited_but_absent_from_directory": ["RETURN-02-REVIEW.md", "CONFORMANCE-REVIEW.md", "CODING-REVIEW.json", "SOURCES.md", "SOURCE-IDENTITY.txt", "COMMISSIONING.md"],
+ "sources_added_r1": [
+  {
+   "file": "RETURN-02-COMPARISON.json",
+   "family": "same-family",
+   "note": "present in this directory; frozen comparator output"
+  },
+  {
+   "file": "RETURN-02-REVIEW.md",
+   "family": "same-family",
+   "note": "NOT present in this directory; its content is used only as quoted or reported by REVIEW-r0.md / REVIEW-r0.json. Seal 4bd42c3a5 and comparator 178e86214 are as reported by REVIEW-r0"
+  }
+ ],
+ "sources_cited_but_absent_from_directory": [
+  "RETURN-02-REVIEW.md",
+  "CONFORMANCE-REVIEW.md",
+  "CODING-REVIEW.json",
+  "SOURCES.md",
+  "SOURCE-IDENTITY.txt",
+  "COMMISSIONING.md"
+ ],
  "absent_sources_note": "Citations to these files are carried from r0 or taken from REVIEW-r0; they could not be re-checked in this directory. Where an r1 change rests on one of them, the item says 'as reported by REVIEW-r0'.",
  "items": [
-  {"id": "A01", "section": "A", "level": "L0", "statement": "R-72 (dated 2026-08-02) authorizes WP-4B 'provided its authorization package demonstrates executable scope and no unresolved governance blockers remain. THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN' … 'when they land, engineering proceeds RED → GREEN → VERIFY → acceptance evidence'. Also: 'WP-4C AND WP-4D ARE EXPRESSLY NOT AUTHORIZED. Each is to be authorized from IMPLEMENTATION EVIDENCE rather than roadmap intent, after its predecessor is accepted.' Adopted correction (not a quote): R-72's 'no RED begins' is a snapshot of 08-02, and the standing norm is the conditional; it must not be read as a standing ban.", "quoted_via": "the R10 span 'THAT PROVISO … DOES NOT BEGIN' as recorded in RECORDS.json R10; all other quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)", "sources": ["RECORDS.json R10", "CONFORMANCE-ANSWER.md Candidate 1 §1; Candidate 2 step 1", "CONFORMANCE-RECONCILIATION.md 'Corrections adopted'", "CONFORMANCE-REVIEW.md §2 (as reported by REVIEW-r0 L-3; not in this directory)"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text; R2 re-codes spans, it does not change them", "confidence": "SOURCE_FACT (second-hand quote); correction: adopted (CONFORMANCE-RECONCILIATION)", "changed_in_r1": ["P4", "L-3"]},
-  {"id": "A02", "section": "A", "level": "L0", "statement": "R-77 (2026-08-03): 'R-73–R-76 stand · WP-4B's authorization (R-72) stands · … AND WP-4B REMAINS BLOCKED: … IT DOES NOT GIVE `ContestedOutcomeRef` AN INBOUND PATH'. R-76 (2026-08-03): the scope ambiguity 'IS CLOSED'.", "quoted_via": "as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)", "sources": ["CONFORMANCE-ANSWER.md Candidate 1 §1"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT (second-hand quote)", "changed_in_r1": ["P4"]},
-  {"id": "A03", "section": "A", "level": "L0", "statement": "Commit 6a67da5d7: 'Date: 2026-08-03 16:10:37 +0200 / Subject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive'. Its message says 'GREEN not attempted: three producers are absent and the two Board acts are outstanding' and cites 'approved decision (R-72 authorization, R-76 scope)'. The span has no Author line (CODING.json R11 notes).", "quoted_via": "Date/Subject as recorded in RECORDS.json R11; the message quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)", "sources": ["RECORDS.json R11", "CODING.json R11 notes", "CONFORMANCE-ANSWER.md Candidate 1 §3"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT (partly second-hand quote)", "changed_in_r1": ["P4"]},
-  {"id": "A04", "section": "A", "level": "L0", "statement": "R-79 (2026-08-03): 'WP-8 MAY BE PLANNED AND MUST NOT BE STARTED'; 'It authorizes nothing'; 'ENGINEERING IS READY AND NOT EXECUTABLE'. R-80: 'authorized read as executable (R-72's unmet proviso)'. (The R-79 heading quoted in r0 is moved to A16.)", "quoted_via": "the R12 span as recorded in RECORDS.json R12; the other quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)", "sources": ["RECORDS.json R12", "CONFORMANCE-ANSWER.md Candidate 1 §1"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT (partly second-hand quote)", "changed_in_r1": ["P4"]},
-  {"id": "A05", "section": "A", "level": "L0", "statement": "R-86 (2026-08-04): 'Decision Authority confirms and adopts R-81 through R-85 without amendment'; 'These become governing rulings effective immediately'; 'engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile …'; 'Engineering is authorized to resume implementation …'; 'Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it.'", "quoted_via": "R02 and R36 spans as recorded in RECORDS.json; 'These become governing rulings effective immediately' as quoted by CODING.json R02 status and CONFORMANCE-ANSWER.md; the remaining quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)", "sources": ["RECORDS.json R02, R36", "CODING.json R02 norm.status", "CONFORMANCE-ANSWER.md Candidate 1 §1, §2; Candidate 2 step 3"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT (partly second-hand quote)", "changed_in_r1": ["P4"]},
-  {"id": "A06", "section": "A", "level": "L0", "statement": "R-89: 'WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — … ARB CHIEF (PREPARED)' and 'PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED … this ruling awaits the Decision Authority'. It cites '(R-88)' and 'R-88's adoption was a SINGLE ACT', and says '§WP-4 remains OPEN'. R-88 cites 'Per R-86 and R-87'. Per the coder (CODING.json R05 notes), the R-90 withdrawal quotes the Authority: 'R-89 already governs authorization'.", "quoted_via": "the R05 span as recorded in RECORDS.json R05; PROVENANCE, 'SINGLE ACT' and 'Per R-86 and R-87' as quoted by CONFORMANCE-ANSWER.md; '(R-88)' as quoted by CONFORMANCE-CASE.json c2; '§WP-4 remains OPEN' and 'R-89 already governs authorization' as quoted by IDENTIFIABILITY.json P7 and CODING.json R05 notes", "sources": ["RECORDS.json R05", "CODING.json R05 notes", "CONFORMANCE-ANSWER.md Candidate 2", "CONFORMANCE-CASE.json c2", "IDENTIFIABILITY.json P7"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT (partly second-hand quote)", "changed_in_r1": ["P4"]},
-  {"id": "A07", "section": "A", "level": "L0", "statement": "Recording times (not decision times): R-77 15:28:34 and R-79 15:47:45 on 2026-08-03; R-87 01:47:00, R-88 01:54:24 and R-89 02:08:48 on 2026-08-04. R-80 has no timeline entry.", "quoted_via": "as reported by CONFORMANCE-ANSWER.md (the recording timeline itself is not in this directory); R-80's missing entry as stated by CONFORMANCE-CASE.json timeline_lesson", "sources": ["CONFORMANCE-ANSWER.md Candidate 1 §2; Candidate 2 step 2", "CONFORMANCE-CASE.json timeline_lesson", "CONFORMANCE-REVIEW.md §3 (not in this directory)"], "R2_DEPENDENT": "no", "R2_reason": "recorded timeline, not a coding", "confidence": "SOURCE_FACT (recording time only; second-hand)", "changed_in_r1": ["P4"]},
-  {"id": "A08", "section": "A", "level": "L0", "statement": "Session log S0804-L576, section 'WP-4C-2 — commission closed, handed to the domain owner' (RECORDS.json R06/R07; not the R-90 register row): 'Then R-90 itself withdrawn before adoption, because the Authority ruled it was operational acceptance rather than a constitutional decision — the register holds constitutional decisions.' R-90 register row (R25): 'THE NUMBER R-90 IS RETIRED AND MUST NOT BE REUSED.' R-91 register row (R03): 'HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED …'.", "sources": ["RECORDS.json R03, R06, R07, R25"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT", "changed_in_r1": ["P2"]},
-  {"id": "A09", "section": "A", "level": "L0", "statement": "R-94: 'superseding would blur chronology'; 'ANNOTATE is adopted.'; it records 'Executed at IMPLEMENTATION_PROGRESS.md:58'. (The coder statements on R-94's heading and PREPARED tag are moved to A14.)", "quoted_via": "the R29/R30 spans as recorded in RECORDS.json; 'Executed at IMPLEMENTATION_PROGRESS.md:58' as quoted by IDENTIFIABILITY.json P2 and CODING.json R30 status", "sources": ["RECORDS.json R29, R30", "CODING.json R30 status", "IDENTIFIABILITY.json P2"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT (partly second-hand quote)", "changed_in_r1": ["P4"]},
-  {"id": "A10", "section": "A", "level": "L0", "statement": "Slice-7 texts. R-47: 'First authorized activity: RED at 7A'; '7B and 7C are NOT authorized and follow their own gates'. R-56 (a recording note marked not part of the ruling): 'Execution of 7B is a SEPARATE act and has NOT been issued'. R-58: 'Engineering is authorized to begin Slice 7B RED on keystones K1–K10 …'; 'Slice 7C remains unauthorized'. R-65: 'Slice 7C AUTHORIZED; engineering may begin RED'.", "sources": ["RECORDS.json R13, R14, R31, R32, R33, R34", "CODING.json R31 notes"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT"},
-  {"id": "A11", "section": "A", "level": "L0", "statement": "Execution reports in register and log text, all uncoded: 'Executed at IMPLEMENTATION_PROGRESS.md:58'; 'Container resolution executed and reproduced'; the grep in R-83; 'first checklist execution the same day caught a second instance' (R-41); R-86 'engineering waiting solely on a constitutional act'; S0804 'Nothing implemented this turn by the review's own instruction'. Provenance: this list is IDENTIFIABILITY P2/P6's, not H5 §3's. The R-86 and S0804 entries come from P2 only; H5 §3's S0815 reports are in A15.", "quoted_via": "as quoted by IDENTIFIABILITY.json P2, P6 (primary texts not in this directory)", "sources": ["IDENTIFIABILITY.json P2, P6", "STATE.md"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text; uncoded", "confidence": "SOURCE_FACT (second-hand quote)", "changed_in_r1": ["P3", "P4"]},
-  {"id": "A12", "section": "A", "level": "L0", "statement": "The other A′ spans (R-81 annotation, R-60, R-36 matrix rows, R-41, R-77 on ADR-T14, R-83 on §12, S0815 'NOT promoted to methodology — single occurrence, and ES-006.1 forbids promoting from one.') are recorded verbatim in RECORDS.json and not restated here.", "sources": ["RECORDS.json R01, R08, R09, R15–R23, R26, R27"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT"},
-  {"id": "A13", "section": "A", "level": "L0", "statement": "R-70 (RECORDS.json R04, section '## R-70'): 'WP-7B-R1 AUTHORIZED TO IMPLEMENT — Execution Governance · Authorization · ARB.' Under R-A1 the span does not show that implementation began (see F09).", "sources": ["RECORDS.json R04", "CODING.json R04 notes"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text", "confidence": "SOURCE_FACT", "new_in_r1": "O-F4"},
-  {"id": "A14", "section": "A", "level": "L1", "statement": "Coder statements on R-94, not quotes: R-94's heading names the ARB CHIEF (CODING.json R29/R30 actor status, INFERENCE), and R-94 'carries no PREPARED tag and says it was executed' (CODING.json R30 notes). Moved from A09.", "sources": ["CODING.json R29, R30 status and notes"], "R2_DEPENDENT": "yes", "R2_reason": "the coder's A′ status fields and notes, which R2 would re-code", "confidence": "INFERENCE (coder); same-family", "new_in_r1": "P4"},
-  {"id": "A15", "section": "A", "level": "L0", "statement": "S0815 (session log, 2026-08-15) execution and remediation reports, all uncoded: O-CLOSURE-VOCAB leads to the 'BINDING VOCABULARY RULING' and then 'Applied immediately'; O-CLOSURE-VOCAB is 'Recommended as its own work item'; 'E-2 is CORRECTED (seq 18)'; a forbidden headline is 'corrected, not defended'. These are the S0815 reports of H5 §3 and READINESS E3; per IDENTIFIABILITY P8 all go through an act and fit both hypotheses.", "quoted_via": "as quoted by IDENTIFIABILITY.json P3, P8 (primary text not in this directory)", "sources": ["IDENTIFIABILITY.json P3, P8", "H5-ADOPTED.md §3", "READINESS-RECONCILIATION.md E3"], "R2_DEPENDENT": "no", "R2_reason": "verbatim source text; uncoded", "confidence": "SOURCE_FACT (second-hand quote)", "new_in_r1": "P3"},
-  {"id": "A16", "section": "A", "level": "L1", "statement": "R-79's heading as carried in r0, 'WP-8 DEFERRED PENDING CLOSURE OF §WP-4 — … Directive · ARB'. Its quoting file (CODING-REVIEW.json, corrected R12) is not in this directory, so it cannot be checked here and is not held at L0. Moved from A04.", "sources": ["CODING-REVIEW.json corrected R12 (not in this directory; carried from r0)"], "R2_DEPENDENT": "no", "R2_reason": "source text, not a coding", "confidence": "not verifiable in this directory", "new_in_r1": "P4"},
-
-  {"id": "B01", "section": "B", "level": "L1", "statement": "36 A′ span records were coded. R24, R28 and R35 have NO SOURCE SPAN AVAILABLE. The review found 0 violations of R-A1..R-A3, no suppression and 25 corrections. Reviewer datasets: ACT n=26, NORM n=31, overlap 24. CODING-REVIEW's 'uncertain' list has 13 entries covering 19 records (one entry, R15–R21, covers 7): R01, R03, R05, R06, R07, R08, R12, R13, R15–R21, R25, R27, R29, R31.", "return02_note": "Dataset membership (24 both / 7 NORM-only / 2 ACT-only / 3 neither, consistent with 26/31/24) was reproduced exactly within family (B09). Untested across families.", "sources": ["CODING.json", "SUPPORT-RECONCILIATION.md header table", "CODING-REVIEW.json datasets_reviewer, uncertain, corrected (not in this directory; uncertain count as reported by REVIEW-r0 P1)", "RETURN-02-COMPARISON.json membership"], "R2_DEPENDENT": "yes", "R2_reason": "these are the codings R2 re-codes", "confidence": "reviewer counts; same-family", "changed_in_r1": ["P1", "O-R4"]},
-  {"id": "B02", "section": "B", "level": "L1", "statement": "Under A′ coding and normalization, ACT is 23+ / 1−, so act-level contrasts cannot be tested on this coded dataset. The pipeline removed negatives: the R06/R07 merge deleted the only same-operation ACT negative. This rests on the defects and normalization in B08.", "return02_note": "Rests on operation, actor and target fields and on the 1ay-n normalization. RETURN-02 gives no reproducibility evidence for these fields, even within family (free-text exact match 11–23/36, no semantic comparison; B10).", "sources": ["SUPPORT-RECONCILIATION.md 'What the chain establishes'; defect 2", "STATE.md"], "R2_DEPENDENT": "yes", "R2_reason": "counts depend on the codings", "confidence": "descriptive, same-family", "changed_in_r1": ["O-F1", "O-R4"]},
-  {"id": "B03", "section": "B", "level": "L1", "statement": "NORM START-EXECUTION is 5+ / 5−, with up to 12 genuine same-operation, same-actor, opposite-polarity pairs that differ in target. They are confounded with time / the authorizing ruling, and 2 are within a single ruling. This rests on the defects and normalization in B08.", "return02_note": "As B02: operation/actor/target fields and 1ay-n normalization; no reproducibility evidence from RETURN-02, even within family.", "sources": ["SUPPORT-RECONCILIATION.md 'What the chain establishes'"], "R2_DEPENDENT": "yes", "R2_reason": "depends on NORM codings", "confidence": "descriptive, same-family", "changed_in_r1": ["O-F1", "O-R4"]},
-  {"id": "B04", "section": "B", "level": "L1", "statement": "The same target flips polarity across successive rulings with all coded fields equal (R31 → R32; R33 → R34). 'Target alone does not index polarity; an intervening norm-making act does.' This rests on the defects and normalization in B08.", "return02_note": "Equality of coded fields involves operation/actor/target fields; RETURN-02 gives no reproducibility evidence for these, even within family.", "sources": ["SUPPORT-RECONCILIATION.md 'What the chain establishes'", "RECORDS.json R31–R34"], "R2_DEPENDENT": "yes", "R2_reason": "equality of coded fields is a coding result", "confidence": "descriptive, same-family", "changed_in_r1": ["O-F1", "O-R4"]},
-  {"id": "B05", "section": "B", "level": "L1", "statement": "Status mediation as self-declared: the rulings themselves declare that a Chief-prepared ruling gains force when the Decision Authority adopts it (e.g. R-86: 'These become governing rulings effective immediately'). 2 self-reported episodes. Force is 'observed' only through these declarations inside the norm-making acts, not independently of them.", "return02_note": "Rests on R02's categorical act.state, which was reproduced within family (B09). Cross-family untested.", "sources": ["IDENTIFIABILITY.json P4", "STATE.md", "H5-ADOPTED.md §2"], "R2_DEPENDENT": "yes", "R2_reason": "reconstructed from coded register rows", "confidence": "n=2, self-reported", "changed_in_r1": ["L-1", "O-R4"]},
-  {"id": "B06", "section": "B", "level": "L1", "statement": "Protocol A capture: LOCAL_REF_SET (25 refs, 4020 commits); 51 matches = 3 EXECUTION-TRACE · 47 DOC-OR-GOVERNANCE · 1 UNCLASSIFIABLE. The earliest EXECUTION-TRACE is e4724a44 at 2026-08-04T00:30:25Z, 'WP-4C-1 batch B1 -- RED for K1..K4', RECORDING_ORDER only. Further traces: 939e35dc, and cc1a3394, which is substantively WP-6 work (Protocol A limitation L1; not epistemic level L1). No conformance, hypothesis or falsifier statement is made.", "sources": ["PROTOCOL-A-RECONCILIATION.md evidence package; limitation L1"], "R2_DEPENDENT": "no", "R2_reason": "mechanical capture, not A′ coding", "confidence": "PASS_WITH_LIMITATIONS", "changed_in_r1": ["P6"]},
-  {"id": "B07", "section": "B", "level": "L1", "statement": "Protocol B: no locally checkable channel qualifies as an independent norm-in-force record (F-B1). The overlap test has almost no power, so NOT_INDEPENDENT means 'no evidence of role separation', not 'evidence of role fusion' (F-B2). The only open candidates are the host-side channels and the 23 K-SIG signatures (F-B3).", "sources": ["PROTOCOL-B-RECONCILIATION.md F-B1..F-B3"], "R2_DEPENDENT": "no", "R2_reason": "mechanical capture", "confidence": "PASS_WITH_LIMITATIONS"},
-  {"id": "B08", "section": "B", "level": "L1", "statement": "Pipeline defects and normalization on which B02–B04 rest. Defect 3: 'Unparseable 1ax corrections were applied to junk keys and listed as applied (r1).' Defect 4: 'The mapping silently overwrote 1ax corrections (R04 about_actor).' Defect 5: 'Composite targets were not expanded: 2 of the 14 POSSIBLE are artifacts.' Defect 6: duplicate or level-mismatched fields remain (v1_a vs actor / stated_by; v1_r vs operation; v1_k derived from target; v1_s in ACT, possibly conditioned on the outcome). 1ay-n normalization: 180 values; 16 reviewer corrections (over-merges: motion vs work package; not-occurred vs occurred; disposition vs adoption); 'Usable for pairing only under stated conditions'. r3 gives NORM target 14 POSSIBLE (r3 is EXPLORATORY, defect 7).", "sources": ["SUPPORT-RECONCILIATION.md header table; defects 3–7"], "R2_DEPENDENT": "yes", "R2_reason": "defects of the coded pipeline", "confidence": "disclosed defects; descriptive, same-family; r3 EXPLORATORY", "new_in_r1": "O-F1"},
-  {"id": "B09", "section": "B", "level": "L1", "statement": "RETURN-02 (within-family re-coding; frozen comparator): a context-isolated fresh Claude subagent re-coded the 36 records; the comparator compared them with CODING.json. 36/36 ids (none missing, none extra). act.state: agreement 1.000, κ 1.000. norm.deontic: agreement 1.000, κ 1.000. Membership 24 both / 7 NORM-only / 2 ACT-only / 3 neither. UNKNOWN share 0.083 (the 3 no-span records). REF-CR = REF-C, because the 7 unapplied corrections all target *.status.* fields, which the comparator does not apply. The comparator labels itself 'symmetric comparison; Claude references are NOT ground truth'. RETURN-02 'does not show cross-family independence'; the perfect agreement 'is not evidence against correlated error'. Ceiling: at most 'within-family reproducibility of act.state / norm.deontic / membership on these 36 records is high'.", "quoted_via": "numbers, ids and the 'NOT ground truth' label from RETURN-02-COMPARISON.json; the two 'does not show' / 'not evidence' quotes, the coder description, the seal 4bd42c3a5 and the comparator 178e86214 as quoted by REVIEW-r0.json / REVIEW-r0.md (RETURN-02-REVIEW.md is not in this directory)", "sources": ["RETURN-02-COMPARISON.json", "RETURN-02-REVIEW.md frozen results (as reported by REVIEW-r0 O-R2, O-R8)"], "R2_DEPENDENT": "n/a", "R2_reason": "the item is itself a within-family check of the coding, not a result built on it; it is not R2", "confidence": "frozen comparator; same-family", "new_in_r1": "O-R2"},
-  {"id": "B10", "section": "B", "level": "L1", "statement": "RETURN-02 supplementary results, NOT frozen, descriptive only (written after opening the results). All status-tag disagreements lie on the SOURCE_FACT ↔ INFERENCE boundary (act.state 29/36, norm.deontic 35/36); they are classified 'schema' and change no category. Free-text fields match exactly in only 11–23/36; no semantic comparison was done, and no claim is made about these fields.", "quoted_via": "as reported by REVIEW-r0.md / REVIEW-r0.json O-R3 (RETURN-02-REVIEW.md Supplementary is not in this directory)", "sources": ["RETURN-02-REVIEW.md Supplementary (as reported by REVIEW-r0 O-R3)"], "R2_DEPENDENT": "n/a", "R2_reason": "a within-family check of the coding, not a result built on it", "confidence": "NOT frozen, descriptive only; same-family", "new_in_r1": "O-R3"},
-
-  {"id": "C00", "section": "C", "level": "L2", "statement": "No regularity qualifies: 0 patterns recur across independent decision clusters, so Section C is empty. Candidates checked and kept in B/E: B04 (2 instances; the sources do not establish independent clusters; both involve R-58, since R32 and R33 are R-58 spans); B05/E04 (n=2, self-reported; IDENTIFIABILITY P4 requires ≥3 different adoption acts); B03 (confounded with time and the authorizing ruling; 2 within one ruling).", "return02_note": "The B03/B04 candidates rest on operation/actor/target fields and the 1ay-n normalization, for which RETURN-02 gives no reproducibility evidence even within family. B05/E04 rest on R02's categorical act.state (reproduced within family).", "sources": ["SUPPORT-RECONCILIATION.md", "IDENTIFIABILITY.json draft_min_evidence P4", "RECORDS.json R32, R33"], "R2_DEPENDENT": "yes", "R2_reason": "the candidates are coding results", "confidence": "not stated (application of the TASK criterion)", "qualifying_clusters": 0, "regularities": [], "changed_in_r1": ["O-R4"]},
-
-  {"id": "D01", "section": "D", "level": "L2", "statement": "H5: 'On the acquired evidence and within the authorized scope, the competing hypotheses H-D and H-B are non-identifiable.' Neither is falsified or validated; both are retained as unresolved alternatives. Scope qualifier: a scope/corpus limitation, relative to the evidence and the scope; not support for either hypothesis.", "return02_note": "RETURN-02 does not discharge 'conditional on R2 reproducing the coding' (H5 §5.2), because H5 frames R2 as the independent (non-Claude) Gate 1 coding. The sources do not say whether RETURN-02 bears on reopening condition 3; whether a within-family check suffices is open human decision 1 (F15).", "sources": ["H5-ADOPTED.md §1, §4, §6", "READINESS-RECONCILIATION.md"], "R2_DEPENDENT": "yes", "R2_reason": "reopening condition 3: a defect in the A′ coding on which D1 rests", "confidence": "ADOPTED by human act 2026-10-01 (F-LOG-0197); review PASS_WITH_LIMITATIONS", "changed_in_r1": ["O-R4"]},
-  {"id": "D02", "section": "D", "level": "L2", "statement": "Waiver: the F-LOG-0190 condition ('We do not declare non-identifiability until the bounded, genuinely informative evidence channels have been exhausted') was knowingly waived. H1 was skipped, not exhausted; Q4 was never evaluated; Protocol C is sealed and not executed.", "sources": ["H5-ADOPTED.md header, §0"], "R2_DEPENDENT": "no", "R2_reason": "a human act", "confidence": "ADOPTED ('Adopt H5, waive 0190')"},
-  {"id": "D03", "section": "D", "level": "L2", "statement": "D1 is a necessary, not sufficient, condition for discrimination: an observable of norm state, independent of the norm-maker, the executor and the self-asserting ruling. Discrimination additionally requires a mapping to the target at t, and a state that one hypothesis predicts and the other excludes. On the acquired evidence D1 holds: work evidence cannot separate 'the norm changed without a recorded act' from 'the work violated an unchanged norm'. Derived on this corpus by a same-family analysis; not validated.", "return02_note": "As D01: RETURN-02 does not discharge the R2 condition; open human decision 1.", "sources": ["H5-ADOPTED.md §1, §5.2", "READINESS-RECONCILIATION.md sealed verdict, E5"], "R2_DEPENDENT": "yes", "R2_reason": "D1 rests on the A′ coding (H5 §5.3, §6 condition 3)", "confidence": "'not a validated formal condition'; d1_broken false only 'not on the acquired evidence'", "changed_in_r1": ["O-R4"]},
-  {"id": "D04", "section": "D", "level": "L2", "statement": "Whether an independent norm-state observable exists anywhere is NOT_DETERMINABLE.", "sources": ["READINESS-RECONCILIATION.md", "H5-ADOPTED.md §1"], "R2_DEPENDENT": "no", "R2_reason": "a capture/scoping result", "confidence": "review PASS_WITH_LIMITATIONS"},
-  {"id": "D05", "section": "D", "level": "L2", "statement": "P1 (norms change only through acts): NON-IDENTIFIABLE, favours neither. Every observed change goes from no authorization to authorization, which needs an act on either hypothesis. Under R-A3 the act and the after-state are the same record. The R-72 contingent authorization becoming operative is not observed.", "sources": ["IDENTIFIABILITY.json predictions_reviewed P1"], "R2_DEPENDENT": "yes", "R2_reason": "rests on A′-coded records and R-A3", "confidence": "reviewed status"},
-  {"id": "D06", "section": "D", "level": "L2", "statement": "P2 (work conforms): CONFOUNDED, a candidate anomaly against H-B, n=1 (see E01).", "sources": ["IDENTIFIABILITY.json P2"], "R2_DEPENDENT": "yes", "R2_reason": "framed on coded R11", "confidence": "reviewed status"},
-  {"id": "D07", "section": "D", "level": "L2", "statement": "P3 (feedback): NON-IDENTIFIABLE; H-D accommodates acts that cite evidence.", "sources": ["IDENTIFIABILITY.json P3"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded records", "confidence": "reviewed status"},
-  {"id": "D08", "section": "D", "level": "L2", "statement": "P4 (status mediation): NON-IDENTIFIABLE as a discriminator; H-D's clause is corroborated, n=2, by self-report (see E04, now also L2).", "return02_note": "Rests on R02's categorical act.state, reproduced within family (B09); cross-family untested.", "sources": ["IDENTIFIABILITY.json P4"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded records", "confidence": "reviewed status", "changed_in_r1": ["L-2", "O-R4"]},
-  {"id": "D09", "section": "D", "level": "L2", "statement": "P5 (capability): NON-IDENTIFIABLE as a discriminator; H-B is silent (see E03).", "sources": ["IDENTIFIABILITY.json P5"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded records", "confidence": "reviewed status"},
-  {"id": "D10", "section": "D", "level": "L2", "statement": "P6 (record content): NON-IDENTIFIABLE. H-B's prediction is met at every boundary, and H-D permits it.", "sources": ["IDENTIFIABILITY.json P6"], "R2_DEPENDENT": "yes", "R2_reason": "kept yes conservatively: P6 rests mainly on uncoded execution reports (A11) and on the hypotheses' text, not on A′ codings", "confidence": "reviewed status", "changed_in_r1": ["T-3"]},
-  {"id": "D11", "section": "D", "level": "L2", "statement": "P7 (outcome-gated authorization): CONFOUNDED with R-89's status. On act versus no act it reduces to P1 (see E02).", "sources": ["IDENTIFIABILITY.json P7"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded R05", "confidence": "reviewed status"},
-  {"id": "D12", "section": "D", "level": "L2", "statement": "P8 (remediation): NON-IDENTIFIABLE. The corpus window runs to 2026-08-15 (S0815), not 2026-08-04.", "sources": ["IDENTIFIABILITY.json P8"], "R2_DEPENDENT": "yes", "R2_reason": "kept yes conservatively; P8 rests mainly on a corpus-window limitation and on uncoded S0815 reports (A15). F10, from the same P8 content, is now also yes (T-2)", "confidence": "reviewed status", "changed_in_r1": ["T-2"]},
-  {"id": "D13", "section": "D", "level": "L2", "statement": "No prediction is IDENTIFIED, and neither hypothesis is favoured; they 'come close to being nested'. Only two kinds of observation could separate them: (i) a verified norm change with no act, of which 'The corpus has no case' (NOT-EVIDENCED-IN-CAPTURE); (ii) verified non-conformance or verified absence of feedback, which has two confounded candidates (R11; R-89).", "sources": ["IDENTIFIABILITY.json discriminating_observation_types"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded records", "confidence": "reviewed"},
-  {"id": "D14", "section": "D", "level": "L2", "statement": "Method result: STRICT witnesses are unreachable by construction, so 'no strict witness' carries no evidential weight. 'Act-level guards non-identifiable' is valid only under this coding and pipeline, not 'in the corpus'. r3 is EXPLORATORY. Defects 3–6 and the normalization are in B08; the methodological conclusion is D15.", "sources": ["SUPPORT-RECONCILIATION.md defects 1, 2, 7 (3–6: B08)"], "R2_DEPENDENT": "yes", "R2_reason": "explicitly coding/pipeline-relative", "confidence": "formal reasoning; r3 EXPLORATORY", "changed_in_r1": ["O-F1"]},
-  {"id": "D15", "section": "D", "level": "L2", "statement": "Methodological conclusion: 'The inherited strict single-variable pair-witness method (v1 R3, carried into 1ay) is inadequate for this corpus.' The informative structure is dynamic: the discriminating signal is 'polarity changed by an intervening act', a transition, not a static variable.", "sources": ["SUPPORT-RECONCILIATION.md 'Methodological conclusion'"], "R2_DEPENDENT": "yes", "R2_reason": "drawn from the coded pipeline results (B02–B04, D14)", "confidence": "INFERENCE; the reviewer concurs on the substance", "new_in_r1": "O-F5"},
-
-  {"id": "E01", "section": "E", "level": "L1", "statement": "WP-4B RED (commit A03 against A01/A02): NON-CONFORMS (1ba reviewer: 'NON-CONFORMS, moderate, text-robust'). 'C1 is the first discriminating observation of type (ii)'.", "direction": "weakly against H-B's conformance clause. It refutes only a universal 'all recorded work conforms'; no frequency claim; does not show decoupling. H-D makes no prediction.", "n": 1, "confound": "Contested reading of the proviso: does the R-77 block (inbound path) cover producer-agnostic RED tests? Texts of R-73..R-75 are missing; R-80's timing is unknown; R-79 is a WP-8 directive (corroboration only). Adopted correction: R-72's 'no RED begins' is a snapshot of 08-02 and the standing norm is the conditional (A01). Only disclosed RED test code was written; R-87's later acceptance does not ratify the start. IDENTIFIABILITY P2 had labelled it CONFOUNDED.", "alternative_reading": "CONFORMS or UNDETERMINED: R-72 'when they land, engineering proceeds RED'; R-73..R-76 had landed; R-78 reframes the remainder as implementation-delivery; R-86 'resume implementation'/'Batch 7'; R-87 accepted WP-4B without flagging the start.", "sources": ["CONFORMANCE-RECONCILIATION.md C1, 'Corrections adopted', 'Bearing'", "CONFORMANCE-CASE.json c1_non_conformance, bearing.c1", "CONFORMANCE-REVIEW.md §6, §7 (not in this directory)", "IDENTIFIABILITY.json P2", "H5-ADOPTED.md §4"], "R2_DEPENDENT": "no", "R2_reason": "1ba read source text (SOURCES.md), not A′ codings; still same-family (G02)", "confidence": "verdict moderate, text-robust; bearing WEAK", "changed_in_r1": ["P5", "L-3"]},
-  {"id": "E02", "section": "E", "level": "L1", "statement": "R-89 / WP-4C-1: candidate non-conformance of an authorization with R-72's acceptance gate.", "direction": "Both directions, both conditional and unresolved: (a) against H-B, if R-89 took force (H5 §4); (b) a possible falsifier of H-D's status clause (IDENTIFIABILITY P4 falsifier_HD: 'A ruling that stays PREPARED, with a complete adoption log showing no adoption, yet is cited as governing authority or has work executed under it (R-89 is the candidate)'). P4's critique notes that the Authority's own 'R-89 already governs authorization' may itself be the adoption.", "n": 1, "confound": "R-89's status: 'PREPARED, NOT ADOPTED' with no adoption annotation in the sources, versus the Authority's 'R-89 already governs authorization' (which may itself be the adoption). The sources diverge on ordering: IDENTIFIABILITY P7 says R-89 'very probably authorized WP-4C-1 before WP-4B was accepted' (INFERENCE); 1ba C2 orders R-87 < R-88 < R-89 by text. C2 also relies on R-89's self-certified 'seven checks', which were not independently verified (CONFORMANCE-REVIEW.md §5, as reported by REVIEW-r0; not in this directory). Not resolved here.", "alternative_reading": "C2 CONFORMS (qualified): a conforming draft, not in force, bearing on neither hypothesis. Under the strict reading of 'IMPLEMENTATION EVIDENCE' it is UNDETERMINED; 'not applicable' is also offered.", "return02_note": "Rests on R05's operation (a free-text field, and an uncertainty entry). Identical within-family categorical codes do not resolve the CODING-REVIEW uncertainty entry; shared priors would produce the same agreement.", "sources": ["IDENTIFIABILITY.json P4, P7", "CONFORMANCE-RECONCILIATION.md C2", "CONFORMANCE-CASE.json c2", "CONFORMANCE-ANSWER.md Candidate 2", "H5-ADOPTED.md §4", "CONFORMANCE-REVIEW.md §5 (as reported by REVIEW-r0 O-F6)"], "R2_DEPENDENT": "yes", "R2_reason": "the P7 framing rests on coded R05; the C2 text order does not", "confidence": "P7 'INFERENCE, strongly supported'; C2 'moderate-high (qualified)'; H-D direction: unresolved", "changed_in_r1": ["S-1", "O-F6", "O-R4"]},
-  {"id": "E03", "section": "E", "level": "L1", "statement": "R-94: a Chief disposition recorded as adopted and executed with no PREPARED tag (A09, A14).", "direction": "a candidate falsifier of H-D (capability clause). H-B is silent (P5: falsifier_HB 'None (H-B is silent)').", "n": 1, "confound": "Does a delivery disposition by the Chief need Decision Authority adoption? R-86 says Chief rulings stay PREPARED until the DA acts, yet R-94 has no PREPARED tag and records execution. Left unresolved in the coding. R29 (supersede refused) is a 'hard case'.", "alternative_reading": "A scope question per R-90 (operational acceptance is not a constitutional decision), so no capability breach.", "return02_note": "Rests on R29/R30. Identical within-family categorical codes do not resolve the uncertainty entry on R29.", "sources": ["IDENTIFIABILITY.json P5", "CODING.json R29, R30 notes", "H5-ADOPTED.md §4"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded R29/R30", "confidence": "open", "changed_in_r1": ["S-2", "O-R4"]},
-  {"id": "E04", "section": "E", "level": "L2", "statement": "P4 status mediation (B05).", "direction": "corroborates H-D's status clause; does not discriminate (H-B does not deny it and has no P4 falsifier)", "n": 2, "confound": "Force is 'observed' only through declarations inside the norm-making acts, the same kind of evidence that was rejected for P1.", "alternative_reading": "Consistent with both hypotheses. R-89 remains an unresolved possible falsifier of H-D (E02 direction b).", "return02_note": "Rests on R02's categorical act.state, reproduced within family (B09); cross-family untested.", "sources": ["IDENTIFIABILITY.json P4", "STATE.md", "H5-ADOPTED.md §4"], "R2_DEPENDENT": "yes", "R2_reason": "rests on coded rows", "confidence": "n=2, self-reported", "changed_in_r1": ["L-2", "O-R4"]},
-
-  {"id": "F01", "section": "F", "level": "L1", "statement": "H5 §3 gap: host-side records (PR approvals, branch protection, rulesets, CI runs, repository events) were not examined, by human decision. Protocol C is sealed, SAFE TO RUN, and not executed. Its stated limits: current state only; events retention is an unverified assumption; Q3 defaults to INDEPENDENCE_NOT_DETERMINABLE; Q2 needs an API relation to e4724a44 or its PR. The '< 10%' expected gain is a main-analyst estimate, not reviewed.", "sources": ["H5-ADOPTED.md §3"], "R2_DEPENDENT": "no", "R2_reason": "scope decision", "confidence": "disclosed gap"},
-  {"id": "F02", "section": "F", "level": "L1", "statement": "H5 §3: signer verification was declined (H2 = NO). The signer kind of the 23 K-SIG headers is undetermined.", "sources": ["H5-ADOPTED.md §3", "PROTOCOL-B-RECONCILIATION.md F-B3"], "R2_DEPENDENT": "no", "R2_reason": "scope decision", "confidence": "disclosed gap"},
-  {"id": "F03", "section": "F", "level": "L1", "statement": "H5 §3: the content of status, register, CI and hook files was not read (existence and metadata only), nor the K-CI/K-HOOK enforcement history.", "sources": ["H5-ADOPTED.md §3"], "R2_DEPENDENT": "no", "R2_reason": "scope", "confidence": "disclosed gap"},
-  {"id": "F04", "section": "F", "level": "L1", "statement": "H5 §3: IMPLEMENTATION_PROGRESS.md:58 was not acquired. H5 §3's further execution reports (R-83 grep, 'Container resolution executed', R-41, S0815) are uncoded: the first three are in A11, the S0815 reports are in A15. A11's R-86 and S0804 entries come from IDENTIFIABILITY P2, not from H5 §3.", "sources": ["H5-ADOPTED.md §3", "READINESS-RECONCILIATION.md E3", "IDENTIFIABILITY.json P2, P3, P8"], "R2_DEPENDENT": "no", "R2_reason": "not acquired / not coded", "confidence": "disclosed gap", "changed_in_r1": ["P3"]},
-  {"id": "F05", "section": "F", "level": "L1", "statement": "H5 §3: self-contamination (the A and B captures predate R-SELF and are not re-run); corpora outside this repository were not examined.", "sources": ["H5-ADOPTED.md §3"], "R2_DEPENDENT": "no", "R2_reason": "scope", "confidence": "disclosed gap"},
-  {"id": "F06", "section": "F", "level": "L1", "statement": "Missing fact: 'Does a record kept by someone other than the norm-maker, the executor or the self-asserting ruling attest the norm state of a register target at a stated time t?' Motivating instance: was WP-4C-1 authorized or blocked at its earliest recorded execution trace, 2026-08-04T00:30:25Z (RECORDING_ORDER)?", "sources": ["READINESS-RECONCILIATION.md"], "R2_DEPENDENT": "no", "R2_reason": "R2 cannot supply this observable (H5 §5.3)", "confidence": "NOT_DETERMINABLE"},
-  {"id": "F07", "section": "F", "level": "L1", "statement": "R-89 adoption: UNKNOWN (no adoption act was found in the sources).", "sources": ["CODING.json R05 notes", "CONFORMANCE-ANSWER.md Candidate 2 step 3"], "R2_DEPENDENT": "no", "R2_reason": "missing record, not a coding", "confidence": "UNKNOWN"},
-  {"id": "F08", "section": "F", "level": "L1", "statement": "For C1: the text of R-73..R-75 and R-81..R-85; the hour of decision of R-77 and R-79; R-80's timing; any act decided before 16:10 that is absent from SOURCES.", "sources": ["CONFORMANCE-ANSWER.md Candidate 1 UNKNOWN", "CONFORMANCE-CASE.json timeline_lesson", "CONFORMANCE-REVIEW.md §3 (not in this directory)"], "R2_DEPENDENT": "no", "R2_reason": "missing records", "confidence": "UNKNOWN"},
-  {"id": "F09", "section": "F", "level": "L1", "statement": "Execution under the authorizations R-70 (R04, A13), R-47 (R13), R-58 (R32), R-65 (R34) and R-86 (R36), and WP-8 planning (R12): NOT-EVIDENCED-IN-CAPTURE in the coded spans (R-A1).", "sources": ["CODING.json R04, R12, R13, R32, R34, R36 notes"], "R2_DEPENDENT": "yes", "R2_reason": "stated in coding notes", "confidence": "NOT-EVIDENCED-IN-CAPTURE"},
-  {"id": "F10", "section": "F", "level": "L1", "statement": "Any R-91 remediation after 2026-08-04: NOT-EVIDENCED-IN-CAPTURE (a corpus limitation).", "sources": ["IDENTIFIABILITY.json P8"], "R2_DEPENDENT": "yes", "R2_reason": "aligned with D12 (same P8 content), conservatively: P8 is mainly a corpus-window limitation, but its NON-IDENTIFIABLE reading draws on the coded corpus", "confidence": "NOT-EVIDENCED-IN-CAPTURE", "changed_in_r1": ["T-2"]},
-  {"id": "F11", "section": "F", "level": "L1", "statement": "Capture completeness against the host: NOT SHOWN (local refs only).", "sources": ["PROTOCOL-A-RECONCILIATION.md", "PROTOCOL-B-RECONCILIATION.md"], "R2_DEPENDENT": "no", "R2_reason": "capture scope", "confidence": "NOT SHOWN"},
-  {"id": "F12", "section": "F", "level": "L1", "statement": "Cross-family reproduction of the A′ codings (R2): UNKNOWN; Gate 1 proper is unsatisfied, and whether a non-Claude coder is still commissioned is open human decision 1 (F15). Within-family reproduction (RETURN-02, B09) is exact on act.state, norm.deontic and membership; free-text fields are unassessed (B10). CODING-REVIEW's 13 uncertainty entries cover 19 records; the within-family coder gave them identical categorical codes, which does not resolve them.", "sources": ["H5-ADOPTED.md header, §5.3", "RETURN-02-COMPARISON.json", "RETURN-02-REVIEW.md (as reported by REVIEW-r0 O-R1, O-R5)", "CODING-REVIEW.json uncertain (not in this directory; count per REVIEW-r0 P1)"], "R2_DEPENDENT": "yes", "R2_reason": "this is R2", "confidence": "cross-family: UNKNOWN; within-family: frozen comparator, same-family", "changed_in_r1": ["P1", "O-R1", "O-R5"]},
-  {"id": "F13", "section": "F", "level": "L1", "statement": "R24, R28, R35: NO SOURCE SPAN AVAILABLE.", "sources": ["RECORDS.json", "CODING.json"], "R2_DEPENDENT": "no", "R2_reason": "no span exists", "confidence": "UNKNOWN"},
-  {"id": "F14", "section": "F", "level": "L1", "statement": "Author classes (READINESS erratum E2): S0804's author class is unknown (it is a session log, not a ruling). Author classes assigned by path construction (A4, B1) are unknown.", "sources": ["READINESS-RECONCILIATION.md errata E2"], "R2_DEPENDENT": "no", "R2_reason": "capture/scoping result", "confidence": "UNKNOWN", "new_in_r1": "O-F3"},
-  {"id": "F15", "section": "F", "level": "L1", "statement": "Open human decision 1: the basis for Gate 1, i.e. close Gate 1 on the within-family basis (RETURN-02), or still commission a non-Claude coder. Until decided, R2 (cross-family) is outstanding and this record stays PROVISIONAL.", "sources": ["RETURN-02-REVIEW.md 'Open for human decision' (as reported by REVIEW-r0 O-R6)"], "R2_DEPENDENT": "no", "R2_reason": "a pending human act", "confidence": "OPEN (human decision)", "new_in_r1": "O-R6"},
-  {"id": "F16", "section": "F", "level": "L1", "statement": "Open human decision 2: whether SCHEMA-r2 §3 needs a SOURCE_FACT / INFERENCE rule; the schema changes only by human decision. The epistemic-status labels, including most of CODING-REVIEW's 25 corrections ('mostly epistemic status', SUPPORT-RECONCILIATION), lie on this underspecified boundary.", "sources": ["RETURN-02-REVIEW.md 'Open for human decision' (as reported by REVIEW-r0 O-R6)", "SCHEMA-r2-Aprime.md §3", "SUPPORT-RECONCILIATION.md header table"], "R2_DEPENDENT": "no", "R2_reason": "a pending human act", "confidence": "OPEN (human decision)", "new_in_r1": "O-R6"},
-
-  {"id": "G01", "section": "G", "level": "L1", "statement": "Corpus boundary: a register of rulings, plus a few session logs (up to S0815, 2026-08-15) and one git commit. 36 A′ spans are drawn from it, and source identity is pinned by git blob ids (SOURCE-IDENTITY.txt, which is not in this directory). Captures: local refs only (25 refs, 4020 commits); host completeness not shown.", "sources": ["STATE.md", "SCHEMA-r2-Aprime.md header", "IDENTIFIABILITY.json P8", "PROTOCOL-A-RECONCILIATION.md"], "R2_DEPENDENT": "no", "R2_reason": "provenance fact", "confidence": "not stated"},
-  {"id": "G02", "section": "G", "level": "L1", "statement": "Same-family: every finding cited is same-family (Claude), including codings, reviews, RETURN-02 (RETURN-02-COMPARISON.json; RETURN-02-REVIEW.md, seal 4bd42c3a5, comparator 178e86214, as reported by REVIEW-r0) and this record. The commissioned non-Claude Gate 1 coder was replaced by human decision with a fresh Claude subagent (RETURN-02); Gate 1 proper remains unsatisfied, and whether a non-Claude coder is still commissioned is open human decision 1 (F15). R2 (as defined in the header) can only test the coding on which D1 rests; it cannot supply the missing independent observable.", "sources": ["H5-ADOPTED.md header, §5.3", "RETURN-02-COMPARISON.json", "RETURN-02-REVIEW.md header (as reported by REVIEW-r0 O-R1, O-R9)"], "R2_DEPENDENT": "yes", "R2_reason": "exception to the rule (a status/provenance statement, not resting on codings): kept yes because its content changes with the Gate 1 decision / R2", "confidence": "not stated", "changed_in_r1": ["O-R1", "O-R9", "T-4"]},
-  {"id": "G03", "section": "G", "level": "L1", "statement": "R-SELF: the recommended rule is path-based (a declared programme-artefact root, initially docs/knowledgeos/, listed in a versioned SELF-ROOTS.txt; class SELF-ARTEFACT, excluded from the classes and the earliest trace). Protocol A: 'Not applied' → human decision. 21/51 matches are programme artefacts (DOC-OR-GOVERNANCE 47 vs 27 historical); the ET set is unchanged. Protocol B: .claude/ and claude/ are not excluded. H5: the A and B captures predate R-SELF and are not re-run ('R-SELF applies forward only').", "sources": ["PROTOCOL-A-RECONCILIATION.md L2", "PROTOCOL-B-RECONCILIATION.md disclosed limitations", "H5-ADOPTED.md §3"], "R2_DEPENDENT": "no", "R2_reason": "capture provenance", "confidence": "not stated"},
-  {"id": "G04", "section": "G", "level": "L0", "statement": "Instrument: A′ is an 'OBSERVATION REPRESENTATION, NOT A THEORY'. It does not assert two ontological layers, H-DEONTIC, or that governed work is out of scope; v1 records are kept unchanged. Under R-A3, act and after-state are the same record. §5: 'Support is computed separately per dataset and never aggregated.'", "sources": ["SCHEMA-r2-Aprime.md header, §4 R-A3, §5", "IDENTIFIABILITY.json P1"], "R2_DEPENDENT": "no", "R2_reason": "schema text", "confidence": "not stated", "changed_in_r1": ["H-3"]},
-  {"id": "G05", "section": "G", "level": "L1", "statement": "M-TIME: recording time ≠ decision time ≠ entry into force (three time concepts that must not be equated). Recording time 'is NOT an upper bound on entry into force'; it bounds drafting (PREPARED rulings are written before adoption). Protocol A L3: 'file names are not timestamp sources' (the earliest-trace commit changes a plan file whose name implies 19:00 on 2026-08-04; every recording of it precedes that).", "sources": ["CONFORMANCE-RECONCILIATION.md timeline lesson", "CONFORMANCE-CASE.json timeline_lesson", "CONFORMANCE-REVIEW.md §3 (not in this directory)", "STATE.md", "PROTOCOL-A-RECONCILIATION.md L3"], "R2_DEPENDENT": "no", "R2_reason": "derived from register text and capture limitations, not codings", "confidence": "reviewed", "changed_in_r1": ["O-F7"]},
-  {"id": "G06", "section": "G", "level": "L0", "statement": "H-D and H-B are frozen and stated neutrally. Both accept that norm-making acts exist.", "sources": ["HYPOTHESES.md"], "R2_DEPENDENT": "no", "R2_reason": "frozen text", "confidence": "frozen"},
-  {"id": "G07", "section": "G", "level": "L1", "statement": "READINESS erratum E4: host membership data shows repository access, not normative capability. At most it is an input to a capability register.", "sources": ["READINESS-RECONCILIATION.md errata E4"], "R2_DEPENDENT": "no", "R2_reason": "review erratum, not a coding", "confidence": "review erratum (PASS_WITH_LIMITATIONS)", "new_in_r1": "O-F3"},
-  {"id": "G08", "section": "G", "level": "L1", "statement": "Two sealed expectations failed: (1) 1ba bias check: 'the sealed expectation (C1 CONFORMS / UNDETERMINED) failed'; (2) 1be main-analyst sealed expectation NO 'was not confirmed', 'Recorded as a prediction miss'.", "sources": ["CONFORMANCE-RECONCILIATION.md 'Bias check'", "READINESS-RECONCILIATION.md header table"], "R2_DEPENDENT": "no", "R2_reason": "provenance of sealed expectations", "confidence": "not stated", "new_in_r1": "O-F2"},
-
-  {"id": "H01", "section": "H", "level": "L2", "kind": "MAY", "statement": "R4 may use the L0 items (A01–A13, A15, G04, G06) with their provenance as data, including each 'as quoted by <file>' disclosure; the L1 items A14 and A16 are coder statements / unverifiable quotes, not L0 data.", "sources": ["A01–A16", "G01"], "R2_DEPENDENT": "no", "R2_reason": "verbatim data", "confidence": "SOURCE_FACT (partly second-hand)", "changed_in_r1": ["P4"]},
-  {"id": "H02", "section": "H", "level": "L2", "kind": "MAY", "statement": "R4 may use the A′ ACT/NORM separation as a representation, conditional on R2 (cross-family) reproducing the coding (H5 §5.2), with the R-A3 caveat: act and after-state are the same record, so P1 cannot be tested through A′ observations (D05, G04). RETURN-02 does not discharge this condition; whether a within-family check suffices is open human decision 1 (F15).", "sources": ["H5-ADOPTED.md §5.2", "B01", "D05", "G04", "F15"], "R2_DEPENDENT": "yes", "R2_reason": "explicitly conditional on R2", "confidence": "conditional", "changed_in_r1": ["H-2", "O-R1", "O-R4"]},
-  {"id": "H03", "section": "H", "level": "L2", "kind": "MAY", "statement": "R4 may use D1 as a candidate necessary, not sufficient, non-validated condition. RETURN-02 does not discharge the R2 condition on which D1 rests.", "sources": ["D03"], "R2_DEPENDENT": "yes", "R2_reason": "D1 rests on A′ coding", "confidence": "not validated", "changed_in_r1": ["O-R4"]},
-  {"id": "H04", "section": "H", "level": "L2", "kind": "MAY", "statement": "R4 may use M-TIME: recording time, decision time and entry into force are three time concepts that must not be equated (not a claim that they always differ).", "sources": ["G05"], "R2_DEPENDENT": "no", "R2_reason": "text-derived", "confidence": "reviewed", "changed_in_r1": ["H-1"]},
-  {"id": "H05", "section": "H", "level": "L2", "kind": "MAY", "statement": "R4 may treat H-D and H-B as unresolved alternatives.", "sources": ["D01", "G06"], "R2_DEPENDENT": "yes", "R2_reason": "derived from D01 (H5 reopening condition 3), like H06", "confidence": "ADOPTED", "changed_in_r1": ["T-1"]},
-  {"id": "H06", "section": "H", "level": "L2", "kind": "MAY", "statement": "R4 may use H5 only with its scope qualifier, waiver and §3 gap attached. RETURN-02 does not discharge H5's R2 condition.", "sources": ["D01", "D02", "F01–F05"], "R2_DEPENDENT": "yes", "R2_reason": "H5 reopening condition 3", "confidence": "ADOPTED", "changed_in_r1": ["O-R4"]},
-  {"id": "H07", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "H-D or H-B as an axiom; hypotheses are never axioms.", "sources": ["H5-ADOPTED.md §5.2"], "R2_DEPENDENT": "no", "R2_reason": "adopted constraint", "confidence": "ADOPTED"},
-  {"id": "H08", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Any regularity: Section C is empty, and B04/B05 must not be generalized.", "sources": ["C00"], "R2_DEPENDENT": "yes", "R2_reason": "candidates are coding results", "confidence": "not stated"},
-  {"id": "H09", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Act-level guards, or a corpus-level claim of their non-identifiability.", "sources": ["B02", "D14"], "R2_DEPENDENT": "yes", "R2_reason": "coding/pipeline-relative", "confidence": "descriptive, same-family"},
-  {"id": "H10", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Norm → act: authorization is not execution, and prohibition is not refusal.", "sources": ["SCHEMA-r2-Aprime.md R-A1", "F09"], "R2_DEPENDENT": "no", "R2_reason": "schema rule", "confidence": "not stated"},
-  {"id": "H11", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Non-occurrence from absence; use NOT-EVIDENCED-IN-CAPTURE.", "sources": ["D13", "F09", "F10"], "R2_DEPENDENT": "no", "R2_reason": "task prohibition applied", "confidence": "not stated"},
-  {"id": "H12", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "A decision order or entry into force read from recording order.", "sources": ["A07", "G05"], "R2_DEPENDENT": "no", "R2_reason": "text-derived", "confidence": "reviewed"},
-  {"id": "H13", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "A fixed status of R-89 (in force or not), a resolution of R-94, or a C1 stronger than 'moderate / WEAK, n=1, contested'.", "sources": ["E01", "E02", "E03", "F07"], "R2_DEPENDENT": "yes", "R2_reason": "E02/E03 rest on coded records", "confidence": "as in E01–E03"},
-  {"id": "H14", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "That an independent norm-state observable exists, or that none exists.", "sources": ["D04", "F06"], "R2_DEPENDENT": "no", "R2_reason": "scoping result", "confidence": "NOT_DETERMINABLE"},
-  {"id": "H15", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "That D1 is sufficient; or that RETURN-02 discharges the R2 condition on D1.", "sources": ["D03", "B09"], "R2_DEPENDENT": "yes", "R2_reason": "D1 rests on A′ coding", "confidence": "not validated", "changed_in_r1": ["O-R4"]},
-  {"id": "H16", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Corpus completeness, or cross-family reliability of the coding. In particular, R4 may not read RETURN-02's κ = 1.000 as cross-family reliability, as evidence against correlated error, or as Gate 1 closure, and may not assume that free-text coded fields reproduce (even within family).", "sources": ["F11", "F12", "G02", "B09", "B10"], "R2_DEPENDENT": "yes", "R2_reason": "R2 (cross-family) outstanding", "confidence": "NOT SHOWN / cross-family UNKNOWN", "changed_in_r1": ["H-4", "O-R7"]},
-  {"id": "H17", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Evidential weight for absent STRICT witnesses.", "sources": ["D14"], "R2_DEPENDENT": "yes", "R2_reason": "instrument defect in the coded pipeline", "confidence": "formal reasoning"},
-  {"id": "H18", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Support aggregated across the ACT and NORM datasets: support is computed separately per dataset and never aggregated.", "sources": ["G04", "SCHEMA-r2-Aprime.md §5"], "R2_DEPENDENT": "no", "R2_reason": "schema rule", "confidence": "not stated", "new_in_r1": "H-3"},
-  {"id": "H19", "section": "H", "level": "L2", "kind": "MAY_NOT", "statement": "Host membership (repository access) as normative capability.", "sources": ["G07"], "R2_DEPENDENT": "no", "R2_reason": "review erratum", "confidence": "review erratum", "new_in_r1": "O-F3"}
+  {
+   "id": "A01",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-72 (dated 2026-08-02) authorizes WP-4B 'provided its authorization package demonstrates executable scope and no unresolved governance blockers remain. THAT PROVISO IS NOT MET TODAY, SO IMPLEMENTATION DOES NOT BEGIN' … 'when they land, engineering proceeds RED → GREEN → VERIFY → acceptance evidence'. Also: 'WP-4C AND WP-4D ARE EXPRESSLY NOT AUTHORIZED. Each is to be authorized from IMPLEMENTATION EVIDENCE rather than roadmap intent, after its predecessor is accepted.' Adopted correction (not a quote): R-72's 'no RED begins' is a snapshot of 08-02, and the standing norm is the conditional; it must not be read as a standing ban.",
+   "quoted_via": "the R10 span 'THAT PROVISO … DOES NOT BEGIN' as recorded in RECORDS.json R10; all other quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)",
+   "sources": [
+    "RECORDS.json R10",
+    "CONFORMANCE-ANSWER.md Candidate 1 §1; Candidate 2 step 1",
+    "CONFORMANCE-RECONCILIATION.md 'Corrections adopted'",
+    "CONFORMANCE-REVIEW.md §2 (as reported by REVIEW-r0 L-3; not in this directory)"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text; R2 re-codes spans, it does not change them",
+   "confidence": "SOURCE_FACT (second-hand quote); correction: adopted (CONFORMANCE-RECONCILIATION)",
+   "changed_in_r1": [
+    "P4",
+    "L-3"
+   ]
+  },
+  {
+   "id": "A02",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-77 (2026-08-03): 'R-73–R-76 stand · WP-4B's authorization (R-72) stands · … AND WP-4B REMAINS BLOCKED: … IT DOES NOT GIVE `ContestedOutcomeRef` AN INBOUND PATH'. R-76 (2026-08-03): the scope ambiguity 'IS CLOSED'.",
+   "quoted_via": "as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)",
+   "sources": [
+    "CONFORMANCE-ANSWER.md Candidate 1 §1"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT (second-hand quote)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A03",
+   "section": "A",
+   "level": "L0",
+   "statement": "Commit 6a67da5d7: 'Date: 2026-08-03 16:10:37 +0200 / Subject: test(adjudication): WP-4B RED -- the conclude-to-issue seam and its redrive'. Its message says 'GREEN not attempted: three producers are absent and the two Board acts are outstanding' and cites 'approved decision (R-72 authorization, R-76 scope)'. The span has no Author line (CODING.json R11 notes).",
+   "quoted_via": "Date/Subject as recorded in RECORDS.json R11; the message quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)",
+   "sources": [
+    "RECORDS.json R11",
+    "CODING.json R11 notes",
+    "CONFORMANCE-ANSWER.md Candidate 1 §3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT (partly second-hand quote)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A04",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-79 (2026-08-03): 'WP-8 MAY BE PLANNED AND MUST NOT BE STARTED'; 'It authorizes nothing'; 'ENGINEERING IS READY AND NOT EXECUTABLE'. R-80: 'authorized read as executable (R-72's unmet proviso)'. (The R-79 heading quoted in r0 is moved to A16.)",
+   "quoted_via": "the R12 span as recorded in RECORDS.json R12; the other quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)",
+   "sources": [
+    "RECORDS.json R12",
+    "CONFORMANCE-ANSWER.md Candidate 1 §1"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT (partly second-hand quote)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A05",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-86 (2026-08-04): 'Decision Authority confirms and adopts R-81 through R-85 without amendment'; 'These become governing rulings effective immediately'; 'engineering is AUTHORIZED to execute R-81's per-process isolation, R-84's §12 reconcile …'; 'Engineering is authorized to resume implementation …'; 'Any future ruling issued by the ARB Chief remains PREPARED, NOT ADOPTED, until the Decision Authority acts on it.'",
+   "quoted_via": "R02 and R36 spans as recorded in RECORDS.json; 'These become governing rulings effective immediately' as quoted by CODING.json R02 status and CONFORMANCE-ANSWER.md; the remaining quotes as quoted by CONFORMANCE-ANSWER.md (from SOURCES.md, not in this directory)",
+   "sources": [
+    "RECORDS.json R02, R36",
+    "CODING.json R02 norm.status",
+    "CONFORMANCE-ANSWER.md Candidate 1 §1, §2; Candidate 2 step 3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT (partly second-hand quote)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A06",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-89: 'WP-4C-1 AUTHORIZED TO PLAN AND IMPLEMENT — … ARB CHIEF (PREPARED)' and 'PROVENANCE: ISSUED BY THE ARB CHIEF — PREPARED, NOT ADOPTED … this ruling awaits the Decision Authority'. It cites '(R-88)' and 'R-88's adoption was a SINGLE ACT', and says '§WP-4 remains OPEN'. R-88 cites 'Per R-86 and R-87'. Per the coder (CODING.json R05 notes), the R-90 withdrawal quotes the Authority: 'R-89 already governs authorization'.",
+   "quoted_via": "the R05 span as recorded in RECORDS.json R05; PROVENANCE, 'SINGLE ACT' and 'Per R-86 and R-87' as quoted by CONFORMANCE-ANSWER.md; '(R-88)' as quoted by CONFORMANCE-CASE.json c2; '§WP-4 remains OPEN' and 'R-89 already governs authorization' as quoted by IDENTIFIABILITY.json P7 and CODING.json R05 notes",
+   "sources": [
+    "RECORDS.json R05",
+    "CODING.json R05 notes",
+    "CONFORMANCE-ANSWER.md Candidate 2",
+    "CONFORMANCE-CASE.json c2",
+    "IDENTIFIABILITY.json P7"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT (partly second-hand quote)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A07",
+   "section": "A",
+   "level": "L0",
+   "statement": "Recording times (not decision times): R-77 15:28:34 and R-79 15:47:45 on 2026-08-03; R-87 01:47:00, R-88 01:54:24 and R-89 02:08:48 on 2026-08-04. R-80 has no timeline entry.",
+   "quoted_via": "as reported by CONFORMANCE-ANSWER.md (the recording timeline itself is not in this directory); R-80's missing entry as stated by CONFORMANCE-CASE.json timeline_lesson",
+   "sources": [
+    "CONFORMANCE-ANSWER.md Candidate 1 §2; Candidate 2 step 2",
+    "CONFORMANCE-CASE.json timeline_lesson",
+    "CONFORMANCE-REVIEW.md §3 (not in this directory)"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "recorded timeline, not a coding",
+   "confidence": "SOURCE_FACT (recording time only; second-hand)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A08",
+   "section": "A",
+   "level": "L0",
+   "statement": "Session log S0804-L576, section 'WP-4C-2 — commission closed, handed to the domain owner' (RECORDS.json R06/R07; not the R-90 register row): 'Then R-90 itself withdrawn before adoption, because the Authority ruled it was operational acceptance rather than a constitutional decision — the register holds constitutional decisions.' R-90 register row (R25): 'THE NUMBER R-90 IS RETIRED AND MUST NOT BE REUSED.' R-91 register row (R03): 'HELD 2026-08-04 — NOT ADOPTED, AND NOT ELIGIBLE FOR ADOPTION AS ISSUED …'.",
+   "sources": [
+    "RECORDS.json R03, R06, R07, R25"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT",
+   "changed_in_r1": [
+    "P2"
+   ]
+  },
+  {
+   "id": "A09",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-94: 'superseding would blur chronology'; 'ANNOTATE is adopted.'; it records 'Executed at IMPLEMENTATION_PROGRESS.md:58'. (The coder statements on R-94's heading and PREPARED tag are moved to A14.)",
+   "quoted_via": "the R29/R30 spans as recorded in RECORDS.json; 'Executed at IMPLEMENTATION_PROGRESS.md:58' as quoted by IDENTIFIABILITY.json P2 and CODING.json R30 status",
+   "sources": [
+    "RECORDS.json R29, R30",
+    "CODING.json R30 status",
+    "IDENTIFIABILITY.json P2"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT (partly second-hand quote)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "A10",
+   "section": "A",
+   "level": "L0",
+   "statement": "Slice-7 texts. R-47: 'First authorized activity: RED at 7A'; '7B and 7C are NOT authorized and follow their own gates'. R-56 (a recording note marked not part of the ruling): 'Execution of 7B is a SEPARATE act and has NOT been issued'. R-58: 'Engineering is authorized to begin Slice 7B RED on keystones K1–K10 …'; 'Slice 7C remains unauthorized'. R-65: 'Slice 7C AUTHORIZED; engineering may begin RED'.",
+   "sources": [
+    "RECORDS.json R13, R14, R31, R32, R33, R34",
+    "CODING.json R31 notes"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT"
+  },
+  {
+   "id": "A11",
+   "section": "A",
+   "level": "L0",
+   "statement": "Execution reports in register and log text, all uncoded: 'Executed at IMPLEMENTATION_PROGRESS.md:58'; 'Container resolution executed and reproduced'; the grep in R-83; 'first checklist execution the same day caught a second instance' (R-41); R-86 'engineering waiting solely on a constitutional act'; S0804 'Nothing implemented this turn by the review's own instruction'. Provenance: this list is IDENTIFIABILITY P2/P6's, not H5 §3's. The R-86 and S0804 entries come from P2 only; H5 §3's S0815 reports are in A15.",
+   "quoted_via": "as quoted by IDENTIFIABILITY.json P2, P6 (primary texts not in this directory)",
+   "sources": [
+    "IDENTIFIABILITY.json P2, P6",
+    "STATE.md"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text; uncoded",
+   "confidence": "SOURCE_FACT (second-hand quote)",
+   "changed_in_r1": [
+    "P3",
+    "P4"
+   ]
+  },
+  {
+   "id": "A12",
+   "section": "A",
+   "level": "L0",
+   "statement": "The other A′ spans (R-81 annotation, R-60, R-36 matrix rows, R-41, R-77 on ADR-T14, R-83 on §12, S0815 'NOT promoted to methodology — single occurrence, and ES-006.1 forbids promoting from one.') are recorded verbatim in RECORDS.json and not restated here.",
+   "sources": [
+    "RECORDS.json R01, R08, R09, R15–R23, R26, R27"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT"
+  },
+  {
+   "id": "A13",
+   "section": "A",
+   "level": "L0",
+   "statement": "R-70 (RECORDS.json R04, section '## R-70'): 'WP-7B-R1 AUTHORIZED TO IMPLEMENT — Execution Governance · Authorization · ARB.' Under R-A1 the span does not show that implementation began (see F09).",
+   "sources": [
+    "RECORDS.json R04",
+    "CODING.json R04 notes"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text",
+   "confidence": "SOURCE_FACT",
+   "new_in_r1": "O-F4"
+  },
+  {
+   "id": "A14",
+   "section": "A",
+   "level": "L1",
+   "statement": "Coder statements on R-94, not quotes: R-94's heading names the ARB CHIEF (CODING.json R29/R30 actor status, INFERENCE), and R-94 'carries no PREPARED tag and says it was executed' (CODING.json R30 notes). Moved from A09.",
+   "sources": [
+    "CODING.json R29, R30 status and notes"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "the coder's A′ status fields and notes, which R2 would re-code",
+   "confidence": "INFERENCE (coder); same-family",
+   "new_in_r1": "P4",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "A15",
+   "section": "A",
+   "level": "L0",
+   "statement": "S0815 (session log, 2026-08-15) execution and remediation reports, all uncoded: O-CLOSURE-VOCAB leads to the 'BINDING VOCABULARY RULING' and then 'Applied immediately'; O-CLOSURE-VOCAB is 'Recommended as its own work item'; 'E-2 is CORRECTED (seq 18)'; a forbidden headline is 'corrected, not defended'. These are the S0815 reports of H5 §3 and READINESS E3; per IDENTIFIABILITY P8 all go through an act and fit both hypotheses.",
+   "quoted_via": "as quoted by IDENTIFIABILITY.json P3, P8 (primary text not in this directory)",
+   "sources": [
+    "IDENTIFIABILITY.json P3, P8",
+    "H5-ADOPTED.md §3",
+    "READINESS-RECONCILIATION.md E3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim source text; uncoded",
+   "confidence": "SOURCE_FACT (second-hand quote)",
+   "new_in_r1": "P3"
+  },
+  {
+   "id": "A16",
+   "section": "A",
+   "level": "L1",
+   "statement": "R-79's heading as carried in r0, 'WP-8 DEFERRED PENDING CLOSURE OF §WP-4 — … Directive · ARB'. Its quoting file (CODING-REVIEW.json, corrected R12) is not in this directory, so it cannot be checked here and is not held at L0. Moved from A04.",
+   "sources": [
+    "CODING-REVIEW.json corrected R12 (not in this directory; carried from r0)"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "source text, not a coding",
+   "confidence": "not verifiable in this directory",
+   "new_in_r1": "P4"
+  },
+  {
+   "id": "B01",
+   "section": "B",
+   "level": "L1",
+   "statement": "36 A′ span records were coded. R24, R28 and R35 have NO SOURCE SPAN AVAILABLE. The review found 0 violations of R-A1..R-A3, no suppression and 25 corrections. Reviewer datasets: ACT n=26, NORM n=31, overlap 24. CODING-REVIEW's 'uncertain' list has 13 entries covering 19 records (one entry, R15–R21, covers 7): R01, R03, R05, R06, R07, R08, R12, R13, R15–R21, R25, R27, R29, R31.",
+   "return02_note": "Dataset membership (24 both / 7 NORM-only / 2 ACT-only / 3 neither, consistent with 26/31/24) was reproduced exactly within family (B09). Untested across families.",
+   "sources": [
+    "CODING.json",
+    "SUPPORT-RECONCILIATION.md header table",
+    "CODING-REVIEW.json datasets_reviewer, uncertain, corrected (not in this directory; uncertain count as reported by REVIEW-r0 P1)",
+    "RETURN-02-COMPARISON.json membership"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "these are the codings R2 re-codes",
+   "confidence": "reviewer counts; same-family",
+   "changed_in_r1": [
+    "P1",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "B02",
+   "section": "B",
+   "level": "L1",
+   "statement": "Under A′ coding and normalization, ACT is 23+ / 1−, so act-level contrasts cannot be tested on this coded dataset. The pipeline removed negatives: the R06/R07 merge deleted the only same-operation ACT negative. This rests on the defects and normalization in B08.",
+   "return02_note": "Rests on operation, actor and target fields and on the 1ay-n normalization. RETURN-02 gives no reproducibility evidence for these fields, even within family (free-text exact match 11–23/36, no semantic comparison; B10).",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md 'What the chain establishes'; defect 2",
+    "STATE.md"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "counts depend on the codings",
+   "confidence": "descriptive, same-family",
+   "changed_in_r1": [
+    "O-F1",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "B03",
+   "section": "B",
+   "level": "L1",
+   "statement": "NORM START-EXECUTION is 5+ / 5−, with up to 12 genuine same-operation, same-actor, opposite-polarity pairs that differ in target. They are confounded with time / the authorizing ruling, and 2 are within a single ruling. This rests on the defects and normalization in B08.",
+   "return02_note": "As B02: operation/actor/target fields and 1ay-n normalization; no reproducibility evidence from RETURN-02, even within family.",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md 'What the chain establishes'"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "depends on NORM codings",
+   "confidence": "descriptive, same-family",
+   "changed_in_r1": [
+    "O-F1",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "B04",
+   "section": "B",
+   "level": "L1",
+   "statement": "The same target flips polarity across successive rulings with all coded fields equal (R31 → R32; R33 → R34). 'Target alone does not index polarity; an intervening norm-making act does.' This rests on the defects and normalization in B08.",
+   "return02_note": "Equality of coded fields involves operation/actor/target fields; RETURN-02 gives no reproducibility evidence for these, even within family.",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md 'What the chain establishes'",
+    "RECORDS.json R31–R34"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "equality of coded fields is a coding result",
+   "confidence": "descriptive, same-family",
+   "changed_in_r1": [
+    "O-F1",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "B05",
+   "section": "B",
+   "level": "L1",
+   "statement": "Status mediation as self-declared: the rulings themselves declare that a Chief-prepared ruling gains force when the Decision Authority adopts it (e.g. R-86: 'These become governing rulings effective immediately'). 2 self-reported episodes. Force is 'observed' only through these declarations inside the norm-making acts, not independently of them.",
+   "return02_note": "Rests on R02's categorical act.state, which was reproduced within family (B09). Cross-family untested.",
+   "sources": [
+    "IDENTIFIABILITY.json P4",
+    "STATE.md",
+    "H5-ADOPTED.md §2"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "reconstructed from coded register rows",
+   "confidence": "n=2, self-reported",
+   "changed_in_r1": [
+    "L-1",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "B06",
+   "section": "B",
+   "level": "L1",
+   "statement": "Protocol A capture: LOCAL_REF_SET (25 refs, 4020 commits); 51 matches = 3 EXECUTION-TRACE · 47 DOC-OR-GOVERNANCE · 1 UNCLASSIFIABLE. The earliest EXECUTION-TRACE is e4724a44 at 2026-08-04T00:30:25Z, 'WP-4C-1 batch B1 -- RED for K1..K4', RECORDING_ORDER only. Further traces: 939e35dc, and cc1a3394, which is substantively WP-6 work (Protocol A limitation L1; not epistemic level L1). No conformance, hypothesis or falsifier statement is made.",
+   "sources": [
+    "PROTOCOL-A-RECONCILIATION.md evidence package; limitation L1"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "mechanical capture, not A′ coding",
+   "confidence": "PASS_WITH_LIMITATIONS",
+   "changed_in_r1": [
+    "P6"
+   ]
+  },
+  {
+   "id": "B07",
+   "section": "B",
+   "level": "L1",
+   "statement": "Protocol B: no locally checkable channel qualifies as an independent norm-in-force record (F-B1). The overlap test has almost no power, so NOT_INDEPENDENT means 'no evidence of role separation', not 'evidence of role fusion' (F-B2). The only open candidates are the host-side channels and the 23 K-SIG signatures (F-B3).",
+   "sources": [
+    "PROTOCOL-B-RECONCILIATION.md F-B1..F-B3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "mechanical capture",
+   "confidence": "PASS_WITH_LIMITATIONS"
+  },
+  {
+   "id": "B08",
+   "section": "B",
+   "level": "L1",
+   "statement": "Pipeline defects and normalization on which B02–B04 rest. Defect 3: 'Unparseable 1ax corrections were applied to junk keys and listed as applied (r1).' Defect 4: 'The mapping silently overwrote 1ax corrections (R04 about_actor).' Defect 5: 'Composite targets were not expanded: 2 of the 14 POSSIBLE are artifacts.' Defect 6: duplicate or level-mismatched fields remain (v1_a vs actor / stated_by; v1_r vs operation; v1_k derived from target; v1_s in ACT, possibly conditioned on the outcome). 1ay-n normalization: 180 values; 16 reviewer corrections (over-merges: motion vs work package; not-occurred vs occurred; disposition vs adoption); 'Usable for pairing only under stated conditions'. r3 gives NORM target 14 POSSIBLE (r3 is EXPLORATORY, defect 7).",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md header table; defects 3–7"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "defects of the coded pipeline",
+   "confidence": "disclosed defects; descriptive, same-family; r3 EXPLORATORY",
+   "new_in_r1": "O-F1",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "B09",
+   "section": "B",
+   "level": "L1",
+   "statement": "RETURN-02 (within-family re-coding; frozen comparator): a context-isolated fresh Claude subagent re-coded the 36 records; the comparator compared them with CODING.json. 36/36 ids (none missing, none extra). act.state: agreement 1.000, κ 1.000. norm.deontic: agreement 1.000, κ 1.000. Membership 24 both / 7 NORM-only / 2 ACT-only / 3 neither. UNKNOWN share 0.083 (the 3 no-span records). REF-CR = REF-C, because the 7 unapplied corrections all target *.status.* fields, which the comparator does not apply. The comparator labels itself 'symmetric comparison; Claude references are NOT ground truth'. RETURN-02 'does not show cross-family independence'; the perfect agreement 'is not evidence against correlated error'. Ceiling: at most 'within-family reproducibility of act.state / norm.deontic / membership on these 36 records is high'.",
+   "quoted_via": "numbers, ids and the 'NOT ground truth' label from RETURN-02-COMPARISON.json; the two 'does not show' / 'not evidence' quotes, the coder description, the seal 4bd42c3a5 and the comparator 178e86214 as quoted by REVIEW-r0.json / REVIEW-r0.md (RETURN-02-REVIEW.md is not in this directory)",
+   "sources": [
+    "RETURN-02-COMPARISON.json",
+    "RETURN-02-REVIEW.md frozen results (as reported by REVIEW-r0 O-R2, O-R8)"
+   ],
+   "R2_DEPENDENT": "n/a",
+   "R2_reason": "the item is itself a within-family check of the coding, not a result built on it; it is not R2",
+   "confidence": "frozen comparator; same-family",
+   "new_in_r1": "O-R2"
+  },
+  {
+   "id": "B10",
+   "section": "B",
+   "level": "L1",
+   "statement": "RETURN-02 supplementary results, NOT frozen, descriptive only (written after opening the results). All status-tag disagreements lie on the SOURCE_FACT ↔ INFERENCE boundary (act.state 29/36, norm.deontic 35/36); they are classified 'schema' and change no category. Free-text fields match exactly in only 11–23/36; no semantic comparison was done, and no claim is made about these fields.",
+   "quoted_via": "as reported by REVIEW-r0.md / REVIEW-r0.json O-R3 (RETURN-02-REVIEW.md Supplementary is not in this directory)",
+   "sources": [
+    "RETURN-02-REVIEW.md Supplementary (as reported by REVIEW-r0 O-R3)"
+   ],
+   "R2_DEPENDENT": "n/a",
+   "R2_reason": "a within-family check of the coding, not a result built on it",
+   "confidence": "NOT frozen, descriptive only; same-family",
+   "new_in_r1": "O-R3"
+  },
+  {
+   "id": "C00",
+   "section": "C",
+   "level": "L2",
+   "statement": "No regularity qualifies: 0 patterns recur across independent decision clusters, so Section C is empty. Candidates checked and kept in B/E: B04 (2 instances; the sources do not establish independent clusters; both involve R-58, since R32 and R33 are R-58 spans); B05/E04 (n=2, self-reported; IDENTIFIABILITY P4 requires ≥3 different adoption acts); B03 (confounded with time and the authorizing ruling; 2 within one ruling).",
+   "return02_note": "The B03/B04 candidates rest on operation/actor/target fields and the 1ay-n normalization, for which RETURN-02 gives no reproducibility evidence even within family. B05/E04 rest on R02's categorical act.state (reproduced within family).",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md",
+    "IDENTIFIABILITY.json draft_min_evidence P4",
+    "RECORDS.json R32, R33"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "the candidates are coding results",
+   "confidence": "not stated (application of the TASK criterion)",
+   "qualifying_clusters": 0,
+   "regularities": [],
+   "changed_in_r1": [
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D01",
+   "section": "D",
+   "level": "L2",
+   "statement": "H5: 'On the acquired evidence and within the authorized scope, the competing hypotheses H-D and H-B are non-identifiable.' Neither is falsified or validated; both are retained as unresolved alternatives. Scope qualifier: a scope/corpus limitation, relative to the evidence and the scope; not support for either hypothesis.",
+   "return02_note": "RETURN-02 does not discharge 'conditional on R2 reproducing the coding' (H5 §5.2), because H5 frames R2 as the independent (non-Claude) Gate 1 coding. The sources do not say whether RETURN-02 bears on reopening condition 3; whether a within-family check suffices is open human decision 1 (F15).",
+   "sources": [
+    "H5-ADOPTED.md §1, §4, §6",
+    "READINESS-RECONCILIATION.md"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "reopening condition 3: a defect in the A′ coding on which D1 rests",
+   "confidence": "ADOPTED by human act 2026-10-01 (F-LOG-0197); review PASS_WITH_LIMITATIONS",
+   "changed_in_r1": [
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D02",
+   "section": "D",
+   "level": "L2",
+   "statement": "Waiver: the F-LOG-0190 condition ('We do not declare non-identifiability until the bounded, genuinely informative evidence channels have been exhausted') was knowingly waived. H1 was skipped, not exhausted; Q4 was never evaluated; Protocol C is sealed and not executed.",
+   "sources": [
+    "H5-ADOPTED.md header, §0"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "a human act",
+   "confidence": "ADOPTED ('Adopt H5, waive 0190')"
+  },
+  {
+   "id": "D03",
+   "section": "D",
+   "level": "L2",
+   "statement": "D1 is a necessary, not sufficient, condition for discrimination: an observable of norm state, independent of the norm-maker, the executor and the self-asserting ruling. Discrimination additionally requires a mapping to the target at t, and a state that one hypothesis predicts and the other excludes. On the acquired evidence D1 holds: work evidence cannot separate 'the norm changed without a recorded act' from 'the work violated an unchanged norm'. Derived on this corpus by a same-family analysis; not validated.",
+   "return02_note": "As D01: RETURN-02 does not discharge the R2 condition; open human decision 1.",
+   "sources": [
+    "H5-ADOPTED.md §1, §5.2",
+    "READINESS-RECONCILIATION.md sealed verdict, E5"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "D1 rests on the A′ coding (H5 §5.3, §6 condition 3)",
+   "confidence": "'not a validated formal condition'; d1_broken false only 'not on the acquired evidence'",
+   "changed_in_r1": [
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D04",
+   "section": "D",
+   "level": "L2",
+   "statement": "Whether an independent norm-state observable exists anywhere is NOT_DETERMINABLE.",
+   "sources": [
+    "READINESS-RECONCILIATION.md",
+    "H5-ADOPTED.md §1"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "a capture/scoping result",
+   "confidence": "review PASS_WITH_LIMITATIONS"
+  },
+  {
+   "id": "D05",
+   "section": "D",
+   "level": "L2",
+   "statement": "P1 (norms change only through acts): NON-IDENTIFIABLE, favours neither. Every observed change goes from no authorization to authorization, which needs an act on either hypothesis. Under R-A3 the act and the after-state are the same record. The R-72 contingent authorization becoming operative is not observed.",
+   "sources": [
+    "IDENTIFIABILITY.json predictions_reviewed P1"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on A′-coded records and R-A3",
+   "confidence": "reviewed status",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D06",
+   "section": "D",
+   "level": "L2",
+   "statement": "P2 (work conforms): CONFOUNDED, a candidate anomaly against H-B, n=1 (see E01).",
+   "sources": [
+    "IDENTIFIABILITY.json P2"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "framed on coded R11",
+   "confidence": "reviewed status",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D07",
+   "section": "D",
+   "level": "L2",
+   "statement": "P3 (feedback): NON-IDENTIFIABLE; H-D accommodates acts that cite evidence.",
+   "sources": [
+    "IDENTIFIABILITY.json P3"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded records",
+   "confidence": "reviewed status",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D08",
+   "section": "D",
+   "level": "L2",
+   "statement": "P4 (status mediation): NON-IDENTIFIABLE as a discriminator; H-D's clause is corroborated, n=2, by self-report (see E04, now also L2).",
+   "return02_note": "Rests on R02's categorical act.state, reproduced within family (B09); cross-family untested.",
+   "sources": [
+    "IDENTIFIABILITY.json P4"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded records",
+   "confidence": "reviewed status",
+   "changed_in_r1": [
+    "L-2",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D09",
+   "section": "D",
+   "level": "L2",
+   "statement": "P5 (capability): NON-IDENTIFIABLE as a discriminator; H-B is silent (see E03).",
+   "sources": [
+    "IDENTIFIABILITY.json P5"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded records",
+   "confidence": "reviewed status",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D10",
+   "section": "D",
+   "level": "L2",
+   "statement": "P6 (record content): NON-IDENTIFIABLE. H-B's prediction is met at every boundary, and H-D permits it.",
+   "sources": [
+    "IDENTIFIABILITY.json P6"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "kept yes conservatively: P6 rests mainly on uncoded execution reports (A11) and on the hypotheses' text, not on A′ codings",
+   "confidence": "reviewed status",
+   "changed_in_r1": [
+    "T-3"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D11",
+   "section": "D",
+   "level": "L2",
+   "statement": "P7 (outcome-gated authorization): CONFOUNDED with R-89's status. On act versus no act it reduces to P1 (see E02).",
+   "sources": [
+    "IDENTIFIABILITY.json P7"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded R05",
+   "confidence": "reviewed status",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D12",
+   "section": "D",
+   "level": "L2",
+   "statement": "P8 (remediation): NON-IDENTIFIABLE. The corpus window runs to 2026-08-15 (S0815), not 2026-08-04.",
+   "sources": [
+    "IDENTIFIABILITY.json P8"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "kept yes conservatively; P8 rests mainly on a corpus-window limitation and on uncoded S0815 reports (A15). F10, from the same P8 content, is now also yes (T-2)",
+   "confidence": "reviewed status",
+   "changed_in_r1": [
+    "T-2"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D13",
+   "section": "D",
+   "level": "L2",
+   "statement": "No prediction is IDENTIFIED, and neither hypothesis is favoured; they 'come close to being nested'. Only two kinds of observation could separate them: (i) a verified norm change with no act, of which 'The corpus has no case' (NOT-EVIDENCED-IN-CAPTURE); (ii) verified non-conformance or verified absence of feedback, which has two confounded candidates (R11; R-89).",
+   "sources": [
+    "IDENTIFIABILITY.json discriminating_observation_types"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded records",
+   "confidence": "reviewed",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D14",
+   "section": "D",
+   "level": "L2",
+   "statement": "Method result: STRICT witnesses are unreachable by construction, so 'no strict witness' carries no evidential weight. 'Act-level guards non-identifiable' is valid only under this coding and pipeline, not 'in the corpus'. r3 is EXPLORATORY. Defects 3–6 and the normalization are in B08; the methodological conclusion is D15.",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md defects 1, 2, 7 (3–6: B08)"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "explicitly coding/pipeline-relative",
+   "confidence": "formal reasoning; r3 EXPLORATORY",
+   "changed_in_r1": [
+    "O-F1"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "D15",
+   "section": "D",
+   "level": "L2",
+   "statement": "Methodological conclusion: 'The inherited strict single-variable pair-witness method (v1 R3, carried into 1ay) is inadequate for this corpus.' The informative structure is dynamic: the discriminating signal is 'polarity changed by an intervening act', a transition, not a static variable.",
+   "sources": [
+    "SUPPORT-RECONCILIATION.md 'Methodological conclusion'"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "drawn from the coded pipeline results (B02–B04, D14)",
+   "confidence": "INFERENCE; the reviewer concurs on the substance",
+   "new_in_r1": "O-F5",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "E01",
+   "section": "E",
+   "level": "L1",
+   "statement": "WP-4B RED (commit A03 against A01/A02): NON-CONFORMS (1ba reviewer: 'NON-CONFORMS, moderate, text-robust'). 'C1 is the first discriminating observation of type (ii)'.",
+   "direction": "weakly against H-B's conformance clause. It refutes only a universal 'all recorded work conforms'; no frequency claim; does not show decoupling. H-D makes no prediction.",
+   "n": 1,
+   "confound": "Contested reading of the proviso: does the R-77 block (inbound path) cover producer-agnostic RED tests? Texts of R-73..R-75 are missing; R-80's timing is unknown; R-79 is a WP-8 directive (corroboration only). Adopted correction: R-72's 'no RED begins' is a snapshot of 08-02 and the standing norm is the conditional (A01). Only disclosed RED test code was written; R-87's later acceptance does not ratify the start. IDENTIFIABILITY P2 had labelled it CONFOUNDED.",
+   "alternative_reading": "CONFORMS or UNDETERMINED: R-72 'when they land, engineering proceeds RED'; R-73..R-76 had landed; R-78 reframes the remainder as implementation-delivery; R-86 'resume implementation'/'Batch 7'; R-87 accepted WP-4B without flagging the start.",
+   "sources": [
+    "CONFORMANCE-RECONCILIATION.md C1, 'Corrections adopted', 'Bearing'",
+    "CONFORMANCE-CASE.json c1_non_conformance, bearing.c1",
+    "CONFORMANCE-REVIEW.md §6, §7 (not in this directory)",
+    "IDENTIFIABILITY.json P2",
+    "H5-ADOPTED.md §4"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "1ba read source text (SOURCES.md), not A′ codings; still same-family (G02)",
+   "confidence": "verdict moderate, text-robust; bearing WEAK",
+   "changed_in_r1": [
+    "P5",
+    "L-3"
+   ]
+  },
+  {
+   "id": "E02",
+   "section": "E",
+   "level": "L1",
+   "statement": "R-89 / WP-4C-1: candidate non-conformance of an authorization with R-72's acceptance gate.",
+   "direction": "Both directions, both conditional and unresolved: (a) against H-B, if R-89 took force (H5 §4); (b) a possible falsifier of H-D's status clause (IDENTIFIABILITY P4 falsifier_HD: 'A ruling that stays PREPARED, with a complete adoption log showing no adoption, yet is cited as governing authority or has work executed under it (R-89 is the candidate)'). P4's critique notes that the Authority's own 'R-89 already governs authorization' may itself be the adoption.",
+   "n": 1,
+   "confound": "R-89's status: 'PREPARED, NOT ADOPTED' with no adoption annotation in the sources, versus the Authority's 'R-89 already governs authorization' (which may itself be the adoption). The sources diverge on ordering: IDENTIFIABILITY P7 says R-89 'very probably authorized WP-4C-1 before WP-4B was accepted' (INFERENCE); 1ba C2 orders R-87 < R-88 < R-89 by text. C2 also relies on R-89's self-certified 'seven checks', which were not independently verified (CONFORMANCE-REVIEW.md §5, as reported by REVIEW-r0; not in this directory). Not resolved here.",
+   "alternative_reading": "C2 CONFORMS (qualified): a conforming draft, not in force, bearing on neither hypothesis. Under the strict reading of 'IMPLEMENTATION EVIDENCE' it is UNDETERMINED; 'not applicable' is also offered.",
+   "return02_note": "Rests on R05's operation (a free-text field, and an uncertainty entry). Identical within-family categorical codes do not resolve the CODING-REVIEW uncertainty entry; shared priors would produce the same agreement.",
+   "sources": [
+    "IDENTIFIABILITY.json P4, P7",
+    "CONFORMANCE-RECONCILIATION.md C2",
+    "CONFORMANCE-CASE.json c2",
+    "CONFORMANCE-ANSWER.md Candidate 2",
+    "H5-ADOPTED.md §4",
+    "CONFORMANCE-REVIEW.md §5 (as reported by REVIEW-r0 O-F6)"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "the P7 framing rests on coded R05; the C2 text order does not",
+   "confidence": "P7 'INFERENCE, strongly supported'; C2 'moderate-high (qualified)'; H-D direction: unresolved",
+   "changed_in_r1": [
+    "S-1",
+    "O-F6",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "E03",
+   "section": "E",
+   "level": "L1",
+   "statement": "R-94: a Chief disposition recorded as adopted and executed with no PREPARED tag (A09, A14).",
+   "direction": "a candidate falsifier of H-D (capability clause). H-B is silent (P5: falsifier_HB 'None (H-B is silent)').",
+   "n": 1,
+   "confound": "Does a delivery disposition by the Chief need Decision Authority adoption? R-86 says Chief rulings stay PREPARED until the DA acts, yet R-94 has no PREPARED tag and records execution. Left unresolved in the coding. R29 (supersede refused) is a 'hard case'.",
+   "alternative_reading": "A scope question per R-90 (operational acceptance is not a constitutional decision), so no capability breach.",
+   "return02_note": "Rests on R29/R30. Identical within-family categorical codes do not resolve the uncertainty entry on R29.",
+   "sources": [
+    "IDENTIFIABILITY.json P5",
+    "CODING.json R29, R30 notes",
+    "H5-ADOPTED.md §4"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded R29/R30",
+   "confidence": "open",
+   "changed_in_r1": [
+    "S-2",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "E04",
+   "section": "E",
+   "level": "L2",
+   "statement": "P4 status mediation (B05).",
+   "direction": "corroborates H-D's status clause; does not discriminate (H-B does not deny it and has no P4 falsifier)",
+   "n": 2,
+   "confound": "Force is 'observed' only through declarations inside the norm-making acts, the same kind of evidence that was rejected for P1.",
+   "alternative_reading": "Consistent with both hypotheses. R-89 remains an unresolved possible falsifier of H-D (E02 direction b).",
+   "return02_note": "Rests on R02's categorical act.state, reproduced within family (B09); cross-family untested.",
+   "sources": [
+    "IDENTIFIABILITY.json P4",
+    "STATE.md",
+    "H5-ADOPTED.md §4"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "rests on coded rows",
+   "confidence": "n=2, self-reported",
+   "changed_in_r1": [
+    "L-2",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "F01",
+   "section": "F",
+   "level": "L1",
+   "statement": "H5 §3 gap: host-side records (PR approvals, branch protection, rulesets, CI runs, repository events) were not examined, by human decision. Protocol C is sealed, SAFE TO RUN, and not executed. Its stated limits: current state only; events retention is an unverified assumption; Q3 defaults to INDEPENDENCE_NOT_DETERMINABLE; Q2 needs an API relation to e4724a44 or its PR. The '< 10%' expected gain is a main-analyst estimate, not reviewed.",
+   "sources": [
+    "H5-ADOPTED.md §3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "scope decision",
+   "confidence": "disclosed gap"
+  },
+  {
+   "id": "F02",
+   "section": "F",
+   "level": "L1",
+   "statement": "H5 §3: signer verification was declined (H2 = NO). The signer kind of the 23 K-SIG headers is undetermined.",
+   "sources": [
+    "H5-ADOPTED.md §3",
+    "PROTOCOL-B-RECONCILIATION.md F-B3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "scope decision",
+   "confidence": "disclosed gap"
+  },
+  {
+   "id": "F03",
+   "section": "F",
+   "level": "L1",
+   "statement": "H5 §3: the content of status, register, CI and hook files was not read (existence and metadata only), nor the K-CI/K-HOOK enforcement history.",
+   "sources": [
+    "H5-ADOPTED.md §3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "scope",
+   "confidence": "disclosed gap"
+  },
+  {
+   "id": "F04",
+   "section": "F",
+   "level": "L1",
+   "statement": "H5 §3: IMPLEMENTATION_PROGRESS.md:58 was not acquired. H5 §3's further execution reports (R-83 grep, 'Container resolution executed', R-41, S0815) are uncoded: the first three are in A11, the S0815 reports are in A15. A11's R-86 and S0804 entries come from IDENTIFIABILITY P2, not from H5 §3.",
+   "sources": [
+    "H5-ADOPTED.md §3",
+    "READINESS-RECONCILIATION.md E3",
+    "IDENTIFIABILITY.json P2, P3, P8"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "not acquired / not coded",
+   "confidence": "disclosed gap",
+   "changed_in_r1": [
+    "P3"
+   ]
+  },
+  {
+   "id": "F05",
+   "section": "F",
+   "level": "L1",
+   "statement": "H5 §3: self-contamination (the A and B captures predate R-SELF and are not re-run); corpora outside this repository were not examined.",
+   "sources": [
+    "H5-ADOPTED.md §3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "scope",
+   "confidence": "disclosed gap"
+  },
+  {
+   "id": "F06",
+   "section": "F",
+   "level": "L1",
+   "statement": "Missing fact: 'Does a record kept by someone other than the norm-maker, the executor or the self-asserting ruling attest the norm state of a register target at a stated time t?' Motivating instance: was WP-4C-1 authorized or blocked at its earliest recorded execution trace, 2026-08-04T00:30:25Z (RECORDING_ORDER)?",
+   "sources": [
+    "READINESS-RECONCILIATION.md"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "R2 cannot supply this observable (H5 §5.3)",
+   "confidence": "NOT_DETERMINABLE"
+  },
+  {
+   "id": "F07",
+   "section": "F",
+   "level": "L1",
+   "statement": "R-89 adoption: UNKNOWN (no adoption act was found in the sources).",
+   "sources": [
+    "CODING.json R05 notes",
+    "CONFORMANCE-ANSWER.md Candidate 2 step 3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "missing record, not a coding",
+   "confidence": "UNKNOWN"
+  },
+  {
+   "id": "F08",
+   "section": "F",
+   "level": "L1",
+   "statement": "For C1: the text of R-73..R-75 and R-81..R-85; the hour of decision of R-77 and R-79; R-80's timing; any act decided before 16:10 that is absent from SOURCES.",
+   "sources": [
+    "CONFORMANCE-ANSWER.md Candidate 1 UNKNOWN",
+    "CONFORMANCE-CASE.json timeline_lesson",
+    "CONFORMANCE-REVIEW.md §3 (not in this directory)"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "missing records",
+   "confidence": "UNKNOWN"
+  },
+  {
+   "id": "F09",
+   "section": "F",
+   "level": "L1",
+   "statement": "Execution under the authorizations R-70 (R04, A13), R-47 (R13), R-58 (R32), R-65 (R34) and R-86 (R36), and WP-8 planning (R12): NOT-EVIDENCED-IN-CAPTURE in the coded spans (R-A1).",
+   "sources": [
+    "CODING.json R04, R12, R13, R32, R34, R36 notes"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "stated in coding notes",
+   "confidence": "NOT-EVIDENCED-IN-CAPTURE",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "F10",
+   "section": "F",
+   "level": "L1",
+   "statement": "Any R-91 remediation after 2026-08-04: NOT-EVIDENCED-IN-CAPTURE (a corpus limitation).",
+   "sources": [
+    "IDENTIFIABILITY.json P8"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "aligned with D12 (same P8 content), conservatively: P8 is mainly a corpus-window limitation, but its NON-IDENTIFIABLE reading draws on the coded corpus",
+   "confidence": "NOT-EVIDENCED-IN-CAPTURE",
+   "changed_in_r1": [
+    "T-2"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "F11",
+   "section": "F",
+   "level": "L1",
+   "statement": "Capture completeness against the host: NOT SHOWN (local refs only).",
+   "sources": [
+    "PROTOCOL-A-RECONCILIATION.md",
+    "PROTOCOL-B-RECONCILIATION.md"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "capture scope",
+   "confidence": "NOT SHOWN"
+  },
+  {
+   "id": "F12",
+   "section": "F",
+   "level": "L1",
+   "statement": "Cross-family reproduction of the A′ codings (R2): UNKNOWN; Gate 1 proper is unsatisfied, and whether a non-Claude coder is still commissioned is open human decision 1 (F15). Within-family reproduction (RETURN-02, B09) is exact on act.state, norm.deontic and membership; free-text fields are unassessed (B10). CODING-REVIEW's 13 uncertainty entries cover 19 records; the within-family coder gave them identical categorical codes, which does not resolve them.",
+   "sources": [
+    "H5-ADOPTED.md header, §5.3",
+    "RETURN-02-COMPARISON.json",
+    "RETURN-02-REVIEW.md (as reported by REVIEW-r0 O-R1, O-R5)",
+    "CODING-REVIEW.json uncertain (not in this directory; count per REVIEW-r0 P1)"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "this is R2",
+   "confidence": "cross-family: UNKNOWN; within-family: frozen comparator, same-family",
+   "changed_in_r1": [
+    "P1",
+    "O-R1",
+    "O-R5"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "F13",
+   "section": "F",
+   "level": "L1",
+   "statement": "R24, R28, R35: NO SOURCE SPAN AVAILABLE.",
+   "sources": [
+    "RECORDS.json",
+    "CODING.json"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "no span exists",
+   "confidence": "UNKNOWN"
+  },
+  {
+   "id": "F14",
+   "section": "F",
+   "level": "L1",
+   "statement": "Author classes (READINESS erratum E2): S0804's author class is unknown (it is a session log, not a ruling). Author classes assigned by path construction (A4, B1) are unknown.",
+   "sources": [
+    "READINESS-RECONCILIATION.md errata E2"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "capture/scoping result",
+   "confidence": "UNKNOWN",
+   "new_in_r1": "O-F3"
+  },
+  {
+   "id": "F15",
+   "section": "F",
+   "level": "L1",
+   "statement": "Open human decision 1: the basis for Gate 1, i.e. close Gate 1 on the within-family basis (RETURN-02), or still commission a non-Claude coder. Until decided, R2 (cross-family) is outstanding and this record stays PROVISIONAL.",
+   "sources": [
+    "RETURN-02-REVIEW.md 'Open for human decision' (as reported by REVIEW-r0 O-R6)"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "a pending human act",
+   "confidence": "OPEN (human decision)",
+   "new_in_r1": "O-R6"
+  },
+  {
+   "id": "F16",
+   "section": "F",
+   "level": "L1",
+   "statement": "Open human decision 2: whether SCHEMA-r2 §3 needs a SOURCE_FACT / INFERENCE rule; the schema changes only by human decision. The epistemic-status labels, including most of CODING-REVIEW's 25 corrections ('mostly epistemic status', SUPPORT-RECONCILIATION), lie on this underspecified boundary.",
+   "sources": [
+    "RETURN-02-REVIEW.md 'Open for human decision' (as reported by REVIEW-r0 O-R6)",
+    "SCHEMA-r2-Aprime.md §3",
+    "SUPPORT-RECONCILIATION.md header table"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "a pending human act",
+   "confidence": "OPEN (human decision)",
+   "new_in_r1": "O-R6"
+  },
+  {
+   "id": "G01",
+   "section": "G",
+   "level": "L1",
+   "statement": "Corpus boundary: a register of rulings, plus a few session logs (up to S0815, 2026-08-15) and one git commit. 36 A′ spans are drawn from it, and source identity is pinned by git blob ids (SOURCE-IDENTITY.txt, which is not in this directory). Captures: local refs only (25 refs, 4020 commits); host completeness not shown.",
+   "sources": [
+    "STATE.md",
+    "SCHEMA-r2-Aprime.md header",
+    "IDENTIFIABILITY.json P8",
+    "PROTOCOL-A-RECONCILIATION.md"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "provenance fact",
+   "confidence": "not stated"
+  },
+  {
+   "id": "G02",
+   "section": "G",
+   "level": "L1",
+   "statement": "Same-family: every finding cited is same-family (Claude), including codings, reviews, RETURN-02 (RETURN-02-COMPARISON.json; RETURN-02-REVIEW.md, seal 4bd42c3a5, comparator 178e86214, as reported by REVIEW-r0) and this record. The commissioned non-Claude Gate 1 coder was replaced by human decision with a fresh Claude subagent (RETURN-02); Gate 1 proper remains unsatisfied, and whether a non-Claude coder is still commissioned is open human decision 1 (F15). R2 (as defined in the header) can only test the coding on which D1 rests; it cannot supply the missing independent observable.",
+   "sources": [
+    "H5-ADOPTED.md header, §5.3",
+    "RETURN-02-COMPARISON.json",
+    "RETURN-02-REVIEW.md header (as reported by REVIEW-r0 O-R1, O-R9)"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "exception to the rule (a status/provenance statement, not resting on codings): kept yes because its content changes with the Gate 1 decision / R2",
+   "confidence": "not stated",
+   "changed_in_r1": [
+    "O-R1",
+    "O-R9",
+    "T-4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "G03",
+   "section": "G",
+   "level": "L1",
+   "statement": "R-SELF: the recommended rule is path-based (a declared programme-artefact root, initially docs/knowledgeos/, listed in a versioned SELF-ROOTS.txt; class SELF-ARTEFACT, excluded from the classes and the earliest trace). Protocol A: 'Not applied' → human decision. 21/51 matches are programme artefacts (DOC-OR-GOVERNANCE 47 vs 27 historical); the ET set is unchanged. Protocol B: .claude/ and claude/ are not excluded. H5: the A and B captures predate R-SELF and are not re-run ('R-SELF applies forward only').",
+   "sources": [
+    "PROTOCOL-A-RECONCILIATION.md L2",
+    "PROTOCOL-B-RECONCILIATION.md disclosed limitations",
+    "H5-ADOPTED.md §3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "capture provenance",
+   "confidence": "not stated"
+  },
+  {
+   "id": "G04",
+   "section": "G",
+   "level": "L0",
+   "statement": "Instrument: A′ is an 'OBSERVATION REPRESENTATION, NOT A THEORY'. It does not assert two ontological layers, H-DEONTIC, or that governed work is out of scope; v1 records are kept unchanged. Under R-A3, act and after-state are the same record. §5: 'Support is computed separately per dataset and never aggregated.'",
+   "sources": [
+    "SCHEMA-r2-Aprime.md header, §4 R-A3, §5",
+    "IDENTIFIABILITY.json P1"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "schema text",
+   "confidence": "not stated",
+   "changed_in_r1": [
+    "H-3"
+   ]
+  },
+  {
+   "id": "G05",
+   "section": "G",
+   "level": "L1",
+   "statement": "M-TIME: recording time ≠ decision time ≠ entry into force (three time concepts that must not be equated). Recording time 'is NOT an upper bound on entry into force'; it bounds drafting (PREPARED rulings are written before adoption). Protocol A L3: 'file names are not timestamp sources' (the earliest-trace commit changes a plan file whose name implies 19:00 on 2026-08-04; every recording of it precedes that).",
+   "sources": [
+    "CONFORMANCE-RECONCILIATION.md timeline lesson",
+    "CONFORMANCE-CASE.json timeline_lesson",
+    "CONFORMANCE-REVIEW.md §3 (not in this directory)",
+    "STATE.md",
+    "PROTOCOL-A-RECONCILIATION.md L3"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "derived from register text and capture limitations, not codings",
+   "confidence": "reviewed",
+   "changed_in_r1": [
+    "O-F7"
+   ]
+  },
+  {
+   "id": "G06",
+   "section": "G",
+   "level": "L0",
+   "statement": "H-D and H-B are frozen and stated neutrally. Both accept that norm-making acts exist.",
+   "sources": [
+    "HYPOTHESES.md"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "frozen text",
+   "confidence": "frozen"
+  },
+  {
+   "id": "G07",
+   "section": "G",
+   "level": "L1",
+   "statement": "READINESS erratum E4: host membership data shows repository access, not normative capability. At most it is an input to a capability register.",
+   "sources": [
+    "READINESS-RECONCILIATION.md errata E4"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "review erratum, not a coding",
+   "confidence": "review erratum (PASS_WITH_LIMITATIONS)",
+   "new_in_r1": "O-F3"
+  },
+  {
+   "id": "G08",
+   "section": "G",
+   "level": "L1",
+   "statement": "Two sealed expectations failed: (1) 1ba bias check: 'the sealed expectation (C1 CONFORMS / UNDETERMINED) failed'; (2) 1be main-analyst sealed expectation NO 'was not confirmed', 'Recorded as a prediction miss'.",
+   "sources": [
+    "CONFORMANCE-RECONCILIATION.md 'Bias check'",
+    "READINESS-RECONCILIATION.md header table"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "provenance of sealed expectations",
+   "confidence": "not stated",
+   "new_in_r1": "O-F2"
+  },
+  {
+   "id": "H01",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY",
+   "statement": "R4 may use the L0 items (A01–A13, A15, G04, G06) with their provenance as data, including each 'as quoted by <file>' disclosure; the L1 items A14 and A16 are coder statements / unverifiable quotes, not L0 data.",
+   "sources": [
+    "A01–A16",
+    "G01"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "verbatim data",
+   "confidence": "SOURCE_FACT (partly second-hand)",
+   "changed_in_r1": [
+    "P4"
+   ]
+  },
+  {
+   "id": "H02",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY",
+   "statement": "R4 may use the A′ ACT/NORM separation as a representation, conditional on R2 (cross-family) reproducing the coding (H5 §5.2), with the R-A3 caveat: act and after-state are the same record, so P1 cannot be tested through A′ observations (D05, G04). RETURN-02 does not discharge this condition; whether a within-family check suffices is open human decision 1 (F15).",
+   "sources": [
+    "H5-ADOPTED.md §5.2",
+    "B01",
+    "D05",
+    "G04",
+    "F15"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "explicitly conditional on R2",
+   "confidence": "conditional",
+   "changed_in_r1": [
+    "H-2",
+    "O-R1",
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H03",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY",
+   "statement": "R4 may use D1 as a candidate necessary, not sufficient, non-validated condition. RETURN-02 does not discharge the R2 condition on which D1 rests.",
+   "sources": [
+    "D03"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "D1 rests on A′ coding",
+   "confidence": "not validated",
+   "changed_in_r1": [
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H04",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY",
+   "statement": "R4 may use M-TIME: recording time, decision time and entry into force are three time concepts that must not be equated (not a claim that they always differ).",
+   "sources": [
+    "G05"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "text-derived",
+   "confidence": "reviewed",
+   "changed_in_r1": [
+    "H-1"
+   ]
+  },
+  {
+   "id": "H05",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY",
+   "statement": "R4 may treat H-D and H-B as unresolved alternatives.",
+   "sources": [
+    "D01",
+    "G06"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "derived from D01 (H5 reopening condition 3), like H06",
+   "confidence": "ADOPTED",
+   "changed_in_r1": [
+    "T-1"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H06",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY",
+   "statement": "R4 may use H5 only with its scope qualifier, waiver and §3 gap attached. RETURN-02 does not discharge H5's R2 condition.",
+   "sources": [
+    "D01",
+    "D02",
+    "F01–F05"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "H5 reopening condition 3",
+   "confidence": "ADOPTED",
+   "changed_in_r1": [
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H07",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "H-D or H-B as an axiom; hypotheses are never axioms.",
+   "sources": [
+    "H5-ADOPTED.md §5.2"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "adopted constraint",
+   "confidence": "ADOPTED"
+  },
+  {
+   "id": "H08",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Any regularity: Section C is empty, and B04/B05 must not be generalized.",
+   "sources": [
+    "C00"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "candidates are coding results",
+   "confidence": "not stated",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H09",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Act-level guards, or a corpus-level claim of their non-identifiability.",
+   "sources": [
+    "B02",
+    "D14"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "coding/pipeline-relative",
+   "confidence": "descriptive, same-family",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H10",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Norm → act: authorization is not execution, and prohibition is not refusal.",
+   "sources": [
+    "SCHEMA-r2-Aprime.md R-A1",
+    "F09"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "schema rule",
+   "confidence": "not stated"
+  },
+  {
+   "id": "H11",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Non-occurrence from absence; use NOT-EVIDENCED-IN-CAPTURE.",
+   "sources": [
+    "D13",
+    "F09",
+    "F10"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "task prohibition applied",
+   "confidence": "not stated"
+  },
+  {
+   "id": "H12",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "A decision order or entry into force read from recording order.",
+   "sources": [
+    "A07",
+    "G05"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "text-derived",
+   "confidence": "reviewed"
+  },
+  {
+   "id": "H13",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "A fixed status of R-89 (in force or not), a resolution of R-94, or a C1 stronger than 'moderate / WEAK, n=1, contested'.",
+   "sources": [
+    "E01",
+    "E02",
+    "E03",
+    "F07"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "E02/E03 rest on coded records",
+   "confidence": "as in E01–E03",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H14",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "That an independent norm-state observable exists, or that none exists.",
+   "sources": [
+    "D04",
+    "F06"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "scoping result",
+   "confidence": "NOT_DETERMINABLE"
+  },
+  {
+   "id": "H15",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "That D1 is sufficient; or that RETURN-02 discharges the R2 condition on D1.",
+   "sources": [
+    "D03",
+    "B09"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "D1 rests on A′ coding",
+   "confidence": "not validated",
+   "changed_in_r1": [
+    "O-R4"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H16",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Corpus completeness, or cross-family reliability of the coding. In particular, R4 may not read RETURN-02's κ = 1.000 as cross-family reliability, as evidence against correlated error, or as Gate 1 closure, and may not assume that free-text coded fields reproduce (even within family).",
+   "sources": [
+    "F11",
+    "F12",
+    "G02",
+    "B09",
+    "B10"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "R2 (cross-family) outstanding",
+   "confidence": "NOT SHOWN / cross-family UNKNOWN",
+   "changed_in_r1": [
+    "H-4",
+    "O-R7"
+   ],
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H17",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Evidential weight for absent STRICT witnesses.",
+   "sources": [
+    "D14"
+   ],
+   "R2_DEPENDENT": "yes",
+   "R2_reason": "instrument defect in the coded pipeline",
+   "confidence": "formal reasoning",
+   "r2_qualifier": "SCHEMA-UNDERDETERMINED (F-LOG-0204); NOT USABLE BY R4 until re-derived under SCHEMA-r3"
+  },
+  {
+   "id": "H18",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Support aggregated across the ACT and NORM datasets: support is computed separately per dataset and never aggregated.",
+   "sources": [
+    "G04",
+    "SCHEMA-r2-Aprime.md §5"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "schema rule",
+   "confidence": "not stated",
+   "new_in_r1": "H-3"
+  },
+  {
+   "id": "H19",
+   "section": "H",
+   "level": "L2",
+   "kind": "MAY_NOT",
+   "statement": "Host membership (repository access) as normative capability.",
+   "sources": [
+    "G07"
+   ],
+   "R2_DEPENDENT": "no",
+   "R2_reason": "review erratum",
+   "confidence": "review erratum",
+   "new_in_r1": "O-F3"
+  }
  ],
- "withdrawn": []
+ "withdrawn": [],
+ "status_annotation": "2026-10-01 F-LOG-0204: Gate 1 NOT REPRODUCED; R2_DEPENDENT items re-qualified (not usable by R4) pending SCHEMA-r3 re-coding; R2-independent items stand."
 }
