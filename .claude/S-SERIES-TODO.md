@@ -2,7 +2,15 @@
 
 **Kind:** session-state, the single S-Series working list (placement: `php scripts/doc-placement.php --scope=session-state` → `.claude/`).
 
-**Status:** current as of 2026-09-27. R7 v2.3 frozen (G-LOG-0088) → **v2.4 approved + implemented (G-LOG-0089)** → ONE independent audit (G-LOG-0090): NEEDS-REVISION, F-01 MATERIAL → **F-01 repaired (G-LOG-0091, `47b3d3b5b`; 1,051 tests, 0 failures)** → **focused independent re-check ACCEPTABLE (0 MATERIAL)**. R7 NOT yet accepted; S5 NOT activated; RI-1 DEFERRED; H-19 SEALED. **Researcher's rule:** observe the corpus as brainstorming material and derive a robust theory; "no coherent theory found" is a valid outcome.
+**Status:** current as of 2026-10-01. **Authoritative status statement:**
+- **Design and machinery.** The scientific measurement design is complete and frozen (Freeze 1, Freeze 2), and the execution/governance machinery has been shown to work.
+- **The canary defect.** The first live canary (G-LOG-0108) exposed a defect in the agent-readable measurement contract. The diagnosis has survived several adversarial reviews of the documents and code; these are reviews, not independent replications.
+- **The repair package** was challenged twice (reviews D and E) and needs revision. A complete field inventory shows the defect is wider than the canary's failures revealed.
+- **No S5 label has yet become measured data** (AM-2).
+- **Current gate:** revise the repair package → adversarial review → human authorization.
+- **Standing states:** H-19 SEALED; RI-1 DEFERRED.
+
+**Researcher's rule:** observe the corpus as brainstorming material and derive a robust theory; "no coherent theory found" is a valid outcome.
 
 **Authority:** none. Governing documents are Master Protocol v3.5 (`docs/knowledgeos/chronological-read/prompts/20260911_0221_prompt3-optimized.md`) and P3b v1.7 (frozen, G-LOG-0034). Decisions live in `docs/knowledgeos/chronological-read/P3B-GOVERNANCE-LOG.md`. **This file decides nothing.**
 
@@ -18,11 +26,17 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 
 ## MASTER ROADMAP AND TODOS (entry point; supersedes the older roadmap views below where they differ)
 
-**Where we are:**
-- **Research infrastructure:** ~85–90% (directional estimate, not a measured KPI).
-- **Master Protocol P1, P2 and P3a:** DONE (discovery; 2,497 P2 labels; P3a pair verdicts frozen).
-- **P3b S5 per-label floor:** **0 of 396 production batches** (OB0004 attempts FAILED; OB0018 was a pilot, UNDETERMINED).
-- **Theory:** not yet reconstructed; not yet implementable.
+**Where we are** (no progress percentages; these are component states):
+
+| Component | State |
+|---|---|
+| Master Protocol P1, P2, P3a | DONE (discovery; 2,497 P2 labels; P3a pair verdicts frozen) |
+| Research design | ✅ frozen (Freeze 1, Freeze 2, EP-01) |
+| Execution machinery | ✅ demonstrated in the canary (dispatch, reader, witness, freezes, verifier, state) |
+| Measurement contract | ❌ defect found: 37 of 85 agent-output fields/rules not fully specified (inventory, under review) |
+| Measurement instrument | ⚠️ not validated |
+| Accepted S5 measurements | **0 of 1,975 labels** (0 of 396 batches) |
+| Theory | unknown: neither supported nor disproved |
 
 **Ultimate milestone:** one coherent, evidence-linked KnowledgeOS Theory document that can be read end to end, with every principle traceable to evidence, its mathematical and DDD foundations explicit, and implementable without guessing.
 
@@ -116,16 +130,50 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 - [ ] backlog: hash-chain P3B-GOVERNANCE-LOG.md (governance integrity) · `add_comparison` R2S naming under R7 · orchestrator prompt 'whole file' sentence has no contract anchor
 - [x] **S5 canary attempt 1** (G-LOG-0107): STOPPED — class X environment (reader resolves root from cwd); findings F-1..F-5; repairs R-1/R-2 committed
 - [x] **Canary restart approved (G-LOG-0108)**: v2.8.1 rebound; OB0012 attempt 1 retired → attempt 2 PREPARED; pre-check v2.8.1 green
-- [ ] **NEXT (HUMAN): start a fresh Claude Code session in nrna1** → execute `audit-p3b/20260930_S5-CANARY-OPERATOR-BRIEF.md` → STOP at canary evaluation
+- [x] **Canary restart executed** (fresh session; `a4579b241`, `f4b5d1baf`, `c18a65308`): **11 of 11 runs FAILED, stop rule triggered**. OB0012 attempt 2 FAILED (A1), OB0114 attempt 1 FAILED (A2); 0 labels measured. The execution machinery held (0 refusals, 0 misrouted writes, witness = harness 11/11)
+- [x] **Canary diagnosis** (`audit-p3b/canary-diag/`): DIAG-A → review B (NEEDS-REVISION) → package v1 `52c1ba687` → review C → review D (`ce35975a6`; v1 not approvable as one act) → **package v2** `ce35975a6` → review E (ACCEPT-WITH-FIXES, 6 MATERIAL) → **field inventory** (85 rows: 48 specified / 18 name-only / 10 absent / 9 contradictory; 18 new items).
+  - Root cause: R7 takes R5/R6 output schemas by reference, but agents may read only I(run).
+  - Provably unreachable: 107 of 340 strings (31.5%); 140 (41.2%) with the escaped stage-2 ids. 86.5% is an upper bound only.
+  - Agent errors: 46 lenient / 42 strict, touching 7 / 5 of 11 runs.
+
+**CRITICAL PATH TO A READABLE FINAL REPORT (2026-10-01; supersedes B1–B3 and the older critical paths below; 👤 = human gate):**
+- [ ] 1. Independent check of the field inventory *(running)*
+- [ ] 2. Package v3: review E's fixes + the checked inventory + **strategic fork: patch R7 rule by rule vs redesign the agent output (minimal observation record; tools derive ids, hashes, claims, precedence)**
+- [ ] 3. Independent adversarial review of v3 → revise until accepted
+- [ ] 4. 👤 Approve the bounded repair package (incl. the fork)
+- [ ] 5. 👤 Adjudicate the contract-vs-code disagreement table (one row per key)
+- [ ] 6. Build the repair tests-first on a branch (production `ADDENDUM_SHA256` and state untouched); independent review
+- [ ] 7. Build the rehearsal mechanism (declared content-source seam + reader parity test; isolated root/state/archive); independent review
+- [ ] 8. 👤 Authorize the non-counting rehearsal
+- [ ] 9. Run and evaluate the rehearsal (pass criterion frozen before dispatch)
+- [ ] 10. 👤 Approve the reviewed contract text sha + code commit → production rebind
+- [ ] 11. 👤 Approve the disclosed attempt re-registration (§2.8, these two batches only) + the counted canary
+- [ ] 12. Run and evaluate the counted canary (OB0012 attempt 3, OB0114 attempt 2)
+- [ ] 13. 👤 Authorize full S5
+- [ ] 14. S5: 396 batches / 1,975 labels (retry policy, W-SYS, AM-1 single writer)
+- [ ] 15. Per batch: VERIFIED → §21 AUDITED → H-06 ACCEPTED (= measured, AM-2)
+- [ ] 16. EP-01 statistical analysis (θ_D, θ_A, E-3)
+- [ ] 17. S5a/S5b + P3b terminal reconstruction → P4 hand-off
+- [ ] 18. Research dataset + Model 0 + non-strawman competing models
+- [ ] 19. H1–H5 testing (pre-registered; Holm confirmatory, BH exploratory)
+- [ ] 20. Mathematical formalization (simplest adequate structure)
+- [ ] 21. Logical/computational counterexample search (∃x Observed(x) ∧ ¬H(x))
+- [ ] 22. ML assistance only on adjudicated data, against baselines
+- [ ] 23. Independent corroboration (H-19, by governance) + challenge review
+- [ ] 24. 👤 Final verdict
+- [ ] 25. Final readable report: **ROBUST THEORY FOUND** or **NO COHERENT THEORY FOUND**
+
+**Separate repository hygiene (no research dependency):**
+- [ ] 👤 R-5: clean up the 5 misrouted READ-LOG files in the ansible repo (copies in `~/knowledgeos-witness-archive/OB0012.A1/misrouted-reader-logs/`)
 
 **Critical path from here (in order; researcher's rule: the corpus is brainstorming material; derive a ROBUST theory or report none):**
 - [x] **A1** Focused independent re-check: **ACCEPTABLE**. F-01 CLOSED (6 shipped + 6 new adversarial reproducers); I1: 16,000 seeded trials, 0 findings; I7: no MATERIAL counterexample. 0 MATERIAL; 2 MINOR (RC-02 empty persisted file → false FAIL; RC-03 missing manifest-entry file skips its hash check, `p3b_s5_r7_verify.py:100`, not exploitable per ADR-R7-01). Report `audit-p3b/20260927_R7-FOCUSED-RECHECK.md`
 - [x] **A2 (G-LOG-0092):** R7 ACCEPTED (v2.4 + F-01); RC-02 deferred; **RC-03 fixed** (missing I(run) file → frozen-integrity FAIL; RED showed a real BATCH-PASS → GREEN; 1,052 tests, 0 failures)
 - [x] **B1 proposal written** (`audit-p3b/20260927_B1-EXPERIMENT-DESIGN-FREEZE-PROPOSAL.md`, on top of EP-01): D1 stratum precedence; **D2 the normal CI under-covers (SINGLE, D = 10: 45.5%) → a minimal v2.5-S exact-bound amendment recommended**; D3 θ_D ≠ θ_E; P1 the audit re-analyses = the replicate subsample; P2/P3 pre-registration with Model 0; P5 H-19 = corroboration set; canary rule
 - [x] **G-LOG-0093:** B1 approved conceptually → **v2.5-S implemented** (exact hypergeometric bound primary, Bonferroni over strata; normal CI only if d ≥ 5 ∧ n − d ≥ 5; addendum v2.5 `63fdda65…`; T105–T109, coverage checked exhaustively) → **B1 v2 freeze candidate** (θ_D/θ_A/θ_E with reference-standard criteria; R1/R2; operational Model 0 per H in `research/prereg_v1.py`; Holm confirmatory, BH exploratory; H-19 last). Pass 0b: nothing in the pilot survives Model 0; H4's pass-0 support was all ties (corrected)
-- [ ] **B1 HUMAN: approve B1 v2, then (after the binary read and the 12 decisions) the freeze act** — (before any S5 data exists): population, sampling, seeds; the error-audit design (θ_E) kept separate from the disagreement rate (θ_D); a **replicate subsample** (θ_D + invariance under reconstruction choices); **pre-registered hypotheses incl. a null model (Model 0: method + topic frequency)** and a multiple-testing procedure; failed / NOT-ASSESSABLE handling; **H-19 designated as the sealed corroboration set** (opened only against a frozen theory)
-- [ ] **B2 HUMAN:** the required binary decisions (the 12 binary pre-classifications) and the statistical freeze
-- [ ] **B3 HUMAN:** S5 activation, **staged**: canary batch(es) first (stop on systematic W8/agent failures) → 396 batches / 1,975 labels
+- [x] *(done: Freeze 1 G-LOG-0094, Freeze 2 G-LOG-0103)* **B1 HUMAN: approve B1 v2, then (after the binary read and the 12 decisions) the freeze act** — (before any S5 data exists): population, sampling, seeds; the error-audit design (θ_E) kept separate from the disagreement rate (θ_D); a **replicate subsample** (θ_D + invariance under reconstruction choices); **pre-registered hypotheses incl. a null model (Model 0: method + topic frequency)** and a multiple-testing procedure; failed / NOT-ASSESSABLE handling; **H-19 designated as the sealed corroboration set** (opened only against a frozen theory)
+- [x] *(done: G-LOG-0096, G-LOG-0103)* **B2 HUMAN:** the required binary decisions (the 12 binary pre-classifications) and the statistical freeze
+- [ ] *(superseded by the 2026-10-01 critical path, items 4–14)* **B3 HUMAN:** S5 activation, **staged**: canary batch(es) first (stop on systematic W8/agent failures) → 396 batches / 1,975 labels
 - [ ] **B4** P3b terminal reconstruction
 - [ ] **C1** Research dataset G = (V, E, τ, ρ, p) plus an explicit model of the observation process
 - [ ] **C2** Track B pass 1: pre-registered H1–H5 on the S5 population (null models, permutation baselines, BH correction); search for invariants, not frequencies
