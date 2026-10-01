@@ -1,0 +1,103 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "fixed": {
+    "1_performative_convention": "FIXED: §3 rule 5, TASK wording verbatim.",
+    "2_ns_neutrality": "FIXED: NS test now reads 'has, or is stated to have, a normative status'.",
+    "3_heading_rule": "FIXED: decide using the section where the sources provide it, else UNKNOWN, never NO by default. Consistent with §1 and rule 2.",
+    "4_guidance": "FIXED: one line each for deliberate non-action, attempted, recommendation, prepared/not-yet-adopted, quoted performative.",
+    "5_example6_verb": "FIXED: 'declined' -> 'refused'. Codes and reason unchanged.",
+    "6_status_layer": "FIXED: one line added. A disclosed extra edit removed 'or context taken from the section' from the INFERENCE line, which was needed for consistency.",
+    "nothing_else_changed": "Consistent with CHANGELOG and with REVIEW-r0's descriptions. No r0 schema file is present, so a line-by-line diff was not possible. REVIEW-r0 quotes Example 8 as 'Topic: the new arrangement' and r1 has 'Compost bins: the new arrangement': either a paraphrase in the review or an unlisted change."
+  },
+  "neutrality_issues": [
+    "Non-blocking: Example 3's reason 'the allocation gives an entitlement' still frames normative status as the outcome of an act. It was deliberately left out of scope.",
+    "Non-blocking: 'is stated to have' does not say who states it (the span, or a party the span reports). This makes R08 NS newly debatable.",
+    "Non-blocking: 4c limits NS = YES for recommendations to 'permission, requirement or prohibition', which is narrower than the NS definition (authorized, eligible, normative status).",
+    "Non-blocking: Example 8's SP = NO has no reason in the table. The changelog's explanation (from the label's words, not a default) is missing from the schema, so a coder could read it as a default NO.",
+    "No theory decision introduced. Rule 5 is the mandated convention. 4a (a chosen non-action counts as a refusal) and 4e (a bare quoted performative is coded as written, with a 'quoted' note) are conventions that keep the data recoverable. 4d leaves PREPARED/ADOPTED force undecided."
+  ],
+  "anchoring_issues": [
+    "Non-blocking: the 4a cue 'deliberately did not' repeats R20 ('deliberately did NOT reuse'), which REVIEW-r0 quoted. This contradicts CHANGELOG's 'generic phrases' claim. The rule 'presented as chosen' alone gives the same R20 code. Replace it with a neutral cue such as 'chose not to'.",
+    "Low risk: the 4d label 'Prepared' repeats R05's '(PREPARED)'. The wording was required by TASK, and the bullet does not decide R05.",
+    "No new or changed worked example mirrors a record. Example 6 ('refused Mr Lutz's request') has no counterpart in RECORDS.json."
+  ],
+  "words": 945,
+  "words_note": "Hand count, ±5%, excluding table pipes, markdown markers and JSON punctuation. Within the ≤ 1,000 limit. The changelog says about 965.",
+  "dry_run": {
+    "ACT_REPORTED": {
+      "determinate": 26,
+      "debatable": ["R01", "R09", "R11", "R16", "R19", "R22", "R23", "R25", "R27", "R30"],
+      "resolved_since_r0": ["R02", "R20", "R26"],
+      "reasons": {
+        "R01": "rule 5 makes AR depend on SP, which is still debatable (present-tense refusal)",
+        "R09": "depends on SP ('is filed')",
+        "R11": "depends on whether the section shows that the commit header reports a work act",
+        "R16": "is a reasoned non-transfer 'presented as chosen'?",
+        "R19": "is 'recorded there as' an act?",
+        "R22": "is 'NOT promoted — … forbids' a chosen refusal or an absence?",
+        "R23": "depends on SP (headline 'adopted')",
+        "R25": "depends on SP ('IS RETIRED')",
+        "R27": "depends on SP (the ruling describes its own act)",
+        "R30": "depends on SP ('is adopted')"
+      }
+    },
+    "ACT_SELF_PERFORMED": {
+      "determinate": 19,
+      "debatable": ["R01", "R03", "R04", "R05", "R09", "R10", "R12", "R13", "R14", "R23", "R25", "R26", "R27", "R30", "R32", "R34", "R36"],
+      "resolved_since_r0": ["R02"],
+      "reasons": {
+        "R01": "annotation voice",
+        "R03": "annotation voice",
+        "R04": "ruling headline: is it the operative act?",
+        "R05": "ruling headline; 4d leaves its force open",
+        "R09": "'is …-ed' form",
+        "R10": "norm sentence inside a ruling",
+        "R12": "norm sentence inside a ruling",
+        "R13": "norm sentence inside a ruling",
+        "R14": "norm sentence inside a ruling",
+        "R23": "ruling headline",
+        "R25": "'is …-ed' form",
+        "R26": "is a negative declaration a performative?",
+        "R27": "'is …-ed' / self-description",
+        "R30": "'is …-ed' form",
+        "R32": "norm sentence inside a ruling",
+        "R34": "norm sentence inside a ruling",
+        "R36": "norm sentence inside a ruling"
+      }
+    },
+    "NORM_STATED": {
+      "determinate": 22,
+      "debatable": ["R02", "R06", "R07", "R08", "R10", "R15", "R16", "R17", "R18", "R19", "R20", "R26", "R27", "R30"],
+      "resolved_since_r0": ["R05", "R09", "R11"],
+      "new_since_r0": ["R08"],
+      "reasons": {
+        "R02": "adoption; Example 3 residual",
+        "R06": "'register holds constitutional decisions': rule or description?",
+        "R07": "identical to R06",
+        "R08": "'is stated to have' may reach a reported heading such as 'Not Part of Ruling'",
+        "R10": "directive or description?",
+        "R15": "'PROMOTE' inside a matrix 'adopted by R-36'; the principle name is an imperative maxim",
+        "R16": "'PROMOTE' inside an adopted matrix; stated principle",
+        "R17": "'PROMOTE' inside an adopted matrix; 'never silently absorbed'",
+        "R18": "'ARB-adopted' status vs 4c's narrow list",
+        "R19": "'permanent design principle' status vs 4c's narrow list",
+        "R20": "is 'Candidate' a normative status?",
+        "R26": "implied continued status",
+        "R27": "implied continued status",
+        "R30": "adoption; Example 3 residual"
+      }
+    },
+    "totals": {"debatable_r1": 41, "debatable_r0": 47}
+  },
+  "blocking": [],
+  "nonblocking": [
+    "Replace the 4a cue 'deliberately did not', which comes from R20, with a neutral phrase.",
+    "Align 4c's list with the NS definition, or state why it is narrower.",
+    "Add a reason for SP = NO in Example 8.",
+    "Make clear who 'is stated to have' refers to: the span, or a party the span reports.",
+    "Example 3's 'gives an entitlement' (carried over from r0).",
+    "Report the overlap between rule 1 and R32 to the spec owner (carried over from r0).",
+    "R06 and R07 are identical records (carried over from r0).",
+    "No r0 schema file is present, so 'nothing else changed' rests on the changelog. Check the Example 8 label discrepancy against r0."
+  ]
+}

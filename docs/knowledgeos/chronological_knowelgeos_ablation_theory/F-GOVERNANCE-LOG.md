@@ -2599,3 +2599,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the heading rule (it undercounted R11 work evidence, against H-B).
 - **Plus:** the explicit performative rule, gap guidance, and one example verb.
 - **`LOOP-1BJ/compare_core.py`:** frozen now; it reuses the frozen `kappa` verbatim; self-tested on synthetic data only.
+
+## F-LOG-0213 — SCHEMA-CORE r1: **PASS_WITH_LIMITATIONS** (6/6 fixes applied; 0 blocking; 945 words). Coding bundle sealed
+- **Dry run (codes withheld):** ACT_REPORTED 26 determinate / 10 debatable · ACT_SELF_PERFORMED 19/17 · NORM_STATED 22/14.
+- **Two main-analyst edits after the review, disclosed:**
+  - guideline 4a's cue "deliberately did not" (echoing R20) → "the text presents the not-doing as chosen" (an anchoring fix);
+  - Example 8 now gives the reason for SP = NO ("the label's own words perform nothing, not by default"), consistent with "never NO by default".
+
+  Neither changes a rule. The reviewer's Example 8 "discrepancy" was a paraphrase: r0 and r1 are identical there.
+- **Remaining non-blocking items, disclosed as limitations:** who "is stated to have" refers to (R08); the narrower list in 4c; Example 3's framing; R06/R07 being identical records.
+- **Bundle:** `LOOP-1BJ/BUNDLE-CORE/` (README, TASK, SCHEMA-CORE, RECORDS, SOURCES), hashed in `BUNDLE-CORE.sha256`. RECORDS and SOURCES are byte-identical to bundle -02.
+- **Next:** three isolated coders (Opus 5.5, Sonnet 5.5, Haiku 4.5), outside the repo, one attempt each.
