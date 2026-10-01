@@ -4,7 +4,7 @@
 |---|---|
 | **Date** | 2026-10-01 |
 | **Kind** | ⚠ authority: generated. An **instruction document for implementation sessions**. **It authorises nothing.** Each ticket needs its own PO authorisation, and its own ARB architecture approval when its gate includes A, B or E. |
-| **Source of truth** | [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (77 tickets, `PBDIGIT-76` … `PBDIGIT-152`). If this runbook and the backlog disagree, **the backlog wins**. |
+| **Source of truth** | [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (82 tickets, `PBDIGIT-76` … `PBDIGIT-157`). If this runbook and the backlog disagree, **the backlog wins**. |
 | **How the sequence was produced** | Computed from the backlog's dependency graph: wave = 1 + highest wave among a ticket's implementation dependencies, with decisions at wave 0. Check: 15 waves, 0 violations (no ticket shares a wave with, or precedes, its dependency). |
 | **Placement** | `php scripts/doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0); `implementation/` holds the implementation records |
 | **Companion** | [`2026-10-01-constitutional-runtime-execution-map.md`](2026-10-01-constitutional-runtime-execution-map.md): the Jira-ready execution map (master index, per-ticket execution cards) |
@@ -127,6 +127,9 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 | `PBDIGIT-133` | B General repository/freeze | Temporal-determinism audit scanner flags `validate(` as a `date()` call | — | — | — |
 | `PBDIGIT-134` | B General repository/freeze | Resolve the `PBDIGIT-69` numbering collision | — | — | — |
 | `PBDIGIT-139` | A1 Admin Constitutional Governance | Repair capability-suite and suspension-suite test drift | — | — | — |
+| `PBDIGIT-153` | A1 Admin Constitutional Governance | Reproduce the reported governance POST regression (activate/suspend/resume) | — | — | — |
+| `PBDIGIT-156` | B General repository/freeze | Separate business-policy expectations from the Architecture suite | — | — | — |
+| `PBDIGIT-157` | A1 Admin Constitutional Governance | Repair election-management feature-test drift (activation and management suites) | — | — | — |
 
 #### Wave 2
 
@@ -134,8 +137,8 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 |---|---|---|---|---|---|
 | `PBDIGIT-79` | A2 Voting Participation Governance | Characterize the voting entry path at the HTTP boundary | `76` `77` `78` | — | — |
 | `PBDIGIT-80` | A2 Voting Participation Governance | Characterize the ballot, verify and store path at the HTTP boundary | `76` `77` `78` | — | — |
-| `PBDIGIT-123` | B General repository/freeze | Bring election security zones under a blocking CI job | `76` `77` `78` `139` | — | — |
-| `PBDIGIT-140` | A1 Admin Constitutional Governance | Characterize the admin-action authorities at the HTTP boundary | `139` | — | — |
+| `PBDIGIT-123` | B General repository/freeze | Bring election security zones under a blocking CI job | `76` `77` `78` `156` `139` | — | — |
+| `PBDIGIT-140` | A1 Admin Constitutional Governance | Characterize the admin-action authorities at the HTTP boundary | `139` `157` | — | — |
 
 #### Wave 3
 
@@ -151,10 +154,11 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 | `PBDIGIT-128` | B General repository/freeze | CI rule 7 — Forbidden procedural vocabulary in canonical governance code | `123` | — | — |
 | `PBDIGIT-135` | A2 Voting Participation Governance | Characterize the non-slug `POST /votes` route and route-file loading | `80` | — | — |
 | `PBDIGIT-136` | A2 Voting Participation Governance | Characterize `voter_slugs.vote_completed`, which no code writes | `79` | — | — |
-| `PBDIGIT-142` | A1 Admin Constitutional Governance | Suspend and resume bypass ConstitutionalTransitionGuard | `140` | H-13 `PBDIGIT-141` | A |
-| `PBDIGIT-143` | A1 Admin Constitutional Governance | Resume writes no audit record | `140` | — | G |
+| `PBDIGIT-142` | A1 Admin Constitutional Governance | Suspend and resume bypass ConstitutionalTransitionGuard | `140` `153` | H-13 `PBDIGIT-141` | A |
+| `PBDIGIT-143` | A1 Admin Constitutional Governance | Suspend/resume governance audit is incomplete (resume unrecorded; suspend lacks prior stage) | `140` | — | G |
 | `PBDIGIT-146` | A1 Admin Constitutional Governance | Declare overlay behaviour in the constitution and fix the placeholder resume target | `140` | H-5 `PBDIGIT-94`, H-14 `PBDIGIT-150` | B |
 | `PBDIGIT-148` | A1 Admin Constitutional Governance | Lifecycle derivation cannot be recomputed for a given instant | `140` | — | C |
+| `PBDIGIT-154` | A1 Admin Constitutional Governance | `updateDates` edits voting dates in any lifecycle state, bypassing every governance gate | `140` | `PBDIGIT-59` (ADR acceptance) | A, B |
 
 #### Wave 4
 
@@ -172,6 +176,7 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 | `PBDIGIT-107` | A2 Voting Participation Governance | Typed evidence: ballot/code session facts under the constitutional protocol | `79` `80` `101` | — | C |
 | `PBDIGIT-108` | A2 Voting Participation Governance | Evaluators: network (composable binding + limit), device comparison, verification | `101` `106` | H-3 `PBDIGIT-92`, H-4 `PBDIGIT-93` | D |
 | `PBDIGIT-144` | A1 Admin Constitutional Governance | Resolver role and precondition policies for admin actions | `109` `140` | H-13 `PBDIGIT-141` | A, E |
+| `PBDIGIT-155` | A1 Admin Constitutional Governance | One constitutional action vocabulary: RULES, ElectionAction enum and ElectionActions.ts drift | `146` | H-5 `PBDIGIT-94` | B |
 
 #### Wave 5
 
@@ -188,7 +193,7 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
 | `PBDIGIT-111` | A2 Voting Participation Governance | R-1b — CAST_VOTE integration: Register the CAST_VOTE resolver policy set | `110` `108` | H-8 `PBDIGIT-97`, H-9 `PBDIGIT-98` | A, E |
-| `PBDIGIT-147` | A1 Admin Constitutional Governance | Frontend renders governance capabilities only | `145` | — | F |
+| `PBDIGIT-147` | A1 Admin Constitutional Governance | Frontend renders governance capabilities only | `145` `155` | — | F |
 | `PBDIGIT-152` | A1 Admin Constitutional Governance | Route-level operation capability matrix duplicates the resolver | `145` `146` | H-13 `PBDIGIT-141` | A, E |
 
 #### Wave 7
@@ -197,7 +202,7 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 |---|---|---|---|---|---|
 | `PBDIGIT-112` | A2 Voting Participation Governance | Persist a CAST_VOTE decision record for every evaluation | `111` | — | G |
 | `PBDIGIT-124` | B General repository/freeze | CI rule 1 — Only the resolver and registered policies may create CapabilityDecision | `123` `111` | — | — |
-| `PBDIGIT-149` | A1 Admin Constitutional Governance | Governance lifecycle end-to-end suite through HTTP | `139` `140` `142` `143` `145` `146` `147` `148` `152` `151` | H-13 `PBDIGIT-141`, H-14 `PBDIGIT-150` | — |
+| `PBDIGIT-149` | A1 Admin Constitutional Governance | Governance lifecycle end-to-end suite through HTTP | `139` `140` `142` `143` `145` `146` `147` `148` `154` `152` `151` | H-13 `PBDIGIT-141`, H-14 `PBDIGIT-150` | — |
 
 #### Wave 8
 
@@ -251,7 +256,7 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 
 | Ticket | Track | Title | Needs (implementation) | Needs (decision / external) | Gate |
 |---|---|---|---|---|---|
-| `PBDIGIT-132` | B General repository/freeze | Constitutional Governance Runtime v1.0 freeze | `131` `124` `125` `126` `127` `128` `129` `104` `102` `86` `87` `88` `89` `122` `130` `152` `151` `133` `134` `137` `142` `143` `146` `147` `148` `149` | H-12 `PBDIGIT-138` | A, B, E |
+| `PBDIGIT-132` | B General repository/freeze | Constitutional Governance Runtime v1.0 freeze | `131` `124` `125` `126` `127` `128` `129` `104` `102` `86` `87` `88` `89` `122` `130` `154` `155` `156` `152` `151` `133` `134` `137` `142` `143` `146` `147` `148` `149` | H-12 `PBDIGIT-138` | A, B, E |
 
 ---
 
@@ -260,8 +265,8 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 **Track A1 — Admin Constitutional Governance**
 
 ```
-139 A → (139 B after disposition) → 140 → 109 → 143 → 148 → 142 [H-13] → 144 [H-13] → 145 → 151 → 146 [H-5, H-14]
-      → 152 → 147 → 149 (E2E acceptance)
+139 A → (139 B after disposition) → 157 → 153 → 140 → 109 → 143 → 148 → 142 [H-13] → 144 [H-13] → 145 → 151
+      → 146 [H-5, H-14] → 155 [H-5] → 152 → 147 → 154 [PBDIGIT-59] → 149 (E2E acceptance)
 ```
 
 **Track A2 — Voting Participation Governance**
@@ -277,7 +282,7 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 **Track B — General repository/freeze work (slot in whenever capacity allows)**
 
 ```
-133 · 134 · 130 · 122 → 123 (after C-1 + 139) → 128 → 125 · 126 (after 108) → 124 (after 111)
+133 · 134 · 130 · 122 · 156 → 123 (after C-1 + 139 + 156) → 128 → 125 · 126 (after 108) → 124 (after 111)
      → 129 (after 103 + 114) → 127 (after 120) → 131 → 132 v1.0 freeze
 ```
 
@@ -287,7 +292,7 @@ The overall repository sequence (§5 waves) ≠ the Constitutional Governance se
 |---|---|---|
 | **CP-1 Test baseline** | `139` A (+B disposition), `76`–`78` merged | the suites observe today's production contract |
 | **CP-2 Characterization complete** | `79`, `80`, `81`–`84`, `135`, `136`, `140` merged | every current gate and defect is pinned before anything moves |
-| **CP-3 Admin capability sovereignty** | `142`–`148`, `151`, `152`, `149` merged | one admin capability authority, proven end to end |
+| **CP-3 Admin capability sovereignty** | `142`–`148`, `151`–`155`, `157`, `149` merged | one admin capability authority, proven end to end |
 | **CP-4 Law + evidence + evaluation** | `101`–`108` merged | frozen, hash-verified law; typed evidence; pure evaluators |
 | **CP-5 Shadow + replay** | `110`–`114` merged | the resolver decides CAST_VOTE in shadow; decisions are persisted and replayable |
 | **CP-6 Parity** | `115`, `116` merged; divergences signed | the new authority matches the legacy one or corrects it by approval |

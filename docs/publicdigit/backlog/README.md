@@ -71,12 +71,22 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-66`](PBDIGIT-66-establish-election-only-mode-constitutionally.md) | 🟡 **Establish Election-Only in the constitution and the projection** — it works end to end and the constitution never mentions it; both modes converge at `ElectionMembership` ([investigation](../reviews/2026-08-09-election-constitution-voter-eligibility-traceability.md)) | `EPIC-03` | **DECISION REQUIRED** — `D-1`…`D-6`; not engineering's to resolve |
 | [`PBDIGIT-70`](PBDIGIT-70-two-unparseable-files-under-app.md) | **Two files under `app/` cannot be parsed by PHP** — both dead/unreachable, but any full static-analysis sweep of `app/` fails; `ElectionUser` must not be mistaken for `Q3` prior art | cross-cutting | `OPEN` — delete-vs-repair is a disposition call |
 | [`PBDIGIT-69`](PBDIGIT-69-voter-eligibility-cache-is-tenant-unaware.md) | 🔴 **The voter-eligibility cache key is tenant-unaware** — a wrong-context read poisons the ballot predicate for 300s, in **both** directions ([measured](../reviews/2026-08-12-g1-voter-suspension-enforcement.md)) | `EPIC-02` | `OPEN` — **`D-1` is a business decision**; makes `PBDIGIT-65` persist |
+| [`PBDIGIT-69`](PBDIGIT-69-operating-core-post-verification-items.md) ⚠️ | **Operating-core post-verification items (C-5 findings N-3…N-6)**. ⚠️ **The ID collides** with the row above; the collision is owned by `PBDIGIT-134` | `EPIC-03` | `OPEN` |
 | [`PBDIGIT-68`](PBDIGIT-68-election-membership-is-a-durable-entitlement.md) | ✅ **`D-ENT-1` APPROVED — Model B** (PO 2026-08-12) · **`BR-1` PARTIALLY RESOLVED** — Option B recommended (termination retains the record, permanent to officers, admin-reversible); `revoke` is already taken with an inverted meaning; `ADR-T11` blocks post-vote reach; **authority does not track consequence** and **no governance act reaches the election audit trail** · **`ADR-002` amendment PROPOSED · `Q3` OPEN · IMPLEMENTATION NOT AUTHORISED** — closes Appendix E's `NOT SPECIFIED`. ⚠️ **G-1 MEASURED 2026-08-12: the ballot IS protected (403); enforcement is incidental** — `G-6` withdrawn, `G-5` escalated, and `admit`/`revoke`/`restore` have no constitutional names | `EPIC-03` | **DECISION RECORDED** · consequences `G-1`…`G-7` open; Constitution **not** amended |
 | [`PBDIGIT-67`](PBDIGIT-67-election-schedule-input-interprets-local-time-as-utc.md) | 🔴 **The election schedule input interprets browser-local time as UTC** — an election opens 1–2 hours late (DST-variable); **corrects `PBDIGIT-50`'s "display gap, not a data defect"** ([trace](../reviews/2026-08-12-time-value-trace-browser-to-display.md)) | `EPIC-03` | `OPEN` — **not authorised**; `D-1`…`D-4` need business answers |
 | [`PBDIGIT-64`](PBDIGIT-64-election-opens-voting-without-any-candidate.md) | 🔴 **An election can enter voting with no candidates** — `complete_nomination` enforces the rule, the automatic window transition does not. Reproduced end to end | `EPIC-03` | `OPEN` — PO-confirmed defect; found by IERVP runtime verification |
 | [`PBDIGIT-63`](PBDIGIT-63-verify-the-organisation-creation-journey-and-its-verification-estate.md) | 🟢 **"Create an organisation → land on its homepage" — RUNTIME-VERIFIED end to end 2026-08-08** (first recorded execution; persisted outcome checked in the database). Six creation assertions still describe a different contract from the controller — **classify before repairing**; corrects rule `O1`'s automated-test *evidence* ([report](20260808-create-organisation-and-visit-homepage-journey-report.md)) | `EPIC-01` | **Part A ✅ DONE** · Part B unblocked, unauthorised · browser render + `F-5` walk still unverified · `D-1`…`D-6` need business answers |
+| [`PBDIGIT-60`](PBDIGIT-60-result-visibility-never-became-a-capability.md) | **Result Visibility never became a first-class capability** during the constitutional migration | `EPIC-03` | 🔴 D-2 defect fixable now · D-1 design open |
+| [`PBDIGIT-61`](PBDIGIT-61-newsletter-suite-fails-before-any-change.md) | The newsletter test suite fails at HEAD, before any change | `EPIC-05` | ✅ **RESOLVED** 2026-08-07 |
+| [`PBDIGIT-62`](PBDIGIT-62-already-voted-exclusion-never-fires-at-login.md) | The "already voted" exclusion never fires at login: a tenant scope defeats it | `EPIC-05` | ✅ **REPAIRED** 2026-08-07 |
+| [`PBDIGIT-71`](PBDIGIT-71-w2-guard-scans-comments-as-code.md) | W-2 structural guard scans comments as if they were code | `EPIC-03` (EM-IMPL-002) | `OPEN` — low |
+| [`PBDIGIT-72`](PBDIGIT-72-em-gov-063-terminal-consequence-is-unreachable.md) | `EM-GOV-063`'s terminal consequence is unreachable | `EPIC-03` (EM-DOM-001) | `BACKLOG` — not authorised |
+| [`PBDIGIT-73`](PBDIGIT-73-green-5-labels-two-different-slices.md) | `GREEN-5` labels two different slices; the EM-IMPL-002 status picture is stale | `EPIC-03` | 🔴 `OPEN` — no repair authorised |
+| [`PBDIGIT-74`](PBDIGIT-74-election-audience-selects-zero-recipients.md) | Election notification selects **zero** recipients where eligible recipients exist | `EPIC-05` | 🔴 `OPEN` — **DECISION REQUIRED** |
+| [`PBDIGIT-75`](PBDIGIT-75-newsletter-authorization-omits-election-tenancy-check.md) | Newsletter authorization never verifies the named election belongs to the organisation | `EPIC-05` | 🔴 `OPEN` — not authorised |
+| [`PBDIGIT-158`](PBDIGIT-158-adjudication-issuance-marker-shifts-two-hours.md) | 🔴 **The adjudication issuance marker comes back two hours shifted after persistence**. A legal timestamp changes value on save and load (`IssuanceContextRoundTripTest`, 12:00:05Z → 10:00:05Z); the mapper is symmetric, so the root cause is on the issuance path and still UNKNOWN ([verification](../../implementation/2026-10-01-push-b-status-verification.md)) | `EPIC-06` | `OPEN — NOT AUTHORISED` |
 
-### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-152`)
+### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
 **Full specifications, dependency graph and Definition of Done:** [`2026-09-30-constitutional-runtime-pbdigit-backlog.md`](../reviews/2026-09-30-constitutional-runtime-pbdigit-backlog.md) (from the [reality audit](../reviews/2026-09-30-constitutional-runtime-reality-audit.md) and the [migration readiness review](../reviews/2026-09-30-constitutional-runtime-migration-readiness.md)). **Working path (Jira-ready):** [execution map](../implementation/2026-10-01-constitutional-runtime-execution-map.md): master index, three working paths, decision matrix, dependency graph, waves, execution protocol and per-ticket execution cards. **Where to start and in which order:** [implementation runbook and ticket sequence](../implementation/2026-10-01-constitutional-runtime-implementation-sequence.md) (15 computed waves). **First implementations, one per track:** first Constitutional Governance implementation (Track A1, Admin Constitutional Governance) **`PBDIGIT-139` part A**; first Voting Participation implementation (Track A2, Voting Participation Governance) **`PBDIGIT-76`**; first general repository implementation (Track B, General repository/freeze work) **`PBDIGIT-133`**. There is no single overall first ticket. **None is authorised.** Decision tickets (`PBDIGIT-90`…`100`, `138`, `141`, `150`) are the PO/ARB's. Related existing items: `PBDIGIT-35` · `37` · `45` (owns per-IP retirement; gates `117`/`121`) · `49` · `65` · `68` · `69`.
 
@@ -149,7 +159,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | `PBDIGIT-140` | GOV — Characterize the admin-action authorities at the HTTP boundary | `EPIC-03` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-141` | H — H-13 — Who owns governance role authority, and what is the one role vocabulary? | `EPIC-03` | **DECISION REQUIRED** |
 | `PBDIGIT-142` | GOV — Suspend and resume bypass ConstitutionalTransitionGuard | `EPIC-03` | `TODO — NOT AUTHORISED` |
-| `PBDIGIT-143` | GOV — Resume writes no audit record | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-143` | GOV — Suspend/resume governance audit is incomplete (resume unrecorded; suspend lacks prior stage) | `EPIC-03` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-144` | GOV — Resolver role and precondition policies for admin actions | `EPIC-03` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-145` | GOV — Remove the lifecycle engine's second capability matrix | `EPIC-03` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-146` | GOV — Declare overlay behaviour in the constitution and fix the placeholder resume target | `EPIC-03` | `TODO — NOT AUTHORISED` |
@@ -159,6 +169,72 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | `PBDIGIT-150` | H — H-14 — Is suspension a lifecycle state or an operational overlay? | `EPIC-05` | **DECISION REQUIRED** |
 | `PBDIGIT-151` | GOV — Align Laravel ElectionPolicy gates and controller state inference with the resolver | `EPIC-03` | `TODO — NOT AUTHORISED` |
 | `PBDIGIT-152` | GOV — Route-level operation capability matrix duplicates the resolver | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-153` | GOV — Reproduce the reported governance POST regression (activate/suspend/resume) | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-154` | GOV — `updateDates` edits voting dates in any lifecycle state, bypassing every governance gate | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-155` | GOV — One constitutional action vocabulary: RULES, ElectionAction enum and ElectionActions.ts drift | `EPIC-03` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-156` | CI — Separate business-policy expectations from the Architecture suite | `EPIC-05` | `TODO — NOT AUTHORISED` |
+| `PBDIGIT-157` | GOV — Repair election-management feature-test drift (activation and management suites) | `EPIC-03` | `TODO — NOT AUTHORISED` |
+
+### PublicDigit delivery TODO from the completeness audit — (`PBDIGIT-159` … `PBDIGIT-208`)
+
+> **Delivery baseline frozen at PBDIGIT-208 (PO, 2026-10-01). New IDs only for a delivery obligation shown not to be covered by PBDIGIT-00…208.**
+>
+> `PBDIGIT-00`…`208` is the authoritative current delivery inventory. The Strategic Knowledge Traceability Audit (Track 2) creates **no** new ID: an apparently uncovered obligation is recorded there as a *candidate* and reviewed separately afterwards.
+
+Every remaining PublicDigit delivery TODO from the engineering backlog, the ARB programme register, the OperatingCore track and the product gaps, with its source linked. Specifications, classification and exclusions: [`2026-10-01-pbdigit-completeness-audit.md`](../reviews/2026-10-01-pbdigit-completeness-audit.md). `195`…`204` were added by the [story integrity review](../reviews/2026-10-01-pbdigit-story-integrity-review.md), and `205`…`208` by the [final closure audit](../reviews/2026-10-01-pbdigit-story-integrity-final.md) (**baseline: CLOSED WITH KNOWN GOVERNANCE ITEMS**). The review also leaves **decision D-1** open: 10 of these stories are engineering or documentation work that this README's own rule (line 6) places outside the product backlog. **None is authorised for implementation.**
+
+| ID | Story | Source | Status |
+|---|---|---|---|
+| `PBDIGIT-159` | Programme status integrity: the health table, the epic table and the NEXT ACTION describe July 2026, not today | `ENG-015` | 🔴 OPEN — first in sequence |
+| `PBDIGIT-160` | The merge gate cannot pass while an authorised RED-first increment is open (decision) | `ENG-013` | 🟡 DECISION REQUIRED (ARB) |
+| `PBDIGIT-161` | Greenfield PHPStan regression: 22 errors in Election OperatingCore | `ENG-014` | 🔴 OPEN — 2 fixable, 20 bound to held work |
+| `PBDIGIT-162` | Risky notices in `GreenfieldCore` have grown 57 → 112 with an unestablished cause | `ENG-012` · `F-7C-6` | 🟡 PLAN AUTHORISED (R-95), implementation not |
+| `PBDIGIT-163` | Shared Infrastructure (Outbox/Inbox) is outside static analysis and fails PHPStan max | `ENG-002` | 🔴 OPEN |
+| `PBDIGIT-164` | First mutation-score ratchet on the correction loop (MSI 50 %) | `ENG-004` | 🔴 OPEN — after 160 |
+| `PBDIGIT-165` | Finance tests crash: Membership and Shared each define their own `TenantId` | `AD-006` | 🔴 OPEN — re-verified 5/5 fail |
+| `PBDIGIT-166` | A test class name does not match its file, so its tests never run | `F-7C-1` | 🔴 OPEN — re-verified |
+| `PBDIGIT-167` | Broken unit and feature tests in the Membership, Elections, Geography and Governance contexts, and in legacy middleware | `F-7C-4` · `F-7C-5` | 🔴 OPEN — re-measure first |
+| `PBDIGIT-168` | The engineering platform (gate scripts, pre-push, CI role gate) has no developer guide | `ENG-006` | 🔴 OPEN |
+| `PBDIGIT-169` | Documentation indexes promise 30 documents that were never written | `ENG-010` | 🔴 OPEN |
+| `PBDIGIT-170` | Programme documentation consolidation (Stream B), trigger-based | `ENG-005` | ⏸️ DORMANT — trigger-based |
+| `PBDIGIT-171` | Domain Model Catalogue: recommended, never written | BACKLOG Parked (docs) | ⬜ OPEN — Low |
+| `PBDIGIT-172` | The voter journey and the election lifecycle use disjoint vocabularies | P-4 | 🔴 OPEN — discovery first |
+| `PBDIGIT-173` | Deployment documentation: the P-6 claim "none exists" is no longer literally true, and nothing verifies what exists | P-6 · health row | 🔴 OPEN — verification |
+| `PBDIGIT-174` | WP-3B: the determination issuance still mints a fresh provenance chain instead of continuing the challenge's | WP-3B · R-67 · R-71 | ⛔ BLOCKED — ownership unruled |
+| `PBDIGIT-175` | WP-4C-1 D3/D4: `AdjudicationFailureDeclared` is not in the Event Catalog and is never published | WP-4C-1 D3/D4 · R-97 | ⏸️ HELD — Board E1/E2 |
+| `PBDIGIT-176` | WP-4C-2: the Contestation Domain Owner has not answered Q1–Q4 | WP-4C-2 · R-90 · R-100 | ⛔ BLOCKED — Domain Owner decision |
+| `PBDIGIT-177` | WP-4D: no authority can deliver an adjudication decision (intake port + interim adapter unbuilt) | WP-4D · R-72 · R-73 | ⛔ NOT AUTHORISED — after 178 |
+| `PBDIGIT-178` | The issuance path writes the determination and the outbox row in two separate transactions (R-91) | R-91 · R-92 | ⛔ UNAUTHORISED — Decision Authority |
+| `PBDIGIT-179` | PM-6's issuance-confirmation half is allocated to no work package | PM-6 · R-82 | ⬜ OPEN — unallocated |
+| `PBDIGIT-180` | `enforceHorizon()` is not isolated per process (ER-08) | ER-08 · R-95 | 🟡 PLAN AUTHORISED, implementation not |
+| `PBDIGIT-181` | `ChallengeRaised` publication: the adopted path (R-75) is annotated as prohibited by accepted architecture | R-75 | ⛔ BLOCKED — contradictory record |
+| `PBDIGIT-182` | WP-8: the correction loop has never been validated end to end over the real path | WP-8 · R-79 | ⏸️ DEFERRED |
+| `PBDIGIT-183` | GREEN-5: report-period expiry (UC-4) is pinned RED and unimplemented | EM-IMPL-002 GREEN-5 | ⛔ DECISION PENDING (A/B/C) |
+| `PBDIGIT-184` | GREEN-6: recording a committee's constitution (UC-5) is pinned RED and unimplemented | EM-IMPL-002 GREEN-6 | ⛔ BLOCKED — `Q-UC5` |
+| `PBDIGIT-185` | GREEN-7: the four operating-core query services (UQ-1…UQ-4) are pinned RED and unimplemented | EM-IMPL-002 GREEN-7 | ⛔ HELD |
+| `PBDIGIT-186` | ADR-1 absent-aggregate normalization: the required domain slice does not exist, so the Rule-8 gate is BLOCKED | ADR-1 Rule-8 · BND-1 | ⛔ BLOCKED |
+| `PBDIGIT-187` | EM-DOM-001 Acts C and D (operational-status adapter and caller) are not authorised | EM-DOM-001 Acts C/D | ⬜ OPEN — not authorised |
+| `PBDIGIT-188` | A binding RED pin's docblock says the ADR "decision block is blank"; it has been decided since 2026-08-18 | CONTEXT-publicdigit 2026-09-30 | ⬜ OPEN — comment only |
+| `PBDIGIT-189` | Reconcile the programme epic numbering: EPIC-003/004 were reused, EPIC-005/006 are undefined | BACKLOG epic table | 🟡 DECISION REQUIRED (ARB) |
+| `PBDIGIT-190` | Roadmap epic: Voting migration and verifiability (formerly EPIC-003) | epic: Voting | ⬜ NOT OPENED |
+| `PBDIGIT-191` | Roadmap epic: Appointment / Governance — delegates, mandates, authority chains (formerly EPIC-004) | epic: Appointment | ⬜ NOT OPENED |
+| `PBDIGIT-192` | Roadmap epic: Read Models and Public Transparency (formerly EPIC-005) | epic: Read Models | ⬜ NOT OPENED |
+| `PBDIGIT-193` | Roadmap epic: Election/Lifecycle migration of the legacy operational contexts (EPIC-006) | epic: legacy migration | ⬜ NOT OPENED |
+| `PBDIGIT-194` | Reference value objects (`*Ref`) were never reviewed for consistent naming and shape | `ENG-003` | ⬜ OPEN — Low |
+| `PBDIGIT-195` | Creating a committee through the canonical endpoint returns 201 and persists nothing | inline sweep (`CommitteeRepository.php:16`) | 🔴 OPEN — defect |
+| `PBDIGIT-196` | No one can file a challenge: the correction loop has no product entry point | roadmap §1 finding 1 | 🔴 OPEN — PO contract first |
+| `PBDIGIT-197` | No determination ever becomes final: the finality evaluator was never built | roadmap §0(f) · WP-6 closure | ⛔ BLOCKED — integration contract |
+| `PBDIGIT-198` | The adjudication horizon is never enforced in production: nothing calls `enforceHorizon()` | WP-6 plan `:84`/`:164` | 🔴 OPEN — ARB check vs R-91 |
+| `PBDIGIT-199` | WP-6B: Contestation never reacts to `AdjudicationExpired` | WP-6 closure · Decision C | ⏸️ DEFERRED |
+| `PBDIGIT-200` | Evidence-demand deadlines: the domain has no `Demand` concept | roadmap §0(e) · WP-6 closure | ⛔ BLOCKED — modelling gap |
+| `PBDIGIT-201` | Starting the vote still hides a valid voter's membership behind the ambient tenant (third site of `PBDIGIT-65`) | session-3 record B-2 | 🔴 OPEN — defect, re-verified |
+| `PBDIGIT-202` | Full Membership voter import always fails: `ElectionMembership::bulkAssignVoters()` does not exist | session-3 record §4.3 | 🔴 OPEN — defect, re-verified |
+| `PBDIGIT-203` | Voter import integrity: swallowed row errors, non-atomic writes, no assignment audit | session-3 record B-6 | ⛔ NOT AUTHORISED — grant re-confirmation |
+| `PBDIGIT-204` | ADR-2 restoration provenance: the domain cannot say why an election was restored | ADR-2 Rule-8 gate Q1–Q5 | ⛔ BLOCKED — domain slice first |
+| `PBDIGIT-205` | A raised challenge can be admitted but never dismissed or put under investigation | ADR-T20 · WP-5 plan | ⬜ OPEN — unallocated |
+| `PBDIGIT-206` | A challenge never lapses: the ruled timeout has no trigger | `Challenge::lapse()` · Round 50-07 | ⬜ OPEN — unallocated |
+| `PBDIGIT-207` | 99 write-path feature tests assert only a success status, so they cannot detect a lost business outcome | closure audit §6.3 | 🔴 OPEN — verification |
+| `PBDIGIT-208` | 1,345 failing tests in 213 files belong to no story: the legacy test estate outside the greenfield core | closure audit §7 (full run) | 🔴 OPEN — verification, classify first |
 
 ---
 

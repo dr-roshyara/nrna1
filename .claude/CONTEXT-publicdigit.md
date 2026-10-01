@@ -9,7 +9,21 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-09-30 *(additive — the **UC-4/`GREEN-5` PO/ARB scoping decision brief PREPARED, decision PENDING; `PBDIGIT-73` corrected additively** block is the newest; the `PBDIGIT-73` block below stands as history with its §9 corrections)*
+**Updated:** 2026-10-01 *(additive — the **PBDIGIT inventory baseline CLOSED WITH KNOWN GOVERNANCE ITEMS** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-01, **PBDIGIT delivery inventory baseline: CLOSED WITH KNOWN GOVERNANCE ITEMS** — `PBDIGIT-00`…`208`; ⛔ nothing implemented, nothing authorised, nothing committed)
+
+| | |
+|---|---|
+| 📄 **Records** | completeness audit `docs/publicdigit/reviews/2026-10-01-pbdigit-completeness-audit.md` (specs `159`…`208`) · integrity review `…-pbdigit-story-integrity-review.md` · **final closure audit `…-pbdigit-story-integrity-final.md`** |
+| 🧮 **Inventory** | 203 IDs (highest `PBDIGIT-208`); 1,040 source items classified across 7 source classes; 0 unclassified; 0 duplicates; 0 unowned obligations inside the boundary |
+| 🔴 **Live defects (runtime-confirmed)** | `201` (`start()` refuses a valid voter: ambient tenant scope) · `202` (Full Membership import → `BadMethodCallException`) · `195` (canonical committee endpoint: 201, nothing persisted) · `203` (import reports success, 0 memberships, errors swallowed) |
+| 🧪 **Test estate** | full `Unit` + `Feature` run: 6,762 tests · **1,965 failing in 335 files**; every file mapped to one owner (76–78 · 139 · 157 · 158 · RED · 165 · 167 · **208**) · 99 status-only write tests → `207` |
+| 🧊 **Frozen (PO, 2026-10-01)** | *Delivery baseline frozen at PBDIGIT-208. New IDs only for a delivery obligation shown not to be covered by PBDIGIT-00…208.* |
+| ▶️ **Track 2 authorised** | Strategic Knowledge Traceability Audit; plan `docs/plans/20261001-1813-strategic-knowledge-traceability-audit-plan.md`; **no PBDIGIT-209+**, candidates only |
+| ❓ **Next (human)** | **D-1** (do engineering/doc items get PBDIGIT stories?) · ~~whether to commission the traceability audit~~ (commissioned) (the delivery inventory is closed; the knowledge-to-delivery chain is not yet shown closed) · then authorise a first story (candidates: `201`, `202`) |
 
 ---
 

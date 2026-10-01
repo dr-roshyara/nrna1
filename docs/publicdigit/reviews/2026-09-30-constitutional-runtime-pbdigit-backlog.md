@@ -14,9 +14,9 @@
 
 ## 1. Executive summary
 
-- **77 tickets, `PBDIGIT-76` … `PBDIGIT-152`**. They take the repository from today's distributed voting authority to a frozen v1.0 Constitutional Governance Runtime.
+- **82 tickets, `PBDIGIT-76` … `PBDIGIT-157`**. They take the repository from today's distributed voting authority to a frozen v1.0 Constitutional Governance Runtime.
   - `133`–`138` were added on 2026-10-01 for tasks that had been identified but not yet ticketed (§4g).
-  - `139`–`152` come from the governance-capability story review, its correction pass, the gate verification and the scope-and-sequencing review, which covers admin lifecycle actions (§4h).
+  - `139`–`152` come from the governance-capability story review, its correction pass, the gate verification and the scope-and-sequencing review; `153`–`157` come from the orchestration/suspension story review (§4j), which covers admin lifecycle actions (§4h).
   - Earlier numbers were never renumbered.
 - **14 are HUMAN DECISION tickets**: `PBDIGIT-90`…`100` (H-1…H-11), `PBDIGIT-138` (H-12), `PBDIGIT-141` (H-13) and `PBDIGIT-150` (H-14). One more existing decision governs legacy retirement: **`PBDIGIT-45`**, with its PROPOSED ADR `ADR_20260806_1620_Constitutional_Rule_Ownership_Migration`.
 - **Characterization comes first and needs no decision.** It is C-1 (`76`–`78`), then C-2 (`79`–`80`), then C-3 (`81`–`84`).
@@ -80,7 +80,7 @@ Frozen constitution (one representation, one hash, verified on load, immutable)
 ## 4. Ticket numbering convention
 
 - **Discovered range.** The highest existing ticket number is `PBDIGIT-75` (file `PBDIGIT-75-newsletter-authorization-omits-election-tenancy-check.md`; commit `30fb47468`). The flat sequence convention is documented in `docs/publicdigit/backlog/README.md` §"ID conventions": one sequence, never reuse a number.
-- **Allocated here:** `PBDIGIT-76` … `PBDIGIT-132` (2026-09-30) and `PBDIGIT-133` … `PBDIGIT-152` (2026-10-01), consecutively. Every number was checked for zero references in the repository before allocation.
+- **Allocated here:** `PBDIGIT-76` … `PBDIGIT-132` (2026-09-30) and `PBDIGIT-133` … `PBDIGIT-157` (2026-10-01), consecutively. Every number was checked for zero references in the repository before allocation.
 - **Anomalies observed, not repaired** (they are not this backlog's to fix):
   - **`PBDIGIT-69` is already used twice.** The two files are `PBDIGIT-69-operating-core-post-verification-items.md` and `PBDIGIT-69-voter-eligibility-cache-is-tenant-unaware.md`, both committed in `50d1ff1b1`. This violates the README's never-reuse rule, and the PO should rename one of them.
   - **`PBDIGIT-52` … `57` are unused gaps.** They were deliberately **not** back-filled, so that the sequence stays chronological.
@@ -280,16 +280,17 @@ The graph enforces this: `144`/`145`/`146` depend on `140`, which depends on `13
 ### Track A1 — Admin Constitutional Governance (EPIC-03)
 
 ```
-139 (A: fixtures · B: PO/ARB disposition)
- └→ 140 characterize five authorities
+139 (A: fixtures · B: PO/ARB disposition) · 157 (admin feature-suite drift) · 153 (reproduce POST report → 142)
+ └→ 140 characterize five authorities (needs 139 A + 157)
      ├→ 109 resolver mechanics (shared with A2)
      │    └→ 144 role + precondition policies  [H-13 141]
      │         ├→ 145 remove engine matrix ─→ 147 frontend
      │         │                          └→ 152 route operation matrix [146]
      │         └→ 151 ElectionPolicy gates + controller inference [141]
      ├→ 142 suspend/resume through the guard [141]
-     ├→ 143 resume audit
-     ├→ 146 declarative registry [H-5 94, H-14 150]
+     ├→ 143 suspend/resume audit completeness
+     ├→ 154 governed date path [PBDIGIT-59]
+     ├→ 146 declarative registry [H-5 94, H-14 150] → 155 one vocabulary → 147
      └→ 148 recomputable lifecycle
  → 149 governance E2E (after all of the above) → 132
 ```
@@ -306,8 +307,8 @@ The graph enforces this: `144`/`145`/`146` depend on `140`, which depends on `13
 ### Track B — General repository/freeze work (independent)
 
 ```
-133 scanner fix · 134 PBDIGIT-69 collision · 130 claim corrections · 122 dead code
-123 CI job (after C-1 + 139) → 124–129 CI rules (progressive)
+133 scanner fix · 134 PBDIGIT-69 collision · 130 claim corrections · 122 dead code · 156 policy tests out of the Architecture suite
+123 CI job (after C-1 + 139 + 156) → 124–129 CI rules (progressive)
 security fixes 85–89 after their C-3 pins (PO-scheduled)
 ```
 
@@ -316,6 +317,27 @@ security fixes 85–89 after their C-3 pins (PO-scheduled)
 - the v1.0 freeze `132`.
 
 They are not merged artificially.
+
+## 4j. Orchestration/suspension story review (2026-10-01): implemented or not?
+
+**The story reviewed.** It is a status report ("constitutional governance runtime"). Its claims and TODOs 1–8 were checked against code and tests on 2026-10-01.
+
+| Story claim / TODO | Verdict | Evidence | Ticket |
+|---|---|---|---|
+| **TODO 1:** POST activate/suspend/resume return 302 with no mutation (top blocker) | ⚠️ **not reproduced** | suspend (7 route tests incl. mutation), resume (7 tests, `ElectionSuspensionTest:741,794,839`) and activate for chief and deputy all pass over HTTP; since 2026-08-15 only `dc04cce18` touched `withoutGlobalScopes()` in the relevant files; a 302 with a flash is the normal Inertia response | **`153`** reproduce in the real runtime; gates `142` |
+| **TODO 2:** suspension UI (canSuspend → button → reason modal → POST) | ✅ implemented | `Management.vue:324-334` (button gated by `canSuspend`, denial reason), `:1468-1486` (modal: reason ≥ 10, category, `router.post`), `useElectionCapabilities.ts:157-158` | — |
+| **TODO 3:** suspend → resume integration through HTTP | ✅ mostly | HTTP tests for suspend, resume and overlay short-circuit pass; one fixture failure (`139`) | full journey: `149` |
+| **TODO 4:** authorization matrix from the governance model | ⏳ open | two role vocabularies (`ElectionPolicy` vs RULES) | H-13 `141`, `144`, `151` |
+| **TODO 5:** audit captures actor, action, reason, category, time, prior context, result | ⚠️ partial | suspend audit asserted for actor/reason/time; `old_values` null; prior stage only in `suspended_lifecycle_context`, cleared by resume; resume unrecorded | **`143` amended** |
+| **TODO 6:** single vocabulary PHP → TS, drift-tested | ❌ | three lists (RULES 16, enum 15, TS 15); `auto_complete_nomination` only in RULES; the drift test compares enum ⊆ TS only | **`155`** |
+| **TODO 7:** architecture tests separate from business-policy tests | ❌ | `ConstitutionalBoundaryTest` in the Architecture suite (merge gate) holds policy behaviour, e.g. "suspension available in any state", which contradicts RULES (excludes `archived`) | **`156`** |
+| **TODO 8:** frontend contains no governance inference | ⚠️ | in addition to `147`'s findings, `ElectionApprovalPolicy.ts` hard-codes the approval threshold 40 that the backend reads from config | **`147` amended** |
+| "Overlay: VotingActive + Suspended, lifecycle position survives" | ❌ | `Suspended` is a lifecycle state | H-14 `150` (known deviation) |
+| Projection sovereignty (`completedStates`, `projectionAvailable`, `capabilities`) | ✅ | `ElectionManagementController` props (`:1360-1381`) | — |
+| — (found while verifying) ungoverned date edits | ❌ | `updateDates` writes `start_date`/`end_date` in any state via query builder; `end_date` drives `ValidateVoterSlugWindow`; three date endpoints, `updateTimeline` registered twice | **`154`** (gated by existing decision `PBDIGIT-59`) |
+| — (found while verifying) admin feature-suite drift | ❌ | `ElectionActivationTest` 4 failures (`voting_locked` fixture ×1; request lacks required `expected_voter_count` ×3); `ElectionManagementConstitutionalTest` 3 route-name errors | **`157`** |
+
+**Unmeasured percentages** in the story are not adopted.
 
 ---
 
@@ -341,7 +363,7 @@ They are not merged artificially.
 | `PBDIGIT-91` | H | H-2 — What is the registered device fingerprint (rule 5)? | — | PBDIGIT-101 · PBDIGIT-106 |
 | `PBDIGIT-92` | H | H-3 — Does trust level scale the per-IP vote limit as law, or is the limit exactly N? | — | PBDIGIT-101 · PBDIGIT-108 |
 | `PBDIGIT-93` | H | H-4 — Rule 7 semantics: which record counts prior votes per IP, and is the N-th or the (N+1)-th vote refused? | — | PBDIGIT-101 · PBDIGIT-106 · PBDIGIT-108 |
-| `PBDIGIT-94` | H | H-5 — Where does the participation action registry live? | — | PBDIGIT-110 · PBDIGIT-146 |
+| `PBDIGIT-94` | H | H-5 — Where does the participation action registry live? | — | PBDIGIT-110 · PBDIGIT-146 · PBDIGIT-155 |
 | `PBDIGIT-95` | H | H-6 — What is the single platform-organisation rule? | — | PBDIGIT-120 |
 | `PBDIGIT-96` | H | H-7 — Which record is the canonical 'already voted' fact, and which membership predicate is canonical? | — | PBDIGIT-105 |
 | `PBDIGIT-97` | H | H-8 — Do overlays ever influence CAST_VOTE, or remain audit-only observations? | — | PBDIGIT-111 |
@@ -370,7 +392,7 @@ They are not merged artificially.
 | `PBDIGIT-120` | D-2 | Delete legacy participation middleware | PBDIGIT-118 · PBDIGIT-95 | PBDIGIT-127 · PBDIGIT-131 |
 | `PBDIGIT-121` | D-2 | Delete duplicate controller participation gates and per-IP authorities | PBDIGIT-118 · PBDIGIT-45 | PBDIGIT-131 |
 | `PBDIGIT-122` | D-2 | Delete dead legacy code and retire tests of non-existent classes | — | PBDIGIT-132 |
-| `PBDIGIT-123` | CI | Bring election security zones under a blocking CI job | PBDIGIT-76 · PBDIGIT-77 · PBDIGIT-78 · PBDIGIT-139 | PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 |
+| `PBDIGIT-123` | CI | Bring election security zones under a blocking CI job | PBDIGIT-76 · PBDIGIT-77 · PBDIGIT-78 · PBDIGIT-156 · PBDIGIT-139 | PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 |
 | `PBDIGIT-124` | CI | CI rule 1 — Only the resolver and registered policies may create CapabilityDecision | PBDIGIT-123 · PBDIGIT-111 | PBDIGIT-132 |
 | `PBDIGIT-125` | CI | CI rule 2/4 — Canonical zones cannot import legacy authority; policies cannot consume policy outcomes | PBDIGIT-123 · PBDIGIT-108 | PBDIGIT-132 |
 | `PBDIGIT-126` | CI | CI rule 3 — Canonical zones cannot read mutable configuration or live models | PBDIGIT-123 · PBDIGIT-108 | PBDIGIT-132 |
@@ -379,7 +401,7 @@ They are not merged artificially.
 | `PBDIGIT-129` | CI | CI rule 8 — Constitutional immutability and replay sufficiency run in CI | PBDIGIT-123 · PBDIGIT-103 · PBDIGIT-114 | PBDIGIT-132 |
 | `PBDIGIT-130` | DOC | Correct false completion claims in historical documents | — | PBDIGIT-132 |
 | `PBDIGIT-131` | DOC | Consolidated Constitutional Governance Runtime developer guide | PBDIGIT-121 · PBDIGIT-119 · PBDIGIT-120 | PBDIGIT-132 |
-| `PBDIGIT-132` | V1 | Constitutional Governance Runtime v1.0 freeze | PBDIGIT-131 · PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 · PBDIGIT-104 · PBDIGIT-102 · PBDIGIT-86 · PBDIGIT-87 · PBDIGIT-88 · PBDIGIT-89 · PBDIGIT-122 · PBDIGIT-130 · PBDIGIT-152 · PBDIGIT-151 · PBDIGIT-133 · PBDIGIT-134 · PBDIGIT-137 · PBDIGIT-138 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-149 | — |
+| `PBDIGIT-132` | V1 | Constitutional Governance Runtime v1.0 freeze | PBDIGIT-131 · PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 · PBDIGIT-104 · PBDIGIT-102 · PBDIGIT-86 · PBDIGIT-87 · PBDIGIT-88 · PBDIGIT-89 · PBDIGIT-122 · PBDIGIT-130 · PBDIGIT-154 · PBDIGIT-155 · PBDIGIT-156 · PBDIGIT-152 · PBDIGIT-151 · PBDIGIT-133 · PBDIGIT-134 · PBDIGIT-137 · PBDIGIT-138 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-149 | — |
 | `PBDIGIT-133` | CI | Temporal-determinism audit scanner flags `validate(` as a `date()` call | — | PBDIGIT-132 |
 | `PBDIGIT-134` | DOC | Resolve the `PBDIGIT-69` numbering collision | — | PBDIGIT-132 |
 | `PBDIGIT-135` | C-3 | Characterize the non-slug `POST /votes` route and route-file loading | PBDIGIT-80 | PBDIGIT-117 |
@@ -387,19 +409,24 @@ They are not merged artificially.
 | `PBDIGIT-137` | D-2 | Dispose of the unwired divergence-observation infrastructure | PBDIGIT-116 | PBDIGIT-132 |
 | `PBDIGIT-138` | H | H-12 — Should voting codes be stored hashed at rest? | — | PBDIGIT-132 |
 | `PBDIGIT-139` | GOV | Repair capability-suite and suspension-suite test drift | — | PBDIGIT-123 · PBDIGIT-140 · PBDIGIT-149 |
-| `PBDIGIT-140` | GOV | Characterize the admin-action authorities at the HTTP boundary | PBDIGIT-139 | PBDIGIT-109 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-144 · PBDIGIT-146 · PBDIGIT-148 · PBDIGIT-149 |
+| `PBDIGIT-140` | GOV | Characterize the admin-action authorities at the HTTP boundary | PBDIGIT-139 · PBDIGIT-157 | PBDIGIT-109 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-144 · PBDIGIT-146 · PBDIGIT-148 · PBDIGIT-149 · PBDIGIT-154 |
 | `PBDIGIT-141` | H | H-13 — Who owns governance role authority, and what is the one role vocabulary? | — | PBDIGIT-142 · PBDIGIT-144 · PBDIGIT-149 · PBDIGIT-151 · PBDIGIT-152 |
-| `PBDIGIT-142` | GOV | Suspend and resume bypass ConstitutionalTransitionGuard | PBDIGIT-140 · PBDIGIT-141 | PBDIGIT-132 · PBDIGIT-149 |
-| `PBDIGIT-143` | GOV | Resume writes no audit record | PBDIGIT-140 | PBDIGIT-132 · PBDIGIT-149 |
+| `PBDIGIT-142` | GOV | Suspend and resume bypass ConstitutionalTransitionGuard | PBDIGIT-140 · PBDIGIT-141 · PBDIGIT-153 | PBDIGIT-132 · PBDIGIT-149 |
+| `PBDIGIT-143` | GOV | Suspend/resume governance audit is incomplete (resume unrecorded; suspend lacks prior stage) | PBDIGIT-140 | PBDIGIT-132 · PBDIGIT-149 |
 | `PBDIGIT-144` | GOV | Resolver role and precondition policies for admin actions | PBDIGIT-109 · PBDIGIT-141 · PBDIGIT-140 | PBDIGIT-145 · PBDIGIT-151 |
 | `PBDIGIT-145` | GOV | Remove the lifecycle engine's second capability matrix | PBDIGIT-144 | PBDIGIT-147 · PBDIGIT-149 · PBDIGIT-152 |
-| `PBDIGIT-146` | GOV | Declare overlay behaviour in the constitution and fix the placeholder resume target | PBDIGIT-140 · PBDIGIT-94 · PBDIGIT-150 | PBDIGIT-132 · PBDIGIT-149 · PBDIGIT-152 |
-| `PBDIGIT-147` | GOV | Frontend renders governance capabilities only | PBDIGIT-145 | PBDIGIT-132 · PBDIGIT-149 |
+| `PBDIGIT-146` | GOV | Declare overlay behaviour in the constitution and fix the placeholder resume target | PBDIGIT-140 · PBDIGIT-94 · PBDIGIT-150 | PBDIGIT-132 · PBDIGIT-149 · PBDIGIT-152 · PBDIGIT-155 |
+| `PBDIGIT-147` | GOV | Frontend renders governance capabilities only | PBDIGIT-145 · PBDIGIT-155 | PBDIGIT-132 · PBDIGIT-149 |
 | `PBDIGIT-148` | GOV | Lifecycle derivation cannot be recomputed for a given instant | PBDIGIT-140 | PBDIGIT-132 · PBDIGIT-149 |
-| `PBDIGIT-149` | GOV | Governance lifecycle end-to-end suite through HTTP | PBDIGIT-139 · PBDIGIT-140 · PBDIGIT-141 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-145 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-150 · PBDIGIT-152 · PBDIGIT-151 | PBDIGIT-132 |
+| `PBDIGIT-149` | GOV | Governance lifecycle end-to-end suite through HTTP | PBDIGIT-139 · PBDIGIT-140 · PBDIGIT-141 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-145 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-150 · PBDIGIT-154 · PBDIGIT-152 · PBDIGIT-151 | PBDIGIT-132 |
 | `PBDIGIT-150` | H | H-14 — Is suspension a lifecycle state or an operational overlay? | — | PBDIGIT-146 · PBDIGIT-149 |
 | `PBDIGIT-151` | GOV | Align Laravel ElectionPolicy gates and controller state inference with the resolver | PBDIGIT-141 · PBDIGIT-144 | PBDIGIT-132 · PBDIGIT-149 |
 | `PBDIGIT-152` | GOV | Route-level operation capability matrix duplicates the resolver | PBDIGIT-145 · PBDIGIT-141 · PBDIGIT-146 | PBDIGIT-132 · PBDIGIT-149 |
+| `PBDIGIT-153` | GOV | Reproduce the reported governance POST regression (activate/suspend/resume) | — | PBDIGIT-142 |
+| `PBDIGIT-154` | GOV | `updateDates` edits voting dates in any lifecycle state, bypassing every governance gate | PBDIGIT-140 · PBDIGIT-59 | PBDIGIT-132 · PBDIGIT-149 |
+| `PBDIGIT-155` | GOV | One constitutional action vocabulary: RULES, ElectionAction enum and ElectionActions.ts drift | PBDIGIT-146 · PBDIGIT-94 | PBDIGIT-132 · PBDIGIT-147 |
+| `PBDIGIT-156` | CI | Separate business-policy expectations from the Architecture suite | — | PBDIGIT-123 · PBDIGIT-132 |
+| `PBDIGIT-157` | GOV | Repair election-management feature-test drift (activation and management suites) | — | PBDIGIT-140 |
 
 ---
 
@@ -562,7 +589,7 @@ Engineering does not decide these. Each is decidable **now**, in parallel. **Non
 | **Architectural layer** | Human decision (constitutional semantics) |
 | **Decision ≠ authorisation** | a signed decision does not authorise any dependent ticket; each dependent still needs its own architecture acceptance (if gated A/B/E) and PO authorisation |
 | **Depends on** | — (can be decided now) |
-| **Blocks** | PBDIGIT-110 · PBDIGIT-146 |
+| **Blocks** | PBDIGIT-110 · PBDIGIT-146 · PBDIGIT-155 |
 | **Not blocked by it** | C-1 · C-2 · C-3 · X fixes · `PBDIGIT-109` · `PBDIGIT-122` · `PBDIGIT-123` · `PBDIGIT-130` |
 | **Acceptance** | decision block filled and signed by the PO/ARB; options and consequences stated from evidence; engineering does not choose |
 | **Evidence required** | the signed decision record |
@@ -1602,7 +1629,7 @@ Readiness review §14 deletion manifest. `PBDIGIT-122` (dead code) is independen
 | **Scope** | A blocking job running the election security unit/feature/architecture suites; triage of the 3 failing Architecture tests (fix or disposition); collect the misnamed test file. |
 | **Out of scope** | No new rules yet. |
 | **Architectural layer** | CI Architecture |
-| **Depends on** | PBDIGIT-76 · PBDIGIT-77 · PBDIGIT-78 · PBDIGIT-139 |
+| **Depends on** | PBDIGIT-76 · PBDIGIT-77 · PBDIGIT-78 · PBDIGIT-156 · PBDIGIT-139 |
 | **Blocks** | PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 |
 | **Files / areas likely affected** | .github/workflows/, composer.json scripts, phpunit.xml |
 | **Acceptance criteria** | Job runs on PRs and fails on a seeded violation. |
@@ -1766,6 +1793,28 @@ Readiness review §14 deletion manifest. `PBDIGIT-122` (dead code) is independen
 | **Risk** | Low. |
 | **Evidence required** | Run before/after plus the seeded-violation run. |
 
+### `PBDIGIT-156` — Separate business-policy expectations from the Architecture suite
+
+| | |
+|---|---|
+| **Status** | `TODO — NOT AUTHORISED` |
+| **Stage** | CI |
+| **Architecture gate** | — |
+| **Purpose** | Keep architecture tests about structure, so governance policy can evolve without breaking the architecture gate (the story's TODO 7). |
+| **Problem** | `tests/Architecture/GovernanceRuntime/ConstitutionalBoundaryTest.php` — part of the Architecture suite that the CI merge gate runs — contains behavioural governance-policy tests (e.g. `test_suspension_is_sovereignty_override_available_in_any_state` posts suspend as a chief; `test_code_creation_is_preparatory_allowed_during_setup` is one of the 3 currently failing Architecture tests). Its name claims suspension is available 'in any state', while `ElectionConstitution::RULES['suspend']` excludes `archived`. Policy expectations living in the architecture gate make a policy decision (H-13) look like an architecture violation. |
+| **Scope** | Move behavioural governance-policy tests to the Feature/governance suites (unchanged assertions); keep structural rules in `tests/Architecture`; record the 'in any state' naming contradiction as input to H-13 and the suspend/resume ticket. |
+| **Out of scope** | No production code (`app/`, `routes/`, `config/`, `database/migrations/`). No assertion weakened, deleted, skipped or marked incomplete. No change to expected behaviour. No real test converted to demo. No session flags added to pass. Moving a test is not changing it: assertions, fixtures and outcomes stay identical. |
+| **Architectural layer** | Test infrastructure |
+| **Depends on** | — |
+| **Blocks** | PBDIGIT-123 · PBDIGIT-132 |
+| **Files / areas likely affected** | tests/Architecture/GovernanceRuntime/ConstitutionalBoundaryTest.php → tests/Feature/Governance/ (move); phpunit.xml suites if needed |
+| **Acceptance criteria** | The Architecture suite contains no role/state business-policy expectations; the moved tests run unchanged in a Feature suite. **Progressive enforcement:** the rule is advisory until its target architecture exists (its dependencies), then blocking; all rules blocking by V1. |
+| **Tests required** | architecture + feature (existing tests only) |
+| **Architectural invariants** | Architecture tests enforce structure; policy tests enforce policy. |
+| **Definition of Done** | Move commit; run before/after. |
+| **Risk** | The moved tests still need to run in a CI job. |
+| **Evidence required** | Runs; suite listing. |
+
 
 ## 13a. Governance-capability tickets (admin lifecycle actions)
 
@@ -1805,8 +1854,8 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Scope** | `@characterization` HTTP tests per action × representative state × role (chief, deputy, ordinary user, platform admin) asserting what each source says today and what the executed request does. **Also pin the suspension deviation:** for a suspended election in each underlying stage, `getState()` returns `Suspended` and no API exposes the underlying stage (input to H-14). |
 | **Out of scope** | No production fix. Tests pin CURRENT behaviour (label `@characterization`), including defects. No redesign, no CAST_VOTE, no resolver change. |
 | **Architectural layer** | Characterization |
-| **Depends on** | PBDIGIT-139 |
-| **Blocks** | PBDIGIT-109 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-144 · PBDIGIT-146 · PBDIGIT-148 · PBDIGIT-149 |
+| **Depends on** | PBDIGIT-139 · PBDIGIT-157 |
+| **Blocks** | PBDIGIT-109 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-144 · PBDIGIT-146 · PBDIGIT-148 · PBDIGIT-149 · PBDIGIT-154 |
 | **Files / areas likely affected** | tests/Feature/Characterization/Governance/ |
 | **Acceptance criteria** | A table action × state × role → (resolver, guard, policy, engine, executed outcome), each cell pinned by a test. |
 | **Tests required** | feature/HTTP |
@@ -1827,7 +1876,7 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Scope** | Route suspend/resume through the guard under the H-13 decision; keep the fact-preserving behaviour (no voting-window mutation; resume re-derives). Disposition for the two console commands recorded. |
 | **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. |
 | **Architectural layer** | Authority |
-| **Depends on** | PBDIGIT-140 · PBDIGIT-141 |
+| **Depends on** | PBDIGIT-140 · PBDIGIT-141 · PBDIGIT-153 |
 | **Blocks** | PBDIGIT-132 · PBDIGIT-149 |
 | **Files / areas likely affected** | app/Http/Controllers/Election/ElectionManagementController.php (suspend, resume) |
 | **Acceptance criteria** | Suspending an archived election is refused; role outcome matches H-13; the characterization pins change only where this ticket names it. |
@@ -1837,7 +1886,7 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Risk** | Changes who can suspend if H-13 differs from today's policy — that is the decision's consequence, recorded in the RED test. |
 | **Evidence required** | Runs. |
 
-### `PBDIGIT-143` — Resume writes no audit record
+### `PBDIGIT-143` — Suspend/resume governance audit is incomplete (resume unrecorded; suspend lacks prior stage)
 
 | | |
 |---|---|
@@ -1845,8 +1894,8 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Stage** | GOV |
 | **Architecture gate** | G |
 | **Purpose** | Make the audit trail of a governance hold complete. |
-| **Problem** | `suspend` records `ElectionAuditLog::record($election, 'suspend', …)` (`ElectionManagementController:1033-1040`); `resume` (`:1055-1072`) records nothing, so the audit shows a hold that never ended. |
-| **Scope** | Record a `resume` audit entry with actor, time and the re-derived lifecycle state. |
+| **Problem** | `suspend` records `ElectionAuditLog::record($election, 'suspend', …)` (`ElectionManagementController:1033-1040`); `resume` (`:1055-1072`) records nothing, so the audit shows a hold that never ended. **Amended 2026-10-01:** the suspend record is also incomplete — `old_values` is `null`; the suspended lifecycle stage lives only in `elections.suspended_lifecycle_context`, which `resume()` resets to `null`, so after resume no record says which stage was suspended; `suspension_category` is stored but not asserted (`ElectionSuspensionTest::suspend_creates_governance_audit_record`). |
+| **Scope** | Record a `resume` audit entry with actor, time and the re-derived lifecycle state. Also record the prior lifecycle stage in the suspend entry and assert category, actor, reason, time and the stage in both entries. |
 | **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. |
 | **Architectural layer** | Persistence / Audit |
 | **Depends on** | PBDIGIT-140 |
@@ -1916,7 +1965,7 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. **Declarative and bounded:** the registry declares rules (roles, applicable states, preconditions, overlay behaviour, metadata); policies interpret them. No business logic, callbacks or computed rules in the registry. |
 | **Architectural layer** | Constitutional Law |
 | **Depends on** | PBDIGIT-140 · PBDIGIT-94 · PBDIGIT-150 |
-| **Blocks** | PBDIGIT-132 · PBDIGIT-149 · PBDIGIT-152 |
+| **Blocks** | PBDIGIT-132 · PBDIGIT-149 · PBDIGIT-152 · PBDIGIT-155 |
 | **Files / areas likely affected** | app/Domain/Election/Constitution/ElectionConstitution.php; app/Application/Election/Capabilities/{ElectionConstitutionRegistry.php, Policy/OverlayCapabilityPolicy.php} |
 | **Acceptance criteria** | No action-specific constant left in `OverlayCapabilityPolicy`; no placeholder in RULES. |
 | **Tests required** | unit + architecture |
@@ -1933,11 +1982,11 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Stage** | GOV |
 | **Architecture gate** | F |
 | **Purpose** | Stop the UI from deciding authority. |
-| **Problem** | `Management.vue:925,939` branch on `election.state === 'results_published'`; `SubmitForApproval.vue:151` on `state === 'draft'`; Election pages use legacy `can*`/`allowedActions` props 36 times. Only `StateMachinePanel.vue` / `useElectionCapabilities.ts` consume the resolver's `capabilities`. |
-| **Scope** | Replace those checks with `capabilities.<action>.allowed` / denial reason; display-only state labels may remain. |
+| **Problem** | `Management.vue:925,939` branch on `election.state === 'results_published'`; `SubmitForApproval.vue:151` on `state === 'draft'`; Election pages use legacy `can*`/`allowedActions` props 36 times. Only `StateMachinePanel.vue` / `useElectionCapabilities.ts` consume the resolver's `capabilities`. Also: `resources/js/Domain/Election/ElectionApprovalPolicy.ts` hard-codes `SELF_SERVICE_LIMIT = 40` and decides auto-submit vs review in Vue (`Management.vue` `handleSubmitForApproval`), while the backend reads the configurable `config('election.self_service_voter_limit', 40)` (`Election.php:1307,1333`). |
+| **Scope** | Replace those checks with `capabilities.<action>.allowed` / denial reason; display-only state labels may remain. The approval-routing decision (`ElectionApprovalPolicy.ts`) is replaced by a backend capability/projection. |
 | **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. Follows `.claude/UI_GUIDELINES.md`; `npm run design-check` before/after. |
 | **Architectural layer** | Projection |
-| **Depends on** | PBDIGIT-145 |
+| **Depends on** | PBDIGIT-145 · PBDIGIT-155 |
 | **Blocks** | PBDIGIT-132 · PBDIGIT-149 |
 | **Files / areas likely affected** | resources/js/Pages/Election/{Management,SubmitForApproval}.vue and other Election pages using legacy props |
 | **Acceptance criteria** | 0 authority decisions on raw state or legacy props in Election pages (scanner/grep test); UI behaviour equals the snapshot. |
@@ -1981,7 +2030,7 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Scope** | HTTP E2E tests for the three scenarios in the story (§15), with role expectations from H-13. |
 | **Out of scope** | No production change. Expectations follow the consolidated architecture and the H-13/H-14 decisions. |
 | **Architectural layer** | Characterization |
-| **Depends on** | PBDIGIT-139 · PBDIGIT-140 · PBDIGIT-141 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-145 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-150 · PBDIGIT-152 · PBDIGIT-151 |
+| **Depends on** | PBDIGIT-139 · PBDIGIT-140 · PBDIGIT-141 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-145 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-150 · PBDIGIT-154 · PBDIGIT-152 · PBDIGIT-151 |
 | **Blocks** | PBDIGIT-132 |
 | **Files / areas likely affected** | tests/Feature/Governance/ |
 | **Acceptance criteria** | All three scenarios run green through HTTP; each state transition asserted. |
@@ -2033,6 +2082,94 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Architectural invariants** | Middleware enforces the resolver decision; it does not compute one. |
 | **Definition of Done** | RED→GREEN; guide. |
 | **Risk** | `apply_candidacy`/`view_results` rules must reach the registry first, or behaviour is lost. |
+| **Evidence required** | Runs. |
+
+### `PBDIGIT-153` — Reproduce the reported governance POST regression (activate/suspend/resume)
+
+| | |
+|---|---|
+| **Status** | `TODO — NOT AUTHORISED` |
+| **Stage** | GOV |
+| **Architecture gate** | — |
+| **Purpose** | Turn the reported 'POST governance operations return 302 without mutation' into evidence before anything on that path changes. |
+| **Problem** | A status report names this as the top blocker: POST activate/suspend/resume return HTTP 302 with no success flash and no mutation, while direct aggregate calls work, possibly after recent `withoutGlobalScopes()` changes. **The test suite does not reproduce it:** `POST elections.suspend` (7 route tests incl. `suspend_sets_suspended_at_and_engine_derives_suspended`), `POST elections.resume` (7 tests, `ElectionSuspensionTest:741,794,839`) and `POST elections.activate` for chief and deputy (`ElectionActivationTest`) all pass and mutate. Since 2026-08-15 the only commit touching `withoutGlobalScopes()` in the policy/guard/officer/controller/model files is `dc04cce18` (nomination completion). Note: a 302 redirect with a flash is Inertia's normal POST response. |
+| **Scope** | Reproduce in the real runtime (browser or HTTP with a real session, CSRF, the production middleware stack, tenant/session context as set by the UI): record request, response status, session flash, persisted columns and log lines for activate, suspend and resume. Outcome: either a pinned failing test that reproduces the defect (then a new defect ticket), or a recorded 'not reproducible' with the evidence. |
+| **Out of scope** | No fix in this ticket. No change to suspend/resume/activate code, middleware, policies or tenancy. |
+| **Architectural layer** | Characterization |
+| **Depends on** | — |
+| **Blocks** | PBDIGIT-142 |
+| **Files / areas likely affected** | tests/Feature/Characterization/Governance/ (a reproducing test, if any); an evidence note |
+| **Acceptance criteria** | Either a reproducing test exists and a defect ticket is raised, or the evidence shows the paths work and the report is closed as not reproducible. |
+| **Tests required** | feature/HTTP (+ manual browser evidence) |
+| **Architectural invariants** | Behaviour is changed only on evidence. |
+| **Definition of Done** | Evidence recorded; the suspend/resume ticket proceeds only after this. |
+| **Risk** | The real-environment difference (session/tenant set by the UI vs tests) is exactly where `activate()`'s own `session(['current_organisation_id' => …])` / `TenantContext::set(...)` and `withoutGlobalScopes()` interact — record it, do not fix it here. |
+| **Evidence required** | Request/response/DB/log capture. |
+
+### `PBDIGIT-154` — `updateDates` edits voting dates in any lifecycle state, bypassing every governance gate
+
+| | |
+|---|---|
+| **Status** | `TODO — NOT AUTHORISED` |
+| **Stage** | GOV |
+| **Architecture gate** | A, B → **ARB architecture approval required in addition to PO authorisation** |
+| **Purpose** | Remove an ungoverned path that can change when voting ends. |
+| **Problem** | `ElectionManagementController::updateDates` (`:749-764`, `PATCH /update-dates`, `electionRoutes.php:336`) checks only the `manageSettings` policy and writes the legacy `start_date`/`end_date` with a query-builder `update()` (no model events, no lifecycle check). `ValidateVoterSlugWindow` rejects voters once `end_date` has passed ("This election has ended"), so an officer with `manageSettings` can move the effective end of voting during VotingActive. Three endpoints edit election dates with three different rules: `updateDates` (none), `updateVotingDates` (`:1260`, its own state check) and `updateTimeline` (`:1436`, `canEditTimeline()` + `canUpdatePhaseDates()`); `updateTimeline` is registered on two routes (`organisations.php:324`, `electionRoutes.php:372`). Which timestamps are constitutional is the open decision `PBDIGIT-59`. |
+| **Scope** | Per the `PBDIGIT-59` decision: one date-editing path governed by the resolver/guard; the legacy `start_date`/`end_date` write removed or derived; duplicate route registration resolved. |
+| **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. |
+| **Architectural layer** | Authority |
+| **Depends on** | PBDIGIT-140 · PBDIGIT-59 |
+| **Blocks** | PBDIGIT-132 · PBDIGIT-149 |
+| **Files / areas likely affected** | app/Http/Controllers/Election/ElectionManagementController.php (updateDates, updateVotingDates, updateTimeline); routes/election/electionRoutes.php, routes/organisations.php (date routes) |
+| **Acceptance criteria** | No endpoint can change a voting-window fact outside the governed path; a pinned test proves `updateDates` cannot move `end_date` during VotingActive. |
+| **Tests required** | feature/HTTP |
+| **Architectural invariants** | Lifecycle facts change only through governed transitions. |
+| **Definition of Done** | RED→GREEN; guide. |
+| **Risk** | Admin UX relies on these endpoints — inventory callers (Vue) first. |
+| **Evidence required** | Runs; route list. |
+
+### `PBDIGIT-155` — One constitutional action vocabulary: RULES, ElectionAction enum and ElectionActions.ts drift
+
+| | |
+|---|---|
+| **Status** | `TODO — NOT AUTHORISED` |
+| **Stage** | GOV |
+| **Architecture gate** | B → **ARB architecture approval required in addition to PO authorisation** |
+| **Purpose** | Make the action vocabulary single-sourced, as the story's TODO 6 requires. |
+| **Problem** | Three hand-maintained lists name governance actions: `ElectionConstitution::RULES` (16 keys — the list the resolver uses), the PHP enum `ElectionAction` (15) and `resources/js/Constants/ElectionActions.ts` (15). They already drift: `auto_complete_nomination` is in RULES only. The drift test `ElectionStateMachineConsistencyTest::test_frontend_contains_all_php_enum_actions` compares enum ⊆ TS and passes; nothing compares either with RULES. |
+| **Scope** | One canonical source (the registry, per H-5) from which the PHP enum and the TS constants are derived or checked; an architecture test that compares every representation with the canonical one. |
+| **Out of scope** | No change outside the named site. No new lifecycle state (the story itself forbids Cancelled/Paused/LegalHold/… as states). No dual-axis lifecycle rewrite. Voting-path tickets are not affected. No change to which actions exist. |
+| **Architectural layer** | Constitutional Law |
+| **Depends on** | PBDIGIT-146 · PBDIGIT-94 |
+| **Blocks** | PBDIGIT-132 · PBDIGIT-147 |
+| **Files / areas likely affected** | app/Domain/Election/Enum/ElectionAction.php, app/Domain/Election/Constitution/ElectionConstitution.php, resources/js/Constants/ElectionActions.ts, tests/Architecture/ElectionStateMachineConsistencyTest.php |
+| **Acceptance criteria** | A test fails if any representation differs from the canonical vocabulary; the current `auto_complete_nomination` gap is resolved (included or explicitly excluded with a reason). |
+| **Tests required** | architecture + frontend unit |
+| **Architectural invariants** | One constitutional vocabulary; no drift between backend and frontend. |
+| **Definition of Done** | RED→GREEN; guide. |
+| **Risk** | Build step for generated TS must not break `npm run build`. |
+| **Evidence required** | Runs. |
+
+### `PBDIGIT-157` — Repair election-management feature-test drift (activation and management suites)
+
+| | |
+|---|---|
+| **Status** | `TODO — NOT AUTHORISED` |
+| **Stage** | GOV |
+| **Architecture gate** | — |
+| **Purpose** | Make the remaining admin-governance HTTP suites observe current behaviour before the authority characterization. |
+| **Problem** | `ElectionActivationTest` 10 tests / 4 failures: `test_cannot_activate_already_active_election` (fixture has the approved candidacy but no `voting_locked`, so the election never reaches VotingActive and `begin_setup` succeeds); `test_email_notification_*` ×3 (the tests post only `name`, but `store` requires `expected_voter_count`, so no election is created and no notification is sent). `ElectionManagementConstitutionalTest` 5 tests / 3 errors: routes renamed — `elections.update-voting-dates` is now `organisations.elections.update-voting-dates` (`organisations.php:350-351`), `elections.index` no longer exists. `ElectionScenarioFactory::votingActiveWithChief()` already builds a valid VotingActive election. |
+| **Scope** | Fixture/request/route repair only: add `voting_locked`, send the now-required fields, use current route names. |
+| **Out of scope** | No production code (`app/`, `routes/`, `config/`, `database/migrations/`). No assertion weakened, deleted, skipped or marked incomplete. No change to expected behaviour. No real test converted to demo. No session flags added to pass. The C-1 governing rule applies. |
+| **Architectural layer** | Test infrastructure |
+| **Depends on** | — |
+| **Blocks** | PBDIGIT-140 |
+| **Files / areas likely affected** | tests/Feature/Election/{ElectionActivationTest, ElectionManagementConstitutionalTest}.php |
+| **Acceptance criteria** | Both suites run with 0 infrastructure failures; remaining failures classified BEHAVIOURAL. |
+| **Tests required** | feature/HTTP (existing tests only) |
+| **Architectural invariants** | Tests observe the current production contract. |
+| **Definition of Done** | Before/after runs. |
+| **Risk** | Low. |
 | **Evidence required** | Runs. |
 
 
@@ -2094,7 +2231,7 @@ From the 2026-10-01 review of the governance-capability story (§4h). These cons
 | **Scope** | Verify the readiness-review §19 Definition of Done item by item; record the freeze. |
 | **Out of scope** | No new scope. |
 | **Architectural layer** | Governance |
-| **Depends on** | PBDIGIT-131 · PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 · PBDIGIT-104 · PBDIGIT-102 · PBDIGIT-86 · PBDIGIT-87 · PBDIGIT-88 · PBDIGIT-89 · PBDIGIT-122 · PBDIGIT-130 · PBDIGIT-152 · PBDIGIT-151 · PBDIGIT-133 · PBDIGIT-134 · PBDIGIT-137 · PBDIGIT-138 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-149 |
+| **Depends on** | PBDIGIT-131 · PBDIGIT-124 · PBDIGIT-125 · PBDIGIT-126 · PBDIGIT-127 · PBDIGIT-128 · PBDIGIT-129 · PBDIGIT-104 · PBDIGIT-102 · PBDIGIT-86 · PBDIGIT-87 · PBDIGIT-88 · PBDIGIT-89 · PBDIGIT-122 · PBDIGIT-130 · PBDIGIT-154 · PBDIGIT-155 · PBDIGIT-156 · PBDIGIT-152 · PBDIGIT-151 · PBDIGIT-133 · PBDIGIT-134 · PBDIGIT-137 · PBDIGIT-138 · PBDIGIT-142 · PBDIGIT-143 · PBDIGIT-146 · PBDIGIT-147 · PBDIGIT-148 · PBDIGIT-149 |
 | **Blocks** | — |
 | **Files / areas likely affected** | docs/publicdigit/reviews/ (freeze record) |
 | **Acceptance criteria** | Every DoD item evidenced by a CI-run test. |
@@ -2167,4 +2304,4 @@ These are the readiness review §19 criteria, each owned by a ticket.
 - **Related existing tickets:** `PBDIGIT-35/37/41/42/45/49/64/65/66/68/69`.
 - **ADR:** `ADR_20260806_1620` (PROPOSED).
 - **Commits:** `ba4cfa9c1` (`assignVoter` removed), `f2c2cc4ee`, `606c362aa` (lifecycle rules), `50d1ff1b1` (the `PBDIGIT-69` collision).
-- **Tooling:** the ticket data and consistency check (77 tickets, no dependency cycles; "Blocks" computed as the inverse of "Depends on") were generated from one source file in the session scratchpad.
+- **Tooling:** the ticket data and consistency check (82 tickets, no dependency cycles; "Blocks" computed as the inverse of "Depends on") were generated from one source file in the session scratchpad.
