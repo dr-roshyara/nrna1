@@ -1,0 +1,78 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "fixed": {
+    "B1": true,
+    "B2": true
+  },
+  "gap_tests": [
+    {"gap": "G1", "record": "R15", "answer": "act NONE, basis SELF_PERFORMED_OUTSIDE_RA3, operation classify (category letter first in span), SPLIT_REQUIRED: recommend, state_if_extended ACT_OCCURRED (intended; literal rank 3 gives no allowed value)", "determinate": true},
+    {"gap": "G1", "record": "R16", "answer": "as R15", "determinate": true},
+    {"gap": "G1", "record": "R17", "answer": "as R15", "determinate": true},
+    {"gap": "G1", "record": "R18", "answer": "as R15 if 'already ARB-adopted in Handover §9' is a ground (R-A5 step 1); otherwise a REPORTED adopt (D3 (ii)) at rank 3, which outranks the gated candidates (C8): ACT_OCCURRED adopt, SPLIT_REQUIRED: classify", "determinate": false},
+    {"gap": "G1", "record": "R19", "answer": "act NONE, SELF_PERFORMED_OUTSIDE_RA3, classify (category C), state_if_extended ACT_OCCURRED; SPLIT_REQUIRED: recommend (missing from CHANGELOG)", "determinate": true},
+    {"gap": "G1", "record": "R20", "answer": "CHANGELOG: NONE / classify. Literal rules: 'documented in PB-004 retro §9 + Handover §8' is a REPORTED act (another document named), not in the evidence column and not a ground, so a rank-3 candidate that beats gated classify: ACT_OCCURRED document, REPORTED", "determinate": false},
+    {"gap": "G1", "record": "R21", "answer": "act NONE, SELF_PERFORMED_OUTSIDE_RA3, classify (category D); 'explicitly ruled' is evidence and excluded; 'replaced only on repeated evidence' goes in norm.indicative", "determinate": true},
+    {"gap": "G1", "record": "R27", "answer": "act NONE, SELF_PERFORMED_OUTSIDE_RA3, apply §12; state_if_extended ACT_ATTEMPTED / PREPARED (R-83 section); later_disposition R-86; 'rather than superseding' is a contrastive; norm NONE; indicative 'it APPLIES §12'", "determinate": true},
+    {"gap": "G2", "record": "R15-R18", "answer": "ELIGIBLE, VERDICT, promote, target = row behaviour; category A in other_clauses", "determinate": true},
+    {"gap": "G2", "record": "R19", "answer": "STATUS_CONSTRAINT, STATUS_PREDICATE, status: category C, target Registration != Delivery; other_clauses also include '-> D' and the evidence column's 'permanent design principle' (D11 no longer applies)", "determinate": true},
+    {"gap": "G2", "record": "R20", "answer": "STATUS_CONSTRAINT, STATUS_PREDICATE, status: category D, target Strangler reconstitution; 'Remains Candidate' in other_clauses", "determinate": true},
+    {"gap": "G2", "record": "R21", "answer": "STATUS_CONSTRAINT, STATUS_PREDICATE, status: category D; 'replaced only on repeated evidence' in norm.indicative", "determinate": true},
+    {"gap": "G3", "record": "R01", "answer": "act NONE, SELF_PERFORMED_OUTSIDE_RA3, operation resolve (complement of 'declines'), target the ambiguity about the Chief's own authority, state_if_extended UNKNOWN (no proposal to resolve stated); norm PROHIBITED, OPERATOR, adopt, about_actor a self-issued act, performative_token false, cited_as_ground false if the marker list is closed", "determinate": true},
+    {"gap": "G3", "record": "R26", "answer": "ACT_REFUSED supersede ADR-T14, SELF_PERFORMED (register row, listed op, stated 'supersession question'), attributed_to the Board; norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY, performative_token true", "determinate": true},
+    {"gap": "G3", "record": "R29", "answer": "act NONE, basis NONE; norm NONE ('would' is a modal)", "determinate": true},
+    {"gap": "G4", "record": "R05", "answer": "ACT_ATTEMPTED / PREPARED, authorize WP-4C-1, SELF_PERFORMED; norm AUTHORIZED, OPERATOR, plan + implement, performative_token true (not bare), stated_by ARB CHIEF (PREPARED)", "determinate": true},
+    {"gap": "G5", "record": "R10", "answer": "act NONE, basis NONE; norm STATUS_CONSTRAINT, STATUS_PREDICATE (D8 (ii)), begin implementation, WP-4B", "determinate": true},
+    {"gap": "G5", "record": "R23", "answer": "ACT_OCCURRED adopt, SELF_PERFORMED (by the D3 example), attributed_to Principal Architect; norm STATUS_CONSTRAINT, status: permanent documentation standard; 'adopted' in other_clauses", "determinate": true},
+    {"gap": "G6", "record": "R02", "answer": "ACT_OCCURRED adopt R-81..R-85, SELF_PERFORMED, attributed_to Decision Authority; norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY, adopt, performative_token true", "determinate": true},
+    {"gap": "G6", "record": "R30", "answer": "ACT_OCCURRED adopt, target ANNOTATE; norm STATUS_CONSTRAINT, PERFORMATIVE_ONLY, about_operation adopt, about_target ANNOTATE (D13 (iii))", "determinate": true},
+    {"gap": "G6", "record": "R06/R07", "answer": "acts: ACT_WITHDRAWN withdraw R-90 (REPORTED) and ACT_OCCURRED rule R-90 (REPORTED); which record_id gets which follows lineage. Norm present, identical on both, STATUS_CONSTRAINT, cited_as_ground true, shared_with cross-listed. Primary clause undecided: 'it was operational acceptance' (class label on R-90, first in span) vs 'the register holds constitutional decisions'", "determinate": "value yes; about_target/about_operation no"},
+    {"gap": "conflict-test", "record": "R12", "answer": "PERMITTED plan WP-8 (first in span); PROHIBITED start in other_clauses", "determinate": true},
+    {"gap": "conflict-test", "record": "R34", "answer": "AUTHORIZED (bare, performative_token true); PERMITTED begin RED in other_clauses", "determinate": true}
+  ],
+  "still_ambiguous": [
+    "R20 act: NONE / classify (CHANGELOG) vs ACT_OCCURRED document, REPORTED (literal rules; C8 ranks gated candidates below rank 3)",
+    "R18 act: NONE / classify vs ACT_OCCURRED adopt, REPORTED; turns on whether 'already ARB-adopted in Handover §9' is a ground (the R-A5 step 1 ground list is 'e.g.')",
+    "R06/R07 primary norm clause: 'it was operational acceptance' (D8 (i) class label on R-90) vs 'the register holds constitutional decisions'; value STATUS_CONSTRAINT either way, about_target/about_operation differ",
+    "R-36 'Expressly NOT promoted': state_if_extended ACT_REFUSED vs UNKNOWN (whether the R-36 row itself states a proposal); tag only",
+    "R22 norm: PROHIBITED promote (not a verdict span) vs INELIGIBLE promote (if 'NOT promoted to methodology' is a D12 verdict, making the ES-006.1 ground MENTIONED); C2 residual",
+    "R01 norm.cited_as_ground: false if the marker list is closed; the dash clause functions as the reason for the refusal; tag only",
+    "state_if_extended for positive gated self-performances (R15-R21, R27-type): literal rank 3 ('R-A3 (a)-(c) hold') gives NONE, which is not an allowed value; intended ACT_OCCURRED"
+  ],
+  "minimality_ok": true,
+  "conflicts_resolved": {
+    "C1_D3_circularity": {"resolved": true, "note": "self-performance defined by form; R-A3 (c) refers to it"},
+    "C2_D11_vs_RN1_vs_D8i": {"resolved": true, "note": "resolved for R06/R07; small residual: depends on R22 not being a D12 verdict span (D12 lists 'NOT promoted')"},
+    "C3_D12_vs_no_relevelling": {"resolved": true, "note": "R19-R21 STATUS_CONSTRAINT on the behaviour; 2c listed, but its recipe is mis-specified"},
+    "C4_RA1_vs_RA2": {"resolved": true, "note": "R-A1 fixed; the new rank-1 cell says 'proposal' only (see regression)"},
+    "C5_D4_vs_D6": {"resolved": true, "note": "(operation, target) split explicit"},
+    "C6_merge_vs_closed_list": {"resolved": true, "note": "a listed lemma is never replaced"},
+    "C7_norm_tie": {"resolved": true, "note": "class priority, then span order; other_clauses"},
+    "C8_operation_tie_highest_step": {"resolved": true, "note": "rank 1 highest, span order; side effects: REPORTED subsidiary acts outrank gated ones (R18/R20); order among gated candidates by state_if_extended not stated"}
+  },
+  "neutrality_issues": [
+    "No leak into default observations found: act.state treats both polarities alike; TC-5 and TC-6 list the D11 and D8 (ii) choices",
+    "Nonblocking N-a: rank 3 'or R-A3 (a)-(c) hold' makes state_if_extended undefined for positive gated acts while negative gated acts get rank-1 values; read literally, TC-1 1c re-creates the r0 asymmetry inside the alternative computation (default coding unaffected)",
+    "Nonblocking N-b: after C3 only positive matrix rows carry verdicts, so D11 skips evidence-column content only on positive rows (R17 'deferred, NOT skipped' MENTIONED; R19 'permanent design principle' collected); affects other_clauses and TC-5 counts only",
+    "Nonblocking N-c: D7 imperative 'do not ...' is a prohibition operator, while D12 lists 'do not promote' as a verdict; OPERATOR wins, so negative recommendations become PROHIBITED promote and D12's example is unreachable (no gap record affected; matrix row 7 'do not duplicate it' is)",
+    "Nonblocking N-d: D6 FAILED vs rank 1 (disclosed): mechanism refusals ('refused: unknown transition type CLOSE') go to UNKNOWN, not ACT_ATTEMPTED / FAILED, because rank 1 needs a proposal; this drops work-failure observations (H-B material) from support counts"
+  ],
+  "theory_choices_complete": false,
+  "theory_choices_note": "All choices the r0 review found missing are listed (TC-1 negative case, TC-5, TC-6). Not fully computable: TC-1 1c has no state_if_extended for gated candidates that lose under step 4 (they exist only in SPLIT_REQUIRED); TC-2 2c's recipe would recode R15-R18's category A as INELIGIBLE and needs a label-polarity mapping no tag carries; TC-2 2b still has no join key (disclosed). TC-3, TC-4, TC-5 and TC-6 are computable.",
+  "blocking": [],
+  "nonblocking": [
+    "Rank 3: replace 'R-A3 (a)-(c) hold' with 'a SELF-PERFORMANCE (D3)', so the gate alone enforces R-A3 and state_if_extended is defined for positive gated acts",
+    "R-A5 step 1 / C8: decide whether REPORTED acts mentioned only as provenance or location ('documented in ...', 'already ARB-adopted in ...') are candidates; close the ground-marker list (settles R18, R20)",
+    "Rank-1 refusal cell: 'proposal or attempt' per R-A2 (contradicts M3's 'adds no condition'); settle D6 FAILED vs rank 1 for mechanism refusals",
+    "Record state_if_extended for gated candidates that lose under step 4, not only in SPLIT_REQUIRED, so TC-1 1c can be computed",
+    "TC-2 2c recipe: primary STATUS_PREDICATE only, records with no VERDICT clause, stated label set; give TC-2 2b a join tag",
+    "performative_token definition: 'the record's R-A3 act' vs 'every PERFORMATIVE_ONLY clause' disagree for records with no R-A3 act (R18 other clause, R03, reported adoptions); affects TC-4 4c",
+    "Settle D7 'do not ...' vs D12 'do not promote'",
+    "Say whether a negative disposition in a log ('NOT promoted to methodology', R22) can be a D12 verdict (C2 residual)",
+    "Give a primary-clause rule, or state that class labels like 'operational acceptance' are status predicates (R06/R07 about_target)",
+    "Define the order among gated candidates by state_if_extended; define the headline vs narrative participle boundary for summaries and logs ('duplication refused' in R-36, 'Adoption registered' in S0815)",
+    "D2 requires the performative to name the act, but the D3 examples treat category letters and imperative 'PROMOTE' as performing classify / recommend; say that the examples decide",
+    "TC-1 could note that self-performed withdrawals and reversals of named rulings are never in scope (X = withdraw / reverse for noun complements)",
+    "Minor minimality residue (disclosed): D12 eligibility-operator words and the NEG forms 'nothing may' / 'never may' go slightly beyond G2 and R01",
+    "CHANGELOG re-run details: SPLIT_REQUIRED: recommend missing on R19-R21; R19 other_clauses incomplete"
+  ]
+}

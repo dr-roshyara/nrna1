@@ -2526,3 +2526,15 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/LOOP-1BI/` (A, B = r0; TASK-r1, REVIEW-TASK-r1, BUNDLE-A1.sha256) |
+
+## F-LOG-0207 — SCHEMA-r3 r1: **PASS_WITH_LIMITATIONS** (B1, B2 fixed; minimal; 8 conflicts resolved; no leak in the default coding). Targeted r2 frozen
+- **Two non-blocking neutrality defects corrected before advancing:**
+  - **N-a:** an alternative-computation asymmetry;
+  - **N-d:** mechanism refusals and failures dropped, i.e. H-B material lost.
+- **Also fixed:** determinacy (R18/R20 ground-marker list) and the completeness of the theory choices.
+- **r2 also freezes `KNOWN-AMBIGUITIES.md`,** a prediction of where disagreements will fall, sealed before coding.
+- **Stop rule:** r2 FAIL → human.
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BI/` (A1, B1 = r1; TASK-r2, REVIEW-TASK-r2, BUNDLE-A2.sha256) |
