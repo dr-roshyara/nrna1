@@ -1,0 +1,147 @@
+{
+  "verdict": "FAIL",
+  "scripts_may_run": false,
+  "inputs_used": ["REVIEW-TASK.md", "TASK.md", "ENVIRONMENT.md", "HYPOTHESES.md", "REVIEW-r1.md", "REVIEW-r1.json (head)", "SPEC-r1.md (Part A, sections 0-1)", "SPEC-r2.md (full)", "SPEC-r2.json (meta, repairs, symmetry_table, decision_procedures, protocol blocks; script arrays spot-checked against the MD)"],
+  "method_note": "No command was run. Statements about git, bash and awk behaviour come from knowledge of the tools; confidence is given where it matters.",
+  "completeness": {
+    "SPEC-r2.md": "present and complete; every in-scope item has parts (1)-(5)",
+    "SPEC-r2.json": "present and complete (repairs, symmetry_table, spec_changes, rank0_protocol.script, scoping_protocol.script)",
+    "CHANGELOG-r2.md": "MISSING; SPEC-r2.md line 13 and the JSON meta refer to it as the list of consequential edits to FIXED items",
+    "in_scope_items_missing": [],
+    "consequence": "No item is NOT_FIXED merely for being missing; the missing CHANGELOG is blocking issue B-1"
+  },
+  "blocking_issues": [
+    {"id": "B-1", "where": "deliverables", "issue": "CHANGELOG-r2.md is missing although SPEC-r2 and the JSON reference it for the edits to FIXED items", "scenario": "The out-of-scope audit has no authoritative before/after record; the frozen package references a file that does not exist"},
+    {"id": "B-2", "where": "SPEC-r2 precedence clause (line 17) and Part A2", "issue": "Unrestated r1 sections remain in force: r1 section 1 P2/P4/P5/P7/P8 fields and falsifiers, FR-D8 P7/P8 bullets, section 0.5 ('not earlier than recording time'), section 0.11 (R-86 text -> FIRED-CONDITIONAL premise; recording-time fallback), FR-D7 (NIF-B uptake). They contradict FR-D1-r2, FR-N1, FR-N3 and FR-N5, and no tie-break is given. Section 1-P1-r2 replaces r1 P1 without restating its falsifiers.", "scenario": "P5-HD is scored FIRED on a third-party application (NIF-B/ACT-TP); P8-HB or P2-HB (non-C1) reaches FIRED-CONDITIONAL on the maker's texts; otherwise the scorer must pick a rule after seeing the data, which breaches FR-D5(f)"},
+    {"id": "B-3", "where": "DP-P4 (section 5-r2)", "issue": "Not exhaustive: there is no unconditional last row, and no rows for F89 by NIF-A with AD not by NIF-A, for AD=T (adoption form in the DCS), for AD NOT_IDENTIFIABLE (POSSIBLY_LATE), or for the AF-B branch when the assertion makes AD=T", "scenario": "Inputs that can occur get no grade, or row 7 returns DISJUNCTIVE{H-D.c2; H-B.c2} CROSS even though R-89 was adopted; this contradicts FR-N7, so D2 and N7 remain PARTIAL"},
+    {"id": "B-4", "where": "rank0-r2.sh line 1051; scope-r2.sh line 1445", "issue": "The script hash is taken from a relative ${BASH_SOURCE[0]} after cd \"$TOP\"", "scenario": "The documented usage ('from anywhere inside the working clone: bash rank0-r2.sh') run from a subdirectory makes the redirection fail (rc 1); 00_errors.tsv is non-empty, so CAPTURE_ERROR and exit 1; B.8 W4 makes exit 1 final with no rerun allowed. Confidence: high."},
+    {"id": "B-5", "where": "scope-r2.sh S5/S6 (EXC writer set)", "issue": "The executor writer set is built by excluding only doc extensions and doc directories, so the writers of any non-doc candidate path (status.json, queue.yaml, STATUS) are always in w_exec", "scenario": "Q3=INCLUDES_EXECUTOR_WRITERS, Q5=NO_AS_NIF_A[ACTOR_SET_ID] and I1=FAILS are forced for those candidates and for their channel aggregate; OPEN_LOCAL_CANDIDATES is fixed before the run for the most likely NIF-A candidates (SC-1 reappears); the 'no' is constructed, not observed (SC-2)"}
+  ],
+  "repair_status": {
+    "D1": {"status": "PARTIAL", "reason": "G-SYM is correct and symmetric, and FIRED needs NIF-A for every NS/ABS premise. But under the precedence clause, r1 texts admitting NIF-B or the graded fallback stay in force (SV-1, SV-2), and DX-MAK has a second grade, NOT_APPLICABLE, on P1-HD (SV-3)."},
+    "D2": {"status": "PARTIAL", "reason": "N8 fixed (P4 ungated; only S1-c/d/g gated); DP-P7 and DP-C1 exhaustive; DP-P4 not exhaustive (B-3)."},
+    "D5": {"status": "FIXED", "reason": "(b) FR-N9 reads root to capture, with POSSIBLY_LATE whether or not dated; (c) FR-N4 dual AF readings; (a), (d), (e), (f) kept."},
+    "D8": {"status": "FIXED", "reason": "P1 eligibility, expected change per type and keyword satisfaction table frozen, with a NOT_FROZEN_CLAUSE catch-all. Caveat: the P1 falsifier text is not restated (B-2)."},
+    "D9": {"status": "FIXED", "reason": "FR-D9-r2: V1-V4 first-match with UNDETERMINED first, existence-before vs force-before, no default from absence, no act-exclusivity baseline. The removed fallback survives only as text in r1 sections 0.5 and 0.11 (counted under B-2)."},
+    "N1": {"status": "PARTIAL", "reason": "FR-N1, ACT-TP and section 0.4-r2 are correct, but the r1 P5-HD falsifier ('NIF-A or NIF-B shows R-94 in force'), the r1 P5 NIF requirement and FR-D7 are not restated and so remain in force (SV-1)."},
+    "N2": {"status": "FIXED", "reason": "DX-ABS-INF presupposes H-D.c1a; ACT-CONTRA needs NIF-A; the baseline and O5 are removed."},
+    "N3": {"status": "PARTIAL", "reason": "FR-N3 is symmetric as stated, but the r1 graded fallback survives in unrestated P2/FR-D8/P8/section 0.11 text (SV-2), and P1-HD grades DX-MAK NOT_APPLICABLE (SV-3)."},
+    "N4": {"status": "FIXED", "reason": "Classification UNKNOWN; AF-N and AF-B frozen; only a common grade is scored, otherwise UNDETERMINED(AF_READING); NIF-A overrides. (The DP-P4 rows it evaluates are incomplete, counted under B-3.)"},
+    "N5": {"status": "FIXED", "note": "residual fallback text in r1 sections 0.5 and 0.11 (B-2)"},
+    "N6": {"status": "FIXED"},
+    "N7": {"status": "PARTIAL", "reason": "DP-P4 has no catch-all (B-3)"},
+    "N8": {"status": "FIXED"},
+    "N9": {"status": "FIXED"},
+    "N10": {"status": "FIXED"},
+    "N11": {"status": "FIXED"},
+    "N12": {"status": "FIXED"},
+    "N13": {"status": "PARTIAL", "reason": "NIF-B/NIF-C still named in r1 FR-D7; N-ASSERTED is classified as DX-BEH in G-SYM(2) but as SOURCE_ACCURACY NEUTRAL in the symmetry table (SV-6)"},
+    "R0-1": {"status": "FIXED", "note": "new invocation defect B-4"},
+    "R0-2": {"status": "FIXED"},
+    "R0-3": {"status": "FIXED"},
+    "R0-4": {"status": "FIXED"},
+    "R0-5": {"status": "FIXED", "note": "merge-subject caveat R0-NB-3"},
+    "R0-6": {"status": "FIXED"},
+    "R0-7": {"status": "FIXED", "note": "ref names and commit messages are still written (R0-NB-6)"},
+    "R0-8": {"status": "FIXED", "note": "PAT-named refs only (R0-NB-4)"},
+    "R0-9": {"status": "PARTIAL", "reason": "git appends a TAB to ---/+++ headers for paths with spaces; columns in 94_lines shift (R0-NB-1)"},
+    "SC-1": {"status": "PARTIAL", "reason": "B-5 again fixes the outcome before the run for data-file candidates"},
+    "SC-2": {"status": "PARTIAL", "reason": "B-5 produces a constructed NO_AS_NIF_A"},
+    "SC-3": {"status": "FIXED"},
+    "SC-4": {"status": "FIXED"},
+    "SC-5": {"status": "FIXED", "note": "the ext field may leak a path fragment of up to 8 characters (SC-NB-1)"},
+    "SC-6": {"status": "FIXED"},
+    "SC-7": {"status": "FIXED"}
+  },
+  "symmetry_violations": [
+    {"id": "SV-1", "type": "firing (under the literal precedence rule)", "falsifier": "P5-HD (and P1-HD, if the r1 P1 falsifier text survives)", "premise": "R-94 in force", "source": "NIF-B = ACT-TP = DX-BEH, presupposing H-B.c2", "explanation": "The r1 P5 falsifier and NIF requirement are not restated and remain in force by the precedence clause, so an H-D falsifier can fire on behaviour that H-B explains"},
+    {"id": "SV-2", "type": "firing, FIRED-CONDITIONAL (under the literal precedence rule)", "falsifier": "P2-HB (non-C1), P5-HB via P2, P8-HB", "premise": "not permitted at t-; R-94 not in force; active target; remediation in force", "source": "the maker's records (DX-MAK, presupposing H-D.c2) via the r1 graded fallback (P2 field, FR-D8 P7/P8 bullets, P8 field, section 0.11 R-86 row)", "explanation": "C1 and P7 are protected by FR-N7 (DP-only scoring); the other H-B falsifiers are not"},
+    {"id": "SV-3", "type": "grading (non-firing)", "falsifier": "P1-HD", "premise": "S1/S2", "source": "the maker's records", "explanation": "Graded NOT_APPLICABLE instead of DISJUNCTIVE/NON-DISCRIMINATING; contradicts FR-N3 and the G-SYM order, and presupposes that a maker's record of a state is an act"},
+    {"id": "SV-4", "type": "grading (non-firing)", "falsifier": "P4-HD", "premise": "AD=T from the maker's records, F89 from DX-BEH", "source": "DP-P4 row 7", "explanation": "Returns DISJUNCTIVE{H-D.c2; H-B.c2} CROSS although the falsifier condition is false; in the mirror case, H-B DX acquittals give NON-DISCRIMINATING (DP-P7 rows 5-7 with grade D; DP-C1 row 3)"},
+    {"id": "SV-5", "type": "evidential gating (non-firing)", "falsifier": "C1/P2-HB vs P4-HD and P7-HB", "premise": "NIF-A route", "source": "DP-C1 row 1 before row 2", "explanation": "A missing maker's text or an unshown proviso blocks both FIRED and NOT-FIRED on NIF-A for H-B; DP-P4 and DP-P7 let NIF-A decide first"},
+    {"id": "SV-6", "type": "classification inconsistency", "falsifier": "P4-HD, P5-HD", "premise": "R-89/R-94 in force", "source": "third-party citation (N-ASSERTED)", "explanation": "DX-BEH presupposing H-B.c2 (CROSS) in G-SYM(2), but SOURCE_ACCURACY NEUTRAL in the symmetry table"}
+  ],
+  "symmetry_residuals": [
+    "PLAUSIBLE: G-SYM does not require the NIF-A recorder's own criterion for force to be hypothesis-neutral; a tracker that sets in_force on adoption would encode H-D.c2 (I2 cannot be checked from r2)",
+    "Table omissions: P1-HD 'no OUT_OF_CHANNEL_ACT'; the ABS part of the P8 active target (no closure/acceptance/withdrawal/hold in force)",
+    "P5-HB: the progress-file revision introducing line 58 is graded neutral OCC, but it is a report (B.3); only its recording time is OCC"
+  ],
+  "symmetry_core_assessment": "Within G-SYM and DP-P4/DP-P7/DP-C1, no premise that both hypotheses explain can carry FIRED or FIRED-CONDITIONAL on either side. The remaining firing violations (SV-1, SV-2) come only from the precedence clause re-importing r1 text.",
+  "rank0": {
+    "executable": "CONDITIONAL: runs to completion if invoked from the toplevel or by an absolute path; otherwise completes with CAPTURE_ERROR (B-4). Not authorized to run: verdict FAIL.",
+    "checks": {
+      "runs_in_environment": "yes, apart from B-4 (non-bare guard, local ref capture, no fetch, git 2.55 features used: --diff-merges, trailers valueonly, GIT_NO_LAZY_FETCH)",
+      "non_zero_exits_handled": "yes (ok LABEL RC ALLOWED; config 0/1, merge-base --is-ancestor 0/1; PIPESTATUS; no set -e); minor: empty control gives CAPTURE_INVALID with exit 0, while B.0 lists exit 3",
+      "deterministic_and_hashed": "yes (LC_ALL=C, TZ=UTC, global/system config ignored, -c overrides, sorted sets, temporary files removed, SHA256SUMS plus its printed hash, canonical key); residual: repository-local config and -diff attributes",
+      "target_matching_precise": "yes for PAT (bytewise HY alternation, alphanumeric boundaries, VAR never counted, ref names); residuals R0-NB-4, WPANY has no left boundary, WP-4C-1.2 matches, ASCII-only control",
+      "trace_vs_mention_operational_incl_merges": "yes (combined-diff own paths, al only on own paths, M-MERGE, side commits not promoted, comment-only -> M-COMMENT, fnt demotion); residuals R0-NB-1, R0-NB-3",
+      "m_time_respected": "yes in the script; spec gap: DP-P7 row 8 and DP-C1 row 2 order a git t_w against NIF-A state times without a stated INFERRED_ORDER rule, while B.4 says always NOT_IDENTIFIABLE",
+      "absence_not_evidenced_in_capture": "yes (control non-empty, no unexpected exit codes, no ET; ABSENT_IN_COMPLETE_CHANNEL not outputtable; completeness NOT_SHOWN recorded)"
+    },
+    "blocking": ["B-4: script hash via relative BASH_SOURCE after cd; documented usage from a subdirectory gives an unrecoverable CAPTURE_ERROR"],
+    "nonblocking": [
+      "R0-NB-1: git appends a TAB to ---/+++ headers for paths with spaces; np ends in TAB; 94_lines columns shift; COMMENT lines are counted as CODE (false E2b). Confidence: high",
+      "R0-NB-2: message lines containing a TAB are truncated at $3 in 92_msg.tsv; a --grep hit after the TAB loses its S/T/B feature",
+      "R0-NB-3: an auto-generated merge subject naming the branch plus a conflict-resolution own change becomes ET-1; untokened side commits named by the merge stay invisible",
+      "R0-NB-4: ref-exclusive commits only for PAT-named refs; lowercase branches (wp-4c-1) go to VAR only",
+      "R0-NB-5: WEAK_TRACE is global, not per ET, so it is inconsistent with per-ET DP-P7 evaluation",
+      "R0-NB-6: ref names and commit messages (which may contain personal names) are written to 01/15/16/92, contrary to the R0-7 text",
+      "R0-NB-7: O(n^2) merge-base process spawns; bounded but slow for many ETs or anchors",
+      "R0-NB-8: the bash version is not in ENVIRONMENT.md; heredocs inside $(...) contain unbalanced quotes (fine on bash >= 4)"
+    ]
+  },
+  "scoping": {
+    "executable": "CONDITIONAL: same invocation defect B-4; needs bash >= 4 (declare -A) and GNU date/xargs. Not authorized to run: verdict FAIL.",
+    "checks": {
+      "bounded": "yes",
+      "existence_only": "essentially; declared exceptions are object headers (signature presence) and CODEOWNERS blobs reduced to counts (a content read, disclosed)",
+      "all_outcomes_reachable_or_labelled": "no (B-5)",
+      "not_determinable_never_negative": "yes, except the constructed NO_AS_NIF_A of B-5",
+      "history_paths_covered": "yes (log -m --name-only over all tips, root commits shown; ls-tree of every tip); residual: per-path history uses --no-merges",
+      "no_personal_identities": "yes, essentially (emails stay in TMP; counts and ids only; '@' guard); residual SC-NB-1"
+    },
+    "blocking": [
+      "B-4: script hash via relative BASH_SOURCE after cd (line 1445)",
+      "B-5: a candidate's own writers are counted in the executor writer set, which forces NO_AS_NIF_A for non-doc candidates (unlabelled unreachable OPEN; constructed negative)"
+    ],
+    "nonblocking": [
+      "SC-NB-1: the ext field writes up to 8 characters of a path's extension (a path fragment) for CI, hook or CODEOWNERS paths",
+      "SC-NB-2: the '@' guard sets exit 1 but leaves leaked files in OUT",
+      "SC-NB-3: per-path history uses --no-merges; merge-only paths get nc=0 and K2=NOT_INDICATED",
+      "SC-NB-4: rank-0 DOC_GOV and scoping EXC define 'executor' paths differently",
+      "SC-NB-5: the tag loop splits on IFS=TAB (whitespace), so empty fields collapse; correct only by accident for annotated tags",
+      "SC-NB-6: about 4000 cat-file process spawns for signatures; bounded but slow",
+      "SC-NB-7: 50_capture_refs.sha256 equals rank-0 01_refs.tsv only if refs are unchanged between runs (checked in C.6)"
+    ]
+  },
+  "out_of_scope_changes": [
+    {"item": "FR-D13 item (2)", "marked": "CONSEQUENTIAL N1", "assessment": "disclosed and justified by REVIEW-r1; acceptable"},
+    {"item": "FR-D4 S1-b read range", "marked": "CONSEQUENTIAL N9/N10", "assessment": "disclosed; the window is unchanged; acceptable"},
+    {"item": "FR-D10 (FIXED): P1-HB 1a becomes UNDETERMINED(EC_NOT_COMPLETE) and the domain becomes targets with system-recorded outcomes", "marked": "not marked", "assessment": "undisclosed change to the outcome semantics of a FIXED item ('not instantiated in W' becomes unreachable)"},
+    {"item": "FR-D11 / section 0.11 (FIXED)", "marked": "not restated", "assessment": "unchanged but now inconsistent with N3 and N5 (part of B-2)"},
+    {"item": "FR-D7 (FIXED)", "marked": "not restated", "assessment": "unchanged but uses the removed NIF-B/NIF-C vocabulary (N13)"},
+    {"item": "Section 4 ranking (FR-D3 was FIXED)", "marked": "R2-CHANGED SC-1, SC-4, N1", "assessment": "requested by REVIEW-r1 section 7.7 and SC-4; in scope"},
+    {"item": "SC-6, SC-7 repaired", "marked": "-", "assessment": "TASK item 4 lists SC-1..SC-5, but item 2 covers further defects in REVIEW-r1; benign"}
+  ],
+  "new_defects": [
+    {"id": "ND-1", "ref": "B-1", "summary": "CHANGELOG-r2.md is missing; SPEC-r2 and the JSON reference it"},
+    {"id": "ND-2", "ref": "B-2", "summary": "The precedence clause keeps contradicting r1 text (NIF-B, graded fallback, recording-time fallback) in force, with no tie-break"},
+    {"id": "ND-3", "ref": "B-3", "summary": "DP-P4 is not exhaustive and has no catch-all, contrary to FR-N7"},
+    {"id": "ND-4", "ref": "B-4", "summary": "Both scripts hash a relative BASH_SOURCE after cd"},
+    {"id": "ND-5", "ref": "B-5", "summary": "Scoping self-overlap forces NO_AS_NIF_A for non-doc candidates"},
+    {"id": "ND-6", "ref": "SV-3", "summary": "P1-HD grades DX-MAK NOT_APPLICABLE"},
+    {"id": "ND-7", "ref": "SV-5", "summary": "DP-C1 gates NIF-A behind V_text, while DP-P4 and DP-P7 do not"},
+    {"id": "ND-8", "ref": "SV-6", "summary": "N-ASSERTED is classified two ways"},
+    {"id": "ND-9", "ref": "R0-NB-1", "summary": "Diff-header TAB for paths with spaces shifts 94_lines columns"},
+    {"id": "ND-10", "ref": "rank0 M-TIME", "summary": "No rule for ordering a git t_w against NIF-A state times (DP-P7 row 8, DP-C1 row 2 vs B.4)"},
+    {"id": "ND-11", "ref": "R0-NB-5", "summary": "WEAK_TRACE is global rather than per ET"}
+  ],
+  "required_for_r3": [
+    "Write CHANGELOG-r2 (or r3) with before/after text for every FIXED-item edit",
+    "Replace the precedence clause with an explicit override of every r1 clause naming NIF-B, NIF-C, the graded fallback or the recording-time fallback, or restate r1 section 1 P1/P2/P4/P5/P7/P8, FR-D7, FR-D8, sections 0.5 and 0.11",
+    "Complete DP-P4 (AD=T, AD=U, F89=A with AD not A, an unconditional last row); fix SV-3 and SV-6; decide SV-5",
+    "In both scripts, hash the script (or realpath BASH_SOURCE) before cd",
+    "In scope-r2.sh, exclude candidate paths from the EXC writer set or label the overlap SELF_OVERLAP/ND; align EXC with rank-0 DOC_GOV",
+    "Cheap fixes: strip the diff-header TAB, compute WEAK_TRACE per ET, state the INFERRED_ORDER rule for t_w vs NIF-A"
+  ]
+}

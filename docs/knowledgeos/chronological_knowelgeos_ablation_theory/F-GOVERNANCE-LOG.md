@@ -2155,3 +2155,10 @@ facb576d3637df66c2e464a5e54affe7666e39e15e38e99132e1e0a6d0b97bda  objects/M-4_ES
 |---|---|
 | Freeze | `f6c7eb1e9` |
 | Records | `analysis/theory/LOOP-1BBR1/` |
+
+## F-LOG-0177 — 1bb-r2: **FAIL on content → STOP for the human** (pre-registered; no r3). D5/D8/D9/N2 fixed; G-SYM correct; the scripts are substantially executable. But a **precedence clause keeps contradictory r1 text in force** (residual symmetry violations SV-1/SV-2); plus B-3, B-4 (a script hash bug), B-5 (a constructed negative in scoping). **The repair loop is not converging** (layering). Observation: both authorized searches are **descriptive** and could run under a minimal reviewed capture script, decoupled from the discrimination spec. That decoupling is a protocol change requiring the human
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/LOOP-1BBR2/` (A2 sealed SPEC-r2; B3 review) |
+| Human decision needed | see the decision brief in the session reply |
