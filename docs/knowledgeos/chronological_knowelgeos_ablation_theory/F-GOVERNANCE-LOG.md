@@ -2729,3 +2729,11 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/FORMAL-THEORY-R4.md`; `LOOP-1BK/` (A–B2, RECONCILIATION.md) |
+
+## F-LOG-0223 — **Human act (2026-10-01): R5 verifier = an isolated Claude session + a human spot-check.** R5 bundle sealed
+- **Bundle:** `LOOP-1BL/R5-SPEC.md` (extracted from FORMAL-THEORY-R4 §1, §3, §4.1–4.2, §5 and §7) with **every proof and the Expected column removed**, and the K8.1 derivation hint removed, plus `TASK.md`.
+- **The expected outcomes stay sealed** in `FORMAL-THEORY-R4.md` §7.2 and are compared afterwards.
+- **Run:** in `~/r5-verify` (outside the repo); tools Read, Write and Bash restricted to `python3`; one attempt.
+- **Disclosed:**
+  - the statements themselves still contain their claims (unavoidable; the checks are claims to test);
+  - within-family.
