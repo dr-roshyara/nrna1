@@ -1,0 +1,71 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "readings_check": [
+    {"id": "R-a", "licensed": true, "note": "Target-tied B-chg. R4 Rem 3.1b names it; supported by 'in response to work'."},
+    {"id": "R-b", "licensed": true, "note": "Existential B-conf. Calling it 'the weakest non-vacuous' reading overstates: Rem V3.4b's 'not every work event violates' is weaker and still non-vacuous."},
+    {"id": "R-c", "licensed": true, "note": "Within the matrix's V1b scope. The derivation is mis-cited: 'both accept norm-making acts exist' is formalized in R4 as E != empty (Lem 3.6), not as D-rec. 'Expected to' is read existentially for conformance but defeasibly for the record."},
+    {"id": "R-d", "licensed": true, "note": "Biconditional status reading; R4 Lem 3.7 names it."},
+    {"id": "R-e", "licensed": true, "note": "Within the matrix's V1b scope. The HYP derivation (capability phrase read as a description of the actors) is strained. Harmless: R-e is a weakening and has M."},
+    {"id": "R-f", "licensed": true, "note": "Same derivation caveat as R-c's record clause."},
+    {"id": "R-g", "licensed": "contested", "note": "Turns a generic sentence into an existential demand on every history; R4 reads it modally. Its justification invokes the H-D parallel, but the D-side analogue is not added. At N=0 the reading makes H-B^g empty."},
+    {"id": "R-h", "licensed": true, "note": "Universal 'carry or reference both'; the class-level analogue of the frame variant 7."},
+    {"id": "missing-M1", "note": "Record clause B-rec := E != empty (or none), the consistent defeasible reading. It violates RB2, which no listed reading tests, and breaks (i) for the base pair because the empty observation is in O(H-B) but not in O(H-D)."},
+    {"id": "missing-M2", "note": "D-side existential reading (Chg != empty, changes only through acts), the analogue of R-g; it is not-M. The act-existential conjunct of the descriptive H-B reading is also omitted."},
+    {"id": "missing-M3", "note": "Status- or capability-tied act disjunct of B-chg. Weakly licensed. It fails T, so the literal (iii) fails. It should be listed and rejected in Rem V1.4."}
+  ],
+  "lemma_check": [
+    {"item": "statement", "ok": true, "note": "Precise. M is relative to the reading's own record base, which is the correct refinement of the matrix's M."},
+    {"item": "Rem V2.0 vs R4 section 4.3", "ok": true, "note": "Matches R4's proof clause by clause; correctly notes that (iii) uses a different construction."},
+    {"item": "Lem V2.6(i) proof", "ok": true, "note": "Lem 4.0b + RB1 + RB2 + M_p; the image chain uses H-B subset of R_B."},
+    {"item": "Lem V2.6(ii) proof", "ok": true, "note": "Valid; (ii-c) does not use A6."},
+    {"item": "Lem V2.6(iii) proof", "ok": true, "note": "Replacing the source of 'actor set nonempty' with alpha(w) is valid and non-substantive; T1 matches R4's B-chg check; T2 covers both steps."},
+    {"item": "sufficiency", "ok": true, "note": "M is sufficient for (i) under A1, A2, A5; necessity is not claimed."},
+    {"item": "R_B-changing readings (Rem V2.7)", "ok": true, "note": "Correct for R-c, R-f and R-h. Limitation: no reading violates RB2 (see missing-M1)."},
+    {"item": "Cor V2.8, Cor V2.9", "ok": true, "note": "Correct as restricted."}
+  ],
+  "classification_check": [
+    {"id": "R-a", "class": "M", "correct": true},
+    {"id": "R-b", "class": "M", "correct": true},
+    {"id": "R-c", "class": "not-M", "correct": true, "note": "Generic failure via O4 is valid. Lem V3.4(c) cites (ii-c), which assumes A6; A6 is unused there, and this should be stated."},
+    {"id": "R-d", "class": "not-M", "correct": true, "note": "h1, h2 and h3 verified. The revision flag 'no' is inconsistent with R-c's 'yes': adopted as the reading, R-d would break Prop 4.1(i)'s hypothesis list, Lem 4.2 and Cor 4.3."},
+    {"id": "R-e", "class": "M", "correct": true},
+    {"id": "R-f", "class": "M", "correct": true},
+    {"id": "R-g", "class": "not-M", "correct": true, "note": "The proof of Lem V3.9(d) shows the last equality failing, not the claimed middle one; it also needs a Cap-empty witness in H-B^g. The Cap claim is U-specific. The N=0 'D1 failure' is H-B^g being empty, which overstates."},
+    {"id": "R-h", "class": "M (not T)", "correct": true},
+    {"id": "D1-implication", "correct": true, "note": "Generic, S-form and base-pair O-form claims are kept apart. Overstatements: R-g at N=0, and Rem V4.1's 'R-d o R-e no interaction', which is true for the Cap repair but not for the S-form failure set."}
+  ],
+  "prediction_check": [
+    {"id": "R-c rows, P1.1", "ok": true, "note": "Recomputed in U with the R-1 order."},
+    {"id": "R-d rows, P1.2, P1.3, P1.4", "ok": true, "note": "Least-ness verified; the claim that no single act is a witness is verified."},
+    {"id": "R-g rows, P1.5, P1.6", "ok": true, "note": "H-B^g characterization, the exact difference t(w1)=1 and the Cap claim all verified."},
+    {"id": "R-h rows, P1.7", "ok": true, "note": "All earlier candidates are repairable; P1.7 precedes I7."},
+    {"id": "P1.8", "ok": true, "note": "Conclusion correct; the parenthetical reason misstates the order."},
+    {"id": "UNTESTABLE-IN-U", "ok": true, "note": "R-a and R-a o R-g need two targets; R-g at N=0 needs N=0."},
+    {"id": "falsifiability", "ok": true, "note": "HOLDS/FAILS verdicts, exact sets and essential features are specific. The predictions are not independent (matrix risk 3)."}
+  ],
+  "control_check": [
+    {"id": "C-U5 (R-c, R-d, R-g)", "detects_correct": true, "misses_broken": true},
+    {"id": "C-U5 (R-h)", "detects_correct": true, "misses_broken": "only under least-counterexample reporting", "note": "Plain U also has c2 counterexamples."},
+    {"id": "C-O1", "detects_correct": true, "misses_broken": true, "note": "Diagnostic of the reading only for R-g (the (p,p) value). For R-c, R-d and R-h the outputs equal R0's."},
+    {"id": "C-c", "detects_correct": true, "misses_broken": true},
+    {"id": "C-d", "detects_correct": true, "misses_broken": true},
+    {"id": "C-g", "detects_correct": true, "misses_broken": true},
+    {"id": "C-h", "detects_correct": "at risk", "misses_broken": true, "note": "'Reports I7 as a counterexample' conflicts with first-counterexample reporting (P1.7 precedes I7). Reword as a per-history evaluation at I7."}
+  ],
+  "blocking": [],
+  "nonblocking": [
+    "Missing reading M1 (B-rec := E != empty, or none): it violates RB2 and breaks (i) via the empty observation; it also exposes the mis-cited D-rec derivation of R-c and R-f.",
+    "Missing reading M2 (D-side existential analogue of R-g), and R-g's omitted act-existential conjunct: the reading set is asymmetric.",
+    "The C-h wording conflicts with least-counterexample reporting; a correct run could be invalidated.",
+    "The R-d 'no revision' flag is inconsistent with R-c's 'yes, if adopted'.",
+    "The proof of Lem V3.9(d) shows the last equality failing, not the middle one, and states a U-specific Cap claim inside a claim about the base frame.",
+    "R-g's licence is contested; the N=0 'failure' is H-B^g being empty and should be framed as the reading being inconsistent at N=0.",
+    "Missing status/capability variant M3 of B-chg's act disjunct; it should be listed and rejected.",
+    "Wording and rigour issues in the readings: R-b 'weakest non-vacuous' is overstated; R-e's derivation is strained; R-c reads 'expected to' inconsistently.",
+    "Rem V4.1's 'R-d o R-e: no interaction' is misleading for the S-form failure set.",
+    "Lem V3.4(c) cites (ii-c), whose statement assumes A6; it should note that A6 is unused.",
+    "Labelling: Rem V4.1 and Rem V3.4b assert unproved formal claims; Table V3.0 has no in-text label; the V1B controls and scoring rule are unlabelled; the lemma-numbering rule is not followed.",
+    "C-U5 for R-h depends on least-counterexample reporting; C-O1 is not diagnostic of the reading for R-c, R-d and R-h.",
+    "P1.8's parenthetical reason misstates the R-1 order."
+  ]
+}

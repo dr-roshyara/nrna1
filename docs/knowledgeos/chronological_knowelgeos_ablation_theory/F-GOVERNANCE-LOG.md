@@ -2805,3 +2805,24 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BN/` |
+
+## F-LOG-0228 — V1a r0: **PASS_WITH_LIMITATIONS** (0 blocking). **Substantive finding: D1's generic robustness depends on how the hypotheses are read**
+
+**M readings** (R4's proof transfers unchanged): R-a (target-tied B-chg), R-b (existential B-conf), R-e (D-chg without capability), R-f (B-recW dropped), and R-h for parts (i) and (ii).
+
+**Not-M readings:**
+- **R-c** (existential B-conf with B-recW dropped): Prop 4.1(i) fails generically.
+- **R-d** (D-st biconditional): Lem 4.2 and Cor 4.3 fail. An observation blind to σ and f separates the classes through Cap, so non-identifiability additionally rests on Cap being unobserved (O5).
+- **R-g** (contested; H-B must exhibit change): fails generically.
+- **R-h:** (iii)'s literal wording fails.
+
+**For the base observation O, non-separation survives where checked.** If R-c, R-d or R-g were adopted, R4 would need revision → **human gate after V1b**. Nothing is revised.
+
+**r1 frozen:**
+- controls made independent of the reporting convention;
+- the missing readings M1–M3 added;
+- rigour fixes.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BN/` (A, B = r0; TASK-r1, REVIEW-TASK-r1) |
