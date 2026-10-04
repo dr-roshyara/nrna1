@@ -59,6 +59,20 @@
 - **R6 authorized: V1a (reading-monotonicity lemma) → V1b (non-M readings + planted controls).**
 - Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
 
+
+**State 2026-10-04 (F-LOG-0233):**
+- **R6 V1a + V1b COMPLETE:**
+  - D1's strong form is reading-relative (fails generically under R-c, R-d, R-g, R-g⁺, R-j, R-i, R-i′);
+  - the weak form (records-only O does not separate) survives every valid reading except the (ii)-O contrast under R-j;
+  - under R-d the result also rests on Cap being unobserved.
+- **R4 r3 sealed** with §9.
+- **Remaining R6 options (each a human decision):**
+  - V2 targeted slices: R-a (two targets), |P| ≥ 2;
+  - E-A5 (sealed Protocol C; reopens H1);
+  - V5 (Conj 5.5; needs new blind data);
+  - V6 (a second-corpus brief);
+  - a non-Claude reimplementation of R5/V1b (the strongest independence upgrade).
+
 **Dropped (do not resurrect):**
 - H2 signer verification (declined);
 - 1bb-r3 or any patch of the coupled discrimination spec;

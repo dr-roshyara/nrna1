@@ -1,0 +1,34 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "reviewed": "FORMAL-THEORY-R4.md (r3)",
+  "compared_against": ["FORMAL-THEORY-R4-r2.md", "V1A-LEMMA.md", "V1-RECONCILIATION.md", "CHANGELOG-r3.md"],
+  "fidelity_issues": [
+    {"id": "NB-1", "location": "header, Status row", "issue": "'reviewed draft r3' is the listed edit, verbatim from TASK §5, but the r3 additions were unreviewed (CHANGELOG-r3); the line also drops r2's same-family-analyst disclosure", "blocking": false},
+    {"id": "NB-2", "location": "§9 preamble", "issue": "V1A is cited as 'r1, reviewed'; V1A's own header says 'r1 is not re-reviewed' and V1-REC says PASS_WITH_LIMITATIONS; the qualifier is not carried over", "blocking": false},
+    {"id": "NB-3", "location": "Rem 9.7", "issue": "'recovered only under SC1 and SC2' overstates V1A, which shows sufficiency and generic failure, not necessity; 'Prop 9.6 depends on Obs O5' conflates the proof (SC2 for O via Lem 1.12) with its corpus relevance", "blocking": false},
+    {"id": "NB-4", "location": "Cor 9.3; §9 preamble", "issue": "the generic clause cites Cor V2.8 instead of Lem V2.6(i); the (ii) clause and small steps in Prop 9.6 are new (valid) inferences, contrary to 'proves nothing anew'", "blocking": false},
+    {"id": "NB-5", "location": "Table 9.4, R-j row", "issue": "the (ii) cell gives only the h_v half; V1A Table V3.0 records that ii-c (S-form) also fails, and V3.16(a) gives the base-pair O-form h_c", "blocking": false},
+    {"id": "NB-8", "location": "Rem 9.7", "issue": "'not finite-verified' should be restricted to the SC1/SC2 recovery (K4b and the ≈σ,f,Cap variants were unscorable); the inputs do not settle whether the O_¬σf separation under R-d was scored", "blocking": false}
+  ],
+  "scope_check": [
+    {"statement": "Prop 4.1", "correct": true, "failing_readings_listed": ["R-c", "R-d", "R-g", "R-g+", "R-i", "R-i'", "R-j", "R-h ((iii) literal wording)"], "failing_list_correct": true, "note": "Requiring M plus T for (iii) is sufficient but more than needed: T alone suffices, so (iii) also holds under R-c, R-d, R-i, R-i' and R-j (shown in Table 9.4) (NB-9)"},
+    {"statement": "Lem 4.2", "correct": true, "failing_readings_listed": ["R-c", "R-d", "R-g", "R-g+", "R-i", "R-i'", "R-j"], "failing_list_correct": true, "note": "every O_¬σf failure is backed by the cited V1A item; for R-c and R-i the backing is a V1A Rem with a complete argument"},
+    {"statement": "Cor 4.3", "correct": true, "failing_readings_listed": ["R-c", "R-d", "R-g", "R-g+", "R-i", "R-i'", "R-j"], "failing_list_correct": true, "note": "the separating observations (O4; O_¬σf; O3) are each σ,f-blind and separate in Cor 4.3's form; O_Cap is correctly not cited"}
+  ],
+  "unlisted_changes": [],
+  "s8_ok": true,
+  "labels_ok": false,
+  "labels_note": "Def 9.1, Lem 9.2, Cor 9.3, Table 9.4 (Rem), Rem 9.5, Prop 9.6, Rem 9.7 and Rem 9.8 are labelled and in the ledger; the three *[r3] Scope.* sentences are unlabelled new statements (NB-6)",
+  "blocking": [],
+  "nonblocking": [
+    "NB-1: header Status 'reviewed draft r3' is accurate only once this review is recorded; restore the same-family disclosure",
+    "NB-2: §9 should cite V1A as PASS_WITH_LIMITATIONS, not as bare 'reviewed'",
+    "NB-3: Rem 9.7 'only under SC1, SC2' and 'Prop 9.6 depends on Obs O5' overstate; reword as sufficiency and as the corpus relevance of a Cap-blind O",
+    "NB-4: Cor 9.3 citation (Lem V2.6(i)); 'proves nothing anew' slightly inaccurate (the new steps are elementary and correct)",
+    "NB-5: Table 9.4 R-j (ii) cell omits the h_c half",
+    "NB-6: the three [r3] Scope sentences are unlabelled (suggest Rem) and have no ledger rows",
+    "NB-7: the title '(draft r2)' and the Revision/Inputs header rows are stale (disclosed in the changelog; outside TASK scope)",
+    "NB-8: restrict Rem 9.7's 'not finite-verified' to the SC1/SC2 recovery",
+    "NB-9: the Prop 4.1 scope sentence could state that (iii) holds under every reading with T"
+  ]
+}

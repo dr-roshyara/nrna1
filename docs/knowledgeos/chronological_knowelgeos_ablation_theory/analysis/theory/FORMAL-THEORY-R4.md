@@ -1,10 +1,10 @@
-# FORMAL-THEORY-R4: the minimal formal theory (draft r2)
+# FORMAL-THEORY-R4: the minimal formal theory (draft r3)
 
 | | |
 |---|---|
 | Inputs (only) | `R3-CODING-INDEPENDENT.json` (base items cited by id, e.g. A07); `HYPOTHESES.md` (HYP); `H5.md` (H5); `INSTRUMENT-FINDING.md` (IF). IF is an r0 input but **not an R3 item**; where it is cited this is said |
-| Revision | **r2**, a minimal proof repair of r1 after `REVIEW-r1` (verdict FAIL, one blocking issue B-1 / RG-1; human act F-LOG-0221). Every r2 change is mapped to its review item in `CHANGELOG-r2.md`; the r1 changes are mapped in `CHANGELOG-r1.md`. Statement ids are stable; withdrawn statements stay in place, marked **WITHDRAWN** with a reason |
-| Status | Draft. Written by one same-family (Claude) analyst. r2 is **not re-reviewed**. Every proof below is meant to be checked by hand and by the R5 enumeration (§7) |
+| Revision | **[r3]** r3 adds §9 and scope remarks (CHANGELOG-r3.md; human act F-LOG-0232). Earlier: **r2**, a minimal proof repair of r1 after `REVIEW-r1` (verdict FAIL, one blocking issue B-1 / RG-1; human act F-LOG-0221). Every r2 change is mapped to its review item in `CHANGELOG-r2.md`; the r1 changes are mapped in `CHANGELOG-r1.md`. Statement ids are stable; withdrawn statements stay in place, marked **WITHDRAWN** with a reason |
+| Status | **[r3]** draft r3, reviewed PASS_WITH_LIMITATIONS (LOOP-1BO/B) with the review's wording items applied as disclosed analyst edits; same-family (Claude) analyst and reviewers throughout; R5 finite-verified (r2 content); robustness per §9 (finite results in U only) |
 | Standing rule | H-D and H-B are **sets of histories** (model classes). Neither is assumed anywhere. No statement uses an act count, a norm count or any other coding-dependent value |
 
 **Labels.** Every statement carries exactly one of these labels:
@@ -302,6 +302,8 @@ Separate non-dependence on σ and on f thus gives joint non-dependence, through 
   - w conforms in h′;
   - every change point of σ′ at which no act of h enters into force (in h′) with the new value is the entry into force of an added act.
 
+**Rem 4.1s [r3] (Scope).** Parts (i), (ii) and (iii) hold for the Def 3.1 readings and every reading with property M (§9) that also meets Lem 9.2's further condition for that part (M_q^D and N_q for (ii), T for (iii); every M-reading of Table 9.4 meets them, except R-h and the rejected R-k for (iii)), while (i′) is classified in §9 only for R-i and R-i′; Prop 4.1 fails generically under R-c, R-d, R-g, R-g⁺, R-i, R-i′ and R-j, part by part as in Table 9.4, and in the literal wording of (iii) under R-h. Part (iii) holds under every reading with property T.
+
 **Cor 4.1b (the base case).** For (O, 𝓗):
 - (i), (i′) and (iii) hold;
 - (ii) holds whenever P ≠ V;
@@ -313,7 +315,11 @@ Separate non-dependence on σ and on f thus gives joint non-dependence, through 
 
 **Lem 4.2 (robustness).** Prop 4.1(i) holds for every (O′, 𝓗′) satisfying A1, A2 and A5, and (ii) holds if A6 holds as well; neither needs A3, A4, A7 or A8. In particular, on 𝓗 they hold for O_¬σf, the observation of **every coordinate except σ and f**. O_¬σf sees Ref, con, d, Cap, k, 𝒜, E, W and all their attributes **other than f**. So (i) and (ii) hold even if the reference and mode coding were perfectly reliable. *Proof:* The first sentence is the hypothesis list of Prop 4.1(i) and (ii). O_¬σf satisfies A1 and A2 on 𝓗, because h ≈_σ h′ or h ≈_f h′ leaves every other coordinate unchanged, and 𝓗 satisfies A5 (Lem 4.0a). ∎
 
+**Rem 4.2s [r3] (Scope).** Lem 4.2 holds for the Def 3.1 readings and every reading with property M (§9; Cor 9.3, whose (ii) part also needs M_q^D and N_q); it fails generically under R-c, R-d, R-g, R-g⁺, R-i, R-i′ and R-j, under each of which (i) fails for O_¬σf on 𝓗 (Table 9.4; V1A Rem V3.4a, Lem V3.6(c), V3.9(c), V3.13(b) with Rem V3.14a, V3.15(b), V3.17).
+
 **Cor 4.3 (separation requires dependence on σ or f).** Assume A5 for 𝓗′. If O′(H-D′ ∩ R_B′) ≠ O′(H-B′), then O′ depends, over 𝓗′, on σ or on f. In particular, on 𝓗, no observation that is a function of coordinates other than σ and f separates the classes on R_B. This includes any function of the records, their keepers, Ref, con, Cap, and the acts and work events with their attributes **other than f**. *Proof:* This is the contrapositive of Lem 4.2. ∎
+
+**Rem 4.3s [r3] (Scope).** Cor 4.3 holds for the Def 3.1 readings and every reading with property M (§9; Cor 9.3); it fails generically under R-c, R-d, R-g, R-g⁺, R-i, R-i′ and R-j, under each of which an observation that reads neither σ nor f separates the reading's H-D ∩ R_B from its H-B on 𝓗 (O₄ for R-c, O_¬σf for R-d, R-g, R-g⁺ and R-j, O₃ for R-i and R-i′; V1A Lem V3.3(c), V3.6(d), V3.9(c), V3.17, V3.16(c), V3.13(d)).
 
 Cor 4.3 derives **only** that a separating observation must depend on σ or f. It does **not** derive the further elements of H5 §5.2's necessary condition: independence from the norm-maker, the executor and the self-asserting ruling, and the mapping to a target at t. Those appear only in the sufficient conditions (§4.5) and in Def 4.9. O₂ in CM-A2 depends on f and does separate, as Cor 4.3 allows.
 
@@ -565,7 +571,7 @@ Scope: IF is within-family, on these records, with no ground truth. Conj 5.5 say
 
 ## 6. Statement ledger
 
-Status: **=** unchanged from r0; **rev** revised in r1; **new** new in r1; **WD** WITHDRAWN. **r2** marks a row whose statement or proof was changed in r2 (mapped in `CHANGELOG-r2.md`); every row without it is unchanged from r1.
+Status: **=** unchanged from r0; **rev** revised in r1; **new** new in r1; **WD** WITHDRAWN. **r2** marks a row whose statement or proof was changed in r2 (mapped in `CHANGELOG-r2.md`); every row without it is unchanged from r1. **[r3]** marks a row added in r3 (mapped in `CHANGELOG-r3.md`). The [r3] scope sentences added to Prop 4.1, Lem 4.2 and Cor 4.3 change no statement's content within the Def 3.1 readings and no proof; their rows are not re-marked.
 
 | ID | Statement (short) | Label | Status | Base ids / inputs |
 |---|---|---|---|---|
@@ -647,6 +653,15 @@ Status: **=** unchanged from r0; **rev** revised in r1; **new** new in r1; **WD*
 | Conj 5.5 | the ambiguity (no c–con tie) explains the ACT_SELF_PERFORMED failure on the register and ruling records outside S_mode; falsifiers F-a to F-c, pre-registered; F-b's decision rule pre-fixed; F-c may have no power | Conj | rev; **r2** (F-b rule; scope; F-c power; NB-4, NB-5) | IF; F15; A10 |
 | K1–K12 | R5 checks | Spec | rev; **r2** (K11.2, K12.1; NB-6) | none |
 | §8 rows | compliance with section H | Cmp | rev | H01, H04, H07, H10, H11, H12, H14, H18, H19 |
+| Def 9.1 | reading; reading classes H-D^𝐑, H-B^𝐑, record base R_B^𝐑; Def 3.1 readings 𝐑₀; v-quiescence; RB1, RB2, M_p, M_p^W, M_q^D, N_q; property M; act-explained, T; S-form, O-form | Def | **[r3]** new | V1A Def V1.1, V1.2, V2.1–V2.4 |
+| Lem 9.2 | **Lemma M**: (o) 𝐑₀ has every property; (i) M ⇒ Prop 4.1(i) by h*; (ii) M_p^W ⇒ h_c half, M_q^D ∧ N_q ⇒ h_v half; (iii) T ⇒ (iii) for any D-side reading | Lem | **[r3]** new (proof by reference) | V1A Lem V2.5, V2.6 |
+| Cor 9.3 | under M, Lem 4.2 and Cor 4.3 transfer ((ii) part of Lem 4.2 also needs M_q^D, N_q) | Cor | **[r3]** new (proof by reference) | V1A Cor V2.8, Lem V2.6(ii); Lem 4.2 |
+| Table 9.4 | reading table R-a … R-k: HYP licence, M / not-M, status of (i), (ii), (iii) | Rem | **[r3]** new | HYP (via V1A Def V1.3); V1A §3 lemmas, Table V3.0 |
+| Rem 9.5 | V1b finite results per reading, with scope caveat (U, one target, Claude-family, predictions not independent); no Lem, Prop or Cor rests on it | Rem | **[r3]** new | V1-RECONCILIATION; V1A Rem V3.1a, V3.14a |
+| Prop 9.6 | **weak form**: for (O, 𝓗), N ≥ 1, P ≠ V, o ≠ ∅, records-only O does not separate the hypotheses under every tested reading ((a) (i)-O; (b) (ii)-O), except (b) under R-j | Prop | **[r3]** new (proof by reference) | R4 Prop 4.1, Cor 4.1b, Lem 3.7, Lem 4.0a; Lem 9.2; V1A Lem V3.2, V3.4, V3.5, V3.7, V3.8, V3.10, V3.11, V3.13–V3.17; V1-RECONCILIATION (finite confirmation only) |
+| Rem 4.1s, 4.2s, 4.3s | scope of Prop 4.1, Lem 4.2, Cor 4.3 per reading (§9) | Rem | **[r3]** new | Table 9.4; V1A |
+| Rem 9.7 | under R-d the corpus relevance of the non-separation rests additionally on Cap being unobserved (O5); the SC1/SC2 recovery is not finite-verified | Rem | **[r3]** new | V1A Lem V3.6, V3.7, Rem V3.7a; R4 Lem 3.7; O5; V1-RECONCILIATION |
+| Rem 9.8 | R-a is untested (needs two targets) | Rem | **[r3]** new | V1A Lem V3.1, Rem V3.1a, Lem V4.1(e); V1-RECONCILIATION |
 
 ---
 
@@ -799,7 +814,7 @@ Each row is a **Cmp** (compliance assertion about this document). The rows cite 
 
 | Item | How R4 complies |
 |---|---|
-| H01 (may) | L0 items (A01–A13, A15, G04, G06) are used as text data, with the provenance and second-hand caveats of O1. L1 items are also used: as scope and limits (B07, F01–F16, G01, G03, G05, G07); as modelling motivation (E01 fixes B-conf's universal reading, Rem 3.1a; it is discussed in Rem 4.10); and as provenance of a time (B06 in Table 4.6). H01 is a MAY and does not forbid this. A14 and A16 are not used. IF is cited but is not an R3 item |
+| H01 (may) | L0 items (A01–A13, A15, G04, G06) are used as text data, with the provenance and second-hand caveats of O1. L1 items are also used: as scope and limits (B07, **[r3]** F01–F08, F11, F13–F16, G01, G03, G05, G07; F09, F10 and F12 are QUARANTINED in `R3-FROZEN.md`, schema-dependent and not usable for R4, and are not cited); as modelling motivation (E01 fixes B-conf's universal reading, Rem 3.1a; it is discussed in Rem 4.10); and as provenance of a time (B06 in Table 4.6). H01 is a MAY and does not forbid this. A14 and A16 are not used. IF is cited but is not an R3 item |
 | H04 (may) | Three distinct time functions. The frame equates d and r only under the unobserved con (F2, Def 1.9). It never equates f with r or d |
 | H07 | H-D and H-B are defined as subsets of 𝓗 (or of a frame 𝓗′) and are never assumed (Def 3.2) |
 | H10 | The base frame has no norm→act or norm→work axiom (Def 1.8). B-conf is a clause of a hypothesis, never asserted of the corpus |
@@ -809,3 +824,114 @@ Each row is a **Cmp** (compliance assertion about this document). The rows cite 
 | H18 | No support is computed or pooled anywhere |
 | H19 | Cap is unobserved. Host membership is never read as Cap (O5; Rem 4.6a) |
 | Prohibitions | No act or norm counts. No coding-dependent premise: Lem 4.2 shows that 4.1(i) and (ii) do not rest on any coding. The IF reliability values are cited only as provenance (O6, Obs IF-obs, Conj 5.5); no Lem, Prop or Cor uses them |
+
+---
+
+## 9. Reading robustness [r3]
+
+**[r3] New section.** §9 states how far Prop 4.1, Lem 4.2 and Cor 4.3 depend on the readings of HYP fixed in Def 3.1. Besides the r0 inputs, it uses `V1A-LEMMA.md` (r1, reviewed PASS_WITH_LIMITATIONS, same-family; cited as **V1A**, with its V-prefixed statement ids) and `V1-RECONCILIATION.md` (cited as **V1-REC**). §9 restates V1A's definitions and results; the only new inferences are elementary steps (Cor 9.3's (ii) clause; small steps in Prop 9.6), labelled as such. Every proof is an exact reference to V1A or to §1–§4 of this document. No proof in §1–§8 is changed.
+
+### 9.1 Readings and Lemma M
+
+**Def 9.1 [r3] (reading; reading classes; properties).** This is V1A Def V1.1, V1.2 and V2.1–V2.4, restated.
+- A **reading** 𝐑 gives four finite sets of predicates on 𝓗: the D-side dyn clauses 𝔇_dyn^𝐑, the D-side record clauses 𝔇_rec^𝐑, the B-side dyn clauses 𝔅_dyn^𝐑, and the B-side record clauses 𝔅_rec^𝐑. ("Dyn" clauses concern change, status or conformance. "Record" clauses are D-rec, B-recW, B-rec or readings of them.)
+- For a frame 𝓗′: H-D^𝐑′ is the set of h ∈ 𝓗′ that satisfy every clause in 𝔇_dyn^𝐑 ∪ 𝔇_rec^𝐑; H-B^𝐑′ is the same for 𝔅_dyn^𝐑 ∪ 𝔅_rec^𝐑; and the **record base** R_B^𝐑′ is the same for 𝔅_rec^𝐑 alone. So H-B^𝐑′ ⊆ R_B^𝐑′, as in Def 3.2.
+- The **Def 3.1 readings** 𝐑₀ are 𝔇_dyn = {D-chg, D-st}, 𝔇_rec = {D-rec}, 𝔅_dyn = {B-chg, B-conf} and 𝔅_rec = {B-rec}. Then H-D^𝐑₀′ = H-D′, H-B^𝐑₀′ = H-B′ and R_B^𝐑₀′ = R_B′.
+- For v ∈ V, g ∈ 𝓗 is **v-quiescent** iff σ_g ≡ v and f_g ≡ ∞.
+- **RB1 (blindness):** no record clause of 𝐑 depends on {σ, f}. **RB2 (dominance):** every g ∈ 𝓗 that satisfies 𝔅_rec^𝐑 also satisfies 𝔇_rec^𝐑.
+- For p ∈ P and q ∈ V ∖ P: **M_p** iff every dyn clause of 𝐑 holds at every p-quiescent g ∈ 𝓗 that satisfies 𝔅_rec^𝐑; **M_p^W** iff the same holds for every such g with W_g ≠ ∅; **M_q^D** iff every clause in 𝔇_dyn^𝐑 holds at every q-quiescent g ∈ 𝓗 that satisfies 𝔅_rec^𝐑; **N_q** iff every q-quiescent g ∈ 𝓗 that satisfies 𝔅_rec^𝐑 and has W_g ≠ ∅ fails some clause in 𝔅_dyn^𝐑.
+- 𝐑 has **property M** iff it satisfies RB1, RB2 and M_p for some p ∈ P.
+- g ∈ 𝓗 is **act-explained** iff for every (t, τ) ∈ Chg(g) some a ∈ E^iss_g has τ(a) = τ, f(a) = t and v(a) = σ_g(t)(τ). 𝐑 has **T** iff (T1) every clause in 𝔅_dyn^𝐑 holds at every act-explained g ∈ 𝓗 with W_g ≠ ∅ in which every work event conforms, and (T2) every clause in 𝔅_rec^𝐑 does not depend on {σ, f} and is preserved by every (+act) fresh addition (Def 1.7b).
+- A part of Prop 4.1 is read in its **S-form** when its witnesses must be ≈_{σ, f} h, as stated in §4.2, and in its **O-form** when they need only have the same observation as h.
+
+**Lem 9.2 [r3] (Lemma M: reading monotonicity).** Let (O′, 𝓗′) be a pair and 𝐑 a reading.
+- **(o)** 𝐑₀ satisfies RB1, RB2, M_p for every p ∈ P, M_q^D and N_q for every q ∈ V ∖ P, and T.
+- **(i)** Assume A1, A2, A5, and that 𝐑 has M (with p ∈ P). Then for every h ∈ R_B^𝐑′ the history h* := h[σ ≡ p, f ≡ ∞] satisfies h* ∈ H-D^𝐑′ ∩ H-B^𝐑′, h* ≈_{σ, f} h and O′(h*) = O′(h). Hence
+  > O′(H-D^𝐑′ ∩ R_B^𝐑′) = O′(H-B^𝐑′) = O′(H-D^𝐑′ ∩ H-B^𝐑′) = O′(R_B^𝐑′).
+- **(ii)** Assume A1, A2, A5, A6, RB1 and RB2, and let p ∈ P and q ∈ V ∖ P.
+  - **(ii-c)** If M_p^W holds, then for every h ∈ R_B^𝐑′ with W_h ≠ ∅, h_c := h[σ ≡ p, f ≡ ∞] is in H-D^𝐑′ ∩ H-B^𝐑′, h_c ≈_{σ, f} h, O′(h_c) = O′(h), and every work event conforms in h_c.
+  - **(ii-v)** If M_q^D and N_q hold, then for every h ∈ R_B^𝐑′ and every w ∈ W_h, h_v := h[σ ≡ q, f ≡ ∞] is in H-D^𝐑′ ∖ H-B^𝐑′, h_v ≈_{σ, f} h, O′(h_v) = O′(h), σ_v is constant, and w violates.
+
+  So Prop 4.1(ii) holds for 𝐑 if both parts hold; if only one holds, exactly the corresponding half survives with R4's proof.
+- **(iii)** Assume A1, A2, A4, A5, A7, and that 𝐑 has T. Let h ∈ R_B^𝐑′ and let w violate in h. Then the history h′ of the proof of Prop 4.1(iii) is in H-B^𝐑′, O′(h′) = O′(h), and the three bullets of Prop 4.1(iii) hold. No D-side clause is used, so this holds for every D-side reading.
+
+*Proof:* (o) is V1A Lem V2.5. (i), (ii) and (iii) are V1A Lem V2.6, with the proofs given there. The proof of (i) is the proof of Prop 4.1(i) in §4.3 with its six clause checks replaced by RB1, RB2 and M_p. The proof of (iii) runs the proof of Prop 4.1(iii) in §4.3, taking 𝒜 ≠ ∅ from α(w) ∈ 𝒜 instead of from B-recW; V1A notes that this substitution is also valid for 𝐑₀, and the proof in §4.3 is not changed. ∎
+
+**Cor 9.3 [r3] (Lem 4.2 and Cor 4.3 transfer with M).** Let 𝐑 have M. Then Prop 4.1(i) holds for 𝐑 for every pair satisfying A1, A2 and A5, in particular for O_¬σf on 𝓗; and on 𝓗 no observation that is a function of coordinates other than σ and f separates H-D^𝐑 ∩ R_B^𝐑 from H-B^𝐑. If 𝐑 also satisfies M_q^D and N_q, Prop 4.1(ii) holds for 𝐑 for every such pair that also satisfies A6, in particular for O_¬σf on 𝓗 when P ≠ V.
+
+*Proof:* The first sentence is V1A Lem V2.6(i) (with Cor V2.8). For the second, O_¬σf satisfies A1 and A2 on 𝓗 and 𝓗 satisfies A5 (Lem 4.2, Lem 4.0a); apply Lem 9.2(ii). ∎
+
+### 9.2 The reading table
+
+**Table 9.4 [r3] (Rem: the readings; every entry is proved in the V1A statement cited in its row; the table adds no claim).** The readings are those of V1A Def V1.3; each changes the clauses of 𝐑₀ as stated, and everything not mentioned is as in 𝐑₀. "Holds" means that the part holds for every pair satisfying R4's hypothesis list for that part, with R4's proof (Lem 9.2). "Fails gen." means that some pair satisfying that list violates the part. (O, 𝓗) is the base pair.
+
+| Id | Change to 𝐑₀ | HYP licence (one line) | M | (i) | (ii) | (iii) | V1A |
+|---|---|---|---|---|---|---|---|
+| **R-a** | B-chg's work disjunct is target-tied: τ(w) = τ | "norms change … in response to work", read as a response to work on the norm's own target (named, not adopted, in Rem 3.1b) | **M** | holds | holds | holds | Lem V3.1 |
+| **R-b** | B-conf → "some w ∈ W conforms" | "work is expected to conform", read as a tendency of the system, not a property of every work event (cf. Rem 3.1a) | **M** | holds | holds | holds | Lem V3.2 |
+| **R-c** | R-b, and B-rec → D-rec (B-recW dropped) | R-b's phrase, with "the record is expected to carry, or reference, both" read as defeasible for its work half; the matrix's combination, with a disclosed asymmetry in reading "expected to" | **not-M** | fails gen.; holds with A4 and A7 added | holds | holds | Lem V3.3, V3.4 |
+| **R-d** | D-st → D-st⁺ (Lem 3.7) | "the force of a norm depends on the status of the act", read as "is determined by" (adopted ⇒ in force at some time) | **not-M** | fails gen.; holds under SC1, SC2, with ≈_{σ, f, Cap} | fails gen.; holds under SC1, SC2, with ≈_{σ, f, Cap} | holds | Lem V3.6, V3.7; Lem 3.7 |
+| **R-e** | D-chg without "(α(a), iss) ∈ Cap" | "by actors holding the capability to perform them", read as a description of the actors, not a condition (strained; named by the matrix) | **M** | holds | holds | holds | Lem V3.5 |
+| **R-f** | B-rec → D-rec (B-recW dropped); B-conf stays universal | "the record is expected to carry, or reference, both", read as defeasible for its work half | **M** | holds | holds | holds | Lem V3.8 |
+| **R-g** | B-chg ∧ "some (t, τ) ∈ Chg(h) has some w ∈ W with t(w) < t" | "norms change through norm-making acts and in response to work", read as a description (at least one change follows work); licence contested | **not-M** | fails gen. (O_¬σf; also the middle equality under O_Cap, which satisfies A1–A9); holds for (O, 𝓗) with N ≥ 1, P ≠ V; inconsistent (H-B^g = ∅) at N = 0 | h_v half holds; h_c half fails gen. in S-form, holds in O-form for (O, 𝓗) with N ≥ 1, P ≠ V | **fails** (also for (O, 𝓗)) | Lem V3.9, V3.10 |
+| **R-g⁺** | B-chg^g ∧ "some change point is made by an act entering into force with its value" | the same sentence, read as a description of both conjuncts | **not-M** | as R-g | as R-g | **fails** | Lem V3.17 |
+| **R-h** | B-rec ∧ "every act and every work event is referenced by some record" | "the record is expected to carry, or reference, both", read universally | **M** (not T) | holds | holds | literal wording **fails** (at I₇, also for (O, 𝓗)); holds with referenced added acts under A3 as well | Lem V3.11, V3.12 |
+| **R-i** | B-rec → "E ≠ ∅" | "Both hypotheses accept that norm-making acts exist" (Lem 3.6), with the record sentence read as defeasible for both halves | **not-M** (RB2 fails) | fails gen. (S-form; O₃); for (O, 𝓗) fails exactly at o = ∅ and holds on o ≠ ∅; (i′) and Cor 4.1b also fail at o = ∅ | S-form fails gen.; O-form holds under A1, A2, A3, A5, A6, A7 | holds | Lem V3.13, V3.14 |
+| **R-i′** | no B-side record clause | as R-i, with the shared acceptance read as a statement about both hypotheses jointly, not a clause of H-B | **not-M** (RB2 fails) | as R-i | as R-i, with A4 added for the O-form | holds | Lem V3.13, V3.14 |
+| **R-j** | D-chg ∧ "Chg(h) ≠ ∅" | "norms change only through such acts", read as a description (norms do change, and only through acts); the D-side analogue of R-g | **not-M** | fails gen. (O_¬σf); holds for (O, 𝓗) with N ≥ 1, P ≠ V; inconsistent (H-D^j = ∅) at N = 0 | h_v half **fails for every pair** (H-D^j has no constant-σ history); the S-form h_c half also fails; the base-pair O-form h_c holds (V1A Lem V3.16(a)) | holds | Lem V3.15, V3.16 |
+| **R-k** | B-chg's act disjunct also requires Adopted(a, t) (R-k^st) or (α(a), iss) ∈ Cap (R-k^cap) | "norms change through norm-making acts", read with H-D's status and capability qualifiers; weak licence. **REJECTED** as a reading of HYP: it imports H-D's clauses into H-B (V1A Rem V3.18a) | **M** (not T) | holds | holds | literal wording **fails** at I₇ | Lem V3.18 |
+
+The not-M readings are R-c, R-d, R-g, R-g⁺, R-i, R-i′ and R-j. R-h and R-k have M but not T. Every M-reading in the table also satisfies M_q^D and N_q, and every reading other than R-g, R-g⁺, R-h and R-k satisfies T (V1A Table V3.0).
+
+### 9.3 V1b finite results
+
+**Rem 9.5 [r3] (V1b finite results; reported from V1-REC, not re-derived).** **Scope caveat.** These are results of a blind exhaustive enumeration of the finite universe **U** of §7.1: **one target**, T = {0, 1}, one actor and one record, which is always present. Every agent involved was **Claude-family**. The predictions were sealed by the same analyst who wrote V1A, so they are **not independent**. A finite result in U does not establish a generic statement (§7.3). No Lem, Prop or Cor of R4 rests on this remark.
+
+*Integrity (V1-REC).* The predictions were sealed before reading (`f5a0d0219`, plus the V1B-SUPP-RETURN seal); isolation was clean; the re-run was identical apart from runtime; the sizes of U and U₅ equal R5's. The planted controls of all eight readings with sealed predictions were VALID. (V1-REC calls these "the 8 non-M readings". By V1A Table V3.0 they are the seven not-M readings together with R-h, whose (iii) does not transfer.) Every scorable prediction was CONFIRMED: the HOLDS/FAILS patterns, the exact difference sets where reported, and all essential least-counterexample features (P1.1–P1.6, P1.10–P1.13). There were 0 minor deviations. The inputs do not map these prediction numbers to readings, except P1.7 (R-h).
+
+| Reading | V1b result in U |
+|---|---|
+| 𝐑₀ | reproduces R4 / R5 |
+| R-a | **untested** (Rem 9.8) |
+| R-b, R-e, R-f | hold; Lemma M is not falsified |
+| R-c | control VALID; scorable predictions CONFIRMED |
+| R-d | control VALID; scorable predictions CONFIRMED. The global K4b and the ≈_{σ, f, Cap} variants were not requested by the spec and are **unscorable** (Rem 9.7) |
+| R-g, R-g⁺ | control VALID; scorable predictions CONFIRMED |
+| R-h | (i) and (ii) hold. Control VALID after a blind supplementary evaluation of H_U5h. The only falsified prediction is P1.7 (the R-h least counterexample), which was identified as wrong before the run and kept as sealed (addendum). The referenced-a2 variant is **unscorable** |
+| R-i, R-i′ | control VALID after a blind supplementary evaluation of H_U5i; scorable predictions CONFIRMED. The base-pair failure at o = ∅ is untestable in U, because ρ1 is always present (V1A Rem V3.14a) |
+| R-j | control VALID; scorable predictions CONFIRMED |
+| R-k | not predicted (rejected); the inputs report no V1b result |
+
+H_U5h and H_U5i had been omitted by the main analyst's spec-extraction error; the supplementary evaluation only added these named histories. Also **unscorable**, and not attributed to a reading in the inputs: P1.4's least witness; P1.8 (the combination was not run); some exact O_¬σf sets (output truncated; the counts and prefixes are consistent).
+
+### 9.4 The weak form
+
+**Prop 9.6 [r3] (weak form: records-only O does not separate the hypotheses).** *Scope:* the base pair (O, 𝓗), with N ≥ 1 (needed only for R-g, R-g⁺ and R-j, which are inconsistent at N = 0) and P ≠ V; the **tested readings** 𝕋 = {𝐑₀, R-b, R-c, R-d, R-e, R-f, R-g, R-g⁺, R-h, R-i, R-i′, R-j}, i.e. every reading of Table 9.4 run in V1b (R-a is untested and R-k rejected). For every 𝐑 ∈ 𝕋:
+- **(a) (i)-O.** For every o ≠ ∅: o ∈ O(H-D^𝐑 ∩ R_B^𝐑) ⟺ o ∈ O(H-B^𝐑) ⟺ o ∈ O(H-D^𝐑 ∩ H-B^𝐑) ⟺ o ∈ O(R_B^𝐑). For 𝐑 ∉ {R-i, R-i′} none of the four images contains ∅, so the image equalities of Prop 4.1(i) hold without restriction. For R-i and R-i′ they fail exactly at o = ∅.
+- **(b) (ii)-O, except under R-j.** For 𝐑 ≠ R-j: for every h ∈ R_B^𝐑 and every work event w referenced in h there are h_v ∈ H-D^𝐑 ∖ H-B^𝐑, with σ_v constant and w violating, and h_c ∈ H-D^𝐑 ∩ H-B^𝐑, in which every work event conforms, with O(h_v) = O(h_c) = O(h).
+- **Exception.** Under R-j, (b) fails, for every pair and not only for (O, 𝓗): H-D^j contains no history with constant σ (V1A Lem V3.15(d)).
+
+*What Prop 9.6 does not say.* It concerns O only, not every observation satisfying A1, A2 and A5, and it is an O-form statement, not an S-form one; under the not-M readings both stronger forms fail (Table 9.4). It does not cover R-a or R-k. (Both have M, M_q^D and N_q, so (a) and (b) follow for them from Lem 9.2 as well; but neither was tested, and they are outside the stated scope.)
+
+*Proof.* (O, 𝓗) satisfies A1–A5, A7–A9 (Lem 4.0a), A6 (P ≠ V), and SC1 and SC2 (Lem 3.7). Reading by reading:
+- 𝐑₀: Prop 4.1(i), (ii) and Cor 4.1b.
+- R-b, R-e, R-f, R-h: each has M, M_q^D and N_q (V1A Lem V3.2, V3.5, V3.8, V3.11), so Lem 9.2(i) and (ii) apply. The images contain no ∅, because every member of the record base satisfies D-rec (RB2), which needs a record.
+- R-c: (a) by V1A Lem V3.4(c); (b) by V1A Lem V3.4(a).
+- R-d: (a) by V1A Lem V3.7(a); (b) by V1A Lem V3.7(b); both use SC1 and SC2.
+- R-g, R-g⁺: (a) by V1A Lem V3.10(a) (N ≥ 1, P ≠ V) and Lem V3.17. (b): the h_v half by Lem 9.2(ii-v) (V1A Lem V3.10(b)); the h_c half by (a) applied to O(h), which is nonempty because w is referenced. Every work event conforms in h_c, because B-conf is universal under R-g and R-g⁺.
+- R-i, R-i′: (a) by V1A Lem V3.13(c) and V3.14(a). (b) by V1A Lem V3.14(b), whose hypotheses A1, A2, A3, A5, A6, A7 (and A4 for R-i′) hold for (O, 𝓗).
+- R-j: (a) by V1A Lem V3.16(a) (N ≥ 1, P ≠ V). The exception is V1A Lem V3.15(d). ∎
+
+*Finite confirmation.* U has N = 1 and P ≠ V, and every observation in U is nonempty. V1-REC reports that the weak form survived under every valid V1b run, with the R-j exception (Rem 9.5). This is a finite confirmation under the caveat of Rem 9.5, not part of the proof. V1-REC attributes the survival to the freedom inside each O-fibre: for the not-M readings, Prop 9.6 is obtained only by spending further freedoms of the frame (A4 and A7 for R-c; SC1 and SC2 for R-d; the choice of Cap, acts and work times for R-g, R-g⁺ and R-j; a nonempty record for R-i and R-i′; V1A Rem V5.2).
+
+### 9.5 R-d and capability
+
+**Rem 9.7 [r3] (under R-d, non-identifiability rests additionally on Cap being unobserved).** Under R-d, the non-separation of Prop 9.6 rests not only on σ and f being unobserved (O3, O4) but also on **Cap being unobserved (O5)**:
+- an observation that reads neither σ nor f but reads Cap separates: O_¬σf(R_B) ⊄ O_¬σf(H-D⁺ ∩ H-B), and O_¬σf(H-D⁺ ∩ R_B) ≠ O_¬σf(H-B), on 𝓗 (V1A Lem V3.6(c), (d));
+- (i) and (ii) are recovered under SC1 (𝓗′ closed under Cap := ∅) and SC2 (O′ blind to Cap), through witnesses that are ≈_{σ, f, Cap} h, not ≈_{σ, f} h (Lem 3.7; V1A Lem V3.7, Rem V3.7a). SC1 and SC2 are **sufficient**; their necessity is not shown. O satisfies SC2 because it does not read Cap (Lem 1.12).
+
+So for R-d, the corpus relevance of Prop 9.6 rests on Obs O5 (G07, H19), that the available observation is Cap-blind; this is an observation about the corpus, not a theorem (the proof itself uses SC2 for O, Lem 1.12). The SC1/SC2 recovery is established formally (V1A) and is **not finite-verified**: the ≈_{σ, f, Cap} variants and the global K4b were unscorable in V1b (Rem 9.5). V1A also shows that under R-g, R-g⁺ and R-j every member of H-D ∩ H-B^g, respectively of H-D^j, has Cap containing an iss pair and an adp pair, so that Cap-reading observations separate there as well (V1A Lem V3.9(d), V3.16(c)); there too, Prop 9.6 uses the free choice of Cap inside the O-fibre (V1A Rem V3.10a).
+
+### 9.6 R-a
+
+**Rem 9.8 [r3] (R-a is untested).** R-a was **not tested** in V1b. With one target, as in U, B-chg^a and B-chg coincide, because τ(w) = τ always holds; R-a needs at least two targets (V1A Rem V3.1a; V1-REC). Its classification in Table 9.4 (M, with (i), (ii) and (iii) holding) rests on V1A Lem V3.1 alone. The combination R-a ∘ R-g is likewise untestable in U (V1A Lem V4.1(e)). R-a is therefore outside the scope of Prop 9.6.

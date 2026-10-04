@@ -2899,3 +2899,17 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BO/` |
+
+## F-LOG-0233 — **R4 r3 sealed:** reading-robustness revision. Review PASS_WITH_LIMITATIONS (0 blocking, **0 unlisted changes**, scope qualifiers verified exact); 9 wording items applied as disclosed analyst edits
+**New in r3:**
+- §9: Lemma M, the reading table (R-a … R-k), the V1b finite results with caveats, the weak-form proposition, and the R-d Cap dependency (SC1/SC2 sufficient);
+- labelled scope remarks Rem 4.1s / 4.2s / 4.3s;
+- §8 no longer cites the quarantined F09/F10/F12.
+
+**No proof in §§1–8 changed.**
+
+**Status:** reviewed draft r3, same-family. **R6 authorized scope (V1a + V1b) is COMPLETE.**
+
+| Field | Value |
+|---|---|
+| Records | `analysis/theory/FORMAL-THEORY-R4.md` (r3); `LOOP-1BO/` |
