@@ -2845,3 +2845,29 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BN/` (A1, B1 = r1; V1B-ADDENDUM-PRE-RUN, V1B-SPEC, V1B-TASK) |
+
+## F-LOG-0230 — **V1b scored (independent scorer, sealed rule): V1a's classification CONFIRMED on all 5 valid readings; nothing falsified**
+**Integrity:**
+- the return was sealed before reading (`f5a0d0219`);
+- the isolation audit is clean (3 reads, python3 and ls only);
+- the main analyst's re-run is identical apart from runtime metadata;
+- U and U₅ sizes match R5.
+
+**Valid readings** (all controls detected): R-c, R-d, R-g, R-g⁺, R-j.
+- **Every scorable prediction is CONFIRMED**, including the HOLDS/FAILS pattern, the exact difference sets where reported, and every essential least-counterexample feature (P1.1–P1.3, P1.5, P1.6, P1.13).
+- 0 minor deviations; 0 falsified.
+
+**Lemma M is not falsified:** R-b, R-e, R-f, and R-h for (i)/(ii) all hold. **R₀ reproduces R4/R5.**
+
+**Invalid readings:** R-h, R-i, R-i′.
+- The C-U5 histories H_U5h and H_U5i were never evaluated.
+- **The cause is the main analyst's spec-extraction error.** The regex stripping the Conj blocks also removed two named histories defined inside them. The cause is neither the theory nor the implementer.
+- **P1.7:** the observed least counterexample equals the pre-identified h0. It would be FALSIFIED (pre-identified wrong), but it is formally unscored because R-h is invalid.
+
+**Unscorable items** (§D did not request them; recorded): the global K4b and the ≈σ,f,Cap variants; P1.4's least witness; the R-h referenced-a2 variant; P1.8 (R-c∘R-d was not run).
+
+**Fix:** a blind supplementary evaluation of H_U5h and H_U5i (`V1B-SUPP-SPEC.md`).
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BN/` (V1B-RETURN.sha256, V1B-SUPP-SPEC.md) |
