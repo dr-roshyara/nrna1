@@ -40,6 +40,23 @@ class VoterVerification extends Model
     ];
 
     /**
+     * Cache invalidation (PBDIGIT-213 C3, same mechanism as ElectionMembership::booted):
+     * identity evidence is an input of the voter's admission-aware standing, so any
+     * write — verify, re-verify, revoke, suspension revocation — forgets the cached
+     * standing of (user, election) under the election's current policy fingerprint.
+     */
+    protected static function booted(): void
+    {
+        $invalidate = static fn (self $evidence) => \App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::forgetCurrent(
+            $evidence->user_id,
+            $evidence->election_id
+        );
+
+        static::saved($invalidate);
+        static::deleted($invalidate);
+    }
+
+    /**
      * Get the election this verification belongs to
      */
     public function election(): BelongsTo

@@ -159,6 +159,20 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Infrastructure\Queries\EloquentAdmissionImpactQuery::class
         );
 
+        // Election Context: identity verification as admission evidence (PBDIGIT-213 C3).
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\VerificationAuthoritySource::class,
+            \App\Contexts\Elections\Infrastructure\Queries\ElectionOfficerVerificationAuthoritySource::class
+        );
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\VoterRegistrationQuery::class,
+            \App\Contexts\Elections\Infrastructure\Queries\EloquentVoterRegistrationQuery::class
+        );
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\IdentityEvidenceStore::class,
+            \App\Contexts\Elections\Infrastructure\Repositories\EloquentIdentityEvidenceStore::class
+        );
+
         // Election Lifecycle: SSOT (Single Source of Truth) engine for state derivation
         $this->app->bind(
             \App\Domain\Election\Services\ElectionLifecycleEngine::class,

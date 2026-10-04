@@ -6,6 +6,9 @@ use App\Contexts\Elections\Application\Commands\AssignVoterCommand;
 use App\Contexts\Elections\Application\Commands\BulkAssignVotersCommand;
 use App\Contexts\Elections\Application\Handlers\AssignVoterHandler;
 use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
+use App\Contexts\Elections\Application\Commands\RevokeIdentityVerificationCommand;
+use App\Contexts\Elections\Application\Handlers\RevokeIdentityVerificationHandler;
+use App\Contexts\Elections\Domain\ValueObjects\RevocationReason;
 use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
 use App\Domain\Election\Enum\VoterSourceStrategy;
@@ -344,7 +347,21 @@ class ElectionVoterController extends Controller
         }
 
         $proposedBy = $membership->suspension_proposed_by;
-        $membership->confirmSuspension(auth()->user());
+
+        // PBDIGIT-213 C3.4 (ADR D5): a confirmed suspension keeps the voter registered
+        // and ends the CURRENT admission effect of their identity evidence, so
+        // re-verification is required. The historical fact is kept. Atomic with the
+        // confirmation.
+        DB::transaction(function () use ($membership, $election) {
+            $membership->confirmSuspension(auth()->user());
+
+            app(RevokeIdentityVerificationHandler::class)->handle(new RevokeIdentityVerificationCommand(
+                electionId: $election->id,
+                voterId: $membership->user_id,
+                revokedBy: auth()->id(),
+                reason: RevocationReason::SuspensionConfirmed,
+            ));
+        });
         Cache::forget("election.{$election->id}.voter_stats");
 
         Log::channel('voting_security')->info('Suspension confirmed', [

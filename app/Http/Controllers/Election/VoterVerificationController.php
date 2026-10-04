@@ -2,6 +2,14 @@
 
 namespace App\Http\Controllers\Election;
 
+use App\Contexts\Elections\Application\Commands\RecordIdentityVerificationCommand;
+use App\Contexts\Elections\Application\Commands\RevokeIdentityVerificationCommand;
+use App\Contexts\Elections\Application\Handlers\RecordIdentityVerificationHandler;
+use App\Contexts\Elections\Application\Handlers\RevokeIdentityVerificationHandler;
+use App\Contexts\Elections\Domain\Exceptions\VerifierNotAuthorised;
+use App\Contexts\Elections\Domain\Exceptions\VoterNotVerifiable;
+use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
+use App\Contexts\Elections\Domain\ValueObjects\RevocationReason;
 use App\Contexts\Trust\Domain\Events\IdentityAttestedEvent;
 use App\Contexts\Trust\Domain\Events\VerificationRevokedEvent;
 use App\Http\Controllers\Controller;
@@ -12,17 +20,28 @@ use App\Services\ElectionAuditService;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 
+/**
+ * VoterVerificationController — the existing "Verify" action, now recording
+ * OFFICER_IDENTITY_VERIFICATION admission evidence (PBDIGIT-213 C3).
+ *
+ * Thin HTTP boundary: authorisation (manageSettings = Chief/Deputy of THIS election),
+ * the lifecycle window (route: election.state:verify_voter_identity), then the
+ * application commands. Target eligibility, the verifier's role and the evidence write
+ * live in RecordIdentityVerificationHandler / RevokeIdentityVerificationHandler.
+ * IP/device data is audit metadata only — never proof of identity.
+ */
 class VoterVerificationController extends Controller
 {
     /**
-     * Save or update voter verification (admin action during video call)
+     * Record identity verification (admin action, e.g. during a video call).
      */
-    public function store(Request $request, Organisation $organisation, string $election)
-    {
-        $election = Election::withoutGlobalScopes()
-            ->where('slug', $election)
-            ->where('organisation_id', $organisation->id)
-            ->firstOrFail();
+    public function store(
+        Request $request,
+        Organisation $organisation,
+        string $election,
+        RecordIdentityVerificationHandler $handler,
+    ) {
+        $election = $this->resolveElection($organisation, $election);
 
         $this->authorize('manageSettings', $election);
 
@@ -34,48 +53,32 @@ class VoterVerificationController extends Controller
             'notes' => 'nullable|string|max:1000',
         ]);
 
-        // Find or create verification record
-        $verification = VoterVerification::query()
-            ->where('election_id', $election->id)
-            ->where('user_id', $validated['user_id'])
-            ->first();
-
-        if ($verification) {
-            // Update existing record (re-verification)
-            $verification->update(array_merge(
-                $validated,
-                [
-                    'verified_by' => auth()->id(),
-                    'verified_at' => now(),
-                    'status' => 'active',
-                    'revoked_by' => null,
-                    'revoked_at' => null,
-                ]
+        try {
+            $recorded = $handler->handle(new RecordIdentityVerificationCommand(
+                electionId: $election->id,
+                voterId: $validated['user_id'],
+                verifierId: auth()->id(),
+                verifiedIp: $validated['verified_ip'] ?? null,
+                fingerprintHash: $validated['verified_device_fingerprint_hash'] ?? null,
+                deviceComponents: $validated['verified_device_components'] ?? null,
+                notes: $validated['notes'] ?? null,
             ));
-        } else {
-            // Create new verification record
-            $verification = VoterVerification::create(array_merge(
-                $validated,
-                [
-                    'election_id' => $election->id,
-                    'organisation_id' => $election->organisation_id,
-                    'verified_by' => auth()->id(),
-                    'verified_at' => now(),
-                    'status' => 'active',
-                ]
-            ));
+        } catch (VoterNotVerifiable) {
+            return redirect()->back()->withErrors([
+                'user_id' => 'Only a registered voter of this election can be verified.',
+            ]);
+        } catch (VerifierNotAuthorised) {
+            abort(403, 'Only the Chief or Deputy Chief of this election may verify voters.');
         }
 
-        // Dispatch identity attested event
         event(new IdentityAttestedEvent(
-            verificationId: $verification->id,
+            verificationId: $recorded->verificationId,
             userId: $validated['user_id'],
             attestedBy: auth()->id(),
-            attestedAt: new DateTimeImmutable($verification->verified_at->toDateTimeString()),
+            attestedAt: new DateTimeImmutable(),
             notes: $validated['notes'] ?? null,
         ));
 
-        // Log voter_verified event
         app(ElectionAuditService::class)->log(
             election: $election,
             event: 'voter_verified',
@@ -83,24 +86,30 @@ class VoterVerificationController extends Controller
             category: 'committee',
             ip: $request->ip(),
             metadata: [
-                'verified_ip' => $validated['verified_ip'] ?? null,
-                'fingerprint' => $validated['verified_device_fingerprint_hash'] ?? null,
+                'subject_user_id' => $validated['user_id'],
+                'verifier_role'   => $recorded->verifierRole->value,
+                'requirement'     => AdmissionRequirement::OfficerIdentityVerification->value,
+                'policy'          => $election->admissionPolicy()->toPersistence(),
+                'verified_ip'     => $validated['verified_ip'] ?? null,
+                'fingerprint'     => $validated['verified_device_fingerprint_hash'] ?? null,
             ]
         );
 
         return redirect()->back()
-            ->with('success', 'Voter verification saved successfully');
+            ->with('success', 'Voter identity verified.');
     }
 
     /**
-     * Revoke a voter's verification
+     * End the current admission effect of a voter's identity evidence.
      */
-    public function revoke(Request $request, Organisation $organisation, string $election, VoterVerification $verification)
-    {
-        $election = Election::withoutGlobalScopes()
-            ->where('slug', $election)
-            ->where('organisation_id', $organisation->id)
-            ->firstOrFail();
+    public function revoke(
+        Request $request,
+        Organisation $organisation,
+        string $election,
+        VoterVerification $verification,
+        RevokeIdentityVerificationHandler $handler,
+    ) {
+        $election = $this->resolveElection($organisation, $election);
 
         $this->authorize('manageSettings', $election);
 
@@ -109,30 +118,45 @@ class VoterVerificationController extends Controller
             abort(404);
         }
 
-        $verification->update([
-            'status' => 'revoked',
-            'revoked_by' => auth()->id(),
-            'revoked_at' => now(),
-        ]);
+        try {
+            $handler->handle(new RevokeIdentityVerificationCommand(
+                electionId: $election->id,
+                voterId: $verification->user_id,
+                revokedBy: auth()->id(),
+                reason: RevocationReason::RevokedByOfficer,
+            ));
+        } catch (VerifierNotAuthorised) {
+            abort(403, 'Only the Chief or Deputy Chief of this election may revoke a verification.');
+        }
 
-        // Dispatch verification revoked event
         event(new VerificationRevokedEvent(
             verificationId: $verification->id,
             userId: $verification->user_id,
             revokedBy: auth()->id(),
-            revokedAt: new DateTimeImmutable($verification->revoked_at->toDateTimeString()),
+            revokedAt: new DateTimeImmutable(),
         ));
 
-        // Log verification_revoked event
         app(ElectionAuditService::class)->log(
             election: $election,
             event: 'verification_revoked',
             user: auth()->user(),
             category: 'committee',
-            ip: $request->ip()
+            ip: $request->ip(),
+            metadata: [
+                'subject_user_id'   => $verification->user_id,
+                'revocation_reason' => RevocationReason::RevokedByOfficer->value,
+            ]
         );
 
         return redirect()->back()
             ->with('success', 'Voter verification revoked successfully');
+    }
+
+    private function resolveElection(Organisation $organisation, string $slug): Election
+    {
+        return Election::withoutGlobalScopes()
+            ->where('slug', $slug)
+            ->where('organisation_id', $organisation->id)
+            ->firstOrFail();
     }
 }

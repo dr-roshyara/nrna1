@@ -29,8 +29,9 @@
 |---|---|---|
 | C0 | ✅ committed `112e1a15d` | ADR, story, plan, investigations |
 | C1 | ✅ committed `f97ddae59`, **accepted by the PO 2026-10-04** | RED 17 → GREEN 33/33. Regression over 45 suites, pre-C1 worktree vs C1: 166 failures before and after, the same tests and the same causes, **0 delta**. Guide `developer_guide/election/voter_admission/01_c1_voting_entitlement.md` |
-| C2 | ✅ GREEN, committed (this commit); **awaiting PO acceptance** | Policy (default OFF, Election-Only only), two-layer lock, dedicated endpoint, audit, impact, evidence schema. RED 48 → GREEN 49/49 (C1+C2 82/82). Regression over 54 suites, worktree at C1 vs C2: 174 failures before and after, **0 per-test diff, 0 reason diff**. Guide `02_c2_admission_policy.md` |
-| C3, C4 | not started | — |
+| C2 | ✅ committed `110387f63`, **accepted by the PO 2026-10-04** | Policy (default OFF, Election-Only only), two-layer lock, dedicated endpoint, audit, impact, evidence schema. RED 48 → GREEN 49/49 (C1+C2 82/82). Regression over 54 suites, worktree at C1 vs C2: 174 failures before and after, **0 per-test diff, 0 reason diff**. Guide `02_c2_admission_policy.md` |
+| C3 | ✅ GREEN, committed (this commit); **awaiting PO acceptance** | Admission enforced by the one entitlement decision; Chief/Deputy authority; window `verify_voter_identity`; suspension ≠ re-verification; cache invalidation both ways; legacy `can_vote` classified (A–G); `Code.can_vote_now` out of scope (0 changes). RED 52 → GREEN 82/82 (C1+C2+C3 167/167). Regression over 77 suites: 1 changed test (`SimpleStoreTest`, D1/D3 fixture conflict → PO-approved fixture-only adaptation); the other 205 failures are unchanged. `AdmissionPolicyC2BoundaryTest` superseded (C3-D3). Findings → `PBDIGIT-214`…`219`. Guide `03_c3_identity_admission.md` |
+| C4 | not started | — |
 
 ### Overlap found after C0: `PBDIGIT-201`
 

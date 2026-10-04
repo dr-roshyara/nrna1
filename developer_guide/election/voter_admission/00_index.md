@@ -22,8 +22,9 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 |---|---|---|
 | [01_c1_voting_entitlement.md](./01_c1_voting_entitlement.md) | C1 | One authoritative voting-entitlement decision, scoped by the election |
 | [02_c2_admission_policy.md](./02_c2_admission_policy.md) | C2 | The Voter Admission Policy (ON/OFF), its two-layer lock, impact, audit and the evidence schema |
+| [03_c3_identity_admission.md](./03_c3_identity_admission.md) | C3 | Identity admission enforced by the one entitlement decision; Chief/Deputy authority; window; suspension ≠ re-verification; cache; legacy `can_vote` classification; `Code.can_vote_now` out of scope |
 
-*Later slices add their own files: C3 identity verification, C4 UI.*
+*C4 (UI) will add its own file.*
 
 ## Related guides
 

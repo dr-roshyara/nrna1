@@ -331,9 +331,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function invalidateVoterCache(string $electionId): void
     {
-        \Illuminate\Support\Facades\Cache::forget(
-            \App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::for($this->id, $electionId)
-        );
+        \App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::forgetCurrent($this->id, $electionId);
     }
 
      /**

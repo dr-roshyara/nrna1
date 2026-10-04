@@ -295,8 +295,8 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::patch('/candidacy/applications/{application}',        [CandidacyReviewController::class, 'review']) ->name('organisations.elections.candidacy.review');
             });
 
-            // ── MULTI-STATE (Verification - allowed in voting, results_pending, results) ──
-            Route::middleware(['election.state:verify_vote'])->group(function () {
+            // ── Identity verification (PBDIGIT-213 D1): SetupAdministration → VotingActive ──
+            Route::middleware(['election.state:verify_voter_identity'])->group(function () {
                 Route::post('/voters/verify',                           [VoterVerificationController::class, 'store'])  ->name('elections.voters.verify');
                 Route::delete('/voters/{verification}/revoke',          [VoterVerificationController::class, 'revoke']) ->name('elections.voters.verification.revoke');
             });

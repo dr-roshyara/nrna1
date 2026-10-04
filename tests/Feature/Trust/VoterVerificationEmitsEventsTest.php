@@ -5,6 +5,7 @@ namespace Tests\Feature\Trust;
 use App\Contexts\Trust\Domain\Events\IdentityAttestedEvent;
 use App\Contexts\Trust\Domain\Events\VerificationRevokedEvent;
 use App\Models\Election;
+use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\User;
@@ -12,6 +13,7 @@ use App\Models\UserOrganisationRole;
 use App\Models\VoterVerification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 class VoterVerificationEmitsEventsTest extends TestCase
@@ -28,7 +30,9 @@ class VoterVerificationEmitsEventsTest extends TestCase
         parent::setUp();
 
         $this->organisation = Organisation::factory()->create();
-        $this->election = Election::factory()->for($this->organisation)->create();
+        // PBDIGIT-213 C3 (fixture only, PO decision C3-D1): identity verification is
+        // recorded only inside the verification window (D1: not in Draft).
+        $this->election = ElectionScenarioFactory::setupAdministration($this->organisation);
         $this->officer = User::factory()->create();
         $this->voter = User::factory()->create();
 
@@ -37,6 +41,21 @@ class VoterVerificationEmitsEventsTest extends TestCase
             'user_id' => $this->officer->id,
             'organisation_id' => $this->organisation->id,
             'role' => 'admin',
+        ]);
+
+        // PBDIGIT-213 C3 (fixture only, PO decision C3-D1): only a registered voter of
+        // this election can be verified (D3 registered-target rule).
+        UserOrganisationRole::create([
+            'user_id' => $this->voter->id,
+            'organisation_id' => $this->organisation->id,
+            'role' => 'voter',
+        ]);
+        ElectionMembership::create([
+            'user_id' => $this->voter->id,
+            'organisation_id' => $this->organisation->id,
+            'election_id' => $this->election->id,
+            'role' => 'voter',
+            'status' => 'active',
         ]);
 
         // Create officer record with chief role for authorization

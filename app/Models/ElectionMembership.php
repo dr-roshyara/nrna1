@@ -256,10 +256,10 @@ class ElectionMembership extends Model
             Cache::forget("election.{$membership->election_id}.voter_count");
             Cache::forget("election.{$membership->election_id}.voter_stats");
             // Also clear the per-user voting-entitlement standing (PBDIGIT-213 C1)
-            Cache::forget(\App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::for(
+            \App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::forgetCurrent(
                 $membership->user_id,
                 $membership->election_id
-            ));
+            );
         };
 
         $syncVoterCount = function (self $membership) {

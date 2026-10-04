@@ -9,7 +9,8 @@ use App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason;
  * VotingEntitlementPolicy — the FINAL voting-entitlement decision (PBDIGIT-213).
  *
  * Composes; owns none of its inputs (ADR_20261004_1549 §2.2 invariant 8):
- *   registered → voter role → organisation scope → active membership → election votable.
+ *   registered → voter role → organisation scope → active membership → admitted
+ *   (PBDIGIT-213 C3) → election votable.
  * The first failing condition is the single reason returned.
  *
  * - standing(): the voter's own standing in the election (person-level conditions).
@@ -36,6 +37,11 @@ final class VotingEntitlementPolicy
 
         if ($context->status !== 'active') {
             return VotingEntitlementReason::NotActive;
+        }
+
+        // PBDIGIT-213 C3: the election's admission requirements (policy + evidence).
+        if (! $context->isAdmitted) {
+            return VotingEntitlementReason::NotAdmitted;
         }
 
         return VotingEntitlementReason::Entitled;

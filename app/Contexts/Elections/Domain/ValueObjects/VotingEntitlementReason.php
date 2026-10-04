@@ -15,6 +15,7 @@ enum VotingEntitlementReason: string
     case NotVoterRole         = 'not_voter_role';
     case OrganisationMismatch = 'organisation_mismatch';
     case NotActive            = 'not_active';
+    case NotAdmitted          = 'not_admitted';         // PBDIGIT-213 C3: admission requirements unsatisfied
     case ElectionNotVotable   = 'election_not_votable';
 
     public function isEntitled(): bool

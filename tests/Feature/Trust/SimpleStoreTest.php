@@ -3,12 +3,14 @@
 namespace Tests\Feature\Trust;
 
 use App\Models\Election;
+use App\Models\ElectionMembership;
 use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
 use App\Models\VoterVerification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 class SimpleStoreTest extends TestCase
@@ -18,7 +20,9 @@ class SimpleStoreTest extends TestCase
     public function test_verify_endpoint_creates_verification(): void
     {
         $organisation = Organisation::factory()->create();
-        $election = Election::factory()->for($organisation)->create();
+        // PBDIGIT-213 C3 (fixture only, PO-approved like C3-D1): identity verification is
+        // recorded only inside the verification window (D1: not in Draft).
+        $election = ElectionScenarioFactory::setupAdministration($organisation);
         $officer = User::factory()->create();
         $voter = User::factory()->create();
 
@@ -27,6 +31,21 @@ class SimpleStoreTest extends TestCase
             'user_id' => $officer->id,
             'organisation_id' => $organisation->id,
             'role' => 'admin',
+        ]);
+
+        // PBDIGIT-213 C3 (fixture only, PO-approved like C3-D1): only a registered voter
+        // of this election can be verified (D3 registered-target rule).
+        UserOrganisationRole::create([
+            'user_id' => $voter->id,
+            'organisation_id' => $organisation->id,
+            'role' => 'voter',
+        ]);
+        ElectionMembership::create([
+            'user_id' => $voter->id,
+            'organisation_id' => $organisation->id,
+            'election_id' => $election->id,
+            'role' => 'voter',
+            'status' => 'active',
         ]);
 
         // Officer role in election

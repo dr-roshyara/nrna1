@@ -44,10 +44,14 @@ class ElectionVotingController extends Controller
         //    say "registered, not yet open" / "period ended".
         //  - canVote    = the entitlement DECISION (standing + lifecycle, composed
         //    once in the domain) and not already voted.
-        $entitlement = app(VotingEntitlementQuery::class);
-        $isEligible  = $entitlement->standingOf($user->id, $election->id)->isEntitled();
-        $hasVoted    = $this->membershipHasVoted($user, $election);
-        $canVote     = $entitlement->decide($user->id, $election->id)->isEntitled() && ! $hasVoted;
+        //  - admissionPending = registered and active, but the election's admission
+        //    requirement (identity verification) is not yet satisfied (PBDIGIT-213 C3).
+        $entitlement      = app(VotingEntitlementQuery::class);
+        $standing         = $entitlement->standingOf($user->id, $election->id);
+        $isEligible       = $standing->isEntitled();
+        $admissionPending = $standing === VotingEntitlementReason::NotAdmitted;
+        $hasVoted         = $this->membershipHasVoted($user, $election);
+        $canVote          = $entitlement->decide($user->id, $election->id)->isEntitled() && ! $hasVoted;
 
         // Lifecycle SSOT — display props and audit log only; not a second decision.
         $lifecycle = ElectionLifecycle::of($election);
@@ -72,6 +76,7 @@ class ElectionVotingController extends Controller
             'hasVoted'         => $hasVoted,
             'canVote'          => $canVote,
             'isEligible'       => $isEligible,
+            'admissionPending' => $admissionPending,
             'lifecycle'        => [
                 'state'           => $lifecycle->state()->value,
                 'canVote'         => $lifecycle->canVote(),
@@ -112,9 +117,11 @@ class ElectionVotingController extends Controller
 
         if (! $standing->isEntitled()) {
             return redirect()->route('elections.show', $slug)
-                ->with('error', $standing === VotingEntitlementReason::NotActive
-                    ? 'Your voter registration for this election is not active.'
-                    : 'You are not registered as a voter for this election.');
+                ->with('error', match ($standing) {
+                    VotingEntitlementReason::NotActive   => 'Your voter registration for this election is not active.',
+                    VotingEntitlementReason::NotAdmitted => 'Your identity must be verified by the Chief or Deputy Chief of the election before you can vote.',
+                    default                              => 'You are not registered as a voter for this election.',
+                });
         }
 
         if ($this->membershipHasVoted($user, $election)) {

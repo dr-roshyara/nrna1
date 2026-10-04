@@ -5,10 +5,13 @@ namespace App\Contexts\Elections\Infrastructure\Queries;
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Contexts\Elections\Application\Ports\VotingEntitlementQuery;
 use App\Contexts\Elections\Domain\Policies\VotingEntitlementPolicy;
+use App\Contexts\Elections\Domain\ValueObjects\AdmissionEvidence;
+use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
 use App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementContext;
 use App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason;
 use App\Models\Election;
 use App\Models\ElectionMembership;
+use Illuminate\Support\Facades\DB;
 
 /**
  * EloquentVotingEntitlementQuery — uncached, authoritative implementation of
@@ -69,6 +72,33 @@ final class EloquentVotingEntitlementQuery implements VotingEntitlementQuery
             role: $membership->role,
             status: $membership->status,
             organisationMatches: $membership->organisation_id === $election->organisation_id,
+            isAdmitted: $this->isAdmitted($userId, $election),
         );
+    }
+
+    /**
+     * PBDIGIT-213 C3.1 — the election's VoterAdmissionPolicy against the voter's
+     * CURRENT admission evidence for THIS election. Policy OFF ⇒ admitted without
+     * reading any evidence. Only active evidence counts; revoked evidence does not.
+     */
+    private function isAdmitted(string $userId, Election $election): bool
+    {
+        $policy = $election->admissionPolicy();
+
+        if ($policy->isEmpty()) {
+            return true;
+        }
+
+        $hasActiveIdentityEvidence = DB::table('voter_verifications')
+            ->where('election_id', $election->id)
+            ->where('user_id', $userId)
+            ->where('status', 'active')
+            ->exists();
+
+        $evidence = $hasActiveIdentityEvidence
+            ? AdmissionEvidence::satisfying(AdmissionRequirement::OfficerIdentityVerification)
+            : AdmissionEvidence::none();
+
+        return $policy->isSatisfiedBy($evidence)->isAdmitted();
     }
 }

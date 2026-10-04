@@ -13,7 +13,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 ---
 
-## 📍 UPDATE (2026-10-04, **`PBDIGIT-213` Election-Only voter admission v1 — C0, C1 (accepted), C2 committed; C2 awaiting PO acceptance**)
+## 📍 UPDATE (2026-10-04, **`PBDIGIT-213` Election-Only voter admission v1 — C0, C1, C2 (accepted), C3 committed; C3 awaiting PO acceptance**)
 
 | | |
 |---|---|
@@ -22,7 +22,8 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | ⚠️ **Overlap** | C1 resolves the defect of **`PBDIGIT-201`** (`start()` + ambient tenant). Recorded for PO acceptance; status not changed by engineering |
 | 🔐 **Observation** | `.env.back_20260419_0138` and `.env.backup-laravel12` are tracked in git (may hold credentials; not opened). PO/ops decision |
 | ✅ **C2** | Voter Admission Policy: "Identity verification required" ON/OFF; default OFF everywhere; Election-Only only; locked from ReadyForVoting (handler + model guard); `PATCH /elections/{slug}/admission-policy`; audited; affected-voter count; evidence columns `verifier_role`/`method`/`revocation_reason`. **Not enforced until C3.** RED 48 → GREEN 49/49. Regression: 54 suites, 0 delta. Two additive migrations; the dev DB is **not** migrated yet (needs confirmation) |
-| ❓ **Next** | PO acceptance of C2 → **C3** (enforcement, Chief/Deputy authority, window, suspension invalidation, bypass protection; RED first) |
+| ✅ **C3** | Identity admission **enforced**: policy ON + unverified ⇒ `NotAdmitted` at every authoritative real-election voting decision. Chief/Deputy-of-the-election authority; window SetupAdministration→VotingActive; a confirmed suspension revokes the current evidence effect (reinstatement **and** re-verification both needed); cache invalidated both ways. `Code.can_vote_now` untouched; `users.can_vote`/`is_voter` are dropped legacy columns (classified A–G, no bypass). C3 82/82, C1+C2+C3 167/167; 77-suite regression clean after a PO-approved fixture-only adaptation of `SimpleStoreTest`. Findings → **PBDIGIT-214…219** |
+| ❓ **Next** | PO acceptance of C3 → **C4** (UI + product-flow test; RED first). Dev DB migration for C2 still needs confirmation |
 
 ---
 

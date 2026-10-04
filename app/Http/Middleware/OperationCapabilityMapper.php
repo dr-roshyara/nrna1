@@ -42,7 +42,17 @@ final class OperationCapabilityMapper
 
             // ── Voting Operations ──
             'cast_vote' => $snapshot->canVote,
-            'verify_vote' => $snapshot->canVote || !$snapshot->isLocked,
+
+            // ── Identity verification (PBDIGIT-213 D1) ──
+            // Officer identity evidence may be recorded from administration through
+            // active voting (late admission / re-admission is legitimate) — never in
+            // Draft, approval, Suspended or any post-voting state. Explicit allow-list.
+            'verify_voter_identity' => in_array($snapshot->state, [
+                ElectionLifecycleState::SetupAdministration,
+                ElectionLifecycleState::SetupNomination,
+                ElectionLifecycleState::ReadyForVoting,
+                ElectionLifecycleState::VotingActive,
+            ], true),
 
             // ── Candidacy Management ──
             // DESIGN DECISION: apply_candidacy requires explicit SetupNomination state
@@ -112,8 +122,9 @@ final class OperationCapabilityMapper
             'configure_election',
             'manage_settings' => $snapshot->denialReason ?? 'Election must be in setup phase',
 
-            'cast_vote',
-            'verify_vote' => $snapshot->denialReason ?? 'Voting is not currently active',
+            'cast_vote' => $snapshot->denialReason ?? 'Voting is not currently active',
+
+            'verify_voter_identity' => 'Voter identity can only be verified from administration until voting closes.',
 
             'apply_candidacy' => 'Candidacy applications are not currently open',
             'approve_candidacy' => $snapshot->denialReason ?? 'Election must be in nomination phase',
