@@ -2795,3 +2795,13 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 **R6 authorized for V1a (reading-monotonicity lemma) and V1b (non-M readings with planted controls) only.**
 - V2, E-A5 and V6 are **not** authorized.
 - Any result that would revise R4 → human gate.
+
+## F-LOG-0227 — R6 / V1a pre-registered: the reading-robustness lemma (formal)
+- **Readings:** R-a to R-f, plus at most 3 HYP-licensed extras.
+- **Lemma M:** a sufficient condition for R4's D1 construction to transfer.
+- **Output:** an M / not-M classification, plus **sealed V1b predictions and planted controls** (withheld from the V1b implementer).
+- Any reading that requires revising R4 → human gate.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BN/` |
