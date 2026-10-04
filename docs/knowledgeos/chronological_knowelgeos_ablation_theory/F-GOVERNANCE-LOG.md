@@ -2890,3 +2890,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BN/RECONCILIATION.md`, `V1B-RETURN/`, `V1B-SUPP-RETURN.sha256` |
+
+## F-LOG-0232 — **Human act (2026-10-04): revise R4 → r3 by adding a reading-robustness section**
+- **New §9:** Lemma M, the reading table, the V1b results and the weak-form proposition.
+- **Scope qualifiers** on Prop 4.1, Lem 4.2 and Cor 4.3; **no proof changes.**
+- **§8:** the quarantined-item citation fixed.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BO/` |
