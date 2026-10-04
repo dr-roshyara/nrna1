@@ -2871,3 +2871,22 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BN/` (V1B-RETURN.sha256, V1B-SUPP-SPEC.md) |
+
+## F-LOG-0231 — **V1a/V1b sealed: D1's strong form is reading-relative; the weak form (records-only O does not separate) survives all valid readings, except the (ii)-O contrast under R-j**
+
+**Controls:** all 8 non-M readings are VALID (after the blind supplementary run for the two histories omitted by the analyst's error).
+
+**Predictions:**
+- **every scorable prediction is CONFIRMED;**
+- the only falsified one is P1.7, pre-identified wrong before the run;
+- Lemma M is not falsified;
+- R₀ reproduces R4/R5.
+
+**Consequence (FOR THE HUMAN):**
+- R4's Prop 4.1, Lem 4.2 and Cor 4.3 hold only under R4's readings and the M-readings.
+- Under R-c, R-d, R-g, R-g⁺, R-j, R-i and R-i′ the generic strong form fails.
+- **R4 revision → human gate (Part N).**
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BN/RECONCILIATION.md`, `V1B-RETURN/`, `V1B-SUPP-RETURN.sha256` |

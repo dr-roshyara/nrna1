@@ -1,0 +1,18 @@
+{
+ "R-h": {
+  "U": {"iiiL(H_U5h)": true},
+  "U5": {"iiiL(H_U5h)": false}
+ },
+ "R-i": {
+  "U5": {
+   "iiO_c(H_U5i)": false,
+   "iiO_c(H_U5i with c := c1)": true
+  }
+ },
+ "R-i'": {
+  "U5": {
+   "iiO_c(H_U5i)": false,
+   "iiO_c(H_U5i with c := c1)": true
+  }
+ }
+}
