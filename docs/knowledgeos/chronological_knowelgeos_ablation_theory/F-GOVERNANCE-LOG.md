@@ -2913,3 +2913,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `analysis/theory/FORMAL-THEORY-R4.md` (r3); `LOOP-1BO/` |
+
+## F-LOG-0234 — **Human act (2026-10-04): non-Claude cross-check of R5 and V1b.** Bundle sealed; comparison pre-registered; awaiting the human handover
+- **Bundle:** `~/F-XCHECK-BUNDLE-01.tar` (sha256 `26ad0404…`). Stripped specs and a combined task with a fixed output schema. No proofs, no expected outcomes, no Claude results.
+- **Comparison:** pre-registered unit by unit. Any DISAGREE is classified (a/b/c/d) by a reviewer with both programs, and a (b) or (d) → human gate.
+- **Claimed on agreement:** cross-family reproduction of the **finite** claims only.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BP/` (PREREG, BUNDLE hashes, HANDOVER-INSTRUCTIONS) |
