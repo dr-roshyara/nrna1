@@ -52,6 +52,13 @@
 - **R4 reviewed draft sealed:** `analysis/theory/FORMAL-THEORY-R4.md`. It contains D1 as Prop 4.1, the Lem 4.2 robustness result, and the performative-ambiguity Conj 5.5.
 - **Next is R5:** an independent implementation of the §7 finite-state checks. Choosing the verifier is a human gate.
 
+
+**State 2026-10-04 (F-LOG-0226):**
+- R5 CLOSED (Claude-family finite check; not a general proof).
+- R3 FROZEN: `analysis/theory/EMPIRICAL-THEORY-RECORD-FROZEN.*` (53 frozen / 38 quarantined / B10 unfrozen).
+- **R6 authorized: V1a (reading-monotonicity lemma) → V1b (non-M readings + planted controls).**
+- Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
+
 **Dropped (do not resurrect):**
 - H2 signer verification (declined);
 - 1bb-r3 or any patch of the coupled discrimination spec;

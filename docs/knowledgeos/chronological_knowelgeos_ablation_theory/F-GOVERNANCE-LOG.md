@@ -2778,3 +2778,20 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BL/SPOT-CHECK-ANALYSIS.md`; `LOOP-1BM/{R3-FREEZE-PROPOSAL.md, R6-VALIDATION-MATRIX.md}` |
+
+## F-LOG-0226 — **Human act (2026-10-04): R5 CLOSED · R3 FROZEN (option a) · R6 scope = V1a + V1b**
+
+**R5 CLOSED.** Qualification: "formal theory reviewed; finite verification independently reproduced within the tested universe (Claude-family); not a general proof". Its limitations stand:
+- the §7.3 items are untested;
+- Conj 5.5 is unvalidated.
+
+**R3 FROZEN:** `EMPIRICAL-THEORY-RECORD-FROZEN.{json,md}`.
+- 53 frozen;
+- 38 quarantined;
+- B10 not frozen;
+- B09 annotated SUPERSEDED;
+- new items B11, D16 (formal pointer, L3) and F17 (instrument limitation).
+
+**R6 authorized for V1a (reading-monotonicity lemma) and V1b (non-M readings with planted controls) only.**
+- V2, E-A5 and V6 are **not** authorized.
+- Any result that would revise R4 → human gate.
