@@ -14,6 +14,7 @@ use App\Http\Controllers\DeligateCodeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Election\ElectionManagementController;
 use App\Http\Controllers\Election\ElectionSettingsController;
+use App\Http\Controllers\Election\VoterAdmissionPolicyController;
 use App\Http\Controllers\ElectionController as VotingElectionController;
 use App\Http\Controllers\VoterSlugController;
 use App\Http\Controllers\Admin\VotingSecurityController;
@@ -354,6 +355,12 @@ Route::middleware(['auth', 'verified', 'tenant'])
 
         Route::patch('/settings', [ElectionSettingsController::class, 'update'])
             ->name('elections.settings.update')
+            ->can('manageSettings', 'election');
+
+        // Voter Admission Policy — "Identity verification required" (PBDIGIT-213 C2).
+        // Chief or Deputy of THIS election; locked from ReadyForVoting (handler + model guard).
+        Route::patch('/admission-policy', [VoterAdmissionPolicyController::class, 'update'])
+            ->name('elections.admission-policy.update')
             ->can('manageSettings', 'election');
 
         // ── Timeline View (Read-only - always accessible for audit trail) ────────────

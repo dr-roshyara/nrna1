@@ -21,8 +21,9 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 | File | Slice | What it covers |
 |---|---|---|
 | [01_c1_voting_entitlement.md](./01_c1_voting_entitlement.md) | C1 | One authoritative voting-entitlement decision, scoped by the election |
+| [02_c2_admission_policy.md](./02_c2_admission_policy.md) | C2 | The Voter Admission Policy (ON/OFF), its two-layer lock, impact, audit and the evidence schema |
 
-*Later slices add their own files: C2 admission policy, C3 identity verification, C4 UI.*
+*Later slices add their own files: C3 identity verification, C4 UI.*
 
 ## Related guides
 

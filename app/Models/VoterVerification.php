@@ -27,6 +27,10 @@ class VoterVerification extends Model
         'status',
         'revoked_by',
         'revoked_at',
+        // Admission Evidence (PBDIGIT-213 C2, ADR_20261004_1549 D3)
+        'verifier_role',
+        'method',
+        'revocation_reason',
     ];
 
     protected $casts = [

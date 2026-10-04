@@ -6,8 +6,9 @@
 |---|---|
 | C0 | ✅ `112e1a15d` |
 | C1 | ✅ GREEN 33/33. 45-suite before/after regression shows 0 delta (166 pre-existing failures, identical tests and causes). Committed; awaiting PO acceptance. As implemented, `standingOf()` / `decide()` / `VotingEntitlementReason` replace the plan's `VotingEntitlementDecision`, and `AdmissionDecision` moves to C2 (PO correction: C1 has no admission concepts). Also resolves the defect of `PBDIGIT-201` (recorded, not accepted by engineering) |
-| C2 | next — RED first |
-| C3, C4 | not started |
+| C2 | ✅ GREEN 49/49 (C1+C2 82/82). 54-suite before/after: 0 per-test and 0 reason delta. Committed; awaiting PO acceptance. As implemented: the dedicated endpoint takes the business toggle `identity_verification_required`; `AdmissionPolicyChange` is the result type; no-op proposals are allowed even when locked; the C2 slice plan was approved separately (C2-D1 default OFF, C2-D2 Election-Only only) |
+| C3 | next — RED first (replaces `AdmissionPolicyC2BoundaryTest` in the open) |
+| C4 | not started |
 
 ## Rev 3 — final PO corrections + frontend brief (2026-10-04) — these OVERRIDE rev 2 where they differ
 

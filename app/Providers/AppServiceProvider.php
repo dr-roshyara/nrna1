@@ -149,6 +149,16 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Infrastructure\Queries\CachedVotingEntitlementQuery::class
         );
 
+        // Election Context: Voter Admission Policy (PBDIGIT-213 C2).
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\VoterAdmissionPolicyStore::class,
+            \App\Contexts\Elections\Infrastructure\Repositories\EloquentVoterAdmissionPolicyStore::class
+        );
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\AdmissionImpactQuery::class,
+            \App\Contexts\Elections\Infrastructure\Queries\EloquentAdmissionImpactQuery::class
+        );
+
         // Election Lifecycle: SSOT (Single Source of Truth) engine for state derivation
         $this->app->bind(
             \App\Domain\Election\Services\ElectionLifecycleEngine::class,

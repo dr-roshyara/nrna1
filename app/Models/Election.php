@@ -128,6 +128,7 @@ class Election extends Model
         'ip_mismatch_action',
         'voting_ip_mode',
         'voter_verification_mode',
+        'voter_admission_policy', // PBDIGIT-213 — locked from ReadyForVoting (see booted())
         'no_vote_option_enabled',
         'no_vote_option_label',
         'selection_constraint_type',
@@ -211,6 +212,7 @@ class Election extends Model
         'ip_restriction_enabled' => 'boolean',
         'no_vote_option_enabled' => 'boolean',
         'ip_whitelist'           => 'array',
+        'voter_admission_policy' => 'array',
         'settings_changes'       => 'array',
         'settings_updated_at'    => 'datetime',
         'voter_source_strategy'  => 'string',
@@ -300,6 +302,18 @@ class Election extends Model
     public function checksFingerprint(): bool
     {
         return in_array($this->voter_verification_mode, ['fingerprint_only', 'both']);
+    }
+
+    /**
+     * The election's Voter Admission Policy (PBDIGIT-213) — WHAT a registered voter
+     * must satisfy. Missing/empty means no additional requirement (C2-D1: OFF).
+     * Distinct from voter_verification_mode, which is IP/device binding (ADR inv. 4).
+     */
+    public function admissionPolicy(): \App\Contexts\Elections\Domain\ValueObjects\VoterAdmissionPolicy
+    {
+        return \App\Contexts\Elections\Domain\ValueObjects\VoterAdmissionPolicy::fromPersistence(
+            $this->voter_admission_policy
+        );
     }
 
     // ── ElectionMembership relationships ─────────────────────────────────────
@@ -2280,6 +2294,16 @@ class Election extends Model
                             . "Constitutional law cannot be retroactively modified."
                         );
                     }
+                }
+
+                // PBDIGIT-213 D4 (defence in depth): the voter admission policy is
+                // immutable once the election is locked (ReadyForVoting onward).
+                // ChangeVoterAdmissionPolicyHandler enforces the same rule first.
+                if ($election->isDirty('voter_admission_policy')
+                    && \App\Application\Election\Facades\ElectionLifecycle::of($election)->isLocked()) {
+                    throw new \LogicException(
+                        'The voter admission policy cannot change once the election is ready for voting.'
+                    );
                 }
             }
 

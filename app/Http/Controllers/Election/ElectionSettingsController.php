@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Election;
 
+use App\Application\Election\Facades\ElectionLifecycle;
+use App\Contexts\Elections\Application\Ports\AdmissionImpactQuery;
+use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Election\UpdateElectionSettingsRequest;
 use App\Models\DemoVote;
@@ -28,7 +31,23 @@ class ElectionSettingsController extends Controller
             'election'     => $election->load('settingsUpdatedBy:id,name', 'organisation:id,slug,name'),
             'organisation' => $election->organisation,
             'hasVotes'     => $this->hasVotes($election),
+            'admission'    => $this->admissionProps($election),
         ]);
+    }
+
+    /**
+     * Voter Admission state for the settings page (PBDIGIT-213 C2; the card is C4).
+     * affectedVoters: registered voters whose entitlement flips under the
+     * none ↔ identity-verification transition (ADR_20261004_1549 R3-2).
+     */
+    private function admissionProps(Election $election): array
+    {
+        return [
+            'identityVerificationRequired' => $election->admissionPolicy()->requires(AdmissionRequirement::OfficerIdentityVerification),
+            'isLocked'                     => ElectionLifecycle::of($election)->isLocked(),
+            'available'                    => VoterAdmissionPolicyController::isAvailableFor($election),
+            'affectedVoters'               => app(AdmissionImpactQuery::class)->registeredVotersWithoutIdentityEvidence($election->id),
+        ];
     }
 
     /**

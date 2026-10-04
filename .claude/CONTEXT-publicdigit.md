@@ -13,7 +13,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 ---
 
-## 📍 UPDATE (2026-10-04, **`PBDIGIT-213` Election-Only voter admission v1 — C0 + C1 committed; C1 awaiting PO acceptance**)
+## 📍 UPDATE (2026-10-04, **`PBDIGIT-213` Election-Only voter admission v1 — C0, C1 (accepted), C2 committed; C2 awaiting PO acceptance**)
 
 | | |
 |---|---|
@@ -21,7 +21,8 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | ✅ **C1** | One authoritative `VotingEntitlementQuery` (`app/Contexts/Elections`), with scope derived from the election; it replaces 5 diverging entitlement copies. TDD: RED 17 → GREEN 33/33. Regression: 45 suites, pre-C1 worktree vs C1, **0 delta** (166 pre-existing failures, same causes) |
 | ⚠️ **Overlap** | C1 resolves the defect of **`PBDIGIT-201`** (`start()` + ambient tenant). Recorded for PO acceptance; status not changed by engineering |
 | 🔐 **Observation** | `.env.back_20260419_0138` and `.env.backup-laravel12` are tracked in git (may hold credentials; not opened). PO/ops decision |
-| ❓ **Next** | PO acceptance of C1 → **C2** (admission policy + evidence schema; RED first) |
+| ✅ **C2** | Voter Admission Policy: "Identity verification required" ON/OFF; default OFF everywhere; Election-Only only; locked from ReadyForVoting (handler + model guard); `PATCH /elections/{slug}/admission-policy`; audited; affected-voter count; evidence columns `verifier_role`/`method`/`revocation_reason`. **Not enforced until C3.** RED 48 → GREEN 49/49. Regression: 54 suites, 0 delta. Two additive migrations; the dev DB is **not** migrated yet (needs confirmation) |
+| ❓ **Next** | PO acceptance of C2 → **C3** (enforcement, Chief/Deputy authority, window, suspension invalidation, bypass protection; RED first) |
 
 ---
 
