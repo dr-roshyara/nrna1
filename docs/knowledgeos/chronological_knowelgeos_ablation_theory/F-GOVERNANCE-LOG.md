@@ -2826,3 +2826,22 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BN/` (A, B = r0; TASK-r1, REVIEW-TASK-r1) |
+
+## F-LOG-0229 — V1a r1: **PASS_WITH_LIMITATIONS** (0 blocking)
+**Controls:** all reporting-independent, with exact detection fields.
+
+**New readings:**
+- R-i and R-i′ (M1): not-M;
+- R-j and R-g⁺ (M2): not-M;
+- R-k (M3): REJECTED.
+
+**V1b prepared:**
+- **Pre-run addendum** (`V1B-ADDENDUM-PRE-RUN.md`):
+  - sealed **P1.7 is pre-identified as wrong**. It is kept as sealed, and its expected score is "falsified, pre-identified";
+  - control strengthenings (C-O1 for R-i, C-c exactness, C-d field, C-h fields).
+- **Implementer spec** `V1B-SPEC.md`: readings (Id and change only), check forms, fields and named histories. **Every prediction, required output and classification hint is removed.**
+- **The implementer runs blind** in `~/v1b-verify`, with Read, Write and python3 only.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BN/` (A1, B1 = r1; V1B-ADDENDUM-PRE-RUN, V1B-SPEC, V1B-TASK) |

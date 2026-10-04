@@ -1,0 +1,50 @@
+{
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "control_check": [
+    {"id": "C-U5 (R-c, R-d, R-g, R-g+)", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "[R|U5] diff(O; H-D^R ∩ R_B^R, H-B^R) = {(0,c2),(1,c2)} verified. If U5 is not enforced, the diff is empty."},
+    {"id": "C-U5 (R-j)", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "H-D^j needs a change, which is impossible at c2."},
+    {"id": "C-U5 (R-h), rewritten", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "H_U5h is in the (iii)-L scope in U and U5. In U, sigma'=(p,q) with f'(a1)=1 satisfies K7 with no added act, so iiiL=true. In U5, (p,q) is excluded at c2, so iiiL=false. Does not depend on P1.7."},
+    {"id": "C-U5 (R-i, R-i')", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "iiO_c(H_U5i)=false and iiO_c(H_U5i[c:=c1])=true verified. Using (ii)-O rather than (i)-O is correct, because H-B^R admits sigma=q with w1 absent."},
+    {"id": "C-O1", "independent_of_least": true, "detects_correct": true, "misses_broken": "yes for R-g, R-g+, R-j; not diagnostic of the reading for R-c, R-d, R-h (now marked); NO for R-i, R-i'", "exact_field": true, "note": "All required sets verified. For R-i and R-i', the required diff = empty set is also what a sigma-blind O1 reports, so the A1 plant is not detected."},
+    {"id": "C-c", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": "almost", "note": "The O4 diff is stated as a containment; the exact value is {(o, absent) : every o}."},
+    {"id": "C-d", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": "almost", "note": "iS(H_d)=false, K4b(H_d)=true, H_d2 in H-B, and no member of H-D+ is ≈_{σ,f} H_d2: all verified. exists(...) is not a field of Def P0.3."},
+    {"id": "C-g", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "diff(O_¬σf; R_B, H-B^g) = exactly the values with t(w1)=1, verified. Memberships of H_g and H_g' verified."},
+    {"id": "C-h, rewritten", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "[R-h] iiiL(I7)=false; [R0] iiiL(I7)=true (K8.7); W7 is in H-B^h (F1, B-chg through a2, w1 conforms, all items referenced). The r0 defect is fixed. O(W7)=O(I7) holds by construction and is not a reported field (cosmetic)."},
+    {"id": "C-i", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "Also separates R-i from R-i' through H_∅."},
+    {"id": "C-j", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true},
+    {"id": "C-g+", "independent_of_least": true, "detects_correct": true, "misses_broken": true, "exact_field": true, "note": "Reads one R-g field. Def P0.3 does not declare cross-reading or R0 runs."}
+  ],
+  "new_readings_check": [
+    {"id": "R-i (M1)", "licence_valid": true, "class": "not-M (RB2 fails)", "proof_valid": true, "predictions": "P1.10 and P1.11 are least in the R-1 order and are counterexamples; the O3 exact difference is correct; the o=∅ failure is UNTESTABLE IN U", "note": "Lem V3.13(c) names only the first equality; at o=∅ all three fail (incomplete, not wrong)."},
+    {"id": "R-i' (M1)", "licence_valid": true, "class": "not-M (RB2 fails)", "proof_valid": true, "predictions": "P1.12 is correct", "note": "Lem V3.14(b)'s statement omits A4, which the R-i' case needs (it is in the proof and the ledger only)."},
+    {"id": "R-j (M2)", "licence_valid": true, "class": "not-M", "proof_valid": true, "predictions": "P1.13 (the P1.5 history) is correct for (i)-S, (ii)-S and (ii)-O; (ii)-O FAILS, (iii)-L HOLDS and the Cap image is correct"},
+    {"id": "R-g+ (M2)", "licence_valid": true, "class": "not-M", "proof_valid": true, "predictions": "least counterexamples as P1.5 and P1.6 (verified); the O_¬σf difference is exact", "note": "The modified witness h_b (prep 1, f=N) is valid."},
+    {"id": "R-k (M3)", "licence_valid": "weak (disclosed)", "class": "M, not T", "proof_valid": true, "predictions": "none: REJECTED with a sound reason (the qualifiers occur only in H-D's list)"}
+  ],
+  "fixes": {
+    "R-d revision flag": {"applied": true, "note": "A single criterion is stated and applied to every row; R-d and R-c are now consistent."},
+    "Lem V3.9(d)": {"applied": true, "proof_valid": true, "note": "The middle equality is shown to fail. The Cap claim (an iss pair and an adp pair) is derived from B-chg^g, D-chg and D-st. The Cap-empty witness h_b is in H-B^g (verified). The hypotheses A1-A9 are verified. The U-specific form is moved to V1B. Cosmetic: '𝒜 ≠ ∅' is not a frame parameter, and h_b leaves α(w), r, c and k implicit."},
+    "R-g at N=0": {"applied": true, "note": "Framed as inconsistency. Minor: by the stated criterion, Cor 4.1b and (i') are also false as stated at N=0; the flag value is unaffected."},
+    "Lem V3.4(c) A6": {"applied": true},
+    "R-d ∘ R-e qualification": {"applied": true, "note": "Proved; the escape of h1 is verified."},
+    "R-b, R-c, R-e wording": {"applied": true},
+    "P1.8 parenthetical": {"applied": true},
+    "labels": {"applied": true, "note": "Table V3.0 is labelled Rem; Lem V4.1 and Lem V3.4b have proofs (verified); controls are Def with .R Conj; the scoring rule is Def P3.1."}
+  },
+  "regressions": [
+    "No undeclared change found. Every r1 edit is marked and mapped in CHANGELOG-r1. Limitation: the r0 copies are not in the directory, so this is not a textual diff.",
+    "No R4 revision. Every reading that would need one is only flagged.",
+    "Carried defect (not a regression; flagged by r1 itself and confirmed here): sealed Conj P1.7 is wrong. Its counterexample h0 has σ=(q,q), a1 with v=p, prep 0 and f=∞, and w1 at 0. It precedes P1.7 and lacks both of P1.7's bold features. P1.7's sentence 'only act of value p is not a counterexample' is false when w1 is at 0. The r0 review's check missed K7's third constraint."
+  ],
+  "blocking": [],
+  "nonblocking": [
+    "Sealed Conj P1.7 is wrong (confirmed). A correct V1b run would score R-h's (iii) row as falsified. Needs a human decision before V1b runs: re-seal or withdraw, logged as a post-seal correction.",
+    "C-O1 under R-i and R-i' does not detect a σ-blind O1 (the required diff = empty set is what a broken O1 also reports). Also require image(O1; H-B^R) = all four σ values.",
+    "Field exactness: C-d's exists(...) is undefined in Def P0.3; C-c's O4 diff is a containment, not an exact set; C-h's O(W7)=O(I7) is not a reported field; R0 and cross-reading runs are used but not declared in Def P0.3.",
+    "Lem V3.13(c) names only the first equality as failing; at o=∅ all three fail.",
+    "Lem V3.14(b)'s statement omits A4, which the R-i' case needs.",
+    "Lem V3.9(d) is cosmetically loose: '𝒜 ≠ ∅' is not a frame parameter, and h_b leaves α(w), r, c and k implicit.",
+    "The revision criterion's wording versus the 'parameter condition' framing at N=0 (R-g, R-j): Cor 4.1b and (i') are false as stated at N=0 under the criterion.",
+    "Carry-over: the predictions are sealed by the same analyst (not independent, matrix risk 3); r1 has had no review outside the Claude family."
+  ]
+}
