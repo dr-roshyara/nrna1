@@ -255,8 +255,11 @@ class ElectionMembership extends Model
         $invalidate = function (self $membership) {
             Cache::forget("election.{$membership->election_id}.voter_count");
             Cache::forget("election.{$membership->election_id}.voter_stats");
-            // Also clear per-user voter eligibility cache
-            Cache::forget("user.{$membership->user_id}.voter.v2.{$membership->election_id}");
+            // Also clear the per-user voting-entitlement standing (PBDIGIT-213 C1)
+            Cache::forget(\App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::for(
+                $membership->user_id,
+                $membership->election_id
+            ));
         };
 
         $syncVoterCount = function (self $membership) {

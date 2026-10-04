@@ -142,6 +142,13 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Infrastructure\Policies\EloquentVoterEligibilityQueryService::class
         );
 
+        // Election Context: the ONE authoritative voting-entitlement decision (PBDIGIT-213 C1).
+        // Callers get the cached standing; vote.store asks EloquentVotingEntitlementQuery directly.
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\VotingEntitlementQuery::class,
+            \App\Contexts\Elections\Infrastructure\Queries\CachedVotingEntitlementQuery::class
+        );
+
         // Election Lifecycle: SSOT (Single Source of Truth) engine for state derivation
         $this->app->bind(
             \App\Domain\Election\Services\ElectionLifecycleEngine::class,

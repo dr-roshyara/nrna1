@@ -23,6 +23,21 @@
 | C3 | Admission enforcement, verification authority, verification window, suspension invalidation, bypass protection (C3.1–C3.5) |
 | C4 | UI: settings "Voter Admission" card, Admission column, "Verify Identity", "Suspend Identity" label for the existing Propose action, voter-facing notice, product-flow test |
 
+## Progress
+
+| Slice | State | Evidence |
+|---|---|---|
+| C0 | ✅ committed `112e1a15d` | ADR, story, plan, investigations |
+| C1 | ✅ GREEN, committed (this commit); **awaiting PO acceptance** | RED 17 → GREEN 33/33. Regression over 45 suites, pre-C1 worktree vs C1: 166 failures before and after, the same tests and the same causes, **0 delta**. Guide `developer_guide/election/voter_admission/01_c1_voting_entitlement.md` |
+| C2–C4 | not started | — |
+
+### Overlap found after C0: `PBDIGIT-201`
+
+- **The defect:** `PBDIGIT-201` (backlog README row: *"Starting the vote still hides a valid voter's membership behind the ambient tenant (third site of `PBDIGIT-65`)"*, 🔴 OPEN) is the `start()` defect that C1 removes. C1 does this as part of the unification, so the work was caused by this story and not done for 201.
+- **Pin:** `VotingEntitlementUnificationTest::test_start_does_not_depend_on_the_ambient_tenant` (RED before C1: an entitled voter was refused under ambient org B; GREEN after).
+- **Status:** engineering does not change 201's status. Accepting it as resolved is a PO act.
+- **Search gap:** the C0 existing-story search covered only `PBDIGIT-*.md` files and missed 201, which exists only as a README row. This is recorded here as a C0 search gap.
+
 ## Out of scope (raised as follow-ups)
 
 These are gaps G1–G11 in the ADR §7:

@@ -2,8 +2,9 @@
 
 namespace App\Traits;
 
+use App\Contexts\Elections\Application\Ports\VotingEntitlementQuery;
+use App\Contexts\Elections\Infrastructure\Queries\EloquentVotingEntitlementQuery;
 use App\Models\Election;
-use App\Models\ElectionMembership;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -31,13 +32,14 @@ trait EnsuresVoterMembership
             return null;
         }
 
-        $isEligible = $useCache
-            ? $user->isVoterInElection($election->id)
-            : ElectionMembership::where('user_id', $user->id)
-                ->where('election_id', $election->id)
-                ->where('role', 'voter')
-                ->where('status', 'active')
-                ->exists();
+        // One authoritative decision (PBDIGIT-213 C1). The uncached path asks the
+        // Eloquent query directly, so scope is derived from the election — never
+        // from the ambient tenant — and no cached entry can authorise a ballot.
+        $query = $useCache
+            ? app(VotingEntitlementQuery::class)
+            : app(EloquentVotingEntitlementQuery::class);
+
+        $isEligible = $query->standingOf($user->id, $election->id)->isEntitled();
 
         if (! $isEligible) {
             Log::channel('voting_security')->warning('⛔ Layer 0 (controller): Voter membership check failed', [

@@ -311,30 +311,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     /**
      * Check if user is an active voter in a given election.
-     * Cached for 5 minutes (invalidated by ElectionMembership::booted() hooks).
+     *
+     * Delegates to the ONE authoritative voting-entitlement decision
+     * (VotingEntitlementQuery, PBDIGIT-213 C1). Entitlement is a fact of
+     * (voter, election): the election determines the required organisation;
+     * ambient tenant context never filters the answer (PBDIGIT-65/69).
+     * Cached standing; invalidated by ElectionMembership::booted() hooks.
      */
     public function isVoterInElection(string $electionId): bool
     {
-        $ttl = config('election.voter_cache_ttl', 300);
-
-        // Voting-time entitlement is a fact of (voter, election): the election
-        // determines the required organisation; ambient tenant context must not
-        // filter the answer (PBDIGIT-65/69, grant f6bb5504). Only the 'tenant'
-        // scope is removed — SoftDeletes stays in force. Key is namespaced .v2
-        // so results produced under ambient contexts pre-repair are never reused.
-        return \Illuminate\Support\Facades\Cache::remember(
-            "user.{$this->id}.voter.v2.{$electionId}",
-            $ttl,
-            fn () => $this->electionMemberships()
-                ->withoutGlobalScope('tenant')
-                ->where('election_id', $electionId)
-                ->where('role', 'voter')
-                ->where('status', 'active')
-                ->where('organisation_id', Election::withoutGlobalScope('tenant')
-                    ->select('organisation_id')
-                    ->whereKey($electionId))
-                ->exists()
-        );
+        return app(\App\Contexts\Elections\Application\Ports\VotingEntitlementQuery::class)
+            ->standingOf($this->id, $electionId)
+            ->isEntitled();
     }
 
     /**
@@ -343,7 +331,9 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function invalidateVoterCache(string $electionId): void
     {
-        \Illuminate\Support\Facades\Cache::forget("user.{$this->id}.voter.v2.{$electionId}");
+        \Illuminate\Support\Facades\Cache::forget(
+            \App\Contexts\Elections\Infrastructure\Queries\VotingEntitlementCacheKey::for($this->id, $electionId)
+        );
     }
 
      /**

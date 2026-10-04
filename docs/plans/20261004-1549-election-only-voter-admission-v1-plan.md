@@ -1,5 +1,14 @@
 # Plan — PBDIGIT-213 · Election-Only Voter Admission v1 (Identity Verification) — rev 3
 
+## Progress (living)
+
+| Slice | State |
+|---|---|
+| C0 | ✅ `112e1a15d` |
+| C1 | ✅ GREEN 33/33. 45-suite before/after regression shows 0 delta (166 pre-existing failures, identical tests and causes). Committed; awaiting PO acceptance. As implemented, `standingOf()` / `decide()` / `VotingEntitlementReason` replace the plan's `VotingEntitlementDecision`, and `AdmissionDecision` moves to C2 (PO correction: C1 has no admission concepts). Also resolves the defect of `PBDIGIT-201` (recorded, not accepted by engineering) |
+| C2 | next — RED first |
+| C3, C4 | not started |
+
 ## Rev 3 — final PO corrections + frontend brief (2026-10-04) — these OVERRIDE rev 2 where they differ
 
 Sources:

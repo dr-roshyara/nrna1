@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Application\Election\Facades\ElectionLifecycle;
+use App\Contexts\Elections\Application\Ports\VotingEntitlementQuery;
+use App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason;
 use App\Models\Election;
+use App\Models\User;
 use App\Services\ElectionAuditService;
 use Carbon\Carbon;
 use App\Models\VoterSlug;
@@ -34,27 +37,20 @@ class ElectionVotingController extends Controller
 
         $user = auth()->user();
 
-        // Election-derived lookup: the election determines the required
-        // organisation; ambient tenant context must not filter entitlement
-        // (PBDIGIT-65 site 2, grant f6bb5504). Predicate semantics below are
-        // deliberately unchanged. Only the 'tenant' scope is removed.
-        $membership = $user->electionMemberships()
-            ->withoutGlobalScope('tenant')
-            ->where('election_id', $election->id)
-            ->where('organisation_id', $election->organisation_id)
-            ->first();
+        // ONE authoritative entitlement decision (PBDIGIT-213 C1). Scope is derived
+        // from the election, never from ambient tenant context (PBDIGIT-65/69).
+        //  - isEligible = the voter's STANDING (registered voter, election's
+        //    organisation, active) — independent of the lifecycle, so the page can
+        //    say "registered, not yet open" / "period ended".
+        //  - canVote    = the entitlement DECISION (standing + lifecycle, composed
+        //    once in the domain) and not already voted.
+        $entitlement = app(VotingEntitlementQuery::class);
+        $isEligible  = $entitlement->standingOf($user->id, $election->id)->isEntitled();
+        $hasVoted    = $this->membershipHasVoted($user, $election);
+        $canVote     = $entitlement->decide($user->id, $election->id)->isEntitled() && ! $hasVoted;
 
-        $hasVoted   = $membership?->has_voted ?? false;
-        $isEligible = $membership !== null
-            && $membership->role   === 'voter'
-            && $membership->status !== 'removed';
-
-        // Evaluate election lifecycle state through SSOT
+        // Lifecycle SSOT — display props and audit log only; not a second decision.
         $lifecycle = ElectionLifecycle::of($election);
-
-        // canVote() encapsulates: state machine + voting window + administration completion
-        // Membership eligibility is separate concern (voter role, not removed)
-        $canVote = $isEligible && !$hasVoted && $lifecycle->canVote();
 
         if (!$lifecycle->canVote()) {
             Log::channel('voter_audit')->info('Vote creation blocked by election lifecycle', [
@@ -110,16 +106,18 @@ class ElectionVotingController extends Controller
 
         $user = auth()->user();
 
-        $membership = $user->electionMemberships()
-            ->where('election_id', $election->id)
-            ->first();
+        // ONE authoritative standing decision (PBDIGIT-213 C1): registered voter,
+        // election's organisation, active membership — scope from the election.
+        $standing = app(VotingEntitlementQuery::class)->standingOf($user->id, $election->id);
 
-        if (! $membership || $membership->role !== 'voter' || $membership->status === 'removed') {
+        if (! $standing->isEntitled()) {
             return redirect()->route('elections.show', $slug)
-                ->with('error', 'You are not registered as a voter for this election.');
+                ->with('error', $standing === VotingEntitlementReason::NotActive
+                    ? 'Your voter registration for this election is not active.'
+                    : 'You are not registered as a voter for this election.');
         }
 
-        if ($membership->has_voted) {
+        if ($this->membershipHasVoted($user, $election)) {
             return redirect()->route('elections.show', $slug)
                 ->with('info', 'You have already voted.');
         }
@@ -206,6 +204,18 @@ class ElectionVotingController extends Controller
         );
 
         return redirect()->route('slug.code.create', ['vslug' => $voterSlug->slug]);
+    }
+
+    /**
+     * Ballot-side fact, deliberately kept OUTSIDE the entitlement decision
+     * (ADR_20261004_1549 §2.2 inv. 8). Scope from the election, not ambient context.
+     */
+    private function membershipHasVoted(User $user, Election $election): bool
+    {
+        return (bool) $user->electionMemberships()
+            ->withoutGlobalScope('tenant')
+            ->where('election_id', $election->id)
+            ->value('has_voted');
     }
 
     /**
