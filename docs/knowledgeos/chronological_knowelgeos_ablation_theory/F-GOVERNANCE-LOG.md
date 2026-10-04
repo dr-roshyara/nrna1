@@ -2753,3 +2753,28 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BL/` (R5-SPEC, TASK, BUNDLE.sha256, RETURN.sha256, RETURN/, RECONCILIATION.md) |
+
+## F-LOG-0225 — Human operating prompt "R5 closure, R3 freeze, R6 validation" adopted. Spot-check analysis, R3 freeze proposal and R6 matrix prepared and reviewed; **STOP at the human gate**
+
+**Spot-check (main analyst + independent review, CORRECT_WITH_GAPS on both; write-up gaps G1–G5 corrected):**
+- **K8.1 correct:** the difference is exactly σ = (q, q) for every o.
+- **K1 correct:** partially hand-verified; the remaining parts follow from the verifier's witnesses.
+- **R5 closure is prepared, not recorded.** It awaits human confirmation.
+
+**R3 freeze proposal (PASS_WITH_LIMITATIONS; blocking D16 wording fixed):**
+- 51 stable / 38 quarantined, verified by script;
+- C asserts no regularity;
+- D16 is a **formal pointer (L3) within R4's model**, not an empirical restatement of D01;
+- F17 (instrument limitation) is kept separate from D16;
+- B09/B10 need a human choice.
+
+**R6 matrix r1 (PASS_WITH_LIMITATIONS on r0; 3 blocking issues fixed):**
+- **next:** V1a (reading-monotonicity lemma), then V1b (the non-M readings with planted controls);
+- V2 is reduced to targeted slices (full scale ≈ 4×10¹¹);
+- V3 and V4 dropped;
+- V5 is NON-IDENTIFIABLE on existing data (circularity);
+- **E-A5**, the sealed Protocol C, is the only route to the empirical layer, and it reopens H1 (a human decision).
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BL/SPOT-CHECK-ANALYSIS.md`; `LOOP-1BM/{R3-FREEZE-PROPOSAL.md, R6-VALIDATION-MATRIX.md}` |
