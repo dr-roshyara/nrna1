@@ -1367,7 +1367,7 @@ private function trackSovereigntyDivergence(
         \App\Domain\Election\Security\LegitimacyOutcome $legacyOutcome,
         \App\Domain\Election\Security\TrustEvaluationEnvelope $envelope,
         ?\App\Models\Election $election,
-        ?int $userId,
+        ?string $userId, // user ids are UUIDs (PBDIGIT-232: ?int raised a TypeError on every denial)
         ?string $divergenceReason = null,
     ): void {
         $matched = $constitutionalOutcome === $legacyOutcome;
@@ -1462,6 +1462,12 @@ private function trackSovereigntyDivergence(
      */
     public function store(Request $request)
     {
+        // Fail-closed exit state (Phase 4 E1, plan §2.0): the level outside the cast
+        // transaction, and whether THIS execution acquired the slug lock.
+        $outerTransactionLevel = DB::transactionLevel();
+        $lock = null;
+        $lockAcquired = false;
+
         DB::beginTransaction();
      try {
 
@@ -1551,7 +1557,7 @@ private function trackSovereigntyDivergence(
                 divergenceReason: 'D.0.3a constitutional gate denied: ' . $trustEnvelope->result->reason,
             );
 
-            DB::rollBack();
+            $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
             return back()->withErrors(['vote' => $denialReason]);
         }
 
@@ -1569,7 +1575,7 @@ private function trackSovereigntyDivergence(
                 divergenceReason: 'Legacy canVote() denied: ' . ($lifecycle->blockedReason() ?? 'unknown'),
             );
 
-            DB::rollBack();
+            $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
             Log::warning('Vote submission blocked by election state', [
                 'user_id' => $auth_user->id,
                 'election_id' => $election->id,
@@ -1619,7 +1625,7 @@ private function trackSovereigntyDivergence(
         ]);
 
         if (!$auth_user) {
-            DB::rollBack();
+            $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
             \Log::error('No authenticated user found in vote store');
             return back()->withErrors(['error' => 'Authentication required.'])->withInput();
         }
@@ -1642,9 +1648,11 @@ private function trackSovereigntyDivergence(
             ? "voter_slug_transition:{$voterSlug->id}"
             : "vote_submission:{$auth_user->id}:{$election->id}";
         $lock = Cache::lock($lockKey, 10);
+        $lockAcquired = $lock->get();
 
-        if (!$lock->get()) {
-            DB::rollBack();
+        if (!$lockAcquired) {
+            // Another execution owns the lock — roll back, never release it.
+            $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
             return back()->with('error', 'Please wait, your vote is being processed. Another submission is in progress.');
         }
 
@@ -1653,8 +1661,7 @@ private function trackSovereigntyDivergence(
 
         // ⛔ REAL ELECTIONS: Block final vote submission if already voted
         if ($election->type === 'real' && $freshCode && $freshCode->has_voted) {
-            $lock->release();
-            DB::rollBack();
+            $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
             \Log::warning('⛔ Real election - blocking final vote submission for voter who already voted', [
                 'user_id' => $auth_user->id,
                 'election_id' => $election->id,
@@ -1705,8 +1712,7 @@ private function trackSovereigntyDivergence(
                 ]);
 
                 // Release lock before returning
-                $lock->release();
-                DB::rollBack();
+                $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
             // Return back with your specified error message
             return back()->withErrors([
                 'voting_code' => 'Submitted code is false. Please check your email and try again.'
@@ -1841,6 +1847,7 @@ private function trackSovereigntyDivergence(
 
                         DB::commit();
                 $lock->release();
+                $lockAcquired = false; // released exactly once
 
         // Log vote_confirmed event
         $receiptHash = hash('sha256', $this->out_code . $auth_user->id . $election->id);
@@ -1892,17 +1899,12 @@ private function trackSovereigntyDivergence(
         return redirect()->route('vote.verify_to_show')->with('success', 'Your vote has been successfully submitted.');
 
     } catch (\Illuminate\Validation\ValidationException $e) {
-        if (isset($lock)) {
-            $lock->release();
-        }
-        DB::rollBack();
+        $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
         return redirect()->back()->withErrors($e->errors())->withInput();
 
-    } catch (\Exception $e) {
-        if (isset($lock)) {
-            $lock->release();
-        }
-        DB::rollBack();
+    } catch (\Throwable $e) {
+        // \Throwable, not \Exception: an \Error must fail closed too, never HTTP 500 (Phase 4 E1).
+        $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
         Log::error('Vote submission failed', [
             'user_id' => auth()->id(),
             'error' => $e->getMessage(),
@@ -1914,6 +1916,23 @@ private function trackSovereigntyDivergence(
 
 
 
+}
+
+/**
+ * Fail-closed exit of the final cast (Phase 4 E1; plan §2.0, ADR_20261005_0950 §3.4):
+ * roll back only when the cast's own transaction is still active, and release the
+ * slug lock only when THIS execution acquired it — exactly once.
+ */
+private function failCastClosed(int $outerTransactionLevel, ?\Illuminate\Contracts\Cache\Lock $lock, bool &$lockAcquired): void
+{
+    if (DB::transactionLevel() > $outerTransactionLevel) {
+        DB::rollBack();
+    }
+
+    if ($lockAcquired && $lock !== null) {
+        $lock->release();
+        $lockAcquired = false;
+    }
 }
 
 /**

@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Characterization\Phase1;
 
-use App\Models\Code;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -64,33 +62,8 @@ class FinalDenialCharacterizationTest extends TestCase
         $this->assertSame(0, DB::table('receipt_codes')->where('election_id', $this->election->id)->count(), 'no receipt');
     }
 
-    // ── G2: security (trust / IP-density) denial ─────────────────────────────
-
-    public function test_g2_known_gap_the_security_denial_branch_ends_in_an_uncaught_error(): void
-    {
-        // Four voted codes from the same IP: the trust gate's IP-density limit for an
-        // "Unverified" voter is intdiv(max_votes_per_ip = 6, 2) = 3 → 4 > 3 → denied.
-        foreach (range(1, 4) as $i) {
-            Code::factory()->voted()->create([
-                'organisation_id' => $this->org->id,
-                'election_id'     => $this->election->id,
-                'user_id'         => User::factory()->create(['organisation_id' => $this->org->id])->id,
-                'client_ip'       => '127.0.0.1',
-                'code1'           => 'IPCODE' . $i,
-            ]);
-        }
-        [$voter, $slug, $code] = $this->voterReadyToCast();
-
-        $response = $this->cast($voter, $slug, $code);
-
-        $this->assertSame(0, $this->votes(), 'no vote is written (fails closed in effect)');
-        $this->assertFalse((bool) $code->fresh()->has_voted, 'has_voted not consumed');
-        $this->assertSame(500, $response->status(),
-            'KNOWN GAP D3: the denial branch passes a UUID user id to trackSovereigntyDivergence(?int) → TypeError → HTTP 500 instead of a denial message');
-        $this->assertTrue($this->lockIsFree($slug->id),
-            'the trust gate (store :1522) runs BEFORE the slug lock is taken (:1644) — the lock is not involved on this path '
-            . '(the TypeError is raised before DB::rollBack(); the open transaction ends with the request)');
-    }
+    // ── G2: retired (Phase 4 E1 GREEN) — the known gap D3 (HTTP 500 on a security
+    //    denial) is fixed; the contract now lives in Tests\Feature\Voting\CastFailClosedTest::test_r1_a_…
 
     // ── I: vote_post_check result ignored (D1) ───────────────────────────────
 
