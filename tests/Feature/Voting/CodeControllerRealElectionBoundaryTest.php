@@ -117,13 +117,16 @@ class CodeControllerRealElectionBoundaryTest extends TestCase
             $stepCount += DB::table('demo_voter_slug_steps')->where('voter_slug_id', $slug->id)->count();
         }
 
+        // Raw database values (getRawOriginal), so dates compare by value, not by Carbon object identity.
+        $raw = fn ($model, array $keys) => collect($keys)->mapWithKeys(fn ($k) => [$k => $model->getRawOriginal($k)])->all();
+
         return [
             'codes'        => Code::withoutGlobalScopes()->where('user_id', $voter->id)->orderBy('id')
-                ->get()->map(fn (Code $c) => $c->only([
+                ->get()->map(fn (Code $c) => $raw($c, [
                     'id', 'code_to_open_voting_form', 'code_to_open_voting_form_sent_at', 'can_vote_now',
                     'has_voted', 'vote_submitted', 'has_agreed_to_vote', 'is_code_to_open_voting_form_usable',
                 ]))->all(),
-            'slug'         => $slug->fresh()->only(['current_step', 'status', 'is_active', 'can_vote_now', 'expires_at']),
+            'slug'         => $raw($slug->fresh(), ['current_step', 'status', 'is_active', 'can_vote_now', 'expires_at']),
             'steps'        => $stepCount,
         ];
     }

@@ -44,9 +44,8 @@ class CodeController extends Controller
      * STEP 1: Show code entry form
      * Route: GET /v/{slug}/code/create
      *
-     * Election context is set by ElectionMiddleware:
-     * - Defaults to first REAL active election
-     * - Or uses election_id from session (if demo/test)
+     * Election context is set by middleware (from the voter slug) and must be a REAL election —
+     * getElection() refuses any other type (PBDIGIT-238).
      */
     public function create(Request $request)
     {
@@ -104,8 +103,8 @@ class CodeController extends Controller
             return $this->handleAlreadyVerified($request, $voterSlug);
         }
 
-        // ⛔ REAL ELECTIONS: Block access to code page if already voted
-        if ($election->type === 'real' && $existingCode && $existingCode->has_voted === true) {
+        // ⛔ Block access to code page if participation is already consumed
+        if ($existingCode && $existingCode->has_voted === true) {
             Log::warning('⛔ Real election - blocking code page access for voter who already voted', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
@@ -178,7 +177,7 @@ class CodeController extends Controller
                 $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
                 Log::info('✅ New verification code sent', [
                     'user_id' => $user->id,
-                    'code' => $code->code_to_open_voting_form,
+                    'code_id' => $code->id,
                 ]);
             } catch (\Exception $e) {
                 Log::error('❌ Failed to send new code', [
@@ -242,7 +241,6 @@ class CodeController extends Controller
             'election_id' => $election->id,
             'election_type' => $election->type,
             'slug' => $voterSlug ? $voterSlug->slug : null,
-            'input' => $request->only('voting_code'),
             'is_ajax' => $request->wantsJson(),
         ]);
 
@@ -281,8 +279,8 @@ class CodeController extends Controller
             return back()->withErrors(['voting_code' => 'No verification code found. Please request a new code.']);
         }
 
-        // REAL ELECTIONS: Prevent double voting
-        if ($election->type === 'real' && $code->has_voted) {
+        // Prevent double voting: participation already consumed
+        if ($code->has_voted) {
             Log::warning('Real election - double vote attempt prevented', [
                 'user_id' => $user->id,
                 'election_id' => $election->id,
@@ -425,7 +423,7 @@ class CodeController extends Controller
             ->first();
 
         // Block if already voted
-        if ($election->type === 'real' && $code && $code->has_voted) {
+        if ($code && $code->has_voted) {
             Log::warning('Security: Voted user attempted showAgreement', ['user_id' => $user->id, 'election_id' => $election->id]);
             return $this->redirectToDashboard('You have already voted in this election.');
         }
@@ -555,7 +553,7 @@ class CodeController extends Controller
             ->first();
 
         // Block if already voted
-        if ($election->type === 'real' && $code && $code->has_voted) {
+        if ($code && $code->has_voted) {
             Log::warning('Security: Voted user attempted submitAgreement', ['user_id' => $user->id, 'election_id' => $election->id]);
             return $this->redirectToDashboard('You have already voted in this election.');
         }
@@ -663,6 +661,17 @@ class CodeController extends Controller
             throw new \Exception('Election context is required but was not set by middleware.');
         }
 
+        // Real-election boundary (PBDIGIT-238): this controller serves real elections only. Anything else
+        // is refused fail closed here — before any Code access, session write, code generation,
+        // notification or step recording in the calling action.
+        if ($election->type !== 'real') {
+            Log::warning('Code step refused: not a real election', [
+                'election_id' => $election->id,
+                'route'       => $request->route()?->getName(),
+            ]);
+            abort(403, 'This voting step is only available for real elections.');
+        }
+
         if ($voterSlug && $election) {
             if ($election->id !== $voterSlug->election_id) {
                 Log::error('Election mismatch', ['election' => $election->id, 'slug_election' => $voterSlug->election_id]);
@@ -682,11 +691,6 @@ class CodeController extends Controller
 
     private function isUserEligible(User $user, ?Request $request = null): bool
     {
-        // Allow any authenticated user to vote in demo elections
-        if (session('selected_election_type') === 'demo') {
-            return true;
-        }
-
         // If the request arrived via the new ElectionMembership voter-slug middleware
         // stack, the user has already been validated as an eligible voter — skip the
         // legacy can_vote column check.
@@ -708,58 +712,15 @@ class CodeController extends Controller
      */
     private function getOrCreateCode(User $user, Election $election): Code
     {
-        // Get code for this specific election
-        // CRITICAL: Use withoutGlobalScopes() because demo elections have organisation_id=NULL
-        // The global scope would filter out codes for demo elections
+        // Get code for this specific election (one code per user per election)
         $code = Code::withoutGlobalScopes()
             ->where('user_id', $user->id)
             ->where('election_id', $election->id)
             ->first();
 
-        // DEMO ELECTIONS: Allow re-voting by resetting flags
-        if ($code && $code->has_voted && $election->type === 'demo') {
-            Log::info('🔄 Demo election - resetting code for re-voting', [
-                'user_id' => $user->id,
-                'code_id' => $code->id,
-                'old_has_voted' => $code->has_voted,
-            ]);
-
-            // Reset voting flags for demo to allow new vote
-            $code->update([
-                'has_voted' => false,
-                'vote_submitted' => false,
-                'can_vote_now' => false,
-                'is_code_to_open_voting_form_usable' => true,
-                'code_to_open_voting_form' => $this->generateCode(),
-                'code_to_open_voting_form_sent_at' => now(),
-                'has_code1_sent' => true,
-            ]);
-
-            // Send new code via email
-            if ($user->email && filter_var($user->email, FILTER_VALIDATE_EMAIL)) {
-                try {
-                    $user->notify(new SendFirstVerificationCode($user, $code->code_to_open_voting_form));
-                    Log::info('✅ New demo voting code sent', [
-                        'user_id' => $user->id,
-                        'code_id' => $code->id,
-                        'code' => $code->code_to_open_voting_form,
-                    ]);
-                } catch (\Exception $e) {
-                    Log::error('Failed to send demo voting code', [
-                        'user_id' => $user->id,
-                        'error' => $e->getMessage(),
-                    ]);
-                }
-            }
-
-            return $code;
-        }
-
         if (!$code) {
             // No code exists for this election - create new one
-            // CRITICAL: Set organisation_id explicitly
-            // - Demo elections (type='demo'): organisation_id=NULL
-            // - Real elections (type='real'): organisation_id from election
+            // CRITICAL: Set organisation_id explicitly (from the election)
             $code = Code::create([
                 'user_id' => $user->id,
                 'election_id' => $election->id,
@@ -796,7 +757,6 @@ class CodeController extends Controller
                 'user_id' => $user->id,
                 'election_id' => $code->election_id,
                 'organisation_id' => $code->organisation_id,
-                'code' => $code->code_to_open_voting_form,
             ]);
         } else {
             // ✅ CRITICAL: If code already verified, DO NOT regenerate
@@ -860,7 +820,6 @@ class CodeController extends Controller
                 Log::info('Code regenerated and resent', [
                     'user_id' => $user->id,
                     'code_id' => $code->id,
-                    'new_code' => $newCode,
                     'reason' => $isExpired ? 'expired' : 'restart_after_use',
                     'was_used' => $codeWasUsed,
                     'previous_sent_at' => $code->code_to_open_voting_form_sent_at,
@@ -882,8 +841,7 @@ class CodeController extends Controller
         if ($code->code_to_open_voting_form !== $submittedCode) {
             Log::warning('Invalid code submission', [
                 'user_id' => $user->id,
-                'expected' => $code->code_to_open_voting_form,
-                'submitted' => $submittedCode,
+                'code_id' => $code->id,
             ]);
             return ['success' => false, 'message' => 'Invalid verification code. Please check and try again.'];
         }
