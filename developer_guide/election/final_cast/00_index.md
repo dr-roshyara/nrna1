@@ -21,8 +21,9 @@ The final cast — `VoteController::store` — commits a vote only when the deci
 | File | Group | What it covers |
 |---|---|---|
 | [01_e1_fail_closed_exit.md](./01_e1_fail_closed_exit.md) | E1 | The fail-closed exit: UUID user id in the divergence tracker, `\Throwable`, transaction / lock ownership (`failCastClosed()`) |
+| [02_e2_cast_decision.md](./02_e2_cast_decision.md) | E2 | `VotingAuthorization::forCast()` → `CastDecision`: order, 14-reason vocabulary, `CastAttempt` facts, security verdict as a fact |
 
-E2 (`forCast()` / `CastDecision`), E3 (enforcement in `store()`) and E4 (CAS) follow as their slices land.
+E3 (enforcement in `store()`) and E4 (CAS) follow as their slices land.
 
 ## Out of scope for the whole phase
 

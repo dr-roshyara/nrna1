@@ -190,7 +190,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - [x] Baseline regression run (§6.1) — `d4d6b2890`, accepted
 - [x] P4-D4 retired (option C), PBDIGIT-234 recorded
 - [x] E1: R1 RED → report → STOP · GREEN → report → STOP — **accepted, committed `7aa33df68`**; PBDIGIT-232 RESOLVED; guide `developer_guide/election/final_cast/01_e1_fail_closed_exit.md`
-- [ ] E2: R2/R2a RED → STOP · GREEN → STOP
+- [x] E2: R2 RED → STOP · GREEN → STOP — **accepted**; RED `f84e72ece`, GREEN committed with guide `developer_guide/election/final_cast/02_e2_cast_decision.md`; R2a deferred (E2-D6)
 - [ ] E3: R3 (+R5 part) RED → STOP · GREEN → STOP
 - [ ] E4: R4 (+R5, R6) RED → STOP · GREEN → STOP
 - [ ] Full regression vs worktree; developer guide `developer_guide/voting/` (cast decision + CAS); decision record (Q2/Q4/Q5 + P4-D); stories 230/232/233 (+219) status; session log; CONTEXT-publicdigit
@@ -212,6 +212,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - 2026-10-05 (E1): R1 RED → GREEN 4/4 (`VoteController`: `?string $userId`, `catch (\Throwable)`, `failCastClosed()`); regression vs `d4d6b2890`: 0 previously passing tests fail (Phase 1 G2 known-gap test retired, replaced by R1-A); PO accepted; committed `7aa33df68`. Side effect recorded: a missing `Code` now yields the generic error instead of 500 (PBDIGIT-219 still resolved only at E3).
 
 - 2026-10-05 (E2 RED): `tests/Unit/Contexts/Elections/VotingAuthorizationForCastTest.php` — 16/16 RED (E2 classes absent); PO accepted; decisions E2-D1…D6 recorded (process order, `decide()` once, 14 reasons, no security sub-reason, placement, R2a deferred).
+- 2026-10-05 (E2 GREEN): five new framework-free classes (`VotingAuthorization`, `CastAttempt`, `CastDecision`, `CastDecisionReason`, `SecurityVerdict`); R2 16/16 GREEN (53 assertions) with the test unchanged; Elections unit suite 62/62 and 13 scanning architecture tests green; no caller yet (E3). PO accepted.
 
 ## 12 · Story-status changes (planned — applied only at the GREEN acceptance of the named group)
 
@@ -225,4 +226,4 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 | PBDIGIT-231, 223–229 | unchanged | — |
 
 ## Next actions
-E2 RED (R2 unit + R2a architecture) → RED report → STOP; E2 GREEN only on separate approval.
+E3 RED (R3 + R5 part) → RED report → STOP; E3 GREEN only on separate approval.
