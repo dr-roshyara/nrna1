@@ -7,7 +7,8 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 `OPEN` — tracked (PO 2026-10-05); **RED not yet authorised**; GREEN not authorised |
+| **Status** | 🟡 `OPEN` — **RED written (PO-authorised 2026-10-05, interim boundary = the three components below)**; GREEN not authorised |
+| **RED evidence [D] (synthetic data)** | `tests/Feature/Election/SecurityPolicyLifecycleLockTest.php`, 18 cases = 3 components (`ip_restriction` = `ip_restriction_enabled` + `ip_restriction_max_per_ip`; `ip_whitelist`; `verification_mode` = `voter_verification_mode`) × 6 states. Draft · SetupAdministration · SetupNomination: 9/9 pass (change stored). ReadyForVoting · VotingActive · Suspended: **9/9 RED** — the Chief's settings PATCH is accepted and the new value is stored in every case (e.g. `voter_verification_mode` none → ip_only). Refusal shape (error key / message) left to GREEN |
 | **Invariant (ADR_20261005_0950 §5, I9)** | "The security policy is immutable from ReadyForVoting (like the admission policy) — the policy boundary itself is Q3." |
 | **Fact [S] (source reading at `ad0cd01db`, no test yet)** | `ElectionSettingsController::update()` checks the `manageSettings` policy (active Chief / Deputy) and an optimistic lock only. `UpdateElectionSettingsRequest` accepts `ip_restriction_enabled`, `ip_restriction_max_per_ip`, `ip_whitelist`, `voter_verification_mode` with no lifecycle check. `ElectionLifecycle::isLocked()` is passed to the page only. Not yet proven dynamically |
 | **Proposed RED (for authorisation)** | per security-policy component: change accepted before ReadyForVoting; change refused (and the stored value unchanged) from ReadyForVoting on — modelled on the admission-policy lock tests |
