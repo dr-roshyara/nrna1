@@ -1,6 +1,6 @@
 # ADR — Voting Authorization Boundary (`forEntry()` / `forCast()`)
 
-**Status: 🟡 PROPOSED — READY FOR PO / ARB REVIEW** (technical review passed after revision 2 + headline alignment, 2026-10-05; no further editing before the governance decision). Phase 3 of the roadmap — **design only**. Nothing here authorises production code, migrations, schema, routes, UI or behavioural change.
+**Status: ✅ APPROVED — Phase 3 Authorization Boundary Design** (PO / ARB decision, 2026-10-05; record: `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`). **Architectural baseline only — frozen; no production implementation authorised.** Q1–Q7 are approval conditions / implementation prerequisites. Phase 3 of the roadmap — **design only**. Nothing here authorises production code, migrations, schema, routes, UI or behavioural change.
 **Created:** 2026-10-05 · **Roadmap:** `docs/plans/20261005-0647-voting-integrity-anonymity-and-authorization-roadmap-plan.md` (Phase 3; governance state §2a) · **Placement derived:** `doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0), `adr/` beside the other PublicDigit ADRs.
 
 **Evidence base (consumed, not restated):**

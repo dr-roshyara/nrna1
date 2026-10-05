@@ -59,7 +59,8 @@ The administrator-assisted dispute-resolution intention remains a legitimate req
 | Anonymity model | OPEN / DEFERRED ⏸ — Phase 2.0 is the authoritative decision point |
 | A5 / A6 | UNCHANGED — accepted interim risk ⚠ |
 | Interim anonymity rule | ACTIVE 🔒 (checklist above) |
-| **Phase 3 ADR** | **AUTHORISED — design / documentation only ✅** (no production code, migrations, schema, routes, UI or behavioural change) |
+| **Phase 3 ADR** | **APPROVED ✅ (PO / ARB, 2026-10-05) — architectural baseline, frozen**; Q1–Q7 are implementation prerequisites |
+| Phase 4 | NOT authorised ⛔ — needs a separate authorisation and PO answers to Q2, Q4, Q5 |
 | Phase 7 IP binding | BLOCKED ⛔ pending the anonymity-boundary review; PBDIGIT-225 is a prerequisite |
 | Production implementation | NOT authorised ⛔ — manual approval before any production edit |
 
@@ -210,7 +211,7 @@ Anonymous credentials, blind signatures, unlinkable voting tokens, cryptographic
 | 0 | Nearly complete — guides, Vitest, design-check, build, C4 regression re-run (0 delta) done; C4 `9c482db85`, PBDIGIT-220 `7ea1dc06f`, PBDIGIT-221/222 `ef2af5c3b` committed; housekeeping and README index lines open; Gate 0 pending |
 | 0 → closed | Gate 0 accepted by the PO (C4 accepted) |
 | 1 | **CLOSED — Gate 1 ACCEPTED (2026-10-05)** (28 tests pass; 11 confirmed defects PBDIGIT-223 … 233; no production change) |
-| 3 | **AUTHORISED — ADR / design only** (2026-10-05) · `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` (PROPOSED, rev 2 — **READY FOR PO / ARB REVIEW**) — awaiting the governance decision and answers to Q1–Q7; implementation not authorised |
+| 3 | **AUTHORISED — ADR / design only** (2026-10-05) · `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` — **✅ APPROVED by PO / ARB (2026-10-05) as the architectural baseline; frozen** (decision record `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`). Implementation not authorised; Phase 4 needs a separate authorisation + answers to Q2, Q4, Q5 |
 | 2–9 | Not started (not authorised). Re-sequenced 2026-10-05 (§2a): Phase 2.0 decision postponed; Phases 3–6 may come first under the interim rule; Phase 7 gated by the anonymity-boundary review |
 
 ## 8. Risks
