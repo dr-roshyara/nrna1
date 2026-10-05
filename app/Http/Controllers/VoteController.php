@@ -39,6 +39,12 @@ use Spatie\QueryBuilder\QueryBuilder;
 use App\Application\Election\Security\ConstitutionalLegitimacyDecision;
 use App\Application\Election\Security\TrustPolicyEvaluator;
 use App\Contexts\Elections\Application\DTO\CastAttempt;
+use App\Contexts\Elections\Application\Ports\AuthoritativeBallotQuery;
+use App\Contexts\Elections\Domain\Ballot\BallotRejection;
+use App\Contexts\Elections\Domain\Ballot\BallotValidator;
+use App\Contexts\Elections\Domain\Ballot\SubmittedBallot;
+use App\Contexts\Elections\Domain\Ballot\ValidatedAnswer;
+use App\Contexts\Elections\Domain\Ballot\ValidatedBallot;
 use App\Contexts\Elections\Application\Services\VotingAuthorization;
 use App\Contexts\Elections\Domain\ValueObjects\CastDecisionReason;
 use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
@@ -1695,6 +1701,33 @@ private function trackSovereigntyDivergence(
 
                 return $this->refuseCast($decision->reason, $auth_user, $election, $request);
             }
+
+            // ── VE-01 (PBDIGIT-237, ADR_20261005_0950 rev 3 I1, I11–I13): ballot integrity — beside
+            //    forCast(), before the participation CAS, from the same CastContext. The session ballot is
+            //    untrusted; only a ValidatedBallot reaches persistence. ──
+            $ballotOutcome = (new BallotValidator())->validate(
+                SubmittedBallot::fromTransport(
+                    $vote_data['national_selected_candidates'] ?? null,
+                    $vote_data['regional_selected_candidates'] ?? null,
+                ),
+                app(AuthoritativeBallotQuery::class)->ballotFor($auth_user->id, $election->id),
+            );
+
+            if ($ballotOutcome instanceof BallotRejection) {
+                Log::channel('voting_audit')->warning('Final cast refused: invalid ballot', [
+                    'user_id'     => $auth_user->id,
+                    'election_id' => $election->id,
+                    'reason'      => $ballotOutcome->reason->value,
+                ]);
+
+                $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
+
+                return back()->withErrors([
+                    'vote' => 'Your ballot could not be accepted because it does not match the ballot for this election. Please review your selections and vote again.',
+                ]);
+            }
+
+            $validatedBallot = $ballotOutcome;
         }
 
         $voting_session_name =Hash::make($code->code_to_save_vote);
@@ -1820,8 +1853,13 @@ private function trackSovereigntyDivergence(
                 }
             }
 
-            // Save vote using election-aware factory service
-            $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user, $private_key);
+            // Save the vote. Real elections persist only the ValidatedBallot (I12, PBDIGIT-237);
+            // demo elections keep the unchanged path (S2 — demo behaviour unchanged).
+            if ($election->type === 'real') {
+                $this->saveValidatedVote($validatedBallot, $vote_hashed_key, $election, $auth_user, $private_key);
+            } else {
+                $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user, $private_key);
+            }
 
             // After save_vote(), $this->out_code contains the vote_id
             // Concatenate private_key with vote_id for uniqueness
@@ -2813,7 +2851,37 @@ public function verifyVoteSubmit(): array
 }
 
 
-//save all candidates 
+    /**
+     * Real-election vote persistence (VE-01, PBDIGIT-237, ADR_20261005_0950 rev 3 I12): accepts only a
+     * ValidatedBallot. The stored ballot is built exclusively from validated content — post identity,
+     * name and maximum from the authoritative ballot, candidacy ids the validator accepted — never from
+     * the session transport. It re-judges nothing; validity was decided by BallotValidator.
+     * Not-answered posts are absent from the ValidatedBallot and therefore not stored (N2, N3).
+     */
+    private function saveValidatedVote(ValidatedBallot $ballot, $hashed_voting_key, Election $election, $auth_user, $private_key = null): void
+    {
+        $answers = array_map(fn (ValidatedAnswer $answer) => [
+            'post_id'          => $answer->post->postId,
+            'post_name'        => $answer->post->name,
+            'post_nepali_name' => $answer->post->nepaliName,
+            'required_number'  => $answer->post->maxSelections,
+            'no_vote'          => $answer->abstained,
+            'candidates'       => array_map(fn (string $candidacyId) => [
+                'candidacy_id'   => $candidacyId,
+                'candidacy_name' => $answer->post->candidacies[$candidacyId],
+            ], $answer->candidacyIds),
+        ], $ballot->answers);
+
+        // Reuse the existing writer (vote row, vote_hash, receipt_hash, candidate_NN columns, results via
+        // the model event) with a persistence array derived only from the ValidatedBallot.
+        $this->save_vote([
+            'national_selected_candidates' => $answers,
+            'regional_selected_candidates' => [],
+            'no_vote_posts'                => $ballot->abstainedPostIds(),
+        ], $hashed_voting_key, $election, $auth_user, $private_key);
+    }
+
+//save all candidates
     public function save_vote($input_data, $hashed_voting_key, $election = null, $auth_user = null, $private_key = null){
         // Fallback for backward compatibility
         if (!$election) {

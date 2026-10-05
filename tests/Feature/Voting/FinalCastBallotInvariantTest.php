@@ -211,6 +211,36 @@ class FinalCastBallotInvariantTest extends TestCase
         $this->assertSame(1, DB::table('votes')->count());
     }
 
+    // ── Regional persistence (characterization, PO 2026-10-05) ──────────────
+    // Settles the review concern that saveValidatedVote() loses regional answers: the stored
+    // ballot has no national/regional section — every answer is a candidate_NN column carrying
+    // its post_id, and result rows are created per post.
+
+    public function test_characterization_national_and_regional_answers_are_both_persisted(): void
+    {
+        [$voter, $slug, $code] = $this->bayernVoter();
+
+        $response = $this->castWithSessionBallot($voter, $slug, $code, [$this->sel($this->p1, [$this->c1a->id])], [$this->sel($this->pr1, [$this->cr1->id])]);
+
+        $response->assertSessionHasNoErrors();
+        $this->assertSame(1, DB::table('votes')->count());
+        $this->assertSame(1, DB::table('results')->where('post_id', $this->p1->id)->where('candidacy_id', $this->c1a->id)->count(), 'national answer persisted');
+        $this->assertSame(1, DB::table('results')->where('post_id', $this->pr1->id)->where('candidacy_id', $this->cr1->id)->count(), 'regional answer persisted');
+        $this->assertSame(2, DB::table('results')->count(), 'exactly the two validated answers');
+    }
+
+    public function test_characterization_a_regional_only_ballot_is_persisted(): void
+    {
+        [$voter, $slug, $code] = $this->bayernVoter();
+
+        $response = $this->castWithSessionBallot($voter, $slug, $code, [], [$this->sel($this->pr1, [$this->cr1->id])]);
+
+        $response->assertSessionHasNoErrors();
+        $this->assertSame(1, DB::table('votes')->count());
+        $this->assertSame(1, DB::table('results')->where('post_id', $this->pr1->id)->where('candidacy_id', $this->cr1->id)->count(), 'regional answer persisted');
+        $this->assertSame(1, DB::table('results')->count(), 'exactly the one validated answer');
+    }
+
     // ── Invariant rules 2–7 (RED expected today) ────────────────────────────
 
     public function test_rule_2_a_post_of_another_election_is_refused_before_cas(): void

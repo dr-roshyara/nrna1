@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Candidacy;
 use App\Models\Election;
 use App\Models\Post;
 use Illuminate\Support\Collection;
@@ -21,7 +22,8 @@ final class BallotAssemblyService
     {
         return Post::withoutGlobalScopes()
             ->with(['candidacies' => function ($query) {
-                $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
+                // D5 (VE-01): only approved candidacies are electable — ballot page, preview and final cast.
+                $query->withoutGlobalScopes()->where('status', Candidacy::STATUS_APPROVED)->with('user')->orderBy('position_order');
             }])
             ->where('election_id', $election->id)
             ->where('is_national_wide', true)
@@ -65,7 +67,8 @@ final class BallotAssemblyService
 
         return Post::withoutGlobalScopes()
             ->with(['candidacies' => function ($query) {
-                $query->withoutGlobalScopes()->with('user')->orderBy('position_order');
+                // D5 (VE-01): only approved candidacies are electable — ballot page, preview and final cast.
+                $query->withoutGlobalScopes()->where('status', Candidacy::STATUS_APPROVED)->with('user')->orderBy('position_order');
             }])
             ->where('election_id', $election->id)
             ->where('is_national_wide', false)

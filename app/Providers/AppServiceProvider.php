@@ -155,6 +155,12 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Infrastructure\Security\TrustLegitimacySecurityVerdict::class
         );
 
+        // Election Context: the authoritative ballot for the final cast (VE-01, PBDIGIT-237).
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\AuthoritativeBallotQuery::class,
+            \App\Contexts\Elections\Infrastructure\Queries\AssembledAuthoritativeBallotQuery::class
+        );
+
         // Election Context: Voter Admission Policy (PBDIGIT-213 C2).
         $this->app->bind(
             \App\Contexts\Elections\Application\Ports\VoterAdmissionPolicyStore::class,

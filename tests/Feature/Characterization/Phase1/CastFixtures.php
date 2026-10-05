@@ -45,6 +45,26 @@ trait CastFixtures
         TenantContext::clear();
     }
 
+    /**
+     * Throwing double for the vote write (test-only fault injection, PO 2026-10-05): the real
+     * Vote's first insert succeeds, then the write fails. Replaces the former trigger — a session
+     * ballot without regional selections that crashed save_vote() — which VE-01 (PBDIGIT-237)
+     * removed by normalising the ballot before persistence. The listener lives on this test's
+     * application instance only.
+     */
+    protected function failTheVoteWriteAfterItsInsert(): void
+    {
+        \App\Models\Vote::created(function () {
+            throw new \RuntimeException('test double: the vote write fails after its insert');
+        });
+    }
+
+    /** A well-formed session ballot (both transport lists present) for a fixture election without posts. */
+    protected function wellFormedEmptyBallot(): array
+    {
+        return ['national_selected_candidates' => [], 'regional_selected_candidates' => [], 'no_vote_posts' => []];
+    }
+
     /** A registered, active voter with a voter slug and a code that has completed the code step. */
     protected function voterReadyToCast(string $code1 = 'ABCD1234'): array
     {

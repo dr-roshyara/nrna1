@@ -175,12 +175,14 @@ class AtomicParticipationConsumptionTest extends TestCase
         [$voter, $slug, $code] = $this->voterReadyToCast();
         $this->recordQueries();
 
-        // Malformed ballot session (no regional selections): save_vote() throws after its
-        // first vote insert (Phase 1 B2 setup) — i.e. after the consumption succeeded.
+        // Throwing double: the vote write fails after its first vote insert (Phase 1 B2 setup)
+        // — i.e. after the consumption succeeded.
+        $this->failTheVoteWriteAfterItsInsert();
+
         $response = $this->actingAs($voter)
             ->withSession([
                 'current_organisation_id' => $this->org->id,
-                $code->session_name       => ['national_selected_candidates' => [], 'no_vote_posts' => []],
+                $code->session_name       => $this->wellFormedEmptyBallot(),
             ])
             ->post(route('slug.vote.store', ['vslug' => $slug->slug]), ['voting_code' => $code->code_to_open_voting_form]);
 

@@ -127,11 +127,14 @@ class VotingIntegrityCharacterizationTest extends TestCase
     {
         [$voter, $slug, $code] = $this->voterReadyToCast();
 
-        // Malformed ballot session (no regional selections) → save_vote throws after the first vote save.
+        // Throwing double: the vote write fails after its first insert (replaces the former
+        // malformed-session trigger, removed by VE-01 ballot normalisation).
+        $this->failTheVoteWriteAfterItsInsert();
+
         $this->actingAs($voter)
             ->withSession([
                 'current_organisation_id' => $this->org->id,
-                $code->session_name       => ['national_selected_candidates' => [], 'no_vote_posts' => []],
+                $code->session_name       => $this->wellFormedEmptyBallot(),
             ])
             ->post(route('slug.vote.store', ['vslug' => $slug->slug]), ['voting_code' => $code->code_to_open_voting_form]);
 
