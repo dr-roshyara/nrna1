@@ -219,21 +219,32 @@
                 <!-- Actions -->
                 <td class="reg-td reg-td--actions">
                   <div class="action-row" v-if="!membership.has_voted">
-                    <!-- Verify Identity (PBDIGIT-213 C4): records identity-verification EVIDENCE — available
-                         whether the policy is ON or OFF (OFF = not required, not "cannot be recorded").
-                         Same action as the Identity Verification column. The legacy "Verify IP Address"
-                         entry point is removed from this page (the IP backend is untouched legacy, PBDIGIT-222). -->
+                    <!-- Identity verification EVIDENCE (PBDIGIT-213 C4, PBDIGIT-248): available whether the
+                         policy is ON or OFF (OFF = not required, not "cannot be recorded").
+                         NOT_VERIFIED —Verify Identity→ VERIFIED —Cancel Verification→ NOT_VERIFIED (ID-D1).
+                         Cancel revokes the current evidence (existing revoke endpoint); history is kept. -->
                     <button
+                      v-if="identityVerification[membership.user_id] === 'verified'"
+                      data-testid="actions-cancel-verification"
+                      @click="askCancelVerification(membership)"
+                      :disabled="loadingId === membership.id"
+                      class="act-btn act-btn--suspend"
+                      title="Cancel the voter's identity verification"
+                    >
+                      Cancel Verification
+                    </button>
+                    <button
+                      v-else
                       data-testid="actions-verify-identity"
                       @click="openIdentityDialog(membership)"
                       :disabled="loadingId === membership.id"
                       class="act-btn act-btn--verify"
-                      :title="identityVerification[membership.user_id] === 'verified' ? 'Re-verify the voter\'s identity' : 'Verify the voter\'s identity'"
+                      title="Verify the voter's identity"
                     >
                       <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
                       </svg>
-                      {{ identityVerification[membership.user_id] === 'verified' ? 'Re-verify Identity' : 'Verify Identity' }}
+                      Verify Identity
                     </button>
 
                     <!-- Approve (invited → active) -->
@@ -250,10 +261,12 @@
                       @click="proposeSuspension(membership)"
                       :disabled="loadingId === membership.id"
                       class="act-btn act-btn--propose"
+                      title="Propose suspension from voting (a second officer must confirm)"
                     >
                       <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
-                      <!-- PBDIGIT-213 R3-3: same two-person proposal; business label when identity verification applies -->
-                      {{ admission.required ? 'Suspend Identity' : 'Propose' }}
+                      <!-- PBDIGIT-213 R3-3: same two-person proposal. It suspends the voter from voting — it is not
+                           an identity action, so it is labelled "Suspend" (PO 2026-10-06), not "Suspend Identity". -->
+                      {{ admission.required ? 'Suspend' : 'Propose' }}
                     </button>
 
                     <!-- Confirm suspension (pending, not by current user) -->
@@ -342,8 +355,26 @@
 
   </PublicDigitLayout>
 
+  <!-- Cancel Verification — confirmation step (PBDIGIT-248, ID-D1) -->
+  <Teleport to="body">
+    <div v-if="cancelTarget" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div class="absolute inset-0 bg-neutral-900/50" aria-hidden="true" @click="cancelTarget = null" />
+      <div class="relative w-full max-w-md rounded-xl bg-white p-6 shadow-xl" role="dialog" aria-modal="true" aria-labelledby="cancel-verification-title">
+        <h2 id="cancel-verification-title" class="text-lg font-semibold text-neutral-900">Cancel Verification</h2>
+        <p class="mt-2 text-sm text-neutral-800">
+          Cancel the identity verification of {{ cancelTarget.user?.name ?? 'this voter' }}?
+          The voter will need to be verified again. The verification history is kept.
+        </p>
+        <div class="mt-6 flex justify-end gap-3">
+          <Button variant="secondary" data-testid="back-cancel-verification" @click="cancelTarget = null">Back</Button>
+          <Button variant="danger" data-testid="confirm-cancel-verification" @click="confirmCancelVerification">Cancel Verification</Button>
+        </div>
+      </div>
+    </div>
+  </Teleport>
+
   <!-- Verify Identity (PBDIGIT-213 C4): both identity entry points open this dialog.
-       IP/device data is audit-only metadata inside it; the attestation is the evidence. -->
+       It carries no IP / device data (PBDIGIT-248, ID-D2); the attestation is the evidence. -->
   <IdentityAttestationDialog
     :open="showIdentityDialog"
     :voter="identityDialogVoter"
@@ -416,10 +447,26 @@ const openIdentityDialog = (membership) => {
     id: membership.user_id,
     name: membership.user?.name ?? 'Unknown',
     email: membership.user?.email ?? '',
-    lastLoginIp: membership.user?.current_ip ?? null,   // audit-only metadata, never identity proof
-    reverify: state === 'verified' || state === 'reverification_required',
+    reverify: state === 'reverification_required',   // a cancelled / revoked verification is being renewed
   }
   showIdentityDialog.value = true
+}
+
+// Cancel Verification (PBDIGIT-248, ID-D1): confirmation, then the existing revoke endpoint
+const cancelTarget = ref(null)
+const askCancelVerification = (membership) => { cancelTarget.value = membership }
+const confirmCancelVerification = () => {
+  const membership = cancelTarget.value
+  const verificationId = props.verifications?.[membership.user_id]?.id
+  cancelTarget.value = null
+  if (!verificationId) return
+  loadingId.value = membership.id
+  router.delete(
+    route('elections.voters.verification.revoke', {
+      organisation: props.organisation.slug, election: props.election.slug, verification: verificationId,
+    }),
+    { preserveScroll: true, onFinish: () => { loadingId.value = null } },
+  )
 }
 
 // Filters

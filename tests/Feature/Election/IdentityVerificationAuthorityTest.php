@@ -111,7 +111,8 @@ class IdentityVerificationAuthorityTest extends TestCase
             ->withSession(['current_organisation_id' => $this->org->id])
             ->from('/voters-manage')
             ->post(route('elections.voters.verify', ['organisation' => $this->org->slug, 'election' => $election->slug]),
-                array_merge(['user_id' => $target->id, 'attested' => true, 'verified_ip' => '10.0.0.1', 'notes' => 'video call'], $extra));
+                // PBDIGIT-248 (ID-D2): the identity request contract is user_id, attested, notes — no IP / device fields.
+                array_merge(['user_id' => $target->id, 'attested' => true, 'notes' => 'video call'], $extra));
     }
 
     private function evidenceOf(User $voter, Election $election): ?VoterVerification
@@ -224,7 +225,8 @@ class IdentityVerificationAuthorityTest extends TestCase
         $election = $this->electionIn(ElectionLifecycleState::SetupAdministration);
         $voter    = $this->voter($election);
 
-        $this->verify($this->officer($election, 'chief'), $election, $voter, ['verified_ip' => null])->assertSessionHasNoErrors();
+        // No IP field at all (PBDIGIT-248: the identity contract has none); evidence is still recorded.
+        $this->verify($this->officer($election, 'chief'), $election, $voter)->assertSessionHasNoErrors();
 
         $this->assertSame('active', $this->evidenceOf($voter, $election)?->status);
     }

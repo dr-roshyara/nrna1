@@ -10,7 +10,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 `OPEN` — RED written; **GREEN authorised (PO 2026-10-05), not committed** |
+| **Status** | 🟢 **RESOLVED (2026-10-06)** — RED `7ae825d1e` · GREEN: Cancel Verification (confirmation → existing revoke), "Suspend" relabel, identity dialog without IP / device, identity endpoint `prohibited` for `verified_ip` / device fields. 19 superseded tests adapted (PO-approved). 97-suite regression 582/333/19, the same as the PBDIGIT-246 baseline, no pass → fail (run partly overlapped by Capture-IP additions; clean certification follows with PBDIGIT-222). Guide `developer_guide/election/voter_admission/05_cancel_verification_and_ip_separation.md` |
 | **ID-D1 Cancel Verification** | A verified voter shows **Cancel Verification**, with no Re-verify action. Cancelling needs a **confirmation step**; no mandatory reason. It reuses `RevokeIdentityVerificationHandler` / `revoked_by_officer` and the existing audit and domain event. No new state model |
 | **ID-D2 Identity ≠ IP / device** | The identity dialog shows and submits no IP, device fingerprint or device components. The identity endpoint **rejects** `verified_ip`, `verified_device_fingerprint_hash` and `verified_device_components` (validation error) and no longer persists them in new identity evidence. No IP binding, no Security Verdict Authority call, no security policy in Admission |
 | **ID-D3 History** | The current row plus audit / domain-event history is kept. Append-only evidence is **deferred** (future story if needed) |

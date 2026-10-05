@@ -102,9 +102,11 @@ describe('Policy OFF — evidence can still be recorded', () => {
     expect(nameBadge(wrapper, 'Asha Rai').exists()).toBe(false)
   })
 
-  it('B: active evidence → Re-verify Identity, and the identity badge is shown', () => {
+  // PBDIGIT-248 (ID-D1) supersedes "Re-verify Identity": a verified voter offers Cancel Verification.
+  it('B: active evidence → Cancel Verification (no Re-verify), and the identity badge is shown', () => {
     const wrapper = mountPage({ policyOn: false })
-    expect(identityButton(wrapper, 'Bikash Thapa').text()).toBe('Re-verify Identity')
+    expect(row(wrapper, 'Bikash Thapa').find('[data-testid="actions-cancel-verification"]').text()).toBe('Cancel Verification')
+    expect(row(wrapper, 'Bikash Thapa').text()).not.toContain('Re-verify Identity')
     expect(nameBadge(wrapper, 'Bikash Thapa').exists()).toBe(true)
   })
 
@@ -138,10 +140,10 @@ describe('Policy ON', () => {
     expect(row(wrapper, 'Asha Rai').find('[data-testid="verify-identity"]').exists()).toBe(true)
   })
 
-  it('E: active evidence → verified state visible and Re-verify Identity available', () => {
+  it('E: active evidence → verified state visible and Cancel Verification available (PBDIGIT-248)', () => {
     const wrapper = mountPage({ policyOn: true })
     expect(row(wrapper, 'Bikash Thapa').text()).toContain('Verified ✓')
-    expect(identityButton(wrapper, 'Bikash Thapa').text()).toBe('Re-verify Identity')
+    expect(row(wrapper, 'Bikash Thapa').find('[data-testid="actions-cancel-verification"]').text()).toBe('Cancel Verification')
   })
 
   it('F: revoked evidence → re-verification required, dialog in re-verify mode', async () => {

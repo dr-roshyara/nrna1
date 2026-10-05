@@ -33,7 +33,8 @@ use Illuminate\Http\Request;
  * the lifecycle window (route: election.state:verify_voter_identity), then the
  * application commands. Target eligibility, the verifier's role and the evidence write
  * live in RecordIdentityVerificationHandler / RevokeIdentityVerificationHandler.
- * IP/device data is audit metadata only — never proof of identity.
+ * Identity verification carries no IP / device data (PBDIGIT-248, ID-D2): network and device
+ * are the Security Policy's concern, never identity evidence.
  */
 class VoterVerificationController extends Controller
 {
@@ -54,9 +55,11 @@ class VoterVerificationController extends Controller
             'user_id' => 'required|uuid|exists:users,id',
             // The officer's identity attestation is required server-side — never only a UI checkbox (C4).
             'attested' => 'accepted',
-            'verified_ip' => 'nullable|ipv4',
-            'verified_device_fingerprint_hash' => 'nullable|string|max:64',
-            'verified_device_components' => 'nullable|array',
+            // PBDIGIT-248 (ID-D2): identity evidence carries no network / device data — that is the
+            // Security Policy's concern (PBDIGIT-247 / 222). The legacy fields are refused, not stored.
+            'verified_ip' => 'prohibited',
+            'verified_device_fingerprint_hash' => 'prohibited',
+            'verified_device_components' => 'prohibited',
             'notes' => 'nullable|string|max:1000',
         ]);
 
@@ -65,9 +68,9 @@ class VoterVerificationController extends Controller
                 electionId: $election->id,
                 voterId: $validated['user_id'],
                 verifierId: auth()->id(),
-                verifiedIp: $validated['verified_ip'] ?? null,
-                fingerprintHash: $validated['verified_device_fingerprint_hash'] ?? null,
-                deviceComponents: $validated['verified_device_components'] ?? null,
+                verifiedIp: null,
+                fingerprintHash: null,
+                deviceComponents: null,
                 notes: $validated['notes'] ?? null,
             ));
         } catch (VoterNotVerifiable) {
@@ -99,8 +102,6 @@ class VoterVerificationController extends Controller
                 'method'          => VerificationMethod::OfficerAttestation->value,
                 'statement'       => RecordIdentityVerificationCommand::ATTESTATION_STATEMENT,
                 'policy'          => $election->admissionPolicy()->toPersistence(),
-                'verified_ip'     => $validated['verified_ip'] ?? null,
-                'fingerprint'     => $validated['verified_device_fingerprint_hash'] ?? null,
             ]
         );
 

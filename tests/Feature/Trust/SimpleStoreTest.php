@@ -72,7 +72,7 @@ class SimpleStoreTest extends TestCase
             [
                 'user_id' => $voter->id,
                 'attested' => true,
-                'verified_ip' => '192.168.1.1',
+                // PBDIGIT-248 (ID-D2): no IP / device fields in the identity request contract.
             ]
         );
 

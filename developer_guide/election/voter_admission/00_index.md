@@ -25,6 +25,7 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 | [03_c3_identity_admission.md](./03_c3_identity_admission.md) | C3 | Identity admission enforced by the one entitlement decision; Chief/Deputy authority; window; suspension ≠ re-verification; cache; legacy `can_vote` classification; `Code.can_vote_now` out of scope |
 
 | [04_c4_ui_and_bulk_verification.md](./04_c4_ui_and_bulk_verification.md) | C4 | Admission card, Identity Verification column, Verify Identity (server-side `attested`), Verify All, Suspend Identity label, voter notice; voting-process boundary; IP verification = untouched legacy (PBDIGIT-222) |
+| [05_cancel_verification_and_ip_separation.md](./05_cancel_verification_and_ip_separation.md) | PBDIGIT-248 | Cancel Verification (existing revoke, with confirmation) instead of Re-verify; identity dialog / endpoint carry no IP / device data; "Suspend" label |
 
 ## Related guides
 

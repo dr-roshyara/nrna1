@@ -65,31 +65,16 @@ describe('IdentityAttestationDialog', () => {
     )
   })
 
-  it('sends the last-login IP only as optional metadata, null when unknown', async () => {
-    const wrapper = mountDialog({ voter: { ...VOTER, lastLoginIp: '—' } })
+  // PBDIGIT-248 (ID-D2, PO 2026-10-05) supersedes the C4 "technical details — audit only" section:
+  // identity verification carries no IP / device data at all (detailed contract: VoterIdentityLifecycle.spec.js S1/S2).
+  it('carries no IP or device data — no technical section, nothing sent', async () => {
+    const wrapper = mountDialog()
+    expect(wrapper.find('[data-testid="technical-details"]').exists()).toBe(false)
+    expect(wrapper.text()).not.toMatch(/\bIP\b|fingerprint/i)
+
     await wrapper.get('[data-testid="attest-identity"]').setValue(true)
     await wrapper.get('[data-testid="confirm-identity"]').trigger('click')
-
-    expect(mockRouterPost.mock.calls[0][1].verified_ip).toBeNull()
-  })
-
-  it('keeps IP and device data in a collapsed section marked audit only, not identity proof', () => {
-    const wrapper = mountDialog()
-    const technical = wrapper.get('[data-testid="technical-details"]')
-
-    expect(technical.element.tagName).toBe('DETAILS')
-    expect(technical.attributes('open')).toBeUndefined()
-    expect(technical.text()).toContain('Technical details — audit only, not identity proof')
-    expect(technical.text()).toContain('203.0.113.7')
-  })
-
-  it('shows no IP or device data outside the technical section', () => {
-    const wrapper = mountDialog()
-    const outside = wrapper.text().replace(wrapper.get('[data-testid="technical-details"]').text(), '')
-
-    expect(outside).not.toContain('203.0.113.7')
-    expect(outside).not.toMatch(/\bIP\b/)
-    expect(outside).not.toMatch(/fingerprint/i)
+    expect(mockRouterPost.mock.calls[0][1]).toEqual({ user_id: 'u-1', attested: true, notes: null })
   })
 
   it('can be cancelled without submitting', async () => {
