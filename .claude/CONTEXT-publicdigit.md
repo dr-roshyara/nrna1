@@ -9,7 +9,18 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-05 *(additive — the **one security assessment (PBDIGIT-240)** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **Q3 security policy surface** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 night, **Q3 decided (D1/D2/D3/D6) — characterization RED committed; 2B not authorised**)
+
+| | |
+|---|---|
+| 📐 **Q3** | `docs/publicdigit/reviews/2026-10-05-q3-security-policy-surface.md` — policy model = constitutional fields (`max_votes_per_ip`, `network_binding_strategy`, `device_binding_strategy`, `ip_whitelist`); evaluation only at `forEntry()` / `forCast()`; `MAX_USE_IP_ADDRESS` not a runtime source; binding / device = inert candidates |
+| 🧪 **Characterization** | `SecurityPolicySurfaceCharacterizationTest` 11/11 confirm C1–C6 (whitelist fail-closed, settings ineffective, env overrides policy, step-4 env-unset refusal, dead start check, inert binding) — characterization only |
+| 🐞 **PBDIGIT-233** | step-4 occurrence reopened: missing `components.error_message` view → generic `system` error |
+| ❓ **Next** | PO: Q3-D4 (start page), D5 (whitelist semantics), D7 (tenant scope) → authorise 2B stories one at a time (2B-1 whitelist recommended first) |
 
 ---
 
