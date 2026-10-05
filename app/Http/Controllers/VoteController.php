@@ -1783,9 +1783,6 @@ private function trackSovereigntyDivergence(
              //dd($hashed_key);
 
             #
-            Log::info('private_key', [
-                'user_id' => $private_key
-            ]);
              $vote_hashed_key =$hashed_key;
 
             // ── Phase 4 E4 (PBDIGIT-230): atomic participation consumption — the ONLY
@@ -1874,7 +1871,6 @@ private function trackSovereigntyDivergence(
                         ]
                     );
                     Log::info('Receipt code stored for verification', [
-                        'receipt_code_prefix' => substr($receiptCodeString, 0, 20) . '...',
                         'election_id' => $election->id,
                         'vote_id' => $this->out_code,
                     ]);
@@ -3453,7 +3449,6 @@ public function submit_code_to_view_vote(Request $request)
         // Log successful verification
         Log::info('Vote verification successful', [
             'user_id' => $auth_user->id,
-            'vote_id' => $vote_id,
             'election_type' => $election_type,
             'verification_timestamp' => now()->toISOString()
         ]);
@@ -4326,7 +4321,6 @@ public function confirmCorrect(Request $request)
 
         // Log audit trail
         \Log::info('Vote verified as correct', [
-            'receipt_code' => $request->receipt_code,
             'election_id' => $receiptCode->election_id,
             'user_id' => auth()->id(),
             'verified_at' => $receiptCode->reverified_at,

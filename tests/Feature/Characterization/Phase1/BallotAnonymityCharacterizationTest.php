@@ -138,7 +138,7 @@ class BallotAnonymityCharacterizationTest extends TestCase
 
     // ── K8 / A1: logs carry correlating values ───────────────────────────────
 
-    public function test_k8_known_gap_the_cast_logs_the_vote_id_together_with_ip_and_slug_and_logs_the_receipt_secret(): void
+    public function test_k8_known_gap_the_cast_logs_the_vote_id_together_with_ip_and_slug(): void
     {
         $this->captureLogs();
         [$voter, $slug, $code] = $this->voterReadyToCast();
@@ -151,8 +151,8 @@ class BallotAnonymityCharacterizationTest extends TestCase
         $voteIdWithSlug = array_filter($this->logsMentioning($voteId), fn ($e) => ($e['context']['voter_slug_id'] ?? null) === $slug->id);
         $this->assertNotEmpty($voteIdWithSlug, 'KNOWN GAP: a log entry carries the vote id together with the voter slug id (slug → user)');
 
-        $this->assertNotEmpty(array_filter($this->logged, fn ($e) => $e['message'] === 'private_key'),
-            'KNOWN GAP: the voter\'s receipt private_key is written to the log');
+        $this->assertEmpty(array_filter($this->logged, fn ($e) => $e['message'] === 'private_key'),
+            'PBDIGIT-241: the receipt secret is no longer written to the log (was a known gap)');
 
         $this->assertNotEmpty($this->logsMentioning($voter->id), 'the same request also logs the voter\'s user id');
     }
