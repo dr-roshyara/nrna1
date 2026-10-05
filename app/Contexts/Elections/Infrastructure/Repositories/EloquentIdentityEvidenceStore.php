@@ -22,8 +22,6 @@ use App\Models\VoterVerification;
  */
 final class EloquentIdentityEvidenceStore implements IdentityEvidenceStore
 {
-    private const METHOD = 'officer_attestation';
-
     public function recordActive(IdentityEvidenceRecord $record): string
     {
         $organisationId = Election::withoutGlobalScope('tenant')->whereKey($record->electionId)->value('organisation_id');
@@ -38,7 +36,7 @@ final class EloquentIdentityEvidenceStore implements IdentityEvidenceStore
                 'notes'                            => $record->notes,
                 'verified_by'                      => $record->verifierId,
                 'verifier_role'                    => $record->verifierRole->value,
-                'method'                           => self::METHOD,
+                'method'                           => $record->method->value,   // officer_attestation | officer_bulk_attestation (C4-D2)
                 'verified_at'                      => now(),
                 'status'                           => 'active',
                 'revoked_by'                       => null,

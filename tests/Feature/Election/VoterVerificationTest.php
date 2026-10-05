@@ -66,6 +66,7 @@ class VoterVerificationTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->post(route('elections.voters.verify', [$this->organisation->slug, $this->election->slug]), [
                 'user_id' => $this->voter->id,
+                'attested' => true,
                 'verified_ip' => '192.168.1.100',
                 'verified_device_fingerprint_hash' => null,
             ]);
@@ -84,6 +85,7 @@ class VoterVerificationTest extends TestCase
         $response = $this->actingAs($this->admin)
             ->post(route('elections.voters.verify', [$this->organisation->slug, $this->election->slug]), [
                 'user_id' => $this->voter->id,
+                'attested' => true,
                 'verified_ip' => '10.0.0.50',
             ]);
 
@@ -135,6 +137,7 @@ class VoterVerificationTest extends TestCase
         $this->actingAs($this->admin)
             ->post(route('elections.voters.verify', [$this->organisation->slug, $this->election->slug]), [
                 'user_id' => $this->voter->id,
+                'attested' => true,
                 'verified_ip' => '192.168.1.100',
             ]);
 

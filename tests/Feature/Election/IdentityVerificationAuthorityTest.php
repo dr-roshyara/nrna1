@@ -111,7 +111,7 @@ class IdentityVerificationAuthorityTest extends TestCase
             ->withSession(['current_organisation_id' => $this->org->id])
             ->from('/voters-manage')
             ->post(route('elections.voters.verify', ['organisation' => $this->org->slug, 'election' => $election->slug]),
-                array_merge(['user_id' => $target->id, 'verified_ip' => '10.0.0.1', 'notes' => 'video call'], $extra));
+                array_merge(['user_id' => $target->id, 'attested' => true, 'verified_ip' => '10.0.0.1', 'notes' => 'video call'], $extra));
     }
 
     private function evidenceOf(User $voter, Election $election): ?VoterVerification
@@ -297,6 +297,70 @@ class IdentityVerificationAuthorityTest extends TestCase
         $this->assertSame($voter->id, $verified[0][5]['subject_user_id']);
         $this->assertSame('ELECTION_CHIEF', $verified[0][5]['verifier_role']);
         $this->assertSame('OFFICER_IDENTITY_VERIFICATION', $verified[0][5]['requirement']);
+    }
+
+    // ── Attestation contract (PBDIGIT-213 C4 Slice 3, PO-approved API change) ──
+    //
+    // The officer's identity attestation is a business act; it must not exist only as a
+    // UI checkbox. The server requires `attested` (accepted) before any evidence is written.
+
+    private const INDIVIDUAL_STATEMENT = "I confirm that this voter's identity has been verified according to the organisation's voter-registration process.";
+
+    private function postVerification(User $actor, Election $election, array $payload)
+    {
+        return $this->actingAs($actor)
+            ->withSession(['current_organisation_id' => $this->org->id])
+            ->from('/voters-manage')
+            ->post(route('elections.voters.verify', ['organisation' => $this->org->slug, 'election' => $election->slug]), $payload);
+    }
+
+    public function test_identity_verification_without_the_attestation_is_refused_and_writes_nothing(): void
+    {
+        $calls = [];
+        $this->mock(ElectionAuditService::class, function ($mock) use (&$calls) {
+            $mock->shouldReceive('log')->andReturnUsing(function (...$args) use (&$calls) { $calls[] = $args; });
+        });
+        $election = $this->electionIn(ElectionLifecycleState::SetupAdministration);
+        $chief    = $this->officer($election, 'chief');
+        $voter    = $this->voter($election);
+
+        $this->postVerification($chief, $election, ['user_id' => $voter->id, 'notes' => 'video call'])
+            ->assertSessionHasErrors('attested');
+
+        $this->assertNull($this->evidenceOf($voter, $election), 'no evidence without the attestation');
+        $this->assertSame([], array_filter($calls, fn (array $args) => ($args[1] ?? null) === 'voter_verified'), 'no audit entry');
+    }
+
+    public function test_a_declined_attestation_is_refused_and_writes_nothing(): void
+    {
+        $election = $this->electionIn(ElectionLifecycleState::SetupAdministration);
+        $chief    = $this->officer($election, 'chief');
+        $voter    = $this->voter($election);
+
+        $this->postVerification($chief, $election, ['user_id' => $voter->id, 'attested' => false])
+            ->assertSessionHasErrors('attested');
+
+        $this->assertNull($this->evidenceOf($voter, $election));
+    }
+
+    public function test_the_audit_entry_records_the_attestation_method_and_statement(): void
+    {
+        $calls = [];
+        $this->mock(ElectionAuditService::class, function ($mock) use (&$calls) {
+            $mock->shouldReceive('log')->andReturnUsing(function (...$args) use (&$calls) { $calls[] = $args; });
+        });
+        $election = $this->electionIn(ElectionLifecycleState::SetupAdministration);
+        $chief    = $this->officer($election, 'chief');
+        $voter    = $this->voter($election);
+
+        $this->postVerification($chief, $election, ['user_id' => $voter->id, 'attested' => true])
+            ->assertSessionHasNoErrors();
+
+        $verified = array_values(array_filter($calls, fn (array $args) => ($args[1] ?? null) === 'voter_verified'));
+        $this->assertCount(1, $verified);
+        $this->assertSame('officer_attestation', $verified[0][5]['method']);
+        $this->assertSame(self::INDIVIDUAL_STATEMENT, $verified[0][5]['statement']);
+        $this->assertSame('active', $this->evidenceOf($voter, $election)?->status);
     }
 
     public function test_re_verification_after_revocation_restores_the_current_admission_effect(): void

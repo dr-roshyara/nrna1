@@ -11,7 +11,7 @@
         <div class="modal-panel">
           <!-- Header -->
           <div class="modal-header">
-            <h2 class="modal-title">Verify Voter Identity</h2>
+            <h2 class="modal-title">Verify IP Address</h2>
             <button
               @click="emit('close')"
               class="modal-close"
@@ -121,7 +121,7 @@
                 </button>
                 <button
                   type="submit"
-                  :disabled="submitting || !form.verified_ip"
+                  :disabled="submitting"
                   class="btn btn-primary"
                   :aria-busy="submitting"
                 >
@@ -243,7 +243,9 @@ const submit = async () => {
     }),
     {
       user_id: props.voterId,
-      verified_ip: form.value.verified_ip,
+      // PBDIGIT-213 C4: IP is audit metadata, never a prerequisite for identity
+      // verification (ADR inv. 4). An unknown IP (empty or the '—' placeholder) is sent as null.
+      verified_ip: /^(\d{1,3}\.){3}\d{1,3}$/.test(form.value.verified_ip ?? '') ? form.value.verified_ip : null,
       verified_device_fingerprint_hash: form.value.verified_device_fingerprint_hash || null,
       notes: form.value.notes || null
     },

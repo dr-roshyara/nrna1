@@ -97,7 +97,7 @@ class SuspensionRevalidationTest extends TestCase
     {
         $this->as($actor)->post(
             route('elections.voters.verify', ['organisation' => $this->org->slug, 'election' => $this->election->slug]),
-            ['user_id' => $this->voter->id, 'notes' => 'video call']
+            ['user_id' => $this->voter->id, 'attested' => true, 'notes' => 'video call']
         )->assertSessionHasNoErrors();
     }
 

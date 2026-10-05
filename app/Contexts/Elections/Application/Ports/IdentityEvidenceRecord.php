@@ -2,6 +2,7 @@
 
 namespace App\Contexts\Elections\Application\Ports;
 
+use App\Contexts\Elections\Domain\ValueObjects\VerificationMethod;
 use App\Contexts\Elections\Domain\ValueObjects\VerifierRole;
 
 /**
@@ -20,5 +21,6 @@ final readonly class IdentityEvidenceRecord
         public ?string $fingerprintHash = null,
         public ?array $deviceComponents = null,
         public ?string $notes = null,
+        public VerificationMethod $method = VerificationMethod::OfficerAttestation,
     ) {}
 }

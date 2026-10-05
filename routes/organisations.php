@@ -298,6 +298,7 @@ Route::prefix('organisations/{organisation:slug}')
             // ── Identity verification (PBDIGIT-213 D1): SetupAdministration → VotingActive ──
             Route::middleware(['election.state:verify_voter_identity'])->group(function () {
                 Route::post('/voters/verify',                           [VoterVerificationController::class, 'store'])  ->name('elections.voters.verify');
+                Route::post('/voters/verify-all',                       [VoterVerificationController::class, 'verifyAll'])->name('elections.voters.verify-all'); // PBDIGIT-213 C4
                 Route::delete('/voters/{verification}/revoke',          [VoterVerificationController::class, 'revoke']) ->name('elections.voters.verification.revoke');
             });
 

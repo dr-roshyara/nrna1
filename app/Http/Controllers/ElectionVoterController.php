@@ -9,6 +9,9 @@ use App\Contexts\Elections\Application\Handlers\BulkAssignVotersHandler;
 use App\Contexts\Elections\Application\Commands\RevokeIdentityVerificationCommand;
 use App\Contexts\Elections\Application\Handlers\RevokeIdentityVerificationHandler;
 use App\Contexts\Elections\Domain\ValueObjects\RevocationReason;
+use App\Contexts\Elections\Application\Ports\VoterRegistrationQuery;
+use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
+use App\Http\Controllers\Election\VoterAdmissionPolicyController;
 use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
 use App\Domain\Election\Enum\VoterSourceStrategy;
@@ -84,14 +87,60 @@ class ElectionVoterController extends Controller
             ->keyBy('user_id');
 
         return Inertia::render('Elections/Voters/Index', [
-            'election'          => $election->only('id', 'slug', 'name', 'type', 'status', 'voter_verification_mode'),
-            'organisation'      => $organisation->only('id', 'slug', 'name'),
-            'voters'            => $voters,
-            'stats'             => $election->voter_stats,
-            'unassignedMembers' => $unassignedMembers,
-            'filters'           => ['search' => $search, 'status' => $status, 'per_page' => $perPage],
-            'verifications'     => $verifications,
+            'election'             => $election->only('id', 'slug', 'name', 'type', 'status', 'voter_verification_mode'),
+            'organisation'         => $organisation->only('id', 'slug', 'name'),
+            'voters'               => $voters,
+            'stats'                => $election->voter_stats,
+            'unassignedMembers'    => $unassignedMembers,
+            'filters'              => ['search' => $search, 'status' => $status, 'per_page' => $perPage],
+            'verifications'        => $verifications,
+            'admission'            => $this->admissionProps($election),
+            'identityVerification' => $this->identityVerificationStates($election, $voters->pluck('user_id')->all()),
         ]);
+    }
+
+    /**
+     * Voter Admission state for the management page (PBDIGIT-213 C4-B).
+     * bulkVerifiableCount = the "Verify All" set (C4-D1), from the same port the
+     * bulk handler uses, so the count the officer confirms is the server's own.
+     */
+    private function admissionProps(Election $election): array
+    {
+        return [
+            'required'            => $election->admissionPolicy()->requires(AdmissionRequirement::OfficerIdentityVerification),
+            'available'           => VoterAdmissionPolicyController::isAvailableFor($election),
+            'bulkVerifiableCount' => count(app(VoterRegistrationQuery::class)->bulkVerifiableVoterIds($election->id)),
+        ];
+    }
+
+    /**
+     * Per-voter identity-verification EVIDENCE state (PBDIGIT-213 C4-B) — a DISPLAY
+     * read-model, never an authorisation source (VotingEntitlementQuery decides).
+     * Independent of the policy: the policy says whether verification is REQUIRED
+     * (admissionProps 'required'); this says whether it HAS BEEN DONE (PO, 2026-10-04).
+     *   verified                active evidence
+     *   reverification_required evidence revoked (e.g. after a confirmed suspension)
+     *   verification_required   no evidence
+     *
+     * @param  list<string>  $userIds
+     * @return array<string, string>
+     */
+    private function identityVerificationStates(Election $election, array $userIds): array
+    {
+        $evidenceStatus = VoterVerification::where('election_id', $election->id)
+            ->whereIn('user_id', $userIds)
+            ->pluck('status', 'user_id');
+
+        $states = [];
+        foreach ($userIds as $userId) {
+            $states[$userId] = match ($evidenceStatus[$userId] ?? null) {
+                'active'  => 'verified',
+                'revoked' => 'reverification_required',
+                default   => 'verification_required',
+            };
+        }
+
+        return $states;
     }
 
     // =========================================================================

@@ -24,7 +24,7 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 | [02_c2_admission_policy.md](./02_c2_admission_policy.md) | C2 | The Voter Admission Policy (ON/OFF), its two-layer lock, impact, audit and the evidence schema |
 | [03_c3_identity_admission.md](./03_c3_identity_admission.md) | C3 | Identity admission enforced by the one entitlement decision; Chief/Deputy authority; window; suspension ≠ re-verification; cache; legacy `can_vote` classification; `Code.can_vote_now` out of scope |
 
-*C4 (UI) will add its own file.*
+| [04_c4_ui_and_bulk_verification.md](./04_c4_ui_and_bulk_verification.md) | C4 | Admission card, Identity Verification column, Verify Identity (server-side `attested`), Verify All, Suspend Identity label, voter notice; voting-process boundary; IP verification = untouched legacy (PBDIGIT-222) |
 
 ## Related guides
 

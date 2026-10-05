@@ -71,6 +71,7 @@ class SimpleStoreTest extends TestCase
             ]),
             [
                 'user_id' => $voter->id,
+                'attested' => true,
                 'verified_ip' => '192.168.1.1',
             ]
         );

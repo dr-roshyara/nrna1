@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Election;
 
+use App\Contexts\Elections\Application\Commands\BulkRecordIdentityVerificationCommand;
 use App\Contexts\Elections\Application\Commands\RecordIdentityVerificationCommand;
+use App\Contexts\Elections\Application\Handlers\BulkRecordIdentityVerificationHandler;
+use App\Contexts\Elections\Domain\Exceptions\BulkVerificationCountChanged;
+use App\Contexts\Elections\Domain\ValueObjects\VerificationMethod;
+use Illuminate\Support\Facades\DB;
 use App\Contexts\Elections\Application\Commands\RevokeIdentityVerificationCommand;
 use App\Contexts\Elections\Application\Handlers\RecordIdentityVerificationHandler;
 use App\Contexts\Elections\Application\Handlers\RevokeIdentityVerificationHandler;
@@ -47,6 +52,8 @@ class VoterVerificationController extends Controller
 
         $validated = $request->validate([
             'user_id' => 'required|uuid|exists:users,id',
+            // The officer's identity attestation is required server-side — never only a UI checkbox (C4).
+            'attested' => 'accepted',
             'verified_ip' => 'nullable|ipv4',
             'verified_device_fingerprint_hash' => 'nullable|string|max:64',
             'verified_device_components' => 'nullable|array',
@@ -89,6 +96,8 @@ class VoterVerificationController extends Controller
                 'subject_user_id' => $validated['user_id'],
                 'verifier_role'   => $recorded->verifierRole->value,
                 'requirement'     => AdmissionRequirement::OfficerIdentityVerification->value,
+                'method'          => VerificationMethod::OfficerAttestation->value,
+                'statement'       => RecordIdentityVerificationCommand::ATTESTATION_STATEMENT,
                 'policy'          => $election->admissionPolicy()->toPersistence(),
                 'verified_ip'     => $validated['verified_ip'] ?? null,
                 'fingerprint'     => $validated['verified_device_fingerprint_hash'] ?? null,
@@ -97,6 +106,91 @@ class VoterVerificationController extends Controller
 
         return redirect()->back()
             ->with('success', 'Voter identity verified.');
+    }
+
+    /**
+     * "Verify All" — one bulk attestation by the Chief or Deputy Chief of the election
+     * (PBDIGIT-213 C4, PO C4-D1…D4). Same admission evidence as store(); only the
+     * method differs (officer_bulk_attestation).
+     *
+     * Authorization has two layers: manageSettings here (outer, same rule) and the
+     * handler's own VerificationAuthoritySource (authoritative). The window is the
+     * route's election.state:verify_voter_identity. All evidence is written in ONE
+     * transaction; a changed eligible count writes nothing. One batch id correlates
+     * the per-voter audit entries and the summary (audit only).
+     */
+    public function verifyAll(
+        Request $request,
+        Organisation $organisation,
+        string $election,
+        BulkRecordIdentityVerificationHandler $handler,
+    ) {
+        $election = $this->resolveElection($organisation, $election);
+
+        $this->authorize('manageSettings', $election);
+
+        $validated = $request->validate([
+            'attested'       => 'accepted',
+            'expected_count' => 'required|integer|min:0',
+        ]);
+
+        try {
+            $recorded = DB::transaction(fn () => $handler->handle(new BulkRecordIdentityVerificationCommand(
+                electionId: $election->id,
+                verifierId: auth()->id(),
+                expectedCount: (int) $validated['expected_count'],
+            )));
+        } catch (BulkVerificationCountChanged $changed) {
+            return redirect()->back()->withErrors([
+                'expected_count' => "The number of voters to verify has changed (now {$changed->actual}). Please review and confirm again.",
+            ]);
+        } catch (VerifierNotAuthorised) {
+            abort(403, 'Only the Chief or Deputy Chief of this election may verify voters.');
+        }
+
+        $audit = app(ElectionAuditService::class);
+        foreach ($recorded->verificationIdsByVoter as $voterId => $verificationId) {
+            event(new IdentityAttestedEvent(
+                verificationId: $verificationId,
+                userId: $voterId,
+                attestedBy: auth()->id(),
+                attestedAt: new DateTimeImmutable(),
+                notes: BulkRecordIdentityVerificationCommand::ATTESTATION_STATEMENT,
+            ));
+
+            $audit->log(
+                election: $election,
+                event: 'voter_verified',
+                user: auth()->user(),
+                category: 'committee',
+                ip: $request->ip(),
+                metadata: [
+                    'subject_user_id' => $voterId,
+                    'verifier_role'   => $recorded->verifierRole->value,
+                    'requirement'     => AdmissionRequirement::OfficerIdentityVerification->value,
+                    'method'          => VerificationMethod::OfficerBulkAttestation->value,
+                    'batch_id'        => $recorded->batchId,
+                ]
+            );
+        }
+
+        $audit->log(
+            election: $election,
+            event: 'voters_bulk_verified',
+            user: auth()->user(),
+            category: 'committee',
+            ip: $request->ip(),
+            metadata: [
+                'batch_id'      => $recorded->batchId,
+                'count'         => $recorded->count(),
+                'verifier_role' => $recorded->verifierRole->value,
+                'statement'     => BulkRecordIdentityVerificationCommand::ATTESTATION_STATEMENT,
+                'policy'        => $election->admissionPolicy()->toPersistence(),
+            ]
+        );
+
+        return redirect()->back()
+            ->with('success', "{$recorded->count()} voters verified.");
     }
 
     /**

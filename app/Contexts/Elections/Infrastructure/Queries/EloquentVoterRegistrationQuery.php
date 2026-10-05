@@ -21,4 +21,26 @@ final class EloquentVoterRegistrationQuery implements VoterRegistrationQuery
             ->where('status', '!=', 'removed')
             ->exists();
     }
+
+    /**
+     * C4-D1: voter role · status active · not soft-deleted (SoftDeletes in force) · NO
+     * voter_verifications row of any status for this election (never verified; revoked
+     * evidence — incl. suspension_confirmed — excludes the voter).
+     */
+    public function bulkVerifiableVoterIds(string $electionId): array
+    {
+        return ElectionMembership::withoutGlobalScope('tenant')
+            ->where('election_memberships.election_id', $electionId)
+            ->where('election_memberships.role', 'voter')
+            ->where('election_memberships.status', 'active')
+            ->whereNotExists(function ($evidence) {
+                $evidence->selectRaw('1')
+                    ->from('voter_verifications')
+                    ->whereColumn('voter_verifications.election_id', 'election_memberships.election_id')
+                    ->whereColumn('voter_verifications.user_id', 'election_memberships.user_id');
+            })
+            ->orderBy('election_memberships.user_id')
+            ->pluck('election_memberships.user_id')
+            ->all();
+    }
 }

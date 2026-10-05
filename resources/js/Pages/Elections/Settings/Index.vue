@@ -3,13 +3,16 @@ import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import ToggleSwitch from '@/Components/ToggleSwitch.vue'
 import ElectionLayout from '@/Layouts/ElectionLayout.vue'
+import VoterAdmissionCard from '@/Components/Election/VoterAdmissionCard.vue'
 
 const page = usePage()
 
 const props = defineProps({
   election: Object,
   organisation: Object,
-  hasVotes: Boolean
+  hasVotes: Boolean,
+  // PBDIGIT-213 C2/C4: { identityVerificationRequired, isLocked, available, affectedVoters }
+  admission: { type: Object, default: null }
 })
 
 const form = ref({
@@ -426,6 +429,9 @@ const flashWarning = computed(() => {
             </div>
           </div>
         </section>
+
+        <!-- Voter Admission (PBDIGIT-213 C4-A): saved through its own endpoint, not this form. -->
+        <VoterAdmissionCard v-if="admission" :admission="admission" :election-slug="election.slug" />
 
         <!-- 4. Settings Audit Trail -->
         <section class="card-elevated bg-slate-50" aria-labelledby="audit-heading">

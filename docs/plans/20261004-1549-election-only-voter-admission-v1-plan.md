@@ -8,7 +8,7 @@
 | C1 | ✅ GREEN 33/33. 45-suite before/after regression shows 0 delta (166 pre-existing failures, identical tests and causes). Committed; awaiting PO acceptance. As implemented, `standingOf()` / `decide()` / `VotingEntitlementReason` replace the plan's `VotingEntitlementDecision`, and `AdmissionDecision` moves to C2 (PO correction: C1 has no admission concepts). Also resolves the defect of `PBDIGIT-201` (recorded, not accepted by engineering) |
 | C2 | ✅ GREEN 49/49 (C1+C2 82/82). 54-suite before/after: 0 per-test and 0 reason delta. Committed; awaiting PO acceptance. As implemented: the dedicated endpoint takes the business toggle `identity_verification_required`; `AdmissionPolicyChange` is the result type; no-op proposals are allowed even when locked; the C2 slice plan was approved separately (C2-D1 default OFF, C2-D2 Election-Only only) |
 | C3 | ✅ GREEN 82/82 (C1+C2+C3 167/167). 77-suite regression: 1 changed test (`SimpleStoreTest`), resolved by a PO-approved fixture-only adaptation; everything else unchanged. Committed; awaiting PO acceptance. As implemented: brief `20261004_1802` added the `can_vote` A–G classification and the legacy-boundary tests; target rule C3-D2; the admission-aware cache uses a policy fingerprint plus `VoterVerification::booted()`; revoke shares the `verify_voter_identity` window; findings → PBDIGIT-214…219 |
-| C4 | next — RED first (product-flow test R3-6) |
+| C4 | ✅ GREEN incl. the PO-approved correction (identity only; server-side `attested`; IP UI entry point removed → PBDIGIT-222). 89-suite regression vs `622ee91e9`: 0 changed results, 0 reason delta; the only per-test lines are the 3 new A2 tests (passing). Vitest: same 8 pre-existing failures, 370 passing. design-check 91. Guide `04_c4_ui_and_bulk_verification.md`. Awaiting PO review before commit |
 
 ## Rev 3 — final PO corrections + frontend brief (2026-10-04) — these OVERRIDE rev 2 where they differ
 
@@ -273,13 +273,200 @@ BALLOT PATH (unchanged, outside entitlement) — trust gate · IP/device rules �
   - Reinstatement requires a new verification.
 - **C3.5 Bypass protection:** tests prove an unverified voter cannot become entitled via approve, assign-by-UUID, re-import, a direct call to any slug route, or a stale cache. No endpoint redesign (PBDIGIT-214+).
 
-### C4 — UI (display only; never the authorisation source)
+### C4 — UI (display only; never the authorisation source) — superseded by the C4 slice plan below
 - Manage page: the controller passes `election.admission_policy` and a backend-computed per-voter `admission` map (`admitted` | `verification_required` | `not_applicable`).
 - An "Admission" column after Status (`Index.vue:227/284`, `status-pill`): "Identity verified" / "Identity verification required", plus a filter.
 - Revoke in the modal.
 - The IP field becomes optional (`VoterVerificationModal.vue:124`).
 - Voter-facing `Election/Show.vue`: when `admissionPending`, show *"Your identity must be verified by the Chief or Deputy Chief of the election before you can vote."*
 - `npm run design-check`, reporting before and after.
+
+---
+
+### C4 slice plan (2026-10-04, PO: "C3 accepted, start C4"; then "add this to c4 plan") — APPROVED, implemented (see "C4 correction" below)
+
+**Goal:** expose the C2/C3 model through the UI. The Chief or Deputy can:
+- switch **Voter Admission** ON/OFF;
+- see each voter's **Identity Verification** state;
+- **Verify Identity** one by one;
+- **Verify All** eligible voters in one bulk attestation;
+- start **Suspend Identity**, which is the existing two-person process.
+
+The voter sees why they cannot vote yet. **The UI is never the authorisation source.** Every action goes through the C2/C3 endpoints and handlers, and entitlement stays with `VotingEntitlementQuery`.
+
+#### C4-A Voter Admission card (settings)
+- New component `resources/js/Components/Election/VoterAdmissionCard.vue`, embedded in `Pages/Elections/Settings/Index.vue` after the verification-mode section. It uses the C2 props `admission.{identityVerificationRequired, isLocked, available, affectedVoters}`.
+- **Contents:** title "Voter Admission"; intro "Choose which verification requirements apply to voters."; row "Identity verification required" with an ON/OFF toggle; help text *"When enabled, every voter must be verified by the Election Chief or Deputy Chief before they can vote."*
+- **Impact text:**
+  - OFF→ON: *"N registered voters currently require identity verification."*
+  - ON→OFF: *"N registered voters would no longer need verification to vote."*
+- **Save Admission Policy** → `router.patch(route('elections.admission-policy.update', slug), { identity_verification_required })`.
+- **Locked:** "ON — LOCKED" / "OFF — LOCKED" with *"The admission policy cannot be changed once the election is ready for voting."*; toggle and save disabled.
+- **Not Election-Only:** the card is hidden (`available = false`).
+- No technical terms (no `AdmissionRequirement`, no "gate").
+
+#### C4-B Identity Verification column (voter management)
+- **Backend:** `ElectionVoterController@index` adds:
+  - `admission = { required: bool, available: bool, bulkVerifiableCount: int }`;
+  - a per-voter map `identityVerification[user_id]` with values:
+
+    | Value | Meaning |
+    |---|---|
+    | `not_required` | policy OFF |
+    | `verified` | active evidence |
+    | `verification_required` | ON, no evidence |
+    | `reverification_required` | ON, evidence revoked |
+
+  These are display read-models only.
+- **Component `IdentityVerificationCell.vue`:**
+
+  | State | Shown |
+  |---|---|
+  | `verification_required` | **[Verify Identity]** (opens the existing `VoterVerificationModal`; the legacy Verify flow kept) |
+  | `reverification_required` | **⚠ Re-verification required** + [Verify Identity] |
+  | `verified` | **Verified ✓** (+ Re-verify available) |
+  | `not_required` | "Not required" (neutral); the legacy Verify stays available but not emphasised |
+
+- **Existing actions are kept.** Propose-suspension is labelled **"Suspend Identity"** when the policy is ON (R3-3; the two-person flow is unchanged). No other action is removed.
+- **`VoterVerificationModal.vue`:** the IP field becomes optional (IP is audit metadata, never proof, D3/inv. 4).
+
+#### C4-C Verify All (bulk attestation) — PO decisions C4-D1…D4 (2026-10-04)
+
+One domain operation with **the same admission evidence** as the individual action:
+
+```
+Verify Identity ─┐
+                 ├─► OFFICER_IDENTITY_VERIFICATION evidence ─► AdmissionDecision ─► VotingEntitlement
+Verify All ──────┘
+```
+
+| # | Decision |
+|---|---|
+| **C4-D1 Scope** | **Active registered voters who have never had evidence**: role voter, status `active`, not soft-deleted, **no `voter_verifications` row at all** for this election. **Excluded:** inactive (suspended), invited, removed, already verified, and **anyone whose evidence was revoked** (for any reason, incl. `suspension_confirmed`). Those must be re-verified individually, so a bulk click can never undo the suspension-revalidation step. |
+| **C4-D2 Method** | Same requirement (`OFFICER_IDENTITY_VERIFICATION`) and same `verifier_role` derivation, but **`method = officer_bulk_attestation`** (individual: `officer_attestation`). Admission effect identical; always distinguishable. |
+| **C4-D3 Attestation** | The dialog shows the **exact count** and the statement *"I confirm that the identities of these voters have already been verified according to the organisation's voter-registration process."* The server requires `attested = accepted` **and** `expected_count`. If the eligible count differs at execution time, the request is **refused** (nothing written) and the dialog refreshes. The statement is stored in each evidence row's `notes` and in the audit. |
+| **C4-D4 Audit** | **One `voter_verified` entry per voter** (`subject_user_id`, `verifier_role`, `method = officer_bulk_attestation`, `batch_id`) **plus one `voters_bulk_verified` summary** (actor, count, `batch_id`, statement). |
+
+Backend design:
+- **Domain:** enum `VerificationMethod` { `OfficerAttestation`, `OfficerBulkAttestation` }; exception `BulkVerificationCountChanged`.
+- **Port `VoterRegistrationQuery`:** + `bulkVerifiableVoterIds(electionId): list<string>` (the C4-D1 set).
+- **`IdentityEvidenceRecord`:** + `method` (default `OfficerAttestation`). `EloquentIdentityEvidenceStore` writes it (it is currently hard-coded).
+- **Application:** `BulkRecordIdentityVerificationCommand` (`electionId`, `verifierId`, `expectedCount`, `statement`) → `BulkRecordIdentityVerificationHandler`. Its steps:
+  1. **authority** (Chief/Deputy, as individual);
+  2. candidates;
+  3. count check;
+  4. **one DB transaction**, each voter recorded with `method = officer_bulk_attestation`, `notes = statement`;
+  5. return `{ batchId, voterIds, verifierRole }`.
+- **Cache:** each evidence write invalidates through `VoterVerification::booted()` (C3 mechanism, unchanged).
+- **HTTP:** `POST …/elections/{election}/voters/verify-all` → `elections.voters.verify-all`, in the **same `election.state:verify_voter_identity` group** (window D1) and `manageSettings`. The controller writes the per-voter + summary audit.
+- **UI:** a **[Verify All Voters]** button above the table, shown only when the policy is ON and `bulkVerifiableCount > 0`, with component `BulkVerifyDialog.vue`. The dialog shows "Verify N voters?" with the statement, a required confirmation checkbox, and [Cancel] [Confirm]. Confirm stays disabled until the box is checked.
+
+#### C4-D Voter-facing notice
+- Component `AdmissionPendingNotice.vue` on `Election/Show.vue` when `admissionPending` (C3 prop): *"Your identity must be verified by the Chief or Deputy Chief of the election before you can vote."*
+
+#### C4 TDD (RED first; full source shown and linted before placing)
+
+| # | File (new) | Cases |
+|---|---|---|
+| 1 | `tests/Feature/Election/VoterManagementIdentityStateTest.php` | `identityVerification` map for all four states; OFF → all `not_required`; `admission.required/available`; `bulkVerifiableCount` = C4-D1 set |
+| 2 | `tests/Feature/Election/BulkIdentityVerificationTest.php` | **Scope matrix:** active-never-verified ✓; active-verified ✗; active-revoked (incl. `suspension_confirmed`) ✗; inactive ✗; invited ✗; removed ✗; other election ✗. `method = officer_bulk_attestation`; `notes` = statement; `verifier_role` derived. `attested` missing → refused; count mismatch → refused, nothing written; commissioner / other-election chief / org-wide chief → 403; window ✓ SetupAdministration/VotingActive, ✗ Draft/Counting. Audit: N per-voter entries + 1 summary sharing a batch id. Cache: bulk-verified voters are entitled immediately (policy ON). Atomicity: a failure mid-batch writes nothing |
+| 3 | `tests/Feature/Election/VoterAdmissionProductFlowTest.php` | **Flow A (R3-6):** settings impact N → turn ON → manage page `verification_required` → voter refused at `slug.code.create` → Verify Identity → `verified` → voter reaches code entry (election opened by lifecycle facts). **Flow A′:** same with Verify All. **Flow B (Suspend Identity):** verified → propose + confirm → `reverification_required` and suspended → approve alone ⇒ still not entitled → re-verify ⇒ entitled |
+| 4 | `tests/Frontend/VoterAdmissionCard.spec.js` | ON/OFF rendering, help text, transition-specific impact text, locked rendering + disabled controls, hidden when unavailable, save → `router.patch(...admission-policy.update…, {identity_verification_required})` |
+| 5 | `tests/Frontend/IdentityVerificationCell.spec.js` | four states → labels/buttons; Verify Identity emits `verify` |
+| 6 | `tests/Frontend/BulkVerifyDialog.spec.js` | count + statement shown; Confirm disabled until checkbox; confirm → `router.post(...verify-all…, {attested: true, expected_count: N})` |
+| 7 | `tests/Frontend/AdmissionPendingNotice.spec.js` | notice text |
+| 8 | `tests/Frontend/VoterVerificationModal.spec.js` | submit enabled with no IP |
+| 9 | extend `tests/Architecture/IdentityVerificationArchitectureTest.php`? **No.** New `tests/Architecture/BulkIdentityVerificationArchitectureTest.php`: bulk handler/command framework-free; the bulk controller action delegates (no direct `VoterVerification::create`) |
+
+#### C4 RED-phase findings and confirmed constraints (recorded 2026-10-04; no production code yet)
+
+**Authorization (Verify All)**
+- `ElectionPolicy::manageSettings` (`app/Policies/ElectionPolicy.php:46-53`) was inspected. It matches the C3 authority predicate **exactly** (an active `ElectionOfficer`, role `chief`|`deputy`, `election_id` = this election).
+- It therefore remains the **outer route-level check** for `Verify All`, as for individual Verify.
+- **`VerificationAuthoritySource` stays authoritative.** The bulk handler independently enforces the target-election Chief/Deputy authority and refuses with `VerifierNotAuthorised` otherwise.
+- **PO decision (GREEN approval):** **no artificial route-pass/handler-refusal test.** Both predicates intentionally represent the same Chief/Deputy target-election rule. Independent handler authority is proven instead by:
+  - the architecture test (the controller delegates to the handler);
+  - the handler resolving authority through `VerificationAuthoritySource` itself.
+- The existing matrix stays: **commissioner, other-election Chief and organisation-wide Chief are refused**, and nothing is written.
+
+**Admission evidence**
+- Confirmed: `VotingEntitlementQuery` reads only what admission needs (the evidence's existence and `status`).
+- **`notes` (incl. the attestation statement) and the verification `method` must NOT influence entitlement.**
+- `BulkIdentityVerificationArchitectureTest::test_the_entitlement_decision_does_not_read_notes_or_method` already **passes**. It stays as a permanent regression/architecture boundary.
+
+**Batch id (PO decision, 2026-10-04): audit only.** The shared `batch_id` is carried in every per-voter `voter_verified` audit entry and in the `voters_bulk_verified` summary. There is **no `voter_verifications.batch_id` column and no migration in C4**. Evidence rows are linked to the batch through the audit plus `method = officer_bulk_attestation`.
+
+**C4 RED baseline (recorded)**
+
+| Suite | Result | Classification |
+|---|---|---|
+| PHPUnit (`VoterManagementIdentityStateTest`, `BulkIdentityVerificationTest`, `VoterAdmissionProductFlowTest`, `BulkIdentityVerificationArchitectureTest`) | **22 failing, 1 passing** | 13 × missing `verify-all` route · 5 × missing `admission.*` props · 2 × missing `identityVerification` display state · 2 × missing bulk-verification classes / controller delegation (`VerificationMethod`, the bulk handler/controller path). The 1 pass proves that entitlement ignores evidence `notes`/`method` |
+| Vitest (`VoterAdmissionCard`, `IdentityVerificationCell`, `BulkVerifyDialog`, `AdmissionPendingNotice`, `VoterVerificationModal` specs) | **5 specs RED** | 4 × new component missing · 1 × existing `VoterVerificationModal` blocks submission without an IP (2 tests) |
+
+- **No accidental RED:** all failures are expected C4 implementation gaps, not production regressions.
+- Tests are **not** weakened to pass.
+- C3 entitlement, authority, policy, suspension and verification-window semantics are **not** altered to satisfy RED.
+
+**`VoterVerificationModal`**
+- The existing component blocks submission while `form.verified_ip` is falsy (`:disabled="submitting || !form.verified_ip"`).
+- Its default `voterCurrentIp` is `'—'`, which isn't an IPv4 address.
+- **C4 requirement:** identity verification does not require IP capture. The test proves that submission works without an IP and sends `verified_ip: null`.
+- IP capture and security semantics are otherwise **unchanged**. This only removes IP as a prerequisite for identity verification.
+
+**Staged implementation order (each stage: smallest change for the failing tests; GREEN run before the next stage)**
+1. ✅ RED baseline recorded (this section). **GREEN approved by the PO in backend-first slices.**
+2. Domain/application bulk-verification types and handler (`VerificationMethod`, `BulkVerificationCountChanged`, `BulkRecordIdentityVerificationCommand`/`Handler`, port method `bulkVerifiableVoterIds`, `IdentityEvidenceRecord.method`).
+3. Route/controller delegation (`elections.voters.verify-all`), **preserving both authorization layers** (route `manageSettings` + handler `VerificationAuthoritySource`) and the verification window. Transaction at the HTTP boundary; per-voter + summary audit.
+4. Backend admission-management read model and props (`admission.*`, `identityVerification`).
+5. Frontend components and the existing modal adjustment; wire them into the settings, voter-management and election pages.
+6. GREEN tests incrementally after each stage.
+7. The full C4 regression (worktree at `622ee91e9`, no overlapping test runs) **only after** focused GREEN is complete.
+
+**Gates (PO):**
+- **GREEN slice 1 = backend only** (stages 2–3: bulk types, candidate port, handler, audit batch correlation, atomic transaction, `expected_count` check, route/controller delegation). It stops after the focused PHPUnit run.
+- **Frontend (stage 5) waits for manual approval** of the backend GREEN result.
+- The six Stop-hook area-guide reminders remain a documentation follow-up outside this slice.
+
+**Baselines recorded before C4 code:**
+- Vitest: 8 failing tests in 12 files, 326 passing (pre-existing).
+- `npm run design-check`: 92 violations (threshold 150).
+- PHPUnit: the C3 77-suite result.
+
+**Regression:** the same worktree method (at `622ee91e9`); no tests run while it runs. Vitest and design-check are compared before and after.
+
+**Out of scope:**
+- `Code.can_vote_now`, the Code workflow;
+- `users.can_vote`/`is_voter`;
+- PBDIGIT-214…219;
+- the C2 dev-DB migration (separate confirmation);
+- the area-guide follow-up;
+- any change to entitlement, policy or suspension semantics.
+
+**Files (expected):**
+- **Backend:**
+  - `ElectionVoterController` (index props + `verifyAll`);
+  - routes (1);
+  - `VerificationMethod`, `BulkVerificationCountChanged`;
+  - bulk command, handler and result;
+  - port + adapter method;
+  - `IdentityEvidenceRecord`/store `method`.
+- **Frontend:**
+  - 5 new components;
+  - `Settings/Index.vue`, `Voters/Index.vue`, `VoterVerificationModal.vue`, `Election/Show.vue`;
+  - locale strings (en/de/np) where pages use i18n.
+- **Tests and guide:** 9 test files; developer guide `04_c4_ui_and_bulk_verification.md`.
+
+#### C4 correction (2026-10-04, after C4 GREEN, before commit) — PO-approved, implemented
+
+**Finding:** the C4 "Verify Identity" reused `VoterVerificationModal` (last-login IP, device hash, notes) and wrote the same `voter_verifications` row as the legacy IP "Verify". So IP data looked like identity proof, an IP click admitted a voter, and an identity verification made the IP look verified (one row per election and voter).
+
+| Slice | Result |
+|---|---|
+| **1 — voting-process characterization** (tests only) | `VotingProcessEntitlementBoundaryTest` 41/41, no production change. Every slug voting step × every non-entitled kind is refused (403, nothing written). Revocation after the code step refuses the agreement, ballot and final vote, while `Code.can_vote_now` stays true. An external CodeController review was answered with evidence: the controller skips its own check on slug requests because route middleware `ensure.election.voter` → `VotingEntitlementQuery` already ran; `isUserEligible()`'s `can_vote` branch is unreachable (non-slug routes are commented out). PO: no CodeController change; `can_vote_now` = "code step completed". The suspension-after-code sequence is unreachable in the product flow (suspension only before voting), so it is tested as an end state. |
+| **2 — IdentityAttestationDialog** | New dialog: required attestation gates Confirm; sends `attested: true`; IP/device only in a collapsed "Technical details — audit only, not identity proof". |
+| **A1 — identity only on the page** | PO: *"Identity Verification is the only verification concern in this increment"*. The legacy "Verify IP Address" UI entry point and the modal mount were removed (`VoterVerificationModal.vue` kept, retitled). The identity column, actions and name badge are shown only while the policy is ON. All identity UI state comes from `identityVerification` only, never from `verifications` (the prop stays, unused). |
+| **A2 — `attested` contract** | `store()` requires `attested` (accepted). The audit adds `method` + `statement` (`RecordIdentityVerificationCommand::ATTESTATION_STATEMENT`). Fixture-only `attested: true` in 6 files (the audit test fails before its request, pre-existing; the non-admin test is refused before validation). |
+| **Follow-ups** | `PBDIGIT-220` (left column removed, separate commit), `PBDIGIT-221` (assign members as voters), `PBDIGIT-222` (IP verification as its own legacy record; how it worked + PO decisions recorded). |
 
 ---
 

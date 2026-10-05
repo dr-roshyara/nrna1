@@ -81,6 +81,7 @@ class VoterVerificationEmitsEventsTest extends TestCase
             ]),
             [
                 'user_id' => $this->voter->id,
+                'attested' => true,
                 'verified_ip' => '192.168.1.1',
                 'verified_device_fingerprint_hash' => 'hash-12345',
                 'notes' => 'Verified via video',
@@ -143,6 +144,7 @@ class VoterVerificationEmitsEventsTest extends TestCase
             ]),
             [
                 'user_id' => $this->voter->id,
+                'attested' => true,
                 'verified_ip' => '192.168.1.1',
                 'notes' => 'Test verification',
             ]

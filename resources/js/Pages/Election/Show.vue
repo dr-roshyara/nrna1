@@ -258,6 +258,12 @@
                             </div>
                         </template>
 
+                        <!-- ── STATE: Registered, identity verification pending (PBDIGIT-213 C4-D) ── -->
+                        <!-- Display only: every voting route enforces admission server-side. -->
+                        <template v-else-if="admissionPending">
+                            <AdmissionPendingNotice />
+                        </template>
+
                         <!-- ── STATE: Not Eligible ── -->
                         <template v-else>
                             <div class="esp-ballot__header">
@@ -289,12 +295,14 @@ import { Head, router, usePage } from '@inertiajs/vue3'
 import PublicDigitHeader from '@/Components/Jetstream/PublicDigitHeader.vue'
 import PublicDigitFooter from '@/Components/Jetstream/PublicDigitFooter.vue'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
+import AdmissionPendingNotice from '@/Components/Election/AdmissionPendingNotice.vue'
 
 const props = defineProps({
     election:          { type: Object,  required: true },
     hasVoted:          { type: Boolean, default: false },
     canVote:           { type: Boolean, default: false },
     isEligible:        { type: Boolean, default: false },
+    admissionPending:  { type: Boolean, default: false },   // PBDIGIT-213 C3/C4: VotingEntitlement reason NotAdmitted
     ipAddress:         { type: String,  default: null },
     ipBlocked:         { type: Boolean, default: false },
     ipBlockMessage:    { type: String,  default: null },

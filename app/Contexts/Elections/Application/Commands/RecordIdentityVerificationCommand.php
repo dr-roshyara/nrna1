@@ -11,6 +11,9 @@ namespace App\Contexts\Elections\Application\Commands;
  */
 final readonly class RecordIdentityVerificationCommand
 {
+    /** The individual attestation the officer accepts (PBDIGIT-213 C4); recorded in the audit. */
+    public const ATTESTATION_STATEMENT = "I confirm that this voter's identity has been verified according to the organisation's voter-registration process.";
+
     public function __construct(
         public string $electionId,
         public string $voterId,

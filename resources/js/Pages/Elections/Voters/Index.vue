@@ -217,6 +217,20 @@
           <span v-if="voters.total" class="filter-count">{{ voters.from }}–{{ voters.to }} of {{ voters.total }}</span>
         </div>
 
+        <!-- Verify All (PBDIGIT-213 C4-C): bulk evidence recording, independent of the policy;
+             the server recomputes the C4-D1 set and decides -->
+        <div
+          v-if="admission.available && admission.bulkVerifiableCount > 0"
+          class="mb-4 flex items-center justify-between gap-4 rounded-lg border border-neutral-200 bg-white px-4 py-3"
+        >
+          <p class="text-sm text-neutral-700">
+            {{ admission.bulkVerifiableCount }} voters have never had identity verification.
+          </p>
+          <Button variant="primary" size="sm" data-testid="open-verify-all" @click="showBulkVerify = true">
+            Verify All Voters
+          </Button>
+        </div>
+
         <!-- The register -->
         <div class="register-wrap">
           <table class="register">
@@ -225,6 +239,7 @@
                 <th class="reg-th reg-th--no">#</th>
                 <th class="reg-th">Voter</th>
                 <th class="reg-th">Status</th>
+                <th v-if="admission.required" class="reg-th">Identity Verification</th>
                 <th class="reg-th">Proposed by</th>
                 <th class="reg-th">Suspended by</th>
                 <th class="reg-th">Removed by</th>
@@ -251,16 +266,19 @@
                     <div class="flex-1">
                       <div class="flex items-center gap-2">
                         <p class="voter-name">{{ membership.user?.name ?? '—' }}</p>
-                        <!-- Verification Badge -->
+                        <!-- Identity verified badge (PBDIGIT-213): identity-verification EVIDENCE for one
+                             admission requirement — NOT the final admission decision (that stays the
+                             server's AdmissionDecision / VotingEntitlement). From the identity state only,
+                             never from the generic verifications map. -->
                         <span
-                          v-if="getVerificationStatus(membership.user_id)"
+                          v-if="identityVerification[membership.user_id] === 'verified'"
                           class="verification-badge verification-badge--active"
-                          title="Voter identity verified"
+                          title="Identity-verification evidence recorded — not the complete admission decision"
                         >
                           <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                             <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                           </svg>
-                          Verified
+                          Identity verified
                         </span>
                       </div>
                       <p class="voter-email">{{ membership.user?.email ?? '—' }}</p>
@@ -281,6 +299,15 @@
                     <span class="status-dot"></span>
                     {{ statusLabel(membership.status) }}
                   </span>
+                </td>
+
+                <!-- Identity Verification (PBDIGIT-213 C4-B): server display state; shown only while the
+                     Voter Admission Policy requires it. Verify opens IdentityAttestationDialog. -->
+                <td v-if="admission.required" class="reg-td">
+                  <IdentityVerificationCell
+                    :state="identityVerification[membership.user_id] ?? 'not_required'"
+                    @verify="openIdentityDialog(membership)"
+                  />
                 </td>
 
                 <!-- Proposed by — transparency: who proposed the pending/most recent suspension -->
@@ -316,17 +343,21 @@
                 <!-- Actions -->
                 <td class="reg-td reg-td--actions">
                   <div class="action-row" v-if="!membership.has_voted">
-                    <!-- Verify Voter Identity -->
+                    <!-- Verify Identity (PBDIGIT-213 C4): records identity-verification EVIDENCE — available
+                         whether the policy is ON or OFF (OFF = not required, not "cannot be recorded").
+                         Same action as the Identity Verification column. The legacy "Verify IP Address"
+                         entry point is removed from this page (the IP backend is untouched legacy, PBDIGIT-222). -->
                     <button
-                      @click="openVerificationModal(membership)"
+                      data-testid="actions-verify-identity"
+                      @click="openIdentityDialog(membership)"
                       :disabled="loadingId === membership.id"
                       class="act-btn act-btn--verify"
-                      :title="getVerificationStatus(membership.user_id) ? 'Re-verify voter' : 'Verify voter identity'"
+                      :title="identityVerification[membership.user_id] === 'verified' ? 'Re-verify the voter\'s identity' : 'Verify the voter\'s identity'"
                     >
                       <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
                       </svg>
-                      {{ getVerificationStatus(membership.user_id) ? 'Re-verify' : 'Verify' }}
+                      {{ identityVerification[membership.user_id] === 'verified' ? 'Re-verify Identity' : 'Verify Identity' }}
                     </button>
 
                     <!-- Approve (invited → active) -->
@@ -345,7 +376,8 @@
                       class="act-btn act-btn--propose"
                     >
                       <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
-                      Propose
+                      <!-- PBDIGIT-213 R3-3: same two-person proposal; business label when identity verification applies -->
+                      {{ admission.required ? 'Suspend Identity' : 'Propose' }}
                     </button>
 
                     <!-- Confirm suspension (pending, not by current user) -->
@@ -386,7 +418,7 @@
                 v-if="membership.suspension_status === 'proposed'"
                 class="suspension-info-row"
               >
-                <td colspan="9">
+                <td :colspan="columnCount">
                   <div class="suspension-banner">
                     <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
                     <span>Suspension proposed by <strong>{{ membership.suspension_proposed_by }}</strong> · {{ formatDate(membership.suspension_proposed_at) }}</span>
@@ -398,7 +430,7 @@
 
               <!-- Empty -->
               <tr v-if="voters.data.length === 0">
-                <td colspan="9" class="reg-empty">
+                <td :colspan="columnCount" class="reg-empty">
                   <div class="empty-state">
                     <svg class="w-10 h-10 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
@@ -434,19 +466,24 @@
 
   </PublicDigitLayout>
 
-  <!-- Voter Verification Modal -->
-  <VoterVerificationModal
-    :show="showVerificationModal"
-    :voter-id="verificationModalVoter?.id"
-    :voter-name="verificationModalVoter?.name"
-    :voter-email="verificationModalVoter?.email"
-    :voter-current-ip="verificationModalVoter?.currentIp"
-    :voter-last-login="verificationModalVoter?.lastLogin"
-    :organisation="organisation"
-    :election="election"
-    :existing-verification="verificationModalVoter?.verification"
-    @close="showVerificationModal = false"
-    @success="() => { showVerificationModal = false; router.reload() }"
+  <!-- Verify Identity (PBDIGIT-213 C4): both identity entry points open this dialog.
+       IP/device data is audit-only metadata inside it; the attestation is the evidence. -->
+  <IdentityAttestationDialog
+    :open="showIdentityDialog"
+    :voter="identityDialogVoter"
+    :reverify="identityDialogVoter?.reverify ?? false"
+    :organisation-slug="organisation.slug"
+    :election-slug="election.slug"
+    @close="showIdentityDialog = false"
+  />
+
+  <!-- Verify All (PBDIGIT-213 C4-C) -->
+  <BulkVerifyDialog
+    :open="showBulkVerify"
+    :count="admission.bulkVerifiableCount"
+    :organisation-slug="organisation.slug"
+    :election-slug="election.slug"
+    @close="showBulkVerify = false"
   />
 </template>
 
@@ -454,7 +491,10 @@
 import { ref, computed } from 'vue'
 import { router, usePage } from '@inertiajs/vue3'
 import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
-import VoterVerificationModal from '@/Components/Election/VoterVerificationModal.vue'
+import IdentityAttestationDialog from '@/Components/Election/IdentityAttestationDialog.vue'
+import IdentityVerificationCell from '@/Components/Election/IdentityVerificationCell.vue'
+import BulkVerifyDialog from '@/Components/Election/BulkVerifyDialog.vue'
+import Button from '@/Components/Button.vue'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
 const props = defineProps({
@@ -465,7 +505,12 @@ const props = defineProps({
   unassignedMembers: { type: Array,  default: () => [] },
   filters:           { type: Object, default: () => ({}) },
   verifications:     { type: Object, default: () => ({}) },
+  // PBDIGIT-213 C4-B — display read-models from ElectionVoterController (never an authorisation source)
+  admission:            { type: Object, default: () => ({ required: false, available: false, bulkVerifiableCount: 0 }) },
+  identityVerification: { type: Object, default: () => ({}) },
 })
+
+const showBulkVerify = ref(false)
 
 const authUserName           = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
 const assignUserId           = ref('')
@@ -477,9 +522,12 @@ const searchQuery            = ref(props.filters?.search ?? '')
 const statusFilter           = ref(props.filters?.status ?? '')
 const perPage                = ref(props.filters?.per_page ?? 50)
 
-// Voter verification modal
-const showVerificationModal   = ref(false)
-const verificationModalVoter  = ref(null)
+// Verify Identity (attestation dialog)
+const showIdentityDialog   = ref(false)
+const identityDialogVoter  = ref(null)
+
+// Table width follows the optional Identity Verification column (shown only while required)
+const columnCount = computed(() => (props.admission.required ? 10 : 9))
 
 const exportUrl = computed(() =>
   route('elections.voters.export', { organisation: props.organisation.slug, election: props.election.slug })
@@ -497,19 +545,17 @@ const statusLabel = (s) => ({ active: 'Active', inactive: 'Suspended', invited: 
 
 const formatDate = (d) => d ? new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'
 
-// Voter verification helpers
-const getVerificationStatus = (userId) => props.verifications[userId] ?? null
-
-const openVerificationModal = (membership) => {
-  verificationModalVoter.value = {
+// Identity state is the ONLY source for identity UI (never the generic verifications map)
+const openIdentityDialog = (membership) => {
+  const state = props.identityVerification[membership.user_id]
+  identityDialogVoter.value = {
     id: membership.user_id,
     name: membership.user?.name ?? 'Unknown',
     email: membership.user?.email ?? '',
-    currentIp: membership.user?.current_ip ?? '—',
-    lastLogin: membership.user?.updated_at ?? null,
-    verification: getVerificationStatus(membership.user_id)
+    lastLoginIp: membership.user?.current_ip ?? null,   // audit-only metadata, never identity proof
+    reverify: state === 'verified' || state === 'reverification_required',
   }
-  showVerificationModal.value = true
+  showIdentityDialog.value = true
 }
 
 // Filters
