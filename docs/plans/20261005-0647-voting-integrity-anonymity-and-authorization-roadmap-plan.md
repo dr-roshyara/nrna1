@@ -162,7 +162,9 @@ Freeze: Admission → Entitlement (standing + lifecycle; admission evaluated **o
 - **Tests:** concurrency (exactly one vote), atomic rollback, aggregate invariant, every denial branch fails closed.
 - **Gate 4:** PO review of RED → GREEN.
 
-### Phase 5 — Entry authorization `forEntry()` · NOT STARTED
+### Phase 5 — Voting Entry & Pre-Cast Authorization Discovery · CHARTER APPROVED (2026-10-05), discovery not started
+
+Discovery first (charter `docs/plans/20261005-1442-phase5-discovery-charter-plan.md`): **Round 1 — C1 step-4 gate** (`VoteController::verify()` → `vote_post_check()`); **Round 2 — entry authorization**, where the ADR §3.1 `forEntry()` design is examined as a candidate (not yet decided as the solution); Round 3 — deferred-item triage. No production change before a decision per round. Original outline (ADR §3.1, for Round 2):
 
 `GET code/create → forEntry() → allowed? → getOrCreateCode()` (the code is created and e-mailed there — SR §3); at code entry the same `forEntry()` **replaces** `CodeController::verifyCode`'s own IP check (no second workflow). Optional advisory pre-checks at ballot entry / first submission; only `forCast()` decides.
 - **Gate 5:** PO review.
@@ -212,8 +214,9 @@ Anonymous credentials, blind signatures, unlinkable voting tokens, cryptographic
 | 0 → closed | Gate 0 accepted by the PO (C4 accepted) |
 | 1 | **CLOSED — Gate 1 ACCEPTED (2026-10-05)** (28 tests pass; 11 confirmed defects PBDIGIT-223 … 233; no production change) |
 | 3 | **AUTHORISED — ADR / design only** (2026-10-05) · `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` — **✅ APPROVED by PO / ARB (2026-10-05) as the architectural baseline; frozen** (decision record `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`). Implementation not authorised; Phase 4 needs a separate authorisation + answers to Q2, Q4, Q5 |
-| 4 | **COMPLETE (2026-10-05)** — final-cast hardening E1–E4: fail-closed exit (PBDIGIT-232), `forCast()` → `CastDecision`, enforcement in `store()` (PBDIGIT-233, 219), compare-and-set before the vote insert (PBDIGIT-230); found PBDIGIT-234 (IP binding unreachable), PBDIGIT-235 (soft-deleted code usable) |
-| 2, 5–9 | Not started (not authorised). Re-sequenced 2026-10-05 (§2a): Phase 2.0 decision postponed; Phases 3–6 may come first under the interim rule; Phase 7 gated by the anonymity-boundary review |
+| 4 | **COMPLETE and FROZEN (2026-10-05)** — architecture audit `docs/publicdigit/reviews/2026-10-05-phase4-e1-e4-architecture-audit.md` (0 blocking findings, PO accepted; C1 step-4 D10 → first Phase 5 discovery item) — final-cast hardening E1–E4: fail-closed exit (PBDIGIT-232), `forCast()` → `CastDecision`, enforcement in `store()` (PBDIGIT-233, 219), compare-and-set before the vote insert (PBDIGIT-230); found PBDIGIT-234 (IP binding unreachable), PBDIGIT-235 (soft-deleted code usable) |
+| 5 | **Voting Entry & Pre-Cast Authorization Discovery — CHARTER APPROVED (2026-10-05)**, discovery not started; Round 1 = C1 step-4 gate (`VoteController::verify()` only); `forEntry()` examined in Round 2 |
+| 2, 6–9 | Not started (not authorised). Re-sequenced 2026-10-05 (§2a): Phase 2.0 decision postponed; Phases 3–6 may come first under the interim rule; Phase 7 gated by the anonymity-boundary review |
 
 ## 8. Risks
 
