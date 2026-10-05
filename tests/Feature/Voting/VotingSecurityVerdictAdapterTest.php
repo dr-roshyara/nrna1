@@ -107,6 +107,17 @@ class VotingSecurityVerdictAdapterTest extends TestCase
     /** ORACLE — faithful copy of VoteController::store() at HEAD (see class doc for line references). */
     private function inlineVerdict(SecurityAttemptContext $context, Election $election, User $auth_user): SecurityVerdict
     {
+        return match ($this->inlineOutcome($context, $election, $auth_user)) {
+            LegitimacyOutcome::Allowed => SecurityVerdict::Allowed,
+            LegitimacyOutcome::Denied  => SecurityVerdict::Denied,
+            LegitimacyOutcome::Deferred,
+            LegitimacyOutcome::Investigate => SecurityVerdict::ReviewRequired,
+        };
+    }
+
+    /** The line-verified inline copy, up to the four-valued outcome (PBDIGIT-240 RED: restructured, not changed). */
+    private function inlineOutcome(SecurityAttemptContext $context, Election $election, User $auth_user): LegitimacyOutcome
+    {
         $registeredIpHash = null;
         if ($auth_user && $auth_user->voting_ip) {
             $privacyPolicy = app(TrustEvidencePrivacyPolicy::class);
@@ -129,14 +140,43 @@ class VotingSecurityVerdictAdapterTest extends TestCase
             votesFromThisIp: $votesFromThisIp,
         );
 
-        $constitutionalOutcome = app(ConstitutionalLegitimacyDecision::class)->decide($trustEnvelope->result);
+        return app(ConstitutionalLegitimacyDecision::class)->decide($trustEnvelope->result);
+    }
 
-        return match ($constitutionalOutcome) {
-            LegitimacyOutcome::Allowed => SecurityVerdict::Allowed,
-            LegitimacyOutcome::Denied  => SecurityVerdict::Denied,
-            LegitimacyOutcome::Deferred,
-            LegitimacyOutcome::Investigate => SecurityVerdict::ReviewRequired,
-        };
+    // ── PBDIGIT-240 RED (E1): the rich assessment equals the inline path (D-240-1, D-240-3) ──
+
+    private const ASSESSMENT_PORT = 'App\\Contexts\\Elections\\Application\\Ports\\VotingSecurityAssessmentQuery';
+
+    private function assertAssessmentEquivalent(User $user, Election $election, string $case): void
+    {
+        $context = $this->contextFor($user, $election);
+
+        $this->assertTrue(interface_exists(self::ASSESSMENT_PORT), "{$case}: D-240-3 — the assessment port VotingSecurityAssessmentQuery exists");
+
+        $assessment = app(self::ASSESSMENT_PORT)->assess($context);
+
+        $this->assertSame($this->inlineOutcome($context, $election, $user), $assessment->outcome, "{$case}: the assessment outcome equals the inline outcome");
+        $this->assertSame($this->inlineVerdict($context, $election, $user), $assessment->verdict, "{$case}: the assessment verdict equals the inline verdict");
+        $this->assertSame($assessment->verdict, $this->adapterVerdict($context), "{$case}: verdictFor() is derived from the assessment");
+        $this->assertInstanceOf(\App\Domain\Election\Security\TrustEvaluationEnvelope::class, $assessment->envelope, "{$case}: the assessment carries the envelope");
+    }
+
+    public function test_e1_the_assessment_equals_the_inline_path_when_allowed(): void
+    {
+        $this->assertAssessmentEquivalent($this->voter(), $this->election, 'e1 allowed');
+    }
+
+    public function test_e1_the_assessment_equals_the_inline_path_when_denied_above_the_limit(): void
+    {
+        $this->votedFrom(self::IP, 4);
+        $this->assertAssessmentEquivalent($this->voter(), $this->election, 'e1 denied');
+    }
+
+    public function test_e1_the_assessment_equals_the_inline_path_with_strategy_none(): void
+    {
+        $this->election->forceFill(['network_binding_strategy' => 'none'])->save();
+        $this->votedFrom(self::IP, 4);
+        $this->assertAssessmentEquivalent($this->voter(), $this->election->fresh(), 'e1 strategy none');
     }
 
     private function adapterVerdict(SecurityAttemptContext $context): SecurityVerdict
