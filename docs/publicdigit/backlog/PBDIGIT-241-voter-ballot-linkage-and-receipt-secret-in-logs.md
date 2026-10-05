@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🔴 **OPEN — RED written** (`tests/Feature/Voting/VoterBallotLogLinkageTest.php`: L1, L2, L3 RED; L4 guard green). GREEN not authorised. |
+| **Status** | 🟢 **F-V6 / F-V7 RESOLVED** — RED `19f0d3356` · GREEN `826a8f70d` (`VoterBallotLogLinkageTest` 4/4; Phase 1 K8 receipt-secret assertion inverted, PO-approved). 🟡 **A8 attached decision OPEN** (audit receipt hash unchanged). Still open, out of scope: A1 (vote id + IP), the vote id + `voter_slug_id` entry, A6, cross-entry correlation, receipt stored in clear. |
 | **Invariant violated** | *Participation knowledge without ballot knowledge.* Anyone with log access can (a) re-create a voter's receipt and open the ballot, and (b) read a user id next to a ballot identifier in one entry. |
 | **Findings (FACT [S], VoteController.php)** | **F-V6a** `store()` ≈1786 `Log::info('private_key', ['user_id' => $private_key])` — the full 32-hex receipt secret · **F-V6b** `store()` ≈1876 `'receipt_code_prefix' => substr($receiptCodeString, 0, 20)` — the first 20 of the 32 secret characters, in the same entry as `vote_id` · **F-V7** `confirmCorrect()` ≈4328 `'receipt_code' => $request->receipt_code` (= `secret_voteId`) together with `'user_id' => auth()->id()` · **F-V7 sibling** `submit_code_to_view_vote()` ≈3455 `'user_id'` together with `'vote_id'` |
 | **Scope (RED / GREEN)** | the receipt secret (full and any 16-character prefix) never appears in a log entry; no single log entry contains both the acting user's id and the ballot's vote id / receipt — for the final cast, `confirmCorrect()`, `submit_code_to_view_vote()`. GREEN removes only those values from the log contexts. |

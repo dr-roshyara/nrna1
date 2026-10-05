@@ -45,6 +45,7 @@ Demo elections are excluded from `forCast()` and the CAS (Q4); they normally use
 | [03_e3_cast_enforcement.md](./03_e3_cast_enforcement.md) | E3 | `store()` decides through `forCast()` for real elections; reasoned refusals; `vote_post_check()` demo-only |
 | [04_e4_atomic_participation_consumption.md](./04_e4_atomic_participation_consumption.md) | E4 | The compare-and-set on `codes.has_voted` before the vote insert; placement; rollback; evidence and its limits |
 | [05_ve01_ballot_integrity_red_and_design.md](./05_ve01_ballot_integrity_red_and_design.md) | VE-01 (after Phase 4) | Ballot integrity: the defect, the RED contract, frozen decisions, the approved target design — **GREEN not authorised** (PBDIGIT-237) |
+| [06_log_anonymity_receipt_secret.md](./06_log_anonymity_receipt_secret.md) | PBDIGIT-241 | No receipt secret and no voter↔ballot pair in one log entry; the rule for new logging; A8 still open |
 
 ## Commits
 
