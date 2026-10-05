@@ -149,6 +149,12 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Infrastructure\Queries\CachedVotingEntitlementQuery::class
         );
 
+        // Election Context: the ONE Security Verdict Authority — E2 of VotingAuthorization (PBDIGIT-239).
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\VotingSecurityVerdictQuery::class,
+            \App\Contexts\Elections\Infrastructure\Security\TrustLegitimacySecurityVerdict::class
+        );
+
         // Election Context: Voter Admission Policy (PBDIGIT-213 C2).
         $this->app->bind(
             \App\Contexts\Elections\Application\Ports\VoterAdmissionPolicyStore::class,
