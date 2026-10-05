@@ -9,7 +9,17 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-05 *(additive — the **security policy lifecycle lock (PBDIGIT-244)** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **one security assessment (PBDIGIT-240)** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 night, **PBDIGIT-240 RESOLVED — I3 for the final cast**)
+
+| | |
+|---|---|
+| ✅ **PBDIGIT-240** (I3) | Design `7d948969f` (D-240-1…4) · RED `c6490376c` · GREEN: `store()` consumes one `SecurityAssessment` (verdict, outcome, envelope) from the Security Verdict Authority; `verdictFor()` derived; no inline evaluation. **I3: one security authority is enforced for the final-cast security assessment.** Regression 583/333/19, no pass → fail. Guide `final_cast/09` |
+| 📊 **Matrix** | I3 → 🟢 final cast, 🔴 whole path (checks #2–#6 outside the authority) · I9 → 🟢 four-field boundary, 🟡 surface (Q3) |
+| 🧭 **Next** | **Q3** — define the security-policy surface (facts: the authority reads `max_votes_per_ip`, `network_binding_strategy`, `ip_whitelist`; `ip_restriction_*` read only by `resolveIpBlock`; `voter_verification_mode` read by nothing) → **2B** consolidate / retire #2–#6 · decisions A8 / A5 / A6, D6, PBDIGIT-242, D4.1 |
 
 ---
 

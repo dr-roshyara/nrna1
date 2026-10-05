@@ -23,6 +23,10 @@ use Tests\TestCase;
  * CHARACTERIZATION INVARIANT: for every characterized valid security context, the adapter behind
  * VotingSecurityVerdictQuery produces EXACTLY the same SecurityVerdict as the existing inline Phase-4 path in
  * VoteController::store() — without introducing or removing evidence, policy, threshold or exception semantics.
+ *
+ * PBDIGIT-240 (drift rule): store() no longer contains the inline path — it consumes the adapter's assess().
+ * inlineOutcome() below is the FROZEN reference copy of that former inline assembly; the adapter (verdict and,
+ * via E1, outcome) must stay equal to it. Change it only together with a decided change of the authority.
  * This proves Stage A (extract) and Stage C (VoteController consumes the adapter) behaviour-preserving.
  *
  * CONTEXT CONTRACT: SecurityAttemptContext is the security-attempt input (userId, electionId, clientIp,

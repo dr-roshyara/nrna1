@@ -154,6 +154,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Contexts\Elections\Application\Ports\VotingSecurityVerdictQuery::class,
             \App\Contexts\Elections\Infrastructure\Security\TrustLegitimacySecurityVerdict::class
         );
+        // The same authority's full assessment — consumed by the final cast (PBDIGIT-240, D-240-3).
+        $this->app->bind(
+            \App\Contexts\Elections\Application\Ports\VotingSecurityAssessmentQuery::class,
+            \App\Contexts\Elections\Infrastructure\Security\TrustLegitimacySecurityVerdict::class
+        );
 
         // Election Context: the authoritative ballot for the final cast (VE-01, PBDIGIT-237).
         $this->app->bind(

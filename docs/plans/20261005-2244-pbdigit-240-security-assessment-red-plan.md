@@ -1,6 +1,6 @@
 # Plan — PBDIGIT-240 RED: one security assessment for the final cast
 
-**Status:** RED authorised (PO 2026-10-05) · GREEN not authorised · **Story:** PBDIGIT-240 · **Design:** `docs/publicdigit/reviews/2026-10-05-pbdigit-240-security-authority-design-proposal.md` (D-240-1 … D-240-4 accepted, `7d948969f`)
+**Status:** ✅ complete — RED `c6490376c`, GREEN authorised and applied (PO 2026-10-05) · **Story:** PBDIGIT-240 · **Design:** `docs/publicdigit/reviews/2026-10-05-pbdigit-240-security-authority-design-proposal.md` (D-240-1 … D-240-4 accepted, `7d948969f`)
 
 ## Objective
 
@@ -65,3 +65,11 @@ Production code · checks #2–#7 · Q3 / 2B · tenancy of the density count · 
 - **Deviation from the plan (reported):** `store()`'s lifecycle denial site is **not reachable** through `slug.vote.store`. The route's `voting.active` middleware (`EnsureVotingActive`, no demo bypass) refuses a non-votable election first, even with the F-C2 demo flag. The planned "lifecycle → one record" test became a characterization of that fact: redirect to the dashboard, `store()` not entered (0 evaluations), 0 records, nothing consumed.
 - **Existing oracle tests a01–a06 and the two known-defect tests:** unchanged results after the `inlineOutcome()` restructure.
 - **No production change.**
+
+## GREEN (PO-authorised 2026-10-05)
+
+- Implemented per the contract above: `VotingSecurityAssessmentQuery`, `SecurityAssessment`, `assess()` in `TrustLegitimacySecurityVerdict` (bound to both ports), `verdictFor()` = `assess()->verdict`; `store()` consumes one assessment; inline chain, `securityVerdictOf()` and evaluator / resolver injection removed; oracle header records the frozen-reference (drift) rule.
+- `SecurityAssessmentConsolidationTest` 12/12 · `VotingSecurityVerdictAdapterTest` 11/11 · `ContextBoundaryFitnessTest` 10 + 2 incomplete (unchanged) · Phase 4, exit-safety, ballot-invariant, code-entry suites green.
+- 97-suite regression vs `5cbba6f15`: 579/334/19 → 583/333/19, no pass → fail (3 new E1 tests; 1 pre-existing `ArgumentCountError` on `new VoteController()` now passing because the constructor dependencies were removed).
+- Semantic review (PO request): the `User::findOrFail()` reload is behaviour-preserving for the production security path — see guide `final_cast/09` §Semantic note.
+- **Plan complete.** Checks #2–#6 untouched (Q3 / 2B).

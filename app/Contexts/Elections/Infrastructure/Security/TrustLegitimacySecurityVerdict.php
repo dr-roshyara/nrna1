@@ -4,7 +4,9 @@ namespace App\Contexts\Elections\Infrastructure\Security;
 
 use App\Application\Election\Security\ConstitutionalLegitimacyDecision;
 use App\Application\Election\Security\TrustPolicyEvaluator;
+use App\Contexts\Elections\Application\DTO\SecurityAssessment;
 use App\Contexts\Elections\Application\DTO\SecurityAttemptContext;
+use App\Contexts\Elections\Application\Ports\VotingSecurityAssessmentQuery;
 use App\Contexts\Elections\Application\Ports\VotingSecurityVerdictQuery;
 use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
 use App\Domain\Election\Security\LegitimacyOutcome;
@@ -14,11 +16,14 @@ use App\Models\Election;
 use App\Models\User;
 
 /**
- * TrustLegitimacySecurityVerdict — the one Security Verdict Authority (PBDIGIT-239 Stage A).
+ * TrustLegitimacySecurityVerdict — the one Security Verdict Authority (PBDIGIT-239 Stage A; full assessment
+ * PBDIGIT-240). It is now the ONLY place the Trust → Legitimacy chain is evaluated on the voting path: the
+ * code step (forEntry) and the final cast (VoteController::store) both consume it.
  *
  * INVARIANT: for every characterized valid SecurityAttemptContext, this adapter produces exactly the same
- * SecurityVerdict as the existing Phase-4 inline security assembly in VoteController::store(), with no evidence,
- * policy, threshold, tenant or exception semantics added or removed.
+ * outcome and SecurityVerdict as the former Phase-4 inline security assembly in VoteController::store() (frozen
+ * as the oracle in VotingSecurityVerdictAdapterTest), with no evidence, policy, threshold, tenant or exception
+ * semantics added or removed.
  *
  * The only transformations of that assembly: request()->ip() → $context->clientIp; request input
  * 'device_fingerprint' → $context->deviceFingerprint; the session id → $context->sessionId; the authenticated
@@ -30,14 +35,21 @@ use App\Models\User;
  * decision (a); on the voting path the session tenant is carried over from earlier steps).
  * Known defect kept: a non-empty ip_whitelist makes the evaluator throw — not fixed here.
  */
-final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery
+final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery, VotingSecurityAssessmentQuery
 {
     public function __construct(
         private readonly TrustPolicyEvaluator $trustEvaluator,
         private readonly ConstitutionalLegitimacyDecision $legitimacyDecision,
     ) {}
 
+    /** Derived from the one assessment — no separate evaluation (PBDIGIT-240, D-240-3). */
     public function verdictFor(SecurityAttemptContext $context): SecurityVerdict
+    {
+        return $this->assess($context)->verdict;
+    }
+
+    /** The one evaluation of the Trust → Legitimacy chain for this attempt (PBDIGIT-240, D-240-1). */
+    public function assess(SecurityAttemptContext $context): SecurityAssessment
     {
         $election = Election::withoutGlobalScopes()->findOrFail($context->electionId);
         $auth_user = User::findOrFail($context->userId);
@@ -66,7 +78,9 @@ final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery
             votesFromThisIp: $votesFromThisIp,
         );
 
-        return $this->verdictOf($this->legitimacyDecision->decide($trustEnvelope->result));
+        $outcome = $this->legitimacyDecision->decide($trustEnvelope->result);
+
+        return new SecurityAssessment($this->verdictOf($outcome), $outcome, $trustEnvelope);
     }
 
     /** Deferred / Investigate are a review requirement — a denial (Q2). Same mapping as securityVerdictOf(). */

@@ -36,10 +36,10 @@ use Illuminate\Support\Facades\Cache;
 use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
-use App\Application\Election\Security\ConstitutionalLegitimacyDecision;
-use App\Application\Election\Security\TrustPolicyEvaluator;
 use App\Contexts\Elections\Application\DTO\CastAttempt;
+use App\Contexts\Elections\Application\DTO\SecurityAttemptContext;
 use App\Contexts\Elections\Application\Ports\AuthoritativeBallotQuery;
+use App\Contexts\Elections\Application\Ports\VotingSecurityAssessmentQuery;
 use App\Contexts\Elections\Domain\Ballot\BallotRejection;
 use App\Contexts\Elections\Domain\Ballot\BallotValidator;
 use App\Contexts\Elections\Domain\Ballot\SubmittedBallot;
@@ -47,9 +47,7 @@ use App\Contexts\Elections\Domain\Ballot\ValidatedAnswer;
 use App\Contexts\Elections\Domain\Ballot\ValidatedBallot;
 use App\Contexts\Elections\Application\Services\VotingAuthorization;
 use App\Contexts\Elections\Domain\ValueObjects\CastDecisionReason;
-use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
 use App\Contexts\Elections\Infrastructure\Queries\EloquentVotingEntitlementQuery;
-use App\Domain\Election\Security\LegitimacyOutcome;
 
 class VoteController extends Controller
 {
@@ -68,10 +66,7 @@ class VoteController extends Controller
     /**
      * Constructor - Initialize voting process state
      */
-    public function __construct(
-        private TrustPolicyEvaluator $trustEvaluator,
-        private ConstitutionalLegitimacyDecision $legitimacyDecision,
-    )
+    public function __construct()
     {
         $this->in_code = '';
         $this->verify_final_vote = false;
@@ -1487,41 +1482,19 @@ private function trackSovereigntyDivergence(
         $auth_user = $this->getUser($request);
         $election = $this->getElection($request);
 
-        // PHASE C.3b: Constitutional Evidence Population (Real Elections)
-        // Query registered IP from user account (for real elections)
-        $registeredIpHash = null;
-        if ($auth_user && $auth_user->voting_ip) {
-            // Use same privacy policy instance for canonical hashing (determinism)
-            $privacyPolicy = app(\App\Domain\Election\Security\TrustEvidencePrivacyPolicy::class);
-            $registeredIpHash = $privacyPolicy->hashIp($auth_user->voting_ip, $election->id);
-        }
-
-        // Count participation from current IP in this election (election-scoped density)
-        // Integer-only deterministic comparison: no probabilistic elements
-        $currentIp = request()->ip();
-        $votesFromThisIp = \App\Models\Code::where('election_id', $election->id)
-            ->where('client_ip', $currentIp)
-            ->where('has_voted', true)
-            ->count();
-
-        // PHASE D.5: Constitutional Trust Evaluation
-        // Evaluate trust before any voting checks (parallel with legacy IP logic)
-        // Now includes registered IP hash and participation density evidence
-        $trustEnvelope = $this->trustEvaluator->evaluate(
-            election: $election,
-            user: $auth_user,
-            rawIp: request()->ip(),
-            rawFingerprint: $request->input('device_fingerprint'),
+        // PBDIGIT-240 (I3, D-240-1…3): ONE security assessment from the Security Verdict Authority —
+        // the same evidence, Trust → Legitimacy evaluation and outcome the former inline block produced.
+        // store() only reads it: the outcome for the D.0.3a gate and telemetry, the envelope for audit and
+        // divergence, the verdict for forCast(). It never re-evaluates the policy.
+        $securityAssessment = app(VotingSecurityAssessmentQuery::class)->assess(new SecurityAttemptContext(
+            userId: $auth_user->id,
+            electionId: $election->id,
+            clientIp: request()->ip(),
+            deviceFingerprint: $request->input('device_fingerprint'),
             sessionId: $request->session()->getId(),
-            registeredIpHash: $registeredIpHash,
-            votesFromThisIp: $votesFromThisIp,
-        );
-
-        // PHASE D.1: Derive constitutional outcome from trust evaluation
-        // Map VotingTrustResult to sovereign LegitimacyOutcome via exclusive resolver authority
-        $constitutionalOutcome = $this->legitimacyDecision->decide(
-            $trustEnvelope->result
-        );
+        ));
+        $trustEnvelope = $securityAssessment->envelope;
+        $constitutionalOutcome = $securityAssessment->outcome;
 
         // Log trust evaluation result for audit trail
         \Log::channel('voting_audit')->info('Trust evaluation completed in vote submission', [
@@ -1682,7 +1655,7 @@ private function trackSovereigntyDivergence(
                 ->forCast(new CastAttempt(
                     voterId: $auth_user->id,
                     electionId: $election->id,
-                    security: $this->securityVerdictOf($constitutionalOutcome),
+                    security: $securityAssessment->verdict,
                     codeExists: $freshCode !== null,
                     submittedCodeMatches: $freshCode !== null
                         && $this->verify_submitted_code($freshCode->code_to_open_voting_form, trim((string) $request->input('voting_code'))),
@@ -2013,20 +1986,6 @@ private function trackSovereigntyDivergence(
 
 
 
-}
-
-/**
- * The existing Trust → Legitimacy chain's outcome as the cast decision's security fact
- * (Phase 4 E3). Deferred / Investigate are a review requirement — a denial (Q2).
- */
-private function securityVerdictOf(LegitimacyOutcome $outcome): SecurityVerdict
-{
-    return match ($outcome) {
-        LegitimacyOutcome::Allowed => SecurityVerdict::Allowed,
-        LegitimacyOutcome::Denied  => SecurityVerdict::Denied,
-        LegitimacyOutcome::Deferred,
-        LegitimacyOutcome::Investigate => SecurityVerdict::ReviewRequired,
-    };
 }
 
 /** Shape of the submitted second code (rules and messages unchanged). */

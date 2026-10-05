@@ -18,7 +18,7 @@
 |---|---|---|---|---|
 | I1 | Commit iff Allowed ∧ ValidatedBallot ∧ CAS=1 ∧ exact content ∧ commit | 🟢 enforced + tested | — (final-cast rule) | PBDIGIT-242 |
 | I2 | Admission once, in VotingEntitlement | 🟢 | 🟡 transitional gates and unchecked entry paths remain | Q6 |
-| I3 | One security authority; no IP / device check outside it | 🔴 not met | 🔴 several IP checks outside it | Q3, PBDIGIT-240 design |
+| I3 | One security authority; no IP / device check outside it | 🟢 final-cast security assessment (PBDIGIT-240) | 🔴 checks #2–#6 outside it | Q3 (→ 2B) |
 | I4 | `forCast()` in the cast transaction | 🟢 | — | — |
 | I5 | Process facts are never authority | 🟢 in `forCast()` | 🟡 `isUserEligible()` gates on `can_vote_now` | R1-F6a, Q7 |
 | I6 | Atomic CAS on `has_voted` before the insert; aggregate cardinality | 🟢 | — | — |
@@ -69,12 +69,13 @@
 - **Invariant:** "One security authority; no IP / device check outside it."
 - **Enforcement point [S]:** `VotingSecurityVerdictQuery` + `TrustLegitimacySecurityVerdict` (Trust → Legitimacy) — consumed by `forEntry()` at the code step.
 - **Tests [D]:** `tests/Feature/Voting/VotingSecurityVerdictAdapterTest.php` — characterization (extraction oracle: the adapter gives the same verdict as the inline chain) · `CodeEntryAuthorizationTest.php` — enforcement at entry.
-- **Enforces / observes:** enforces one authority at the code step only.
+- **Update 2026-10-05 (PBDIGIT-240):** **I3: one security authority is enforced for the final-cast security assessment.** `VoteController::store()` consumes one `SecurityAssessment` from `VotingSecurityAssessmentQuery::assess()` (same adapter; `verdictFor()` derived); the inline chain is removed. Tests: `tests/Feature/Voting/SecurityAssessmentConsolidationTest.php` P1 / P1b / P2 (enforcement, property + dynamic: one evaluation through the authority), C1–C3 (characterization); `VotingSecurityVerdictAdapterTest` E1 (outcome + verdict equivalence with the frozen oracle). RED `c6490376c`, GREEN (commit carrying this update). **The remaining IP / security checks (#2–#6) remain outside this story and are deferred to Q3 / 2B.**
+- **Enforces / observes:** enforces one authority at the code step and the final cast; checks #2–#6 below still evaluate their own rules.
 - **Remaining gap [S]:**
-  - `VoteController::store()` keeps its own inline Trust → Legitimacy assessment (PBDIGIT-240, Stage C deferred `f5d920b80`).
+  - ~~`VoteController::store()` keeps its own inline Trust → Legitimacy assessment~~ — resolved by PBDIGIT-240.
   - IP checks outside the authority: `CodeController::verifyCode()` IP count (`max_use_clientIP`, default 7); `validateVotingIpWithResponse()` in `store()` (latent, PBDIGIT-234; now fails closed, PBDIGIT-243); `ValidateVotingIp` middleware; `vote_post_check()` — off the final cast (demo-only at `store()`), but **on the real path at step 4**: `VoteController::verify()` calls it and it counts voted codes from the IP against `config('app.max_use_clientIP')` for real elections (corrected 2026-10-05, D-240-4; PBDIGIT-240 proposal §Q5); `ElectionVotingController::resolveIpBlock` (counts `step_1_ip`, never written — VE-15).
-- **Human decision:** Q3 (policy boundary → 2B); the PBDIGIT-240 design choice (verdict-only vs richer assessment, telemetry owner).
-- **Stories / commits:** PBDIGIT-239 Stage A `0578091f8`, Stage B `d90131361` · PBDIGIT-240 (open) · PBDIGIT-234 (open).
+- **Human decision:** Q3 (policy boundary → 2B). The PBDIGIT-240 design choice is decided (D-240-1 … 4, `7d948969f`).
+- **Stories / commits:** PBDIGIT-239 Stage A `0578091f8`, Stage B `d90131361` · PBDIGIT-240 RED `c6490376c`, GREEN · PBDIGIT-234 (open).
 
 ## I4 — `forCast()` inside the cast transaction
 
