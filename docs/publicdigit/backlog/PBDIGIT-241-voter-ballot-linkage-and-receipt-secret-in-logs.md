@@ -1,0 +1,20 @@
+# PBDIGIT-241 — Logs link a voter to a ballot and expose the receipt secret (F-V6 / F-V7)
+
+**Type:** Defect — **constitutional anonymity** (not ordinary logging cleanup) · **Epic:** `PBDIGIT-EPIC-05` Voting · **Created:** 2026-10-05
+**Found by:** real-election review `docs/publicdigit/reviews/2026-10-05-real-election-code-and-vote-controller-review.md` (F-V6, F-V7); Phase 1 K8 characterization (receipt secret logged — pinned as known gap)
+**Raised by:** `claude-code-session:9e4925bb-4151-4185-9e9c-5831184e54eb` (self-declared, not attestable)
+**Existing-story search (freeze rule):** PBDIGIT-223 … 233 (Phase 1) cover A5 (computable `vote_hash`) and A6 (step-5 record stores the vote id) — accepted interim risks for Phase 2.0; VE-06 / PBDIGIT-238 removed plaintext *verification codes* from CodeController logs. No story covers the receipt secret or single log entries pairing a voter with a ballot in VoteController. These findings post-date the A5 / A6 acceptance and are **not** covered by it.
+
+| | |
+|---|---|
+| **Status** | 🔴 **OPEN — RED written** (`tests/Feature/Voting/VoterBallotLogLinkageTest.php`: L1, L2, L3 RED; L4 guard green). GREEN not authorised. |
+| **Invariant violated** | *Participation knowledge without ballot knowledge.* Anyone with log access can (a) re-create a voter's receipt and open the ballot, and (b) read a user id next to a ballot identifier in one entry. |
+| **Findings (FACT [S], VoteController.php)** | **F-V6a** `store()` ≈1786 `Log::info('private_key', ['user_id' => $private_key])` — the full 32-hex receipt secret · **F-V6b** `store()` ≈1876 `'receipt_code_prefix' => substr($receiptCodeString, 0, 20)` — the first 20 of the 32 secret characters, in the same entry as `vote_id` · **F-V7** `confirmCorrect()` ≈4328 `'receipt_code' => $request->receipt_code` (= `secret_voteId`) together with `'user_id' => auth()->id()` · **F-V7 sibling** `submit_code_to_view_vote()` ≈3455 `'user_id'` together with `'vote_id'` |
+| **Scope (RED / GREEN)** | the receipt secret (full and any 16-character prefix) never appears in a log entry; no single log entry contains both the acting user's id and the ballot's vote id / receipt — for the final cast, `confirmCorrect()`, `submit_code_to_view_vote()`. GREEN removes only those values from the log contexts. |
+| **Attached decision — A8 (PO 2026-10-05: attached here, not asserted in RED)** | `store()` ≈1913–1929 writes `receipt_hash = sha256(vote_id . user_id . election_id)` to the election audit log (with user and IP) and to the voter's own audit file. Not directly reversible, but **computable**: with the audit trail and the `votes` table the hash can be recomputed for every vote id of the election → deterministic voter ↔ ballot link (same class as A5). Decision required: remove it, or keep it as a governed dispute-resolution capability (as discussed for A5). Not removed silently. |
+| **Scope note (PO 2026-10-05)** | L3 `submit_code_to_view_vote()` stays in scope although it runs after voting: the entry is a permanent server-side record "user X viewed vote Y", and the viewer need not be the voter (Phase 1 K2). |
+| **Known dependency** | Phase 1 `BallotAnonymityCharacterizationTest::test_k8_…` asserts the `private_key` entry exists (known gap). GREEN makes that assertion fail → retire / invert it with PO approval at GREEN. |
+| **Recorded, not in scope (decision needed)** | other single-entry linkages pinned by K8: vote id + `voter_slug_id` (slug → user), vote id + client IP (A1); cross-entry correlation within one request (user id and vote id in separate entries); the receipt stored in clear in `receipt_codes` (database, A8-class). |
+| **Out of scope** | cleaning historical logs (operations / retention decision) · A5 / A6 · receipt design · any other logging |
+
+**Traceability:** review F-V6, F-V7 · Phase 1 K2, K3, K8 · ADR_20261005_0950 I8 (no authorization outcome with a ballot-side identifier) · interim anonymity rule (roadmap §2a).
