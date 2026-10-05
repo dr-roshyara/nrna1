@@ -11,7 +11,8 @@
 | **Q3-D3 — `MAX_USE_IP_ADDRESS`** | **APPROVED.** Not an authoritative runtime Security Policy source. It may remain temporarily as a migration / creation-time default; after policy creation it must not override the election's frozen Security Policy. No runtime change authorised in this step. |
 | **Q3-D6 — registered-network and device binding** | **Not retired.** P-BINDING and P-DEVICE are classified as **candidate Security Policies — currently inert — implementation deferred.** No `users.voting_ip`, no migration, no device-binding wiring, no middleware change, no PBDIGIT-234 change; the storage / identity decision stays separate. |
 | **Q3-D7 — tenant scope of the density count** | **OPEN.** Not changed in this step. **2B must resolve the scope question before retiring the cross-tenant IP counts** (#3, #5). |
-| Q3-D4, Q3-D5 | Open (start page; whitelist semantics). |
+| **Q3-D5 — whitelist semantics** | **DECIDED (PO 2026-10-05): raw CIDR.** `ip_whitelist` holds raw CIDR ranges / exact IPs; the Security Verdict Authority matches the request's raw IP against them **inside the authority** and passes only the fact *whitelisted yes / no* into the evidence (the raw IP stays out of envelope, snapshot and security event). Implemented by 2B-1 (PBDIGIT-246). |
+| Q3-D4 | Open (start page). |
 **Placement:** `doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0)
 **Repository state:** HEAD `62c45b272` (PBDIGIT-240 resolved)
 **Author:** `claude-code-session:9e4925bb-4151-4185-9e9c-5831184e54eb` (self-declared, not attestable). Evidence and recommendations only; every decision is the PO's / ARB's.
