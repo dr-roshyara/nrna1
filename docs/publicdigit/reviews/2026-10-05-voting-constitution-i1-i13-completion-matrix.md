@@ -24,7 +24,7 @@
 | I6 | Atomic CAS on `has_voted` before the insert; aggregate cardinality | 🟢 | — | — |
 | I7 | Denial or error writes no vote, `has_voted` false | 🟢 every known exit tested | — | — |
 | I8 | No auth / security outcome logged with a ballot-side id | 🟡 four contexts fixed and tested | 🔴 known linkages remain | A8, A1 |
-| I9 | Security policy immutable from ReadyForVoting | 🔴 not implemented | 🔴 | Q3 |
+| I9 | Security policy immutable from ReadyForVoting | 🟢 for the current four-field boundary (PBDIGIT-244) | 🟡 complete policy surface pending | Q3 |
 | I10 | Decisions do not modify the Vote nor add voter-derived values | 🟡 decisions comply; persistence has open items | 🟡 | A5, A6 |
 | I11 | Transport data untrusted | 🟢 | 🟡 only the final cast is the trust point | PBDIGIT-242 |
 | I12 | Persistence accepts only a ValidatedBallot | 🟢 real path | — (demo out of scope, S2) | — |
@@ -131,12 +131,13 @@
 ## I9 — security policy immutable from ReadyForVoting
 
 - **Invariant:** "The security policy is immutable from ReadyForVoting (like the admission policy) — the policy boundary itself is Q3."
-- **Enforcement point [S]:** **none found.** `ElectionSettingsController::update()` checks the `manageSettings` policy (active Chief / Deputy) and an optimistic lock; `UpdateElectionSettingsRequest` accepts `ip_restriction_*`, `ip_whitelist`, `voter_verification_mode` with no lifecycle check; `isLocked` is passed to the page only. (The admission policy, by contrast, has a two-layer lock — PBDIGIT-213 C2.)
-- **Tests:** none.
-- **Enforces / observes:** —
-- **Remaining gap:** not implemented.
+- **Update 2026-10-05 (PBDIGIT-244):** at `5cbba6f15` no enforcement existed (source reading, then proven by RED `58b0ec769`: 9/9 locked-state changes stored). Status now: **enforced for the currently defined four-field security-policy boundary; Q3 open for completeness of the policy surface.**
+- **Enforcement point [S]:** `Election::SECURITY_POLICY_FIELDS` (`ip_restriction_enabled`, `ip_restriction_max_per_ip`, `ip_whitelist`, `voter_verification_mode`). Application layer: `ElectionSettingsController::update()` refuses the whole PATCH on a real change to a listed field when `ElectionLifecycle::isLocked()` (`SecurityPolicyLocked`). Model guard: `Election::booted()` `saving` → `\LogicException`. Same two-layer pattern as the admission policy (PBDIGIT-213 C2).
+- **Tests [D]:** `tests/Feature/Election/SecurityPolicyLifecycleLockTest.php` 26/26 — enforcement (editable before ReadyForVoting, refused from it, model guard, no false refusal, whole-PATCH refusal).
+- **Enforces / observes:** enforces, at both layers, for the four listed fields.
+- **Remaining gap:** the policy surface itself — other settings (e.g. `max_votes_per_ip`, `network_binding_strategy`) are not covered until Q3 decides.
 - **Human decision:** Q3 (which settings form the security policy).
-- **Stories / commits:** none.
+- **Stories / commits:** PBDIGIT-244 RED `58b0ec769` · GREEN (commit carrying this update).
 
 ## I10 — decisions stay on the voter side
 

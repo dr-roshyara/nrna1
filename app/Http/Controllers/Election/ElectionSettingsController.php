@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Election;
 
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Contexts\Elections\Application\Ports\AdmissionImpactQuery;
+use App\Contexts\Elections\Domain\Exceptions\SecurityPolicyLocked;
 use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Election\UpdateElectionSettingsRequest;
@@ -63,6 +64,18 @@ class ElectionSettingsController extends Controller
         // Optimistic locking — reject stale writes
         $this->checkOptimisticLock($request, $election);
 
+        // PBDIGIT-244 I9: the security policy is immutable from ReadyForVoting. A real change
+        // refuses the whole PATCH (nothing written); the Election model guard enforces the same rule.
+        $securityPolicyLocked = ElectionLifecycle::of($election)->isLocked();
+        try {
+            $this->assertSecurityPolicyMutable($election, $request->validated(), $securityPolicyLocked);
+        } catch (SecurityPolicyLocked) {
+            return back()->withErrors([
+                $this->changedSecurityPolicyFields($election, $request->validated())[0]
+                    => 'The security policy cannot be changed once the election is ready for voting.',
+            ]);
+        }
+
         // Active election guard — require confirmation when votes exist
         if ($this->shouldConfirmActiveChanges($election, $request)) {
             return back()->with('warning',
@@ -70,6 +83,12 @@ class ElectionSettingsController extends Controller
         }
 
         $validated = $request->validated();
+
+        // Locked election, security policy unchanged: never write those fields, so a merely
+        // re-typed value (e.g. ip_whitelist null re-sent as []) cannot trip the model guard.
+        if ($securityPolicyLocked) {
+            $validated = array_diff_key($validated, array_flip(Election::SECURITY_POLICY_FIELDS));
+        }
 
         // Detect changes for audit trail
         $excludeKeys = ['settings_version', 'confirmed_active_changes', 'agreed_to_settings'];
@@ -101,6 +120,44 @@ class ElectionSettingsController extends Controller
         return $model::withoutGlobalScopes()
             ->where('election_id', $election->id)
             ->exists();
+    }
+
+    /**
+     * PBDIGIT-244 I9: refuse an effective security-policy change on a locked election.
+     *
+     * @throws SecurityPolicyLocked
+     */
+    private function assertSecurityPolicyMutable(Election $election, array $validated, bool $locked): void
+    {
+        if ($locked && $this->changedSecurityPolicyFields($election, $validated) !== []) {
+            throw SecurityPolicyLocked::forElection($election->id);
+        }
+    }
+
+    /**
+     * Security-policy fields whose submitted value differs from the stored one, compared on
+     * normalised values: booleans and integers by value, ip_whitelist null == [] (PO 2026-10-05).
+     *
+     * @return list<string>
+     */
+    private function changedSecurityPolicyFields(Election $election, array $validated): array
+    {
+        $normalise = fn (string $field, mixed $value): string => match ($field) {
+            'ip_restriction_enabled'    => (bool) $value ? '1' : '0',
+            'ip_restriction_max_per_ip' => $value === null ? '' : (string) (int) $value,
+            'ip_whitelist'              => json_encode(array_values((array) ($value ?? []))),
+            default                     => (string) $value,
+        };
+
+        $changed = [];
+        foreach (Election::SECURITY_POLICY_FIELDS as $field) {
+            if (array_key_exists($field, $validated)
+                && $normalise($field, $election->$field) !== $normalise($field, $validated[$field])) {
+                $changed[] = $field;
+            }
+        }
+
+        return $changed;
     }
 
     /**

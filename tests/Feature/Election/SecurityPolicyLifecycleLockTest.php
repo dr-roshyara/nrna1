@@ -9,6 +9,7 @@ use App\Models\ElectionOfficer;
 use App\Models\Organisation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
@@ -101,8 +102,13 @@ class SecurityPolicyLifecycleLockTest extends TestCase
             ]),
         };
 
-        // Known baseline, written directly (fixture only — not through the endpoint under test).
-        $election->forceFill(self::BASELINE)->save();
+        // Known baseline, written with the query builder (fixture only — not through the endpoint
+        // under test, and past the model guard, which refuses security-policy writes on a locked
+        // election; PO-approved fixture adaptation 2026-10-05).
+        DB::table('elections')->where('id', $election->id)->update(array_merge(self::BASELINE, [
+            'ip_whitelist'           => json_encode(self::BASELINE['ip_whitelist']),
+            'no_vote_option_enabled' => false,
+        ]));
 
         $election = $election->fresh();
         $this->assertSame($state, ElectionLifecycle::of($election)->state(), 'Precondition: derived lifecycle state');
@@ -197,5 +203,83 @@ class SecurityPolicyLifecycleLockTest extends TestCase
         $this->assertNotSame(500, $response->status());
         $this->assertEquals($this->baselineOf($component), $this->stored($election, $component), "{$component}: the stored value is unchanged (I9)");
         $response->assertSessionMissing('success');
+    }
+
+    // ── GREEN additions (PBDIGIT-244 plan §Tests) ───────────────────────────
+
+    /** @return array<string, array{string}> */
+    public static function components(): array
+    {
+        return array_map(fn (string $c) => [$c], array_combine(array_keys(self::CHANGES), array_keys(self::CHANGES)));
+    }
+
+    /** @dataProvider components */
+    public function test_the_model_refuses_a_security_policy_change_on_a_locked_election(string $component): void
+    {
+        $election = $this->electionIn(ElectionLifecycleState::VotingActive);
+
+        try {
+            $election->update(self::CHANGES[$component]);
+            $this->fail("{$component}: the model guard must refuse the change");
+        } catch (\LogicException $e) {
+            $this->assertStringContainsString('security policy', $e->getMessage());
+        }
+
+        $this->assertEquals($this->baselineOf($component), $this->stored($election, $component), "{$component}: nothing written");
+    }
+
+    /** @dataProvider components */
+    public function test_the_model_accepts_a_security_policy_change_on_an_unlocked_election(string $component): void
+    {
+        $election = $this->electionIn(ElectionLifecycleState::SetupAdministration);
+
+        $election->update(self::CHANGES[$component]);
+
+        $this->assertEquals(self::CHANGES[$component], $this->stored($election, $component));
+    }
+
+    public function test_a_locked_election_saves_other_settings_when_the_security_policy_is_resubmitted_unchanged(): void
+    {
+        $election = $this->electionIn(ElectionLifecycleState::VotingActive);
+        // Stored whitelist NULL, re-sent as [] — the same value (PO 2026-10-05).
+        DB::table('elections')->where('id', $election->id)->update(['ip_whitelist' => null]);
+        $election = $election->fresh();
+
+        $response = $this->actingAs($this->chief($election))
+            ->withSession(['current_organisation_id' => $this->org->id])
+            ->from(route('elections.settings.edit', $election->slug))
+            ->patch(route('elections.settings.update', $election->slug), array_merge(self::BASELINE, [
+                'selection_constraint_type' => 'any',
+                'settings_version'          => (int) $election->settings_version,
+                'no_vote_option_enabled'    => true,
+            ]));
+
+        $response->assertSessionHas('success');
+        $fresh = $election->fresh();
+        $this->assertTrue((bool) $fresh->no_vote_option_enabled, 'the non-security setting is saved');
+        $this->assertNull($fresh->ip_whitelist, 'the unchanged security field is not rewritten');
+        $this->assertSame('none', $fresh->voter_verification_mode);
+    }
+
+    public function test_a_refused_security_change_writes_nothing_from_the_same_patch(): void
+    {
+        $election = $this->electionIn(ElectionLifecycleState::VotingActive);
+
+        $response = $this->actingAs($this->chief($election))
+            ->withSession(['current_organisation_id' => $this->org->id])
+            ->from(route('elections.settings.edit', $election->slug))
+            ->patch(route('elections.settings.update', $election->slug), array_merge(self::BASELINE, [
+                'selection_constraint_type' => 'any',
+                'settings_version'          => (int) $election->settings_version,
+                'no_vote_option_enabled'    => true,
+                'voter_verification_mode'   => 'ip_only',
+            ]));
+
+        $response->assertSessionHasErrors('voter_verification_mode');
+        $response->assertSessionMissing('success');
+        $fresh = $election->fresh();
+        $this->assertSame('none', $fresh->voter_verification_mode, 'the security field is unchanged');
+        $this->assertFalse((bool) $fresh->no_vote_option_enabled, 'the whole PATCH is refused — no other field written');
+        $this->assertSame((int) $election->settings_version, (int) $fresh->settings_version, 'settings version unchanged');
     }
 }

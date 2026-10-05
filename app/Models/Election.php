@@ -57,6 +57,16 @@ class Election extends Model
         'general', 'misconduct', 'emergency', 'investigation', 'other', // legacy aliases
     ];
 
+    // ── Security policy (I9, PBDIGIT-244) ────────────────────────────────────────
+    // Immutable from ReadyForVoting (ADR_20261005_0950 I9). Interim boundary per PO
+    // 2026-10-05 — Q3 decides the authoritative set; change it here only.
+    const SECURITY_POLICY_FIELDS = [
+        'ip_restriction_enabled',
+        'ip_restriction_max_per_ip',
+        'ip_whitelist',
+        'voter_verification_mode',
+    ];
+
     public function getRouteKeyName(): string
     {
         return 'slug';
@@ -2303,6 +2313,15 @@ class Election extends Model
                     && \App\Application\Election\Facades\ElectionLifecycle::of($election)->isLocked()) {
                     throw new \LogicException(
                         'The voter admission policy cannot change once the election is ready for voting.'
+                    );
+                }
+
+                // PBDIGIT-244 I9 (defence in depth): the security policy is immutable once
+                // the election is locked. ElectionSettingsController refuses the change first.
+                if ($election->isDirty(self::SECURITY_POLICY_FIELDS)
+                    && \App\Application\Election\Facades\ElectionLifecycle::of($election)->isLocked()) {
+                    throw new \LogicException(
+                        'The security policy cannot change once the election is ready for voting.'
                     );
                 }
             }

@@ -9,7 +9,17 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-05 *(additive — the **final-cast exit safety (PBDIGIT-243)** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **security policy lifecycle lock (PBDIGIT-244)** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 night, **PBDIGIT-244 RESOLVED — I9 enforced for the four-field boundary**)
+
+| | |
+|---|---|
+| ✅ **PBDIGIT-244** (I9) | RED `58b0ec769` · GREEN: `Election::SECURITY_POLICY_FIELDS` (`ip_restriction_enabled`, `ip_restriction_max_per_ip`, `ip_whitelist`, `voter_verification_mode`) locked from ReadyForVoting — application refusal (whole PATCH) + model guard. `SecurityPolicyLifecycleLockTest` 26/26; regression: only the `VotingSecurityVerdictAdapterTest` whitelist fixture changed, repaired fixture-only. Guide `election/settings/01` |
+| 📊 **Matrix** | I9 → 🟢 for the current boundary, 🟡 policy surface (Q3). I3 remains 🔴 (PBDIGIT-240) |
+| 🧭 **Next** | PO architectural review → PBDIGIT-240 / I3 (decision first: verdict-only vs richer assessment, telemetry owner) · Q3 · anonymity decisions A8 / A5 / A6 · D6 · PBDIGIT-242 · D4.1 |
 
 ---
 

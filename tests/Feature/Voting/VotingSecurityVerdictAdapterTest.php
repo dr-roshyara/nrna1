@@ -229,7 +229,10 @@ class VotingSecurityVerdictAdapterTest extends TestCase
     {
         // KNOWN DEFECT CHARACTERIZATION ONLY. Pinned so that Stage A cannot change it silently; fixing it is a separate,
         // decided item — when it is fixed, this test is replaced, not "kept green".
-        $this->election->forceFill(['ip_whitelist' => ['10.77.0.0/16']])->save();
+        // Fixture written with the query builder: the election is voting, and the PBDIGIT-244 model guard
+        // (I9) refuses security-policy writes on a locked election (PO-approved fixture adaptation 2026-10-05).
+        \Illuminate\Support\Facades\DB::table('elections')->where('id', $this->election->id)
+            ->update(['ip_whitelist' => json_encode(['10.77.0.0/16'])]);
         $election = $this->election->fresh();
         $user = $this->voter();
         $context = $this->contextFor($user, $election);
