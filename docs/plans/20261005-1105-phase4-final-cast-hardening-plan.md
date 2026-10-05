@@ -189,7 +189,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - [x] PO approval to start E1 RED
 - [x] Baseline regression run (§6.1) — `d4d6b2890`, accepted
 - [x] P4-D4 retired (option C), PBDIGIT-234 recorded
-- [ ] E1: R1 RED → report → STOP · GREEN → report → STOP
+- [x] E1: R1 RED → report → STOP · GREEN → report → STOP — **accepted, committed `7aa33df68`**; PBDIGIT-232 RESOLVED; guide `developer_guide/election/final_cast/01_e1_fail_closed_exit.md`
 - [ ] E2: R2/R2a RED → STOP · GREEN → STOP
 - [ ] E3: R3 (+R5 part) RED → STOP · GREEN → STOP
 - [ ] E4: R4 (+R5, R6) RED → STOP · GREEN → STOP
@@ -209,6 +209,8 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 
 - 2026-10-05 (rev 3): baseline §6.1 run at `d4d6b2890` (29 files, accepted by the PO; pre-existing failures stay baseline failures and are not fixed in Phase 4). R1 first run: R1-A ⨯ (500), R1-B ✓, R1-C ✓, IP-binding test invalid (`users.voting_ip` column missing), R1-D ⨯ (500). PO chose C: P4-D4 retired, contract #4 removed, PBDIGIT-234 recorded.
 
+- 2026-10-05 (E1): R1 RED → GREEN 4/4 (`VoteController`: `?string $userId`, `catch (\Throwable)`, `failCastClosed()`); regression vs `d4d6b2890`: 0 previously passing tests fail (Phase 1 G2 known-gap test retired, replaced by R1-A); PO accepted; committed `7aa33df68`. Side effect recorded: a missing `Code` now yields the generic error instead of 500 (PBDIGIT-219 still resolved only at E3).
+
 ## 12 · Story-status changes (planned — applied only at the GREEN acceptance of the named group)
 
 | Story | Change | When |
@@ -221,4 +223,4 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 | PBDIGIT-231, 223–229 | unchanged | — |
 
 ## Next actions
-R1 RED report (4 contracts) → PO review → E1 GREEN only on separate approval.
+E2 RED (R2 unit + R2a architecture) → RED report → STOP; E2 GREEN only on separate approval.
