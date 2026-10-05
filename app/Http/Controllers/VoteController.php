@@ -1788,6 +1788,41 @@ private function trackSovereigntyDivergence(
             ]);
              $vote_hashed_key =$hashed_key;
 
+            // ── Phase 4 E4 (PBDIGIT-230): atomic participation consumption — the ONLY
+            //    authoritative "already voted" (real elections; demo unchanged — Q4).
+            //    Compare-and-set immediately before the vote insert, after every refusal /
+            //    direct-return path, inside the cast transaction; writes has_voted only.
+            //    Zero rows: participation already consumed — refuse, no vote. ──
+            if ($election->type === 'real') {
+                $consumed = DB::table('codes')
+                    ->where('id', $freshCode->id)
+                    ->where('has_voted', false)
+                    ->update([
+                        'has_voted' => true,
+                    ]);
+
+                if ($consumed !== 1) {
+                    Log::channel('voting_audit')->warning(
+                        'Final cast refused: participation already consumed',
+                        [
+                            'user_id' => $auth_user->id,
+                            'election_id' => $election->id,
+                        ]
+                    );
+
+                    $this->failCastClosed(
+                        $outerTransactionLevel,
+                        $lock,
+                        $lockAcquired
+                    );
+
+                    return redirect()->route('dashboard')
+                        ->withErrors([
+                            'vote' => 'You have already voted in this election. Each voter can only vote once.'
+                        ]);
+                }
+            }
+
             // Save vote using election-aware factory service
             $this->save_vote($vote_data, $vote_hashed_key, $election, $auth_user, $private_key);
 

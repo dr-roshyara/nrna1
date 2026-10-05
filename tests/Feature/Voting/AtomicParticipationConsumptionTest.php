@@ -168,6 +168,36 @@ class AtomicParticipationConsumptionTest extends TestCase
         );
     }
 
+    // ── R4-4: a failure AFTER a successful consumption rolls the consumption back ──
+
+    public function test_r4_4_a_failure_after_a_successful_consumption_rolls_back_has_voted_and_the_vote(): void
+    {
+        [$voter, $slug, $code] = $this->voterReadyToCast();
+        $this->recordQueries();
+
+        // Malformed ballot session (no regional selections): save_vote() throws after its
+        // first vote insert (Phase 1 B2 setup) — i.e. after the consumption succeeded.
+        $response = $this->actingAs($voter)
+            ->withSession([
+                'current_organisation_id' => $this->org->id,
+                $code->session_name       => ['national_selected_candidates' => [], 'no_vote_posts' => []],
+            ])
+            ->post(route('slug.vote.store', ['vslug' => $slug->slug]), ['voting_code' => $code->code_to_open_voting_form]);
+
+        // Precondition: the consumption ran and succeeded (the cast only continues to the
+        // vote insert on exactly one affected row), and the failure came after it.
+        $consumptions = $this->conditionalConsumptions();
+        $insert = $this->firstVoteInsert();
+        $this->assertCount(1, $consumptions, 'the conditional consumption ran');
+        $this->assertNotNull($insert, 'the cast continued to the vote insert — the consumption affected one row');
+        $this->assertLessThan($insert, $consumptions[0], 'the failure happened after the consumption');
+
+        // The whole cast transaction is rolled back (E1 failCastClosed()).
+        $this->assertNotSame(500, $response->status());
+        $this->assertFalse((bool) $code->fresh()->has_voted, 'has_voted is back to false — the consumption was rolled back');
+        $this->assertSame(0, $this->votes(), 'no vote remains');
+    }
+
     // ── R5: no new correlation through the consumption ──────────────────────
 
     public function test_r5_the_consumption_update_writes_has_voted_only(): void
