@@ -4,8 +4,11 @@ namespace App\Contexts\Elections\Application\Services;
 
 use App\Contexts\Elections\Application\DTO\CastAttempt;
 use App\Contexts\Elections\Application\DTO\CastDecision;
+use App\Contexts\Elections\Application\DTO\EntryAttempt;
+use App\Contexts\Elections\Application\DTO\EntryAuthorization;
 use App\Contexts\Elections\Application\Ports\VotingEntitlementQuery;
 use App\Contexts\Elections\Domain\ValueObjects\CastDecisionReason;
+use App\Contexts\Elections\Domain\ValueObjects\EntryAuthorizationReason;
 use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
 
 /**
@@ -18,7 +21,10 @@ use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
  *   3. process     — CodeMissing → AlreadyVotedPreCheck → CodeMismatch → CodeStepIncomplete
  *                    → BallotMissing (E2-D1; changing it needs an architectural decision).
  * It never decides "already voted" authoritatively — only the compare-and-set does (E4).
- * forEntry() is Phase 5.
+ *
+ * forEntry(): may this voter enter or continue the voting process now? (ADR §3.1, PBDIGIT-239)
+ * Authorization only, first failure wins: E1 entitlement decide() exactly once → E2 the security verdict
+ * carried by the attempt (supplied by the one Security Verdict Authority; never obtained here).
  */
 final class VotingAuthorization
 {
@@ -29,6 +35,20 @@ final class VotingAuthorization
     public function forCast(CastAttempt $attempt): CastDecision
     {
         return new CastDecision($this->firstFailure($attempt) ?? CastDecisionReason::Allowed);
+    }
+
+    public function forEntry(EntryAttempt $attempt): EntryAuthorization
+    {
+        $entitlement = $this->entitlement->decide($attempt->voterId, $attempt->electionId);
+        if (! $entitlement->isEntitled()) {
+            return new EntryAuthorization(EntryAuthorizationReason::fromEntitlement($entitlement));
+        }
+
+        return new EntryAuthorization(match ($attempt->security) {
+            SecurityVerdict::Denied         => EntryAuthorizationReason::SecurityDenied,
+            SecurityVerdict::ReviewRequired => EntryAuthorizationReason::SecurityReviewRequired,
+            SecurityVerdict::Allowed        => EntryAuthorizationReason::Allowed,
+        });
     }
 
     private function firstFailure(CastAttempt $attempt): ?CastDecisionReason

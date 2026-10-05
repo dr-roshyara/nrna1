@@ -7,6 +7,12 @@ use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Code;
 use App\Models\Election;
+use App\Contexts\Elections\Application\DTO\EntryAttempt;
+use App\Contexts\Elections\Application\DTO\SecurityAttemptContext;
+use App\Contexts\Elections\Application\Ports\VotingSecurityVerdictQuery;
+use App\Contexts\Elections\Application\Services\VotingAuthorization;
+use App\Contexts\Elections\Domain\ValueObjects\EntryAuthorizationReason;
+use App\Contexts\Elections\Infrastructure\Queries\EloquentVotingEntitlementQuery;
 use App\Services\VoterProgressService;
 use App\Services\VoterStepTrackingService;
 use App\Services\VotingServiceFactory;
@@ -63,6 +69,12 @@ class CodeController extends Controller
         // Bind organisation context so BelongsToTenant scope resolves correctly
         // for all Code queries within this request.
         session(['current_organisation_id' => $election->organisation_id]);
+
+        // Entry authorization (ADR §3.1, PBDIGIT-239): fresh decision before any Code access, code
+        // creation / regeneration or e-mail. Runs after the tenant binding above (decision (a)).
+        if ($refusal = $this->refuseEntry($request, $user, $election)) {
+            return $refusal;
+        }
 
         // Layer 0: Membership check (defense-in-depth — middleware is primary gate).
         // Skip when the voter-slug middleware stack has already verified eligibility;
@@ -230,6 +242,10 @@ class CodeController extends Controller
         $election = $this->getElection($request);
         $voterSlug = $request->attributes->get('voter_slug');
 
+        // Request context, not authorization: bind the election's organisation as tenant so that the
+        // tenant-scoped security evidence below does not depend on an earlier request (PBDIGIT-239, (ii)).
+        session(['current_organisation_id' => $election->organisation_id]);
+
         // Layer 0: Membership check (defense-in-depth).
         // Skip for voter-slug requests — middleware already verified eligibility.
         if (! $voterSlug && $redirect = $this->ensureVoterMembership($election, $user)) {
@@ -257,6 +273,12 @@ class CodeController extends Controller
         }
 
         $submittedCode = trim(strtoupper($request->input('voting_code')));
+
+        // Entry authorization (ADR §3.1, PBDIGIT-239): after basic input validation, before Code lookup
+        // and code verification.
+        if ($refusal = $this->refuseEntry($request, $user, $election)) {
+            return $refusal;
+        }
 
         // Check basic eligibility
         if (!$this->isUserEligible($user, $request)) {
@@ -687,6 +709,57 @@ class CodeController extends Controller
             }
         }
         return $election;
+    }
+
+    /**
+     * Entry authorization at the code step (ADR_20261005_0950 §3.1, PBDIGIT-239).
+     *
+     * E2 first, by design: the security fact is obtained from the ONE Security Verdict Authority and handed
+     * to VotingAuthorization::forEntry(), which adds E1 (fresh entitlement decide()) — forEntry() never
+     * obtains or manufactures the verdict. Returns null when allowed; otherwise a refusal. Any \Throwable
+     * fails closed with a generic refusal (never HTTP 500).
+     */
+    private function refuseEntry(Request $request, User $user, Election $election)
+    {
+        try {
+            $fingerprint = $request->input('device_fingerprint');
+            $verdict = app(VotingSecurityVerdictQuery::class)->verdictFor(new SecurityAttemptContext(
+                userId: $user->id,
+                electionId: $election->id,
+                clientIp: (string) $request->ip(),
+                deviceFingerprint: is_string($fingerprint) ? $fingerprint : null,
+                sessionId: (string) $request->session()->getId(),
+            ));
+
+            $authorization = (new VotingAuthorization(app(EloquentVotingEntitlementQuery::class))) // fresh (ADR §3.5)
+                ->forEntry(new EntryAttempt(voterId: $user->id, electionId: $election->id, security: $verdict));
+        } catch (\Throwable $e) {
+            Log::error('Code step: entry authorization failed — refused (fail closed)', [
+                'user_id'     => $user->id,
+                'election_id' => $election->id,
+                'error'       => get_class($e),
+            ]);
+
+            return $this->redirectToDashboard('We could not confirm your access to this election right now. Please try again later.');
+        }
+
+        if ($authorization->isAllowed()) {
+            return null;
+        }
+
+        Log::warning('Code step refused by entry authorization', [
+            'user_id'     => $user->id,
+            'election_id' => $election->id,
+            'reason'      => $authorization->reason->value,
+        ]);
+
+        return $this->redirectToDashboard(match ($authorization->reason) {
+            EntryAuthorizationReason::ElectionNotVotable     => 'Voting is not open for this election.',
+            EntryAuthorizationReason::NotAdmitted            => 'You are not yet admitted to vote in this election.',
+            EntryAuthorizationReason::SecurityDenied         => 'Your access to voting cannot be granted based on constitutional verification. Please contact the election committee.',
+            EntryAuthorizationReason::SecurityReviewRequired => 'Your access to voting requires additional verification. Please contact the election committee.',
+            default                                          => 'You are not eligible to vote in this election.',
+        });
     }
 
     private function isUserEligible(User $user, ?Request $request = null): bool
