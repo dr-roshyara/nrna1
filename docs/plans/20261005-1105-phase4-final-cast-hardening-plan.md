@@ -213,6 +213,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 
 - 2026-10-05 (E2 RED): `tests/Unit/Contexts/Elections/VotingAuthorizationForCastTest.php` — 16/16 RED (E2 classes absent); PO accepted; decisions E2-D1…D6 recorded (process order, `decide()` once, 14 reasons, no security sub-reason, placement, R2a deferred).
 - 2026-10-05 (E2 GREEN): five new framework-free classes (`VotingAuthorization`, `CastAttempt`, `CastDecision`, `CastDecisionReason`, `SecurityVerdict`); R2 16/16 GREEN (53 assertions) with the test unchanged; Elections unit suite 62/62 and 13 scanning architecture tests green; no caller yet (E3). PO accepted.
+- 2026-10-05 (E3 RED): `tests/Feature/Voting/CastDecisionEnforcementTest.php` — R3-1 BallotMissing, R3-2 CodeStepIncomplete, R3-3 CodeMissing RED; R3-4 CodeMismatch passes today; R3-5, R3-7 labelled GUARD (R3-7 fails until GREEN); R3-6 (`MAX_USE_IP_ADDRESS`) removed — outside E3 (PO). Findings: **the final cast accepts a code whose code step was never completed** (R3-2, fixed by E3 GREEN within the approved plan); **a soft-deleted Code is still usable** (`withoutGlobalScopes()` lifts `SoftDeletingScope`) → **PBDIGIT-235**, option B, out of E3. Phase 1 characterization tests not retired in RED.
 
 ## 12 · Story-status changes (planned — applied only at the GREEN acceptance of the named group)
 
@@ -223,6 +224,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 | **PBDIGIT-219** | OPEN → **resolved by Phase 4 behaviour** (missing `Code` → `CodeMissing`, not 500), pointer to this plan | E3 GREEN accepted |
 | PBDIGIT-230 | OPEN → resolved (CAS before insert; the parallel-race limit stated) | E4 GREEN accepted |
 | PBDIGIT-234 (new) | created OPEN — not authorised: `users.voting_ip` has no column, so IP binding (`validateVotingIpWithResponse`, the trust chain's `registeredIpHash`, and other readers) is unreachable; deferred to the security / IP-binding phase | rev 3 (now) |
+| PBDIGIT-235 (new) | created OPEN — not authorised: soft-deleted `Code` still usable at the final cast; semantics decision required | E3 RED (now) |
 | PBDIGIT-231, 223–229 | unchanged | — |
 
 ## Next actions
