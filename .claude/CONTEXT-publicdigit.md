@@ -13,7 +13,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 ---
 
-## 📍 UPDATE (2026-10-05, **`PBDIGIT-213` C0–C4 committed and accepted · Phase 1 closed · Phase 3 ADR approved · Phase 4 E1 committed `7aa33df68`**)
+## 📍 UPDATE (2026-10-05, **`PBDIGIT-213` C0–C4 committed and accepted · Phase 1 closed · Phase 3 ADR approved · Phase 4 COMPLETE (E1–E4)**)
 
 | | |
 |---|---|
@@ -31,8 +31,8 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | 🧪 **Phase 1 (2026-10-05)** | Gate 0 accepted (C4 accepted). Characterization complete: 28 tests `tests/Feature/Characterization/Phase1/` (synthetic data), evidence `docs/publicdigit/reviews/2026-10-05-phase1-characterization-evidence-report.md`, defects **PBDIGIT-223 … 233** — **A5 confirmed; A6 (stored voter → ballot link in step 5) and D10 (unset `MAX_USE_IP_ADDRESS` blocks every vote) new**. No production change |
 | 🧭 **Governance state** | Phase 1 CLOSED · **Gate 1 ACCEPTED** · anonymity model OPEN/DEFERRED (Phase 2.0) · A5/A6 unchanged = accepted interim risk · **interim anonymity rule ACTIVE** (7-point checklist, roadmap §2a) · **Phase 3 ADR AUTHORISED — design only** · Phase 7 IP binding BLOCKED (PBDIGIT-225 prerequisite) · production implementation NOT authorised |
 | 📐 **Phase 3 ADR** | `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` — **✅ APPROVED by PO / ARB (2026-10-05), architectural baseline, frozen**; decision record `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`; implementation NOT authorised |
-| 🛠️ **Phase 4 (2026-10-05)** | Final-cast hardening authorised per edit group. Plan `docs/plans/20261005-1105-phase4-final-cast-hardening-plan.md` (rev 3), decision record `docs/publicdigit/reviews/2026-10-05-phase4-final-cast-hardening-po-decision-record.md` (Q2 Deny, Q4 demo excluded, Q5 A, P4-D1 B, D2 A, D3 A, **D4 retired** → PBDIGIT-234). **E1 committed `7aa33df68`** — PBDIGIT-232 RESOLVED (fail-closed exit, lock ownership, `\Throwable`). E2 (`forCast()` / `CastDecision`) RED next; E3 (233, 219), E4 (230) after |
-| ❓ **Next** | **E2 RED → STOP** · ops: `MAX_USE_IP_ADDRESS` everywhere, inform the production owner about A5/A6 · remove worktree `scratchpad/wt-before` when no comparison is needed |
+| 🛠️ **Phase 4 (2026-10-05)** | Final-cast hardening authorised per edit group. Plan `docs/plans/20261005-1105-phase4-final-cast-hardening-plan.md` (rev 3), decision record `docs/publicdigit/reviews/2026-10-05-phase4-final-cast-hardening-po-decision-record.md` (Q2 Deny, Q4 demo excluded, Q5 A, P4-D1 B, D2 A, D3 A, **D4 retired** → PBDIGIT-234). **✅ COMPLETE** — E1 `7aa33df68` (PBDIGIT-232), E2 `aa07a9160` (`forCast()` → `CastDecision`), E3 `8cea53c73` (PBDIGIT-233 for the final cast, 219), E4 `b1daf26a2` (PBDIGIT-230, compare-and-set before the vote insert). Found: PBDIGIT-234 (IP binding unreachable), PBDIGIT-235 (soft-deleted code usable). Guide `developer_guide/election/final_cast/` |
+| ❓ **Next** | **Phase 5 (entry authorization, `forEntry()`) — needs separate authorisation + PO answers to Q6, Q7 (Q4 for demo)** · ops: `MAX_USE_IP_ADDRESS` everywhere (code entry still reads it), inform the production owner about A5/A6 · decisions pending on PBDIGIT-234, 235 · R2a architecture test (deferred) · remove worktree `scratchpad/wt-before` |
 
 ---
 

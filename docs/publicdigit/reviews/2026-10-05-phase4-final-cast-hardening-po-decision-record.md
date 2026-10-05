@@ -44,6 +44,18 @@
 | **E2-D5 — placement** | `Application\Services\VotingAuthorization`, `Application\DTO\CastAttempt` / `CastDecision`, `Domain\ValueObjects\CastDecisionReason` / `SecurityVerdict` — approved **for E2 only**, not as a general rule for the Elections context. |
 | **E2-D6 — R2a** | The architecture / fitness test (R2a) is **deferred** to a separate review; E2 is verified by the R2 unit contract only. |
 
+## 2d. E3 / E4 decisions (PO, 2026-10-05)
+
+| ID | Decision |
+|---|---|
+| **E3 — soft-deleted Code** | Option B: out of E3; recorded as **PBDIGIT-235** (`store()` loads the Code `withoutGlobalScopes()`, so a soft-deleted code stays usable); `withoutGlobalScopes()` and soft-delete semantics unchanged. |
+| **E3 — R3-6** | `MAX_USE_IP_ADDRESS` test removed from E3 (outside scope). |
+| **E3 — `vote_post_check()`** | **Option A:** removed from the real-election final-cast path; demo keeps the unchanged call (Q4); no replacement logic for demo. R3-7 narrowed to "not invoked on the real-election path". |
+| **E3 — input validation** | The `validateVotingCodeInput()` helper (unchanged rules and messages, also used before a `CodeMismatch` refusal) is kept. |
+| **E3 / E1 — retired characterizations** | `test_g2_known_gap_…` (→ R1-A) and `test_i_a_failing_pre_check_…` (→ R3-1) retired with evidence. |
+| **E4 — rollback contract** | R4-4 added before GREEN: a failure after a successful consumption rolls back `has_voted` and the vote. |
+| **E4 — placement** | The compare-and-set runs **immediately before `save_vote()`**, after every refusal / direct-return path (not right after `forCast()`: `validateVotingIpWithResponse()` can return without a rollback). `DB::table()` update of `has_voted` only; `$freshCode->id` as identity; `markUserAsVoted()` and `save_vote()` unchanged. |
+
 ## 3. Correction — transaction and lock ownership
 
 > **Roll back only when a transaction is active, and release the cache lock only when this execution path actually acquired the lock.**

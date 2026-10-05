@@ -1,6 +1,6 @@
 # Plan — Phase 4: Final-cast hardening (`forCast()` → `CastDecision`, CAS, fail-closed)
 
-**Status:** 🟡 **REVISION 3 — architecture and scope APPROVED by the PO (2026-10-05); P4-D1…D3 decided; P4-D4 RETIRED (option C); baseline accepted; E1 RED (R1, 4 contracts) authorised; E1 GREEN not authorised.** No production file changed. Nothing committed.
+**Status:** ✅ **COMPLETE (2026-10-05) — E1–E4 committed and accepted by the PO** (`7aa33df68` · `aa07a9160` · `8cea53c73` · `b1daf26a2`; RED commits `f84e72ece` · `a818f2514` · `2afc6da5e`). PBDIGIT-232, 233 (final cast), 219, 230 resolved; PBDIGIT-234, 235 recorded. Guide `developer_guide/election/final_cast/`. *(Revision 3: P4-D1…D3 decided; P4-D4 retired, option C.)*
 **Decision record:** `docs/publicdigit/reviews/2026-10-05-phase4-final-cast-hardening-po-decision-record.md`
 **Stories:** PBDIGIT-230 (no DB guarantee against double voting) · PBDIGIT-232 (security-denial crash) · PBDIGIT-233 (`vote_post_check` ignored / missing view)
 **Architecture baseline:** `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` (APPROVED, frozen) §3.0–3.5, §5 I1–I10, §7, §8 Phase 4
@@ -192,9 +192,9 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - [x] E1: R1 RED → report → STOP · GREEN → report → STOP — **accepted, committed `7aa33df68`**; PBDIGIT-232 RESOLVED; guide `developer_guide/election/final_cast/01_e1_fail_closed_exit.md`
 - [x] E2: R2 RED → STOP · GREEN → STOP — **accepted**; RED `f84e72ece`, GREEN committed with guide `developer_guide/election/final_cast/02_e2_cast_decision.md`; R2a deferred (E2-D6)
 - [x] E3: R3 RED → STOP · GREEN → STOP — **accepted**; RED `a818f2514`, GREEN committed with guide `developer_guide/election/final_cast/03_e3_cast_enforcement.md`; PBDIGIT-233 resolved for the final cast, PBDIGIT-219 resolved
-- [ ] E4: R4 (+R5, R6) RED → STOP · GREEN → STOP
-- [ ] Full regression vs worktree; developer guide `developer_guide/voting/` (cast decision + CAS); decision record (Q2/Q4/Q5 + P4-D); stories 230/232/233 (+219) status; session log; CONTEXT-publicdigit
-- [ ] Commit per approved group (story IDs in subject), only after PO review
+- [x] E4: R4 (+R5, R6) RED → STOP · GREEN → STOP — **accepted**; RED `2afc6da5e` (+R4-4 before GREEN), GREEN `b1daf26a2`; CAS placed immediately before `save_vote()` (PO); PBDIGIT-230 resolved
+- [x] Full regression vs baseline `d4d6b2890` after each group (0 previously passing tests fail); developer guide `developer_guide/election/final_cast/` (00–04); decision record (Q2/Q4/Q5, P4-D, E2-D, E3 option A, E4 placement); stories 219/230/232/233 status; session log; CONTEXT-publicdigit
+- [x] Commit per approved group, only after PO review
 
 ## 11 · Risks
 
@@ -216,6 +216,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - 2026-10-05 (E3 RED): `tests/Feature/Voting/CastDecisionEnforcementTest.php` — R3-1 BallotMissing, R3-2 CodeStepIncomplete, R3-3 CodeMissing RED; R3-4 CodeMismatch passes today; R3-5, R3-7 labelled GUARD (R3-7 fails until GREEN); R3-6 (`MAX_USE_IP_ADDRESS`) removed — outside E3 (PO). Findings: **the final cast accepts a code whose code step was never completed** (R3-2, fixed by E3 GREEN within the approved plan); **a soft-deleted Code is still usable** (`withoutGlobalScopes()` lifts `SoftDeletingScope`) → **PBDIGIT-235**, option B, out of E3. Phase 1 characterization tests not retired in RED.
 - 2026-10-05 (E3 GREEN): `store()` asks `forCast()` in the transaction for real elections (uncached entitlement; security verdict from the existing chain; `refuseCast()` reasoned refusals, existing messages kept; `validateVotingCodeInput()` keeps the input-validation rules); `vote_post_check()` demo-only (**option A**, PO); R3-7 narrowed to "not invoked on the real-election path" (PO). R3 6/6, R1 4/4, E2 16/16, Phase 1 26/26 after retiring `test_i_a_failing_pre_check_…` (PO; replaced by R3-1). Regression vs `d4d6b2890`: 0 previously passing tests fail. PO accepted.
 - 2026-10-05 (E4 RED): `tests/Feature/Voting/AtomicParticipationConsumptionTest.php` (SQL observed via `DB::listen`, no production seam) — R4-1 one conditional consumption before the vote insert, R4-2 interleaved consumption after the fact read → zero rows → refused without a vote (today a vote IS written — real defect), R4-3 keyed to this code and guarded by `has_voted = false`, R5 consumption writes `has_voted` only — all RED; R5 vote row holds no voter-side value and R6 demo issues no conditional consumption — guards. R6 fixture: voting-active election with `type = demo` (the plain demo factory is refused by `vote.eligibility`). No real parallel race claimed. PO accepted.
+- 2026-10-05 (E4 GREEN): before GREEN the PO required (a) an explicit rollback contract — **R4-4** added (consumption succeeds, `save_vote()` throws, `has_voted` back to false, no vote), RED until GREEN; (b) a `$freshCode` / `$code` review — same row by primary key, stale `has_voted` on `$code` only re-written as `true` by `markUserAsVoted()`, `save_vote()` reloads its own copy, `$this->has_voted` not read in `store()` — safe, no refactor; (c) **placement immediately before `save_vote()`**, not right after `forCast()`, because `validateVotingIpWithResponse()` can return without a rollback. GREEN: `DB::table('codes')->where('id', $freshCode->id)->where('has_voted', false)->update(['has_voted' => true])`, `!== 1` → `failCastClosed()` + "already voted". SQL evidence: conditional update `where "id" = ? and "has_voted" = ?` [code id, false] precedes `insert into "votes"`; R4-4 run: update, insert, then rollback → `has_voted=false`, 0 votes. E4 7/7, R1 4/4, R3 6/6, E2 16/16, Phase 1 26/26; regression vs `d4d6b2890`: 0 previously passing tests fail (three transient errors caused by an overlapping probe run — `relation "migrations" does not exist` — re-run in isolation 41/41). PO approved; committed `b1daf26a2`. **Phase 4 complete.**
 
 ## 12 · Story-status changes (planned — applied only at the GREEN acceptance of the named group)
 
@@ -230,4 +231,4 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 | PBDIGIT-231, 223–229 | unchanged | — |
 
 ## Next actions
-E4 RED (R4 + R5, R6) → RED report → STOP; E4 GREEN only on separate approval.
+Phase 4 closed. Next per roadmap: Phase 5 (entry authorization, `forEntry()`) needs a separate authorisation and PO answers to Q6, Q7 (and Q4 for demo). Open items carried: `MAX_USE_IP_ADDRESS` ops check (code entry), PBDIGIT-234, PBDIGIT-235, R2a architecture test (deferred), A5/A6 information to the production owner.

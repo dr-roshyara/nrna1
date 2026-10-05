@@ -60,7 +60,7 @@ The administrator-assisted dispute-resolution intention remains a legitimate req
 | A5 / A6 | UNCHANGED — accepted interim risk ⚠ |
 | Interim anonymity rule | ACTIVE 🔒 (checklist above) |
 | **Phase 3 ADR** | **APPROVED ✅ (PO / ARB, 2026-10-05) — architectural baseline, frozen**; Q1–Q7 are implementation prerequisites |
-| Phase 4 | NOT authorised ⛔ — needs a separate authorisation and PO answers to Q2, Q4, Q5 |
+| Phase 4 | ✅ **COMPLETE (2026-10-05)** — Q2 Deny, Q4 demo excluded, Q5 A; E1–E4 committed (`7aa33df68`, `aa07a9160`, `8cea53c73`, `b1daf26a2`); plan `docs/plans/20261005-1105-phase4-final-cast-hardening-plan.md` |
 | Phase 7 IP binding | BLOCKED ⛔ pending the anonymity-boundary review; PBDIGIT-225 is a prerequisite |
 | Production implementation | NOT authorised ⛔ — manual approval before any production edit |
 
@@ -156,7 +156,7 @@ Each phase: **objective · scope · deliverables · tests · gate · out of scop
 Freeze: Admission → Entitlement (standing + lifecycle; admission evaluated **once**, inside entitlement) → `forEntry()` → code process → `forCast()` → vote. Decide: home and name of the **one** security authority (extend vs rename Trust/Legitimacy); the reason enum (`Allowed` only success; forwards `VotingEntitlementReason`; `SecurityDenied`; `AlreadyVotedPreCheck` non-authoritative); security policy consolidation and **lock from ReadyForVoting**; demo-election scope; whether `has_agreed_to_vote` becomes a `forCast()` process fact (behaviour change).
 - **Gate 3:** ADR accepted (ARB/PO).
 
-### Phase 4 — Harden the final cast boundary · NOT STARTED
+### Phase 4 — Harden the final cast boundary · ✅ COMPLETE (2026-10-05, plan `docs/plans/20261005-1105-phase4-final-cast-hardening-plan.md`, guide `developer_guide/election/final_cast/`)
 
 `BEGIN → forCast() (fresh) → UPDATE codes SET has_voted = true WHERE id = ? AND has_voted = false (exactly 1 row, else deny) → INSERT anonymous vote → COMMIT`; any denial / `\Throwable` → rollback, lock released, no vote (P5). Fix confirmed D1–D4. The cache lock may remain only as an optimisation.
 - **Tests:** concurrency (exactly one vote), atomic rollback, aggregate invariant, every denial branch fails closed.
@@ -212,7 +212,8 @@ Anonymous credentials, blind signatures, unlinkable voting tokens, cryptographic
 | 0 → closed | Gate 0 accepted by the PO (C4 accepted) |
 | 1 | **CLOSED — Gate 1 ACCEPTED (2026-10-05)** (28 tests pass; 11 confirmed defects PBDIGIT-223 … 233; no production change) |
 | 3 | **AUTHORISED — ADR / design only** (2026-10-05) · `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` — **✅ APPROVED by PO / ARB (2026-10-05) as the architectural baseline; frozen** (decision record `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`). Implementation not authorised; Phase 4 needs a separate authorisation + answers to Q2, Q4, Q5 |
-| 2–9 | Not started (not authorised). Re-sequenced 2026-10-05 (§2a): Phase 2.0 decision postponed; Phases 3–6 may come first under the interim rule; Phase 7 gated by the anonymity-boundary review |
+| 4 | **COMPLETE (2026-10-05)** — final-cast hardening E1–E4: fail-closed exit (PBDIGIT-232), `forCast()` → `CastDecision`, enforcement in `store()` (PBDIGIT-233, 219), compare-and-set before the vote insert (PBDIGIT-230); found PBDIGIT-234 (IP binding unreachable), PBDIGIT-235 (soft-deleted code usable) |
+| 2, 5–9 | Not started (not authorised). Re-sequenced 2026-10-05 (§2a): Phase 2.0 decision postponed; Phases 3–6 may come first under the interim rule; Phase 7 gated by the anonymity-boundary review |
 
 ## 8. Risks
 
