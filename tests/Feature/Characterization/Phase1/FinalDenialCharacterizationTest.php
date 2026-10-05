@@ -77,21 +77,8 @@ class FinalDenialCharacterizationTest extends TestCase
             'KNOWN GAP D1: $pre_check = vote_post_check(...) is assigned once and never read in store()');
     }
 
-    public function test_i_a_failing_pre_check_condition_still_blocks_through_a_missing_view_exception(): void
-    {
-        [$voter, $slug, $code] = $this->voterReadyToCast();
-        $this->captureLogs();
-
-        // No ballot in the session → vote_post_check's "vote missing" branch renders
-        // view('components.error_message'), which does not exist → exception → generic error.
-        $response = $this->actingAs($voter)
-            ->withSession(['current_organisation_id' => $this->org->id])
-            ->post(route('slug.vote.store', ['vslug' => $slug->slug]), ['voting_code' => $code->code_to_open_voting_form]);
-
-        $this->assertSame(0, $this->votes(), 'no vote');
-        $this->assertFalse((bool) $code->fresh()->has_voted);
-        $this->assertNotEmpty($this->logsMentioning('View [components.error_message] not found'),
-            'KNOWN GAP D1/D10: the pre-check denies only by crashing on a missing view, not by its returned result');
-        $response->assertSessionHasErrors();
-    }
+    // ── I (missing-view mechanism): retired (Phase 4 E3 GREEN) — a real cast without a ballot
+    //    is now refused by forCast() as BallotMissing before the legacy vote_post_check()
+    //    missing-view failure can occur; the contract lives in
+    //    Tests\Feature\Voting\CastDecisionEnforcementTest::test_r3_1_…
 }

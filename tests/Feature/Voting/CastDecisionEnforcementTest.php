@@ -161,6 +161,18 @@ class CastDecisionEnforcementTest extends TestCase
 
         $this->assertNotSame('', $store, 'store() located');
         $this->assertStringContainsString('->forCast(', $store, 'store() asks VotingAuthorization::forCast()');
-        $this->assertStringNotContainsString('vote_post_check(', $store, 'store() no longer calls vote_post_check() (PBDIGIT-233 D1)');
+
+        // vote_post_check() is not invoked on the REAL-election final-cast path (PBDIGIT-233 D1).
+        // Demo elections keep their unchanged call (Q4, option A), so every remaining call must
+        // sit directly inside the demo-only guard.
+        preg_match_all('/\$this->vote_post_check\(/', $store, $calls, PREG_OFFSET_CAPTURE);
+        foreach ($calls[0] as [, $offset]) {
+            $preceding = substr($store, max(0, $offset - 120), min(120, $offset));
+            $this->assertMatchesRegularExpression(
+                '/if \(\$election->type !== \'real\'\) \{\s*\$pre_check = $/',
+                $preceding,
+                'every vote_post_check() call in store() is guarded to non-real (demo) elections only'
+            );
+        }
     }
 }

@@ -38,6 +38,12 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 use App\Application\Election\Security\ConstitutionalLegitimacyDecision;
 use App\Application\Election\Security\TrustPolicyEvaluator;
+use App\Contexts\Elections\Application\DTO\CastAttempt;
+use App\Contexts\Elections\Application\Services\VotingAuthorization;
+use App\Contexts\Elections\Domain\ValueObjects\CastDecisionReason;
+use App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict;
+use App\Contexts\Elections\Infrastructure\Queries\EloquentVotingEntitlementQuery;
+use App\Domain\Election\Security\LegitimacyOutcome;
 
 class VoteController extends Controller
 {
@@ -1656,21 +1662,41 @@ private function trackSovereigntyDivergence(
             return back()->with('error', 'Please wait, your vote is being processed. Another submission is in progress.');
         }
 
-        // Re-check has_voted inside lock (fresh read)
-        $freshCode = $code->fresh();
+        // Process facts, read inside the cast transaction (fresh; null-safe — a voter
+        // without a Code is refused by the decision below, PBDIGIT-219).
+        $freshCode = $code?->fresh();
+        // Use the existing session_name from the code (set during first_submission)
+        $session_name = $code?->session_name ?: ('vote_data_' . $auth_user->id);
+        $vote_data = $request->session()->get($session_name);
 
-        // ⛔ REAL ELECTIONS: Block final vote submission if already voted
-        if ($election->type === 'real' && $freshCode && $freshCode->has_voted) {
-            $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
-            \Log::warning('⛔ Real election - blocking final vote submission for voter who already voted', [
-                'user_id' => $auth_user->id,
-                'election_id' => $election->id,
-                'code_id' => $freshCode->id,
-            ]);
+        // ── Phase 4 E3: the ONE in-transaction cast decision (real elections; demo is
+        //    excluded — Q4). ADR_20261005_0950 §3.2; plan §2.2 E3. ──
+        if ($election->type === 'real') {
+            $decision = (new VotingAuthorization(app(EloquentVotingEntitlementQuery::class))) // fresh, uncached (ADR §3.5)
+                ->forCast(new CastAttempt(
+                    voterId: $auth_user->id,
+                    electionId: $election->id,
+                    security: $this->securityVerdictOf($constitutionalOutcome),
+                    codeExists: $freshCode !== null,
+                    submittedCodeMatches: $freshCode !== null
+                        && $this->verify_submitted_code($freshCode->code_to_open_voting_form, trim((string) $request->input('voting_code'))),
+                    codeStepCompleted: (bool) $freshCode?->can_vote_now,
+                    alreadyVotedPreCheck: (bool) $freshCode?->has_voted,
+                    ballotPresent: $vote_data !== null,
+                ));
 
-            return redirect()->route('dashboard')
-                ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']);
+            if (! $decision->isAllowed()) {
+                if ($decision->reason === CastDecisionReason::CodeMismatch) {
+                    // Malformed input keeps its own messages, as before (ValidationException → fail-closed catch).
+                    $this->validateVotingCodeInput($request);
+                }
+
+                $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
+
+                return $this->refuseCast($decision->reason, $auth_user, $election, $request);
+            }
         }
+
         $voting_session_name =Hash::make($code->code_to_save_vote);
 
          // IP validation - single line replacement
@@ -1689,14 +1715,8 @@ private function trackSovereigntyDivergence(
         /********************************************************** */
         //verify second  submission code:
              // Validate request input
-            $request->validate([
-                'voting_code' => 'required|string|min:8|max:8'
-            ], [
-                'voting_code.required' => 'Please enter the verification code.',
-                'voting_code.min' => 'Code must be exactly 8 characters.',
-                'voting_code.max' => 'Code must be exactly 8 characters.',
-            ]);
-            
+            $this->validateVotingCodeInput($request);
+
 
             $_codeVerified =$this->verify_submitted_code($this->in_code, $this->out_code);
             // Use the verification method
@@ -1729,7 +1749,12 @@ private function trackSovereigntyDivergence(
         // dd($vote_data["national_selected_candidates"]);
         // 1. Validate pre-conditions
         // dd($vote_data);
-        $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
+        // Phase 4 E3 (option A): real elections are decided by VotingAuthorization::forCast()
+        // above; vote_post_check() is no longer on the real-election final-cast path. Demo
+        // elections keep the unchanged call (Q4 — demo behaviour preserved).
+        if ($election->type !== 'real') {
+            $pre_check = $this->vote_post_check($auth_user, $code, $vote_data);
+        }
 
         /**
              *Here Everything is checked . you save the deligatevote.
@@ -1916,6 +1941,66 @@ private function trackSovereigntyDivergence(
 
 
 
+}
+
+/**
+ * The existing Trust → Legitimacy chain's outcome as the cast decision's security fact
+ * (Phase 4 E3). Deferred / Investigate are a review requirement — a denial (Q2).
+ */
+private function securityVerdictOf(LegitimacyOutcome $outcome): SecurityVerdict
+{
+    return match ($outcome) {
+        LegitimacyOutcome::Allowed => SecurityVerdict::Allowed,
+        LegitimacyOutcome::Denied  => SecurityVerdict::Denied,
+        LegitimacyOutcome::Deferred,
+        LegitimacyOutcome::Investigate => SecurityVerdict::ReviewRequired,
+    };
+}
+
+/** Shape of the submitted second code (rules and messages unchanged). */
+private function validateVotingCodeInput(Request $request): void
+{
+    $request->validate([
+        'voting_code' => 'required|string|min:8|max:8'
+    ], [
+        'voting_code.required' => 'Please enter the verification code.',
+        'voting_code.min' => 'Code must be exactly 8 characters.',
+        'voting_code.max' => 'Code must be exactly 8 characters.',
+    ]);
+}
+
+/**
+ * The reasoned refusal for a CastDecision other than Allowed (Phase 4 E3). Logs voter-side
+ * facts only — no vote exists on this path (I8). Existing messages are kept where a refusal
+ * already existed (already voted, wrong code, security denial).
+ */
+private function refuseCast(CastDecisionReason $reason, User $voter, Election $election, Request $request)
+{
+    Log::channel('voting_audit')->warning('Final cast refused', [
+        'user_id'     => $voter->id,
+        'election_id' => $election->id,
+        'reason'      => $reason->value,
+    ]);
+
+    return match ($reason) {
+        CastDecisionReason::AlreadyVotedPreCheck => redirect()->route('dashboard')
+            ->withErrors(['vote' => 'You have already voted in this election. Each voter can only vote once.']),
+        CastDecisionReason::CodeMismatch => back()
+            ->withErrors(['voting_code' => 'Submitted code is false. Please check your email and try again.'])
+            ->withInput(),
+        CastDecisionReason::SecurityDenied => back()
+            ->withErrors(['vote' => 'Your vote cannot be submitted based on constitutional verification. Please contact the election committee.']),
+        CastDecisionReason::SecurityReviewRequired => back()
+            ->withErrors(['vote' => 'Your vote requires additional verification before submission. Please contact the election committee.']),
+        CastDecisionReason::CodeMissing => back()
+            ->withErrors(['vote' => 'No voting code was found for you in this election. Please start again from the code step.']),
+        CastDecisionReason::CodeStepIncomplete => back()
+            ->withErrors(['vote' => 'Your voting code has not been confirmed yet. Please complete the code step first.']),
+        CastDecisionReason::BallotMissing => back()
+            ->withErrors(['vote' => 'We could not find your vote. Please start to vote again.']),
+        default => back()
+            ->withErrors(['vote' => 'You are not eligible to vote in this election.']),
+    };
 }
 
 /**

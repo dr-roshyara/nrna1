@@ -191,7 +191,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - [x] P4-D4 retired (option C), PBDIGIT-234 recorded
 - [x] E1: R1 RED → report → STOP · GREEN → report → STOP — **accepted, committed `7aa33df68`**; PBDIGIT-232 RESOLVED; guide `developer_guide/election/final_cast/01_e1_fail_closed_exit.md`
 - [x] E2: R2 RED → STOP · GREEN → STOP — **accepted**; RED `f84e72ece`, GREEN committed with guide `developer_guide/election/final_cast/02_e2_cast_decision.md`; R2a deferred (E2-D6)
-- [ ] E3: R3 (+R5 part) RED → STOP · GREEN → STOP
+- [x] E3: R3 RED → STOP · GREEN → STOP — **accepted**; RED `a818f2514`, GREEN committed with guide `developer_guide/election/final_cast/03_e3_cast_enforcement.md`; PBDIGIT-233 resolved for the final cast, PBDIGIT-219 resolved
 - [ ] E4: R4 (+R5, R6) RED → STOP · GREEN → STOP
 - [ ] Full regression vs worktree; developer guide `developer_guide/voting/` (cast decision + CAS); decision record (Q2/Q4/Q5 + P4-D); stories 230/232/233 (+219) status; session log; CONTEXT-publicdigit
 - [ ] Commit per approved group (story IDs in subject), only after PO review
@@ -214,6 +214,7 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - 2026-10-05 (E2 RED): `tests/Unit/Contexts/Elections/VotingAuthorizationForCastTest.php` — 16/16 RED (E2 classes absent); PO accepted; decisions E2-D1…D6 recorded (process order, `decide()` once, 14 reasons, no security sub-reason, placement, R2a deferred).
 - 2026-10-05 (E2 GREEN): five new framework-free classes (`VotingAuthorization`, `CastAttempt`, `CastDecision`, `CastDecisionReason`, `SecurityVerdict`); R2 16/16 GREEN (53 assertions) with the test unchanged; Elections unit suite 62/62 and 13 scanning architecture tests green; no caller yet (E3). PO accepted.
 - 2026-10-05 (E3 RED): `tests/Feature/Voting/CastDecisionEnforcementTest.php` — R3-1 BallotMissing, R3-2 CodeStepIncomplete, R3-3 CodeMissing RED; R3-4 CodeMismatch passes today; R3-5, R3-7 labelled GUARD (R3-7 fails until GREEN); R3-6 (`MAX_USE_IP_ADDRESS`) removed — outside E3 (PO). Findings: **the final cast accepts a code whose code step was never completed** (R3-2, fixed by E3 GREEN within the approved plan); **a soft-deleted Code is still usable** (`withoutGlobalScopes()` lifts `SoftDeletingScope`) → **PBDIGIT-235**, option B, out of E3. Phase 1 characterization tests not retired in RED.
+- 2026-10-05 (E3 GREEN): `store()` asks `forCast()` in the transaction for real elections (uncached entitlement; security verdict from the existing chain; `refuseCast()` reasoned refusals, existing messages kept; `validateVotingCodeInput()` keeps the input-validation rules); `vote_post_check()` demo-only (**option A**, PO); R3-7 narrowed to "not invoked on the real-election path" (PO). R3 6/6, R1 4/4, E2 16/16, Phase 1 26/26 after retiring `test_i_a_failing_pre_check_…` (PO; replaced by R3-1). Regression vs `d4d6b2890`: 0 previously passing tests fail. PO accepted.
 
 ## 12 · Story-status changes (planned — applied only at the GREEN acceptance of the named group)
 
@@ -228,4 +229,4 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 | PBDIGIT-231, 223–229 | unchanged | — |
 
 ## Next actions
-E3 RED (R3 + R5 part) → RED report → STOP; E3 GREEN only on separate approval.
+E4 RED (R4 + R5, R6) → RED report → STOP; E4 GREEN only on separate approval.

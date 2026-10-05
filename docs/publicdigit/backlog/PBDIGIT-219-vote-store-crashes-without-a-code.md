@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **OPEN.** Not authorised. Deliberately **not** fixed in PBDIGIT-213 (C3 boundary). |
+| **Status** | 🟢 **RESOLVED (2026-10-05)** — by Phase 4 E3 behaviour (decision P4-D3 = A): a voter without a `Code` is refused by `VotingAuthorization::forCast()` as `CodeMissing` (reasoned `vote` error), not HTTP 500. Contract `tests/Feature/Voting/CastDecisionEnforcementTest.php` R3-3. A **soft-deleted** Code is a separate case → PBDIGIT-235. Guide `developer_guide/election/final_cast/03_e3_cast_enforcement.md`. *(Original status: OPEN, not authorised; deliberately not fixed in PBDIGIT-213.)* |
 | **Problem** | `VoteController.php:1652` calls `$code->fresh()` on a null Code → `Error` → HTTP 500. Observed in the PBDIGIT-213 C3 RED run when a (then not yet blocked) voter reached store without a Code. |
 | **After PBDIGIT-213 C3** | An unadmitted voter is now refused (403) before reaching this code. An *entitled* voter without a Code can still hit it. |
 | **Scope note** | `Code` / `Code.can_vote_now` are out of PBDIGIT-213 scope; this item owns the null guard. |
