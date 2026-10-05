@@ -92,7 +92,7 @@ any \Throwable ─► fail-closed exit (§2.0) · generic reason (no 500)
 | `app/Contexts/Elections/Domain/ValueObjects/CastDecisionReason.php` | enum | `Allowed` · forwarded entitlement reasons (`NotRegistered`, `NotVoterRole`, `OrganisationMismatch`, `NotActive`, `NotAdmitted`, `ElectionNotVotable`) · `SecurityDenied` · `SecurityReviewRequired` · `CodeMissing` · `CodeMismatch` · `CodeStepIncomplete` · `BallotMissing` · `AlreadyVotedPreCheck` |
 | `app/Contexts/Elections/Domain/ValueObjects/SecurityVerdict.php` | enum | `Allowed` · `Denied` · `ReviewRequired` — the controller maps the existing `LegitimacyOutcome` onto it (mapping only; not a decision, not an engine) |
 
-Evaluation order (first failure wins, ADR §3.1/3.2): entitlement → security → process. *Today the trust gate runs first; only the **reported reason** for a voter failing both changes, never allow/deny.*
+Evaluation order (first failure wins, ADR §3.1/3.2): entitlement → security → process; process order **CodeMissing → AlreadyVotedPreCheck → CodeMismatch → CodeStepIncomplete → BallotMissing** — an E2 contract (decision record E2-D1). Entitlement via `decide()` exactly once, never `standingOf()` (E2-D2). Exactly 14 reasons (E2-D3). No security sub-reason on the decision (E2-D4, option A). R2a deferred (E2-D6). *Today the trust gate runs first; only the **reported reason** for a voter failing both changes, never allow/deny.*
 
 ### 2.2 Production edit groups (each its own RED → GREEN → STOP)
 
@@ -210,6 +210,8 @@ Phase 1 characterization tests whose assertions describe the defect (`test_g2_kn
 - 2026-10-05 (rev 3): baseline §6.1 run at `d4d6b2890` (29 files, accepted by the PO; pre-existing failures stay baseline failures and are not fixed in Phase 4). R1 first run: R1-A ⨯ (500), R1-B ✓, R1-C ✓, IP-binding test invalid (`users.voting_ip` column missing), R1-D ⨯ (500). PO chose C: P4-D4 retired, contract #4 removed, PBDIGIT-234 recorded.
 
 - 2026-10-05 (E1): R1 RED → GREEN 4/4 (`VoteController`: `?string $userId`, `catch (\Throwable)`, `failCastClosed()`); regression vs `d4d6b2890`: 0 previously passing tests fail (Phase 1 G2 known-gap test retired, replaced by R1-A); PO accepted; committed `7aa33df68`. Side effect recorded: a missing `Code` now yields the generic error instead of 500 (PBDIGIT-219 still resolved only at E3).
+
+- 2026-10-05 (E2 RED): `tests/Unit/Contexts/Elections/VotingAuthorizationForCastTest.php` — 16/16 RED (E2 classes absent); PO accepted; decisions E2-D1…D6 recorded (process order, `decide()` once, 14 reasons, no security sub-reason, placement, R2a deferred).
 
 ## 12 · Story-status changes (planned — applied only at the GREEN acceptance of the named group)
 

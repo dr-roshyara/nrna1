@@ -33,6 +33,17 @@
 
 §6.1 regression set run at `d4d6b2890` (29 files, `php artisan test --env=testing <file>` per file). Pre-existing failures (`VoterAuditTrailTest`, `VotingEngineIntegrationTest`, the demo-election suites, `DemoVoteVerificationFlowTest`, `DemoVoteControllerCreateTest`) are **baseline failures** and are **not** to be fixed in Phase 4 to obtain green.
 
+## 2c. E2 contract decisions (PO, 2026-10-05, at E2 RED acceptance)
+
+| ID | Decision |
+|---|---|
+| **E2-D1 — process-reason order** | `CodeMissing` → `AlreadyVotedPreCheck` → `CodeMismatch` → `CodeStepIncomplete` → `BallotMissing` (today's `store()` sequence, voter-visible messages preserved). **This order is an E2 contract and must not be changed without an explicit architectural decision.** |
+| **E2-D2 — entitlement read** | `forCast()` calls `VotingEntitlementQuery::decide()` (standing ∧ lifecycle) **exactly once** and **never** `standingOf()`; it consumes the authoritative entitlement decision and does not reconstruct it. |
+| **E2-D3 — vocabulary** | `CastDecisionReason` has exactly **14** cases: `Allowed` · 6 forwarded entitlement reasons (`NotRegistered`, `NotVoterRole`, `OrganisationMismatch`, `NotActive`, `NotAdmitted`, `ElectionNotVotable` — all `VotingEntitlementReason` cases except `Entitled`) · `SecurityDenied`, `SecurityReviewRequired` · `CodeMissing`, `AlreadyVotedPreCheck`, `CodeMismatch`, `CodeStepIncomplete`, `BallotMissing`. Derivation: ADR §3.3 (12, without `AgreementMissing` per Q5 = A) + P4-D2 (2). |
+| **E2-D4 — security sub-reason (option A)** | No security sub-reason on `CastDecision` / `SecurityVerdict`. The detailed reason stays in the existing Trust → Legitimacy chain's own logging. Rationale: no new place where a denial detail could be recorded next to ballot data (I8). ADR §3.3's "carrying the security sub-reason" is satisfied by that existing log; **the frozen ADR text is not changed**. |
+| **E2-D5 — placement** | `Application\Services\VotingAuthorization`, `Application\DTO\CastAttempt` / `CastDecision`, `Domain\ValueObjects\CastDecisionReason` / `SecurityVerdict` — approved **for E2 only**, not as a general rule for the Elections context. |
+| **E2-D6 — R2a** | The architecture / fitness test (R2a) is **deferred** to a separate review; E2 is verified by the R2 unit contract only. |
+
 ## 3. Correction — transaction and lock ownership
 
 > **Roll back only when a transaction is active, and release the cache lock only when this execution path actually acquired the lock.**
