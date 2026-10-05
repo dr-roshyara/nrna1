@@ -2,138 +2,8 @@
   <PublicDigitLayout>
     <div class="voters-body">
 
-      <!-- ═══════════════════════════════════════════════════════════
-           COMMAND SIDEBAR — election context + assign actions
-      ═══════════════════════════════════════════════════════════ -->
-      <aside class="voters-sidebar">
-
-        <!-- Election identity -->
-        <div class="sidebar-section">
-          <p class="sidebar-eyebrow">
-            <a :href="route('organisations.show', organisation.slug)" class="sidebar-back">
-              ← {{ organisation.name }}
-            </a>
-          </p>
-          <h1 class="sidebar-title">{{ election.name }}</h1>
-          <div class="sidebar-badges">
-            <span class="badge-status" :class="`badge-${election.state}`">
-              {{ election.state }}
-            </span>
-            <span class="badge-type">{{ election.type }}</span>
-          </div>
-        </div>
-
-        <!-- Divider -->
-        <div class="sidebar-rule"></div>
-
-        <!-- Stats register -->
-        <div class="sidebar-section">
-          <p class="sidebar-label">VOTER REGISTER</p>
-          <div class="stat-stack">
-            <div class="stat-row">
-              <span class="stat-num stat-blue">{{ stats.active_voters ?? 0 }}</span>
-              <span class="stat-desc">Active</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-num stat-amber">{{ stats.eligible_voters ?? 0 }}</span>
-              <span class="stat-desc">Eligible</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-num stat-muted">{{ stats.by_status?.inactive ?? 0 }}</span>
-              <span class="stat-desc">Suspended</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-num stat-dim">{{ stats.by_status?.removed ?? 0 }}</span>
-              <span class="stat-desc">Removed</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-rule"></div>
-
-        <!-- Assign from members -->
-        <div class="sidebar-section sidebar-section--grow">
-          <p class="sidebar-label">
-            {{ organisation.uses_full_membership ? 'ASSIGN MEMBERS AS VOTERS' : 'ASSIGN USERS AS VOTERS' }}
-          </p>
-          <p class="text-xs text-neutral-500 mb-2">
-            {{ organisation.uses_full_membership
-              ? 'Only active members with paid fees appear below.'
-              : 'All organisation users can be assigned as voters.' }}
-          </p>
-
-          <div v-if="unassignedMembers.length > 0">
-            <input
-              v-model="memberSearch"
-              type="text"
-              placeholder="Search members…"
-              class="sidebar-input"
-            />
-
-            <div class="member-list">
-              <label
-                v-for="member in filteredMembers"
-                :key="member.id"
-                class="member-row"
-                :class="{ 'member-row--checked': selectedMemberIds.includes(member.id) }"
-              >
-                <input
-                  type="checkbox"
-                  :value="member.id"
-                  v-model="selectedMemberIds"
-                  class="member-check"
-                />
-                <div class="member-avatar">{{ member.name.charAt(0).toUpperCase() }}</div>
-                <div class="member-info">
-                  <p class="member-name">{{ member.name }}</p>
-                  <p class="member-email">{{ member.email }}</p>
-                </div>
-              </label>
-              <p v-if="filteredMembers.length === 0" class="member-empty">No members found</p>
-            </div>
-
-            <button
-              @click="bulkAssign"
-              :disabled="selectedMemberIds.length === 0 || assigning"
-              class="btn-assign"
-            >
-              <span v-if="assigning">Assigning…</span>
-              <span v-else>
-                Assign
-                <span v-if="selectedMemberIds.length > 0" class="btn-count">{{ selectedMemberIds.length }}</span>
-              </span>
-            </button>
-          </div>
-
-          <p v-else class="sidebar-empty">All members assigned</p>
-
-          <!-- UUID fallback -->
-          <details class="uuid-details">
-            <summary class="uuid-summary">Assign by User ID</summary>
-            <form @submit.prevent="assignSingle" class="uuid-form">
-              <input
-                v-model="assignUserId"
-                type="text"
-                placeholder="Paste UUID…"
-                class="sidebar-input sidebar-input--mono"
-              />
-              <p v-if="$page.props.errors?.user_id" class="uuid-error">{{ $page.props.errors.user_id }}</p>
-              <button type="submit" :disabled="!assignUserId.trim() || assigning" class="btn-uuid">Assign</button>
-            </form>
-          </details>
-        </div>
-
-        <!-- Export at bottom -->
-        <div class="sidebar-section">
-          <a :href="exportUrl" class="btn-export">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-            </svg>
-            Export CSV
-          </a>
-        </div>
-
-      </aside>
+      <!-- PBDIGIT-220: the left column (context, stats, member assignment, export) was removed.
+           Export CSV moved to the header actions; assigning members as voters is PBDIGIT-221. -->
 
       <!-- ═══════════════════════════════════════════════════════════
            REGISTER TABLE — the official voter list
@@ -144,9 +14,15 @@
         <div class="voters-page-header">
           <div class="voters-page-title-block">
             <h2 class="voters-page-title">Voter Management</h2>
-            <p class="voters-page-subtitle">Assign, verify and manage election voters</p>
+            <p class="voters-page-subtitle">{{ election.name }} — verify and manage election voters</p>
           </div>
           <div class="voters-page-actions">
+            <a :href="exportUrl" class="voters-guide-link">
+              <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+              </svg>
+              <span>Export CSV</span>
+            </a>
             <a
               :href="route('organisations.membership.newsletters.create', organisation.slug) + '?election_id=' + election.id"
               class="voters-notify-link"
@@ -435,7 +311,7 @@
                     <svg class="w-10 h-10 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                     </svg>
-                    <p>{{ searchQuery || statusFilter ? 'No voters match your filters.' : 'The register is empty — assign voters using the panel.' }}</p>
+                    <p>{{ searchQuery || statusFilter ? 'No voters match your filters.' : 'The register is empty.' }}</p>
                     <button v-if="searchQuery || statusFilter" @click="clearFilters" class="empty-clear">Clear filters</button>
                   </div>
                 </td>
@@ -513,11 +389,7 @@ const props = defineProps({
 const showBulkVerify = ref(false)
 
 const authUserName           = computed(() => usePage().props.user?.name ?? usePage().props.auth?.user?.name)
-const assignUserId           = ref('')
-const assigning              = ref(false)
 const loadingId              = ref(null)
-const selectedMemberIds      = ref([])
-const memberSearch           = ref('')
 const searchQuery            = ref(props.filters?.search ?? '')
 const statusFilter           = ref(props.filters?.status ?? '')
 const perPage                = ref(props.filters?.per_page ?? 50)
@@ -532,14 +404,6 @@ const columnCount = computed(() => (props.admission.required ? 10 : 9))
 const exportUrl = computed(() =>
   route('elections.voters.export', { organisation: props.organisation.slug, election: props.election.slug })
 )
-
-const filteredMembers = computed(() => {
-  const q = memberSearch.value.toLowerCase()
-  if (!q) return props.unassignedMembers
-  return props.unassignedMembers.filter(m =>
-    m.name.toLowerCase().includes(q) || m.email.toLowerCase().includes(q)
-  )
-})
 
 const statusLabel = (s) => ({ active: 'Active', inactive: 'Suspended', invited: 'Invited', removed: 'Removed' }[s] ?? s)
 
@@ -573,26 +437,6 @@ const applyFilters = () => {
   )
 }
 const clearFilters = () => { searchQuery.value = ''; statusFilter.value = ''; perPage.value = 50; applyFilters() }
-
-// Assign
-const assignSingle = () => {
-  assigning.value = true
-  router.post(
-    route('elections.voters.store', { organisation: props.organisation.slug, election: props.election.slug }),
-    { user_id: assignUserId.value.trim() },
-    { preserveScroll: true, onSuccess: () => { assignUserId.value = '' }, onFinish: () => { assigning.value = false } }
-  )
-}
-
-const bulkAssign = () => {
-  if (!selectedMemberIds.value.length) return
-  assigning.value = true
-  router.post(
-    route('elections.voters.bulk', { organisation: props.organisation.slug, election: props.election.slug }),
-    { user_ids: selectedMemberIds.value },
-    { preserveScroll: true, onSuccess: () => { selectedMemberIds.value = [] }, onFinish: () => { assigning.value = false } }
-  )
-}
 
 // Row actions
 const approveVoter = (m) => {
@@ -646,225 +490,6 @@ const cancelProposal = (m) => {
   flex: 1;
   min-height: 0;
 }
-
-/* ── Sidebar ────────────────────────────────────────────────────── */
-.voters-sidebar {
-  width: 300px;
-  flex-shrink: 0;
-  background: #0d1117;
-  color: #e6e1d6;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 64px);
-  border-right: 1px solid #1e2530;
-}
-
-.sidebar-section {
-  padding: 1.5rem 1.5rem;
-}
-.sidebar-section--grow { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
-
-.sidebar-eyebrow { margin-bottom: 0.5rem; }
-.sidebar-back {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #6b7280;
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.sidebar-back:hover { color: #d4a847; }
-
-.sidebar-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.35rem;
-  line-height: 1.3;
-  color: #f0ebe0;
-  margin-bottom: 0.75rem;
-}
-
-.sidebar-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-
-.badge-status, .badge-type {
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.65rem;
-  border-radius: 999px;
-}
-.badge-type { background: #1e2530; color: #6b7280; }
-.badge-active  { background: #14532d; color: #86efac; }
-.badge-planned { background: #451a03; color: #fcd34d; }
-.badge-completed { background: #1e2530; color: #94a3b8; }
-
-.sidebar-rule {
-  height: 1px;
-  background: linear-gradient(to right, transparent, #1e2530 20%, #1e2530 80%, transparent);
-  margin: 0 1rem;
-}
-
-.sidebar-label {
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: #374151;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-/* Stats */
-.stat-stack { display: flex; flex-direction: column; gap: 0.5rem; }
-.stat-row { display: flex; align-items: baseline; gap: 0.75rem; }
-.stat-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2rem;
-  line-height: 1;
-  min-width: 2.5rem;
-}
-.stat-blue  { color: #60a5fa; }
-.stat-amber { color: #d4a847; }
-.stat-muted { color: #9ca3af; }
-.stat-dim   { color: #374151; }
-.stat-desc  { font-size: 0.75rem; color: #4b5563; font-weight: 500; }
-
-/* Member list */
-.sidebar-input {
-  width: 100%;
-  background: #161b22;
-  border: 1px solid #1e2530;
-  border-radius: 6px;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.8rem;
-  color: #e6e1d6;
-  outline: none;
-  font-family: 'Outfit', sans-serif;
-  margin-bottom: 0.75rem;
-  transition: border-color 0.15s;
-}
-.sidebar-input:focus { border-color: #d4a847; }
-.sidebar-input--mono { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
-
-.member-list {
-  flex: 1;
-  overflow-y: auto;
-  max-height: 220px;
-  border: 1px solid #1e2530;
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
-  scrollbar-width: thin;
-  scrollbar-color: #1e2530 transparent;
-}
-
-.member-row {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-  transition: background 0.12s;
-  border-bottom: 1px solid #0d1117;
-}
-.member-row:last-child { border-bottom: none; }
-.member-row:hover { background: #161b22; }
-.member-row--checked { background: #1a2438; }
-
-.member-check { accent-color: #d4a847; flex-shrink: 0; }
-
-.member-avatar {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #1e2e4a;
-  color: #60a5fa;
-  font-size: 0.7rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.member-info { min-width: 0; }
-.member-name { font-size: 0.75rem; font-weight: 500; color: #e6e1d6; truncate: true; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.member-email { font-size: 0.65rem; color: #4b5563; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.member-empty { font-size: 0.75rem; color: #374151; text-align: center; padding: 1rem; }
-
-.btn-assign {
-  width: 100%;
-  background: #d4a847;
-  color: #0d1117;
-  border: none;
-  border-radius: 6px;
-  padding: 0.6rem 1rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  font-family: 'Outfit', sans-serif;
-  cursor: pointer;
-  transition: background 0.15s, opacity 0.15s;
-  letter-spacing: 0.03em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-.btn-assign:hover:not(:disabled) { background: #e6ba5a; }
-.btn-assign:disabled { background: #1e2530; color: #374151; cursor: not-allowed; }
-.btn-count {
-  background: #0d1117;
-  color: #d4a847;
-  border-radius: 999px;
-  padding: 0.1rem 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-}
-
-.sidebar-empty { font-size: 0.75rem; color: #374151; font-style: italic; }
-
-/* UUID fallback */
-.uuid-details { margin-top: 1rem; }
-.uuid-summary {
-  font-size: 0.7rem;
-  color: #374151;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  user-select: none;
-}
-.uuid-summary:hover { color: #6b7280; }
-.uuid-form { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.uuid-error { font-size: 0.7rem; color: #f87171; }
-.btn-uuid {
-  background: #1e2530;
-  color: #9ca3af;
-  border: 1px solid #374151;
-  border-radius: 5px;
-  padding: 0.45rem 0.75rem;
-  font-size: 0.75rem;
-  font-family: 'Outfit', sans-serif;
-  cursor: pointer;
-  transition: background 0.12s;
-}
-.btn-uuid:hover:not(:disabled) { background: #2d3748; color: #e6e1d6; }
-.btn-uuid:disabled { opacity: 0.4; cursor: not-allowed; }
-
-/* Export */
-.btn-export {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #4b5563;
-  text-decoration: none;
-  border: 1px solid #1e2530;
-  border-radius: 5px;
-  padding: 0.4rem 0.75rem;
-  transition: color 0.15s, border-color 0.15s;
-}
-.btn-export:hover { color: #d4a847; border-color: #d4a847; }
 
 /* ── Main content ────────────────────────────────────────────────── */
 .voters-main {
@@ -1201,8 +826,6 @@ const cancelProposal = (m) => {
 /* Responsive */
 @media (max-width: 900px) {
   .voters-body { flex-direction: column; }
-  .voters-sidebar { width: 100%; min-height: auto; flex-direction: row; flex-wrap: wrap; }
-  .sidebar-section--grow { flex-basis: 100%; }
   .voters-main { padding: 1.25rem 1rem; }
 
   .voters-page-header {
