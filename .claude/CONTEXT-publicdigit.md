@@ -9,7 +9,21 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-05 *(additive — the **VE-01 ballot integrity (PBDIGIT-237)** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **CodeController boundary + entry authorization (PBDIGIT-238 / 239 / 240)** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 night, **PBDIGIT-238 DONE · PBDIGIT-239 Stage A + B GREEN · Stage C deferred → PBDIGIT-240**)
+
+| | |
+|---|---|
+| ✅ **PBDIGIT-238** (CodeController real-election boundary — was "Track B") | R0 blueprint + characterization `b90547add` · R1 RED `f722520dc` · R1 GREEN `7a8407d06`: `getElection()` refuses non-real elections (403) before any Code / session / step access; demo session bypass and demo re-vote reset (reset `has_voted`) removed; unconditional `has_voted` guards; no plaintext code in logs. Baseline 47 files unchanged per test |
+| ✅ **PBDIGIT-239** (entry authorization, ADR §3.1) | blueprint `ca9629b99` · 2A RED `430d28742` · **Stage A** `0578091f8` — one Security Verdict Authority (`VotingSecurityVerdictQuery` + `TrustLegitimacySecurityVerdict`, extraction of the final cast's inline assessment; adapter == inline oracle) · **Stage B** `d90131361` — `VotingAuthorization::forEntry()` (E1 fresh `decide()` + E2 supplied verdict) in `CodeController::create()` (after the tenant binding, before code creation / e-mail) and `store()` (own tenant binding, validation, then decision); fail closed. Intended change: the existing IP-density rule also refuses at entry |
+| ⏸ **PBDIGIT-240** (deferred Stage C) `f5d920b80` | `VoteController::store()` keeps its inline security assessment — it needs the four-valued `LegitimacyOutcome` and the trust envelope (gate messages, audit, divergence telemetry). Decide verdict-only vs richer assessment and telemetry ownership first |
+| 📘 **Guides / log** | `developer_guide/election/code_step/` (00–02) + session log `8bb7236cc` |
+| 🔒 **Decisions in force** | demo on real code routes → 403 · E2 verdict only from the port · tenant decision (a) transitional, `store()` binds its own tenant · `verifyCode()` IP count stays until **2B (after Q3)** · no `PreVotingGate` |
+| 🟡 **Open / uncommitted** | ADR revision 3 draft rev 2 (S2 = real only) — signature + decision record · review `2026-10-05-real-election-code-and-vote-controller-review.md` (F-C*, F-V*) uncommitted · backlog candidates to confirm: **F-V6 / F-V7 (user id + receipt in one log line — anonymity)**, whitelist defects (cast / `json_decode`, hashed vs raw), DashboardResolver demo routing + reverse type check, F-C2, remaining sensitive logging |
+| ❓ **Next** | PO: ADR revision 3 signature → VE-01 GREEN authorization · D6 (PBDIGIT-236) · D4.1 environment · Q3 (→ 2B) · confirm backlog candidates. *Supersedes the VE-01 block's "Track B not authorised" — Track B is done as PBDIGIT-238* |
 
 ---
 
