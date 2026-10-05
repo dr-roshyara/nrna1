@@ -72,7 +72,7 @@
 - **Enforces / observes:** enforces one authority at the code step only.
 - **Remaining gap [S]:**
   - `VoteController::store()` keeps its own inline Trust → Legitimacy assessment (PBDIGIT-240, Stage C deferred `f5d920b80`).
-  - IP checks outside the authority: `CodeController::verifyCode()` IP count (`max_use_clientIP`, default 7); `validateVotingIpWithResponse()` in `store()` (latent, PBDIGIT-234; now fails closed, PBDIGIT-243); `ValidateVotingIp` middleware; `vote_post_check()` (demo only); `ElectionVotingController::resolveIpBlock` (counts `step_1_ip`, never written — VE-15).
+  - IP checks outside the authority: `CodeController::verifyCode()` IP count (`max_use_clientIP`, default 7); `validateVotingIpWithResponse()` in `store()` (latent, PBDIGIT-234; now fails closed, PBDIGIT-243); `ValidateVotingIp` middleware; `vote_post_check()` — off the final cast (demo-only at `store()`), but **on the real path at step 4**: `VoteController::verify()` calls it and it counts voted codes from the IP against `config('app.max_use_clientIP')` for real elections (corrected 2026-10-05, D-240-4; PBDIGIT-240 proposal §Q5); `ElectionVotingController::resolveIpBlock` (counts `step_1_ip`, never written — VE-15).
 - **Human decision:** Q3 (policy boundary → 2B); the PBDIGIT-240 design choice (verdict-only vs richer assessment, telemetry owner).
 - **Stories / commits:** PBDIGIT-239 Stage A `0578091f8`, Stage B `d90131361` · PBDIGIT-240 (open) · PBDIGIT-234 (open).
 
