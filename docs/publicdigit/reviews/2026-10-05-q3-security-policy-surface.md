@@ -144,7 +144,7 @@ That defines the boundary I3 needs ("One security authority; no IP / device chec
   - #8 whitelist in the authority (`TypeError`; hashed vs raw);
   - #5 env-unset refusal;
   - #4 `warn` mode, which redirects like `block` [S];
-  - #5 refusals cannot be rendered: `components.error_message` does not exist, so every step-4 `vote_post_check()` refusal throws and `verify()` answers with a generic `system` error [D, C4]. Recorded under the existing owner **PBDIGIT-233** (step-4 occurrence, open).
+  - #5 refusals cannot be rendered: `components.error_message` does not exist, so every step-4 `vote_post_check()` refusal throws and `verify()` answers with a generic `system` error [D, C4]. Owned by the dedicated item **PBDIGIT-245** (separate error-handling concern, not part of 2B-4).
 - **Test realism:** `ElectionIpRestrictionTest` passes on fixtures that write `step_1_ip`, a state production never produces.
 
 ## 10 · Proposed Security Policy Surface (Q3 boundary)
