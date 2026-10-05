@@ -1,6 +1,6 @@
 # ADR revision 3 (DRAFT) — Voting Authorization Boundary: ballot integrity (VE-01)
 
-**Date:** 2026-10-05 · **Status:** 🟡 **DRAFT — awaiting PO / ARB signature.** The frozen ADR is **not** modified by this draft. On approval, engineering applies §3 to the ADR verbatim, records the decision, and changes nothing else.
+**Date:** 2026-10-05 · **Status:** ✅ **SIGNED and APPLIED to the ADR (PO / ARB, 2026-10-05)** — record `2026-10-05-adr-revision-3-po-arb-decision-record.md`. *(Was: DRAFT rev 2 — principal-architect review applied, "approve with changes".)* The frozen ADR is **not** modified by this draft. On approval, engineering applies §3 to the ADR verbatim, records the decision, and changes nothing else.
 **Target:** `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` (APPROVED, frozen; currently revision 2)
 **Story:** `PBDIGIT-237` (VE-01)
 **Source of the decisions (consumed, not re-decided):** VE-01 design proposal `docs/publicdigit/reviews/2026-10-05-ve01-ballot-integrity-design-and-adr-amendment-proposal.md` §2–§6 (approved as design direction; amended I1 and I11–I13 **approved in principle** by the PO, 2026-10-05) · gate report `2026-10-05-voting-engine-verification-gate-report.md` §15–§18 · RED contract `tests/Feature/Voting/FinalCastBallotInvariantTest.php` (commit `785b8344d`).
@@ -31,7 +31,7 @@ The ADR's commit condition (I1) proves *who may cast* and *that participation is
 | R11 | §8 | consequence row for VE-01 | clarification |
 | R12 | traceability | VE-01 sources | administrative |
 
-**No new architectural decision is introduced.** Two points are made explicit because the ADR's existing rules require it — they are flagged for confirmation at signature (§5): the anonymity assessment (R10) and the demo scope (Q4 rule).
+**No new architectural direction is introduced; this revision formalizes previously approved VE-01 design decisions as ADR invariants** (the rows classed DECISION were approved in principle before this draft). Two points are made explicit and flagged for confirmation at signature (§5): the anonymity assessment (R10, an architectural constraint) and the demo scope (S2, which the existing Q4 decision does not cover by its wording).
 
 ## 3. Exact text to apply on approval
 
@@ -43,9 +43,9 @@ The ADR's commit condition (I1) proves *who may cast* and *that participation is
 
 | Concept | Question | Mechanism | Nature |
 |---|---|---|---|
-| **Ballot integrity** | *Is the content of this cast act a valid subset of the voter's authoritative ballot?* | pure comparison `SubmittedBallot` × `AuthoritativeBallot` → `ValidatedBallot` \| `BallotRejection` | derived, fresh, at the final cast |
+| **Ballot integrity** | *Is the content of this cast act valid according to the voter's authoritative ballot and all applicable ballot-integrity rules?* | pure evaluation `SubmittedBallot` × `AuthoritativeBallot` × ballot-integrity rules → `ValidatedBallot` \| `BallotRejection` | derived, fresh, at the final cast |
 
-> Ballot integrity is evaluated **beside** `forCast()`, not inside it: `forCast()` answers *may this attempt proceed?*, ballot integrity answers *is the content of the act valid?* `CastDecision`, `CastAttempt` and the reason vocabulary are unchanged. `SubmittedBallot` is the untrusted, normalised proposal from the session / request path; `AuthoritativeBallot` is assembled server-side from the election's ballot authority (today the *current ballot assembly authority*, `BallotAssemblyService`; the constitutional regional authority is decided separately — D6 / PBDIGIT-236); `ValidatedBallot` is a `SubmittedBallot` proven to be a valid subset of it.
+> Ballot integrity is evaluated **beside** `forCast()`, not inside it: `forCast()` answers *may this attempt proceed?*, ballot integrity answers *is the content of the act valid?* `CastDecision`, `CastAttempt` and the reason vocabulary are unchanged. `SubmittedBallot` is the untrusted, normalised proposal from the session / request path; `AuthoritativeBallot` is assembled server-side from the election's ballot authority (today the *current ballot assembly authority*, `BallotAssemblyService`; the constitutional regional authority is decided separately — D6 / PBDIGIT-236); `ValidatedBallot` is a **normalized `SubmittedBallot` that has been proven valid against the `AuthoritativeBallot` and all applicable ballot-integrity rules** — membership in the authoritative ballot is necessary but not sufficient (duplicates, maximum per post, abstention exclusivity and permission, not-answered semantics and electability are ballot-integrity rules too; their content lives in the VE-01 decision record, not in this ADR). `BallotValidator` owns **ballot validity**, not merely set membership, and is **domain-pure**: it does not query the database, read the session or request, access `User` or `ElectionMembership`, mutate state, consume participation or persist votes. **CastContext** (Organisation · User · Election · ElectionVoter) is an application / domain **context object** — the coherent snapshot used to evaluate one cast attempt — **not an aggregate**.
 
 ### R3 — §3.0 flow diagram (replace the cast line)
 
@@ -58,15 +58,15 @@ The ADR's commit condition (I1) proves *who may cast* and *that participation is
 
 ### R4 — §3.4 (replace the first sentence)
 
-> A cast commits **only** on `Allowed` **and** an existing `ValidatedBallot` **and** exactly-one-row compare-and-set **and** successful insert of exactly the validated content. Any other reason, any ballot rejection, any `\Throwable`, any missing input → rollback, no vote, `has_voted` unchanged, lock released, an audited **reason** (not an HTTP 500).
+> A cast commits **only** on `Allowed` **and** an existing `ValidatedBallot` **and** exactly-one-row compare-and-set **and** successful insert of exactly the validated content. Every other outcome fails closed — rollback, no vote, `has_voted` unchanged, lock released, never an HTTP 500 — with the outcome kept distinct: an authorization denial is a `CastDecision` reason; missing, malformed or invalid ballot content is a `BallotRejection`; an unexpected `\Throwable` is an internal failure (generic refusal, audited).
 
 ### R5 — §5 I1 (replace)
 
-> **I1** `Allowed` is the only reason that permits entry or a cast attempt; it is never persisted. `CastDecision = Allowed` alone does **not** commit a vote — the commit condition is `Allowed` ∧ a `ValidatedBallot` exists ∧ the CAS changed exactly one row ∧ the insert persists exactly the validated content ∧ the transaction commits (§3.4).
+> **I1** `Allowed` is the only reason that permits entry or a cast attempt; it is never persisted. `CastDecision = Allowed` alone does **not** commit a vote — a vote is committed **if and only if** `CastDecision = Allowed` ∧ a `ValidatedBallot` exists ∧ the CAS changes exactly one participation record ∧ exactly the `ValidatedBallot` content is persisted ∧ the transaction commits (§3.4). These are the necessary and sufficient conditions of a successful cast, not merely a sequence of steps.
 
 ### R6–R8 — §5 (append after I10)
 
-> **I11** Session, request or any other transport data is untrusted input. It may carry ballot state but never establishes ballot validity; validity is established only against the server-side authoritative ballot, at the final cast, whatever the transport.
+> **I11** Session, request or any other transport data is untrusted input. It may carry ballot state but never establishes ballot validity; validity is established only against the server-side authoritative ballot and the ballot-integrity rules, at the final cast, whatever the transport.
 >
 > **I12** Vote persistence (today `save_vote()`) accepts only a `ValidatedBallot`. It never accepts a raw request payload, session ballot, client candidacy ids or client post ids; stored ballot content is derived from validated content only.
 >
@@ -76,14 +76,14 @@ The ADR's commit condition (I1) proves *who may cast* and *that participation is
 
 | Component | Layer | Responsibility | Owns |
 |---|---|---|---|
-| `BallotValidator` (`SubmittedBallot`, `AuthoritativeBallot`, `ValidatedBallot`, `BallotRejection`) | Domain (Elections), framework-free | is the submitted content a valid subset of the authoritative ballot? | ballot-validity rules (VE-01 decisions D1–D3, D5, N1–N5) |
-| `AuthoritativeBallotQuery` (port) + adapter over the ballot assembly | Application port / infrastructure | provide the authoritative ballot for the CastContext | nothing beyond assembly; no duplicated assembly rules |
+| `BallotValidator` (`SubmittedBallot`, `AuthoritativeBallot`, `ValidatedBallot`, `BallotRejection`) | Domain (Elections), framework-free, pure (no database, session, request, `User` / `ElectionMembership` access, no state change) | is the submitted content valid according to the authoritative ballot and the ballot-integrity rules? | ballot validity (rules: VE-01 decision record D1–D3, D5, N1–N5) |
+| `AuthoritativeBallotQuery` (port) + adapter over the ballot assembly | Application port / infrastructure | obtain / build the authoritative ballot for the CastContext | the source of the authoritative ballot — **no ballot-validity rule** (validation stays in `BallotValidator`); no duplicated assembly rules |
 
 ### R10 — §7 (add row)
 
 | Mechanism | 1 | 2 | 3 | 4 | 5 | 6 | 7 | Verdict |
 |---|---|---|---|---|---|---|---|---|
-| Ballot integrity (`BallotValidator` at the final cast) | ✓ no voter field written | ✓ no new timestamp | ✓ **only if** a rejection reason is not logged with a ballot-side identifier (I8) | ✓ | ✓ the validated ballot contains only election-side ids | ✓ reads voter-side context (region, membership) to assemble the ballot; writes nothing voter-derived to the ballot (I10) | ✓ | **passes, with I8** |
+| Ballot integrity (`BallotValidator` at the final cast) | ✓ no voter field written | ✓ no new timestamp | ✓ **only if** a rejection reason is not logged with a ballot-side identifier (I8) | ✓ | ✓ the validated ballot contains only election-side ids | ✓ reads voter-side context (region, membership) to assemble the ballot; writes nothing voter-derived to the ballot (I10) | ✓ | **no new anonymity linkage is introduced by this design, provided rejection / audit telemetry obeys I8 and carries no voter ↔ ballot correlation** — an architectural constraint; compliance is proven by implementation evidence at GREEN |
 
 *Inherent and unchanged:* regional posts in a ballot reveal the voter's region, as today; the revision adds no new disclosure.
 
@@ -91,7 +91,7 @@ The ADR's commit condition (I1) proves *who may cast* and *that participation is
 
 | Phase | Consequence |
 |---|---|
-| VE-01 (after Phase 4) | ballot integrity at the final cast per I1, I11–I13; `forCast()`, CAS and demo behaviour unchanged (Q4 rule); separate GREEN authorisation (PBDIGIT-237) |
+| VE-01 (after Phase 4) | ballot integrity at the final cast per I1, I11–I13; `forCast()` and CAS unchanged; demo scope per S2; separate GREEN authorisation (PBDIGIT-237) |
 
 ### R12 — traceability (append)
 
@@ -105,17 +105,17 @@ The ADR's commit condition (I1) proves *who may cast* and *that participation is
 
 | # | Point | Draft position | Why it needs confirmation |
 |---|---|---|---|
-| S1 | Anonymity assessment R10 | passes, with I8 | a new assessment row (required by the ADR's own rule) |
-| S2 | Demo scope | ballot integrity applies to **real** elections; demo behaviour unchanged (existing Q4 rule) | the VE-01 proposal did not state the demo scope explicitly; this follows the Q4 rule, it does not decide Q4 |
+| S1 | Anonymity assessment R10 | no new linkage by design, **conditional** on I8-compliant rejection / audit telemetry; proven at GREEN | a new assessment row (required by the ADR's own rule); stated as a constraint, not a verdict |
+| S2 | Demo scope | ballot integrity applies to **real** elections; demo-election behaviour unchanged | **Explicit PO / ARB confirmation required — not derivable.** Q4 as decided (Phase 4 decision record: *demo elections remain excluded from `forEntry()` / `forCast()`*) covers the authorization boundary only; ballot integrity sits **beside** `forCast()`, so Q4's wording does not reach it. The Phase 3 record's rule (*Q4 is an explicit decision; implementation may not decide it silently*) means the demo scope of ballot integrity must be decided here, not assumed. |
 | S3 | Heading "Three" → "Four distinct concepts" | apply | wording consequence of R2 |
 
 ## 6. Decision (PO / ARB)
 
 | | |
 |---|---|
-| Decision | ☐ approve as drafted · ☐ approve with changes (listed below) · ☐ reject |
-| S1 / S2 / S3 | ☐ / ☐ / ☐ |
-| Changes | |
-| Decided by / date | |
+| Decision | ☒ **approve as drafted** · ☐ approve with changes (listed below) · ☐ reject |
+| S1 / S2 / S3 | ☒ confirmed / ☒ **real elections only, demo unchanged** / ☒ confirmed |
+| Changes | none — R11's "demo scope per S2" applied with the decided S2 wording |
+| Decided by / date | PO / ARB · 2026-10-05 · record `2026-10-05-adr-revision-3-po-arb-decision-record.md` · **applied to the ADR** |
 
 **On approval (engineering, documentation only):** apply §3 to the ADR verbatim · write the revision-3 decision record under `docs/publicdigit/reviews/` · update the VE-01 proposal status (ADR revision done) and PBDIGIT-237 · no code, no test change. **VE-01 GREEN still needs its own authorisation.**

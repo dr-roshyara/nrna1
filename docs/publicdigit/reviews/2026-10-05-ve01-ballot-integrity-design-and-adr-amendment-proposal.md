@@ -1,6 +1,6 @@
 # VE-01 — Ballot Integrity: design proposal and ADR amendment proposal
 
-**Date:** 2026-10-05 · **Story:** `PBDIGIT-237` · **Status:** 🟡 **APPROVED AS DESIGN DIRECTION (PO, 2026-10-05)** — CastContext approved; amended I1 and I11–I13 approved in principle; **formal ADR revision act pending**. Design only: no production code, no migration, no GREEN. The frozen ADR text is **not** modified by this document.
+**Date:** 2026-10-05 · **Story:** `PBDIGIT-237` · **Status:** 🟡 **APPROVED AS DESIGN DIRECTION (PO, 2026-10-05)** — CastContext approved; amended I1 and I11–I13 approved in principle; **ADR revision 3 signed and applied 2026-10-05** (record `2026-10-05-adr-revision-3-po-arb-decision-record.md`; demo scope S2: real elections only). Design only: no production code, no migration, no GREEN. The frozen ADR text is **not** modified by this document.
 **Amends (proposed):** `docs/publicdigit/adr/ADR_20261005_0950_Voting_Authorization_Boundary.md` — invariant I1 and the concept list in §3.0
 **Evidence:** `docs/publicdigit/reviews/2026-10-05-voting-engine-verification-gate-report.md` (T1, VE-01 RED contract) · `tests/Feature/Voting/BallotIntegrityCharacterizationTest.php` · `tests/Feature/Voting/FinalCastBallotInvariantTest.php`
 **Prepared by:** `claude-code-session:9e4925bb-4151-4185-9e9c-5831184e54eb` (self-declared, not attestable). Engineering proposes; the PO / ARB decides.

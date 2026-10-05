@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🔴 **OPEN — RED contract written; GREEN not authorized.** Design approved as direction; ADR revision act pending. |
+| **Status** | 🔴 **OPEN — RED contract written; GREEN not authorized.** Design approved as direction; **ADR revision 3 signed and applied 2026-10-05** (I1 amended, I11–I13; S2 = real elections only) — next gate: VE-01 GREEN authorization. |
 | **Finding (FACT [D], synthetic data)** | `VoteController::store()` commits whatever ballot is in the voter's session. Selections from another election, another post, another region, duplicates, over the maximum, non-electable candidacies and malformed entries are committed (`Vote::createResultsFromCandidates()` takes `post_id` / `candidacy_id` from the stored payload), change the published tally, and malformed ballots consume participation with a void vote. Referential integrity ≠ ballot integrity. |
 | **Decisions (PO, frozen)** | D1 only selections from the authoritative assembled ballot, each candidacy once · D2 `required_number` = maximum · D3 malformed → fail closed · D5 approved candidacies only (central, `BallotAssemblyService`) · N1–N5 abstention / not-answered rules |
 | **Open** | D6 regional authority → `PBDIGIT-236` (independent) · D4 historical forensics — D4.0 approved, D4.1 execution not authorized |

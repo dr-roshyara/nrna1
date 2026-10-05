@@ -1,6 +1,6 @@
 # ADR — Voting Authorization Boundary (`forEntry()` / `forCast()`)
 
-**Status: ✅ APPROVED — Phase 3 Authorization Boundary Design** (PO / ARB decision, 2026-10-05; record: `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`). **Architectural baseline only — frozen; no production implementation authorised.** Q1–Q7 are approval conditions / implementation prerequisites. Phase 3 of the roadmap — **design only**. Nothing here authorises production code, migrations, schema, routes, UI or behavioural change.
+**Status: ✅ APPROVED — Phase 3 Authorization Boundary Design** (PO / ARB decision, 2026-10-05; record: `docs/publicdigit/reviews/2026-10-05-phase3-authorization-boundary-po-arb-decision-record.md`). **Revision 3 (ballot integrity) APPROVED 2026-10-05** (record: `docs/publicdigit/reviews/2026-10-05-adr-revision-3-po-arb-decision-record.md`). **Architectural baseline only — frozen; no production implementation authorised.** Q1–Q7 are approval conditions / implementation prerequisites. Phase 3 of the roadmap — **design only**. Nothing here authorises production code, migrations, schema, routes, UI or behavioural change.
 **Created:** 2026-10-05 · **Roadmap:** `docs/plans/20261005-0647-voting-integrity-anonymity-and-authorization-roadmap-plan.md` (Phase 3; governance state §2a) · **Placement derived:** `doc-placement.php --scope=product-specific --domain=publicdigit` → `docs/publicdigit` (exit 0), `adr/` beside the other PublicDigit ADRs.
 
 **Evidence base (consumed, not restated):**
@@ -14,6 +14,8 @@
 > **What this ADR protects, in one line:** *Whether a voter may enter the voting process is decided fresh by the authorization boundary (admission inside entitlement, the lifecycle, and one security authority); whether a cast attempt is currently valid is determined by fresh authorization plus process validation, followed by atomic participation consumption — while the code process records facts and never grants authority.*
 
 > **Revision 2 (2026-10-05, PO review — precision pass, no redesign):** three distinct concepts (authorization ≠ process validation ≠ atomic participation consumption); the result of `forCast()` is a `CastDecision`, not "authorization"; the compare-and-set is **outside** any decision and the only authoritative "already voted"; `VotingSecurityDecision` is a **conceptual role** fulfilled by the existing Trust → Legitimacy chain (no new engine); Q3 reduced to deciding the policy boundary; new invariant I10; I6 qualified; Q4 (demo) a security-scope decision with a no-silent-change rule; Q5 as explicit options; implementation separately authorised per phase and per production edit group.
+
+> **Revision 3 (2026-10-05, PO / ARB — ballot integrity, VE-01 / PBDIGIT-237):** fourth concept *ballot integrity* beside `forCast()`; I1 amended (the commit condition requires a `ValidatedBallot` and persists exactly its content); new invariants I11 (transport data untrusted), I12 (vote persistence accepts only a `ValidatedBallot`), I13 (authorization and ballot validation both complete before the participation CAS, from one CastContext). Authorization semantics, `CastDecision` and its reason vocabulary, CAS semantics and the anonymity rules are unchanged. No implementation authorised by this revision.
 
 ---
 
@@ -42,13 +44,16 @@
 
 ## 3 · The boundary (recommended design)
 
-### 3.0 Three distinct concepts
+### 3.0 Four distinct concepts
 
 | Concept | Question | Mechanism | Nature |
 |---|---|---|---|
 | **Authorization** | *May this voter participate / cast now?* | `VotingEntitlement.decide()` (standing incl. admission, lifecycle) + the security role | derived, fresh |
 | **Process validation** | *Is this voting attempt / process state valid?* | code value matches, code step completed, agreement (Q5) | derived from process facts |
 | **Atomic participation consumption** | *Has this voter's participation already been consumed?* | compare-and-set `codes.has_voted` false → true | **database transition** — not a decision |
+| **Ballot integrity** | *Is the content of this cast act valid according to the voter's authoritative ballot and all applicable ballot-integrity rules?* | pure evaluation `SubmittedBallot` × `AuthoritativeBallot` × ballot-integrity rules → `ValidatedBallot` \| `BallotRejection` | derived, fresh, at the final cast |
+
+> Ballot integrity is evaluated **beside** `forCast()`, not inside it: `forCast()` answers *may this attempt proceed?*, ballot integrity answers *is the content of the act valid?* `CastDecision`, `CastAttempt` and the reason vocabulary are unchanged. `SubmittedBallot` is the untrusted, normalised proposal from the session / request path; `AuthoritativeBallot` is assembled server-side from the election's ballot authority (today the *current ballot assembly authority*, `BallotAssemblyService`; the constitutional regional authority is decided separately — D6 / PBDIGIT-236); `ValidatedBallot` is a **normalized `SubmittedBallot` that has been proven valid against the `AuthoritativeBallot` and all applicable ballot-integrity rules** — membership in the authoritative ballot is necessary but not sufficient (duplicates, maximum per post, abstention exclusivity and permission, not-answered semantics and electability are ballot-integrity rules too; their content lives in the VE-01 decision record, not in this ADR). `BallotValidator` owns **ballot validity**, not merely set membership, and is **domain-pure**: it does not query the database, read the session or request, access `User` or `ElectionMembership`, mutate state, consume participation or persist votes. **CastContext** (Organisation · User · Election · ElectionVoter) is an application / domain **context object** — the coherent snapshot used to evaluate one cast attempt — **not an aggregate**.
 
 `forEntry()` contains authorization only. `forCast()` = fresh authorization **+** process validation; its result is a **`CastDecision`**, not an "authorization". Neither of them decides "already voted": only the compare-and-set does.
 
@@ -74,10 +79,11 @@ Code: code value · can_vote_now (code step completed) · has_agreed_to_vote · 
 
 Flow:  GET code/create ─ forEntry ─▶ getOrCreateCode ─▶ POST code (code entry) ─ forEntry ─▶ can_vote_now
        ─▶ agreement ─▶ ballot ─(advisory forEntry)─▶ POST vote/verify
-       ─▶ BEGIN ─▶ forCast (fresh) ─ Allowed? ─▶ CAS codes.has_voted false→true ─ exactly 1 row? ─▶ INSERT anonymous vote ─▶ COMMIT
-          (decision)                             (consumption — outside any decision; 0 rows → reject)
-          any denial / \Throwable ─▶ ROLLBACK (no vote, has_voted stays false)
+       ─▶ BEGIN ─▶ forCast (fresh) ─ Allowed? ─▶ ballot validation ─ ValidatedBallot? ─▶ CAS codes.has_voted false→true ─ exactly 1 row? ─▶ INSERT validated anonymous vote ─▶ COMMIT
+          (decision)                            (ballot integrity)                     (consumption — outside any decision; 0 rows → reject)
+          any denial / rejection / \Throwable ─▶ ROLLBACK (no vote, has_voted stays false)
 ```
+*(The order of `forCast()` and ballot validation shown is the approved implementation direction, not a constitutional rule — see I13.)*
 
 ### 3.1 `forEntry()` — *may this voter enter or continue the voting process now?*
 - **Inputs:** voter, election, the attempt context (request IP as resolved by trusted infrastructure, device evidence if any).
@@ -103,7 +109,7 @@ The compare-and-set is **atomic participation consumption** (PBDIGIT-230), not p
 - **not a reason of any decision:** "participation already consumed" — the compare-and-set outcome (0 rows), reported by the cast command.
 
 ### 3.4 Fail-closed rule
-A cast commits **only** on `Allowed` **and** exactly-one-row compare-and-set **and** successful insert. Any other reason, any `\Throwable`, any missing input → rollback, no vote, `has_voted` unchanged, lock released, an audited **reason** (not an HTTP 500). Fixes F7 (PBDIGIT-232/233) belong to Phase 4.
+A cast commits **only** on `Allowed` **and** an existing `ValidatedBallot` **and** exactly-one-row compare-and-set **and** successful insert of exactly the validated content. Every other outcome fails closed — rollback, no vote, `has_voted` unchanged, lock released, never an HTTP 500 — with the outcome kept distinct: an authorization denial is a `CastDecision` reason; missing, malformed or invalid ballot content is a `BallotRejection`; an unexpected `\Throwable` is an internal failure (generic refusal, audited). Fixes F7 (PBDIGIT-232/233) belong to Phase 4.
 
 ### 3.5 Fresh vs cached
 | Decision | Navigation / advisory | `forEntry()` at code create / entry | `forCast()` |
@@ -126,7 +132,7 @@ A cast commits **only** on `Allowed` **and** exactly-one-row compare-and-set **a
 
 ## 5 · Invariants
 
-- **I1** `Allowed` is the only reason that permits entry or a cast attempt; it is never persisted. `CastDecision = Allowed` alone does **not** commit a vote — the commit condition is `Allowed` ∧ CAS changed exactly one row ∧ the vote insert succeeds ∧ the transaction commits (§3.4).
+- **I1** `Allowed` is the only reason that permits entry or a cast attempt; it is never persisted. `CastDecision = Allowed` alone does **not** commit a vote — a vote is committed **if and only if** `CastDecision = Allowed` ∧ a `ValidatedBallot` exists ∧ the CAS changes exactly one participation record ∧ exactly the `ValidatedBallot` content is persisted ∧ the transaction commits (§3.4). These are the necessary and sufficient conditions of a successful cast, not merely a sequence of steps.
 - **I2** Admission is evaluated once, inside `VotingEntitlement`; no other component restates it.
 - **I3** One security authority; no IP / device check outside it.
 - **I4** `forCast()` is evaluated in the cast transaction; nothing evaluated earlier authorises the cast.
@@ -136,6 +142,9 @@ A cast commits **only** on `Allowed` **and** exactly-one-row compare-and-set **a
 - **I8** No authorization or security outcome is logged together with a ballot-side identifier (interim anonymity rule).
 - **I9** The security policy is immutable from ReadyForVoting (like the admission policy) — the policy boundary itself is Q3.
 - **I10** Authorization and process decisions operate entirely on the voter / process side: they do **not** modify the `Vote` aggregate and introduce **no** voter-derived value into the ballot record.
+- **I11** Session, request or any other transport data is untrusted input. It may carry ballot state but never establishes ballot validity; validity is established only against the server-side authoritative ballot and the ballot-integrity rules, at the final cast, whatever the transport.
+- **I12** Vote persistence (today `save_vote()`) accepts only a `ValidatedBallot`. It never accepts a raw request payload, session ballot, client candidacy ids or client post ids; stored ballot content is derived from validated content only.
+- **I13** Authorization (`forCast()` → `Allowed`) and ballot validation (→ `ValidatedBallot`) both complete successfully **before** the participation CAS, and both derive from **one CastContext** (Organisation · User · Election · ElectionVoter). Their relative order is not constitutional.
 
 ## 6 · Authority / responsibility model
 
@@ -148,6 +157,8 @@ A cast commits **only** on `Allowed` **and** exactly-one-row compare-and-set **a
 | `VotingAuthorization` (`forEntry`, `forCast`) | Application service | compose, order, fail closed | reason vocabulary; **no state** |
 | Code process (`CodeController`, `Code`) | voting process | record process facts | `can_vote_now`, agreement, `has_voted` |
 | Cast transaction (`VoteController::store`) | voting process | transaction, **atomic participation consumption (CAS)**, anonymous insert | consumes `CastDecision`; owns the authoritative "already voted" |
+| `BallotValidator` (`SubmittedBallot`, `AuthoritativeBallot`, `ValidatedBallot`, `BallotRejection`) | Domain (Elections), framework-free, pure (no database, session, request, `User` / `ElectionMembership` access, no state change) | is the submitted content valid according to the authoritative ballot and the ballot-integrity rules? | ballot validity (rules: VE-01 decision record D1–D3, D5, N1–N5) |
+| `AuthoritativeBallotQuery` (port) + adapter over the ballot assembly | Application port / infrastructure | obtain / build the authoritative ballot for the CastContext | the source of the authoritative ballot — **no ballot-validity rule** (validation stays in `BallotValidator`); no duplicated assembly rules |
 
 ## 7 · Anonymity-boundary assessment (interim rule, 7 points)
 
@@ -160,6 +171,9 @@ A cast commits **only** on `Allowed` **and** exactly-one-row compare-and-set **a
 | Security-policy boundary + lock (Q3) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | **passes** |
 | IP evidence in `VotingSecurityDecision` (IP density today) | ✓ | ✓ | ✗ today: the cast already logs vote id + IP (A1) | ✓ | ✓ | ✓ | ✓ | **no new path**, but must not add new IP logging |
 | IP binding (Phase 7) | ✓ | ✓ | ✗ stores voter-side IP while A1 pairs vote id + IP | ✓ | ✓ | ✗ (voter IP ⋈ logged ballot IP) | ✓ | **fails today → blocked until PBDIGIT-225 / Phase 2.0** |
+| Ballot integrity (`BallotValidator` at the final cast) | ✓ no voter field written | ✓ no new timestamp | ✓ **only if** a rejection reason is not logged with a ballot-side identifier (I8) | ✓ | ✓ the validated ballot contains only election-side ids | ✓ reads voter-side context (region, membership) to assemble the ballot; writes nothing voter-derived to the ballot (I10) | ✓ | **no new anonymity linkage is introduced by this design, provided rejection / audit telemetry obeys I8 and carries no voter ↔ ballot correlation** — an architectural constraint; compliance is proven by implementation evidence at GREEN |
+
+*Inherent and unchanged:* regional posts in a ballot reveal the voter's region, as today; revision 3 adds no new disclosure.
 
 ## 8 · Consequences for Phases 4–8
 
@@ -171,6 +185,7 @@ A cast commits **only** on `Allowed` **and** exactly-one-row compare-and-set **a
 | 7 IP binding | blocked until the §7 assessment passes (PBDIGIT-225 / Phase 2.0) |
 | 8 Device binding | deferred; would be one more policy inside the single security authority |
 | Phase 2.0 | unaffected: this ADR adds no ballot-side data and does not choose Model A / B |
+| VE-01 (after Phase 4) | ballot integrity at the final cast per I1, I11–I13; `forCast()` and CAS unchanged; demo scope: **real elections only — demo-election behaviour unchanged (S2, PO / ARB 2026-10-05)**; separate GREEN authorisation (PBDIGIT-237) |
 
 ## 9 · Open questions (PO / ARB)
 
@@ -188,4 +203,4 @@ Adopt §3 as the target boundary: one stateless `VotingAuthorization` compositio
 
 **After PO / ARB approval of this ADR, implementation still requires separate authorisation per phase (4, 5, 6) and per production edit group**, with the answers to Q1–Q7 and the anonymity-boundary checklist applied to each change.
 
-**Traceability:** roadmap Phase 3 · SR rev 9 · Phase 1 evidence (Gate 1 ACCEPTED) · ADR_20261004_1549 · PBDIGIT-223 … 233 · `tests/Feature/Election/VotingProcessEntitlementBoundaryTest.php` · `tests/Feature/Characterization/Phase1/`.
+**Traceability:** roadmap Phase 3 · SR rev 9 · Phase 1 evidence (Gate 1 ACCEPTED) · ADR_20261004_1549 · PBDIGIT-223 … 233 · `tests/Feature/Election/VotingProcessEntitlementBoundaryTest.php` · `tests/Feature/Characterization/Phase1/` · VE-01: PBDIGIT-237, design proposal `2026-10-05-ve01-ballot-integrity-design-and-adr-amendment-proposal.md`, gate report §15–§18, `tests/Feature/Voting/FinalCastBallotInvariantTest.php`, revision-3 decision record `docs/publicdigit/reviews/2026-10-05-adr-revision-3-po-arb-decision-record.md`.
