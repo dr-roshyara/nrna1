@@ -9,7 +9,21 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-01 *(additive — the **PBDIGIT inventory baseline CLOSED WITH KNOWN GOVERNANCE ITEMS** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **VE-01 ballot integrity (PBDIGIT-237)** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 late, **VE-01 ballot integrity — `PBDIGIT-237` · RED written · GREEN NOT authorised**)
+
+| | |
+|---|---|
+| 🎯 **Active story** | **`PBDIGIT-237`** — the final cast commits the session ballot without checking it against the voter's ballot (VE-01, critical, proven T1). **`PBDIGIT-236`** = D6 regional ballot authority — separate, open |
+| 🚦 **Current gate** | **D4.1 authorization** — D4.0 schema verification + query set **approved**; SQL validated on the empty test DB (13/13 EXPLAIN, read-only proven). Execution against election data **not authorised** (needs environment: staging if representative, else production read-only role; via `psql`) |
+| 🔒 **Frozen** | D1–D3, D5 (approved candidacies only), N1–N5 |
+| 🟡 **Open** | D6 (`PBDIGIT-236`) · ADR revision act (amended I1, I11–I13 approved in principle) |
+| ⛔ **Not authorised** | VE-01 GREEN · T2–T9 · historical data repair · Track B (CodeController real/demo) edits |
+| 📄 **Artifacts (committed, VE-01 RED + docs)** | `tests/Feature/Voting/{BallotIntegrityCharacterizationTest, FinalCastBallotInvariantTest}.php` · `docs/publicdigit/reviews/2026-10-05-{voting-engine-verification-gate-report, ve01-ballot-integrity-design-and-adr-amendment-proposal, d4-forensic-schema-verification-and-query-set, complete-voting-engine-business-audit}.md` · PBDIGIT-236/237 + README rows · guide `developer_guide/election/final_cast/05_…` |
+| ❓ **Next** | PO: D4.1 environment + authorization → D6 decision → ADR revision act → GREEN authorization (engineering recommends D4/D6 not block GREEN — PO to decide) |
 
 ---
 
