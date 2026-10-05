@@ -44,8 +44,9 @@ Demo elections are excluded from `forCast()` and the CAS (Q4); they normally use
 | [02_e2_cast_decision.md](./02_e2_cast_decision.md) | E2 | `VotingAuthorization::forCast()` → `CastDecision`: order, 14-reason vocabulary, `CastAttempt` facts, security verdict as a fact |
 | [03_e3_cast_enforcement.md](./03_e3_cast_enforcement.md) | E3 | `store()` decides through `forCast()` for real elections; reasoned refusals; `vote_post_check()` demo-only |
 | [04_e4_atomic_participation_consumption.md](./04_e4_atomic_participation_consumption.md) | E4 | The compare-and-set on `codes.has_voted` before the vote insert; placement; rollback; evidence and its limits |
-| [05_ve01_ballot_integrity_red_and_design.md](./05_ve01_ballot_integrity_red_and_design.md) | VE-01 (after Phase 4) | Ballot integrity: the defect, the RED contract, frozen decisions, the approved target design — **GREEN not authorised** (PBDIGIT-237) |
+| [05_ve01_ballot_integrity_red_and_design.md](./05_ve01_ballot_integrity_red_and_design.md) | VE-01 (after Phase 4) | Ballot integrity: the defect, the RED contract, frozen decisions, the approved target design (PBDIGIT-237; GREEN → 07) |
 | [06_log_anonymity_receipt_secret.md](./06_log_anonymity_receipt_secret.md) | PBDIGIT-241 | No receipt secret and no voter↔ballot pair in one log entry; the rule for new logging; A8 still open |
+| [07_ve01_ballot_integrity_green.md](./07_ve01_ballot_integrity_green.md) | VE-01 GREEN | `BallotValidator` beside `forCast()` before the CAS; only a `ValidatedBallot` is persisted (`saveValidatedVote()`); D5 in `BallotAssemblyService`; GREEN `33bef9f7d` (PBDIGIT-237) |
 
 ## Commits
 

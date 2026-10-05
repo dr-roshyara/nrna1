@@ -9,7 +9,19 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-05 *(additive — the **CodeController boundary + entry authorization (PBDIGIT-238 / 239 / 240)** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **VE-01 GREEN (PBDIGIT-237)** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 night, **VE-01 ballot integrity GREEN — PBDIGIT-237 RESOLVED**)
+
+| | |
+|---|---|
+| ✅ **PBDIGIT-237** (VE-01) | ADR revision 3 `22c3e5f40` · GREEN `33bef9f7d`: real-election final cast validates the session ballot against the authoritative ballot (`BallotValidator`, `AuthoritativeBallotQuery` over `BallotAssemblyService`) after `forCast()` and before the CAS; only a `ValidatedBallot` is persisted (`saveValidatedVote()`); D5 approved-only; demo unchanged. `FinalCastBallotInvariantTest` 22/22; 97-suite regression vs `22c3e5f40`: 0 pass → fail, 334 failures unchanged. Guide `final_cast/07` |
+| 🔒 **Decisions in force** | missing regional list = empty · 8 `BallotIntegrityCharacterizationTest` cases kept · B2 / R4-4 use a throwing `Vote::created` double · D6 still open (`users.region` interim) |
+| 🆕 **Backlog** | `PBDIGIT-242` — fully empty real ballot accepted as a participation-only vote (decision needed) |
+| 🧭 **Agreed order (next)** | final-cast exit story (membership redirect reachable, IP-validation exit latent) → completion matrix (parallel) → PBDIGIT-240 → Q3 / 2B → F-V4 → R3 · A8 decision |
+| ❓ **Next** | PO: authorise the final-cast exit story (RED first) · decisions D6 (PBDIGIT-236), A8, PBDIGIT-242, D4.1 environment, Q3 |
 
 ---
 
