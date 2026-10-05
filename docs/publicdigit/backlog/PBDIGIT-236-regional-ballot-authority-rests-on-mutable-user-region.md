@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **OPEN — architecture decision required (D6).** Not authorised for implementation. |
+| **Status** | 🟡 **OPEN — architecture decision required (D6).** Not authorised for implementation. Decision analysis approved as decision basis; **recommended option C** (election-specific region on `ElectionMembership`, frozen at `ReadyForVoting`, mandatory post-side companion rule) — formal PO / ARB decision and Q1–Q6 pending: `docs/publicdigit/reviews/2026-10-05-d6-regional-ballot-authority-decision-analysis.md`. |
 | **Finding (FACT [S])** | `BallotAssemblyService::buildRegionalPosts()` selects regional posts by `posts.state_name = trim(users.region)`. `users.region` is a free-text, nullable attribute of the **user** (`create_uuid_users_table.php:15`, nullable since `2026_04_06_200001`), written at registration, by user import, set to `''` by social login (no regional posts), and editable afterwards; `ElectionMembership` has no region; nothing snapshots the region when a ballot is issued. `residence_geo_unit_id` exists in the Membership context but is not used by ballot assembly. |
 | **Consequence** | The regional ballot is f(current `users.region`). If the region changes during a voting session, the ballot the voter saw and the ballot the final cast would validate against can differ (inference [I]). Regional eligibility is not election-specific. |
 | **Options** | (a) current `users.region` at cast (today's behaviour) · (b) a region snapshot at ballot issue / code verification, stored voter-side · (c) an election-specific region on the membership (`ElectionMembership`) · (d) a geo-unit based model (`residence_geo_unit_id`) |
