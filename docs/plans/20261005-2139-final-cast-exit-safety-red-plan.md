@@ -1,6 +1,6 @@
 # Plan — Final-cast exit safety, RED only (PBDIGIT-243)
 
-**Status:** RED authorised (PO 2026-10-05) · GREEN not authorised · **Story:** `docs/publicdigit/backlog/PBDIGIT-243-final-cast-exits-that-bypass-fail-closed.md`
+**Status:** ✅ complete — RED `da54c03c5`, GREEN authorised and applied (PO 2026-10-05) · **Story:** `docs/publicdigit/backlog/PBDIGIT-243-final-cast-exits-that-bypass-fail-closed.md`
 
 ## Objective
 
@@ -32,6 +32,8 @@ F-V9 (real-election review) and Phase 4 audit F7/F9. The two exits sit at differ
 ## Progress
 
 RED run 2026-10-05: Exit A characterization passes at HEAD (the trait rolls back itself; lock untouched; nothing consumed). Exit B precondition proven (`Vote/VoteDenied`, "IP Address Mismatch"); **RED** — transaction level 2 vs baseline 1 (leaked), lock still held; nothing consumed. No production change.
+
+GREEN 2026-10-05 (PO-authorised): `failCastClosed()` before `return $ipValidation` (3 lines). `FinalCastExitSafetyTest` 3/3; Phase 4 suites 4/4, 7/7, 6/6; 97-suite regression unchanged from `33bef9f7d` (579 / 334 / 19, no status change). **Plan complete.**
 
 ## Risks
 

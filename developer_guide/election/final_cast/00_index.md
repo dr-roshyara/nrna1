@@ -47,6 +47,7 @@ Demo elections are excluded from `forCast()` and the CAS (Q4); they normally use
 | [05_ve01_ballot_integrity_red_and_design.md](./05_ve01_ballot_integrity_red_and_design.md) | VE-01 (after Phase 4) | Ballot integrity: the defect, the RED contract, frozen decisions, the approved target design (PBDIGIT-237; GREEN → 07) |
 | [06_log_anonymity_receipt_secret.md](./06_log_anonymity_receipt_secret.md) | PBDIGIT-241 | No receipt secret and no voter↔ballot pair in one log entry; the rule for new logging; A8 still open |
 | [07_ve01_ballot_integrity_green.md](./07_ve01_ballot_integrity_green.md) | VE-01 GREEN | `BallotValidator` beside `forCast()` before the CAS; only a `ValidatedBallot` is persisted (`saveValidatedVote()`); D5 in `BallotAssemblyService`; GREEN `33bef9f7d` (PBDIGIT-237) |
+| [08_exit_safety_ip_binding_exit.md](./08_exit_safety_ip_binding_exit.md) | PBDIGIT-243 | Exit A (fresh membership) already rolls back — characterization; Exit B (IP binding) now fails closed: transaction rolled back, lock released |
 
 ## Commits
 

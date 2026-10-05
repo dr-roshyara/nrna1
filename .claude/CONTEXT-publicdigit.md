@@ -9,7 +9,17 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
-**Updated:** 2026-10-05 *(additive — the **VE-01 GREEN (PBDIGIT-237)** block is the newest)*
+**Updated:** 2026-10-05 *(additive — the **final-cast exit safety (PBDIGIT-243)** block is the newest)*
+
+---
+
+## 📍 UPDATE (2026-10-05 night, **PBDIGIT-243 RESOLVED — final-cast exits fail closed**)
+
+| | |
+|---|---|
+| ✅ **PBDIGIT-243** (F-V9) | RED `da54c03c5` · GREEN: Exit B (`validateVotingIpWithResponse()`, after the lock) now calls `failCastClosed()` — transaction rolled back, lock released; latent until `users.voting_ip` exists (PBDIGIT-234). Exit A (fresh membership, before the lock) already rolled back itself — kept as a characterization. Evidence: `FinalCastExitSafetyTest` 3/3, Phase 4 suites 4/4 · 7/7 · 6/6, 97-suite regression unchanged from `33bef9f7d` (579 / 334 / 19, no status change). Guide `final_cast/08` |
+| 🧭 **Agreed order (next)** | completion matrix (parallel) → PBDIGIT-240 (Stage C) → Q3 / 2B → F-V4 → R3 |
+| ❓ **Next** | PO: authorise the next item (completion matrix or PBDIGIT-240 decision: verdict-only vs richer assessment, telemetry owner) · decisions A8 / A5 / A6, D6 (PBDIGIT-236), PBDIGIT-242, D4.1 |
 
 ---
 

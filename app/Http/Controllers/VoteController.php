@@ -1735,6 +1735,9 @@ private function trackSovereigntyDivergence(
          // IP validation - single line replacement
             $ipValidation = validateVotingIpWithResponse();
             if ($ipValidation instanceof \Inertia\Response) {
+                // PBDIGIT-243: fail closed — roll back the cast transaction and release this path's lock.
+                $this->failCastClosed($outerTransactionLevel, $lock, $lockAcquired);
+
                 return $ipValidation; // Returns the denial response
             }
 
