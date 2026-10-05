@@ -25,11 +25,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 
 /**
- * Clean CodeController for Slug-Based Voting System
+ * CodeController — the code step of the slug-based voting journey (real elections only, PBDIGIT-238).
  *
- * Core Principle: can_vote_now field is the single source of truth
- * - can_vote_now = 0: User needs to verify code
- * - can_vote_now = 1: User verified, can proceed to agreement
+ * codes.can_vote_now is code-process state — "has the code verification step been completed?":
+ * - can_vote_now = 0: the voter still needs to verify the code
+ * - can_vote_now = 1: the code step is completed; the voter can proceed to the agreement
+ * It is NOT authorization: entry authorization is VotingAuthorization::forEntry() (VotingEntitlement +
+ * the one Security Verdict Authority, PBDIGIT-239); participation is consumed only by the final cast's
+ * compare-and-set on codes.has_voted.
  */
 class CodeController extends Controller
 {
@@ -714,10 +717,11 @@ class CodeController extends Controller
     /**
      * Entry authorization at the code step (ADR_20261005_0950 §3.1, PBDIGIT-239).
      *
-     * E2 first, by design: the security fact is obtained from the ONE Security Verdict Authority and handed
-     * to VotingAuthorization::forEntry(), which adds E1 (fresh entitlement decide()) — forEntry() never
-     * obtains or manufactures the verdict. Returns null when allowed; otherwise a refusal. Any \Throwable
-     * fails closed with a generic refusal (never HTTP 500).
+     * The security verdict is obtained from the ONE Security Verdict Authority and supplied to
+     * VotingAuthorization::forEntry(); this controller does not manufacture or interpret it. forEntry()
+     * evaluates E1 (fresh entitlement decide()) before applying the supplied E2 verdict — first failure wins.
+     * Returns null when allowed; otherwise a refusal. Any \Throwable fails closed with a generic refusal
+     * (never HTTP 500).
      */
     private function refuseEntry(Request $request, User $user, Election $election)
     {
