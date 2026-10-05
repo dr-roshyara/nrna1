@@ -164,7 +164,7 @@
 - **Enforcement point [S]:** real path → `saveValidatedVote(ValidatedBallot …)`, which builds the payload from validated content and calls the existing writer; the demo path keeps `save_vote($vote_data)` (S2: demo out of scope).
 - **Tests [D]:** `FinalCastBallotInvariantTest.php` (valid ballots persisted; two regional persistence characterizations: exact result rows) — enforcement + characterization.
 - **Enforces / observes:** enforces on the real final cast. That `saveValidatedVote()` is the only real-path caller is established by source reading [S], not by an architecture test.
-- **Remaining gap:** `save_vote()` remains public and accepts arrays; nothing but the call site keeps real persistence on the validated path [S/I].
+- **Remaining gap:** none within I12's scope (the real final-cast path). *Separate concern, outside I12 (PO review 2026-10-05):* `save_vote()` remains public and accepts arrays for the demo / legacy paths; on the real path only the call site keeps persistence on the validated route [S/I].
 - **Human decision:** none.
 - **Stories / commits:** PBDIGIT-237 `33bef9f7d`.
 
