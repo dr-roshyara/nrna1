@@ -136,6 +136,9 @@ create()   resolve context (getUser, getElection: real boundary R1, voter slug)
            → verdict = VotingSecurityVerdictQuery::verdictFor(context)        (the only E2 source)
            → forEntry(EntryAttempt(voter, election, verdict))
            → denied: redirectToDashboard(reason message) — no session write, no Code read, no getOrCreateCode(), no e-mail
+             [CORRECTION 2026-10-05, after tenant decision (a): "no session write" no longer holds — the tenant binding
+              runs before the verdict, so on denial the election's organisation may already be bound as tenant.
+              Still true: no Code access, no code creation / regeneration, no e-mail.]
            → allowed: unchanged flow (session write 65, Code read 75, has_voted guard, getOrCreateCode() …)
 
 store()    resolve context → basic non-domain input validation (voting_code required, size 8)   (review amendment 2)

@@ -30,7 +30,7 @@ Process guards outside it: code value · code validity window · early has_voted
 ## Design decisions
 
 - **One Security Verdict Authority (Stage A).** The adapter is an *extraction* of the final cast's inline assessment. Invariant: for every characterized valid context it produces exactly the verdict of the inline Phase-4 path, with no evidence, policy, threshold, tenant or exception semantics added or removed. The only transformations: request IP / fingerprint / session id / user / election come from the context.
-- **E2 before E1, on purpose.** The caller gets the verdict from the port and hands it to `forEntry()`; `forEntry()` never obtains or manufactures one (its constructor depends on the entitlement port only). So an entitlement denial may still produce security telemetry.
+- **The verdict is supplied, the decision is E1 then E2.** The controller obtains the security verdict from the one Security Verdict Authority *before* calling `forEntry()` and supplies it in the `EntryAttempt`; the controller does not manufacture or interpret it. `forEntry()` itself evaluates **E1 entitlement first**, then applies the supplied E2 verdict — first failure wins. Because the verdict is obtained before the call, an entitlement denial may still have produced security telemetry. `forEntry()` never obtains a verdict (its constructor depends on the entitlement port only).
 - **Tenant (decision (a), transitional).** The density count is tenant-scoped, as in the final cast. `create()` keeps its existing tenant binding before the verdict; `store()` now binds the election's organisation itself (request context, not authorization) instead of relying on an earlier request. The adapter binds no tenant.
 - **`store()` validates input first** — no security evaluation for a malformed code.
 
@@ -67,7 +67,9 @@ $authorization = (new VotingAuthorization(app(EloquentVotingEntitlementQuery::cl
     ->forEntry(new EntryAttempt(voterId: $user->id, electionId: $election->id, security: $verdict));
 ```
 
-A denial redirects to the dashboard with a per-reason message; any `\Throwable` gives a generic refusal — never HTTP 500, no code created, verified or sent. Log lines carry ids and the reason only.
+A denial redirects to the dashboard with a per-reason message; any `\Throwable` gives a generic refusal — never HTTP 500. On denial there is **no Code access, no code creation / regeneration, no verification and no e-mail**. The election's organisation **may already be bound as tenant** (`create()` binds it before `refuseEntry()`, `store()` at its start — decision (a) / option (ii)); that is request context, not a state change of the voting process. Log lines carry ids and the reason only.
+
+**Not the only gate yet.** `forEntry()` is the authoritative entry-authorization boundary, but the legacy `isUserEligible()` still runs after it in `create()` and `store()` (slug present → true; otherwise `users.can_vote`) as a transitional defense-in-depth gate until R3. Middleware (`ensure.election.voter`, `vote.eligibility`) also still runs as navigation guards (Q6).
 
 ## How to use / extend
 
@@ -91,5 +93,7 @@ php artisan test tests/Feature/Voting/CodeEntryAuthorizationTest.php
 - **Known whitelist defects** (`ip_whitelist` cast to array but `json_decode()`d; hashed IP compared with raw entries): a non-empty whitelist makes the chain throw — at entry that is a fail-closed refusal. Not fixed here.
 - **VoteController still has its own inline assessment** — it needs the four-valued outcome and the trust envelope (PBDIGIT-240). If you change that block, update the oracle in `VotingSecurityVerdictAdapterTest` in the same change.
 - The security event written by `evaluate()` now also occurs at the code step (voter-side; no ballot data, no code value).
+- **Stale comments in `CodeController`** (not changed in this story): the class header still says *"can_vote_now field is the single source of truth"* — obsolete: `can_vote_now` is code-process state, authorization is `VotingEntitlement` + `VotingAuthorization`, participation is the final CAS (R4 target `Code::isVerified()`); and the `refuseEntry()` docblock says *"E2 first"* — read it as "the verdict is obtained first"; the decision order is E1 then E2 (above).
+- Sensitive logging remains in `CodeController` (`$request->all()` in `submitAgreement()`, e-mail addresses, the client IP on the `verifyCode()` IP-limit warning) — sensitive-logging follow-up, not this story.
 
 **Traceability:** PBDIGIT-239 · PBDIGIT-240 · ADR_20261005_0950 §3.0, §3.1, §3.5, I2, I3 · audit VE-07, C1, F4, F-C2.
