@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 `OPEN` — **RED written (PO-authorised 2026-10-05)**; GREEN not authorised |
+| **Status** | 🟢 **RESOLVED (2026-10-05)** — RED `902060e92` · GREEN: `Ipv4Whitelist` (pure, IPv4 CIDR + exact, malformed → no match) used in `TrustPolicyEvaluator::evaluate()` on the raw IP; the evidence carries only the IP hash when whitelisted; `json_decode` removed. `SecurityWhitelistPolicyTest` 10/10; C1 and the two `VotingSecurityVerdictAdapterTest` known-defect tests replaced (PO-approved) by W1–W9 and a07; 97-suite regression 583/333/19 → 582/333/19, no pass → fail. Guide `developer_guide/election/final_cast/10_ip_whitelist_raw_cidr.md` |
 | **RED evidence (2026-10-05, uncommitted)** | `tests/Feature/Voting/SecurityWhitelistPolicyTest.php`: W1–W6 RED (`TypeError` in `json_decode`), W7 RED (cast refused), W8 RED (code step 302); controls W6b, W9 pass |
 | **Defect (FACT [S] / [D])** | `TrustPolicyEvaluator::buildNetworkEvidence()` calls `json_decode()` on `ip_whitelist`, which the model already casts to an array, so a non-empty whitelist throws a `TypeError`. Both consumers then refuse fail-closed: the code step (`forEntry`) and the final cast (`store`). `NetworkTrustEvidence::isWhitelisted()` also compares the **hashed** request IP with **raw** list entries, so even without the `TypeError` nothing would match. Net effect: **configuring a whitelist blocks voting** instead of exempting networks |
 | **Decision (Q3-D5)** | **Raw CIDR.** The list holds raw IPv4 CIDR ranges / exact IPs. The authority matches the raw request IP **inside the authority**; only the fact *whitelisted yes / no* enters the evidence. The raw IP must not appear in envelope, snapshot or security event |

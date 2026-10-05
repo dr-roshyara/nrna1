@@ -259,37 +259,18 @@ class VotingSecurityVerdictAdapterTest extends TestCase
 
     // ── KNOWN DEFECTS — characterization only · NOT target behaviour · NOT a security policy · NOT a GREEN acceptance criterion
 
-    public function test_known_defect_whitelisted_ip_allowed_policy_is_not_characterizable_today(): void
-    {
-        // Approved policy intent: a whitelisted IP is Allowed (NetworkBindingPolicy).
-        // Not reachable on this path at HEAD, for two reasons read in source:
-        //  (1) TrustPolicyEvaluator.php:140 json_decode()s ip_whitelist, which Election.php:214 casts to array → TypeError;
-        //  (2) NetworkTrustEvidence.php:19–23 compares the HASHED current IP against the raw whitelist entries
-        //      (in_array strict) — even a decodable whitelist could never match.
-        $this->markTestSkipped('Whitelist policy not characterizable on the inline path at HEAD — two known defects (see test body); separate backlog item.');
-    }
+    // The two known-defect whitelist tests (TypeError; hashed vs raw) are REPLACED by PBDIGIT-246
+    // (PO-approved 2026-10-05). The whitelist contract lives in SecurityWhitelistPolicyTest; here only
+    // the extraction equivalence is kept for a whitelisted context.
 
-    public function test_known_defect_a_non_empty_ip_whitelist_makes_the_chain_throw_and_the_adapter_must_not_hide_it(): void
+    public function test_a07_a_whitelisted_ip_above_the_limit_is_allowed_equally_by_adapter_and_oracle(): void
     {
-        // KNOWN DEFECT CHARACTERIZATION ONLY. Pinned so that Stage A cannot change it silently; fixing it is a separate,
-        // decided item — when it is fixed, this test is replaced, not "kept green".
         // Fixture written with the query builder: the election is voting, and the PBDIGIT-244 model guard
-        // (I9) refuses security-policy writes on a locked election (PO-approved fixture adaptation 2026-10-05).
+        // (I9) refuses security-policy writes on a locked election.
         \Illuminate\Support\Facades\DB::table('elections')->where('id', $this->election->id)
             ->update(['ip_whitelist' => json_encode(['10.77.0.0/16'])]);
-        $election = $this->election->fresh();
-        $user = $this->voter();
-        $context = $this->contextFor($user, $election);
+        $this->votedFrom(self::IP, 4);   // above the effective unverified limit (3)
 
-        $inlineError = null;
-        try {
-            $this->inlineVerdict($context, $election, $user);
-        } catch (\Throwable $e) {
-            $inlineError = get_class($e);
-        }
-        $this->assertSame(\TypeError::class, $inlineError, 'precondition: today the inline chain throws a TypeError');
-
-        $this->expectException(\TypeError::class);
-        $this->adapterVerdict($context);
+        $this->assertEquivalent(SecurityVerdict::Allowed, $this->voter(), $this->election->fresh(), 'a07 whitelisted');
     }
 }

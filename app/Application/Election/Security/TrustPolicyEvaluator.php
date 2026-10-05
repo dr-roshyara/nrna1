@@ -4,6 +4,7 @@ namespace App\Application\Election\Security;
 
 use App\Domain\Election\Security\DeviceTrustContext;
 use App\Domain\Election\Security\FingerprintMatchType;
+use App\Domain\Election\Security\Ipv4Whitelist;
 use App\Domain\Election\Security\NetworkTrustEvidence;
 use App\Domain\Election\Security\Simplified\ParticipationEligibilityEvidence;
 use App\Domain\Election\Security\TrustEvaluationEnvelope;
@@ -38,15 +39,17 @@ class TrustPolicyEvaluator
         ?int      $votesFromThisIp = null,
     ): TrustEvaluationEnvelope
     {
-        // Step 1: Hash evidence (raw IP never reaches any other method)
+        // Step 1: Hash evidence (raw IP never reaches any other method — the one exception is the
+        // whitelist match below, which needs the raw address and returns only a boolean; Q3-D5, PBDIGIT-246)
         $ipHash = $this->privacyPolicy->hashIp($rawIp, $election?->id ?? 'demo');
         $fpHash = $rawFingerprint ? $this->privacyPolicy->hashFingerprint($rawFingerprint, $election?->id ?? 'demo') : null;
+        $whitelisted = $election !== null && Ipv4Whitelist::fromEntries($election->ip_whitelist)->contains($rawIp);
 
         // Step 2: Build TrustCapabilityContext from hashed facts
         $ctx = new TrustCapabilityContext(
             election: $election,
             user: $user,
-            network: $this->buildNetworkEvidence($election, $ipHash, $registeredIpHash, $votesFromThisIp),
+            network: $this->buildNetworkEvidence($election, $ipHash, $registeredIpHash, $votesFromThisIp, $whitelisted),
             device: $this->buildDeviceContext($fpHash, $user),
             attestation: $this->buildAttestationRecord($election, $user),
             sessionContinuity: $this->buildSessionContinuity($sessionId, $ipHash, $registeredIpHash ?? $ipHash, $election),
@@ -132,12 +135,15 @@ class TrustPolicyEvaluator
         string    $ipHash,
         ?string   $registeredIpHash = null,
         ?int      $votesFromThisIp = null,
+        bool      $whitelisted = false,
     ): NetworkTrustEvidence
     {
         $maxVotesPerIp = $election?->max_votes_per_ip ?? 6;
         $votes = $votesFromThisIp ?? 0; // Use provided value or default to 0
         $restrictionEnabled = $election !== null && $election->network_binding_strategy !== 'none';
-        $whitelist = $election ? ($election->ip_whitelist ? json_decode($election->ip_whitelist, true) : null) : null;
+        // PBDIGIT-246 (Q3-D5): the raw-CIDR match happened in evaluate(); the evidence carries only the fact,
+        // as the current IP's hash in the (hashed) whitelist — NetworkTrustEvidence::isWhitelisted() unchanged.
+        $whitelist = $whitelisted ? [$ipHash] : null;
 
         return new NetworkTrustEvidence(
             currentIpHash: $ipHash,

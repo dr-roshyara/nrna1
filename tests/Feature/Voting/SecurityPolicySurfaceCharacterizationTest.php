@@ -27,7 +27,8 @@ use Tests\TestCase;
  *
  * Proposal: docs/publicdigit/reviews/2026-10-05-q3-security-policy-surface.md §16 (decisions §0: Q3-D1, D2, D3, D6)
  *
- *   C1  known defect: a configured whitelist currently causes fail-closed refusal          (→ 2B-1)
+ *   C1  REPLACED (PBDIGIT-246, PO-approved 2026-10-05): the whitelist defect is fixed; its contract
+ *       now lives in SecurityWhitelistPolicyTest (W1–W9)                                  (2B-1 done)
  *   C2  the settings fields ip_restriction_* do not change the authority's density decision (→ 2B-2)
  *   C3  MAX_USE_IP_ADDRESS at verifyCode() still refuses when the election disables density  (→ 2B-3, Q3-D7)
  *   C4  MAX_USE_IP_ADDRESS unset → step-4 vote_post_check() refuses the voter                (→ 2B-4)
@@ -104,34 +105,7 @@ class SecurityPolicySurfaceCharacterizationTest extends TestCase
         $this->assertFalse((bool) $code->fresh()->has_voted, 'has_voted is not consumed');
     }
 
-    // ── C1 — known defect: configured whitelist → fail-closed refusal ────────
-
-    public function test_c1_characterizes_current_defect_a_configured_whitelist_makes_the_authority_throw(): void
-    {
-        $this->setElectionColumns(['ip_whitelist' => json_encode(['10.77.0.0/16'])]);
-
-        try {
-            $this->assess($this->member(), '10.77.0.5');
-            $this->fail('CURRENT DEFECT expected: the authority throws on a non-empty whitelist');
-        } catch (\TypeError $e) {
-            $this->assertStringContainsString('json_decode', $e->getMessage(), 'json_decode() on the array-cast ip_whitelist');
-        }
-    }
-
-    public function test_c1_characterizes_current_defect_a_configured_whitelist_makes_the_final_cast_refuse_fail_closed(): void
-    {
-        $this->setElectionColumns(['ip_whitelist' => json_encode(['10.77.0.0/16'])]);
-        $this->captureLogs();
-        [$voter, $slug, $code] = $this->voterReadyToCast();
-
-        $response = $this->cast($voter, $slug, $code);
-
-        $this->assertNotSame(500, $response->status(), 'fail closed, never HTTP 500');
-        $this->assertNothingConsumed($code);
-        $failures = array_filter($this->logged, fn (array $e) => $e['message'] === 'Vote submission failed'
-            && str_contains((string) ($e['context']['error'] ?? ''), 'json_decode'));
-        $this->assertCount(1, $failures, 'the refusal is the whitelist TypeError caught by the fail-closed exit');
-    }
+    // C1 (whitelist fail-closed defect) replaced by PBDIGIT-246 — see SecurityWhitelistPolicyTest.
 
     // ── C2 — settings fields have no effect on the authority ────────────────
 

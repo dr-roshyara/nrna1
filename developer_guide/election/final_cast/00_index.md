@@ -49,6 +49,7 @@ Demo elections are excluded from `forCast()` and the CAS (Q4); they normally use
 | [07_ve01_ballot_integrity_green.md](./07_ve01_ballot_integrity_green.md) | VE-01 GREEN | `BallotValidator` beside `forCast()` before the CAS; only a `ValidatedBallot` is persisted (`saveValidatedVote()`); D5 in `BallotAssemblyService`; GREEN `33bef9f7d` (PBDIGIT-237) |
 | [08_exit_safety_ip_binding_exit.md](./08_exit_safety_ip_binding_exit.md) | PBDIGIT-243 | Exit A (fresh membership) already rolls back — characterization; Exit B (IP binding) now fails closed: transaction rolled back, lock released |
 | [09_one_security_assessment.md](./09_one_security_assessment.md) | PBDIGIT-240 | The final cast consumes one `SecurityAssessment` from the Security Verdict Authority (I3 for the final cast); `verdictFor()` derived; no inline evaluation; checks #2–#6 deferred to Q3 / 2B |
+| [10_ip_whitelist_raw_cidr.md](./10_ip_whitelist_raw_cidr.md) | PBDIGIT-246 | The election IP whitelist matched as raw IPv4 CIDR inside the authority; only "whitelisted" enters the evidence (Q3-D5, 2B-1) |
 
 ## Commits
 

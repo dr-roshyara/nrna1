@@ -1,6 +1,6 @@
 # Plan — 2B-1 RED: the election whitelist inside the Security Verdict Authority (PBDIGIT-246)
 
-**Status:** RED authorised (PO 2026-10-05) · GREEN not authorised · **Story:** `docs/publicdigit/backlog/PBDIGIT-246-whitelist-broken-in-security-verdict-authority.md` · **Decision:** Q3-D5 raw CIDR
+**Status:** ✅ complete — RED `902060e92`, GREEN authorised and applied (PO 2026-10-05) · **Story:** `docs/publicdigit/backlog/PBDIGIT-246-whitelist-broken-in-security-verdict-authority.md` · **Decision:** Q3-D5 raw CIDR
 
 ## Objective
 
@@ -45,3 +45,10 @@ Tests only. They define the whitelist contract inside the authority and fail at 
 - **W8: RED.** The code step answers 302 instead of 200.
 - **W6b and W9 (controls): pass.** Without a whitelist, the envelope carries no raw request IP and the density rule denies above the limit.
 - **Production diff:** empty.
+
+## GREEN (PO-authorised 2026-10-05)
+
+- `App\Domain\Election\Security\Ipv4Whitelist` (pure) + `TrustPolicyEvaluator`: raw-IP match in `evaluate()`, evidence gets `[$ipHash]` when whitelisted, `json_decode` removed; `NetworkTrustEvidence` and `NetworkBindingPolicy` unchanged.
+- `SecurityWhitelistPolicyTest` 10/10; C1 (characterization) and the two oracle known-defect tests replaced by a07 (PO-approved).
+- 97-suite regression vs the PBDIGIT-240 run: 583/333/19 → 582/333/19, no pass → fail (−1 = the approved replacement).
+- **Plan complete.**
