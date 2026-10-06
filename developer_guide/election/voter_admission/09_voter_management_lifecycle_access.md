@@ -60,6 +60,10 @@ The flags are **display only**. The route gates still refuse anything outside it
 
 This is participation state, never ballot content (ADR-T11). Tests: `ParticipationAuthorityTest` P1–P4, `VoterManagementVotedColumn.spec.js`.
 
+**Voted filter (PBDIGIT-253).** `?voted=voted|not_voted` uses the same parameter as the read-only list. It is applied in SQL before pagination through `votedCodeOfMembership()` (`EXISTS` / `NOT EXISTS` on a voted code) and is echoed in `filters.voted`.
+
+All filters reload **this** page (`elections.voters.index`). Do not route them to `organisations.elections.voters`, the read-only list. Tests: `VoterManagementVotedFilterTest` F1–F4, `VoterManagementVotedFilter.spec.js` F-UI1–4.
+
 ## Testing
 
 | Suite | Covers |

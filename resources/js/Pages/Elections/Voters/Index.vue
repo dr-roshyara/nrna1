@@ -95,12 +95,18 @@
             <option value="inactive">Suspended</option>
             <option value="removed">Removed</option>
           </select>
+          <!-- PBDIGIT-253: Voted filter (codes.has_voted, server-side) -->
+          <select v-model="votedFilter" @change="applyFilters" data-testid="voted-filter" class="filter-select" aria-label="Filter by voted">
+            <option value="">All</option>
+            <option value="voted">Voted</option>
+            <option value="not_voted">Not voted</option>
+          </select>
           <select v-model="perPage" @change="applyFilters" class="filter-select filter-select--narrow">
             <option :value="25">25 / page</option>
             <option :value="50">50 / page</option>
             <option :value="100">100 / page</option>
           </select>
-          <button v-if="searchQuery || statusFilter" @click="clearFilters" class="filter-clear">Clear</button>
+          <button v-if="searchQuery || statusFilter || votedFilter" @click="clearFilters" class="filter-clear">Clear</button>
           <span v-if="voters.total" class="filter-count">{{ voters.from }}–{{ voters.to }} of {{ voters.total }}</span>
         </div>
 
@@ -371,8 +377,8 @@
                     <svg class="w-10 h-10 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                     </svg>
-                    <p>{{ searchQuery || statusFilter ? 'No voters match your filters.' : 'The register is empty.' }}</p>
-                    <button v-if="searchQuery || statusFilter" @click="clearFilters" class="empty-clear">Clear filters</button>
+                    <p>{{ searchQuery || statusFilter || votedFilter ? 'No voters match your filters.' : 'The register is empty.' }}</p>
+                    <button v-if="searchQuery || statusFilter || votedFilter" @click="clearFilters" class="empty-clear">Clear filters</button>
                   </div>
                 </td>
               </tr>
@@ -494,6 +500,7 @@ const authUserName           = computed(() => usePage().props.user?.name ?? useP
 const loadingId              = ref(null)
 const searchQuery            = ref(props.filters?.search ?? '')
 const statusFilter           = ref(props.filters?.status ?? '')
+const votedFilter            = ref(props.filters?.voted ?? '')   // PBDIGIT-253
 const perPage                = ref(props.filters?.per_page ?? 50)
 
 // Verify Identity (attestation dialog)
@@ -562,18 +569,20 @@ const confirmCancelVerification = () => {
 // Filters
 let filterTimer = null
 const debouncedFilter = () => { clearTimeout(filterTimer); filterTimer = setTimeout(applyFilters, 350) }
+// PBDIGIT-253: filters reload THIS page (elections.voters.index) — previously they navigated to the read-only list.
 const applyFilters = () => {
   router.get(
-    route('organisations.elections.voters', { organisation: props.organisation.slug, election: props.election.slug }),
+    route('elections.voters.index', { organisation: props.organisation.slug, election: props.election.slug }),
     {
       search:    searchQuery.value || undefined,
       status:    statusFilter.value || undefined,
+      voted:     votedFilter.value || undefined,
       per_page:  perPage.value !== 50 ? perPage.value : undefined,
     },
     { preserveScroll: true, replace: true }
   )
 }
-const clearFilters = () => { searchQuery.value = ''; statusFilter.value = ''; perPage.value = 50; applyFilters() }
+const clearFilters = () => { searchQuery.value = ''; statusFilter.value = ''; votedFilter.value = ''; perPage.value = 50; applyFilters() }
 
 // Row actions
 const approveVoter = (m) => {

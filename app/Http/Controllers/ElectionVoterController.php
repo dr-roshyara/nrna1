@@ -64,6 +64,7 @@ class ElectionVoterController extends Controller
 
         $search   = request('search');
         $status   = request('status');
+        $voted    = in_array(request('voted'), ['voted', 'not_voted'], true) ? request('voted') : null;
         $perPage  = in_array((int) request('per_page'), [25, 50, 100]) ? (int) request('per_page') : 50;
 
         $voters = $election->memberships()
@@ -71,6 +72,10 @@ class ElectionVoterController extends Controller
             ->where('role', 'voter')
             ->when($search, fn ($q) => $q->whereHas('user', fn ($u) => $u->where('name', 'like', "%{$search}%")->orWhere('email', 'like', "%{$search}%")))
             ->when($status, fn ($q) => $q->where('status', $status))
+            // PBDIGIT-253: Voted filter from codes.has_voted (the participation authority, PBDIGIT-252);
+            // same parameter and semantics as the read-only list (OrganisationController::voters).
+            ->when($voted === 'voted', fn ($q) => $q->whereExists(fn ($c) => $this->votedCodeOfMembership($c, $election)))
+            ->when($voted === 'not_voted', fn ($q) => $q->whereNotExists(fn ($c) => $this->votedCodeOfMembership($c, $election)))
             ->latest('assigned_at')
             ->paginate($perPage)
             ->withQueryString();
@@ -102,7 +107,7 @@ class ElectionVoterController extends Controller
             'voters'               => $voters,
             'stats'                => $election->voter_stats,
             'unassignedMembers'    => $unassignedMembers,
-            'filters'              => ['search' => $search, 'status' => $status, 'per_page' => $perPage],
+            'filters'              => ['search' => $search, 'status' => $status, 'voted' => $voted, 'per_page' => $perPage],
             'verifications'        => $verifications,
             'admission'            => $this->admissionProps($election),
             'identityVerification' => $this->identityVerificationStates($election, $voters->pluck('user_id')->all()),
@@ -163,6 +168,16 @@ class ElectionVoterController extends Controller
             ->where('has_voted', true)
             ->pluck('user_id')
             ->all();
+    }
+
+    /** PBDIGIT-253: a voted code of the membership's voter in this election (sub-query for the Voted filter). */
+    private function votedCodeOfMembership(\Illuminate\Database\Query\Builder $query, Election $election): void
+    {
+        $query->selectRaw('1')
+            ->from('codes')
+            ->where('codes.election_id', $election->id)
+            ->whereColumn('codes.user_id', 'election_memberships.user_id')
+            ->where('codes.has_voted', true);
     }
 
     /**
