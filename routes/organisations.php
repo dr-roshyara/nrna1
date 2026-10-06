@@ -267,16 +267,24 @@ Route::prefix('organisations/{organisation:slug}')
                     Route::post('/import',         [VoterImportController::class, 'import'])  ->name('import');
                 });
 
-                Route::get('/voters/manage',            [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
                 Route::post('/voters/manage',           [ElectionVoterController::class, 'store'])     ->name('elections.voters.store');
                 Route::post('/voters/manage/bulk',      [ElectionVoterController::class, 'bulkStore']) ->name('elections.voters.bulk');
                 Route::get('/voters/manage/export',     [ElectionVoterController::class, 'export'])    ->name('elections.voters.export');
                 Route::delete('/voters/{membership}',   [ElectionVoterController::class, 'destroy'])   ->name('elections.voters.destroy');
                 Route::post('/voters/{membership}/approve',             [ElectionVoterController::class, 'approve'])           ->name('elections.voters.approve');
                 Route::post('/voters/{membership}/suspend',             [ElectionVoterController::class, 'suspend'])           ->name('elections.voters.suspend');
+            });
+
+            // ── Two-person suspension (PBDIGIT-251): until voting closes; four-eyes (propose → another officer confirms) ──
+            Route::middleware(['election.state:suspend_voters'])->group(function () {
                 Route::post('/voters/{membership}/propose-suspension',  [ElectionVoterController::class, 'proposeSuspension']) ->name('elections.voters.propose-suspension');
                 Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
                 Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
+            });
+
+            // ── Voter Management page (PBDIGIT-251): readable in every lifecycle state; writes keep their own gates ──
+            Route::middleware(['election.state:view_voter_management'])->group(function () {
+                Route::get('/voters/manage',            [ElectionVoterController::class, 'index'])     ->name('elections.voters.index');
             });
 
             // ── Capture IP Address (PBDIGIT-222 evidence; window PBDIGIT-247 option (a)): SetupAdministration → VotingActive ──

@@ -27,7 +27,8 @@
             <p class="voters-page-subtitle">{{ election.name }} — verify and manage election voters</p>
           </div>
           <div class="voters-page-actions">
-            <a :href="exportUrl" class="voters-guide-link">
+            <!-- Export lives in the import_voters window (PBDIGIT-251: hidden when that window is closed) -->
+            <a v-if="capabilities.manageVoters" :href="exportUrl" class="voters-guide-link">
               <svg class="voters-guide-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
               </svg>
@@ -106,7 +107,7 @@
         <!-- Verify All (PBDIGIT-213 C4-C): bulk evidence recording, independent of the policy;
              the server recomputes the C4-D1 set and decides -->
         <div
-          v-if="admission.available && admission.bulkVerifiableCount > 0"
+          v-if="capabilities.verifyIdentity && admission.available && admission.bulkVerifiableCount > 0"
           class="mb-4 flex items-center justify-between gap-4 rounded-lg border border-neutral-200 bg-white px-4 py-3"
         >
           <p class="text-sm text-neutral-700">
@@ -216,6 +217,7 @@
                     aria-live="polite"
                   >✓ IP address captured</p>
                   <button
+                    v-if="capabilities.captureIp"
                     data-testid="capture-ip"
                     @click="openIpCapture(membership)"
                     :disabled="loadingId === membership.id"
@@ -261,6 +263,7 @@
                          policy is ON or OFF (OFF = not required, not "cannot be recorded").
                          NOT_VERIFIED —Verify Identity→ VERIFIED —Cancel Verification→ NOT_VERIFIED (ID-D1).
                          Cancel revokes the current evidence (existing revoke endpoint); history is kept. -->
+                    <template v-if="capabilities.verifyIdentity">
                     <button
                       v-if="identityVerification[membership.user_id] === 'verified'"
                       data-testid="actions-cancel-verification"
@@ -284,14 +287,19 @@
                       </svg>
                       Verify Identity
                     </button>
+                    </template>
 
+                    <!-- PBDIGIT-251: registration actions (approve, remove) only while voter management is open -->
                     <!-- Approve (invited → active) -->
                     <button
-                      v-if="membership.status !== 'active' && membership.status !== 'removed'"
+                      v-if="capabilities.manageVoters && membership.status !== 'active' && membership.status !== 'removed'"
                       @click="approveVoter(membership)"
                       :disabled="loadingId === membership.id"
                       class="act-btn act-btn--approve"
                     >Approve</button>
+
+                    <!-- PBDIGIT-251: two-person suspension (four-eyes) until voting closes -->
+                    <template v-if="capabilities.suspendVoters">
 
                     <!-- Propose suspension (active, not yet proposed) -->
                     <button
@@ -325,10 +333,11 @@
                       :disabled="loadingId === membership.id"
                       class="act-btn act-btn--cancel"
                     >Cancel</button>
+                    </template>
 
-                    <!-- Remove -->
+                    <!-- Remove (registration action: setup administration only — hidden while voting, PO 2026-10-06) -->
                     <button
-                      v-if="membership.status !== 'removed' && membership.suspension_status !== 'proposed'"
+                      v-if="capabilities.manageVoters && membership.status !== 'removed' && membership.suspension_status !== 'proposed'"
                       @click="removeVoter(membership)"
                       :disabled="loadingId === membership.id"
                       class="act-btn act-btn--remove"
@@ -472,6 +481,8 @@ const props = defineProps({
   identityVerification: { type: Object, default: () => ({}) },
   // PBDIGIT-222 — server-decided visibility of the IP Address column; false until PBDIGIT-247 (IP-D3 = c)
   captureIp:            { type: Object, default: () => ({ active: false }) },
+  // PBDIGIT-251 — actions the lifecycle allows now (server-decided; the route gates still enforce them)
+  capabilities:         { type: Object, default: () => ({ manageVoters: true, suspendVoters: true, verifyIdentity: true, captureIp: true }) },
   ipBinding:            { type: Object, default: () => ({ active: false }) },
   // PBDIGIT-222 — current IP capture per voter (user_id → { ip_address, captured_at, notes }); display only
   ipVerification:       { type: [Object, Array], default: () => ({}) },

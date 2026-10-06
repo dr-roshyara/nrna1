@@ -14,7 +14,9 @@ use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
 use App\Http\Controllers\Election\VoterAdmissionPolicyController;
 use App\Contexts\Elections\Domain\Exceptions\DuplicateVoterException;
 use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
+use App\Application\Election\Facades\ElectionLifecycle;
 use App\Domain\Election\Enum\VoterSourceStrategy;
+use App\Http\Middleware\OperationCapabilityMapper;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -101,6 +103,9 @@ class ElectionVoterController extends Controller
             // PBDIGIT-222 Capture IP: the IP Address column follows the "Voter's IP Verification" setting
             // (PO 2026-10-06).
             'captureIp'            => ['active' => $election->isIpVerificationEnabled()],
+            // PBDIGIT-251: which actions the lifecycle allows NOW — from the same mapper the route gates use,
+            // so the page never offers an action the server would refuse. Display only; the gates still decide.
+            'capabilities'         => $this->lifecycleCapabilities($election),
             // Current IP capture per voter (PBDIGIT-222 target UI: the IP column's state comes only from the
             // IP record). Display / evidence only — never read for admission or entitlement.
             'ipVerification'       => $this->ipCaptures($election, $voters->pluck('user_id')->all()),
@@ -131,6 +136,24 @@ class ElectionVoterController extends Controller
                 'notes'       => $row->notes,
             ]])
             ->all();
+    }
+
+    /**
+     * Lifecycle capabilities of the Voter Management page (PBDIGIT-251) — the same OperationCapabilityMapper
+     * operations that gate the write routes: import_voters, suspend_voters, verify_voter_identity, capture_voter_ip.
+     *
+     * @return array{manageVoters: bool, suspendVoters: bool, verifyIdentity: bool, captureIp: bool}
+     */
+    private function lifecycleCapabilities(Election $election): array
+    {
+        $snapshot = ElectionLifecycle::of($election)->snapshot();
+
+        return [
+            'manageVoters'   => OperationCapabilityMapper::isOperationAllowed('import_voters', $snapshot),
+            'suspendVoters'  => OperationCapabilityMapper::isOperationAllowed('suspend_voters', $snapshot),
+            'verifyIdentity' => OperationCapabilityMapper::isOperationAllowed('verify_voter_identity', $snapshot),
+            'captureIp'      => OperationCapabilityMapper::isOperationAllowed('capture_voter_ip', $snapshot),
+        ];
     }
 
     /**

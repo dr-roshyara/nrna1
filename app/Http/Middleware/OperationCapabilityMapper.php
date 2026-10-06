@@ -64,6 +64,21 @@ final class OperationCapabilityMapper
                 ElectionLifecycleState::VotingActive,
             ], true),
 
+            // ── Voter Management page (PBDIGIT-251, PO 2026-10-06) ──
+            // Reading the page is allowed in every state ("accessible all the time … even at the time of voting").
+            // Each write keeps its own gate (import_voters, verify_voter_identity, capture_voter_ip).
+            'view_voter_management' => true,
+
+            // ── Two-person voter suspension (PBDIGIT-251, PO 2026-10-06: "only suspension") ──
+            // Propose / confirm / cancel a suspension (four-eyes) until voting closes — additive to the
+            // import_voters window it had before. Remove / approve / import / export stay setup-only.
+            'suspend_voters' => $snapshot->canManageVoters || in_array($snapshot->state, [
+                ElectionLifecycleState::SetupAdministration,
+                ElectionLifecycleState::SetupNomination,
+                ElectionLifecycleState::ReadyForVoting,
+                ElectionLifecycleState::VotingActive,
+            ], true),
+
             // ── Candidacy Management ──
             // DESIGN DECISION: apply_candidacy requires explicit SetupNomination state
             // because the form itself is only valid during nomination window.
@@ -137,6 +152,8 @@ final class OperationCapabilityMapper
             'verify_voter_identity' => 'Voter identity can only be verified from administration until voting closes.',
 
             'capture_voter_ip' => 'A voter\'s IP address can only be captured from administration until voting closes.',
+
+            'suspend_voters' => 'A voter can only be suspended until voting closes.',
 
             'apply_candidacy' => 'Candidacy applications are not currently open',
             'approve_candidacy' => $snapshot->denialReason ?? 'Election must be in nomination phase',
