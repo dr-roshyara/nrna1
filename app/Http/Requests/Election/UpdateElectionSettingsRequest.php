@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Election;
 
+use App\Models\Election;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Validator;
 
 class UpdateElectionSettingsRequest extends FormRequest
 {
@@ -32,9 +34,39 @@ class UpdateElectionSettingsRequest extends FormRequest
             // Legacy, non-authoritative (PBDIGIT-222, PO 2026-10-06): optional, kept for backward compatibility.
             'voter_verification_mode'   => ['sometimes', 'in:none,ip_only,fingerprint_only,both'],
             'ip_verification_enabled'   => ['boolean'],
+            'ip_binding_enabled'        => ['boolean'],   // PBDIGIT-247 — security policy, locked from ReadyForVoting
             'settings_version'          => ['required', 'integer'],
             'confirmed_active_changes'  => ['boolean'],
             'agreed_to_settings'        => ['boolean'],
+        ];
+    }
+
+    /**
+     * PBDIGIT-247 (B2): IP Binding needs IP verification — binding compares against captured IPs, and officers
+     * must be able to re-capture while it is on. The effective values (request, else stored) must not end up as
+     * binding ON with verification OFF. The error names the field the request is trying to change.
+     */
+    public function after(): array
+    {
+        return [
+            function (Validator $validator): void {
+                $election = $this->route('election');
+                if (! $election instanceof Election || $validator->errors()->isNotEmpty()) {
+                    return;
+                }
+
+                $storedBinding = $election->isIpBindingEnabled();
+                $binding = $this->has('ip_binding_enabled') ? $this->boolean('ip_binding_enabled') : $storedBinding;
+                $verification = $this->has('ip_verification_enabled')
+                    ? $this->boolean('ip_verification_enabled')
+                    : $election->isIpVerificationEnabled();
+
+                if ($binding && ! $verification) {
+                    $storedBinding
+                        ? $validator->errors()->add('ip_verification_enabled', 'IP verification cannot be disabled while IP binding is enabled.')
+                        : $validator->errors()->add('ip_binding_enabled', 'IP binding requires IP verification to be enabled.');
+                }
+            },
         ];
     }
 

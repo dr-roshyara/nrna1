@@ -235,6 +235,8 @@ final class VotingAuthorizationForCastTest extends TestCase
             'NotRegistered', 'NotVoterRole', 'OrganisationMismatch', 'NotActive', 'NotAdmitted', 'ElectionNotVotable',
             // security (the existing Trust → Legitimacy chain's verdict)
             'SecurityDenied', 'SecurityReviewRequired',
+            // PBDIGIT-247 (PO 2026-10-06): IP Binding — the one narrow E2-D4 supersession; not an IP-density reason
+            'IpBindingDenied',
             // process (P4-D2: CodeMissing, BallotMissing)
             'CodeMissing', 'AlreadyVotedPreCheck', 'CodeMismatch', 'CodeStepIncomplete', 'BallotMissing',
         ];
@@ -244,10 +246,11 @@ final class VotingAuthorizationForCastTest extends TestCase
             'no AgreementMissing (Q5 = A), no IP-density reason (P4-D1 = B), no "already consumed" (CAS outcome, not a decision)');
     }
 
-    public function test_the_security_verdict_has_exactly_three_values(): void
+    /** Three values (E2-D4 option A) plus the one approved IP-Binding reason (PBDIGIT-247, PO 2026-10-06). */
+    public function test_the_security_verdict_has_exactly_the_approved_values(): void
     {
         $this->assertSame(
-            ['Allowed', 'Denied', 'ReviewRequired'],
+            ['Allowed', 'Denied', 'ReviewRequired', 'IpBindingDenied'],
             array_map(fn (SecurityVerdict $v) => $v->name, SecurityVerdict::cases())
         );
     }

@@ -158,6 +158,7 @@ final class VotingAuthorizationForEntryTest extends TestCase
                 SecurityVerdict::Allowed        => EntryAuthorizationReason::Allowed,
                 SecurityVerdict::Denied         => EntryAuthorizationReason::SecurityDenied,
                 SecurityVerdict::ReviewRequired => EntryAuthorizationReason::SecurityReviewRequired,
+                SecurityVerdict::IpBindingDenied => EntryAuthorizationReason::IpBindingDenied,   // PBDIGIT-247
             };
             $this->assertSame($expected, $this->forEntry($this->attempt($verdict))->reason,
                 "the supplied {$verdict->name} verdict is consumed as given");
@@ -187,6 +188,8 @@ final class VotingAuthorizationForEntryTest extends TestCase
             'NotRegistered', 'NotVoterRole', 'OrganisationMismatch', 'NotActive', 'NotAdmitted', 'ElectionNotVotable',
             // E2 — the one security authority's verdict
             'SecurityDenied', 'SecurityReviewRequired',
+            // PBDIGIT-247 (PO 2026-10-06): IP Binding — the one narrow E2-D4 supersession
+            'IpBindingDenied',
         ];
         sort($expected);
 

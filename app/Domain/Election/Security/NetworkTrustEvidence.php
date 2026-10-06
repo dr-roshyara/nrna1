@@ -12,6 +12,9 @@ readonly class NetworkTrustEvidence
         public int     $votesFromThisIp,
         public bool    $restrictionEnabled,
         public string  $bindingStrategy,
+        // PBDIGIT-247 IP Binding: null = binding not required; true / false = the request IP is / is not the
+        // voter's captured IP in this election. Only the fact enters the evidence — never an address (as Q3-D5).
+        public ?bool   $ipBindingSatisfied = null,
     ) {}
 
     public function isWhitelisted(): bool

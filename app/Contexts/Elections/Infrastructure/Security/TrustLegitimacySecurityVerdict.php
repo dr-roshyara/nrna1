@@ -14,6 +14,8 @@ use App\Domain\Election\Security\TrustEvidencePrivacyPolicy;
 use App\Models\Code;
 use App\Models\Election;
 use App\Models\User;
+use App\Models\VoterIpVerification;
+use App\Application\Election\Security\Policies\NetworkBindingPolicy;
 
 /**
  * TrustLegitimacySecurityVerdict — the one Security Verdict Authority (PBDIGIT-239 Stage A; full assessment
@@ -76,19 +78,52 @@ final class TrustLegitimacySecurityVerdict implements VotingSecurityVerdictQuery
             sessionId: $context->sessionId,
             registeredIpHash: $registeredIpHash,
             votesFromThisIp: $votesFromThisIp,
+            ipBindingSatisfied: $this->ipBindingSatisfied($election, $auth_user->id, $context->clientIp),
         );
 
         $outcome = $this->legitimacyDecision->decide($trustEnvelope->result);
 
-        return new SecurityAssessment($this->verdictOf($outcome), $outcome, $trustEnvelope);
+        return new SecurityAssessment($this->verdictOf($outcome, $trustEnvelope->result->reason), $outcome, $trustEnvelope);
     }
 
-    /** Deferred / Investigate are a review requirement — a denial (Q2). Same mapping as securityVerdictOf(). */
-    private function verdictOf(LegitimacyOutcome $outcome): SecurityVerdict
+    /**
+     * PBDIGIT-247 IP Binding (B1, B3): null when the election does not bind; otherwise whether the request IP is
+     * exactly the voter's captured IP in THIS election (voter_ip_verifications), compared after canonicalisation
+     * (IPv4 / IPv6). No capture ⇒ false (fail closed). The raw addresses never leave this method — only the fact.
+     */
+    private function ipBindingSatisfied(Election $election, string $userId, string $clientIp): ?bool
+    {
+        if (! $election->isIpBindingEnabled()) {
+            return null;
+        }
+
+        $captured = VoterIpVerification::where('election_id', $election->id)
+            ->where('user_id', $userId)
+            ->value('ip_address');
+
+        $canonical = static function (?string $ip): ?string {
+            $packed = $ip === null ? false : @inet_pton($ip);
+
+            return $packed === false ? null : inet_ntop($packed);
+        };
+
+        $bound = $canonical($captured);
+
+        return $bound !== null && $bound === $canonical($clientIp);
+    }
+
+    /**
+     * Deferred / Investigate are a review requirement — a denial (Q2). Same mapping as securityVerdictOf().
+     * PBDIGIT-247: a denial whose basis is the IP-Binding finding is reported as IpBindingDenied (narrow
+     * supersession of E2-D4, PO 2026-10-06) so the voter sees the specific message.
+     */
+    private function verdictOf(LegitimacyOutcome $outcome, string $reason): SecurityVerdict
     {
         return match ($outcome) {
             LegitimacyOutcome::Allowed => SecurityVerdict::Allowed,
-            LegitimacyOutcome::Denied  => SecurityVerdict::Denied,
+            LegitimacyOutcome::Denied  => $reason === NetworkBindingPolicy::IP_BINDING_NOT_SATISFIED
+                ? SecurityVerdict::IpBindingDenied
+                : SecurityVerdict::Denied,
             LegitimacyOutcome::Deferred,
             LegitimacyOutcome::Investigate => SecurityVerdict::ReviewRequired,
         };

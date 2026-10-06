@@ -54,6 +54,16 @@ final class OperationCapabilityMapper
                 ElectionLifecycleState::VotingActive,
             ], true),
 
+            // ── Capture IP Address (PBDIGIT-222 evidence; window PBDIGIT-247 option (a), PO 2026-10-06) ──
+            // Its own operation, deliberately not verify_voter_identity: IP evidence ≠ identity evidence.
+            // Same span — officers capture / re-capture during the pre-vote check, also while voting is active.
+            'capture_voter_ip' => in_array($snapshot->state, [
+                ElectionLifecycleState::SetupAdministration,
+                ElectionLifecycleState::SetupNomination,
+                ElectionLifecycleState::ReadyForVoting,
+                ElectionLifecycleState::VotingActive,
+            ], true),
+
             // ── Candidacy Management ──
             // DESIGN DECISION: apply_candidacy requires explicit SetupNomination state
             // because the form itself is only valid during nomination window.
@@ -125,6 +135,8 @@ final class OperationCapabilityMapper
             'cast_vote' => $snapshot->denialReason ?? 'Voting is not currently active',
 
             'verify_voter_identity' => 'Voter identity can only be verified from administration until voting closes.',
+
+            'capture_voter_ip' => 'A voter\'s IP address can only be captured from administration until voting closes.',
 
             'apply_candidacy' => 'Candidacy applications are not currently open',
             'approve_candidacy' => $snapshot->denialReason ?? 'Election must be in nomination phase',

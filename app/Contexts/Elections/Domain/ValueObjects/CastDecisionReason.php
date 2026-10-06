@@ -26,6 +26,7 @@ enum CastDecisionReason: string
     // Authorization — the verdict of the existing Trust → Legitimacy chain.
     case SecurityDenied         = 'security_denied';
     case SecurityReviewRequired = 'security_review_required'; // Deferred / Investigate — a denial (Q2)
+    case IpBindingDenied        = 'ip_binding_denied';        // PBDIGIT-247 — not the voter's captured IP
 
     // Process validation.
     case CodeMissing          = 'code_missing';

@@ -25,6 +25,7 @@ enum EntryAuthorizationReason: string
     // E2 — the verdict of the one Security Verdict Authority.
     case SecurityDenied         = 'security_denied';
     case SecurityReviewRequired = 'security_review_required'; // Deferred / Investigate — a denial (Q2)
+    case IpBindingDenied        = 'ip_binding_denied';        // PBDIGIT-247 — not the voter's captured IP
 
     public function isAllowed(): bool
     {

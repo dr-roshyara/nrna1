@@ -277,8 +277,11 @@ Route::prefix('organisations/{organisation:slug}')
                 Route::post('/voters/{membership}/propose-suspension',  [ElectionVoterController::class, 'proposeSuspension']) ->name('elections.voters.propose-suspension');
                 Route::post('/voters/{membership}/confirm-suspension',  [ElectionVoterController::class, 'confirmSuspension']) ->name('elections.voters.confirm-suspension');
                 Route::post('/voters/{membership}/cancel-proposal',     [ElectionVoterController::class, 'cancelProposal'])    ->name('elections.voters.cancel-proposal');
-                // Capture IP Address — IP evidence, separate from identity (PBDIGIT-222). Neutral voter-management
-                // boundary: no identity lifecycle gate (verify_voter_identity) is inherited.
+            });
+
+            // ── Capture IP Address (PBDIGIT-222 evidence; window PBDIGIT-247 option (a)): SetupAdministration → VotingActive ──
+            // Its own operation, not the identity window: officers capture / re-capture while IP Binding is locked (B4).
+            Route::middleware(['election.state:capture_voter_ip'])->group(function () {
                 Route::post('/voters/capture-ip',                       [\App\Http\Controllers\Election\VoterIpCaptureController::class, 'store'])->name('elections.voters.capture-ip');
             });
 

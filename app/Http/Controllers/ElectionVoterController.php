@@ -104,8 +104,8 @@ class ElectionVoterController extends Controller
             // Current IP capture per voter (PBDIGIT-222 target UI: the IP column's state comes only from the
             // IP record). Display / evidence only — never read for admission or entitlement.
             'ipVerification'       => $this->ipCaptures($election, $voters->pluck('user_id')->all()),
-            // IP Binding stays inactive and independent until PBDIGIT-247 defines it (IP-D3 = c).
-            'ipBinding'            => ['active' => false],
+            // IP Binding (PBDIGIT-247): display only — enforced by the Security Verdict Authority, never by this page.
+            'ipBinding'            => ['active' => $election->isIpBindingEnabled()],
         ]);
     }
 

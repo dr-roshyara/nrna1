@@ -65,6 +65,7 @@ class Election extends Model
         'ip_restriction_max_per_ip',
         'ip_whitelist',
         'voter_verification_mode',
+        'ip_binding_enabled', // PBDIGIT-247 (B2) — IP Binding is security policy
     ];
 
     public function getRouteKeyName(): string
@@ -139,6 +140,7 @@ class Election extends Model
         'voting_ip_mode',
         'voter_verification_mode', // legacy, non-authoritative (PBDIGIT-222, PO 2026-10-06)
         'ip_verification_enabled', // PBDIGIT-222 — Capture-IP availability; not security policy
+        'ip_binding_enabled',      // PBDIGIT-247 — IP Binding; security policy (locked from ReadyForVoting)
         'voter_admission_policy', // PBDIGIT-213 — locked from ReadyForVoting (see booted())
         'no_vote_option_enabled',
         'no_vote_option_label',
@@ -222,6 +224,7 @@ class Election extends Model
         'results_published'  => 'boolean',
         'ip_restriction_enabled' => 'boolean',
         'ip_verification_enabled' => 'boolean',
+        'ip_binding_enabled' => 'boolean',
         'no_vote_option_enabled' => 'boolean',
         'ip_whitelist'           => 'array',
         'voter_admission_policy' => 'array',
@@ -323,6 +326,15 @@ class Election extends Model
     public function isIpVerificationEnabled(): bool
     {
         return (bool) ($this->ip_verification_enabled ?? false);
+    }
+
+    /**
+     * IP Binding (PBDIGIT-247): a voter may enter and cast only from their captured IP in this election.
+     * Security policy — evaluated only by the Security Verdict Authority (Q3-D2).
+     */
+    public function isIpBindingEnabled(): bool
+    {
+        return (bool) ($this->ip_binding_enabled ?? false);
     }
 
     /**

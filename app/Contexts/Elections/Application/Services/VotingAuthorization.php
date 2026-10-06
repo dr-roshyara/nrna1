@@ -45,7 +45,8 @@ final class VotingAuthorization
         }
 
         return new EntryAuthorization(match ($attempt->security) {
-            SecurityVerdict::Denied         => EntryAuthorizationReason::SecurityDenied,
+            SecurityVerdict::Denied          => EntryAuthorizationReason::SecurityDenied,
+            SecurityVerdict::IpBindingDenied => EntryAuthorizationReason::IpBindingDenied,
             SecurityVerdict::ReviewRequired => EntryAuthorizationReason::SecurityReviewRequired,
             SecurityVerdict::Allowed        => EntryAuthorizationReason::Allowed,
         });
@@ -59,7 +60,8 @@ final class VotingAuthorization
         }
 
         return match ($attempt->security) {
-            SecurityVerdict::Denied         => CastDecisionReason::SecurityDenied,
+            SecurityVerdict::Denied          => CastDecisionReason::SecurityDenied,
+            SecurityVerdict::IpBindingDenied => CastDecisionReason::IpBindingDenied,
             SecurityVerdict::ReviewRequired => CastDecisionReason::SecurityReviewRequired,
             SecurityVerdict::Allowed        => $this->processFailure($attempt),
         };

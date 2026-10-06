@@ -25,6 +25,7 @@ const form = ref({
   selection_constraint_min: props.election.selection_constraint_min ?? null,
   selection_constraint_max: props.election.selection_constraint_max ?? null,
   ip_verification_enabled: props.election.ip_verification_enabled ?? false,
+  ip_binding_enabled: props.election.ip_binding_enabled ?? false,
   settings_version: props.election.settings_version ?? 0,
   confirmed_active_changes: false,
   agreed_to_settings: false,
@@ -88,6 +89,13 @@ const selectionConstraintTypes = [
   { value: 'range', label: 'Between min and max candidates', description: 'Flexible range' },
   { value: 'minimum', label: 'At least N candidates', description: 'Minimum required' },
   { value: 'maximum', label: 'At most N candidates', description: 'Maximum allowed' }
+]
+
+// IP Binding (PBDIGIT-247) — security policy; the server refuses Enabled without IP verification and locks it
+// from Ready for Voting.
+const ipBindingOptions = [
+  { value: false, testid: 'ip-binding-disabled', label: 'Disabled', description: 'Captured IP addresses are evidence only; voters may vote from any network.' },
+  { value: true, testid: 'ip-binding-enabled', label: 'Enabled', description: 'Each voter must get the voting code and vote from their verified IP address.' }
 ]
 
 // "Voter's IP Verification" (PBDIGIT-222, PO 2026-10-06) — replaces the legacy voter_verification_mode choice.
@@ -432,6 +440,41 @@ const flashWarning = computed(() => {
               IP verification evidence is stored separately from identity verification.
               Enabling IP verification does not by itself enforce IP binding for voting.
             </p>
+
+            <!-- IP Binding (PBDIGIT-247): security policy — needs IP verification; locked from Ready for Voting -->
+            <fieldset class="space-y-3 pt-2 border-t border-slate-200">
+              <legend class="text-sm font-semibold text-slate-900 pt-3">IP Binding</legend>
+              <p class="text-sm text-slate-600">
+                Voters can only get a voting code and vote from their verified IP address.
+                A voter without a verified IP address cannot vote. If a voter's IP address changes, an officer must verify it again.
+              </p>
+              <div
+                v-for="option in ipBindingOptions"
+                :key="option.testid"
+                class="p-4 border-2 rounded-lg transition-all duration-200"
+                :class="[
+                  form.ip_binding_enabled === option.value ? 'border-purple-400 bg-purple-50' : 'border-slate-200 bg-white',
+                  option.value && !form.ip_verification_enabled ? 'opacity-50' : 'cursor-pointer hover:border-slate-300',
+                ]"
+              >
+                <label class="flex items-start gap-3" :class="option.value && !form.ip_verification_enabled ? 'cursor-not-allowed' : 'cursor-pointer'">
+                  <input
+                    :value="option.value"
+                    v-model="form.ip_binding_enabled"
+                    :data-testid="option.testid"
+                    :disabled="option.value && !form.ip_verification_enabled"
+                    name="ip_binding_enabled"
+                    type="radio"
+                    class="mt-1 w-4 h-4 accent-purple-600 flex-shrink-0"
+                  />
+                  <div class="flex-1">
+                    <p class="font-semibold text-slate-900">{{ option.label }}</p>
+                    <p class="text-sm text-slate-600 mt-1">{{ option.description }}</p>
+                  </div>
+                </label>
+              </div>
+              <p v-if="!form.ip_verification_enabled" class="text-sm text-slate-500">Enable Voter's IP Verification to use IP Binding.</p>
+            </fieldset>
           </div>
         </section>
 

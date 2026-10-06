@@ -143,7 +143,8 @@ class ElectionSettingsController extends Controller
     private function changedSecurityPolicyFields(Election $election, array $validated): array
     {
         $normalise = fn (string $field, mixed $value): string => match ($field) {
-            'ip_restriction_enabled'    => (bool) $value ? '1' : '0',
+            'ip_restriction_enabled',
+            'ip_binding_enabled'        => (bool) $value ? '1' : '0',
             'ip_restriction_max_per_ip' => $value === null ? '' : (string) (int) $value,
             'ip_whitelist'              => json_encode(array_values((array) ($value ?? []))),
             default                     => (string) $value,

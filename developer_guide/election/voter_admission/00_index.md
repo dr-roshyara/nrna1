@@ -28,6 +28,7 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 | [05_cancel_verification_and_ip_separation.md](./05_cancel_verification_and_ip_separation.md) | PBDIGIT-248 | Cancel Verification (existing revoke, with confirmation) instead of Re-verify; identity dialog / endpoint carry no IP / device data; "Suspend" label |
 | [06_capture_ip_and_ip_verification_setting.md](./06_capture_ip_and_ip_verification_setting.md) | PBDIGIT-222 | Capture IP Address as separate evidence (`voter_ip_verifications`), the "Voter's IP Verification" setting, fail-closed endpoint, legacy `voter_verification_mode` |
 | [07_read_only_voter_list_verification_states.md](./07_read_only_voter_list_verification_states.md) | PBDIGIT-250 | Read-only voter list: Identity Verification / IP Address Verification state columns (states only), shared `VoterVerificationStates` read-model |
+| [08_ip_binding.md](./08_ip_binding.md) | PBDIGIT-247 | IP Binding: captured AND matching (fail closed) at forEntry / forCast, `IpBindingDenied`, locked setting, `capture_voter_ip` window |
 
 ## Related guides
 

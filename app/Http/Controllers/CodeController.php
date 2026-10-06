@@ -762,6 +762,8 @@ class CodeController extends Controller
             EntryAuthorizationReason::NotAdmitted            => 'You are not yet admitted to vote in this election.',
             EntryAuthorizationReason::SecurityDenied         => 'Your access to voting cannot be granted based on constitutional verification. Please contact the election committee.',
             EntryAuthorizationReason::SecurityReviewRequired => 'Your access to voting requires additional verification. Please contact the election committee.',
+            // PBDIGIT-247 (Q2): specific, never revealing the captured IP
+            EntryAuthorizationReason::IpBindingDenied        => 'You can only vote from your verified IP address. Please contact the election committee.',
             default                                          => 'You are not eligible to vote in this election.',
         });
     }

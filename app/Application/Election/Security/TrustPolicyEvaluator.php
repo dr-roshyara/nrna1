@@ -37,6 +37,7 @@ class TrustPolicyEvaluator
         string    $sessionId,
         ?string   $registeredIpHash = null,
         ?int      $votesFromThisIp = null,
+        ?bool     $ipBindingSatisfied = null,   // PBDIGIT-247: decided by the authority from raw IPs; only the fact
     ): TrustEvaluationEnvelope
     {
         // Step 1: Hash evidence (raw IP never reaches any other method — the one exception is the
@@ -49,7 +50,7 @@ class TrustPolicyEvaluator
         $ctx = new TrustCapabilityContext(
             election: $election,
             user: $user,
-            network: $this->buildNetworkEvidence($election, $ipHash, $registeredIpHash, $votesFromThisIp, $whitelisted),
+            network: $this->buildNetworkEvidence($election, $ipHash, $registeredIpHash, $votesFromThisIp, $whitelisted, $ipBindingSatisfied),
             device: $this->buildDeviceContext($fpHash, $user),
             attestation: $this->buildAttestationRecord($election, $user),
             sessionContinuity: $this->buildSessionContinuity($sessionId, $ipHash, $registeredIpHash ?? $ipHash, $election),
@@ -136,6 +137,7 @@ class TrustPolicyEvaluator
         ?string   $registeredIpHash = null,
         ?int      $votesFromThisIp = null,
         bool      $whitelisted = false,
+        ?bool     $ipBindingSatisfied = null,
     ): NetworkTrustEvidence
     {
         $maxVotesPerIp = $election?->max_votes_per_ip ?? 6;
@@ -153,6 +155,7 @@ class TrustPolicyEvaluator
             votesFromThisIp: $votes, // Populated by controller from database
             restrictionEnabled: $restrictionEnabled,
             bindingStrategy: $election?->network_binding_strategy ?? 'ip_count',
+            ipBindingSatisfied: $ipBindingSatisfied,
         );
     }
 

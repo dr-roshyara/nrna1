@@ -1513,7 +1513,11 @@ private function trackSovereigntyDivergence(
         if ($constitutionalOutcome !== \App\Domain\Election\Security\LegitimacyOutcome::Allowed
             && $election->type !== 'demo') {
 
-            $denialReason = match ($constitutionalOutcome) {
+            // PBDIGIT-247 (Q2): an IP-Binding denial gets its specific message (read from the assessment's verdict,
+            // never re-evaluated here); every other outcome keeps its existing text.
+            $denialReason = $securityAssessment->verdict === \App\Contexts\Elections\Domain\ValueObjects\SecurityVerdict::IpBindingDenied
+                ? 'You can only vote from your verified IP address. Please contact the election committee.'
+                : match ($constitutionalOutcome) {
                 \App\Domain\Election\Security\LegitimacyOutcome::Denied
                     => 'Your vote cannot be submitted based on constitutional verification. Please contact the election committee.',
                 \App\Domain\Election\Security\LegitimacyOutcome::Deferred
@@ -2023,6 +2027,9 @@ private function refuseCast(CastDecisionReason $reason, User $voter, Election $e
             ->withErrors(['vote' => 'Your vote cannot be submitted based on constitutional verification. Please contact the election committee.']),
         CastDecisionReason::SecurityReviewRequired => back()
             ->withErrors(['vote' => 'Your vote requires additional verification before submission. Please contact the election committee.']),
+        // PBDIGIT-247 (Q2): specific, never revealing the captured IP
+        CastDecisionReason::IpBindingDenied => back()
+            ->withErrors(['vote' => 'You can only vote from your verified IP address. Please contact the election committee.']),
         CastDecisionReason::CodeMissing => back()
             ->withErrors(['vote' => 'No voting code was found for you in this election. Please start again from the code step.']),
         CastDecisionReason::CodeStepIncomplete => back()
