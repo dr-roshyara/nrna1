@@ -29,7 +29,9 @@ class UpdateElectionSettingsRequest extends FormRequest
             'selection_constraint_type' => ['required', 'in:any,exact,range,minimum,maximum'],
             'selection_constraint_min'  => ['nullable', 'integer', 'min:0'],
             'selection_constraint_max'  => ['nullable', 'integer', 'min:1'],
-            'voter_verification_mode'   => ['required', 'in:none,ip_only,fingerprint_only,both'],
+            // Legacy, non-authoritative (PBDIGIT-222, PO 2026-10-06): optional, kept for backward compatibility.
+            'voter_verification_mode'   => ['sometimes', 'in:none,ip_only,fingerprint_only,both'],
+            'ip_verification_enabled'   => ['boolean'],
             'settings_version'          => ['required', 'integer'],
             'confirmed_active_changes'  => ['boolean'],
             'agreed_to_settings'        => ['boolean'],
@@ -45,7 +47,6 @@ class UpdateElectionSettingsRequest extends FormRequest
             'settings_version.required'      => 'Settings version is required for optimistic locking.',
             'selection_constraint_max.min'   => 'Maximum selections must be at least 1.',
             'ip_restriction_max_per_ip.max'  => 'IP restriction limit cannot exceed 50.',
-            'voter_verification_mode.required' => 'Voter verification mode is required.',
             'selection_constraint_type.required' => 'Selection constraint type is required.',
         ];
     }

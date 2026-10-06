@@ -24,7 +24,7 @@ const form = ref({
   selection_constraint_type: props.election.selection_constraint_type ?? 'maximum',
   selection_constraint_min: props.election.selection_constraint_min ?? null,
   selection_constraint_max: props.election.selection_constraint_max ?? null,
-  voter_verification_mode: props.election.voter_verification_mode ?? 'none',
+  ip_verification_enabled: props.election.ip_verification_enabled ?? false,
   settings_version: props.election.settings_version ?? 0,
   confirmed_active_changes: false,
   agreed_to_settings: false,
@@ -90,11 +90,10 @@ const selectionConstraintTypes = [
   { value: 'maximum', label: 'At most N candidates', description: 'Maximum allowed' }
 ]
 
-const verificationModes = [
-  { value: 'none', label: 'None (standard)', description: 'No per-voter identity verification. Voters access the ballot with their login credentials only.' },
-  { value: 'ip_only', label: 'IP Address Only', description: 'Voter must vote from the pre-verified IP address during the video call.' },
-  { value: 'fingerprint_only', label: 'Device Fingerprint Only', description: 'Voter must vote from the pre-verified device. Verification remains valid independently of network location.' },
-  { value: 'both', label: 'Both — IP + Device Verification', description: 'Requires both verification conditions to be satisfied.' }
+// "Voter's IP Verification" (PBDIGIT-222, PO 2026-10-06) — replaces the legacy voter_verification_mode choice.
+const ipVerificationOptions = [
+  { value: false, testid: 'ip-verification-disabled', label: 'Disabled', description: 'Officers cannot record voters\' IP addresses for this election.' },
+  { value: true, testid: 'ip-verification-enabled', label: 'Enabled', description: 'Officers can verify and record each voter\'s IP address from the Voters tab.' }
 ]
 
 const isShowingNeedsConfirmation = computed(() => {
@@ -378,55 +377,61 @@ const flashWarning = computed(() => {
           </div>
         </section>
 
-        <!-- 3. Voter Verification Mode Section -->
-        <section class="card-elevated" aria-labelledby="verification-heading">
+        <!-- 3. Voter's IP Verification (PBDIGIT-222): IP evidence only — not identity, not IP binding -->
+        <section class="card-elevated" aria-labelledby="ip-verification-heading">
           <div class="section-header">
-            <h2 id="verification-heading" class="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-3">
+            <h2 id="ip-verification-heading" class="text-sm font-bold text-slate-900 uppercase tracking-widest flex items-center gap-3">
               <span class="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 text-white font-bold text-sm">3</span>
-              Voter Verification Mode
+              Voter's IP Verification
             </h2>
-            <p class="text-slate-600 text-sm mt-2">Optional: Require admins to verify each voter's identity via video call before they can vote.</p>
+            <p class="text-slate-600 text-sm mt-2">Optional: Allow authorised election officers to verify and record a voter's IP address before voting.</p>
           </div>
 
           <div class="space-y-4">
-            <!-- Verification mode radio group -->
             <fieldset class="space-y-3">
-              <legend class="sr-only">Select voter verification mode</legend>
+              <legend class="sr-only">Voter's IP Verification</legend>
               <div
-                v-for="mode in verificationModes"
-                :key="mode.value"
-                @click="form.voter_verification_mode = mode.value"
+                v-for="option in ipVerificationOptions"
+                :key="option.testid"
+                @click="form.ip_verification_enabled = option.value"
                 class="p-4 border-2 rounded-lg cursor-pointer transition-all duration-200"
-                :class="form.voter_verification_mode === mode.value
+                :class="form.ip_verification_enabled === option.value
                   ? 'border-purple-400 bg-purple-50'
                   : 'border-slate-200 bg-white hover:border-slate-300'"
               >
                 <label class="flex items-start gap-3 cursor-pointer">
                   <input
-                    :value="mode.value"
-                    v-model="form.voter_verification_mode"
+                    :value="option.value"
+                    v-model="form.ip_verification_enabled"
+                    :data-testid="option.testid"
+                    name="ip_verification_enabled"
                     type="radio"
                     class="mt-1 w-4 h-4 accent-purple-600 cursor-pointer flex-shrink-0"
                   />
                   <div class="flex-1">
-                    <p class="font-semibold text-slate-900">{{ mode.label }}</p>
-                    <p class="text-sm text-slate-600 mt-1">{{ mode.description }}</p>
+                    <p class="font-semibold text-slate-900">{{ option.label }}</p>
+                    <p class="text-sm text-slate-600 mt-1">{{ option.description }}</p>
                   </div>
                 </label>
               </div>
             </fieldset>
 
-            <!-- Info box about verification workflow -->
-            <div v-if="form.voter_verification_mode !== 'none'" class="p-4 bg-purple-50 border-l-4 border-purple-600 rounded">
-              <p class="text-sm text-purple-900 font-semibold mb-2">Verification Workflow</p>
+            <div v-if="form.ip_verification_enabled" class="p-4 bg-purple-50 border-l-4 border-purple-600 rounded">
+              <p class="text-sm text-purple-900 font-semibold mb-2">IP Verification Workflow</p>
               <ol class="text-sm text-purple-800 space-y-1 ml-4 list-decimal">
                 <li>Open the "Voters" tab for this election</li>
-                <li>For each voter, click the "Verify" button</li>
-                <li>Conduct a video or audio call to confirm their identity</li>
-                <li>Record required verification evidence</li>
-                <li>Save the verification record</li>
+                <li>Find the voter</li>
+                <li>Click "Verify IP Address"</li>
+                <li>The server captures the voter's IP address from their last login</li>
+                <li>Confirm the capture</li>
+                <li>The IP address is stored for this election</li>
               </ol>
             </div>
+
+            <p class="text-sm text-slate-600">
+              IP verification evidence is stored separately from identity verification.
+              Enabling IP verification does not by itself enforce IP binding for voting.
+            </p>
           </div>
         </section>
 

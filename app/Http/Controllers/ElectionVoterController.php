@@ -19,6 +19,7 @@ use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
 use App\Models\OrganisationUser;
+use App\Models\VoterIpVerification;
 use App\Models\VoterVerification;
 use App\Services\VoterEligibilityService;
 use Illuminate\Http\RedirectResponse;
@@ -87,7 +88,7 @@ class ElectionVoterController extends Controller
             ->keyBy('user_id');
 
         return Inertia::render('Elections/Voters/Index', [
-            'election'             => $election->only('id', 'slug', 'name', 'type', 'status', 'voter_verification_mode'),
+            'election'             => $election->only('id', 'slug', 'name', 'type', 'status'),
             'organisation'         => $organisation->only('id', 'slug', 'name'),
             'voters'               => $voters,
             'stats'                => $election->voter_stats,
@@ -96,7 +97,39 @@ class ElectionVoterController extends Controller
             'verifications'        => $verifications,
             'admission'            => $this->admissionProps($election),
             'identityVerification' => $this->identityVerificationStates($election, $voters->pluck('user_id')->all()),
+            // PBDIGIT-222 Capture IP: the IP Address column follows the "Voter's IP Verification" setting
+            // (PO 2026-10-06).
+            'captureIp'            => ['active' => $election->isIpVerificationEnabled()],
+            // Current IP capture per voter (PBDIGIT-222 target UI: the IP column's state comes only from the
+            // IP record). Display / evidence only — never read for admission or entitlement.
+            'ipVerification'       => $this->ipCaptures($election, $voters->pluck('user_id')->all()),
+            // IP Binding stays inactive and independent until PBDIGIT-247 defines it (IP-D3 = c).
+            'ipBinding'            => ['active' => false],
         ]);
+    }
+
+    /**
+     * Current IP capture per voter on this page (PBDIGIT-222), keyed by user_id — a DISPLAY read-model
+     * from voter_ip_verifications only; it never touches identity evidence or entitlement.
+     *
+     * @param  list<string>  $userIds
+     * @return array<string, array{ip_address: string, captured_at: string, notes: ?string}>
+     */
+    private function ipCaptures(Election $election, array $userIds): array
+    {
+        if (! $election->isIpVerificationEnabled() || $userIds === []) {
+            return [];
+        }
+
+        return VoterIpVerification::where('election_id', $election->id)
+            ->whereIn('user_id', $userIds)
+            ->get(['user_id', 'ip_address', 'captured_at', 'notes'])
+            ->mapWithKeys(fn ($row) => [$row->user_id => [
+                'ip_address'  => $row->ip_address,
+                'captured_at' => $row->captured_at?->toIso8601String(),
+                'notes'       => $row->notes,
+            ]])
+            ->all();
     }
 
     /**

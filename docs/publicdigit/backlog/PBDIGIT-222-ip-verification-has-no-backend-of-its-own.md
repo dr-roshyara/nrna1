@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **OPEN — not authorised.** Needs an architecture decision (ADR) before a plan: it touches evidence semantics and probably the `voter_verifications` schema, both frozen for PBDIGIT-213. |
+| **Status** | 🟢 **RESOLVED 2026-10-06**: a separate Capture-IP capability (`voter_ip_verifications`) plus the "Voter's IP Verification" setting; see **Resolution** below. *(Was: OPEN, not authorised, ADR first.)* |
 | **Domain rule** | IP / Device Verification ≠ Identity Admission Verification (ADR_20261004_1549 inv. 4). Only the Chief/Deputy identity attestation may create `OFFICER_IDENTITY_VERIFICATION` evidence. |
 | **Problem** | The legacy IP verification (`VoterVerificationModal`) and the PBDIGIT-213 identity verification (`IdentityAttestationDialog`) post to the **same** endpoint, `elections.voters.verify` → `VoterVerificationController::store` → `RecordIdentityVerificationHandler` → `EloquentIdentityEvidenceStore::recordActive`. The result is an **active** `voter_verifications` row (one per election and voter, `unique(election_id, user_id)`), and an active row is exactly what `EloquentVotingEntitlementQuery::isAdmitted` counts. So an IP verification **is** an identity admission on the server, and an identity verification makes the IP look verified. |
 | **Containment in PBDIGIT-213 C4 (2026-10-04)** | The legacy **"Verify IP Address" UI entry point was removed from Voter Management** (PO: *"IP verification backend/domain remains untouched. The legacy UI entry point is removed from the current voter-management workflow because it conflicts with the Identity Verification model."*). `VoterVerificationModal.vue` (retitled "Verify IP Address") and its spec stay in the codebase, unmounted. The IP backend fields stay untouched. **Restoring IP verification is this story** — see "How IP verification worked before it was removed". |
@@ -44,6 +44,76 @@ Source of truth: commit `110387f63` (last before PBDIGIT-213 C3) for the backend
 - **Display only** at first (an "IP Verification" column with *Verified* / *Not verified*; a "Verify IP Address / Re-verify IP Address" button); enforcement is a later, separate decision.
 - **Schema not yet fixed:** confirm the lifecycle (re-verify, revoke, reason, IP required or nullable) before the migration.
 - Target UI agreed in discussion: two columns (IP Verification, Identity Verification), each hidden when its switch is off; the name badge means *all required verifications complete*.
+
+## Resolution (2026-10-06): as implemented, supersedes the slice notes below
+
+- **Status:** 🟢 RESOLVED by the PBDIGIT-222 commit (Capture IP + "Voter's IP Verification" setting). Full 97-suite regression 582 / 333 / 19, identical to the baseline; no pass → fail.
+- **Final IP-D3 = (c), plus a dedicated setting (PO 2026-10-06):**
+  - `elections.ip_verification_enabled` (boolean, default false) is the switch for Capture IP. It is evidence configuration, **not** security policy: it is not in `Election::SECURITY_POLICY_FIELDS` and can change at any time.
+  - `ipBinding.active` stays `false` and drives nothing until PBDIGIT-247.
+  - `voter_verification_mode` is legacy and non-authoritative. It is optional in the settings request, its PBDIGIT-244 lock is unchanged, the Settings page no longer shows or sends it, and PBDIGIT-247 does not depend on it. Removing it is a separate future decision.
+- **Endpoint:** `POST elections.voters.capture-ip {user_id, notes?}` → `VoterIpCaptureController::store`:
+  - `manageSettings` (Chief / Deputy);
+  - **fail-closed** when the setting is off (`ip_verification` error, nothing written);
+  - an active voter membership of this election only;
+  - the IP comes from `users.current_ip` (IPv4 or IPv6), and client-sent IP / device fields are `prohibited`;
+  - one row per election + voter in `voter_ip_verifications`, where a re-capture replaces it;
+  - audit `voter_ip_captured`.
+- **Lifecycle window:** the neutral `import_voters` route group (not `verify_voter_identity`).
+- **Never touched:** `voter_verifications`, admission, entitlement and the Security Verdict Authority.
+- **UI:**
+  - Settings section "Voter's IP Verification" (Disabled / Enabled);
+  - the Voter Management IP Address column (when enabled) with the captured / not-captured state, Verify / Re-capture IP Address and a row confirmation.
+- **Guide:** `developer_guide/election/voter_admission/06_capture_ip_and_ip_verification_setting.md`.
+- **Follow-ups:**
+  - VIS-D1 / VIS-D2 (who may see IPs; `current_ip` already in the Voter Management page data);
+  - the outdated tutorial text on "Voter Verification Modes";
+  - PBDIGIT-250 (read-only voter list states).
+
+## Capture-IP slice (PO 2026-10-06): RED written; decisions approved
+
+**PO decision 2026-10-06 (latest, supersedes the (c) entry below): IP-D3 = (a).**
+- `voter_verification_mode` set to `ip_only` / `both` is **the** switch for the IP Address column: `Election::checksIp()`, which previously had no callers.
+- That field becomes the IP-binding switch PBDIGIT-247 builds on; its old, unused meaning is retired.
+- No other policy authority.
+- Display / evidence only; no enforcement.
+
+**Earlier PO decisions 2026-10-06 (kept for history):**
+- **IP-D3 = (c), later superseded by (a):** a typed "(a)" was superseded by the later, detailed PO instruction.
+  - Neither `voter_verification_mode` nor `network_binding_strategy` becomes the P-BINDING switch.
+  - The IP Address column stays policy-controlled, but **its switch is deferred to PBDIGIT-247**, and no temporary second policy authority is created. The page receives `ipBinding.active = false` until then.
+  - **Consequence:** the restored action is not visible to users until PBDIGIT-247.
+- **The approved contract:**
+  - `POST elections.voters.capture-ip {user_id, notes?}`; the client never sends an IP;
+  - the server reads `users.current_ip`, a valid **IPv4 or IPv6** address (the whitelist's IPv4-only rule does not apply here);
+  - an unknown or invalid IP is refused;
+  - Chief / Deputy only, registered voter of the election;
+  - one current row per election + voter, where a re-capture replaces it;
+  - no device fingerprint, no revoke, no enforcement (PBDIGIT-247).
+- **Implementation choices not decided by the PO, flagged:**
+  - the lifecycle window reuses the identity verification window (`election.state:verify_voter_identity`);
+  - a registered voter = an `ElectionMembership` (role voter) of this election that is not removed;
+  - client-sent IP fields are refused (`prohibited`).
+
+## Capture-IP slice: original notes
+
+- **Historical finding:** the April 2026 modal (`910e8ccda`, "Verify Voter Identity") combined an informal identity check (video call) with formal capture of the voting IP / device. C3 later made its `voter_verifications` row identity-admission evidence. The PO split it:
+  - identity → PBDIGIT-248;
+  - IP → this slice: `voter_ip_verifications`, display / evidence only, no enforcement (enforcement is PBDIGIT-247).
+- **RED** (uncommitted):
+  - `tests/Feature/Election/VoterIpCaptureTest.php`: I1–I8. Capture writes only `voter_ip_verifications`; it never touches `voter_verifications`, admission or the identity event; authority, scope, re-capture, unknown IP; the identity endpoint still rejects IP fields.
+  - `tests/Frontend/VoterIpCapture.spec.js`: P1–P4 (IP column and action follow `ipBinding.active`; the IP modal opens independently of identity) and M1, M2 (the modal is IP-only and posts to the IP endpoint).
+- **Proposed minimum contract, to approve:**
+  - `POST elections.voters.capture-ip {user_id, notes?}`, Chief / Deputy only;
+  - the **server** captures `users.current_ip`, and the client sends no IP;
+  - one current row per election + voter, where a re-capture replaces it;
+  - an unknown IP is refused;
+  - no device fingerprint;
+  - no revoke in this slice.
+- **Blocking decision IP-D3, the visibility switch:** the IP column follows P-BINDING (COL-D1), but **no P-BINDING setting exists yet**. The historical switch `voter_verification_mode` (`ip_only` / `both`) is a settings-page field, already in the I9 locked set, with no runtime reader. Q3-D1 says it must not become a second policy model. **Options:**
+  - (a) reconcile `voter_verification_mode` as *the* P-BINDING switch, the single authority, retiring its separate meaning;
+  - (b) add a binding value to the constitutional `network_binding_strategy`, which today also drives P-DENSITY;
+  - (c) defer the column until PBDIGIT-247 defines the switch.
 
 ## Decisions needed (ADR first)
 

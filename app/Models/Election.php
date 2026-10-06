@@ -137,7 +137,8 @@ class Election extends Model
         'ip_whitelist',
         'ip_mismatch_action',
         'voting_ip_mode',
-        'voter_verification_mode',
+        'voter_verification_mode', // legacy, non-authoritative (PBDIGIT-222, PO 2026-10-06)
+        'ip_verification_enabled', // PBDIGIT-222 — Capture-IP availability; not security policy
         'voter_admission_policy', // PBDIGIT-213 — locked from ReadyForVoting (see booted())
         'no_vote_option_enabled',
         'no_vote_option_label',
@@ -220,6 +221,7 @@ class Election extends Model
         'is_active'          => 'boolean',
         'results_published'  => 'boolean',
         'ip_restriction_enabled' => 'boolean',
+        'ip_verification_enabled' => 'boolean',
         'no_vote_option_enabled' => 'boolean',
         'ip_whitelist'           => 'array',
         'voter_admission_policy' => 'array',
@@ -312,6 +314,15 @@ class Election extends Model
     public function checksFingerprint(): bool
     {
         return in_array($this->voter_verification_mode, ['fingerprint_only', 'both']);
+    }
+
+    /**
+     * "Voter's IP Verification" (PBDIGIT-222): may officers capture a voter's IP as evidence?
+     * Evidence only — enforces nothing (IP Binding is PBDIGIT-247) and is not security policy.
+     */
+    public function isIpVerificationEnabled(): bool
+    {
+        return (bool) ($this->ip_verification_enabled ?? false);
     }
 
     /**

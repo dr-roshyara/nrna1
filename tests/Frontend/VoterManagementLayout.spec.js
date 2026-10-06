@@ -60,4 +60,10 @@ describe('Voter Management layout (PBDIGIT-220)', () => {
   it('no longer describes the page as assigning voters', () => {
     expect(mountPage().get('.voters-page-subtitle').text()).not.toMatch(/assign/i)
   })
+
+  it('links back to the Election Management page', () => {
+    const back = mountPage().get('[data-testid="back-to-election-management"]')
+    expect(back.attributes('href')).toBe('/mocked/elections.management')
+    expect(back.text()).toContain('Back to Election Management')
+  })
 })

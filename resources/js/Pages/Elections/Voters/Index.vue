@@ -13,6 +13,16 @@
         <!-- Page Header with Guide Link -->
         <div class="voters-page-header">
           <div class="voters-page-title-block">
+            <a
+              :href="route('elections.management', election.slug)"
+              data-testid="back-to-election-management"
+              class="voters-back-link"
+            >
+              <svg class="voters-back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              <span>Back to Election Management</span>
+            </a>
             <h2 class="voters-page-title">Voter Management</h2>
             <p class="voters-page-subtitle">{{ election.name }} — verify and manage election voters</p>
           </div>
@@ -116,6 +126,7 @@
                 <th class="reg-th">Voter</th>
                 <th class="reg-th">Status</th>
                 <th v-if="admission.required" class="reg-th">Identity Verification</th>
+                <th v-if="captureIp.active" class="reg-th">IP Address</th>
                 <th class="reg-th">Proposed by</th>
                 <th class="reg-th">Suspended by</th>
                 <th class="reg-th">Removed by</th>
@@ -184,6 +195,33 @@
                     :state="identityVerification[membership.user_id] ?? 'not_required'"
                     @verify="openIdentityDialog(membership)"
                   />
+                </td>
+
+                <!-- IP Address (PBDIGIT-222): Capture IP — IP evidence, separate from identity. Shown when the
+                     "Voter's IP Verification" setting is on (captureIp.active); IP Binding (PBDIGIT-247) does not drive it. -->
+                <td v-if="captureIp.active" class="reg-td">
+                  <!-- State from the IP record only (display): captured + when, or not captured -->
+                  <div data-testid="ip-capture-state" class="ip-state">
+                    <template v-if="ipVerification[membership.user_id]">
+                      <span class="ip-badge ip-badge--ok">✓ Captured</span>
+                      <span class="date-mono">{{ formatDateTime(ipVerification[membership.user_id].captured_at) }}</span>
+                    </template>
+                    <span v-else class="ip-badge ip-badge--none">Not captured</span>
+                  </div>
+                  <p
+                    v-if="justCapturedId === membership.id"
+                    data-testid="ip-capture-confirmation"
+                    class="ip-confirm"
+                    role="status"
+                    aria-live="polite"
+                  >✓ IP address captured</p>
+                  <button
+                    data-testid="capture-ip"
+                    @click="openIpCapture(membership)"
+                    :disabled="loadingId === membership.id"
+                    class="act-btn act-btn--verify"
+                    title="Capture the voter's last-login IP address"
+                  >{{ ipVerification[membership.user_id] ? 'Re-capture IP Address' : 'Verify IP Address' }}</button>
                 </td>
 
                 <!-- Proposed by — transparency: who proposed the pending/most recent suspension -->
@@ -384,6 +422,22 @@
     @close="showIdentityDialog = false"
   />
 
+  <!-- Capture IP Address (PBDIGIT-222): IP-only modal → elections.voters.capture-ip; never the identity endpoint -->
+  <VoterVerificationModal
+    v-if="ipCaptureVoter"
+    :show="showIpCapture"
+    :voter-id="ipCaptureVoter.user_id"
+    :voter-name="ipCaptureVoter.user?.name ?? 'Voter'"
+    :voter-email="ipCaptureVoter.user?.email ?? ''"
+    :voter-current-ip="ipCaptureVoter.user?.current_ip ?? '—'"
+    :voter-last-login="ipCaptureVoter.user?.updated_at ?? null"
+    :organisation="organisation"
+    :election="election"
+    :existing-verification="ipVerification[ipCaptureVoter.user_id] ?? null"
+    @close="showIpCapture = false"
+    @success="onIpCaptured"
+  />
+
   <!-- Verify All (PBDIGIT-213 C4-C) -->
   <BulkVerifyDialog
     :open="showBulkVerify"
@@ -401,6 +455,7 @@ import PublicDigitLayout from '@/Layouts/PublicDigitLayout.vue'
 import IdentityAttestationDialog from '@/Components/Election/IdentityAttestationDialog.vue'
 import IdentityVerificationCell from '@/Components/Election/IdentityVerificationCell.vue'
 import BulkVerifyDialog from '@/Components/Election/BulkVerifyDialog.vue'
+import VoterVerificationModal from '@/Components/Election/VoterVerificationModal.vue'
 import Button from '@/Components/Button.vue'
 import { ElectionLifecycleStates } from '@/Constants/ElectionLifecycleStates'
 
@@ -415,6 +470,11 @@ const props = defineProps({
   // PBDIGIT-213 C4-B — display read-models from ElectionVoterController (never an authorisation source)
   admission:            { type: Object, default: () => ({ required: false, available: false, bulkVerifiableCount: 0 }) },
   identityVerification: { type: Object, default: () => ({}) },
+  // PBDIGIT-222 — server-decided visibility of the IP Address column; false until PBDIGIT-247 (IP-D3 = c)
+  captureIp:            { type: Object, default: () => ({ active: false }) },
+  ipBinding:            { type: Object, default: () => ({ active: false }) },
+  // PBDIGIT-222 — current IP capture per voter (user_id → { ip_address, captured_at, notes }); display only
+  ipVerification:       { type: [Object, Array], default: () => ({}) },
 })
 
 const showBulkVerify = ref(false)
@@ -429,8 +489,27 @@ const perPage                = ref(props.filters?.per_page ?? 50)
 const showIdentityDialog   = ref(false)
 const identityDialogVoter  = ref(null)
 
-// Table width follows the optional Identity Verification column (shown only while required)
-const columnCount = computed(() => (props.admission.required ? 10 : 9))
+// Table width follows the optional Identity Verification and IP Address columns
+const columnCount = computed(() => 9 + (props.admission.required ? 1 : 0) + (props.captureIp?.active ? 1 : 0))
+
+// Capture IP Address (PBDIGIT-222) — independent of identity verification
+const showIpCapture  = ref(false)
+const ipCaptureVoter = ref(null)
+const openIpCapture  = (membership) => { ipCaptureVoter.value = membership; showIpCapture.value = true }
+
+// Visible feedback after a successful capture: a confirmation in the voter's row (independent of
+// scroll position — the page-level flash message sits at the top of the page).
+const justCapturedId = ref(null)
+let justCapturedTimer = null
+const onIpCaptured = () => {
+  justCapturedId.value = ipCaptureVoter.value?.id ?? null
+  clearTimeout(justCapturedTimer)
+  justCapturedTimer = setTimeout(() => { justCapturedId.value = null }, 6000)
+}
+
+const formatDateTime = (d) => d
+  ? new Date(d).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })
+  : '—'
 
 const exportUrl = computed(() =>
   route('elections.voters.export', { organisation: props.organisation.slug, election: props.election.slug })
@@ -562,6 +641,20 @@ const cancelProposal = (m) => {
 .voters-page-title-block {
   flex: 1;
 }
+
+.voters-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #0369a1;
+  text-decoration: none;
+}
+.voters-back-link:hover { text-decoration: underline; }
+.voters-back-link:focus-visible { outline: 2px solid #0369a1; outline-offset: 2px; border-radius: 0.25rem; }
+.voters-back-icon { width: 0.9rem; height: 0.9rem; }
 
 .voters-page-title {
   font-family: 'DM Serif Display', serif;
@@ -805,6 +898,13 @@ const cancelProposal = (m) => {
 .act-btn--cancel:hover:not(:disabled)   { background: #fee2e2; }
 .act-btn--verify   { background: #dbeafe; color: #0c4a6e; border-color: #bfdbfe; display: inline-flex; align-items: center; gap: 0.25rem; }
 .act-btn--verify:hover:not(:disabled)   { background: #bfdbfe; }
+
+/* IP capture state (PBDIGIT-222) */
+.ip-state      { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.35rem; }
+.ip-badge      { display: inline-flex; align-self: flex-start; padding: 0.1rem 0.45rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
+.ip-badge--ok  { background: #dcfce7; color: #166534; }
+.ip-badge--none { background: #f3f4f6; color: #6b7280; }
+.ip-confirm    { margin: 0 0 0.35rem; font-size: 0.72rem; font-weight: 600; color: #166534; }
 
 /* Verification badge */
 .verification-badge {

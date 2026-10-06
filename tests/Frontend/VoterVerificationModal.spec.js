@@ -1,6 +1,7 @@
 /**
  * PBDIGIT-213 C4-B — the existing Verify modal: IP is audit metadata, never proof of
  * identity (ADR inv. 4), so verification must be possible without an IP address.
+ * PBDIGIT-222: the modal is now the dedicated Capture-IP modal (elections.voters.capture-ip).
  */
 import { mount } from '@vue/test-utils'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
@@ -41,13 +42,22 @@ describe('VoterVerificationModal — IP optional', () => {
     expect(wrapper.text()).not.toMatch(/identity/i)
   })
 
-  it('sends no IP (null) when none is known, rather than a placeholder', async () => {
+  // PBDIGIT-222 (PO-approved replacement, 2026-10-06): the old contract — post to the identity endpoint
+  // with verified_ip: null — is superseded. The modal is IP capture only; the server derives the IP.
+  it('submits only {user_id, notes} to the IP-capture endpoint — never the identity endpoint, no client IP or device data', async () => {
     const wrapper = mountModal(null)
     await wrapper.get('form').trigger('submit')
-    expect(mockRouterPost).toHaveBeenCalledWith(
-      '/mocked/elections.voters.verify',
-      expect.objectContaining({ user_id: 'voter-1', verified_ip: null }),
-      expect.any(Object),
-    )
+
+    expect(mockRouterPost).toHaveBeenCalledTimes(1)
+    const [url, payload] = mockRouterPost.mock.calls[0]
+    expect(url).toBe('/mocked/elections.voters.capture-ip')
+    expect(url).not.toBe('/mocked/elections.voters.verify')
+    expect(Object.keys(payload).sort()).toEqual(['notes', 'user_id'])
+    expect(payload.user_id).toBe('voter-1')
+    expect(payload).not.toHaveProperty('verified_ip')
+    expect(payload).not.toHaveProperty('ip_address')
+    expect(payload).not.toHaveProperty('verified_device_fingerprint_hash')
+    expect(payload).not.toHaveProperty('verified_device_components')
+    expect(payload).not.toHaveProperty('attested')
   })
 })

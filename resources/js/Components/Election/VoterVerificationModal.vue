@@ -40,9 +40,9 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div>
-                <p class="font-semibold">Previously Verified</p>
-                <p class="text-sm opacity-90">Verified {{ formatDate(existingVerification.verified_at) }}</p>
-                <p v-if="existingVerification.verified_ip" class="text-sm opacity-90">IP: {{ existingVerification.verified_ip }}</p>
+                <p class="font-semibold">Previously captured</p>
+                <p class="text-sm opacity-90">Captured {{ formatDate(existingVerification.captured_at) }}</p>
+                <p v-if="existingVerification.ip_address" class="text-sm opacity-90">IP: {{ existingVerification.ip_address }}</p>
               </div>
             </div>
 
@@ -51,8 +51,8 @@
               <!-- IP Address (Auto-captured from last login) -->
               <div class="form-group">
                 <label for="verified_ip" class="form-label">
-                  Voter's Verified IP Address
-                  <span class="label-hint">(Captured at last login)</span>
+                  Voter's IP Address
+                  <span class="label-hint">(captured by the server from the last login)</span>
                 </label>
                 <input
                   id="verified_ip"
@@ -66,23 +66,6 @@
                     Last login: {{ formatDate(voterLastLogin) }}
                   </span>
                 </p>
-              </div>
-
-              <!-- Fingerprint Hash (Optional) -->
-              <div class="form-group">
-                <label for="verified_device_fingerprint_hash" class="form-label">
-                  Device Fingerprint Hash
-                  <span class="label-optional">(optional)</span>
-                </label>
-                <input
-                  id="verified_device_fingerprint_hash"
-                  v-model="form.verified_device_fingerprint_hash"
-                  type="text"
-                  placeholder="Hash captured from voter's device"
-                  maxlength="64"
-                  class="form-input form-input--monospace"
-                />
-                <p class="form-help">64-character hash of voter's device fingerprint, if capturing device verification.</p>
               </div>
 
               <!-- Notes -->
@@ -131,7 +114,7 @@
                     </svg>
                     Saving…
                   </span>
-                  <span v-else>{{ existingVerification ? 'Update Verification' : 'Verify Voter' }}</span>
+                  <span v-else>{{ existingVerification ? 'Re-capture IP Address' : 'Capture IP Address' }}</span>
                 </button>
               </div>
             </form>
@@ -187,39 +170,23 @@ const props = defineProps({
 
 const emit = defineEmits(['close', 'success'])
 
+// PBDIGIT-222: IP capture only. verified_ip is a read-only DISPLAY of the voter's last-login IP —
+// it is never sent; the server captures users.current_ip itself. No device fingerprint, no identity.
 const form = ref({
   verified_ip: props.voterCurrentIp ?? '',
-  verified_device_fingerprint_hash: props.existingVerification?.verified_device_fingerprint_hash ?? '',
   notes: props.existingVerification?.notes ?? ''
 })
 
 const submitting = ref(false)
 const submitError = ref(null)
-const ipError = ref(null)
 
-// Watch for changes to voter IP or existing verification
 watch(() => props.voterCurrentIp, (newVal) => {
   form.value.verified_ip = newVal ?? ''
 })
 
 watch(() => props.existingVerification, (newVal) => {
-  if (newVal) {
-    form.value = {
-      verified_ip: props.voterCurrentIp ?? '',
-      verified_device_fingerprint_hash: newVal.verified_device_fingerprint_hash ?? '',
-      notes: newVal.notes ?? ''
-    }
-  }
+  form.value = { verified_ip: props.voterCurrentIp ?? '', notes: newVal?.notes ?? '' }
 }, { deep: true })
-
-const validateIp = () => {
-  const ipPattern = /^(\d{1,3}\.){3}\d{1,3}$/
-  if (form.value.verified_ip && !ipPattern.test(form.value.verified_ip)) {
-    ipError.value = 'Invalid IP address format (e.g., 192.168.1.100)'
-  } else {
-    ipError.value = null
-  }
-}
 
 const formatDate = (date) => {
   if (!date) return 'never'
@@ -236,17 +203,14 @@ const submit = async () => {
   submitting.value = true
   submitError.value = null
 
+  // PBDIGIT-222: the IP-only endpoint — never the identity endpoint (elections.voters.verify).
   router.post(
-    route('elections.voters.verify', {
+    route('elections.voters.capture-ip', {
       organisation: props.organisation.slug,
       election: props.election.slug
     }),
     {
       user_id: props.voterId,
-      // PBDIGIT-213 C4: IP is audit metadata, never a prerequisite for identity
-      // verification (ADR inv. 4). An unknown IP (empty or the '—' placeholder) is sent as null.
-      verified_ip: /^(\d{1,3}\.){3}\d{1,3}$/.test(form.value.verified_ip ?? '') ? form.value.verified_ip : null,
-      verified_device_fingerprint_hash: form.value.verified_device_fingerprint_hash || null,
       notes: form.value.notes || null
     },
     {
@@ -256,7 +220,7 @@ const submit = async () => {
         emit('success')
       },
       onError: (errors) => {
-        submitError.value = Object.values(errors)[0] || 'Failed to save verification'
+        submitError.value = Object.values(errors)[0] || 'The IP address could not be captured.'
       },
       onFinish: () => {
         submitting.value = false
