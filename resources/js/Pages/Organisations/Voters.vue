@@ -9,7 +9,20 @@ const props = defineProps({
   voters: Object, // paginated: { data, current_page, last_page, total, links }
   stats: Object,  // { total, voted, not_voted, participation_percentage } — whole electorate, not the current page/filter
   filters: Object,
+  // PBDIGIT-250 — which read-only verification columns to show ({ identity, ip }); states only
+  verificationColumns: { type: Object, default: () => ({ identity: false, ip: false }) },
 })
+
+// PBDIGIT-250 — read-only state badges (no actions; this page is visible to every voter of the election)
+const identityBadge = (state) => ({
+  verified:                { label: 'Verified',                 cls: 'bg-green-100 text-green-800 border-green-200' },
+  verification_required:   { label: 'Verification required',    cls: 'bg-slate-100 text-slate-600 border-slate-200' },
+  reverification_required: { label: 'Re-verification required', cls: 'bg-amber-100 text-amber-800 border-amber-200' },
+}[state] ?? { label: '—', cls: 'bg-slate-100 text-slate-600 border-slate-200' })
+
+const ipBadge = (state) => state === 'verified'
+  ? { label: 'Verified', cls: 'bg-green-100 text-green-800 border-green-200' }
+  : { label: 'Not verified', cls: 'bg-slate-100 text-slate-600 border-slate-200' }
 
 const backUrl = computed(() => route('organisations.voter-hub', props.organisation.slug))
 
@@ -231,6 +244,8 @@ const formatLastLogin = (d) => {
                   </button>
                 </th>
                 <th class="text-left px-6 py-3 font-semibold text-slate-600">Voted</th>
+                <th v-if="verificationColumns.identity" class="text-left px-6 py-3 font-semibold text-slate-600">Identity Verification</th>
+                <th v-if="verificationColumns.ip" class="text-left px-6 py-3 font-semibold text-slate-600">IP Address Verification</th>
                 <th class="text-left px-6 py-3 font-semibold text-slate-600">Last Login</th>
               </tr>
             </thead>
@@ -261,6 +276,18 @@ const formatLastLogin = (d) => {
                   >
                     {{ voter.has_voted ? 'Voted' : 'Not voted' }}
                   </span>
+                </td>
+                <td v-if="verificationColumns.identity" class="px-6 py-3.5">
+                  <span
+                    data-testid="identity-state"
+                    :class="['inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border', identityBadge(voter.identity_state).cls]"
+                  >{{ identityBadge(voter.identity_state).label }}</span>
+                </td>
+                <td v-if="verificationColumns.ip" class="px-6 py-3.5">
+                  <span
+                    data-testid="ip-state"
+                    :class="['inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border', ipBadge(voter.ip_state).cls]"
+                  >{{ ipBadge(voter.ip_state).label }}</span>
                 </td>
                 <td class="px-6 py-3.5 text-slate-600 whitespace-nowrap">
                   {{ formatLastLogin(voter.last_login_at) }}

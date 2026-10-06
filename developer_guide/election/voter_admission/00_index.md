@@ -27,6 +27,7 @@ Registration (ElectionMembership)  ≠  Voter Admission (policy + evidence)  ≠
 | [04_c4_ui_and_bulk_verification.md](./04_c4_ui_and_bulk_verification.md) | C4 | Admission card, Identity Verification column, Verify Identity (server-side `attested`), Verify All, Suspend Identity label, voter notice; voting-process boundary; IP verification = untouched legacy (PBDIGIT-222) |
 | [05_cancel_verification_and_ip_separation.md](./05_cancel_verification_and_ip_separation.md) | PBDIGIT-248 | Cancel Verification (existing revoke, with confirmation) instead of Re-verify; identity dialog / endpoint carry no IP / device data; "Suspend" label |
 | [06_capture_ip_and_ip_verification_setting.md](./06_capture_ip_and_ip_verification_setting.md) | PBDIGIT-222 | Capture IP Address as separate evidence (`voter_ip_verifications`), the "Voter's IP Verification" setting, fail-closed endpoint, legacy `voter_verification_mode` |
+| [07_read_only_voter_list_verification_states.md](./07_read_only_voter_list_verification_states.md) | PBDIGIT-250 | Read-only voter list: Identity Verification / IP Address Verification state columns (states only), shared `VoterVerificationStates` read-model |
 
 ## Related guides
 

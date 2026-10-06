@@ -21,6 +21,7 @@ use App\Models\Organisation;
 use App\Models\OrganisationUser;
 use App\Models\VoterIpVerification;
 use App\Models\VoterVerification;
+use App\ReadModels\VoterVerificationStates;
 use App\Services\VoterEligibilityService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -148,32 +149,16 @@ class ElectionVoterController extends Controller
 
     /**
      * Per-voter identity-verification EVIDENCE state (PBDIGIT-213 C4-B) — a DISPLAY
-     * read-model, never an authorisation source (VotingEntitlementQuery decides).
-     * Independent of the policy: the policy says whether verification is REQUIRED
-     * (admissionProps 'required'); this says whether it HAS BEEN DONE (PO, 2026-10-04).
-     *   verified                active evidence
-     *   reverification_required evidence revoked (e.g. after a confirmed suspension)
-     *   verification_required   no evidence
+     * read-model, never an authorisation source. Independent of the policy: the policy
+     * says whether verification is REQUIRED (admissionProps 'required'); this says whether
+     * it HAS BEEN DONE (PO, 2026-10-04). Shared with the read-only voter list (PBDIGIT-250).
      *
      * @param  list<string>  $userIds
      * @return array<string, string>
      */
     private function identityVerificationStates(Election $election, array $userIds): array
     {
-        $evidenceStatus = VoterVerification::where('election_id', $election->id)
-            ->whereIn('user_id', $userIds)
-            ->pluck('status', 'user_id');
-
-        $states = [];
-        foreach ($userIds as $userId) {
-            $states[$userId] = match ($evidenceStatus[$userId] ?? null) {
-                'active'  => 'verified',
-                'revoked' => 'reverification_required',
-                default   => 'verification_required',
-            };
-        }
-
-        return $states;
+        return app(VoterVerificationStates::class)->identity($election, $userIds);
     }
 
     // =========================================================================

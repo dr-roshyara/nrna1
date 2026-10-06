@@ -23,6 +23,8 @@ use App\Contexts\Membership\Application\Membership\Ports\MemberGeoPathProviderPo
 use App\Contexts\Membership\Application\Membership\Query\MyCommitteesQueryService;
 use App\Contexts\Membership\Domain\Member\MemberId;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
+use App\ReadModels\VoterVerificationStates;
 
 class OrganisationController extends Controller
 {
@@ -804,7 +806,20 @@ class OrganisationController extends Controller
             }
         }
 
-        $voters = $query->paginate(50)
+        // PBDIGIT-250: read-only verification STATES, each only while its policy is on. This page is
+        // visible to every voter of the election, so states only — never an IP address, notes or verifier.
+        $verificationColumns = [
+            'identity' => $electionModel->admissionPolicy()->requires(AdmissionRequirement::OfficerIdentityVerification),
+            'ip'       => $electionModel->isIpVerificationEnabled(),
+        ];
+
+        $page = $query->paginate(50);
+        $pageUserIds = $page->getCollection()->pluck('user_id')->all();
+        $states = app(VoterVerificationStates::class);
+        $identityStates = $verificationColumns['identity'] ? $states->identity($electionModel, $pageUserIds) : [];
+        $ipStates = $verificationColumns['ip'] ? $states->ip($electionModel, $pageUserIds) : [];
+
+        $voters = $page
             ->through(fn ($m) => [
                 'id'                => $m->id,
                 'name'              => $m->user?->name ?? '—',
@@ -812,6 +827,8 @@ class OrganisationController extends Controller
                 'suspension_status' => $m->suspension_status,
                 'has_voted'         => isset($votedUserIdSet[$m->user_id]),
                 'last_login_at'     => $m->user?->last_login_at,
+                'identity_state'    => $identityStates[$m->user_id] ?? null,
+                'ip_state'          => $ipStates[$m->user_id] ?? null,
             ]);
 
         return Inertia::render('Organisations/Voters', [
@@ -820,6 +837,7 @@ class OrganisationController extends Controller
             'voters'       => $voters,
             'stats'        => $stats,
             'filters'      => ['sort' => $sort, 'direction' => $direction, 'status' => request('status'), 'voted' => request('voted')],
+            'verificationColumns' => $verificationColumns,
         ]);
     }
 
