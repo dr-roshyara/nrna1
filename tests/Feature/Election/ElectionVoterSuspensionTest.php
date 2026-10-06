@@ -60,7 +60,12 @@ class ElectionVoterSuspensionTest extends TestCase
     public function test_cannot_propose_suspension_for_voted_voter(): void
     {
         $membership = $this->makeMembership('active');
-        $membership->update(['has_voted' => true]);
+        // PBDIGIT-252: "voted" is a voted code (the participation authority), not election_memberships.has_voted.
+        \App\Models\Code::factory()->voted()->create([
+            'organisation_id' => $this->org->id,
+            'election_id'     => $this->election->id,
+            'user_id'         => $membership->user_id,
+        ]);
 
         $this->actingAs($this->chief)
             ->withSession($this->orgSession())

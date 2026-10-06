@@ -212,7 +212,8 @@ class NewsletterService
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
             ->where('election_memberships.role', 'voter')
-            ->where('election_memberships.has_voted', false)
+            // PBDIGIT-252: participation per codes.has_voted (the authority), not election_memberships.has_voted
+            ->whereNotExists(fn ($q) => $this->votedCodeFor($q))
             ->where('election_memberships.status', 'active')
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
             ->leftJoin('organisation_users', function ($join) use ($organisation) {
@@ -233,7 +234,8 @@ class NewsletterService
         return ElectionMembership::withoutGlobalScopes()
             ->where('election_id', $electionId)
             ->where('election_memberships.role', 'voter')
-            ->where('election_memberships.has_voted', true)
+            // PBDIGIT-252: participation per codes.has_voted (the authority), not election_memberships.has_voted
+            ->whereExists(fn ($q) => $this->votedCodeFor($q))
             ->join('users', 'election_memberships.user_id', '=', 'users.id')
             ->leftJoin('organisation_users', function ($join) use ($organisation) {
                 $join->on('organisation_users.user_id', '=', 'users.id')
@@ -244,6 +246,19 @@ class NewsletterService
             ->whereNull('users.newsletter_unsubscribed_at')
             ->whereNull('users.newsletter_bounced_at')
             ->selectRaw('DISTINCT users.email, users.name, COALESCE(members.id, NULL) as member_id, users.id as user_id, ? as consent_source', ['election_participation']);
+    }
+
+    /**
+     * PBDIGIT-252: a voted code of this membership's voter in this membership's election — participation is
+     * authoritative in codes.has_voted (written in the vote's own transaction).
+     */
+    private function votedCodeFor(\Illuminate\Database\Query\Builder $query): void
+    {
+        $query->selectRaw('1')
+            ->from('codes')
+            ->whereColumn('codes.election_id', 'election_memberships.election_id')
+            ->whereColumn('codes.user_id', 'election_memberships.user_id')
+            ->where('codes.has_voted', true);
     }
 
     private function queryElectionCandidates(Organisation $organisation, array $meta): Builder

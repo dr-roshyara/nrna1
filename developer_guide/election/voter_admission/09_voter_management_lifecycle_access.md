@@ -50,6 +50,16 @@ The flags are **display only**. The route gates still refuse anything outside it
 - **Access:** `authorize('view', $election)` allows any active officer of the organisation, not only this election's officers. The page is now open in every state, so that exposure lasts longer (VIS-D2, not changed here).
 - **Remove is single-officer.** The PO noted that removing a voter should follow the four-eyes principle; it stays setup-only and hidden during voting. The single-officer `suspend` route also stays setup-only.
 
+## Who has voted (PBDIGIT-252)
+
+**Participation is authoritative in `codes.has_voted`**, which is written in the vote's own transaction. `election_memberships.has_voted` has **no production writer**. Never read it for behaviour.
+- `ElectionVoterController::votedUserIds()` reads `codes` for the page's voters. Each row's `has_voted` is set from it **in memory only** (never saved).
+- The same helper guards `proposeSuspension` ("Cannot suspend a voter who has already voted.").
+- `NewsletterService::votedCodeFor()` is the `EXISTS` sub-query for the `election_voted` / `election_not_voted` audiences.
+- The Voted cell renders **Yes** only for `has_voted === true`; anything else renders **No** (fail-safe). A voter who has voted gets no row actions.
+
+This is participation state, never ballot content (ADR-T11). Tests: `ParticipationAuthorityTest` P1–P4, `VoterManagementVotedColumn.spec.js`.
+
 ## Testing
 
 | Suite | Covers |

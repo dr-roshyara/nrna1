@@ -17,6 +17,7 @@ use App\Contexts\Elections\Domain\Exceptions\VoterNotEligibleException;
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Domain\Election\Enum\VoterSourceStrategy;
 use App\Http\Middleware\OperationCapabilityMapper;
+use App\Models\Code;
 use App\Models\Election;
 use App\Models\ElectionMembership;
 use App\Models\Organisation;
@@ -73,6 +74,11 @@ class ElectionVoterController extends Controller
             ->latest('assigned_at')
             ->paginate($perPage)
             ->withQueryString();
+
+        // PBDIGIT-252: each row's has_voted comes from codes.has_voted (the participation authority), not the
+        // writer-less election_memberships.has_voted. In-memory display value only — never saved.
+        $votedOnPage = array_flip($this->votedUserIds($election, $voters->getCollection()->pluck('user_id')->all()));
+        $voters->getCollection()->each(fn (ElectionMembership $m) => $m->setAttribute('has_voted', isset($votedOnPage[$m->user_id])));
 
         // Org members not yet assigned to this election — for the assign dropdown
         $assignedUserIds = $election->memberships()
@@ -135,6 +141,27 @@ class ElectionVoterController extends Controller
                 'captured_at' => $row->captured_at?->toIso8601String(),
                 'notes'       => $row->notes,
             ]])
+            ->all();
+    }
+
+    /**
+     * The given voters who have completed participation in this election, per codes.has_voted — the one
+     * participation authority (PBDIGIT-252; same source as OrganisationController::voters).
+     *
+     * @param  list<string>  $userIds
+     * @return list<string>
+     */
+    private function votedUserIds(Election $election, array $userIds): array
+    {
+        if ($userIds === []) {
+            return [];
+        }
+
+        return Code::withoutGlobalScopes()
+            ->where('election_id', $election->id)
+            ->whereIn('user_id', $userIds)
+            ->where('has_voted', true)
+            ->pluck('user_id')
             ->all();
     }
 
@@ -396,7 +423,8 @@ class ElectionVoterController extends Controller
             return back()->with('error', 'Only active voters can have a suspension proposed.');
         }
 
-        if ($membership->has_voted) {
+        // PBDIGIT-252: participation is authoritative in codes.has_voted, never election_memberships.has_voted.
+        if ($this->votedUserIds($election, [$membership->user_id]) !== []) {
             return back()->with('error', 'Cannot suspend a voter who has already voted.');
         }
 

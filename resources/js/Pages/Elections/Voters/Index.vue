@@ -242,13 +242,13 @@
                   <span class="date-mono">{{ membership.metadata?.removed_by_email ?? '—' }}</span>
                 </td>
 
-                <!-- Voted -->
+                <!-- Voted (PBDIGIT-252): Yes / No from codes.has_voted (server); No is the fail-safe -->
                 <td class="reg-td">
-                  <span v-if="membership.has_voted" class="voted-mark" aria-label="Voted">
+                  <span v-if="membership.has_voted === true" data-testid="voted-state" class="voted-mark" aria-label="Voted: yes">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
-                    Cast
+                    Yes
                   </span>
-                  <span v-else class="voted-none">—</span>
+                  <span v-else data-testid="voted-state" class="voted-none" aria-label="Voted: no">No</span>
                 </td>
 
                 <!-- Assigned date -->
