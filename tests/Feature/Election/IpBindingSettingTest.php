@@ -93,9 +93,13 @@ class IpBindingSettingTest extends TestCase
         $this->assertTrue($this->stored($election, 'ip_binding_enabled'));
     }
 
-    public function test_b_s4_binding_is_locked_while_voting_is_active(): void
+    /** PBDIGIT-254: the lock is tested on ReadyForVoting; VotingActive is refused earlier by the settings freeze. */
+    public function test_b_s4_binding_is_locked_from_ready_for_voting(): void
     {
-        $election = ElectionScenarioFactory::votingActive($this->org);
+        $election = tap(ElectionScenarioFactory::setupAdministration($this->org))->update([
+            'administration_completed' => true, 'nomination_completed' => true,
+            'voting_starts_at' => now()->addDay(), 'voting_ends_at' => now()->addDays(2),
+        ])->fresh();
         $chief = $this->officer($election, 'chief');
         DB::table('elections')->where('id', $election->id)->update([
             'ip_restriction_enabled' => false, 'ip_restriction_max_per_ip' => 5, 'ip_whitelist' => json_encode([]),

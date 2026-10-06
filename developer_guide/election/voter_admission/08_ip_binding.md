@@ -80,6 +80,18 @@ LegitimacyOutcome::Denied => $reason === NetworkBindingPolicy::IP_BINDING_NOT_SA
 2. For each voter, during the pre-vote check (video call), the officer clicks **Verify IP Address**. The server captures the voter's last-login IP.
 3. If a voter's IP changes, they log in from the new network and the officer re-captures.
 
+## Settings across the lifecycle (PBDIGIT-254)
+
+| State | Security policy (IP restriction, whitelist, IP Binding) | Other settings (IP verification, no-vote, selection) |
+|---|---|---|
+| before Ready for Voting | editable | editable |
+| Ready for Voting | **locked**: refused, shown disabled with a note | editable |
+| **Voting active** | **frozen**: every change refused (*"Election settings cannot be changed while voting is in progress."*); Save and all fields disabled | frozen |
+
+- `ElectionSettingsController::edit` passes `securityPolicyLocked` and `settingsFrozen`.
+- The page shows the server's refusal messages (`settings-save-errors`).
+- **Freezing the policy does not stop voter actions:** officers still verify identity and capture IPs on Voter Management during voting (PO: "IP address can be verified but policy must remain same").
+
 ## Testing
 
 | Suite | Covers |

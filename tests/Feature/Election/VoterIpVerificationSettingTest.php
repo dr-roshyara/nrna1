@@ -79,9 +79,17 @@ class VoterIpVerificationSettingTest extends TestCase
         $this->assertFalse((bool) $this->storedSetting($election));
     }
 
-    public function test_s3_the_setting_is_changeable_while_voting_is_active(): void
+    /**
+     * PBDIGIT-254 (PO 2026-10-06): during voting ALL settings are frozen (ElectionSettingsFrozenDuringVotingTest V2).
+     * The intent kept here: IP verification is not security policy, so it stays changeable after the security lock
+     * (ReadyForVoting).
+     */
+    public function test_s3_the_setting_is_changeable_after_the_security_lock(): void
     {
-        $election = ElectionScenarioFactory::votingActive($this->org);
+        $election = tap(ElectionScenarioFactory::setupAdministration($this->org))->update([
+            'administration_completed' => true, 'nomination_completed' => true,
+            'voting_starts_at' => now()->addDay(), 'voting_ends_at' => now()->addDays(2),
+        ])->fresh();
         $chief = $this->officer($election, 'chief');
         DB::table('elections')->where('id', $election->id)->update([
             'ip_restriction_enabled' => false, 'ip_restriction_max_per_ip' => 5, 'ip_whitelist' => json_encode([]),

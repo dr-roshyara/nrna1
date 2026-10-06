@@ -12,7 +12,10 @@ const props = defineProps({
   organisation: Object,
   hasVotes: Boolean,
   // PBDIGIT-213 C2/C4: { identityVerificationRequired, isLocked, available, affectedVoters }
-  admission: { type: Object, default: null }
+  admission: { type: Object, default: null },
+  // PBDIGIT-254 — server lifecycle facts: security policy locked (from Ready for Voting); all settings frozen (voting)
+  securityPolicyLocked: { type: Boolean, default: false },
+  settingsFrozen: { type: Boolean, default: false },
 })
 
 const form = ref({
@@ -67,6 +70,11 @@ const validateWhitelist = () => {
   return !invalid.length
 }
 
+// PBDIGIT-254: the server's refusal messages from the last save
+const saveErrors = ref([])
+// Security-policy fields are not editable once locked (Ready for Voting) or frozen (voting)
+const securityFieldsDisabled = computed(() => props.securityPolicyLocked || props.settingsFrozen)
+
 const submit = () => {
   if (!validateWhitelist()) return
   isValidating.value = true
@@ -76,9 +84,12 @@ const submit = () => {
     onSuccess: () => {
       form.value.settings_version++
       isValidating.value = false
+      saveErrors.value = []
     },
-    onError: () => {
+    // PBDIGIT-254: show why the server refused the save (previously discarded)
+    onError: (errors) => {
       isValidating.value = false
+      saveErrors.value = Object.values(errors ?? {}).flat()
     }
   })
 }
@@ -171,8 +182,28 @@ const flashWarning = computed(() => {
           </div>
         </div>
 
+        <!-- PBDIGIT-254: why settings cannot be changed now (lifecycle) -->
+        <div v-if="settingsFrozen" data-testid="settings-frozen-notice" class="mb-6 p-5 bg-slate-50 border-l-4 border-slate-500 rounded-lg" role="status">
+          <p class="font-semibold text-slate-900">Election settings cannot be changed while voting is in progress.</p>
+          <p class="text-slate-700 mt-1 text-sm">Voter actions continue on Voter Management — e.g. verifying identity and capturing a voter's IP address.</p>
+        </div>
+        <div v-else-if="securityPolicyLocked" data-testid="security-locked-notice" class="mb-6 p-5 bg-slate-50 border-l-4 border-slate-500 rounded-lg" role="status">
+          <p class="font-semibold text-slate-900">Security settings: Locked while the election is ready for voting or in progress.</p>
+          <p class="text-slate-700 mt-1 text-sm">IP restriction, network exceptions and IP Binding can no longer be changed. Other settings remain editable.</p>
+        </div>
+
+        <!-- PBDIGIT-254: the server's reasons for a refused save (previously discarded) -->
+        <div v-if="saveErrors.length" data-testid="settings-save-errors" class="mb-6 p-5 bg-danger-50 border-l-4 border-danger-600 rounded-lg" role="alert" aria-live="assertive">
+          <p class="font-semibold text-danger-900">The settings were not saved</p>
+          <ul class="mt-1 list-disc ml-5 text-danger-800">
+            <li v-for="(message, i) in saveErrors" :key="i">{{ message }}</li>
+          </ul>
+        </div>
+
         <!-- Main form with improved semantic structure -->
         <form @submit.prevent="submit" class="space-y-8" novalidate aria-label="Election settings form">
+        <!-- PBDIGIT-254: during voting every control is natively disabled (the server refuses as well) -->
+        <fieldset :disabled="settingsFrozen" class="space-y-8 border-0 p-0 m-0 min-w-0">
         <!-- 1. Voter Access Control Section -->
         <section class="card-elevated" aria-labelledby="access-heading">
           <div class="section-header">
@@ -195,6 +226,7 @@ const flashWarning = computed(() => {
               <div class="flex-shrink-0">
                 <ToggleSwitch
                   v-model="form.ip_restriction_enabled"
+                  :disabled="securityFieldsDisabled"
                   :aria-label="`IP restriction is ${form.ip_restriction_enabled ? 'enabled' : 'disabled'}`"
                   role="switch"
                   :aria-checked="form.ip_restriction_enabled"
@@ -212,6 +244,7 @@ const flashWarning = computed(() => {
                 <div class="flex items-center gap-3">
                   <input
                     id="ip-max-input"
+                    :disabled="securityFieldsDisabled"
                     v-model.number="form.ip_restriction_max_per_ip"
                     type="number"
                     min="1"
@@ -234,6 +267,7 @@ const flashWarning = computed(() => {
                 </p>
                 <textarea
                   v-model="whitelistText"
+                  :disabled="securityFieldsDisabled"
                   @blur="validateWhitelist"
                   rows="4"
                   placeholder="10.0.0.1&#10;192.168.1.0/24&#10;172.16.0.0/12"
@@ -411,6 +445,7 @@ const flashWarning = computed(() => {
                   <input
                     :value="option.value"
                     v-model="form.ip_verification_enabled"
+                    :disabled="settingsFrozen"
                     :data-testid="option.testid"
                     name="ip_verification_enabled"
                     type="radio"
@@ -462,7 +497,7 @@ const flashWarning = computed(() => {
                     :value="option.value"
                     v-model="form.ip_binding_enabled"
                     :data-testid="option.testid"
-                    :disabled="option.value && !form.ip_verification_enabled"
+                    :disabled="securityFieldsDisabled || (option.value && !form.ip_verification_enabled)"
                     name="ip_binding_enabled"
                     type="radio"
                     class="mt-1 w-4 h-4 accent-purple-600 flex-shrink-0"
@@ -573,12 +608,13 @@ const flashWarning = computed(() => {
             </p>
           </fieldset>
         </div>
+        </fieldset>
 
         <!-- Form Actions -->
         <div class="flex gap-4 pt-4">
           <button
             type="submit"
-            :disabled="!form.agreed_to_settings || !validateWhitelist() || (isShowingNeedsConfirmation && !form.confirmed_active_changes) || isValidating"
+            :disabled="settingsFrozen || !form.agreed_to_settings || !validateWhitelist() || (isShowingNeedsConfirmation && !form.confirmed_active_changes) || isValidating"
             aria-busy="isValidating"
             :aria-label="`Save settings${isValidating ? ' (saving)' : ''}`"
             class="px-8 py-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-4 focus:ring-teal-200 disabled:bg-slate-400 disabled:cursor-not-allowed transition-all duration-200 inline-flex items-center gap-2"

@@ -240,7 +240,8 @@ class SecurityPolicyLifecycleLockTest extends TestCase
 
     public function test_a_locked_election_saves_other_settings_when_the_security_policy_is_resubmitted_unchanged(): void
     {
-        $election = $this->electionIn(ElectionLifecycleState::VotingActive);
+        // PBDIGIT-254: VotingActive now freezes ALL settings; ReadyForVoting is locked but still saves other settings.
+        $election = $this->electionIn(ElectionLifecycleState::ReadyForVoting);
         // Stored whitelist NULL, re-sent as [] — the same value (PO 2026-10-05).
         DB::table('elections')->where('id', $election->id)->update(['ip_whitelist' => null]);
         $election = $election->fresh();
@@ -263,7 +264,8 @@ class SecurityPolicyLifecycleLockTest extends TestCase
 
     public function test_a_refused_security_change_writes_nothing_from_the_same_patch(): void
     {
-        $election = $this->electionIn(ElectionLifecycleState::VotingActive);
+        // PBDIGIT-254: tested on ReadyForVoting (locked); VotingActive is refused earlier by the settings freeze.
+        $election = $this->electionIn(ElectionLifecycleState::ReadyForVoting);
 
         $response = $this->actingAs($this->chief($election))
             ->withSession(['current_organisation_id' => $this->org->id])

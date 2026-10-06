@@ -6,6 +6,7 @@ use App\Application\Election\Facades\ElectionLifecycle;
 use App\Contexts\Elections\Application\Ports\AdmissionImpactQuery;
 use App\Contexts\Elections\Domain\Exceptions\SecurityPolicyLocked;
 use App\Contexts\Elections\Domain\ValueObjects\AdmissionRequirement;
+use App\Domain\Election\Enum\ElectionLifecycleState;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Election\UpdateElectionSettingsRequest;
 use App\Models\DemoVote;
@@ -33,7 +34,19 @@ class ElectionSettingsController extends Controller
             'organisation' => $election->organisation,
             'hasVotes'     => $this->hasVotes($election),
             'admission'    => $this->admissionProps($election),
+            // PBDIGIT-254: the same lifecycle facts update() refuses on — so the page disables what the server locks.
+            'securityPolicyLocked' => ElectionLifecycle::of($election)->isLocked(),
+            'settingsFrozen'       => $this->settingsFrozen($election),
         ]);
+    }
+
+    /**
+     * PBDIGIT-254 (PO 2026-10-06): during the voting period (VotingActive) no election setting may change —
+     * "the policy must remain the same". Voter actions such as capturing a voter's IP are not settings and continue.
+     */
+    private function settingsFrozen(Election $election): bool
+    {
+        return ElectionLifecycle::of($election)->state() === ElectionLifecycleState::VotingActive;
     }
 
     /**
@@ -60,6 +73,11 @@ class ElectionSettingsController extends Controller
     public function update(UpdateElectionSettingsRequest $request, Election $election): RedirectResponse
     {
         // Authorization handled in FormRequest
+
+        // PBDIGIT-254: settings are frozen during the voting period — nothing is written.
+        if ($this->settingsFrozen($election)) {
+            return back()->withErrors(['settings' => 'Election settings cannot be changed while voting is in progress.']);
+        }
 
         // Optimistic locking — reject stale writes
         $this->checkOptimisticLock($request, $election);

@@ -3,8 +3,17 @@ const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false
+  },
+  // PBDIGIT-254: optional; when true the switch cannot be toggled (backward-compatible default false)
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
+
+const toggle = () => {
+  if (!props.disabled) emit('update:modelValue', !props.modelValue)
+}
 
 const emit = defineEmits(['update:modelValue'])
 </script>
@@ -17,12 +26,16 @@ const emit = defineEmits(['update:modelValue'])
       role="switch"
       :aria-checked="modelValue"
       :aria-label="modelValue ? 'Enabled (click to disable)' : 'Disabled (click to enable)'"
-      @click="emit('update:modelValue', !modelValue)"
-      @keydown.space.prevent="emit('update:modelValue', !modelValue)"
-      class="relative inline-flex h-10 w-20 flex-shrink-0 items-center rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 cursor-pointer group"
-      :class="modelValue
-        ? 'bg-gradient-to-r from-teal-500 to-teal-600 focus:ring-teal-300 shadow-lg'
-        : 'bg-gradient-to-r from-slate-300 to-slate-400 focus:ring-slate-300 shadow-md'"
+      :disabled="disabled"
+      @click="toggle"
+      @keydown.space.prevent="toggle"
+      class="relative inline-flex h-10 w-20 flex-shrink-0 items-center rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-offset-2 group"
+      :class="[
+        modelValue
+          ? 'bg-gradient-to-r from-teal-500 to-teal-600 focus:ring-teal-300 shadow-lg'
+          : 'bg-gradient-to-r from-slate-300 to-slate-400 focus:ring-slate-300 shadow-md',
+        disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
+      ]"
     >
       <!-- Toggle circle with enhanced animation -->
       <span
