@@ -1836,3 +1836,11 @@ cd "$W" && test ! -e "$D" && mkdir "$D" && cp -p "$S"/* "$D"/ && (cd "$S" && sha
 ```
 
 The two `sha256sum` listings must be identical.
+
+### Erratum to G-LOG-0114 (filing error, 2026-10-07; the entry above is not rewritten)
+
+| Field | Value |
+|---|---|
+| Error | The G-LOG-0114 heading ends "round-level independent review pending". That was true when the entry was drafted, but not when it was filed |
+| Correct state | The round-level independent review was complete at filing: **PASS_WITH_LIMITATIONS**, as the entry's own "Reviews" row records |
+| Effect | None on G-LOG-0115, which cites the completed review |
