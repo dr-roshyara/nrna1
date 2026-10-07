@@ -274,6 +274,9 @@ def main():
     y5 = sorted({u['tier'] for u in x['units'] if '/named/' in u['unit'] or '/supp/' in u['unit']}); ok &= y5 == ['EXPOSED']; print('Y5 all named EXPOSED', y5)
     y7 = [tier['V1b/R-j/U5/(iii)-L/holds'], tier['R5/K12.1/O8/d-only'], tier['R5/K8.1/difference_sigma_values'], tier['R5/n_frame_histories']]
     ok &= y7 == ['EXPOSED', 'EXPOSED', 'EXPOSED', 'BLIND']; print('Y7 r10 tiers', y7)
+    y8 = sorted({u['tier'] for u in x['units'] if '/U5/' in u['unit'] and u['unit'].endswith('least_counterexample')})
+    y8b = [tier.get('V1b/R-d/U/(iii)-L/holds'), tier.get('V1b/R-g/U/(ii)-S/least_counterexample', 'BLIND')]
+    ok &= y8 == ['EXPOSED'] and y8b == ['EXPOSED', 'BLIND']; print('Y8 r11 tiers', y8, y8b)
     y6 = sorted({u['unit'].split('/')[1] for u in x['units'] if u['tier'] == 'BLIND' and u['unit'].startswith('V1b/')}); print('Y6 readings with BLIND V1b form units', y6)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)

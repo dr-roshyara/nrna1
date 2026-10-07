@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r10).
+"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r11).
 
 Committed before any return exists. It encodes the unit set, the canonicalization,
 the result classes, the exposure tiers and the licence rule.
@@ -408,8 +408,8 @@ def exposed_v1b(R, F, form=None, h=None, field=None):
         R = 'R0'  # B-recW forces w1 present, so B-conf^b <=> B-conf
     if R == 'R0' or R == 'R-h':
         return True  # R0: Cor 4.1b and Lem 4.2; R-h/U: the K4/K6 witnesses keep Ref ((iii)-L over-exposed, disclosed)
-    if R == 'R-d' and form in ('(i)-O', '(i)-S'):
-        return True  # Lem 3.7 read literally
+    if R == 'R-d' and form in ('(i)-O', '(i)-S', '(iii)-L'):
+        return True  # Lem 3.7 read literally; (iii)-L: the scope shrinks under D-st+ while H-B, R_B are unchanged
     if R in MONO_READINGS and form == '(i)-O':
         return True  # monotonicity from K5
     if R == 'R-e' and form in ('(i)-S', '(ii)-S', '(ii)-O'):
@@ -419,6 +419,16 @@ def exposed_v1b(R, F, form=None, h=None, field=None):
     if R in ('R-c', 'R-g', 'R-g+', 'R-i', "R-i'") and form == '(i)-S':
         return True  # REVIEW-r9: an R_B member without w1 or without Ref is immediate
     return False
+
+
+def cex_tier(R, F, form):
+    """REVIEW-r10: in U5 the least counterexample is the bottom c2 history with w1 (sigma = q forced), or its a1
+    analogue; R-i' (i)-S's is the bottom history. Both are derivable. Other least counterexamples stay BLIND."""
+    if F == 'U5':
+        return 'EXPOSED'
+    if R == "R-i'" and form == '(i)-S':
+        return 'EXPOSED'
+    return 'BLIND'
 
 
 def _idx(d, table, what, unrecognized, path):
@@ -545,7 +555,7 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                 kh = _get(kf, 'holds')
                 units.append(Unit(f'V1b/{R}/{F}/{form}/holds', tier, True, ch['holds'], kh, 'bool'))
                 if form != '(i)-O':
-                    units.append(Unit(f'V1b/{R}/{F}/{form}/least_counterexample', 'BLIND', None,  # computed object (REVIEW-r9 b)
+                    units.append(Unit(f'V1b/{R}/{F}/{form}/least_counterexample', cex_tier(R, F, form), None,
                                       ch['least_counterexample'],
                                       _get(kf, 'least_counterexample'),
                                       'cex', claude_holds=ch['holds'], checker_holds=kh))

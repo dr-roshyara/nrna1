@@ -1,10 +1,12 @@
-# Cross-check pre-registration, addendum 01 (r10; fixed before any return exists)
+# Cross-check pre-registration, addendum 01 (r11; fixed before any return exists)
 
 **Status:** PROPOSED. It takes effect only through a human act (§18 of the control prompt). Until then `PREREG.md` alone governs.
 
-**Review history:** r1–r9 FAILED review (`ADDENDUM-01-ROUNDS/`). r10 implements REVIEW-r9 in full. **r10 has not been reviewed.**
+**Review history:** r1–r10 FAILED review (`ADDENDUM-01-ROUNDS/`).
+- **REVIEW-r10** found no silent false agreement, and the parser and classes are stable since r7. Its only finding was derivable least counterexamples.
+- **r11** implements that finding mechanically and conservatively (EXPOSED only grows), and is **not re-reviewed**. The human accepted this cross-check's small blind content (2026-10-07); the independent test is carried by the blind slice (LOOP-1BQ).
 
-**Normative text:** `compare_xcheck.py` (sha256 `4cadde94…a83ed5`), validated by `selftest_compare_xcheck.py` (sha256 `dc21c52e…ab4c7185`). This prose only summarizes the script. Where the two differ, the script governs, and the difference is a defect to report.
+**Normative text:** `compare_xcheck.py` (sha256 `d8da904a…d7b7eb`), validated by `selftest_compare_xcheck.py` (sha256 `cf332f1b…484fa1`). This prose only summarizes the script. Where the two differ, the script governs, and the difference is a defect to report.
 
 **Human act (2026-10-07): bundle option N.**
 - **Bundle:** `F-XCHECK-BUNDLE-02.tar` (sha256 `4dff1351…dd08`) is the bundle handed over.
@@ -34,17 +36,17 @@ Each review round found another derivable class. r10 therefore takes the conserv
 |---|---|---|
 | **EXPOSED** | all R5 truth values, null witnesses, K12 rows and labels (fine splits included), and K8.1's difference set; every named-history, extra and SUPP field; every V1b form verdict in U5; V1b form verdicts in U covered by the rules below | consistency only |
 | **NONLICENSING** | R5 composite witnesses | nothing |
-| **BLIND (91 units in P0)** | `n_frame_histories` (665,920 is not stated in the bundle); **V1b least counterexamples (64)**, which are computed objects compared only where both sides report holds = false; **26 V1b form verdicts in U** not covered by the rules | cross-family reproduction |
+| **BLIND (42 units in P0)** | `n_frame_histories` (665,920 is not stated in the bundle); **16 V1b least counterexamples in U** (REVIEW-r10: every U5 least counterexample is derivable, because it is the bottom c2 history with w1, or its a1 analogue, under σ ≡ q; R-i′ (i)-S's is the bottom history; these are EXPOSED); **25 V1b form verdicts in U** not covered by the rules | cross-family reproduction |
 
 **Rules for V1b form verdicts in U:**
 - R0, R-b (≡ R0) and R-h: all forms. R-h (iii)-L is over-exposed, which is disclosed.
-- R-d: (i)-S and (i)-O.
+- R-d: (i)-S, (i)-O, and (iii)-L (the scope shrinks under D-st⁺, while H-B and R_B are unchanged).
 - Monotonicity (R-c, R-e, R-f, R-i, R-i′): (i)-O.
 - R-e: (i)-S, (ii)-S and (ii)-O.
 - R-c and R-f: (ii)-S and (ii)-O.
 - R-c, R-g, R-g⁺, R-i and R-i′: (i)-S, because an R_B member without w1 or without Ref makes it immediate.
 
-**The 26 BLIND verdicts** are the U-frame forms (iii)-L under R-c, R-d, R-e, R-f, R-g, R-g⁺, R-i, R-i′ and R-j, plus:
+**The 25 BLIND verdicts** are the U-frame forms (iii)-L under R-c, R-e, R-f, R-g, R-g⁺, R-i, R-i′ and R-j, plus:
 
 | Reading | Forms |
 |---|---|
@@ -56,7 +58,7 @@ Each review round found another derivable class. r10 therefore takes the conserv
 
 **Residual uncertainty, stated plainly:**
 - BLIND means *"no short derivation found in nine review rounds"*, not *"proven underivable"*.
-- The independent content of this cross-check is therefore small: it rests mainly on the 64 least counterexamples and the 26 U-frame verdicts.
+- The independent content of this cross-check is therefore small: 25 U-frame verdicts, 16 U-frame least counterexamples, and n.
 - Units are not independent observations, so counts are bookkeeping, not evidence weights.
 
 ## 3. Fail-closed parsing
@@ -122,7 +124,7 @@ AMBIGUOUS is a **flag**, listed under that label. It deviates from §7's list, s
 - **P0:** Claude's results re-encoded with different syntax and aliases.
   - 0 DISAGREEMENT, 0 INCOMPLETE, 0 unrecognized keys.
   - The licence holds.
-  - BLIND: 91 AGREEMENT; EXPOSED: 1,899 AGREEMENT and 256 NOT_APPLICABLE (242 of them out-of-scope iiiL).
+  - BLIND: 42 AGREEMENT; EXPOSED: 1,948 AGREEMENT and 256 NOT_APPLICABLE (242 of them out-of-scope iiiL).
 - **N1–N6** (planted defects) and **T1–T11** (adversarial encodings from REVIEW-r3) are each caught or parsed correctly as specified:
   - record-keyed r/c;
   - `issue`/`adopt` words;
@@ -144,6 +146,7 @@ AMBIGUOUS is a **flag**, listed under that label. It deviates from §7's list, s
   - an UNTESTABLE disagreement routed to the gate;
   - the iiiL out-of-scope rule, both directions;
   - ignored versus unknown keys.
+- **Y8** (REVIEW-r10): U5 counterexamples are EXPOSED; R-d/U (iii)-L is EXPOSED; U-frame counterexamples otherwise stay BLIND.
 - **Y7** (REVIEW-r9): spot-checks of the r10 tiers.
 - **Y5** (REVIEW-r8): every named and SUPP unit is EXPOSED. A dict adp slot carrying iss attributes is now rejected.
 - **Y1–Y4** (REVIEW-r7) are also caught or correct: con `null` rejected; a string adp whose obj is its own slot rejected; the semantic alias `exists(H-D+, H_d2)` removed (now an unrecognized key); and a spot-check of the closure tiers.
