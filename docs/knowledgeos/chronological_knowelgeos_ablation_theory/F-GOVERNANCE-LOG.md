@@ -3008,3 +3008,13 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **What it can show:** within-family reproduction across two Claude models.
 - **What it cannot show:** cross-family reproduction, or the absence of errors shared by all Claude models.
 - The slice keeps waiting for a non-Claude run. Its Claude side already exists.
+
+## F-LOG-0239 — **Human act (2026-10-07): run the blind slice in a fresh isolated Claude subagent, labelled WITHIN-FAMILY.** Cross-family requirement waived, NOT satisfied
+- **Design.**
+  - Headless `claude -p --model claude-sonnet-5-5`, run in a scratch directory outside the repository on the frozen slice bundle only (`fd83979b…`).
+  - Tools: Read, Write, Edit, and Bash restricted to python3.
+  - One attempt.
+  - Output goes to `~/F-XCHECK-SLICE-RETURN-01-CLAUDE-WF/`.
+- **Comparison.** Against the sealed Claude side, which was Opus 5.5, using `LOOP-1BQ/compare_slice.py` unchanged. Sealed before reading.
+- **What it can show:** cross-model, within-family reproduction of the 67 distinct blind quantities.
+- **What it cannot show:** cross-family reproduction. The non-Claude handover remains open.
