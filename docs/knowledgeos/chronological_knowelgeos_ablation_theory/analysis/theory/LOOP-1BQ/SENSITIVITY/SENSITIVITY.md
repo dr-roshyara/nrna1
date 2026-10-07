@@ -57,3 +57,30 @@ These four move under readings V1a, V2, V3 and V5 of the K7 last clause, the add
 - The sensitivity of these four quantities is real only for an implementer willing to diverge from V1b's U values.
 - The calibration anchors the shared interpretation to V1b, which is itself a Claude-family product. This map therefore cannot separate "V1b and both slices share a misreading" from "the reading is correct".
 - The ambiguity list is one Claude reader's enumeration. It is not exhaustive by construction.
+
+---
+
+## Review reconciliation (REVIEW-SENSITIVITY: PASS_WITH_LIMITATIONS; 2026-10-08, before any non-Claude return)
+The review re-ran V3 and got a byte-identical result. It also ran a probe variant of its own, V1c (the last clause binds only change points that cross the P boundary): **inert, `cc6e635f…`**. All variant diffs are faithful and single-site. Every required change is applied here; the sections above are kept unchanged.
+
+1. **AMB-3 is downgraded to WEAK / non-literal.** Def 1.10 defines violation for work events ("w violates … iff σ(t(w)) ∉ P"). So "violation points of h" (Prop 4.1(iii)) most naturally means {t(w1)}, which is the same as K7 and P0.2. V3's "any t with σ(t) ∉ P" is not in the text. V3 stays in the map as a control.
+2. **Added "no alternative" rows:**
+
+   | Point | Spec | Why there is no alternative |
+   |---|---|---|
+   | (ii)-S h_v "σ_v constant, w1 present and violating" | K6 / P0.2 | With P = {p, q}, the only violating value is r, so σ_v = (r, r) is the unique solution |
+   | (ii)-S h_c "w1 conforming" | K6 / P0.2 | Either p or q is allowed; both programs accept both |
+   | (ii)-S n_counterexamples | SLICE-SPEC §3 | Explicit: "either h_v or h_c is missing" |
+   | Three-value order | SLICE-SPEC §1 | Explicit: p < q < r |
+
+   **Interaction, recorded:** under R-h, B-rec^h requires every present act slot to be in Ref, while K7's added a2 is "unreferenced". So under R-h an added a2 can never lie in H-B. Every sensitive R-h result therefore comes from the σ′ clauses (AMB-1 and AMB-3), not from AMB-2.
+3. **Readings invisible in U (named; their extent is not bounded).** Some readings agree with the baseline whenever |V| = 2 and |P| = 1, and differ only when |P| ≥ 2 or |V| ≥ 3. **The U calibration cannot detect them, and they are exactly what U_P2 brings into play.** One such reading was tested (V1c) and was inert. The class is not enumerated. **Pairwise combinations of variants were NOT run**, e.g. V1b+V2 or V1b+V5; a combination could be U-consistent even where each part is not.
+4. **The conclusion, restated:** the 63 robust quantities are robust under every identified single-clause reading. **The 4 sensitive quantities are robust conditional on the V1b U values and on single-clause readings that U can detect.** V1b, the base program and this map are all Claude-family. This is consistency with V1b, not correctness.
+5. **Decision procedure for a non-Claude disagreement** (applied mechanically after the return is sealed, before any interpretation):
+   - **D0. U-frame check first.** If the return's U values disagree with sealed V1b, take that U disagreement through the comparator and PREREG classes before anything else.
+   - **D1. A disagreement on a robust quantity (one of the 63) while U agrees → class A** (implementation), **unless the implementer's NOTES.md records a reading outside the AMB list.** In that case → **undetermined (new ambiguity)**; the reading is added to the map and goes to the human.
+   - **D2. A disagreement on a sensitive quantity (one of the 4) that exactly matches one variant's fingerprint on all changed units in U_P2, with the implementer's NOTES naming that reading → class D (interpretation, AMB-k).** If the fingerprint matches but the NOTES are silent → class D, flagged AMBIGUOUS.
+   - **D3. A disagreement on a sensitive quantity with no exact variant match → UNDETERMINED.** It is never class A, because the AMB list is not exhaustive and combinations were not run. Then an implementation audit follows, plus a reviewer; the result goes to the human.
+   - **D4. Agreement on all 67 → cross-family reproduction under the implementer's interpretation.** If its NOTES record a different reading on an AMB point while the values still agree, that point is shown to be inert for this slice.
+
+   Mapping to the frozen PREREG classes: A → (a) or (b); D, and any UNDETERMINED result → (c) until resolved; a mathematical discrepancy → (d). Every non-(a) result goes to the human (PREREG-SLICE §4).

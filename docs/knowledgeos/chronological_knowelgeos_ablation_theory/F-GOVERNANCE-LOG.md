@@ -3058,3 +3058,13 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Label: WITHIN-FAMILY, cross-model.** The comparator's "cross_family" licence field does not apply. The cross-family requirement is waived, NOT satisfied.
 - **Review: PASS_WITH_LIMITATIONS.** Copying is ruled out (reviewer re-run without the bundle: `cc6e635f…`). **Material limitation:** both workers made identical choices on every ambiguous point, and the (iii)-L core is structurally convergent. So this is reproduction under one shared interpretation, not validation of that interpretation. Provenance correction: call 12 `mv` was blocked (see RESULT.md).
 - **Remaining:** the non-Claude run of the slice (human). It is the only cross-family evidence, and the only test of the shared interpretation.
+
+## F-LOG-0244 — **Interpretation-sensitivity map of the blind slice** (autonomous task under the adopted protocol; review PASS_WITH_LIMITATIONS); sealed before any non-Claude return
+- **Ambiguity points examined:** 8, plus 4 "no alternative" rows added by the review.
+- **Variants:** 6 single-clause variants, plus the reviewer's probe V1c.
+- **63/67 distinct BLIND quantities** are robust under every identified single-clause reading.
+- **4 are sensitive:** (iii)-L n_cex under R-g, R-g+ and R-h, and the R-h least counterexample. Every sensitive reading contradicts the sealed V1b U values.
+- **Robustness of the 4 is conditional:** on V1b (Claude-family) and on readings that U can detect. Readings invisible in U are named but not bounded. Pairwise combinations were not run.
+- **A D/A/UNDETERMINED decision procedure (D0–D4) is fixed** for the non-Claude return. A sensitive disagreement with no variant match → UNDETERMINED, never A.
+- **Protocol mapping:** the adopted protocol's classes A–F are mapped onto the frozen PREREG classes (a)–(d) and are not substituted for them.
+- **Records:** `LOOP-1BQ/SENSITIVITY/` (SEAL.sha256).
