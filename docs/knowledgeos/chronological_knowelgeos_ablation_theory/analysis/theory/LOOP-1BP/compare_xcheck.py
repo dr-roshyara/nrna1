@@ -55,11 +55,18 @@ class ParseError(Exception):
 SUB = str.maketrans('₀₁₂₃₄₅₆₇₈₉', '0123456789')
 
 
+KEY_CHARS = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 -_()[]:=,.'+~≈")
+
+
 def norm(s):
+    """Closed: any character outside KEY_CHARS (after the listed mappings) raises; nothing is silently dropped."""
     s = str(s).translate(SUB)
-    for a in ('′', '’', '‘', 'ʹ'):
+    for a in ('′', '’', '‘'):
         s = s.replace(a, "'")
     s = s.replace('⁺', '+').replace('∅', 'empty').replace('σ', 'sigma').replace('ρ', 'rho')
+    bad = set(s) - KEY_CHARS
+    if bad:
+        raise ParseError(f'unknown characters {sorted(bad)!r} in key {s!r}')
     return re.sub(r"[^a-z0-9+']", '', s.lower())
 
 
@@ -91,7 +98,11 @@ T_K12_1_GROUP = {'sigmaonly': 'sigma-only', 'sigma': 'sigma-only', 'fonly': 'f-o
                  'actadditions': '+act', '+work': '+work', '+workadditions': '+work', '+workaddition': '+work',
                  'workadditions': '+work'}
 T_K12_2_GROUP = {'a5': 'A5', 'a7+act': 'A7+act', 'a7+work': 'A7+work', 'a7+ref': 'A7+ref',
-                 'a9cononly': 'A9con-only', 'a9con': 'A9con-only', 'a9donly': 'A9d-only', 'a9d': 'A9d-only'}
+                 'a9cononly': 'A9con-only', 'a9con': 'A9con-only', 'a9donly': 'A9d-only', 'a9d': 'A9d-only',
+                 # coarse labels, spec-literal ("A7 restricted to …", "A9 (con-only or d-only …)")
+                 'a7': 'A7', 'a7restrictedto+act+workand+ref': 'A7', 'a9': 'A9',
+                 'a9cononlyordonlychangessatisfyingf2': 'A9', 'a9cononlyordonly': 'A9'}
+COARSE = {'A7': ('A7+act', 'A7+work', 'A7+ref'), 'A9': ('A9con-only', 'A9d-only')}
 
 # ---------- strict value grammars ----------
 INF = {'inf', '∞', 'infinity'}
@@ -346,6 +357,16 @@ def k12_rows(x, key):
 
 # ---------- units ----------
 ABSENT = object()
+IGNORED_BODY_KEYS = {'images', 'diffs', 'class_sizes', 'n_counterexamples', 'scope_size', 'notes'}
+
+
+def _get(d, k):
+    """Field access that propagates a collision ParseError instead of hiding it."""
+    if isinstance(d, ParseError):
+        return d
+    if not isinstance(d, dict):
+        return ABSENT
+    return d.get(k, ABSENT)
 
 
 class Unit:
@@ -365,7 +386,11 @@ def exposed_v1b(R, F, form=None, h=None, field=None):
     if field == 'iiiL' and h == 'I7' and R == 'R0' and F == 'U':
         return True
     # REVIEW-r3 D: derivable from exposed R0/U forms + exposed membership; K4b is reading-independent.
-    if field in ('iS', 'iiO_c') and R == 'R0' and F == 'U' and h in ('H_g+', 'W7', 'I7'):
+    if field == 'iS' and R == 'R0' and F == 'U' and h in ('H_g+', 'W7', 'I7'):
+        return True
+    # REVIEW-r4: iiO_c depends on H only through O(H); every planted history has O = (0, c1), so the
+    # exposed iiO_c(W7) under R0/U exposes iiO_c at every named history under R0/U.
+    if field == 'iiO_c' and R == 'R0' and F == 'U':
         return True
     if field == 'K4b' and F == 'U' and h in ('H_g+', 'W7', 'I7'):
         return True
@@ -379,9 +404,16 @@ def _idx(d, table, what, unrecognized, path):
         return out
     for k, v in d.items():
         try:
-            out[lookup(table, k, what)] = v
+            cid = lookup(table, k, what)
         except ParseError:
             unrecognized.append(f'{path}/{k}')
+            continue
+        if cid in out:
+            # two raw keys map to one canonical id: never let one overwrite the other
+            unrecognized.append(f'{path}/{k} (collides with an earlier key for {cid})')
+            out[cid] = ParseError(f'colliding keys for {cid}')
+        else:
+            out[cid] = v
     return out
 
 
@@ -391,12 +423,18 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                       k5.get('n_frame_histories', ABSENT) if isinstance(k5, dict) else ABSENT, 'int'))
     cc = c5['checks']
     kchecks = k5.get('checks', {}) if isinstance(k5, dict) else {}
+    if isinstance(k5, dict):
+        for k in set(k5) - {'n_frame_histories', 'checks', '_meta'}:
+            unrecognized.append(f'R5/{k}')
     kc = {}
     if isinstance(kchecks, dict):
         for k, v in kchecks.items():
-            m = re.match(r'^K\s*(\d+(?:\.\d+)?b?)$', str(k).strip())
-            if m and 'K' + m.group(1) in R5_KEYS:
-                kc['K' + m.group(1)] = v
+            if k in R5_KEYS and k not in kc:
+                kc[k] = v
+                if isinstance(v, dict):
+                    for x in set(v) - {'result', 'least_witness_or_counterexample', 'difference_sigma_values',
+                                       'detail', 'notes'}:
+                        unrecognized.append(f'R5/checks/{k}/{x}')
             else:
                 unrecognized.append(f'R5/checks/{k}')
     for key in R5_KEYS:
@@ -409,17 +447,24 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
             except ParseError as e:
                 kr = e
             for r in rows:
+                kset = kr.get(r, ABSENT) if isinstance(kr, dict) else kr
                 for g in groups:
-                    if kr is ABSENT:
-                        kv_ = ABSENT
-                    elif isinstance(kr, ParseError):
-                        kv_ = kr
-                    elif r not in kr:
-                        kv_ = ABSENT
+                    coarse = next((c for c, fine in COARSE.items() if g in fine), None)
+                    if kset is ABSENT or isinstance(kset, ParseError):
+                        kv_ = kset
+                    elif coarse and coarse in kset and not (kset & set(COARSE[coarse])):
+                        kv_ = 'COARSE'  # the checker reported only the coarse property for this row
                     else:
-                        kv_ = g in kr[r]
+                        kv_ = g in kset
                     units.append(Unit(f'R5/{key}/{r}/{g}', 'BLIND' if g in blind else 'EXPOSED', True,
                                       g in cl.get(r, set()), kv_, 'bool'))
+                for c, fine in (COARSE.items() if key == 'K12.2' else []):
+                    if kset is ABSENT or isinstance(kset, ParseError):
+                        kv_ = kset
+                    else:
+                        kv_ = c in kset or bool(kset & set(fine))
+                    units.append(Unit(f'R5/{key}/{r}/{c}-any', 'EXPOSED', True,
+                                      bool(cl.get(r, set()) & set(fine)), kv_, 'bool'))
             continue
         units.append(Unit(f'R5/{key}/result', 'EXPOSED', True, cc[key]['result'],
                           kk.get('result', ABSENT) if isinstance(kk, dict) else ABSENT, 'bool'))
@@ -436,7 +481,8 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                               kk.get('difference_sigma_values', ABSENT) if isinstance(kk, dict) else ABSENT, 'k81'))
     # V1b
     kvn = {}
-    for R, byF in _idx(kv, T_READING, 'reading', unrecognized, 'V1b').items():
+    kv_top = {k: x for k, x in kv.items() if k != '_meta'} if isinstance(kv, dict) else kv
+    for R, byF in _idx(kv_top, T_READING, 'reading', unrecognized, 'V1b').items():
         for F, body in _idx(byF, T_FRAME, 'frame', unrecognized, f'V1b/{R}').items():
             kvn[(R, F)] = body
     for R in READINGS:
@@ -446,40 +492,53 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
             kforms, knamed = {}, {}
             if isinstance(kb, dict):
                 for k, v in kb.items():
-                    if norm(k) == 'named':
+                    if k in IGNORED_BODY_KEYS:
+                        continue
+                    if k == 'named':
                         for h, fl in _idx(v, T_HIST, 'history', unrecognized, f'V1b/{R}/{F}/named').items():
-                            knamed[h] = _idx(fl, T_FIELD, 'field', unrecognized, f'V1b/{R}/{F}/named/{h}')
-                    elif norm(k) in T_FORM:
-                        kforms[T_FORM[norm(k)]] = v
-                    else:
+                            knamed[h] = fl if isinstance(fl, ParseError) else \
+                                _idx(fl, T_FIELD, 'field', unrecognized, f'V1b/{R}/{F}/named/{h}')
+                        continue
+                    try:
+                        fid = lookup(T_FORM, k, 'form')
+                    except ParseError:
                         unrecognized.append(f'V1b/{R}/{F}/{k}')
+                        continue
+                    if fid in kforms:
+                        unrecognized.append(f'V1b/{R}/{F}/{k} (collides with an earlier key for {fid})')
+                        kforms[fid] = ParseError(f'colliding keys for {fid}')
+                    else:
+                        kforms[fid] = v
             for form in FORMS:
                 ch = cb['checks'][form]
                 kf = kforms.get(form, ABSENT)
                 tier = 'EXPOSED' if exposed_v1b(R, F, form=form) else 'BLIND'
-                kh = kf.get('holds', ABSENT) if isinstance(kf, dict) else ABSENT
+                kh = _get(kf, 'holds')
                 units.append(Unit(f'V1b/{R}/{F}/{form}/holds', tier, True, ch['holds'], kh, 'bool'))
                 if form != '(i)-O':
                     units.append(Unit(f'V1b/{R}/{F}/{form}/least_counterexample', tier, None,
                                       ch['least_counterexample'],
-                                      kf.get('least_counterexample', ABSENT) if isinstance(kf, dict) else ABSENT,
+                                      _get(kf, 'least_counterexample'),
                                       'cex', claude_holds=ch['holds'], checker_holds=kh))
             for h, cfl in cb['named'].items():
                 req = (R, h) in REQUIRED
                 for fld in FIELDS:
                     tier = 'EXPOSED' if exposed_v1b(R, F, h=h, field=fld) else 'BLIND'
                     units.append(Unit(f'V1b/{R}/{F}/named/{h}/{fld}', tier, req, cfl.get(fld),
-                                      knamed.get(h, {}).get(fld, ABSENT), 'iiil' if fld == 'iiiL' else 'bool'))
+                                      _get(knamed.get(h, {}), fld), 'iiil' if fld == 'iiiL' else 'bool',
+                                      claude_in_scope=cfl.get('iiiL_in_scope'),
+                                      member_units=(f'V1b/{R}/{F}/named/{h}/member(H-D)',
+                                                    f'V1b/{R}/{F}/named/{h}/member(R_B)')))
             for h, fld, ckey in EXTRAS:
                 req = (R, h) in REQUIRED
                 units.append(Unit(f'V1b/{R}/{F}/named/{h}/{fld}',
                                   'EXPOSED' if exposed_v1b(R, F, h=h, field=fld) else 'BLIND', req,
-                                  cb['named'][h].get(ckey), knamed.get(h, {}).get(fld, ABSENT),
+                                  cb['named'][h].get(ckey), _get(knamed.get(h, {}), fld),
                                   'obs' if fld == 'O' else 'bool'))
             for sr, sf, sh, sfld, ckey in SUPP_UNITS:
                 if (sr, sf) == (R, F):
                     units.append(Unit(f'V1b/{R}/{F}/supp/{sh}/{sfld}', 'BLIND', True, cs[sr][sf][ckey],
-                                      knamed.get(sh, {}).get(sfld, ABSENT), 'iiil' if sfld == 'iiiL' else 'bool'))
+                                      _get(knamed.get(sh, {}), sfld), 'iiil' if sfld == 'iiiL' else 'bool'))
     return units
 
 
@@ -505,9 +564,11 @@ def canon(kind, x, side='checker'):
 
 def classify(u, untestable, ambiguous):
     flags = []
-    if any(u.uid.startswith(p) for p in ambiguous):
+    if any(_pmatch(u.uid, p) for p in ambiguous):
         flags.append('AMBIGUOUS')
-    unt = any(u.uid.startswith(p) for p in untestable)
+    unt = any(_pmatch(u.uid, p) for p in untestable)
+    if u.checker == 'COARSE':
+        return 'NOT_A_UNIT', flags + ['coarse-label'], None, None
     if isinstance(u.checker, ParseError):
         return 'INCOMPLETE', flags + ['MALFORMED'], None, str(u.checker)
     required = u.required
@@ -542,6 +603,11 @@ def classify(u, untestable, ambiguous):
         else:
             kv = canon(u.kind, u.checker)
             cls = 'NOT_APPLICABLE' if (cv is None and kv is None) else ('AGREEMENT' if cv == kv else 'DISAGREEMENT')
+            if u.kind == 'iiil' and cv is None and kv is False and u.kw.get('claude_in_scope') is False:
+                # Pre-declared (REVIEW-r4 E3): the spec types iiiL as {true,false}; a checker may report false
+                # out of scope. Accepted only if both scope inputs agree (checked in main); else DISAGREEMENT.
+                cls = 'SCOPE_PENDING'
+                flags.append('iiiL-false-out-of-scope')
     except ParseError as e:
         return 'INCOMPLETE', flags + ['MALFORMED'], None, str(e)
     if unt:
@@ -550,8 +616,21 @@ def classify(u, untestable, ambiguous):
     return cls, flags, str(cv), str(kv)
 
 
+def _pmatch(uid, p):
+    return uid == p or uid.startswith(p.rstrip('/') + '/')
+
+
 KNOWN_C_CANDIDATES = {'V1b/R-d/U/(i)-S/holds': 'F-1: R4 Lem 3.7 read literally asserts (i) incl. ≈σf under D-st+; '
                                                  'its proof gives only ≈σf,Cap (REVIEW-r2).'}
+
+
+def _no_dup(pairs):
+    d = {}
+    for k, v in pairs:
+        if k in d:
+            raise ParseError(f'duplicate JSON key {k!r}')
+        d[k] = v
+    return d
 
 
 def main(argv=None):
@@ -563,10 +642,10 @@ def main(argv=None):
     files = {}
     for name in ('R5-RESULTS.json', 'V1B-RESULTS.json'):
         try:
-            files[name] = json.load(open(os.path.join(a.checker_dir, name)))
+            files[name] = json.load(open(os.path.join(a.checker_dir, name)), object_pairs_hook=_no_dup)
         except FileNotFoundError:
             files[name] = 'MISSING'
-        except (json.JSONDecodeError, UnicodeDecodeError):
+        except (json.JSONDecodeError, UnicodeDecodeError, ParseError):
             files[name] = 'MALFORMED'
     unt = json.load(open(a.untestable)) if a.untestable else []
     amb = json.load(open(a.ambiguous)) if a.ambiguous else []
@@ -586,6 +665,12 @@ def main(argv=None):
         if u.uid in KNOWN_C_CANDIDATES:
             row['known_c_candidate'] = KNOWN_C_CANDIDATES[u.uid]
         rows.append(row)
+    byid = {r['unit']: r for r in rows}
+    for r in rows:
+        if r['class'] == 'SCOPE_PENDING':
+            hd, rb = (r['unit'].rsplit('/', 1)[0] + '/member(H-D)', r['unit'].rsplit('/', 1)[0] + '/member(R_B)')
+            ok = all(byid.get(x, {}).get('class') == 'AGREEMENT' for x in (hd, rb))
+            r['class'] = 'AGREEMENT' if ok else 'DISAGREEMENT'
     scored = [r for r in rows if r['class'] != 'NOT_A_UNIT']
     count = Counter((r['tier'], r['class']) for r in rows)
     flagged = [r['unit'] for r in scored if 'AMBIGUOUS' in r['flags']]
@@ -595,7 +680,9 @@ def main(argv=None):
                'counts': {f'{t}/{c}': n for (t, c), n in sorted(count.items())},
                'unrecognized_checker_keys': unrecognized,
                'ambiguous_flagged': flagged,
-               'disagreements_for_review': [r['unit'] for r in rows if r['class'] == 'DISAGREEMENT'],
+               'disagreements_for_review': [r['unit'] for r in rows if r['class'] == 'DISAGREEMENT'
+                                            or 'value-compared:DISAGREEMENT' in r['flags']],
+               'coarse_label_rows_not_scored': [r['unit'] for r in rows if 'coarse-label' in r['flags']],
                'licence_cross_family_reproduction_BLIND_tier': licence,
                'note': 'Every DISAGREEMENT is classified (a)-(d) by the reviewer; any non-(a) goes to the human gate. '
                        'Unrecognized keys block the licence until a reviewed syntax-only adapter maps them. '
