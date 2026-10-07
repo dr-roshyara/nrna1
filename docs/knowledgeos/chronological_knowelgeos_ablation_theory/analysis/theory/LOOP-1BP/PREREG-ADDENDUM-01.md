@@ -1,188 +1,111 @@
-# Cross-check pre-registration, addendum 01 (r2; fixed before any return exists)
+# Cross-check pre-registration, addendum 01 (r4; fixed before any return exists)
 
-**Status: PROPOSED — r2 FAILED its independent review** (`ADDENDUM-01-ROUNDS/REVIEW-r2.md`). It is **not in force**. Until a human act adopts a passing revision, `PREREG.md` alone governs. r3 waits for the human's §8 decision.
+**Status:** PROPOSED. It takes effect only through a human act (§18 of the control prompt). Until then `PREREG.md` alone governs.
 
-**Written:** 2026-10-07. `~/F-XCHECK-RETURN-01/` does not exist, and the bundle has not been handed over.
-**Trigger:** the human's control prompt "R6 Independence Cross-Check → Validation Decision Gate":
-- §6: no expected outcomes;
-- §7: five result classes, a seal record and eight reviewer questions.
+**Review history:** r1, r2 and r3 FAILED review (`ADDENDUM-01-ROUNDS/`). r4 implements REVIEW-r3 in full.
 
-**Review history:**
-- r1 was reviewed with verdict FAIL (`ADDENDUM-01-ROUNDS/REVIEW-r1.md`).
-- r2 implements that review's required changes 1–8.
+**Normative text:** `compare_xcheck.py` (sha256 `b22c91f8…01af1`), validated by `selftest_compare_xcheck.py` (sha256 `8cff6032…fc75c`). This prose only summarizes the script. Where the two differ, the script governs, and the difference is a defect to report.
 
-**Unchanged from `PREREG.md`:**
-- the sealed Claude result files it names;
-- the classification (a)–(d);
-- "(b) or (d) → human gate";
-- the all-or-nothing licence (P:12);
-- "Not claimed".
+**Human act (2026-10-07): bundle option N.**
+- **Bundle:** `F-XCHECK-BUNDLE-02.tar` (sha256 `4dff1351…dd08`) is the bundle handed over.
+- **Edits:** 12 label removals, recorded exactly in `BUNDLE-02/EDIT-LIST.md`. README, TASK and R5-SPEC are byte-identical to bundle-01.
+- **Waiver:** §6 is waived only for the R5 claim statements that are built into the task.
+- **Disclosed:** README:2 ("no expected answers") and V1B-SPEC:1 ("NO predictions") are inaccurate where they touch R5-SPEC, and they are kept unchanged by the terms of option N.
 
-**Precedence:** where a rule here and a rule in `PREREG.md` govern the same thing, the rule here applies. Every such rule is a narrowing, as listed in §9.
+## 1. Exposure
+The checker can see outcomes in three places:
+- R5-SPEC §§3–5 assert the theorems that the checks test;
+- §7.2 states each check as a claim;
+- several planted histories coincide with stated examples: H_c, H_g⁺ and H_U5h are Lem 3.5's examples, and W7 is K8.7's h′.
 
-## 1. Exposure finding: the bundle states outcomes
-The checker receives R5-SPEC, which is a stripped theory draft. Its statements assert results that the checks test. Exposure therefore has three sources.
+The details are in r2 §1 and REVIEW-r2/r3.
 
-**(E1) Theorem statements, R5-SPEC §§3–5**
+## 2. Tiers (`exposed_v1b`, `build_units`)
+| Tier | Units | Licenses |
+|---|---|---|
+| **EXPOSED** | every R5 truth value; R5 null witnesses; K12 rows other than the fine splits; V1b R0/U (all forms); R0/U5 and R-d/U (i)-S and (i)-O; `member(·)` at H_c, H_g⁺, W7, I7 (every reading); `iS` and `iiO_c` at H_g⁺, W7, I7 under R0/U; `K4b` at H_g⁺, W7, I7 in U (every reading); `O(W7)`, `O(I7)`; `iiiL(I7)` R0/U | consistency only |
+| **NONLICENSING** | R5 composite witnesses (role dicts, which TASK's single-history format cannot carry), matched by membership in the role set | nothing |
+| **BLIND** | `n_frame_histories`; K8.1's per-o difference set; the K12.1 con-only/d-only rows; the K12.2 A7 +act/+work/+ref and A9 con-only/d-only rows; every other V1b unit, including the six SUPP values | cross-family reproduction |
 
-| Statement | Check it exposes |
+## 3. Fail-closed parsing
+- **Keys** pass only through closed alias tables (readings, frames, forms, histories, fields, K12 rows and groups). An unknown key is recorded under `unrecognized_checker_keys` and **blocks the licence**. It can only be mapped by a reviewed, separately committed, syntax-only adapter.
+- **Values** must match strict grammars:
+  - booleans: true/false or "TRUE"/"FALSE";
+  - n: an integer;
+  - O: `{r, c}`, `[r, c]`, `(r=…,c=…)` or `(r, c)`, where r and c may be keyed by ρ1;
+  - histories: exactly nine coordinates. Slot kinds come from a whitelist; an iss slot needs d, v, prep and f; an adp slot needs d, with an optional obj. Cap, Ref and con are whitelisted, and w1 is `{t}`, t or `t=…`;
+  - K12: exact labels. Generic "A7"/"A9" labels are MALFORMED.
+- **Anything else** is MALFORMED, which gives INCOMPLETE.
+- **Claude-side values** are parsed separately. A failure there crashes the comparator; it is never scored.
+
+## 4. Units
+- **R5:** the 34 keys; K12 compared row × group.
+- **V1b:** 12 readings × 2 frames × 5 forms.
+- **Counterexamples:** a required unit wherever both sides report holds = false. If the checker omits one there, it is INCOMPLETE.
+- **Named fields:** the Def P0.3 fields at every named history the Claude side reports.
+  - **Required tuples:** those of V1B-SPEC §C. The common controls C-U5 and C-O1 define a frame and an observation, not a named history, so they produce no named units. The images they would need (V1B-SPEC §D.2) are not part of TASK's output.
+- **Extras:** `exists(H-D+, ≈σf H_d2)`, `O(W7)` and `O(I7)`, compared at every (reading, frame) and required with their tuple.
+- **SUPP:** the six SUPP values, all required.
+- **iiiL:** three-valued (true, false, null = out of scope) and compared exactly.
+- **Not scored:** units where neither side reports a value, which are listed as `NOT_A_UNIT`.
+
+## 5. Classes (`classify`), exactly one per unit
+| Class | When |
 |---|---|
-| Lem 3.3 | K2 |
-| Prop 3.4 | K3 |
-| Lem 3.5 (explicit histories) | K1 witnesses |
-| Lem 3.6 | K1 |
-| Lem 3.7 | K4b; R-d/U (i)-O |
-| Cor 4.1b and Lem 4.2 | K4–K7; R0/U, all five V1b forms |
-| Lem 5.2 | K10.1 |
-| Prop 5.4(a) | K10.2 |
-| Prop 5.4(b) | the form of K10.4's H-B violator |
-| Lem 1.12, Lem 4.0a, and the "¬Ax" labels with the pairwise-independence statement (:202) | most of K12.1/K12.2 |
+| INCOMPLETE | missing or malformed file or value, or a required unit absent and not UNTESTABLE |
+| UNTESTABLE | the unit is named in NOTES; its value is still compared and recorded as a flag |
+| NOT_APPLICABLE | both sides null |
+| DISAGREEMENT | the two values differ |
+| AGREEMENT | the two values are equal |
+| NOT_A_UNIT | listed only |
 
-**(E2) Assertion-form checks with supplied detail, R5-SPEC §7.2**
-- all 32 boolean checks are stated as claims;
-- detail is supplied in:
-  - K8.2: the value and the parenthetical;
-  - K8.3: the region;
-  - K8.4: "(iii) fails at I7 …";
-  - K8.5: the O-values, which also expose R0/U5 (i)-O;
-  - K8.6;
-  - K8.7: h′ = W7, the I7 verdicts in U and U₇, and O(W7) = O(I7);
-  - K9.1–K9.8: the separating values and witnesses;
-  - K10.5: the example;
-  - K10.7.
+AMBIGUOUS is a **flag**, listed under that label. It deviates from §7's list, so that a disagreement cannot be parked outside the gate. This is disclosed for the human act.
 
-**(E3) Labels in V1B-SPEC and V1B-SUPP-SPEC**
-- :69 "(A5 broken)";
-- :71 "O₁ sees σ";
-- :73 "the W = ∅ break" and "CM-A3a instance in U";
-- :83 "the CM-A7(b)-form witness";
-- SUPP:1, the extraction-error header.
+## 6. Licence, gate, seal, reviewer
+- **Licence.** "Cross-family reproduction of the finite results, BLIND tier only" requires all of:
+  - every scored unit AGREEMENT or NOT_APPLICABLE;
+  - no AMBIGUOUS flag;
+  - no unrecognized key.
 
-Labels carry no definitional content.
+  This is P:12, kept.
+- **Gate.** Every DISAGREEMENT is classified (a)–(d) by a reviewer who has both programs. It counts as (a) only on a concrete history where the checker's program departs from the literal spec. **Any non-(a), including (c), goes to the human.**
+- **Known (c) candidate:** `V1b/R-d/U/(i)-S/holds` (F-1).
+- **Seal.**
+  1. Hash every file, check that each JSON parses, and check that all six required files are present.
+  2. Commit.
+  3. Only then extract the metadata.
+- **Reviewer.** A fresh, read-only Claude subagent, disclosed as Claude family. It answers the eight questions of §7.
 
-## 2. Unit set (fixed now, enumerated from the sealed key sets)
+## 7. Comparator validation (before any return): `selftest_compare_xcheck.py`, PASS
+- **P0:** Claude's results re-encoded with different syntax and aliases.
+  - 0 DISAGREEMENT, 0 INCOMPLETE, 0 unrecognized keys.
+  - The licence holds.
+  - BLIND: 1,516 AGREEMENT, 242 NOT_APPLICABLE (mostly out-of-scope iiiL).
+- **N1–N6** (planted defects) and **T1–T11** (adversarial encodings from REVIEW-r3) are each caught or parsed correctly as specified:
+  - record-keyed r/c;
+  - `issue`/`adopt` words;
+  - boolean con;
+  - a missing f;
+  - an omitted iiiL;
+  - null vs false;
+  - dict-of-boolean K12;
+  - a generic A9 label;
+  - an unknown reading;
+  - `"665,920"`;
+  - an omitted counterexample;
+  - subscript and typographic aliases.
+- **Limit:** a checker syntax outside the grammars yields INCOMPLETE and blocks the licence, never a silent agreement. That is the price of failing closed.
 
-**R5 (`LOOP-1BL/RETURN/RESULTS.json`).** Two kinds of unit:
-- `n_frame_histories`;
-- for each of the 34 keys (K1, K2, K3, K4, K4b, K5, K6, K7, K8.1–K8.7, K9.1–K9.8, K10.1–K10.7, K11.1, K11.2, K12.1, K12.2), two units:
-  - `result`: a boolean for 32 keys, and the reported set for K12.1 and K12.2;
-  - `witness`: the checker's `least_witness_or_counterexample`.
+## 8. Changes relative to `PREREG.md`
+**Narrowings:**
+- the licence is limited to the BLIND tier;
+- AMBIGUOUS and unrecognized keys block the licence;
+- (c) also goes to the gate;
+- NOT_REPORTED is split into INCOMPLETE and UNTESTABLE;
+- fail-closed parsing.
 
-Two further units:
-- K8.1's `difference_sigma_values`;
-- the K12.1 and K12.2 sets, compared row by row: one unit per (observation or frame, change group).
-
-**V1b (`LOOP-1BN/V1B-RETURN/V1B-RESULTS.json` + `SUPP-RESULTS.json`).** For each of the 12 readings × frames {U, U5} × forms {(i)-S, (i)-O, (ii)-S, (ii)-O, (iii)-L}, two units:
-- `holds`;
-- `least_counterexample`.
-
-**Named-field units.**
-- **Fields:** only the Def P0.3 fields, i.e. `member(R_B)`, `member(H-D)`, `member(H-B)`, `iS`, `K4b`, `iiO_c`, `iiiL`, `O`.
-- **Extras:** `exists(H-D+, ≈σf H_d2)`, `O(W7)`, `O(I7)`, and the five SUPP fields.
-- **Required tuples** (reading, frame, history), each in both frames:
-  - H_c under R-c;
-  - H_d and H_d2 under R-d;
-  - H_g and H_g′ under R-g;
-  - H_g under R-j and R-g⁺;
-  - I7 and W7 under R-h and R0;
-  - H_i and H_∅ under R-i and R-i′;
-  - H_j under R-j;
-  - H_g⁺ under R-g⁺;
-  - the SUPP tuples, as listed in V1B-SUPP-SPEC.
-- **Optional tuples:** any other (reading, frame, history) that both sides report. These are compared and are not counted as INCOMPLETE if missing.
-- **Not units:** Claude-only extra fields (`designated_*`, `in_frame`, `K4b_with_reading_classes`, `iiiL_exists_ignoring_scope`, `iiiL_least_witness`, `iiiL_in_scope`, the `exists(H-D^R …)` variant, `class_sizes`), and the images and diffs of V1B-SPEC §D.2, which TASK.md does not request. If the checker reports units outside this set, they are listed as **EXTRA** and not scored.
-
-## 3. Canonicalization (fixed now)
-- `"TRUE"`/`"FALSE"` (in any case) ≡ `true`/`false`.
-- A history is compared on all nine keys (sigma, a1, a2, Cap, w1, Ref, con, r, c), with Cap and Ref as sets, and act and work fields per R5-SPEC §7.1. A key the spec makes irrelevant (e.g. an absent slot's attributes) is ignored.
-- **R5 witness against a composite Claude dict:**
-  - AGREEMENT if the checker's history equals one of Claude's non-null sub-witnesses for that key, or if both are null.
-  - Otherwise the values differ and the result is DISAGREEMENT (§4).
-- **`iiiL` out of scope:** if Claude reports `null` because the history is outside the (iii)-L scope, and the checker reports `false` or omits the field, the unit is **NOT APPLICABLE** and is excluded. If the checker reports `true` there, the result is DISAGREEMENT.
-- A V1b `least_counterexample` is compared only where both sides report `holds = false`. Otherwise it is implied by `holds`, and is not a separate unit.
-
-## 4. Classes: exactly one per unit, with precedence in this order
-1. **INCOMPLETE:**
-   - the containing file is missing, malformed or truncated (never repaired); or
-   - a required unit is absent and NOTES says nothing specific about it.
-2. **UNTESTABLE:** NOTES names this unit, or a group that contains it (a check key, reading, frame or history), as not computed. Any reported value for it is ignored. A general, unnamed "could not compute" statement does not qualify, and the result is INCOMPLETE.
-3. **DISAGREEMENT:** both values are present and differ after §3. Each is classified (a)–(d) per `PREREG.md`.
-   - It is (a) only if the reviewer, running both programs, shows a concrete history on which the checker's program departs from the literal spec text.
-   - **Every DISAGREEMENT that is not (a) goes to the human gate**, including (c).
-4. **AGREEMENT:** both values are present and equal after §3.
-
-**AMBIGUOUS is a flag, not a class.** It is set on a unit when NOTES records a reading choice touching that unit, or when the reviewer finds that the spec admits more than one reading for it. A flagged AGREEMENT is not counted toward reproduction. A flagged DISAGREEMENT keeps its class and its route to the gate.
-
-## 5. Exposure tiers and what may be claimed
-- **EXPOSED units:**
-  - every R5 `result`;
-  - every R5 `witness` that is null for a universal check (implied by its result);
-  - the K1 witnesses;
-  - the K10.4 H-B violator;
-  - K12.1/K12.2 rows, except the BLIND ones listed below;
-  - the units of §1 (E2);
-  - V1b R0/U, all forms;
-  - V1b R0/U5 (i)-O;
-  - V1b R-d/U (i)-O;
-  - `member(H-B, W7)` under R0, in both frames;
-  - `O(W7)`, `O(I7)`;
-  - `iiiL(I7)` under R0/U.
-  - **Under bundle-01 only (§8, option W):** all R-c units at H_c, all (i)-O units in frame U5, and the W7 and I7 fields under R-h. These are the units the E3 labels hint at.
-- **BLIND units:** every other unit, notably:
-  - `n_frame_histories`;
-  - non-null R5 witnesses not listed above;
-  - K8.1's difference set (weakly hinted by Lem 3.5 and the K8.2 parenthetical; footnoted);
-  - the K12.2 A7 sub-kinds (+act/+work/+ref) and the con-only/d-only split in K12.1/K12.2;
-  - all remaining V1b units.
-- **Licence:**
-  - "Cross-family reproduction" (PREREG P:12) is claimed only if **every** unit is AGREEMENT or NOT APPLICABLE, with no INCOMPLETE, no UNTESTABLE and no AMBIGUOUS flag. Even then it is claimed **only for the BLIND tier**.
-  - EXPOSED agreement is reported as "consistent across model families, claim visible to the checker".
-  - A DISAGREEMENT on an EXPOSED unit is not discounted.
-  - Unit-level agreements may be reported as unit-level facts. They never upgrade R5 or V1b on their own.
-
-## 6. Seal record (Step A)
-1. **Before reading any content:**
-   - list every file in `~/F-XCHECK-RETURN-01/` with its size and sha256;
-   - check whether each `.json` parses, recording yes or no only;
-   - check completeness: R5-RESULTS.json, V1B-RESULTS.json, NOTES.md, ≥ 1 program file, TRANSCRIPT.txt, PROVENANCE.txt.
-
-   Commit this seal.
-2. **Then** extract the metadata into the seal's second section, without editing any file:
-   - PROVENANCE.txt verbatim (verifier, model version, date, bundle sha checked, upload form, environment, files returned, session, memory, web and retries);
-   - the language, runtime and ambiguities stated in NOTES.
-
-## 7. Comparison and review
-- The comparison is done by a script written to §§2–4, committed before it runs.
-- **The reviewer** is a fresh, read-only Claude subagent. It is **Claude family**: a disclosed limitation, since no non-Claude reviewer is available without the human.
-- The reviewer gets both programs, both result sets and the bundle, and runs both programs on every DISAGREEMENT. It answers, per DISAGREEMENT and per AMBIGUOUS flag:
-  1. Is it real (reproduced from both programs)?
-  2. Is it caused by implementation?
-  3. Is it caused by interpretation?
-  4. Is it caused by an underspecified definition?
-  5. Does it affect an R4 statement?
-  6. Does it affect only a finite check?
-  7. Does it affect an empirical conclusion (R1/R3)?
-  8. Does it require reopening R4?
-- **Stop:** any DISAGREEMENT that is not (a) goes to the human, with:
-  - the exact disagreement;
-  - a minimal reproducing history;
-  - the affected statement and check;
-  - the causes;
-  - alternatives for resolving it.
-
-  Nothing is repaired automatically. Otherwise, report and stop. V2, E-A5, V5, V6 and R7 are not started.
-
-## 8. Human decision required: the §6 conflict
-§6 forbids expected outcomes in the handover. Sources E1 and E2 are inherent to R5's task, which is to verify stated claims. E3 is not inherent.
-- **Option N (recommended): issue bundle-02.**
-  - V1B-SPEC and V1B-SUPP-SPEC have the E3 labels removed. The reviewed edit list is to be prepared after this act.
-  - README, TASK and R5-SPEC stay byte-identical.
-  - §6 is waived only for E1 and E2, which are covered by the EXPOSED tier.
-- **Option W: hand over bundle-01 unchanged.** §6 is waived for E1, E2 and E3. The extra EXPOSED units of §5 apply.
-- **Option F: issue a fully neutral bundle-02.** R5-SPEC is rewritten without theorem assertions, the checks are restated as "determine whether", and a reviewed semantic-equivalence argument is required. This means more blind units, and risk of semantic drift against the spec the Claude side ran on.
-
-## 9. Narrowings relative to `PREREG.md`
-- The licence is restricted to the BLIND tier, and any AMBIGUOUS flag blocks it.
-- NOT_REPORTED is split into INCOMPLETE and UNTESTABLE; neither counts as agreement.
-- (c) also goes to the gate.
-- The unit set, canonicalization and seal order are fixed in advance.
+**Loosenings, disclosed:**
+- NOT_APPLICABLE (both null) is licence-compatible;
+- R5 composite witnesses are matched by membership in the role set, but they are NONLICENSING;
+- these are not units: Claude-only extra fields; the §D.2 images and diffs; the common-control frames as named units; counterexamples where either side has holds = true. In the last case the disagreement shows up in `holds`;
+- the bundle is bundle-02 (human act, option N).

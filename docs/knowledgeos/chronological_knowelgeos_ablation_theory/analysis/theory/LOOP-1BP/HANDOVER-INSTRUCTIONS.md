@@ -4,9 +4,9 @@
 
 ## 1. Check the bundle
 ```
-sha256sum ~/F-XCHECK-BUNDLE-01.tar
+sha256sum ~/F-XCHECK-BUNDLE-02.tar
 ```
-It must print `26ad0404307918066e49cd457833e993151b1133f21fcbce20526329334ce4a8`.
+It must print `4dff13519dc12db6d17d3a24bf6afafbdf7b80efe506968b62123aa92763dd08`.
 
 ## 2. Choose the verifier
 - **Allowed:** a non-Claude model that can **write and run code**, for example ChatGPT with code execution ("data analysis") or Gemini with code execution; or a human programmer.
@@ -21,7 +21,7 @@ It must print `26ad0404307918066e49cd457833e993151b1133f21fcbce20526329334ce4a8`
 - **Do not use any conversation that has seen this project.**
 
 ## 4. Hand over
-1. Upload `F-XCHECK-BUNDLE-01.tar`. If the tool can't take a .tar, unpack it and upload the 5 files.
+1. Upload `F-XCHECK-BUNDLE-02.tar`. If the tool can't take a .tar, unpack it and upload the 5 files.
 2. Paste exactly:
    ```
    Unpack the attached bundle if needed. Follow README.md exactly. Use only the files in the bundle. Return R5-RESULTS.json, V1B-RESULTS.json and NOTES.md, plus the program you wrote.
@@ -41,7 +41,7 @@ Do not edit anything. Save into a new folder `~/F-XCHECK-RETURN-01/`:
   verifier: <model/product/version or human>
   model_version_shown: <exact model name/version the tool displays, or unknown>
   date_utc:
-  bundle_sha256_checked: 26ad0404307918066e49cd457833e993151b1133f21fcbce20526329334ce4a8 (yes/no)
+  bundle_sha256_checked: 4dff13519dc12db6d17d3a24bf6afafbdf7b80efe506968b62123aa92763dd08 (yes/no)
   upload_form: tar / five unpacked files
   execution_environment: <e.g. ChatGPT code sandbox; local Python 3.x>
   files_returned: <list; note anything missing or truncated>
