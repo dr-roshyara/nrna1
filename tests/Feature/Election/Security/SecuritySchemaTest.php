@@ -4,13 +4,15 @@ namespace Tests\Feature\Election\Security;
 
 use App\Models\Election;
 use App\Models\ElectionSecurityEvent;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 class SecuritySchemaTest extends TestCase
 {
-    use RefreshDatabase;
+    // No `use RefreshDatabase` here: Tests\TestCase already uses it and, on PostgreSQL, skips the wrapping
+    // transaction. Re-declaring the trait re-imports beginDatabaseTransaction() and overrides that skip, so
+    // the election stays uncommitted and the separate pgsql_audit connection (ElectionSecurityEvent,
+    // ADR_20260806_1340) cannot see it — an FK violation. Same convention as SecurityEventRecorderTest.
 
     #[Test]
     public function election_has_network_binding_strategy_column(): void

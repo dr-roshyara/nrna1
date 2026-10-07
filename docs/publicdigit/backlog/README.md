@@ -131,6 +131,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-252`](PBDIGIT-252-participation-authority-codes-has-voted.md) | **One participation authority: `codes.has_voted`** — Voter Management Voted column, row actions, suspension guard and newsletter voted / not-voted audiences stop reading the writer-less `election_memberships.has_voted` | `EPIC-05` | 🟢 **RESOLVED** 2026-10-06 — all four consumers read `codes.has_voted`; Voted column Yes / No |
 | [`PBDIGIT-253`](PBDIGIT-253-voter-management-voted-filter.md) | **Voter Management: filter by Voted** (All / Voted / Not voted, from `codes`) — also fixes filters navigating to the read-only list | `EPIC-05` | 🟢 **RESOLVED** 2026-10-06 — Voted filter from `codes`; filters stay on `/voters/manage` |
 | [`PBDIGIT-254`](PBDIGIT-254-settings-page-shows-why-a-save-was-refused.md) | **Election Settings shows why a save was refused, and locks locked fields** — server errors (e.g. the security-policy lock while voting) were silently discarded | `EPIC-05` | 🟢 **RESOLVED** 2026-10-06 — refusals shown; security fields locked from Ready for Voting; all settings frozen while voting (IP capture continues) |
+| [`PBDIGIT-255`](PBDIGIT-255-election-test-module-setup-fixes.md) | **Election test module, story 1: test-setup defects** — duplicate role row; redundant `RefreshDatabase` hiding rows from the audit connection | `EPIC-05` | 🟢 **RESOLVED** 2026-10-07 — 9 tests fixed, no assertion changed |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

@@ -58,10 +58,12 @@ class ElectionOnlyEntitlementPinTest extends TestCase
             'email_verified_at' => now(),
             'organisation_id'   => $this->org->id,
         ]);
-        $this->org->users()->attach($this->voter->id, [
-            'id'   => (string) Str::uuid(),
-            'role' => 'voter',
-        ]);
+        // UserFactory::afterCreating already creates this user+organisation role row (unique pair) —
+        // ensure its role idempotently instead of inserting a duplicate (election test module, story 1).
+        \App\Models\UserOrganisationRole::updateOrCreate(
+            ['user_id' => $this->voter->id, 'organisation_id' => $this->org->id],
+            ['role' => 'voter']
+        );
 
         $this->electionX = Election::factory()->create([
             'organisation_id'       => $this->org->id,
