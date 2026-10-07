@@ -281,9 +281,13 @@ def main():
     # r12: K10.5-type nested {h, slot} witness role is matched
     c5 = json.load(open(C.CLAUDE_R5)); w = c5['checks']['K10.5']['witness_or_counterexample']
     nested = [h['h'] for h in w.values() if isinstance(h, dict) and isinstance(h.get('h'), dict)]
+    ok &= bool(nested); print('Z0 fixture has a nested {h,slot} role', bool(nested))
     if nested:
         r, v = make_p0(); r['checks']['K10.5']['least_witness_or_counterexample'] = nested[0]
         x = run(r, v); z = ucls(x, 'R5/K10.5/witness'); ok &= z == ['AGREEMENT']; print('Z1 nested {h,slot} role matched', z)
+        h2 = json.loads(json.dumps(nested[0])); h2['r'] = 1 - h2['r']
+        r, v = make_p0(); r['checks']['K10.5']['least_witness_or_counterexample'] = h2
+        x = run(r, v); z2 = ucls(x, 'R5/K10.5/witness'); ok &= z2 == ['DISAGREEMENT']; print('Z2 non-matching history', z2)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 
