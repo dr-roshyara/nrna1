@@ -1,0 +1,2058 @@
+{
+ "U": {
+  "n_frame_histories": 665920,
+  "readings": {
+   "R0": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 132040,
+     "H-B": 93888,
+     "H-D&H-B": 26408,
+     "H-D&R_B": 52816
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 480,
+     "n_counterexamples": 96,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-b": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 132040,
+     "H-B": 93888,
+     "H-D&H-B": 26408,
+     "H-D&R_B": 52816
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 480,
+     "n_counterexamples": 96,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-c": {
+    "sizes": {
+     "R_B": 552960,
+     "H-D": 132040,
+     "H-B": 187776,
+     "H-D&H-B": 52816,
+     "H-D&R_B": 132040
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 552960,
+     "n_counterexamples": 110592,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [
+       "(rho1,a2)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 960,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-d": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 84040,
+     "H-B": 93888,
+     "H-D&H-B": 16808,
+     "H-D&R_B": 33616
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 36360,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 0,
+       "f": "inf"
+      },
+      "Cap": [
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 77784,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 384,
+     "n_counterexamples": 72,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-e": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 144040,
+     "H-B": 93888,
+     "H-D&H-B": 28808,
+     "H-D&R_B": 57616
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 504,
+     "n_counterexamples": 96,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-f": {
+    "sizes": {
+     "R_B": 552960,
+     "H-D": 132040,
+     "H-B": 264960,
+     "H-D&H-B": 79224,
+     "H-D&R_B": 132040
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 552960,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 221184,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 960,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-g": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 132040,
+     "H-B": 27648,
+     "H-D&H-B": 1200,
+     "H-D&R_B": 52816
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 209064,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 209064,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 480,
+     "n_counterexamples": 348,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 0,
+       "f": 1
+      },
+      "a2": "absent",
+      "Cap": [
+       "(x,iss)",
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-g+": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 132040,
+     "H-B": 10944,
+     "H-D&H-B": 1200,
+     "H-D&R_B": 52816
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 209064,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 209064,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 480,
+     "n_counterexamples": 348,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 0,
+       "f": 1
+      },
+      "a2": "absent",
+      "Cap": [
+       "(x,iss)",
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-h": {
+    "sizes": {
+     "R_B": 98304,
+     "H-D": 132040,
+     "H-B": 41664,
+     "H-D&H-B": 11864,
+     "H-D&R_B": 23728
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 98304,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 98304,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 480,
+     "n_counterexamples": 228,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-i": {
+    "sizes": {
+     "R_B": 665600,
+     "H-D": 132040,
+     "H-B": 318720,
+     "H-D&H-B": 79224,
+     "H-D&R_B": 132040
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 665600,
+     "n_counterexamples": 112640,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 266240,
+     "n_counterexamples": 45056,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 960,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-i'": {
+    "sizes": {
+     "R_B": 665920,
+     "H-D": 132040,
+     "H-B": 318848,
+     "H-D&H-B": 79224,
+     "H-D&R_B": 132040
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 665920,
+     "n_counterexamples": 112960,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": "absent",
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 266368,
+     "n_counterexamples": 45184,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 960,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-j": {
+    "sizes": {
+     "R_B": 221184,
+     "H-D": 12000,
+     "H-B": 93888,
+     "H-D&H-B": 2400,
+     "H-D&R_B": 4800
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 196944,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 221184,
+     "n_counterexamples": 221184,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": true,
+     "scope_size": 24,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": false
+    }
+   }
+  }
+ },
+ "U_P2": {
+  "n_frame_histories": 2232720,
+  "readings": {
+   "R0": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 365100,
+     "H-B": 384768,
+     "H-D&H-B": 97360,
+     "H-D&R_B": 146040
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 696,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-b": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 365100,
+     "H-B": 384768,
+     "H-D&H-B": 97360,
+     "H-D&R_B": 146040
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 696,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-c": {
+    "sizes": {
+     "R_B": 1857600,
+     "H-D": 365100,
+     "H-B": 769536,
+     "H-D&H-B": 194720,
+     "H-D&R_B": 365100
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 1857600,
+     "n_counterexamples": 371520,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [
+       "(rho1,a2)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 1392,
+     "n_counterexamples": 384,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-d": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 226860,
+     "H-B": 384768,
+     "H-D&H-B": 60496,
+     "H-D&R_B": 90744
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 94244,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "r",
+       "prep": 0,
+       "f": "inf"
+      },
+      "Cap": [
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 271164,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 552,
+     "n_counterexamples": 144,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-e": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 411180,
+     "H-B": 384768,
+     "H-D&H-B": 109648,
+     "H-D&R_B": 164472
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 744,
+     "n_counterexamples": 192,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-f": {
+    "sizes": {
+     "R_B": 1857600,
+     "H-D": 365100,
+     "H-B": 975168,
+     "H-D&H-B": 267740,
+     "H-D&R_B": 365100
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 1857600,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 743040,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 1392,
+     "n_counterexamples": 384,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-g": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 365100,
+     "H-B": 165120,
+     "H-D&H-B": 6144,
+     "H-D&R_B": 146040
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 670140,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 670140,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 696,
+     "n_counterexamples": 540,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "r",
+       "prep": 0,
+       "f": 1
+      },
+      "a2": "absent",
+      "Cap": [
+       "(x,iss)",
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-g+": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 365100,
+     "H-B": 54528,
+     "H-D&H-B": 6144,
+     "H-D&R_B": 146040
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 670140,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 670140,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 696,
+     "n_counterexamples": 540,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "r",
+       "prep": 0,
+       "f": 1
+      },
+      "a2": "absent",
+      "Cap": [
+       "(x,iss)",
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-h": {
+    "sizes": {
+     "R_B": 328320,
+     "H-D": 365100,
+     "H-B": 169728,
+     "H-D&H-B": 43312,
+     "H-D&R_B": 64968
+    },
+    "(i)-S": {
+     "holds": true,
+     "scope_size": 328320,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(ii)-S": {
+     "holds": true,
+     "scope_size": 328320,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 696,
+     "n_counterexamples": 324,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-i": {
+    "sizes": {
+     "R_B": 2232000,
+     "H-D": 365100,
+     "H-B": 1170880,
+     "H-D&H-B": 267740,
+     "H-D&R_B": 365100
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 2232000,
+     "n_counterexamples": 374400,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 892800,
+     "n_counterexamples": 149760,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 1392,
+     "n_counterexamples": 384,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-i'": {
+    "sizes": {
+     "R_B": 2232720,
+     "H-D": 365100,
+     "H-B": 1171184,
+     "H-D&H-B": 267740,
+     "H-D&R_B": 365100
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 2232720,
+     "n_counterexamples": 375120,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": "absent",
+      "Cap": [],
+      "w1": "absent",
+      "Ref": [],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 893088,
+     "n_counterexamples": 150048,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": false,
+     "scope_size": 1392,
+     "n_counterexamples": 384,
+     "least_counterexample": {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": true
+    }
+   },
+   "R-j": {
+    "sizes": {
+     "R_B": 743040,
+     "H-D": 46080,
+     "H-B": 384768,
+     "H-D&H-B": 12288,
+     "H-D&R_B": 18432
+    },
+    "(i)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 617676,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(ii)-S": {
+     "holds": false,
+     "scope_size": 743040,
+     "n_counterexamples": 743040,
+     "least_counterexample": {
+      "sigma": [
+       "p",
+       "p"
+      ],
+      "a1": "absent",
+      "a2": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": 0
+      },
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a2)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    "(iii)-L": {
+     "holds": true,
+     "scope_size": 48,
+     "n_counterexamples": 0,
+     "least_counterexample": null
+    },
+    "(i)-O": {
+     "holds": true
+    },
+    "(ii)-O": {
+     "holds": false
+    }
+   }
+  }
+ }
+}

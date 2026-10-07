@@ -1,0 +1,1752 @@
+{
+ "baseline": {
+  "program": "LOOP-1BQ/CLAUDE-SIDE/slice_enum.py (copied unmodified)",
+  "sha256_results": "cc6e635f872ef15b889b8112663a26afc755447893e12aa3a3bd54a6e18dcb40",
+  "reproduces_sealed_cc6e635f": true
+ },
+ "variants": {
+  "V1a_lastclause_modified_times_only": {
+   "sha256_results": "d4019c44fcdcb2f6ffbb78862b9434db01e6da74c9297de19e5221870376cd93",
+   "changed_units": {
+    "U_P2/R-h/(iii)-L/n_counterexamples": [
+     324,
+     132
+    ],
+    "U_P2/R-h/(iii)-L/least_counterexample": [
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     },
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "r",
+       "prep": 0,
+       "f": 0
+      },
+      "a2": "absent",
+      "Cap": [
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ]
+   },
+   "changed_blind_quantity_ids": [
+    "lcex:(iii)-L@R-h#U_P2",
+    "ncex:(iii)-L@R-h#U_P2"
+   ],
+   "changed_U_P2_nonblind_units": {},
+   "u_frame_changes": [
+    {
+     "unit": "U/R-h/(iii)-L/n_counterexamples",
+     "baseline": 228,
+     "variant": 132
+    },
+    {
+     "unit": "U/R-h/(iii)-L/least_counterexample",
+     "baseline": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     },
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "q",
+       "prep": 0,
+       "f": 0
+      },
+      "a2": "absent",
+      "Cap": [
+       "(x,adp)"
+      ],
+      "w1": {
+       "t": 1
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    }
+   ],
+   "u_frame_vs_sealed_V1b_mismatches": [
+    "U/R-h/(iii)-L/least_counterexample",
+    "U/R-h/(iii)-L/n_counterexamples"
+   ]
+  },
+  "V1b_lastclause_new_change_points_only": {
+   "sha256_results": "cc6e635f872ef15b889b8112663a26afc755447893e12aa3a3bd54a6e18dcb40",
+   "changed_units": {},
+   "changed_blind_quantity_ids": [],
+   "changed_U_P2_nonblind_units": {},
+   "u_frame_changes": [],
+   "u_frame_vs_sealed_V1b_mismatches": []
+  },
+  "V2_added_act_carries_new_value": {
+   "sha256_results": "e7b1efb659fd2cd7d52fab5e197b45f79dd46331b37bf161bbb888435dbc4efb",
+   "changed_units": {
+    "U_P2/R-g/(iii)-L/n_counterexamples": [
+     348,
+     540
+    ],
+    "U_P2/R-g+/(iii)-L/n_counterexamples": [
+     348,
+     540
+    ]
+   },
+   "changed_blind_quantity_ids": [
+    "ncex:(iii)-L@R-g#U_P2",
+    "ncex:(iii)-L@R-g+#U_P2"
+   ],
+   "changed_U_P2_nonblind_units": {
+    "U_P2/R0/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R0/(iii)-L/n_counterexamples": [
+     0,
+     192
+    ],
+    "U_P2/R0/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-b/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-b/(iii)-L/n_counterexamples": [
+     0,
+     192
+    ],
+    "U_P2/R-b/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-c/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-c/(iii)-L/n_counterexamples": [
+     0,
+     384
+    ],
+    "U_P2/R-c/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-d/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-d/(iii)-L/n_counterexamples": [
+     0,
+     144
+    ],
+    "U_P2/R-d/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-e/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-e/(iii)-L/n_counterexamples": [
+     0,
+     192
+    ],
+    "U_P2/R-e/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-f/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-f/(iii)-L/n_counterexamples": [
+     0,
+     384
+    ],
+    "U_P2/R-f/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-i/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-i/(iii)-L/n_counterexamples": [
+     0,
+     384
+    ],
+    "U_P2/R-i/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-i'/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-i'/(iii)-L/n_counterexamples": [
+     0,
+     384
+    ],
+    "U_P2/R-i'/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ]
+   },
+   "u_frame_changes": [
+    {
+     "unit": "U/R0/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R0/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 96
+    },
+    {
+     "unit": "U/R0/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-b/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-b/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 96
+    },
+    {
+     "unit": "U/R-b/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-c/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-c/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 192
+    },
+    {
+     "unit": "U/R-c/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-d/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-d/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 72
+    },
+    {
+     "unit": "U/R-d/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-e/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-e/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 96
+    },
+    {
+     "unit": "U/R-e/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-f/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-f/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 192
+    },
+    {
+     "unit": "U/R-f/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-g/(iii)-L/n_counterexamples",
+     "baseline": 252,
+     "variant": 348
+    },
+    {
+     "unit": "U/R-g+/(iii)-L/n_counterexamples",
+     "baseline": 252,
+     "variant": 348
+    },
+    {
+     "unit": "U/R-i/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-i/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 192
+    },
+    {
+     "unit": "U/R-i/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-i'/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-i'/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 192
+    },
+    {
+     "unit": "U/R-i'/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    }
+   ],
+   "u_frame_vs_sealed_V1b_mismatches": [
+    "U/R0/(iii)-L/holds",
+    "U/R0/(iii)-L/least_counterexample",
+    "U/R0/(iii)-L/n_counterexamples",
+    "U/R-b/(iii)-L/holds",
+    "U/R-b/(iii)-L/least_counterexample",
+    "U/R-b/(iii)-L/n_counterexamples",
+    "U/R-c/(iii)-L/holds",
+    "U/R-c/(iii)-L/least_counterexample",
+    "U/R-c/(iii)-L/n_counterexamples",
+    "U/R-d/(iii)-L/holds",
+    "U/R-d/(iii)-L/least_counterexample",
+    "U/R-d/(iii)-L/n_counterexamples",
+    "U/R-e/(iii)-L/holds",
+    "U/R-e/(iii)-L/least_counterexample",
+    "U/R-e/(iii)-L/n_counterexamples",
+    "U/R-f/(iii)-L/holds",
+    "U/R-f/(iii)-L/least_counterexample",
+    "U/R-f/(iii)-L/n_counterexamples",
+    "U/R-g/(iii)-L/n_counterexamples",
+    "U/R-g+/(iii)-L/n_counterexamples",
+    "U/R-i/(iii)-L/holds",
+    "U/R-i/(iii)-L/least_counterexample",
+    "U/R-i/(iii)-L/n_counterexamples",
+    "U/R-i'/(iii)-L/holds",
+    "U/R-i'/(iii)-L/least_counterexample",
+    "U/R-i'/(iii)-L/n_counterexamples"
+   ]
+  },
+  "V3_sigma_changes_at_violation_points": {
+   "sha256_results": "063bd16b5ae2c65a97f9d63d7526da15fabf76da62cbe5b890de67a56af1b2c7",
+   "changed_units": {
+    "U_P2/R-h/(iii)-L/n_counterexamples": [
+     324,
+     0
+    ],
+    "U_P2/R-h/(iii)-L/least_counterexample": [
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     },
+     null
+    ]
+   },
+   "changed_blind_quantity_ids": [
+    "lcex:(iii)-L@R-h#U_P2",
+    "ncex:(iii)-L@R-h#U_P2"
+   ],
+   "changed_U_P2_nonblind_units": {
+    "U_P2/R-h/(iii)-L/holds": [
+     false,
+     true
+    ]
+   },
+   "u_frame_changes": [
+    {
+     "unit": "U/R-h/(iii)-L/holds",
+     "baseline": false,
+     "variant": true
+    },
+    {
+     "unit": "U/R-h/(iii)-L/n_counterexamples",
+     "baseline": 228,
+     "variant": 0
+    },
+    {
+     "unit": "U/R-h/(iii)-L/least_counterexample",
+     "baseline": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     },
+     "variant": null
+    }
+   ],
+   "u_frame_vs_sealed_V1b_mismatches": [
+    "U/R-h/(iii)-L/holds",
+    "U/R-h/(iii)-L/least_counterexample",
+    "U/R-h/(iii)-L/n_counterexamples"
+   ]
+  },
+  "V5_sigma_prime_change_points_only_at_tw1": {
+   "sha256_results": "67e7ea7dd24e3b58f0fada4865cf2a3ce1fc23adac5106adc7ec74a1345dad3e",
+   "changed_units": {
+    "U_P2/R-g/(iii)-L/n_counterexamples": [
+     348,
+     696
+    ],
+    "U_P2/R-g+/(iii)-L/n_counterexamples": [
+     348,
+     696
+    ],
+    "U_P2/R-h/(iii)-L/n_counterexamples": [
+     324,
+     456
+    ]
+   },
+   "changed_blind_quantity_ids": [
+    "ncex:(iii)-L@R-g#U_P2",
+    "ncex:(iii)-L@R-g+#U_P2",
+    "ncex:(iii)-L@R-h#U_P2"
+   ],
+   "changed_U_P2_nonblind_units": {
+    "U_P2/R0/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R0/(iii)-L/n_counterexamples": [
+     0,
+     324
+    ],
+    "U_P2/R0/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-b/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-b/(iii)-L/n_counterexamples": [
+     0,
+     324
+    ],
+    "U_P2/R-b/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-c/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-c/(iii)-L/n_counterexamples": [
+     0,
+     648
+    ],
+    "U_P2/R-c/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-d/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-d/(iii)-L/n_counterexamples": [
+     0,
+     252
+    ],
+    "U_P2/R-d/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-e/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-e/(iii)-L/n_counterexamples": [
+     0,
+     324
+    ],
+    "U_P2/R-e/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-f/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-f/(iii)-L/n_counterexamples": [
+     0,
+     648
+    ],
+    "U_P2/R-f/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-i/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-i/(iii)-L/n_counterexamples": [
+     0,
+     648
+    ],
+    "U_P2/R-i/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ],
+    "U_P2/R-i'/(iii)-L/holds": [
+     true,
+     false
+    ],
+    "U_P2/R-i'/(iii)-L/n_counterexamples": [
+     0,
+     648
+    ],
+    "U_P2/R-i'/(iii)-L/least_counterexample": [
+     null,
+     {
+      "sigma": [
+       "r",
+       "r"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    ]
+   },
+   "u_frame_changes": [
+    {
+     "unit": "U/R0/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R0/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 228
+    },
+    {
+     "unit": "U/R0/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-b/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-b/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 228
+    },
+    {
+     "unit": "U/R-b/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-c/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-c/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 456
+    },
+    {
+     "unit": "U/R-c/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-d/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-d/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 180
+    },
+    {
+     "unit": "U/R-d/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-e/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-e/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 228
+    },
+    {
+     "unit": "U/R-e/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)",
+       "(rho1,w1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-f/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-f/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 456
+    },
+    {
+     "unit": "U/R-f/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-g/(iii)-L/n_counterexamples",
+     "baseline": 252,
+     "variant": 480
+    },
+    {
+     "unit": "U/R-g+/(iii)-L/n_counterexamples",
+     "baseline": 252,
+     "variant": 480
+    },
+    {
+     "unit": "U/R-h/(iii)-L/n_counterexamples",
+     "baseline": 228,
+     "variant": 360
+    },
+    {
+     "unit": "U/R-i/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-i/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 456
+    },
+    {
+     "unit": "U/R-i/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    },
+    {
+     "unit": "U/R-i'/(iii)-L/holds",
+     "baseline": true,
+     "variant": false
+    },
+    {
+     "unit": "U/R-i'/(iii)-L/n_counterexamples",
+     "baseline": 0,
+     "variant": 456
+    },
+    {
+     "unit": "U/R-i'/(iii)-L/least_counterexample",
+     "baseline": null,
+     "variant": {
+      "sigma": [
+       "q",
+       "q"
+      ],
+      "a1": {
+       "kind": "iss",
+       "d": 0,
+       "v": "p",
+       "prep": 0,
+       "f": "inf"
+      },
+      "a2": "absent",
+      "Cap": [],
+      "w1": {
+       "t": 0
+      },
+      "Ref": [
+       "(rho1,a1)"
+      ],
+      "con": {
+       "a1": "none",
+       "a2": "none"
+      },
+      "r": 0,
+      "c": "c1"
+     }
+    }
+   ],
+   "u_frame_vs_sealed_V1b_mismatches": [
+    "U/R0/(iii)-L/holds",
+    "U/R0/(iii)-L/least_counterexample",
+    "U/R0/(iii)-L/n_counterexamples",
+    "U/R-b/(iii)-L/holds",
+    "U/R-b/(iii)-L/least_counterexample",
+    "U/R-b/(iii)-L/n_counterexamples",
+    "U/R-c/(iii)-L/holds",
+    "U/R-c/(iii)-L/least_counterexample",
+    "U/R-c/(iii)-L/n_counterexamples",
+    "U/R-d/(iii)-L/holds",
+    "U/R-d/(iii)-L/least_counterexample",
+    "U/R-d/(iii)-L/n_counterexamples",
+    "U/R-e/(iii)-L/holds",
+    "U/R-e/(iii)-L/least_counterexample",
+    "U/R-e/(iii)-L/n_counterexamples",
+    "U/R-f/(iii)-L/holds",
+    "U/R-f/(iii)-L/least_counterexample",
+    "U/R-f/(iii)-L/n_counterexamples",
+    "U/R-g/(iii)-L/n_counterexamples",
+    "U/R-g+/(iii)-L/n_counterexamples",
+    "U/R-h/(iii)-L/n_counterexamples",
+    "U/R-i/(iii)-L/holds",
+    "U/R-i/(iii)-L/least_counterexample",
+    "U/R-i/(iii)-L/n_counterexamples",
+    "U/R-i'/(iii)-L/holds",
+    "U/R-i'/(iii)-L/least_counterexample",
+    "U/R-i'/(iii)-L/n_counterexamples"
+   ]
+  },
+  "V6_control_Rb_vacuous_on_empty_W": {
+   "sha256_results": "cc6e635f872ef15b889b8112663a26afc755447893e12aa3a3bd54a6e18dcb40",
+   "changed_units": {},
+   "changed_blind_quantity_ids": [],
+   "changed_U_P2_nonblind_units": {},
+   "u_frame_changes": [],
+   "u_frame_vs_sealed_V1b_mismatches": []
+  }
+ },
+ "n_distinct_blind_quantities": 67,
+ "interpretation_sensitive_blind_quantities_any_variant": [
+  "lcex:(iii)-L@R-h#U_P2",
+  "ncex:(iii)-L@R-g#U_P2",
+  "ncex:(iii)-L@R-g+#U_P2",
+  "ncex:(iii)-L@R-h#U_P2"
+ ],
+ "interpretation_sensitive_blind_quantities_U_consistent_variants_only": [],
+ "interpretation_robust_blind_quantities": [
+  "(ii)-S/scope_size@R-h#U_P2",
+  "(ii)-S/scope_size@R-i#U_P2",
+  "(ii)-S/scope_size@R-i'#U_P2",
+  "(iii)-L/scope_size@R-d#U_P2",
+  "(iii)-L/scope_size@R-e#U_P2",
+  "(iii)-L/scope_size@R-h#U_P2",
+  "(iii)-L/scope_size@R-j#U_P2",
+  "H-B@B-unchanged#U_P2",
+  "H-B@R-c#U_P2",
+  "H-B@R-f#U_P2",
+  "H-B@R-g#U_P2",
+  "H-B@R-g+#U_P2",
+  "H-B@R-h#U_P2",
+  "H-B@R-i#U_P2",
+  "H-B@R-i'#U_P2",
+  "H-D&H-B@R-c#U_P2",
+  "H-D&H-B@R-d#U_P2",
+  "H-D&H-B@R-e#U_P2",
+  "H-D&H-B@R-f#U_P2",
+  "H-D&H-B@R-g#U_P2",
+  "H-D&H-B@R-g+#U_P2",
+  "H-D&H-B@R-h#U_P2",
+  "H-D&H-B@R-i#U_P2",
+  "H-D&H-B@R-i'#U_P2",
+  "H-D&H-B@R-j#U_P2",
+  "H-D&H-B@R0#U_P2",
+  "H-D&R_B@R-d#U_P2",
+  "H-D&R_B@R-e#U_P2",
+  "H-D&R_B@R-h#U_P2",
+  "H-D&R_B@R-j#U_P2",
+  "H-D&R_B@unchanged#U_P2",
+  "H-D@D-unchanged#U_P2",
+  "H-D@R-d#U_P2",
+  "H-D@R-e#U_P2",
+  "H-D@R-j#U_P2",
+  "R_B@B-rec-unchanged#U_P2",
+  "R_B@R-h#U_P2",
+  "R_B@R-i#U_P2",
+  "R_B@cf#U_P2",
+  "iiS-scope@B-rec-unchanged#U_P2",
+  "iiS-scope@cf#U_P2",
+  "iiiL-scope@A#U_P2",
+  "iiiL-scope@B#U_P2",
+  "lcex:(i)-S@R-d#U_P2",
+  "lcex:(i)-S@R-j#U_P2",
+  "lcex:(ii)-S@R-d#U_P2",
+  "lcex:(ii)-S@R-j#U_P2",
+  "lcex:(iii)-L@R-g#U_P2",
+  "lcex:(iii)-L@R-g+#U_P2",
+  "n#U_P2",
+  "ncex:(i)-S@R-c#U_P2",
+  "ncex:(i)-S@R-d#U_P2",
+  "ncex:(i)-S@R-g#U_P2",
+  "ncex:(i)-S@R-g+#U_P2",
+  "ncex:(i)-S@R-i#U_P2",
+  "ncex:(i)-S@R-i'#U_P2",
+  "ncex:(i)-S@R-j#U_P2",
+  "ncex:(ii)-S@R-d#U_P2",
+  "ncex:(ii)-S@R-g#U_P2",
+  "ncex:(ii)-S@R-g+#U_P2",
+  "ncex:(ii)-S@R-i#U_P2",
+  "ncex:(ii)-S@R-i'#U_P2",
+  "ncex:(ii)-S@R-j#U_P2"
+ ]
+}
