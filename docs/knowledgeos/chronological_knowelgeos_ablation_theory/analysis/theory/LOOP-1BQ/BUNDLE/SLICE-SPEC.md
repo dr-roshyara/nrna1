@@ -11,7 +11,7 @@
   Every other part of R5-SPEC §7.1 is kept: T, 𝒯, Σ, 𝒜, the slots, Cap, w1, Ref, con, r, c, the frame axioms F1 and F2, and the enumeration order R-1 with the value order extended to p < q < r. Both σ(0), σ(1) and every iss slot's v range over the new V. A work event conforms iff σ(t(w)) ∈ P (R5-SPEC Def 1.10).
 
 ## 2. Readings
-R0 (R5-SPEC Def 3.1 unchanged), R-b, R-c, R-d, R-e, R-f, R-g, R-g+, R-h, R-i, R-i', R-j, exactly as in V1B-SPEC Def P0.1. Where Def P0.1 restates a reading "in U", use the same restatement in U_P2. These restatements refer only to T, the slots and w1, which are unchanged.
+R0 (R5-SPEC Def 3.1 unchanged), R-b, R-c, R-d, R-e, R-f, R-g, R-g+, R-h, R-i, R-i', R-j, exactly as in V1B-SPEC Def P0.1. Where Def P0.1 restates a reading "in U", use the same restatement in U_P2. The restatements refer to T, σ, the slots and w1. T, the single target and the slots are unchanged, so each restatement keeps its meaning.
 
 ## 3. What to compute, for each frame F ∈ {U, U_P2} and each reading 𝐑
 1. `n_frame_histories`: the number of histories in F. It does not depend on the reading.
@@ -22,6 +22,8 @@ R0 (R5-SPEC Def 3.1 unchanged), R-b, R-c, R-d, R-e, R-f, R-g, R-g+, R-h, R-i, R-
      - (i)-S: h ∈ R_B^𝐑;
      - (ii)-S: h ∈ R_B^𝐑 with w1 referenced;
      - (iii)-L: h ∈ H-D^𝐑 ∩ R_B^𝐑 with a2 absent and w1 violating;
-   - `n_counterexamples`, the number of h in scope for which the required witness(es) do not exist in F;
+   - `n_counterexamples`, the number of h in scope for which the required witness does not exist in F. For (ii)-S, h counts if **either** h_v or h_c is missing;
    - `least_counterexample`, the least such h in order R-1, or null.
 4. For **(i)-O** and **(ii)-O**: `holds`.
+
+Where a clause is ambiguous in U_P2, e.g. the last clause of the (iii)-L literal constraints, which now has more value choices, choose the most literal reading and record it in NOTES.md.

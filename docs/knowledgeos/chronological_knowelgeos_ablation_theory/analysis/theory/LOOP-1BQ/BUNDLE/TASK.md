@@ -24,8 +24,12 @@ Compute everything in SLICE-SPEC §3 for both frames, U and U_P2, and for all 12
   - `w1`: `"absent"` or {"t": t};
   - `Ref`: a list drawn from "(rho1,a1)", "(rho1,a2)", "(rho1,w1)";
   - `con`: {"a1": "none" | "rho1", "a2": "none" | "rho1"};
-  - `r`: 0 | 1;
+  - `r`: 0 | 1. This is the recording time r(ρ1), not the value r;
   - `c`: "c1" | "c2".
+- **Value types:**
+  - deontic values (sigma entries and a slot's v) are the strings "p", "q", "r";
+  - d, prep, t and f are integers, except f = "inf";
+  - Cap and Ref are sets, written as lists in any order, without duplicates.
 
 ## Also return
 - `NOTES.md`, containing:
