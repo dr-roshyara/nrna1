@@ -3056,4 +3056,5 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Comparison:** frozen `compare_slice.py`. BLIND 118/118 (67 distinct), EXPOSED 300/300; 0 disagreements, 0 unrecognized keys.
 - **Byte-identity** with the Opus side (`cc6e635f…`): the analyst re-ran the Sonnet program in a clean directory with only the bundle and reproduced the same hash. The identity comes from identical values plus identical serialization. It is computed, not copied.
 - **Label: WITHIN-FAMILY, cross-model.** The comparator's "cross_family" licence field does not apply. The cross-family requirement is waived, NOT satisfied.
-- **Remaining:** the non-Claude run of the slice (human), which is the only cross-family evidence.
+- **Review: PASS_WITH_LIMITATIONS.** Copying is ruled out (reviewer re-run without the bundle: `cc6e635f…`). **Material limitation:** both workers made identical choices on every ambiguous point, and the (iii)-L core is structurally convergent. So this is reproduction under one shared interpretation, not validation of that interpretation. Provenance correction: call 12 `mv` was blocked (see RESULT.md).
+- **Remaining:** the non-Claude run of the slice (human). It is the only cross-family evidence, and the only test of the shared interpretation.
