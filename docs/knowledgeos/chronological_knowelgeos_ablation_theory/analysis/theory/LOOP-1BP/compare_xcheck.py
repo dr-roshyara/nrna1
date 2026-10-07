@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r9).
+"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r10).
 
 Committed before any return exists. It encodes the unit set, the canonicalization,
 the result classes, the exposure tiers and the licence rule.
@@ -399,53 +399,25 @@ NAMED_C1 = {'H_c', 'H_d', 'H_d2', 'H_g', "H_g'", 'H_g+', 'H_i', 'H_empty', 'H_j'
 
 
 def exposed_v1b(R, F, form=None, h=None, field=None):
-    # REVIEW-r8: named-history fields at planted histories are pervasively derivable (coordinates given;
-    # K4b <=> H in R_B; member(R_B) syntactic; iS/iiO_c via exposed forms). Conservative final rule:
-    # EVERY named-history, extra and SUPP field is EXPOSED. BLIND keeps only computed quantities.
+    """EXPOSED = derivable from the bundle text by a short argument (REVIEW-r1..r9). Conservative."""
     if field is not None:
-        return True
-    # ---- closure meta-rules (REVIEW-r7) ----
+        return True  # REVIEW-r8: every named-history, extra and SUPP field
+    if F == 'U5':
+        return form is not None  # REVIEW-r9: U5 forces sigma = q at c2, and P = {p}, so w1 violates; SUPP H_U5h witnesses
     if R == 'R-b':
-        R = 'R0'  # in U and U5, B-recW forces w1 present, so B-conf^b <=> B-conf: R-b's classes equal R0's
-    if form is None and F == 'U5' and h in NAMED_C1:
-        F = 'U'   # every named history has c = c1: U5's constraint is vacuous for it and its witnesses
-    if form is None and h == 'H_U5i[c:=c1]' and field == 'iiO_c' and R in ('R-i', "R-i'"):
-        return True  # iiO_c depends on H only through O = (0, c1), exposed under R-i/R-i' in U
-    if F == 'U' and R == 'R-h':
-        if form is not None or (field == 'iS' and h in ('H_g+', 'W7', 'I7')) or field == 'iiO_c':
-            return True  # K4/K6 witnesses keep Ref and the present slots, so they lie in H-B^h
-    if form is not None and F == 'U' and R in ('R-c', 'R-f') and form in ('(ii)-S', '(ii)-O'):
+        R = 'R0'  # B-recW forces w1 present, so B-conf^b <=> B-conf
+    if R == 'R0' or R == 'R-h':
+        return True  # R0: Cor 4.1b and Lem 4.2; R-h/U: the K4/K6 witnesses keep Ref ((iii)-L over-exposed, disclosed)
+    if R == 'R-d' and form in ('(i)-O', '(i)-S'):
+        return True  # Lem 3.7 read literally
+    if R in MONO_READINGS and form == '(i)-O':
+        return True  # monotonicity from K5
+    if R == 'R-e' and form in ('(i)-S', '(ii)-S', '(ii)-O'):
         return True
-    if form is not None:
-        if (R == 'R0' and F == 'U') or (R == 'R0' and F == 'U5' and form in ('(i)-O', '(i)-S')) or \
-               (R == 'R-d' and F == 'U' and form in ('(i)-O', '(i)-S')):
-            return True
-        if F == 'U' and R in MONO_READINGS and form == '(i)-O':
-            return True
-        if F == 'U' and R == 'R-e' and form in ('(i)-S', '(ii)-S', '(ii)-O'):
-            return True
-        return False
-    if F == 'U' and R in MONO_READINGS + ('R-d',) and field == 'iS' and h in ('H_g+', 'W7', 'I7'):
+    if R in ('R-c', 'R-f') and form in ('(ii)-S', '(ii)-O'):
         return True
-    if F == 'U' and R in MONO_READINGS and field == 'iiO_c':
-        return True
-    if field and field.startswith('member') and h in ('H_c', 'H_g+', 'W7', 'I7'):
-        return True
-    if field == 'member(R_B)' and R == "R-i'":
-        return True  # R_B = U by the reading's definition: spec-given, not an outcome
-    if field == 'O' and h in ('W7', 'I7'):
-        return True
-    if field == 'iiiL' and h == 'I7' and R == 'R0' and F == 'U':
-        return True
-    # REVIEW-r3 D: derivable from exposed R0/U forms + exposed membership; K4b is reading-independent.
-    if field == 'iS' and R == 'R0' and F == 'U' and h in ('H_g+', 'W7', 'I7'):
-        return True
-    # REVIEW-r4: iiO_c depends on H only through O(H); every planted history has O = (0, c1), so the
-    # exposed iiO_c(W7) under R0/U exposes iiO_c at every named history under R0/U.
-    if field == 'iiO_c' and R == 'R0' and F == 'U':
-        return True
-    if field == 'K4b' and F == 'U' and h in ('H_g+', 'W7', 'I7'):
-        return True
+    if R in ('R-c', 'R-g', 'R-g+', 'R-i', "R-i'") and form == '(i)-S':
+        return True  # REVIEW-r9: an R_B member without w1 or without Ref is immediate
     return False
 
 
@@ -510,7 +482,7 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                         kv_ = COARSE_MARK  # the checker reported only the coarse property for this row
                     else:
                         kv_ = g in kset
-                    units.append(Unit(f'R5/{key}/{r}/{g}', 'BLIND' if g in blind else 'EXPOSED', True,
+                    units.append(Unit(f'R5/{key}/{r}/{g}', 'EXPOSED', True,  # REVIEW-r9: fine splits derivable too
                                       g in cl.get(r, set()), kv_, 'bool'))
                 for c, fine in (COARSE.items() if key == 'K12.2' else []):
                     if kset is ABSENT or isinstance(kset, ParseError):
@@ -530,7 +502,7 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
             roles = [h for h in w.values() if isinstance(h, dict) and 'sigma' in h]
             units.append(Unit(f'R5/{key}/witness', 'NONLICENSING', False, roles, kw, 'anyof'))
         if key == 'K8.1':
-            units.append(Unit('R5/K8.1/difference_sigma_values', 'BLIND', True,
+            units.append(Unit('R5/K8.1/difference_sigma_values', 'EXPOSED', True,  # REVIEW-r9: plausibly derivable
                               cc[key]['detail']['difference sigma values per o'],
                               kk.get('difference_sigma_values', ABSENT) if isinstance(kk, dict) else ABSENT, 'k81'))
     # V1b
@@ -573,7 +545,7 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                 kh = _get(kf, 'holds')
                 units.append(Unit(f'V1b/{R}/{F}/{form}/holds', tier, True, ch['holds'], kh, 'bool'))
                 if form != '(i)-O':
-                    units.append(Unit(f'V1b/{R}/{F}/{form}/least_counterexample', tier, None,
+                    units.append(Unit(f'V1b/{R}/{F}/{form}/least_counterexample', 'BLIND', None,  # computed object (REVIEW-r9 b)
                                       ch['least_counterexample'],
                                       _get(kf, 'least_counterexample'),
                                       'cex', claude_holds=ch['holds'], checker_holds=kh))

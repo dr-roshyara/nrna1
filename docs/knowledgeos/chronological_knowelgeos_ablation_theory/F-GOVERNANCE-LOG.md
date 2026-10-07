@@ -2951,3 +2951,24 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 |---|---|
 | Records | `LOOP-1BP/PREREG-ADDENDUM-01.md` (r2, not in force); `LOOP-1BP/ADDENDUM-01-ROUNDS/` (r1, REVIEW-r1, REVIEW-r2); `LOOP-1BP/HANDOVER-INSTRUCTIONS.md` |
 | Human decision pending | the §6 conflict: bundle option N / W / F (see REVIEW-r2 and addendum §8) |
+
+## F-LOG-0236 — **Cross-check design result (2026-10-07):** bundle-02 issued (human act, option N); comparator made fail-closed through review rounds r1–r9; **the cross-check's blind content is small**; human decision required
+- **Human act (2026-10-07): option N.** Bundle-02 (`4dff1351…`) strips 12 V1b hint labels; README, TASK and R5-SPEC are byte-identical. §6 is waived for the R5 claim statements.
+- **Comparator.** `LOOP-1BP/compare_xcheck.py` (r10, `4cadde94…`) is normative, fail-closed and committed before any return. Selftest `dc21c52e…` passes: P0 plus 40+ planted and adversarial controls.
+  - Review rounds r2–r6 found silent false agreements: lenient parsing, alias and duplicate-key overwrites, nested collisions, K8.1 dicts of booleans. All are fixed and each is covered by a control.
+  - Rounds r7–r9 found no silent agreement. They found derivable "BLIND" classes.
+- **Finding.** Most units the checker reports can be derived from the bundle text by short arguments:
+  - R5-SPEC asserts the theorems and the check claims;
+  - planted histories coincide with stated examples;
+  - K4b ⇔ R_B membership;
+  - U5 forces σ ≡ q at c2;
+  - the K12 sets are stated.
+
+  After conservative tiering, **BLIND is 91 of about 2,264 units**: 64 least counterexamples, 26 U-frame V1b verdicts, and n_frame_histories. This is "no short derivation found", not "proven underivable".
+- **Consequence.** An all-agreement return would show cross-family reproduction of a **small** computed core, plus consistency on everything else. It would not be a strong independent validation of R5 and V1b. The design limit lies in R5 and V1b themselves: their purpose was to verify stated claims on planted controls.
+- **r10 is unreviewed.** Addendum adoption is still pending a human act.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BP/` (PREREG-ADDENDUM-01 r10; ADDENDUM-01-ROUNDS r1–r9 with REVIEW-r1…r9; BUNDLE-02/; compare_xcheck.py; selftest_compare_xcheck.py) |
+| Human decision pending | hand over under r10, or redesign the independence check |

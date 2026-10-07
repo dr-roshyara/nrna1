@@ -269,9 +269,11 @@ def main():
     x = run(r, v); y3 = x['summary']['unrecognized_checker_keys']; ok &= y3 == ['V1b/R-d/U/named/H_d2/exists(H-D+, H_d2)']; print('Y3 alias removed', y3)
     r, v = make_p0(); x = run(r, v); tier = {u['unit']: u['tier'] for u in x['units']}
     y4 = [tier['V1b/R-b/U/(ii)-S/holds'], tier['V1b/R-h/U/(i)-S/holds'], tier['V1b/R-c/U/(ii)-O/holds'],
-          tier['V1b/R-i/U5/named/H_g/iiO_c'], tier["V1b/R-i'/U5/supp/H_U5i[c:=c1]/iiO_c"], tier['V1b/R-g/U/named/H_g/iiO_c'], tier['V1b/R-g/U5/(i)-S/holds']]
+          tier['V1b/R-i/U5/named/H_g/iiO_c'], tier["V1b/R-i'/U5/supp/H_U5i[c:=c1]/iiO_c"], tier['V1b/R-g/U/named/H_g/iiO_c'], tier['V1b/R-g/U/(ii)-S/holds']]
     ok &= y4 == ['EXPOSED'] * 6 + ['BLIND']; print('Y4 closure tiers', y4)
     y5 = sorted({u['tier'] for u in x['units'] if '/named/' in u['unit'] or '/supp/' in u['unit']}); ok &= y5 == ['EXPOSED']; print('Y5 all named EXPOSED', y5)
+    y7 = [tier['V1b/R-j/U5/(iii)-L/holds'], tier['R5/K12.1/O8/d-only'], tier['R5/K8.1/difference_sigma_values'], tier['R5/n_frame_histories']]
+    ok &= y7 == ['EXPOSED', 'EXPOSED', 'EXPOSED', 'BLIND']; print('Y7 r10 tiers', y7)
     y6 = sorted({u['unit'].split('/')[1] for u in x['units'] if u['tier'] == 'BLIND' and u['unit'].startswith('V1b/')}); print('Y6 readings with BLIND V1b form units', y6)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)

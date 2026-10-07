@@ -60,6 +60,13 @@
 - Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
 
 
+**State 2026-10-07 (F-LOG-0236):**
+- **Bundle-02 issued** (option N).
+- **The comparator is fail-closed** after 9 review rounds; r10 is not yet reviewed.
+- **Finding:** only 91 of about 2,264 units are BLIND. The cross-check's independent content is small.
+- **Pending human decision:** hand over under r10, or redesign the independence check (e.g. blind V2 slices).
+- **Bundle-02 is NOT yet handed over.**
+
 **State 2026-10-07 (F-LOG-0235):**
 - **Cross-check NOT yet handed over.** Pre-handover audit result:
   - the bundle states outcomes (R5 claims; V1b labels and coincidences);
