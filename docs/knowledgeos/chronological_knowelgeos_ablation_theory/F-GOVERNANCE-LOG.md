@@ -3050,3 +3050,10 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - Made before any non-Claude return exists. **Review: PASS_WITH_LIMITATIONS** (`COMPARISON-WF-SONNET-r12/REVIEW-r12.md`). The selftest is hardened with Z0 and Z2 (`c2011eff…`).
 - **Correction:** NONLICENSING units do enter the licence condition (every scored unit must agree). The tier only means they are never counted as reproduction evidence.
 - **Erratum:** commit 1328ed9da's message claims this log correction, but the edit was missing from that commit; it is applied in the next commit.
+
+## F-LOG-0243 — **Blind slice, within-family result: 67/67 distinct blind quantities agree** (Sonnet 5.5 vs Opus 5.5); outputs byte-identical, and an analyst re-run rules out copying
+- **Return:** sealed before reading (`LOOP-1BQ/RETURN-WF-SONNET/`, commit 5e5da52f0). Tool-path deviations are benign: its own persisted output, a draft directory, a malformed-path write it later moved, and waiting tools.
+- **Comparison:** frozen `compare_slice.py`. BLIND 118/118 (67 distinct), EXPOSED 300/300; 0 disagreements, 0 unrecognized keys.
+- **Byte-identity** with the Opus side (`cc6e635f…`): the analyst re-ran the Sonnet program in a clean directory with only the bundle and reproduced the same hash. The identity comes from identical values plus identical serialization. It is computed, not copied.
+- **Label: WITHIN-FAMILY, cross-model.** The comparator's "cross_family" licence field does not apply. The cross-family requirement is waived, NOT satisfied.
+- **Remaining:** the non-Claude run of the slice (human), which is the only cross-family evidence.
