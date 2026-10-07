@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r8).
+"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r9).
 
 Committed before any return exists. It encodes the unit set, the canonicalization,
 the result classes, the exposure tiers and the licence rule.
@@ -215,6 +215,8 @@ def slot(x, me):
         extra = set(d) - {'kind', 'd', 'obj'}
         if extra - {'v', 'prep', 'f'} or any(d.get(k) is not None for k in extra):
             raise ParseError(f'adp slot {x!r}')
+        if extra:
+            raise ParseError(f'adp slot with iss attributes {x!r}')
         if 'obj' in d and d['obj'] not in ({'a1', 'a2'} - {me}):
             raise ParseError(f'adp obj {x!r}')
         return ('adp', _bit(d['d'], 'd'))
@@ -397,6 +399,11 @@ NAMED_C1 = {'H_c', 'H_d', 'H_d2', 'H_g', "H_g'", 'H_g+', 'H_i', 'H_empty', 'H_j'
 
 
 def exposed_v1b(R, F, form=None, h=None, field=None):
+    # REVIEW-r8: named-history fields at planted histories are pervasively derivable (coordinates given;
+    # K4b <=> H in R_B; member(R_B) syntactic; iS/iiO_c via exposed forms). Conservative final rule:
+    # EVERY named-history, extra and SUPP field is EXPOSED. BLIND keeps only computed quantities.
+    if field is not None:
+        return True
     # ---- closure meta-rules (REVIEW-r7) ----
     if R == 'R-b':
         R = 'R0'  # in U and U5, B-recW forces w1 present, so B-conf^b <=> B-conf: R-b's classes equal R0's

@@ -270,7 +270,9 @@ def main():
     r, v = make_p0(); x = run(r, v); tier = {u['unit']: u['tier'] for u in x['units']}
     y4 = [tier['V1b/R-b/U/(ii)-S/holds'], tier['V1b/R-h/U/(i)-S/holds'], tier['V1b/R-c/U/(ii)-O/holds'],
           tier['V1b/R-i/U5/named/H_g/iiO_c'], tier["V1b/R-i'/U5/supp/H_U5i[c:=c1]/iiO_c"], tier['V1b/R-g/U/named/H_g/iiO_c'], tier['V1b/R-g/U5/(i)-S/holds']]
-    ok &= y4 == ['EXPOSED'] * 5 + ['BLIND', 'BLIND']; print('Y4 closure tiers', y4)
+    ok &= y4 == ['EXPOSED'] * 6 + ['BLIND']; print('Y4 closure tiers', y4)
+    y5 = sorted({u['tier'] for u in x['units'] if '/named/' in u['unit'] or '/supp/' in u['unit']}); ok &= y5 == ['EXPOSED']; print('Y5 all named EXPOSED', y5)
+    y6 = sorted({u['unit'].split('/')[1] for u in x['units'] if u['tier'] == 'BLIND' and u['unit'].startswith('V1b/')}); print('Y6 readings with BLIND V1b form units', y6)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 
