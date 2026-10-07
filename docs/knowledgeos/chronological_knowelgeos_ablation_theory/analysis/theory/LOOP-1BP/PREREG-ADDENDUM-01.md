@@ -1,10 +1,10 @@
-# Cross-check pre-registration, addendum 01 (r6; fixed before any return exists)
+# Cross-check pre-registration, addendum 01 (r7; fixed before any return exists)
 
 **Status:** PROPOSED. It takes effect only through a human act (§18 of the control prompt). Until then `PREREG.md` alone governs.
 
-**Review history:** r1–r5 FAILED review (`ADDENDUM-01-ROUNDS/`). r6 implements REVIEW-r5 in full.
+**Review history:** r1–r6 FAILED review (`ADDENDUM-01-ROUNDS/`). r7 implements REVIEW-r6 in full.
 
-**Normative text:** `compare_xcheck.py` (sha256 `5ea41c05…a82506`), validated by `selftest_compare_xcheck.py` (sha256 `9e7e6fa1…26ed2`). This prose only summarizes the script. Where the two differ, the script governs, and the difference is a defect to report.
+**Normative text:** `compare_xcheck.py` (sha256 `991ce287…2da1de`), validated by `selftest_compare_xcheck.py` (sha256 `89754a21…5772a`). This prose only summarizes the script. Where the two differ, the script governs, and the difference is a defect to report.
 
 **Human act (2026-10-07): bundle option N.**
 - **Bundle:** `F-XCHECK-BUNDLE-02.tar` (sha256 `4dff1351…dd08`) is the bundle handed over.
@@ -23,7 +23,7 @@ The details are in r2 §1 and REVIEW-r2/r3.
 ## 2. Tiers (`exposed_v1b`, `build_units`)
 | Tier | Units | Licenses |
 |---|---|---|
-| **EXPOSED** | every R5 truth value; R5 null witnesses; K12 rows other than the fine splits, and the K12.2 coarse `A7-any`/`A9-any` units; V1b R0/U (all forms); R0/U5 and R-d/U (i)-S and (i)-O; `member(·)` at H_c, H_g⁺, W7, I7 (every reading); `member(R_B)` under R-i′ (R_B = U by the reading's definition, so it is spec-given); `iS` at H_g⁺, W7, I7 under R0/U; `iiO_c` at every named history under R0/U (it depends on H only through O(H), and every planted history has O = (0, c1)); `K4b` at H_g⁺, W7, I7 in U (every reading); `O(W7)`, `O(I7)`; `iiiL(I7)` R0/U | consistency only |
+| **EXPOSED** | every R5 truth value; R5 null witnesses; K12 rows other than the fine splits, and the K12.2 coarse `A7-any`/`A9-any` units; V1b R0/U (all forms); R0/U5 and R-d/U (i)-S and (i)-O; `member(·)` at H_c, H_g⁺, W7, I7 (every reading); `member(R_B)` under R-i′ (R_B = U by the reading's definition, so it is spec-given); `iS` at H_g⁺, W7, I7 under R0/U; `iiO_c` at every named history under R0/U (it depends on H only through O(H), and every planted history has O = (0, c1)). **By monotonicity in U** (REVIEW-r6): under R-c, R-e, R-f, R-i and R-i′, H-D^R∩H-B^R ⊇ H-D∩H-B ⊆ H-B^R ⊆ R_B^R. So (i)-O, and `iiO_c` at every named history, are EXPOSED there; `iS` at H_g⁺, W7 and I7 is EXPOSED there and under R-d; and R-e/U (i)-S, (ii)-S and (ii)-O are EXPOSED; `K4b` at H_g⁺, W7, I7 in U (every reading); `O(W7)`, `O(I7)`; `iiiL(I7)` R0/U | consistency only |
 | **NONLICENSING** | R5 composite witnesses (role dicts, which TASK's single-history format cannot carry), matched by membership in the role set | nothing |
 | **BLIND** | `n_frame_histories`; K8.1's per-o difference set; the K12.1 con-only/d-only rows; the K12.2 A7 +act/+work/+ref and A9 con-only/d-only rows; every other V1b unit, including the six SUPP values | cross-family reproduction |
 
@@ -32,15 +32,16 @@ The details are in r2 §1 and REVIEW-r2/r3.
 ## 3. Fail-closed parsing
 - **Keys** pass only through closed alias tables: readings, frames, forms, histories, fields, the R5 check keys (exact), and K12 rows and groups.
   - `norm()` is closed: a character outside an explicit whitelist raises. It is never dropped.
-  - **Collisions:** a duplicate JSON key makes the whole file MALFORMED. Two raw keys that map to one canonical id are recorded, and the id becomes MALFORMED, at every level: readings, frames, forms, histories, fields, K12 rows, K12 labels inside a dict-of-boolean row, and K8.1 o-keys.
+  - **Collisions:** a duplicate JSON key makes the whole file MALFORMED. Two raw keys that map to one canonical id make that id MALFORMED, at every level. For readings, frames, forms, histories and fields, the collision is also recorded under `unrecognized_checker_keys`. For K12 rows and labels and for K8.1 o-keys, the whole check becomes MALFORMED. The levels are: readings, frames, forms, histories, fields, K12 rows, K12 labels inside a dict-of-boolean row, and K8.1 o-keys.
   - **Extra keys:** the top-level R5 keys, each check's extra keys, form-body keys, keys inside each form dict (`holds`, `least_counterexample`) and named-history fields are checked against whitelists. Whitelisted keys are ignored: `_meta`, `detail`, `notes`, `images`, `diffs`, `class_sizes`, `n_counterexamples`, `scope_size`.
   - **Anything unknown** is recorded under `unrecognized_checker_keys` and **blocks the licence**. It can only be mapped by a reviewed, separately committed, syntax-only adapter.
-- **Values** must match strict grammars:
+- **Values** must match the grammars below. Any checker-side parse failure, including a type error, gives MALFORMED → INCOMPLETE, never a crash and never a default:
   - booleans: true/false or "TRUE"/"FALSE";
   - n: an integer;
   - O: `{r, c}`, `[r, c]`, `(r=…,c=…)` or `(r, c)`, where r and c may be keyed by ρ1;
   - histories: exactly nine coordinates. Slot kinds come from a whitelist; an iss slot needs d, v, prep and f; an adp slot needs d, with an optional obj. Cap, Ref and con are whitelisted, and w1 is `{t}`, t or `t=…`;
-  - K12: exact labels. Generic "A7"/"A9" labels are MALFORMED.
+  - K12: exact labels from closed tables. The coarse "A7"/"A9" labels are handled as described below;
+  - K8.1: per-o values must be lists of σ pairs, or dicts whose every value is literally `true`.
 - **Anything else** is MALFORMED, which gives INCOMPLETE.
 - **Claude-side values** are parsed separately, with Claude's own annotation keys (`tuple_R1`, `h_v_exists`, `h_c_exists`) stripped explicitly. A failure there crashes the comparator; it is never scored.
 - **K12.2 coarse labels.** The spec names "A7 restricted to …" and "A9 (con-only or d-only …)" as single properties, so a literal checker may report only "A7" or "A9".
@@ -91,7 +92,7 @@ AMBIGUOUS is a **flag**, listed under that label. It deviates from §7's list, s
 - **P0:** Claude's results re-encoded with different syntax and aliases.
   - 0 DISAGREEMENT, 0 INCOMPLETE, 0 unrecognized keys.
   - The licence holds.
-  - BLIND: 1,494 AGREEMENT, 242 NOT_APPLICABLE (mostly out-of-scope iiiL); EXPOSED: 496 AGREEMENT.
+  - BLIND: 1,413 AGREEMENT, 242 NOT_APPLICABLE (all of them out-of-scope iiiL); EXPOSED: 577 AGREEMENT.
 - **N1–N6** (planted defects) and **T1–T11** (adversarial encodings from REVIEW-r3) are each caught or parsed correctly as specified:
   - record-keyed r/c;
   - `issue`/`adopt` words;
@@ -113,6 +114,7 @@ AMBIGUOUS is a **flag**, listed under that label. It deviates from §7's list, s
   - an UNTESTABLE disagreement routed to the gate;
   - the iiiL out-of-scope rule, both directions;
   - ignored versus unknown keys.
+- **X1, X1b, X2, X6, X7** (REVIEW-r6) are also caught: a K8.1 dict of `false`; a K8.1 dict of `true` whose keys are quoted JSON (loud INCOMPLETE); a K8.1 `null`; the string "COARSE" as a field value; an unhashable Ref entry. None crashes.
 - **A9b and B1–B6** (REVIEW-r5) are also caught: a coordinate-decided iiiL scope; K12 row collisions (K12.1, K12.2); a label collision inside a dict-of-boolean row; a coarse label plus an explicit fine `false`; a K8.1 o-key collision; an unknown key inside a form dict.
 - **Limit:** a syntax outside the grammars, or an unrecognized key, gives INCOMPLETE or blocks the licence. It is never scored as agreement in any case tested. Plausible spec-literal encodings that are loud and need a reviewed post-return adapter: Ref keyed by record; a slot carrying `referenced`; `C-U5` reported as a named history. The adapter therefore carries weight, which is why it is syntax-only, separately committed and reviewed.
 
@@ -132,4 +134,7 @@ AMBIGUOUS is a **flag**, listed under that label. It deviates from §7's list, s
 - K12.2 fine splits are not scored when the checker reports only the coarse property;
 - iiiL `false` against Claude's out-of-scope null counts as agreement, under the pre-declared condition in §4;
 - the bundle is bundle-02 (human act, option N);
+- (i)-O has no counterexample unit (TASK's format has `holds` only). A checker's `least_counterexample` under (i)-O is accepted and ignored. Claude reports 9;
+- the con of an absent slot is not compared, and repeated entries inside K12 and K8.1 lists are tolerated;
+- a membership-decided iiiL scope where Claude's `iiiL_exists_ignoring_scope` is true (52 units): a checker's `false` there cannot be told apart from an existence bug. The pre-declared exception (§4) accepts it;
 - a slot's `f: null` (or a missing `f` in the Claude-side string form) is read as ∞ ("never in force"). This is a disclosed reading choice.

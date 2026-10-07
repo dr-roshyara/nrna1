@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r4).
+"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r7).
 
 Committed before any return exists. It encodes the unit set, the canonicalization,
 the result classes, the exposure tiers and the licence rule.
@@ -369,6 +369,7 @@ def k12_rows(x, key):
 
 # ---------- units ----------
 ABSENT = object()
+COARSE_MARK = object()
 IGNORED_BODY_KEYS = {'images', 'diffs', 'class_sizes', 'n_counterexamples', 'scope_size', 'notes'}
 
 
@@ -387,10 +388,25 @@ class Unit:
         s.kw = kw
 
 
+# REVIEW-r6 §4: under these readings H-D^R∩H-B^R ⊇ H-D∩H-B and H-D^R∩H-B^R ⊆ H-B^R ⊆ R_B^R, so exposed
+# R0/U facts (K5, K4, K6, and the named-history exposures) transfer by monotonicity in frame U.
+MONO_READINGS = ('R-c', 'R-e', 'R-f', 'R-i', "R-i'")
+
+
 def exposed_v1b(R, F, form=None, h=None, field=None):
     if form is not None:
-        return (R == 'R0' and F == 'U') or (R in ('R0',) and F == 'U5' and form in ('(i)-O', '(i)-S')) or \
-               (R == 'R-d' and F == 'U' and form in ('(i)-O', '(i)-S'))
+        if (R == 'R0' and F == 'U') or (R == 'R0' and F == 'U5' and form in ('(i)-O', '(i)-S')) or \
+               (R == 'R-d' and F == 'U' and form in ('(i)-O', '(i)-S')):
+            return True
+        if F == 'U' and R in MONO_READINGS and form == '(i)-O':
+            return True
+        if F == 'U' and R == 'R-e' and form in ('(i)-S', '(ii)-S', '(ii)-O'):
+            return True
+        return False
+    if F == 'U' and R in MONO_READINGS + ('R-d',) and field == 'iS' and h in ('H_g+', 'W7', 'I7'):
+        return True
+    if F == 'U' and R in MONO_READINGS and field == 'iiO_c':
+        return True
     if field and field.startswith('member') and h in ('H_c', 'H_g+', 'W7', 'I7'):
         return True
     if field == 'member(R_B)' and R == "R-i'":
@@ -458,8 +474,8 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
             cl = {r: pm[0] for r, pm in k12_rows(cc[key]['result'], key).items()}
             try:
                 kr = ABSENT if kk is ABSENT else k12_rows(kk.get('result') if isinstance(kk, dict) else None, key)
-            except ParseError as e:
-                kr = e
+            except (ParseError, TypeError, ValueError, AttributeError) as e:
+                kr = e if isinstance(e, ParseError) else ParseError(f'{type(e).__name__}: {e}')
             for r in rows:
                 kpm = kr.get(r, ABSENT) if isinstance(kr, dict) else kr
                 kset, kment = (kpm if isinstance(kpm, tuple) else (kpm, kpm))
@@ -469,7 +485,7 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                         kv_ = kset
                     elif coarse and coarse in kset and not (kment & set(COARSE[coarse])):
                         # coarse only if NO fine label of this property is mentioned at all (an explicit false is scored)
-                        kv_ = 'COARSE'  # the checker reported only the coarse property for this row
+                        kv_ = COARSE_MARK  # the checker reported only the coarse property for this row
                     else:
                         kv_ = g in kset
                     units.append(Unit(f'R5/{key}/{r}/{g}', 'BLIND' if g in blind else 'EXPOSED', True,
@@ -578,13 +594,22 @@ def canon(kind, x, side='checker'):
     if kind == 'k81':
         if not isinstance(x, dict):
             raise ParseError(f'K8.1 must be per-o {x!r}')
-        seen = set()
-        for o in x:
+        seen, out = set(), set()
+        for o, ss in x.items():
             co = to_obs(o)
             if co in seen:
                 raise ParseError(f'K8.1: colliding o-keys for {co}')
             seen.add(co)
-        return frozenset((to_obs(o), to_sigma(s)) for o, ss in x.items() for s in ss)
+            if isinstance(ss, dict):
+                # allowed only as a set written as a dict whose every value is literally true
+                if not all(b is True for b in ss.values()):
+                    raise ParseError(f'K8.1 per-o dict with non-true values at {o!r}')
+                ss = list(ss)
+            if not isinstance(ss, list):
+                raise ParseError(f'K8.1 per-o value must be a list at {o!r}')
+            for s in ss:
+                out.add((co, to_sigma(s)))
+        return frozenset(out)
     raise ValueError(kind)
 
 
@@ -593,7 +618,7 @@ def classify(u, untestable, ambiguous):
     if any(_pmatch(u.uid, p) for p in ambiguous):
         flags.append('AMBIGUOUS')
     unt = any(_pmatch(u.uid, p) for p in untestable)
-    if u.checker == 'COARSE':
+    if u.checker is COARSE_MARK:
         return 'NOT_A_UNIT', flags + ['coarse-label'], None, None
     if isinstance(u.checker, ParseError):
         return 'INCOMPLETE', flags + ['MALFORMED'], None, str(u.checker)
@@ -639,8 +664,9 @@ def classify(u, untestable, ambiguous):
                     # out-of-scope follows from coordinates (a2, w1 conformance): not verifiable from units
                     cls = 'AGREEMENT'
                     flags += ['AMBIGUOUS', 'iiiL-scope-unverifiable']
-    except ParseError as e:
-        return 'INCOMPLETE', flags + ['MALFORMED'], None, str(e)
+    except (ParseError, TypeError, ValueError, AttributeError) as e:
+        # checker-side data only (Claude side is parsed above, outside this try)
+        return 'INCOMPLETE', flags + ['MALFORMED'], None, f'{type(e).__name__}: {e}'
     if unt:
         flags.append(f'value-compared:{cls}')
         cls = 'UNTESTABLE'

@@ -241,6 +241,19 @@ def main():
     x = run(r, v); b5 = ucls(x, 'K8.1/difference_sigma_values'); ok &= b5 == ['INCOMPLETE']; print('B5 K8.1 o-key collision', b5)
     r, v = make_p0(); v['R0']['U']['(ii)-S']['holds_U'] = False; x = run(r, v); b6 = x['summary']['unrecognized_checker_keys']
     ok &= b6 == ['V1b/R0/U/(ii)-S/holds_U']; print('B6 form-body key', b6)
+    # ---- REVIEW-r6 controls ----
+    r, v = make_p0(); d81 = r['checks']['K8.1']['difference_sigma_values']
+    for o in d81: d81[o] = {'(q,q)': False}
+    x = run(r, v); x1 = ucls(x, 'K8.1/difference_sigma_values'); ok &= x1 == ['INCOMPLETE'] and not x['summary']['licence_cross_family_reproduction_BLIND_tier']; print('X1 K8.1 dict of false', x1)
+    r, v = make_p0(); d81 = r['checks']['K8.1']['difference_sigma_values']
+    for o in d81: d81[o] = {json.dumps(s): True for s in d81[o]}
+    x = run(r, v); x1b = ucls(x, 'K8.1/difference_sigma_values'); print('X1b K8.1 dict of true', x1b); ok &= x1b in (['AGREEMENT'], ['INCOMPLETE'])
+    r, v = make_p0(); d81 = r['checks']['K8.1']['difference_sigma_values']; d81[next(iter(d81))] = None
+    x = run(r, v); x2 = ucls(x, 'K8.1/difference_sigma_values'); ok &= x2 == ['INCOMPLETE']; print('X2 K8.1 null, no crash', x2)
+    r, v = make_p0(); v['R-d']['U']['named']['H_d2']['iS'] = 'COARSE'; x = run(r, v); x6 = ucls(x, 'R-d/U/named/H_d2/iS'); ok &= x6 == ['INCOMPLETE']; print('X6 marker string', x6)
+    r, v, R_, F_, f_ = first_cex(); h = v[R_][F_][f_]['least_counterexample']; h2 = dict(h); h2['Ref'] = [['rho1', ['a1']]]
+    v[R_][F_][f_]['least_counterexample'] = h2; rid = {'R-i′': "R-i'", 'R-g⁺': 'R-g+'}.get(R_, R_)
+    x = run(r, v); x7 = ucls(x, f'{rid}/{F_}/{f_}/least_counterexample'); ok &= x7 == ['INCOMPLETE']; print('X7 unhashable Ref, no crash', x7)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 
