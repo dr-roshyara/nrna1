@@ -2996,3 +2996,15 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 |---|---|
 | Records | `LOOP-1BP/` (r11); `LOOP-1BQ/` (PREREG-SLICE, BUNDLE, ROUNDS, CLAUDE-SIDE, CALIBRATION.json, compare_slice.py, selftest, HANDOVER-INSTRUCTIONS) |
 | Human action pending | hand over `~/F-XCHECK-BUNDLE-02.tar` and `~/F-XCHECK-SLICE-01.tar` (guides in `~/`), once the slice comparator review passes |
+
+## F-LOG-0238 — **Human act (2026-10-07): run bundle-02 in a fresh isolated Claude subagent, labelled WITHIN-FAMILY.** Cross-family requirement waived, NOT satisfied
+- **Context.** No non-Claude model or API is available on this machine; this was checked. The human chose "Claude run, labelled within-family" over waiting or providing an API key.
+- **Design.**
+  - Headless `claude -p --model claude-sonnet-5-5` (the original R5/V1b side was Opus 5.5), run in a scratch directory outside the repository on bundle-02 only.
+  - Tools: Read, Write, Edit, and Bash restricted to python3. Web, search and agents are disallowed.
+  - One attempt.
+  - Output goes to `~/F-XCHECK-RETURN-01-CLAUDE-WF/`, which is distinct from the non-Claude return folder.
+- **Comparison.** `LOOP-1BP/compare_xcheck.py` r11, unchanged, sealed before reading.
+- **What it can show:** within-family reproduction across two Claude models.
+- **What it cannot show:** cross-family reproduction, or the absence of errors shared by all Claude models.
+- The slice keeps waiting for a non-Claude run. Its Claude side already exists.
