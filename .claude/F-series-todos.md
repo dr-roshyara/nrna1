@@ -60,6 +60,18 @@
 - Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
 
 
+**State 2026-10-07 (F-LOG-0235):**
+- **Cross-check NOT yet handed over.** Pre-handover audit result:
+  - the bundle states outcomes (R5 claims; V1b labels and coincidences);
+  - prereg addendum r1 and r2 both FAIL review; r2 is not in force.
+- **Pending human decision:** bundle option N, W or F.
+- **After the decision:**
+  - r3 = a comparison script plus a Claude-side parser, committed before the return;
+  - review;
+  - human adoption act;
+  - handover.
+- **F-1:** R4 Lem 3.7's wording overstates (≈σf vs ≈σf,Cap). Correcting it is a human gate.
+
 **State 2026-10-04 (F-LOG-0233):**
 - **R6 V1a + V1b COMPLETE:**
   - D1's strong form is reading-relative (fails generically under R-c, R-d, R-g, R-g⁺, R-j, R-i, R-i′);

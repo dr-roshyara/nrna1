@@ -39,7 +39,12 @@ Do not edit anything. Save into a new folder `~/F-XCHECK-RETURN-01/`:
 - `PROVENANCE.txt`:
   ```
   verifier: <model/product/version or human>
+  model_version_shown: <exact model name/version the tool displays, or unknown>
   date_utc:
+  bundle_sha256_checked: 26ad0404307918066e49cd457833e993151b1133f21fcbce20526329334ce4a8 (yes/no)
+  upload_form: tar / five unpacked files
+  execution_environment: <e.g. ChatGPT code sandbox; local Python 3.x>
+  files_returned: <list; note anything missing or truncated>
   fresh_session: yes/no
   memory_off: yes/no
   web_off: yes/no

@@ -2922,3 +2922,32 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 | Field | Value |
 |---|---|
 | Records | `LOOP-1BP/` (PREREG, BUNDLE hashes, HANDOVER-INSTRUCTIONS) |
+
+## F-LOG-0235 — **Pre-handover independence audit of the cross-check (2026-10-07).** The bundle states outcomes; erratum to F-LOG-0234; addendum r1 and r2 FAIL review; a Lem 3.7 wording defect found; human decision required
+- **Trigger.** The human's control prompt "R6 Independence Cross-Check → Validation Decision Gate":
+  - §6: no expected outcomes;
+  - §7: five result classes, a seal and eight reviewer questions;
+  - §18: changing a pre-registered protocol is a human gate.
+- **State.** The bundle hash is unchanged (`26ad0404…`). `~/F-XCHECK-RETURN-01/` does not exist, and the bundle has not been handed over.
+- **Erratum to F-LOG-0234.** Its line "no expected outcomes" is **false** for R5, and in part for V1b:
+  - **(E1)** R5-SPEC §§3–5 assert the theorems the checks test.
+  - **(E2)** §7.2 states all 32 boolean checks as claims, with supplied detail in K8.2–K8.7, K9.x, K10.5 and K10.7.
+  - **(E3)** V1B-SPEC and V1B-SUPP-SPEC labels hint at outcomes.
+  - Planted histories H_c, H_g⁺ and H_U5h coincide with Lem 3.5's examples, and W7 with K8.7's h′.
+  - The Claude-side verifiers received the same specs.
+  - **Effect:** only part of the units can count as independent reproduction (the BLIND tier).
+- **Addendum r1 (tiers and classes): FAIL.** **r2: FAIL.** Both are non-mechanical: unit set, aliases, canonicalization, NOT APPLICABLE, and a §9 that claimed "only narrowings".
+  - Every finding is accepted.
+  - r2 is marked **not in force**. `PREREG.md` alone governs.
+  - r3 will be a **comparison script plus a Claude-side parser, committed before the return exists**, and it waits for the human's bundle decision.
+- **F-1 (R4 statement precision).** R4 r3 Lem 3.7 concludes "Prop 4.1(i) holds with H-D⁺′", but its proof gives only ≈_{σ,f,Cap} witnesses, not ≈_{σ,f}.
+  - Read literally, the statement is contradicted in U: R-d/U (i)-S is false, with counterexample H_d.
+  - R4's own §9, the reading table and the ledger already state the correct scope.
+  - **Wording only; no conclusion changes.**
+  - Correcting it is a human gate. It is not edited.
+- **Note:** the operator guide's PROVENANCE block gained seal fields (bundle sha checked, model version, upload form, environment, files returned). The text that reaches the checker is unchanged.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BP/PREREG-ADDENDUM-01.md` (r2, not in force); `LOOP-1BP/ADDENDUM-01-ROUNDS/` (r1, REVIEW-r1, REVIEW-r2); `LOOP-1BP/HANDOVER-INSTRUCTIONS.md` |
+| Human decision pending | the §6 conflict: bundle option N / W / F (see REVIEW-r2 and addendum §8) |
