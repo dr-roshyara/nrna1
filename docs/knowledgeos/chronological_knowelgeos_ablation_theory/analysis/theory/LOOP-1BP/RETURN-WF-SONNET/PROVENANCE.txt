@@ -1,0 +1,9 @@
+verifier: headless claude -p --model claude-sonnet-5-5 (transcript: claude-sonnet-5-5 only)
+independence: WITHIN-FAMILY ONLY (human act F-LOG-0238; cross-family requirement waived, NOT satisfied)
+bundle: F-XCHECK-BUNDLE-02.tar 4dff1351… (file hashes re-verified in the worker dir after the run)
+cwd: scratchpad/xcheck-wf/F-XCHECK-BUNDLE-02 (outside the repository)
+tools allowed: Read, Write, Edit, Bash(python3:*); disallowed: WebFetch, WebSearch, Glob, Grep, Task, Agent, NotebookEdit
+run: 2026-10-07T20:55:58Z – 21:06:00Z UTC, exit 0, attempts 1 (one in-session patch of its own program for numpy JSON serialisation, call 8)
+tool-path audit: 15 calls. Deviations (benign, recorded): call 4 Read of its OWN session's persisted tool output (the R5-SPEC cat was too large to display); calls 12-14 wrote/ran /tmp/peek.py, a helper reading only its own results. No other path outside its cwd; no repository, sealed-result, or network access.
+inherited context: user-level ~/.claude/CLAUDE.md may load (generic; no project content)
+sealed before reading: yes (SEAL.sha256 committed before the comparator ran)

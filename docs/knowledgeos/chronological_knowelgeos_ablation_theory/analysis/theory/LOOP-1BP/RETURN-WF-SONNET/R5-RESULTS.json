@@ -1,0 +1,1348 @@
+{
+ "n_frame_histories": 665920,
+ "frame_sizes": {
+  "U": 665920,
+  "U5": 416200,
+  "U6": 100880,
+  "U7": 147648,
+  "U9": 548160
+ },
+ "checks": {
+  "K1": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "H-D": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "adp"
+     ],
+     "w1": null,
+     "Ref": [
+      "a2"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "H-B": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "a2",
+      "w1"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "H-D&H-B": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "adp"
+     ],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "a2",
+      "w1"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "H-D\\H-B": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [
+      "adp"
+     ],
+     "w1": null,
+     "Ref": [
+      "a2"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "H-B\\H-D": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "a2",
+      "w1"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   },
+   "sizes": {
+    "H-D": 132040,
+    "H-B": 93888,
+    "H-D&H-B": 26408,
+    "H-D\\H-B": 105632,
+    "H-B\\H-D": 67480,
+    "R_B": 221184
+   },
+   "lem36_all_have_present_act": true,
+   "lem36_counterexample": null
+  },
+  "K2": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "counterexample_D-chg=>B-chg": null,
+    "counterexample_B-rec=>D-rec": null,
+    "witness_against_converse_B-chg=>D-chg": {
+     "sigma": [
+      "p",
+      "q"
+     ],
+     "a1": null,
+     "a2": null,
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [],
+     "con": {
+      "a1": null,
+      "a2": null
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "witness_against_converse_D-rec=>B-rec": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": null,
+     "Ref": [
+      "a2"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   }
+  },
+  "K3": {
+   "result": true,
+   "least_witness_or_counterexample": null
+  },
+  "K4": {
+   "result": true,
+   "least_witness_or_counterexample": null
+  },
+  "K4b": {
+   "result": true,
+   "least_witness_or_counterexample": null
+  },
+  "K5": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "images": {
+    "O(H-D)": [
+     [
+      0,
+      "c1"
+     ],
+     [
+      0,
+      "c2"
+     ],
+     [
+      1,
+      "c1"
+     ],
+     [
+      1,
+      "c2"
+     ]
+    ],
+    "O(H-B)": [
+     [
+      0,
+      "c1"
+     ],
+     [
+      0,
+      "c2"
+     ],
+     [
+      1,
+      "c1"
+     ],
+     [
+      1,
+      "c2"
+     ]
+    ],
+    "O(H-D&H-B)": [
+     [
+      0,
+      "c1"
+     ],
+     [
+      0,
+      "c2"
+     ],
+     [
+      1,
+      "c1"
+     ],
+     [
+      1,
+      "c2"
+     ]
+    ]
+   }
+  },
+  "K6": {
+   "result": true,
+   "least_witness_or_counterexample": null
+  },
+  "K7": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "scope_size": 480
+  },
+  "K8.1": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "q",
+     "q"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": "inf"
+    },
+    "Cap": [],
+    "w1": {
+     "t": 0
+    },
+    "Ref": [
+     "a2",
+     "w1"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "difference_sigma_values": [
+    [
+     "q",
+     "q"
+    ]
+   ],
+   "difference_by_o": {
+    "(r=0,c1)": [
+     [
+      "q",
+      "q"
+     ]
+    ],
+    "(r=0,c2)": [
+     [
+      "q",
+      "q"
+     ]
+    ],
+    "(r=1,c1)": [
+     [
+      "q",
+      "q"
+     ]
+    ],
+    "(r=1,c2)": [
+     [
+      "q",
+      "q"
+     ]
+    ]
+   },
+   "n_O1(H-B)": 12,
+   "n_O1(H-D&R_B)": 16,
+   "O1_subset": true
+  },
+  "K8.2": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "q",
+     "q"
+    ],
+    "a1": {
+     "kind": "iss",
+     "d": 0,
+     "v": "q",
+     "prep": 0,
+     "f": 0
+    },
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "q",
+     "prep": 0,
+     "f": 1
+    },
+    "Cap": [
+     "adp"
+    ],
+    "w1": {
+     "t": 0
+    },
+    "Ref": [
+     "a2",
+     "w1"
+    ],
+    "con": {
+     "a1": "none",
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "per_o_in_O2(H-D&R_B)": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "per_o_in_O2(H-B)": [
+    false,
+    false,
+    false,
+    false
+   ]
+  },
+  "K8.3": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "p"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": 0
+    },
+    "Cap": [
+     "adp"
+    ],
+    "w1": null,
+    "Ref": [
+     "a2"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "n_values_without_w1_ref_in_O3(H-D)\\O3(H-B)": 12,
+   "(i)_holds_for_O3_on_R_B": true,
+   "example_values": [
+    [
+     0,
+     "c1",
+     [
+      "a2"
+     ]
+    ],
+    [
+     0,
+     "c1",
+     [
+      "a1"
+     ]
+    ],
+    [
+     0,
+     "c1",
+     [
+      "a1",
+      "a2"
+     ]
+    ],
+    [
+     0,
+     "c2",
+     [
+      "a2"
+     ]
+    ]
+   ]
+  },
+  "K8.4": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "p"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": 0
+    },
+    "Cap": [
+     "adp"
+    ],
+    "w1": null,
+    "Ref": [
+     "a2"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "w1_absent_in_O4(H-D)\\O4(H-B)_for_every_o": true,
+   "iii_L_at_I7_under_O4prime_holds_per_(r,c)": {
+    "r=0,c=1": [
+     false
+    ],
+    "r=0,c=2": [
+     false
+    ],
+    "r=1,c=1": [
+     false
+    ],
+    "r=1,c=2": [
+     false
+    ]
+   },
+   "iii_L_at_I7_with_base_O_(added_act_allowed)_holds_per_(r,c)": {
+    "r=0,c=1": true,
+    "r=0,c=2": true,
+    "r=1,c=1": true,
+    "r=1,c=2": true
+   }
+  },
+  "K8.5": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "q",
+     "q"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": "inf"
+    },
+    "Cap": [],
+    "w1": {
+     "t": 0
+    },
+    "Ref": [
+     "a2",
+     "w1"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c2"
+   },
+   "O(H-D&R_B)_U5": [
+    [
+     0,
+     "c1"
+    ],
+    [
+     0,
+     "c2"
+    ],
+    [
+     1,
+     "c1"
+    ],
+    [
+     1,
+     "c2"
+    ]
+   ],
+   "O(H-B)_U5": [
+    [
+     0,
+     "c1"
+    ],
+    [
+     1,
+     "c1"
+    ]
+   ]
+  },
+  "K8.6": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "p"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": 0
+    },
+    "Cap": [],
+    "w1": {
+     "t": 0
+    },
+    "Ref": [
+     "a2",
+     "w1"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "n_h_v_candidates_in_U6": 0,
+   "(ii)-S_holds": false,
+   "(ii)-O_holds": false,
+   "|U6|": 100880,
+   "|R_B(U6)|": 33408
+  },
+  "K8.7": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "q",
+     "q"
+    ],
+    "a1": {
+     "kind": "iss",
+     "d": 0,
+     "v": "q",
+     "prep": 1,
+     "f": "inf"
+    },
+    "a2": null,
+    "Cap": [],
+    "w1": {
+     "t": 1
+    },
+    "Ref": [
+     "a1",
+     "w1"
+    ],
+    "con": {
+     "a1": "none",
+     "a2": null
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "I7_in_scope_U7": true,
+   "iii_L_at_I7_holds_in_U_per_(r,c)": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "iii_L_at_I7_fails_in_U7_per_(r,c)": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "CM-A7(b)_h'_in_U7&H-B_with_same_O_and_w1_conforming_per_(r,c)": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "cm_a7b_history": {
+    "sigma": [
+     "q",
+     "p"
+    ],
+    "a1": {
+     "kind": "iss",
+     "d": 0,
+     "v": "q",
+     "prep": 1,
+     "f": "inf"
+    },
+    "a2": {
+     "kind": "iss",
+     "d": 1,
+     "v": "p",
+     "prep": 1,
+     "f": 1
+    },
+    "Cap": [],
+    "w1": {
+     "t": 1
+    },
+    "Ref": [
+     "a1",
+     "a2",
+     "w1"
+    ],
+    "con": {
+     "a1": "none",
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   }
+  },
+  "K9.1": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "q"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "q",
+     "prep": 0,
+     "f": 1
+    },
+    "Cap": [
+     "iss",
+     "adp"
+    ],
+    "w1": {
+     "t": 1
+    },
+    "Ref": [
+     "a2"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   }
+  },
+  "K9.2": {
+   "result": true,
+   "least_witness_or_counterexample": null
+  },
+  "K9.3": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "Qe_values_on_H-D&R_B_union_H-B_(0=p,2=bottom)": [
+    0
+   ]
+  },
+  "K9.4": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "H-B\\H-D: sigma=(p,q), F^=empty": {
+     "sigma": [
+      "p",
+      "q"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": "inf"
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "a2",
+      "w1"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "H-D&R_B\\H-B: sigma=(q,q)": {
+     "sigma": [
+      "q",
+      "q"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": "inf"
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "a2",
+      "w1"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    }
+   },
+   "n_O_Q2(H-B)\\O_Q2(H-D)": 7064,
+   "n_O_Q2(H-D&R_B)\\O_Q2(H-B)": 1160
+  },
+  "K9.5": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "Q1b_values_on_H-B": [
+    0
+   ]
+  },
+  "K9.6": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "q"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "q",
+     "prep": 0,
+     "f": 1
+    },
+    "Cap": [
+     "iss",
+     "adp"
+    ],
+    "w1": {
+     "t": 1
+    },
+    "Ref": [
+     "a2"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "Qm=sigma(t(w1))_on_H-D_with_w1": true,
+   "some_H-D_has_Qm=q": true,
+   "(o,q)_in_both_for_every_o": true
+  },
+  "K9.7": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "O_Q*(H-D)_values_(1:{l1p},2:{l1q},3:{l1p,l2p},4:{l1q,l2q})": [
+    0,
+    1,
+    2
+   ],
+   "O_Q*(H-B)_values_o0": [
+    1,
+    3
+   ]
+  },
+  "K9.8": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "q"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": 0
+    },
+    "Cap": [],
+    "w1": {
+     "t": 0
+    },
+    "Ref": [
+     "a2",
+     "w1"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 0,
+    "c": "c1"
+   },
+   "n_H-D_histories_with_sigma_change_and_X=0": 0
+  },
+  "K10.1": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "per_class": {
+    "U": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 665920
+    },
+    "H-B": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 93888
+    },
+    "H-D": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 52816
+    },
+    "H-D&H-B": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 26408
+    }
+   }
+  },
+  "K10.2": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "n_ambiguous_(obs,slot)_per_class": {
+    "U": 0,
+    "H-B": 0,
+    "H-D": 0,
+    "H-D&H-B": 0
+   },
+   "K4_for_O+_holds": true
+  },
+  "K10.3": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "(a)_holds": true,
+   "(b)_per_o": [
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  "K10.4": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "counterexample_in_H-D": null,
+    "H-B_violator": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 1,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": {
+      "t": 0
+     },
+     "Ref": [
+      "a2",
+      "w1"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "rho1"
+     },
+     "r": 1,
+     "c": "c1"
+    }
+   }
+  },
+  "K10.5": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "sigma": [
+     "p",
+     "p"
+    ],
+    "a1": null,
+    "a2": {
+     "kind": "iss",
+     "d": 0,
+     "v": "p",
+     "prep": 0,
+     "f": 0
+    },
+    "Cap": [],
+    "w1": null,
+    "Ref": [
+     "a2"
+    ],
+    "con": {
+     "a1": null,
+     "a2": "none"
+    },
+    "r": 1,
+    "c": "c1"
+   },
+   "example_a1_iss_prep0_d0_r1_not_ambiguous": true,
+   "n_unambiguous_(h,slot)_histories": 112640
+  },
+  "K10.6": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "n_ambiguous_(obs,slot)": 0
+  },
+  "K10.7": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "c2_histories_with_ambiguous_pair": 0,
+   "c2_all_referenced_pairs_not_ambiguous": true,
+   "K10.1_in_U9_for_c1": {
+    "U": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 332960
+    },
+    "H-B": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 46944
+    },
+    "H-D": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 26408
+    },
+    "H-D&H-B": {
+     "holds": true,
+     "first_counterexample": null,
+     "scope_size": 13204
+    }
+   }
+  },
+  "K11.1": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "closed_under_removing_w1_with_Ref_entry": true,
+   "closed_under_adding_w1_unreferenced_at_any_t": true
+  },
+  "K11.2": {
+   "result": true,
+   "least_witness_or_counterexample": {
+    "referenced_forced_f>r": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 1
+     },
+     "Cap": [],
+     "w1": null,
+     "Ref": [
+      "a2"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 0,
+     "c": "c1"
+    },
+    "referenced_forced_f<r": {
+     "sigma": [
+      "p",
+      "p"
+     ],
+     "a1": null,
+     "a2": {
+      "kind": "iss",
+      "d": 0,
+      "v": "p",
+      "prep": 0,
+      "f": 0
+     },
+     "Cap": [],
+     "w1": null,
+     "Ref": [
+      "a2"
+     ],
+     "con": {
+      "a1": null,
+      "a2": "none"
+     },
+     "r": 1,
+     "c": "c1"
+    }
+   }
+  },
+  "K12.1": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "depends_on_change_group": {
+    "O": {
+     "sigma-only": false,
+     "f-only": false,
+     "Ref-only": false,
+     "con-only": false,
+     "d-only": false,
+     "(+act)": false,
+     "(+work)": false
+    },
+    "O1": {
+     "sigma-only": true,
+     "f-only": false,
+     "Ref-only": false,
+     "con-only": false,
+     "d-only": false,
+     "(+act)": false,
+     "(+work)": false
+    },
+    "O2": {
+     "sigma-only": false,
+     "f-only": true,
+     "Ref-only": false,
+     "con-only": false,
+     "d-only": false,
+     "(+act)": false,
+     "(+work)": false
+    },
+    "O3": {
+     "sigma-only": false,
+     "f-only": false,
+     "Ref-only": true,
+     "con-only": false,
+     "d-only": false,
+     "(+act)": false,
+     "(+work)": false
+    },
+    "O3'": {
+     "sigma-only": false,
+     "f-only": false,
+     "Ref-only": false,
+     "con-only": true,
+     "d-only": false,
+     "(+act)": false,
+     "(+work)": false
+    },
+    "O4": {
+     "sigma-only": false,
+     "f-only": false,
+     "Ref-only": false,
+     "con-only": false,
+     "d-only": false,
+     "(+act)": false,
+     "(+work)": true
+    },
+    "O4'": {
+     "sigma-only": false,
+     "f-only": false,
+     "Ref-only": false,
+     "con-only": false,
+     "d-only": false,
+     "(+act)": true,
+     "(+work)": false
+    },
+    "O8": {
+     "sigma-only": false,
+     "f-only": false,
+     "Ref-only": false,
+     "con-only": false,
+     "d-only": true,
+     "(+act)": false,
+     "(+work)": false
+    }
+   },
+   "note": "result is true because a report is produced; the content is the table"
+  },
+  "K12.2": {
+   "result": true,
+   "least_witness_or_counterexample": null,
+   "closure": {
+    "U": {
+     "A5": true,
+     "A7_act": true,
+     "A7_work": true,
+     "A7_ref": true,
+     "A9": true,
+     "failed": [],
+     "witness_h_(an_h_in_frame_whose_admissible_change_leaves_the_frame)": {
+      "A5": null,
+      "A7_act": null,
+      "A7_work": null,
+      "A7_ref": null,
+      "A9": null
+     }
+    },
+    "U5": {
+     "A5": false,
+     "A7_act": true,
+     "A7_work": true,
+     "A7_ref": true,
+     "A9": true,
+     "failed": [
+      "A5"
+     ],
+     "witness_h_(an_h_in_frame_whose_admissible_change_leaves_the_frame)": {
+      "A5": {
+       "sigma": [
+        "q",
+        "q"
+       ],
+       "a1": null,
+       "a2": null,
+       "Cap": [],
+       "w1": null,
+       "Ref": [],
+       "con": {
+        "a1": null,
+        "a2": null
+       },
+       "r": 0,
+       "c": "c2"
+      },
+      "A7_act": null,
+      "A7_work": null,
+      "A7_ref": null,
+      "A9": null
+     }
+    },
+    "U7": {
+     "A5": true,
+     "A7_act": false,
+     "A7_work": false,
+     "A7_ref": true,
+     "A9": true,
+     "failed": [
+      "A7_act",
+      "A7_work"
+     ],
+     "witness_h_(an_h_in_frame_whose_admissible_change_leaves_the_frame)": {
+      "A5": null,
+      "A7_act": {
+       "sigma": [
+        "q",
+        "p"
+       ],
+       "a1": null,
+       "a2": null,
+       "Cap": [],
+       "w1": null,
+       "Ref": [],
+       "con": {
+        "a1": null,
+        "a2": null
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      "A7_work": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": null,
+       "a2": null,
+       "Cap": [],
+       "w1": null,
+       "Ref": [],
+       "con": {
+        "a1": null,
+        "a2": null
+       },
+       "r": 0,
+       "c": "c1"
+      },
+      "A7_ref": null,
+      "A9": null
+     }
+    },
+    "U9": {
+     "A5": true,
+     "A7_act": true,
+     "A7_work": true,
+     "A7_ref": true,
+     "A9": false,
+     "failed": [
+      "A9"
+     ],
+     "witness_h_(an_h_in_frame_whose_admissible_change_leaves_the_frame)": {
+      "A5": null,
+      "A7_act": null,
+      "A7_work": null,
+      "A7_ref": null,
+      "A9": {
+       "sigma": [
+        "p",
+        "p"
+       ],
+       "a1": null,
+       "a2": {
+        "kind": "iss",
+        "d": 0,
+        "v": "p",
+        "prep": 0,
+        "f": 0
+       },
+       "Cap": [],
+       "w1": null,
+       "Ref": [
+        "a2"
+       ],
+       "con": {
+        "a1": null,
+        "a2": "none"
+       },
+       "r": 0,
+       "c": "c2"
+      }
+     }
+    }
+   },
+   "failed_properties": {
+    "U": [],
+    "U5": [
+     "A5"
+    ],
+    "U7": [
+     "A7_act",
+     "A7_work"
+    ],
+    "U9": [
+     "A9"
+    ]
+   }
+  }
+ }
+}
