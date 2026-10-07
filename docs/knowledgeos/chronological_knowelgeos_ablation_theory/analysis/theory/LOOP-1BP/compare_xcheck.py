@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r7).
+"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r8).
 
 Committed before any return exists. It encodes the unit set, the canonicalization,
 the result classes, the exposure tiers and the licence rule.
@@ -89,7 +89,7 @@ T_HIST = {'hc': 'H_c', 'hd': 'H_d', 'hd2': 'H_d2', 'hg': 'H_g', "hg'": "H_g'", '
 T_FIELD = {'memberrb': 'member(R_B)', 'memberhd': 'member(H-D)', 'memberhb': 'member(H-B)', 'is': 'iS',
            'k4b': 'K4b', 'iioc': 'iiO_c', 'iiil': 'iiiL', 'o': 'O',
            'existshd+sfhd2': 'exists(H-D+,~sf H_d2)', 'existshd+sigmafhd2': 'exists(H-D+,~sf H_d2)',
-           'existshdplussfhd2': 'exists(H-D+,~sf H_d2)', 'existshd+hd2': 'exists(H-D+,~sf H_d2)'}
+           'existshdplussfhd2': 'exists(H-D+,~sf H_d2)'}
 T_K12_1_ROW = {'o': 'O', 'o1': 'O1', 'o2': 'O2', 'o3': 'O3', "o3'": "O3'", 'o4': 'O4', "o4'": "O4'", 'o8': 'O8'}
 T_K12_2_ROW = {'u': 'U', 'u5': 'U5', 'u7': 'U7', 'u9': 'U9'}
 T_K12_1_GROUP = {'sigmaonly': 'sigma-only', 'sigma': 'sigma-only', 'fonly': 'f-only', 'f': 'f-only',
@@ -199,6 +199,8 @@ def slot(x, me):
             return ('iss', int(m.group(2)), m.group(3), int(m.group(4)), _f(int(fv) if fv.isdigit() else fv))
         m = RE_SLOT_ADP.match(x.strip())
         if m:
+            if m.group(3) is not None and m.group(3) == me:
+                raise ParseError(f'adp obj is its own slot {x!r}')
             return ('adp', int(m.group(2)))
         raise ParseError(f'slot {x!r}')
     if not isinstance(x, dict):
@@ -285,7 +287,7 @@ def to_ref(x):
 
 
 def _con_val(v):
-    if v == 'none' or v is None:
+    if v == 'none':
         return 'none'
     if v in REC:
         return 'rho1'
@@ -391,9 +393,22 @@ class Unit:
 # REVIEW-r6 §4: under these readings H-D^R∩H-B^R ⊇ H-D∩H-B and H-D^R∩H-B^R ⊆ H-B^R ⊆ R_B^R, so exposed
 # R0/U facts (K5, K4, K6, and the named-history exposures) transfer by monotonicity in frame U.
 MONO_READINGS = ('R-c', 'R-e', 'R-f', 'R-i', "R-i'")
+NAMED_C1 = {'H_c', 'H_d', 'H_d2', 'H_g', "H_g'", 'H_g+', 'H_i', 'H_empty', 'H_j', 'I7', 'W7'}
 
 
 def exposed_v1b(R, F, form=None, h=None, field=None):
+    # ---- closure meta-rules (REVIEW-r7) ----
+    if R == 'R-b':
+        R = 'R0'  # in U and U5, B-recW forces w1 present, so B-conf^b <=> B-conf: R-b's classes equal R0's
+    if form is None and F == 'U5' and h in NAMED_C1:
+        F = 'U'   # every named history has c = c1: U5's constraint is vacuous for it and its witnesses
+    if form is None and h == 'H_U5i[c:=c1]' and field == 'iiO_c' and R in ('R-i', "R-i'"):
+        return True  # iiO_c depends on H only through O = (0, c1), exposed under R-i/R-i' in U
+    if F == 'U' and R == 'R-h':
+        if form is not None or (field == 'iS' and h in ('H_g+', 'W7', 'I7')) or field == 'iiO_c':
+            return True  # K4/K6 witnesses keep Ref and the present slots, so they lie in H-B^h
+    if form is not None and F == 'U' and R in ('R-c', 'R-f') and form in ('(ii)-S', '(ii)-O'):
+        return True
     if form is not None:
         if (R == 'R0' and F == 'U') or (R == 'R0' and F == 'U5' and form in ('(i)-O', '(i)-S')) or \
                (R == 'R-d' and F == 'U' and form in ('(i)-O', '(i)-S')):
@@ -573,7 +588,8 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                                   'obs' if fld == 'O' else 'bool'))
             for sr, sf, sh, sfld, ckey in SUPP_UNITS:
                 if (sr, sf) == (R, F):
-                    units.append(Unit(f'V1b/{R}/{F}/supp/{sh}/{sfld}', 'BLIND', True, cs[sr][sf][ckey],
+                    units.append(Unit(f'V1b/{R}/{F}/supp/{sh}/{sfld}',
+                                      'EXPOSED' if exposed_v1b(R, F, h=sh, field=sfld) else 'BLIND', True, cs[sr][sf][ckey],
                                       _get(knamed.get(sh, {}), sfld), 'iiil' if sfld == 'iiiL' else 'bool'))
     return units
 

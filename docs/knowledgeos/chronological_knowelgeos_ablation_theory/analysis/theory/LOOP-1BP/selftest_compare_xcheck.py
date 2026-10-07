@@ -254,6 +254,23 @@ def main():
     r, v, R_, F_, f_ = first_cex(); h = v[R_][F_][f_]['least_counterexample']; h2 = dict(h); h2['Ref'] = [['rho1', ['a1']]]
     v[R_][F_][f_]['least_counterexample'] = h2; rid = {'R-i′': "R-i'", 'R-g⁺': 'R-g+'}.get(R_, R_)
     x = run(r, v); x7 = ucls(x, f'{rid}/{F_}/{f_}/least_counterexample'); ok &= x7 == ['INCOMPLETE']; print('X7 unhashable Ref, no crash', x7)
+    # ---- REVIEW-r7 controls ----
+    r, v, R_, F_, f_ = first_cex(); h = v[R_][F_][f_]['least_counterexample']; rid = {'R-i′': "R-i'", 'R-g⁺': 'R-g+'}.get(R_, R_)
+    if h['a1'] != 'absent' or h['a2'] != 'absent':
+        h2 = dict(h); h2['con'] = {k: None for k in ('a1', 'a2')}; v[R_][F_][f_]['least_counterexample'] = h2
+        x = run(r, v); y1 = ucls(x, f'{rid}/{F_}/{f_}/least_counterexample'); ok &= y1 == ['INCOMPLETE']; print('Y1 con null rejected', y1)
+    print('Y2 string adp self-obj', C.ParseError.__name__, end=' ')
+    try:
+        C.slot('adopt(d=0,obj=a1)', 'a1'); y2 = 'accepted'
+    except C.ParseError:
+        y2 = 'rejected'
+    ok &= y2 == 'rejected'; print(y2)
+    r, v = make_p0(); nm = v['R-d']['U']['named']['H_d2']; nm['exists(H-D+, H_d2)'] = nm.pop('exists(H-D+, ≈σf H_d2)')
+    x = run(r, v); y3 = x['summary']['unrecognized_checker_keys']; ok &= y3 == ['V1b/R-d/U/named/H_d2/exists(H-D+, H_d2)']; print('Y3 alias removed', y3)
+    r, v = make_p0(); x = run(r, v); tier = {u['unit']: u['tier'] for u in x['units']}
+    y4 = [tier['V1b/R-b/U/(ii)-S/holds'], tier['V1b/R-h/U/(i)-S/holds'], tier['V1b/R-c/U/(ii)-O/holds'],
+          tier['V1b/R-i/U5/named/H_g/iiO_c'], tier["V1b/R-i'/U5/supp/H_U5i[c:=c1]/iiO_c"], tier['V1b/R-g/U/named/H_g/iiO_c'], tier['V1b/R-g/U5/(i)-S/holds']]
+    ok &= y4 == ['EXPOSED'] * 5 + ['BLIND', 'BLIND']; print('Y4 closure tiers', y4)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 
