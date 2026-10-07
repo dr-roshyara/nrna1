@@ -65,12 +65,43 @@ HD_SAME = {'R0', 'R-b', 'R-c', 'R-f', 'R-g', 'R-g+', 'R-h', 'R-i', "R-i'"}
 HDRB_EQ_HD = {'R-c', 'R-f', 'R-i', "R-i'"}
 
 
+# REVIEW-slice-r2 (structural equalities, from V1B-SPEC's reading definitions)
+HB_SAME = {'R0', 'R-b', 'R-d', 'R-e', 'R-j'}          # B-clauses unchanged
+HDRB_SAME = {'R0', 'R-b', 'R-g', 'R-g+'}              # H-D and R_B both unchanged
+RB_CF = {'R-c', 'R-f'}                                # B-rec^c = B-rec^f = D-rec
+IIIL_A = {'R0', 'R-b', 'R-g', 'R-g+'}
+IIIL_B = {'R-c', 'R-f', 'R-i', "R-i'"}
+# least counterexamples derivable as the R-1 minimum of the scope (no witness: D-rec, w1 or D-chg fails)
+CEX_DERIVABLE = {('(i)-S', R) for R in ('R-c', 'R-g', 'R-g+', 'R-i', "R-i'")} | \
+                {('(ii)-S', R) for R in ('R-g', 'R-g+', 'R-i', "R-i'")}
+
+
 def quantity_id(R, what):
-    """Distinct-quantity id for a size/scope unit (used to count distinct BLIND quantities)."""
+    """Distinct-quantity id (used to count distinct BLIND quantities). R-b's classes equal R0's."""
+    if R == 'R-b':
+        R = 'R0'
     if what in ('R_B', '(i)-S/scope_size'):
+        if R == "R-i'":
+            return 'n'  # R_B^{R-i'} = U_P2
+        if R in RB_CF:
+            return 'R_B@cf'
         return 'R_B@' + ('B-rec-unchanged' if R in RB_SAME else R)
     if what == 'H-D' or (what == 'H-D&R_B' and R in HDRB_EQ_HD):
         return 'H-D@' + ('D-unchanged' if R in HD_SAME else R)
+    if what == 'H-B' and R in HB_SAME:
+        return 'H-B@B-unchanged'
+    if what == 'H-D&R_B' and R in HDRB_SAME:
+        return 'H-D&R_B@unchanged'
+    if what == '(ii)-S/scope_size':
+        if R in RB_SAME:
+            return 'iiS-scope@B-rec-unchanged'
+        if R in RB_CF:
+            return 'iiS-scope@cf'
+    if what == '(iii)-L/scope_size':
+        if R in IIIL_A:
+            return 'iiiL-scope@A'
+        if R in IIIL_B:
+            return 'iiiL-scope@B'
     return f'{what}@{R}'
 
 
@@ -112,7 +143,7 @@ def build(claude, checker, unrec):
                 unrec.append(f'{F}/{x}')
         kn = X._get(kF, 'n_frame_histories')
         units.append(X.Unit(f'{F}/n_frame_histories', 'BLIND' if blindF else 'EXPOSED', True,
-                            cF['n_frame_histories'], kn, 'int', qid=f'n@{F}'))
+                            cF['n_frame_histories'], kn, 'int', qid=f'n#{F}'))
         kR = index(X._get(kF, 'readings') if isinstance(kF, dict) else {}, X.T_READING, 'reading', unrec, f'{F}/readings')
         for R in READINGS:
             cR = cF['readings'][R]
@@ -148,15 +179,17 @@ def build(claude, checker, unrec):
                 units.append(X.Unit(f'{F}/{R}/{form}/holds', 'EXPOSED', True, cf['holds'], kh, 'bool', qid=None))
                 if form in SFORMS:
                     cholds_false = cf['holds'] is False
-                    sc_tier = 'BLIND' if blindF else 'EXPOSED'
+                    sc_tier = 'BLIND' if blindF and not (form == '(i)-S' and R == "R-i'") else 'EXPOSED'
                     units.append(X.Unit(f'{F}/{R}/{form}/scope_size', sc_tier, True, cf['scope_size'],
                                         X._get(kfm, 'scope_size'), 'int', qid=quantity_id(R, f'{form}/scope_size') + f'#{F}'))
                     cnt_tier = 'BLIND' if (blindF and cholds_false) else 'EXPOSED'
+                    Rq = 'R0' if R == 'R-b' else R
                     units.append(X.Unit(f'{F}/{R}/{form}/n_counterexamples', cnt_tier, True, cf['n_counterexamples'],
-                                        X._get(kfm, 'n_counterexamples'), 'int', qid=f'ncex:{form}@{R}#{F}'))
-                    units.append(X.Unit(f'{F}/{R}/{form}/least_counterexample', cnt_tier, None,
+                                        X._get(kfm, 'n_counterexamples'), 'int', qid=f'ncex:{form}@{Rq}#{F}'))
+                    lc_tier = 'EXPOSED' if (form, R) in CEX_DERIVABLE else cnt_tier
+                    units.append(X.Unit(f'{F}/{R}/{form}/least_counterexample', lc_tier, None,
                                         cf['least_counterexample'], X._get(kfm, 'least_counterexample'), 'cex',
-                                        claude_holds=cf['holds'], checker_holds=kh, qid=f'lcex:{form}@{R}#{F}'))
+                                        claude_holds=cf['holds'], checker_holds=kh, qid=f'lcex:{form}@{Rq}#{F}'))
     return units
 
 

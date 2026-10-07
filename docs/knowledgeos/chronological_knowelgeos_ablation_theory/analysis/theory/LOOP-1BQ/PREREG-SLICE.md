@@ -77,3 +77,22 @@ The comparator `compare_slice.py` reuses LOOP-1BP's fail-closed parser. It is wr
 1. A calibration mismatch (§2).
 2. Handover of both bundles. bundle-02 goes after the final r10 review; the slice bundle after the Claude side is sealed and the comparator is self-tested.
 3. Any non-(a) DISAGREEMENT after the return.
+
+## Amendment A1 (2026-10-07; after the Claude side was sealed, before any non-Claude return): disclosed
+**Source:** REVIEW-slice-r2, which found no silent false agreement but found BLIND inflated. Every change below **only shrinks** BLIND or merges duplicates, and none changes a comparison.
+- **Nine least counterexamples are EXPOSED,** because each is the R-1 minimum of its scope, with no witness possible:
+  - (i)-S under R-c, R-g, R-g+, R-i and R-i′;
+  - (ii)-S under R-g, R-g+, R-i and R-i′.
+- **R-i′ (i)-S `scope_size` is EXPOSED,** because it equals n.
+- **De-duplication is extended** (`quantity_id`):
+  - R-b ≡ R0 for all quantities;
+  - H-B is shared by R0, R-b, R-d, R-e and R-j;
+  - H-D&R_B is shared by R0, R-b, R-g and R-g+;
+  - R_B^{R-c} = R_B^{R-f};
+  - (ii)-S scope is shared across the readings that leave B-rec unchanged, and across {R-c, R-f};
+  - (iii)-L scope is shared across {R0, R-b, R-g, R-g+} and across {R-c, R-f, R-i, R-i′}.
+- **Result: 67 distinct BLIND quantities** (was 99). The licence logic is unchanged.
+- **Calibration is reported as 161 substantive matches plus 20 null/null rows,** with 0 mismatches.
+- **Comparator syntax fix** (disclosed in F-LOG-0237): exact matching of TASK's `&`-containing size keys.
+- **Hashes:** comparator `4e444591…`, selftest `edf53f7e…` (PASS, N1–N14), calibration script `d17bbf1c…`.
+- **Not re-reviewed, by decision.** These changes only shrink BLIND and add controls, and the review found no silent false agreement.

@@ -40,11 +40,13 @@ def main(argv):
         cmp(f'U/{R}/(iii)-L/n_counterexamples', vb['checks']['(iii)-L']['n_counterexamples'],
             wk['(iii)-L']['n_counterexamples'], 'int')
     mism = [r for r in rows if r['match'] is not True]
-    out = {'n_compared': len(rows), 'n_mismatch': len(mism), 'mismatches': mism,
+    nullnull = [r for r in rows if r['match'] is True and r['v1b'] == 'None' and r['worker'] == 'None']
+    out = {'n_compared': len(rows), 'n_substantive': len(rows) - len(nullnull), 'n_null_null': len(nullnull),
+           'n_mismatch': len(mism), 'mismatches': mism,
            'not_calibrated': 'U (i)-S and (ii)-S scope_size and n_counterexamples (V1b did not report them)',
            'rows': rows}
     json.dump(out, open(argv[1], 'w'), indent=1, ensure_ascii=False)
-    print(json.dumps({k: out[k] for k in ('n_compared', 'n_mismatch')}), [m['unit'] for m in mism][:20])
+    print(json.dumps({k: out[k] for k in ('n_compared', 'n_substantive', 'n_null_null', 'n_mismatch')}), [m['unit'] for m in mism][:20])
 
 
 if __name__ == '__main__':

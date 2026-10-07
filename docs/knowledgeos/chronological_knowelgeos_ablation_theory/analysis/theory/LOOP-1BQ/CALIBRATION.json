@@ -1,5 +1,7 @@
 {
  "n_compared": 181,
+ "n_substantive": 161,
+ "n_null_null": 20,
  "n_mismatch": 0,
  "mismatches": [],
  "not_calibrated": "U (i)-S and (ii)-S scope_size and n_counterexamples (V1b did not report them)",
@@ -343,14 +345,14 @@
   {
    "unit": "U/R-d/(i)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'q', 0, 'inf'), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'q', 0, 'inf'), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'q', 0, 'inf'), frozenset({'adp'}), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'q', 0, 'inf'), frozenset({'adp'}), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-d/(ii)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset({'adp'}), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset({'adp'}), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-d/(iii)-L/least_counterexample",
@@ -613,14 +615,14 @@
   {
    "unit": "U/R-g/(i)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-g/(ii)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-g/(iii)-L/least_counterexample",
@@ -703,14 +705,14 @@
   {
    "unit": "U/R-g+/(i)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-g+/(ii)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-g+/(iii)-L/least_counterexample",
@@ -1063,14 +1065,14 @@
   {
    "unit": "U/R-j/(i)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-j/(ii)-S/least_counterexample",
    "match": true,
-   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
-   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1', 'a2'}), (None, 'none'), 0, 'c1')"
   },
   {
    "unit": "U/R-j/(iii)-L/least_counterexample",
