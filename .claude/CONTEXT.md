@@ -1,5 +1,17 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-07, F-Series) — R6 independence cross-checks READY; awaiting the human-run non-Claude returns
+
+- **State:** R1–R5 closed; R3 frozen; R4 r3 sealed; R6 V1a/V1b done. **The non-Claude cross-check is prepared but NOT yet run.** Both return folders are absent (checked twice, 2026-10-07).
+- **Bundle-02** (`~/F-XCHECK-BUNDLE-02.tar`, `4dff1351…`, human act option N): the comparator `LOOP-1BP/compare_xcheck.py` r11 is final and fail-closed. **Only 42 of about 2,264 units are blind**, because the spec states the claims under test (F-LOG-0236).
+- **Blind slice** (`~/F-XCHECK-SLICE-01.tar`, `fd83979b…`; U_P2 with V = {p, q, r}, P = {p, q}):
+  - 67 distinct blind quantities;
+  - the Claude side has been run, sealed and calibrated (161 substantive matches against sealed V1b, plus 20 null/null rows, 0 mismatches);
+  - comparator `LOOP-1BQ/compare_slice.py` (F-LOG-0237).
+- **Next (human):** run both bundles in a non-Claude model per `~/F-XCHECK-HANDOVER-INSTRUCTIONS-01.md` and `~/F-XCHECK-SLICE-HANDOVER-INSTRUCTIONS-01.md`, then save the returns to `~/F-XCHECK-RETURN-01/` and `~/F-XCHECK-SLICE-RETURN-01/`. **Then:** seal → compare → review; any non-(a) disagreement → human.
+- **Open human gate:** F-1, the wording of R4 Lem 3.7 (statement overstates its proof: ≈σf vs ≈σf,Cap).
+- Roadmap: `.claude/F-series-todos.md`.
+
 ## 📍 UPDATE (2026-10-01, F-Series) — R1 CLOSED (H5 adopted); R3 PROVISIONAL sealed; R2 awaits a human-run Claude coding
 
 - **R1 closed:** H1 skipped (human); **H5 adopted** → H-D vs H-B **NON-IDENTIFIABLE** on this corpus within the authorized scope (F-LOG-0190 condition knowingly waived; host-side gap disclosed; Protocol C sealed, unexecuted).
