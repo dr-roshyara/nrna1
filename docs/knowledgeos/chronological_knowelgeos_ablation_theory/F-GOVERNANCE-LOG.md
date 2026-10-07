@@ -3047,4 +3047,6 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Comparator r12** (`compare_xcheck.py` `4bf9d2cb…`, selftest `9b9434bf…` PASS, with Z1 added).
   - Change: the anyof role extraction also takes histories nested as `{h, slot}`. It is otherwise unchanged.
   - Re-run on the Sonnet return (`COMPARISON-WF-SONNET-r12/`): the K10.5 witness becomes AGREEMENT; the 39 other disagreements (G1, G2) are unchanged.
-  - Made before any non-Claude return exists. Review pending.
+  - Made before any non-Claude return exists. **Review: PASS_WITH_LIMITATIONS** (`COMPARISON-WF-SONNET-r12/REVIEW-r12.md`). The selftest is hardened with Z0 and Z2 (`c2011eff…`).
+- **Correction:** NONLICENSING units do enter the licence condition (every scored unit must agree). The tier only means they are never counted as reproduction evidence.
+- **Erratum:** commit 1328ed9da's message claims this log correction, but the edit was missing from that commit; it is applied in the next commit.
