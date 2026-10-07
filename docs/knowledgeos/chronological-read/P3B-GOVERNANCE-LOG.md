@@ -1777,3 +1777,62 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | New proposals for G2 | (5) the A1 pre-verify row; (6) the `gitnew` probe and the no-git rule; (7) the hand-off stop and no-search rule. Proposals (1)–(4) are carried over from r3 |
 | Still open | the G-01 allowed-mention question; the 48 PENDING annex clauses; registration of the three reader strings; the R1 prompt block in production. All G3 |
 | Not authorized | run-2 (needs the review result, then a new G2 act naming the r4 sha); G3; G4; G5; production changes; corpus reads |
+
+## G-LOG-0115 — Human act: G2 approved for rehearsal run-2 (non-counting; brief r4; all items accepted)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-07: "write the G-LOG-0115 with all items accepted" |
+| Basis | G-LOG-0113 (run-1 FAILED, A1, route (b)); G-LOG-0114 (repair round R1–R5, N1); independent round-level review **PASS_WITH_LIMITATIONS** (no BLOCKER; findings F1–F5, I-1 to I-6) |
+| Brief | `audit-p3b/rehearsal/REHEARSAL-BRIEF-r4.md` on branch `s-series/s5-r7-v29-repair` (commit `3d1f82582`), sha256 **`1113065030087eb7c53e54455d3cc57cde0532a8e411a92ef058be3351e338da`**; check file `REHEARSAL-BOUND-r4.sha256` (26 lines); environment built from commit `4e1636f3210dbbf60c76c3dcefdd69ee96a0f7b6`; contract v2.9 DRAFT sha `7eba03857e07bdfee67ddb73848202e3bc97e652f21e22987a324c21250b6ffa` (inside the isolated environment only) |
+| Approved | the coverage, the run count (6 runs) and the pass criterion (§5, unchanged from r3) |
+| Proposals 1–4 | **ACCEPTED** (carried over from r3; accepted at G-LOG-0112) |
+| Proposal 5 | **ACCEPTED.** An A1 assembly refusal before verify makes the run permanently FAILED; no automatic retry; re-entry needs a new G2 |
+| Proposal 6 | **ACCEPTED.** The `gitnew` probe; no git on PROD or its worktrees during the run; a false positive also stops the run |
+| Proposal 7 | **ACCEPTED.** The step-0 hand-off and the no-search rule |
+| H5 deviation | **ACCEPTED for this rehearsal only.** The REQUIRED FIELDS block in SINGLE/SYNTHESIS prompts. The inaccurate closing sentence (review F3) is accepted as-is. Adoption in production prompts is a G3 item |
+| Rehearsal-only ruling | **ACCEPTED (carried over).** The three call-tagged agent-side reader strings are treated as A1 for this rehearsal only, as in G-LOG-0112 |
+| Independent review | The repair round was written in the run-1 operator's own session, so its per-repair sub-agent reviews are not independent. The human's separate read-only evaluator session gave the round-level review: PASS_WITH_LIMITATIONS, 380 tests re-run OK, no BLOCKER. **ACCEPTED as the sufficient independent review** for this gate; no second review is required |
+| F1: literal first message | The operator session is started in E = `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/s5-rehearsal/OB9100-r2/env/repo`. Its first message is **exactly** the text in Annex A. No other content is sent before step 14. If the session ever lacks the brief path or sha, the human stops it |
+| F5: git quiet period | From step 0a until the session's final report, the **only** git commands on PROD (`…/personal/nrna1`) or any of its worktrees (`kos-v11-ddd`, `nrna1-s5-g1`, `wt-before`) are the brief's literal ones in steps 0a, 0 and 1 and C5c. These are read-only: `--no-optional-locks status`, `merge-base`, and `git archive` inside `make_env`. No other git command, IDE, file watcher, Claude Code session or hook may touch PROD or those worktrees. The run-1 operator/repair session and the evaluator sessions are closed before step 0a. A `gitnew` > 0 for any reason ends run-2 (§8), and a new G2 is needed |
+| F4: evidence commit | The **session never writes W.** After its last probe (C14's C5c), or after a stop, the session writes the brief §9 evidence files that exist into T`/scratch/run-2/`, prints their sha256 and stops. The **human** then commits them with the commands in Annex B and records whether the commit was made before or after the independent evaluation |
+| F2: re-entry | Any re-entry after run-2, whatever its outcome or route, needs a **re-frozen brief** (new paths, new sha) and a new G2 act. The §6 words "re-run under the same brief" and "fresh T" are read accordingly |
+| Stop rules and outcomes | Brief r4 §5, §6 and §8 govern **as written**. This act changes nothing in them except the clarifications F1, F2, F4 and F5 above. No stop rule is relaxed |
+| Scope | Non-counting; synthetic batch OB9100 (6 runs: 3 SINGLE, 2 UNIT, 1 SYNTHESIS); rehearsal id **OB9100-r2**.<br>BASE = `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/s5-rehearsal/OB9100-r2`; T = BASE`/env` (must not exist before step 0); E = T`/repo`.<br>Evidence is staged at T`/scratch/run-2/`, then committed to `audit-p3b/rehearsal/run-2/` (must not exist before Annex B).<br>No production state, no corpus, no hold-out, no attempt numbers; not evidence for H1–H5 |
+| Run-1 | These stay **immutable** and preserved until G3 decides: BASE `…/OB9100-r1` (T, archive, snap-1, transcript), `run-1/` (commit `bd40990ed`) and brief r3 (sha `c2c9adce…1993`) |
+| Next actor after run-2 | An independent evaluator session (read-only), then the human. No automatic G3 |
+| Still open | The G-01 allowed-mention question; the 48 PENDING annex clauses; registration of the three reader strings; production adoption of the R1 prompt block. All are G3 items |
+| Not authorized | G3 (v2.9 approval, production rebind); G4 (counted canary, retire); G5 (full S5); production changes; corpus reads; any re-run or retry of run-2 |
+
+### Annex A: literal first message to the run-2 operator session (F1)
+
+Send exactly this as the first message, in a fresh session whose working directory is E:
+
+```text
+You are the operator of the non-counting synthetic S5 rehearsal OB9100-r2, authorized by G-LOG-0115.
+
+Frozen brief (the only procedure): /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-s5-g1/docs/knowledgeos/chronological-read/audit-p3b/rehearsal/REHEARSAL-BRIEF-r4.md
+Its sha256: 1113065030087eb7c53e54455d3cc57cde0532a8e411a92ef058be3351e338da
+
+Before anything else, run sha256sum on that exact path. If the output differs from the sha above, or the file is missing, STOP and tell me. Do not search for any file.
+
+Then read the whole brief with the Read tool by that absolute path, and execute §4 steps 1–14 exactly and in order, with the stop rules of §8 and the outcomes of §6. Steps 0a and 0 are already done by me. Run no command that is not in the brief, except reading the brief and its bound files by absolute path and the C14/§9 reporting. Run no git command other than the brief's literal ones, and no filesystem search.
+
+Evidence (G-LOG-0115 F4): do NOT write to or commit in the worktree W. After the last C5c of step 14 (or after a stop), write the §9 evidence files that exist into /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/s5-rehearsal/OB9100-r2/env/scratch/run-2/, print their sha256, and stop.
+
+Your final response is the §5 decision and the §9 report (REHEARSAL-REPORT.md format), then the line: OPERATOR STOP — REHEARSAL COMPLETE. Do not evaluate your own run and do not start anything else.
+```
+
+### Annex B: the human's evidence commit (F4), after the operator's final report
+
+Run this in a terminal, not in a Claude session:
+
+```bash
+W=/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-s5-g1
+S=/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/s5-rehearsal/OB9100-r2/env/scratch/run-2
+D=docs/knowledgeos/chronological-read/audit-p3b/rehearsal/run-2
+cd "$W" && test ! -e "$D" && mkdir "$D" && cp -p "$S"/* "$D"/ && (cd "$S" && sha256sum *) && (cd "$D" && sha256sum *) \
+  && git add -- "$D"/* && git commit -m "exec(knowledgeos): R4 rehearsal run-2 evidence (OB9100)"
+```
+
+The two `sha256sum` listings must be identical.
