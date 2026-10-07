@@ -3026,4 +3026,4 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the ≈_{σ,f} clause is explicitly not claimed.
 - **Also updated:** the ledger row, the title (r3.1) and a revision note. **No proof and no other statement changes.** §9 and Rem 9.7 already used the correct scope.
 - **Frozen bundles are not changed.** bundle-02 and the slice keep R5-SPEC's earlier text, because editing them would void the runs in flight. The comparator already pre-registers `V1b/R-d/U/(i)-S/holds` as the known (c) candidate F-1.
-- **Records:** `LOOP-1BR/` (the sealed r3 text kept as `FORMAL-THEORY-R4-r3-sealed.md`). The review is pending.
+- **Records:** `LOOP-1BR/` (the sealed r3 text kept as `FORMAL-THEORY-R4-r3-sealed.md`). **Review: PASS** (`LOOP-1BR/REVIEW.md`). **F-1 CLOSED; R4 sealed at r3.1.**
