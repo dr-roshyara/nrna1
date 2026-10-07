@@ -60,6 +60,15 @@
 - Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
 
 
+**State 2026-10-07 (F-LOG-0240), priority order agreed with the human:**
+- **P0:** finish the two Sonnet 5.5 within-family runs (F-LOG-0238/0239): seal → compare → review.
+- **P1:** a non-Claude run of the blind slice. This is the only cross-family evidence.
+- **P2 F-1:** authorized; R4 r3.1 erratum done; review pending.
+- **R6 VALIDATION GATE** (clean → close R6; disagreement → human).
+- **DECISION GATE:** accept H-D/H-B non-identifiability, or pursue E-A5 for new evidence.
+- **Only after the decision gate:** V2 / V5 / V6 selectively, then the R7 brief.
+- **Do NOT, before then:** start R7/DDD, canonicalize, translate to architecture, or choose H-D or H-B.
+
 **State 2026-10-07 (F-LOG-0237):**
 - **bundle-02 comparison:** final (r11).
 - **Blind slice:** frozen; Claude side sealed; calibration 181/181; comparator self-tested; review pending.
