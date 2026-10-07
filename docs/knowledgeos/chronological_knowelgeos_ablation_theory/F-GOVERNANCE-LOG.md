@@ -3018,3 +3018,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Comparison.** Against the sealed Claude side, which was Opus 5.5, using `LOOP-1BQ/compare_slice.py` unchanged. Sealed before reading.
 - **What it can show:** cross-model, within-family reproduction of the 67 distinct blind quantities.
 - **What it cannot show:** cross-family reproduction. The non-Claude handover remains open.
+
+## F-LOG-0240 — **Human act (2026-10-07): F-1 wording correction authorized.** R4 → r3.1 erratum (Lem 3.7). A wording-fidelity correction, not a theory change
+- **Change.** Lem 3.7's conclusion now states exactly what its proof delivers:
+  - for every h ∈ R_B′ there is h** ∈ H-D⁺′ ∩ H-B′ with h** ≈_{σ,f,Cap} h and O′(h**) = O′(h);
+  - hence 4.1(i)'s image equalities hold under D-st⁺;
+  - the ≈_{σ,f} clause is explicitly not claimed.
+- **Also updated:** the ledger row, the title (r3.1) and a revision note. **No proof and no other statement changes.** §9 and Rem 9.7 already used the correct scope.
+- **Frozen bundles are not changed.** bundle-02 and the slice keep R5-SPEC's earlier text, because editing them would void the runs in flight. The comparator already pre-registers `V1b/R-d/U/(i)-S/holds` as the known (c) candidate F-1.
+- **Records:** `LOOP-1BR/` (the sealed r3 text kept as `FORMAL-THEORY-R4-r3-sealed.md`). The review is pending.

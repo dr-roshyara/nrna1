@@ -1,9 +1,9 @@
-# FORMAL-THEORY-R4: the minimal formal theory (draft r3)
+# FORMAL-THEORY-R4: the minimal formal theory (draft r3.1)
 
 | | |
 |---|---|
 | Inputs (only) | `R3-CODING-INDEPENDENT.json` (base items cited by id, e.g. A07); `HYPOTHESES.md` (HYP); `H5.md` (H5); `INSTRUMENT-FINDING.md` (IF). IF is an r0 input but **not an R3 item**; where it is cited this is said |
-| Revision | **[r3]** r3 adds §9 and scope remarks (CHANGELOG-r3.md; human act F-LOG-0232). Earlier: **r2**, a minimal proof repair of r1 after `REVIEW-r1` (verdict FAIL, one blocking issue B-1 / RG-1; human act F-LOG-0221). Every r2 change is mapped to its review item in `CHANGELOG-r2.md`; the r1 changes are mapped in `CHANGELOG-r1.md`. Statement ids are stable; withdrawn statements stay in place, marked **WITHDRAWN** with a reason |
+| Revision | **[r3.1]** erratum F-1 (human act F-LOG-0240): Lem 3.7's conclusion is restated to match its proof (witness ≈_{σ,f,Cap}, not ≈_{σ,f}); no proof and no other statement changes (LOOP-1BR). **[r3]** r3 adds §9 and scope remarks (CHANGELOG-r3.md; human act F-LOG-0232). Earlier: **r2**, a minimal proof repair of r1 after `REVIEW-r1` (verdict FAIL, one blocking issue B-1 / RG-1; human act F-LOG-0221). Every r2 change is mapped to its review item in `CHANGELOG-r2.md`; the r1 changes are mapped in `CHANGELOG-r1.md`. Statement ids are stable; withdrawn statements stay in place, marked **WITHDRAWN** with a reason |
 | Status | **[r3]** draft r3, reviewed PASS_WITH_LIMITATIONS (LOOP-1BO/B) with the review's wording items applied as disclosed analyst edits; same-family (Claude) analyst and reviewers throughout; R5 finite-verified (r2 content); robustness per §9 (finite results in U only) |
 | Standing rule | H-D and H-B are **sets of histories** (model classes). Neither is assumed anywhere. No statement uses an act count, a norm count or any other coding-dependent value |
 
@@ -236,7 +236,7 @@ Each class is contained in the other once exactly two of the other's clauses are
 - **(SC1)** 𝓗′ is closed under h ↦ h[Cap := ∅];
 - **(SC2)** O′ does not depend on Cap over 𝓗′.
 
-Then Prop 4.1(i) holds with H-D⁺′ in place of H-D′. The base pair (O, 𝓗) satisfies SC1, because no axiom of 𝓗 mentions Cap, and SC2 by Lem 1.12.
+Then **[r3.1]** for every h ∈ R_B′ there is h** ∈ H-D⁺′ ∩ H-B′ with h** ≈_{σ, f, Cap} h and O′(h**) = O′(h); hence the image equalities of Prop 4.1(i) hold with H-D⁺′ in place of H-D′. The ≈_{σ, f} clause of 4.1(i) is **not** claimed: h** may differ from h in Cap (cf. §9, Rem 9.7). The base pair (O, 𝓗) satisfies SC1, because no axiom of 𝓗 mentions Cap, and SC2 by Lem 1.12.
 
 *Proof:* Take h* from the proof of 4.1(i). Let h** = h*[Cap := ∅]. Then h** ∈ 𝓗′ by SC1, and O′(h**) = O′(h*) = O′(h) by SC2. No act is adopted in h**, because Adopted requires capability, so the extra clause of D-st⁺ is vacuous. f** ≡ ∞, so D-st is vacuous. D-chg is vacuous, because σ** is constant. D-rec is unchanged, and the H-B clauses do not mention Cap. ∎
 
@@ -615,7 +615,7 @@ Status: **=** unchanged from r0; **rev** revised in r1; **new** new in r1; **WD*
 | Lem 3.5 | witnesses (a), (a′), (b): neither class contains the other | Lem | rev | none |
 | Lem 3.5(b′) | second H-B ∖ H-D witness | — | **WD** (adds nothing beyond (b); M-6) | — |
 | Lem 3.6 | both classes need E ≠ ∅ | Lem | = | G06 |
-| Lem 3.7 | 4.1(i) under D-st⁺, given SC1 (no frame constraint on Cap) and SC2 (O′ blind to Cap) | Lem | rev | G07 |
+| Lem 3.7 | 4.1(i)'s image equalities under D-st⁺, with ≈_{σ, f, Cap} witnesses (not ≈_{σ, f}) **[r3.1]**, given SC1 (no frame constraint on Cap) and SC2 (O′ blind to Cap) | Lem | rev | G07 |
 | A1–A9 | hypotheses of the generic results; pairwise independent | Hyp | rev (A4, A5, A7 restated; A9 new) | as in the §4.1 table |
 | Lem 4.0a | (O, 𝓗) satisfies A1–A5 and A7–A9 | Lem | new | none |
 | Lem 4.0b | joint non-dependence on σ and f via explicit intermediate histories | Lem | new | none |
