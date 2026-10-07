@@ -60,6 +60,12 @@
 - Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
 
 
+**State 2026-10-07 (F-LOG-0237):**
+- **bundle-02 comparison:** final (r11).
+- **Blind slice:** frozen; Claude side sealed; calibration 181/181; comparator self-tested; review pending.
+- **NEXT (human):** hand over both tars (`~/F-XCHECK-BUNDLE-02.tar`, `~/F-XCHECK-SLICE-01.tar`) per the `~/F-XCHECK-*HANDOVER*` guides.
+- **Open human gate:** F-1, the wording of R4 Lem 3.7.
+
 **State 2026-10-07 (F-LOG-0236):**
 - **Bundle-02 issued** (option N).
 - **The comparator is fail-closed** after 9 review rounds; r10 is not yet reviewed.

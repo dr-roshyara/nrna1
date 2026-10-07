@@ -75,6 +75,8 @@ def quantity_id(R, what):
 
 
 def norm_key(table, k, what, unrec, path):
+    if table is T_SIZE and k in SIZE_KEYS:
+        return k  # TASK.md's exact size keys contain '&', which the closed norm() rejects by design
     try:
         return X.lookup(table, k, what)
     except X.ParseError:

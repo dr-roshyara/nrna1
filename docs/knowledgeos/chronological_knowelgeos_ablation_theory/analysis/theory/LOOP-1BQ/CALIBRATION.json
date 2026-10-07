@@ -1,0 +1,1094 @@
+{
+ "n_compared": 181,
+ "n_mismatch": 0,
+ "mismatches": [],
+ "not_calibrated": "U (i)-S and (ii)-S scope_size and n_counterexamples (V1b did not report them)",
+ "rows": [
+  {
+   "unit": "U/n_frame_histories",
+   "match": true,
+   "v1b": "665920",
+   "worker": "665920"
+  },
+  {
+   "unit": "U/R0/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R0/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R0/sizes/H-B",
+   "match": true,
+   "v1b": "93888",
+   "worker": "93888"
+  },
+  {
+   "unit": "U/R0/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "26408",
+   "worker": "26408"
+  },
+  {
+   "unit": "U/R0/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "52816",
+   "worker": "52816"
+  },
+  {
+   "unit": "U/R0/(i)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R0/(ii)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R0/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R0/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R0/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R0/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R0/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R0/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R0/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "480",
+   "worker": "480"
+  },
+  {
+   "unit": "U/R0/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-b/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R-b/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-b/sizes/H-B",
+   "match": true,
+   "v1b": "93888",
+   "worker": "93888"
+  },
+  {
+   "unit": "U/R-b/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "26408",
+   "worker": "26408"
+  },
+  {
+   "unit": "U/R-b/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "52816",
+   "worker": "52816"
+  },
+  {
+   "unit": "U/R-b/(i)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-b/(ii)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-b/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-b/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-b/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-b/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "480",
+   "worker": "480"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-c/sizes/R_B",
+   "match": true,
+   "v1b": "552960",
+   "worker": "552960"
+  },
+  {
+   "unit": "U/R-c/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-c/sizes/H-B",
+   "match": true,
+   "v1b": "187776",
+   "worker": "187776"
+  },
+  {
+   "unit": "U/R-c/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "52816",
+   "worker": "52816"
+  },
+  {
+   "unit": "U/R-c/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-c/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-c/(ii)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-c/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-c/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-c/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), None, frozenset({'a2'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), None, frozenset({'a2'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-c/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "960",
+   "worker": "960"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-d/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R-d/sizes/H-D",
+   "match": true,
+   "v1b": "84040",
+   "worker": "84040"
+  },
+  {
+   "unit": "U/R-d/sizes/H-B",
+   "match": true,
+   "v1b": "93888",
+   "worker": "93888"
+  },
+  {
+   "unit": "U/R-d/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "16808",
+   "worker": "16808"
+  },
+  {
+   "unit": "U/R-d/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "33616",
+   "worker": "33616"
+  },
+  {
+   "unit": "U/R-d/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-d/(ii)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-d/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-d/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-d/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'q', 0, 'inf'), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'q', 0, 'inf'), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-d/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset({'adp'}), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "384",
+   "worker": "384"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-e/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R-e/sizes/H-D",
+   "match": true,
+   "v1b": "144040",
+   "worker": "144040"
+  },
+  {
+   "unit": "U/R-e/sizes/H-B",
+   "match": true,
+   "v1b": "93888",
+   "worker": "93888"
+  },
+  {
+   "unit": "U/R-e/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "28808",
+   "worker": "28808"
+  },
+  {
+   "unit": "U/R-e/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "57616",
+   "worker": "57616"
+  },
+  {
+   "unit": "U/R-e/(i)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-e/(ii)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-e/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-e/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-e/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-e/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "504",
+   "worker": "504"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-f/sizes/R_B",
+   "match": true,
+   "v1b": "552960",
+   "worker": "552960"
+  },
+  {
+   "unit": "U/R-f/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-f/sizes/H-B",
+   "match": true,
+   "v1b": "264960",
+   "worker": "264960"
+  },
+  {
+   "unit": "U/R-f/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "79224",
+   "worker": "79224"
+  },
+  {
+   "unit": "U/R-f/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-f/(i)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-f/(ii)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-f/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-f/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-f/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-f/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "960",
+   "worker": "960"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-g/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R-g/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-g/sizes/H-B",
+   "match": true,
+   "v1b": "27648",
+   "worker": "27648"
+  },
+  {
+   "unit": "U/R-g/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "1200",
+   "worker": "1200"
+  },
+  {
+   "unit": "U/R-g/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "52816",
+   "worker": "52816"
+  },
+  {
+   "unit": "U/R-g/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-g/(ii)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-g/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-g/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-g/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-g/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'q'), ('iss', 0, 'q', 0, 1), None, frozenset({'iss', 'adp'}), 1, frozenset({'a1', 'w1'}), ('none', None), 0, 'c1')",
+   "worker": "(('p', 'q'), ('iss', 0, 'q', 0, 1), None, frozenset({'iss', 'adp'}), 1, frozenset({'a1', 'w1'}), ('none', None), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "480",
+   "worker": "480"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "252",
+   "worker": "252"
+  },
+  {
+   "unit": "U/R-g+/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-B",
+   "match": true,
+   "v1b": "10944",
+   "worker": "10944"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "1200",
+   "worker": "1200"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "52816",
+   "worker": "52816"
+  },
+  {
+   "unit": "U/R-g+/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-g+/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-g+/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-g+/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'q'), ('iss', 0, 'q', 0, 1), None, frozenset({'iss', 'adp'}), 1, frozenset({'a1', 'w1'}), ('none', None), 0, 'c1')",
+   "worker": "(('p', 'q'), ('iss', 0, 'q', 0, 1), None, frozenset({'iss', 'adp'}), 1, frozenset({'a1', 'w1'}), ('none', None), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "480",
+   "worker": "480"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "252",
+   "worker": "252"
+  },
+  {
+   "unit": "U/R-h/sizes/R_B",
+   "match": true,
+   "v1b": "98304",
+   "worker": "98304"
+  },
+  {
+   "unit": "U/R-h/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-h/sizes/H-B",
+   "match": true,
+   "v1b": "41664",
+   "worker": "41664"
+  },
+  {
+   "unit": "U/R-h/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "11864",
+   "worker": "11864"
+  },
+  {
+   "unit": "U/R-h/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "23728",
+   "worker": "23728"
+  },
+  {
+   "unit": "U/R-h/(i)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-h/(ii)-S/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-h/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-h/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-h/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-h/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "(('q', 'q'), ('iss', 0, 'p', 0, 'inf'), None, frozenset(), 0, frozenset({'a1', 'w1'}), ('none', None), 0, 'c1')",
+   "worker": "(('q', 'q'), ('iss', 0, 'p', 0, 'inf'), None, frozenset(), 0, frozenset({'a1', 'w1'}), ('none', None), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "480",
+   "worker": "480"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "228",
+   "worker": "228"
+  },
+  {
+   "unit": "U/R-i/sizes/R_B",
+   "match": true,
+   "v1b": "665600",
+   "worker": "665600"
+  },
+  {
+   "unit": "U/R-i/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-i/sizes/H-B",
+   "match": true,
+   "v1b": "318720",
+   "worker": "318720"
+  },
+  {
+   "unit": "U/R-i/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "79224",
+   "worker": "79224"
+  },
+  {
+   "unit": "U/R-i/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-i/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-i/(ii)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-i/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-i/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-i/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), None, frozenset(), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), None, frozenset(), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-i/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "960",
+   "worker": "960"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-i'/sizes/R_B",
+   "match": true,
+   "v1b": "665920",
+   "worker": "665920"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-B",
+   "match": true,
+   "v1b": "318848",
+   "worker": "318848"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "79224",
+   "worker": "79224"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "132040",
+   "worker": "132040"
+  },
+  {
+   "unit": "U/R-i'/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-i'/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-i'/(ii)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-i'/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, None, frozenset(), None, frozenset(), (None, None), 0, 'c1')",
+   "worker": "(('p', 'p'), None, None, frozenset(), None, frozenset(), (None, None), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, None, frozenset(), 0, frozenset({'w1'}), (None, None), 0, 'c1')",
+   "worker": "(('p', 'p'), None, None, frozenset(), 0, frozenset({'w1'}), (None, None), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "960",
+   "worker": "960"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  },
+  {
+   "unit": "U/R-j/sizes/R_B",
+   "match": true,
+   "v1b": "221184",
+   "worker": "221184"
+  },
+  {
+   "unit": "U/R-j/sizes/H-D",
+   "match": true,
+   "v1b": "12000",
+   "worker": "12000"
+  },
+  {
+   "unit": "U/R-j/sizes/H-B",
+   "match": true,
+   "v1b": "93888",
+   "worker": "93888"
+  },
+  {
+   "unit": "U/R-j/sizes/H-D&H-B",
+   "match": true,
+   "v1b": "2400",
+   "worker": "2400"
+  },
+  {
+   "unit": "U/R-j/sizes/H-D&R_B",
+   "match": true,
+   "v1b": "4800",
+   "worker": "4800"
+  },
+  {
+   "unit": "U/R-j/(i)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-j/(ii)-S/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-j/(i)-O/holds",
+   "match": true,
+   "v1b": "True",
+   "worker": "True"
+  },
+  {
+   "unit": "U/R-j/(ii)-O/holds",
+   "match": true,
+   "v1b": "False",
+   "worker": "False"
+  },
+  {
+   "unit": "U/R-j/(i)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-j/(ii)-S/least_counterexample",
+   "match": true,
+   "v1b": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')",
+   "worker": "(('p', 'p'), None, ('iss', 0, 'p', 0, 0), frozenset(), 0, frozenset({'a2', 'w1'}), (None, 'none'), 0, 'c1')"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/least_counterexample",
+   "match": true,
+   "v1b": "None",
+   "worker": "None"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/scope_size",
+   "match": true,
+   "v1b": "24",
+   "worker": "24"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/n_counterexamples",
+   "match": true,
+   "v1b": "0",
+   "worker": "0"
+  }
+ ]
+}

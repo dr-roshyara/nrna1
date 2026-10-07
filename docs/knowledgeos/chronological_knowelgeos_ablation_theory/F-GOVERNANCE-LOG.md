@@ -2972,3 +2972,27 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 |---|---|
 | Records | `LOOP-1BP/` (PREREG-ADDENDUM-01 r10; ADDENDUM-01-ROUNDS r1–r9 with REVIEW-r1…r9; BUNDLE-02/; compare_xcheck.py; selftest_compare_xcheck.py) |
 | Human decision pending | hand over under r10, or redesign the independence check |
+
+## F-LOG-0237 — **Human act (2026-10-07): "Hand over + blind slice".** bundle-02 comparison final (r11); blind slice designed, frozen, Claude side run, sealed and calibrated (181/181)
+- **bundle-02 cross-check.**
+  - The comparator is final at r11 (`d8da904a…`).
+  - REVIEW-r10 found no silent false agreement.
+  - r11 grows EXPOSED only and is not re-reviewed, by decision.
+  - BLIND = 42 units in P0.
+- **Blind slice (LOOP-1BQ).**
+  - **Universe:** U_P2 (V = {p, q, r}, P = {p, q}), which R5-SPEC §7.3 lists as untestable in U. The targets are class sizes, scope sizes, counterexample counts and least counterexamples, which appear in no bundle file.
+  - **Design review:** PASS_WITH_LIMITATIONS, all changes applied.
+  - **Bundle frozen:** `fd83979b…`, committed before the run.
+- **Claude side.**
+  - An isolated `claude -p` worker (opus-5-5) made 10 tool calls, all inside its own directory, and ran for 4.5 min.
+  - It wrote a fresh implementation plus its own naive re-enumeration.
+  - Outputs were sealed before reading (`CLAUDE-SIDE/SEAL.sha256`).
+- **Calibration** (within-family regression against the sealed V1b U values): **181/181 match.** The U (i)-S and (ii)-S scope sizes and counts were not calibrated, as disclosed.
+- **Slice comparator.** `compare_slice.py` (`6a6cf398…`) reuses LOOP-1BP's fail-closed parser with V widened. Selftest `4bf24527…` passes: P0 licence holds, with 128 BLIND units (99 distinct quantities), and N1–N6 are caught.
+  - **Disclosed fix after the Claude results were sealed:** exact matching of TASK's `&`-containing size keys. This is syntax only.
+  - The comparator review is pending.
+
+| Field | Value |
+|---|---|
+| Records | `LOOP-1BP/` (r11); `LOOP-1BQ/` (PREREG-SLICE, BUNDLE, ROUNDS, CLAUDE-SIDE, CALIBRATION.json, compare_slice.py, selftest, HANDOVER-INSTRUCTIONS) |
+| Human action pending | hand over `~/F-XCHECK-BUNDLE-02.tar` and `~/F-XCHECK-SLICE-01.tar` (guides in `~/`), once the slice comparator review passes |
