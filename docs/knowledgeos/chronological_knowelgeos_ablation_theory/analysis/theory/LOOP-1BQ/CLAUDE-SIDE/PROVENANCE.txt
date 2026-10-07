@@ -1,0 +1,7 @@
+worker: headless claude -p, model claude-opus-5-5 (from transcript)
+cwd: scratchpad/slice-claude/F-XCHECK-SLICE-01 (outside the repository); input = the frozen slice bundle (hashes verified)
+tools allowed: Read, Write, Edit, Bash(python3:*); disallowed: WebFetch, WebSearch, Glob, Grep, Task, Agent, NotebookEdit
+tool-path audit: 10 calls, all paths inside its cwd (ls/cat of the bundle, Read R5-SPEC, Write slice_enum.py, run, Write crosscheck.py naive re-enumeration, Write NOTES.md)
+inherited context: user-level ~/.claude/CLAUDE.md may load (generic; no project content)
+run: 2026-10-07T20:33:58Z – 20:38:28Z UTC, exit 0, attempts 1
+sealed before reading: yes (SEAL.sha256 committed before the calibration or any result was read)
