@@ -1727,3 +1727,17 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | Frozen with this act | the key-extraction tool `audit-p3b/canary-diag/tools/extract_keys.py` sha256 `c6434cdd38491ceb24b7f1dd64428eb0fd9a4b12b6d605d1a708ec2137506492` (package v4.1 H2 step 2) |
 | Effect | the v2.9 annex, the annex loader, the two-way reachability test and the code changes of the adopted rows are engineered under G-LOG-0110's §3a constraints (isolated worktree, synthetic data, TDD, independent review) |
 | Not authorized | G2 (rehearsal dispatch), G3 (v2.9 approval, production rebind), G4, G5; production changes; corpus reads; R-5 |
+
+## G-LOG-0112 — Human act: G2 approved (non-counting v2.9 rehearsal; brief r3)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-07: "approve G2 as recommended" — i.e. the recommended line: "APPROVED — G2: rehearsal brief r3 (sha256 c2c9adce…1993), proposals (a)–(d), the three reader strings treated as A1 for this rehearsal only; dispatch authorized per the brief. Does not authorize G3–G5, production changes, corpus reads or R-5." |
+| Brief | `audit-p3b/rehearsal/REHEARSAL-BRIEF.md` r3 on branch `s-series/s5-r7-v29-repair` (commit `3c6a77039`), sha256 `c2c9adced18b225092efc44122211a4684f67181c6f107a3c005fbbca1001993`; bound files `REHEARSAL-BOUND.sha256` (26 lines); environment built from commit `f07569e66`; contract v2.9 DRAFT sha `7eba03857e07bdfee67ddb73848202e3bc97e652f21e22987a324c21250b6ffa` (inside the isolated environment only) |
+| Reviews | `audit-p3b/rehearsal/R-REVIEW.md` (G2-READY-WITH-FIXES, fixed) and `R-RECHECK.md` (G2-READY) |
+| Approved proposals | (a) a D-class string fails the rehearsal like X (return to design); (b) the archive step reads a byte copy of the live session transcript inside the environment; (c) the environment lives outside `.../roshyara/personal/` (enforced by make_env); (d) one declared re-snapshot only before a freeze is written; a timing X found at verify counts as X, annotated |
+| Rehearsal-only ruling | the three call-tagged agent-side reader strings (W1 reader call without a tool_result; W2 reader call under another run/batch; W2 label ≠ plan owner) are treated as A1 for this rehearsal only, annotated "D-by-rule, treated A1 by G2 ruling"; their registration is a G3 mapping item |
+| Accepted | agents are contained by instruction plus the witness and per-run probes, not by a technical barrier |
+| Scope | non-counting; synthetic batch OB9100 (6 runs: 3 SINGLE, 2 UNIT, 1 SYNTHESIS); no production state, no corpus, no hold-out, no attempt numbers; not evidence for H1–H5 |
+| Still open | G-01 allowed-mention question; the 48 PENDING annex clauses; registration of the three reader strings — all G3 |
+| Not authorized | G3 (v2.9 approval, production rebind), G4 (counted canary, retire), G5 (full S5); production changes; corpus reads; R-5 |
