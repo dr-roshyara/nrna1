@@ -1,0 +1,9 @@
+verifier: headless claude -p --model claude-sonnet-5-5 (transcript: claude-sonnet-5-5 only)
+independence: WITHIN-FAMILY ONLY (human act F-LOG-0239; cross-family requirement waived, NOT satisfied); cross-MODEL vs the sealed Claude side (Opus 5.5)
+bundle: F-XCHECK-SLICE-01.tar fd83979b… (file hashes re-verified in the worker dir after the run)
+cwd: scratchpad/slice-wf/F-XCHECK-SLICE-01 (outside the repository)
+tools allowed: Read, Write, Edit, Bash(python3:*); disallowed: WebFetch, WebSearch, Glob, Grep, Task, Agent, NotebookEdit
+run: 2026-10-07T20:56:36Z – 21:20:04Z UTC, exit 0, attempts 1 (the program was re-run once in-session)
+tool-path audit: 19 calls. Deviations (benign, recorded): call 4 Read of its OWN persisted tool output (R5-SPEC); call 5 a draft program in a sibling dir (../prog); call 6 Write to a malformed path (dashes for slashes) under /tmp/claude-1891886374/, moved into cwd by call 12; calls 15-16 loaded Monitor and scheduled a wakeup to wait for its own run. No access to sealed results, the repository, or the network.
+inherited context: user-level ~/.claude/CLAUDE.md may load (generic; no project content)
+sealed before reading: yes
