@@ -3027,3 +3027,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Also updated:** the ledger row, the title (r3.1) and a revision note. **No proof and no other statement changes.** §9 and Rem 9.7 already used the correct scope.
 - **Frozen bundles are not changed.** bundle-02 and the slice keep R5-SPEC's earlier text, because editing them would void the runs in flight. The comparator already pre-registers `V1b/R-d/U/(i)-S/holds` as the known (c) candidate F-1.
 - **Records:** `LOOP-1BR/` (the sealed r3 text kept as `FORMAL-THEORY-R4-r3-sealed.md`). **Review: PASS** (`LOOP-1BR/REVIEW.md`). **F-1 CLOSED; R4 sealed at r3.1.**
+
+## F-LOG-0241 — **bundle-02 within-family cross-check compared and reviewed.** BLIND 42/42 agree; 40 disagreements, all class (c), going to the human; no substantive discrepancy
+- **Return:** Sonnet 5.5, sealed before reading (`LOOP-1BP/RETURN-WF-SONNET/`, commit e059df97c).
+- **Tool-path deviations:** two, both benign (it read its own persisted output, and wrote a helper in /tmp).
+- **Comparison:** frozen r11; BLIND 42/42 AGREEMENT; licence not granted, because of format INCOMPLETE and unrecognized keys.
+- **Step C:** **G1** K4b/exists reading (34), **G2** R5 composite-witness semantics (5), **G3** K10.5 format plus a comparator artifact (1). All are **(c)**.
+- Once interpretation and format are resolved, there is no discrepancy in any value, count or set.
+- **Within-family only.** A comparator defect is recorded and not repaired (`COMPARISON-WF-SONNET/REVIEW-STEP-C.md`).
+- **Human gate:** accept the (c) classifications.
