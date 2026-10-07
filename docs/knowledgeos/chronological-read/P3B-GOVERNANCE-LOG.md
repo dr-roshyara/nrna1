@@ -1741,3 +1741,19 @@ S5a, S5b and S5c remain distinct research steps under the frozen protocol.
 | Scope | non-counting; synthetic batch OB9100 (6 runs: 3 SINGLE, 2 UNIT, 1 SYNTHESIS); no production state, no corpus, no hold-out, no attempt numbers; not evidence for H1–H5 |
 | Still open | G-01 allowed-mention question; the 48 PENDING annex clauses; registration of the three reader strings — all G3 |
 | Not authorized | G3 (v2.9 approval, production rebind), G4 (counted canary, retire), G5 (full S5); production changes; corpus reads; R-5 |
+
+## G-LOG-0113 — Human decisions: rehearsal run-1 FAILED (A1, R3′ at step 9); route (b) return to design; operator N1 violation recorded; partial evidence committed
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-07: "route b, accept A1, log the slip, save evidence: yes" |
+| Rehearsal | run-1 under brief r3 (sha `c2c9adced18b225092efc44122211a4684f67181c6f107a3c005fbbca1001993`, G-LOG-0112); synthetic batch OB9100; BASE `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/s5-rehearsal/OB9100-r1`; bound commit `f07569e66`; non-counting |
+| Result | **FAIL.** §8 stop at step 9: `assemble` exit 2, `R3′ … register.jsonl: record 1 names a label other than its run's plan owner`. Cause: the register records of L03 (0/3) and L04 (0/2) lack the required key `working_label` (addendum §3.5 row REG · working_label); L01 and L02S carry it. Verify never ran, so criterion (iii) failed and (i) and (ii) were not evaluable. Steps 1–8 passed; every C5c probe was 0 and every reader refusal count was 0 |
+| Independent evaluation | `audit-p3b/rehearsal/run-1/REHEARSAL-EVALUATION.md`: verdict FAIL. It corrected the operator report: (1) the frozen mapping already classifies the refusal (EG6-SPEC-A-v2 §3, A1 row, `ASSEMBLY-REFUSED` with an agent-record cause R2–R4, **R3′**, R11), so the operator's "no row maps it" was wrong; (2) an undeclared operator violation (below); (3) minor factual errors |
+| Decision 1 | **Classification A1 accepted** for the step-9 refusal |
+| Decision 2 | **Route (b): return to design.** One redesign round, then a new G2. No re-run of r3 |
+| Decision 3 | **Operator N1 violation recorded.** Before step 1, during an unprompted search for the brief, the operator ran a plain `git status --short` in W, without `--no-optional-locks`, against brief r3 N1. At 16:36:51Z it rewrote W's index at `PROD/.git/worktrees/nrna1-s5-g1/index`. This is a governance/procedure violation, **not an agent isolation breach**. There was no effect on W's tree, the ledgers, the agents or the stop. The C5c probes could not see it. Contributing causes: the step-0 hand-off was missing the brief's path and sha, and the operator ran `find /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara -maxdepth 8 …` (the parent of `personal/` and `s5-rehearsal/`), which printed file paths but no file content |
+| Decision 4 | **Partial evidence committed** as a failed run: `audit-p3b/rehearsal/run-1/` (commit `bd40990ed`). `S5-VERIFY-OB9100-R7.json` and `WITNESS-DIGESTS.json` were never produced and are absent, not manufactured. `REHEARSAL-EVALUATION.md` was added beyond the brief §9 list because its only other copy was in `/tmp` |
+| Preserved | BASE `…/OB9100-r1` (T, archive, snap-1), the operator transcript and run-1 evidence: kept undeleted until G3 decides |
+| Scope | non-counting; no production state, corpus, hold-out or attempt touched; not evidence for H1–H5 |
+| Not authorized | a re-run; G3 (v2.9 approval, production rebind); G4; G5; production changes; corpus reads |
