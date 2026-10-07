@@ -347,11 +347,23 @@ def k12_rows(x, key):
     out = {}
     for rk, labels in x.items():
         row = lookup(rows_t, rk, f'{key} row')
+        if row in out:
+            raise ParseError(f'{key}: colliding row keys for {row}')
         if isinstance(labels, dict):
-            labels = [g for g, b in labels.items() if to_bool(b)]
-        if not isinstance(labels, list):
+            present, mentioned = set(), set()
+            for g, b in labels.items():
+                cg = lookup(grp_t, g, f'{key} group')
+                if cg in mentioned:
+                    raise ParseError(f'{key} row {row}: colliding labels for {cg}')
+                mentioned.add(cg)
+                if to_bool(b):
+                    present.add(cg)
+        elif isinstance(labels, list):
+            present = {lookup(grp_t, g, f'{key} group') for g in labels}
+            mentioned = set(present)
+        else:
             raise ParseError(f'{key} row {rk!r}')
-        out[row] = {lookup(grp_t, g, f'{key} group') for g in labels}
+        out[row] = (present, mentioned)
     return out
 
 
@@ -381,6 +393,8 @@ def exposed_v1b(R, F, form=None, h=None, field=None):
                (R == 'R-d' and F == 'U' and form in ('(i)-O', '(i)-S'))
     if field and field.startswith('member') and h in ('H_c', 'H_g+', 'W7', 'I7'):
         return True
+    if field == 'member(R_B)' and R == "R-i'":
+        return True  # R_B = U by the reading's definition: spec-given, not an outcome
     if field == 'O' and h in ('W7', 'I7'):
         return True
     if field == 'iiiL' and h == 'I7' and R == 'R0' and F == 'U':
@@ -441,18 +455,20 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
         kk = kc.get(key, ABSENT)
         if key in K12:
             rows, groups, blind = K12[key]
-            cl = k12_rows(cc[key]['result'], key)
+            cl = {r: pm[0] for r, pm in k12_rows(cc[key]['result'], key).items()}
             try:
                 kr = ABSENT if kk is ABSENT else k12_rows(kk.get('result') if isinstance(kk, dict) else None, key)
             except ParseError as e:
                 kr = e
             for r in rows:
-                kset = kr.get(r, ABSENT) if isinstance(kr, dict) else kr
+                kpm = kr.get(r, ABSENT) if isinstance(kr, dict) else kr
+                kset, kment = (kpm if isinstance(kpm, tuple) else (kpm, kpm))
                 for g in groups:
                     coarse = next((c for c, fine in COARSE.items() if g in fine), None)
                     if kset is ABSENT or isinstance(kset, ParseError):
                         kv_ = kset
-                    elif coarse and coarse in kset and not (kset & set(COARSE[coarse])):
+                    elif coarse and coarse in kset and not (kment & set(COARSE[coarse])):
+                        # coarse only if NO fine label of this property is mentioned at all (an explicit false is scored)
                         kv_ = 'COARSE'  # the checker reported only the coarse property for this row
                     else:
                         kv_ = g in kset
@@ -504,6 +520,9 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                     except ParseError:
                         unrecognized.append(f'V1b/{R}/{F}/{k}')
                         continue
+                    if isinstance(v, dict):
+                        for x in set(v) - {'holds', 'least_counterexample'} - IGNORED_BODY_KEYS:
+                            unrecognized.append(f'V1b/{R}/{F}/{k}/{x}')
                     if fid in kforms:
                         unrecognized.append(f'V1b/{R}/{F}/{k} (collides with an earlier key for {fid})')
                         kforms[fid] = ParseError(f'colliding keys for {fid}')
@@ -527,6 +546,7 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
                     units.append(Unit(f'V1b/{R}/{F}/named/{h}/{fld}', tier, req, cfl.get(fld),
                                       _get(knamed.get(h, {}), fld), 'iiil' if fld == 'iiiL' else 'bool',
                                       claude_in_scope=cfl.get('iiiL_in_scope'),
+                                      claude_scope_by_membership=not (cfl.get('member(H-D)') and cfl.get('member(R_B)')),
                                       member_units=(f'V1b/{R}/{F}/named/{h}/member(H-D)',
                                                     f'V1b/{R}/{F}/named/{h}/member(R_B)')))
             for h, fld, ckey in EXTRAS:
@@ -558,6 +578,12 @@ def canon(kind, x, side='checker'):
     if kind == 'k81':
         if not isinstance(x, dict):
             raise ParseError(f'K8.1 must be per-o {x!r}')
+        seen = set()
+        for o in x:
+            co = to_obs(o)
+            if co in seen:
+                raise ParseError(f'K8.1: colliding o-keys for {co}')
+            seen.add(co)
         return frozenset((to_obs(o), to_sigma(s)) for o, ss in x.items() for s in ss)
     raise ValueError(kind)
 
@@ -604,10 +630,15 @@ def classify(u, untestable, ambiguous):
             kv = canon(u.kind, u.checker)
             cls = 'NOT_APPLICABLE' if (cv is None and kv is None) else ('AGREEMENT' if cv == kv else 'DISAGREEMENT')
             if u.kind == 'iiil' and cv is None and kv is False and u.kw.get('claude_in_scope') is False:
-                # Pre-declared (REVIEW-r4 E3): the spec types iiiL as {true,false}; a checker may report false
-                # out of scope. Accepted only if both scope inputs agree (checked in main); else DISAGREEMENT.
-                cls = 'SCOPE_PENDING'
-                flags.append('iiiL-false-out-of-scope')
+                # Pre-declared (REVIEW-r4 E3, narrowed by REVIEW-r5): the spec types iiiL as {true,false}.
+                if u.kw.get('claude_scope_by_membership'):
+                    # Claude's out-of-scope follows from membership alone: accepted iff both membership units agree.
+                    cls = 'SCOPE_PENDING'
+                    flags.append('iiiL-false-out-of-scope')
+                else:
+                    # out-of-scope follows from coordinates (a2, w1 conformance): not verifiable from units
+                    cls = 'AGREEMENT'
+                    flags += ['AMBIGUOUS', 'iiiL-scope-unverifiable']
     except ParseError as e:
         return 'INCOMPLETE', flags + ['MALFORMED'], None, str(e)
     if unt:
@@ -683,6 +714,7 @@ def main(argv=None):
                'disagreements_for_review': [r['unit'] for r in rows if r['class'] == 'DISAGREEMENT'
                                             or 'value-compared:DISAGREEMENT' in r['flags']],
                'coarse_label_rows_not_scored': [r['unit'] for r in rows if 'coarse-label' in r['flags']],
+               'iiiL_scope_unverifiable': [r['unit'] for r in rows if 'iiiL-scope-unverifiable' in r['flags']],
                'licence_cross_family_reproduction_BLIND_tier': licence,
                'note': 'Every DISAGREEMENT is classified (a)-(d) by the reviewer; any non-(a) goes to the human gate. '
                        'Unrecognized keys block the licence until a reviewed syntax-only adapter maps them. '

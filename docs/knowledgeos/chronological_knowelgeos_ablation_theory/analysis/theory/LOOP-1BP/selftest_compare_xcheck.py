@@ -207,7 +207,8 @@ def main():
     # iiiL false out of scope: accepted only when member(H-D) and member(R_B) agree
     c_v = json.load(open(C.CLAUDE_V1B))
     tgt = next((R, F, h) for R in C.READINGS for F in C.FRAMES for h, fl in c_v[R][F]['named'].items()
-               if fl.get('iiiL') is None and fl.get('iiiL_in_scope') is False and fl.get('member(H-D)') is not None)
+               if fl.get('iiiL') is None and fl.get('iiiL_in_scope') is False and fl.get('member(H-D)') is False
+               and fl.get('member(R_B)') is not None)
     rk = ALIAS_R.get(tgt[0], tgt[0]); hk = ALIAS_H.get(tgt[2], tgt[2]); suf = f'{tgt[0]}/{tgt[1]}/named/{tgt[2]}/iiiL'
     r, v = make_p0(); v[rk][tgt[1]]['named'][hk]['iiiL'] = False; x = run(r, v); s1 = ucls(x, suf)
     r, v = make_p0(); v[rk][tgt[1]]['named'][hk]['iiiL'] = False; v[rk][tgt[1]]['named'][hk]['member(H-D)'] = not v[rk][tgt[1]]['named'][hk]['member(H-D)']; x = run(r, v); s2 = ucls(x, suf)
@@ -217,6 +218,29 @@ def main():
     a10 = x['summary']['unrecognized_checker_keys']; ok &= a10 == [] and x['summary']['licence_cross_family_reproduction_BLIND_tier']; print('A10 ignored keys', a10)
     r, v = make_p0(); v['R0']['U']['named']['I7']['designated_for'] = ['R0']; x = run(r, v); a11 = x['summary']['unrecognized_checker_keys']
     ok &= a11 == ['V1b/R0/U/named/I7/designated_for']; print('A11 unknown field recorded', a11)
+    # A9b: out-of-scope decided by coordinates (both memberships true) -> AMBIGUOUS flag, licence blocked
+    tgt = next((R, F, h) for R in C.READINGS for F in C.FRAMES for h, fl in c_v[R][F]['named'].items()
+               if fl.get('iiiL') is None and fl.get('iiiL_in_scope') is False and fl.get('member(H-D)') and fl.get('member(R_B)'))
+    rk = ALIAS_R.get(tgt[0], tgt[0]); hk = ALIAS_H.get(tgt[2], tgt[2]); suf = f'{tgt[0]}/{tgt[1]}/named/{tgt[2]}/iiiL'
+    r, v = make_p0(); v[rk][tgt[1]]['named'][hk]['iiiL'] = False; x = run(r, v)
+    a9b = (x['summary']['iiiL_scope_unverifiable'], x['summary']['licence_cross_family_reproduction_BLIND_tier'])
+    ok &= a9b[0] == [f'V1b/{suf}'] and a9b[1] is False; print('A9b coordinate scope', a9b)
+    # ---- REVIEW-r5 controls: nested collisions, coarse with explicit false, form-body keys ----
+    r, v = make_p0(); rows = r['checks']['K12.1']['result']; items = list(rows.items()); rows.clear(); rows["O3’"] = ['d-only']
+    for k, val in items: rows[k] = val
+    x = run(r, v); b1 = ucls(x, "R5/K12.1/O3'/con-only"); ok &= b1 == ['INCOMPLETE'] and not x['summary']['licence_cross_family_reproduction_BLIND_tier']; print('B1 K12 row collision', b1)
+    r, v = make_p0(); rows = r['checks']['K12.2']['result']; items = list(rows.items()); rows.clear(); rows['U7 '] = ['A7 +act']
+    for k, val in items: rows[k] = val
+    x = run(r, v); b2 = ucls(x, 'R5/K12.2/U7/A7+work'); ok &= b2 == ['INCOMPLETE']; print('B2', b2)
+    r, v = make_p0(); rr = r['checks']['K12.1']['result']; k0 = next(iter(rr)); rr[k0] = {'+act': False, '+act additions': True}
+    x = run(r, v); b3 = sorted(set(w['class'] for w in x['units'] if w['unit'].startswith(f'R5/K12.1/{k0}/'))); ok &= b3 == ['INCOMPLETE']; print('B3 label collision', b3)
+    r, v = make_p0(); rr = r['checks']['K12.2']['result']; rr['U9'] = {'A9': True, 'A9 con-only': False, 'A9 d-only': False}
+    x = run(r, v); b4 = ucls(x, 'K12.2/U9/A9con-only'); ok &= b4 == ['DISAGREEMENT']; print('B4 coarse + explicit false', b4)
+    r, v = make_p0(); d81 = r['checks']['K8.1']['difference_sigma_values']; items = list(d81.items()); d81.clear(); d81['(0,c1)'] = []
+    for k, val in items: d81[k] = val
+    x = run(r, v); b5 = ucls(x, 'K8.1/difference_sigma_values'); ok &= b5 == ['INCOMPLETE']; print('B5 K8.1 o-key collision', b5)
+    r, v = make_p0(); v['R0']['U']['(ii)-S']['holds_U'] = False; x = run(r, v); b6 = x['summary']['unrecognized_checker_keys']
+    ok &= b6 == ['V1b/R0/U/(ii)-S/holds_U']; print('B6 form-body key', b6)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 
