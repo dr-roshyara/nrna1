@@ -3036,3 +3036,15 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - Once interpretation and format are resolved, there is no discrepancy in any value, count or set.
 - **Within-family only.** A comparator defect is recorded and not repaired (`COMPARISON-WF-SONNET/REVIEW-STEP-C.md`).
 - **Human gate:** accept the (c) classifications.
+
+## F-LOG-0242 — **Human act (2026-10-07): accept the (c) classifications of F-LOG-0241, and fix the comparator first.** Comparator r12
+- **Ruling.** The bundle-02 within-family result is recorded: BLIND 42/42 agree. G1 (34), G2 (5) and G3 (1) are accepted as (c). No substantive discrepancy; within-family only; no theory change.
+- **Spec ambiguities noted for future specs:**
+  - whether K4b's H-D⁺ is base or reading-relative;
+  - what a witness means for composite checks.
+
+  The frozen bundles are unchanged.
+- **Comparator r12** (`compare_xcheck.py` `4bf9d2cb…`, selftest `9b9434bf…` PASS, with Z1 added).
+  - Change: the anyof role extraction also takes histories nested as `{h, slot}`. It is otherwise unchanged.
+  - Re-run on the Sonnet return (`COMPARISON-WF-SONNET-r12/`): the K10.5 witness becomes AGREEMENT; the 39 other disagreements (G1, G2) are unchanged.
+  - Made before any non-Claude return exists. Review pending.

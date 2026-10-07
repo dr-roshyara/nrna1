@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r11).
+"""Cross-family cross-check comparator (PREREG.md + PREREG-ADDENDUM-01 r12).
 
 Committed before any return exists. It encodes the unit set, the canonicalization,
 the result classes, the exposure tiers and the licence rule.
@@ -509,7 +509,9 @@ def build_units(c5, cv, cs, k5, kv, unrecognized):
         if w is None:
             units.append(Unit(f'R5/{key}/witness', 'EXPOSED', False, None, kw, 'hist'))
         else:
-            roles = [h for h in w.values() if isinstance(h, dict) and 'sigma' in h]
+            # r12 (human act F-LOG-0242): also take histories nested as {'h': <history>, 'slot': ...}
+            roles = [h for h in w.values() if isinstance(h, dict) and 'sigma' in h] + \
+                    [h['h'] for h in w.values() if isinstance(h, dict) and isinstance(h.get('h'), dict) and 'sigma' in h['h']]
             units.append(Unit(f'R5/{key}/witness', 'NONLICENSING', False, roles, kw, 'anyof'))
         if key == 'K8.1':
             units.append(Unit('R5/K8.1/difference_sigma_values', 'EXPOSED', True,  # REVIEW-r9: plausibly derivable

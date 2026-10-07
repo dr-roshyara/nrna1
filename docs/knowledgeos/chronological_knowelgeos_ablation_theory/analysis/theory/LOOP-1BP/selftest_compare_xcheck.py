@@ -278,6 +278,12 @@ def main():
     y8b = [tier.get('V1b/R-d/U/(iii)-L/holds'), tier.get('V1b/R-g/U/(ii)-S/least_counterexample', 'BLIND')]
     ok &= y8 == ['EXPOSED'] and y8b == ['EXPOSED', 'BLIND']; print('Y8 r11 tiers', y8, y8b)
     y6 = sorted({u['unit'].split('/')[1] for u in x['units'] if u['tier'] == 'BLIND' and u['unit'].startswith('V1b/')}); print('Y6 readings with BLIND V1b form units', y6)
+    # r12: K10.5-type nested {h, slot} witness role is matched
+    c5 = json.load(open(C.CLAUDE_R5)); w = c5['checks']['K10.5']['witness_or_counterexample']
+    nested = [h['h'] for h in w.values() if isinstance(h, dict) and isinstance(h.get('h'), dict)]
+    if nested:
+        r, v = make_p0(); r['checks']['K10.5']['least_witness_or_counterexample'] = nested[0]
+        x = run(r, v); z = ucls(x, 'R5/K10.5/witness'); ok &= z == ['AGREEMENT']; print('Z1 nested {h,slot} role matched', z)
     print('SELFTEST', 'PASS' if ok else 'FAIL')
     sys.exit(0 if ok else 1)
 
