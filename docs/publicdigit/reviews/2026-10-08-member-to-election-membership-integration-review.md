@@ -142,3 +142,5 @@ Canonical discovery for the Membership Domain Discovery plan (`docs/plans/202610
    It remains dormant. The proposed note on `PBDIGIT-68` should cite EM-FM-003/004, EM-EO-004 and FM-5.
 3. **I-4** duplicates **FM-15** (reachability), which is already registered. **I-5 / G8** relates to EM-FM-006 and FM-14.
 4. My statement that the standing-vs-entitlement question was "decided by F1 alone" (plan §3 C-1) was **too coarse**. The correct input is **F1 as refined by D-ENT-2** (the existence/exercisability split).
+
+**Correction 2 (2026-10-08, additive):** §6 said "no new ID; all owned" but missed **`PBDIGIT-221`** (*Add organisation members as voters of an election*; OPEN, not authorised), which owns **registration** of members as voters. I-2's recommendation (route through `BulkAssignVotersHandler`) is a matter for 202 and 221 jointly. See `2026-10-08-e0a2-membership-discovery.md` §3.1.

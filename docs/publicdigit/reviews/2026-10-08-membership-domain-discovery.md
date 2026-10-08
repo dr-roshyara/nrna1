@@ -226,3 +226,7 @@ Plan Phases E–J correspond to the outline's §8–23: lifecycle, authorities, 
 | My 2026-10-08 integration review understated D-ENT-2 | **Documentation:** corrected additively (that review §8) |
 
 **Traceability:** plan `20261008-0008` · `ELECTION_MANIFESTO.md` §1, §2, §5, §6 (`:93-105`, `:347-363`) · `2026-08-12-arb-package-membership-hierarchy-refinement.md` §1, §7 · `2026-08-12-election-only-first-governance-baseline.md:81-95` · `PBDIGIT-68` · ADR_20261004_1549 · ADR-F3.2/F3.3 · `docs/membership/20260403_0006_business_case_of_membership_management.md:7-100` · `PBDIGIT-EPIC-02` (05/06/08) · `EloquentMemberRepository.php:38-71` · `MembershipTypeController.php:52-65` · `MemberController.php:192-207, :309, :338` · `VoterImportService.php:183, :293-312` · review `2026-10-08-member-to-election-membership-integration-review.md`.
+
+---
+
+**Correction (2026-10-08, additive; text above unchanged):** §6 item 1 called "an approved member can never be an eligible voter" a defect and cited `fees_status` left `unpaid`. **Unpaid-at-approval is intentional and tested** ("Path A": approve → unpaid → *mark paid* → eligible; `tests/Feature/Membership/ApplicationApprovedToVoterEligibilityTest.php`). The test passes because its fixture sets `grants_voting_rights => true`. The actual product blocker is **no product writer of `grants_voting_rights`** (IERVP-2), plus the broken fee recording (`PBDIGIT-209`). See `2026-10-08-e0a2-membership-development-report.md` §0.2.
