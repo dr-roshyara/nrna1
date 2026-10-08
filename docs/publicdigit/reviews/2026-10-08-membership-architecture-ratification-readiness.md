@@ -478,3 +478,14 @@ As E0b §17, with these changes:
 ---
 
 **STOP.** Nothing implemented, migrated, refactored or committed in this phase. Scripts (research aids) are in the session scratchpad: `ratify.py` → `ratify4.py` (the property definitions were refined twice; the earlier versions over-counted and were corrected before the results were recorded).
+
+---
+
+**Correction (final closure pass, 2026-10-08; additive):**
+- The verdict is reclassified to **CONDITIONALLY RATIFIABLE**: the mandatory business decisions are not adopted, and two of them condition D1 minimality and the EM-VOC-001 wording.
+- **New assumption NE** (non-empty lifetimes): without it, supersede-by-trim can require a split (52 / 300,000 random histories).
+- `status` is withdrawn as stored state (derived classification only).
+- Annul and Void are merged into `Invalidate{ground}`.
+- The g2 consequence is recorded on the triggering fact; recording needs a total order (seq).
+
+See `2026-10-08-membership-architecture-final.md`.
