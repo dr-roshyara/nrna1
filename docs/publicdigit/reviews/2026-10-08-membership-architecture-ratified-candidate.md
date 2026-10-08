@@ -183,3 +183,10 @@ F_τ     = { f : recordedAt(f) ≤ τ }   (and seq-prefix for intra-τ states)
 - Both are **parameterised here** (§7, §4), so neither forces a redesign.
 - The others are parameterised variation points or business-only (DRF §3).
 - **Architecture confidence: high.** Business closure is pending.
+
+---
+
+**Superseded as the reference (2026-10-08, additive)** by `2026-10-08-membership-architecture-ratified.md`. Changes:
+- a counterexample: an independent Trim loses membership when its cause is annulled (1,903 / 200,000; scenario F). Fixed by "consequence follows cause" (CFC); "Annul Trim" is removed;
+- three-valued predicates are withdrawn (import-time normalisation instead);
+- D1 is justified by the g1/g2/CFC atomicity, conditional on BD-I5 + BD-SYNC.
