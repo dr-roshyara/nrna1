@@ -648,3 +648,7 @@ Person (Identity)                                   Organisation / Governance (a
 ---
 
 **STOP.** Nothing implemented, migrated or committed. Scripts are in the session scratchpad (`final.py`, `final2.py`; research aids).
+
+---
+
+**Correction (ratification-readiness review, 2026-10-08; additive):** the Q-ANNUL-RE recommendation "merge = **void** the later period" (§7, §17, §24, §29) is **falsified**. It loses membership the later period legitimately provided (782 / 444,604 histories; e.g. Admit → End → re-Admit → Correct the End later), and it misuses Void. It is replaced by **supersede-by-trim (M′)** or **refuse (R)**: both keep INV-9 with 0 losses, and no PeriodId is ever rewritten (INV-14). Provenance gains a `rule` variant. See `2026-10-08-membership-architecture-ratification-readiness.md`.
