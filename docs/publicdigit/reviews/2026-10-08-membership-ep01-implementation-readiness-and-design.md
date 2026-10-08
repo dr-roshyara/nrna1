@@ -1,7 +1,7 @@
 # EP-01: Membership Implementation Readiness and Design
 
 **Date:** 2026-10-08 · **Raised by:** `claude-code-session:42e0287e…` (self-declared, not attestable)
-**Status:** DESIGN, **for PO / Principal Reviewer approval**. It implements nothing and authorises nothing. No production code, migration, model, ADR or ratified decision is changed by it.
+**Status:** DESIGN, **Rev 1** after the principal design review (`2026-10-08-membership-ep01-principal-design-review.md`; recommended classification **B: APPROVED WITH CONDITIONS**), **for PO / Principal Reviewer approval**. It implements nothing and authorises nothing. No production code, migration, model, ADR or ratified decision is changed by it.
 **Baseline:** the ratification act `2026-10-08-membership-architecture-ratification-act.md` (with recorder's notes N-1…N-6) and the ratified set: **MA** = `…-membership-architecture-ratified.md`, **FP** = `…-membership-final-proof.md`, **FDR** = `…-membership-final-decision-register.md`, **FIB** = `…-membership-final-implementation-blueprint.md`, **FV** = `…-membership-final-ratification-verdict.md`.
 **Evidence method:** read-only repository inventory on 2026-10-08, covering the legacy Membership context, the integrations, and the tests and backlog. Every claim in §3 carries a `path:line` reference. Nothing was run.
 
@@ -26,7 +26,7 @@
 - **No contradiction with the ratified architecture was found.** Six collisions and ownership questions were found; they are recorded in §3.9 and §22, not as architecture conflicts.
 - **Readiness verdict (§23):**
   - **READY for implementation of Slices 0–3** (foundation, aggregate core, Admit / End, resolution and predicates) once this design is approved, a story ID exists and the sequencing act is issued.
-  - **Later slices are gated** by named business, downstream and tenancy decisions (§17, §19).
+  - **Later slices are gated** by named business and downstream decisions (§17, §19). The tenancy question was closed by evidence in Rev 1.
 
 ## 2. Ratified baseline (what EP-01 must preserve)
 
@@ -151,7 +151,7 @@ There are 29 architecture tests, all plain PHPUnit file-scanning tests (no Pest 
 | C-1 | **"Membership" in legacy code means committee membership**: `MembershipLineage` is "a member's relationship with a committee"; `MembershipSuspended` / `Terminated` / `Restored` are committee events | `Domain/Membership/MembershipLineage.php:36` | the target namespace avoids the bare word `Membership*` for organisation-membership classes that legacy already uses; committee code moves to Governance / Committee (separate track, §13) |
 | C-2 | **The canonical aggregate name `Member` is already taken** by M-D (a status aggregate) | `Domain/Member/Member.php:19` | the new aggregate lives in a new namespace and keeps the canonical name (§4). M-D is deprecated after cutover |
 | C-3 | **The Fee aggregate and `FeePaid` are inside Membership**; the ratified act and FIB make fees Finance's | `Domain/Fee/*`; note N-5 | **Move to Finance** (DS-1 / DS-5); Membership consumes the evidence for Standing |
-| C-4 | **Two physical `members` tables** (default vs `tenant` connection) | M-B :62 | a persistence / tenancy decision (EP-Q1) before Slice 1 persistence |
+| C-4 | ~~Two physical `members` tables~~ **Rev 1 (R1): wrong.** The `tenant` connection does not exist (`config/database.php`), so M-B's connection code is dead | M-B :63; review §12 | new tables on the **default connection**, `organisation_id NOT NULL`, explicit `TenantId`; never add a `tenant` connection (it would revive dead paths) |
 | C-5 | Election reads Membership tables, and a test asserts it | §3.5 | published query port + an Election-side adapter + parity tests; changing the test needs the Election owner's approval (DS-2) |
 | C-6 | `ADR-004` lists Membership as a "Candidate" context | `docs/publicdigit/adr/ADR-004-Strategic-Context-Boundaries.md` | governance housekeeping (the ADR is not changed here) |
 
@@ -166,7 +166,7 @@ There are 29 architecture tests, all plain PHPUnit file-scanning tests (no Pest 
 | Invariants | DB UNIQUE / CASCADE only | INV set in G\* | all | BD-REV-ER (for ER) |
 | Commands | 7 creation paths, use cases on M-D | 9 commands (§15) | all | BD-CONSENT / LQ-1 (Admit), BD-3 / LQ-3 (End kinds) |
 | Authorization | `MembershipPolicy` (role owner / admin), unregistered | AuthorityCheck port + recorded evidence | port + interim adapter | **DS-4** |
-| Persistence | `members` (+ tenant copy) | `members_v2`-style new tables (§10) | all | **EP-Q1 tenancy / connection** |
+| Persistence | `members` (one table; the tenant copy is dead code) | new tables on the default connection (§10) | all | ~~EP-Q1~~ closed by evidence (Rev 1, R1) |
 | Concurrency | none (`lock_version` only on applications) | expected version + re-evaluate | all | — |
 | APIs | controllers per legacy path | command / query handlers | all | — |
 | Read models | stored columns | projections from facts | all | — |
@@ -285,7 +285,7 @@ classDiagram
 | **Void** | the record never reflected reality | target; reason; actor (registrar) | — | any live fact | target live; Annul(Void) not allowed (use Void(Void)) | as Annul |
 | **Correct** | replaces a wrongly recorded value | target; the corrected value (same shape as the target's value) | decidedAt (if decided) | value-bearing fact or Correct; **never** Annul / Void; annulled target: inert; voided target: refused | — | CFC+, INV-COV; **may carry consequences** |
 
-No other fact kind is introduced. Ex nunc annulment (if LQ-2 requires it) is `End(kind=annulled_ex_nunc)`.
+No other fact kind is introduced. **Rev 1 (R2):** ex-nunc annulment is **not** in the implementation baseline. It is not ratified; LQ-2 is OPEN, and no `annulled_ex_nunc` EndKind is implemented.
 
 ## 7. Resolution design (pure, deterministic)
 
@@ -343,7 +343,7 @@ COMMIT         repository.append(f⁺, expectedVersion)         (§9)
 | expected version | the version read at load; carried through `decide` |
 | transaction boundary | one command = one DB transaction: version check + fact rows + consequence rows + outbox rows |
 | optimistic lock | `UPDATE … SET version = v+1 WHERE id = ? AND version = v`; 0 rows → `ConcurrencyConflict` |
-| conflict handling | the application handler **reloads, re-runs authority-independent `decide` (guards + g2 + G\*)** and re-commits. Bounded (3 attempts); then `Refused(ConcurrentModification)` |
+| conflict handling | **Rev 1 (R3):** the application handler **reloads, re-runs the AuthorityCheck, the guards, g2 (recomputing f⁺) and G\***, then re-commits. It never reuses the stale f⁺: a re-check alone would have committed 10,005 / 206,590 simulated conflicts that must be refused (review §17). Bounded (3 attempts); then `Refused(ConcurrentModification)` |
 | consequence recomputation | mandatory: f⁺ is recomputed from the reloaded state. A stored f⁺ is never reused |
 | creation race | `UNIQUE(organisation_id, person_ref)` on the aggregate table. The loser reloads the existing Member and re-decides |
 | idempotency | `UNIQUE(member_id, idempotency_key)`. A retry with the same key returns the original outcome without a new fact |
@@ -364,10 +364,9 @@ New tables. The legacy `members` is **not** renamed or altered by the new model;
 | Table | Columns (key ones) | Keys / constraints | Class |
 |---|---|---|---|
 | `org_memberships` (aggregate) | `id` uuid PK · `organisation_id` · `person_ref` (users.id) · `membership_number` nullable · `version` int · `created_at` | UNIQUE(organisation_id, person_ref); UNIQUE(organisation_id, membership_number) WHERE NOT NULL (BD-NU = per organisation); FK organisation **RESTRICT**; **no cascade** from affiliation | authoritative (identity + number) |
-| `org_membership_facts` | `id` uuid PK · `membership_id` · `organisation_id` · `seq` · `kind` · `period_id` · `target_fact_id` · `effective_at` · `effective_precision` · `decided_at` · `recorded_at` · `payload` jsonb (value) · `provenance` jsonb · `idempotency_key` | UNIQUE(membership_id, seq); UNIQUE(membership_id, idempotency_key); FK membership RESTRICT; FK target → facts; index (organisation_id, kind) | **authoritative**; append-only (no UPDATE / DELETE in code; optional DB rule as a safety net) |
-| `org_membership_fact_consequences` | `fact_id` · `period_id` · `from` · `until` | PK(fact_id, period_id, from) | **authoritative** (part of f⁺) |
-| `org_membership_periods_view` | `period_id` · `membership_id` · `organisation_id` · `lifetime_from` / `until` · `in_force_today` · `current_type` · … | rebuildable | **derived** (projection) |
-| `org_membership_timeline_view` | per-fact display rows | rebuildable | **derived** |
+| `org_membership_facts` | `id` uuid PK · `membership_id` · `organisation_id` · `seq` · `kind` · ~~`period_id`~~ (Rev 1, R5: derived; removed) · `target_fact_id` (the period's Admit id for period facts; the target for reversals) · `consequences` jsonb + `g2_version` (Rev 1, R4) · `effective_at` · `effective_precision` · `decided_at` · `recorded_at` · `payload` jsonb (value) · `provenance` jsonb · `idempotency_key` | UNIQUE(membership_id, seq); UNIQUE(membership_id, idempotency_key); FK membership RESTRICT; FK target → facts; index (organisation_id, kind) | **authoritative**; append-only (no UPDATE / DELETE in code; optional DB rule as a safety net) |
+| ~~`org_membership_fact_consequences`~~ | **Rev 1 (R4): removed.** Consequences are jsonb on the fact row (immutable with the fact) | — | — |
+| `*_view` projections | **Rev 1 (R7): deferred** until a list query is measured to need them (Slice 3 evidence) | rebuildable | **derived** |
 | `membership_types` | KEEP (catalogue) | — | reference data |
 | `outbox_events` | REUSE (Shared) | — | integration |
 
@@ -380,9 +379,13 @@ New tables. The legacy `members` is **not** renamed or altered by the new model;
 **Implementation decisions recorded here (not business):**
 - **EP-I1, effective time representation:** date vs instant. Recommendation: date (membership acts are dated), plus a tenant time zone for instant-valued inputs.
 - **EP-I2, table names:** the names above are placeholders.
-- **EP-I3, consequences as a child table vs jsonb:** recommendation: child table, which Finance events can query.
+- **EP-I3, consequences as a child table vs jsonb:** **Rev 1 (R4): jsonb on the fact row**, with the g2 / policy version stored. Finance reads trims from the RA-12 events.
 
-**Blocking question EP-Q1 (C-4):** which connection / database holds the new tables? The legacy model has a landlord `members` and a `tenant`-connection copy. This needs the tenancy owner's answer, linked to PBDIGIT-211.
+**EP-Q1 (C-4): closed by evidence (Rev 1, R1, R14).**
+- **Decided rule:** one database with `organisation_id` row scoping (`CLAUDE.md:30-33,75-78`); no `tenant` connection exists.
+- **New tables:** on the default connection, `organisation_id NOT NULL`.
+- **No implicit scope:** repositories and queries take the shared `TenantId` explicitly; no reliance on `BelongsToTenant`; a fitness test forbids `withoutGlobalScopes()` in the new infrastructure.
+- **Workers:** projection and outbox workers take an explicit tenant parameter until PBDIGIT-211 is decided.
 
 ## 11. Authorization design
 
@@ -392,7 +395,10 @@ New tables. The legacy `members` is **not** renamed or altered by the new model;
   - the result becomes `AuthorityEvidence` on the fact;
   - a refusal stops the command;
   - Membership stores the evidence and never decides competence.
-- **Interim adapter (until DS-4):** `OrganisationRoleAuthorityCheck` reproduces today's rule (`user_organisation_roles.role ∈ {owner, admin}`), with `ruleRef = 'interim:org-role'`. This keeps the evidence honest: it records which rule was applied, not a claim of statutory competence.
+- **Interim adapter (until DS-4):** `OrganisationRoleAuthorityCheck` reproduces today's rule (`user_organisation_roles.role ∈ {owner, admin}`).
+  - **Rev 1 (R12):** the evidence records `capacity = application_role:<role>`, `ruleRef = interim:org-role` and `competenceVerified = false`. It means a *technical application role*, not statutory competence.
+  - Facts recorded under it are never relabelled.
+  - It is replaced in Slice 9.
 - **Declarations** (BD-CONSENT / LQ-1): required on decision-Admit unless the provenance is rule or attested.
 
 ## 12. Integration contracts
@@ -401,8 +407,8 @@ New tables. The legacy `members` is **not** renamed or altered by the new model;
 |---|---|---|---|
 | **Identity** | `PersonRef` (users.id today) | Identity → Membership | equivalence and merge are owned by Identity (DS-3); Membership applies an explicit merge act later; never infers |
 | **Governance** | `AuthorityCheck::check(actor, act, organisation, asOf) → AuthorityEvidence` | Membership → Governance (port) | interim adapter §11 |
-| **Election** | **`MembershipQueryPort`** (published language): `isMember(person, org, asOf)`, `isSuspended(…)`, `currentType(…)`, `membersInForce(org, asOf) → [person, type]` | Election → Membership (query) | **no entitlement, no fee logic.** Election keeps its own eligibility predicate. The fee condition comes from Finance / Standing (DS-5); `grants_voting_rights` is read as a type classification (BD-GVR). Election-Only does not call the port |
-| **Finance** | Finance owns `FeePaid` / settlement. **Membership consumes** Finance's published fee evidence for Standing (E0b-S). Membership publishes `PeriodOpened`, `PeriodEnded`, `PeriodTrimmed`, `TrimRevived`, `FactAnnulled` / `Voided` / `Corrected` | both ways via outbox | requires relocating the legacy Membership Fee aggregate (C-3; DS-1) |
+| **Election** | **`MembershipQueryPort`** (published language; **Rev 1**: takes an organisation-calendar **date**; Election converts its instants): `isMember(person, org, date)`, `isSuspended(…)`, `currentType(…)`, `membersAt(org, date) → [person, type, suspended]` | Election → Membership (query) | **no entitlement, no fee logic.** Election keeps its own eligibility predicate. The fee condition comes from Finance / Standing (DS-5); `grants_voting_rights` is read as a type classification (BD-GVR). Election-Only does not call the port |
+| **Finance** | Finance owns `FeePaid` / settlement. Membership **may later** consume Finance's standing evidence (DS-5; **not** in the first implementation). **Rev 1 (R6):** Membership publishes only RA-12 events (`FactAnnulled` / `Voided` / `Corrected`, `PeriodTrimmed`, `TrimRevived`, End, Suspend), each only when a consumer slice exists. ~~`PeriodOpened`, `PeriodEnded`~~ removed | both ways via outbox | requires relocating the legacy Membership Fee aggregate (C-3; DS-1) |
 | **Audit** | Membership publishes `MembershipFactRecorded` (fact id, kind, period, times, provenance summary, refs only) via the outbox; Audit projects | Membership → Audit | no shared tables; ADR-T11 is not touched (no vote data) |
 
 **Election migration path:**
@@ -449,6 +455,10 @@ Steps 1 and 4 change Election infrastructure (not semantics), so they **need the
 3. Import attested facts through the same G\*. Overlaps are reported and never auto-trimmed.
 4. Parity check of predicates against legacy.
 5. Cutover flag: the new model becomes authoritative and legacy turns read-only.
+   - **Rev 1 (R10):** a **single-writer reverse projection** keeps the legacy `members` row current as a *derived* read model for the 23 legacy reader files until they are ported.
+   - A **write guard** blocks every legacy write path for cut-over organisations, **including query-builder mass updates** (`ExpireMemberships.php:19` bypasses model events).
+   - The organisation's writes are **frozen during its migration window**.
+   - Rollback = flip the flag back.
 6. Later, legacy retirement.
 
 Migration never invents dates, authority or consent.
@@ -531,7 +541,10 @@ Capabilities (no visual design yet; the design system rules apply):
 | DS-1 / DS-5 | Fee relocation to Finance; standing source; fees for trimmed periods | Finance owns Fee; Membership consumes evidence | C-3 | Slices 11, 10 | YES, Slices 10–11 | Finance + PO |
 | DS-2 | Election adapter + replacing the convergence test | §12 path | C-5 | Slice 10 | YES, Slice 10 | Election owner |
 | DS-3 | person equivalence / merge | explicit merge act later | — | — | NO | Identity |
-| **EP-Q1** | which connection / database holds the new tables (landlord vs tenant)? | the connection on which `organisation_id` tenancy is enforced today for `members` (landlord), unless the tenancy ADR says otherwise | C-4; scheduled jobs (PBDIGIT-211) | Slice 1 persistence | **YES, Slice 1 persistence** (the pure domain in Slice 0 is not blocked) | Tenancy owner / ARB |
+| ~~EP-Q1~~ | **closed by evidence (Rev 1, R1):** default connection, `organisation_id` rows, explicit `TenantId` | — | — | — | NO | (a tenancy ADR is optional governance housekeeping) |
+| EP-Q4 (Rev 1, R11) | who owns the legacy `members.personal_info`, `residence_geo_unit_id` and `newsletter_*` columns? | person / affiliation / communication contexts; never the Member aggregate | otherwise they are orphaned at retirement | Slice 13 | YES, Slice 13 | PO |
+| EP-Q5 (Rev 1, R13) | may a membership number ever be reassigned? | no fact in the ratified algebra changes it, so it is assigned once | a number change would need a new fact (ratification) | Slice 6 | NO (assign-once implemented) | PO / Principal Reviewer |
+| EP-Q6 (Rev 1) | is any intra-day membership semantics required? | no (effectiveAt = organisation calendar date) | the date representation (EP-I1) | Slice 1b / 2 | YES, Slice 1b | PO |
 | EP-Q2 | committee code relocation (C-1) | separate Governance / Committee track | naming collision, ~60 tests | not Membership slices | NO | Governance + PO |
 | EP-Q3 | coexistence: may legacy writes continue for organisations not yet cut over? | yes; per-organisation cutover flag; **no dual-write** | transition safety | Slice 13 | YES, Slice 13 | PO |
 
@@ -539,8 +552,9 @@ Capabilities (no visual design yet; the design system rules apply):
 
 | # | Slice | Content | Why this position |
 |---|---|---|---|
-| 0 | Domain foundation | value objects, `Interval`, Fact types, `Resolution` (pure), predicates, G\* + InvariantSet, ConsequenceGenerator; property harness. **No DB** | everything depends on it; pure PHP, no open decisions |
-| 1 | Persistence + concurrency | new tables, repository, version / seq / idempotency / outbox, append-only. **Concurrency is here, not in slice 8** (ratified requirement) | the fact store is unsafe without it; needs EP-Q1 |
+| 0 | Semantic kernel (**Rev 1, R8**) | value objects, `Interval`, the Admit / End facts, the full-shape Resolution pipeline, predicates, InvariantSet + G\*, a seeded generator. **ConsequenceGenerator moves to Slice 7.** No Laravel, no repository | everything depends on it; pure PHP, no open decisions |
+| 1a | Repository contract + concurrency (**Rev 1, R9**) | repository port, in-memory repository, version / seq / idempotency semantics, conflict re-decide contract tests | concurrency is a ratified requirement; no DB needed |
+| 1b | DB mechanics (**Rev 1, R9**) | tables on the default connection, constraints, transaction, outbox, append-only | needs the organisation time zone usable + EP-Q6 |
 | 2 | Admit + End | AdmitMember, EndMembership, interim AuthorityCheck, EndKinds | the lifecycle core; needs BD-CONSENT, BD-REC0, BD-3 |
 | 3 | Queries | GetMember / Timeline / History / KnownAt; projections | makes slices 1–2 observable |
 | 4 | Renew + ChangeType | term and type segments | needs BD-TYPE |
@@ -570,7 +584,8 @@ Capabilities (no visual design yet; the design system rules apply):
 | Slice | Additionally ready when |
 |---|---|
 | 0 | — |
-| 1 | EP-Q1 answered; EP-I1 / I2 / I3 accepted |
+| 1a | — |
+| 1b | EP-Q6; the organisation time zone usable; EP-I1 / I2 accepted |
 | 2 | BD-CONSENT / LQ-1, BD-REC0, BD-3 (or an interim End-kind list accepted by the PO); the interim authority adapter accepted |
 | 3 | slices 1–2 done |
 | 4 | BD-TYPE |
@@ -582,7 +597,7 @@ Capabilities (no visual design yet; the design system rules apply):
 | 10 | DS-2 (Election owner), BD-GVR, DS-5 |
 | 11 | DS-1 / DS-5 |
 | 12 | — |
-| 13 | BD-NORM, EP-Q3, dry-run reports reviewed |
+| 13 | BD-NORM, EP-Q3, EP-Q4, the R10 mechanisms (reverse projection, a write guard incl. mass updates, a per-org write freeze), dry-run reports reviewed |
 | 14 | the relevant command / query slices; design-system check |
 | 15 | every organisation cut over |
 
@@ -619,7 +634,7 @@ Capabilities (no visual design yet; the design system rules apply):
 
 | Risk | Mitigation |
 |---|---|
-| legacy and target diverge during the transition | per-organisation cutover; no dual-write; parity tests |
+| legacy and target diverge during the transition | per-organisation cutover; no dual-write; **single-writer reverse projection + a write guard incl. mass updates (Rev 1, R10)**; parity tests |
 | Election behaviour change through the adapter | parity tests on real (migrated) organisations; owner approval |
 | tenancy outside HTTP (PBDIGIT-211) breaks jobs / projections | EP-Q1 + explicit TenantId in commands and projections |
 | ~60 committee tests entangled with Membership | a separate relocation track; do not touch in Membership slices |
@@ -634,7 +649,10 @@ EP-Q1 (tenancy / connection) · EP-Q2 (committee relocation) · EP-Q3 (coexisten
 
 ## 23. Final readiness verdict
 
-**READY FOR EP-01 APPROVAL.** On approval, **Slices 0–3 can start** (Slice 0 immediately; Slice 1 after EP-Q1; Slice 2 after BD-CONSENT / LQ-1, BD-REC0 and BD-3 or an interim End-kind list), once a story ID and the sequencing act exist.
+**READY FOR EP-01 APPROVAL (Rev 1).** The principal design review recommends **B: APPROVED WITH CONDITIONS**.
+- **Once a story ID and the sequencing act exist:** Slice 0 and Slice 1a can start.
+- **Slice 1b:** after EP-Q6 and the organisation time zone is made usable.
+- **Slice 2:** after BD-CONSENT / LQ-1, BD-REC0 and BD-3 (or an interim End-kind list).
 
 **Gated:**
 - Slice 7 by **BD-REV-ER**;
