@@ -85,3 +85,10 @@ python3 -I docs/publicdigit/membership/architecture/models/g2_ledger_falsify.py 
 | M5 | separation of duties | 7 / 16 role assignments allow a single-person payment |
 
 Membership enters only as given Admit / End intervals, so the kernel filter is not needed. Details: `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md` §7 and §11.
+
+## Revision 4 (2026-10-09): synthesis
+
+All models are registered, with what they do and do not establish, in `docs/publicdigit/reviews/2026-10-09-membership-theory-synthesis-and-implementation-readiness-audit.md` §B.2. The same document records a mutation measurement of the Slice 0 kernel (§B.3):
+- MSI 83 %; covered-code MSI 92 %;
+- every surviving mutant classified;
+- the `continue → break` mutant at `Resolution.php:29`, reported as "uncovered", was killed by 11 tests when run directly.
