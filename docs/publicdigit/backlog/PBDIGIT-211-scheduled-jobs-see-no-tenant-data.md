@@ -49,6 +49,32 @@
 - With two tenants and no ambient tenant, each of the four tasks acts on **both** tenants' data and on nothing else.
 - A tenant-scoped query without a tenant never silently returns another organisation's rows, nor silently nothing.
 
+## Addendum (2026-10-09, PO-approved scope clarification): event consumers on the relay path
+
+> **Additive.** The original text, status, epic and acceptance criteria above are unchanged. **The ARB decision (tenant-context model for non-request execution) remains PENDING.** Nothing here chooses a mechanism. The ARB questions Q1–Q7 are in `docs/publicdigit/reviews/2026-10-09-adjudication-remediation-gate.md` §5.
+
+- **Finding T-1** (`docs/publicdigit/reviews/2026-10-09-adjudication-programme-status-recovery.md` §1; evidence chain in the remediation-gate report §2):
+  - The outbox / inbox relay runs from the scheduler (`routes/console.php:55` `outbox:process`, `:58` `inbox:redrive`, every minute).
+  - It reads every organisation's events (correct: `OutboxEvent` has no tenant scope) and carries each event's `organisation_id` into the inbox (`IntegrationEventDispatcher.php:69`). **It never establishes it as the tenant context.**
+  - Correction-loop consumers call `TenantContext::require()` (e.g. `EloquentAdjudicationProcessStore.php:58,150`; the outbox adapters), which throws `RuntimeException('Tenant context not set')`.
+  - The inbox does not classify that exception (`InboxExecutionEngine.php:46-77`), so it rolls back. The outbox retries and marks the row `failed` after 5 attempts (`OutboxEventProcessor.php`).
+  - Loop integration tests set the tenant in `setUp`, which masks the defect.
+- **Same root cause as the four jobs; different failure mode.** The jobs silently act on an empty set; consumers fail transiently and end as `failed` outbox rows.
+- **Accepted rule affected:** ADR-MP dispatcher invariant "tenant propagation / isolation" (`docs/adr/ADR-MP-Messaging-Platform.md:68`); ADR-MP-04 "must never cross tenants".
+- **Evidence status:** static (code reading). **Runtime confirmation: see the remediation-gate report §10.6** (isolated characterisation test RT; §4 holds only the test design). *(Pointer corrected 2026-10-09.)*
+  **Update 2026-10-09 (runtime):** confirmed on the dedicated test database `nrna_test_adjudication` by `tests/Feature/Contexts/Shared/Messaging/RelayTenantContextTest.php`. RT-1 / RT-3 fail with `Tenant context not set`. **RT-4 shows a cross-tenant write when an ambient tenant is present** (an event of organisation A processed under B), which is direct evidence for AC-R4 and ARB Q3. Details: remediation-gate report §10.6.
+- **Scope added to the pending ARB question:**
+  - (a) the relay and inbox redrive;
+  - (b) every inbox handler;
+  - (c) outbox writes made inside a consumer (e.g. Election writing `ElectionCorrectionApplied`).
+- **Acceptance criteria added** (in addition to the two above):
+  - **AC-R1:** with two organisations and no ambient tenant, the relay delivers each organisation's event, and each consumer's writes carry that event's `organisation_id` only.
+  - **AC-R2:** after each message, success or failure, the ambient tenant equals its value before the message.
+  - **AC-R3:** a message whose `organisation_id` names no existing organisation is processed under no tenant and is not silently dropped. Its classification is for the ARB to decide (gate report §5 Q4).
+  - **AC-R4:** a message is never processed under a tenant other than its own `organisation_id`.
+- **Still out of scope:** queue-driver behaviour; the request-time scope (65 / 69).
+- **Interaction:** an Election rejection classification defect (T-3) is masked by this one; ownership was proposed separately (gate report §6).
+
 ## Dependencies / required authority
 
 **1. ARB:** the tenant-context model for non-request execution (scheduled, console, queued, consumers). **2. PO** authorisation of this story once that is decided.
