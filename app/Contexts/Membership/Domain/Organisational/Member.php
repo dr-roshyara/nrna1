@@ -71,6 +71,17 @@ final readonly class Member
         return Resolution::of($this->facts());
     }
 
+    /**
+     * What was known at instant τ: Resolution over the facts recorded up to τ.
+     * A prefix of the log, because recordedAt does not decrease along seq (INV-14).
+     */
+    public function knownAt(Instant $tau): ResolvedMember
+    {
+        $known = array_filter($this->log, static fn (RecordedFact $r): bool => !$r->recordedAt()->isAfter($tau));
+
+        return Resolution::of(array_values(array_map(static fn (RecordedFact $r): Fact => $r->fact(), $known)));
+    }
+
     public function decideAdmit(FactId $id, TimePoint $effectiveAt, ?TimePoint $initialTermUntil, Provenance $provenance, ?Instant $decidedAt = null): Decision
     {
         if ($this->usesFactId($id)) {

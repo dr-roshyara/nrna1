@@ -23,6 +23,11 @@ final readonly class ResolvedPeriod
         return $this->id;
     }
 
+    public function start(): TimePoint
+    {
+        return $this->baseClaim->start();
+    }
+
     public function baseClaim(): Interval
     {
         return $this->baseClaim;
