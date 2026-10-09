@@ -21,6 +21,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | 🔎 **Review** | `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`: independent review recommends ACCEPT WITH CONDITIONS; F-1 far-date defect → `PBDIGIT-264` |
 | 📄 **Plan** | `docs/publicdigit/reviews/2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` (264 plan, cutover gate C-1…C-10) · participation draft `2026-10-09-participation-semantic-contract-draft.md` · new `PBDIGIT-265` |
 | 🧭 **PR dispositions** | F-4b · N1 · F-3 approved · DV-1 primary record found (countersign recommended) · plan §10; kernel-admissibility research in `docs/publicdigit/membership/architecture/models/` |
+| 🏛️ **Committee discovery** | `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md`: CQ-1…CQ-10 open (Election Committee vocabulary collision); G-AUTH-1 port gap; `PBDIGIT-266` security investigation |
 | ❓ **Waiting** | Principal Reviewer: accept 1b; authorise 264; ratify D-1 … D-5(b) (consent basis, no pending member, End kinds, interim authority, effectiveAt range); approve the participation research contract |
 | ▶️ **Next** | `PBDIGIT-264` → Slice 2 (command wiring, no entry point) → Slice 3 (cutover R10) → Slice 4 (HTTP). **Nothing starts without authorisation** |
 

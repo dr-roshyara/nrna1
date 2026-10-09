@@ -73,3 +73,15 @@ python3 -I docs/publicdigit/membership/architecture/models/g2_ledger_falsify.py 
 **Unmodelled (not claimed):** interest, dunning, day-level pro-rata, multiple members, currency, re-opening closed periods, payments allocated to specific months, Finance's own corrections.
 
 **Semantic disagreements:** none open. The one found earlier (a correction of an annulled End) is decided by ratified BD-REV.
+
+## Revision 3 (2026-10-09): committee authority (`g5_committee_authority.py`)
+
+| Sub-model | Question | Result |
+|---|---|---|
+| M1 | delegation checked at creation vs at use, under mandate amendment | creation-time check wrong in 35 / 375 [CX]. The use-time 0 / 375 is weak evidence (it nearly restates the spec) |
+| M2 | tenure end recorded late: validity as known vs as now | they differ in 35 / 250 → a business question (de-facto acts) |
+| M3 | quorum over appointed vs effective seats (seat requires membership) | they differ in 522 / 3,645 [CX] |
+| M4 | recusal | 12 / 108 pass only without recusal |
+| M5 | separation of duties | 7 / 16 role assignments allow a single-person payment |
+
+Membership enters only as given Admit / End intervals, so the kernel filter is not needed. Details: `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md` §7 and §11.

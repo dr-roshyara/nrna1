@@ -209,3 +209,7 @@ Details are in `docs/publicdigit/membership/architecture/models/README.md`, Revi
 - **BQ-P10 sharpened:** "refund credit immediately" leads to money being owed again after a reinstating correction in 486 bounded histories. A carry-forward credit policy avoids the round trip. This is a business choice.
 - **G-3:** the access model depends on annulment, so it is UNCHK until Annul is implemented in the kernel. Its conclusion rests on ratified-but-unimplemented semantics, and is labelled so.
 - **Admissibility limit:** every result that depends on Annul / Correct is classified UNCHK. Promoting it requires those fact kinds in the kernel (a future lifecycle slice), not a change to the models.
+
+## 9. Pointer (2026-10-09)
+
+Committee responsibility, organ mandates, decision procedures and the Membership boundary are researched in `2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md`. It adds CI-1 … CI-9 and CQ-1 … CQ-10. This draft remains conditional on those questions as well.
