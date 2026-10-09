@@ -33,3 +33,11 @@ Source: `docs/publicdigit/reviews/2026-10-09-membership-audit-challenge-and-pbdi
 - **New item 5:** the `tenant` middleware trusts `X-Tenant-Id` without a membership check (`app/Http/Middleware/TenantContext.php:50-55`; `electionRoutes.php:263`, `:731` debug route).
 - **Policy questions P1 – P5 and execution preconditions** are in the plan. Test-database coordination with concurrent sessions is required.
 - **Still not authorised.**
+
+## Human ARB decision ARB-SEC-01 (2026-10-09)
+
+- **What is authorised:** "Security tests are authorised only after isolated test-database readiness is confirmed. The scope is investigation and tests only." No fixes, route, middleware, schema or configuration changes.
+- **Gate check 2026-10-09: FAIL.** The only configured target is the shared `nrna_test` (9 open connections). No dedicated database is assigned to this item.
+- **No test run.** Prerequisite: a dedicated test DB assigned to `PBDIGIT-266` (the PO creates it; separate authorisation).
+- **Record:** `docs/publicdigit/reviews/2026-10-09-membership-human-arb-decision-record.md`.
+- **Test design:** apply the corrections in `…-membership-decision-readiness-pbdigit266-and-correction-order.md` §4 before writing the tests.

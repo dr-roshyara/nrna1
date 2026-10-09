@@ -12,3 +12,5 @@
 
 ## Acceptance criteria
 See contract §8 (T1–T13) and §10.
+
+**Human ARB decision ARB-MEM-02 (2026-10-09):** "Slice 1b remains conditionally accepted pending evidence and a formal acceptance act." No formal acceptance act yet. Record: `docs/publicdigit/reviews/2026-10-09-membership-human-arb-decision-record.md`.
