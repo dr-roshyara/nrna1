@@ -1,7 +1,7 @@
 # Membership Slice 1b: Contract (PostgreSQL database adapter)
 
 **Date:** 2026-10-09 · **Story:** `PBDIGIT-260` · **Raised by:** `claude-code-session:42e0287e…` (self-declared, not attestable)
-**Status:** 🧊 **FROZEN, AWAITING PO APPROVAL.** Implementation starts only after the PO approves this contract.
+**Status:** ✅ **APPROVED by the PO (2026-10-09)** with clarifications 1–6 (migration wording updated in §5). Implementation authorised for Slice 1b only.
 **Derived from:** readiness review `2026-10-09-membership-slice1b-readiness-review.md` (§E design, §I / §J decisions) · Slice 1a contract `2026-10-09-membership-slice1a-contract.md` · Slice 0 contract `2026-10-08-membership-slice0-semantic-design-contract.md` · EP-01 Rev 1.
 
 ---
@@ -115,7 +115,10 @@ org_membership_commands                              — idempotency (IDEM-1…4
 
 - **No** `updated_at`, soft deletes or `based_on_version` (S1-2).
 - **Provenance `jsonb`:** all fields of `Provenance` and `AuthorityEvidence` (`checkedAt` as epoch µs). It must round-trip exactly.
-- **Migration location:** `database/migrations/2026_10_09_100000_create_org_membership_tables.php`. It is executed only on the test database by the test suite in this slice.
+- **Migration location:** `database/migrations/2026_10_09_100000_create_org_membership_tables.php`. **Clarified (PO approval, 2026-10-09):**
+  - it is a **normal, deployable migration**: no environment conditions, no test-only fixture, no driver branches;
+  - in this slice only the test suite applies it (`RefreshDatabase` → `migrate:fresh` on `nrna_test`);
+  - it **must not yet be run against development or production**. That rollout is a separate, later step, outside Slice 1b.
 
 ## 6. Operations
 
