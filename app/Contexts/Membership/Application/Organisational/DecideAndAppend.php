@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Contexts\Membership\Application\Organisational;
+
+use App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome;
+use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
+use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
+use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
+use App\Contexts\Membership\Domain\Organisational\Decision;
+use App\Contexts\Membership\Domain\Organisational\Member;
+use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
+
+/**
+ * The shared command loop of Slice 1a (contract §4):
+ *
+ *   idempotency pre-check (IDEM-1)
+ *   repeat ≤ MAX_ATTEMPTS:  load → authorise → decide (guards + G*) → append(expected version)
+ *     on ConcurrencyConflict: discard the decision and start again from load (R-1a-2: never reuse)
+ */
+final class DecideAndAppend
+{
+    public const MAX_ATTEMPTS = 3;
+
+    public function __construct(
+        private readonly MemberRepositoryPort $repository,
+        private readonly AuthorityCheckPort $authority,
+    ) {
+    }
+
+    /**
+     * @param \Closure(): (Member|ApplicationRefusal) $load                fresh state for each attempt
+     * @param \Closure(Member, AuthorityEvidence): Decision $decide          the pure domain decision
+     */
+    public function run(TenantId $tenant, IdempotencyKey $key, string $fingerprint, string $actor, MembershipAct $act, \Closure $load, \Closure $decide): CommandOutcome
+    {
+        $seen = $this->repository->appliedCommand($tenant, $key);
+        if ($seen !== null) {
+            return $seen->fingerprint() === $fingerprint
+                ? CommandOutcome::ofAppended($seen->appended())
+                : CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict);
+        }
+
+        for ($attempt = 1; $attempt <= self::MAX_ATTEMPTS; $attempt++) {
+            $authorisation = $this->authority->check($tenant, $actor, $act);
+            if (!$authorisation->isGranted()) {
+                return CommandOutcome::refused(ApplicationRefusal::NotAuthorised);
+            }
+            $member = $load();
+            if ($member instanceof ApplicationRefusal) {
+                return CommandOutcome::refused($member);
+            }
+            $decision = $decide($member, $authorisation->evidence());
+            if (!$decision->isAccepted()) {
+                return CommandOutcome::refusedByDomain($decision->refusal());
+            }
+            $result = $this->repository->append($tenant, $member->id(), $decision, $key, $fingerprint);
+            switch ($result->outcome()) {
+                case AppendOutcome::Appended:
+                case AppendOutcome::AlreadyApplied:
+                    return CommandOutcome::ofAppended($result->appended());
+                case AppendOutcome::IdempotencyKeyConflict:
+                    return CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict);
+                case AppendOutcome::MemberNotFound:
+                    return CommandOutcome::refused(ApplicationRefusal::MemberNotFound);
+                case AppendOutcome::ConcurrencyConflict:
+                    continue 2;
+            }
+        }
+
+        return CommandOutcome::refused(ApplicationRefusal::ConcurrentModification);
+    }
+}
