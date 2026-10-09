@@ -307,3 +307,11 @@ The target schema takes nothing from them (§22).
 **Recommendation:** (a), **if** production is PostgreSQL. It matches the test database and the project documentation, and keeps the race evidence on the real engine. The recommendation is conditional on a fact only the operator can confirm (the production `.env` / `db:show`).
 
 **Status:** the contract is **not frozen**; no story, migration or code exists. The next step after DB-1 is to freeze the Slice 1b contract (§E with J.1 applied) for your review, then TDD.
+
+---
+
+## K. DB-1 decided (2026-10-09)
+
+The PO decided **DB-1 = PostgreSQL only** (fail fast on other drivers; record the MySQL fallback and legacy branches as technical debt: `PBDIGIT-261`, `PBDIGIT-262`).
+
+The Slice 1b contract is frozen in `2026-10-09-membership-slice1b-contract.md`, **awaiting PO approval**.
