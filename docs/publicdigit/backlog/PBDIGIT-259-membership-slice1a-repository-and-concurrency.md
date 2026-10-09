@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 AUTHORISED (Principal Reviewer, 2026-10-09). Slice 1a only. No database (Slice 1b); see contract §0 S1-1 |
+| **Status** | 🟢 **GREEN WITH CONDITIONS** (2026-10-09; review `docs/publicdigit/reviews/2026-10-09-membership-slice1a-implementation-review.md`); awaiting Principal Reviewer acceptance (confirm S1-1, S1-3). Authorised 2026-10-09; Slice 1a only |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-slice1a-contract.md` |
 | **Depends on** | `PBDIGIT-258` (Slice 0). D-1 confirmed as INV-FID by the instruction |
 
