@@ -57,7 +57,7 @@ The port has no update and no delete.
 | R-1a-5 | an explicit `TenantId` on every operation; nothing crosses tenants |
 | INV-M | at most one Member per (TenantId, PersonRef); `create` is atomic, and the loser receives `HolderExists` and proceeds with the existing Member |
 | INV-FID | FactIds are unique within a Member's log (domain guard, Slice 0) |
-| IDEM-1 | the idempotency check runs **before** decide: a retry returns the original `Appended` without a second fact |
+| IDEM-1 | the idempotency check runs **before** decide: a retry returns the original `Appended` without a second fact. **Amended 2026-10-09 (PBDIGIT-260, PO-authorised):** the check is repeated after a domain refusal, because an identical command may have been applied between the pre-check and the load |
 | IDEM-2 | the same key with another fingerprint → `IdempotencyKeyConflict` (S1-3a) |
 | IDEM-3 | the key check is repeated **atomically inside append**, so two concurrent identical retries append once |
 | IDEM-4 | only appended outcomes are remembered (S1-3b) |

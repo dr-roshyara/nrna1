@@ -44,6 +44,7 @@ repeat ≤ 3:
    authority.check(actor, act)            → Refused(NotAuthorised)
    load (Admit: findByHolder | create; a lost race continues on the winner's Member)
    member.decide…(…)                       → Refused(domain RefusalReason)
+                                             (unless the key was applied meanwhile → the original outcome; PBDIGIT-260 fix)
    repository.append(decision, key, fp)
       Appended | AlreadyApplied           → done
       ConcurrencyConflict                 → discard the decision; start again from authorise

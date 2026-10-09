@@ -5,7 +5,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **AUTHORISED** (PO approval of the contract, 2026-10-09). Slice 1b only |
+| **Status** | 🟢 **GREEN** (2026-10-09; review `docs/publicdigit/reviews/2026-10-09-membership-slice1b-implementation-review.md`); awaiting Principal Reviewer acceptance. Migration not yet rolled out (dev / prod) |
 | **Contract** | `docs/publicdigit/reviews/2026-10-09-membership-slice1b-contract.md` |
 | **Decisions** | EP-Q6 = T1 (calendar dates) · DB-1 = PostgreSQL only (PO, 2026-10-09) |
 | **Depends on** | `PBDIGIT-259` (Slice 1a) |

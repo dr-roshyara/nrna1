@@ -7,7 +7,8 @@ The ratified Membership architecture is implemented slice by slice under
 | # | Guide | Slice / story | Status |
 |---|---|---|---|
 | 01 | [Slice 0: the semantic kernel](01_slice0_semantic_kernel.md) | Slice 0 · `PBDIGIT-258` | implemented |
-| 02 | [Slice 1a: repository port, concurrency and idempotency](02_slice1a_repository_and_concurrency.md) | Slice 1a · `PBDIGIT-259` | implemented (no database; Slice 1b) |
+| 02 | [Slice 1a: repository port, concurrency and idempotency](02_slice1a_repository_and_concurrency.md) | Slice 1a · `PBDIGIT-259` | implemented |
+| 03 | [Slice 1b: PostgreSQL adapter](03_slice1b_postgres_adapter.md) | Slice 1b · `PBDIGIT-260` | implemented (migration not yet rolled out) |
 
 **Governing documents:**
 - architecture (ratified): `docs/publicdigit/reviews/2026-10-08-membership-architecture-ratified.md`;
