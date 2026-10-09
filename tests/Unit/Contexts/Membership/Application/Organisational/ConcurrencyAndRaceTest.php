@@ -126,6 +126,21 @@ final class ConcurrencyAndRaceTest extends TestCase
         $this->assertSame(2, $this->member()->version(), 'one End only');
     }
 
+    public function test_an_identical_retry_committed_between_the_pre_check_and_the_load_returns_the_original_outcome(): void
+    {
+        // IDEM-1 / IDEM-3, interleaving B (found by the real PostgreSQL race, PBDIGIT-260 T12): the same
+        // command commits after this caller's idempotency pre-check but before its load. This caller must
+        // still answer with the original Appended, not with DuplicateFactId.
+        (new AdmitMemberHandler($this->store, new FakeAuthority()))->handle(self::admit('k1', 'A1', 1));
+        $this->repo->beforeNextLoad(fn () => (new EndMembershipHandler($this->store, new FakeAuthority()))->handle(self::end('same-key', 'E1', 5)));
+
+        $outcome = (new EndMembershipHandler($this->repo, new FakeAuthority()))->handle(self::end('same-key', 'E1', 5));
+
+        $this->assertTrue($outcome->isAppended(), 'got ' . ($outcome->domainRefusal()?->value ?? $outcome->applicationRefusal()?->value ?? '?'));
+        $this->assertSame(2, $outcome->appended()->seq());
+        $this->assertSame(2, $this->member()->version());
+    }
+
     public function test_retries_are_bounded(): void
     {
         $alwaysConflicting = new class ($this->store) implements MemberRepositoryPort {

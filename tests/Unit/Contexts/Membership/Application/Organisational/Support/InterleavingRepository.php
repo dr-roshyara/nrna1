@@ -28,6 +28,8 @@ final class InterleavingRepository implements MemberRepositoryPort
     private array $beforeAppend = [];
     /** @var list<\Closure(): void> */
     private array $beforeCreate = [];
+    /** @var list<\Closure(): void> */
+    private array $beforeLoad = [];
 
     public function __construct(private readonly MemberRepositoryPort $inner)
     {
@@ -38,6 +40,11 @@ final class InterleavingRepository implements MemberRepositoryPort
         $this->beforeAppend[] = $hook;
     }
 
+    public function beforeNextLoad(\Closure $hook): void
+    {
+        $this->beforeLoad[] = $hook;
+    }
+
     public function beforeNextCreate(\Closure $hook): void
     {
         $this->beforeCreate[] = $hook;
@@ -45,6 +52,10 @@ final class InterleavingRepository implements MemberRepositoryPort
 
     public function load(TenantId $tenant, MemberId $id): ?Member
     {
+        if ($hook = array_shift($this->beforeLoad)) {
+            $hook();
+        }
+
         return $this->inner->load($tenant, $id);
     }
 
