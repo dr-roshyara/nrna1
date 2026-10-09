@@ -21,3 +21,15 @@
 3. Item 1 is the most severe (an election lifecycle approval by an arbitrary verified user, if confirmed). The election may be found by its id because the controller uses `findOrFail` on the raw route segment.
 
 **Related, already tracked:** IERVP-3 (`manageMembers` undefined; suspend / archive always 403) in `PBDIGIT-68` G-7. The tenant-header and tenant-context risks noted in earlier sessions (no item yet).
+
+## Revision (2026-10-09): full-path trace and test plan
+
+Source: `docs/publicdigit/reviews/2026-10-09-membership-audit-challenge-and-pbdigit266-test-plan.md` §3 – §7.
+- **Item 1, approve / reject:** a domain-level guard **was found** (`ConstitutionalTransitionGuard` + `ElectionConstitution`, `platform_admin` only). Likely **refuted**; to be confirmed by test.
+- **Item 1, `GET /admin/elections/pending`:** **no guard on any layer.** Probable cross-tenant information disclosure.
+- **Item 2:** no reviewer-authority check anywhere. The existing test codifies self-approval. The route may 500 (missing organisation attribute).
+- **Item 3:** organisation membership is enforced; **no role check**. `destroy` always 500s (missing class); the slug routes return 400.
+- **Item 4:** no guard. A cross-tenant write is possible via the session. Outcome store 500s (namespace).
+- **New item 5:** the `tenant` middleware trusts `X-Tenant-Id` without a membership check (`app/Http/Middleware/TenantContext.php:50-55`; `electionRoutes.php:263`, `:731` debug route).
+- **Policy questions P1 – P5 and execution preconditions** are in the plan. Test-database coordination with concurrent sessions is required.
+- **Still not authorised.**

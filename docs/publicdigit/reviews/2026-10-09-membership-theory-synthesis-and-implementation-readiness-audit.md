@@ -349,3 +349,20 @@ Status vocabulary: **IV** implemented and verified · **II** implemented, incomp
 | **Authority** | none. It never decides Membership, identity equivalence (DS-3) or eligibility |
 
 **Changed files:** this document; the models README pointer; the session and context records. **No code, test, schema or configuration changed.**
+
+---
+
+## Errata (2026-10-09): from the independent challenge review
+
+Source: `2026-10-09-membership-audit-challenge-and-pbdigit266-test-plan.md` §2. The text above is kept as written; **these corrections take precedence**.
+
+| # | Severity | Correction |
+|---|---|---|
+| E-1 | **major** | **Identifier collision "D-1".** Slice 1a contract line 4 and plan §7 use **D-1 = INV-FID** [ADOPTED]. Plan §3 and this audit (A.4, C row 13, D.2 #7) use **D-1 = admission basis (BD-CONSENT / LQ-1)** [BIZ]. Every "D-1" in this audit means the admission basis. New contradiction **K-8** (an identifier collision); the PO decides the renaming (proposal: call the Slice 2 decisions "S2-D1 … S2-D6") |
+| E-2 | **major** | **D.2 #16 (correction / annulment) dependencies and order.** Its prerequisites are #10 (Slice 2 implemented, not #9), **BD-REV-ER** (act N-4: "needed before the reversal slice"), **CQ-3** (who may correct or annul) and **CQ-9** (appeal body). **Ordering risk:** #13 – #15 (cutover, migration, live Admit / End) precede any correction capability. Slice 0 refuses a second End (`PeriodAlreadyEnded`), and changing an end date is "Correct(End), Slice 7" (`RefusalReason.php:21`). Erroneous live or migrated facts would therefore be uncorrectable in an append-only store. **Whether correction must precede cutover / HTTP is an explicit PO decision; this audit recommends that it does** |
+| E-3 | minor | INV-COV **and** INV-EP are **structurally unreachable in Slice 0**: lifetime = `IntervalSet::of(BaseClaim)` and LiveCut is always empty (`Resolution.php:84-97`). B.1 "[NV] not analysed" (INV-EP) is wrong, and "E + R" there is vacuous. INV-COV is also asserted at every bounded state (`ExhaustiveBoundedVerificationTest`), not only "X" |
+| E-4 | minor | B.3: the `IntervalSet.php:76` mutant is **killable now** by a direct unit test of `IntervalSet::equals` on sets of different size. It is **test gap TG-5**, not "unreachable". The sentence "none in Resolution or the invariants" is corrected to: one gap in the invariant support code (`IntervalSet::equals`) |
+| E-5 | minor | B.1 legend: P is split into **P-proof** and **P-arg** (informal argument). IP-7 / CI-9 is **P-arg** |
+| E-6 | minor | B.1 BQ-P3 "they differ only with re-entry" holds **within the enumerated domain** (0 / 432 without re-entry) |
+| E-7 | minor | D.1 rationale: "unrun elsewhere" → production is **not accessible to engineering** (status unknown). `PBDIGIT-265` is also live behaviour. **266 and 264 are independent**: the order is a risk *priority*, not a dependency |
+| E-8 | minor | (a) The status vocabulary gains **CD = confirmed defect**: C row 9 → CD; row 10 → CD (P-CMD [CX]). (b) R-1a-1 … 5 are all [ADOPTED] through Principal Reviewer instruction text (contract table), as are C-S0-1 / 2. There is **no formal acceptance act**. (c) D.2 gains "formal Slice 1b acceptance act (PR)" before #3. (d) K-2 also conflicts on *context*: EM-FM-005 places Membership in an "Organisation context", while act §11 places it in Membership |

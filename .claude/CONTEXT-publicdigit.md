@@ -23,6 +23,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | 🧭 **PR dispositions** | F-4b · N1 · F-3 approved · DV-1 primary record found (countersign recommended) · plan §10; kernel-admissibility research in `docs/publicdigit/membership/architecture/models/` |
 | 🏛️ **Committee discovery** | `docs/publicdigit/reviews/2026-10-09-committee-responsibility-authority-and-membership-boundary-discovery.md`: CQ-1…CQ-10 open (Election Committee vocabulary collision); G-AUTH-1 port gap; `PBDIGIT-266` security investigation |
 | 📚 **Synthesis** | `docs/publicdigit/reviews/2026-10-09-membership-theory-synthesis-and-implementation-readiness-audit.md` — theory A, evidence register B (kernel MSI 83 %/covered 92 %), traceability C, roadmap D; next action: authorise `PBDIGIT-266` tests |
+| 🔐 **266 plan** | `docs/publicdigit/reviews/2026-10-09-membership-audit-challenge-and-pbdigit266-test-plan.md` — audit errata E-1 (D-1 collision), E-2 (correction before cutover); 266 reclassified + item 5 (X-Tenant-Id trust); 22-test plan awaiting PO authorisation |
 | ❓ **Waiting** | Principal Reviewer: accept 1b; authorise 264; ratify D-1 … D-5(b) (consent basis, no pending member, End kinds, interim authority, effectiveAt range); approve the participation research contract |
 | ▶️ **Next** | `PBDIGIT-264` → Slice 2 (command wiring, no entry point) → Slice 3 (cutover R10) → Slice 4 (HTTP). **Nothing starts without authorisation** |
 
