@@ -1,6 +1,6 @@
 # PBDIGIT-262: legacy migrations carry MySQL branches that are dead under DB-1
 
-**Type:** Technical debt · **Created:** 2026-10-09 · **Raised by:** `claude-code-session:42e0287e…` (self-declared), on the PO's instruction. **Index row:** pending.
+**Type:** Technical debt · **Created:** 2026-10-09 · **Raised by:** `claude-code-session:42e0287e…` (self-declared), on the PO's instruction. **Index row:** added 2026-10-09.
 
 **PO clarification (2026-10-09):** "we have actually removed all application related to mysql" · "mysql implementation was legacy code". MySQL is **not** a supported engine; the items below are **residue of removed legacy code**, not an intended dual-support path.
 

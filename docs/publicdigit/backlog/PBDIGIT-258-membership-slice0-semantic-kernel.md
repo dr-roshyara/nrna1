@@ -3,7 +3,7 @@
 **Type:** Story (domain implementation, TDD) · **Epic:** `PBDIGIT-EPIC-02` Membership Management · **Created:** 2026-10-09
 **Raised by:** `claude-code-session:42e0287e-e0e2-4638-8165-cd5d5862c578` (self-declared, not attestable), on the PO's instruction to implement Slice 0 TDD-first (`docs/publicdigit/membership/architecture/brainstorming/20261009_0730_implementation_01.md`).
 **ID note:** the next free ID; `git grep "PBDIGIT-258"` found no occurrence before this file.
-**Index row:** **pending.** `backlog/README.md` currently carries another session's uncommitted edits, so the row is added when that file is clean.
+**Index row:** added 2026-10-09.
 
 | | |
 |---|---|

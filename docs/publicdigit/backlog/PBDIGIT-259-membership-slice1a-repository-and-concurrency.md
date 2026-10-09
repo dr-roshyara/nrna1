@@ -2,7 +2,7 @@
 
 **Type:** Story (application layer, TDD) · **Epic:** `PBDIGIT-EPIC-02` · **Created:** 2026-10-09
 **Raised by:** `claude-code-session:42e0287e-e0e2-4638-8165-cd5d5862c578` (self-declared, not attestable), on the Principal Reviewer's instruction `docs/publicdigit/membership/architecture/brainstorming/202061009_0812_implementation_03.md`.
-**ID note:** the next free ID (`git grep "PBDIGIT-259"`: no occurrence). **Index row:** pending (README carries another session's uncommitted edit).
+**ID note:** the next free ID (`git grep "PBDIGIT-259"`: no occurrence). **Index row:** added 2026-10-09.
 
 | | |
 |---|---|
