@@ -199,3 +199,113 @@ Results that bear on Membership (bounded, small-scope; counts of enumerated hist
 5. **Election owner:** `PBDIGIT-265`.
 
 **STOP.** Nothing is implemented until (2).
+
+## 9. Revision 1 (2026-10-09, after the Principal Reviewer's 2122 review: `20261009_2122_implementation.md`)
+
+**Preflight:**
+- HEAD `27f57aec5`; branch `knowelegeos-modelling`.
+- 26 tracked files are modified by other sessions, plus their staged renames. All are left untouched.
+- **No discrepancy** between this document and the repository.
+- No production code, migration or test file changed. Nothing pushed.
+
+### 9.0 Disagreements (stated first)
+
+| # | Point | Position |
+|---|---|---|
+| Z-1 | §3 asks again for a full acceptance classification | The §1 classification stands. Revision 1 adds only the new F-4 / F-5 evidence (9.2, 9.3). |
+| Z-2 | P3 "produce a reproducible inventory" of `members` readers and writers | **Agreed, but as a cutover-slice deliverable, not a document:** an **architecture fitness test** (new gate C-0) that scans for writers of `members` and fails on any path not in the approved list. A document count is not reproducible; a test is. Not written now (no authorisation for code). |
+| Z-3 | F-5 "enforce READ COMMITTED" | **Agreed, with a trap found by probe (9.3).** Enforcement is impossible inside an outer transaction, so it **interacts with `PBDIGIT-263`**: restoring per-test transactions would nest every adapter call. A decision is needed. |
+
+### 9.1 Slice 1b: final recommendation
+
+**ACCEPT WITH CONDITIONS (unchanged; a recommendation only).** The classification in §1 stands.
+
+| Item | Verified how | Result |
+|---|---|---|
+| Date range and round trip | reproduction (`php -r`, earlier); the independent probe | ordinals −719162 … 2932896 exact; **F-1 real** (2932897 → unloadable). It stays a confirmed defect until a regression test proves the fix |
+| Key precedence and identical concurrent retries | real-process races (independent rerun: 27 feature tests OK) | demonstrated (End path); Admit path a coverage gap (F-2) |
+| Tenant identity and atomicity | T2, T3, T7, plus the independent read | demonstrated |
+| Contract parity | independent review | gap F-3 (the test double) |
+| Isolation and autocommit | **new probe (9.3)** | conditional on the transaction being top-level |
+| Command → fact integrity | **new probe (9.2)** | **not enforced today** for any column |
+| Migration and production readiness | records | not rolled out; engine unverified (`PBDIGIT-261`) → **deployment blocker** |
+| Regression baseline | §7 of the implementation review | same dirty working tree; **not clean-checkout; the full suite is not green** |
+
+### 9.2 F-4: the consistency challenge (answered by probe)
+
+**Probe:** a scratch PHPUnit test against `nrna_test`. Each schema variant was applied **inside a transaction and rolled back**; afterwards zero probe constraints remained (asserted). One real admitted fact (seq 1, `A-1`) was used. Three bad command rows were inserted per variant:
+
+| Bad command row | current schema | **F-4a** FK `(org, membership, seq)` | **F-4c** FK `(org, membership, seq, fact_id, recorded_at)` + a UNIQUE superkey on facts |
+|---|---|---|---|
+| valid seq, **wrong fact_id** | accepted | **accepted** | rejected (23503) |
+| valid seq + fact_id, **wrong recorded_at** | accepted | **accepted** | rejected (23503) |
+| non-existent seq | accepted | rejected (23503) | rejected (23503) |
+
+**Conclusion:** F-4a is **insufficient**; your challenge holds. Two complete options remain:
+
+| Option | Schema change | Adapter change | Cost | Migration consequence |
+|---|---|---|---|---|
+| **F-4b, normalise** | drop `fact_id`, `recorded_at` from `org_membership_commands`; FK `(org, membership, seq)` → facts PK | `appliedCommand` reads `fact_id` / `recorded_at` by join | none extra; removes the duplication class entirely | additive migration on an unreleased table. If it has been applied anywhere, the dropped columns are derivable from facts, so nothing is lost. `down()` re-adds and backfills |
+| **F-4c, full-reference FK** | UNIQUE `(org, membership, seq, fact_id, recorded_at)` on facts + a 5-column FK | none | a redundant 5-column index maintained on every append; FK equality on `timestamptz(6)` | additive; `down()` drops both |
+
+**Recommendation: F-4b.** It is correct by construction and follows the same minimality argument as S1-2 (do not store derivable data). **It changes the approved Slice 1b schema, so the choice is yours.** The F-4 acceptance tests include all three bad rows above.
+
+### 9.3 F-5: isolation enforcement (answered by probe)
+
+| Probe | Result |
+|---|---|
+| Q1: `SET TRANSACTION ISOLATION LEVEL READ COMMITTED` as the first statement in `DB::transaction` (Laravel opens the transaction through PDO `beginTransaction`; the closure's first statement is the first in the transaction) | OK; `transaction_isolation` = read committed |
+| Q2: session default set to REPEATABLE READ | without SET: **repeatable read**; with SET as first statement: **read committed** (enforcement works) |
+| Q3: adapter called inside an outer transaction that already ran a query | **ERROR 25001** "must be called before any query" |
+| Q4: inside an outer transaction that ran nothing (Laravel savepoint) | **ERROR 25001** "must not be called in a subtransaction" |
+
+**Consequence:** "always SET" breaks any nested use. Nested use also weakens the contract: `Appended` would no longer mean *committed*, because the outer transaction may still roll back.
+
+| Option | Behaviour when `transactionLevel() > 0` |
+|---|---|
+| **F-5-N1 (recommended)** | refuse: an infrastructure exception before any statement. The contract "Appended = durably committed" is kept. Top-level: SET as the first statement |
+| F-5-N2 | allow if `current_setting('transaction_isolation') = 'read committed'`; document that `Appended` is conditional on the outer commit |
+
+**Interaction with `PBDIGIT-263`:** if per-test transactions are restored on PostgreSQL, the adapter tests must opt out (they already isolate by fresh organisations), or N1 makes them fail. **Decision needed with F-5.**
+
+**F-5 tests (real Laravel path):**
+- (a) session default REPEATABLE READ, then the identical-retry and cross-Member races return contract outcomes;
+- (b) a nested call is refused and writes nothing;
+- (c) the classifier tests from §2.
+
+### 9.4 Approvals still missing (exact)
+
+| Who | Decision |
+|---|---|
+| **Principal Reviewer** | formal Slice 1b decision; confirm DV-1 ("Allow minimal fix"); **F-4b vs F-4c**; **F-5-N1 vs N2**; the F-3 contract clarification (an id collision is an infrastructure failure; key-first precedence); the Slice 2 contract (later) |
+| **Product Owner** | authorise `PBDIGIT-264` (scope §2 + 9.2 + 9.3); ratify D-2, D-3 (list), D-5 (b) backdating and future-dating, D-5 (c) business-valid date range (the adapter range 0001–9999 is technical and needs no business ratification); authorise `PBDIGIT-261` / `262` / `263` separately |
+| **Legal adviser** (through the PO) | D-1 / LQ-1 (statutory or ex-officio basis); D-3 procedures (LQ-3) |
+| **Governance owner** (through the PO) | D-4 interim authority adapter; RD-1 … RD-4; BQ-P1 … P3, P8 |
+| **Election owner** | `PBDIGIT-265`: the intended Full-mode predicate, one test matrix for both paths, runtime impact |
+| **Finance owner** | the C-2 column map (`fees_status` / `fee_state`); BQ-P10 / P11 |
+
+### 9.5 Updated cutover risk list (C-0 … C-10)
+
+| # | Risk / gate | Change in Revision 1 |
+|---|---|---|
+| **C-0 (new)** | an inventory that isn't reproducible misses a writer | a fitness test enumerates writers of `members`; an unknown writer fails the build |
+| C-4 | mass updates (`ExpireMemberships`, `MarkOverdueMembers`) and the relation-builder delete bypass Eloquent | **only** a database-level guard covers them; an application guard is insufficient |
+| C-6 | Full-mode eligibility predicate inconsistency (`PBDIGIT-265`) | **a cutover blocker for any organisation whose voter eligibility could change**; does not block isolated Membership command work |
+| C-2 | `fees_status` (read by Election) vs `fee_state` (written by the DDD path) | Finance owns both; the projection writes neither |
+| C-3 | import regenerates `membership_number` | must be stopped for cut-over organisations before any number semantics are migrated |
+| C-5 | reverse projection | must satisfy **rebuild = incremental** (the same property as IP-4) |
+| — | F-5 × `PBDIGIT-263` | sequencing: decide N1 / N2 before any per-test-transaction fix |
+
+The other gates are unchanged.
+
+### 9.6 Dependency-ordered TODO
+
+1. **Principal Reviewer** decisions (9.4 row 1) → **PO** authorises 264.
+2. 264: F-1 → F-5 (N1 / N2) → F-3 → F-4 (b / c) → F-2 (mutation sensitivity recorded) → review → **a fresh Principal Reviewer decision**.
+3. PO / legal / Governance ratify D-1 … D-5 → Slice 2 contract → Slice 2 (no live entry point; T-EO).
+4. In parallel: Election resolves `PBDIGIT-265`; Finance supplies the column map.
+5. Cutover machinery (C-0 … C-5, C-8) → dry runs and parity (C-6, C-7) → rollout (C-10) → HTTP / UI.
+6. Lifecycle slices; Governance contract after the RD decisions; the Finance ledger (design H) contract; Audit consumer.
+7. `PBDIGIT-261` / `262` / `263` each by its own authorisation (263 after the F-5 decision).
+
+**STOP.** No implementation, migration rollout or push without explicit authorisation.

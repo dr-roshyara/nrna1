@@ -20,3 +20,9 @@
 | F-5 | Hardening | the constraint is detected by message substring; the READ COMMITTED assumption is unstated | detect by SQLSTATE + constraint name; the isolation assumption stated in the adapter and dev guide 03 |
 
 **Out of scope:** Slice 2 decisions, MySQL residue (`PBDIGIT-261` / `262`), test-base isolation (`PBDIGIT-263`).
+
+**Revision 1 (2026-10-09):** the plan is refined in `docs/publicdigit/reviews/2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §9.
+- **F-4:** a probe showed the FK on `seq` alone (F-4a) still accepts a wrong `fact_id` or `recorded_at`. The choice is now between F-4b (normalise) and F-4c (full-reference FK).
+- **F-5:** `SET TRANSACTION` must be the first statement and fails inside an outer transaction (25001). Choose N1 (refuse nested use) or N2.
+
+Still not authorised.

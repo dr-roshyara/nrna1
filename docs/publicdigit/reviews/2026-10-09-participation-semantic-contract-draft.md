@@ -168,3 +168,32 @@ This draft becomes a contract only after:
 - the Principal Reviewer approves it.
 
 Until then: **no Governance or Participation implementation.**
+
+## 7. Revision 1 (2026-10-09, after the Principal Reviewer's 2122 review)
+
+**Models retained** in `docs/publicdigit/membership/architecture/models/` (README states domains, assumptions and limits).
+
+**G-2 strengthened** (`g2_ledger.py`): an **independent** interval-set oracle; ≤ 2 corrections; waivers; accounting close; partial payments.
+- **Design H** (derived target + append-only ledger + adjusting postings dated in the open period) matched the oracle **per service month** in all 42,075 generated histories, and never mutated a closed posting.
+- STORED (legacy shape) was wrong in 38,106. A naive in-place recompute would mutate closed months in 14,433. Credit arose in 14,883.
+- **This is evidence about H's reconciliation mechanism, not a tautology:** H accumulates adjustments over successive knowledge states, while the oracle is a separately written resolver over final facts.
+- **The oracle found one semantic point:** a correction of an annulled End. Ratified **BD-REV** (inert) decides it, and the oracle now follows it.
+
+**Classification of results:**
+
+| Class | Items |
+|---|---|
+| Demonstrated counterexamples | S-D1 … S-D3 (G-1); the stored-charge, ACL and naive-recompute divergences (G-2, G-3) |
+| Bounded-model results | H matches the oracle per month (G-2); lapse ≠ suspend only with re-entry (G-4) |
+| Hypotheses | IP-1 … IP-7; design H for Finance; access as a projection |
+| Ratified rules used | re-entry = a new period under the same Member; BD-REV; INV-EP |
+| Unanswered | RD-1 … RD-5; BQ-P1 … BQ-P11 |
+
+**Remaining falsification questions (not yet modelled):**
+1. **Refund versus carried credit:** does H stay correct when a refund settles a credit and a later correction reinstates the charge?
+2. **Pro-rata and partial-month fees under date corrections:** does per-month equality still hold under a non-linear rule?
+3. **Delegation chains:** does duty retention survive re-delegation (A → B → C), and what happens if A's tenure ends mid-delegation (IP-2 / IP-3)?
+4. **Discharge refused or deferred:** is a duty open indefinitely? BQ-P8 needs a statute.
+5. **Former-member access to historical content:** a policy decision (BQ-P9). A model can only show both policies are expressible.
+6. **Succession under simultaneous vacancies** in a position with capacity > 1 (BQ-P1).
+7. **Admissibility filter:** rerun every model on kernel-admissible histories only, using the PHP kernel as the generator's filter, so that no result depends on a history the domain refuses.
