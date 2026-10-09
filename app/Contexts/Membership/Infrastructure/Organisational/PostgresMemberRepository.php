@@ -158,6 +158,13 @@ final class PostgresMemberRepository implements MemberRepositoryPort
             [$tenant->value(), $id->value(), $accepted->basedOnVersion()],
         );
         if ($version === null) {
+            // IDEM-3: the compare-and-set may have waited for a concurrent writer's commit. Under READ
+            // COMMITTED that writer's key row is now visible: if it was this same key, answer from it,
+            // instead of a conflict that would make the application re-decide a command already applied.
+            $seenAfterWait = $this->answerFromKey($tenant, $key, $fingerprint);
+            if ($seenAfterWait !== null) {
+                return $seenAfterWait;
+            }
             $exists = $this->db->table('org_memberships')
                 ->where('organisation_id', $tenant->value())->where('id', $id->value())->exists();
 
