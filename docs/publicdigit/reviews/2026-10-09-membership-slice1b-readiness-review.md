@@ -268,3 +268,42 @@ The target schema takes nothing from them (§22).
 - **prevention of fact updates / deletes through the adapter:** the adapter offers none; an attempted raw UPDATE is optionally blocked by the trigger (B-6).
 
 **Status: STOP.** Waiting on EP-Q6 and DB-1. No story, migration or model was created.
+
+---
+
+## J. Decision record and the open DB-1 question (2026-10-09)
+
+### J.1 EP-Q6: decided by the PO (verbatim)
+
+> "EP-Q6: I favour T1 — calendar-date semantics — as the Membership domain rule, subject to my authority to ratify it. Membership admission, term boundaries and ending are date-based; intra-day membership transitions are not supported. `decidedAt` and `recordedAt` remain exact instants. Preserve the existing Slice 0 invariants and do not infer or migrate historical dates in Slice 1b."
+
+**Consequences for the contract** (to be frozen only after DB-1):
+- `effectiveAt` and the initial term's end are **calendar dates**. `TimePoint` ordinal = days since 1970-01-01 (proleptic Gregorian). ∞ exists only as "unlimited initial term", an explicit state, never a stored date.
+- Slice 0 invariants are unchanged:
+  - C-S0-1 becomes "End at least one day after the admission date";
+  - C-S0-2 (no initial term ⇒ Lapsed) is unchanged;
+  - same-day re-entry is allowed (Lemma 2).
+- `decidedAt` / `recordedAt` are exact instants.
+- Slice 1b infers or migrates **no** historical date.
+
+### J.2 DB-1: the exact question (unresolved)
+
+> **DB-1: Which database engine(s) must the Membership persistence adapter support in production: (a) PostgreSQL only, (b) MySQL only, or (c) both?**
+
+**Evidence:**
+- `config/database.php:18` falls back to `mysql`;
+- `phpunit.xml` uses `pgsql` / `nrna_test`;
+- `CLAUDE.md` says PostgreSQL;
+- at least 5 migrations carry MySQL-specific branches (e.g. `2026_04_03_155711_add_ended_status_to_members_table.php`), so MySQL was supported historically;
+- the `jsonb()` uses in 3 migrations are portable in Laravel, so they do **not** prove PostgreSQL-only;
+- the production engine is in `.env` (not readable by me).
+
+| Answer | What Slice 1b then builds | Consequences / risks |
+|---|---|---|
+| **(a) PostgreSQL only** | the design of §E as written: `INSERT … ON CONFLICT DO NOTHING RETURNING`; `date` (valid time); `timestamptz(6)` UTC (instants); `jsonb` provenance; composite tenant FK; version compare-and-set under PostgreSQL row locks (READ COMMITTED re-evaluates the `WHERE version = :expected` after a lock wait) | **tests run on the production engine** (`nrna_test` is PostgreSQL), so the race evidence (B-2) is directly valid. **Risk:** if any production or staging installation actually runs MySQL, the adapter fails there. Mitigation: the adapter checks the driver at construction and **fails fast** on a non-PostgreSQL connection, instead of misbehaving silently. The `mysql` fallback in `config/database.php` stays a latent misconfiguration risk (outside 1b; backlog item recommended) |
+| **(b) MySQL only** | `INSERT IGNORE` / `ON DUPLICATE KEY` (no `RETURNING`, so create = insert + select); `json`; `datetime(6)` with an application-enforced UTC convention (no time-zone type); `date` | **the test database is PostgreSQL**, so the adapter would be verified on the wrong engine. It needs a MySQL test database and CI change first (a test-infrastructure slice). InnoDB's REPEATABLE READ default changes the race argument (snapshot reads for the key check, gap locks / deadlocks), so B-2 must be redone |
+| **(c) both** | driver-specific branches (or a lowest-common-denominator SQL) behind the one port | the shared contract suite must run on **both** engines (two test databases in CI); about double the verification effort; race evidence per engine; more code in the adapter. Highest cost, needed only if both are really operated |
+
+**Recommendation:** (a), **if** production is PostgreSQL. It matches the test database and the project documentation, and keeps the race evidence on the real engine. The recommendation is conditional on a fact only the operator can confirm (the production `.env` / `db:show`).
+
+**Status:** the contract is **not frozen**; no story, migration or code exists. The next step after DB-1 is to freeze the Slice 1b contract (§E with J.1 applied) for your review, then TDD.
