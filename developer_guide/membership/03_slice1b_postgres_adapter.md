@@ -59,7 +59,9 @@ vendor/bin/phpunit tests/Feature/Contexts/Membership/Organisational/   # uses nr
 
 ## Pitfalls
 
-- **Test isolation:** `Tests\TestCase` does **not** wrap PostgreSQL tests in transactions. Always create fresh organisations per test, as these tests do.
+- **Known defect (`PBDIGIT-264` F-1, open):** valid-time dates must stay within 0001-01-01 … 9999-12-31. `DateOrdinal::toDate` writes a later date as `10000-01-01`, which `fromDate` cannot read back, and the Member becomes unloadable. Until the guard lands, callers must not pass such dates.
+- **Isolation level:** the idempotency and conflict answers assume READ COMMITTED, the PostgreSQL default. Under REPEATABLE READ a version conflict surfaces as an exception (safe, but untranslated).
+- **Test isolation:** `Tests\TestCase` does **not** wrap PostgreSQL tests in transactions (`PBDIGIT-263`). Always create fresh organisations per test, as these tests do.
 - **Forked tests:** call `DB::disconnect()` before `pcntl_fork`. Children must open their own connection and end with `SIGKILL`, so that no PHPUnit shutdown runs in them.
 - **Never run the migration on the development database in this slice** (CLAUDE.md database rules).
 

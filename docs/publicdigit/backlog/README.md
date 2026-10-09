@@ -139,6 +139,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-261`](PBDIGIT-261-database-engine-defaults-contradict-postgresql-decision.md) | **Database-engine defaults still say `mysql`** (config, `.env.example`, docs) — contradicts DB-1; includes the operator check of the production engine | — | `OPEN — technical debt` · not authorised |
 | [`PBDIGIT-262`](PBDIGIT-262-legacy-migrations-carry-dead-mysql-branches.md) | **Legacy migrations carry dead MySQL branches** (5 migrations) | — | `OPEN — technical debt` · not authorised |
 | [`PBDIGIT-263`](PBDIGIT-263-test-base-class-claims-transaction-isolation-it-skips-on-postgresql.md) | **`Tests\TestCase` claims per-test transaction rollback it skips on PostgreSQL** — data persists between tests; the "zero corruption" safety comment is false | — | `OPEN — technical debt` · not authorised |
+| [`PBDIGIT-264`](PBDIGIT-264-membership-slice1b-acceptance-follow-ups.md) | **Membership Slice 1b follow-ups** — far-date defect (a Member becomes unloadable after year 9999), Admit race-test gap, adapter parity, commands→facts FK | `EPIC-02` | `OPEN` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 

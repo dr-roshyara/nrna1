@@ -181,3 +181,12 @@ org_membership_commands                              — idempotency (IDEM-1…4
 - **Regression:** the comparison is reported.
 - **Records:** the implementation review, developer guide `03`, plan, story and session log; small TDD commits with `(PBDIGIT-260)`.
 - **Then STOP:** no Slice 2, no migration slice, no Governance.
+
+## Amendment (2026-10-09, after implementation): DV-1 recorded
+
+During implementation, the real-process race test (T12) found an IDEM-3 defect in Slice 1a code: `DecideAndAppend` answered `DuplicateFactId` instead of the original outcome. That code is "application, unchanged" under §6 and §10.
+
+- **PO decision, 2026-10-09:** the answer "Allow minimal fix" to the question raised in this session. It authorises **one** change outside the adapter: after a domain refusal, `DecideAndAppend` consults the idempotency key (commit `362c5ee03`).
+- The §6 / §10 "application unchanged" clause therefore holds **with this single authorised exception**. The kernel, port and handlers are an empty diff.
+- Details: implementation review §6 / §9 DV-1; Slice 1a contract IDEM-1 amendment.
+- **Confirmation requested from the Principal Reviewer** (acceptance review 2026-10-09, §1 condition 3). The evidence of the PO act is this session's record, not a separate signed act.
