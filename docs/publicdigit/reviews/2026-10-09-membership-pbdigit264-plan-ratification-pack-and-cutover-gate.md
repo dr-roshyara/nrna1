@@ -309,3 +309,55 @@ The other gates are unchanged.
 7. `PBDIGIT-261` / `262` / `263` each by its own authorisation (263 after the F-5 decision).
 
 **STOP.** No implementation, migration rollout or push without explicit authorisation.
+
+## 10. Principal Reviewer dispositions (2026-10-09, `20261009_2145_implementation.md`)
+
+**Recorded as the Principal Reviewer's technical dispositions.** They are **not** the Product Owner's authorisation of `PBDIGIT-264`, and they settle **no business decision** (D-1 … D-6 remain open).
+
+| Topic | Disposition | Status |
+|---|---|---|
+| Slice 1b | ACCEPT WITH CONDITIONS **recommended**; not production-ready | PR review disposition (no formal acceptance act yet) |
+| F-4 | **F-4b (normalise)** chosen, subject to a migration preflight and rollback verification | PR disposition; implementation needs PO authorisation |
+| F-5 | **N1** chosen: refuse nested adapter calls before any write; `SET TRANSACTION ISOLATION LEVEL READ COMMITTED` as the first statement of a top-level append | PR disposition; implementation needs PO authorisation |
+| F-3 | contract clarification **approved**: a MemberId collision with another holder is an infrastructure failure with no state change; the idempotency-key lookup precedes other checks | PR disposition; recorded in the Slice 1a contract (pointer) |
+| DV-1 | see 10.1 | the primary record was found; countersignature recommended |
+| Model location | `docs/publicdigit/membership/architecture/models/` **confirmed** | PR disposition |
+
+### 10.1 DV-1: the authoritative record
+
+- **Primary record:** the user's own answer in this session's transcript (`~/.claude/projects/…/42e0287e-….jsonl`, message `2c4a477a-982a-41cb-a07b-2e6914225445`, **2026-10-09T10:31:59Z**). The question described the `DecideAndAppend` defect and asked "How should I proceed?"; the answer was **"Allow minimal fix (Recommended)"**.
+- **Order of events:**
+  - question 07:42Z, with the RED commit `500ada433` at 09:42 +02:00 (07:42Z);
+  - approval 10:31:59Z;
+  - fix `362c5ee03` at 12:33:12 +02:00 (10:33:12Z), **73 seconds after the approval**.
+- **Classification:** DEMONSTRATED (primary record), but **outside the repository corpus**. Every repository mention is my own recap.
+- **Recommendation:** a one-line PO countersignature in the repository (for example in the Slice 1b contract amendment), so the approval does not depend on a local transcript file.
+
+### 10.2 F-4b migration preflight (read-only)
+
+| Database | Evidence | Result |
+|---|---|---|
+| development | `php artisan migrate:status --path=…2026_10_09_100000…` (read-only; connection pgsql, database `publicdigit`) | **Pending.** The tables do not exist, so there are no command rows to check. Also: the development engine is PostgreSQL (partial evidence for O-3; production unverified) |
+| `nrna_test` | — | **not meaningful:** `RefreshDatabase` runs `migrate:fresh` at the start of every PHPUnit process, so it holds only transient test data |
+| production | not accessible to engineering | **operator task:** before F-4b runs anywhere the 1b migration was applied, run `SELECT count(*)` plus an anti-join of `org_membership_commands` against facts on (org, membership, seq), and a mismatch check on `fact_id` / `recorded_at`. Expected 0 / 0 / 0; any non-zero result stops the migration |
+
+**F-4b migration requirements (for the implementation contract):**
+- `up()`: add the FK `(organisation_id, membership_id, seq)` → facts PK **first** (it fails if any row is orphaned); then verify that the copied values match (abort on mismatch); then drop `fact_id`, `recorded_at`.
+- `down()`: re-add the columns, backfill them by join, set NOT NULL, drop the FK.
+- **Test:** `up` → `down` → `up` on a populated test schema preserves every row and the `appliedCommand` answers.
+
+### 10.3 F-5 × PBDIGIT-263
+
+- With N1, any adapter call with `transactionLevel() > 0` is refused.
+- **Today** the PostgreSQL tests run without per-test transactions (`PBDIGIT-263`), so the adapter tests are top-level, and the N1 tests can assert refusal by opening an explicit outer transaction.
+- **If `PBDIGIT-263` later restores per-test transactions,** the adapter test classes must opt out (they already isolate by fresh organisations). This is recorded in `PBDIGIT-263` as a dependency.
+- Nothing about 263 is implemented here.
+
+### 10.4 Still missing
+
+- **PO:** authorisation of `PBDIGIT-264`; DV-1 countersignature; D-2, D-3, D-5 (b) / (c).
+- **PO + legal:** D-1; the D-3 procedures.
+- **Governance:** D-4; RD-1 … RD-4.
+- **Election:** `PBDIGIT-265`.
+- **Finance:** the C-2 column map.
+- **Operator:** production engine; the preflight queries above wherever the 1b migration was applied.

@@ -81,3 +81,8 @@ The port has no update and no delete.
 
 - **In:** the port; the Admit / End application handlers; the in-memory reference adapter (test double); the reusable contract test suite; an independent reference-model property test; architecture tests.
 - **Out:** database tables / Eloquent (Slice 1b); Correct / Annul / Void / Renew / ChangeType / Suspend / Restore; number; type; standing; finance; election; governance; committees; UI / API; migration; event sourcing; CQRS / projection / message bus.
+
+**F-3 clarification (Principal Reviewer disposition, 2026-10-09; implementation pending `PBDIGIT-264` authorisation):**
+- `create` with a MemberId that already belongs to **another** holder is an **infrastructure failure** (an exception, no state change), not a port outcome.
+- In `append`, the **idempotency-key lookup precedes** every other check.
+- Source: `2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §10. The port file is unchanged.

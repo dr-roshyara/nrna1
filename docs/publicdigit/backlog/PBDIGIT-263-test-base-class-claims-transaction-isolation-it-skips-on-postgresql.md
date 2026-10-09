@@ -26,3 +26,5 @@
 - Consider a guard that refuses to run the suite unless the database name is the testing database. That would turn the documented guarantee into an enforced one.
 
 **Not in scope of PBDIGIT-260.** No code changed under this item.
+
+**Dependency (2026-10-09):** under F-5 disposition N1 (`PBDIGIT-264`), the PostgreSQL Membership adapter refuses calls made inside an outer transaction. If this item restores per-test transactions, the adapter test classes must opt out. See the plan document §10.3.

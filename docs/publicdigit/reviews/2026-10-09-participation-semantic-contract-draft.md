@@ -197,3 +197,15 @@ Until then: **no Governance or Participation implementation.**
 5. **Former-member access to historical content:** a policy decision (BQ-P9). A model can only show both policies are expressible.
 6. **Succession under simultaneous vacancies** in a position with capacity > 1 (BQ-P1).
 7. **Admissibility filter:** rerun every model on kernel-admissible histories only, using the PHP kernel as the generator's filter, so that no result depends on a history the domain refuses.
+
+## 8. Revision 2 (2026-10-09, `20261009_2145…`): admissibility and falsification
+
+Details are in `docs/publicdigit/membership/architecture/models/README.md`, Revision 2.
+
+- **G-4 (lapse vs suspend) holds on kernel-admissible histories:** all 540 were accepted by the real kernel; the kernel's membership equals the model's in 540 / 540; the two policies differ in 110. BQ-P3 remains a real decision.
+- **G-2 holds after filtering.** Two new design rules for any future Finance contract (hypotheses, Finance-owned):
+  - **IP-5a:** adjusting postings must carry an idempotency key made of **(service month, Membership log version)**. A content-based key fails under BD-REV; there is a counterexample.
+  - **IP-5b:** reconciliation must be serialised per member, or keyed (IP-5a). Unkeyed concurrent reconciliation double-posts.
+- **BQ-P10 sharpened:** "refund credit immediately" leads to money being owed again after a reinstating correction in 486 bounded histories. A carry-forward credit policy avoids the round trip. This is a business choice.
+- **G-3:** the access model depends on annulment, so it is UNCHK until Annul is implemented in the kernel. Its conclusion rests on ratified-but-unimplemented semantics, and is labelled so.
+- **Admissibility limit:** every result that depends on Annul / Correct is classified UNCHK. Promoting it requires those fact kinds in the kernel (a future lifecycle slice), not a change to the models.

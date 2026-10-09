@@ -19,3 +19,57 @@
 - Counts are numbers of enumerated cases in a deliberately small, uniform domain. **They are not probabilities.**
 
 **Traceability:** `docs/publicdigit/reviews/2026-10-09-participation-semantic-contract-draft.md` (G-2 … G-4) · `…-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §9.
+
+## Revision 2 (2026-10-09): kernel-admissibility filter and Finance falsification (Principal Reviewer `20261009_2145…` §3–§4)
+
+**New files:**
+- `kernel_admissibility.php`: a research bridge. It replays the Admit / End / re-Admit operations of a history through the **real Slice 0 kernel** (`decideAdmit` / `decideEnd`, G\*) and returns the refusal reason, or `isMember` per month. **No production code was changed.**
+- `kernel_filter.py`: classifies every generated history and reruns the model comparisons per class.
+- `g2_ledger_falsify.py`: the attack round on design H.
+
+**Reproduce** (repo root, PHP and vendor present; deterministic):
+
+```bash
+python3 -I docs/publicdigit/membership/architecture/models/kernel_filter.py        # ~15 s
+python3 -I docs/publicdigit/membership/architecture/models/g2_ledger_falsify.py    # ~10 s
+```
+
+**The kernel can judge only part of a history.** Slice 0 implements **Admit and End only**. Annul and Correct are ratified (2026-10-08) but **not implemented**, so histories containing them cannot be judged by the kernel. A waiver is a Finance fact, so the Membership kernel does not need to judge it.
+
+| Class | Meaning | g2 histories |
+|---|---|---|
+| **K-ADM** | no Membership correction; the kernel accepts every operation | 223 |
+| **K-REJ** | the kernel refuses an Admit / End operation | 0 (the generators only produce Ends after starts and non-overlapping re-admissions) |
+| **UNCHK-INV-EP-ok** | contains Annul / Correct (not judgeable); a Python re-implementation of the **ratified** INV-EP finds no overlap (a labelled hypothesis filter, **not** the kernel) | 3,948 |
+| **UNCHK-INV-EP-violated** | as above, but the final periods overlap, so ratified G\* would refuse the correction | 504 |
+
+**Results, before → after filtering** (counts of enumerated runs, not probabilities):
+
+| Result | Before (all) | K-ADM | UNCHK-ok | UNCHK-violated | Classification |
+|---|---|---|---|---|---|
+| kernel `isMember` = independent oracle | — | **223 / 223 agree** | n/a | n/a | DEMONSTRATED (the kernel vs an independent oracle, bounded) |
+| H matches the oracle per service month | 42,075 / 42,075 | 2,007 / 2,007 | 35,532 / 35,532 | 4,536 / 4,536 | BOUNDED-MODEL RESULT |
+| STORED (legacy) wrong | 38,106 | **1,368**, caused only by waivers recorded after the charge | 33,642 | 3,096 | COUNTEREXAMPLE (K-ADM ones are kernel-admissible) |
+| NAIVE recompute mutates closed months | 14,433 | 264 | 12,888 | 1,281 | COUNTEREXAMPLE |
+| lapse ≠ suspend (g4, with re-entry) | 110 / 540 | **all 540 histories K-ADM; 110 differ; kernel = model in 540 / 540** | — | — | BOUNDED-MODEL RESULT on kernel-admissible histories |
+
+**Effect of the filter:**
+- Every earlier conclusion **survives on kernel-admissible or ratified-consistent histories**.
+- 504 g2 histories rely on corrections that ratified G\* would refuse. They are reported separately and should be discounted.
+- The access model (g3) and `g2_obligations.py` use annulment only, so beyond their base Admit / End (6 / 6 admissible) they are UNCHK.
+
+**Finance falsification round** (`g2_ledger_falsify.py`; histories split by the classes above):
+
+| Attack | Result | Classification |
+|---|---|---|
+| F1: non-linear joining fee (3 in a period's first month, then 2), alongside the linear rule | H = oracle per month in every class | BOUNDED-MODEL RESULT |
+| F2: refund the credit when it appears; a later correction reinstates the charge | H still correct. In **486** UNCHK-ok histories, money refunded is **owed again** later | COUNTEREXAMPLE to "refund immediately" as a safe default → **business decision (BQ-P10)** |
+| F3: retried reconciliation in the same month | posts nothing extra (idempotent by construction) | BOUNDED-MODEL RESULT |
+| F4: reconciliation in reverse month order | the same per-month totals | BOUNDED-MODEL RESULT |
+| F5: **two concurrent reconcilers** on one snapshot, **no key** | double posting in 214 / 223 K-ADM (minimal: a single Admit) | **COUNTEREXAMPLE.** H *requires* serialisation or an idempotency key |
+| F5 with a **content key** (service month, target value) | **fails in 53** UNCHK-ok histories | **COUNTEREXAMPLE.** Minimal: Admit@0; End@2; CorrectEnd → 1 (recorded 2); Annul End (recorded 3). Under BD-REV month 1's target goes 2 → 0 → 2, and the content key suppresses the legitimate second adjustment |
+| F5 with a **version key** (service month, Membership log version) | 0 failures in every class | BOUNDED-MODEL RESULT → **design rule: key adjustments by source version, never by content** |
+
+**Unmodelled (not claimed):** interest, dunning, day-level pro-rata, multiple members, currency, re-opening closed periods, payments allocated to specific months, Finance's own corrections.
+
+**Semantic disagreements:** none open. The one found earlier (a correction of an annulled End) is decided by ratified BD-REV.

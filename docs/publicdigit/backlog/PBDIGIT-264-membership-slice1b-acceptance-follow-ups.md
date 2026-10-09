@@ -26,3 +26,8 @@
 - **F-5:** `SET TRANSACTION` must be the first statement and fails inside an outer transaction (25001). Choose N1 (refuse nested use) or N2.
 
 Still not authorised.
+
+**Principal Reviewer dispositions (2026-10-09, plan §10):**
+- F-4b (normalise) and F-5 N1 chosen; F-3 clarification approved.
+- The F-4b migration preflight and rollback requirements are in §10.2.
+- **Implementation still requires the Product Owner's authorisation.**
