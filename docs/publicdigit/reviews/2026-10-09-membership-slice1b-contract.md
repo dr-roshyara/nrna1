@@ -165,6 +165,8 @@ org_membership_commands                              — idempotency (IDEM-1…4
 - `PBDIGIT-261`: database-engine defaults contradict DB-1 (`config/database.php:18` falls back to `mysql`; `.env.example:15` `DB_CONNECTION=mysql`; `.ENVIRONMENT_CONFIG_MIGRATION.md:66`).
 - `PBDIGIT-262`: MySQL branches in legacy migrations (5 files) are dead code under DB-1.
 
+**PO clarification:** the MySQL application code has been removed; it was legacy. Both items are **legacy residue**, not supported paths.
+
 **Deployment consistency:**
 - CI (`.github/workflows/*`: `postgres:15`, `pgsql`), `phpunit.xml` and `CLAUDE.md` are consistent with DB-1.
 - The **production `.env` cannot be verified by me.** It is an operator prerequisite before any production use of the adapter; the fail-fast guard (T10) covers a mismatch at runtime.
