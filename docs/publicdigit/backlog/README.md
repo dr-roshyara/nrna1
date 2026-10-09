@@ -143,6 +143,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-264`](PBDIGIT-264-membership-slice1b-acceptance-follow-ups.md) | **Membership Slice 1b follow-ups** — far-date defect (a Member becomes unloadable after year 9999), Admit race-test gap, adapter parity, commands→facts FK | `EPIC-02` | `OPEN` · not authorised |
 | [`PBDIGIT-265`](PBDIGIT-265-full-membership-eligibility-bulk-and-single-predicates-differ.md) | **Full-Membership voter eligibility: the bulk list and the single-user decision use different predicates** (type voting rights, expiry) — may overlap IERVP-2 / entitlement retention | `EPIC-03` | `OPEN — investigation` · not authorised |
 | [`PBDIGIT-266`](PBDIGIT-266-live-routes-without-a-found-authorisation-guard.md) | 🔴 **Live routes whose authorisation guard could not be found** — `/admin/elections/{slug}/approve`, committee application review, governance member add/remove, legacy finance (static evidence; confirm by feature tests) | — | `OPEN — security investigation` · not authorised |
+| [`PBDIGIT-267`](PBDIGIT-267-membership-kernel-test-gaps-tg1-tg5.md) | **Membership kernel test gaps TG-1 … TG-5** (test-only; from the Slice 0 mutation measurement) — `fromLog` validation, evidence-field validation, whitespace ids, refused-decision misuse, `IntervalSet::equals` | `EPIC-02` | `OPEN` · not authorised (Human ARB ARB-TEST-01: separate, explicitly authorised work item) |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
