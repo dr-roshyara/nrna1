@@ -26,4 +26,10 @@ enum RefusalReason: string
 
     /** INV-9 (BD-I5): membership periods of one Member never overlap. */
     case OverlappingMembershipPeriods = 'overlapping_membership_periods';
+
+    /** INV-EP: a period's lifetime is one contiguous episode. */
+    case PeriodLifetimeNotContiguous = 'period_lifetime_not_contiguous';
+
+    /** INV-COV: consequences may move the owner of an instant, never remove membership coverage. */
+    case MembershipCoverageLost = 'membership_coverage_lost';
 }

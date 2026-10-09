@@ -17,6 +17,12 @@ final class InvariantSet
         if (self::periodsOverlap($resolved)) {
             $violations[] = RefusalReason::OverlappingMembershipPeriods;
         }
+        if (self::someLifetimeIsFragmented($resolved)) {
+            $violations[] = RefusalReason::PeriodLifetimeNotContiguous;
+        }
+        if (self::coverageLost($resolved)) {
+            $violations[] = RefusalReason::MembershipCoverageLost;
+        }
 
         return $violations;
     }
@@ -38,5 +44,30 @@ final class InvariantSet
         }
 
         return false;
+    }
+
+    /** INV-EP: every lifetime is at most one interval. */
+    private static function someLifetimeIsFragmented(ResolvedMember $resolved): bool
+    {
+        foreach ($resolved->periods() as $period) {
+            if (count($period->lifetime()->intervals()) > 1) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /** INV-COV: ⋃ lifetime = ⋃ BaseClaim. */
+    private static function coverageLost(ResolvedMember $resolved): bool
+    {
+        $lifetimes = IntervalSet::empty();
+        $claims = IntervalSet::empty();
+        foreach ($resolved->periods() as $period) {
+            $lifetimes = $lifetimes->union($period->lifetime());
+            $claims = $claims->union(IntervalSet::of($period->baseClaim()));
+        }
+
+        return !$lifetimes->equals($claims);
     }
 }
