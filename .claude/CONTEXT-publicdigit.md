@@ -19,6 +19,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 |---|---|
 | ✅ **Implemented** | Slice 0 kernel (`PBDIGIT-258`), Slice 1a port and concurrency (`PBDIGIT-259`), Slice 1b PostgreSQL adapter (`PBDIGIT-260`, migration **not rolled out**) |
 | 🔎 **Review** | `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`: independent review recommends ACCEPT WITH CONDITIONS; F-1 far-date defect → `PBDIGIT-264` |
+| 📄 **Plan** | `docs/publicdigit/reviews/2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` (264 plan, cutover gate C-1…C-10) · participation draft `2026-10-09-participation-semantic-contract-draft.md` · new `PBDIGIT-265` |
 | ❓ **Waiting** | Principal Reviewer: accept 1b; authorise 264; ratify D-1 … D-5(b) (consent basis, no pending member, End kinds, interim authority, effectiveAt range); approve the participation research contract |
 | ▶️ **Next** | `PBDIGIT-264` → Slice 2 (command wiring, no entry point) → Slice 3 (cutover R10) → Slice 4 (HTTP). **Nothing starts without authorisation** |
 

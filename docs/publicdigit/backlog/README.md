@@ -140,6 +140,7 @@ Small, low-risk defects get their own story file rather than waiting for their e
 | [`PBDIGIT-262`](PBDIGIT-262-legacy-migrations-carry-dead-mysql-branches.md) | **Legacy migrations carry dead MySQL branches** (5 migrations) | — | `OPEN — technical debt` · not authorised |
 | [`PBDIGIT-263`](PBDIGIT-263-test-base-class-claims-transaction-isolation-it-skips-on-postgresql.md) | **`Tests\TestCase` claims per-test transaction rollback it skips on PostgreSQL** — data persists between tests; the "zero corruption" safety comment is false | — | `OPEN — technical debt` · not authorised |
 | [`PBDIGIT-264`](PBDIGIT-264-membership-slice1b-acceptance-follow-ups.md) | **Membership Slice 1b follow-ups** — far-date defect (a Member becomes unloadable after year 9999), Admit race-test gap, adapter parity, commands→facts FK | `EPIC-02` | `OPEN` · not authorised |
+| [`PBDIGIT-265`](PBDIGIT-265-full-membership-eligibility-bulk-and-single-predicates-differ.md) | **Full-Membership voter eligibility: the bulk list and the single-user decision use different predicates** (type voting rights, expiry) — may overlap IERVP-2 / entitlement retention | `EPIC-03` | `OPEN — investigation` · not authorised |
 
 ### Constitutional Governance Runtime migration — TODO (`PBDIGIT-76` … `PBDIGIT-157`)
 
