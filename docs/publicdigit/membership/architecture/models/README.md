@@ -92,3 +92,17 @@ All models are registered, with what they do and do not establish, in `docs/publ
 - MSI 83 %; covered-code MSI 92 %;
 - every surviving mutant classified;
 - the `continue → break` mutant at `Resolution.php:29`, reported as "uncovered", was killed by 11 tests when run directly.
+
+## Revision 5 (2026-10-09): correction-algebra oracle (`g6_correction_oracle.py`, `g6_checks.py`)
+
+**What it is:** an executable oracle of the **ratified** correction algebra: final proof §14.2 (live, active chain, value, BaseClaim, frozen `g2` consequences, LiveCut, ResolvedLifetime), G\* (INV-9 / EP / COV), and act N-3 refusals.
+
+**Results:**
+- **Agreement with the real kernel:** 400 / 400 on the Admit / End fragment.
+- **L ≤ 4 (H = 5):** 14,365 accepted histories; the INV-COV safety net never fires; Annul(Annul) restores 90 / 90.
+- **Remedy coverage** (histories ≤ 3 facts): every wrong-Admit-date, wrong-End-date, spurious-Admit and spurious-End error is repairable by one ratified operation (418 / 418 operation checks).
+- **BD-REV-ER:** a correction absorbs a whole live period in 35 histories; refusing them changes nothing else.
+
+**Not modelled:** a wrong holder, authority, Renew / Suspend / ChangeType, concurrency. Counts are not probabilities.
+
+Details: `docs/publicdigit/reviews/2026-10-09-membership-integrity-report-and-correction-oracle.md`.
