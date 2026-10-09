@@ -228,3 +228,43 @@ The target schema takes nothing from them (§22).
 **Story:** none is created until 1b is authorised. The next free ID was `PBDIGIT-260` at the time of writing.
 
 **STOP.**
+
+---
+
+## I. Addendum (2026-10-09, instruction `20261009_0922_implementation_PublicDigit Membership.md`)
+
+**Agreement:** I agree with the instruction in full. It orders: search for an authoritative EP-Q6 decision → otherwise a decision request → STOP. I follow it.
+
+**I.1 Search for an authoritative EP-Q6 decision: none found.**
+
+| Source | Content | Class |
+|---|---|---|
+| ratification act; MA §2 (`effectiveAt` = valid time) | valid time exists; its granularity is not stated | ratified, **silent** |
+| FDR RA-15 | "imprecise legacy **dates** are normalised … precision is kept as metadata" | ratified; concerns migration precision, **not** the granularity of the model |
+| `docs/publicdigit/membership/20260403_0003_membership_management.md:113,184,196` | "expiry **date**", "new expiry date calculated (extends from current expiry or today)" | user documentation of the legacy behaviour: **repository observation** |
+| Election Manifesto (EM-\*) | nothing on membership time | — |
+| EP-01 EP-I1, PDR §11, this review §D | recommend T1 | **hypotheses / recommendations** |
+
+**Result: EP-Q6 is undecided.** The decision request in §D stands. T1 (calendar date) is recommended as a hypothesis only.
+
+**I.2 Database engine and test setup (instruction §4.4): a discrepancy is reported, not adapted to.**
+
+| Item | Finding |
+|---|---|
+| `config/database.php:18` | default `env('DB_CONNECTION', 'mysql')`: **the code's fallback is MySQL** |
+| `phpunit.xml:67,70` | `pgsql`, `nrna_test` |
+| `CLAUDE.md` (project overview) | "Database: PostgreSQL" |
+| migrations | 13 driver-conditional migrations (MySQL and PostgreSQL branches) |
+| PHP extensions | `pdo_pgsql` and `pdo_mysql` both present |
+| test database | functional (`tests/Feature/Election/AdmissionEvidenceSchemaTest.php`: 4 tests OK on `nrna_test`) |
+| production engine | **unknown to me**: it lives in `.env`, which I am not permitted to read |
+
+**Consequence:** the candidate design (§E) uses PostgreSQL features: `ON CONFLICT … DO NOTHING RETURNING`, `jsonb`, `timestamptz`. If production is PostgreSQL, the design stands. If it is MySQL (or both must be supported), the adapter needs driver-specific statements (`INSERT IGNORE` / `json` / `datetime(6)` with an explicit UTC convention), and the race-evidence argument (B-2) must be redone for InnoDB.
+
+**Decision / confirmation needed: DB-1, the production database engine.**
+
+**I.3 Additions to the test plan from the instruction (§8):**
+- **atomic rollback when part of an append fails:** inject a failure after the fact insert; the version and key rows must be unchanged;
+- **prevention of fact updates / deletes through the adapter:** the adapter offers none; an attempted raw UPDATE is optionally blocked by the trigger (B-6).
+
+**Status: STOP.** Waiting on EP-Q6 and DB-1. No story, migration or model was created.
