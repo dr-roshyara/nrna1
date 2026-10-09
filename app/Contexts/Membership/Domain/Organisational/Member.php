@@ -88,6 +88,16 @@ final readonly class Member
         if ($this->usesFactId($id)) {
             return Decision::refused(RefusalReason::DuplicateFactId);
         }
+        $target = $this->resolve()->period($period);
+        if ($target === null) {
+            return Decision::refused(RefusalReason::PeriodNotFound);
+        }
+        if (!$target->baseClaim()->isOpenEnded()) {
+            return Decision::refused(RefusalReason::PeriodAlreadyEnded);
+        }
+        if (!$target->baseClaim()->start()->isBefore($effectiveAt)) {
+            return Decision::refused(RefusalReason::EndNotAfterPeriodStart);
+        }
 
         return $this->accept(new End($id, $period, $effectiveAt, $kind, $provenance, $decidedAt));
     }
