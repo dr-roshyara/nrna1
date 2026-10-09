@@ -7,7 +7,7 @@
 
 | | |
 |---|---|
-| **Status** | 🟡 **AUTHORISED (PO, 2026-10-09)**: Slice 0 only. Slice 1a needs a separate approval |
+| **Status** | 🟢 **GREEN WITH CONDITIONS** (2026-10-09; implementation review `docs/publicdigit/reviews/2026-10-09-membership-slice0-tdd-implementation-review.md`); awaiting Principal Reviewer approval. Condition: confirm D-1 (`DuplicateFactId`). Authorised by the PO on 2026-10-09 for Slice 0 only; Slice 1a needs a separate approval |
 | **Contract** | `docs/publicdigit/reviews/2026-10-08-membership-slice0-semantic-design-contract.md` (§4 scope, §5 non-scope) |
 | **Principal Reviewer decisions** (from the instruction) | **C-S0-1:** End with `effectiveAt ≤ period start` → refused. **C-S0-2:** an Admit without an initial term has term = ∅, so it is Lapsed, not InForce, and IsMember is false. No default term, and no ∞ by default |
 | **Baseline** | the ratified architecture (act `2026-10-08-membership-architecture-ratification-act.md`), EP-01 Rev 1, the principal design review |

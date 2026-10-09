@@ -1,6 +1,6 @@
 # Plan: Membership Slice 0, TDD implementation (PBDIGIT-258)
 
-**Status:** 🟢 APPROVED by the PO's instruction of 2026-10-09 (Slice 0 only) · **Created:** 2026-10-09 · **Story:** `PBDIGIT-258`
+**Status:** ✅ **IMPLEMENTED, GREEN WITH CONDITIONS** (review `docs/publicdigit/reviews/2026-10-09-membership-slice0-tdd-implementation-review.md`); awaiting Principal Reviewer approval · approved by the PO's instruction of 2026-10-09 (Slice 0 only) · **Created:** 2026-10-09 · **Story:** `PBDIGIT-258`
 **Governing documents:** the Slice 0 contract (`docs/publicdigit/reviews/2026-10-08-membership-slice0-semantic-design-contract.md`), EP-01 Rev 1, the ratified architecture.
 **Session-bootstrap observation:**
 - `php .claude/scripts/session-bootstrap.php` reports UNRESOLVABLE / UNRESOLVED.
@@ -27,21 +27,25 @@ Implement the Slice 0 semantic kernel exactly as contracted, RED before GREEN, w
 
 ## Task checklist (RED → GREEN per behaviour)
 
-- [ ] interval algebra (`Interval`, `IntervalSet`), with `TimePoint` / `Instant`
-- [ ] identity and provenance value objects
-- [ ] Admit decision + identity + term cases A / B / C
-- [ ] End decision (C-S0-1), with INV-2 and INV-3
-- [ ] Resolution predicates, re-entry, gap preservation
-- [ ] InvariantSet (INV-EP, INV-9, INV-COV) + G\* ordering
-- [ ] KnownAt
-- [ ] architecture purity + non-circularity test
-- [ ] independent pointwise oracle + exhaustive bounded test + differential counts
-- [ ] seeded property tests + metamorphic tests
-- [ ] developer guide `developer_guide/membership/` + implementation review
+- [x] interval algebra (`Interval`, `IntervalSet`), with `TimePoint` / `Instant`
+- [x] identity and provenance value objects
+- [x] Admit decision + identity + term cases A / B / C
+- [x] End decision (C-S0-1), with INV-2 and INV-3
+- [x] Resolution predicates, re-entry, gap preservation
+- [x] InvariantSet (INV-EP, INV-9, INV-COV) + G\* ordering
+- [x] KnownAt
+- [x] architecture purity + non-circularity test
+- [x] independent pointwise oracle + exhaustive bounded test + differential counts
+- [x] seeded property tests + metamorphic tests
+- [x] developer guide `developer_guide/membership/` + implementation review
 
 ## Progress
 
 - 2026-10-09: plan created.
+- 2026-10-09: 5 RED→GREEN cycles + fitness and verification layers (`187792b32` … `bc91da46a`). 59 unit + 5 architecture tests green.
+  - Exhaustive T≤5 / L≤5: 0 mismatches; counts equal the research model's.
+  - Pre-existing unrelated failures were confirmed on the baseline.
+- Conditions: D-1 (`DuplicateFactId`) needs reviewer confirmation; the README index row is pending.
 
 ## Risks
 
