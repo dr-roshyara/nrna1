@@ -16,7 +16,8 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 /**
  * The shared command loop of Slice 1a (contract §4):
  *
- *   idempotency pre-check (IDEM-1)
+ *   idempotency pre-check (IDEM-1), repeated when the domain refuses (an identical command may
+ *   have been applied meanwhile; found by the PostgreSQL race test, PBDIGIT-260)
  *   repeat ≤ MAX_ATTEMPTS:  load → authorise → decide (guards + G*) → append(expected version)
  *     on ConcurrencyConflict: discard the decision and start again from load (R-1a-2: never reuse)
  */
@@ -36,11 +37,9 @@ final class DecideAndAppend
      */
     public function run(TenantId $tenant, IdempotencyKey $key, string $fingerprint, string $actor, MembershipAct $act, \Closure $load, \Closure $decide): CommandOutcome
     {
-        $seen = $this->repository->appliedCommand($tenant, $key);
+        $seen = $this->answerFromKey($tenant, $key, $fingerprint);
         if ($seen !== null) {
-            return $seen->fingerprint() === $fingerprint
-                ? CommandOutcome::ofAppended($seen->appended())
-                : CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict);
+            return $seen;
         }
 
         for ($attempt = 1; $attempt <= self::MAX_ATTEMPTS; $attempt++) {
@@ -54,7 +53,10 @@ final class DecideAndAppend
             }
             $decision = $decide($member, $authorisation->evidence());
             if (!$decision->isAccepted()) {
-                return CommandOutcome::refusedByDomain($decision->refusal());
+                // IDEM-1 / IDEM-3: the same command may have been applied after the pre-check (the refusal
+                // is then caused by its own fact). The key row commits atomically with that fact.
+                return $this->answerFromKey($tenant, $key, $fingerprint)
+                    ?? CommandOutcome::refusedByDomain($decision->refusal());
             }
             $result = $this->repository->append($tenant, $member->id(), $decision, $key, $fingerprint);
             switch ($result->outcome()) {
@@ -71,5 +73,18 @@ final class DecideAndAppend
         }
 
         return CommandOutcome::refused(ApplicationRefusal::ConcurrentModification);
+    }
+
+    /** The original outcome of an already-applied key, or null if the key is unused. */
+    private function answerFromKey(TenantId $tenant, IdempotencyKey $key, string $fingerprint): ?CommandOutcome
+    {
+        $seen = $this->repository->appliedCommand($tenant, $key);
+        if ($seen === null) {
+            return null;
+        }
+
+        return $seen->fingerprint() === $fingerprint
+            ? CommandOutcome::ofAppended($seen->appended())
+            : CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict);
     }
 }
