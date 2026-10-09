@@ -181,7 +181,10 @@ class ElectionPolicyStateAwareTest extends TestCase
             'nomination_completed' => true,
             'voting_starts_at' => now()->subHours(1),
             'voting_ends_at' => now()->addHours(2),
+            'voting_locked' => true,   // voting explicitly opened (ElectionLifecycleEngineImpl step 5)
         ]);
+        // EM-VOT-002 (PBDIGIT-64): VotingActive also requires an approved candidate.
+        \Tests\Support\ElectionScenarioFactory::addApprovedCandidate($election);
 
         $snapshot = ElectionLifecycle::of($election)->snapshot();
 

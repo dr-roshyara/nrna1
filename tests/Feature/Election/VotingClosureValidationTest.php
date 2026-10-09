@@ -99,6 +99,11 @@ class VotingClosureValidationTest extends TestCase
     /** @test */
     public function close_voting_works_even_if_voting_started_in_past(): void
     {
+        // VotingActive requires voting to be explicitly opened AND the window open
+        // (ElectionLifecycleEngineImpl step 5): the shared setUp() leaves voting unopened
+        // (other tests in this class rely on that), so this test opens it as its precondition.
+        $this->election->update(['voting_locked' => true, 'voting_locked_at' => now()->subDay()]);
+
         // Verify starting state via engine (not raw column)
         $initialDerived = app(ElectionLifecycleEngineImpl::class)->getState($this->election);
         $this->assertEquals(ElectionLifecycleState::VotingActive, $initialDerived);

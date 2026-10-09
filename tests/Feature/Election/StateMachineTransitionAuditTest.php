@@ -48,11 +48,18 @@ class StateMachineTransitionAuditTest extends TestCase
         $voter = User::factory()->forOrganisation($this->organisation)->create();
         $committee = User::factory()->forOrganisation($this->organisation)->create();
 
+        // Real setup_administration derivation facts (approved + setup started), replacing the stale raw
+        // 'state' string — the transition goes through the constitutional Guard, which derives the state
+        // (same correction as complete_nomination_does_not_change_state_to_voting below).
         $this->election->update([
-            'state'           => 'administration',
+            'approved_at'      => now()->subDay(),
+            'setup_started_at' => now()->subHours(2),
+            'state'            => 'setup_administration',   // persisted column synced to the derived state
             'posts_count'     => 1,
             'voters_count'    => 1,
         ]);
+        // As in a real request: the has_voters precondition reads tenant-scoped memberships.
+        \App\Services\TenantContext::set($this->organisation->id);
 
         Post::factory()->create(['election_id' => $this->election->id]);
 
@@ -80,15 +87,21 @@ class StateMachineTransitionAuditTest extends TestCase
             'suspension_status' => 'none',
         ]);
 
+        // The ConstitutionalTransitionGuard authorises the AUTHENTICATED principal (Auth::user()), as in the
+        // complete_nomination tests below.
+        $this->actingAs($this->chief);
         $this->election->completeAdministration('Starting nomination phase', $this->chief->id);
 
+        // 'setup_administration' / 'setup_nomination' are the current constitutional names for the phases this
+        // test calls "administration" / "nomination" (ElectionConstitution: complete_administration) — the
+        // assertion's substance (an audit record of that transition) is unchanged.
         $transitions = ElectionStateTransition::where('election_id', $this->election->id)
-            ->where('to_state', 'nomination')
+            ->where('to_state', 'setup_nomination')
             ->get();
 
         $this->assertNotEmpty($transitions, 'No ElectionStateTransition record found for complete_administration');
-        $this->assertEquals('administration', $transitions->first()->from_state);
-        $this->assertEquals('nomination', $transitions->first()->to_state);
+        $this->assertEquals('setup_administration', $transitions->first()->from_state);
+        $this->assertEquals('setup_nomination', $transitions->first()->to_state);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -155,10 +168,8 @@ class StateMachineTransitionAuditTest extends TestCase
             'status'          => 'active',
         ]);
 
-        $this->election->update([
-            'state'              => 'results_pending',
-            'results_published'  => false,
-        ]);
+        $this->election->update($this->countingFacts());
+        $this->actingAs($chief2);   // the Guard authorises the authenticated principal (publish_results: chief)
 
         $this->election->transitionTo(
             \App\Domain\Election\StateMachine\Transition::manual(
@@ -168,7 +179,9 @@ class StateMachineTransitionAuditTest extends TestCase
             )
         );
 
-        $this->assertEquals('results', $this->election->fresh()->state);
+        // 'results_published' is the current constitutional name for the "results" state (ElectionConstitution:
+        // publish_results → results_published); the substance — publishing moves the election to results — is unchanged.
+        $this->assertEquals('results_published', $this->election->fresh()->state);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]
@@ -183,10 +196,8 @@ class StateMachineTransitionAuditTest extends TestCase
             'status'          => 'active',
         ]);
 
-        $this->election->update([
-            'state'              => 'results_pending',
-            'results_published'  => false,
-        ]);
+        $this->election->update($this->countingFacts());
+        $this->actingAs($chief2);   // the Guard authorises the authenticated principal (publish_results: chief)
 
         $this->election->transitionTo(
             \App\Domain\Election\StateMachine\Transition::manual(
@@ -196,13 +207,35 @@ class StateMachineTransitionAuditTest extends TestCase
             )
         );
 
+        // 'counting' / 'results_published' are the current constitutional names for "results_pending" /
+        // "results" (ElectionConstitution: publish_results counting → results_published); substance unchanged.
         $transitions = ElectionStateTransition::where('election_id', $this->election->id)
-            ->where('from_state', 'results_pending')
-            ->where('to_state', 'results')
+            ->where('from_state', 'counting')
+            ->where('to_state', 'results_published')
             ->get();
 
         $this->assertNotEmpty($transitions, 'No ElectionStateTransition record found for publish_results');
-        $this->assertEquals('results_pending', $transitions->first()->from_state);
-        $this->assertEquals('results', $transitions->first()->to_state);
+        $this->assertEquals('counting', $transitions->first()->from_state);
+        $this->assertEquals('results_published', $transitions->first()->to_state);
+    }
+
+    /**
+     * Real Counting derivation facts (replacing the stale raw 'results_pending' state string): setup completed,
+     * voting legitimately opened, voting window ended, results not yet published (ElectionLifecycleEngineImpl).
+     */
+    private function countingFacts(): array
+    {
+        return [
+            'approved_at'              => now()->subDays(5),
+            'administration_completed' => true,
+            'nomination_completed'     => true,
+            'voting_locked'            => true,
+            'voting_starts_at'         => now()->subDays(2),
+            'voting_ends_at'           => now()->subHour(),
+            'results_published'        => false,
+            // Persisted column synced to the derived state (the ElectionScenarioFactory convention): the audit
+            // record's from_state is read from the persisted column (Election::getCurrentStateAttribute).
+            'state'                    => 'counting',
+        ];
     }
 }

@@ -10,6 +10,7 @@ use App\Models\UserOrganisationRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 class ElectionDashboardAccessTest extends TestCase
@@ -194,6 +195,11 @@ class ElectionDashboardAccessTest extends TestCase
     {
         // Election starts in 'voting_active' state
         $this->assertEquals('voting_active', $this->election->state);
+        // The persisted column alone does not make an election voting: the lifecycle is derived from facts.
+        // VotingActive needs voting explicitly opened + the window open + an approved candidate
+        // (ElectionLifecycleEngineImpl step 5; EM-VOT-002 / PBDIGIT-64) — otherwise close_voting is refused.
+        $this->election->update(['voting_locked' => true, 'voting_locked_at' => now()->subHour()]);
+        ElectionScenarioFactory::addApprovedCandidate($this->election);
 
         // Close voting - transitions to 'counting' state
         $this->actingAs($this->chief)

@@ -63,7 +63,19 @@ class VotingEntitlementAmbientInvarianceTest extends TestCase
                 'type'                  => 'real',
                 'status'                => 'active',
                 'voter_source_strategy' => 'election_only',
+                // A votable election (the TE "intended successful outcome" is the code step rendering): the
+                // lifecycle is derived from facts, and factory defaults derive Draft. Same facts as
+                // ElectionScenarioFactory::votingActive().
+                'approved_at'                 => now()->subDays(2),
+                'administration_completed'    => true,
+                'administration_completed_at' => now()->subDay(),
+                'nomination_completed'        => true,
+                'nomination_completed_at'     => now()->subHours(23),
+                'voting_starts_at'            => now()->subHour(),
+                'voting_ends_at'              => now()->addHour(),
+                'voting_locked'               => true,
             ]);
+        \Tests\Support\ElectionScenarioFactory::addApprovedCandidate($this->electionA);   // EM-VOT-002
 
         // Admitted, active voter of election A (org A) — the ENT fact.
         ElectionMembership::create([

@@ -14,7 +14,10 @@ class OrganisationFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->company();
+        // unique(): the slug is derived from the name and is UNIQUE in the database. Organisations committed by
+        // tests that run without a wrapping transaction (Tests\TestCase skips it on PostgreSQL) stay for the rest
+        // of the run, so two random company names could collide ("organisations_slug_unique" flake).
+        $name = $this->faker->unique()->company();
 
         return [
             'name' => $name,

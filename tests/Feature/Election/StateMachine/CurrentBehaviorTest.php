@@ -10,6 +10,7 @@ use App\Models\Organisation;
 use App\Models\User;
 use App\Models\UserOrganisationRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Support\ElectionScenarioFactory;
 use Tests\TestCase;
 
 /**
@@ -263,6 +264,7 @@ class CurrentBehaviorTest extends TestCase
                 'voting_starts_at' => now()->subHour(),   // Past
                 'voting_ends_at' => now()->addHours(3),   // Future
             ]);
+        ElectionScenarioFactory::addApprovedCandidate($this->election);   // EM-VOT-002 fact (PBDIGIT-64)
 
         $state = ElectionLifecycle::of($this->election)->state();
 
@@ -648,6 +650,7 @@ class CurrentBehaviorTest extends TestCase
                 'voting_starts_at' => now()->subHour(),
                 'voting_ends_at' => now()->addHours(3),
             ]);
+        ElectionScenarioFactory::addApprovedCandidate($this->election);   // EM-VOT-002 fact (PBDIGIT-64)
 
         ElectionOfficer::create([
             'organisation_id' => $this->org->id,
@@ -735,6 +738,7 @@ class CurrentBehaviorTest extends TestCase
                 'voting_starts_at' => now()->subHour(),
                 'voting_ends_at' => now()->addHours(2),
             ]);
+        ElectionScenarioFactory::addApprovedCandidate($this->election);   // EM-VOT-002 fact (PBDIGIT-64)
 
         $lifecycle = ElectionLifecycle::of($this->election);
 
@@ -832,6 +836,7 @@ class CurrentBehaviorTest extends TestCase
                 'voting_starts_at' => now()->subHour(),
                 'voting_ends_at' => now()->addHours(2),
             ]);
+        ElectionScenarioFactory::addApprovedCandidate($this->election);   // EM-VOT-002 fact (PBDIGIT-64)
 
         $lifecycle = ElectionLifecycle::of($this->election);
         $actions = $lifecycle->allowedActions();

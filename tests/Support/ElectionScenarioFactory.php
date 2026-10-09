@@ -202,26 +202,7 @@ final class ElectionScenarioFactory
         // declared contract (assertDerivedState below). Domain-fixture
         // correction, not test convenience; no consumer observes candidates
         // (34-call-site classification, 2026-08-13).
-        $post = \App\Models\Post::factory()
-            ->create([
-                'election_id' => $election->id,
-                'organisation_id' => $org->id,
-                'name' => 'Test Position',
-                'is_national_wide' => true,
-            ]);
-        $candidate = User::factory()->forOrganisation($org)->create();
-        \App\Models\Candidacy::factory()
-            ->create([
-                'organisation_id' => $org->id,
-                'post_id' => $post->id,
-                'user_id' => $candidate->id,
-                'status' => 'approved',
-            ]);
-        $election->update([
-            'candidates_count' => 1,
-            'posts_count' => 1,
-            'pending_candidacies_count' => 0,
-        ]);
+        self::addApprovedCandidate($election);
 
         // Verify engine derives correct state and SYNC IT TO DATABASE
         self::assertDerivedState($election, ElectionLifecycleState::VotingActive);
@@ -449,6 +430,36 @@ final class ElectionScenarioFactory
      *
      * Must never be called outside the factory — prevents floating governance actors.
      */
+    /**
+     * EM-VOT-002 (Election Manifesto §4a, adopted; PBDIGIT-64): VotingActive requires at least one approved
+     * candidate on every path, including the derived one (ElectionLifecycleEngineImpl step 5). Fixtures that
+     * build a voting election by hand add this domain fact here — one shared helper instead of per-test copies.
+     */
+    public static function addApprovedCandidate(Election $election): void
+    {
+        $post = \App\Models\Post::factory()
+            ->create([
+                'election_id' => $election->id,
+                'organisation_id' => $election->organisation_id,
+                'name' => 'Test Position',
+                'is_national_wide' => true,
+            ]);
+        $organisation = Organisation::withoutGlobalScopes()->findOrFail($election->organisation_id);
+        $candidate = User::factory()->forOrganisation($organisation)->create();
+        \App\Models\Candidacy::factory()
+            ->create([
+                'organisation_id' => $election->organisation_id,
+                'post_id' => $post->id,
+                'user_id' => $candidate->id,
+                'status' => 'approved',
+            ]);
+        $election->update([
+            'candidates_count' => 1,
+            'posts_count' => 1,
+            'pending_candidacies_count' => 0,
+        ]);
+    }
+
     private static function createChiefOfficer(User $chief, Election $election, Organisation $org): void
     {
         ElectionOfficer::create([

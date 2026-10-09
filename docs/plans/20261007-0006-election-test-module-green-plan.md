@@ -74,4 +74,6 @@ For each story:
     - Cause: the redundant `use RefreshDatabase` re-imported the trait's `beginDatabaseTransaction()`, overriding `Tests\TestCase`'s pgsql skip. The election stayed uncommitted and invisible to the separate `pgsql_audit` connection (ADR_20260806_1340): an FK violation.
     - Fix: remove the redeclaration (the convention of `SecurityEventRecorderTest` / `AuditEventTransactionIsolationTest`).
   - **E — `TimelineEditing\TimelineCapabilityAuthorizationTest` (8): NOT a missing seed.** The setup relies on three things that do not exist: the permission `manage_elections` (no producer or checker in `app/`), the factory state `inDraftState()` (undefined), and `update(['state' => …])` (the lifecycle is derived). The endpoint authorises `manageSettings` (election Chief / Deputy) + `ElectionLifecycle::canEditTimeline()`. It is outdated against the authority and state model, so it moves to **story 3**.
-- [ ] Stories 2–5
+- [x] Story 1 committed `3273ce05c` (PBDIGIT-255); clean solo module run: 74 failed, 0 new, 9 fixed.
+- [x] **Story 2 (PBDIGIT-256):** 19 lifecycle-fixture tests fixed (see the story file). New shared helper `ElectionScenarioFactory::addApprovedCandidate()`. Finding for story 5: audit `from_state` is read from the persisted column.
+- [ ] Stories 3–5

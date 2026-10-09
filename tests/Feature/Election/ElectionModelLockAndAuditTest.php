@@ -165,11 +165,17 @@ class ElectionModelLockAndAuditTest extends TestCase
 
     public function test_complete_administration_still_works(): void
     {
+        // complete_administration goes through the ConstitutionalTransitionGuard: the election must DERIVE
+        // setup_administration (approved + setup started), and the authenticated actor must be its chief.
         $election = Election::factory()->create([
+            'approved_at' => now()->subDay(),
+            'setup_started_at' => now()->subHours(2),
+            'state' => 'setup_administration',   // persisted column synced to the derived state
             'administration_completed' => false,
             'voting_starts_at' => now()->addDays(5),
             'voting_ends_at' => now()->addDays(6),
         ]);
+        \App\Services\TenantContext::set($election->organisation_id);   // as in a real request
 
         // Create at least one post
         \App\Models\Post::factory()->create([
@@ -187,6 +193,17 @@ class ElectionModelLockAndAuditTest extends TestCase
         ]);
 
         $user = User::factory()->create();
+        \App\Models\ElectionOfficer::create([
+            'user_id' => $user->id,
+            'election_id' => $election->id,
+            'organisation_id' => $election->organisation_id,
+            'role' => 'chief',
+            'status' => 'active',
+            'appointed_by' => $user->id,
+            'appointed_at' => now(),
+            'accepted_at' => now(),
+        ]);
+        $this->actingAs($user);
         $election->completeAdministration('Test reason', $user->id);
 
         $this->assertTrue($election->fresh()->administration_completed);

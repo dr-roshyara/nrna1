@@ -65,6 +65,10 @@ class EmVot002ApprovedCandidateBeforeVotingTest extends TestCase
                 'nomination_completed'     => false,
                 'voting_starts_at'         => now()->subHour(),
                 'voting_ends_at'           => now()->addHour(),
+                // Voting explicitly opened (ElectionLifecycleEngineImpl step 5 requires it alongside the
+                // open window). Without it no election can compute to voting_active, and the negative
+                // EM-VOT-002 tests below would pass vacuously — with it, ONLY the candidate rule decides.
+                'voting_locked'            => true,
                 'timezone'                 => 'Europe/Berlin',
             ], $overrides));
     }

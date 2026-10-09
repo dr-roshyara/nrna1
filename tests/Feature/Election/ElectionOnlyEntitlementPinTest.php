@@ -106,6 +106,22 @@ class ElectionOnlyEntitlementPinTest extends TestCase
 
     public function test_election_only_voter_without_member_aggregate_passes_the_ballot_gate(): void
     {
+        // Admission at the code step requires a votable election: the lifecycle is derived from facts, and
+        // Election::factory() defaults derive Draft. Give election X the facts of a voting election (same as
+        // ElectionScenarioFactory::votingActive(); EM-VOT-002 approved candidate). setUp() stays unchanged —
+        // the other tests in this class assert refusals.
+        $this->electionX->update([
+            'approved_at'                 => now()->subDays(2),
+            'administration_completed'    => true,
+            'administration_completed_at' => now()->subDay(),
+            'nomination_completed'        => true,
+            'nomination_completed_at'     => now()->subHours(23),
+            'voting_starts_at'            => now()->subHour(),
+            'voting_ends_at'              => now()->addHour(),
+            'voting_locked'               => true,
+        ]);
+        \Tests\Support\ElectionScenarioFactory::addApprovedCandidate($this->electionX);
+
         $this->activeMembershipInX();
 
         // The adopted rule concerns the Organisation Member aggregate:

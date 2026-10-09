@@ -181,6 +181,9 @@ class VotingButtonsStateMachineTest extends TestCase
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
             'administration_completed' => true,
+            // VotingActive requires voting to be explicitly opened AND the window open
+            // (ElectionLifecycleEngineImpl step 5) — the fact this arrange step omitted.
+            'voting_locked' => true,
         ]);
 
         // Sync state column with engine-derived state
@@ -270,6 +273,7 @@ class VotingButtonsStateMachineTest extends TestCase
             'nomination_completed_at' => now(),
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
+            'voting_locked' => true,   // voting explicitly opened (engine step 5)
         ]);
 
         // Sync state column with engine-derived state
@@ -339,6 +343,7 @@ class VotingButtonsStateMachineTest extends TestCase
             'nomination_completed_at' => now(),
             'voting_starts_at' => now()->subHour(),
             'voting_ends_at' => now()->addHour(),
+            'voting_locked' => true,   // voting explicitly opened (engine step 5)
         ]);
 
         // Sync state column with engine-derived state

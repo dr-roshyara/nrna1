@@ -54,6 +54,7 @@ class ElectionSuspensionTest extends TestCase
             'nomination_completed' => true,
             'voting_starts_at' => now()->subHours(2),  // voting is currently active
             'voting_ends_at' => now()->addHours(6),
+            'voting_locked' => true,   // voting explicitly opened (ElectionLifecycleEngineImpl step 5)
             'results_published_at' => null,
             'suspended_at' => null,
             'suspended_lifecycle_context' => null,
