@@ -237,3 +237,37 @@ php vendor/bin/infection … (scope as §5)                                     
 - persistence unverified (no isolated DB);
 - D-COR-2 has no independent-oracle coverage;
 - recordedAt ties are not enumerated by T-H1.
+
+## 12. Independent-review conditions: disposition (2026-10-10; append-only)
+
+**Source:** `2026-10-10-membership-c1-correction-independent-review.md` (fresh-context reviewer; report verbatim in its §1).
+**Recommendation (quoted):** "ACCEPT WITH EXPLICIT CONDITIONS". No BLOCKING findings.
+**Authority for this section:** Human PO / ARB decisions G1, G2, G2-b (gate decision record row 5, C-AMEND-1). **G3 (formal acceptance) is PENDING.**
+
+| Condition | Disposition | Recorded in |
+|---|---|---|
+| G-1: sensitivity-kit deviations | **acknowledged**; runner hardening is separate work (D-A1), proposed as `PBDIGIT-269` (OPEN, not authorised; D-A2) | this section; plan 20261010-1144 Progress; guide 05 Pitfalls |
+| G-2: authority evidence and "reason" in provenance → C-3 | **adopted** as C-3 entry criteria; "reason" stays OPEN under CQ-3 (D-A4) | contract §14.5 annotation C-AMEND-1; register row 5 |
+| G-3: F-1 and isolated-DB persistence → C-4 | **adopted** as C-4 entry criteria | contract §14.5 annotation C-AMEND-1; register row 5 |
+
+**Sensitivity-kit facts:**
+- The runner copies the **working tree**, not `git archive HEAD` as plan CP-2 specified.
+- It does **not abort** when the canary M0 survives; it marks the run failed and continues.
+- It counts **any non-zero exit** as KILLED.
+
+**It therefore does not by itself guarantee that a kill is an assertion failure.** The ten current kills (M0 – M9) were each confirmed as a genuine assertion failure at the intended line by the independent reviewer (review §1 E), with the controls passing and `app/` / `tests/` unchanged. That manual confirmation covers these ten kills only; it is not evidence that the runner classifies every future mutant correctly.
+
+**Evidence:**
+- commits `9ae69b7bc`, `fccf5b778`, `e96d12a5d`, `d90bf8af9`; `git diff 5765b9fa3 -- app/` is empty;
+- targeted results (independent review, re-run): Organisational domain 89 tests, application 34, architecture 12.
+
+**The wider Membership unit directories:** running them gives **27 errors** (Domain, 265 tests) and **29 errors** (Application, 81 tests), in files C-1 did not touch. They were **not re-investigated**. `PBDIGIT-167` (OPEN, "re-measure first") may be the relevant owner; that has not been established. **The full Membership suite does not pass.**
+
+**Limitations (unchanged):**
+- D-COR-2 is not in the independent Python oracle (the developer-written wrapper adds it);
+- equal `recordedAt` values are not enumerated by the K-H1 property;
+- the evidence is bounded (H = 5, length ≤ 5), not a proof;
+- Infection was re-run only by the developer (92 % / 95 %); the independent reviewer did not re-run it;
+- the PostgreSQL feature suite was not run, so persistence is **unverified**.
+
+**Formal C-1 acceptance: PENDING (G3: PR, then Human PO / ARB).**

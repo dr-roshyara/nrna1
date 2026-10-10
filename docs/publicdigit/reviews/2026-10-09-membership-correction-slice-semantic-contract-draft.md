@@ -1,4 +1,6 @@
-# Membership Correction Slice: Semantic Contract (DRAFT)
+# Membership Correction Slice: Semantic Contract
+
+*The filename keeps `-draft` for link stability only. The status is the **Status** line below and §16; the authoritative register is the gate decision record (label corrected 2026-10-10, C-AMEND-1, G2-b).*
 
 **Date:** 2026-10-09 · **Raised by:** `claude-code-session:42e0287e…` (self-declared, not attestable)
 **Commission:** the PO's Membership mission "Draft the Correction-Slice Contract" (2026-10-09). Membership domain only.
@@ -524,6 +526,20 @@
 | **C-3 application** | `AnnulFact` / `VoidFact` / `CorrectFact` handlers through `DecideAndAppend`; `MembershipAct` extension; authority evidence (CQ-3, G-AUTH-1); appeal authority (CQ-9); event emission; statistics / read model ("Void excluded"); IDEM-1 … 4 per command; application-level race tests (re-decide on conflict); the D-COR-5 business workflow |
 | **C-4 persistence** | the schema / reference column (D-COR-4); same-Member composite FK on the target; encode / decode round-trips (target, value, consequences + `g2_version`); tenant scoping of new columns; PostgreSQL race tests; database isolation; **after PBDIGIT-264** |
 
+**Annotation C-AMEND-1 (2026-10-10, additive; no existing §14.5 criterion is changed).** **Status: ADOPTED by the Human PO / ARB, 2026-10-10** (gate decision record, row 5, C-AMEND-1). An amendment of this PO-approved slice contract; **no ratified rule is changed**; **CQ-3 remains OPEN**; it authorises neither C-3 nor C-4. Source: C-1 independent review (`2026-10-10-membership-c1-correction-independent-review.md`, finding C4; §G 2 – 3); decisions H-3, D-A3, D-A4.
+
+**C-3 application, additional entry criteria:**
+1. An accepted Annul, Void or Correct decision carries the caller's provenance, including populated authority evidence, unchanged.
+2. This is shown by a unit test with populated `AuthorityEvidence` and by a sensitivity mutant that drops or alters it.
+3. §3.1 specifies `provenance(decision, authority, reason)`; the kernel `Provenance` has no attribute named for "reason".
+4. **The meaning and representation of "reason", and of the associated authority evidence, are undecided. They stay OPEN under CQ-3** and must be decided explicitly before C-3 implementation.
+5. No existing attribute is taken to represent "reason" without that decision.
+
+**C-4 persistence, additional entry criteria:**
+1. **F-1 (H-3):** the adapter must not call `effectiveAt()` on a fact that has no valid time (options: C-1 acceptance review §5).
+2. Persistence is called *verified* only after Annul / Void encode / decode round-trips pass on an **isolated** PostgreSQL test database (ARB-SEC-01 gate); never on a shared or unapproved database.
+3. "After PBDIGIT-264" (above) is unchanged.
+
 ### 14.6 D-COR-5: architecture vs business policy (OPEN)
 
 | Layer | Content | Status | Owner |
@@ -749,5 +765,6 @@ The authoritative register is `docs/publicdigit/reviews/2026-10-10-membership-c1
 | D-COR-5 (A) | **CONFIRMED by the Human ARB (Dr. Nab Raj Roshyara) 2026-10-10**: Annul / Void change liveness only; no implicit period consequences; established consequences may revive; invariants reject invalid states; Correct-generated consequences separate; appeal after re-entry stays with CQ-9. PR concurs |
 | D-COR-5 (B) | OPEN (PO + Legal) |
 | this contract | **APPROVED by the PO 2026-10-10** (formal) |
-| C-1 | **CONDITIONALLY AUTHORISED by the PO.** Start conditions 1 – 6 **met** (contract formally approved 2026-10-10). **Open: the PO's approval of the C-1 story / plan, then a full gate re-evaluation.** **BLOCKED** until recorded |
+| C-AMEND-1 | **ADOPTED by the Human PO / ARB 2026-10-10**: additive §14.5 C-3 / C-4 entry criteria; CQ-3 OPEN; plus the status-label corrections (H1, register line, the C-1 row below; G2-b). Register row 5 |
+| C-1 | **Implemented, formal acceptance PENDING.** Plan approved and gate re-evaluated 2026-10-10 (gate decision record: start-gate checklist, "C-1: ELIGIBLE TO START", and the "Gate re-evaluation" section, "C-1 is eligible to start"); implemented as `PBDIGIT-268` (`f7c251354` … `5765b9fa3`), acceptance correction `9ae69b7bc` … `d90bf8af9`; independent review: ACCEPT WITH EXPLICIT CONDITIONS (no blocking findings). **Formal acceptance pending G3 (PR, then Human PO / ARB).** Limitations: PostgreSQL persistence unverified; the wider Membership unit suite has errors outside C-1; evidence bounded. *(Corrected 2026-10-10 under C-AMEND-1 / G2-b; the earlier text "BLOCKED until recorded" was stale.)* |
 | C-1 scope (PO) | test-first Annul and Void in the existing Membership kernel only. **Not authorised:** Correct and consequences, application authority changes, persistence changes outside the slice, legacy replacement, cutover, live writes |

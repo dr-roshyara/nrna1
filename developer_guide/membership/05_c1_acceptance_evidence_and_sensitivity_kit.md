@@ -84,6 +84,7 @@ The exit code is 0 only if:
 - **Infection does not generate these mutants.** It has no "drop this constructor argument" or "reorder guards" mutator. Infection's MSI (92 %, covered 95 %) is unchanged by this correction; the kit complements it.
 - **Bounds.** K-H1 is verified for H = 5, length ≤ 5, with strictly increasing `recordedAt`. Ties (allowed by INV-14) are not enumerated. This is not a proof.
 - **Oracle independence.** D-COR-2 (`TargetNotLive`) is not in the independent Python oracle; the wrapper adds it.
+- **Runner limitations (disclosed 2026-10-10).** The runner copies the *working tree* (not `git archive HEAD`), does not abort when the canary survives, and counts any non-zero exit as KILLED. **Read every summary**: only `Failures:` at the intended assertion is a real kill. Hardening is `PBDIGIT-269` (OPEN, not authorised).
 
 ## Testing
 
