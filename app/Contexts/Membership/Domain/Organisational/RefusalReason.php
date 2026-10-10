@@ -33,6 +33,12 @@ enum RefusalReason: string
     /** INV-COV: consequences may move the owner of an instant, never remove membership coverage. */
     case MembershipCoverageLost = 'membership_coverage_lost';
 
+    /** Guard (PO condition P-3): an Annul / Void targets a fact recorded on this Member. */
+    case TargetNotFound = 'target_not_found';
+
+    /** Guard (D-COR-2, P-3): an Annul / Void targets a live fact. Fact liveness, not period activity. */
+    case TargetNotLive = 'target_not_live';
+
     /** Guard (PO condition P-2): an Annul carries its decision instant; the current time is never substituted. */
     case DecidedAtRequired = 'decided_at_required';
 

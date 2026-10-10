@@ -37,6 +37,23 @@ final class Resolution
     }
 
     /**
+     * Fact liveness (stage 1), asked of one fact. Distinct from period activity:
+     * the admission of an ended period is still live.
+     *
+     * @param list<Fact> $facts in seq order
+     */
+    public static function isLive(array $facts, FactId $id): bool
+    {
+        foreach (self::live($facts) as $fact) {
+            if ($fact->id()->equals($id)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Stage 1, liveness (FP §16.3): live(f) ⇔ no later live Annul / Void targets f.
      * A reversal can only target an earlier fact, so one backward pass decides every fact.
      *

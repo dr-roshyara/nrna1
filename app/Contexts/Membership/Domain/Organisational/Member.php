@@ -116,15 +116,24 @@ final readonly class Member
     /** Correction contract §3.1 (C-1): set aside an earlier decision fact; liveness only (D-COR-5 (A)). */
     public function decideAnnul(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt): Decision
     {
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
         $targetFact = $this->fact($target);
+        if ($targetFact === null) {
+            return Decision::refused(RefusalReason::TargetNotFound);
+        }
         if ($decidedAt === null) {
             return Decision::refused(RefusalReason::DecidedAtRequired);
         }
         if ($targetFact instanceof VoidFact) {
             return Decision::refused(RefusalReason::AnnulOfVoidRefused);
         }
-        if ($targetFact !== null && $targetFact->provenance()->kind() !== ProvenanceKind::Decision) {
+        if ($targetFact->provenance()->kind() !== ProvenanceKind::Decision) {
             return Decision::refused(RefusalReason::TargetHasNoDecisionProvenance);
+        }
+        if (!Resolution::isLive($this->facts(), $target)) {
+            return Decision::refused(RefusalReason::TargetNotLive);
         }
 
         return $this->accept(new Annul($id, $target, $provenance, $decidedAt));
@@ -133,6 +142,16 @@ final readonly class Member
     /** Correction contract §3.2 (C-1): record that an earlier fact never reflected reality; liveness only (D-COR-5 (A)). */
     public function decideVoid(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt = null): Decision
     {
+        if ($this->usesFactId($id)) {
+            return Decision::refused(RefusalReason::DuplicateFactId);
+        }
+        if ($this->fact($target) === null) {
+            return Decision::refused(RefusalReason::TargetNotFound);
+        }
+        if (!Resolution::isLive($this->facts(), $target)) {
+            return Decision::refused(RefusalReason::TargetNotLive);
+        }
+
         return $this->accept(new VoidFact($id, $target, $provenance, $decidedAt));
     }
 
