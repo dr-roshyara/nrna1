@@ -1,6 +1,6 @@
 # Plan: PostgreSQL verification + far-date defect (next Membership increment)
 
-**Status:** `REVISION 3`. **Part 1 APPROVED** by the Human PO / ARB (2026-10-10, accepting the Principal Reviewer's recommendation) and **executed, uncommitted** (see Progress). **Parts 2 and 3 remain PROPOSED — NOT APPROVED FOR EXECUTION.** Corrected under **ARB-MEM-05** (2026-10-10); revision 3 closes the Principal Reviewer's isolation-coverage points. Awaiting ChatGPT review and explicit Human PO / ARB approval.
+**Status:** `REVISION 3`. **Part 1 APPROVED** by the Human PO / ARB (2026-10-10, accepting the Principal Reviewer's recommendation), **executed and committed** (`ff18c2a4e`, `44348f99b`, `bab1a9fbb`). **Option E AUTHORISED** for implementation (see "Option E gate register"). **Parts 2 and 3 remain PROPOSED — NOT APPROVED FOR EXECUTION.** Corrected under **ARB-MEM-05** (2026-10-10); revision 3 closes the Principal Reviewer's isolation-coverage points. Awaiting ChatGPT review and explicit Human PO / ARB approval.
 **Stories:** `PBDIGIT-264` (F-1 far-date defect); evidence for the Slice 1b re-disposition (`PBDIGIT-260`, ARB-MEM-02 / ARB-MEM-04 §5). **Baseline:** HEAD `ce8bf3109`.
 
 ## Changes in revision 3 (finalised 2026-10-10, plan integrity review)
@@ -209,3 +209,35 @@ PostgreSQL `date` accepts years beyond 9999, so out-of-range values may already 
   - **Evidence preserved** in `docs/publicdigit/membership/evidence/2026-10-10-pbdigit-264-f1/`: the 13 captured files, copied unchanged, plus a `SHA256SUMS` manifest (verified 13 / 13).
   - The independent reviewer's own runs are **not** part of this evidence, because their exit codes were not captured.
   - "Before any write" wording corrected (rollback-based guarantee); the domain effectiveAt range is still open and not mapped to D-5(b).
+
+## Option E: persistence representability of finite valid times (PBDIGIT-264 follow-on)
+
+**Design:** the final Option E plan (session `42e0287e…`, 2026-10-10, reviewed by the Principal Reviewer in `docs/publicdigit/membership/architecture/brainstorming/20261010_2050_implemenation.md`). Scope: a technical persistence rule only; no business calendar, plausibility, backdating or scheduling rule; `TimePoint` unchanged.
+
+### Option E gate register
+
+Decisions supplied by the Human PO / ARB (Dr. Nab Raj Roshyara) in session `42e0287e…`, 2026-10-10, as answers to the decision sheet (option labels quoted verbatim).
+
+| # | Decision | Recorded answer | Status |
+|---|---|---|---|
+| 1 | Append order: key lookup → date check → version → writes | "Approve all four (Recommended)" | APPROVED |
+| 2 | R-1a-6: an unsupported finite valid time takes precedence over a stale version | same answer | APPROVED |
+| 4 | Slice 1a / 1b contract amendments as proposed | same answer | APPROVED |
+| 6 | Names and location: `Ports/StorableValidTime`, `ValidTimeNotStorable`, R-1a-6, tests E1–E5, E7–E10 | same answer | APPROVED |
+| 3 | F-3 limitation (member-not-found ordering of the double) accepted for this increment; no full parity claimed | "Accept for this increment (Recommended)" | ACCEPTED (this increment only) |
+| 5 | PostgreSQL delivery | "P1 with release gate (Recommended)": the check is added now; no acceptance, integration or production use until Part 2 evidence exists | APPROVED (P1) |
+| 7 | Business calendar / plausibility rule | not decided; separate from Option E | OPEN |
+| 8 | Implementation (baseline, failing-tests commit, implementation commit, regression, documents and evidence commit; no database, no push, no acceptance) | "Authorise implementation" | AUTHORISED |
+
+Formal acceptance of Option E is **not** recorded here; it needs a separate Human PO / ARB verdict after the result review and Part 2.
+
+### Option E progress
+
+- 2026-10-10: **implemented test-first, no database.**
+  - Baseline at `bab1a9fbb`: all suites exit 0.
+  - RED `0e4e5ac7a`: 7 assertion failures as predicted (after one malformed-test run, recorded and fixed).
+  - GREEN `af495c838`: all focused suites exit 0.
+  - Regression: Domain 89, Application 49, `DateOrdinalTest` 5, architecture 4 + 3 + 5 + 1, all exit 0.
+  - Contracts amended (Slice 1a R-1a-6; Slice 1b §3, §4, §6, §8); developer guide 06; evidence in `docs/publicdigit/membership/evidence/2026-10-10-option-e/`.
+  - **Status:** implemented and locally tested. **PostgreSQL unverified** (Part 2). **Not accepted.** F-3 remains open.
+  - Next: ChatGPT result review, then Human PO / ARB disposition; Part 2 needs its own authorisation.

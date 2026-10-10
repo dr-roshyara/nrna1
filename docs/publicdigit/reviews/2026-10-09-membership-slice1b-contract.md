@@ -45,7 +45,7 @@
 
 ## 3. Port (unchanged)
 
-`MemberRepositoryPort` with R-1a-1 … R-1a-5, INV-M, INV-FID, IDEM-1 … IDEM-4, exactly as in the Slice 1a contract §3–§4. **No new outcome.**
+`MemberRepositoryPort` with R-1a-1 … R-1a-5, INV-M, INV-FID, IDEM-1 … IDEM-4, exactly as in the Slice 1a contract §3–§4. **No new outcome**, except `ValidTimeNotStorable` (R-1a-6), added by the 2026-10-10 amendment below.
 
 ## 4. Temporal mapping (EP-Q6 = T1)
 
@@ -53,6 +53,7 @@
 |---|---|---|
 | `TimePoint` (finite), as effectiveAt or the end of an initial term | `date` | ordinal = days since 1970-01-01 (proleptic Gregorian) ⇄ `YYYY-MM-DD`; exact round trip |
 | `TimePoint::infinity()` | never stored as a date | only as `initial_term = 'unlimited'` |
+| storable range (amended 2026-10-10) | 0001-01-01 … 9999-12-31 inclusive | a finite `TimePoint` outside it is refused by `append` with `ValidTimeNotStorable` (R-1a-6) before any write; `DateOrdinal` also throws, as a last safeguard |
 | initial term | `initial_term` ∈ {`none`, `until`, `unlimited`} + `initial_term_until date` | `none` ⇔ Admit without a term (Lapsed, C-S0-2) · `until` ⇔ a date · `unlimited` ⇔ ∞ |
 | `Instant` (decidedAt, recordedAt) | `timestamptz(6)` | ordinal = microseconds since the Unix epoch, UTC ⇄ timestamp; exact round trip at µs |
 | recordedAt assignment | — | `max(clock(), max(recorded_at of this Member))` inside the append transaction (R-1a-3). The clock is injected (`Closure(): int`, epoch µs); production uses the system UTC time |
@@ -129,7 +130,7 @@ org_membership_commands                              — idempotency (IDEM-1…4
 | `findByHolder(t, p)` | by `(organisation_id, person_ref)`, then as `load` |
 | `create(t, id, p)` | `INSERT … ON CONFLICT (organisation_id, person_ref) DO NOTHING RETURNING id`. No row → select the existing id → `HolderExists(id)`. A primary-key collision on (t, id) with another holder is an infrastructure error (caller id reuse) |
 | `appliedCommand(t, k)` | select by the primary key |
-| `append(t, id, d, k, fp)` | **one transaction** (READ COMMITTED): (1) the key row exists → `AlreadyApplied` or `IdempotencyKeyConflict` by fingerprint; (2) `UPDATE org_memberships SET version = version + 1 WHERE organisation_id = t AND id = id AND version = d.basedOnVersion RETURNING version` (row lock; re-evaluated after a lock wait); no row → (the Member exists in t ? `ConcurrencyConflict` : `MemberNotFound`); (3) `recorded_at` per §4; (4) insert the fact with `seq` = the returned version; (5) insert the command row. A unique violation in (5) means a concurrent use of the key for another Member of the tenant: roll back, re-read the key row, return `AlreadyApplied` / `IdempotencyKeyConflict`. Any other failure rolls back the whole transaction and propagates |
+| `append(t, id, d, k, fp)` | **one transaction** (READ COMMITTED): (1) the key row exists → `AlreadyApplied` or `IdempotencyKeyConflict` by fingerprint; (1b, amended 2026-10-10) any finite valid time of the fact outside the storable range → `ValidTimeNotStorable` (R-1a-6), and no statement has modified state; (2) `UPDATE org_memberships SET version = version + 1 WHERE organisation_id = t AND id = id AND version = d.basedOnVersion RETURNING version` (row lock; re-evaluated after a lock wait); no row → (the Member exists in t ? `ConcurrencyConflict` : `MemberNotFound`); (3) `recorded_at` per §4; (4) insert the fact with `seq` = the returned version; (5) insert the command row. A unique violation in (5) means a concurrent use of the key for another Member of the tenant: roll back, re-read the key row, return `AlreadyApplied` / `IdempotencyKeyConflict`. Any other failure rolls back the whole transaction and propagates |
 | a refused decision | `InvalidArgumentException` (as in the 1a contract) |
 
 **Error mapping:**
@@ -160,6 +161,8 @@ org_membership_commands                              — idempotency (IDEM-1…4
 | T11 | handlers + the PostgreSQL adapter against `ReferenceMembershipModel` (reduced seeds, e.g. 20 × 25), predicates IsMember / InForce / Lapsed / Ended / CurrentPeriod at sampled dates | replay equivalence on the real database |
 | T12 *(optional)* | two connections: interleaved creates and appends | additional race evidence (B-2); not a substitute |
 | T13 | architecture: the adapter imports nothing from Election / Finance / Governance; no `extends Model` in `Infrastructure/Organisational`; the kernel and application unchanged | boundaries |
+| E1–E5 *(amended 2026-10-10)* | in `MemberRepositoryContract`, so inherited by `PostgresMemberRepositoryTest`: unstorable valid times refused with version / log / key unchanged (E1a–d); the inclusive boundaries stored and read back (E2a–d); the key answered before R-1a-6 (E3, E4); R-1a-6 before a stale version (E5) | R-1a-6 on PostgreSQL, **in Part 2 only** |
+| E10 *(amended 2026-10-10)* | architecture: the kernel facts with a valid time are exactly Admit and End | `StorableValidTime::admits()` coverage |
 
 **Regression:** Architecture suite + `tests/Unit/Contexts/Membership` + the new tests, compared with a baseline checkout before 1b. Pre-existing, flaky, environment and new failures are reported separately.
 
@@ -190,3 +193,10 @@ During implementation, the real-process race test (T12) found an IDEM-3 defect i
 - The §6 / §10 "application unchanged" clause therefore holds **with this single authorised exception**. The kernel, port and handlers are an empty diff.
 - Details: implementation review §6 / §9 DV-1; Slice 1a contract IDEM-1 amendment.
 - **Confirmation requested from the Principal Reviewer** (acceptance review 2026-10-09, §1 condition 3). The evidence of the PO act is this session's record, not a separate signed act.
+
+## Amendment (2026-10-10): R-1a-6 storable valid time (Option E, PBDIGIT-264)
+
+- **Authority:** Human PO / ARB decisions 1–6 and 8, recorded verbatim in the Option E gate register of `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md`.
+- **Changed:** §3 (one outcome added), §4 (storable range row), §6 `append` step (1b), §8 (E1–E5, E10). The Slice 1a contract carries R-1a-6 itself.
+- **Delivery P1:** the adapter check is implemented (`PostgresMemberRepository::appendInTransaction`, after `answerFromKey`, before the compare-and-set). **Its PostgreSQL behaviour is unverified until Part 2**; until then the adapter is not accepted, integrated or used in production.
+- **Parity scope:** the date contract only; the test double's `MemberNotFound`-before-key ordering remains `PBDIGIT-264` F-3.

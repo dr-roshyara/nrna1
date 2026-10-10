@@ -1,0 +1,69 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+.................................................                 49 / 49 (100%)
+
+Time: 00:02.686, Memory: 14.00 MB
+
+Append Outcome Mapping (Tests\Unit\Contexts\Membership\Application\Organisational\AppendOutcomeMapping)
+ ✔ Every append outcome has an expected application result
+ ✔ Each append outcome maps to its result and only a conflict is retried
+
+Concurrency And Race (Tests\Unit\Contexts\Membership\Application\Organisational\ConcurrencyAndRace)
+ ✔ A conflict is re decided against the new state
+ ✔ Re authorisation is real
+ ✔ No decision is ever appended at a version it was not based on or reused
+ ✔ Creation race yields one member and the loser continues on it
+ ✔ Concurrent identical retries record one fact
+ ✔ An identical retry committed between the pre check and the load returns the original outcome
+ ✔ Retries are bounded
+
+In Memory Member Repository (Tests\Unit\Contexts\Membership\Application\Organisational\InMemoryMemberRepository)
+ ✔ A created member can be loaded and found by holder
+ ✔ An unknown member is not found
+ ✔ One member per person and organisation
+ ✔ The same person may be a member of another organisation
+ ✔ Tenant isolation
+ ✔ An accepted decision is appended at the next seq
+ ✔ Facts keep their order and seq is contiguous
+ ✔ A decision based on a stale version is not appended
+ ✔ A refused decision cannot be appended
+ ✔ A retried key returns the original outcome and appends nothing
+ ✔ A key reused for a different command is refused
+ ✔ Idempotency keys are tenant scoped and unknown keys have no outcome
+ ✔ Recorded at never decreases even if the clock goes back
+ ✔ Appending never changes earlier records
+ ✔ An admission with an unstorable valid time is not appended with data set "E1a effectiveAt one day before 0001-01-01"
+ ✔ An admission with an unstorable valid time is not appended with data set "E1b effectiveAt one day after 9999-12-31"
+ ✔ An admission with an unstorable valid time is not appended with data set "E1c initial term until one day after 9999-12-31"
+ ✔ An end with an unstorable valid time is not appended
+ ✔ An admission at a storable boundary is appended and read back with data set "E2a effectiveAt 0001-01-01"
+ ✔ An admission at a storable boundary is appended and read back with data set "E2b effectiveAt 9999-12-31"
+ ✔ An admission at a storable boundary is appended and read back with data set "E2c initial term until 9999-12-31"
+ ✔ An end at the last storable date is appended and read back
+ ✔ A reused key is answered before the valid time is checked
+ ✔ An identical retry is answered before the valid time is checked
+ ✔ An unstorable valid time takes precedence over a stale version
+
+Membership Command Handlers (Tests\Unit\Contexts\Membership\Application\Organisational\MembershipCommandHandlers)
+ ✔ Admitting a new person creates the member and records the admission
+ ✔ Re entry is recorded on the same member
+ ✔ A domain refusal is passed through and nothing is recorded
+ ✔ An unauthorised admission creates nothing
+ ✔ The recorded fact carries the authority evidence
+ ✔ Ending a membership
+ ✔ Ending an unknown member is refused
+ ✔ An end from another tenant does not reach the member
+ ✔ A retried command returns the original outcome without deciding again
+ ✔ The same fact id under a new key is a duplicate fact id
+ ✔ A key reused for a different command is refused
+ ✔ A refused command may be retried with the same key once it becomes valid
+ ✔ An unstorable valid time is an application refusal without retry
+ ✔ A reused key is refused before an unstorable valid time is considered
+
+Reference Model Property (Tests\Unit\Contexts\Membership\Application\Organisational\ReferenceModelProperty)
+ ✔ Handlers and repository agree with the reference model
+
+OK (49 tests, 165 assertions)

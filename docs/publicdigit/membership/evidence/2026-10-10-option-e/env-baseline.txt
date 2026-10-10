@@ -1,0 +1,6 @@
+cwd=/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1
+head=bab1a9fbb4b2d454fc415b0b122f05be06e182f9
+date=2026-10-10T20:58:25+02:00
+PHP 8.5.11 (cli) (built: Sep 22 2026 13:32:06) (NTS gcc x86_64)
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+

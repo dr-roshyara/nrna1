@@ -42,6 +42,7 @@ append(TenantId, MemberId, Decision accepted, IdempotencyKey, fingerprint)
     | AlreadyApplied(original Appended)      (key seen with the same fingerprint)
     | IdempotencyKeyConflict                 (key seen with another fingerprint)
     | MemberNotFound
+    | ValidTimeNotStorable                   (a finite valid time outside 0001-01-01 … 9999-12-31; R-1a-6; amended 2026-10-10)
 ```
 
 The port has no update and no delete.
@@ -55,6 +56,7 @@ The port has no update and no delete.
 | R-1a-3 | `recordedAt` is assigned at append and is **non-decreasing in seq** per Member (the adapter clamps a backward clock) |
 | R-1a-4 | append-only: an earlier record is never changed or removed |
 | R-1a-5 | an explicit `TenantId` on every operation; nothing crosses tenants |
+| R-1a-6 | **Storable valid time** (amended 2026-10-10). Every finite valid time of a new command's fact (Admit `effectiveAt`; Admit `initialTermUntil` when finite; End `effectiveAt`) lies within 0001-01-01 … 9999-12-31 inclusive (ordinals −719162 … 2932896, `Ports\StorableValidTime`). `append` checks this **after the idempotency-key lookup and before the version comparison**, so `ValidTimeNotStorable` takes precedence over `ConcurrencyConflict` and `MemberNotFound`. A technical persistence capability, not a business calendar rule; `TimePoint` is unchanged. The refusal is not remembered (IDEM-4) and is not retried |
 | INV-M | at most one Member per (TenantId, PersonRef); `create` is atomic, and the loser receives `HolderExists` and proceeds with the existing Member |
 | INV-FID | FactIds are unique within a Member's log (domain guard, Slice 0) |
 | IDEM-1 | the idempotency check runs **before** decide: a retry returns the original `Appended` without a second fact. **Amended 2026-10-09 (PBDIGIT-260, PO-authorised):** the check is repeated after a domain refusal, because an identical command may have been applied between the pre-check and the load |
@@ -70,6 +72,7 @@ The port has no update and no delete.
 | actor not authorised (the AuthorityCheck port says no) | `Refused(NotAuthorised)` |
 | End for an unknown Member (in this tenant) | `Refused(MemberNotFound)` |
 | conflicts beyond 3 attempts | `Refused(ConcurrentModification)` |
+| a valid time outside the storable range (R-1a-6; amended 2026-10-10) | `Refused(ValidTimeNotStorable)`; nothing appended; not retried; not remembered |
 
 ## 6. Authority
 
@@ -86,3 +89,11 @@ The port has no update and no delete.
 - `create` with a MemberId that already belongs to **another** holder is an **infrastructure failure** (an exception, no state change), not a port outcome.
 - In `append`, the **idempotency-key lookup precedes** every other check.
 - Source: `2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §10. The port file is unchanged.
+
+## Amendment (2026-10-10): R-1a-6 storable valid time (Option E, PBDIGIT-264)
+
+- **Authority:** Human PO / ARB decisions 1–6 and 8, recorded verbatim in the Option E gate register of `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md`.
+- **Added:** R-1a-6 (§4), the outcome `ValidTimeNotStorable` (§3) and its failure row (§5).
+- **Order in `append`:** idempotency-key lookup → R-1a-6 → version comparison → writes. The F-3 clause above is unchanged.
+- **Parity scope:** the date contract only. The test double still checks `MemberNotFound` before the key; that ordering remains `PBDIGIT-264` F-3 (accepted as a limitation for this increment).
+- **Tests:** E1–E5 in `MemberRepositoryContract`; E7, E8 in `MembershipCommandHandlersTest`; E9 `AppendOutcomeMappingTest`; E10 `tests/Architecture/MembershipStorableValidTimeCoverageTest`.
