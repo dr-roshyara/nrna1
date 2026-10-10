@@ -1,5 +1,11 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-11, F-Series) — R7 CLOSED (candidate deliverable, nothing adopted)
+
+- **R1–R7 closed.** R7 was accepted as a candidate deliverable with limitations (F-LOG-0253): T1 r1.5, T2 r1.3, T3 r1.4 in `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/R7/`. **No model element adopted, no VP decided, no partition selected.**
+- **Decision support:** `R7/ARB-DECISION-PACKAGE.md` r4.1 (gate chain E1 → E2 → E2b → E3 → E3b → E4 → E5) and `R7/VP-DECISION-REGISTER.md` r1.4.
+- **Next (human):** VP1d-H as a separate act (recommended); any further gate needs its own authorization. Roadmap: `.claude/F-series-todos.md`.
+
 ## 📍 UPDATE (2026-10-10, F-Series) — R6 CLOSED; path A adopted (H-D vs H-B non-identifiable, bounded claims)
 
 - **R1–R6 closed.** R4 is sealed at r3.1 (erratum F-1). R6 rests on within-family reproduction (Opus and Sonnet, 67/67 on the blind slice), with **cross-family WAIVED by the Human ARB, not satisfied** (F-LOG-0245). A Haiku run failed to implement the task and counts neither way (F-LOG-0246). Brief: `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/R6-DECISION-BRIEF.md` r4.

@@ -3156,3 +3156,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **`R7/VP-DECISION-REGISTER.md` r1.4:** the 19 VPs plus the VP1d-H item, each with the triage columns, timing labels (DECIDE NOW / DEFER / AUTHORIZE TARGETED RESEARCH), a dependency graph, minimal decision sets, and the evidence-gated condition.
 - **Review:** 4 rounds plus an analyst fix; the chain has no loophole (`R7/REVIEW-ARB-PACKAGE.md`).
 - **Status:** awaiting the Human ARB. **R7 is NOT closed. No VP is decided.**
+
+## F-LOG-0253 — **Human act (Human ARB, 2026-10-11): R7 ACCEPTED as a candidate deliverable WITH limitations, and CLOSED** (proposal E1)
+**Verbatim** (the human submitted the identical statement twice; it is recorded once):
+> "I, Human ARB, accept R7 (T1 r1.5, T2 r1.3, T3 r1.4) as a candidate deliverable WITH the limitations specified in §B, and close R7. This act adopts no model element, decides no variation point, selects no partition, and authorizes no architecture, canonicalization (R8) or implementation."
+
+- **Deliverable:** `R7/T1-CONCEPT-CANDIDATES.md` r1.5, `R7/T2-RULE-CANDIDATES.md` r1.3, `R7/T3-CANDIDATE-MODEL.md` r1.4 (commit 1a63f3a14).
+- **Limitations:** `R7/ARB-DECISION-PACKAGE.md` r4.1 §B, items 1–8.
+- **Nothing adopted:**
+  - all 19 VPs and VP1d-H stay undecided;
+  - no partition is selected (T3's P-a layout is not adopted);
+  - the analyst decisions (the X25 ground; T2 §0 [I]) stay unratified.
+- **Not authorized:** E2b (adoption), E3/E3b (architecture), E4 (R8) and E5 (implementation). Also V2, V5, V6 and E-A5.
+- **Next (package §D):** VP1d-H as a separate act, if the human chooses. Otherwise any further gate, each by its own act.
