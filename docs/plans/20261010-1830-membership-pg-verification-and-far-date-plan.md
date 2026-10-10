@@ -254,3 +254,25 @@ Decisions supplied by the Human PO / ARB in session `42e0287e…`, 2026-10-10 (o
 | R4 | Two correction commits; no production code, database, push or acceptance | "Authorise" | AUTHORISED |
 
 - 2026-10-10: **correction done.** Tests `fb85c6e24` (E4 rename, E4-L, `seedPreOptionEAppend`). The sensitivity mutant made E4-L, E4 and E3 fail on assertions; reverted byte-identical. Regression all exit 0 (Domain 89, Application 50, DateOrdinal 5, architecture 13). Contracts and guide 06 corrected; evidence in `docs/publicdigit/membership/evidence/2026-10-10-option-e-correction/`. Option E still **not accepted**; PostgreSQL unverified.
+
+## PBDIGIT-264 F-3: key first, MemberId collision (Path B)
+
+**Plan:** the F-3 authorisation-gate report (session `42e0287e…`, 2026-10-10), reviewed in `docs/publicdigit/membership/architecture/brainstorming/20261010_2150_implementation.md`. Policy source: the Principal Reviewer's F-3 clarification (ratification pack §2 / §10; Slice 1a contract §7).
+
+### F-3 gate register
+
+Decisions supplied by the Human PO / ARB (Dr. Nab Raj Roshyara) in session `42e0287e…`, 2026-10-10 (option labels quoted verbatim):
+
+| # | Decision | Recorded answer | Status |
+|---|---|---|---|
+| F3-1 | As PO, adopt the F-3 clarification: the idempotency-key lookup precedes every other check in every adapter; `create()` with a MemberId of another holder in the tenant is an infrastructure failure (`RuntimeException`) with no state change | "Adopt (Recommended)" | ADOPTED (PO) |
+| F3-2 | Order of the remaining PBDIGIT-264 work | "Path B: F-3 before F-5 (Recommended)": F-3 now; F-5 after Part 2 is provisioned and authorised; then F-4 → F-2 | APPROVED (sequence deviation) |
+| F3-3 | After F-3, R-1a-6 precedence over `MemberNotFound` universal again | "Approve (Recommended)" | APPROVED |
+| F3-4 | F-3 increment: F3a, F3b-1, F3b-2, F3c; test-double fix; contracts, guide 07, gate register, evidence; three commits; no production code, database, push or acceptance | "Authorise" | AUTHORISED |
+
+### F-3 progress
+
+- 2026-10-10: **implemented test-first, no database.** Baseline at `240107642` (Application 50, E10 1, exit 0). RED `d908f93c4`: 4 assertion failures as predicted (F3a no exception; F3b-1, F3b-2, F3c `member_not_found`). GREEN `d2a3f2b17` (test double only). Regression all exit 0: Domain 89, Application 54 (incl. the reference-model property test), DateOrdinal 5, architecture 13.
+  - **Deviation from the plan (assertion technique only):** the plan assumed PHPUnit's `fail()` is not a `RuntimeException`; it is, so F3a captures the exception and asserts after the `try`. Found before the first run; the test's intent is unchanged.
+  - Contracts: Slice 1a R-1a-6 universal again (F3-3), §7 clause marked adopted and implemented; Slice 1b parity note and §8 F3a–c (Part 2). Guide 07 and index; guide 06 pitfall updated. Evidence in `docs/publicdigit/membership/evidence/2026-10-10-f3/`.
+  - **Status:** implemented and tested on the double; PostgreSQL unverified (F3a–c join Part 2); not accepted. Next under Path B: F-5 after Part 2 is provisioned and authorised, then F-4 → F-2.
