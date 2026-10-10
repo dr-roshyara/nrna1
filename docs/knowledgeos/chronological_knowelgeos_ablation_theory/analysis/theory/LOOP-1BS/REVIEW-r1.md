@@ -11,3 +11,11 @@
 | 5 | §9: Protocol C overstated (current state only; retention unverified; Q3 default; R4 suitability "Undetermined"; Q4 = YES gives a pre-registered experiment only); the F-LOG-0190 / D02 waiver missing; "defer" missing as an option | §9 A notes, B limits, new option C |
 
 **Status:** draft r2 stays a draft until the cross-family outcome (§6) is known. **The final brief is reviewed at the R6 gate.**
+
+---
+# Final-gate review of r3 (independent subagent, read-only; Claude family): PASS_WITH_LIMITATIONS → applied in r4
+- **(a)** §7 retitled "final"; R6-2/3 changed from "not run" to "waived"; "so far" removed from §4.
+- **(b)** The reviewer-corrected Haiku exact match is added as "supporting only, not a reproduction", and the U_P2 "inferred, not re-run" limitation is added in §2 and §6.
+- **(c)** The r2 pre-framed cases are moved to an appendix marked "superseded, NOT applied", in the past tense, noting that the Haiku raw comparison was not handled as Case B′.
+- **(d)** Option C reworded neutrally: a voluntary non-Claude run remains possible.
+- **No regressions** of r1's fixes. The waiver is stated accurately throughout.
