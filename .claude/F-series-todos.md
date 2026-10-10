@@ -69,7 +69,7 @@
   - **V6, a second corpus:** the only route to claims beyond this corpus. Needed if generalization is required before R7.
   - **V2, a two-target slice:** tests the untested R-a reading. Cheap and finite.
   - **V5:** stays unidentifiable without new blind data. Not recommended.
-- **Then:** an R7 authorization brief. DDD only on an explicit human act.
+- **R7 readiness brief:** `analysis/theory/R7-AUTHORIZATION-BRIEF.md` r2. Review PASS_WITH_LIMITATIONS, all fixes applied. **R7 NOT authorized**; it awaits a human decision (authorize R7 bounded / V2 first / V6 first / defer).
 
 **State 2026-10-07 (F-LOG-0240), priority order agreed with the human:**
 - **P0:** finish the two Sonnet 5.5 within-family runs (F-LOG-0238/0239): seal → compare → review.
