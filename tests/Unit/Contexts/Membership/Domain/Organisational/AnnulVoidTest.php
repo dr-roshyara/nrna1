@@ -174,4 +174,45 @@ final class AnnulVoidTest extends TestCase
 
         $this->assertSame([], $h->member->resolve()->periods());
     }
+
+    /** Admit p0 at 1, End p0 at 5, Admit p1 at 10 (re-entry as a new period). */
+    private static function reEntered(): MemberHistory
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->admit('A1', 1))->commit($h->end('E1', 'A1', 5))->commit($h->admit('A2', 10));
+
+        return $h;
+    }
+
+    // T8 / K-G1 / D-COR-5 (A): annulling p0's End would revive p0 over p1; G* refuses it (INV-9). No implicit consequence.
+    public function test_annulling_an_end_whose_revival_overlaps_a_later_period_is_refused(): void
+    {
+        $h = self::reEntered();
+
+        $this->assertSame(RefusalReason::OverlappingMembershipPeriods, $h->annul('X1', 'E1')->refusal());
+        $this->assertSame(3, $h->member->version());
+    }
+
+    // T9 / K-A1, K-G1: once p1's admission is annulled, p0's End may be annulled; p0 = [1, ∞).
+    public function test_annulling_the_later_admission_first_lets_the_end_be_annulled(): void
+    {
+        $h = self::reEntered();
+        $h->commit($h->annul('X1', 'A2'))->commit($h->annul('X2', 'E1'));
+
+        $periods = $h->member->resolve()->periods();
+        $this->assertCount(1, $periods);
+        $this->assertSame('A1', $periods[0]->id()->admitFactId()->value());
+        $this->assertSame(1, $periods[0]->baseClaim()->start()->ordinal());
+        $this->assertTrue($periods[0]->baseClaim()->isOpenEnded());
+    }
+
+    // T10 / K-R3: restoring p1's admission would overlap the revived p0; G* refuses it (INV-9).
+    public function test_restoring_an_admission_that_would_overlap_a_revived_period_is_refused(): void
+    {
+        $h = self::reEntered();
+        $h->commit($h->annul('X1', 'A2'))->commit($h->annul('X2', 'E1'));
+
+        $this->assertSame(RefusalReason::OverlappingMembershipPeriods, $h->annul('X3', 'X1')->refusal());
+        $this->assertSame(5, $h->member->version());
+    }
 }
