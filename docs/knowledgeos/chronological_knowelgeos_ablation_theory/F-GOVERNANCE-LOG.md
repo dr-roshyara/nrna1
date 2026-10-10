@@ -3114,3 +3114,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Still excluded:** QUARANTINED items (38) and B10.
 - **Every direct citation carries its class tag and Λ1–Λ7.** This clarifies F-LOG-0248's "K1–K9 only" and does not widen anything else.
 - **Effect:** confirms the inputs of T1 (`R7/T1-CONCEPT-CANDIDATES.md` r1.1, 66c866de2). T2 and T3 use the same scope.
+
+## F-LOG-0250 — **R7 derivation COMPLETE to its stop condition: candidate model plus traceability, for HUMAN REVIEW.** Nothing adopted
+- **T1** concept candidates (r1.3): 28 candidates (7 plain, 21 open), 25 not admissible (X25 = universal record completeness), 11 open questions.
+- **T2** rule candidates (r1.1): 82 rows. T-A 24 are model constraints (all but record identities not checkable from records). T-B 17 are inactive optional policy slots encoding H-D or H-B. T-C 25 are not admissible. T-D 16 are open or meta.
+- **T3** candidate model (r1.1): 29 elements (all "[E] candidate, not adopted"); 19 variation points; 28 exclusions; 10 extensions beyond R4.
+- **Each task:** an independent review and a verification of the corrections, all PASS_WITH_LIMITATIONS (`R7/REVIEW-T1.md`, `REVIEW-T2.md`, `REVIEW-T3.md`).
+- **Principal findings for the human:**
+  - **Aggregate and consistency boundaries are not derivable from R4.** R4 has no consistency, transaction or lifecycle notion, and by R23 no model constraint is enforceable from records.
+  - **Boundary partitioning is itself a design choice that can lean toward H-D or H-B.** The first layout was H-D-congenial; this is disclosed, with neutral alternatives listed.
+  - **No event order or causal link is supported.**
+  - **The 19 variation points** list every decision needed to adopt anything.
+- **Standing qualifier:** one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable.
+- **Next: a human review of the R7 candidate model.** Architecture, implementation and canonicalization remain unauthorized.

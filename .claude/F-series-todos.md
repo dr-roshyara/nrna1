@@ -69,7 +69,7 @@
   - **V6, a second corpus:** the only route to claims beyond this corpus. Needed if generalization is required before R7.
   - **V2, a two-target slice:** tests the untested R-a reading. Cheap and finite.
   - **V5:** stays unidentifiable without new blind data. Not recommended.
-- **R7 readiness brief:** `analysis/theory/R7-AUTHORIZATION-BRIEF.md` r3. Reviews of r1 and r2: PASS_WITH_LIMITATIONS; all fixes applied. **R7 AUTHORIZED, bounded (F-LOG-0248)**, overriding the V2/V5/V6-first order. R7 tasks: T1 concept candidates with traceability → T2 invariant/rule candidates screened against N1–N8 → T3 candidate model plus traceability table → human review. No architecture, implementation or canonicalization.
+- **R7 readiness brief:** `analysis/theory/R7-AUTHORIZATION-BRIEF.md` r3. Reviews of r1 and r2: PASS_WITH_LIMITATIONS; all fixes applied. **R7 AUTHORIZED, bounded (F-LOG-0248)**, overriding the V2/V5/V6-first order. **R7 derivation COMPLETE (F-LOG-0250):** T1 r1.3, T2 r1.1, T3 r1.1 in `analysis/theory/R7/`, each reviewed with its corrections verified. **Awaiting human review of the candidate model.** Nothing is adopted. No architecture, implementation or canonicalization.
 
 **State 2026-10-07 (F-LOG-0240), priority order agreed with the human:**
 - **P0:** finish the two Sonnet 5.5 within-family runs (F-LOG-0238/0239): seal → compare → review.
