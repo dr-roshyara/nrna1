@@ -1,6 +1,6 @@
-# R7 authorization brief: READINESS ONLY (draft r2)
+# R7 authorization brief: READINESS ONLY (draft r3)
 
-**Status:** draft r2 for a human decision, 2026-10-10. r1 was reviewed PASS_WITH_LIMITATIONS, and all 9 required changes are applied (`LOOP-1BS/REVIEW-R7-r1.md`). **This document does not authorize R7.** It starts no DDD discovery or design: no aggregates, bounded contexts, ubiquitous-language decisions, domain events or architectural commitments.
+**Status:** draft r3 for a human decision, 2026-10-10. r1 and r2 were each reviewed PASS_WITH_LIMITATIONS, and every required change is applied (`LOOP-1BS/REVIEW-R7-r1.md`). **This document does not authorize R7.** It starts no DDD discovery or design: no aggregates, bounded contexts, ubiquitous-language decisions, domain events or architectural commitments.
 
 **Provenance tags:**
 - **[C]** corpus evidence (frozen R3 record);
@@ -40,7 +40,7 @@ Agreement among Claude models is **not** independent evidence.
 | K5 | **Two independent limitations:** structural non-identifiability (D16) and instrument unreliability (F17) | [F] by Lem 4.2; [C] F17 | D16 is an R3 **level-L3 formal pointer** within R4's model, under A5. It is not an empirical restatement | (none) |
 | K6 | **Non-identifiability of H-D vs H-B on this corpus** | [C]+[F] via H5; human act (path A) | **Carries Λ3, Λ4 and Λ5:** corpus-bounded with the H5 waiver; reading-relative; O-form only | E-A5 (unauthorized); V6 |
 | K7 | **The act/norm (performative) layer is not reliably codable on this corpus** | [C] for the R2 negative result and F17. "Even as a binary distinction" comes from IF/O6. **IF is not an R3 item**, so that clause is [F]-cited, not [C] | Within the Claude family; cross-family waived (F-LOG-0201). **No ground truth exists** (F-LOG-0217) | a non-Claude coder; V6 (which may hit the same failure) |
-| K8 | **Performative ambiguity** (Def 5.1, Lem 5.2) is formally defined | [F] | **Conj 5.5** is a conjecture. It is **non-identifiable on existing data (circular)** (F-LOG governance record, V5 entry) | V5 with new blind data |
+| K8 | **Performative ambiguity** (Def 5.1, Lem 5.2) is formally defined | [F] | **Conj 5.5** is a conjecture. It is **non-identifiable on existing data (circular)** (F-LOG-0225, R6 matrix r1) | V5 with new blind data |
 | K9 | The finite R5/V1b/slice values reproduce across Opus 5.5 and Sonnet 5.5 | [T] within-family | Shared interpretation untested (Λ1, Λ7). **Bundle-02:** blind content only 42 units; **licence NOT granted** (191 INCOMPLETE units and 1,425 keys mapped by hand); A9's con-only/d-only split not cross-confirmed; **39 (c) disagreements accepted by human ruling** (F-LOG-0242). **Slice:** 67/67, structurally convergent at (iii)-L | a non-Claude run (waived) |
 
 ### 2a. Finite-only results (no generic statement rests on them)
@@ -53,7 +53,7 @@ Agreement among Claude models is **not** independent evidence.
 ## 3. What must NOT become a domain invariant, business rule, aggregate constraint or canonical term
 - **N1.** That norms change only through acts (H-D), or that work drives norm change (H-B) (Λ2).
 - **N2.** That a record *is* the act it records (constitution). It is not reliably codable (K7), and it is unobserved in R4 (Obs O6).
-- **N3.** Equating **f** (entry into force) with d or r. Also, **reading d off r**: F2 equates d = r only under constitution, which is unobserved (Rem 1.9a). Recording time is at most a lower bound on f under H-D, given constituted adopters (Prop 5.4(b)).
+- **N3.** Equating **f** (entry into force) with d or r. Also, **reading d off r**: F2 equates d = r only under constitution, which is unobserved (Rem 1.9a). Recording time would be a lower bound on f under H-D **only if con were observed (O⁺) and all effective adopters were constituted** (Prop 5.4(b)). On the actual O, con is unobserved, so **no such bound is available**.
 - **N4.** Interpretation-sensitive results:
   - D1's reading-relative strong form;
   - §2a's sensitive quantities;
@@ -71,7 +71,17 @@ Agreement among Claude models is **not** independent evidence.
   - The frame assumes no completeness, no norm→work dependence and no time order.
 - **A1–A9, as hypotheses of the generic results.** Lem 4.0a shows (O, 𝓗) satisfies A1–A5 and A7–A9. **A6 (P ≠ V) is a parameter, not a property of 𝓗.**
 - **SC1 and SC2** for the D-st⁺ reading (Lem 3.7). Under R-d, relevance also needs Cap to be unobserved (Rem 9.7).
-- **Rem 0.1 exclusions:** constant Cap; no conditional norms; supersede and withdraw treated as issue acts; anything not needed by HYP, D1 or IF is left unmodelled.
+- **Rem 0.1 exclusions (complete list, from R4 Rem 0.1).** None of these is modelled:
+  - conditional norms and provisos;
+  - **norm content beyond "target ↦ value"**;
+  - hold, withdraw, supersede and annotate as separate act kinds (supersede and withdraw are issue acts; hold and withdrawal before adoption are the *absence* of adoption);
+  - **work outcomes, and any causal "response" relation**;
+  - capability that varies over time;
+  - drafting time;
+  - support, frequencies and epistemic-status labels;
+  - a state/transition view.
+
+  **A DDD model that needs any of these goes beyond what R4 supports.**
 - **Rem 1.11a:** texts are observed as texts. Self-assertions such as "effective immediately" are **not** observations of σ.
 - **Rem 3.1a:** B-conf is read universally.
 - **Rem 3.1b:** B-chg is nearly vacuous.
@@ -88,7 +98,7 @@ Agreement among Claude models is **not** independent evidence.
 |---|---|---|---|---|
 | Uncertainty reduced | Whether D1 and its weak form survive R-a and more than one target (part of Λ5 and Λ6) | Whether performative ambiguity explains the R2 failure | Whether the primitives (K1), non-identifiability (K6) and the coding failure (K7) are corpus-specific (Λ3, Λ6) | None. It converts bounded conclusions into design hypotheses |
 | Information gain | Moderate and targeted | **None on existing data (circular).** It needs new blind data | Potentially high. **But given K7, a second corpus may hit the same coding failure and be uninformative** | Low for theory; high for design exploration |
-| Cost | **Moderate.** A second target enlarges the frame substantially (one target: about 6.7 × 10⁵ histories in U; U_P2 about 2.2 × 10⁶). It needs a new spec, comparator adaptation and review rounds (R6 needed r1–r12) | High: new data acquisition | High: corpus selection and authorization, reconstruction, coding (with K7's limits) | Moderate, plus traceability overhead |
+| Cost | **Moderate to high.** The full-scale V2 universe is ≈ 4 × 10¹¹ histories (F-LOG-0225), so only **targeted slices** are feasible. For comparison, the one-target universes are U ≈ 6.7 × 10⁵ and U_P2 ≈ 2.2 × 10⁶. A slice needs a new spec, comparator adaptation and review rounds; the bundle-02 comparator alone needed r1–r12 | High: new data acquisition | High: corpus selection and authorization, reconstruction, coding (with K7's limits) | Moderate, plus traceability overhead |
 | New assumptions | The encoding of a second target (Rem 3.1b) | The design of the new data | The corpus choice and comparability criteria; possibly a new evidence channel | Expert design hypotheses [E], bounded by N1–N8 |
 | Risk of false generalization | Low | Low | Lowers it downstream, if informative | **Highest:** one-corpus rules may generalize silently |
 | Reversibility | Full | Full | Reversible; costly midway | Reversible while hypothesis-labelled and pre-architecture |
@@ -111,7 +121,7 @@ Agreement among Claude models is **not** independent evidence.
 | Choice | Benefit | Remaining uncertainty | Commitment |
 |---|---|---|---|
 | **Authorize R7 under bounded claims** | Moves to design, with every bounded claim traceable | All of Λ1–Λ7; generality unknown; R-a untested | A human act for R7 with boundary §6, **explicitly overriding the F-LOG-0247 order (V2/V5/V6 first)**. R7 outputs are one-corpus hypotheses |
-| **Run V2 first** | Tests R-a and multiple targets with the existing machinery | Readings invisible in U and combinations of readings; corpus generality; the shared interpretation; H-D vs H-B | A human act for a V2 spec, blind runs (Claude-family unless a non-Claude run is arranged) and review. Moderate cost |
+| **Run V2 first** | Tests R-a and multiple targets on a **targeted slice** (full scale ≈ 4 × 10¹¹ is infeasible) with the existing machinery | Readings invisible in U and combinations of readings; whatever the slice does not cover; corpus generality; the shared interpretation; H-D vs H-B | A human act for a V2 slice spec, blind runs (Claude-family unless a non-Claude run is arranged) and review. Moderate-to-high cost |
 | **Authorize a V6 second-corpus investigation first** | The only route to claims beyond one corpus | It may be uninformative if the coding failure (K7) recurs; the shared interpretation; H-D vs H-B | A human act for a V6 decision brief first (corpus, scope, evidence-channel authorization). Highest cost |
 | **Defer further work** | No cost; every option stays open | Unchanged | None. The record stays at R6-closed / path A |
 

@@ -14,3 +14,12 @@
 | 8 | V2 cost optimistic; "closes the last untested reading" false; V6 wording not neutral | V2 moderate; readings invisible in U and combinations remain; V6 may be uninformative given K7 |
 | 9 | No finite-only list | §2a added |
 | — | K1 read like a ubiquitous-language list | N8: R4's primitive names are not canonical terms |
+
+---
+# Confirm-review of r2 (independent subagent, read-only; Claude family): PASS_WITH_LIMITATIONS → applied in r3
+- **r1 fixes:** verified as applied correctly (K1/N3 d = r under F2; K4 split; K3 except σ and f; §2a).
+- **(1)** N3: Prop 5.4(b)'s bound is made conditional (only under O⁺ with all effective adopters constituted; unavailable on the actual O).
+- **(2)** K8 now cites F-LOG-0225 (R6 matrix r1).
+- **(3)** V2 cost: the misattribution is fixed ("the bundle-02 comparator needed r1–r12", not R6). The full-scale ≈ 4 × 10¹¹ figure is added (F-LOG-0225), and the rating changes to "moderate to high", targeted slices only.
+- **(4)** §4: the complete Rem 0.1 exclusion list, naming norm content and the causal "response" relation, plus a note that DDD needing them goes beyond R4.
+- **Verified clean:** no overclaiming; waivers stay marked as waivers; no reopening; N8 and §6 make no terminology decision; §7 is neutral and marks the override of the F-LOG-0247 order.
