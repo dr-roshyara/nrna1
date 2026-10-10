@@ -1,6 +1,6 @@
-# R6 decision brief (DRAFT r2: the cross-family section is pending)
+# R6 decision brief (r3: final for the human gate)
 
-**Status:** draft r2, 2026-10-10. Written **before any non-Claude return exists**. The cross-family outcomes (§6) are framed in advance. r1 was reviewed PASS_WITH_LIMITATIONS, and every required change is applied (see `LOOP-1BS/REVIEW-r1.md`). Authority: the adopted F-series protocol, §7.
+**Status:** r3, 2026-10-10, final for the R6 gate. §6 is resolved by the **Human ARB act F-LOG-0245**: a fresh-subagent run suffices; **cross-family is WAIVED, not satisfied**. The pre-framed cases A–C of r2 are kept below for the record. r1 was reviewed PASS_WITH_LIMITATIONS (`LOOP-1BS/REVIEW-r1.md`).
 
 ## 1. Claims tested in R6
 | Id | Claim | Type |
@@ -20,7 +20,8 @@
 | **Blind slice, Claude side** (Opus 5.5), calibrated against sealed V1b | `LOOP-1BQ/CLAUDE-SIDE/`, `CALIBRATION.json` | isolated Claude worker |
 | **Blind slice, within-family** (Sonnet 5.5 vs Opus 5.5) | `LOOP-1BQ/RETURN-WF-SONNET/`, `COMPARISON-WF-SONNET/` | WITHIN-FAMILY, cross-model |
 | **Interpretation-sensitivity map** | `LOOP-1BQ/SENSITIVITY/` | Claude worker and reviewer |
-| **Blind slice, non-Claude** | `~/F-XCHECK-SLICE-RETURN-01/` | **PENDING** |
+| **Blind slice, non-Claude** | (none) | **WAIVED by the Human ARB (F-LOG-0245): not run** |
+| **Blind slice, fresh Haiku 4.5 subagent** (F-LOG-0245) | `LOOP-1BQ/RETURN-WF-HAIKU/`, `COMPARISON-WF-HAIKU-ADAPTED/REVIEW-STEP-C.md` | within-family. **Implementation failure:** all (a) plus UNTESTABLE/INCOMPLETE; no evidence against the reference (F-LOG-0246) |
 | **Bundle-02, non-Claude** | `~/F-XCHECK-RETURN-01/` | **NOT RUN** (optional; only 42 BLIND units) |
 
 **Tool-path deviations in the Sonnet runs:** all benign and recorded. Each run read its own persisted tool output. Bundle-02's run wrote a helper in /tmp. The slice run hit blocked commands (a `../prog` draft, a malformed-path `cd`, and an `mv`) and rewrote its program into its cwd.
@@ -52,7 +53,12 @@
   - empirical validity;
   - anything about H-D versus H-B beyond R1.
 
-## 6. Cross-family outcome (PENDING; framing fixed in advance)
+## 6. Cross-family outcome: RESOLVED by human waiver
+- **Status: CROSS-FAMILY VALIDATION WAIVED by the Human ARB chief (F-LOG-0245).** It was not attempted, so it is neither satisfied nor failed.
+- **Fresh-subagent evidence accepted under the waiver:** Sonnet 5.5, 67/67 distinct blind quantities (F-LOG-0243).
+- **A second fresh subagent (Haiku 4.5) failed to implement the task:** all (a) plus UNTESTABLE (F-LOG-0246). It is recorded, and it is not counted for or against.
+
+### Pre-framed cases of r2, kept for the record
 The return is processed under PREREG-SLICE (with Amendment A1) and the D0–D4 procedure in `SENSITIVITY.md`, after sealing. **D0 runs first:** if the return's U-frame values disagree with sealed V1b, that is classified before anything else.
 
 - **Case A, full agreement.** This needs **all** of: 118/118 BLIND units (67 distinct); every scored unit AGREEMENT or NOT_APPLICABLE; no AMBIGUOUS flag; no unrecognized key. Then: *"Cross-family computational reproduction of the slice core is supported, under the implementer's recorded interpretation and within the tested scope."* If its NOTES record a different reading at an AMB point, that point is inert **for these values**.
@@ -77,10 +83,10 @@ The return is processed under PREREG-SLICE (with Amendment A1) and the D0–D4 p
   - R-a was untested (it needs two targets); R-k was rejected.
   - This is formal derivation plus finite verification.
 - **R6-2 and R6-3:** reproduced within the Claude family, with small blind content. Cross-family: not run.
-- **R6-4:** reproduced within the Claude family. Cross-family: pending.
+- **R6-4:** reproduced within the Claude family (Opus 5.5 and Sonnet 5.5, 67/67). Cross-family: **waived** (F-LOG-0245).
 
 ## 8. Remaining uncertainty
-- **Shared Claude interpretation:** the main risk. Only the non-Claude run tests it.
+- **Shared Claude interpretation:** the main risk. It stays **untested** because cross-family was waived. Only a non-Claude implementer could test it.
 - **Readings invisible in U, and combinations of readings:** named, not bounded.
 - **Finite universes only:** U and U_P2. Two targets (R-a) and more records have not been tested.
 - **One corpus.**
@@ -98,6 +104,6 @@ The return is processed under PREREG-SLICE (with Amendment A1) and the D0–D4 p
     - Q3 defaults to INDEPENDENCE_NOT_DETERMINABLE;
     - its R4 suitability verdict is "Undetermined".
   - Even a positive result (Q4 = YES) yields a **pre-registered experiment**, not an automatic reopening of R1.
-- **C. Defer the decision** until the cross-family result is in.
+- **C. Defer the decision.** The cross-family wait is moot under the waiver; deferring now means waiting for some other trigger.
 
 V2, V5, V6 and R7 are conditional on this decision.

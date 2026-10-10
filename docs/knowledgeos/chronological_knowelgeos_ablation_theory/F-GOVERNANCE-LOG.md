@@ -3073,3 +3073,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Ruling.** A fresh, isolated Claude subagent run of the blind slice is sufficient to close R6's independence step. The non-Claude run is no longer required for the R6 gate.
 - **Execution.** The slice has already been run by Opus 5.5 (the Claude side) and by a fresh Sonnet 5.5 subagent (F-LOG-0243). To add model diversity rather than repeat a run, the fresh subagent uses **Claude Haiku 4.5** (`claude-haiku-4-5-20251001`). It runs isolated, outside the repository, on the frozen bundle `fd83979b…` only, with tools Read/Write/Edit and Bash restricted to python3. One attempt. Output goes to `~/F-XCHECK-SLICE-RETURN-01-CLAUDE-HAIKU/`. It is sealed before reading, then put through the frozen `compare_slice.py`, D0–D4, and a reviewer.
 - **Label for every downstream claim:** "within-family, 3 Claude models; cross-family waived by the Human ARB (F-LOG-0245)". **Never "cross-family validated".**
+
+## F-LOG-0246 — **Fresh Haiku 4.5 subagent slice run (F-LOG-0245): implementation failure, class (a) plus UNTESTABLE; no evidence against the reference**
+- **Return:** sealed (a260c2788). Raw comparison: Case B′ (structure deviation, all INCOMPLETE). A syntax-only adapter (607ec6c0…) was committed before use. The adapted comparison (PROVISIONAL) showed 264 disagreements.
+- **Step C:** every discrepancy is **(a)**:
+  - the F2 Ref conjunct is dropped (frame 952,640 vs 665,920);
+  - B-rec includes the case "w1 absent";
+  - Adopted checks the wrong capability.
+
+  The rest is **UNTESTABLE** or **INCOMPLETE** by Haiku's own NOTES (readings an R0 "placeholder"; witness checks simplified). With the three departures fixed, its code reproduces the reference U values exactly (reviewer-corrected; supporting only). U_P2 (a) is inferred, not re-run.
+- **Consequence:** the Haiku run does **not** count as the authorized fresh-subagent reproduction. The valid fresh-subagent evidence for R6 under F-LOG-0245 is the **Sonnet 5.5 run: 67/67** (F-LOG-0243).
+- **Records:** `LOOP-1BQ/RETURN-WF-HAIKU/`, `ADAPTERS/`, `COMPARISON-WF-HAIKU{,-ADAPTED}/` (REVIEW-STEP-C.md).
