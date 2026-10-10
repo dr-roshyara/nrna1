@@ -79,7 +79,7 @@ R then owns every object the migrations create. `migrate:fresh` (`db:wipe`) drop
 - the expected values handed to the run as environment variables: database name, role, marker, the database OID (`SELECT oid FROM pg_database WHERE datname = …`, recorded at provisioning), server address and port (or an explicit statement that a unix socket is expected).
 
 **Isolation mechanism (enforced; scratch files only, in the session scratchpad, never in the repo):**
-1. **Pin and self-check (`<scratch>/bootstrap-membership.php`).** A copy of `tests/bootstrap-test-database.php` that pins **every pgsql connection's** parameters to the isolated database and the dedicated role, in `$_SERVER`, `$_ENV` and `putenv`. That covers `DB_*` (used by `pgsql` and `testing`), `DB_AUDIT_*` (`pgsql_audit` falls back to `DB_*`) and `DB_PGSQL_GEO_*` (`pgsql_geo` otherwise defaults to database `publicdigit` as `publicdigit_user`; `config/database.php` lines ~99 – 120). Values set before Laravel loads are not overwritten by `.env.testing` (the repository bootstrap's own note: Laravel's environment repository is immutable). So no other credential is used, even if a dotenv file contains one. It then **aborts** (exit ≠ 0) before Laravel loads if any of the three sources differ, or the pinned name is `nrna_test` or empty.
+1. **Pin and self-check (`<scratch>/bootstrap-membership.php`).** A copy of `tests/bootstrap-test-database.php` that pins **every pgsql connection's** parameters to the isolated database and the dedicated role, in `$_SERVER`, `$_ENV` and `putenv`. That covers `DB_*` (used by `pgsql`; *corrected 2026-10-10, P2-2: **not** by `testing`, which `config/database.php` lines 140–150 hard-code to `nrna_test` as role `nrna`, so `DB_*` cannot redirect it; the pre-connect stage of the guard (item 2) refuses it*), `DB_AUDIT_*` (`pgsql_audit` falls back to `DB_*`) and `DB_PGSQL_GEO_*` (`pgsql_geo` otherwise defaults to database `publicdigit` as `publicdigit_user`; `config/database.php` lines ~99 – 120). Values set before Laravel loads are not overwritten by `.env.testing` (the repository bootstrap's own note: Laravel's environment repository is immutable). So no other credential is used, even if a dotenv file contains one. It then **aborts** (exit ≠ 0) before Laravel loads if any of the three sources differ, or the pinned name is `nrna_test` or empty.
 2. **Identity check on the actual Laravel connection.** The same bootstrap registers `Illuminate\Database\Connection::resolverFor('pgsql', $closure)`. This is a static registry; `ConnectionFactory::createConnection()` consults it (`if ($resolver = Connection::getResolver($driver))`) for **every** pgsql connection the process builds, including the one `RefreshDatabase` / `migrate:fresh` uses and reconnects (`DatabaseManager::reconnect` → `makeConnection` → factory). The closure receives `($connection, $database, $prefix, $config)`, where `$connection` is a `\PDO` or (normally) a `\Closure` that produces the PDO. The closure:
    - resolves the PDO (calls the closure if needed);
    - refuses (fails closed) a config with `read` / `write` keys, because a separate read PDO is attached later via `setReadPdo()` and would bypass the check;
@@ -99,7 +99,7 @@ R then owns every object the migrations create. `migrate:fresh` (`db:wipe`) drop
 
 | Path | Covered? | Basis |
 |---|---|---|
-| every connection built by `ConnectionFactory` for driver `pgsql`, in the PHPUnit process: `pgsql`, `testing`, `pgsql_audit`, `pgsql_geo`; including `RefreshDatabase` / `migrate:fresh` run in-process and `DatabaseManager::reconnect` | **yes** | **inspected:** `Connection::resolverFor` / `getResolver` (Connection.php ~1683 – 1694); `ConnectionFactory::createConnection` (~269); `DatabaseManager::reconnect` → `makeConnection` (~333 – 376) |
+| every connection built by `ConnectionFactory` for driver `pgsql`, in the PHPUnit process: `pgsql`, `testing` (*intercepted, not pinnable: refused at the pre-connect stage; P2-2*), `pgsql_audit`, `pgsql_geo`; including `RefreshDatabase` / `migrate:fresh` run in-process and `DatabaseManager::reconnect` | **yes** | **inspected:** `Connection::resolverFor` / `getResolver` (Connection.php ~1683 – 1694); `ConnectionFactory::createConnection` (~269); `DatabaseManager::reconnect` → `makeConnection` (~333 – 376) |
 | forked children in `PostgresConcurrencyRaceTest` (`pcntl_fork`, then `DB::purge()` and a fresh connection) | **yes** | **inspected:** the test's `race()` (lines ~62 – 95). **Inferred:** a static registration is inherited across `fork` (process memory copy) |
 | raw `new PDO(...)` in `app/` or `tests/` | none found | **inspected:** `grep` found no `new PDO(` in `app/` or `tests/` |
 | a second `Connection::resolverFor('pgsql', …)` that overwrites the guard | none found in `app/` / `tests/` | **inspected:** `grep`; **not inspected** in `vendor/` |
@@ -136,7 +136,7 @@ Paths the resolver does not cover are handled by the **independent isolation bou
 | Step | Action | Evidence |
 |---|---|---|
 | 4 | `vendor/bin/phpunit --configuration <scratch>/phpunit-membership.xml tests/Feature/Contexts/Membership/Organisational/` | pin result, identity-check results, HEAD, versions, full output, exit code, SHA-256. Supporting evidence only: `nrna_test` table count before and after, taken on a **separate read-only** connection |
-| 5 RED → GREEN | a far-date feature test: appending a fact at ordinal 2932897 fails, and **no** row exists in `org_membership_facts` or `org_membership_commands`. RED is shown against the pre-fix code by checking out the step-1 commit in a **scratch copy**, never the working tree | both runs captured |
+| ~~5 RED → GREEN~~ *superseded (P2-3, 2026-10-10): the requirement (PBDIGIT-264 F-1: a date outside 0001-01-01 … 9999-12-31 is refused before any write; nothing persisted) is covered by E1a–d and E5 in `MemberRepositoryContract`, inherited by `PostgresMemberRepositoryTest` (Part 2) and green on the test double since `af495c838`. Original text kept for traceability:* | a far-date feature test: appending a fact at ordinal 2932897 fails, and **no** row exists in `org_membership_facts` or `org_membership_commands`. RED is shown against the pre-fix code by checking out the step-1 commit in a **scratch copy**, never the working tree | both runs captured |
 | 6 | report: results; evidence for the Slice 1b re-disposition | a short result note |
 
 ### Part 3: read-only containment check (separate permission per database)
@@ -291,3 +291,43 @@ Decisions by the Human PO / ARB, 2026-10-10 (K-1 … K-3 as supplied with the pl
 
 - 2026-10-10: **done.** Baseline at `52b69c4e8` (Application 54, E10 1). F3d passed at once (characterisation); the sensitivity mutant (precondition moved behind the key lookup in the double) made it fail on the intended assertion; restored byte-identical (sha256 `8c229ba6…`). Regression all exit 0. Slice 1a §7 clarified (K-1), D2 and D3 corrected; Slice 1b §8 F3d (Part 2); guide 07. Evidence: `docs/publicdigit/membership/evidence/2026-10-10-f3-clarification/`. PostgreSQL unverified; not accepted.
 - 2026-10-10: **wording follow-up (W-1 … W-3, Human PO / ARB "Approve and authorise"; proceeded on the moved HEAD by "Proceed on new HEAD").** The remaining broad "precedes every other check" wording aligned with K-1 in the test-double comment (W1), the contract-suite comment (W2), guide 07's F3-1 row (W3) and guide 07's Purpose paragraph (W5: missed by the investigation, found by the verification grep, included by Human PO / ARB "Include W5 (Recommended)"). The F3-1 gate row above (W4) is a verbatim decision record and stays unchanged; K-1 refines it. Comment / documentation only. Evidence: `docs/publicdigit/membership/evidence/2026-10-10-f3-wording/`.
+
+## Part 2 readiness (2026-10-10, read-only investigation; Part 2 **not authorised**)
+
+### Part 2 gate register
+
+Decisions by the Human PO / ARB in session `42e0287e…`, 2026-10-10. Source: the user's messages accepting the Principal Reviewer's recommendations ("I accept suggested by chatgpt and that is also the human arb decision").
+
+| # | Decision | Recorded answer | Status |
+|---|---|---|---|
+| P2-1 | Request an isolated database, a dedicated restricted role and provisioning evidence (PV) through infrastructure | approve the request | APPROVED (request only; nothing provisioned) |
+| P2-2 | Correct the plan (the `testing` connection is not pinnable) and add a pre-connect stage to the guard | approve | APPROVED (applied in this plan) |
+| P2-3 | Drop the old step 5, keeping traceability | approve, subject to traceability | APPROVED (step 5 struck through and annotated) |
+| P2-4 | Write the PostgreSQL E4-L test as a separate, scoped task | approve as a separate task | APPROVED (task defined below; writing and running it need Part 2 execution authorisation) |
+| P2-5 | Record the credential findings S-1 / S-2 in a separate security backlog item | approve | APPROVED (`PBDIGIT-270`) |
+| D-1 | This documentation-only change | authorise | AUTHORISED |
+| D-2 | Who sends the infrastructure request, and to whom | needs named people | **OPEN** |
+| P2-6 | Part 2 execution | "do not authorise yet" | **NOT AUTHORISED** (requires accepted PV) |
+
+### Pre-connect guard (P2-2): specification for the scratch bootstrap
+
+Basis (inspected): `ConnectionFactory::createSingleConnection` builds the PDO lazily (`createPdoResolver($config)` returns a closure, line 74), and `createConnection` passes that closure to a resolver registered with `Connection::resolverFor('pgsql', …)` (lines 267–270). A resolver can therefore refuse **before any connection is opened**.
+
+1. **Stage 1, pre-connect (on `$config` only; the PDO closure is not called):** exit 1 with a message naming the failed check (no credentials) if the config has `read` / `write` keys; the database is empty; the database is `nrna_test` (case-insensitive); the database, role, host or port differs from the accepted PV values.
+2. **Stage 2, post-connect (read-only queries):** `current_database()`, `current_user`, `inet_server_addr()` / `inet_server_port()` (a unix socket must be declared explicitly), the database OID and the `shobj_description` marker must equal the accepted PV values; otherwise exit 1 before any other statement.
+3. **Fail-closed proof (Phase 3, before the isolated database is used):** each refused case (`nrna_test`, empty name, unexpected role, unexpected host / port, read / write split) is run against an unroutable host (`192.0.2.1`, TEST-NET-1); the expected result is exit 1 at stage 1, with a counter wrapped around the PDO closure still at 0.
+
+### PostgreSQL E4-L (P2-4): task definition
+
+- **Where:** one new test in `PostgresMemberRepositoryInvariantsTest` (raw SQL, PostgreSQL only).
+- **Setup:** a fresh tenant; `create` a Member; raw `INSERT` of an Admit fact with `effective_at = '10000-01-01'`, `initial_term = 'unlimited'`, `seq = 1`, plus its `org_membership_commands` row (key `k1`, fingerprint `fp1`, the same `seq` / `fact_id` / `recorded_at`); the Member's version set to 1 (the pre-F-1 legacy state).
+- **Act:** `append` the same Admit decision (same fact id, day 2932897) with `k1` / `fp1`.
+- **Expected:** `AlreadyApplied` with the original fact id, seq and recordedAt; `appliedCommand(k1)` unchanged; raw counts: one fact, version 1. **No `load()`** (year 10000 cannot be read back).
+- **Acceptance:** test-first; a sensitivity check in a temporary scratch copy (date check moved before the key lookup → the test fails), never left in the working tree; its own commit; runs only within Part 2.
+
+### Readiness gaps and order
+
+- **Missing:** P-DB (isolated database + role), I-1 (no `CONNECT` on `nrna_test`; impact on other `nrna_test` users to be assessed by infrastructure, not revoked silently), PV, the scratch harness, the PostgreSQL E4-L test, D-2, P2-6.
+- **Order:** D-2 → infrastructure provisions P-DB + I-1 → PV → Principal Reviewer review → Human PO / ARB acceptance → P2-6 → fail-closed proof → E4-L (test-first) → migrations only → the Membership PostgreSQL suite (planned inventory 26 + 9 + 3 + 1 + E4-L = 40; actual discovery to be verified) → read-only before / after check of `nrna_test` → evidence → review → verdicts (F-3, Option E, Slice 1b) → F-5 → F-4 → F-2.
+- **Open infrastructure questions:** server version and host; who provisions; socket or TCP; the read-only role for the `nrna_test` before / after check.
+- **Security (separate):** `PBDIGIT-270` (S-1 committed credential, S-2 tracked env backups). Not part of PBDIGIT-264.
