@@ -1,6 +1,6 @@
-# R7 · Human ARB decision package (draft r4)
+# R7 · Human ARB decision package (draft r4.2)
 
-**Status:** decision-support artifact for the Human ARB review of R7 (F-LOG-0250), 2026-10-11. Draft r4 (aligned with the verified final state and the package review; change rows at the end), **not independently reviewed**. **It decides nothing.** It recommends a disposition of R7 and the *timing* of decisions; it chooses no value for any variation point (VP), selects no partition and closes nothing. Every authorization below is **draft wording for the human to approve or reject**.
+**Status:** decision-support artifact for the Human ARB review of R7 (F-LOG-0250), 2026-10-11. Draft r4 (aligned with the verified final state and the package review; change rows at the end), **not independently reviewed**. **It decides nothing.** It recommends a disposition of R7 and the *timing* of decisions; it chooses no value for any variation point (VP), selects no partition and closes nothing. Every authorization below is **draft wording for the human to approve or reject**. **[r4.2] Amendment under human ruling, post-closure (F-LOG-0254; R7 closed by F-LOG-0253):** §B item 4 note and §C priority 1 marked decided; nothing else changed.
 
 **Inputs:** `R7/T1-CONCEPT-CANDIDATES.md` r1.5 · `R7/T2-RULE-CANDIDATES.md` r1.3 · `R7/T3-CANDIDATE-MODEL.md` r1.4 (commit 1a63f3a14) · `R7/REVIEW-T1.md`, `REVIEW-T2.md`, `REVIEW-T3.md`, `REVIEW-CROSS-ARTIFACT.md` · `R7/VP-DECISION-REGISTER.md` r1.4 · `R7-AUTHORIZATION-BRIEF.md` r3 · `F-GOVERNANCE-LOG.md` (in `docs/knowledgeos/chronological_knowelgeos_ablation_theory/`), F-LOG-0245 to 0251.
 
@@ -34,7 +34,7 @@
 1. one corpus; finite universes U and U_P2 only; R-a untested (Λ5, Λ6);
 2. within-family evidence only; cross-family **waived, not satisfied** (F-LOG-0245); every reviewer and auditor Claude-family (Λ7);
 3. H-D vs H-B non-identifiable on this corpus (path A), resting on H5 with the F-LOG-0190 condition waived (Λ3); neither validated nor falsified (Λ2); D1's strong form reading-relative (Λ4);
-4. the X25 / R41 exclusion is an **analyst decision** (A7 direct, H11 conditional on capture completeness) with a disclosed H-B-side asymmetry (R-h), unratified until VP1d-H is decided;
+4. the X25 / R41 exclusion is an **analyst decision** (A7 direct, H11 conditional on capture completeness) with a disclosed H-B-side asymmetry (R-h), unratified until VP1d-H is decided; **[r4.2] superseded for the policy layer by F-LOG-0254** (VP1d-H = (i): the policy form is the inactive T-B slot T2 R83; the asymmetry is resolved for the policy layer, **with a residual disclosed condition**: R83 alone carries the separability assumption [E] (the inference is not applied to the observed capture), which has no H-D counterpart); the invariant exclusion (X25, R41) still stands;
 5. the T-C reading of "open" (T2 §0) is an analyst interpretation [I];
 6. adequacy of every T-A candidate constraint to the domain is [E]/[I]; only R7 (r, c) is over observed coordinates alone, its totality not confirmable; nothing is enforceable from records (R23);
 7. 10 extensions beyond R4 (T3 §3b) are unsupported; T3 §3c holds 1 item within R4 but untested (multi-target) and 2 evidence needs (unobserved-coordinate source; generality beyond one corpus), all unmet;
@@ -56,7 +56,7 @@ Full analysis: `R7/VP-DECISION-REGISTER.md` r1.4, §5a (per-VP timing) and §5b 
 
 | priority | item | recommended timing | needed for |
 |---|---|---|---|
-| 1 | VP1d-H (admit the T-B form of R-h, inference not applied to the observed capture?) | DECIDE NOW, as its own item | not strictly O1; removes an unratified analyst decision |
+| 1 | VP1d-H (admit the T-B form of R-h, inference not applied to the observed capture?) **[r4.2] DECIDED (i), F-LOG-0254** | DECIDE NOW, as its own item; **[r4.2] decided (F-LOG-0254)** | not strictly O1; removes an unratified analyst decision |
 | 2 | VP15 (accept R4's modelling choices) | DECIDE NOW if going beyond O1 | O2, O3 |
 | 3 | VP5 (one-corpus basis vs defer to V6) | DECIDE NOW | O2, O3; **O2 presupposes option (i)** ((ii) and (iii) block O2; disclosed, not recommended) |
 | 4 | VP10 (CB4) | DEFER the value; record "left open" before VP14 | **O2: the explicit "left open" record** (edge VP10 → VP14); O3: decision |
@@ -253,3 +253,5 @@ Exclusions for every item: no other VP; no architecture. Acceptance criteria: th
 | r3 | new gate **E3b** (acceptance of the architecture proposal); E4 and E5 now require E3b; gate chain E1 → E2 → E2b → E3 → E3b → E4 → E5 stated; **E2b conflict resolved (analyst resolution, disclosed; it wins):** decided VP1a–d values become active optional policies labelled "human-decided policy, not derived from R1–R6", keeping their H-D / H-B label, undecided ones stay inactive; E2b exclusions reworded to match; register → r1.3 | coordinator final changes 1, 2 |
 | r4 | E3 exclusions aligned with E2b (decided VP1a–d = labelled active optional policies; undecided = inactive slots); evidence-gated condition (route completed, or "assumption, not evidence" plus a §B limitation) added to E2's acceptance criteria and E2b's rule; label → "not derived from research phases R1–R6" in live text (r3 change row left as historical); register → r1.4 | coordinator last fixes 1–3 |
 | r4.1 | final verification (PASS_WITH_LIMITATIONS) | E3 exclusions: VP2, VP13, VP4, VP7, VP8 carried with their decision label when decided under E2 (consistent with E2b). Applied by the main analyst |
+| r4.2 | **amendment under human ruling, post-closure** (F-LOG-0254; R7 closed by F-LOG-0253): §B item 4 superseded for the policy layer (the invariant exclusion stands); §C priority 1 marked decided. No other VP decided; nothing adopted | F-LOG-0254 |
+| r4.2 sync | amendment review (PASS_WITH_LIMITATIONS), F-LOG-0254 synchronisation, post-closure: §B item 4 "resolved" qualified with the residual disclosed condition. No decision content changed | F-LOG-0254 |
