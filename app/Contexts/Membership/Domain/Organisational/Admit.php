@@ -10,7 +10,7 @@ namespace App\Contexts\Membership\Domain\Organisational;
  * The optional initial term ends at initialTermUntil (may be ∞). Without it, the
  * period's term is empty and the member is Lapsed (C-S0-2). There is no default term.
  */
-final readonly class Admit implements Fact
+final readonly class Admit implements Fact, EffectiveDatedFact
 {
     public function __construct(
         private FactId $id,

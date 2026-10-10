@@ -8,7 +8,7 @@ namespace App\Contexts\Membership\Domain\Organisational;
  * Ends a membership period at effectiveAt (contract §18). It only shrinks the
  * period's base claim. The kind is opaque (BD-3).
  */
-final readonly class End implements Fact
+final readonly class End implements Fact, EffectiveDatedFact
 {
     public function __construct(
         private FactId $id,
