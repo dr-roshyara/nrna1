@@ -3108,3 +3108,9 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Not authorized:** architecture, implementation, canonicalization (R8). Also V2, V5, V6, E-A5, and any new evidence.
 - **Stop condition:** R7 ends with a candidate model plus a traceability table, for human review. **No adoption by implication.**
 - **Standing qualifier on every R7 output:** "one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable".
+
+## F-LOG-0249 — **Human act (2026-10-10): R7 input scope clarified.** R7 may cite R4 r3.1 statements and FROZEN R3 items directly, beyond K1–K9
+- **Allowed:** direct citation, for traceability, of R4 r3.1 statements and FROZEN R3 items.
+- **Still excluded:** QUARANTINED items (38) and B10.
+- **Every direct citation carries its class tag and Λ1–Λ7.** This clarifies F-LOG-0248's "K1–K9 only" and does not widen anything else.
+- **Effect:** confirms the inputs of T1 (`R7/T1-CONCEPT-CANDIDATES.md` r1.1, 66c866de2). T2 and T3 use the same scope.
