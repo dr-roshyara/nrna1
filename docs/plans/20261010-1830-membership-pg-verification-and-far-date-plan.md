@@ -226,7 +226,7 @@ Decisions supplied by the Human PO / ARB (Dr. Nab Raj Roshyara) in session `42e0
 | 6 | Names and location: `Ports/StorableValidTime`, `ValidTimeNotStorable`, R-1a-6, tests E1–E5, E7–E10 | same answer | APPROVED |
 | 3 | F-3 limitation (member-not-found ordering of the double) accepted for this increment; no full parity claimed | "Accept for this increment (Recommended)" | ACCEPTED (this increment only) |
 | 5 | PostgreSQL delivery | "P1 with release gate (Recommended)": the check is added now; no acceptance, integration or production use until Part 2 evidence exists | APPROVED (P1) |
-| 7 | Business calendar / plausibility rule | not decided; separate from Option E | OPEN |
+| 7 | Business calendar / plausibility rule | not decided; separate from Option E. **2026-10-11:** merged with Slice 2 D-5(c); PO answer "No narrower range now (Recommended)", recorded in `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`, "Decision record" | OPEN → **DECIDED 2026-10-11** (no narrower range now) |
 | 8 | Implementation (baseline, failing-tests commit, implementation commit, regression, documents and evidence commit; no database, no push, no acceptance) | "Authorise implementation" | AUTHORISED |
 
 Formal acceptance of Option E is **not** recorded here; it needs a separate Human PO / ARB verdict after the result review and Part 2.

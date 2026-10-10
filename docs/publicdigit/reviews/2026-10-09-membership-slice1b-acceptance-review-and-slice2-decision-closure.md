@@ -280,3 +280,19 @@ authorization:
   authorized_to_act: no further implementation
   requires_human_decision: yes
 ```
+
+## Decision record: D-1 … D-5 (Product Owner / Human ARB, 2026-10-11)
+
+**Source:** answers supplied in session `42e0287e…` on 2026-10-11 to the decision questions prepared from §86–198 of this document and the Principal Reviewer's decision review; option labels are quoted verbatim. This section records decisions; it does not change the analysis above. **No implementation is authorised by it.**
+
+| ID | Decision | Recorded answer | Status | Still required |
+|---|---|---|---|---|
+| D-1 | Admission basis | "C1: basis required (Recommended)": every admission carries exactly one recognised basis (declaration reference, statutory-rule reference, or attested historical evidence for migration only) | **PO DECIDED** | **legal confirmation** (LQ-1: is a declaration required; when may a statutory / ex-officio basis apply; sufficient evidence per basis; representation of legacy members without declarations) |
+| D-2 | Pending Member | "R1: no pending Member (Recommended)": the application stays outside the Member aggregate; approval records Admit with the application as `declarationRef`; unratified pending / approved `MemberStatus` values do not become domain rules | **PO DECIDED** | reconciliation of the legacy `MemberStatus` representations (engineering, later slice) |
+| D-3 | Ending acts | "E1: closed list (Recommended)": `resignation`, `exclusion`, `death`; `legacy` for attested migration only. Non-payment is a ground for exclusion, not an act; term expiry is derived, not an End; organisation dissolution is out of scope | **PO DECIDED** | **legal procedure review** (notice, hearing, appeal for exclusion; evidence and effective-date rules per act; any further legally required acts) |
+| D-4 | Authority to admit and end | "A1: approve interim adapter (Recommended)": mirrors the existing owner / admin policy, records `AuthorityEvidence` (actor, role, policy source, time), marked interim and replaceable by the Governance-owned implementation; no Membership-local policy | **DECIDED** (by the Human ARB as, or on behalf of, the Governance owner) | the replacement criterion for the interim adapter (DS-4) |
+| D-5(a) | Meaning of "today" | not asked: engineering's to document. Recommendation Z1 (explicit command date; "today" only a UI default in the organisation's time zone) | **OPEN (engineering)** | the Slice 2 contract documents it |
+| D-5(b) | Backdating / future dating | "Backdate yes, future no (Recommended)": backdating allowed within the existing invariants; future-dated admissions and endings refused in Slice 2; conflicting re-admission still refused | **PO DECIDED** | — |
+| D-5(c) | Business range narrower than the technical one | "No narrower range now (Recommended)": only the technical limit 0001-01-01 … 9999-12-31 applies (already implemented as R-1a-6 / Option E; PostgreSQL verification on hold). **Merged with Option E decision 7** (plan `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md`) | **PO DECIDED** | revisit if a business plausibility rule (e.g. organisation founding date) is needed |
+
+**Unchanged gates outside D-1 … D-5:** D-6 / R10 legacy coexistence and cutover (blocks live HTTP / UI wiring); the Election-Only boundary test (entry criterion for Slice 2); a Slice 2 story ID (Definition of Ready, design §19); the EP-01 slice plan for Slice 2; PostgreSQL Part 2 remains on hold.
