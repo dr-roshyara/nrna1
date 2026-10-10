@@ -82,7 +82,7 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
         if (!$accepted->isAccepted()) {
             throw new \InvalidArgumentException('Only accepted decisions can be appended.');
         }
-        // F-3: the key lookup precedes every other check (IDEM-1 / IDEM-3), as in PostgreSQL.
+        // F-3 (K-1): the key lookup precedes every other outcome-producing check (IDEM-1 / IDEM-3), as in PostgreSQL; the accepted-decision precondition above is call validation.
         $seen = $this->appliedCommand($tenant, $key);
         if ($seen !== null) {
             return $seen->fingerprint() === $fingerprint

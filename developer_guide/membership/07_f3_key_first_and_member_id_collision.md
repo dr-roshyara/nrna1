@@ -9,7 +9,7 @@ The in-memory test double and the PostgreSQL adapter disagreed in two places (fi
 1. **`append` for an unknown MemberId with a used idempotency key.** PostgreSQL answered from the key (`AlreadyApplied` / `IdempotencyKeyConflict`); the double answered `MemberNotFound`, because it checked the member first.
 2. **`create` with a MemberId that already belongs to another holder.** PostgreSQL raised a primary-key violation; the double silently **overwrote** the first holder's Member.
 
-A test double that behaves differently from production can let a defect pass the shared contract suite. F-3 makes the double conform to the policy adopted by the PO (F3-1): **the key lookup precedes every other check**, and **an id collision is an infrastructure failure with no state change**.
+A test double that behaves differently from production can let a defect pass the shared contract suite. F-3 makes the double conform to the policy adopted by the PO (F3-1): **the key lookup precedes every other outcome-producing check** (after the accepted-decision precondition, K-1), and **an id collision is an infrastructure failure with no state change**.
 
 ## Where it fits
 
@@ -25,7 +25,7 @@ tests/Unit/Contexts/Membership/Application/Organisational/
 
 | Decision | Content |
 |---|---|
-| F3-1 | Key first in every adapter (a key identifies a command, IDEM-1 / IDEM-3). An id collision is a caller defect (ids are caller-generated), so it is an infrastructure failure, not a new port outcome, and the port is unchanged |
+| F3-1 | Key first in every adapter (a key identifies a command, IDEM-1 / IDEM-3). An id collision is a caller defect (ids are caller-generated), so it is an infrastructure failure, not a new port outcome, and the port is unchanged *(refined by K-1 below: the accepted-decision precondition comes first; "key first" applies to outcome-producing checks)* |
 | F3-2 | Path B: F-3 before F-5 (F-3 needs no database; F-5 needs Part 2) |
 | F3-3 | R-1a-6 precedence over `MemberNotFound` is universal again |
 | K-1 | The accepted-decision precondition (port `@throws \InvalidArgumentException when the decision was refused`) is call validation and precedes the key lookup; the key lookup precedes every **outcome-producing** check (`AlreadyApplied` / `IdempotencyKeyConflict` before `ValidTimeNotStorable`, `MemberNotFound`, `ConcurrencyConflict`) |

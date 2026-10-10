@@ -373,7 +373,7 @@ trait MemberRepositoryContract
         $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
     }
 
-    // PBDIGIT-264 F-3 (PO-adopted 2026-10-10, F3-1): the key lookup precedes every other check;
+    // PBDIGIT-264 F-3 (PO-adopted 2026-10-10, F3-1; refined by K-1): the key lookup precedes every other outcome-producing check, after the accepted-decision precondition (F3d);
     // a MemberId collision with another holder is an infrastructure failure with no state change.
 
     public function test_creating_a_member_id_that_belongs_to_another_holder_fails_without_changing_state(): void

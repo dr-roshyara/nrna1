@@ -1,0 +1,14 @@
+diff --git a/tests/Doubles/InMemoryMemberRepository.php b/tests/Doubles/InMemoryMemberRepository.php
+index 734735b0b..f73f985bb 100644
+--- a/tests/Doubles/InMemoryMemberRepository.php
++++ b/tests/Doubles/InMemoryMemberRepository.php
+@@ -85 +85 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
+-        // F-3: the key lookup precedes every other check (IDEM-1 / IDEM-3), as in PostgreSQL.
++        // F-3 (K-1): the key lookup precedes every other outcome-producing check (IDEM-1 / IDEM-3), as in PostgreSQL; the accepted-decision precondition above is call validation.
+diff --git a/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php b/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php
+index 3786d7686..4ec324989 100644
+--- a/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php
++++ b/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php
+@@ -376 +376 @@ trait MemberRepositoryContract
+-    // PBDIGIT-264 F-3 (PO-adopted 2026-10-10, F3-1): the key lookup precedes every other check;
++    // PBDIGIT-264 F-3 (PO-adopted 2026-10-10, F3-1; refined by K-1): the key lookup precedes every other outcome-producing check, after the accepted-decision precondition (F3d);
