@@ -276,7 +276,7 @@
 | D-COR-2 | **APPROVED by the PO 2026-10-10** (refuse, `TargetNotLive`) + **PR concurrence recorded 2026-10-10** |
 | D-COR-5 (A) | **CONFIRMED by the Human ARB 2026-10-10** (Option A: no implicit consequences); PR concurs |
 | BD-REV-ER, CQ-3, CQ-9, D-COR-1, D-COR-3, D-COR-4, D-COR-5 (B) | **OPEN** |
-| C-1 | **CONDITIONALLY AUTHORISED by the PO 2026-10-10. BLOCKED** until the PO approves the C-1 plan and the gate is re-evaluated (§16) |
+| C-1 | **CONDITIONALLY AUTHORISED by the PO 2026-10-10. BLOCKED** until the PO approves the C-1 plan and the gate is re-evaluated (§16). → *Superseded 2026-10-10:* the C-1 plan was **approved in principle by the PO, with conditions** (plan `20261010-1009`); the subsequent start-gate re-evaluation **determined that all applicable conditions were closed and C-1 was eligible to start** (gate decision record: start-gate checklist; "Gate re-evaluation"); C-1 was then **implemented under `PBDIGIT-268`**; **formal acceptance PENDING (G3)**. Current status: §16. Reconciliation: gate decision record row 6, C-STATUS-1. |
 | C-2 (on BD-REV-ER, D-COR-3); C-3 (on CQ-3, G-AUTH-1); C-4 (on PBDIGIT-264, D-COR-4) | **BLOCKED** |
 | cutover / live writes | **BLOCKED** (ARB-MEM-01) |
 
@@ -766,5 +766,6 @@ The authoritative register is `docs/publicdigit/reviews/2026-10-10-membership-c1
 | D-COR-5 (B) | OPEN (PO + Legal) |
 | this contract | **APPROVED by the PO 2026-10-10** (formal) |
 | C-AMEND-1 | **ADOPTED by the Human PO / ARB 2026-10-10**: additive §14.5 C-3 / C-4 entry criteria; CQ-3 OPEN; plus the status-label corrections (H1, register line, the C-1 row below; G2-b). Register row 5 |
+| C-STATUS-1 | **APPROVED by the Human PO / ARB 2026-10-10** (subject to the Principal Reviewer's wording review): the stale C-1 start-gate statuses (the "Decision register" C-1 row; register row 4) are marked superseded by additive notes: plan approved in principle with conditions → re-evaluation: all applicable conditions closed, eligible to start → implemented (`PBDIGIT-268`) → formal acceptance PENDING (G3). Historical text kept. Register row 6 |
 | C-1 | **Implemented, formal acceptance PENDING.** Plan approved and gate re-evaluated 2026-10-10 (gate decision record: start-gate checklist, "C-1: ELIGIBLE TO START", and the "Gate re-evaluation" section, "C-1 is eligible to start"); implemented as `PBDIGIT-268` (`f7c251354` … `5765b9fa3`), acceptance correction `9ae69b7bc` … `d90bf8af9`; independent review: ACCEPT WITH EXPLICIT CONDITIONS (no blocking findings). **Formal acceptance pending G3 (PR, then Human PO / ARB).** Limitations: PostgreSQL persistence unverified; the wider Membership unit suite has errors outside C-1; evidence bounded. *(Corrected 2026-10-10 under C-AMEND-1 / G2-b; the earlier text "BLOCKED until recorded" was stale.)* |
 | C-1 scope (PO) | test-first Annul and Void in the existing Membership kernel only. **Not authorised:** Correct and consequences, application authority changes, persistence changes outside the slice, legacy replacement, cutover, live writes |
