@@ -1,0 +1,11 @@
+--- a/app/Contexts/Membership/Domain/Organisational/Member.php
++++ b/app/Contexts/Membership/Domain/Organisational/Member.php
+@@ -136,7 +136,7 @@
+             return Decision::refused(RefusalReason::TargetNotLive);
+         }
+ 
+-        return $this->accept(new Annul($id, $target, $provenance, $decidedAt));
++        return $this->accept(new Annul($id, $target, $provenance, null));
+     }
+ 
+     /** Correction contract §3.2 (C-1): record that an earlier fact never reflected reality; liveness only (D-COR-5 (A)). */

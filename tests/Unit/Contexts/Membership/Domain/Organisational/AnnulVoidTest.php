@@ -4,11 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Contexts\Membership\Domain\Organisational;
 
+use App\Contexts\Membership\Domain\Organisational\Admit;
+use App\Contexts\Membership\Domain\Organisational\Annul;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\Instant;
+use App\Contexts\Membership\Domain\Organisational\Member;
+use App\Contexts\Membership\Domain\Organisational\MemberId;
+use App\Contexts\Membership\Domain\Organisational\PersonRef;
 use App\Contexts\Membership\Domain\Organisational\Provenance;
+use App\Contexts\Membership\Domain\Organisational\RecordedFact;
 use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
+use App\Contexts\Membership\Domain\Organisational\VoidFact;
+use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\MemberHistory;
 
@@ -215,6 +223,51 @@ final class AnnulVoidTest extends TestCase
 
         $this->assertSame(RefusalReason::OverlappingMembershipPeriods, $h->annul('X3', 'X1')->refusal());
         $this->assertSame(5, $h->member->version());
+    }
+
+    // K-E1 (R-15): an accepted Annul decision carries the FactAnnulled data; emission is C-3. Sensitivity: M1, M3, M4.
+    public function test_an_accepted_annul_carries_its_fact_data(): void
+    {
+        // The log is built directly, so the Annul is the only decision taken (no decide / commit in the setup).
+        $member = Member::fromLog(
+            MemberId::fromString('M1'),
+            PersonRef::fromString('P1'),
+            TenantId::fromString('O1'),
+            RecordedFact::of(1, Instant::of(1000), new Admit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), MemberHistory::provenance())),
+        );
+        $provenance = Provenance::decision('registrar-2');
+
+        $decision = $member->decideAnnul(FactId::fromString('X1'), FactId::fromString('A1'), $provenance, Instant::of(900));
+
+        $this->assertTrue($decision->isAccepted());
+        $fact = $decision->fact();
+        $this->assertInstanceOf(Annul::class, $fact);
+        $this->assertSame('X1', $fact->id()->value());
+        $this->assertSame('A1', $fact->target()->value());
+        $this->assertEquals($provenance, $fact->provenance());
+        $this->assertEquals(Instant::of(900), $fact->decidedAt());
+        $this->assertSame(1, $decision->basedOnVersion());
+    }
+
+    // K-E1 (R-15): an accepted Void decision carries the FactVoided data, decidedAt exactly as given. Sensitivity: M2.
+    public function test_an_accepted_void_carries_its_fact_data(): void
+    {
+        foreach ([900, null] as $decidedAt) {
+            $h = self::admitted();
+            $provenance = Provenance::attested('legacy-import', 'importer-1');
+            $instant = $decidedAt === null ? null : Instant::of($decidedAt);
+
+            $decision = $h->member->decideVoid(FactId::fromString('V1'), FactId::fromString('A1'), $provenance, $instant);
+
+            $this->assertTrue($decision->isAccepted());
+            $fact = $decision->fact();
+            $this->assertInstanceOf(VoidFact::class, $fact);
+            $this->assertSame('V1', $fact->id()->value());
+            $this->assertSame('A1', $fact->target()->value());
+            $this->assertEquals($provenance, $fact->provenance());
+            $this->assertEquals($instant, $fact->decidedAt());
+            $this->assertSame(1, $decision->basedOnVersion());
+        }
     }
 
     // P-KNOWN / K-H1 (R-12): a reversal never rewrites what was known before it was recorded.

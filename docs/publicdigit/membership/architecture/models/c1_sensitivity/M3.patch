@@ -1,0 +1,11 @@
+--- a/app/Contexts/Membership/Domain/Organisational/Member.php
++++ b/app/Contexts/Membership/Domain/Organisational/Member.php
+@@ -162,7 +162,7 @@
+         $violations = InvariantSet::violations($candidate);
+ 
+         return $violations === []
+-            ? Decision::accepted($fact, $this->version())
++            ? Decision::accepted($fact, $this->version() + 1)
+             : Decision::refused($violations[0]);
+     }
+ 

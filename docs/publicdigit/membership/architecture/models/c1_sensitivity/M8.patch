@@ -1,0 +1,11 @@
+--- a/app/Contexts/Membership/Domain/Organisational/Member.php
++++ b/app/Contexts/Membership/Domain/Organisational/Member.php
+@@ -77,7 +77,7 @@
+      */
+     public function knownAt(Instant $tau): ResolvedMember
+     {
+-        $known = array_filter($this->log, static fn (RecordedFact $r): bool => !$r->recordedAt()->isAfter($tau));
++        $known = array_filter($this->log, static fn (RecordedFact $r): bool => true);
+ 
+         return Resolution::of(array_values(array_map(static fn (RecordedFact $r): Fact => $r->fact(), $known)));
+     }

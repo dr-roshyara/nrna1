@@ -1,0 +1,22 @@
+--- a/app/Contexts/Membership/Domain/Organisational/Member.php
++++ b/app/Contexts/Membership/Domain/Organisational/Member.php
+@@ -123,9 +123,6 @@
+         if ($targetFact === null) {
+             return Decision::refused(RefusalReason::TargetNotFound);
+         }
+-        if ($decidedAt === null) {
+-            return Decision::refused(RefusalReason::DecidedAtRequired);
+-        }
+         if ($targetFact instanceof VoidFact) {
+             return Decision::refused(RefusalReason::AnnulOfVoidRefused);
+         }
+@@ -134,6 +131,9 @@
+         }
+         if (!Resolution::isLive($this->facts(), $target)) {
+             return Decision::refused(RefusalReason::TargetNotLive);
++        }
++        if ($decidedAt === null) {
++            return Decision::refused(RefusalReason::DecidedAtRequired);
+         }
+ 
+         return $this->accept(new Annul($id, $target, $provenance, $decidedAt));

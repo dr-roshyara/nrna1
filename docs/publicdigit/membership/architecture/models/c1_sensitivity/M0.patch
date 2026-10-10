@@ -1,0 +1,11 @@
+--- a/app/Contexts/Membership/Domain/Organisational/Annul.php
++++ b/app/Contexts/Membership/Domain/Organisational/Annul.php
+@@ -25,7 +25,7 @@
+ 
+     public function target(): FactId
+     {
+-        return $this->target;
++        return $this->id;
+     }
+ 
+     public function decidedAt(): ?Instant

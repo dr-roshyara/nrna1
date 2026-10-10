@@ -1,0 +1,11 @@
+# id	test file (repo-relative)	test method (exact)	what the mutant violates
+M0	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_annulling_an_admission_removes_its_period	CANARY: Annul::target() returns its own id (proves the scratch copy is the code under test)
+M1	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_an_accepted_annul_carries_its_fact_data	K-E1: decideAnnul drops decidedAt
+M2	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_an_accepted_void_carries_its_fact_data	K-E1: decideVoid drops decidedAt
+M3	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_an_accepted_annul_carries_its_fact_data	K-E1: basedOnVersion off by one
+M4	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_an_accepted_annul_carries_its_fact_data	K-E1: Annul id and target swapped
+M5	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_decided_at_is_checked_before_the_target_kind_provenance_and_liveness	order: DecidedAtRequired moved after guards 4-6
+M6	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_annul_of_void_is_refused_before_the_provenance_check	order: guards 4 and 5 swapped
+M7	tests/Unit/Contexts/Membership/Domain/Organisational/AnnulVoidTest.php	test_provenance_is_checked_before_liveness	order: guards 5 and 6 swapped
+M8	tests/Unit/Contexts/Membership/Domain/Organisational/C1PropertyTest.php	test_known_at_equals_the_oracle_and_is_prefix_stable	K-H1: knownAt ignores tau
+M9	tests/Unit/Contexts/Membership/Domain/Organisational/C1PropertyTest.php	test_known_at_equals_the_oracle_and_is_prefix_stable	K-H1: knownAt boundary (recordedAt <= tau becomes < tau)

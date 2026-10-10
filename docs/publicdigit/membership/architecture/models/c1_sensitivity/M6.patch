@@ -1,0 +1,17 @@
+--- a/app/Contexts/Membership/Domain/Organisational/Member.php
++++ b/app/Contexts/Membership/Domain/Organisational/Member.php
+@@ -126,11 +126,11 @@
+         if ($decidedAt === null) {
+             return Decision::refused(RefusalReason::DecidedAtRequired);
+         }
++        if ($targetFact->provenance()->kind() !== ProvenanceKind::Decision) {
++            return Decision::refused(RefusalReason::TargetHasNoDecisionProvenance);
++        }
+         if ($targetFact instanceof VoidFact) {
+             return Decision::refused(RefusalReason::AnnulOfVoidRefused);
+-        }
+-        if ($targetFact->provenance()->kind() !== ProvenanceKind::Decision) {
+-            return Decision::refused(RefusalReason::TargetHasNoDecisionProvenance);
+         }
+         if (!Resolution::isLive($this->facts(), $target)) {
+             return Decision::refused(RefusalReason::TargetNotLive);
