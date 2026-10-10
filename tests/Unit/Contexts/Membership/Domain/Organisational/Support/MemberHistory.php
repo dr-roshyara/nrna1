@@ -56,6 +56,18 @@ final class MemberHistory
         return $this->member->decideEnd(FactId::fromString($id), PeriodId::fromString($period), TimePoint::of($at), EndKind::fromString('resignation'), self::provenance());
     }
 
+    /** Correction contract §3.1 (C-1): Annul sets aside a decision fact. */
+    public function annul(string $id, string $target, ?int $decidedAt = 900, ?Provenance $provenance = null): Decision
+    {
+        return $this->member->decideAnnul(FactId::fromString($id), FactId::fromString($target), $provenance ?? self::provenance(), $decidedAt === null ? null : Instant::of($decidedAt));
+    }
+
+    /** Correction contract §3.2 (C-1): Void records that a fact never reflected reality. */
+    public function void(string $id, string $target, ?int $decidedAt = null): Decision
+    {
+        return $this->member->decideVoid(FactId::fromString($id), FactId::fromString($target), Provenance::decision('registrar-1'), $decidedAt === null ? null : Instant::of($decidedAt));
+    }
+
     /** Appends an accepted decision; fails the test if it was refused. */
     public function commit(Decision $decision, ?int $recordedAt = null): self
     {
