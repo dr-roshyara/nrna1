@@ -1,0 +1,160 @@
+# R7 · T1: concept candidates with traceability (draft r1)
+
+**Status:** R7 task artifact T1, draft r1, 2026-10-10. r0 was reviewed PASS_WITH_LIMITATIONS, and r1 applies every required change (§6). Authorized by F-LOG-0248 under the boundary of `R7-AUTHORIZATION-BRIEF.md` r3 §6. **Awaiting mandatory independent review (§6.4). Nothing here is adopted.**
+
+**What this is:** a list of things a domain model *might* need to represent, each traced to an R4 statement id or a FROZEN R3 item id. **Every row is an [E] design hypothesis.** No row is a ubiquitous-language decision, aggregate, bounded context, domain event, invariant, business rule or architecture decision. **Every label is a working label, not canonical (N8).**
+
+**Standing qualifier (applies to every row):** "one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable"
+
+## 0. Conventions
+
+**Id disambiguation.** "bK1–bK9" are the brief's §2 conclusions K1–K9. They are not R4's §7 Spec checks K1–K12, which this file does not cite.
+
+**Inputs used.** R4 r3.1 statements (by id); FROZEN R3 items (by id); brief §2/§2a/§3/§4.
+
+**Direct citations beyond K1–K9 (for human confirmation).** For traceability (§6.2), T1 cites R4 statements and FROZEN R3 items **directly**, not only through the brief's K1–K9 rows. F-LOG-0248 says "K1–K9 only". Whether direct citation of the R4 statements and FROZEN R3 items that underlie K1–K9 falls within that scope is **for human confirmation**.
+- R4 statements cited directly: Rem 0.1, Defs 1.1–1.11, Rem 1.9a, Rem 1.11a, Obs O1–O9, Def 3.1, Def 3.2, Rem 3.1a–c, Lem 3.7, A1–A9, Prop 4.1, Lem 4.2, Cor 4.3, Def 4.4, Props 4.5 and 4.6, Rem 4.5b, Rem 4.6a, Lem 4.7, Def 4.9, Rem 4.9a, Rem 4.10, Def 5.1, Lem 5.2, Rem 5.2a, Cor 5.3, Prop 5.4, Rem 5.4a, Conj 5.5 (as a conjecture only), Table 9.4, Rem 9.5, Rem 9.7, Rem 9.8.
+- FROZEN R3 items cited directly, beyond those named in the K1–K9 rows (D16, F17, the H5 basis): A01, A02, A03, A05, A06, A07, A08, A09, A10, A11, A15, B06, B07, B09 (caveat only), B11, D04, E01 (recorded bearing only), F01, F02, F03, F06, F07, F08, F11, F13, F14, F16, G01, G03, G04, G05, G06, G07, H04, H07, H10, H11, H12, H14, H18, H19.
+
+**Not used:** the 38 QUARANTINED items, B10, Conj 5.5 as fact, IF as an R3 item (IF is cited only where R4 cites it, and is then tagged [F]-cited). B09 is cited only as a caveat (superseded as reproducibility evidence). E01 is cited only at its recorded bearing (Rem 4.10: weak, one-sided, confounded).
+
+**Class tags.** [F] formal (R4 Def/Asm/Lem/Prop/Cor); [C] corpus (FROZEN R3 item or R4 Obs resting on one); [T] finite-test-supported (U / U_P2, Claude-family); [I] interpretation-dependent; [E] the design step (every row). A Def or Asm is [F] *as a definition*; its adequacy to the domain is [E]/[I] (bK1).
+
+**Inherited-assumption codes (brief §4, by name).**
+
+| Code | Brief §4 assumption |
+|---|---|
+| IA-H | base frame 𝓗 = F1 ∧ F2 (F2 is an Asm); no completeness, no norm→work dependence, no time order |
+| IA-A | A1–A9 as hypotheses of the generic results; A6 is a parameter |
+| IA-SC | SC1 and SC2 for the D-st⁺ reading (Lem 3.7); under R-d, Cap unobserved (Rem 9.7) |
+| IA-X | Rem 0.1 exclusions (complete list) |
+| IA-T | Rem 1.11a: texts observed as texts; self-assertions are not observations of σ |
+| IA-R3 | Rem 3.1a (B-conf universal), Rem 3.1b (B-chg near-vacuous), Rem 3.1c (B-fb, "primarily" unformalized) |
+| IA-RD | the readings (Def 3.1, §9) |
+| IA-1T | one target, finite T, in the verified universes |
+| IA-CB | corpus boundary and the H5 waiver (Λ3) |
+| IA-WF | within-family evidence status (Λ1, Λ7) |
+
+IA-CB and IA-WF apply to **every** row and are not repeated below.
+
+**N-list guardrail (brief §3, §6.3).** Anything touching N1–N8 is admissible only as an *open question* or *optional policy*, never as an invariant. N8 touches every row (all labels are working labels); it is listed below only where it bites beyond that.
+
+## 1. Admissible candidates and candidates with open questions
+
+| id | candidate concept (working label, not canonical) | rests on | evidence class | inherited assumptions | reading sensitivity | N-list interaction | status |
+|---|---|---|---|---|---|---|---|
+| C1 | **Participant** (an actor, i.e. an identity that items refer to; what it is *able* to do is C2, not part of this row) | Def 1.2; Def 1.4–1.6 (α, α_W, k); bK1 | [F] def; [T] satisfiable in U/U_P2 (bK1); [E] | IA-H | robust: readings change clauses, not primitives (Def 9.1) | N8 only | candidate with open question: participant identity is unobserved by O (Lem 1.12; Obs O8/O9); whether participants are identifiable in the records is open |
+| C2 | **Capability** of a participant for an act kind (issue / adopt), constant within a history | Def 1.2; Obs O5; G07; H19; Lem 3.7; Rem 9.7 | [F] def; [C] unobserved (O5, G07); [E] | IA-H, IA-SC, IA-X (time-varying capability excluded) | reading-relative: under R-d, non-separation rests on Cap unobserved (Rem 9.7); R-e drops the Cap condition from D-chg (Table 9.4) | N4 (R-d consequences); N8 | candidate with open question: Cap has no observed source; host membership is not a source (H19) |
+| C3 | **Governed target** (the subject a norm is about, e.g. a work package) | Def 1.1; A01; A10 | [F] def; [C] targets named in L0 texts (A01, A10; H01); [E] | IA-H, IA-1T | multi-target behaviour untested: R-a needs ≥ 2 targets (Rem 9.8); U is one-target (Rem 9.5) | N4 (any multi-target consequence of R-a); N8 | candidate with open question: multi-target concepts rest on an untested reading (brief §5) |
+| C4 | **Deontic value**, with a distinguished subset of values that **permit work to begin** | Def 1.1 (V, P); A6 | [F] def; [E] | IA-H, IA-A (A6: P ≠ V is a parameter, not a property of 𝓗) | robust as a primitive; finite results only for V = {p,q} (U) and V = {p,q,r}, P = {p,q} (U_P2) | N5 (P ≠ V is a parameter choice, not a corpus fact); N8 | candidate concept |
+| C5 | **Norm** as a pair (target, value) only | Def 1.3; Rem 0.1 | [F] def; [E] | IA-H, IA-X | robust | N5; N8. Richer content is X3 | candidate concept (content limited to target ↦ value) |
+| C6 | **Norm state** (value in force per target per time), held as its own primitive, **not computed from acts** | Def 1.3; Obs O4; B07; D04; F06; H14; Lem 4.2; Cor 4.3; D16 | [F] def; [C] no independent channel locally (B07), existence elsewhere NOT_DETERMINABLE (D04); [E] | IA-H, IA-A (A1, A5), IA-T | separation needs σ- or f-dependence only under Def 3.1 readings and readings with property M (Rem 4.3s); fails generically under R-c, R-d, R-g, R-g⁺, R-i, R-i′, R-j | N1 (deriving σ from acts would encode H-D; see X11); N3; **N5** ("σ is a primitive" is an R4 modelling choice, Def 1.3, not a corpus fact); N8 | candidate with open question: no observed source for σ (O4); how a model would populate it is undetermined |
+| C7 | **Change point** of the norm state (target, time at which the value differs) | Def 1.10 (Chg) | [F] def; [E] | IA-H | robust as a definition; its role in D-chg/B-chg is reading-relative (R-g, R-g⁺, R-j alter it) | N1 (what *causes* a change point is H-D vs H-B); N4 | candidate with open question: derived from σ, which is unobserved |
+| C8 | **Issue act** (participant, norm, prepared flag). Its decision time is in C11 and its entry into force in C12, both unobserved, so neither is part of this row | Def 1.4; A05; A06; A08; F17; B11; bK7 | [F] def; [C] issue/adopt split in L0 texts (A05, A06, A08; H01); [C] the act/norm layer is not reliably codable on this corpus (F17, B11; bK7); [E] | IA-H, IA-X (supersede/withdraw are issue acts with another value) | robust as a primitive | N2 (act vs record not separable; C18); N8 | candidate with open question: **the identifiability of acts in the records is open** (F17, B11, bK7) |
+| C9 | **Adoption act** whose object is an issue act | Def 1.4; A05; A06; A08; F17; B11; bK7 | [F] def; [C] (A05 "PREPARED, NOT ADOPTED, until the Decision Authority acts on it"; A08 "HELD … NOT ADOPTED"); [C] the act/norm layer is not reliably codable (F17, B11; bK7); [E] | IA-H, IA-X (hold, and withdrawal before adoption, are the *absence* of adoption) | robust as a primitive | N2; N8 | candidate with open question: **the identifiability of acts in the records is open** (F17, B11, bK7) |
+| C10 | **Prepared / adopted status** of an issue act (derived: prepared flag plus capable adoption by a time) | Def 1.4 (prep); Def 1.10 (Adopted); A05; A06; F07 | [F] def; [C] status words in texts (A05, A06); F07: R-89 adoption UNKNOWN; [E] | IA-H, IA-SC | Adopted is reading-independent; what status *implies* for force is reading-relative (D-st vs D-st⁺, Lem 3.7; R-d) | N1, N4 (status→force is an H-D clause; see X8); N8 | candidate with open question: status is derived from unobserved Cap and d (O2, O5); status *text* is a self-assertion (IA-T) |
+| C11 | **Decision time** of an act | Def 1.4; Def 1.9; Obs O2; A07; F08; G05; H04 | [F] def; [C] not observed in general (A07 "Recording times (not decision times)"; F08); [E] | IA-H (F2: d = r only under constitution) | robust | N3 (must not be read off recording time; see X5); N8 | candidate with open question: no observed source |
+| C12 | **Entry into force** of an issue act (a time, or never) | Def 1.4; F1; Def 1.9; Obs O3; G05; H12 | [F] def (F1 is what entry into force means); [C] unobserved, recording time not an upper bound (G05); [E] | IA-H, IA-A (A2) | robust | N3 (never equated with d or r; see X6); N8 | candidate with open question: no observed source |
+| C13 | **Record** (identity, recording time, text). The keeper is unobserved in general and belongs to C16, not this row | Def 1.6; Def 1.11; Obs O1; G01; A07; F13 | [F] def; [C] the corpus is records (G01); O sees ids, r and texts at most, incompletely (O1); [E] | IA-H, IA-T | robust | N8 | candidate concept |
+| C14 | **Recording time** of a record (as reported; possibly missing) | Def 1.6; Def 1.9; A07; G05; H04; Obs O1 | [F] def; [C] second-hand, incomplete (A07: R-80 has no entry); [E] | IA-H | robust | N3: this row **guards against** N3 (recording time is kept distinct from d and f); it does not assert any relation among them; N8 | candidate concept |
+| C15 | **Record text as text**, including self-asserted statements of force or status ("effective immediately", "remains blocked") held as content | Def 1.6 (c); Rem 1.11a; A02; A05; A06 | [F] def; Rem 1.11a is a modelling choice (A5); [C] L0 texts; [E] | IA-T, IA-A (A5) | robust | N2, N3: this row **guards against** N2 and N3 (the text is held as content, not as σ, f or con; see X17); it asserts neither; N8 | candidate concept (the self-assertion is content only) |
+| C16 | **Record keeper** | Def 1.6 (k); Obs O7; F14; A03; F02 | [F] def; [C] not observed in general (F14, A03 no Author line, F02); [E] | IA-H | robust | N8 | candidate with open question: no observed source in general |
+| C17 | **Reference** from a record to an act or work event ("carries or references") | Def 1.6 (Ref); Obs O6; Lem 4.2; B09 (caveat) | [F] def; Ref left out of O by modelling choice; no unreliability shown (O6, which cites IF: [F]-cited, not [C]); [E] | IA-H, IA-A (A3) | robust for (i), (ii) by Lem 4.2 under Def 3.1 and M readings (Rem 4.2s) | N8 | candidate with open question: codability rests on IF (not an R3 item) and within-family agreement (B09 caveat only) |
+| C18 | **Report-vs-constitution mode** of a record–act pair, held as *unknown-capable* (record reports the act / record is the act / undetermined) | Def 1.6 (con); F2 (Asm); Obs O6; Rem 1.9a; Def 5.1; Lem 5.2; Cor 5.3; F17; B11; bK7; bK8 | [F] def and Lem 5.2; [C] not reliably codable (F17, B11); "even as binary" is [F]-cited via IF; [E] | IA-H (F2 Asm), IA-A (A3, A8, A9) | Lem 5.2 is under A3, A8, A9; robust to reading (clauses do not read con) | **N2** (must not assert "record is the act"; see X4); N7 (no explanation via Conj 5.5); N8 | candidate with open question: no reliable way to fill it on this corpus; any fixing rule is a convention (Cor 5.3) |
+| C19 | **Work event** (target, executor). Its start time is unobserved and belongs to C20, not this row | Def 1.5; Obs O8; B06; A03 | [F] def; [C] traces give recording order only (B06); [E] | IA-H, IA-A (A4, A7) | robust as a primitive | N3: this row **guards against** N3 (work timing is not a governance time, Def 1.9, and is not read off recording order); it asserts no time relation; N8 | candidate with open question: the executor α_W is unobserved by O (Lem 1.12; Obs O8/O9); executor identifiability is open |
+| C20 | **Work start time** | Def 1.5 (t); Def 1.9; Obs O8; B06; G05 | [F] def; [C] not observed; file names are not timestamps (G05) | IA-H | robust | N3 (not read off recording order; H12); N8 | candidate with open question: no observed source |
+| C21 | **Conformance / violation** of a work event against the norm state at its start | Def 1.10; Rem 4.10; E01 (recorded bearing only) | [F] def; [C] E01 at recorded bearing (n = 1, confounded, sealed expectation failed); [E] | IA-H, IA-R3 (B-conf universal reading) | reading-relative: B-conf universal vs R-b "some w conforms" (Table 9.4) | N1 ("work must conform" is an H-B clause; see X9); N4; N8 | candidate with open question: depends on σ and t(w), both unobserved; E01 yields no verdict (Rem 4.10) |
+| C22 | **Three governance times kept distinct** (recording, decision, entry into force), with the work start time outside them | Def 1.9; G05; H04; H12; A07 | [F] def; [C] M-TIME (G05, H04: "must not be equated", not "always differ"); [E] | IA-H | robust | N3: this row **guards against** N3 (the times are kept apart); it asserts no equation, bound or order among them; N8 | candidate concept (as distinctness of concepts, not as an ordering rule) |
+| C23 | **Not-evidenced-in-capture** (an act or work event no record references; capture incompleteness) | A7; Obs O9; H11; F08; F11; F13; G01 | [F] (A7 openness, Lem 4.0a); [C] (F11, F13, G01); [E] | IA-H (no completeness), IA-A (A4, A7) | Prop 4.1(iii) clause "unreferenced acts" needs A7 (Rem 4.1a); fails in literal wording under R-h | N4 (R-h): this row **guards against** N4 and a completeness invariant (X25); it asserts no completeness and no non-occurrence; N8 | candidate concept (absence is not non-occurrence) |
+| C24 | **Execution trace** (a capture item ordered by recording order only) | B06; A11; A15; Obs O8; G03 | [C] mechanical capture (B06, L1); uncoded reports (A11, A15); [E] | IA-H, IA-CB (R-SELF forward-only, G03) | robust | N3 (recording order is not decision order or start time; H12); N8 | candidate with open question: maps to no work start time (O8) |
+| C25 | **Record independence for a target** (keeper is neither norm-maker nor executor; record constitutes no act on that target) | Def 4.9; Rem 4.9a; Prop 5.4(c); F06; D04; H14 | [F] def; [C] NOT_DETERMINABLE (D04, F06); [E] | IA-H, IA-A | robust as a definition | N2 (its first clause reads con); N8 | candidate with open question: the corpus cannot certify any of its own records as independent (Prop 5.4(c), Rem 5.4a); existence is not determinable (H14) |
+| C26 | **Norm-state attestation channel** (an external observable reporting the norm state for a work event's target at its start time) | Def 4.4; Prop 4.5 (S1–S3); Prop 4.6 (S2′); Rem 4.5b; Rem 4.6a; Lem 4.7; Cor 4.3; bK4; F01–F03 | [F] sufficient conditions only; realization is an **external claim** (Rem 4.5b); [C] F01–F03: host-side records, signer verification, and file content/history are disclosed gaps (not examined); [E] | IA-A, IA-H | Cor 4.3 (necessity) reading-scoped (Rem 4.3s) | N3 (mapping needs t(w), not read off r); N6 (no quarantined source); N8 | candidate with open question: no such instrument shown to exist or not (H14); E-A5 / Protocol C not authorized |
+| C27 | **Mode-undetermined flag** on a record–act pair (performative ambiguity as a property of what is observable, not of one history) | Def 5.1; Lem 5.2; Rem 5.2a; Cor 5.3; bK8 | [F]; [E] | IA-A (A3, A8, A9) | robust to clause readings (Lem 5.2 reads Ref, con, d only) | N2; **N7** (may not be justified by Conj 5.5); N8 | candidate with open question: in the model *every* referenced pair is ambiguous (Rem 5.2a); whether real texts fix mode is Conj 5.5, unestablished |
+| C28 | **Two independent limitation kinds** on any norm-state claim: structural non-identifiability vs instrument unreliability | D16; F17; Lem 4.2; bK5 | [F] (Lem 4.2); [C] F17; D16 is an L3 formal pointer, not empirical; [E] | IA-A (A5) | D16 is under Def 3.1 readings (Rem 3.1a/b, Lem 3.7) | N5 (A5 is a modelling choice); N8 | candidate with open question: whether a domain model represents evidential limitations at all touches X20 |
+
+## 2. Concepts a naive model would want that the theory does NOT support
+
+| id | naive concept (working label, not canonical) | rests on (why not) | evidence class | inherited assumptions | reading sensitivity | N-list interaction | status |
+|---|---|---|---|---|---|---|---|
+| X1 | **Causal "work → norm" response** (a work event causes or triggers a norm change) | Rem 0.1 ("any causal 'response' relation" not modelled); Def 3.1 B-chg (temporal precedence only); Rem 3.1b; Rem 9.8 (R-a untested); G06; H07 | [F] exclusion; [E] | IA-X, IA-R3 | B-chg is near-vacuous (Rem 3.1b); the target-tied variant R-a is untested | **N1** (H-B as a rule) | NOT admissible: no primitive exists; would also encode H-B (Λ2) |
+| X2 | **Work outcome / feedback** into norms | Rem 0.1 (work outcomes); Rem 3.1c (B-fb not formalized) | [F] exclusion; [E] | IA-X, IA-R3 | n/a (unformalized) | N1 | NOT admissible: outside R4 |
+| X3 | **Norm content beyond target ↦ value** (conditions, provisos, scope, rationale) | Rem 0.1 ("conditional norms and provisos (A01)"; "norm content beyond 'target ↦ value'"); A01 (proviso exists in text) | [F] exclusion; [C] A01 shows provisos occur in text; [E] | IA-X | n/a | N5 (would present a modelling gap as corpus fact) | NOT admissible as R4-supported; **open question** OQ3 |
+| X4 | **"The record is the act"** (constitution as a fact or invariant) | F2 (Asm, not fact); Obs O6; Rem 1.9a; Lem 5.2; Cor 5.3; G04 (R-A3); F17; B11; bK7 | [F] Asm; [C] not codable (F17, B11); [E] | IA-H (F2), IA-A (A9) | robust (no reading reads con) | **N2** | NOT admissible as invariant; as an attribute only via C18 (unknown-capable) |
+| X5 | **Usable decision time read off a recording time** (incl. decision order from recording order) | Rem 1.9a; F2 (only under con, which is unobserved); Prop 5.4(b); H12; A07; F08; G05 | [F]; [C] (A07 "not decision times"; H12 MAY_NOT); [E] | IA-H | robust | **N3** | NOT admissible: con is unobserved on O, so F2 gives nothing (Rem 1.9a) |
+| X6 | **Entry into force equated with, or bounded by, recording or decision time** | Def 1.9; G05 ("NOT an upper bound"); H04; H12; Prop 5.4(b) (lower bound only under O⁺ and all effective adopters constituted, and only in H-D) | [F]; [C]; [E] | IA-H | Prop 5.4(b) is H-D-only | **N3**, N1 (the bound presupposes H-D) | NOT admissible: on the actual O no bound is available |
+| X7 | **"Norms change only through acts by capable participants"** as a rule | Def 3.1 D-chg; H07; G06; bK6; Λ2 | [F] clause of H-D (a class, not an axiom); [C] H07 MAY_NOT; [E] | IA-RD | reading-relative (R-e, R-j alter D-chg) | **N1**, N4 | NOT admissible as invariant; open question or optional policy only (OQ1). **Encodes H-D** (D-chg). Adopting it is a normative design choice; no R3/R4 support; needs a human act |
+| X8 | **"Force requires adoption"** (D-st) or **"adopted implies in force"** (D-st⁺) as a rule | Def 3.1 D-st; Lem 3.7; Rem 9.7; Table 9.4 R-d | [F]; [E] | IA-SC, IA-RD | **reading-relative**: D-st⁺ (R-d) is not-M; recovery needs SC1/SC2, not finite-verified (Rem 9.7) | **N1**, **N4** | NOT admissible as invariant; optional policy only. **Encodes H-D** (D-st / D-st⁺). Adopting it is a normative design choice; no R3/R4 support; needs a human act. **R-d scope loss:** D-st⁺ under R-d lies outside Lem 4.2's reading scope (Rem 4.2s: Lem 4.2 fails generically under R-d) |
+| X9 | **"All work conforms" / "execution begins only when permitted"** as a rule | Def 3.1 B-conf; Rem 3.1a (universal reading is a modelling choice from E01); E01 (recorded bearing); Table 9.4 R-b | [F]; [C] E01 weak, n = 1; [E] | IA-R3, IA-RD | **reading-relative** (universal vs R-b) | **N1**, N4 | NOT admissible as invariant; optional policy only. **Encodes H-B** (B-conf). Adopting it is a normative design choice; no R3/R4 support; needs a human act |
+| X10 | **Authorization implies execution; prohibition implies refusal** | H10 (MAY_NOT); Def 1.8 (no norm→work dependence) | [C] H10 FROZEN (its own source list includes quarantined F09; only H10 itself is used); [F]; [E] | IA-H | robust | N1, N5 | NOT admissible |
+| X11 | **Norm state computed from acts** | Def 1.3 ("σ is a primitive … not computed from acts, because H-B allows norm changes that are not made by acts") | [F]; [E] | IA-H | robust | **N1** (computing σ from acts is D-chg built into the model) | NOT admissible as derivation; C6 holds σ separately |
+| X12 | **Hold / withdraw / supersede / annotate as separate act kinds** | Rem 0.1; A08 (HELD; withdrawal; R-90 retired); A09 (ANNOTATE adopted) | [F] exclusion; [C] the words occur in L0 texts; [E] | IA-X | n/a | N5 | NOT admissible as R4-supported; open question OQ4 (R4 maps supersede/withdraw to issue acts, hold to absence of adoption) |
+| X13 | **Capability that varies over time** | Rem 0.1; Def 1.2 | [F] exclusion; [E] | IA-X | n/a | N5 | NOT admissible as R4-supported |
+| X14 | **Drafting time** | Rem 0.1; G05 (recording time "bounds drafting") | [F] exclusion; [C] G05; [E] | IA-X | n/a | N3, N5 | NOT admissible as R4-supported |
+| X15 | **State/transition (state-machine) view of norms or acts** | Rem 0.1; §2 WITHDRAWN (Def 2.1, 2.2, Lem 2.3) | [F] exclusion; [E] | IA-X | n/a | N5 | NOT admissible as R4-supported |
+| X16 | **Repository access as capability** | G07; H19 (MAY_NOT); Rem 4.6a | [C]; [E] | IA-H | robust | N5 | NOT admissible |
+| X17 | **Self-asserted force in a text as the norm state** ("effective immediately" ⇒ in force) | Rem 1.11a; A02; A05; A06; A5 | [F] modelling choice; [C]; [E] | IA-T, IA-A (A5) | robust | N2, N3, N5 | NOT admissible: content only (C15) |
+| X18 | **Non-occurrence inferred from absence in the record** | H11 (MAY_NOT); A7; Obs O9 | [C]; [F]; [E] | IA-H | robust | N5 | NOT admissible: use C23 |
+| X19 | **Support, frequency or epistemic-status labels on records** | Rem 0.1; H18 (never aggregated across ACT/NORM datasets); F16 (boundary underspecified, resolved by human act) | [F] exclusion; [C]; [E] | IA-X | n/a | N5 | NOT admissible as R4-supported; bears on C28 (OQ7) |
+| X20 | **Classification of the actual system as deontic-driven (H-D) or work-driven (H-B)** | H07; Def 3.2 ("nothing asserts the actual history lies in either set"); bK6; Λ2 | [F]; [C] H07; human act path A (F-LOG-0247); [E] | IA-CB, IA-RD | carries Λ3, Λ4, Λ5 | **N1**, N4 | NOT admissible |
+| X21 | **An independent norm-state source exists** (or: none exists) | H14 (MAY_NOT either way); D04; F06 | [C]; [E] | IA-A (A5) | n/a | N5 | NOT admissible either way; C25/C26 stay open |
+| X22 | **"Text that states its own mode fixes the mode"** / ambiguity explains the coding failure | Conj 5.5 (conjecture); Rem 5.2a; F17 (Conj 5.5 "may be named only as a conjectured shared mechanism") | [F] Conj (not established); [E] | IA-A (A9) | n/a | **N7**, N2 | NOT admissible |
+| X23 | **A mode-fixing coding rule** (e.g. R-A3 "act and after-state are the same record") treated as observation | Cor 5.3; G04 | [F]; [C] G04 schema text; [E] | IA-A (A3, A8, A9) | robust | N2, N5 | NOT admissible as observation; admissible only as an explicitly labelled **optional policy / convention**. **Encodes a convention** (Cor 5.3), not H-D or H-B. Adopting it is a normative design choice; no R3/R4 support; needs a human act |
+| X24 | **Finite U / slice / bundle-02 values as domain parameters** (e.g. counts, least counterexamples) | brief §2a; Rem 9.5; bK9 | [T] finite-only, within-family; [E] | IA-1T | §2a's interpretation-sensitive quantities | **N4** | NOT admissible |
+| X25 | **Record-completeness invariant** ("every act and work event is recorded"): the D-rec/B-recW/B-rec record clauses as a rule, or the universal R-h reading | Def 3.1 (D-rec, B-recW, B-rec); Rem 3.1c; Table 9.4 R-h; Prop 4.1(iii); Rem 4.1a; Def 1.8 (no completeness); A7; Obs O9; H11; F11; G01 | [F]; [C] completeness not shown (F11, G01), absence ≠ non-occurrence (H11); [E] | IA-H, IA-A (A7), IA-RD | **reading-relative**: R-h is M but not T; Prop 4.1(iii)'s literal wording fails under R-h (Table 9.4) | **N1** (the record clauses are parts of H-D/H-B), **N4** (R-h) | NOT admissible |
+
+## 3. Open questions
+
+| id | question | where the corpus or theory leaves it undetermined | affects |
+|---|---|---|---|
+| OQ1 | Does norm change happen only through capable acts (H-D) or also in response to work (H-B)? | non-identifiable on this corpus (bK6; F-LOG-0247 path A); D16; Prop 4.1; Λ2, Λ3 | C6, C7, X1, X7, X20 |
+| OQ2 | Is a given record the act or a report of it (constitution)? | not reliably codable (F17, B11, bK7); every referenced pair is ambiguous in the model (Lem 5.2); fixing rules are conventions (Cor 5.3) | C18, C25, C27, X4, X5 |
+| OQ3 | Does a domain model need norm content beyond target ↦ value (provisos, conditions)? | excluded by Rem 0.1; A01 shows provisos in text | C5, X3 |
+| OQ4 | Are hold, withdraw, supersede, annotate distinct concepts, or issue acts / absence of adoption as R4 maps them? | Rem 0.1; A08, A09 texts | C8, C9, X12 |
+| OQ5 | What populates the unobserved coordinates (σ, f, d, Cap, k, t(w))? | O2–O5, O7, O8; D04, H14 | C2, C6, C11, C12, C16, C20 |
+| OQ6 | Do multi-target norm concepts survive R-a? | R-a untested (Rem 9.8); U one-target | C3, X1 |
+| OQ7 | Should a domain model carry evidential-limitation or epistemic-status information at all? | Rem 0.1 excludes epistemic labels; D16/F17 are meta-level | C28, X19 |
+| OQ8 | Are the primitives corpus-specific? | one corpus (Λ6); V6 not authorized | all C-rows |
+| OQ9 | Are the record/act/norm primitives adequate to the domain, as opposed to satisfiable? | bK1: adequacy is [E]/[I] only | all C-rows |
+| OQ10 | Does a model need named roles or offices beyond Cap ⊆ 𝒜 × {iss, adp} (e.g. "Decision Authority" in A05, "ARB Chief" in A05 and A06)? | R4 has no role concept (Def 1.2: capability only, constant; Rem 0.1); the role names occur only in L0 texts (A05, A06); Cap is unobserved (O5) | C1, C2 |
+| OQ11 | Can acts be identified in the records at all? | the act/norm layer is not reliably codable (F17, B11; bK7) | C8, C9 |
+
+## 4. Standing qualifier
+
+"one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable"
+
+## 5. Self-check
+
+| check | result |
+|---|---|
+| Every row (C1–C28, X1–X25, OQ1–OQ11) has at least one source id (R4 statement id and/or FROZEN R3 item id) | yes |
+| Every row carries a class tag and [E] for the design step | yes |
+| Every row has an N-list entry; N8 noted on every C-row | yes |
+| No row states an invariant, business rule, aggregate, bounded context, domain event, architecture decision or term decision | yes: C-rows say "candidate"; rules appear only in X-rows, as NOT admissible or optional policy |
+| N1–N3-touching concepts are open question / optional policy / NOT admissible only | yes: C6, C7, C8, C9, C10, C11, C12, C18, C21, C25, C26 are open questions; X1, X4–X9, X11, X20, X25 are NOT admissible or optional policy |
+| Plain candidate rows that name an N-item **guard against** it and do not assert it | yes, stated in the row: C14 (N3), C15 (N2, N3), C19 (N3), C22 (N3), C23 (N4; completeness, X25) |
+| No unobserved attribute sits in a plain candidate row | yes: d and f moved from C8 to C11/C12; keeper from C13 to C16; start time from C19 to C20; capability from C1 to C2; **r1.1:** C1 (participant identity) and C19 (executor) are made open, because O sees neither (Lem 1.12) |
+| No QUARANTINED item used (A14, B01–B05, B08, C00, D01, D03, D05–D15, E02–E04, F09, F10, F12, G02, H02, H03, H05, H06, H08, H09, H13, H15–H17) | yes. F09/D13/F10 appear only as noted sources *of* FROZEN H10/H11, and are not used |
+| B10 not used | yes |
+| Conj 5.5 not used as fact | yes: cited only in X22 (NOT admissible) and as the reason C27 stays open |
+| IF not treated as an R3 item | yes: tagged [F]-cited in C17, C18 |
+| B09 used only as a caveat; E01 only at its recorded bearing | yes (C17; C21, X9) |
+| Waived not presented as satisfied (cross-family, H5 condition) | yes: IA-CB and IA-WF on every row; standing qualifier |
+| §2a finite-only values not used as generic | yes: X24 |
+
+**Counts (r1.1):** 28 candidate rows (C1–C28: 7 candidate concept, namely C4, C5, C13, C14, C15, C22, C23; 21 candidate with open question); 25 NOT admissible rows (X1–X25, of which X3 and X12 also carry open questions, and X7–X9, X23 are admissible only as optional policy); 11 open questions (OQ1–OQ11).
+
+## 6. r1 changes (review of r0: PASS_WITH_LIMITATIONS)
+
+| # | review item | change |
+|---|---|---|
+| 1 | unobserved attributes in plain rows | C1: capability wording removed (→ C2). C8: d and f removed (→ C11, C12). C13: keeper removed (→ C16). C19: start time removed (→ C20). C1, C13 and C19 stay "candidate concept"; C8 becomes "candidate with open question" through item 2 |
+| 2 | act identifiability (C8, C9) | C8 and C9 now cite F17, B11 and bK7 and add N2. Status of both is "candidate with open question: the identifiability of acts in the records is open". OQ11 was added to the open-question table to hold this question (not requested by the review; it carries item 2) |
+| 3 | guard vs assert | C14, C15, C19, C22 and C23 now say that each row *guards against* its N-item and does not assert it. A self-check row lists these rows explicitly |
+| 4 | C26 class | added [C] F01–F03 (disclosed gaps) |
+| 5 | C6 N-list | added N5 ("σ is a primitive" is a modelling choice, Def 1.3) |
+| 6 | X7, X8, X9, X23 | each states what it encodes (X7: H-D; X8: H-D; X9: H-B; X23: a convention). Adopting it is a normative design choice; no R3/R4 support; needs a human act. X8 also records the R-d scope loss (Lem 4.2 fails generically under R-d, Rem 4.2s) |
+| 7 | new X25 | record-completeness invariant (D-rec/B-recW/B-rec as a rule, or universal R-h): NOT admissible; N1, N4; sources given |
+| 8 | new OQ10 | named roles or offices beyond Cap (Decision Authority, ARB Chief in A05, A06): open question; R4 has no role concept |
+| 9 | §0 inputs | the direct R4 and FROZEN R3 citations beyond K1–K9 are listed and flagged "for human confirmation" against F-LOG-0248 "K1–K9 only" |
+| — | consequential | status line → r1; C23's N-list cites X25; self-check rows and counts updated (9 plain + 19 open candidates; X1–X25; OQ1–OQ11) |
+| r1.1 | verification review (PASS_WITH_LIMITATIONS) | C1 and C19 → "candidate with open question": participant identity and executor are unobserved by O (Lem 1.12; O8/O9). Self-check and counts updated (7 plain + 21 open). Applied by the main analyst |
