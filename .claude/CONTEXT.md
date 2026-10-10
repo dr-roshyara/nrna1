@@ -1,5 +1,11 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-10, F-Series) — R6 CLOSED; path A adopted (H-D vs H-B non-identifiable, bounded claims)
+
+- **R1–R6 closed.** R4 is sealed at r3.1 (erratum F-1). R6 rests on within-family reproduction (Opus and Sonnet, 67/67 on the blind slice), with **cross-family WAIVED by the Human ARB, not satisfied** (F-LOG-0245). A Haiku run failed to implement the task and counts neither way (F-LOG-0246). Brief: `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/R6-DECISION-BRIEF.md` r4.
+- **Path A (F-LOG-0247):** H-D vs H-B is non-identifiable within the authorized corpus; claims are bounded. E-A5 is not authorized.
+- **Next (human):** choose V6 (second corpus), V2 (R-a slice), or go straight to an R7 authorization brief. Nothing is started. Roadmap: `.claude/F-series-todos.md`.
+
 ## 📍 UPDATE (2026-10-07, F-Series) — R6 independence cross-checks READY; awaiting the human-run non-Claude returns
 
 - **State:** R1–R5 closed; R3 frozen; R4 r3 sealed; R6 V1a/V1b done. **The non-Claude cross-check is prepared but NOT yet run.** Both return folders are absent (checked twice, 2026-10-07).

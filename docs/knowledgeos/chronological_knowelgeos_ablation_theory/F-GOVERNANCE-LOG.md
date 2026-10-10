@@ -3084,3 +3084,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   The rest is **UNTESTABLE** or **INCOMPLETE** by Haiku's own NOTES (readings an R0 "placeholder"; witness checks simplified). With the three departures fixed, its code reproduces the reference U values exactly (reviewer-corrected; supporting only). U_P2 (a) is inferred, not re-run.
 - **Consequence:** the Haiku run does **not** count as the authorized fresh-subagent reproduction. The valid fresh-subagent evidence for R6 under F-LOG-0245 is the **Sonnet 5.5 run: 67/67** (F-LOG-0243).
 - **Records:** `LOOP-1BQ/RETURN-WF-HAIKU/`, `ADAPTERS/`, `COMPARISON-WF-HAIKU{,-ADAPTED}/` (REVIEW-STEP-C.md).
+
+## F-LOG-0247 — **Human acts (Human ARB chief, 2026-10-10): R6 CLOSED as stated (brief r4); path A adopted: H-D vs H-B accepted as NON-IDENTIFIABLE on this corpus; proceed with bounded claims**
+- **R6: CLOSED** on `analysis/theory/R6-DECISION-BRIEF.md` r4 (ca1f34b1f). Recorded limitations:
+  - within-family reproduction only (Opus 5.5 and Sonnet 5.5);
+  - **cross-family WAIVED, not satisfied** (F-LOG-0245);
+  - the shared Claude interpretation is untested;
+  - finite universes U and U_P2 only;
+  - one corpus;
+  - every reviewer is Claude-family.
+- **Path A:** H-D = not falsified / not validated; H-B = not falsified / not validated; **H-D vs H-B = non-identifiable within the authorized corpus**. The bounding qualifiers travel with every claim:
+  - it rests on H5, adopted with the F-LOG-0190 condition knowingly waived (D02);
+  - D1's strong form is reading-relative;
+  - the weak form holds in the O-form only, with the R-j (ii)-O exception; R-a is untested.
+- **E-A5 / Protocol C: not authorized** (it stays sealed and unexecuted). H1 is not reopened.
+- **Next per the adopted order:** V2/V5/V6 only by information gain, then human authorization for R7. Nothing is started.

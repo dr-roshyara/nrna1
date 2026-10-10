@@ -60,6 +60,17 @@
 - Not authorized: V2, E-A5 (reopens H1), V6. Matrix: `LOOP-1BM/R6-VALIDATION-MATRIX.md`.
 
 
+**State 2026-10-10 (F-LOG-0247): R6 CLOSED; path A (H-D vs H-B non-identifiable, bounded claims).**
+- **R1–R6 closed.**
+  - R4 is at r3.1.
+  - Cross-family was waived, not satisfied.
+  - E-A5 is not authorized.
+- **Open, by information gain, each a human decision:**
+  - **V6, a second corpus:** the only route to claims beyond this corpus. Needed if generalization is required before R7.
+  - **V2, a two-target slice:** tests the untested R-a reading. Cheap and finite.
+  - **V5:** stays unidentifiable without new blind data. Not recommended.
+- **Then:** an R7 authorization brief. DDD only on an explicit human act.
+
 **State 2026-10-07 (F-LOG-0240), priority order agreed with the human:**
 - **P0:** finish the two Sonnet 5.5 within-family runs (F-LOG-0238/0239): seal → compare → review.
 - **P1:** a non-Claude run of the blind slice. This is the only cross-family evidence.
