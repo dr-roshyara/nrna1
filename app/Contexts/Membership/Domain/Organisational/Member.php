@@ -113,6 +113,18 @@ final readonly class Member
         return $this->accept(new End($id, $period, $effectiveAt, $kind, $provenance, $decidedAt));
     }
 
+    /** Correction contract §3.1 (C-1): set aside an earlier decision fact; liveness only (D-COR-5 (A)). */
+    public function decideAnnul(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt): Decision
+    {
+        return $this->accept(new Annul($id, $target, $provenance, $decidedAt));
+    }
+
+    /** Correction contract §3.2 (C-1): record that an earlier fact never reflected reality; liveness only (D-COR-5 (A)). */
+    public function decideVoid(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    {
+        return $this->accept(new VoidFact($id, $target, $provenance, $decidedAt));
+    }
+
     /** G*: resolve the candidate F·f and accept iff no invariant is violated (contract §15). */
     private function accept(Fact $fact): Decision
     {

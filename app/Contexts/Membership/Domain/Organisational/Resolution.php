@@ -37,14 +37,28 @@ final class Resolution
     }
 
     /**
-     * Stage 1, liveness. Slice 0 has no Annul / Void, so every fact is live.
+     * Stage 1, liveness (FP §16.3): live(f) ⇔ no later live Annul / Void targets f.
+     * A reversal can only target an earlier fact, so one backward pass decides every fact.
      *
-     * @param list<Fact> $facts
+     * @param list<Fact> $facts in seq order
      * @return list<Fact>
      */
     private static function live(array $facts): array
     {
-        return $facts;
+        $reversed = [];
+        $live = [];
+        for ($i = count($facts) - 1; $i >= 0; $i--) {
+            $fact = $facts[$i];
+            if (isset($reversed[$fact->id()->value()])) {
+                continue;
+            }
+            $live[] = $fact;
+            if ($fact instanceof ReversalFact) {
+                $reversed[$fact->target()->value()] = true;
+            }
+        }
+
+        return array_reverse($live);
     }
 
     /**
