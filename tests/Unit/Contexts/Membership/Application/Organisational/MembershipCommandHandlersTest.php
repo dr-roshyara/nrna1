@@ -173,4 +173,29 @@ final class MembershipCommandHandlersTest extends TestCase
 
         $this->assertTrue($this->admitHandler()->handle(self::admit('k2', 'A2', 7))->isAppended());
     }
+
+    public function test_an_unstorable_valid_time_is_an_application_refusal_without_retry(): void
+    {
+        // E7 (R-1a-6): a technical refusal, not a domain refusal and not a concurrency conflict.
+        $outcome = $this->admitHandler()->handle(self::admit('k1', 'A1', 2_932_897));
+
+        $this->assertFalse($outcome->isAppended());
+        $this->assertSame('valid_time_not_storable', $outcome->applicationRefusal()?->value);
+        $this->assertNull($outcome->domainRefusal());
+        $this->assertSame(1, $this->repo->appendCalls, 'not retried');
+        $this->assertSame(0, $this->member()->version());
+    }
+
+    public function test_a_reused_key_is_refused_before_an_unstorable_valid_time_is_considered(): void
+    {
+        // E8: the application's IDEM pre-check precedes R-1a-6; append is not reached.
+        $this->admitHandler()->handle(self::admit('k1', 'A1', 1));
+        $appendCalls = $this->repo->appendCalls;
+
+        $outcome = $this->admitHandler()->handle(self::admit('k1', 'A2', 2_932_897));
+
+        $this->assertSame(ApplicationRefusal::IdempotencyKeyConflict, $outcome->applicationRefusal());
+        $this->assertSame($appendCalls, $this->repo->appendCalls);
+        $this->assertSame(1, $this->member()->version());
+    }
 }

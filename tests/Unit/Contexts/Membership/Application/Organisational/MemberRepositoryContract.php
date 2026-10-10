@@ -233,4 +233,140 @@ trait MemberRepositoryContract
         $after = $repo->load($this->tenant(), $member->id())->log();
         $this->assertEquals($before[0], $after[0]);
     }
+
+    // R-1a-6 (Option E): a finite valid time outside 0001-01-01 … 9999-12-31 is not storable.
+    // Boundaries are literal ordinals on purpose: the contract is checked independently of StorableValidTime.
+
+    private static function admitUntil(Member $member, string $factId, int $at, ?int $until): Decision
+    {
+        return $member->decideAdmit(FactId::fromString($factId), TimePoint::of($at), $until === null ? TimePoint::infinity() : TimePoint::of($until), Provenance::decision('registrar'));
+    }
+
+    private static function endAt(Member $member, string $factId, string $period, int $at): Decision
+    {
+        return $member->decideEnd(FactId::fromString($factId), PeriodId::fromString($period), TimePoint::of($at), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+    }
+
+    /** @return array<string, array{int, ?int}> effectiveAt, finite initialTermUntil (null = unlimited) */
+    public static function unstorableAdmissions(): array
+    {
+        return [
+            'E1a effectiveAt one day before 0001-01-01' => [-719_163, null],
+            'E1b effectiveAt one day after 9999-12-31' => [2_932_897, null],
+            'E1c initial term until one day after 9999-12-31' => [0, 2_932_897],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('unstorableAdmissions')]
+    public function test_an_admission_with_an_unstorable_valid_time_is_not_appended(int $at, ?int $until): void
+    {
+        // E1a–c
+        $repo = $this->repo();
+        $member = $this->created($repo);
+
+        $result = $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', $at, $until), self::key('k1'), 'fp1');
+
+        $this->assertSame('valid_time_not_storable', $result->outcome()->value);
+        $this->assertSame(0, $repo->load($this->tenant(), $member->id())->version());
+        $this->assertSame([], $repo->load($this->tenant(), $member->id())->log());
+        $this->assertNull($repo->appliedCommand($this->tenant(), self::key('k1')));
+    }
+
+    public function test_an_end_with_an_unstorable_valid_time_is_not_appended(): void
+    {
+        // E1d
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 0, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $result = $repo->append($this->tenant(), $member->id(), self::endAt($member, 'E1', 'A1', 2_932_897), self::key('k2'), 'fp2');
+
+        $this->assertSame('valid_time_not_storable', $result->outcome()->value);
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+        $this->assertCount(1, $repo->load($this->tenant(), $member->id())->log());
+        $this->assertNull($repo->appliedCommand($this->tenant(), self::key('k2')));
+    }
+
+    /** @return array<string, array{int, ?int}> */
+    public static function storableBoundaryAdmissions(): array
+    {
+        return [
+            'E2a effectiveAt 0001-01-01' => [-719_162, null],
+            'E2b effectiveAt 9999-12-31' => [2_932_896, null],
+            'E2c initial term until 9999-12-31' => [0, 2_932_896],
+        ];
+    }
+
+    #[\PHPUnit\Framework\Attributes\DataProvider('storableBoundaryAdmissions')]
+    public function test_an_admission_at_a_storable_boundary_is_appended_and_read_back(int $at, ?int $until): void
+    {
+        // E2a–c
+        $repo = $this->repo();
+        $member = $this->created($repo);
+
+        $result = $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', $at, $until), self::key('k1'), 'fp1');
+
+        $this->assertSame(AppendOutcome::Appended, $result->outcome());
+        $fact = $repo->load($this->tenant(), $member->id())->log()[0]->fact();
+        $this->assertSame($at, $fact->effectiveAt()->ordinal());
+        $this->assertSame($until, $fact->initialTermUntil()->isInfinite() ? null : $fact->initialTermUntil()->ordinal());
+    }
+
+    public function test_an_end_at_the_last_storable_date_is_appended_and_read_back(): void
+    {
+        // E2d
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 0, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $result = $repo->append($this->tenant(), $member->id(), self::endAt($member, 'E1', 'A1', 2_932_896), self::key('k2'), 'fp2');
+
+        $this->assertSame(AppendOutcome::Appended, $result->outcome());
+        $this->assertSame(2_932_896, $repo->load($this->tenant(), $member->id())->log()[1]->fact()->effectiveAt()->ordinal());
+    }
+
+    public function test_a_reused_key_is_answered_before_the_valid_time_is_checked(): void
+    {
+        // E3: IDEM-2 precedes R-1a-6 (Slice 1a contract §7, F-3 clause).
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $result = $repo->append($this->tenant(), $member->id(), self::endAt($member, 'E1', 'A1', 2_932_897), self::key('k1'), 'fp-other');
+
+        $this->assertSame(AppendOutcome::IdempotencyKeyConflict, $result->outcome());
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+    }
+
+    public function test_an_identical_retry_is_answered_before_the_valid_time_is_checked(): void
+    {
+        // E4: IDEM-1 / IDEM-3 precede R-1a-6.
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $first = $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $retry = $repo->append($this->tenant(), $member->id(), self::endAt($member, 'E1', 'A1', 2_932_897), self::key('k1'), 'fp1');
+
+        $this->assertSame(AppendOutcome::AlreadyApplied, $retry->outcome());
+        $this->assertEquals($first->appended(), $retry->appended());
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+    }
+
+    public function test_an_unstorable_valid_time_takes_precedence_over_a_stale_version(): void
+    {
+        // E5: R-1a-6 is checked before the version comparison.
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $stale = self::admitUntil($member, 'A1', 2_932_897, null);
+        $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A0', 0, null), self::key('k0'), 'fp0');
+
+        $result = $repo->append($this->tenant(), $member->id(), $stale, self::key('k1'), 'fp1');
+
+        $this->assertSame('valid_time_not_storable', $result->outcome()->value);
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+    }
 }
