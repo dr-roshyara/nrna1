@@ -197,3 +197,43 @@ If the PO prefers to close the static defect early, B is the smallest sound fix,
 **Not permitted without separate authorisation:** F-1 adapter edits, C-2 / C-3 / C-4, persistence, migration, cutover, live writes, story or index edits, new IDs.
 
 **Stop.**
+
+## 11. Correction evidence (2026-10-10, after the PO's approval of plan 20261010-1144; append-only)
+
+**Authority:**
+- PO / Human ARB H-1 (the plan) and CP-1 (sensitivity instead of RED);
+- H-2 … H-6 recorded in the plan and confirmed in writing.
+
+**Scope kept:** test-only. `git diff --stat 5765b9fa3 -- app/` is empty. There was no adapter, schema, DB, application, cutover or live-write change. The PostgreSQL suite was **not run**.
+
+| Gap | Closed by | Commit | Sensitivity (mutant killed by the named test, in a scratch copy) |
+|---|---|---|---|
+| K-E1 | `test_an_accepted_annul_carries_its_fact_data`, `test_an_accepted_void_carries_its_fact_data` | `9ae69b7bc` | M1 drop decidedAt (Annul), M2 drop decidedAt (Void), M3 basedOnVersion + 1, M4 id ↔ target |
+| guard order 3 < 4, 5, 6 | `test_decided_at_is_checked_before_the_target_kind_provenance_and_liveness` | `fccf5b778` | M5 |
+| guard order 4 < 5 | `test_annul_of_void_is_refused_before_the_provenance_check` | `fccf5b778` | M6 |
+| guard order 5 < 6 | `test_provenance_is_checked_before_liveness` | `fccf5b778` | M7 |
+| K-H1 property | `test_known_at_equals_the_oracle_and_is_prefix_stable` (g6 port reference + metamorphic; H = 5, length ≤ 5) | `e96d12a5d` | M8 ignore τ, M9 boundary ≤ → < |
+| runner validity | canary M0 (`Annul::target()` returns its own id) | `9ae69b7bc` | killed, so the scratch copy is the code under test |
+
+**Commands and results (actual):**
+
+```text
+vendor/bin/phpunit --no-configuration --bootstrap vendor/autoload.php tests/Unit/Contexts/Membership/Domain/Organisational/   OK (89 tests, 112487 assertions)
+vendor/bin/phpunit … tests/Unit/Contexts/Membership/Application/Organisational/                                            OK (34 tests, 93 assertions)
+vendor/bin/phpunit … the 3 Membership architecture files                                                                    OK (12 tests, 18 assertions)
+php docs/publicdigit/membership/architecture/models/c1_sensitivity/run.php                                                  M0 … M9: KILLED (control OK each); working tree unchanged; exit 0
+php vendor/bin/infection … (scope as §5)                                                                                    129 mutants, 119 killed; MSI 92 %, covered 95 % (unchanged)
+```
+
+**No RED phase for any new test.** The behaviour existed, so these tests verify existing behaviour, as H-2 and CP-1 allow.
+
+**Process deviations within the correction (disclosed):**
+- M3 first killed by a setup crash, so the test was rebuilt on `Member::fromLog`;
+- the M9 draft called a non-existent `Instant::isBefore`, so the patch was regenerated.
+
+**Remaining:**
+- **independent review** of this correction, then formal C-1 acceptance (H-6, PR then PO);
+- F-1 as a C-4 entry obligation;
+- persistence unverified (no isolated DB);
+- D-COR-2 has no independent-oracle coverage;
+- recordedAt ties are not enumerated by T-H1.

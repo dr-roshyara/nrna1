@@ -10,7 +10,7 @@ C-1 adds the first two correction facts to the existing kernel:
 
 Both change **fact liveness only** (D-COR-5 (A)). They carry no valid time and create no consequences. A reversed fact simply stops counting, and reversing the reversal makes it count again.
 
-C-1 is kernel only. It has no application handler, no authority check, no persistence and no events. Those are C-3 and C-4. `Correct` and consequences are C-2.
+C-1 is kernel only. It has no application handler, no authority check, no persistence and no event *emission*. Those are C-3 and C-4. **The accepted decision does carry the event data** (`FactAnnulled` / `FactVoided`: id, target, provenance, decidedAt, basedOnVersion; K-E1), and C-3 emits from it. `Correct` and consequences are C-2.
 
 ## Where it fits
 

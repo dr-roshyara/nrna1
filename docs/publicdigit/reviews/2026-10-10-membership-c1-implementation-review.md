@@ -144,3 +144,17 @@ authorization:
   authorized_to_act: no further implementation without a PR / PO decision
   requires_human_decision: F-1, F-2, acceptance of C-1
 ```
+
+## Addendum (2026-10-10, after the acceptance review; append-only, the text above is unchanged)
+
+Source: `2026-10-10-membership-c1-acceptance-review.md`; PO decision H-5.
+
+1. **K-E1 was omitted from §1 and §3.** The criterion had no test at the time of this review. It is now evidenced by `AnnulVoidTest::test_an_accepted_annul_carries_its_fact_data` and `…_void_carries_its_fact_data` (commit `9ae69b7bc`).
+2. **"No deviation from the approved scope" (§1) is qualified.** The scope was respected. However:
+   - the step 2 GREEN (`b206cc5ad`) was broader than its RED;
+   - K-R1, K-R2, K-R3, K-G1 and K-H1 therefore had no RED phase.
+
+   The PO accepted this as documented (H-2).
+3. **K-H1 (§6) was example-only.** It is now a bounded property against the g6 port (commit `e96d12a5d`).
+4. **Some "nothing appended" assertions in `AnnulVoidTest` are always true** (`Member` is immutable). They are not evidence. The evidence is the refused `Decision` plus the unchanged resolution.
+5. **D-COR-2 has no independent-oracle coverage.** The g6 oracle has no `TargetNotLive`; the rule is added by the developer-written wrapper.

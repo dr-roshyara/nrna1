@@ -63,17 +63,17 @@ Each mutant M0 to M9 is one patch file. The runner reports, per mutant, **killed
 
 ## Task checklist (after approval)
 
-- [ ] 0. **Baseline:** domain + application unit, 3 architecture files; record the counts (expected 83 / 34 / 12 at HEAD `5765b9fa3`, re-verified, not assumed). Build the sensitivity runner and prove the canary.
-- [ ] 1. T-E1a, T-E1b: run (expect pass); run M1 to M4 (expect killed). Commit: `test(membership): K-E1 decision data, no RED phase, sensitivity M1-M4 (PBDIGIT-268)`.
-- [ ] 2. T-O1, T-O2, T-O3: likewise with M5 to M7. One commit.
-- [ ] 3. T-H1: likewise with M8, M9. One commit.
-- [ ] 4. Regression: unit + architecture; Infection with the same scratch configuration and scope as the acceptance review (expect no new survivors; report the MSI with its scope).
-- [ ] 5. On H-5 only:
+- [x] 0. **Baseline:** domain + application unit, 3 architecture files; record the counts (expected 83 / 34 / 12 at HEAD `5765b9fa3`, re-verified, not assumed). Build the sensitivity runner and prove the canary.
+- [x] 1. T-E1a, T-E1b: run (expect pass); run M1 to M4 (expect killed). Commit: `test(membership): K-E1 decision data, no RED phase, sensitivity M1-M4 (PBDIGIT-268)`.
+- [x] 2. T-O1, T-O2, T-O3: likewise with M5 to M7. One commit.
+- [x] 3. T-H1: likewise with M8, M9. One commit.
+- [x] 4. Regression: unit + architecture; Infection with the same scratch configuration and scope as the acceptance review (expect no new survivors; report the MSI with its scope).
+- [x] 5. On H-5 only:
   - an addendum to `2026-10-10-membership-c1-implementation-review.md` (K-E1, the qualified TDD claim, P-KNOWN, NOTE-1; append, do not rewrite);
   - guide `04` line 13: "no event *emission* (C-3); the decision carries the event data (K-E1)";
   - the story wording "TDD-first except K-R1 / R2 / R3 / G1 / H1 (verification-only)";
   - the README row after `PBDIGIT-267`, committed through a temporary index with that path only, after re-checking that the README is clean.
-- [ ] 6. A correction report (append to the acceptance review as §11 "Correction evidence"), story progress, session log. **STOP** for the independent review and the formal C-1 acceptance (H-6).
+- [x] 6. A correction report (append to the acceptance review as §11 "Correction evidence"), story progress, session log. **STOP** for the independent review and the formal C-1 acceptance (H-6).
 
 ## Definition of Done
 
@@ -109,3 +109,4 @@ Each mutant M0 to M9 is one patch file. The runner reports, per mutant, **killed
 
 - 2026-10-10 11:44: plan drafted. **Stopped for approval.**
 - 2026-10-10: **APPROVED** by the PO (H-1, CP-1, H-2 … H-6). Implementation started.
+- 2026-10-10: **steps 0 – 6 done.** Commits `9ae69b7bc` (K-E1 + kit), `fccf5b778` (guard order), `e96d12a5d` (K-H1); docs commit follows. M0 to M9 killed; regression 89 / 34 / 12 green; Infection unchanged (92 % / 95 %); `app/` untouched. Two in-correction fixes are disclosed in the acceptance review §11. **STOP** for the independent review and H-6.
