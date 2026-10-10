@@ -91,6 +91,27 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
         if (!StorableValidTime::admits($accepted->fact())) {
             return AppendResult::failed(AppendOutcome::ValidTimeNotStorable);
         }
+
+        return $this->record($tenant, $id, $accepted, $key, $fingerprint);
+    }
+
+    /**
+     * TEST-ONLY (Option E, E4-L): writes a record as an adapter version before R-1a-6 would have,
+     * i.e. append() without the storable-valid-time check. It models legacy state only; no
+     * production adapter offers such a path, and new writes through append() cannot create it.
+     */
+    public function seedPreOptionEAppend(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint): Appended
+    {
+        if (!$accepted->isAccepted() || !isset($this->members[$tenant->value()][$id->value()]) || $this->appliedCommand($tenant, $key) !== null) {
+            throw new \LogicException('Seed an accepted decision for an existing Member under an unused key.');
+        }
+
+        return $this->record($tenant, $id, $accepted, $key, $fingerprint)->appended();
+    }
+
+    /** Version check, then the fact and the key row (one atomic step in this single-threaded double). */
+    private function record(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint): AppendResult
+    {
         $log = $this->members[$tenant->value()][$id->value()]['log'];
         if ($accepted->basedOnVersion() !== count($log)) {
             return AppendResult::failed(AppendOutcome::ConcurrencyConflict);

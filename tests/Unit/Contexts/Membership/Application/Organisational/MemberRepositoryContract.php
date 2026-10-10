@@ -341,9 +341,12 @@ trait MemberRepositoryContract
         $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
     }
 
-    public function test_an_identical_retry_is_answered_before_the_valid_time_is_checked(): void
+    public function test_a_known_key_with_a_matching_fingerprint_is_answered_without_examining_the_new_decision(): void
     {
-        // E4: IDEM-1 / IDEM-3 precede R-1a-6.
+        // E4: IDEM-1 / IDEM-3 precede R-1a-6. At the port the fingerprint is opaque (§3: "key seen with the
+        // same fingerprint"); the new decision deliberately differs, so this is not a genuinely identical
+        // command. It shows that the new decision's valid time is never examined. The genuine replay of a
+        // legacy record is E4-L (InMemoryMemberRepositoryTest; PostgreSQL variant in Part 2).
         $repo = $this->repo();
         $member = $this->created($repo);
         $first = $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
