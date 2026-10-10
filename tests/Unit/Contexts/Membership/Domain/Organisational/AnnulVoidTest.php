@@ -69,4 +69,18 @@ final class AnnulVoidTest extends TestCase
 
         $this->assertTrue($h->void('V1', 'A1')->isAccepted());
     }
+
+    // K-A3 / N-3: Annul(Void) is refused. Restoring a voided fact is Void(Void), not Annul.
+    public function test_annulling_a_void_is_refused(): void
+    {
+        $h = self::admitted();
+        $h->commit($h->void('V1', 'A1'));
+        $versionBefore = $h->member->version();
+
+        $decision = $h->annul('X1', 'V1');
+
+        $this->assertSame(RefusalReason::AnnulOfVoidRefused, $decision->refusal());
+        $this->assertSame($versionBefore, $h->member->version(), 'nothing appended');
+        $this->assertSame([], $h->member->resolve()->periods(), 'the void still holds');
+    }
 }
