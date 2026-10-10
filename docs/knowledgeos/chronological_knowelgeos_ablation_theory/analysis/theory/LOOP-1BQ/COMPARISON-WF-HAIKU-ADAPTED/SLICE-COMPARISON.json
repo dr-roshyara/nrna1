@@ -1,0 +1,4412 @@
+{
+ "summary": {
+  "n_units_scored": 400,
+  "counts": {
+   "BLIND/AGREEMENT": 1,
+   "BLIND/DISAGREEMENT": 110,
+   "BLIND/INCOMPLETE": 2,
+   "BLIND/NOT_A_UNIT": 5,
+   "EXPOSED/AGREEMENT": 121,
+   "EXPOSED/DISAGREEMENT": 154,
+   "EXPOSED/INCOMPLETE": 12,
+   "EXPOSED/NOT_A_UNIT": 53
+  },
+  "distinct_blind_quantities_agreeing": 1,
+  "unrecognized_checker_keys": [],
+  "ambiguous_flagged": [],
+  "disagreements_for_review": [
+   "U/n_frame_histories",
+   "U/R0/sizes/R_B",
+   "U/R0/sizes/H-D",
+   "U/R0/sizes/H-B",
+   "U/R0/sizes/H-D&H-B",
+   "U/R0/sizes/H-D&R_B",
+   "U/R0/(i)-S/holds",
+   "U/R0/(i)-S/scope_size",
+   "U/R0/(i)-S/n_counterexamples",
+   "U/R0/(ii)-S/scope_size",
+   "U/R0/(iii)-L/scope_size",
+   "U/R-b/sizes/R_B",
+   "U/R-b/sizes/H-D",
+   "U/R-b/sizes/H-B",
+   "U/R-b/sizes/H-D&H-B",
+   "U/R-b/sizes/H-D&R_B",
+   "U/R-b/(i)-S/holds",
+   "U/R-b/(i)-S/scope_size",
+   "U/R-b/(i)-S/n_counterexamples",
+   "U/R-b/(ii)-S/scope_size",
+   "U/R-b/(iii)-L/scope_size",
+   "U/R-c/sizes/R_B",
+   "U/R-c/sizes/H-D",
+   "U/R-c/sizes/H-B",
+   "U/R-c/sizes/H-D&H-B",
+   "U/R-c/sizes/H-D&R_B",
+   "U/R-c/(i)-S/scope_size",
+   "U/R-c/(i)-S/n_counterexamples",
+   "U/R-c/(ii)-S/scope_size",
+   "U/R-c/(iii)-L/scope_size",
+   "U/R-d/sizes/R_B",
+   "U/R-d/sizes/H-D",
+   "U/R-d/sizes/H-B",
+   "U/R-d/sizes/H-D&H-B",
+   "U/R-d/sizes/H-D&R_B",
+   "U/R-d/(i)-S/scope_size",
+   "U/R-d/(i)-S/n_counterexamples",
+   "U/R-d/(ii)-S/holds",
+   "U/R-d/(ii)-S/scope_size",
+   "U/R-d/(ii)-S/n_counterexamples",
+   "U/R-d/(iii)-L/scope_size",
+   "U/R-e/sizes/R_B",
+   "U/R-e/sizes/H-D",
+   "U/R-e/sizes/H-B",
+   "U/R-e/sizes/H-D&H-B",
+   "U/R-e/sizes/H-D&R_B",
+   "U/R-e/(i)-S/holds",
+   "U/R-e/(i)-S/scope_size",
+   "U/R-e/(i)-S/n_counterexamples",
+   "U/R-e/(ii)-S/scope_size",
+   "U/R-f/sizes/R_B",
+   "U/R-f/sizes/H-D",
+   "U/R-f/sizes/H-B",
+   "U/R-f/sizes/H-D&H-B",
+   "U/R-f/sizes/H-D&R_B",
+   "U/R-f/(i)-S/holds",
+   "U/R-f/(i)-S/scope_size",
+   "U/R-f/(i)-S/n_counterexamples",
+   "U/R-f/(ii)-S/scope_size",
+   "U/R-f/(iii)-L/scope_size",
+   "U/R-g/sizes/R_B",
+   "U/R-g/sizes/H-D",
+   "U/R-g/sizes/H-B",
+   "U/R-g/sizes/H-D&H-B",
+   "U/R-g/sizes/H-D&R_B",
+   "U/R-g/(i)-S/scope_size",
+   "U/R-g/(i)-S/n_counterexamples",
+   "U/R-g/(ii)-S/holds",
+   "U/R-g/(ii)-S/scope_size",
+   "U/R-g/(ii)-S/n_counterexamples",
+   "U/R-g/(iii)-L/holds",
+   "U/R-g/(iii)-L/scope_size",
+   "U/R-g/(iii)-L/n_counterexamples",
+   "U/R-g+/sizes/R_B",
+   "U/R-g+/sizes/H-D",
+   "U/R-g+/sizes/H-B",
+   "U/R-g+/sizes/H-D&H-B",
+   "U/R-g+/sizes/H-D&R_B",
+   "U/R-g+/(i)-S/scope_size",
+   "U/R-g+/(i)-S/n_counterexamples",
+   "U/R-g+/(ii)-S/holds",
+   "U/R-g+/(ii)-S/scope_size",
+   "U/R-g+/(ii)-S/n_counterexamples",
+   "U/R-g+/(iii)-L/holds",
+   "U/R-g+/(iii)-L/scope_size",
+   "U/R-g+/(iii)-L/n_counterexamples",
+   "U/R-h/sizes/R_B",
+   "U/R-h/sizes/H-D",
+   "U/R-h/sizes/H-B",
+   "U/R-h/sizes/H-D&H-B",
+   "U/R-h/sizes/H-D&R_B",
+   "U/R-h/(i)-S/holds",
+   "U/R-h/(i)-S/scope_size",
+   "U/R-h/(i)-S/n_counterexamples",
+   "U/R-h/(ii)-S/scope_size",
+   "U/R-h/(iii)-L/holds",
+   "U/R-h/(iii)-L/scope_size",
+   "U/R-h/(iii)-L/n_counterexamples",
+   "U/R-i/sizes/R_B",
+   "U/R-i/sizes/H-D",
+   "U/R-i/sizes/H-B",
+   "U/R-i/sizes/H-D&H-B",
+   "U/R-i/sizes/H-D&R_B",
+   "U/R-i/(i)-S/scope_size",
+   "U/R-i/(i)-S/n_counterexamples",
+   "U/R-i/(ii)-S/holds",
+   "U/R-i/(ii)-S/scope_size",
+   "U/R-i/(ii)-S/n_counterexamples",
+   "U/R-i/(iii)-L/scope_size",
+   "U/R-i'/sizes/R_B",
+   "U/R-i'/sizes/H-D",
+   "U/R-i'/sizes/H-B",
+   "U/R-i'/sizes/H-D&H-B",
+   "U/R-i'/sizes/H-D&R_B",
+   "U/R-i'/(i)-S/scope_size",
+   "U/R-i'/(i)-S/n_counterexamples",
+   "U/R-i'/(ii)-S/holds",
+   "U/R-i'/(ii)-S/scope_size",
+   "U/R-i'/(ii)-S/n_counterexamples",
+   "U/R-i'/(iii)-L/scope_size",
+   "U/R-j/sizes/R_B",
+   "U/R-j/sizes/H-D",
+   "U/R-j/sizes/H-B",
+   "U/R-j/sizes/H-D&H-B",
+   "U/R-j/sizes/H-D&R_B",
+   "U/R-j/(i)-S/scope_size",
+   "U/R-j/(i)-S/n_counterexamples",
+   "U/R-j/(ii)-S/holds",
+   "U/R-j/(ii)-S/scope_size",
+   "U/R-j/(ii)-S/n_counterexamples",
+   "U/R-j/(iii)-L/scope_size",
+   "U/R-j/(ii)-O/holds",
+   "U_P2/n_frame_histories",
+   "U_P2/R0/sizes/R_B",
+   "U_P2/R0/sizes/H-D",
+   "U_P2/R0/sizes/H-B",
+   "U_P2/R0/sizes/H-D&H-B",
+   "U_P2/R0/sizes/H-D&R_B",
+   "U_P2/R0/(i)-S/holds",
+   "U_P2/R0/(i)-S/scope_size",
+   "U_P2/R0/(i)-S/n_counterexamples",
+   "U_P2/R0/(ii)-S/scope_size",
+   "U_P2/R0/(iii)-L/scope_size",
+   "U_P2/R-b/sizes/R_B",
+   "U_P2/R-b/sizes/H-D",
+   "U_P2/R-b/sizes/H-B",
+   "U_P2/R-b/sizes/H-D&H-B",
+   "U_P2/R-b/sizes/H-D&R_B",
+   "U_P2/R-b/(i)-S/holds",
+   "U_P2/R-b/(i)-S/scope_size",
+   "U_P2/R-b/(i)-S/n_counterexamples",
+   "U_P2/R-b/(ii)-S/scope_size",
+   "U_P2/R-b/(iii)-L/scope_size",
+   "U_P2/R-c/sizes/R_B",
+   "U_P2/R-c/sizes/H-D",
+   "U_P2/R-c/sizes/H-B",
+   "U_P2/R-c/sizes/H-D&H-B",
+   "U_P2/R-c/sizes/H-D&R_B",
+   "U_P2/R-c/(i)-S/scope_size",
+   "U_P2/R-c/(i)-S/n_counterexamples",
+   "U_P2/R-c/(ii)-S/scope_size",
+   "U_P2/R-c/(iii)-L/scope_size",
+   "U_P2/R-d/sizes/R_B",
+   "U_P2/R-d/sizes/H-D",
+   "U_P2/R-d/sizes/H-B",
+   "U_P2/R-d/sizes/H-D&H-B",
+   "U_P2/R-d/sizes/H-D&R_B",
+   "U_P2/R-d/(i)-S/scope_size",
+   "U_P2/R-d/(i)-S/n_counterexamples",
+   "U_P2/R-d/(ii)-S/holds",
+   "U_P2/R-d/(ii)-S/scope_size",
+   "U_P2/R-d/(ii)-S/n_counterexamples",
+   "U_P2/R-d/(iii)-L/scope_size",
+   "U_P2/R-e/sizes/R_B",
+   "U_P2/R-e/sizes/H-D",
+   "U_P2/R-e/sizes/H-B",
+   "U_P2/R-e/sizes/H-D&H-B",
+   "U_P2/R-e/sizes/H-D&R_B",
+   "U_P2/R-e/(i)-S/holds",
+   "U_P2/R-e/(i)-S/scope_size",
+   "U_P2/R-e/(i)-S/n_counterexamples",
+   "U_P2/R-e/(ii)-S/scope_size",
+   "U_P2/R-f/sizes/R_B",
+   "U_P2/R-f/sizes/H-D",
+   "U_P2/R-f/sizes/H-B",
+   "U_P2/R-f/sizes/H-D&H-B",
+   "U_P2/R-f/sizes/H-D&R_B",
+   "U_P2/R-f/(i)-S/holds",
+   "U_P2/R-f/(i)-S/scope_size",
+   "U_P2/R-f/(i)-S/n_counterexamples",
+   "U_P2/R-f/(ii)-S/scope_size",
+   "U_P2/R-f/(iii)-L/scope_size",
+   "U_P2/R-g/sizes/R_B",
+   "U_P2/R-g/sizes/H-D",
+   "U_P2/R-g/sizes/H-B",
+   "U_P2/R-g/sizes/H-D&H-B",
+   "U_P2/R-g/sizes/H-D&R_B",
+   "U_P2/R-g/(i)-S/scope_size",
+   "U_P2/R-g/(i)-S/n_counterexamples",
+   "U_P2/R-g/(ii)-S/holds",
+   "U_P2/R-g/(ii)-S/scope_size",
+   "U_P2/R-g/(ii)-S/n_counterexamples",
+   "U_P2/R-g/(iii)-L/holds",
+   "U_P2/R-g/(iii)-L/scope_size",
+   "U_P2/R-g/(iii)-L/n_counterexamples",
+   "U_P2/R-g+/sizes/R_B",
+   "U_P2/R-g+/sizes/H-D",
+   "U_P2/R-g+/sizes/H-B",
+   "U_P2/R-g+/sizes/H-D&H-B",
+   "U_P2/R-g+/sizes/H-D&R_B",
+   "U_P2/R-g+/(i)-S/scope_size",
+   "U_P2/R-g+/(i)-S/n_counterexamples",
+   "U_P2/R-g+/(ii)-S/holds",
+   "U_P2/R-g+/(ii)-S/scope_size",
+   "U_P2/R-g+/(ii)-S/n_counterexamples",
+   "U_P2/R-g+/(iii)-L/holds",
+   "U_P2/R-g+/(iii)-L/scope_size",
+   "U_P2/R-g+/(iii)-L/n_counterexamples",
+   "U_P2/R-h/sizes/R_B",
+   "U_P2/R-h/sizes/H-D",
+   "U_P2/R-h/sizes/H-B",
+   "U_P2/R-h/sizes/H-D&H-B",
+   "U_P2/R-h/sizes/H-D&R_B",
+   "U_P2/R-h/(i)-S/holds",
+   "U_P2/R-h/(i)-S/scope_size",
+   "U_P2/R-h/(i)-S/n_counterexamples",
+   "U_P2/R-h/(ii)-S/scope_size",
+   "U_P2/R-h/(iii)-L/holds",
+   "U_P2/R-h/(iii)-L/scope_size",
+   "U_P2/R-h/(iii)-L/n_counterexamples",
+   "U_P2/R-i/sizes/R_B",
+   "U_P2/R-i/sizes/H-D",
+   "U_P2/R-i/sizes/H-B",
+   "U_P2/R-i/sizes/H-D&H-B",
+   "U_P2/R-i/sizes/H-D&R_B",
+   "U_P2/R-i/(i)-S/scope_size",
+   "U_P2/R-i/(i)-S/n_counterexamples",
+   "U_P2/R-i/(ii)-S/holds",
+   "U_P2/R-i/(ii)-S/scope_size",
+   "U_P2/R-i/(ii)-S/n_counterexamples",
+   "U_P2/R-i/(iii)-L/scope_size",
+   "U_P2/R-i'/sizes/R_B",
+   "U_P2/R-i'/sizes/H-D",
+   "U_P2/R-i'/sizes/H-B",
+   "U_P2/R-i'/sizes/H-D&H-B",
+   "U_P2/R-i'/sizes/H-D&R_B",
+   "U_P2/R-i'/(i)-S/scope_size",
+   "U_P2/R-i'/(i)-S/n_counterexamples",
+   "U_P2/R-i'/(ii)-S/holds",
+   "U_P2/R-i'/(ii)-S/scope_size",
+   "U_P2/R-i'/(ii)-S/n_counterexamples",
+   "U_P2/R-i'/(iii)-L/scope_size",
+   "U_P2/R-j/sizes/R_B",
+   "U_P2/R-j/sizes/H-D",
+   "U_P2/R-j/sizes/H-B",
+   "U_P2/R-j/sizes/H-D&H-B",
+   "U_P2/R-j/sizes/H-D&R_B",
+   "U_P2/R-j/(i)-S/scope_size",
+   "U_P2/R-j/(i)-S/n_counterexamples",
+   "U_P2/R-j/(ii)-S/holds",
+   "U_P2/R-j/(ii)-S/scope_size",
+   "U_P2/R-j/(ii)-S/n_counterexamples",
+   "U_P2/R-j/(iii)-L/scope_size",
+   "U_P2/R-j/(ii)-O/holds"
+  ],
+  "licence_cross_family_reproduction_of_computational_core": false
+ },
+ "units": [
+  {
+   "unit": "U/n_frame_histories",
+   "tier": "EXPOSED",
+   "qid": "n#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "665920",
+   "checker": "952640"
+  },
+  {
+   "unit": "U/R0/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R0/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R0/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "93888",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R0/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R0#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "26408",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R0/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "52816",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R0/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R0/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R0/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R0/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R0/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R0/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R0/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R0/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "480",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R0/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R0/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R0/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-b/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-b/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-b/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "93888",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-b/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R0#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "26408",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-b/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "52816",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-b/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-b/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-b/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-b/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-b/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-b/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-b/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "480",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-b/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-b/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-c/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "552960",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-c/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-c/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-c#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "187776",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-c/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-c#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "52816",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-c/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-c/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-c/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "552960",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-c/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-c#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "110592",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-c/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-c#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-c/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@cf#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-c/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-c#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-c/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-c#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "960",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-c#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-c/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-c#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-c/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-d/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-d/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@R-d#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "84040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-d/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "93888",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-d/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-d#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "16808",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-d/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-d#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "33616",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-d/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-d/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-d/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-d#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "36360",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-d/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-d/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-d/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-d#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "77784",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-d/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-d#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-d#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "384",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-d#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-d/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-d#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-d/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-e/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-e/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@R-e#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "144040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-e/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "93888",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-e/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-e#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "28808",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-e/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-e#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "57616",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-e/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-e/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-e/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-e#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-e/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-e#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-e/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-e/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-e#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-e/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-e#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-e#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "504",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-e#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-e/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-e#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-e/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-f/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "552960",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-f/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-f/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-f#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "264960",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-f/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-f#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "79224",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-f/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-f/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-f/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "552960",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-f/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-f#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-f/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-f#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-f/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@cf#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-f/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-f#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-f/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-f#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "960",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-f#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-f/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-f#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-f/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-g/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-g/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-g#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "27648",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-g/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-g#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1200",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-g/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "52816",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-g/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-g/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-g/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-g#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "209064",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-g/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-g/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-g#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "209064",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-g/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "480",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-g#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "252",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-g/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-g#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g+/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-g+#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "10944",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-g+#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1200",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "52816",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-g+/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-g+/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-g+/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-g+#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "209064",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-g+/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g+#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-g+#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "209064",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g+#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "480",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-g+#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "252",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-g+#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-g+/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-h/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "98304",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-h/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-h/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "41664",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-h/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "11864",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-h/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "23728",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-h/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-h/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "98304",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-h/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-h/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-h#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-h/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(ii)-S/scope_size@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "98304",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-h/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-h#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-h/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-h#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "480",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-h#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "228",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-h/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-h#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-h/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "665600",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-i/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-i/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "318720",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-i/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "79224",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-i/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-i/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-i/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "665600",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-i/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "112640",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-i/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(ii)-S/scope_size@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "266240",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-i/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-i#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "45056",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-i/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "960",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-i/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i'/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "n#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "665920",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-i'#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "318848",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-i'#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "79224",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "132040",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-i'/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-i'/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "n#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "665920",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-i'/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-i'#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "112960",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-i'/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(ii)-S/scope_size@R-i'#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "266368",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-i'#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "45184",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i'#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "960",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i'#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i'#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-i'/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-j/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-j/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@R-j#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "12000",
+   "checker": "171960"
+  },
+  {
+   "unit": "U/R-j/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "93888",
+   "checker": "218688"
+  },
+  {
+   "unit": "U/R-j/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-j#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "2400",
+   "checker": "68784"
+  },
+  {
+   "unit": "U/R-j/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-j#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "4800",
+   "checker": "103176"
+  },
+  {
+   "unit": "U/R-j/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U/R-j/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "423936"
+  },
+  {
+   "unit": "U/R-j/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-j#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "196944",
+   "checker": "127872"
+  },
+  {
+   "unit": "U/R-j/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-j/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "282624"
+  },
+  {
+   "unit": "U/R-j/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-j#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "221184",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-j/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-j#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-j#U",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "24",
+   "checker": "504"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-j#U",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U/R-j/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-j#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U/R-j/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/n_frame_histories",
+   "tier": "BLIND",
+   "qid": "n#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "2232720",
+   "checker": "3197520"
+  },
+  {
+   "unit": "U_P2/R0/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "384768",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R0#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "97360",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "146040",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "696",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R0/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-b/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "384768",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R0#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "97360",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "146040",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "696",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-c/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1857600",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-c#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "769536",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-c#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "194720",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1857600",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-c#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "371520",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-c#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@cf#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-c#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-c#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1392",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-c#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-c#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-d/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@R-d#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "226860",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "384768",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-d#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "60496",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-d#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "90744",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-d#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "94244",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(i)-S@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-d#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "271164",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(ii)-S@R-d#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-d#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "552",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-d#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-d#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-e/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@R-e#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "411180",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "384768",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-e#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "109648",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-e#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "164472",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-e#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-e#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-e#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-e#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-e#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "744",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-e#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-e#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-f/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1857600",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-f#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "975168",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-f#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "267740",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1857600",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-f#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-f#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@cf#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-f#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-f#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1392",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-f#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-f#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-g#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "165120",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-g#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "6144",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "146040",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-g#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "670140",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-g#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "670140",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "696",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(iii)-L@R-g#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "348",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(iii)-L@R-g#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-g+#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "54528",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-g+#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "6144",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "146040",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-g+#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "670140",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g+#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-g+#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "670140",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g+#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "696",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(iii)-L@R-g+#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "348",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(iii)-L@R-g+#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-h/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "328320",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "169728",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "43312",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "64968",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "328320",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-h#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "(ii)-S/scope_size@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "328320",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-h#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-h#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "696",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(iii)-L@R-h#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "324",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(iii)-L@R-h#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "2232000",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1170880",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "267740",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "2232000",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "374400",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "(ii)-S/scope_size@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "892800",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-i#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "149760",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1392",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "n#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "2232720",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-i'#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1171184",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-i'#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "267740",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "365100",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "n#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "2232720",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-i'#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "375120",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "(ii)-S/scope_size@R-i'#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "893088",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-i'#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "150048",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i'#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "1392",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i'#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i'#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-j/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@R-j#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "46080",
+   "checker": "501300"
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "384768",
+   "checker": "755520"
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-j#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "12288",
+   "checker": "233940"
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-j#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "18432",
+   "checker": "300780"
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "False"
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "1425600"
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-j#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "617676",
+   "checker": "635904"
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(i)-S@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "950400"
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-j#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "743040",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(ii)-S@R-j#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-j#U_P2",
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "48",
+   "checker": "744"
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-j#U_P2",
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "0",
+   "checker": "0"
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-j#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "AGREEMENT",
+   "flags": [],
+   "claude": "True",
+   "checker": "True"
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "DISAGREEMENT",
+   "flags": [],
+   "claude": "False",
+   "checker": "True"
+  }
+ ],
+ "distinct_blind_quantities": [
+  "(iii)-L/scope_size@R-e#U_P2"
+ ]
+}
