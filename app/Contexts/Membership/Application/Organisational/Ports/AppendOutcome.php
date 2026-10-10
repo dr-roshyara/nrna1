@@ -15,4 +15,6 @@ enum AppendOutcome: string
     /** IDEM-2: the key was already applied with a different command. */
     case IdempotencyKeyConflict = 'idempotency_key_conflict';
     case MemberNotFound = 'member_not_found';
+    /** R-1a-6: a finite valid time of the fact is outside StorableValidTime; nothing was written. */
+    case ValidTimeNotStorable = 'valid_time_not_storable';
 }

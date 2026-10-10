@@ -11,6 +11,7 @@ use App\Contexts\Membership\Application\Organisational\Ports\AppendResult;
 use App\Contexts\Membership\Application\Organisational\Ports\AppliedCommand;
 use App\Contexts\Membership\Application\Organisational\Ports\CreateResult;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
+use App\Contexts\Membership\Application\Organisational\Ports\StorableValidTime;
 use App\Contexts\Membership\Domain\Organisational\Admit;
 use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\End;
@@ -34,8 +35,8 @@ use Illuminate\Database\UniqueConstraintViolationException;
  * - PostgreSQL only (DB-1): fails fast on any other driver.
  * - Every query is filtered by the explicit tenant (no implicit scopes).
  * - Facts are only inserted (no update / delete path; no Eloquent model).
- * - append: one transaction: key check → version compare-and-set (row lock) →
- *   fact insert at seq = new version → key registration. It never retries; the
+ * - append: one transaction: key check → storable valid time (R-1a-6) → version
+ *   compare-and-set (row lock) → fact insert at seq = new version → key registration. It never retries; the
  *   application re-decides on ConcurrencyConflict (R-1a-2).
  * - Only the outcomes defined by the port are translated; other failures propagate.
  */
@@ -149,6 +150,10 @@ final class PostgresMemberRepository implements MemberRepositoryPort
         $seen = $this->answerFromKey($tenant, $key, $fingerprint);
         if ($seen !== null) {
             return $seen;
+        }
+        // R-1a-6: before the compare-and-set, so no statement has modified state yet.
+        if (!StorableValidTime::admits($accepted->fact())) {
+            return AppendResult::failed(AppendOutcome::ValidTimeNotStorable);
         }
 
         $version = $this->db->selectOne(

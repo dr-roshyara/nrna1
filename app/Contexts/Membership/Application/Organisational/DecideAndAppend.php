@@ -20,6 +20,7 @@ use App\Contexts\Shared\Domain\ValueObjects\TenantId;
  *   have been applied meanwhile; found by the PostgreSQL race test, PBDIGIT-260)
  *   repeat ≤ MAX_ATTEMPTS:  load → authorise → decide (guards + G*) → append(expected version)
  *     on ConcurrencyConflict: discard the decision and start again from load (R-1a-2: never reuse)
+ *     on ValidTimeNotStorable: refuse at once; the valid times come from the command (R-1a-6)
  */
 final class DecideAndAppend
 {
@@ -59,16 +60,17 @@ final class DecideAndAppend
                     ?? CommandOutcome::refusedByDomain($decision->refusal());
             }
             $result = $this->repository->append($tenant, $member->id(), $decision, $key, $fingerprint);
-            switch ($result->outcome()) {
-                case AppendOutcome::Appended:
-                case AppendOutcome::AlreadyApplied:
-                    return CommandOutcome::ofAppended($result->appended());
-                case AppendOutcome::IdempotencyKeyConflict:
-                    return CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict);
-                case AppendOutcome::MemberNotFound:
-                    return CommandOutcome::refused(ApplicationRefusal::MemberNotFound);
-                case AppendOutcome::ConcurrencyConflict:
-                    continue 2;
+            // Exhaustive, no default: an unmapped outcome fails loudly (UnhandledMatchError) instead of
+            // being retried into ConcurrentModification. Only a concurrency conflict is re-decided (null).
+            $outcome = match ($result->outcome()) {
+                AppendOutcome::Appended, AppendOutcome::AlreadyApplied => CommandOutcome::ofAppended($result->appended()),
+                AppendOutcome::IdempotencyKeyConflict => CommandOutcome::refused(ApplicationRefusal::IdempotencyKeyConflict),
+                AppendOutcome::MemberNotFound => CommandOutcome::refused(ApplicationRefusal::MemberNotFound),
+                AppendOutcome::ValidTimeNotStorable => CommandOutcome::refused(ApplicationRefusal::ValidTimeNotStorable),
+                AppendOutcome::ConcurrencyConflict => null,
+            };
+            if ($outcome !== null) {
+                return $outcome;
             }
         }
 

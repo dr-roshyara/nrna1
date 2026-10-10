@@ -13,4 +13,6 @@ enum ApplicationRefusal: string
     case ConcurrentModification = 'concurrent_modification';
     /** IDEM-2: the idempotency key was already used for a different command. */
     case IdempotencyKeyConflict = 'idempotency_key_conflict';
+    /** R-1a-6: a finite valid time cannot be stored (a technical limit, not a domain rule); never retried. */
+    case ValidTimeNotStorable = 'valid_time_not_storable';
 }

@@ -11,6 +11,7 @@ use App\Contexts\Membership\Application\Organisational\Ports\AppendResult;
 use App\Contexts\Membership\Application\Organisational\Ports\AppliedCommand;
 use App\Contexts\Membership\Application\Organisational\Ports\CreateResult;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
+use App\Contexts\Membership\Application\Organisational\Ports\StorableValidTime;
 use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Membership\Domain\Organisational\Member;
@@ -84,6 +85,11 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
             return $seen->fingerprint() === $fingerprint
                 ? AppendResult::retried($seen->appended())
                 : AppendResult::failed(AppendOutcome::IdempotencyKeyConflict);
+        }
+        // R-1a-6: after the key, before the version. (MemberNotFound before the key above is the
+        // known F-3 ordering difference from PostgreSQL; out of Option E's scope.)
+        if (!StorableValidTime::admits($accepted->fact())) {
+            return AppendResult::failed(AppendOutcome::ValidTimeNotStorable);
         }
         $log = $this->members[$tenant->value()][$id->value()]['log'];
         if ($accepted->basedOnVersion() !== count($log)) {

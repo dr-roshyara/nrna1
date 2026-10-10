@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Contexts\Membership\Infrastructure\Organisational;
 
+use App\Contexts\Membership\Application\Organisational\Ports\StorableValidTime;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 
 /**
@@ -13,8 +14,8 @@ use App\Contexts\Membership\Domain\Organisational\TimePoint;
 final class DateOrdinal
 {
     /** 0001-01-01 and 9999-12-31: the dates a four-digit year can represent and fromDate() can read back (PBDIGIT-264 F-1). */
-    private const FIRST_ORDINAL = -719_162;
-    private const LAST_ORDINAL = 2_932_896;
+    private const FIRST_ORDINAL = StorableValidTime::FIRST;   // defined once, in the port contract (R-1a-6);
+    private const LAST_ORDINAL = StorableValidTime::LAST;     // this guard stays as the final conversion safeguard
 
     public static function toDate(TimePoint $point): string
     {
