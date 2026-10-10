@@ -1,0 +1,21 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+..FFF                                                               5 / 5 (100%)
+
+Time: 00:00.015, Memory: 12.00 MB
+
+There were 3 failures:
+
+1) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\DateOrdinalTest::test_a_date_after_9999_12_31_is_refused
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+2) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\DateOrdinalTest::test_a_date_before_0001_01_01_is_refused
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+3) Tests\Unit\Contexts\Membership\Infrastructure\Organisational\DateOrdinalTest::test_an_extreme_ordinal_is_refused_before_date_arithmetic
+Failed asserting that exception of type "InvalidArgumentException" is thrown.
+
+FAILURES!
+Tests: 5, Assertions: 7, Failures: 3.
