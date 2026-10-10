@@ -446,4 +446,26 @@ trait MemberRepositoryContract
         $this->assertNull($repo->load($this->tenant(), MemberId::fromString('M9')));
         $this->assertNull($repo->appliedCommand($this->tenant(), self::key('k9')));
     }
+
+    public function test_a_refused_decision_is_rejected_even_under_a_used_key(): void
+    {
+        // F3d (K-1): the accepted-decision precondition is call validation and precedes the key lookup.
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $first = $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
+
+        foreach (['fp1', 'fp-other'] as $fingerprint) {
+            $failure = null;
+            try {
+                $repo->append($this->tenant(), $member->id(), Decision::refused(RefusalReason::DuplicateFactId), self::key('k1'), $fingerprint);
+            } catch (\InvalidArgumentException $e) {
+                $failure = $e;
+            }
+            $this->assertInstanceOf(\InvalidArgumentException::class, $failure, "refused decision under a used key ($fingerprint)");
+        }
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+        $this->assertCount(1, $repo->load($this->tenant(), $member->id())->log());
+        $applied = $repo->appliedCommand($this->tenant(), self::key('k1'));
+        $this->assertEquals([$first->appended(), 'fp1'], [$applied->appended(), $applied->fingerprint()]);
+    }
 }
