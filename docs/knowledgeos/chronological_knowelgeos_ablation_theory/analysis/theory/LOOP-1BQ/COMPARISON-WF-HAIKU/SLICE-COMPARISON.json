@@ -1,0 +1,4166 @@
+{
+ "summary": {
+  "n_units_scored": 386,
+  "counts": {
+   "BLIND/INCOMPLETE": 111,
+   "BLIND/NOT_A_UNIT": 7,
+   "EXPOSED/INCOMPLETE": 275,
+   "EXPOSED/NOT_A_UNIT": 65
+  },
+  "distinct_blind_quantities_agreeing": 0,
+  "unrecognized_checker_keys": [
+   "U/R-g",
+   "U/R-i",
+   "U/R-j",
+   "U/R-g+",
+   "U/R-b",
+   "U/R-c",
+   "U/R-e",
+   "U/R0",
+   "U/R-d",
+   "U/R-h",
+   "U/R-f",
+   "U/R-i'",
+   "U_P2/R-g",
+   "U_P2/R-i",
+   "U_P2/R-j",
+   "U_P2/R-g+",
+   "U_P2/R-b",
+   "U_P2/R-c",
+   "U_P2/R-e",
+   "U_P2/R0",
+   "U_P2/R-d",
+   "U_P2/R-h",
+   "U_P2/R-f",
+   "U_P2/R-i'"
+  ],
+  "ambiguous_flagged": [],
+  "disagreements_for_review": [],
+  "licence_cross_family_reproduction_of_computational_core": false
+ },
+ "units": [
+  {
+   "unit": "U/n_frame_histories",
+   "tier": "EXPOSED",
+   "qid": "n#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R0/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-b/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-c#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-c#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-c#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-c#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@cf#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-c#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-c#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-c#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-c#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-c/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-d#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-d#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-d#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-d#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-d/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-e#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-e#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-e#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-e#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-e/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-f#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-f#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@cf#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-f#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-f#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@cf#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-f#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-f#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-f#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-f#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-f/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-g#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-g#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-g#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-g#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-g#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-g#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-g+#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-g+#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-g+#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g+#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-g+#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g+#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@A#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-g+#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-g+#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-g+/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-h#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(ii)-S/scope_size@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-h#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-h#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-h#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-h/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(ii)-S/scope_size@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "n#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D@D-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "n#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i'#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(ii)-S/scope_size@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i'#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiiL-scope@B#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i'#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i'#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-i'/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/sizes/H-D",
+   "tier": "EXPOSED",
+   "qid": "H-D@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/sizes/H-B",
+   "tier": "EXPOSED",
+   "qid": "H-B@B-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/sizes/H-D&H-B",
+   "tier": "EXPOSED",
+   "qid": "H-D&H-B@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/sizes/H-D&R_B",
+   "tier": "EXPOSED",
+   "qid": "H-D&R_B@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "R_B@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-j#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(ii)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "iiS-scope@B-rec-unchanged#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-j#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(iii)-L/scope_size",
+   "tier": "EXPOSED",
+   "qid": "(iii)-L/scope_size@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-j#U",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-j#U",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U/R-j/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/n_frame_histories",
+   "tier": "BLIND",
+   "qid": "n#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R0/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R0#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R0#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-b/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-c#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-c#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-c#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-c#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@cf#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-c#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-c#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-c#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-c#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-c/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(i)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(i)-S@R-d#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(ii)-S@R-d#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-d#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-d#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-d/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-e#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-e#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-e#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-e#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-e/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-f#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-f#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@cf#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-f#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-f#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@cf#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-f#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-f#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-f#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-f#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-f/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-g#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-g#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-g#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-g#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(iii)-L@R-g#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(iii)-L/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(iii)-L@R-g#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-g+#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-g+#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-g+#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-g+#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-g+#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-g+#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@A#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(iii)-L@R-g+#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(iii)-L/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(iii)-L@R-g+#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-g+/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(i)-S@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-h#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "(ii)-S/scope_size@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(ii)-S@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-h#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(iii)-L@R-h#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(iii)-L/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(iii)-L@R-h#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-h/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "(ii)-S/scope_size@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/R_B",
+   "tier": "EXPOSED",
+   "qid": "n#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D@D-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/scope_size",
+   "tier": "EXPOSED",
+   "qid": "n#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(i)-S@R-i'#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "(ii)-S/scope_size@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-S/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(ii)-S@R-i'#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "iiiL-scope@B#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-i'#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-i'#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-i'/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/sizes/R_B",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-D",
+   "tier": "BLIND",
+   "qid": "H-D@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-B",
+   "tier": "BLIND",
+   "qid": "H-B@B-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-D&H-B",
+   "tier": "BLIND",
+   "qid": "H-D&H-B@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/sizes/H-D&R_B",
+   "tier": "BLIND",
+   "qid": "H-D&R_B@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "R_B@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(i)-S@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(i)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(i)-S@R-j#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/scope_size",
+   "tier": "BLIND",
+   "qid": "iiS-scope@B-rec-unchanged#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/n_counterexamples",
+   "tier": "BLIND",
+   "qid": "ncex:(ii)-S@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-S/least_counterexample",
+   "tier": "BLIND",
+   "qid": "lcex:(ii)-S@R-j#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/scope_size",
+   "tier": "BLIND",
+   "qid": "(iii)-L/scope_size@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/n_counterexamples",
+   "tier": "EXPOSED",
+   "qid": "ncex:(iii)-L@R-j#U_P2",
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(iii)-L/least_counterexample",
+   "tier": "EXPOSED",
+   "qid": "lcex:(iii)-L@R-j#U_P2",
+   "class": "NOT_A_UNIT",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(i)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  },
+  {
+   "unit": "U_P2/R-j/(ii)-O/holds",
+   "tier": "EXPOSED",
+   "qid": null,
+   "class": "INCOMPLETE",
+   "flags": [],
+   "claude": null,
+   "checker": null
+  }
+ ],
+ "distinct_blind_quantities": []
+}
