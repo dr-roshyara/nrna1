@@ -372,4 +372,78 @@ trait MemberRepositoryContract
         $this->assertSame('valid_time_not_storable', $result->outcome()->value);
         $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
     }
+
+    // PBDIGIT-264 F-3 (PO-adopted 2026-10-10, F3-1): the key lookup precedes every other check;
+    // a MemberId collision with another holder is an infrastructure failure with no state change.
+
+    public function test_creating_a_member_id_that_belongs_to_another_holder_fails_without_changing_state(): void
+    {
+        // F3a
+        $repo = $this->repo();
+        $other = $this->created($repo, 'M1', 'P1', 'O2');
+        $member = $this->created($repo, 'M1', 'P1', 'O1');
+        $repo->append($this->tenant('O1'), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
+        $before = $repo->load($this->tenant('O1'), $member->id());
+
+        // Captured, not asserted inside try: PHPUnit's own failure is a RuntimeException too.
+        $failure = null;
+        try {
+            $repo->create($this->tenant('O1'), MemberId::fromString('M1'), PersonRef::fromString('P2'));
+        } catch (\RuntimeException $e) {
+            $failure = $e;   // F-3 (a): a caller defect surfaced as an infrastructure failure, not a port outcome
+        }
+        $this->assertInstanceOf(\RuntimeException::class, $failure, 'expected an infrastructure failure for a MemberId collision');
+
+        $after = $repo->load($this->tenant('O1'), $member->id());
+        $this->assertSame('P1', $after->holder()->value(), 'the holder is unchanged');
+        $this->assertSame($before->version(), $after->version());
+        $this->assertEquals($before->log(), $after->log());
+        $this->assertNull($repo->findByHolder($this->tenant('O1'), PersonRef::fromString('P2')), 'the second holder is not mapped');
+        $this->assertSame('M1', $repo->findByHolder($this->tenant('O1'), PersonRef::fromString('P1'))?->id()->value());
+        $this->assertEquals($other, $repo->load($this->tenant('O2'), MemberId::fromString('M1')), 'the other tenant is unchanged');
+    }
+
+    public function test_a_known_key_is_answered_before_the_member_is_looked_up(): void
+    {
+        // F3b-1: an unknown MemberId with a used key and the same fingerprint gets the original outcome.
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $first = $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $result = $repo->append($this->tenant(), MemberId::fromString('M9'), self::endAt($member, 'E1', 'A1', 5), self::key('k1'), 'fp1');
+
+        $this->assertSame(AppendOutcome::AlreadyApplied, $result->outcome());
+        $this->assertEquals($first->appended(), $result->appended());
+        $this->assertCount(1, $repo->load($this->tenant(), $member->id())->log());
+        $this->assertNull($repo->load($this->tenant(), MemberId::fromString('M9')));
+    }
+
+    public function test_a_reused_key_conflict_is_answered_before_the_member_is_looked_up(): void
+    {
+        // F3b-2: an unknown MemberId with a used key and another fingerprint is a key conflict.
+        $repo = $this->repo();
+        $member = $this->created($repo);
+        $repo->append($this->tenant(), $member->id(), self::admitUntil($member, 'A1', 1, null), self::key('k1'), 'fp1');
+        $member = $repo->load($this->tenant(), $member->id());
+
+        $result = $repo->append($this->tenant(), MemberId::fromString('M9'), self::endAt($member, 'E1', 'A1', 5), self::key('k1'), 'fp-other');
+
+        $this->assertSame(AppendOutcome::IdempotencyKeyConflict, $result->outcome());
+        $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
+        $this->assertNull($repo->load($this->tenant(), MemberId::fromString('M9')));
+    }
+
+    public function test_an_unstorable_valid_time_is_answered_before_the_member_is_looked_up(): void
+    {
+        // F3c (R-1a-6 universal after F-3, F3-3): unknown MemberId, unused key, unstorable valid time.
+        $repo = $this->repo();
+        $ghost = Member::fromLog(MemberId::fromString('M9'), PersonRef::fromString('P9'), $this->tenant());
+
+        $result = $repo->append($this->tenant(), $ghost->id(), self::admitUntil($ghost, 'A1', 2_932_897, null), self::key('k9'), 'fp9');
+
+        $this->assertSame('valid_time_not_storable', $result->outcome()->value);
+        $this->assertNull($repo->load($this->tenant(), MemberId::fromString('M9')));
+        $this->assertNull($repo->appliedCommand($this->tenant(), self::key('k9')));
+    }
 }
