@@ -111,4 +111,4 @@ vendor/bin/phpunit tests/Architecture/MembershipStorableValidTimeCoverageTest.ph
 - **9999-12-31 is storable.** Option E cannot detect it as a legacy "no end" placeholder; that is the Slice 13 migration contract (BD-NORM).
 - **Not full parity.** For a missing Member with an unstorable valid time, PostgreSQL answers `ValidTimeNotStorable` and the double `MemberNotFound` (F-3, open).
 
-**Traceability:** R-1a-6 (Slice 1a contract §4) · Slice 1b §6 step (1b) · PBDIGIT-264 F-1 / F-3 · gate register decisions 1–6, 8 · commits `0e4e5ac7a` (RED), `af495c838` (GREEN).
+**Traceability:** R-1a-6 (Slice 1a contract §4) · Slice 1b §6 step (1b) · PBDIGIT-264 F-1 / F-3 · gate register decisions 1–6, 8 · commits `0e4e5ac7a` (RED), `af495c838` (GREEN), `3ee8c2fe4` (contracts, gate register, this guide, evidence). **Status:** implemented and locally tested; PostgreSQL unverified until Part 2; not formally accepted.
