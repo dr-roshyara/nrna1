@@ -8,15 +8,19 @@ use App\Contexts\Membership\Domain\Organisational\Admit;
 use App\Contexts\Membership\Domain\Organisational\End;
 use App\Contexts\Membership\Domain\Organisational\Fact;
 use App\Contexts\Membership\Domain\Organisational\FactId;
+use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Membership\Domain\Organisational\InvariantSet;
+use App\Contexts\Membership\Domain\Organisational\Member;
 use App\Contexts\Membership\Domain\Organisational\RecordedFact;
 use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\Resolution;
 use App\Contexts\Membership\Domain\Organisational\ResolvedMember;
 use App\Contexts\Membership\Domain\Organisational\ReversalFact;
+use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Membership\Domain\Organisational\VoidFact;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\C1Histories;
+use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\G6CorrectionOracle;
 use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\MemberHistory;
 
 /**
@@ -170,6 +174,63 @@ final class C1PropertyTest extends TestCase
                 $this->assertSame(self::disjoint(self::closedForm($candidate)), $h->void("V$k", $ids[$i])->isAccepted(), "Void({$ids[$i]}) after " . implode(' ', $ids));
             }
         }
+    }
+
+    // K-H1 / P-KNOWN (R-12, §14.4), over every accepted history (H = 5, length <= 5, one record per commit, recordedAt
+    // strictly increasing; ties are not enumerated). For every τ before, at and after each recordedAt:
+    // (i) reference: knownAt(τ) equals the g6 port's resolution of the facts recorded <= τ (no production liveness);
+    // (ii) metamorphic: for F·f and τ < recordedAt(f), knownAt over F·f equals knownAt over F.
+    // Sensitivity: M8 (knownAt ignores τ), M9 (recordedAt <= τ becomes < τ).
+    public function test_known_at_equals_the_oracle_and_is_prefix_stable(): void
+    {
+        $oracle = new G6CorrectionOracle(self::H);
+        $checked = 0;
+        foreach (C1Histories::accepted(self::H, 5) as [$log, $ids, $h]) {
+            $records = $h->member->log();
+            if ($records === []) {
+                continue;
+            }
+            $instants = array_map(static fn (RecordedFact $r): int => $r->recordedAt()->ordinal(), $records);
+            $taus = [min($instants) - 1, ...$instants, max($instants) + 1];
+            $prefix = Member::fromLog($h->member->id(), $h->member->holder(), $h->member->organisation(), ...array_slice($records, 0, -1));
+            foreach ($taus as $tau) {
+                $where = 'τ=' . $tau . ' after ' . implode(' ', $ids);
+                $recorded = count(array_filter($instants, static fn (int $at): bool => $at <= $tau));
+                $known = $h->member->knownAt(Instant::of($tau));
+                $this->assertSame(self::oracleLifetimes($oracle, array_slice($log, 0, $recorded)), self::lifetimes($known), "(i) $where");
+                if ($tau < end($instants)) {
+                    $this->assertEquals($prefix->knownAt(Instant::of($tau)), $known, "(ii) $where");
+                }
+                $checked++;
+            }
+        }
+        $this->assertGreaterThan(0, $checked);
+    }
+
+    /** @return array<string, list<int>> period => lifetime points on 0..H-1 */
+    private static function lifetimes(ResolvedMember $resolved): array
+    {
+        $out = [];
+        foreach ($resolved->periods() as $period) {
+            $out[$period->id()->admitFactId()->value()] = array_values(array_filter(range(0, self::H - 1), static fn (int $t): bool => $period->inLifetime(TimePoint::of($t))));
+        }
+
+        return $out;
+    }
+
+    /** @return array<string, list<int>> live period => lifetime, from the g6 port (a dead admission has no period) */
+    private static function oracleLifetimes(G6CorrectionOracle $oracle, array $log): array
+    {
+        $out = [];
+        foreach ($oracle->resolve($log) as $pid => $lifetime) {
+            foreach ($log as $i => $x) {
+                if ($x['k'] === 'Admit' && $x['pid'] === $pid && $oracle->live($log, $i)) {
+                    $out["A$pid"] = $lifetime;
+                }
+            }
+        }
+
+        return $out;
     }
 
     /** @return list<Fact> */

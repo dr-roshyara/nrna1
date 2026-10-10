@@ -5,7 +5,7 @@
      public function knownAt(Instant $tau): ResolvedMember
      {
 -        $known = array_filter($this->log, static fn (RecordedFact $r): bool => !$r->recordedAt()->isAfter($tau));
-+        $known = array_filter($this->log, static fn (RecordedFact $r): bool => $r->recordedAt()->isBefore($tau));
++        $known = array_filter($this->log, static fn (RecordedFact $r): bool => $tau->isAfter($r->recordedAt()));
  
          return Resolution::of(array_values(array_map(static fn (RecordedFact $r): Fact => $r->fact(), $known)));
      }
