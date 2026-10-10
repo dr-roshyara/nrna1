@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Unit\Contexts\Membership\Domain\Organisational;
 
 use App\Contexts\Membership\Domain\Organisational\FactId;
+use App\Contexts\Membership\Domain\Organisational\Instant;
 use App\Contexts\Membership\Domain\Organisational\Provenance;
 use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
@@ -214,5 +215,22 @@ final class AnnulVoidTest extends TestCase
 
         $this->assertSame(RefusalReason::OverlappingMembershipPeriods, $h->annul('X3', 'X1')->refusal());
         $this->assertSame(5, $h->member->version());
+    }
+
+    // P-KNOWN / K-H1 (R-12): a reversal never rewrites what was known before it was recorded.
+    public function test_a_reversal_leaves_earlier_knowledge_unchanged(): void
+    {
+        foreach (['Annul' => fn (MemberHistory $h) => $h->annul('X1', 'A1'), 'Void' => fn (MemberHistory $h) => $h->void('V1', 'A1')] as $kind => $reverse) {
+            $h = MemberHistory::start();
+            $h->commit($h->admit('A1', 1), 1000);
+            $knownBefore = $h->member->resolve();
+
+            $h->commit($reverse($h), 2000);
+
+            foreach ([1000, 1500, 1999] as $tau) {
+                $this->assertEquals($knownBefore, $h->member->knownAt(Instant::of($tau)), "$kind: KnownAt($tau) unchanged");
+            }
+            $this->assertSame([], $h->member->knownAt(Instant::of(2000))->periods(), "$kind: known from its recording instant");
+        }
     }
 }
