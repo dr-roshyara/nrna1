@@ -3127,3 +3127,19 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **The 19 variation points** list every decision needed to adopt anything.
 - **Standing qualifier:** one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable.
 - **Next: a human review of the R7 candidate model.** Architecture, implementation and canonicalization remain unauthorized.
+
+## F-LOG-0251 — **Correction to F-LOG-0250, and the R7 cross-artifact audit** (append-only correction; F-LOG-0250's text is left unchanged)
+**Corrections to F-LOG-0250's wording** (found by the audit):
+1. **"T-A 24 are model constraints"** should read "T-A 24 are **candidate** model constraints".
+2. **"(all but record identities not checkable from records)"** should read: only R7 (r and c, checkable in principle, though O1 is incomplete) and R22 (record identities) involve observed coordinates. Every other T-A row is not checkable from records (Lem 1.12).
+3. **"T-B 17 … encoding H-D or H-B"** should read "encoding H-D, H-B **or a convention** (R39)".
+
+**The audit** (`R7/REVIEW-CROSS-ARTIFACT.md`): PASS_WITH_LIMITATIONS, with two fix rounds verified.
+- **X25 / R41 re-grounded (analyst decision, disclosed):**
+  - universal record completeness is NOT admissible as an invariant, because it contradicts A7 directly and H11 conditionally on capture completeness;
+  - it is not excluded for being universal;
+  - the existential record clauses avoid the non-occurrence inference;
+  - the R-h neutrality asymmetry is disclosed;
+  - human alternative: a T-B policy form, with the inference not applied to the observed capture.
+- **Causal residue removed.**
+- **Current versions:** T1 r1.5, T2 r1.3, T3 r1.4 (commit 1a63f3a14).
