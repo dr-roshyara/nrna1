@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Contexts\Membership\Domain\Organisational;
 
+use App\Contexts\Membership\Domain\Organisational\FactId;
+use App\Contexts\Membership\Domain\Organisational\Provenance;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use PHPUnit\Framework\TestCase;
 use Tests\Unit\Contexts\Membership\Domain\Organisational\Support\MemberHistory;
@@ -41,5 +44,29 @@ final class AnnulVoidTest extends TestCase
 
         $this->assertSame([], $h->member->resolve()->periods());
         $this->assertFalse($h->member->resolve()->isMember(TimePoint::of(1)));
+    }
+
+    // K-A2 / T11: Annul applies only to facts with decision provenance (R-2). Attested and rule facts are not decisions.
+    public function test_annulling_a_fact_without_decision_provenance_is_refused(): void
+    {
+        foreach (['attested' => Provenance::attested('legacy-import', 'importer-1'), 'rule' => Provenance::rule('statute-7', 'v1')] as $kind => $provenance) {
+            $h = MemberHistory::start();
+            $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), $provenance));
+            $versionBefore = $h->member->version();
+
+            $decision = $h->annul('X1', 'A1');
+
+            $this->assertSame(RefusalReason::TargetHasNoDecisionProvenance, $decision->refusal(), $kind);
+            $this->assertSame($versionBefore, $h->member->version(), "$kind: nothing appended");
+        }
+    }
+
+    // Void is not restricted by provenance: a record that never reflected reality can be voided whatever its source.
+    public function test_voiding_a_fact_without_decision_provenance_is_accepted(): void
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
+
+        $this->assertTrue($h->void('V1', 'A1')->isAccepted());
     }
 }
