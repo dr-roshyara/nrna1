@@ -81,22 +81,22 @@ No second context, no greenfield code, no change to Admit / End behaviour.
 
 ## Steps (strict TDD: every behaviour RED → GREEN → refactor; the failing run is recorded before production code)
 
-- [ ] 0. **Baseline:** run the Membership domain + application unit tests and the 3 Membership architecture tests (no database); record the counts. Expected from the 2026-10-09 audit: 93 / 12 (re-verified at step 0, not assumed).
-- [ ] 1. **Refactor (P-1), behaviour-preserving:** introduce `EffectiveDatedFact`. Admit / End implement it. **Evidence:** the identical test counts and results before and after (domain + application + architecture), plus `git diff` showing no behaviour change. **If any adapter edit would be required (e.g. a static-analysis type complaint): STOP and report.**
-- [ ] 2. **RED:** `AnnulVoidTest` (K-A1, K-V1, T1, T2): Annul(Admit) / Void(Admit) accepted → the target is dead; the resolution has no periods. *Fails: `Annul` / `Void` / `decide*` do not exist.* **GREEN:** the fact classes, `decideAnnul` / `decideVoid` (minimal), `Resolution::live`.
-- [ ] 3. **RED → GREEN (K-A2, T11):** Annul of a `rule` / `attested` target → `TargetHasNoDecisionProvenance`.
-- [ ] 4. **RED → GREEN (K-A3, T6):** Annul(Void) → `AnnulOfVoidRefused`.
-- [ ] 5. **RED → GREEN (K-A4, P-2):** Annul without `decidedAt` → `DecidedAtRequired`; the test also asserts that **no fact is appended and the domain state is unchanged** (version, log, resolution); no clock is substituted.
-- [ ] 6. **RED → GREEN (K-A5, K-V2, T7):** Annul / Void of a non-live target → `TargetNotLive` (D-COR-2). Unknown target → `TargetNotFound`.
-- [ ] 7. **RED → GREEN (K-R1, K-R2, T3 – T5):** appeal restoration: Annul(Annul(a)), Void(Annul(a)), Void(Void(a)) → a live again.
-- [ ] 8. **RED → GREEN (K-G1, K-R3, T8 – T10):** G\* refuses an overlapping post-state (INV-9). This covers Annul(End) after re-entry and a revival that overlaps.
-- [ ] 9. **RED → GREEN (K-H1):** P-KNOWN, KnownAt prefix stability with reversals.
-- [ ] 10. **Test support:** a PHP port of `g6_correction_oracle.py`, restricted to the C-1 fragment and to R-2 / D-COR-2, written independently of the production `Resolution`. **Golden cross-check:** a JSON fixture generated once by the Python oracle (bounds H = 5, L ≤ 5; the generation command is recorded in the fixture header) is compared with the PHP port (transcription fidelity only).
-- [ ] 11. **Exhaustive differential test (K-X2):** for every history in the bounds, the kernel's verdicts, refusal reasons **and per-period lifetimes** equal the PHP port's.
-- [ ] 12. **Properties** (contract §14.4): P-REV-V, P-REV-A, P-APPEAL, P-EQ, P-COMM (with both orders accepted + dependency independence), and the C-1 closed form (§13.5 d).
-- [ ] 13. **K-X1 regression:** all existing Membership unit + architecture tests green; Admit / End-only behaviour unchanged.
-- [ ] 14. **Mutation measurement** (Infection, scratch configuration as in audit §B.3) on the changed kernel files. Report the MSI with its scope; classify every survivor.
-- [ ] 15. **Developer guide** `developer_guide/membership/04_correction_c1_annul_void.md` + `00_index.md` row; an **implementation review** (`docs/publicdigit/reviews/…-membership-c1-implementation-review.md`); a story update; then **STOP** for the PR / PO decision.
+- [x] 0. **Baseline:** run the Membership domain + application unit tests and the 3 Membership architecture tests (no database); record the counts. Expected from the 2026-10-09 audit: 93 / 12 (re-verified at step 0, not assumed).
+- [x] 1. **Refactor (P-1), behaviour-preserving:** introduce `EffectiveDatedFact`. Admit / End implement it. **Evidence:** the identical test counts and results before and after (domain + application + architecture), plus `git diff` showing no behaviour change. **If any adapter edit would be required (e.g. a static-analysis type complaint): STOP and report.**
+- [x] 2. **RED:** `AnnulVoidTest` (K-A1, K-V1, T1, T2): Annul(Admit) / Void(Admit) accepted → the target is dead; the resolution has no periods. *Fails: `Annul` / `Void` / `decide*` do not exist.* **GREEN:** the fact classes, `decideAnnul` / `decideVoid` (minimal), `Resolution::live`.
+- [x] 3. **RED → GREEN (K-A2, T11):** Annul of a `rule` / `attested` target → `TargetHasNoDecisionProvenance`.
+- [x] 4. **RED → GREEN (K-A3, T6):** Annul(Void) → `AnnulOfVoidRefused`.
+- [x] 5. **RED → GREEN (K-A4, P-2):** Annul without `decidedAt` → `DecidedAtRequired`; the test also asserts that **no fact is appended and the domain state is unchanged** (version, log, resolution); no clock is substituted.
+- [x] 6. **RED → GREEN (K-A5, K-V2, T7):** Annul / Void of a non-live target → `TargetNotLive` (D-COR-2). Unknown target → `TargetNotFound`.
+- [x] 7. **RED → GREEN (K-R1, K-R2, T3 – T5):** appeal restoration: Annul(Annul(a)), Void(Annul(a)), Void(Void(a)) → a live again.
+- [x] 8. **RED → GREEN (K-G1, K-R3, T8 – T10):** G\* refuses an overlapping post-state (INV-9). This covers Annul(End) after re-entry and a revival that overlaps.
+- [x] 9. **RED → GREEN (K-H1):** P-KNOWN, KnownAt prefix stability with reversals.
+- [x] 10. **Test support:** a PHP port of `g6_correction_oracle.py`, restricted to the C-1 fragment and to R-2 / D-COR-2, written independently of the production `Resolution`. **Golden cross-check:** a JSON fixture generated once by the Python oracle (bounds H = 5, L ≤ 5; the generation command is recorded in the fixture header) is compared with the PHP port (transcription fidelity only).
+- [x] 11. **Exhaustive differential test (K-X2):** for every history in the bounds, the kernel's verdicts, refusal reasons **and per-period lifetimes** equal the PHP port's.
+- [x] 12. **Properties** (contract §14.4): P-REV-V, P-REV-A, P-APPEAL, P-EQ, P-COMM (with both orders accepted + dependency independence), and the C-1 closed form (§13.5 d).
+- [x] 13. **K-X1 regression:** all existing Membership unit + architecture tests green; Admit / End-only behaviour unchanged.
+- [x] 14. **Mutation measurement** (Infection, scratch configuration as in audit §B.3) on the changed kernel files. Report the MSI with its scope; classify every survivor.
+- [x] 15. **Developer guide** `developer_guide/membership/04_correction_c1_annul_void.md` + `00_index.md` row; an **implementation review** (`docs/publicdigit/reviews/…-membership-c1-implementation-review.md`); a story update; then **STOP** for the PR / PO decision.
 
 **Commits:** one per RED and per GREEN, subject `… (PBDIGIT-268)`, staging explicit paths only. **No database:** steps 0 – 14 are pure PHP (kernel + unit / architecture tests). The PostgreSQL feature suite is not run (the adapter is untouched; shared test-DB caveat, `PBDIGIT-266`).
 
@@ -115,3 +115,4 @@ BD-REV-ER, D-COR-1 / 3 / 4, CQ-3, CQ-9, D-COR-5 (B): all outside C-1.
 
 - 2026-10-10: plan drafted for PO review (the PO authorised its preparation).
 - 2026-10-10: **PO approved in principle, with conditions P-1 (name `EffectiveDatedFact`), P-2, P-3 and execution constraints 1 – 7, incorporated above.**
+- 2026-10-10: **steps 0 – 15 executed** (commits `f7c251354` … `1e85fbfc0`; review `docs/publicdigit/reviews/2026-10-10-membership-c1-implementation-review.md`). Steps 7 – 9, 11, 12 had no RED phase (verification of earlier GREEN behaviour); their sensitivity was shown with temporary, reverted mutants. Plan risk "P-1 and static analysis" materialised as review finding F-1: no project gate fails and there is no runtime effect; no adapter change made (P-1); PO decision requested. **STOP for the PR / PO decision.**
