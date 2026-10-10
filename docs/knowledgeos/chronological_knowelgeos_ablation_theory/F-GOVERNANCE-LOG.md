@@ -3169,3 +3169,15 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the analyst decisions (the X25 ground; T2 §0 [I]) stay unratified.
 - **Not authorized:** E2b (adoption), E3/E3b (architecture), E4 (R8) and E5 (implementation). Also V2, V5, V6 and E-A5.
 - **Next (package §D):** VP1d-H as a separate act, if the human chooses. Otherwise any further gate, each by its own act.
+
+## F-LOG-0254 — **Human act (Human ARB, 2026-10-11): VP1d-H decided, option (i).** R-h's universal record clause is admitted as an INACTIVE T-B optional-policy slot
+- **Ruling:** option (i) of `R7/VP-DECISION-REGISTER.md` r1.4 VP1d-H.
+  - The T-B optional-policy form of R-h's universal record clause is admitted as an **inactive slot**: never an invariant, needing its own human act to activate.
+  - **Condition:** the non-occurrence inference (X18, R49) is never applied to the observed capture. Inside the model R-h entails the inference; the policy forbids applying it to the incomplete capture.
+- **Unchanged:** universal record completeness **as an invariant** (T1 X25, T2 R41) stays NOT admissible (A7 directly; H11 conditionally on capture completeness).
+- **Effect:**
+  - the H-B-side neutrality asymmetry disclosed in R7 is **resolved for the policy layer**: R-h's option is back in VP1d's option set;
+  - the analyst decision is now human-ruled;
+  - R7 limitation §B item 4 is superseded in that respect.
+- **This decides only VP1d-H.** No other VP is decided, nothing is adopted (E2b not authorized), and no architecture, R8 or implementation is authorized.
+- **Amendment of the closed R7 deliverable under this ruling** (package §F, the row "the human rules on VP1d-H"): T1 X25, T2 (a new T-B row; R41 note), T3 VP1d and the neutrality self-check, the register's VP1d-H status, and the package's §B item 4 note. Done by a worker and reviewed independently.
