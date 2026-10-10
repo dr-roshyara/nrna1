@@ -3194,3 +3194,26 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - adequacy to the domain stays a labelled design judgement [E]/[I]; only V6 (not authorized) could test it;
   - reversibility is low: replacing a choice later voids the R4 results that depend on it.
 - **This decides only VP15.** VP5, VP10 and VP14 remain open. Nothing is adopted (E2b not authorized), and no architecture, R8 or implementation is authorized.
+
+## F-LOG-0256 — **Supplement to F-LOG-0255 (the same VP15 decision; not a new act): verbatim Human ARB instruction, scope, rationale, dependencies, reopen conditions**
+**Verbatim (Human ARB, 2026-10-11):**
+> "VP15 — ACCEPT R4's modelling choices as the working basis for the bounded KnowledgeOS F-Series model. This decision accepts the specified modelling choices in R4 for the current, bounded model only. It does not establish that these choices are universally valid or empirically proven beyond the authorized evidence."
+> Preserved limitations (verbatim list): one corpus and finite test universes; within-family validation, cross-family waived; the shared Claude interpretation untested; H-D and H-B non-identifiable; the theory does not establish aggregate or consistency boundaries, event order or causal relationships as empirical facts. "Do not extend this decision beyond the precise scope of VP15 as defined in the authoritative variation-point register."
+
+- **Register definition** (`R7/VP-DECISION-REGISTER.md` r1.6, VP15): "Accept R4's modelling choices (N5)", option (i): "accept each, labelled as a modelling choice".
+- **The choices accepted (T2 r1.4 ids), each a modelling choice, not a corpus fact:**
+  1. σ as a primitive (R11; σ constrained only through F1, A5);
+  2. Cap constancy (R10);
+  3. A5 and Rem 1.11a: no axiom ties c to σ or f, and texts are read as texts (R21);
+  4. O = (r, c) as the base observation (R23; Lem 1.12);
+  5. F2 as an Asm: con ⇒ Ref ∧ d = r (R2, R3), with con unobserved.
+- **Rationale:** the choices are jointly satisfiable in U and U_P2 (K1, [F]+[T]), and (O, 𝓗) satisfies A1–A5 and A7–A9 (Lem 4.0a). They are the frame on which the R4 results rest (e.g. D1 needs A5).
+- **Evidence status:** satisfiability is established within finite universes. **Adequacy to the domain is not established** ([E]/[I], bK1). Only V6 could test it, and V6 is not authorized.
+- **Limitations:** Λ1–Λ7 as quoted above.
+- **Dependencies:** VP15 constrains VP1a–d, VP2, VP4, VP6, VP7, VP8, VP12 and VP14. It is foundational and parallel to VP5.
+- **Reopen conditions** (package §F):
+  - V6 shows the primitives are corpus-specific;
+  - a T-A constraint is found not to hold in the domain (adequacy failure);
+  - a defect in sealed R4 r3.1;
+  - the H5 / F-LOG-0190 condition fails.
+- **Scope:** this act is **not** approval of the bounded model as a whole. E2b, E3, E3b, E4 and E5 are not authorized, and neither is any evidence collection.
