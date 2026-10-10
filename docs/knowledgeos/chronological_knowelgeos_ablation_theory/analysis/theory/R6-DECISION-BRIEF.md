@@ -1,6 +1,6 @@
-# R6 decision brief (r3: final for the human gate)
+# R6 decision brief (r4: final for the human gate)
 
-**Status:** r3, 2026-10-10, final for the R6 gate. §6 is resolved by the **Human ARB act F-LOG-0245**: a fresh-subagent run suffices; **cross-family is WAIVED, not satisfied**. The pre-framed cases A–C of r2 are kept below for the record. r1 was reviewed PASS_WITH_LIMITATIONS (`LOOP-1BS/REVIEW-r1.md`).
+**Status:** r4, 2026-10-10, final for the R6 gate. The final-gate review of r3 (PASS_WITH_LIMITATIONS) is applied in r4. §6 is resolved by the **Human ARB act F-LOG-0245**: a fresh-subagent run suffices; **cross-family is WAIVED, not satisfied**. The pre-framed cases A–C of r2 are kept below for the record. r1 was reviewed PASS_WITH_LIMITATIONS (`LOOP-1BS/REVIEW-r1.md`).
 
 ## 1. Claims tested in R6
 | Id | Claim | Type |
@@ -21,7 +21,7 @@
 | **Blind slice, within-family** (Sonnet 5.5 vs Opus 5.5) | `LOOP-1BQ/RETURN-WF-SONNET/`, `COMPARISON-WF-SONNET/` | WITHIN-FAMILY, cross-model |
 | **Interpretation-sensitivity map** | `LOOP-1BQ/SENSITIVITY/` | Claude worker and reviewer |
 | **Blind slice, non-Claude** | (none) | **WAIVED by the Human ARB (F-LOG-0245): not run** |
-| **Blind slice, fresh Haiku 4.5 subagent** (F-LOG-0245) | `LOOP-1BQ/RETURN-WF-HAIKU/`, `COMPARISON-WF-HAIKU-ADAPTED/REVIEW-STEP-C.md` | within-family. **Implementation failure:** all (a) plus UNTESTABLE/INCOMPLETE; no evidence against the reference (F-LOG-0246) |
+| **Blind slice, fresh Haiku 4.5 subagent** (F-LOG-0245) | `LOOP-1BQ/RETURN-WF-HAIKU/`, `COMPARISON-WF-HAIKU-ADAPTED/REVIEW-STEP-C.md` | within-family. **Implementation failure:** all (a) plus UNTESTABLE/INCOMPLETE; no evidence against the reference (F-LOG-0246). A reviewer-corrected run of Haiku's code (three spec departures fixed) matches the reference U values exactly. That is **supporting only, not a reproduction**. U_P2 (a) is **inferred, not re-run** |
 | **Bundle-02, non-Claude** | `~/F-XCHECK-RETURN-01/` | **NOT RUN** (optional; only 42 BLIND units) |
 
 **Tool-path deviations in the Sonnet runs:** all benign and recorded. Each run read its own persisted tool output. Bundle-02's run wrote a helper in /tmp. The slice run hit blocked commands (a `../prog` draft, a malformed-path `cd`, and an `mv`) and rewrote its program into its cwd.
@@ -34,7 +34,7 @@
   - The G3 disagreement in the bundle-02 run was a **comparator artifact** (a nested witness role), fixed by r12.
 - **Slice comparator** `LOOP-1BQ/compare_slice.py`: reuses the fail-closed parser. Review found no silent agreement. 67 distinct BLIND quantities. **Amendment A1 (de-duplication; tiers only shrink BLIND) was not re-reviewed.** 14 negative controls pass.
 
-## 4. Results so far (all Claude-family)
+## 4. Results (all Claude-family)
 | Test | Agreement | Disagreements | Classification |
 |---|---|---|---|
 | Bundle-02, Sonnet vs Opus | BLIND 42/42 | 40 at r11; 39 at r12 | all (c): the K4b reading of H-D⁺ (34); composite-witness semantics (5); the comparator artifact (1, fixed). **The licence was not granted:** 191 INCOMPLETE (format) and 1,425 unrecognized keys. These were mapped by hand and agree; the A9 con-only/d-only split is not cross-confirmed. Human ruling F-LOG-0242: (c) accepted |
@@ -56,33 +56,15 @@
 ## 6. Cross-family outcome: RESOLVED by human waiver
 - **Status: CROSS-FAMILY VALIDATION WAIVED by the Human ARB chief (F-LOG-0245).** It was not attempted, so it is neither satisfied nor failed.
 - **Fresh-subagent evidence accepted under the waiver:** Sonnet 5.5, 67/67 distinct blind quantities (F-LOG-0243).
-- **A second fresh subagent (Haiku 4.5) failed to implement the task:** all (a) plus UNTESTABLE (F-LOG-0246). It is recorded, and it is not counted for or against.
+- **A second fresh subagent (Haiku 4.5) failed to implement the task:** all (a) plus UNTESTABLE (F-LOG-0246). It is recorded, and it is not counted for or against. A reviewer-corrected run of its code matches the reference U values exactly: supporting only, not a reproduction. Its U_P2 classification is inferred, not re-run.
 
-### Pre-framed cases of r2, kept for the record
-The return is processed under PREREG-SLICE (with Amendment A1) and the D0–D4 procedure in `SENSITIVITY.md`, after sealing. **D0 runs first:** if the return's U-frame values disagree with sealed V1b, that is classified before anything else.
-
-- **Case A, full agreement.** This needs **all** of: 118/118 BLIND units (67 distinct); every scored unit AGREEMENT or NOT_APPLICABLE; no AMBIGUOUS flag; no unrecognized key. Then: *"Cross-family computational reproduction of the slice core is supported, under the implementer's recorded interpretation and within the tested scope."* If its NOTES record a different reading at an AMB point, that point is inert **for these values**.
-- **Case B, disagreement.**
-  - No theory change, and no assumption that either side is wrong.
-  - Process: D0; isolate; apply D1–D4; audit the implementation; compare mathematically; reviewer.
-  - Classes:
-    - an implementation error is (a) for the checker, (b) for the Claude side;
-    - an interpretation difference, spec ambiguity or UNDETERMINED result is (c);
-    - a mathematical or theoretical discrepancy is (d).
-  - **Every non-(a) result goes to the human.**
-- **Case B′, a partial, INCOMPLETE or deviated return** (missing or malformed files, unrecognized keys, the sandbox fallback) **without any disagreement.**
-  - Classes follow the comparator. The licence is not granted.
-  - Agreeing units are reported as unit-level facts. Missing units are listed, never inferred.
-  - Status: *"cross-family reproduction partial: N of 67 distinct blind quantities"*. A rerun or a syntax-only adapter is a human decision.
-- **Case C, no return obtained:** *"CROSS-FAMILY VALIDATION: NOT COMPLETED"*. This is neither success nor failure. Every downstream claim stays at within-family strength.
-
-## 7. Conclusion (provisional, pending §6)
+## 7. Conclusion (final)
 - **R6-1:** D1's strong form is reading-relative.
   - The weak form survives (R4 Prop 9.6) **in the O-form only**, for (O, 𝓗) with N ≥ 1, P ≠ V and o ≠ ∅.
   - It holds for every tested reading **except the (ii)-O contrast under R-j**.
   - R-a was untested (it needs two targets); R-k was rejected.
   - This is formal derivation plus finite verification.
-- **R6-2 and R6-3:** reproduced within the Claude family, with small blind content. Cross-family: not run.
+- **R6-2 and R6-3:** reproduced within the Claude family, with small blind content. Cross-family: **waived** (F-LOG-0245).
 - **R6-4:** reproduced within the Claude family (Opus 5.5 and Sonnet 5.5, 67/67). Cross-family: **waived** (F-LOG-0245).
 
 ## 8. Remaining uncertainty
@@ -104,6 +86,25 @@ The return is processed under PREREG-SLICE (with Amendment A1) and the D0–D4 p
     - Q3 defaults to INDEPENDENCE_NOT_DETERMINABLE;
     - its R4 suitability verdict is "Undetermined".
   - Even a positive result (Q4 = YES) yields a **pre-registered experiment**, not an automatic reopening of R1.
-- **C. Defer the decision.** The cross-family wait is moot under the waiver; deferring now means waiting for some other trigger.
+- **C. Defer the decision**, e.g. pending a voluntary non-Claude run of the frozen slice. The waiver removes that requirement; it does not forbid the run, and `~/F-XCHECK-SLICE-01.tar` remains ready.
 
 V2, V5, V6 and R7 are conditional on this decision.
+
+## Appendix: superseded r2 framing (NOT applied)
+This framing was written before any return existed, for a non-Claude return. It was **superseded by the Human ARB waiver (F-LOG-0245)** and **was not applied**. It is kept only as evidence that the framing was fixed in advance. The quoted conclusions below were never drawn. (The Haiku raw comparison was handled under the comparator classes and the adapter rule, not as "Case B′" of this framing.)
+A return would have been processed under PREREG-SLICE (with Amendment A1) and the D0–D4 procedure in `SENSITIVITY.md`, after sealing. **D0 would have run first:** if the return's U-frame values disagree with sealed V1b, that is classified before anything else.
+
+- **Case A, full agreement.** This needs **all** of: 118/118 BLIND units (67 distinct); every scored unit AGREEMENT or NOT_APPLICABLE; no AMBIGUOUS flag; no unrecognized key. Then: *"Cross-family computational reproduction of the slice core is supported, under the implementer's recorded interpretation and within the tested scope."* If its NOTES record a different reading at an AMB point, that point is inert **for these values**.
+- **Case B, disagreement.**
+  - No theory change, and no assumption that either side is wrong.
+  - Process: D0; isolate; apply D1–D4; audit the implementation; compare mathematically; reviewer.
+  - Classes:
+    - an implementation error is (a) for the checker, (b) for the Claude side;
+    - an interpretation difference, spec ambiguity or UNDETERMINED result is (c);
+    - a mathematical or theoretical discrepancy is (d).
+  - **Every non-(a) result goes to the human.**
+- **Case B′, a partial, INCOMPLETE or deviated return** (missing or malformed files, unrecognized keys, the sandbox fallback) **without any disagreement.**
+  - Classes follow the comparator. The licence is not granted.
+  - Agreeing units are reported as unit-level facts. Missing units are listed, never inferred.
+  - Status: *"cross-family reproduction partial: N of 67 distinct blind quantities"*. A rerun or a syntax-only adapter is a human decision.
+- **Case C, no return obtained:** *"CROSS-FAMILY VALIDATION: NOT COMPLETED"*. This is neither success nor failure. Every downstream claim stays at within-family strength.
