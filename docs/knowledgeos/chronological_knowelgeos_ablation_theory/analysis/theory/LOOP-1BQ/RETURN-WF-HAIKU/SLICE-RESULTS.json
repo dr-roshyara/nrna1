@@ -1,0 +1,822 @@
+{
+  "U": {
+    "R0": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-b": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-c": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-d": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-e": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-f": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-g": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-g+": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-h": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-i": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-i'": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-j": {
+      "n_frame_histories": 952640,
+      "sizes": {
+        "R_B": 423936,
+        "H-D": 171960,
+        "H-B": 218688,
+        "H-D&H-B": 68784,
+        "H-D&R_B": 103176
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 423936,
+        "n_counterexamples": 127872,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 282624,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 504,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    }
+  },
+  "U_P2": {
+    "R0": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-b": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-c": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-d": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-e": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-f": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-g": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-g+": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-h": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-i": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-i'": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    },
+    "R-j": {
+      "n_frame_histories": 3197520,
+      "sizes": {
+        "R_B": 1425600,
+        "H-D": 501300,
+        "H-B": 755520,
+        "H-D&H-B": 233940,
+        "H-D&R_B": 300780
+      },
+      "(i)-S": {
+        "holds": false,
+        "scope_size": 1425600,
+        "n_counterexamples": 635904,
+        "least_counterexample": null
+      },
+      "(ii)-S": {
+        "holds": true,
+        "scope_size": 950400,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(iii)-L": {
+        "holds": true,
+        "scope_size": 744,
+        "n_counterexamples": 0,
+        "least_counterexample": null
+      },
+      "(i)-O": {
+        "holds": true
+      },
+      "(ii)-O": {
+        "holds": true
+      }
+    }
+  }
+}

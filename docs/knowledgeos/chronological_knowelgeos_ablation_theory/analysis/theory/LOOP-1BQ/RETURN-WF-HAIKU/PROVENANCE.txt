@@ -1,0 +1,9 @@
+verifier: headless claude -p --model claude-haiku-4-5-20251001 (transcript: that model only)
+independence: WITHIN-FAMILY ONLY (third Claude model). Cross-family WAIVED by the Human ARB chief (F-LOG-0245), NOT satisfied
+bundle: F-XCHECK-SLICE-01.tar fd83979b… (file hashes re-verified in the worker dir after the run)
+cwd: scratchpad/slice-haiku/F-XCHECK-SLICE-01 (outside the repository)
+tools allowed: Read, Write, Edit, Bash(python3:*); disallowed: WebFetch, WebSearch, Glob, Grep, Task, Agent, NotebookEdit, Monitor, ScheduleWakeup
+run: 2026-10-10T20:49:11Z – 21:02:33Z UTC, exit 0, attempts 1 (three program versions written in-session; enumerate_v3.py produced the results)
+tool-path audit: 22 calls; all paths are inside its cwd, except call 11, a Read of its OWN background-task output file, and call 12 (pkill of its own run). No access to the Opus or Sonnet results, the repository, or the network.
+inherited context: user-level ~/.claude/CLAUDE.md may load (generic; no project content)
+sealed before reading: yes
