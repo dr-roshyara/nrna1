@@ -83,4 +83,23 @@ final class AnnulVoidTest extends TestCase
         $this->assertSame($versionBefore, $h->member->version(), 'nothing appended');
         $this->assertSame([], $h->member->resolve()->periods(), 'the void still holds');
     }
+
+    // P-2: an Annul must carry its decision instant; the kernel never substitutes the current time.
+    public function test_annulling_without_decided_at_is_refused_and_changes_nothing(): void
+    {
+        $h = self::admitted();
+        $logBefore = $h->member->log();
+        $resolvedBefore = $h->member->resolve();
+
+        $decision = $h->annul('X1', 'A1', null);
+
+        $this->assertSame(RefusalReason::DecidedAtRequired, $decision->refusal());
+        $this->assertFalse($decision->isAccepted());
+        $this->assertSame($logBefore, $h->member->log(), 'no fact is appended');
+        $this->assertEquals($resolvedBefore, $h->member->resolve(), 'resolved state unchanged');
+        $this->assertTrue($h->member->resolve()->isMember(TimePoint::of(1)));
+
+        $this->expectException(\LogicException::class);
+        $decision->fact();
+    }
 }
