@@ -117,6 +117,9 @@ final readonly class Member
     public function decideAnnul(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt): Decision
     {
         $targetFact = $this->fact($target);
+        if ($decidedAt === null) {
+            return Decision::refused(RefusalReason::DecidedAtRequired);
+        }
         if ($targetFact instanceof VoidFact) {
             return Decision::refused(RefusalReason::AnnulOfVoidRefused);
         }

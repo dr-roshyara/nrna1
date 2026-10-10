@@ -33,6 +33,9 @@ enum RefusalReason: string
     /** INV-COV: consequences may move the owner of an instant, never remove membership coverage. */
     case MembershipCoverageLost = 'membership_coverage_lost';
 
+    /** Guard (PO condition P-2): an Annul carries its decision instant; the current time is never substituted. */
+    case DecidedAtRequired = 'decided_at_required';
+
     /** Guard (correction contract N-3): a Void cannot be annulled; it is restored by Void(Void). */
     case AnnulOfVoidRefused = 'annul_of_void_refused';
 
