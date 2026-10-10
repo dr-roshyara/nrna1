@@ -270,6 +270,39 @@ final class AnnulVoidTest extends TestCase
         }
     }
 
+    // Guard order (plan refusal triggers): DecidedAtRequired (3) precedes AnnulOfVoid (4), provenance (5), liveness (6). Sensitivity: M5.
+    public function test_decided_at_is_checked_before_the_target_kind_provenance_and_liveness(): void
+    {
+        $voidTarget = self::admitted();
+        $voidTarget->commit($voidTarget->void('V1', 'A1'));
+        $this->assertSame(RefusalReason::DecidedAtRequired, $voidTarget->annul('X1', 'V1', null)->refusal(), 'target is a Void');
+
+        $attested = MemberHistory::start();
+        $attested->commit($attested->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
+        $this->assertSame(RefusalReason::DecidedAtRequired, $attested->annul('X1', 'A1', null)->refusal(), 'target has attested provenance');
+
+        $this->assertSame(RefusalReason::DecidedAtRequired, $voidTarget->annul('X2', 'A1', null)->refusal(), 'target is not live');
+    }
+
+    // Guard order: AnnulOfVoidRefused (4) precedes TargetHasNoDecisionProvenance (5), for a Void with attested provenance. Sensitivity: M6.
+    public function test_annul_of_void_is_refused_before_the_provenance_check(): void
+    {
+        $h = self::admitted();
+        $h->commit($h->member->decideVoid(FactId::fromString('V1'), FactId::fromString('A1'), Provenance::attested('legacy-import', 'importer-1')));
+
+        $this->assertSame(RefusalReason::AnnulOfVoidRefused, $h->annul('X1', 'V1')->refusal());
+    }
+
+    // Guard order: TargetHasNoDecisionProvenance (5) precedes TargetNotLive (6), for a voided attested admission. Sensitivity: M7.
+    public function test_provenance_is_checked_before_liveness(): void
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
+        $h->commit($h->void('V1', 'A1'));
+
+        $this->assertSame(RefusalReason::TargetHasNoDecisionProvenance, $h->annul('X1', 'A1')->refusal());
+    }
+
     // P-KNOWN / K-H1 (R-12): a reversal never rewrites what was known before it was recorded.
     public function test_a_reversal_leaves_earlier_knowledge_unchanged(): void
     {
