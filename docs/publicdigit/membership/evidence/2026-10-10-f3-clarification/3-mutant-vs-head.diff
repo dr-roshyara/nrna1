@@ -1,0 +1,24 @@
+diff --git a/tests/Doubles/InMemoryMemberRepository.php b/tests/Doubles/InMemoryMemberRepository.php
+index 734735b0b..b726712db 100644
+--- a/tests/Doubles/InMemoryMemberRepository.php
++++ b/tests/Doubles/InMemoryMemberRepository.php
+@@ -79,9 +79,6 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
+     public function append(TenantId $tenant, MemberId $id, Decision $accepted, IdempotencyKey $key, string $fingerprint): AppendResult
+     {
+         $this->appendCalls++;
+-        if (!$accepted->isAccepted()) {
+-            throw new \InvalidArgumentException('Only accepted decisions can be appended.');
+-        }
+         // F-3: the key lookup precedes every other check (IDEM-1 / IDEM-3), as in PostgreSQL.
+         $seen = $this->appliedCommand($tenant, $key);
+         if ($seen !== null) {
+@@ -89,6 +86,9 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
+                 ? AppendResult::retried($seen->appended())
+                 : AppendResult::failed(AppendOutcome::IdempotencyKeyConflict);
+         }
++        if (!$accepted->isAccepted()) {   // SENSITIVITY MUTANT (must not be committed)
++            throw new \InvalidArgumentException('Only accepted decisions can be appended.');
++        }
+         // R-1a-6: after the key, before the member / version step.
+         if (!StorableValidTime::admits($accepted->fact())) {
+             return AppendResult::failed(AppendOutcome::ValidTimeNotStorable);

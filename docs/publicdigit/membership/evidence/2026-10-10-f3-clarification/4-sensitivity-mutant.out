@@ -1,0 +1,19 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.028, Memory: 14.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\InMemoryMemberRepositoryTest::test_a_refused_decision_is_rejected_even_under_a_used_key
+refused decision under a used key (fp1)
+Failed asserting that null is an instance of class InvalidArgumentException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:464
+
+FAILURES!
+Tests: 1, Assertions: 2, Failures: 1.

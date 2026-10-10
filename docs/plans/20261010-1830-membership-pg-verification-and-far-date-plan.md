@@ -276,3 +276,17 @@ Decisions supplied by the Human PO / ARB (Dr. Nab Raj Roshyara) in session `42e0
   - **Deviation from the plan (assertion technique only):** the plan assumed PHPUnit's `fail()` is not a `RuntimeException`; it is, so F3a captures the exception and asserts after the `try`. Found before the first run; the test's intent is unchanged.
   - Contracts: Slice 1a R-1a-6 universal again (F3-3), §7 clause marked adopted and implemented; Slice 1b parity note and §8 F3a–c (Part 2). Guide 07 and index; guide 06 pitfall updated. Evidence in `docs/publicdigit/membership/evidence/2026-10-10-f3/`.
   - **Status:** implemented and tested on the double; PostgreSQL unverified (F3a–c join Part 2); not accepted. Next under Path B: F-5 after Part 2 is provisioned and authorised, then F-4 → F-2.
+
+### F-3 clarification (independent review finding D0, D2, D3)
+
+Decisions by the Human PO / ARB, 2026-10-10 (K-1 … K-3 as supplied with the plan-revision instruction; K-4 answered in session `42e0287e…`, option label quoted verbatim):
+
+| # | Decision | Recorded answer | Status |
+|---|---|---|---|
+| K-1 | Contract interpretation | "K1 approved — clarify the contract; do not move the accepted-decision precondition" | APPROVED |
+| K-2 | Test F3d and its sensitivity check | "approve F3d and the sensitivity check" | APPROVED |
+| K-3 | Documentation corrections D2, D3 | "approve documentation corrections D2 and D3" | APPROVED |
+| K-4 | Implementation of the reviewed plan (two commits; no production code, database, push, CONTEXT / session-log sync or acceptance) | "Authorise K-4" | AUTHORISED |
+| — | CONTEXT / session-log synchronisation | "deferred" | DEFERRED |
+
+- 2026-10-10: **done.** Baseline at `52b69c4e8` (Application 54, E10 1). F3d passed at once (characterisation); the sensitivity mutant (precondition moved behind the key lookup in the double) made it fail on the intended assertion; restored byte-identical (sha256 `8c229ba6…`). Regression all exit 0. Slice 1a §7 clarified (K-1), D2 and D3 corrected; Slice 1b §8 F3d (Part 2); guide 07. Evidence: `docs/publicdigit/membership/evidence/2026-10-10-f3-clarification/`. PostgreSQL unverified; not accepted.

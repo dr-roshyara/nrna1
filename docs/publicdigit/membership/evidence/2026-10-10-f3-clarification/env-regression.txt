@@ -1,0 +1,6 @@
+cwd=/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1
+head=52b69c4e8e94a5135fdca4ef81b116f166e784e2
+date=2026-10-10T22:22:57+02:00
+PHP 8.5.11 (cli) (built: Sep 22 2026 13:32:06) (NTS gcc x86_64)
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+app/tests working changes:  M tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php;

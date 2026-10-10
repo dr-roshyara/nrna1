@@ -87,14 +87,14 @@ The port has no update and no delete.
 
 **F-3 clarification (Principal Reviewer disposition, 2026-10-09; adopted by the PO and implemented 2026-10-10, decisions F3-1 … F3-4 in the plan's F-3 gate register; shared contract tests F3a, F3b-1, F3b-2, F3c):**
 - `create` with a MemberId that already belongs to **another** holder is an **infrastructure failure** (an exception, no state change), not a port outcome. Both adapters throw a `RuntimeException` (PostgreSQL: the primary-key violation; the test double: an explicit `RuntimeException`).
-- In `append`, the **idempotency-key lookup precedes** every other check.
+- In `append`, the **idempotency-key lookup precedes every other outcome-producing check**: `AlreadyApplied` / `IdempotencyKeyConflict` come before `ValidTimeNotStorable`, `MemberNotFound` and `ConcurrencyConflict`. The **accepted-decision precondition** (port `@throws \InvalidArgumentException when the decision was refused`; Slice 1b §6) is call validation, not an outcome, and precedes the key lookup in every adapter: a refused decision is rejected even under a used key (test F3d). *(clarified 2026-10-10, K-1)*
 - Source: `2026-10-09-membership-pbdigit264-plan-ratification-pack-and-cutover-gate.md` §10. The port file is unchanged.
 
 ## Amendment (2026-10-10): R-1a-6 storable valid time (Option E, PBDIGIT-264)
 
 - **Authority:** Human PO / ARB decisions 1–6 and 8, recorded verbatim in the Option E gate register of `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md`.
 - **Added:** R-1a-6 (§4), the outcome `ValidTimeNotStorable` (§3) and its failure row (§5).
-- **Order in `append`:** idempotency-key lookup → R-1a-6 → version comparison → writes. The F-3 clause above is unchanged.
+- **Order in `append`:** idempotency-key lookup → R-1a-6 → the member / version step → writes. The F-3 clause above is unchanged.
 - **Parity scope:** the date contract only. The test double still checks `MemberNotFound` before the key; that ordering remains `PBDIGIT-264` F-3 (accepted as a limitation for this increment). No test pins the missing-member-plus-unsupported-date case until F-3. **Superseded by F-3 (2026-10-10):** the double now checks the key first; F3c pins that case, and the date-contract parity is full.
 - **Tests:** E1–E5 in `MemberRepositoryContract`; E7, E8 in `MembershipCommandHandlersTest`; E9 `AppendOutcomeMappingTest`; E10 `tests/Architecture/MembershipStorableValidTimeCoverageTest`; E4-L (legacy replay) in `InMemoryMemberRepositoryTest`.
-- **Correction (2026-10-10, Human PO / ARB R1, R2, R4):** R-1a-6 wording made adapter-specific for `MemberNotFound`; E4 renamed to what it proves (a known key with a matching fingerprint is answered without examining the new decision; the fingerprint is opaque at the port); E4-L added (a pre-Option-E record with an unstorable valid time is replayed with its original outcome).
+- **Correction (2026-10-10, Human PO / ARB R1, R2, R4):** R-1a-6 wording made adapter-specific for `MemberNotFound`; E4 renamed to what it proves (a known key with a matching fingerprint is answered without examining the new decision; the fingerprint is opaque at the port); E4-L added (a pre-Option-E record with an unstorable valid time is replayed with its original outcome). *(The adapter-specific `MemberNotFound` wording is superseded by F-3, 2026-10-10: R-1a-6 precedence over `MemberNotFound` is universal again.)*

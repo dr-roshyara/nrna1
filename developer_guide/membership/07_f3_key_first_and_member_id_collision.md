@@ -28,6 +28,9 @@ tests/Unit/Contexts/Membership/Application/Organisational/
 | F3-1 | Key first in every adapter (a key identifies a command, IDEM-1 / IDEM-3). An id collision is a caller defect (ids are caller-generated), so it is an infrastructure failure, not a new port outcome, and the port is unchanged |
 | F3-2 | Path B: F-3 before F-5 (F-3 needs no database; F-5 needs Part 2) |
 | F3-3 | R-1a-6 precedence over `MemberNotFound` is universal again |
+| K-1 | The accepted-decision precondition (port `@throws \InvalidArgumentException when the decision was refused`) is call validation and precedes the key lookup; the key lookup precedes every **outcome-producing** check (`AlreadyApplied` / `IdempotencyKeyConflict` before `ValidTimeNotStorable`, `MemberNotFound`, `ConcurrencyConflict`) |
+
+**Why the precondition is not moved behind the key lookup (K-1).** The only production caller, `DecideAndAppend`, appends accepted decisions only, so the case cannot arise through the application. Moving the check would change PostgreSQL production code and would answer a refused decision with a stored `AlreadyApplied`, hiding a caller defect behind a success-like result. Clarifying the contract matches it to the documented, intended behaviour.
 
 The failure type is `\RuntimeException`, the project's convention for infrastructure failures (CLAUDE.md, rule 8). PostgreSQL's `UniqueConstraintViolationException` → `QueryException` → `PDOException` is one, so a single assertion covers both adapters. No new exception type was introduced.
 
@@ -63,6 +66,7 @@ if (isset($this->members[$tenant->value()][$id->value()])) {
 | F3b-1 | an unknown MemberId with a used key and the same fingerprint → `AlreadyApplied`, the original outcome, no new fact |
 | F3b-2 | the same with another fingerprint → `IdempotencyKeyConflict`, nothing changed |
 | F3c | an unknown MemberId, unused key, valid time 2932897 → `ValidTimeNotStorable` |
+| F3d | a refused decision under a **used** key (same and different fingerprint) → `InvalidArgumentException`; version, log and the stored key record unchanged. A characterisation test (it passed at once); a temporary sensitivity mutant that moved the precondition behind the key lookup made it fail, and was reverted byte-identically |
 
 All four failed first on the double with assertion failures (F3a: no exception; the others: `member_not_found`), then passed after the fix. On PostgreSQL they run only in Part 2; they are predicted to pass without code change.
 
@@ -77,4 +81,4 @@ vendor/bin/phpunit tests/Unit/Contexts/Membership/Application/Organisational
 - **PostgreSQL tests run without a per-test transaction** (`Tests\TestCase`), so the reads after the failed `INSERT` in F3a are valid there; under a wrapping transaction they would hit "current transaction is aborted".
 - **Disclosure.** Key lookups are tenant-scoped. F3b-1 returns the original outcome (including another Member's id) only to a caller presenting the same key and the same fingerprint, that is, someone who already knows the full command.
 
-**Traceability:** F-3 (ratification pack §2 / §10; Slice 1a §7) · PO decisions F3-1 … F3-4 · commits `d908f93c4` (RED), `d2a3f2b17` (GREEN). **Status:** implemented and tested on the double; PostgreSQL unverified until Part 2; not formally accepted.
+**Traceability:** F-3 (ratification pack §2 / §10; Slice 1a §7) · PO decisions F3-1 … F3-4 · commits `d908f93c4` (RED), `d2a3f2b17` (GREEN), `52b69c4e8` (documents); F3d and the K-1 clarification: see the plan's "F-3 clarification" section and `docs/publicdigit/membership/evidence/2026-10-10-f3-clarification/`. **Status:** implemented and tested on the double; PostgreSQL unverified until Part 2; not formally accepted.
