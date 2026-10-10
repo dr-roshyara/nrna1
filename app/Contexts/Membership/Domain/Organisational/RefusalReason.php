@@ -32,4 +32,7 @@ enum RefusalReason: string
 
     /** INV-COV: consequences may move the owner of an instant, never remove membership coverage. */
     case MembershipCoverageLost = 'membership_coverage_lost';
+
+    /** Guard (correction contract §3.1, R-2): Annul applies only to facts with decision provenance. */
+    case TargetHasNoDecisionProvenance = 'target_has_no_decision_provenance';
 }

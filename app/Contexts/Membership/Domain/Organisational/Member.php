@@ -116,6 +116,11 @@ final readonly class Member
     /** Correction contract §3.1 (C-1): set aside an earlier decision fact; liveness only (D-COR-5 (A)). */
     public function decideAnnul(FactId $id, FactId $target, Provenance $provenance, ?Instant $decidedAt): Decision
     {
+        $targetFact = $this->fact($target);
+        if ($targetFact !== null && $targetFact->provenance()->kind() !== ProvenanceKind::Decision) {
+            return Decision::refused(RefusalReason::TargetHasNoDecisionProvenance);
+        }
+
         return $this->accept(new Annul($id, $target, $provenance, $decidedAt));
     }
 
@@ -151,5 +156,16 @@ final readonly class Member
         }
 
         return false;
+    }
+
+    private function fact(FactId $id): ?Fact
+    {
+        foreach ($this->log as $recorded) {
+            if ($recorded->fact()->id()->equals($id)) {
+                return $recorded->fact();
+            }
+        }
+
+        return null;
     }
 }
