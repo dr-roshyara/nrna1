@@ -3236,3 +3236,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - decided: VP1d-H (i), VP15 (i), VP5 (i);
   - open: VP10, VP14 and the rest;
   - E2b not authorized.
+
+## F-LOG-0258 — **Human act (Human ARB, 2026-10-11): VP10 recorded, option (iii).** The evidential-limitation side is left open as an explicit slot
+**The act** (`R7/VP5-VP10-VP14-DECISION-PACKAGE.md` r1.1 §2, as selected by the human):
+> "I, Human ARB, record VP10 = (iii): the evidential-limitation side is left open as a slot (CB4 as an explicit open slot), so that VP14 may be decided. This value must be revisited before any O3 proposal. This decides no other variation point, including VP14. It does not authorize E2b, E3, E3b, E4 or E5."
+
+- **Effect:**
+  - this meets O2's minimal-set requirement (the edge VP10 → VP14);
+  - nothing is asserted about the domain, and T-C R62 stays excluded;
+  - **this must be revisited before any O3 / E3 proposal.**
+- **Status after this act:**
+  - decided or recorded: VP1d-H (i), VP15 (i), VP5 (i), VP10 (iii, open slot);
+  - open: VP14 and the rest;
+  - E2b not authorized.
