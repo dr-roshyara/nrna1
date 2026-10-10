@@ -3068,3 +3068,8 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **A D/A/UNDETERMINED decision procedure (D0–D4) is fixed** for the non-Claude return. A sensitive disagreement with no variant match → UNDETERMINED, never A.
 - **Protocol mapping:** the adopted protocol's classes A–F are mapped onto the frozen PREREG classes (a)–(d) and are not substituted for them.
 - **Records:** `LOOP-1BQ/SENSITIVITY/` (SEAL.sha256).
+
+## F-LOG-0245 — **Human act (Human ARB chief, 2026-10-10): "use a fresh subagent; that is enough."** For R6, the cross-family requirement is WAIVED by the human, NOT satisfied
+- **Ruling.** A fresh, isolated Claude subagent run of the blind slice is sufficient to close R6's independence step. The non-Claude run is no longer required for the R6 gate.
+- **Execution.** The slice has already been run by Opus 5.5 (the Claude side) and by a fresh Sonnet 5.5 subagent (F-LOG-0243). To add model diversity rather than repeat a run, the fresh subagent uses **Claude Haiku 4.5** (`claude-haiku-4-5-20251001`). It runs isolated, outside the repository, on the frozen bundle `fd83979b…` only, with tools Read/Write/Edit and Bash restricted to python3. One attempt. Output goes to `~/F-XCHECK-SLICE-RETURN-01-CLAUDE-HAIKU/`. It is sealed before reading, then put through the frozen `compare_slice.py`, D0–D4, and a reviewer.
+- **Label for every downstream claim:** "within-family, 3 Claude models; cross-family waived by the Human ARB (F-LOG-0245)". **Never "cross-family validated".**
