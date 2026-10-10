@@ -3099,3 +3099,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the weak form holds in the O-form only, with the R-j (ii)-O exception; R-a is untested.
 - **E-A5 / Protocol C: not authorized** (it stays sealed and unexecuted). H1 is not reopened.
 - **Next per the adopted order:** V2/V5/V6 only by information gain, then human authorization for R7. Nothing is started.
+
+## F-LOG-0248 — **Human act (Human ARB chief, 2026-10-10): R7 AUTHORIZED under bounded claims** (boundary of `R7-AUTHORIZATION-BRIEF.md` r3 §6). This **explicitly overrides the F-LOG-0247 order** (V2/V5/V6 first)
+- **Scope:** a DDD derivation from K1–K9 only, carried with their class tags, scopes, Λ1–Λ7 and §2a.
+  - **Every output is an [E] hypothesis** with a traceability row (concept → R4 statement or R3 item → inherited assumptions (§4) → reading sensitivity).
+  - N1–N8 are admissible only as open questions or optional policies, never as invariants.
+  - Every R7 artifact gets an independent review.
+- **Not authorized:** architecture, implementation, canonicalization (R8). Also V2, V5, V6, E-A5, and any new evidence.
+- **Stop condition:** R7 ends with a candidate model plus a traceability table, for human review. **No adoption by implication.**
+- **Standing qualifier on every R7 output:** "one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable".
