@@ -3143,3 +3143,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - human alternative: a T-B policy form, with the inference not applied to the observed capture.
 - **Causal residue removed.**
 - **Current versions:** T1 r1.5, T2 r1.3, T3 r1.4 (commit 1a63f3a14).
+
+## F-LOG-0252 — **Human ARB decision package for R7 closure READY** (decision support only; nothing decided)
+- **`R7/ARB-DECISION-PACKAGE.md` r4.1:**
+  - audit verdict;
+  - recommendation **ACCEPT WITH SPECIFIED LIMITATIONS**, with its conditions met;
+  - prioritized register summary;
+  - neutral partition comparison (P-a to P-d and "no boundary layer"; tilt disclosed; unranked);
+  - next gate;
+  - **separate draft authorizations** E1 (R7 closure), E2 (per-VP decisions), E2b (adopt the bounded model), E3 (architecture derivation), E3b (accept the architecture proposal), E4 (R8), E5 (implementation), each gate a prerequisite of the next and never an implied approval;
+  - reopen conditions.
+- **`R7/VP-DECISION-REGISTER.md` r1.4:** the 19 VPs plus the VP1d-H item, each with the triage columns, timing labels (DECIDE NOW / DEFER / AUTHORIZE TARGETED RESEARCH), a dependency graph, minimal decision sets, and the evidence-gated condition.
+- **Review:** 4 rounds plus an analyst fix; the chain has no loophole (`R7/REVIEW-ARB-PACKAGE.md`).
+- **Status:** awaiting the Human ARB. **R7 is NOT closed. No VP is decided.**
