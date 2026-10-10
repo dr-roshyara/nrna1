@@ -3217,3 +3217,7 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - a defect in sealed R4 r3.1;
   - the H5 / F-LOG-0190 condition fails.
 - **Scope:** this act is **not** approval of the bounded model as a whole. E2b, E3, E3b, E4 and E5 are not authorized, and neither is any evidence collection.
+- **Correction after independent review (PASS_WITH_LIMITATIONS; appended, not rewritten):**
+  - **"Limitations: Λ1–Λ7 as quoted above"** should read: **the five limitations the human preserved (quoted above), plus Λ1–Λ7 as standing**. They are not the same list.
+  - **Reopen conditions also include** the generic package §F rows: a VP found to have been decided by implication or bundled; a defect found in an independent review of the package or register.
+  - **F-LOG-0255's "accepted as the frame of the model"** is to be read with the human's words: "the working basis for the bounded … model **only**".
