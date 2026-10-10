@@ -146,4 +146,32 @@ final class AnnulVoidTest extends TestCase
 
         $this->assertTrue($h->annul('X1', 'A1')->isAccepted());
     }
+
+    // Restoration (act §4, D-COR-2): reversing a live reversal makes its target live again, and its period returns (D-COR-5 (A)).
+    public function test_reversing_a_reversal_restores_the_period(): void
+    {
+        $cases = [
+            'Annul(Annul)' => static fn (MemberHistory $h) => $h->commit($h->annul('X1', 'A1'))->commit($h->annul('X2', 'X1')),
+            'Void(Annul)' => static fn (MemberHistory $h) => $h->commit($h->annul('X1', 'A1'))->commit($h->void('V1', 'X1')),
+            'Void(Void)' => static fn (MemberHistory $h) => $h->commit($h->void('V1', 'A1'))->commit($h->void('V2', 'V1')),
+        ];
+        foreach ($cases as $name => $history) {
+            $h = self::admitted(3);
+            $before = $h->member->resolve();
+
+            $history($h);
+
+            $this->assertEquals($before, $h->member->resolve(), "$name restores the resolved state");
+            $this->assertTrue($h->member->resolve()->isMember(TimePoint::of(3)), $name);
+        }
+    }
+
+    // Restoration nests: Annul(Annul(Annul)) leaves the admission set aside again.
+    public function test_a_third_reversal_sets_the_admission_aside_again(): void
+    {
+        $h = self::admitted();
+        $h->commit($h->annul('X1', 'A1'))->commit($h->annul('X2', 'X1'))->commit($h->annul('X3', 'X2'));
+
+        $this->assertSame([], $h->member->resolve()->periods());
+    }
 }
