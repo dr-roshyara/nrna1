@@ -60,6 +60,11 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
         if ($existing !== null) {
             return CreateResult::holderExists(MemberId::fromString($existing));
         }
+        if (isset($this->members[$tenant->value()][$id->value()])) {
+            // F-3 (a): an id collision with another holder is a caller defect: an infrastructure
+            // failure with no state change, as PostgreSQL's primary-key violation (also a RuntimeException).
+            throw new \RuntimeException("MemberId '{$id->value()}' already belongs to another holder in this tenant.");
+        }
         $this->members[$tenant->value()][$id->value()] = ['holder' => $holder, 'log' => []];
         $this->holders[$tenant->value()][$holder->value()] = $id->value();
 
@@ -77,19 +82,20 @@ final class InMemoryMemberRepository implements MemberRepositoryPort
         if (!$accepted->isAccepted()) {
             throw new \InvalidArgumentException('Only accepted decisions can be appended.');
         }
-        if (!isset($this->members[$tenant->value()][$id->value()])) {
-            return AppendResult::failed(AppendOutcome::MemberNotFound);
-        }
+        // F-3: the key lookup precedes every other check (IDEM-1 / IDEM-3), as in PostgreSQL.
         $seen = $this->appliedCommand($tenant, $key);
         if ($seen !== null) {
             return $seen->fingerprint() === $fingerprint
                 ? AppendResult::retried($seen->appended())
                 : AppendResult::failed(AppendOutcome::IdempotencyKeyConflict);
         }
-        // R-1a-6: after the key, before the version. (MemberNotFound before the key above is the
-        // known F-3 ordering difference from PostgreSQL; out of Option E's scope.)
+        // R-1a-6: after the key, before the member / version step.
         if (!StorableValidTime::admits($accepted->fact())) {
             return AppendResult::failed(AppendOutcome::ValidTimeNotStorable);
+        }
+        // The member / version step (PostgreSQL: one compare-and-set; here: member, then version).
+        if (!isset($this->members[$tenant->value()][$id->value()])) {
+            return AppendResult::failed(AppendOutcome::MemberNotFound);
         }
 
         return $this->record($tenant, $id, $accepted, $key, $fingerprint);
