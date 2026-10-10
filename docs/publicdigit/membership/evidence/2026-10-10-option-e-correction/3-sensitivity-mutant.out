@@ -1,0 +1,46 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+FFF                                                                 3 / 3 (100%)
+
+Time: 00:00.031, Memory: 14.00 MB
+
+In Memory Member Repository (Tests\Unit\Contexts\Membership\Application\Organisational\InMemoryMemberRepository)
+ ✘ A legacy record with an unstorable valid time is replayed before the valid time is checked
+   │
+   │ Failed asserting that two variables reference the same object.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome Enum #385 (AlreadyApplied, 'already_applied')
+   │ +App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome Enum #386 (ValidTimeNotStorable, 'valid_time_not_storable')
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/InMemoryMemberRepositoryTest.php:48
+   │
+ ✘ A reused key is answered before the valid time is checked
+   │
+   │ Failed asserting that two variables reference the same object.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome Enum #383 (IdempotencyKeyConflict, 'idempotency_key_conflict')
+   │ +App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome Enum #386 (ValidTimeNotStorable, 'valid_time_not_storable')
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:340
+   │
+ ✘ A known key with a matching fingerprint is answered without examining the new decision
+   │
+   │ Failed asserting that two variables reference the same object.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome Enum #385 (AlreadyApplied, 'already_applied')
+   │ +App\Contexts\Membership\Application\Organisational\Ports\AppendOutcome Enum #386 (ValidTimeNotStorable, 'valid_time_not_storable')
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/MemberRepositoryContract.php:357
+   │
+
+FAILURES!
+Tests: 3, Assertions: 5, Failures: 3.

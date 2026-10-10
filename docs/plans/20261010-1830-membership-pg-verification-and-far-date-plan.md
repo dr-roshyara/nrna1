@@ -241,3 +241,16 @@ Formal acceptance of Option E is **not** recorded here; it needs a separate Huma
   - Contracts amended (Slice 1a R-1a-6; Slice 1b §3, §4, §6, §8); developer guide 06; evidence in `docs/publicdigit/membership/evidence/2026-10-10-option-e/`.
   - **Status:** implemented and locally tested. **PostgreSQL unverified** (Part 2). **Not accepted.** F-3 remains open.
   - Next: ChatGPT result review, then Human PO / ARB disposition; Part 2 needs its own authorisation.
+
+### Option E correction (post-implementation review, `20261010_2110` / `20261010_2115`)
+
+Decisions supplied by the Human PO / ARB in session `42e0287e…`, 2026-10-10 (option labels quoted verbatim):
+
+| # | Decision | Recorded answer | Status |
+|---|---|---|---|
+| R1 | Contract wording: R-1a-6 precedence over `MemberNotFound` adapter-specific while F-3 is open; parity sentences; guide 06 | "Approve (Recommended)" | APPROVED |
+| R2 | E4 renamed to its port semantics; E4-L legacy replay via a test-only seeding method in the double; sensitivity change instead of a failing phase | "Approve (Recommended)" | APPROVED |
+| R3 | PostgreSQL variant of E4-L in Part 2 scope (does not authorise Part 2) | "Include in Part 2 scope (Recommended)" | IN SCOPE (Part 2 still gated) |
+| R4 | Two correction commits; no production code, database, push or acceptance | "Authorise" | AUTHORISED |
+
+- 2026-10-10: **correction done.** Tests `fb85c6e24` (E4 rename, E4-L, `seedPreOptionEAppend`). The sensitivity mutant made E4-L, E4 and E3 fail on assertions; reverted byte-identical. Regression all exit 0 (Domain 89, Application 50, DateOrdinal 5, architecture 13). Contracts and guide 06 corrected; evidence in `docs/publicdigit/membership/evidence/2026-10-10-option-e-correction/`. Option E still **not accepted**; PostgreSQL unverified.

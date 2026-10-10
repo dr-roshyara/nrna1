@@ -87,7 +87,9 @@ Before Option E this was a `switch` without a default: an unmapped outcome fell 
 |---|---|---|
 | E1a–d | `MemberRepositoryContract` | unstorable `effectiveAt` (−719163, 2932897), finite term end and End (2932897): `valid_time_not_storable`, version / log / key unchanged |
 | E2a–d | same | 0001-01-01 and 9999-12-31 stored and read back |
-| E3, E4 | same | a known key is answered before R-1a-6 |
+| E3 | same | a known key with another fingerprint → `IdempotencyKeyConflict` before R-1a-6 |
+| E4 | same | a known key with a **matching fingerprint** is answered without examining the new decision. The fingerprint is opaque at the port, and the new decision deliberately differs: this is not an identical command |
+| E4-L | `InMemoryMemberRepositoryTest` | the genuine identical retry of a **legacy** record (written before R-1a-6, valid time 2932897, seeded with the test-only `seedPreOptionEAppend`): original outcome, no new fact, sequence unchanged. PostgreSQL variant in Part 2 |
 | E5 | same | R-1a-6 before a stale version |
 | E7, E8 | `MembershipCommandHandlersTest` | the application refusal, one `append` call; a reused key never reaches `append` |
 | E9 | `AppendOutcomeMappingTest` | every enum case mapped; only a conflict retries, `MAX_ATTEMPTS` times |
@@ -99,6 +101,8 @@ Three boundary cases are deliberately absent because a domain guard refuses them
 
 E1–E5 also run against PostgreSQL through `PostgresMemberRepositoryTest`, but **only in Part 2**, under its isolation gates.
 
+**Showing a characterisation test can fail.** E4-L could not fail first (the behaviour already existed), so its value was shown with a temporary sensitivity change: moving the R-1a-6 check above the key lookup in the double made E4-L, E4 and E3 fail on assertions. The change was reverted (byte-identical, by checksum) and never committed; the evidence is in `docs/publicdigit/membership/evidence/2026-10-10-option-e-correction/`.
+
 ```bash
 vendor/bin/phpunit tests/Unit/Contexts/Membership/Application/Organisational
 vendor/bin/phpunit tests/Architecture/MembershipStorableValidTimeCoverageTest.php
@@ -109,6 +113,7 @@ vendor/bin/phpunit tests/Architecture/MembershipStorableValidTimeCoverageTest.ph
 - **The application banned-word check scans comments too.** `MembershipSlice1aBoundaryTest` rejects `DateTime` and `date(` / `time(` (also with a space) anywhere in `Application/Organisational`. Write "valid time", never "valid time (…)".
 - **Don't name a test helper `run()`**: it collides with PHPUnit's final `TestCase::run()` (observed while writing E9).
 - **9999-12-31 is storable.** Option E cannot detect it as a legacy "no end" placeholder; that is the Slice 13 migration contract (BD-NORM).
-- **Not full parity.** For a missing Member with an unstorable valid time, PostgreSQL answers `ValidTimeNotStorable` and the double `MemberNotFound` (F-3, open).
+- **Not full parity.** R-1a-6 precedes `ConcurrencyConflict` in every adapter, but its precedence over `MemberNotFound` is adapter-specific (Slice 1a R-1a-6, corrected wording): for a missing Member with an unstorable valid time, PostgreSQL answers `ValidTimeNotStorable` and the double `MemberNotFound` (F-3, open). No test pins that case until F-3.
+- **`seedPreOptionEAppend` is test-only.** It models legacy state for E4-L. Never copy it into a production adapter: R-1a-6 must not be bypassable.
 
-**Traceability:** R-1a-6 (Slice 1a contract §4) · Slice 1b §6 step (1b) · PBDIGIT-264 F-1 / F-3 · gate register decisions 1–6, 8 · commits `0e4e5ac7a` (RED), `af495c838` (GREEN), `3ee8c2fe4` (contracts, gate register, this guide, evidence). **Status:** implemented and locally tested; PostgreSQL unverified until Part 2; not formally accepted.
+**Traceability:** R-1a-6 (Slice 1a contract §4) · Slice 1b §6 step (1b) · PBDIGIT-264 F-1 / F-3 · gate register decisions 1–6, 8 · commits `0e4e5ac7a` (RED), `af495c838` (GREEN), `3ee8c2fe4` (contracts, gate register, this guide, evidence), `fb85c6e24` (correction: E4 renamed, E4-L; Human PO / ARB R1–R4). **Status:** implemented and locally tested; PostgreSQL unverified until Part 2; not formally accepted.

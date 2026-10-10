@@ -163,6 +163,7 @@ org_membership_commands                              — idempotency (IDEM-1…4
 | T13 | architecture: the adapter imports nothing from Election / Finance / Governance; no `extends Model` in `Infrastructure/Organisational`; the kernel and application unchanged | boundaries |
 | E1–E5 *(amended 2026-10-10)* | in `MemberRepositoryContract`, so inherited by `PostgresMemberRepositoryTest`: unstorable valid times refused with version / log / key unchanged (E1a–d); the inclusive boundaries stored and read back (E2a–d); the key answered before R-1a-6 (E3, E4); R-1a-6 before a stale version (E5) | R-1a-6 on PostgreSQL, **in Part 2 only** |
 | E10 *(amended 2026-10-10)* | architecture: the kernel facts with a valid time are exactly Admit and End | `StorableValidTime::admits()` coverage |
+| E4-L *(amended 2026-10-10, R3)* | PostgreSQL variant of the legacy replay: a raw pre-F-1 row (`10000-01-01`) and its key row; the identical retry → `AlreadyApplied`, original outcome, no new fact; asserted via `append` / `appliedCommand` only | IDEM-1 / IDEM-3 before R-1a-6 on legacy data, **in Part 2 only** |
 
 **Regression:** Architecture suite + `tests/Unit/Contexts/Membership` + the new tests, compared with a baseline checkout before 1b. Pre-existing, flaky, environment and new failures are reported separately.
 
@@ -199,4 +200,5 @@ During implementation, the real-process race test (T12) found an IDEM-3 defect i
 - **Authority:** Human PO / ARB decisions 1–6 and 8, recorded verbatim in the Option E gate register of `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md`.
 - **Changed:** §3 (one outcome added), §4 (storable range row), §6 `append` step (1b), §8 (E1–E5, E10). The Slice 1a contract carries R-1a-6 itself.
 - **Delivery P1:** the adapter check is implemented (`PostgresMemberRepository::appendInTransaction`, after `answerFromKey`, before the compare-and-set). **Its PostgreSQL behaviour is unverified until Part 2**; until then the adapter is not accepted, integrated or used in production.
-- **Parity scope:** the date contract only; the test double's `MemberNotFound`-before-key ordering remains `PBDIGIT-264` F-3.
+- **Parity scope:** the date contract only; the test double's `MemberNotFound`-before-key ordering remains `PBDIGIT-264` F-3. See Slice 1a R-1a-6 for the adapter-specific `MemberNotFound` precedence *(added 2026-10-10, R1)*.
+- **E4-L on PostgreSQL (Human PO / ARB R3, 2026-10-10: in Part 2 scope; Part 2 execution not authorised by it):** raw-insert a pre-F-1 fact row dated `10000-01-01` plus its key row; replay the same decision, key and fingerprint; assert `AlreadyApplied` with the original outcome and no new fact **through `append` and `appliedCommand` only** (`load()` cannot read year 10000, the original F-1 defect).

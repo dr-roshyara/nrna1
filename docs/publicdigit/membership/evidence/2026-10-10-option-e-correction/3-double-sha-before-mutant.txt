@@ -1,0 +1,1 @@
+e7c9c26bf1bdb82145b910545c2a41fa45eded3c224b5508885fd4a90d19aea3  tests/Doubles/InMemoryMemberRepository.php
