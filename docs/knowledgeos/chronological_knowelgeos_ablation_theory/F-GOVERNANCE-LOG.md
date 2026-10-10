@@ -3221,3 +3221,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **"Limitations: Λ1–Λ7 as quoted above"** should read: **the five limitations the human preserved (quoted above), plus Λ1–Λ7 as standing**. They are not the same list.
   - **Reopen conditions also include** the generic package §F rows: a VP found to have been decided by implication or bundled; a defect found in an independent review of the package or register.
   - **F-LOG-0255's "accepted as the frame of the model"** is to be read with the human's words: "the working basis for the bounded … model **only**".
+
+## F-LOG-0257 — **Human act (Human ARB, 2026-10-11): VP5 decided, option (i).** One-corpus basis for the bounded model
+**The act** (`R7/VP5-VP10-VP14-DECISION-PACKAGE.md` r1.1 §1, as selected by the human):
+> "I, Human ARB, decide VP5 = (i): the one-corpus primitives are accepted as the basis of the **bounded** model, with the explicit one-corpus scope (Λ3, Λ6). Satisfiability (K1) is treated as a sufficient basis for a bounded model only; adequacy to the domain stays [E]/[I] (bK1), and no generality is claimed. This decides no other variation point. It adopts no model element. It does not authorize E2b (adoption), E3 or E3b (architecture), E4 (R8) or E5 (implementation), nor V6 or any other evidence collection."
+
+- **Effect:** the adoption path stays open (E2b requires VP5 = (i)).
+- **Reversibility:** medium. Downstream work inherits the one-corpus scope.
+- **Reopen if:**
+  - V6 shows the primitives, K6 or K7 are corpus-specific;
+  - an adequacy failure is found;
+  - the generic package §F conditions apply.
+- **Status after this act:**
+  - decided: VP1d-H (i), VP15 (i), VP5 (i);
+  - open: VP10, VP14 and the rest;
+  - E2b not authorized.
