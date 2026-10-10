@@ -3181,3 +3181,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - R7 limitation §B item 4 is superseded in that respect.
 - **This decides only VP1d-H.** No other VP is decided, nothing is adopted (E2b not authorized), and no architecture, R8 or implementation is authorized.
 - **Amendment of the closed R7 deliverable under this ruling** (package §F, the row "the human rules on VP1d-H"): T1 X25, T2 (a new T-B row; R41 note), T3 VP1d and the neutrality self-check, the register's VP1d-H status, and the package's §B item 4 note. Done by a worker and reviewed independently.
+
+## F-LOG-0255 — **Human act (Human ARB, 2026-10-11): VP15 decided, option (i).** R4's five modelling choices are accepted as the frame of the model, each **labelled a modelling choice, never a corpus fact**
+- **Accepted, with their labels:**
+  - σ as a primitive (T2 R11);
+  - Cap constancy (R10);
+  - A5 / Rem 1.11a (R21);
+  - O as the base observation (R23);
+  - F2 as an Asm (R2, R3).
+- **Effect:**
+  - the model rests on sealed R4 r3.1 (F-LOG-0240), with K1–K9 under their scopes;
+  - adequacy to the domain stays a labelled design judgement [E]/[I]; only V6 (not authorized) could test it;
+  - reversibility is low: replacing a choice later voids the R4 results that depend on it.
+- **This decides only VP15.** VP5, VP10 and VP14 remain open. Nothing is adopted (E2b not authorized), and no architecture, R8 or implementation is authorized.
