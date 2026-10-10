@@ -3260,3 +3260,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **VP14 must be reopened before any O3 / E3 proposal** (there is nothing to decompose).
 - **The O2 minimal set is now complete:** VP15 (i), VP5 (i), VP10 recorded (iii), VP14 decided. VP1d-H (i) was decided earlier.
 - **Next:** prepare the E2b adoption text and have it reviewed independently (an E2b prerequisite). **E2b needs its own explicit human act.**
+
+## F-LOG-0260 — **E2b adoption text READY for the Human ARB** (prerequisites P1–P6 MET; E2b NOT authorized)
+- **Artifact:** `R7/E2b-ADOPTION-TEXT.md` r1.1.
+  - It would adopt the bounded [E] model: T3 r1.5's 25 non-CB elements, with **CB4 an explicit open slot**.
+  - T-A R1–R24 are model constraints only (nothing enforceable from records, R23).
+  - All 18 T-B slots are **inactive** (R83 keeps its condition).
+  - Exclusions, extensions, open questions and 15 open VPs are carried as recorded.
+  - Disclosed limitations D1–D4.
+  - Adopting CV8, CV9 and CS1 **does not decide VP10**.
+- **Review:** 2 rounds, PASS_WITH_LIMITATIONS, nothing blocking (`R7/REVIEW-E2b-ADOPTION-TEXT.md`). The register title is synced to r1.10.
+- **Status:** awaiting the Human ARB's explicit E2b act (approve, reject or return). E3, E3b, E4 and E5 are not authorized.

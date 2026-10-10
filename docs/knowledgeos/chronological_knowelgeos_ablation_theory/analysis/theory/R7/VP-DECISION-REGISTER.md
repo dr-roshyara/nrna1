@@ -1,4 +1,4 @@
-# R7 · Variation-point decision register (draft r1.7)
+# R7 · Variation-point decision register (draft r1.10)
 
 **Status:** decision-support artifact for the human review of the R7 candidate model (F-LOG-0250, corrected by F-LOG-0251), 2026-10-11. Draft r1.4 (r0 + the §5a decision-timing analysis, the VP1d alignment with T3 (now r1.4), the separate decision item VP1d-H and the prioritized order; change list in §7). **Not yet independently reviewed. It decides nothing and recommends no value.** The "recommended action" in §5a is a recommendation about **when** a decision is taken (DECIDE NOW / DEFER / AUTHORIZE TARGETED RESEARCH), never about **which** option. It sets out each of the 19 variation points in `R7/T3-CANDIDATE-MODEL.md` r1.4 §4 (VP1a–d, VP2–VP16), plus the decision item VP1d-H that T3 r1.4 VP1d names as a human alternative, so that a human can see what each decision would commit to. Companion: `R7/ARB-DECISION-PACKAGE.md`. **[r1.5] Amendment under human ruling, post-closure (F-LOG-0254; R7 closed by F-LOG-0253):** VP1d-H is **DECIDED (i)**; VP1d's option set includes T2 R83 (inactive slot). No other VP is decided; nothing is adopted.
 
