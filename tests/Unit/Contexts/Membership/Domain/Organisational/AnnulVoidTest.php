@@ -102,4 +102,48 @@ final class AnnulVoidTest extends TestCase
         $this->expectException(\LogicException::class);
         $decision->fact();
     }
+
+    // Check order: a reused fact id is refused before anything is said about the target.
+    public function test_a_reused_fact_id_is_refused_first(): void
+    {
+        $h = self::admitted();
+
+        $this->assertSame(RefusalReason::DuplicateFactId, $h->annul('A1', 'ZZ', null)->refusal());
+        $this->assertSame(RefusalReason::DuplicateFactId, $h->void('A1', 'ZZ')->refusal());
+    }
+
+    // P-3: a reversal targets a fact of this Member; an unknown target is refused, also before DecidedAtRequired.
+    public function test_reversing_an_unknown_fact_is_refused(): void
+    {
+        $h = self::admitted();
+
+        $this->assertSame(RefusalReason::TargetNotFound, $h->annul('X1', 'ZZ')->refusal());
+        $this->assertSame(RefusalReason::TargetNotFound, $h->annul('X1', 'ZZ', null)->refusal());
+        $this->assertSame(RefusalReason::TargetNotFound, $h->void('V1', 'ZZ')->refusal());
+        $this->assertSame(1, $h->member->version());
+    }
+
+    // D-COR-2: Annul / Void of a fact that is no longer live is refused (fact liveness, not period activity).
+    public function test_reversing_a_fact_that_is_not_live_is_refused(): void
+    {
+        $voided = self::admitted();
+        $voided->commit($voided->void('V1', 'A1'));
+        $this->assertSame(RefusalReason::TargetNotLive, $voided->annul('X1', 'A1')->refusal());
+        $this->assertSame(RefusalReason::TargetNotLive, $voided->void('V2', 'A1')->refusal());
+
+        $annulled = self::admitted();
+        $annulled->commit($annulled->annul('X1', 'A1'));
+        $this->assertSame(RefusalReason::TargetNotLive, $annulled->annul('X2', 'A1')->refusal());
+        $this->assertSame(RefusalReason::TargetNotLive, $annulled->void('V1', 'A1')->refusal());
+    }
+
+    // P-3: an admission whose period has ended is still a live fact, so it can be annulled.
+    public function test_the_admission_of_an_ended_period_is_still_live(): void
+    {
+        $h = MemberHistory::start();
+        $h->commit($h->admit('A1', 1));
+        $h->commit($h->end('E1', 'A1', 5));
+
+        $this->assertTrue($h->annul('X1', 'A1')->isAccepted());
+    }
 }
