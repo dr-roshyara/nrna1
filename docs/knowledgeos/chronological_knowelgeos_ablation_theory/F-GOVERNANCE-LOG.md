@@ -3249,3 +3249,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - decided or recorded: VP1d-H (i), VP15 (i), VP5 (i), VP10 (iii, open slot);
   - open: VP14 and the rest;
   - E2b not authorized.
+
+## F-LOG-0259 — **Human act (Human ARB, 2026-10-11): VP14 decided, "no boundary layer".**
+**The act** (`R7/VP5-VP10-VP14-DECISION-PACKAGE.md` r1.1 §3.8, as selected by the human, with the common clause C14 expanded):
+> "I, Human ARB, decide VP14 = no boundary layer: the bounded model is carried without CB1–CB4; the CG, CV, CE, CS and MW elements and their traces are unaffected, and T3's P-a layout is not adopted. This does not find that boundaries are unnecessary in the domain; T1 and T2 give no criterion either way. VP14 must be reopened before any O3 proposal. This partition is decided without reference to any VP1a–d outcome (N1) and encodes neither H-D nor H-B as a rule. It decides no other variation point (VP11 and VP12 stay open). It adopts no model element and does not authorize E2b (adoption), E3 or E3b (architecture), E4 (R8) or E5 (implementation), nor the re-derivation of T3's element tables, which needs its own authorization."
+
+- **Effect:**
+  - no CB layer; the P-a tilt is not adopted;
+  - no T3 re-derivation is needed, so E2b is **presentable** but **not authorized**;
+  - **VP14 must be reopened before any O3 / E3 proposal** (there is nothing to decompose).
+- **The O2 minimal set is now complete:** VP15 (i), VP5 (i), VP10 recorded (iii), VP14 decided. VP1d-H (i) was decided earlier.
+- **Next:** prepare the E2b adoption text and have it reviewed independently (an E2b prerequisite). **E2b needs its own explicit human act.**
