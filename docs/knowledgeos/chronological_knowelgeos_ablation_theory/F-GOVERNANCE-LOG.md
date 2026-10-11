@@ -3457,3 +3457,20 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - (e) the O3-preparation act.
 
   E3, E3b, E4 and E5 are not authorized.
+
+**[Appended to F-LOG-0271, same day: the human's own statement, verbatim. Where its wording differs from the summary above, this statement governs.]**
+> **VP12 Re-check — Asymmetry Disposition**
+>
+> **Decision:** Option 1 — Keep open, carry forward.
+>
+> The Human ARB selects no spanning-participant counting rule at this stage. The H-D asymmetry associated with P-c remains documented, unresolved, and unaccepted.
+>
+> Any O3/E3 proposal must present the relevant results under all three interpretations: S, S′ and S″. It must not silently privilege one interpretation or present the asymmetry as an accepted property of the cut.
+>
+> The VP12 act selecting one shared participant remains unchanged. VP14 remains P-c. This disposition does not decide VP4 or VP11, does not withdraw F-LOG-0265's premise, and does not authorize E3.
+>
+> **Rationale:** The re-check has passed all three fresh reviews without blockers, but review completion does not settle the unresolved counting rule. The rule and its consequences require an explicit, separately recorded Human ARB decision.
+
+- **Note (analyst):**
+  - "does not decide VP11": VP11 was already decided (ii) by F-LOG-0269, and this disposition leaves that unchanged.
+  - "does not withdraw F-LOG-0265's premise": the premise stands as recorded, and T3 r1.7 records that it holds under S′/S″ but not under S. Any O3/E3 proposal must present both.
