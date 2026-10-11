@@ -3521,3 +3521,67 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the proposal's self-check slightly overstates "struck, never deleted";
   - this entry is the review the r1.8 status line does not mention.
 - **Closed:** F-LOG-0271 item (d), R21 and the F8 items. R11 stays open. **Next:** act A (the E2b amendment), then act B. E3 is not authorized.
+
+
+## F-LOG-0275 — **Human act (Human ARB, 2026-10-11): act A, E2b Amendment 1, ADOPTED as two acts.** Choices: C-α = (b) consistency only; C-γ = return
+**Selection:** the split alternative (Act I + Act II) of `R7/E2b-AMENDMENT-1-PROPOSAL.md` r2.2 §7, with C-β confirmed (27), **C-α = (b)** and **C-γ = return**. The act texts below are assembled verbatim from the proposal's clauses per its split specification. "r[n]" reads r2.2, and each act carries the common closing paragraph.
+
+**Act I (A1 + A2 + A4):**
+> "I, Human ARB, amend E2b (F-LOG-0261; `R7/E2b-ADOPTION-TEXT.md` r1.1) by Amendment 1 (`R7/E2b-AMENDMENT-1-PROPOSAL.md` r2.2), as a **bounded [E] model change, one corpus, pre-architecture**. — **Act I (A1 + A2 + A4)**.
+>
+> (1) The basis 'without CB1–CB4 (VP14 = no boundary layer, F-LOG-0259)' is replaced by VP14 = P-c (F-LOG-0265). I adopt CB1 (records side; C13–C18, C23, C24, C27) and CB23 (norm-and-work side; C2–C12, C19–C21), each labelled '[E] bounded model element, one corpus', by concept membership and their `R7/T3-CANDIDATE-MODEL.md` r1.7 §2 traces. The traces are restricted to the T1 ids and the R4 / FROZEN R3 ids not keyed to hosting. Their T2 hosts per spanning reading are recorded as a report of T3 [E], not ratified, and no reading is selected. The stale T3 r1.7 CB1 / CB23 cells are not adopted. CB4 stays an explicit open slot (F-LOG-0263); it is not a side, and it is not an element (E2b §2 ('a named slot with no element'); package r4.1 §1.4; VP10 (iii)). The adopted model consists of 27 elements: CB1, CB23, the participant, CG1–CG6, CV1–CV9, CV-text, CE1–CE6, CS1 and MW1. T3's count of 28 is a T3-internal convention and is not adopted. P-a, P-b and P-d are not adopted. The 25 previously adopted elements keep their T3 r1.5 traces.
+>
+> (2) VP12 = (i) (F-LOG-0268) is recorded: the participant spans CB1 and CB23. No element changes.
+>
+> (4) No spanning rule is selected. The H-D asymmetry associated with P-c remains documented, unresolved and unaccepted. The disposition does not withdraw F-LOG-0265's premise; T3 r1.7 records [E] that it holds under S′ and S″ and not under S. Any O3/E3 proposal must present the relevant results under all three interpretations, S, S′ and S″, and must not silently privilege one interpretation or present the asymmetry as an accepted property of the cut (F-LOG-0271).
+>
+> (5) Everything else in E2b r1.1 stands unchanged:
+> - all T-B rows (R25–R39, R79, R80, R83) remain inactive, and R83 keeps its condition;
+> - T-C rows, X1–X25, the §3b extensions (other than any row admitted by Act II) and OQ1–OQ11 are carried as recorded;
+> - VP15 (i) and VP5 (i) are as decided, and the other variation points keep their §2f defaults;
+> - the §2f status of VP10 ((iii) re-affirmed, F-LOG-0263; counted for O3, F-LOG-0264) is recorded as an annotation only; no E2b amendment is needed for VP10 (F-LOG-0263);
+> - the standing qualifier, the F-LOG-0256 limitations, Λ1–Λ7, the limitations of `R7/ARB-DECISION-PACKAGE.md` §B and the disclosures D1–D4, as updated with D5–D6, travel with it.
+>
+> This amendment is decided without reference to any VP1a–d outcome (N1) and encodes neither H-D nor H-B as a rule. It amends E2b only and decides no variation point. It does not:
+> - authorize the preparation of an O3 proposal;
+> - authorize E3, E3b, E4 or E5;
+> - select a spanning rule;
+> - accept the asymmetry;
+> - authorize any evidence collection (including V2, V5, V6, E-A5);
+> - amend the register, the ARB package or T3;
+> - adopt canonical terms."
+
+**Act II (A3):**
+> "I, Human ARB, amend E2b (F-LOG-0261; `R7/E2b-ADOPTION-TEXT.md` r1.1) by Amendment 1 (`R7/E2b-AMENDMENT-1-PROPOSAL.md` r2.2), as a **bounded [E] model change, one corpus, pre-architecture**. — **Act II (A3)**.
+>
+> (3) This clause gives effect to F-LOG-0269 and does not re-decide VP11: CG1–CG6 are kept separate.
+>
+> — **(3a) [select (b)]** 'Of the §3b row "a consistency / transaction notion to fix grouping boundaries", which E2b §2d carried as excluded, consistency is admitted as a conceptual human design decision, without transaction semantics, following the package r4.1 §4.6 / §4.7 analyst gloss; the transaction part stays excluded.'
+>
+> — **(3b) [select return]** 'Whether guard rows that cross groupings are cross-grouping constraints is returned for analysis; until then, only the ten enumerated rows are so labelled.'
+>
+> No grouping is enforceable from records (R23). R1–R24 remain candidate model constraints, not domain invariants.
+>
+> This amendment is decided without reference to any VP1a–d outcome (N1) and encodes neither H-D nor H-B as a rule. It amends E2b only and decides no variation point. It does not:
+> - authorize the preparation of an O3 proposal;
+> - authorize E3, E3b, E4 or E5;
+> - select a spanning rule;
+> - accept the asymmetry;
+> - authorize any evidence collection (including V2, V5, V6, E-A5);
+> - amend the register, the ARB package or T3;
+> - adopt canonical terms."
+
+- **Effect on the adopted model (E2b r1.1 → as amended):**
+  - VP14 = P-c basis. CB1 and CB23 are adopted by concept membership and trace only. CB4 stays an open slot. **27 elements.**
+  - VP12 (i) is recorded.
+  - VP11 (ii): CG1–CG6 stay separate. **Consistency only** (conceptual, no transaction semantics) is admitted from the §3b row; the transaction part stays excluded. Cross-grouping constraints: only the ten enumerated rows are labelled, **pending analysis of the guard-row question** (C-γ return).
+  - The S/S′/S″ disclosure is carried, and no reading is selected.
+- **New open item (returned by C-γ):** whether guard rows that cross groupings (R14–R17, R21; R11 open) are cross-grouping constraints in the sense of the VP11 act.
+- **Open items now:**
+  - (c) the register/ARB sync (act B, next);
+  - (d′) the T3 CB1/CB23 cells (M5);
+  - the C-γ guard-row question;
+  - R11;
+  - (e) the O3-preparation act.
+- **Next:** a worker records Amendment 1 in `R7/E2b-ADOPTION-TEXT.md`, append-only and with history preserved. A fresh independent review follows. Then act B.
+- **Not done by this act:** no VP decided; no spanning rule selected; asymmetry not accepted; register, ARB and T3 not amended; O3 preparation, E3, E3b, E4 and E5 not authorized; no evidence collection; no canonical terms.
