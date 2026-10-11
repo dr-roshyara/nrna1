@@ -3330,3 +3330,17 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **For the O3 minimal set, VP10 is satisfied by (iii).** The contested status in package §1.7 is resolved by this human ruling. It was not resolved by evidence.
 - **Pending:** the consequential amendment of register §3/§5a, and of ARB §E3 if it is read as requiring a decision, needs its own act. Until then, register r1.12 records the ruling only in its annotations and change rows.
 - **Next:** VP14 (reopening); then VP12; then VP11. E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0265 — **Human act (Human ARB, 2026-10-11): VP14 REOPENED and DECIDED P-c**
+**The act** (`R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1 §2.8, as selected by the human, with the common closing clause C14′ expanded):
+> "I, Human ARB, reopen VP14 and decide VP14 = P-c (one undivided norm-and-work side │ records), as a human design decision. I record that its neutrality holds under 𝐑₀ only (asymmetric under R-i and R-i′), with the R-h / R83 crossing note. Its element tables require a separately authorized re-derivation. This partition is decided without reference to any VP1a–d outcome (N1) and encodes neither H-D nor H-B as a rule. It decides only VP14 (VP10, VP12 and VP11 are decided separately). It supersedes the F-LOG-0259 value. Its effect on the adopted model takes hold only when the consequential E2b amendment of the 'no boundary layer' basis is made by its own act. It adopts no model element and does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5, nor the re-derivation of T3's element tables, which needs its own authorization."
+
+- **Basis:** the package found no neutral ordering of P-a, P-b, P-c and P-d without weights, so the choice is the human's. Row 7 (congeniality) was disclosed and not used.
+- **Pending, each its own act:**
+  - (1) the T3 r1.5 re-derivation under P-c (package §2.9). It is performed with the participant provisionally in CG1 and re-checked after VP12;
+  - (2) the E2b amendment of the "no boundary layer" basis.
+
+  Until both are done, the adopted model is unchanged (F-LOG-0261).
+- **The F-LOG-0259 reopen obligation is discharged. Register:** r1.13.
+- **Next:** the re-derivation authorization (a separate act); then VP12; then VP11. E3, E3b, E4 and E5 are not authorized.
