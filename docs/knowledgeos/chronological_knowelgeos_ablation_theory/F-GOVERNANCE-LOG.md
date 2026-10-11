@@ -3344,3 +3344,11 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   Until both are done, the adopted model is unchanged (F-LOG-0261).
 - **The F-LOG-0259 reopen obligation is discharged. Register:** r1.13.
 - **Next:** the re-derivation authorization (a separate act); then VP12; then VP11. E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0266 — **Human act (Human ARB, 2026-10-11): T3 re-derivation under VP14 = P-c AUTHORIZED**
+**The act** (`R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1 §2.9 draft, [P-x] = P-c, as selected by the human):
+> "I, Human ARB, authorize a post-closure amendment of `R7/T3-CANDIDATE-MODEL.md` r1.5, re-deriving §1a, the §2 boundary rows, the §3a host column (including X19), the §4 VP1d / VP2 / VP3 / VP10 / VP11 / VP12 / VP14 rows and the affected §6 rows under VP14 = P-c, to be independently reviewed. It adopts nothing, does not amend E2b, decides no variation point, and does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5."
+
+- **Execution:** a worker subagent produces T3 r1.6, with the participant provisionally in CG1 (package §2.9). A fresh independent subagent reviews it, then the reconciliation follows. The review criteria are those of package §2.9.
+- **Not authorized:** the E2b amendment, VP12, VP11, O3 preparation, E3, E3b, E4 and E5.
