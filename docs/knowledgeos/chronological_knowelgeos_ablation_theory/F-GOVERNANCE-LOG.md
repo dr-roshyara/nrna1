@@ -3409,3 +3409,35 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - (d) the R21 §1b gap;
   - (e) the act authorizing preparation of an O3 proposal (register §3).
 - **Register:** r1.16. E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0270 — **Executor (2026-10-11): VP12 re-check DONE (F-LOG-0268's required follow-up).** T3 r1.7; the asymmetry is documented, NOT accepted
+- **Artifact:** `R7/T3-CANDIDATE-MODEL.md` r1.7. A worker subagent produced it, and three fresh independent reviews checked it, all PASS_WITH_LIMITATIONS with nothing blocking:
+  - review 1 gave the base findings, fixed by the worker as M1–M7;
+  - review 2 verified M1–M7 and gave N1–N5, which the main analyst applied without re-review.
+- **Spanning rule:** T1, T2 and R4 supply none. Three readings are stated, each as [E], and none is selected:
+  - **S:** C1 counts on both sides;
+  - **S′:** C1 counts on neither side;
+  - **S″:** C1 counts where the statement locates the actor.
+- **Crossing totals** (cross / internal CB23 / internal CB1 / CB4 touch / none): r1.6 37/38/1/3/4; **S 46/29/1/3/4** (range 44–52 over the borderlines); **S′ and S″ 36/38/2/3/4** (identical).
+- **The asymmetry, documented:**
+  - **Under 𝐑₀ with S:** D-chg (R25) crosses; B-chg (R30) and B-conf (R32, R33) do not. The record clauses are symmetric. The asymmetry rests on D-chg's Cap condition on the issuing actor (with Adopted not read through).
+  - **Under R-i and R-i′ with S:** asymmetric on the change and record clauses alike.
+  - **Under R-h with R83, by the crossing criterion:** the same as 𝐑₀. The H-B universal-strength note is separate, and the two are not weighted against each other.
+  - **Where it lives:** among the constraint tiers, only in T-B inactive VP1a slots. These are the very options whose neutrality the cut is meant to preserve. The T-A rows that newly cross are frame typing.
+  - **Under S′ and S″:** symmetric, as in r1.6. **But S″ coincides with the VP12 (ii) results that r1.6 stated**, which is the role separation the human did not choose; it may conflict with the F-LOG-0268 statement "No additional role-separation assumption is introduced by this act". S′ is in tension with "spanning CB23 and CB1".
+- **Disclosure correction:** the F-LOG-0268 disclosure that the human acted on presented only S.
+- **Meaning:** this is a property of the candidate cut under a reading and a counting rule. It is not evidence for or against H-D or H-B, which stay non-identifiable. The F-LOG-0265 premise "neutral under 𝐑₀" holds only under S′ or S″.
+- **The choice among S, S′ and S″, and whether the asymmetry is acceptable, are human questions.** The analyst decides neither.
+- **Deferred F8** (needs a separately authorized T3 edit):
+  - the VP11 side note "provisional";
+  - the R8 relations cell;
+  - the VP11 decided-status sync in T3 §4 and §6.
+- **Register:** r1.17. **Still open before E3** (F-LOG-0269 list):
+  - (a) this item: now documented; human disposition pending;
+  - (b) the E2b amendment;
+  - (c) the register and ARB amendment for F-LOG-0264;
+  - (d) R21 in §1b, plus F8;
+  - (e) the O3-preparation act.
+
+  E3, E3b, E4 and E5 are not authorized.
