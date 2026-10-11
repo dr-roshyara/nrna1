@@ -3687,3 +3687,26 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Carried open, unresolved by this act:** A1–A5, (d′), the C-γ guard-row question, R11, the CV9 / §3b tension, H13 and the stale T3 r1.8 notes.
 - **Not authorized:** E3, E3b, E4 and E5; no VP decided; no spanning rule selected; the asymmetry not accepted; no records amended; no evidence collected; no canonical terms adopted.
 - **Next:** a worker drafts the O3 proposal. Fresh reviewers check it, one new reviewer per round, with a FAIL at round 3 going to the human. The reviewed proposal is then presented for a separate act on E3.
+
+
+## F-LOG-0281 — **Executor (2026-10-11): O3 proposal READY** (`R7/O3-PROPOSAL.md` r1.2), requesting a Human ARB act on E3. Nothing authorized
+- **Prepared under F-LOG-0280.** The F-LOG-0280 regime applied: a fresh `kos-theory-reviewer` each round, with a FAIL at round 3 going to the human.
+  - **Round 1** (r0): PASS_WITH_LIMITATIONS; 5 material, 11 minor.
+  - **Round 2** (r1): PASS_WITH_LIMITATIONS; 1 material, 8 minor. The reviewer independently verified that S′ = S″ ⊆ S and that the rows differ on 10 of 83.
+  - **Round 3** (r1.1): PASS_WITH_LIMITATIONS; **nothing blocking**, so present. r1.2 applies round 3's four wording fixes, which were **not re-reviewed**.
+- **Content:**
+  - The request quotes ARB §E3.
+  - It lists the 27 adopted elements with their provenance. The 25 baseline elements trace to T3 r1.5 §2. CB1/CB23 carry the restricted r1.7 trace.
+  - It gives S/S′/S″ results with none privileged and the costs shown symmetrically. S″ is reported as counting only.
+  - B1–B14 are given as a checklist.
+  - Questions Q1–Q7 are labelled [E]; ports (Q7) are UNANCHORED.
+  - Open items are listed with the consequences of each timing, and no advice.
+  - Limitations, a review plan, and the act texts.
+- **Hard limits held:** no architecture is derived; no VP is decided; no reading is selected; the asymmetry is not accepted; F-LOG-0265's premise stands; R1–R24 are not promoted; no record is amended.
+- **Key choices in the Authorize text:**
+  - **(1) A2, mandatory.** (a) An interpretive ruling that the restricted trace suffices; S-reading R5, R6, R10, R19, R25 and R38 stay exposed until (d′) plus an E2b amendment. (b) E3 waits for two acts: (d′), and an E2b amendment adopting the whole synced rows. (c) Carried open, reporting under (a) and (b).
+  - **Sub-choice:** whether the ruling also governs E3b.
+  - **(2) Scope**, including ports.
+  - **(3) Output shape.**
+  - **(4) Stop round.**
+- **Status:** awaiting the Human ARB act on E3 (Authorize, Return or Reject). E3b, E4 and E5 are not authorized.

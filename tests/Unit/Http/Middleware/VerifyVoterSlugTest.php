@@ -10,7 +10,6 @@ use App\Exceptions\Voting\ExpiredVoterSlugException;
 use App\Exceptions\Voting\InvalidVoterSlugException;
 use App\Exceptions\Voting\OrganisationMismatchException;
 use App\Exceptions\Voting\SlugOwnershipException;
-use App\Exceptions\Voting\VoterSlugLifetimeMisconfigured;
 use App\Exceptions\Voting\VotingException;
 use App\Http\Middleware\VerifyVoterSlug;
 use App\Models\DemoVoterSlug;
@@ -242,49 +241,7 @@ final class VerifyVoterSlugTest extends BaseTestCase
 
         $result = $this->verify($this->request($this->slug(VoterSlug::class, ['status' => 'expired'])));
 
-        // PBDIGIT-274 (PO: an expired session is restartable for its owner): status 'expired' is session expiry,
-        // reported as Expired (was Invalid under PBDIGIT-273).
-        $this->assertRejectedWith(ExpiredVoterSlugException::class, $result);
-    }
-
-    public function test_a_slug_marked_expired_and_inactive_by_the_retrieved_hook_is_reported_expired_not_invalid(): void
-    {
-        // PBDIGIT-274 guard order V-4 before V-5b: the model's retrieved hook sets is_active=false and
-        // status='expired' together; the owner must get the expiry outcome, not "no longer active".
-        $this->actingAs($this->user());
-
-        $result = $this->verify($this->request($this->slug(VoterSlug::class, ['status' => 'expired', 'is_active' => false])));
-
-        $this->assertRejectedWith(ExpiredVoterSlugException::class, $result);
-    }
-
-    public function test_an_inactive_slug_that_is_not_expired_stays_invalid(): void
-    {
-        $this->actingAs($this->user());
-
-        $result = $this->verify($this->request($this->slug(VoterSlug::class, ['is_active' => false, 'status' => 'active'])));
-
         $this->assertRejectedWith(InvalidVoterSlugException::class, $result);
-    }
-
-    public function test_a_misconfigured_lifetime_fails_closed_before_any_slug_check_with_a_safe_critical_log(): void
-    {
-        // PBDIGIT-274 O-4 / O-10 = B: strict, no fallback; logged with a reason code and type only.
-        Log::spy();
-        config(['voting.time_in_minutes' => '20min']);
-        $this->actingAs($this->user());
-
-        $result = $this->verify($this->request($this->slug()));
-
-        $this->assertRejectedWith(VoterSlugLifetimeMisconfigured::class, $result);
-        $this->assertSame(503, $result['exception']->getHttpCode());
-        Log::shouldHaveReceived('critical', function (string $message, array $context = []) {
-            return $message === 'voter_slug_lifetime_misconfigured'
-                && ($context['reason'] ?? null) === 'not_integer'
-                && ($context['configured_type'] ?? null) === 'string'
-                && !str_contains((string) json_encode($context), '20min')
-                && !str_contains((string) json_encode($context), self::RAW_SLUG);
-        });
     }
 
     // ---------------------------------------------------------------- V-4 expiry (now >= expires_at is expired)

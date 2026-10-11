@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\Voting\VoterSlugRouteLookup;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -63,11 +62,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * This binding:
      * 1. Detects route context (demo vs production)
-     * 2. Resolves to correct model (DemoVoterSlug or VoterSlug) via VoterSlugRouteLookup: no model events
-     *    during the lookup (PBDIGIT-274), only the 'tenant' scope removed, SoftDeletes kept
-     * 3. Does NOT evaluate expiry: VerifyVoterSlug does, after ownership (PBDIGIT-274, plan section 7)
+     * 2. Resolves to correct model (DemoVoterSlug or VoterSlug)
+     * 3. Validates expiration status
      * 4. Applies rate limiting to prevent slug guessing attacks
-     * 5. Returns 404 for unknown, replaced or soft-deleted slugs (indistinguishable) with security logging
+     * 5. Returns 404 for invalid slugs with security logging
      */
     protected function registerVoterSlugBinding(): void
     {
@@ -84,7 +82,12 @@ class RouteServiceProvider extends ServiceProvider
                 ? \App\Models\DemoVoterSlug::class
                 : \App\Models\VoterSlug::class;
 
-            $voterSlug = app(VoterSlugRouteLookup::class)->find($modelClass, $value);
+            // Query using current database connection
+            $connection = config('database.default');
+            $voterSlug = $modelClass::on($connection)
+                ->withoutGlobalScopes()
+                ->where('slug', $value)
+                ->first();
 
             if (!$voterSlug) {
                 Log::warning('Invalid voting slug lookup', [
@@ -94,6 +97,16 @@ class RouteServiceProvider extends ServiceProvider
                     'is_demo_route' => $isDemo,
                 ]);
                 abort(404, 'Voting link not found.');
+            }
+
+            // Check if slug has expired
+            if ($voterSlug->expires_at && $voterSlug->expires_at->isPast()) {
+                Log::info('Expired voting slug accessed', [
+                    'slug_id' => $voterSlug->id,
+                    'expires_at' => $voterSlug->expires_at,
+                    'ip' => request()->ip(),
+                ]);
+                abort(410, 'This voting link has expired.');
             }
 
             return $voterSlug;
