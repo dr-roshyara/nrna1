@@ -2,7 +2,8 @@
 
 ## 📍 UPDATE (2026-10-11, F-Series) — E3-prerequisite VPs DECIDED (F-LOG-0263–0270)
 - VP10 (iii) [counts for O3], VP14 = P-c, VP12 = (i), VP11 = (ii). T3 r1.7 (VP12 re-check): H-D asymmetry under spanning rule S documented, NOT accepted.
-- **Next (human):** disposition of the spanning rule / asymmetry; then E2b amendment; register/ARB amendment (F-LOG-0264); R21/F8 T3 syncs; O3-preparation act. E3 not authorized.
+- Spanning rule kept open, carried forward (F-LOG-0271): any O3/E3 proposal must report S, S′, S″.
+- **Next (human):** E2b amendment; register/ARB amendment (F-LOG-0264); R21/F8 T3 syncs; O3-preparation act. E3 not authorized.
 
 ## 📍 UPDATE (2026-10-11, F-Series) — E3-prerequisite package READY (F-LOG-0262)
 - `R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1; five fresh subagent reviews (r3, r4 PASS_WITH_LIMITATIONS). Nothing decided.

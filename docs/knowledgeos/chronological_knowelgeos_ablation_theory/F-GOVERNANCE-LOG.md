@@ -3441,3 +3441,19 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - (e) the O3-preparation act.
 
   E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0271 — **Human act (Human ARB, 2026-10-11): disposition of the VP12 re-check. Keep open and carry forward**
+**The act** (selected by the human from the options presented after F-LOG-0270):
+> "Keep open, carry forward: Select no rule. The asymmetry stays documented and not accepted, and travels as a disclosed limitation into any O3/E3 proposal, which must show results under S, S′ and S″."
+
+- **No spanning rule is selected.** The P-c H-D asymmetry under S stays **documented and NOT accepted**. The F-LOG-0265 premise "neutral under 𝐑₀" stays conditional (S′/S″ only).
+- **Binding condition on any future O3/E3 proposal:** it must carry this as a disclosed limitation and report results under all three readings, S, S′ and S″ (T3 r1.7).
+- **F-LOG-0268's required follow-up ("Re-check and document … before E3 proceeds") is satisfied** by F-LOG-0270 together with this disposition.
+- **Still open before E3** (each its own act):
+  - (b) the E2b amendment for P-c and VP11 (ii);
+  - (c) the register §3/§5a amendment (plus ARB §E3 if read so) for F-LOG-0264;
+  - (d) the T3 syncs: R21 in §1b, and F8;
+  - (e) the O3-preparation act.
+
+  E3, E3b, E4 and E5 are not authorized.
