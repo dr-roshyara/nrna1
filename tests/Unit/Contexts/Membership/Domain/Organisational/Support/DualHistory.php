@@ -64,11 +64,11 @@ final class DualHistory
                 $cmd[2] === 'inf' => TimePoint::infinity(),
                 default => TimePoint::of($this->at($cmd[2])),
             };
-            $decision = $this->member->decideAdmit(FactId::fromString($id), TimePoint::of($this->at($cmd[1])), $until, $provenance);
+            $decision = $this->member->decideAdmit(FactId::fromString($id), TimePoint::of($this->at($cmd[1])), TimePoint::of($this->at(1_000_000)), $until, $provenance);
             $oracle = ['A', $id, $this->at($cmd[1]), is_int($cmd[2]) ? $this->at($cmd[2]) : null, $cmd[2] === 'inf'];
         } else {
             $id = $this->idPrefix . 'E' . ($this->facts + 1);
-            $decision = $this->member->decideEnd(FactId::fromString($id), PeriodId::fromString($this->periodId($cmd[1])), TimePoint::of($this->at($cmd[2])), EndKind::fromString('k'), $provenance);
+            $decision = $this->member->decideEnd(FactId::fromString($id), PeriodId::fromString($this->periodId($cmd[1])), TimePoint::of($this->at($cmd[2])), TimePoint::of($this->at(1_000_000)), EndKind::fromString(EndKind::RESIGNATION), $provenance);
             $oracle = ['E', $id, $this->periodId($cmd[1]), $this->at($cmd[2])];
         }
         if (!$decision->isAccepted()) {

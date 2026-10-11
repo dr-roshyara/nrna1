@@ -108,7 +108,7 @@ final class PostgresConcurrencyRaceTest extends TestCase
             $org = $this->organisation();
 
             $results = $this->race(fn (int $c) => (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
-                ->handle(new AdmitMember($org, 'P1', "M-$c", "A-$c", 100, null, true, 'registrar', null, null, "k-$c")));
+                ->handle(new AdmitMember($org, 'P1', "M-$c", "A-$c", 100, 100, null, true, 'registrar', 'decl-fixture', null, "k-$c")));
 
             $this->assertSame([], array_values(array_filter($results, static fn ($r) => $r[0] === 'error')), "round $round: errors " . json_encode($results));
             $this->assertSame(1, DB::table('org_memberships')->where('organisation_id', $org)->count(), "round $round: INV-M");
@@ -122,10 +122,10 @@ final class PostgresConcurrencyRaceTest extends TestCase
         for ($round = 0; $round < self::ROUNDS; $round++) {
             $org = $this->organisation();
             (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
-                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, null, true, 'registrar', null, null, 'k-admit'));
+                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, 100, null, true, 'registrar', 'decl-fixture', null, 'k-admit'));
 
             $results = $this->race(fn (int $c) => (new EndMembershipHandler(self::repository(), new FakeAuthority()))
-                ->handle(new EndMembership($org, 'M1', "E-$c", 'A1', 200 + $c, 'resignation', 'registrar', null, "k-end-$c")));
+                ->handle(new EndMembership($org, 'M1', "E-$c", 'A1', 200 + $c, 200 + $c, 'resignation', 'registrar', null, "k-end-$c")));
 
             $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->where('kind', 'end')->count(), "round $round: one End " . json_encode($results));
             $this->assertCount(1, array_filter($results, static fn ($r) => $r[0] === 'appended'), "round $round: " . json_encode($results));
@@ -141,10 +141,10 @@ final class PostgresConcurrencyRaceTest extends TestCase
         for ($round = 0; $round < self::ROUNDS; $round++) {
             $org = $this->organisation();
             (new AdmitMemberHandler(self::repository(), new FakeAuthority()))
-                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, null, true, 'registrar', null, null, 'k-admit'));
+                ->handle(new AdmitMember($org, 'P1', 'M1', 'A1', 100, 100, null, true, 'registrar', 'decl-fixture', null, 'k-admit'));
 
             $results = $this->race(fn (int $c) => (new EndMembershipHandler(self::repository(), new FakeAuthority()))
-                ->handle(new EndMembership($org, 'M1', 'E1', 'A1', 200, 'resignation', 'registrar', null, 'same-key')));
+                ->handle(new EndMembership($org, 'M1', 'E1', 'A1', 200, 200, 'resignation', 'registrar', null, 'same-key')));
 
             $this->assertSame(1, DB::table('org_membership_facts')->where('organisation_id', $org)->where('kind', 'end')->count(), "round $round");
             $this->assertSame(array_fill(0, self::PROCESSES, ['appended', 'M1', 2]), $results, "round $round: every caller gets the original Appended");

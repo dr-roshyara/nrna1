@@ -47,7 +47,7 @@ trait MemberRepositoryContract
 
     private static function admit(Member $member, string $factId, int $at): Decision
     {
-        return $member->decideAdmit(FactId::fromString($factId), TimePoint::of($at), TimePoint::infinity(), Provenance::decision('registrar'));
+        return $member->decideAdmit(FactId::fromString($factId), TimePoint::of($at), TimePoint::of($at), TimePoint::infinity(), Provenance::decision('registrar', null, 'decl-fixture'));
     }
 
     private static function key(string $k): IdempotencyKey
@@ -134,7 +134,7 @@ trait MemberRepositoryContract
         $member = $this->created($repo);
         $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1');
         $member = $repo->load($this->tenant(), $member->id());
-        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
         $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
 
         $log = $repo->load($this->tenant(), $member->id())->log();
@@ -188,7 +188,7 @@ trait MemberRepositoryContract
         $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1');
         $member = $repo->load($this->tenant(), $member->id());
 
-        $other = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        $other = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
         $this->assertSame(AppendOutcome::IdempotencyKeyConflict, $repo->append($this->tenant(), $member->id(), $other, self::key('k1'), 'fp-other')->outcome());
         $this->assertSame(1, $repo->load($this->tenant(), $member->id())->version());
     }
@@ -213,7 +213,7 @@ trait MemberRepositoryContract
         $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1');
         $member = $repo->load($this->tenant(), $member->id());
         $this->now = 300;
-        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
         $second = $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
 
         $this->assertGreaterThanOrEqual(500, $second->appended()->recordedAt()->ordinal());
@@ -227,7 +227,7 @@ trait MemberRepositoryContract
         $repo->append($this->tenant(), $member->id(), self::admit($member, 'A1', 1), self::key('k1'), 'fp1');
         $before = $repo->load($this->tenant(), $member->id())->log();
         $member = $repo->load($this->tenant(), $member->id());
-        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        $end = $member->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A1'), TimePoint::of(5), TimePoint::of(5), EndKind::fromString('resignation'), Provenance::decision('registrar'));
         $repo->append($this->tenant(), $member->id(), $end, self::key('k2'), 'fp2');
 
         $after = $repo->load($this->tenant(), $member->id())->log();
@@ -239,12 +239,12 @@ trait MemberRepositoryContract
 
     private static function admitUntil(Member $member, string $factId, int $at, ?int $until): Decision
     {
-        return $member->decideAdmit(FactId::fromString($factId), TimePoint::of($at), $until === null ? TimePoint::infinity() : TimePoint::of($until), Provenance::decision('registrar'));
+        return $member->decideAdmit(FactId::fromString($factId), TimePoint::of($at), TimePoint::of($at), $until === null ? TimePoint::infinity() : TimePoint::of($until), Provenance::decision('registrar', null, 'decl-fixture'));
     }
 
     private static function endAt(Member $member, string $factId, string $period, int $at): Decision
     {
-        return $member->decideEnd(FactId::fromString($factId), PeriodId::fromString($period), TimePoint::of($at), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        return $member->decideEnd(FactId::fromString($factId), PeriodId::fromString($period), TimePoint::of($at), TimePoint::of($at), EndKind::fromString('resignation'), Provenance::decision('registrar'));
     }
 
     /** @return array<string, array{int, ?int}> effectiveAt, finite initialTermUntil (null = unlimited) */

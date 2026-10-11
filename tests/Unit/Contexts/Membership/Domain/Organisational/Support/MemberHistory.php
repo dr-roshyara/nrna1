@@ -44,16 +44,28 @@ final class MemberHistory
         return Provenance::decision('registrar-1');
     }
 
+    /** D-1: an admission decided by an actor carries a declaration reference (fixture-only value). */
+    public static function admissionProvenance(): Provenance
+    {
+        return Provenance::decision('registrar-1', null, 'decl-fixture');
+    }
+
+    /** D-5: a decision date after every time the fixtures use, so the future-dating guard never fires here. */
+    public static function decisionDate(): TimePoint
+    {
+        return TimePoint::of(1_000_000);
+    }
+
     public function admit(string $id, int $at, ?int $termUntil = null, bool $termIsInfinite = false): Decision
     {
         $until = $termIsInfinite ? TimePoint::infinity() : ($termUntil === null ? null : TimePoint::of($termUntil));
 
-        return $this->member->decideAdmit(FactId::fromString($id), TimePoint::of($at), $until, self::provenance());
+        return $this->member->decideAdmit(FactId::fromString($id), TimePoint::of($at), self::decisionDate(), $until, self::admissionProvenance());
     }
 
     public function end(string $id, string $period, int $at): Decision
     {
-        return $this->member->decideEnd(FactId::fromString($id), PeriodId::fromString($period), TimePoint::of($at), EndKind::fromString('resignation'), self::provenance());
+        return $this->member->decideEnd(FactId::fromString($id), PeriodId::fromString($period), TimePoint::of($at), self::decisionDate(), EndKind::fromString('resignation'), self::provenance());
     }
 
     /** Correction contract §3.1 (C-1): Annul sets aside a decision fact. */

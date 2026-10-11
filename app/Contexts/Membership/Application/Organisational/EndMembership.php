@@ -13,6 +13,8 @@ final readonly class EndMembership
         public string $factId,
         public string $periodId,
         public int $effectiveAt,
+        /** D-5(a) Z1: the decision's calendar date, supplied by the caller (a UI default uses the organisation's time zone). */
+        public int $decisionDate,
         public string $endKind,
         public string $actor,
         public ?int $decidedAt,

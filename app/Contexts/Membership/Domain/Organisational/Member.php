@@ -82,20 +82,39 @@ final readonly class Member
         return Resolution::of(array_values(array_map(static fn (RecordedFact $r): Fact => $r->fact(), $known)));
     }
 
-    public function decideAdmit(FactId $id, TimePoint $effectiveAt, ?TimePoint $initialTermUntil, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    /**
+     * @param TimePoint $decisionDate the caller-supplied calendar date of the decision (D-5(a) Z1); the domain
+     *                                reads no clock and no time zone
+     * @throws \InvalidArgumentException when effectiveAt or decisionDate is ∞ (invalid input, not a refusal)
+     */
+    public function decideAdmit(FactId $id, TimePoint $effectiveAt, TimePoint $decisionDate, ?TimePoint $initialTermUntil, Provenance $provenance, ?Instant $decidedAt = null): Decision
     {
+        self::requireFiniteDates($effectiveAt, $decisionDate);
         if ($this->usesFactId($id)) {
             return Decision::refused(RefusalReason::DuplicateFactId);
         }
         if ($initialTermUntil !== null && !$effectiveAt->isBefore($initialTermUntil)) {
             return Decision::refused(RefusalReason::InvalidInitialTerm);
         }
+        // D-1 = C1: exactly one recognised basis. A Provenance has exactly one kind; rule and attested are
+        // bases in themselves, a decision needs its declaration reference.
+        if ($provenance->kind() === ProvenanceKind::Decision && $provenance->declarationRef() === null) {
+            return Decision::refused(RefusalReason::AdmissionBasisMissing);
+        }
+        if ($effectiveAt->isAfter($decisionDate)) {
+            return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
+        }
 
         return $this->accept(new Admit($id, $effectiveAt, $initialTermUntil, $provenance, $decidedAt));
     }
 
-    public function decideEnd(FactId $id, PeriodId $period, TimePoint $effectiveAt, EndKind $kind, Provenance $provenance, ?Instant $decidedAt = null): Decision
+    /**
+     * @param TimePoint $decisionDate as in decideAdmit (D-5(a) Z1)
+     * @throws \InvalidArgumentException as in decideAdmit
+     */
+    public function decideEnd(FactId $id, PeriodId $period, TimePoint $effectiveAt, TimePoint $decisionDate, EndKind $kind, Provenance $provenance, ?Instant $decidedAt = null): Decision
     {
+        self::requireFiniteDates($effectiveAt, $decisionDate);
         if ($this->usesFactId($id)) {
             return Decision::refused(RefusalReason::DuplicateFactId);
         }
@@ -108,6 +127,12 @@ final readonly class Member
         }
         if (!$target->baseClaim()->start()->isBefore($effectiveAt)) {
             return Decision::refused(RefusalReason::EndNotAfterPeriodStart);
+        }
+        if ($kind->isLegacy() && $provenance->kind() !== ProvenanceKind::Attested) {
+            return Decision::refused(RefusalReason::LegacyEndRequiresAttestedHistory);
+        }
+        if ($effectiveAt->isAfter($decisionDate)) {
+            return Decision::refused(RefusalReason::EffectiveDateAfterDecisionDate);
         }
 
         return $this->accept(new End($id, $period, $effectiveAt, $kind, $provenance, $decidedAt));
@@ -170,6 +195,17 @@ final readonly class Member
     private function facts(): array
     {
         return array_map(static fn (RecordedFact $r): Fact => $r->fact(), $this->log);
+    }
+
+    /**
+     * Hardening H1-a / H1-b (PBDIGIT-271): a decision date is a calendar date and an Admit / End takes effect at
+     * a finite time. ∞ stays legitimate for open-ended terms, so this is a precondition here, not a TimePoint rule.
+     */
+    private static function requireFiniteDates(TimePoint $effectiveAt, TimePoint $decisionDate): void
+    {
+        if ($effectiveAt->isInfinite() || $decisionDate->isInfinite()) {
+            throw new \InvalidArgumentException('The effective date and the decision date must be finite.');
+        }
     }
 
     private function usesFactId(FactId $id): bool

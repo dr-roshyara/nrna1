@@ -74,11 +74,13 @@ final class ReferencePropertyRun
 
                 if ($cmd[0] === 'admit') {
                     $until = $cmd[6] === 'until' ? $cmd[7] : null;
-                    $command = new AdmitMember($cmd[1], $cmd[2], "M-$cmd[2]", $cmd[3], $cmd[4], $until, $cmd[6] === 'unlimited', 'registrar', null, null, $cmd[5]);
+                    // D-1 / D-5: a constant declaration reference and a constant decision date after every generated
+                    // time (no extra mt_rand draw, so the generated sequence is unchanged).
+                    $command = new AdmitMember($cmd[1], $cmd[2], "M-$cmd[2]", $cmd[3], $cmd[4], 1_000_000, $until, $cmd[6] === 'unlimited', 'registrar', 'decl-property', null, $cmd[5]);
                     $expected = $model->admit($cmd[1], $cmd[2], $cmd[3], $cmd[4], $cmd[5], $command->fingerprint(), $cmd[6], $until);
                     $actual = self::normalise($admit->handle($command));
                 } else {
-                    $command = new EndMembership($cmd[1], "M-$cmd[2]", $cmd[3], $cmd[6], $cmd[4], 'resignation', 'registrar', null, $cmd[5]);
+                    $command = new EndMembership($cmd[1], "M-$cmd[2]", $cmd[3], $cmd[6], $cmd[4], 1_000_000, 'resignation', 'registrar', null, $cmd[5]);
                     $expected = $model->end($cmd[1], $cmd[2], $cmd[3], $cmd[6], $cmd[4], $cmd[5], $command->fingerprint());
                     $actual = self::normalise($end->handle($command));
                 }

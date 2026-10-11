@@ -48,7 +48,7 @@ final class PostgresMemberRepositoryInvariantsTest extends TestCase
     private function admitted(PostgresMemberRepository $repo, TenantId $t, string $member, ?TimePoint $termUntil, int $at = 20_000): void
     {
         $m = $repo->create($t, MemberId::fromString($member), PersonRef::fromString("person-$member"))->member();
-        $d = $m->decideAdmit(FactId::fromString("A-$member"), TimePoint::of($at), $termUntil, Provenance::decision('registrar'));
+        $d = $m->decideAdmit(FactId::fromString("A-$member"), TimePoint::of($at), TimePoint::of($at), $termUntil, Provenance::decision('registrar', null, 'decl-fixture'));
         $this->assertSame(AppendOutcome::Appended, $repo->append($t, $m->id(), $d, IdempotencyKey::fromString("k-$member"), 'fp')->outcome());
     }
 
@@ -110,7 +110,7 @@ final class PostgresMemberRepositoryInvariantsTest extends TestCase
         $evidence = AuthorityEvidence::of('user-7', 'application_role:admin', 'interim:org-role', 'v1', true, Instant::of(1_760_000_000_123_456), false);
         $provenance = Provenance::decision('user-7', $evidence, 'decl-9');
         $this->now = 1_760_000_001_000_001;
-        $d = $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(19_782), TimePoint::of(20_147), $provenance, Instant::of(1_759_999_999_999_999));
+        $d = $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(19_782), TimePoint::of(19_782), TimePoint::of(20_147), $provenance, Instant::of(1_759_999_999_999_999));
         $repo->append($t, $m->id(), $d, IdempotencyKey::fromString('k'), 'fp');
 
         $fact = $repo->load($t, $m->id())->log()[0];
@@ -130,7 +130,7 @@ final class PostgresMemberRepositoryInvariantsTest extends TestCase
         $this->admitted($repo, $t, 'M1', TimePoint::infinity());
         $m = $repo->load($t, MemberId::fromString('M1'));
         $this->now = 1_000_000_000_000_000;
-        $end = $m->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A-M1'), TimePoint::of(20_100), EndKind::fromString('resignation'), Provenance::decision('registrar'));
+        $end = $m->decideEnd(FactId::fromString('E1'), PeriodId::fromString('A-M1'), TimePoint::of(20_100), TimePoint::of(20_100), EndKind::fromString('resignation'), Provenance::decision('registrar'));
 
         $appended = $repo->append($t, $m->id(), $end, IdempotencyKey::fromString('k2'), 'fp2')->appended();
 
@@ -147,7 +147,7 @@ final class PostgresMemberRepositoryInvariantsTest extends TestCase
             'organisation_id' => $t->value(), 'membership_id' => 'M1', 'seq' => 1, 'fact_id' => 'raw', 'kind' => 'admit',
             'effective_at' => '2026-01-01', 'initial_term' => 'none', 'recorded_at' => '2026-01-01 00:00:00+00', 'provenance' => '{"kind":"rule","actorOrSource":"x","declarationRef":null,"ruleRef":"x","ruleVersion":"1","importer":null,"note":null,"authorityEvidence":null}',
         ]);
-        $d = $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), null, Provenance::decision('registrar'));
+        $d = $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::of(1), null, Provenance::decision('registrar', null, 'decl-fixture'));
 
         try {
             $repo->append($t, $m->id(), $d, IdempotencyKey::fromString('k1'), 'fp1');

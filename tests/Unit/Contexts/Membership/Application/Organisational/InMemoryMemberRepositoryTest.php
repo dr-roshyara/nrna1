@@ -40,7 +40,7 @@ final class InMemoryMemberRepositoryTest extends TestCase
         $repo = new InMemoryMemberRepository(static fn (): int => 100);
         $tenant = TenantId::fromString('O1');
         $member = $repo->create($tenant, MemberId::fromString('M1'), PersonRef::fromString('P1'))->member();
-        $legacy = $member->decideAdmit(FactId::fromString('A1'), TimePoint::of(2_932_897), TimePoint::infinity(), Provenance::decision('registrar'));
+        $legacy = $member->decideAdmit(FactId::fromString('A1'), TimePoint::of(2_932_897), TimePoint::of(2_932_897), TimePoint::infinity(), Provenance::decision('registrar', null, 'decl-fixture'));
         $original = $repo->seedPreOptionEAppend($tenant, $member->id(), $legacy, IdempotencyKey::fromString('k1'), 'fp1');
 
         $retry = $repo->append($tenant, $member->id(), $legacy, IdempotencyKey::fromString('k1'), 'fp1');

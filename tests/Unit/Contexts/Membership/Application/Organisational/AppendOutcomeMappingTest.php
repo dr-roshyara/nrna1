@@ -80,7 +80,7 @@ final class AppendOutcomeMappingTest extends TestCase
             'registrar',
             MembershipAct::Admit,
             static fn (): Member => $member,
-            static fn (Member $m, AuthorityEvidence $evidence): Decision => $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::decision('registrar', $evidence)),
+            static fn (Member $m, AuthorityEvidence $evidence): Decision => $m->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::of(1), TimePoint::infinity(), Provenance::decision('registrar', $evidence, 'decl-fixture')),
         );
     }
 

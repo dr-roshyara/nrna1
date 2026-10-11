@@ -165,8 +165,9 @@ final class AdmissionTest extends TestCase
         $fact = $h->member->decideAdmit(
             FactId::fromString('A1'),
             TimePoint::of(10),
+            MemberHistory::decisionDate(),
             null,
-            MemberHistory::provenance(),
+            MemberHistory::admissionProvenance(),
             Instant::of(500),
         )->fact();
         $this->assertInstanceOf(Admit::class, $fact);
@@ -174,7 +175,7 @@ final class AdmissionTest extends TestCase
         $this->assertTrue(Instant::of(500)->equals($fact->decidedAt()));
 
         // backdated: recorded long after it took effect
-        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(10), null, MemberHistory::provenance()), 9000);
+        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(10), MemberHistory::decisionDate(), null, MemberHistory::admissionProvenance()), 9000);
         $this->assertTrue(Instant::of(9000)->equals($h->member->log()[0]->recordedAt()));
         $this->assertSame(1, $h->member->log()[0]->seq());
     }
@@ -184,7 +185,7 @@ final class AdmissionTest extends TestCase
         $evidence = AuthorityEvidence::of('user-7', 'application_role:admin', 'interim:org-role', 'v1', true, Instant::of(42), false);
         $provenance = Provenance::decision('user-7', $evidence, 'declaration-123');
         $h = MemberHistory::start();
-        $fact = $h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), null, $provenance)->fact();
+        $fact = $h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), MemberHistory::decisionDate(), null, $provenance)->fact();
 
         $this->assertSame(ProvenanceKind::Decision, $fact->provenance()->kind());
         $this->assertSame($evidence, $fact->provenance()->authorityEvidence());

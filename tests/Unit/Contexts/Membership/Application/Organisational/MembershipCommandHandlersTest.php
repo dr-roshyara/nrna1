@@ -44,12 +44,12 @@ final class MembershipCommandHandlersTest extends TestCase
 
     private static function admit(string $key, string $factId, int $at, string $person = 'P1', string $tenant = 'O1'): AdmitMember
     {
-        return new AdmitMember($tenant, $person, 'M-' . $person, $factId, $at, null, true, 'registrar-1', null, null, $key);
+        return new AdmitMember($tenant, $person, 'M-' . $person, $factId, $at, $at, null, true, 'registrar-1', 'decl-fixture', null, $key);
     }
 
     private static function end(string $key, string $factId, string $period, int $at, string $member = 'M-P1', string $tenant = 'O1'): EndMembership
     {
-        return new EndMembership($tenant, $member, $factId, $period, $at, 'resignation', 'registrar-1', null, $key);
+        return new EndMembership($tenant, $member, $factId, $period, $at, $at, 'resignation', 'registrar-1', null, $key);
     }
 
     private function member(string $id = 'M-P1', string $tenant = 'O1')
@@ -72,7 +72,7 @@ final class MembershipCommandHandlersTest extends TestCase
         $this->admitHandler()->handle(self::admit('k1', 'A1', 1));
         $this->endHandler()->handle(self::end('k2', 'E1', 'A1', 5));
 
-        $outcome = $this->admitHandler()->handle(new AdmitMember('O1', 'P1', 'M-other', 'A2', 7, null, true, 'registrar-1', null, null, 'k3'));
+        $outcome = $this->admitHandler()->handle(new AdmitMember('O1', 'P1', 'M-other', 'A2', 7, 7, null, true, 'registrar-1', 'decl-fixture', null, 'k3'));
 
         $this->assertSame('M-P1', $outcome->appended()->memberId()->value(), 'the existing Member is used; the suggested new id is ignored');
         $this->assertSame(3, $outcome->appended()->seq());
@@ -174,6 +174,66 @@ final class MembershipCommandHandlersTest extends TestCase
         $this->assertTrue($this->admitHandler()->handle(self::admit('k2', 'A2', 7))->isAppended());
     }
 
+    public function test_an_admission_without_a_declaration_reference_is_refused_by_the_domain(): void
+    {
+        // D-1 = C1 through the ordinary command (declaration-only, PBDIGIT-271 step 2).
+        $command = new AdmitMember('O1', 'P1', 'M-P1', 'A1', 1, 1, null, true, 'registrar-1', null, null, 'k1');
+
+        $outcome = $this->admitHandler()->handle($command);
+
+        $this->assertFalse($outcome->isAppended());
+        $this->assertSame('admission_basis_missing', $outcome->domainRefusal()?->value);
+        $this->assertSame([], $this->member()->log(), 'nothing appended');
+    }
+
+    public function test_an_unrecognised_end_kind_is_refused_at_the_command_boundary(): void
+    {
+        // D-3 = E1 (PBDIGIT-271 step 4): unknown external values become a defined refusal, never an exception.
+        $this->admitHandler()->handle(self::admit('k1', 'A1', 1));
+
+        $outcome = $this->endHandler()->handle(new EndMembership('O1', 'M-P1', 'E1', 'A1', 5, 5, 'non_payment', 'registrar-1', null, 'k2'));
+
+        $this->assertSame('end_kind_not_recognised', $outcome->domainRefusal()?->value);
+        $this->assertSame(1, $this->member()->version(), 'nothing appended');
+    }
+
+    public function test_a_legacy_end_is_refused_through_the_ordinary_command(): void
+    {
+        // `legacy` is reserved for attested migration history; the command only builds decision provenance.
+        $this->admitHandler()->handle(self::admit('k1', 'A1', 1));
+
+        $outcome = $this->endHandler()->handle(new EndMembership('O1', 'M-P1', 'E1', 'A1', 5, 5, 'legacy', 'registrar-1', null, 'k2'));
+
+        $this->assertSame('legacy_end_requires_attested_history', $outcome->domainRefusal()?->value);
+        $this->assertSame(1, $this->member()->version());
+    }
+
+    public function test_future_dated_commands_are_refused_and_backdated_ones_accepted(): void
+    {
+        // D-5(b) through the commands (PBDIGIT-271 step 5): the caller supplies the decision date (D-5(a) Z1).
+        $future = $this->admitHandler()->handle(new AdmitMember('O1', 'P1', 'M-P1', 'A1', 11, 10, null, true, 'registrar-1', 'decl-fixture', null, 'k1'));
+        $this->assertSame('effective_date_after_decision_date', $future->domainRefusal()?->value);
+
+        $this->assertTrue($this->admitHandler()->handle(new AdmitMember('O1', 'P1', 'M-P1', 'A1', 3, 10, null, true, 'registrar-1', 'decl-fixture', null, 'k1'))->isAppended(), 'backdated admission');
+        $this->assertSame('effective_date_after_decision_date', $this->endHandler()->handle(new EndMembership('O1', 'M-P1', 'E1', 'A1', 9, 8, 'resignation', 'registrar-1', null, 'k2'))->domainRefusal()?->value);
+        $this->assertTrue($this->endHandler()->handle(new EndMembership('O1', 'M-P1', 'E1', 'A1', 6, 8, 'resignation', 'registrar-1', null, 'k3'))->isAppended(), 'backdated end');
+    }
+
+    public function test_the_new_refusals_are_not_remembered_and_a_corrected_retry_appends(): void
+    {
+        // IDEM-4 (unchanged; PBDIGIT-271 step 9, characterisation): only appended outcomes are remembered.
+        $noBasis = $this->admitHandler()->handle(new AdmitMember('O1', 'P1', 'M-P1', 'A1', 1, 1, null, true, 'registrar-1', null, null, 'k1'));
+        $this->assertSame('admission_basis_missing', $noBasis->domainRefusal()?->value);
+        $this->assertTrue($this->admitHandler()->handle(self::admit('k1', 'A1', 1))->isAppended(), 'basis supplied, same key');
+
+        $future = $this->endHandler()->handle(new EndMembership('O1', 'M-P1', 'E1', 'A1', 9, 8, 'resignation', 'registrar-1', null, 'k2'));
+        $this->assertSame('effective_date_after_decision_date', $future->domainRefusal()?->value);
+        $unknown = $this->endHandler()->handle(new EndMembership('O1', 'M-P1', 'E1', 'A1', 5, 5, 'non_payment', 'registrar-1', null, 'k2'));
+        $this->assertSame('end_kind_not_recognised', $unknown->domainRefusal()?->value);
+        $this->assertTrue($this->endHandler()->handle(self::end('k2', 'E1', 'A1', 5))->isAppended(), 'corrected end, same key');
+        $this->assertSame(2, $this->member()->version());
+    }
+
     public function test_an_unstorable_valid_time_is_an_application_refusal_without_retry(): void
     {
         // E7 (R-1a-6): a technical refusal, not a domain refusal and not a concurrency conflict.
@@ -197,5 +257,19 @@ final class MembershipCommandHandlersTest extends TestCase
         $this->assertSame(ApplicationRefusal::IdempotencyKeyConflict, $outcome->applicationRefusal());
         $this->assertSame($appendCalls, $this->repo->appendCalls);
         $this->assertSame(1, $this->member()->version());
+    }
+
+    public function test_a_command_cannot_express_an_infinite_effective_or_decision_date(): void
+    {
+        // Hardening H1 (characterisation): the commands carry plain ints, mapped by TimePoint::of, so the domain's
+        // finite-date precondition is unreachable through them. Pins against an initialTermUntil-style ∞ mapping.
+        foreach ([AdmitMember::class, EndMembership::class] as $command) {
+            foreach (['effectiveAt', 'decisionDate'] as $property) {
+                $type = (new \ReflectionProperty($command, $property))->getType();
+                $this->assertInstanceOf(\ReflectionNamedType::class, $type, "$command::\$$property");
+                $this->assertSame('int', $type->getName(), "$command::\$$property");
+                $this->assertFalse($type->allowsNull(), "$command::\$$property");
+            }
+        }
     }
 }

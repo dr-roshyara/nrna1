@@ -8,6 +8,7 @@ use App\Contexts\Membership\Application\Organisational\Ports\AuthorityCheckPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MemberRepositoryPort;
 use App\Contexts\Membership\Application\Organisational\Ports\MembershipAct;
 use App\Contexts\Membership\Domain\Organisational\AuthorityEvidence;
+use App\Contexts\Membership\Domain\Organisational\Decision;
 use App\Contexts\Membership\Domain\Organisational\EndKind;
 use App\Contexts\Membership\Domain\Organisational\FactId;
 use App\Contexts\Membership\Domain\Organisational\Instant;
@@ -15,6 +16,7 @@ use App\Contexts\Membership\Domain\Organisational\Member;
 use App\Contexts\Membership\Domain\Organisational\MemberId;
 use App\Contexts\Membership\Domain\Organisational\PeriodId;
 use App\Contexts\Membership\Domain\Organisational\Provenance;
+use App\Contexts\Membership\Domain\Organisational\RefusalReason;
 use App\Contexts\Membership\Domain\Organisational\TimePoint;
 use App\Contexts\Shared\Domain\ValueObjects\TenantId;
 
@@ -40,14 +42,24 @@ final class EndMembershipHandler
             $command->actor,
             MembershipAct::End,
             fn (): Member|ApplicationRefusal => $this->repository->load($tenant, $memberId) ?? ApplicationRefusal::MemberNotFound,
-            static fn (Member $member, AuthorityEvidence $evidence) => $member->decideEnd(
-                FactId::fromString($command->factId),
-                PeriodId::fromString($command->periodId),
-                TimePoint::of($command->effectiveAt),
-                EndKind::fromString($command->endKind),
-                Provenance::decision($command->actor, $evidence),
-                $command->decidedAt === null ? null : Instant::of($command->decidedAt),
-            ),
+            static function (Member $member, AuthorityEvidence $evidence) use ($command): Decision {
+                // D-3 = E1: an unrecognised external value becomes a defined refusal (inside the standard
+                // decide loop, so IDEM-1's re-check and IDEM-4 apply), never an open string in the domain.
+                $kind = EndKind::tryFromString($command->endKind);
+                if ($kind === null) {
+                    return Decision::refused(RefusalReason::EndKindNotRecognised);
+                }
+
+                return $member->decideEnd(
+                    FactId::fromString($command->factId),
+                    PeriodId::fromString($command->periodId),
+                    TimePoint::of($command->effectiveAt),
+                    TimePoint::of($command->decisionDate),
+                    $kind,
+                    Provenance::decision($command->actor, $evidence),
+                    $command->decidedAt === null ? null : Instant::of($command->decidedAt),
+                );
+            },
         );
     }
 }

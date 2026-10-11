@@ -47,4 +47,16 @@ enum RefusalReason: string
 
     /** Guard (correction contract §3.1, R-2): Annul applies only to facts with decision provenance. */
     case TargetHasNoDecisionProvenance = 'target_has_no_decision_provenance';
+
+    /** Guard (D-1 = C1): an Admit decided by an actor carries a declaration reference (one recognised basis). */
+    case AdmissionBasisMissing = 'admission_basis_missing';
+
+    /** Command boundary (D-3 = E1): the requested ending act is not one of the closed set. */
+    case EndKindNotRecognised = 'end_kind_not_recognised';
+
+    /** Guard (D-3 = E1): a `legacy` End is reserved for attested migration history. */
+    case LegacyEndRequiresAttestedHistory = 'legacy_end_requires_attested_history';
+
+    /** Guard (D-5(b)): an Admit or End may not take effect after its caller-supplied decision date. */
+    case EffectiveDateAfterDecisionDate = 'effective_date_after_decision_date';
 }

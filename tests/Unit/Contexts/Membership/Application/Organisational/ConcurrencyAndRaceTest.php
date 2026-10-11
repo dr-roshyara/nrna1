@@ -45,12 +45,12 @@ final class ConcurrencyAndRaceTest extends TestCase
 
     private static function admit(string $key, string $factId, int $at, string $memberIdIfNew = 'M-P1'): AdmitMember
     {
-        return new AdmitMember('O1', 'P1', $memberIdIfNew, $factId, $at, null, true, 'registrar-1', null, null, $key);
+        return new AdmitMember('O1', 'P1', $memberIdIfNew, $factId, $at, $at, null, true, 'registrar-1', 'decl-fixture', null, $key);
     }
 
     private static function end(string $key, string $factId, int $at): EndMembership
     {
-        return new EndMembership('O1', 'M-P1', $factId, 'A1', $at, 'resignation', 'registrar-1', null, $key);
+        return new EndMembership('O1', 'M-P1', $factId, 'A1', $at, $at, 'resignation', 'registrar-1', null, $key);
     }
 
     private function member(): Member

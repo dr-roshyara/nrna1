@@ -49,6 +49,7 @@ final class AdmitMemberHandler
             static fn (Member $member, AuthorityEvidence $evidence) => $member->decideAdmit(
                 FactId::fromString($command->factId),
                 TimePoint::of($command->effectiveAt),
+                TimePoint::of($command->decisionDate),
                 $until,
                 Provenance::decision($command->actor, $evidence, $command->declarationRef),
                 $command->decidedAt === null ? null : Instant::of($command->decidedAt),

@@ -60,7 +60,7 @@ final class AnnulVoidTest extends TestCase
     {
         foreach (['attested' => Provenance::attested('legacy-import', 'importer-1'), 'rule' => Provenance::rule('statute-7', 'v1')] as $kind => $provenance) {
             $h = MemberHistory::start();
-            $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), $provenance));
+            $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), MemberHistory::decisionDate(), TimePoint::infinity(), $provenance));
             $versionBefore = $h->member->version();
 
             $decision = $h->annul('X1', 'A1');
@@ -74,7 +74,7 @@ final class AnnulVoidTest extends TestCase
     public function test_voiding_a_fact_without_decision_provenance_is_accepted(): void
     {
         $h = MemberHistory::start();
-        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
+        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), MemberHistory::decisionDate(), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
 
         $this->assertTrue($h->void('V1', 'A1')->isAccepted());
     }
@@ -278,7 +278,7 @@ final class AnnulVoidTest extends TestCase
         $this->assertSame(RefusalReason::DecidedAtRequired, $voidTarget->annul('X1', 'V1', null)->refusal(), 'target is a Void');
 
         $attested = MemberHistory::start();
-        $attested->commit($attested->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
+        $attested->commit($attested->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), MemberHistory::decisionDate(), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
         $this->assertSame(RefusalReason::DecidedAtRequired, $attested->annul('X1', 'A1', null)->refusal(), 'target has attested provenance');
 
         $this->assertSame(RefusalReason::DecidedAtRequired, $voidTarget->annul('X2', 'A1', null)->refusal(), 'target is not live');
@@ -297,7 +297,7 @@ final class AnnulVoidTest extends TestCase
     public function test_provenance_is_checked_before_liveness(): void
     {
         $h = MemberHistory::start();
-        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
+        $h->commit($h->member->decideAdmit(FactId::fromString('A1'), TimePoint::of(1), MemberHistory::decisionDate(), TimePoint::infinity(), Provenance::attested('legacy-import', 'importer-1')));
         $h->commit($h->void('V1', 'A1'));
 
         $this->assertSame(RefusalReason::TargetHasNoDecisionProvenance, $h->annul('X1', 'A1')->refusal());
