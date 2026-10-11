@@ -1,6 +1,6 @@
-# R7 · Human ARB decision package (draft r4.3)
+# R7 · Human ARB decision package (draft r4.4)
 
-**Status:** decision-support artifact for the Human ARB review of R7 (F-LOG-0250), 2026-10-11. Draft r4 (aligned with the verified final state and the package review; change rows at the end), **not independently reviewed**. **It decides nothing.** It recommends a disposition of R7 and the *timing* of decisions; it chooses no value for any variation point (VP), selects no partition and closes nothing. Every authorization below is **draft wording for the human to approve or reject**. **[r4.2] Amendment under human ruling, post-closure (F-LOG-0254; R7 closed by F-LOG-0253):** §B item 4 note and §C priority 1 marked decided; nothing else changed.
+**Status:** decision-support artifact for the Human ARB review of R7 (F-LOG-0250), 2026-10-11. Draft r4 (aligned with the verified final state and the package review; change rows at the end), **not independently reviewed**. [r4.4 sync] "not independently reviewed" superseded: reviewed in R7/REVIEW-ARB-PACKAGE.md (package r1–r4, four rounds, all PASS_WITH_LIMITATIONS); later revisions not reviewed as a package **It decides nothing.** It recommends a disposition of R7 and the *timing* of decisions; it chooses no value for any variation point (VP), selects no partition and closes nothing. Every authorization below is **draft wording for the human to approve or reject**. **[r4.2] Amendment under human ruling, post-closure (F-LOG-0254; R7 closed by F-LOG-0253):** §B item 4 note and §C priority 1 marked decided; nothing else changed.
 
 **Inputs:** `R7/T1-CONCEPT-CANDIDATES.md` r1.5 · `R7/T2-RULE-CANDIDATES.md` r1.3 · `R7/T3-CANDIDATE-MODEL.md` r1.4 (commit 1a63f3a14) · `R7/REVIEW-T1.md`, `REVIEW-T2.md`, `REVIEW-T3.md`, `REVIEW-CROSS-ARTIFACT.md` · `R7/VP-DECISION-REGISTER.md` r1.4 · `R7-AUTHORIZATION-BRIEF.md` r3 · `F-GOVERNANCE-LOG.md` (in `docs/knowledgeos/chronological_knowelgeos_ablation_theory/`), F-LOG-0245 to 0251.
 
@@ -57,12 +57,12 @@ Full analysis: `R7/VP-DECISION-REGISTER.md` r1.4, §5a (per-VP timing) and §5b 
 | priority | item | recommended timing | needed for |
 |---|---|---|---|
 | 1 | VP1d-H (admit the T-B form of R-h, inference not applied to the observed capture?) **[r4.2] DECIDED (i), F-LOG-0254** | DECIDE NOW, as its own item; **[r4.2] decided (F-LOG-0254)** | not strictly O1; removes an unratified analyst decision |
-| 2 | VP15 (accept R4's modelling choices) | DECIDE NOW if going beyond O1 | O2, O3 |
-| 3 | VP5 (one-corpus basis vs defer to V6) | DECIDE NOW | O2, O3; **O2 presupposes option (i)** ((ii) and (iii) block O2; disclosed, not recommended) |
-| 4 | VP10 (CB4) | DEFER the value; record "left open" before VP14 | **O2: the explicit "left open" record** (edge VP10 → VP14); O3: decision |
-| 5 | VP14 (partition, or no boundary layer) | DECIDE NOW | O2, O3 |
+| 2 | VP15 (accept R4's modelling choices) **[r4.4 sync] DECIDED (i), F-LOG-0255** | DECIDE NOW if going beyond O1 **[r4.4 sync] decided (F-LOG-0255)** | O2, O3 |
+| 3 | VP5 (one-corpus basis vs defer to V6) **[r4.4 sync] DECIDED (i), F-LOG-0257** | DECIDE NOW **[r4.4 sync] decided (F-LOG-0257)** | O2, O3; **O2 presupposes option (i)** ((ii) and (iii) block O2; disclosed, not recommended) |
+| 4 | VP10 (CB4) **[r4.4 sync] RECORDED (iii), F-LOG-0258; re-affirmed F-LOG-0263; counts for O3 by ruling, not on evidence (F-LOG-0264)** | DEFER the value; record "left open" before VP14 **[r4.4 sync] recorded (F-LOG-0258); re-affirmed (F-LOG-0263)** | **O2: the explicit "left open" record** (edge VP10 → VP14); O3: decision **[r4.4 sync] For O3, the re-affirmed VP10 = (iii) (F-LOG-0263) counts as VP10's decision, by human ruling outside the VP10 options (not on evidence; F-LOG-0264); "O3: decision" stays as recorded.** |
+| 5 | VP14 (partition, or no boundary layer) **[r4.4 sync] DECIDED P-c, F-LOG-0265** | DECIDE NOW **[r4.4 sync] decided (F-LOG-0265)** | O2, O3 |
 | 6 | VP3 (act identifiability) | AUTHORIZE TARGETED RESEARCH (non-Claude coding check), optional, parallel | none |
-| 7 | VP4, VP12, VP11 | DEFER to the O3 gate | O3 |
+| 7 | VP4, VP12, VP11 **[r4.4 sync] VP12 DECIDED (i), F-LOG-0268; VP11 DECIDED (ii), F-LOG-0269; VP4 open** | DEFER to the O3 gate **[r4.4 sync] VP12, VP11 decided (F-LOG-0268, F-LOG-0269)** | O3 |
 | 8 | VP9, VP8, VP7 | DEFER (VP9 → V2 slice if any gate relies on multi-target norms) | none |
 | 9 | VP13, VP1a, VP1b, VP1c, VP2, VP1d | DEFER (path A; VP1b / VP1c symmetric) | none |
 | 10 | VP6, VP16 | DEFER until a source exists | none |
@@ -92,7 +92,7 @@ Full analysis: `R7/VP-DECISION-REGISTER.md` r1.4, §5a (per-VP timing) and §5b 
 | reversibility | medium (re-layout re-derives §1a, VP11, VP12) | medium | medium | medium | high (a layer can be added later; VP11 / VP12 then follow) |
 | coupling ([I]) | H-B clauses and R18 cross; R2, R3 shared with records | both families' change clauses cross; F1 (R1) crosses acts↔σ [I] | fewest clause crossings among the cuts; largest single side | record-concept attributes cross the line | none at boundary level; no decomposition either |
 | compatibility with future evidence ([I]) | V6 / V2 affect all options alike | as P-a | as P-a | an E-A5 channel (σ / f) or a VP3 change (acts identifiable) **moves its line** | unaffected |
-| H-D / H-B congeniality (disclosed, not optimized) | H-D-congenial | partially H-B-congenial | neutral under 𝐑₀ | neutral under 𝐑₀ | neutral |
+| H-D / H-B congeniality (disclosed, not optimized) | H-D-congenial | partially H-B-congenial | neutral under 𝐑₀ [r4.4 sync] P-c under VP12 (i): neutral under 𝐑₀ only under S′ / S″; H-D-asymmetric under S; no reading selected, asymmetry NOT accepted (F-LOG-0270, F-LOG-0271) | neutral under 𝐑₀ | neutral |
 | decomposition value ([E]) for O3 (register §3: O3 needs boundaries to map onto) | three sides, separating norm-making, work and records; element tables exist | three sides, separating acts from σ + work | two sides; the norm-and-work side is undivided, so less to map onto | two sides aligned with what records can and cannot show (R23); concepts split across them | **none:** O3 would have no boundary to map onto, so VP14 would have to be reopened before O3 |
 
 ## D. Recommended next gate
@@ -161,9 +161,9 @@ Exclusions for every item: no other VP; no architecture. Acceptance criteria: th
 | field | content |
 |---|---|
 | scope | derive an architecture proposal from the adopted bounded model only. **Relation to register O3:** O3 is the *preparation* of the authorization proposal for this gate; E3 is the gate itself (the derivation). Both use the same minimal VP set |
-| prerequisites | E1; E2b (O2 adoption); E2 for VP10, VP12, VP11 (beyond E2b's set); a prepared authorization proposal (O3) |
+| prerequisites | E1; E2b (O2 adoption); E2 for VP10, VP12, VP11 (beyond E2b's set); a prepared authorization proposal (O3) **[r4.4 sync] For VP10: met by the re-affirmed (iii) (F-LOG-0263), ruled to count as VP10's decision for O3 (not on evidence; F-LOG-0264). Other prerequisites unchanged; this annotation authorizes nothing.** |
 | exclusions | human-decided VP1a–d values as active optional policies, labelled "human-decided policy, not derived from research phases R1–R6" with their H-D / H-B label; undecided VP1a–d, and undecided VP2, VP13, as inactive slots (VP2, VP13 decided under E2: carried with their decision label); never invariants (N1, N2, N5); VP3, VP6, VP16, VP9 as evidence gaps unless they entered E2b under its condition (a) or (b), and then carried with that label; VP4, VP7, VP8 stated as unsupported unless decided under E2 (then carried with their decision label); no canonical terms (R8); no implementation; no generality claim |
-| acceptance criteria | every architecture element traces to T3 elements and their §2 rows; standing qualifier carried; independent review |
+| acceptance criteria | every architecture element traces to T3 elements and their §2 rows; standing qualifier carried; independent review [r4.4 sync] Recorded from F-LOG-0271 (human, verbatim): "Any O3/E3 proposal must present the relevant results under all three interpretations: S, S′ and S″. It must not silently privilege one interpretation or present the asymmetry as an accepted property of the cut." |
 | unresolved risks | one-corpus primitives (VP5); low reversibility of VP15; R23 (nothing enforceable from records) |
 | permits | an architecture **proposal** for human review; nothing built; the proposal is not accepted by this gate (see E3b) |
 
@@ -256,3 +256,4 @@ Exclusions for every item: no other VP; no architecture. Acceptance criteria: th
 | r4.2 | **amendment under human ruling, post-closure** (F-LOG-0254; R7 closed by F-LOG-0253): §B item 4 superseded for the policy layer (the invariant exclusion stands); §C priority 1 marked decided. No other VP decided; nothing adopted | F-LOG-0254 |
 | r4.2 sync | amendment review (PASS_WITH_LIMITATIONS), F-LOG-0254 synchronisation, post-closure: §B item 4 "resolved" qualified with the residual disclosed condition. No decision content changed | F-LOG-0254 |
 | r4.3 | sync | E2b cites T3 r1.5 (amended under F-LOG-0254). No decision content changed |
+| r4.4 | sync under human act | F-LOG-0277: §C row 4 and §E3 annotated for F-LOG-0264 (VP10 = (iii) counts for O3, by ruling, not on evidence); housekeeping: AH1 (§C1 P-c condition), AH2 (§E3 records F-LOG-0271's binding condition), AH3 (§C decided-status marks), AH4 (status line review state). Original text kept. No spanning rule selected; asymmetry not accepted. No decision content changed; nothing authorized |

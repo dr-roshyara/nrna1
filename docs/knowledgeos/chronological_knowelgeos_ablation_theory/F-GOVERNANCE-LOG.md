@@ -3621,3 +3621,26 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Not included:** the optional H13, which would sync the register's VP11 note "effect pending E2b amendment" to F-LOG-0275 (C-α (b); C-γ returned). The human did not select it. That note stays stale. **It is recorded as an open item** and needs its own act.
 - **Next:** a worker applies the act to the register (r1.18 → r1.19) and the ARB package (r4.3 → r4.4). A fresh independent review follows.
 - **Not authorized:** no VP is decided and no spanning rule is selected. E2b and T3 are not amended. O3 preparation, E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0278 — **Executor (2026-10-11): act B APPLIED. Register r1.19 and ARB r4.4; fresh review PASS.** The amendment batch C → A → B is complete
+- **Applied:** `R7/VP-DECISION-REGISTER.md` r1.18 → r1.19 and `R7/ARB-DECISION-PACKAGE.md` r4.3 → r4.4.
+  - Register: the core F-LOG-0264 sync, plus H1–H12 with H11 = mark.
+  - ARB: option A, plus AH1–AH4. **AH3 was applied to §C rows 2, 3, 4 (merged with A), 5 and 7.** Rows 2 and 3 were optional sub-items, and the applier included them because AH3 was authorized in full.
+  - Branches were resolved from the log: T3-SYNC option (A) in F-LOG-0273, E2b amended in F-LOG-0275.
+  - H13 was not applied.
+- **Fresh independent review: PASS.**
+  - Every inserted segment is the proposal text, byte for byte.
+  - The edits are append-only; only the title tokens were replaced.
+  - No historical change row was edited.
+  - VP10 is never marked "DECIDED".
+  - The cited ids are accurate and the invariants hold.
+  - Notes: the r1.19 housekeeping summary is the applier's own wording, and it is accurate. The missing punctuation at register L3, L73, L174 and ARB L3 is inherited from the proposal and is cosmetic, deferred.
+- **Batch outcome:** acts C (F-LOG-0273/0274), A (F-LOG-0275/0276) and B (F-LOG-0277/0278) are all made and applied. F-LOG-0271's open items (b), (c) and (d) are **closed**.
+- **Open:**
+  - (d′) the T3 CB1/CB23 cells (M5);
+  - the C-γ guard-row question (returned);
+  - R11 (open; act C option (A));
+  - H13, the stale VP11 note in the register;
+  - the cosmetic punctuation;
+  - **(e) the O3-preparation act**, the next gate. It needs its own human act. E3, E3b, E4 and E5 are not authorized.
