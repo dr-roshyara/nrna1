@@ -3608,3 +3608,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - (e) the O3-preparation act.
 
   E3 is not authorized.
+
+
+## F-LOG-0277 — **Human act (Human ARB, 2026-10-11): act B AUTHORIZED. Register/ARB sync, option A; housekeeping H1–H12 and AH1–AH4; H11 = mark**
+**The act** (`R7/REGISTER-ARB-SYNC-PROPOSAL.md` r2.2 §4, verbatim, with the human's selections filled in):
+> "I, Human ARB, acting after the T3-SYNC act and the E2b amendment act in the fixed order C → A → B (each where made, as recorded in the log), authorize the consequential amendment required by F-LOG-0264, as set out in `R7/REGISTER-ARB-SYNC-PROPOSAL.md` r2.2: the register §3 O3 row, §5a VP10 row and VP10 status annotations are annotated to record that, by F-LOG-0264 (a human ruling, not evidence), the re-affirmed VP10 = (iii) (F-LOG-0263) counts as VP10's decision for the O3 minimal set, with the original text kept visible; register → r1.19. For the ARB package I choose option **A: annotate §C row 4 and §E3**. Housekeeping items **H1–H12, AH1–AH4** are authorized as text synchronizations only (AH3's §C row-4 part only under A), with H1, H3, H5 and H8 applied in the branch the log supports and every placeholder filled from the log; for H11 I choose **mark**. This act decides no variation point, changes no decision content, accepts no asymmetry and selects no spanning rule. It does not amend E2b, does not amend T3 (the R21 / F8 syncs need their own act), and does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5."
+
+- **Branches resolved from the log:**
+  - The T3-SYNC act was made, option (A): F-LOG-0273, applied in F-LOG-0274. In H5, use the option-(A) branch; H8 gives T3 r1.8.
+  - The E2b amendment act was made (F-LOG-0275, applied in F-LOG-0276). H1 and H3 use the "amended by F-LOG-0275" branch.
+  - F-LOG-NNNN resolves to **F-LOG-0277**.
+- **Not included:** the optional H13, which would sync the register's VP11 note "effect pending E2b amendment" to F-LOG-0275 (C-α (b); C-γ returned). The human did not select it. That note stays stale. **It is recorded as an open item** and needs its own act.
+- **Next:** a worker applies the act to the register (r1.18 → r1.19) and the ARB package (r4.3 → r4.4). A fresh independent review follows.
+- **Not authorized:** no VP is decided and no spanning rule is selected. E2b and T3 are not amended. O3 preparation, E3, E3b, E4 and E5 are not authorized.
