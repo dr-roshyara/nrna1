@@ -3367,3 +3367,13 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Material disclosure for VP12:** the 𝐑₀ neutrality of P-c is **conditional on C1 being counted on CB23**. Under VP12 (i), if C1 spans the sides, R25 (H-D D-chg), R5, R6, R10, R19, R63 and R76 cross, while the H-B change and conformance clauses (R30–R34, R37) name no actor. The cut would then be **H-D-asymmetric**. The premise recorded in F-LOG-0265 is therefore conditional on VP12. Register r1.14 records this.
 - **Out of scope; needs a separate act:** R21 is missing from the T3 §1b grouping guard list. The gap dates from r1.5.
 - **Unchanged:** E2b is not amended and no VP is decided. **Next:** VP12, then VP11, each by its own act. E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0268 — **Human act (Human ARB, 2026-10-11): VP12 DECIDED (i), one shared participant**
+**The act** (`R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1 §3.6, as selected by the human):
+> "I, Human ARB, decide VP12 = (i): one shared participant concept (R4's single actor set 𝒜, Def 1.2), spanning the sides of the partition decided under VP14, or, if VP14 is 'no boundary layer', held as R4's single actor set with no sides to span. This decides only VP12. It does not decide VP4 or VP11 and does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5."
+
+- **Disclosure presented before the act** (T3 r1.6 K1/L2/L3; F-LOG-0267): under VP14 = P-c, if the spanning C1 counts on both sides [E], then R25 (H-D D-chg), R5, R6, R10, R19, R63 and R76 cross, while the H-B clauses R30–R34 and R37 do not. **The cut becomes H-D-asymmetric.** The package's earlier (i) recommendation predates this finding and was presented as no longer unconditional. Recorded: **the human chose (i) with this disclosure.**
+- **Effect:** the adopted participant element is unchanged, and no E2b amendment is needed for VP12 itself. The F-LOG-0265 P-c premise "neutral under 𝐑₀" now carries the disclosed condition.
+- **Pending** (scope per package §2.9: "re-checked after VP12"): the VP12 re-check of T3 r1.6, i.e. re-testing R25, the participant-dependent rows and the 𝐑₀ neutrality statement with C1 spanning. Whether this re-check needs its own act is to be confirmed by the human. **Register:** r1.15.
+- **Next:** VP11 (its own act). E3, E3b, E4 and E5 are not authorized.
