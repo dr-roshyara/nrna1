@@ -1,0 +1,4 @@
+17c17
+<         if (self::periodsOverlap($resolved)) {
+---
+>         if (false && self::periodsOverlap($resolved)) { // SENSITIVITY MUTANT (scratch copy only)

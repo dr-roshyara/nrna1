@@ -1,0 +1,25 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+F                                                                   1 / 1 (100%)
+
+Time: 00:00.081, Memory: 14.00 MB
+
+There was 1 failure:
+
+1) Tests\Unit\Contexts\Membership\Application\Organisational\ReferenceModelPropertyTest::test_handlers_and_repository_agree_with_the_reference_model
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'seed 1 step 0 ["admit","O2","P3","F13",10,"k0","unlimited",16]: expected {"kind":"appended","seq":1} got {"kind":"refused","reason":"admission_basis_missing"}',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/ReferenceModelPropertyTest.php:29
+
+FAILURES!
+Tests: 1, Assertions: 1, Failures: 1.

@@ -1,0 +1,29 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+................................E                                 33 / 33 (100%)
+
+Time: 00:01.397, Memory: 34.00 MB
+
+There was 1 error:
+
+1) Tests\Architecture\MembershipDecisionCreationTest::test_accepted_decisions_new_facts_and_restricted_provenance_are_created_only_on_their_paths
+RuntimeException: Cannot parse app/Http/Middleware/VoterSlugStep.php: Syntax error, unexpected '`' on line 279
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/Support/MembershipSourceScan.php:116
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:125
+
+Caused by
+PhpParser\Error: Syntax error, unexpected '`' on line 279
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/nikic/php-parser/lib/PhpParser/ParserAbstract.php:362
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/nikic/php-parser/lib/PhpParser/ParserAbstract.php:186
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/Support/MembershipSourceScan.php:114
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:125
+
+ERRORS!
+Tests: 33, Assertions: 33, Errors: 1, Deprecations: 3.

@@ -1,0 +1,3 @@
+PHP Parse error:  syntax error, unexpected token "`" in app/Http/Middleware/VoterSlugStep.php on line 279
+Errors parsing app/Http/Middleware/VoterSlugStep.php
+exit=255

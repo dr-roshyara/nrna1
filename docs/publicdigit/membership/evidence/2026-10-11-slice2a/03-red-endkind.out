@@ -1,0 +1,68 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+EEEEEEEEF.                                                        10 / 10 (100%)
+
+Time: 00:00.076, Memory: 14.00 MB
+
+End Kind (Tests\Unit\Contexts\Membership\Domain\Organisational\EndKind)
+ ✘ The recognised kinds construct with data set "resignation"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:32
+   │
+ ✘ The recognised kinds construct with data set "exclusion"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:32
+   │
+ ✘ The recognised kinds construct with data set "death"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:32
+   │
+ ✘ The recognised kinds construct with data set "legacy"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:32
+   │
+ ✘ An unrecognised kind cannot exist in the domain with data set "expiry"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:44
+   │
+ ✘ An unrecognised kind cannot exist in the domain with data set "non_payment"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:44
+   │
+ ✘ An unrecognised kind cannot exist in the domain with data set "arbitrary"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:44
+   │
+ ✘ An unrecognised kind cannot exist in the domain with data set "case"
+   │
+   │ Error: Call to undefined method App\Contexts\Membership\Domain\Organisational\EndKind::tryFromString()
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:44
+   │
+ ✘ A legacy end requires attested history
+   │
+   │ Failed asserting that null is identical to 'legacy_end_requires_attested_history'.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/EndKindTest.php:63
+   │
+ ✔ Structural end guards take precedence over the legacy guard
+
+ERRORS!
+Tests: 10, Assertions: 8, Errors: 8, Failures: 1.

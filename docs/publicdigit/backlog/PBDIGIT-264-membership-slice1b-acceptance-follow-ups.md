@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `OPEN` · not authorised |
+| **Status** | `IN PROGRESS` · F-1 (with Option E) and F-3 implemented and tested on the test double; PostgreSQL unverified (Part 2 held); F-2, F-4, F-5 held; not accepted *(synced 2026-10-11; see "Progress")* |
 | **Found in** | `docs/publicdigit/reviews/2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md` §2 (an independent review of `PBDIGIT-260`) |
 | **Depends on** | `PBDIGIT-260` acceptance decision |
 | **Business decisions needed** | none (F-3 needs a port-contract clarification by the Principal Reviewer) |
@@ -31,3 +31,17 @@ Still not authorised.
 - F-4b (normalise) and F-5 N1 chosen; F-3 clarification approved.
 - The F-4b migration preflight and rollback requirements are in §10.2.
 - **Implementation still requires the Product Owner's authorisation.**
+
+## Progress (synced 2026-10-11, from git history; earlier entries above unchanged)
+
+- **F-1 + Option E (R-1a-6, storable valid time)** were implemented 2026-10-10 on the Human PO / ARB Option E decisions; the gate register is in `docs/plans/20261010-1830-membership-pg-verification-and-far-date-plan.md`. Commits:
+  - far-date boundary: `ff18c2a4e` (RED), `44348f99b` (GREEN);
+  - storable valid time: `0e4e5ac7a` (RED), `af495c838` (GREEN);
+  - correction: `fb85c6e24`;
+  - documents: `3ee8c2fe4`, `240107642`.
+- **F-3 (key first; a MemberId collision is an infrastructure failure)** was implemented 2026-10-10 (F3-1 … F3-4):
+  - tests and fix: `d908f93c4` (RED), `d2a3f2b17` (GREEN), `688672412` (F3d);
+  - documents: `52b69c4e8`, `e03e5b692`, `effbdbeac`.
+- Tested on the in-memory test double. **PostgreSQL behaviour is unverified:** Part 2 is on hold.
+- **F-2, F-4 (F-4b), F-5 (N1): held** with PostgreSQL Part 2.
+- **Not accepted.** Developer guides 06 and 07.

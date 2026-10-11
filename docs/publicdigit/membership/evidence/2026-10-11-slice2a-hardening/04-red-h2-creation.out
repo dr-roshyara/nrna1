@@ -1,0 +1,268 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+...FFFF...FFFFFFFF.FFF.FFFFF.F.F.                                 33 / 33 (100%)
+
+Time: 00:00.061, Memory: 18.00 MB
+
+There were 22 failures:
+
+1) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P4 aliased import" ('use %NS%\Decision as D;\nD::a...f, 1);', 'Decision::accepted')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Decision::accepted',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+2) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P5 grouped aliased import" ('use %NS%\{Decision as D2, Adm...f, 1);', 'Decision::accepted')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Decision::accepted',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+3) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P6 whitespace and line breaks" ('use %NS%\Decision;\nDecision\...f, 1);', 'Decision::accepted')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Decision::accepted',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+4) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P7 case-insensitive names" ('use %NS%\Decision;\ndecision:...f, 1);', 'Decision::accepted')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Decision::accepted',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+5) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P11 self:: in the class" ('namespace %NS%;\nfinal class ...); } }', 'Decision::accepted')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Decision::accepted',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+6) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P12 new, fully qualified" ('$a = new \%NS%\Admit($id);', 'new Admit')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new Admit',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+7) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P13 new, partially qualified" ('use App\Contexts\Membership\D...($id);', 'new Admit')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new Admit',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+8) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P14 new, namespace-relative" ('namespace %NS%;\n$e = new nam...($id);', 'new End')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new End',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+9) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P15 new, aliased import" ('use %NS%\End as Finish;\n$e =...($id);', 'new End')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new End',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+10) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P16 new, whitespace and break" ('use %NS%\Admit;\n$a = new\n  ...($id);', 'new Admit')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new Admit',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+11) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P17 new, case-insensitive" ('use %NS%\Admit;\n$a = new admit($id);', 'new Admit')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new Admit',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+12) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P18 new, without parentheses" ('use %NS%\End;\n$e = new End;', 'new End')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: new End',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+13) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P20 provenance, aliased" ('use %NS%\Provenance as P;\n$p...ter');', 'Provenance::attested')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Provenance::attested',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+14) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P21 provenance, whitespace" ('use %NS%\Provenance;\n$p = Pr...'v1');', 'Provenance::rule')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Provenance::rule',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+15) Tests\Architecture\MembershipDecisionCreationTest::test_every_written_form_of_a_forbidden_creation_is_detected with data set "P22 provenance, case" ('use %NS%\Provenance;\n$p = pr...ter');', 'Provenance::attested')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 [
+-    0 => 'app/Services/Planted.php: Provenance::attested',
+-]
++Array &0 []
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:96
+
+16) Tests\Architecture\MembershipDecisionCreationTest::test_comments_strings_and_unrelated_classes_are_not_reported with data set "N1 line comments" ('use %NS%\Decision;\n// Decisi... 'v');')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Services/Planted.php: new Admit',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:102
+
+17) Tests\Architecture\MembershipDecisionCreationTest::test_comments_strings_and_unrelated_classes_are_not_reported with data set "N2 block comment and docblock" ('use %NS%\Decision;\n/* Decisi...f() {}')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Services/Planted.php: Decision::accepted',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:102
+
+18) Tests\Architecture\MembershipDecisionCreationTest::test_comments_strings_and_unrelated_classes_are_not_reported with data set "N3 strings" ('use %NS%\Decision;\n$a = 'Dec...ule(';')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Services/Planted.php: new Admit',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:102
+
+19) Tests\Architecture\MembershipDecisionCreationTest::test_comments_strings_and_unrelated_classes_are_not_reported with data set "N4 heredoc and nowdoc" ('use %NS%\Decision;\n$a = <<<T...\nTXT;')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Services/Planted.php: new Admit',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:102
+
+20) Tests\Architecture\MembershipDecisionCreationTest::test_comments_strings_and_unrelated_classes_are_not_reported with data set "N5 unrelated same-named class" ('use App\Other\End;\nuse App\O...d($x);')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Services/Planted.php: new End',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:102
+
+21) Tests\Architecture\MembershipDecisionCreationTest::test_comments_strings_and_unrelated_classes_are_not_reported with data set "N7 global classes" ('$a = new Admit($x);\nDecision...f, 1);')
+Failed asserting that two arrays are identical.
+--- Expected
++++ Actual
+@@ @@
+-Array &0 []
++Array &0 [
++    0 => 'app/Services/Planted.php: new Admit',
++]
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Architecture/MembershipDecisionCreationTest.php:102
+
+22) Tests\Architecture\MembershipDecisionCreationTest::test_an_unparsable_source_fails_the_scan_instead_of_hiding_a_violation
+Failed asserting that exception of type "RuntimeException" is thrown.
+
+FAILURES!
+Tests: 33, Assertions: 34, Failures: 22.

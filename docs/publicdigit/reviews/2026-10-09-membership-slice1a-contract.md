@@ -73,6 +73,10 @@ The port has no update and no delete.
 | End for an unknown Member (in this tenant) | `Refused(MemberNotFound)` |
 | conflicts beyond 3 attempts | `Refused(ConcurrentModification)` |
 | a valid time outside the storable range (R-1a-6; amended 2026-10-10) | `Refused(ValidTimeNotStorable)`; nothing appended; not retried; not remembered |
+| *(amended 2026-10-11, Slice 2a)* an Admit decided without a declaration reference (D-1) | `Refused(AdmissionBasisMissing)` (domain); nothing appended; not remembered |
+| *(amended 2026-10-11)* an End with an unrecognised kind (D-3) | `Refused(EndKindNotRecognised)` (produced by the End handler's decide step); nothing appended; not remembered |
+| *(amended 2026-10-11)* a `legacy` End without attested provenance (D-3) | `Refused(LegacyEndRequiresAttestedHistory)` (domain); nothing appended; not remembered |
+| *(amended 2026-10-11)* an effective date after the decision date (D-5(b)) | `Refused(EffectiveDateAfterDecisionDate)` (domain); nothing appended; not remembered |
 
 ## 6. Authority
 
@@ -98,3 +102,10 @@ The port has no update and no delete.
 - **Parity scope:** the date contract only. The test double still checks `MemberNotFound` before the key; that ordering remains `PBDIGIT-264` F-3 (accepted as a limitation for this increment). No test pins the missing-member-plus-unsupported-date case until F-3. **Superseded by F-3 (2026-10-10):** the double now checks the key first; F3c pins that case, and the date-contract parity is full.
 - **Tests:** E1–E5 in `MemberRepositoryContract`; E7, E8 in `MembershipCommandHandlersTest`; E9 `AppendOutcomeMappingTest`; E10 `tests/Architecture/MembershipStorableValidTimeCoverageTest`; E4-L (legacy replay) in `InMemoryMemberRepositoryTest`.
 - **Correction (2026-10-10, Human PO / ARB R1, R2, R4):** R-1a-6 wording made adapter-specific for `MemberNotFound`; E4 renamed to what it proves (a known key with a matching fingerprint is answered without examining the new decision; the fingerprint is opaque at the port); E4-L added (a pre-Option-E record with an unstorable valid time is replayed with its original outcome). *(The adapter-specific `MemberNotFound` wording is superseded by F-3, 2026-10-10: R-1a-6 precedence over `MemberNotFound` is universal again.)*
+
+## Amendment (2026-10-11): Slice 2a command rules (PBDIGIT-271)
+
+- **Authority:** Human PO / ARB D-1 … D-5 (decision record) and S2-A … S2-G (plan `docs/plans/20261011-0010-membership-slice2-command-rules-plan.md`, revision 4; Slice 2a authorised 2026-10-11).
+- **Commands:** `AdmitMember` and `EndMembership` gain a required `int $decisionDate` (after `effectiveAt`): the decision's calendar date, supplied by the caller; a UI default is computed in the organisation's time zone (D-5(a) Z1). It is part of the fingerprint. The ordinary `AdmitMember` builds only declaration-based provenance (no statutory or migration admission, LQ-1 / Slice 13).
+- **Refusals (§5):** four rows added; IDEM-1 … IDEM-4 unchanged (refusals are not remembered; a corrected retry under the same key may append).
+- **Authority (§6):** an interim adapter (`Infrastructure/Organisational/InterimRoleAuthority`) grants Admit to owner / admin (mirroring the legacy `approveApplication` rule) and **denies every End** until G-1 is decided; it records `AuthorityEvidence` and is replaced under DS-4. It is **not bound** in the container (Slice 2b, held).

@@ -484,3 +484,14 @@ RepositoryPort (domain-facing; no SQL, no framework types):
 **No architecture conflict and no business decision are required for Slice 0.**
 
 **STOP.** Slice 0 is not implemented and Slice 1a is not started; this awaits the Principal Reviewer's approval.
+
+## Amendment (2026-10-11): Slice 2a command rules (PBDIGIT-271)
+
+**Authority:** Human PO / ARB decisions D-1 … D-5 (decision record in `2026-10-09-membership-slice1b-acceptance-review-and-slice2-decision-closure.md`) and S2-A … S2-G (plan `docs/plans/20261011-0010-membership-slice2-command-rules-plan.md`, revision 4; Slice 2a authorised 2026-10-11). Additive; §6 – §18 above are unchanged except where this amendment says so.
+
+- **`EndKind` (supersedes "opaque in Slice 0", §6 / §7 / §24 / §25):** a closed set `resignation`, `exclusion`, `death`, `legacy` (D-3 = E1). Any other value cannot be constructed; `EndKind::tryFromString` returns null so the command boundary can refuse. Resolution still never reads it.
+- **Admit (§17), new guards after `InvalidInitialTerm`:** `AdmissionBasisMissing` (D-1 = C1: decision provenance without a declaration reference; `rule` and `attested` are recognised bases), then `EffectiveDateAfterDecisionDate` (D-5(b)), then G\*.
+- **End (§18), new guards after `EndNotAfterPeriodStart`:** `LegacyEndRequiresAttestedHistory`, then `EffectiveDateAfterDecisionDate`.
+- **Decision date (D-5(a) Z1):** `decideAdmit` and `decideEnd` take a required, caller-supplied `TimePoint $decisionDate`; the kernel reads no clock and no time zone. It is validated, not stored (Q-E1 = A; the audit requirement is follow-up AUD-1, not met by this).
+- **Refusal reasons added:** `admission_basis_missing`, `end_kind_not_recognised` (produced at the command boundary), `legacy_end_requires_attested_history`, `effective_date_after_decision_date`.
+- **Source-architecture guards (not runtime security boundaries):** accepted decisions and new facts only from `Member` (R7); `rule` / `attested` provenance constructed in `app/` only by the rehydration decoder (R8).

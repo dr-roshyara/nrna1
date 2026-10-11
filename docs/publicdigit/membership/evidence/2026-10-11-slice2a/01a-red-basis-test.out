@@ -1,0 +1,33 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+F...F                                                               5 / 5 (100%)
+
+Time: 00:00.084, Memory: 14.00 MB
+
+Admission Basis (Tests\Unit\Contexts\Membership\Domain\Organisational\AdmissionBasis)
+ ✘ A decision without a declaration reference is refused
+   │
+   │ Failed asserting that null is identical to 'admission_basis_missing'.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/AdmissionBasisTest.php:36
+   │
+ ✔ A decision with a declaration reference is accepted
+ ✔ Statutory rule and attested history are recognised bases in the domain
+ ✔ Structural guards take precedence over the basis guard
+ ✘ The basis guard takes precedence over the lifetime invariants
+   │
+   │ Failed asserting that two strings are identical.
+   │ --- Expected
+   │ +++ Actual
+   │ @@ @@
+   │ -'admission_basis_missing'
+   │ +'overlapping_membership_periods'
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Domain/Organisational/AdmissionBasisTest.php:71
+   │
+
+FAILURES!
+Tests: 5, Assertions: 10, Failures: 2.

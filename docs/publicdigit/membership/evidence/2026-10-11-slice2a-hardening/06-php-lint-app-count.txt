@@ -1,0 +1,6 @@
+method: find app -name '*.php' | xargs -0 -n 1 -P 16 sh -c 'php -l "$0" 2>&1 || true'  (no abort on failure)
+files=1754
+no_syntax_errors=1753
+failures:
+PHP Parse error:  syntax error, unexpected token "`" in app/Http/Middleware/VoterSlugStep.php on line 279
+Errors parsing app/Http/Middleware/VoterSlugStep.php

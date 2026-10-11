@@ -1,0 +1,25 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+E.                                                                  2 / 2 (100%)
+
+Time: 00:00.087, Memory: 14.00 MB
+
+Membership Command Handlers (Tests\Unit\Contexts\Membership\Application\Organisational\MembershipCommandHandlers)
+ ✘ An unrecognised end kind is refused at the command boundary
+   │
+   │ InvalidArgumentException: EndKind 'non_payment' is not a recognised ending act.
+   │
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/EndKind.php:25
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Domain/Organisational/EndKind.php:31
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/EndMembershipHandler.php:47
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/DecideAndAppend.php:55
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/app/Contexts/Membership/Application/Organisational/EndMembershipHandler.php:36
+   │ /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Contexts/Membership/Application/Organisational/MembershipCommandHandlersTest.php:194
+   │
+ ✔ A legacy end is refused through the ordinary command
+
+ERRORS!
+Tests: 2, Assertions: 2, Errors: 1.
