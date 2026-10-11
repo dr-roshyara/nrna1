@@ -3296,3 +3296,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **reopen VP14** (F-LOG-0259: "no boundary layer" gives O3 nothing to decompose);
   - decide **VP12** and **VP11**;
   - prepare an E3 proposal and have it reviewed.
+
+
+## F-LOG-0262 — **Analyst/executor (2026-10-11): E3-prerequisite decision package ready** (VP10, VP14, VP12, VP11). Nothing decided
+- **Artifact:** `analysis/theory/R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1. One section per VP; draft acts per option; each act decides only its VP and authorizes neither O3 preparation nor E3, E3b, E4 or E5.
+- **Review history:** five fresh, independent subagent reviews, as the Human ARB instructed (`kos-theory-reviewer`, one new reviewer each round). r0 FAIL (F1–F15); r1 FAIL (G1–G14); r2 FAIL (H1–H16); r3 PASS_WITH_LIMITATIONS (I1–I12); r4 PASS_WITH_LIMITATIONS (J1–J3; all I-fixes verified in the body). J1–J3 were minor wording fixes applied by the main analyst and were not re-reviewed. All maps are in package §8.
+- **Recommendations (analyst, separated from evidence):**
+  - VP10: (i) or (ii), unranked. (iii) at O3 is **contested**; a ruling that (iii) counts for O3 is a **new decision item outside the register** (§1.8).
+  - VP14: **after even discounts the neutral criteria give no ordering of P-a, P-b, P-c and P-d without weights; the choice is the human's.** P-b, P-c and P-d need a separately authorized T3 re-derivation (scope in §2.9). P-a needs none; its H-D congeniality is disclosed.
+  - VP12: (i), one shared participant.
+  - VP11: (ii), CG1–CG6 kept separate. R4 supplies no consistency or transaction criterion, so this is a design decision. It needs an E2b amendment (E2b §2d exclusion).
+- **Order:** VP10 → VP14 → (re-derivation, only if VP14 ∈ {P-b, P-c, P-d}, by its own act) → VP12 → VP11. Then O3 preparation needs **its own human act** (register §3).
+- **Open for the human:** 13 items (package §6). These include the CV9 / §3b tension and the interim state before the E2b amendments.
+- **Mid-run incident:** the worker subagent hit the account's API rate limit after it had finished the r4 edits. r4 integrity was confirmed by the fifth review: no half-edits.
+- **Standing qualifier:** one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable.
+- **Status:** awaiting four separate Human ARB acts. **E3, E3b, E4 and E5 are not authorized.**

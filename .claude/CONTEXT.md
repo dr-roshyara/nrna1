@@ -1,5 +1,9 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-11, F-Series) — E3-prerequisite package READY (F-LOG-0262)
+- `R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1; five fresh subagent reviews (r3, r4 PASS_WITH_LIMITATIONS). Nothing decided.
+- **Next (human):** four separate acts — VP10, VP14, VP12, VP11 (in that order); a VP14 value of P-b/P-c/P-d additionally needs an authorized T3 re-derivation; O3 preparation needs its own act. E3 not authorized.
+
 ## 📍 UPDATE (2026-10-11, F-Series) — Bounded model ADOPTED (E2b, F-LOG-0261)
 
 - **Adopted:** the bounded [E] model, one corpus, pre-architecture: 25 elements from T3 r1.5, no boundary layer, CB4 an open slot, all H-D/H-B policy slots inactive. Text: `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/R7/E2b-ADOPTION-TEXT.md`.
