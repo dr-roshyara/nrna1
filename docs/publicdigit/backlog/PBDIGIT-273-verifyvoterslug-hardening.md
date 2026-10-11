@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN REVIEW` · implemented test-first, **database-free tests green**; request-path tests **written, not run** (they need a dedicated test database); not committed; not accepted. **Must not be deployed without `PBDIGIT-274`** (see Limitations) |
+| **Status** | `IN REVIEW` · implemented test-first, **database-free tests green**; request-path tests **written, not run** (they need a dedicated test database); committed 2026-10-11 on the Human PO's instruction (`6d3b9e1e0`, `560720590`), not pushed; not accepted. **Must not be merged to main or deployed without `PBDIGIT-274`** (see Limitations) |
 | **Plan** | `docs/plans/20261011-1318-verifyvoterslug-hardening-plan.md` |
 | **Evidence** | `docs/publicdigit/election/evidence/2026-10-11-verifyvoterslug/` |
 | **Guide** | `developer_guide/election/voter_slug/01_verifyvoterslug_guard.md` |

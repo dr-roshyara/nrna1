@@ -45,3 +45,4 @@ Still not authorised.
 - Tested on the in-memory test double. **PostgreSQL behaviour is unverified:** Part 2 is on hold.
 - **F-2, F-4 (F-4b), F-5 (N1): held** with PostgreSQL Part 2.
 - **Not accepted.** Developer guides 06 and 07.
+- *Traceability note (2026-10-11):* this status sync was committed inside `14f89d18e`, which is tagged `PBDIGIT-271`. It is documentation-only and caused by no `PBDIGIT-271` work; it is recorded here so the history isn't misread.

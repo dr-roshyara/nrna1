@@ -1,6 +1,6 @@
 # 01: `VerifyVoterSlug`, the server-side voter-slug guard
 
-**Story:** `PBDIGIT-273` · **Plan:** `docs/plans/20261011-1318-verifyvoterslug-hardening-plan.md` · **Evidence:** `docs/publicdigit/election/evidence/2026-10-11-verifyvoterslug/` · **Status:** implemented with database-free tests green; request-path tests written, not run; not committed; **deploy only with `PBDIGIT-274`**.
+**Story:** `PBDIGIT-273` · **Plan:** `docs/plans/20261011-1318-verifyvoterslug-hardening-plan.md` · **Evidence:** `docs/publicdigit/election/evidence/2026-10-11-verifyvoterslug/` · **Status:** implemented with database-free tests green; request-path tests written, not run; committed 2026-10-11 (`6d3b9e1e0`), not pushed; **merge to main and deploy only with `PBDIGIT-274`**.
 
 ## Purpose
 

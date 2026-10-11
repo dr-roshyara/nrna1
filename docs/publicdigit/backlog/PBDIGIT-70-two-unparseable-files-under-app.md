@@ -74,3 +74,11 @@ An unregistered **middleware** whose name sits one step from the live `EnsureVot
 ---
 
 **Traceability:** `app/Domain/Election/Models/ElectionUser.php:1-11,118-190` · `app/Http/Middleware/VoterSlugStep.php:279` · measured 2026-08-12: `php -l` over every `.php` file under `app/` → exactly **2** unparseable.
+
+---
+
+**Update 2026-10-11 (additive; the record above is unchanged):**
+- **`VoterSlugStep.php` is not a middleware with a stray backtick.** The **whole file** (802 lines) is a Markdown document: an orphaned git blob recovered on 2026-03-04 and misfiled as code by the recovery tooling. Line 210 opens an embedded `<?php` example, and line 279 closes it, which is where the parse error comes from. Evidence: `docs/publicdigit/reviews/2026-10-11-voterslugstep-markdown-provenance-investigation.md`.
+- `PBDIGIT-272` (2026-10-11) duplicated this ticket and is closed in its favour.
+- The Membership creation-path scan (`tests/Architecture/MembershipDecisionCreationTest.php`, `UNPARSABLE_KNOWN`) excludes the file by name. A guard test fails as soon as the file parses, so the exclusion ends with this ticket.
+- The disposition (turn it into a document, keep it, or remove it) stays the Product Owner's decision.

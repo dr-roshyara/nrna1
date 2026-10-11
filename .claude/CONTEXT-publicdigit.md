@@ -18,7 +18,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | ⚠️ **Deploy gate** | **Do not deploy without `PBDIGIT-274`:** `ElectionVotingController::start` restarts sessions on old or soft-deleted rows, which the guard now rejects |
 | 🗂️ **Backlog (documented only)** | `PBDIGIT-274` lifecycle (next; migration PROPOSED) · `275` request-path gaps (`/votes` reachable; lifetime bypass hypothesis unverified) · `276` renderer logs the raw slug · `277` correctness defects · `278` hygiene |
 | ⛔ **Test database** | isolated, identity-verified database only; the in-session `nrna_test` answer is withdrawn |
-| ▶️ **Next action** | Principal Reviewer review of `PBDIGIT-273` → Human PO acceptance → commit authorisation (separate) → the `PBDIGIT-274` plan |
+| ▶️ **Next action** | **Committed 2026-10-11** (`6d3b9e1e0`, `560720590`; Human PO instruction), not pushed. **Merging to main is blocked until `PBDIGIT-274`** (architect review). Next: the `PBDIGIT-274` plan → Principal Reviewer → Human PO approval (plan and, separately, the migration) → Human PO acceptance of 273 |
 
 ---
 
@@ -31,7 +31,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | 📄 **Plan / guide** | `docs/plans/20261011-0010-membership-slice2-command-rules-plan.md` rev. 5 (§15) · `developer_guide/membership/08_slice2a_admit_end_command_rules.md` |
 | 🗂️ **Backlog** | `PBDIGIT-272` (`VoterSlugStep.php` is not valid PHP; excluded by name from the R7 / R8 scan) · `PBDIGIT-264` status synced (F-1 / Option E / F-3 done on the test double; F-2 / F-4 / F-5 held) |
 | ⛔ **Held** | PostgreSQL Part 2, Slice 2b, provisioning and binding, HTTP / UI, the D-6 / R10 cutover, ending authority (G-1) |
-| ▶️ **Next action** | Principal Reviewer (ChatGPT) review of the hardening evidence → Human PO / ARB acceptance decision → commit authorisation (separate). **Nothing committed** |
+| ▶️ **Next action** | **Committed 2026-10-11** (`834a4f65c`, `14f89d18e`; Human PO instruction), not pushed. Next: Principal Reviewer (ChatGPT) review of the hardening evidence → Human PO / ARB acceptance decision. Architect-review follow-ups: an `end_kind` CHECK constraint (Slice 2b); R5 onto the parser scan |
 
 ---
 

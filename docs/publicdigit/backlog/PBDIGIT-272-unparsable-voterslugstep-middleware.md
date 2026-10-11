@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `OPEN` · **not authorised**. Creating this story authorises no change to the file |
+| **Status** | `CLOSED` · **duplicate of `PBDIGIT-70`** (2026-10-11), which has tracked this file since 2026-08-12. Work continues there. *Correction:* the description below is wrong: the **whole file** is Markdown, and line 279 closes an embedded example; there is no "code before line 279" to restore. See `docs/publicdigit/reviews/2026-10-11-voterslugstep-markdown-provenance-investigation.md`. The test constant `UNPARSABLE_KNOWN` still names 272 and will be re-pointed to 70 in the next authorised code change |
 | **Owner** | to be named (voting workstream) |
 | **Found by** | the parser-based creation-path scan of `tests/Architecture/MembershipDecisionCreationTest` (`PBDIGIT-271` H2), which fails on any unparsable source in `app/` |
 | **Not part of** | `PBDIGIT-271` (the Membership scan only excludes this one path, by name) |

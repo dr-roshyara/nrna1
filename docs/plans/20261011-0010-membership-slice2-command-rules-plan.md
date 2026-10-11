@@ -1,6 +1,6 @@
 # Plan: Membership Slice 2 — Admit / End command rules
 
-> **Current status (rev. 5, 2026-10-11):** Slice 2a **authorised, implemented and hardened locally** (H1, H2; §15); not committed; **not accepted**; Slice 2b held. The status line below is the rev. 4 record, kept unchanged and superseded by §15.
+> **Current status (rev. 5, 2026-10-11):** Slice 2a **authorised, implemented and hardened** (H1, H2; §15); **committed 2026-10-11** (`834a4f65c` code and tests, `14f89d18e` documents), not pushed; **not accepted**; Slice 2b held. The status line below is the rev. 4 record, kept unchanged and superseded by §15.
 
 **Status:** `revision 4` — S2-A … S2-D, S2-F and Q-E1 (option A) **approved** by the Human ARB on 2026-10-11; S2-E approved in principle with its implementation gate open pending the C-1 reconciliation (§6.1) and the provenance-origin decision S2-G (§4.7). **Implementation of Slice 2a is not authorised.** **Nothing implemented; no test run.** PostgreSQL work is on hold. **This plan authorises nothing.**
 **Story:** `PBDIGIT-271` · **Baseline:** HEAD `aa047ca6b` (decision record `53f19fee7` is an ancestor).
@@ -387,3 +387,9 @@ All on PostgreSQL / booted Laravel after the hold is lifted.
     - the old literal planted tests for R7 / R8 were replaced by the matrix (their unnamespaced sources referred to global classes, which a resolving scan correctly ignores; case N7);
     - php-parser 5.4.0 raises 3 PHP 8.5 deprecations inside the library (`SplObjectStorage::attach`), so the run reports "OK, but there were issues"; no upgrade is in scope.
   - **Status:** hardened locally; not committed; not accepted.
+- 2026-10-11: **Committed**, on the Human PO's instruction in session ("commit all what you have written"): `834a4f65c` (code and tests), `14f89d18e` (documents and evidence), `a932b7ae8` (state). Not pushed. The "not committed" statements in the entries above are historical and stay as written.
+  - **Architect review (sub-agent, read-only):** no blocking defect in Slice 2a. Follow-ups:
+    - a CHECK constraint on `end_kind` and a decode-failure test (Slice 2b);
+    - R5 moved onto the parser scan and narrowed;
+    - the finite-date note added to the Slice 0 contract (done 2026-10-11).
+  - **Correction:** `14f89d18e` also carried the `PBDIGIT-264` status sync, which `PBDIGIT-271` did not cause.
