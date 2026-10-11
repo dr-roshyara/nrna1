@@ -3669,3 +3669,21 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - R23;
   - B14 [E]: S″ is reported as counting only and introduces no role concepts.
 - **Status:** awaiting the Human ARB act (approve, return or reject). E3 is not authorized.
+
+
+## F-LOG-0280 — **Human act (Human ARB, 2026-10-11): O3 PREPARATION AUTHORIZED** (preparation and review only; **not E3**)
+**The act** (`R7/O3-PREPARATION-AUTHORIZATION-PACKAGE.md` r1.1 §7, Approve, verbatim). The human's selections are filled in: optional clause 1 included; review regime "FAIL at round 3 → human"; r[n] = r1.1.
+> "I, Human ARB, authorize the **preparation** of an O3 proposal (register r1.19 §0, §3): a document asking for the bounded architecture derivation gate E3 (`R7/ARB-DECISION-PACKAGE.md` r4.4 §E3), built from the adopted bounded model (`R7/E2b-ADOPTION-TEXT.md` r1.2) under the binding conditions of `R7/O3-PREPARATION-AUTHORIZATION-PACKAGE.md` r1.1 §3. I also authorize its fresh independent review, the corrections that review requires, and the re-review of those corrections. **This authorizes preparation and review only. It does not authorize E3.**
+>
+> It does not authorize E3b, E4 (R8) or E5. It decides no variation point. It selects no spanning rule and accepts no asymmetry. It resolves no open item ((d′), the C-γ guard-row question, R11, the CV9 / §3b tension, H13). It amends no adopted or governed record (E2b, T3, the register, the ARB package). It authorizes no evidence collection (including V2, V5, V6, E-A5), and it adopts no canonical terms.
+>
+> It does not withdraw F-LOG-0265's premise. The proposal is prepared without reference to any VP1a–d outcome (N1).
+>
+> The review is performed by fresh independent `kos-theory-reviewer` subagents, one new reviewer per round. Stop rule: a FAIL at round 3 → human; otherwise PASS / PASS_WITH_LIMITATIONS with nothing blocking → present.
+>
+> The reviewed O3 proposal is presented for a separate Human ARB act on E3."
+
+- **Effect:** open item (e) is satisfied for preparation. An O3 proposal may now be drafted under binding conditions B1–B14, then reviewed and corrected.
+- **Carried open, unresolved by this act:** A1–A5, (d′), the C-γ guard-row question, R11, the CV9 / §3b tension, H13 and the stale T3 r1.8 notes.
+- **Not authorized:** E3, E3b, E4 and E5; no VP decided; no spanning rule selected; the asymmetry not accepted; no records amended; no evidence collected; no canonical terms adopted.
+- **Next:** a worker drafts the O3 proposal. Fresh reviewers check it, one new reviewer per round, with a FAIL at round 3 going to the human. The reviewed proposal is then presented for a separate act on E3.
