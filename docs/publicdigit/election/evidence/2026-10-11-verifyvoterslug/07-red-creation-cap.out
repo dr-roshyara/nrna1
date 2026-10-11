@@ -1,0 +1,41 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+DDDDDDDDDDDDDDDFDFFFDDDDDDDDDDD                                   31 / 31 (100%)
+
+Time: 00:01.580, Memory: 26.00 MB
+
+There were 4 failures:
+
+1) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_an_extended_expiry_does_not_outlive_thirty_minutes_from_creation
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:130
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:295
+
+2) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_without_a_creation_time_is_rejected
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:130
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:312
+
+3) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_the_lifetime_comes_from_the_single_configured_duration
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:130
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:323
+
+4) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_an_extended_demo_slug_is_capped_too
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:130
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:333
+
+FAILURES!
+Tests: 31, Assertions: 320, Failures: 4, Deprecations: 3.

@@ -1,0 +1,126 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.xml
+
+DDDFFFFDDFFDFFFFFFFFED                                            22 / 22 (100%)
+
+Time: 00:01.353, Memory: 30.00 MB
+
+There was 1 error:
+
+1) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_no_raw_slug_reaches_logs_or_exception_context_and_nothing_is_logged_as_emergency
+Mockery\Exception\InvalidCountException: Method emergency(<Any Arguments>) from Mockery_0_Illuminate_Log_LogManager should be called
+ exactly 0 times but called 2 times.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/mockery/mockery/library/Mockery/CountValidator/Exact.php:32
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/mockery/mockery/library/Mockery/Expectation.php:739
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/mockery/mockery/library/Mockery/ReceivedMethodCalls.php:36
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/mockery/mockery/library/Mockery/VerificationDirector.php:86
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:361
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:344
+
+--
+
+There were 14 failures:
+
+1) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_guest_is_rejected_before_any_slug_lookup
+expected Illuminate\Auth\AuthenticationException, got App\Exceptions\Voting\InvalidVoterSlugException
+Failed asserting that an instance of class App\Exceptions\Voting\InvalidVoterSlugException is an instance of class Illuminate\Auth\AuthenticationException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:176
+
+2) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_guest_is_rejected_even_for_a_bound_slug
+expected Illuminate\Auth\AuthenticationException, got App\Exceptions\Voting\SlugOwnershipException
+Failed asserting that an instance of class App\Exceptions\Voting\SlugOwnershipException is an instance of class Illuminate\Auth\AuthenticationException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:183
+
+3) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_demo_slug_is_rejected_on_a_real_route
+expected App\Exceptions\Voting\InvalidVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\InvalidVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:194
+
+4) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_real_slug_is_rejected_on_a_demo_route
+expected App\Exceptions\Voting\InvalidVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\InvalidVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:203
+
+5) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_soft_deleted_slug_is_rejected_even_when_still_marked_active
+expected App\Exceptions\Voting\InvalidVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\InvalidVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:234
+
+6) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_with_expired_status_is_rejected_even_when_still_marked_active
+expected App\Exceptions\Voting\InvalidVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\InvalidVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:243
+
+7) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_exactly_at_its_deadline_is_rejected
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:263
+
+8) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_after_its_deadline_is_rejected_even_when_still_marked_active
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:272
+
+9) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_without_an_expiry_is_rejected
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:281
+
+10) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_an_expired_demo_slug_is_rejected
+expected App\Exceptions\Voting\ExpiredVoterSlugException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ExpiredVoterSlugException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:290
+
+11) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_whose_election_is_missing_is_rejected
+expected App\Exceptions\Voting\ElectionNotFoundException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ElectionNotFoundException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:303
+
+12) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_slug_whose_election_belongs_to_another_organisation_is_rejected
+expected App\Exceptions\Voting\OrganisationMismatchException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\OrganisationMismatchException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:312
+
+13) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_real_route_with_a_demo_election_is_rejected
+expected App\Exceptions\Voting\ElectionMismatchException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ElectionMismatchException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:321
+
+14) Tests\Unit\Http\Middleware\VerifyVoterSlugTest::test_a_demo_route_with_a_real_election_is_rejected
+expected App\Exceptions\Voting\ElectionMismatchException, got no exception
+Failed asserting that null is an instance of class App\Exceptions\Voting\ElectionMismatchException.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:129
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Unit/Http/Middleware/VerifyVoterSlugTest.php:330
+
+ERRORS!
+Tests: 22, Assertions: 32, Errors: 1, Failures: 14, Deprecations: 3.
