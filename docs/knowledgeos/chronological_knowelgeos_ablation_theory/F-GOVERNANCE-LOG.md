@@ -3377,3 +3377,16 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Effect:** the adopted participant element is unchanged, and no E2b amendment is needed for VP12 itself. The F-LOG-0265 P-c premise "neutral under 𝐑₀" now carries the disclosed condition.
 - **Pending** (scope per package §2.9: "re-checked after VP12"): the VP12 re-check of T3 r1.6, i.e. re-testing R25, the participant-dependent rows and the 𝐑₀ neutrality statement with C1 spanning. Whether this re-check needs its own act is to be confirmed by the human. **Register:** r1.15.
 - **Next:** VP11 (its own act). E3, E3b, E4 and E5 are not authorized.
+
+**[Appended to F-LOG-0268, same day. This is the human's own supplementary statement, verbatim. It supersedes the line above that reads "Whether this re-check needs its own act is to be confirmed by the human".]**
+> **VP12 — Human ARB Act: (i) One shared participant**
+>
+> The Human ARB selects one shared participant, retaining R4's existing actor set spanning CB23 and CB1. No additional role-separation assumption is introduced by this act.
+>
+> **Disclosed consequence:** Under P-c, the resulting cut is likely H-D-asymmetric because R25 crosses under the [E] spanning rule.
+>
+> **Required follow-up:** Re-check and document the H-D asymmetry before E3 proceeds. Do not treat this act as evidence that the asymmetry is acceptable or that E3 is authorized.
+>
+> **Scope:** This act decides VP12 only. VP4 and VP11 remain undecided. All other existing authorizations and exclusions remain unchanged.
+
+- **Effect:** the VP12 re-check of T3 r1.6 is **required by the human** before E3 proceeds. The re-check must re-test R25, the participant-dependent rows and the 𝐑₀ neutrality statement with C1 spanning, and document the H-D asymmetry. It is a documentation and re-check task within the F-LOG-0266 amendment scope ("re-checked after VP12"). It decides nothing and **does not accept the asymmetry**.
