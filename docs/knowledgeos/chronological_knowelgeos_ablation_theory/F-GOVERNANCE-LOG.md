@@ -3495,3 +3495,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - C's act number, which the drafts expect as F-LOG-0272, will be the next free id. Every placeholder is filled from the log when applied.
   - A cites C at r1.2, whose §1.2 and patch text are unchanged in r1.3.
 - **Standing:** no VP decided, no spanning rule selected, asymmetry not accepted. O3 preparation, E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0273 — **Human act (Human ARB, 2026-10-11): act C AUTHORIZED, option (A). T3 sync r1.7 → r1.8 (R21 only; R11 open)**
+**The act** (`R7/T3-SYNC-PROPOSAL.md` §3, verbatim as presented). **Selected: option (A)**, together with the optional fresh-review clause, as presented to the human:
+> "I, Human ARB, authorize a post-closure amendment of `R7/T3-CANDIDATE-MODEL.md` r1.7 to r1.8 that applies exactly the edits P1a, P1c, P2, P3, P4a–P4d, P5a, P5b and P6a–P6c of `R7/T3-SYNC-PROPOSAL.md` r1.2, in their base variants, and nothing else: R21 added to the §1b grouping guard list (F-LOG-0267); the F8 items of F-LOG-0270 (the §4 VP11 side note, the §1a R8 relations cell, and the VP11 decided-status sync in §4 and §6, VP11 = (ii) per F-LOG-0269); and the consequential status line, title, VP12-row note, F8 note and §7 row. The order of application is fixed: this act (C) first, then the E2b amendment (A, `R7/E2b-AMENDMENT-1-PROPOSAL.md` r2.2), then the register/ARB sync (B, `R7/REGISTER-ARB-SYNC-PROPOSAL.md` r2.2) last; each is its own act. I record that the pre-act disclosure for F-LOG-0269 listed R14–R17 and R21 and omitted R11. **[Select one:] (A) P1a′ is not selected: R11 is recorded in §6 item 1 as an open question, and the guard list is marked non-exhaustive. / (B) P1a′ is selected: R11 is also added to the §1b guard list. P1a′ applies in place of P1a, and the 'with P1a′' variants of P1c, P4c, P5a, P6b, P6c apply.** Superseded text is struck, not deleted. This act decides no variation point and selects no spanning rule: S, S′ and S″ stay unselected, and the asymmetry stays documented and not accepted (F-LOG-0271). It adopts nothing and does not amend E2b. It does not change the CG, CV, CE, CS or MW content except the §1b guard-list addition. It does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5. [Optional: The applied text is to be checked against this proposal by a fresh independent review before it is relied on.]"
+
+- **Effective content:** the base variants of P1a, P1c, P2, P3, P4a–P4d, P5a, P5b and P6a–P6c.
+  - R21 is added to the §1b guard list. The list is marked non-exhaustive, and R11 is recorded as an open question in §6 item 1.
+  - The F8 items and VP11 = DECIDED (ii) are synced.
+  - **P1a′ (R11) is not selected.**
+- **Recorded:** the pre-act disclosure for F-LOG-0269 omitted R11.
+- **Version note:** the act text cites the proposal as r1.2. The file is r1.3, whose r1.3 change (U2) touched only the coordination note and the act preamble. The patch text applied is identical.
+- **Closes:** F-LOG-0271 open item (d) (R21 and F8), with R11 left open.
+- **Placeholder fill:** wherever the sibling proposals A and B write "F-LOG-[T3-SYNC id]", read **F-LOG-0273**.
+- **Next:** a worker applies the patch to T3, a fresh independent review checks it, and the result is recorded. Then act A, then act B. No VP decided; no spanning rule selected; asymmetry not accepted; E2b not amended; O3 preparation, E3, E3b, E4 and E5 not authorized.
