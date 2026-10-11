@@ -9,6 +9,36 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 
 # Current Working State — PublicDigit
 
+## 📍 UPDATE (2026-10-11, **Voting: `VerifyVoterSlug` guard, `PBDIGIT-273`, IN REVIEW**; additive, the blocks below are unchanged)
+
+| | |
+|---|---|
+| 🎯 **Active story** | **`PBDIGIT-273`**: `VerifyVoterSlug` checks V-1 auth, V-2 route type (`election.demo`), V-3 owner, V-5 revoked, V-4 expiry at `>=` plus a fixed lifetime from `created_at`, V-6 election / organisation |
+| 🔬 **Evidence** | `docs/publicdigit/election/evidence/2026-10-11-verifyvoterslug/`: database-free unit file 31 tests / 328 assertions, exit 0 (RED → GREEN recorded). **Request-path tests written, NOT run** (they need an isolated test database) |
+| ⚠️ **Deploy gate** | **Do not deploy without `PBDIGIT-274`:** `ElectionVotingController::start` restarts sessions on old or soft-deleted rows, which the guard now rejects |
+| 🗂️ **Backlog (documented only)** | `PBDIGIT-274` lifecycle (next; migration PROPOSED) · `275` request-path gaps (`/votes` reachable; lifetime bypass hypothesis unverified) · `276` renderer logs the raw slug · `277` correctness defects · `278` hygiene |
+| ⛔ **Test database** | isolated, identity-verified database only; the in-session `nrna_test` answer is withdrawn |
+| ▶️ **Next action** | Principal Reviewer review of `PBDIGIT-273` → Human PO acceptance → commit authorisation (separate) → the `PBDIGIT-274` plan |
+
+---
+
+## 📍 UPDATE (2026-10-11, **Membership Slice 2a, `PBDIGIT-271`: implemented and hardened locally, IN REVIEW**: Membership session; additive, the blocks below are unchanged)
+
+| | |
+|---|---|
+| 🎯 **Active story** | **`PBDIGIT-271`** Slice 2a (database-free): D-1 basis guard, closed ending kinds, required decision date with no future dating, interim Admit authority (End denied until G-1), R5 / R7 / R8 fitness tests. **Hardening after the independent review:** H1 / H1-b (infinite dates = invalid input, `InvalidArgumentException`), H2 (name-resolving creation-path scan) |
+| 🔬 **Evidence** | `docs/publicdigit/membership/evidence/2026-10-11-slice2a/` and `…-slice2a-hardening/`. Regression: Domain 114, Application 61, Infrastructure 13, architecture 49, C-1 + G6 5 786 assertions (0 mismatches; oracle / golden unchanged); all exit 0. **PostgreSQL not run** (held) |
+| 📄 **Plan / guide** | `docs/plans/20261011-0010-membership-slice2-command-rules-plan.md` rev. 5 (§15) · `developer_guide/membership/08_slice2a_admit_end_command_rules.md` |
+| 🗂️ **Backlog** | `PBDIGIT-272` (`VoterSlugStep.php` is not valid PHP; excluded by name from the R7 / R8 scan) · `PBDIGIT-264` status synced (F-1 / Option E / F-3 done on the test double; F-2 / F-4 / F-5 held) |
+| ⛔ **Held** | PostgreSQL Part 2, Slice 2b, provisioning and binding, HTTP / UI, the D-6 / R10 cutover, ending authority (G-1) |
+| ▶️ **Next action** | Principal Reviewer (ChatGPT) review of the hardening evidence → Human PO / ARB acceptance decision → commit authorisation (separate). **Nothing committed** |
+
+---
+
+**Updated:** 2026-10-06 *(additive — the **IP evidence / IP Binding** block is the newest)*
+
+---
+
 **Updated:** 2026-10-05 *(additive — the **Q3 security policy surface** block is the newest)*
 
 ---
