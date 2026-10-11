@@ -3271,3 +3271,28 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - Adopting CV8, CV9 and CS1 **does not decide VP10**.
 - **Review:** 2 rounds, PASS_WITH_LIMITATIONS, nothing blocking (`R7/REVIEW-E2b-ADOPTION-TEXT.md`). The register title is synced to r1.10.
 - **Status:** awaiting the Human ARB's explicit E2b act (approve, reject or return). E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0261 — **Human act (Human ARB, 2026-10-11): E2b AUTHORIZED.** The bounded [E] model is ADOPTED (one corpus, pre-architecture)
+**The act** (`R7/E2b-ADOPTION-TEXT.md` r1.1 §5, as selected by the human):
+> "I, Human ARB, authorize E2b: I adopt the R7 candidate model (T3 r1.5, as amended under F-LOG-0254) as a **bounded [E] model, one corpus, pre-architecture**, consisting of the participant, CG1–CG6, CV1–CV9, CV-text, CE1–CE6, CS1 and MW1, each labelled '[E] bounded model element, one corpus', with their T3 §2 traces; **without CB1–CB4** (VP14 = no boundary layer, F-LOG-0259) and with **CB4 as an explicit open slot** (VP10 (iii), F-LOG-0258); adopting CV8, CV9 and CS1 does not decide VP10, which stays recorded as (iii). T-A rows R1–R24 are carried as candidate model constraints, not domain invariants, none enforceable from records (R23). All T-B rows (R25–R39, R79, R80, R83) remain **inactive** policy slots; R83 keeps its condition. T-C rows, X1–X25, the §3b extensions and the open questions OQ1–OQ11 are carried as recorded. The model rests on VP15 (i) and VP5 (i) as decided; all other variation points stay open with the defaults of `R7/E2b-ADOPTION-TEXT.md` §2f. The standing qualifier, the human-preserved limitations of F-LOG-0256, Λ1–Λ7 and the limitations of `R7/ARB-DECISION-PACKAGE.md` §B travel with the adoption. This adoption does not authorize E3, E3b, E4 or E5, nor any evidence collection (including V2, V5, V6, E-A5), and adopts no canonical terms."
+
+- **Adopted:** 25 elements (the participant, CG1–CG6, CV1–CV9, CV-text, CE1–CE6, CS1, MW1), with their T3 §2 traces.
+  - There is no boundary layer, and CB4 is an explicit open slot.
+  - T-A R1–R24 are candidate model constraints only.
+  - All 18 T-B slots are inactive.
+  - Disclosed limitations D1–D4.
+- **This is not canonicalization (R8) and not architecture.**
+- **Reopen conditions:** `R7/E2b-ADOPTION-TEXT.md` §6, notably:
+  - V6 corpus-specificity (VP5, VP15, E2b);
+  - an adequacy failure of a T-A constraint;
+  - VP10 revisited as (ii), which removes CV8, CV9 and CS1;
+  - VP14 reopened.
+- **Gate status:**
+  - done: E1, E2 (VP1d-H, VP15, VP5, VP10, VP14) and **E2b**;
+  - **next: E3** (bounded architecture derivation), which is **not authorized**.
+- **E3's prerequisites, per the register's O3 set and the decisions:**
+  - **revisit VP10** (F-LOG-0258);
+  - **reopen VP14** (F-LOG-0259: "no boundary layer" gives O3 nothing to decompose);
+  - decide **VP12** and **VP11**;
+  - prepare an E3 proposal and have it reviewed.

@@ -1,5 +1,11 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-11, F-Series) — Bounded model ADOPTED (E2b, F-LOG-0261)
+
+- **Adopted:** the bounded [E] model, one corpus, pre-architecture: 25 elements from T3 r1.5, no boundary layer, CB4 an open slot, all H-D/H-B policy slots inactive. Text: `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/R7/E2b-ADOPTION-TEXT.md`.
+- **Decided:** VP1d-H (i), VP15 (i), VP5 (i), VP10 (iii), VP14 (no boundary layer), F-LOG-0254 to 0259.
+- **Next gate: E3 (architecture), not authorized.** It first needs VP10 revisited, VP14 reopened, and VP12 and VP11 decided. Then E3b, E4 (R8) and E5, each by its own act.
+
 ## 📍 UPDATE (2026-10-11, F-Series) — R7 CLOSED (candidate deliverable, nothing adopted)
 
 - **R1–R7 closed.** R7 was accepted as a candidate deliverable with limitations (F-LOG-0253): T1 r1.5, T2 r1.3, T3 r1.4 in `docs/knowledgeos/chronological_knowelgeos_ablation_theory/analysis/theory/R7/`. **No model element adopted, no VP decided, no partition selected.**
