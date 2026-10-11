@@ -3390,3 +3390,22 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 > **Scope:** This act decides VP12 only. VP4 and VP11 remain undecided. All other existing authorizations and exclusions remain unchanged.
 
 - **Effect:** the VP12 re-check of T3 r1.6 is **required by the human** before E3 proceeds. The re-check must re-test R25, the participant-dependent rows and the 𝐑₀ neutrality statement with C1 spanning, and document the H-D asymmetry. It is a documentation and re-check task within the F-LOG-0266 amendment scope ("re-checked after VP12"). It decides nothing and **does not accept the asymmetry**.
+
+
+## F-LOG-0269 — **Human act (Human ARB, 2026-10-11): VP11 DECIDED (ii), CG1–CG6 kept separate**
+**The act** (`R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1 §4.7, as selected by the human):
+> "I, Human ARB, decide VP11 = (ii): CG1–CG6 are kept separate, with the T-A rows that cross groupings as cross-grouping constraints, as a human design decision introducing a consistency notion not supplied by R4 (§3b); no grouping is enforceable from records (R23). Under VP12 (i) these are R1, R2, R3, R5, R6, R8, R9, R18, R19 and R22 (T3 §1b); under VP12 (ii) the crossing list is to be re-derived, which needs its own authorization. I record that CG3 'carries meaning mainly under D-st / D-st⁺ (VP1b, H-D clauses)' (T3 §1b), and the register's counterpart that 'a grouping justified only by H-B-side clauses would lean the other way'. This is decided without reference to any VP1a–d (including VP1b) outcome. It decides only VP11. Its effect on the adopted model (admission of the consistency notion that E2b §2d carries as an excluded §3b extension) takes hold only when the consequential E2b amendment is made by its own act. It does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5."
+
+- **Disclosed before the act:** the listed crossing rows predate the T3 r1.6 notes. Guard rows R14–R17 and R21 also cross groupings, and R21 is missing from the §1b list (F-LOG-0267). VP4 and VP8 stay at their E2b §2f defaults (F-LOG-0261).
+- **Status of the E3 prerequisites:**
+  - VP10 = (iii), ruled to count for O3 (F-LOG-0263, F-LOG-0264);
+  - VP14 = P-c (F-LOG-0265), with T3 re-derived to r1.6 (F-LOG-0267);
+  - VP12 = (i) (F-LOG-0268);
+  - VP11 = (ii) (this act).
+- **Still open, each needing its own act or completion:**
+  - (a) the VP12 re-check (T3 r1.7, drafted, awaiting independent review), required before E3 by F-LOG-0268;
+  - (b) the E2b amendment for VP14 P-c and VP11 (ii);
+  - (c) the register §3/§5a amendment, plus ARB §E3 if read so, for F-LOG-0264;
+  - (d) the R21 §1b gap;
+  - (e) the act authorizing preparation of an O3 proposal (register §3).
+- **Register:** r1.16. E3, E3b, E4 and E5 are not authorized.
