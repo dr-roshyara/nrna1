@@ -3321,3 +3321,12 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Not decided:** whether (iii) counts as VP10's decision for the register §3 O3 minimal set. This is a new decision item outside the register's options; package §1.8 has the draft. The human indicated that this ruling should follow, but it needs its own explicit act. Until it is made, the O3 set's VP10 condition is contested (package §1.7).
 - **Register:** r1.11 (VP10 rows annotated).
 - **Next:** the O3 new-item ruling (a separate act); then VP14; then VP12; then VP11. E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0264 — **Human act (Human ARB, 2026-10-11): new item. The re-affirmed VP10 = (iii) COUNTS for the O3 minimal set**
+**The act** (`R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1 §1.8 draft, as selected by the human):
+> "I, Human ARB, rule, as a decision item outside the register's VP10 options, that the re-affirmation of VP10 = (iii) counts as VP10's decision for the O3 minimal set, notwithstanding register §3 (VP10 among the 'minimal VPs to decide' for O3), register §5a ('O3: yes'), ARB §C row 4 ('O3: decision') and the prior package §2.3 ('O3 needs a decision'). The consequential amendment of the register, and of ARB §E3 ('E2 for VP10, VP12, VP11') if it is read as requiring a decision, needs its own act. This rules on that question only. It does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5."
+
+- **For the O3 minimal set, VP10 is satisfied by (iii).** The contested status in package §1.7 is resolved by this human ruling. It was not resolved by evidence.
+- **Pending:** the consequential amendment of register §3/§5a, and of ARB §E3 if it is read as requiring a decision, needs its own act. Until then, register r1.12 records the ruling only in its annotations and change rows.
+- **Next:** VP14 (reopening); then VP12; then VP11. E3, E3b, E4 and E5 are not authorized.
