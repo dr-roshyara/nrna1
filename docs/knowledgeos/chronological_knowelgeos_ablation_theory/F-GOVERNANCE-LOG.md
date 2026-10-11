@@ -3644,3 +3644,28 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - H13, the stale VP11 note in the register;
   - the cosmetic punctuation;
   - **(e) the O3-preparation act**, the next gate. It needs its own human act. E3, E3b, E4 and E5 are not authorized.
+
+
+## F-LOG-0279 — **Executor (2026-10-11): O3-preparation authorization package READY** (`R7/O3-PREPARATION-AUTHORIZATION-PACKAGE.md` r1.1). Nothing authorized
+- **Purpose:** the next gate is the Human ARB act authorizing **preparation and review** of an O3 proposal (open item (e)). That act would not authorize E3.
+- **Reviews:** two fresh independent `kos-theory-reviewer` reviews.
+  - r0: PASS_WITH_LIMITATIONS. 4 material and 10 minor findings, all fixed in r1.
+  - r1 verification: PASS_WITH_LIMITATIONS, with no blocker and no material finding. 10 minor fixes followed in r1.1, not re-reviewed.
+- **Readiness:**
+  - The register §3 O3 minimal set is met. VP15, VP5, VP14, VP12 and VP11 are decided. VP10 is met **by human ruling, not on evidence** (F-LOG-0264).
+  - ARB §E3 prerequisites are met except the O3 proposal itself.
+  - **No prerequisite of O3 preparation is recorded in the log as unmet.**
+- **Ambiguities, for the human:**
+  - **A1:** VP4 and VP8 edges. ARB §C row 7 lists VP4 as needed for O3. Separately, no act has ruled whether the §2f defaults count as "explicitly left open".
+  - **A2:** the E3 trace criterion against the E2b restriction on CB1/CB23 traces. This bears on E3, not on preparation.
+  - **A3:** stale VP11 notes, namely H13 and the T3 r1.8 status, §6 items 1 and 6.
+  - **A4:** the review regime for the O3 proposal.
+  - **A5:** E2b §A1.9b can be read as requiring (d′) and R11 before any O3/E3 proposal. The log does not treat them as prerequisites.
+- **Binding conditions on the O3 proposal:** B1–B14, including:
+  - results reported under S, S′ and S″, with none privileged;
+  - consistency only;
+  - the ten labelled rows, as an interim set;
+  - T-B rows inactive;
+  - R23;
+  - B14 [E]: S″ is reported as counting only and introduces no role concepts.
+- **Status:** awaiting the Human ARB act (approve, return or reject). E3 is not authorized.
