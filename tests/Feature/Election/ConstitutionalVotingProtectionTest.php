@@ -247,10 +247,10 @@ class ConstitutionalVotingProtectionTest extends TestCase
     }
 
     /**
-     * RED: Expired slug can reach code creation during non-VotingActive (for renewal).
-     * This is the Fix 1 regression test — the voter_slug bypass must NOT be removed.
+     * PBDIGIT-273 (Human PO decision 2026-10-11, superseding the earlier "renewal" bypass): an expired slug is
+     * rejected on every step, step 1 included. Continuing after expiry requires a new slug from the voting entry.
      */
-    public function test_expired_slug_can_reach_code_creation_during_non_voting(): void
+    public function test_expired_slug_is_rejected_at_code_creation(): void
     {
         $org = Organisation::factory()->create(['type' => 'tenant']);
         $election = ElectionScenarioFactory::setupAdministration($org);
@@ -265,14 +265,8 @@ class ConstitutionalVotingProtectionTest extends TestCase
         $response = $this->actingAs($user)
             ->get(route('slug.code.create', ['vslug' => $slug->slug]));
 
-        // Expired slug must still reach CodeController for renewal
-        // This is the INTENTIONAL BYPASS — the voter_slug middleware bypass exists for this reason
-        $this->assertNotEquals(
-            route('dashboard'),
-            $response->headers->get('Location') ?? '',
-            'Expired slugs MUST be able to reach CodeController for code renewal. '
-            . 'Removing the voter_slug bypass would break this.'
-        );
+        // The {vslug} binding answers 410 for a slug past its deadline; VerifyVoterSlug rejects it too.
+        $this->assertSame(410, $response->status(), 'an expired slug must not reach CodeController');
     }
 
     // ============================================================
