@@ -3352,3 +3352,18 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 
 - **Execution:** a worker subagent produces T3 r1.6, with the participant provisionally in CG1 (package §2.9). A fresh independent subagent reviews it, then the reconciliation follows. The review criteria are those of package §2.9.
 - **Not authorized:** the E2b amendment, VP12, VP11, O3 preparation, E3, E3b, E4 and E5.
+
+
+## F-LOG-0267 — **Executor (2026-10-11): T3 re-derived to r1.6 under VP14 = P-c (F-LOG-0266).** Reviewed; nothing adopted
+- **Artifact:** `R7/T3-CANDIDATE-MODEL.md` r1.6. Worker subagent; two fresh independent reviews, both PASS_WITH_LIMITATIONS with nothing blocking:
+  - the first gave findings K1–K8, applied by the worker;
+  - the second verified K1–K8 and gave L1–L7, applied by the main analyst and not re-reviewed.
+- **Result:**
+  - Sides: CB1 records (C13–C18, C23, C24, C27) and CB23 norm-and-work (C2–C12, C19–C21; the exact union of r1.5 CB2 and CB3).
+  - CB4 stays an open slot, not a side (VP10 (iii)). C25, C26 and C28 are stated exceptions held in it.
+  - C1 (provisionally in CG1) and C22 are exceptions: 9 + 14 + 5 = 28.
+  - Elements go from 29 to 28.
+  - Crossing criterion K-c [E] applied to all 83 T2 rows: 37 cross / 38 internal to CB23 / 1 internal to CB1 / 3 touch CB4 / 4 none. The sensitivities are disclosed: the class rule (−5), rule 2 (−2), the K6 borderlines, and the participant placement.
+- **Material disclosure for VP12:** the 𝐑₀ neutrality of P-c is **conditional on C1 being counted on CB23**. Under VP12 (i), if C1 spans the sides, R25 (H-D D-chg), R5, R6, R10, R19, R63 and R76 cross, while the H-B change and conformance clauses (R30–R34, R37) name no actor. The cut would then be **H-D-asymmetric**. The premise recorded in F-LOG-0265 is therefore conditional on VP12. Register r1.14 records this.
+- **Out of scope; needs a separate act:** R21 is missing from the T3 §1b grouping guard list. The gap dates from r1.5.
+- **Unchanged:** E2b is not amended and no VP is decided. **Next:** VP12, then VP11, each by its own act. E3, E3b, E4 and E5 are not authorized.
