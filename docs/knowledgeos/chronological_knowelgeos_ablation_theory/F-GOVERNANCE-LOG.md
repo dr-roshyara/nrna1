@@ -3311,3 +3311,13 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Mid-run incident:** the worker subagent hit the account's API rate limit after it had finished the r4 edits. r4 integrity was confirmed by the fifth review: no half-edits.
 - **Standing qualifier:** one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable.
 - **Status:** awaiting four separate Human ARB acts. **E3, E3b, E4 and E5 are not authorized.**
+
+
+## F-LOG-0263 — **Human act (Human ARB, 2026-10-11): VP10 revisited, RE-AFFIRMED (iii).** The O3 ruling is not made
+**The act** (`R7/E3-PREREQ-VP-DECISION-PACKAGE.md` r4.1 §1.8, as selected by the human; the human's pasted rationale preferred (iii) as preserving the adopted model's deliberate uncertainty without a new extension before VP14 is resolved):
+> "I, Human ARB, revisit VP10 as required by F-LOG-0258 and re-affirm VP10 = (iii): CB4 stays an explicit open slot, and CV8, CV9 and CS1 stay adopted and ungrouped. It decides only VP10. It does not authorize the preparation of an O3 proposal, nor E3, E3b, E4 or E5."
+
+- **The F-LOG-0258 revisit obligation is discharged.** The adopted model (F-LOG-0261) is unchanged, and no E2b amendment is needed. VP14 keeps its full option set.
+- **Not decided:** whether (iii) counts as VP10's decision for the register §3 O3 minimal set. This is a new decision item outside the register's options; package §1.8 has the draft. The human indicated that this ruling should follow, but it needs its own explicit act. Until it is made, the O3 set's VP10 condition is contested (package §1.7).
+- **Register:** r1.11 (VP10 rows annotated).
+- **Next:** the O3 new-item ruling (a separate act); then VP14; then VP12; then VP11. E3, E3b, E4 and E5 are not authorized.
