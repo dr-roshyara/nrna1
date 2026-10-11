@@ -3585,3 +3585,26 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - (e) the O3-preparation act.
 - **Next:** a worker records Amendment 1 in `R7/E2b-ADOPTION-TEXT.md`, append-only and with history preserved. A fresh independent review follows. Then act B.
 - **Not done by this act:** no VP decided; no spanning rule selected; asymmetry not accepted; register, ARB and T3 not amended; O3 preparation, E3, E3b, E4 and E5 not authorized; no evidence collection; no canonical terms.
+
+
+## F-LOG-0276 — **Executor (2026-10-11): act A APPLIED. `R7/E2b-ADOPTION-TEXT.md` r1.2 records Amendment 1**
+- **Recorded:** a worker appended §A1 (Act I + Act II, quoted verbatim from F-LOG-0275), resolved for C-α (b) and C-γ return. Superseded baseline sentences are tagged in place, and nothing is deleted. Stripping the additions yields r1.1 byte for byte, apart from the title; this was checked twice.
+- **Fresh independent review: PASS_WITH_LIMITATIONS.**
+  - Every quoted clause matches F-LOG-0275, and no (a) or "confirm" text survives.
+  - Counts: 27 elements; 7 decided or recorded, 13 open.
+  - Invariants hold.
+  - The minor tagging and wording fixes K1–K4 were applied and not re-reviewed.
+- **Adopted model now (E2b r1.2):**
+  - Basis: P-c. CB1 and CB23 are adopted by membership and trace; CB4 is an open slot.
+  - 27 elements.
+  - VP12 (i).
+  - VP11 (ii): consistency only. Cross-grouping constraints are the ten enumerated rows, pending the returned guard-row question.
+  - The S/S′/S″ disclosure is carried.
+- **Open:**
+  - (c) the register/ARB sync (act B, next);
+  - (d′) the M5 cells;
+  - the C-γ guard-row question;
+  - R11;
+  - (e) the O3-preparation act.
+
+  E3 is not authorized.
