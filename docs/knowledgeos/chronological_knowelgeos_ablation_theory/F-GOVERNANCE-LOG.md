@@ -3474,3 +3474,24 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Note (analyst):**
   - "does not decide VP11": VP11 was already decided (ii) by F-LOG-0269, and this disposition leaves that unchanged.
   - "does not withdraw F-LOG-0265's premise": the premise stands as recorded, and T3 r1.7 records that it holds under S′/S″ but not under S. Any O3/E3 proposal must present both.
+
+
+## F-LOG-0272 — **Executor (2026-10-11): three post-decision amendment proposals READY.** Nothing applied, nothing decided
+**Fixed presentation order:** C → A → B. Each is a separate Human ARB act, and none implies another.
+
+| | Proposal | Target | Final rev | Review history (fresh independent subagents) |
+|---|---|---|---|---|
+| C | `R7/T3-SYNC-PROPOSAL.md` | T3 r1.7 → r1.8: R21 into §1b; F8 items; VP11 status; optional **P1a′ (R11)** | r1.3 | r0 PWL, r1 PWL, final cross-check PWL. Fixes T1–T7, U1 and U2 not re-reviewed |
+| A | `R7/E2b-AMENDMENT-1-PROPOSAL.md` | E2b r1.1, Amendment 1: P-c basis (CB1 and CB23; CB4 stays a slot; **27 elements**); VP12 (i); VP11 (ii) consistency notion; the F-LOG-0271 S/S′/S″ disclosure | r2.2 | r0 PWL, r1 PWL, r2 PWL, final cross-check PWL. Fixes I1–I5 not re-reviewed |
+| B | `R7/REGISTER-ARB-SYNC-PROPOSAL.md` | register r1.18 → r1.19, ARB r4.3 → r4.4: the F-LOG-0264 sync plus optional housekeeping (H1–H12, AH1–AH4) | r2.2 | r0 PWL, r1 PWL, r2 PWL, final cross-check PWL. Fixes S1–S9 and J1–J3 not re-reviewed |
+
+- **Choices the acts present** (none has a default):
+  - C: (A) R21 only, guard list non-exhaustive, R11 open; or (B) R21 and R11.
+  - A: C-α, admit the "consistency / transaction" row as identified, or consistency only. C-β, confirm 27 (the 28 option is withdrawn, because it would decide VP10 (i) by implication). C-γ, confirm the ten-row constraint list or return the guard-row question. An optional split into Act I and Act II.
+  - B: ARB option A, B or C; the housekeeping subsets; H11 disclose or mark.
+- **Disclosures:**
+  - The pre-act disclosure for F-LOG-0269 omitted R11 (T3-SYNC §1.2 evidence).
+  - The E2b CB1 and CB23 cells are adopted by membership and trace only; the per-reading host lists are reported as T3 [E], not ratified; new open item (d′), the M5 cells.
+  - C's act number, which the drafts expect as F-LOG-0272, will be the next free id. Every placeholder is filled from the log when applied.
+  - A cites C at r1.2, whose §1.2 and patch text are unchanged in r1.3.
+- **Standing:** no VP decided, no spanning rule selected, asymmetry not accepted. O3 preparation, E3, E3b, E4 and E5 are not authorized.
