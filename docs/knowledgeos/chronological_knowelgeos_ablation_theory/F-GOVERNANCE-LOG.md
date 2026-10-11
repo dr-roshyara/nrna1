@@ -3510,3 +3510,14 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Closes:** F-LOG-0271 open item (d) (R21 and F8), with R11 left open.
 - **Placeholder fill:** wherever the sibling proposals A and B write "F-LOG-[T3-SYNC id]", read **F-LOG-0273**.
 - **Next:** a worker applies the patch to T3, a fresh independent review checks it, and the result is recorded. Then act A, then act B. No VP decided; no spanning rule selected; asymmetry not accepted; E2b not amended; O3 preparation, E3, E3b, E4 and E5 not authorized.
+
+
+## F-LOG-0274 — **Executor (2026-10-11): act C APPLIED. T3 r1.8 reviewed and PASSED**
+- **Applied:** `R7/T3-CANDIDATE-MODEL.md` r1.7 → r1.8. A worker applied the base variants of option (A), the 14 edits authorized by F-LOG-0273. Every anchor matched exactly once. The `F-LOG-[act]` placeholders were filled as F-LOG-0273, 7 occurrences.
+- **Fresh independent review: PASS.** The reviewer applied the proposal's base blocks to the committed r1.7 with a script, and the result was byte-identical to the applied file. There were no extra or missing edits, and no P1a′ text. R11 is absent from §1b, the list is marked non-exhaustive, and R11 is recorded as an open question in §6 item 1. Superseded text is struck, apart from the two exceptions the proposal itself makes. Tables are intact, and scope is limited to the authorized lines. The standing qualifier is verbatim.
+- **Informational notes (no change needed):**
+  - the applied text cites proposal r1.2 (see the F-LOG-0273 version note);
+  - the status line's "no VP decided" means none is decided by this act (VP11 was decided by F-LOG-0269);
+  - the proposal's self-check slightly overstates "struck, never deleted";
+  - this entry is the review the r1.8 status line does not mention.
+- **Closed:** F-LOG-0271 item (d), R21 and the F8 items. R11 stays open. **Next:** act A (the E2b amendment), then act B. E3 is not authorized.
