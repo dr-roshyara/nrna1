@@ -3862,3 +3862,31 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - D7 has a loose label: it lists B-conf among the "change clauses".
 - **Status:** (d′) is applied in T3, and the CB1/CB23 cells are restated per reading. They remain "[E] candidate, not adopted".
 - **Next (F-LOG-0285 step 2):** an E2b Amendment 2 proposal to adopt the synced CB1/CB23 §2 rows per reading. It must also cover the deferred CB1 R4 gaps (proposal §4) and the E2b text that would be superseded (the r1.7 pin, the "stale cells not adopted" wording, G6, D6, and the (d′) rows).
+
+
+## F-LOG-0289 — **Executor (2026-10-12): E2b Amendment 2 proposal READY** (`R7/E2b-AMENDMENT-2-PROPOSAL.md` r1.1). F-LOG-0285 step 2. Nothing amended
+- **Proposes:** adopting the whole synced CB1/CB23 §2 rows of T3 r1.9, per reading, with no reading selected.
+  - The trace source moves from r1.7 to r1.9, and the G6 restriction is lifted.
+  - The R25/R38 R4 ids under S stay "none".
+  - The model stays at 27 elements, and CB4 stays a slot.
+  - Annexes A and B hold the cell texts, byte-identical to T3 r1.9.
+- **Reviews** (fresh `kos-theory-reviewer`):
+  - r0: PASS_WITH_LIMITATIONS, 3 material findings: an undisclosed loose label, an overstated R24 "fact", and an invalid reason for the exclusion. 8 minor. All fixed in r1.
+  - r1 verification: PASS_WITH_LIMITATIONS, 1 material finding: the R24 re-count was overstated; it is now a T3 drafting ambiguity, with the 13/8 vs 14/9 readings both [E]. 4 minor. All fixed in r1.1, **not re-reviewed**.
+- **Choices in the act (no defaults):**
+  - **(2) Host lists:**
+    - R-a: ratify the §A1.3/§A1.4 lists per reading.
+    - R-b: keep them as a report; adopt the cells as trace only.
+    - R-c: ratify only the hosting stated in the adopted cells.
+  - **(3) Known incompleteness:**
+    - I-a: adopt the rows as they stand, with the gaps disclosed as D12 and completion as open item (g).
+    - I-b: Return, and first make a rule for cell content plus a T3 completion.
+  - **(4) §1a cells:**
+    - h-i: §2 rows only; §1a becomes open item (h).
+    - h-ii: also adopt the §1a T-A/T-B cells.
+- **Effect if approved with I-a:**
+  - E3-BC1, E3-BC23, the E3-PP placement and the context columns would satisfy the trace criterion under reading (b). Still open [O]: the R25/R38 "none", and whether rows known to be incomplete suffice.
+  - E3-REL and the cut-status columns depend on R; R24 is [O] under every option.
+  - **Nothing is accepted by this act.** Re-assessing the ⚠E3b outputs needs its own act.
+- **Register/ARB:** no sync needed for accuracy.
+- **Status:** awaiting the Human ARB act. E4 and E5 are not authorized.
