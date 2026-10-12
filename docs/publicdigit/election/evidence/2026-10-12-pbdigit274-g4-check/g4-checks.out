@@ -1,0 +1,65 @@
+-- 1. identity and server
+     current_database     |     current_user      |     session_user      
+--------------------------+-----------------------+-----------------------
+ pbdigit274_isolated_test | pbdigit274_test_owner | pbdigit274_test_owner
+(1 row)
+
+                                                   version                                                    
+--------------------------------------------------------------------------------------------------------------
+ PostgreSQL 18.6 on x86_64-redhat-linux-gnu, compiled by gcc (GCC) 16.1.1 20260515 (Red Hat 16.1.1-2), 64-bit
+(1 row)
+
+ server_version_num 
+--------------------
+ 180006
+(1 row)
+
+-- 2. role flags
+        rolname        | rolsuper | rolinherit | rolcreatedb | rolcreaterole | rolreplication | rolbypassrls | rolcanlogin | rolconnlimit 
+-----------------------+----------+------------+-------------+---------------+----------------+--------------+-------------+--------------
+ pbdigit274_test_owner | f        | t          | f           | f             | f              | f            | t           |           -1
+(1 row)
+
+-- 3. role memberships (expected: none)
+ member_of 
+-----------
+(0 rows)
+
+-- 4. database owner and ACL
+         datname          |         owner         |                      datacl                       
+--------------------------+-----------------------+---------------------------------------------------
+ pbdigit274_isolated_test | pbdigit274_test_owner | {pbdigit274_test_owner=CTc/pbdigit274_test_owner}
+(1 row)
+
+-- 5. CONNECT privilege of this role on every database that allows connections (privilege level only; no connection attempted)
+         datname          | can_connect 
+--------------------------+-------------
+ nrna_test                | t
+ nrna_test_adjudication   | t
+ pbdigit274_isolated_test | t
+ postgres                 | t
+ publicdigit              | t
+ publicdigit_db           | t
+ template1                | t
+(7 rows)
+
+-- 6. public schema owner and CREATE privilege
+ nspname |       owner       | can_create 
+---------+-------------------+------------
+ public  | pg_database_owner | t
+(1 row)
+
+-- 7. plpgsql available and usable
+ lanname | can_use 
+---------+---------
+ plpgsql | t
+(1 row)
+
+-- 8. existing user tables (expected: none in a fresh database)
+ user_tables 
+-------------
+           0
+(1 row)
+
+-- 9. pg_hba rules (needs superuser or pg_read_all_settings; may be refused)
+psql:g4-checks.sql:24: ERROR:  permission denied for view pg_hba_file_rules

@@ -1,0 +1,3 @@
+$ . ./.pbdigit274.env && PBDIGIT274_TEST_DB=pbdigit274_isolated_tes vendor/bin/phpunit -c phpunit.pbdigit274.xml --list-tests
+PBDIGIT-274 isolated database guard: REFUSED [not_approved] 'pbdigit274_isolated_tes' is not the approved database.
+exit=1

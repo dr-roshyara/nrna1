@@ -1,0 +1,18 @@
+# Step C (after the pg_hba.conf change and pg_reload_conf()), run by the Human PO as superuser:
+#   sudo -u postgres psql -X -d postgres -c "SELECT line_number, type, database, user_name, address, netmask, auth_method, error FROM pg_hba_file_rules ORDER BY line_number;"
+# Pasted into the session on 2026-10-12; copied unchanged (PIN prompts omitted; no secrets).
+
+ line_number | type  |          database          |        user_name        |  address  |                 netmask                 |  auth_method  | error
+-------------+-------+----------------------------+-------------------------+-----------+-----------------------------------------+---------------+-------
+         112 | host  | {pbdigit274_isolated_test} | {pbdigit274_test_owner} | 127.0.0.1 | 255.255.255.255                         | scram-sha-256 |
+         113 | host  | {pbdigit274_isolated_test} | {pbdigit274_test_owner} | ::1       | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | scram-sha-256 |
+         114 | host  | {all}                      | {pbdigit274_test_owner} | 0.0.0.0   | 0.0.0.0                                 | reject        |
+         115 | host  | {all}                      | {pbdigit274_test_owner} | ::        | ::                                      | reject        |
+         116 | local | {all}                      | {pbdigit274_test_owner} |           |                                         | reject        |
+         118 | local | {all}                      | {all}                   |           |                                         | peer          |
+         120 | host  | {all}                      | {all}                   | 127.0.0.1 | 255.255.255.255                         | scram-sha-256 |
+         122 | host  | {all}                      | {all}                   | ::1       | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | scram-sha-256 |
+         125 | local | {replication}              | {all}                   |           |                                         | peer          |
+         126 | host  | {replication}              | {all}                   | 127.0.0.1 | 255.255.255.255                         | ident         |
+         127 | host  | {replication}              | {all}                   | ::1       | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | ident         |
+(11 rows)

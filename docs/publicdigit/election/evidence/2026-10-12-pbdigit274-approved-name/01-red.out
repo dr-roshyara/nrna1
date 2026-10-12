@@ -1,0 +1,39 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+FE............................................................... 65 / 85 ( 76%)
+..................F.                                              85 / 85 (100%)
+
+Time: 00:01.903, Memory: 12.00 MB
+
+There was 1 error:
+
+1) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_g4_name_passes_with_the_committed_approval
+Tests\Isolated\Pbdigit274\Support\IsolatedDatabaseRefused: [not_approved] No database is approved yet (gate G4); every name is refused.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Support/DatabaseIdentityGuard.php:69
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:46
+
+--
+
+There were 2 failures:
+
+1) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_approved_database_is_the_g4_name
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'pbdigit274_isolated_test'
++''
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:41
+
+2) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_the_approved_name_still_has_to_pass_the_identity_check
+Failed asserting that 'PBDIGIT-274 isolated database guard: REFUSED [not_approved] No database is approved yet (gate G4); every name is refused.\n
+' [ASCII](length: 122) contains "[connection_failed]" [ASCII](length: 19).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:90
+
+ERRORS!
+Tests: 85, Assertions: 186, Errors: 1, Failures: 2.

@@ -1,0 +1,25 @@
+# Step A (before any change), run by the Human PO / administrator as superuser:
+#   sudo -u postgres psql -X -d postgres
+# Pasted into the session on 2026-10-12; copied unchanged (no secrets in it).
+
+            hba_file
+---------------------------------
+ /var/lib/pgsql/data/pg_hba.conf
+
+ listen_addresses
+------------------
+ localhost
+
+ port
+------
+ 5432
+
+ line_number | type  |   database    | user_name |  address  |                 netmask                 |  auth_method  | error
+-------------+-------+---------------+-----------+-----------+-----------------------------------------+---------------+-------
+         113 | local | {all}         | {all}     |           |                                         | peer          |
+         115 | host  | {all}         | {all}     | 127.0.0.1 | 255.255.255.255                         | scram-sha-256 |
+         117 | host  | {all}         | {all}     | ::1       | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | scram-sha-256 |
+         120 | local | {replication} | {all}     |           |                                         | peer          |
+         121 | host  | {replication} | {all}     | 127.0.0.1 | 255.255.255.255                         | ident         |
+         122 | host  | {replication} | {all}     | ::1       | ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff | ident         |
+(6 rows)

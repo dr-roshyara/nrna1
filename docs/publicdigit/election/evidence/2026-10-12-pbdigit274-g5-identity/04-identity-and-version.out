@@ -1,0 +1,17 @@
+$ psql (read-only) in pbdigit274_isolated_test as pbdigit274_test_owner
+     current_database     |     current_user      | server_addr | server_port 
+--------------------------+-----------------------+-------------+-------------
+ pbdigit274_isolated_test | pbdigit274_test_owner | 127.0.0.1   |        5432
+(1 row)
+
+                                                   version                                                    
+--------------------------------------------------------------------------------------------------------------
+ PostgreSQL 18.6 on x86_64-redhat-linux-gnu, compiled by gcc (GCC) 16.1.1 20260515 (Red Hat 16.1.1-2), 64-bit
+(1 row)
+
+ user_tables 
+-------------
+           0
+(1 row)
+
+exit=0

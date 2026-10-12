@@ -1,0 +1,3 @@
+$ psql -X -h 127.0.0.1 -p 5432 -U pbdigit274_test_owner -d postgres -c "SELECT 1"   (password from .pbdigit274.env via PGPASSWORD; not shown)
+psql: error: connection to server at "127.0.0.1", port 5432 failed: FATAL:  pg_hba.conf rejects connection for host "127.0.0.1", user "pbdigit274_test_owner", database "postgres", no encryption
+exit=2

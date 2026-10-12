@@ -1,0 +1,35 @@
+$ psql (read-only) in pbdigit274_isolated_test after the run
+     current_database     |     current_user      
+--------------------------+-----------------------
+ pbdigit274_isolated_test | pbdigit274_test_owner
+(1 row)
+
+ user_tables 
+-------------
+          99
+(1 row)
+
+ migrations_run 
+----------------
+            224
+(1 row)
+
+ voter_slug_steps_rows | organisations 
+-----------------------+---------------
+                     0 |             0
+(1 row)
+
+                       indexname                       
+-------------------------------------------------------
+ voter_slugs_election_id_user_id_unique
+ voter_slugs_expires_at_index
+ voter_slugs_has_voted_index
+ voter_slugs_is_active_index
+ voter_slugs_organisation_id_election_id_user_id_index
+ voter_slugs_pkey
+ voter_slugs_slug_unique
+ voter_slugs_vote_completed_at_index
+ voter_slugs_voter_id_index
+(9 rows)
+
+exit=0

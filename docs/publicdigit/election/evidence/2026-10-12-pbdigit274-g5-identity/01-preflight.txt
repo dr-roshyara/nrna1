@@ -1,0 +1,13 @@
+# 01 pre-flight (no connection)
+head=84e551120c419c985349d5cffc2c56ef908624ef
+date=2026-10-12T22:54:13+02:00
+PBDIGIT274_TEST_DB is set
+PBDIGIT274_DB_HOST is set
+PBDIGIT274_DB_PORT is set
+PBDIGIT274_DB_USERNAME is set
+PBDIGIT274_DB_PASSWORD is set
+PBDIGIT274_TEST_DB value: pbdigit274_isolated_test
+PBDIGIT274_DB_HOST value: 127.0.0.1
+bootstrap/cache/config.php absent
+APP_CONFIG_CACHE unset
+24:    public const APPROVED_NAME = 'pbdigit274_isolated_test';
