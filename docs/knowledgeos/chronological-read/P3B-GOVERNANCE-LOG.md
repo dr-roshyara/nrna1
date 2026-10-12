@@ -2189,3 +2189,16 @@ The two `sha256sum` listings must be identical.
 | Still in force | D-ETR-1 = O1 (G-LOG-0125) and OMQ-14 (per-label reading scope, G-LOG-0017) until the human approves the reviewed protocol by a separate act; no corpus read is authorized by this entry |
 | Constraints for the draft (from the record) | frozen prereg_v2 (G-LOG-0137) and the H-19 addendum v1.5 unchanged; hold-out sealed (discovery population only; ContentResolver seal check); firewall for the ETR package §3 contamination channels (G3 contract text and PENDING S5 clauses, S5 error audit θ_E and H-06 reviewers); the shared reader `p3b_read_source.py` and production ledgers untouched; separate checkout outside PROD's `.git` for any new tooling; pause during the run-3 quiet period |
 | Not authorized | corpus reads; tooling implementation; run-3 outside G-LOG-0117; G3–G5; any H-19 unseal |
+
+## G-LOG-0139 — Record: theory-track protocol artifacts drafted under G-LOG-0138 (no decision)
+
+| Field | Value |
+|---|---|
+| Nature | record of artifacts, at the human's instruction 2026-10-13 ("yes, record it in the governance log"). It decides and authorizes nothing |
+| Location | W worktree `/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1-s5-g1`, branch `s-series/s5-r7-v29-repair`, commit **`40b0b1f5a`**, directory `docs/knowledgeos/chronological-read/audit-p3b/theory-track/`. Not present on PROD's branch `knowelegeos-modelling`; not pushed. Read from PROD with `git show s-series/s5-r7-v29-repair:<path>` |
+| `THEORY-TRACK-PROTOCOL-v0.md` | sha256 `c430993931c376fb00276d782db32df15faadd7cfa9cd3651e71ac97e7a49c07`, DRAFT v0, superseded, kept as the reviewed version |
+| `THEORY-TRACK-PROTOCOL-v1.md` | sha256 `07401d1ccb6b7750bed7b302f2a8ccdcc0eb8732b0c37e42984e06acb558ac57`, **current DRAFT**; defines option O3c, act texts T-0…T-7 and the HUMAN items |
+| `THEORY-TRACK-PROTOCOL-REVIEW.md` | sha256 `4dd18d223e2720effffce9fef4b5455615d19bd5753a124caa1bc1e2a6e6c4d9`, independent review record: v0 PASS WITH REQUIRED CORRECTIONS (8 required); v1 re-review RESOLVED WITH NOTES A–E (A and D before T-5/T-7; none blocks T-0) |
+| Provenance | drafted by a worker subagent and reviewed by a fresh-context reviewer subagent; neither read corpus, discovery data, ledgers, hold-out or seal-list contents; hashes re-verified by the orchestrator at recording |
+| State | O1 (G-LOG-0125) and OMQ-14 (G-LOG-0017) in force; H-19 sealed and S5c prohibited (P3B-ESC-0001, l.848). Pending human decisions: T-1 route (a act / b P3b amendment / c keep O1) and T-0 form (carve-out / replacement) |
+| Not authorized | corpus reads; tooling; any theory-track execution; run-3 outside G-LOG-0117; G3–G5; any H-19 unseal |
