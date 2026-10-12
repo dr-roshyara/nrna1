@@ -2027,3 +2027,16 @@ The two `sha256sum` listings must be identical.
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Still open | the disclosed discovery-input read (2026-10-12; names and counts only, no FOUND outcomes) awaits the human's ruling; P2-1; P2-7 for H2/H3; P2-3…P2-6; P3-1…P3-8; X-5; X-6 |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
+
+## G-LOG-0127 — Human ruling: discovery-input read of 2026-10-12 recorded as a disclosed deviation, no further effect
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "Record it as a disclosed deviation, no further effect" |
+| Event (FACT, disclosed by the agent itself) | During the independent read-only review of the H5 dimension specification (2026-10-12), a fresh-context reviewer subagent ran one descriptive count over `P3B-DISCOVERY-SEARCH.jsonl` (pre-S5 discovery input; a governed derived file, GL l.417; not S5 output, not the hold-out, not corpus text). The orchestrator's brief excluded corpus, S5 output and hold-out but did not name this file, and authorized no data reads |
+| What was seen | dimension names and counts only: per-dimension caps on FOUND-eligible share (0.22–0.71 over 2,452 labels; NEGATIVE-CENSUS excluded) and a count of 22 ordered pairs with margin-relative H ≥ 0.8 on the eligibility matrix (1 on the NOT-EVIDENCED matrix). No FOUND outcomes (none exist before S5), no S-ids, no source text |
+| Use so far | none for any decision: no dimension, parameter or grid value was chosen from these figures (the later protocol v0 used a priori grids; its review flagged two values as near other frozen or post-hoc figures, R9, not these) |
+| Ruling | **disclosed deviation, no further effect.** No firewall or reviewer restriction is added; recorded decisions G-LOG-0118–0126 stand |
+| Prevention (recorder's practice, not a new rule) | reviewer briefs name `P3B-DISCOVERY-SEARCH.jsonl` and every `*.jsonl` data file as forbidden (applied from the protocol v0 review onward) |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); OMQ-14 and D-ETR-1 = O1 (G-LOG-0125) |
+| Not authorized | any data or corpus read; any P1–P3 choice; G3–G5 |
