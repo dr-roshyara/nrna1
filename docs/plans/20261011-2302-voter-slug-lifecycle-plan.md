@@ -1,13 +1,14 @@
 # Plan: PBDIGIT-274, voter-slug lifecycle: revision 10 (consolidated, FROZEN for decisions)
 
-> **Governed copy (ES-004.2), created 2026-10-11 23:02.** The working draft is `.claude/plans/distributed-snuggling-swan.md`; the content is identical at the time of copying, except this note. Keep both in sync until the PO decides which one is the reference. For S1's status, see section 18.
+> **Governed copy (ES-004.2), created 2026-10-11 23:02.** The working draft is `.claude/plans/distributed-snuggling-swan.md`; the content is identical at the time of copying, except this note. **The PO decided on 2026-10-12 that this governed copy is canonical;** the working draft is now only a pointer. For S1's status, see section 18.
 
 **Status: PLAN APPROVED (G2) by the Human PO / ARB, 2026-10-11, in session.** Frozen at rev 10 plus R11-1, with the decisions in section 2.1a.
-- **Implementation is authorised for slice S1 only** (database-free; strict TDD; no database, no migration, no commit).
-- **Every other slice, the migration (G3), the isolated database (G4 / G5), G6, G7 and G8 remain separately gated and unapproved.**
+- **S1** was authorised and is done (database-free; in HEAD via `4d83dffc0`).
+- **G3 approved 2026-10-12** (the migration design, sections 11 + 11.0; implementation in S2 and execution **on the isolated test database only**).
+- **S2 implementation still needs its own explicit authorisation** and is blocked by G4. Every later slice, G4, G5, G6, G7 and G8 remain open. **No production migration or deployment is authorised.** *(Status updated 2026-10-12.)*
 - Further decisions: **O-9 = (a)**, a missing environment variable means the documented default 30. **O-10 = (B)**, strict validation everywhere. Its R4–R8 reader changes belong to S6, behind the characterisation precondition in section 6. **O-5 is still open (before S7).**
 
-**Mandatory gates (none is met):**
+**Mandatory gates (status 2026-10-12: G2 and G3 met; G1 not executed as a separate review, G2 was granted without it; G4–G8 open):**
 - **G1:** independent Principal Review of rev 10, checked **against the finding register (section 17) only**, not a fresh review from scratch.
 - **G2:** explicit Human PO / ARB approval of the plan and of every decision marked "plan prerequisite" (section 2.2).
 - **G3:** separate migration approval (section 11). **APPROVED 2026-10-12** (design, section 11 + 11.0; isolated test database only).
@@ -16,7 +17,7 @@
 - **G6:** the real two-process, two-connection concurrency test **executed and passed**. A simulation never satisfies it.
 - **G7:** the cast success / failure contract (section 9) **executed and passed**.
 - **G8:** the release order: **the migration (G3) runs before any 274 code is deployed.** Otherwise the new issuer's replacements hit the old `voter_slugs_election_id_user_id_unique` [F `create_uuid_voter_slugs_table.php:38`], get classified as "unknown constraint", and every expired voter receives `VoterSlugIssuanceConflict`.
-- **S1** (database-free) needs its own explicit authorisation.
+- **S1** (database-free) needed its own explicit authorisation: granted 2026-10-11, done. **S2** needs its own explicit authorisation: not granted.
 
 **Evidence labels:**
 - **[F]** a fact established by **read-only code inspection** on 2026-10-11 (file:line). It is **not** runtime evidence;
@@ -411,7 +412,7 @@
 - A retention / erasure policy is follow-up work (backlog).
 - **If O-12 = (b):** protection (`restrict` foreign keys or archival) is a separate scope with its own migration approval, **not** implemented in 274.
 
-## 11. Migration (G3; NOT APPROVED FOR EXECUTION)
+## 11. Migration (G3 APPROVED 2026-10-12 for the isolated test database only; production execution NOT approved, needs G8)
 - **[F]** Laravel v11.41.3: the Migrator transaction only if pgsql and `$withinTransaction` (`Migrator.php:399-417`); a nested transaction is a savepoint (`ManagesTransactions.php:145-167`); non-concurrent index DDL is transactional.
 - **[D]:** a named class, `$withinTransaction=true`; its own transaction around `checkPreconditions → dropOldIndex → createActiveIndex` (partial unique `(election_id, user_id) WHERE deleted_at IS NULL`).
 - **Preconditions:** pgsql; the old index exists; no duplicate current rows; the target absent.
@@ -462,7 +463,7 @@ This sub-section makes section 11 precise where the review found it imprecise. I
 
 **S2 acceptance (replaces the S2 row of section 13):** tests 1–5 above (with S2-1, S2-4 and the extended test 4); behaviour tests S2-2 (a)–(d); `PgUniqueViolationShapeTest`; the S2-3 identity check executed before every run; the S1 regression still green. The demo table stays outside S2 (decision 2.1: hard delete and a new row each time).
 
-### 11.1 Migration-first release runbook (R9-5; to be approved with G3 / G8; not executed)
+### 11.1 Migration-first release runbook (R9-5; G3 approved the design only; **this runbook is approved with G8**; not executed)
 
 **[F] What the old code does once the partial index is in place.** The interval in which only the migration has run is **not** neutral:
 - the old `createNewSlug` (soft delete, then insert, `VoterSlugService.php:406-438`) **starts succeeding** where it used to fail on the plain unique index. Old-semantics replacement rows can therefore appear **during the interval**;
