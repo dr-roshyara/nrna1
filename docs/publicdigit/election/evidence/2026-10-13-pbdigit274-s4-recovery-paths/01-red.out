@@ -1,0 +1,39 @@
+head=172d9934f691d370e41cb7d9628c1fbf3c900415
+date=2026-10-13T00:35:29+02:00
+note: RED for VoterSlugController::start/restart (real election)
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDEED                                                           9 / 9 (100%)
+
+Time: 00:03.425, Memory: 30.00 MB
+
+There were 2 errors:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_voter_start_issues_then_reuses_and_replaces_after_expiry
+Illuminate\Routing\Exceptions\UrlGenerationException: Missing required parameter for [Route: slug.code.create] [URI: v/{vslug}/code/create] [Missing parameter: vslug].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/Exceptions/UrlGenerationException.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/RouteUrlGenerator.php:90
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:544
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:205
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugIssuanceEntryPointsTest::test_voter_restart_keeps_a_valid_link_and_replaces_an_expired_one
+Illuminate\Routing\Exceptions\UrlGenerationException: Missing required parameter for [Route: slug.code.create] [URI: v/{vslug}/code/create] [Missing parameter: vslug].
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/Exceptions/UrlGenerationException.php:35
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/RouteUrlGenerator.php:90
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:544
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php:509
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php:853
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php:224
+
+ERRORS!
+Tests: 9, Assertions: 33, Errors: 2, Deprecations: 3.
+exit=2

@@ -1,0 +1,45 @@
+head=172d9934f691d370e41cb7d9628c1fbf3c900415
+date=2026-10-13T00:36:12+02:00
+note: GREEN for VoterSlugController::start/restart (real election)
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuanceEntryPointsTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDDDD                                                           9 / 9 (100%)
+
+Time: 00:04.373, Memory: 30.00 MB
+
+OK, but there were issues!
+Tests: 9, Assertions: 47, Deprecations: 3.
+exit=0
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDDDDDDDDDDDDD                                                18 / 18 (100%)
+
+Time: 00:04.937, Memory: 30.00 MB
+
+OK, but there were issues!
+Tests: 18, Assertions: 77, Deprecations: 3.
+exit=0
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerRealConcurrencyTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDD                                                                4 / 4 (100%)
+
+Time: 00:08.460, Memory: 24.00 MB
+
+OK, but there were issues!
+Tests: 4, Assertions: 56, Deprecations: 3.
+exit=0
