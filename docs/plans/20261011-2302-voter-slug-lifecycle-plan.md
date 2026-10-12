@@ -115,7 +115,7 @@
 - **O-14 = (a):** the step-1 demo-session bypass is an accepted residual risk owned by the Human PO, tracked in **PBDIGIT-275**. The tests document it and don't claim closure.
 - **O-15 = (a):** accept the pre-commit "vote confirmed" email for 274; L-18 characterises it; a **follow-up story** moves the email after commit.
 
-**Still open:** O-5 (before S7), O-9 and O-10 (before S1 / S6). **Plan approval (G2) itself is a separate explicit act.**
+**Still open:** O-5 (before S7). *(O-9 = (a) and O-10 = (B) were decided later on 2026-10-11; see the status block at the top.)* **Plan approval (G2) itself is a separate explicit act.**
 
 ### 2.2 Decision register (the options as presented; O-6, O-6b, O-7, O-11, O-12, O-13, O-14 and O-15 are now decided, see section 2.1a). Recommendations (from the Principal Reviewer and Claude) are **not** decisions.
 
@@ -549,7 +549,7 @@ This sub-section makes section 11 precise where the review found it imprecise. I
 | Slice | Tests | Database | Blocked by |
 |---|---|---|---|
 | S1 | `VoterSlugLifetimeTest`; `VerifyVoterSlugTest` (delegation, order, misconfiguration); `VoterSlugBindingTest` (no database) | no | O-9, O-10, separate authorisation |
-| S2 | section 11 tests 1–5; `PgUniqueViolationShapeTest` | yes | G3, G4 |
+| S2 | **superseded by the S2 acceptance in section 11.0** (section 11 tests 1–5 incl. the extended test 4, behaviour tests S2-2 (a)–(d), `PgUniqueViolationShapeTest`, identity check S2-3, S1 regression) | yes | G4 and the S2 authorisation (G3 met 2026-10-12) |
 | S3a | `VoterSlugIssuerTest` (section 5.1 cases, L-4–L-9, L-15 refusals, lost entitlement, misconfiguration, outer transaction) | yes | G4 |
 | S3b | `VoterSlugIssuerConflictTest` (simulation) | yes | G4 |
 | S3c | `VoterSlugIssuerRealConcurrencyTest` (G6) | yes | G4 |
