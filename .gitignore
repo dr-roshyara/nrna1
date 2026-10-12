@@ -37,3 +37,6 @@ __pycache__/
 *.pyc
 docs/knowledgeos/chronological-read/20-FAMILIES/_derived.json
 docs/knowledgeos/chronological-read/P3B-ABSENCE-SEARCH.jsonl
+
+# PBDIGIT-274 isolated test database settings (holds a password; local only)
+/.pbdigit274.env

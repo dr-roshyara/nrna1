@@ -11,11 +11,15 @@
 | S2 migration design (G3) | ✅ approved, 2026-10-12 (isolated test database only) | plan, sections 11 and 11.0; `8b86967c4` |
 | S2 step 1: isolated-database identity guard (database-free) | ✅ in HEAD | `2e9017487`; evidence `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1/` (42 tests / 96 assertions); guide `developer_guide/election/voter_slug/03_isolated_database_guard.md` |
 | Independent review of S2 step 1 | ⚠️ **conditionally safe:** one High finding (H1) must be fixed before the first real-database run | read-only review subagent, 2026-10-12: 42 / 96 reproduced, 19 / 19 evidence checksums OK, `[missing]` and `[forbidden]` refusals reproduced |
-| Isolated test database (G4) | ⛔ **not provisioned. This blocks everything below** | no `PBDIGIT274_*` variables set (checked 2026-10-12) |
-| G5–G8 | not executed | plan, header |
+| S2 step 1b: review corrections (database-free) | ✅ in HEAD | `2c14db308`; evidence `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1b/` (69 tests / 167 assertions); `APPROVED_NAME` still empty |
+| `APPROVED_NAME` set | ✅ in HEAD | `bacef4220`: `'pbdigit274_isolated_test'`; evidence `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-approved-name/` (85 tests / 189 assertions) |
+| Isolated test database (G4) | ✅ **met 2026-10-12.** Was: names decided, not provisioned | PO 2026-10-12: database `pbdigit274_isolated_test`, role `pbdigit274_test_owner`; role confined by `pg_hba`, a login to `postgres` was refused; evidence `…/2026-10-12-pbdigit274-g4-check/`, `…-g4-isolation-fix/` |
+| G5 identity verification | ✅ **passed 2026-10-12** | evidence `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g5-identity/`; first database run: 4 tests / 9 assertions |
+| Step tracking by the slug's organisation | ✅ in HEAD | duplicate check `59ce21fbe` + tests `6e01ce0c1`; readers `b1364337f` + tests `e3d97b60f`; guide 04 |
+| G6–G8 | not executed | plan, header |
 
 ## A. Decisions by the Human PO / ARB
-- [ ] **A1 — G4:** provision an isolated PostgreSQL test database for this work only (**never `nrna_test`**) and name it exactly. Requirements: plan section 11.0 (S2-3) and guide 03.
+- [x] **A1 — G4** *(met 2026-10-12; `APPROVED_NAME` committed in `bacef4220`)*: ~~name it~~ **named 2026-10-12: `pbdigit274_isolated_test`, role `pbdigit274_test_owner`.** Still open: an authorised PostgreSQL operator provisions both and gives non-sensitive evidence that the database exists; the role owns the schema, can create tables, indexes, constraints and `plpgsql` functions, and can't connect to any other database; and the database is dedicated and may be wiped. Claude then verifies G4 against that evidence; only after that, setting `APPROVED_NAME` is a separate reviewable change. Originally: provision an isolated PostgreSQL test database for this work only (**never `nrna_test`**) and name it exactly. Requirements: plan section 11.0 (S2-3) and guide 03.
   - Connection details go in your shell as `PBDIGIT274_DB_HOST`, `_USERNAME`, `_PORT`, `_PASSWORD`, **never in a file**.
   - **Currently blocking.**
 - [x] **A1b:** authorise **S2 step 1b** *(authorised 2026-10-12)* (section B0: the review corrections; database-free, test-first). Can be done before A1.
@@ -43,7 +47,7 @@
   - **I4:** the second check covers only `RefreshDatabase`. Database tests must not use `DatabaseMigrations`, `DatabaseTruncation` or a direct `migrate:fresh`.
 
 ## B. S2, database part (Claude, after A1 + A2 + B0)
-- [ ] **B1 — G5 identity proof** (after `APPROVED_NAME` is set to the G4 name): a run through `phpunit.pbdigit274.xml` that records `current_database()` and `SELECT version()`, plus a deliberate wrong-name run that aborts. This also proves the in-test check inside a booted app.
+- [x] **B1 — G5 identity proof** *(passed 2026-10-12)* (after `APPROVED_NAME` is set to the G4 name): a run through `phpunit.pbdigit274.xml` that records `current_database()` and `SELECT version()`, plus a deliberate wrong-name run that aborts. This also proves the in-test check inside a booted app.
 - [ ] **B2 — RED tests** in `tests/Isolated/Pbdigit274/Database/`:
   - section 11 tests 1–5 (directly and through the Migrator);
   - behaviour tests S2-2 (a)–(d): archived plus current allowed; a second current rejected; several archived allowed; restoring an archived row while a current one exists rejected;

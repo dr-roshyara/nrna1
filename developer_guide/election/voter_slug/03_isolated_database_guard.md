@@ -1,6 +1,6 @@
 # 03: The isolated test database guard (PBDIGIT-274, S2 steps 1 and 1b)
 
-**Story:** `PBDIGIT-274` · **Plan:** `docs/plans/20261011-2302-voter-slug-lifecycle-plan.md` section 11.0, S2-3 (gates G4 / G5) · **Evidence:** `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1/` and `…-s2-step1b/` · **Status:** step 1 committed 2026-10-12 (`2e9017487`); step 1b (independent review corrections) committed 2026-10-12 with database-free tests passing, not pushed. Never run against PostgreSQL (needs G4). **No database is approved yet, so the guard refuses every name.**
+**Story:** `PBDIGIT-274` · **Plan:** `docs/plans/20261011-2302-voter-slug-lifecycle-plan.md` section 11.0, S2-3 (gates G4 / G5) · **Evidence:** `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1/` and `…-s2-step1b/` · **Status:** step 1 committed 2026-10-12 (`2e9017487`); step 1b (independent review corrections) committed 2026-10-12 with database-free tests passing, not pushed. G4 met 2026-10-12; `APPROVED_NAME = 'pbdigit274_isolated_test'` committed in `bacef4220`. **G5 passed 2026-10-12:** the real bootstrap identity check confirmed `pbdigit274_isolated_test`; a wrong name was refused before any connection; the first database run (4 tests) passed behind the in-app check. Evidence `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g5-identity/`.
 
 ## Purpose
 S2 onwards needs real PostgreSQL tests: the migration, concurrency, the vote contract. Those tests wipe their database (`migrate:fresh`). The normal test setup is pinned to the shared `nrna_test`:
@@ -30,7 +30,7 @@ PBDIGIT274_DB_PORT=5432  PBDIGIT274_DB_PASSWORD=… # optional
 vendor/bin/phpunit -c phpunit.pbdigit274.xml     # only after G4 and an authorisation
 ```
 
-**The approved name (step 1b, review finding H1).** `DatabaseIdentityGuard::APPROVED_NAME` holds the one database the PO approved under G4. It is **empty until then**, so every name is refused as `not_approved`, including other shared or development databases such as `publicdigit`. Setting it is a separate, reviewable commit made only after the PO names the database; the test `test_no_database_is_approved_before_g4` changes in the same commit.
+**The approved name (step 1b, review finding H1).** `DatabaseIdentityGuard::APPROVED_NAME` holds the one database the PO approved under G4. Since G4 (2026-10-12, `bacef4220`) it is **`pbdigit274_isolated_test`**. Every other name is refused as `not_approved`, including case variants and other shared or development databases such as `publicdigit`. Changing it again needs a new G4 approval and its own reviewable commit; `test_the_approved_database_is_the_g4_name` pins the value. An empty value refuses every name.
 
 **Refusal reasons** (in the order the bootstrap checks them):
 

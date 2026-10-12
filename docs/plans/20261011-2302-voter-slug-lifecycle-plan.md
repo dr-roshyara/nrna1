@@ -5,15 +5,17 @@
 **Status: PLAN APPROVED (G2) by the Human PO / ARB, 2026-10-11, in session.** Frozen at rev 10 plus R11-1, with the decisions in section 2.1a.
 - **S1** was authorised and is done (database-free; in HEAD via `4d83dffc0`).
 - **G3 approved 2026-10-12** (the migration design, sections 11 + 11.0; implementation in S2 and execution **on the isolated test database only**).
-- **S2 implementation still needs its own explicit authorisation** and is blocked by G4. Every later slice, G4, G5, G6, G7 and G8 remain open. **No production migration or deployment is authorised.** *(Status updated 2026-10-12.)*
+- **G4 met 2026-10-12** (`pbdigit274_isolated_test`, role `pbdigit274_test_owner`, confined by `pg_hba`; evidence `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g4-*`); `APPROVED_NAME` committed in `bacef4220`.
+- **G5 passed 2026-10-12** (identity verified by the bootstrap and inside the app; first database run: 4 tenant-isolation tests on the isolated database; evidence `…/2026-10-12-pbdigit274-g5-identity/`).
+- **The S2 migration still needs its own explicit authorisation.** Every later slice, G6, G7 and G8 remain open. **No production migration or deployment is authorised.** *(Status updated 2026-10-12.)*
 - Further decisions: **O-9 = (a)**, a missing environment variable means the documented default 30. **O-10 = (B)**, strict validation everywhere. Its R4–R8 reader changes belong to S6, behind the characterisation precondition in section 6. **O-5 is still open (before S7).**
 
-**Mandatory gates (status 2026-10-12: G2 and G3 met; G1 not executed as a separate review, G2 was granted without it; G4–G8 open):**
+**Mandatory gates (status 2026-10-12: G2, G3, G4 and G5 met; G1 not executed as a separate review, G2 was granted without it; G6–G8 open):**
 - **G1:** independent Principal Review of rev 10, checked **against the finding register (section 17) only**, not a fresh review from scratch.
 - **G2:** explicit Human PO / ARB approval of the plan and of every decision marked "plan prerequisite" (section 2.2).
 - **G3:** separate migration approval (section 11). **APPROVED 2026-10-12** (design, section 11 + 11.0; isolated test database only).
-- **G4:** the isolated PostgreSQL test database provisioned, its name approved.
-- **G5:** `current_database()` verified before **every** database run. Never `nrna_test` or any shared database.
+- **G4:** the isolated PostgreSQL test database provisioned, its name approved. **MET 2026-10-12** (`pbdigit274_isolated_test`; evidence `…/2026-10-12-pbdigit274-g4-check/`, `…-g4-isolation-fix/`).
+- **G5:** `current_database()` verified before **every** database run. Never `nrna_test` or any shared database. **MET 2026-10-12** (evidence `…/2026-10-12-pbdigit274-g5-identity/`).
 - **G6:** the real two-process, two-connection concurrency test **executed and passed**. A simulation never satisfies it.
 - **G7:** the cast success / failure contract (section 9) **executed and passed**.
 - **G8:** the release order: **the migration (G3) runs before any 274 code is deployed.** Otherwise the new issuer's replacements hit the old `voter_slugs_election_id_user_id_unique` [F `create_uuid_voter_slugs_table.php:38`], get classified as "unknown constraint", and every expired voter receives `VoterSlugIssuanceConflict`.
@@ -702,3 +704,20 @@ Status: **R** = resolved at plan level (it still needs execution evidence, as li
   - **Runs:** RED 69 tests / 45 failing → GREEN 69 tests / 167 assertions, exit 0. The dedicated config refuses a missing name and `nrna_test`.
   - **Evidence:** `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1b/`.
   - **By design:** the script-level `connection_failed` case is unreachable until G4 (unit-tested with a stand-in).
+- **2026-10-12, G4 and the approved name.**
+  - **Names:** approved by the Human PO: `pbdigit274_isolated_test` and `pbdigit274_test_owner`. Provisioned by the PO as superuser.
+  - **First read-only check:** every requirement met except isolation. The role had `CONNECT` on every database.
+  - **Fix:** the PO put five `pg_hba` rules first (allow the role only to its database over IPv4 / IPv6; reject it elsewhere over IPv4, IPv6 and the socket). Compared rule by rule with the before listing: old rules unchanged, no parse errors.
+  - **Re-check:** the own database is still reachable. One authorised login to `postgres` was refused by `pg_hba`.
+  - **Result: G4 met.** SQL privileges were deliberately left unchanged; isolation rests on `pg_hba`.
+  - **Then:** `APPROVED_NAME = 'pbdigit274_isolated_test'` committed in `bacef4220` (RED 3 → GREEN 85 / 189, database-free).
+  - **Evidence:** `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g4-check/`, `…-g4-isolation-fix/`, `…-approved-name/`.
+  - **Still open:** the database part of S2 is not authorised.
+- **2026-10-12, step tracking and G5.**
+  - **Defect fixed:** `VoterStepTrackingService` looked up steps through the ambient tenant scope. The duplicate check is fixed in `59ce21fbe` (tests `6e01ce0c1`), the readers in `b1364337f` (tests `e3d97b60f`). All of them now use `stepQuery()`, pinned to the slug's organisation.
+  - **G5 passed:**
+    - pre-flight; refusals of a missing name, `nrna_test` and a wrong name before any connection;
+    - the real bootstrap identity check;
+    - identity and version recorded;
+    - the first database run with you OK'ing it: `VoterSlugStepTenantIsolationTest`, 4 tests / 9 assertions on `pbdigit274_isolated_test` (0 → 99 tables).
+  - **Evidence:** `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g5-identity/`.
