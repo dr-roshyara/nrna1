@@ -165,13 +165,28 @@ class VoterSlugExpirationTest extends TestCase
             'current_step' => 2,
         ]);
 
-        // Request same slug again (not forced)
-        $service = app(\App\Services\VoterSlugService::class);
-        $retrievedSlug = $service->getOrCreateSlug($user, $election, forceNew: false);
+        // PBDIGIT-274 S5: real-election links come from VoterSlugIssuer (VoterSlugService::getOrCreateSlug refuses
+        // real elections). Entitlement is a stand-in here; the entitlement rules are tested elsewhere.
+        $retrievedSlug = $this->issuer()->issue($user, $election)->slug;
 
         // BUSINESS ASSERTION: Real election reuses active session
         $this->assertEquals($existingSlug->id, $retrievedSlug->id, 'Active session should be reused');
         $this->assertEquals($existingSlug->slug, $retrievedSlug->slug);
+    }
+
+    private function issuer(): \App\Services\Voting\VoterSlugIssuer
+    {
+        return new \App\Services\Voting\VoterSlugIssuer(new class () implements \App\Contexts\Elections\Application\Ports\VotingEntitlementQuery {
+            public function standingOf(string $userId, string $electionId): \App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason
+            {
+                return \App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason::Entitled;
+            }
+
+            public function decide(string $userId, string $electionId): \App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason
+            {
+                return \App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason::Entitled;
+            }
+        });
     }
 
     /**
@@ -199,9 +214,8 @@ class VoterSlugExpirationTest extends TestCase
             'current_step' => 1,
         ]);
 
-        // Request slug - should get new one
-        $service = app(\App\Services\VoterSlugService::class);
-        $newSlug = $service->getOrCreateSlug($user, $election, forceNew: false);
+        // Request slug - should get new one (PBDIGIT-274 S5: through VoterSlugIssuer)
+        $newSlug = $this->issuer()->issue($user, $election)->slug;
 
         // BUSINESS ASSERTION: Expired session replaced with fresh one
         $this->assertNotEquals($expiredSlug->id, $newSlug->id, 'Expired session must not be reused');
@@ -209,9 +223,12 @@ class VoterSlugExpirationTest extends TestCase
         $this->assertTrue($newSlug->is_active);
         $this->assertEquals('active', $newSlug->status);
 
-        // Verify old slug was cleaned up (hard deleted to prevent constraint violations)
+        // Decision-driven change (PBDIGIT-274, PO: real voter slugs are never hard-deleted): the old slug is kept
+        // as soft-deleted history. Previously this test required a hard delete; the S2 partial unique index
+        // (current rows only) removed the constraint reason for it.
         $refreshedOldSlug = VoterSlug::withoutGlobalScopes()->find($expiredSlug->id);
-        $this->assertNull($refreshedOldSlug, 'Old expired slug must be removed to allow fresh creation');
+        $this->assertNotNull($refreshedOldSlug, 'The old expired slug is kept as history');
+        $this->assertNotNull($refreshedOldSlug->deleted_at);
     }
 
     /**
@@ -281,7 +298,7 @@ class VoterSlugExpirationTest extends TestCase
 
         // Try to get slug for election2 with same user
         $service = app(\App\Services\VoterSlugService::class);
-        $newSlug = $service->getOrCreateSlug($user, $election2);
+        $newSlug = $this->issuer()->issue($user, $election2)->slug;   // PBDIGIT-274 S5: real elections via the issuer
 
         // BUSINESS ASSERTION: Should get NEW slug for election2, not reuse election1's slug
         $this->assertNotEquals($slug->id, $newSlug->id, 'Cannot reuse slug across elections');
@@ -317,7 +334,7 @@ class VoterSlugExpirationTest extends TestCase
 
         // Try to get slug for userB in same election
         $service = app(\App\Services\VoterSlugService::class);
-        $newSlug = $service->getOrCreateSlug($userB, $election);
+        $newSlug = $this->issuer()->issue($userB, $election)->slug;   // PBDIGIT-274 S5: real elections via the issuer
 
         // BUSINESS ASSERTION: Should get NEW slug for userB, not reuse userA's slug
         $this->assertNotEquals($slug->id, $newSlug->id, 'Cannot reuse slug across users');
@@ -357,7 +374,7 @@ class VoterSlugExpirationTest extends TestCase
 
         // For userB in election2, service should create new slug
         $service = app(\App\Services\VoterSlugService::class);
-        $newSlug = $service->getOrCreateSlug($userB, $election2);
+        $newSlug = $this->issuer()->issue($userB, $election2)->slug;   // PBDIGIT-274 S5: real elections via the issuer
 
         // BUSINESS ASSERTION: Complete isolation
         $this->assertNotEquals($slug->id, $newSlug->id);
