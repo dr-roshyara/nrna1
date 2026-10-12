@@ -176,7 +176,7 @@ ML produces candidates, diagnostics and prioritization only, always with full pr
 - [ ] *(superseded by the 2026-10-01 critical path, items 4–14)* **B3 HUMAN:** S5 activation, **staged**: canary batch(es) first (stop on systematic W8/agent failures) → 396 batches / 1,975 labels
 - [ ] **B4** P3b terminal reconstruction
 - [ ] **C1** Research dataset G = (V, E, τ, ρ, p) plus an explicit model of the observation process
-- [ ] **C2** Track B pass 1: pre-registered H1–H5 on the S5 population (null models, permutation baselines, BH correction); search for invariants, not frequencies
+- [ ] **C2** Track B pass 1: pre-registered confirmatory H1–H4 (Holm, fixed family R3) plus exploratory H5 (BH/descriptive) on the S5 population, under the amended pre-registration (C2a); search for invariants, not frequencies
 - [ ] **C2a HUMAN (before any S5 data; G-LOG-0117 Decision D OPEN): pre-registration amendments P1–P3** from Track-B pass 0c (`research/SENSITIVITY-v1.md` §Implications; `7dcdae622`).
   - **Studies done and reviewed** (all final PASS_WITH_LIMITATIONS): P1 H5 design, P2 H2/H3 testability, P3 H1 source-vs-agent. Committed as Track-B pass 0d in W (`s-series/s5-r7-v29-repair`, `df85474b7`, `research/pass-0d-prereg-amendment-studies/`).
   - **Decision package ready for the human:** `P1-P3-PREREG-DECISION-PACKAGE-v3.3.md` with the one-page `P1-P3-DECISION-SHEET-v3.md` (W `42b52de10`; adds the reviewed family-size cost study `ea6243125`). Decision-readiness review, re-check and sheet check: PASS_WITH_LIMITATIONS, "fit to put to the human". It decides nothing. Main points: H5 as worded cannot fail; the frozen H3 test can never support "DAG"; H1 cannot separate source from agent without real-agent validity conditions.
