@@ -2012,3 +2012,18 @@ The two `sha256sum` listings must be identical.
 | Consequences (DERIVED, package §2–§4) | OMQ-14 (per-label reading scope, G-LOG-0017) stands; the four contamination channels of package §3 stay closed because no ETR output exists before S5b; D-ETR-0 engineering is preparation only (package caveats l.43-46: value modest, since §9E reads object records; the claim schema must **extend** the §13.6 register schema, not add a second one, ES-005.4; the shared reader stays untouched) |
 | Execution conditions | D-ETR-0 work is non-trivial engineering: EP-01 plan and human approval of that plan before implementation; outside PROD's `.git` (W is a worktree of PROD's repository and does **not** qualify); halted during the run-3 quiet period (G-LOG-0117 F5) |
 | Not authorized | corpus reads; P3b changes; pre-registration changes; G3–G5; any P1–P3 choice; run-3 outside G-LOG-0117 |
+
+## G-LOG-0126 — Human act: H5 moved to the exploratory family (P2-7)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P2-7: move H5 to exploratory" |
+| Basis | package v3.3 §7 P2-7 (l.125, l.194; sha `f8a757d118b69260…`); the independent review of the H5 eligibility-null protocol v0 (PASS WITH REQUIRED CORRECTIONS: the frozen curveball cannot separate domain dependence from instrument-eligibility dependence; an eligibility-preserving null changes the claim, a P1-2 change). Protocol v0 and the review are archived in W `83c0a5e65`, `research/pass-0d-prereg-amendment-studies/h5-eligibility-null-v0/` (protocol sha `2063368fbd562859…`); never revised, implemented or run |
+| Decided | **H5 leaves the confirmatory family.** H2 and H3 placement remains open |
+| Consequences (FACT, package l.125, l.183) | no confirmatory claim for H5 (descriptive or BH reading only); the Holm family shrinks; cost: wording + `run()` change; FWER and power consequences not simulated; P1-2…P1-6 no longer bear on a confirmatory claim |
+| Family (DERIVED, X-2) | confirmatory worst case {H1, H2, H3, H4} = 4, plus 1 if a P3 test is placed in the family (P3-6), less if H2/H3 move. Holm first step α/4 ≥ α/5, so the α/5 figures of the family-size study (H2 m_min 28 / 66 / 262) are conservative bounds; α/4 values not computed |
+| Prior H5 decisions (recorder's reading) | G-LOG-0119–0124 (either-or claim, b-combine, h₀ 0.8, e₀ 10, s₀ 10, B 999, explicit dimension list) are kept as the **exploratory** H5 specification; D and the exact list stay unconfirmed. The human may change or drop them |
+| Exploratory reading limits (recorded) | the eligibility issue (structural zeros: present-in-capture, per-label NEGATIVE-CENSUS, hub rows) and the row-inclusion effect on the Loevinger component (review point 8) apply to any H5 reading; a descriptive H5 result is never evidence of a coherent theory |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Still open | the disclosed discovery-input read (2026-10-12; names and counts only, no FOUND outcomes) awaits the human's ruling; P2-1; P2-7 for H2/H3; P2-3…P2-6; P3-1…P3-8; X-5; X-6 |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
