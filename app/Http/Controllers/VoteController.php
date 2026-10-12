@@ -1925,6 +1925,10 @@ private function trackSovereigntyDivergence(
                 $lock->release();
                 $lockAcquired = false; // released exactly once
 
+        // PBDIGIT-274 S9a (L-17, PO decision 2026-10-13): the vote is committed from here on. A failure in the
+        // post-commit work below is logged and must never reach the outer catch, which would tell the voter
+        // "please try again" for a vote that already counts.
+        try {
         // Log vote_confirmed event
         $receiptHash = hash('sha256', $this->out_code . $auth_user->id . $election->id);
         app(ElectionAuditService::class)->log(
@@ -1954,6 +1958,12 @@ private function trackSovereigntyDivergence(
                 'slug' => $vslug->slug,
                 'new_step' => $vslug->current_step,
                 'user_id' => $auth_user->id
+            ]);
+        }
+        } catch (\Throwable $postCommitError) {
+            Log::error('Post-commit work failed after a committed vote', [
+                'election_id' => $election->id,
+                'error' => get_class($postCommitError),
             ]);
         }
 
