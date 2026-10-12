@@ -702,7 +702,8 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'committee.membe
     Route::post('voting-security/enforce/{user}', [VotingSecurityController::class, 'enforceSecurity'])->name('admin.voting.security.enforce');
 
     // Recovery slug generation (NEW)
-    Route::post('voting-security/recovery/{user}', [VotingSecurityController::class, 'generateRecoverySlug'])->name('admin.voting.security.recovery');
+    // PBDIGIT-274 S4: recovery is per election (the voter's link comes from VoterSlugIssuer)
+    Route::post('voting-security/recovery/{user}/{election}', [VotingSecurityController::class, 'generateRecoverySlug'])->name('admin.voting.security.recovery');
 
     // Emergency lockdown
     Route::post('voting-security/lockdown/{user}', [VotingSecurityController::class, 'emergencyLockdown'])->name('admin.voting.security.lockdown');

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Application\Election\Facades\ElectionLifecycle;
 use App\Models\User;
 use App\Models\VoterSlug;
+use App\Exceptions\Voting\VoterSlugIssuanceConflict;
 use App\Services\VoterSlugService;
+use App\Services\Voting\VoterSlugIssuance;
+use App\Services\Voting\VoterSlugIssuer;
 use App\Services\VotingSecurityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +37,12 @@ class VoterSlugController extends Controller
     public function start(Request $request)
     {
         $user = Auth::user();
+
+        // PBDIGIT-274 S4: a REAL election in the session goes through the issuer (no deactivation before
+        // deciding, no legacy user flags). Demo elections and the no-session case keep the legacy path (D1).
+        if ($realElection = $this->selectedRealElection()) {
+            return $this->issueForRealElection($user, $realElection);
+        }
 
         // Debug log to track infinite loops
         Log::info('=== VOTER START CALLED ===', [
@@ -171,6 +180,12 @@ class VoterSlugController extends Controller
     {
         $user = Auth::user();
 
+        // PBDIGIT-274 S4: for a REAL election, "restart" is the issuer's decision too: a valid link is kept
+        // (no replacement while valid, acceptance 7); an expired one is replaced by a new row, history kept.
+        if ($realElection = $this->selectedRealElection()) {
+            return $this->issueForRealElection($user, $realElection, 'Voting session restarted. You can start fresh from the beginning.');
+        }
+
         Log::info('=== VOTER RESTART REQUESTED ===', [
             'user_id' => $user->id,
             'timestamp' => now(),
@@ -276,6 +291,36 @@ class VoterSlugController extends Controller
      * RESTART LOGIC: Allows voters to restart if they haven't completed voting.
      * This handles cases where users are interrupted during the voting process.
      */
+    /** The election selected in the session, if it exists and is a real election (PBDIGIT-274 S4). */
+    private function selectedRealElection(): ?\App\Models\Election
+    {
+        $id = session('selected_election_id');
+        $election = $id ? \App\Models\Election::withoutGlobalScopes()->find($id) : null;
+
+        return ($election && trim((string) $election->type) === 'real') ? $election : null;
+    }
+
+    /** Issue, reuse or replace the voter's link through VoterSlugIssuer (PBDIGIT-274 S4). */
+    private function issueForRealElection(User $user, \App\Models\Election $election, ?string $success = null): \Illuminate\Http\RedirectResponse
+    {
+        try {
+            $issuance = VoterSlugIssuer::fresh()->issue($user, $election);
+        } catch (VoterSlugIssuanceConflict $e) {
+            return redirect()->route('election.dashboard')->with('error', $e->getUserMessage());
+        }
+
+        if ($issuance->outcome === VoterSlugIssuance::ALREADY_VOTED) {
+            return redirect()->route('election.dashboard')->with('info', 'You have already voted.');
+        }
+        if (! $issuance->hasLink()) {
+            return redirect()->route('election.dashboard')->with('error', 'You are not eligible to vote in this election at this time.');
+        }
+
+        $redirect = redirect()->route('slug.code.create', ['vslug' => $issuance->slug->slug]);
+
+        return $success !== null ? $redirect->with('success', $success) : $redirect;
+    }
+
     private function redirectToSlugStep(VoterSlug $slug): \Illuminate\Http\RedirectResponse
     {
         // RESTART MECHANISM: Allow restart if vote not completed and in voting/verification phase
