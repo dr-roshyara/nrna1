@@ -1,0 +1,17 @@
+head=82acc6ca747d0cf75d620f91ddc43cd690b719b9
+date=2026-10-13T00:59:52+02:00
+note: GREEN for S7
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugExpiryRoutingTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDD                                                              6 / 6 (100%)
+
+Time: 00:03.217, Memory: 26.00 MB
+
+OK, but there were issues!
+Tests: 6, Assertions: 24, Deprecations: 3.
+exit=0

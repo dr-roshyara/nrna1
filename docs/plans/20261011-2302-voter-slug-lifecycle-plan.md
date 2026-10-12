@@ -8,7 +8,7 @@
 - **G4 met 2026-10-12** (`pbdigit274_isolated_test`, role `pbdigit274_test_owner`, confined by `pg_hba`; evidence `docs/publicdigit/election/evidence/2026-10-12-pbdigit274-g4-*`); `APPROVED_NAME` committed in `bacef4220`.
 - **G5 passed 2026-10-12** (identity verified by the bootstrap and inside the app; first database run: 4 tenant-isolation tests on the isolated database; evidence `…/2026-10-12-pbdigit274-g5-identity/`).
 - **The S2 migration still needs its own explicit authorisation.** Every later slice, G6, G7 and G8 remain open. **No production migration or deployment is authorised.** *(Status updated 2026-10-12.)*
-- Further decisions: **O-9 = (a)**, a missing environment variable means the documented default 30. **O-10 = (B)**, strict validation everywhere. Its R4–R8 reader changes belong to S6, behind the characterisation precondition in section 6. **O-5 is still open (before S7).**
+- Further decisions: **O-9 = (a)**, a missing environment variable means the documented default 30. **O-10 = (B)**, strict validation everywhere. Its R4–R8 reader changes belong to S6, behind the characterisation precondition in section 6. **O-5 = (b)** (Human PO, 2026-10-13: "plain not found"): someone else's link gets the same 404 as an unknown link; the reason is logged internally, ids only.
 
 **Mandatory gates (status 2026-10-12: G2, G3, G4 and G5 met; G1 not executed as a separate review, G2 was granted without it; G6–G8 open):**
 - **G1:** independent Principal Review of rev 10, checked **against the finding register (section 17) only**, not a fresh review from scratch.
@@ -117,7 +117,7 @@
 - **O-14 = (a):** the step-1 demo-session bypass is an accepted residual risk owned by the Human PO, tracked in **PBDIGIT-275**. The tests document it and don't claim closure.
 - **O-15 = (a):** accept the pre-commit "vote confirmed" email for 274; L-18 characterises it; a **follow-up story** moves the email after commit.
 
-**Still open:** O-5 (before S7). *(O-9 = (a) and O-10 = (B) were decided later on 2026-10-11; see the status block at the top.)* **Plan approval (G2) itself is a separate explicit act.**
+**Still open:** none. O-5 was decided as (b) on 2026-10-13. *(O-9 = (a) and O-10 = (B) were decided later on 2026-10-11; see the status block at the top.)* **Plan approval (G2) itself is a separate explicit act.**
 
 ### 2.2 Decision register (the options as presented; O-6, O-6b, O-7, O-11, O-12, O-13, O-14 and O-15 are now decided, see section 2.1a). Recommendations (from the Principal Reviewer and Claude) are **not** decisions.
 
@@ -129,7 +129,7 @@
 | **O-8** | the other vote-writing paths | **only needed if O-6 = (A)** (section 8) | per section 8 | **plan approval if O-6 = (A)** | Human PO / ARB | O-6 |
 | **O-11** | changing a voted slug (re-vote) | (a) never; voted slugs immutable; re-vote out of scope; (b) a separate audited design | (a) | **plan approval** | Human PO / ARB | — |
 | **O-12** | voted-slug retention vs. foreign-key cascades | (a) **accept**, with one formulation used throughout (section 10.4); a retention / erasure policy as follow-up work; (b) **protect** (foreign keys to `restrict` or archive before a hard delete): a separate scope and migration, outside 274 until approved | (a) | **plan approval** | Human PO / ARB | — |
-| **O-5** | a non-owner opening another voter's link | (a) keep `SlugOwnershipException` (reveals that the link exists, not the election); (b) a generic 404 identical to an unknown link, the reason logged internally | (b) | slice S7 | Human PO | — |
+| **O-5** | a non-owner opening another voter's link | (a) keep `SlugOwnershipException` (reveals that the link exists, not the election); (b) a generic 404 identical to an unknown link, the reason logged internally | (b) | slice S7 | Human PO | **(b), 2026-10-13** |
 | **O-9** | missing `VOTING_TIME_IN_MINUTES` | (a) the documented default 30; (b) fail closed | (a) | slice S1 | Human PO | — |
 | **O-10** | duration validation reach | (A) narrow: keep the `(int)` cast; accept truncation (`'20min'`→20, `'5.9'`→5), documented as **not** strict; (B) strict: remove the cast; every reader R1–R8 validates; invalid → fail closed everywhere. **A3 unverified** | (B), only if the wider impact is accepted **and** the R4–R8 coverage of section 6.4 is executed | slices S1 / S6 | Human PO | O-9 |
 
