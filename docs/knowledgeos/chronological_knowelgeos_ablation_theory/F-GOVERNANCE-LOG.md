@@ -3846,3 +3846,19 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the ⚠E3b outputs are not accepted;
   - no spanning rule is selected;
   - E4 and E5 are not authorized.
+
+
+## F-LOG-0288 — **Executor (2026-10-12): (d′) APPLIED, T3 r1.9.** Fresh review PASS
+- **Applied:** `R7/T3-CANDIDATE-MODEL.md` r1.8 → r1.9.
+  - Edits D1–D10, S1, S2 and S3, as authorized by F-LOG-0287. Sub-choice (ii) was not applied.
+  - Placeholders filled: F-LOG-0287, r1.1.
+- **Fresh independent review: PASS.**
+  - The reviewer re-applied the patch to r1.8 independently. The result is byte-identical to the applied file.
+  - Only lines 1, 3, 48, 49, 403 and 404 changed, plus one appended row. Superseded text is struck, apart from the S1 title token.
+  - The per-reading hosts match E2b §A1.3 and §A1.4 row for row. No reading is selected, and the invariants hold.
+- **Minor, for a later authorized edit:**
+  - The notes at line 53 (r1.7 §1a) and line 432 (M5) are now inaccurate. The S2 status line points to them.
+  - The participant row at line 51 lacks R38 and R71. This was already stale before this edit.
+  - D7 has a loose label: it lists B-conf among the "change clauses".
+- **Status:** (d′) is applied in T3, and the CB1/CB23 cells are restated per reading. They remain "[E] candidate, not adopted".
+- **Next (F-LOG-0285 step 2):** an E2b Amendment 2 proposal to adopt the synced CB1/CB23 §2 rows per reading. It must also cover the deferred CB1 R4 gaps (proposal §4) and the E2b text that would be superseded (the r1.7 pin, the "stale cells not adopted" wording, G6, D6, and the (d′) rows).
