@@ -1933,3 +1933,16 @@ The two `sha256sum` listings must be identical.
 | Now open for H5 | P1-3 h₀ (0.7 / 0.8 / other); P1-4 frozen parameters (s₀, e₀, D and dimension list, B = 999); P1-5 effect size (if yes, "qualifying pairs" must be defined before freezing; undefined under (b-combine) until then); P1-6 artefact check (if yes, an artefact model is designed before freezing, X-6). P2-7 may still move H5 to exploratory, in which case P1-2…P1-6 no longer bear on a confirmatory claim |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0120 — Human act: H5 threshold h₀ = 0.8 (P1-3)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P1-3 recorded: h₀ = 0.8". Same session, after G-LOG-0119, the human also wrote: "My recommendation: Use (b-combine) because it matches your chosen either-or claim." Recorder's note: this confirms G-LOG-0119's reading of "X-2 / D" as P1-1 = 1a∨1b with P1-2 = (b-combine); it is not filed as a separate act |
+| Basis | package v3.3 §7 P1-3 (l.99, l.184; sha `f8a757d118b69260…`) |
+| Decided | **h₀ = 0.8**: the Loevinger-H threshold for the strong-dependence disjunct of the (b-combine) test |
+| Nature (FACT, v3.3 l.99; H5 v1 review F-5) | a construct choice, not an estimated optimum; study values 0.7–0.8 are descriptive and post hoc |
+| Consequence (DERIVED, v3.3 l.99 and C-2) | admitted violation rate (1−h₀)(1−p_b) = 17 / 10 / 4 / 1 % at p_b = 0.15 / 0.5 / 0.8 / 0.95, rising to **20 % as p_b → 0** (rare consequents). A pair with up to that share of violations can count as "strong dependence" |
+| Now open for H5 | P1-4 frozen parameters (s₀, e₀, D and dimension list, B = 999); P1-5 effect size (if yes, "qualifying pairs" must be defined before freezing); P1-6 artefact check (if yes, an artefact model is designed before freezing). P2-7 may still move H5 to exploratory |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
