@@ -3890,3 +3890,49 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - **Nothing is accepted by this act.** Re-assessing the ⚠E3b outputs needs its own act.
 - **Register/ARB:** no sync needed for accuracy.
 - **Status:** awaiting the Human ARB act. E4 and E5 are not authorized.
+
+
+## F-LOG-0290 — **Human act (Human ARB, 2026-10-12): E2b Amendment 2 APPROVED.** Selections: I-a, R-a, (h-i)
+**The act** (`R7/E2b-AMENDMENT-2-PROPOSAL.md` r1.1 §7 Approve, verbatim; the human's selections are filled in and r[n] = r1.1):
+> "I, Human ARB, amend E2b (F-LOG-0261; `R7/E2b-ADOPTION-TEXT.md` r1.2, as amended by Amendment 1, F-LOG-0275) by Amendment 2 (`R7/E2b-AMENDMENT-2-PROPOSAL.md` r1.1), as a **bounded [E] model change, one corpus, pre-architecture**, being act (2) of F-LOG-0284.
+>
+> (1) For CB1 and CB23, I adopt the whole synced §2 rows of `R7/T3-CANDIDATE-MODEL.md` r1.9 (F-LOG-0287; applied F-LOG-0288; lines 403 and 404): the T1 ids, T2 ids (tier), R4 / FROZEN R3 ids including the hosting-keyed clauses, evidence class, inherited assumptions, reading sensitivity and open questions cells, in their current text; struck-through text is T3 history and is not adopted. The reading-dependent cells are adopted per reading, under S and under S′ / S″, as stated; **no reading is selected** (F-LOG-0271). The CB1 / CB23 trace source moves from T3 r1.7 to T3 r1.9, and the restriction to the T1 ids and the R4 / FROZEN R3 ids not keyed to hosting is lifted. The R4 ids of R25 and R38 under S stay 'none' (F-LOG-0287). The loose label of the CB1 reading-sensitivity cell (F-LOG-0288) is adopted verbatim and disclosed as D13. The 25 previously adopted elements keep their T3 r1.5 traces. The model stays at 27 elements; CB4 stays an explicit open slot.
+>
+> (2) **Host lists (R-a selected):**
+> 'The per-reading host lists of E2b §A1.3 / §A1.4 are ratified as per-reading statements of the adopted model, with no reading selected; the R24 drafting ambiguity of the adopted §2 CB1 cell is disclosed (D12); the K-c criterion and rules 1–5 and 2a stay unratified [E].'
+>
+> (3) **Known incompleteness (I-a):** 'The rows are adopted as they stand. Their known incompleteness (the R4 ids listed in `R7/T3-DPRIME-SYNC-PROPOSAL.md` r1.1 §6 item 5, not exhaustive, and R24 in the T2-ids cells) is disclosed as D12, and its completion, with any rule for cell content, is open item (g), by its own act.'
+>
+> (4) **§1a cells ((h-i) selected):**
+> 'Only the §2 rows are adopted. Whether the synced §1a CB1 / CB23 cells are adopted is open item (h).'
+>
+> (5) The superseded E2b passages are tagged in place and not deleted, as set out in the proposal §4. Amendment 2 is appended as §A2. Everything else in E2b r1.2 stands unchanged:
+> - all T-B rows remain inactive, and R83 keeps its condition;
+> - R1–R24 remain candidate model constraints (R23);
+> - consistency only (C-α (b));
+> - the ten labelled rows, pending C-γ;
+> - CB4 is an open slot;
+> - the standing qualifier, the F-LOG-0256 limitations, Λ1–Λ7, the ARB §B limitations and the disclosures D1–D6, with D11–D13 added, travel with it.
+>
+> This amendment is decided without reference to any VP1a–d outcome (N1) and encodes neither H-D nor H-B as a rule. It amends E2b only. It resolves no open item other than (d′) (C-γ, R11, the CV9 / §3b tension, H13, A1 and A5 stay open). It does not:
+> - decide any variation point;
+> - select a spanning rule;
+> - accept the asymmetry, or withdraw F-LOG-0265's premise;
+> - accept the ⚠E3b outputs (their re-assessment needs its own act);
+> - authorize E4 (R8) or E5;
+> - amend T3, the register or the ARB package;
+> - authorize any evidence collection or implementation;
+> - adopt canonical terms."
+
+- **Effect:** the synced CB1/CB23 §2 rows of T3 r1.9 are adopted per reading.
+  - **R-a:** the §A1.3/§A1.4 host lists are ratified as per-reading statements. K-c and rule 2a stay unratified [E]; this tension is disclosed. The R24 drafting ambiguity is disclosed as D12.
+  - **I-a:** known incompleteness is disclosed as D12. Completion is open item (g).
+  - **(h-i):** §2 rows only. The §1a cells become open item (h).
+  - (d′) is resolved. F-LOG-0284 act (2) is made.
+- **Not done by this act:**
+  - The ⚠E3b outputs are **not** accepted; re-assessing them needs its own act.
+  - No VP is decided, no spanning rule is selected, and the asymmetry is not accepted.
+  - E4 and E5 are not authorized.
+- **Next:**
+  - A worker records Amendment 2 in E2b as §A2 (r1.2 → r1.3), tagging the superseded passages from proposal §4. A fresh review follows.
+  - Then a re-assessment proposal for the ⚠E3b outputs, which needs its own act. It covers re-checking the CB rows against T3 r1.9, and the open points R25/R38 "none", D12 sufficiency and R24.
