@@ -4017,3 +4017,32 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - Per-output ticks with stated dependencies. Option (α) or (β) for E3-REL and the cut-status columns; the lean toward (α) is slight and labelled [E].
   - Recording item N1–N12 supersedes E3's "not met" text.
 - **Status:** awaiting Act 1. None of this authorizes E4 or E5.
+
+
+## F-LOG-0295 — **Human act (Human ARB, 2026-10-13): Act 1 APPROVED. E3-BC1/BC23 relabelled as a candidate module cut; recording route R-1**
+**The act** (`R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 §I.4 Approve, verbatim; route R-1 selected; r[n] = r1.2):
+> "I, Human ARB, approve the relabel of `R7/E3b-REASSESSMENT-MODULE-CUT-PROPOSAL.md` r1.2 Part I. In `R7/E3-ARCHITECTURE-PROPOSAL.md` r1.1:
+> - E3-BC1 and E3-BC23 are relabelled E3-M1 'records module' and E3-M23 'norm-and-work module' (provisional names, not canonical), a **candidate module cut over one model**. A module is one side of the CB1 / CB23 cut, [H], ⚠E3b; that is all this act asserts of it. The non-claims of Part I §I.1a apply, and the definition and the non-claims are recorded in E3.
+> - E3-REL is relabelled 'cross-module rows'; its relation status stays [O].
+> - The E3-PP placement reads 'spans both modules', unchanged in substance under VP12 (i).
+> - Recording route: R-1, E3 r1.2 tagged in place, with the exclusions of §I.2a.
+> - E2b is not amended.
+>
+> This act makes the label and vocabulary swaps of §I.2a only. It adds no assertion beyond the §I.1a membership definition and non-claims, and makes no crossing, co-reading or cohesion statement. It changes no status word.
+>
+> The standing qualifier travels with it, verbatim: 'one corpus; finite universes; within-family evidence; cross-family waived; H-D vs H-B non-identifiable'.
+>
+> It does **not** accept any ⚠E3b output; they stay not accepted pending a separate re-assessment act. It does not:
+> - decide any variation point;
+> - select a reading or spanning rule, or resolve D12;
+> - accept the asymmetry, or withdraw F-LOG-0265's premise;
+> - ratify any method;
+> - make any candidate constraint an invariant, or add transaction semantics;
+> - adopt any canonical term;
+> - amend any adopted record other than E3 as stated;
+> - authorize any evidence collection or implementation.
+>
+> **It does not authorize E4 (R8) or E5.**"
+
+- **Next:** a worker applies the I.2a label swaps (rows 1–19) to E3 r1.1, producing r1.2 tagged in place. It writes the §I.1a definition and non-claims as a note under §2.1 and adds a §12 change row. A strip-the-tags check must give back r1.1. A fresh review follows. Then Act 2, the re-assessment.
+- **Not authorized:** no ⚠E3b output is accepted, and E4 and E5 are not authorized.
