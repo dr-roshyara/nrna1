@@ -1973,3 +1973,15 @@ The two `sha256sum` listings must be identical.
 | Open for P1-4 | s₀ value; whether to freeze D as the explicit 12-dimension list (vs the frozen data-derived rule); whether D = 12 needs a pre-freeze power/size check |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0123 — Human act: H5 dimension list frozen explicitly (P1-4, partial)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P1-4 recorded: freeze the explicit 12-dimension list" |
+| Basis | G-LOG-0122 verification (12 completeness dimensions, `scripts/derive_families.py` l.39-52; `canary-diag/FIELD-INVENTORY.md` row 30; pilot D = 12) |
+| Decided | **D = 12**, and the amended pre-registration fixes the H5 dimension list explicitly, in this order: purpose_rationale, informal_meaning, formal_definition, type_signature, invariants, dependencies, assumptions, semantics, examples, warnings, experiments, open_questions. This replaces the frozen data-derived rule (`prereg_v1.py` l.170) for H5 |
+| Implementation note (recorder; DERIVED, for the amendment) | with a fixed list, a listed dimension absent from the data is a zero column (contributes no pair); an `absences` key outside the list must be handled by a pre-registered rule (e.g. reject as a data defect), to be written and tested in the amendment |
+| Still open for P1-4 | s₀ (any s₀ ≤ 10 is redundant with e₀ = 10; G-LOG-0122); whether to commission a pre-freeze synthetic re-run of the H5 study at D = 12 (the study simulated D = 10 only; power and size at 132 ordered pairs not studied) |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | any other P1–P3 choice; the D = 12 re-run (not yet commissioned); the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
