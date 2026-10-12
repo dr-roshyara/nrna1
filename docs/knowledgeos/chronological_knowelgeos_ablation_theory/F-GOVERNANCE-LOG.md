@@ -3828,3 +3828,21 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - For listing: the literal wording of G6, §A1.11 and E3 §7.2 (b), and the r1.5 counter-instances Rem 3.1a and Rem 9.8. The convention is mixed, and no rule is stated.
 - **Deferred (not stale; act (2) must handle):** the pre-existing gaps in CB1's R4 cell, a non-exhaustive list.
 - **Status:** awaiting the Human ARB act on (d′). E2b is not amended, the ⚠E3b outputs are not accepted, and E4 and E5 are not authorized.
+
+
+## F-LOG-0287 — **Human act (Human ARB, 2026-10-12): (d′) T3 sync APPROVED.** S1 is applied; sub-choice (ii) not taken, so R25/R38 stay "none"
+**The act** (`R7/T3-DPRIME-SYNC-PROPOSAL.md` r1.1 §5, Approve, verbatim; S1 bracket resolved to "apply"; r[n] = r1.1):
+> "I, Human ARB, authorize applying to `R7/T3-CANDIDATE-MODEL.md` r1.8 exactly the edits of `R7/T3-DPRIME-SYNC-PROPOSAL.md` r1.1 §3, items D1, D2, D3, D4a, D4b, D5, D6, D7, D8, D9, D10, S2 and S3 and S1, the title's version marker, as a **post-closure amendment** (T3 r1.8 → r1.9), being the T3 sync of open item (d′) (E2b §A1.11; F-LOG-0284 act (1)). Superseded text is struck through, not deleted. The application is to be followed by a **fresh independent review** of the applied text against this proposal.
+>
+> The reading-dependent cells are stated under S and under S′ / S″; **no spanning rule is selected**. It decides no variation point, accepts no asymmetry, and does not withdraw F-LOG-0265's premise. It **adopts nothing**: the synced cells stay '[E] candidate, not adopted' in T3. It **does not amend E2b**; the adoption of the synced CB1 / CB23 §2 rows needs a separate E2b amendment by its own act. It does not accept the ⚠E3b outputs. It authorizes no evidence collection and no implementation, and adopts no canonical terms. It is decided without reference to any VP1a–d outcome (N1). **It does not authorize E4 (R8) or E5.**"
+
+- **Sub-choices:**
+  - (i) S1 applied: the title reads r1.9.
+  - (ii) not taken: D6 and D9 keep "none" for the R4 ids of R25/R38 under S.
+- **Next:** a worker applies D1–D10, S1, S2 and S3 to T3, taking it from r1.8 to r1.9. A fresh independent review then checks the applied text.
+- **After that:** step 2 of F-LOG-0285, the E2b Amendment 2 proposal. It must also handle the deferred pre-existing CB1 R4 gaps (proposal §4).
+- **Not authorized by this act:**
+  - nothing is adopted and E2b is not amended;
+  - the ⚠E3b outputs are not accepted;
+  - no spanning rule is selected;
+  - E4 and E5 are not authorized.
