@@ -2156,3 +2156,14 @@ The two `sha256sum` listings must be identical.
 | Sequence authorized | record → apply to `prereg_v2.py` and tests → independent review → repair → fresh re-review → orchestrator verification → present for the human's **separate freeze act** |
 | Scientific limit (human) | passing this amendment establishes a measurement protocol, not a robust KnowledgeOS theory; theory recovery follows S5/S5a/S5b under O1 (G-LOG-0125) |
 | Not authorized | the freeze; run-3 outside G-LOG-0117; corpus reads; G3–G5; using ETR engineering to route around O1 |
+
+## G-LOG-0136 — Human act: L1 = B, a missing exploratory p enters BH with p = 1
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-13: "follow the recommendation" — replying to the recommendation "B — include a missing exploratory p-value as p = 1" (the recommendation text asked for "reply B to authorize") |
+| Basis | `research/PREREG-v2-DRAFT-REVIEW.md` (W `d5fab6744`), remaining PENDING-HUMAN item L1; review 3 finding L1 |
+| Decided | **B:** the exploratory BH family is fixed at {H3, H5}; a member that produces no p-value (UNTESTABLE, DATA-DEFECT or ERROR) enters BH with **p = 1**, as R3 does for the confirmatory family (G-LOG-0128) |
+| Consequence (DERIVED) | a lone member with a p is judged against a family of 2 (BH threshold q/2 = 0.025 for the smallest p), never against a family of 1. Exploratory only |
+| Sequence authorized | minimal code change + focused test → full suite → one independent review covering the L1 change **and** the not-yet-reviewed H3 error-handling change → repairs and re-review → hash check (v1 unchanged) → present final hashes and freeze-act text |
+| Not authorized | the freeze (separate human act); run-3 (quiet period still blocked); G3–G5; corpus reads; any change of O1 |
