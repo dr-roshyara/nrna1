@@ -3936,3 +3936,23 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
 - **Next:**
   - A worker records Amendment 2 in E2b as §A2 (r1.2 → r1.3), tagging the superseded passages from proposal §4. A fresh review follows.
   - Then a re-assessment proposal for the ⚠E3b outputs, which needs its own act. It covers re-checking the CB rows against T3 r1.9, and the open points R25/R38 "none", D12 sufficiency and R24.
+
+
+## F-LOG-0291 — **Executor (2026-10-12): Amendment 2 APPLIED.** E2b r1.3
+- **Applied:** `R7/E2b-ADOPTION-TEXT.md` r1.2 → r1.3.
+  - Appended §A2, quoting the F-LOG-0290 act verbatim and the adopted cells byte-identical to T3 r1.9.
+  - Added 23 superseded-passage tags. Only the R-a, I-a and (h-i) variants are recorded.
+- **Fresh independent review: PASS_WITH_LIMITATIONS.**
+  - The act text and Annex A cells match byte for byte.
+  - Stripping the additions gives back r1.2 byte for byte.
+  - All invariants hold.
+- **Minor fixes applied by the main analyst, not re-reviewed:**
+  - a recorder note that T3 is now r1.9;
+  - §A2.6 (e) now records it as satisfied for preparation by F-LOG-0280 (log fact);
+  - "rules 1–5 and 2a" written out in full in the Authority bullet;
+  - a note that "struck" is recorded as a tag.
+- **Informational:**
+  - Proposal §4.2 row 21 still says "R24 conflict"; the recording correctly follows r1.1 §1.3 instead.
+  - Line 399 is extended, not superseded.
+- **State:** the CB1/CB23 cells are adopted per reading, and the host lists are ratified (R-a). Open: (g), (h), and the ⚠E3b re-assessment, which needs its own act.
+- **Next:** research audit RESEARCH-AUDIT-1 (running), then the ⚠E3b re-assessment.
