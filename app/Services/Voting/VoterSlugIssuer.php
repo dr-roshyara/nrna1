@@ -109,6 +109,7 @@ class VoterSlugIssuer
         $current = VoterSlug::withoutEvents(fn () => VoterSlug::withoutGlobalScope('tenant')
             ->where('election_id', $election->id)->where('user_id', $voter->id)
             ->lockForUpdate()->first());
+        $this->afterLocks();
 
         // 3. Voted (authoritative code row, or any slug row incl. soft-deleted): no link, nothing written.
         $votedSlug = $db->table('voter_slugs')
@@ -186,8 +187,16 @@ class VoterSlugIssuer
         return Str::random(32);
     }
 
-    /** Seam for the S3b conflict simulation. No-op in production; not reachable from any input. */
+    /** Seam for the S3b conflict simulation and the G6 pause point. No-op in production; not reachable from any input. */
     protected function beforeInsert(): void
+    {
+    }
+
+    /**
+     * G6 pause point (decision D3): runs while this attempt holds the codes-row and slug-row locks. No-op in
+     * production; only a test subclass (tests/Isolated/Pbdigit274/Concurrency/g6-worker.php) overrides it.
+     */
+    protected function afterLocks(): void
     {
     }
 }
