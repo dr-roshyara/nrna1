@@ -2111,3 +2111,16 @@ The two `sha256sum` listings must be identical.
 | Known limitation kept | H1 can reject under pure agent habit (V1–V5 untestable synthetically); under D0 this is carried as the "source/agent unresolved" reading, not resolved |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
+
+## G-LOG-0133 — Human act: outcome vocabulary adopted for H2 only, π = 0.7 (P2-3)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "P2-3: adopt for H2 only, π = 0.7" |
+| Basis | package v3.3 §7 P2-3 (l.121, l.190); P2 testability study v1.1 and review (PASS_WITH_LIMITATIONS); family-size study (`FAMILY-SIZE-COST-v1.md` l.19-23) |
+| Decided | **Adopt** the vocabulary REJ / NR-P / NR-U / UNT / VAC, **scope H2 only**, pre-registered effect **π = 0.7** (forward share). H1 and H4 non-rejections read OPEN |
+| Readings (FACT, package l.121) | REJ H2 = forward share > ½ beyond Model 0. NR-P = not rejected **and** power ≥ 0.8 at π = 0.7 at the applying Holm level, computed pre-registered (post-hoc power not admissible); licensed only at that effect: "no forward share as large as 0.7". NR-U, UNT, VAC = OPEN |
+| Applying level (DERIVED, recorder) | family {H1, H2, H4} fixed under R3: H2's Holm level is α/3 at the first step and larger at later steps. Power ≥ 0.8 at π = 0.7 needs **m ≥ 58** dated relations at α/3 (exact, FAMILY-SIZE-COST-v1 l.21); since H2's applying level is ≥ α/3, m ≥ 58 suffices at any step. Whether NR-P is decided at α/3 (conservative) or at H2's realized Holm level is an implementation detail to be fixed and tested in the amendment |
+| Not decided | NR-P for H1/H4 (not studied); "adopt modified" |
+| Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
+| Not authorized | the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
