@@ -1,0 +1,27 @@
+$ psql (read-only) in pbdigit274_isolated_test after the issuer run
+     current_database     |     current_user      
+--------------------------+-----------------------
+ pbdigit274_isolated_test | pbdigit274_test_owner
+(1 row)
+
+ migrations 
+------------
+        225
+(1 row)
+
+ voter_slugs | codes | steps | elections | organisations | users 
+-------------+-------+-------+-----------+---------------+-------
+           0 |     0 |     0 |         0 |             1 |     0
+(1 row)
+
+exit=0
+    slug     |     name     |     created_at      
+-------------+--------------+---------------------
+ publicdigit | Public Digit | 2026-10-12 21:11:28
+(1 row)
+
+ max_batch |                                   latest                                    
+-----------+-----------------------------------------------------------------------------
+         1 | 2026_10_12_000001_replace_voter_slugs_pair_unique_with_active_partial_index
+(1 row)
+

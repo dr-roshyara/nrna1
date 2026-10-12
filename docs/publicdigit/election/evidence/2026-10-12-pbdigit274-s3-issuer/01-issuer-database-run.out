@@ -1,0 +1,197 @@
+head=162604394133733435152cbd451ff2dd5d15cc15
+date=2026-10-12T23:36:17+02:00
+no config cache
+24:    public const APPROVED_NAME = 'pbdigit274_isolated_test';
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php --display-deprecations
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DDDDDDDDDDDDDDDDDD                                                18 / 18 (100%)
+
+Time: 00:05.600, Memory: 30.00 MB
+
+18 tests triggered 3 PHP deprecations:
+
+1) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/config/database.php:61
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_deactivated_link_is_replaced
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:204
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_persistent_slug_string_collision_gives_up_after_three_attempts
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:338
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_real_slug_string_collision_retries_with_a_new_string
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:317
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_valid_link_is_reused_unchanged
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:170
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_voted_current_slug_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:240
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_voted_soft_deleted_slug_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:229
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_an_expired_link_is_replaced_and_history_and_steps_are_kept
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:182
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_an_invalid_lifetime_issues_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:298
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_it_refuses_to_run_inside_a_transaction
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:309
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_lost_entitlement_retires_the_current_link_and_refuses
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:262
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_no_link_yet_issues_exactly_one
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:156
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_not_entitled_without_a_link_writes_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:275
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_other_voters_and_elections_are_untouched
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:283
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_active_slug_conflict_is_decided_again_once
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:364
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_repeated_active_slug_conflict_gives_up_without_a_link
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:386
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_unknown_constraint_is_not_retried
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:411
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_the_retrieved_hook_writes_nothing_on_a_refusal
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:249
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_voted_according_to_the_code_row_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:216
+
+2) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/config/database.php:81
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_deactivated_link_is_replaced
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:204
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_persistent_slug_string_collision_gives_up_after_three_attempts
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:338
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_real_slug_string_collision_retries_with_a_new_string
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:317
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_valid_link_is_reused_unchanged
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:170
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_voted_current_slug_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:240
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_voted_soft_deleted_slug_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:229
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_an_expired_link_is_replaced_and_history_and_steps_are_kept
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:182
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_an_invalid_lifetime_issues_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:298
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_it_refuses_to_run_inside_a_transaction
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:309
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_lost_entitlement_retires_the_current_link_and_refuses
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:262
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_no_link_yet_issues_exactly_one
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:156
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_not_entitled_without_a_link_writes_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:275
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_other_voters_and_elections_are_untouched
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:283
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_active_slug_conflict_is_decided_again_once
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:364
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_repeated_active_slug_conflict_gives_up_without_a_link
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:386
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_unknown_constraint_is_not_retried
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:411
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_the_retrieved_hook_writes_nothing_on_a_refusal
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:249
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_voted_according_to_the_code_row_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:216
+
+3) /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/config/database.php:66
+Constant PDO::MYSQL_ATTR_SSL_CA is deprecated since 8.5, use Pdo\Mysql::ATTR_SSL_CA instead
+
+Triggered by:
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_deactivated_link_is_replaced
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:204
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_persistent_slug_string_collision_gives_up_after_three_attempts
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:338
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_real_slug_string_collision_retries_with_a_new_string
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:317
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_valid_link_is_reused_unchanged
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:170
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_voted_current_slug_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:240
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_a_voted_soft_deleted_slug_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:229
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_an_expired_link_is_replaced_and_history_and_steps_are_kept
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:182
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_an_invalid_lifetime_issues_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:298
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_it_refuses_to_run_inside_a_transaction
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:309
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_lost_entitlement_retires_the_current_link_and_refuses
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:262
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_no_link_yet_issues_exactly_one
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:156
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_not_entitled_without_a_link_writes_nothing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:275
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_other_voters_and_elections_are_untouched
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:283
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_active_slug_conflict_is_decided_again_once
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:364
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_repeated_active_slug_conflict_gives_up_without_a_link
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:386
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_simulated_unknown_constraint_is_not_retried
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:411
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_the_retrieved_hook_writes_nothing_on_a_refusal
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:249
+
+* Tests\Isolated\Pbdigit274\Database\VoterSlugIssuerTest::test_voted_according_to_the_code_row_refuses_without_writing
+  /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugIssuerTest.php:216
+
+OK, but there were issues!
+Tests: 18, Assertions: 77, Deprecations: 3.
+exit=0
