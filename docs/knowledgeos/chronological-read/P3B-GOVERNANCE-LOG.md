@@ -2055,3 +2055,19 @@ The two `sha256sum` listings must be identical.
 | Not decided | combined rules (e.g. R3 + floor m ≥ 7; not studied) |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads |
+
+## G-LOG-0129 — Recorder's erratum to G-LOG-0125–0128 (after independent review; no decision changed)
+
+| Field | Value |
+|---|---|
+| Nature | recorder's correction, not a human act. The entries above stay as written (append-only); this entry supersedes only the recorder statements named below. Every human decision in G-LOG-0125–0128 is unchanged |
+| Review | fresh-context, read-only reviewer subagent, 2026-10-12: **CONSISTENT WITH MINOR ISSUES**. All four "Decided" rows match the human's words; no scope widened or narrowed. Frozen `prereg_v1.py` sha `eb6291abfe0653ea…`, single commit `a72528b29`, unchanged; act texts of G-LOG-0125 verbatim; W shares PROD's `.git` (confirmed); R3 is the only listed rule without the conditional-independence premise (P2-TESTABILITY v1.1 l.115-119, l.141; P2 v1 review l.33, l.81; package l.116-119) |
+| M1 (G-LOG-0126 "Family" row) | "α/4 values not computed" is **false**. The family-size study computed them: H2 m_min at α/4 = **27 / 63 / 250** (π = .8 / .7 / .6) (`family-size-cost-v1/FAMILY-SIZE-COST-v1.md` l.14, l.19-23; P2-TESTABILITY v1.1 l.55). Orchestrator re-checked l.14-23 |
+| m3 (G-LOG-0126) | "α/5 figures are conservative bounds" holds only while the family has at most 4 members; if a P3 test joins (5), the α/5 figures are exact first-step values. Basis: P(Holm rejects H2) ≥ P(p_H2 ≤ α/m) |
+| m4 (G-LOG-0126) | review point 8 concerns row inclusion (all objects vs non-hub); the link to the Loevinger component is the recorder's DERIVED fact D1 (protocol v0 §2), not the review's point 8 |
+| m1 (G-LOG-0128) | the untestability guards are at `prereg_v1.py` **l.154** (H3, < 10 internal edges) and **l.179** (H2, < 5 dated relations), not "l.165-180" |
+| m2 (G-LOG-0128 DERIVED row) | the direct source is P2-TESTABILITY v1.1 l.115-119 (package X-4 is labelled INFERENCE). R3's guarantee further requires that each hypothesis's p-value is valid on its own and that its UNT status is decided by its own data only; exact validity of the H3 null chain (restarted at the observed graph) is unproven (P2 v1 review l.34) |
+| m5 (G-LOG-0127) | more precisely: several statistics were produced (per-dimension eligibility caps; pair counts on two matrices), not one count. "Use so far: none" means **no recorded decision cites them**; the human had the disclosure before G-LOG-0126 (H5 → exploratory, a conservative move). The figures are now reproduced in this log and will be visible to later reviewers |
+| m6 | G-LOG-0125 "Execution conditions" and G-LOG-0128 "Family" rows are recorder DERIVED statements, not the human's words |
+| INFO | G-LOG-0125 cites package caveats at l.43-46; they are at l.44-46 |
+| Not changed | all human decisions; frozen `prereg_v1.py` |
