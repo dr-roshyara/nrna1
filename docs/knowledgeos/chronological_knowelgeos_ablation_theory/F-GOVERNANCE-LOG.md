@@ -3989,3 +3989,10 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
     - build a clause-by-coordinate table;
     - a non-Claude test of act identifiability, or V6 (needs authorization).
 - **Status:** analysis only. Any correction (S1–S6, context framing) needs a proposal and a human act.
+
+
+## F-LOG-0293 — **Human direction (Human ARB, 2026-10-13): "Reframe as module cut"**
+- **Selected:** asked how the pending ⚠E3b context outputs should be framed in light of RESEARCH-AUDIT-1, the human chose "Reframe as module cut (Recommended)". The meaning is:
+  1. Prepare a proposal relabelling E3-BC1/BC23 as a candidate module cut over one model (audit S6).
+  2. Then re-assess the outputs on that basis.
+- **Scope:** this direction is **not an authorization**. The relabel needs its own act, and the re-assessment needs its own act. E4 and E5 are not authorized.
