@@ -1,0 +1,7 @@
+$ env -i PATH=... vendor/bin/phpunit -c phpunit.pbdigit274.xml
+PBDIGIT-274 isolated database guard: REFUSED [missing] PBDIGIT274_TEST_DB is not set.
+exit=1
+
+$ env -i PATH=... PBDIGIT274_TEST_DB=nrna_test PBDIGIT274_DB_HOST=/nonexistent-pbdigit274-socket-dir PBDIGIT274_DB_USERNAME=iso_user vendor/bin/phpunit -c phpunit.pbdigit274.xml
+PBDIGIT-274 isolated database guard: REFUSED [forbidden] 'nrna_test' is a shared database and is never used for this work.
+exit=1

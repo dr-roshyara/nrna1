@@ -1,0 +1,262 @@
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+
+EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFF                        42 / 42 (100%)
+
+Time: 00:00.823, Memory: 12.00 MB
+
+There were 33 errors:
+
+1) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_missing_name_is_refused with data set "getenv false" (false)
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:41
+
+2) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_missing_name_is_refused with data set "null" (null)
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:41
+
+3) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_empty_or_whitespace_name_is_refused with data set "empty" ('')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:52
+
+4) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_empty_or_whitespace_name_is_refused with data set "spaces" ('   ')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:52
+
+5) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_an_empty_or_whitespace_name_is_refused with data set "tab and newline" ('	\n')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:52
+
+6) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_shared_test_database_is_refused_case_insensitively with data set "exact" ('nrna_test')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:63
+
+7) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_shared_test_database_is_refused_case_insensitively with data set "upper" ('NRNA_TEST')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:63
+
+8) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_shared_test_database_is_refused_case_insensitively with data set "mixed" ('Nrna_Test')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:63
+
+9) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "leading space" (' pbd_isolated')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+10) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "trailing space" ('pbd_isolated ')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+11) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "hyphen" ('pbd-isolated')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+12) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "leading digit" ('1pbd')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+13) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "quote" ('pbd"x')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+14) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "semicolon" ('pbd;drop')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+15) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "longer than 63" ('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa...aaaaaa')
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+16) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_name_is_refused_rather_than_corrected with data set "not a string" (42)
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:83
+
+17) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_well_formed_name_is_returned_unchanged
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:88
+
+18) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_mismatched_database_is_refused_and_both_names_are_reported
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:97
+
+19) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_comparison_is_exact
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:104
+
+20) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_non_string_answer_is_refused
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:110
+
+21) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_matching_database_passes
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:115
+
+22) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_failed_lookup_is_refused_without_leaking_its_message
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:121
+
+23) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_host_and_username_are_required
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:133
+
+24) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_malformed_port_is_refused
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:140
+
+25) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_settings_come_only_from_the_dedicated_variables
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:147
+
+26) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_every_postgres_connection_is_pinned_and_the_url_override_is_blanked
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:156
+
+27) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_confined_connections_pass
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:184
+
+28) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_the_default_connection_must_be_one_of_the_confined_ones
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:190
+
+29) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_connection_pointing_elsewhere_is_refused
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:195
+
+30) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_url_override_is_refused
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:201
+
+31) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_confirm_before_refresh_checks_configuration_before_asking_the_database
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:208
+
+32) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_confirm_before_refresh_refuses_a_live_mismatch
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:217
+
+33) Tests\Isolated\Pbdigit274\Guard\DatabaseIdentityGuardTest::test_a_cached_configuration_is_refused
+Error: Class "Tests\Isolated\Pbdigit274\Support\DatabaseIdentityGuard" not found
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:22
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/DatabaseIdentityGuardTest.php:227
+
+--
+
+There were 9 failures:
+
+1) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "name missing" ([], 'missing')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[missing]" [ASCII](length: 9).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+2) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "name empty" ([''], 'empty')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[empty]" [ASCII](length: 7).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+3) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "name whitespace" (['   '], 'empty')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[empty]" [ASCII](length: 7).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+4) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "shared test db" (['nrna_test'], 'forbidden')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[forbidden]" [ASCII](length: 11).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+5) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "shared, upper" (['NRNA_TEST'], 'forbidden')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[forbidden]" [ASCII](length: 11).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+6) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "malformed" (['pbd-isolated'], 'malformed')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[malformed]" [ASCII](length: 11).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+7) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_unsafe_configuration_aborts_before_any_connection with data set "no credentials" (['pbd_isolated'], 'credentials_missing')
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[credentials_missing]" [ASCII](length: 21).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:62
+
+8) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_an_unreachable_database_aborts_without_printing_the_password
+Failed asserting that 'Could not open input file: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php\n
+' [ASCII](length: 167) contains "[connection_failed]" [ASCII](length: 19).
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:71
+
+9) Tests\Isolated\Pbdigit274\Guard\IsolatedBootstrapScriptTest::test_the_script_never_falls_back_to_the_shared_test_bootstrap
+Failed asserting that file "/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/../../../bootstrap-isolated-database.php" exists.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Guard/IsolatedBootstrapScriptTest.php:77
+
+ERRORS!
+Tests: 42, Assertions: 25, Errors: 33, Failures: 9.

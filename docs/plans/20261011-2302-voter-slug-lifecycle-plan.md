@@ -686,3 +686,10 @@ Status: **R** = resolved at plan level (it still needs execution evidence, as li
   - **Repository incident:** S1 was committed as `a78d7c2f2`, then the unrelated commit `118193320` (built from the shared index) removed the S1 files from HEAD. The working tree is byte-identical to `a78d7c2f2`. Cause: a commit through a temporary index while the shared index lagged behind HEAD.
   - **Recovery (2026-10-12, authorised by the Human PO):** commit `4d83dffc0` restores exactly the eight S1 files, byte-identical to `a78d7c2f2`, through the shared index with `git commit --only`. It doesn't revert `118193320`'s other changes; no history rewrite, no push, no database operation. The recovery restores the files; it is not runtime evidence.
   - **Next:** S2 needs G3 and G4 (section 13); it is not database-free.
+- **2026-10-12, S2 step 1 (authorised by the Human PO: the database-free identity guard only; no connection, no migration; committed at the PO's later request).**
+  - **Built:** `phpunit.pbdigit274.xml`, `tests/bootstrap-isolated-database.php`, `DatabaseIdentityGuard`, `IsolatedDatabaseRefused`, `IsolatedDatabaseTestCase` (S2-3).
+  - **Runs:** RED 42 failing → GREEN 42 tests / 96 assertions, exit 0. The dedicated config refuses a missing name and `nrna_test` before Laravel boots. S1 regression 72 / 424, exit 0. Evidence `docs/publicdigit/election/evidence/2026-10-12-voter-slug-lifecycle-s2-step1/`.
+  - **Not verified (needs G4):**
+    - the real `current_database()` lookup;
+    - a wrong-database abort against a real server;
+    - the in-test second check inside a booted app.

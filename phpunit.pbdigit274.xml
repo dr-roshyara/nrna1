@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PBDIGIT-274 isolated database tests ONLY (plan section 11.0, S2-3; gates G4 / G5).
+
+  The bootstrap refuses to start unless PBDIGIT274_TEST_DB names a dedicated database and a raw connection
+  confirms current_database() equals it; then it pins every PostgreSQL connection to that database.
+  Credentials come from PBDIGIT274_DB_HOST / _PORT / _USERNAME / _PASSWORD in the environment, never from
+  this file. No DB_* value is set here on purpose.
+
+  Run only after G4 and an explicit authorisation, with PBDIGIT274_TEST_DB set to the approved name and the
+  PBDIGIT274_DB_* variables set: vendor/bin/phpunit -c phpunit.pbdigit274.xml
+
+  The guard's own database-free tests run without any configuration file; see
+  developer_guide/election/voter_slug/03_isolated_database_guard.md for the command.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="tests/bootstrap-isolated-database.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Pbdigit274Database">
+            <directory suffix="Test.php">./tests/Isolated/Pbdigit274/Database</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <server name="APP_KEY" value="base64:hI6EHt29D8WPl/MQdFYSg6uE/MK/5j5n5Rj7+OXK8QI="/>
+        <server name="APP_DEBUG" value="false"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="MAIL_MAILER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
+    </php>
+</phpunit>

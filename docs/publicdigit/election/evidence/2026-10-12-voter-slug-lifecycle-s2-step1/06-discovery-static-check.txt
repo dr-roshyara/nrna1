@@ -1,0 +1,22 @@
+# Static check: no configuration other than phpunit.pbdigit274.xml discovers tests/Isolated
+## phpunit.xml test-suite directories:
+<directory suffix="Test.php">./tests/Unit</directory>
+<directory suffix="Test.php">./tests/Replay</directory>
+<directory suffix="Test.php">./tests/Feature</directory>
+<directory suffix="Test.php">./tests/Architecture</directory>
+<directory suffix="Test.php">./tests/Unit/Contexts/Contestation</directory>
+<directory suffix="Test.php">./tests/Unit/Contexts/Adjudication</directory>
+<directory suffix="Test.php">./tests/Unit/Contexts/Election</directory>
+<directory suffix="Test.php">./tests/Unit/Contexts/Shared</directory>
+<directory suffix="Test.php">./tests/Feature/Contexts/Contestation</directory>
+<directory suffix="Test.php">./tests/Feature/Contexts/Adjudication</directory>
+<directory suffix="Test.php">./tests/Feature/Contexts/Election</directory>
+<directory suffix="Test.php">./tests/Feature/Contexts/Shared</directory>
+<directory suffix="Test.php">./tests/Replay</directory>
+<directory suffix="Test.php">./scripts/lib/EngineeringKnowledge</directory>
+## phpunit-pgsql.xml test-suite directories:
+<directory suffix="Test.php">./tests/Unit</directory>
+<directory suffix="Test.php">./tests/Feature</directory>
+## matches for 'Isolated' or a bare './tests' directory in the default configs:
+(none)
+## composer test script: ['@php artisan test', 'bash scripts/enforce-tenantid.sh']

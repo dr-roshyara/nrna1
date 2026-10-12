@@ -18,7 +18,7 @@ Log new PublicDigit-specific engineering entries here going forward. -->
 | ✅ **S1 done (database-free)** | `VoterSlugLifetime` (single rule, strict config, 503 on misconfiguration) · guard order V-5a → V-4 → V-5b · `VoterSlugRouteLookup` (no model events, only `'tenant'` scope removed); the binding no longer answers 410. 72 tests / 424 assertions, exit 0. Evidence `docs/publicdigit/election/evidence/2026-10-11-voter-slug-lifecycle-s1/`. **In HEAD:** committed as `a78d7c2f2`, removed from HEAD by the unrelated `118193320`, restored byte-identical in recovery commit `4d83dffc0` (no history rewrite, no push, no database operation) |
 | ⛔ **Gated** | S2–S9; migration approval (G3); the isolated test database (G4 / G5, **never `nrna_test`**); G6, G7, G8 |
 | 📝 **Follow-ups recorded** | stale 410 expectation in `ConstitutionalVotingProtectionTest` (S7); the binding's `slug_prefix` log site (O-7 classification) |
-| ▶️ **Next authorised action** | **None.** S2 design reviewed 2026-10-12 (REVISE → clarifications in plan section 11.0). **G3 APPROVED 2026-10-12** (isolated test database only). Waiting for: G4 (isolated database, **not provisioned yet**, to be named by the PO), then the S2 authorisation; G5–G8 not executed. **PBDIGIT-274 stays IN PROGRESS** |
+| ▶️ **Next authorised action** | **None.** S2 design reviewed 2026-10-12 (REVISE → clarifications in plan section 11.0). **G3 APPROVED 2026-10-12** (isolated test database only). **S2 step 1 (identity guard, database-free) implemented 2026-10-12.** Waiting for: G4 (isolated database, **not provisioned yet**, to be named by the PO), then the authorisation of the database part of S2; G5–G8 not executed. **PBDIGIT-274 stays IN PROGRESS** |
 
 ---
 
