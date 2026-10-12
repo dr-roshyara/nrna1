@@ -10,7 +10,7 @@
 **Mandatory gates (none is met):**
 - **G1:** independent Principal Review of rev 10, checked **against the finding register (section 17) only**, not a fresh review from scratch.
 - **G2:** explicit Human PO / ARB approval of the plan and of every decision marked "plan prerequisite" (section 2.2).
-- **G3:** separate migration approval (section 11).
+- **G3:** separate migration approval (section 11). **APPROVED 2026-10-12** (design, section 11 + 11.0; isolated test database only).
 - **G4:** the isolated PostgreSQL test database provisioned, its name approved.
 - **G5:** `current_database()` verified before **every** database run. Never `nrna_test` or any shared database.
 - **G6:** the real two-process, two-connection concurrency test **executed and passed**. A simulation never satisfies it.
@@ -426,6 +426,41 @@
   3. Each precondition failure changes nothing.
   4. Direct and Migrator success give identical schemas; `down()` without history restores the original.
   5. `down()` with history refuses; every row unchanged.
+
+### 11.0 S2 design clarifications (S2 design review, 2026-10-12; read-only review; **no decision changed, the freeze holds**)
+This sub-section makes section 11 precise where the review found it imprecise. If anything above conflicts with it, **this sub-section wins**. **Status: APPROVED (G3) by the Human PO, 2026-10-12:** the migration design (section 11 + this sub-section) is approved for implementation in S2 and for execution **on the isolated test database only**. A production migration still needs G8 and the section 11.1 runbook. S2 itself still needs explicit authorisation, and is blocked until G4.
+
+- **S2-1, the old rule is a constraint [F].** On PostgreSQL, `$table->unique(['election_id','user_id'])` compiles to `ALTER TABLE … ADD CONSTRAINT voter_slugs_election_id_user_id_unique UNIQUE (…)` (`PostgresGrammar.php:315-321`); its backing index has the same name.
+  - **Precondition:** `pg_constraint` holds a constraint of type `u` with that name on `voter_slugs`, over exactly `(election_id, user_id)`. Anything else (missing, a plain index, other columns) → stop, change nothing.
+  - **Drop** with `dropUnique` (`DROP CONSTRAINT`, `:519-524`), never `DROP INDEX`.
+  - Read "old index" in sections 11 and 11.1 as "old constraint". The `pg_indexes` checks in 11.1 step 3 stay valid (the backing index disappears with the constraint), plus a `pg_constraint` check.
+- **S2-2, behaviour tests for the new rule (added to S2's acceptance).** After a successful migration:
+  - (a) a soft-deleted row plus a new current row for the same pair is allowed;
+  - (b) a second current row is rejected with 23505, naming `voter_slugs_active_election_user_unique`;
+  - (c) several soft-deleted rows for one pair are allowed;
+  - (d) restoring (un-deleting) an old row while a current row exists is rejected.
+
+  Test 4 is also extended: after `down()` without history, a second row for the pair (soft-deleted or not) is rejected again.
+- **S2-3, test-database safety (prerequisite of G5) [F].** `phpunit.xml:4,70` and `tests/bootstrap-test-database.php` pin `DB_DATABASE=nrna_test`.
+  - S2's database tests run **only** through a separate bootstrap / configuration that pins the PO-approved isolated database and **aborts before any database refresh** unless `current_database()` equals the approved name.
+  - The S2 test files also guard themselves (they skip or fail before `RefreshDatabase` when that identity is not confirmed), so a default `php artisan test` run never migrates `nrna_test`.
+  - Writing this bootstrap is part of S2; running it is not allowed until G4.
+- **S2-4, drift-safe `down()`.** Preconditions:
+  - the partial index exists **and** the old constraint does not;
+  - no pair has more than one row, soft-deleted included (unchanged).
+
+  Otherwise refuse with a clear message; never `DROP INDEX IF EXISTS` silently; never delete or rewrite rows.
+- **S2-5, lock timeout.** `SET LOCAL lock_timeout` (value to be stated in the G3 request, e.g. a few seconds) inside the migration's own transaction. A timeout fails and rolls back cleanly to the old constraint. Recorded in the evidence.
+  - **Reason [F]:** `DROP CONSTRAINT` holds an `ACCESS EXCLUSIVE` lock until commit, and the index is built under it.
+- **S2-6:** the story's early code sample is superseded by this section (pointer added to the story).
+- **S2-7:** the comment in `VotingIntegrityCharacterizationTest:106` ("the cache lock is effectively per voter") is corrected in S2. The test itself stays valid: both of its rows are current.
+- **Not verified (runtime evidence needed):**
+  - the real schema matching the migrations;
+  - the PostgreSQL version on the isolated database;
+  - a named migration class with an overridable failure seam working through the Migrator;
+  - transaction levels 1 (direct) and 2 (Migrator).
+
+**S2 acceptance (replaces the S2 row of section 13):** tests 1–5 above (with S2-1, S2-4 and the extended test 4); behaviour tests S2-2 (a)–(d); `PgUniqueViolationShapeTest`; the S2-3 identity check executed before every run; the S1 regression still green. The demo table stays outside S2 (decision 2.1: hard delete and a new row each time).
 
 ### 11.1 Migration-first release runbook (R9-5; to be approved with G3 / G8; not executed)
 

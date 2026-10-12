@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Status** | `IN PROGRESS` · plan approved by the Human PO / ARB on 2026-10-11 (`docs/plans/20261011-2302-voter-slug-lifecycle-plan.md`, rev 10 + R11-1; decisions in its section 2.1a). **Slice S1 implemented (database-free tests passing).** The S1 code and tests were committed as `a78d7c2f2`, removed from HEAD by the unrelated `118193320`, restored byte-identical in recovery commit `4d83dffc0` (no history rewrite, no push, no database operation). **S1 done ≠ PBDIGIT-274 done.** Slices S2–S9, the migration (G3), the isolated database (G4 / G5), G6, G7 and G8 remain gated. The test-database rule below is unchanged: isolated database only |
+| **Status** | `IN PROGRESS` · plan approved by the Human PO / ARB on 2026-10-11 (`docs/plans/20261011-2302-voter-slug-lifecycle-plan.md`, rev 10 + R11-1; decisions in its section 2.1a). **Slice S1 implemented (database-free tests passing).** The S1 code and tests were committed as `a78d7c2f2`, removed from HEAD by the unrelated `118193320`, restored byte-identical in recovery commit `4d83dffc0` (no history rewrite, no push, no database operation). **S1 done ≠ PBDIGIT-274 done.** **G3 (S2 migration design) approved 2026-10-12** for the isolated test database only. G4 is not provisioned, so S2 is blocked. Slices S2–S9, the migration (G3), the isolated database (G4 / G5), G6, G7 and G8 remain gated. The test-database rule below is unchanged: isolated database only |
 | **Blocks** | deployment of `PBDIGIT-273` |
 
 ## Decisions already made (Human PO, 2026-10-11)
@@ -49,6 +49,8 @@
 10. Election, tenant and eligibility rules can't be bypassed through replacement.
 
 ## Proposed migration (PROPOSED, not approved for execution; for review in the 274 plan)
+
+> **Superseded (2026-10-12):** the sample below is the early proposal. The current S2 design is plan section 11 with its clarifications in section 11.0 of `docs/plans/20261011-2302-voter-slug-lifecycle-plan.md`. One difference: on PostgreSQL the old rule is a **constraint**, checked in `pg_constraint`. The plan also adds preconditions, its own transaction, a drift-safe `down()` and a lock timeout.
 
 **Engine:**
 - The project and its test bootstrap use **PostgreSQL** (`tests/bootstrap-test-database.php` pins `pgsql`). PostgreSQL supports partial unique indexes (`CREATE UNIQUE INDEX … WHERE …`).
