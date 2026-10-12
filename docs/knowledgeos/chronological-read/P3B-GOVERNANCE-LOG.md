@@ -2167,3 +2167,14 @@ The two `sha256sum` listings must be identical.
 | Consequence (DERIVED) | a lone member with a p is judged against a family of 2 (BH threshold q/2 = 0.025 for the smallest p), never against a family of 1. Exploratory only |
 | Sequence authorized | minimal code change + focused test → full suite → one independent review covering the L1 change **and** the not-yet-reviewed H3 error-handling change → repairs and re-review → hash check (v1 unchanged) → present final hashes and freeze-act text |
 | Not authorized | the freeze (separate human act); run-3 (quiet period still blocked); G3–G5; corpus reads; any change of O1 |
+
+## G-LOG-0137 — Human act: FREEZE of prereg_v2 (joint P1–P3 amendment)
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-13: "what do you suggest , I accept your recommendation" — in reply to the orchestrator's presented freeze-act text and its recommendation to freeze. Recorder's reading: this approves **the freeze only**, as presented; it does not decide the other open recommendations (theory ordering / O1, ETR engineering plan, push), which remain open |
+| Frozen artifacts (W `s-series/s5-r7-v29-repair`, commit `b8a3ecf2a`) | `research/prereg_v2.py` sha256 **`827ce461634201fa4da3d69bb87890a5bae0f3bd4ac993042a1eb9cf43b1d87d`**; `research/test_prereg_v2.py` sha256 **`8e126dd8fc335700bdb7d0fb7ad3ce44aec67194c9c1b4f8757177662b5a18e4`** (41 pass); `research/PREREG-v2-DRAFT-REVIEW.md` sha256 **`da57876515d48536b112fc0a7405bb68a51b21c7d44c4a9dd431f61796c62b78`**. Hashes re-verified by the orchestrator at recording |
+| Act (as presented) | prereg_v2 is the pre-registered analysis instrument for S5, implementing G-LOG-0118–0136. `prereg_v1.py` (sha256 `eb6291abfe0653ea0a5dcaee8c0dcaf04ab6d47ecf40b3cb960dda103ac1a1f5`) is preserved unchanged as the historical instrument and is not used for S5 analysis. G-LOG-0117 Decision D (H5, P1–P3) is thereby **CLOSED** |
+| Review basis | four independent reviews with re-checks (record above); last review PASS, no change to code or tests after it |
+| Rule from now on | any change to prereg_v2 or its tests needs a new version, independent review and a new human act, before any S5 data |
+| Not authorized | run-3 outside G-LOG-0117 (quiet period, PREFLIGHT-OK); G3; G4; G5; corpus reads; any H-19 unseal; any change to O1 (G-LOG-0125) |
