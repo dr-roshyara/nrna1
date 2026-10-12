@@ -3776,3 +3776,30 @@ The reconciliation **NOT-REPRODUCED-SCHEMA-UNDERDETERMINED** is accepted as evid
   - the properties of the value-object and event candidates;
   - the counting row choice for CG1 under S″.
 - **Status:** awaiting a Human ARB act on E3b (Accept with a mandatory A2 choice, Return, or Reject). E4 (R8) and E5 are not authorized.
+
+
+## F-LOG-0284 — **Human act (Human ARB, 2026-10-12): E3b ACCEPTED, A2 = (b)**. Bounded architecture proposal, one corpus; CB1/CB23-derived outputs NOT accepted pending (d′) and an E2b amendment
+**The act** (`R7/E3-ARCHITECTURE-PROPOSAL.md` r1.1 §11 Accept, verbatim, with A2 = (b) selected; r[n] = r1.1):
+> "I, Human ARB, accept the architecture proposal `R7/E3-ARCHITECTURE-PROPOSAL.md` r1.1 produced under §E3 (F-LOG-0282), with its review findings and the §B limitations, as a **bounded architecture proposal, one corpus**, with results under S, S′ and S″, none selected.
+>
+> A2, select one: (b) the ⚠E3b outputs (E3-BC1, E3-BC23, E3-REL, the E3-PP placement, and every context and cut-status column) are **not** accepted, although the CB1 / CB23 T1 ids are adopted (F-LOG-0275 Act I (1)), until (d′) is made and the whole synced CB1 / CB23 §2 rows are adopted by an E2b amendment, each by its own act; the other elements are accepted.
+>
+> It selects no spanning rule, accepts no asymmetry, and does not withdraw F-LOG-0265's premise. It decides no variation point and resolves no open item ((d′), C-γ, R11, the CV9 / §3b tension, H13, A1, A5). It makes no candidate constraint an invariant, adds no transaction semantics, and adopts no canonical terms. It amends no adopted or governed record, authorizes no evidence collection and authorizes no implementation. It is decided without reference to any VP1a–d outcome (N1). **It does not authorize E4 (R8) or E5.**"
+
+- **Accepted** (bounded, one corpus, provisional names, none canonical):
+  - the candidate aggregate boundaries E3-AG1–AG6 from CG1–CG6 (consistency conceptual only; no transactions, invariants or enforceability; R23);
+  - the Q4–Q6 value and event candidates, as [H] with properties [O];
+  - the placement of the non-CB elements and the inactive T-B slot list;
+  - the per-reading results, presented as results, none selected;
+  - all the limitations.
+- **NOT accepted, pending two separate acts:**
+  - Outputs: E3-BC1, E3-BC23, E3-REL, the E3-PP placement, and every context column and cut-status column.
+  - Acts needed: (1) the (d′) T3 sync; (2) an E2b amendment adopting the whole synced CB1/CB23 §2 rows. The reading-dependent cells are adopted per reading, with no reading selected.
+- **Open:**
+  - (d′) and the E2b amendment, as above;
+  - C-γ, R11, CV9/§3b, H13, A1, A5;
+  - the sources are insufficient on the context-map pattern, actor-identity ownership, aggregate identity, root and lifecycle, the value and event properties, and the CG1 S″ row choice.
+- **Not authorized:** E4 (R8) and E5; implementation; canonical terms; no VP is decided; no spanning rule is selected; the asymmetry is not accepted.
+- **Next options for the human:**
+  - (i) Complete the context part: a (d′) sync act, then an E2b Amendment 2 act, then re-assess the ⚠E3b outputs.
+  - (ii) Prepare an E4/R8 canonicalization proposal for the accepted part only. This needs its own authorization.

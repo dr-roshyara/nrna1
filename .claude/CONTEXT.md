@@ -1,5 +1,9 @@
 <!-- Archived on 2026-09-28: entries dated 2026-08-30 and earlier moved to CONTEXT-ARCHIVE-2026-07-08.md, split losslessly (byte-for-byte verified) from the original CONTEXT.md. Active/current entries (2026-09 onward) remain here. This file is overwhelmingly KnowledgeOS content (checked directly: 0 purely-PublicDigit blocks in this active period). PublicDigit-specific engineering notes now go in the separate CONTEXT-publicdigit.md (started empty 2026-09-28) -- neither that file nor CONTEXT-ARCHIVE-2026-07-08.md is wired into any hook/settings.json reference the way this file is, so they won't surface automatically; this note is what makes them discoverable. -->
 
+## 📍 UPDATE (2026-10-12, F-Series) — E3b ACCEPTED, A2 = (b) (F-LOG-0279–0284)
+- O3 prep authorized (0280) → O3 proposal (0281) → E3 authorized (0282) → E3 architecture proposal r1.1 (0283) → E3b accepted with A2 (b) (0284): aggregates/VO/event candidates accepted (bounded, provisional names); CB1/CB23-derived contexts, E3-REL, participant placement NOT accepted pending (d′) T3 sync + E2b Amendment 2.
+- **Next (human):** (i) (d′) + E2b Amendment 2 to complete contexts, or (ii) authorize E4/R8 canonicalization proposal for the accepted part. E4/E5 not authorized.
+
 ## 📍 UPDATE (2026-10-11, F-Series) — Amendment batch C→A→B DONE (F-LOG-0272–0278)
 - T3 r1.8 (R21; F8; R11 open), E2b r1.2 = Amendment 1 (P-c, CB1/CB23, 27 elements, VP12 (i), VP11 (ii) consistency only, ten-row constraints pending returned guard-row question), register r1.19, ARB r4.4.
 - **Next (human):** act authorizing O3-proposal preparation (must report S/S′/S″). Open: (d′) M5 cells, C-γ guard rows, R11, H13 VP11 note. E3 not authorized.
