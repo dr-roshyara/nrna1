@@ -7,12 +7,14 @@ use App\Contexts\Elections\Application\Ports\VotingEntitlementQuery;
 use App\Contexts\Elections\Domain\ValueObjects\VotingEntitlementReason;
 use App\Models\Election;
 use App\Models\User;
+use App\Exceptions\Voting\VoterSlugIssuanceConflict;
 use App\Services\ElectionAuditService;
+use App\Services\Voting\VoterSlugIssuance;
+use App\Services\Voting\VoterSlugIssuer;
 use Carbon\Carbon;
 use App\Models\VoterSlug;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Response;
 use Illuminate\Support\Facades\Log;
@@ -163,43 +165,29 @@ class ElectionVotingController extends Controller
                 ->with('error', $ipBlock['message']);
         }
 
-        // Reuse an unexpired active slug, or refresh any existing slug for this user+election
-        $existing = VoterSlug::withoutGlobalScopes()
-            ->where('user_id', $user->id)
-            ->where('election_id', $election->id)
-            ->first();
-
-        if ($existing) {
-            // Refresh slug and expiry so it's valid for a new voting session
-            $existing->update([
-                'slug'       => Str::random(32),
-                'status'     => 'active',
-                'is_active'  => true,
-                'can_vote_now' => true,
-                'expires_at' => now()->addMinutes(30),
-            ]);
-
-            // Log voting_started event
-            app(ElectionAuditService::class)->log(
-                election: $election,
-                event: 'voting_started',
-                user: $user,
-                category: 'voters',
-                ip: $request->ip()
-            );
-
-            return redirect()->route('slug.code.create', ['vslug' => $existing->slug]);
+        // PBDIGIT-274 S4: one current, valid link per voter, through the issuer. A valid link is reused unchanged;
+        // an expired or deactivated one is replaced by a NEW row (fresh creation time, so the guard accepts it)
+        // and kept as history. The old code rewrote the existing row in place and kept its old created_at, which
+        // locked the voter out once the 30 minutes had passed.
+        try {
+            $issuance = VoterSlugIssuer::fresh()->issue($user, $election);
+        } catch (VoterSlugIssuanceConflict $e) {
+            return redirect()->route('elections.show', $slug)->with('error', $e->getUserMessage());
         }
 
-        $voterSlug = VoterSlug::create([
-            'id'              => (string) Str::uuid(),
-            'user_id'         => $user->id,
-            'election_id'     => $election->id,
-            'organisation_id' => $election->organisation_id,
-            'slug'            => Str::random(32),
-            'status'          => 'active',
-            'expires_at'      => now()->addMinutes(30),
-        ]);
+        if ($issuance->outcome === VoterSlugIssuance::ALREADY_VOTED) {
+            return redirect()->route('elections.show', $slug)->with('info', 'You have already voted.');
+        }
+        if (! $issuance->hasLink()) {
+            return redirect()->route('elections.show', $slug)
+                ->with('error', match ($issuance->refusal) {
+                    VotingEntitlementReason::NotActive          => 'Your voter registration for this election is not active.',
+                    VotingEntitlementReason::NotAdmitted        => 'Your identity must be verified by the Chief or Deputy Chief of the election before you can vote.',
+                    VotingEntitlementReason::ElectionNotVotable => 'Voting is not currently allowed.',
+                    default                                     => 'You are not registered as a voter for this election.',
+                });
+        }
+        $voterSlug = $issuance->slug;
 
         // Log voting_started event
         app(ElectionAuditService::class)->log(
