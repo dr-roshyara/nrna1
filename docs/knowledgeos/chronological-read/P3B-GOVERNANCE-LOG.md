@@ -1999,3 +1999,16 @@ The two `sha256sum` listings must be identical.
 | Still open for H5 | D and exact dimension list (verification); D = 12 synthetic re-run (not commissioned); P1-5 effect size; P1-6 artefact check |
 | Not changed | frozen `prereg_v1.py` (sha `eb6291abfe0653ea…`); effect only through the new pre-registration version, review, freeze and human act, before any S5 data |
 | Not authorized | any other P1–P3 choice; the D = 12 re-run; the amendment's freeze; run-3 outside G-LOG-0117; G3–G5; corpus reads; early theory recovery |
+
+## G-LOG-0125 — Human act: early theory recovery D-ETR-0 = yes; D-ETR-1 = O1
+
+| Field | Value |
+|---|---|
+| Decider | the human project owner, 2026-10-12: "D-ETR-0 approved: yes, route O1" |
+| Basis | `audit-p3b/etr-decision/TRACK-A-AUTHORIZATION-PACKAGE-v3.md` (W `s-series/s5-r7-v29-repair`, sha `821b78c4d9d86188…`), §4 and the act texts at l.69-70; final recheck PASS_WITH_LIMITATIONS (`TRACK-A-PACKAGE-v3-RECHECK.md`) |
+| D-ETR-0 (act text, package l.69) | "Authorize ETR engineering only: an RA-15-compatible extension of the §13.6 register schema; manifest tooling; a separate reader with its own run id and log outside the production ledgers; synthetic tests. No corpus reads; `p3b_read_source.py` unchanged; all work outside PROD's `.git`. Does not authorize corpus reads, P3b changes, pre-registration changes or G3–G5." |
+| D-ETR-1 = O1 (act text, package l.70) | "Theory recovery follows S5a/S5b (P3b §9D/§9E) and G-LOG-0028 after S5b; no early corpus reads." |
+| Not chosen | O3a, O3b (early reads; would reverse OMQ-14, G-LOG-0017), O4. D-ETR-2 to D-ETR-4 do not apply (O3 only) |
+| Consequences (DERIVED, package §2–§4) | OMQ-14 (per-label reading scope, G-LOG-0017) stands; the four contamination channels of package §3 stay closed because no ETR output exists before S5b; D-ETR-0 engineering is preparation only (package caveats l.43-46: value modest, since §9E reads object records; the claim schema must **extend** the §13.6 register schema, not add a second one, ES-005.4; the shared reader stays untouched) |
+| Execution conditions | D-ETR-0 work is non-trivial engineering: EP-01 plan and human approval of that plan before implementation; outside PROD's `.git` (W is a worktree of PROD's repository and does **not** qualify); halted during the run-3 quiet period (G-LOG-0117 F5) |
+| Not authorized | corpus reads; P3b changes; pre-registration changes; G3–G5; any P1–P3 choice; run-3 outside G-LOG-0117 |
