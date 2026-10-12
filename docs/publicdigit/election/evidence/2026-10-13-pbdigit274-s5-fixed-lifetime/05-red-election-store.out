@@ -1,0 +1,25 @@
+head=ffded59c8e1b1255cabd211e80ab356555307efc
+date=2026-10-13T00:53:17+02:00
+note: honest RED for election.store with the corrected fixture: ElectionController and VoterSlugService temporarily at HEAD (no S5 change), then restored
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugFixedLifetimeTest.php --filter selecting
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+DF                                                                  2 / 2 (100%)
+
+Time: 00:01.081, Memory: 24.00 MB
+
+There was 1 failure:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugFixedLifetimeTest::test_selecting_a_real_election_replaces_an_expired_link_and_keeps_history
+the expired link is kept (no hard delete)
+Failed asserting that actual size 1 matches expected size 2.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugFixedLifetimeTest.php:123
+
+FAILURES!
+Tests: 2, Assertions: 6, Failures: 1, Deprecations: 3.
+exit=1

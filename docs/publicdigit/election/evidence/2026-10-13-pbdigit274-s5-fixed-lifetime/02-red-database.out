@@ -1,0 +1,39 @@
+head=ffded59c8e1b1255cabd211e80ab356555307efc
+date=2026-10-13T00:49:37+02:00
+note: RED for S5 on the isolated database (committing base, no migration)
+$ . ./.pbdigit274.env && vendor/bin/phpunit -c phpunit.pbdigit274.xml tests/Isolated/Pbdigit274/Database/VoterSlugFixedLifetimeTest.php
+PBDIGIT-274 isolated database guard: current_database() = 'pbdigit274_isolated_test' confirmed.
+PHPUnit 11.5.6 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.5.11
+Configuration: /home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/phpunit.pbdigit274.xml
+
+FFDF                                                                4 / 4 (100%)
+
+Time: 00:02.565, Memory: 28.00 MB
+
+There were 3 failures:
+
+1) Tests\Isolated\Pbdigit274\Database\VoterSlugFixedLifetimeTest::test_selecting_a_real_election_reuses_a_valid_link_unchanged
+Expected response status code [201, 301, 302, 303, 307, 308] but received 404.
+Failed asserting that false is true.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponseAssert.php:45
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/vendor/laravel/framework/src/Illuminate/Testing/TestResponse.php:185
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugFixedLifetimeTest.php:110
+
+2) Tests\Isolated\Pbdigit274\Database\VoterSlugFixedLifetimeTest::test_selecting_a_real_election_replaces_an_expired_link_and_keeps_history
+the expired link is kept (no hard delete)
+Failed asserting that actual size 1 matches expected size 2.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugFixedLifetimeTest.php:120
+
+3) Tests\Isolated\Pbdigit274\Database\VoterSlugFixedLifetimeTest::test_the_cleanup_command_never_hard_deletes_real_link_history
+the soft-deleted real link is kept
+Failed asserting that null is not null.
+
+/home/d0f38614-c3a6-41d3-9952-7f59ad699b2d/roshyara/personal/nrna1/tests/Isolated/Pbdigit274/Database/VoterSlugFixedLifetimeTest.php:158
+
+FAILURES!
+Tests: 4, Assertions: 10, Failures: 3, Deprecations: 3.
+exit=1
